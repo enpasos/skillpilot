@@ -49,7 +49,7 @@ try {
     await page.route('**/api/**', route => { writes.push(route.request().method()); return route.abort() })
     await page.goto(`http://127.0.0.1:${address.port}/__unit-introduction?lang=${language}`)
     const intro = page.getByTestId('unit-introduction')
-    const button = intro.getByTestId('unit-introduction-continue')
+    const button = intro.getByRole('button', { name: language === 'de' ? 'Lernen starten' : 'Start Learning', exact: true })
     await intro.getByRole('img').waitFor()
     assert.equal(await button.isEnabled(), false, 'A background map cannot offer the handoff')
     assert.equal(await page.getByText('Handoffs: 0', { exact: true }).isVisible(), true)

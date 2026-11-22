@@ -205,12 +205,41 @@ try {
         planningCreditGoalIds: [], individuallyOpenGoalIds: ['math-upper'] },
     }
     const h = await open(unit, true, true, { entryGoal: 'math-sek-ii' })
-    const summary = h.page.getByTestId('learner-current-goal').getByTestId('unit-assessment-summary')
-    await summary.locator(':scope > summary').click()
+    const entry = h.page.getByTestId('unit-assessment-entry')
+    await entry.getByRole('button', { name: 'Direkt zur Prüfung', exact: true }).waitFor()
+    assert.equal(await entry.getByTestId('unit-assessment-options').count(), 0)
+    assert.equal(await h.page.getByTestId('unit-assessment-summary').count(), 0,
+      'the normal unit offers no assessment details before the explicit choice')
+    await entry.getByRole('button', { name: 'Direkt zur Prüfung', exact: true }).click()
+    const summary = entry.getByTestId('unit-assessment-summary')
     await summary.getByRole('link', { name: 'Skalarprodukt prüfen direkt versuchen' }).waitFor()
-    await summary.getByText('Einzeln noch nachzuweisen (1)', { exact: true }).click()
-    await summary.getByText('Ableitungen für Wachstumsmodelle deuten', { exact: true }).waitFor()
-    assert.equal(await h.page.getByTestId('level-completion-card').count(), 0, 'the focus already shows its assessment')
+    assert.equal(await entry.getByText('Einzeln noch nachzuweisen (1)', { exact: true }).count(), 0)
+    assert.equal(await h.page.getByTestId('level-completion-card').count(), 1, 'the unit owns the only assessment entry')
+    await entry.getByRole('button', { name: 'Direkt zur Prüfung', exact: true }).click()
+    assert.equal(await entry.getByTestId('unit-assessment-options').count(), 0)
+    const refresh = async () => {
+      const done = h.page.waitForEvent('console', { predicate: message => message.text().includes('[SSE] ✅ Refresh complete') })
+      await h.page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')))
+      await done
+    }
+    await entry.getByRole('button', { name: 'Direkt zur Prüfung', exact: true }).click()
+    h.unavailable()
+    await refresh()
+    await entry.getByText('Diese Ansicht ist veraltet.', { exact: false }).waitFor()
+    assert.equal(await entry.getByRole('link').count(), 0, 'an unavailable current state cannot start an assessment')
+    h.available()
+    await entry.getByRole('button', { name: 'Neu laden', exact: true }).click()
+    await summary.getByRole('link', { name: 'Skalarprodukt prüfen direkt versuchen' }).waitFor()
+    await h.page.waitForTimeout(1000) // A separate external unit change, beyond foreground-refresh coalescing.
+    h.update({ ...unit, learnerRevision: 26, profileId: 'automatic:math-sek-i',
+      unitAssessment: { ...unit.unitAssessment!, sectionGoalId: 'math-sek-i' } })
+    await refresh()
+    await h.page.getByTestId('learner-mobile-menu-button').focus()
+    await h.page.getByTestId('learner-mobile-menu-button').press('Enter')
+    await h.page.locator('#learner-goal-sidebar [data-goal-id="math-sek-i"]').click()
+    await h.page.waitForFunction(() => document.querySelector('[data-testid="unit-assessment-entry-open"]')?.getAttribute('aria-expanded') === 'false')
+    assert.equal(await h.page.getByTestId('unit-assessment-options').count(), 0,
+      'changing the unit resets the optional assessment choice')
     assert.equal(h.writes.length, 0, 'viewing unit evidence does not activate or assess a goal')
     assert.deepEqual(h.errors, [])
     await h.context.close()

@@ -332,6 +332,8 @@ try {
         map: await dialog.innerText(), errors, unexpected })
       throw error
     })
+    assert.equal(await dialog.locator('.lum-scope-actions, .lum-inspector, .unit-introduction, [data-testid="unit-assessment-summary"], [data-testid="learner-unit-assignment"], [data-testid="learning-map-flashcard-practice"]').count(), 0,
+      'the real subject map shows only its header and graph, including nested topic boards')
     if (viewFile) {
       const initialZoom = await checkProjectionGraph(page, dialog, releaseDeck, () => { mastery[horizontalThrow.id] = 1 })
       if (width === 390 || width === 1440) {
@@ -398,6 +400,7 @@ try {
       await page.keyboard.press('Enter')
       const exercise = page.getByRole('dialog', { name: 'Wo muss die Bodenmarke liegen?', exact: true })
       await exercise.waitFor()
+      assert.equal(await dialog.isVisible(), false, 'the explicit exercise command continues in the Cockpit')
       assert.equal(await exercise.evaluate(element => element.contains(document.activeElement)), true)
       await exercise.getByText('Hinweis anzeigen', { exact: true }).click()
       assert(await exercise.getByText('Wie ändern sich die beiden Wege', { exact: false }).isVisible())
@@ -408,9 +411,12 @@ try {
       if (width === 390) await exercise.getByRole('button', { name: 'Übung schließen', exact: true }).click()
       else await page.keyboard.press('Escape')
       await exercise.waitFor({ state: 'hidden' })
-      assert(await dialog.isVisible(), 'closing the exercise leaves the learning map open')
-      assert(await openExercise.evaluate(element => document.activeElement === element), 'focus returns to the exercise button')
+      assert.equal(await dialog.isVisible(), false, 'closing the Cockpit exercise does not reopen a map panel')
+      await page.getByTestId('learner-current-goal').getByRole('heading', { name: horizontalThrow.title, exact: true }).waitFor()
       if (width === 390) {
+        await opener.click()
+        await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
+        await centerGoal(dialog, horizontalThrow.title)
         const buttonBounds = await openExercise.boundingBox()
         assert(buttonBounds && buttonBounds.height >= 44 && buttonBounds.width >= 44)
         await openExercise.click()
@@ -420,6 +426,8 @@ try {
         await exercise.waitFor({ state: 'hidden' })
       }
       assert.deepEqual(writes, [], 'reading and checking an exercise does not save a result')
+      await opener.click()
+      await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
     }
     if (width === 390) await centerGoal(dialog, assessment.title)
     await dialog.locator(`[data-entry-id="${examId}"]`).getByText('Prüfung aus „Themenübergreifende Prüfungen“').waitFor()

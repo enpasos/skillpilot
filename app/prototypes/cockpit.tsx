@@ -1,6 +1,6 @@
 import { useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ArrowUpRight, Compass, Image as ImageIcon, Info } from 'lucide-react'
+import { Compass, Info } from 'lucide-react'
 import { LearningUnitMap } from '../src/components/learningUnitMap/LearningUnitMap'
 import { CockpitAboutDialog, CockpitLearningView, CockpitPlanView, CockpitPreviewDialog, type CockpitPreview } from './CockpitPanels'
 import { GoalImageDialog, type CockpitImagePreview } from './GoalImage'
@@ -89,23 +89,12 @@ export function Cockpit() {
         <LearningUnitMap key={scenario.id} fixture={data.fixture} embedded initialScopeId={data.unitId}
           active={view === 'map'} headingMode="context" rootLabel="Mathematik"
           learnerProgress={progress} activeGoalId={activeGoalId} command={command}
-          renderSelectionActions={id => {
-            if (id === data.cards.goalId) return <div className="cp-selection-actions">
-              <button type="button" title="Externer Kontext, keine Recall-Prüfung"
-                onClick={() => setPreview({ mode: 'cards', goal: data.goalById[id], cards: data.cards.cards })}>
-                Lernkarten ansehen (Kontext) <ArrowUpRight size={12} />
-              </button></div>
-            if (!targets.has(id)) return null
-            const assessment = id === data.assessment.goalId
-            const image = data.visualizationsByGoalId[id]?.image
-            return <div className="cp-selection-actions">
-              <button type="button" onClick={() => openPreview(id)}>
-                {assessment ? 'Prüfung ansehen' : 'Ziel ansehen'} <ArrowUpRight size={12} />
-              </button>
-              {image && <button type="button" className="cp-icon-button" data-testid="cockpit-selected-image-action"
-                title="Lernzielbild anzeigen" aria-label={'Lernzielbild zu „' + data.goalById[id].title + '“ anzeigen'}
-                onClick={() => setImagePreview({ goalId: id, goalTitle: data.goalById[id].title, image })}><ImageIcon size={16} /></button>}
-            </div>
+          getGoalAction={(_scope, id) => {
+            if (id === data.cards.goalId) return { title: data.goalById[id].title, label: 'Lernkarten ansehen (Kontext)',
+              open: () => setPreview({ mode: 'cards', goal: data.goalById[id], cards: data.cards.cards }) }
+            if (!targets.has(id)) return
+            return { title: data.goalById[id].title, label: id === data.assessment.goalId ? 'Prüfung ansehen' : 'Ziel ansehen',
+              open: () => openPreview(id) }
           }} />
       </section>
       <section className="cp-view cp-view--plan" data-testid="cockpit-view-plan" aria-label="Mein Plan"

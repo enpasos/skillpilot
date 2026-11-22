@@ -11,10 +11,12 @@ interface Props {
   titleForGoal?: (goalId: string) => string | undefined
   onShowGoal?: (goalId: string) => void
   allowStart?: boolean
+  expanded?: boolean
+  showGoalDetails?: boolean
 }
 
 /** All evidence and planning credits are scoped to the backend's current unit revision. */
-export function UnitAssessmentSummary({ assessment, completion, language, titleForGoal, onShowGoal, allowStart = false }: Props): React.ReactElement {
+export function UnitAssessmentSummary({ assessment, completion, language, titleForGoal, onShowGoal, allowStart = false, expanded = false, showGoalDetails = true }: Props): React.ReactElement {
   const en = language.startsWith('en')
   const sectionProfileId = `automatic:${assessment.sectionGoalId}`
   const startProfile = completion.profileId === sectionProfileId
@@ -26,13 +28,15 @@ export function UnitAssessmentSummary({ assessment, completion, language, titleF
     { credited: true, ids: assessment.planningCreditGoalIds, label: en ? 'Credited toward your learning plan' : 'Für deinen Lernplan angerechnet' },
     { credited: false, ids: assessment.individuallyOpenGoalIds, label: en ? 'Still awaiting individual evidence' : 'Einzeln noch nachzuweisen' },
   ]
-  return <details data-testid="unit-assessment-summary" className="unit-assessment-summary my-2 w-full rounded-xl border border-border-color bg-sidebar-bg p-3 text-sm text-text-primary">
-    <summary className="cursor-pointer rounded font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+  const Container = expanded ? 'section' : 'details'
+  const Heading = expanded ? 'h3' : 'summary'
+  return <Container data-testid="unit-assessment-summary" className="unit-assessment-summary my-2 w-full rounded-xl border border-border-color bg-sidebar-bg p-3 text-sm text-text-primary">
+    <Heading className="rounded font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
       {assessment.passed
         ? (en ? 'Unit assessment passed' : 'Einheitenprüfung bestanden')
         : (en ? 'Unit assessment' : 'Einheitenprüfung')}
       {' · '}{en ? `${passed} of ${total} ${total === 1 ? 'part' : 'parts'} passed` : `${passed} von ${total} ${total === 1 ? 'Teil' : 'Teilen'} bestanden`}
-    </summary>
+    </Heading>
     <ul aria-label={en ? 'Assessment parts' : 'Prüfungsteile'} className="mt-3 space-y-2">
       {assessment.parts.map(part => {
         const startHref = allowStart && !completion.directAssessmentRunning && !part.passed && part.materialCurrent !== false && startProfile
@@ -59,7 +63,7 @@ export function UnitAssessmentSummary({ assessment, completion, language, titleF
         </li>
       })}
     </ul>
-    {goals.map(({ credited, ids, label }) => {
+    {showGoalDetails && goals.map(({ credited, ids, label }) => {
       const titles = ids.flatMap(id => {
         const title = titleForGoal?.(id)
         return title ? [{ id, title }] : []
@@ -73,5 +77,5 @@ export function UnitAssessmentSummary({ assessment, completion, language, titleF
         </li>)}</ul>
       </details> : <p key={label} className="mt-2 text-text-secondary">{label} ({ids.length})</p>
     })}
-  </details>
+  </Container>
 }

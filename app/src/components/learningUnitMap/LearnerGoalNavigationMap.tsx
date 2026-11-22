@@ -1,6 +1,5 @@
 import { findUnitPracticeExercise } from '../../utils/unitLearningMaterial'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { BookOpen } from 'lucide-react'
 import type { FlashcardPracticeRequest } from '../../utils/flashcardPractice'
 import type { UiGoal } from '../../goalTypes'
 import type { LearnerGoalNavigationMapProps } from '../../views/LearnerView'
@@ -8,9 +7,6 @@ import { buildTreeCompletionProgressMap } from '../../utils/treeCompletionProgre
 import { completionLabel } from '../../utils/levelCompletionApi'
 import { LearningUnitMap } from './LearningUnitMap'
 import { mapEntryPath } from './mapEntryPath'
-import { GoalPracticeDialog } from '../GoalPracticeDialog'
-import { UnitIntroduction } from '../UnitIntroduction'
-import { isMastered } from '../../goalUiUtils'
 import { UNIT_MAP_LEARNING_MATERIALS } from './learnerUnitMapPreviewSubjects'
 import { filterLearnerUnitMapToSubjects } from './learnerUnitMapProjection'
 import { createLearnerUnitMapCache, MATHEMATICS_LANDSCAPE_ID,
@@ -24,7 +20,7 @@ const subjectLabel = (landscapeId: string, english: boolean) => landscapeId === 
 /** Lazy product adapter; the original GoalCard remains the only goal detail view. */
 export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMapProps) {
   const { rootGoals, goalIndexAll, canonicalGoalSources, visibleGoalIds, visibleChildrenByParent,
-    getMastery, completionWaivers, onPracticeFlashcards, getFlashcardSource, onOpenGoal, onRequestUnitStudy } = props
+    getMastery, completionWaivers, onPracticeFlashcards, onPracticeGoal, getFlashcardSource, onOpenGoal, onRequestUnitStudy } = props
   const english = props.language === 'en'
   const canonicalSource = canonicalGoalSources ?? goalIndexAll
   const canonicalGoalIndexAll = useMemo(() => canonicalSource instanceof Map ? canonicalSource
@@ -81,14 +77,6 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   // Route selection can recreate the goal index and its actions while the same resource nodes stay on the board.
   const placementKey = useMemo(() => JSON.stringify(resources.flatMap(unitResourcePlacements)), [resources])
   const fixture = useMemo(() => placeUnitLearningResources(progressFixture, JSON.parse(placementKey)), [progressFixture, placementKey])
-  const [entryIntent, setEntryIntent] = useState({ active: props.active, explicit: false })
-  const selectedKind = fixture.entries[props.selectedGoalId]?.kind
-  const ordinarySelection = props.active && !!selectedKind && selectedKind !== 'assessment'
-  // Adjust per-opening intent before commit, keeping the map camera free of a
-  // second render caused by an effect that changes the introduction's height.
-  if (entryIntent.active !== props.active) setEntryIntent({ active: props.active, explicit: ordinarySelection })
-  else if (ordinarySelection && !entryIntent.explicit) setEntryIntent({ ...entryIntent, explicit: true })
-  const enterUnit = useCallback(() => setEntryIntent(current => ({ ...current, explicit: true })), [])
   const requestStudy = useCallback(async (scopeId: string, goalId: string, targetGoalId?: string) => {
     const scopeGoalId = [...(mapEntryPath(progressFixture, scopeId) ?? [])].reverse().find(id => goalIndexAll.has(id)) ?? goalId
     return !onRequestUnitStudy || await onRequestUnitStudy(scopeGoalId, targetGoalId)
@@ -111,7 +99,6 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
       }
     }
   }, [resources, english, fixture, progressFixture, onPracticeFlashcards, onOpenGoal, requestStudy])
-  const [openExercise, setOpenExercise] = useState<{ scopeId: string; goalId: string } | null>(null)
   const getExercise = useCallback((scopeId: string, goalId: string) => {
     if (!visibleGoalIds.has(goalId) || !progressFixture.entries[scopeId]?.children?.includes(goalId)) return
     const path = mapEntryPath(progressFixture, scopeId)
@@ -121,8 +108,8 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   }, [resources, progressFixture, goalIndexAll, visibleGoalIds, language])
   const getPracticeAction = useCallback((scopeId: string, goalId: string) => {
     const exercise = getExercise(scopeId, goalId)
-    if (exercise) return { label: `${english ? 'Practice' : 'Üben'}: ${exercise.title}`,
-      open: async () => { if (await requestStudy(scopeId, goalId, goalId)) setOpenExercise({ scopeId, goalId }) } }
+    if (exercise && onPracticeGoal) return { label: `${english ? 'Practice' : 'Üben'}: ${exercise.title}`,
+      open: async () => { if (await requestStudy(scopeId, goalId, goalId)) onPracticeGoal(goalId, exercise) } }
     if (progressFixture.entries[goalId]?.sourceSections && onPracticeFlashcards) {
       for (const { flashcards } of resources) {
         const action = flashcards.get(goalId)
@@ -131,8 +118,7 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
         } }
       }
     }
-  }, [english, getExercise, progressFixture, resources, onPracticeFlashcards, requestStudy])
-  const exercise = openExercise && props.active && getExercise(openExercise.scopeId, openExercise.goalId)
+  }, [english, getExercise, progressFixture, resources, onPracticeFlashcards, requestStudy, onPracticeGoal])
   const progress = useMemo(() => {
     const fixture = progressFixture
     // Synthetic unit nodes stand in as clusters; only real goals count as atoms.
@@ -190,42 +176,13 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     data-selected-goal-id={props.selectedGoalId} data-map-active={props.active}>
     <LearningUnitMap fixture={fixture} embedded active={props.active} headingMode="context"
       rootLabel={english ? 'My learning goals' : 'Meine Lernziele'} language={props.language} learnerProgress={progress} activeGoalId={props.activeGoalId}
-      command={command} assessedUnit={props.unitAssessmentSummary} showInspector={false}
-      onScopeEnter={enterUnit}
+      command={command}
       toolbar={toolbar} locationBarContainer={props.locationBarContainer}
       getPracticeAction={getPracticeAction} getGoalAction={getGoalAction} materialScopes={materialScopes}
-      renderScopeActions={scopeId => {
-        const intros = resources.flatMap(({ scopes, material }) => scopes.has(scopeId) ? [material] : [])
-        const subdecks = new Map<string, FlashcardPracticeRequest>()
-        for (const { flashcards } of resources) {
-          const action = flashcards.get(scopeId)
-          if (action?.goalIds && !fixture.entries[scopeId]?.children?.includes(action.goalId)) subdecks.set(action.goalId, action)
-        }
-        return <>
-          {intros.map(material => {
-            const nextId = [...new Set([...(props.activeGoalId ? [props.activeGoalId] : []), ...(props.availableGoalIds ?? [])])].find(id => id !== material.unit.orientationGoalId
-              && fixture.entries[id] && (mapEntryPath(fixture, id) ?? []).includes(scopeId))
-            return <UnitIntroduction key={material.unit.landscapeId + material.unit.compositionNodeId}
-              material={material} language={language} active={props.active && props.unitIntroductionReady !== false} compact
-              deferUntilRequested={!entryIntent.explicit && selectedKind === 'assessment'}
-              context={(mapEntryPath(fixture, scopeId) ?? []).filter(id => id !== fixture.rootId).map(id => fixture.entries[id]?.title).filter(Boolean)}
-              completed={!!material.unit.orientationGoalId && isMastered(getMastery(material.unit.orientationGoalId))}
-              credited={completionWaivers.get(material.unit.orientationGoalId ?? '')?.reason === 'assessment'}
-              nextStep={nextId ? { title: fixture.entries[nextId].title, open: () => (onOpenGoal ?? props.onSelectGoal)(nextId) } : undefined}
-              onContinue={props.onContinueUnitIntroduction} />
-          })}
-          {[...subdecks.values()].map(action => <button key={action.goalId} type="button" className="lum-flashcard-action"
-            data-testid="learning-map-flashcard-practice" onClick={async () => {
-              if (await requestStudy(scopeId, action.goalId)) onPracticeFlashcards?.(action)
-            }}>
-            <BookOpen size={17} aria-hidden="true" />{action.title}</button>)}
-          {scopeId === props.unitAssessmentSummary?.scopeGoalId && props.unitAssessmentSummary.content}
-        </>
-      }} onEntrySelect={(goalId) => {
+      onEntrySelect={(goalId) => {
         const goal = goalIndexAll.get(goalId)
         if (goal && !goal.personalCurriculumProjection?.presentationOnly) props.onSelectGoal(goalId)
       }}
       onReturnToTree={props.onReturnToTree} onEscape={props.onEscape} />
-    {exercise && <GoalPracticeDialog exercise={exercise} language={language} onDismiss={() => setOpenExercise(null)} />}
   </div>
 }

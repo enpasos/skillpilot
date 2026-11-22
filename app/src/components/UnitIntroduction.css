@@ -10,13 +10,16 @@
 .unit-introduction figcaption { font-size: 13px; line-height: 1.5; }
 .unit-introduction-scene h3 { margin: 10px 0 6px; font-size: 14px; font-weight: 650; }
 .unit-introduction-scene p, .unit-introduction-scene li { font-size: 14px; line-height: 1.5; }
-.unit-introduction ul { margin: 0; padding-inline-start: 20px; list-style: disc; }
-.unit-introduction button { min-height: 44px; border: 1px solid #9bb8ca; border-radius: 8px; padding: 8px 12px; background: transparent; color: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
-.unit-introduction button:hover { background: #edf4f8; color: #243847; }
+.unit-introduction-scene ul { margin: 0; padding-inline-start: 20px; list-style: disc; }
+:is(.unit-introduction, .unit-introduction-actions, .unit-introduction-return) > button { min-height: 44px; border: 1px solid #9bb8ca; border-radius: 8px; padding: 8px 12px; background: transparent; color: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+:is(.unit-introduction, .unit-introduction-actions, .unit-introduction-return) > button:hover { background: #edf4f8; color: #243847; }
 .unit-introduction button:focus-visible { outline: 2px solid #3182b6; outline-offset: 2px; }
 .unit-introduction button:disabled { opacity: .55; cursor: wait; }
 .unit-introduction-next { margin-top: 10px; }
 .unit-introduction-next p { max-width: 85ch; font-size: 13px; color: var(--text-secondary, #536575); }
+.unit-introduction-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.unit-introduction-actions > .unit-introduction-start { display: inline-flex; align-items: center; justify-content: center; border-radius: 9999px; padding-inline: 16px; background: #0369a1; border-color: #0369a1; color: white; }
+.unit-introduction-actions > .unit-introduction-start:hover { background: #075985; border-color: #075985; color: white; }
 .unit-introduction--short { padding: 12px 16px; }
 .unit-introduction-return { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 13px; }
 @media (max-width: 600px) {

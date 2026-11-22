@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import type { LearnerLearningPlanDetail, StoredUnitAssignment, UnitAssignmentOption } from '../learnerLearningPlanTypes'
 import { getLearnerLearningPlan, getUnitAssignmentOptions, LearnerLearningPlanApiError, saveLearnerLearningPlan, setUnitAssignmentActivity } from '../utils/learnerLearningPlanApi'
 import { berlinDateKey, storedUnitAssignmentAnchor } from '../utils/learnerLearningPlanReadModel'
-import { buildCompletionAssessmentStartHref, completionLabel, type LevelCompletion, type UnitAssessment } from '../utils/levelCompletionApi'
+import { completionLabel, type LevelCompletion, type UnitAssessment } from '../utils/levelCompletionApi'
 
 interface Props {
   learnerId: string
@@ -17,7 +16,7 @@ interface Props {
   onSaved: () => Promise<void>
 }
 
-export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, completion, language, disabled, storedAssignments, goalTitle, onSaved }: Props) {
+export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, completion, language, disabled, storedAssignments, onSaved }: Props) {
   const en = language.startsWith('en')
   const label = (de: string, english: string) => en ? english : de
   const [data, setData] = useState<{ option?: UnitAssignmentOption; plan: LearnerLearningPlanDetail | null }>()
@@ -99,29 +98,16 @@ export function LearnerUnitAssignment({ learnerId, landscapeId, assessment, comp
     <button type="button" className="underline" onClick={() => setAttempt(n => n + 1)}>{label('Neu laden', 'Reload')}</button>
   </p>
   if (!option) return manageLink ?? null
-  const next = plan?.nextEligibleGoal?.goalId
-  const profileId = 'automatic:' + sectionGoalId
-  const startProfile = completion.profileId === profileId ? completion : completion.profileOptions.find(item => item.profileId === profileId)
-  const nextPart = option.parts.find(item => item.goalId === next && !item.passed && item.materialCurrent)
-  const canTry = nextPart && !disabled && !completion.directAssessmentRunning && startProfile?.assessments?.some(item => item.goalId === next && item.startAvailable)
   return <section data-testid="learner-unit-assignment" className="my-3 rounded-xl border border-border-color p-3 text-sm">
     <h3 className="font-semibold">{label('Einheitenauftrag im Lernplan', 'Unit assignment in your learning plan')}</h3>
     {assigned ? <p data-testid="unit-assignment-status">{option.passed
       ? label('Einheitenauftrag abgeschlossen. Für diesen Auftrag ist keine weitere Pflichtarbeit offen.', 'Unit assignment complete. All required work for this assignment is done.')
       : label('Einheitenauftrag aktiv.', 'Unit assignment active.')} {option.parts.filter(item => item.passed).length} / {option.parts.length}</p>
-      : <><p>{needsRebind ? label('Dieser Auftrag gehört zu einer anderen Fassung oder Fachauswahl. Du kannst die aktuelle Fassung ausdrücklich wählen.', 'This assignment belongs to another version or subject selection. You can explicitly choose the current version.') : paused ? label('Dieser Einheitenauftrag ist pausiert.', 'This unit assignment is paused.') : label('Für diesen Auftrag zählen die aufgeführten Prüfungsteile. Einzelziele kannst du getrennt wählen.', 'This assignment requires the listed assessment parts. You can choose individual goals separately.')}</p>
-        <button data-testid="unit-assignment-add" type="button" disabled={disabled || saving || (plan?.stale && !needsRebind)}
+      : <><p>{needsRebind ? label('Dieser Auftrag gehört zu einer anderen Fassung oder Fachauswahl. Du kannst die aktuelle Fassung ausdrücklich wählen.', 'This assignment belongs to another version or subject selection. You can explicitly choose the current version.') : paused ? label('Dieser Einheitenauftrag ist pausiert.', 'This unit assignment is paused.') : label('Dieser Auftrag plant die Prüfungsteile dieser Einheit ein.', 'This assignment schedules this unit’s assessment parts.')}</p>
+        {(needsRebind || !management) && <button data-testid="unit-assignment-add" type="button" disabled={disabled || saving || (plan?.stale && !needsRebind)}
           className="mt-2 min-h-10 rounded-lg border border-sky-500 px-3 font-semibold disabled:opacity-50" onClick={() => void save()}>
           {needsRebind ? label('Aktuelle Fassung für diesen Auftrag wählen', 'Choose the current version for this assignment')
-            : paused ? label('Einheitenauftrag wieder aktivieren', 'Reactivate unit assignment') : label('Einheitenauftrag in den Lernplan aufnehmen', 'Add unit assignment to learning plan')}</button></>}
+            : paused ? label('Einheitenauftrag wieder aktivieren', 'Reactivate unit assignment') : label('Einheitenauftrag in den Lernplan aufnehmen', 'Add unit assignment to learning plan')}</button>}</>}
     {manageLink}
-    {plan && <p data-testid="unit-assignment-next" className="mt-2">{label('Nächster Planvorschlag', 'Next learning plan suggestion')}{' · '}
-      {next ? goalTitle(next) ?? completionLabel(nextPart?.title ?? {}, language) : label('Kein weiterer Vorschlag', 'No further suggestion')}</p>}
-    {assigned && canTry && <Link data-testid="unit-assignment-try" className="mt-2 inline-block min-h-9 underline"
-      to={buildCompletionAssessmentStartHref({ profileId, goalId: nextPart.goalId, expectedRevision: completion.learnerRevision })}>
-      {label('Vorgeschlagenen Prüfungsteil versuchen', 'Try the suggested assessment part')}</Link>}
-    {assigned && next && !option.parts.some(part => part.goalId === next) &&
-      <Link data-testid="unit-assignment-next-individual" className="mt-2 inline-block min-h-9 underline"
-        to={'/learner/' + encodeURIComponent(next)}>{label('Zum nächsten Einzelauftrag', 'Open the next individual assignment')}</Link>}
   </section>
 }

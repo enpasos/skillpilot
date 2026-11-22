@@ -226,6 +226,11 @@ async function closeMap(page: Page) {
 }
 async function scope(page: Page, goalId: string) {
   await page.locator(`.lum-canvas[data-scope-id="${goalId}"][aria-busy="false"]`).waitFor()
+  const map = page.getByTestId('native-cockpit-map')
+  assert.equal(await map.locator('.lum-scope-actions, .lum-inspector, .unit-introduction, [data-testid="unit-assessment-summary"], [data-testid="learner-unit-assignment"], [data-testid="learning-map-flashcard-practice"]').count(), 0,
+    'every normal and nested map scope contains the graph without learning, assessment or assignment panels')
+  assert.equal(await map.locator('.lum-workspace > :not(.lum-canvas)').count(), 0,
+    'the graph occupies the whole map workspace without an information sidebar')
 }
 async function fillsWindow(page: Page, label: string) {
   const viewport = page.viewportSize()

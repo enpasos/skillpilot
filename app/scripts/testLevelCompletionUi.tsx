@@ -3,6 +3,7 @@ import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { LevelCompletionCard } from '../src/components/LevelCompletionCard'
+import { UnitAssessmentEntry } from '../src/components/UnitAssessmentEntry'
 import { requiresCompletionExitConfirmation, type LevelCompletion } from '../src/utils/levelCompletionApi'
 import { TreeCompletionProgressBar } from '../src/components/TreeCompletionProgressBar'
 import type { TreeCompletionProgress } from '../src/utils/treeCompletionProgress'
@@ -24,7 +25,7 @@ const completed: LevelCompletion = {
     { action: 'leaveProfile', title: { de: 'Zur regulären Lernansicht', en: 'Return to regular learning' } },
   ],
 }
-const render = (completion: LevelCompletion, extra: { stale?: boolean; language?: string; learningPlanPaused?: boolean; titleForGoal?: (id: string) => string | undefined } = {}) => renderToStaticMarkup(
+const render = (completion: LevelCompletion, extra: { stale?: boolean; language?: string; learningPlanPaused?: boolean; titleForGoal?: (id: string) => string | undefined; discoveryOpenRequest?: string } = {}) => renderToStaticMarkup(
   <MemoryRouter><LevelCompletionCard completion={completion} language="de" onAction={() => undefined} onRetry={() => undefined} {...extra} /></MemoryRouter>,
 )
 const done = render(completed, { learningPlanPaused: true })
@@ -104,41 +105,80 @@ const currentUnit: LevelCompletion = {
   assessments: unitParts.map(part => ({ ...part, mastered: part.passed, startAvailable: !part.passed })),
   unitAssessment: { sectionGoalId: 'math-sek-ii', revision: 'reviewed', passed: false, parts: unitParts, planningCreditGoalIds: ['model'], individuallyOpenGoalIds: ['model', 'fall'] },
 }
-const unit = render(currentUnit, { titleForGoal: id => ({ model: 'Bewegung modellieren', fall: 'Freier Fall' })[id] })
+const closedUnit = render(currentUnit)
+assert.match(closedUnit, /Direkt zur Prüfung/u)
+assert.doesNotMatch(closedUnit, /unit-assessment-options|unit-assessment-summary|Teil [A-D]|3 von 4|Lernplan|Unterstützung/u)
+assert.equal((closedUnit.match(/<button /gu) ?? []).length, 1, 'the unopened alternative is a single decision')
+const renderUnit = (completion: LevelCompletion, extra: Parameters<typeof render>[1] = {}) => render(completion, { discoveryOpenRequest: 'explicit-assessment-choice', ...extra })
+const unit = renderUnit(currentUnit, { titleForGoal: id => ({ model: 'Bewegung modellieren', fall: 'Freier Fall' })[id] })
 assert.match(unit, /3 von 4 Teilen bestanden/u)
 assert.equal((unit.match(/Beleg vorhanden/gu) ?? []).length, 3)
 assert.equal((unit.match(/unit-assessment-direct-evidence/gu) ?? []).length, 3)
-assert.equal((unit.match(/unit-assessment-credited-evidence/gu) ?? []).length, 1,
-  'the individually open list never duplicates the check for the credited goal')
+assert.equal((unit.match(/unit-assessment-credited-evidence/gu) ?? []).length, 0,
+  'the optional assessment chooser contains no planning-goal lists')
 assert.equal((unit.match(/completionGoal=D/gu) ?? []).length, 1)
-assert.match(unit, /Für deinen Lernplan angerechnet \(1\)/u)
-assert.match(unit, /Einzeln noch nachzuweisen \(2\)/u)
-assert.match(unit, /Bewegung modellieren/u)
-assert.match(unit, /Freier Fall/u)
-assert.doesNotMatch(render(currentUnit, { stale: true }), /completionGoal=/u)
+assert.doesNotMatch(unit, /Für deinen Lernplan angerechnet|Einzeln noch nachzuweisen|Bewegung modellieren|Freier Fall/u)
+assert.doesNotMatch(renderUnit(currentUnit, { stale: true }), /completionGoal=/u)
 const changedUnit = { ...currentUnit, unitAssessment: { ...currentUnit.unitAssessment!,
   parts: unitParts.map(part => ({ ...part, materialCurrent: part.passed })) } }
-assert.match(render(changedUnit), /Diese Prüfungsfassung ist nicht verfügbar/u)
-assert.doesNotMatch(render(changedUnit), /completionGoal=D/u)
+assert.match(renderUnit(changedUnit), /Diese Prüfungsfassung ist nicht verfügbar/u)
+assert.doesNotMatch(renderUnit(changedUnit), /completionGoal=D/u)
 const passedParts = unitParts.map(part => ({ ...part, passed: true }))
 const otherExam = { goalId: 'Q5', title: { de: 'Waagerechter Wurf', en: 'Horizontal throw' }, voluntary: true, mastered: false, startAvailable: true }
 const unitPassed = { ...currentUnit, targetCount: 5, masteredTargetCount: 4, pendingTargetCount: 1,
   requiredAssessmentCount: 4, masteredAssessmentCount: 4,
   assessments: [...passedParts.map(part => ({ goalId: part.goalId, title: part.title, mastered: true, startAvailable: false })), otherExam],
   unitAssessment: { ...currentUnit.unitAssessment!, passed: true, parts: passedParts } }
-const englishUnit = render(unitPassed, { language: 'en' })
+const englishUnit = renderUnit(unitPassed, { language: 'en' })
 assert.match(englishUnit, /Optional assessment<\/p>/u)
 assert.match(englishUnit, /completionGoal=Q5/u)
-assert.match(render(unitPassed), /Freiwillige Zusatzprüfung<\/p>/u)
+assert.match(renderUnit(unitPassed), /Freiwillige Zusatzprüfung<\/p>/u)
 assert.match(englishUnit, /Unit assessment passed/u)
 assert.match(englishUnit, /4 of 4 parts passed/u)
-assert.match(englishUnit, /Still awaiting individual evidence \(2\)/u)
+assert.doesNotMatch(englishUnit, /Still awaiting individual evidence|Credited toward your learning plan/u)
 assert.doesNotMatch(englishUnit, /Learning route completed/u)
 const sectionPassed = { ...unitPassed, complete: true, targetCount: 4, pendingTargetCount: 0 }
-assert.match(render(sectionPassed), /Lernweg abgeschlossen\./u,
+assert.match(renderUnit(sectionPassed), /Lernweg abgeschlossen\./u,
   'a valid section completion stays visible alongside the independent unit result')
-assert.match(render({ ...sectionPassed, navigationIntent: undefined }, { language: 'en' }),
+assert.match(renderUnit({ ...sectionPassed, navigationIntent: undefined }, { language: 'en' }),
   /Learning section completed\./u)
+const foreignProfile = renderUnit({ ...unitPassed, profileId: 'automatic:personal-curriculum',
+  unitAssessment: currentUnit.unitAssessment,
+  assessments: [...unitPassed.assessments, { ...otherExam, goalId: 'foreign-exam', title: { de: 'Fremde Mathematikprüfung' } }],
+  profileOptions: [{ profileId: currentUnit.profileId!, title: { de: 'Diese Einheit' }, assessments: currentUnit.assessments }] })
+assert.doesNotMatch(foreignProfile, /Fremde Mathematikprüfung|Waagerechter Wurf/u,
+  'a different active profile never supplies the unit’s optional assessments')
+assert.match(foreignProfile, /completionGoal=D/u)
+const childOffer = renderToStaticMarkup(<MemoryRouter><UnitAssessmentEntry
+  assessmentOffers={[{ profileId: currentUnit.profileId!, assessment: currentUnit.assessments[3] }]}
+  completion={currentUnit} language="de" stale={false} busy={false} onRetry={() => undefined}
+  openRequest="explicit-child-assessment" /></MemoryRouter>)
+assert.match(childOffer, /completionProfile=automatic%3Amath-sek-ii[^"]*completionGoal=D/u)
+assert.doesNotMatch(childOffer, /Teil [ABC]|Einheitenprüfung|von 4|Einzeln noch nachzuweisen/u,
+  'an authored single assessment reference never inherits the parent unit’s completion contract')
+assert.match(renderUnit({ ...currentUnit, directAssessmentRunning: true }), /Eine Prüfung läuft in deinem Lerncoach/u)
+assert.match(renderUnit(currentUnit, { stale: true }), /Neu laden/u)
+const runningUnit = render({ ...currentUnit, directAssessmentRunning: true, actions: [
+  { action: 'retryAssessment', goalId: 'D', title: { de: 'Prüfung erneut versuchen' } },
+  { action: 'endAssessment', title: { de: 'Prüfung beenden und pausieren' } },
+  { action: 'leaveProfile', title: { de: 'Zur normalen Lernansicht' } },
+  { action: 'includeSupport', goalId: 'math-support', intent: 'support', title: { de: 'Ungefragte Mathehilfe' } },
+] })
+assert.match(runningUnit, /unit-assessment-options/u, 'a running attempt is already an explicit assessment choice')
+assert.match(runningUnit, /Prüfung erneut versuchen/u)
+assert.match(runningUnit, /Prüfung beenden und pausieren/u)
+assert.match(runningUnit, /Zur normalen Lernansicht/u)
+assert.doesNotMatch(runningUnit, /Ungefragte Mathehilfe|completionGoal=/u)
+for (const language of ['de', 'en']) {
+  for (const passed of [0, 2, 4]) {
+    const parts = unitParts.map((part, index) => ({ ...part, passed: index < passed }))
+    const result = { ...currentUnit, unitAssessment: { ...currentUnit.unitAssessment!, parts, passed: passed === 4 } }
+    const initial = render(result, { language })
+    assert.doesNotMatch(initial, /unit-assessment-summary|unit-assessment-options|Part [A-D]|Teil [A-D]/u)
+    assert.match(initial, language === 'de' ? /Direkt zur Prüfung/u : /Go directly to assessment/u)
+    assert.match(renderUnit(result, { language }), new RegExp(language === 'de' ? `${passed} von 4 Teilen bestanden` : `${passed} of 4 parts passed`))
+  }
+}
 assert.match(render(open), /Prüfung direkt versuchen/u)
 assert.match(render(open), /completionProfile=profile/u)
 assert.match(render(open), /Noch nicht geschafft/u)
