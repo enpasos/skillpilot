@@ -1183,11 +1183,6 @@ public class LearnerService {
         if (completionRouteOwnsNavigation(learner)
                 && (CompletionCallContext.current() == null || !storedDirect
                     || ownsDirectAssessment(CompletionCallContext.current(), workflow))) {
-            if (workflow != null && !storedDirect && "valid".equals(status)
-                    && !"paused".equals(workflow.navigationIntent())) {
-                actions.add(new LevelCompletionResponse.Action("pauseProfile", null,
-                        Map.of("de", "Für heute beenden", "en", "Finish for today"), null));
-            }
             actions.add(new LevelCompletionResponse.Action("leaveProfile", null,
                     Map.of("de", "Zur normalen Lernansicht", "en", "Return to ordinary learning"), null));
             if (storedDirect) actions.add(new LevelCompletionResponse.Action("endAssessment", null,
@@ -1429,7 +1424,7 @@ public class LearnerService {
             saveCompletionWorkflow(learner, new CompletionWorkflowState(compiled.profile().id(),
                     compiled.profile().revision(), compiled.curriculumGeneration(), learner.getSelectedCurriculum(),
                     completionScopeDigest(learner), intent, currentGoalId, null));
-        } else if ("endAssessment".equals(request.action()) || "pauseProfile".equals(request.action())) {
+        } else if ("endAssessment".equals(request.action())) {
             CompletionWorkflowState old = completionWorkflow(learner);
             if (old == null) throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT, "No completion route.");
             if (CompletionCallContext.current() != null && old.directAssessment() != null

@@ -47,7 +47,6 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
   let interceptedFetch: typeof fetch | undefined
   let version = 1
   let completionSelected = false
-  let completionPaused = false
   let materialRevision = 0
   let selectedPackageIds = ['fixture-local-math-context']
   let srsUpdatedAt: string | null = null
@@ -164,10 +163,8 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
       profileOptions: snapshot.scenario !== 'completed' ? [{ profileId: 'fixture-dot-product', title: title('Skalarprodukt und Projektion · lokale Vorschau'), targetCount: 2,
         requiredAssessmentCount: 1, assessments }] : [],
       directAssessmentRunning: false,
-      ...(!automatic && completionPaused ? { navigationIntent: 'paused' as const } : {}),
       actions: !automatic ? [
         { action: 'learnGoal', goalId: data.ordinaryId, title: title('Fachziel weiterlernen'), intent: 'required' },
-        { action: 'pauseProfile', title: title('Prüfungsweg pausieren') },
         { action: 'leaveProfile', title: title('Zur regulären Lernansicht') },
       ] : [],
     }
@@ -261,7 +258,7 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
   }
   const reset = () => {
     snapshot = { ...snapshot, profile: initialProfile() }
-    completionSelected = false; completionPaused = false; materialRevision = 0; selectedPackageIds = ['fixture-local-math-context']
+    completionSelected = false; materialRevision = 0; selectedPackageIds = ['fixture-local-math-context']
     editorOpen = false; editorSelected = [data.mathLandscapeId, data.physicsLandscapeId]
     selectScenario('ordinary')
   }
@@ -390,10 +387,9 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
     if (suffix === '/level-completion/actions' && method === 'POST') {
       if (body.expectedRevision !== version) return json({ error: 'Local completion revision conflict' }, 409)
       if (body.action === 'selectProfile') completionSelected = true
-      else if (body.action === 'leaveProfile') { completionSelected = false; completionPaused = false }
-      else if (body.action === 'pauseProfile') completionPaused = true
+      else if (body.action === 'leaveProfile') completionSelected = false
       else if (body.action === 'learnGoal' && typeof body.goalId === 'string' && data.goalIndexAll.has(body.goalId)) {
-        completionPaused = false; snapshot = { ...snapshot, activeGoalId: body.goalId }
+        snapshot = { ...snapshot, activeGoalId: body.goalId }
       } else return json({ error: 'Unsupported local completion action' }, 400)
       emit(); return json(state())
     }

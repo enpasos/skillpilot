@@ -1183,9 +1183,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         }
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
                 "selectProfile", "automatic:" + section, null, null, version()));
-        for (String action : List.of("pauseProfile", "leaveProfile")) {
-            learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(action, null, null, null, version()));
-        }
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", null, null, null, version()));
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
         authenticate();
         return parts;

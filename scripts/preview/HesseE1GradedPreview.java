@@ -123,7 +123,6 @@ public final class HesseE1GradedPreview {
         }
         plans.upsert(id, PHYSICS, new LearnerLearningPlanApi.UpsertRequest(0L, unitAssignment ? "Einheitenauftrag E.1" : "Einzelziele E.1", blocks), today);
         if (scenario.equals("oriented") || scenario.equals("parentOriented")) {
-            learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("pauseProfile", null, null, null, revision(id)));
             learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("leaveProfile", null, null, null, revision(id)));
             var parentOpening = "a4d4efe1-7d30-526b-ac9c-806113da4363";
             var orientations = scenario.equals("oriented")
@@ -148,10 +147,8 @@ public final class HesseE1GradedPreview {
                     null, null, revision(id)));
         }
         if (unitAssignment) {
-            // Resume the ordinary plan without carrying a practice cursor out of assessment navigation.
-            for (String action : List.of("pauseProfile", "leaveProfile")) {
-                learners.chooseLevelCompletion(id, new LevelCompletionActionRequest(action, null, null, null, revision(id)));
-            }
+            // Return to the ordinary plan through the published route exit.
+            learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("leaveProfile", null, null, null, revision(id)));
         }
         var inScope = learners.getLearningPlanCompletionContext(id).canonicalGoals();
         var targeted = offeredSuccessors(id, inScope);

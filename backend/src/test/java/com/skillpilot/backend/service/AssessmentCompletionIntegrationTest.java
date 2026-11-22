@@ -685,7 +685,7 @@ class AssessmentCompletionIntegrationTest {
 
     @org.junit.jupiter.params.ParameterizedTest
     @org.junit.jupiter.params.provider.ValueSource(booleans = {false, true})
-    void pauseBeforeOrAfterCompletionKeepsTheProfileAndNeedsFreshDeliberateWorkToResume(boolean completed) throws Exception {
+    void returningToUnfinishedWorkPreservesTheCurrentGoalAndEvidence(boolean completed) {
         useRoleCompleteG8OrdinaryScope();
         learner.setAutoPilot(true);
         learner.setFollowLearningPlans(true);
@@ -701,49 +701,35 @@ class AssessmentCompletionIntegrationTest {
         nextRequestTransaction(true);
         var working = learners.getLearnerState(learner.getSkillpilotId());
         assertThat(working.activeGoal().id()).isEqualTo(PREPARATION);
-        assertThat(working.levelCompletion().actions()).anyMatch(action -> "pauseProfile".equals(action.action()));
+        assertThat(working.levelCompletion().actions()).noneMatch(action -> "pauseProfile".equals(action.action()));
         if (completed) assertThat(working.levelCompletion().actions()).noneMatch(action ->
                 "includeSupport".equals(action.action()) || "includeTarget".equals(action.action())
                         || ("learnGoal".equals(action.action()) && "required".equals(action.intent())));
-        var binding = mapper.readValue(learner.getCompletionWorkflow(), CompletionWorkflowState.class);
-        long pauseRevision = learner.getCoachStateRevision();
-        learners.chooseLevelCompletion(learner.getSkillpilotId(), new LevelCompletionActionRequest(
-                "pauseProfile", PROFILE, null, null, pauseRevision));
+        long revision = learner.getCoachStateRevision();
+        String workflow = learner.getCompletionWorkflow();
         nextRequestTransaction(true);
-        var paused = learners.getLearnerState(learner.getSkillpilotId());
-        assertThat(paused.levelCompletion().profileId()).isEqualTo(PROFILE);
-        assertThat(paused.levelCompletion().navigationIntent()).isEqualTo("paused");
-        assertThat(paused.levelCompletion().complete()).isEqualTo(completed);
-        assertThat(paused.activeGoal()).isNull();
-        assertThat(paused.frontier()).isEmpty();
-        assertThat(paused.stateMachine().goalOptions()).isEmpty();
-        assertThat(paused.levelCompletion().actions()).noneMatch(action -> "pauseProfile".equals(action.action()));
-        var preserved = mapper.readValue(learner.getCompletionWorkflow(), CompletionWorkflowState.class);
-        assertThat(preserved.profileRevision()).isEqualTo(binding.profileRevision());
-        assertThat(preserved.curriculumGeneration()).isEqualTo(binding.curriculumGeneration());
-        assertThat(preserved.currentGoalId()).isNull();
-        assertThat(preserved.directAssessment()).isNull();
+
+        var returned = learners.getCoachLearnerState(learner.getSkillpilotId());
+        assertThat(returned.activeGoal().id()).isEqualTo(PREPARATION);
+        assertThat(returned.levelCompletion().profileId()).isEqualTo(PROFILE);
+        assertThat(returned.levelCompletion().navigationIntent()).isEqualTo(intent);
+        assertThat(returned.levelCompletion().complete()).isEqualTo(completed);
+        assertThat(returned.levelCompletion().actions()).noneMatch(action -> "pauseProfile".equals(action.action()));
+        assertThat(learner.getCoachStateRevision()).isEqualTo(revision);
+        assertThat(learner.getCompletionWorkflow()).isEqualTo(workflow);
+        nextRequestTransaction(true);
+
+        // A client with an older open screen can still submit the retired choice.
+        assertThatThrownBy(() -> learners.chooseLevelCompletion(learner.getSkillpilotId(),
+                new LevelCompletionActionRequest("pauseProfile", PROFILE, null, null, revision)))
+                .isInstanceOfSatisfying(ResponseStatusException.class, error ->
+                        assertThat(error.getStatusCode().value()).isEqualTo(409));
+        assertThat(learner.getCoachStateRevision()).isEqualTo(revision);
+        assertThat(learner.getCompletionWorkflow()).isEqualTo(workflow);
+        assertThat(learner.getActiveGoalId()).isEqualTo(PREPARATION);
         assertThat(learner.getFollowLearningPlans()).isTrue();
-        assertThat(learners.effectivePlanFollowing(learner)).isFalse();
         assertThat(focus.findByLearner_SkillpilotId(learner.getSkillpilotId()))
                 .extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
-        assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId()))
-                .extracting(Mastery::getGoalKey).containsExactlyElementsOf(completed ? List.of(EXAM) : List.of());
-        String pausedWorkflow = learner.getCompletionWorkflow();
-        assertThatThrownBy(() -> learners.chooseLevelCompletion(learner.getSkillpilotId(),
-                new LevelCompletionActionRequest("pauseProfile", PROFILE, null, null, pauseRevision)))
-                .isInstanceOf(ResponseStatusException.class);
-        assertThat(learner.getCompletionWorkflow()).isEqualTo(pausedWorkflow);
-        nextRequestTransaction(false);
-        var fresh = learners.getCoachLearnerState(learner.getSkillpilotId()).levelCompletion().actions().stream()
-                .filter(action -> "learnGoal".equals(action.action()) && PREPARATION.equals(action.goalId())
-                        && intent.equals(action.intent())).findFirst().orElseThrow();
-        learners.chooseLevelCompletion(learner.getSkillpilotId(), new LevelCompletionActionRequest(
-                fresh.action(), PROFILE, fresh.goalId(), fresh.intent(), learner.getCoachStateRevision()));
-        nextRequestTransaction(true);
-        var resumed = learners.getCoachLearnerState(learner.getSkillpilotId());
-        assertThat(resumed.activeGoal().id()).isEqualTo(PREPARATION);
-        assertThat(resumed.levelCompletion().navigationIntent()).isEqualTo(intent);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId()))
                 .extracting(Mastery::getGoalKey).containsExactlyElementsOf(completed ? List.of(EXAM) : List.of());
     }

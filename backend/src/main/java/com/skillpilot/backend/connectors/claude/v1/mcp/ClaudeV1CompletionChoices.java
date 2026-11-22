@@ -92,7 +92,6 @@ final class ClaudeV1CompletionChoices {
                         default -> en ? "Continue learning: " : "Weiterlernen: ";
                     };
                 } else if ("leaveProfile".equals(action.action()) || "endAssessment".equals(action.action())
-                        || "pauseProfile".equals(action.action())
                         || "retryAssessment".equals(action.action()) || "includeTarget".equals(action.action())
                         || "includeSupport".equals(action.action()) || "focusPractice".equals(action.action())) {
                     prefix = "";
@@ -109,7 +108,7 @@ final class ClaudeV1CompletionChoices {
                 .toList();
         java.util.LinkedHashSet<Choice> ordered = new java.util.LinkedHashSet<>();
         // A long list of reachable goals or exams must never displace a neutral exit.
-        unambiguous.stream().filter(choice -> Set.of("leaveProfile", "endAssessment", "pauseProfile", "retryAssessment")
+        unambiguous.stream().filter(choice -> Set.of("leaveProfile", "endAssessment", "retryAssessment")
                 .contains(choice.action())).forEach(ordered::add);
         unambiguous.stream().filter(choice -> "voluntary".equals(choice.intent())).findFirst().ifPresent(ordered::add);
         if (completion.profileId() == null || !completion.profileId().startsWith("automatic:")) {

@@ -254,7 +254,7 @@ export const LevelCompletionCard = ({
       {completion.notice ? <p className="mt-3 text-sm text-text-secondary">{completionNotice(completion.notice, language)}</p> : null}
       {assessmentChoices}
       <div className="mt-4 flex flex-wrap gap-2">
-        {completion.actions.map((action, index) => <button key={`${action.action}:${action.goalId ?? index}`} type="button" disabled={disabled}
+        {completion.actions.filter(action => action.action !== 'pauseProfile').map((action, index) => <button key={`${action.action}:${action.goalId ?? index}`} type="button" disabled={disabled}
           className={buttonClass} onClick={(event) => choose({ action: action.action, goalId: action.goalId, intent: action.intent }, event.currentTarget)}>{completionLabel(action.title, language)}</button>)}
         {stale || completion.calculationStatus === 'unavailable' || completion.calculationStatus === 'invalid' ? <button type="button" disabled={busy} className={buttonClass} onClick={onRetry}>{en ? 'Reload' : 'Neu laden'}</button> : null}
       </div>

@@ -83,6 +83,7 @@ try {
   const open = async (mobile: boolean) => {
     const context = await browser!.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 }, locale: 'de-DE' })
     await context.addInitScript(({ learner, rootId, termsVersion }) => {
+      if (location.protocol === 'about:') return
       localStorage.setItem('skillpilot_lang', 'de')
       localStorage.setItem('skillpilot_theme', 'light')
       localStorage.setItem('skillpilot_id', learner)
@@ -282,23 +283,23 @@ try {
     assert.equal(resultReady, true, 'the parent must confirm the actual MCP write')
     await mobile.page.waitForTimeout(1000) // A learner returns to the tab after the completed conversation.
     await mobile.page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')))
-    const beforePause = await state()
-    assert.equal(beforePause.levelCompletion.complete, false, 'passing one exam cannot complete the whole Personal Curriculum')
-    assert.equal(beforePause.levelCompletion.masteredAssessmentCount, running.levelCompletion.masteredAssessmentCount + 1)
-    assert.equal(beforePause.levelCompletion.assessments.find((entry: { goalId: string }) => entry.goalId === examId)?.mastered, true)
-    const confirmed = reloadedCard.getByRole('status').filter({ hasText: assessmentText(beforePause.levelCompletion) })
+    const beforeLeaving = await state()
+    assert.equal(beforeLeaving.levelCompletion.complete, false, 'passing one exam cannot complete the whole Personal Curriculum')
+    assert.equal(beforeLeaving.levelCompletion.masteredAssessmentCount, running.levelCompletion.masteredAssessmentCount + 1)
+    assert.equal(beforeLeaving.levelCompletion.assessments.find((entry: { goalId: string }) => entry.goalId === examId)?.mastered, true)
+    const confirmed = reloadedCard.getByRole('status').filter({ hasText: assessmentText(beforeLeaving.levelCompletion) })
     await confirmed.waitFor()
     assert.equal(await confirmed.getAttribute('role'), 'status', 'the confirmed individual assessment has a screenreader status region')
-    await reloadedCard.getByText(masteryText(beforePause.levelCompletion), { exact: true }).waitFor()
+    await reloadedCard.getByText(masteryText(beforeLeaving.levelCompletion), { exact: true }).waitFor()
     assert.equal(await reloadedCard.getByText('Lernweg abgeschlossen.', { exact: true }).count(), 0)
     const passedExam = await findExamRow(reloadedCard)
     await passedExam.getByText('Geschafft', { exact: true }).waitFor()
     assert.equal(await passedExam.getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).count(), 0)
     // Explain an actually derived goal, not a presumed waiver for the former
     // two-goal pilot: other open assessments may still need that preparation.
-    const waived = beforePause.levelCompletion.waiverDetails.find((detail: { ruleId: string }) => detail.ruleId === 'no_remaining_demand')
+    const waived = beforeLeaving.levelCompletion.waiverDetails.find((detail: { ruleId: string }) => detail.ruleId === 'no_remaining_demand')
     assert.ok(waived, 'the real canonical scope must expose a generic explanation for an actual implicit goal')
-    assert.ok(beforePause.levelCompletion.waivedTargetGoalIds.includes(waived.goalId))
+    assert.ok(beforeLeaving.levelCompletion.waivedTargetGoalIds.includes(waived.goalId))
     assert.deepEqual(waived.assessments, [])
     await reloadedCard.getByText('Welche Nachweise zählen und welche Vorbereitung entfällt?', { exact: true }).click()
     const explanation = reloadedCard.locator('details').getByRole('listitem').filter({
@@ -307,23 +308,19 @@ try {
     await explanation.getByText('Für diesen Abschnitt ist dieses Ziel nicht mehr erforderlich.', { exact: false }).waitFor()
     assert.equal(await explanation.getByText('Geschaffte Prüfungen:', { exact: false }).count(), 0)
     await mobile.page.screenshot({ path: `${output}/mobile-assessment-passed.png`, fullPage: true })
-    const paused = mobile.page.waitForResponse((response) => response.url().endsWith('/level-completion/actions'))
-    await reloadedCard.getByRole('button', { name: 'Für heute beenden', exact: true }).focus()
-    await mobile.page.keyboard.press('Enter')
-    assert.equal((await paused).status(), 200)
-    await reloadedCard.getByText('Dieser Lernweg ist pausiert.', { exact: false }).waitFor()
-    await mobile.page.reload()
-    await mobile.page.getByTestId('level-completion-card').getByText('Dieser Lernweg ist pausiert.', { exact: false }).waitFor()
-    const afterPause = await state()
-    assert.equal(afterPause.levelCompletion.profileId, profileId)
-    assert.equal(afterPause.levelCompletion.navigationIntent, 'paused')
-    assert.equal(afterPause.levelCompletion.complete, false)
-    assert.equal(afterPause.levelCompletion.masteredAssessmentCount, beforePause.levelCompletion.masteredAssessmentCount)
-    assert.equal(afterPause.levelCompletion.masteredTargetCount, 1)
-    assert.deepEqual(afterPause.levelCompletion.waivedTargetGoalIds, beforePause.levelCompletion.waivedTargetGoalIds,
-      'pausing navigation cannot alter the current derived implicit result')
-    assert.equal(afterPause.levelCompletion.learnerRevision, beforePause.levelCompletion.learnerRevision + 1)
-    assert.equal(afterPause.activeGoal, null)
+    assert.equal(await reloadedCard.getByRole('button', { name: 'Für heute beenden', exact: true }).count(), 0)
+    const actionCountBeforeLeaving = requests.filter(request => request.method === 'POST').length
+    await mobile.page.goto('about:blank')
+    await mobile.page.goBack()
+    const returnedCard = mobile.page.getByTestId('level-completion-card')
+    await returnedCard.getByText(masteryText(beforeLeaving.levelCompletion), { exact: true }).waitFor()
+    assert.equal(await returnedCard.getByRole('button', { name: 'Für heute beenden', exact: true }).count(), 0)
+    const afterReturning = await state()
+    assert.deepEqual(afterReturning.levelCompletion, beforeLeaving.levelCompletion,
+      'leaving and returning preserves the selected route, assessment results and learner revision')
+    assert.deepEqual(afterReturning.activeGoal, beforeLeaving.activeGoal)
+    assert.equal(requests.filter(request => request.method === 'POST').length, actionCountBeforeLeaving,
+      'ending the day by leaving the page needs no state write')
   }
   assert.deepEqual(errors, [])
   assert.equal(requests.filter((r) => r.status >= 500).length, 0)
@@ -333,7 +330,7 @@ try {
       'cockpit-reload-preserves-assessment', 'keyboard-exit-cancel-preserves-assessment'],
     resultChecks: resultMode ? ['real-delayed-state-read', 'real-aborted-state-read', 'reload-recovers-authoritative-state',
       'actual-mcp-write-passes-assessment-with-section-still-open', 'accessible-confirmed-status', 'scoped-waiver-explanation',
-      'keyboard-pause-retains-profile-and-results-after-reload'] : [],
+      'leave-and-return-retains-profile-and-results-without-write'] : [],
     initialRevision: initial.levelCompletion.learnerRevision,
     selectedRevision: selected.levelCompletion.learnerRevision,
     runningRevision: running.levelCompletion.learnerRevision,

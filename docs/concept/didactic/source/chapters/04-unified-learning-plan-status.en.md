@@ -225,6 +225,8 @@ Chat receives only the rendered status and continuation controls — neither leg
 - **Cockpit:** Renders two equal-height needle dials per subject in plan mode (`periodGauge` blue/gray "x of y goals"; `balanceGauge` red/gray/green with the backend balance text directly beneath the needle, legible on narrow viewports, with no duplicate Settings or Continue button inside the Today panel). Missing period targets, missing `typicalAmount`, and degraded data are distinguished cleanly.
 - **Planning and details:** Displays plan dates, actual sections/deadlines/buffers (including scheduled buffers with 0 remaining weekdays), and `planCreditText` inside *Plan Details*. Legacy parallel counters ("Total to date…", "7-day pace") are retired; teaching coverage and exam prerequisites remain separate concepts.
 
+Learners can close the Cockpit or leave the coach conversation at any time. When they return, they can continue from their saved progress. Leaving keeps the current goal, assessment evidence and learning plan intact. Learners can explicitly pause a learning plan or unit assignment to change their schedule.
+
 ### Goal selection and focus control {#sec:plan-status-selection}
 
 In weekly mode, eligible goals from the entire current week are selectable right from Monday. The backend prioritizes reachable open goals from earlier periods ahead of current-period goals while still allowing work ahead; graph prerequisites and Personal Curriculum scope remain authoritative, and an in-progress valid goal is not displaced merely because the calendar period rolled over.

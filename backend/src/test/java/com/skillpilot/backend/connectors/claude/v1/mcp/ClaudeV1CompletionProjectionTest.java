@@ -44,6 +44,31 @@ class ClaudeV1CompletionProjectionTest {
     }
 
     @Test
+    void obsoletePauseActionsAreNotCoachChoicesAndAssessmentExitsRemainAvailable() {
+        var response = new LevelCompletionResponse("valid", "scope", "automatic:personal-curriculum", "1", "generation", 10,
+                Map.of("de", "Mein Lehrplan", "en", "My curriculum"), false, 0, 0, 1, 1, 0, 1,
+                List.of(), List.of(), List.of(), "required", true, null, List.of(
+                        new LevelCompletionResponse.Action("pauseProfile", null,
+                                Map.of("de", "Für heute beenden", "en", "Finish for today"), null),
+                        new LevelCompletionResponse.Action("endAssessment", null,
+                                Map.of("de", "Prüfung beenden", "en", "End assessment"), null),
+                        new LevelCompletionResponse.Action("leaveProfile", null,
+                                Map.of("de", "Zur normalen Lernansicht", "en", "Return to regular learning"), null)));
+        for (String language : List.of("de", "en")) {
+            CompletionCallContext.with(supported(), () -> {
+                var choices = ClaudeV1CompletionChoices.published(response, language);
+                assertThat(choices).extracting(choice -> choice.request(10).action())
+                        .containsExactly("endAssessment", "leaveProfile");
+                assertThat(ClaudeV1CompletionChoices.project(response, language).get("choices"))
+                        .isEqualTo("en".equals(language)
+                                ? List.of("End assessment", "Return to regular learning")
+                                : List.of("Prüfung beenden", "Zur normalen Lernansicht"));
+                return null;
+            });
+        }
+    }
+
+    @Test
     void manyOrdinaryChoicesLeaveRoomForExitingAndVoluntaryStudy() {
         var actions = new java.util.ArrayList<LevelCompletionResponse.Action>();
         for (int i = 0; i < 24; i++) {

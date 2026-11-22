@@ -33,7 +33,8 @@ assert.match(done, /1 von 2 Lernzielen geschafft/u)
 assert.match(done, /Für diesen Abschnitt ist 1 Lernziel nicht mehr erforderlich\./u)
 assert.doesNotMatch(done, /2 von 2 Lernzielen geschafft/u)
 assert.match(done, /Lernplan ist pausiert/u)
-assert.match(done, /Für heute beenden/u)
+assert.doesNotMatch(done, /Für heute beenden/u, 'legacy actions never offer a button for leaving for today')
+assert.match(done, /Zur regulären Lernansicht/u, 'the explicit route change stays available')
 assert.match(done, /aria-labelledby=/u)
 assert.doesNotMatch(done, /type="range"|completionProfile=/u)
 const explained = render({ ...completed, waiverDetails: [{ goalId: 'A', title: { de: 'Projektion veranschaulichen' },
@@ -54,6 +55,16 @@ assert.doesNotMatch(activeCredit, /Keine verbleibende Arbeit benötigt dieses Zi
 assert.match(done, /Erforderliche Prüfungen: 1 von 1 geschafft/u)
 assert.match(render(completed, { language: 'en' }), /Learning section completed\./u)
 assert.match(render(completed, { language: 'en' }), /1 of 1 required assessment passed\./u)
+assert.doesNotMatch(render(completed, { language: 'en' }), /Finish for today/u)
+assert.match(render(completed, { language: 'en' }), /Return to regular learning/u)
+for (const navigationIntent of ['required', 'paused'] as const) {
+  for (const language of ['de', 'en']) {
+    const legacy = render({ ...completed, navigationIntent }, { language })
+    assert.doesNotMatch(legacy, /Für heute beenden|Finish for today/u,
+      'old active and paused responses remain readable without the retired action')
+    assert.match(legacy, language === 'de' ? /Lernabschnitt abgeschlossen/u : /Learning section completed/u)
+  }
+}
 
 for (const [total, passed, complete, de, en] of [
   [0, 0, true, 'In diesem Abschnitt gibt es keine Prüfungen.', 'There are no assessments in this section.'],

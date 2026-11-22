@@ -27,6 +27,8 @@ const selected = (revision: number, running = false): LevelCompletion => ({
   assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen', en: 'Assess dot product' }, mastered: false, startAvailable: !running }],
   profileOptions: [], directAssessmentRunning: running,
   actions: [
+    // An older response can still offer the retired end-of-day action.
+    { action: 'pauseProfile', title: { de: 'Für heute beenden', en: 'Finish for today' } },
     ...(running ? [{ action: 'retryAssessment' as const, goalId: 'math-exam', title: { de: 'Prüfung erneut versuchen', en: 'Try assessment again' } },
       { action: 'learnGoal' as const, goalId: 'math-support', intent: 'support' as const, title: { de: 'Orthogonale Projektion erklären', en: 'Explain orthogonal projection' } }] : []),
     { action: 'leaveProfile', title: { de: 'Zur regulären Lernansicht', en: 'Return to regular learning' } },
@@ -68,6 +70,7 @@ try {
     options: { legacyShortcutPreference?: boolean; explicitCountPreference?: boolean; language?: 'de' | 'en'; handoff?: boolean; entryGoal?: string; examMastered?: boolean; noCompletion?: boolean } = {}) => {
     const context = await browser!.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1280, height: 900 }, hasTouch: mobile, locale: 'de-DE' })
     await context.addInitScript(({ learner, rootId, termsVersion, language }) => {
+      if (location.protocol === 'about:') return
       localStorage.setItem('skillpilot_lang', language)
       localStorage.setItem('skillpilot_theme', 'light')
       localStorage.setItem('skillpilot_id', learner)
@@ -177,6 +180,22 @@ try {
         return release
       },
     }
+  }
+
+  for (const language of ['de', 'en'] as const) {
+    const legacy = { ...selected(26), navigationIntent: 'paused' as const }
+    const h = await open(legacy, language === 'de', false, { language })
+    const card = h.page.getByTestId('level-completion-card')
+    const leaveTitle = language === 'de' ? 'Zur regulären Lernansicht' : 'Return to regular learning'
+    await card.getByRole('button', { name: leaveTitle, exact: true }).waitFor()
+    assert.equal(await card.getByRole('button', { name: /Für heute beenden|Finish for today/u }).count(), 0)
+    await h.page.goto('about:blank')
+    await h.page.goBack()
+    await card.getByRole('button', { name: leaveTitle, exact: true }).waitFor()
+    assert.equal(await card.getByRole('button', { name: /Für heute beenden|Finish for today/u }).count(), 0)
+    assert.equal(h.writes.length, 0, 'leaving and returning needs no end-of-day write')
+    assert.deepEqual(h.errors, [])
+    await h.context.close()
   }
 
   {

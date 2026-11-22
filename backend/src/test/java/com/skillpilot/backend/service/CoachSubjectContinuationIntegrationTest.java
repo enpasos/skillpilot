@@ -276,7 +276,7 @@ class CoachSubjectContinuationIntegrationTest {
         var plan = plans.upsert(id, PHYSICS, new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", blocks), day);
         for (int index : List.of(2, 3, 0, 1).subList(0, count)) grade(id, section, parts.get(index));
         learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("selectProfile", "automatic:" + section, null, null, version(id)));
-        for (String action : List.of("pauseProfile", "leaveProfile")) learners.chooseLevelCompletion(id, new LevelCompletionActionRequest(action, null, null, null, version(id)));
+        learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("leaveProfile", null, null, null, version(id)));
         learners.setPlannedGoals(id, Set.of());
         return new Unit(id, parts, plan.planId(), plan.revision());
     }
