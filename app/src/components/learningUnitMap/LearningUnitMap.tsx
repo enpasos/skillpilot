@@ -122,8 +122,25 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const [layoutAttempt, setLayoutAttempt] = useState(0)
   const mapContainer = useRef<HTMLElement>(null)
   const mapSurface = useRef<HTMLDivElement>(null)
+  const pendingNodeFocus = useRef<{ id: string; center: boolean } | null>(null)
+  const pendingSelectionEcho = useRef<{ entryId: string; nonce: number; baselineKey: string | null } | null>(null)
+  // A newly mounted scope starts from its current selection; the supplied
+  // sequence may describe a historical reveal made before the map was opened.
+  const seenRevealNonce = useRef(command?.nonce ?? 0)
+  const pendingReveal = useRef<{ entryId: string; nonce: number; baselineSelectionId: string } | null>(null)
+  const lastCommand = useRef<string | null>(null)
+  const commandNavigationEpoch = useRef(0)
+  const acknowledgeScopeEntry = useCallback((scopeId: string) => {
+    commandNavigationEpoch.current++
+    pendingNodeFocus.current = null
+    pendingReveal.current = null
+    if (command) lastCommand.current = `${command.nonce}:${command.entryId}`
+    // Keep a local double-click selection's pending URL echo: acknowledging
+    // that echo must not route back to the unit's parent after drilling in.
+    onScopeEnter?.(scopeId)
+  }, [command, onScopeEnter])
   const nav = useMapNavigation(fixture, reducedMotion, layout?.fixture === fixture ? layout.key : null,
-    direction, initialScopeId, active, mapContainer, mapSurface, materialScopes, onScopeEnter)
+    direction, initialScopeId, active, mapContainer, mapSurface, materialScopes, acknowledgeScopeEntry)
   const { enter, goUp, goToDepth, goToScope } = nav
   const [selection, setSelection] = useState<{ scope: string; id: string } | null>(null)
   const [query, setQuery] = useState('')
@@ -132,13 +149,6 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const [contextLimit, setContextLimit] = useState(12)
   const [contextOpen, setContextOpen] = useState(false)
   const searchInput = useRef<HTMLInputElement>(null)
-  const pendingNodeFocus = useRef<{ id: string; center: boolean } | null>(null)
-  const pendingSelectionEcho = useRef<{ entryId: string; nonce: number; baselineKey: string | null } | null>(null)
-  // A newly mounted scope starts from its current selection; the supplied
-  // sequence may describe a historical reveal made before the map was opened.
-  const seenRevealNonce = useRef(command?.nonce ?? 0)
-  const pendingReveal = useRef<{ entryId: string; nonce: number; baselineSelectionId: string } | null>(null)
-  const lastCommand = useRef<string | null>(null)
   const gestureTarget = useRef<string | null>(null)
   const gestureOnMap = useRef(true)
   const touchDistance = useRef<number | null>(null)
@@ -254,7 +264,9 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     if (!targetPath) return
     const ownerId = targetPath.length > 1 ? targetPath[targetPath.length - 2] : fixture.rootId
     if (ownerId !== nav.scopeId) { goToScope(ownerId); return }
+    const navigationEpoch = commandNavigationEpoch.current
     const frame = requestAnimationFrame(() => {
+      if (commandNavigationEpoch.current !== navigationEpoch) return
       lastCommand.current = key
       if (pendingReveal.current === reveal) pendingReveal.current = null
       const nodeId = targetPath[targetPath.length - 1]

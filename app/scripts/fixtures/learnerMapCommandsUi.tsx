@@ -5,6 +5,42 @@ import '../../src/index.css'
 import { LearningUnitMap } from '../../src/components/learningUnitMap/LearningUnitMap'
 import type { LearningMapFixture } from '../../src/components/learningUnitMap/types'
 
+declare global {
+  interface Window {
+    deferredMapCommandFrames?: { count: () => number; hold: () => void; release: () => void }
+  }
+}
+
+// Hold only the routed focus acknowledgement, leaving ELK/camera readiness on
+// the real browser scheduler. This reproduces a command that arrives just
+// before an intentional unit drill without sleeping or delaying every frame.
+if (new URLSearchParams(location.search).has('deferFocus')) {
+  const schedule = window.requestAnimationFrame.bind(window)
+  const cancel = window.cancelAnimationFrame.bind(window)
+  const frames = new Map<number, { callback: FrameRequestCallback; cancelled: boolean }>()
+  let held = true, nextId = -1
+  window.requestAnimationFrame = callback => {
+    if (!held || !String(callback).includes('lastCommand.current = key')) return schedule(callback)
+    const id = nextId--
+    frames.set(id, { callback, cancelled: false })
+    return id
+  }
+  window.cancelAnimationFrame = id => {
+    const frame = frames.get(id)
+    if (frame) frame.cancelled = true
+    else cancel(id)
+  }
+  window.deferredMapCommandFrames = {
+    count: () => frames.size,
+    hold: () => { held = true },
+    release: () => {
+      held = false
+      for (const frame of frames.values()) if (!frame.cancelled) schedule(frame.callback)
+      frames.clear()
+    },
+  }
+}
+
 const fixture: LearningMapFixture = { rootId: 'command-root', title: 'Command contract', entries: {
   'command-root': { id: 'command-root', title: 'Root', description: '', kind: 'cluster', children: ['command-group'], requires: [], position: { x: 0, y: 0 } },
   'command-group': { id: 'command-group', title: 'Group', description: '', kind: 'cluster', children: ['command-section', 'command-other-section', 'command-c-section'], requires: [], position: { x: 0, y: 0 } },
@@ -47,6 +83,10 @@ function Fixture() {
       command={{ entryId: selected, nonce, revealEntryId }} onEntrySelect={select} />
     <main style={{ padding: 20 }}>
       <output data-testid="command-parent-selection">{selected}</output>
+      {window.deferredMapCommandFrames && <>
+        <button type="button" data-testid="command-delay-focus" onClick={() => window.deferredMapCommandFrames?.hold()}>Delay routed focus</button>
+        <button type="button" data-testid="command-release-focus" onClick={() => window.deferredMapCommandFrames?.release()}>Release routed focus</button>
+      </>}
       <button type="button" data-testid="command-release-echo" onClick={() => {
         if (pendingEcho.current) setSelected(pendingEcho.current)
         pendingEcho.current = null
