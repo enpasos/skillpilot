@@ -1497,6 +1497,64 @@ class LearnerLearningPlanServiceIntegrationTest {
                 "LEARNING_PLAN_RECONCILED");
     }
 
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void anOldPhysicsPlanKeepsItsBasisAndOriginalPriorityAcrossSubjectsWhenAnOpeningIsAdded(boolean unitFocus) {
+        learner.setFollowLearningPlans(true);
+        learnerRepository.saveAndFlush(learner);
+        var physicsBlock = new LearnerLearningPlanApi.Block("old-physics", "learning",
+                unitFocus ? "physics-focus" : null, "Old Physics", TODAY.minusDays(1), TODAY, null,
+                List.of("atom-p", "atom-q"));
+        var physics = service.upsert(LEARNER_ID, PHYSICS_LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Physik", List.of(physicsBlock)), TODAY);
+        var mathematics = service.upsert(LEARNER_ID, LANDSCAPE_ID,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik", List.of(
+                        learningWithFocus("math-today", "math-focus", "2026-09-04", "2026-09-04", "atom-a"))), TODAY);
+        var stored = planRepository.findById(physics.planId()).orElseThrow();
+        String blocksBefore = stored.getBlocksJson();
+        String fingerprintBefore = useLegacyFingerprint(physics.planId());
+        var datesBefore = LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(physics.blocks());
+
+        // A later catalog adds an opening. Existing individual evidence and the
+        // captured two-goal plan remain intact; no opening receives a fake date.
+        String opening = "physics-opening";
+        String focus = unitFocus ? "physics-focus" : "atom-p";
+        when(learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID))
+                .thenReturn(scopeFor(PHYSICS_LANDSCAPE_ID, List.of(opening, "atom-p", "atom-q"), List.of(opening, "atom-p")));
+        when(learnerService.getMastery(LEARNER_ID)).thenReturn(Map.of("atom-q", 1.0));
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of(focus)))
+                .thenReturn(List.of(frontier(opening)));
+        when(learnerService.getRequiredUnitOrientationGoalIdForFocus(LEARNER_ID, "atom-p", List.of(focus)))
+                .thenReturn(opening);
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("math-focus")))
+                .thenReturn(List.of(frontier("atom-a")));
+        UnifiedLearnerStateResponse state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true,
+                focus, "atom-p", true, "LEARNING_PLAN_RECONCILED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+
+        var projection = service.getPlan(LEARNER_ID, PHYSICS_LANDSCAPE_ID, TODAY);
+        assertThat(projection.stale()).isFalse();
+        assertThat(projection.nextEligibleGoal().goalId()).isEqualTo(opening);
+        assertThat(projection.blocks()).isEqualTo(physics.blocks());
+        var selected = service.reconcile(LEARNER_ID, new LearnerLearningPlanApi.ReconcileRequest(TODAY));
+        assertThat(selected.planId()).isEqualTo(physics.planId());
+        assertThat(selected.activeGoalId()).isEqualTo(opening);
+        assertThat(selected.focusGoalId()).isEqualTo(focus);
+        assertThat(selected.state()).isSameAs(state);
+        verify(learnerService).applyLearningPlanTransition(LEARNER_ID, false, true,
+                focus, "atom-p", true, "LEARNING_PLAN_RECONCILED");
+        verify(learnerService, never()).applyLearningPlanTransition(LEARNER_ID, false, true,
+                "math-focus", "atom-a", true, "LEARNING_PLAN_RECONCILED");
+        assertThat(stored.getBlocksJson()).isEqualTo(blocksBefore);
+        assertThat(stored.getScopeFingerprint()).isEqualTo(fingerprintBefore);
+        assertThat(stored.getRevision()).isEqualTo(physics.revision());
+        assertThat(LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(projection.blocks())).isEqualTo(datesBefore);
+        assertThat(datesBefore).containsOnlyKeys("atom-p", "atom-q");
+        assertThat(learnerService.getMastery(LEARNER_ID)).containsExactly(Map.entry("atom-q", 1.0));
+        assertThat(planRepository.findById(mathematics.planId()).orElseThrow().getRevision()).isEqualTo(mathematics.revision());
+    }
+
     @Test
     void explicitContinuationPrioritizesOlderOpenGoalsAcrossSubjectsEvenWhenTheirQuotaIsCovered() {
         service.upsert(LEARNER_ID, LANDSCAPE_ID,
