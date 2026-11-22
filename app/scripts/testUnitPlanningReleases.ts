@@ -134,6 +134,10 @@ function orientationEvidence(current = orientedLandscape, documents: PlanningEvi
 }
 validatePlanningRelease(orientedUnit, orientedCredit, orientationEvidence())
 assert.notEqual(planningReleaseFingerprint(orientedUnit, orientedCredit), decision.release.fingerprint)
+const historicalOrdinaryBinding = structuredClone(orientedCredit)
+historicalOrdinaryBinding.release.fingerprint = decision.release.fingerprint
+assert.throws(() => validatePlanningRelease(orientedUnit, historicalOrdinaryBinding,
+  { ...orientationEvidence(), approved: evidence.approved }), /Planning release bytes differ/)
 const reorderedRecall = structuredClone(orientedCredit)
 reorderedRecall.orientation!.requiredRecallGoalIds.reverse()
 assert.notEqual(planningReleaseFingerprint(orientedUnit, reorderedRecall), orientedCredit.release.fingerprint,

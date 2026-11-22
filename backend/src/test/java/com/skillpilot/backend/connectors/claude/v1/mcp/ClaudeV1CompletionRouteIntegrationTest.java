@@ -1099,6 +1099,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(outstanding).isNotEmpty();
         assertThat(chosen.practice().startGoalId()).isEqualTo(MOTION_OPENING);
         assertThat(chosen.practice().orientationGoalId()).isEqualTo(MOTION_OPENING);
+        assertThat(chosen.title().get("de")).startsWith("Mit dem Einheitseinstieg beginnen: ");
+        assertThat(chosen.title().get("en")).startsWith("Start with the unit introduction: ");
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of(
                 "receiptCapability", map(context(), "completionContract").get("receiptCapability")));
         var confirmed = context();

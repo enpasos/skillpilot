@@ -1310,6 +1310,9 @@ public class LearnerService {
             var first = completionTitle(graph.get(start));
             var label = id.equals(start)
                     ? Map.of("de", "Einzelfokus starten: " + title.get("de"), "en", "Start individual focus: " + title.get("en"))
+                    : unitOpeningIds.contains(start)
+                    ? Map.of("de", "Mit dem Einheitseinstieg beginnen: " + title.get("de"),
+                            "en", "Start with the unit introduction: " + title.get("en"))
                     : Map.of("de", "Grundlagen für „" + title.get("de") + "“ erarbeiten: " + first.get("de"),
                             "en", "Study the prerequisites for “" + title.get("en") + "”: " + first.get("en"));
             actions.add(new LevelCompletionResponse.Action("focusPractice", id, label, "voluntary",
@@ -1444,9 +1447,8 @@ public class LearnerService {
                 action.practice().openPrerequisites().forEach(prerequisite -> focus.add(prerequisite.goalId()));
             }
             setPlannedGoals(skillpilotId, focus);
-            LearningGoal first = getFilteredGoals(learner.getSelectedCurriculum(), learner.getPersonalCurriculum())
-                    .get(action.practice().startGoalId());
-            setActiveGoal(skillpilotId, isOrientationGoal(first) ? action.goalId() : action.practice().startGoalId());
+            setActiveGoal(skillpilotId, action.practice().orientationGoalId() != null
+                    ? action.goalId() : action.practice().startGoalId());
         } else if ("learnGoal".equals(request.action())) {
             CompletionWorkflowState old = completionWorkflow(learner);
             if (!completionWorkflowMatches(learner, old) || request.intent() == null
@@ -8122,6 +8124,12 @@ public class LearnerService {
             String foundation = frontier.stream().filter(goal -> "atomic".equals(goal.type()) && !isExamGoal(
                     projection.visibleGoals().get(goal.id()))).map(FrontierGoal::id)
                     .filter(distance::containsKey).min(Comparator.comparingInt(distance::get)).orElse(null);
+            if (foundation == null) {
+                Map<String, Set<String>> unitScopes = guidedUnitOrientationScopes(projection);
+                foundation = frontier.stream().map(FrontierGoal::id).filter(unitScopes::containsKey)
+                        .filter(id -> distance.keySet().stream().anyMatch(unitScopes.get(id)::contains))
+                        .findFirst().orElse(null);
+            }
             if (foundation == null) {
                 parkUnitEntry(learner, pending.targetGoalId(), completedOpeningId);
                 return;

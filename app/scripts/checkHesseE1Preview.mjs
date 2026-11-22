@@ -332,25 +332,31 @@ async function checkForeignFocusEntry(duration) {
   const call = async (path, method = 'GET', data) => {
     const response = await fetch(api + path, { method, headers: { 'Content-Type': 'application/json' },
       ...(data === undefined ? {} : { body: JSON.stringify(data) }) })
-    assert.equal(response.status, 200, method + ' ' + path)
     const body = await response.text()
+    assert.equal(response.status, 200, method + ' ' + path + ': ' + body.slice(0, 1800))
     return body ? JSON.parse(body) : null
   }
   const created = await call('/api/ui/learners', 'POST', {})
   const learnerId = created.state.skillpilotId
   const learnerPath = '/api/ui/learners/' + learnerId
   await call(learnerPath + '/curriculum', 'PUT', { curriculumId: root })
-  const curriculum = JSON.parse((await readApi(profiles[duration].viewer, '')).personalCurriculum)
-  curriculum[math] = { selected: true, filterId: 'GK' }
+  const sourceCurriculum = JSON.parse((await readApi(profiles[duration].viewer, '')).personalCurriculum)
+  const curriculum = { [root]: sourceCurriculum[root], [scope.landscapeId]: sourceCurriculum[scope.landscapeId],
+    [math]: { selected: true, filterId: 'GK' } }
   await call(learnerPath + '/personal-curriculum', 'PUT', curriculum)
   let setup = await call(learnerPath + '/personalization-plan')
   for (let count = 0; setup.stage !== 'COMPLETE' && count < 15; count++) {
     const choice = setup.options.find(option => option.kind === 'COMPLETE_GROUP')
-      ?? setup.options.find(option => option.filterId === 'GK')
+      ?? setup.options.find(option => option.filterId === (option.landscapeId === scope.landscapeId ? physicsCourse : 'GK'))
     assert(choice, 'The mixed-subject fixture needs an available setup choice')
     setup = await call(learnerPath + '/personalization-options', 'POST', { optionId: choice.optionId })
   }
   assert.equal(setup.stage, 'COMPLETE')
+  const effectiveCurriculum = JSON.parse((await readApi(learnerId, '')).personalCurriculum)
+  assert.equal(effectiveCurriculum[scope.landscapeId]?.filterId, physicsCourse, 'The mixed fixture retains the explicit Physics course')
+  assert.equal(effectiveCurriculum[math]?.filterId, 'GK', 'The mixed fixture uses Mathematics GK')
+  assert.equal(effectiveCurriculum[root]?.durationModel, duration)
+  assert.equal(effectiveCurriculum[root]?.stage, 'SekII')
   const mathView = await call('/api/ui/composition-views/match?' + new URLSearchParams({ landscapeId: math,
     schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII', courseProfile: 'GK', durationModel: duration }))
   const foreignFocus = `composition:${mathView.viewId}:structure:q1`

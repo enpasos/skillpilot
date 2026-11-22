@@ -31,7 +31,7 @@ class UnitIntroductionForeignFocusReviewTest {
     private static final String MATH_OPENING = "65365dce-f33f-49d8-9516-42f75883aa86";
     private static final String PHYSICS_SCOPE = "composition:de-he-gym-physics-gk-g9:structure:physics-e1-motion";
     private static final String PHYSICS_OPENING = "a4d4efe1-7d30-526b-ac9c-806113da4363";
-    private static final String PHYSICS_PRACTICE = "d6dc0e02-831d-4894-a61a-852bcc74f147";
+    private static final String PHYSICS_PRACTICE = "8aff7aac-321b-5172-ac55-877876bfd2cd";
 
     @Autowired private LearnerService learners;
     @Autowired private LearnerRepository repository;
