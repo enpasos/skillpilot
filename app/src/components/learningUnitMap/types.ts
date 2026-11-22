@@ -44,7 +44,7 @@ export interface LearningMapRequirement {
 export interface LearningMapRelation {
   source: string
   target: string
-  kind: 'requirement' | 'summary'
+  kind: 'requirement' | 'summary' | 'unitEntry'
   provenance: LearningMapRequirement[]
   /**
    * Unit map only, between two child units of one unit: `declared` follows an
@@ -62,6 +62,8 @@ export interface LearningMapEntry {
   description: string
   kind: MapEntryKind
   children?: string[]
+  /** The authored first atomic step for guided learning on this board. */
+  orientationGoalId?: string
   requires: string[]
   position: { x: number; y: number }
   eyebrow?: string

@@ -173,6 +173,35 @@ async function checkMapSurface(page, dialog, { scopeId, title, language = 'de' }
     && Math.abs(graph.x) <= 2 && Math.abs(graph.width - viewport.width) <= 2,
     'The graph fills the space between the header and its controls: ' + JSON.stringify({ header, graph, mapControls, viewport }))
 }
+async function checkUnitEntryOrder(page, dialog, orientationId, firstGoalId, count, direction) {
+  const board = dialog.getByTestId('learning-map-board')
+  await board.locator('.lum-flow--idle [data-entry-id]').first().waitFor()
+  await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+  await page.waitForFunction(count =>
+    document.querySelectorAll('.lum-canvas[aria-busy="false"] .lum-flow--idle [data-entry-id]').length === count, count)
+  const nodes = await board.locator('.lum-flow [data-entry-id]').evaluateAll(cards => cards.map(card => {
+    const { left, right, top, bottom } = card.getBoundingClientRect()
+    return { id: card.dataset.entryId, title: card.querySelector('strong').textContent, kind: card.dataset.entryKind,
+      meta: card.querySelector('.lum-node-meta').textContent, left, right, top, bottom }
+  }))
+  const entry = nodes.find(node => node.id === orientationId)
+  const firstGoal = nodes.find(node => node.id === firstGoalId)
+  assert(entry && firstGoal, 'The authored unit introduction and first subject goal are both drawn')
+  assert.equal(entry.meta, 'Einstieg')
+  for (const node of nodes.filter(node => node.id !== orientationId)) {
+    assert(direction === 'RIGHT' ? entry.right < node.left : entry.bottom < node.top,
+      `${entry.title} must precede ${node.title} in the ${direction} reading direction`)
+  }
+  const edges = await board.locator('.react-flow__edge.lum-edge--unit-entry').evaluateAll(items => items.map(item => item.getAttribute('aria-label')))
+  const prefix = 'Geführter Lernweg: ' + entry.title + ' → '
+  assert(edges.includes(prefix + firstGoal.title), 'The introduction visibly leads into the first subject goal')
+  const regularTitles = new Set(nodes.filter(node => ['unit', 'cluster', 'goal'].includes(node.kind) && node.id !== orientationId)
+    .map(node => node.title))
+  for (const label of edges) {
+    assert(label?.startsWith(prefix) && regularTitles.has(label.slice(prefix.length)),
+      'A guided entry arrow leads from this unit’s own introduction to regular learning: ' + label)
+  }
+}
 async function enterMapScope(page, dialog, scopeId, title) {
   const board = dialog.getByTestId('learning-map-board')
   await board.waitFor()
@@ -432,9 +461,13 @@ async function checkGuidedUnitEntry(duration) {
     const map = page.getByTestId('learner-learning-map-dialog')
     await map.locator('.lum-canvas[aria-busy="false"]').waitFor()
     await checkMapSurface(page, map, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
+    const direction = duration === 'G8' ? 'RIGHT' : 'DOWN'
+    if (direction === 'DOWN') await map.getByRole('button', { name: 'Lernrichtung drehen', exact: true }).click()
+    await checkUnitEntryOrder(page, map, unit.orientationGoalId, '8aff7aac-321b-5172-ac55-877876bfd2cd', 18, direction)
     await map.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).press('Enter')
     await checkMapSurface(page, map, { scopeId: section.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall'),
       title: 'Beschleunigte Bewegung und freier Fall' })
+    await checkUnitEntryOrder(page, map, childMaterial.unit.orientationGoalId, 'e4b38061-1f28-43ad-8371-a3e7c0e81856', 4, direction)
     assert.equal(await map.getByTestId('native-cockpit-map').getAttribute('data-selected-goal-id'), tasks.B.id)
     await map.locator('.lum-canvas[aria-busy="false"]').waitFor()
     await map.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()

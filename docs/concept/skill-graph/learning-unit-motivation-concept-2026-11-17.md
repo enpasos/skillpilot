@@ -12,7 +12,7 @@ Vorgaben und die offenen Ausgestaltungsfragen in das Gesamtmodell ein.
 
 Im Cockpit öffnet **Lernen starten** den Coach mit dem Motivationsziel der aktuellen Einheit. Für diesen Lernweg gibt es genau eine Schaltfläche. Direkt daneben steht in derselben Einheitenkarte die Alternative **Direkt zur Prüfung**. Bei einem ausgewählten Fachziel stehen die beiden Aktionen gemeinsam in der Kopfzeile. Das Öffnen zeigt die Prüfungsteile und ihre vorhandenen Belege. Einen Versuch startet die Person erst mit der Wahl eines konkreten offenen Teils. Wenn **Nach Plan lernen** eingeschaltet ist, kann sie Aufträge im Lernplan verwalten. Beim freien Lernen blendet das Cockpit diesen Bereich aus. Dasselbe Prinzip gilt beim Betreten einer Untereinheit.
 
-Die grafische Lernkarte nutzt die Fläche unter ihrer Kopfzeile für den Graphen. Der Pfad in der Kopfzeile zeigt die aktuelle Einheit. Das Motivationsziel lässt sich als Knoten auswählen und im Cockpit öffnen. Dort stehen Bild, Leitfrage und Lernversprechen.
+Die grafische Lernkarte nutzt die Fläche unter ihrer Kopfzeile für den Graphen. Der Pfad in der Kopfzeile zeigt die aktuelle Einheit. Das eigene Motivationsziel steht in Leserichtung vor den übrigen Knoten der Einheit und trägt die Bezeichnung **Einstieg**. Pfeile führen von dort zu den ersten regulären Lernschritten. Sie zeigen die Reihenfolge im geführten Lernweg. In einer Untereinheit beginnt die Karte mit deren eigenem Einstieg. Das Motivationsziel lässt sich im Cockpit öffnen. Dort stehen Bild, Leitfrage und Lernversprechen.
 
 ## 1. Was Lernende vom Einstieg haben
 
