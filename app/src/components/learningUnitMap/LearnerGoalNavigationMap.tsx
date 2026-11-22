@@ -206,7 +206,7 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
             const nextId = [...new Set([...(props.activeGoalId ? [props.activeGoalId] : []), ...(props.availableGoalIds ?? [])])].find(id => id !== material.unit.orientationGoalId
               && fixture.entries[id] && (mapEntryPath(fixture, id) ?? []).includes(scopeId))
             return <UnitIntroduction key={material.unit.landscapeId + material.unit.compositionNodeId}
-              material={material} language={language} active={props.active} compact
+              material={material} language={language} active={props.active && props.unitIntroductionReady !== false} compact
               deferUntilRequested={!entryIntent.explicit && selectedKind === 'assessment'}
               context={(mapEntryPath(fixture, scopeId) ?? []).filter(id => id !== fixture.rootId).map(id => fixture.entries[id]?.title).filter(Boolean)}
               completed={!!material.unit.orientationGoalId && isMastered(getMastery(material.unit.orientationGoalId))}
