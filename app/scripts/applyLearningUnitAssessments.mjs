@@ -129,6 +129,7 @@ const landscapes = [{
     promise: 'Ich kann eine geradlinige Bewegung mit konstanter Beschleunigung selbstständig modellieren: Ich lege Achse und Vorzeichen fest, stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz mit den Anfangsbedingungen auf und beschreibe die Bewegung in Diagrammen. Ich kann sagen, welche Vereinfachungen das Modell macht und wo seine Vorhersagen enden. Darauf bauen der freie Fall im Experiment, Würfe in zwei Dimensionen, Kräfte und Energie auf.',
     promiseEn: 'I can model motion along a line with constant acceleration on my own: I fix axis and signs, set up the position and velocity laws with their initial conditions and describe the motion in diagrams. I can say which simplifications the model makes and where its predictions end. Free fall as an experiment, projectile motion in two dimensions, forces and energy build on it.',
     ownGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147'],
+    ownOrientationGoalIds: ['b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e'],
     reviewPath: `${reviews}/physics-constant-acceleration-2026-11-15-v2.md`,
     reviewDate: '2026-11-15',
     sourcePath: `${assessments}/physik/e/constant-acceleration-unit-20261113-v1/tasks.md`,
@@ -320,7 +321,8 @@ for (const landscape of landscapes) {
     const at = canonical.programUnits.findIndex((entry) => entry.id === unit.id)
     if (at >= 0) canonical.programUnits[at] = declaration
     else canonical.programUnits.push(declaration)
-    const own = [...unit.ownGoalIds, ...assessmentIds].map((goalId) => ({ goalId, unitId: unit.id, relation: 'own' }))
+    const own = [...unit.ownGoalIds, ...assessmentIds, ...(unit.ownOrientationGoalIds ?? [])]
+      .map((goalId) => ({ goalId, unitId: unit.id, relation: 'own' }))
     const first = canonical.goalPlacements.findIndex((entry) => entry.unitId === unit.id)
     canonical.goalPlacements = canonical.goalPlacements.filter((entry) => entry.unitId !== unit.id)
     canonical.goalPlacements.splice(first >= 0 ? first : canonical.goalPlacements.length, 0, ...own)

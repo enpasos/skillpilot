@@ -540,6 +540,26 @@ adopt the separate unit-assessment proposal of 19 November. The [discussion
 paper](docs/concept/skill-graph/unit-assessment-discussion-2026-11-19.de.md)
 sets out the changes that adoption would require.
 
+**Guided unit entry, Product Owner decision of 22 November 2026.** Each
+pedagogical unit with assessments of its own has one atomic orientation goal.
+On entering the unit, show its place, an illustrated situation, a short topic
+overview and its learning promise. Browsing changes no learner result. Guided
+study starts with this goal. Content, exercises and flashcard practice follow
+its personal completion or a valid, version-bound planning credit for that
+orientation. A learner can speculate, ask a question or go straight to the
+closing offer. The coach summarizes the outlook and records the binary result
+only after the learner accepts that offer. On return, use existing evidence
+and offer the next step. A green check records a personally completed opening.
+An indirect credit has a gray check. A preparation waiver grants neither.
+
+Apply the rule to the unit actually entered. Guided descent from a parent
+introduces the parent and then the child. Direct entry into a child introduces
+the child with a short reference to the parent. Structural groupings give
+location without an extra atomic goal. A deliberate direct assessment attempt
+can start before orientation. Leaving before submission returns to the guided
+path with its outstanding opening. In the E.1 unit assignment, A–D suffice.
+The first implementation covers E.1 and its assessed child in Hessen G8/G9.
+
 **Learner-facing hierarchy, 21 November 2026.** The target for a given learner
 and scope is one containment hierarchy shared by the Cockpit tree and the
 graphical learning map. The same unit has the same children and an atomic

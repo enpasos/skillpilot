@@ -1,4 +1,5 @@
 import { fingerprintCurrentCurriculumDocument } from './currentCurriculumCatalog'
+import './testHessePhysicsGuidedEntryMaterials'
 import { findUnitPracticeExercise } from '../src/utils/unitLearningMaterial'
 import assert from 'node:assert/strict'
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
@@ -31,7 +32,10 @@ try {
   const legacy = readUnitMapMaterials(tempCatalog)
   await writeFile(path, JSON.stringify({ schemaVersion: 1, ...material }))
   assert.deepEqual(readUnitMapMaterials(tempCatalog), legacy)
-  await writeFile(path, JSON.stringify({ schemaVersion: 2, ...material }))
+  await writeFile(path, JSON.stringify({ schemaVersion: 2, ...material,
+    unit: { ...material.unit, orientationGoalId: 'intro-orientation' } }))
+  assert.equal(readUnitMapMaterials(tempCatalog)[0].unit.orientationGoalId, 'intro-orientation')
+  await writeFile(path, JSON.stringify({ schemaVersion: 3, ...material }))
   assert.throws(() => readUnitMapMaterials(tempCatalog), /Unsupported unit learning material version/)
 } finally {
   await rm(tempCatalog, { recursive: true, force: true })

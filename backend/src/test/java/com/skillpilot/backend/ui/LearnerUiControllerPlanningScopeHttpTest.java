@@ -98,4 +98,19 @@ class LearnerUiControllerPlanningScopeHttpTest {
         mockMvc.perform(get("/api/ui/learners/{skillpilotId}/planning-scope", LEARNER_ID))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    void unitOpeningEntryIsAnAuthorizedNoStoreReadAndNeverWritesActivityOrMastery() throws Exception {
+        when(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, "child-unit")).thenReturn("child-opening");
+        mockMvc.perform(get("/api/ui/learners/{skillpilotId}/unit-introduction", LEARNER_ID)
+                        .queryParam("goalId", "child-unit"))
+                .andExpect(status().isOk())
+                .andExpect(header().string(HttpHeaders.CACHE_CONTROL, "no-store"))
+                .andExpect(jsonPath("$.orientationGoalId").value("child-opening"));
+        InOrder ordered = inOrder(learnerService);
+        ordered.verify(learnerService).assertActiveLearnerRouteAccess(LEARNER_ID);
+        ordered.verify(learnerService).getRequiredUnitOrientationGoalId(LEARNER_ID, "child-unit");
+        org.mockito.Mockito.verifyNoMoreInteractions(learnerService);
+        verifyNoInteractions(learnerLifecycle);
+    }
 }

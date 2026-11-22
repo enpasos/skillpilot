@@ -451,6 +451,25 @@ def generate(view):
     shifts.extend(contextual_shifts)
     acquisition_placements(result, GOALS, selected, prerequisites, structure,
                            consumer_seeds=selected & applicable_learning)
+    # Guided-entry bindings are authored in the shared material catalog. Keep
+    # each orientation at its own learning place, including before a generated
+    # preparation group; an orientation is not a subject-matter prerequisite.
+    material_catalog = json.loads((ROOT / "curricula/unit-learning-materials.json").read_text())
+    for material_path in material_catalog["materials"]:
+        material = json.loads((ROOT / "curricula" / material_path).read_text())
+        binding = material["unit"]
+        orientation_id = binding.get("orientationGoalId")
+        if view["viewId"] not in binding["viewIds"] or not orientation_id:
+            continue
+        unit = find(binding["compositionNodeId"])
+        if unit is None:
+            raise ValueError(f"{view['viewId']}: missing guided-entry unit {binding['compositionNodeId']}")
+        children = unit[2]["children"]
+        references = [node for node in children if node.get("goalId") == orientation_id]
+        if len(references) != 1 or GOALS[orientation_id].get("semanticKind") != "orientation":
+            raise ValueError(f"{view['viewId']}: expected one atomic orientation in its own unit")
+        children.remove(references[0])
+        children.insert(0, references[0])
     author_partial_orders(result, lambda node: learning_atoms(node, selected & applicable_learning, applicable_learning))
     after = role_atoms(result)
     # Opening a subtree changes reference distance. Retain the reviewed atomic

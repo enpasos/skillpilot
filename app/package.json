@@ -47,7 +47,7 @@
     "test:learner-learning-plans": "tsx src/utils/learnerLearningPlanApi.test.ts && tsx src/utils/masteryHistory.test.ts && tsx scripts/testLearnerPlanTodayCardUi.tsx && tsx scripts/testLearnerPlanCockpitUi.ts && tsx scripts/testLearnerViewMobilePlanChromeUi.ts && tsx scripts/testLearnerPlanGaugesPreviewUi.ts",
     "test:learner-cockpit-startup": "tsx src/utils/cockpitStartRequests.test.ts && tsx scripts/testLearnerCoreStartupUi.ts && tsx scripts/testLearnerViewStartupUi.ts && tsx scripts/testPersonalCurriculumProjectionUi.ts",
     "test:learner-map-projection": "tsx scripts/testLearnerMapProjection.ts",
-    "test:learner-map-native-ui": "tsx scripts/testNativeLearnerMapUi.ts && tsx scripts/testHessePhysicsMemoryUi.ts",
+    "test:learner-map-native-ui": "tsx scripts/testNativeLearnerMapUi.ts && tsx scripts/testHessePhysicsMemoryUi.ts && npm run test:unit-introduction",
     "test:learner-map-prototype": "tsx scripts/testFullCockpitPrototype.ts && tsx scripts/testLearningUnitMapPrototype.ts",
     "test:learner-map-build": "tsx scripts/testLearnerMapBuild.ts",
     "test:learner-map-unit-view": "tsx scripts/testCompositionChildOrder.ts && tsx scripts/testCompositionPreparationPlacements.ts && tsx scripts/testLearnerUnitMapProjection.ts && tsx scripts/testLearnerUnitMapPreview.ts && tsx scripts/testHessePhysicsFlashcardActions.ts && tsx scripts/testHesseLearnerUnitMapCalendar.ts && tsx scripts/testLearnerUnitMapLayout.ts",
@@ -114,7 +114,7 @@
     "validate:learning-units": "tsx scripts/validateLearningUnits.ts",
     "check:learning-unit-assessments": "node --import tsx scripts/applyLearningUnitAssessments.mjs && tsx scripts/checkUnitPlanningReleases.ts",
     "validate:learning-units:offered": "tsx scripts/reportMathPhysicsNativeInventory.ts --output tmp/learning-units/offered-membership.json && tsx scripts/testMathPhysicsNativeInventory.ts --inventory tmp/learning-units/offered-membership.json && tsx scripts/validateLearningUnits.ts --offered tmp/learning-units/offered-membership.json",
-    "test:learning-unit-contracts": "tsx scripts/testLearningUnitContracts.ts && tsx scripts/testUnitPlanningReleases.ts && tsx scripts/testMathPhysicsNativeInventory.ts",
+    "test:learning-unit-contracts": "tsx scripts/testLearningUnitContracts.ts && tsx scripts/testUnitPlanningReleases.ts && tsx scripts/testUnitMaterialOrientations.ts && tsx scripts/testMathPhysicsNativeInventory.ts",
     "knowledge-context": "tsx scripts/deriveKnowledgeContext.ts",
     "report:knowledge-context": "tsx scripts/deriveKnowledgeContext.ts --report",
     "test:knowledge-context": "tsx scripts/testKnowledgeContext.ts",
@@ -302,7 +302,8 @@
     "check:assessment-completion-profiles": "tsx scripts/checkAssessmentCompletionProfiles.ts",
     "test:assessment-completion-profiles": "tsx scripts/testAssessmentCompletionProfiles.ts",
     "test:level-completion": "tsx src/utils/levelCompletionApi.test.ts && tsx src/utils/treeCompletionProgress.test.ts && tsx scripts/testLevelCompletionUi.tsx",
-    "test:level-completion-browser": "tsx scripts/testLevelCompletionBrowser.ts"
+    "test:level-completion-browser": "tsx scripts/testLevelCompletionBrowser.ts",
+    "test:unit-introduction": "tsx src/utils/unitIntroduction.test.ts && tsx src/utils/unitStudyIntent.test.ts && tsx scripts/testUnitIntroductionUi.ts"
   },
   "dependencies": {
     "@types/dagre": "^0.7.53",

@@ -38,10 +38,17 @@ export function GoalPracticeDialog({ exercise, language, onDismiss }: {
   </dialog>
 }
 
-export function GoalPracticeAction({ exercise, language }: { exercise: MapPracticeExercise; language: 'de' | 'en' }) {
+export function GoalPracticeAction({ exercise, language, beforeOpen }: {
+  exercise: MapPracticeExercise; language: 'de' | 'en'; beforeOpen?: () => Promise<boolean>
+}) {
   const [open, setOpen] = useState(false)
+  const [busy, setBusy] = useState(false)
   return <>
-    <button type="button" onClick={() => setOpen(true)}
+    <button type="button" disabled={busy} onClick={async () => {
+      if (busy) return
+      setBusy(true)
+      try { if (!beforeOpen || await beforeOpen()) setOpen(true) } finally { setBusy(false) }
+    }}
       className="mt-3 min-h-11 rounded-lg border border-sky-400 px-3 py-2 text-sm font-semibold text-text-primary focus-visible:outline-2 focus-visible:outline-sky-500">
       {language === 'en' ? 'Practice' : 'Üben'}: {exercise.title}
     </button>

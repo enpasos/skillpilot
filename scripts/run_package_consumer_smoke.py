@@ -79,7 +79,7 @@ SHA256_PATTERN = re.compile(r"^[a-f0-9]{64}$")
 PINNED_HELPER_SHA256 = {
     "app/scripts/buildPackageConsumerFrontend.ts": "376b6f26df3a502c7b702f8a30761123e9a911862fb49f08cf89109c9e3f630c",
     "app/vite.config.ts": "38bae55dcc10035304212bf3f2321872e296271d17a12615acd96d2bacc01c34",
-    "app/scripts/lib/unitLearningMaterialCatalog.ts": "6d6468965c9bb4a6e12368ffb1eb629a93cd2499518d4226145f514d1de9030d",
+    "app/scripts/lib/unitLearningMaterialCatalog.ts": "e13c91bb289f8670979b0bfbbdce1b1dbf8aef839583716fbf0f4cb06ffa62f9",
     "backend/src/main/resources/action-regression-openapi.yaml": "17f9f7283c13148d3d19fa7c041e56c67938cc3b4ffe3b621a0918d43d805f87",
     "backend/src/main/resources/action-regression-report.html": "a8531a620b3d923cfdc3b9f8839d99d9b60edf01795c33fd84b2572c06ae59fe",
     "backend/src/main/resources/claude-mcp-regression-report.html": "0237929c224ab7cf1e512cfedbb31e2401766d80a4b5e16bc937dcbf5b01addf",

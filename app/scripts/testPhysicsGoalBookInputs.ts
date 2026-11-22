@@ -627,8 +627,8 @@ const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
-  orientation: 2,
-  total: 854,
+  orientation: 4,
+  total: 856,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.

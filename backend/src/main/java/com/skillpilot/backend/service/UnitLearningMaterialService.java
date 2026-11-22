@@ -23,7 +23,14 @@ public final class UnitLearningMaterialService {
     private record Key(String landscape, String view, String node) {}
     public record AssessmentBinding(String landscapeId, String viewId, String compositionNodeId,
             UnitAssessmentContract contract) {}
-    public record Intro(String question, String promise) {}
+    public record OrientationBinding(String landscapeId, String viewId, String compositionNodeId,
+            String orientationGoalId) {
+        public String sectionGoalId() { return "composition:" + viewId + ":structure:" + compositionNodeId; }
+    }
+    public record Intro(String question, String promise, String scene, String imageUrl, String imageAlt,
+            List<String> topics) {
+        public Intro { topics = topics == null ? List.of() : List.copyOf(topics); }
+    }
     public record SectionAssessmentPolicy(String unitContractRevision, String requiredPartsFingerprint,
             List<String> voluntaryAssessmentGoalIds, Map<String, List<String>> additionalVoluntaryAssessmentGoalIdsByView) {
         public SectionAssessmentPolicy {
@@ -44,7 +51,7 @@ public final class UnitLearningMaterialService {
             return List.copyOf(ids);
         }
     }
-    public record Material(String flashcardGoalId, String assessmentGoalId, Map<String, Intro> intro,
+    public record Material(String flashcardGoalId, String assessmentGoalId, String orientationGoalId, Map<String, Intro> intro,
             Map<String, Map<String, PracticeExercise>> exercises, UnitAssessmentContract assessmentContract,
             SectionAssessmentPolicy sectionAssessmentPolicy) {
         public Material {
@@ -54,6 +61,7 @@ public final class UnitLearningMaterialService {
 
         public String question(String language) { return localized(language).question(); }
         public String promise(String language) { return localized(language).promise(); }
+        public Intro introduction(String language) { return localized(language); }
 
         public Optional<PracticeExercise> exercise(String goalId, String language) {
             if (goalId == null || !exercises.containsKey(goalId)) return Optional.empty();
@@ -83,17 +91,38 @@ public final class UnitLearningMaterialService {
             for (Path file : files.toList()) {
                 JsonNode data = mapper.readTree(file.toFile());
                 JsonNode version = data.get("schemaVersion");
-                if (version != null && (!version.isNumber() || version.decimalValue().compareTo(BigDecimal.ONE) != 0)) {
+                if (version != null && (!version.isNumber() || !(version.decimalValue().compareTo(BigDecimal.ONE) == 0
+                        || version.decimalValue().compareTo(BigDecimal.valueOf(2)) == 0))) {
                     throw new IOException("Unsupported unit learning material version in " + file);
                 }
                 JsonNode unit = data.required("unit");
+                boolean guidedEntry = version != null && version.asInt() == 2;
+                if (guidedEntry) requiredText(unit, "orientationGoalId", file);
+                for (JsonNode credit : unit.path("assessmentContract").path("planningCredits")) {
+                    if (credit.has("orientation") && !guidedEntry) {
+                        throw new IOException("An orientation credit requires version 2 unit learning material in " + file);
+                    }
+                }
                 Map<String, Intro> intros = new HashMap<>();
                 for (String language : new String[] {"de", "en"}) {
                     JsonNode intro = data.required("intro").required(language);
-                    intros.put(language, new Intro(intro.required("question").asText(), intro.required("promise").asText()));
+                    if (guidedEntry) {
+                        for (String field : List.of("question", "promise", "scene", "imageUrl", "imageAlt")) {
+                            requiredText(intro, field, file);
+                        }
+                        if (!intro.path("topics").isArray() || intro.path("topics").isEmpty()) {
+                            throw new IOException("Missing unit introduction topics in " + file);
+                        }
+                    }
+                    List<String> topics = mapper.readerForListOf(String.class).readValue(
+                            intro.has("topics") ? intro.required("topics") : mapper.createArrayNode());
+                    intros.put(language, new Intro(intro.required("question").asText(), intro.required("promise").asText(),
+                            intro.path("scene").textValue(), intro.path("imageUrl").textValue(),
+                            intro.path("imageAlt").textValue(), topics));
                 }
                 Material material = new Material(unit.path("flashcardGoalId").textValue(),
-                        unit.path("assessmentGoalId").textValue(), intros, readExercises(data.path("exercises"), file),
+                        unit.path("assessmentGoalId").textValue(), unit.path("orientationGoalId").textValue(),
+                        intros, readExercises(data.path("exercises"), file),
                         unit.has("assessmentContract")
                                 ? mapper.treeToValue(unit.required("assessmentContract"), UnitAssessmentContract.class)
                                 : null, boundSectionPolicy(unit, mapper));
@@ -226,6 +255,27 @@ public final class UnitLearningMaterialService {
             }
         }
         return Optional.of(selected);
+    }
+
+    /** Recognizes unit markers even when their authored views are not currently selected. */
+    public boolean isUnitOrientationGoal(String goalId) {
+        return goalId != null && materials.values().stream()
+                .anyMatch(material -> goalId.equals(material.orientationGoalId()));
+    }
+
+    /** Authored entry markers for the actual projected views, including exact merged-view bindings. */
+    public List<OrientationBinding> orientationBindings(Collection<String> viewIds) {
+        var result = new ArrayList<OrientationBinding>();
+        var scopes = materials.keySet().stream().map(key -> new Key(key.landscape(), "", key.node()))
+                .distinct().sorted(java.util.Comparator.comparing(Key::landscape).thenComparing(Key::node)).toList();
+        for (String view : viewIds.stream().sorted().toList()) {
+            for (var scope : scopes) {
+                find(scope.landscape(), view, scope.node()).map(Material::orientationGoalId)
+                        .filter(id -> !id.isBlank()).ifPresent(id -> result.add(
+                                new OrientationBinding(scope.landscape(), view, scope.node(), id)));
+            }
+        }
+        return List.copyOf(result);
     }
 
     /** Current view bindings, independent of a learner's temporary focus or chosen route. */

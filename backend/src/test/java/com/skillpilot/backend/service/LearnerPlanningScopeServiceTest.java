@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.skillpilot.backend.api.MasteryUpdateRequest;
+import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.landscape.LandscapeService;
@@ -34,6 +36,12 @@ class LearnerPlanningScopeServiceTest {
     private static final String CURRICULUM_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH_LANDSCAPE_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String PHYSICS_LANDSCAPE_ID = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+    private static final String MOTION_OPENING = "a4d4efe1-7d30-526b-ac9c-806113da4363";
+    private static final String FALL_OPENING = "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e";
+    private static final String MODEL_GOAL = "d6dc0e02-831d-4894-a61a-852bcc74f147";
+    private static final String FALL_GOAL = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
+    private static final String MOTION_SCOPE = "composition:de-he-gym-physics-gk-g9:structure:physics-e1-motion";
+    private static final String FALL_SCOPE = "composition:de-he-gym-physics-gk-g9:structure:physics-e1-accelerated-and-free-fall";
     private static final String SEK_ONE_SCOPE_ID =
             "composition:de-he-gym-math-gk-g9:structure:sek1-g9";
     private static final String DE_PHYSICS_LK_SCOPE_ID =
@@ -317,6 +325,102 @@ class LearnerPlanningScopeServiceTest {
         assertThat(snapshot.openAtomicGoalIds())
                 .containsExactlyElementsOf(snapshot.scopeAtomicGoalIds());
         assertPlanningScopeContainsOnlyStructuralAtoms(snapshot.scopeAtomicGoalIds());
+    }
+
+    @Test
+    void guidedUnitEntryIsReadOnlyAndKeepsParentBeforeChildWithoutRequiringTheParentForExplicitChildFocus() {
+        selectHessenPhysics("G9", "GK");
+        learnerService.setPlannedGoals(LEARNER_ID, Set.of(MOTION_SCOPE));
+        assertThat(learnerService.getFrontier(LEARNER_ID)).containsExactly(MOTION_OPENING);
+        assertThat(learnerService.getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).containsExactly(MOTION_OPENING);
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, MODEL_GOAL)).isEqualTo(MOTION_OPENING);
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, FALL_SCOPE)).isEqualTo(FALL_OPENING);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).isEmpty();
+
+        learnerService.setPlannedGoals(LEARNER_ID, Set.of(FALL_SCOPE));
+        assertThat(learnerService.getFrontier(LEARNER_ID)).containsExactly(FALL_OPENING);
+        assertThat(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of(FALL_SCOPE)))
+                .extracting(FrontierGoal::id).containsExactly(FALL_OPENING);
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, FALL_GOAL)).isEqualTo(FALL_OPENING);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).isEmpty();
+    }
+
+    @Test
+    void confirmingTheOpeningResumesTheExactOrdinaryGoalAndLeavesOtherResultsAlone() {
+        Learner learner = selectHessenPhysics("G9", "GK");
+        String selectedGoal = "8aff7aac-321b-5172-ac55-877876bfd2cd";
+        learnerService.setPlannedGoals(LEARNER_ID, Set.of(MOTION_SCOPE));
+        learnerService.setActiveGoal(LEARNER_ID, selectedGoal);
+        assertThat(learner.getActiveGoalId()).isEqualTo(MOTION_OPENING);
+        assertThat(learner.getPendingUnitEntry()).contains(selectedGoal);
+        assertThat(objectMapper.valueToTree(learner).has("pendingUnitEntry")).isFalse();
+        String parked = learner.getPendingUnitEntry();
+        long revision = learner.getCoachStateRevision();
+        learnerService.setActiveGoal(LEARNER_ID, MOTION_OPENING);
+        learnerService.setActiveGoal(LEARNER_ID, MOTION_OPENING);
+        assertThat(learner.getPendingUnitEntry()).isEqualTo(parked);
+        assertThat(learner.getCoachStateRevision()).isEqualTo(revision);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).isEmpty();
+
+        learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(MOTION_OPENING, 1.0), MOTION_OPENING));
+        assertThat(learner.getActiveGoalId()).isEqualTo(selectedGoal);
+        assertThat(learner.getPendingUnitEntry()).isNull();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).singleElement()
+                .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(MOTION_OPENING));
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, MODEL_GOAL)).isNull();
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, FALL_GOAL)).isEqualTo(FALL_OPENING);
+    }
+
+    @Test
+    void persistedSubjectProgressDoesNotInventOpeningCreditAndExistingActiveWorkIsPreserved() {
+        Learner learner = selectHessenPhysics("G9", "GK");
+        learnerService.setPlannedGoals(LEARNER_ID, Set.of(MOTION_SCOPE));
+        masteryRepository.saveAndFlush(new Mastery(learner, MODEL_GOAL, 1.0));
+        learner.setActiveGoalId(FALL_GOAL);
+        learnerRepository.saveAndFlush(learner);
+        assertThat(learnerService.getCoachLearnerState(LEARNER_ID).activeGoal().id()).isEqualTo(FALL_GOAL);
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, FALL_GOAL)).isEqualTo(MOTION_OPENING);
+        assertThat(learnerService.getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id).containsExactly(MOTION_OPENING);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).singleElement()
+                .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(MODEL_GOAL));
+    }
+
+    @Test
+    void largePhaseResourceDoesNotInheritAChildOpeningAndAnExplicitChildHandoffStaysChild() {
+        Learner learner = selectHessenPhysics("G9", "GK");
+        learnerService.setPlannedGoals(LEARNER_ID, Set.of(MOTION_SCOPE));
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID,
+                "composition:de-he-gym-physics-gk-g9:structure:physics-e-phase")).isNull();
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, FALL_SCOPE)).isEqualTo(FALL_OPENING);
+        learnerService.setActiveGoal(LEARNER_ID, FALL_OPENING);
+        assertThat(learnerService.getPlannedGoals(LEARNER_ID)).containsExactly(FALL_SCOPE);
+        assertThat(learnerService.getCoachLearnerState(LEARNER_ID).activeGoal().id()).isEqualTo(FALL_OPENING);
+        assertThat(learner.getActiveGoalId()).isEqualTo(FALL_OPENING);
+        assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, FALL_OPENING,
+                learner.getCoachStateRevision(), "de", Set.of(), true).unitIntroduction().orientationGoalId()).isEqualTo(FALL_OPENING);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).isEmpty();
+        learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(FALL_OPENING, 1.0), FALL_OPENING));
+        assertThat(learnerService.getCoachLearnerState(LEARNER_ID).goals().planned()).extracting(FrontierGoal::id).containsExactly(FALL_SCOPE);
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, FALL_GOAL)).isNull();
+        learnerService.setActiveGoal(LEARNER_ID, FALL_GOAL);
+        assertThat(learnerService.getCoachLearnerState(LEARNER_ID).activeGoal().id()).isEqualTo(FALL_GOAL);
+        assertThat(learnerService.getMastery(LEARNER_ID)).doesNotContainKey(MOTION_OPENING);
+    }
+
+    @Test
+    void aStrictSelectedGoalResumesThroughRealFoundationsAfterItsOpening() {
+        Learner learner = selectHessenPhysics("G9", "GK");
+        learner.setStrictMode(true);
+        learnerRepository.saveAndFlush(learner);
+        String target = "8aff7aac-321b-5172-ac55-877876bfd2cd";
+        learnerService.setPlannedGoals(LEARNER_ID, Set.of(MOTION_SCOPE));
+        learnerService.setActiveGoal(LEARNER_ID, target);
+        learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(MOTION_OPENING, 1.0), MOTION_OPENING));
+        assertThat(learner.getActiveGoalId()).isEqualTo("5c44b9ba-9b05-4774-95d5-073230d3fc4f");
+        assertThat(learner.getPendingUnitEntry()).contains(target);
+        learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(learner.getActiveGoalId(), 1.0), learner.getActiveGoalId()));
+        assertThat(learner.getActiveGoalId()).isEqualTo(target);
+        assertThat(learner.getPendingUnitEntry()).isNull();
     }
 
     @ParameterizedTest

@@ -156,8 +156,9 @@ public final class CompletionProfileCompiler {
     /**
      * Compiles direct atomic prerequisite edges for automatic completion. Every
      * assessment and memory goal in the complete context remains an explicit
-     * obligation until graded or verified recall confirms mastery. Orientation
-     * and ordinary goals have no additional protected status.
+     * obligation until graded or verified recall confirms mastery. Material-bound
+     * unit openings retain their own explicit completion. Other orientation and
+     * ordinary goals have no additional protected status.
      */
     public CompiledAutomaticCompletion compileAutomatic(
             Map<String, LearningGoal> canonicalGoals,
@@ -171,7 +172,8 @@ public final class CompletionProfileCompiler {
         Set<String> explicitObligations = new TreeSet<>();
         for (String id : graph.contextGoalIds()) {
             if (isAssessment(canonicalGoals.get(id))) assessments.add(id);
-            if (isAssessment(canonicalGoals.get(id)) || isMemory(canonicalGoals.get(id))) explicitObligations.add(id);
+            LearningGoal goal = canonicalGoals.get(id);
+            if (isAssessment(goal) || isMemory(goal) || isRequiredUnitEntry(goal)) explicitObligations.add(id);
         }
         return new CompiledAutomaticCompletion(graph, assessments, explicitObligations, curriculumGeneration);
     }
@@ -341,6 +343,11 @@ public final class CompletionProfileCompiler {
         if (text(goal.getSemanticKind())) return "orientation".equalsIgnoreCase(goal.getSemanticKind().trim());
         return goal.getTags() != null && goal.getTags().stream().anyMatch(tag -> tag != null
                 && ("orientation".equalsIgnoreCase(tag.trim()) || "motivation".equalsIgnoreCase(tag.trim())));
+    }
+
+    private static boolean isRequiredUnitEntry(LearningGoal goal) {
+        return isOrientation(goal) && goal.getExtendedData() != null
+                && Boolean.TRUE.equals(goal.getExtendedData().get("skillpilotRequiredUnitEntry"));
     }
 
     public static boolean isMemory(LearningGoal goal) {

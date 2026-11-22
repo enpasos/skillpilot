@@ -78,6 +78,9 @@ class CoachSubjectContinuationIntegrationTest {
     static final String PHYSICS = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     static final String FREE_FALL = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
+    static final String MOTION_OPENING = "a4d4efe1-7d30-526b-ac9c-806113da4363";
+    static final String FALL_OPENING = "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e";
+    static final String DIAGRAMS = "ae67bcf1-f3ee-50d6-9a12-25a159dff659";
     @Autowired LearnerService learners;
     @Autowired LearnerLearningPlanService plans;
     @Autowired LearnerRepository repository;
@@ -172,9 +175,14 @@ class CoachSubjectContinuationIntegrationTest {
         Session session = session(provider, unit.learner());
         assertThat(context(session).path("learningPlanToday").path("resumeAvailable").asBoolean()).isTrue();
         successful(session, "resume_skillpilot_learning_plan", Map.of(), true);
-        assertThat(repository.findById(unit.learner()).orElseThrow().getActiveGoalId())
-                .isEqualTo("ae67bcf1-f3ee-50d6-9a12-25a159dff659");
+        // The separate due order still wins, through its own outstanding E.1 opening.
+        assertParkedUnitTarget(unit.learner(), MOTION_OPENING, DIAGRAMS);
         assertThat(storedMastery(unit.learner())).isEqualTo(before);
+        assertThat(json.<JsonNode>valueToTree(passes.findForGoals(unit.learner(), unit.parts()))).isEqualTo(receipts);
+        completeOpening(session, MOTION_OPENING);
+        assertThat(repository.findById(unit.learner()).orElseThrow().getActiveGoalId()).isEqualTo(DIAGRAMS);
+        assertThat(repository.findById(unit.learner()).orElseThrow().getPendingUnitEntry()).isNull();
+        assertOnlyOpeningsAdded(unit.learner(), before, Set.of(MOTION_OPENING));
         assertThat(json.<JsonNode>valueToTree(passes.findForGoals(unit.learner(), unit.parts()))).isEqualTo(receipts);
     }
 
@@ -203,6 +211,7 @@ class CoachSubjectContinuationIntegrationTest {
         assertThat(today.path("subjects").findValuesAsText("subject")).containsExactly("Physik");
         assertThat(today.path("subjects").get(0).path("canContinue").asBoolean()).isTrue();
         assertThat(today.path("resumeAvailable").asBoolean()).isTrue();
+        Set<String> confirmedOpenings = Set.of();
         if (strictIndividual) {
             confirm(session, before);
             JsonNode confirmed = context(session);
@@ -211,6 +220,15 @@ class CoachSubjectContinuationIntegrationTest {
                     .filter(item -> item.path("choice").asText().contains("Freier Fall experimentell untersuchen"))
                     .findFirst().orElseThrow().path("choice").asText();
             successful(session, "choose_skillpilot_completion_route", Map.of("choice", choice), true);
+            // The strict route includes E.1 foundations: parent and child openings
+            // precede the genuine canonical foundation without certifying it.
+            assertParkedUnitTarget(unit.learner(), MOTION_OPENING, FREE_FALL);
+            assertThat(storedMastery(unit.learner())).isEqualTo(original);
+            assertThat(json.<JsonNode>valueToTree(passes.findForGoals(unit.learner(), unit.parts()))).isEqualTo(receipts);
+            completeOpening(session, MOTION_OPENING);
+            assertParkedUnitTarget(unit.learner(), FALL_OPENING, FREE_FALL);
+            completeOpening(session, FALL_OPENING);
+            confirmedOpenings = Set.of(MOTION_OPENING, FALL_OPENING);
             String active = repository.findById(unit.learner()).orElseThrow().getActiveGoalId();
             assertThat(active).isNotEqualTo(FREE_FALL);
             assertThat(learners.getPlanningScope(unit.learner(), MATH).scopeAtomicGoalIds()).contains(active);
@@ -221,7 +239,7 @@ class CoachSubjectContinuationIntegrationTest {
             assertPhysicsFoundation(unit.learner(), repository.findById(unit.learner()).orElseThrow().getActiveGoalId());
         }
         assertThat(repository.findById(unit.learner()).orElseThrow().getLearningState()).isEqualTo(LearningState.TEACHING);
-        assertThat(storedMastery(unit.learner())).isEqualTo(original);
+        assertOnlyOpeningsAdded(unit.learner(), original, confirmedOpenings);
         assertThat(json.<JsonNode>valueToTree(passes.findForGoals(unit.learner(), unit.parts()))).isEqualTo(receipts);
     }
 
@@ -251,7 +269,7 @@ class CoachSubjectContinuationIntegrationTest {
         var block = new LearnerLearningPlanApi.Block("unit", "learning", null, "E.1", monday, monday.plusDays(6), null, parts, List.of(section), true, option.binding());
         var blocks = new ArrayList<>(List.of(block));
         if (separateWork) {
-            String diagrams = "ae67bcf1-f3ee-50d6-9a12-25a159dff659";
+            String diagrams = DIAGRAMS;
             blocks.add(new LearnerLearningPlanApi.Block("individual", "learning", diagrams, "Eigener Diagrammauftrag",
                     monday, monday.plusDays(6), null, List.of(diagrams), List.of(diagrams), true));
         }
@@ -276,6 +294,26 @@ class CoachSubjectContinuationIntegrationTest {
     private void confirm(Session s, JsonNode c) throws Exception {
         if (c.has("completionContract")) successful(s, ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                 Map.of("receiptCapability", c.path("completionContract").path("receiptCapability").asText()), false);
+    }
+    private void assertParkedUnitTarget(String id, String opening, String target) throws Exception {
+        Learner learner = repository.findById(id).orElseThrow();
+        assertThat(learner.getActiveGoalId()).isEqualTo(opening);
+        JsonNode pending = json.readTree(learner.getPendingUnitEntry());
+        assertThat(pending.path("targetGoalId").asText()).isEqualTo(target);
+        assertThat(pending.path("openingGoalId").asText()).isEqualTo(opening);
+    }
+    private void completeOpening(Session session, String goalId) throws Exception {
+        assertThat(repository.findById(session.learner()).orElseThrow().getActiveGoalId()).isEqualTo(goalId);
+        confirm(session, context(session));
+        successful(session, "set_skillpilot_mastery", Map.of("goalId", goalId), true);
+    }
+    private void assertOnlyOpeningsAdded(String id, JsonNode before, Set<String> openings) {
+        var retained = (com.fasterxml.jackson.databind.node.ObjectNode) storedMastery(id);
+        for (String opening : openings) {
+            assertThat(retained.path(opening).path("value").asDouble()).isEqualTo(1.0);
+            retained.remove(opening);
+        }
+        assertThat(retained).isEqualTo(before);
     }
     private Session session(Provider p, String id) {
         return new Session(p, switch (p) {

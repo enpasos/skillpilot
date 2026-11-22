@@ -1,0 +1,386 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/unit-learning-material/v2/material.schema.json",
+  "title": "Repository unit learning material v2",
+  "description": "Bilingual material offered at a composition node, with optional links to learning resources and a version-bound assessment contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "unit",
+    "intro"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "unit": {
+      "$ref": "#/$defs/unit"
+    },
+    "intro": {
+      "type": "object",
+      "required": [
+        "de",
+        "en"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "de": {
+          "$ref": "#/$defs/introduction"
+        },
+        "en": {
+          "$ref": "#/$defs/introduction"
+        }
+      }
+    },
+    "exercises": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "goalId",
+          "de",
+          "en"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "$ref": "#/$defs/text"
+          },
+          "de": {
+            "$ref": "#/$defs/exercise"
+          },
+          "en": {
+            "$ref": "#/$defs/exercise"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "text": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/text"
+      }
+    },
+    "nonemptyIds": {
+      "$ref": "#/$defs/ids",
+      "minItems": 1
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "unit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "landscapeId",
+        "compositionNodeId",
+        "viewIds",
+        "orientationGoalId"
+      ],
+      "dependentRequired": {
+        "sectionAssessmentPolicy": [
+          "assessmentContract"
+        ]
+      },
+      "properties": {
+        "landscapeId": {
+          "$ref": "#/$defs/text"
+        },
+        "compositionNodeId": {
+          "$ref": "#/$defs/text"
+        },
+        "viewIds": {
+          "$ref": "#/$defs/nonemptyIds"
+        },
+        "flashcardGoalId": {
+          "$ref": "#/$defs/text"
+        },
+        "assessmentGoalId": {
+          "$ref": "#/$defs/text"
+        },
+        "assessmentContract": {
+          "$ref": "#/$defs/assessmentContract"
+        },
+        "sectionAssessmentPolicy": {
+          "$ref": "#/$defs/sectionAssessmentPolicy"
+        },
+        "orientationGoalId": {
+          "$ref": "#/$defs/text"
+        }
+      }
+    },
+    "introduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question",
+        "promise",
+        "scene",
+        "imageUrl",
+        "imageAlt",
+        "topics"
+      ],
+      "properties": {
+        "question": {
+          "$ref": "#/$defs/text"
+        },
+        "promise": {
+          "$ref": "#/$defs/text"
+        },
+        "scene": {
+          "$ref": "#/$defs/text"
+        },
+        "imageUrl": {
+          "$ref": "#/$defs/text",
+          "pattern": "^/assets/"
+        },
+        "imageAlt": {
+          "$ref": "#/$defs/text"
+        },
+        "topics": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      }
+    },
+    "exercise": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "prompt",
+        "hint",
+        "solution"
+      ],
+      "properties": {
+        "title": {
+          "$ref": "#/$defs/text"
+        },
+        "prompt": {
+          "$ref": "#/$defs/text"
+        },
+        "hint": {
+          "$ref": "#/$defs/text"
+        },
+        "solution": {
+          "$ref": "#/$defs/text"
+        },
+        "evidenceCriteria": {
+          "description": "Optional localized criteria for discussing the learner's individual work in ordinary study.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      }
+    },
+    "assessmentContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision",
+        "viewIds",
+        "parts",
+        "contentGoalIds",
+        "planningCredits"
+      ],
+      "properties": {
+        "revision": {
+          "$ref": "#/$defs/text"
+        },
+        "viewIds": {
+          "$ref": "#/$defs/nonemptyIds"
+        },
+        "parts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/part"
+          }
+        },
+        "contentGoalIds": {
+          "$ref": "#/$defs/nonemptyIds"
+        },
+        "planningCredits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/planningCredit"
+          }
+        }
+      }
+    },
+    "sectionAssessmentPolicy": {
+      "type": "object",
+      "required": [
+        "unitContractRevision",
+        "requiredPartsFingerprint",
+        "voluntaryAssessmentGoalIds"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "unitContractRevision": {
+          "$ref": "#/$defs/text"
+        },
+        "requiredPartsFingerprint": {
+          "$ref": "#/$defs/digest"
+        },
+        "voluntaryAssessmentGoalIds": {
+          "$ref": "#/$defs/ids"
+        },
+        "additionalVoluntaryAssessmentGoalIdsByView": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/text"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/nonemptyIds"
+          }
+        }
+      }
+    },
+    "part": {
+      "type": "object",
+      "required": [
+        "goalId",
+        "material"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "goalId": {
+          "$ref": "#/$defs/text"
+        },
+        "material": {
+          "type": "object",
+          "required": [
+            "taskRevision",
+            "rubricRevision",
+            "fingerprint"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "taskRevision": {
+              "$ref": "#/$defs/digest"
+            },
+            "rubricRevision": {
+              "$ref": "#/$defs/digest"
+            },
+            "fingerprint": {
+              "$ref": "#/$defs/digest"
+            }
+          }
+        }
+      }
+    },
+    "planningCredit": {
+      "type": "object",
+      "required": [
+        "requiredPartIds",
+        "goalIds",
+        "release"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "requiredPartIds": {
+          "$ref": "#/$defs/nonemptyIds"
+        },
+        "goalIds": {
+          "$ref": "#/$defs/nonemptyIds"
+        },
+        "orientation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["requiredRecallGoalIds"],
+          "properties": {
+            "requiredRecallGoalIds": { "$ref": "#/$defs/ids" }
+          }
+        },
+        "release": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schemaVersion",
+            "revision",
+            "ownerUnitId",
+            "ownerRevision",
+            "viewIds",
+            "review",
+            "goalDefinitions",
+            "fingerprint"
+          ],
+          "properties": {
+            "schemaVersion": {
+              "const": 1
+            },
+            "revision": {
+              "$ref": "#/$defs/text"
+            },
+            "ownerUnitId": {
+              "$ref": "#/$defs/text"
+            },
+            "ownerRevision": {
+              "$ref": "#/$defs/text"
+            },
+            "viewIds": {
+              "$ref": "#/$defs/nonemptyIds"
+            },
+            "review": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "properties": {
+                "path": {
+                  "$ref": "#/$defs/text"
+                },
+                "sha256": {
+                  "$ref": "#/$defs/digest"
+                }
+              }
+            },
+            "goalDefinitions": {
+              "type": "object",
+              "minProperties": 1,
+              "propertyNames": {
+                "$ref": "#/$defs/text"
+              },
+              "additionalProperties": {
+                "type": "object",
+                "required": [
+                  "definition",
+                  "profileFingerprint"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "definition": {
+                    "$ref": "#/$defs/digest"
+                  },
+                  "profileFingerprint": {
+                    "$ref": "#/$defs/digest"
+                  }
+                }
+              }
+            },
+            "fingerprint": {
+              "$ref": "#/$defs/digest"
+            }
+          }
+        }
+      }
+    }
+  }
+}

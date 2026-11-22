@@ -83,7 +83,7 @@
 .lum-map-summary { height: 49px; flex-shrink: 0; display: flex; align-items: center; gap: 15px; padding: 0 24px; }
 .lum-map-summary h1 { font-size: 13px; font-weight: 600; letter-spacing: -.1px; margin: 0; }
 .lum-map-summary > span { color: #a0a8af; font-size: 10px; }
-.lum-scope-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; padding: 8px 16px; }
+.lum-scope-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; padding: 8px 16px; max-height: 42dvh; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; }
 .lum-scope-actions:empty { display: none; }
 .lum-scope-actions .unit-assessment-summary[open] { max-height: 40dvh; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; }
 .lum-scope-intro { flex-basis: 100%; }

@@ -295,6 +295,7 @@ try {
       if (!suffix && request.method() === 'GET') return json({ ...profile, activeGoalId: learnerState.activeGoal.id })
       if (suffix === '/mastery') return json({ mastery })
       if (suffix === '/state') return json(learnerState)
+      if (suffix === '/unit-introduction') return json({ orientationGoalId: null })
       if (suffix === '/resume') return json({ lastActivityAt: '2026-11-18T08:00:00Z', scheduledDeletionAt: '2027-05-18T08:00:00Z' })
       if (suffix === '/personalization-plan') return json({ stage: 'COMPLETE', options: [], displayOptions: [], navigationOptions: [],
         currentSelectedOptions: [], completedDecisions: [], preservedDecisions: [], pendingDecisions: [], canReopenMigratedPersonalization: false, problemCode: null })

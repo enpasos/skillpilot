@@ -80,6 +80,19 @@ class AutomaticCompletionTest {
         assertThat(result.blockedByGoalIds()).containsEntry("a", "cards").doesNotContainKey("cards");
     }
 
+    @Test void materialBoundUnitOpeningRequiresItsOwnCompletionAndCannotBecomeAScopeWaiver() {
+        var opening = atom("opening");
+        opening.setSemanticKind("orientation");
+        opening.setExtendedData(Map.of("skillpilotRequiredUnitEntry", true));
+        var compiled = compile(graph(opening, atom("ordinary"), exam("exam")));
+        var open = evaluator.evaluateAutomatic(compiled, Set.of("exam"));
+        assertThat(compiled.protectedGoalIds()).containsExactly("exam", "opening");
+        assertThat(open.waivedGoalIds()).containsExactly("ordinary");
+        assertThat(open.pendingTargetGoalIds()).containsExactly("opening");
+        assertThat(open.complete()).isFalse();
+        assertThat(evaluator.evaluateAutomatic(compiled, Set.of("exam", "opening")).complete()).isTrue();
+    }
+
     @Test void openMemoryRetainsTransitivePreparationThroughAMasteredIntermediate() {
         var cards = atom("cards", "b");
         cards.setSemanticKind("memory");

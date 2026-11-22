@@ -46,6 +46,8 @@ class ExamLearningScopeIntegrationTest {
     private static final String PHYSICS = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String ROOT = "bf980fff-b62b-4ea4-a20d-31681a7ad785";
+    private static final String UNIT_INTRO = "a4d4efe1-7d30-526b-ac9c-806113da4363";
+    private static final String CHILD_INTRO = "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e";
     private static final String DIAGRAMS = "ce431132-dfc4-42c2-aff6-bd72035190f8";
     private static final String UNIFORM = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd";
     private static final String ACCELERATION = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
@@ -116,16 +118,25 @@ class ExamLearningScopeIntegrationTest {
     }
 
     @Test
-    void ordinaryExamFocusStartsInsideAllTwelveSelectedGoalsWithoutOutsideMastery() {
+    void ordinaryExamPreparationReceivesUnitOpeningBeforeTwelveSelectedGoalsWithoutOutsideMastery() {
         assertThat(storedMastery()).isEmpty();
         var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
 
-        assertThat(activated.activeGoalId()).isEqualTo(DIAGRAMS);
+        assertThat(activated.activeGoalId()).isEqualTo(UNIT_INTRO);
+        assertThat(storedMastery()).isEmpty();
+        assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(learners.getFrontier(id())).containsExactly(UNIT_INTRO);
+        assertThat(physicsStatus().learningScope().goalIds()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(physicsStatus().learningScope().targetGoalCount()).isEqualTo(12);
+        assertThat(physicsStatus().periodGauge().target()).isZero();
+        var received = coachTools.setMastery(id(), new MasteryUpdateRequest(Map.of(UNIT_INTRO, 1.0), UNIT_INTRO));
+        assertThat(received.status()).isEqualTo(CoachToolFacade.MasteryStatus.UPDATED);
+        assertThat(storedMastery()).containsExactlyEntriesOf(Map.of(UNIT_INTRO, 1.0));
         assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
         var coach = learners.getCoachLearnerState(id());
         assertThat(coach.activeGoal().id()).isEqualTo(DIAGRAMS);
-        assertThat(coach.frontier()).extracting(FrontierGoal::id).containsExactly(DIAGRAMS);
-        assertThat(learners.getFrontier(id())).containsExactly(DIAGRAMS);
+        assertThat(coach.frontier()).extracting(FrontierGoal::id).containsExactlyInAnyOrder(DIAGRAMS, CHILD_INTRO);
+        assertThat(learners.getFrontier(id())).containsExactlyInAnyOrder(DIAGRAMS, CHILD_INTRO);
         assertThat(coach.goals().planned()).extracting(FrontierGoal::id)
                 .containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
         assertThat(coach.goals().scope().total_atomic()).isEqualTo(12);
@@ -136,11 +147,11 @@ class ExamLearningScopeIntegrationTest {
         assertThat(status.learningScope().progressText()).doesNotContain("Offene Voraussetzungen");
         assertThat(status.periodGauge().target()).isZero();
         assertThat(status.balanceGauge()).isNull();
-        assertThat(storedMastery()).isEmpty();
+        assertThat(storedMastery()).containsExactlyEntriesOf(Map.of(UNIT_INTRO, 1.0));
 
         var next = coachTools.setMastery(id(), new MasteryUpdateRequest(Map.of(DIAGRAMS, 1.0), DIAGRAMS));
         assertThat(next.status()).isEqualTo(CoachToolFacade.MasteryStatus.UPDATED);
-        assertThat(storedMastery()).containsExactlyEntriesOf(Map.of(DIAGRAMS, 1.0));
+        assertThat(storedMastery()).containsExactlyInAnyOrderEntriesOf(Map.of(UNIT_INTRO, 1.0, DIAGRAMS, 1.0));
         assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
         assertThat(learners.getCoachLearnerState(id()).frontier()).extracting(FrontierGoal::id)
                 .contains(UNIFORM).doesNotContain(ACCELERATION);
@@ -167,6 +178,7 @@ class ExamLearningScopeIntegrationTest {
         assertThat(learners.getPersonalCurriculumSubjectFrontier(id(), MATH))
                 .as("Unscheduled Mathematics really has a reachable orientation before the exam is activated")
                 .extracting(FrontierGoal::id).contains("65365dce-f33f-49d8-9516-42f75883aa86");
+        recordReceivedUnitIntroductions();
         Map<String, Double> masteryBefore = storedMastery();
         var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
 
@@ -216,13 +228,13 @@ class ExamLearningScopeIntegrationTest {
         assertThat(plans.getTodayStatus(id(), "de").automaticResumeAvailable()).isFalse();
 
         var resumed = coachTools.resumeLearningPlan(id(), "de");
-        assertThat(resumed.activeGoalId()).isEqualTo(DIAGRAMS);
+        assertThat(resumed.activeGoalId()).isEqualTo(UNIT_INTRO);
         assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(targets);
         assertThat(resumed.state().goals().planned()).extracting(FrontierGoal::id)
                 .containsExactlyInAnyOrderElementsOf(targets);
         assertThat(resumed.state().goals().scope().total_atomic()).isEqualTo(12);
         assertThat(resumed.state().goals().scope_completed()).isFalse();
-        assertThat(resumed.state().frontier()).extracting(FrontierGoal::id).allMatch(targets::contains);
+        assertThat(resumed.state().frontier()).extracting(FrontierGoal::id).containsExactly(UNIT_INTRO);
         assertThat(physicsStatus().periodGauge().target()).isZero();
         assertThat(physicsStatus().balanceGauge()).isNull();
         entityManager.flush();
@@ -235,9 +247,25 @@ class ExamLearningScopeIntegrationTest {
     }
 
     @Test
+    void receivingAnOpeningForStrictExamPreparationNeverCompletesItsOutsidePrerequisites() {
+        learner.setStrictMode(true);
+        learnerRepository.saveAndFlush(learner);
+        var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
+        assertThat(activated.activeGoalId()).isEqualTo(UNIT_INTRO);
+        assertThat(storedMastery()).isEmpty();
+        var received = learners.setMastery(id(), new MasteryUpdateRequest(Map.of(UNIT_INTRO, 1.0), UNIT_INTRO));
+        assertThat(received.activeGoal()).isNull();
+        assertThat(storedMastery()).containsExactlyEntriesOf(Map.of(UNIT_INTRO, 1.0));
+        assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(received.frontier()).extracting(FrontierGoal::id).containsExactly(CHILD_INTRO);
+        assertThat(physicsStatus().learningScope().goalIds()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(physicsStatus().learningScope().achievedGoalCount()).isZero();
+    }
+
+    @Test
     void futurePreparationHasRealScopeAndExplicitStartButNoPrematureAutomaticQuota() {
         var targets = selected(EXAM_ROOTS);
-        preparePrerequisites(targets);
+        preparePriorKnowledgeAndReceivedUnitIntroductions(targets);
         var prep = new LearnerLearningPlanApi.Block("prep", "learning", null, "Vorbereitung",
                 TODAY.plusDays(4), TODAY.plusDays(4), null, targets, EXAM_ROOTS, true);
         plans.upsert(id(), PHYSICS, new LearnerLearningPlanApi.UpsertRequest(0L, "Kinematik",
@@ -254,7 +282,7 @@ class ExamLearningScopeIntegrationTest {
     @Test
     void dateChangeAndGenericResumeRemainBoundToFirstExamAndNeverUnionTheSecond() {
         List<String> first = List.of(DIAGRAMS, UNIFORM);
-        preparePrerequisites(List.of(DIAGRAMS, UNIFORM, ACCELERATION));
+        preparePriorKnowledgeAndReceivedUnitIntroductions(List.of(DIAGRAMS, UNIFORM, ACCELERATION));
         activate(List.of(inactiveGeneralCourse(), exam("first", TODAY.plusDays(1), first),
                 exam("second", TODAY.plusDays(5), List.of(ACCELERATION))));
         assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(first);
@@ -272,7 +300,7 @@ class ExamLearningScopeIntegrationTest {
     @Test
     void automaticHandoffKeepsCompleteMultiRootExamFocusAndStopsAtTheDatedQuota() {
         List<String> targets = selected(EXAM_ROOTS);
-        preparePrerequisites(targets);
+        preparePriorKnowledgeAndReceivedUnitIntroductions(targets);
         var prep = new LearnerLearningPlanApi.Block("prep", "learning", null, "Vorbereitung",
                 TODAY, TODAY, null, List.of(DIAGRAMS, UNIFORM), List.of(DIAGRAMS, UNIFORM), true);
         activate(List.of(inactiveGeneralCourse(), prep, exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
@@ -286,8 +314,92 @@ class ExamLearningScopeIntegrationTest {
     }
 
     @Test
+    void datedPreparationReceivesItsOpeningWithoutCountingItOrLosingTheSelectedTargets() {
+        var prep = new LearnerLearningPlanApi.Block("prep", "learning", null, "Datierte Vorbereitung",
+                TODAY, TODAY, null, List.of(DIAGRAMS, UNIFORM), List.of(DIAGRAMS, UNIFORM), true);
+        var activated = activate(List.of(inactiveGeneralCourse(), prep,
+                exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
+        assertThat(activated.activeGoalId()).isEqualTo(UNIT_INTRO);
+        assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(physicsStatus().periodGauge().target()).isEqualTo(2);
+        assertThat(physicsStatus().periodGauge().completed()).isZero();
+        assertThat(storedMastery()).isEmpty();
+
+        var received = learners.setMastery(id(), new MasteryUpdateRequest(Map.of(UNIT_INTRO, 1.0), UNIT_INTRO));
+        assertThat(received.activeGoal().id()).isEqualTo(DIAGRAMS);
+        assertThat(physicsStatus().periodGauge().completed()).isZero();
+        assertThat(physicsStatus().learningScope().targetGoalCount()).isEqualTo(12);
+        assertThat(physicsStatus().learningScope().achievedGoalCount()).isZero();
+        var next = learners.setMastery(id(), new MasteryUpdateRequest(Map.of(DIAGRAMS, 1.0), DIAGRAMS));
+        assertThat(next.activeGoal().id()).isEqualTo(UNIFORM);
+        var stopped = learners.setMastery(id(), new MasteryUpdateRequest(Map.of(UNIFORM, 1.0), UNIFORM));
+        assertThat(stopped.activeGoal()).isNull();
+        assertThat(physicsStatus().periodGauge().completed()).isEqualTo(2);
+        assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(storedMastery()).containsExactlyInAnyOrderEntriesOf(
+                Map.of(UNIT_INTRO, 1.0, DIAGRAMS, 1.0, UNIFORM, 1.0));
+    }
+
+    @Test
+    void anEarlierOpeningScheduledForAnotherExamCannotReplaceTheCurrentExamTarget() {
+        var anotherPrep = new LearnerLearningPlanApi.Block("other-prep", "learning", null, "Anderer Termin",
+                TODAY, TODAY, null, List.of(UNIT_INTRO), List.of(UNIT_INTRO), true);
+        var currentPrep = new LearnerLearningPlanApi.Block("first-prep", "learning", null, "Laufender Termin",
+                TODAY.plusDays(1), TODAY.plusDays(1), null, List.of(DIAGRAMS), List.of(DIAGRAMS), true);
+        plans.upsert(id(), PHYSICS, new LearnerLearningPlanApi.UpsertRequest(0L, "Zwei Termine",
+                List.of(inactiveGeneralCourse(), anotherPrep, currentPrep,
+                        exam("first", TODAY.plusDays(1), List.of(DIAGRAMS)),
+                        exam("other", TODAY.plusDays(5), List.of(UNIT_INTRO)))), TODAY);
+        learner.setFollowLearningPlans(true);
+        learnerRepository.saveAndFlush(learner);
+        learners.setPlannedGoals(id(), Set.of(DIAGRAMS));
+        assertThat(plans.reconcile(id(), new LearnerLearningPlanApi.ReconcileRequest(TODAY)).activeGoalId()).isNull();
+
+        var resumed = plans.resumeExplicitly(id(), new LearnerLearningPlanApi.ReconcileRequest(TODAY));
+        assertThat(resumed.activeGoalId()).isEqualTo(UNIT_INTRO);
+        assertThat(storedFocus()).containsExactly(DIAGRAMS);
+        assertThat(physicsStatus().learningScope().goalIds()).containsExactly(DIAGRAMS);
+        var received = learners.setMastery(id(), new MasteryUpdateRequest(Map.of(UNIT_INTRO, 1.0), UNIT_INTRO));
+        assertThat(received.activeGoal().id()).isEqualTo(DIAGRAMS);
+        assertThat(storedMastery()).containsExactlyEntriesOf(Map.of(UNIT_INTRO, 1.0));
+        assertThat(physicsStatus().learningScope().sourceBlockId()).isEqualTo("first");
+    }
+
+    @Test
+    void explicitPhysicsPreparationFromMathReturnsToPhysicsWithoutWritingMathResults() {
+        String mathOrientation = "65365dce-f33f-49d8-9516-42f75883aa86";
+        learners.setPlannedGoals(id(), Set.of(mathOrientation));
+        learners.setActiveGoal(id(), mathOrientation);
+        var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
+        assertThat(activated.activeGoalId()).isEqualTo(UNIT_INTRO);
+        assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+        assertThat(storedMastery()).isEmpty();
+        var received = learners.setMastery(id(), new MasteryUpdateRequest(Map.of(UNIT_INTRO, 1.0), UNIT_INTRO));
+        assertThat(received.activeGoal().id()).isEqualTo(DIAGRAMS);
+        assertThat(storedMastery()).containsExactlyEntriesOf(Map.of(UNIT_INTRO, 1.0));
+        assertThat(physicsStatus().learningScope().goalIds()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
+    }
+
+    @Test
+    void oneSelectedChildTargetReceivesParentThenChildOpeningWithoutChangingTheExamScope() {
+        var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), List.of(ACCELERATION))));
+        assertThat(activated.activeGoalId()).isEqualTo(UNIT_INTRO);
+        assertThat(storedFocus()).containsExactly(ACCELERATION);
+        var parent = learners.setMastery(id(), new MasteryUpdateRequest(Map.of(UNIT_INTRO, 1.0), UNIT_INTRO));
+        assertThat(parent.activeGoal().id()).isEqualTo(CHILD_INTRO);
+        assertThat(storedFocus()).containsExactly(ACCELERATION);
+        var child = learners.setMastery(id(), new MasteryUpdateRequest(Map.of(CHILD_INTRO, 1.0), CHILD_INTRO));
+        assertThat(child.activeGoal().id()).isEqualTo(ACCELERATION);
+        assertThat(storedFocus()).containsExactly(ACCELERATION);
+        assertThat(physicsStatus().learningScope().goalIds()).containsExactly(ACCELERATION);
+        assertThat(physicsStatus().learningScope().achievedGoalCount()).isZero();
+        assertThat(physicsStatus().periodGauge().target()).isZero();
+        assertThat(storedMastery()).containsExactlyInAnyOrderEntriesOf(Map.of(UNIT_INTRO, 1.0, CHILD_INTRO, 1.0));
+    }
+
+    @Test
     void savingAndReadingANewExamPreserveTheCurrentGoalUntilExplicitActivation() {
-        preparePrerequisites(List.of(DIAGRAMS));
+        preparePriorKnowledgeAndReceivedUnitIntroductions(List.of(DIAGRAMS));
         learners.setPlannedGoals(id(), Set.of(DIAGRAMS));
         learners.setActiveGoal(id(), DIAGRAMS);
         learner.setFollowLearningPlans(true);
@@ -317,7 +429,7 @@ class ExamLearningScopeIntegrationTest {
     void weeklyAutomaticHandoffAfterTheFirstExamDateKeepsItsCompleteBoundScope() {
         List<String> first = List.of(DIAGRAMS, UNIFORM);
         List<String> scheduled = List.of(DIAGRAMS, UNIFORM, ACCELERATION);
-        preparePrerequisites(scheduled);
+        preparePriorKnowledgeAndReceivedUnitIntroductions(scheduled);
         learner.setLearningPlanPeriodBasis(PeriodBasis.WEEK);
         learnerRepository.saveAndFlush(learner);
         var prep = new LearnerLearningPlanApi.Block("prep", "learning", null, "Vorbereitung beider Termine",
@@ -347,7 +459,7 @@ class ExamLearningScopeIntegrationTest {
     @Test
     void reorderingTheSameFocusDoesNotWriteAnotherLearnerStateRevision() {
         List<String> targets = List.of(DIAGRAMS, UNIFORM);
-        preparePrerequisites(targets);
+        preparePriorKnowledgeAndReceivedUnitIntroductions(targets);
         var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), targets)));
         assertThat(activated.activeGoalId()).isEqualTo(DIAGRAMS);
         var reordered = new ArrayList<>(storedFocus());
@@ -369,6 +481,7 @@ class ExamLearningScopeIntegrationTest {
     void blockedPhysicsExamDoesNotResumeAnOrdinaryMathPlanButAllowsAnExplicitSubjectSwitch() {
         learner.setStrictMode(true);
         learnerRepository.saveAndFlush(learner);
+        recordReceivedUnitIntroductions();
         var activated = activate(List.of(inactiveGeneralCourse(), exam("exam", TODAY.plusDays(5), EXAM_ROOTS)));
         assertThat(activated.activeGoalId()).isNull();
         String mathOrientation = "65365dce-f33f-49d8-9516-42f75883aa86";
@@ -448,12 +561,19 @@ class ExamLearningScopeIntegrationTest {
         ReflectionTestUtils.setField(plans, "clock", clock);
         ReflectionTestUtils.setField(learners, "learningPlanClock", clock);
     }
-    private void preparePrerequisites(List<String> targets) {
+    /** These continuation tests start after the learner explicitly received both unit openings. */
+    private void recordReceivedUnitIntroductions() {
+        masteryRepository.saveAllAndFlush(List.of(new Mastery(learner, UNIT_INTRO, 1.0),
+                new Mastery(learner, CHILD_INTRO, 1.0)));
+    }
+
+    private void preparePriorKnowledgeAndReceivedUnitIntroductions(List<String> targets) {
         var prerequisites = CanonicalPrerequisiteTestContext.withStoredPrerequisites(landscapes, targets, List.of(), Set.of());
         masteryRepository.saveAllAndFlush(prerequisites.stream()
                 .filter(goalId -> landscapes.getGoalDefinition(goalId).getContains() == null
                         || landscapes.getGoalDefinition(goalId).getContains().isEmpty())
                 .map(goalId -> new Mastery(learner, goalId, 1.0)).toList());
+        recordReceivedUnitIntroductions();
         assertThat(learners.getUncompactedRichFrontierForFocus(id(), targets))
                 .as("The explicit prior-knowledge fixture must make diagrams reachable: %s",
                         learners.describeLearningPlanBlockage(id(), targets, "de"))

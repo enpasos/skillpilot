@@ -9,14 +9,25 @@ export interface MapPracticeExercise {
 }
 
 export interface MapPracticeMaterial {
+  schemaVersion?: 1 | 2
   unit: {
     landscapeId: string
     compositionNodeId: string
     viewIds: string[]
     flashcardGoalId?: string
     assessmentGoalId?: string
+    /** The atomic orientation whose confirmed result opens regular study. */
+    orientationGoalId?: string
   }
-  intro: Record<'de' | 'en', { question: string; promise: string }>
+  intro: Record<'de' | 'en', {
+    question: string
+    promise: string
+    scene?: string
+    imageUrl?: string
+    imageAlt?: string
+    /** An immediate overview of this unit, never a recursive topic inventory. */
+    topics?: string[]
+  }>
   exercises: ({ goalId: string } & Record<'de' | 'en', MapPracticeExercise>)[]
 }
 

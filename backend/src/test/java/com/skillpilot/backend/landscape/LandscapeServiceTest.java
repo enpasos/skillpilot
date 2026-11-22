@@ -1293,8 +1293,17 @@ class LandscapeServiceTest {
                                 .extracting(ProgramUnit::getId)
                                 .contains("physics-constant-acceleration");
                 assertThat(pilot.getGoalPlacements())
-                                .filteredOn(placement -> !placement.isOwnership())
+                                .filteredOn(placement -> !placement.isOwnership()
+                                                && !"a4d4efe1-7d30-526b-ac9c-806113da4363".equals(placement.getGoalId()))
                                 .hasSize(19);
+                assertThat(pilot.getGoalPlacements())
+                                .filteredOn(placement -> "a4d4efe1-7d30-526b-ac9c-806113da4363"
+                                                .equals(placement.getGoalId()) && !placement.isOwnership())
+                                .singleElement()
+                                .satisfies(placement -> {
+                                        assertThat(placement.getUnitId()).isEqualTo("de-gym-physics-e");
+                                        assertThat(placement.getRelation()).isEqualTo("primary");
+                                });
                 assertThat(pilot.getGoalPlacements())
                                 .filteredOn(placement -> "physics-constant-acceleration"
                                                 .equals(placement.getUnitId()))
@@ -1306,7 +1315,8 @@ class LandscapeServiceTest {
                                                 "c5807a37-129e-5df6-8989-482bc7f5683e",
                                                 "a8dc0290-9f80-5763-8943-e16b8d2aa860",
                                                 "c933b7d2-edcb-5747-9378-9762659f260a",
-                                                "f13ca187-b680-5f47-b4ad-76bd474bd8a2");
+                                                "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+                                                "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e");
                 assertThat(pilot.getGoalPlacements())
                                 .extracting(GoalPlacement::getUnitId)
                                 .contains(

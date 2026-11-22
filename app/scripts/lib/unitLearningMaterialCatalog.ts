@@ -12,11 +12,12 @@ export function readUnitMapMaterials(curriculaRoot: string): MapPracticeMaterial
     const source = realpathSync(path.join(root, entry))
     if (!source.startsWith(root + path.sep)) throw new Error('Unit material outside curriculum')
     const material = JSON.parse(readFileSync(source, 'utf8'))
-    if (Object.hasOwn(material, 'schemaVersion') && material.schemaVersion !== 1) {
+    if (Object.hasOwn(material, 'schemaVersion') && ![1, 2].includes(material.schemaVersion)) {
       throw new Error('Unsupported unit learning material version in ' + entry)
     }
     const { unit, intro, exercises = [] } = material
-    const { landscapeId, compositionNodeId, viewIds, flashcardGoalId, assessmentGoalId } = unit
-    return { unit: { landscapeId, compositionNodeId, viewIds, flashcardGoalId, assessmentGoalId }, intro, exercises }
+    const { landscapeId, compositionNodeId, viewIds, flashcardGoalId, assessmentGoalId, orientationGoalId } = unit
+    return { unit: { landscapeId, compositionNodeId, viewIds, flashcardGoalId, assessmentGoalId,
+      ...(orientationGoalId ? { orientationGoalId } : {}) }, intro, exercises }
   })
 }

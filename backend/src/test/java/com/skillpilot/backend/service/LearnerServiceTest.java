@@ -3344,6 +3344,7 @@ public class LearnerServiceTest {
     @Transactional
     void unitPracticeUsesOnlyTheNineMotionCardsAndKeepsTheActiveGoalAndMastery() {
         String unit = "physics-e1-motion";
+        String opening = "a4d4efe1-7d30-526b-ac9c-806113da4363";
         String deck = "9f2f5ab8-0ae4-5792-b831-82a05af5895c";
         String active = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
@@ -3362,6 +3363,17 @@ public class LearnerServiceTest {
                 .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No flashcard practice");
         learnerService.setPlannedGoals(learnerId, Set.of("composition:de-he-gym-sekii-physics-gk:structure:" + unit));
         assertThat(learner.getActiveGoalId()).isNull();
+        assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de", start))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No flashcard practice");
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+        learnerService.setActiveGoal(learnerId, opening);
+        learnerService.setMastery(learnerId, new MasteryUpdateRequest(Map.of(opening, 1.0), opening));
+        assertThat(learner.getActiveGoalId()).isNull();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).singleElement()
+                .satisfies(result -> {
+                    assertThat(result.getGoalKey()).isEqualTo(opening);
+                    assertThat(result.getValue()).isEqualTo(1.0);
+                });
         var practice = learnerService.startMemoryPractice(learnerId, "de", start);
         assertThat(practice.cards()).extracting(card -> card.cardId()).containsExactly(
                 "physics_e_cov_001", "physics_e_cov_007", "physics_e_cov_008", "physics_e_cov_009",

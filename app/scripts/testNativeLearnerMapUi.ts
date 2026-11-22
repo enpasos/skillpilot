@@ -158,6 +158,7 @@ async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'redu
     if (suffix === '/resume' && ['GET', 'POST'].includes(request.method())) return json({ lastActivityAt: '2026-11-05T08:00:00Z', scheduledDeletionAt: '2027-05-05T08:00:00Z' })
     if (suffix === '/mastery' && request.method() === 'GET') return json({ mastery })
     if (suffix === '/state' && request.method() === 'GET') return json(state())
+    if (suffix === '/unit-introduction' && request.method() === 'GET') return json({ orientationGoalId: null })
     if (suffix === '/learning-plans' && request.method() === 'GET') return json({ asOf: '2026-11-05', followLearningPlans: false, plans: [],
       status: { asOf: '2026-11-05', periodBasis: 'DAY', periodStart: '2026-11-05', periodEnd: '2026-11-05', timeZone: 'Europe/Berlin', language: 'de',
         evaluable: false, statusText: '', noticeText: null, activeGoal: null, followLearningPlans: false, resumeAvailable: false, subjects: [], unavailablePlanCount: 0 } })
@@ -779,6 +780,43 @@ try {
   assert.deepEqual(commands.unexpected, [])
   assert.deepEqual(commands.writes, [])
   await commands.context.close()
+
+  stage = 'manual unit entry consumes a deliberately delayed routed focus'
+  const deferredCommands = await open()
+  const deferredPage = deferredCommands.page
+  await deferredPage.goto(`${origin}/scripts/fixtures/learnerMapCommandsUi.html?deferFocus=1`)
+  await scope(deferredPage, 'command-section')
+  await deferredPage.waitForFunction(() => (window as Window & { deferredMapCommandFrames?: { count: () => number } }).deferredMapCommandFrames!.count() > 0)
+  await deferredPage.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+  await scope(deferredPage, 'command-group')
+  await deferredPage.getByTestId('command-release-focus').click()
+  await afterEffects(deferredPage)
+  assert.equal(await deferredPage.getByTestId('learning-map-board').getAttribute('data-scope-id'), 'command-group',
+    'the delayed initial goal command cannot replay after an explicit scope move')
+  await deferredPage.getByTestId('command-reveal-a').click()
+  await scope(deferredPage, 'command-section')
+  await deferredPage.locator('[data-entry-id="command-a"] .lum-node-main[aria-pressed="true"]').waitFor()
+  assert.equal(await node(deferredPage, 'command-a').getAttribute('aria-pressed'), 'true', 'a new reveal nonce still acts')
+  await deferredPage.getByTestId('command-delay-focus').click()
+  await deferredPage.getByTestId('command-reveal-section-before-route').click()
+  await scope(deferredPage, 'command-group')
+  await deferredPage.waitForFunction(() => (window as Window & { deferredMapCommandFrames?: { count: () => number } }).deferredMapCommandFrames!.count() > 0)
+  await deferredPage.locator('[data-entry-id="command-section"] .lum-node-open').press('Enter')
+  await scope(deferredPage, 'command-section')
+  await deferredPage.getByTestId('command-release-focus').click()
+  await deferredPage.getByTestId('command-release-reveal-route').click()
+  await afterEffects(deferredPage)
+  assert.equal(await deferredPage.getByTestId('learning-map-board').getAttribute('data-scope-id'), 'command-section',
+    'a pending global reveal and its later route echo cannot undo a deliberate child drill')
+  await deferredPage.getByTestId('command-reveal-b-before-route').click()
+  await scope(deferredPage, 'command-other-section')
+  await deferredPage.getByTestId('command-release-reveal-route').click()
+  await afterEffects(deferredPage)
+  await scope(deferredPage, 'command-other-section')
+  assert.deepEqual(deferredCommands.errors, [])
+  assert.deepEqual(deferredCommands.unexpected, [])
+  assert.deepEqual(deferredCommands.writes, [])
+  await deferredCommands.context.close()
   console.log('Native product App full-window learner map browser regression passed (desktop, 320px, 390px; isolated HTTP/SSE).')
 } catch (error) {
   console.error(`Native learner map browser failure at: ${stage}`)

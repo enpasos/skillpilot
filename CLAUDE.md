@@ -204,6 +204,10 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   learning-unit progress is derived from atomic descendants; no completion
   ever writes mastery to children. Exams and memory goals always need their
   own explicit results.
+  Guided entry starts at the chosen unit's own atomic orientation goal.
+  Browsing is free. Guided content, exercise and card work follow confirmed
+  orientation or valid planning credit. Direct assessment remains available.
+  Direct entry into a child opens its own orientation (22 November decision).
   The unit-assessment design of 19 November is pending expert review and
   product adoption; confirmed recognition rules remain applicable. See
   [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units) for its status and

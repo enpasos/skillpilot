@@ -28,6 +28,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -73,10 +74,14 @@ public final class HesseE1GradedPreview {
             var seen = new HashSet<UUID>();
             for (String duration : List.of("G8", "G9")) {
                 var group = profiles.required(duration);
-                for (String scenario : List.of("viewer", "CD", "ABCD", "unitOpen", "unitCD", "unitABCD", "mixed")) {
+                for (String scenario : List.of("viewer", "CD", "ABCD", "unitOpen", "unitCD", "unitABCD", "mixed", "oriented", "parentOriented")) {
                     UUID id = UUID.fromString(group.required(scenario).asText());
                     if (!seen.add(id)) throw new IllegalArgumentException("Each scenario needs a fresh learner");
-                    states.put(duration + "/" + scenario, preview.prepare(id.toString(), group.required("E1").asText(), scenario));
+                    try {
+                        states.put(duration + "/" + scenario, preview.prepare(id.toString(), group.required("E1").asText(), scenario));
+                    } catch (Exception failure) {
+                        throw new IllegalStateException(duration + "/" + scenario + ": " + failure.getMessage(), failure);
+                    }
                 }
             }
             Path pending = Path.of("grading-pending.json");
@@ -117,6 +122,19 @@ public final class HesseE1GradedPreview {
                     monday.plusDays(6), null, atoms, List.of(section), true));
         }
         plans.upsert(id, PHYSICS, new LearnerLearningPlanApi.UpsertRequest(0L, unitAssignment ? "Einheitenauftrag E.1" : "Einzelziele E.1", blocks), today);
+        if (scenario.equals("oriented") || scenario.equals("parentOriented")) {
+            learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("pauseProfile", null, null, null, revision(id)));
+            learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("leaveProfile", null, null, null, revision(id)));
+            var parentOpening = "a4d4efe1-7d30-526b-ac9c-806113da4363";
+            var orientations = scenario.equals("oriented")
+                    ? List.of(parentOpening, "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e") : List.of(parentOpening);
+            for (String goal : orientations) completeOrientation(id, goal);
+            learners.setPlannedGoals(id, Set.of(section));
+            var saved = learners.getMastery(id).entrySet().stream()
+                    .filter(entry -> entry.getValue() > 0).map(Map.Entry::getKey).collect(java.util.stream.Collectors.toSet());
+            if (!saved.equals(Set.copyOf(orientations))) throw new IllegalStateException("Unexpected results for the return profile");
+            return Map.of("completedOpenings", orientations);
+        }
         String parts = switch (scenario) {
             case "CD", "unitCD" -> "CD";
             case "ABCD", "unitABCD", "mixed" -> "ABCD";
@@ -181,13 +199,41 @@ public final class HesseE1GradedPreview {
         return learners.getLearnerState(id).levelCompletion().learnerRevision();
     }
 
+    private void completeOrientation(String id, String goal) throws Exception {
+        learners.setPlannedGoals(id, Set.of(goal));
+        learners.setActiveGoal(id, goal);
+        String session = sessions.createFirstPartyLaunch(id, new ClaudeV1CoachStartRequest("de", "web-start", null)).learningSessionId();
+        authenticatePreview(session);
+        try {
+            var context = call(session, ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Map.of());
+            if (context.has("completionContract")) {
+                call(session, ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of("receiptCapability",
+                        context.required("completionContract").required("receiptCapability").asText()));
+                context = call(session, ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Map.of());
+            }
+            var opening = context.required("activeGoalContext").required("unitIntroduction");
+            if (!goal.equals(opening.required("orientationGoalId").asText()) || !"orientation".equals(opening.required("state").asText())) {
+                throw new IllegalStateException("Expected an active unit orientation");
+            }
+            // This disposable return profile represents a learner who accepted the coach's closing offer.
+            call(session, ClaudeV1Contract.TOOL_SET_MASTERY, Map.of("goalId", goal,
+                    "clientRequestId", UUID.randomUUID().toString(), "expectedStateVersion", revision(id)));
+        } finally {
+            SecurityContextHolder.clearContext();
+        }
+    }
+
+    private static void authenticatePreview(String session) {
+        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(session, null, List.of(
+                new SimpleGrantedAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_READ),
+                new SimpleGrantedAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_WRITE))));
+    }
+
     private void grade(String id, String section, String goal) throws Exception {
         String session = sessions.createFirstPartyLaunch(id, new ClaudeV1CoachStartRequest("de", "web-start",
                 new CompletionAssessmentStart("automatic:" + section, goal, revision(id)))).learningSessionId();
         // Only the calling thread simulates a local authenticated coach for this particular learning session.
-        SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(session, null, List.of(
-                new SimpleGrantedAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_READ),
-                new SimpleGrantedAuthority("SCOPE_" + ClaudeV1Contract.SCOPE_WRITE))));
+        authenticatePreview(session);
         try {
             var context = call(session, ClaudeV1Contract.TOOL_GET_COACH_CONTEXT, Map.of());
             if (context.has("completionContract")) {
@@ -217,7 +263,8 @@ public final class HesseE1GradedPreview {
         var result = spec.callHandler().apply(McpTransportContext.EMPTY, new McpSchema.CallToolRequest(tool, request));
         var content = mapper.readTree(((McpSchema.TextContent) result.content().getFirst()).text());
         if (Boolean.TRUE.equals(result.isError())) {
-            throw new IllegalStateException(tool + " rejected preview action: " + content.path("errorCode").asText());
+            throw new IllegalStateException(tool + " rejected preview action for " + args.getOrDefault("goalId", "navigation")
+                    + ": " + content.path("errorCode").asText() + " " + content.path("message").asText());
         }
         return content;
     }

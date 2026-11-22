@@ -15,6 +15,7 @@ import { fingerprintCurrentCurriculumDocument as digest, loadCurrentCurriculumCa
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import { assessmentReviewRevisions, UnitGraph, type UnitGraphLandscape } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
+import { validateUnitMaterialOrientations } from './lib/unitMaterialOrientationValidation'
 import { fingerprintPositiveGoalEvidenceProfile, type PositiveGoalEvidenceReviewRecord } from './positiveGoalEvidenceProfileModel'
 
 interface Part {
@@ -24,6 +25,7 @@ interface Part {
 interface Credit {
   requiredPartIds: string[]
   goalIds: string[]
+  orientation?: { requiredRecallGoalIds: string[] }
   release: {
     schemaVersion: number
     revision: string
@@ -39,9 +41,15 @@ interface MaterialUnit {
   landscapeId: string
   compositionNodeId: string
   viewIds: string[]
+  orientationGoalId?: string
   sectionAssessmentPolicy?: { unitContractRevision: string; requiredPartsFingerprint: string; voluntaryAssessmentGoalIds: string[];
     additionalVoluntaryAssessmentGoalIdsByView?: Record<string, string[]> }
   assessmentContract?: { revision?: string; viewIds: string[]; parts: Part[]; contentGoalIds: string[]; planningCredits: Credit[] }
+}
+interface MaterialDocument {
+  schemaVersion?: number
+  unit: MaterialUnit
+  intro?: Record<string, unknown>
 }
 
 const root = realpathSync(resolve(import.meta.dirname, '../..'))
@@ -66,7 +74,8 @@ export function planningReleaseFingerprint(unit: MaterialUnit, credit: Credit): 
     return matches[0]
   })
   return digest({ schemaVersion, landscapeId: unit.landscapeId, compositionNodeId: unit.compositionNodeId,
-    revision, ownerUnitId, ownerRevision, viewIds: [...viewIds].sort(), review, parts, goalDefinitions })
+    revision, ownerUnitId, ownerRevision, viewIds: [...viewIds].sort(), review, parts, goalDefinitions,
+    ...(credit.orientation != null && { orientation: credit.orientation }) })
 }
 
 export function planningGoalDefinition(goal: LearningGoal): string {
@@ -83,6 +92,35 @@ interface ReleaseEvidence {
   approved: Record<string, string>
   currentProfile: (id: string) => string
   reviewHash: (path: string) => string
+  materials?: MaterialDocument[]
+}
+
+function orientationIntroduction(unit: MaterialUnit, goalId: string, materials: MaterialDocument[] | undefined): Record<string, unknown> {
+  const matches = materials?.filter(material => material.unit.landscapeId === unit.landscapeId
+    && material.unit.orientationGoalId === goalId) ?? []
+  assert.equal(matches.length, 1, 'Orientation credit needs exactly one own material binding')
+  const material = matches[0]
+  assert.equal(material.unit.compositionNodeId, unit.compositionNodeId, 'Orientation material belongs to another section')
+  assert.equal(unit.orientationGoalId, goalId, 'Orientation credit must name the material opening')
+  assert.equal(material.schemaVersion, 2, 'Orientation credit requires a version 2 introduction')
+  const intro = material.intro
+  assert(intro && typeof intro === 'object' && !Array.isArray(intro), 'Missing bilingual orientation introduction')
+  assert.deepEqual(Object.keys(intro).sort(), ['de', 'en'], 'Orientation requires exactly German and English introductions')
+  for (const language of ['de', 'en']) {
+    const localized = intro[language]
+    assert(localized && typeof localized === 'object' && !Array.isArray(localized), 'Missing orientation introduction in ' + language)
+    const text = localized as Record<string, unknown>
+    assert.deepEqual(Object.keys(text).sort(), ['imageAlt', 'imageUrl', 'promise', 'question', 'scene', 'topics'],
+      'Orientation requires the complete version 2 introduction in ' + language)
+    for (const field of ['question', 'promise', 'scene', 'imageUrl', 'imageAlt']) {
+      assert(typeof text[field] === 'string' && text[field].trim(), 'Missing orientation ' + field + ' in ' + language)
+    }
+    assert((text.imageUrl as string).startsWith('/assets/'), 'Orientation image must be a declared local asset')
+    assert(Array.isArray(text.topics) && text.topics.length > 0
+      && text.topics.every(topic => typeof topic === 'string' && topic.trim())
+      && new Set(text.topics).size === text.topics.length, 'Missing or repeated orientation topics in ' + language)
+  }
+  return intro
 }
 
 export function validatePlanningRelease(unit: MaterialUnit, credit: Credit, evidence: ReleaseEvidence): void {
@@ -105,6 +143,41 @@ export function validatePlanningRelease(unit: MaterialUnit, credit: Credit, evid
   const owners = landscape.programUnits?.filter(row => row.id === release.ownerUnitId && row.kind === 'learningUnit')
   assert(owners?.length === 1 && owners[0].revision === release.ownerRevision, 'Wrong owning unit edition')
   const map = new Map(landscape.goals.map(goal => [goal.id, goal]))
+  const orientation = Object.hasOwn(credit, 'orientation')
+  if (orientation) {
+    assert(credit.orientation && typeof credit.orientation === 'object' && !Array.isArray(credit.orientation),
+      'Orientation credit requires explicit recall obligations')
+    const recall = credit.orientation.requiredRecallGoalIds
+    assert(Array.isArray(recall), 'Orientation credit requires explicit recall obligations')
+    assert.deepEqual(Object.keys(credit.orientation), ['requiredRecallGoalIds'], 'Unknown orientation credit field')
+    if (recall.length) uniqueIds(recall, 'Required recall goals')
+    assert.equal(goalIds.length, 1, 'Orientation credit requires exactly one opening')
+    const goal = map.get(goalIds[0])
+    const key = graph.resolve(goalIds[0], landscape.landscapeId)
+    assert(goal && graph.isAtomic(key) && graph.kind(key) === 'orientation'
+      && !contract.contentGoalIds.includes(goal.id) && !contract.parts.some(part => part.goalId === goal.id),
+    'Only an own orientation atom outside the ordinary content can receive orientation evidence')
+    const placements = landscape.goalPlacements?.filter(row => row.relation === 'own' && row.goalId === goal.id)
+    assert.deepEqual(placements?.map(row => row.unitId), [release.ownerUnitId], 'Wrong orientation owner')
+    const own = landscape.goalPlacements?.filter(row => row.relation === 'own' && row.unitId === release.ownerUnitId) ?? []
+    const ownKinds = own.map(row => {
+      const ownGoal = map.get(row.goalId)
+      assert(ownGoal, 'Unresolved own goal in the orientation unit')
+      const ownKey = graph.resolve(row.goalId, landscape.landscapeId)
+      assert(graph.isAtomic(ownKey), 'Orientation unit must own atomic goals')
+      const allPlacements = landscape.goalPlacements?.filter(candidate => candidate.relation === 'own' && candidate.goalId === row.goalId)
+      assert.deepEqual(allPlacements?.map(candidate => candidate.unitId), [release.ownerUnitId], 'Ambiguous own orientation-unit goal')
+      return { id: row.goalId, kind: graph.kind(ownKey) }
+    })
+    assert.deepEqual([...requiredPartIds].sort(), ownKinds.filter(row => row.kind === 'assessment').map(row => row.id).sort(),
+      'Orientation credit must require all own assessments')
+    assert.deepEqual([...recall].sort(), ownKinds.filter(row => row.kind === 'memory').map(row => row.id).sort(),
+      'Orientation credit must require all own recall goals')
+    const intro = orientationIntroduction(unit, goal.id, evidence.materials)
+    assert.deepEqual(release.goalDefinitions[goal.id], {
+      definition: planningGoalDefinition(goal), profileFingerprint: digest(intro),
+    }, 'Current orientation goal or bilingual introduction differs')
+  }
   const covered = new Set<string>()
   for (const id of requiredPartIds) {
     const goal = map.get(id)
@@ -132,7 +205,7 @@ export function validatePlanningRelease(unit: MaterialUnit, credit: Credit, evid
       covered.add(goalKey)
     }
   }
-  for (const id of goalIds) {
+  for (const id of orientation ? [] : goalIds) {
     const goal = map.get(id)
     const key = graph.resolve(id, landscape.landscapeId)
     assert(goal && graph.isAtomic(key) && graph.kind(key) === 'ordinary' && contract.contentGoalIds.includes(id),
@@ -144,7 +217,7 @@ export function validatePlanningRelease(unit: MaterialUnit, credit: Credit, evid
       definition: planningGoalDefinition(goal), profileFingerprint: evidence.currentProfile(id),
     }, 'Current goal or performance expectations differ for ' + id)
   }
-  assert.equal(covered.size, goalIds.length, 'Planning goal set differs from the canonical reviews')
+  if (!orientation) assert.equal(covered.size, goalIds.length, 'Planning goal set differs from the canonical reviews')
 }
 
 interface ProfileConfig { landscapeId: string; scope: { goalIds: string[] }; reviewPath: string }
@@ -233,8 +306,9 @@ export function validateSectionAssessmentPolicy(
   }
 }
 
-function loadReleasedViews(units: MaterialUnit[]): Map<string, CompositionView> {
-  const selected = new Set(units.flatMap(unit => [
+function loadReleasedViews(materials: MaterialDocument[]): Map<string, CompositionView> {
+  const selected = new Set(materials.flatMap(({ schemaVersion, unit }) => [
+    ...(schemaVersion === 2 ? unit.viewIds : []),
     ...(unit.assessmentContract?.viewIds ?? []),
     ...(unit.assessmentContract?.planningCredits ?? []).flatMap(credit => credit.release.viewIds),
   ]))
@@ -254,9 +328,11 @@ function loadReleasedViews(units: MaterialUnit[]): Map<string, CompositionView> 
 export function checkUnitPlanningReleases(): string[] {
   const inventory = readJson('curricula/unit-learning-materials.json')
   assert.equal(inventory.schemaVersion, 1)
-  const units: MaterialUnit[] = inventory.materials.map((path: string) => readJson('curricula/' + path).unit)
-  const views = loadReleasedViews(units)
+  const materials: MaterialDocument[] = inventory.materials.map((path: string) => readJson('curricula/' + path))
+  const units = materials.map(material => material.unit)
+  const views = loadReleasedViews(materials)
   const { entries } = loadCurrentCurriculumCatalog(liveVerificationInputs)
+  validateUnitMaterialOrientations(materials, entries.map(entry => entry.landscape), views)
   const graph = new UnitGraph(entries.map(({ landscape }) => landscape as UnitGraphLandscape))
   const projectionEntries = prepareLandscapeEntries(entries.map(({ landscape }) => landscape as SkillLandscape))
   const rollouts: Rollout[] = readJson('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').subjects
@@ -270,8 +346,8 @@ export function checkUnitPlanningReleases(): string[] {
     validateSectionAssessmentPolicy(unit, views, graph, projectionEntries)
     if (!credits.length) continue
     const rollout = rollouts.find(row => row.landscapePath === entry.path)
-    assert(rollout, 'Missing current performance evidence for ' + entry.path)
-    const configs: ProfileConfig[] = rollout.positiveEvidenceConfigPaths.map(readJson)
+    assert(rollout || credits.every(credit => credit.orientation != null), 'Missing current performance evidence for ' + entry.path)
+    const configs: ProfileConfig[] = rollout?.positiveEvidenceConfigPaths.map(readJson) ?? []
     const currentProfile = (id: string) => {
       const matches = configs.filter(config => config.landscapeId === unit.landscapeId && config.scope.goalIds.includes(id))
       assert.equal(matches.length, 1, 'Expected exactly one active performance profile for ' + id)
@@ -291,11 +367,12 @@ export function checkUnitPlanningReleases(): string[] {
         const structures = matchingStructures(view.rootNodes, unit.compositionNodeId)
         assert.equal(structures.length, 1, 'Missing or ambiguous unit in release view ' + viewId)
         const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(structures, goalById)
-        assert([...credit.requiredPartIds, ...credit.goalIds].every(id => targetGoalIds.has(id)),
+        assert([...credit.requiredPartIds, ...credit.goalIds, ...(credit.orientation?.requiredRecallGoalIds ?? [])]
+          .every(id => targetGoalIds.has(id)),
           'Release requires assessments and goals outside the target unit in ' + viewId)
       }
       validatePlanningRelease(unit, credit, { landscape, graph,
-        approved: inventory.reviewedPlanningReleases ?? {}, currentProfile,
+        approved: inventory.reviewedPlanningReleases ?? {}, currentProfile, materials,
         reviewHash: path => 'sha256:' + createHash('sha256').update(readBytes(path)).digest('hex') })
       assert(!active.has(credit.release.fingerprint), 'Duplicate planning release')
       active.add(credit.release.fingerprint)

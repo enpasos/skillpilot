@@ -283,7 +283,7 @@ public class LearnerService {
 
     private Map<String, LearningGoal> prerequisiteGraph(Learner learner, GoalProjection projection) {
         if (projection.learningScope() != null) {
-            return projection.canonicalPrerequisiteGoals();
+            return applyRequiredUnitEntries(projection.canonicalPrerequisiteGoals(), projection);
         }
         CompletionCanonicalGraphResolver resolver = completionCanonicalGraphResolver != null
                 ? completionCanonicalGraphResolver
@@ -315,7 +315,34 @@ public class LearnerService {
                 resolved.put(id, atomic);
             }
         }
-        return Collections.unmodifiableMap(resolved);
+        return applyRequiredUnitEntries(Collections.unmodifiableMap(resolved), projection);
+    }
+
+    private record UnitEntryGraphOverlay(Map<String, LearningGoal> source, Set<String> openingIds,
+            Map<String, LearningGoal> graph) { }
+    private volatile UnitEntryGraphOverlay unitEntryGraphOverlay;
+
+    private Map<String, LearningGoal> applyRequiredUnitEntries(Map<String, LearningGoal> canonical, GoalProjection projection) {
+        Set<String> openingIds = Set.copyOf(guidedUnitOrientationScopes(projection).keySet());
+        if (openingIds.isEmpty()) return canonical;
+        UnitEntryGraphOverlay cached = unitEntryGraphOverlay;
+        if (cached != null && cached.source() == canonical && cached.openingIds().equals(openingIds)) return cached.graph();
+        Map<String, LearningGoal> resolved = new LinkedHashMap<>(canonical);
+        // Unit openings are explicit navigation/completion obligations. This
+        // runtime annotation comes from the same validated material binding as
+        // entry selection and never changes the retained canonical definition.
+        for (String id : openingIds) {
+            LearningGoal original = resolved.get(id);
+            if (original == null) continue;
+            LearningGoal opening = objectMapper.convertValue(original, LearningGoal.class);
+            Map<String, Object> metadata = new LinkedHashMap<>(opening.getExtendedData() == null ? Map.of() : opening.getExtendedData());
+            metadata.put("skillpilotRequiredUnitEntry", true);
+            opening.setExtendedData(metadata);
+            resolved.put(id, opening);
+        }
+        Map<String, LearningGoal> graph = Collections.unmodifiableMap(resolved);
+        unitEntryGraphOverlay = new UnitEntryGraphOverlay(canonical, openingIds, graph);
+        return graph;
     }
 
     private CompletionProfileDefinition automaticCompletionDefinition(String id, GoalProjection projection) {
@@ -360,7 +387,15 @@ public class LearnerService {
                     .filter(goalId -> isAtomicGoal(projection.visibleGoals().get(goalId)))
                     .collect(Collectors.toCollection(LinkedHashSet::new));
         }
-        return projectedAtomicTargetIds(List.of(id.substring(AUTOMATIC_COMPLETION_PREFIX.length())), projection);
+        String root = id.substring(AUTOMATIC_COMPLETION_PREFIX.length());
+        Set<String> targets = new LinkedHashSet<>(projectedAtomicTargetIds(List.of(root), projection));
+        // A reviewed assessment route retains exactly its historical assignment
+        // demand. New ordinary openings neither enlarge that claim nor become
+        // implicitly completed by its old exam results.
+        if (unitLearningMaterialService != null && unitLearningMaterialService.assessmentBindingForReference(root).isPresent()) {
+            targets.removeAll(guidedUnitOrientationScopes(projection).keySet());
+        }
+        return targets;
     }
 
     private CompiledCompletionProfile compileCompletionScope(Learner learner, String id,
@@ -679,9 +714,10 @@ public class LearnerService {
         var partIds = bindings.stream().flatMap(binding -> binding.contract().parts().stream())
                 .map(UnitAssessmentContract.Part::goalId).distinct().toList();
         var receipts = verifiedExamPassService.findForGoals(learner.getSkillpilotId(), partIds);
+        var recall = masteredUnitRecall(learner.getSkillpilotId(), bindings);
         Map<String, CompletionEvaluation.WaiverReason> credits = new LinkedHashMap<>();
         for (var binding : bindings) {
-            var result = validatedUnitAssessment(binding, projection, graph, receipts, Set.of());
+            var result = validatedUnitAssessment(binding, projection, graph, receipts, recall);
             if (result == null) continue;
             result.credits().forEach(credits::putIfAbsent);
         }
@@ -690,6 +726,11 @@ public class LearnerService {
 
     private record UnitAssessmentProjection(UnitAssessmentResponse response,
             Map<String, CompletionEvaluation.WaiverReason> credits) { }
+
+    private Set<String> masteredUnitRecall(String learnerId, List<UnitLearningMaterialService.AssessmentBinding> bindings) {
+        var goals = bindings.stream().flatMap(binding -> binding.contract().requiredRecallGoalIds().stream()).distinct().toList();
+        return goals.isEmpty() ? Set.of() : masteryRepository.findMasteredGoalIds(learnerId, goals, PLANNING_SCOPE_MASTERY_THRESHOLD);
+    }
 
     /** Resolve only the authored meaning that is active when this newly graded result is persisted. */
     @Transactional(readOnly = true)
@@ -705,8 +746,11 @@ public class LearnerService {
             boolean exactPart = binding.contract().parts().stream().anyMatch(part -> goalId.equals(part.goalId())
                     && part.material().equals(material) && currentUnitPart(part, graph));
             if (!exactPart) continue;
+            var section = "composition:" + binding.viewId() + ":structure:" + binding.compositionNodeId();
+            var unitTargets = projectedAtomicTargetIds(List.of(section), projection);
             for (var rule : binding.contract().planningCredits()) {
-                if (rule.requiredPartIds().contains(goalId) && validPlanningRelease(binding, rule, graph)) {
+                if (rule.requiredPartIds().contains(goalId) && rule.appliesToTargets(unitTargets)
+                        && validPlanningRelease(binding, rule, graph)) {
                     bindings.add(rule.release().fingerprint());
                 }
             }
@@ -761,11 +805,12 @@ public class LearnerService {
         var receipts = verifiedExamPassService.findForGoals(skillpilotId, bindings.stream()
                 .flatMap(binding -> binding.contract().parts().stream()).map(UnitAssessmentContract.Part::goalId).distinct().toList());
         var options = new ArrayList<LearnerLearningPlanApi.UnitAssignmentOption>();
+        var recall = masteredUnitRecall(skillpilotId, bindings);
         var subjectScope = deriveCompositionScope(landscapeId, parsePersonalCurriculumConfig(learner.getPersonalCurriculum()));
         CompletionSnapshot available = null;
         for (var binding : bindings) {
             var contract = binding.contract();
-            var unit = validatedUnitAssessment(binding, projection, graph, receipts, Set.of());
+            var unit = validatedUnitAssessment(binding, projection, graph, receipts, recall);
             if (unit == null || unit.response().parts().stream().anyMatch(part -> !part.materialCurrent())) continue;
             var response = unit.response();
             if (!includeUnfinished && !response.passed()) continue;
@@ -812,10 +857,25 @@ public class LearnerService {
             UnitAssessmentContract.PlanningCredit rule, Map<String, LearningGoal> graph) {
         var release = rule.release();
         if (release == null || !unitLearningMaterialService.isReviewedPlanningRelease(release)
-                || !release.valid(binding.landscapeId(), binding.compositionNodeId(), binding.contract(),
-                rule, binding.viewId(), graph) || binding.contract().parts().stream()
+                || binding.contract().parts().stream()
                     .filter(part -> rule.requiredPartIds().contains(part.goalId())).anyMatch(part -> !currentUnitPart(part, graph))) return false;
-        return release.hasReviewedOwnership(landscapeService.getById(binding.landscapeId()), binding.contract(), rule);
+        var landscape = landscapeService.getById(binding.landscapeId());
+        if (!release.hasReviewedOwnership(landscape, binding.contract(), rule)) return false;
+        var definitions = graph;
+        if (rule.orientation() != null) {
+            String id = rule.goalIds().getFirst();
+            var material = unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId());
+            var definition = release.goalDefinitions().get(id);
+            if (!isAtomicGoal(graph.get(id)) || !CompletionProfileCompiler.isOrientation(graph.get(id))
+                    || !binding.landscapeId().equals(landscapeService.getLandscapeIdForGoal(id))
+                    || material.isEmpty() || !id.equals(material.get().orientationGoalId()) || definition == null
+                    || !UnitPlanningRelease.hash(material.get().intro()).equals(definition.profileFingerprint())) return false;
+            // Bind the authored definition. The projected node also carries runtime-only entry metadata.
+            var canonical = landscape.getGoals().stream().filter(goal -> id.equals(goal.getId())).findFirst();
+            if (canonical.isEmpty()) return false;
+            definitions = Map.of(id, canonical.get());
+        }
+        return release.valid(binding.landscapeId(), binding.compositionNodeId(), binding.contract(), rule, binding.viewId(), definitions);
     }
 
     private boolean currentUnitPart(UnitAssessmentContract.Part part, Map<String, LearningGoal> graph) {
@@ -862,13 +922,14 @@ public class LearnerService {
         Map<String, CompletionEvaluation.WaiverReason> credits = new LinkedHashMap<>();
         Set<String> missingBindings = new HashSet<>();
         for (var rule : contract.planningCredits()) {
-            if (!validPlanningRelease(binding, rule, graph)) continue;
+            if (!rule.appliesToTargets(unitTargets) || !validPlanningRelease(binding, rule, graph)) continue;
             var missing = contract.parts().stream().filter(part -> rule.requiredPartIds().contains(part.goalId()))
                     .filter(part -> !hasBoundPlanningReceipt(part, rule.release().fingerprint(), currentReceipts)).toList();
             if (!missing.isEmpty()) {
                 missing.forEach(part -> missingBindings.add(part.goalId()));
                 continue;
             }
+            if (!rule.recallComplete(individuallyMastered)) continue;
             var reason = new CompletionEvaluation.WaiverReason("versioned_unit_assessment:" + rule.release().fingerprint(), rule.requiredPartIds());
             rule.goalIds().forEach(id -> credits.putIfAbsent(id, reason));
         }
@@ -882,9 +943,12 @@ public class LearnerService {
 
     private CompletionEvaluation withUnitPlanningCredits(CompletionEvaluation evaluation,
             CompiledCompletionProfile compiled, Learner learner, GoalProjection projection, Map<String, LearningGoal> graph) {
-        return !compiled.automatic() ? evaluation : evaluation.withPlanningCredits(
-                unitPlanningCredits(learner, projection, graph), compiled.contextGoalIds(), compiled.targetGoalIds(),
-                compiled.protectedGoalIds());
+        if (!compiled.automatic()) return evaluation;
+        var credits = unitPlanningCredits(learner, projection, graph);
+        if (credits.isEmpty()) return evaluation;
+        var protectedGoals = new HashSet<>(compiled.protectedGoalIds());
+        protectedGoals.removeIf(id -> credits.containsKey(id) && CompletionProfileCompiler.isOrientation(graph.get(id)));
+        return evaluation.withPlanningCredits(credits, compiled.contextGoalIds(), compiled.targetGoalIds(), protectedGoals);
     }
 
     private CompletionSnapshot completionSnapshot(Learner learner, GoalProjection projection) {
@@ -1199,6 +1263,7 @@ public class LearnerService {
         if (practiceGoals.isEmpty()) return;
         // These facts are stable for this read. Each candidate still gets its own exact prospective focus.
         var frontierFacts = SingletonSupplier.of(() -> richFrontierFacts(learner, projection));
+        Set<String> unitOpeningIds = guidedUnitOrientationScopes(projection).keySet();
         for (String id : practiceGoals) {
             if (!compiled.targetGoalIds().contains(id) || evaluation.masteredGoalIds().contains(id)) continue;
             Map<String, Integer> distance = new LinkedHashMap<>();
@@ -1233,6 +1298,8 @@ public class LearnerService {
             var frontier = filterAtomicFrontier(getRichFrontier(learner, projection, frontierFacts.get(),
                     false, focus, false, followedScope));
             String start = frontier.stream().map(FrontierGoal::id).filter(id::equals).findFirst().orElse(null);
+            if (start == null) start = frontier.stream().filter(goal -> unitOpeningIds.contains(goal.id()))
+                    .map(FrontierGoal::id).findFirst().orElse(null);
             if (start == null && strict) {
                 start = frontier.stream().map(FrontierGoal::id).filter(prerequisites::contains)
                         .filter(goal -> !isExamGoal(graph.get(goal)))
@@ -1243,10 +1310,13 @@ public class LearnerService {
             var first = completionTitle(graph.get(start));
             var label = id.equals(start)
                     ? Map.of("de", "Einzelfokus starten: " + title.get("de"), "en", "Start individual focus: " + title.get("en"))
+                    : unitOpeningIds.contains(start)
+                    ? Map.of("de", "Mit dem Einheitseinstieg beginnen: " + title.get("de"),
+                            "en", "Start with the unit introduction: " + title.get("en"))
                     : Map.of("de", "Grundlagen für „" + title.get("de") + "“ erarbeiten: " + first.get("de"),
                             "en", "Study the prerequisites for “" + title.get("en") + "”: " + first.get("en"));
             actions.add(new LevelCompletionResponse.Action("focusPractice", id, label, "voluntary",
-                    new LevelCompletionResponse.PracticeStep(start, open)));
+                    new LevelCompletionResponse.PracticeStep(start, open, unitOpeningIds.contains(start) ? start : null)));
         }
     }
 
@@ -1278,8 +1348,10 @@ public class LearnerService {
                 .map(UnitLearningMaterialService.Material::assessmentContract).orElse(null);
         if (contract == null || !contract.appliesTo(section.viewId())) return null;
         String learnerId = learner.getSkillpilotId();
+        var statusGoalIds = new LinkedHashSet<>(contract.contentGoalIds());
+        statusGoalIds.addAll(contract.requiredRecallGoalIds());
         Set<String> mastered = masteryRepository.findMasteredGoalIds(learnerId,
-                contract.contentGoalIds(), PLANNING_SCOPE_MASTERY_THRESHOLD);
+                List.copyOf(statusGoalIds), PLANNING_SCOPE_MASTERY_THRESHOLD);
         var receipts = verifiedExamPassService.findForGoals(learnerId,
                 contract.parts().stream().map(UnitAssessmentContract.Part::goalId).toList());
         var result = validatedUnitAssessment(new UnitLearningMaterialService.AssessmentBinding(landscape,
@@ -1375,7 +1447,8 @@ public class LearnerService {
                 action.practice().openPrerequisites().forEach(prerequisite -> focus.add(prerequisite.goalId()));
             }
             setPlannedGoals(skillpilotId, focus);
-            setActiveGoal(skillpilotId, action.practice().startGoalId());
+            setActiveGoal(skillpilotId, action.practice().orientationGoalId() != null
+                    ? action.goalId() : action.practice().startGoalId());
         } else if ("learnGoal".equals(request.action())) {
             CompletionWorkflowState old = completionWorkflow(learner);
             if (!completionWorkflowMatches(learner, old) || request.intent() == null
@@ -2654,6 +2727,7 @@ public class LearnerService {
             learner.setLearningState(LearningState.FRONTIER);
             learnerRepository.save(learner);
         }
+        if (masteryChanged || activeGoalCleared) resumePendingUnitEntry(learner, goal.getId());
 
         if (publishEvent && (masteryChanged || activeGoalCleared)) {
             eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "MASTERY_UPDATE"));
@@ -2722,7 +2796,8 @@ public class LearnerService {
             CompositionViewService.CompositionStructureResolution section, String language) {
         if (unitLearningMaterialService == null || !ordinaryUnitPracticeAllowed(learner, projection)
                 || !projection.compositionViewIds().contains(section.viewId())
-                || !projection.targetGoalIds().contains(goalId) || projection.prerequisiteOnlyGoalIds().contains(goalId)) {
+                || !projection.targetGoalIds().contains(goalId) || projection.prerequisiteOnlyGoalIds().contains(goalId)
+                || requiredUnitOrientationGoalId(learner, projection, section.syntheticGoalId()) != null) {
             return List.of();
         }
         LearningGoal deck = projection.visibleGoals().get(goalId);
@@ -3994,6 +4069,7 @@ public class LearnerService {
                 && Objects.equals(effectiveGoalId, completionWorkflow.directAssessment().goalId())) {
             saveCompletionWorkflow(learner, completionWorkflow.withNavigation("required", null));
         }
+        if (completedGoal) resumePendingUnitEntry(learner, effectiveGoalId);
         advanceCoachStateRevision(learner);
 
         String sequentialAutopilotAnchorGoalId = completedGoal ? effectiveGoalId : null;
@@ -5552,6 +5628,7 @@ public class LearnerService {
     public List<String> setPlannedGoals(String skillpilotId, Set<String> goalIds) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        learner.setPendingUnitEntry(null);
         // A deliberate focus choice ends the completion navigation route, not mastery.
         if (completionRouteOwnsNavigation(learner)) {
             CompletionWorkflowState old = completionWorkflow(learner);
@@ -7529,12 +7606,15 @@ public class LearnerService {
                 projection);
         List<String> plannedIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
         Set<String> scope = Collections.emptySet();
+        List<FrontierGoal> requiredOrientationGoals = List.of();
+        Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
         if (!plannedIds.isEmpty()) {
             scope = computeScope(
                     plannedIds,
                     projection.structuralGoals(),
                     Collections.emptyMap());
-            List<FrontierGoal> requiredOrientationGoals = getRequiredOrientationGoals(
+            includeGuidedOpeningsInAtomFocus(learner, projection, projectedFocusIds, scope);
+            requiredOrientationGoals = getRequiredOrientationGoals(
                     learner,
                     projection,
                     allGoals,
@@ -7543,10 +7623,10 @@ public class LearnerService {
                     masteryMap,
                     projectedFocusIds,
                     plannedIds,
-                    scope).stream().filter(goal -> !waived.contains(goal.id())).toList();
-            if (!requiredOrientationGoals.isEmpty()) {
+                    scope, waived);
+            if (requiredOrientationGoals.stream().anyMatch(goal -> !unitOrientationScopes.containsKey(goal.id()))) {
                 return requiredOrientationGoals.stream()
-                        .filter(goal -> followedScope == null || followedScope.contains(goal.id()))
+                        .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
                         .map(FrontierGoal::id)
                         .distinct()
                         .toList();
@@ -7558,8 +7638,13 @@ public class LearnerService {
         FrontierPrerequisites prerequisites = frontierPrerequisites(
                 learner, projection, masteryMap, plannedIds.isEmpty() ? null : scope);
 
-        List<String> frontier = new ArrayList<>();
+        List<String> frontier = requiredOrientationGoals.stream()
+                .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
+                .map(FrontierGoal::id).collect(Collectors.toCollection(ArrayList::new));
         for (LearningGoal goal : allGoals.values()) {
+            if (frontier.contains(goal.getId())) continue;
+            if (isGatedByUnitOpening(goal.getId(), requiredOrientationGoals, unitOrientationScopes)) continue;
+            if (isDeferredLandscapeOrientation(goal, requiredOrientationGoals, unitOrientationScopes)) continue;
             if (completedWork.contains(goal.getId())) continue;
             if (followedScope != null && !followedScope.contains(goal.getId())) continue;
             if (!projection.targetGoalIds().contains(goal.getId())) {
@@ -7692,6 +7777,7 @@ public class LearnerService {
                 plannedIds,
                 allStructuralGoals,
                 Collections.emptyMap());
+        includeGuidedOpeningsInAtomFocus(learner, projection, projectedFocusIds, scope);
 
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Plan: " + plannedIds);
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Scope Size: " + scope.size());
@@ -7720,17 +7806,24 @@ public class LearnerService {
                 masteryMap,
                 projectedFocusIds,
                 plannedIds,
-                scope).stream().filter(goal -> !waived.contains(goal.id())).toList();
-        if (!requiredOrientationGoals.isEmpty()) {
+                scope, waived);
+        Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
+        if (requiredOrientationGoals.stream().anyMatch(goal -> !unitOrientationScopes.containsKey(goal.id()))) {
             return orderFrontierByProjection(requiredOrientationGoals.stream()
-                    .filter(goal -> followedScope == null || followedScope.contains(goal.id())).toList(), projection);
+                    .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes)).toList(), projection);
         }
 
         FrontierPrerequisites prerequisites = facts.prerequisites().get().within(scope);
-        List<FrontierGoal> frontier = new ArrayList<>();
+        List<FrontierGoal> frontier = requiredOrientationGoals.stream()
+                .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
+                .collect(Collectors.toCollection(ArrayList::new));
+        Set<String> openingIds = frontier.stream().map(FrontierGoal::id).collect(Collectors.toSet());
 
         // Iterate FILTERED goals (what the user should see)
         for (LearningGoal goal : allFilteredGoals.values()) {
+            if (openingIds.contains(goal.getId())) continue;
+            if (isGatedByUnitOpening(goal.getId(), requiredOrientationGoals, unitOrientationScopes)) continue;
+            if (isDeferredLandscapeOrientation(goal, requiredOrientationGoals, unitOrientationScopes)) continue;
             if (completedWork.contains(goal.getId())) continue;
             if (followedScope != null && !followedScope.contains(goal.getId())) continue;
             if (!projection.targetGoalIds().contains(goal.getId())) {
@@ -7931,6 +8024,207 @@ public class LearnerService {
                         || resolvedRequirementId.equals(resolveGoalRef(requirement, requirementLookupGoals)));
     }
 
+    /** Only real, visible atomic openings with a placement in their authored unit can guide entry. */
+    private Map<String, Set<String>> guidedUnitOrientationScopes(GoalProjection projection) {
+        if (unitLearningMaterialService == null || projection == null) return Map.of();
+        Map<String, Set<String>> scopes = new LinkedHashMap<>();
+        for (var binding : unitLearningMaterialService.orientationBindings(projection.compositionViewIds())) {
+            LearningGoal goal = projection.visibleGoals().get(binding.orientationGoalId());
+            if (!projection.targetGoalIds().contains(binding.orientationGoalId())
+                    || !isAtomicGoal(goal) || !isOrientationGoal(goal)) continue;
+            Set<String> unitScope = computeScope(resolveProjectedTargetScopeIds(List.of(binding.sectionGoalId()), projection),
+                    projection.structuralGoals(), Map.of());
+            // A foreign preparation atom keeps its own subject identity. Merely
+            // being used by this unit never turns a separate subject start into
+            // an entry to this unit.
+            unitScope.removeIf(id -> !binding.landscapeId().equals(landscapeService.getLandscapeIdForGoal(id)));
+            if (unitScope.contains(binding.orientationGoalId())) scopes.computeIfAbsent(binding.orientationGoalId(),
+                    ignored -> new LinkedHashSet<>()).addAll(unitScope);
+        }
+        return scopes;
+    }
+
+    private Set<String> unitEntryPlanningCredits(Learner learner, GoalProjection projection) {
+        return unitPlanningCreditsEnabled() ? unitPlanningCredits(learner, projection, completionGraph(learner, projection)).keySet() : Set.of();
+    }
+
+    private boolean isGatedByUnitOpening(String goalId, List<FrontierGoal> openings,
+            Map<String, Set<String>> unitScopes) {
+        return openings.stream().anyMatch(opening -> !goalId.equals(opening.id())
+                && unitScopes.getOrDefault(opening.id(), Set.of()).contains(goalId));
+    }
+
+    /** An opening guides selected work without becoming another exam target or quota item. */
+    private boolean isNavigationInFollowedScope(String goalId, Set<String> followedScope,
+            Map<String, Set<String>> unitScopes) {
+        return followedScope == null || followedScope.contains(goalId)
+                || unitScopes.containsKey(goalId) && followedScope.stream().anyMatch(unitScopes.get(goalId)::contains);
+    }
+
+    private boolean isDeferredLandscapeOrientation(LearningGoal goal, List<FrontierGoal> openings,
+            Map<String, Set<String>> unitScopes) {
+        if (!isOrientationGoal(goal) || unitScopes.containsKey(goal.getId())) return false;
+        String landscape = landscapeService.getLandscapeIdForGoal(goal.getId());
+        return landscape != null && openings.stream().filter(opening -> unitScopes.containsKey(opening.id()))
+                .anyMatch(opening -> landscape.equals(landscapeService.getLandscapeIdForGoal(opening.id())));
+    }
+
+    private record PendingUnitEntry(String targetGoalId, String openingGoalId, String curriculumDigest,
+            Set<String> focusIds, String completionWorkflow) { }
+
+    private void parkUnitEntry(Learner learner, String targetGoalId, String openingGoalId) {
+        try {
+            learner.setPendingUnitEntry(objectMapper.writeValueAsString(new PendingUnitEntry(targetGoalId,
+                    openingGoalId, completionScopeDigest(learner), Set.copyOf(getStoredPlannedGoals(learner.getSkillpilotId())),
+                    learner.getCompletionWorkflow())));
+        } catch (Exception invalid) { throw new IllegalStateException("Cannot preserve unit entry navigation", invalid); }
+    }
+
+    private PendingUnitEntry pendingUnitEntry(Learner learner) {
+        if (learner.getPendingUnitEntry() == null) return null;
+        try {
+            PendingUnitEntry pending = objectMapper.readValue(learner.getPendingUnitEntry(), PendingUnitEntry.class);
+            return Objects.equals(pending.curriculumDigest(), completionScopeDigest(learner))
+                    && Objects.equals(pending.focusIds(), Set.copyOf(getStoredPlannedGoals(learner.getSkillpilotId())))
+                    && Objects.equals(pending.completionWorkflow(), learner.getCompletionWorkflow()) ? pending : null;
+        } catch (Exception invalid) { return null; }
+    }
+
+    /** A confirmed opening resumes only the exact validated choice the learner already made. */
+    private void resumePendingUnitEntry(Learner learner, String completedOpeningId) {
+        PendingUnitEntry pending = pendingUnitEntry(learner);
+        if (pending == null || !Objects.equals(pending.openingGoalId(), completedOpeningId)) return;
+        learner.setPendingUnitEntry(null);
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        if (!projection.targetGoalIds().contains(pending.targetGoalId())
+                || !isAtomicGoal(projection.visibleGoals().get(pending.targetGoalId()))) return;
+        String nextOpening = requiredUnitOrientationGoalId(learner, projection, pending.targetGoalId());
+        String destination = nextOpening == null ? pending.targetGoalId() : nextOpening;
+        List<String> focus = new ArrayList<>(getStoredPlannedGoals(learner.getSkillpilotId()));
+        if (nextOpening != null && !computeScope(resolveProjectedTargetScopeIds(focus, projection),
+                projection.structuralGoals(), Map.of()).contains(nextOpening)
+                && !focus.stream().allMatch(id -> isAtomicGoal(projection.visibleGoals().get(id)))) {
+            plannedGoalRepository.save(new PlannedGoal(learner, nextOpening));
+        }
+        // Follow only this selected target's real path. An unrelated sibling
+        // unit's opening must not displace one of its required foundations.
+        Map<String, Integer> distance = new LinkedHashMap<>();
+        ArrayDeque<String> pendingIds = new ArrayDeque<>(List.of(pending.targetGoalId()));
+        distance.put(pending.targetGoalId(), 0);
+        while (!pendingIds.isEmpty()) {
+            String current = pendingIds.removeFirst();
+            LearningGoal definition = projection.structuralGoals().get(current);
+            for (String reference : definition == null || definition.getRequires() == null ? List.<String>of() : definition.getRequires()) {
+                String prerequisite = resolveGoalRef(reference, projection.structuralGoals());
+                if (prerequisite != null && distance.putIfAbsent(prerequisite, distance.get(current) + 1) == null) pendingIds.add(prerequisite);
+            }
+        }
+        Set<String> currentScope = computeScope(resolveProjectedTargetScopeIds(
+                getStoredPlannedGoals(learner.getSkillpilotId()), projection), projection.structuralGoals(), Map.of());
+        List<String> selectedPath = distance.keySet().stream().filter(currentScope::contains)
+                .collect(Collectors.toCollection(ArrayList::new));
+        if (!selectedPath.contains(pending.targetGoalId())) selectedPath.add(pending.targetGoalId());
+        if (nextOpening != null) selectedPath.add(nextOpening);
+        List<FrontierGoal> frontier = getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), selectedPath);
+        boolean available = frontier.stream().anyMatch(goal -> destination.equals(goal.id()) && "atomic".equals(goal.type()));
+        if (!available) {
+            // Receiving the opening never certifies a curricular prerequisite.
+            String foundation = frontier.stream().filter(goal -> "atomic".equals(goal.type()) && !isExamGoal(
+                    projection.visibleGoals().get(goal.id()))).map(FrontierGoal::id)
+                    .filter(distance::containsKey).min(Comparator.comparingInt(distance::get)).orElse(null);
+            if (foundation == null) {
+                Map<String, Set<String>> unitScopes = guidedUnitOrientationScopes(projection);
+                foundation = frontier.stream().map(FrontierGoal::id).filter(unitScopes::containsKey)
+                        .filter(id -> distance.keySet().stream().anyMatch(unitScopes.get(id)::contains))
+                        .findFirst().orElse(null);
+            }
+            if (foundation == null) {
+                parkUnitEntry(learner, pending.targetGoalId(), completedOpeningId);
+                return;
+            }
+            learner.setActiveGoalId(foundation);
+            learner.setLearningState(LearningState.TEACHING);
+            parkUnitEntry(learner, pending.targetGoalId(), foundation);
+            return;
+        }
+        learner.setActiveGoalId(destination);
+        learner.setLearningState(LearningState.TEACHING);
+        if (nextOpening != null) parkUnitEntry(learner, pending.targetGoalId(), nextOpening);
+    }
+
+    /** Read-only entry decision shared by first-party resource links and normal goal selection. */
+    @Transactional(readOnly = true)
+    public String getRequiredUnitOrientationGoalId(String skillpilotId, String requestedGoalId) {
+        Learner learner = getLearner(skillpilotId);
+        if (learner.getSelectedCurriculum() == null || requestedGoalId == null || requestedGoalId.isBlank()) return null;
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        return requiredUnitOrientationGoalId(learner, projection, requestedGoalId);
+    }
+
+    /** The same read decision for a due plan target before its runtime focus is selected. */
+    @Transactional(readOnly = true)
+    public String getRequiredUnitOrientationGoalIdForFocus(String skillpilotId, String requestedGoalId,
+            List<String> focusGoalIds) {
+        Learner learner = getLearner(skillpilotId);
+        if (learner.getSelectedCurriculum() == null || requestedGoalId == null || requestedGoalId.isBlank()
+                || focusGoalIds == null || focusGoalIds.isEmpty()) return null;
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        return requiredUnitOrientationGoalId(learner, projection, requestedGoalId, focusGoalIds);
+    }
+
+    private String requiredUnitOrientationGoalId(Learner learner, GoalProjection projection, String requestedGoalId) {
+        return requiredUnitOrientationGoalId(learner, projection, requestedGoalId, null);
+    }
+
+    private void includeGuidedOpeningsInAtomFocus(Learner learner, GoalProjection projection,
+            List<String> focusIds, Set<String> scope) {
+        if (focusIds.isEmpty() || !focusIds.stream().allMatch(id -> isAtomicGoal(projection.visibleGoals().get(id)))) return;
+        var unitScopes = guidedUnitOrientationScopes(projection);
+        if (unitScopes.isEmpty()) return;
+        Map<String, Double> mastery = getMastery(learner.getSkillpilotId());
+        Set<String> credits = unitEntryPlanningCredits(learner, projection);
+        List<String> pending = unitScopes.keySet().stream()
+                .filter(id -> mastery.getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD && !credits.contains(id))
+                .filter(id -> focusIds.stream().anyMatch(unitScopes.get(id)::contains)).toList();
+        pending.stream().filter(id -> pending.stream().noneMatch(parent -> !parent.equals(id)
+                && unitScopes.get(parent).contains(id))).forEach(scope::add);
+    }
+
+    private String requiredUnitOrientationGoalId(Learner learner, GoalProjection projection, String requestedGoalId,
+            List<String> prospectiveFocus) {
+        Map<String, Set<String>> unitScopes = guidedUnitOrientationScopes(projection);
+        if (unitScopes.isEmpty()) return null;
+        List<String> requestedRoots = resolveProjectedTargetScopeIds(List.of(requestedGoalId), projection);
+        Set<String> requestedScope = computeScope(requestedRoots, projection.structuralGoals(), Map.of());
+        if (requestedScope.isEmpty()) return null;
+        boolean explicitUnit = isCompositionStructureGoalId(requestedGoalId);
+        Set<String> explicitMarkers = explicitUnit ? unitLearningMaterialService.orientationBindings(projection.compositionViewIds()).stream()
+                .filter(binding -> requestedGoalId.equals(binding.sectionGoalId()))
+                .map(UnitLearningMaterialService.OrientationBinding::orientationGoalId).collect(Collectors.toSet()) : Set.of();
+        boolean explicitOpening = unitScopes.containsKey(requestedGoalId);
+        List<String> focusedRoots = prospectiveFocus == null
+                ? resolveEffectiveProjectedFocusIds(learner, projection) : prospectiveFocus;
+        Set<String> focusedScope = computeScope(resolveProjectedTargetScopeIds(
+                focusedRoots, projection), projection.structuralGoals(), Map.of());
+        boolean atomFocus = !focusedRoots.isEmpty() && focusedRoots.stream()
+                .allMatch(id -> isAtomicGoal(projection.visibleGoals().get(id)));
+        Map<String, Double> mastery = getMastery(learner.getSkillpilotId());
+        Set<String> credits = unitEntryPlanningCredits(learner, projection);
+        List<String> pending = unitScopes.keySet().stream()
+                .filter(id -> mastery.getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD && !credits.contains(id))
+                .filter(id -> explicitUnit ? explicitMarkers.contains(id) : explicitOpening ? requestedGoalId.equals(id)
+                        : requestedScope.stream().anyMatch(unitScopes.get(id)::contains))
+                .filter(id -> explicitUnit || explicitOpening || !focusedScope.contains(requestedGoalId) || focusedScope.contains(id)
+                        // An explicit atom focus has no sibling marker. Its owning opening remains available.
+                        || atomFocus)
+                .toList();
+        boolean directForeignFocusEntry = !explicitUnit && !explicitOpening && !focusedScope.contains(requestedGoalId);
+        return pending.stream().filter(id -> directForeignFocusEntry
+                ? pending.stream().noneMatch(child -> !child.equals(id) && unitScopes.get(id).contains(child))
+                : pending.stream().noneMatch(parent -> !parent.equals(id) && unitScopes.get(parent).contains(id)))
+                .findFirst().orElse(null);
+    }
+
     private List<FrontierGoal> getRequiredOrientationGoals(
             Learner learner,
             GoalProjection projection,
@@ -7940,30 +8234,65 @@ public class LearnerService {
             Map<String, Double> mastery,
             List<String> projectedFocusIds,
             List<String> plannedIds,
-            Set<String> scope) {
+            Set<String> scope,
+            Set<String> waived) {
         if (scope == null || scope.isEmpty()) {
             return Collections.emptyList();
         }
 
+        Map<String, Set<String>> unitScopes = guidedUnitOrientationScopes(projection);
+        Set<String> unitCredits = unitScopes.isEmpty() ? Set.of() : unitEntryPlanningCredits(learner, projection);
         List<FrontierGoal> unmasteredOrientationGoals = visibleGoals.values().stream()
                 .filter(goal -> projection.targetGoalIds().contains(goal.getId()))
                 .filter(goal -> plannedIds.isEmpty() || scope.contains(goal.getId()))
                 .filter(LearnerService::isOrientationGoal)
+                // A unit marker without its authored view binding must never
+                // become a broad subject introduction in another curriculum.
+                .filter(goal -> unitScopes.containsKey(goal.getId()) || unitLearningMaterialService == null
+                        || !unitLearningMaterialService.isUnitOrientationGoal(goal.getId()))
                 .filter(goal -> effectiveMastery.getOrDefault(goal.getId(), 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD)
+                .filter(goal -> !(unitScopes.containsKey(goal.getId()) ? unitCredits : waived).contains(goal.getId()))
                 .map(goal -> toFrontierGoal(goal, "Orientation required", null))
                 .toList();
         if (unmasteredOrientationGoals.isEmpty()) {
             return Collections.emptyList();
         }
 
+        // A unit's authored opening is a real completion marker. Existing subject
+        // progress or an active ordinary goal never stands in for receiving it.
+        // Keep the old broad landscape orientations' continuity policy separately.
+        Set<String> openUnitOrientations = unmasteredOrientationGoals.stream().map(FrontierGoal::id)
+                .filter(unitScopes::containsKey).collect(Collectors.toSet());
+        boolean explicitGuidedEntry = unitLearningMaterialService != null
+                && unitLearningMaterialService.orientationBindings(projection.compositionViewIds()).stream()
+                    .anyMatch(binding -> projectedFocusIds.contains(binding.sectionGoalId()))
+                || !projectedFocusIds.isEmpty() && projectedFocusIds.stream()
+                    .allMatch(id -> isAtomicGoal(visibleGoals.get(id))) && projectedFocusIds.stream()
+                    .anyMatch(id -> unitScopes.values().stream().anyMatch(unitScope -> unitScope.contains(id)));
         String projectionStateFilterId = resolveProjectionStateFilterId(learner);
         return unmasteredOrientationGoals.stream()
                 .filter(orientationGoal -> {
+                    if (unitScopes.containsKey(orientationGoal.id())) {
+                        // Within ordinary parent descent the parent's opening comes
+                        // first. Explicit child focus contains only the child's marker.
+                        return openUnitOrientations.stream().noneMatch(parent -> !parent.equals(orientationGoal.id())
+                                && unitScopes.get(parent).contains(orientationGoal.id()));
+                    }
                     Set<String> relevantScope = resolveRelevantPlannedScope(
                             orientationGoal.id(),
                             projectedFocusIds,
                             structuralGoals,
                             scope);
+                    String landscape = landscapeService.getLandscapeIdForGoal(orientationGoal.id());
+                    boolean hasUnitEntryOnThisPath = explicitGuidedEntry && unitScopes.entrySet().stream()
+                            .filter(entry -> Objects.equals(landscape, landscapeService.getLandscapeIdForGoal(entry.getKey())))
+                            .filter(entry -> scope.stream().anyMatch(entry.getValue()::contains))
+                            .anyMatch(entry -> openUnitOrientations.contains(entry.getKey()) || unitCredits.contains(entry.getKey())
+                                    || mastery.getOrDefault(entry.getKey(), 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD);
+                    if (hasUnitEntryOnThisPath) return false;
+                    // A deliberate unit opening is the learner's entry route;
+                    // a broader landscape invitation remains voluntary here.
+                    if (explicitGuidedEntry && unitScopes.keySet().stream().anyMatch(relevantScope::contains)) return false;
                     return !hasExistingCurricularProgressInScope(
                                     relevantScope,
                                     visibleGoals,
@@ -8620,8 +8949,20 @@ public class LearnerService {
                 if (material.isEmpty()) continue;
                 String title = coachSectionTitle(section, projection, language);
                 if (title == null) continue;
-                introduction = new ActiveGoalContext.UnitIntroduction(title,
-                        material.get().question(language), material.get().promise(language));
+                var intro = material.get().introduction(language);
+                String openingId = material.get().orientationGoalId();
+                String entryState = null;
+                if (openingId != null) {
+                    if (activeId != null && !openingId.equals(activeId)) entryState = "learning";
+                    else {
+                        Map<String, Double> progress = getMastery(learner.getSkillpilotId());
+                        Set<String> credits = unitEntryPlanningCredits(learner, projection);
+                        entryState = progress.getOrDefault(openingId, 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD
+                                || credits.contains(openingId) ? "return" : "orientation";
+                    }
+                }
+                introduction = new ActiveGoalContext.UnitIntroduction(title, intro.question(), intro.promise(),
+                        openingId, entryState, intro.scene(), intro.imageUrl(), intro.imageAlt(), intro.topics());
                 if (includeActivities) {
                     if (goal != null && !isSrsGoal(goal) && !isOrientationGoal(goal)) {
                         practiceExercise = material.get().exercise(activeId, language).orElse(null);
@@ -9157,8 +9498,13 @@ public class LearnerService {
         boolean activeGoalIsCurrentViewGoal = storedActiveGoalId != null
                 && !storedActiveGoalId.isBlank()
                 && storedActiveGoalId.equals(activeGoalId);
+        PendingUnitEntry pendingNavigation = pendingUnitEntry(learner);
+        boolean activeGuidedNavigation = pendingNavigation != null
+                && Objects.equals(pendingNavigation.openingGoalId(), activeGoalId)
+                && scope.contains(pendingNavigation.targetGoalId());
         boolean activeGoalOutOfScope = activeGoalIsCurrentViewGoal
                 && !preservesDirectAssessment(learner, activeGoalId)
+                && !activeGuidedNavigation
                 && activeGoalId != null
                 && !exactFollowedScope
                 && isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, structuralGoals, scope);
@@ -9167,7 +9513,8 @@ public class LearnerService {
                 plannedIds);
         boolean activeGoalOutOfCompletionContext = completionOwnsNavigation && completion != null
                 && completion.compiled() != null && activeGoalId != null
-                && !completion.compiled().contextGoalIds().contains(activeGoalId);
+                && !completion.compiled().contextGoalIds().contains(activeGoalId)
+                && !activeGuidedNavigation;
         boolean globalAssessmentFocusRemoved = !preservesDirectAssessment(learner, activeGoalId)
                 && isGlobalAssessmentGoalWithoutExplicitFocus(
                 activeGoalId,
@@ -9455,6 +9802,7 @@ public class LearnerService {
             String completedAnchorGoalId,
             Map<String, Double> mastery,
             boolean publishEvent) {
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         String currentActiveGoalId = learner.getActiveGoalId();
         if (currentActiveGoalId != null
                 && !currentActiveGoalId.isBlank()
@@ -9551,10 +9899,9 @@ public class LearnerService {
                 var learningScope = LearningPlanScopeResolver.resolve(blocks, asOf,
                         roots -> resolveLearningPlanGoalIds(learner.getSkillpilotId(), plan.getLandscapeId(), roots),
                         getStoredLearningPlanFocus(learner.getSkillpilotId(), plan.getLandscapeId()));
-                Set<String> scopeIds = Set.copyOf(learningScope.goalIds());
                 Set<String> eligibleIds = learningScope.goalIds().isEmpty() ? Set.of()
                         : getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), learningScope.goalIds()).stream()
-                                .filter(goal -> "atomic".equals(goal.type()) && scopeIds.contains(goal.id()))
+                                .filter(goal -> "atomic".equals(goal.type()))
                                 .map(FrontierGoal::id).collect(Collectors.toSet());
                 Optional<LearnerLearningPlanService.DueGoal> selected =
                         LearnerLearningPlanService.firstEligibleDueGoal(
@@ -9562,12 +9909,17 @@ public class LearnerService {
                                 periodEnd,
                                 mastery,
                                 fulfillment.waived(plan.getLandscapeId()),
-                                ignored -> eligibleIds);
+                                ignored -> eligibleIds,
+                                (goalId, focusIds) -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId)
+                                        ? requiredUnitOrientationGoalId(learner, projection, goalId,
+                                                "exam".equals(learningScope.kind()) ? learningScope.goalIds() : focusIds)
+                                        : null,
+                                goalId -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId));
                 if (selected.isEmpty()) {
                     continue;
                 }
                 LearnerLearningPlanService.DueGoal dueGoal = selected.get();
-                if (!learningScope.goalIds().contains(dueGoal.atomicGoalId())) continue;
+                if (!learningScope.goalIds().contains(dueGoal.requestedGoalId())) continue;
                 candidates.add(new LearningPlanHandoffCandidate(
                         plan.getId(),
                         plan.getLandscapeId(),
@@ -9577,7 +9929,8 @@ public class LearnerService {
                         dueGoal.blockEndDate(),
                         anchorSubjects.contains(subject),
                         dueGoal.scheduledDate(),
-                        "exam".equals(learningScope.kind()) ? learningScope.goalIds() : null));
+                        "exam".equals(learningScope.kind()) ? learningScope.goalIds() : null,
+                        dueGoal.requestedGoalId()));
             } catch (ResponseStatusException exception) {
                 if (exception.getStatusCode().is5xxServerError()) {
                     throw exception;
@@ -9633,6 +9986,14 @@ public class LearnerService {
                 .findByLearner_SkillpilotId(learner.getSkillpilotId());
         List<String> selectedFocus = candidate.scopeGoalIds() == null
                 ? List.of(candidate.focusGoalId()) : candidate.scopeGoalIds();
+        GoalProjection entryProjection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        Set<String> expandedFocus = computeScope(resolveProjectedTargetScopeIds(selectedFocus, entryProjection),
+                entryProjection.structuralGoals(), Map.of());
+        if (!expandedFocus.contains(candidate.atomicGoalId()) && !selectedFocus.stream()
+                .allMatch(id -> isAtomicGoal(entryProjection.visibleGoals().get(id)))) {
+            selectedFocus = new ArrayList<>(selectedFocus);
+            selectedFocus.add(candidate.atomicGoalId());
+        }
         boolean focusAlreadySelected = currentFocus.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet())
                 .equals(Set.copyOf(selectedFocus));
         if (!focusAlreadySelected) {
@@ -9641,6 +10002,9 @@ public class LearnerService {
         }
         learner.setActiveGoalId(candidate.atomicGoalId());
         learner.setLearningState(LearningState.TEACHING);
+        if (!Objects.equals(candidate.atomicGoalId(), candidate.requestedGoalId())) {
+            parkUnitEntry(learner, candidate.requestedGoalId(), candidate.atomicGoalId());
+        } else learner.setPendingUnitEntry(null);
         advanceCoachStateRevision(learner);
         if (publishEvent) {
             eventPublisher.publishEvent(new LearnerStateChangedEvent(
@@ -9659,7 +10023,14 @@ public class LearnerService {
             LocalDate blockEndDate,
             boolean sameSubjectAsCompletedAnchor,
             LocalDate scheduledDate,
-            List<String> scopeGoalIds) {
+            List<String> scopeGoalIds,
+            String requestedGoalId) {
+        LearningPlanHandoffCandidate(UUID planId, String landscapeId, String focusGoalId,
+                String atomicGoalId, LocalDate blockStartDate, LocalDate blockEndDate,
+                boolean sameSubjectAsCompletedAnchor, LocalDate scheduledDate, List<String> scopeGoalIds) {
+            this(planId, landscapeId, focusGoalId, atomicGoalId, blockStartDate, blockEndDate,
+                    sameSubjectAsCompletedAnchor, scheduledDate, scopeGoalIds, atomicGoalId);
+        }
         LearningPlanHandoffCandidate(UUID planId, String landscapeId, String focusGoalId,
                 String atomicGoalId, LocalDate blockStartDate, LocalDate blockEndDate,
                 boolean sameSubjectAsCompletedAnchor, LocalDate scheduledDate) {
@@ -9670,7 +10041,7 @@ public class LearnerService {
                 String atomicGoalId, LocalDate blockStartDate, LocalDate blockEndDate,
                 boolean sameSubjectAsCompletedAnchor) {
             this(planId, landscapeId, focusGoalId, atomicGoalId, blockStartDate, blockEndDate,
-                    sameSubjectAsCompletedAnchor, blockEndDate, null);
+                    sameSubjectAsCompletedAnchor, blockEndDate, null, atomicGoalId);
         }
     }
 
@@ -10430,7 +10801,11 @@ public class LearnerService {
         if (learner.getSelectedCurriculum() != null && !learner.getSelectedCurriculum().isBlank()) {
             visibleGoals = getFilteredGoals(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         }
-        String effectiveGoalId = resolveGoalIdInVisibleGoals(goalId, visibleGoals, false);
+        String requestedGoalId = resolveGoalIdInVisibleGoals(goalId, visibleGoals, false);
+        GoalProjection entryProjection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        String requiredOpening = requestedGoalId == null ? null
+                : requiredUnitOrientationGoalId(learner, entryProjection, requestedGoalId);
+        String effectiveGoalId = requiredOpening == null ? requestedGoalId : requiredOpening;
         if (effectiveGoalId == null || effectiveGoalId.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "goalId must be an atomic goal from the current frontier.");
@@ -10443,12 +10818,18 @@ public class LearnerService {
             }
             GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
             CompletionSnapshot snapshot = completionSnapshot(learner, projection);
-            boolean selectedChoice = Objects.equals(workflow.currentGoalId(), effectiveGoalId)
+            PendingUnitEntry pendingEntry = pendingUnitEntry(learner);
+            boolean selectedChoice = (Objects.equals(workflow.currentGoalId(), effectiveGoalId)
+                    || requiredOpening != null && Objects.equals(workflow.currentGoalId(), requestedGoalId)
+                    || pendingEntry != null && Objects.equals(pendingEntry.openingGoalId(), effectiveGoalId)
+                        && Objects.equals(workflow.currentGoalId(), pendingEntry.targetGoalId()))
                     && workflow.navigationIntent() != null && Set.of("required", "support", "voluntary").contains(workflow.navigationIntent());
             boolean voluntaryChoice = selectedChoice && "voluntary".equals(workflow.navigationIntent());
             if (snapshot == null || snapshot.evaluation() == null || !selectedChoice
-                    || !snapshot.compiled().contextGoalIds().contains(effectiveGoalId)
-                    || (!voluntaryChoice && snapshot.evaluation().waivedGoalIds().contains(effectiveGoalId))) {
+                    || !snapshot.compiled().contextGoalIds().contains(pendingEntry != null
+                            && Objects.equals(pendingEntry.openingGoalId(), effectiveGoalId)
+                            ? pendingEntry.targetGoalId() : requiredOpening == null ? effectiveGoalId : requestedGoalId)
+                    || (requiredOpening == null && !voluntaryChoice && snapshot.evaluation().waivedGoalIds().contains(effectiveGoalId))) {
                 throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                         "Choose the goal explicitly from the current completion route.");
             }
@@ -10458,20 +10839,75 @@ public class LearnerService {
                     "goalId must reference a released, concrete exam goal.");
         }
 
+        boolean unitFocusChanged = false;
+        PendingUnitEntry priorEntry = pendingUnitEntry(learner);
+        if (Objects.equals(requestedGoalId, requiredOpening)
+                && !(priorEntry != null && Objects.equals(priorEntry.openingGoalId(), requestedGoalId))) {
+            Map<String, Set<String>> openingScopes = guidedUnitOrientationScopes(entryProjection);
+            boolean nestedOpening = openingScopes.entrySet().stream().anyMatch(entry ->
+                    !entry.getKey().equals(requestedGoalId) && entry.getValue().contains(requestedGoalId));
+            if (nestedOpening) {
+                var binding = unitLearningMaterialService.orientationBindings(entryProjection.compositionViewIds()).stream()
+                        .filter(item -> requestedGoalId.equals(item.orientationGoalId())).findFirst().orElseThrow();
+                List<PlannedGoal> existingFocus = plannedGoalRepository.findByLearner_SkillpilotId(skillpilotId);
+                List<PlannedGoal> coveringFocus = existingFocus.stream().filter(item -> computeScope(
+                        resolveProjectedTargetScopeIds(List.of(item.getGoalId()), entryProjection),
+                        entryProjection.structuralGoals(), Map.of()).contains(requestedGoalId)).toList();
+                if (existingFocus.stream().noneMatch(item -> binding.sectionGoalId().equals(item.getGoalId()))) {
+                    plannedGoalRepository.deleteAll(coveringFocus);
+                    plannedGoalRepository.save(new PlannedGoal(learner, binding.sectionGoalId()));
+                    unitFocusChanged = true;
+                }
+            }
+        }
+
+        if (requiredOpening != null) {
+            Set<String> focus = computeScope(resolveProjectedTargetScopeIds(
+                    resolveEffectiveProjectedFocusIds(learner, entryProjection), entryProjection),
+                    entryProjection.structuralGoals(), Map.of());
+            if (!focus.contains(requestedGoalId) && !isOrientationGoal(visibleGoals.get(requestedGoalId))) {
+                var binding = unitLearningMaterialService.orientationBindings(entryProjection.compositionViewIds()).stream()
+                        .filter(item -> requiredOpening.equals(item.orientationGoalId())).findFirst().orElseThrow();
+                plannedGoalRepository.save(new PlannedGoal(learner, binding.sectionGoalId()));
+                focus.addAll(computeScope(resolveProjectedTargetScopeIds(List.of(binding.sectionGoalId()), entryProjection),
+                        entryProjection.structuralGoals(), Map.of()));
+                unitFocusChanged = true;
+            }
+            if (!focus.contains(requiredOpening)) plannedGoalRepository.save(new PlannedGoal(learner, requiredOpening));
+            if (Boolean.TRUE.equals(learner.getStrictMode()) && !isOrientationGoal(visibleGoals.get(requestedGoalId))) {
+                Set<String> foundations = frontierPrerequisiteCompiler.normalizePrerequisites(
+                        prerequisiteGraph(learner, entryProjection)).transitivePrerequisites(requestedGoalId);
+                for (String foundation : foundations) {
+                    if (!focus.contains(foundation) && entryProjection.targetGoalIds().contains(foundation)) {
+                        plannedGoalRepository.save(new PlannedGoal(learner, foundation));
+                    }
+                }
+            }
+        }
         // Selection remains valid for every genuine frontier goal, even when the
         // learner-facing read model compacted an equivalent option for display.
         // Server-authored transitions (for example an orientation-path entry)
         // must not be rejected merely because that goal was omitted by UI
         // compaction.
         List<FrontierGoal> frontierAtomic = filterAtomicFrontier(getUncompactedRichFrontier(skillpilotId));
-        boolean allowed = frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
+        boolean explicitUnitOpening = Objects.equals(requestedGoalId, requiredOpening)
+                && guidedUnitOrientationScopes(entryProjection).containsKey(requestedGoalId);
+        boolean allowed = explicitUnitOpening || frontierAtomic.stream().anyMatch(goal -> goal.id().equals(effectiveGoalId));
         if (!allowed) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "goalId must be an atomic goal from the current frontier.");
         }
 
+        String previousPendingEntry = learner.getPendingUnitEntry();
+        PendingUnitEntry pendingEntry = pendingUnitEntry(learner);
+        if (requiredOpening != null && !requiredOpening.equals(requestedGoalId)) {
+            parkUnitEntry(learner, requestedGoalId, requiredOpening);
+        } else if (!(Objects.equals(learner.getActiveGoalId(), effectiveGoalId) && pendingEntry != null
+                && Objects.equals(pendingEntry.openingGoalId(), effectiveGoalId))) learner.setPendingUnitEntry(null);
+
         String currentActiveGoalId = learner.getActiveGoalId();
-        if (currentActiveGoalId != null && !currentActiveGoalId.isBlank() && currentActiveGoalId.equals(effectiveGoalId)) {
+        if (currentActiveGoalId != null && !currentActiveGoalId.isBlank() && currentActiveGoalId.equals(effectiveGoalId)
+                && !unitFocusChanged && Objects.equals(previousPendingEntry, learner.getPendingUnitEntry())) {
             return;
         }
 
@@ -10511,19 +10947,33 @@ public class LearnerService {
         List<String> normalizedFocusGoalIds = focusGoalIds == null ? null
                 : focusGoalIds.stream().filter(Objects::nonNull).map(String::trim)
                         .filter(id -> !id.isBlank()).distinct().toList();
-        String normalizedActiveGoalId = activeGoalId == null || activeGoalId.isBlank()
+        String requestedActiveGoalId = activeGoalId == null || activeGoalId.isBlank()
                 ? null
                 : activeGoalId.trim();
-        if (!replaceActiveGoal && (normalizedFocusGoalIds != null || normalizedActiveGoalId != null)) {
+        if (!replaceActiveGoal && (normalizedFocusGoalIds != null || requestedActiveGoalId != null)) {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.BAD_REQUEST,
                     "focusGoalId and activeGoalId require replaceActiveGoal");
         }
-        if (replaceActiveGoal && normalizedActiveGoalId != null
+        if (replaceActiveGoal && requestedActiveGoalId != null
                 && (normalizedFocusGoalIds == null || normalizedFocusGoalIds.isEmpty())) {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.BAD_REQUEST,
                     "focusGoalId is required when activating a learning-plan goal");
+        }
+        GoalProjection entryProjection = requestedActiveGoalId == null ? null
+                : getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        String requiredOpening = requestedActiveGoalId == null ? null : requiredUnitOrientationGoalId(
+                learner, entryProjection, requestedActiveGoalId, normalizedFocusGoalIds);
+        String normalizedActiveGoalId = requiredOpening == null ? requestedActiveGoalId : requiredOpening;
+        if (requiredOpening != null) {
+            Set<String> expanded = computeScope(resolveProjectedTargetScopeIds(normalizedFocusGoalIds, entryProjection),
+                    entryProjection.structuralGoals(), Map.of());
+            if (!expanded.contains(requiredOpening) && !normalizedFocusGoalIds.stream()
+                    .allMatch(id -> isAtomicGoal(entryProjection.visibleGoals().get(id)))) {
+                normalizedFocusGoalIds = new ArrayList<>(normalizedFocusGoalIds);
+                normalizedFocusGoalIds.add(requiredOpening);
+            }
         }
         if (normalizedActiveGoalId != null) {
             assertPersonalizationCompleteForLearning(learner);
@@ -10546,6 +10996,7 @@ public class LearnerService {
             changed = true;
         }
         if (replaceActiveGoal) {
+            learner.setPendingUnitEntry(null);
             if (normalizedFocusGoalIds != null) {
                 List<PlannedGoal> currentFocus = plannedGoalRepository
                         .findByLearner_SkillpilotId(skillpilotId);
@@ -10568,6 +11019,10 @@ public class LearnerService {
                     : LearningState.TEACHING;
             if (learner.getLearningState() != requestedState) {
                 learner.setLearningState(requestedState);
+                changed = true;
+            }
+            if (requiredOpening != null && !requiredOpening.equals(requestedActiveGoalId)) {
+                parkUnitEntry(learner, requestedActiveGoalId, requiredOpening);
                 changed = true;
             }
         }

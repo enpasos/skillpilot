@@ -1,12 +1,14 @@
 # Lerneinheiten: Motivation am Anfang, Prüfungen am Ende
 
 **Konzeptentwurf vom 17. November 2026.** Der Product Owner hat die Richtung
-vorgegeben. Die Ausgestaltung steht zur Entscheidung. Der Entwurf ergänzt das
+vorgegeben. Der Stand vom 22. November ist unten festgehalten. Der Entwurf ergänzt das
 [bestehende Einheitenkonzept](learning-unit-wiring-concept-2026-11-14.md).
 Die [Graph-Definition (§11)](learning-units.de.md#sec-unit-claims) ordnet die
 Vorgaben und die offenen Ausgestaltungsfragen in das Gesamtmodell ein.
 
 **Einordnung vom 19. November 2026.** Der motivierende Auftakt gehört im neuen Entwurf zum geführten Lernweg. Wer direkt zur Abschlussprüfung geht, kann die Prüfung ohne vorheriges Motivationsgespräch beginnen. [Lernwege und Abschluss (§11)](learning-units.de.md)
+
+**Entscheidung vom 22. November 2026.** Im geführten Lernweg beginnt jede Einheit mit eigenen Prüfungen mit ihrem eigenen atomaren Motivationsziel. Karte, Cockpit und Coach verwenden dieselbe Zuordnung. Beim Betreten erscheinen Ort, Bild, Leitfrage, Lernversprechen und ein kurzer Überblick. Erst der bewusst bestätigte Abschluss oder eine für dieses Ziel gültige Anrechnung eröffnet die folgenden Fachziele, Übungen und Karten. Umschauen bleibt jederzeit möglich. Bei der Rückkehr orientiert der gespeicherte Stand. Ein direkter Prüfungsversuch und das Verlassen vor der Abgabe bleiben möglich. Für den E.1-Einheitenauftrag genügen A–D. Die vorgeschlagene Ableitung fachlicher Graphkanten in Abschnitt 4 ist eine eigene Modellierungsfrage.
 
 ## 1. Was Lernende vom Einstieg haben
 
@@ -16,8 +18,8 @@ Vorgaben und die offenen Ausgestaltungsfragen in das Gesamtmodell ein.
 
 So könnte der Coach die Einheit „Skalarprodukt über orthogonale Projektion
 deuten“ eröffnen. Die Frage gibt dem Lernen eine Richtung. Wer neugierig ist,
-kann nachfragen. Wer anfangen möchte, kann mit „weiter“ den Einstieg
-abschließen. Die Antwort erarbeitet die Person im Laufe der Einheit.
+kann nachfragen. Wer anfangen möchte, kann nach einem kurzen Rückblick das Abschlussangebot
+annehmen. Die Antwort erarbeitet die Person im Laufe der Einheit.
 
 Heute erklärt ein Ziel wie „Warum Mathematik?“ den Wert eines ganzen Fachs.
 Allein in der Sekundarstufe II verlangen 47 Einstiegsziele dieses eine Ziel.
@@ -65,11 +67,10 @@ später vorgesehen sind. Will der Coach sagen „Dort brauchst du das wieder“,
 muss er die konkrete Anwendung benennen können.
 
 Der Coach stellt das Beispiel vor und gibt der Person Gelegenheit zu einer
-Frage oder Reaktion. Ein ausdrückliches „weiter“ genügt zum Abschluss. Eine
-richtige Antwort, Fachbegriffe oder eine Selbsteinschätzung werden dafür
-nicht verlangt. Das passt zu einem kurzen Einstieg vor jeder Einheit. Für
-die ausführlichere Orientierung in einem ganzen Fach gilt der eigene
-[Ablauf mit Vertiefung und Abschlussangebot](context-and-views.de.md#sec-orientation).
+Frage oder Reaktion. Die Person darf gleich weiterwollen. Der Coach fasst kurz
+zusammen, was sie in der Einheit erwarten kann, und bietet den Abschluss an.
+Ein „weiter“ auf dieses Angebot schließt den Einstieg ab. Eine Vermutung oder
+eine korrekte fachliche Antwort ist freiwillig. [Orientierung und Abschluss](context-and-views.de.md#sec-orientation)
 
 Das Motivationsziel ist ein atomares Orientierungsziel
 (`semanticKind: "orientation"`) von SkillPilot. Der Praxisbezug steht als
@@ -90,10 +91,15 @@ von SkillPilot aus. Der Einstieg kann auf zwei Wegen als erledigt gelten
   den Einstieg noch, bleibt er offen. Eine abgeleitete Erledigung erzeugt
   keinen Gesprächsnachweis und schreibt kein Ergebnis am Motivationsziel.
 
-Das Anerkennungsmodell ist spezifiziert. Seine produktive Einführung setzt
-unter anderem die Bindung an die geprüfte Fassung voraus (R5). Eine später
-ergänzte Kante darf einem früheren Prüfungsergebnis keine neue Anerkennung
-verleihen. [Prüfungsgebundener Abschluss und offene Nachfrage](compendium-appendix.de.md#eq-needed)
+Eine Einheit kann diese Planungsanrechnung im Materialvertrag der Version 2
+ausdrücklich für ihr eigenes Motivationsziel freigeben. Die Fachentscheidung
+bindet die aktuelle Zielfassung, den zweisprachigen Einstieg, die Fassungen
+aller eigenen Prüfungen und die Liste der eigenen Lernkartenziele. Jeder
+Prüfungsbeleg muss diese Freigabe bereits bei seiner Ausstellung tragen.
+Die Lernkartenziele müssen persönlich abgeschlossen sein. In E.1 und seiner
+Untereinheit besteht bislang keine solche Freigabe. Auch nach bestandener
+Prüfung ist ihr geführter Einstieg daher einzeln erlebbar.
+[Prüfungsgebundener Abschluss und offene Nachfrage](compendium-appendix.de.md#eq-needed)
 
 ## 4. Wie der Auftakt im Graphen steht
 
@@ -134,29 +140,19 @@ Erkenntnisschritt. Eine äußere Prüfung kann dafür auf **Inhalte** der
 Untereinheit zurückgreifen. Zum vollständigen Abschluss der äußeren Einheit
 zählen auch die eigenständigen Prüfungsergebnisse der Untereinheit.
 
-**Offen bleibt, ob die innere Motivation die äußere voraussetzen soll
-(MZ9).** Wer die ganze äußere Einheit beginnt, soll ihren Auftakt zuerst
-erleben. Die mögliche Zusatzkante beträfe aber auch jemanden, der für Physik
-lediglich ein Mathematikziel aus der inneren Einheit braucht. Über die
-Voraussetzungen kämen dann beide Mathematikeinstiege in den persönlichen
-Lernumfang. Bei mehreren Ebenen könnte die Kette länger werden.
-
-Vorerst soll das Backend beim Start der ganzen Einheit deren eigenen
-Auftakt empfehlen. Eine verpflichtende Kante zur äußeren Motivation
-schlagen wir erst dann vor, wenn beide Lernwege an derselben geschachtelten
-Einheit gezeigt haben, dass auch jemand mit diesem Teilbedarf den äußeren
-Einstieg braucht. Als direkte Voraussetzung käme dann das Motivationsziel
-der nächsten umschließenden Einheit mit eigenen Prüfungen infrage. Dafür
-wären die Platzierung beider Ziele im Landesplan und eine eng begrenzte
-Ausnahme von der Regel für voraussetzungsfreie Orientierung (`GVR-014`)
-zu prüfen.
+**Entscheidung zu MZ9 vom 22. November.** Wer die ganze äußere Einheit beginnt,
+erlebt deren Einstieg und beim geführten Wechsel den des Kindes. Wer direkt
+im Kind beginnt, erlebt dessen eigenen Auftakt mit einem Satz zum Zusammenhang
+mit der Elterneinheit. Eine feste Voraussetzungskette zwischen den beiden
+Motivationszielen würde diesen direkten Lernweg versperren.
 
 ## 5. Was „am Anfang“ für die Auswahl bedeutet
 
 | Wie die Person einsteigt | Was sie erlebt |
 | --- | --- |
-| Sie beginnt eine ganze Einheit. | Der Coach bietet den kurzen Auftakt dieser Einheit an. Bei „Einheit für Einheit“ orientiert sich der Vorschlag an der Einheit, die gemäß Plan und Reihenfolge an der Reihe ist. |
-| Sie setzt einen engen Fokus auf ein einzelnes Inhaltsziel. | Die zugehörige Motivation zählt auch außerhalb des Fokus zum persönlichen Lernumfang. Für den normalen Fokus genügt es, dass die Voraussetzungen innerhalb des Fokus erfüllt sind. Der strikte Modus prüft sie auch außerhalb. |
+| Sie beginnt eine ganze Einheit. | Der verpflichtende erste Schritt ist der offene Auftakt der begonnenen Einheit. Bereits erledigte Einstiege bleiben beim Fortsetzen erhalten. |
+| Sie setzt einen engen Fokus auf ein einzelnes Inhaltsziel. | Im geführten Lernweg eines Ziels mit zugeordnetem Einheitsauftakt gilt der Einstieg seiner eigenen Einheit. Die übergeordneten Einstiege muss die Person beim Direktstart in einer Untereinheit nicht nachholen. |
+| Sie setzt eine Klausurvorbereitung mit selbst gewählten Lernzielen fort. | Benötigt das nächste gewählte Ziel einen Einheitenauftakt, führt der Coach zuerst dorthin. Nach der Bestätigung setzt die Person das gewählte Ziel oder seine noch offene fachliche Vorbereitung fort. Umfang, Termine und Tagesquote richten sich weiter nach den für diese Klausur gewählten Zielen. |
 | Sie wählt bewusst eine verfügbare Prüfung. | Sie kann die Prüfung direkt versuchen, auch wenn der Einstieg oder ein Teil der Vorbereitung noch offen ist. |
 
 Beim **ersten Start** bietet der normale Lernablauf heute nur offene

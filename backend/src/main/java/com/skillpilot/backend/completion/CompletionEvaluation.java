@@ -32,7 +32,7 @@ public record CompletionEvaluation(
     public int pendingTargetCount() { return pendingTargetGoalIds.size(); }
     public int masteredAssessmentCount() { return masteredAssessmentGoalIds.size(); }
 
-    /** Adds only explicitly certified ordinary work; neither mastery nor other prerequisite demand changes. */
+    /** Apply current, individually bound planning grants without changing any learner mastery. */
     public CompletionEvaluation withPlanningCredits(Map<String, WaiverReason> credits, Set<String> context,
             Set<String> targets, Set<String> protectedGoals) {
         if (credits.isEmpty()) return this;

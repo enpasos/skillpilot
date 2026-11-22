@@ -45,6 +45,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.UUID;
 import java.util.function.Function;
+import java.util.function.BiFunction;
+import java.util.function.Predicate;
 import org.springframework.http.HttpStatus;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -1087,7 +1089,7 @@ public class LearnerLearningPlanService {
                     true,
                     true,
                     selectedScope,
-                    candidate.dueGoal().atomicGoalId(),
+                    candidate.dueGoal().requestedGoalId(),
                     false,
                     "LEARNING_PLAN_PACKAGE_ACTIVATED");
         } else {
@@ -1224,7 +1226,7 @@ public class LearnerLearningPlanService {
                         false,
                         true,
                         transitionFocus(skillpilotId, plan, dueGoal, asOf, false),
-                        dueGoal.atomicGoalId(),
+                        dueGoal.requestedGoalId(),
                         true,
                         "LEARNING_PLAN_SUBJECT_SWITCH");
         return transition(candidate, dueGoal.atomicGoalId(), transition.changed(), transition.state());
@@ -1269,7 +1271,7 @@ public class LearnerLearningPlanService {
     private LearnerLearningPlanApi.TransitionResponse applyPersonalCurriculumContinuation(
             String skillpilotId, String landscapeId, DueGoal goal, String changeType) {
         var result = learners.applyLearningPlanTransition(skillpilotId, false, true,
-                goal.focusGoalId(), goal.atomicGoalId(), true, changeType);
+                goal.focusGoalId(), goal.requestedGoalId(), true, changeType);
         return new LearnerLearningPlanApi.TransitionResponse(null, null, landscapeId,
                 goal.focusGoalId(), goal.atomicGoalId(), result.changed(), result.state());
     }
@@ -1364,7 +1366,7 @@ public class LearnerLearningPlanService {
                 false,
                 true,
                 transitionFocus(skillpilotId, candidate.plan(), candidate.dueGoal(), asOf, true),
-                candidate.dueGoal().atomicGoalId(),
+                candidate.dueGoal().requestedGoalId(),
                 true,
                 "LEARNING_PLAN_RECONCILED");
         return transition(
@@ -1403,7 +1405,7 @@ public class LearnerLearningPlanService {
         learners.assertLearningPlanMayActivateGoal(skillpilotId, selected.atomicGoalId());
         learners.setPlannedGoalsAndGetState(skillpilotId, new LinkedHashSet<>(
                 transitionFocus(skillpilotId, plan, selected, asOf, true)));
-        learners.setActiveGoal(skillpilotId, selected.atomicGoalId());
+        learners.setActiveGoal(skillpilotId, selected.requestedGoalId());
         UnifiedLearnerStateResponse state = learners.getLearnerState(skillpilotId);
         return new LearnerLearningPlanApi.ContinueResponse(
                 plan.getId(),
@@ -1641,10 +1643,12 @@ public class LearnerLearningPlanService {
             Set<String> scopeIds = Set.copyOf(scope.goalIds());
             Set<String> frontierIds = scopeIds.isEmpty() || !"exam".equals(scope.kind()) ? Set.of()
                     : learners.getUncompactedRichFrontierForFocus(skillpilotId, scope.goalIds()).stream()
-                            .filter(goal -> "atomic".equals(goal.type()) && scopeIds.contains(goal.id()))
+                            .filter(goal -> "atomic".equals(goal.type()))
                             .map(FrontierGoal::id).collect(java.util.stream.Collectors.toSet());
             Optional<DueGoal> due = "exam".equals(scope.kind())
-                    ? firstEligibleDueGoal(blocks, periodEnd, mastery, waived, ignored -> frontierIds)
+                    ? firstEligibleDueGoal(blocks, periodEnd, mastery, waived, ignored -> frontierIds,
+                            (goalId, ignored) -> learners.getRequiredUnitOrientationGoalIdForFocus(
+                                    skillpilotId, goalId, scope.goalIds()), scopeIds::contains)
                     : firstEligibleDueGoal(skillpilotId, blocks, periodEnd, mastery, waived);
             if (due.isPresent()) {
                 // With explicit authorization, an earlier open goal keeps its priority
@@ -1673,7 +1677,7 @@ public class LearnerLearningPlanService {
                 .thenComparing(
                         candidate -> candidate.plan().getLandscapeId(),
                         Comparator.nullsLast(String::compareTo))
-                .thenComparing(candidate -> candidate.dueGoal().atomicGoalId())
+                .thenComparing(candidate -> candidate.dueGoal().requestedGoalId())
                 .thenComparing(candidate -> candidate.plan().getId());
     }
 
@@ -1824,7 +1828,8 @@ public class LearnerLearningPlanService {
                         .stream()
                         .filter(goal -> "atomic".equals(goal.type()))
                         .map(FrontierGoal::id)
-                        .collect(java.util.stream.Collectors.toSet()));
+                        .collect(java.util.stream.Collectors.toSet()),
+                (goalId, focusIds) -> learners.getRequiredUnitOrientationGoalIdForFocus(skillpilotId, goalId, focusIds));
     }
 
     private Optional<DueGoal> firstPersonalCurriculumGoal(String skillpilotId, String landscapeId, Set<String> waived) {
@@ -1992,16 +1997,23 @@ public class LearnerLearningPlanService {
         if (scope.goalIds().isEmpty()) return Optional.empty();
         Set<String> selectedIds = Set.copyOf(scope.goalIds());
         Set<String> frontierIds = learners.getUncompactedRichFrontierForFocus(skillpilotId, scope.goalIds()).stream()
-                .filter(goal -> "atomic".equals(goal.type()) && selectedIds.contains(goal.id()))
+                .filter(goal -> "atomic".equals(goal.type()))
                 .map(FrontierGoal::id).collect(java.util.stream.Collectors.toSet());
         LocalDate dueCutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);
-        Optional<DueGoal> due = firstEligibleDueGoal(blocks, dueCutoff, mastery, waived, ignored -> frontierIds);
+        BiFunction<String, List<String>, String> requiredOpening = (goalId, ignored) -> selectedIds.contains(goalId)
+                ? learners.getRequiredUnitOrientationGoalIdForFocus(skillpilotId, goalId, scope.goalIds()) : null;
+        Optional<DueGoal> due = firstEligibleDueGoal(blocks, dueCutoff, mastery, waived,
+                ignored -> frontierIds, requiredOpening, selectedIds::contains);
         if (due.isPresent()) {
             return due;
         }
-        return scope.goalIds().stream().filter(frontierIds::contains).filter(id -> !waived.contains(id))
+        return scope.goalIds().stream().filter(id -> !waived.contains(id))
                 .filter(id -> mastery.getOrDefault(id, 0.0) < MASTERY_THRESHOLD)
-                .findFirst().map(id -> new DueGoal(id, id, null, null));
+                .map(id -> {
+                    String opening = frontierIds.contains(id) ? null : requiredOpening.apply(id, scope.goalIds());
+                    String entry = opening == null ? id : opening;
+                    return frontierIds.contains(entry) ? new DueGoal(entry, id, null, null, null, id) : null;
+                }).filter(Objects::nonNull).findFirst();
     }
 
     private static String runtimeFocusGoalId(LearnerLearningPlanApi.Block block, String atomicGoalId) {
@@ -2034,12 +2046,29 @@ public class LearnerLearningPlanService {
     static Optional<DueGoal> firstEligibleDueGoal(List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf, Map<String, Double> mastery, Set<String> waived,
             Function<List<String>, Set<String>> frontierIdsForFocus) {
+        return firstEligibleDueGoal(blocks, asOf, mastery, waived, frontierIdsForFocus, (goal, focus) -> null);
+    }
+
+    static Optional<DueGoal> firstEligibleDueGoal(List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf, Map<String, Double> mastery, Set<String> waived,
+            Function<List<String>, Set<String>> frontierIdsForFocus,
+            BiFunction<String, List<String>, String> requiredOpeningForFocus) {
+        return firstEligibleDueGoal(blocks, asOf, mastery, waived, frontierIdsForFocus,
+                requiredOpeningForFocus, ignored -> true);
+    }
+
+    static Optional<DueGoal> firstEligibleDueGoal(List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf, Map<String, Double> mastery, Set<String> waived,
+            Function<List<String>, Set<String>> frontierIdsForFocus,
+            BiFunction<String, List<String>, String> requiredOpeningForFocus,
+            Predicate<String> allowedRequestedGoal) {
         Map<String, LocalDate> dueDates = scheduledAtomicGoalDueDatesForSchedule(blocks);
         LinkedHashSet<String> alreadyDue = new LinkedHashSet<>();
         List<DueGoal> candidates = new ArrayList<>();
         for (DueBlock dueBlock : dueLearningBlocks(blocks, asOf)) {
             LearnerLearningPlanApi.Block block = dueBlock.block();
             List<String> openDueInBlock = dueBlock.atomicGoalIds().stream()
+                    .filter(allowedRequestedGoal)
                     .filter(alreadyDue::add)
                     .filter(goalId -> !waived.contains(goalId))
                     .filter(goalId -> mastery.getOrDefault(goalId, 0.0) < MASTERY_THRESHOLD)
@@ -2048,20 +2077,33 @@ public class LearnerLearningPlanService {
             if (!block.focusGoalIds().isEmpty()) {
                 Set<String> frontierIds = frontierIdsForFocus.apply(block.focusGoalIds());
                 for (String goalId : openDueInBlock) {
-                    if (frontierIds.contains(goalId)) candidates.add(new DueGoal(
-                            goalId, runtimeFocusGoalId(block, goalId), block.startDate(), block.endDate(), dueDates.get(goalId)));
+                    String entryId = dueEntryGoalId(block, goalId, block.focusGoalIds(), frontierIds, requiredOpeningForFocus);
+                    if (entryId != null) candidates.add(new DueGoal(
+                            entryId, runtimeFocusGoalId(block, goalId), block.startDate(), block.endDate(), dueDates.get(goalId), goalId));
                 }
             } else {
                 for (String goalId : openDueInBlock) {
-                    if (frontierIdsForFocus.apply(List.of(goalId)).contains(goalId)) {
-                        candidates.add(new DueGoal(goalId, goalId, block.startDate(), block.endDate(),
-                                dueDates.get(goalId)));
+                    List<String> focusIds = List.of(goalId);
+                    String entryId = dueEntryGoalId(block, goalId, focusIds, frontierIdsForFocus.apply(focusIds), requiredOpeningForFocus);
+                    if (entryId != null) {
+                        candidates.add(new DueGoal(entryId, goalId, block.startDate(), block.endDate(),
+                                dueDates.get(goalId), goalId));
                     }
                 }
             }
         }
         return candidates.stream().min(Comparator.comparing(DueGoal::scheduledDate)
                 .thenComparing(DueGoal::blockEndDate).thenComparing(DueGoal::blockStartDate));
+    }
+
+    /** An unscheduled opening may guide an existing obligation; it never joins its fixed plan basis. */
+    private static String dueEntryGoalId(LearnerLearningPlanApi.Block block, String goalId,
+            List<String> focusIds, Set<String> frontierIds,
+            BiFunction<String, List<String>, String> requiredOpeningForFocus) {
+        if (frontierIds.contains(goalId)) return goalId;
+        if (block.unitAssignment() != null) return null;
+        String openingId = requiredOpeningForFocus.apply(goalId, focusIds);
+        return openingId != null && frontierIds.contains(openingId) ? openingId : null;
     }
 
     static List<LearnerLearningPlanApi.Block> normalizeBlocks(
@@ -3194,7 +3236,12 @@ public class LearnerLearningPlanService {
             String focusGoalId,
             LocalDate blockStartDate,
             LocalDate blockEndDate,
-            LocalDate scheduledDate) {
+            LocalDate scheduledDate,
+            String requestedGoalId) {
+        DueGoal(String atomicGoalId, String focusGoalId, LocalDate blockStartDate, LocalDate blockEndDate,
+                LocalDate scheduledDate) {
+            this(atomicGoalId, focusGoalId, blockStartDate, blockEndDate, scheduledDate, atomicGoalId);
+        }
         DueGoal(String atomicGoalId, String focusGoalId, LocalDate blockStartDate, LocalDate blockEndDate) {
             this(atomicGoalId, focusGoalId, blockStartDate, blockEndDate, null);
         }

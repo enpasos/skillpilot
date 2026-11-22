@@ -2,8 +2,9 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 import { chromium } from 'playwright'
 
-const [site, api, profilesFile, physicsCourse = 'GK'] = process.argv.slice(2)
+const [site, api, profilesFile, physicsCourse = 'GK', browserCase = 'all'] = process.argv.slice(2)
 assert(['GK', 'LK'].includes(physicsCourse), 'Expected the explicit Physics course GK or LK')
+assert(['all', 'short-map', 'mobile-map', 'structure', 'planning', 'guided', 'foreign-focus'].includes(browserCase), 'Unknown focused browser case')
 const throwAssessment = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
 const multiphaseAssessment = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
 const voluntaryAssessmentIds = physicsCourse === 'LK' ? [throwAssessment, multiphaseAssessment] : [throwAssessment]
@@ -16,8 +17,17 @@ const readTask = async file => JSON.parse(await readFile(
 const tasks = { A: await readTask('wagen.json'), B: await readTask('wurf.json') }
 const scope = await readTask('umfang.json')
 const unitPartIds = [...scope.ownAssessmentGoalIds, ...scope.childAssessmentGoalIds]
-const { unit, intro, exercises } = JSON.parse(await readFile(new URL(
+const { unit, intro, exercises: ownExercises } = JSON.parse(await readFile(new URL(
   '../../curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json', import.meta.url), 'utf8'))
+const childMaterial = JSON.parse(await readFile(new URL(
+  '../../curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json', import.meta.url), 'utf8'))
+const orientationGoalIds = [unit.orientationGoalId, childMaterial.unit.orientationGoalId]
+const unitStudyIntentKey = 'skillpilot:unit-study-navigation:v1'
+assert(orientationGoalIds.every(id => typeof id === 'string'))
+const exercises = [...new Map([...ownExercises, ...childMaterial.exercises].map(exercise => [exercise.goalId, exercise])).values()]
+const canonicalPhysics = JSON.parse(await readFile(new URL(
+  '../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', import.meta.url), 'utf8'))
+const parentOrientationTitle = canonicalPhysics.goals.find(goal => goal.id === unit.orientationGoalId).title
 const contract = unit.assessmentContract
 assert.equal(contract?.parts.length, 4, 'Expected the reviewed Hessen E.1 unit contract')
 assert.deepEqual(contract.parts.map(part => part.goalId), unitPartIds)
@@ -32,7 +42,9 @@ const readApi = async (id, suffix) => {
 async function evidence(id) {
   const mastery = await readApi(id, '/mastery')
   const passes = await Promise.all([...unitPartIds, ...voluntaryAssessmentIds].map(goalId => readApi(id, '/exam-passes/' + goalId)))
-  assert(Object.values(mastery.mastery).every(value => value === 0))
+  const oriented = ['G8', 'G9'].some(duration => profiles[duration].oriented === id)
+  assert.deepEqual(Object.keys(mastery.mastery).filter(goal => mastery.mastery[goal] > 0).sort(),
+    oriented ? [...orientationGoalIds].sort() : [], 'Only explicitly confirmed orientation results may exist')
   assert(passes.every(receipts => Array.isArray(receipts) && receipts.length === 0))
   return { mastery, passes }
 }
@@ -206,7 +218,11 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
         if (width >= 1024) await checkMapCardExposure(page, [task.id, other.id, scope.childAssessmentGoalIds[0]])
         await neighbor.click()
       } catch (error) {
-        throw new Error(`${duration}/${part}/${lang}: ${(await map.innerText()).slice(0, 1600)}`, { cause: error })
+        const input = map.getByRole('textbox').first()
+        throw new Error(`${duration}/${part}/${lang}: ${JSON.stringify({ width, height,
+          search: await input.inputValue().catch(() => null), options: await map.getByRole('option').allTextContents(),
+          selection: await map.getByTestId('native-cockpit-map').evaluateAll(nodes => nodes[0]?.getAttribute('data-selected-goal-id') ?? null),
+          scope: await map.getByTestId('learning-map-board').evaluateAll(nodes => nodes[0]?.getAttribute('data-scope-id') ?? null) })}\n${(await map.innerText()).slice(0, 1600)}`, { cause: error })
       }
       if (await map.isVisible()) await map.getByRole('button', { name: lang === 'de' ? 'Lernkarte schließen' : 'Close learning map' }).click()
       await checkCard(page, other, lang)
@@ -221,6 +237,199 @@ const worksheets = [
   { goalId: '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd', title: 'Gleichförmige Bewegung und Geschwindigkeit' },
   { goalId: '09029573-864f-40ca-bf8a-cee7bf6dcb73', title: 'Freier Fall experimentell untersuchen' },
 ]
+
+async function checkGuidedUnitEntry(duration) {
+  const { viewer, parentOriented, E1: section } = profiles[duration]
+  assert(parentOriented, 'Expected a separately coach-confirmed parent-only profile')
+  const page = await browser.newPage({ viewport: { width: duration === 'G8' ? 1440 : 390, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
+  page.setDefaultTimeout(60000)
+  const before = await evidence(viewer)
+  const parentBefore = await readApi(parentOriented, '/mastery')
+  try {
+    await page.goto(site + '/nativ/' + duration + '/E1')
+    const card = page.getByTestId('learner-current-goal')
+    const view = card.getByTestId('unit-introduction')
+    await view.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
+    await view.getByText(intro.de.scene, { exact: true }).waitFor()
+    assert((await view.getByTestId('unit-introduction-context').innerText()).includes('E.1 Bewegungen und ihre Beschreibung'))
+    const image = view.getByRole('img', { name: intro.de.imageAlt, exact: true })
+    await image.waitFor()
+    await page.waitForFunction(src => [...document.images].some(image => image.src.endsWith(src) && image.complete && image.naturalWidth > 0), intro.de.imageUrl)
+    assert.deepEqual(await view.getByTestId('unit-introduction-topics').getByRole('listitem').allTextContents(), intro.de.topics)
+    assert.equal((await view.innerText()).includes(childMaterial.intro.de.question), false, 'The parent overview does not replay a nested introduction')
+    assert.deepEqual(await evidence(viewer), before)
+
+    // A direct exam arrival may conserve drawing space, but navigating into a
+    // unit is a new learning intent even while the routed exam stays selected.
+    await page.goto(site + '/learner/' + tasks.B.id)
+    await checkCard(page, tasks.B, 'de')
+    await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
+    const map = page.getByTestId('learner-learning-map-dialog')
+    const mapIntro = map.getByTestId('unit-introduction')
+    await mapIntro.getByText('Der Einstieg der Einheit ist noch offen.', { exact: true }).waitFor()
+    assert.equal(await mapIntro.getByRole('img').count(), 0)
+    await map.locator('.lum-canvas[aria-busy="false"]').waitFor()
+    await map.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).press('Enter')
+    await mapIntro.getByRole('heading', { name: childMaterial.intro.de.question, exact: true }).waitFor()
+    await mapIntro.getByRole('img', { name: childMaterial.intro.de.imageAlt, exact: true }).waitFor()
+    assert.equal(await map.getByTestId('native-cockpit-map').getAttribute('data-selected-goal-id'), tasks.B.id)
+    assert.equal((await mapIntro.innerText()).includes(intro.de.question), false)
+    await map.locator('.lum-canvas[aria-busy="false"]').waitFor()
+    await map.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+    await mapIntro.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
+    await mapIntro.getByRole('img', { name: intro.de.imageAlt, exact: true }).waitFor()
+    assert.equal(await map.getByTestId('native-cockpit-map').getAttribute('data-selected-goal-id'), tasks.B.id)
+    await map.getByRole('button', { name: 'Lernkarte schließen', exact: true }).click()
+    assert.deepEqual(await evidence(viewer), before, 'Explicit unit entry never records an orientation result')
+
+    const exercise = exercises.find(entry => entry.goalId === '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2').de
+    await page.goto(site + '/learner/89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2')
+    await card.getByRole('button', { name: 'Üben: ' + exercise.title, exact: true }).click()
+    await page.waitForURL(url => url.pathname === '/learner/' + unit.orientationGoalId)
+    assert.equal(await page.getByRole('dialog', { name: exercise.title, exact: true }).count(), 0)
+    assert.deepEqual(await evidence(viewer), before, 'Trying an exercise redirects to the introduction without results')
+
+    await page.goto(site + '/vergleich/' + duration + '/elterneinstieg')
+    await view.getByText('Einstieg abgeschlossen.', { exact: true }).waitFor()
+    const childSection = section.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall')
+    await page.goto(site + '/learner/' + childSection)
+    await view.getByRole('heading', { name: childMaterial.intro.de.question, exact: true }).waitFor()
+    await view.getByRole('img', { name: childMaterial.intro.de.imageAlt, exact: true }).waitFor()
+    assert.equal((await view.innerText()).includes(intro.de.scene), false, 'The nested introduction shows its own scene')
+    assert((await view.getByTestId('unit-introduction-context').innerText()).includes('E.1 Bewegungen und ihre Beschreibung'))
+    const childExercise = childMaterial.exercises[0]
+    await page.goto(site + '/learner/' + childExercise.goalId)
+    await card.getByRole('button', { name: 'Üben: ' + childExercise.de.title, exact: true }).click()
+    await page.waitForURL(url => url.pathname === '/learner/' + childMaterial.unit.orientationGoalId)
+    await view.getByRole('heading', { name: childMaterial.intro.de.question, exact: true }).waitFor()
+    assert.deepEqual(await readApi(parentOriented, '/mastery'), parentBefore, 'Child resource gating preserves the parent confirmation')
+    await page.reload({ waitUntil: 'domcontentloaded' })
+    await view.getByRole('heading', { name: childMaterial.intro.de.question, exact: true }).waitFor()
+
+    // The handoff reaches the ordinary provider flow even without a coach session.
+    const activation = page.waitForResponse(response => response.request().method() === 'POST' && new URL(response.url()).pathname.endsWith('/active-goal'))
+    await view.getByTestId('unit-introduction-continue').click()
+    const selected = await activation
+    assert.equal(selected.status(), 200)
+    assert.equal(selected.request().postDataJSON().goalId, childExercise.goalId, 'The intended exercise goal survives the introduction handoff')
+    await page.waitForURL(url => url.pathname === '/' && url.searchParams.get('start') === 'coach')
+    const launch = page.getByTestId('claude-plugin-start')
+    const next = page.getByRole('button', { name: 'Weiter zu Schritt 2: Curriculum wählen' })
+    if (!await launch.isVisible() && await next.isVisible()) await next.click()
+    await launch.waitFor()
+    const pending = page.waitForResponse(response => response.request().method() === 'POST' && new URL(response.url()).pathname.endsWith('/claude/v1/launch'))
+    await launch.click()
+    const launched = await pending
+    assert.equal(launched.status(), 200)
+    assert.equal(launched.request().postDataJSON().completionAssessment ?? null, null)
+    const state = await readApi(parentOriented, '/state')
+    assert.equal(state.activeGoal.id ?? state.activeGoal.goalId, childMaterial.unit.orientationGoalId)
+    assert.deepEqual(await readApi(parentOriented, '/mastery'), parentBefore, 'Starting a coach session does not confirm orientation')
+    console.log(duration, 'Vollständiger Eltern-/Kindeinstieg, echter Bildabruf, freie Ansicht, Übungssperre und normaler Anbieterstart ohne Ergebnisänderung OK')
+  } finally { await page.close() }
+}
+
+async function checkForeignFocusEntry(duration) {
+  const root = 'a0e13c56-c25f-4742-9272-3a1a603ee52e'
+  const math = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
+  const call = async (path, method = 'GET', data) => {
+    const response = await fetch(api + path, { method, headers: { 'Content-Type': 'application/json' },
+      ...(data === undefined ? {} : { body: JSON.stringify(data) }) })
+    const body = await response.text()
+    assert.equal(response.status, 200, method + ' ' + path + ': ' + body.slice(0, 1800))
+    return body ? JSON.parse(body) : null
+  }
+  const created = await call('/api/ui/learners', 'POST', {})
+  const learnerId = created.state.skillpilotId
+  const learnerPath = '/api/ui/learners/' + learnerId
+  await call(learnerPath + '/curriculum', 'PUT', { curriculumId: root })
+  const sourceCurriculum = JSON.parse((await readApi(profiles[duration].viewer, '')).personalCurriculum)
+  const curriculum = { [root]: sourceCurriculum[root], [scope.landscapeId]: sourceCurriculum[scope.landscapeId],
+    [math]: { selected: true, filterId: 'GK' } }
+  await call(learnerPath + '/personal-curriculum', 'PUT', curriculum)
+  let setup = await call(learnerPath + '/personalization-plan')
+  for (let count = 0; setup.stage !== 'COMPLETE' && count < 15; count++) {
+    const choice = setup.options.find(option => option.kind === 'COMPLETE_GROUP')
+      ?? setup.options.find(option => option.filterId === (option.landscapeId === scope.landscapeId ? physicsCourse : 'GK'))
+    assert(choice, 'The mixed-subject fixture needs an available setup choice')
+    setup = await call(learnerPath + '/personalization-options', 'POST', { optionId: choice.optionId })
+  }
+  assert.equal(setup.stage, 'COMPLETE')
+  const effectiveCurriculum = JSON.parse((await readApi(learnerId, '')).personalCurriculum)
+  assert.equal(effectiveCurriculum[scope.landscapeId]?.filterId, physicsCourse, 'The mixed fixture retains the explicit Physics course')
+  assert.equal(effectiveCurriculum[math]?.filterId, 'GK', 'The mixed fixture uses Mathematics GK')
+  assert.equal(effectiveCurriculum[root]?.durationModel, duration)
+  assert.equal(effectiveCurriculum[root]?.stage, 'SekII')
+  const mathView = await call('/api/ui/composition-views/match?' + new URLSearchParams({ landscapeId: math,
+    schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'SekII', courseProfile: 'GK', durationModel: duration }))
+  const foreignFocus = `composition:${mathView.viewId}:structure:q1`
+  await call(learnerPath + '/planned', 'PUT', { goals: [foreignFocus] })
+  const planned = async () => (await readApi(learnerId, '/state')).goals.planned.map(goal => goal.id)
+  assert.deepEqual(await planned(), [foreignFocus])
+  const before = await evidence(learnerId)
+  const goalId = '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2'
+  const goal = canonicalPhysics.goals.find(goal => goal.id === goalId)
+  const exercise = exercises.find(exercise => exercise.goalId === goalId).de
+  const context = await browser.newContext({ viewport: { width: 1100, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
+  try {
+    const entry = await fetch(site + '/nativ/' + duration + '/E1').then(response => response.text())
+    const keys = JSON.parse(entry.match(/Object.entries\((\{[^]*?\})\)/)[1])
+    keys.skillpilot_id = learnerId
+    await context.addInitScript(values => {
+      if (sessionStorage.getItem('unit-study-fixture-initialized')) return
+      for (const [key, value] of Object.entries(values)) localStorage.setItem(key, value)
+      sessionStorage.setItem('unit-study-fixture-initialized', '1')
+    }, keys)
+    const page = await context.newPage()
+    page.setDefaultTimeout(90000)
+    await page.goto(site + '/learner/' + goalId)
+    const card = page.getByTestId('learner-current-goal')
+    await card.getByRole('heading', { name: goal.title, exact: true }).first().waitFor()
+    assert.deepEqual(await planned(), [foreignFocus], 'Browsing another subject does not change the stored focus')
+    await card.getByRole('button', { name: 'Üben: ' + exercise.title, exact: true }).click()
+    await page.waitForURL(url => url.pathname === '/learner/' + unit.orientationGoalId)
+    assert.equal(await page.getByRole('dialog', { name: exercise.title, exact: true }).count(), 0)
+    assert.deepEqual(await planned(), [foreignFocus], 'The read-only resource gate does not switch the focus')
+    assert.deepEqual(await evidence(learnerId), before)
+    await page.goto(site + '/nativ/' + duration + '/E1')
+    await card.getByTestId('unit-introduction').waitFor()
+    await page.waitForFunction(key => sessionStorage.getItem(key) === null, unitStudyIntentKey)
+    assert.equal(await page.evaluate(key => sessionStorage.getItem(key), unitStudyIntentKey), null,
+      'Loading another learner cancels the pending navigation intent')
+    await page.evaluate(id => localStorage.setItem('skillpilot_id', id), learnerId)
+    await page.goto(site + '/learner/' + goalId)
+    await card.getByRole('button', { name: 'Üben: ' + exercise.title, exact: true }).click()
+    await page.waitForURL(url => url.pathname === '/learner/' + unit.orientationGoalId)
+    const differentGoal = worksheets[0].goalId
+    await page.goto(site + '/learner/' + differentGoal)
+    await card.getByRole('heading', { name: worksheets[0].title, exact: true }).first().waitFor()
+    await page.goto(site + '/learner/' + unit.orientationGoalId)
+    await card.getByTestId('unit-introduction').waitFor()
+    await page.waitForFunction(key => sessionStorage.getItem(key) === null, unitStudyIntentKey)
+    assert.equal(await page.evaluate(key => sessionStorage.getItem(key), unitStudyIntentKey), null,
+      'Leaving the introduction for another goal cancels the old request, including after returning')
+    await page.goto(site + '/learner/' + goalId)
+    await card.getByRole('button', { name: 'Üben: ' + exercise.title, exact: true }).click()
+    await page.waitForURL(url => url.pathname === '/learner/' + unit.orientationGoalId)
+    for (let reload = 0; reload < 2; reload++) {
+      await page.reload({ waitUntil: 'domcontentloaded' })
+      await card.getByTestId('unit-introduction').getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
+    }
+    assert.deepEqual(await planned(), [foreignFocus], 'Reloading the introduction keeps the original foreign focus')
+    const start = page.waitForResponse(response => response.request().method() === 'POST' && new URL(response.url()).pathname.endsWith('/active-goal'))
+    await card.getByTestId('unit-introduction-continue').click()
+    const response = await start
+    assert.equal(response.status(), 200)
+    assert.equal(response.request().postDataJSON().goalId, goalId)
+    const current = await readApi(learnerId, '/state')
+    assert.equal(current.activeGoal?.id ?? current.activeGoal?.goalId, unit.orientationGoalId)
+    const focus = await planned()
+    assert(focus.includes(foreignFocus), 'The existing independent subject assignment is retained')
+    assert(focus.includes(profiles[duration].E1), 'The explicit start acquires the actual owning unit')
+    assert.deepEqual(await evidence(learnerId), before, 'Starting in the owning unit never transfers mastery')
+    console.log(duration, 'Struktureller Mathematik-Fremdfokus: lesendes Übungsgate, verworfene Ziel-/Lernerwechsel, zwei echte Reloads und bewusster Coach-Start mit exaktem Fachziel ohne Mastery-Änderung OK')
+  } finally { await context.close() }
+}
 
 async function checkExerciseDialog(page, owner, exercise) {
   const open = owner.getByRole('button', { name: 'Üben: ' + exercise.title, exact: true })
@@ -243,8 +452,8 @@ async function checkExerciseDialog(page, owner, exercise) {
 }
 
 async function checkTreeAndMapParents(duration) {
-  const { E1: section, viewer } = profiles[duration]
-  const before = await evidence(viewer)
+  const { E1: section, oriented } = profiles[duration]
+  const before = await evidence(oriented)
   const pathTime = 'ae67bcf1-f3ee-50d6-9a12-25a159dff659'
   const acceleration = 'e4b38061-1f28-43ad-8371-a3e7c0e81856'
   const childSection = section.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall')
@@ -252,7 +461,7 @@ async function checkTreeAndMapParents(duration) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
   page.setDefaultTimeout(60000)
   try {
-    await page.goto(site + '/nativ/' + duration + '/E1')
+    await page.goto(site + '/vergleich/' + duration + '/einstiege')
     const tree = page.locator('.learner-tree-navigation')
     const treeRow = id => tree.locator('[data-goal-id="' + id + '"]')
     const expand = async id => {
@@ -286,7 +495,7 @@ async function checkTreeAndMapParents(duration) {
     const treeEntries = await treeRow(section).locator('..').locator('[data-goal-id]').evaluateAll((rows, section) =>
       rows.filter(row => row.dataset.goalId !== section).map(row => [row.dataset.goalId, row.parentElement.parentElement.parentElement
         .querySelector(':scope > [data-goal-id]').dataset.goalId]), section)
-    const expectedTreeCount = physicsCourse === 'LK' ? 19 : 18
+    const expectedTreeCount = physicsCourse === 'LK' ? 21 : 20
     assert.equal(treeEntries.length, expectedTreeCount)
     assert.equal(treeEntries.some(([id]) => id === multiphaseAssessment), physicsCourse === 'LK')
     if (physicsCourse === 'LK') assert.equal(await directTreeParent(multiphaseAssessment), section)
@@ -299,13 +508,17 @@ async function checkTreeAndMapParents(duration) {
     const mapEntries = []
     const resources = new Map([[unit.flashcardGoalId, 'Aus dem Stapel „Einführungsphase“']])
     // The external “Bewegungsanalyse und freier Fall” is a GK assessment. In LK the
-    // additional owned multiphase assessment occupies a place on the same 17-entry board.
+    // additional owned multiphase assessment occupies a place on the same 18-entry board.
     if (physicsCourse === 'GK') resources.set(unit.assessmentGoalId, 'Prüfung aus „Themenübergreifende Prüfungen“')
-    for (const [parent, count] of [[section, 17], [childSection, 3]]) {
+    for (const [parent, count] of [[section, 18], [childSection, 4]]) {
       if (parent === childSection) {
         await board.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).click()
       }
       await dialog.getByRole('status').filter({ hasText: count + ' Bereiche.' }).waitFor()
+      const displayedIntroduction = board.getByTestId('unit-introduction')
+      assert.equal(await displayedIntroduction.count(), 1, 'A board presents only its own introduction')
+      assert.equal(await displayedIntroduction.getAttribute('data-orientation-goal-id'),
+        parent === section ? unit.orientationGoalId : childMaterial.unit.orientationGoalId)
       await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
       await page.waitForFunction(count =>
         document.querySelectorAll('.lum-canvas[aria-busy="false"] .lum-flow [data-entry-id]').length === count, count)
@@ -358,28 +571,43 @@ async function checkTreeAndMapParents(duration) {
       name: 'Bewegungen mit Weg-Zeit-Diagrammen beschreiben', exact: true,
     }).waitFor()
     assert.equal(new URL(page.url()).pathname, '/learner/' + pathTime)
-    assert.deepEqual(await evidence(viewer), before)
+    assert.deepEqual(await evidence(oriented), before)
     console.log(duration, `Alle ${expectedTreeCount} E.1-Elternpfade (${physicsCourse}), ${physicsCourse === 'GK' ? 'zwei externe Ressourcen' : 'eine externe Ressource'}, Suche anhand der E.3-Herkunft und direkte Aufrufe beider Ziele sowie ihrer kanonischen Gruppe bestätigt.`)
   } finally {
     await page.close()
   }
 }
 async function checkUnitAndChildCards(duration) {
-  const { viewer, E1: section } = profiles[duration]
+  const { viewer, oriented, E1: section } = profiles[duration]
   const before = await evidence(viewer)
+  const orientedBefore = await evidence(oriented)
   const page = await browser.newPage({ reducedMotion: 'reduce', serviceWorkers: 'block' })
   page.setDefaultTimeout(90000)
   try {
     const entry = site + '/nativ/' + duration + '/'
     await page.goto(entry + 'E1')
     const card = page.getByTestId('learner-current-goal')
-    await card.getByRole('heading', { name: 'E.1 Bewegungen und ihre Beschreibung', exact: true }).waitFor()
+    await card.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
     assert.equal(decodeURIComponent(new URL(page.url()).pathname), '/learner/' + section)
     await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
     const dialog = page.getByTestId('learner-learning-map-dialog')
     await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
     await dialog.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
     await dialog.getByText(intro.de.promise, { exact: true }).waitFor()
+    await dialog.getByRole('img', { name: intro.de.imageAlt, exact: true }).waitFor()
+    await dialog.getByText(intro.de.scene, { exact: true }).waitFor()
+    assert.deepEqual(await dialog.getByTestId('unit-introduction-topics').getByRole('listitem').allTextContents(), intro.de.topics)
+    // This is a regular resource start. Opening the map itself remains free.
+    await dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true }).click()
+    await dialog.waitFor({ state: 'hidden' })
+    assert.equal(new URL(page.url()).pathname, '/learner/' + unit.orientationGoalId)
+    await card.getByTestId('unit-introduction').waitFor()
+    assert.deepEqual(await evidence(viewer), before, 'Presentation and redirection never write results')
+    // Keep the original deck and task checks on a separate, coach-confirmed learner.
+    await page.goto(site + '/vergleich/' + duration + '/einstiege')
+    await card.getByTestId('unit-introduction').getByText('Einstieg abgeschlossen.', { exact: true }).waitFor()
+    await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
+    await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
     await dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true }).click()
     await page.getByText('Karte 1 von 9', { exact: true }).waitFor()
     const assessment = (await readApi(viewer, '/state')).levelCompletion.unitAssessment
@@ -394,6 +622,7 @@ async function checkUnitAndChildCards(duration) {
       }
     }
     assert.deepEqual(await evidence(viewer), before)
+    assert.deepEqual(await evidence(oriented), orientedBefore)
     console.log(duration, 'E.1-Einstieg und beide Untereinheitsprüfungen DE/EN OK')
   } finally {
     await page.close()
@@ -631,20 +860,25 @@ async function checkUnitAssignments(duration) {
           await normalPlan.getByRole('button', { name: title, exact: true }).click()
           const current = page.getByTestId('learner-current-goal')
           await current.getByRole('heading', { name: title, exact: true }).first().waitFor()
-          await checkExerciseDialog(page, current, exercise)
           const individual = current.getByTestId('individual-goal-study')
           await individual.getByText('Du kannst dieses Ziel freiwillig bearbeiten und einen eigenen Nachweis erwerben.', { exact: true }).waitFor()
           assert.equal(await individual.getByText('Deine bestandenen Prüfungen decken dieses Ziel für den Lernplan ab.', { exact: true }).count(), 0)
           await individual.getByTestId('individual-goal-study-start').waitFor()
+          const gate = await readApi(id, '/unit-introduction?' + new URLSearchParams({ goalId }))
+          assert(orientationGoalIds.includes(gate.orientationGoalId), 'Passed exams do not replace the required regular introduction')
+          await current.getByRole('button', { name: 'Üben: ' + exercise.title, exact: true }).click()
+          await page.waitForURL(url => url.pathname === '/learner/' + gate.orientationGoalId)
+          await current.getByTestId('unit-introduction').waitFor()
+          assert.equal(await page.getByRole('dialog', { name: exercise.title, exact: true }).count(), 0)
         }
         assert.deepEqual(await passes(), previousPasses)
         assert.deepEqual(await readApi(id, '/mastery'), beforeChoice)
         assert.equal((await readApi(id, '/state')).activeGoal ?? null, null)
       } else {
-        assert.equal(plan.nextEligibleGoal.goalId, 'ae67bcf1-f3ee-50d6-9a12-25a159dff659')
-        const banner = page.getByTestId('learner-active-goal-banner').filter({ hasText: 'Bewegungen mit Weg-Zeit-Diagrammen beschreiben' })
+        assert.equal(plan.nextEligibleGoal.goalId, unit.orientationGoalId)
+        const banner = page.getByTestId('learner-active-goal-banner').filter({ hasText: parentOrientationTitle })
         await banner.getByRole('button', { name: 'Gehe zum aktiven Ziel' }).click()
-        await page.getByTestId('learner-current-goal').getByRole('heading', { name: 'Bewegungen mit Weg-Zeit-Diagrammen beschreiben', exact: true }).first().waitFor()
+        await page.getByTestId('learner-current-goal').getByRole('heading', { name: intro.de.question, exact: true }).first().waitFor()
       }
       console.log(duration, route, 'Einheitenauftrag und tatsächlicher nächster Planvorschlag OK')
     } finally { await page.close() }
@@ -712,7 +946,10 @@ async function checkVoluntaryStudy(duration, scenario, id, href, mastery, passed
     const prerequisites = choice.practice.openPrerequisites
     assert(prerequisites.length > 0)
     const closestStrictPrerequisite = '71cec9fb-3751-4d61-8b34-c5adbbf6e5f2'
-    assert.equal(choice.practice.startGoalId, strict ? closestStrictPrerequisite : target)
+    const gate = await readApi(id, '/unit-introduction?' + new URLSearchParams({ goalId: target }))
+    assert.equal(gate.orientationGoalId, unit.orientationGoalId)
+    assert.equal(choice.practice.startGoalId, gate.orientationGoalId, 'The offered voluntary route names the same introduction as resource gating')
+    assert.equal(choice.practice.orientationGoalId, gate.orientationGoalId)
     if (strict) assert(prerequisites.some(item => item.goalId === closestStrictPrerequisite))
     const creditList = summary.locator('details').filter({ has: page.getByText('Für deinen Lernplan angerechnet (2)', { exact: true }) })
     await creditList.getByRole('button', { name: title, exact: true }).click()
@@ -728,15 +965,12 @@ async function checkVoluntaryStudy(duration, scenario, id, href, mastery, passed
     const now = await readApi(id, '/state')
     assert.equal(now.activeGoal.id ?? now.activeGoal.goalId, choice.practice.startGoalId)
     await page.getByTestId('learner-active-goal-banner').waitFor()
-    if (strict) {
-      const frontier = await readApi(id, '/frontier')
-      assert.deepEqual(new Set(frontier.goals), new Set([
-        closestStrictPrerequisite, '65365dce-f33f-49d8-9516-42f75883aa86', '5c44b9ba-9b05-4774-95d5-073230d3fc4f',
-      ]))
-    }
+    await card.getByTestId('unit-introduction').getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
+    const frontier = await readApi(id, '/frontier')
+    assert(!frontier.goals.includes(target), 'A subject target is not offered past the open introduction')
     assert.deepEqual((await readApi(id, '/mastery')).mastery, mastery)
-    console.log(duration, scenario, strict ? 'strikter Einzelweg über die angebotene Grundlage' : 'freiwilliger Einzelfokus',
-      strict ? prerequisites.find(item => item.goalId === choice.practice.startGoalId).title.de : title, 'OK')
+    console.log(duration, scenario, strict ? 'strikter Einzelweg' : 'freiwilliger Einzelfokus',
+      'beginnt mit dem erforderlichen Einstieg und behält die echten offenen Fachvoraussetzungen', 'OK')
   } finally {
     await page.close()
   }
@@ -794,8 +1028,7 @@ async function checkOptionalMultiphaseAttempt(duration) {
 }
 async function checkGradedComparison(duration) {
   const physics = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
-  const firstPlanGoal = 'ae67bcf1-f3ee-50d6-9a12-25a159dff659'
-  const initialFrontier = ['8aff7aac-321b-5172-ac55-877876bfd2cd', '82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3', firstPlanGoal]
+  const firstPlanGoal = unit.orientationGoalId
   const comparison = await browser.newPage()
   try {
     await comparison.goto(site + '/vergleich/' + duration)
@@ -806,11 +1039,10 @@ async function checkGradedComparison(duration) {
       const id = profiles[duration][scenario]
       const section = comparison.locator('section').filter({ has: comparison.getByRole('link', { name: label, exact: true }) })
       const frontier = await readApi(id, '/frontier')
-      assert.deepEqual(new Set(frontier.goals), new Set(initialFrontier))
-      assert.deepEqual(new Set(await section.locator('ul li').allTextContents()), new Set([
-        'Messabweichungen und Fehlerarten unterscheiden', 'Waagerechter Wurf und Superposition',
-        'Bewegungen mit Weg-Zeit-Diagrammen beschreiben',
-      ]))
+      const currentState = await readApi(id, '/state')
+      const activeId = currentState.activeGoal?.id ?? currentState.activeGoal?.goalId
+      assert.deepEqual(new Set([...frontier.goals, ...(activeId === unit.orientationGoalId ? [activeId] : [])]), new Set([unit.orientationGoalId]))
+      assert.deepEqual(await section.locator('ul li').allTextContents(), [parentOrientationTitle])
       const hypotheses = await section.locator('tbody tr').evaluateAll(rows =>
         rows.map(row => Array.from(row.cells, cell => cell.textContent)))
       assert.deepEqual(hypotheses, [
@@ -820,9 +1052,9 @@ async function checkGradedComparison(duration) {
       assert.equal(plan.nextEligibleGoal.goalId, firstPlanGoal)
       const status = await readApi(id, '/learning-plans/status?language=de')
       const gauge = status.subjects.find(subject => subject.landscapeIds.includes(physics)).periodGauge
-      assert.equal(gauge.target, 16)
       const scheduled = plan.blocks.flatMap(block => block.atomicGoalIds ?? [])
       assert.equal(scheduled.length, gauge.target)
+      assert(orientationGoalIds.every(goal => scheduled.includes(goal)), 'Both authored introductions belong to regular E.1 planning')
       assert(scheduled.includes(tasks.A.id) && scheduled.includes(tasks.B.id))
       assert(!scheduled.includes(throwAssessment) && !scheduled.includes(multiphaseAssessment))
       assert.equal(gauge.completed, count + (count ? 2 : 0))
@@ -864,12 +1096,24 @@ async function checkGradedComparison(duration) {
   }
 }
 try {
+  if (browserCase !== 'all') {
+    for (const duration of ['G8', 'G9']) {
+      if (browserCase === 'short-map') await check(duration, 'B', 'de', false, 1024, 650)
+      if (browserCase === 'mobile-map') await check(duration, 'B', 'de', false, 390)
+      if (browserCase === 'structure') { await checkUnitAndChildCards(duration); await checkTreeAndMapParents(duration) }
+      if (browserCase === 'planning') { await checkGradedComparison(duration); await checkUnitAssignments(duration) }
+      if (browserCase === 'guided') await checkGuidedUnitEntry(duration)
+      if (browserCase === 'foreign-focus') await checkForeignFocusEntry(duration)
+    }
+  } else {
   await checkMathComparison()
   // Each curriculum has its own viewer and a fresh learner per first attempt.
   for (const duration of ['G8', 'G9']) {
     assert.equal(profiles[duration].E1, `composition:de-he-gym-sekii-physics-${physicsCourse.toLowerCase()}:structure:physics-e1-motion`)
     const persisted = JSON.parse((await readApi(profiles[duration].viewer, '')).personalCurriculum)
     assert.equal(persisted[scope.landscapeId].filterId, physicsCourse)
+    await checkGuidedUnitEntry(duration)
+    await checkForeignFocusEntry(duration)
     for (const part of ['A', 'B']) {
       for (const lang of ['de', 'en']) await check(duration, part, lang, false)
     }
@@ -885,6 +1129,7 @@ try {
     await checkStoredAssignmentActivity(duration)
     if (physicsCourse === 'LK') await checkOptionalMultiphaseAttempt(duration)
     for (const part of ['A', 'B']) await check(duration, part, 'de', true)
+  }
   }
 } finally {
   await browser.close()

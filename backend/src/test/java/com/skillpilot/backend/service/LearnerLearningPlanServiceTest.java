@@ -224,6 +224,71 @@ class LearnerLearningPlanServiceTest {
     }
 
     @Test
+    void anOldFixedPlanCanStartItsUnscheduledOpeningWithoutChangingItsBasisOrDueDate() {
+        var block = new LearnerLearningPlanApi.Block("old", "learning", "unit", "Unit",
+                LocalDate.parse("2026-09-03"), LocalDate.parse("2026-09-04"), null,
+                List.of("legacy-broad-orientation", "topic", "later"));
+        var before = LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(List.of(block));
+        var selected = LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of(), roots -> java.util.Set.of("opening"), (goal, roots) -> {
+                    assertThat(roots).containsExactly("unit");
+                    return "legacy-broad-orientation".equals(goal) ? null : "opening";
+                }).orElseThrow();
+        assertThat(selected.atomicGoalId()).isEqualTo("opening");
+        assertThat(selected.requestedGoalId()).isEqualTo("topic");
+        assertThat(selected.focusGoalId()).isEqualTo("unit");
+        assertThat(selected.scheduledDate()).isEqualTo(before.get("topic"));
+        assertThat(block.atomicGoalIds()).containsExactly("legacy-broad-orientation", "topic", "later");
+        assertThat(LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(List.of(block))).isEqualTo(before);
+    }
+
+    @Test
+    void anOldIndividualAtomNeedsItsActualAvailableOpeningAndCannotUseAnUnrelatedOne() {
+        var block = learningBlock("old", "2026-09-04", "2026-09-04", List.of("topic"));
+        var selected = LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of(), roots -> java.util.Set.of("opening"), (goal, roots) -> "opening").orElseThrow();
+        assertThat(selected.requestedGoalId()).isEqualTo("topic");
+        assertThat(selected.atomicGoalId()).isEqualTo("opening");
+        assertThat(LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of(), roots -> java.util.Set.of("unrelated"), (goal, roots) -> "opening")).isEmpty();
+        assertThat(LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of("topic", 1.0),
+                java.util.Set.of(), roots -> java.util.Set.of("opening"), (goal, roots) -> "opening")).isEmpty();
+        assertThat(LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of("topic"), roots -> java.util.Set.of("opening"), (goal, roots) -> "opening")).isEmpty();
+    }
+
+    @Test
+    void theExplicitlyEarlierUnitObligationWinsEvenWhenAnotherOpeningAppearsFirst() {
+        var later = new LearnerLearningPlanApi.Block("later", "learning", "unit-a", "Later",
+                LocalDate.parse("2026-09-04"), LocalDate.parse("2026-09-04"), null, List.of("later-topic"));
+        var earlier = new LearnerLearningPlanApi.Block("earlier", "learning", "unit-z", "Earlier",
+                LocalDate.parse("2026-09-03"), LocalDate.parse("2026-09-03"), null, List.of("earlier-topic"));
+        var selected = LearnerLearningPlanService.firstEligibleDueGoal(List.of(later, earlier), later.endDate(), Map.of(),
+                java.util.Set.of(), roots -> java.util.Set.of("a-opening", "z-opening"),
+                (goal, roots) -> "earlier-topic".equals(goal) ? "z-opening" : "a-opening").orElseThrow();
+        assertThat(selected.atomicGoalId()).isEqualTo("z-opening");
+        assertThat(selected.requestedGoalId()).isEqualTo("earlier-topic");
+        assertThat(selected.focusGoalId()).isEqualTo("unit-z");
+        assertThat(selected.scheduledDate()).isEqualTo(earlier.startDate());
+    }
+
+    @Test
+    void anExplicitAssessmentAssignmentKeepsItsDedicatedRouteWithoutAnOrdinaryOpening() {
+        var binding = new LearnerLearningPlanApi.UnitAssignment("unit", "v1", "sha256:" + "a".repeat(64));
+        var block = new LearnerLearningPlanApi.Block("exam", "learning", null, "Exam",
+                LocalDate.parse("2026-09-04"), LocalDate.parse("2026-09-04"), null, List.of("exam"),
+                List.of("unit"), true, binding);
+        assertThat(LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of(), roots -> java.util.Set.of("opening"), (goal, roots) -> {
+                    throw new AssertionError("Direct unit assessment must not request ordinary entry");
+                })).isEmpty();
+        assertThat(LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of(), roots -> java.util.Set.of("exam"), (goal, roots) -> {
+                    throw new AssertionError("Available assessment needs no opening");
+                })).isEmpty();
+    }
+
+    @Test
     void globalDueSlotsStayMonotoneAcrossIdenticalOverlappingBlocks() {
         var first = learningBlock(
                 "first-block",
