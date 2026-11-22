@@ -110,11 +110,12 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     const exercise = getExercise(scopeId, goalId)
     if (exercise && onPracticeGoal) return { label: `${english ? 'Practice' : 'Üben'}: ${exercise.title}`,
       open: async () => { if (await requestStudy(scopeId, goalId, goalId)) onPracticeGoal(goalId, exercise) } }
-    if (progressFixture.entries[goalId]?.sourceSections && onPracticeFlashcards) {
+    if ((progressFixture.entries[goalId]?.sourceSections || progressFixture.entries[goalId]?.kind === 'unit') && onPracticeFlashcards) {
       for (const { flashcards } of resources) {
         const action = flashcards.get(goalId)
         if (action) return { label: action.title, open: async () => {
-          if (await requestStudy(scopeId, goalId)) onPracticeFlashcards(action)
+          const studyScope = progressFixture.entries[goalId]?.kind === 'unit' ? goalId : scopeId
+          if (await requestStudy(studyScope, goalId)) onPracticeFlashcards(action)
         } }
       }
     }

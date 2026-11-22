@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState, type Ref } from 'react'
 import { X } from 'lucide-react'
 import './GoalPracticeDialog.css'
 import type { MapPracticeExercise } from './learningUnitMap/types'
@@ -38,11 +38,11 @@ export function GoalPracticeDialog({ exercise, language, onDismiss }: {
   </dialog>
 }
 
-export function GoalPracticeAction({ exercise, language, onOpen }: {
-  exercise: MapPracticeExercise; language: 'de' | 'en'; onOpen: () => Promise<void>
+export function GoalPracticeAction({ exercise, language, onOpen, buttonRef }: {
+  exercise: MapPracticeExercise; language: 'de' | 'en'; onOpen: () => Promise<void>; buttonRef: Ref<HTMLButtonElement>
 }) {
   const [busy, setBusy] = useState(false)
-  return <button type="button" disabled={busy} onClick={async () => {
+  return <button type="button" ref={buttonRef} aria-disabled={busy} onClick={async () => {
     if (busy) return
     setBusy(true)
     try { await onOpen() } finally { setBusy(false) }

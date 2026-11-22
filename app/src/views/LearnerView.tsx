@@ -564,6 +564,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [srsMasteryTick, setSrsMasteryTick] = useState(0);
   const [srsReloadCounter, setSrsReloadCounter] = useState(0)
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
+  const practiceButtonRef = useRef<HTMLButtonElement>(null)
   const [openPractice, setOpenPractice] = useState<{ goalId: string; exercise: MapPracticeExercise } | null>(null)
   const [memoryPractice, setMemoryPractice] = useState<FlashcardPracticeRequest | null>(null)
   const [verifiedRecallBatchSizeByGoal, setVerifiedRecallBatchSizeByGoal] = useState<Record<string, number>>({})
@@ -4251,12 +4252,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                         : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.')}
                   </p>
                 ) : null}
-                {goalExercise && <GoalPracticeAction key={`${learnerStateScopeKey}:${learnerTreeScopeKey}:${currentGoal.id}`} exercise={goalExercise} language={localizedLanguage}
+                {goalExercise && <GoalPracticeAction key={`${learnerStateScopeKey}:${learnerTreeScopeKey}:${currentGoal.id}`} exercise={goalExercise} language={localizedLanguage} buttonRef={practiceButtonRef}
                   onOpen={async () => {
                     if (await requestUnitStudy(currentGoal.id, currentGoal.id)) setOpenPractice({ goalId: currentGoal.id, exercise: goalExercise })
                   }} />}
                 {openPractice?.goalId === currentGoal.id && <GoalPracticeDialog exercise={openPractice.exercise} language={localizedLanguage}
-                  onDismiss={() => setOpenPractice(null)} />}
+                  onDismiss={() => {
+                    setOpenPractice(null)
+                    if (practiceButtonRef.current) practiceButtonRef.current.focus()
+                    else focusSelectedGoalCard(currentGoal.id)
+                  }} />}
                 <GoalAdditionalMaterials
                   skillpilotId={skillpilotId}
                   goalId={currentGoal.id}
