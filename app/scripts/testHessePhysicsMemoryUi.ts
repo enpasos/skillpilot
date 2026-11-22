@@ -360,9 +360,8 @@ try {
       const readsBeforeGate = practiceReads
       await chooseExistingUnitAction()
       await dialog.waitFor({ state: 'hidden' })
-      await page.getByTestId('learner-current-goal').getByRole('heading', {
-        name: canonical.goals.find(goal => goal.id === orientationId)!.title, exact: true,
-      }).waitFor()
+      await page.waitForURL(url => url.pathname.endsWith('/' + orientationId))
+      await page.locator(`[data-testid="unit-introduction"][data-orientation-goal-id="${orientationId}"]`).waitFor()
       assert.equal(introductionRequests.at(-1), nestedScope, 'the chosen existing unit, not its parent, owns the protected entry')
       assert.equal(practiceReads, readsBeforeGate, 'an uncompleted introduction leaves the scoped deck unopened')
       assert.equal(await page.getByText('Karte 1 von 3', { exact: true }).count(), 0)
