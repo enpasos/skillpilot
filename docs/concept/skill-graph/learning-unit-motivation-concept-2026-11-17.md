@@ -91,10 +91,15 @@ von SkillPilot aus. Der Einstieg kann auf zwei Wegen als erledigt gelten
   den Einstieg noch, bleibt er offen. Eine abgeleitete Erledigung erzeugt
   keinen Gesprächsnachweis und schreibt kein Ergebnis am Motivationsziel.
 
-Das Anerkennungsmodell ist spezifiziert. Seine produktive Einführung setzt
-unter anderem die Bindung an die geprüfte Fassung voraus (R5). Eine später
-ergänzte Kante darf einem früheren Prüfungsergebnis keine neue Anerkennung
-verleihen. [Prüfungsgebundener Abschluss und offene Nachfrage](compendium-appendix.de.md#eq-needed)
+Eine Einheit kann diese Planungsanrechnung im Materialvertrag der Version 2
+ausdrücklich für ihr eigenes Motivationsziel freigeben. Die Fachentscheidung
+bindet die aktuelle Zielfassung, den zweisprachigen Einstieg, die Fassungen
+aller eigenen Prüfungen und die Liste der eigenen Lernkartenziele. Jeder
+Prüfungsbeleg muss diese Freigabe bereits bei seiner Ausstellung tragen.
+Die Lernkartenziele müssen persönlich abgeschlossen sein. In E.1 und seiner
+Untereinheit besteht bislang keine solche Freigabe. Auch nach bestandener
+Prüfung ist ihr geführter Einstieg daher einzeln erlebbar.
+[Prüfungsgebundener Abschluss und offene Nachfrage](compendium-appendix.de.md#eq-needed)
 
 ## 4. Wie der Auftakt im Graphen steht
 

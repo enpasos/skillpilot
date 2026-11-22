@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CompletionApplicationService {
     private static final String RESOLVER_SEMANTICS_VERSION = "atomic-inherited-prerequisites-v1";
-    private static final String AUTOMATIC_SEMANTICS_VERSION = "full-transitive-demand-v2";
+    private static final String AUTOMATIC_SEMANTICS_VERSION = "full-transitive-demand-unit-entry-v3";
     private final CompletionProfileCatalog catalog;
     private final CompletionTelemetry telemetry;
     private final CompletionProfileCompiler compiler = new CompletionProfileCompiler();

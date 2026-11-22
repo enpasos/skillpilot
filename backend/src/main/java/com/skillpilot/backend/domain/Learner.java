@@ -105,6 +105,17 @@ public class Learner {
         this.completionWorkflow = completionWorkflow;
     }
 
+    /** Exact learner-selected destination parked behind a unit opening, never a learning result. */
+    @JsonIgnore
+    @Column(name = "pending_unit_entry", columnDefinition = "TEXT")
+    private String pendingUnitEntry;
+
+    @JsonIgnore
+    public String getPendingUnitEntry() { return pendingUnitEntry; }
+
+    @JsonIgnore
+    public void setPendingUnitEntry(String pendingUnitEntry) { this.pendingUnitEntry = pendingUnitEntry; }
+
     @jakarta.persistence.ElementCollection(fetch = jakarta.persistence.FetchType.EAGER)
     @jakarta.persistence.CollectionTable(name = "learner_copy_sources", joinColumns = @jakarta.persistence.JoinColumn(name = "learner_id"))
     private java.util.Set<CopySource> copySources = new java.util.HashSet<>();

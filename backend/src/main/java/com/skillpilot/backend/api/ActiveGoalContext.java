@@ -26,7 +26,18 @@ public record ActiveGoalContext(
         }
     }
 
-    public record UnitIntroduction(String sectionTitle, String question, String promise) { }
+    public record UnitIntroduction(String sectionTitle, String question, String promise,
+            @JsonInclude(JsonInclude.Include.NON_NULL) String orientationGoalId,
+            @JsonInclude(JsonInclude.Include.NON_NULL) String state,
+            @JsonInclude(JsonInclude.Include.NON_NULL) String scene,
+            @JsonInclude(JsonInclude.Include.NON_NULL) String imageUrl,
+            @JsonInclude(JsonInclude.Include.NON_NULL) String imageAlt,
+            @JsonInclude(JsonInclude.Include.NON_EMPTY) List<String> topics) {
+        public UnitIntroduction { topics = topics == null ? List.of() : List.copyOf(topics); }
+        public UnitIntroduction(String sectionTitle, String question, String promise) {
+            this(sectionTitle, question, promise, null, null, null, null, null, List.of());
+        }
+    }
 
     public record PracticeExercise(String title, String prompt,
             @JsonInclude(JsonInclude.Include.NON_EMPTY) List<String> evidenceCriteria) {

@@ -274,6 +274,17 @@ public class LearnerUiController {
         return new MasteryResponse(learnerService.getMastery(skillpilotId));
     }
 
+    public record UnitIntroductionEntry(String orientationGoalId) { }
+
+    @GetMapping("/{skillpilotId}/unit-introduction")
+    @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
+    public ResponseEntity<UnitIntroductionEntry> getUnitIntroductionEntry(@PathVariable String skillpilotId,
+            @RequestParam String goalId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return ResponseEntity.ok().cacheControl(CacheControl.noStore()).body(
+                new UnitIntroductionEntry(learnerService.getRequiredUnitOrientationGoalId(skillpilotId, goalId)));
+    }
+
     @GetMapping("/{skillpilotId}/frontier")
     @Operation(summary = "Get next learnable goals", description = "Computes the frontier for a learner – goals whose prerequisites are mastered (>= 0.9) and which are not yet fully mastered.", extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public FrontierResponse getFrontier(@PathVariable String skillpilotId) {

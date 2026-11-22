@@ -299,6 +299,14 @@
         "goalIds": {
           "$ref": "#/$defs/nonemptyIds"
         },
+        "orientation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["requiredRecallGoalIds"],
+          "properties": {
+            "requiredRecallGoalIds": { "$ref": "#/$defs/ids" }
+          }
+        },
         "release": {
           "type": "object",
           "additionalProperties": false,

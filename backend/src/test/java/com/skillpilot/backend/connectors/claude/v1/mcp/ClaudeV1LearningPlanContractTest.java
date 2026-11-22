@@ -179,6 +179,10 @@ class ClaudeV1LearningPlanContractTest {
                 "Do not treat praise, repetition or a single guided answer as evidence",
                 "Never use normal mastery for a memory goal",
                 "Orientation is motivational, not subject assessment",
+                "Use the newest unitIntroduction.state to guide the opening",
+                "Viewing the introduction or choosing a topic alone records no completion",
+                "For a child unit, add at most one sentence connecting it to its parent",
+                "On exit follow the returned guided step, including a still-open orientation",
                 "Do not present a successor task or image until the learner explicitly chooses to continue",
                 "Answer a status-only question or respect a pause without starting a goal or exercise");
     }

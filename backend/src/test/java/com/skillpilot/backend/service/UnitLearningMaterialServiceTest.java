@@ -48,10 +48,39 @@ class UnitLearningMaterialServiceTest {
         mapper.writeValue(introFile.toFile(), versioned);
         assertThat(UnitLearningMaterialService.fromRepository(repository, mapper).find("computing", "lecture", "algorithms"))
                 .contains(lecture);
-        versioned.put("schemaVersion", 2);
+        versioned.put("schemaVersion", 3);
         mapper.writeValue(introFile.toFile(), versioned);
         assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper))
                 .isInstanceOf(IOException.class).hasMessageContaining("Unsupported unit learning material version");
+    }
+
+    @Test
+    void versionTwoBindsTheExactOpeningAndSharedSceneForActualViews(@TempDir Path repository) throws IOException {
+        Files.writeString(repository.resolve("unit-learning-materials.json"), """
+                {"schemaVersion":1,"materials":["unit.json"]}
+                """);
+        Files.writeString(repository.resolve("unit.json"), """
+                {"schemaVersion":2,"unit":{"landscapeId":"physics","compositionNodeId":"motion",
+                  "viewIds":["gk","lk"],"orientationGoalId":"opening"},
+                 "intro":{"de":{"question":"Wo landet der Ball?","promise":"Bewegungen beschreiben",
+                  "scene":"Ein blauer Ball rollt zum Tischrand.","imageUrl":"/assets/ball.png","imageAlt":"Ball am Tisch",
+                  "topics":["Bewegungen"]},"en":{"question":"Where does it land?","promise":"Describe motion",
+                  "scene":"A blue ball rolls towards the edge.","imageUrl":"/assets/ball.png","imageAlt":"Ball on table",
+                  "topics":["Motion"]}}}
+                """);
+        var service = UnitLearningMaterialService.fromRepository(repository, new ObjectMapper());
+        var material = service.find("physics", "merged:gk+lk", "motion").orElseThrow();
+        assertThat(material.orientationGoalId()).isEqualTo("opening");
+        assertThat(material.introduction("de").scene()).contains("blauer Ball");
+        assertThat(material.introduction("en").imageUrl()).isEqualTo("/assets/ball.png");
+        assertThat(service.orientationBindings(List.of("merged:gk+lk"))).singleElement()
+                .satisfies(binding -> assertThat(binding.sectionGoalId()).isEqualTo("composition:merged:gk+lk:structure:motion"));
+        assertThat(service.orientationBindings(List.of("merged:gk+missing"))).isEmpty();
+        var invalid = new ObjectMapper().readTree(repository.resolve("unit.json").toFile());
+        ((ObjectNode) invalid.required("unit")).remove("orientationGoalId");
+        new ObjectMapper().writeValue(repository.resolve("unit.json").toFile(), invalid);
+        assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, new ObjectMapper()))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("orientationGoalId");
     }
 
     @Test
@@ -61,7 +90,7 @@ class UnitLearningMaterialServiceTest {
         assertThat(service.find(PHYSICS, "de-he-gym-physics-gk-g9", MOTION)).contains(g8);
         assertThat(service.find(PHYSICS, "merged:de-he-gym-sekii-physics-lk+de-he-gym-sekii-physics-gk", MOTION)).contains(g8);
         assertThat(g8.question("de")).isEqualTo("Ein Ball rollt vom Tisch. Wo landet er?");
-        assertThat(g8.promise("en")).contains("motion data");
+        assertThat(g8.promise("en")).contains("measurements", "part B");
         assertThat(g8.flashcardGoalId()).isEqualTo("9f2f5ab8-0ae4-5792-b831-82a05af5895c");
         assertThat(g8.assessmentGoalId()).isEqualTo("a9562b05-c54d-5635-9244-3f7dd24a8642");
         assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentGoalIds())

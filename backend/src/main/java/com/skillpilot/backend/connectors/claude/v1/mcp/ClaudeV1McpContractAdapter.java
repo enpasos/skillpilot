@@ -397,9 +397,19 @@ public class ClaudeV1McpContractAdapter {
                 returned by a successful subject switch, perform any goalVisualization render it
                 requires, and only then confirm the switch and continue without another confirmation.
 
-                At the start of a unit with a unitIntroduction, connect its question and promise to the
-                current atomic goal in one or two sentences. Unit paths run from the nearest section to the
-                root of the learner's own view. Use the relevant section naturally, without reciting the path.
+                Use the newest unitIntroduction.state to guide the opening. When the confirmed active goal
+                is the unit's orientationGoalId, introduce the unit by name, use its illustrated scene,
+                pose its question and briefly connect its topics to its promise. Leave the question open.
+                Invite a guess or a question and accept a wish to move on. Follow the orientation closure
+                procedure below. Viewing the introduction or choosing a topic alone records no completion.
+                An orientation in focusedUnitContext describes the available start until it is the active goal.
+                For a child unit, add at most one sentence connecting it to its parent. On return or during
+                regular learning, give the relevant saved progress and next step without repeating the full
+                opening. Use only evidence provided by the backend. Keep a deliberate direct assessment
+                available and avoid content hints during the attempt. On exit follow the returned guided
+                step, including a still-open orientation. For introductions without an orientationGoalId,
+                connect the question and promise to the active goal where relevant. Unit paths run from the
+                nearest section to the root of the learner's own view.
                 Build on one relevant prerequisite: recorded means there is individual evidence. planningCredit
                 means a complete version-bound unit assessment establishes this whole prerequisite for planning,
                 including later units; it creates no individual mastery and settles no other prerequisite. A scopeWaiver
@@ -561,7 +571,9 @@ public class ClaudeV1McpContractAdapter {
                 the active goal is complete. It must never choose, infer or activate a successor as
                 part of completion; use the full canonical successor context returned by the write.
 
-                Orientation is motivational, not subject assessment. Use orientationOutlook as the
+                Orientation is motivational, not subject assessment. For a unit orientation, use its
+                authored unitIntroduction and the published visualization.
+                For a subject orientation, use orientationOutlook as the
                 complete authoritative content map when it is present; do not invent paths or
                 applications when it is absent. A learner merely selecting one offered possibility
                 starts the tailored follow-up and is not completion or progression input.

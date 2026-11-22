@@ -48,13 +48,35 @@ public record UnitAssessmentContract(String revision, List<String> viewIds, List
         }
     }
 
-    public record PlanningCredit(List<String> requiredPartIds, List<String> goalIds, UnitPlanningRelease release) {
+    /** Recall obligations of the reviewed owner that must also be personally complete. */
+    public record OrientationCredit(List<String> requiredRecallGoalIds) {
+        public OrientationCredit {
+            if (requiredRecallGoalIds == null) throw new IllegalArgumentException("Explicit recall obligations are required");
+            requiredRecallGoalIds = requiredRecallGoalIds.isEmpty() ? List.of() : checkedIds(requiredRecallGoalIds);
+        }
+    }
+
+    public record PlanningCredit(List<String> requiredPartIds, List<String> goalIds, UnitPlanningRelease release,
+            OrientationCredit orientation) {
         public PlanningCredit {
             requiredPartIds = checkedIds(requiredPartIds);
             goalIds = checkedIds(goalIds);
         }
         public PlanningCredit(List<String> requiredPartIds, List<String> goalIds) {
             this(requiredPartIds, goalIds, null);
+        }
+        public PlanningCredit(List<String> requiredPartIds, List<String> goalIds, UnitPlanningRelease release) {
+            this(requiredPartIds, goalIds, release, null);
+        }
+        public boolean recallComplete(Set<String> individuallyMastered) {
+            return orientation == null || individuallyMastered.containsAll(orientation.requiredRecallGoalIds());
+        }
+        public boolean appliesToTargets(Set<String> targets) {
+            return targets.containsAll(goalIds) && (orientation == null || targets.containsAll(orientation.requiredRecallGoalIds()));
+        }
+        private boolean hasValidTargets(Set<String> content, Set<String> exams) {
+            if (orientation == null) return content.containsAll(goalIds);
+            return goalIds.size() == 1 && !content.contains(goalIds.getFirst()) && !exams.contains(goalIds.getFirst());
         }
     }
 
@@ -67,9 +89,14 @@ public record UnitAssessmentContract(String revision, List<String> viewIds, List
         Set<String> contentIds = Set.copyOf(contentGoalIds);
         if (revision == null || revision.isBlank() || contentGoalIds.stream().anyMatch(examIds::contains)
                 || planningCredits.stream().anyMatch(credit -> !examIds.containsAll(credit.requiredPartIds())
-                        || !contentIds.containsAll(credit.goalIds()))) {
-            throw new IllegalArgumentException("Unit assessment credit must use parts and content in its contract");
+                        || !credit.hasValidTargets(contentIds, examIds))) {
+            throw new IllegalArgumentException("Invalid assessment witnesses or targets for this planning credit");
         }
+    }
+
+    public List<String> requiredRecallGoalIds() {
+        return planningCredits.stream().filter(rule -> rule.orientation() != null)
+                .flatMap(rule -> rule.orientation().requiredRecallGoalIds().stream()).distinct().toList();
     }
 
     public boolean appliesTo(String viewId) {

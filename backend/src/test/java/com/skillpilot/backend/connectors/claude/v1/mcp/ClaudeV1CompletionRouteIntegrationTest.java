@@ -57,6 +57,8 @@ import org.springframework.test.context.ActiveProfiles;
 class ClaudeV1CompletionRouteIntegrationTest {
     private static final List<Integer> HESSIAN_PASS_ORDER = List.of(2, 3, 0, 1);
     private static final String PROFILE = "automatic:personal-curriculum";
+    private static final String MOTION_OPENING = "a4d4efe1-7d30-526b-ac9c-806113da4363";
+    private static final String FALL_OPENING = "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e";
     private static final String ROOT = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String MATH = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String PREPARATION = "3016ec37-1c2e-47db-83f5-e767923bc97e";
@@ -94,6 +96,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
                         "completedOptionIds", List.of(), "migrationCompleted", true))));
         learner = learnerRepository.saveAndFlush(learner);
         focus.saveAndFlush(new PlannedGoal(learner, PREPARATION));
+        assertThat(learners.getLearnerState(learnerId).levelCompletion().calculationStatus()).isEqualTo("valid");
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
                 "selectProfile", PROFILE, null, null, learner.getCoachStateRevision()));
         var launch = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start"));
@@ -249,6 +252,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         String recorded = "68c90ba6-c438-463c-9a53-cf61062d416a";
         String exam = "a9562b05-c54d-5635-9244-3f7dd24a8642";
         selectHessianMotionUnit(duration);
+        completeHessianOpeningFixtures();
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
         authenticate();
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
@@ -306,7 +310,88 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(map(context(), "levelCompletion")).containsEntry("directAssessmentRunning", false);
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getCompletionWorkflow()).isNull();
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
-                .containsExactly(recorded);
+                .containsExactlyInAnyOrder(recorded, MOTION_OPENING, FALL_OPENING);
+    }
+
+    /** These existing cases start after the learner has already received both openings. */
+    private void completeHessianOpeningFixtures() {
+        var learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAllAndFlush(List.of(new Mastery(learner, MOTION_OPENING, 1.0),
+                new Mastery(learner, FALL_OPENING, 1.0)));
+    }
+
+    @Test
+    void guidedUnitOpeningSurvivesAResumedCoachSessionAndItsConfirmationResumesTheChosenGoal() throws Exception {
+        selectHessianMotionUnit("G9", "SekII");
+        learners.setPreferences(learnerId, null, false, false);
+        String target = "8aff7aac-321b-5172-ac55-877876bfd2cd";
+        learners.setActiveGoal(learnerId, target);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(MOTION_OPENING);
+        for (int launch = 0; launch < 2; launch++) {
+            session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
+            authenticate();
+            var pending = context();
+            if (pending.containsKey("completionContract")) successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                    Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));
+            var current = context();
+            assertThat(map(current, "activeGoal")).containsEntry("id", MOTION_OPENING);
+            var intro = mapper.valueToTree(map(current, "activeGoalContext")).required("unitIntroduction");
+            assertThat(intro.required("orientationGoalId").asText()).isEqualTo(MOTION_OPENING);
+            assertThat(intro.required("state").asText()).isEqualTo("orientation");
+            assertThat(intro.required("scene").asText()).isNotBlank();
+            assertThat(intro.required("topics").size()).isPositive();
+            assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+        }
+        successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("confirm-unit-opening", version(), Map.of("goalId", MOTION_OPENING)));
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(target);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).singleElement()
+                .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(MOTION_OPENING));
+    }
+
+    @Test
+    void aDirectAssessmentNeedsNoOpeningAndAbandoningItReturnsToTheStillOpenUnitEntry() throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII");
+        String exam = "ee7d5f3d-858f-59d6-89b0-e5a7f437f458";
+        session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start",
+                new CompletionAssessmentStart("automatic:" + section, exam, version()))).learningSessionId();
+        authenticate();
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                Map.of("receiptCapability", map(context(), "completionContract").get("receiptCapability")));
+        assertThat(map(context(), "activeGoal")).containsEntry("id", exam);
+        long beforeResourceRead = version();
+        assertThat(learners.getRequiredUnitOrientationGoalId(learnerId, section)).isEqualTo(MOTION_OPENING);
+        assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(exam);
+        assertThat(version()).isEqualTo(beforeResourceRead);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+        var abandoned = learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
+                "leaveProfile", null, null, null, version()));
+        assertThat(abandoned.activeGoal()).isNull();
+        assertThat(abandoned.frontier()).extracting(com.skillpilot.backend.api.FrontierGoal::id).containsExactly(MOTION_OPENING);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
+    }
+
+    @Test
+    void explicitChildEntryKeepsItsUnitAfterCompletionAndANewCoachSessionWithoutCompletingTheParent() throws Exception {
+        selectHessianMotionUnit("G9", "SekII");
+        learners.setPreferences(learnerId, null, false, false);
+        learners.setActiveGoal(learnerId, FALL_OPENING);
+        session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
+        authenticate();
+        successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                Map.of("receiptCapability", map(context(), "completionContract").get("receiptCapability")));
+        assertThat(map(context(), "activeGoal")).containsEntry("id", FALL_OPENING);
+        successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("direct-child-opening", version(), Map.of("goalId", FALL_OPENING)));
+        session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
+        authenticate();
+        var pending = context();
+        if (pending.containsKey("completionContract")) successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
+                Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));
+        String target = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
+        learners.setActiveGoal(learnerId, target);
+        assertThat(map(context(), "activeGoal")).containsEntry("id", target);
+        assertThat(learners.getPlannedGoals(learnerId)).singleElement()
+                .satisfies(id -> assertThat(id).endsWith(":structure:physics-e1-accelerated-and-free-fall"));
+        assertThat(learners.getMastery(learnerId)).containsEntry(FALL_OPENING, 1.0).doesNotContainKey(MOTION_OPENING);
     }
 
     private String selectHessianMotionUnit(String duration) throws Exception {
@@ -405,6 +490,12 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var monday = today.with(java.time.temporal.TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         var atoms = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var completionInputs = learners.getLearningPlanCompletionContext(learnerId);
+        assertThat(completionInputs.canonicalGoals().get(MOTION_OPENING).getExtendedData())
+                .containsEntry("skillpilotRequiredUnitEntry", true);
+        assertThat(new CompletionProfileCompiler().compileAutomatic(completionInputs.canonicalGoals(),
+                java.util.Set.copyOf(atoms), completionInputs.level2TargetGoalIds(), completionInputs.generation()).protectedGoalIds())
+                .contains(MOTION_OPENING, FALL_OPENING);
         var block = new LearnerLearningPlanApi.Block("motion", "learning", null, "E.1", monday,
                 monday.plusDays(4), null, atoms, List.of(section), true);
         learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(block)), today);
@@ -471,6 +562,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
     @ValueSource(strings = {"G8", "G9"})
     void hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes(String duration) throws Exception {
         String section = selectHessianMotionUnit(duration, "SekII");
+        completeHessianOpeningFixtures();
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         String acceleration = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
         String modelling = "d6dc0e02-831d-4894-a61a-852bcc74f147";
@@ -563,7 +655,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(learners.getUncompactedRichFrontierForFocus(learnerId, List.of(projectile)))
                 .extracting(com.skillpilot.backend.api.FrontierGoal::id).doesNotContain(projectile);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
-                .containsExactlyInAnyOrderElementsOf(java.util.stream.Stream.concat(foundations.stream(), java.util.stream.Stream.of(c, d)).toList());
+                .containsExactlyInAnyOrderElementsOf(java.util.stream.Stream.concat(foundations.stream(),
+                        java.util.stream.Stream.of(c, d, MOTION_OPENING, FALL_OPENING)).toList());
         assertCurrentHessianBindingsFailClosed(section, c, d, freeFall, graph);
     }
 
@@ -671,7 +764,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(examPasses.findForGoal(learnerId, c)).isEqualTo(historical);
         assertThat(learners.getUnitPlanningCredits(learnerId)).isEmpty();
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
-                .containsExactlyInAnyOrder(c, d);
+                .containsExactlyInAnyOrder(c, d, MOTION_OPENING, FALL_OPENING);
     }
 
     @ParameterizedTest
@@ -707,6 +800,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
     @CsvSource({"G8,false", "G9,true"})
     void twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites(String duration, boolean strict) throws Exception {
         String section = selectHessianMotionUnit(duration, "SekII");
+        completeHessianOpeningFixtures();
         String acceleration = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
         String c = "c933b7d2-edcb-5747-9378-9762659f260a";
         String d = "f13ca187-b680-5f47-b4ad-76bd474bd8a2";
@@ -755,7 +849,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         if (!strict) {
             successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("individual-outcome", version(), Map.of("goalId", acceleration)));
             assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
-                    .containsExactlyInAnyOrder(c, d, acceleration);
+                    .containsExactlyInAnyOrder(c, d, acceleration, MOTION_OPENING, FALL_OPENING);
         }
     }
 
@@ -881,7 +975,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 monday, monday.plusDays(4), null, List.of(acceleration), List.of(acceleration), true);
         var chosen = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
                 mixed.revision(), "E.1 und Beschleunigung", List.of(block, individual)), day);
-        assertThat(chosen.nextEligibleGoal().goalId()).isEqualTo(acceleration);
+        assertThat(chosen.nextEligibleGoal().goalId()).isEqualTo(MOTION_OPENING);
         assertThat(chosen.canContinue()).isTrue();
         assertThat(learningPlans.getTodayStatus(learnerId, "de").subjects().getFirst().learningScope().achievedGoalCount()).isZero();
         var backToUnit = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(
@@ -898,7 +992,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 "voluntary".equals(item.intent()) && acceleration.equals(item.goalId())).findFirst().orElseThrow();
         var started = learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
                 voluntary.action(), "automatic:" + section, acceleration, "voluntary", version()));
-        assertThat(started.activeGoal().id()).isEqualTo(acceleration);
+        assertThat(started.activeGoal().id()).isEqualTo(MOTION_OPENING);
+        assertThat(learners.getLearner(learnerId).getPendingUnitEntry()).contains(acceleration);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
                 .containsExactlyInAnyOrderElementsOf(ids);
     }
@@ -930,8 +1025,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var args = writeArgs("resume-explicit-unit", currentVersion, Map.of());
         if (separateOrder) {
             var result = successful(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN, args);
-            assertThat(map(map(result, "context"), "activeGoal")).containsEntry("id", diagrams);
-            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(diagrams);
+            assertThat(map(map(result, "context"), "activeGoal")).containsEntry("id", MOTION_OPENING);
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(MOTION_OPENING);
+            assertThat(learners.getLearner(learnerId).getPendingUnitEntry()).contains(diagrams);
         } else {
             assertThat(map(today, "guidance")).containsEntry("state", passedParts == 4 ? "unitComplete" : "unitChoice");
             var result = call(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN, args);
@@ -957,13 +1053,17 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(bareTitleResult.isError()).isTrue();
             assertThat(version()).isEqualTo(beforeBareTitle);
             assertThat(learners.getLearner(learnerId).getActiveGoalId()).isNull();
-            String published = choice(confirmed, "Einzelfokus starten: " + title);
+            String routeTitle = learners.getLearnerState(learnerId).levelCompletion().actions().stream()
+                    .filter(action -> "d6dc0e02-831d-4894-a61a-852bcc74f147".equals(action.goalId())
+                            && action.practice() != null).findFirst().orElseThrow().title().get("de");
+            String published = choice(confirmed, routeTitle);
             var receiptsBeforeChoice = examPasses.findForGoals(learnerId, parts);
             var result = successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
                     writeArgs("start-chosen-individual-goal", version(), Map.of("choice", published)));
             assertThat(map(map(result, "context"), "activeGoal"))
-                    .containsEntry("id", "d6dc0e02-831d-4894-a61a-852bcc74f147").containsEntry("title", title);
-            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo("d6dc0e02-831d-4894-a61a-852bcc74f147");
+                    .containsEntry("id", MOTION_OPENING);
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(MOTION_OPENING);
+            assertThat(learners.getLearner(learnerId).getPendingUnitEntry()).contains("d6dc0e02-831d-4894-a61a-852bcc74f147");
             assertThat(examPasses.findForGoals(learnerId, parts)).isEqualTo(receiptsBeforeChoice);
         }
         assertThat(examPasses.findForGoals(learnerId, parts)).hasSize(passedParts);
@@ -997,8 +1097,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var chosen = practice.stream().filter(action -> requested.equals(action.goalId())).findFirst().orElseThrow();
         var outstanding = chosen.practice().openPrerequisites().stream().map(item -> item.goalId()).toList();
         assertThat(outstanding).isNotEmpty();
-        if (strict) assertThat(chosen.practice().startGoalId()).isIn(outstanding).isNotEqualTo(requested);
-        else assertThat(chosen.practice().startGoalId()).isEqualTo(requested);
+        assertThat(chosen.practice().startGoalId()).isEqualTo(MOTION_OPENING);
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of(
                 "receiptCapability", map(context(), "completionContract").get("receiptCapability")));
         var confirmed = context();
@@ -1016,6 +1115,16 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(examPasses.findForGoals(learnerId, parts)).isEqualTo(receipts);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
                 .containsExactlyInAnyOrderElementsOf(parts);
+        successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("individual-parent-opening", version(), Map.of("goalId", MOTION_OPENING)));
+        if (FALL_OPENING.equals(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())) {
+            successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("individual-child-opening", version(), Map.of("goalId", FALL_OPENING)));
+        }
+        String continuedGoal = learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId();
+        if (strict) assertThat(continuedGoal).isIn(outstanding);
+        else assertThat(continuedGoal).isEqualTo(requested);
+        String pointer = learnerRepository.findById(learnerId).orElseThrow().getPendingUnitEntry();
+        if (strict) assertThat(pointer).contains(requested);
+        else assertThat(pointer).isNull();
     }
 
     private List<String> individualPracticeGoalIds() {
@@ -1038,7 +1147,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(individualPracticeGoalIds()).contains(freeFall, uniform);
         var voluntary = learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
                 "focusPractice", "automatic:personal-curriculum", freeFall, "voluntary", version()));
-        assertThat(voluntary.activeGoal().id()).isEqualTo(freeFall);
+        assertThat(voluntary.activeGoal().id()).isEqualTo(MOTION_OPENING);
         learningPlans.setUnitAssignmentActivity(learnerId, plan.planId(),
                 new LearnerLearningPlanApi.UnitAssignmentActivity(plan.revision() + 1, "unit", true));
         masteryRepository.saveAndFlush(new Mastery(learnerRepository.findById(learnerId).orElseThrow(), uniform, 1.0));
@@ -1136,8 +1245,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"G8,SekII,GK,16", "G9,SekII,GK,16", "G8,CrossStage,GK,15", "G9,CrossStage,GK,15",
-            "G8,SekII,LK,16", "G9,SekII,LK,16"})
+    @CsvSource({"G8,SekII,GK,18", "G9,SekII,GK,18", "G8,CrossStage,GK,17", "G9,CrossStage,GK,17",
+            "G8,SekII,LK,18", "G9,SekII,LK,18"})
     void supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String duration, String stage, String course, int expected) throws Exception {
         String section = selectHessianMotionUnit(duration, stage, course);
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";

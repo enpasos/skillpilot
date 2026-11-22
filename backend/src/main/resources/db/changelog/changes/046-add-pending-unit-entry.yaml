@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 046-add-pending-unit-entry
+      author: skillpilot
+      changes:
+        - addColumn:
+            tableName: learner
+            columns:
+              - column:
+                  name: pending_unit_entry
+                  type: TEXT
+      rollback:
+        - dropColumn:
+            tableName: learner
+            columnName: pending_unit_entry

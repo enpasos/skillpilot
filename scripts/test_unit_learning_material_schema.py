@@ -75,6 +75,23 @@ class UnitLearningMaterialSchemaTests(unittest.TestCase):
         self.catalog.write_text(json.dumps({"schemaVersion": 1, "materials": ["../outside.json"]}))
         self.assertTrue(any("outside curriculum" in e for e in validate_unit_learning_materials(self.root, SCHEMA)))
 
+    def test_only_v2_accepts_an_explicit_list_of_orientation_recall_obligations(self):
+        example = ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json"
+        document = json.loads(example.read_text())
+        credit = document["unit"]["assessmentContract"]["planningCredits"][0]
+        for ids in ([], ["recall"]):
+            credit["orientation"] = {"requiredRecallGoalIds": ids}
+            self.assertEqual([], self.validate_second(document))
+        for invalid in ({}, {"requiredRecallGoalIds": ["recall", "recall"]}):
+            credit["orientation"] = invalid
+            self.assertTrue(self.validate_second(document))
+        legacy = {**self.material, "unit": {**self.material["unit"],
+                                            "assessmentContract": document["unit"]["assessmentContract"]}}
+        del credit["orientation"]
+        self.assertEqual([], self.validate_second(legacy))
+        credit["orientation"] = {"requiredRecallGoalIds": []}
+        self.assertTrue(self.validate_second(legacy))
+
 
 if __name__ == "__main__":
     unittest.main()

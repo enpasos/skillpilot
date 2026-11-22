@@ -45,6 +45,7 @@ public record UnitPlanningRelease(int schemaVersion, String revision, String own
 
         Set<String> expected = new HashSet<>(rule.goalIds());
         expected.addAll(rule.requiredPartIds());
+        if (rule.orientation() != null) expected.addAll(rule.orientation().requiredRecallGoalIds());
         Set<String> owned = new HashSet<>();
         for (var placement : landscape.getGoalPlacements()) {
             if (!placement.isOwnership() || !expected.contains(placement.getGoalId())) continue;
@@ -63,7 +64,19 @@ public record UnitPlanningRelease(int schemaVersion, String revision, String own
                     || row.getGoalIds() == null || row.getGoalIds().isEmpty()) return false;
             covered.addAll(row.getGoalIds());
         }
-        return covered.containsAll(rule.goalIds());
+        if (rule.orientation() == null) return covered.containsAll(rule.goalIds());
+        // An assessed route can discharge its own orientation for planning only after
+        // every own assessment and recall obligation has been accounted for.
+        var ownIds = landscape.getGoalPlacements().stream().filter(p -> p.isOwnership() && ownerUnitId.equals(p.getUnitId()))
+                .map(p -> p.getGoalId()).collect(java.util.stream.Collectors.toSet());
+        if (landscape.getGoals() == null) return false;
+        var ownGoals = landscape.getGoals().stream().filter(g -> ownIds.contains(g.getId())).toList();
+        if (ownGoals.size() != ownIds.size() || ownGoals.stream().noneMatch(g -> rule.goalIds().contains(g.getId())
+                && CompletionProfileCompiler.isOrientation(g))) return false;
+        var exams = ownGoals.stream().filter(CompletionProfileCompiler::isAssessment).map(LearningGoal::getId).toList();
+        var recall = ownGoals.stream().filter(CompletionProfileCompiler::isMemory).map(LearningGoal::getId).toList();
+        return Set.copyOf(exams).equals(Set.copyOf(rule.requiredPartIds()))
+                && Set.copyOf(recall).equals(Set.copyOf(rule.orientation().requiredRecallGoalIds()));
     }
 
     public boolean valid(String landscapeId, String compositionNodeId, UnitAssessmentContract contract,
@@ -97,6 +110,7 @@ public record UnitPlanningRelease(int schemaVersion, String revision, String own
         payload.put("parts", contract.parts().stream().filter(part -> rule.requiredPartIds().contains(part.goalId()))
                 .sorted(java.util.Comparator.comparing(UnitAssessmentContract.Part::goalId)).toList());
         payload.put("goalDefinitions", goalDefinitions);
+        if (rule.orientation() != null) payload.put("orientation", rule.orientation());
         return hash(payload);
     }
 
@@ -126,7 +140,7 @@ public record UnitPlanningRelease(int schemaVersion, String revision, String own
         return hash(complete);
     }
 
-    private static String hash(Object value) {
+    public static String hash(Object value) {
         try { return CompletionReviewBindings.canonicalHash(MAPPER.valueToTree(value), MAPPER); }
         catch (Exception invalid) { throw new IllegalArgumentException("Cannot bind a planning release", invalid); }
     }
