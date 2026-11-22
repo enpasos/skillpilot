@@ -21,6 +21,14 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 22. November 2026, 17:55 MEZ – Das Motivationsziel eröffnet die grafische Lernfolge
+
+In E.1 stand „Bewegungen entdecken: vom Tisch bis zum Boden“ neben dem Lernkartenstapel. Bei horizontaler Leserichtung begann das erste Fachziel 270 Layoutpixel weiter links. In der Untereinheit lagen Einstieg und erstes Fachziel auf derselben Höhe in Leserichtung. Die Karte verwendet jetzt das im Material benannte eigene Motivationsziel als ersten Knoten. Pfeile mit der Bedeutung „Geführter Lernweg“ verbinden den Einstieg mit den ersten Fachschritten. Der Prüfungsdirekteinstieg bleibt verfügbar. [Fachkonzept](../concept/skill-graph/learning-unit-motivation-concept-2026-11-17.md)
+
+Zur Sichtung in E.1 die Wege zu den beiden ersten Fachzielen verfolgen und dann „Beschleunigte Bewegung und freier Fall“ betreten. Dort führt „Einen fallenden Ball entdecken“ zum Beschleunigungsziel. Beim Wechsel der Leserichtung steht der Beginn oben. Der automatisierte Browsertest prüft beide Einheiten in G8 und G9, die tatsächlichen Knotenpositionen und die eingezeichneten Verbindungen. Ein zusätzlicher Test verwendet eine fachunabhängige Karte. K 0/13 und F 0/7 vollständig abgeschlossen. Dieses Paket aktiviert null neue Stufenpläne und ändert keine fachlichen Voraussetzungen, Prüfungsaufgaben oder Lernnachweise. [Vorschauprofile](hessen-physik-e1-vorschau.md) · [Layouttest](https://github.com/enpasos/skillpilot/blob/fix/unit-orientation-map-order/app/src/components/learningUnitMap/learningScopeLayoutCore.test.mjs)
+
+**Integration.** [PR #181](https://github.com/enpasos/skillpilot/pull/181) steht zur technischen Prüfung. Anschließend folgen die vollständige Main-CI und die Sichtung durch den Product Owner.
+
 ## 22. November 2026, 16:35 MEZ – In der Einheit lernen oder direkt zur Prüfung gehen
 
 **Lernen starten** und **Direkt zur Prüfung** stehen nebeneinander. Beim Einheiteneinstieg stehen sie unter dem Motivationsbild, bei ausgewähltem Fachziel oben im Cockpit. Die Prüfungsteile erscheinen nach dem Öffnen der Prüfungsauswahl. In der grafischen Lernkarte steht der gesamte Platz unter der Kopfzeile für den Graphen zur Verfügung. Bei eingeschaltetem **Nach Plan lernen** ist die Verwaltung der Einheitenaufträge im Lernplan erreichbar. Wer das Cockpit schließt oder ein Gespräch mit dem Coach unterbricht, kann später am gespeicherten Stand weiterarbeiten. Das bewusste Verlassen eines Prüfungsversuchs und das Pausieren eines gespeicherten Einheitenauftrags haben weiterhin ihren jeweils eigenen Zweck. [Lernplanvertrag](../concept/didactic/unified-learning-plan-status.md)
