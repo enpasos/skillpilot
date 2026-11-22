@@ -1,5 +1,7 @@
-# Orientation scene
+# Freier Fall – Vor dem Loslassen
 
-Built-in OpenAI image generation, 22 November 2026. New scene-only asset; no existing shared assessment asset was altered.
+Die integrierte OpenAI-Bildgenerierung hat die Einstiegsszene am 22. November 2026 aus dem folgenden englischen Originalprompt erzeugt.
+
+## Originalprompt
 
 Use case: scientific-educational. Asset type: first scene for a German upper-secondary physics child unit, wide landscape raster illustration. Primary request: A small blue ball held gently between a hand's thumb and forefinger beside a plain vertical measuring stick, just before release in a classroom free-fall experiment. The ball is at the top part of the stick, with open space and the floor below. Depict only this one instant before release, without suggesting later motion. Style: loose friendly hand-drawn educational comic, thin slightly irregular dark outlines, soft pale blue and warm beige watercolor areas, simple natural shapes, calm spacious layout for ages 15–17. Framing: side view. Only the hand/forearm enters from top right; no entire person necessary. Measuring stick stands on floor at left centre, with simple unlabeled evenly spaced tick marks, no numbers. Constraints: only one ball; no path, arrows, motion trails, ghost balls, formulas, numbers, labels, graphs, timelines, panels, explanatory text or answer. No decorative sparkles, radiating emphasis marks or highlight bands. No watermark. Opaque pale background. Save generated file locally for project use.
