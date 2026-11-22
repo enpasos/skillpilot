@@ -21,7 +21,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 22. November 2026, 09:13 MEZ – Eigener Auftakt für E.1 und den freien Fall
+## 22. November 2026, 09:25 MEZ – Eigener Auftakt für E.1 und den freien Fall
 
 Die geführte Arbeit in einer Einheit beginnt mit ihrem eigenen atomaren Motivationsziel. Ein Bild, die Leitfrage, die Themen und das Lernversprechen gehören zum Einstieg. Die Person kann eine Vermutung äußern oder nach dem Rückblick den Abschluss wählen. Der direkte Prüfungsversuch bleibt verfügbar. Persönlicher Abschluss und fassungsgebundene Anrechnung werden getrennt ausgewertet. Die vier Prüfungen des Einheitenauftrags behalten ihre Aufgaben- und Rasterfassungen. [Entscheidung und Lernwege](../concept/skill-graph/learning-unit-motivation-concept-2026-11-17.md)
 
@@ -31,7 +31,7 @@ Die geführte Arbeit in einer Einheit beginnt mit ihrem eigenen atomaren Motivat
 
 Auf dem Handy konnte die Karte nach dem Öffnen des freien Falls selbsttätig zu E.1 zurückspringen. Der noch ausstehende Kartenbefehl für Prüfung B wurde nach der ausdrücklichen Wahl der Untereinheit erneut ausgeführt. Mit der Korrektur blieb der freie Fall in 36 von 36 Wiederholungen bei 390 Pixeln in G9/LK geöffnet, bis die Person selbst wieder zu E.1 wechselte.
 
-Die beiden englischen Originalprompts liegen unter den kanonischen Dateinamen des Bildkatalogs. Die Bildprüfung bestätigt 2.577 Verweise in 21 Landschaften. Sechs hessische Physikansichten erhielten durch den Einstieg neue Datei-Fingerabdrücke. Für die Mathematikplanung wurden alle 1.036 Nachweise, welches Physikziel eine mathematische Vorbereitung benötigt, aus den aktuellen Ansichten erneut hergeleitet. Sie ergeben dieselben 47 Mathematikziele und dieselben Zuordnungen.
+Die beiden englischen Originalprompts liegen unter den kanonischen Dateinamen des Bildkatalogs. Die Bildprüfung bestätigt 2.577 Verweise in 21 Landschaften. Sechs hessische Physikansichten erhielten durch den Einstieg neue Datei-Fingerabdrücke. Für die Mathematikplanung wurden alle 1.036 Nachweise, welches Physikziel eine mathematische Vorbereitung benötigt, aus den aktuellen Ansichten erneut hergeleitet. Sie ergeben dieselben 47 Mathematikziele und dieselben Zuordnungen. Die beiden neuen Orientierungsziele gehören zu den acht vorgesehenen Hessen-Ansichten. Der Vergleich mit den historisch gebundenen Zielmengen berücksichtigt die beiden Ergänzungen ausdrücklich und prüft die bisherigen Lernziele und Vorbereitungen weiterhin gegen ihre Belege.
 
 **Integration offen.** Der Branch enthält die Umsetzung für Hessen Physik G8 und G9 und die automatisierten Prüfungen der Eintrittswege. Der technische Abschluss setzt die integrierte, erfolgreiche Main-CI voraus. Anschließend steht die persönliche E.1-Teilabnahme an. [PR #179](https://github.com/enpasos/skillpilot/pull/179)
 

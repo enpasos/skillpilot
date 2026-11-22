@@ -30,6 +30,18 @@ NEW_TASK_OFFERS = {
     "f602680f-ea75-5bed-ae87-72f6be34a99b": {"DE-SL", "DE-SN"},
 }
 LK_ONLY_NEW_TASKS = {"797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00", "884bd99b-2373-5174-af7c-c6813b91bd93"}
+# The reviewed 22 November guided-entry pilot adds exactly these two own
+# openings. Keep the historical source-seed authority unchanged beneath them.
+HESSEN_GUIDED_OPENINGS = {
+    "a4d4efe1-7d30-526b-ac9c-806113da4363",
+    "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+}
+HESSEN_GUIDED_OPENING_VIEWS = {
+    "de-he-gym-physics-gk", "de-he-gym-physics-lk",
+    "de-he-gym-physics-gk-g8", "de-he-gym-physics-gk-g9",
+    "de-he-gym-physics-lk-g8", "de-he-gym-physics-lk-g9",
+    "de-he-gym-sekii-physics-gk", "de-he-gym-sekii-physics-lk",
+}
 
 NEW_EYE_ASSESSMENT_ID = "3b7b2b62-e39c-5936-b0d8-5406206e57b6"
 REVIEWED_NEW_LOWER_EXCLUSIONS = {
@@ -57,7 +69,18 @@ class PhysicsStageAuthoring(unittest.TestCase):
         cls.views = {path.name: json.loads(path.read_text()) for path in authoring.DIRECTORY.glob("*.view.json")}
         cls.authorities = json.loads((authoring.ROOT / "scripts/generate_laender_physics_stage_views.memberships.json").read_text())["authorities"]
 
+    def test_guided_openings_are_targets_only_in_the_eight_reviewed_views(self):
+        self.assertEqual(len(self.views), 90)
+        for view in self.views.values():
+            with self.subTest(view=view["viewId"]):
+                roles = authoring.graph.role_atoms(view)
+                expected = HESSEN_GUIDED_OPENINGS if view["viewId"] in HESSEN_GUIDED_OPENING_VIEWS else set()
+                self.assertEqual(roles["target"] & HESSEN_GUIDED_OPENINGS, expected)
+                self.assertFalse(roles["prerequisiteOnly"] & HESSEN_GUIDED_OPENINGS)
+
     def test_original_full_authorities_keep_exact_seed_sets_and_old_support_roles(self):
+        self.assertTrue(HESSEN_GUIDED_OPENING_VIEWS <= set(self.authorities))
+        self.assertTrue(HESSEN_GUIDED_OPENING_VIEWS <= {view["viewId"] for view in self.views.values()})
         for view in self.views.values():
             baseline = self.authorities.get(view["viewId"])
             if baseline is None:
@@ -76,6 +99,8 @@ class PhysicsStageAuthoring(unittest.TestCase):
                         allowed_new_task |= {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b"}
                 if state == "DE-HE" and stage in ("CrossStage", "SekII"):
                     allowed_new_task.update(authoring.graph.HESSEN_E1_ASSESSMENTS)
+                if view["viewId"] in HESSEN_GUIDED_OPENING_VIEWS:
+                    allowed_new_task.update(HESSEN_GUIDED_OPENINGS)
                 self.assertTrue(allowed_new_task <= roles["target"])
                 retained = roles["target"] - allowed_new_task
                 variants = authoring.graph.HESSEN_E1_CHILD_ASSESSMENT_VARIANTS
