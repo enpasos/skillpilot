@@ -8,6 +8,7 @@ import { useLandscapes } from './hooks/useLandscapes'
 import { consumeQueuedToast, useToast } from './hooks/useToast'
 import { useTranslation } from './hooks/useTranslation'
 import { useLanguage } from './contexts/LanguageContext'
+import { clearUnitStudyIntent } from './utils/unitStudyIntent'
 import { sanitizeSkillpilotId } from './utils/skillpilotId'
 import { startCockpitRequests } from './utils/cockpitStartRequests'
 import { getSkillPilotOverviewCopy } from './utils/skillPilotOverviewCopy'
@@ -627,6 +628,7 @@ const App: React.FC = () => {
     localStorage.removeItem('skillpilot_role')
     localStorage.removeItem('skillpilot_learner_landscape')
     sessionStorage.removeItem('skillpilot_ui_session_id')
+    clearUnitStudyIntent()
     setHasSession(false)
     setSkillpilotId('')
     setPendingLandscapeId(null)
