@@ -360,7 +360,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     const backward = !!relation?.backward
     const declared = relation?.unitOrder === 'declared'
     const unitEntry = relation?.kind === 'unitEntry'
-    const color = unitEntry ? '#916d30' : backward ? highlighted ? '#b42318' : '#d4553a' : highlighted ? '#2870b0' : declared ? '#6f8193' : '#9aa4ae'
+    const color = backward ? highlighted ? '#b42318' : '#d4553a' : highlighted ? '#2870b0' : declared ? '#6f8193' : '#9aa4ae'
     const summary = relation?.kind === 'summary' && !declared && !backward
     const sourceTitle = fixture.entries[relationSource].title
     const targetTitle = fixture.entries[relationTarget].title
@@ -368,8 +368,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     return { ...edge, type: 'routed', data: { points: edge.points },
       className: unitEntry ? 'lum-edge--unit-entry' : undefined,
       ...(edge.reversed ? { markerStart: marker } : { markerEnd: marker }),
-      style: { stroke: color, strokeWidth: highlighted ? 1.8 : unitEntry || backward || declared ? 1.5 : 1.1,
-        strokeDasharray: unitEntry ? '8 3 2 3' : backward ? '2 4' : summary ? '5 4' : undefined,
+      style: { stroke: color, strokeWidth: highlighted ? 1.8 : backward || declared ? 1.5 : 1.1,
+        strokeDasharray: backward ? '2 4' : summary ? '5 4' : undefined,
         // Declared year/phase order remains orientation context for every selection.
         opacity: selectedId && !highlighted && !declared ? 0.13 : 1 },
       zIndex: highlighted ? 2 : backward ? 1 : 0,

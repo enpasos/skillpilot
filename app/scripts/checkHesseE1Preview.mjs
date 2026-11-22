@@ -173,6 +173,26 @@ async function checkMapSurface(page, dialog, { scopeId, title, language = 'de' }
     && Math.abs(graph.x) <= 2 && Math.abs(graph.width - viewport.width) <= 2,
     'The graph fills the space between the header and its controls: ' + JSON.stringify({ header, graph, mapControls, viewport }))
 }
+async function checkUnitEntryArrowStyle(board, firstGoalId) {
+  // Both arrows touch the same subject goal, so selecting it highlights both.
+  const styles = await board.page().waitForFunction(id => {
+    const flow = document.querySelector('[data-testid="learning-map-board"][aria-busy="false"] .lum-flow--idle')
+    const appearance = selector => {
+      const path = flow?.querySelector(selector + ' .react-flow__edge-path')
+      if (!path) return null
+      const { stroke, strokeWidth, strokeDasharray, markerEnd, opacity } = getComputedStyle(path)
+      return stroke ? { stroke, strokeWidth, strokeDasharray, markerEnd, opacity } : null
+    }
+    const entry = appearance(`.lum-edge--unit-entry[data-id$="->${id}"]`)
+    const regular = appearance(`.react-flow__edge[data-id^="sibling:${id}->"][aria-label*=" bereitet auf "]`)
+    return entry && regular && { entry, regular }
+  }, firstGoalId)
+  const { entry, regular } = await styles.jsonValue()
+  assert.equal(regular.strokeDasharray, 'none')
+  assert.notEqual(regular.markerEnd, 'none', 'The ordinary step has an arrowhead')
+  assert.deepEqual(entry, regular, 'An introduction arrow looks like an ordinary arrow in the same selection state')
+  return entry
+}
 async function checkUnitEntryOrder(page, dialog, orientationId, firstGoalId, count, direction) {
   const board = dialog.getByTestId('learning-map-board')
   await board.locator('.lum-flow--idle [data-entry-id]').first().waitFor()
@@ -201,6 +221,7 @@ async function checkUnitEntryOrder(page, dialog, orientationId, firstGoalId, cou
     assert(label?.startsWith(prefix) && regularTitles.has(label.slice(prefix.length)),
       'A guided entry arrow leads from this unit’s own introduction to regular learning: ' + label)
   }
+  await checkUnitEntryArrowStyle(board, firstGoalId)
 }
 async function checkInitialEntryViewport(page, scopeId, orientationId) {
   await page.waitForFunction(({ scopeId, orientationId }) => {
@@ -472,8 +493,9 @@ async function checkGuidedUnitEntry(duration) {
     await map.locator('.lum-canvas[aria-busy="false"]').waitFor()
     await checkMapSurface(page, map, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
     const direction = duration === 'G8' ? 'RIGHT' : 'DOWN'
+    const firstGoalId = '8aff7aac-321b-5172-ac55-877876bfd2cd'
     if (direction === 'DOWN') await map.getByRole('button', { name: 'Lernrichtung drehen', exact: true }).click()
-    await checkUnitEntryOrder(page, map, unit.orientationGoalId, '8aff7aac-321b-5172-ac55-877876bfd2cd', 18, direction)
+    await checkUnitEntryOrder(page, map, unit.orientationGoalId, firstGoalId, 18, direction)
     await map.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).press('Enter')
     await checkMapSurface(page, map, { scopeId: section.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall'),
       title: 'Beschleunigte Bewegung und freier Fall' })
@@ -483,6 +505,12 @@ async function checkGuidedUnitEntry(duration) {
     await map.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
     await checkMapSurface(page, map, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
     assert.equal(await map.getByTestId('native-cockpit-map').getAttribute('data-selected-goal-id'), tasks.B.id)
+    const board = map.getByTestId('learning-map-board')
+    const previous = await checkUnitEntryArrowStyle(board, firstGoalId)
+    await board.locator(`[data-entry-id="${firstGoalId}"] .lum-node-main`).click()
+    await board.locator(`[data-entry-id="${firstGoalId}"] .lum-node-main[aria-pressed="true"]`).waitFor()
+    const highlighted = await checkUnitEntryArrowStyle(board, firstGoalId)
+    assert.notEqual(highlighted.stroke, previous.stroke, 'Selecting the subject goal highlights both arrows')
     await map.getByRole('button', { name: 'Lernkarte schließen', exact: true }).click()
     assert.deepEqual(await evidence(viewer), before, 'Explicit unit entry never records an orientation result')
 
