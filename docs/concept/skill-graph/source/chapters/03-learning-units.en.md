@@ -1,8 +1,8 @@
 ## Declared Units: Structure, Order, and Evidence {#sec:learning-units}
 
-**Applicable structure and recognition contract.** Completion Equation~@eqref{eq:unit-complete} and recognition before full completion remain in force. The separate proposal of 19 November appears in Section~@ref{sec:proposal-unit-completion} and in Section~@ref{sec:proposal-unit-assessment}. “Target model” here means confirmed target requirements; the motivation draft of 17 November is labelled as a proposal.
+**Applicable structure and recognition contract.** Completion Equation~@eqref{eq:unit-complete} and recognition before full completion remain in force. The separate proposal of 19 November appears in Section~@ref{sec:proposal-unit-completion} and in Section~@ref{sec:proposal-unit-assessment}. “Target model” here means confirmed target requirements. The Product Owner adopted the guided unit opening on 22 November.
 
-A learning unit connects a learning promise to a coherent path through its goals. When a unit has assessments of its own, it introduces the topic through a dedicated opening and its assessments show what learners can apply independently by the end. The opening is a proposal of 17 November for the regular learning path.
+A learning unit connects a learning promise to a coherent path through its goals. When a unit has assessments of its own, it introduces the topic through a dedicated opening and its assessments show what learners can apply independently by the end.
 
 :::principle {title="Cluster, Unit, Unit With Assessments"}
 A **cluster** groups goals. A declared **unit** can be studied as one continuous block in the intended learning flow. A **unit with assessments** demonstrates independent application of its own content goals through its own assessments with reviewed coverage. An assessment-free unit can order goals and child units. Subjects serve as filters on the learning map.
@@ -14,9 +14,9 @@ Subject units describe conceptual steps that apply across the Länder. **Plan un
 
 ### Motivation and Distinct Domain Claims {#sec:unit-claims}
 
-A unit’s **learning promise** describes what learners will be able to do and why it matters. The 17 November proposal suggests that every unit with assessments of its own has exactly one **motivation goal** of its own. This is an atomic orientation goal. The backend supplies the coach with the learning promise and the relevant details of the active unit. The coach illustrates its purpose with a concrete situation where possible. For the dot product, the coach might begin: “Your path on the map heads northeast. By the end you can show how much of the journey takes you east and use that to explain the dot product.”
+A unit’s **learning promise** describes what learners will be able to do and why it matters. Every unit with assessments of its own has exactly one **motivation goal** of its own. This is an atomic orientation goal. The backend supplies the coach with the learning promise and the relevant details of the active unit. The coach illustrates its purpose with a concrete situation where possible. For the dot product, the coach might begin: “Your path on the map heads northeast. By the end you can show how much of the journey takes you east and use that to explain the dot product.”
 
-The [proposed short opening](repo:docs/concept/skill-graph/learning-unit-motivation-concept-2026-11-17.md) uses an application example written for the motivation goal and attributed to SkillPilot as a didactic contribution. Section~@ref{sec:orientation} describes how the coach guides and concludes the opening.
+On entry the learning map shows the location, a scene, the guiding question, topics and the learning promise. The opening is the first step on the guided path. Content goals, exercises and card practice follow personal completion or valid credit for this orientation. Opening a unit leaves the learner’s results intact. On return the saved progress and next step suffice. Section~@ref{sec:orientation} describes how the coach offers closure.
 
 Learners can ask for a short review during the conversation. If the current unit has suitable flashcards, the coach can also offer them once a concept has been explored. The learner can practise the cards or carry on with their question. After practice the coach returns to the open question at the same learning goal. Learners who ask for an explanation get one in the conversation. Practice updates the card review schedule. A unit that expressly requires verified recall has a separate check for it.
 
@@ -26,7 +26,7 @@ A simplified example with two content goals shows how the graph represents a lea
 
 **Proposed edge rule.** Every atomic goal the unit owns, apart from orientation goals, reaches its motivation goal along a prerequisite path. This also applies to exercises represented as own goals. The motivation goal requires no content goals. Direct references to it come from within its unit. Starting from the other prerequisites, a tool adds the desired connections and writes direct motivation edges only where no other path provides the connection. This lets the first content goal require both the opening and prior knowledge from a child unit or another subject. The complete graph must be acyclic and transitively minimal.
 
-**Proposal of 17 November.** A child unit with its own assessments has its own opening too. The parent explains the broader purpose and the child introduces the next conceptual step. **It remains open** whether the child’s motivation should require that of its nearest enclosing unit with assessments. The current proposal recommends the unit’s own opening when a learner starts the whole unit. A mandatory edge would also apply to someone who needs just one of the child’s goals as preparation for another subject. Such an edge would require a limited exception to prerequisite-free orientation and compatible placements in each Land plan.
+**Nested units.** A learner starting the parent and then descending into a child on the guided path encounters both openings in that order. When entering the child directly, its own opening explains the connection to the parent in one sentence. This adds no prerequisite between the two orientation goals. Pure groupings show their location and children. Assessments may be attempted directly. After leaving before submission, guided study resumes with the chosen unit’s outstanding opening.
 
 The unit boundary follows a meaningful conceptual transition. A few well-founded prerequisites can support such a transition. A questionable edge is reviewed on its subject-matter merits independently of the desired grouping. The [design criteria](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md) give examples.
 
@@ -46,14 +46,14 @@ Total scope is non-empty. An aggregate may have no own goals when its children c
 
 #### Representation in the Unit Entry {#sec:unit-representation}
 
-The entry in the placement layer references the cluster and carries the learning promise, revision and any `after` declarations. For a unit with assessments it identifies the coverage reviews of its own assessments. The proposal of 17 November would add a reference to its own motivation goal. References keep the goals and assessment data in their canonical locations.
+The entry in the placement layer references the cluster and carries the learning promise, revision and any `after` declarations. For a unit with assessments it identifies the coverage reviews of its own assessments. For guided entry the unit references its own motivation goal. References keep the goals and assessment data in their canonical locations.
 
 :::table {#tab:unit-representation caption="Unit entry under the existing contract and in the target model." cols="30mm,46mm,X"}
 | Item | Existing contract | Target model |
 | --- | --- | --- |
 | Subject unit | `programUnits`, kind `learningUnit`, `promise`, `promiseEn`, `revision` | Declared cluster in the same placement layer; promise and revision remain. |
 | Own goals and children | `goalPlacements` with `relation: own`, no `context`, and `parentUnitId` | Derived from `contains` and nested unit declarations. |
-| Opening (proposal of 17 November) | The three existing subject units already carry a learning promise. | A reference to exactly one own motivation goal per unit with assessments of its own. |
+| Guided opening (22 November decision) | The three existing subject units already carry a learning promise. | A reference to exactly one own motivation goal per unit with assessments of its own. |
 | Coverage reviews | `coverageReviews`, at most one per own assessment, bound to task and rubric hashes and a review record | Required for units with assessments. |
 | Plan units | Stage-plan foundation under `v1.3`, without an activated Land plan | One shared plan per Land and duration model; views are derived excerpts. |
 | Completion and results | No stored unit mastery | Still derived; no writing back to goals and no recognition from `after`. |

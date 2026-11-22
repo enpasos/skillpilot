@@ -1,8 +1,8 @@
 ## Erklärte Einheiten: Gliederung, Reihenfolge und Nachweis {#sec:learning-units}
 
-**Geltender Struktur- und Anerkennungsvertrag.** Die Abschlussregel @eqref{eq:unit-complete} und die Anerkennung vor dem Gesamtabschluss gelten weiter. Der abgegrenzte Vorschlag vom 19. November steht in Abschnitt~@ref{sec:proposal-unit-completion} und in Abschnitt~@ref{sec:proposal-unit-assessment}. „Zielmodell“ bezeichnet hier bestätigte Zielvorgaben; der Motivationsentwurf vom 17. November ist als Vorschlag gekennzeichnet.
+**Geltender Struktur- und Anerkennungsvertrag.** Die Abschlussregel @eqref{eq:unit-complete} und die Anerkennung vor dem Gesamtabschluss gelten weiter. Der abgegrenzte Vorschlag vom 19. November steht in Abschnitt~@ref{sec:proposal-unit-completion} und in Abschnitt~@ref{sec:proposal-unit-assessment}. „Zielmodell“ bezeichnet hier bestätigte Zielvorgaben. Der Product Owner hat den geführten Einheitsauftakt am 22. November bestätigt.
 
-Eine Lerneinheit verbindet ein Lernversprechen mit einem zusammenhängenden Lernweg. Hat sie eigene Prüfungen, führt ein eigener Auftakt in das Thema ein und die Prüfungen zeigen am Ende, was die Person selbstständig anwenden kann. Der Auftakt ist ein Vorschlag vom 17. November für den regulären Lernweg.
+Eine Lerneinheit verbindet ein Lernversprechen mit einem zusammenhängenden Lernweg. Hat sie eigene Prüfungen, führt ein eigener Auftakt in das Thema ein und die Prüfungen zeigen am Ende, was die Person selbstständig anwenden kann.
 
 :::principle {title="Cluster, Einheit, Einheit mit Prüfungen"}
 Ein **Cluster** gliedert Ziele. Eine ausdrücklich erklärte **Einheit** lässt sich im vorgesehenen Lernfluss an einem Stück bearbeiten. Eine **Einheit mit Prüfungen** belegt die selbstständige Anwendung ihrer eigenen Inhaltsziele durch eigene Prüfungen mit fachlich geprüfter Deckung. Eine prüfungsfreie Einheit kann Ziele und Untereinheiten ordnen. Fächer dienen in der Lernkarte als Filter.
@@ -14,9 +14,9 @@ Fachliche Einheiten beschreiben einen Erkenntnisschritt, der länderübergreifen
 
 ### Motivation und eigener fachlicher Anspruch {#sec:unit-claims}
 
-Das **Lernversprechen** der Einheit sagt, was Lernende danach können und wozu es nützt. Der **Vorschlag vom 17. November** sieht für jede Einheit mit eigenen Prüfungen genau ein eigenes **Motivationsziel** vor. Es ist ein atomares Orientierungsziel. Der Coach erhält das Lernversprechen und die Angaben zur aktiven Einheit vom Backend und zeigt den Nutzen möglichst an einer konkreten Situation. Beim Skalarprodukt könnte der Coach so beginnen: „Dein Weg auf der Karte führt schräg nach Nordosten. Am Ende kannst du zeigen, welcher Teil des Weges dich nach Osten bringt, und damit das Skalarprodukt erklären.“
+Das **Lernversprechen** der Einheit sagt, was Lernende danach können und wozu es nützt. Jede Einheit mit eigenen Prüfungen erhält genau ein eigenes **Motivationsziel**. Es ist ein atomares Orientierungsziel. Der Coach erhält das Lernversprechen und die Angaben zur aktiven Einheit vom Backend und zeigt den Nutzen möglichst an einer konkreten Situation. Beim Skalarprodukt könnte der Coach so beginnen: „Dein Weg auf der Karte führt schräg nach Nordosten. Am Ende kannst du zeigen, welcher Teil des Weges dich nach Osten bringt, und damit das Skalarprodukt erklären.“
 
-Der [Vorschlag für den kurzen Auftakt](repo:docs/concept/skill-graph/learning-unit-motivation-concept-2026-11-17.md) sieht einen von Hand verfassten Praxisbezug am Motivationsziel vor. Seine Herkunft weist ihn als didaktischen Beitrag von SkillPilot aus. Abschnitt~@ref{sec:orientation} beschreibt, wie der Coach diesen Einstieg begleitet und abschließt.
+Beim Betreten zeigt die Lernkarte den Ort, eine fachliche Szene, die Leitfrage, die Themen und das Lernversprechen. Der Auftakt ist der erste Schritt des geführten Lernwegs. Erst nach seinem persönlichen Abschluss oder einer für dieses Ziel gültigen Anrechnung beginnt die Person ein Fachziel, eine Übung oder die Karten. Das Öffnen einer Einheit verändert kein Ergebnis. Bei der Rückkehr genügen der gespeicherte Stand und der nächste Schritt. Abschnitt~@ref{sec:orientation} beschreibt das Abschlussangebot des Coachs.
 
 Lernende können im Gespräch um eine kurze Wiederholung bitten. Liegen für die aktuelle Einheit passende Karten vor, kann der Coach sie auch anbieten, sobald ein Begriff erarbeitet ist. Die Person entscheidet, ob sie Karten übt oder an ihrer Frage weiterarbeitet. Nach den Karten greift der Coach die offene Frage am selben Lernziel wieder auf. Wer um eine Erklärung bittet, erhält sie im Gespräch. Die Wiederholung aktualisiert den Übungsstand der Karten. Ein ausdrücklich geforderter verifizierter Abruf hat seinen eigenen Nachweis.
 
@@ -26,7 +26,7 @@ Wie der Graph einen Lernweg abbildet, zeigt ein vereinfachtes Beispiel mit zwei 
 
 **Vorgeschlagene Kantenregel.** Jedes eigene atomare Ziel außer den Orientierungszielen erreicht die Motivation der Einheit über einen Voraussetzungspfad. Das gilt auch für Übungsaufgaben, die als eigene Ziele geführt werden. Die Motivation setzt keine Inhalte voraus. Direkte Verweise auf sie stammen aus der zugehörigen Einheit. Ausgangspunkt sind die übrigen Voraussetzungen. Ein Werkzeug ergänzt die gewünschten Verbindungen und schreibt nur die direkten Motivationskanten, für die kein anderer Pfad besteht. So kann das erste eigene Inhaltsziel sowohl die Motivation als auch Vorwissen aus einer Untereinheit oder einem anderen Fach benötigen. Der vollständige Graph muss azyklisch und transitiv minimal sein.
 
-**Vorschlag vom 17. November.** Hat eine Untereinheit eigene Prüfungen, erhält sie auch ihren eigenen Auftakt. Die äußere Einheit erklärt den größeren Zusammenhang, die innere den konkreten nächsten Schritt. **Offen ist**, ob die innere Motivation die der nächsten umschließenden Einheit mit Prüfungen voraussetzen soll. Vorerst ist beim Start der ganzen Einheit die Empfehlung ihres eigenen Auftakts vorgeschlagen. Eine verpflichtende Kante würde auch für Lernende gelten, die nur ein einzelnes Ziel der inneren Einheit als Vorbereitung für ein anderes Fach benötigen. Eine solche Kante erfordert eine begrenzte Ausnahme von der voraussetzungsfreien Orientierung und verträgliche Platzierungen im jeweiligen Landesplan.
+**Geschachtelte Einheiten.** Wer die übergeordnete Einheit beginnt und von dort geführt in ein Kind wechselt, erlebt beide Einstiege in dieser Reihenfolge. Beim gezielten Direkteinstieg in das Kind zeigt dessen eigener Auftakt in einem Satz den Zusammenhang mit der Elterneinheit. Zwischen den beiden Motivationszielen besteht dafür keine fachliche Voraussetzung. Reine Gliederungseinheiten zeigen ihren Ort und ihre Kinder. Prüfungen lassen sich direkt versuchen. Beim Verlassen vor Abgabe gilt für die weitere geführte Arbeit wieder der offene Auftakt der gewählten Einheit.
 
 Die Einheitsgrenze folgt einem fachlich bedeutsamen Erkenntnisübergang. Auch wenige, gut begründete Voraussetzungen können einen solchen Übergang tragen. Wo eine Kante fachlich fragwürdig ist, wird ihre Begründung unabhängig vom gewünschten Zuschnitt geprüft. Die [Gestaltungskriterien](repo:docs/concept/skill-graph/learning-unit-design-and-examples.md) beschreiben Beispiele.
 
@@ -46,14 +46,14 @@ Der Gesamtumfang ist nicht leer. Bei einem Aggregat können sämtliche Ziele zu 
 
 #### Darstellung im Einheiteneintrag {#sec:unit-representation}
 
-Der Eintrag in der Platzierungsschicht verweist auf den Cluster und führt Lernversprechen, Revision und gegebenenfalls `after`. Bei einer Einheit mit Prüfungen benennt er die Deckungsreviews der eigenen Prüfungen. Der Vorschlag vom 17. November würde eine Referenz auf das eigene Motivationsziel ergänzen. Die Referenzen lassen die Ziel- und Prüfungsdaten an ihrer kanonischen Stelle.
+Der Eintrag in der Platzierungsschicht verweist auf den Cluster und führt Lernversprechen, Revision und gegebenenfalls `after`. Bei einer Einheit mit Prüfungen benennt er die Deckungsreviews der eigenen Prüfungen. Für den geführten Einstieg verweist die Einheit auf ihr eigenes Motivationsziel. Die Referenzen lassen die Ziel- und Prüfungsdaten an ihrer kanonischen Stelle.
 
 :::table {#tab:unit-representation caption="Einheiteneintrag im bestehenden Vertrag und im Zielmodell." cols="30mm,46mm,X"}
 | Gegenstand | Bestehender Vertrag | Zielmodell |
 | --- | --- | --- |
 | Fachliche Einheit | `programUnits`, Art `learningUnit`, `promise`, `promiseEn`, `revision` | Erklärter Cluster in derselben Platzierungsschicht; Lernversprechen und Revision bleiben. |
 | Eigene Ziele und Kinder | `goalPlacements` mit `relation: own`, ohne `context`, sowie `parentUnitId` | Aus `contains` und den geschachtelten Einheitenerklärungen abgeleitet. |
-| Auftakt (Vorschlag vom 17. November) | Die drei bestehenden fachlichen Einheiten haben bereits ein Lernversprechen. | Eine Referenz auf genau ein eigenes Motivationsziel je Einheit mit eigenen Prüfungen. |
+| Geführter Auftakt (Entscheidung vom 22. November) | Die drei bestehenden fachlichen Einheiten haben bereits ein Lernversprechen. | Eine Referenz auf genau ein eigenes Motivationsziel je Einheit mit eigenen Prüfungen. |
 | Deckungsreviews | `coverageReviews`, höchstens ein Eintrag je eigener Prüfung, gebunden an Aufgaben- und Raster-Hashes sowie Reviewprotokoll | Für Einheiten mit Prüfungen erforderlich. |
 | Planeinheiten | Stufenplan-Grundlage unter `v1.3`, ohne aktivierten Landesplan | Ein gemeinsamer Plan pro Land und Dauermodell; Sichten sind daraus abgeleitete Ausschnitte. |
 | Abschluss und Ergebnisse | Keine gespeicherte Einheits-Mastery | Weiter abgeleitet; kein Rückwärtsschreiben auf Ziele und keine Anerkennung aus `after`. |

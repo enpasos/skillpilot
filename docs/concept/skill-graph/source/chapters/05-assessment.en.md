@@ -290,7 +290,7 @@ Current practice permits repeating a known task even after viewing its solution.
 
 #### Proposal: Boundary with atomic recognition in force {#sec:proposal-contract-change}
 
-The **applicable** decisions of 4 and 11 November use outstanding demand $N_U$, the own implicit set $I_U$ and their global union $\Meff$. Their operative formulas and R1–R5 remain in Sections~@ref{sec:transitive-demand} through~@ref{sec:period-accounting}. The motivation draft of 17 November is a separate proposal. **The following changes to trigger and effect dated 19 November have not been adopted.**
+The **applicable** decisions of 4 and 11 November use outstanding demand $N_U$, the own implicit set $I_U$ and their global union $\Meff$. Their operative formulas and R1–R5 remain in Sections~@ref{sec:transitive-demand} through~@ref{sec:period-accounting}. The 22 November decision governs the guided opening (Section~@ref{sec:unit-claims}). **The following changes to trigger and effect dated 19 November have not been adopted.**
 
 R2 still supplies the subject-matter standard for releasing an individual atom. The task and rubric must make its full application essential to passing. The trigger and consequence change. Under the earlier model demand for an atom could cease before unit completion. In this unadopted proposal only a fully demonstrated unit activates a reviewed release for later prerequisites. The unit can pass while entire individual goals remain open.
 

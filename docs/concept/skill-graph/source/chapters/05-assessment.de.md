@@ -290,7 +290,7 @@ Die bisherige Praxis erlaubt die Wiederholung einer bekannten Aufgabe auch nach 
 
 #### Vorschlag: Unterschied zur geltenden atomaren Anerkennung {#sec:proposal-contract-change}
 
-Die **geltenden** Entscheidungen vom 4. und 11. November verwenden die offene Nachfrage $N_U$, die eigene implizite Menge $I_U$ und ihre globale Vereinigung $\Meff$. Die operativen Formeln und R1–R5 bleiben in den Abschnitten~@ref{sec:transitive-demand} bis~@ref{sec:period-accounting} erhalten. Der Motivationsentwurf vom 17. November ist ein gesonderter Vorschlag. **Die nachfolgenden Änderungen an Auslöser und Wirkung vom 19. November sind noch nicht übernommen.**
+Die **geltenden** Entscheidungen vom 4. und 11. November verwenden die offene Nachfrage $N_U$, die eigene implizite Menge $I_U$ und ihre globale Vereinigung $\Meff$. Die operativen Formeln und R1–R5 bleiben in den Abschnitten~@ref{sec:transitive-demand} bis~@ref{sec:period-accounting} erhalten. Für den geführten Auftakt gilt die Entscheidung vom 22. November (Abschnitt~@ref{sec:unit-claims}). **Die nachfolgenden Änderungen an Auslöser und Wirkung vom 19. November sind noch nicht übernommen.**
 
 R2 liefert weiterhin den fachlichen Maßstab für die Freigabe eines einzelnen Atoms. Aufgabe und Raster müssen seine volle Anwendung zum Bestehen verlangen. Geändert werden Auslöser und Wirkung. Bisher konnte der Bedarf an einem Atom vor dem Gesamtabschluss entfallen. Im noch nicht übernommenen Vorschlag löst erst eine vollständig nachgewiesene Einheit die geprüfte Freigabe für spätere Voraussetzungen aus. Die Einheit kann dabei bestanden sein, obwohl ganze Einzelziele fachlich offen bleiben.
 
