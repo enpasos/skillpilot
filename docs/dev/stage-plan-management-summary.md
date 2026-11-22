@@ -21,6 +21,14 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 22. November 2026, 03:24 MEZ – Übungsziel während des Nachladens der Lernkarte
+
+Die mobile Kartenprüfung sucht das Wurfziel, während die angeforderten Lernkarten noch ausstehen. Sie prüft die eigene Übung vor der Antwort und nach der Neuanordnung. Beim Nachladen konnte die Zeichenfläche kurz leer sein. Mit den regulären Schriftdateien war die Schaltfläche danach über 120 Bildschirmaktualisierungen vollständig erreichbar und 48 × 44 Pixel groß. Zur Sichtprüfung kann man bei 390 Pixeln das Wurfziel suchen, die eigene Übung per Tastatur öffnen und die Selbstkontrolle aufrufen. [Ursprünglicher Fehljob aus #177](https://github.com/enpasos/skillpilot/actions/runs/44959612753/job/137021395037) · [Korrigierter Browsertest](https://github.com/enpasos/skillpilot/blob/2778ea14621dc8ef6514025de4c1d33e1792cea2/app/scripts/testHessePhysicsMemoryUi.ts)
+
+Zwei getrennte Negativproben ließen den korrigierten Test wie erwartet scheitern. Eine zusätzlich auf der Teilkarte gezeigte fremde Übung ergab zwei statt einer. Bei entfernter eigener Übung konnte der Test die erforderliche Schaltfläche nicht erreichen. Der vollständige lokale Lernkartentest, TypeScript und ESLint bestanden. Die Änderung betrifft ausschließlich den Browsertest. K 0/13 und F 0/7 vollständig abgeschlossen, 0 zusätzliche Stufenpläne. Die letzte Messung der Stufenrückläufe steht bei #177. Die persönliche E.1-Teilabnahme bleibt der nächste fachliche Schritt.
+
+**Technischer Abschluss am 22. November 2026, 03:24 MEZ.** [PR #178](https://github.com/enpasos/skillpilot/pull/178) bestand auf `2778ea1462` die [vollständige PR-CI](https://github.com/enpasos/skillpilot/actions/runs/44963885351) mit 14/14 Jobs. Der [Main-Commit `e958f089c4`](https://github.com/enpasos/skillpilot/commit/e958f089c4ae8662043011502273ab7cd3944560) bestand die [frische Main-CI](https://github.com/enpasos/skillpilot/actions/runs/44969487129) mit 14/14 Jobs.
+
 ## 21. November 2026, 20:59 MEZ – Fachwahl, Auftragspause und freiwillige Wege nach E.1
 
 Die Fachwahl im Coach folgt den ausdrücklich gewählten Fächern. Eine mathematische Grundlage kann innerhalb des Physikwegs drankommen. Zum Wechsel in einen eigenständigen Mathematikplan muss Mathematik im persönlichen Curriculum gewählt sein. Eine Pause löst die Bindung an den E.1-Auftrag. Bei 2/4 bleiben C und D erhalten. Nach 4/4 bleiben alle elf Einzelwege wählbar. Ein weiterer fälliger Auftrag behält Vorrang. Claude kann die verfügbaren Wege auch bei mehreren abgeschlossenen Aufträgen seitenweise lesen und eine Wahl anhand von Titel, Seite und aktuellem Lernstand ausführen.
