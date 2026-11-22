@@ -152,6 +152,7 @@ Motivationszielen würde diesen direkten Lernweg versperren.
 | --- | --- |
 | Sie beginnt eine ganze Einheit. | Der verpflichtende erste Schritt ist der offene Auftakt der begonnenen Einheit. Bereits erledigte Einstiege bleiben beim Fortsetzen erhalten. |
 | Sie setzt einen engen Fokus auf ein einzelnes Inhaltsziel. | Im geführten Lernweg eines Ziels mit zugeordnetem Einheitsauftakt gilt der Einstieg seiner eigenen Einheit. Die übergeordneten Einstiege muss die Person beim Direktstart in einer Untereinheit nicht nachholen. |
+| Sie setzt eine Klausurvorbereitung mit selbst gewählten Lernzielen fort. | Benötigt das nächste gewählte Ziel einen Einheitenauftakt, führt der Coach zuerst dorthin. Nach der Bestätigung setzt die Person das gewählte Ziel oder seine noch offene fachliche Vorbereitung fort. Umfang, Termine und Tagesquote richten sich weiter nach den für diese Klausur gewählten Zielen. |
 | Sie wählt bewusst eine verfügbare Prüfung. | Sie kann die Prüfung direkt versuchen, auch wenn der Einstieg oder ein Teil der Vorbereitung noch offen ist. |
 
 Beim **ersten Start** bietet der normale Lernablauf heute nur offene

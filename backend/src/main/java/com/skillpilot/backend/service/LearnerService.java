@@ -7626,7 +7626,7 @@ public class LearnerService {
                     scope, waived);
             if (requiredOrientationGoals.stream().anyMatch(goal -> !unitOrientationScopes.containsKey(goal.id()))) {
                 return requiredOrientationGoals.stream()
-                        .filter(goal -> followedScope == null || followedScope.contains(goal.id()))
+                        .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
                         .map(FrontierGoal::id)
                         .distinct()
                         .toList();
@@ -7639,7 +7639,7 @@ public class LearnerService {
                 learner, projection, masteryMap, plannedIds.isEmpty() ? null : scope);
 
         List<String> frontier = requiredOrientationGoals.stream()
-                .filter(goal -> followedScope == null || followedScope.contains(goal.id()))
+                .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
                 .map(FrontierGoal::id).collect(Collectors.toCollection(ArrayList::new));
         for (LearningGoal goal : allGoals.values()) {
             if (frontier.contains(goal.getId())) continue;
@@ -7810,12 +7810,12 @@ public class LearnerService {
         Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
         if (requiredOrientationGoals.stream().anyMatch(goal -> !unitOrientationScopes.containsKey(goal.id()))) {
             return orderFrontierByProjection(requiredOrientationGoals.stream()
-                    .filter(goal -> followedScope == null || followedScope.contains(goal.id())).toList(), projection);
+                    .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes)).toList(), projection);
         }
 
         FrontierPrerequisites prerequisites = facts.prerequisites().get().within(scope);
         List<FrontierGoal> frontier = requiredOrientationGoals.stream()
-                .filter(goal -> followedScope == null || followedScope.contains(goal.id()))
+                .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
                 .collect(Collectors.toCollection(ArrayList::new));
         Set<String> openingIds = frontier.stream().map(FrontierGoal::id).collect(Collectors.toSet());
 
@@ -8054,6 +8054,13 @@ public class LearnerService {
                 && unitScopes.getOrDefault(opening.id(), Set.of()).contains(goalId));
     }
 
+    /** An opening guides selected work without becoming another exam target or quota item. */
+    private boolean isNavigationInFollowedScope(String goalId, Set<String> followedScope,
+            Map<String, Set<String>> unitScopes) {
+        return followedScope == null || followedScope.contains(goalId)
+                || unitScopes.containsKey(goalId) && followedScope.stream().anyMatch(unitScopes.get(goalId)::contains);
+    }
+
     private boolean isDeferredLandscapeOrientation(LearningGoal goal, List<FrontierGoal> openings,
             Map<String, Set<String>> unitScopes) {
         if (!isOrientationGoal(goal) || unitScopes.containsKey(goal.getId())) return false;
@@ -8095,7 +8102,8 @@ public class LearnerService {
         String destination = nextOpening == null ? pending.targetGoalId() : nextOpening;
         List<String> focus = new ArrayList<>(getStoredPlannedGoals(learner.getSkillpilotId()));
         if (nextOpening != null && !computeScope(resolveProjectedTargetScopeIds(focus, projection),
-                projection.structuralGoals(), Map.of()).contains(nextOpening)) {
+                projection.structuralGoals(), Map.of()).contains(nextOpening)
+                && !focus.stream().allMatch(id -> isAtomicGoal(projection.visibleGoals().get(id)))) {
             plannedGoalRepository.save(new PlannedGoal(learner, nextOpening));
         }
         // Follow only this selected target's real path. An unrelated sibling
@@ -8238,6 +8246,10 @@ public class LearnerService {
                 .filter(goal -> projection.targetGoalIds().contains(goal.getId()))
                 .filter(goal -> plannedIds.isEmpty() || scope.contains(goal.getId()))
                 .filter(LearnerService::isOrientationGoal)
+                // A unit marker without its authored view binding must never
+                // become a broad subject introduction in another curriculum.
+                .filter(goal -> unitScopes.containsKey(goal.getId()) || unitLearningMaterialService == null
+                        || !unitLearningMaterialService.isUnitOrientationGoal(goal.getId()))
                 .filter(goal -> effectiveMastery.getOrDefault(goal.getId(), 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD)
                 .filter(goal -> !(unitScopes.containsKey(goal.getId()) ? unitCredits : waived).contains(goal.getId()))
                 .map(goal -> toFrontierGoal(goal, "Orientation required", null))
@@ -9486,8 +9498,13 @@ public class LearnerService {
         boolean activeGoalIsCurrentViewGoal = storedActiveGoalId != null
                 && !storedActiveGoalId.isBlank()
                 && storedActiveGoalId.equals(activeGoalId);
+        PendingUnitEntry pendingNavigation = pendingUnitEntry(learner);
+        boolean activeGuidedNavigation = pendingNavigation != null
+                && Objects.equals(pendingNavigation.openingGoalId(), activeGoalId)
+                && scope.contains(pendingNavigation.targetGoalId());
         boolean activeGoalOutOfScope = activeGoalIsCurrentViewGoal
                 && !preservesDirectAssessment(learner, activeGoalId)
+                && !activeGuidedNavigation
                 && activeGoalId != null
                 && !exactFollowedScope
                 && isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, structuralGoals, scope);
@@ -9497,8 +9514,7 @@ public class LearnerService {
         boolean activeGoalOutOfCompletionContext = completionOwnsNavigation && completion != null
                 && completion.compiled() != null && activeGoalId != null
                 && !completion.compiled().contextGoalIds().contains(activeGoalId)
-                && !(pendingUnitEntry(learner) != null
-                    && Objects.equals(pendingUnitEntry(learner).openingGoalId(), activeGoalId));
+                && !activeGuidedNavigation;
         boolean globalAssessmentFocusRemoved = !preservesDirectAssessment(learner, activeGoalId)
                 && isGlobalAssessmentGoalWithoutExplicitFocus(
                 activeGoalId,
@@ -9894,8 +9910,11 @@ public class LearnerService {
                                 mastery,
                                 fulfillment.waived(plan.getLandscapeId()),
                                 ignored -> eligibleIds,
-                                (goalId, focusIds) -> "exam".equals(learningScope.kind()) ? null
-                                        : requiredUnitOrientationGoalId(learner, projection, goalId, focusIds));
+                                (goalId, focusIds) -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId)
+                                        ? requiredUnitOrientationGoalId(learner, projection, goalId,
+                                                "exam".equals(learningScope.kind()) ? learningScope.goalIds() : focusIds)
+                                        : null,
+                                goalId -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId));
                 if (selected.isEmpty()) {
                     continue;
                 }
@@ -9970,7 +9989,8 @@ public class LearnerService {
         GoalProjection entryProjection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         Set<String> expandedFocus = computeScope(resolveProjectedTargetScopeIds(selectedFocus, entryProjection),
                 entryProjection.structuralGoals(), Map.of());
-        if (!expandedFocus.contains(candidate.atomicGoalId())) {
+        if (!expandedFocus.contains(candidate.atomicGoalId()) && !selectedFocus.stream()
+                .allMatch(id -> isAtomicGoal(entryProjection.visibleGoals().get(id)))) {
             selectedFocus = new ArrayList<>(selectedFocus);
             selectedFocus.add(candidate.atomicGoalId());
         }
@@ -10949,7 +10969,8 @@ public class LearnerService {
         if (requiredOpening != null) {
             Set<String> expanded = computeScope(resolveProjectedTargetScopeIds(normalizedFocusGoalIds, entryProjection),
                     entryProjection.structuralGoals(), Map.of());
-            if (!expanded.contains(requiredOpening)) {
+            if (!expanded.contains(requiredOpening) && !normalizedFocusGoalIds.stream()
+                    .allMatch(id -> isAtomicGoal(entryProjection.visibleGoals().get(id)))) {
                 normalizedFocusGoalIds = new ArrayList<>(normalizedFocusGoalIds);
                 normalizedFocusGoalIds.add(requiredOpening);
             }

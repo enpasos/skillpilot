@@ -257,6 +257,12 @@ public final class UnitLearningMaterialService {
         return Optional.of(selected);
     }
 
+    /** Recognizes unit markers even when their authored views are not currently selected. */
+    public boolean isUnitOrientationGoal(String goalId) {
+        return goalId != null && materials.values().stream()
+                .anyMatch(material -> goalId.equals(material.orientationGoalId()));
+    }
+
     /** Authored entry markers for the actual projected views, including exact merged-view bindings. */
     public List<OrientationBinding> orientationBindings(Collection<String> viewIds) {
         var result = new ArrayList<OrientationBinding>();

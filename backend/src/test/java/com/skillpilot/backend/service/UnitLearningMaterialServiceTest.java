@@ -76,6 +76,11 @@ class UnitLearningMaterialServiceTest {
         assertThat(service.orientationBindings(List.of("merged:gk+lk"))).singleElement()
                 .satisfies(binding -> assertThat(binding.sectionGoalId()).isEqualTo("composition:merged:gk+lk:structure:motion"));
         assertThat(service.orientationBindings(List.of("merged:gk+missing"))).isEmpty();
+        assertThat(service.isUnitOrientationGoal("opening")).isTrue();
+        assertThat(service.orientationBindings(List.of("unrelated-view"))).isEmpty();
+        assertThat(service.isUnitOrientationGoal("unrelated-goal")).isFalse();
+        assertThat(service.isUnitOrientationGoal(null)).isFalse();
+        assertThat(UnitLearningMaterialService.empty().isUnitOrientationGoal("opening")).isFalse();
         var invalid = new ObjectMapper().readTree(repository.resolve("unit.json").toFile());
         ((ObjectNode) invalid.required("unit")).remove("orientationGoalId");
         new ObjectMapper().writeValue(repository.resolve("unit.json").toFile(), invalid);

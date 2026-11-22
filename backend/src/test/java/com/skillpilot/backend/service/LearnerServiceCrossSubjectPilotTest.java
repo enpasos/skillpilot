@@ -45,6 +45,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.support.SimpleTransactionStatus;
+import org.springframework.test.util.ReflectionTestUtils;
 
 class LearnerServiceCrossSubjectPilotTest {
 
@@ -695,7 +696,10 @@ class LearnerServiceCrossSubjectPilotTest {
     }
 
     @Test
-    void projectedSek1PhysicsAndCanonicalMathMasteryUnlocksCanonicalPhysicsDiagramAnalysis() {
+    void projectedSek1PhysicsAndCanonicalMathMasteryUnlocksCanonicalPhysicsDiagramAnalysis() throws Exception {
+        // Preserve the direct canonical curriculum with no HE composition view.
+        // HE unit markers are not a subject-wide introduction in this context.
+        withRepositoryUnitMaterials(learnerService);
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0),
@@ -703,12 +707,90 @@ class LearnerServiceCrossSubjectPilotTest {
                         new Mastery(learner, CANONICAL_MATH_READ_VALUES_ID, 1.0),
                         new Mastery(learner, LEGACY_SEK1_PHYSICS_MOTION_ID, 1.0)));
 
-        List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
-
-        assertThat(frontier)
+        assertThat(learnerService.getRichFrontier(LEARNER_ID))
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_PHYSICS_DIAGRAMS_ID)
                 .doesNotContain(LEGACY_SEK1_PHYSICS_MOTION_ID);
+        verify(masteryRepository, never()).save(any(Mastery.class));
+        verify(masteryRepository, never()).saveAll(any());
+    }
+
+    @Test
+    void bavariaMotionFrontierDoesNotRequireUnboundHessenUnitOpenings() throws Exception {
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e":{"selected":true,"filterId":"DE-BY","stage":"SekII","durationModel":"G9"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a":{"selected":true,"filterId":"GK"}
+                }
+                """);
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_PHYSICS_WHY_ID, 1.0),
+                        new Mastery(learner, CANONICAL_MATH_FUNCTION_CONCEPT_ID, 1.0),
+                        new Mastery(learner, CANONICAL_MATH_READ_VALUES_ID, 1.0),
+                        new Mastery(learner, LEGACY_SEK1_PHYSICS_MOTION_ID, 1.0)));
+        LearnerService service = withRepositoryUnitMaterials(compositionAwareLearnerService());
+        assertThat(service.getRequiredUnitOrientationGoalId(LEARNER_ID, CANONICAL_PHYSICS_DIAGRAMS_ID)).isNull();
+        assertThat(service.getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_DIAGRAMS_ID)
+                .doesNotContain(LEGACY_SEK1_PHYSICS_MOTION_ID);
+        verify(masteryRepository, never()).save(any(Mastery.class));
+        verify(masteryRepository, never()).saveAll(any());
+    }
+
+    @Test
+    void hessenDiagramFrontierRequiresOnlyItsOwnConfirmedUnitOpening() throws Exception {
+        String parentOpening = "a4d4efe1-7d30-526b-ac9c-806113da4363";
+        String childOpening = "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e";
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e":{"selected":true,"filterId":"DE-HE","stage":"SekII","durationModel":"G9"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a":{"selected":true,"filterId":"GK"}
+                }
+                """);
+        when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of(
+                new PlannedGoal(learner, "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion")));
+        LearnerService service = withRepositoryUnitMaterials(compositionAwareLearnerService());
+        // Isolate the guided route with explicit canonical subject preparation;
+        // the separate direct-canonical test above retains the legacy-only case.
+        List<String> preparedIds = CanonicalPrerequisiteTestContext.withStoredPrerequisites(
+                landscapeService, List.of(CANONICAL_PHYSICS_DIAGRAMS_ID),
+                List.of(LEGACY_PHYSICS_WHY_ID, CANONICAL_MATH_FUNCTION_CONCEPT_ID,
+                        CANONICAL_MATH_READ_VALUES_ID, LEGACY_SEK1_PHYSICS_MOTION_ID), Set.of());
+        assertThat(preparedIds).doesNotContain(parentOpening, childOpening, CANONICAL_PHYSICS_DIAGRAMS_ID);
+        List<Mastery> priorKnowledge = preparedIds.stream().map(id -> new Mastery(learner, id, 1.0)).toList();
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(priorKnowledge);
+
+        assertThat(service.getRequiredUnitOrientationGoalId(LEARNER_ID, CANONICAL_PHYSICS_DIAGRAMS_ID))
+                .isEqualTo(parentOpening);
+        assertThat(service.getRichFrontier(LEARNER_ID)).extracting(FrontierGoal::id)
+                .contains(parentOpening).doesNotContain(CANONICAL_PHYSICS_DIAGRAMS_ID);
+
+        // A separately confirmed parent entry opens the diagram route. The child
+        // entry stays open and is never fabricated from prior subject knowledge.
+        List<Mastery> withConfirmedEntry = new java.util.ArrayList<>(priorKnowledge);
+        withConfirmedEntry.add(new Mastery(learner, parentOpening, 1.0));
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(withConfirmedEntry);
+        assertThat(service.getRequiredUnitOrientationGoalId(LEARNER_ID, CANONICAL_PHYSICS_DIAGRAMS_ID)).isNull();
+
+        List<FrontierGoal> frontier = service.getRichFrontier(LEARNER_ID);
+
+        assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_DIAGRAMS_ID, childOpening)
+                .doesNotContain(LEGACY_SEK1_PHYSICS_MOTION_ID);
+        assertThat(service.getMastery(LEARNER_ID).getOrDefault(childOpening, 0.0)).isZero();
+        verify(masteryRepository, never()).save(any(Mastery.class));
+        verify(masteryRepository, never()).saveAll(any());
+    }
+
+    private LearnerService withRepositoryUnitMaterials(LearnerService service) throws Exception {
+        ReflectionTestUtils.setField(service, "unitLearningMaterialService",
+                UnitLearningMaterialService.fromRepository(resolveCurriculaDir(), objectMapper));
+        return service;
     }
 
     @Test
