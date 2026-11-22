@@ -15,6 +15,7 @@ import {
 import { InlineMathText } from './InlineMathText'
 import { CompletionAssessmentList } from './CompletionAssessmentList'
 import { UnitAssessmentSummary } from './UnitAssessmentSummary'
+import { UnitAssessmentEntry } from './UnitAssessmentEntry'
 
 export interface LevelCompletionCardProps {
   completion: LevelCompletion
@@ -25,7 +26,6 @@ export interface LevelCompletionCardProps {
   learningPlanPaused?: boolean
   onAction: (action: CompletionActionInput) => void
   onRetry: () => void
-  unitAssignmentControl?: React.ReactNode
   onShowGoal?: (goalId: string) => void
   titleForGoal?: (goalId: string) => string | undefined
   /** Read-only handoff from a coach; opening this disclosure never selects a route. */
@@ -53,7 +53,7 @@ function assessmentStatus(completion: LevelCompletion, en: boolean) {
 /** All counts and choices come from the same backend state as the active goal. */
 export const LevelCompletionCard = ({
   completion, language, stale = false, busy = false, error, learningPlanPaused = false, onAction, onRetry, onShowGoal,
-  discoveryOpenRequest, onOpenSettings, requestedAssessmentMissing = false, titleForGoal, unitAssignmentControl,
+  discoveryOpenRequest, onOpenSettings, requestedAssessmentMissing = false, titleForGoal,
 }: LevelCompletionCardProps) => {
   const en = language.startsWith('en')
   const headingId = React.useId()
@@ -85,8 +85,8 @@ export const LevelCompletionCard = ({
   const creditExplanation = planningCredits.size > 0 ? <p>{en
     ? `Passed assessments cover ${planningCredits.size} learning ${planningCredits.size === 1 ? 'goal' : 'goals'} for your plan. You can still practise each goal individually.`
     : `Bestandene Prüfungen decken ${planningCredits.size} ${planningCredits.size === 1 ? 'Lernziel' : 'Lernziele'} für deinen Lernplan ab. Du kannst jedes Ziel auch einzeln bearbeiten.`}</p> : null
-  const unitSummary = unit && <><UnitAssessmentSummary assessment={unit} completion={completion} language={language}
-    titleForGoal={titleForGoal} onShowGoal={onShowGoal} allowStart={!disabled} />{unitAssignmentControl}</>
+  const unitSummary = unit && <UnitAssessmentSummary assessment={unit} completion={completion} language={language}
+    titleForGoal={titleForGoal} onShowGoal={onShowGoal} allowStart={!disabled} />
   const otherAssessments = unit ? completion.assessments.filter(entry => !unit.parts.some(part => part.goalId === entry.goalId)) : completion.assessments
   const filteredScopes = completion.profileOptions.filter(option => completionLabel(option.title, language)
     .toLocaleLowerCase(en ? 'en' : 'de').includes(scopeQuery.trim().toLocaleLowerCase(en ? 'en' : 'de')))
@@ -116,6 +116,27 @@ export const LevelCompletionCard = ({
     <summary className="cursor-pointer rounded font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">{supplementalLabel}</summary>
     {assessmentList}
   </details> : assessmentList
+  const pendingConfirmation = pendingChoice && pendingCurrent ? <div role="group" aria-label={en ? 'End current assessment' : 'Laufende Prüfung beenden'} className="mt-4 rounded-xl border border-amber-400 p-3 text-sm">
+    <p>{en ? 'End the current assessment and switch to the selected route? Your saved progress is retained.' : 'Die laufende Prüfung beenden und zum gewählten Lernweg wechseln? Dein gespeicherter Lernfortschritt bleibt erhalten.'}</p>
+    <div className="mt-3 flex flex-wrap gap-2">
+      {pendingChoice.action.action === 'retryAssessment' && completion.profileId && pendingChoice.action.goalId ? (
+        disabled ? <span aria-disabled="true" className={`${buttonClass} opacity-50`}>{en ? 'Try assessment again' : 'Prüfung erneut versuchen'}</span> :
+          <Link className={buttonClass} to={buildCompletionAssessmentStartHref({ profileId: completion.profileId,
+            goalId: pendingChoice.action.goalId, expectedRevision: pendingChoice.revision, restartCurrent: true })}>{en ? 'Try assessment again' : 'Prüfung erneut versuchen'}</Link>
+      ) : <button type="button" disabled={disabled} className={buttonClass} onClick={() => { const choice = pendingChoice.action; setPendingChoice(null); onAction(choice) }}>{en ? 'End assessment and switch' : 'Prüfung beenden und wechseln'}</button>}
+      <button type="button" className={buttonClass} onClick={cancel}>{en ? 'Continue assessment' : 'Prüfung fortsetzen'}</button>
+    </div>
+  </div> : pendingChoice ? <p role="status" className="mt-3 text-sm text-text-secondary">{en ? 'The learning state has changed. Please choose your next step again.' : 'Der Lernstand hat sich geändert. Bitte wähle deinen nächsten Schritt erneut.'}</p> : null
+  if (unit) return <div data-testid="level-completion-card" className="contents">
+    <UnitAssessmentEntry key={unit.sectionGoalId} assessment={unit} completion={completion} language={language}
+      stale={stale} busy={busy} error={error} onRetry={onRetry} openRequest={discoveryOpenRequest}
+      sectionStatus={sectionStatus} onShowGoal={onShowGoal} controls={completion.directAssessmentRunning ? <>
+        <div className="mt-4 flex flex-wrap gap-2">{completion.actions.filter(action => ['retryAssessment', 'endAssessment', 'leaveProfile'].includes(action.action))
+          .map((action, index) => <button key={`${action.action}:${action.goalId ?? index}`} type="button" disabled={disabled}
+            className={buttonClass} onClick={event => choose({ action: action.action, goalId: action.goalId, intent: action.intent }, event.currentTarget)}>
+            {completionLabel(action.title, language)}</button>)}</div>{pendingConfirmation}
+      </> : null} />
+  </div>
   if (!active) return (
     <section data-testid="level-completion-card" aria-busy={busy}
       className="mb-4 w-full rounded-2xl border border-border-color bg-sidebar-bg p-4 sm:p-5">
@@ -254,21 +275,11 @@ export const LevelCompletionCard = ({
       {completion.notice ? <p className="mt-3 text-sm text-text-secondary">{completionNotice(completion.notice, language)}</p> : null}
       {assessmentChoices}
       <div className="mt-4 flex flex-wrap gap-2">
-        {completion.actions.map((action, index) => <button key={`${action.action}:${action.goalId ?? index}`} type="button" disabled={disabled}
+        {completion.actions.filter(action => action.action !== 'pauseProfile').map((action, index) => <button key={`${action.action}:${action.goalId ?? index}`} type="button" disabled={disabled}
           className={buttonClass} onClick={(event) => choose({ action: action.action, goalId: action.goalId, intent: action.intent }, event.currentTarget)}>{completionLabel(action.title, language)}</button>)}
         {stale || completion.calculationStatus === 'unavailable' || completion.calculationStatus === 'invalid' ? <button type="button" disabled={busy} className={buttonClass} onClick={onRetry}>{en ? 'Reload' : 'Neu laden'}</button> : null}
       </div>
-      {pendingChoice && pendingCurrent ? <div role="group" aria-label={en ? 'End current assessment' : 'Laufende Prüfung beenden'} className="mt-4 rounded-xl border border-amber-400 p-3 text-sm">
-        <p>{en ? 'End the current assessment and switch to the selected route? Your saved progress is retained.' : 'Die laufende Prüfung beenden und zum gewählten Lernweg wechseln? Dein gespeicherter Lernfortschritt bleibt erhalten.'}</p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {pendingChoice.action.action === 'retryAssessment' && completion.profileId && pendingChoice.action.goalId ? (
-            disabled ? <span aria-disabled="true" className={`${buttonClass} opacity-50`}>{en ? 'Try assessment again' : 'Prüfung erneut versuchen'}</span> :
-              <Link className={buttonClass} to={buildCompletionAssessmentStartHref({ profileId: completion.profileId,
-                goalId: pendingChoice.action.goalId, expectedRevision: pendingChoice.revision, restartCurrent: true })}>{en ? 'Try assessment again' : 'Prüfung erneut versuchen'}</Link>
-          ) : <button type="button" disabled={disabled} className={buttonClass} onClick={() => { const choice = pendingChoice.action; setPendingChoice(null); onAction(choice) }}>{en ? 'End assessment and switch' : 'Prüfung beenden und wechseln'}</button>}
-          <button type="button" className={buttonClass} onClick={cancel}>{en ? 'Continue assessment' : 'Prüfung fortsetzen'}</button>
-        </div>
-      </div> : pendingChoice ? <p role="status" className="mt-3 text-sm text-text-secondary">{en ? 'The learning state has changed. Please choose your next step again.' : 'Der Lernstand hat sich geändert. Bitte wähle deinen nächsten Schritt erneut.'}</p> : null}
+      {pendingConfirmation}
       {error ? <p role="alert" className="mt-3 text-sm text-amber-800 dark:text-amber-200">{error}</p> : null}
     </section>
   )

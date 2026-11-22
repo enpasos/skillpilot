@@ -12,9 +12,10 @@ import { getPersonalCurriculumSetupCopy } from '../utils/curriculumSetupCopy'
 import { LearnerPlanTodayOverview } from '../components/LearnerPlanTodayOverview'
 import { LearnerActiveGoalBanner } from '../components/LearnerActiveGoalBanner'
 import { LevelCompletionCard } from '../components/LevelCompletionCard'
-import { UnitAssessmentSummary } from '../components/UnitAssessmentSummary'
+import { UnitAssessmentEntry } from '../components/UnitAssessmentEntry'
 import { LearnerUnitAssignment } from '../components/LearnerUnitAssignment'
 import { StoredUnitAssignments } from '../components/StoredUnitAssignments'
+import { LearnerPlanManagement } from '../components/LearnerPlanManagement'
 import { Settings, Database, Menu, X, Target, Send, Check, MoveRight, BookOpen, ClipboardCheck, PanelLeftClose, PanelLeftOpen, Map as MapIcon, Construction } from 'lucide-react'
 import { InfoModal } from '../components/InfoModal'
 import { LogoutButton } from '../components/LogoutButton'
@@ -22,7 +23,8 @@ import { LearnerDataManagementDialog } from '../components/LearnerDataManagement
 import { GoalCard } from '../components/GoalCard'
 import { MaterialSelectionPanel } from '../components/MaterialSelectionPanel'
 import { GoalExamPassHistory } from '../components/GoalExamPassHistory'
-import { GoalPracticeAction } from '../components/GoalPracticeDialog'
+import { GoalPracticeAction, GoalPracticeDialog } from '../components/GoalPracticeDialog'
+import type { MapPracticeExercise } from '../components/learningUnitMap/types'
 import { UnitIntroduction } from '../components/UnitIntroduction'
 import { requestUnitIntroductionGate, unitIntroductionForSelection } from '../utils/unitIntroduction'
 import { clearUnitStudyIntent, readUnitStudyIntent, saveUnitStudyIntent, unitStudyIntentDecision } from '../utils/unitStudyIntent'
@@ -161,18 +163,17 @@ export interface LearnerGoalNavigationMapProps {
   selectedGoalId: string
   activeGoalId: string | null
   getMastery: (goalId: string) => number
-  availableGoalIds?: ReadonlySet<string>
   completionWaivers: ReadonlyMap<string, CompletionTreeWaiver>
-  unitAssessmentSummary?: { scopeGoalId: string; parts: readonly { goalId: string }[]; content: React.ReactNode }
+  /** Existing required parts of the current section, used only to frame a readable assessment camera. */
+  assessmentContext?: { scopeGoalId: string; goalIds: readonly string[] }
   revealRequest?: { entryId: string; nonce: number }
   onSelectGoal: (goalId: string) => void
   getFlashcardSource?: (goal: UiGoal) => string | undefined
   onPracticeFlashcards?: (request: FlashcardPracticeRequest) => void
+  onPracticeGoal?: (goalId: string, exercise: MapPracticeExercise) => void
   onOpenGoal?: (goalId: string) => void
   /** Read-only backend gate; a redirect leaves the resource unopened. */
   onRequestUnitStudy?: (scopeGoalId: string, targetGoalId?: string) => Promise<boolean>
-  onContinueUnitIntroduction?: (orientationGoalId: string) => Promise<void>
-  unitIntroductionReady?: boolean
   active: boolean
   onReturnToTree?: () => void
   /** Escape outside the map search closes the full-window map instead of leaving a level. */
@@ -565,6 +566,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [srsMasteryTick, setSrsMasteryTick] = useState(0);
   const [srsReloadCounter, setSrsReloadCounter] = useState(0)
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
+  const practiceButtonRef = useRef<HTMLButtonElement>(null)
+  const [openPractice, setOpenPractice] = useState<{ goalId: string; exercise: MapPracticeExercise } | null>(null)
   const [memoryPractice, setMemoryPractice] = useState<FlashcardPracticeRequest | null>(null)
   const [verifiedRecallBatchSizeByGoal, setVerifiedRecallBatchSizeByGoal] = useState<Record<string, number>>({})
 
@@ -1228,6 +1231,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     }
     return visible
   }, [visibleRootGoals, goalIndexAll, isPersonalConfigHydrating, personalConfig, getVisibleChildIds])
+
+  const selectedPracticeGoalId = currentGoal?.id
+  useEffect(() => { setOpenPractice(null) }, [learnerStateScopeKey, learnerTreeScopeKey, localizedLanguage])
+  useEffect(() => {
+    if (selectedPracticeGoalId) setOpenPractice(request => request?.goalId === selectedPracticeGoalId ? request : null)
+  }, [selectedPracticeGoalId])
 
   const goalExercise = useMemo(() => {
     if (!currentGoal || !visibleGoals.has(currentGoal.id)
@@ -3559,6 +3568,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   }, [learnerDataManagementCopy.deleteMissing, learnerDataManagementCopy.deleteSuccess, onLogout, onNotify, skillpilotId])
 
   const completionRouteActive = hasActiveCompletionRoute(levelCompletion)
+  const orientationGoalId = currentIntroduction?.unit.orientationGoalId
+  const introductionCompleted = !!orientationGoalId && isMastered(getEffectiveMastery(orientationGoalId))
+  const introductionCredited = !!orientationGoalId && completionTreeWaivers.get(orientationGoalId)?.reason === 'assessment'
+  const startFromIntroduction = !!orientationGoalId && !introductionCompleted && !introductionCredited
+    && !isGuidedPersonalizationRequired && !levelCompletion?.directAssessmentRunning
   const selectedGoalHasPlanningCredit = currentGoal && levelCompletion?.calculationStatus === 'valid'
     && completionPlanningCredits(levelCompletion).has(currentGoal.id)
   const individualPractice = currentGoal && learnerStateLoadStatus === 'ready' && levelCompletion?.calculationStatus === 'valid'
@@ -3576,25 +3590,39 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
         storedAssignments={localizedLearningPlans?.storedUnitAssignments}
         disabled={learnerStateLoadStatus !== 'ready' || completionActionBusy} onSaved={retryLearningPlans} />
     : null
-  const unitAssessmentSummary = levelCompletion?.calculationStatus === 'valid' && levelCompletion.unitAssessment ? {
-    scopeGoalId: levelCompletion.unitAssessment.sectionGoalId,
-    parts: levelCompletion.unitAssessment.parts,
-    content: <UnitAssessmentSummary assessment={levelCompletion.unitAssessment} completion={levelCompletion} language={localizedLanguage}
-      titleForGoal={completionGoalTitle} allowStart={learnerStateLoadStatus === 'ready' && !completionActionBusy}
-      onShowGoal={id => {
-        if (isLearningMapOpen) {
-          selectMapGoal(id)
-          closeLearningMap()
-        } else {
-          onSelectGoal(id)
-          focusSelectedGoalCard(id)
-        }
-      }} />,
-  } : undefined
-  const showLearningProgress = !isGuidedPersonalizationRequired
-    && !completionRouteActive
-    && (scopedLearningPlans?.followLearningPlans
-      ?? (learnerData?.skillpilotId === skillpilotId && learnerData?.followLearningPlans)) === true
+  const selectedUnitScope = currentGoal ? [currentGoal.id, ...buildCollapsedFocusPath(currentGoal.id)]
+    .flatMap(id => navigationGoals.get(id) ?? []).find(goal => goal.id === assessment?.sectionGoalId
+      || UNIT_MAP_LEARNING_MATERIALS.some(material => isUnitMaterialSource(material, goal))) : undefined
+  const selectedUnitMaterial = selectedUnitScope && UNIT_MAP_LEARNING_MATERIALS.find(material => isUnitMaterialSource(material, selectedUnitScope))
+  const selectedUnitHasContract = selectedUnitScope?.id === assessment?.sectionGoalId
+  const hasUnitAssessmentContext = Boolean(selectedUnitScope && (selectedUnitMaterial || selectedUnitHasContract))
+  const selectedUnitAssessmentOffer = levelCompletion && selectedUnitMaterial?.unit.assessmentGoalId
+    ? completionAssessmentsForGoal(levelCompletion, selectedUnitMaterial.unit.assessmentGoalId)[0] : undefined
+  const showInlineUnitAssessment = Boolean(levelCompletion && selectedUnitScope
+    && (selectedUnitHasContract || selectedUnitAssessmentOffer)
+    && !completionDiscoveryRequest && !levelCompletion.directAssessmentRunning)
+  const contextualAssessmentEntry = showInlineUnitAssessment && levelCompletion ? (selectedUnitHasContract
+    ? <LevelCompletionCard key={learnerStateScopeKey + ':' + selectedUnitScope!.id}
+      completion={levelCompletion} language={localizedLanguage} stale={learnerStateLoadStatus !== 'ready'}
+      busy={completionActionBusy} error={completionActionError} onRetry={() => { void refreshState(true) }}
+      onAction={action => { void handleCompletionAction(action) }} onShowGoal={showCompletionGoalInTree} />
+    : <UnitAssessmentEntry key={learnerStateScopeKey + ':' + selectedUnitScope!.id}
+      assessmentOffers={selectedUnitAssessmentOffer ? [selectedUnitAssessmentOffer] : []}
+      completion={levelCompletion} language={localizedLanguage} stale={learnerStateLoadStatus !== 'ready'}
+      busy={completionActionBusy} error={completionActionError} onRetry={() => { void refreshState(true) }}
+      onShowGoal={showCompletionGoalInTree} />) : undefined
+  const resumeFromIntroduction = !!currentIntroduction && !!contextualAssessmentEntry
+    && !startFromIntroduction && !isGuidedPersonalizationRequired
+  const coachStartLink = <Link to={buildCompletionRouteStartHref(completionRouteActive ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
+    title={t.startPage.login.coachProviderLabel}
+    className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 max-[420px]:px-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
+    <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
+  </Link>
+  const showingPreviousUnit = learnerStateLoadStatus !== 'ready' && Boolean(levelCompletion)
+  const headerAssessmentEntry = (!currentIntroduction || showingPreviousUnit)
+    && (!isGuidedPersonalizationRequired || showingPreviousUnit) && contextualAssessmentEntry
+  const followsLearningPlan = learnerData?.skillpilotId === skillpilotId && learnerData?.followLearningPlans === true
+  const showLearningProgress = followsLearningPlan && !isGuidedPersonalizationRequired && !completionRouteActive
   const activeGoalTitle = effectiveActiveGoalId ? goalIndexAll.get(effectiveActiveGoalId)?.title : undefined
   const showActiveGoalBanner = !isGuidedPersonalizationRequired
     && Boolean(skillpilotId)
@@ -3836,7 +3864,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
       >
         <div className="mb-4 flex w-full flex-wrap items-center justify-end gap-2">
           <LearnerFeedbackLink />
-          <div className="flex items-center gap-2">
+          <div className={headerAssessmentEntry ? 'contents' : 'flex items-center gap-2'}>
           <button
             ref={learningMapOpenButtonRef}
             type="button"
@@ -3851,14 +3879,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             <MapIcon size={16} aria-hidden="true" />
             <span className="max-[359px]:sr-only">{localizedLanguage === 'en' ? 'Learning map' : 'Lernkarte'}</span>
           </button>
-          <Link to={buildCompletionRouteStartHref(completionRouteActive ? levelCompletion?.profileId : undefined)} data-testid="learner-coach-start-link"
-            title={t.startPage.login.coachProviderLabel}
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500">
-            <Send size={16} aria-hidden="true" />{t.startPage.cards.gpt.title}
-          </Link>
+          {!startFromIntroduction && !resumeFromIntroduction && (
+            <div data-testid="learner-header-start-actions" className="learner-header-start-actions flex max-w-full flex-wrap items-center justify-end gap-2">
+              {coachStartLink}
+              {headerAssessmentEntry}
+            </div>
+          )}
           </div>
         </div>
-        {completionRouteActive || completionDiscoveryRequest ? <div ref={completionEntryRef} className="w-full">
+        {(completionRouteActive || completionDiscoveryRequest) && !showInlineUnitAssessment
+          && (!hasUnitAssessmentContext || completionDiscoveryRequest || levelCompletion?.directAssessmentRunning) ? <div ref={completionEntryRef} className="w-full">
           {levelCompletion && (!isGuidedPersonalizationRequired || learnerStateLoadStatus === 'error') ? (
             <LevelCompletionCard
               key={`${learnerStateScopeKey}:${levelCompletion.profileId ?? 'selection'}`}
@@ -3867,13 +3897,12 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               stale={learnerStateLoadStatus !== 'ready'}
               busy={completionActionBusy}
               error={completionActionError}
-              learningPlanPaused={learnerData?.followLearningPlans === true && Boolean(scopedLearningPlans?.plans.length)}
+              learningPlanPaused={followsLearningPlan && Boolean(scopedLearningPlans?.plans.length)}
               discoveryOpenRequest={completionDiscoveryRequest}
               requestedAssessmentMissing={Boolean(completionDiscoveryRequest && selectedGoalAssessments.length === 0)}
               onAction={(action) => { void handleCompletionAction(action) }}
               onRetry={() => { void refreshState(true) }}
               titleForGoal={completionGoalTitle}
-              unitAssignmentControl={unitAssignmentControl}
               onShowGoal={showCompletionGoalInTree}
               onOpenSettings={() => setIsSetupOpen(true)}
             />
@@ -3981,12 +4010,14 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 {/* Check for SRS Tag */}
                 {currentIntroduction ? <UnitIntroduction key={`${learnerStateScopeKey}:${currentIntroduction.unit.orientationGoalId ?? currentIntroduction.unit.compositionNodeId}`}
                   material={currentIntroduction} language={localizedLanguage} context={introductionContext}
-                  completed={!!currentIntroduction.unit.orientationGoalId && isMastered(getEffectiveMastery(currentIntroduction.unit.orientationGoalId))}
-                  credited={completionTreeWaivers.get(currentIntroduction.unit.orientationGoalId ?? '')?.reason === 'assessment'}
+                  assessmentEntry={contextualAssessmentEntry}
+                  resumeLink={resumeFromIntroduction ? coachStartLink : undefined}
+                  completed={introductionCompleted}
+                  credited={introductionCredited}
                   nextStep={introductionNextGoal ? { title: getLearnerGoalTitle(introductionNextGoal), open: () => onSelectGoal(introductionNextGoal.id) } : undefined}
                   active={!isLearningMapOpen && !isSetupOpen && !isDataManagementOpen && !isModalOpen
                     && learnerStateLoadStatus === 'ready' && !isPersonalConfigHydrating}
-                  onContinue={continueUnitIntroduction} /> : currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
+                  onContinue={startFromIntroduction ? continueUnitIntroduction : undefined} /> : currentGoal.tags && currentGoal.tags.some(t => t.startsWith('srs-deck')) ? (
                     <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-border-color p-6">
                       <div className="mb-6 border-b border-border-color pb-4">
                         <h1 className="text-2xl font-bold text-sky-600 dark:text-sky-400 mb-2">
@@ -4157,8 +4188,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
                 <GoalExamPassHistory goal={currentGoal} skillpilotId={skillpilotId} language={localizedLanguage} />
 
-                {!completionRouteActive && !completionDiscoveryRequest && unitAssessmentSummary?.scopeGoalId === currentGoal.id
-                  ? <>{unitAssessmentSummary.content}{unitAssignmentControl}</> : null}
                 {selectedGoalAssessments.length > 0 ? <div data-testid="selected-goal-assessment-shortcuts" className="mt-3 flex flex-col items-start gap-2 text-sm">
                   {selectedGoalAssessments.map(({ profileId, profileTitle, assessment }) => <div key={profileId} className="flex flex-wrap items-center gap-3">
                     <span className="text-text-secondary">{assessment.voluntary
@@ -4225,8 +4254,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                         : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.')}
                   </p>
                 ) : null}
-                {goalExercise && <GoalPracticeAction key={`${learnerStateScopeKey}:${learnerTreeScopeKey}:${currentGoal.id}`} exercise={goalExercise} language={localizedLanguage}
-                  beforeOpen={() => requestUnitStudy(currentGoal.id, currentGoal.id)} />}
+                {goalExercise && <GoalPracticeAction key={`${learnerStateScopeKey}:${learnerTreeScopeKey}:${currentGoal.id}`} exercise={goalExercise} language={localizedLanguage} buttonRef={practiceButtonRef}
+                  onOpen={async () => {
+                    if (await requestUnitStudy(currentGoal.id, currentGoal.id)) setOpenPractice({ goalId: currentGoal.id, exercise: goalExercise })
+                  }} />}
+                {openPractice?.goalId === currentGoal.id && <GoalPracticeDialog exercise={openPractice.exercise} language={localizedLanguage}
+                  onDismiss={() => {
+                    setOpenPractice(null)
+                    if (practiceButtonRef.current) practiceButtonRef.current.focus()
+                    else focusSelectedGoalCard(currentGoal.id)
+                  }} />}
                 <GoalAdditionalMaterials
                   skillpilotId={skillpilotId}
                   goalId={currentGoal.id}
@@ -4369,12 +4406,16 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                 ) : null}
               </section>
             )}
-            {skillpilotId && localizedLearningPlans?.storedUnitAssignments && localizedLearningPlans.storedUnitAssignments.length > 0 && <StoredUnitAssignments
-              key={skillpilotId} learnerId={skillpilotId} assignments={localizedLearningPlans.storedUnitAssignments}
-              language={localizedLanguage}
-              disabled={learningPlansLoadState.scopeKey !== learnerStateScopeKey
-                || learningPlansLoadState.confirmedLanguage !== localizedLanguage || learningPlanActionsBlocked}
-              sectionTitle={completionGoalTitle} subjectTitle={id => learningPlanSubjectLabels.get(id)} onRefresh={retryLearningPlans} />}
+            {skillpilotId && followsLearningPlan && !isGuidedPersonalizationRequired && (unitAssignmentControl || Boolean(localizedLearningPlans?.storedUnitAssignments?.length)) &&
+              <LearnerPlanManagement key={skillpilotId} language={localizedLanguage}>
+                {unitAssignmentControl}
+                {localizedLearningPlans?.storedUnitAssignments && localizedLearningPlans.storedUnitAssignments.length > 0 && <StoredUnitAssignments
+                  learnerId={skillpilotId} assignments={localizedLearningPlans.storedUnitAssignments}
+                  language={localizedLanguage}
+                  disabled={learningPlansLoadState.scopeKey !== learnerStateScopeKey
+                    || learningPlansLoadState.confirmedLanguage !== localizedLanguage || learningPlanActionsBlocked}
+                  sectionTitle={completionGoalTitle} subjectTitle={id => learningPlanSubjectLabels.get(id)} onRefresh={retryLearningPlans} />}
+              </LearnerPlanManagement>}
           </div>
         </div>
       </main>
@@ -4455,18 +4496,24 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             selectedGoalId: navigationSelectedId,
             activeGoalId: effectiveActiveGoalId ?? null,
             getMastery: getEffectiveMastery,
-            availableGoalIds: backendFrontierIds,
             completionWaivers: completionTreeWaivers,
-            unitAssessmentSummary,
+            assessmentContext: levelCompletion?.calculationStatus === 'valid' && levelCompletion.unitAssessment ? {
+              scopeGoalId: levelCompletion.unitAssessment.sectionGoalId,
+              goalIds: levelCompletion.unitAssessment.parts.map(part => part.goalId),
+            } : undefined,
             revealRequest: navigationRevealRequest ? {
               ...navigationRevealRequest,
               entryId: targetByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,
             } : undefined,
             onSelectGoal: selectMapGoal,
             onRequestUnitStudy: requestUnitStudy,
-            onContinueUnitIntroduction: continueUnitIntroduction,
-            unitIntroductionReady: learnerStateLoadStatus === 'ready' && !isPersonalConfigHydrating,
             getFlashcardSource: getSrsSource,
+            onPracticeGoal: (goalId, exercise) => {
+              if (!visibleGoals.has(goalId) || !goalIndexAll.has(goalId)) return
+              setOpenPractice({ goalId, exercise })
+              selectMapGoal(goalId)
+              closeLearningMap('none')
+            },
             onPracticeFlashcards: request => {
               if (!visibleGoals.has(request.goalId) || !goalIndexAll.has(request.goalId)) return
               setMemoryPractice(request)

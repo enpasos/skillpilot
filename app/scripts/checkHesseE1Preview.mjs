@@ -27,6 +27,8 @@ assert(orientationGoalIds.every(id => typeof id === 'string'))
 const exercises = [...new Map([...ownExercises, ...childMaterial.exercises].map(exercise => [exercise.goalId, exercise])).values()]
 const canonicalPhysics = JSON.parse(await readFile(new URL(
   '../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', import.meta.url), 'utf8'))
+const measurementUncertaintyGoal = canonicalPhysics.goals.find(goal => goal.title === 'Messunsicherheiten angeben')
+assert(measurementUncertaintyGoal?.id, 'Expected the canonical E.1 measurement-uncertainty goal')
 const parentOrientationTitle = canonicalPhysics.goals.find(goal => goal.id === unit.orientationGoalId).title
 const contract = unit.assessmentContract
 assert.equal(contract?.parts.length, 4, 'Expected the reviewed Hessen E.1 unit contract')
@@ -38,6 +40,165 @@ const readApi = async (id, suffix) => {
   const response = await fetch(api + '/api/ui/learners/' + id + suffix)
   assert.equal(response.status, 200, suffix)
   return response.json()
+}
+async function openUnitAssessmentOptions(page, language = 'de', { contractRequired = true, assessmentGoalIds } = {}) {
+  const entry = page.getByTestId('unit-assessment-entry')
+  const open = entry.getByTestId('unit-assessment-entry-open')
+  await open.waitFor()
+  assert.equal(await open.innerText(), language === 'de' ? 'Direkt zur Prüfung' : 'Go directly to assessment')
+  assert.equal(await entry.getByRole('button').count(), 1, 'The normal unit offers one explicit assessment entrance')
+  assert.equal(await open.getAttribute('aria-expanded'), 'false')
+  assert.equal(await page.getByTestId('unit-assessment-options').count(), 0,
+    'Assessment parts are mounted only after the learner opens them')
+  await open.click()
+  const options = page.getByTestId('unit-assessment-options')
+  await options.waitFor()
+  assert.equal(await open.getAttribute('aria-expanded'), 'true')
+  const summary = options.getByTestId('unit-assessment-summary')
+  if (contractRequired || await summary.count()) {
+    const parts = summary.getByRole('list', { name: language === 'de' ? 'Prüfungsteile' : 'Assessment parts', exact: true })
+    await parts.waitFor()
+    const rows = await parts.getByRole('listitem').all()
+    assert(rows.length > 0 && (await Promise.all(rows.map(row => row.isVisible()))).every(Boolean),
+      'The explicit assessment entrance reveals its actual assessment parts immediately')
+  }
+  if (assessmentGoalIds) {
+    const offered = await options.locator('a[href*="completionGoal="]').evaluateAll(links =>
+      links.map(link => new URL(link.href).searchParams.get('completionGoal')))
+    assert.deepEqual(offered.sort(), [...assessmentGoalIds].sort(), 'A child offers only its own published assessment')
+  }
+  assert.equal(await options.getByTestId('learner-unit-assignment').count(), 0)
+  assert.equal(await options.getByTestId('stored-unit-assignments').count(), 0)
+  assert.equal(await options.getByText(/^(Für deinen Lernplan angerechnet|Einzeln noch nachzuweisen|Credited toward your learning plan|Still awaiting individual evidence) \(/).count(), 0)
+  assert.equal(await options.getByRole('button', { name: /Unterstützung starten|Start support|Lernplan|Learning plan|Einstellungen|Settings/ }).count(), 0)
+  return options
+}
+async function openPlanManagement(page) {
+  const management = page.getByTestId('learner-plan-management')
+  await management.waitFor()
+  if (!await management.evaluate(node => node instanceof HTMLDetailsElement && node.open)) {
+    await management.locator(':scope > summary').click()
+  }
+  return management
+}
+async function enablePlanMode(id) {
+  const before = await readApi(id, '')
+  if (before.followLearningPlans !== true) {
+    const saved = await fetch(api + '/api/ui/learners/' + id + '/preferences', {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ followLearningPlans: true }),
+    })
+    assert.equal(saved.status, 200, 'The separate plan test deliberately enables plan-guided learning')
+  }
+  assert.equal((await readApi(id, '')).followLearningPlans, true, 'Plan management is tested with the saved plan mode enabled')
+}
+async function checkActionPairShape(page, actions, start, assessment) {
+  await start.waitFor()
+  await assessment.waitFor()
+  const [actionsElement, startElement, assessmentElement] = await Promise.all([
+    actions.elementHandle(), start.elementHandle(), assessment.elementHandle(),
+  ])
+  assert(actionsElement && startElement && assessmentElement)
+  try {
+    // The enclosing card can animate; measure both actions in one browser task
+    // so their positions come from the same animation frame.
+    const measured = await page.evaluate(({ group, normal, alternative }) => {
+      const measure = node => {
+        const style = getComputedStyle(node)
+        const rect = node.getBoundingClientRect()
+        return { x: rect.x, y: rect.y, width: rect.width, height: rect.height,
+          radii: [style.borderTopLeftRadius, style.borderTopRightRadius, style.borderBottomLeftRadius,
+            style.borderBottomRightRadius].map(value => Number.parseFloat(value)) }
+      }
+      return { route: location.pathname + location.search, viewport: { width: innerWidth, height: innerHeight },
+        normal: measure(normal), alternative: measure(alternative),
+        group: { clientWidth: group.clientWidth, scrollWidth: group.scrollWidth },
+        documentWidth: document.documentElement.scrollWidth }
+    }, { group: actionsElement, normal: startElement, alternative: assessmentElement })
+    const detail = ': ' + JSON.stringify(measured)
+    const { normal, alternative, viewport } = measured
+    assert([normal, alternative].every(style => style.height >= 44 && style.radii.every(radius => radius > style.height / 2)),
+      'Both learning actions retain their 44 px capsule form' + detail)
+    assert(Math.abs(normal.height - alternative.height) <= 1,
+      'Normal learning and direct assessment have the same button height' + detail)
+    assert(measured.group.scrollWidth <= measured.group.clientWidth,
+      'Both alternatives stay in one action group without horizontal overflow' + detail)
+    assert(measured.documentWidth <= viewport.width, 'The page has no horizontal overflow' + detail)
+    if (viewport.width >= 761) {
+      assert(Math.abs(normal.y - alternative.y) <= 1
+        && (normal.x + normal.width <= alternative.x || alternative.x + alternative.width <= normal.x),
+      'At sufficient width, normal learning and the assessment alternative share one row' + detail)
+    }
+  } finally {
+    await Promise.all([actionsElement.dispose(), startElement.dispose(), assessmentElement.dispose()])
+  }
+}
+async function checkSingleOrientationStart(page, language = 'de') {
+  const label = language === 'de' ? 'Lernen starten' : 'Start Learning'
+  const start = page.getByTestId('unit-introduction-continue')
+  await start.waitFor()
+  assert.equal(await start.innerText(), label)
+  assert.equal(await page.getByTestId('learner-coach-start-link').count(), 0,
+    'The open introduction provides the normal start without a duplicate header action')
+  const equivalent = page.getByRole('button', { name: label, exact: true })
+    .or(page.getByRole('link', { name: label, exact: true }))
+  assert.equal((await Promise.all((await equivalent.all()).map(item => item.isVisible()))).filter(Boolean).length, 1,
+    'The learner sees exactly one normal coach start')
+  const introduction = page.getByTestId('unit-introduction')
+  const actions = introduction.locator('.unit-introduction-actions')
+  const assessment = actions.getByTestId('unit-assessment-entry-open')
+  assert.equal(await page.getByTestId('unit-assessment-entry-open').count(), 1,
+    'There is no second assessment entrance above the introduction')
+  await actions.getByTestId('unit-introduction-continue').waitFor()
+  await checkActionPairShape(page, actions, start, assessment)
+}
+async function checkMapSurface(page, dialog, { scopeId, title, language = 'de' } = {}) {
+  const board = dialog.getByTestId('learning-map-board')
+  await board.locator('.lum-flow--idle').waitFor()
+  if (scopeId) assert.equal(await board.getAttribute('data-scope-id'), scopeId)
+  const breadcrumb = dialog.getByRole('navigation', { name: language === 'de' ? 'Aktuelle Kartenebene' : 'Current map level', exact: true })
+  await breadcrumb.waitFor()
+  if (title) assert.equal(await breadcrumb.locator('[aria-current="page"]').innerText(), title)
+  for (const testId of ['unit-introduction', 'unit-assessment-summary', 'unit-assessment-entry', 'learning-map-flashcard-practice']) {
+    assert.equal(await dialog.getByTestId(testId).count(), 0, 'The map contains no additional learning panel: ' + testId)
+  }
+  assert.equal(await dialog.locator('.lum-scope-actions').count(), 0, 'The graph is not preceded by a scope-content panel')
+  assert.equal(await dialog.getByRole('dialog').count(), 0, 'An exercise dialog is never embedded in the map')
+  const graph = await board.locator('.lum-flow').boundingBox()
+  const header = await dialog.locator('header.learner-learning-map-header').boundingBox()
+  const mapControls = await board.locator('.lum-map-bottom-bar').boundingBox()
+  const viewport = page.viewportSize()
+  assert(graph && header && mapControls && Math.abs(graph.y - (header.y + header.height)) <= 2
+    && Math.abs(graph.y + graph.height - mapControls.y) <= 2
+    && Math.abs(mapControls.y + mapControls.height - viewport.height) <= 2
+    && Math.abs(graph.x) <= 2 && Math.abs(graph.width - viewport.width) <= 2,
+    'The graph fills the space between the header and its controls: ' + JSON.stringify({ header, graph, mapControls, viewport }))
+}
+async function enterMapScope(page, dialog, scopeId, title) {
+  const board = dialog.getByTestId('learning-map-board')
+  await board.waitFor()
+  const atRequestedScope = () => page.waitForFunction(expected => {
+    const current = document.querySelector('[data-testid="learner-learning-map-dialog"] [data-testid="learning-map-board"]')
+    return current?.getAttribute('data-scope-id') === expected && current.getAttribute('aria-busy') === 'false'
+      && current.querySelector('.lum-flow--idle')
+  }, scopeId, { timeout: 10000 })
+  if (await board.getAttribute('data-scope-id') !== scopeId) {
+    try {
+      await dialog.getByRole('button', { name: `In ${title} hineinzoomen`, exact: true }).click({ timeout: 5000 })
+    } catch (error) {
+      // A routed arrival can enter this same scope while the old parent board
+      // is still disappearing. Its obsolete drill must not be clicked again.
+      try { await atRequestedScope() }
+      catch {
+        throw new Error('The requested map scope could not be entered: ' + JSON.stringify({
+          route: new URL(page.url()).pathname, requested: scopeId,
+          actual: await board.getAttribute('data-scope-id'),
+          breadcrumb: await dialog.getByRole('navigation', { name: 'Aktuelle Kartenebene', exact: true }).innerText(),
+        }), { cause: error })
+      }
+    }
+  }
+  await atRequestedScope()
+  return board
 }
 async function evidence(id) {
   const mastery = await readApi(id, '/mastery')
@@ -162,7 +323,7 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
       assert.equal(state.masteredAssessmentCount, 0)
       assert.equal(state.complete, false)
       assert.equal(state.directAssessmentRunning, false)
-      const panel = page.getByTestId('level-completion-card')
+      const panel = await openUnitAssessmentOptions(page, lang)
       assert.equal(state.unitAssessment?.revision, contract.revision)
       assert.equal(state.unitAssessment.passed, false)
       assert.deepEqual(new Set(state.unitAssessment.parts.map(row => row.goalId)), new Set(unitPartIds))
@@ -170,16 +331,12 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
       assert.deepEqual(state.unitAssessment.planningCreditGoalIds, [])
       assert.deepEqual(new Set(state.unitAssessment.individuallyOpenGoalIds), new Set(contract.contentGoalIds))
       const summary = panel.getByTestId('unit-assessment-summary')
-      await summary.getByText(lang === 'de' ? /0 von 4 Teilen bestanden/ : /0 of 4 parts passed/).first().click()
+      await summary.getByText(lang === 'de' ? /0 von 4 Teilen bestanden/ : /0 of 4 parts passed/).first().waitFor()
       const parts = summary.getByRole('list', { name: lang === 'de' ? 'Prüfungsteile' : 'Assessment parts' })
       assert.equal(await parts.getByRole('listitem').count(), unitPartIds.length)
       for (const part of state.unitAssessment.parts) {
         await parts.getByText(part.title[lang], { exact: true }).waitFor()
       }
-      await summary.getByText(lang === 'de' ? 'Für deinen Lernplan angerechnet (0)'
-        : 'Credited toward your learning plan (0)', { exact: true }).waitFor()
-      const optionalDisclosure = panel.getByText(lang === 'de' ? 'Freiwillige Zusatzprüfungen' : 'Optional assessments', { exact: true })
-      await optionalDisclosure.click()
       const optionalList = panel.getByRole('list', { name: lang === 'de' ? 'Freiwillige Zusatzprüfungen' : 'Optional assessments' })
       const optionalRows = optionalList.getByRole('listitem')
       assert.equal(await optionalRows.count(), voluntaryAssessmentIds.length)
@@ -189,10 +346,6 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
         const href = await row.getByRole('link').getAttribute('href')
         assert.equal(new URL(href, site).searchParams.get('completionGoal'), assessment.goalId)
       }
-      await optionalDisclosure.click()
-      const openCount = contract.contentGoalIds.length
-      await summary.getByText(lang === 'de' ? `Einzeln noch nachzuweisen (${openCount})`
-        : `Still awaiting individual evidence (${openCount})`, { exact: true }).waitFor()
       await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
       const map = page.getByTestId('learner-learning-map-dialog')
       const other = tasks[part === 'A' ? 'B' : 'A']
@@ -204,6 +357,7 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
           await layoutError.getByRole('button', { name: lang === 'de' ? 'Erneut versuchen' : 'Try again' }).click()
           await map.locator('.lum-flow--idle').waitFor()
         }
+        await checkMapSurface(page, map, { language: lang })
         assert.equal(await map.getByRole('button', { name: /Zielliste anzeigen|Grafische Karte anzeigen|Show goal list|Show graph/ }).count(), 0)
         const drawing = await map.locator('.lum-flow').boundingBox()
         const overview = await map.locator('.react-flow__minimap-svg').boundingBox()
@@ -246,10 +400,20 @@ async function checkGuidedUnitEntry(duration) {
   const before = await evidence(viewer)
   const parentBefore = await readApi(parentOriented, '/mastery')
   try {
+    for (const [entry, introduction] of [['E1', intro], ['E1/freier-fall', childMaterial.intro]]) {
+      await page.goto(site + '/nativ/' + duration + '/' + entry + '?lang=en')
+      await page.getByTestId('unit-introduction').getByRole('heading', { name: introduction.en.question, exact: true }).waitFor()
+      await checkSingleOrientationStart(page, 'en')
+      await openUnitAssessmentOptions(page, 'en', entry === 'E1' ? {} : {
+        contractRequired: false, assessmentGoalIds: [childMaterial.unit.assessmentGoalId],
+      })
+    }
+    assert.deepEqual(await evidence(viewer), before, 'English introductions and assessment discovery never write results')
     await page.goto(site + '/nativ/' + duration + '/E1')
     const card = page.getByTestId('learner-current-goal')
     const view = card.getByTestId('unit-introduction')
     await view.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
+    await checkSingleOrientationStart(page)
     await view.getByText(intro.de.scene, { exact: true }).waitFor()
     assert((await view.getByTestId('unit-introduction-context').innerText()).includes('E.1 Bewegungen und ihre Beschreibung'))
     const image = view.getByRole('img', { name: intro.de.imageAlt, exact: true })
@@ -257,6 +421,7 @@ async function checkGuidedUnitEntry(duration) {
     await page.waitForFunction(src => [...document.images].some(image => image.src.endsWith(src) && image.complete && image.naturalWidth > 0), intro.de.imageUrl)
     assert.deepEqual(await view.getByTestId('unit-introduction-topics').getByRole('listitem').allTextContents(), intro.de.topics)
     assert.equal((await view.innerText()).includes(childMaterial.intro.de.question), false, 'The parent overview does not replay a nested introduction')
+    await openUnitAssessmentOptions(page)
     assert.deepEqual(await evidence(viewer), before)
 
     // A direct exam arrival may conserve drawing space, but navigating into a
@@ -265,19 +430,15 @@ async function checkGuidedUnitEntry(duration) {
     await checkCard(page, tasks.B, 'de')
     await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
     const map = page.getByTestId('learner-learning-map-dialog')
-    const mapIntro = map.getByTestId('unit-introduction')
-    await mapIntro.getByText('Der Einstieg der Einheit ist noch offen.', { exact: true }).waitFor()
-    assert.equal(await mapIntro.getByRole('img').count(), 0)
     await map.locator('.lum-canvas[aria-busy="false"]').waitFor()
+    await checkMapSurface(page, map, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
     await map.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).press('Enter')
-    await mapIntro.getByRole('heading', { name: childMaterial.intro.de.question, exact: true }).waitFor()
-    await mapIntro.getByRole('img', { name: childMaterial.intro.de.imageAlt, exact: true }).waitFor()
+    await checkMapSurface(page, map, { scopeId: section.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall'),
+      title: 'Beschleunigte Bewegung und freier Fall' })
     assert.equal(await map.getByTestId('native-cockpit-map').getAttribute('data-selected-goal-id'), tasks.B.id)
-    assert.equal((await mapIntro.innerText()).includes(intro.de.question), false)
     await map.locator('.lum-canvas[aria-busy="false"]').waitFor()
     await map.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
-    await mapIntro.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
-    await mapIntro.getByRole('img', { name: intro.de.imageAlt, exact: true }).waitFor()
+    await checkMapSurface(page, map, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
     assert.equal(await map.getByTestId('native-cockpit-map').getAttribute('data-selected-goal-id'), tasks.B.id)
     await map.getByRole('button', { name: 'Lernkarte schließen', exact: true }).click()
     assert.deepEqual(await evidence(viewer), before, 'Explicit unit entry never records an orientation result')
@@ -294,9 +455,11 @@ async function checkGuidedUnitEntry(duration) {
     const childSection = section.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall')
     await page.goto(site + '/learner/' + childSection)
     await view.getByRole('heading', { name: childMaterial.intro.de.question, exact: true }).waitFor()
+    await checkSingleOrientationStart(page)
     await view.getByRole('img', { name: childMaterial.intro.de.imageAlt, exact: true }).waitFor()
     assert.equal((await view.innerText()).includes(intro.de.scene), false, 'The nested introduction shows its own scene')
     assert((await view.getByTestId('unit-introduction-context').innerText()).includes('E.1 Bewegungen und ihre Beschreibung'))
+    await openUnitAssessmentOptions(page, 'de', { contractRequired: false, assessmentGoalIds: [childMaterial.unit.assessmentGoalId] })
     const childExercise = childMaterial.exercises[0]
     await page.goto(site + '/learner/' + childExercise.goalId)
     await card.getByRole('button', { name: 'Üben: ' + childExercise.de.title, exact: true }).click()
@@ -305,6 +468,7 @@ async function checkGuidedUnitEntry(duration) {
     assert.deepEqual(await readApi(parentOriented, '/mastery'), parentBefore, 'Child resource gating preserves the parent confirmation')
     await page.reload({ waitUntil: 'domcontentloaded' })
     await view.getByRole('heading', { name: childMaterial.intro.de.question, exact: true }).waitFor()
+    await checkSingleOrientationStart(page)
 
     // The handoff reaches the ordinary provider flow even without a coach session.
     const activation = page.waitForResponse(response => response.request().method() === 'POST' && new URL(response.url()).pathname.endsWith('/active-goal'))
@@ -326,6 +490,34 @@ async function checkGuidedUnitEntry(duration) {
     assert.equal(state.activeGoal.id ?? state.activeGoal.goalId, childMaterial.unit.orientationGoalId)
     assert.deepEqual(await readApi(parentOriented, '/mastery'), parentBefore, 'Starting a coach session does not confirm orientation')
     console.log(duration, 'Vollständiger Eltern-/Kindeinstieg, echter Bildabruf, freie Ansicht, Übungssperre und normaler Anbieterstart ohne Ergebnisänderung OK')
+  } finally { await page.close() }
+}
+
+async function checkSubjectGoalAssessmentEntry(duration) {
+  const id = profiles[duration].viewer
+  const before = await evidence(id)
+  const page = await browser.newPage({ viewport: { width: duration === 'G8' ? 1440 : 390, height: 900 },
+    reducedMotion: 'reduce', serviceWorkers: 'block' })
+  page.setDefaultTimeout(60000)
+  try {
+    for (const language of ['de', 'en']) {
+      await page.goto(site + '/nativ/' + duration + '/E1?lang=' + language)
+      await page.goto(site + '/learner/' + measurementUncertaintyGoal.id)
+      await page.getByTestId('learner-current-goal').getByRole('heading', {
+        name: language === 'de' ? measurementUncertaintyGoal.title : measurementUncertaintyGoal.titleEn, exact: true,
+      }).first().waitFor()
+      const actions = page.getByTestId('learner-header-start-actions')
+      const start = actions.getByTestId('learner-coach-start-link')
+      const assessment = actions.getByTestId('unit-assessment-entry-open')
+      assert.equal(await page.getByTestId('unit-assessment-entry-open').count(), 1,
+        'The individual E.1 goal has exactly one assessment entrance, in its header')
+      assert.equal(await page.getByTestId('learner-current-goal').getByTestId('unit-assessment-entry-open').count(), 0,
+        'The goal card does not repeat its header assessment action')
+      await checkActionPairShape(page, actions, start, assessment)
+      await openUnitAssessmentOptions(page, language)
+    }
+    assert.deepEqual(await evidence(id), before, 'Inspecting the subject-goal header and assessment choices preserves results')
+    console.log(duration, physicsCourse, 'Messunsicherheiten: genau ein Prüfungszugang neben Lernen starten im Kopf, DE/EN, gleiche 44px-Kapselform ohne Überlauf OK')
   } finally { await page.close() }
 }
 
@@ -503,7 +695,7 @@ async function checkTreeAndMapParents(duration) {
     const open = page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
     await open.click()
     const dialog = page.getByTestId('learner-learning-map-dialog')
-    await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
+    await enterMapScope(page, dialog, section, 'E.1 Bewegungen und ihre Beschreibung')
     const board = dialog.getByTestId('learning-map-board')
     const mapEntries = []
     const resources = new Map([[unit.flashcardGoalId, 'Aus dem Stapel „Einführungsphase“']])
@@ -515,20 +707,12 @@ async function checkTreeAndMapParents(duration) {
         await board.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).click()
       }
       await dialog.getByRole('status').filter({ hasText: count + ' Bereiche.' }).waitFor()
-      const displayedIntroduction = board.getByTestId('unit-introduction')
-      assert.equal(await displayedIntroduction.count(), 1, 'A board presents only its own introduction')
-      assert.equal(await displayedIntroduction.getAttribute('data-orientation-goal-id'),
-        parent === section ? unit.orientationGoalId : childMaterial.unit.orientationGoalId)
+      await checkMapSurface(page, dialog, { scopeId: parent,
+        title: parent === section ? 'E.1 Bewegungen und ihre Beschreibung' : 'Beschleunigte Bewegung und freier Fall' })
       await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
       await page.waitForFunction(count =>
         document.querySelectorAll('.lum-canvas[aria-busy="false"] .lum-flow [data-entry-id]').length === count, count)
       assert.equal(await board.getAttribute('data-scope-id'), parent)
-      for (const exercise of exercises) {
-        const expectedParent = exercise.goalId === worksheets[1].goalId ? childSection : section
-        if (parent === expectedParent) {
-          await checkExerciseDialog(page, board.locator('[data-entry-id="' + exercise.goalId + '"]'), exercise.de)
-        }
-      }
       for (const node of await board.locator('.lum-flow [data-entry-id]').all()) {
         const id = await node.getAttribute('data-entry-id')
         if (resources.has(id)) {
@@ -571,6 +755,10 @@ async function checkTreeAndMapParents(duration) {
       name: 'Bewegungen mit Weg-Zeit-Diagrammen beschreiben', exact: true,
     }).waitFor()
     assert.equal(new URL(page.url()).pathname, '/learner/' + pathTime)
+    for (const exercise of exercises) {
+      await page.goto(site + '/learner/' + exercise.goalId)
+      await checkExerciseDialog(page, page.getByTestId('learner-current-goal'), exercise.de)
+    }
     assert.deepEqual(await evidence(oriented), before)
     console.log(duration, `Alle ${expectedTreeCount} E.1-Elternpfade (${physicsCourse}), ${physicsCourse === 'GK' ? 'zwei externe Ressourcen' : 'eine externe Ressource'}, Suche anhand der E.3-Herkunft und direkte Aufrufe beider Ziele sowie ihrer kanonischen Gruppe bestätigt.`)
   } finally {
@@ -591,14 +779,11 @@ async function checkUnitAndChildCards(duration) {
     assert.equal(decodeURIComponent(new URL(page.url()).pathname), '/learner/' + section)
     await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
     const dialog = page.getByTestId('learner-learning-map-dialog')
-    await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
-    await dialog.getByRole('heading', { name: intro.de.question, exact: true }).waitFor()
-    await dialog.getByText(intro.de.promise, { exact: true }).waitFor()
-    await dialog.getByRole('img', { name: intro.de.imageAlt, exact: true }).waitFor()
-    await dialog.getByText(intro.de.scene, { exact: true }).waitFor()
-    assert.deepEqual(await dialog.getByTestId('unit-introduction-topics').getByRole('listitem').allTextContents(), intro.de.topics)
-    // This is a regular resource start. Opening the map itself remains free.
-    await dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true }).click()
+    await enterMapScope(page, dialog, section, 'E.1 Bewegungen und ihre Beschreibung')
+    await checkMapSurface(page, dialog, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
+    await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+    // The explicit resource node opens its content in the Cockpit; the map itself only shows the graph.
+    await dialog.locator('[data-entry-id="' + unit.flashcardGoalId + '"] .lum-node-main').click()
     await dialog.waitFor({ state: 'hidden' })
     assert.equal(new URL(page.url()).pathname, '/learner/' + unit.orientationGoalId)
     await card.getByTestId('unit-introduction').waitFor()
@@ -607,8 +792,10 @@ async function checkUnitAndChildCards(duration) {
     await page.goto(site + '/vergleich/' + duration + '/einstiege')
     await card.getByTestId('unit-introduction').getByText('Einstieg abgeschlossen.', { exact: true }).waitFor()
     await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
-    await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
-    await dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true }).click()
+    await enterMapScope(page, dialog, section, 'E.1 Bewegungen und ihre Beschreibung')
+    await checkMapSurface(page, dialog, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
+    await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+    await dialog.locator('[data-entry-id="' + unit.flashcardGoalId + '"] .lum-node-main').click()
     await page.getByText('Karte 1 von 9', { exact: true }).waitFor()
     const assessment = (await readApi(viewer, '/state')).levelCompletion.unitAssessment
     for (const [index, part] of ['C', 'D'].entries()) {
@@ -651,23 +838,16 @@ async function checkMathComparison() {
   }
 }
 async function checkEvidenceMap(page, duration) {
-  const summary = page.getByTestId('unit-assessment-summary')
-  await summary.locator('summary').first().click()
-  await summary.getByText('Für deinen Lernplan angerechnet (2)', { exact: true }).click()
+  const options = await openUnitAssessmentOptions(page)
+  const summary = options.getByTestId('unit-assessment-summary')
   const directChecks = summary.getByTestId('unit-assessment-direct-evidence')
-  const creditedChecks = summary.getByTestId('unit-assessment-credited-evidence')
   assert.equal(await directChecks.count(), 4)
-  assert.equal(await creditedChecks.count(), 2)
+  assert.equal(await summary.getByTestId('unit-assessment-credited-evidence').count(), 0,
+    'The assessment choice lists direct part results; preparation credit stays in the learning map')
   for (const check of await directChecks.all()) assert(await check.isVisible())
-  for (const check of await creditedChecks.all()) {
-    assert(await check.isVisible())
-    assert(await check.evaluate(node => node.classList.contains('lucide-check')))
-  }
-  const greenShape = await directChecks.first().evaluate(node => node.innerHTML)
-  assert.equal(await creditedChecks.first().evaluate(node => node.innerHTML), greenShape)
   await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
   const map = page.getByTestId('learner-learning-map-dialog')
-  await map.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
+  await enterMapScope(page, map, profiles[duration].E1, 'E.1 Bewegungen und ihre Beschreibung')
   await map.locator('.lum-flow--idle').waitFor()
   await map.getByRole('button', { name: 'Diese Ebene einpassen' }).click()
   const entry = id => map.locator('[data-entry-id="' + id + '"]')
@@ -682,6 +862,10 @@ async function checkEvidenceMap(page, duration) {
   }
   const creditGoalsFor = partId => scope.childAssessmentRevisions[partId].planningGoalIds
   for (const goalId of creditGoalsFor(parentBoardPart)) await entry(goalId).getByTestId(credited).waitFor()
+  const greenShape = await entry(parentBoardPart).getByTestId(direct).locator('.lucide-check').evaluate(node => node.innerHTML)
+  for (const goalId of creditGoalsFor(parentBoardPart)) {
+    assert.equal(await entry(goalId).getByTestId(credited).locator('.lucide-check').evaluate(node => node.innerHTML), greenShape)
+  }
   const directGoals = new Set(await markers(direct))
   const creditedGoals = new Set(await markers(credited))
   for (const id of ['4a2bf015-052b-4af0-aed7-324259fa1a8a', '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2']) {
@@ -731,6 +915,7 @@ async function checkStoredAssignmentActivity(duration) {
     ['CD', 'unitCD', false], ['ABCD', 'unitABCD', false], ['gemischt', 'mixed', false], ['CD', 'unitCD', true],
   ]) {
     const id = profiles[duration][profile]
+    await enablePlanMode(id)
     const plan = () => readApi(id, '/learning-plans/by-landscape?landscapeId=' + physics)
     const results = () => Promise.all([readApi(id, '/mastery'), ...unitPartIds.map(goal => readApi(id, '/exam-passes/' + goal))])
     const original = await plan()
@@ -771,6 +956,7 @@ async function checkStoredAssignmentActivity(duration) {
         assert.deepEqual(await readApi(id, '/learning-plans/' + physics + '/unit-assignments'), [])
       }
       await page.goto(site + '/auftraege/' + duration + '/' + route)
+      await openPlanManagement(page)
       const manager = page.getByTestId('stored-unit-assignments')
       const row = manager.locator('[data-block-id="' + block.id + '"]')
       const pause = row.getByRole('button', { name: 'Einheitenauftrag pausieren', exact: true })
@@ -782,6 +968,7 @@ async function checkStoredAssignmentActivity(duration) {
         await setConfig(originalConfig)
         selectionChanged = false
         await page.reload()
+        await openPlanManagement(page)
       }
       const resume = row.getByRole('button', { name: 'Einheitenauftrag wieder aktivieren', exact: true })
       await resume.waitFor()
@@ -806,6 +993,7 @@ async function checkStoredAssignmentActivity(duration) {
 async function checkUnitAssignments(duration) {
   const physics = scope.landscapeId
   for (const [route, profile, passed] of [['offen', 'unitOpen', 0], ['CD', 'unitCD', 2], ['ABCD', 'unitABCD', 4], ['gemischt', 'mixed', 4]]) {
+    await enablePlanMode(profiles[duration][profile])
     const page = await browser.newPage({ viewport: { width: 390, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
     page.setDefaultTimeout(30000)
     try {
@@ -817,6 +1005,7 @@ async function checkUnitAssignments(duration) {
       await normalPlan.waitFor()
       assert((await normalPlan.innerText()).includes(passed + ' / 4'))
       if (route !== 'gemischt') {
+        await openPlanManagement(page)
         const unitStatus = control.getByTestId('unit-assignment-status')
         await unitStatus.waitFor()
         assert((await unitStatus.innerText()).includes(passed + ' / 4'))
@@ -837,12 +1026,13 @@ async function checkUnitAssignments(duration) {
         assert.equal(await voluntary.count(), 0)
         assert.equal(plan.continueReason, 'unit-assessment-choice-required')
         assert.equal(plan.nextEligibleGoal.goalId, unitPartIds[0])
-        await control.getByTestId('unit-assignment-try').click()
+        const options = await openUnitAssessmentOptions(page)
+        await options.locator('a[href*="completionGoal=' + unitPartIds[0] + '"]').click()
         assert.equal(new URL(page.url()).searchParams.get('completionGoal'), unitPartIds[0])
       } else if (route === 'ABCD') {
         assert.equal(plan.continueReason, 'unit-assignment-completed')
         assert.equal(plan.nextEligibleGoal, null)
-        assert((await control.getByTestId('unit-assignment-next').innerText()).includes('Kein weiterer Vorschlag'))
+        assert((await normalPlan.innerText()).includes('Auftrag abgeschlossen'))
         const beforeChoice = await readApi(id, '/mastery')
         await voluntary.click()
         const offered = normalPlan.getByRole('button', { name: 'Modellierung und Idealisierung von Bewegungen', exact: true })
@@ -889,9 +1079,11 @@ async function checkPlanSelection(duration, withExistingPlan) {
   const page = await browser.newPage()
   try {
     const id = profiles[duration][withExistingPlan ? 'viewer' : 'A']
+    await enablePlanMode(id)
     const path = '/learning-plans/by-landscape?landscapeId=' + scope.landscapeId
     const before = withExistingPlan ? await readApi(id, path) : null
     await page.goto(site + (withExistingPlan ? '/nativ/' : '/testlauf/') + duration + '/A')
+    await openPlanManagement(page)
     const control = page.getByTestId('learner-unit-assignment')
     const save = page.waitForResponse(res => res.request().method() === 'PUT' && res.url().includes('/learning-plans/by-landscape'))
     await control.getByTestId('unit-assignment-add').click()
@@ -902,6 +1094,7 @@ async function checkPlanSelection(duration, withExistingPlan) {
     for (const old of before?.blocks ?? []) assert.deepEqual(after.blocks.find(block => block.id === old.id), old)
     assert.equal(after.blocks.filter(block => block.unitAssignment).length, 1)
     await page.reload()
+    await openPlanManagement(page)
     await page.getByTestId('unit-assignment-status').waitFor()
     if (withExistingPlan) {
       const selected = after.blocks.find(block => block.unitAssignment)
@@ -912,8 +1105,10 @@ async function checkPlanSelection(duration, withExistingPlan) {
       })
       assert.equal(paused.status, 200)
       await page.reload()
-      await control.getByRole('button', { name: 'Einheitenauftrag wieder aktivieren' }).click()
-      await control.getByTestId('unit-assignment-status').waitFor()
+      await openPlanManagement(page)
+      const stored = page.getByTestId('stored-unit-assignments').locator(`[data-block-id="${selected.id}"]`)
+      await stored.getByRole('button', { name: 'Einheitenauftrag wieder aktivieren', exact: true }).click()
+      await stored.getByRole('button', { name: 'Einheitenauftrag pausieren', exact: true }).waitFor()
       const resumed = await readApi(id, path)
       assert.equal(resumed.blocks.length, after.blocks.length)
       assert.deepEqual(resumed.blocks.find(block => block.id === selected.id)?.unitAssignment, selected.unitAssignment)
@@ -933,10 +1128,8 @@ async function checkVoluntaryStudy(duration, scenario, id, href, mastery, passed
       method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ strictMode: true }),
     })).ok)
     await page.goto(new URL(href, site).href)
-    const summary = page.getByTestId('unit-assessment-summary')
-    await summary.locator('summary').first().click()
-    await summary.getByText('Für deinen Lernplan angerechnet (2)', { exact: true }).click()
-    await summary.getByText('Einzeln noch nachzuweisen (11)', { exact: true }).waitFor()
+    const options = await openUnitAssessmentOptions(page)
+    const summary = options.getByTestId('unit-assessment-summary')
     assert.equal(await summary.getByText('Beleg vorhanden', { exact: true }).count(), passedCount)
     const target = 'e4b38061-1f28-43ad-8371-a3e7c0e81856'
     const title = 'Gleichmäßig beschleunigte Bewegung und Beschleunigung'
@@ -951,8 +1144,14 @@ async function checkVoluntaryStudy(duration, scenario, id, href, mastery, passed
     assert.equal(choice.practice.startGoalId, gate.orientationGoalId, 'The offered voluntary route names the same introduction as resource gating')
     assert.equal(choice.practice.orientationGoalId, gate.orientationGoalId)
     if (strict) assert(prerequisites.some(item => item.goalId === closestStrictPrerequisite))
-    const creditList = summary.locator('details').filter({ has: page.getByText('Für deinen Lernplan angerechnet (2)', { exact: true }) })
-    await creditList.getByRole('button', { name: title, exact: true }).click()
+    const tree = page.locator('.learner-tree-navigation')
+    const section = profiles[duration].E1
+    for (const parent of [section, section.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall')]) {
+      const expand = tree.locator('[data-goal-id="' + parent + '"]').locator('button[aria-expanded]').first()
+      await expand.waitFor()
+      if (await expand.getAttribute('aria-expanded') === 'false') await expand.click()
+    }
+    await tree.locator('[data-goal-id="' + target + '"]').getByText(title, { exact: true }).click()
     const card = page.getByTestId('learner-current-goal')
     await card.getByRole('heading', { name: title, exact: true }).first().waitFor()
     const study = card.getByTestId('individual-goal-study')
@@ -1031,6 +1230,7 @@ async function checkGradedComparison(duration) {
   const firstPlanGoal = unit.orientationGoalId
   const comparison = await browser.newPage()
   try {
+    for (const scenario of ['viewer', 'CD', 'ABCD']) await enablePlanMode(profiles[duration][scenario])
     await comparison.goto(site + '/vergleich/' + duration)
     await comparison.getByRole('heading', { name: `E.1 – Lernplan und Lernfront (${duration} · ${physicsCourse})` }).waitFor()
     for (const [scenario, label, count] of [
@@ -1102,7 +1302,7 @@ try {
       if (browserCase === 'mobile-map') await check(duration, 'B', 'de', false, 390)
       if (browserCase === 'structure') { await checkUnitAndChildCards(duration); await checkTreeAndMapParents(duration) }
       if (browserCase === 'planning') { await checkGradedComparison(duration); await checkUnitAssignments(duration) }
-      if (browserCase === 'guided') await checkGuidedUnitEntry(duration)
+      if (browserCase === 'guided') { await checkGuidedUnitEntry(duration); await checkSubjectGoalAssessmentEntry(duration) }
       if (browserCase === 'foreign-focus') await checkForeignFocusEntry(duration)
     }
   } else {
@@ -1113,6 +1313,7 @@ try {
     const persisted = JSON.parse((await readApi(profiles[duration].viewer, '')).personalCurriculum)
     assert.equal(persisted[scope.landscapeId].filterId, physicsCourse)
     await checkGuidedUnitEntry(duration)
+    await checkSubjectGoalAssessmentEntry(duration)
     await checkForeignFocusEntry(duration)
     for (const part of ['A', 'B']) {
       for (const lang of ['de', 'en']) await check(duration, part, lang, false)

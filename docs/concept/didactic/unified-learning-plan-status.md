@@ -236,6 +236,8 @@ Der Chat erhält nur den fertigen Status und die Steuerungsinformationen — wed
 - **Cockpit:** Zeigt im Plan-Modus je Fach zwei gleich hohe Nadelscheiben (`periodGauge` blau/grau „x von y Zielen“; `balanceGauge` rot/grau/grün mit dem Backend-Planstatustext direkt unter der Nadel, auch auf kleinen Bildschirmen klar lesbar, ohne doppelten Einstellungs- oder „Weiterlernen“-Knopf im Heute-Panel). Fehlendes Periodenpensum, fehlendes `typicalAmount` und Nicht-Auswertbarkeit werden klar unterschieden.
 - **Planung und Details:** Zeigt unter *Plandetails* den Planzeitraum, tatsächlich vorhandene Abschnitte/Termine/Puffer (inkl. geplanter Puffer mit 0 verbleibenden Werktagen) sowie `planCreditText`. Ältere Parallelbilanzen („Bis heute insgesamt …“, „Tempo der letzten 7 Tage“) entfallen; Unterrichtsabdeckung und Prüfungsvoraussetzungen bleiben fachlich getrennt.
 
+Lernende können das Cockpit jederzeit schließen oder das Gespräch mit dem Coach unterbrechen. Bei der Rückkehr können sie am gespeicherten Stand weiterlernen. Das aktuelle Lernziel, die Prüfungsbelege und der Lernplan bleiben beim Weggehen erhalten. Wer die Planung ändern möchte, kann einen Lernplan oder Einheitenauftrag ausdrücklich pausieren.
+
 <a id="sec-plan-status-selection"></a>
 ### 4.10. Zielauswahl und Fokussteuerung
 

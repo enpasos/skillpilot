@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, ChevronRight, Compass, Expand,
+import { ArrowDown, ArrowLeft, ArrowRight, ChevronRight, Compass, Expand,
   Minus, Plus, Search, Waypoints, X } from 'lucide-react'
 import { Background, BackgroundVariant, MarkerType, MiniMap, ReactFlow, ReactFlowProvider,
   getViewportForBounds, useReactFlow, useStore, type Edge, type Viewport } from '@xyflow/react'
@@ -31,14 +31,10 @@ type MapProps = {
   activeGoalId?: string | null
   initialScopeId?: string
   command?: LearningMapCommand | null
-  assessedUnit?: { scopeGoalId: string; parts: readonly { goalId: string }[] }
-  showInspector?: boolean
+  /** Camera context only; it never adds nodes, changes results or renders assessment content. */
+  assessmentContext?: { scopeGoalId: string; goalIds: readonly string[] }
   onEntrySelect?: (entryId: string) => void
-  /** An explicit drill, breadcrumb or semantic zoom, separate from a routed arrival. */
-  onScopeEnter?: (scopeId: string) => void
   onSelectionChange?: (entryId: string | null) => void
-  renderSelectionActions?: (entryId: string) => ReactNode
-  renderScopeActions?: (scopeId: string) => ReactNode
   materialScopes?: ReadonlySet<string>
   getGoalAction?: (scopeId: string, entryId: string) => LearningMapGoalAction | undefined
   getPracticeAction?: (scopeId: string, entryId: string) => LearningMapPracticeAction | undefined
@@ -79,8 +75,8 @@ function useNarrowScreen() {
 
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
-  learnerProgress, activeGoalId, initialScopeId, command, assessedUnit, showInspector = true, onEntrySelect,
-  onSelectionChange, onScopeEnter, renderSelectionActions, renderScopeActions, materialScopes, getGoalAction, getPracticeAction, onReturnToTree, onEscape, language = 'de',
+  learnerProgress, activeGoalId, initialScopeId, command, assessmentContext, onEntrySelect,
+  onSelectionChange, materialScopes, getGoalAction, getPracticeAction, onReturnToTree, onEscape, language = 'de',
   toolbar, locationBarContainer }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
   const MapContainer = embedded ? 'section' : 'main'
@@ -91,8 +87,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const [layout, setLayout] = useState<{ fixture: LearningMapFixture; key: string; data: LearningScopeLayout } | null>(null)
   const canvasWidth = useStore(state => state.width)
   const canvasHeight = useStore(state => state.height)
-  const boundScope = assessedUnit?.scopeGoalId
-  const boundParts = assessedUnit?.parts
+  const assessmentScope = assessmentContext?.scopeGoalId
+  const assessmentGoalIds = assessmentContext?.goalIds
   const assessmentCamera = useMemo(() => {
     const id = command?.entryId
     if (!id || !layout || layout.fixture !== fixture || !layout.data.positions[id]
@@ -100,10 +96,13 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     const peers = Object.entries(layout.data.positions).filter(([key]) => layout.fixture.entries[key].kind === 'assessment')
     if (peers.length < 2) return null
     const groups = [peers]
-    if (boundScope && layout.key === `${boundScope}:${direction}` && boundParts?.some(part => part.goalId === id)) {
-      const partIds = new Set(boundParts.map(part => part.goalId))
-      const visibleParts = peers.filter(([key]) => partIds.has(key))
-      if (visibleParts.length >= 2 && visibleParts.length < peers.length) groups.push(visibleParts)
+    // Optional assessments can extend this board far beyond the selected unit's
+    // required parts. Keep those existing parts together before falling back to
+    // a single assessment; no graph entry is hidden or rearranged.
+    if (assessmentScope && layout.key === `${assessmentScope}:${direction}` && assessmentGoalIds?.includes(id)) {
+      const requiredIds = new Set(assessmentGoalIds)
+      const requiredPeers = peers.filter(([key]) => requiredIds.has(key))
+      if (requiredPeers.length >= 2 && requiredPeers.length < peers.length) groups.push(requiredPeers)
     }
     for (const group of groups) {
       const xs = group.map(([, point]) => point.x)
@@ -116,7 +115,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     }
     const point = layout.data.positions[id]
     return { x: canvasWidth / 2 - point.x - NODE_WIDTH / 2, y: canvasHeight / 2 - point.y - NODE_HEIGHT / 2, zoom: 1 }
-  }, [command?.entryId, fixture, layout, canvasWidth, canvasHeight, boundScope, boundParts, direction])
+  }, [command?.entryId, fixture, layout, canvasWidth, canvasHeight, assessmentScope, assessmentGoalIds, direction])
   const previousAssessmentCamera = useRef<Viewport | null>(null)
   const [layoutError, setLayoutError] = useState<string | null>(null)
   const [layoutAttempt, setLayoutAttempt] = useState(0)
@@ -130,15 +129,14 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const pendingReveal = useRef<{ entryId: string; nonce: number; baselineSelectionId: string } | null>(null)
   const lastCommand = useRef<string | null>(null)
   const commandNavigationEpoch = useRef(0)
-  const acknowledgeScopeEntry = useCallback((scopeId: string) => {
+  const acknowledgeScopeEntry = useCallback(() => {
     commandNavigationEpoch.current++
     pendingNodeFocus.current = null
     pendingReveal.current = null
     if (command) lastCommand.current = `${command.nonce}:${command.entryId}`
     // Keep a local double-click selection's pending URL echo: acknowledging
     // that echo must not route back to the unit's parent after drilling in.
-    onScopeEnter?.(scopeId)
-  }, [command, onScopeEnter])
+  }, [command])
   const nav = useMapNavigation(fixture, reducedMotion, layout?.fixture === fixture ? layout.key : null,
     direction, initialScopeId, active, mapContainer, mapSurface, materialScopes, acknowledgeScopeEntry)
   const { enter, goUp, goToDepth, goToScope } = nav
@@ -157,7 +155,6 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const visible = useMemo(() => new Set(visibleIds), [visibleIds])
   const selectedId = selection?.scope === nav.scopeId && visible.has(selection.id) ? selection.id : null
   const inspected = selectedId ? fixture.entries[selectedId] : null
-  const inspectedProgress = inspected ? learnerProgress?.[inspected.id] : undefined
   const layoutKey = `${nav.scopeId}:${direction}`
   const activeLayout = layout?.fixture === fixture && layout.key === layoutKey ? layout.data : null
   const scopeTitle = nav.scopeId === fixture.rootId && rootLabel ? rootLabel : scope.title
@@ -298,7 +295,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           void flow.setViewport(assessmentCamera, { duration: 0 })
           return
         }
-        if (!showInspector && !requested) return
+        if (!requested) return
         pendingNodeFocus.current = null
         if (requested?.center) {
           const zoom = Math.max(0.95, Math.min(current.zoom, 1.25))
@@ -306,7 +303,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
             y: height / 2 - (node.position.y + 36) * zoom, zoom }, { duration: reducedMotion ? 0 : 180 })
           return
         }
-        // Reserve room for the newly opened inspector without changing graph layout.
+        // Keep a requested node within the visible drawing without changing graph layout.
         const left = node.position.x * current.zoom + current.x
         const top = node.position.y * current.zoom + current.y
         const right = left + 220 * current.zoom
@@ -318,7 +315,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
       })
     })
     return () => { cancelAnimationFrame(frame); cancelAnimationFrame(secondFrame) }
-  }, [selection, selectedId, flow, reducedMotion, nav.isTransitioning, showInspector, assessmentCamera])
+  }, [selection, selectedId, flow, reducedMotion, nav.isTransitioning, assessmentCamera])
 
   const scopeRelations = useMemo(() => getLearningScopeRelations(fixture, nav.scopeId), [fixture, nav.scopeId])
   const relationByEndpoints = useMemo(() => new Map(scopeRelations.map(relation =>
@@ -434,7 +431,6 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     return visibleIds.filter(id => !text || [fixture.entries[id].title, getGoalAction?.(nav.scopeId, id)?.title,
       ...(fixture.entries[id].sourceSections ?? []).map(section => section.title)].some(title => title?.toLocaleLowerCase(language).includes(text)))
   }, [fixture, query, visibleIds, language, nav.scopeId, getGoalAction])
-  const contextEntries = inspected?.requires.filter(id => !visible.has(id) && fixture.entries[id]).map(id => fixture.entries[id]) ?? []
   const selectedRelations = selectedId ? scopeRelations.filter(relation => relation.source === selectedId || relation.target === selectedId) : []
   const selectedOutside = selectedId ? fixture.scopeContext?.[nav.scopeId]?.[selectedId] ?? [] : []
   const contextTitle = (id: string) => fixture.entries[id]?.title ?? fixture.contextGoalTitles?.[id] ?? id
@@ -523,7 +519,6 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         {headingMode === 'standard' && <div className="lum-map-summary"><h1>{scopeTitle}</h1>
           <span>{visibleIds.length} Bereiche · {activeLayout?.edges.length ?? '…'} Verbindungen</span>
         </div>}
-        {renderScopeActions && <div className="lum-scope-actions">{renderScopeActions(nav.scopeId)}</div>}
         {fixture.scopeRelations && contextOpen && <aside id="lum-requirement-context" className="lum-requirement-context" data-testid="learning-map-requirement-context"
           aria-label={label('Verbindungen und Voraussetzungen', 'Connections and prerequisites')}>
           <div className="lum-requirement-head">
@@ -606,28 +601,6 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
             maskColor="rgba(245,247,249,0.75)" ariaLabel={label('Übersichtskarte', 'Overview map')} />}
         </div>
       </section>
-      {showInspector && inspected && <aside className="lum-inspector" aria-label="Ausgewählter Bereich">
-        <div className="lum-inspector-top"><span>{inspected.eyebrow ?? getEntryKindLabel(inspected, language)}</span>
-          <button type="button" aria-label="Information schließen" onClick={() => setSelection(null)}><X size={17} /></button></div>
-        <h2 title={inspected.description}>{inspected.title}</h2><p>{inspected.description}</p>
-        {inspectedProgress && <div className="lum-selected-progress">
-          <strong>{inspectedProgress.explicit + inspectedProgress.implicit} / {inspectedProgress.total} {label('mit Nachweis', 'with evidence')}</strong>
-          <span>{inspectedProgress.explicit} {label('direkt nachgewiesen', 'directly demonstrated')} · {inspectedProgress.implicit} {label('fachlich angerechnet', 'credited through assessment')} · {inspectedProgress.notRequired ?? 0} {label('für diesen Abschnitt nicht mehr erforderlich', 'no longer required for this section')} · {inspectedProgress.total - inspectedProgress.explicit - inspectedProgress.implicit - (inspectedProgress.notRequired ?? 0)} {label('offen', 'open')}</span>
-        </div>}
-        {renderSelectionActions && <div className="lum-selection-actions">{renderSelectionActions(inspected.id)}</div>}
-        {inspected.children?.length ? <button type="button" className="lum-enter" disabled={nav.isTransitioning}
-          onClick={() => open(inspected.id)}>{inspected.kind === 'unit' ? 'Einheit öffnen' : 'Bereich öffnen'} <ArrowUpRight size={16} /></button> : null}
-        <div className="lum-relations">
-          <h3>Vorbereitungen <span>{connections.incoming.get(inspected.id)?.length ?? 0}</span></h3>
-          {(connections.incoming.get(inspected.id) ?? []).map(id => <button type="button" key={id} onClick={() => selectSearchResult(id)}>{fixture.entries[id].title}<ChevronRight size={13} /></button>)}
-          {!connections.incoming.get(inspected.id)?.length && <small>Keine innerhalb dieser Ebene.</small>}
-          <h3>Bereitet vor auf <span>{connections.outgoing.get(inspected.id)?.length ?? 0}</span></h3>
-          {(connections.outgoing.get(inspected.id) ?? []).map(id => <button type="button" key={id} onClick={() => selectSearchResult(id)}>{fixture.entries[id].title}<ChevronRight size={13} /></button>)}
-          {!connections.outgoing.get(inspected.id)?.length && <small>Keine innerhalb dieser Ebene.</small>}
-          {contextEntries.length > 0 && <div className="lum-outside"><h3>Außerhalb dieser Ebene <span>{contextEntries.length}</span></h3>
-            {contextEntries.map(entry => <span key={entry.id}>{entry.title}</span>)}</div>}
-        </div>
-      </aside>}
     </div>
     <div className="lum-sr-only" role="status" aria-live="polite">{scopeTitle}, {label('Ebene', 'level')} {nav.path.length}, {visibleIds.length} {label('Bereiche', 'sections')}.</div>
   </MapContainer>

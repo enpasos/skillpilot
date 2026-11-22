@@ -15,10 +15,13 @@ import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
 
 const materials = readUnitMapMaterials(fileURLToPath(new URL('../../curricula/', import.meta.url)))
 const { flashcardGoalId: memoryId, assessmentGoalId: examId } = materials.find(item => item.unit.compositionNodeId === 'physics-e1-motion')!.unit
+const orientationId = materials.find(item => item.unit.compositionNodeId === 'physics-e1-motion')!.unit.orientationGoalId!
 assert(memoryId && examId)
 const canonical = JSON.parse(await readFile(new URL('../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', import.meta.url), 'utf8')) as SkillLandscape
 const memory = canonical.goals.find(goal => goal.id === memoryId)!
 const assessment = canonical.goals.find(goal => goal.id === examId)!
+const requiredAssessmentIds = ['ee7d5f3d-858f-59d6-89b0-e5a7f437f458', '39f52dcb-ff1d-5cad-9ccb-30da803cfa85',
+  'c933b7d2-edcb-5747-9378-9762659f260a', 'f13ca187-b680-5f47-b4ad-76bd474bd8a2']
 const horizontalThrow = canonical.goals.find(goal => goal.id === '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2')!
 const roadSafety = canonical.goals.find(goal => goal.id === '4a2bf015-052b-4af0-aed7-324259fa1a8a')!
 const nativePhysics = nativeMapLandscapes.find(landscape => landscape.landscapeId === id.physics)!
@@ -127,7 +130,8 @@ async function centerGoal(dialog: Locator, title: string) {
   await search.press('Enter')
 }
 
-async function checkProjectionGraph(page: Page, dialog: Locator, releaseDeck: () => void, updateProgress: () => void) {
+async function checkProjectionGraph(page: Page, dialog: Locator, releaseDeck: () => void, updateProgress: () => void,
+  verifyRequiredCamera = false) {
   const cart = canonical.goals.find(goal => goal.id === 'ee7d5f3d-858f-59d6-89b0-e5a7f437f458')!
   const projectile = canonical.goals.find(goal => goal.id === '39f52dcb-ff1d-5cad-9ccb-30da803cfa85')!
   const board = dialog.locator('.lum-canvas[aria-busy="false"]')
@@ -145,6 +149,35 @@ async function checkProjectionGraph(page: Page, dialog: Locator, releaseDeck: ()
   await board.waitFor()
   await waitForReadable(projectile.id)
   const initialZoom = await dialog.getByLabel('Zoomwert').innerText()
+  if (verifyRequiredCamera) {
+    await page.waitForFunction(ids => {
+      const board = document.querySelector('[data-testid="learner-learning-map-dialog"] .lum-flow')!
+      const surface = board.getBoundingClientRect()
+      return ids.every(id => {
+        const rect = board.querySelector(`[data-entry-id="${id}"] .lum-node-main`)?.getBoundingClientRect()
+        return rect && rect.width >= 170 && rect.left >= surface.left && rect.right <= surface.right
+          && rect.top >= surface.top && rect.bottom <= surface.bottom
+      })
+    }, requiredAssessmentIds.slice(0, 3))
+    const framedCamera = await camera()
+    await dialog.getByRole('button', { name: 'Karte verkleinern', exact: true }).click()
+    await page.waitForFunction(before => (document.querySelector('.react-flow__viewport') as HTMLElement)?.style.transform !== before, framedCamera)
+    const chosenCamera = await camera()
+    assert.notEqual(chosenCamera, framedCamera)
+    const refreshedContext = page.waitForResponse(response => new URL(response.url()).pathname.endsWith('/state'))
+    await page.evaluate(() => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: 'MASTERY_UPDATE' })))
+    const refreshed = await (await refreshedContext).json()
+    assert.deepEqual(refreshed.levelCompletion.unitAssessment.parts.map((part: { goalId: string }) => part.goalId), requiredAssessmentIds)
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+    assert.equal(await camera(), chosenCamera, 'a fresh equal-valued assessment array from a LearnerView refresh never overwrites manual zoom')
+    await dialog.getByRole('button', { name: 'Lernkarte schließen', exact: true }).click()
+    await dialog.waitFor({ state: 'hidden' })
+    await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
+    await dialog.waitFor()
+    await board.waitFor()
+    await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+    assert.equal(await camera(), chosenCamera, 'reopening the previously closed map preserves the learner camera rather than reframing its selected assessment')
+  }
   const count = graph.locator('[data-entry-kind="assessment"]')
   await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
   await page.waitForFunction(() => document.querySelectorAll('.lum-flow [data-entry-kind="assessment"]').length === 6)
@@ -204,10 +237,14 @@ const scenarios: {
   switchDuringSave?: boolean
   backgroundOverlap?: boolean
   deckDuringSearch?: boolean
+  nestedDeck?: boolean
 }[] = [
+  { width: 1440, viewFile: 'de-he-sekii-gk', nestedDeck: true },
   ...['de-he-gk-g8', 'de-he-sekii-gk'].flatMap(viewFile => [
     ...[390, 761, 1024, 1440].map(width => ({ width, height: width === 1024 ? 650 : 900, viewFile })),
   ]),
+  ...[{ width: 1024, height: 900 }, { width: 1024, height: 650 }, { width: 1100, height: 900 }, { width: 1440, height: 900 }]
+    .map(size => ({ ...size, viewFile: 'de-he-sekii-lk' })),
   { width: 1440, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
   { width: 390, futureTopic: false, switchDuringSave: false, backgroundOverlap: false, deckDuringSearch: true },
   { width: 1440, futureTopic: true, switchDuringSave: false, backgroundOverlap: false },
@@ -216,7 +253,7 @@ const scenarios: {
 ]
 try {
   for (const scenario of scenarios) {
-    const { width, futureTopic, switchDuringSave, backgroundOverlap, viewFile, deckDuringSearch } = scenario
+    const { width, futureTopic, switchDuringSave, backgroundOverlap, viewFile, deckDuringSearch, nestedDeck } = scenario
     const dataView = viewFile ? JSON.parse(await readFile(new URL(
       `../../curricula/DE/Gymnasium/composition-views/physik/${viewFile}.view.json`, import.meta.url), 'utf8')) : view
     const profile = nativeMapProfile(true)
@@ -257,15 +294,32 @@ try {
     const writes: { srsState: Record<string, { repetition?: number; nextReview?: number }> }[] = []
     let revision = '2026-11-18T08:00:00Z'
     let savePending = false, getsDuringWrite = 0, conflicts = 0
+    let introductionBlocked = Boolean(nestedDeck)
+    let practiceReads = 0
+    const introductionRequests: string[] = []
     const verifiedRecall = { status: 'passed', passedAt: '2026-11-01T08:00:00Z' }
     const outside = { id: 'e2-a', interval: 1, repetition: 1, ef: 2.5, nextReview: 0 }
     let srsState: Record<string, unknown> = {
       'e1-a': { id: 'e1-a', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0, verifiedRecall },
       'e1-b': { id: 'e1-b', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0, verifiedRecall }, 'e2-a': outside,
     }
+    const cameraContext = viewFile === 'de-he-sekii-lk'
     const learnerState = { activeGoal: { id: initialGoal.id }, frontier: [{ id: initialGoal.id }],
       goals: { planned: [{ id: id.physicsRoot }], mastered_count: 0, total_count: 6, personalized: { mastered_atomic: 0, total_atomic: 5 } },
-      stateMachine: { activeGoal: { id: initialGoal.id }, goalOptions: [], requiredAction: null } }
+      stateMachine: { activeGoal: { id: initialGoal.id }, goalOptions: [], requiredAction: null },
+      ...(cameraContext ? { levelCompletion: {
+        calculationStatus: 'valid', contextRef: 'camera-scope', profileId: 'automatic:' + dataTopic,
+        profileRevision: '1', curriculumGeneration: 'camera-generation', learnerRevision: 1,
+        title: { de: 'E.1 Bewegungen und ihre Beschreibung' }, complete: false,
+        masteredTargetCount: 0, waivedTargetCount: 0, pendingTargetCount: 4, targetCount: 4,
+        masteredAssessmentCount: 0, requiredAssessmentCount: 4, waivedTargetGoalIds: [],
+        assessments: requiredAssessmentIds.map(goalId => ({ goalId, title: { de: canonical.goals.find(goal => goal.id === goalId)!.title },
+          mastered: false, startAvailable: false })), profileOptions: [], directAssessmentRunning: false, actions: [],
+        unitAssessment: { sectionGoalId: dataTopic, revision: 'camera-contract', passed: false,
+          parts: requiredAssessmentIds.map(goalId => ({ goalId, title: { de: canonical.goals.find(goal => goal.id === goalId)!.title },
+            passed: false, materialCurrent: true })), planningCreditGoalIds: [], individuallyOpenGoalIds: [] },
+      } } : {}),
+    }
     page.on('pageerror', error => errors.push(error.message))
     await context.route('**/*', async route => {
       const request = route.request(), url = new URL(request.url()), path = url.pathname
@@ -295,7 +349,10 @@ try {
       if (!suffix && request.method() === 'GET') return json({ ...profile, activeGoalId: learnerState.activeGoal.id })
       if (suffix === '/mastery') return json({ mastery })
       if (suffix === '/state') return json(learnerState)
-      if (suffix === '/unit-introduction') return json({ orientationGoalId: null })
+      if (suffix === '/unit-introduction') {
+        introductionRequests.push(url.searchParams.get('goalId') ?? '')
+        return json({ orientationGoalId: introductionBlocked ? orientationId : null })
+      }
       if (suffix === '/resume') return json({ lastActivityAt: '2026-11-18T08:00:00Z', scheduledDeletionAt: '2027-05-18T08:00:00Z' })
       if (suffix === '/personalization-plan') return json({ stage: 'COMPLETE', options: [], displayOptions: [], navigationOptions: [],
         currentSelectedOptions: [], completedDecisions: [], preservedDecisions: [], pendingDecisions: [], canReopenMigratedPersonalization: false, problemCode: null })
@@ -314,6 +371,7 @@ try {
           savePending = false
           return json({ savedAt: revision })
         }
+        practiceReads += 1
         if (savePending) getsDuringWrite++
         return json({ srsState, updatedAt: revision })
       }
@@ -332,8 +390,61 @@ try {
         map: await dialog.innerText(), errors, unexpected })
       throw error
     })
+    assert.equal(await dialog.locator('.lum-scope-actions, .lum-inspector, .unit-introduction, [data-testid="unit-assessment-summary"], [data-testid="learner-unit-assignment"], [data-testid="learning-map-flashcard-practice"]').count(), 0,
+      'the real subject map shows only its header and graph, including nested topic boards')
+    if (nestedDeck) {
+      releaseDeck()
+      const nestedScope = `composition:${dataView.viewId}:structure:physics-e1-accelerated-and-free-fall`
+      const title = 'Beschleunigte Bewegung und freier Fall'
+      const action = dialog.locator(`[data-entry-id="${nestedScope}"]`).getByRole('button', {
+        name: `Lernkarten zu ${title} üben`, exact: true,
+      })
+      const chooseExistingUnitAction = async () => {
+        await centerGoal(dialog, title)
+        await dialog.locator(`[data-selected-goal-id="${nestedScope}"]`).waitFor()
+        await action.waitFor()
+        await action.click()
+      }
+      const readsBeforeGate = practiceReads
+      await chooseExistingUnitAction()
+      await dialog.waitFor({ state: 'hidden' })
+      await page.waitForURL(url => url.pathname.endsWith('/' + orientationId))
+      await page.locator(`[data-testid="unit-introduction"][data-orientation-goal-id="${orientationId}"]`).waitFor()
+      assert.equal(introductionRequests.at(-1), nestedScope, 'the chosen existing unit, not its parent, owns the protected entry')
+      assert.equal(practiceReads, readsBeforeGate, 'an uncompleted introduction leaves the scoped deck unopened')
+      assert.equal(await page.getByText('Karte 1 von 3', { exact: true }).count(), 0)
+      assert.deepEqual(writes, [], 'the prerequisite redirect does not write card or mastery results')
+
+      // The controlled backend now confirms the existing orientation result.
+      // The UI must recheck the same owner before starting the original subdeck.
+      introductionBlocked = false
+      mastery[orientationId] = 1
+      await page.goto(`${origin}/learner/${initialGoal.id}?l=${id.root}`, { waitUntil: 'domcontentloaded' })
+      await page.getByTestId('learner-current-goal').getByRole('heading', { name: initialGoal.title, exact: true }).waitFor()
+      await opener.click()
+      await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
+      await chooseExistingUnitAction()
+      await dialog.waitFor({ state: 'hidden' })
+      const fronts = ['Diagrammregeln für t-s-, t-v- und t-a-Diagramme?',
+        'Gleichmäßig beschleunigte Bewegung: Grundformeln?', 'Freier Fall (ohne Luftwiderstand): Grundformeln?']
+      const seen = new Set<string>()
+      for (let index = 0; index < 3; index += 1) {
+        await page.getByText(`Karte ${index + 1} von 3`, { exact: true }).waitFor()
+        for (const front of fronts) if (await page.getByText(front, { exact: true }).isVisible()) seen.add(front)
+        if (index < 2) await page.getByRole('button', { name: 'Nächste Karte', exact: true }).click()
+      }
+      assert.deepEqual([...seen].sort(), [...fronts].sort(), 'the real free-fall unit offers exactly its three original matching cards')
+      assert.equal(introductionRequests.at(-1), nestedScope)
+      assert.equal(introductionRequests.filter(scope => scope === nestedScope).length, 2)
+      assert.deepEqual(writes, [], 'viewing the preserved subdeck never writes results or new mastery')
+      assert.deepEqual(unexpected, [])
+      assert.deepEqual(errors, [])
+      console.log('Real nested free-fall unit: existing node action, original three-card subset, protected entry, no graph additions or writes')
+      await context.close()
+      continue
+    }
     if (viewFile) {
-      const initialZoom = await checkProjectionGraph(page, dialog, releaseDeck, () => { mastery[horizontalThrow.id] = 1 })
+      const initialZoom = await checkProjectionGraph(page, dialog, releaseDeck, () => { mastery[horizontalThrow.id] = 1 }, cameraContext)
       if (width === 390 || width === 1440) {
         const cases = [
           { id: '716acf20-d882-5152-9735-099876d631b4', phase: 'physics-q1', source: 'Übungen' },
@@ -366,7 +477,8 @@ try {
     })
     const practice = dialog.getByRole('button', { name: 'Lernkarten zu E.1 üben', exact: true })
     if (!futureTopic && !switchDuringSave) {
-      await dialog.getByRole('heading', { name: 'Ein Ball rollt vom Tisch. Wo landet er?', exact: true }).waitFor()
+      assert.equal(await dialog.getByRole('heading', { name: 'Ein Ball rollt vom Tisch. Wo landet er?', exact: true }).count(), 0,
+        'the unit introduction stays in the Cockpit rather than above the graph')
       if (width === 390) await centerGoal(dialog, horizontalThrow.title)
       const throwNode = dialog.locator(`[data-entry-id="${horizontalThrow.id}"]`)
       const openExercise = throwNode.getByRole('button', { name: 'Üben: Wo muss die Bodenmarke liegen?', exact: true })
@@ -398,6 +510,7 @@ try {
       await page.keyboard.press('Enter')
       const exercise = page.getByRole('dialog', { name: 'Wo muss die Bodenmarke liegen?', exact: true })
       await exercise.waitFor()
+      assert.equal(await dialog.isVisible(), false, 'the explicit exercise command continues in the Cockpit')
       assert.equal(await exercise.evaluate(element => element.contains(document.activeElement)), true)
       await exercise.getByText('Hinweis anzeigen', { exact: true }).click()
       assert(await exercise.getByText('Wie ändern sich die beiden Wege', { exact: false }).isVisible())
@@ -408,9 +521,12 @@ try {
       if (width === 390) await exercise.getByRole('button', { name: 'Übung schließen', exact: true }).click()
       else await page.keyboard.press('Escape')
       await exercise.waitFor({ state: 'hidden' })
-      assert(await dialog.isVisible(), 'closing the exercise leaves the learning map open')
-      assert(await openExercise.evaluate(element => document.activeElement === element), 'focus returns to the exercise button')
+      assert.equal(await dialog.isVisible(), false, 'closing the Cockpit exercise does not reopen a map panel')
+      await page.getByTestId('learner-current-goal').getByRole('heading', { name: horizontalThrow.title, exact: true }).waitFor()
       if (width === 390) {
+        await opener.click()
+        await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
+        await centerGoal(dialog, horizontalThrow.title)
         const buttonBounds = await openExercise.boundingBox()
         assert(buttonBounds && buttonBounds.height >= 44 && buttonBounds.width >= 44)
         await openExercise.click()
@@ -420,6 +536,8 @@ try {
         await exercise.waitFor({ state: 'hidden' })
       }
       assert.deepEqual(writes, [], 'reading and checking an exercise does not save a result')
+      await opener.click()
+      await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
     }
     if (width === 390) await centerGoal(dialog, assessment.title)
     await dialog.locator(`[data-entry-id="${examId}"]`).getByText('Prüfung aus „Themenübergreifende Prüfungen“').waitFor()

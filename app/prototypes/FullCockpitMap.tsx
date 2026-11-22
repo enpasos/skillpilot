@@ -45,7 +45,7 @@ export function FullCockpitMap(props: LearnerGoalNavigationMapProps) {
     data-selected-goal-id={props.selectedGoalId} data-map-active={props.active}>
     <LearningUnitMap fixture={fixture} embedded active={props.active}
       headingMode="context" rootLabel="Meine Lernziele" learnerProgress={progress}
-      activeGoalId={props.activeGoalId} command={command} showInspector={false}
+      activeGoalId={props.activeGoalId} command={command}
       onEntrySelect={props.onSelectGoal} onEscape={props.onEscape} />
   </div>
 }

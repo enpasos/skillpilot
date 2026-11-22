@@ -79,7 +79,7 @@ function Fixture() {
     setNonce(value => value + 1)
   }
   return <div style={{ display: 'grid', gridTemplateColumns: '850px 1fr', height: '100vh' }}>
-    <LearningUnitMap fixture={fixture} embedded active headingMode="context" showInspector={false}
+    <LearningUnitMap fixture={fixture} embedded active headingMode="context"
       command={{ entryId: selected, nonce, revealEntryId }} onEntrySelect={select} />
     <main style={{ padding: 20 }}>
       <output data-testid="command-parent-selection">{selected}</output>

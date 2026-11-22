@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState, type Ref } from 'react'
 import { X } from 'lucide-react'
 import './GoalPracticeDialog.css'
 import type { MapPracticeExercise } from './learningUnitMap/types'
@@ -38,20 +38,16 @@ export function GoalPracticeDialog({ exercise, language, onDismiss }: {
   </dialog>
 }
 
-export function GoalPracticeAction({ exercise, language, beforeOpen }: {
-  exercise: MapPracticeExercise; language: 'de' | 'en'; beforeOpen?: () => Promise<boolean>
+export function GoalPracticeAction({ exercise, language, onOpen, buttonRef }: {
+  exercise: MapPracticeExercise; language: 'de' | 'en'; onOpen: () => Promise<void>; buttonRef: Ref<HTMLButtonElement>
 }) {
-  const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState(false)
-  return <>
-    <button type="button" disabled={busy} onClick={async () => {
-      if (busy) return
-      setBusy(true)
-      try { if (!beforeOpen || await beforeOpen()) setOpen(true) } finally { setBusy(false) }
-    }}
-      className="mt-3 min-h-11 rounded-lg border border-sky-400 px-3 py-2 text-sm font-semibold text-text-primary focus-visible:outline-2 focus-visible:outline-sky-500">
-      {language === 'en' ? 'Practice' : 'Üben'}: {exercise.title}
-    </button>
-    {open && <GoalPracticeDialog exercise={exercise} language={language} onDismiss={() => setOpen(false)} />}
-  </>
+  return <button type="button" ref={buttonRef} aria-disabled={busy} onClick={async () => {
+    if (busy) return
+    setBusy(true)
+    try { await onOpen() } finally { setBusy(false) }
+  }}
+    className="mt-3 min-h-11 rounded-lg border border-sky-400 px-3 py-2 text-sm font-semibold text-text-primary focus-visible:outline-2 focus-visible:outline-sky-500">
+    {language === 'en' ? 'Practice' : 'Üben'}: {exercise.title}
+  </button>
 }

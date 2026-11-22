@@ -114,6 +114,15 @@ try {
   }))
   let storedPeriodBasis: 'DAY' | 'WEEK' = 'DAY'
   let followLearningPlans = true
+  let reportedPlanFollowing: boolean | null = null
+  let includeStoredAssignment = false
+  let holdNextPlan: Promise<void> | null = null
+  let delayedPlanStarted = () => {}
+  let wrongPlanLanguage = false
+  const planMutations: string[] = []
+  const storedAssignment = { planId: 'physics-plan', revision: 4, landscapeId: 'physics/sek-ii',
+    blockId: 'saved-unit', sectionGoalId: 'physics-unit', title: 'Gespeicherter Physikauftrag', active: true, canReactivate: false }
+  const savedUnitEvidence = { title: 'Gespeicherter Physikauftrag', status: 'active', passedParts: 1, requiredParts: 2 }
   let unavailableStatus = false
   let omitStatus = false
   let returnWrongStatusLanguage = false
@@ -138,6 +147,9 @@ try {
   const handleLearnerRequest = async (route: Route) => {
     const request = route.request()
     const pathname = new URL(request.url()).pathname
+    if (pathname.includes('/learning-plans') && request.method() !== 'GET') {
+      planMutations.push(`${request.method()} ${pathname}`)
+    }
     const json = (body: unknown) => route.fulfill({
       status: 200,
       contentType: 'application/json',
@@ -196,7 +208,10 @@ try {
     if (pathname.endsWith('/preferences') && request.method() === 'PUT') {
       const preferences = request.postDataJSON()
       preferenceWrites.push(preferences)
-      storedPeriodBasis = preferences.learningPlanPeriodBasis
+      if (preferences.learningPlanPeriodBasis === 'DAY' || preferences.learningPlanPeriodBasis === 'WEEK') {
+        storedPeriodBasis = preferences.learningPlanPeriodBasis
+      }
+      if (typeof preferences.followLearningPlans === 'boolean') followLearningPlans = preferences.followLearningPlans
       if (preferenceSaveBarrier) {
         preferenceSaveStarted()
         await preferenceSaveBarrier
@@ -204,6 +219,14 @@ try {
       return json({ learningPlanPeriodBasis: storedPeriodBasis })
     }
     if (pathname.endsWith('/learning-plans')) {
+      const reportedFollowing = reportedPlanFollowing ?? followLearningPlans
+      const responseLanguageWrong = wrongPlanLanguage
+      if (holdNextPlan) {
+        const barrier = holdNextPlan
+        holdNextPlan = null
+        delayedPlanStarted()
+        await barrier
+      }
       const requestedLanguage = new URL(request.url()).searchParams.get('language')
       assert.ok(requestedLanguage === 'de' || requestedLanguage === 'en',
         'the cockpit requests an explicit supported display language')
@@ -227,6 +250,7 @@ try {
             ? { completed: 0, target: 2, needlePosition: 0 }
             : { completed: 1, target: 8, needlePosition: 0.125 },
           balanceGauge: { net: -2, typicalAmount: 2, scaleLimit: 4, needlePosition: -0.4, severeBehind: false, strongAhead: false },
+          ...(includeStoredAssignment && key === 'physik' ? { unitAssignments: [savedUnitEvidence] } : {}),
         }
       }
       const subjects = [subject('mathematik', english ? 'Mathematics' : 'Mathematik'),
@@ -235,7 +259,8 @@ try {
         asOf: '2026-09-04', periodBasis: storedPeriodBasis,
         periodStart: storedPeriodBasis === 'WEEK' ? '2026-08-31' : '2026-09-04',
         periodEnd: storedPeriodBasis === 'WEEK' ? '2026-09-06' : '2026-09-04',
-        timeZone: 'Europe/Berlin', language: returnWrongStatusLanguage && english ? 'de' : requestedLanguage,
+        timeZone: 'Europe/Berlin', language: responseLanguageWrong ? (english ? 'de' : 'en')
+          : returnWrongStatusLanguage && english ? 'de' : requestedLanguage,
         evaluable: !unavailableStatus,
         statusText: subjects.map((entry) => entry.subjectLine).join('\n'),
         noticeText: unavailableStatus
@@ -244,12 +269,13 @@ try {
         activeGoal: english
           ? { title: 'Solve linear equations', announcement: 'Your active learning goal: Solve linear equations' }
           : { title: 'Lineare Gleichungen lösen', announcement: 'Dein aktives Lernziel: Lineare Gleichungen lösen' },
-        followLearningPlans, resumeAvailable: true,
+        followLearningPlans: reportedFollowing, resumeAvailable: true,
         subjects: unavailableStatus ? subjects.map((entry) => ({ ...entry, evaluable: false, periodText: null, planStatusText: null, subjectLine: null, statusDirection: null, periodGauge: null, balanceGauge: null, canContinue: false })) : subjects, unavailablePlanCount: unavailableStatus ? 2 : 0,
       }
       return json({
         asOf: '2026-09-04',
-        followLearningPlans,
+        followLearningPlans: reportedFollowing,
+        ...(includeStoredAssignment ? { storedUnitAssignments: [storedAssignment] } : {}),
         status: omitStatus ? undefined : status,
         plans: unavailableStatus ? [] : [
           plan('math-plan', 'math/sek-i', 'Mathematik bis Klasse 10', 'math-goal-1'),
@@ -617,22 +643,99 @@ try {
   assert.equal(await desktopHide.getAttribute('aria-expanded'), 'true')
   await page.waitForFunction(() => document.activeElement?.getAttribute('aria-label') === 'Hide learning goals')
 
+  // Open the same saved profile with plan following disabled. Its status can be
+  // out of date independently of the persisted preference, assignments and evidence.
+  includeStoredAssignment = true
   followLearningPlans = false
+  reportedPlanFollowing = true
+  const assignmentBefore = JSON.stringify(storedAssignment)
+  const evidenceBefore = JSON.stringify(savedUnitEvidence)
+  const preferenceWritesBefore = preferenceWrites.length
   await page.reload()
   await activeGoalBanner.getByText('Dein aktives Lernziel: Lineare Gleichungen lösen', { exact: true }).waitFor()
   await selectedGoal.getByRole('heading', { name: 'Lineare Gleichungen lösen', exact: true }).waitFor()
+  const manager = page.getByTestId('learner-plan-management')
+  const assertPlanHidden = async () => {
+    assert.equal(await overview.count(), 0, 'a status claiming plan mode is on cannot override the saved off preference')
+    assert.equal(await manager.count(), 0, 'the entire learning-plan management, including saved assignments, is absent when off')
+    assert.equal(await page.getByTestId('stored-unit-assignments').count(), 0)
+    assert.equal(await learningProgress.count(), 0, 'the entire learning progress section stays hidden when plan mode is off')
+    assert.equal(await page.locator('.learner-cockpit-grid-with-progress').count(), 0, 'the hidden plan does not reserve a progress column')
+  }
+  await assertPlanHidden()
+  const setPlanPreference = async (enabled: boolean) => {
+    await sidebar.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+    const checkbox = settings.getByRole('checkbox', { name: /^Nach Plan lernen\b/u })
+    await checkbox.waitFor()
+    assert.equal(await checkbox.isChecked(), !enabled, 'the real settings checkbox starts from the persisted preference')
+    await checkbox.setChecked(enabled)
+    await settings.getByRole('button', { name: 'Fertig', exact: true }).click()
+    await settings.waitFor({ state: 'detached' })
+    assert.equal(followLearningPlans, enabled, 'the configuration write updates the same saved profile')
+    assert.equal(preferenceWrites.at(-1)?.followLearningPlans, enabled)
+  }
+  await setPlanPreference(true)
+  await manager.locator('summary').waitFor()
+  await overview.getByTestId('learner-plan-unit-assignment').getByText('1 / 2 · Auftrag aktiv', { exact: true }).waitFor()
+  await manager.locator('summary').click()
+  await manager.getByTestId('stored-unit-assignments').getByText('Gespeicherter Physikauftrag · Physik', { exact: true }).waitFor()
+
+  // Reload the profile while on: neither creating a new assignment nor copying
+  // evidence is needed to recover the saved assignment and its existing pass.
+  await page.reload()
+  await manager.locator('summary').waitFor()
+  await overview.getByTestId('learner-plan-unit-assignment').getByText('1 / 2 · Auftrag aktiv', { exact: true }).waitFor()
+  await manager.locator('summary').click()
+  await manager.getByTestId('stored-unit-assignments').getByRole('button', { name: 'Einheitenauftrag pausieren', exact: true }).waitFor()
+  let releaseDelayedPlan = () => {}
+  holdNextPlan = new Promise<void>(resolve => { releaseDelayedPlan = resolve })
+  const delayedStarted = new Promise<void>(resolve => { delayedPlanStarted = resolve })
+  await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')))
+  await delayedStarted
+  await setPlanPreference(false)
+  await assertPlanHidden()
+  await page.evaluate(() => {
+    const probe = { flashes: 0 }
+    Object.assign(window, { planOffProbe: probe })
+    new MutationObserver(() => {
+      if (document.querySelector('[data-testid="learner-plan-management"], [data-testid="learner-learning-progress"]')) probe.flashes += 1
+    }).observe(document.body, { childList: true, subtree: true })
+  })
+  const delayedResponse = page.waitForResponse(response => new URL(response.url()).pathname.endsWith('/learning-plans'))
+  releaseDelayedPlan()
+  await delayedResponse
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+  await assertPlanHidden()
+  assert.equal(await page.evaluate(() => (window as unknown as { planOffProbe: { flashes: number } }).planOffProbe.flashes), 0,
+    'a delayed status from before the off write cannot transiently restore the learning-plan section')
+
+  // A wrong-language status is rejected; its previously visible plan must not
+  // be restored while the authoritative profile preference remains off.
+  wrongPlanLanguage = true
+  const wrongResponse = page.waitForResponse(response => new URL(response.url()).pathname.endsWith('/learning-plans'))
+  await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')))
+  await wrongResponse
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+  await assertPlanHidden()
+  wrongPlanLanguage = false
+  await page.reload()
+  await selectedGoal.getByRole('heading', { name: 'Lineare Gleichungen lösen', exact: true }).waitFor()
+  await sidebar.getByRole('button', { name: 'Einstellungen öffnen', exact: true }).click()
+  assert.equal(await settings.getByRole('checkbox', { name: /^Nach Plan lernen\b/u }).isChecked(), false,
+    'reopening the same profile keeps plan following disabled despite a status claiming true')
+  await settings.getByRole('button', { name: 'Fertig', exact: true }).click()
+  await settings.waitFor({ state: 'detached' })
   for (const width of [1440, 390]) {
     await page.setViewportSize({ width, height: 900 })
-    assert.equal(await overview.count(), 0,
-      'existing subject plans stay hidden when plan mode is off')
-    assert.equal(await learningProgress.count(), 0,
-      'the entire learning progress section stays hidden when plan mode is off')
-    assert.equal(await page.locator('.learner-cockpit-grid-with-progress').count(), 0,
-      'the hidden plan does not reserve a progress column')
+    await assertPlanHidden()
     assert.equal(await activeGoalBanner.isVisible(), true)
     assert.equal(await selectedGoal.isVisible(), true)
     if (screenshotDir) await page.screenshot({ path: `${screenshotDir}/plan-off-${width}.png`, fullPage: true })
   }
+  assert.equal(preferenceWrites.length, preferenceWritesBefore + 2, 'off → on → off performs exactly the two requested configuration writes')
+  assert.equal(JSON.stringify(storedAssignment), assignmentBefore, 'hiding the plan leaves the saved assignment intact')
+  assert.equal(JSON.stringify(savedUnitEvidence), evidenceBefore, 'hiding the plan leaves the existing assessment evidence intact')
+  assert.deepEqual(planMutations, [], 'changing plan visibility never creates, removes, pauses or rebinds an assignment')
 
   assert.equal(browserErrors.length, 0, `mobile LearnerView browser errors:\n${browserErrors.join('\n')}`)
   assert.deepEqual(unexpectedRequests, [], 'the full state already supplies focus; initial /planned must not be fetched')

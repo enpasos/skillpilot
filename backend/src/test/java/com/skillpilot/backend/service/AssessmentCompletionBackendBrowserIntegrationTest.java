@@ -207,13 +207,15 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
         }
         JsonNode report = mapper.readTree(Files.readString(evidence.resolve("evidence-result.json")));
         assertThat(report.path("resultChecks").size()).isEqualTo(7);
+        assertThat(report.path("resultChecks").valueStream().map(JsonNode::asText).toList())
+                .contains("leave-and-return-retains-profile-and-results");
         assertThat(report.path("hostAcceptance").asBoolean()).isFalse();
         assertThat(mastery.findByLearner_SkillpilotId(id)).singleElement().satisfies(result -> {
             assertThat(result.getGoalKey()).isEqualTo(EXAM); assertThat(result.getValue()).isEqualTo(1.0);
         });
         assertThat(learnerService.getLearnerState(id).levelCompletion().complete()).isFalse();
         assertThat(learnerService.getLearnerState(id).levelCompletion().masteredAssessmentCount()).isEqualTo(1);
-        assertThat(learnerService.getLearnerState(id).levelCompletion().navigationIntent()).isEqualTo("paused");
+        assertThat(learnerService.getLearnerState(id).levelCompletion().navigationIntent()).isEqualTo("required");
         assertThat(learners.findById(id).orElseThrow().getActiveGoalId()).isNull();
         assertThat(focus.findByLearner_SkillpilotId(id)).extracting(PlannedGoal::getGoalId).containsExactly(PREPARATION);
     }

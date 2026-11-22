@@ -83,15 +83,6 @@
 .lum-map-summary { height: 49px; flex-shrink: 0; display: flex; align-items: center; gap: 15px; padding: 0 24px; }
 .lum-map-summary h1 { font-size: 13px; font-weight: 600; letter-spacing: -.1px; margin: 0; }
 .lum-map-summary > span { color: #a0a8af; font-size: 10px; }
-.lum-scope-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; padding: 8px 16px; max-height: 42dvh; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; }
-.lum-scope-actions:empty { display: none; }
-.lum-scope-actions .unit-assessment-summary[open] { max-height: 40dvh; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; }
-.lum-scope-intro { flex-basis: 100%; }
-.lum-scope-intro h2 { margin: 0; color: var(--lum-ink); font-size: 17px; font-weight: 600; line-height: 1.35; }
-.lum-scope-intro p { max-width: 85ch; margin: 3px 0 1px; color: #495f70; font-size: 13px; line-height: 1.45; }
-.lum-flashcard-action { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid #c6d7e5; border-radius: 5px; background: #f2f7fb; color: #347295; font-size: 12px; text-align: left; }
-.lum-flashcard-action:hover { background: #e7f2fa; }
-.lum-flashcard-action:focus-visible { outline: 2px solid #347aa6; outline-offset: 2px; }
 .lum-flow { flex: 1; min-height: 0; position: relative; opacity: 1; transition: opacity 140ms ease; }
 .lum-flow--leaving { opacity: 0; pointer-events: none; }
 .lum-flow--entering { opacity: .55; pointer-events: none; }
@@ -145,25 +136,6 @@
 .lum-subject-filter > button + button { border-left: 1px solid #d6dee5; }
 .lum-subject-filter > button[aria-pressed="true"] { background: #e8f1f8; color: #24577f; font-weight: 600; }
 .lum-subject-filter > button:disabled { opacity: 1; cursor: default; }
-.lum-inspector { width: 295px; flex-shrink: 0; overflow: auto; border-left: 1px solid var(--lum-line); background: #fafbfc; padding: 17px 20px 25px; }
-.lum-inspector-top { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: #8d99a4; }
-.lum-inspector-top > button { display: grid; place-items: center; padding: 5px; margin-right: -5px; background: none; border: 0; color: #8a98a4; }
-.lum-inspector h2 { font-size: 17px; font-weight: 550; line-height: 1.4; margin: 17px 0 12px; }
-.lum-inspector > p { font-size: 12px; color: #778692; line-height: 1.7; margin: 0; }
-.lum-selected-progress { display: flex; flex-direction: column; gap: 5px; margin-top: 17px; font-size: 11px; }
-.lum-selected-progress strong { font-weight: 550; color: #526c80; }
-.lum-selected-progress > span { color: #94a0aa; font-size: 10px; }
-.lum-selection-actions { display: flex; flex-direction: column; gap: 7px; margin-top: 15px; }
-.lum-selection-actions:empty { display: none; }
-.lum-enter { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-top: 20px; min-height: 36px; padding: 8px 11px; border: 1px solid #c6d7e5; border-radius: 4px; background: #f2f7fb; color: #477898 !important; font-size: 12px !important; }
-.lum-relations { margin-top: 25px; padding-top: 2px; border-top: 1px solid #e2e7eb; }
-.lum-relations h3 { display: flex; justify-content: space-between; font-size: 10px; font-weight: 550; color: #7e8c98; margin: 21px 0 9px; }
-.lum-relations h3 > span { color: #a1adb6; font-weight: 400; }
-.lum-relations > button { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 11px; line-height: 1.5; padding: 7px 0; border: 0; border-bottom: 1px solid #edf0f3; background: none; text-align: left; color: #526f85; }
-.lum-relations > button > svg { flex-shrink: 0; color: #9cabb7; }
-.lum-relations > button:hover { color: #226b9f; }
-.lum-relations > small { color: #a1abb4; font-size: 10px; }
-.lum-outside > span { display: block; font-size: 11px; color: #8a99a5; padding: 4px 0; }
 .lum-map-controls { flex-shrink: 0; display: flex; align-items: center; gap: 1px; padding: 3px; background: #fffffff5; border: 1px solid #dce2e7; border-radius: 5px; }
 .lum-map-controls > button { display: grid; place-items: center; height: 29px; width: 29px; border: 0; border-radius: 3px; background: none; color: #83929e; }
 .lum-map-controls > button:hover { background: #f0f4f7; color: #347aa6; }
@@ -180,7 +152,6 @@
 .lum-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 @media (max-width: 900px) {
   .lum-demo-badge { display: none; }
-  .lum-inspector { width: 260px; padding: 15px; }
   .lum-map-summary { flex-wrap: wrap; gap: 0 12px; align-content: center; }
 }
 @media (max-width: 760px) {
@@ -205,11 +176,6 @@
   .lum-map-summary h1 { font-size: 12px; }
   .lum-map-summary > span { font-size: 9px; }
   .lum-workspace { flex-direction: column; }
-  .lum-inspector { width: 100%; max-height: 35%; border-left: 0; border-top: 1px solid var(--lum-line); padding: 10px 17px 17px; }
-  .lum-inspector h2 { font-size: 14px; margin: 5px 0 7px; }
-  .lum-inspector > p { font-size: 11px; }
-  .lum-enter { margin-top: 10px; }
-  .lum-relations { margin-top: 15px; }
   .lum-map-bottom-bar { gap: 5px 8px; padding: 3px 8px 4px; }
   .lum-map-footer { gap: 1px 6px; }
   .lum-map-hint { font-size: 8px; }
