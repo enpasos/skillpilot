@@ -203,19 +203,20 @@ const scenarios: {
   futureTopic?: boolean
   switchDuringSave?: boolean
   backgroundOverlap?: boolean
+  deckDuringSearch?: boolean
 }[] = [
   ...['de-he-gk-g8', 'de-he-sekii-gk'].flatMap(viewFile => [
     ...[390, 761, 1024, 1440].map(width => ({ width, height: width === 1024 ? 650 : 900, viewFile })),
   ]),
   { width: 1440, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
-  { width: 390, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
+  { width: 390, futureTopic: false, switchDuringSave: false, backgroundOverlap: false, deckDuringSearch: true },
   { width: 1440, futureTopic: true, switchDuringSave: false, backgroundOverlap: false },
   { width: 1440, futureTopic: false, switchDuringSave: true, backgroundOverlap: false },
   { width: 1440, futureTopic: false, switchDuringSave: true, backgroundOverlap: true },
 ]
 try {
   for (const scenario of scenarios) {
-    const { width, futureTopic, switchDuringSave, backgroundOverlap, viewFile } = scenario
+    const { width, futureTopic, switchDuringSave, backgroundOverlap, viewFile, deckDuringSearch } = scenario
     const dataView = viewFile ? JSON.parse(await readFile(new URL(
       `../../curricula/DE/Gymnasium/composition-views/physik/${viewFile}.view.json`, import.meta.url), 'utf8')) : view
     const profile = nativeMapProfile(true)
@@ -271,7 +272,7 @@ try {
       const json = (body: unknown, status = 200) => route.fulfill({ status, contentType: 'application/json', body: JSON.stringify(body) })
       if (url.origin !== origin) return route.abort()
       if (path.includes('de_gymnasium_physics_flashcards_mechanics_ephase.')) {
-        if (checkLayout || viewFile) await delayedDeck
+        if (checkLayout || viewFile || deckDuringSearch) await delayedDeck
         return viewFile ? route.fulfill({ contentType: 'application/json', path: fileURLToPath(new URL(
           '../../curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json', import.meta.url)) }) : json(deck)
       }
@@ -369,6 +370,26 @@ try {
       const throwNode = dialog.locator(`[data-entry-id="${horizontalThrow.id}"]`)
       const openExercise = throwNode.getByRole('button', { name: 'Üben: Wo muss die Bodenmarke liegen?', exact: true })
       await openExercise.waitFor()
+      if (deckDuringSearch) {
+        const waitForSearchedExercise = () => page.waitForFunction(({ goalId, scopeId }) => {
+          const board = document.querySelector(`[data-testid="learner-learning-map-dialog"] .lum-canvas[data-scope-id="${scopeId}"]`)
+          const button = board?.querySelector(`[data-entry-id="${goalId}"] [data-testid="learning-map-practice-action"]`)
+          const surface = button?.closest('.lum-flow')?.getBoundingClientRect()
+          const rect = button?.getBoundingClientRect()
+          return board?.getAttribute('aria-busy') === 'false' && button && rect && surface
+            && rect.width >= 44 && rect.height >= 44 && rect.left >= surface.left && rect.right <= surface.right
+            && rect.top >= surface.top && rect.bottom <= surface.bottom
+            && button.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2))
+        }, { goalId: horizontalThrow.id, scopeId: dataTopic })
+        await waitForSearchedExercise()
+        assert.equal(await dialog.locator(`[data-entry-id="${memoryId}"]`).count(), 0, 'the search precedes the deck response')
+        assert.equal(await dialog.getByTestId('learning-map-practice-action').count(), 1, 'only the own exercise is present before hydration')
+        assert.equal(await dialog.locator(`[data-entry-id="${roadSafety.id}"]`).count(), 0)
+        const hydration = await monitorBoard(dialog)
+        releaseDeck()
+        await page.waitForFunction(value => value.activity.layouts === 1, hydration)
+        await waitForSearchedExercise()
+      }
       assert.equal(await dialog.getByTestId('learning-map-practice-action').count(), 1,
         'the partial board shows only its own exercise, even when the landscape also contains another anchor')
       assert.equal(await dialog.locator(`[data-entry-id="${roadSafety.id}"]`).count(), 0)
