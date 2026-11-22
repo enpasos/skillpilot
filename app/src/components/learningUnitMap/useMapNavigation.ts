@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react'
-import { useReactFlow, useStoreApi, type OnMove, type Viewport } from '@xyflow/react'
+import { getViewportForBounds, useReactFlow, useStoreApi, type OnMove, type Viewport } from '@xyflow/react'
 import type { LearningMapFixture } from './types'
 import { mapEntryPath, validMapScopePath } from './mapEntryPath'
 
@@ -52,22 +52,25 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
       innerFrame = requestAnimationFrame(async () => {
         const saved = cameras.current.get(viewKey)
         if (saved) await flow.setViewport(saved, { duration: 0 })
-        else if (window.matchMedia('(max-width: 760px)').matches || (!overview && flow.getNodes().length > 16)) {
-          // A readable point of entry on small screens; the overview fit remains
-          // an explicit action, while ordinary panning discovers the surroundings.
+        else {
           const nodes = flow.getNodes()
-          const first = nodes.find(node => fixture.entries[node.id]?.children?.length) ?? nodes[0]
+          const { width, height } = store.getState()
+          const introductionId = fixture.entries[scopeId]?.orientationGoalId
+          const introduction = introductionId ? flow.getNode(introductionId) : undefined
+          const overviewWouldCrop = introduction && width > 0 && height > 0
+            && getViewportForBounds(flow.getNodesBounds(nodes), width, height, 0, 1.1, 0.2).zoom < 0.35
+          const anchor = window.matchMedia('(max-width: 760px)').matches || (!overview && nodes.length > 16) || overviewWouldCrop
+          const first = anchor && (introduction ?? nodes.find(node => fixture.entries[node.id]?.children?.length) ?? nodes[0])
           if (first) {
             const centerX = first.position.x + (first.width ?? 220) / 2
             const centerY = first.position.y + (first.height ?? 72) / 2
-            const { width, height } = store.getState()
-            if (nodes.length > 16 && width > 760) {
+            if (introduction || (nodes.length > 16 && width > 760)) {
               await flow.setViewport(direction === 'RIGHT'
                 ? { x: 36 - first.position.x, y: height / 2 - centerY, zoom: 1 }
                 : { x: width / 2 - centerX, y: 36 - first.position.y, zoom: 1 }, { duration: 0 })
             } else await flow.setCenter(centerX, centerY, { zoom: 1, duration: 0 })
-          }
-        } else await flow.fitView({ padding: 0.2, minZoom: 0.35, maxZoom: 1.1, duration: 0 })
+          } else await flow.fitView({ padding: 0.2, minZoom: 0.35, maxZoom: 1.1, duration: 0 })
+        }
         if (version !== epoch.current) return
         cameras.current.set(viewKey, flow.getViewport())
         if (!initialZooms.current.has(viewKey)) initialZooms.current.set(viewKey, flow.getZoom())
@@ -94,7 +97,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
       cancelAnimationFrame(innerFrame)
       clearTimeout(timer.current)
     }
-  }, [cameraTarget, flow, store, direction, active, focusSurfaceRef])
+  }, [cameraTarget, flow, store, direction, scopeId, active, focusSurfaceRef])
 
   const navigate = useCallback((nextPath: string[], towardId?: string, explicit = true) => {
     if (busy.current || nextPath[nextPath.length - 1] === scopeId) return

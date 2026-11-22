@@ -89,11 +89,14 @@ export async function computeLearningScopeLayout(
       'elk.layered.crossingMinimization.strategy': 'LAYER_SWEEP',
       'elk.layered.nodePlacement.strategy': 'NETWORK_SIMPLEX',
       'elk.layered.mergeEdges': 'false',
-      'elk.separateConnectedComponents': 'true',
+      // A unit entry needs one leading layer across the board, including its
+      // disconnected resources and assessments that can be attempted directly.
+      'elk.separateConnectedComponents': scope.orientationGoalId ? 'false' : 'true',
     },
     children: ids.map(id => ({
       id, width: nodeWidth, height: nodeHeight,
-      layoutOptions: { 'elk.portConstraints': 'FIXED_SIDE', 'elk.nodeSize.constraints': '[]' },
+      layoutOptions: { 'elk.portConstraints': 'FIXED_SIDE', 'elk.nodeSize.constraints': '[]',
+        ...(id === scope.orientationGoalId && { 'elk.layered.layering.layerConstraint': 'FIRST_SEPARATE' }) },
       ports: edges.flatMap(edge => {
         const portId = edge.source === id ? edge.sourceHandle : edge.target === id ? edge.targetHandle : null
         if (!portId) return []

@@ -20,6 +20,7 @@ export type MapNodeData = {
   muted: boolean
   progress?: LearningEntryProgress
   activeLearningGoal?: boolean
+  unitEntry?: boolean
   language?: 'de' | 'en'
   goalAction?: LearningMapGoalAction
   practiceAction?: LearningMapPracticeAction
@@ -76,10 +77,11 @@ export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningF
   const { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, marker, statusLabel, meta,
     preparationLabel, preparationTitle } = entryPresentation(entry, childCount, progress, activeLearningGoal, data.language)
   const source = entry.sourceSections?.map(section => section.title).join(' › ')
-  const detail = goalAction?.context ?? [meta, source].filter(Boolean).join(' · ')
+  const role = data.unitEntry ? (english ? 'Introduction' : 'Einstieg') : meta
+  const detail = goalAction?.context ?? [role, source].filter(Boolean).join(' · ')
   return <article className={`lum-node lum-node--${entry.kind}${practiceAction ? ' lum-node--has-practice' : ''}${active ? ' is-focused' : ''}${related ? ' is-related' : ''}${muted ? ' is-muted' : ''}`}
     data-entry-id={entry.id} data-entry-kind={entry.kind} data-active-goal={activeLearningGoal || undefined}
-    data-preparation={entry.preparation || undefined}>
+    data-preparation={entry.preparation || undefined} data-unit-entry={data.unitEntry || undefined}>
     {ports.map(port => <Handle key={port.id} id={port.id}
       type={port.side === 'WEST' || port.side === 'NORTH' ? 'target' : 'source'}
       position={sides[port.side]} isConnectable={false} style={{ left: port.x, top: port.y }} />)}
@@ -90,7 +92,7 @@ export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningF
           event.preventDefault(); event.stopPropagation()
           if (goalAction) goalAction.open(); else onSelect(entry.id)
         }
-      }} aria-pressed={goalAction ? undefined : active} aria-description={[goalAction?.context ?? source, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
+      }} aria-pressed={goalAction ? undefined : active} aria-description={[data.unitEntry && role, goalAction?.context ?? source, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
       <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} data-testid={marker} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={16} strokeWidth={!expandable && (explicit || implicit) ? 3 : 2} /></span>
       <span className="lum-node-copy"><strong>{goalAction?.title ?? entry.title}</strong>

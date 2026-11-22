@@ -343,11 +343,11 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           ? new Set(fixture.scopeContext[nav.scopeId]?.[id]?.map(context => context.requiredGoalId)).size
           : entry.requires.filter(ref => !visible.has(ref)).length,
         ports: activeLayout.ports[id], active: selectedId === id,
-        progress: learnerProgress?.[id], activeLearningGoal: activeGoalId === id, language,
+        progress: learnerProgress?.[id], activeLearningGoal: activeGoalId === id, unitEntry: id === scope.orientationGoalId, language,
         related: selectedId !== id && related.has(id), muted: !!selectedId && !related.has(id) && !goalAction && !assessmentPeer,
         goalAction, practiceAction: getPracticeAction?.(nav.scopeId, id),
         onSelect: select, onOpen: open } }
-  }) : [], [activeLayout, fixture, nav.scopeId, visible, visibleIds, selectedId, inspected, related, select, open,
+  }) : [], [activeLayout, fixture, nav.scopeId, scope.orientationGoalId, visible, visibleIds, selectedId, inspected, related, select, open,
     learnerProgress, activeGoalId, language, getGoalAction, getPracticeAction])
 
   const edges = useMemo<Edge[]>(() => activeLayout?.edges.map(edge => {
@@ -359,19 +359,21 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     // Unit maps only: a declared order is solid, demand against it (Rückgriff) is red and dotted.
     const backward = !!relation?.backward
     const declared = relation?.unitOrder === 'declared'
+    const unitEntry = relation?.kind === 'unitEntry'
     const color = backward ? highlighted ? '#b42318' : '#d4553a' : highlighted ? '#2870b0' : declared ? '#6f8193' : '#9aa4ae'
     const summary = relation?.kind === 'summary' && !declared && !backward
     const sourceTitle = fixture.entries[relationSource].title
     const targetTitle = fixture.entries[relationTarget].title
     const marker = { type: MarkerType.ArrowClosed, width: 11, height: 11, color }
     return { ...edge, type: 'routed', data: { points: edge.points },
+      className: unitEntry ? 'lum-edge--unit-entry' : undefined,
       ...(edge.reversed ? { markerStart: marker } : { markerEnd: marker }),
       style: { stroke: color, strokeWidth: highlighted ? 1.8 : backward || declared ? 1.5 : 1.1,
         strokeDasharray: backward ? '2 4' : summary ? '5 4' : undefined,
         // Declared year/phase order remains orientation context for every selection.
         opacity: selectedId && !highlighted && !declared ? 0.13 : 1 },
       zIndex: highlighted ? 2 : backward ? 1 : 0,
-      ariaLabel: backward ? language === 'en'
+      ariaLabel: unitEntry ? `${language === 'en' ? 'Guided learning' : 'Geführter Lernweg'}: ${sourceTitle} → ${targetTitle}` : backward ? language === 'en'
         ? `Backward dependency: ${targetTitle} needs goals from ${sourceTitle}, which comes later`
         : `Rückgriff: ${targetTitle} braucht Ziele aus ${sourceTitle}, das erst danach kommt`
         : declared ? language === 'en' ? `${targetTitle} comes after ${sourceTitle} (declared order)`
@@ -536,7 +538,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
               {!inspectedContext.length && <p>{label('Keine weiteren Voraussetzungen in den verfügbaren Quelldaten.', 'No further prerequisites in the available source data.')}</p>}
             </> : <>
               {selectedRelations.slice(0, contextLimit).map(relation => <div key={`${relation.source}:${relation.target}`}>
-                <h2>{contextTitle(relation.source)} → {contextTitle(relation.target)}{relation.backward ? label(' · Rückgriff', ' · Backward dependency')
+                <h2>{contextTitle(relation.source)} → {contextTitle(relation.target)}{relation.kind === 'unitEntry' ? label(' · Geführter Lernweg', ' · Guided learning')
+                  : relation.backward ? label(' · Rückgriff', ' · Backward dependency')
                   : relation.unitOrder === 'declared' ? label(' · Erklärte Reihenfolge', ' · Declared order')
                     : relation.unitOrder === 'derived' ? label(' · Noch nicht erklärte Abhängigkeit', ' · Dependency not declared yet')
                       : relation.kind === 'summary' ? label(' · Zusammenfassung', ' · Summary') : ''}</h2>

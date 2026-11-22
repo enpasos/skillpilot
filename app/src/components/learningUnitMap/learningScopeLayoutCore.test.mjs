@@ -4,6 +4,7 @@ import Elk from 'elkjs/lib/elk.bundled.js'
 import { learningMapFixture } from '../../../prototypes/learning-map.fixture'
 import { complexLearningMapFixture } from '../../../prototypes/learning-map.complex.fixture'
 import { computeLearningScopeLayout } from './learningScopeLayoutCore.ts'
+import { getLearningScopeRelations } from './scopeRelations.ts'
 import { NODE_HEIGHT, NODE_WIDTH } from './layoutTypes.ts'
 import { elkRoutePath } from './edgePath.ts'
 
@@ -94,4 +95,31 @@ test('rounded paths follow the supplied ELK route instead of re-routing between 
   const points = [{ x: 220, y: 30 }, { x: 250, y: 30 }, { x: 250, y: 120 }, { x: 300, y: 120 }]
   assert.equal(elkRoutePath(points), 'M 220 30 L 246 30 Q 250 30 250 34 L 250 116 Q 250 120 254 120 L 300 120')
   assert.equal(elkRoutePath([]), '')
+})
+
+test('the authored introduction leads its own board in both reading directions', async () => {
+  const goal = (id, kind = 'goal', requires = []) => ({ id, title: id, kind, requires })
+  const fixture = { entries: {
+    unit: { ...goal('unit', 'unit'), children: ['cards', 'exam', 'first', 'later', 'intro', 'child'], orientationGoalId: 'intro' },
+    cards: goal('cards', 'memory'), exam: goal('exam', 'assessment'), intro: goal('intro'),
+    first: goal('first'), later: goal('later', 'goal', ['first']),
+    child: { ...goal('child', 'unit'), children: ['child-first', 'child-intro'], orientationGoalId: 'child-intro' },
+    'child-intro': goal('child-intro'), 'child-first': goal('child-first'),
+  } }
+  const original = structuredClone(fixture)
+  const elk = new Elk()
+  for (const [scopeId, entryId, starts] of [['unit', 'intro', ['child', 'first']], ['child', 'child-intro', ['child-first']]]) {
+    const relations = getLearningScopeRelations(fixture, scopeId)
+    assert.deepEqual(relations.filter(edge => edge.kind === 'unitEntry').map(edge => [edge.source, edge.target]).sort(),
+      starts.map(target => [entryId, target]))
+    for (const direction of ['RIGHT', 'DOWN']) {
+      const { positions } = await computeLearningScopeLayout(elk, fixture, scopeId, direction)
+      const leading = positions[entryId]
+      for (const id of fixture.entries[scopeId].children.filter(id => id !== entryId)) {
+        assert.ok(direction === 'RIGHT' ? leading.x + NODE_WIDTH <= positions[id].x : leading.y + NODE_HEIGHT <= positions[id].y,
+          `${scopeId}: ${entryId} must precede ${id} when reading ${direction}`)
+      }
+    }
+  }
+  assert.deepEqual(fixture, original)
 })
