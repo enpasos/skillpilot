@@ -202,6 +202,16 @@ async function checkUnitEntryOrder(page, dialog, orientationId, firstGoalId, cou
       'A guided entry arrow leads from this unit’s own introduction to regular learning: ' + label)
   }
 }
+async function checkInitialEntryViewport(page, scopeId, orientationId) {
+  await page.waitForFunction(({ scopeId, orientationId }) => {
+    const board = document.querySelector('.lum-canvas[aria-busy="false"]')
+    if (board?.dataset.scopeId !== scopeId) return false
+    const pane = board.querySelector('.lum-flow--idle .react-flow')?.getBoundingClientRect()
+    const entry = board.querySelector(`[data-entry-id="${orientationId}"]`)?.getBoundingClientRect()
+    return pane && entry && entry.width > 0 && entry.left >= pane.left && entry.right <= pane.right
+      && entry.top >= pane.top && entry.bottom <= pane.bottom
+  }, { scopeId, orientationId }, { timeout: 10000 })
+}
 async function enterMapScope(page, dialog, scopeId, title) {
   const board = dialog.getByTestId('learning-map-board')
   await board.waitFor()
@@ -802,7 +812,7 @@ async function checkUnitAndChildCards(duration) {
   const { viewer, oriented, E1: section } = profiles[duration]
   const before = await evidence(viewer)
   const orientedBefore = await evidence(oriented)
-  const page = await browser.newPage({ reducedMotion: 'reduce', serviceWorkers: 'block' })
+  const page = await browser.newPage({ viewport: { width: 390, height: 900 }, reducedMotion: 'reduce', serviceWorkers: 'block' })
   page.setDefaultTimeout(90000)
   try {
     const entry = site + '/nativ/' + duration + '/'
@@ -813,6 +823,19 @@ async function checkUnitAndChildCards(duration) {
     await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
     const dialog = page.getByTestId('learner-learning-map-dialog')
     await enterMapScope(page, dialog, section, 'E.1 Bewegungen und ihre Beschreibung')
+    await checkMapSurface(page, dialog, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
+    await checkInitialEntryViewport(page, section, unit.orientationGoalId)
+    if (duration === 'G9') {
+      await dialog.getByRole('button', { name: 'Lernrichtung drehen', exact: true }).click()
+      await checkInitialEntryViewport(page, section, unit.orientationGoalId)
+    }
+    // The child fits on the overview. Its own entry must be visible as soon
+    // as the learner drills in, before changing the child's camera.
+    const childSection = section.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall')
+    await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+    await enterMapScope(page, dialog, childSection, 'Beschleunigte Bewegung und freier Fall')
+    await checkInitialEntryViewport(page, childSection, childMaterial.unit.orientationGoalId)
+    await dialog.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
     await checkMapSurface(page, dialog, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
     await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
     // The explicit resource node opens its content in the Cockpit; the map itself only shows the graph.
