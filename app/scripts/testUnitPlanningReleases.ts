@@ -95,3 +95,105 @@ function offered(assessmentId: string) {
 }
 assert.deepEqual(offered(assessment.id), [])
 assert.equal(offered(external.id)[0]?.code, 'LU-R1-OFFERED')
+
+// A new orientation claim is a separate reviewed edition. It never changes
+// what the existing ordinary assessments certify.
+type PlanningCredit = Parameters<typeof validatePlanningRelease>[1]
+type PlanningUnit = Parameters<typeof validatePlanningRelease>[0]
+type PlanningEvidence = Parameters<typeof validatePlanningRelease>[2]
+const opening = { ...atom, id: 'pressure-opening', semanticKind: 'orientation',
+  title: 'Discover pressure', description: 'Explore why pressure is useful without a subject test' }
+const recall = { ...atom, id: 'pressure-recall', semanticKind: 'memorization', nodeKind: 'memory' }
+const secondRecall = { ...recall, id: 'pressure-recall-two' }
+const orientedLandscape: SkillLandscape = structuredClone(landscape)
+orientedLandscape.goals.push(opening, recall, secondRecall)
+orientedLandscape.goalPlacements!.push(...[opening, recall, secondRecall].map(goal => ({
+  unitId: owner.id, goalId: goal.id, relation: 'own',
+})))
+const introduction = {
+  de: { question: 'Warum sinkt ein Schuh im Schnee ein?', promise: 'Du lernst Kräfte auf Flächen zu beziehen.',
+    scene: 'Zwei Schuhe stehen im Schnee.', imageUrl: '/assets/pressure.png', imageAlt: 'Zwei Schuhe im Schnee', topics: ['Kraft und Fläche'] },
+  en: { question: 'Why does a shoe sink into snow?', promise: 'You will relate forces to areas.',
+    scene: 'Two shoes stand on snow.', imageUrl: '/assets/pressure.png', imageAlt: 'Two shoes on snow', topics: ['Force and area'] },
+}
+const orientedCredit: PlanningCredit = { ...structuredClone(decision), goalIds: [opening.id],
+  orientation: { requiredRecallGoalIds: [recall.id, secondRecall.id] }, release: { ...structuredClone(decision.release),
+    revision: 'orientation-edition-one', goalDefinitions: { [opening.id]: {
+      definition: planningGoalDefinition(opening), profileFingerprint: digest(introduction),
+    } }, fingerprint: '' } }
+const orientedUnit: PlanningUnit = { ...structuredClone(material), orientationGoalId: opening.id }
+orientedUnit.assessmentContract!.planningCredits = [orientedCredit]
+const orientedMaterial = { schemaVersion: 2, unit: orientedUnit, intro: introduction }
+function orientationEvidence(current = orientedLandscape, documents: PlanningEvidence['materials'] = [orientedMaterial],
+  credit = orientedCredit): PlanningEvidence {
+  credit.release.fingerprint = planningReleaseFingerprint(orientedUnit, credit)
+  return { ...evidence, landscape: current, graph: graphFor(current), materials: documents,
+    approved: { [credit.release.fingerprint]: review.sha256 }, currentProfile: () => {
+      throw new Error('An orientation must bind its introduction, never a subject-performance profile')
+    } }
+}
+validatePlanningRelease(orientedUnit, orientedCredit, orientationEvidence())
+assert.notEqual(planningReleaseFingerprint(orientedUnit, orientedCredit), decision.release.fingerprint)
+const reorderedRecall = structuredClone(orientedCredit)
+reorderedRecall.orientation!.requiredRecallGoalIds.reverse()
+assert.notEqual(planningReleaseFingerprint(orientedUnit, reorderedRecall), orientedCredit.release.fingerprint,
+  'The explicit recall ordering is part of the new release bytes')
+
+function rejectOrientation(change: (unit: PlanningUnit, credit: PlanningCredit, current: SkillLandscape,
+  documents: NonNullable<PlanningEvidence['materials']>) => void, expected: RegExp) {
+  const unit = structuredClone(orientedUnit)
+  const credit = structuredClone(orientedCredit)
+  const current = structuredClone(orientedLandscape)
+  const documents = [{ ...structuredClone(orientedMaterial), unit }]
+  change(unit, credit, current, documents)
+  credit.release.fingerprint = planningReleaseFingerprint(unit, credit)
+  assert.throws(() => validatePlanningRelease(unit, credit, { ...orientationEvidence(current, documents, credit),
+    approved: { [credit.release.fingerprint]: review.sha256 } }), expected)
+}
+rejectOrientation((_unit, credit) => { delete (credit.orientation as Partial<NonNullable<PlanningCredit['orientation']>>).requiredRecallGoalIds }, /explicit recall/)
+rejectOrientation((_unit, credit) => { credit.orientation!.requiredRecallGoalIds = [] }, /all own recall/)
+rejectOrientation((_unit, credit) => { credit.orientation!.requiredRecallGoalIds.push(recall.id) }, /duplicate IDs/)
+rejectOrientation((_unit, credit) => { credit.orientation!.requiredRecallGoalIds.push('foreign-card') }, /all own recall/)
+rejectOrientation((unit) => { unit.orientationGoalId = 'another-opening' }, /exactly one own material/)
+rejectOrientation((_unit, _credit, current) => { current.goals.find(goal => goal.id === opening.id)!.semanticKind = 'ordinary' }, /own orientation atom/)
+rejectOrientation((unit) => { unit.assessmentContract!.contentGoalIds.push(opening.id) }, /outside the ordinary content/)
+rejectOrientation((_unit, _credit, current) => {
+  current.goalPlacements!.find(row => row.goalId === opening.id)!.unitId = 'foreign-owner'
+}, /Wrong orientation owner/)
+rejectOrientation((_unit, _credit, current) => {
+  current.goalPlacements!.push({ unitId: 'foreign-owner', goalId: recall.id, relation: 'own' })
+}, /Ambiguous own/)
+rejectOrientation((_unit, _credit, current) => {
+  const extra = { ...structuredClone(assessment), id: 'own-assessment-two' }
+  current.goals.push(extra)
+  current.goalPlacements!.push({ unitId: owner.id, goalId: extra.id, relation: 'own' })
+}, /all own assessments/)
+rejectOrientation((_unit, _credit, _current, documents) => { documents.push(structuredClone(documents[0])) }, /exactly one own material/)
+rejectOrientation((_unit, _credit, _current, documents) => { documents[0].schemaVersion = 1 }, /version 2/)
+rejectOrientation((_unit, _credit, _current, documents) => { delete documents[0].intro!.en }, /exactly German and English/)
+rejectOrientation((_unit, _credit, _current, documents) => {
+  delete (documents[0].intro!.en as Record<string, unknown>).promise
+}, /complete version 2/)
+rejectOrientation((_unit, _credit, _current, documents) => {
+  (documents[0].intro!.en as Record<string, unknown>).topics = []
+}, /topics/)
+rejectOrientation((_unit, _credit, _current, documents) => {
+  (documents[0].intro!.de as Record<string, unknown>).imageUrl = 'https://example.org/image.png'
+}, /local asset/)
+for (const language of ['de', 'en']) {
+  for (const field of ['question', 'promise', 'scene', 'imageUrl', 'imageAlt', 'topics']) {
+    rejectOrientation((_unit, _credit, _current, documents) => {
+      const text = documents[0].intro![language] as Record<string, unknown>
+      text[field] = field === 'topics' ? ['Changed topic'] : field === 'imageUrl' ? '/assets/changed.png' : 'Changed content'
+    }, /bilingual introduction differs/)
+  }
+}
+const noCardsLandscape = structuredClone(orientedLandscape)
+noCardsLandscape.goals = noCardsLandscape.goals.filter(goal => ![recall.id, secondRecall.id].includes(goal.id))
+noCardsLandscape.goalPlacements = noCardsLandscape.goalPlacements!.filter(row => ![recall.id, secondRecall.id].includes(row.goalId))
+const noCardsCredit = structuredClone(orientedCredit)
+noCardsCredit.orientation!.requiredRecallGoalIds = []
+validatePlanningRelease(orientedUnit, noCardsCredit, orientationEvidence(noCardsLandscape, [orientedMaterial], noCardsCredit))
+assert.equal(planningReleaseFingerprint(material, decision), decision.release.fingerprint,
+  'An optional orientation credit never rebinds existing ordinary evidence')
+console.log('Orientation release tests passed for explicit complete recall sets, exact own openings, bilingual introductions, ownership and immutable ordinary releases.')
