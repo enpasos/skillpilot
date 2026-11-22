@@ -151,7 +151,7 @@ class ExamLearningScopeIntegrationTest {
 
         var next = coachTools.setMastery(id(), new MasteryUpdateRequest(Map.of(DIAGRAMS, 1.0), DIAGRAMS));
         assertThat(next.status()).isEqualTo(CoachToolFacade.MasteryStatus.UPDATED);
-        assertThat(storedMastery()).containsExactlyEntriesOf(Map.of(UNIT_INTRO, 1.0, DIAGRAMS, 1.0));
+        assertThat(storedMastery()).containsExactlyInAnyOrderEntriesOf(Map.of(UNIT_INTRO, 1.0, DIAGRAMS, 1.0));
         assertThat(storedFocus()).containsExactlyInAnyOrderElementsOf(EXAM_ROOTS);
         assertThat(learners.getCoachLearnerState(id()).frontier()).extracting(FrontierGoal::id)
                 .contains(UNIFORM).doesNotContain(ACCELERATION);
