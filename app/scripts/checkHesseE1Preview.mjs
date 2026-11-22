@@ -164,9 +164,41 @@ async function checkMapSurface(page, dialog, { scopeId, title, language = 'de' }
   assert.equal(await dialog.locator('.lum-scope-actions').count(), 0, 'The graph is not preceded by a scope-content panel')
   assert.equal(await dialog.getByRole('dialog').count(), 0, 'An exercise dialog is never embedded in the map')
   const graph = await board.locator('.lum-flow').boundingBox()
+  const header = await dialog.locator('header.learner-learning-map-header').boundingBox()
+  const mapControls = await board.locator('.lum-map-bottom-bar').boundingBox()
   const viewport = page.viewportSize()
-  assert(graph && graph.width >= viewport.width * 0.85 && graph.height >= viewport.height * 0.65,
-    'The map gives its graph the available window area: ' + JSON.stringify({ graph, viewport }))
+  assert(graph && header && mapControls && Math.abs(graph.y - (header.y + header.height)) <= 2
+    && Math.abs(graph.y + graph.height - mapControls.y) <= 2
+    && Math.abs(mapControls.y + mapControls.height - viewport.height) <= 2
+    && Math.abs(graph.x) <= 2 && Math.abs(graph.width - viewport.width) <= 2,
+    'The graph fills the space between the header and its controls: ' + JSON.stringify({ header, graph, mapControls, viewport }))
+}
+async function enterMapScope(page, dialog, scopeId, title) {
+  const board = dialog.getByTestId('learning-map-board')
+  await board.waitFor()
+  const atRequestedScope = () => page.waitForFunction(expected => {
+    const current = document.querySelector('[data-testid="learner-learning-map-dialog"] [data-testid="learning-map-board"]')
+    return current?.getAttribute('data-scope-id') === expected && current.getAttribute('aria-busy') === 'false'
+      && current.querySelector('.lum-flow--idle')
+  }, scopeId, { timeout: 10000 })
+  if (await board.getAttribute('data-scope-id') !== scopeId) {
+    try {
+      await dialog.getByRole('button', { name: `In ${title} hineinzoomen`, exact: true }).click({ timeout: 5000 })
+    } catch (error) {
+      // A routed arrival can enter this same scope while the old parent board
+      // is still disappearing. Its obsolete drill must not be clicked again.
+      try { await atRequestedScope() }
+      catch {
+        throw new Error('The requested map scope could not be entered: ' + JSON.stringify({
+          route: new URL(page.url()).pathname, requested: scopeId,
+          actual: await board.getAttribute('data-scope-id'),
+          breadcrumb: await dialog.getByRole('navigation', { name: 'Aktuelle Kartenebene', exact: true }).innerText(),
+        }), { cause: error })
+      }
+    }
+  }
+  await atRequestedScope()
+  return board
 }
 async function evidence(id) {
   const mastery = await readApi(id, '/mastery')
@@ -663,7 +695,7 @@ async function checkTreeAndMapParents(duration) {
     const open = page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
     await open.click()
     const dialog = page.getByTestId('learner-learning-map-dialog')
-    await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
+    await enterMapScope(page, dialog, section, 'E.1 Bewegungen und ihre Beschreibung')
     const board = dialog.getByTestId('learning-map-board')
     const mapEntries = []
     const resources = new Map([[unit.flashcardGoalId, 'Aus dem Stapel „Einführungsphase“']])
@@ -747,7 +779,7 @@ async function checkUnitAndChildCards(duration) {
     assert.equal(decodeURIComponent(new URL(page.url()).pathname), '/learner/' + section)
     await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
     const dialog = page.getByTestId('learner-learning-map-dialog')
-    await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
+    await enterMapScope(page, dialog, section, 'E.1 Bewegungen und ihre Beschreibung')
     await checkMapSurface(page, dialog, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
     await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
     // The explicit resource node opens its content in the Cockpit; the map itself only shows the graph.
@@ -760,7 +792,7 @@ async function checkUnitAndChildCards(duration) {
     await page.goto(site + '/vergleich/' + duration + '/einstiege')
     await card.getByTestId('unit-introduction').getByText('Einstieg abgeschlossen.', { exact: true }).waitFor()
     await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
-    await dialog.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
+    await enterMapScope(page, dialog, section, 'E.1 Bewegungen und ihre Beschreibung')
     await checkMapSurface(page, dialog, { scopeId: section, title: 'E.1 Bewegungen und ihre Beschreibung' })
     await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
     await dialog.locator('[data-entry-id="' + unit.flashcardGoalId + '"] .lum-node-main').click()
@@ -815,7 +847,7 @@ async function checkEvidenceMap(page, duration) {
   for (const check of await directChecks.all()) assert(await check.isVisible())
   await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
   const map = page.getByTestId('learner-learning-map-dialog')
-  await map.getByRole('button', { name: 'In E.1 Bewegungen und ihre Beschreibung hineinzoomen', exact: true }).click()
+  await enterMapScope(page, map, profiles[duration].E1, 'E.1 Bewegungen und ihre Beschreibung')
   await map.locator('.lum-flow--idle').waitFor()
   await map.getByRole('button', { name: 'Diese Ebene einpassen' }).click()
   const entry = id => map.locator('[data-entry-id="' + id + '"]')
@@ -1074,8 +1106,9 @@ async function checkPlanSelection(duration, withExistingPlan) {
       assert.equal(paused.status, 200)
       await page.reload()
       await openPlanManagement(page)
-      await control.getByRole('button', { name: 'Einheitenauftrag wieder aktivieren' }).click()
-      await control.getByTestId('unit-assignment-status').waitFor()
+      const stored = page.getByTestId('stored-unit-assignments').locator(`[data-block-id="${selected.id}"]`)
+      await stored.getByRole('button', { name: 'Einheitenauftrag wieder aktivieren', exact: true }).click()
+      await stored.getByRole('button', { name: 'Einheitenauftrag pausieren', exact: true }).waitFor()
       const resumed = await readApi(id, path)
       assert.equal(resumed.blocks.length, after.blocks.length)
       assert.deepEqual(resumed.blocks.find(block => block.id === selected.id)?.unitAssignment, selected.unitAssignment)

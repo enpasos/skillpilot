@@ -31,6 +31,8 @@ type MapProps = {
   activeGoalId?: string | null
   initialScopeId?: string
   command?: LearningMapCommand | null
+  /** Camera context only; it never adds nodes, changes results or renders assessment content. */
+  assessmentContext?: { scopeGoalId: string; goalIds: readonly string[] }
   onEntrySelect?: (entryId: string) => void
   onSelectionChange?: (entryId: string | null) => void
   materialScopes?: ReadonlySet<string>
@@ -73,7 +75,7 @@ function useNarrowScreen() {
 
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
-  learnerProgress, activeGoalId, initialScopeId, command, onEntrySelect,
+  learnerProgress, activeGoalId, initialScopeId, command, assessmentContext, onEntrySelect,
   onSelectionChange, materialScopes, getGoalAction, getPracticeAction, onReturnToTree, onEscape, language = 'de',
   toolbar, locationBarContainer }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
@@ -85,6 +87,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const [layout, setLayout] = useState<{ fixture: LearningMapFixture; key: string; data: LearningScopeLayout } | null>(null)
   const canvasWidth = useStore(state => state.width)
   const canvasHeight = useStore(state => state.height)
+  const assessmentScope = assessmentContext?.scopeGoalId
+  const assessmentGoalIds = assessmentContext?.goalIds
   const assessmentCamera = useMemo(() => {
     const id = command?.entryId
     if (!id || !layout || layout.fixture !== fixture || !layout.data.positions[id]
@@ -92,6 +96,14 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     const peers = Object.entries(layout.data.positions).filter(([key]) => layout.fixture.entries[key].kind === 'assessment')
     if (peers.length < 2) return null
     const groups = [peers]
+    // Optional assessments can extend this board far beyond the selected unit's
+    // required parts. Keep those existing parts together before falling back to
+    // a single assessment; no graph entry is hidden or rearranged.
+    if (assessmentScope && layout.key === `${assessmentScope}:${direction}` && assessmentGoalIds?.includes(id)) {
+      const requiredIds = new Set(assessmentGoalIds)
+      const requiredPeers = peers.filter(([key]) => requiredIds.has(key))
+      if (requiredPeers.length >= 2 && requiredPeers.length < peers.length) groups.push(requiredPeers)
+    }
     for (const group of groups) {
       const xs = group.map(([, point]) => point.x)
       const ys = group.map(([, point]) => point.y)
@@ -103,7 +115,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     }
     const point = layout.data.positions[id]
     return { x: canvasWidth / 2 - point.x - NODE_WIDTH / 2, y: canvasHeight / 2 - point.y - NODE_HEIGHT / 2, zoom: 1 }
-  }, [command?.entryId, fixture, layout, canvasWidth, canvasHeight])
+  }, [command?.entryId, fixture, layout, canvasWidth, canvasHeight, assessmentScope, assessmentGoalIds, direction])
   const previousAssessmentCamera = useRef<Viewport | null>(null)
   const [layoutError, setLayoutError] = useState<string | null>(null)
   const [layoutAttempt, setLayoutAttempt] = useState(0)

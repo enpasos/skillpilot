@@ -164,6 +164,8 @@ export interface LearnerGoalNavigationMapProps {
   activeGoalId: string | null
   getMastery: (goalId: string) => number
   completionWaivers: ReadonlyMap<string, CompletionTreeWaiver>
+  /** Existing required parts of the current section, used only to frame a readable assessment camera. */
+  assessmentContext?: { scopeGoalId: string; goalIds: readonly string[] }
   revealRequest?: { entryId: string; nonce: number }
   onSelectGoal: (goalId: string) => void
   getFlashcardSource?: (goal: UiGoal) => string | undefined
@@ -4495,6 +4497,10 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             activeGoalId: effectiveActiveGoalId ?? null,
             getMastery: getEffectiveMastery,
             completionWaivers: completionTreeWaivers,
+            assessmentContext: levelCompletion?.calculationStatus === 'valid' && levelCompletion.unitAssessment ? {
+              scopeGoalId: levelCompletion.unitAssessment.sectionGoalId,
+              goalIds: levelCompletion.unitAssessment.parts.map(part => part.goalId),
+            } : undefined,
             revealRequest: navigationRevealRequest ? {
               ...navigationRevealRequest,
               entryId: targetByAlias.get(navigationRevealRequest.entryId) ?? navigationRevealRequest.entryId,

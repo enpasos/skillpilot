@@ -177,7 +177,7 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
     data-selected-goal-id={props.selectedGoalId} data-map-active={props.active}>
     <LearningUnitMap fixture={fixture} embedded active={props.active} headingMode="context"
       rootLabel={english ? 'My learning goals' : 'Meine Lernziele'} language={props.language} learnerProgress={progress} activeGoalId={props.activeGoalId}
-      command={command}
+      command={command} assessmentContext={props.assessmentContext}
       toolbar={toolbar} locationBarContainer={props.locationBarContainer}
       getPracticeAction={getPracticeAction} getGoalAction={getGoalAction} materialScopes={materialScopes}
       onEntrySelect={(goalId) => {
