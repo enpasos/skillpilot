@@ -11,6 +11,8 @@ const course = process.env.SKILLPILOT_E1_PHYSICS_COURSE === 'LK' ? 'LK' : 'GK'
 
 const scope = JSON.parse(readFileSync(resolve(appRoot,
   '../docs/concept/skill-graph/examples/hessen-physik-e1/umfang.json'), 'utf8'))
+const child = JSON.parse(readFileSync(resolve(appRoot,
+  '../curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json'), 'utf8')).unit
 const profileFile = resolve(runtime, 'profiles.json')
 
 type GradedScenario = {
@@ -88,9 +90,9 @@ const entry: Plugin = {
   configureServer(server) {
     server.middlewares.use((request, response, next) => {
       const url = new URL(request.url ?? '/', 'http://127.0.0.1')
-      const match = /^\/(nativ|testlauf)\/(G8|G9)\/(E1|[ABCD])\/?$/.exec(url.pathname)
+      const match = /^\/(nativ|testlauf)\/(G8|G9)\/(E1(?:\/freier-fall)?|[ABCD])\/?$/.exec(url.pathname)
       const math = url.pathname === '/vergleich/mathematik'
-      const graded = /^\/vergleich\/(G8|G9)(?:\/(CD|ABCD))?\/?$/.exec(url.pathname)
+      const graded = /^\/vergleich\/(G8|G9)(?:\/(CD|ABCD|einstiege|elterneinstieg))?\/?$/.exec(url.pathname)
       const units = /^\/auftraege\/(G8|G9)(?:\/(offen|CD|ABCD|gemischt))?\/?$/.exec(url.pathname)
       if ((!match && !math && !graded && !units) || request.method !== 'GET') return next()
       if ((graded && !graded[2]) || (units && !units[2])) {
@@ -106,9 +108,14 @@ const entry: Plugin = {
       const profiles = JSON.parse(readFileSync(profileFile, 'utf8'))
       if (math && !profiles.mathematik) return next()
       if (units && !profiles[duration!]?.[unitEntries[units[2]]]) return next()
-      const id = units ? profiles[duration!][unitEntries[units[2]]] : math ? profiles.mathematik.viewer : profiles[duration!][graded?.[2] ?? (entryType === 'nativ' ? 'viewer' : part)]
+      const scenario = graded?.[2] === 'einstiege' ? 'oriented' : graded?.[2] === 'elterneinstieg' ? 'parentOriented' : graded?.[2]
+      const id = units ? profiles[duration!][unitEntries[units[2]]] : math ? profiles.mathematik.viewer : profiles[duration!][scenario ?? (entryType === 'nativ' ? 'viewer' : part)]
       const goals = [...scope.ownAssessmentGoalIds, ...scope.childAssessmentGoalIds]
-      const goal = math ? profiles.mathematik.goal : part === 'E1' ? profiles[duration!].E1 : goals['ABCD'.indexOf(part!)]
+      let goal = math ? profiles.mathematik.goal : part === 'E1' ? profiles[duration!].E1 : goals['ABCD'.indexOf(part!)]
+      if (part === 'E1/freier-fall') {
+        const parent: string = profiles[duration!].E1
+        goal = parent.slice(0, parent.lastIndexOf(':') + 1) + child.compositionNodeId
+      }
       const keys = {
         skillpilot_id: id,
         skillpilot_role: 'learner',

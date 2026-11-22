@@ -34,6 +34,8 @@ type MapProps = {
   assessedUnit?: { scopeGoalId: string; parts: readonly { goalId: string }[] }
   showInspector?: boolean
   onEntrySelect?: (entryId: string) => void
+  /** An explicit drill, breadcrumb or semantic zoom, separate from a routed arrival. */
+  onScopeEnter?: (scopeId: string) => void
   onSelectionChange?: (entryId: string | null) => void
   renderSelectionActions?: (entryId: string) => ReactNode
   renderScopeActions?: (scopeId: string) => ReactNode
@@ -78,7 +80,7 @@ function useNarrowScreen() {
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
   learnerProgress, activeGoalId, initialScopeId, command, assessedUnit, showInspector = true, onEntrySelect,
-  onSelectionChange, renderSelectionActions, renderScopeActions, materialScopes, getGoalAction, getPracticeAction, onReturnToTree, onEscape, language = 'de',
+  onSelectionChange, onScopeEnter, renderSelectionActions, renderScopeActions, materialScopes, getGoalAction, getPracticeAction, onReturnToTree, onEscape, language = 'de',
   toolbar, locationBarContainer }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
   const MapContainer = embedded ? 'section' : 'main'
@@ -121,7 +123,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const mapContainer = useRef<HTMLElement>(null)
   const mapSurface = useRef<HTMLDivElement>(null)
   const nav = useMapNavigation(fixture, reducedMotion, layout?.fixture === fixture ? layout.key : null,
-    direction, initialScopeId, active, mapContainer, mapSurface, materialScopes)
+    direction, initialScopeId, active, mapContainer, mapSurface, materialScopes, onScopeEnter)
   const { enter, goUp, goToDepth, goToScope } = nav
   const [selection, setSelection] = useState<{ scope: string; id: string } | null>(null)
   const [query, setQuery] = useState('')

@@ -17,7 +17,12 @@ export interface CompletionAction {
   goalId?: string
   title: CompletionTitle
   intent?: CompletionNavigationIntent
-  practice?: { startGoalId: string; openPrerequisites: { goalId: string; title: CompletionTitle }[] }
+  practice?: {
+    startGoalId: string
+    /** Explicit unit entry, separate from the real subject prerequisites. */
+    orientationGoalId?: string
+    openPrerequisites: { goalId: string; title: CompletionTitle }[]
+  }
 }
 
 export interface CompletionAssessment {
@@ -266,12 +271,14 @@ export const parseLevelCompletion = (value: unknown): LevelCompletion | null => 
           return { goalId: text(prerequisite.goalId), title: title(prerequisite.title) }
         })
         const startGoalId = text(practice.startGoalId)
+        const orientationGoalId = optionalText(practice.orientationGoalId)
         const prerequisiteIds = new Set(openPrerequisites.map(item => item.goalId))
         if (result.intent !== 'voluntary' || !result.goalId || !['focusPractice', 'learnGoal'].includes(result.action)
           || prerequisiteIds.size !== openPrerequisites.length || prerequisiteIds.has(result.goalId)
-          || result.action === 'learnGoal' && startGoalId !== result.goalId
-          || startGoalId !== result.goalId && !prerequisiteIds.has(startGoalId)) throw invalid()
-        result.practice = { startGoalId, openPrerequisites }
+          || orientationGoalId !== undefined && (orientationGoalId !== startGoalId || orientationGoalId === result.goalId)
+          || result.action === 'learnGoal' && startGoalId !== result.goalId && !orientationGoalId
+          || startGoalId !== result.goalId && !prerequisiteIds.has(startGoalId) && !orientationGoalId) throw invalid()
+        result.practice = { startGoalId, openPrerequisites, ...(orientationGoalId ? { orientationGoalId } : {}) }
       }
       if (result.action === 'focusPractice' && !result.practice) throw invalid()
       return result

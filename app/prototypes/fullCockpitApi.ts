@@ -306,6 +306,7 @@ export function createFullCockpitApi(data: FullCockpitData = fullCockpitData): F
     if (!suffix && method === 'GET') return json(snapshot.profile)
     if (suffix === '/resume' && method === 'POST' || suffix === '/retention' && method === 'GET') return json(retain())
     if (suffix === '/state' && method === 'GET') return json(state())
+    if (suffix === '/unit-introduction' && method === 'GET') return json({ orientationGoalId: null })
     if (suffix === '/planned' && method === 'GET') return json({ goals: snapshot.plannedGoalIds })
     if (suffix === '/planned' && method === 'PUT') {
       const ids = stringIds(body.goals)

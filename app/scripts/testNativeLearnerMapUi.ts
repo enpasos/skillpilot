@@ -158,6 +158,7 @@ async function open(width = 1440, failLayoutWorker = false, reducedMotion: 'redu
     if (suffix === '/resume' && ['GET', 'POST'].includes(request.method())) return json({ lastActivityAt: '2026-11-05T08:00:00Z', scheduledDeletionAt: '2027-05-05T08:00:00Z' })
     if (suffix === '/mastery' && request.method() === 'GET') return json({ mastery })
     if (suffix === '/state' && request.method() === 'GET') return json(state())
+    if (suffix === '/unit-introduction' && request.method() === 'GET') return json({ orientationGoalId: null })
     if (suffix === '/learning-plans' && request.method() === 'GET') return json({ asOf: '2026-11-05', followLearningPlans: false, plans: [],
       status: { asOf: '2026-11-05', periodBasis: 'DAY', periodStart: '2026-11-05', periodEnd: '2026-11-05', timeZone: 'Europe/Berlin', language: 'de',
         evaluable: false, statusText: '', noticeText: null, activeGoal: null, followLearningPlans: false, resumeAvailable: false, subjects: [], unavailablePlanCount: 0 } })

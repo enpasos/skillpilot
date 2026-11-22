@@ -180,7 +180,7 @@ def serve(args, work, stack, physics_course='GK'):
     for duration in ('G8', 'G9'):
         viewer, section = create_learner(api, duration, expected_parts, physics_course)
         profiles[duration] = {'viewer': viewer, 'E1': section,
-                              **{part: create_learner(api, duration, expected_parts, physics_course)[0] for part in ('A', 'B', 'CD', 'ABCD', 'unitOpen', 'unitCD', 'unitABCD', 'mixed')}}
+                              **{part: create_learner(api, duration, expected_parts, physics_course)[0] for part in ('A', 'B', 'CD', 'ABCD', 'unitOpen', 'unitCD', 'unitABCD', 'mixed', 'oriented', 'parentOriented')}}
     spring.stdin.write(json.dumps(profiles).encode())
     spring.stdin.close()
     for _ in range(1200):

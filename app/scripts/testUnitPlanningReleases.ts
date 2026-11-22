@@ -101,14 +101,14 @@ assert.equal(offered(external.id)[0]?.code, 'LU-R1-OFFERED')
 type PlanningCredit = Parameters<typeof validatePlanningRelease>[1]
 type PlanningUnit = Parameters<typeof validatePlanningRelease>[0]
 type PlanningEvidence = Parameters<typeof validatePlanningRelease>[2]
-const opening = { ...atom, id: 'pressure-opening', semanticKind: 'orientation',
+const opening = { ...atom, id: 'pressure-opening', semanticKind: 'orientation' as const,
   title: 'Discover pressure', description: 'Explore why pressure is useful without a subject test' }
-const recall = { ...atom, id: 'pressure-recall', semanticKind: 'memorization', nodeKind: 'memory' }
+const recall = { ...atom, id: 'pressure-recall', semanticKind: 'memory' as const, nodeKind: 'memory' as const }
 const secondRecall = { ...recall, id: 'pressure-recall-two' }
 const orientedLandscape: SkillLandscape = structuredClone(landscape)
 orientedLandscape.goals.push(opening, recall, secondRecall)
 orientedLandscape.goalPlacements!.push(...[opening, recall, secondRecall].map(goal => ({
-  unitId: owner.id, goalId: goal.id, relation: 'own',
+  unitId: owner.id, goalId: goal.id, relation: 'own' as const,
 })))
 const introduction = {
   de: { question: 'Warum sinkt ein Schuh im Schnee ein?', promise: 'Du lernst Kräfte auf Flächen zu beziehen.',
@@ -155,7 +155,7 @@ rejectOrientation((_unit, credit) => { credit.orientation!.requiredRecallGoalIds
 rejectOrientation((_unit, credit) => { credit.orientation!.requiredRecallGoalIds.push(recall.id) }, /duplicate IDs/)
 rejectOrientation((_unit, credit) => { credit.orientation!.requiredRecallGoalIds.push('foreign-card') }, /all own recall/)
 rejectOrientation((unit) => { unit.orientationGoalId = 'another-opening' }, /exactly one own material/)
-rejectOrientation((_unit, _credit, current) => { current.goals.find(goal => goal.id === opening.id)!.semanticKind = 'ordinary' }, /own orientation atom/)
+rejectOrientation((_unit, _credit, current) => { current.goals.find(goal => goal.id === opening.id)!.semanticKind = 'curricularAtomic' }, /own orientation atom/)
 rejectOrientation((unit) => { unit.assessmentContract!.contentGoalIds.push(opening.id) }, /outside the ordinary content/)
 rejectOrientation((_unit, _credit, current) => {
   current.goalPlacements!.find(row => row.goalId === opening.id)!.unitId = 'foreign-owner'

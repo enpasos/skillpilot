@@ -10,7 +10,7 @@ type Gesture = { direction: number; at: number }
 export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boolean,
   layoutScopeKey?: string | null, direction = 'RIGHT', initialScopeId?: string, active = true,
   focusBoundaryRef?: RefObject<HTMLElement | null>, focusSurfaceRef?: RefObject<HTMLElement | null>,
-  overviewScopes?: ReadonlySet<string>) {
+  overviewScopes?: ReadonlySet<string>, onScopeEnter?: (scopeId: string) => void) {
   const flow = useReactFlow()
   const store = useStoreApi()
   const [requestedPath, setPath] = useState(() => {
@@ -96,8 +96,9 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
     }
   }, [cameraTarget, flow, store, direction, active, focusSurfaceRef])
 
-  const navigate = useCallback((nextPath: string[], towardId?: string) => {
+  const navigate = useCallback((nextPath: string[], towardId?: string, explicit = true) => {
     if (busy.current || nextPath[nextPath.length - 1] === scopeId) return
+    if (explicit) onScopeEnter?.(nextPath[nextPath.length - 1])
     restoreMapFocus.current = !!focusBoundaryRef?.current?.contains(document.activeElement)
     cameras.current.set(viewKey, flow.getViewport())
     busy.current = true
@@ -115,7 +116,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
       setPhase('entering')
       setPath(nextPath)
     }, reducedMotion ? 0 : 170)
-  }, [flow, reducedMotion, scopeId, viewKey, focusBoundaryRef])
+  }, [flow, reducedMotion, scopeId, viewKey, focusBoundaryRef, onScopeEnter])
 
   const enter = useCallback((id: string) => {
     const entry = fixture.entries[id]
@@ -132,7 +133,7 @@ export function useMapNavigation(fixture: LearningMapFixture, reducedMotion: boo
 
   const goToScope = useCallback((id: string) => {
     const targetPath = mapEntryPath(fixture, id)
-    if (targetPath && fixture.entries[id]?.children?.length) navigate(targetPath)
+    if (targetPath && fixture.entries[id]?.children?.length) navigate(targetPath, undefined, false)
   }, [fixture, navigate])
 
   const recordGesture = useCallback((direction: number) => {

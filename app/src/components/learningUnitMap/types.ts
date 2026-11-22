@@ -9,6 +9,7 @@ export interface MapPracticeExercise {
 }
 
 export interface MapPracticeMaterial {
+  schemaVersion?: 1 | 2
   unit: {
     landscapeId: string
     compositionNodeId: string

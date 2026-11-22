@@ -124,6 +124,23 @@ for (const invalidStudy of [{ ...study, intent: 'required' }, { ...study, practi
   { ...study, practice: { startGoalId: 'basis', openPrerequisites: [foundation, foundation] } }]) {
   assert.throws(() => parseLevelCompletion({ ...personalCompletion, actions: [invalidStudy] }))
 }
+const guidedStudy = { ...study, practice: {
+  startGoalId: 'unit-introduction', orientationGoalId: 'unit-introduction', openPrerequisites: [foundation],
+} }
+for (const action of ['focusPractice', 'learnGoal']) {
+  const guided = { ...guidedStudy, action }
+  assert.deepEqual(parseLevelCompletion({ ...personalCompletion, actions: [guided] })?.actions, [guided],
+    'An explicitly identified unit introduction can precede voluntary study without becoming a subject prerequisite')
+}
+assert.deepEqual(guidedStudy.practice.openPrerequisites, [foundation])
+for (const practice of [
+  { ...guidedStudy.practice, orientationGoalId: undefined },
+  { ...guidedStudy.practice, orientationGoalId: 'other-introduction' },
+  { ...guidedStudy.practice, orientationGoalId: '' },
+  { ...guidedStudy.practice, orientationGoalId: false },
+  { ...guidedStudy.practice, startGoalId: 'A', orientationGoalId: 'A' },
+]) assert.throws(() => parseLevelCompletion({ ...personalCompletion, actions: [{ ...study, practice }] }),
+  'An unmarked or inconsistent new destination fails closed')
 assert.equal(completionWaiversForTree(parseLevelCompletion(personalCompletion), false).get('A')?.reason, 'assessment',
   'the personal overview retains the assessment reason outside its unit and without detailed waiver rows')
 for (const ids of [['A', 'A'], ['outside-scope']]) {
