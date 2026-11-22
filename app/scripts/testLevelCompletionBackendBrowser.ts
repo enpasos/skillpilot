@@ -309,7 +309,7 @@ try {
     assert.equal(await explanation.getByText('Geschaffte Prüfungen:', { exact: false }).count(), 0)
     await mobile.page.screenshot({ path: `${output}/mobile-assessment-passed.png`, fullPage: true })
     assert.equal(await reloadedCard.getByRole('button', { name: 'Für heute beenden', exact: true }).count(), 0)
-    const actionCountBeforeLeaving = requests.filter(request => request.method === 'POST').length
+    const requestCountBeforeLeaving = requests.length
     await mobile.page.goto('about:blank')
     await mobile.page.goBack()
     const returnedCard = mobile.page.getByTestId('level-completion-card')
@@ -319,8 +319,10 @@ try {
     assert.deepEqual(afterReturning.levelCompletion, beforeLeaving.levelCompletion,
       'leaving and returning preserves the selected route, assessment results and learner revision')
     assert.deepEqual(afterReturning.activeGoal, beforeLeaving.activeGoal)
-    assert.equal(requests.filter(request => request.method === 'POST').length, actionCountBeforeLeaving,
-      'ending the day by leaving the page needs no state write')
+    // Reopening the Cockpit can refresh the profile retention timestamp.
+    const writesToLearningState = requests.slice(requestCountBeforeLeaving).filter(request =>
+      request.method !== 'GET' && !(request.method === 'POST' && request.path === `/api/ui/learners/${learner}/resume`))
+    assert.deepEqual(writesToLearningState, [], 'leaving and returning must not write to the learning plan, goals or results')
   }
   assert.deepEqual(errors, [])
   assert.equal(requests.filter((r) => r.status >= 500).length, 0)
@@ -330,7 +332,7 @@ try {
       'cockpit-reload-preserves-assessment', 'keyboard-exit-cancel-preserves-assessment'],
     resultChecks: resultMode ? ['real-delayed-state-read', 'real-aborted-state-read', 'reload-recovers-authoritative-state',
       'actual-mcp-write-passes-assessment-with-section-still-open', 'accessible-confirmed-status', 'scoped-waiver-explanation',
-      'leave-and-return-retains-profile-and-results-without-write'] : [],
+      'leave-and-return-retains-profile-and-results'] : [],
     initialRevision: initial.levelCompletion.learnerRevision,
     selectedRevision: selected.levelCompletion.learnerRevision,
     runningRevision: running.levelCompletion.learnerRevision,

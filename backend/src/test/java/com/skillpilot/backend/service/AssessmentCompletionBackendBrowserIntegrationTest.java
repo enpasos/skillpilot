@@ -208,7 +208,7 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
         JsonNode report = mapper.readTree(Files.readString(evidence.resolve("evidence-result.json")));
         assertThat(report.path("resultChecks").size()).isEqualTo(7);
         assertThat(report.path("resultChecks").valueStream().map(JsonNode::asText).toList())
-                .contains("leave-and-return-retains-profile-and-results-without-write");
+                .contains("leave-and-return-retains-profile-and-results");
         assertThat(report.path("hostAcceptance").asBoolean()).isFalse();
         assertThat(mastery.findByLearner_SkillpilotId(id)).singleElement().satisfies(result -> {
             assertThat(result.getGoalKey()).isEqualTo(EXAM); assertThat(result.getValue()).isEqualTo(1.0);
