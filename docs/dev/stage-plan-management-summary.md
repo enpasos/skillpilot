@@ -21,7 +21,7 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 22. November 2026, 11:24 MEZ – Eigener Auftakt für E.1 und den freien Fall
+## 22. November 2026, 14:04 MEZ – Eigener Auftakt für E.1 und den freien Fall
 
 Die geführte Arbeit in einer Einheit beginnt mit ihrem eigenen atomaren Motivationsziel. Ein Bild, die Leitfrage, die Themen und das Lernversprechen gehören zum Einstieg. Die Person kann eine Vermutung äußern oder nach dem Rückblick den Abschluss wählen. Der direkte Prüfungsversuch bleibt verfügbar. Persönlicher Abschluss und fassungsgebundene Anrechnung werden getrennt ausgewertet. Die vier Prüfungen des Einheitenauftrags behalten ihre Aufgaben- und Rasterfassungen. [Entscheidung und Lernwege](../concept/skill-graph/learning-unit-motivation-concept-2026-11-17.md)
 
@@ -35,7 +35,7 @@ Die beiden englischen Originalprompts liegen unter den kanonischen Dateinamen de
 
 Wer eine Klausurvorbereitung mit zwölf selbst gewählten Zielen fortsetzt, erhält bei Bedarf den zum Ziel gehörenden Auftakt. Danach folgt das gewählte Ziel oder die noch benötigte fachliche Vorbereitung. Die zwölf ursprünglichen Ziele, ihre Termine und die Tagesquote bestimmen weiterhin den Auftrag. Ein separat fälliger Auftrag bleibt beim Pausieren des Einheitenauftrags erreichbar. Im kanonischen Physik-Curriculum ohne Hessen-Ansicht und in der bayerischen Ansicht bleibt die Diagrammarbeit mit den zugehörigen Vorkenntnissen erreichbar. Die 16 Klausurvorbereitungsfälle prüfen unter anderem die Auswahl bei überlappenden Terminen und die Rückkehr nach dem Eltern- und Kindauftakt. Der gebündelte lokale Backendtest auf dieser Fassung bestand alle 535 Fälle in 14 Testklassen. Der Vergleich der gespeicherten Einzelwerte prüft die genauen Zielkennungen und Werte unabhängig von der Reihenfolge, in der die Datenbank sie zurückgibt. Die beiden vollständigen Browserläufe für G8 und G9 im GK und LK bestanden erneut.
 
-**Integration offen.** Der Branch enthält die Umsetzung für Hessen Physik G8 und G9 und die automatisierten Prüfungen der Eintrittswege. Der technische Abschluss setzt die integrierte, erfolgreiche Main-CI voraus. Anschließend steht die persönliche E.1-Teilabnahme an. [PR #179](https://github.com/enpasos/skillpilot/pull/179)
+**Technischer Abschluss am 22. November 2026, 14:04 MEZ.** Die vollständigen Browserläufe bestanden für G8 und G9 jeweils im Grund- und Leistungskurs. Sie prüften den Einstieg in E.1 und den freien Fall, die Rückkehr zum gewählten Fachziel, den Lernplan, die Häkchen und den direkten Prüfungsversuch. Der Nachbarzielwechsel gelang auch bei 1024 Pixeln. Die PR-CI auf `ae1dca0021` bestand alle 14 Jobs. Nach der Integration bestanden alle 14 Jobs der frischen Main-CI auf `57ad76a099`. Die beiden dauerhaften Vorschauen stehen für die persönliche E.1-Teilabnahme bereit. Die Erprobung in einem gehosteten Claude-Chat und die persönliche Teilabnahme stehen aus. Anschließend folgen die weiteren Einheiten der E-Phase und Q1–Q4. [PR #179](https://github.com/enpasos/skillpilot/pull/179) · [PR-CI](https://github.com/enpasos/skillpilot/actions/runs/45012285134) · [Integrierter Commit](https://github.com/enpasos/skillpilot/commit/57ad76a09918dcaa1c5618903eca3982129cc20a) · [Main-CI](https://github.com/enpasos/skillpilot/actions/runs/45018113633)
 
 ## 22. November 2026, 03:24 MEZ – Übungsziel während des Nachladens der Lernkarte
 
