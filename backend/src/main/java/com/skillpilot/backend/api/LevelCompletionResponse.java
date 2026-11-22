@@ -112,7 +112,13 @@ public record LevelCompletionResponse(
         }
     }
     public record PracticePrerequisite(String goalId, Map<String, String> title) { }
-    public record PracticeStep(String startGoalId, List<PracticePrerequisite> openPrerequisites) { }
+    public record PracticeStep(String startGoalId, List<PracticePrerequisite> openPrerequisites,
+            @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
+            String orientationGoalId) {
+        public PracticeStep(String startGoalId, List<PracticePrerequisite> openPrerequisites) {
+            this(startGoalId, openPrerequisites, null);
+        }
+    }
     public record Action(String action, String goalId, Map<String, String> title, String intent, PracticeStep practice) {
         public Action(String action, String goalId, Map<String, String> title, String intent) {
             this(action, goalId, title, intent, null);

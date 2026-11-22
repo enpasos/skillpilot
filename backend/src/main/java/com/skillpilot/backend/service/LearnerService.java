@@ -1313,7 +1313,7 @@ public class LearnerService {
                     : Map.of("de", "Grundlagen für „" + title.get("de") + "“ erarbeiten: " + first.get("de"),
                             "en", "Study the prerequisites for “" + title.get("en") + "”: " + first.get("en"));
             actions.add(new LevelCompletionResponse.Action("focusPractice", id, label, "voluntary",
-                    new LevelCompletionResponse.PracticeStep(start, open)));
+                    new LevelCompletionResponse.PracticeStep(start, open, unitOpeningIds.contains(start) ? start : null)));
         }
     }
 
@@ -8096,22 +8096,29 @@ public class LearnerService {
                 projection.structuralGoals(), Map.of()).contains(nextOpening)) {
             plannedGoalRepository.save(new PlannedGoal(learner, nextOpening));
         }
-        List<FrontierGoal> frontier = getUncompactedRichFrontier(learner.getSkillpilotId());
+        // Follow only this selected target's real path. An unrelated sibling
+        // unit's opening must not displace one of its required foundations.
+        Map<String, Integer> distance = new LinkedHashMap<>();
+        ArrayDeque<String> pendingIds = new ArrayDeque<>(List.of(pending.targetGoalId()));
+        distance.put(pending.targetGoalId(), 0);
+        while (!pendingIds.isEmpty()) {
+            String current = pendingIds.removeFirst();
+            LearningGoal definition = projection.structuralGoals().get(current);
+            for (String reference : definition == null || definition.getRequires() == null ? List.<String>of() : definition.getRequires()) {
+                String prerequisite = resolveGoalRef(reference, projection.structuralGoals());
+                if (prerequisite != null && distance.putIfAbsent(prerequisite, distance.get(current) + 1) == null) pendingIds.add(prerequisite);
+            }
+        }
+        Set<String> currentScope = computeScope(resolveProjectedTargetScopeIds(
+                getStoredPlannedGoals(learner.getSkillpilotId()), projection), projection.structuralGoals(), Map.of());
+        List<String> selectedPath = distance.keySet().stream().filter(currentScope::contains)
+                .collect(Collectors.toCollection(ArrayList::new));
+        if (!selectedPath.contains(pending.targetGoalId())) selectedPath.add(pending.targetGoalId());
+        if (nextOpening != null) selectedPath.add(nextOpening);
+        List<FrontierGoal> frontier = getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), selectedPath);
         boolean available = frontier.stream().anyMatch(goal -> destination.equals(goal.id()) && "atomic".equals(goal.type()));
         if (!available) {
-            // Keep the selected goal's real foundation path. Completion of an
-            // opening never certifies an unmet curricular prerequisite.
-            Map<String, Integer> distance = new LinkedHashMap<>();
-            ArrayDeque<String> pendingIds = new ArrayDeque<>(List.of(pending.targetGoalId()));
-            distance.put(pending.targetGoalId(), 0);
-            while (!pendingIds.isEmpty()) {
-                String current = pendingIds.removeFirst();
-                LearningGoal definition = projection.structuralGoals().get(current);
-                for (String reference : definition == null || definition.getRequires() == null ? List.<String>of() : definition.getRequires()) {
-                    String prerequisite = resolveGoalRef(reference, projection.structuralGoals());
-                    if (prerequisite != null && distance.putIfAbsent(prerequisite, distance.get(current) + 1) == null) pendingIds.add(prerequisite);
-                }
-            }
+            // Receiving the opening never certifies a curricular prerequisite.
             String foundation = frontier.stream().filter(goal -> "atomic".equals(goal.type()) && !isExamGoal(
                     projection.visibleGoals().get(goal.id()))).map(FrontierGoal::id)
                     .filter(distance::containsKey).min(Comparator.comparingInt(distance::get)).orElse(null);
@@ -8191,12 +8198,15 @@ public class LearnerService {
                 .filter(id -> mastery.getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD && !credits.contains(id))
                 .filter(id -> explicitUnit ? explicitMarkers.contains(id) : explicitOpening ? requestedGoalId.equals(id)
                         : requestedScope.stream().anyMatch(unitScopes.get(id)::contains))
-                .filter(id -> explicitUnit || explicitOpening || focusedScope.isEmpty() || focusedScope.contains(id)
+                .filter(id -> explicitUnit || explicitOpening || !focusedScope.contains(requestedGoalId) || focusedScope.contains(id)
                         // An explicit atom focus has no sibling marker. Its owning opening remains available.
                         || atomFocus)
                 .toList();
-        return pending.stream().filter(id -> pending.stream().noneMatch(parent -> !parent.equals(id)
-                && unitScopes.get(parent).contains(id))).findFirst().orElse(null);
+        boolean directForeignFocusEntry = !explicitUnit && !explicitOpening && !focusedScope.contains(requestedGoalId);
+        return pending.stream().filter(id -> directForeignFocusEntry
+                ? pending.stream().noneMatch(child -> !child.equals(id) && unitScopes.get(id).contains(child))
+                : pending.stream().noneMatch(parent -> !parent.equals(id) && unitScopes.get(parent).contains(id)))
+                .findFirst().orElse(null);
     }
 
     private List<FrontierGoal> getRequiredOrientationGoals(
@@ -8253,7 +8263,13 @@ public class LearnerService {
                             projectedFocusIds,
                             structuralGoals,
                             scope);
-                    if (explicitGuidedEntry && !openUnitOrientations.isEmpty()) return false;
+                    String landscape = landscapeService.getLandscapeIdForGoal(orientationGoal.id());
+                    boolean hasUnitEntryOnThisPath = explicitGuidedEntry && unitScopes.entrySet().stream()
+                            .filter(entry -> Objects.equals(landscape, landscapeService.getLandscapeIdForGoal(entry.getKey())))
+                            .filter(entry -> scope.stream().anyMatch(entry.getValue()::contains))
+                            .anyMatch(entry -> openUnitOrientations.contains(entry.getKey()) || unitCredits.contains(entry.getKey())
+                                    || mastery.getOrDefault(entry.getKey(), 0.0) >= PLANNING_SCOPE_MASTERY_THRESHOLD);
+                    if (hasUnitEntryOnThisPath) return false;
                     // A deliberate unit opening is the learner's entry route;
                     // a broader landscape invitation remains voluntary here.
                     if (explicitGuidedEntry && unitScopes.keySet().stream().anyMatch(relevantScope::contains)) return false;
@@ -10821,6 +10837,14 @@ public class LearnerService {
             Set<String> focus = computeScope(resolveProjectedTargetScopeIds(
                     resolveEffectiveProjectedFocusIds(learner, entryProjection), entryProjection),
                     entryProjection.structuralGoals(), Map.of());
+            if (!focus.contains(requestedGoalId) && !isOrientationGoal(visibleGoals.get(requestedGoalId))) {
+                var binding = unitLearningMaterialService.orientationBindings(entryProjection.compositionViewIds()).stream()
+                        .filter(item -> requiredOpening.equals(item.orientationGoalId())).findFirst().orElseThrow();
+                plannedGoalRepository.save(new PlannedGoal(learner, binding.sectionGoalId()));
+                focus.addAll(computeScope(resolveProjectedTargetScopeIds(List.of(binding.sectionGoalId()), entryProjection),
+                        entryProjection.structuralGoals(), Map.of()));
+                unitFocusChanged = true;
+            }
             if (!focus.contains(requiredOpening)) plannedGoalRepository.save(new PlannedGoal(learner, requiredOpening));
             if (Boolean.TRUE.equals(learner.getStrictMode()) && !isOrientationGoal(visibleGoals.get(requestedGoalId))) {
                 Set<String> foundations = frontierPrerequisiteCompiler.normalizePrerequisites(

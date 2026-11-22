@@ -764,7 +764,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(examPasses.findForGoal(learnerId, c)).isEqualTo(historical);
         assertThat(learners.getUnitPlanningCredits(learnerId)).isEmpty();
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
-                .containsExactlyInAnyOrder(c, d, MOTION_OPENING, FALL_OPENING);
+                .containsExactlyInAnyOrder(c, d);
     }
 
     @ParameterizedTest
@@ -825,7 +825,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
             String closest = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
             assertThat(learners.getUncompactedRichFrontierForFocus(learnerId, preparationFocus))
                     .extracting(com.skillpilot.backend.api.FrontierGoal::id).containsExactlyInAnyOrder(closest,
-                            "5c44b9ba-9b05-4774-95d5-073230d3fc4f", "65365dce-f33f-49d8-9516-42f75883aa86");
+                            "65365dce-f33f-49d8-9516-42f75883aa86");
             assertThat(action.practice().startGoalId()).as("Shortest eligible prerequisite path (3 instead of 5)").isEqualTo(closest);
             assertThatThrownBy(() -> learners.setActiveGoal(learnerId, acceleration))
                     .isInstanceOf(org.springframework.web.server.ResponseStatusException.class);
@@ -845,7 +845,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(learners.getPlannedGoals(learnerId)).contains(acceleration);
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getStrictMode()).isEqualTo(strict);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
-                .containsExactlyInAnyOrder(c, d);
+                .containsExactlyInAnyOrder(c, d, MOTION_OPENING, FALL_OPENING);
         if (!strict) {
             successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("individual-outcome", version(), Map.of("goalId", acceleration)));
             assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
@@ -1098,6 +1098,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var outstanding = chosen.practice().openPrerequisites().stream().map(item -> item.goalId()).toList();
         assertThat(outstanding).isNotEmpty();
         assertThat(chosen.practice().startGoalId()).isEqualTo(MOTION_OPENING);
+        assertThat(chosen.practice().orientationGoalId()).isEqualTo(MOTION_OPENING);
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of(
                 "receiptCapability", map(context(), "completionContract").get("receiptCapability")));
         var confirmed = context();
