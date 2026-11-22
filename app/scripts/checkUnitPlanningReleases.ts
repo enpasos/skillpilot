@@ -15,6 +15,7 @@ import { fingerprintCurrentCurriculumDocument as digest, loadCurrentCurriculumCa
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import { assessmentReviewRevisions, UnitGraph, type UnitGraphLandscape } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
+import { validateUnitMaterialOrientations } from './lib/unitMaterialOrientationValidation'
 import { fingerprintPositiveGoalEvidenceProfile, type PositiveGoalEvidenceReviewRecord } from './positiveGoalEvidenceProfileModel'
 
 interface Part {
@@ -305,8 +306,9 @@ export function validateSectionAssessmentPolicy(
   }
 }
 
-function loadReleasedViews(units: MaterialUnit[]): Map<string, CompositionView> {
-  const selected = new Set(units.flatMap(unit => [
+function loadReleasedViews(materials: MaterialDocument[]): Map<string, CompositionView> {
+  const selected = new Set(materials.flatMap(({ schemaVersion, unit }) => [
+    ...(schemaVersion === 2 ? unit.viewIds : []),
     ...(unit.assessmentContract?.viewIds ?? []),
     ...(unit.assessmentContract?.planningCredits ?? []).flatMap(credit => credit.release.viewIds),
   ]))
@@ -328,8 +330,9 @@ export function checkUnitPlanningReleases(): string[] {
   assert.equal(inventory.schemaVersion, 1)
   const materials: MaterialDocument[] = inventory.materials.map((path: string) => readJson('curricula/' + path))
   const units = materials.map(material => material.unit)
-  const views = loadReleasedViews(units)
+  const views = loadReleasedViews(materials)
   const { entries } = loadCurrentCurriculumCatalog(liveVerificationInputs)
+  validateUnitMaterialOrientations(materials, entries.map(entry => entry.landscape), views)
   const graph = new UnitGraph(entries.map(({ landscape }) => landscape as UnitGraphLandscape))
   const projectionEntries = prepareLandscapeEntries(entries.map(({ landscape }) => landscape as SkillLandscape))
   const rollouts: Rollout[] = readJson('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').subjects
