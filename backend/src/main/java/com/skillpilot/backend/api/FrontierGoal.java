@@ -1,7 +1,9 @@
 package com.skillpilot.backend.api;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.skillpilot.backend.landscape.ExamData;
+import java.util.List;
 
 public record FrontierGoal(
                 String id,
@@ -18,12 +20,29 @@ public record FrontierGoal(
                 String sourceLicenseUrl,
                 ExamData examData,
                 @JsonIgnore boolean examReadyForSelection,
-                @JsonIgnore java.util.List<String> selectionGoalIds) {
+                @JsonIgnore java.util.List<String> selectionGoalIds,
+                @JsonInclude(JsonInclude.Include.NON_NULL) StudyGuidance studyGuidance) {
+
+        public record StudyGuidance(
+                        @JsonInclude(JsonInclude.Include.NON_EMPTY) List<String> recommendedPreparationGoalIds,
+                        @JsonInclude(JsonInclude.Include.NON_DEFAULT) boolean voluntary) {
+                public StudyGuidance {
+                        recommendedPreparationGoalIds = List.copyOf(recommendedPreparationGoalIds);
+                }
+        }
 
         public FrontierGoal {
                 selectionGoalIds = selectionGoalIds == null || selectionGoalIds.isEmpty()
                                 ? id == null || id.isBlank() ? java.util.List.of() : java.util.List.of(id)
                                 : java.util.List.copyOf(selectionGoalIds);
+        }
+
+        public FrontierGoal(String id, String title, String description, String type, String nodeKind,
+                        String semanticKind, String reason, List<String> tags, List<GoalSourceLink> resourceLinks,
+                        String sourceRef, String sourceLicense, String sourceLicenseUrl, ExamData examData,
+                        boolean examReadyForSelection, List<String> selectionGoalIds) {
+                this(id, title, description, type, nodeKind, semanticKind, reason, tags, resourceLinks, sourceRef,
+                                sourceLicense, sourceLicenseUrl, examData, examReadyForSelection, selectionGoalIds, null);
         }
 
         /**
@@ -154,6 +173,18 @@ public record FrontierGoal(
                                 sourceLicenseUrl,
                                 examData,
                                 examReadyForSelection,
-                                goalIds);
+                                goalIds,
+                                studyGuidance);
+        }
+
+        public FrontierGoal withStudyGuidance(StudyGuidance guidance) {
+                return new FrontierGoal(id, title, description, type, nodeKind, semanticKind, reason, tags, resourceLinks,
+                                sourceRef, sourceLicense, sourceLicenseUrl, examData, examReadyForSelection,
+                                selectionGoalIds, guidance);
+        }
+
+        @JsonIgnore
+        public boolean voluntaryStudy() {
+                return studyGuidance != null && studyGuidance.voluntary();
         }
 }

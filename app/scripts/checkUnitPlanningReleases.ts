@@ -52,6 +52,8 @@ interface MaterialDocument {
   intro?: Record<string, unknown>
   exercises?: { goalId: string }[]
   individualAssessmentOffers?: { targetGoalId: string; assessmentGoalId: string }[]
+  guidedStudyOrder?: string[]
+  studyRecommendations?: { beforeGoalId: string; afterGoalId: string }[]
 }
 
 const root = realpathSync(resolve(import.meta.dirname, '../..'))
@@ -104,7 +106,7 @@ function orientationIntroduction(unit: MaterialUnit, goalId: string, materials: 
   const material = matches[0]
   assert.equal(material.unit.compositionNodeId, unit.compositionNodeId, 'Orientation material belongs to another section')
   assert.equal(unit.orientationGoalId, goalId, 'Orientation credit must name the material opening')
-  assert(hasGuidedUnitIntroduction(material.schemaVersion), 'Orientation credit requires a version 2 or 3 introduction')
+  assert(hasGuidedUnitIntroduction(material.schemaVersion), 'Orientation credit requires a version 2, 3 or 4 introduction')
   const intro = material.intro
   assert(intro && typeof intro === 'object' && !Array.isArray(intro), 'Missing bilingual orientation introduction')
   assert.deepEqual(Object.keys(intro).sort(), ['de', 'en'], 'Orientation requires exactly German and English introductions')
@@ -267,7 +269,7 @@ export function validateIndividualAssessmentOffers(materials: MaterialDocument[]
   for (const material of materials) {
     if (!material.individualAssessmentOffers) continue
     const { unit, individualAssessmentOffers } = material
-    assert.equal(material.schemaVersion, 3, 'Individual assessment offers require material v3')
+    assert(material.schemaVersion === 3 || material.schemaVersion === 4, 'Individual assessment offers require material v3 or v4')
     for (const viewId of unit.viewIds) {
       const view = views.get(viewId)
       assert(view?.landscapeId === unit.landscapeId, 'Missing bound view for an individual assessment')
@@ -293,6 +295,70 @@ export function validateIndividualAssessmentOffers(materials: MaterialDocument[]
         const binding = JSON.stringify([unit.landscapeId, viewId, assessmentGoalId])
         assert(!bound.has(binding), 'Duplicate individual assessment offer in the bound view')
         bound.add(binding)
+      }
+    }
+  }
+}
+
+function addStudyPredecessor(predecessors: Map<string, string[]>, before: string, after: string): void {
+  const previous = predecessors.get(after) ?? []
+  previous.push(before)
+  predecessors.set(after, previous)
+}
+
+function reversesStudyOrder(graph: UnitGraph, additionalPredecessors: Map<string, string[]>, before: string, after: string): boolean {
+  const pending = [before]
+  const visited = new Set<string>()
+  while (pending.length) {
+    const current = pending.pop()!
+    if (current === after) return true
+    if (visited.has(current)) continue
+    visited.add(current)
+    pending.push(...graph.directAtomicRequires(current), ...(additionalPredecessors.get(current) ?? []))
+  }
+  return false
+}
+
+export function validateStudyRecommendations(materials: MaterialDocument[], graph: UnitGraph,
+  views: Map<string, CompositionView>, entries: LandscapeEntry[]): void {
+  const studyPredecessorsByView = new Map<string, Map<string, string[]>>()
+  function studyPredecessors(view: CompositionView): Map<string, string[]> {
+    const existing = studyPredecessorsByView.get(view.viewId)
+    if (existing) return existing
+    const predecessors = new Map<string, string[]>()
+    for (const { unit, guidedStudyOrder } of materials) {
+      if (!guidedStudyOrder?.length || unit.landscapeId !== view.landscapeId || !unit.viewIds.includes(view.viewId)) continue
+      const targets = offeredSectionTargetAtoms(view, unit.compositionNodeId, entries)
+      if (!unit.orientationGoalId || !targets.has(unit.orientationGoalId)) continue
+      const ordered = guidedStudyOrder.filter(id => targets.has(id)).map(id => graph.resolve(id, unit.landscapeId))
+      for (let index = 1; index < ordered.length; index++) {
+        addStudyPredecessor(predecessors, ordered[index - 1], ordered[index])
+      }
+    }
+    studyPredecessorsByView.set(view.viewId, predecessors)
+    return predecessors
+  }
+
+  for (const material of materials) {
+    if (material.studyRecommendations === undefined) continue
+    const { unit, studyRecommendations } = material
+    assert.equal(material.schemaVersion, 4, 'Study recommendations require material v4')
+    if (studyRecommendations.length === 0) continue
+    for (const viewId of unit.viewIds) {
+      const view = views.get(viewId)
+      assert(view?.landscapeId === unit.landscapeId, 'Missing bound view for study recommendations: ' + viewId)
+      const targets = offeredSectionTargetAtoms(view, unit.compositionNodeId, entries)
+      const predecessors = studyPredecessors(view)
+      for (const { beforeGoalId, afterGoalId } of studyRecommendations) {
+        for (const goalId of [beforeGoalId, afterGoalId]) {
+          assert(targets.has(goalId),
+            `Study recommendation must name an atomic target of ${unit.compositionNodeId} in ${viewId}: ${goalId}`)
+        }
+        const before = graph.resolve(beforeGoalId, unit.landscapeId)
+        const after = graph.resolve(afterGoalId, unit.landscapeId)
+        assert(!reversesStudyOrder(graph, predecessors, before, after),
+          `Study recommendation conflicts with prerequisite or study order in ${unit.compositionNodeId}/${viewId}: ${beforeGoalId} before ${afterGoalId}`)
+        addStudyPredecessor(predecessors, before, after)
       }
     }
   }
@@ -376,6 +442,7 @@ export function checkUnitPlanningReleases(): string[] {
   const graph = new UnitGraph(entries.map(({ landscape }) => landscape as UnitGraphLandscape))
   const projectionEntries = prepareLandscapeEntries(entries.map(({ landscape }) => landscape as SkillLandscape))
   validateIndividualAssessmentOffers(materials, graph, views, projectionEntries)
+  validateStudyRecommendations(materials, graph, views, projectionEntries)
   const rollouts: Rollout[] = readJson('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').subjects
   const active = new Set<string>()
   for (const unit of units) {

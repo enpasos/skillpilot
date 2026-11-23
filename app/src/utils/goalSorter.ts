@@ -1,13 +1,11 @@
 import { learnerGoalPresentationKind, type UiGoal } from '../goalTypes'
-import { unitStudyRelations, type SiblingRelation } from './unitStudyOrder'
+import { reachesSibling, unitStudyRelations, type SiblingRelation, type UnitStudyOrder } from './unitStudyOrder'
 
-export interface GoalSortOptions {
+export interface GoalSortOptions extends UnitStudyOrder {
   allGoalsById?: Map<string, UiGoal>
   minAbsoluteSupport?: number
   minRelativeSupport?: number
   locale?: string
-  orientationGoalId?: string
-  guidedStudyOrder?: readonly string[]
   siblingOrder?: readonly SiblingRelation[]
 }
 
@@ -245,27 +243,16 @@ export function sortGoalsTopologically(goals: UiGoal[], options: GoalSortOptions
     for (const prerequisite of goal.requires) addEdge(normalizeRefId(prerequisite), goal.id)
   }
 
-  if (options.orientationGoalId || options.guidedStudyOrder?.length || options.siblingOrder?.length) {
+  if (options.orientationGoalId || options.guidedStudyOrder?.length || options.studyRecommendations?.length || options.siblingOrder?.length) {
     const prerequisites = Array.from(adjacency).flatMap(([source, targets]) => [...targets].map(target => ({ source, target })))
-    const studyRelations = unitStudyRelations([...siblingIds], options.orientationGoalId, options.guidedStudyOrder, id => {
+    const studyRelations = unitStudyRelations([...siblingIds], options, id => {
       const kind = learnerGoalPresentationKind(goalById.get(id)!)
       return kind !== 'assessment' && kind !== 'memory'
-    }, prerequisites)
+    }, options.studyRecommendations?.length ? [...prerequisites, ...options.siblingOrder ?? []] : prerequisites)
     // A planning declaration can refine the display order only where it is
     // consistent with the actual prerequisites, including multi-step paths.
-    const reaches = (from: string, to: string) => {
-      const pending = [from], seen = new Set<string>()
-      while (pending.length) {
-        const id = pending.pop()!
-        if (id === to) return true
-        if (seen.has(id)) continue
-        seen.add(id)
-        for (const next of adjacency.get(id) ?? []) pending.push(next)
-      }
-      return false
-    }
     for (const { source, target } of [...options.siblingOrder ?? [], ...studyRelations]) {
-      if (!reaches(target, source)) addEdge(source, target)
+      if (!reachesSibling(adjacency, target, source)) addEdge(source, target)
     }
   }
 

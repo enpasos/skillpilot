@@ -10,6 +10,11 @@ from validate_schemas import validate_unit_learning_materials
 
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = ROOT / "contracts/unit-learning-material/v1/material.schema.json"
+HESSE_E1_MATERIAL = ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json"
+FREE_FALL_MATERIAL = ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json"
+HORIZONTAL_THROW = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+PART_B = "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"
+VOLUNTARY_PART_B = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
 
 
 class UnitLearningMaterialSchemaTests(unittest.TestCase):
@@ -83,24 +88,65 @@ class UnitLearningMaterialSchemaTests(unittest.TestCase):
         marked = {**task, "requiredForRegularLearning": True}
         self.assertTrue(self.validate_second({**material, "schemaVersion": 2, "exercises": [marked]}))
 
-    def test_only_v3_accepts_a_typed_individual_assessment_offer(self):
-        document = json.loads((ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json").read_text())
+    def test_only_v3_and_v4_accept_typed_individual_assessment_offers(self):
+        document = json.loads(FREE_FALL_MATERIAL.read_text())
         offer = document["individualAssessmentOffers"][0]
-        self.assertEqual([], self.validate_second(document))
+        for version in (3, 4):
+            self.assertEqual([], self.validate_second({**document, "schemaVersion": version}))
         for offers in ([], [offer, offer], [dict(targetGoalId="protocol")],
                        [dict(targetGoalId="protocol", assessmentGoalId=" ")], [dict(offer, required=True)]):
             with self.subTest(offers=offers):
                 self.assertTrue(self.validate_second({**document, "individualAssessmentOffers": offers}))
         self.assertTrue(self.validate_second({**self.material, "individualAssessmentOffers": [offer]}))
 
-    def test_v3_sequences_the_regular_content_steps_and_its_own_final_assessment(self):
-        document = json.loads((ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json").read_text())
+    def test_v3_and_v4_sequence_regular_content_steps_and_their_linked_assessment(self):
+        document = json.loads(FREE_FALL_MATERIAL.read_text())
         document["unit"]["assessmentGoalId"] = "assess"
-        self.assertEqual([], self.validate_second({**document, "guidedStudyOrder": ["measure", "model", "assess"]}))
-        for order in ([], ["assess"], ["measure", "measure", "assess"], ["measure", "other"],
-                      [document["unit"]["orientationGoalId"], "assess"]):
-            with self.subTest(order=order):
-                self.assertTrue(self.validate_second({**document, "guidedStudyOrder": order}))
+        for version in (3, 4):
+            document["schemaVersion"] = version
+            self.assertEqual([], self.validate_second({**document, "guidedStudyOrder": ["measure", "model", "assess"]}))
+            for order in ([], ["assess"], ["measure", "measure", "assess"], ["measure", "other"],
+                          [document["unit"]["orientationGoalId"], "assess"]):
+                with self.subTest(version=version, order=order):
+                    self.assertTrue(self.validate_second({**document, "guidedStudyOrder": order}))
+
+    def test_hesse_e1_v4_recommends_horizontal_throw_before_b_and_voluntary_b(self):
+        document = json.loads(HESSE_E1_MATERIAL.read_text())
+        self.assertEqual(4, document["schemaVersion"])
+        self.assertEqual([
+            {"beforeGoalId": HORIZONTAL_THROW, "afterGoalId": PART_B},
+            {"beforeGoalId": HORIZONTAL_THROW, "afterGoalId": VOLUNTARY_PART_B},
+        ], document["studyRecommendations"])
+        self.assertEqual([], self.validate_second(document))
+
+    def test_study_recommendations_are_optional_v4_pairs_of_goal_uuids(self):
+        document = json.loads(HESSE_E1_MATERIAL.read_text())
+        first, _ = document.pop("studyRecommendations")
+        self.assertEqual([], self.validate_second(document))
+        self.assertEqual([], self.validate_second({**document, "studyRecommendations": []}))
+        for version in (1, 2, 3):
+            errors = self.validate_second({**document, "schemaVersion": version, "studyRecommendations": [first]})
+            self.assertTrue(any("studyRecommendations" in error for error in errors))
+        for recommendations in (None, first, [first, first], [{"beforeGoalId": HORIZONTAL_THROW}],
+                                [{**first, "beforeGoalId": "unknown"}], [{**first, "afterGoalId": PART_B + "\n"}],
+                                [{**first, "requiresMastery": True}]):
+            with self.subTest(recommendations=recommendations):
+                errors = self.validate_second({**document, "studyRecommendations": recommendations})
+                self.assertTrue(any("$.studyRecommendations" in error for error in errors))
+
+    def test_study_recommendations_reject_self_links_and_indirect_cycles(self):
+        document = json.loads(HESSE_E1_MATERIAL.read_text())
+        first, second = document["studyRecommendations"]
+        for recommendations, expected in (
+            ([{**first, "afterGoalId": HORIZONTAL_THROW.upper()}], "before itself"),
+            ([first, {**first, "beforeGoalId": HORIZONTAL_THROW.upper()}], "duplicate goal pair"),
+            ([first, {"beforeGoalId": PART_B, "afterGoalId": HORIZONTAL_THROW}], "recommendation cycle"),
+            ([first, {**second, "beforeGoalId": PART_B},
+              {"beforeGoalId": VOLUNTARY_PART_B, "afterGoalId": HORIZONTAL_THROW}], "recommendation cycle"),
+        ):
+            with self.subTest(recommendations=recommendations):
+                errors = self.validate_second({**document, "studyRecommendations": recommendations})
+                self.assertTrue(any(expected in error for error in errors))
 
     def test_catalog_rejects_missing_or_outside_file(self):
         self.assertTrue(any("two.json" in e for e in validate_unit_learning_materials(self.root, SCHEMA)))
@@ -109,9 +155,8 @@ class UnitLearningMaterialSchemaTests(unittest.TestCase):
         self.catalog.write_text(json.dumps({"schemaVersion": 1, "materials": ["../outside.json"]}))
         self.assertTrue(any("outside curriculum" in e for e in validate_unit_learning_materials(self.root, SCHEMA)))
 
-    def test_only_v2_accepts_an_explicit_list_of_orientation_recall_obligations(self):
-        example = ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json"
-        document = json.loads(example.read_text())
+    def test_versioned_orientation_credits_require_an_explicit_list_of_recall_obligations(self):
+        document = json.loads(HESSE_E1_MATERIAL.read_text())
         credit = document["unit"]["assessmentContract"]["planningCredits"][0]
         for ids in ([], ["recall"]):
             credit["orientation"] = {"requiredRecallGoalIds": ids}

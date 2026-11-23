@@ -1,5 +1,6 @@
 import copy
 from bisect import bisect_left
+from graphlib import CycleError, TopologicalSorter
 import hashlib
 import json
 import jsonschema
@@ -14,6 +15,7 @@ SCHEMA_PATH = "docs/landscape-runtime.schema.json"
 UNIT_MATERIAL_SCHEMA_PATH = "contracts/unit-learning-material/v1/material.schema.json"
 UNIT_MATERIAL_V2_SCHEMA_PATH = "contracts/unit-learning-material/v2/material.schema.json"
 UNIT_MATERIAL_V3_SCHEMA_PATH = "contracts/unit-learning-material/v3/material.schema.json"
+UNIT_MATERIAL_V4_SCHEMA_PATH = "contracts/unit-learning-material/v4/material.schema.json"
 COMPILED_SCHEMA_PATH = "contracts/curriculum-package/v1/compiled-landscape.schema.json"
 
 # This exact authoring source is restored at the sourcePath already declared by
@@ -655,13 +657,41 @@ def validate_file(file_path, schema):
             return False
     return True
 
+def study_recommendation_errors(path, recommendations):
+    sorter = TopologicalSorter()
+    pairs = set()
+    errors = []
+    for index, recommendation in enumerate(recommendations):
+        before = recommendation["beforeGoalId"].lower()
+        after = recommendation["afterGoalId"].lower()
+        if before == after:
+            errors.append(f"{path} $.studyRecommendations[{index}]: a goal cannot be recommended before itself")
+        elif (before, after) in pairs:
+            errors.append(f"{path} $.studyRecommendations[{index}]: duplicate goal pair")
+        else:
+            pairs.add((before, after))
+            sorter.add(after, before)
+    try:
+        sorter.prepare()
+    except CycleError as error:
+        cycle = " -> ".join(error.args[1])
+        errors.append(f"{path} $.studyRecommendations: recommendation cycle {cycle}")
+    return errors
+
+
 def validate_unit_learning_materials(curricula_dir, schema_path=UNIT_MATERIAL_SCHEMA_PATH):
     """Check every file declared by the same inventory used by the map and backend."""
     root = Path(curricula_dir).resolve()
     catalog = root / "unit-learning-materials.json"
     try:
         validators = {}
-        for version, path in [(1, schema_path), (2, UNIT_MATERIAL_V2_SCHEMA_PATH), (3, UNIT_MATERIAL_V3_SCHEMA_PATH)]:
+        schema_paths = (
+            (1, schema_path),
+            (2, UNIT_MATERIAL_V2_SCHEMA_PATH),
+            (3, UNIT_MATERIAL_V3_SCHEMA_PATH),
+            (4, UNIT_MATERIAL_V4_SCHEMA_PATH),
+        )
+        for version, path in schema_paths:
             schema = json.loads(Path(path).read_text(encoding="utf-8"))
             jsonschema.Draft202012Validator.check_schema(schema)
             validators[version] = jsonschema.Draft202012Validator(schema)
@@ -691,10 +721,14 @@ def validate_unit_learning_materials(curricula_dir, schema_path=UNIT_MATERIAL_SC
         file_errors = list(selected.iter_errors(material))
         for error in file_errors:
             errors.append(f"{path} {error.json_path}: {error.message}")
-        if not file_errors and version == 3 and "guidedStudyOrder" in material:
+        if file_errors:
+            continue
+        if version in (3, 4) and "guidedStudyOrder" in material:
             order = material["guidedStudyOrder"]
             if material["unit"]["orientationGoalId"] in order or order[-1] != material["unit"].get("assessmentGoalId"):
                 errors.append(f"{path} $.guidedStudyOrder: start after the opening and end with the linked assessment")
+        if version == 4:
+            errors.extend(study_recommendation_errors(path, material.get("studyRecommendations", [])))
     if not errors:
         print(f"Validated {len(paths)} declared unit learning material file(s) against their versioned schemas.")
     return errors

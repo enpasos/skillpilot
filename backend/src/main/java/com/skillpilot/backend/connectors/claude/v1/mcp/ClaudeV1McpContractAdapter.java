@@ -306,6 +306,11 @@ public class ClaudeV1McpContractAdapter {
                 Ground every turn in the learner's active learning goal and canonical curriculum
                 state. Load context before coaching, and reload it after any conflict.
 
+                In ordinary learning, if a frontier choice has studyGuidance.recommendedPreparationGoalIds,
+                recommend a matching currently offered preparation goal before that choice. A learner
+                can still explicitly select the original choice. Offer a choice with
+                studyGuidance.voluntary=true as optional and wait for the learner to choose it.
+
                 Learning plan: treat learningPlanToday as the authoritative status for the configured
                 DAY or WEEK period, evaluated independently per subject. First respect status-only
                 questions, pause requests and explicit subject requests. A pure pause without new
