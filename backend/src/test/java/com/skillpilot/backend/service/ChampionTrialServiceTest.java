@@ -238,6 +238,31 @@ class ChampionTrialServiceTest {
         assertThat(service.status(champion, scope()).canComplete()).isFalse();
     }
 
+    @Test
+    void evidenceAndConfirmationOfADeckThatAlreadyCarriedOriginGoalIdsSurviveIssue85() throws Exception {
+        var decks = mock(DeckResourceService.class);
+        when(decks.resolveDeckResource("a", "/data/deck.json")).thenAnswer(call -> new org.springframework.core.io.ByteArrayResource(
+                "{\"schemaVersion\":1,\"cards\":[{\"id\":\"c\",\"front\":\"Q\",\"back\":\"A\",\"originGoalIds\":[\"g\"]}]}"
+                        .getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        var deckFingerprints = new ChampionPracticeFingerprint(new ObjectMapper(), decks);
+        var deckService = new ChampionTrialService(completions, deckFingerprints, new ObjectMapper());
+        a.setExtendedData(Map.of("vocabularySource", "/data/deck.json"));
+        // Evidence recorded before issue #85 hashed the cards including originGoalIds.
+        String recordedBefore = deckFingerprints.legacyForGoal(a);
+        assertThat(recordedBefore).isNotEqualTo(deckFingerprints.forGoal(a));
+        var oldA = legacy("a");
+        oldA.bindPracticeEvidence("coach_learning", recordedBefore, Instant.parse("2026-01-01T12:00:00Z"));
+        when(completions.getPracticeHistory("private-learner-a")).thenReturn(List.of(oldA, practice(b)));
+        champion.setTrialStartedAt(Instant.now());
+        champion.setTrialScopeJson("named-scope");
+        assertThat(deckService.status(champion, scope()).practicedGoals()).isEqualTo(2);
+        // A confirmation stored then is bound to the former digest and stays valid.
+        var formerExpected = new java.util.TreeMap<String, String>(Map.of("a", recordedBefore, "b", fingerprints.forGoal(b)));
+        String formerDigest = ChampionPracticeFingerprint.digest("named-scope\n" + new ObjectMapper().writeValueAsString(formerExpected));
+        champion.setTrialConfirmationsJson(new ObjectMapper().writeValueAsString(Map.of(formerDigest, "2026-01-02T00:00:00Z")));
+        assertThat(deckService.status(champion, scope()).state()).isEqualTo("completed");
+    }
+
     private ChampionTrialService.Scope scope() {
         return new ChampionTrialService.Scope("named-scope", "Mathematik, Hessen, Sek II", true,
                 Map.of("a", a, "b", b), true, 0);

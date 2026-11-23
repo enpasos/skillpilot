@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { ArrowLeft, ArrowRight, Check, CheckCircle, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, CheckCircle, Lock, X } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import {
     calculateReview,
     INITIAL_DECK_STATE,
-    isVerifiedRecallPassed,
-    isVerifiedRecallTestedToday,
     parseReviewTimestamp,
     type ReviewItem,
 } from './srsLogic'
+import { calculateCardBoxStats, cardBoxIdleState, practiceSyncState, readLockedCardIds, selectDueCards, type CardBoxStats } from './cardBox'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
 import { interpolateTemplate } from '../../utils/interpolateTemplate'
 import { selectPracticeCards } from '../../utils/flashcardPractice'
@@ -51,19 +50,7 @@ type Flashcard = {
     back: string
     category: string
     tags?: string[]
-}
-
-type FlashcardStats = {
-    total: number
-    box0: number
-    box1: number
-    box2: number
-    box3: number
-    due: number
-    verifiedPassed: number
-    verifiedPending: number
-    verifiedEligible: number
-    verifiedBlockedToday: number
+    originGoalIds?: string[]
 }
 
 const parseNextReview = (value: unknown): number => {
@@ -81,66 +68,7 @@ const shuffle = <T,>(items: T[]): T[] => {
     return copy
 }
 
-const isCardDue = (state: ReviewItem | undefined, now: number): boolean => {
-    const interval = state ? Number(state.interval) : Number.NaN
-    const nextReview = parseNextReview(state?.nextReview)
-    return !state || !Number.isFinite(interval) || !Number.isFinite(nextReview) || nextReview <= now
-}
-
-const calculateStats = (
-    cards: Flashcard[],
-    stateByCardId: Record<string, ReviewItem>,
-    now = Date.now()
-): FlashcardStats => {
-    let box0 = 0
-    let box1 = 0
-    let box2 = 0
-    let box3 = 0
-    let due = 0
-    let verifiedPassed = 0
-    let verifiedBlockedToday = 0
-    let verifiedEligible = 0
-
-    cards.forEach((card) => {
-        const state = stateByCardId[card.id]
-        const interval = state ? Number(state.interval) : Number.NaN
-        const nextReview = parseNextReview(state?.nextReview)
-
-        if (!state || !Number.isFinite(interval) || !Number.isFinite(nextReview)) {
-            box0 += 1
-        } else if (interval < 3) {
-            box1 += 1
-        } else if (interval <= 10) {
-            box2 += 1
-        } else {
-            box3 += 1
-        }
-
-        if (isCardDue(state, now)) {
-            due += 1
-        }
-        if (isVerifiedRecallPassed(state?.verifiedRecall)) {
-            verifiedPassed += 1
-        } else if (isVerifiedRecallTestedToday(state?.verifiedRecall, now)) {
-            verifiedBlockedToday += 1
-        } else {
-            verifiedEligible += 1
-        }
-    })
-
-    return {
-        total: cards.length,
-        box0,
-        box1,
-        box2,
-        box3,
-        due,
-        verifiedPassed,
-        verifiedPending: Math.max(0, cards.length - verifiedPassed),
-        verifiedEligible,
-        verifiedBlockedToday,
-    }
-}
+const NO_LOCKED_CARDS: ReadonlySet<string> = new Set()
 
 export function FlashcardDrill({
     dataSourceUrl,
@@ -177,19 +105,12 @@ export function FlashcardDrill({
     const syncedAllCaughtUpRef = useRef(false)
     const lastMasteryRef = useRef<number | null>(null)
     const sessionInitialDueRef = useRef<number | null>(null)
+    // Box rules (#85): the server names the cards that are not released yet.
+    const [lockedCardIds, setLockedCardIds] = useState<ReadonlySet<string>>(NO_LOCKED_CARDS)
+    const lockedCardIdsRef = useRef<ReadonlySet<string>>(NO_LOCKED_CARDS)
+    const serverStateRef = useRef<Record<string, unknown> | null>(null)
 
-    const [stats, setStats] = useState<FlashcardStats>({
-        total: 0,
-        box0: 0,
-        box1: 0,
-        box2: 0,
-        box3: 0,
-        due: 0,
-        verifiedPassed: 0,
-        verifiedPending: 0,
-        verifiedEligible: 0,
-        verifiedBlockedToday: 0
-    })
+    const [stats, setStats] = useState<CardBoxStats>(() => calculateCardBoxStats([], {}, NO_LOCKED_CARDS))
 
     const [error, setError] = useState<string | null>(null)
     const serverUpdatedAtRef = useRef<string | null>(null)
@@ -199,6 +120,11 @@ export function FlashcardDrill({
             const detail = (event as CustomEvent<SrsStateReloaded>).detail
             if (detail.goalId !== goalId) return
             serverUpdatedAtRef.current = detail.expectedUpdatedAt
+            serverStateRef.current = detail.srsState
+            if (detail.lockedCardIds) {
+                lockedCardIdsRef.current = readLockedCardIds(detail)
+                setLockedCardIds(lockedCardIdsRef.current)
+            }
             latestStateRef.current = detail.srsState as Record<string, ReviewItem>
             setSrsState(detail.srsState as Record<string, ReviewItem>)
             pendingSyncRef.current = false
@@ -230,7 +156,7 @@ export function FlashcardDrill({
                 const syncingGeneration = syncGenerationRef.current
                 try {
                     const ok = await sync(goalId, {
-                        srsState: latestStateRef.current,
+                        srsState: practiceSyncState(latestStateRef.current, serverStateRef.current, lockedCardIdsRef.current),
                         expectedUpdatedAt: serverUpdatedAtRef.current,
                     }, updatedAt => { serverUpdatedAtRef.current = updatedAt })
                     if (!ok) break
@@ -267,7 +193,7 @@ export function FlashcardDrill({
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         updatedAt: new Date().toISOString(),
-                        srsState: latestStateRef.current,
+                        srsState: practiceSyncState(latestStateRef.current, serverStateRef.current, lockedCardIdsRef.current),
                         expectedUpdatedAt: serverUpdatedAtRef.current,
                     }),
                     keepalive: true,
@@ -300,6 +226,9 @@ export function FlashcardDrill({
         setSrsState({}) // Clear state
         latestStateRef.current = {}
         serverUpdatedAtRef.current = null
+        serverStateRef.current = null
+        lockedCardIdsRef.current = NO_LOCKED_CARDS
+        setLockedCardIds(NO_LOCKED_CARDS)
         pendingSyncRef.current = false
         syncInFlightRef.current = false
         syncedAllCaughtUpRef.current = false
@@ -351,13 +280,16 @@ export function FlashcardDrill({
                     : `/api/ui/learners/${skillPilotId}/client-state/${goalId}`
                 await waitForSrsPracticeWrites(skillPilotId, goalId)
                 if (controller.signal.aborted) return
+                let loadedLockedCardIds = NO_LOCKED_CARDS
                 try {
                     const res = await fetch(syncUrl, { signal: controller.signal })
                     if (res.ok) {
                         const payload = await res.json()
                         if (controller.signal.aborted) return
+                        loadedLockedCardIds = readLockedCardIds(payload)
                         if (payload && payload.srsState) {
                             serverUpdatedAtRef.current = payload.updatedAt ?? null
+                            serverStateRef.current = payload.srsState
                             const storageKey = `srs_state_${skillPilotId}_${goalId}`
                             localStorage.setItem(storageKey, JSON.stringify(payload.srsState))
                             if (payload.updatedAt) localStorage.setItem(lastSyncKey, String(payload.updatedAt))
@@ -381,11 +313,14 @@ export function FlashcardDrill({
                 if (controller.signal.aborted) return
                 latestStateRef.current = loadedState
                 setSrsState(loadedState)
+                lockedCardIdsRef.current = loadedLockedCardIds
+                setLockedCardIds(loadedLockedCardIds)
 
                 const now = Date.now()
-                const nextStats = calculateStats(data.cards, loadedState, now)
-                const originalGoalStats = calculateStats(allGoalCards, loadedState, now)
-                const dueCards = data.cards.filter(card => isCardDue(loadedState[card.id], now))
+                const nextStats = calculateCardBoxStats(data.cards, loadedState, loadedLockedCardIds, now)
+                const originalGoalStats = calculateCardBoxStats(allGoalCards, loadedState, loadedLockedCardIds, now)
+                // Locked and removed cards are never offered in practice.
+                const dueCards = selectDueCards(data.cards, loadedState, loadedLockedCardIds, now)
                 setStats(nextStats)
 
                 if (sessionInitialDueRef.current === null) {
@@ -428,7 +363,7 @@ export function FlashcardDrill({
     useEffect(() => {
         if (!onStateChange) return
         if (stats.total <= 0) return
-        const originalGoalStats = calculateStats(masteryCards, srsState)
+        const originalGoalStats = calculateCardBoxStats(masteryCards, srsState, lockedCardIds)
         if (!originalGoalStats.total) return
         const mastery = originalGoalStats.verifiedPending === 0 ? 1 : 0
         if (lastMasteryRef.current === mastery) return
@@ -439,7 +374,7 @@ export function FlashcardDrill({
             due: originalGoalStats.due,
             total: originalGoalStats.total,
         })
-    }, [goalId, stats.due, stats.total, stats.verifiedPending, masteryCards, srsState, onStateChange])
+    }, [goalId, stats.due, stats.total, stats.verifiedPending, masteryCards, srsState, lockedCardIds, onStateChange])
 
     const reviewStateForCard = (cardId: string, quality: number): ReviewItem => {
         const rawState = srsState[cardId]
@@ -480,7 +415,7 @@ export function FlashcardDrill({
         latestStateRef.current = updatedSrsState
         setSrsState(updatedSrsState)
         if (vocabData) {
-            setStats(calculateStats(vocabData.cards, updatedSrsState))
+            setStats(calculateCardBoxStats(vocabData.cards, updatedSrsState, lockedCardIdsRef.current))
         }
         const storageKey = `srs_state_${skillPilotId}_${goalId}`
         localStorage.setItem(storageKey, JSON.stringify(updatedSrsState))
@@ -575,9 +510,19 @@ export function FlashcardDrill({
 
     if (!vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
-    const allCaughtUp = stats.total > 0 && stats.due === 0 && queue.length === 0
+    const idleState = queue.length === 0 ? cardBoxIdleState(stats) : null
 
-    if (allCaughtUp) {
+    if (idleState === 'nothingReleased') {
+        return (
+            <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]" data-testid="flashcard-nothing-released">
+                <Lock aria-hidden="true" className="w-12 h-12 text-gray-400 mb-4" />
+                <h2 className="text-2xl font-bold mb-2">{t.nothingReleased}</h2>
+                <p className="text-gray-500" data-testid="flashcard-locked-hint">{t.lockedCards(stats.locked)}</p>
+            </div>
+        )
+    }
+
+    if (idleState) {
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
@@ -604,6 +549,7 @@ export function FlashcardDrill({
                 <div className="mb-6 flex flex-col items-center gap-2 text-gray-500">
                     <p>{titleOverride || vocabData?.title || 'Loading...'} - {t.noneDue}</p>
                     <p className="text-sm">{interpolateTemplate(t.verifiedProgress, [stats.verifiedPassed, stats.total])}</p>
+                    {stats.locked > 0 ? <p className="text-sm" data-testid="flashcard-locked-hint">{t.lockedCards(stats.locked)}</p> : null}
                 </div>
             </div>
         )
@@ -636,6 +582,8 @@ export function FlashcardDrill({
 
     if (!currentCard || !vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
+    // The bars show the box: released cards that have not passed Verified Recall.
+    const boxShare = (count: number) => stats.box > 0 ? (count / stats.box) * 100 : 0
     const progressTotal = sessionInitialDueRef.current || 1
     const progressDone = Math.max(0, progressTotal - stats.due)
     const progressPercent = Math.min(100, Math.max(0, (progressDone / progressTotal) * 100))
@@ -657,7 +605,7 @@ export function FlashcardDrill({
                         <div className="absolute inset-0 bg-gray-100 dark:bg-slate-800 rounded-lg overflow-hidden">
                             <div
                                 className="bg-gray-300 dark:bg-gray-600 absolute bottom-0 left-0 right-0 transition-all duration-500"
-                                style={{ height: `${(stats.box0 / stats.total) * 100}%` }}
+                                style={{ height: `${boxShare(stats.box0)}%` }}
                             ></div>
                         </div>
                         <div className="relative z-10 p-1 text-center pointer-events-none">
@@ -675,7 +623,7 @@ export function FlashcardDrill({
                         <div className="absolute inset-0 bg-orange-50 dark:bg-slate-800/50 rounded-lg overflow-hidden">
                             <div
                                 className="bg-orange-200 dark:bg-orange-900/50 absolute bottom-0 left-0 right-0 transition-all duration-500"
-                                style={{ height: `${(stats.box1 / stats.total) * 100}%` }}
+                                style={{ height: `${boxShare(stats.box1)}%` }}
                             ></div>
                         </div>
                         <div className="relative z-10 p-1 text-center pointer-events-none">
@@ -692,7 +640,7 @@ export function FlashcardDrill({
                         <div className="absolute inset-0 bg-blue-50 dark:bg-slate-800/50 rounded-lg overflow-hidden">
                             <div
                                 className="bg-blue-200 dark:bg-blue-900/50 absolute bottom-0 left-0 right-0 transition-all duration-500"
-                                style={{ height: `${(stats.box2 / stats.total) * 100}%` }}
+                                style={{ height: `${boxShare(stats.box2)}%` }}
                             ></div>
                         </div>
                         <div className="relative z-10 p-1 text-center pointer-events-none">
@@ -709,7 +657,7 @@ export function FlashcardDrill({
                         <div className="absolute inset-0 bg-green-50 dark:bg-slate-800/50 rounded-lg overflow-hidden">
                             <div
                                 className="bg-green-200 dark:bg-green-900/50 absolute bottom-0 left-0 right-0 transition-all duration-500"
-                                style={{ height: `${(stats.box3 / stats.total) * 100}%` }}
+                                style={{ height: `${boxShare(stats.box3)}%` }}
                             ></div>
                         </div>
                         <div className="relative z-10 p-1 text-center pointer-events-none">
@@ -741,6 +689,11 @@ export function FlashcardDrill({
                             {interpolateTemplate(t.verifiedProgressTooltip, [stats.verifiedPassed, stats.total])}
                         </div>
                     </div>
+                    {stats.locked > 0 ? (
+                        <p className="mt-1 text-[11px] text-sky-800/80 dark:text-sky-200/80" data-testid="flashcard-locked-hint">
+                            {t.lockedCards(stats.locked)}
+                        </p>
+                    ) : null}
                 </div>
             </div>
 

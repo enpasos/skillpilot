@@ -1905,16 +1905,47 @@ public final class OpenAiDeV1McpContractAdapter {
                             "Confirm completion of the personal curriculum."),
                     null);
         }
+        // "waiting" without nextEligibleAt: every released card is verified and nothing continues
+        // tomorrow until further learning goals are passed. A same-day block keeps "for today".
+        boolean waiting = next != null && "waiting".equals(next.status());
+        boolean sameDayBlocked = next != null && next.nextEligibleAt() != null && !next.nextEligibleAt().isBlank();
+        if (waiting && !sameDayBlocked) {
+            return new RecallContinuation(
+                    "waitUntilEligible",
+                    false,
+                    localized(metadata,
+                            "Alle derzeit freigegebenen Karten sind hart geprüft; die übrigen werden erst mit "
+                                    + "ihren bestandenen Lernzielen verfügbar, nicht morgen. Bestätige den "
+                                    + "Gesamtbefund; behaupte keinen Fokusabschluss und keine automatische Weitung. "
+                                    + "Das Lernkartenziel bleibt offen; melde es nicht als abgeschlossen. Bei einer "
+                                    + "Pause beginne keine neue Aufgabe und biete keine neue Auswahl an.",
+                            "Every currently released card is verified; the remaining cards become available only "
+                                    + "with their passed learning goals, not tomorrow. Confirm the aggregate result; "
+                                    + "do not claim focus completion or automatic widening. The memory goal stays "
+                                    + "open; do not report it as completed. On a pause, start no new task and offer "
+                                    + "no new choice."),
+                    null);
+        }
         return new RecallContinuation(
                 "waitUntilEligible",
                 false,
-                localized(metadata,
-                        "Nur die harte Kartenprüfung ist für heute beendet. Bestätige den Gesamtbefund; "
-                                + "behaupte keinen Fokusabschluss und keine automatische Weitung. Bei einer "
-                                + "Pause beginne keine neue Aufgabe und biete keine neue Auswahl an.",
-                        "Only strict card recall is finished for today. Confirm the aggregate result; do not "
-                                + "claim focus completion or automatic widening. On a pause, start no new task "
-                                + "and offer no new choice."),
+                waiting
+                        ? localized(metadata,
+                                "Nur die harte Kartenprüfung ist für heute beendet. Bestätige den Gesamtbefund; "
+                                        + "behaupte keinen Fokusabschluss und keine automatische Weitung. Das "
+                                        + "Lernkartenziel bleibt offen; melde es nicht als abgeschlossen. Bei einer "
+                                        + "Pause beginne keine neue Aufgabe und biete keine neue Auswahl an.",
+                                "Only strict card recall is finished for today. Confirm the aggregate result; do not "
+                                        + "claim focus completion or automatic widening. The memory goal stays open; do "
+                                        + "not report it as completed. On a pause, start no new task and offer no new "
+                                        + "choice.")
+                        : localized(metadata,
+                                "Nur die harte Kartenprüfung ist für heute beendet. Bestätige den Gesamtbefund; "
+                                        + "behaupte keinen Fokusabschluss und keine automatische Weitung. Bei einer "
+                                        + "Pause beginne keine neue Aufgabe und biete keine neue Auswahl an.",
+                                "Only strict card recall is finished for today. Confirm the aggregate result; do not "
+                                        + "claim focus completion or automatic widening. On a pause, start no new task "
+                                        + "and offer no new choice."),
                 null);
     }
 
@@ -2469,11 +2500,22 @@ public final class OpenAiDeV1McpContractAdapter {
                     "Complete recall batch loaded. Show every question in the supplied order and wait for all "
                             + "answers.");
         } else if ("waiting".equals(response.status())) {
-            summary = localized(metadata,
-                    "Heute ist kein Prüfungsbatch verfügbar. Erfinde keine Karten; erkläre kurz, dass die harte "
-                            + "Kartenprüfung später fortgesetzt werden kann.",
-                    "No recall batch is available today. Do not invent cards; briefly explain that strict recall "
-                            + "can continue later.");
+            // Only a same-day block carries nextEligibleAt; otherwise every released card is verified.
+            summary = response.nextEligibleAt() != null && !response.nextEligibleAt().isBlank()
+                    ? localized(metadata,
+                            "Heute ist kein Prüfungsbatch verfügbar. Erfinde keine Karten; erkläre kurz, dass die harte "
+                                    + "Kartenprüfung später fortgesetzt werden kann. Das Lernkartenziel bleibt offen; "
+                                    + "melde es nicht als abgeschlossen.",
+                            "No recall batch is available today. Do not invent cards; briefly explain that strict recall "
+                                    + "can continue later. The memory goal stays open; do not report it as completed.")
+                    : localized(metadata,
+                            "Alle derzeit freigegebenen Karten sind hart geprüft. Die übrigen Karten werden erst "
+                                    + "verfügbar, wenn ihre Lernziele bestanden sind; kündige keine Fortsetzung für morgen "
+                                    + "an und erfinde keine Karten. Das Lernkartenziel bleibt offen; melde es nicht als "
+                                    + "abgeschlossen.",
+                            "Every currently released card is verified. The remaining cards become available only once "
+                                    + "their learning goals are passed; do not announce a continuation tomorrow and do not "
+                                    + "invent cards. The memory goal stays open; do not report it as completed.");
         } else {
             summary = localized(metadata,
                     "Dieses Lernkartenziel ist bereits vollständig hart geprüft. Erfinde keine Karten und speichere "

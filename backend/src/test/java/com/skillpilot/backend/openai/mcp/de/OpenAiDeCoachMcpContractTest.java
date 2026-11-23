@@ -2341,6 +2341,33 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void recallWaitingWordingIsTruthfulForASameDayBlockAndForVerifiedReleasedCards() {
+        // Issue #85: "waiting" without nextEligibleAt means every released card is verified;
+        // nothing continues tomorrow, and the memory goal stays open in both cases.
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(memoryState("memory-public-id"));
+        Instant issuedAt = Instant.ofEpochMilli(Instant.now().minusSeconds(30).toEpochMilli());
+        when(coachTools.startVerifiedRecallBatch(LEARNER_ID, "de", "memory-public-id", 10)).thenReturn(
+                waitingRecall(issuedAt.plusSeconds(3_600).toString(), issuedAt),
+                waitingRecall(null, issuedAt));
+
+        McpSchema.CallToolResult sameDay = call(OpenAiDeV1McpContractAdapter.START_RECALL, Map.of());
+        McpSchema.CallToolResult released = call(OpenAiDeV1McpContractAdapter.START_RECALL, Map.of());
+
+        assertThat(sameDay.isError()).isFalse();
+        assertThat(sameDay.content().toString()).contains("später fortgesetzt", "Das Lernkartenziel bleibt offen");
+        assertThat(released.isError()).isFalse();
+        assertThat(released.content().toString())
+                .contains("Alle derzeit freigegebenen Karten sind hart geprüft", "kündige keine Fortsetzung für morgen an",
+                        "melde es nicht als abgeschlossen")
+                .doesNotContain("Heute ist kein Prüfungsbatch verfügbar");
+    }
+
+    private VerifiedRecallPromptResponse waitingRecall(String nextEligibleAt, Instant issuedAt) {
+        return new VerifiedRecallPromptResponse("waiting", "Untrusted", LEARNER_ID, "memory-public-id", "Grundwissen",
+                3, 1, 2, 0, 2, nextEligibleAt, 0, List.of(), null, null, null, 10, issuedAt);
+    }
+
+    @Test
     void recallStartUsesOnlyTheSessionBoundDirectiveAndProjectsAnOpaqueCompleteBatch() throws Exception {
         UnifiedLearnerStateResponse state = memoryState("memory-public-id");
         Instant issuedAt = Instant.ofEpochMilli(Instant.now().minusSeconds(30).toEpochMilli());

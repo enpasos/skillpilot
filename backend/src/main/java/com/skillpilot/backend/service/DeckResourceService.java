@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.AbstractResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -74,6 +74,73 @@ public class DeckResourceService {
                 .orElse(null);
     }
 
+    /**
+     * Deck bytes that cannot change for the lifetime of this runtime generation.
+     *
+     * <p>Pinned repository decks and verified package artifacts carry a stable
+     * identity, so a parsed deck can be shared across requests without reading
+     * or parsing the bytes again. Repository development files are never
+     * returned as this type: they may change on disk.</p>
+     */
+    public static final class ImmutableDeckResource extends AbstractResource {
+        private final String identity;
+        private final byte[] bytes;
+        private final String description;
+        private final String filename;
+
+        public ImmutableDeckResource(String identity, byte[] bytes, String description, String filename) {
+            this.identity = java.util.Objects.requireNonNull(identity, "identity");
+            this.bytes = java.util.Objects.requireNonNull(bytes, "bytes");
+            this.description = description;
+            this.filename = filename;
+        }
+
+        /** Stable key of these bytes within the runtime generation. */
+        public String identity() {
+            return identity;
+        }
+
+        /** A private copy of the bytes. */
+        public byte[] bytes() {
+            return bytes.clone();
+        }
+
+        @Override
+        public boolean exists() {
+            return true;
+        }
+
+        @Override
+        public long contentLength() {
+            return bytes.length;
+        }
+
+        @Override
+        public java.io.InputStream getInputStream() {
+            return new java.io.ByteArrayInputStream(bytes);
+        }
+
+        @Override
+        public String getFilename() {
+            return filename;
+        }
+
+        @Override
+        public String getDescription() {
+            return description;
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            return this == other || other instanceof ImmutableDeckResource that && identity.equals(that.identity);
+        }
+
+        @Override
+        public int hashCode() {
+            return identity.hashCode();
+        }
+    }
+
     private Resource resolveRepositoryDeckResource(String vocabularySource) {
         String normalized = normalizeDeckPath(vocabularySource);
         if (normalized == null) {
@@ -87,9 +154,8 @@ public class DeckResourceService {
         Map<String, byte[]> pinned = pinnedDecks;
         if (pinned != null) {
             byte[] bytes = pinned.get(fileName);
-            return bytes == null ? null : new ByteArrayResource(bytes.clone(), "pinned curriculum deck " + fileName) {
-                @Override public String getFilename() { return fileName; }
-            };
+            return bytes == null ? null : new ImmutableDeckResource(
+                    "pinned:" + fileName, bytes, "pinned curriculum deck " + fileName, fileName);
         }
 
         Optional<Path> curriculumDeck = resolveDeckFromCurricula(fileName);
@@ -105,12 +171,9 @@ public class DeckResourceService {
     }
 
     private static Resource asResource(PackageCurriculumResourceState.ResolvedArtifact artifact) {
-        return new ByteArrayResource(artifact.bytes(), "package deck " + artifact.href()) {
-            @Override
-            public String getFilename() {
-                return artifact.filename();
-            }
-        };
+        // The artifact bytes were verified against their declared hash on this read.
+        return new ImmutableDeckResource("package-sha256:" + artifact.sha256(), artifact.bytes(),
+                "package deck " + artifact.href(), artifact.filename());
     }
 
     private String normalizeDeckPath(String vocabularySource) {

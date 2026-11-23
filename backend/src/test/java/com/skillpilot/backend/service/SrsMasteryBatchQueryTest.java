@@ -14,11 +14,8 @@ import static org.mockito.Mockito.verify;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.MasteryEntryDTO;
 import com.skillpilot.backend.domain.Learner;
-import com.skillpilot.backend.domain.LearnerClientState;
-import com.skillpilot.backend.domain.LearnerClientStateId;
 import com.skillpilot.backend.landscape.LandscapeService;
 import com.skillpilot.backend.landscape.LearningGoal;
-import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.service.srs.SrsStateUnavailableException;
 import jakarta.persistence.EntityManager;
@@ -53,10 +50,10 @@ import org.springframework.transaction.annotation.Transactional;
 class SrsMasteryBatchQueryTest {
     private static final String SOURCE = "/data/synthetic-batch-test.json";
     private static final String DECK = "{\"cards\":[{\"id\":\"card\",\"front\":\"Question\",\"back\":\"Answer\"}]}";
-    private static final String PASSED = "{\"card\":{\"verifiedRecall\":{\"status\":\"passed\",\"passedAt\":\"2026-10-29T12:00:00Z\"}}}";
     @Autowired LearnerService service;
     @Autowired LearnerRepository learners;
-    @Autowired LearnerClientStateRepository cardStates;
+    @Autowired com.skillpilot.backend.service.srs.SrsCardStateStore cardStates;
+    @Autowired com.skillpilot.backend.repository.LearnerCardStateRepository cardRows;
     @PersistenceContext EntityManager entities;
     @MockitoSpyBean DeckResourceService decks;
     @MockitoSpyBean LandscapeService landscapes;
@@ -84,9 +81,10 @@ class SrsMasteryBatchQueryTest {
             goal.setExtendedData(Map.of("vocabularySource", SOURCE));
             goals.add(goal);
             doReturn(goal).when(landscapes).getGoalDefinition(goal.getId());
-            cardStates.save(new LearnerClientState(learner, goal.getId(), PASSED, Instant.now()));
+            cardStates.replaceNode(learner.getSkillpilotId(), goal.getId(), Map.of("card", Map.of("verifiedRecall",
+                    Map.of("status", "passed", "passedAt", "2026-10-29T12:00:00Z"))), Instant.now());
         }
-        cardStates.flush();
+        cardRows.flush();
         statistics = entities.getEntityManagerFactory().unwrap(SessionFactory.class).getStatistics();
         previouslyEnabled = statistics.isStatisticsEnabled();
         statistics.setStatisticsEnabled(true);
@@ -161,8 +159,10 @@ class SrsMasteryBatchQueryTest {
     }
 
     @Test void corruptSingleStateIsUnavailableStrictlyAndPreservedOnlyForThatNormalGoal() {
-        var damaged = cardStates.findById(new LearnerClientStateId(learner.getSkillpilotId(), goals.getFirst().getId())).orElseThrow();
-        damaged.setClientState("invalid-json"); cardStates.saveAndFlush(damaged);
+        // A former block that could not be read is migrated as a damaged node record.
+        var damaged = cardRows.findById(new com.skillpilot.backend.domain.LearnerCardStateId(
+                learner.getSkillpilotId(), goals.getFirst().getId(), "")).orElseThrow();
+        damaged.setInvalidReason("invalid"); damaged.setInvalidState("invalid-json"); cardRows.saveAndFlush(damaged);
         Map<String, LearningGoal> graph = graph(goals.subList(0, 2));
         assertThat(sql(() -> {
             Map<String, Double> result = ReflectionTestUtils.invokeMethod(service, "applySrsMasteryOverlay",

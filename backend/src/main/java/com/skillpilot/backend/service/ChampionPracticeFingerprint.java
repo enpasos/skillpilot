@@ -34,7 +34,24 @@ public class ChampionPracticeFingerprint {
         this.resources = resources;
     }
 
+    /** Card field naming a card's understanding goals (issue #85); see {@link #practicedCards}. */
+    static final String ORIGIN_GOAL_IDS = "originGoalIds";
+
     public String forGoal(LearningGoal goal) {
+        return fingerprint(goal, false);
+    }
+
+    /**
+     * The fingerprint under the rule before issue #85, which still hashed a card's
+     * {@code originGoalIds}. Decks that already carried the field (Economics, Politics)
+     * produced their stored evidence under this rule; it is accepted as equivalent so
+     * those results survive. It equals {@link #forGoal} for every deck without the field.
+     */
+    public String legacyForGoal(LearningGoal goal) {
+        return fingerprint(goal, true);
+    }
+
+    private String fingerprint(LearningGoal goal, boolean includeOriginGoalIds) {
         if (goal == null || goal.getId() == null) return null;
         try {
             Map<String, Object> semantic = new TreeMap<>();
@@ -81,7 +98,7 @@ public class ChampionPracticeFingerprint {
                         if (resource == null || !resource.exists()) return null;
                         try (var input = resource.getInputStream()) {
                             // Card semantics, including selection tags, are part of the practiced station.
-                            semantic.put(key, mapper.readTree(input).get("cards"));
+                            semantic.put(key, practicedCards(mapper.readTree(input).get("cards"), includeOriginGoalIds));
                         }
                     }
                 }
@@ -90,6 +107,22 @@ public class ChampionPracticeFingerprint {
         } catch (Exception exception) {
             return null; // Missing or invalid content never creates a valid practice receipt.
         }
+    }
+
+    /**
+     * The practiced content of a deck's cards. The understanding-goal relation
+     * ({@code originGoalIds}) is release metadata, not practiced card content: it
+     * decides when a card enters the learner's box, not what the learner recalls.
+     * Excluding exactly this field keeps every fingerprint of a deck that gains the
+     * field identical to its value before, so existing evidence stays valid.
+     */
+    private static JsonNode practicedCards(JsonNode cards, boolean includeOriginGoalIds) {
+        if (includeOriginGoalIds || cards == null || !cards.isArray()) return cards;
+        com.fasterxml.jackson.databind.node.ArrayNode practiced = cards.deepCopy();
+        for (JsonNode card : practiced) {
+            if (card instanceof com.fasterxml.jackson.databind.node.ObjectNode object) object.remove(ORIGIN_GOAL_IDS);
+        }
+        return practiced;
     }
 
     private String assetDigest(String url) throws Exception {

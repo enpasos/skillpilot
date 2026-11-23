@@ -8,6 +8,7 @@ import {
   type CompositionView,
 } from '../src/utils/authoring/compositionViewAuthoring'
 import { goalMatchesFilters } from '../src/utils/goalFilters'
+import { MEMORY_DECK_FORMAT_VERSION, legacyOriginGoalTagIds } from '../src/utils/memoryCardOrigins'
 
 type ReviewStatus = 'no_memory_needed' | 'memory_required' | 'needs_developer_review'
 type CardReviewStatus = 'kept' | 'remove' | 'needs_developer_review'
@@ -51,7 +52,7 @@ interface ReviewRecord {
   reason: string
 }
 
-interface CardReviewRecord {
+export interface CardReviewRecord {
   schemaVersion: 1
   reviewId: string
   ruleVersion: string
@@ -82,10 +83,12 @@ interface MemoryDeckEvidence {
   deckFiles: number
   cardRows: number
   primaryCards: MemoryDeckCard[]
+  /** Cards of language variants; they are not reviewed separately but must carry the same origins. */
+  variantCards: MemoryDeckCard[]
   errors: string[]
 }
 
-interface MemoryDeckCard {
+export interface MemoryDeckCard {
   deckId: string
   cardId: string
   source: string
@@ -93,6 +96,10 @@ interface MemoryDeckCard {
   back: string
   category: string
   tags: string[]
+  /** Deck format of the source file; format 2 must name the reviewed origins on every card. */
+  deckFormatVersion: number | null
+  /** The authored card field, or null when the card does not carry it. */
+  originGoalIds: unknown[] | null
 }
 
 interface MemoryVisibilityReport {
@@ -517,6 +524,7 @@ function collectMemoryDeckEvidence(landscape: SkillLandscape): MemoryDeckEvidenc
     deckFiles: 0,
     cardRows: 0,
     primaryCards: [],
+    variantCards: [],
     errors: [],
   }
 
@@ -530,7 +538,7 @@ function collectMemoryDeckEvidence(landscape: SkillLandscape): MemoryDeckEvidenc
         return
       }
       try {
-        const parsed = loadJson<{ deckId?: unknown, cards?: unknown[] }>(sourcePath)
+        const parsed = loadJson<{ deckId?: unknown, schemaVersion?: unknown, cards?: unknown[] }>(sourcePath)
         evidence.deckFiles += 1
         if (typeof parsed.deckId !== 'string' || parsed.deckId.trim().length === 0) {
           evidence.errors.push(`${formatGoal(goal, goal.id)}: deck file ${source} has no deckId`)
@@ -541,7 +549,8 @@ function collectMemoryDeckEvidence(landscape: SkillLandscape): MemoryDeckEvidenc
           evidence.errors.push(`${formatGoal(goal, goal.id)}: deck file ${source} has no cards array`)
         } else {
           evidence.cardRows += parsed.cards.length
-          if (typeof parsed.deckId === 'string' && parsed.deckId.trim().length > 0 && isPrimaryMemoryDeckSource(source)) {
+          if (typeof parsed.deckId === 'string' && parsed.deckId.trim().length > 0) {
+            const primary = isPrimaryMemoryDeckSource(source)
             parsed.cards.forEach((card, index) => {
               if (!card || typeof card !== 'object') {
                 evidence.errors.push(`${formatGoal(goal, goal.id)}: deck file ${source} card ${index + 1} is not an object`)
@@ -553,7 +562,8 @@ function collectMemoryDeckEvidence(landscape: SkillLandscape): MemoryDeckEvidenc
                 evidence.errors.push(`${formatGoal(goal, goal.id)}: deck file ${source} card ${index + 1} has no id`)
                 return
               }
-              evidence.primaryCards.push({
+              const target = primary ? evidence.primaryCards : evidence.variantCards
+              target.push({
                 deckId: parsed.deckId,
                 cardId,
                 source,
@@ -561,6 +571,8 @@ function collectMemoryDeckEvidence(landscape: SkillLandscape): MemoryDeckEvidenc
                 back: normalizeText(row.back),
                 category: normalizeText(row.category),
                 tags: Array.isArray(row.tags) ? row.tags.map((tag) => normalizeText(tag)).filter(Boolean) : [],
+                deckFormatVersion: typeof parsed.schemaVersion === 'number' ? parsed.schemaVersion : null,
+                originGoalIds: Array.isArray(row.originGoalIds) ? row.originGoalIds : null,
               })
             })
           }
@@ -673,6 +685,51 @@ function validateCardRecordShape(
   })
 
   return errors
+}
+
+function sameIdSet(left: readonly unknown[], right: readonly unknown[]): boolean {
+  const expected = new Set(right)
+  return new Set(left).size === expected.size && left.every((id) => expected.has(id))
+}
+
+/**
+ * A deck repeats the origins of its kept card review: the format-2 field must be
+ * present and equal as a set, and retired goal: tags may only mirror it. Language
+ * variants carry the same origins as the reviewed primary card.
+ */
+export function collectCardOriginErrors(
+  cards: readonly MemoryDeckCard[],
+  keptRecordsByKey: ReadonlyMap<string, CardReviewRecord>,
+): string[] {
+  const errors = new Set<string>()
+  const formatted = (ids: readonly unknown[]) => `[${ids.map(String).join(', ')}]`
+  for (const card of cards) {
+    const label = `${card.source} ${card.deckId}/${card.cardId}`
+    const field = card.originGoalIds
+    const formatTwo = (card.deckFormatVersion ?? 0) >= MEMORY_DECK_FORMAT_VERSION
+    if (field !== null && (field.length === 0 || new Set(field).size !== field.length
+      || !field.every((id) => typeof id === 'string' && id.trim().length > 0))) {
+      errors.add(`${label}: originGoalIds must be a non-empty list of distinct goal IDs`)
+      continue
+    }
+    const tagIds = legacyOriginGoalTagIds({ tags: card.tags })
+    if (formatTwo && tagIds.length > 0 && (field === null || !sameIdSet(field, tagIds))) {
+      errors.add(`${label}: goal: tags ${formatted(tagIds)} must repeat exactly the card's originGoalIds ${formatted(field ?? [])}`)
+    }
+    const record = keptRecordsByKey.get(memoryCardKey(card.deckId, card.cardId))
+    if (!record) continue
+    const expected = record.originGoalIds ?? []
+    if (field !== null) {
+      if (!sameIdSet(field, expected)) {
+        errors.add(`${label}: originGoalIds ${formatted(field)} differ from the kept card review ${formatted(expected)}`)
+      }
+    } else if (formatTwo) {
+      errors.add(`${label}: deck format ${card.deckFormatVersion} card lacks the originGoalIds ${formatted(expected)} of its kept card review`)
+    } else if (tagIds.length > 0 && !sameIdSet(tagIds, expected)) {
+      errors.add(`${label}: goal: tags ${formatted(tagIds)} differ from the kept card review ${formatted(expected)}`)
+    }
+  }
+  return [...errors]
 }
 
 function serializeRecords(records: ReviewRecord[]): string {
@@ -1028,6 +1085,12 @@ function main() {
   const cardsByStatus = new Map<CardReviewStatus, CardReviewRecord[]>(
     cardStatusOrder.map((status) => [status, currentCardRecords.filter((record) => record.status === status)]),
   )
+  const keptCardRecordsByKey = new Map((cardsByStatus.get('kept') ?? [])
+    .map((record) => [memoryCardKey(record.deckId, record.cardId), record]))
+  const cardOriginErrors = collectCardOriginErrors([
+    ...primaryCards,
+    ...deckEvidence.variantCards.filter((card) => scopedDeckIds.has(card.deckId)),
+  ], keptCardRecordsByKey)
   const tracedMemoryRequiredGoalIds = new Set<string>()
   cardsByStatus.get('kept')?.forEach((record) => {
     record.originGoalIds?.forEach((goalId) => tracedMemoryRequiredGoalIds.add(goalId))
@@ -1074,6 +1137,7 @@ function main() {
   console.log(`Missing card review records: ${missingCardRecords.length}`)
   console.log(`Stale card review records: ${staleCardRecords.length}`)
   console.log(`Obsolete card review records: ${obsoleteCardRecords.length}`)
+  console.log(`Deck card origin issues: ${cardOriginErrors.length}`)
   console.log(`Composition visibility scopes: ${visibilityReport.scopes.length}`)
   console.log(`Memory-required goals checked in views: ${visibilityReport.checkedMemoryRequiredGoals}`)
   console.log(`Memory-required goals without visible memory node: ${visibilityReport.missingVisibleMemoryGoals}`)
@@ -1137,6 +1201,7 @@ function main() {
     ...shapeErrors,
     ...cardParseErrors,
     ...cardShapeErrors,
+    ...cardOriginErrors,
     ...deckEvidence.errors,
     ...duplicateGoalIds.map((goalId) => `Duplicate review record for ${goalId}`),
     ...duplicateCardKeys.map((key) => `Duplicate card review record for ${key}`),

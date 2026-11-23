@@ -55,12 +55,15 @@ public class ChampionTrialService {
         // Never read every image/deck for mere registration or an unpracticed curriculum.
         // A goal without any actual receipt cannot contribute to complete coverage anyway.
         Map<String, String> expected = expected(scope, documentedGoals);
+        // Evidence recorded before issue #85 for decks that already carried originGoalIds.
+        Map<String, String> legacy = legacyExpected(scope, expected);
         Set<String> practiced = new java.util.HashSet<>();
         for (var completion : history) {
             if (completion.getPracticeEvidence().stream().anyMatch(evidence ->
                     Set.of("coach_learning", "verified_recall").contains(evidence.source())
                     && evidence.recordedAt() != null && evidence.fingerprint() != null
-                    && evidence.fingerprint().equals(expected.get(completion.getGoalId())))) {
+                    && (evidence.fingerprint().equals(expected.get(completion.getGoalId()))
+                            || evidence.fingerprint().equals(legacy.get(completion.getGoalId()))))) {
                 practiced.add(completion.getGoalId());
             }
         }
@@ -69,7 +72,8 @@ public class ChampionTrialService {
         boolean eligible = scope.coreReady() && scope.findingsAvailable()
                 && scope.blockingFindings() == 0 && completeCoverage;
         String digest = scopeDigest(scope, expected);
-        boolean confirmed = confirmations(champion).containsKey(digest);
+        boolean confirmed = confirmations(champion).containsKey(digest)
+                || !legacy.equals(expected) && confirmations(champion).containsKey(scopeDigest(scope, legacy));
         boolean started = hasStarted(champion, scope);
         boolean active = started && champion.getTrialPausedAt() == null && champion.getAssignmentEndedAt() == null;
         String state = started && eligible && confirmed ? "completed"
@@ -142,6 +146,21 @@ public class ChampionTrialService {
         scope.goals().forEach((id, goal) -> {
             if (!documentedGoals.contains(id)) return;
             String fingerprint = fingerprints.forGoal(goal);
+            if (fingerprint != null) result.put(id, fingerprint);
+        });
+        return result;
+    }
+
+    /** The expected fingerprints under the rule before issue #85; equal to {@code expected} for unchanged rules. */
+    private Map<String, String> legacyExpected(Scope scope, Map<String, String> expected) {
+        Map<String, String> result = new TreeMap<>(expected);
+        expected.keySet().forEach(id -> {
+            var goal = scope.goals().get(id);
+            // Only deck goals can differ; other goals are not read a second time.
+            if (goal == null || goal.getExtendedData() == null
+                    || !(goal.getExtendedData().get("vocabularySource") instanceof String)
+                    && !(goal.getExtendedData().get("vocabularySourceEn") instanceof String)) return;
+            String fingerprint = fingerprints.legacyForGoal(goal);
             if (fingerprint != null) result.put(id, fingerprint);
         });
         return result;

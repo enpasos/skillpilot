@@ -10,8 +10,7 @@ import com.skillpilot.backend.api.CompletionAssessmentStart;
 import com.skillpilot.backend.completion.*;
 import com.skillpilot.backend.domain.CopySource;
 import com.skillpilot.backend.domain.Learner;
-import com.skillpilot.backend.domain.LearnerClientState;
-import com.skillpilot.backend.domain.LearnerClientStateId;
+import com.skillpilot.backend.domain.LearnerGoalCompletion;
 import com.skillpilot.backend.domain.LearnerLearningPlan;
 import com.skillpilot.backend.domain.LearningState;
 import com.skillpilot.backend.domain.Mastery;
@@ -77,8 +76,17 @@ import com.skillpilot.backend.api.ClientStateRequest;
 import com.skillpilot.backend.api.ClientStateResponse;
 import com.skillpilot.backend.api.ClientStateSnapshot;
 import com.skillpilot.backend.api.PortableSrsData;
+import com.skillpilot.backend.service.srs.SrsCard;
+import com.skillpilot.backend.service.srs.SrsCardRelease;
+import com.skillpilot.backend.service.srs.SrsCardSelection;
+import com.skillpilot.backend.service.srs.SrsCardStateStore;
+import com.skillpilot.backend.service.srs.SrsCardStateSummary;
+import com.skillpilot.backend.service.srs.SrsCardStepFacts;
+import com.skillpilot.backend.service.srs.SrsDeck;
+import com.skillpilot.backend.service.srs.SrsDeckCatalog;
 import com.skillpilot.backend.service.srs.SrsPracticeStateGuard;
 import com.skillpilot.backend.service.srs.SrsStateUnavailableException;
+import com.skillpilot.backend.service.srs.UnitCheckStart;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.FrontierGoal.StudyGuidance;
 import com.skillpilot.backend.api.GoalSourceLink;
@@ -149,6 +157,12 @@ public class LearnerService {
             LearnerService.class.getName() + ".coachStateRevision";
 
     private final LearnerRepository learnerRepository;
+    /**
+     * The former JSON block per learner and deck goal. Since Liquibase change 047
+     * its rows are only the untouched fallback copy of the migration to
+     * {@link SrsCardStateStore}; the service neither reads nor writes them.
+     */
+    @SuppressWarnings("unused")
     private final LearnerClientStateRepository learnerClientStateRepository;
     private final MasteryRepository masteryRepository;
     private final PlannedGoalRepository plannedGoalRepository;
@@ -161,6 +175,8 @@ public class LearnerService {
     private final ObjectMapper objectMapper;
     private final ApplicationEventPublisher eventPublisher;
     private final TransactionTemplate transactionTemplate;
+    /** Parsed decks shared by all learners of this runtime generation (issue #85). */
+    private final SrsDeckCatalog deckCatalog;
     private final CompletionProfileCompiler frontierPrerequisiteCompiler = new CompletionProfileCompiler();
     private Clock verifiedRecallClock = Clock.systemUTC();
     private final com.skillpilot.backend.completion.LearningPlanCompletionProjection planHandoffProjection =
@@ -175,6 +191,10 @@ public class LearnerService {
 
     @Autowired(required = false)
     private CompletionApplicationService completionApplicationService;
+
+    /** Card states, one row per card; hand-built service fixtures without storage read no state. */
+    @Autowired(required = false)
+    private SrsCardStateStore cardStateStore;
 
     @Value("${skillpilot.completion.unit-assessment-pilot-enabled:false}")
     private boolean unitAssessmentPilotEnabled;
@@ -1716,6 +1736,7 @@ public class LearnerService {
         this.deckResourceService = deckResourceService;
         this.compositionViewService = compositionViewService;
         this.objectMapper = objectMapper;
+        this.deckCatalog = new SrsDeckCatalog(objectMapper != null ? objectMapper : new ObjectMapper());
         this.eventPublisher = eventPublisher;
         this.transactionTemplate = new TransactionTemplate(transactionManager);
         this.transactionTemplate.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRES_NEW);
@@ -1738,26 +1759,22 @@ public class LearnerService {
         }
     }
 
-    private static final class SrsCard {
-        private final String id;
-        private final String front;
-        private final String back;
-        private final String category;
-        private final List<String> tags;
-
-        private SrsCard(String id, String front, String back, String category, List<String> tags) {
-            this.id = id;
-            this.front = front;
-            this.back = back;
-            this.category = category;
-            this.tags = tags;
-        }
-    }
-
+    /**
+     * Verified Recall input of the active deck goal.
+     *
+     * @param cards every card of the deck goal, in deck order
+     * @param scope the cards a new batch may contain: the unit context's cards of this deck, or all cards
+     * @param unitScope whether {@code scope} is a unit context
+     * @param release the release rule of this request
+     * @param states the typed stored states of the deck goal's cards (no entry: never practised)
+     */
     private record VerifiedRecallContext(
             LearningGoal goal,
             List<SrsCard> cards,
-            Map<String, Object> srsState) {
+            List<SrsCard> scope,
+            boolean unitScope,
+            SrsCardRelease release,
+            Map<String, SrsCardStateSummary> states) {
     }
 
     private record VerifiedRecallDeckStatus(
@@ -1765,35 +1782,13 @@ public class LearnerService {
             int pendingCards,
             int eligibleCards,
             int blockedCards,
+            int sameDayBlockedCards,
             Instant nextEligibleAt) {
     }
 
     private record GlobalAssessmentFocus(
             Set<String> allGoalIds,
             Set<String> explicitlyFocusedGoalIds) {
-    }
-
-    private static Long parseNextReview(Object value) {
-        if (value instanceof Number number) {
-            return number.longValue();
-        }
-        if (value instanceof String text) {
-            String trimmed = text.trim();
-            if (trimmed.isEmpty()) {
-                return null;
-            }
-            try {
-                return Long.parseLong(trimmed);
-            } catch (NumberFormatException ignored) {
-                // Fallback to ISO-8601 timestamp.
-            }
-            try {
-                return Instant.parse(trimmed).toEpochMilli();
-            } catch (Exception ignored) {
-                return null;
-            }
-        }
-        return null;
     }
 
     private record MutablePersonalCurriculumDocument(
@@ -1877,110 +1872,58 @@ public class LearnerService {
         return filtered;
     }
 
-    private List<SrsCard> loadSrsDeckCards(LearningGoal goal, String vocabularySource) {
-        return loadSrsDeckCards(goal, vocabularySource, false);
-    }
-
-    private List<SrsCard> loadSrsDeckCards(LearningGoal goal, String vocabularySource, boolean strict) {
+    /** The shared parsed deck of a goal; an unresolvable reference is the missing deck. */
+    private SrsDeck srsDeck(LearningGoal goal, String vocabularySource, Map<Resource, SrsDeck> callLocal) {
         if (goal == null || vocabularySource == null || vocabularySource.isBlank()) {
-            return Collections.emptyList();
+            return SrsDeck.missing();
         }
-        Resource resource = deckResourceService.resolveDeckResource(goal.getId(), vocabularySource);
-        return loadSrsDeckCards(resource, strict);
+        return deckCatalog.deck(deckResourceService.resolveDeckResource(goal.getId(), vocabularySource), callLocal);
     }
 
-    private List<SrsCard> loadSrsDeckCards(Resource resource, boolean strict) {
-        if (resource == null || !resource.exists()) {
-            if (strict) throw new SrsStateUnavailableException("Required memorization deck is missing");
-            return Collections.emptyList();
-        }
-        try (InputStream inputStream = resource.getInputStream()) {
-            Map<String, Object> data = objectMapper.readValue(
-                    inputStream,
-                    new TypeReference<Map<String, Object>>() {
-                    });
-            Object cardsObj = data.get("cards");
-            if (!(cardsObj instanceof List<?> cardsRaw)) {
-                if (strict) throw new SrsStateUnavailableException("Required memorization deck has no card list");
-                return Collections.emptyList();
-            }
-            List<SrsCard> cards = new ArrayList<>();
-            Set<String> identifiers = new HashSet<>();
-            for (Object raw : cardsRaw) {
-                if (!(raw instanceof Map<?, ?> cardMap)) {
-                    if (strict) throw new SrsStateUnavailableException("Required memorization card is invalid");
-                    continue;
-                }
-                Object idObj = cardMap.get("id");
-                if (idObj == null || String.valueOf(idObj).isBlank()) {
-                    if (strict) throw new SrsStateUnavailableException("Required memorization card identifier is missing");
-                    continue;
-                }
-                String id = String.valueOf(idObj);
-                if (!identifiers.add(id) && strict) {
-                    throw new SrsStateUnavailableException("Required memorization card identifier is duplicated");
-                }
-                String front = stringValue(cardMap.get("front"));
-                String back = stringValue(cardMap.get("back"));
-                if (strict && (front == null || front.isBlank() || back == null || back.isBlank())) {
-                    throw new SrsStateUnavailableException("Required memorization card content is missing");
-                }
-                String category = stringValue(cardMap.get("category"));
-                Object tagsObj = cardMap.get("tags");
-                List<String> tags = null;
-                if (tagsObj instanceof List<?> tagList) {
-                    List<String> collected = new ArrayList<>();
-                    for (Object tag : tagList) {
-                        if (tag != null) {
-                            collected.add(String.valueOf(tag));
-                        }
-                    }
-                    tags = collected;
-                }
-                cards.add(new SrsCard(id, front, back, category, tags));
-            }
-            return cards;
-        } catch (Exception e) {
-            if (strict) throw new SrsStateUnavailableException("Required memorization deck is invalid", e);
-            return Collections.emptyList();
-        }
-    }
-
-    private static String stringValue(Object value) {
-        return value instanceof String text ? text : null;
+    private SrsCardStateStore.NodeState loadCardNode(String skillpilotId, String nodeId) {
+        return cardStateStore == null
+                ? new SrsCardStateStore.NodeState(null, Map.of(), null, null)
+                : cardStateStore.loadNode(skillpilotId, nodeId);
     }
 
     private Map<String, Object> loadSrsStateStrict(String skillpilotId, String nodeId) {
-        LearnerClientStateId id = new LearnerClientStateId(skillpilotId, nodeId);
-        LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
-        return readStoredSrsState(stored);
+        return loadCardNode(skillpilotId, nodeId).readable();
     }
 
-    private Map<String, Object> readStoredSrsState(LearnerClientState stored) {
-        if (stored == null) {
-            return Collections.emptyMap();
-        }
-        if (stored.getClientState() == null || stored.getClientState().isBlank()) {
-            throw new SrsStateUnavailableException("Stored SRS state is missing");
-        }
-        try {
-            Map<String, Object> state = objectMapper.readValue(
-                    stored.getClientState(),
-                    new TypeReference<Map<String, Object>>() {
-                    });
-            SrsPracticeStateGuard.validatePortable(Map.of(stored.getId().getNodeId(), state));
-            return state;
-        } catch (Exception e) {
-            throw new SrsStateUnavailableException("Stored SRS state is invalid", e);
-        }
+    private Map<String, SrsCardStateStore.NodeSummary> cardStateSummaries(
+            String skillpilotId, Collection<String> nodeIds) {
+        return cardStateStore == null ? Map.of() : cardStateStore.summaries(skillpilotId, nodeIds);
     }
 
-    private static final int SRS_STATE_QUERY_BATCH_SIZE = 500;
+    /** Typed states of one deck goal; a damaged node is a technical failure, as before. */
+    private Map<String, SrsCardStateSummary> readableCardStates(String skillpilotId, String nodeId) {
+        SrsCardStateStore.NodeSummary node = cardStateSummaries(skillpilotId, List.of(nodeId)).get(nodeId);
+        if (node == null) {
+            return Map.of();
+        }
+        node.requireReadable();
+        return node.cards();
+    }
+
+    private SrsCardStateStore requireCardStateStore() {
+        if (cardStateStore == null) {
+            throw new IllegalStateException("Card state storage is unavailable");
+        }
+        return cardStateStore;
+    }
+
     private record SrsGoalSnapshot(boolean mastered, boolean recallAvailable) { }
 
-    /** One call-local input snapshot shared by strict completion and tolerant normal projections. */
+    /**
+     * One call-local input snapshot shared by strict completion and tolerant normal projections.
+     *
+     * <p>Decks come from the shared catalog and card states from one typed query
+     * per 500 goals; no state object is parsed. Recall availability is computed
+     * only when a release rule is supplied, and the rule is requested only for a
+     * goal that still has an untested, not yet passed card.</p>
+     */
     private Map<String, SrsGoalSnapshot> resolveSrsGoalSnapshots(
-            String skillpilotId, Collection<LearningGoal> goals, boolean strict) {
+            String skillpilotId, Collection<LearningGoal> goals, boolean strict, Supplier<SrsCardRelease> release) {
         Map<String, LearningGoal> srsGoals = new LinkedHashMap<>();
         if (goals != null) for (LearningGoal goal : goals) {
             if (!isSrsGoal(goal)) continue;
@@ -1991,22 +1934,16 @@ public class LearnerService {
             srsGoals.put(goal.getId(), goal);
         }
         if (srsGoals.isEmpty()) return Map.of();
-        Map<String, LearnerClientState> storedByGoal = new HashMap<>();
-        List<String> goalIds = List.copyOf(srsGoals.keySet());
+        Map<String, SrsCardStateStore.NodeSummary> storedByGoal;
         try {
-            for (int from = 0; from < goalIds.size(); from += SRS_STATE_QUERY_BATCH_SIZE) {
-                learnerClientStateRepository.findByLearnerAndNodeIds(skillpilotId,
-                        goalIds.subList(from, Math.min(from + SRS_STATE_QUERY_BATCH_SIZE, goalIds.size())))
-                        .forEach(state -> storedByGoal.put(state.getId().getNodeId(), state));
-            }
+            storedByGoal = cardStateSummaries(skillpilotId, srsGoals.keySet());
         } catch (RuntimeException error) {
             if (strict) throw new SrsStateUnavailableException("Memorization state is unavailable", error);
             return Map.of(); // Preserve existing normal mastery instead of fabricating an unsuccessful result.
         }
         // Resource equality identifies paths/classpath objects or actual package bytes;
         // a shared source label alone must not conflate distinct package decks.
-        Map<Resource, List<SrsCard>> decks = new HashMap<>();
-        Map<Resource, SrsStateUnavailableException> deckFailures = new HashMap<>();
+        Map<Resource, SrsDeck> decks = new HashMap<>();
         Map<String, SrsGoalSnapshot> result = new LinkedHashMap<>();
         Instant now = Instant.now();
         for (LearningGoal goal : srsGoals.values()) {
@@ -2015,16 +1952,13 @@ public class LearnerService {
                 if (source == null || source.isBlank()) throw new SrsStateUnavailableException("Memorization deck reference is missing");
                 Resource resource = deckResourceService.resolveDeckResource(goal.getId(), source);
                 if (resource == null) throw new SrsStateUnavailableException("Required memorization deck is unavailable");
-                if (deckFailures.containsKey(resource)) throw deckFailures.get(resource);
-                if (!decks.containsKey(resource)) {
-                    try { decks.put(resource, loadSrsDeckCards(resource, true)); }
-                    catch (SrsStateUnavailableException error) { deckFailures.put(resource, error); throw error; }
-                }
-                List<SrsCard> required = filterSrsCards(goal, decks.get(resource));
+                List<SrsCard> required = filterSrsCards(goal, deckCatalog.deck(resource, decks), true);
                 if (required.isEmpty()) throw new SrsStateUnavailableException("Required memorization deck is empty for this goal");
-                Map<String, Object> state = readStoredSrsState(storedByGoal.get(goal.getId()));
-                result.put(goal.getId(), new SrsGoalSnapshot(isSrsMasteredByVerifiedRecall(required, state),
-                        summarizeVerifiedRecallDeck(required, state, now).eligibleCards() > 0));
+                SrsCardStateStore.NodeSummary stored = storedByGoal.get(goal.getId());
+                if (stored != null) stored.requireReadable();
+                Map<String, SrsCardStateSummary> states = stored == null ? Map.of() : stored.cards();
+                result.put(goal.getId(), new SrsGoalSnapshot(isSrsMasteredByVerifiedRecall(required, states),
+                        release != null && hasReleasedRecallCard(required, states, now, release)));
             } catch (RuntimeException error) {
                 if (strict) {
                     if (error instanceof SrsStateUnavailableException unavailable) throw unavailable;
@@ -2041,28 +1975,36 @@ public class LearnerService {
     public Map<String, Boolean> resolveSrsMasterySnapshot(
             String skillpilotId, Collection<LearningGoal> goals) {
         Map<String, Boolean> result = new LinkedHashMap<>();
-        resolveSrsGoalSnapshots(skillpilotId, goals, true)
+        resolveSrsGoalSnapshots(skillpilotId, goals, true, null)
                 .forEach((id, snapshot) -> result.put(id, snapshot.mastered()));
         return Collections.unmodifiableMap(result);
     }
 
-    private boolean isSrsMasteredByVerifiedRecall(List<SrsCard> cards, Map<String, Object> srsState) {
-        if (cards == null || cards.isEmpty()) {
-            return false;
-        }
-        if (srsState == null || srsState.isEmpty()) {
+    /** Deck goal mastery is unchanged: every required card has a passed Verified Recall result. */
+    private boolean isSrsMasteredByVerifiedRecall(List<SrsCard> cards, Map<String, SrsCardStateSummary> states) {
+        if (cards == null || cards.isEmpty() || states == null || states.isEmpty()) {
             return false;
         }
         for (SrsCard card : cards) {
-            Object rawState = srsState.get(card.id);
-            if (!(rawState instanceof Map<?, ?> stateMap)) {
-                return false;
-            }
-            if (!isVerifiedRecallPassed(stateMap.get("verifiedRecall"))) {
+            SrsCardStateSummary state = states.get(card.id());
+            if (state == null || !state.recallPassed()) {
                 return false;
             }
         }
         return true;
+    }
+
+    private boolean hasReleasedRecallCard(List<SrsCard> cards, Map<String, SrsCardStateSummary> states,
+            Instant now, Supplier<SrsCardRelease> release) {
+        SrsCardRelease resolved = null;
+        for (SrsCard card : cards) {
+            SrsCardStateSummary state = states.get(card.id());
+            // Only a card that is still open today needs the (lazily computed) release rule.
+            if (state != null && (state.recallPassed() || state.testedOn(now, VERIFIED_RECALL_DAY_ZONE))) continue;
+            if (resolved == null) resolved = release.get();
+            if (SrsCardSelection.recallEligible(card, state, resolved, now, VERIFIED_RECALL_DAY_ZONE)) return true;
+        }
+        return false;
     }
 
     private boolean isVerifiedRecallPassed(Object value) {
@@ -2088,34 +2030,8 @@ public class LearnerService {
         return testedDate.equals(referenceDate);
     }
 
-    private boolean wasVerifiedRecallTestedAfter(Object value, Instant instant) {
-        if (!(value instanceof Map<?, ?> verified) || instant == null) {
-            return false;
-        }
-        Instant testedAt = parseInstant(verified.get("lastTestedAt"));
-        return testedAt != null && testedAt.isAfter(instant);
-    }
-
     private Instant parseInstant(Object value) {
-        if (value instanceof Instant instant) {
-            return instant;
-        }
-        if (value instanceof Number number) {
-            return Instant.ofEpochMilli(number.longValue());
-        }
-        if (value instanceof String text && !text.isBlank()) {
-            try {
-                return Instant.parse(text.trim());
-            } catch (Exception ignored) {
-                try {
-                    long epochMillis = Long.parseLong(text.trim());
-                    return Instant.ofEpochMilli(epochMillis);
-                } catch (Exception ignoredAgain) {
-                    return null;
-                }
-            }
-        }
-        return null;
+        return SrsCardStateSummary.parseInstant(value);
     }
 
     private Instant nextVerifiedRecallEligibleAt(Instant now) {
@@ -2126,25 +2042,92 @@ public class LearnerService {
                 .toInstant();
     }
 
-    private boolean isSrsGoalUnavailableForVerifiedRecall(String skillpilotId, LearningGoal goal) {
+    /**
+     * The release rule of issue #85 for this request: counted understanding
+     * goals are the learner-facing target goals of the projection, passed goals
+     * are stored mastery at the threshold plus unit planning credits.
+     */
+    private SrsCardRelease cardRelease(GoalProjection projection, Map<String, Double> mastery, Set<String> credits) {
+        if (projection == null) {
+            return SrsCardRelease.all();
+        }
+        Set<String> counted = new HashSet<>(projection.targetGoalIds());
+        counted.removeAll(projection.prerequisiteOnlyGoalIds());
+        Set<String> passed = new HashSet<>(credits == null ? Set.of() : credits);
+        if (mastery != null) {
+            mastery.forEach((goalId, value) -> {
+                if (goalId != null && value != null && value >= PLANNING_SCOPE_MASTERY_THRESHOLD) passed.add(goalId);
+            });
+        }
+        return new SrsCardRelease(counted, passed);
+    }
+
+    private SrsCardRelease cardRelease(Learner learner, GoalProjection projection) {
+        if (learner == null || projection == null) {
+            return SrsCardRelease.all();
+        }
+        return cardRelease(projection, ordinaryGoalMastery(learner), unitEntryPlanningCredits(learner, projection));
+    }
+
+    /**
+     * The learner's mastery as {@link #getMastery} projects it, without the card-derived
+     * deck goal overlay: understanding goals are ordinary goals, so release needs no card state.
+     */
+    private Map<String, Double> ordinaryGoalMastery(Learner learner) {
+        Map<String, Double> stored = new HashMap<>();
+        for (Mastery mastery : masteryRepository.findByLearner_SkillpilotId(learner.getSkillpilotId())) {
+            stored.put(mastery.getGoalKey(), mastery.getValue());
+        }
+        return applyCanonicalMasteryProjection(masteryProjectionGoals(learner), stored,
+                resolveProjectionStateFilterId(learner));
+    }
+
+    private SrsCardRelease cardRelease(String skillpilotId) {
+        Learner learner = getLearner(skillpilotId);
+        if (learner.getSelectedCurriculum() == null || learner.getSelectedCurriculum().isBlank()) {
+            return SrsCardRelease.all();
+        }
+        return cardRelease(learner, getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()));
+    }
+
+    /** Deck goals without a released card that is eligible today; one batched snapshot for all goals. */
+    private Set<String> unavailableVerifiedRecallGoals(
+            String skillpilotId, Collection<LearningGoal> goals, Supplier<SrsCardRelease> release) {
+        List<LearningGoal> memoryGoals = goals == null ? List.of()
+                : goals.stream().filter(Objects::nonNull).filter(this::isSrsGoal).toList();
+        if (memoryGoals.isEmpty()) return Set.of();
+        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(
+                skillpilotId, memoryGoals, false, SingletonSupplier.of(release));
+        Set<String> unavailable = new HashSet<>();
+        for (LearningGoal goal : memoryGoals) {
+            SrsGoalSnapshot snapshot = snapshots.get(goal.getId());
+            if (snapshot == null || !snapshot.recallAvailable()) unavailable.add(goal.getId());
+        }
+        return unavailable;
+    }
+
+    private boolean isSrsGoalUnavailableForVerifiedRecall(
+            Learner learner, GoalProjection projection, Map<String, Double> mastery, LearningGoal goal) {
         if (goal == null || !isSrsGoal(goal)) {
             return false;
         }
-        return !hasVerifiedRecallEligibleCardsToday(skillpilotId, goal);
-    }
-
-    private boolean hasVerifiedRecallEligibleCardsToday(String skillpilotId, LearningGoal goal) {
-        if (goal == null || !isSrsGoal(goal)) return false;
-        SrsGoalSnapshot snapshot = resolveSrsGoalSnapshots(skillpilotId, List.of(goal), false).get(goal.getId());
-        return snapshot != null && snapshot.recallAvailable();
+        return unavailableVerifiedRecallGoals(learner.getSkillpilotId(), List.of(goal),
+                () -> cardRelease(projection, mastery, projection == null ? Set.of()
+                        : unitEntryPlanningCredits(learner, projection))).contains(goal.getId());
     }
 
     private List<FrontierGoal> filterVerifiedRecallAvailableMemoryGoals(
             String skillpilotId, List<FrontierGoal> goals) {
+        return filterVerifiedRecallAvailableMemoryGoals(skillpilotId, goals, () -> cardRelease(skillpilotId));
+    }
+
+    private List<FrontierGoal> filterVerifiedRecallAvailableMemoryGoals(
+            String skillpilotId, List<FrontierGoal> goals, Supplier<SrsCardRelease> release) {
         if (goals == null || goals.isEmpty()) return goals;
         List<LearningGoal> memoryGoals = goals.stream().filter(this::isMemoryFrontierGoal)
                 .map(goal -> landscapeService.getGoalDefinition(goal.id())).filter(Objects::nonNull).toList();
-        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(skillpilotId, memoryGoals, false);
+        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(
+                skillpilotId, memoryGoals, false, SingletonSupplier.of(release));
         return goals.stream().filter(goal -> !isMemoryFrontierGoal(goal)
                 || snapshots.containsKey(goal.id()) && snapshots.get(goal.id()).recallAvailable()).toList();
     }
@@ -2152,7 +2135,7 @@ public class LearnerService {
     private Map<String, Double> applySrsMasteryOverlay(String skillpilotId,
             Map<String, LearningGoal> goals, Map<String, Double> mastery) {
         if (goals == null || goals.isEmpty()) return mastery;
-        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(skillpilotId, goals.values(), false);
+        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(skillpilotId, goals.values(), false, null);
         if (snapshots.isEmpty()) return mastery;
         Map<String, Double> result = new HashMap<>(mastery);
         snapshots.forEach((id, snapshot) -> result.put(id, snapshot.mastered() ? 1.0 : 0.0));
@@ -2163,13 +2146,13 @@ public class LearnerService {
     public long countSrsMastery(String skillpilotId, Set<String> goalIds) {
         if (skillpilotId == null || goalIds == null || goalIds.isEmpty()) return 0;
         List<LearningGoal> goals = goalIds.stream().map(landscapeService::getGoalDefinition).filter(Objects::nonNull).toList();
-        return resolveSrsGoalSnapshots(skillpilotId, goals, false).values().stream().filter(SrsGoalSnapshot::mastered).count();
+        return resolveSrsGoalSnapshots(skillpilotId, goals, false, null).values().stream().filter(SrsGoalSnapshot::mastered).count();
     }
 
     private Map<String, MasteryEntryDTO> applySrsMasteryOverlayWithTimestamps(String skillpilotId,
             Map<String, LearningGoal> goals, Map<String, MasteryEntryDTO> mastery) {
         if (goals == null || goals.isEmpty()) return mastery;
-        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(skillpilotId, goals.values(), false);
+        Map<String, SrsGoalSnapshot> snapshots = resolveSrsGoalSnapshots(skillpilotId, goals.values(), false, null);
         if (snapshots.isEmpty()) return mastery;
         Map<String, MasteryEntryDTO> result = new HashMap<>(mastery);
         Instant now = Instant.now();
@@ -2195,11 +2178,34 @@ public class LearnerService {
     @Transactional(readOnly = true)
     public ClientStateSnapshot getClientState(String skillpilotId, String nodeId) {
         ensureLearnerExists(skillpilotId);
-        LearnerClientStateId id = new LearnerClientStateId(skillpilotId, nodeId);
-        LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
+        SrsCardStateStore.NodeState stored = loadCardNode(skillpilotId, nodeId);
+        return new ClientStateSnapshot(stored.updatedAt(), stored.readable(),
+                List.copyOf(lockedCardIds(getLearner(skillpilotId), nodeId)));
+    }
 
-        return new ClientStateSnapshot(
-                stored == null ? null : stored.getClientStateUpdatedAt(), readStoredSrsState(stored));
+    /**
+     * The cards of a deck goal that the release rule keeps out of the learner's
+     * box (issue #85), in deck order of the German and then the English deck.
+     * A node that is not a deck goal, or a learner without a curriculum, has none.
+     */
+    private Set<String> lockedCardIds(Learner learner, String nodeId) {
+        if (learner == null || nodeId == null || nodeId.isBlank()
+                || learner.getSelectedCurriculum() == null || learner.getSelectedCurriculum().isBlank()) {
+            return Set.of();
+        }
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        LearningGoal goal = projection.visibleGoals().get(nodeId);
+        if (goal == null) goal = landscapeService.getGoalDefinition(nodeId);
+        if (goal == null || !isSrsGoal(goal)) return Set.of();
+        SrsCardRelease release = cardRelease(learner, projection);
+        Set<String> locked = new LinkedHashSet<>();
+        Map<Resource, SrsDeck> decks = new HashMap<>();
+        for (String language : List.of("de", "en")) {
+            for (SrsCard card : filterSrsCards(goal, srsDeck(goal, getVocabularySource(goal, language), decks), false)) {
+                if (!release.isReleased(card)) locked.add(card.id());
+            }
+        }
+        return locked;
     }
 
     @Transactional
@@ -2211,22 +2217,29 @@ public class LearnerService {
             return new ClientStateResponse("ok", Instant.now(), 0);
         }
 
-        LearnerClientStateId id = new LearnerClientStateId(skillpilotId, nodeId);
-        LearnerClientState existing = learnerClientStateRepository.findById(id).orElse(null);
-        Instant currentUpdatedAt = existing == null ? null : existing.getClientStateUpdatedAt();
+        SrsCardStateStore.NodeState existing = loadCardNode(skillpilotId, nodeId);
+        Instant currentUpdatedAt = existing.updatedAt();
         if (!SrsPracticeStateGuard.matches(currentUpdatedAt, request.expectedUpdatedAt())) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "SRS state changed. Reload the current state before synchronizing practice.");
         }
         Map<String, Object> merged;
         try {
-            merged = SrsPracticeStateGuard.mergePractice(readStoredSrsState(existing), request.srsState());
+            // Issue #85: a locked card without stored state is not in the box; its practice entry is ignored.
+            Map<String, Object> incoming = SrsPracticeStateGuard.withoutLockedUnstoredCards(
+                    request.srsState(), existing.readable(), lockedCardIds(learner, nodeId));
+            merged = SrsPracticeStateGuard.mergePractice(existing.readable(), incoming);
         } catch (IllegalArgumentException exception) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Invalid client state payload", exception);
         }
         Instant savedAt = Instant.now().truncatedTo(java.time.temporal.ChronoUnit.MICROS);
-        persistVerifiedRecallBatchClientState(learner, nodeId, merged, savedAt);
+        // The node's timestamp is the latest of its rows; a whole-node write must exceed all of them.
+        if (currentUpdatedAt != null && !savedAt.isAfter(currentUpdatedAt)) {
+            savedAt = currentUpdatedAt.truncatedTo(java.time.temporal.ChronoUnit.MICROS)
+                    .plus(1, java.time.temporal.ChronoUnit.MICROS);
+        }
+        requireCardStateStore().replaceNode(skillpilotId, nodeId, merged, savedAt);
         advanceCoachStateRevision(learner);
 
         eventPublisher.publishEvent(new LearnerStateChangedEvent(this, skillpilotId, "CLIENT_STATE_UPDATED", nodeId));
@@ -2276,43 +2289,47 @@ public class LearnerService {
         }
 
         Instant reviewedAt = Instant.now();
-        Object previousCardState = context.srsState().get(card.id);
-        if (!isMemoryPracticeCardDue(previousCardState, reviewedAt)) {
+        // A locked or removed card is never due; it is rejected like a scheduled one.
+        if (!SrsCardSelection.due(card, context.states().get(card.id()), context.release(), reviewedAt)) {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.CONFLICT,
                     "Card is not due for memory practice.");
         }
 
-        Map<String, Object> nextState = new LinkedHashMap<>(context.srsState());
-        Map<String, Object> cardState = toMutableStringObjectMap(previousCardState);
-        int previousInterval = nonNegativeFiniteInt(cardState.get("interval"), 0);
-        int previousRepetition = nonNegativeFiniteInt(
-                firstPresent(cardState, "repetition", "repetitions"),
-                0);
-        double previousEf = numberValue(firstPresent(cardState, "ef", "easeFactor"), 2.5).doubleValue();
-        if (!Double.isFinite(previousEf)) {
-            previousEf = 2.5;
-        }
-        previousEf = Math.max(1.3, previousEf);
+        Map<String, Object> cardState = requireCardStateStore().updateCards(skillpilotId, context.goal().getId(),
+                List.of(card.id()), (cardId, previous) -> {
+                    int previousInterval = nonNegativeFiniteInt(previous.get("interval"), 0);
+                    int previousRepetition = nonNegativeFiniteInt(
+                            firstPresent(previous, "repetition", "repetitions"),
+                            0);
+                    double previousEf = numberValue(firstPresent(previous, "ef", "easeFactor"), 2.5).doubleValue();
+                    if (!Double.isFinite(previousEf)) {
+                        previousEf = 2.5;
+                    }
+                    previousEf = Math.max(1.3, previousEf);
 
-        SrsReviewResult review = calculateSrsReview(
-                quality,
-                previousInterval,
-                previousEf,
-                previousRepetition);
-        cardState.put("id", card.id);
-        cardState.put("interval", review.interval());
-        cardState.put("repetition", review.repetition());
-        cardState.put("ef", review.ef());
-        cardState.put(
-                "nextReview",
-                reviewedAt.toEpochMilli() + review.interval() * 24L * 60L * 60L * 1000L);
-        nextState.put(card.id, cardState);
+                    SrsReviewResult review = calculateSrsReview(
+                            quality,
+                            previousInterval,
+                            previousEf,
+                            previousRepetition);
+                    previous.put("id", cardId);
+                    previous.put("interval", review.interval());
+                    previous.put("repetition", review.repetition());
+                    previous.put("ef", review.ef());
+                    previous.put(
+                            "nextReview",
+                            reviewedAt.toEpochMilli() + review.interval() * 24L * 60L * 60L * 1000L);
+                    return previous;
+                }, reviewedAt).get(card.id());
 
-        persistMemoryPracticeState(learner, context.goal().getId(), nextState, reviewedAt);
+        publishMemoryPracticeChange(learner, context.goal().getId());
+        Map<String, SrsCardStateSummary> nextStates = new HashMap<>(context.states());
+        nextStates.put(card.id(), SrsCardStateSummary.of(cardState));
         return buildMemoryPracticeResponse(
                 language,
-                new MemoryPracticeContext(context.goal(), context.title(), context.cards(), nextState),
+                new MemoryPracticeContext(context.goal(), context.title(), context.cards(), context.release(),
+                        Collections.unmodifiableMap(nextStates)),
                 reviewedAt);
     }
 
@@ -2390,13 +2407,14 @@ public class LearnerService {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Card is not part of this memorization goal.");
         }
+        requireReleasedForVerifiedRecall(context, card);
         return new VerifiedRecallAnswerResponse(
                 verifiedRecallAnswerInstruction(language),
                 context.goal().getId(),
-                card.id,
-                card.front,
-                card.back,
-                card.category);
+                card.id(),
+                card.front(),
+                card.back(),
+                card.category());
     }
 
     /**
@@ -2409,6 +2427,20 @@ public class LearnerService {
             String skillpilotId,
             String language,
             VerifiedRecallBatchAnswerRequest request) {
+        return getVerifiedRecallAnswersBatch(skillpilotId, language, request, null);
+    }
+
+    /**
+     * Loads the expected answers of an issued batch; with {@code practiceScopeId}
+     * the batch belongs to the unit check of that unit (issue #85) and the deck
+     * goal does not need to be the active goal.
+     */
+    @Transactional
+    public VerifiedRecallBatchAnswerResponse getVerifiedRecallAnswersBatch(
+            String skillpilotId,
+            String language,
+            VerifiedRecallBatchAnswerRequest request,
+            String practiceScopeId) {
         if (request == null) {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.BAD_REQUEST,
@@ -2417,19 +2449,24 @@ public class LearnerService {
         requireVerifiedRecallBatchIssuedAt(request.issuedAt());
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        VerifiedRecallContext context =
-                resolveVerifiedRecallContext(skillpilotId, request.goalId(), language, learner);
-        List<SrsCard> cards = requireCurrentVerifiedRecallBatch(
-                context,
-                request.configuredBatchSize(),
-                request.cardIds(),
-                request.issuedAt());
-        List<VerifiedRecallBatchAnswerCard> answers = cards.stream()
+        IssuedRecallBatch issued;
+        VerifiedRecallContext context;
+        if (practiceScopeId == null) {
+            context = resolveVerifiedRecallContext(skillpilotId, request.goalId(), language, learner);
+            issued = requireIssuedVerifiedRecallBatch(context, List.of(context.scope()),
+                    request.configuredBatchSize(), request.cardIds(), request.issuedAt());
+        } else {
+            UnitCheckScopes unit = resolveUnitCheckScopes(skillpilotId, learner, request.goalId(), practiceScopeId, language);
+            context = unit.context();
+            issued = requireIssuedVerifiedRecallBatch(context, unit.scopes(),
+                    request.configuredBatchSize(), request.cardIds(), request.issuedAt());
+        }
+        List<VerifiedRecallBatchAnswerCard> answers = issued.cards().stream()
                 .map(card -> new VerifiedRecallBatchAnswerCard(
-                        card.id,
-                        card.front,
-                        card.back,
-                        card.category))
+                        card.id(),
+                        card.front(),
+                        card.back(),
+                        card.category()))
                 .toList();
         return new VerifiedRecallBatchAnswerResponse(
                 verifiedRecallBatchAnswerInstruction(language),
@@ -2461,42 +2498,39 @@ public class LearnerService {
                     "Card is not part of this memorization goal.");
         }
 
-        Map<String, Object> nextState = new LinkedHashMap<>(context.srsState());
-        Map<String, Object> cardState = toMutableStringObjectMap(nextState.get(card.id));
-        cardState.put("id", card.id);
-
         Instant testedAt = Instant.now();
-        Map<String, Object> previousVerified = toMutableStringObjectMap(cardState.get("verifiedRecall"));
-        if (isVerifiedRecallPassed(previousVerified)) {
+        SrsCardStateSummary previous = context.states().get(card.id());
+        if (previous != null && previous.recallPassed()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "Card has already been verified for this memorization goal.");
         }
-        if (wasVerifiedRecallTestedOn(previousVerified, testedAt)) {
+        if (previous != null && previous.testedOn(testedAt, VERIFIED_RECALL_DAY_ZONE)) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "Card has already been tested today.");
         }
-        applyVerifiedRecallScheduling(cardState, request.passed(), testedAt);
-        nextState.put(card.id, cardState);
+        requireReleasedForVerifiedRecall(context, card);
+        Map<String, Object> cardState = requireCardStateStore().updateCards(skillpilotId, context.goal().getId(),
+                List.of(card.id()), (cardId, state) -> {
+                    state.put("id", cardId);
+                    applyVerifiedRecallScheduling(state, request.passed(), testedAt);
+                    return state;
+                }, testedAt).get(card.id());
 
-        persistVerifiedRecallBatchClientState(learner, context.goal().getId(), nextState, testedAt);
         advanceCoachStateRevision(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(
                 this, skillpilotId, "CLIENT_STATE_UPDATED", context.goal().getId()));
 
-        VerifiedRecallContext updatedContext = new VerifiedRecallContext(
-                context.goal(),
-                context.cards(),
-                nextState);
+        VerifiedRecallContext updatedContext = withCardState(context, card.id(), cardState);
         VerifiedRecallPromptResponse next = buildVerifiedRecallPromptResponse(
                 skillpilotId,
                 language,
                 updatedContext,
                 LEGACY_VERIFIED_RECALL_BATCH_SIZE,
                 false);
-        int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
+        int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.states());
         int pendingCards = Math.max(0, updatedContext.cards().size() - verifiedCards);
         boolean masterySaved = false;
-        if (pendingCards == 0 && isSrsMasteredByVerifiedRecall(updatedContext.cards(), updatedContext.srsState())) {
+        if (pendingCards == 0 && isSrsMasteredByVerifiedRecall(updatedContext.cards(), updatedContext.states())) {
             persistVerifiedRecallMastery(skillpilotId, context.goal());
             if (Boolean.TRUE.equals(learner.getFollowLearningPlans())) {
                 getLearnerState(skillpilotId, context.goal().getId(), true, true);
@@ -2504,7 +2538,7 @@ public class LearnerService {
             masterySaved = true;
         }
         return new VerifiedRecallResultResponse(
-                card.id,
+                card.id(),
                 request.passed(),
                 verifiedCards,
                 pendingCards,
@@ -2518,68 +2552,84 @@ public class LearnerService {
      * Persists one complete verified-recall batch atomically.
      *
      * <p>All structural and state-dependent checks happen before the first
-     * mutation. The card state is written once, the learner revision advances
-     * once, and one aggregate learner-state event is published. The returned
-     * successor is the authoritative mutable state after normal active-goal,
-     * autopilot, and focus-completion transitions have run.</p>
+     * mutation. Exactly the batch's card rows are written, the learner revision
+     * advances once, and one aggregate learner-state event is published. The
+     * returned successor is the authoritative mutable state after normal
+     * active-goal, autopilot, and focus-completion transitions have run.</p>
      */
     @Transactional
     public VerifiedRecallBatchResultResponse recordVerifiedRecallResultsBatch(
             String skillpilotId,
             String language,
             VerifiedRecallBatchResultRequest request) {
+        return recordVerifiedRecallResultsBatch(skillpilotId, language, request, null);
+    }
+
+    /**
+     * Persists one complete batch; with {@code practiceScopeId} the batch is a
+     * unit check (issue #85). A unit check writes only its cards' rows, derives
+     * the deck goal's mastery exactly as before, never writes mastery to another
+     * goal, keeps the learner's active ordinary goal and returns to it instead of
+     * handing off as after a completed deck goal.
+     */
+    @Transactional
+    public VerifiedRecallBatchResultResponse recordVerifiedRecallResultsBatch(
+            String skillpilotId,
+            String language,
+            VerifiedRecallBatchResultRequest request,
+            String practiceScopeId) {
         validateVerifiedRecallBatchResultRequest(request);
 
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
-        VerifiedRecallContext context =
-                resolveVerifiedRecallContext(skillpilotId, request.goalId(), language, learner);
+        VerifiedRecallContext context;
+        IssuedRecallBatch issued;
+        if (practiceScopeId == null) {
+            context = resolveVerifiedRecallContext(skillpilotId, request.goalId(), language, learner);
+            issued = requireIssuedVerifiedRecallBatch(context, List.of(context.scope()),
+                    request.configuredBatchSize(), request.cardIds(), request.issuedAt());
+        } else {
+            UnitCheckScopes unit = resolveUnitCheckScopes(skillpilotId, learner, request.goalId(), practiceScopeId, language);
+            context = unit.context();
+            issued = requireIssuedVerifiedRecallBatch(context, unit.scopes(),
+                    request.configuredBatchSize(), request.cardIds(), request.issuedAt());
+        }
         Instant testedAt = verifiedRecallNow();
-        List<SrsCard> cards = requireCurrentVerifiedRecallBatch(
-                context,
-                request.configuredBatchSize(),
-                request.cardIds(),
-                request.issuedAt());
+        List<SrsCard> cards = issued.cards();
 
         // Validate every item before building or persisting any successor state.
+        Map<String, Boolean> passedByCard = new LinkedHashMap<>();
         for (int index = 0; index < cards.size(); index++) {
             VerifiedRecallBatchCardResult result = request.results().get(index);
-            if (!cards.get(index).id.equals(result.cardId())) {
+            if (!cards.get(index).id().equals(result.cardId())) {
                 throw new ResponseStatusException(
                         org.springframework.http.HttpStatus.BAD_REQUEST,
                         "verified-recall results must match the complete batch in exact order.");
             }
+            passedByCard.put(result.cardId(), result.passed());
         }
+        boolean deckGoalWasActive = context.goal().getId().equals(learner.getActiveGoalId());
 
-        Map<String, Object> nextState = new LinkedHashMap<>(context.srsState());
+        Map<String, Map<String, Object>> written = requireCardStateStore().updateCards(skillpilotId,
+                context.goal().getId(), List.copyOf(passedByCard.keySet()), (cardId, state) -> {
+                    state.put("id", cardId);
+                    applyVerifiedRecallScheduling(state, passedByCard.get(cardId), testedAt);
+                    return state;
+                }, testedAt);
         List<VerifiedRecallBatchSavedResult> savedResults = new ArrayList<>(cards.size());
-        for (int index = 0; index < cards.size(); index++) {
-            SrsCard card = cards.get(index);
-            VerifiedRecallBatchCardResult result = request.results().get(index);
-            Map<String, Object> cardState = toMutableStringObjectMap(nextState.get(card.id));
-            cardState.put("id", card.id);
-            applyVerifiedRecallScheduling(
-                    cardState,
-                    result.passed(),
-                    testedAt);
-            nextState.put(card.id, cardState);
-            savedResults.add(new VerifiedRecallBatchSavedResult(card.id, result.passed()));
+        Map<String, SrsCardStateSummary> nextStates = new HashMap<>(context.states());
+        for (SrsCard card : cards) {
+            nextStates.put(card.id(), SrsCardStateSummary.of(written.get(card.id())));
+            savedResults.add(new VerifiedRecallBatchSavedResult(card.id(), passedByCard.get(card.id())));
         }
 
-        persistVerifiedRecallBatchClientState(
-                learner,
-                context.goal().getId(),
-                nextState,
-                testedAt);
-
-        VerifiedRecallContext updatedContext = new VerifiedRecallContext(
-                context.goal(),
-                context.cards(),
-                nextState);
-        int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
+        // The next batch comes from the scope this batch was issued for.
+        VerifiedRecallContext updatedContext = new VerifiedRecallContext(context.goal(), context.cards(),
+                issued.scope(), context.unitScope(), context.release(), Collections.unmodifiableMap(nextStates));
+        int verifiedCards = countVerifiedRecall(updatedContext.cards(), updatedContext.states());
         int pendingCards = Math.max(0, updatedContext.cards().size() - verifiedCards);
         boolean masterySaved = pendingCards == 0
-                && isSrsMasteredByVerifiedRecall(updatedContext.cards(), updatedContext.srsState());
+                && isSrsMasteredByVerifiedRecall(updatedContext.cards(), updatedContext.states());
         if (masterySaved) {
             persistVerifiedRecallMastery(skillpilotId, context.goal(), false);
         }
@@ -2594,9 +2644,11 @@ public class LearnerService {
                 updatedContext,
                 request.configuredBatchSize(),
                 true);
+        // A unit check hands off only when it completed the deck goal that was itself active.
+        boolean handOff = masterySaved && (practiceScopeId == null || deckGoalWasActive);
         UnifiedLearnerStateResponse successor = getLearnerState(
                 skillpilotId,
-                masterySaved ? context.goal().getId() : null,
+                handOff ? context.goal().getId() : null,
                 true,
                 false);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(
@@ -2613,6 +2665,21 @@ public class LearnerService {
                 masterySaved ? context.goal().getId() : null,
                 next,
                 successor);
+    }
+
+    private VerifiedRecallContext withCardState(VerifiedRecallContext context, String cardId, Map<String, Object> state) {
+        Map<String, SrsCardStateSummary> states = new HashMap<>(context.states());
+        states.put(cardId, SrsCardStateSummary.of(state));
+        return new VerifiedRecallContext(context.goal(), context.cards(), context.scope(), context.unitScope(),
+                context.release(), Collections.unmodifiableMap(states));
+    }
+
+    /** A locked card is never eligible for Verified Recall. */
+    private void requireReleasedForVerifiedRecall(VerifiedRecallContext context, SrsCard card) {
+        if (!context.release().isReleased(card)) {
+            throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                    "Card is not released for Verified Recall yet.");
+        }
     }
 
     private void validateVerifiedRecallBatchResultRequest(VerifiedRecallBatchResultRequest request) {
@@ -2654,34 +2721,51 @@ public class LearnerService {
         }
     }
 
-    private List<SrsCard> requireCurrentVerifiedRecallBatch(
+    /** A server-issued Verified Recall batch and the scope it was issued from. */
+    private record IssuedRecallBatch(List<SrsCard> scope, List<SrsCard> cards) {
+    }
+
+    /**
+     * Validates a server-issued batch against the scope it was issued for.
+     *
+     * <p>The batch must equal the selection the server makes at the issue
+     * instant for one of the candidate scopes: the whole deck for the deck
+     * goal's own check, or the issued unit's cards for a unit check. A change of
+     * the learner's unit context between issue and grading therefore keeps a
+     * unit batch answerable and gradable for exactly its cards, while a
+     * shortened, reordered, re-graded or otherwise stale batch matches none.</p>
+     */
+    private IssuedRecallBatch requireIssuedVerifiedRecallBatch(
             VerifiedRecallContext context,
+            List<List<SrsCard>> candidateScopes,
             int batchSize,
             List<String> cardIds,
-            Instant now) {
+            Instant issuedAt) {
         requireVerifiedRecallBatchSize(batchSize);
         requireNonEmptyDistinctVerifiedRecallCardIds(cardIds);
-        List<SrsCard> expected = selectNextVerifiedRecallCards(
-                context.cards(),
-                context.srsState(),
-                now,
-                batchSize);
-        List<String> expectedIds = expected.stream().map(card -> card.id).toList();
-        if (!expectedIds.equals(cardIds)) {
-            throw new ResponseStatusException(
-                    org.springframework.http.HttpStatus.CONFLICT,
-                    "verified-recall batch is incomplete, reordered, or no longer current.");
-        }
+        List<SrsCard> scope = SrsCardSelection.matchIssuedScope(candidateScopes, cardIds, context.states(),
+                context.release(), issuedAt, VERIFIED_RECALL_DAY_ZONE, batchSize).orElseThrow(() ->
+                new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                        "verified-recall batch is incomplete, reordered, or no longer current."));
+        List<SrsCard> expected = SrsCardSelection.nextRecallBatch(scope, context.states(), context.release(),
+                issuedAt, VERIFIED_RECALL_DAY_ZONE, batchSize);
         for (SrsCard card : expected) {
-            Object rawState = context.srsState().get(card.id);
-            if (rawState instanceof Map<?, ?> stateMap
-                    && wasVerifiedRecallTestedAfter(stateMap.get("verifiedRecall"), now)) {
+            SrsCardStateSummary state = context.states().get(card.id());
+            if (state != null && state.testedAfter(issuedAt)) {
                 throw new ResponseStatusException(
                         org.springframework.http.HttpStatus.CONFLICT,
                         "verified-recall batch changed after it was issued.");
             }
         }
-        return expected;
+        return new IssuedRecallBatch(scope, expected);
+    }
+
+    private List<SrsCard> requireCurrentVerifiedRecallBatch(
+            VerifiedRecallContext context,
+            int batchSize,
+            List<String> cardIds,
+            Instant issuedAt) {
+        return requireIssuedVerifiedRecallBatch(context, List.of(context.scope()), batchSize, cardIds, issuedAt).cards();
     }
 
     private void requireVerifiedRecallBatchIssuedAt(Instant issuedAt) {
@@ -2726,30 +2810,6 @@ public class LearnerService {
         }
     }
 
-    private void persistVerifiedRecallBatchClientState(
-            Learner learner,
-            String goalId,
-            Map<String, Object> srsState,
-            Instant testedAt) {
-        String json;
-        try {
-            json = objectMapper.writeValueAsString(srsState);
-        } catch (Exception exception) {
-            throw new ResponseStatusException(
-                    org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
-                    "Verified-recall batch state could not be stored.");
-        }
-        LearnerClientStateId id = new LearnerClientStateId(learner.getSkillpilotId(), goalId);
-        LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
-        if (stored == null) {
-            stored = new LearnerClientState(learner, goalId, json, testedAt);
-        } else {
-            stored.setClientState(json);
-            stored.setClientStateUpdatedAt(testedAt);
-        }
-        learnerClientStateRepository.save(stored);
-    }
-
     private void persistVerifiedRecallMastery(String skillpilotId, LearningGoal goal) {
         persistVerifiedRecallMastery(skillpilotId, goal, true);
     }
@@ -2786,38 +2846,36 @@ public class LearnerService {
     }
 
     private record MemoryPracticeContext(LearningGoal goal, String title, List<SrsCard> cards,
-            Map<String, Object> srsState) {}
+            SrsCardRelease release, Map<String, SrsCardStateSummary> states) {}
 
     private MemoryPracticeContext resolveMemoryPracticeContext(String skillpilotId, String goalId,
             String practiceScopeId, String language, Learner learner) {
         if (practiceScopeId == null) {
             VerifiedRecallContext full = resolveVerifiedRecallContext(skillpilotId, goalId, language, learner);
-            return new MemoryPracticeContext(full.goal(), full.goal().getTitle(), full.cards(), full.srsState());
+            return new MemoryPracticeContext(full.goal(), full.goal().getTitle(), full.cards(), full.release(),
+                    full.states());
         }
         if (goalId == null || !hasCompletedPersonalCurriculum(learner)) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
                     "Unit flashcard practice requires the learner’s selected curriculum and deck.");
         }
         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
-        if (compositionViewService != null && projection.targetGoalIds().contains(goalId)) {
-            List<CompositionViewService.CompositionStructureResolution> sections;
-            if (learner.getActiveGoalId() == null) {
-                var focus = explicitCoachUnitFocus(learner, projection);
-                sections = focus == null ? List.of() : List.of(focus);
-            } else {
-                var paths = projection.compositionViewIds().stream().flatMap(view -> compositionViewService
-                        .findLearnerFacingFocusAncestorPaths(view, learner.getActiveGoalId(), projection.structuralGoals()).stream())
-                        .toList();
-                sections = preferredCoachUnitPath(paths, new LinkedHashSet<>(resolveEffectiveProjectedFocusIds(learner, projection)));
-            }
-            for (var section : sections) {
-                if (!practiceScopeId.equals(section.nodeId())) continue;
-                List<SrsCard> cards = unitPracticeCards(learner, projection, goalId, section, language);
-                if (!cards.isEmpty()) {
-                    String sectionTitle = coachSectionTitle(section, projection, language);
-                    String title = (isEnglish(language) ? "Flashcards · " : "Lernkarten · ") + sectionTitle;
-                    return new MemoryPracticeContext(projection.visibleGoals().get(goalId), title, cards,
-                            loadSrsStateStrict(skillpilotId, goalId));
+        // A completion route that owns navigation still wins over guided card work.
+        if (!completionRouteOwnsNavigation(learner)) {
+            CardContext context = resolveCardContext(learner, projection, language);
+            if (context != null && practiceScopeId.equals(context.section().nodeId())) {
+                List<SrsCard> cards = context.cardsByDeckGoal().get(goalId);
+                if (cards != null && !cards.isEmpty()) {
+                    // One mastery and credit read serves the orientation gate and the release rule.
+                    Map<String, Double> mastery = ordinaryGoalMastery(learner);
+                    Set<String> credits = unitEntryPlanningCredits(learner, projection);
+                    if (requiredUnitOrientationGoalId(learner, projection, context.section().syntheticGoalId(),
+                            null, mastery, credits) == null) {
+                        String sectionTitle = coachSectionTitle(context.section(), projection, language);
+                        String title = (isEnglish(language) ? "Flashcards · " : "Lernkarten · ") + sectionTitle;
+                        return new MemoryPracticeContext(projection.visibleGoals().get(goalId), title, cards,
+                                cardRelease(projection, mastery, credits), readableCardStates(skillpilotId, goalId));
+                    }
                 }
             }
         }
@@ -2825,68 +2883,313 @@ public class LearnerService {
                 "No flashcard practice is offered for this unit in the current learner context.");
     }
 
-    private boolean hasUnitPracticeCards(Learner learner, GoalProjection projection, String goalId,
-            CompositionViewService.CompositionStructureResolution section, String language) {
-        return !unitPracticeCards(learner, projection, goalId, section, language).isEmpty();
+    /**
+     * One learner-facing unit and, per deck goal, the cards of its atomic goals (issue #85).
+     *
+     * @param cardsByDeckGoal deck goal id to the unit's cards of that deck in deck order;
+     *        every entry is non-empty and the map follows projection order
+     */
+    private record CardContext(CompositionViewService.CompositionStructureResolution section,
+            Map<String, List<SrsCard>> cardsByDeckGoal) {
     }
 
-    private boolean ordinaryUnitPracticeAllowed(Learner learner, GoalProjection projection) {
-        if (completionRouteOwnsNavigation(learner)) return false;
-        String activeId = learner.getActiveGoalId();
-        if (activeId == null) return !effectivePlanFollowing(learner);
-        LearningGoal active = projection.visibleGoals().get(activeId);
-        return projection.targetGoalIds().contains(activeId) && isAtomicGoal(active) && !isExamGoal(active)
-                && !isSrsGoal(active) && !isOrientationGoal(active)
-                && masteryRepository.findById(new MasteryId(learner.getSkillpilotId(), activeId))
-                        .filter(result -> result.getValue() >= PLANNING_SCOPE_MASTERY_THRESHOLD).isEmpty()
-                && !isGoalOutOfPlannedScope(activeId, resolveProjectedTargetScopeIds(
-                        resolveEffectiveProjectedFocusIds(learner, projection), projection), projection.structuralGoals(), null);
+    /**
+     * The card context: the learner's explicit unit focus when the active goal
+     * lies inside it, otherwise the innermost learner-facing unit on the active
+     * goal's unit path that has cards. Without an active goal the explicit unit
+     * focus is the context; without both, the goal of the learner's latest
+     * completion anchors it, so the goal boundary after a completed goal keeps
+     * that goal's unit (issue #85). The context is never widened to the subject root.
+     */
+    private CardContext resolveCardContext(Learner learner, GoalProjection projection, String language) {
+        return resolveCardContext(learner, projection, language, () -> latestGoalCompletion(learner));
     }
 
-    private List<SrsCard> unitPracticeCards(Learner learner, GoalProjection projection, String goalId,
-            CompositionViewService.CompositionStructureResolution section, String language) {
-        if (unitLearningMaterialService == null || !ordinaryUnitPracticeAllowed(learner, projection)
-                || !projection.compositionViewIds().contains(section.viewId())
-                || !projection.targetGoalIds().contains(goalId) || projection.prerequisiteOnlyGoalIds().contains(goalId)
-                || requiredUnitOrientationGoalId(learner, projection, section.syntheticGoalId()) != null) {
-            return List.of();
+    private CardContext resolveCardContext(Learner learner, GoalProjection projection, String language,
+            Supplier<LearnerGoalCompletion> latestCompletion) {
+        if (compositionViewService == null || learner == null || projection == null
+                || !hasCompletedPersonalCurriculum(learner)) return null;
+        var focus = explicitCoachUnitFocus(learner, projection);
+        String activeId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), projection.visibleGoals(), false);
+        Map<Resource, SrsDeck> decks = new HashMap<>();
+        if (activeId == null) {
+            if (focus != null) {
+                var cards = unitCards(projection, focus, language, decks);
+                return cards.isEmpty() ? null : new CardContext(focus, cards);
+            }
+            LearnerGoalCompletion anchor = latestCompletion.get();
+            activeId = anchor == null ? null
+                    : resolveGoalIdInVisibleGoals(anchor.getGoalId(), projection.visibleGoals(), false);
+            if (activeId == null) return null;
         }
-        LearningGoal deck = projection.visibleGoals().get(goalId);
-        if (!isAtomicGoal(deck) || !isSrsGoal(deck)) return List.of();
-        String landscapeId = landscapeService.getLandscapeIdForGoal(goalId);
-        var material = unitLearningMaterialService.find(landscapeId, section.viewId(), section.nodeId());
-        if (material.isEmpty() || !goalId.equals(material.get().flashcardGoalId())) return List.of();
-        String source = getVocabularySource(deck, language);
-        if (source == null || source.isBlank()) return List.of();
-        Set<String> topicTags = projectedAtomicTargetIds(List.of(section.syntheticGoalId()), projection).stream()
+        String contextGoalId = activeId;
+        var paths = projection.compositionViewIds().stream().flatMap(viewId -> compositionViewService
+                .findLearnerFacingFocusAncestorPaths(viewId, contextGoalId, projection.structuralGoals()).stream()).toList();
+        if (focus != null && paths.stream().anyMatch(path -> path.stream().anyMatch(section ->
+                focus.viewId().equals(section.viewId()) && focus.nodeId().equals(section.nodeId())))) {
+            var cards = unitCards(projection, focus, language, decks);
+            return cards.isEmpty() ? null : new CardContext(focus, cards);
+        }
+        var path = preferredCoachUnitPath(paths, new LinkedHashSet<>(resolveEffectiveProjectedFocusIds(learner, projection)));
+        for (var section : path) {
+            var cards = unitCards(projection, section, language, decks);
+            if (!cards.isEmpty()) return new CardContext(section, cards);
+        }
+        return null;
+    }
+
+    /** The learner's latest completion record, or {@code null}; hand-built fixtures have no ledger. */
+    private LearnerGoalCompletion latestGoalCompletion(Learner learner) {
+        return goalCompletionService == null || learner == null ? null
+                : goalCompletionService.latest(learner.getSkillpilotId()).orElse(null);
+    }
+
+    /**
+     * The cards of a unit: of every deck goal in the target projection (same
+     * landscape), the cards whose understanding goals intersect the unit's
+     * atomic content goals at every level of the unit hierarchy. Prerequisite-only
+     * entries, assessments, deck goals and orientation goals are not content goals.
+     */
+    private Map<String, List<SrsCard>> unitCards(GoalProjection projection,
+            CompositionViewService.CompositionStructureResolution section, String language, Map<Resource, SrsDeck> decks) {
+        if (section == null || !projection.compositionViewIds().contains(section.viewId())) return Map.of();
+        Map<String, Object> view = compositionViewService.findViewById(section.viewId());
+        if (view == null || !(view.get("landscapeId") instanceof String landscapeId)) return Map.of();
+        Set<String> atoms = projectedAtomicTargetIds(List.of(section.syntheticGoalId()), projection).stream()
                 .filter(id -> !projection.prerequisiteOnlyGoalIds().contains(id)
-                        && Objects.equals(landscapeId, landscapeService.getLandscapeIdForGoal(id)))
+                        && landscapeId.equals(landscapeService.getLandscapeIdForGoal(id)))
                 .filter(id -> {
                     LearningGoal member = projection.visibleGoals().get(id);
                     return !isExamGoal(member) && !isSrsGoal(member) && !isOrientationGoal(member);
-                }).map(id -> "goal:" + id).collect(Collectors.toSet());
-        return filterSrsCards(deck, loadSrsDeckCards(deck, source)).stream()
-                .filter(card -> card.tags != null && card.tags.stream().anyMatch(topicTags::contains)).toList();
+                }).collect(Collectors.toSet());
+        if (atoms.isEmpty()) return Map.of();
+        Map<String, List<SrsCard>> result = new LinkedHashMap<>();
+        for (String deckId : unitDeckGoalIds(projection, landscapeId, language)) {
+            LearningGoal deckGoal = projection.visibleGoals().get(deckId);
+            SrsDeck deck = srsDeck(deckGoal, getVocabularySource(deckGoal, language), decks);
+            List<SrsCard> byGoal = deck.cardsForUnderstandingGoals(atoms);
+            if (byGoal.isEmpty()) continue;
+            List<SrsCard> selected = filterSrsCards(deckGoal, deck, false);
+            Set<SrsCard> selectedCards = Collections.newSetFromMap(new java.util.IdentityHashMap<>());
+            selectedCards.addAll(selected);
+            List<SrsCard> cards = selected.size() == deck.cards(false).size() ? byGoal
+                    : byGoal.stream().filter(selectedCards::contains).toList();
+            if (!cards.isEmpty()) result.put(deckId, cards);
+        }
+        return result;
     }
 
+    /** Learner-facing atomic deck goals of the target projection in one landscape, in projection order. */
+    private List<String> unitDeckGoalIds(GoalProjection projection, String landscapeId, String language) {
+        List<String> decks = new ArrayList<>();
+        for (var entry : projection.visibleGoals().entrySet()) {
+            String id = entry.getKey();
+            LearningGoal goal = entry.getValue();
+            if (!projection.targetGoalIds().contains(id) || projection.prerequisiteOnlyGoalIds().contains(id)
+                    || !isAtomicGoal(goal) || !isSrsGoal(goal)) continue;
+            String source = getVocabularySource(goal, language);
+            if (source == null || source.isBlank() || !landscapeId.equals(landscapeService.getLandscapeIdForGoal(id))) continue;
+            decks.add(id);
+        }
+        return decks;
+    }
+
+    /**
+     * The card box of the learner's current card context, with the gates of guided card work.
+     *
+     * @param states per deck goal of the context, the typed card states; a damaged deck state is absent
+     */
+    private record UnitCardBox(CardContext context, Map<String, SrsCardSelection.BoxTally> tallies,
+            SrsCardRelease release, Map<String, Map<String, SrsCardStateSummary>> states) {
+    }
+
+    private UnitCardBox unitCardBox(Learner learner, GoalProjection projection, String language,
+            Map<String, Double> mastery, Set<String> credits) {
+        return unitCardBox(learner, projection, language, mastery, credits, () -> latestGoalCompletion(learner));
+    }
+
+    private UnitCardBox unitCardBox(Learner learner, GoalProjection projection, String language,
+            Map<String, Double> mastery, Set<String> credits, Supplier<LearnerGoalCompletion> latestCompletion) {
+        if (learner == null || projection == null || completionRouteOwnsNavigation(learner)) return null;
+        CardContext context = resolveCardContext(learner, projection, language, latestCompletion);
+        if (context == null || requiredUnitOrientationGoalId(learner, projection,
+                context.section().syntheticGoalId(), null, mastery, credits) != null) return null;
+        SrsCardRelease release = cardRelease(projection, mastery, credits);
+        Map<String, SrsCardStateStore.NodeSummary> stored =
+                cardStateSummaries(learner.getSkillpilotId(), context.cardsByDeckGoal().keySet());
+        Instant now = Instant.now();
+        Map<String, SrsCardSelection.BoxTally> tallies = new LinkedHashMap<>();
+        Map<String, Map<String, SrsCardStateSummary>> states = new LinkedHashMap<>();
+        context.cardsByDeckGoal().forEach((deckId, cards) -> {
+            SrsCardStateStore.NodeSummary node = stored.get(deckId);
+            if (node != null && node.damaged()) return; // A damaged deck state offers no card work.
+            Map<String, SrsCardStateSummary> deckStates = node == null ? Map.of() : node.cards();
+            states.put(deckId, deckStates);
+            tallies.put(deckId, SrsCardSelection.tally(cards, deckStates, release, now));
+        });
+        return new UnitCardBox(context, tallies, release, states);
+    }
+
+    /** The deck goal the unit check covers: the first of the context with a card a batch may contain now. */
+    private String unitCheckDeckGoalId(UnitCardBox box, Instant now) {
+        for (var entry : box.context().cardsByDeckGoal().entrySet()) {
+            Map<String, SrsCardStateSummary> states = box.states().get(entry.getKey());
+            if (states != null && SrsCardSelection.recallEligibleCount(entry.getValue(), states, box.release(), now,
+                    VERIFIED_RECALL_DAY_ZONE) > 0) return entry.getKey();
+        }
+        return null;
+    }
+
+    /**
+     * Facts for the coach's card step in the learner's current context (issue #85).
+     *
+     * <p>Counts and identifiers only: no card text and no learner identifier. It
+     * reads the shared deck catalog (no deck parsing after the first read of a
+     * runtime generation), the learner's mastery and unit credits once, the
+     * typed card states of the context's deck goals with one query and the
+     * latest completion record once. While the active goal is itself a deck goal
+     * or an exam, that goal's workflow owns card work and the step is empty.</p>
+     */
+    @Transactional(readOnly = true)
+    public SrsCardStepFacts getCardStepFacts(String skillpilotId, String language) {
+        Learner learner = getLearner(skillpilotId);
+        if (!hasCompletedPersonalCurriculum(learner)) return SrsCardStepFacts.none();
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        String activeId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), projection.visibleGoals(), false);
+        LearningGoal active = activeId == null ? null : projection.visibleGoals().get(activeId);
+        if (active != null && (isSrsGoal(active) || isExamGoal(active))) return SrsCardStepFacts.none();
+        Map<String, Double> mastery = ordinaryGoalMastery(learner);
+        Set<String> credits = unitEntryPlanningCredits(learner, projection);
+        Supplier<LearnerGoalCompletion> latest = SingletonSupplier.of(() -> latestGoalCompletion(learner));
+        UnitCardBox box = unitCardBox(learner, projection, language, mastery, credits, latest);
+        if (box == null) return SrsCardStepFacts.none();
+        List<String> deckGoalIds = new ArrayList<>();
+        String practiceGoalId = null;
+        int dueCards = 0;
+        int boxCards = 0;
+        boolean ready = false;
+        boolean allReady = true;
+        for (var entry : box.tallies().entrySet()) {
+            SrsCardSelection.BoxTally tally = entry.getValue();
+            if (tally.boxCards() == 0) continue;
+            deckGoalIds.add(entry.getKey());
+            if (practiceGoalId == null && tally.dueCards() > 0) practiceGoalId = entry.getKey();
+            dueCards += tally.dueCards();
+            boxCards += tally.boxCards();
+            ready = true;
+            allReady &= tally.recallProposalReady();
+        }
+        String scopeId = box.context().section().nodeId();
+        String checkGoalId = unitCheckDeckGoalId(box, verifiedRecallNow());
+        boolean proposal = ready && allReady;
+        String offerKey = null;
+        if (practiceGoalId != null || (proposal && checkGoalId != null)) {
+            LearnerGoalCompletion boundary = latest.get();
+            offerKey = SrsCardStepFacts.offerKey(boundary == null ? null
+                    : boundary.getId() + "@" + boundary.getOccurredAt().toEpochMilli(), scopeId, practiceGoalId);
+        }
+        return new SrsCardStepFacts(scopeId, List.copyOf(deckGoalIds), dueCards, boxCards, proposal,
+                practiceGoalId, checkGoalId, Boolean.TRUE.equals(learner.getAutoPilot()), offerKey);
+    }
+
+    /**
+     * Starts the unit check of the learner's current card context (issue #85):
+     * one server-sized batch of the context unit's released, not yet passed
+     * cards of one deck goal that were not tested today, without the deck goal
+     * being the active goal. The orientation and completion-route gates of
+     * guided card work apply. The returned scope binds the batch to its unit.
+     */
+    @Transactional
+    public UnitCheckStart startVerifiedRecallUnitCheck(String skillpilotId, String language) {
+        Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
+        if (!hasCompletedPersonalCurriculum(learner)) throw unitCheckUnavailable();
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        Map<String, Double> mastery = ordinaryGoalMastery(learner);
+        UnitCardBox box = unitCardBox(learner, projection, language, mastery, unitEntryPlanningCredits(learner, projection));
+        String deckGoalId = box == null ? null : unitCheckDeckGoalId(box, verifiedRecallNow());
+        if (deckGoalId == null) throw unitCheckUnavailable();
+        LearningGoal goal = projection.visibleGoals().get(deckGoalId);
+        VerifiedRecallContext context = new VerifiedRecallContext(goal, requireDeckGoalCards(goal, language),
+                box.context().cardsByDeckGoal().get(deckGoalId), true, box.release(), box.states().get(deckGoalId));
+        return new UnitCheckStart(deckGoalId, box.context().section().nodeId(), buildVerifiedRecallPromptResponse(
+                skillpilotId, language, context, DEFAULT_VERIFIED_RECALL_BATCH_SIZE, true));
+    }
+
+    private ResponseStatusException unitCheckUnavailable() {
+        return new ResponseStatusException(org.springframework.http.HttpStatus.CONFLICT,
+                "No unit card check is available in the current learner context.");
+    }
+
+    /** A unit check's deck goal context and every scope its issued unit can have in the learner's views. */
+    private record UnitCheckScopes(VerifiedRecallContext context, List<List<SrsCard>> scopes) {
+    }
+
+    /**
+     * Resolves an issued unit check for its answers and results: the deck goal
+     * must still be a learner-facing deck goal of the target projection and the
+     * unit a learner-facing unit with cards of that deck. The current card
+     * context is not consulted, so a batch outlives a change of the context.
+     */
+    private UnitCheckScopes resolveUnitCheckScopes(String skillpilotId, Learner learner, String deckGoalId,
+            String practiceScopeId, String language) {
+        if (deckGoalId == null || deckGoalId.isBlank() || practiceScopeId.isBlank()
+                || !hasCompletedPersonalCurriculum(learner) || compositionViewService == null) {
+            throw unitCheckUnavailable();
+        }
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        LearningGoal goal = projection.visibleGoals().get(deckGoalId);
+        if (goal == null || !projection.targetGoalIds().contains(deckGoalId)
+                || projection.prerequisiteOnlyGoalIds().contains(deckGoalId) || !isAtomicGoal(goal) || !isSrsGoal(goal)) {
+            throw unitCheckUnavailable();
+        }
+        List<SrsCard> cards = requireDeckGoalCards(goal, language);
+        Map<Resource, SrsDeck> decks = new HashMap<>();
+        List<List<SrsCard>> scopes = new ArrayList<>();
+        for (String viewId : projection.compositionViewIds()) {
+            var section = compositionViewService.resolveStructureReference(
+                    "composition:" + viewId + ":structure:" + practiceScopeId);
+            if (section == null) continue;
+            List<SrsCard> unit = unitCards(projection, section, language, decks).get(deckGoalId);
+            if (unit != null && !unit.isEmpty() && !scopes.contains(unit)) scopes.add(unit);
+        }
+        if (scopes.isEmpty()) throw unitCheckUnavailable();
+        return new UnitCheckScopes(new VerifiedRecallContext(goal, cards, scopes.getFirst(), true,
+                cardRelease(learner, projection), readableCardStates(skillpilotId, deckGoalId)), List.copyOf(scopes));
+    }
+
+    /**
+     * Verified Recall of the active deck goal covers the whole deck goal: its
+     * released, not yet passed cards, exactly the cards that make the deck goal
+     * available on the frontier and that its mastery needs (issue #85). The unit
+     * check of a card context is the separate {@link #startVerifiedRecallUnitCheck}.
+     */
     private VerifiedRecallContext resolveVerifiedRecallContext(
             String skillpilotId,
             String requestedGoalId,
             String language,
             Learner lockedLearner) {
         LearningGoal goal = requireActiveVisibleMemoryGoal(lockedLearner, requestedGoalId);
+        GoalProjection projection = getGoalProjection(
+                lockedLearner.getSelectedCurriculum(), lockedLearner.getPersonalCurriculum());
+        List<SrsCard> cards = requireDeckGoalCards(goal, language);
+        return new VerifiedRecallContext(goal, cards, cards, false, cardRelease(lockedLearner, projection),
+                readableCardStates(skillpilotId, goal.getId()));
+    }
+
+    /** Every card of a deck goal's selection, in deck order; a goal without a deck or cards is a bad request. */
+    private List<SrsCard> requireDeckGoalCards(LearningGoal goal, String language) {
         String source = getVocabularySource(goal, language);
         if (source == null || source.isBlank()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "The memorization goal has no vocabulary source.");
         }
-
-        List<SrsCard> cards = filterSrsCards(goal, loadSrsDeckCards(goal, source));
+        List<SrsCard> cards = filterSrsCards(goal, srsDeck(goal, source, null), false);
         if (cards.isEmpty()) {
             throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
                     "No cards match this memorization goal.");
         }
-        return new VerifiedRecallContext(goal, cards, loadSrsStateStrict(skillpilotId, goal.getId()));
+        return cards;
     }
 
     private LearningGoal requireActiveVisibleMemoryGoal(
@@ -2950,27 +3253,23 @@ public class LearnerService {
                 "Verified Recall requires the current active learner-facing atomic memorization/SRS goal.");
     }
 
-    private List<SrsCard> filterSrsCards(LearningGoal goal, List<SrsCard> cards) {
-        if (cards == null || cards.isEmpty()) {
-            return Collections.emptyList();
+    /** The goal's selection of a deck; a strict read reports the deck's first defect. */
+    private List<SrsCard> filterSrsCards(LearningGoal goal, SrsDeck deck, boolean strict) {
+        if (deck.cards(strict).isEmpty()) {
+            return List.of();
         }
-        List<String> filterTags = getSrsFilterTags(goal);
-        if (filterTags.isEmpty()) {
-            return cards;
-        }
-        return cards.stream()
-                .filter(card -> card.tags != null && card.tags.stream().anyMatch(filterTags::contains))
-                .collect(Collectors.toList());
+        return deck.select(getSrsFilterTags(goal));
     }
 
     private MemoryPracticeResponse buildMemoryPracticeResponse(
             String language,
             MemoryPracticeContext context,
             Instant now) {
+        // Progress describes the box of the context: released and not removed cards only.
         List<SrsCard> dueCards = context.cards().stream()
-                .filter(card -> isMemoryPracticeCardDue(context.srsState().get(card.id), now))
+                .filter(card -> SrsCardSelection.due(card, context.states().get(card.id()), context.release(), now))
                 .toList();
-        int totalCards = context.cards().size();
+        int totalCards = SrsCardSelection.tally(context.cards(), context.states(), context.release(), now).boxCards();
         MemoryPracticeProgress progress = new MemoryPracticeProgress(
                 totalCards,
                 dueCards.size(),
@@ -2987,10 +3286,10 @@ public class LearnerService {
         List<MemoryPracticeCard> batch = dueCards.stream()
                 .limit(MEMORY_PRACTICE_BATCH_LIMIT)
                 .map(card -> new MemoryPracticeCard(
-                        card.id,
-                        card.front,
-                        card.back,
-                        card.category))
+                        card.id(),
+                        card.front(),
+                        card.back(),
+                        card.category()))
                 .toList();
         return new MemoryPracticeResponse(
                 "ready",
@@ -2999,20 +3298,6 @@ public class LearnerService {
                 context.title(),
                 progress,
                 batch);
-    }
-
-    private boolean isMemoryPracticeCardDue(Object rawState, Instant now) {
-        if (!(rawState instanceof Map<?, ?> stateMap)) {
-            return true;
-        }
-        double interval = numberValue(stateMap.get("interval"), Double.NaN).doubleValue();
-        Object rawNextReview = stateMap.get("nextReview");
-        if (!Double.isFinite(interval)
-                || (rawNextReview instanceof Number number && !Double.isFinite(number.doubleValue()))) {
-            return true;
-        }
-        Long nextReview = parseNextReview(rawNextReview);
-        return nextReview == null || nextReview <= now.toEpochMilli();
     }
 
     private int memoryPracticeQuality(String rating) {
@@ -3038,28 +3323,7 @@ public class LearnerService {
         return Math.max(0, (int) parsed);
     }
 
-    private void persistMemoryPracticeState(
-            Learner learner,
-            String goalId,
-            Map<String, Object> srsState,
-            Instant reviewedAt) {
-        String json;
-        try {
-            json = objectMapper.writeValueAsString(srsState);
-        } catch (Exception exception) {
-            throw new ResponseStatusException(
-                    org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
-                    "Memory practice state could not be stored.");
-        }
-        LearnerClientStateId id = new LearnerClientStateId(learner.getSkillpilotId(), goalId);
-        LearnerClientState stored = learnerClientStateRepository.findById(id).orElse(null);
-        if (stored == null) {
-            stored = new LearnerClientState(learner, goalId, json, reviewedAt);
-        } else {
-            stored.setClientState(json);
-            stored.setClientStateUpdatedAt(reviewedAt);
-        }
-        learnerClientStateRepository.save(stored);
+    private void publishMemoryPracticeChange(Learner learner, String goalId) {
         advanceCoachStateRevision(learner);
         eventPublisher.publishEvent(new LearnerStateChangedEvent(
                 this,
@@ -3087,17 +3351,16 @@ public class LearnerService {
             int batchSize,
             boolean batchContract) {
         Instant issuedAt = verifiedRecallNow();
-        VerifiedRecallDeckStatus status = summarizeVerifiedRecallDeck(
-                context.cards(), context.srsState(), issuedAt);
-        List<SrsCard> nextCards = selectNextVerifiedRecallCards(
-                context.cards(), context.srsState(), issuedAt, batchSize);
+        VerifiedRecallDeckStatus status = summarizeVerifiedRecallDeck(context, issuedAt);
+        List<SrsCard> nextCards = selectNextVerifiedRecallCards(context, issuedAt, batchSize);
         if (nextCards.isEmpty()) {
+            // "complete" only when every card of the deck goal is verified, never for a unit alone.
             boolean complete = status.pendingCards() == 0;
             return new VerifiedRecallPromptResponse(
                     complete ? "complete" : "waiting",
                     complete
                             ? verifiedRecallCompleteInstruction(language)
-                            : verifiedRecallWaitingInstruction(language, status),
+                            : verifiedRecallWaitingInstruction(language, status, context.unitScope()),
                     skillpilotId,
                     context.goal().getId(),
                     context.goal().getTitle(),
@@ -3116,7 +3379,7 @@ public class LearnerService {
                     issuedAt);
         }
         List<VerifiedRecallPromptCard> promptCards = nextCards.stream()
-                .map(card -> new VerifiedRecallPromptCard(card.id, card.front, card.category))
+                .map(card -> new VerifiedRecallPromptCard(card.id(), card.front(), card.category()))
                 .toList();
         SrsCard firstCard = nextCards.get(0);
         return new VerifiedRecallPromptResponse(
@@ -3135,9 +3398,9 @@ public class LearnerService {
                 status.nextEligibleAt() != null ? status.nextEligibleAt().toString() : null,
                 promptCards.size(),
                 promptCards,
-                firstCard.id,
-                firstCard.front,
-                firstCard.category,
+                firstCard.id(),
+                firstCard.front(),
+                firstCard.category(),
                 batchSize,
                 issuedAt);
     }
@@ -3146,57 +3409,23 @@ public class LearnerService {
         return Instant.now(verifiedRecallClock);
     }
 
-    private int countVerifiedRecall(List<SrsCard> cards, Map<String, Object> srsState) {
-        if (cards == null || cards.isEmpty() || srsState == null || srsState.isEmpty()) {
+    private int countVerifiedRecall(List<SrsCard> cards, Map<String, SrsCardStateSummary> states) {
+        if (cards == null || cards.isEmpty() || states == null || states.isEmpty()) {
             return 0;
         }
         int count = 0;
         for (SrsCard card : cards) {
-            Object rawState = srsState.get(card.id);
-            if (rawState instanceof Map<?, ?> stateMap && isVerifiedRecallPassed(stateMap.get("verifiedRecall"))) {
+            SrsCardStateSummary state = states.get(card.id());
+            if (state != null && state.recallPassed()) {
                 count++;
             }
         }
         return count;
     }
 
-    private SrsCard selectNextVerifiedRecallCard(List<SrsCard> cards, Map<String, Object> srsState) {
-        return selectNextVerifiedRecallCard(cards, srsState, Instant.now());
-    }
-
-    private SrsCard selectNextVerifiedRecallCard(List<SrsCard> cards, Map<String, Object> srsState, Instant now) {
-        List<SrsCard> selected = selectNextVerifiedRecallCards(
-                cards,
-                srsState,
-                now,
-                LEGACY_VERIFIED_RECALL_BATCH_SIZE);
-        return selected.isEmpty() ? null : selected.get(0);
-    }
-
-    private List<SrsCard> selectNextVerifiedRecallCards(
-            List<SrsCard> cards,
-            Map<String, Object> srsState,
-            Instant now,
-            int batchSize) {
-        if (cards == null || cards.isEmpty() || batchSize <= 0) {
-            return Collections.emptyList();
-        }
-        List<SrsCard> selected = new ArrayList<>();
-        for (SrsCard card : cards) {
-            Object rawState = srsState != null ? srsState.get(card.id) : null;
-            if (!(rawState instanceof Map<?, ?> stateMap)) {
-                selected.add(card);
-            } else {
-                Object verified = stateMap.get("verifiedRecall");
-                if (!isVerifiedRecallPassed(verified) && !wasVerifiedRecallTestedOn(verified, now)) {
-                    selected.add(card);
-                }
-            }
-            if (selected.size() >= batchSize) {
-                return selected;
-            }
-        }
-        return selected;
+    private List<SrsCard> selectNextVerifiedRecallCards(VerifiedRecallContext context, Instant now, int batchSize) {
+        return SrsCardSelection.nextRecallBatch(context.scope(), context.states(), context.release(), now,
+                VERIFIED_RECALL_DAY_ZONE, batchSize);
     }
 
     private int normalizeVerifiedRecallBatchSize(Integer requestedBatchSize) {
@@ -3207,30 +3436,12 @@ public class LearnerService {
                 Math.min(MAX_VERIFIED_RECALL_BATCH_SIZE, requestedBatchSize));
     }
 
-    private VerifiedRecallDeckStatus summarizeVerifiedRecallDeck(
-            List<SrsCard> cards,
-            Map<String, Object> srsState,
-            Instant now) {
-        if (cards == null || cards.isEmpty()) {
-            return new VerifiedRecallDeckStatus(0, 0, 0, 0, null);
-        }
-        int verifiedCards = 0;
-        int eligibleCards = 0;
-        int blockedCards = 0;
-        for (SrsCard card : cards) {
-            Object rawState = srsState != null ? srsState.get(card.id) : null;
-            Object verified = rawState instanceof Map<?, ?> stateMap ? stateMap.get("verifiedRecall") : null;
-            if (isVerifiedRecallPassed(verified)) {
-                verifiedCards++;
-            } else if (wasVerifiedRecallTestedOn(verified, now)) {
-                blockedCards++;
-            } else {
-                eligibleCards++;
-            }
-        }
-        int pendingCards = Math.max(0, cards.size() - verifiedCards);
-        Instant nextEligibleAt = blockedCards > 0 ? nextVerifiedRecallEligibleAt(now) : null;
-        return new VerifiedRecallDeckStatus(verifiedCards, pendingCards, eligibleCards, blockedCards, nextEligibleAt);
+    private VerifiedRecallDeckStatus summarizeVerifiedRecallDeck(VerifiedRecallContext context, Instant now) {
+        var status = SrsCardSelection.recallStatus(context.cards(), context.scope(), context.states(),
+                context.release(), now, VERIFIED_RECALL_DAY_ZONE);
+        Instant nextEligibleAt = status.sameDayBlockedCards() > 0 ? nextVerifiedRecallEligibleAt(now) : null;
+        return new VerifiedRecallDeckStatus(status.verifiedCards(), status.pendingCards(), status.eligibleCards(),
+                status.blockedCards(), status.sameDayBlockedCards(), nextEligibleAt);
     }
 
     private SrsCard findSrsCard(List<SrsCard> cards, String cardId) {
@@ -3239,7 +3450,7 @@ public class LearnerService {
         }
         String normalized = cardId.trim();
         return cards.stream()
-                .filter(card -> normalized.equals(card.id))
+                .filter(card -> normalized.equals(card.id()))
                 .findFirst()
                 .orElse(null);
     }
@@ -3395,13 +3606,33 @@ public class LearnerService {
                 : "Kartenergebnis gespeichert. Folge next.status: bei ready nächste cards stellen; bei waiting die heutige Kartenprüfung beenden.";
     }
 
-    private String verifiedRecallWaitingInstruction(String language, VerifiedRecallDeckStatus status) {
-        if (isEnglish(language)) {
-            return "No further flashcard exam item is available today. Explain mistakes if useful, but do not test today's failed cards again. Continue tomorrow for the remaining "
-                    + status.pendingCards() + " card(s).";
+    /**
+     * Instruction for a recall without an available card. Status "waiting" is
+     * also used when every released card of the scope is verified but the deck
+     * goal still has cards without a result, because "complete" would read as
+     * mastery of the deck goal.
+     */
+    private String verifiedRecallWaitingInstruction(String language, VerifiedRecallDeckStatus status, boolean unitScope) {
+        if (status.sameDayBlockedCards() > 0) {
+            if (isEnglish(language)) {
+                return "No further flashcard exam item is available today. Explain mistakes if useful, but do not test today's failed cards again. Continue tomorrow for the remaining "
+                        + status.sameDayBlockedCards() + " card(s).";
+            }
+            return "Heute ist keine weitere Kartenprüfung verfügbar. Erkläre Fehler bei Bedarf, aber prüfe heute falsch beantwortete Karten nicht noch einmal. Weiter geht es morgen mit den verbleibenden "
+                    + status.sameDayBlockedCards() + " Karte(n).";
         }
-        return "Heute ist keine weitere Kartenprüfung verfügbar. Erkläre Fehler bei Bedarf, aber prüfe heute falsch beantwortete Karten nicht noch einmal. Weiter geht es morgen mit den verbleibenden "
-                + status.pendingCards() + " Karte(n).";
+        if (unitScope) {
+            return isEnglish(language)
+                    ? "All released cards of this unit are verified. The memorization goal stays open because "
+                            + status.pendingCards() + " of its card(s) still need their own check, outside this unit or once their learning goals are passed. Do not test other cards now and do not report the memorization goal as complete."
+                    : "Alle freigegebenen Karten dieser Einheit sind geprüft. Das Lernkartenziel bleibt offen, weil "
+                            + status.pendingCards() + " seiner Karte(n) noch eine eigene Prüfung brauchen, außerhalb dieser Einheit oder sobald ihre Lernziele bestanden sind. Prüfe jetzt keine anderen Karten und melde das Lernkartenziel nicht als abgeschlossen.";
+        }
+        return isEnglish(language)
+                ? "All released cards of this memorization goal are verified. " + status.pendingCards()
+                        + " card(s) are not released yet; each becomes available once its learning goal is passed. Do not report the memorization goal as complete."
+                : "Alle freigegebenen Karten dieses Lernkartenziels sind geprüft. " + status.pendingCards()
+                        + " Karte(n) sind noch nicht freigegeben; jede wird verfügbar, sobald ihr Lernziel bestanden ist. Melde das Lernkartenziel nicht als abgeschlossen.";
     }
 
     @Transactional(readOnly = true)
@@ -7732,8 +7963,12 @@ public class LearnerService {
             }
         }
 
+        // One batched snapshot; the release rule is computed only if a deck goal still has an open card.
+        Set<String> unavailableRecall = unavailableVerifiedRecallGoals(skillpilotId,
+                frontier.stream().map(allGoals::get).toList(),
+                () -> cardRelease(projection, masteryMap, prerequisites.planningCredits()));
         List<String> available = frontier.stream()
-                .filter(goalId -> !isSrsGoalUnavailableForVerifiedRecall(skillpilotId, allGoals.get(goalId)))
+                .filter(goalId -> !unavailableRecall.contains(goalId))
                 .toList();
         return orderByStudyGuidance(available, unitStudyGuidance(learner, projection, projectedFocusIds,
                 scope, followedScope, unitOrientationScopes, completedWork, prerequisites, available));
@@ -7931,7 +8166,8 @@ public class LearnerService {
                 frontier.add(toFrontierGoal(goal, "Prerequisites met", null));
             }
         }
-        frontier = new ArrayList<>(filterVerifiedRecallAvailableMemoryGoals(skillpilotId, frontier));
+        frontier = new ArrayList<>(filterVerifiedRecallAvailableMemoryGoals(skillpilotId, frontier,
+                () -> cardRelease(projection, masteryMap, facts.prerequisites().get().planningCredits())));
         frontier = new ArrayList<>(orderFrontierByProjection(frontier, projection));
         Map<String, StudyGuidance> studyGuidance = requiredRecommendations || prospectiveFocusGoalIds != null
                 ? unitStudyGuidance(learner, projection, subjectContinuation ? List.of() : projectedFocusIds,
@@ -8410,6 +8646,12 @@ public class LearnerService {
 
     private String requiredUnitOrientationGoalId(Learner learner, GoalProjection projection, String requestedGoalId,
             List<String> prospectiveFocus) {
+        return requiredUnitOrientationGoalId(learner, projection, requestedGoalId, prospectiveFocus, null, null);
+    }
+
+    /** Variant for callers that already hold the learner's mastery and unit credits of this request. */
+    private String requiredUnitOrientationGoalId(Learner learner, GoalProjection projection, String requestedGoalId,
+            List<String> prospectiveFocus, Map<String, Double> knownMastery, Set<String> knownCredits) {
         Map<String, Set<String>> unitScopes = guidedUnitOrientationScopes(projection);
         if (unitScopes.isEmpty()) return null;
         List<String> requestedRoots = resolveProjectedTargetScopeIds(List.of(requestedGoalId), projection);
@@ -8426,8 +8668,8 @@ public class LearnerService {
                 focusedRoots, projection), projection.structuralGoals(), Map.of());
         boolean atomFocus = !focusedRoots.isEmpty() && focusedRoots.stream()
                 .allMatch(id -> isAtomicGoal(projection.visibleGoals().get(id)));
-        Map<String, Double> mastery = getMastery(learner.getSkillpilotId());
-        Set<String> credits = unitEntryPlanningCredits(learner, projection);
+        Map<String, Double> mastery = knownMastery != null ? knownMastery : getMastery(learner.getSkillpilotId());
+        Set<String> credits = knownCredits != null ? knownCredits : unitEntryPlanningCredits(learner, projection);
         List<String> pending = unitScopes.keySet().stream()
                 .filter(id -> mastery.getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD && !credits.contains(id))
                 .filter(id -> explicitUnit ? explicitMarkers.contains(id) : explicitOpening ? requestedGoalId.equals(id)
@@ -9161,6 +9403,10 @@ public class LearnerService {
         ActiveGoalContext.UnitIntroduction introduction = null;
         ActiveGoalContext.PracticeExercise practiceExercise = null;
         Map<String, ActiveGoalContext.Activity> activities = new LinkedHashMap<>();
+        if (includeActivities && (goal == null || !isSrsGoal(goal))) {
+            // Unit cards come from the unit hierarchy (issue #85), independent of material files.
+            addCoachUnitCardActivities(activities, learner, projection, activeId, publishedFrontierIds, language);
+        }
         if (unitLearningMaterialService != null) {
             for (var section : path) {
                 var material = unitLearningMaterialService.find(landscapeId, section.viewId(), section.nodeId());
@@ -9185,12 +9431,10 @@ public class LearnerService {
                     if (goal != null && !isSrsGoal(goal) && !isOrientationGoal(goal)) {
                         practiceExercise = material.get().exercise(activeId, language).orElse(null);
                     }
-                    String memoryId = material.get().flashcardGoalId();
-                    String practiceScopeId = memoryId != null
-                            && hasUnitPracticeCards(learner, projection, memoryId, section, language)
-                            ? section.nodeId() : null;
-                    addCoachUnitActivity(activities, memoryId, title, activeId,
-                            projection, publishedFrontierIds, language, practiceScopeId);
+                    // A deck goal named by the material keeps its plain route; unit practice of it
+                    // is offered above when the card context contains its cards.
+                    addCoachUnitActivity(activities, material.get().flashcardGoalId(), title, activeId,
+                            projection, publishedFrontierIds, language, null);
                     String assessmentId = material.get().assessmentGoalId();
                     if (assessmentId != null && projection.targetGoalIds().contains(assessmentId)) {
                         // A topic may link a cross-topic assessment. Describe its own placement.
@@ -9258,6 +9502,21 @@ public class LearnerService {
     private String coachGoalTitle(LearningGoal goal, String language) {
         return "en".equals(language) && org.springframework.util.StringUtils.hasText(goal.getTitleEn())
                 ? goal.getTitleEn() : goal.getTitle();
+    }
+
+    /** One unit-practice activity per deck goal with cards in the box of the learner's card context. */
+    private void addCoachUnitCardActivities(Map<String, ActiveGoalContext.Activity> activities, Learner learner,
+            GoalProjection projection, String activeGoalId, Set<String> publishedFrontierIds, String language) {
+        Map<String, Double> mastery = ordinaryGoalMastery(learner);
+        UnitCardBox box = unitCardBox(learner, projection, language, mastery, unitEntryPlanningCredits(learner, projection));
+        if (box == null) return;
+        String title = coachSectionTitle(box.context().section(), projection, language);
+        box.tallies().forEach((deckId, tally) -> {
+            if (tally.boxCards() > 0) {
+                addCoachUnitActivity(activities, deckId, title, activeGoalId, projection, publishedFrontierIds,
+                        language, box.context().section().nodeId());
+            }
+        });
     }
 
     private void addCoachUnitActivity(Map<String, ActiveGoalContext.Activity> activities, String goalId, String sectionTitle,
@@ -9766,7 +10025,7 @@ public class LearnerService {
         }
         if (activeGoalId != null && !activeGoalId.isBlank()) {
             LearningGoal activeLearningGoal = allGoals.get(activeGoalId);
-            if (isSrsGoalUnavailableForVerifiedRecall(skillpilotId, activeLearningGoal)
+            if (isSrsGoalUnavailableForVerifiedRecall(learner, goalProjection, mastery, activeLearningGoal)
                     || isExamGoalUnavailableForHardCheck(activeLearningGoal)) {
                 if (allowSideEffects) {
                     clearPersistedActiveGoal(
@@ -14311,11 +14570,10 @@ public class LearnerService {
         return new SignedLearnerDataDTO(data, signature);
     }
 
+    /** Unchanged signed format (schemaVersion 1, goal to card to state), now read from the card rows. */
     private PortableSrsData exportPortableSrsData(String skillpilotId) {
-        Map<String, Map<String, Object>> states = new LinkedHashMap<>();
-        learnerClientStateRepository.findByLearner_SkillpilotId(skillpilotId).stream()
-                .sorted(Comparator.comparing(state -> state.getId().getNodeId()))
-                .forEach(state -> states.put(state.getId().getNodeId(), readStoredSrsState(state)));
+        Map<String, Map<String, Object>> states = cardStateStore == null
+                ? new LinkedHashMap<>() : cardStateStore.exportAll(skillpilotId);
         return new PortableSrsData(1, states);
     }
 
@@ -14377,7 +14635,8 @@ public class LearnerService {
 
     private void restorePortableSrsData(Learner learner, Map<String, Map<String, Object>> states) {
         Instant restoredAt = Instant.now().truncatedTo(java.time.temporal.ChronoUnit.MICROS);
-        states.forEach((goalId, state) -> persistVerifiedRecallBatchClientState(learner, goalId, state, restoredAt));
+        states.forEach((goalId, state) -> requireCardStateStore()
+                .replaceNode(learner.getSkillpilotId(), goalId, state, restoredAt));
     }
 
     private List<LearnerLearningPlanApi.PortablePlan> exportPersonalLearningPlans(

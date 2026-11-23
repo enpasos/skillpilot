@@ -94,7 +94,7 @@ const nestedGoals = [
 ]
 const nestedGoalIndex = new Map(nestedGoals.map(entry => [entry.id, entry]))
 const nestedPlacements = unitResourcePlacements({ material: nestedMaterial, scopes: new Set(['unit']),
-  flashcards: new Map(), assessments: new Map() })
+  cardDeckIds: new Map(), assessments: new Map() })
 for (const visible of [true, false]) {
   const children = { unit: ['assessment', 'branch'], branch: visible ? ['application', 'source'] : ['application'] }
   const nestedFixture: LearningMapFixture = { rootId: 'unit', title: 'Unit', scopeRelations: {}, entries: {

@@ -55,6 +55,27 @@ public final class SrsPracticeStateGuard {
         return result;
     }
 
+    /**
+     * Drops the incoming practice entries of locked cards that have no stored
+     * state (issue #85): a locked card is not in the learner's box, so a Cockpit
+     * sync cannot create practice state for it. Every other entry is unchanged.
+     */
+    public static Map<String, Object> withoutLockedUnstoredCards(
+            Map<String, Object> incoming, Map<String, Object> current, Set<String> lockedCardIds) {
+        if (incoming == null || lockedCardIds == null || lockedCardIds.isEmpty()) {
+            return incoming;
+        }
+        Map<String, Object> result = new LinkedHashMap<>();
+        for (var entry : incoming.entrySet()) {
+            String cardId = entry.getKey();
+            if (cardId != null && lockedCardIds.contains(cardId) && (current == null || !current.containsKey(cardId))) {
+                continue;
+            }
+            result.put(cardId, entry.getValue());
+        }
+        return result;
+    }
+
     public static void validatePortable(Map<String, Map<String, Object>> states) {
         if (states == null || states.size() > 10_000) {
             throw new IllegalArgumentException("Signed SRS states are missing or too large");

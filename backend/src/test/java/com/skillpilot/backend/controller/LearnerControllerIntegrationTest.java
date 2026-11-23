@@ -12,7 +12,6 @@ import com.skillpilot.backend.completion.CompletionProfileCompiler;
 import com.skillpilot.backend.domain.CurriculumChampion;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerClientState;
-import com.skillpilot.backend.domain.LearnerClientStateId;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.repository.CurriculumChampionRepository;
@@ -433,6 +432,9 @@ public class LearnerControllerIntegrationTest {
     private LearnerClientStateRepository learnerClientStateRepository;
 
     @Autowired
+    private com.skillpilot.backend.repository.LearnerCardStateRepository learnerCardStateRepository;
+
+    @Autowired
     private MasteryRepository masteryRepository;
 
     @Autowired
@@ -671,6 +673,7 @@ public class LearnerControllerIntegrationTest {
         localizedSourceBefore = null;
         curriculumChampionRepository.deleteAll();
         learnerClientStateRepository.deleteAll();
+        learnerCardStateRepository.deleteAll();
         masteryRepository.deleteAll();
         plannedGoalRepository.deleteAll();
         learnerRepository.deleteAll();
@@ -1161,6 +1164,23 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void cockpitClientStateAlwaysCarriesTheLockedCardIdsArray() throws Exception {
+        // Issue #85: the additive field is always present, an empty array when nothing is locked.
+        Learner learner = new Learner();
+        learner.setSkillpilotId("client-state-locked-cards");
+        learnerRepository.save(learner);
+
+        HttpResponse<String> response = getRequest(
+                "/api/ui/learners/client-state-locked-cards/client-state/not-a-deck-goal");
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode body = objectMapper.readTree(response.body());
+        assertThat(body.has("srsState")).isTrue();
+        assertThat(body.path("lockedCardIds").isArray()).isTrue();
+        assertThat(body.path("lockedCardIds")).isEmpty();
+    }
+
+    @Test
     void compatibilitySessionRejectsUiLearningWrites() throws Exception {
         Learner learner = new Learner();
         learner.setSkillpilotId("readonly-ui-learning");
@@ -1211,8 +1231,7 @@ public class LearnerControllerIntegrationTest {
                         }
                         """);
         assertThat(clientStateResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
-        assertThat(learnerClientStateRepository.findById(
-                new LearnerClientStateId("readonly-ui-learning", LEGACY_MATH_MEMORY_E_PHASE_ID))).isEmpty();
+        assertThat(learnerCardStateRepository.findNode("readonly-ui-learning", LEGACY_MATH_MEMORY_E_PHASE_ID)).isEmpty();
     }
 
     @Test

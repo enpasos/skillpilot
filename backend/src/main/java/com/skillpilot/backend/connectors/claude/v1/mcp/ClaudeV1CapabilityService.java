@@ -59,6 +59,10 @@ public class ClaudeV1CapabilityService {
         }
     }
 
+    /**
+     * @param practiceScopeId the unit of a unit check (issue #85), or {@code null} for the check of the
+     *        active memory goal
+     */
     public record RecallBatchClaim(
             String sessionBinding,
             String goalId,
@@ -66,7 +70,14 @@ public class ClaudeV1CapabilityService {
             int configuredBatchSize,
             long stateVersion,
             Instant issuedAt,
-            Instant expiresAt) {}
+            Instant expiresAt,
+            String practiceScopeId) {
+
+        public RecallBatchClaim(String sessionBinding, String goalId, List<String> cardIds, int configuredBatchSize,
+                long stateVersion, Instant issuedAt, Instant expiresAt) {
+            this(sessionBinding, goalId, cardIds, configuredBatchSize, stateVersion, issuedAt, expiresAt, null);
+        }
+    }
 
     public record ExamEvaluationClaim(
             String sessionBinding,
@@ -136,6 +147,19 @@ public class ClaudeV1CapabilityService {
             int configuredBatchSize,
             long stateVersion,
             Instant issuedAt) {
+        return mintRecallBatchCapability(
+                learningSessionId, goalId, cardIds, configuredBatchSize, stateVersion, issuedAt, null);
+    }
+
+    /** A batch capability; a non-null {@code practiceScopeId} binds it to the unit check of that unit. */
+    public String mintRecallBatchCapability(
+            String learningSessionId,
+            String goalId,
+            List<String> cardIds,
+            int configuredBatchSize,
+            long stateVersion,
+            Instant issuedAt,
+            String practiceScopeId) {
         return mintRecallCapability(
                 KIND_RECALL_BATCH,
                 learningSessionId,
@@ -143,7 +167,8 @@ public class ClaudeV1CapabilityService {
                 cardIds,
                 configuredBatchSize,
                 stateVersion,
-                issuedAt);
+                issuedAt,
+                practiceScopeId);
     }
 
     public String mintRecallGradingCapability(
@@ -153,6 +178,19 @@ public class ClaudeV1CapabilityService {
             int configuredBatchSize,
             long stateVersion,
             Instant issuedAt) {
+        return mintRecallGradingCapability(
+                learningSessionId, goalId, cardIds, configuredBatchSize, stateVersion, issuedAt, null);
+    }
+
+    /** A grading capability; a non-null {@code practiceScopeId} binds it to the unit check of that unit. */
+    public String mintRecallGradingCapability(
+            String learningSessionId,
+            String goalId,
+            List<String> cardIds,
+            int configuredBatchSize,
+            long stateVersion,
+            Instant issuedAt,
+            String practiceScopeId) {
         return mintRecallCapability(
                 KIND_RECALL_GRADING,
                 learningSessionId,
@@ -160,7 +198,8 @@ public class ClaudeV1CapabilityService {
                 cardIds,
                 configuredBatchSize,
                 stateVersion,
-                issuedAt);
+                issuedAt,
+                practiceScopeId);
     }
 
     public RecallBatchClaim verifyRecallBatchCapability(
@@ -343,7 +382,8 @@ public class ClaudeV1CapabilityService {
             List<String> cardIds,
             int configuredBatchSize,
             long stateVersion,
-            Instant issuedAt) {
+            Instant issuedAt,
+            String practiceScopeId) {
         String sessionBinding = sessionBinding(learningSessionId);
         requireBindingValue(goalId, "goalId");
         Objects.requireNonNull(cardIds, "cardIds");
@@ -366,6 +406,11 @@ public class ClaudeV1CapabilityService {
                 Long.toString(stateVersion),
                 Long.toString(issuedAt.toEpochMilli()),
                 Long.toString(expiresAt.toEpochMilli()));
+        if (practiceScopeId != null) {
+            // The unit of a unit check (issue #85) travels inside the authenticated payload only.
+            requireBindingValue(practiceScopeId, "practiceScopeId");
+            payload += FIELD_SEPARATOR + practiceScopeId;
+        }
         return encryptAndEncode(payload);
     }
 
@@ -375,7 +420,12 @@ public class ClaudeV1CapabilityService {
             String expectedLearningSessionId,
             String expectedGoalId,
             Long expectedStateVersion) {
-        String[] parts = verifyAndSplit(capability, kind, 8);
+        String[] parts = verifyAndDecode(capability).split("\\" + FIELD_SEPARATOR, -1);
+        if ((parts.length != 8 && parts.length != 9) || !kind.equals(parts[0])) {
+            throw new CapabilityException("Capability is not a valid " + kind + " token.");
+        }
+        String practiceScopeId = parts.length == 9 ? parts[8] : null;
+        if (practiceScopeId != null) requireBindingValue(practiceScopeId, "practiceScopeId");
         String sessionBinding = parts[1];
         String goalId = parts[2];
         List<String> cardIds = List.of(parts[3].split(CARD_SEPARATOR, -1));
@@ -401,7 +451,8 @@ public class ClaudeV1CapabilityService {
                 configuredBatchSize,
                 stateVersion,
                 issuedAt,
-                expiresAt);
+                expiresAt,
+                practiceScopeId);
     }
 
     /**

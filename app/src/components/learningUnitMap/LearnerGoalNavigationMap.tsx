@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import type { FlashcardPracticeRequest } from '../../utils/flashcardPractice'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import type { MemoryCardOriginFields } from '../../utils/memoryCardOrigins'
 import type { UiGoal } from '../../goalTypes'
 import type { LearnerGoalNavigationMapProps } from '../../views/LearnerView'
 import { buildTreeCompletionProgressMap } from '../../utils/treeCompletionProgress'
@@ -12,7 +12,8 @@ import { MATHEMATICS_LANDSCAPE_ID,
   UNIT_MAP_PREVIEW_SUBJECT_IDS } from '../../utils/learnerNavigation/learnerUnitMapPreview'
 import { useLearnerUnitFixture } from '../../utils/learnerNavigation/useLearnerUnitFixture'
 import type { LearningEntryProgress } from './types'
-import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources, unitResourcePlacements } from './unitLearningMaterialActions'
+import { buildUnitAssessmentActions, buildUnitFlashcardActions, cardDeckIdsByScope, findUnitMaterialScopes, mapDeckGoalIds,
+  placeUnitLearningResources, unitResourcePlacements } from './unitLearningMaterialActions'
 
 const subjectLabel = (landscapeId: string, english: boolean) => landscapeId === MATHEMATICS_LANDSCAPE_ID
   ? english ? 'Mathematics' : 'Mathematik' : english ? 'Physics' : 'Physik'
@@ -35,38 +36,52 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   const canPracticeFlashcards = Boolean(onPracticeFlashcards)
   const bindings = useMemo(() => UNIT_MAP_LEARNING_MATERIALS.flatMap(material => {
     const scopes = findUnitMaterialScopes(material, progressFixture, goalIndexAll, visibleGoalIds)
-    if (!scopes.size) return []
-    const memoryId = material.unit.flashcardGoalId
-    const memory = memoryId && visibleGoalIds.has(memoryId) && progressFixture.entries[memoryId]?.kind === 'memory'
-      ? goalIndexAll.get(memoryId) : undefined
-    const source = canPracticeFlashcards && memory?.landscapeId === material.unit.landscapeId
-      ? getFlashcardSource?.(memory) : undefined
-    return [{ material, scopes, source }]
-  }), [progressFixture, goalIndexAll, visibleGoalIds, canPracticeFlashcards, getFlashcardSource])
+    return scopes.size ? [{ material, scopes }] : []
+  }), [progressFixture, goalIndexAll, visibleGoalIds])
+  // Card practice follows the deck goals in the learner's scope (#85), not unit material files.
+  const deckSources = useMemo(() => new Map(canPracticeFlashcards ? mapDeckGoalIds(progressFixture, visibleGoalIds).flatMap(id => {
+    const deckGoal = goalIndexAll.get(id)
+    const source = deckGoal && getFlashcardSource?.(deckGoal)
+    return source ? [[id, source] as const] : []
+  }) : []), [progressFixture, goalIndexAll, visibleGoalIds, canPracticeFlashcards, getFlashcardSource])
   // Avoid refetching when a render or language change yields the same authorized deck URLs.
-  const sourceList = JSON.stringify([...new Set(bindings.flatMap(binding => binding.source ? [binding.source] : []))].sort())
-  const [decks, setDecks] = useState<ReadonlyMap<string, { tags?: string[] }[]>>(new Map())
+  const sourceList = JSON.stringify([...new Set(deckSources.values())].sort())
+  const [decks, setDecks] = useState<ReadonlyMap<string, MemoryCardOriginFields[]>>(new Map())
+  const loadedDeckSources = useRef(new Set<string>())
   useEffect(() => {
     const controller = new AbortController()
-    for (const source of JSON.parse(sourceList) as string[]) {
-      void fetch(source, { cache: 'no-store', signal: controller.signal }).then(response => {
-        if (!response.ok) throw new Error('Flashcard deck unavailable')
-        return response.json()
-      }).then(data => {
-        if (!controller.signal.aborted && Array.isArray(data.cards)) setDecks(previous => new Map(previous).set(source, data.cards))
-      }).catch(() => { /* Full decks keep the normal learner-facing load and error handling. */ })
-    }
+    const sources = (JSON.parse(sourceList) as string[]).filter(source => !loadedDeckSources.current.has(source))
+    // One deck file per deck goal, never per unit. All decks arrive in one update, because
+    // every new card action changes the board topology and repeats its layout.
+    void Promise.all(sources.map(source => fetch(source, { cache: 'no-store', signal: controller.signal }).then(response => {
+      if (!response.ok) throw new Error('Flashcard deck unavailable')
+      return response.json()
+    }).then(data => Array.isArray(data?.cards) ? [[source, data.cards as MemoryCardOriginFields[]] as const] : [])
+      .catch(() => [] /* Full decks keep the normal learner-facing load and error handling. */))).then(loaded => {
+      const found = loaded.flat()
+      if (controller.signal.aborted || !found.length) return
+      for (const [source] of found) loadedDeckSources.current.add(source)
+      setDecks(previous => new Map([...previous, ...found]))
+    })
     return () => controller.abort()
   }, [sourceList])
-  const resources = useMemo(() => bindings.map(({ material, scopes, source }) => ({
+  const cardActions = useMemo(() => new Map([...deckSources].flatMap(([id, source]) => {
+    const actions = buildUnitFlashcardActions(id, progressFixture, goalIndexAll, visibleGoalIds, decks.get(source), language)
+    return actions.size ? [[id, actions] as const] : []
+  })), [deckSources, progressFixture, goalIndexAll, visibleGoalIds, decks, language])
+  const resources = useMemo(() => bindings.map(({ material, scopes }) => ({
     material, scopes,
-    flashcards: canPracticeFlashcards ? buildUnitFlashcardActions(material, progressFixture, goalIndexAll, visibleGoalIds,
-      source ? decks.get(source) : undefined, language, scopes) : new Map<string, FlashcardPracticeRequest>(),
     assessments: buildUnitAssessmentActions(material, progressFixture, goalIndexAll, visibleGoalIds, language, scopes),
-  })), [bindings, progressFixture, goalIndexAll, visibleGoalIds, decks, language, canPracticeFlashcards])
+  })), [bindings, progressFixture, goalIndexAll, visibleGoalIds, language])
   const materialScopes = useMemo(() => new Set(resources.flatMap(({ scopes }) => [...scopes])), [resources])
   // Route selection can recreate the goal index and its actions while the same resource nodes stay on the board.
-  const placementKey = useMemo(() => JSON.stringify(resources.flatMap(unitResourcePlacements)), [resources])
+  const placementKey = useMemo(() => {
+    const cardDeckIds = cardDeckIdsByScope(cardActions)
+    const cardScopes = new Set([...cardDeckIds.keys()].filter(scopeId => !materialScopes.has(scopeId)))
+    return JSON.stringify([...resources.flatMap(({ material, scopes, assessments }) =>
+      unitResourcePlacements({ material, scopes, cardDeckIds, assessments })),
+    ...unitResourcePlacements({ scopes: cardScopes, cardDeckIds, assessments: new Map() })])
+  }, [resources, cardActions, materialScopes])
   const fixture = useMemo(() => placeUnitLearningResources(progressFixture, JSON.parse(placementKey)), [progressFixture, placementKey])
   const requestStudy = useCallback(async (scopeId: string, goalId: string) => {
     const scopeGoalId = [...(mapEntryPath(progressFixture, scopeId) ?? [])].reverse().find(id => goalIndexAll.has(id)) ?? goalId
@@ -75,21 +90,21 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   const getGoalAction = useCallback((scopeId: string, id: string) => {
     const homeId = progressFixture.entryPaths?.[id]?.at(-2)
     const home = progressFixture.entries[id]?.sourceSections?.filter(source => source.kind !== 'canonicalSubtree').at(-1)?.title ?? (homeId && progressFixture.entries[homeId]?.title)
-    for (const { flashcards, assessments } of resources) {
-      const cards = flashcards.get(scopeId)
-      if (cards?.goalId === id && onPracticeFlashcards) {
-        const context = cards.goalIds && home ? (english ? `From the deck “${home}”` : `Aus dem Stapel „${home}“`) : undefined
-        return { title: cards.title, context, label: cards.title, open: async () => {
-          if (await requestStudy(scopeId, id)) onPracticeFlashcards(cards)
-        } }
-      }
+    const cards = cardActions.get(id)?.get(scopeId)
+    if (cards && onPracticeFlashcards) {
+      const context = cards.goalIds && home ? (english ? `From the deck “${home}”` : `Aus dem Stapel „${home}“`) : undefined
+      return { title: cards.title, context, label: cards.title, open: async () => {
+        if (await requestStudy(scopeId, id)) onPracticeFlashcards(cards)
+      } }
+    }
+    for (const { assessments } of resources) {
       const assessment = assessments.get(scopeId)
       if (assessment?.goalId === id && onOpenGoal) {
         const context = home && (english ? `Assessment from “${home}”` : `Prüfung aus „${home}“`)
         return { title: fixture.entries[id].title, context, label: assessment.title, open: () => onOpenGoal(id) }
       }
     }
-  }, [resources, english, fixture, progressFixture, onPracticeFlashcards, onOpenGoal, requestStudy])
+  }, [resources, cardActions, english, fixture, progressFixture, onPracticeFlashcards, onOpenGoal, requestStudy])
   const progress = useMemo(() => {
     const fixture = progressFixture
     // Synthetic unit nodes stand in as clusters; only real goals count as atoms.

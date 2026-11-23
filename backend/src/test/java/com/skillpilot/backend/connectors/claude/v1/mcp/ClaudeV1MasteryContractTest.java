@@ -680,6 +680,8 @@ class ClaudeV1MasteryContractTest {
         }
         verify(coachToolFacade).getAdditionalLearningMaterials(learnerId, active, "de");
         verify(coachToolFacade).showGoalVisualizationsInChat(learnerId);
+        // Issue #85: the card step is one more read-only read of the context.
+        verify(coachToolFacade).getCardStepFacts(learnerId, "de");
         if (active != null && "orientation".equals(active.semanticKind())) {
             verify(coachToolFacade).getOrientationOutlook(learnerId, "de");
         }

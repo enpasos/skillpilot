@@ -163,6 +163,12 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     @Autowired
     private JdbcOperations jdbcOperations;
 
+    @Autowired
+    private com.skillpilot.backend.repository.MasteryRepository masteryRepository;
+
+    @Autowired
+    private com.skillpilot.backend.service.DeckResourceService deckResourceService;
+
     @org.springframework.test.context.bean.override.mockito.MockitoBean
     private com.skillpilot.backend.openai.nativev1.oauth.OpenAiNativeCimdValidator nativeCimd;
 
@@ -189,6 +195,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         jdbcOperations.update("DELETE FROM openai_native_refresh_family");
         // Each provider-profile invocation starts with the same due Recall deck.
         jdbcOperations.update("DELETE FROM learner_client_state WHERE skillpilot_id = ?", PERMANENT_SKILLPILOT_ID);
+        jdbcOperations.update("DELETE FROM learner_card_state WHERE skillpilot_id = ?", PERMANENT_SKILLPILOT_ID);
         jdbcOperations.update("DELETE FROM oauth2_authorization_consent");
         jdbcOperations.update("DELETE FROM oauth2_authorization");
         pendingLaunchRepository.deleteAllInBatch();
@@ -1355,6 +1362,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         recallLearner.setActiveGoalId(FUNCTIONS_FLASHCARDS_ID);
         recallLearner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(recallLearner);
+        // Issue #85: a card enters the box only once its understanding goals are passed.
+        com.skillpilot.backend.service.srs.CardReleaseFixtures.passUnderstandingGoals(
+                masteryRepository, recallLearner, landscapeService, deckResourceService, FUNCTIONS_FLASHCARDS_ID);
 
         HttpResponse<String> startRecall = callTool(
                 accessToken,

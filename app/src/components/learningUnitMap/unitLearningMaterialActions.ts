@@ -2,6 +2,7 @@ import { isUnitMaterialSource } from '../../utils/unitLearningMaterial'
 import type { UiGoal } from '../../goalTypes'
 import { getSrsFilterTagsForGoal } from '../../utils/srsTags'
 import { selectPracticeCards, type FlashcardPracticeRequest } from '../../utils/flashcardPractice'
+import type { MemoryCardOriginFields } from '../../utils/memoryCardOrigins'
 import { projectUnitStudyRecommendations, type UnitStudyOrder } from '../../utils/unitStudyOrder'
 import type { LearningMapFixture, LearningMapRelation, LearningMapRequirement, MapPracticeMaterial } from './types'
 export function findUnitMaterialScopes(
@@ -35,49 +36,77 @@ export function buildUnitAssessmentActions(
   return actions
 }
 
-/** Presentation only: goals, prerequisite demand and completion continue to use the original fixture. */
+/** Deck goals of the map that can offer card practice: visible learner targets, not prerequisite closure additions. */
+export function mapDeckGoalIds(fixture: LearningMapFixture, visibleGoalIds: ReadonlySet<string>): string[] {
+  return Object.values(fixture.entries).flatMap(entry => entry.kind === 'memory' && !entry.preparation
+    && visibleGoalIds.has(entry.id) ? [entry.id] : [])
+}
+
+/**
+ * Card practice of one deck goal on the learner map (#85), derived like the
+ * backend's unit cards: a unit offers the deck's cards whose understanding
+ * goals are atomic content goals of the unit at any depth. A unit material
+ * file is no condition. On its own board the deck node offers the full deck
+ * once the deck offers unit practice, otherwise it stays an ordinary goal;
+ * the boards above reach the deck through that board and get no second copy.
+ * Which of these cards are released is the server's decision, shown by the
+ * drill: the map has no card state.
+ *
+ * Presentation only: goals, prerequisite demand and completion continue to use the original fixture.
+ */
 export function buildUnitFlashcardActions(
-  material: MapPracticeMaterial, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
-  cards: readonly { tags?: string[] }[] | undefined, language: 'de' | 'en',
-  scopes = findUnitMaterialScopes(material, fixture, goalIndex, visibleGoalIds),
+  memoryId: string, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
+  cards: readonly MemoryCardOriginFields[] | undefined, language: 'de' | 'en',
 ): ReadonlyMap<string, FlashcardPracticeRequest> {
-  const actions = new Map<string, FlashcardPracticeRequest>()
-  const memoryId = material.unit.flashcardGoalId
-  if (!memoryId || !scopes.size) return actions
   const memoryGoal = goalIndex.get(memoryId)
-  if (memoryGoal?.landscapeId !== material.unit.landscapeId || !visibleGoalIds.has(memoryId)
-    || fixture.entries[memoryId]?.kind !== 'memory') return actions
+  const memoryEntry = fixture.entries[memoryId]
+  const homePath = fixture.entryPaths?.[memoryId]
+  const deckHome = homePath?.at(-2)
+  if (!cards || !memoryGoal || !visibleGoalIds.has(memoryId) || memoryEntry?.kind !== 'memory' || memoryEntry.preparation
+    || !homePath || !deckHome || !fixture.entries[deckHome]?.children?.includes(memoryId)) return new Map()
   const filterTags = getSrsFilterTagsForGoal(memoryGoal)
-  const deckHome = fixture.entryPaths?.[memoryId]?.at(-2)
-  if (!deckHome || !fixture.entries[deckHome]?.children?.includes(memoryId)) return actions
+  const deckBoards = new Set(homePath.slice(0, -1))
+  const contentGoals = new Map<string, string[]>()
+  // Atomic content goals of the deck's subject; assessments, decks, orientations and preparation entries are none.
+  const collect = (id: string): string[] => {
+    const known = contentGoals.get(id)
+    if (known) return known
+    const entry = fixture.entries[id]
+    const own = entry?.kind === 'goal' && !entry.preparation && visibleGoalIds.has(id)
+      && goalIndex.get(id)?.landscapeId === memoryGoal.landscapeId ? [id] : []
+    const goalIds = [...own, ...(entry?.children ?? []).flatMap(collect)]
+    contentGoals.set(id, goalIds)
+    return goalIds
+  }
   const practiceTitle = (topic: string) => language === 'en' ? `Practice flashcards for ${topic}` : `Lernkarten zu ${topic} üben`
-  actions.set(deckHome, { goalId: memoryId, title: language === 'en' ? 'Practice the full deck' : 'Gesamten Lernkartenstapel üben' })
+  const units = new Map<string, FlashcardPracticeRequest>()
   const visit = (id: string) => {
     const entry = fixture.entries[id]
     if (!entry) return
-    const representedTopic = entry.kind === 'goal' && entry.sourceSections?.filter(source => source.kind !== 'canonicalSubtree').at(-1)
-    if (id !== deckHome && (entry.kind === 'unit' || representedTopic)) {
-      const goalIds: string[] = []
-      const collect = (childId: string) => {
-        const child = fixture.entries[childId]
-        if (!child) return
-        const goal = goalIndex.get(childId)
-        if (visibleGoalIds.has(childId) && goal?.landscapeId === material.unit.landscapeId
-          && child.kind === 'goal') goalIds.push(childId)
-        for (const descendant of child.children ?? []) collect(descendant)
-      }
-      collect(id)
-      if (cards && selectPracticeCards(cards, filterTags, goalIds).length) {
-        const title = representedTopic ? representedTopic.title : entry.title
-        const topic = /^\p{L}+\.\d+(?=\s)/u.exec(title)?.[0] ?? title
-        actions.set(id, { goalId: memoryId, goalIds,
-          title: practiceTitle(topic) })
+    if (entry.kind === 'unit' && !deckBoards.has(id)) {
+      const goalIds = collect(id)
+      if (goalIds.length && selectPracticeCards(cards, filterTags, goalIds).length) {
+        const topic = /^\p{L}+\.\d+(?=\s)/u.exec(entry.title)?.[0] ?? entry.title
+        units.set(id, { goalId: memoryId, goalIds, title: practiceTitle(topic) })
       }
     }
     for (const child of entry.children ?? []) visit(child)
   }
-  visit(deckHome)
-  return actions
+  visit(fixture.rootId)
+  if (!units.size) return units
+  return new Map([[deckHome, { goalId: memoryId,
+    title: language === 'en' ? 'Practice the full deck' : 'Gesamten Lernkartenstapel üben' }], ...units])
+}
+
+/** The deck goals that offer card practice on each board, per board in deck order. */
+export function cardDeckIdsByScope(
+  actionsByDeck: ReadonlyMap<string, ReadonlyMap<string, FlashcardPracticeRequest>>,
+): ReadonlyMap<string, readonly string[]> {
+  const result = new Map<string, string[]>()
+  for (const [deckId, actions] of actionsByDeck) {
+    for (const scopeId of actions.keys()) result.set(scopeId, [...(result.get(scopeId) ?? []), deckId])
+  }
+  return result
 }
 
 interface UnitResourcePlacement extends UnitStudyOrder {
@@ -85,14 +114,15 @@ interface UnitResourcePlacement extends UnitStudyOrder {
   goalIds: readonly string[]
 }
 
-export function unitResourcePlacements({ material, scopes, flashcards, assessments }: {
+export function unitResourcePlacements({ material, scopes, cardDeckIds, assessments }: {
   material?: MapPracticeMaterial
   scopes: ReadonlySet<string>
-  flashcards: ReadonlyMap<string, FlashcardPracticeRequest>
+  /** Deck goals offering card practice per board (`cardDeckIdsByScope`); a deck already on the board stays where it is. */
+  cardDeckIds?: ReadonlyMap<string, readonly string[]>
   assessments: ReadonlyMap<string, { goalId: string }>
 }): UnitResourcePlacement[] {
   return [...scopes].flatMap(scopeId => {
-    const goalIds = [flashcards.get(scopeId), assessments.get(scopeId)].flatMap(action => action ? [action.goalId] : [])
+    const goalIds = [...(cardDeckIds?.get(scopeId) ?? []), ...[assessments.get(scopeId)].flatMap(action => action ? [action.goalId] : [])]
     const orientationGoalId = material?.unit.orientationGoalId
     const { guidedStudyOrder, studyRecommendations } = material ?? {}
     return goalIds.length || orientationGoalId || studyRecommendations?.length

@@ -96,6 +96,11 @@ const ECONOMICS_DECK_FILES = [
   'de_gymnasium_economics_flashcards_macro_money_policy.de.json',
   'de_gymnasium_economics_flashcards_international_development.de.json',
   'de_gymnasium_economics_flashcards_business_law.de.json',
+  'de_gymnasium_economics_commercial_concepts_recall.de.json',
+  'de_gymnasium_economics_elasticity_recall.de.json',
+  'de_gymnasium_economics_investigation_levels_recall.de.json',
+  'de_gymnasium_economics_product_development_recall.de.json',
+  'de_gymnasium_economics_science_disciplines_recall.de.json',
 ]
 
 const CURRICULUM_DECK_FILES = [

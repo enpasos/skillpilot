@@ -12,10 +12,8 @@ import com.skillpilot.backend.completion.CompletionProfileCatalog;
 import com.skillpilot.backend.completion.CompletionProfileDefinition;
 import com.skillpilot.backend.completion.CompletionScopeDefinition;
 import com.skillpilot.backend.domain.Learner;
-import com.skillpilot.backend.domain.LearnerClientState;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
-import com.skillpilot.backend.repository.LearnerClientStateRepository;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.MasteryRepository;
 import com.skillpilot.backend.repository.PlannedGoalRepository;
@@ -60,7 +58,7 @@ class AssessmentCompletionSrsIntegrationTest {
     @Autowired LearnerRepository learners;
     @Autowired MasteryRepository mastery;
     @Autowired PlannedGoalRepository focus;
-    @Autowired LearnerClientStateRepository cardStates;
+    @Autowired com.skillpilot.backend.repository.LearnerCardStateRepository cardStates;
     @Autowired ObjectMapper mapper;
     @MockitoSpyBean DeckResourceService decks;
     private Object originalApplication;
@@ -122,10 +120,16 @@ class AssessmentCompletionSrsIntegrationTest {
         assertThat(valid).isNotNull();
         assertThat(valid.exists()).isTrue();
         mastery.saveAndFlush(new Mastery(learner, MEMORY, 1.0));
-        cardStates.saveAndFlush(new LearnerClientState(learner, MEMORY, "invalid-json", Instant.now()));
+        // A former block that could not be read is migrated as a damaged node record.
+        var damaged = new com.skillpilot.backend.domain.LearnerCardState(
+                new com.skillpilot.backend.domain.LearnerCardStateId(learner.getSkillpilotId(), MEMORY, ""));
+        damaged.setInvalidReason("invalid");
+        damaged.setInvalidState("invalid-json");
+        damaged.setUpdatedAt(Instant.now());
+        cardStates.saveAndFlush(damaged);
         assertUnavailableWithoutResultOrFocusMutation();
-        assertThat(cardStates.findByLearner_SkillpilotId(learner.getSkillpilotId())).singleElement()
-                .satisfies(state -> assertThat(state.getClientState()).isEqualTo("invalid-json"));
+        assertThat(cardStates.findLearner(learner.getSkillpilotId())).singleElement()
+                .satisfies(state -> assertThat(state.getInvalidState()).isEqualTo("invalid-json"));
     }
 
     @Test void validRequiredDeckWithoutPreviousLearnerStateMeansUnmasteredRatherThanUnavailable() {
@@ -141,7 +145,7 @@ class AssessmentCompletionSrsIntegrationTest {
         assertThat(state.levelCompletion().pendingTargetCount()).isEqualTo(3);
         assertThat(service.getMastery(learner.getSkillpilotId()).getOrDefault(MEMORY, 0.0)).isZero();
         assertThat(mastery.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
-        assertThat(cardStates.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+        assertThat(cardStates.findLearner(learner.getSkillpilotId())).isEmpty();
         assertFocusUnchanged();
     }
 
@@ -149,7 +153,7 @@ class AssessmentCompletionSrsIntegrationTest {
         doReturn(broken).when(decks).resolveDeckResource(eq(MEMORY), anyString());
         mastery.saveAndFlush(new Mastery(learner, MEMORY, 1.0));
         assertUnavailableWithoutResultOrFocusMutation();
-        assertThat(cardStates.findByLearner_SkillpilotId(learner.getSkillpilotId())).isEmpty();
+        assertThat(cardStates.findLearner(learner.getSkillpilotId())).isEmpty();
     }
 
     private void assertUnavailableWithoutResultOrFocusMutation() {

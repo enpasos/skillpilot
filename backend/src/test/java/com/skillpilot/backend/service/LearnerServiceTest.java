@@ -175,6 +175,12 @@ public class LearnerServiceTest {
     private LearnerClientStateRepository learnerClientStateRepository;
 
     @Autowired
+    private com.skillpilot.backend.repository.LearnerCardStateRepository learnerCardStateRepository;
+
+    @Autowired
+    private com.skillpilot.backend.service.srs.SrsCardStateStore cardStateStore;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
     @Autowired
@@ -182,6 +188,9 @@ public class LearnerServiceTest {
 
     @Autowired
     private CompositionViewService compositionViewService;
+
+    @Autowired
+    private DeckResourceService deckResourceService;
 
     @Autowired
     private PlatformTransactionManager transactionManager;
@@ -210,6 +219,7 @@ public class LearnerServiceTest {
                 "learningPlanClock",
                 Clock.system(ZoneId.of("Europe/Berlin")));
         learnerClientStateRepository.deleteAll();
+        learnerCardStateRepository.deleteAll();
         learnerLearningPlanRepository.deleteAll();
         masteryRepository.deleteAll();
         plannedGoalRepository.deleteAll();
@@ -430,16 +440,21 @@ public class LearnerServiceTest {
 
     @Test
     void unreadableStoredCardStateIsATechnicalFailure() {
-        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
-        learnerClientStateRepository.save(new com.skillpilot.backend.domain.LearnerClientState(
-                learner, "recall-node", "invalid-json", Instant.now()));
+        // A former block that could not be read is migrated as a damaged node record.
+        Instant damagedAt = Instant.now().truncatedTo(java.time.temporal.ChronoUnit.MICROS);
+        var nodeRecord = new com.skillpilot.backend.domain.LearnerCardState(
+                new com.skillpilot.backend.domain.LearnerCardStateId(learnerId, "recall-node", ""));
+        nodeRecord.setInvalidReason("invalid");
+        nodeRecord.setInvalidState("invalid-json");
+        nodeRecord.setUpdatedAt(damagedAt);
+        learnerCardStateRepository.save(nodeRecord);
         assertThatThrownBy(() -> learnerService.getClientState(learnerId, "recall-node"))
                 .isInstanceOf(com.skillpilot.backend.service.srs.SrsStateUnavailableException.class);
         assertThatThrownBy(() -> learnerService.upsertClientState(learnerId, "recall-node",
-                new ClientStateRequest(null, Map.of(), learnerClientStateRepository.findById(
-                        new com.skillpilot.backend.domain.LearnerClientStateId(learnerId, "recall-node"))
-                        .orElseThrow().getClientStateUpdatedAt())))
+                new ClientStateRequest(null, Map.of(), damagedAt)))
                 .isInstanceOf(com.skillpilot.backend.service.srs.SrsStateUnavailableException.class);
+        assertThat(learnerCardStateRepository.findNode(learnerId, "recall-node")).singleElement()
+                .satisfies(row -> assertThat(row.getInvalidState()).isEqualTo("invalid-json"));
     }
 
     @Test
@@ -3119,6 +3134,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         var state = learnerService.getLearnerState(learnerId);
 
@@ -3172,7 +3188,7 @@ public class LearnerServiceTest {
         });
         assertThat(practice.cards()).hasSize(Math.min(20, practice.progress().dueCards()));
         assertThat(practice.progress().dueCards()).isEqualTo(practice.progress().totalCards());
-        assertThat(learnerClientStateRepository.findAll()).isEmpty();
+        assertThat(learnerCardStateRepository.findAll()).isEmpty();
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
                 .isEqualTo(stateVersionBeforePractice);
 
@@ -3185,7 +3201,7 @@ public class LearnerServiceTest {
                 .containsExactlyElementsOf(practice.cards().stream()
                         .map(card -> card.cardId())
                         .toList());
-        assertThat(learnerClientStateRepository.findAll()).isEmpty();
+        assertThat(learnerCardStateRepository.findAll()).isEmpty();
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
                 .isEqualTo(stateVersionBeforePractice);
 
@@ -3374,16 +3390,35 @@ public class LearnerServiceTest {
                     assertThat(result.getGoalKey()).isEqualTo(opening);
                     assertThat(result.getValue()).isEqualTo(1.0);
                 });
+        // Issue #85: a card enters the box only once its understanding goal is passed.
+        var locked = learnerService.startMemoryPractice(learnerId, "de", start);
+        assertThat(locked.status()).isEqualTo("complete");
+        assertThat(locked.cards()).isEmpty();
+        assertThat(locked.progress().totalCards()).isZero();
+        assertThat(locked.progress().dueCards()).isZero();
+        for (String understanding : List.of("8aff7aac-321b-5172-ac55-877876bfd2cd", "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+                "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd", "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+                "d6dc0e02-831d-4894-a61a-852bcc74f147", "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+                "68c90ba6-c438-463c-9a53-cf61062d416a")) {
+            masteryRepository.saveAndFlush(new Mastery(learner, understanding, 1.0));
+        }
+        var partial = learnerService.startMemoryPractice(learnerId, "de", start);
+        // Card 036 belongs to the still open active goal "Waagerechter Wurf analysieren".
+        assertThat(partial.cards()).extracting(card -> card.cardId()).containsExactly(
+                "physics_e_cov_001", "physics_e_cov_007", "physics_e_cov_008", "physics_e_cov_009",
+                "physics_e_cov_010", "physics_e_cov_011", "physics_e_cov_012", "physics_e_cov_035");
+        assertThat(partial.progress().totalCards()).isEqualTo(8);
+        masteryRepository.saveAndFlush(new Mastery(learner, active, 1.0));
         var practice = learnerService.startMemoryPractice(learnerId, "de", start);
         assertThat(practice.cards()).extracting(card -> card.cardId()).containsExactly(
                 "physics_e_cov_001", "physics_e_cov_007", "physics_e_cov_008", "physics_e_cov_009",
                 "physics_e_cov_010", "physics_e_cov_011", "physics_e_cov_012", "physics_e_cov_035", "physics_e_cov_036");
         assertThat(practice.progress().totalCards()).isEqualTo(9);
         assertThat(practice.goalTitle()).contains("E.1");
+        // Issue #85: following learning plans no longer blocks unit practice without an active goal.
         learner.setFollowLearningPlans(true);
         learnerRepository.saveAndFlush(learner);
-        assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de", start))
-                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No flashcard practice");
+        assertThat(learnerService.startMemoryPractice(learnerId, "de", start).cards()).hasSize(9);
         learner.setActiveGoalId(active);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
@@ -3414,10 +3449,459 @@ public class LearnerServiceTest {
                 .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No flashcard practice");
     }
 
+    private static final String PHYSICS_E_PHASE_DECK_ID = "9f2f5ab8-0ae4-5792-b831-82a05af5895c";
+    private static final String PHYSICS_GK_VIEW_PREFIX = "composition:de-he-gym-sekii-physics-gk:structure:";
+    private static final String PHYSICS_ACCELERATED_MOTION_ID = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
+    private static final String PHYSICS_FREE_FALL_EXPERIMENT_ID = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
+
+    private Learner selectHessenPhysicsGk() {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setSelectedCurriculum(CANONICAL_GYMNASIUM_ROOT_ID);
+        learner.setPersonalCurriculum(completedPersonalizationConfig("""
+                {
+                  "a0e13c56-c25f-4742-9272-3a1a603ee52e":{"selected":true,"filterId":"DE-HE","stage":"SekII","durationModel":"G9"},
+                  "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a":{"selected":true,"filterId":"GK"}
+                }
+                """));
+        learner.setFollowLearningPlans(false);
+        learner.setActiveGoalId(null);
+        return learnerRepository.saveAndFlush(learner);
+    }
+
+    @Test
+    @Transactional
+    void unitCardsComeFromTheHierarchyWithoutFlashcardGoalAndWithAMasteredActiveGoal() {
+        // The nested unit has its own material file without flashcardGoalId.
+        String unit = "physics-e1-accelerated-and-free-fall";
+        Learner learner = selectHessenPhysicsGk();
+        learnerService.setPlannedGoals(learnerId, Set.of(PHYSICS_GK_VIEW_PREFIX + unit));
+        var start = new MemoryPracticeStartRequest(PHYSICS_E_PHASE_DECK_ID, unit);
+        for (String goal : List.of("a4d4efe1-7d30-526b-ac9c-806113da4363", "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+                PHYSICS_ACCELERATED_MOTION_ID, PHYSICS_FREE_FALL_EXPERIMENT_ID)) {
+            masteryRepository.saveAndFlush(new Mastery(learner, goal, 1.0));
+        }
+        // The active goal is already mastered: unit practice no longer needs an open ordinary goal.
+        learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(PHYSICS_ACCELERATED_MOTION_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+
+        var practice = learnerService.startMemoryPractice(learnerId, "de", start);
+        assertThat(practice.cards()).extracting(card -> card.cardId())
+                .containsExactly("physics_e_cov_007", "physics_e_cov_009", "physics_e_cov_010");
+        assertThat(practice.progress()).isEqualTo(new com.skillpilot.backend.api.MemoryPracticeProgress(3, 3, 0));
+        assertCardStep(learnerService.getCardStepFacts(learnerId, "de"), unit, 3, 3, false);
+        assertThat(learnerService.getCardStepFacts(learnerId, "de").practiceGoalId()).isEqualTo(PHYSICS_E_PHASE_DECK_ID);
+        long version = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+        var coachContext = learnerService.getCoachActiveGoalContext(
+                learnerId, PHYSICS_ACCELERATED_MOTION_ID, version, "de", Set.of(), true);
+        assertThat(coachContext.activities()).filteredOn(activity -> PHYSICS_E_PHASE_DECK_ID.equals(activity.goalId()))
+                .singleElement().satisfies(activity -> {
+                    assertThat(activity.route()).isEqualTo("unitPractice");
+                    assertThat(activity.practiceScopeId()).isEqualTo(unit);
+                });
+
+        // A rating writes exactly the rated card's row.
+        learnerService.reviewMemoryPracticeCard(learnerId, "de",
+                new MemoryPracticeReviewRequest(PHYSICS_E_PHASE_DECK_ID, "physics_e_cov_007", "known", unit));
+        Map<String, String> before = cardRows(PHYSICS_E_PHASE_DECK_ID);
+        learnerService.reviewMemoryPracticeCard(learnerId, "de",
+                new MemoryPracticeReviewRequest(PHYSICS_E_PHASE_DECK_ID, "physics_e_cov_009", "not_known", unit));
+        Map<String, String> after = cardRows(PHYSICS_E_PHASE_DECK_ID);
+        assertThat(after.keySet()).containsExactlyInAnyOrder("physics_e_cov_007", "physics_e_cov_009");
+        assertThat(after.get("physics_e_cov_007")).isEqualTo(before.get("physics_e_cov_007"));
+
+        // A card passed in Verified Recall leaves the box for good.
+        cardStateStore.updateCards(learnerId, PHYSICS_E_PHASE_DECK_ID, List.of("physics_e_cov_010"), (id, state) -> {
+            state.put("id", id);
+            state.put("interval", 0);
+            state.put("nextReview", 0);
+            state.put("verifiedRecall", Map.of("status", "passed", "passedAt", "2026-11-20T10:00:00Z",
+                    "lastTestedAt", "2026-11-20T10:00:00Z", "attempts", 1, "failures", 0));
+            return state;
+        }, Instant.now());
+        var afterRemoval = learnerService.startMemoryPractice(learnerId, "de", start);
+        // Both remaining cards are scheduled for tomorrow; the removed card no longer counts.
+        assertThat(afterRemoval.status()).isEqualTo("complete");
+        assertThat(afterRemoval.cards()).isEmpty();
+        assertThat(afterRemoval.progress()).isEqualTo(new com.skillpilot.backend.api.MemoryPracticeProgress(2, 0, 2));
+        assertThatThrownBy(() -> learnerService.reviewMemoryPracticeCard(learnerId, "de",
+                new MemoryPracticeReviewRequest(PHYSICS_E_PHASE_DECK_ID, "physics_e_cov_010", "known", unit)))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("not due");
+        assertThat(learnerService.getMastery(learnerId).getOrDefault(PHYSICS_E_PHASE_DECK_ID, 0.0)).isZero();
+
+        // The check is proposed only once every open card of the context was known twice.
+        for (String cardId : List.of("physics_e_cov_007", "physics_e_cov_009")) {
+            cardStateStore.updateCards(learnerId, PHYSICS_E_PHASE_DECK_ID, List.of(cardId), (id, state) -> {
+                state.put("repetition", 2);
+                state.put("interval", 6);
+                state.put("nextReview", Instant.now().plusSeconds(86_400).toEpochMilli());
+                return state;
+            }, Instant.now());
+        }
+        var ready = learnerService.getCardStepFacts(learnerId, "de");
+        assertCardStep(ready, unit, 0, 2, true);
+        assertThat(ready.practiceGoalId()).as("nothing is due").isNull();
+        assertThat(ready.checkGoalId()).isEqualTo(PHYSICS_E_PHASE_DECK_ID);
+        assertThat(ready.offerKey()).as("the proposal of the check is a step of its own").isNotBlank();
+    }
+
+    private static void assertCardStep(com.skillpilot.backend.service.srs.SrsCardStepFacts facts, String unit,
+            int dueCards, int boxCards, boolean recallProposalReady) {
+        assertThat(facts.practiceScopeId()).isEqualTo(unit);
+        assertThat(facts.deckGoalIds()).containsExactly(PHYSICS_E_PHASE_DECK_ID);
+        assertThat(facts.dueCards()).isEqualTo(dueCards);
+        assertThat(facts.boxCards()).isEqualTo(boxCards);
+        assertThat(facts.recallProposalReady()).isEqualTo(recallProposalReady);
+        assertThat(facts.backendChooses()).as("the fixture learner has Autopilot off").isFalse();
+    }
+
+    private Map<String, String> cardRows(String nodeId) {
+        Map<String, String> rows = new java.util.TreeMap<>();
+        learnerCardStateRepository.findNode(learnerId, nodeId).stream().filter(row -> !row.isNodeRecord())
+                .forEach(row -> rows.put(row.getId().getCardId(), row.getUpdatedAt() + "|" + row.getCardState()));
+        return rows;
+    }
+
+    private static final String PHYSICS_E1_MOTION_UNIT = "physics-e1-motion";
+    private static final String PHYSICS_E1_OPENING_ID = "a4d4efe1-7d30-526b-ac9c-806113da4363";
+    private static final String PHYSICS_HORIZONTAL_THROW_ID = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
+
+    /** E.1 is planned and opened, two understanding goals are passed and an open ordinary goal is active. */
+    private Learner activeOrdinaryGoalInEOne() {
+        Learner learner = selectHessenPhysicsGk();
+        learnerService.setPlannedGoals(learnerId, Set.of(PHYSICS_GK_VIEW_PREFIX + PHYSICS_E1_MOTION_UNIT));
+        for (String goal : List.of(PHYSICS_E1_OPENING_ID, PHYSICS_ACCELERATED_MOTION_ID, PHYSICS_FREE_FALL_EXPERIMENT_ID)) {
+            masteryRepository.saveAndFlush(new Mastery(learner, goal, 1.0));
+        }
+        learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(PHYSICS_HORIZONTAL_THROW_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        return learnerRepository.saveAndFlush(learner);
+    }
+
+    private Map<String, Double> storedMastery() {
+        Map<String, Double> stored = new java.util.TreeMap<>();
+        masteryRepository.findByLearner_SkillpilotId(learnerId).forEach(row -> stored.put(row.getGoalKey(), row.getValue()));
+        return stored;
+    }
+
+    @Test
+    void unitCheckStartsFromAnOrdinaryActiveGoalAndAnIssuedBatchOutlivesAContextChange() {
+        activeOrdinaryGoalInEOne();
+        String unitStart = PHYSICS_GK_VIEW_PREFIX + PHYSICS_E1_MOTION_UNIT;
+        var practice = learnerService.startMemoryPractice(learnerId, "de",
+                new MemoryPracticeStartRequest(PHYSICS_E_PHASE_DECK_ID, PHYSICS_E1_MOTION_UNIT));
+        List<String> boxIds = practice.cards().stream().map(card -> card.cardId()).toList();
+        assertThat(boxIds).isNotEmpty().doesNotContain("physics_e_cov_036");
+        var facts = learnerService.getCardStepFacts(learnerId, "de");
+        assertThat(facts.practiceScopeId()).isEqualTo(PHYSICS_E1_MOTION_UNIT);
+        assertThat(facts.checkGoalId()).isEqualTo(PHYSICS_E_PHASE_DECK_ID);
+        Map<String, Double> masteryBefore = storedMastery();
+        long revisionBefore = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+
+        // The deck goal is not active: its own check is refused, the unit check is not.
+        assertThatThrownBy(() -> learnerService.startVerifiedRecallBatch(learnerId, "de", PHYSICS_E_PHASE_DECK_ID))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("active learner-facing");
+        var start = learnerService.startVerifiedRecallUnitCheck(learnerId, "de");
+        assertThat(start.goalId()).isEqualTo(PHYSICS_E_PHASE_DECK_ID);
+        assertThat(start.practiceScopeId()).isEqualTo(PHYSICS_E1_MOTION_UNIT);
+        var unitBatch = start.prompt();
+        List<String> unitIds = unitBatch.cards().stream().map(VerifiedRecallPromptCard::cardId).toList();
+        // The check covers exactly the unit's released, not yet passed cards, in deck order.
+        assertThat(unitIds).containsExactlyElementsOf(boxIds.subList(0, Math.min(boxIds.size(), 10)));
+        assertThat(unitBatch.status()).isEqualTo("ready");
+        int deckCards = unitBatch.totalCards();
+        assertThat(deckCards).isGreaterThan(boxIds.size());
+        assertThat(unitBatch.pendingCards()).isEqualTo(deckCards);
+        assertThat(unitBatch.eligibleCards()).isEqualTo(boxIds.size());
+        Learner afterStart = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(afterStart.getActiveGoalId()).isEqualTo(PHYSICS_HORIZONTAL_THROW_ID);
+        assertThat(afterStart.getCoachStateRevision()).isEqualTo(revisionBefore);
+
+        // The learner's unit context changes between issue and grading.
+        learnerService.setPlannedGoals(learnerId, Set.of(PHYSICS_GK_VIEW_PREFIX + "physics-sekii-gk"));
+        assertThat(learnerService.getCardStepFacts(learnerId, "de").practiceScopeId()).isNotEqualTo(PHYSICS_E1_MOTION_UNIT);
+        var request = new VerifiedRecallBatchAnswerRequest(PHYSICS_E_PHASE_DECK_ID, unitBatch.configuredBatchSize(),
+                unitIds, unitBatch.issuedAt());
+        var answers = learnerService.getVerifiedRecallAnswersBatch(learnerId, "de", request, PHYSICS_E1_MOTION_UNIT);
+        assertThat(answers.cards()).extracting(card -> card.cardId()).containsExactlyElementsOf(unitIds);
+        // Without its unit, or for another unit, the issued batch is not answerable.
+        assertThatThrownBy(() -> learnerService.getVerifiedRecallAnswersBatch(learnerId, "de", request))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThatThrownBy(() -> learnerService.getVerifiedRecallAnswersBatch(learnerId, "de", request, "physics-e4"))
+                .isInstanceOf(ResponseStatusException.class);
+        if (unitIds.size() > 1) {
+            assertThatThrownBy(() -> learnerService.getVerifiedRecallAnswersBatch(learnerId, "de",
+                    new VerifiedRecallBatchAnswerRequest(PHYSICS_E_PHASE_DECK_ID, unitBatch.configuredBatchSize(),
+                            unitIds.subList(0, unitIds.size() - 1), unitBatch.issuedAt()), PHYSICS_E1_MOTION_UNIT))
+                    .isInstanceOf(ResponseStatusException.class)
+                    .hasMessageContaining("incomplete, reordered, or no longer current");
+        }
+        long revisionBeforeWrite = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
+        var results = unitIds.stream().map(id -> new VerifiedRecallBatchCardResult(id, true)).toList();
+        var graded = learnerService.recordVerifiedRecallResultsBatch(learnerId, "de", new VerifiedRecallBatchResultRequest(
+                PHYSICS_E_PHASE_DECK_ID, unitBatch.configuredBatchSize(), unitIds, unitBatch.issuedAt(), results),
+                PHYSICS_E1_MOTION_UNIT);
+        assertThat(graded.savedResults()).extracting(saved -> saved.cardId()).containsExactlyElementsOf(unitIds);
+        assertThat(graded.verifiedCards()).isEqualTo(unitIds.size());
+        assertThat(graded.pendingCards()).isEqualTo(deckCards - unitIds.size());
+        assertThat(graded.masterySaved()).isFalse();
+        assertThat(cardRows(PHYSICS_E_PHASE_DECK_ID).keySet()).containsExactlyInAnyOrderElementsOf(unitIds);
+        // The active ordinary goal is unchanged, no mastery is written, the write occupies one revision.
+        Learner afterWrite = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(afterWrite.getActiveGoalId()).isEqualTo(PHYSICS_HORIZONTAL_THROW_ID);
+        assertThat(afterWrite.getCoachStateRevision()).isEqualTo(revisionBeforeWrite + 1);
+        assertThat(graded.successor().activeGoal()).isNotNull();
+        assertThat(graded.successor().activeGoal().id()).isEqualTo(PHYSICS_HORIZONTAL_THROW_ID);
+        assertThat(storedMastery()).isEqualTo(masteryBefore);
+        if (boxIds.size() <= 10) {
+            // Every released unit card is verified; the deck goal stays open, so this is never "complete".
+            assertThat(graded.next().status()).isEqualTo("waiting");
+            assertThat(graded.next().eligibleCards()).isZero();
+            assertThat(graded.next().nextEligibleAt()).isNull();
+            assertThat(graded.next().instruction()).contains("Einheit").contains("nicht als abgeschlossen");
+        }
+        // A replay of the graded batch is refused and writes nothing.
+        assertThatThrownBy(() -> learnerService.recordVerifiedRecallResultsBatch(learnerId, "de",
+                new VerifiedRecallBatchResultRequest(PHYSICS_E_PHASE_DECK_ID, unitBatch.configuredBatchSize(), unitIds,
+                        unitBatch.issuedAt(), results), PHYSICS_E1_MOTION_UNIT))
+                .isInstanceOf(ResponseStatusException.class);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision())
+                .isEqualTo(revisionBeforeWrite + 1);
+        // A passed card is removed: practice of the unit never offers it again.
+        learnerService.setPlannedGoals(learnerId, Set.of(unitStart));
+        var practiceAfterCheck = learnerService.startMemoryPractice(learnerId, "de",
+                new MemoryPracticeStartRequest(PHYSICS_E_PHASE_DECK_ID, PHYSICS_E1_MOTION_UNIT));
+        assertThat(practiceAfterCheck.cards()).extracting(card -> card.cardId()).doesNotContainAnyElementsOf(unitIds);
+    }
+
+    @Test
+    void unitCheckOfTheLastOpenCardsMastersTheDeckGoalAndReturnsToTheActiveGoal() {
+        Learner learner = activeOrdinaryGoalInEOne();
+        var practice = learnerService.startMemoryPractice(learnerId, "de",
+                new MemoryPracticeStartRequest(PHYSICS_E_PHASE_DECK_ID, PHYSICS_E1_MOTION_UNIT));
+        List<String> boxIds = practice.cards().stream().map(card -> card.cardId()).toList();
+        assertThat(boxIds).isNotEmpty().hasSizeLessThanOrEqualTo(10);
+        // Every other card of the deck already passed its own check.
+        List<String> others = new ArrayList<>(com.skillpilot.backend.service.srs.CardReleaseFixtures.deckCardIds(
+                landscapeService, deckResourceService, PHYSICS_E_PHASE_DECK_ID));
+        others.removeAll(boxIds);
+        cardStateStore.updateCards(learnerId, PHYSICS_E_PHASE_DECK_ID, others, (id, state) -> {
+            state.put("id", id);
+            state.put("verifiedRecall", Map.of("status", "passed", "passedAt", "2026-11-01T10:00:00Z",
+                    "lastTestedAt", "2026-11-01T10:00:00Z", "attempts", 1, "failures", 0));
+            return state;
+        }, Instant.parse("2026-11-01T10:00:00Z"));
+        Map<String, Double> masteryBefore = storedMastery();
+
+        var start = learnerService.startVerifiedRecallUnitCheck(learnerId, "de");
+        List<String> unitIds = start.prompt().cards().stream().map(VerifiedRecallPromptCard::cardId).toList();
+        assertThat(unitIds).containsExactlyElementsOf(boxIds);
+        var graded = learnerService.recordVerifiedRecallResultsBatch(learnerId, "de", new VerifiedRecallBatchResultRequest(
+                PHYSICS_E_PHASE_DECK_ID, start.prompt().configuredBatchSize(), unitIds, start.prompt().issuedAt(),
+                unitIds.stream().map(id -> new VerifiedRecallBatchCardResult(id, true)).toList()), PHYSICS_E1_MOTION_UNIT);
+
+        // The deck goal's mastery stays derived: its last card completes it.
+        assertThat(graded.masterySaved()).isTrue();
+        assertThat(graded.masteryGoalId()).isEqualTo(PHYSICS_E_PHASE_DECK_ID);
+        assertThat(graded.pendingCards()).isZero();
+        assertThat(graded.next().status()).isEqualTo("complete");
+        assertThat(learnerService.getMastery(learnerId).get(PHYSICS_E_PHASE_DECK_ID)).isEqualTo(1.0);
+        Map<String, Double> expected = new java.util.TreeMap<>(masteryBefore);
+        expected.put(PHYSICS_E_PHASE_DECK_ID, 1.0);
+        assertThat(storedMastery()).as("no mastery is written to any other goal").isEqualTo(expected);
+        // The learner returns to the active ordinary goal instead of a hand-off.
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(PHYSICS_HORIZONTAL_THROW_ID);
+        assertThat(graded.successor().activeGoal().id()).isEqualTo(PHYSICS_HORIZONTAL_THROW_ID);
+        assertThat(learner.getSkillpilotId()).isEqualTo(learnerId);
+    }
+
+    @Test
+    void unitCheckIsRefusedWithoutReleasedCardsOrBeforeTheUnitIsOpened() {
+        Learner learner = selectHessenPhysicsGk();
+        learnerService.setPlannedGoals(learnerId, Set.of(PHYSICS_GK_VIEW_PREFIX + PHYSICS_E1_MOTION_UNIT));
+        learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(PHYSICS_HORIZONTAL_THROW_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+        masteryRepository.saveAndFlush(new Mastery(learner, PHYSICS_ACCELERATED_MOTION_ID, 1.0));
+        // The unit orientation is not confirmed yet: no guided card work and no unit check.
+        assertThat(learnerService.getCardStepFacts(learnerId, "de"))
+                .isEqualTo(com.skillpilot.backend.service.srs.SrsCardStepFacts.none());
+        assertThatThrownBy(() -> learnerService.startVerifiedRecallUnitCheck(learnerId, "de"))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No unit card check");
+        // Opened, but no understanding goal of a unit card is passed: nothing is released.
+        masteryRepository.deleteAll(masteryRepository.findByLearner_SkillpilotId(learnerId));
+        masteryRepository.saveAndFlush(new Mastery(learner, PHYSICS_E1_OPENING_ID, 1.0));
+        var facts = learnerService.getCardStepFacts(learnerId, "de");
+        assertThat(facts.boxCards()).isZero();
+        assertThat(facts.checkGoalId()).isNull();
+        assertThat(facts.offerKey()).isNull();
+        assertThatThrownBy(() -> learnerService.startVerifiedRecallUnitCheck(learnerId, "de"))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No unit card check");
+        assertThat(learnerCardStateRepository.findAll()).isEmpty();
+    }
+
+    @Test
+    void theCardStepIsAnchoredAtTheJustCompletedGoalAndPracticeAcceptsExactlyThatContext() {
+        Learner learner = selectHessenPhysicsGk();
+        // Two planned atomic goals: no single explicit unit focus.
+        learnerService.setPlannedGoals(learnerId, Set.of(PHYSICS_ACCELERATED_MOTION_ID, PHYSICS_HORIZONTAL_THROW_ID));
+        for (String goal : List.of(PHYSICS_E1_OPENING_ID, "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+                PHYSICS_FREE_FALL_EXPERIMENT_ID)) {
+            masteryRepository.saveAndFlush(new Mastery(learner, goal, 1.0));
+        }
+        learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(PHYSICS_ACCELERATED_MOTION_ID);
+        learner.setLearningState(LearningState.TEACHING);
+        learnerRepository.saveAndFlush(learner);
+        var before = learnerService.getCardStepFacts(learnerId, "de");
+
+        // Completing the goal releases its cards and clears the active goal (Autopilot off).
+        learnerService.setMastery(learnerId, new MasteryUpdateRequest(
+                Map.of(PHYSICS_ACCELERATED_MOTION_ID, 1.0), PHYSICS_ACCELERATED_MOTION_ID));
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+        var boundary = learnerService.getCardStepFacts(learnerId, "de");
+        assertThat(boundary.practiceScopeId()).isEqualTo("physics-e1-accelerated-and-free-fall");
+        assertThat(boundary.practiceGoalId()).isEqualTo(PHYSICS_E_PHASE_DECK_ID);
+        assertThat(boundary.dueCards()).isEqualTo(3);
+        assertThat(boundary.boxCards()).isEqualTo(3);
+        assertThat(boundary.backendChooses()).isFalse();
+        assertThat(boundary.offerKey()).isNotBlank().isNotEqualTo(before.offerKey());
+        // A repeated read of the same boundary keeps the key: the coach offers the step once.
+        assertThat(learnerService.getCardStepFacts(learnerId, "de").offerKey()).isEqualTo(boundary.offerKey());
+
+        // Practice accepts exactly the published context.
+        var practice = learnerService.startMemoryPractice(learnerId, "de",
+                new MemoryPracticeStartRequest(boundary.practiceGoalId(), boundary.practiceScopeId()));
+        assertThat(practice.cards()).extracting(card -> card.cardId())
+                .containsExactly("physics_e_cov_007", "physics_e_cov_009", "physics_e_cov_010");
+        assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de",
+                new MemoryPracticeStartRequest(PHYSICS_E_PHASE_DECK_ID, PHYSICS_E1_MOTION_UNIT)))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No flashcard practice");
+        learnerService.reviewMemoryPracticeCard(learnerId, "de", new MemoryPracticeReviewRequest(
+                PHYSICS_E_PHASE_DECK_ID, "physics_e_cov_007", "known", boundary.practiceScopeId()));
+        var afterRating = learnerService.getCardStepFacts(learnerId, "de");
+        assertThat(afterRating.dueCards()).isEqualTo(2);
+        assertThat(afterRating.offerKey()).as("a rating is no goal boundary").isEqualTo(boundary.offerKey());
+
+        // The deck goal or an exam as active goal owns its own card workflow: no card step.
+        learner = learnerRepository.findById(learnerId).orElseThrow();
+        learner.setActiveGoalId(PHYSICS_E_PHASE_DECK_ID);
+        learnerRepository.saveAndFlush(learner);
+        assertThat(learnerService.getCardStepFacts(learnerId, "de"))
+                .isEqualTo(com.skillpilot.backend.service.srs.SrsCardStepFacts.none());
+        // Autopilot decides who chooses.
+        learner.setActiveGoalId(null);
+        learner.setAutoPilot(true);
+        learnerRepository.saveAndFlush(learner);
+        assertThat(learnerService.getCardStepFacts(learnerId, "de").backendChooses()).isTrue();
+    }
+
+    @Test
+    void theCockpitReceivesLockedCardsAndItsSyncCannotCreateStateForThem() {
+        activeOrdinaryGoalInEOne();
+        var snapshot = learnerService.getClientState(learnerId, PHYSICS_E_PHASE_DECK_ID);
+        // Card 036 belongs to the still open active goal; cards 007, 009 and 010 are released.
+        assertThat(snapshot.lockedCardIds()).contains("physics_e_cov_036")
+                .doesNotContain("physics_e_cov_007", "physics_e_cov_009", "physics_e_cov_010").doesNotHaveDuplicates();
+        assertThat(learnerService.getClientState(learnerId, "not-a-deck-goal").lockedCardIds()).isEmpty();
+
+        Map<String, Object> practice = Map.of("interval", 1, "repetition", 1, "ef", 2.5, "nextReview", 10);
+        var synced = learnerService.upsertClientState(learnerId, PHYSICS_E_PHASE_DECK_ID, new ClientStateRequest(null,
+                Map.of("physics_e_cov_007", practice, "physics_e_cov_036", practice)));
+        assertThat(synced.storedKeys()).isEqualTo(1);
+        assertThat(learnerService.getClientState(learnerId, PHYSICS_E_PHASE_DECK_ID).srsState())
+                .containsOnlyKeys("physics_e_cov_007");
+        // A locked card that already has stored state keeps the unchanged merge rules.
+        cardStateStore.updateCards(learnerId, PHYSICS_E_PHASE_DECK_ID, List.of("physics_e_cov_036"), (id, state) -> {
+            state.put("id", id);
+            state.put("interval", 1);
+            state.put("nextReview", 5);
+            return state;
+        }, Instant.now());
+        var current = learnerService.getClientState(learnerId, PHYSICS_E_PHASE_DECK_ID);
+        learnerService.upsertClientState(learnerId, PHYSICS_E_PHASE_DECK_ID, new ClientStateRequest(null,
+                Map.of("physics_e_cov_007", practice, "physics_e_cov_036", Map.of("interval", 6, "nextReview", 20)),
+                current.updatedAt()));
+        @SuppressWarnings("unchecked")
+        Map<String, Object> lockedState = (Map<String, Object>) learnerService
+                .getClientState(learnerId, PHYSICS_E_PHASE_DECK_ID).srsState().get("physics_e_cov_036");
+        assertThat(lockedState).containsEntry("interval", 6).containsEntry("nextReview", 20);
+    }
+
+    @Test
+    void aSignedExportTakenBeforeTheCardRowsImportsUnchanged() throws Exception {
+        // The signed archive format of the former per-goal JSON blocks (schemaVersion 1).
+        String formerBlock = """
+                {"card-b":{"id":"card-b","interval":6,"repetition":2,"ef":2.36,"nextReview":1700000000000},
+                 "card-a":{"id":"card-a","interval":1,"repetition":1,"ef":2.5,"nextReview":5,"lastReviewed":4,
+                   "verifiedRecall":{"status":"passed","attempts":1,"failures":0,"lastTestedAt":"2026-10-01T10:00:00Z",
+                     "passedAt":"2026-10-01T10:00:00Z"}}}""";
+        Map<String, Object> cards = objectMapper.readValue(formerBlock,
+                new com.fasterxml.jackson.core.type.TypeReference<java.util.LinkedHashMap<String, Object>>() { });
+        @SuppressWarnings("unchecked")
+        Map<String, Map<String, Object>> states = Map.of("former-node", (Map<String, Object>) (Map<?, ?>) cards);
+        var data = new com.skillpilot.backend.api.LearnerDataDTO(null, Map.of(), List.of(), Set.of(), null,
+                new com.skillpilot.backend.api.PortableSrsData(1, states));
+        String secret = (String) ReflectionTestUtils.getField(learnerService, "signingSecret");
+        javax.crypto.Mac mac = javax.crypto.Mac.getInstance("HmacSHA256");
+        mac.init(new javax.crypto.spec.SecretKeySpec(secret.getBytes(java.nio.charset.StandardCharsets.UTF_8), "HmacSHA256"));
+        String payload = objectMapper.writeValueAsString(data);
+        String signature = java.util.HexFormat.of().formatHex(mac.doFinal(payload.getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        var archived = objectMapper.readValue(payload, com.skillpilot.backend.api.LearnerDataDTO.class);
+
+        learnerService.importLearner(learnerId, new com.skillpilot.backend.api.SignedLearnerDataDTO(archived, signature));
+        assertThat(learnerService.getClientState(learnerId, "former-node").srsState()).isEqualTo(cards);
+        assertThat(learnerCardStateRepository.findNode(learnerId, "former-node")).hasSize(3);
+
+        // The new export keeps the signed format and imports again.
+        var exported = learnerService.exportLearner(learnerId);
+        assertThat(exported.data().srsData().schemaVersion()).isEqualTo(1);
+        assertThat(exported.data().srsData().states()).containsEntry("former-node", cards);
+        Learner target = learnerService.createLearner();
+        String json = objectMapper.writeValueAsString(exported);
+        learnerService.importLearner(target.getSkillpilotId(),
+                objectMapper.readValue(json, com.skillpilot.backend.api.SignedLearnerDataDTO.class));
+        assertThat(learnerService.getClientState(target.getSkillpilotId(), "former-node").srsState()).isEqualTo(cards);
+    }
+
+    @Test
+    void cockpitSyncKeepsItsTokenForRemovedAndEmptyStatesAndWritesOnlyChangedCards() {
+        var first = learnerService.upsertClientState(learnerId, "sync-node", new ClientStateRequest(null, Map.of(
+                "card-1", Map.of("interval", 1, "repetition", 1, "ef", 2.5, "nextReview", 10),
+                "card-2", Map.of("interval", 1, "repetition", 1, "ef", 2.5, "nextReview", 20))));
+        assertThat(learnerService.getClientState(learnerId, "sync-node").updatedAt()).isEqualTo(first.savedAt());
+        String unchangedRow = cardRows("sync-node").get("card-1");
+
+        // Omitting a practice-only card removes it; the token still changes.
+        var second = learnerService.upsertClientState(learnerId, "sync-node", new ClientStateRequest(null, Map.of(
+                "card-1", Map.of("interval", 1, "repetition", 1, "ef", 2.5, "nextReview", 10)), first.savedAt()));
+        assertThat(second.savedAt()).isAfter(first.savedAt());
+        assertThat(learnerService.getClientState(learnerId, "sync-node").updatedAt()).isEqualTo(second.savedAt());
+        assertThat(cardRows("sync-node")).containsOnlyKeys("card-1").containsEntry("card-1", unchangedRow);
+        assertThatThrownBy(() -> learnerService.upsertClientState(learnerId, "sync-node",
+                new ClientStateRequest(null, Map.of(), first.savedAt())))
+                .isInstanceOf(ResponseStatusException.class).hasMessageContaining("409");
+
+        // An empty state keeps a token, so the Cockpit's next sync is not a conflict.
+        var emptied = learnerService.upsertClientState(learnerId, "sync-node",
+                new ClientStateRequest(null, Map.of(), second.savedAt()));
+        var emptyState = learnerService.getClientState(learnerId, "sync-node");
+        assertThat(emptyState.srsState()).isEmpty();
+        assertThat(emptyState.updatedAt()).isEqualTo(emptied.savedAt());
+        learnerService.upsertClientState(learnerId, "sync-node", new ClientStateRequest(null,
+                Map.of("card-3", Map.of("interval", 1, "nextReview", 30)), emptied.savedAt()));
+        assertThat(learnerService.getClientState(learnerId, "sync-node").srsState()).containsOnlyKeys("card-3");
+    }
+
     @Test
     @Transactional
     void memoryPracticeRejectsAnotherGoalAndInvalidRatingWithoutWritingState() {
         activateSekOneCoreFormulaFlashcards();
+        Set<String> releasedBy = com.skillpilot.backend.service.srs.CardReleaseFixtures.understandingGoalIds(
+                landscapeService, deckResourceService, SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         assertThatThrownBy(() -> learnerService.startMemoryPractice(
                         learnerId,
@@ -3442,8 +3926,10 @@ public class LearnerServiceTest {
                     .hasMessageContaining("not_known or known");
         }
 
-        assertThat(learnerClientStateRepository.findAll()).isEmpty();
-        assertThat(masteryRepository.findAll()).isEmpty();
+        assertThat(learnerCardStateRepository.findAll()).isEmpty();
+        // Only the fixture's passed understanding goals exist: nothing was written.
+        assertThat(masteryRepository.findAll()).extracting(Mastery::getGoalKey)
+                .containsExactlyInAnyOrderElementsOf(releasedBy);
     }
 
     @Test
@@ -3506,6 +3992,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         assertThat(learnerService.getMastery(learnerId).getOrDefault(SEK1_CORE_FORMULAS_FLASHCARDS_ID, 0.0))
                 .isZero();
@@ -3570,6 +4057,8 @@ public class LearnerServiceTest {
         learnerService.setPlannedGoals(
                 learnerId,
                 Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID, FUNCTIONS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        releaseDeckCards(FUNCTIONS_FLASHCARDS_ID);
 
         var foreignPrompt = learnerService.startVerifiedRecall(
                 learnerId,
@@ -3599,7 +4088,7 @@ public class LearnerServiceTest {
                 .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining("Card is not part of this memorization goal");
 
-        assertThat(learnerClientStateRepository.findAll()).isEmpty();
+        assertThat(learnerCardStateRepository.findAll()).isEmpty();
         assertThat(learnerService.getMastery(learnerId)
                         .getOrDefault(SEK1_CORE_FORMULAS_FLASHCARDS_ID, 0.0))
                 .isZero();
@@ -3623,6 +4112,8 @@ public class LearnerServiceTest {
         learnerService.setPlannedGoals(
                 learnerId,
                 Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID, FUNCTIONS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        releaseDeckCards(FUNCTIONS_FLASHCARDS_ID);
         var originalPrompt = learnerService.startVerifiedRecall(
                 learnerId,
                 "de",
@@ -3661,7 +4152,7 @@ public class LearnerServiceTest {
                                 ((ResponseStatusException) error).getStatusCode())
                         .isEqualTo(org.springframework.http.HttpStatus.CONFLICT));
 
-        assertThat(learnerClientStateRepository.findAll()).isEmpty();
+        assertThat(learnerCardStateRepository.findAll()).isEmpty();
         assertThat(learnerService.getMastery(learnerId)
                         .getOrDefault(SEK1_CORE_FORMULAS_FLASHCARDS_ID, 0.0))
                 .isZero();
@@ -3683,6 +4174,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         var prompt = learnerService.startVerifiedRecall(
                 learnerId,
@@ -3796,8 +4288,9 @@ public class LearnerServiceTest {
                         .isInstanceOfSatisfying(Map.class, verified -> assertThat(verified)
                                 .containsEntry("status", "passed")
                                 .doesNotContainKey("lastFeedback"))));
-        assertThat(learnerClientStateRepository.findAll())
-                .allSatisfy(row -> assertThat(row.getClientState())
+        assertThat(learnerCardStateRepository.findNode(learnerId, SEK1_CORE_FORMULAS_FLASHCARDS_ID))
+                .hasSize(cardIds.size())
+                .allSatisfy(row -> assertThat(row.getCardState())
                         .doesNotContain("lastFeedback", "feedback"));
     }
 
@@ -4182,6 +4675,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
         var prompt = learnerService.startVerifiedRecall(
                 learnerId,
                 "de",
@@ -4278,6 +4772,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         var firstPrompt = learnerService.startVerifiedRecall(
                 learnerId,
@@ -4335,6 +4830,7 @@ public class LearnerServiceTest {
         learnerService.setPlannedGoals(
                 learnerId,
                 Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         var prompt = learnerService.startVerifiedRecall(
                 learnerId,
@@ -4551,6 +5047,8 @@ public class LearnerServiceTest {
             if ("memory".equals(nextGoal.nodeKind())) {
                 // Memory mastery must come from verified recall, even in this
                 // navigation fixture; direct setMastery deliberately cannot grant it.
+                // Issue #85: the deck's cards are released only by their understanding goals.
+                releaseDeckCards(nextGoal.id());
                 learnerService.setActiveGoal(learnerId, nextGoal.id());
                 boolean saved = false;
                 for (int batch = 0; batch < 100 && !saved; batch += 1) {
@@ -4590,6 +5088,17 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+    }
+
+    /**
+     * Issue #85: a card enters the box only once its understanding goals are
+     * passed. Passes them for every card of the deck goal, nothing else.
+     */
+    private Set<String> releaseDeckCards(String deckGoalId) {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        return com.skillpilot.backend.service.srs.CardReleaseFixtures.passUnderstandingGoals(
+                masteryRepository, learner, landscapeService, deckResourceService, deckGoalId);
     }
 
     private void prepareMemoryThenRepresentationLearningPlan() {
@@ -4936,13 +5445,8 @@ public class LearnerServiceTest {
                 List.of(), List.of(), null, null, null, null);
     }
     private void seedTrustedSrsFixture(String learnerId, String nodeId, ClientStateRequest request) {
-        try {
-            Learner learner = learnerRepository.findById(learnerId).orElseThrow();
-            learnerClientStateRepository.save(new com.skillpilot.backend.domain.LearnerClientState(
-                    learner, nodeId, objectMapper.writeValueAsString(request.srsState()), request.updatedAt()));
-        } catch (java.io.IOException exception) {
-            throw new IllegalStateException(exception);
-        }
+        // Trusted whole-node write, as a signed restore performs it.
+        cardStateStore.replaceNode(learnerId, nodeId, request.srsState(), request.updatedAt());
     }
 
 }

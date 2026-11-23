@@ -1889,7 +1889,8 @@ public class GeminiV1McpContractAdapter {
                 language,
                 prompt.status(),
                 cards.size(),
-                prompt.pendingCards()));
+                prompt.pendingCards(),
+                prompt.nextEligibleAt() != null && !prompt.nextEligibleAt().isBlank()));
         response.put("goalTitle", prompt.goalTitle());
         response.put("totalCards", prompt.totalCards());
         response.put("verifiedCards", prompt.verifiedCards());
@@ -1932,7 +1933,8 @@ public class GeminiV1McpContractAdapter {
             String language,
             String status,
             int batchSize,
-            int pendingCards) {
+            int pendingCards,
+            boolean sameDayBlocked) {
         boolean german = LANGUAGE_DE.equals(language);
         if (!german && !LANGUAGE_EN.equals(language)) {
             throw new ToolInputException("language must be either de or en.");
@@ -1943,11 +1945,28 @@ public class GeminiV1McpContractAdapter {
                             + "die vollständigen Antworten der lernenden Person, bevor du die Lösungen anforderst."
                     : "Present all " + batchSize + " returned cards in order and wait for the learner's complete "
                             + "answers before requesting the answer key.";
-            case "waiting" -> german
-                    ? "Derzeit ist keine Karte verfügbar. Es bleiben " + pendingCards
-                            + " Karten offen; warte bis zum veröffentlichten nächsten Zeitpunkt und erfinde keine Ersatzkarten."
-                    : "No card is available now. " + pendingCards
-                            + " cards remain pending; wait until the published next time and do not invent replacement cards.";
+            // "waiting" also means that every released card of the scope is verified; only a same-day
+            // block carries nextEligibleAt. In both cases the memory goal stays open.
+            case "waiting" -> sameDayBlocked
+                    ? (german
+                            ? "Derzeit ist keine Karte verfügbar. Es bleiben " + pendingCards
+                                    + " Karten offen; heute geprüfte Karten sind erst ab dem veröffentlichten nächsten "
+                                    + "Zeitpunkt wieder verfügbar. Erfinde keine Ersatzkarten. Das Lernkartenziel bleibt "
+                                    + "offen; melde es nicht als abgeschlossen."
+                            : "No card is available now. " + pendingCards
+                                    + " cards remain pending; cards tested today become available again at the published "
+                                    + "next time. Do not invent replacement cards. The memory goal stays open; do not "
+                                    + "report it as completed.")
+                    : (german
+                            ? "Alle derzeit freigegebenen Karten dieser Prüfung sind geprüft. Es bleiben " + pendingCards
+                                    + " Karten offen; sie werden erst verfügbar, wenn ihre Lernziele bestanden sind. Es gibt "
+                                    + "keinen Termin; kündige keine Fortsetzung für morgen an und erfinde keine "
+                                    + "Ersatzkarten. Das Lernkartenziel bleibt offen; melde es nicht als abgeschlossen."
+                            : "Every currently released card of this check is verified. " + pendingCards
+                                    + " cards remain pending; they become available only once their learning goals are "
+                                    + "passed. There is no scheduled time; do not announce a continuation tomorrow and do "
+                                    + "not invent replacement cards. The memory goal stays open; do not report it as "
+                                    + "completed.");
             case "complete" -> german
                     ? "Verified Recall für dieses Lernziel ist abgeschlossen. Fordere keine Lösungen an und speichere "
                             + "keine separate Zielbeherrschung."

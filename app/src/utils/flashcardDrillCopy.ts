@@ -5,6 +5,8 @@ export interface FlashcardDrillCopy {
     loading: string
     allCaughtUp: string
     practiceCaughtUp: string
+    /** The selection's box is empty and its cards wait for their learning goals (#85). */
+    nothingReleased: string
     noCardsForFilter: string
     new: string
     learn: string
@@ -50,6 +52,8 @@ export interface FlashcardDrillCopy {
     previousCard: string
     nextCard: string
     cardPosition: (current: number, total: number) => string
+    /** Neutral hint on cards that are not released yet (#85). */
+    lockedCards: (count: number) => string
     notKnown: string
     known: string
     notKnownTooltip: string
@@ -80,6 +84,7 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             loading: 'Loading Data...',
             allCaughtUp: 'All Caught Up!',
             practiceCaughtUp: 'Practice caught up',
+            nothingReleased: 'No card unlocked yet',
             noCardsForFilter: 'No flashcards found for the current filter.',
             new: 'New',
             learn: 'Learn',
@@ -125,6 +130,9 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             previousCard: 'Previous card',
             nextCard: 'Next card',
             cardPosition: (current, total) => `Card ${current} of ${total}`,
+            lockedCards: count => count === 1
+                ? '1 more card joins once you have passed its learning goal.'
+                : `${count} more cards join once you have passed their learning goals.`,
             notKnown: 'Not yet',
             known: 'Got it',
             notKnownTooltip: 'Not recalled yet. Schedule this card sooner.',
@@ -136,6 +144,7 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             loading: 'Lade Daten...',
             allCaughtUp: 'Alles erledigt!',
             practiceCaughtUp: 'Übung erledigt',
+            nothingReleased: 'Noch keine Karte freigeschaltet',
             noCardsForFilter: 'Keine Karteikarten für den aktuellen Filter gefunden.',
             new: 'Neu',
             learn: 'Lernen',
@@ -181,6 +190,9 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             previousCard: 'Vorherige Karte',
             nextCard: 'Nächste Karte',
             cardPosition: (current, total) => `Karte ${current} von ${total}`,
+            lockedCards: count => count === 1
+                ? '1 weitere Karte kommt dazu, sobald du ihr Lernziel geschafft hast.'
+                : `${count} weitere Karten kommen dazu, sobald du ihre Lernziele geschafft hast.`,
             notKnown: 'Noch nicht gewusst',
             known: 'Gewusst',
             notKnownTooltip: 'Noch nicht erinnert. Diese Karte wird früher wiederholt.',

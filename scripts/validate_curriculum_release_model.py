@@ -256,6 +256,23 @@ def goal_review_fingerprint(goal: Mapping[str, Any], rule_version: str) -> str:
     )
 
 
+def project_source_deck(value: Mapping[str, Any]) -> dict[str, Any]:
+    """Project a memory-deck source onto the closed package card-deck format 1.0.
+
+    Source format 2 (contracts/memory-deck/v2) adds the deck marker `schemaVersion`
+    and the card field `originGoalIds`. Card-deck 1.0 has neither; the package keeps
+    the reviewed relation in `lanes.memoryCards.activeCardDecisions[].originGoalIds`.
+    """
+    projected = copy.deepcopy(dict(value))
+    projected.pop("schemaVersion", None)
+    cards = projected.get("cards")
+    if isinstance(cards, list):
+        for card in cards:
+            if isinstance(card, dict):
+                card.pop("originGoalIds", None)
+    return projected
+
+
 def card_review_fingerprint(card: Mapping[str, Any], rule_version: str) -> str:
     tags = card.get("tags")
     normalized_tags = (
@@ -3778,7 +3795,7 @@ def build_expected_model(context: TrustedContext, release_root: Path) -> dict[st
         deck_source_path = resolve_repo_path(deck_config["sourcePath"])
         value = load_json(deck_source_path)
         require(isinstance(value, dict), f"Card deck is not an object: {deck_source_path}")
-        compiled = copy.deepcopy(value)
+        compiled = project_source_deck(value)
         compiled["$schema"] = SCHEMA_IDS["card-deck"]
         compiled["deckFormatVersion"] = "1.0"
         compiled["language"] = deck_config["locale"]
