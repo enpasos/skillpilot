@@ -1486,11 +1486,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"G8,SekII,GK,18", "G9,SekII,GK,18", "G8,CrossStage,GK,17", "G9,CrossStage,GK,17",
-            "G8,SekII,LK,18", "G9,SekII,LK,18"})
+    @CsvSource({"G8,SekII,GK,19", "G9,SekII,GK,19", "G8,CrossStage,GK,18", "G9,CrossStage,GK,18",
+            "G8,SekII,LK,19", "G9,SekII,LK,19"})
     void supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String duration, String stage, String course, int expected) throws Exception {
         String section = selectHessianMotionUnit(duration, stage, course);
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String measurementProtocol = "e0004439-ed34-5caf-858a-6107918224eb";
+        String individualProtocolAssessment = "c6e2942d-1ff4-5e86-a52a-4ca4c8568291";
         String extra = "LK".equals(course) ? MULTIPHASE_EXTRA : WURF_EXTRA;
         var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
         var monday = today.with(java.time.DayOfWeek.MONDAY);
@@ -1499,7 +1501,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var individual = List.of(section, extra);
         var required = learners.resolveLearningPlanGoalIds(learnerId, physics, sectionRoots);
         var all = learners.resolveLearningPlanGoalIds(learnerId, physics, individual);
-        assertThat(required).hasSize(expected).doesNotContain(WURF_EXTRA, MULTIPHASE_EXTRA);
+        assertThat(required).hasSize(expected).contains(measurementProtocol)
+                .doesNotContain(WURF_EXTRA, MULTIPHASE_EXTRA, individualProtocolAssessment);
         assertThat(all).containsExactlyInAnyOrderElementsOf(
                 java.util.stream.Stream.concat(required.stream(), java.util.stream.Stream.of(extra)).toList());
         assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(extra))).containsExactly(extra);
