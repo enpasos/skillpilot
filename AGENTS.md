@@ -570,14 +570,16 @@ create a navigable learning unit around it. Open the goal directly and retain
 its context, direct actions and evidence. Keep declared programme stages,
 source scope and independent unit promises, assessments and ordering intact.
 Verify parity against actual displayed parent paths in the same scope as the
-tree and map converge.
+tree and map converge. The learner tree places visible prerequisites and authored unit steps before their successors, including within nested units. Independent siblings retain a stable order.
 
 **Learner-facing evidence marks for all subjects and scopes.** A green check
 means the learner has their own successful evidence for this goal. The same check in gray
 means that assessed work on another goal gives a
-documented credit for this one. When a prerequisite simply ceases to be
-required, show a neutral minus. Use the same meaning in the tree, map,
-progress bars and accessible text, including with assessment pilots disabled.
+documented credit for this one. On 23 November 2026 the Product Owner removed
+the minus sign. An atom with no individual evidence or reviewed credit keeps
+its open or active mark, including when the current assignment can finish
+without it. Tree, map, counts and accessible labels report this consistently.
+Goal and unit tiles offer ordinary navigation without practice buttons.
 Show a certified section's completion separately from how many individual
 goals have their own evidence. Display choices never write mastery.
 
@@ -825,8 +827,15 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   assessment of that unit requires it and a coverage review confirms that the
   assessment tests it, and it is then recognized like the unit's other goals.
   Until then it stays outside the unit. What an assessment must demand to
-  test an experimental goal is not decided; it is settled once, for all such
-  goals, when the first unit with one is cut. The contract needs no marker
+  test a unit assessment remains subject to the review of its exact task.
+  On 23 November 2026 the Product Owner confirmed that experimental subject
+  goals are ordinary required targets in the applicable curriculum. Author a
+  feasible home investigation or supply an equivalent route for the named
+  skill, for example a documented dataset in the chat. An external simulation
+  can support an appropriate modelling question. Learners identify the data
+  source and do the interpretation themselves. Record personal setup or data
+  acquisition only when the learner carried it out. The assessment credit for
+  each goal depends on the actual reviewed performance. The contract needs no marker
   and no `ownExplicit` relation.
 - **Knowledge context of a unit (13 November 2026).** Nothing is written by
   hand about the subject matter of a unit: its knowledge context is the union
@@ -889,11 +898,11 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   migration. The separately marked 19 November proposal has not replaced either
   contract.
   A first, surface-only step is implemented: the learner map
-  (`app/src/components/learningUnitMap/learnerUnitMapProjection.ts` and
+  (`app/src/utils/learnerNavigation/learnerUnitMapProjection.ts` and
   `learnerUnitMapPreview.ts`) renders the learner's graph as units and atomic
   goals for Mathematics and Physics only, under a visible construction-site
-  notice; other subjects appear in the goal tree only, and the tree view is
-  unchanged. Units are not declared in the curriculum yet, so this preview
+  notice; other subjects appear in the goal tree. Tree siblings follow the shared
+  projected prerequisite and study order wherever the map shows those siblings. Units are not declared in the curriculum yet, so this preview
   takes the sections of the Land views as stand-ins, always at the deepest
   top-down step (the step control was removed on 17 November 2026), orders
   sibling sections as the view lists them, and merges the two

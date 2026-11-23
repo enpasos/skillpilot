@@ -98,7 +98,6 @@
 .lum-node .lum-node-state.is-open { color: #ef4444; }
 .lum-node .lum-node-state.is-context { color: #8195a7; }
 .lum-node-progress { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; display: flex; overflow: hidden; border-radius: 0 0 4px 4px; background: #edf0f3; }
-.lum-node .lum-node-state.is-not-required { color: #606060; }
 .lum-node-progress > .is-explicit { background: #26ae88; }
 .lum-node-progress > .is-implicit { background: #737373; }
 .lum-node .react-flow__handle { opacity: 0; width: 4px; height: 4px; min-width: 0; min-height: 0; }
@@ -109,11 +108,6 @@
 .lum-node-meta { font-size: 9px; line-height: 1; color: #8c98a3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .lum-node-open { flex-shrink: 0; align-self: center; display: grid; place-items: center; width: 27px; height: 40px; border: 0; background: none; color: #8ea0ae !important; border-radius: 3px; padding: 0; }
 .lum-node-open:hover { color: #346f9c !important; background: #eff5f9; }
-.lum-node--has-practice .lum-node-practice {
-  flex: none; align-self: center; margin: 0 5px 0 3px; padding: 4px 6px; min-height: 38px;
-  border: 1px solid #a6c2d6; border-radius: 4px; color: #275779; background: #eef5fa; font-size: 11px; font-weight: 600;
-}
-.lum-node--has-practice .lum-node-practice:hover { background: #deedf7; }
 .lum-node--motivation, .lum-node[data-unit-entry] { border-left-color: #bd9c62; }
 .lum-node--motivation .lum-node-icon { color: #b49765; }
 .lum-node--assessment { border-left-color: #9285b6; }
@@ -155,7 +149,6 @@
   .lum-map-summary { flex-wrap: wrap; gap: 0 12px; align-content: center; }
 }
 @media (max-width: 760px) {
-  .lum-node--has-practice .lum-node-practice { min-height: 44px; min-width: 48px; }
   .lum-topbar { padding: 0 12px; gap: 9px; height: 45px; }
   .lum-brand { gap: 6px; }
   .lum-brand > span { display: none; }

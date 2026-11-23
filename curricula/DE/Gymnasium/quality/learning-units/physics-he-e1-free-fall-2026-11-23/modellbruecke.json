@@ -1,0 +1,34 @@
+{
+  "reviewer": "Codex /root/leitregel_ci, unabhängiger fachlicher Gegenprüfer",
+  "reviewedAt": "2026-11-23T05:38:30+01:00",
+  "decision": "accepted",
+  "scope": "Bilinguale Coach-Übung für den Übergang vom Fallprotokoll zum Beschleunigungsmodell.",
+  "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+  "goalSha256": "b85b9c3a261aea244bac3f90ee71f809066ac266fc5d86be3c0c039187571e6a",
+  "materialPath": "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json",
+  "exerciseSha256": "ac4a18ff62a02fc98df19e81463bb4cc3071fb76a608215e2f16ccf053a58bc3",
+  "hashMethod": "SHA-256 über UTF-8 des vollständigen jeweiligen Ziel- oder Aufgabenobjekts, JSON mit sortierten Schlüsseln und ohne Leerraum oder abschließenden Zeilenumbruch.",
+  "sourceChecks": [
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "sha256": "46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+      "finding": "KCGO Physik, Seite 30, E.1 fordert zeitabhängige Darstellungen für Ort, Geschwindigkeit und Beschleunigung. Der freie Fall verbindet Messdaten, Diagramm und Modellbildung."
+    },
+    {
+      "url": "https://aldebaran.feld.cvut.cz/vyuka/fyzika_1_oi/Labs/02-Free_Fall_sample.pdf",
+      "sha256": "75422fdea67bd798c721bfdc626b0365d66d98a627d09f80c2b129616589b2b2",
+      "finding": "Die Originaltabelle in Versuch 2 vom 10. März 2017, Seite 1, Abschnitt 2.3, enthält für Stahlkugel 1 die drei Abwürfe 0,20 m in 0,201 s, 0,80 m in 0,403 s und 0,90 m in 0,428 s."
+    }
+  ],
+  "independentChecks": [
+    "0,403 / 0,201 ergibt 2,005. Der Fallweg wird dabei viermal so groß. Für konstante Geschwindigkeit wäre bei doppelter Zeit der doppelte Weg zu erwarten. Zwei Messpaare motivieren die Modellwahl. Eine weitere, unabhängig geprüfte Fallhöhe liefert die Kontrollmöglichkeit.",
+    "Für Start aus Ruhe mit positiver Achse nach unten gilt s(t) = g t²/2, v(t) = g t und a(t) = g. Die Steigung der Wegparabel gibt die Geschwindigkeit an. Die Steigung der Geschwindigkeitsgeraden gibt die Beschleunigung an. Bei einem späteren Zeitnullpunkt bleibt a gleich. Anfangsgeschwindigkeit und bei festem Ortsnullpunkt auch Anfangsweg sind dann positiv.",
+    "Die Prager Daten erlauben eine Vorhersage für den zusätzlichen Abwurf aus 0,90 m. Aus dem 0,80-m-Paar folgt beispielsweise 0,403 s × √(0,90/0,80) = 0,4274 s. Der in der Folgeübung bereitgestellte Messwert von 0,428 s erlaubt den Vergleich. Für eigene Daten lässt sich ein eigener Kontrollpunkt zurückhalten.",
+    "Die deutsche und die englische Fassung erfragen dieselbe Datenbeobachtung, Gegenhypothese, Achsenwahl, Verknüpfung der drei Darstellungen, Verschiebung des Zeitnullpunkts und spätere Kontrolle. Beide Aufgabenwege sind im Chat durchführbar."
+  ],
+  "correctionsVerified": [
+    "Die Neufassung benennt für Lernende ohne eigenes Protokoll eine zugängliche getrennte Kontrollhöhe.",
+    "Die Musterlösung benennt bei später gestartetem Zeitmaß auch den Anfangsweg bei unverändertem Ortsnullpunkt."
+  ],
+  "claimLimit": "Fachliches Urteil über diese Coach-Übung. Ein persönlicher Zielerfolg setzt eine Leistung der lernenden Person voraus."
+}

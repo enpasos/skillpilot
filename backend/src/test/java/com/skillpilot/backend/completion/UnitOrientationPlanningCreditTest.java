@@ -88,7 +88,7 @@ class UnitOrientationPlanningCreditTest {
             introductions.put(language, new UnitLearningMaterialService.Intro(old.question(),
                     old.promise() + " Additional promise.", old.scene(), old.imageUrl(), old.imageAlt(), old.topics()));
             fixture.material = new UnitLearningMaterialService.Material(null, null, OPENING, introductions, Map.of(),
-                    fixture.contract, null);
+                    fixture.contract, null, List.of());
             assertThat(fixture.credits()).as(language).isEmpty();
         }
         var changedGoal = new Fixture();
@@ -213,7 +213,7 @@ class UnitOrientationPlanningCreditTest {
                     definitions, draft.calculateFingerprint(LANDSCAPE, UNIT, draftContract, draftRule));
             var rule = new UnitAssessmentContract.PlanningCredit(draftRule.requiredPartIds(), draftRule.goalIds(), release, orientation);
             contract = new UnitAssessmentContract("future-v2", List.of(VIEW), parts, List.of(CONTENT), List.of(rule));
-            material = new UnitLearningMaterialService.Material(null, null, OPENING, intro, Map.of(), contract, null);
+            material = new UnitLearningMaterialService.Material(null, null, OPENING, intro, Map.of(), contract, null, List.of());
             for (var part : parts) receipts.put(part.goalId(), List.of(pass(part.goalId(), List.of(release.fingerprint()))));
 
             var projectedOpening = MAPPER.convertValue(opening, LearningGoal.class);

@@ -19,3 +19,11 @@ During the conversation the learner can ask a question, try an explanation or as
 - A learner’s question can show which explanation, representation or application would help next.
 - An explanation that carries over to a fresh example gives the coach further evidence of understanding. Completion depends on the requirements of the particular goal.
 - The conversation can be spoken or written. Learners can also use a sketch or a diagram to show what they mean.
+
+### From experiment to theory {#sec:experiment-to-model}
+
+When learners first develop a model, the coach guides them through one investigation. The unit opens with an observable question. Learners obtain measurements at home or work with an original experimental record supplied in chat. They identify the source, quantities, units and reference points. The first subject outcome is a record that another person can use.
+
+The coach then invites a conjecture about the observed pattern. In free fall, dropping a ball from 80 cm takes about twice as long as dropping it from 20 cm. What would happen at constant speed? Learners check their conjecture against the data, connect it to a model and explain the associated graphs. They then use the model to predict a measurement held out when estimating its parameters. When resuming, learners can use their previous measurements. The supplied record also supports continuation when their own notes are unavailable.
+
+The assessment concludes guided study with an independent application. Learners who explicitly choose a direct assessment can attempt it earlier. The map and the coach use the study order authored in the material. A general subject prerequisite is expressed as `requires` when the later goal also needs that competence across its other applicable scopes. Personal data collection, analysis of another experiment and assessment results can each be attributed to the work actually performed.

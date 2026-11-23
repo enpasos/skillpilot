@@ -3,7 +3,8 @@ import { Target, Send, Check, Circle, CircleDot, Square, SquareX } from 'lucide-
 import { useTranslation } from '../hooks/useTranslation'
 import { useLanguage } from '../contexts/LanguageContext'
 import type { UiGoal } from '../goalTypes'
-import { sortGoalsTopologically } from '../utils/goalSorter'
+import { buildSortedChildrenMap } from '../utils/learnerNavigation/treeSiblingOrder'
+import type { LearningMapFixture } from './learningUnitMap/types'
 import { isMastered, masteryColorClass } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
 import type { CompletionTreeWaiver } from '../utils/levelCompletionApi'
@@ -39,23 +40,6 @@ const isSek2ProgramUnitTitle = (title: string) => {
 
 const isSek2ProgramUnit = (goal?: UiGoal) =>
   !!goal && isSyntheticProgramUnit(goal) && isSek2ProgramUnitTitle(goal.title)
-
-const buildSortedChildrenMap = (
-  visibleChildrenByParent: Map<string, string[]>,
-  allGoals: Map<string, UiGoal>,
-) => {
-  const sortedChildrenByParent = new Map<string, string[]>()
-
-  visibleChildrenByParent.forEach((childIds, parentId) => {
-    const goals = childIds
-      .map((id) => allGoals.get(id))
-      .filter((goal): goal is UiGoal => !!goal)
-    const sorted = sortGoalsTopologically(goals, { allGoalsById: allGoals })
-    sortedChildrenByParent.set(parentId, sorted.map((goal) => goal.id))
-  })
-
-  return sortedChildrenByParent
-}
 
 const buildAggregatedMasteryMap = (
   allGoals: Map<string, UiGoal>,
@@ -391,7 +375,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
           >
             {directEvidence ? (
               <Check data-testid="completion-tree-direct-evidence" role="img" aria-label={localizedLanguage === 'en' ? 'Directly demonstrated' : 'Direkt nachgewiesen'} size={16} strokeWidth={3} />
-            ) : completionWaiver ? (
+            ) : completionWaiver?.reason === 'assessment' ? (
               <CompletionWaiverIcon waiver={completionWaiver} language={localizedLanguage} />
             ) : activeGoalId === goal.id ? (
               <Send size={16} className="text-amber-500" />
@@ -577,6 +561,7 @@ interface CompetenceTreeProps {
   frontierIds?: Set<string>
   audience?: TreeAudience
   visibleChildrenByParentOverride?: Map<string, string[]>
+  unitFixture?: LearningMapFixture
   useRawGoalTitles?: boolean
   completionWaivers?: ReadonlyMap<string, CompletionTreeWaiver>
 }
@@ -591,6 +576,7 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
   hideTechnicalStructureUi = false,
   allowClusterPlanning = true,
   visibleChildrenByParentOverride,
+  unitFixture,
   plannedScopeGoalIds: plannedScopeGoalIdsOverride,
   useRawGoalTitles = false,
   ...props
@@ -611,8 +597,8 @@ export const CompetenceTree: React.FC<CompetenceTreeProps> = ({
     [activeFilter, personalConfig, props.allGoals, rootLandscapeId, structureMode, visibleChildrenByParentOverride],
   )
   const sortedChildrenByParent = React.useMemo(
-    () => buildSortedChildrenMap(visibleChildrenByParent, props.allGoals),
-    [props.allGoals, visibleChildrenByParent],
+    () => buildSortedChildrenMap(visibleChildrenByParent, props.allGoals, audience, unitFixture),
+    [audience, props.allGoals, visibleChildrenByParent, unitFixture],
   )
   const masteryByGoalId = React.useMemo(
     () => buildAggregatedMasteryMap(props.allGoals, visibleChildrenByParent, props.getMastery),

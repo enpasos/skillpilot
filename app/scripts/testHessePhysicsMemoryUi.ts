@@ -15,7 +15,6 @@ import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
 
 const materials = readUnitMapMaterials(fileURLToPath(new URL('../../curricula/', import.meta.url)))
 const { flashcardGoalId: memoryId, assessmentGoalId: examId } = materials.find(item => item.unit.compositionNodeId === 'physics-e1-motion')!.unit
-const orientationId = materials.find(item => item.unit.compositionNodeId === 'physics-e1-motion')!.unit.orientationGoalId!
 assert(memoryId && examId)
 const canonical = JSON.parse(await readFile(new URL('../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', import.meta.url), 'utf8')) as SkillLandscape
 const memory = canonical.goals.find(goal => goal.id === memoryId)!
@@ -237,9 +236,9 @@ const scenarios: {
   switchDuringSave?: boolean
   backgroundOverlap?: boolean
   deckDuringSearch?: boolean
-  nestedDeck?: boolean
+  checkChildBoard?: boolean
 }[] = [
-  { width: 1440, viewFile: 'de-he-sekii-gk', nestedDeck: true },
+  { width: 1440, viewFile: 'de-he-sekii-gk', checkChildBoard: true },
   ...['de-he-gk-g8', 'de-he-sekii-gk'].flatMap(viewFile => [
     ...[390, 761, 1024, 1440].map(width => ({ width, height: width === 1024 ? 650 : 900, viewFile })),
   ]),
@@ -253,7 +252,7 @@ const scenarios: {
 ]
 try {
   for (const scenario of scenarios) {
-    const { width, futureTopic, switchDuringSave, backgroundOverlap, viewFile, deckDuringSearch, nestedDeck } = scenario
+    const { width, futureTopic, switchDuringSave, backgroundOverlap, viewFile, deckDuringSearch, checkChildBoard } = scenario
     const dataView = viewFile ? JSON.parse(await readFile(new URL(
       `../../curricula/DE/Gymnasium/composition-views/physik/${viewFile}.view.json`, import.meta.url), 'utf8')) : view
     const profile = nativeMapProfile(true)
@@ -294,9 +293,6 @@ try {
     const writes: { srsState: Record<string, { repetition?: number; nextReview?: number }> }[] = []
     let revision = '2026-11-18T08:00:00Z'
     let savePending = false, getsDuringWrite = 0, conflicts = 0
-    let introductionBlocked = Boolean(nestedDeck)
-    let practiceReads = 0
-    const introductionRequests: string[] = []
     const verifiedRecall = { status: 'passed', passedAt: '2026-11-01T08:00:00Z' }
     const outside = { id: 'e2-a', interval: 1, repetition: 1, ef: 2.5, nextReview: 0 }
     let srsState: Record<string, unknown> = {
@@ -350,8 +346,7 @@ try {
       if (suffix === '/mastery') return json({ mastery })
       if (suffix === '/state') return json(learnerState)
       if (suffix === '/unit-introduction') {
-        introductionRequests.push(url.searchParams.get('goalId') ?? '')
-        return json({ orientationGoalId: introductionBlocked ? orientationId : null })
+        return json({ orientationGoalId: null })
       }
       if (suffix === '/resume') return json({ lastActivityAt: '2026-11-18T08:00:00Z', scheduledDeletionAt: '2027-05-18T08:00:00Z' })
       if (suffix === '/personalization-plan') return json({ stage: 'COMPLETE', options: [], displayOptions: [], navigationOptions: [],
@@ -371,7 +366,6 @@ try {
           savePending = false
           return json({ savedAt: revision })
         }
-        practiceReads += 1
         if (savePending) getsDuringWrite++
         return json({ srsState, updatedAt: revision })
       }
@@ -392,54 +386,21 @@ try {
     })
     assert.equal(await dialog.locator('.lum-scope-actions, .lum-inspector, .unit-introduction, [data-testid="unit-assessment-summary"], [data-testid="learner-unit-assignment"], [data-testid="learning-map-flashcard-practice"]').count(), 0,
       'the real subject map shows only its header and graph, including nested topic boards')
-    if (nestedDeck) {
+    if (checkChildBoard) {
       releaseDeck()
       const nestedScope = `composition:${dataView.viewId}:structure:physics-e1-accelerated-and-free-fall`
       const title = 'Beschleunigte Bewegung und freier Fall'
-      const action = dialog.locator(`[data-entry-id="${nestedScope}"]`).getByRole('button', {
-        name: `Lernkarten zu ${title} üben`, exact: true,
-      })
-      const chooseExistingUnitAction = async () => {
-        await centerGoal(dialog, title)
-        await dialog.locator(`[data-selected-goal-id="${nestedScope}"]`).waitFor()
-        await action.waitFor()
-        await action.click()
-      }
-      const readsBeforeGate = practiceReads
-      await chooseExistingUnitAction()
-      await dialog.waitFor({ state: 'hidden' })
-      await page.waitForURL(url => url.pathname.endsWith('/' + orientationId))
-      await page.locator(`[data-testid="unit-introduction"][data-orientation-goal-id="${orientationId}"]`).waitFor()
-      assert.equal(introductionRequests.at(-1), nestedScope, 'the chosen existing unit, not its parent, owns the protected entry')
-      assert.equal(practiceReads, readsBeforeGate, 'an uncompleted introduction leaves the scoped deck unopened')
-      assert.equal(await page.getByText('Karte 1 von 3', { exact: true }).count(), 0)
-      assert.deepEqual(writes, [], 'the prerequisite redirect does not write card or mastery results')
-
-      // The controlled backend now confirms the existing orientation result.
-      // The UI must recheck the same owner before starting the original subdeck.
-      introductionBlocked = false
-      mastery[orientationId] = 1
-      await page.goto(`${origin}/learner/${initialGoal.id}?l=${id.root}`, { waitUntil: 'domcontentloaded' })
-      await page.getByTestId('learner-current-goal').getByRole('heading', { name: initialGoal.title, exact: true }).waitFor()
-      await opener.click()
-      await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
-      await chooseExistingUnitAction()
-      await dialog.waitFor({ state: 'hidden' })
-      const fronts = ['Diagrammregeln für t-s-, t-v- und t-a-Diagramme?',
-        'Gleichmäßig beschleunigte Bewegung: Grundformeln?', 'Freier Fall (ohne Luftwiderstand): Grundformeln?']
-      const seen = new Set<string>()
-      for (let index = 0; index < 3; index += 1) {
-        await page.getByText(`Karte ${index + 1} von 3`, { exact: true }).waitFor()
-        for (const front of fronts) if (await page.getByText(front, { exact: true }).isVisible()) seen.add(front)
-        if (index < 2) await page.getByRole('button', { name: 'Nächste Karte', exact: true }).click()
-      }
-      assert.deepEqual([...seen].sort(), [...fronts].sort(), 'the real free-fall unit offers exactly its three original matching cards')
-      assert.equal(introductionRequests.at(-1), nestedScope)
-      assert.equal(introductionRequests.filter(scope => scope === nestedScope).length, 2)
-      assert.deepEqual(writes, [], 'viewing the preserved subdeck never writes results or new mastery')
+      await centerGoal(dialog, title)
+      const unit = dialog.locator(`[data-entry-id="${nestedScope}"]`)
+      assert.equal(await unit.getByRole('button', { name: /üben/i }).count(), 0)
+      await unit.getByRole('button', { name: `In ${title} hineinzoomen`, exact: true }).click()
+      const board = dialog.locator(`.lum-canvas[data-scope-id="${nestedScope}"][aria-busy="false"]`)
+      await board.waitFor()
+      await board.locator('[data-entry-id="09029573-864f-40ca-bf8a-cee7bf6dcb73"] .lum-node-main').waitFor()
+      assert.equal(await board.getByRole('button', { name: /^Üben(\s|:|$)/ }).count(), 0)
+      assert.deepEqual(writes, [], 'opening the nested board never writes a result')
       assert.deepEqual(unexpected, [])
       assert.deepEqual(errors, [])
-      console.log('Real nested free-fall unit: existing node action, original three-card subset, protected entry, no graph additions or writes')
       await context.close()
       continue
     }
@@ -481,63 +442,21 @@ try {
         'the unit introduction stays in the Cockpit rather than above the graph')
       if (width === 390) await centerGoal(dialog, horizontalThrow.title)
       const throwNode = dialog.locator(`[data-entry-id="${horizontalThrow.id}"]`)
-      const openExercise = throwNode.getByRole('button', { name: 'Üben: Wo muss die Bodenmarke liegen?', exact: true })
-      await openExercise.waitFor()
+      const subjectGoal = throwNode.locator('.lum-node-main')
+      await subjectGoal.waitFor()
       if (deckDuringSearch) {
-        const waitForSearchedExercise = () => page.waitForFunction(({ goalId, scopeId }) => {
-          const board = document.querySelector(`[data-testid="learner-learning-map-dialog"] .lum-canvas[data-scope-id="${scopeId}"]`)
-          const button = board?.querySelector(`[data-entry-id="${goalId}"] [data-testid="learning-map-practice-action"]`)
-          const surface = button?.closest('.lum-flow')?.getBoundingClientRect()
-          const rect = button?.getBoundingClientRect()
-          return board?.getAttribute('aria-busy') === 'false' && button && rect && surface
-            && rect.width >= 44 && rect.height >= 44 && rect.left >= surface.left && rect.right <= surface.right
-            && rect.top >= surface.top && rect.bottom <= surface.bottom
-            && button.contains(document.elementFromPoint(rect.x + rect.width / 2, rect.y + rect.height / 2))
-        }, { goalId: horizontalThrow.id, scopeId: dataTopic })
-        await waitForSearchedExercise()
-        assert.equal(await dialog.locator(`[data-entry-id="${memoryId}"]`).count(), 0, 'the search precedes the deck response')
-        assert.equal(await dialog.getByTestId('learning-map-practice-action').count(), 1, 'only the own exercise is present before hydration')
-        assert.equal(await dialog.locator(`[data-entry-id="${roadSafety.id}"]`).count(), 0)
+        assert.equal(await dialog.locator(`[data-entry-id="${memoryId}"]`).count(), 0)
         const hydration = await monitorBoard(dialog)
         releaseDeck()
         await page.waitForFunction(value => value.activity.layouts === 1, hydration)
-        await waitForSearchedExercise()
+        await dialog.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
       }
-      assert.equal(await dialog.getByTestId('learning-map-practice-action').count(), 1,
-        'the partial board shows only its own exercise, even when the landscape also contains another anchor')
+      assert.equal(await throwNode.getByRole('button').count(), 1, 'authored material does not add a second button')
       assert.equal(await dialog.locator(`[data-entry-id="${roadSafety.id}"]`).count(), 0)
-      await openExercise.focus()
-      await page.keyboard.press('Enter')
-      const exercise = page.getByRole('dialog', { name: 'Wo muss die Bodenmarke liegen?', exact: true })
-      await exercise.waitFor()
-      assert.equal(await dialog.isVisible(), false, 'the explicit exercise command continues in the Cockpit')
-      assert.equal(await exercise.evaluate(element => element.contains(document.activeElement)), true)
-      await exercise.getByText('Hinweis anzeigen', { exact: true }).click()
-      assert(await exercise.getByText('Wie ändern sich die beiden Wege', { exact: false }).isVisible())
-      const solution = exercise.getByText('Die Marke gehört also 52 cm', { exact: false })
-      assert.equal(await solution.isVisible(), false)
-      await exercise.getByText('Lösung vergleichen', { exact: true }).click()
-      assert(await solution.isVisible())
-      if (width === 390) await exercise.getByRole('button', { name: 'Übung schließen', exact: true }).click()
-      else await page.keyboard.press('Escape')
-      await exercise.waitFor({ state: 'hidden' })
-      assert.equal(await dialog.isVisible(), false, 'closing the Cockpit exercise does not reopen a map panel')
-      await page.getByTestId('learner-current-goal').getByRole('heading', { name: horizontalThrow.title, exact: true }).waitFor()
-      if (width === 390) {
-        await opener.click()
-        await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
-        await centerGoal(dialog, horizontalThrow.title)
-        const buttonBounds = await openExercise.boundingBox()
-        assert(buttonBounds && buttonBounds.height >= 44 && buttonBounds.width >= 44)
-        await openExercise.click()
-        await exercise.waitFor()
-        assert.equal(await solution.isVisible(), false, 'a new attempt opens without the solution')
-        await page.keyboard.press('Escape')
-        await exercise.waitFor({ state: 'hidden' })
-      }
-      assert.deepEqual(writes, [], 'reading and checking an exercise does not save a result')
-      await opener.click()
-      await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
+      await subjectGoal.press('Enter')
+      await dialog.locator(`[data-selected-goal-id="${horizontalThrow.id}"]`).waitFor()
+      assert.equal(await dialog.isVisible(), true, 'selecting a goal stays on the map')
+      assert.deepEqual(writes, [])
     }
     if (width === 390) await centerGoal(dialog, assessment.title)
     await dialog.locator(`[data-entry-id="${examId}"]`).getByText('Prüfung aus „Themenübergreifende Prüfungen“').waitFor()
@@ -583,7 +502,12 @@ try {
       assert.equal(await dialog.locator(`[data-entry-id="${energyTopicId}"]`).count(), 0)
       const energy = dialog.locator(`[data-entry-id="${energyId}"][data-entry-kind="goal"]`)
       assert.match(await energy.locator('.lum-node-meta').innerText(), /E\.2 Energie/u)
-      await energy.getByRole('button', { name: 'Lernkarten zu E.2 üben', exact: true }).click()
+      assert.equal(await energy.getByRole('button').count(), 1, 'a single-goal section also has no practice shortcut')
+      await dialog.getByRole('button', { name: 'Gesamten Lernkartenstapel üben', exact: true }).click()
+      await page.getByText(/Karte 1 von [12]/).waitFor()
+      if (!await page.getByText('E2 Frage', { exact: true }).isVisible()) {
+        await page.getByRole('button', { name: 'Nächste Karte', exact: true }).click()
+      }
       await page.getByText('E2 Frage', { exact: true }).waitFor()
       assert.equal(getsDuringWrite, 0, 'the next topic reads after the previous topic save completes')
       await page.getByRole('button', { name: 'Antwort zeigen', exact: true }).click()
@@ -649,7 +573,7 @@ try {
     assert.deepEqual(errors, [])
     await context.close()
   }
-  console.log('Hessen Physics UI passed: scoped E.1 exercise, dialog focus, ELK/selection/active updates, keyboard/topic practice, original progress/state, complete deck, named assessment, desktop/mobile.')
+  console.log('Hessen Physics UI passed: ordinary goal selection without practice buttons, ELK/selection/active updates, keyboard/topic practice, original progress/state, complete deck, named assessment, desktop/mobile.')
 } finally {
   await browser.close()
   await server.close()

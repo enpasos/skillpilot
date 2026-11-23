@@ -18,8 +18,8 @@ import type { SkillLandscape } from '../src/landscapeTypes'
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
 import { normalizeLearnerProjectedEntries, collapseLearnerSubjectRoots } from '../src/utils/learnerTreeProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
-import { deriveLearnerUnitMapPreview, resolveLearnerStagePlanContext } from '../src/components/learningUnitMap/learnerUnitMapPreview'
-import { buildLearnerUnitMapProjection } from '../src/components/learningUnitMap/learnerUnitMapProjection'
+import { deriveLearnerUnitMapPreview, resolveLearnerStagePlanContext } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
+import { buildLearnerUnitMapProjection } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
 
 
 const input = nestedStagePlanFixture()

@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from './goalSorter'
+import type { LearningMapFixture } from '../components/learningUnitMap/types'
+import { compositionSiblingOrder, projectedSiblingOrder } from './unitStudyOrder'
 
 const goal = (id: string, title: string, overrides: Partial<UiGoal> = {}): UiGoal => ({
   id, title, description: title, phase: 'Q1', themenfeld: '', area: '', level: 0, core: true, weight: 1,
@@ -29,6 +31,45 @@ assert.deepEqual(order([
   goal('why', 'Warum Physik?'),
   goal('pinned', 'Zuletzt im Alphabet', { tags: ['order:1'] }),
 ]), ['pinned', 'why', 'tutorial', 'cards', 'exercise'])
+
+// The authored course of any unit orders the visible steps even when a
+// manually positioned assessment, an alphabetical tie or a filtered step intervenes.
+const botany = [
+  goal('report', 'A report', { nodeKind: 'exam', tags: ['order:0'] }),
+  goal('compare', 'Compare leaves', { requires: ['identify'] }),
+  goal('identify', 'Identify tree species'),
+  goal('opening', 'What grows here?'),
+]
+for (const children of [botany, [...botany].reverse()]) {
+  assert.deepEqual(sortGoalsTopologically(children, {
+    orientationGoalId: 'opening', guidedStudyOrder: ['opening', 'identify', 'unavailable', 'compare', 'report'],
+  }).map(child => child.id), ['opening', 'identify', 'compare', 'report'])
+}
+assert.deepEqual(sortGoalsTopologically([goal('b', 'B', { requires: ['a'] }), goal('c', 'C', { requires: ['b'] }),
+  goal('a', 'A')], { guidedStudyOrder: ['c', 'a'] }).map(child => child.id), ['a', 'b', 'c'],
+  'A contradictory declaration must never reverse even an indirect prerequisite.')
+const sections = ['end', 'start'].map(id => goal(id, id, { extendedData: { compositionNodeId: id } }))
+const declared = compositionSiblingOrder(goal('parent', 'Parent', { extendedData: {
+  compositionChildOrderChildIds: ['start', 'hidden', 'end'],
+  compositionChildOrder: { after: [{ after: 'start', unit: 'hidden' }, { after: 'hidden', unit: 'end' }] },
+} }), sections)
+assert.deepEqual(sortGoalsTopologically(sections, { siblingOrder: declared }).map(child => child.id), ['start', 'end'])
+
+// A single downstream leaf can give rise to an arrow between whole branches.
+const section = (id: string) => ({ id, title: id, description: '', kind: 'unit' as const, requires: [], position: { x: 0, y: 0 } })
+const fixture: LearningMapFixture = {
+  rootId: 'unit', title: 'Open curricula', entries: Object.fromEntries(['unit', 'use', 'basis'].map(id => [id, section(id)])),
+  entryPaths: { parent: ['unit', 'parent'], previous: ['unit', 'basis', 'previous'], next: ['unit', 'use', 'next'] },
+  scopeRelations: { unit: [
+    { source: 'basis', target: 'use', kind: 'summary', provenance: [] },
+    { source: 'use', target: 'basis', kind: 'summary', provenance: [], backward: true },
+  ] },
+}
+fixture.entries.unit.children = ['basis', 'use']
+const projected = projectedSiblingOrder(fixture, 'parent', ['next', 'previous', 'unplaced'])
+assert.deepEqual(projected, [{ source: 'previous', target: 'next' }])
+assert.deepEqual(sortGoalsTopologically([goal('next', 'A'), goal('previous', 'Z')], { siblingOrder: projected })
+  .map(child => child.id), ['previous', 'next'])
 
 // Soft support: a branch whose goals are required from inside another branch
 // comes first, although the alphabet and the missing direct edge say otherwise.

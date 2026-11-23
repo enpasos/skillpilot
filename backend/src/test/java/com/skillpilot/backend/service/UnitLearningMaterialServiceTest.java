@@ -48,7 +48,7 @@ class UnitLearningMaterialServiceTest {
         mapper.writeValue(introFile.toFile(), versioned);
         assertThat(UnitLearningMaterialService.fromRepository(repository, mapper).find("computing", "lecture", "algorithms"))
                 .contains(lecture);
-        versioned.put("schemaVersion", 3);
+        versioned.put("schemaVersion", 4);
         mapper.writeValue(introFile.toFile(), versioned);
         assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper))
                 .isInstanceOf(IOException.class).hasMessageContaining("Unsupported unit learning material version");
@@ -77,6 +77,26 @@ class UnitLearningMaterialServiceTest {
                 .satisfies(binding -> assertThat(binding.sectionGoalId()).isEqualTo("composition:merged:gk+lk:structure:motion"));
         assertThat(service.orientationBindings(List.of("merged:gk+missing"))).isEmpty();
         assertThat(service.isUnitOrientationGoal("opening")).isTrue();
+        var mapper = new ObjectMapper();
+        var file = repository.resolve("unit.json").toFile();
+        var data = (ObjectNode) mapper.readTree(file);
+        var exercise = data.putArray("exercises").addObject();
+        exercise.put("goalId", "experiment");
+        exercise.putObject("de").put("title", "Messen").put("prompt", "Lies den Messwert ab.");
+        exercise.putObject("en").put("title", "Measure").put("prompt", "Read the measurement.");
+        exercise.put("requiredForRegularLearning", true);
+        mapper.writeValue(file, data);
+        assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("version 3 boolean");
+        data.put("schemaVersion", 3);
+        mapper.writeValue(file, data);
+        assertThat(UnitLearningMaterialService.fromRepository(repository, mapper)
+                .find("physics", "merged:gk+lk", "motion").orElseThrow().exercises().get("experiment")
+                .requiredForRegularLearning()).isTrue();
+        exercise.put("requiredForRegularLearning", "yes");
+        mapper.writeValue(file, data);
+        assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper))
+                .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("version 3 boolean");
         assertThat(service.orientationBindings(List.of("unrelated-view"))).isEmpty();
         assertThat(service.isUnitOrientationGoal("unrelated-goal")).isFalse();
         assertThat(service.isUnitOrientationGoal(null)).isFalse();
@@ -86,6 +106,42 @@ class UnitLearningMaterialServiceTest {
         new ObjectMapper().writeValue(repository.resolve("unit.json").toFile(), invalid);
         assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, new ObjectMapper()))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("orientationGoalId");
+    }
+
+    @Test
+    void guidedStudyOrderBelongsToTheSelectedViewsAndEndsAtTheirOwnAssessment(@TempDir Path repository) throws IOException {
+        var mapper = new ObjectMapper();
+        var source = mapper.createObjectNode();
+        source.put("schemaVersion", 3);
+        var unit = source.putObject("unit");
+        unit.put("landscapeId", "computing").put("compositionNodeId", "search")
+                .put("orientationGoalId", "opening").put("assessmentGoalId", "test")
+                .putArray("viewIds").add("lecture").add("lab");
+        var intro = source.putObject("intro");
+        for (var language : List.of("de", "en")) {
+            intro.putObject(language).put("question", "Search?").put("promise", "Search.")
+                    .put("scene", "Books.").put("imageUrl", "/assets/books.png")
+                    .put("imageAlt", "Books").putArray("topics").add("Search");
+        }
+        var file = repository.resolve("unit.json");
+        Files.writeString(repository.resolve("unit-learning-materials.json"), "{\"schemaVersion\":1,\"materials\":[\"unit.json\"]}");
+        source.putArray("guidedStudyOrder").add("inspect").add("compare").add("test");
+        mapper.writeValue(file.toFile(), source);
+        var service = UnitLearningMaterialService.fromRepository(repository, mapper);
+        assertThat(service.orientationBindings(List.of("merged:lecture+lab"))).singleElement().satisfies(binding ->
+                assertThat(binding.guidedStudyOrder()).containsExactly("inspect", "compare", "test"));
+        assertThat(service.orientationBindings(List.of("merged:lecture+tutorial"))).isEmpty();
+        source.put("schemaVersion", 2);
+        mapper.writeValue(file.toFile(), source);
+        assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper))
+                .hasMessageContaining("version 3 guidedStudyOrder");
+        source.put("schemaVersion", 3);
+        for (var invalid : List.of(List.of("test"), List.of("opening", "test"), List.of("inspect", "inspect", "test"),
+                List.of("inspect", "other"))) {
+            source.set("guidedStudyOrder", mapper.valueToTree(invalid));
+            mapper.writeValue(file.toFile(), source);
+            assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper)).hasMessageContaining("guidedStudyOrder");
+        }
     }
 
     @Test

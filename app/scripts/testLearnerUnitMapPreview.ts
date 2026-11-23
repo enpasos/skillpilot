@@ -7,9 +7,9 @@ import type { CompositionView } from '../src/utils/authoring/compositionViewAuth
 import { applyCompositionViewProjection } from '../src/utils/compositionViewRuntime'
 import { collapseLearnerSubjectRoots, normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
-import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/components/learningUnitMap/learnerUnitMapProjection'
+import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
 import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_LANDSCAPE_ID as physics,
-  PROVISIONAL_STAGE_PLAN_UNITS } from '../src/components/learningUnitMap/learnerUnitMapPreview'
+  PROVISIONAL_STAGE_PLAN_UNITS } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
 
 const chemistry = 'fixture-preview-chemistry'
 const goal = (id: string, contains: string[] = [], requires: string[] = []): LearningGoal => ({

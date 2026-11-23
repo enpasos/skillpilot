@@ -20,12 +20,16 @@ const descendants = (nodes: CompositionViewNode[]): CompositionViewNode[] => nod
 const goalReference = (node: CompositionViewNode): string | undefined =>
   node.kind === 'goalEntry' || node.kind === 'canonicalSubtree' ? node.goalId : undefined
 
-/** Every declared v2 introduction has one real own opening, first in each bound view. */
+export function hasGuidedUnitIntroduction(version: number | undefined): boolean {
+  return version === 2 || version === 3
+}
+
+/** Every guided introduction has one real own opening, first in each bound view. */
 export function validateUnitMaterialOrientations(materials: readonly Material[], landscapes: readonly Landscape[],
   views: ReadonlyMap<string, CompositionView>): number {
   let checked = 0
   for (const material of materials) {
-    if (material.schemaVersion !== 2) continue
+    if (!hasGuidedUnitIntroduction(material.schemaVersion)) continue
     const { unit } = material
     const label = `Unit introduction ${unit.landscapeId}/${unit.compositionNodeId}`
     const id = unit.orientationGoalId

@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
-import { PROVISIONAL_STAGE_PLAN_UNITS } from '../src/components/learningUnitMap/learnerUnitMapPreview'
+import { PROVISIONAL_STAGE_PLAN_UNITS } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
 import type { CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
 
 const root = resolve(import.meta.dirname, '../..')

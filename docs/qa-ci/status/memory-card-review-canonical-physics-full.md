@@ -22,8 +22,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 485 |
-| goals without memory need | 357 |
+| ordinary atomic goals reviewed | 486 |
+| goals without memory need | 358 |
 | goals with intentional memory support | 128 |
 | goals needing developer review | 0 |
 | primary cards in scope | 146 |
@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 557 | 5 | 108 | 0 |
-| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 646 | 5 | 127 | 0 |
+| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 559 | 5 | 108 | 0 |
+| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 648 | 5 | 127 | 0 |
 
 ## Memory-Required Goals
 

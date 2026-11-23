@@ -79,7 +79,7 @@ export function buildUnitFlashcardActions(
   return actions
 }
 
-interface UnitResourcePlacement { scopeId: string; goalIds: readonly string[]; orientationGoalId?: string }
+interface UnitResourcePlacement { scopeId: string; goalIds: readonly string[]; orientationGoalId?: string; guidedStudyOrder?: readonly string[] }
 
 export function unitResourcePlacements({ material, scopes, flashcards, assessments }: {
   material?: MapPracticeMaterial
@@ -90,7 +90,7 @@ export function unitResourcePlacements({ material, scopes, flashcards, assessmen
   return [...scopes].flatMap(scopeId => {
     const goalIds = [flashcards.get(scopeId), assessments.get(scopeId)].flatMap(action => action ? [action.goalId] : [])
     const orientationGoalId = material?.unit.orientationGoalId
-    return goalIds.length || orientationGoalId ? [{ scopeId, goalIds, orientationGoalId }] : []
+    return goalIds.length || orientationGoalId ? [{ scopeId, goalIds, orientationGoalId, guidedStudyOrder: material?.guidedStudyOrder }] : []
   })
 }
 
@@ -100,17 +100,17 @@ export function placeUnitLearningResources(fixture: LearningMapFixture, placemen
   const entries = { ...fixture.entries }
   const scopeRelations = { ...fixture.scopeRelations }
   const scopeContext = { ...fixture.scopeContext }
-  for (const { scopeId, goalIds, orientationGoalId } of placements) {
+  for (const { scopeId, goalIds, orientationGoalId, guidedStudyOrder } of placements) {
     const scope = entries[scopeId]
     if (!scope) continue
     const resources = goalIds.filter(id => entries[id] && !scope.children?.includes(id))
     const children = scope.children ?? []
     const start = orientationGoalId && scope.kind === 'unit' && children.includes(orientationGoalId)
       && ['goal', 'motivation'].includes(entries[orientationGoalId]?.kind) ? orientationGoalId : undefined
-    if (!resources.length && !start) continue
+    if (!resources.length && !start && !guidedStudyOrder?.some(id => children.includes(id))) continue
     entries[scopeId] = start
-      ? { ...scope, orientationGoalId: start, children: [start, ...children.filter(id => id !== start), ...resources] }
-      : { ...scope, children: [...children, ...resources] }
+      ? { ...scope, orientationGoalId: start, guidedStudyOrder, children: [start, ...children.filter(id => id !== start), ...resources] }
+      : { ...scope, guidedStudyOrder: guidedStudyOrder ?? scope.guidedStudyOrder, children: [...children, ...resources] }
     if (!resources.length) continue
     const relations = [...(scopeRelations[scopeId] ?? [])]
     const context = { ...scopeContext[scopeId] }

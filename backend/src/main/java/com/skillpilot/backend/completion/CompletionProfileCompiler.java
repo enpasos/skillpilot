@@ -126,19 +126,19 @@ public final class CompletionProfileCompiler {
             Set<String> resolvedScopeTargetIds,
             Set<String> level2TargetIds,
             String curriculumGeneration) {
-        return compileAutomaticProfile(definition, canonicalGoals, resolvedScopeTargetIds, level2TargetIds, curriculumGeneration, Set.of());
+        return compileAutomaticProfile(definition, canonicalGoals, resolvedScopeTargetIds, level2TargetIds, curriculumGeneration, Set.of(), Set.of());
     }
 
     CompiledCompletionProfile compileAutomaticProfile(CompletionProfileDefinition definition,
             Map<String, LearningGoal> canonicalGoals, Set<String> resolvedScopeTargetIds, Set<String> level2TargetIds,
-            String curriculumGeneration, Set<String> voluntaryAssessments) {
+            String curriculumGeneration, Set<String> voluntaryAssessments, Set<String> requiredRegularGoalIds) {
         if (definition == null || definition.schemaVersion() != 1 || !text(definition.id())
                 || !text(definition.revision()) || !text(definition.levelScopeRef())
                 || !text(definition.title().get("de")) || !text(definition.title().get("en"))) {
             fail("INVALID_PROFILE", "Scope identity, version and titles are required");
         }
         CompiledAutomaticCompletion graph = compileAutomatic(canonicalGoals, resolvedScopeTargetIds,
-                level2TargetIds, curriculumGeneration);
+                level2TargetIds, curriculumGeneration, requiredRegularGoalIds);
         if (!graph.assessmentGoalIds().containsAll(voluntaryAssessments) || !resolvedScopeTargetIds.containsAll(voluntaryAssessments)) {
             fail("INVALID_PROFILE", "Voluntary assessments must be actual assessment targets of this section");
         }
@@ -157,19 +157,27 @@ public final class CompletionProfileCompiler {
      * Compiles direct atomic prerequisite edges for automatic completion. Every
      * assessment and memory goal in the complete context remains an explicit
      * obligation until graded or verified recall confirms mastery. Material-bound
-     * unit openings retain their own explicit completion. Other orientation and
-     * ordinary goals have no additional protected status.
+     * unit openings retain their own explicit completion.
      */
     public CompiledAutomaticCompletion compileAutomatic(
             Map<String, LearningGoal> canonicalGoals,
             Set<String> resolvedScopeTargetIds,
             Set<String> level2TargetIds,
             String curriculumGeneration) {
+        return compileAutomatic(canonicalGoals, resolvedScopeTargetIds, level2TargetIds, curriculumGeneration, Set.of());
+    }
+
+    CompiledAutomaticCompletion compileAutomatic(Map<String, LearningGoal> canonicalGoals,
+            Set<String> resolvedScopeTargetIds, Set<String> level2TargetIds, String curriculumGeneration,
+            Set<String> requiredRegularGoalIds) {
         if (!text(curriculumGeneration)) fail("INVALID_GENERATION", "Curriculum generation is required");
         CompiledCompletionGraph graph = compileGraph(canonicalGoals, resolvedScopeTargetIds, level2TargetIds,
                 List.of(), List.of(), false);
+        if (!graph.targetGoalIds().containsAll(requiredRegularGoalIds)) {
+            fail("FOREIGN_TARGET", "Required regular learning must belong to the current atomic targets");
+        }
         Set<String> assessments = new TreeSet<>();
-        Set<String> explicitObligations = new TreeSet<>();
+        Set<String> explicitObligations = new TreeSet<>(requiredRegularGoalIds);
         for (String id : graph.contextGoalIds()) {
             if (isAssessment(canonicalGoals.get(id))) assessments.add(id);
             LearningGoal goal = canonicalGoals.get(id);

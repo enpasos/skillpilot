@@ -221,8 +221,8 @@ assert.equal(requiresCompletionExitConfirmation(running, { action: 'endAssessmen
 assert.equal(requiresCompletionExitConfirmation(open, { action: 'leaveProfile' }), false)
 assert.doesNotMatch(render(running), /completionProfile=/u)
 const treeProgress: TreeCompletionProgress = {
-  totalCount: 3, explicitCount: 1, implicitCount: 2, notRequiredCount: 0, openCount: 0,
-  totalWeight: 3, explicitWeight: 1, implicitWeight: 2, notRequiredWeight: 0, openWeight: 0,
+  totalCount: 3, explicitCount: 1, implicitCount: 2, openCount: 0,
+  totalWeight: 3, explicitWeight: 1, implicitWeight: 2, openWeight: 0,
   explicitRatio: 1 / 3, implicitRatio: 2 / 3,
 }
 const renderProgress = (progress: TreeCompletionProgress, language: 'de' | 'en' = 'de') => renderToStaticMarkup(
@@ -231,44 +231,45 @@ const renderProgress = (progress: TreeCompletionProgress, language: 'de' | 'en' 
 )
 const treeHtml = renderProgress(treeProgress)
 assert.match(treeHtml, /3 von 3 Lernzielen mit Nachweis/u)
-assert.match(treeHtml, /1 direkt nachgewiesen\. 2 fachlich angerechnet\. 0 für diesen Abschnitt nicht mehr erforderlich\. 0 offen/u)
+assert.match(treeHtml, /1 direkt nachgewiesen\. 2 fachlich angerechnet\. 0 offen/u)
 assert.match(treeHtml, /Gewichteter Anteil mit Nachweis: 100 %/u)
 assert.match(treeHtml, /Geltungsbereich: Sekundarstufe I/u)
 assert.match(treeHtml, /<button[^>]*type="button"[^>]*aria-label=/u)
 assert.doesNotMatch(treeHtml, /100% Mastery|role="progressbar"/u)
 const englishTreeHtml = renderProgress(treeProgress, 'en')
 assert.match(englishTreeHtml, /3 of 3 learning goals with evidence/u)
-assert.match(englishTreeHtml, /1 directly demonstrated\. 2 credited through assessment\. 0 no longer required for this section\. 0 open/u)
+assert.match(englishTreeHtml, /1 directly demonstrated\. 2 credited through assessment\. 0 open/u)
 assert.match(englishTreeHtml, /Weighted share with evidence: 100%/u)
 const weightedTreeHtml = renderProgress({
-  totalCount: 2, explicitCount: 1, implicitCount: 0, notRequiredCount: 0, openCount: 1,
-  totalWeight: 4, explicitWeight: 3, implicitWeight: 0, notRequiredWeight: 0, openWeight: 1,
+  totalCount: 2, explicitCount: 1, implicitCount: 0, openCount: 1,
+  totalWeight: 4, explicitWeight: 3, implicitWeight: 0, openWeight: 1,
   explicitRatio: 0.75, implicitRatio: 0,
 })
 assert.match(weightedTreeHtml, /1 von 2 Lernzielen mit Nachweis/u)
 assert.match(weightedTreeHtml, /Gewichteter Anteil mit Nachweis: 75 %/u)
 assert.doesNotMatch(weightedTreeHtml, /Geltungsbereich/u)
 assert.match(renderProgress({
-  totalCount: 2, explicitCount: 1, implicitCount: 0, notRequiredCount: 0, openCount: 1,
-  totalWeight: 100000, explicitWeight: 99999, implicitWeight: 0, notRequiredWeight: 0, openWeight: 1,
+  totalCount: 2, explicitCount: 1, implicitCount: 0, openCount: 1,
+  totalWeight: 100000, explicitWeight: 99999, implicitWeight: 0, openWeight: 1,
   explicitRatio: 0.99999, implicitRatio: 0,
 }), /Gewichteter Anteil mit Nachweis: 99,9 %/u, 'A small open weight must not be announced as fully completed')
-const waivedProgress = renderProgress({ totalCount: 2, explicitCount: 1, implicitCount: 0, notRequiredCount: 1, openCount: 0,
-  totalWeight: 2, explicitWeight: 1, implicitWeight: 0, notRequiredWeight: 1, openWeight: 0, explicitRatio: 0.5, implicitRatio: 0 })
-assert.match(waivedProgress, /1 von 2 Lernzielen mit Nachweis/u)
-assert.match(waivedProgress, /Gewichteter Anteil mit Nachweis: 50 %/u)
-assert.match(waivedProgress, /completion-tree-progress-implicit[^>]*width:0%/u)
+const partlyOpen = renderProgress({ totalCount: 2, explicitCount: 1, implicitCount: 0, openCount: 1,
+  totalWeight: 2, explicitWeight: 1, implicitWeight: 0, openWeight: 1, explicitRatio: 0.5, implicitRatio: 0 })
+assert.match(partlyOpen, /1 von 2 Lernzielen mit Nachweis/u)
+assert.match(partlyOpen, /1 direkt nachgewiesen\. 0 fachlich angerechnet\. 1 offen/u)
+assert.match(partlyOpen, /Gewichteter Anteil mit Nachweis: 50 %/u)
+assert.match(partlyOpen, /completion-tree-progress-implicit[^>]*width:0%/u)
 const emptyTreeHtml = renderProgress({
-  totalCount: 0, explicitCount: 0, implicitCount: 0, notRequiredCount: 0, openCount: 0,
-  totalWeight: 0, explicitWeight: 0, implicitWeight: 0, notRequiredWeight: 0, openWeight: 0,
+  totalCount: 0, explicitCount: 0, implicitCount: 0, openCount: 0,
+  totalWeight: 0, explicitWeight: 0, implicitWeight: 0, openWeight: 0,
   explicitRatio: 0, implicitRatio: 0,
 })
 assert.match(emptyTreeHtml, /Keine Lernziele in dieser Ansicht/u)
 assert.doesNotMatch(emptyTreeHtml, /100 %|NaN|Infinity/u)
 
 const learningEntry: LearningMapEntry = { id: 'goal', title: 'Ziel', description: '', kind: 'goal', requires: [], position: { x: 0, y: 0 } }
-const renderMapRow = (progress: LearningEntryProgress, childCount = 0) => renderToStaticMarkup(
-  <MapNode id={learningEntry.id} type="learningUnit" data={{ entry: learningEntry, language: 'de', childCount, progress,
+const renderMapRow = (progress: LearningEntryProgress, childCount = 0, activeLearningGoal = false) => renderToStaticMarkup(
+  <MapNode id={learningEntry.id} type="learningUnit" data={{ entry: learningEntry, language: 'de', childCount, progress, activeLearningGoal,
     outsideCount: 0, ports: [], active: false, related: false, muted: false, onSelect() {}, onOpen() {} }}
     zIndex={0} dragging={false} selected={false} selectable={false} draggable={false} deletable={false}
     isConnectable={false} positionAbsoluteX={0} positionAbsoluteY={0} />,
@@ -283,22 +284,22 @@ for (const row of [directRow, creditedRow]) {
   assert.match(row, /class="lucide lucide-check"/u)
   assert.match(row, /stroke-width="3"/u)
 }
-const neutralRow = renderMapRow({ total: 1, explicit: 0, implicit: 0, notRequired: 1 })
-assert.match(neutralRow, /learning-map-not-required/u)
-assert.match(neutralRow, /aria-description="Für diesen Abschnitt nicht mehr erforderlich"/u)
-assert.doesNotMatch(neutralRow, /lucide-(?:shield-)?check|learning-map-(?:credited|direct)-evidence/u)
-const openRow = renderMapRow({ total: 1, explicit: 0, implicit: 0, notRequired: 0 })
+const openRow = renderMapRow({ total: 1, explicit: 0, implicit: 0 })
 assert.match(openRow, /aria-description="Noch offen"/u)
+assert.match(openRow, /lucide-target/u)
 assert.doesNotMatch(openRow, /learning-map-(?:credited-evidence|direct-evidence|not-required)/u)
-const clusterRow = renderMapRow({ total: 17, explicit: 4, implicit: 2, notRequired: 3, sectionTitle: 'E.1' }, 17)
+const activeRow = renderMapRow({ total: 1, explicit: 0, implicit: 0 }, 0, true)
+assert.match(activeRow, /aria-description="Aktives Lernziel"/u)
+assert.match(activeRow, /lucide-send/u)
+const clusterRow = renderMapRow({ total: 17, explicit: 4, implicit: 2, sectionTitle: 'E.1' }, 17)
 assert.match(clusterRow, /6\/17 mit Nachweis/u)
-assert.match(clusterRow, /aria-description="4 direkt nachgewiesen, 2 fachlich angerechnet, 3 für diesen Abschnitt nicht mehr erforderlich, 8 offen\. Geltungsbereich: E\.1"/u)
+assert.match(clusterRow, /aria-description="4 direkt nachgewiesen, 2 fachlich angerechnet, 11 offen\. Geltungsbereich: E\.1"/u)
 assert.doesNotMatch(clusterRow, /learning-map-(?:credited|direct)-evidence/u, 'a cluster reports descendant results without assigning itself proof')
 for (const reason of ['assessment', 'no_remaining_demand', 'preparation_waived'] as const) {
   const html = renderToStaticMarkup(<CompletionWaiverIcon waiver={{ reason, sectionTitle: { de: 'Physik' }, assessments: [] }} language="de" />)
   assert.ok(!html.includes('lucide-shield-check'))
   assert.equal(html.includes('lucide-check'), reason === 'assessment')
-  assert.equal(html.includes('completion-tree-not-required'), reason !== 'assessment')
+  if (reason !== 'assessment') assert.equal(html, '', 'Planning exemptions do not render a status icon')
 }
 
 const savedStorage = Object.getOwnPropertyDescriptor(globalThis, 'localStorage')

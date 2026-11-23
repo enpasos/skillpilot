@@ -1,8 +1,8 @@
 import type { UiGoal } from '../../goalTypes'
-import { getAudienceGoalTitle } from '../../utils/treeProjectionRuntime'
+import { getAudienceGoalTitle } from '../treeProjectionRuntime'
 import { createLearnerRequirementResolver, learnerMapEntryKind, learnerMapRootId,
   type LearnerMapProjectionInput } from './learnerMapProjection'
-import type { LearningMapEntry, LearningMapFixture, LearningMapRelation, LearningMapRequirement } from './types'
+import type { LearningMapEntry, LearningMapFixture, LearningMapRelation, LearningMapRequirement } from '../../components/learningUnitMap/types'
 
 /** Several tree nodes with one key are one unit: one map node holding the union of their content. */
 export interface LearnerMapUnitIdentity {

@@ -116,7 +116,7 @@ const landscapes = [{
   idNamespace: 'DE-GYM-CANONICAL-PHYSICS',
   framework: 'canonical-gymnasium-physics',
   // Three reviewed semiconductor atoms and four K3/K6 ordinary goals are current.
-  curricularAtomicCount: 485,
+  curricularAtomicCount: 486,
   // Physics cluster weights are authored workload weights, not counts of atomic descendants,
   // and Physics marks an assessment by its exam data alone; the projection adds the node kind.
   countedClusterWeights: false,

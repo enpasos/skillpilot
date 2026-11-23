@@ -32,7 +32,7 @@ export function FullCockpitMap(props: LearnerGoalNavigationMapProps) {
     const children = new Map(Object.values(fixture.entries).map(entry => [entry.id, entry.children ?? []]))
     for (const [id, counts] of buildTreeCompletionProgressMap(goals, children, getMastery, completionWaivers)) {
       result[id] = { total: counts.totalCount, explicit: counts.explicitCount, implicit: counts.implicitCount,
-        notRequired: counts.notRequiredCount, explicitRatio: counts.explicitRatio, implicitRatio: counts.implicitRatio }
+        explicitRatio: counts.explicitRatio, implicitRatio: counts.implicitRatio }
     }
     return result
   }, [fixture, goalIndexAll, visibleGoalIds, getMastery, completionWaivers])

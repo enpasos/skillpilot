@@ -1,6 +1,6 @@
 import { learnerGoalPresentationKind, type UiGoal } from '../../goalTypes'
-import { getAudienceGoalTitle } from '../../utils/treeProjectionRuntime'
-import type { LearningMapEntry, LearningMapFixture, LearningMapRelation, LearningMapRequirement } from './types'
+import { getAudienceGoalTitle } from '../treeProjectionRuntime'
+import type { LearningMapEntry, LearningMapFixture, LearningMapRelation, LearningMapRequirement } from '../../components/learningUnitMap/types'
 
 export interface LearnerMapProjectionInput {
   rootGoals: readonly UiGoal[]

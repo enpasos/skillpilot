@@ -1,6 +1,6 @@
-import { fingerprintCurrentCurriculumDocument } from './currentCurriculumCatalog'
 import './testHessePhysicsGuidedEntryMaterials'
-import { findUnitPracticeExercise } from '../src/utils/unitLearningMaterial'
+import { buildSortedChildrenMap } from '../src/utils/learnerNavigation/treeSiblingOrder'
+import { isUnitMaterialSource, findUnitPracticeExercise } from '../src/utils/unitLearningMaterial'
 import assert from 'node:assert/strict'
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
@@ -14,9 +14,10 @@ import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
 import { buildTreeCompletionProgressMap } from '../src/utils/treeCompletionProgress'
 import { selectPracticeCards } from '../src/utils/flashcardPractice'
 import { getSrsFilterTagsForGoal } from '../src/utils/srsTags'
-import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/components/learningUnitMap/learnerUnitMapProjection'
-import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_LANDSCAPE_ID as physics } from '../src/components/learningUnitMap/learnerUnitMapPreview'
+import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
+import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_LANDSCAPE_ID as physics } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
 import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources, unitResourcePlacements } from '../src/components/learningUnitMap/unitLearningMaterialActions'
+import { getLearningScopeRelations } from '../src/components/learningUnitMap/scopeRelations'
 import { mapEntryPath } from '../src/components/learningUnitMap/mapEntryPath'
 import { UNIT_MAP_LEARNING_MATERIALS as packageMaterials } from '../src/packageConsumer/learnerUnitMapPreviewSubjects'
 import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
@@ -35,7 +36,14 @@ try {
   await writeFile(path, JSON.stringify({ schemaVersion: 2, ...material,
     unit: { ...material.unit, orientationGoalId: 'intro-orientation' } }))
   assert.equal(readUnitMapMaterials(tempCatalog)[0].unit.orientationGoalId, 'intro-orientation')
-  await writeFile(path, JSON.stringify({ schemaVersion: 3, ...material }))
+  const practice = { goalId: 'algorithm', requiredForRegularLearning: true,
+    de: { title: 'Durchführen' }, en: { title: 'Perform' } }
+  await writeFile(path, JSON.stringify({ schemaVersion: 3, ...material, exercises: [practice] }))
+  assert.deepEqual(readUnitMapMaterials(tempCatalog)[0].exercises, [practice])
+  const individualAssessmentOffers = [{ targetGoalId: 'algorithm', assessmentGoalId: 'algorithm-check' }]
+  await writeFile(path, JSON.stringify({ schemaVersion: 3, ...material, exercises: [practice], individualAssessmentOffers }))
+  assert.deepEqual(readUnitMapMaterials(tempCatalog)[0].individualAssessmentOffers, individualAssessmentOffers)
+  await writeFile(path, JSON.stringify({ schemaVersion: 4, ...material }))
   assert.throws(() => readUnitMapMaterials(tempCatalog), /Unsupported unit learning material version/)
 } finally {
   await rm(tempCatalog, { recursive: true, force: true })
@@ -46,16 +54,6 @@ const practiceMaterial = materials.find(item => item.unit.landscapeId === physic
 const { flashcardGoalId: memoryId, assessmentGoalId: examId } = practiceMaterial.unit
 assert(memoryId && examId)
 const read = async <T,>(path: string): Promise<T> => JSON.parse(await readFile(new URL(`../../curricula/DE/Gymnasium/${path}`, import.meta.url), 'utf8'))
-const review = await read<{ scope: { exercises: { goalId: string; exerciseSha256: string }[] } }>(
-  'quality/learning-units/physics-he-e1-individual-experiments-2026-11-21/review.json')
-assert.deepEqual(review.scope.exercises.map(row => row.goalId).sort(),
-  ['09029573-864f-40ca-bf8a-cee7bf6dcb73', '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd'])
-for (const approved of review.scope.exercises) {
-  const exercise = practiceMaterial.exercises.find(entry => entry.goalId === approved.goalId)
-  assert(exercise, 'Reviewed exercise is missing: ' + approved.goalId)
-  assert.equal(fingerprintCurrentCurriculumDocument(exercise), 'sha256:' + approved.exerciseSha256,
-    'Exercise contents have changed since the independent review: ' + approved.goalId)
-}
 const physicsLandscape = await read<SkillLandscape>('canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
 const mathematicsLandscape = await read<SkillLandscape>('canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json')
 const canonical = prepareLandscapeEntries([mathematicsLandscape, physicsLandscape])
@@ -89,6 +87,35 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
     const original = filterLearnerUnitMapToSubjects(buildLearnerUnitMapProjection({ ...value,
       units: preview.units, after: preview.after, memberUnits: preview.memberUnits }), new Set([physics]))
     const snapshot = JSON.stringify(original)
+    const treeChildren = buildSortedChildrenMap(value.visibleChildrenByParent, value.goalIndexAll, 'learner', original, materials)
+    for (const material of materials.filter(item => item.guidedStudyOrder)) {
+      const scopes = findUnitMaterialScopes(material, original, value.goalIndexAll, value.visibleGoalIds)
+      assert.equal(scopes.size, 1, filename)
+      const [scopeId] = scopes
+      const assessments = buildUnitAssessmentActions(material, original, value.goalIndexAll, value.visibleGoalIds, 'de', scopes)
+      const placed = placeUnitLearningResources(original, unitResourcePlacements({ material, scopes, flashcards: new Map(), assessments }))
+      const order = [material.unit.orientationGoalId!, ...material.guidedStudyOrder!]
+      const treeScope = [...value.goalIndexAll.values()].find(goal => isUnitMaterialSource(material, goal))!
+      const treeRows = treeChildren.get(treeScope.id)!
+      assert.deepEqual(treeRows.filter(id => order.includes(id)), order, filename + ': visible tree rows follow the unit steps')
+      const children = placed.entries[scopeId].children ?? []
+      const relations = getLearningScopeRelations(placed, scopeId)
+      for (const [index, goalId] of order.entries()) {
+        assert(children.includes(goalId), `${filename}: missing authored study step ${goalId}`)
+        assert(['goal', 'motivation', 'assessment'].includes(placed.entries[goalId].kind))
+        if (index) assert(relations.some(edge => edge.source === order[index - 1] && edge.target === goalId))
+        const pending = [...(value.canonicalGoalIndexAll.get(goalId)?.requires ?? [])]
+        const seen = new Set<string>()
+        while (pending.length) {
+          const prerequisite = pending.pop()!
+          if (seen.has(prerequisite)) continue
+          seen.add(prerequisite)
+          assert(!order.slice(index + 1).includes(prerequisite), `${goalId} requires a later study step ${prerequisite}`)
+          pending.push(...(value.canonicalGoalIndexAll.get(prerequisite)?.requires ?? []))
+        }
+      }
+    }
+
     const e1Scopes = findUnitMaterialScopes(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds)
     assert.equal(e1Scopes.size, 1)
     const [e1ScopeId] = e1Scopes

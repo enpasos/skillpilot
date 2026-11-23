@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:ada3e6f86de3b2310c09bccc7623b01622b5d875c3bd348878e2924101839a54",
+  "reviewInputFingerprint": "sha256:495173b04d0d46d70e8286ba46d5663b34273a18abc49d9501f5a6b72b2e81b5",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "he-fall-measurement-20261123-a",
+      "roundId": "he-fall-measurement-20261123-first-pass-a",
+      "independenceGroupId": "he-fall-measurement-20261123-independent-a",
+      "runIds": [
+        "he-fall-measurement-native-a-20261123"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "he-fall-measurement-20261123-b",
+      "roundId": "he-fall-measurement-20261123-first-pass-b",
+      "independenceGroupId": "he-fall-measurement-20261123-independent-b",
+      "runIds": [
+        "he-fall-measurement-20261123-first-pass-b-actual-e3a7126b-c9cf-4258-ad40-94fbbbfd8959"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+      "firstRecordId": "he-fall-measurement-native-a-20261123.e0004439-ed34-5caf-858a-6107918224eb",
+      "secondRecordId": "he-fall-measurement-20261123-first-pass-b-actual-e3a7126b-c9cf-4258-ad40-94fbbbfd8959-record-001",
+      "firstRunId": "he-fall-measurement-native-a-20261123",
+      "secondRunId": "he-fall-measurement-20261123-first-pass-b-actual-e3a7126b-c9cf-4258-ad40-94fbbbfd8959",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

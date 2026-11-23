@@ -1,10 +1,14 @@
-import type { UiGoal } from '../goalTypes'
+import { learnerGoalPresentationKind, type UiGoal } from '../goalTypes'
+import { unitStudyRelations, type SiblingRelation } from './unitStudyOrder'
 
 export interface GoalSortOptions {
   allGoalsById?: Map<string, UiGoal>
   minAbsoluteSupport?: number
   minRelativeSupport?: number
   locale?: string
+  orientationGoalId?: string
+  guidedStudyOrder?: readonly string[]
+  siblingOrder?: readonly SiblingRelation[]
 }
 
 const DEFAULT_MIN_ABSOLUTE_SUPPORT = 2
@@ -231,17 +235,39 @@ export function sortGoalsTopologically(goals: UiGoal[], options: GoalSortOptions
     inDegree.set(goal.id, 0)
   })
 
-  // Hard edges: direct sibling requirements define the topological constraints.
-  goals.forEach((goal) => {
-    goal.requires.forEach((reqRef) => {
-      const reqId = normalizeRefId(reqRef)
-      if (!siblingIds.has(reqId) || reqId === goal.id) return
-      const neighbors = adjacency.get(reqId)
-      if (!neighbors || neighbors.has(goal.id)) return
-      neighbors.add(goal.id)
-      inDegree.set(goal.id, (inDegree.get(goal.id) ?? 0) + 1)
-    })
-  })
+  const addEdge = (source: string, target: string) => {
+    const neighbors = adjacency.get(source)
+    if (!neighbors || !siblingIds.has(target) || source === target || neighbors.has(target)) return
+    neighbors.add(target)
+    inDegree.set(target, (inDegree.get(target) ?? 0) + 1)
+  }
+  for (const goal of goals) {
+    for (const prerequisite of goal.requires) addEdge(normalizeRefId(prerequisite), goal.id)
+  }
+
+  if (options.orientationGoalId || options.guidedStudyOrder?.length || options.siblingOrder?.length) {
+    const prerequisites = Array.from(adjacency).flatMap(([source, targets]) => [...targets].map(target => ({ source, target })))
+    const studyRelations = unitStudyRelations([...siblingIds], options.orientationGoalId, options.guidedStudyOrder, id => {
+      const kind = learnerGoalPresentationKind(goalById.get(id)!)
+      return kind !== 'assessment' && kind !== 'memory'
+    }, prerequisites)
+    // A planning declaration can refine the display order only where it is
+    // consistent with the actual prerequisites, including multi-step paths.
+    const reaches = (from: string, to: string) => {
+      const pending = [from], seen = new Set<string>()
+      while (pending.length) {
+        const id = pending.pop()!
+        if (id === to) return true
+        if (seen.has(id)) continue
+        seen.add(id)
+        for (const next of adjacency.get(id) ?? []) pending.push(next)
+      }
+      return false
+    }
+    for (const { source, target } of [...options.siblingOrder ?? [], ...studyRelations]) {
+      if (!reaches(target, source)) addEdge(source, target)
+    }
+  }
 
   const softMatrix = buildSoftMatrix(goals, allGoalsById, minAbsoluteSupport, minRelativeSupport)
 

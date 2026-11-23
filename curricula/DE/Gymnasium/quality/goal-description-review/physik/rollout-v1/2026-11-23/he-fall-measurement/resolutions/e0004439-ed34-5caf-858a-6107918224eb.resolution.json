@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "he-fall-measurement-20261123-resolution-e0004439-ed34-5caf-858a-6107918224eb",
+  "goal": {
+    "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:491c6a9f176b4b6b075decc79d48c3a6aa0027d535b026f60993009b7f5af0ee",
+    "pageFingerprint": "sha256:bd86d7fc6120e7b3664ec6a821c7e0b6dcfbccedc494181e60cd4646638f35f5",
+    "goalReviewContextFingerprint": "sha256:c149902e7ef46af43c99cbc9a3e4a6673423aed68ba83e374688ffd59a00f840",
+    "finalText": {
+      "titleDe": "Fallhöhe und Fallzeit in einem Messprotokoll festhalten",
+      "titleEn": "Record drop height and fall time in a measurement log",
+      "descriptionDe": "Die lernende Person kann für mehrere Abwürfe Fallhöhe und Fallzeit als zusammengehörige Messpaare mit Einheiten protokollieren. Sie benennt die Datenquelle, die Bezugspunkte der Höhenmessung sowie Beginn und Ende der Zeitmessung.",
+      "descriptionEn": "The learner can record drop height and fall time as paired measurements with units for several drops. They identify the data source, the two reference positions for the height, and the events that start and end the time measurement."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "he-fall-measurement-20261123-a",
+      "campaignDigest": "sha256:07bac427c5954d461aaecf6ee22b2ddcb0b175d61b6b57992f64fb23d7de5e4d",
+      "roundId": "he-fall-measurement-20261123-first-pass-a",
+      "independenceGroupId": "he-fall-measurement-20261123-independent-a",
+      "reviewInputFingerprint": "sha256:495173b04d0d46d70e8286ba46d5663b34273a18abc49d9501f5a6b72b2e81b5",
+      "goalReviewContextFingerprint": "sha256:c149902e7ef46af43c99cbc9a3e4a6673423aed68ba83e374688ffd59a00f840",
+      "batchId": "he-fall-measurement-20261123-first-pass-a.batch-001",
+      "runId": "he-fall-measurement-native-a-20261123",
+      "runManifestDigest": "sha256:181f2161c7b1cb7469175d8f27ebccfb05c9bdb5d31bb8352cb0aaa15b494d7a",
+      "resultsDigest": "sha256:0eb9dc6efd90d6d14792544dc691dd6a46b53776e1e338d11be8e2a833ff6da3",
+      "recordId": "he-fall-measurement-native-a-20261123.e0004439-ed34-5caf-858a-6107918224eb",
+      "recordDigest": "sha256:1ff0558b99bd4d2cfff06af8cddf50406985db0a8ff0beeaf958e2d468165de5"
+    },
+    "second": {
+      "campaignId": "he-fall-measurement-20261123-b",
+      "campaignDigest": "sha256:2eaee6f2a8617da19b3d384d3428aee6ed9be2bcdf68e699641ae19f877f5908",
+      "roundId": "he-fall-measurement-20261123-first-pass-b",
+      "independenceGroupId": "he-fall-measurement-20261123-independent-b",
+      "reviewInputFingerprint": "sha256:495173b04d0d46d70e8286ba46d5663b34273a18abc49d9501f5a6b72b2e81b5",
+      "goalReviewContextFingerprint": "sha256:c149902e7ef46af43c99cbc9a3e4a6673423aed68ba83e374688ffd59a00f840",
+      "batchId": "he-fall-measurement-20261123-first-pass-b.batch-001",
+      "runId": "he-fall-measurement-20261123-first-pass-b-actual-e3a7126b-c9cf-4258-ad40-94fbbbfd8959",
+      "runManifestDigest": "sha256:e994ff45e722eb4e9d620f4b4fd2b1c54f9b1e894f5664329da30bbcce381c02",
+      "resultsDigest": "sha256:a46684d7d1ced182b0dba33de8c1502ae31955b53382ccf461e74a7a99f33422",
+      "recordId": "he-fall-measurement-20261123-first-pass-b-actual-e3a7126b-c9cf-4258-ad40-94fbbbfd8959-record-001",
+      "recordDigest": "sha256:487175ab2e24833dcd9bc09a7ea7e4d5d60e46e62023a362cb1e68ebbd3621eb"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:21b49bb01acf8f3a97a5ff8f778464ff9daf93e42319f81a64ecd6431b8eb16a"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "he-fall-measurement-20261123-informed-synthesis",
+    "manifestDigest": "sha256:8b5799e33ce4f211c8b666266b53a6f8384e27bc77391cd2137eac20d136dc0f",
+    "manifestFingerprint": "sha256:a7a214d7479ea6920444b016006d8e3dbe00b2f61ad0f480e595b06405c08998",
+    "decisionId": "he-fall-measurement-20261123-informed-synthesis-decision-001"
+  },
+  "synthesis": {
+    "synthesisId": "he-fall-measurement-20261123-informed-synthesis-decision-001",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "Codex /root/chat_abnahme, informed AI synthesis after reading both independently executed native rounds, the bilingual goal, task and bound performance profile. Separate from the author of this measurement-log task and from both round reviewers.",
+    "synthesizedAt": "2026-11-23T04:44:31.000Z",
+    "rationaleDe": "Beide Runden bestätigen die deutsch- und englischsprachige Beschreibung und empfehlen, das bestehende Leistungsprofil beizubehalten. Ich übernehme die Evidenz aus Runde A, weil sie neben der richtigen Zuordnung jedes Abwurfs die Zeitdifferenz ab Freigabe und die Herkunft jeder Messreihe ausdrücklich verlangt. Ihre Unterscheidung dokumentierter und unbekannter Messbedingungen ist für die Prager Unterlagen entscheidend. Dort stehen 40, 20 und 60 cm als berichtete Skalenwerte mit 285, 201 und 349 ms. Wer den Abstand zwischen Kugelunterseite und Boden als Bezug für seinen eigenen Versuch wählt, beschreibt damit eine mögliche Wiederholung. Diese Wahl belegt weder den exakten Nullpunkt des Prager Maßstabs noch die eigene Durchführung der fremden Messungen. Runde B konkretisiert den Transfer an neuen Videoangaben. Bei 100 Bildern pro Sekunde ergeben 30, 20 und 40 verstrichene Intervalle 0,30, 0,20 und 0,40 s. Diese Leistung prüft Quellenangabe, Einheit, Höhenbezug, zeitliche Begrenzung und die Integrität jeder Tabellenzeile. Eine Modellanpassung und die Bestimmung von g folgen im eigenen Lernziel. Die Entscheidung bindet den hier geprüften Protokollschritt.",
+    "rationaleEn": "Both independent rounds support retaining the German and English wording and the existing performance profile. I select the evidence from round A because it asks the learner to identify the time elapsed since release and who collected each series, in addition to preserving each drop's height and time. Its distinction between documented and unknown measurement conditions matters for the Prague record. The reported scale readings of 40, 20 and 60 cm pair with times of 285, 201 and 349 ms respectively. Measuring from the bottom of the ball to the floor would describe a possible repeat experiment. It cannot establish the Prague scale's precise zero or personal operation of that apparatus. Round B verifies transfer with fresh frame counts. At 100 frames per second, 30, 20 and 40 elapsed intervals give 0.30, 0.20 and 0.40 s. The evidence establishes attribution, units, spatial and temporal references and preservation of the individual pairs. Fitting the motion model and determining g belong to a later learning goal. This decision covers the measurement log.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Eine Zeile beschreibt einen Abwurf. Für die Fallhöhe braucht man zwei räumliche Bezugspunkte und für die Falldauer zwei Ereignisse. Die Zeitangabe eines einzelnen Videobildes ist erst mit bekanntem Loslasszeitpunkt als Fallzeit deutbar.",
+      "essentialUnderstandingEn": "One row refers to one release. A fall distance needs two spatial reference points and an elapsed time needs two events. A frame timestamp only determines a fall time if the time of release is known.",
+      "observablePerformanceDe": "Die lernende Person erstellt aus mehreren Beobachtungen oder benannten Fremdmessungen eine Tabelle und erhält jedes Höhen-Zeit-Paar samt Einheiten. An einer Zeile erklärt sie beispielsweise die Höhe der Ballunterkante über dem Boden beim Loslassen und das Zeitintervall bis zum ersten Bodenkontakt. Im Protokoll ist erkennbar, wer die Werte erhoben hat.",
+      "observablePerformanceEn": "The learner builds a table from several observations or attributed measurements, preserving each height–time pair and its units. For one row they explain, for example, the height of the bottom of the ball above the floor at release and the interval to first contact. The record identifies who collected the data.",
+      "transferExpectationDe": "In einer neuen Aufnahme beginnt die Uhr vor dem Abwurf. Die Person bestimmt die Dauer aus Loslassen und erstem Kontakt, ordnet sie der Höhe desselben Versuchs zu und beschreibt den Höhenbezug auch bei verändertem Bildausschnitt. Bei einem bereitgestellten Protokoll kennzeichnet sie die Herkunft und unterscheidet dokumentierte von unbekannten Messbedingungen.",
+      "transferExpectationEn": "In a new recording the clock starts before release. The learner obtains the duration from release to first contact, pairs it with the height from that trial and describes the spatial reference even when the framing changes. With a supplied record they identify its source and distinguish reported measurement conditions from unknown ones."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-666e71d1159e0f471d7b3956e1be276fee5382afc3a7cbe35e8cbeacc5e7fe93",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:51e5883c91134506d736074e8caaecbce2627d2e4a7293eac4fe2fbfd0b00006"
+}

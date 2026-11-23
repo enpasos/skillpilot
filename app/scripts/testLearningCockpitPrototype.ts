@@ -178,7 +178,7 @@ try {
   await counts(page, '1/2', '1', '1')
   await show(page, 'map')
   await settled(page, data.unitId)
-  assert.equal(await map.locator(`[data-entry-id="${ordinaryId}"] .lucide-minus`).count(), 1)
+  await map.locator(`[data-entry-id="${ordinaryId}"]`).getByRole('img', { name: 'Noch offen' }).waitFor()
   assert.equal(await map.locator(`[data-entry-id="${assessmentId}"] .lucide-check`).count(), 1)
   assert.equal(await map.locator('[data-active-goal="true"]').count(), 0)
   await page.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()

@@ -59,12 +59,15 @@ The learner-facing Cockpit tree and graphical map should share one unit and
 atomic-goal hierarchy in the same scope. Present an atomic goal directly
 when a presentation group would merely wrap it. Keep its assessed identity,
 actions and prerequisite context. The hierarchy is distinct from requirement
-arrows and links to materials.
+arrows and links to materials. The learner tree places visible prerequisites and authored unit steps before their successors, including within nested units. Independent siblings retain a stable order.
 
 Across subjects and pilot settings, green checks identify the learner's own
 successful goal evidence. The same checks in gray identify evidence-backed
-indirect credit. A neutral minus identifies a preparation that ceased to be
-required. Show section certification separately from individual goal progress.
+indirect credit. A goal without evidence keeps the open or active mark,
+including when the current assignment can finish without it. Show section
+certification separately from individual goal progress. Experimental content
+is regular learning. Offer a feasible investigation at home or suitable data
+the learner can investigate in chat, and attribute only their own performance.
 
 Composition source format `1.2` supports explicit partial sibling order through
 `structure.childOrder.after` (`{unit, after}` pairs of direct structure children).

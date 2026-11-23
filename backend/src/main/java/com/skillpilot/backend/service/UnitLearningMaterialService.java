@@ -24,7 +24,7 @@ public final class UnitLearningMaterialService {
     public record AssessmentBinding(String landscapeId, String viewId, String compositionNodeId,
             UnitAssessmentContract contract) {}
     public record OrientationBinding(String landscapeId, String viewId, String compositionNodeId,
-            String orientationGoalId) {
+            String orientationGoalId, List<String> guidedStudyOrder) {
         public String sectionGoalId() { return "composition:" + viewId + ":structure:" + compositionNodeId; }
     }
     public record Intro(String question, String promise, String scene, String imageUrl, String imageAlt,
@@ -51,12 +51,24 @@ public final class UnitLearningMaterialService {
             return List.copyOf(ids);
         }
     }
+    public record IndividualAssessmentOffer(String targetGoalId, String assessmentGoalId) { }
+    public record Exercise(PracticeExercise german, PracticeExercise english, boolean requiredForRegularLearning) { }
+
     public record Material(String flashcardGoalId, String assessmentGoalId, String orientationGoalId, Map<String, Intro> intro,
-            Map<String, Map<String, PracticeExercise>> exercises, UnitAssessmentContract assessmentContract,
-            SectionAssessmentPolicy sectionAssessmentPolicy) {
+            Map<String, Exercise> exercises, UnitAssessmentContract assessmentContract,
+            SectionAssessmentPolicy sectionAssessmentPolicy, List<String> guidedStudyOrder,
+            List<IndividualAssessmentOffer> individualAssessmentOffers) {
+        public Material(String flashcardGoalId, String assessmentGoalId, String orientationGoalId, Map<String, Intro> intro,
+                Map<String, Exercise> exercises, UnitAssessmentContract assessmentContract,
+                SectionAssessmentPolicy sectionAssessmentPolicy, List<String> guidedStudyOrder) {
+            this(flashcardGoalId, assessmentGoalId, orientationGoalId, intro, exercises, assessmentContract,
+                    sectionAssessmentPolicy, guidedStudyOrder, List.of());
+        }
         public Material {
+            individualAssessmentOffers = List.copyOf(individualAssessmentOffers);
             intro = Map.copyOf(intro);
             exercises = Map.copyOf(exercises);
+            guidedStudyOrder = List.copyOf(guidedStudyOrder);
         }
 
         public String question(String language) { return localized(language).question(); }
@@ -64,8 +76,9 @@ public final class UnitLearningMaterialService {
         public Intro introduction(String language) { return localized(language); }
 
         public Optional<PracticeExercise> exercise(String goalId, String language) {
-            if (goalId == null || !exercises.containsKey(goalId)) return Optional.empty();
-            return Optional.ofNullable(exercises.get(goalId).get("en".equalsIgnoreCase(language) ? "en" : "de"));
+            if (goalId == null) return Optional.empty();
+            return Optional.ofNullable(exercises.get(goalId))
+                    .map(exercise -> "en".equalsIgnoreCase(language) ? exercise.english() : exercise.german());
         }
 
         private Intro localized(String language) {
@@ -92,11 +105,13 @@ public final class UnitLearningMaterialService {
                 JsonNode data = mapper.readTree(file.toFile());
                 JsonNode version = data.get("schemaVersion");
                 if (version != null && (!version.isNumber() || !(version.decimalValue().compareTo(BigDecimal.ONE) == 0
-                        || version.decimalValue().compareTo(BigDecimal.valueOf(2)) == 0))) {
+                        || version.decimalValue().compareTo(BigDecimal.valueOf(2)) == 0
+                        || version.decimalValue().compareTo(BigDecimal.valueOf(3)) == 0))) {
                     throw new IOException("Unsupported unit learning material version in " + file);
                 }
                 JsonNode unit = data.required("unit");
-                boolean guidedEntry = version != null && version.asInt() == 2;
+                int materialVersion = version == null ? 1 : version.asInt();
+                boolean guidedEntry = materialVersion >= 2;
                 if (guidedEntry) requiredText(unit, "orientationGoalId", file);
                 for (JsonNode credit : unit.path("assessmentContract").path("planningCredits")) {
                     if (credit.has("orientation") && !guidedEntry) {
@@ -120,12 +135,14 @@ public final class UnitLearningMaterialService {
                             intro.path("scene").textValue(), intro.path("imageUrl").textValue(),
                             intro.path("imageAlt").textValue(), topics));
                 }
+                var exercises = readExercises(data.path("exercises"), materialVersion, file);
                 Material material = new Material(unit.path("flashcardGoalId").textValue(),
                         unit.path("assessmentGoalId").textValue(), unit.path("orientationGoalId").textValue(),
-                        intros, readExercises(data.path("exercises"), file),
+                        intros, exercises,
                         unit.has("assessmentContract")
                                 ? mapper.treeToValue(unit.required("assessmentContract"), UnitAssessmentContract.class)
-                                : null, boundSectionPolicy(unit, mapper));
+                                : null, boundSectionPolicy(unit, mapper), readGuidedStudyOrder(data, materialVersion, file),
+                        readIndividualOffers(data, materialVersion, exercises, file));
                 String landscape = unit.required("landscapeId").asText();
                 String node = unit.required("compositionNodeId").asText();
                 for (JsonNode view : unit.required("viewIds")) {
@@ -179,14 +196,65 @@ public final class UnitLearningMaterialService {
         return files.stream();
     }
 
-    private static Map<String, Map<String, PracticeExercise>> readExercises(JsonNode entries, Path file) {
+    private static List<IndividualAssessmentOffer> readIndividualOffers(JsonNode data, int version,
+            Map<String, Exercise> exercises, Path file) {
+        var offers = data.path("individualAssessmentOffers");
+        if (offers.isMissingNode()) return List.of();
+        if (version < 3 || !offers.isArray() || offers.isEmpty()) {
+            throw new IllegalArgumentException("Expected a version 3 individualAssessmentOffers list in " + file);
+        }
+        var result = new ArrayList<IndividualAssessmentOffer>();
+        var assessments = new LinkedHashSet<String>();
+        for (JsonNode entry : offers) {
+            var target = requiredText(entry, "targetGoalId", file);
+            var assessment = requiredText(entry, "assessmentGoalId", file);
+            if (entry.size() != 2 || !exercises.containsKey(target) || target.equals(assessment) || !assessments.add(assessment)
+                    || assessment.equals(data.required("unit").path("assessmentGoalId").textValue())) {
+                throw new IllegalArgumentException("Invalid individual assessment offer in " + file);
+            }
+            result.add(new IndividualAssessmentOffer(target, assessment));
+        }
+        return List.copyOf(result);
+    }
+
+    public boolean hasIndividualOfferIn(Collection<String> goalIds) {
+        return materials.values().stream().flatMap(material -> material.individualAssessmentOffers().stream())
+                .anyMatch(offer -> goalIds.contains(offer.assessmentGoalId()));
+    }
+
+    private static List<String> readGuidedStudyOrder(JsonNode data, int version, Path file) {
+        JsonNode entries = data.path("guidedStudyOrder");
+        if (entries.isMissingNode()) return List.of();
+        if (version < 3 || !entries.isArray() || entries.size() < 2) {
+            throw new IllegalArgumentException("Expected a version 3 guidedStudyOrder with at least two goals in " + file);
+        }
+        var ids = new LinkedHashSet<String>();
+        String opening = data.required("unit").path("orientationGoalId").textValue();
+        for (JsonNode entry : entries) {
+            String id = entry.textValue();
+            if (id == null || id.isBlank() || !id.equals(id.strip()) || id.equals(opening) || !ids.add(id)) {
+                throw new IllegalArgumentException("Invalid or repeated guidedStudyOrder goal in " + file);
+            }
+        }
+        if (!ids.getLast().equals(data.required("unit").path("assessmentGoalId").textValue())) {
+            throw new IllegalArgumentException("guidedStudyOrder must end with the unit's assessmentGoalId in " + file);
+        }
+        return List.copyOf(ids);
+    }
+
+    private static Map<String, Exercise> readExercises(JsonNode entries, int version, Path file) {
         if (entries.isMissingNode()) return Map.of();
         if (!entries.isArray()) throw new IllegalArgumentException("Expected array of unit exercises in " + file);
-        Map<String, Map<String, PracticeExercise>> exercises = new HashMap<>();
+        Map<String, Exercise> exercises = new HashMap<>();
         for (JsonNode entry : entries) {
             String goal = requiredText(entry, "goalId", file);
-            if (exercises.putIfAbsent(goal, Map.of("de", readExercise(entry.required("de"), file),
-                    "en", readExercise(entry.required("en"), file))) != null) {
+            JsonNode required = entry.path("requiredForRegularLearning");
+            if (!required.isMissingNode() && (version < 3 || !required.isBoolean())) {
+                throw new IllegalArgumentException("Regular learning requirement needs a version 3 boolean in " + file);
+            }
+            var exercise = new Exercise(readExercise(entry.required("de"), file),
+                    readExercise(entry.required("en"), file), required.asBoolean(false));
+            if (exercises.putIfAbsent(goal, exercise) != null) {
                 throw new IllegalArgumentException("Duplicate exercise for " + goal + " in " + file);
             }
         }
@@ -270,9 +338,10 @@ public final class UnitLearningMaterialService {
                 .distinct().sorted(java.util.Comparator.comparing(Key::landscape).thenComparing(Key::node)).toList();
         for (String view : viewIds.stream().sorted().toList()) {
             for (var scope : scopes) {
-                find(scope.landscape(), view, scope.node()).map(Material::orientationGoalId)
-                        .filter(id -> !id.isBlank()).ifPresent(id -> result.add(
-                                new OrientationBinding(scope.landscape(), view, scope.node(), id)));
+                find(scope.landscape(), view, scope.node())
+                        .filter(material -> material.orientationGoalId() != null && !material.orientationGoalId().isBlank())
+                        .ifPresent(material -> result.add(new OrientationBinding(scope.landscape(), view, scope.node(),
+                                material.orientationGoalId(), material.guidedStudyOrder())));
             }
         }
         return List.copyOf(result);

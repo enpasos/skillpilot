@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "unit": {
     "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
     "compositionNodeId": "physics-e1-motion",
@@ -144,7 +144,7 @@
       "topics": [
         "Bewegungen messen und in Diagrammen beschreiben",
         "Geschwindigkeit und Beschleunigung unterscheiden",
-        "Freien Fall untersuchen",
+        "Freien Fall mit eigenen oder bereitgestellten Messdaten untersuchen",
         "Modelle für Bremsen und Werfen prüfen"
       ]
     },
@@ -157,7 +157,7 @@
       "topics": [
         "Measure motion and describe it in graphs",
         "Distinguish velocity from acceleration",
-        "Investigate free fall",
+        "Investigate free fall using your own or supplied measurements",
         "Check models of braking and throwing"
       ]
     }
@@ -210,6 +210,7 @@
     },
     {
       "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "requiredForRegularLearning": true,
       "de": {
         "title": "Wie schnell bewegt sich dein Wagen?",
         "prompt": "Lass einen Spielzeugwagen möglichst gleichmäßig geradeaus fahren. Du kannst auch eine geradlinige Gehbewegung untersuchen. Lege eine Ortsachse mit Maßstab fest. Erfasse mit einer Uhr oder einem Video selbst die Zeiten beim Passieren mehrerer Marken. Bewahre die Messung an der letzten Marke zunächst für die Kontrolle auf. Gib deine Ort-Zeit-Paare mit Einheiten an und zeichne das Zeit-Ort-Diagramm. Welcher Abschnitt lässt sich als gleichförmige Bewegung beschreiben? Bestimme dort den Geschwindigkeitsbetrag und sage die Ankunftszeit an der letzten Marke voraus. Vergleiche deine Vorhersage mit der eigenen Messung.",
@@ -237,28 +238,29 @@
     },
     {
       "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "requiredForRegularLearning": true,
       "de": {
-        "title": "Wie groß ist die Fallbeschleunigung in deinem Versuch?",
-        "prompt": "Lass einen kleinen kompakten Ball neben einem senkrechten Maßstab aus der Ruhe fallen. Nimm den Fall von der Seite auf oder verwende einen geeigneten Wegsensor. Protokolliere Aufbau, Längen- und Zeitskala sowie mehrere selbst gemessene Zeiten und Positionen während des Falls. Lege den Zeitnullpunkt und die positive Ortsrichtung fest. Stelle deine Messwerte grafisch dar und bestimme daraus die Fallbeschleunigung. Welches Zeit-Ort-Gesetz beschreibt deinen Fall? Vergleiche deinen Messwert mit dem Richtwert 9,81 m/s². Erkläre anhand deines Versuchs, wie genau der Vergleich ist und wodurch eine Abweichung entstehen kann.",
-        "hint": "Verfolge beim Video stets denselben Punkt des Balls. Eine Längenskala in seiner Bewegungsebene erleichtert das Ablesen. Bestimmst du den Fallweg ab der Loslassposition, kannst du ihn gegen das Quadrat der Zeit seit dem Loslassen auftragen. Welche Bedeutung hat dann die Steigung?",
-        "solution": "Wählst du die Richtung nach unten positiv und misst die Zeit ab dem Loslassen aus der Ruhe, gilt im Modell konstanter Fallbeschleunigung s(t) = s₀ + ½gt². Im Diagramm des zurückgelegten Fallwegs gegen t² entspricht die Steigung g/2. Bei einer nach oben positiven Ortsachse hat der quadratische Term das umgekehrte Vorzeichen. Auch eine passende quadratische Anpassung an dein Zeit-Ort-Diagramm ist möglich. Vergleiche den aus deiner Messung gewonnenen Betrag von g samt Einheit mit dem Richtwert. Prüfe etwa, wie ein um ein Bild verschobener Zeitnullpunkt oder die Position des Maßstabs dein Ergebnis beeinflusst.",
+        "title": "Welche Fallbeschleunigung ergibt der Versuch?",
+        "prompt": "Wähle eine der beiden Möglichkeiten.\n\nEigener Versuch. Lass einen kleinen weichen, kompakten Ball aus ungefähr Hüfthöhe auf eine freie Bodenfläche fallen. Filme von der Seite mit feststehender Kamera. Stelle einen Maßstab in die Ebene der Bewegung. Notiere die Bildrate und lies die Position der Ballmitte bei der Freigabe und in mindestens vier weiteren Bildern ab. Ein Wegsensor mit bekannter Zeitskala geht ebenso.\n\nMessprotokoll im Chat. Im Prager Lehrlabor fiel eine Stahlkugel mehrmals aus der Ruhe. Für jede Fallhöhe wurde die Zeit von der Freigabe bis zum Auftreffen gemessen. Die Höhenskala hatte 1 cm, der Zeitmesser 1 ms Auflösung. Hier stehen fünf Messpaare (Fallhöhe in cm | Fallzeit in ms):\n20 | 201\n40 | 285\n60 | 349\n80 | 403\n90 | 428\nDie Zeilen stammen aus getrennten Abwürfen. Überlege, zwischen welchen Punkten du die Höhe messen und wie du die Zeitmessung starten und stoppen würdest. Die Daten stammen aus Versuch 2, Stahlkugel 1, ČVUT Prag (10. März 2017).\n\nFür beide Wege. Gib Datenquelle, Einheiten, Zeitnullpunkt und positive Richtung an. Halte einen Messpunkt zur Kontrolle zurück. Zeige deine übrigen Daten in einem beschrifteten Diagramm. Im Chat kannst du dafür Achsen, Skala und Punktkoordinaten angeben. Bestimme aus dem Diagramm die Fallbeschleunigung und formuliere das Zeit-Ort-Gesetz für deine Achsen und Anfangsbedingungen. Prüfe deine Vorhersage am zurückgehaltenen Punkt. Wie gut passt dein Wert zu 9,81 m/s²? Woran könnte eine Abweichung liegen, und welche Messung würdest du dafür genauer prüfen?",
+        "hint": "Für einen Start aus der Ruhe kannst du den zurückgelegten Fallweg gegen die quadrierte Zeit seit dem Loslassen auftragen. Achte beim Umrechnen der Einheiten darauf, welche Größe du quadrierst. Welche Einheit hat die Steigung?",
+        "solution": "Bei positiver Richtung nach unten, t = 0 bei der Freigabe und v₀ = 0 gilt ohne merklichen Luftwiderstand s(t) = s₀ + ½gt². Im Fallweg-t²-Diagramm ist die Steigung g/2. Für die ersten vier Prager Werte ergibt eine Ausgleichsgerade durch den Ursprung rund 4,93 m/s² und damit g ≈ 9,85 m/s². Für 0,90 m folgt eine Fallzeit von rund 0,427 s. Gemessen wurden 0,428 s. Die Differenz liegt in der Größenordnung der Zeitauflösung. Schon die Höhenskala begrenzt den Vergleich zusätzlich. Beim Video kann ein verschobener Freigabezeitpunkt die Steigung ändern. Prüfe das etwa mit dem benachbarten Bild als Zeitnullpunkt. Mit eigenen Messungen ergeben sich eigene Zahlen.",
         "evidenceCriteria": [
-          "Ein eigener Fallversuch ist durch Aufbau, Längen- und Zeitkalibrierung sowie mehrere selbst erhobene Zeit-Ort-Paare mit Einheiten belegt.",
-          "Ein beschriftetes Diagramm zeigt die Messdaten. Seine Auswertung liefert eine begründete Fallbeschleunigung mit Einheit, etwa über die Steigung im Fallweg-t²-Diagramm oder eine quadratische Anpassung.",
-          "Das Zeit-Ort-Gesetz passt zu den gewählten Achsen und Anfangsbedingungen. Die Modellannahmen Fall aus der Ruhe, annähernd konstantes g und vernachlässigbarer Luftwiderstand werden auf den Versuch bezogen.",
-          "Der gemessene Betrag wird zahlenbezogen mit 9,81 m/s² verglichen. Eine konkrete Mess- oder Modellgrenze wird auf die beobachtete Abweichung oder die Genauigkeit der Übereinstimmung bezogen."
+          "Die Abgabe benennt den gewählten Weg. Beim eigenen Fall sind Maßstab, Zeitbasis und Messwerte nachvollziehbar. Beim Prager Protokoll sind Höhenbezug, Start und Stopp der Zeitmessung sowie die getrennten Abwürfe erklärt. Die fremde Datenerhebung ist als solche ausgewiesen.",
+          "Ein beschriftetes Diagramm oder seine im Chat rekonstruierbare Darstellung zeigt die selbst aufbereiteten Messwerte. Die Auswertung ergibt mit begründeter Steigung oder quadratischer Anpassung einen Wert für g mit Einheit.",
+          "Zeitnullpunkt, Ortsachse und Anfangsbedingungen passen zum angegebenen Zeit-Ort-Gesetz. Die Modellannahmen zu g und Luftwiderstand sind auf den Versuch bezogen.",
+          "Die eigene Vorhersage wird am zurückgehaltenen Messpunkt geprüft. Der Vergleich mit 9,81 m/s² berücksichtigt mindestens eine konkrete Mess- oder Modellgrenze sowie eine passende Kontrollmessung."
         ]
       },
       "en": {
-        "title": "What acceleration of free fall do you measure?",
-        "prompt": "Release a small compact ball from rest beside a vertical length scale. Record the fall from the side or use a suitable position sensor. Record the setup, length and time scales, and several times and positions you measured during the fall. Choose the time origin and the positive direction of your position axis. Plot your measurements and use the graph to determine the acceleration of free fall. What position–time law describes your fall? Compare your result with the reference value of 9.81 m/s². Use your experiment to explain how precise the comparison is and what might cause a discrepancy.",
-        "hint": "In a video, track the same point on the ball throughout. A scale in the plane of motion helps you read the positions. If you measure the distance fallen from the release position, you can plot it against the square of the time since release. What does the slope represent?",
-        "solution": "If downwards is positive and time is measured from release at rest, the constant-acceleration model gives s(t) = s₀ + ½gt². In a graph of distance fallen against t², the slope is g/2. With an upwards-positive position axis, the quadratic term has the opposite sign. A suitable quadratic fit to your position–time graph also works. Compare the magnitude of g obtained from your measurements, with its unit, with the reference value. For example, consider how shifting the time origin by one frame or changing the placement of the scale would affect your result.",
+        "title": "What acceleration of free fall does the experiment give?",
+        "prompt": "Choose either route.\n\nYour own experiment. Drop a small, soft, compact ball from about waist height onto a clear floor. Film it from the side with a stationary camera. Place a length scale in the plane of motion. Record the frame rate and read the position of the centre of the ball at release and in at least four later frames. A position sensor with a known time scale also works.\n\nLab record in the chat. In a Prague teaching lab, a steel ball was dropped from rest several times. The time from release to impact was measured for each drop height. The height scale had a resolution of 1 cm and the timer a resolution of 1 ms. Here are five measured pairs (drop height in cm | fall time in ms):\n20 | 201\n40 | 285\n60 | 349\n80 | 403\n90 | 428\nEach row is a separate drop. Explain between which points you would measure the height and how you would start and stop the timer. The data come from experiment 2, steel ball 1, Czech Technical University in Prague (10 March 2017).\n\nFor either route. State the data source, units, time origin and positive direction. Keep one measurement for a separate check. Plot the remaining data on labelled axes. In the chat you can give the axes, scales and point coordinates. Use the graph to determine the acceleration of free fall and write the position–time law for your axes and initial conditions. Test your prediction against the measurement you kept back. How well does your result agree with 9.81 m/s²? What could explain a discrepancy, and which measurement would you check more closely?",
+        "hint": "For release from rest you can plot the distance fallen against the square of the time since release. When converting units, pay attention to which quantity you square. What are the units of the slope?",
+        "solution": "With downwards positive, t = 0 at release and v₀ = 0, negligible air resistance gives s(t) = s₀ + ½gt². The slope of distance fallen against t² is g/2. For the first four Prague points, fitting a line through the origin gives about 4.93 m/s², hence g ≈ 9.85 m/s². The predicted fall time for 0.90 m is about 0.427 s. The measured time was 0.428 s. The difference is comparable to the timer resolution. The height scale also limits this comparison. For a video, shifting the assumed release time can change the slope. Try the neighbouring frame as the time origin to check this. Your own measurements will give their own results.",
         "evidenceCriteria": [
-          "Your own drop experiment is documented by the setup, length and time calibration, and several measured time–position pairs with units.",
-          "A labelled graph shows the measurements. You use it to derive an acceleration with its unit, for example from the slope of distance fallen against t² or from a quadratic fit.",
-          "Your position–time law is consistent with the axes and initial conditions. You relate release from rest, approximately constant g and negligible air resistance to the actual experiment.",
-          "You compare the measured magnitude numerically with 9.81 m/s² and relate a specific measurement or model limitation to the observed difference or the precision of the agreement."
+          "The work identifies the route used. For the learner’s own drop, the length scale, time base and readings are documented. For the Prague lab record, the height reference, start and stop of the timer, and separate drops are explained. The source of those measurements is identified.",
+          "A labelled graph or a description that makes it possible to reconstruct the graph in the chat shows the learner’s processed data. A justified slope or quadratic fit yields an acceleration with units.",
+          "The time origin, position axis and initial conditions are consistent with the position–time law. The assumptions about g and air resistance are related to the experiment.",
+          "The prediction is tested against the measurement kept back. The comparison with 9.81 m/s² considers a specific measurement or model limitation and a way of checking it experimentally."
         ]
       }
     }

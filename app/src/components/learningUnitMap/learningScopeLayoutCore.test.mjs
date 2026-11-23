@@ -9,6 +9,7 @@ import { NODE_HEIGHT, NODE_WIDTH } from './layoutTypes.ts'
 import { elkRoutePath } from './edgePath.ts'
 
 const epsilon = 0.001
+const goal = (id, kind = 'goal', requires = []) => ({ id, title: id, kind, requires })
 
 function verifyGeometry(layout, fixture, scopeId) {
   const ids = fixture.entries[scopeId].children ?? []
@@ -98,7 +99,6 @@ test('rounded paths follow the supplied ELK route instead of re-routing between 
 })
 
 test('the authored introduction leads its own board in both reading directions', async () => {
-  const goal = (id, kind = 'goal', requires = []) => ({ id, title: id, kind, requires })
   const fixture = { entries: {
     unit: { ...goal('unit', 'unit'), children: ['cards', 'exam', 'first', 'later', 'intro', 'child'], orientationGoalId: 'intro' },
     cards: goal('cards', 'memory'), exam: goal('exam', 'assessment'), intro: goal('intro'),
@@ -122,4 +122,20 @@ test('the authored introduction leads its own board in both reading directions',
     }
   }
   assert.deepEqual(fixture, original)
+})
+
+test('regular study leads from observations to interpretation and then to the assessment', async () => {
+  const order = ['protocol', 'model', 'analysis', 'exam']
+  const entries = Object.fromEntries(['intro', ...order].map(id => [id, goal(id, id === 'exam' ? 'assessment' : 'goal')]))
+  const board = { ...goal('unit', 'unit'), children: ['exam', 'model', 'analysis', 'intro', 'protocol'],
+    orientationGoalId: 'intro', guidedStudyOrder: order }
+  const fixture = { entries: { ...entries, unit: board }, scopeRelations: { unit: [
+    { source: 'model', target: 'analysis', kind: 'requirement', provenance: [] },
+    { source: 'model', target: 'exam', kind: 'requirement', provenance: [] },
+  ] } }
+  const relations = getLearningScopeRelations(fixture, 'unit')
+  assert.deepEqual(relations.filter(r => r.kind === 'guidedStudy').map(r => [r.source, r.target]),
+    [['protocol', 'model'], ['analysis', 'exam']])
+  assert.deepEqual(relations.filter(r => r.kind === 'unitEntry').map(r => [r.source, r.target]), [['intro', 'protocol']])
+  assert.deepEqual(relations.filter(r => r.kind === 'requirement'), fixture.scopeRelations.unit)
 })

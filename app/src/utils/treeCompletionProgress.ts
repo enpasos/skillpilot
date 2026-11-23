@@ -6,12 +6,10 @@ export interface TreeCompletionProgress {
   totalCount: number
   explicitCount: number
   implicitCount: number
-  notRequiredCount: number
   openCount: number
   totalWeight: number
   explicitWeight: number
   implicitWeight: number
-  notRequiredWeight: number
   openWeight: number
   explicitRatio: number
   implicitRatio: number
@@ -53,8 +51,8 @@ export const buildTreeCompletionProgressMap = (
   const progressByGoal = new Map<string, TreeCompletionProgress>()
   for (const goalId of allGoals.keys()) {
     const progress: TreeCompletionProgress = {
-      totalCount: 0, explicitCount: 0, implicitCount: 0, notRequiredCount: 0, openCount: 0,
-      totalWeight: 0, explicitWeight: 0, implicitWeight: 0, notRequiredWeight: 0, openWeight: 0,
+      totalCount: 0, explicitCount: 0, implicitCount: 0, openCount: 0,
+      totalWeight: 0, explicitWeight: 0, implicitWeight: 0, openWeight: 0,
       explicitRatio: 0, implicitRatio: 0,
     }
     for (const atomId of collectAtoms(goalId)) {
@@ -76,16 +74,13 @@ export const buildTreeCompletionProgressMap = (
       } else if (state.reason === 'assessment') {
         progress.implicitCount += 1
         progress.implicitWeight += state.weight
-      } else if (state.reason) {
-        progress.notRequiredCount += 1
-        progress.notRequiredWeight += state.weight
       } else {
         progress.openCount += 1
         progress.openWeight += state.weight
       }
     }
-    progress.totalCount = progress.explicitCount + progress.implicitCount + progress.notRequiredCount + progress.openCount
-    progress.totalWeight = progress.explicitWeight + progress.implicitWeight + progress.notRequiredWeight + progress.openWeight
+    progress.totalCount = progress.explicitCount + progress.implicitCount + progress.openCount
+    progress.totalWeight = progress.explicitWeight + progress.implicitWeight + progress.openWeight
     if (progress.totalWeight > 0) {
       progress.explicitRatio = progress.explicitWeight / progress.totalWeight
       progress.implicitRatio = progress.implicitWeight / progress.totalWeight

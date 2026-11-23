@@ -13,6 +13,7 @@ CURRICULA_DIR = "curricula"
 SCHEMA_PATH = "docs/landscape-runtime.schema.json"
 UNIT_MATERIAL_SCHEMA_PATH = "contracts/unit-learning-material/v1/material.schema.json"
 UNIT_MATERIAL_V2_SCHEMA_PATH = "contracts/unit-learning-material/v2/material.schema.json"
+UNIT_MATERIAL_V3_SCHEMA_PATH = "contracts/unit-learning-material/v3/material.schema.json"
 COMPILED_SCHEMA_PATH = "contracts/curriculum-package/v1/compiled-landscape.schema.json"
 
 # This exact authoring source is restored at the sourcePath already declared by
@@ -659,12 +660,11 @@ def validate_unit_learning_materials(curricula_dir, schema_path=UNIT_MATERIAL_SC
     root = Path(curricula_dir).resolve()
     catalog = root / "unit-learning-materials.json"
     try:
-        schema = json.loads(Path(schema_path).read_text(encoding="utf-8"))
-        jsonschema.Draft202012Validator.check_schema(schema)
-        validator = jsonschema.Draft202012Validator(schema)
-        v2_schema = json.loads(Path(UNIT_MATERIAL_V2_SCHEMA_PATH).read_text(encoding="utf-8"))
-        jsonschema.Draft202012Validator.check_schema(v2_schema)
-        validators = {1: validator, 2: jsonschema.Draft202012Validator(v2_schema)}
+        validators = {}
+        for version, path in [(1, schema_path), (2, UNIT_MATERIAL_V2_SCHEMA_PATH), (3, UNIT_MATERIAL_V3_SCHEMA_PATH)]:
+            schema = json.loads(Path(path).read_text(encoding="utf-8"))
+            jsonschema.Draft202012Validator.check_schema(schema)
+            validators[version] = jsonschema.Draft202012Validator(schema)
         inventory = json.loads(catalog.read_text(encoding="utf-8"))
         paths = inventory.get("materials") if isinstance(inventory, dict) else None
         if not isinstance(paths, list) or type(inventory.get("schemaVersion")) is not int or inventory["schemaVersion"] != 1:
@@ -687,11 +687,16 @@ def validate_unit_learning_materials(curricula_dir, schema_path=UNIT_MATERIAL_SC
             errors.append(f"{path}: {error}")
             continue
         version = material.get("schemaVersion") if isinstance(material, dict) else None
-        selected = validators.get(version, validator) if type(version) is int else validator
-        for error in selected.iter_errors(material):
+        selected = validators.get(version, validators[1]) if type(version) is int else validators[1]
+        file_errors = list(selected.iter_errors(material))
+        for error in file_errors:
             errors.append(f"{path} {error.json_path}: {error.message}")
+        if not file_errors and version == 3 and "guidedStudyOrder" in material:
+            order = material["guidedStudyOrder"]
+            if material["unit"]["orientationGoalId"] in order or order[-1] != material["unit"].get("assessmentGoalId"):
+                errors.append(f"{path} $.guidedStudyOrder: start after the opening and end with the linked assessment")
     if not errors:
-        print(f"Validated {len(paths)} declared unit learning material file(s) against the v1/v2 schemas.")
+        print(f"Validated {len(paths)} declared unit learning material file(s) against their versioned schemas.")
     return errors
 
 

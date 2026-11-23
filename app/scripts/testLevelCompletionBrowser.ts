@@ -693,7 +693,7 @@ try {
   for (const mobile of [false, true]) {
     const completed: LevelCompletion = {
       ...selected(10), complete: true, masteredTargetCount: 1, waivedTargetCount: 1, pendingTargetCount: 0,
-      masteredAssessmentCount: 1, waivedTargetGoalIds: ['math-upper'],
+      masteredAssessmentCount: 1, waivedTargetGoalIds: ['math-upper'], planningCreditGoalIds: ['math-upper'],
       assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' }, mastered: true, startAvailable: false }],
       waiverDetails: [{ goalId: 'math-upper', title: { de: 'Ableitungen für Wachstumsmodelle deuten' }, ruleId: 'rule',
         assessments: [{ goalId: 'math-exam', title: { de: 'Skalarprodukt prüfen' } }], assessmentCount: 1 }],
@@ -708,11 +708,10 @@ try {
     const row = h.page.locator('[data-goal-id="math-upper"]')
     const waiver = row.getByTestId('completion-tree-waiver')
     await waiver.waitFor({ state: 'visible' })
-    assert.equal(await row.locator('svg.lucide-check').count(), 0, 'waived preparation does not acquire a mastery check')
-    assert.equal(await waiver.locator('svg.lucide-check').count(), 0, 'legacy waived preparation carries no positive assessment evidence')
-    assert.equal(await waiver.getByTestId('completion-tree-not-required').count(), 1, 'the neutral status retains its explanation')
+    assert.equal(await row.getByTestId('completion-tree-direct-evidence').count(), 0, 'credit does not confer individual mastery')
+    assert.equal(await waiver.getByTestId('completion-tree-credited-evidence').count(), 1, 'the planning credit retains its explanation')
     assert.equal(await h.page.locator('[data-goal-id="math-exam"] svg.lucide-check').count(), 1, 'only the actually mastered exam has a check')
-    assert.equal(await waiver.getAttribute('aria-label'), 'Für diesen Abschnitt nicht mehr erforderlich')
+    assert.equal(await waiver.getAttribute('aria-label'), 'Fachlich angerechnet')
     assert.equal(await row.locator('details, summary').count(), 0, 'the tree keeps a compact row without an inline explanation block')
     assert.doesNotMatch(await row.innerText(), /Für diesen Abschnitt nicht mehr erforderlich|separate Vorbereitung/u)
     const screenshotDir = fileURLToPath(new URL('../../tmp/level-completion-browser/', import.meta.url))
@@ -727,7 +726,7 @@ try {
     await tooltip.waitFor({ state: 'visible' })
     await tooltip.getByText(title.de, { exact: false }).waitFor()
     await tooltip.getByText('Skalarprodukt prüfen', { exact: false }).waitFor()
-    await tooltip.getByText(/einen eigenen Nachweis erwerben/u).waitFor()
+    await tooltip.getByText(/Du kannst es auch einzeln bearbeiten/u).waitFor()
     if (mobile) await tooltip.getByText('Skalarprodukt prüfen', { exact: false }).tap()
     else {
       await waiver.focus()
@@ -784,7 +783,7 @@ try {
       await refreshed
     }
     for (const next of [
-      { ...completed, learnerRevision: 11, waivedTargetGoalIds: [], waiverDetails: [], waivedTargetCount: 0, pendingTargetCount: 1, complete: false },
+      { ...completed, learnerRevision: 11, waivedTargetGoalIds: [], planningCreditGoalIds: [], waiverDetails: [], waivedTargetCount: 0, pendingTargetCount: 1, complete: false },
       { ...completed, learnerRevision: 12, calculationStatus: 'invalid' as const, complete: undefined },
       unselected(13),
     ]) {
@@ -816,7 +815,7 @@ try {
     }))
     const completed: LevelCompletion = {
       ...selected(20), complete: true, targetCount: 4, masteredTargetCount: 3, waivedTargetCount: 1, pendingTargetCount: 0,
-      requiredAssessmentCount: 3, masteredAssessmentCount: 3, waivedTargetGoalIds: ['math-upper'], assessments,
+      requiredAssessmentCount: 3, masteredAssessmentCount: 3, waivedTargetGoalIds: ['math-upper'], planningCreditGoalIds: ['math-upper'], assessments,
       waiverDetails: [{ goalId: 'math-upper', title: { de: 'Ableitungen für Wachstumsmodelle deuten' }, ruleId: 'three-assessments',
         assessments: assessments.map(({ goalId, title: assessmentTitle }) => ({ goalId, title: assessmentTitle })), assessmentCount: 3 }],
     }
@@ -836,7 +835,7 @@ try {
     await tooltip.waitFor({ state: 'visible' })
     assert.equal(await tooltip.evaluate((element) => element.scrollHeight > element.clientHeight), true,
       'long valid assessment titles exercise an overflowing tooltip in a short viewport')
-    await tooltip.getByText('Für diesen Abschnitt nicht mehr erforderlich', { exact: true }).click()
+    await tooltip.getByText('Fachlich angerechnet', { exact: true }).click()
     await h.page.waitForTimeout(200)
     assert.equal(await tooltip.isVisible(), true, 'clicking tooltip text after trigger focus does not dismiss it')
     await waiver.focus()
@@ -848,7 +847,7 @@ try {
     await waiver.press('End')
     const end = await tooltip.evaluate((element) => ({ top: element.scrollTop, maximum: element.scrollHeight - element.clientHeight }))
     assert.ok(Math.abs(end.top - end.maximum) <= 1, 'End reaches the complete explanation')
-    const reasonBox = (await tooltip.getByText(/einen eigenen Nachweis erwerben/u).boundingBox())!
+    const reasonBox = (await tooltip.getByText(/Du kannst es auch einzeln bearbeiten/u).boundingBox())!
     const tooltipBox = (await tooltip.boundingBox())!
     assert.ok(reasonBox.y >= tooltipBox.y && reasonBox.y + reasonBox.height <= tooltipBox.y + tooltipBox.height,
       'the unchanged-mastery explanation at the bottom is visible after keyboard scrolling')
@@ -1040,22 +1039,14 @@ try {
     await card.getByRole('button', { name: 'Im Lernzielbaum anzeigen: Ableitungen für Wachstumsmodelle deuten', exact: true }).click()
     await waitForTreeReveal(h.page, 'math-upper')
     const row = h.page.locator('[data-goal-id="math-upper"]')
-    const icon = row.getByRole('button', { name: 'Für diesen Abschnitt nicht mehr erforderlich', exact: true })
-    if (mobile) await icon.tap()
-    else {
-      await row.press('Tab')
-      assert.equal(await icon.evaluate(element => document.activeElement === element), true)
-    }
-    const tooltip = h.page.getByRole('tooltip')
-    await tooltip.getByText('Du kannst dieses Ziel weiterhin bearbeiten', { exact: false }).waitFor()
-    assert.equal(await tooltip.getByText('Bestandene Prüfungen:', { exact: false }).count(), 0)
-    assert.equal(await row.locator('svg.lucide-check, svg.lucide-shield-check').count(), 0, 'an expired obligation cannot become evidence')
-    assert.equal(await row.getByTestId('completion-tree-not-required').count(), 1)
+    await row.locator('svg.lucide-send').waitFor()
+    assert.equal(await row.locator('svg.lucide-minus, svg.lucide-check, svg.lucide-shield-check').count(), 0,
+      'a planning exemption leaves the individual goal open')
     const clusterProgress = h.page.locator('[data-goal-id="math-root"]').getByTestId('completion-tree-progress')
-    assert.match(await clusterProgress.getAttribute('aria-label') ?? '', /0 fachlich angerechnet\. 2 für diesen Abschnitt nicht mehr erforderlich/u)
+    assert.match(await clusterProgress.getAttribute('aria-label') ?? '', /0 fachlich angerechnet\. \d+ offen/u)
     assert.equal(await clusterProgress.getByTestId('completion-tree-progress-implicit').evaluate(el => el.getBoundingClientRect().width), 0)
-    assert.ok((await row.boundingBox())!.height < 80, 'generic explanations keep the same compact tree row')
-    assert.equal(h.writes.length, 0, 'inspection and tooltip interaction never choose a route or write mastery')
+    assert.ok((await row.boundingBox())!.height < 80, 'the active goal keeps the same compact tree row')
+    assert.equal(h.writes.length, 0, 'inspecting the goal never chooses a route or writes mastery')
     await h.page.keyboard.press('Escape')
     h.unavailable()
     await h.page.evaluate(learnerId => window.dispatchEvent(new CustomEvent('learner-startup-fixture-sse', { detail: { learnerId, type: 'ACTIVE_GOAL_CHANGED' } })), learner)
@@ -1133,18 +1124,19 @@ try {
         ruleId: 'no_remaining_demand', assessments: [], assessmentCount: 0 }],
     }
     const h = await open(overview, false, true, { entryGoal: 'math-exam', examMastered: false, legacyShortcutPreference: false })
-    const waiver = h.page.getByTestId('completion-tree-waiver')
-    await waiver.waitFor()
+    const openGoal = h.page.locator('[data-goal-id="math-upper"] svg.lucide-send')
+    await openGoal.waitFor()
     assert.equal(await h.page.getByTestId('level-completion-card').count(), 0)
     await h.page.getByTestId('selected-goal-assessment-shortcuts').getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
     assert.equal(await h.page.locator('[data-goal-id="math-upper"] svg.lucide-check').count(), 0,
       'receiving a scoped waiver does not create individual mastery')
     await h.page.reload()
-    await waiver.waitFor()
+    await openGoal.waitFor()
     await h.page.getByTestId('selected-goal-assessment-shortcuts').getByRole('link', { name: 'Prüfung direkt versuchen', exact: true }).waitFor()
     await h.page.locator('#learner-goal-sidebar [data-goal-id="math-upper"]').click()
     const current = h.page.getByTestId('learner-current-goal')
-    await current.getByTestId('completion-goal-card-not-required').waitFor()
+    await current.locator('svg.lucide-send').first().waitFor()
+    assert.equal(await current.getByTestId('completion-goal-card-waiver').count(), 0)
     assert.equal(await current.locator('svg.lucide-shield-check, svg.lucide-check').count(), 0)
     h.update({ ...overview, learnerRevision: 176, planningCreditGoalIds: ['math-upper'], waiverDetails: [{
       ...overview.waiverDetails![0], ruleId: 'versioned_unit_assessment:reviewed',

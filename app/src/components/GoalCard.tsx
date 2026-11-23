@@ -637,7 +637,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               <FileSearch size={18} strokeWidth={2} />
             </button>
           )}
-          {isAtomic && !mastered && completionWaiver && <CompletionWaiverIcon
+          {isAtomic && !mastered && completionWaiver?.reason === 'assessment' && <CompletionWaiverIcon
             waiver={completionWaiver} language={localizedLanguage} surface="goal-card" />}
           {isAtomic && (
             canSetActive ? (
@@ -650,7 +650,7 @@ export const GoalCard: React.FC<GoalCardProps> = ({
               >
                 {isActive ? <Send size={28} strokeWidth={2} /> : <Target size={28} strokeWidth={2} />}
               </button>
-            ) : (mastered || !completionWaiver) && (
+            ) : (mastered || completionWaiver?.reason !== 'assessment') && (
               <div className={`shrink-0 ${iconColor}`} role={mastered ? 'img' : undefined}
                 data-testid={mastered ? 'completion-goal-card-direct-evidence' : undefined}
                 aria-label={mastered ? (localizedLanguage === 'en' ? 'Directly demonstrated' : 'Direkt nachgewiesen') : undefined}>

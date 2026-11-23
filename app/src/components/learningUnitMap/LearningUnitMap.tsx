@@ -6,7 +6,7 @@ import { Background, BackgroundVariant, MarkerType, MiniMap, ReactFlow, ReactFlo
   getViewportForBounds, useReactFlow, useStore, type Edge, type Viewport } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import type { LearningEntryProgress, LearningMapCommand, LearningMapFixture } from './types'
-import { MapNode, type LearningFlowNode, type LearningMapPracticeAction, type LearningMapGoalAction } from './MapNode'
+import { MapNode, type LearningFlowNode, type LearningMapGoalAction } from './MapNode'
 import { getEntryKindLabel } from './presentation'
 import { useMapNavigation } from './useMapNavigation'
 import { layoutLearningScope, NODE_HEIGHT, NODE_WIDTH, restartLearningScopeLayoutWorker, type LearningScopeLayout } from './layoutLearningScope'
@@ -37,7 +37,6 @@ type MapProps = {
   onSelectionChange?: (entryId: string | null) => void
   materialScopes?: ReadonlySet<string>
   getGoalAction?: (scopeId: string, entryId: string) => LearningMapGoalAction | undefined
-  getPracticeAction?: (scopeId: string, entryId: string) => LearningMapPracticeAction | undefined
   onReturnToTree?: () => void
   /** Hosts such as a full-window dialog own Escape once the map search is closed. */
   onEscape?: () => void
@@ -76,7 +75,7 @@ function useNarrowScreen() {
 function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = false,
   active = true, headingMode = 'standard', rootLabel,
   learnerProgress, activeGoalId, initialScopeId, command, assessmentContext, onEntrySelect,
-  onSelectionChange, materialScopes, getGoalAction, getPracticeAction, onReturnToTree, onEscape, language = 'de',
+  onSelectionChange, materialScopes, getGoalAction, onReturnToTree, onEscape, language = 'de',
   toolbar, locationBarContainer }: MapProps) {
   const label = (de: string, en: string) => language === 'en' ? en : de
   const MapContainer = embedded ? 'section' : 'main'
@@ -161,7 +160,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
   const extendedTools = headingMode === 'standard' || visibleIds.length >= 8
   const showMinimap = extendedTools || (narrowScreen && !!activeLayout
     && (activeLayout.width * nav.zoom > canvasWidth || activeLayout.height * nav.zoom > canvasHeight))
-  const showSearch = extendedTools || (narrowScreen && visibleIds.length > 1 && Boolean(getGoalAction || getPracticeAction))
+  const showSearch = extendedTools || (narrowScreen && visibleIds.length > 1 && Boolean(getGoalAction))
 
   useEffect(() => {
     if (!active) return
@@ -345,10 +344,10 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         ports: activeLayout.ports[id], active: selectedId === id,
         progress: learnerProgress?.[id], activeLearningGoal: activeGoalId === id, unitEntry: id === scope.orientationGoalId, language,
         related: selectedId !== id && related.has(id), muted: !!selectedId && !related.has(id) && !goalAction && !assessmentPeer,
-        goalAction, practiceAction: getPracticeAction?.(nav.scopeId, id),
+        goalAction,
         onSelect: select, onOpen: open } }
   }) : [], [activeLayout, fixture, nav.scopeId, scope.orientationGoalId, visible, visibleIds, selectedId, inspected, related, select, open,
-    learnerProgress, activeGoalId, language, getGoalAction, getPracticeAction])
+    learnerProgress, activeGoalId, language, getGoalAction])
 
   const edges = useMemo<Edge[]>(() => activeLayout?.edges.map(edge => {
     const highlighted = edge.source === selectedId || edge.target === selectedId
@@ -359,21 +358,21 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     // Unit maps only: a declared order is solid, demand against it (Rückgriff) is red and dotted.
     const backward = !!relation?.backward
     const declared = relation?.unitOrder === 'declared'
-    const unitEntry = relation?.kind === 'unitEntry'
+    const guided = relation?.kind === 'unitEntry' || relation?.kind === 'guidedStudy'
     const color = backward ? highlighted ? '#b42318' : '#d4553a' : highlighted ? '#2870b0' : declared ? '#6f8193' : '#9aa4ae'
     const summary = relation?.kind === 'summary' && !declared && !backward
     const sourceTitle = fixture.entries[relationSource].title
     const targetTitle = fixture.entries[relationTarget].title
     const marker = { type: MarkerType.ArrowClosed, width: 11, height: 11, color }
     return { ...edge, type: 'routed', data: { points: edge.points },
-      className: unitEntry ? 'lum-edge--unit-entry' : undefined,
+      className: relation?.kind === 'unitEntry' ? 'lum-edge--unit-entry' : undefined,
       ...(edge.reversed ? { markerStart: marker } : { markerEnd: marker }),
       style: { stroke: color, strokeWidth: highlighted ? 1.8 : backward || declared ? 1.5 : 1.1,
         strokeDasharray: backward ? '2 4' : summary ? '5 4' : undefined,
         // Declared year/phase order remains orientation context for every selection.
         opacity: selectedId && !highlighted && !declared ? 0.13 : 1 },
       zIndex: highlighted ? 2 : backward ? 1 : 0,
-      ariaLabel: unitEntry ? `${language === 'en' ? 'Guided learning' : 'Geführter Lernweg'}: ${sourceTitle} → ${targetTitle}` : backward ? language === 'en'
+      ariaLabel: guided ? `${language === 'en' ? 'Guided learning' : 'Geführter Lernweg'}: ${sourceTitle} → ${targetTitle}` : backward ? language === 'en'
         ? `Backward dependency: ${targetTitle} needs goals from ${sourceTitle}, which comes later`
         : `Rückgriff: ${targetTitle} braucht Ziele aus ${sourceTitle}, das erst danach kommt`
         : declared ? language === 'en' ? `${targetTitle} comes after ${sourceTitle} (declared order)`
@@ -538,7 +537,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
               {!inspectedContext.length && <p>{label('Keine weiteren Voraussetzungen in den verfügbaren Quelldaten.', 'No further prerequisites in the available source data.')}</p>}
             </> : <>
               {selectedRelations.slice(0, contextLimit).map(relation => <div key={`${relation.source}:${relation.target}`}>
-                <h2>{contextTitle(relation.source)} → {contextTitle(relation.target)}{relation.kind === 'unitEntry' ? label(' · Geführter Lernweg', ' · Guided learning')
+                <h2>{contextTitle(relation.source)} → {contextTitle(relation.target)}{relation.kind === 'unitEntry' || relation.kind === 'guidedStudy' ? label(' · Geführter Lernweg', ' · Guided learning')
                   : relation.backward ? label(' · Rückgriff', ' · Backward dependency')
                   : relation.unitOrder === 'declared' ? label(' · Erklärte Reihenfolge', ' · Declared order')
                     : relation.unitOrder === 'derived' ? label(' · Noch nicht erklärte Abhängigkeit', ' · Dependency not declared yet')
@@ -558,7 +557,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
           </div>
         </aside>}
         <div ref={mapSurface} tabIndex={-1} className={`lum-flow lum-flow--${nav.phase}`} onDoubleClickCapture={event => {
-          if (!event.shiftKey || (event.target instanceof Element && event.target.closest('.lum-node-practice'))) return
+          if (!event.shiftKey) return
           event.preventDefault()
           event.stopPropagation()
           setSelection(null)

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "he-fall-measurement-si-native-a-20261123",
+  "campaignId": "he-fall-measurement-si-20261123-a",
+  "roundId": "he-fall-measurement-si-20261123-first-pass-a",
+  "batchId": "he-fall-measurement-si-20261123-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:15b9ffa700bd2e67d36767eae7e53d3186aac5cf22c83ce35c53bcd345d81f4b",
+  "bundleFingerprint": "sha256:28cb8f354812fc04fb62a55f74f8207e7d0649df5ad21bbd9cc5bcc2c2d54887",
+  "bookDigest": "sha256:e00dc93ebdd9e660a852af4e75dfebc1b423d04ea390409261a12703a35f2cd6",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:eeb73d42733454c3141b62f8f913af4576857b034dae75ca723d748ef559ec0d",
+  "independenceGroupId": "he-fall-measurement-si-20261123-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e0004439-ed34-5caf-858a-6107918224eb"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ea5b4b9c58a38ccd603456eb434c99f3988c52633bf7ec9d2bd94e277fcbf207"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:354746c0ba277ffd945df64db36fd978a67174560cba03dfd70729e4285693e5"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:15b9ffa700bd2e67d36767eae7e53d3186aac5cf22c83ce35c53bcd345d81f4b"
+    }
+  ],
+  "startedAt": "2026-11-23T04:52:00Z",
+  "completedAt": "2026-11-23T04:52:51+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:53d910cc9e133caa28e25be5b1dc0cab762288eddc5f533c1c1b00d3403954f3",
+  "toolchainVersion": "codex-native-description-review-v1"
+}

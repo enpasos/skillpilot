@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import type { UiGoal } from '../src/goalTypes'
 import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects, type LearnerMapUnitIdentity,
-  type LearnerUnitMapFixture, type LearnerUnitMapProjectionInput } from '../src/components/learningUnitMap/learnerUnitMapProjection'
+  type LearnerUnitMapFixture, type LearnerUnitMapProjectionInput } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
-import { deriveLearnerUnitMapPreview, PHYSICS_LANDSCAPE_ID } from '../src/components/learningUnitMap/learnerUnitMapPreview'
+import { deriveLearnerUnitMapPreview, PHYSICS_LANDSCAPE_ID } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
 
 // Small hand-made learner trees: every cluster is a tree node, every leaf an atomic goal.
 const subjectA = 'subject-a'
