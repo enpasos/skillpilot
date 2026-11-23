@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.StreamSupport;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -1293,9 +1294,8 @@ class LandscapeServiceTest {
                                 .extracting(ProgramUnit::getId)
                                 .contains("physics-constant-acceleration");
                 assertThat(pilot.getGoalPlacements())
-                                .filteredOn(placement -> !placement.isOwnership()
-                                                && !"a4d4efe1-7d30-526b-ac9c-806113da4363".equals(placement.getGoalId()))
-                                .hasSize(19);
+                                .filteredOn(placement -> !placement.isOwnership())
+                                .hasSize(21);
                 assertThat(pilot.getGoalPlacements())
                                 .filteredOn(placement -> "a4d4efe1-7d30-526b-ac9c-806113da4363"
                                                 .equals(placement.getGoalId()) && !placement.isOwnership())
@@ -1303,6 +1303,19 @@ class LandscapeServiceTest {
                                 .satisfies(placement -> {
                                         assertThat(placement.getUnitId()).isEqualTo("de-gym-physics-e");
                                         assertThat(placement.getRelation()).isEqualTo("primary");
+                                });
+                String measurementProtocolId = "e0004439-ed34-5caf-858a-6107918224eb";
+                assertThat(pilot.getGoals()).filteredOn(goal -> measurementProtocolId.equals(goal.getId()))
+                                .singleElement().satisfies(goal -> {
+                                        assertThat(goal.getType()).isEqualTo("atomic");
+                                        assertThat(goal.getExamData()).isNull();
+                                        assertThat(goal.getApplicability()).containsEntry("jurisdiction", List.of("DE-HE"));
+                                });
+                assertThat(pilot.getGoalPlacements()).filteredOn(placement -> measurementProtocolId.equals(placement.getGoalId()))
+                                .singleElement().satisfies(placement -> {
+                                        assertThat(placement.getUnitId()).isEqualTo("de-gym-physics-e");
+                                        assertThat(placement.getRelation()).isEqualTo("primary");
+                                        assertThat(placement.getContext()).isEqualTo(Map.of("schoolForm", "Gymnasium", "stage", "SekII"));
                                 });
                 assertThat(pilot.getGoalPlacements())
                                 .filteredOn(placement -> "physics-constant-acceleration"

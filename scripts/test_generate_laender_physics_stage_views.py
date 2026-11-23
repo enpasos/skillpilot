@@ -42,6 +42,19 @@ HESSEN_GUIDED_OPENING_VIEWS = {
     "de-he-gym-physics-lk-g8", "de-he-gym-physics-lk-g9",
     "de-he-gym-sekii-physics-gk", "de-he-gym-sekii-physics-lk",
 }
+# The 23 November pilot adds an own measurement competency and its separate
+# individual assessment. They are an exact delta over the retained source
+# authority, not a new claim about official source-seed membership.
+HESSEN_MEASUREMENT_GOALS = {
+    "e0004439-ed34-5caf-858a-6107918224eb",
+    "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+}
+HESSEN_MEASUREMENT_VIEWS = {
+    "de-he-gym-physics-gk", "de-he-gym-physics-lk",
+    "de-he-gym-physics-gk-g8", "de-he-gym-physics-gk-g9",
+    "de-he-gym-physics-lk-g8", "de-he-gym-physics-lk-g9",
+    "de-he-gym-sekii-physics-gk", "de-he-gym-sekii-physics-lk",
+}
 
 NEW_EYE_ASSESSMENT_ID = "3b7b2b62-e39c-5936-b0d8-5406206e57b6"
 REVIEWED_NEW_LOWER_EXCLUSIONS = {
@@ -61,6 +74,55 @@ def ancestors(unit, pairs):
             found.add(previous)
             pending.extend(a for u, a in pairs if u == previous)
     return found
+
+
+def measurement_delta(view, roles):
+    expected = HESSEN_MEASUREMENT_GOALS if view["viewId"] in HESSEN_MEASUREMENT_VIEWS else set()
+    if roles["target"] & HESSEN_MEASUREMENT_GOALS != expected:
+        raise AssertionError("Changed reviewed measurement target delta")
+    if roles["prerequisiteOnly"] & HESSEN_MEASUREMENT_GOALS:
+        raise AssertionError("Measurement delta entered a support role")
+    return expected
+
+
+def retained_authority_seeds(view, roles, baseline):
+    """Remove only explicit reviewed additions, then enforce the old authority."""
+    allowed_new_task = set()
+    stage = view["scope"]["stage"]
+    state = view["scope"].get("jurisdiction", "DE")
+    if stage == "CrossStage":
+        allowed_new_task = (set(NEW_TASK_OFFERS) - {NEW_EYE_ASSESSMENT_ID} if state == "DE" else
+            {task for task, states in NEW_TASK_OFFERS.items() if state in states})
+        if view["scope"]["courseProfile"] == "GK":
+            allowed_new_task -= LK_ONLY_NEW_TASKS
+        if state in ("DE-SL", "DE-ST"):
+            allowed_new_task |= {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b"}
+    if state == "DE-HE" and stage in ("CrossStage", "SekII"):
+        allowed_new_task.update(authoring.graph.HESSEN_E1_ASSESSMENTS)
+    if view["viewId"] in HESSEN_GUIDED_OPENING_VIEWS:
+        allowed_new_task.update(HESSEN_GUIDED_OPENINGS)
+    allowed_new_task.update(measurement_delta(view, roles))
+    if not allowed_new_task <= roles["target"]:
+        raise AssertionError("A reviewed addition is missing")
+    retained = roles["target"] - allowed_new_task
+    variants = authoring.graph.HESSEN_E1_CHILD_ASSESSMENT_VARIANTS
+    if state == "DE-HE" and stage in ("CrossStage", "SekII"):
+        if not set(variants.values()) <= retained:
+            raise AssertionError("A reviewed child assessment is missing")
+        if not set(variants).isdisjoint(retained):
+            raise AssertionError("Historical and current child variants overlap")
+        retained = (retained - set(variants.values())) | set(variants)
+    else:
+        if not set(variants.values()).isdisjoint(roles["target"] | roles["prerequisiteOnly"]):
+            raise AssertionError("A child assessment variant left its reviewed scope")
+    digest = hashlib.sha256(("\n".join(sorted(retained)) + "\n").encode()).hexdigest()
+    if digest != baseline["selectedAtomicSha256"]:
+        raise AssertionError("Retained source-seed fingerprint changed")
+    if len(retained) != baseline["selectedAtomicCount"]:
+        raise AssertionError("Retained source-seed count changed")
+    if not set(baseline["prerequisiteOnlyAtomicGoalIds"]) <= roles["prerequisiteOnly"]:
+        raise AssertionError("Historical support role lost")
+    return retained
 
 
 class PhysicsStageAuthoring(unittest.TestCase):
@@ -87,33 +149,62 @@ class PhysicsStageAuthoring(unittest.TestCase):
                 continue
             with self.subTest(view=view["viewId"]):
                 roles = authoring.graph.role_atoms(view)
-                allowed_new_task = set()
-                stage = view["scope"]["stage"]
-                state = view["scope"].get("jurisdiction", "DE")
-                if stage == "CrossStage":
-                    allowed_new_task = (set(NEW_TASK_OFFERS) - {NEW_EYE_ASSESSMENT_ID} if state == "DE" else
-                        {task for task, states in NEW_TASK_OFFERS.items() if state in states})
-                    if view["scope"]["courseProfile"] == "GK":
-                        allowed_new_task -= LK_ONLY_NEW_TASKS
-                    if state in ("DE-SL", "DE-ST"):
-                        allowed_new_task |= {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b"}
-                if state == "DE-HE" and stage in ("CrossStage", "SekII"):
-                    allowed_new_task.update(authoring.graph.HESSEN_E1_ASSESSMENTS)
-                if view["viewId"] in HESSEN_GUIDED_OPENING_VIEWS:
-                    allowed_new_task.update(HESSEN_GUIDED_OPENINGS)
-                self.assertTrue(allowed_new_task <= roles["target"])
-                retained = roles["target"] - allowed_new_task
-                variants = authoring.graph.HESSEN_E1_CHILD_ASSESSMENT_VARIANTS
-                if state == "DE-HE" and stage in ("CrossStage", "SekII"):
-                    self.assertTrue(set(variants.values()) <= retained)
-                    self.assertTrue(set(variants).isdisjoint(retained))
-                    retained = (retained - set(variants.values())) | set(variants)
-                else:
-                    self.assertTrue(set(variants.values()).isdisjoint(roles["target"] | roles["prerequisiteOnly"]))
-                digest = hashlib.sha256(("\n".join(sorted(retained)) + "\n").encode()).hexdigest()
-                self.assertEqual(digest, baseline["selectedAtomicSha256"])
-                self.assertEqual(len(retained), baseline["selectedAtomicCount"])
-                self.assertTrue(set(baseline["prerequisiteOnlyAtomicGoalIds"]) <= roles["prerequisiteOnly"])
+                retained_authority_seeds(view, roles, baseline)
+
+    def test_measurement_delta_is_exactly_two_targets_in_eight_full_hessian_views(self):
+        self.assertEqual(len(HESSEN_MEASUREMENT_GOALS), 2)
+        self.assertEqual(len(HESSEN_MEASUREMENT_VIEWS), 8)
+        self.assertTrue(HESSEN_MEASUREMENT_VIEWS <= set(self.authorities))
+        self.assertTrue(HESSEN_MEASUREMENT_VIEWS <= {view["viewId"] for view in self.views.values()})
+        pairs = set()
+        for view in self.views.values():
+            with self.subTest(view=view["viewId"]):
+                roles = authoring.graph.role_atoms(view)
+                expected = measurement_delta(view, roles)
+                pairs.update((view["viewId"], goal) for goal in expected)
+        self.assertEqual(len(pairs), 16)
+
+    def test_measurement_delta_cannot_widen_or_erase_the_retained_authority(self):
+        view = self.views["de-he-gk.view.json"]
+        baseline = self.authorities[view["viewId"]]
+        roles = authoring.graph.role_atoms(view)
+        retained = retained_authority_seeds(view, roles, baseline)
+        for goal in HESSEN_MEASUREMENT_GOALS:
+            for demote in (False, True):
+                changed = copy.deepcopy(roles)
+                changed["target"].remove(goal)
+                if demote:
+                    changed["prerequisiteOnly"].add(goal)
+                with self.subTest(goal=goal, demoted=demote), self.assertRaises(AssertionError):
+                    retained_authority_seeds(view, changed, baseline)
+            for filename in ("de-he-seki-g8.view.json", "de-bb-gk.view.json"):
+                outside = self.views[filename]
+                for role in ("target", "prerequisiteOnly"):
+                    changed = authoring.graph.role_atoms(outside)
+                    changed[role].add(goal)
+                    with self.subTest(goal=goal, view=outside["viewId"], role=role), self.assertRaises(AssertionError):
+                        measurement_delta(outside, changed)
+        future = dict(view, viewId="de-he-gym-physics-unreviewed")
+        with self.assertRaisesRegex(AssertionError, "measurement target delta"):
+            measurement_delta(future, roles)
+        changed = copy.deepcopy(roles)
+        extra = next(goal for goal, data in authoring.graph.GOALS.items()
+                     if not data.get("contains") and goal not in roles["target"] | roles["prerequisiteOnly"])
+        changed["target"].add(extra)
+        with self.assertRaisesRegex(AssertionError, "source-seed fingerprint"):
+            retained_authority_seeds(view, changed, baseline)
+        changed = copy.deepcopy(roles)
+        changed["target"].remove(next(iter(retained & roles["target"])))
+        with self.assertRaisesRegex(AssertionError, "source-seed fingerprint"):
+            retained_authority_seeds(view, changed, baseline)
+        support = next(iter(set(baseline["prerequisiteOnlyAtomicGoalIds"]) - roles["target"]))
+        for promote in (False, True):
+            changed = copy.deepcopy(roles)
+            changed["prerequisiteOnly"].remove(support)
+            if promote:
+                changed["target"].add(support)
+            with self.subTest(old_support_promoted=promote), self.assertRaises(AssertionError):
+                retained_authority_seeds(view, changed, baseline)
 
     def test_all_lands_have_real_lower_stage_excerpts_with_source_membership(self):
         for state in ("BW", "BY", "BB", "BE", "HB", "HH", "MV", "NI", "NW", "RP", "SL", "SN", "ST", "SH", "TH"):

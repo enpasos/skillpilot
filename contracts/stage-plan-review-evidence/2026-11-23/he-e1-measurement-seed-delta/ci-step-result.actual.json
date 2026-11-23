@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "execution": "local replay of the exact complete CI step",
+  "completedAt": "2026-11-23T08:42:25+00:00",
+  "workflow": ".github/workflows/ci.yml",
+  "step": "Test Physics practice and Abitur assessment projection",
+  "command": "npm run test:physics-assessment-projection",
+  "workingDirectory": "app",
+  "expandedCommand": "tsx scripts/testPhysicsAssessmentProjection.ts && python3 -B ../scripts/generate_hessen_physics_stage_views.py --check && python3 -B ../scripts/generate_hessen_physics_stage_views.py --check --duration-views && python3 -B -m unittest discover -s ../scripts -p test_generate_hessen_physics_stage_views.py && tsx scripts/testPhysicsStageViewProjection.ts && python3 ../scripts/generate_laender_physics_stage_views.py --check && python3 ../scripts/test_generate_laender_physics_stage_views.py",
+  "executedSubcommands": [
+    "tsx scripts/testPhysicsAssessmentProjection.ts",
+    "python3 -B ../scripts/generate_hessen_physics_stage_views.py --check",
+    "python3 -B ../scripts/generate_hessen_physics_stage_views.py --check --duration-views",
+    "python3 -B -m unittest discover -s ../scripts -p test_generate_hessen_physics_stage_views.py",
+    "tsx scripts/testPhysicsStageViewProjection.ts",
+    "python3 ../scripts/generate_laender_physics_stage_views.py --check",
+    "python3 ../scripts/test_generate_laender_physics_stage_views.py"
+  ],
+  "exitCode": 0,
+  "nodeVersion": "v20.20.2",
+  "pythonVersion": "Python 3.12.9",
+  "pythonSuites": [
+    {
+      "tests": 18,
+      "seconds": 7.069
+    },
+    {
+      "tests": 22,
+      "seconds": 16.344
+    }
+  ],
+  "rawLog": {
+    "path": "contracts/stage-plan-review-evidence/2026-11-23/he-e1-measurement-seed-delta/ci-step.actual.txt",
+    "sha256": "c871d23e60360cb28e2feb8d765357b3064319966ced7d7592beb3d887bfd257",
+    "bytes": 3139
+  },
+  "modifiedGateSha256": "91e64c9ccdad947e60339841a313de55d47ad4a6d7c50cd1aa95e4184b1386f6",
+  "claimLimit": "Successful local execution of the pending repair; subsequent GitHub PR/main CI remains separate evidence."
+}
