@@ -63,15 +63,21 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                 self.assertEqual(actual, expected_topics)
                 motion = find(view, "physics-e1-motion")
                 motion_atoms = generator.role_atoms({"rootNodes": [motion]})["target"]
-                self.assertTrue({"68c90ba6-c438-463c-9a53-cf61062d416a",
-                                 "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"} <= motion_atoms)
-                throws = [node for node in generator.walk(phase["children"])
-                          if node.get("goalId") == generator.HORIZONTAL_THROW]
-                self.assertEqual(len(throws), 1)
-                self.assertIn(throws[0], motion["children"])
-                self.assertEqual(throws[0]["displayLabel"], "Waagerechter Wurf und Superposition (aus E.3)")
                 e3 = find(view, expected_topics[2][0])
-                self.assertFalse(motion_atoms & generator.role_atoms({"rootNodes": [e3]})["target"])
+                e3_atoms = generator.role_atoms({"rootNodes": [e3]})["target"]
+                # E.1 cut (23 Nov 2026): the throw stays in E.1, vectors go to E.3.
+                self.assertIn("89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", motion_atoms)
+                self.assertTrue(set(generator.E1_TO_E3) <= e3_atoms)
+                self.assertFalse(set(generator.E1_TO_E3) & motion_atoms)
+                self.assertFalse([node for node in generator.walk(phase["children"])
+                                  if node.get("goalId") == generator.HORIZONTAL_THROW])
+                units = [node for node in motion["children"] if node["kind"] == "structure"
+                         and not node["id"].startswith("physics-required-preparation-")]
+                self.assertEqual([(node["id"], node["label"], node["labelEn"]) for node in units],
+                                 [unit[:3] for unit in generator.HESSEN_E1_CHILD_UNITS])
+                self.assertEqual(motion["childOrder"]["after"], [
+                    {"unit": units[index + 1]["id"], "after": units[index]["id"]} for index in range(3)])
+                self.assertFalse(motion_atoms & e3_atoms)
                 self.assertIn("Waagerechter Wurf", generator.GOALS["287739a3-6143-55d0-abe7-1a08889e9b49"]["title"])
 
     def test_assessments_are_local_without_importing_later_motion_content(self):
@@ -86,9 +92,15 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                 phase = find(view, "physics-e-phase")
                 self.assertFalse(obsolete & {node.get("id") for node in generator.walk(phase["children"])})
                 motion = find(view, "physics-e1-motion")
-                direct_motion = {node.get("goalId") for node in motion["children"]}
-                self.assertTrue({"2b9e565f-d9b4-5e23-b5b7-b7977cecff06", "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
-                                 generator.HESSEN_E1_VERTICAL_THROW_ASSESSMENT} <= direct_motion)
+                # Each closing check sits directly in its E.1 child unit; the
+                # multi-phase model check needs the velocity vector and is in E.3.
+                for unit_id, assessments in (("physics-e1-air-and-vacuum", {generator.HESSEN_E1_VERTICAL_THROW_ASSESSMENT}),
+                                             ("physics-e1-two-motions", {"6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+                                                                         "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"})):
+                    self.assertTrue(assessments <= {node.get("goalId") for node in find(view, unit_id)["children"]})
+                self.assertIn("2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+                              {node.get("goalId") for node in find(view, generator.E3_TOPIC)["children"]})
+                self.assertNotIn(generator.TRAFFIC, generator.role_atoms({"rootNodes": [motion]})["target"])
                 # This existing exam requires E.4 modelling and Newtonian
                 # dynamics. Its sole learning place must preserve those needs
                 # instead of silently moving them into E.1 for its title.
@@ -148,65 +160,46 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                 self.assertTrue(set(replacements).isdisjoint(references))
                 self.assertTrue(all(references.count(variant) == 1 for variant in replacements.values()))
 
-    def test_repair_preserves_reference_payloads_roles_basis_and_other_units(self):
-        def payloads(view):
-            references = []
-            for node in generator.walk(view["rootNodes"]):
-                if "goalId" not in node:
-                    continue
-                reference = copy.deepcopy(node)
-                if reference["goalId"] == generator.HORIZONTAL_THROW:
-                    reference.pop("displayLabel", None)
-                references.append(json.dumps(reference, sort_keys=True))
-            return Counter(references)
-
+    def test_pre_cut_throw_subtree_is_opened_once_with_unchanged_roles(self):
         for name, current in self.views.items():
             with self.subTest(view=name):
-                # Reproduce the old visible placement with the full reviewed
-                # reference intact; the source canonical goal is not rewritten.
+                # Reproduce the pre-cut input: the reviewed throw subtree inside E.1
+                # instead of its atoms. Opening it must not change roles or basis.
                 legacy = copy.deepcopy(current)
+                parts = set(generator.GOALS[generator.HORIZONTAL_THROW]["contains"])
                 for node in generator.walk(find(legacy, "physics-e-phase")["children"]):
                     if node["kind"] == "structure":
-                        throw = next((child for child in node["children"]
-                                      if child.get("goalId") == generator.HORIZONTAL_THROW), None)
-                        if throw:
-                            node["children"].remove(throw)
-                            break
-                throw.pop("displayLabel", None)
-                find(legacy, "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49")["children"].insert(1, throw)
+                        node["children"] = [child for child in node["children"] if child.get("goalId") not in parts
+                                            or child.get("projectionRole") == "prerequisiteOnly"]
+                find(legacy, "physics-e1-motion")["children"].append(
+                    {"kind": "canonicalSubtree", "goalId": generator.HORIZONTAL_THROW})
                 repaired, _ = generator.generate(legacy)
-                self.assertEqual(payloads(repaired), payloads(legacy))
-                self.assertEqual(generator.role_atoms(repaired), generator.role_atoms(legacy))
-                self.assertEqual(atomic_basis(repaired), atomic_basis(legacy))
-                for identifier in ("physics-seki", "physics-q1", "physics-q2", "physics-q3", "physics-q4"):
-                    if any(node.get("id") == identifier for node in generator.walk(legacy["rootNodes"])):
-                        self.assertEqual(find(repaired, identifier), find(legacy, identifier))
+                self.assertEqual(generator.role_atoms(repaired), generator.role_atoms(current))
+                self.assertEqual(atomic_basis(repaired), atomic_basis(current))
+                self.assertEqual(repaired, current)
                 self.assertEqual(generator.generate(repaired)[0], repaired)
 
-    def test_missing_topic_or_missing_duplicate_or_wrong_throw_reference_fails_closed(self):
+    def test_missing_topic_or_duplicate_or_wrong_throw_reference_fails_closed(self):
         original = self.views["de-he-gk.view.json"]
         missing_topic = copy.deepcopy(original)
         phase = find(missing_topic, "physics-e-phase")
         phase["children"] = [node for node in phase["children"] if node.get("id") != "physics-e1-motion"]
         with self.assertRaisesRegex(ValueError, "expected one E-phase authoring topic physics-e1-motion"):
             generator.generate(missing_topic)
-        for mutation in ("missing", "duplicate", "wrong-kind"):
+        for mutation in ("duplicate", "wrong-kind"):
             with self.subTest(mutation=mutation):
                 invalid = copy.deepcopy(original)
-                for node in generator.walk(find(invalid, "physics-e-phase")["children"]):
-                    if node["kind"] == "structure":
-                        throw = next((child for child in node["children"]
-                                      if child.get("goalId") == generator.HORIZONTAL_THROW), None)
-                        if throw:
-                            break
-                if mutation == "missing":
-                    node["children"].remove(throw)
-                elif mutation == "duplicate":
-                    node["children"].append(copy.deepcopy(throw))
-                else:
-                    throw["kind"] = "goalEntry"
-                with self.assertRaisesRegex(ValueError, "expected one reviewed horizontal-throw subtree"):
+                motion = find(invalid, "physics-e1-motion")
+                throw = {"kind": "canonicalSubtree" if mutation == "duplicate" else "goalEntry",
+                         "goalId": generator.HORIZONTAL_THROW}
+                motion["children"].extend([throw, copy.deepcopy(throw)] if mutation == "duplicate" else [throw])
+                with self.assertRaisesRegex(ValueError, "at most one reviewed horizontal-throw subtree"):
                     generator.generate(invalid)
+        missing_member = copy.deepcopy(original)
+        unit = find(missing_member, "physics-e1-two-motions")
+        unit["children"] = [node for node in unit["children"] if node.get("goalId") != "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"]
+        generated, _ = generator.generate(missing_member)
+        self.assertEqual(generated, original, "an E.1 assessment is admitted again into its child unit")
 
     def test_explicit_ephase_policy_and_separate_complete_requirement_candidates(self):
         expected_topics = [("physics-e2-newton-and-conservation", "physics-e1-motion"),

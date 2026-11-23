@@ -116,41 +116,27 @@ const landscapes = [{
   idNamespace: 'DE-GYM-CANONICAL-PHYSICS',
   framework: 'canonical-gymnasium-physics',
   // Three reviewed semiconductor atoms and four K3/K6 ordinary goals are current.
-  curricularAtomicCount: 486,
+  curricularAtomicCount: 490,
   // Physics cluster weights are authored workload weights, not counts of atomic descendants,
   // and Physics marks an assessment by its exam data alone; the projection adds the node kind.
   countedClusterWeights: false,
   examNodeKind: false,
   units: [{
     id: 'physics-constant-acceleration',
-    revision: '2026-11-20-v3',
-    label: 'Gleichmäßig beschleunigte Bewegung modellieren',
-    labelEn: 'Modelling motion with constant acceleration',
-    promise: 'Ich kann eine geradlinige Bewegung mit konstanter Beschleunigung selbstständig modellieren: Ich lege Achse und Vorzeichen fest, stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz mit den Anfangsbedingungen auf und beschreibe die Bewegung in Diagrammen. Ich kann sagen, welche Vereinfachungen das Modell macht und wo seine Vorhersagen enden. Darauf bauen der freie Fall im Experiment, Würfe in zwei Dimensionen, Kräfte und Energie auf.',
-    promiseEn: 'I can model motion along a line with constant acceleration on my own: I fix axis and signs, set up the position and velocity laws with their initial conditions and describe the motion in diagrams. I can say which simplifications the model makes and where its predictions end. Free fall as an experiment, projectile motion in two dimensions, forces and energy build on it.',
-    ownGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856', 'd6dc0e02-831d-4894-a61a-852bcc74f147'],
+    // E.1 cut accepted by the Product Owner on 23 Nov 2026: this unit is child unit 2,
+    // "Freier Fall schwerer Kugeln". The vertical-throw assessments credit the narrowed
+    // modelling goal and close child unit 3, so they and that goal left the unit. The new
+    // goals of child unit 2 join it once a reviewed own assessment covers them (R2).
+    revision: '2026-11-23-v4',
+    label: 'Freier Fall schwerer Kugeln',
+    labelEn: 'Free fall of heavy balls',
+    promise: 'Ich kann den freien Fall einer schweren Kugel messen und als gleichmäßig beschleunigte Bewegung beschreiben: Ich halte Fallhöhe und Fallzeit in einem Messprotokoll fest, stelle die Bewegung im t-v-Diagramm dar, bestimme die Beschleunigung und stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz auf. Ich gebe an, wie genau meine Messwerte sind. Darauf bauen der Fall leichter Körper, Würfe in zwei Dimensionen, Kräfte und Energie auf.',
+    promiseEn: 'I can measure the free fall of a heavy ball and describe it as uniformly accelerated motion: I record drop height and fall time in a measurement log, represent the motion in a time-velocity graph, determine the acceleration and set up the time-position and time-velocity laws. I state how precise my measurements are. The fall of light bodies, projectile motion in two dimensions, forces and energy build on it.',
+    ownGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
     ownOrientationGoalIds: ['b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e'],
     reviewPath: `${reviews}/physics-constant-acceleration-2026-11-15-v2.md`,
     reviewDate: '2026-11-15',
-    sourcePath: `${assessments}/physik/e/constant-acceleration-unit-20261113-v1/tasks.md`,
     assessments: [{
-      sectionKey: 'constant-acceleration-model',
-      shortKey: 'canonical_physics_e_unit_constant_acceleration_model',
-      stepIdPrefix: 'e_unit_constant_acceleration_model',
-      title: 'Senkrechten Wurf mit konstanter Beschleunigung modellieren',
-      titleEn: 'Model a vertical throw with constant acceleration',
-      description: 'Die lernende Person kann in einer Prüfungsaufgabe der Einführungsphase einen senkrechten Wurf als gleichmäßig beschleunigte Bewegung modellieren, die Gesetze für zwei Achsenwahlen aufstellen, die Bewegung in Diagrammen beschreiben und die Idealisierungen des Modells samt ihren Grenzen begründen.',
-      descriptionEn: 'The learner can, in an assessment of the introductory phase, model a vertical throw as motion with constant acceleration, set up the laws for two choices of axis, describe the motion in diagrams and justify the idealisations of the model together with their limits.',
-      tags: ['GK', 'LK', 'Practice', 'Assessment', 'canonical'],
-      phase: 'E',
-      area: 'Mechanik',
-      topicCode: 'CANONICAL.PHYSICS.E.UNIT.CONSTANT_ACCELERATION_MODEL',
-      processCompetencies: ['PK2_MODELLIEREN', 'PK3_MATHEMATISIEREN', 'PK4_KOMMUNIZIEREN', 'PK5_BEWERTEN'],
-      guidingIdeas: ['LI_BEWEGUNG'],
-      practiceClusterId: '424b07df-bf66-5d7f-99f5-f28b32ad1f22',
-      requires: ['d6dc0e02-831d-4894-a61a-852bcc74f147'],
-      coveredGoalIds: ['d6dc0e02-831d-4894-a61a-852bcc74f147'],
-    }, {
       // This full, independently content-reviewed current assessment already
       // exists in the K3/K6 stream. Bind its exact task/rubric; never regenerate
       // its content from a second copy or transfer a historical learner result.
@@ -158,12 +144,6 @@ const landscapes = [{
       coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
       taskRevision: 'sha256:8a5ccaa3f596ace70e6a4dad6f644a2ddaa046be5f2c598a012a1ff40d9b17ef',
       rubricRevision: 'sha256:62bf8143588daa963566318ada486cc4a189906d6a6b92d2e428ec8fe5383163',
-    }, {
-      existingGoalId: 'c933b7d2-edcb-5747-9378-9762659f260a',
-      coveredGoalIds: ['d6dc0e02-831d-4894-a61a-852bcc74f147'],
-      reviewPath: hesseChildReview,
-      taskRevision: 'sha256:5fe14a6f9b5a06a7a25bf8ab18275a1102c231197321f7f2eeac302ae735b752',
-      rubricRevision: 'sha256:a117de51728be60b4c881b061f24046a8c34618960108acafb478718fd0317eb',
     }, {
       existingGoalId: 'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
       coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],

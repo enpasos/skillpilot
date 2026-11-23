@@ -58500,7 +58500,7 @@
       ],
       "contains": [],
       "requires": [
-        "262f807a-30d0-503e-986f-856cbd048e8e"
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
@@ -64735,6 +64735,7 @@
       },
       "applicability": {
         "jurisdiction": [
+          "DE-HE",
           "DE-SN"
         ]
       },
@@ -64742,6 +64743,7 @@
         "applicabilityMappingInheritance": "boundary",
         "applicabilityOverrides": {
           "jurisdiction": [
+            "DE-HE",
             "DE-SN"
           ]
         }
@@ -65632,21 +65634,12 @@
     {
       "id": "physics-constant-acceleration",
       "kind": "learningUnit",
-      "label": "Gleichmäßig beschleunigte Bewegung modellieren",
-      "labelEn": "Modelling motion with constant acceleration",
-      "promise": "Ich kann eine geradlinige Bewegung mit konstanter Beschleunigung selbstständig modellieren: Ich lege Achse und Vorzeichen fest, stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz mit den Anfangsbedingungen auf und beschreibe die Bewegung in Diagrammen. Ich kann sagen, welche Vereinfachungen das Modell macht und wo seine Vorhersagen enden. Darauf bauen der freie Fall im Experiment, Würfe in zwei Dimensionen, Kräfte und Energie auf.",
-      "promiseEn": "I can model motion along a line with constant acceleration on my own: I fix axis and signs, set up the position and velocity laws with their initial conditions and describe the motion in diagrams. I can say which simplifications the model makes and where its predictions end. Free fall as an experiment, projectile motion in two dimensions, forces and energy build on it.",
-      "revision": "2026-11-20-v3",
+      "label": "Freier Fall schwerer Kugeln",
+      "labelEn": "Free fall of heavy balls",
+      "promise": "Ich kann den freien Fall einer schweren Kugel messen und als gleichmäßig beschleunigte Bewegung beschreiben: Ich halte Fallhöhe und Fallzeit in einem Messprotokoll fest, stelle die Bewegung im t-v-Diagramm dar, bestimme die Beschleunigung und stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz auf. Ich gebe an, wie genau meine Messwerte sind. Darauf bauen der Fall leichter Körper, Würfe in zwei Dimensionen, Kräfte und Energie auf.",
+      "promiseEn": "I can measure the free fall of a heavy ball and describe it as uniformly accelerated motion: I record drop height and fall time in a measurement log, represent the motion in a time-velocity graph, determine the acceleration and set up the time-position and time-velocity laws. I state how precise my measurements are. The fall of light bodies, projectile motion in two dimensions, forces and energy build on it.",
+      "revision": "2026-11-23-v4",
       "coverageReviews": [
-        {
-          "assessmentGoalId": "c5807a37-129e-5df6-8989-482bc7f5683e",
-          "goalIds": [
-            "d6dc0e02-831d-4894-a61a-852bcc74f147"
-          ],
-          "reference": "curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md",
-          "taskRevision": "sha256:45c2c559b0ddf2b4f35060b459438cd9dd22dac456abfc04ef91855538c68324",
-          "rubricRevision": "sha256:dc7256b9a559ea7ec359f8b5c53c377a4b99481628aced62a68b885d71c11ad7"
-        },
         {
           "assessmentGoalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
           "goalIds": [
@@ -65655,15 +65648,6 @@
           "reference": "curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md",
           "taskRevision": "sha256:8a5ccaa3f596ace70e6a4dad6f644a2ddaa046be5f2c598a012a1ff40d9b17ef",
           "rubricRevision": "sha256:62bf8143588daa963566318ada486cc4a189906d6a6b92d2e428ec8fe5383163"
-        },
-        {
-          "assessmentGoalId": "c933b7d2-edcb-5747-9378-9762659f260a",
-          "goalIds": [
-            "d6dc0e02-831d-4894-a61a-852bcc74f147"
-          ],
-          "reference": "docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md",
-          "taskRevision": "sha256:5fe14a6f9b5a06a7a25bf8ab18275a1102c231197321f7f2eeac302ae735b752",
-          "rubricRevision": "sha256:a117de51728be60b4c881b061f24046a8c34618960108acafb478718fd0317eb"
         },
         {
           "assessmentGoalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
@@ -65861,22 +65845,7 @@
       "relation": "own"
     },
     {
-      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
-      "unitId": "physics-constant-acceleration",
-      "relation": "own"
-    },
-    {
-      "goalId": "c5807a37-129e-5df6-8989-482bc7f5683e",
-      "unitId": "physics-constant-acceleration",
-      "relation": "own"
-    },
-    {
       "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
-      "unitId": "physics-constant-acceleration",
-      "relation": "own"
-    },
-    {
-      "goalId": "c933b7d2-edcb-5747-9378-9762659f260a",
       "unitId": "physics-constant-acceleration",
       "relation": "own"
     },
