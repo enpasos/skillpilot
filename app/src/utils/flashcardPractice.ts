@@ -1,11 +1,13 @@
+import { cardOriginGoalIds, type MemoryCardOriginFields } from './memoryCardOrigins'
+
 /** Existing deck selectors and a topic's actual goal membership are independent filters. */
-export function selectPracticeCards<T extends { tags?: string[] }>(
+export function selectPracticeCards<T extends MemoryCardOriginFields>(
   cards: readonly T[], filterTags?: readonly string[], goalIds?: readonly string[],
 ): T[] {
   const tags = new Set(filterTags)
-  const goals = goalIds === undefined ? null : new Set(goalIds.map(id => `goal:${id}`))
+  const goals = goalIds === undefined ? null : new Set(goalIds)
   return cards.filter(card => (!tags.size || card.tags?.some(tag => tags.has(tag)))
-    && (goals === null || card.tags?.some(tag => goals.has(tag))))
+    && (goals === null || cardOriginGoalIds(card).some(id => goals.has(id))))
 }
 
 export interface FlashcardPracticeRequest {

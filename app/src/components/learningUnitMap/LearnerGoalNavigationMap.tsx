@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { FlashcardPracticeRequest } from '../../utils/flashcardPractice'
+import type { MemoryCardOriginFields } from '../../utils/memoryCardOrigins'
 import type { UiGoal } from '../../goalTypes'
 import type { LearnerGoalNavigationMapProps } from '../../views/LearnerView'
 import { buildTreeCompletionProgressMap } from '../../utils/treeCompletionProgress'
@@ -45,7 +46,7 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   }), [progressFixture, goalIndexAll, visibleGoalIds, canPracticeFlashcards, getFlashcardSource])
   // Avoid refetching when a render or language change yields the same authorized deck URLs.
   const sourceList = JSON.stringify([...new Set(bindings.flatMap(binding => binding.source ? [binding.source] : []))].sort())
-  const [decks, setDecks] = useState<ReadonlyMap<string, { tags?: string[] }[]>>(new Map())
+  const [decks, setDecks] = useState<ReadonlyMap<string, MemoryCardOriginFields[]>>(new Map())
   useEffect(() => {
     const controller = new AbortController()
     for (const source of JSON.parse(sourceList) as string[]) {

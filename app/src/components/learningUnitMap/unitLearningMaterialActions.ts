@@ -2,6 +2,7 @@ import { isUnitMaterialSource } from '../../utils/unitLearningMaterial'
 import type { UiGoal } from '../../goalTypes'
 import { getSrsFilterTagsForGoal } from '../../utils/srsTags'
 import { selectPracticeCards, type FlashcardPracticeRequest } from '../../utils/flashcardPractice'
+import type { MemoryCardOriginFields } from '../../utils/memoryCardOrigins'
 import type { LearningMapFixture, LearningMapRelation, LearningMapRequirement, MapPracticeMaterial } from './types'
 export function findUnitMaterialScopes(
   material: MapPracticeMaterial, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
@@ -37,7 +38,7 @@ export function buildUnitAssessmentActions(
 /** Presentation only: goals, prerequisite demand and completion continue to use the original fixture. */
 export function buildUnitFlashcardActions(
   material: MapPracticeMaterial, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
-  cards: readonly { tags?: string[] }[] | undefined, language: 'de' | 'en',
+  cards: readonly MemoryCardOriginFields[] | undefined, language: 'de' | 'en',
   scopes = findUnitMaterialScopes(material, fixture, goalIndex, visibleGoalIds),
 ): ReadonlyMap<string, FlashcardPracticeRequest> {
   const actions = new Map<string, FlashcardPracticeRequest>()
