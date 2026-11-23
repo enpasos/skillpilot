@@ -1703,6 +1703,31 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
     counts.cardIndexDecks = cardIndexDecks.length
     check(checks, 'card-index-package-paths-resolve', missingCardIndexEntries.length === 0, missingCardIndexEntries.join(' | ') || `${cardIndexDecks.length} deck(s)`)
 
+    // Deck format 2 names each card's understanding goals; they must be goals of this package.
+    const packagedGoalIds = new Set(goalIds)
+    let cardOriginGoalReferences = 0
+    const cardOriginIssues = [...cardEntries]
+      .filter((entry) => entry.endsWith('.json') && !entry.endsWith('/card-index.json'))
+      .sort(compareCodeUnits)
+      .flatMap((entry) => {
+        const deck = jsonObject(readZipEntryJson(zipPath, entry), 'card deck')
+        return (Array.isArray(deck.cards) ? deck.cards : []).flatMap((card) => {
+          const cardData = jsonObject(card, 'card')
+          if (cardData.originGoalIds === undefined) return []
+          const label = `${entry}#${typeof cardData.id === 'string' ? cardData.id : '?'}`
+          const ids = cardData.originGoalIds
+          if (!Array.isArray(ids) || ids.length === 0 || new Set(ids).size !== ids.length
+            || !ids.every((id) => typeof id === 'string' && id.length > 0)) {
+            return [`${label}: originGoalIds must be a non-empty list of distinct goal IDs`]
+          }
+          cardOriginGoalReferences += ids.length
+          return ids.filter((id) => !packagedGoalIds.has(id as string)).map((id) => `${label}: unknown origin goal ${String(id)}`)
+        })
+      })
+    counts.cardOriginGoalReferences = cardOriginGoalReferences
+    check(checks, 'card-origin-goals-resolve', cardOriginIssues.length === 0,
+      cardOriginIssues.slice(0, 5).join(' | ') || `${cardOriginGoalReferences} card origin goal reference(s)`)
+
     const memoryAuditRoot = `${archiveRoot}/metadata/quality/memory-card-review/`
     const memoryAuditEntries = entries.filter((entry) => entry.startsWith(memoryAuditRoot))
     const memoryAuditReports = memoryAuditEntries.filter((entry) => entry.endsWith('.md'))

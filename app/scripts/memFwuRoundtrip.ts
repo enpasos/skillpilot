@@ -1079,6 +1079,7 @@ sp:category a owl:DatatypeProperty ; rdfs:label "category"@en .
 sp:language a owl:DatatypeProperty ; rdfs:label "language"@en .
 sp:front a owl:DatatypeProperty ; rdfs:label "card front"@en .
 sp:back a owl:DatatypeProperty ; rdfs:label "card back"@en .
+sp:originGoalId a owl:DatatypeProperty ; rdfs:label "card understanding goal id"@en .
 sp:fromGoalId a owl:DatatypeProperty ; rdfs:label "source goal id for external dependency"@en .
 sp:targetGoalId a owl:DatatypeProperty ; rdfs:label "target goal id for external dependency"@en .
 sp:targetSubject a owl:DatatypeProperty ; rdfs:label "target subject for external dependency"@en .
@@ -2380,7 +2381,7 @@ export const writeSourceSemantics = (
   }
 }
 
-const writeCardSemantics = (
+export const writeCardSemantics = (
   write: (line: string) => void,
   archiveRoot: string,
   entries: ZipEntryRecord[],
@@ -2445,6 +2446,7 @@ const writeCardSemantics = (
       writeStringField(write, resource, `${SP}back`, cardData.back)
       writeStringField(write, resource, `${SP}category`, cardData.category)
       stringArray(cardData.tags).forEach((tag) => write(tripleLine(resource, `${SP}tag`, literal(tag))))
+      stringArray(cardData.originGoalIds).forEach((goalId) => write(tripleLine(resource, `${SP}originGoalId`, literal(goalId))))
     })
   })
 }

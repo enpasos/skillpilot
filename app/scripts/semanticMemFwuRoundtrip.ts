@@ -356,6 +356,7 @@ const P = {
   language: `${SP}language`,
   front: `${SP}front`,
   back: `${SP}back`,
+  originGoalId: `${SP}originGoalId`,
   hasCard: `${SP}hasCard`,
   legacyGoalId: `${SP}legacyGoalId`,
   matchType: `${SP}matchType`,
@@ -1679,19 +1680,23 @@ export const reconstructSourceGoalReferences = (model: RdfModel) => {
   return result
 }
 
-const reconstructCardDecks = (model: RdfModel) => orderedResources(model, resourcesOfType(model, T.cardDeck)).map((deck) => ({
+export const reconstructCardDecks = (model: RdfModel) => orderedResources(model, resourcesOfType(model, T.cardDeck)).map((deck) => ({
   zipPath: lit(model, deck, P.zipPath),
   deckId: lit(model, deck, P.skillpilotId),
   title: lit(model, deck, P.label),
   language: lit(model, deck, P.language),
   landscapeId: lit(model, deck, P.landscapeId),
-  cards: orderedResources(model, iris(model, deck, P.hasCard)).map((card) => ({
-    id: lit(model, card, P.skillpilotId),
-    front: lit(model, card, P.front),
-    back: lit(model, card, P.back),
-    category: lit(model, card, P.category),
-    tags: lits(model, card, P.tag),
-  })),
+  cards: orderedResources(model, iris(model, deck, P.hasCard)).map((card) => {
+    const originGoalIds = lits(model, card, P.originGoalId)
+    return {
+      id: lit(model, card, P.skillpilotId),
+      front: lit(model, card, P.front),
+      back: lit(model, card, P.back),
+      category: lit(model, card, P.category),
+      tags: lits(model, card, P.tag),
+      ...(originGoalIds.length > 0 ? { originGoalIds } : {}),
+    }
+  }),
 }))
 
 const reconstructMappingFiles = (model: RdfModel) => {
