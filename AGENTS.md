@@ -1584,6 +1584,41 @@ Interpretation:
   snapshot names the cards that are not released in `lockedCardIds`, and the
   Cockpit sync ignores practice entries for locked cards without stored state.
   The Cockpit never decides release on its own.
+* Coach card step (Claude lane). Every full coach context carries a
+  server-owned `cardStep` block: `dueCards` and `boxCards` of the card
+  context, `proposeCheck`, an `offerKey`, the published `practiceAction`
+  (`start_skillpilot_memory_practice` with `goalId`, `practiceScopeId` and
+  `expectedStateVersion`), the `checkAction` (`start_skillpilot_verified_recall`
+  without arguments) and one imperative instruction. The server chooses the
+  instruction: with Autopilot on the coach opens the due cards before the next
+  goal; with Autopilot off the cards are the first option and the learner
+  chooses. The step is offered at most once per `offerKey`, which changes with
+  the next completed goal. It is empty while a deck goal or an exam is the
+  active goal, and it yields to status-only questions, pauses, explicit subject
+  or goal requests, feedback still owed and a completion route that owns
+  navigation. Without an active goal and without a single explicit unit focus,
+  the unit of the last completed goal is the card context. The block contains
+  counts and identifiers only, never card text.
+* Unit card check. Without an active memory goal,
+  `start_skillpilot_verified_recall` starts the check that
+  `cardStep.checkAction` publishes. The server chooses the deck goal, the unit
+  and the batch; the batch and grading capabilities carry the unit, so the
+  answer and result calls need no new arguments and an issued batch survives a
+  change of context. Results are written per card. The deck goal's mastery
+  stays derived and no other goal's mastery is written. The learner's active
+  goal does not change, and the result returns to it. The coach proposes the
+  check only when `proposeCheck` is true (every released, not yet verified
+  card of the context has at least two successful practice reviews); the
+  learner's explicit request is not blocked by that rule. With an active deck
+  goal, Verified Recall covers all released, not yet verified cards of the
+  deck.
+* Verified Recall status `waiting` also means that every released card of the
+  scope is verified while other cards are still locked or outside the unit.
+  The Claude, Gemini and OpenAI texts distinguish this from the same-day block
+  (`nextEligibleAt` set), never promise a continuation tomorrow in that case
+  and never report the deck goal as completed. The card step block exists in
+  the Claude lane only; the other lanes share the release, removal and wording
+  rules.
 * The OpenAI V1 coach offers normal due-card practice through the dedicated
   `start_skillpilot_memory_practice` MCP Apps UI resource. The model-visible
   result contains only bounded status and progress; card front, back and the
