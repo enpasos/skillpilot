@@ -12,7 +12,6 @@ import com.skillpilot.backend.completion.CompletionProfileCompiler;
 import com.skillpilot.backend.domain.CurriculumChampion;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearnerClientState;
-import com.skillpilot.backend.domain.LearnerClientStateId;
 import com.skillpilot.backend.domain.Mastery;
 import com.skillpilot.backend.domain.PlannedGoal;
 import com.skillpilot.backend.repository.CurriculumChampionRepository;
@@ -433,6 +432,9 @@ public class LearnerControllerIntegrationTest {
     private LearnerClientStateRepository learnerClientStateRepository;
 
     @Autowired
+    private com.skillpilot.backend.repository.LearnerCardStateRepository learnerCardStateRepository;
+
+    @Autowired
     private MasteryRepository masteryRepository;
 
     @Autowired
@@ -671,6 +673,7 @@ public class LearnerControllerIntegrationTest {
         localizedSourceBefore = null;
         curriculumChampionRepository.deleteAll();
         learnerClientStateRepository.deleteAll();
+        learnerCardStateRepository.deleteAll();
         masteryRepository.deleteAll();
         plannedGoalRepository.deleteAll();
         learnerRepository.deleteAll();
@@ -1211,8 +1214,7 @@ public class LearnerControllerIntegrationTest {
                         }
                         """);
         assertThat(clientStateResponse.statusCode()).isEqualTo(HttpStatus.CONFLICT.value());
-        assertThat(learnerClientStateRepository.findById(
-                new LearnerClientStateId("readonly-ui-learning", LEGACY_MATH_MEMORY_E_PHASE_ID))).isEmpty();
+        assertThat(learnerCardStateRepository.findNode("readonly-ui-learning", LEGACY_MATH_MEMORY_E_PHASE_ID)).isEmpty();
     }
 
     @Test

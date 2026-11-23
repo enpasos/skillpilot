@@ -255,6 +255,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
         String exam = "a9562b05-c54d-5635-9244-3f7dd24a8642";
         selectHessianMotionUnit(duration);
         completeHessianOpeningFixtures();
+        // Issue #85: a card enters the box only once its understanding goal is passed. Of the
+        // unit's nine cards only the one for the recorded goal is released here.
+        masteryRepository.saveAndFlush(new Mastery(learnerRepository.findById(learnerId).orElseThrow(), recorded, 1.0));
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
         authenticate();
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
@@ -268,7 +271,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var practice = call(practiceAction.path("tool").asText(),
                 mapper.convertValue(practiceAction.path("arguments"), new TypeReference<>() {}));
         assertThat(practice.isError()).isFalse();
-        assertThat(mapper.valueToTree(practice.structuredContent()).path("progress").path("totalCards").asInt()).isEqualTo(9);
+        assertThat(mapper.valueToTree(practice.structuredContent()).path("progress").path("totalCards").asInt()).isEqualTo(1);
         assertThat(practice.structuredContent().toString()).doesNotContain("physics_e_cov_", "reviewCapability");
         assertThat(practice.meta()).containsOnlyKeys("skillpilotMemoryCard");
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
