@@ -21,13 +21,13 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 23. November 2026, 12:07 MEZ – Prüfungen im regulären Lernweg nach dem Wurfthema
+## 23. November 2026, 12:14 MEZ – Prüfungen im regulären Lernweg nach dem Wurfthema
 
 Das hessische E.1-Material empfiehlt „Waagerechter Wurf analysieren“ vor Pflichtteil B und vor der freiwilligen Aufgabe zur gemeinsamen Flugzeit. Beide Empfehlungen sind einzeln hinterlegt. Die fachlichen Voraussetzungen, Aufgabenfassungen und Nachweise behalten ihre bisherige Bedeutung. Das Paket ergänzt zwei Empfehlungen und aktiviert null zusätzliche Stufenpläne. K 0/13 und F 0/7 vollständig abgeschlossen. [Material](https://github.com/enpasos/skillpilot/blob/df75a44967e914afcfba5471e21387f1e20b1323/curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json)
 
 Zur Sichtung im Zielbaum und in der Lernkarte vom Wurfziel zu beiden Aufgaben gehen. Im Coach bei offenem Wurfthema „weiter“ wählen und zum Vergleich B ausdrücklich direkt versuchen. Der Materialcheck prüft beide Endpunkte in acht hessischen Sichten. Die Projektionsprüfung vergleicht den Baum und beide Leserichtungen der Karte für G8 und G9 in GK und LK. [Lokale Einstiege](hessen-physik-e1-vorschau.md#die-reihenfolge-beim-waagerechten-wurf-ansehen) · [Prüfung der Lernkartenprojektion](https://github.com/enpasos/skillpilot/blob/df75a44967e914afcfba5471e21387f1e20b1323/app/scripts/testHessePhysicsFlashcardActions.ts)
 
-**Integration offen.** [PR #184](https://github.com/enpasos/skillpilot/pull/184) baut auf dem Merge von [PR #183](https://github.com/enpasos/skillpilot/pull/183) auf. Chromium bestätigt die Reihenfolge und den Kartenwechsel bei 1024 × 650 Pixeln für alle vier Profile. Der lokale Claude-Integrationstest bestätigt die ausdrückliche Prüfwahl bei offener Vorbereitung und die automatische Fortsetzung in G8/GK und G9/LK. Die vollständige CI und die fachliche Sichtung stehen aus.
+**Integration offen.** [PR #184](https://github.com/enpasos/skillpilot/pull/184) baut auf dem Merge von [PR #183](https://github.com/enpasos/skillpilot/pull/183) auf. Chromium bestätigt die Reihenfolge und den Kartenwechsel bei 1024 × 650 Pixeln für alle vier Profile. Der lokale Claude-Integrationstest bestätigt die ausdrückliche Prüfwahl bei offener Vorbereitung und die automatische Fortsetzung in G8/GK und G9/LK. Nach dem Nachladen eines Kartenstapels misst die Lernkarte die Pfeilanschlüsse erneut. Drei frische Chromium-Sitzungen im G9-LK zeigten die zwei Verbindungen auch nach der Auswahl des Wurfziels. Die fünf lokal ausgeführten Backend-Testklassen bestanden mit 216 Fällen. Die vollständige GitHub-CI und die fachliche Sichtung stehen aus.
 
 ## 23. November 2026, 07:52 MEZ – Vom Fallversuch über das Modell zur Prüfung
 
