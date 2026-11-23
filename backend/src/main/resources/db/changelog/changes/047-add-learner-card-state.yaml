@@ -1,0 +1,80 @@
+databaseChangeLog:
+  # Issue #85: one row per learner, deck goal node and card replaces the JSON
+  # block per learner and deck goal. learner_client_state stays in place and
+  # unchanged as the fallback copy; the service no longer reads or writes it.
+  - changeSet:
+      id: 047-add-learner-card-state
+      author: skillpilot
+      changes:
+        - createTable:
+            tableName: learner_card_state
+            columns:
+              - column:
+                  name: skillpilot_id
+                  type: VARCHAR(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: node_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              # The empty identifier marks the node record (synchronization
+              # timestamp and damage marker of a block that could not be migrated).
+              - column:
+                  name: card_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: card_state
+                  type: TEXT
+              - column:
+                  name: recall_status
+                  type: VARCHAR(16)
+              - column:
+                  name: recall_tested_at
+                  type: TIMESTAMP WITH TIME ZONE
+              - column:
+                  name: next_review_at
+                  type: BIGINT
+              - column:
+                  name: practice_repetition
+                  type: INT
+                  defaultValueNumeric: 0
+                  constraints:
+                    nullable: false
+              - column:
+                  name: invalid_reason
+                  type: VARCHAR(16)
+              - column:
+                  name: invalid_state
+                  type: TEXT
+              # Same type as learner_client_state.client_state_updated_at, so a
+              # migrated timestamp reads back as the identical instant.
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+        - addPrimaryKey:
+            tableName: learner_card_state
+            columnNames: skillpilot_id, node_id, card_id
+            constraintName: pk_learner_card_state
+        - addForeignKeyConstraint:
+            baseTableName: learner_card_state
+            baseColumnNames: skillpilot_id
+            referencedTableName: learner
+            referencedColumnNames: skillpilot_id
+            constraintName: fk_learner_card_state_learner
+            onDelete: CASCADE
+      rollback:
+        - dropTable:
+            tableName: learner_card_state
+  - changeSet:
+      id: 047-migrate-learner-client-state-to-card-rows
+      author: skillpilot
+      # The migration commits page by page and skips blocks that are already
+      # migrated, so it is safe to restart after an interruption.
+      runInTransaction: false
+      changes:
+        - customChange:
+            class: com.skillpilot.backend.service.srs.LegacyCardStateMigration

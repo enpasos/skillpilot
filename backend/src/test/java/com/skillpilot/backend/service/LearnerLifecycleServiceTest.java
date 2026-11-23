@@ -165,6 +165,9 @@ class LearnerLifecycleServiceTest {
                 "DELETE FROM learner_client_state WHERE skillpilot_id = ?",
                 LEARNER_ID);
         verify(jdbc).update(
+                "DELETE FROM learner_card_state WHERE skillpilot_id = ?",
+                LEARNER_ID);
+        verify(jdbc).update(
                 "DELETE FROM learner_learning_plan WHERE learner_id = ?",
                 LEARNER_ID);
         verify(learners).deleteInboundCopySourceReferences(LEARNER_ID);

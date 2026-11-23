@@ -65,6 +65,14 @@ class LearnerRetentionLiquibaseIntegrationTest {
                 "INSERT INTO learner_client_state (skillpilot_id, node_id, client_state, client_state_updated_at) VALUES (?, ?, ?, ?)",
                 DUE_ID, "node-due", "{}", Timestamp.from(now));
         jdbc.update(
+                "INSERT INTO learner_card_state (skillpilot_id, node_id, card_id, card_state, practice_repetition, updated_at) "
+                        + "VALUES (?, ?, ?, ?, ?, ?)",
+                DUE_ID, "node-due", "card-due", "{\"interval\":1}", 1, Timestamp.from(now));
+        jdbc.update(
+                "INSERT INTO learner_card_state (skillpilot_id, node_id, card_id, card_state, practice_repetition, updated_at) "
+                        + "VALUES (?, ?, ?, ?, ?, ?)",
+                ACTIVE_ID, "node-active", "card-active", "{\"interval\":1}", 1, Timestamp.from(now));
+        jdbc.update(
                 "INSERT INTO curriculum_champion "
                         + "(id, curriculum_id, skillpilot_id, github_id, issues_count, pull_requests_count, created_at) "
                         + "VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -103,6 +111,8 @@ class LearnerRetentionLiquibaseIntegrationTest {
         assertThat(count("mastery", "skillpilot_id", DUE_ID)).isZero();
         assertThat(count("planned_goal", "skillpilot_id", DUE_ID)).isZero();
         assertThat(count("learner_client_state", "skillpilot_id", DUE_ID)).isZero();
+        assertThat(count("learner_card_state", "skillpilot_id", DUE_ID)).isZero();
+        assertThat(count("learner_card_state", "skillpilot_id", ACTIVE_ID)).isOne();
         assertThat(count("curriculum_champion", "skillpilot_id", DUE_ID)).isZero();
         assertThat(count("chat_start_code", "learner_skillpilot_id", DUE_ID)).isZero();
         assertThat(count("chat_session", "learner_skillpilot_id", DUE_ID)).isZero();
