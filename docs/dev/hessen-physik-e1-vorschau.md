@@ -4,6 +4,12 @@ Die Vorschau öffnet E.1 und ihre vier deutsch-englischen Prüfungen im regulär
 
 Für die persönliche Teilabnahme mit dem optionalen Materialkatalog laufen Grundkurs und Leistungskurs auf den Ports 5269 und 5271. Jeder Kurs hat eigene Profile für G8 und G9. Der Start aus einem frischen Checkout verwendet standardmäßig Port 5177. [Grundkurs](http://localhost:5269/auftraege/G9) · [Leistungskurs](http://localhost:5271/auftraege/G9)
 
+## Die Reihenfolge beim waagerechten Wurf ansehen
+
+Im Cockpit einen der Einstiege zu Pflichtteil B öffnen und oben **Lernkarte** wählen. Auf der E.1-Karte führen zwei Pfeile von „Waagerechter Wurf analysieren“ zu den Aufgaben „Wo trifft die waagerecht gestartete Kugel auf?“ und „Waagerechter Wurf: Zwei Bewegungen, eine gemeinsame Zeit“. Dieselben Aufgaben stehen im aufgeklappten Zielbaum unterhalb des Wurfziels. Die erste Aufgabe ist Pflichtteil B, die zweite ist ein freiwilliges Zusatzangebot. Im Leistungskurs folgt auch die vorhandene Prüfung „Mehrphasenbewegung und Modellprüfung“ auf das Wurfziel. [G8 im Grundkurs](http://localhost:5177/nativ/G8/B) · [G9 im Grundkurs](http://localhost:5177/nativ/G9/B) · [G8 im Leistungskurs](http://localhost:5201/nativ/G8/B) · [G9 im Leistungskurs](http://localhost:5201/nativ/G9/B)
+
+Für das reguläre „Weiter“ im Chat erhält die erreichbare Vorbereitung auf das Wurfthema Vorrang vor den beiden Prüfungen. Wer ausdrücklich die Einheitenprüfung wählt, kann sofort mit einem der vier Teile A–D beginnen.
+
 ## Die optionale Simulation zum freien Fall ausprobieren
 
 Im Cockpit das Zahnrad öffnen, **Zusätzliche Lernmaterialien** aufklappen, **Physik mit SimuFísica** auswählen und **Materialauswahl speichern** anklicken. Mit **Fertig** zurückkehren und in der Untereinheit „Beschleunigte Bewegung und freier Fall“ das Ziel „Freier Fall experimentell untersuchen“ öffnen. Dort erscheint der Link zur Simulation. Der Coach erhält beim selben aktiven Ziel die zur Unterrichtssprache passende Fassung. Über das Zahnrad lässt sich das Paket wieder abwählen. Die mitgelieferten Messwerte stehen in beiden Fällen zur Verfügung. [G8 im Grundkurs](http://localhost:5269/nativ/G8/E1/freier-fall) · [G9 im Leistungskurs](http://localhost:5271/nativ/G9/E1/freier-fall)

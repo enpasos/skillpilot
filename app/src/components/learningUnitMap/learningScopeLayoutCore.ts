@@ -67,6 +67,14 @@ export async function computeLearningScopeLayout(
   // A declared order outranks goal demand when cycle breaking must reverse an edge.
   const declared = new Set(relations.filter(relation => relation.unitOrder === 'declared')
     .map(({ source, target }) => `sibling:${source}->${target}`))
+  // A recommended path can lengthen the board. Keep its terminal assessments
+  // together so their camera can still frame them at a readable zoom.
+  const isLocalAssessment = (id: string) => fixture.entries[id].kind === 'assessment'
+    && (fixture.entryPaths?.[id]?.at(-2) ?? scopeId) === scopeId
+  const hasAssessmentRecommendation = relations.some(relation => relation.kind === 'studyRecommendation' && isLocalAssessment(relation.target))
+  const sourcesWithOutgoingEdges = new Set(edges.map(edge => edge.source))
+  const terminalAssessments = new Set(hasAssessmentRecommendation
+    ? ids.filter(id => isLocalAssessment(id) && !sourcesWithOutgoingEdges.has(id)) : [])
   const sourceSide: LayoutPortSide = direction === 'RIGHT' ? 'EAST' : 'SOUTH'
   const targetSide: LayoutPortSide = direction === 'RIGHT' ? 'WEST' : 'NORTH'
   const portSides = new Map<string, LayoutPortSide>()
@@ -96,7 +104,8 @@ export async function computeLearningScopeLayout(
     children: ids.map(id => ({
       id, width: nodeWidth, height: nodeHeight,
       layoutOptions: { 'elk.portConstraints': 'FIXED_SIDE', 'elk.nodeSize.constraints': '[]',
-        ...(id === scope.orientationGoalId && { 'elk.layered.layering.layerConstraint': 'FIRST_SEPARATE' }) },
+        ...(id === scope.orientationGoalId && { 'elk.layered.layering.layerConstraint': 'FIRST_SEPARATE' }),
+        ...(terminalAssessments.has(id) && { 'elk.layered.layering.layerConstraint': 'LAST' }) },
       ports: edges.flatMap(edge => {
         const portId = edge.source === id ? edge.sourceHandle : edge.target === id ? edge.targetHandle : null
         if (!portId) return []

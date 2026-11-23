@@ -494,6 +494,109 @@ class ClaudeV1CompletionRouteIntegrationTest {
     private static final String MULTIPHASE_EXTRA = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06";
 
     @ParameterizedTest
+    @CsvSource({"G8,GK", "G9,LK"})
+    void hessianProjectilePreparationIsRecommendedWithBothAssessmentsStillSelectable(String duration, String course)
+            throws Exception {
+        String section = selectHessianMotionUnit(duration, "SekII", course);
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String projectile = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
+        String vector = "68c90ba6-c438-463c-9a53-cf61062d416a";
+        String partB = "39f52dcb-ff1d-5cad-9ccb-30da803cfa85";
+        String lastStep = "d6dc0e02-831d-4894-a61a-852bcc74f147";
+        var learner = learnerRepository.findById(learnerId).orElseThrow();
+        var graph = new CompletionProfileCompiler().normalizePrerequisites(
+                learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+        var prerequisites = new java.util.HashSet<>(graph.transitivePrerequisites(projectile));
+        prerequisites.addAll(graph.transitivePrerequisites(partB));
+        prerequisites.addAll(graph.transitivePrerequisites(WURF_EXTRA));
+        prerequisites.addAll(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section)));
+        prerequisites.addAll(List.of(MOTION_OPENING, FALL_OPENING));
+        prerequisites.removeAll(List.of(projectile, vector, partB, WURF_EXTRA, lastStep));
+        masteryRepository.saveAllAndFlush(prerequisites.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+
+        var offered = mapper.valueToTree(context()).path("frontier");
+        var partBChoice = offered.valueStream().filter(goal -> partB.equals(goal.path("id").asText()))
+                .findFirst().orElseThrow();
+        var extraChoice = offered.valueStream().filter(goal -> WURF_EXTRA.equals(goal.path("id").asText()))
+                .findFirst().orElseThrow();
+        assertThat(partBChoice.path("studyGuidance").path("recommendedPreparationGoalIds").valueStream()
+                .map(goal -> goal.asText())).contains(vector);
+        assertThat(extraChoice.path("studyGuidance").path("recommendedPreparationGoalIds").valueStream()
+                .map(goal -> goal.asText())).contains(vector).doesNotContain(partB);
+        assertThat(extraChoice.path("studyGuidance").path("voluntary").asBoolean()).isTrue();
+        assertThat(partBChoice.path("studyGuidance").path("voluntary").asBoolean()).isFalse();
+        assertThat(offered.valueStream().map(goal -> goal.path("id").asText()))
+                .containsSubsequence(vector, partB).doesNotContain(projectile);
+        assertThat(learners.getFrontier(learnerId)).containsSubsequence(vector, WURF_EXTRA);
+        assertThat(learners.getUncompactedRichFrontierForFocus(learnerId, List.of(partB)))
+                .filteredOn(goal -> partB.equals(goal.id())).singleElement()
+                .satisfies(goal -> assertThat(goal.studyGuidance()).isNull());
+        for (String assessment : List.of(partB, WURF_EXTRA)) {
+            var chosen = successful(ClaudeV1Contract.TOOL_SET_ACTIVE_GOAL,
+                    writeArgs("choose-" + assessment, version(), Map.of("goalId", assessment, "redirect", true)));
+            assertThat(chosen).containsEntry("activatedGoalId", assessment);
+            assertThat(map(context(), "activeGoal")).containsEntry("id", assessment);
+        }
+        assertThat(examPasses.findForGoals(learnerId, List.of(partB, WURF_EXTRA))).isEmpty();
+
+        learners.setActiveGoal(learnerId, lastStep);
+        learners.setPreferences(learnerId, "SEQUENTIAL", true, true);
+        var afterMastery = successful(ClaudeV1Contract.TOOL_SET_MASTERY,
+                writeArgs("finish-motion-model", version(), Map.of("goalId", lastStep)));
+        assertThat(map(map(afterMastery, "context"), "activeGoal")).containsEntry("id", vector);
+        assertThat(learners.getMastery(learnerId)).doesNotContainKeys(vector, projectile, partB, WURF_EXTRA);
+
+        masteryRepository.saveAllAndFlush(List.of(new Mastery(learner, vector, 1.0), new Mastery(learner, projectile, 1.0)));
+        learners.setActiveGoal(learnerId, partB);
+        var evaluation = successful(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", partB));
+        int passingPoints = mapper.valueToTree(evaluation.get("scoring")).required("passingPoints").intValue();
+        var passed = successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("pass-b", version(),
+                Map.of("goalId", partB, "evaluationCapability", evaluation.get("evaluationCapability"), "earnedPoints", passingPoints)));
+        var successor = mapper.valueToTree(map(passed, "context"));
+        assertThat(successor.path("activeGoal").path("id").asText()).isNotEqualTo(WURF_EXTRA);
+        assertThat(learners.getRichFrontier(learnerId)).filteredOn(goal -> WURF_EXTRA.equals(goal.id())).singleElement()
+                .satisfies(goal -> {
+                    assertThat(goal.voluntaryStudy()).isTrue();
+                    assertThat(goal.studyGuidance().recommendedPreparationGoalIds()).isEmpty();
+                });
+        assertThat(examPasses.findForGoals(learnerId, List.of(partB, WURF_EXTRA))).hasSize(1);
+    }
+
+    @Test
+    void sharedDatedProjectileWorkPrefersItsDueFoundationEvenWithoutTheOpeningInItsCapture() throws Exception {
+        selectHessianMotionUnit("G9", "SekII");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String projectile = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
+        String vector = "68c90ba6-c438-463c-9a53-cf61062d416a";
+        String partB = "39f52dcb-ff1d-5cad-9ccb-30da803cfa85";
+        String completedFirst = "d6dc0e02-831d-4894-a61a-852bcc74f147";
+        var learner = learnerRepository.findById(learnerId).orElseThrow();
+        var graph = new CompletionProfileCompiler().normalizePrerequisites(
+                learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+        var prerequisites = new java.util.HashSet<>(graph.transitivePrerequisites(projectile));
+        prerequisites.addAll(graph.transitivePrerequisites(partB));
+        prerequisites.addAll(List.of(MOTION_OPENING, FALL_OPENING));
+        prerequisites.removeAll(List.of(vector, completedFirst));
+        masteryRepository.saveAllAndFlush(prerequisites.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+        var goals = List.of(completedFirst, partB, vector, projectile);
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var block = new LearnerLearningPlanApi.Block("combined-projectile", "learning", null, "Gemeinsame Wurfarbeit",
+                monday, monday.plusDays(4), null, goals, goals, true);
+        var plan = learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Waagerechter Wurf", List.of(block)), today);
+        assertThat(plan.blocks().getFirst().atomicGoalIds()).containsSubsequence(partB, vector)
+                .doesNotContain(MOTION_OPENING, FALL_OPENING);
+        learners.setPreferences(learnerId, "SEQUENTIAL", true, true, null, true,
+                com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
+        learners.setActiveGoal(learnerId, completedFirst);
+        var result = successful(ClaudeV1Contract.TOOL_SET_MASTERY,
+                writeArgs("projectile-plan-handoff", version(), Map.of("goalId", completedFirst)));
+        assertThat(map(map(result, "context"), "activeGoal")).containsEntry("id", vector);
+        assertThat(learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal().goalId()).isEqualTo(vector);
+    }
+
+    @ParameterizedTest
     @CsvSource({"G8,GK", "G9,GK", "G8,LK", "G9,LK"})
     void individualMeasurementAssessmentIsOutsideTheRegularUnitAndDoesNotExtendThePersonalObligations(
             String duration, String course) throws Exception {

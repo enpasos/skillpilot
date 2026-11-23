@@ -778,6 +778,13 @@ async function checkTreeAndMapParents(duration) {
     const treeEntries = await treeRow(section).locator('..').locator('[data-goal-id]').evaluateAll((rows, section) =>
       rows.filter(row => row.dataset.goalId !== section).map(row => [row.dataset.goalId, row.parentElement.parentElement.parentElement
         .querySelector(':scope > [data-goal-id]').dataset.goalId]), section)
+    const horizontalLaunch = '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2'
+    const launchExams = [unitPartIds[1], throwAssessment]
+    const siblings = treeEntries.filter(([, parent]) => parent === section).map(([id]) => id)
+    for (const exam of launchExams) {
+      assert(siblings.includes(horizontalLaunch) && siblings.indexOf(horizontalLaunch) < siblings.indexOf(exam),
+        'The E.1 tree places the horizontal-launch topic before each of its two assessments')
+    }
     const expectedTreeCount = physicsCourse === 'LK' ? 22 : 21
     assert.equal(treeEntries.length, expectedTreeCount)
     assert.equal(treeEntries.some(([id]) => id === multiphaseAssessment), physicsCourse === 'LK')
@@ -813,6 +820,19 @@ async function checkTreeAndMapParents(duration) {
         } else mapEntries.push([id, parent])
       }
       if (parent === section) {
+        const card = id => board.locator(`[data-entry-id="${id}"]`)
+        const topic = await card(horizontalLaunch).boundingBox()
+        assert(topic)
+        for (const exam of launchExams) {
+          const assessment = await card(exam).boundingBox()
+          assert(assessment && topic.x + topic.width < assessment.x,
+            'Both assessments follow the horizontal-launch topic in the horizontal map')
+          await board.locator(`.react-flow__edge[data-id="sibling:${horizontalLaunch}->${exam}"]`).waitFor({ state: 'attached' })
+        }
+        for (const [from, to] of [launchExams, [...launchExams].reverse()]) {
+          assert.equal(await board.locator(`.react-flow__edge[data-id="sibling:${from}->${to}"]`).count(), 0,
+            'The two assessments are independent of each other')
+        }
         assert.equal(await board.locator('[data-entry-id="' + unit.assessmentGoalId + '"]').count(), physicsCourse === 'GK' ? 1 : 0)
         assert.equal(await board.locator('[data-entry-id="' + multiphaseAssessment + '"]').count(), physicsCourse === 'LK' ? 1 : 0)
         assert.equal(await board.locator('[data-entry-id="' + preparationFolder + '"]').count(), 0)

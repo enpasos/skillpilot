@@ -16,6 +16,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /** Unit introductions, activity references and exercise prompts shared by the map and the coach. */
@@ -24,9 +26,14 @@ public final class UnitLearningMaterialService {
     public record AssessmentBinding(String landscapeId, String viewId, String compositionNodeId,
             UnitAssessmentContract contract) {}
     public record OrientationBinding(String landscapeId, String viewId, String compositionNodeId,
-            String orientationGoalId, List<String> guidedStudyOrder) {
+            String orientationGoalId, List<String> guidedStudyOrder, List<StudyRecommendation> studyRecommendations) {
+        public OrientationBinding(String landscapeId, String viewId, String compositionNodeId,
+                String orientationGoalId, List<String> guidedStudyOrder) {
+            this(landscapeId, viewId, compositionNodeId, orientationGoalId, guidedStudyOrder, List.of());
+        }
         public String sectionGoalId() { return "composition:" + viewId + ":structure:" + compositionNodeId; }
     }
+    public record StudyRecommendation(String beforeGoalId, String afterGoalId) {}
     public record Intro(String question, String promise, String scene, String imageUrl, String imageAlt,
             List<String> topics) {
         public Intro { topics = topics == null ? List.of() : List.copyOf(topics); }
@@ -57,15 +64,16 @@ public final class UnitLearningMaterialService {
     public record Material(String flashcardGoalId, String assessmentGoalId, String orientationGoalId, Map<String, Intro> intro,
             Map<String, Exercise> exercises, UnitAssessmentContract assessmentContract,
             SectionAssessmentPolicy sectionAssessmentPolicy, List<String> guidedStudyOrder,
-            List<IndividualAssessmentOffer> individualAssessmentOffers) {
+            List<IndividualAssessmentOffer> individualAssessmentOffers, List<StudyRecommendation> studyRecommendations) {
         public Material(String flashcardGoalId, String assessmentGoalId, String orientationGoalId, Map<String, Intro> intro,
                 Map<String, Exercise> exercises, UnitAssessmentContract assessmentContract,
                 SectionAssessmentPolicy sectionAssessmentPolicy, List<String> guidedStudyOrder) {
             this(flashcardGoalId, assessmentGoalId, orientationGoalId, intro, exercises, assessmentContract,
-                    sectionAssessmentPolicy, guidedStudyOrder, List.of());
+                    sectionAssessmentPolicy, guidedStudyOrder, List.of(), List.of());
         }
         public Material {
             individualAssessmentOffers = List.copyOf(individualAssessmentOffers);
+            studyRecommendations = List.copyOf(studyRecommendations);
             intro = Map.copyOf(intro);
             exercises = Map.copyOf(exercises);
             guidedStudyOrder = List.copyOf(guidedStudyOrder);
@@ -106,7 +114,8 @@ public final class UnitLearningMaterialService {
                 JsonNode version = data.get("schemaVersion");
                 if (version != null && (!version.isNumber() || !(version.decimalValue().compareTo(BigDecimal.ONE) == 0
                         || version.decimalValue().compareTo(BigDecimal.valueOf(2)) == 0
-                        || version.decimalValue().compareTo(BigDecimal.valueOf(3)) == 0))) {
+                        || version.decimalValue().compareTo(BigDecimal.valueOf(3)) == 0
+                        || version.decimalValue().compareTo(BigDecimal.valueOf(4)) == 0))) {
                     throw new IOException("Unsupported unit learning material version in " + file);
                 }
                 JsonNode unit = data.required("unit");
@@ -142,7 +151,8 @@ public final class UnitLearningMaterialService {
                         unit.has("assessmentContract")
                                 ? mapper.treeToValue(unit.required("assessmentContract"), UnitAssessmentContract.class)
                                 : null, boundSectionPolicy(unit, mapper), readGuidedStudyOrder(data, materialVersion, file),
-                        readIndividualOffers(data, materialVersion, exercises, file));
+                        readIndividualOffers(data, materialVersion, exercises, file),
+                        readStudyRecommendations(data, materialVersion, file));
                 String landscape = unit.required("landscapeId").asText();
                 String node = unit.required("compositionNodeId").asText();
                 for (JsonNode view : unit.required("viewIds")) {
@@ -240,6 +250,37 @@ public final class UnitLearningMaterialService {
             throw new IllegalArgumentException("guidedStudyOrder must end with the unit's assessmentGoalId in " + file);
         }
         return List.copyOf(ids);
+    }
+
+    private static List<StudyRecommendation> readStudyRecommendations(JsonNode data, int version, Path file) {
+        JsonNode entries = data.path("studyRecommendations");
+        if (entries.isMissingNode()) return List.of();
+        if (version < 4 || !entries.isArray()) {
+            throw new IllegalArgumentException("Expected a version 4 studyRecommendations list in " + file);
+        }
+        var recommendations = new LinkedHashSet<StudyRecommendation>();
+        for (JsonNode entry : entries) {
+            String before = readRecommendationGoalId(entry.path("beforeGoalId"));
+            String after = readRecommendationGoalId(entry.path("afterGoalId"));
+            if (entry.size() != 2 || before == null || after == null || before.equals(after)
+                    || !recommendations.add(new StudyRecommendation(before, after))) {
+                throw new IllegalArgumentException("Invalid or repeated studyRecommendations pair in " + file);
+            }
+        }
+        var remaining = new ArrayList<>(recommendations);
+        while (!remaining.isEmpty()) {
+            var successors = remaining.stream().map(StudyRecommendation::afterGoalId).collect(Collectors.toSet());
+            if (!remaining.removeIf(pair -> !successors.contains(pair.beforeGoalId()))) {
+                throw new IllegalArgumentException("Cycle in studyRecommendations in " + file);
+            }
+        }
+        return List.copyOf(recommendations);
+    }
+
+    private static String readRecommendationGoalId(JsonNode field) {
+        String value = field.textValue();
+        if (value == null || !value.matches("[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}")) return null;
+        return value.toLowerCase(Locale.ROOT);
     }
 
     private static Map<String, Exercise> readExercises(JsonNode entries, int version, Path file) {
@@ -341,7 +382,7 @@ public final class UnitLearningMaterialService {
                 find(scope.landscape(), view, scope.node())
                         .filter(material -> material.orientationGoalId() != null && !material.orientationGoalId().isBlank())
                         .ifPresent(material -> result.add(new OrientationBinding(scope.landscape(), view, scope.node(),
-                                material.orientationGoalId(), material.guidedStudyOrder())));
+                                material.orientationGoalId(), material.guidedStudyOrder(), material.studyRecommendations())));
             }
         }
         return List.copyOf(result);

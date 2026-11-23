@@ -635,6 +635,9 @@ public class ClaudeV1CoachContextProjector {
         formatted.put("description", goal.description());
         formatted.put("nodeKind", goal.nodeKind());
         formatted.put("semanticKind", goal.semanticKind());
+        if (goal.studyGuidance() != null) {
+            formatted.put("studyGuidance", goal.studyGuidance());
+        }
 
         if (goal.examData() != null) {
             Map<String, Object> exam = new LinkedHashMap<>();

@@ -224,6 +224,30 @@ class LearnerLearningPlanServiceTest {
     }
 
     @Test
+    void ordinaryPlanRecommendsEligiblePreparationOnceItIsDue() {
+        var block = learningBlock("shared", "2026-09-03", "2026-09-04", List.of("assessment", "foundation"));
+        var blocks = List.of(block);
+        var recommendation = Map.of("assessment", List.of("foundation"));
+        var available = java.util.Set.of("assessment", "foundation");
+        var dueBeforePreparation = LearnerLearningPlanService.firstEligibleDueGoal(blocks, block.startDate(), Map.of(),
+                java.util.Set.of(), roots -> available, (goal, roots) -> null, ignored -> true, recommendation);
+        var dueWithPreparation = LearnerLearningPlanService.firstEligibleDueGoal(blocks, block.endDate(), Map.of(),
+                java.util.Set.of(), roots -> available, (goal, roots) -> null, ignored -> true, recommendation);
+        var dueWithUnavailablePreparation = LearnerLearningPlanService.firstEligibleDueGoal(blocks, block.endDate(),
+                Map.of(), java.util.Set.of(), roots -> java.util.Set.of("assessment"), (goal, roots) -> null,
+                ignored -> true, recommendation);
+        var separate = List.of(
+                learningBlock("assessment", "2026-09-03", "2026-09-03", List.of("assessment")),
+                learningBlock("foundation", "2026-09-04", "2026-09-04", List.of("foundation")));
+        var dueFromSeparateBlocks = LearnerLearningPlanService.firstEligibleDueGoal(separate, block.endDate(), Map.of(),
+                java.util.Set.of(), roots -> available, (goal, roots) -> null, ignored -> true, recommendation);
+        assertThat(dueBeforePreparation).map(LearnerLearningPlanService.DueGoal::atomicGoalId).contains("assessment");
+        assertThat(dueWithPreparation).map(LearnerLearningPlanService.DueGoal::atomicGoalId).contains("foundation");
+        assertThat(dueWithUnavailablePreparation).map(LearnerLearningPlanService.DueGoal::atomicGoalId).contains("assessment");
+        assertThat(dueFromSeparateBlocks).map(LearnerLearningPlanService.DueGoal::atomicGoalId).contains("assessment");
+    }
+
+    @Test
     void anOldFixedPlanCanStartItsUnscheduledOpeningWithoutChangingItsBasisOrDueDate() {
         var block = new LearnerLearningPlanApi.Block("old", "learning", "unit", "Unit",
                 LocalDate.parse("2026-09-03"), LocalDate.parse("2026-09-04"), null,

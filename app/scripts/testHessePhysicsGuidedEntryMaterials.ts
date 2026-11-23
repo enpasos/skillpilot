@@ -59,7 +59,7 @@ assert.deepEqual(review.requiredCorrections, [])
 for (const opening of review.scope.openings) {
   const material = read(opening.materialPath)
   const goal = landscape.goals.find((entry: { id: string }) => entry.id === opening.goalId)
-  assert.equal(material.schemaVersion, 3)
+  assert.equal(material.schemaVersion, material.unit.compositionNodeId === 'physics-e1-motion' ? 4 : 3)
   if (material.unit.compositionNodeId === 'physics-e1-accelerated-and-free-fall') {
     assert.deepEqual(material.individualAssessmentOffers, [{ targetGoalId: protocolId, assessmentGoalId: individualExam.id }],
       'The individually reviewed exam must be explicitly offered on the regular exercise')

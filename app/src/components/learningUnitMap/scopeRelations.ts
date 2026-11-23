@@ -8,7 +8,7 @@ export function getLearningScopeRelations(fixture: LearningMapFixture, scopeId: 
   const relations: LearningMapRelation[] = fixture.scopeRelations ? fixture.scopeRelations[scopeId] ?? [] : children.flatMap(target => (fixture.entries[target]?.requires ?? [])
     .filter(source => visible.has(source))
     .map(source => ({ source, target, kind: 'requirement' as const, provenance: [] })))
-  const studyRelations = unitStudyRelations(children, scope?.orientationGoalId, scope?.guidedStudyOrder, id => {
+  const studyRelations = unitStudyRelations(children, scope ?? {}, id => {
     const kind = fixture.entries[id].kind
     return kind !== 'assessment' && kind !== 'memory'
   }, relations)

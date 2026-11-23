@@ -2,6 +2,7 @@ import { isUnitMaterialSource } from '../../utils/unitLearningMaterial'
 import type { UiGoal } from '../../goalTypes'
 import { getSrsFilterTagsForGoal } from '../../utils/srsTags'
 import { selectPracticeCards, type FlashcardPracticeRequest } from '../../utils/flashcardPractice'
+import { projectUnitStudyRecommendations, type UnitStudyOrder } from '../../utils/unitStudyOrder'
 import type { LearningMapFixture, LearningMapRelation, LearningMapRequirement, MapPracticeMaterial } from './types'
 export function findUnitMaterialScopes(
   material: MapPracticeMaterial, fixture: LearningMapFixture, goalIndex: ReadonlyMap<string, UiGoal>, visibleGoalIds: ReadonlySet<string>,
@@ -79,7 +80,10 @@ export function buildUnitFlashcardActions(
   return actions
 }
 
-interface UnitResourcePlacement { scopeId: string; goalIds: readonly string[]; orientationGoalId?: string; guidedStudyOrder?: readonly string[] }
+interface UnitResourcePlacement extends UnitStudyOrder {
+  scopeId: string
+  goalIds: readonly string[]
+}
 
 export function unitResourcePlacements({ material, scopes, flashcards, assessments }: {
   material?: MapPracticeMaterial
@@ -90,7 +94,10 @@ export function unitResourcePlacements({ material, scopes, flashcards, assessmen
   return [...scopes].flatMap(scopeId => {
     const goalIds = [flashcards.get(scopeId), assessments.get(scopeId)].flatMap(action => action ? [action.goalId] : [])
     const orientationGoalId = material?.unit.orientationGoalId
-    return goalIds.length || orientationGoalId ? [{ scopeId, goalIds, orientationGoalId, guidedStudyOrder: material?.guidedStudyOrder }] : []
+    const { guidedStudyOrder, studyRecommendations } = material ?? {}
+    return goalIds.length || orientationGoalId || studyRecommendations?.length
+      ? [{ scopeId, goalIds, orientationGoalId, guidedStudyOrder, studyRecommendations }]
+      : []
   })
 }
 
@@ -100,7 +107,15 @@ export function placeUnitLearningResources(fixture: LearningMapFixture, placemen
   const entries = { ...fixture.entries }
   const scopeRelations = { ...fixture.scopeRelations }
   const scopeContext = { ...fixture.scopeContext }
-  for (const { scopeId, goalIds, orientationGoalId, guidedStudyOrder } of placements) {
+  for (const { scopeId, goalIds, orientationGoalId, guidedStudyOrder, studyRecommendations } of placements) {
+    if (studyRecommendations?.length && fixture.entries[scopeId]) {
+      const recommendations = projectUnitStudyRecommendations(scopeId, studyRecommendations,
+        id => fixture.entries[id].children?.filter(child => !!fixture.entries[child]))
+      for (const [board, pairs] of recommendations) {
+        const entry = entries[board]
+        entries[board] = { ...entry, studyRecommendations: [...entry.studyRecommendations ?? [], ...pairs] }
+      }
+    }
     const scope = entries[scopeId]
     if (!scope) continue
     const resources = goalIds.filter(id => entries[id] && !scope.children?.includes(id))
@@ -108,9 +123,12 @@ export function placeUnitLearningResources(fixture: LearningMapFixture, placemen
     const start = orientationGoalId && scope.kind === 'unit' && children.includes(orientationGoalId)
       && ['goal', 'motivation'].includes(entries[orientationGoalId]?.kind) ? orientationGoalId : undefined
     if (!resources.length && !start && !guidedStudyOrder?.some(id => children.includes(id))) continue
-    entries[scopeId] = start
-      ? { ...scope, orientationGoalId: start, guidedStudyOrder, children: [start, ...children.filter(id => id !== start), ...resources] }
-      : { ...scope, guidedStudyOrder: guidedStudyOrder ?? scope.guidedStudyOrder, children: [...children, ...resources] }
+    entries[scopeId] = {
+      ...scope,
+      ...(start && { orientationGoalId: start }),
+      guidedStudyOrder: guidedStudyOrder ?? scope.guidedStudyOrder,
+      children: start ? [start, ...children.filter(id => id !== start), ...resources] : [...children, ...resources],
+    }
     if (!resources.length) continue
     const relations = [...(scopeRelations[scopeId] ?? [])]
     const context = { ...scopeContext[scopeId] }

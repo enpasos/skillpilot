@@ -148,7 +148,8 @@ public final class CoachStateProjection {
                 goal.sourceLicenseUrl(),
                 examData,
                 goal.examReadyForSelection(),
-                goal.selectionGoalIds());
+                goal.selectionGoalIds(),
+                goal.studyGuidance());
     }
 
     private ExamData taskOnlyExamData(ExamData exam) {
@@ -232,7 +233,8 @@ public final class CoachStateProjection {
                 goal.sourceLicenseUrl(),
                 null,
                 goal.examReadyForSelection(),
-                goal.selectionGoalIds());
+                goal.selectionGoalIds(),
+                goal.studyGuidance());
     }
 
     private List<FrontierGoal> filterFrontier(List<FrontierGoal> frontier, StateMachineInfo stateMachine) {
@@ -285,7 +287,8 @@ public final class CoachStateProjection {
                 goal.sourceLicenseUrl(),
                 rewrittenExam,
                 goal.examReadyForSelection(),
-                goal.selectionGoalIds());
+                goal.selectionGoalIds(),
+                goal.studyGuidance());
     }
 
     private List<GoalSourceLink> rewriteResourceLinks(List<GoalSourceLink> links) {
