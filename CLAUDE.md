@@ -12,6 +12,12 @@ file: §0 provider/release decisions (dated log), §2 graph model and Personal
 Curriculum, §3 `Goal` fields, §4 mastery, §5 frontier, §7 conventions for new
 goals, §10 layers A/B/C, §11 ID and privacy, §12 AI adapters.
 
+**Binding learning rule (23 November 2026).** After Personal Curriculum setup,
+every learning step must be possible in coach chat with zero required Cockpit
+visits. Autopilot determines only who chooses the next frontier goal. With it
+off the learner chooses in chat. With it on the backend chooses and the coach
+continues in chat. See the opening product decision in `AGENTS.md`.
+
 **Current execution mandate (15 November 2026):** agents own the resolution
 and implementation of the model, stage-plan and pedagogical findings in
 `docs/dev/stage-plan-units-handover-2026-11-15.md`; the Product Owner reviews

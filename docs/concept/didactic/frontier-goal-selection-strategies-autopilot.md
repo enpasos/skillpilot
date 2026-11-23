@@ -44,9 +44,9 @@ Once the backend determines the valid frontier (`stateMachineOptions`) from the 
 <a id="sec-autopilot-mode"></a>
 ### 2.2. Autopilot mode
 
-Autopilot reduces navigation friction by automatically advancing the learner to the next eligible frontier goal when the current goal is completed.
+After the learning scope is configured, the entire learning path must be available in coach chat. Autopilot governs only the choice of the next frontier goal. With it off, the learner chooses in chat. With it on, the backend chooses and the coach guides the learner to that goal in chat. This also applies to plan-guided learning. [Product decision](https://github.com/enpasos/skillpilot/blob/main/AGENTS.md#binding-product-decision-on-learning-entirely-in-coach-chat)
 
-#### Runtime behavior
+#### Current runtime behavior
 
 - **Trigger:** Fires when the current `activeGoal` transitions to the **Mastered** state.
 - **Selection:** Picks the **first** goal from the valid frontier after applying the configured selection strategy (*Random*, *Sequential*, or target default *Unit by Unit*). When an active learning plan governs progression (see [8.2](../runtime-workflows/existing-learner-teacher-view.md#sec-existing-learner-setup)), plan handoff rules take precedence and generic Autopilot is suppressed.
