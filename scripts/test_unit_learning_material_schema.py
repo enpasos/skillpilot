@@ -68,6 +68,40 @@ class UnitLearningMaterialSchemaTests(unittest.TestCase):
             self.assertTrue(self.validate_second({**versioned, "intro": {"de": invalid, "en": introduction}}))
         self.assertTrue(self.validate_second({**versioned, "unit": self.material["unit"]}))
 
+    def test_regular_learning_marker_is_a_language_independent_v3_boolean(self):
+        introduction = {"question": "Why?", "promise": "Find out.", "scene": "A ball is held.",
+                        "imageUrl": "/assets/ball.png", "imageAlt": "A ball.", "topics": ["Motion"]}
+        material = {**self.material, "schemaVersion": 3,
+                    "unit": {**self.material["unit"], "orientationGoalId": "intro"},
+                    "intro": {"de": introduction, "en": introduction}}
+        text = {"title": "Compare", "prompt": "Compare two cases.", "hint": "Plot them.", "solution": "They differ."}
+        task = {"goalId": "comparison", "de": text, "en": text}
+        for fields in ({}, {"requiredForRegularLearning": True}, {"requiredForRegularLearning": False}):
+            self.assertEqual([], self.validate_second({**material, "exercises": [{**task, **fields}]}))
+        for invalid in ({"requiredForRegularLearning": "true"}, {"de": {**text, "requiredForRegularLearning": True}}):
+            self.assertTrue(self.validate_second({**material, "exercises": [{**task, **invalid}]}))
+        marked = {**task, "requiredForRegularLearning": True}
+        self.assertTrue(self.validate_second({**material, "schemaVersion": 2, "exercises": [marked]}))
+
+    def test_only_v3_accepts_a_typed_individual_assessment_offer(self):
+        document = json.loads((ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json").read_text())
+        offer = document["individualAssessmentOffers"][0]
+        self.assertEqual([], self.validate_second(document))
+        for offers in ([], [offer, offer], [dict(targetGoalId="protocol")],
+                       [dict(targetGoalId="protocol", assessmentGoalId=" ")], [dict(offer, required=True)]):
+            with self.subTest(offers=offers):
+                self.assertTrue(self.validate_second({**document, "individualAssessmentOffers": offers}))
+        self.assertTrue(self.validate_second({**self.material, "individualAssessmentOffers": [offer]}))
+
+    def test_v3_sequences_the_regular_content_steps_and_its_own_final_assessment(self):
+        document = json.loads((ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json").read_text())
+        document["unit"]["assessmentGoalId"] = "assess"
+        self.assertEqual([], self.validate_second({**document, "guidedStudyOrder": ["measure", "model", "assess"]}))
+        for order in ([], ["assess"], ["measure", "measure", "assess"], ["measure", "other"],
+                      [document["unit"]["orientationGoalId"], "assess"]):
+            with self.subTest(order=order):
+                self.assertTrue(self.validate_second({**document, "guidedStudyOrder": order}))
+
     def test_catalog_rejects_missing_or_outside_file(self):
         self.assertTrue(any("two.json" in e for e in validate_unit_learning_materials(self.root, SCHEMA)))
         outside = self.root.parent / "outside.json"

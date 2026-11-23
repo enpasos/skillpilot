@@ -461,20 +461,33 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
             || personalizationEditor.plan.stage === 'DESCENDANT_FILTER'
         ),
     )
-    const guidedCloseBlocked = Boolean(
-        personalizationEditor
-        && !personalizationEditor.error
-        && (
-            personalizationEditor.loading
-            || personalizationEditor.busy
-            || guidedSelectionOpen
-        ),
-    )
+    // Guided choices are committed by the editor itself. Leaving an unfinished
+    // choice is independent of saving the learning preferences below it.
+    const saving = isApplying || materialSettingsBusy || Boolean(personalizationEditor?.busy)
+    const closeButton = React.useRef<HTMLButtonElement>(null)
+    React.useEffect(() => {
+        if (!isOpen) return
+        const opener = document.activeElement
+        closeButton.current?.focus({ preventScroll: true })
+        return () => {
+            if (opener instanceof HTMLElement && opener.isConnected) opener.focus({ preventScroll: true })
+        }
+    }, [isOpen])
+    React.useEffect(() => {
+        if (!isOpen || saving) return
+        const dismiss = (event: KeyboardEvent) => {
+            if (event.key !== 'Escape' || event.isComposing || event.defaultPrevented) return
+            event.preventDefault()
+            event.stopPropagation()
+            onClose()
+        }
+        document.addEventListener('keydown', dismiss, true)
+        return () => document.removeEventListener('keydown', dismiss, true)
+    }, [isOpen, onClose, saving])
 
     const handleApply = async () => {
-        if (materialSettingsBusy) return
+        if (saving) return
         if (personalizationEditor) {
-            if (guidedCloseBlocked) return
             if (!onPreferencesApply) {
                 onClose()
                 return
@@ -773,8 +786,9 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     <button
                         type="button"
                         aria-label={localizedLanguage === 'de' ? 'Einstellungen schließen' : 'Close settings'}
+                        ref={closeButton}
                         onClick={onClose}
-                        disabled={isApplying || guidedCloseBlocked || materialSettingsBusy}
+                        disabled={saving}
                         className="p-2 hover:bg-input-bg rounded-full transition-colors text-text-secondary hover:text-text-primary"
                     >
                         <X size={24} />
@@ -789,7 +803,7 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                     )}
 
                     {materialSettings && (
-                        <fieldset disabled={isApplying || guidedCloseBlocked} className="min-w-0">
+                        <fieldset disabled={isApplying || personalizationEditor?.busy || guidedSelectionOpen} className="min-w-0">
                             {materialSettings}
                         </fieldset>
                     )}
@@ -940,13 +954,13 @@ export const PersonalCurriculumSetup: React.FC<PersonalCurriculumSetupProps> = (
                         onClick={() => {
                             void handleApply()
                         }}
-                        disabled={isApplying || guidedCloseBlocked || materialSettingsBusy}
+                        disabled={saving}
                         className="px-6 py-2.5 bg-sky-600 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-60 text-white rounded-lg font-medium transition-colors shadow-lg shadow-sky-900/20"
                     >
                         {isApplying ? setupCopy.savePending : setupCopy.doneAction}
                     </button>
                 </div>
             </div>
-            )</div>
+        </div>
     )
 }

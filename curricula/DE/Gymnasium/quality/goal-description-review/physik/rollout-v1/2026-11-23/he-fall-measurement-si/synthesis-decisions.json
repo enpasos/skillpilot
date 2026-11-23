@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "he-fall-measurement-si-20261123-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root/chat_abnahme, informed AI synthesis after reading both independently executed native rounds, the bilingual goal, task and bound performance profile. Separate from the author of this measurement-log task and from both round reviewers.",
+  "synthesizedAt": "2026-11-23T04:54:12.000Z",
+  "batch": {
+    "batchId": "he-fall-measurement-si-20261123",
+    "batchManifestDigest": "sha256:c434b3387c12627952b55476bcd8f42cd82412ee1dbf850f8c2be10d3411c86c",
+    "configDigest": "sha256:f04005224d1d1872007b7a32679a0b9f1bb757f23912aa3533a1ed68ce99d97b",
+    "bundleFingerprint": "sha256:28cb8f354812fc04fb62a55f74f8207e7d0649df5ad21bbd9cc5bcc2c2d54887",
+    "bookDigest": "sha256:e00dc93ebdd9e660a852af4e75dfebc1b423d04ea390409261a12703a35f2cd6",
+    "reviewInputFingerprint": "sha256:188db6d66080a7a841f0b5944d8d83d16fc3fd8f9c0ef9a19c7c499b783c61f5",
+    "dualSummaryDigest": "sha256:f6e6868ed2a304dc1d760d765f0f728e432d44a3e8c01812baf11eb856f3025c",
+    "canonicalLandscapeDigest": "sha256:f1c6137f190e9884325673d22ffb9e7a6975bcc87b367f43298a770cf08b940f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "he-fall-measurement-si-20261123-a",
+      "campaignDigest": "sha256:c94ed5c646aec7a6e959fdd61968835286fab618fd8e714bef8bcfa2d3f4a752",
+      "roundId": "he-fall-measurement-si-20261123-first-pass-a",
+      "independenceGroupId": "he-fall-measurement-si-20261123-independent-a",
+      "reviewInputFingerprint": "sha256:188db6d66080a7a841f0b5944d8d83d16fc3fd8f9c0ef9a19c7c499b783c61f5",
+      "batchId": "he-fall-measurement-si-20261123-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:15b9ffa700bd2e67d36767eae7e53d3186aac5cf22c83ce35c53bcd345d81f4b",
+      "runId": "he-fall-measurement-si-native-a-20261123",
+      "runManifestDigest": "sha256:90155e6168500179be4026cd028222aaec3aeead833a23b732817189b240129d",
+      "resultsDigest": "sha256:53d910cc9e133caa28e25be5b1dc0cab762288eddc5f533c1c1b00d3403954f3"
+    },
+    "second": {
+      "campaignId": "he-fall-measurement-si-20261123-b",
+      "campaignDigest": "sha256:2972fea83aad5724d912cf9412871c942735ac379b39bd4a0a7beb3e0b3fe98a",
+      "roundId": "he-fall-measurement-si-20261123-first-pass-b",
+      "independenceGroupId": "he-fall-measurement-si-20261123-independent-b",
+      "reviewInputFingerprint": "sha256:188db6d66080a7a841f0b5944d8d83d16fc3fd8f9c0ef9a19c7c499b783c61f5",
+      "batchId": "he-fall-measurement-si-20261123-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:ebefb448445c10f9596f268932e3738646411069b8026212c01f53249bafc5bc",
+      "runId": "he-fall-measurement-si-20261123-first-pass-b-actual-c1da77fe-79eb-426a-bd7e-3f8cd9ac4de8",
+      "runManifestDigest": "sha256:b41891836ed34843a36722654f2ab7a483c4ea0dd7752f8957a424e1a8ef4faf",
+      "resultsDigest": "sha256:9b7755cb87799c5ea353d7313b969acec0882e6c7141e4d40ab83979d4c2bb3a"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "he-fall-measurement-si-20261123-informed-synthesis-decision-001",
+      "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:491c6a9f176b4b6b075decc79d48c3a6aa0027d535b026f60993009b7f5af0ee",
+      "pageFingerprint": "sha256:b6a62e67eca0e77792e6f9e4e74d47f1e2c39c66dd3431b15a34640184a35906",
+      "goalReviewContextFingerprint": "sha256:aca25e71fe84606b143a87730f436393d960b28616562c111d1bfdc44891be70",
+      "finalText": {
+        "titleDe": "Fallhöhe und Fallzeit in einem Messprotokoll festhalten",
+        "titleEn": "Record drop height and fall time in a measurement log",
+        "descriptionDe": "Die lernende Person kann für mehrere Abwürfe Fallhöhe und Fallzeit als zusammengehörige Messpaare mit Einheiten protokollieren. Sie benennt die Datenquelle, die Bezugspunkte der Höhenmessung sowie Beginn und Ende der Zeitmessung.",
+        "descriptionEn": "The learner can record drop height and fall time as paired measurements with units for several drops. They identify the data source, the two reference positions for the height, and the events that start and end the time measurement."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "he-fall-measurement-si-native-a-20261123.e0004439-ed34-5caf-858a-6107918224eb",
+          "recordDigest": "sha256:b1e5d7f2ed505f6867ee67f83723ba52bd2dd25e14aee389a702a616e55095e9"
+        },
+        "second": {
+          "recordId": "531ae40f-640f-4403-a557-586f82213a9e",
+          "recordDigest": "sha256:5720261744c883932579d1d6d0ba5f1303b05b5fd640135d5689ac1d670c853e"
+        }
+      },
+      "rationaleDe": "Die zwei neuen Runden haben den aktuellen Zieltext mit der SI-Vorbereitung und dem angebotenen gesonderten Einzelnachweis beurteilt. Beide empfehlen keep/none. Ich übernehme Runde A. Sie benennt, warum bei einer Aufnahme das Einzelbild allein keine Falldauer ergibt und wie mit nicht belegten Versuchsbedingungen umzugehen ist. Die neue Voraussetzung trägt die Wahl und Umrechnung geeigneter Einheiten für Strecke und Zeit. Für drei Abwürfe lassen sich die Prager Notizen mit den Skalenwerten 20, 40 und 60 cm und den zugehörigen Zeiten 201, 285 und 349 ms geordnet eintragen. Sie dokumentieren weder die exakte Lage des Prager Skalen-Nullpunkts noch eine eigene Erhebung durch die lernende Person. Der Abstand der Kugelunterseite zum Boden bei Freigabe ist eine mögliche eigene Versuchsanordnung. Runde B prüft die neu dargestellte Videoangabe mit 100 Bildern pro Sekunde. Die Zeitintervalle ergeben sich jeweils aus der Differenz der Bildnummern zwischen Freigabe und erstem Bodenkontakt. Der gesonderte Nachweis führt die Leistung an zwei anderen Aufzeichnungen zusammen. Die Zuordnung pro Versuch, Einheiten, Quellen und Bezugsereignisse sind eigenständig nachweisbar. Modellanpassung und g-Bestimmung bleiben nachfolgende Anforderungen. Am gebundenen E.1-Auftrag A–D ändert dieser freiwillige Einzelnachweis nichts.",
+      "rationaleEn": "Both new rounds evaluated the current wording with the SI prerequisite and the separate optional individual assessment. Both recommend keep/none. I select round A because it explains why a single frame does not give the duration of a fall and how to handle missing information about the apparatus. The prerequisite supports choosing and converting appropriate units of distance and time. The Prague notes yield scale readings of 20, 40 and 60 cm paired with times of 201, 285 and 349 ms. They establish neither the exact zero of the Prague scale nor independent collection of these readings by the learner. The clearance of the bottom of the ball above the floor at release is one possible reference for a repeat experiment. Round B checks transfer to a fresh recording at 100 frames per second. Subtracting the release frame number from the first-contact frame number gives elapsed intervals for each drop. The separate assessment requests a record from two other sources, so preservation of pairs, units, provenance and reference events can be demonstrated independently. Model fitting and estimating g are later requirements. This individual assessment leaves the four-part E.1 assignment intact."
+    }
+  ],
+  "manifestFingerprint": "sha256:9161cc85d3b8863f6ad4ac9f6d8251fe07767dd11c3d14a650a063e80c5ea554"
+}

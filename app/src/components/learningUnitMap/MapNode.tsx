@@ -1,13 +1,11 @@
 import React from 'react'
-import { ArrowDownRight, Check, Layers3, Link2, Minus, Send, Target } from 'lucide-react'
+import { ArrowDownRight, Check, Layers3, Link2, Send, Target } from 'lucide-react'
 import { Handle, Position, type Node, type NodeProps } from '@xyflow/react'
 import type { LearningEntryProgress, LearningMapEntry } from './types'
 import type { LayoutPort } from './layoutLearningScope'
 import { getEntryKindLabel } from './presentation'
 
 const sides = { WEST: Position.Left, EAST: Position.Right, NORTH: Position.Top, SOUTH: Position.Bottom }
-
-export type LearningMapPracticeAction = { label: string; open: () => void }
 
 export type LearningMapGoalAction = { title: string; context?: string; label: string; open: () => void }
 export type MapNodeData = {
@@ -23,7 +21,6 @@ export type MapNodeData = {
   unitEntry?: boolean
   language?: 'de' | 'en'
   goalAction?: LearningMapGoalAction
-  practiceAction?: LearningMapPracticeAction
   onSelect: (id: string) => void
   onOpen: (id: string) => void
 }
@@ -38,21 +35,19 @@ function entryPresentation(entry: LearningMapEntry, childCount: number, progress
   const total = progress?.total ?? 0
   const explicit = Math.min(total, Math.max(0, progress?.explicit ?? 0))
   const implicit = Math.min(total - explicit, Math.max(0, progress?.implicit ?? 0))
-  const notRequired = Math.min(total - explicit - implicit, Math.max(0, progress?.notRequired ?? 0))
   const withEvidence = explicit + implicit
-  const open = total - withEvidence - notRequired
+  const open = total - withEvidence
   const counts = english
-    ? `${explicit} directly demonstrated, ${implicit} credited through assessment, ${notRequired} no longer required for this section, ${open} open.`
-    : `${explicit} direkt nachgewiesen, ${implicit} fachlich angerechnet, ${notRequired} für diesen Abschnitt nicht mehr erforderlich, ${open} offen.`
-  const progressLabel = progress?.sectionTitle && (implicit || notRequired)
+    ? `${explicit} directly demonstrated, ${implicit} credited through assessment, ${open} open.`
+    : `${explicit} direkt nachgewiesen, ${implicit} fachlich angerechnet, ${open} offen.`
+  const progressLabel = progress?.sectionTitle && implicit
     ? `${counts} ${english ? 'Scope' : 'Geltungsbereich'}: ${progress.sectionTitle}` : counts
-  const Icon = expandable ? Layers3 : withEvidence ? Check : notRequired ? Minus : activeLearningGoal ? Send : Target
-  const status = explicit ? 'is-explicit' : implicit ? 'is-implicit' : notRequired ? 'is-not-required' : activeLearningGoal ? 'is-active' : progress ? 'is-open' : 'is-context'
+  const Icon = expandable ? Layers3 : withEvidence ? Check : activeLearningGoal ? Send : Target
+  const status = explicit ? 'is-explicit' : implicit ? 'is-implicit' : activeLearningGoal ? 'is-active' : progress ? 'is-open' : 'is-context'
   const marker = expandable ? undefined : explicit ? 'learning-map-direct-evidence' : implicit ? 'learning-map-credited-evidence'
-    : notRequired ? 'learning-map-not-required' : undefined
+    : undefined
   const statusLabel = explicit ? english ? 'Directly demonstrated' : 'Direkt nachgewiesen'
     : implicit ? (progress?.waiverLabel ?? (english ? 'Credited through assessment' : 'Fachlich angerechnet'))
-    : notRequired ? (english ? 'No longer required for this section' : 'Für diesen Abschnitt nicht mehr erforderlich')
     : activeLearningGoal ? english ? 'Active learning goal' : 'Aktives Lernziel' : progress ? english ? 'Still open' : 'Noch offen' : kindLabel
   const meta = `${progress ? kindLabel : entry.eyebrow ?? kindLabel}${expandable ? (total ? ` · ${withEvidence}/${total} ${english ? 'with evidence' : 'mit Nachweis'}` : ` · ${childCount} ${english ? 'sections' : 'Bereiche'}`) : ''}`
   const preparationLabel = english ? 'Preparation' : 'Vorbereitung'
@@ -61,25 +56,15 @@ function entryPresentation(entry: LearningMapEntry, childCount: number, progress
   return { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, marker, statusLabel, meta, preparationLabel, preparationTitle }
 }
 
-function MapPracticeButton({ action, english }: { action: LearningMapPracticeAction; english: boolean }) {
-  return <button type="button" className="lum-node-practice nodrag nopan" data-testid="learning-map-practice-action"
-    aria-label={action.label} title={action.label} onClick={event => {
-      event.stopPropagation()
-      if (event.detail <= 1) action.open()
-    }} onDoubleClick={event => event.stopPropagation()}>
-    {english ? 'Practice' : 'Üben'}
-  </button>
-}
-
 export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningFlowNode>) {
   const { entry, childCount, outsideCount, ports, active, related, muted, progress, activeLearningGoal,
-    goalAction, practiceAction, onSelect, onOpen } = data
+    goalAction, onSelect, onOpen } = data
   const { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, marker, statusLabel, meta,
     preparationLabel, preparationTitle } = entryPresentation(entry, childCount, progress, activeLearningGoal, data.language)
   const source = entry.sourceSections?.map(section => section.title).join(' › ')
   const role = data.unitEntry ? (english ? 'Introduction' : 'Einstieg') : meta
   const detail = goalAction?.context ?? [role, source].filter(Boolean).join(' · ')
-  return <article className={`lum-node lum-node--${entry.kind}${practiceAction ? ' lum-node--has-practice' : ''}${active ? ' is-focused' : ''}${related ? ' is-related' : ''}${muted ? ' is-muted' : ''}`}
+  return <article className={`lum-node lum-node--${entry.kind}${active ? ' is-focused' : ''}${related ? ' is-related' : ''}${muted ? ' is-muted' : ''}`}
     data-entry-id={entry.id} data-entry-kind={entry.kind} data-active-goal={activeLearningGoal || undefined}
     data-preparation={entry.preparation || undefined} data-unit-entry={data.unitEntry || undefined}>
     {ports.map(port => <Handle key={port.id} id={port.id}
@@ -113,6 +98,5 @@ export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningF
     }} title={english ? 'Open section' : entry.kind === 'unit' ? 'Einheit öffnen' : 'Bereich öffnen'} aria-label={english ? `Zoom into ${entry.title}` : `In ${entry.title} hineinzoomen`}>
       <ArrowDownRight size={15} strokeWidth={1.7} />
     </button>}
-    {practiceAction && <MapPracticeButton action={practiceAction} english={english} />}
   </article>
 })

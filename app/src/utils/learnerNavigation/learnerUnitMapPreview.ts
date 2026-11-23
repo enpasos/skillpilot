@@ -1,9 +1,9 @@
-import { isUnitMaterialSource } from '../../utils/unitLearningMaterial'
-import type { StagePlan, StagePlanStructureBinding, StagePlanUnit } from '../../utils/stagePlan'
+import { isUnitMaterialSource } from '../unitLearningMaterial'
+import type { StagePlan, StagePlanStructureBinding, StagePlanUnit } from '../stagePlan'
 import type { UiGoal } from '../../goalTypes'
 import type { GoalPlacement, ProgramUnit } from '../../landscapeTypes'
-import { isCompositionStructureNode } from '../../utils/treeProjectionRuntime'
-import { projectCompositionChildOrder, readCompositionChildOrder } from '../../utils/authoring/compositionViewAuthoring'
+import { isCompositionStructureNode } from '../treeProjectionRuntime'
+import { compositionSiblingOrder } from '../unitStudyOrder'
 import { learnerMapProjectionSignature } from './learnerMapProjection'
 import { buildLearnerUnitMapProjection, type LearnerMapMemberUnit, type LearnerMapUnitIdentity,
   type LearnerMapUnitOrder, type LearnerUnitMapFixture } from './learnerUnitMapProjection'
@@ -299,18 +299,9 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
     // parent. Missing pairs impose no order; actual requires remain visible
     // through the independent map projection. Bound plans always take priority.
     if (!planBoundViewIds.has(viewId(parentGoal)) && parentGoal.extendedData?.compositionChildOrder !== undefined) {
-      // Keep the source identity inventory: Personal Curriculum pruning may
-      // already have removed an empty intermediate child from contains.
-      const sourceChildIds = parentGoal.extendedData.compositionChildOrderChildIds
-      if (!Array.isArray(sourceChildIds) || !sourceChildIds.every(id => typeof id === 'string')
-        || new Set(sourceChildIds).size !== sourceChildIds.length) throw new Error('Missing source child identities for composition childOrder')
-      const declared = readCompositionChildOrder(parentGoal.extendedData.compositionChildOrder,
-        sourceChildIds)!
-      const byNodeId = new Map(unboundSections.map(id => [viewNodeId(goalIndexAll.get(id)!)!, id]))
-      for (const pair of projectCompositionChildOrder(declared, [...byNodeId.keys()]).after) {
-        const current = byNodeId.get(pair.unit), previous = byNodeId.get(pair.after)
-        if (!current || !previous) continue
-        const unit = units.get(current)!.key, before = units.get(previous)!.key
+      const children = unboundSections.map(id => goalIndexAll.get(id)!)
+      for (const { source, target } of compositionSiblingOrder(parentGoal, children)) {
+        const unit = units.get(target)!.key, before = units.get(source)!.key
         if (unit !== before) after.push({ unit, after: before })
       }
       continue

@@ -1,21 +1,18 @@
 import React from 'react'
-import { Check, Minus } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { completionLabel, type CompletionTreeWaiver } from '../utils/levelCompletionApi'
 import { InlineMathText } from './InlineMathText'
 import { TreeStatusTooltip } from './TreeStatusTooltip'
 
-/** A scope-specific waiver occupies the ordinary status slot, without changing mastery. */
+/** An assessment credit explains the gray check without changing individual mastery. */
 export function CompletionWaiverIcon({ waiver, language, surface = 'tree' }: {
   waiver: CompletionTreeWaiver
   language: 'de' | 'en'
   surface?: 'tree' | 'goal-card'
-}): React.ReactElement {
-  const credited = waiver.reason === 'assessment'
+}): React.ReactElement | null {
+  if (waiver.reason !== 'assessment') return null
   const en = language === 'en'
-  const label = credited
-    ? (en ? 'Credited through assessment' : 'Fachlich angerechnet')
-    : (en ? 'No longer required for this section' : 'Für diesen Abschnitt nicht mehr erforderlich')
-  const Icon = credited ? Check : Minus
+  const label = en ? 'Credited through assessment' : 'Fachlich angerechnet'
   return <TreeStatusTooltip
     label={label}
     testId={`completion-${surface}-waiver`}
@@ -25,7 +22,7 @@ export function CompletionWaiverIcon({ waiver, language, surface = 'tree' }: {
         <p className="mt-2">{language === 'en' ? 'Section: ' : 'Lernabschnitt: '}
           <InlineMathText text={completionLabel(waiver.sectionTitle, language)} />
         </p>
-        {waiver.reason !== 'no_remaining_demand' && waiver.assessments.length > 0 && <p className="mt-2">
+        {waiver.assessments.length > 0 && <p className="mt-2">
           {language === 'en' ? 'Passed assessments: ' : 'Bestandene Prüfungen: '}
           <InlineMathText text={waiver.assessments.map(a => completionLabel(a.title, language)).join('; ')} />
           {(waiver.assessmentCount ?? 0) > waiver.assessments.length
@@ -34,13 +31,11 @@ export function CompletionWaiverIcon({ waiver, language, surface = 'tree' }: {
               : ` (+${waiver.assessmentCount! - waiver.assessments.length} weitere)`)
             : null}
         </p>}
-        <p className="mt-2">{credited
-          ? (en ? 'Passed assessments provide evidence for this goal in your learning plan. You can also practise it individually.'
-            : 'Bestandene Prüfungen belegen dieses Ziel für deinen Lernplan. Du kannst es auch einzeln bearbeiten.')
-          : (en ? 'You can still study this goal and earn individual evidence.'
-            : 'Du kannst dieses Ziel weiterhin bearbeiten und einen eigenen Nachweis erwerben.')}</p>
+        <p className="mt-2">{en
+          ? 'Passed assessments provide evidence for this goal in your learning plan. You can also practise it individually.'
+          : 'Bestandene Prüfungen belegen dieses Ziel für deinen Lernplan. Du kannst es auch einzeln bearbeiten.'}</p>
     </>}
   >
-    <Icon data-testid={`completion-${surface}-${credited ? 'credited-evidence' : 'not-required'}`} size={16} strokeWidth={credited ? 3 : 2.5} aria-hidden="true" />
+    <Check data-testid={`completion-${surface}-credited-evidence`} size={16} strokeWidth={3} aria-hidden="true" />
   </TreeStatusTooltip>
 }

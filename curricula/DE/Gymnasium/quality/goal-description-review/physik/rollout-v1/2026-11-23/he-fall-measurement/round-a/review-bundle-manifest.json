@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:16d47d3351966261a5841f7d1e6877c2c1d756d3ceaaf66892ff17a32104c78b",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "he-fall-measurement-20261123-book",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/lernziel-feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:491c6a9f176b4b6b075decc79d48c3a6aa0027d535b026f60993009b7f5af0ee",
+      "pageFingerprint": "sha256:bd86d7fc6120e7b3664ec6a821c7e0b6dcfbccedc494181e60cd4646638f35f5",
+      "evidenceReview": {
+        "reviewId": "he-fall-measurement-20261123",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:872dea33ca7a0991ff0e97b91f1555326fee268a2d24206db6abcb26efe80bf7",
+        "profileFingerprint": "sha256:ee1a1410604933972c072890555da52846f0fffd6817c22b8d96f407890dc434",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:a6f00e6f7a5d60f49e4c0364d73e13003c84d86ac1c2c7d2638b16b7f6de7de7",
+      "bytes": 350778
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:6281ef1147db46e92fefb8be78561def48d0fa15db6099a87053c4fe2ca4c4ab",
+      "bytes": 140087
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:e9c0a09f34bab8c13e70209664e5fcf681f9317b64c12cac4e74e79b5f437c35",
+      "bytes": 3206
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:73f2ed6d51ea0e6075947807c8f47b496f365f268d27cf63ae51322c2b688b91",
+      "bytes": 18764
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:a1d53da5e7ad886b171d99ea93f8464ac898095b14775a9d4c17a1b5f3111182",
+      "bytes": 3207
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:28ce79ce1d6dc91a4fdc8651de53ef054cbadfa5d12238eca032854d63e262a3",
+      "bytes": 9473
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:3032d367ba12a096fa2c63aad25c0daea377cc6836831435ce4c965c0d8e1155",
+      "bytes": 7534
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:3a7ccff707008647123b6ee67539ca7a1c2fb96ea65f3e205c0a5ab500be1edf",
+      "bytes": 6141
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+      "bytes": 6989
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:ada3e6f86de3b2310c09bccc7623b01622b5d875c3bd348878e2924101839a54"
+}

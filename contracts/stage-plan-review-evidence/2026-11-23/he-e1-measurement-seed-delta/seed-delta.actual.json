@@ -1,0 +1,236 @@
+{
+  "status": "PASS",
+  "evidenceKind": "automated-current-seed-and-role-check",
+  "limits": "Technical acceptance of the exact own-authoring delta; this neither rewrites official source authority nor grants learner results.",
+  "reproduce": "python3 -B contracts/stage-plan-review-evidence/2026-11-23/he-e1-measurement-seed-delta/record-seed-delta.py",
+  "historicalAuthority": {
+    "path": "scripts/generate_laender_physics_stage_views.memberships.json",
+    "sha256": "8bedc843bf130a9eebb1ef9df941a9ba5fc9731c628ff672624a6c2df3cf7ebd",
+    "unchanged": true
+  },
+  "currentPhysics": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "b7dbe596d97a935d5c5a10e910826e5783645e253b6f38139e30c0653612af30"
+  },
+  "gate": {
+    "path": "scripts/test_generate_laender_physics_stage_views.py",
+    "sha256": "91e64c9ccdad947e60339841a313de55d47ad4a6d7c50cd1aa95e4184b1386f6"
+  },
+  "exactAddedGoalIds": [
+    "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+    "e0004439-ed34-5caf-858a-6107918224eb"
+  ],
+  "exactAuthorizedViewIds": [
+    "de-he-gym-physics-gk",
+    "de-he-gym-physics-gk-g8",
+    "de-he-gym-physics-gk-g9",
+    "de-he-gym-physics-lk",
+    "de-he-gym-physics-lk-g8",
+    "de-he-gym-physics-lk-g9",
+    "de-he-gym-sekii-physics-gk",
+    "de-he-gym-sekii-physics-lk"
+  ],
+  "checkedViews": 90,
+  "checkedHistoricalAuthorities": 75,
+  "viewsWithoutMeasurementDelta": 82,
+  "targetPairs": 16,
+  "supportOccurrencesOfAddedGoals": 0,
+  "rows": [
+    {
+      "viewId": "de-he-gym-physics-gk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json",
+      "sourceSha256": "1016e2e4f63623373d7502d98a69da487337bdc5a0fa302ef0c670989f1f380f",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "addedTargetGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "currentTargetCount": 588,
+      "previouslyReviewedTargetAdditions": 4,
+      "retainedSourceSeedCount": 582,
+      "retainedSourceSeedSha256": "251c4a1135f7619fe472f005687b75a87cb65f13f70e41728e13595ae0ea3454",
+      "historicalSourceSeedCount": 582,
+      "historicalSourceSeedSha256": "251c4a1135f7619fe472f005687b75a87cb65f13f70e41728e13595ae0ea3454",
+      "historicalSupportCount": 1067,
+      "currentSupportCount": 1076,
+      "allHistoricalSupportRolesPreserved": true
+    },
+    {
+      "viewId": "de-he-gym-physics-gk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json",
+      "sourceSha256": "d4ce3fcbe611fe507a513c5ff2ec636e66e27c34bf3231924369dfa330656f29",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "addedTargetGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "currentTargetCount": 588,
+      "previouslyReviewedTargetAdditions": 4,
+      "retainedSourceSeedCount": 582,
+      "retainedSourceSeedSha256": "251c4a1135f7619fe472f005687b75a87cb65f13f70e41728e13595ae0ea3454",
+      "historicalSourceSeedCount": 582,
+      "historicalSourceSeedSha256": "251c4a1135f7619fe472f005687b75a87cb65f13f70e41728e13595ae0ea3454",
+      "historicalSupportCount": 1067,
+      "currentSupportCount": 1076,
+      "allHistoricalSupportRolesPreserved": true
+    },
+    {
+      "viewId": "de-he-gym-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "sourceSha256": "bb8a532ab46a8acfe3b7e037fcea5de0978614a6d3c9163508d3b783aaed8dfd",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "addedTargetGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "currentTargetCount": 588,
+      "previouslyReviewedTargetAdditions": 4,
+      "retainedSourceSeedCount": 582,
+      "retainedSourceSeedSha256": "251c4a1135f7619fe472f005687b75a87cb65f13f70e41728e13595ae0ea3454",
+      "historicalSourceSeedCount": 582,
+      "historicalSourceSeedSha256": "251c4a1135f7619fe472f005687b75a87cb65f13f70e41728e13595ae0ea3454",
+      "historicalSupportCount": 1067,
+      "currentSupportCount": 1076,
+      "allHistoricalSupportRolesPreserved": true
+    },
+    {
+      "viewId": "de-he-gym-physics-lk-g8",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g8.view.json",
+      "sourceSha256": "2be503ff8b85a96792aee98468aeda35195fe4d0a637733bb28a363ea3f10e79",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "addedTargetGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "currentTargetCount": 611,
+      "previouslyReviewedTargetAdditions": 4,
+      "retainedSourceSeedCount": 605,
+      "retainedSourceSeedSha256": "89f7d04ff4debfb622959bb137b7a36cc4511d5be65ee4d483710cde6c03c373",
+      "historicalSourceSeedCount": 605,
+      "historicalSourceSeedSha256": "89f7d04ff4debfb622959bb137b7a36cc4511d5be65ee4d483710cde6c03c373",
+      "historicalSupportCount": 1044,
+      "currentSupportCount": 1053,
+      "allHistoricalSupportRolesPreserved": true
+    },
+    {
+      "viewId": "de-he-gym-physics-lk-g9",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g9.view.json",
+      "sourceSha256": "6cdbd4e98cdeccb8101d65cbbccc5418647ab5b7af548a40d68c7eced5a67312",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "addedTargetGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "currentTargetCount": 611,
+      "previouslyReviewedTargetAdditions": 4,
+      "retainedSourceSeedCount": 605,
+      "retainedSourceSeedSha256": "89f7d04ff4debfb622959bb137b7a36cc4511d5be65ee4d483710cde6c03c373",
+      "historicalSourceSeedCount": 605,
+      "historicalSourceSeedSha256": "89f7d04ff4debfb622959bb137b7a36cc4511d5be65ee4d483710cde6c03c373",
+      "historicalSupportCount": 1044,
+      "currentSupportCount": 1053,
+      "allHistoricalSupportRolesPreserved": true
+    },
+    {
+      "viewId": "de-he-gym-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "sourceSha256": "fd2e84e54d323f4b4843367bb9ee09c24302b2037077a398f33a278f4189d2e1",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "addedTargetGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "currentTargetCount": 611,
+      "previouslyReviewedTargetAdditions": 4,
+      "retainedSourceSeedCount": 605,
+      "retainedSourceSeedSha256": "89f7d04ff4debfb622959bb137b7a36cc4511d5be65ee4d483710cde6c03c373",
+      "historicalSourceSeedCount": 605,
+      "historicalSourceSeedSha256": "89f7d04ff4debfb622959bb137b7a36cc4511d5be65ee4d483710cde6c03c373",
+      "historicalSupportCount": 1044,
+      "currentSupportCount": 1053,
+      "allHistoricalSupportRolesPreserved": true
+    },
+    {
+      "viewId": "de-he-gym-sekii-physics-gk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "sourceSha256": "37492a0cc50824d7668eef0b4990060776fcff16f5460d5215520aee8a14dc69",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "addedTargetGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "currentTargetCount": 472,
+      "previouslyReviewedTargetAdditions": 4,
+      "retainedSourceSeedCount": 466,
+      "retainedSourceSeedSha256": "9af1801249138a2f166057e7b4c7e1f86cbec4823c2fd213d7edcbec106a278c",
+      "historicalSourceSeedCount": 466,
+      "historicalSourceSeedSha256": "9af1801249138a2f166057e7b4c7e1f86cbec4823c2fd213d7edcbec106a278c",
+      "historicalSupportCount": 1063,
+      "currentSupportCount": 1097,
+      "allHistoricalSupportRolesPreserved": true
+    },
+    {
+      "viewId": "de-he-gym-sekii-physics-lk",
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "sourceSha256": "a65971aa232b8acb144d2273e6ce247df4204c7d63f86a22823a9b87245e5d56",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "addedTargetGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "currentTargetCount": 490,
+      "previouslyReviewedTargetAdditions": 4,
+      "retainedSourceSeedCount": 484,
+      "retainedSourceSeedSha256": "ccaac20e750733b12a6169f094c45f9e68c2e06362d9e58f509b6a29a28a55f3",
+      "historicalSourceSeedCount": 484,
+      "historicalSourceSeedSha256": "ccaac20e750733b12a6169f094c45f9e68c2e06362d9e58f509b6a29a28a55f3",
+      "historicalSupportCount": 1045,
+      "currentSupportCount": 1079,
+      "allHistoricalSupportRolesPreserved": true
+    }
+  ]
+}

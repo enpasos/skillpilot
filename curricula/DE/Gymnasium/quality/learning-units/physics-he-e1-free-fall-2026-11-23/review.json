@@ -1,0 +1,55 @@
+{
+  "reviewId": "he-e1-experimental-learning-routes-independent-content-review",
+  "reviewer": "Codex, unabhängiger Fachreviewer /root/leitregel_redaktion",
+  "authorshipIndependence": "Der Reviewer hat weder die Materialien noch die zugehörigen Lernziele verfasst oder geändert.",
+  "reviewedAt": "2026-11-23T05:24:25+01:00",
+  "decision": "FREIGEGEBEN für die zwei regulären Einzelübungen sowie die deutsch- und englischsprachigen Einstiege in E.1 und die Untereinheit.",
+  "scope": {
+    "goalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "exercises": [
+      {
+        "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "goalSha256": "310b3ca3347114ba28d92fbad623298f8e1f05a096f35be84a2d787efefe3483",
+        "exerciseSha256": "85a426a33fb4cd56565998680c32ed8ee5d6031f2d4f5edfdba12508c21cb81a",
+        "materialPaths": ["curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json"]
+      },
+      {
+        "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "goalSha256": "087e03961731f80a78bd456f4f9edbec3156a1b8d5dbb537a90d88f679af253d",
+        "exerciseSha256": "fea509a69531aecc8d0bdd3ee4bb4ebdf5ea69cabcbf3c70ce8d5c9650491ccd",
+        "materialPaths": [
+          "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+          "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json"
+        ]
+      }
+    ],
+    "openings": [
+      {
+        "goalId": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "materialPath": "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+        "materialSha256": "45790f449ac4eeaad5148be58668a632c96fac1929b49022b0674e00dd296f0e"
+      },
+      {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+        "materialPath": "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json",
+        "materialSha256": "547fdb49d813c57ef010a275e745e56c07ffc547017fddf73f54438a9111b843"
+      }
+    ]
+  },
+  "hashMethod": "SHA-256 über UTF-8 von json.dumps(obj, sort_keys=True, ensure_ascii=False, separators=(',', ':')), ohne abschließenden Zeilenumbruch. Gebunden sind jeweils das vollständige Zielobjekt, das vollständige Aufgabenobjekt oder {unit,intro}. PDF-Digests beziehen sich auf die Originalbytes.",
+  "sources": [
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "sha256": "46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+      "inspection": "PDF-Seite 30, E.1. Abgleich mit den zwei kanonischen Einzelzielen."
+    },
+    {
+      "url": "https://aldebaran.feld.cvut.cz/vyuka/fyzika_1_oi/Labs/02-Free_Fall_sample.pdf",
+      "sha256": "75422fdea67bd798c721bfdc626b0365d66d98a627d09f80c2b129616589b2b2",
+      "inspection": "Scan visuell geprüft. Datum, Versuch und Auflösungen in § 2.2, verwendete fünf Messpaare der ersten Tabelle in § 2.3, Freigabemechanismus und Höhenbezug auf Seite 2. Eigene Gegenrechnung im Fachreview."
+    }
+  ],
+  "requiredCorrections": [],
+  "acceptanceLimits": "Der Chat-Ersatzweg belegt Versuchsverständnis und eigene Auswertung fremder Daten. Eine eigene praktische Datenerhebung darf nur bei tatsächlicher Durchführung vermerkt werden. Die Freigabe bewertet Unterrichtsmaterial. Sie erteilt weder ein individuelles Ergebnis noch die fachliche Teilabnahme der gesamten Einheit."
+}

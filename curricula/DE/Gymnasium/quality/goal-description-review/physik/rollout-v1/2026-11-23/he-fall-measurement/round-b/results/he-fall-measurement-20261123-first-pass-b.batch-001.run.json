@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "he-fall-measurement-20261123-first-pass-b-actual-e3a7126b-c9cf-4258-ad40-94fbbbfd8959",
+  "campaignId": "he-fall-measurement-20261123-b",
+  "roundId": "he-fall-measurement-20261123-first-pass-b",
+  "bundleFingerprint": "sha256:ada3e6f86de3b2310c09bccc7623b01622b5d875c3bd348878e2924101839a54",
+  "bookDigest": "sha256:16d47d3351966261a5841f7d1e6877c2c1d756d3ceaaf66892ff17a32104c78b",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "independenceGroupId": "he-fall-measurement-20261123-independent-b",
+  "batchId": "he-fall-measurement-20261123-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:b9ba0d98499ac2a09d6293f972b1d04f74189f522e7bae76397e78c2b21989e1",
+  "goalIds": [
+    "e0004439-ed34-5caf-858a-6107918224eb"
+  ],
+  "provider": "OpenAI",
+  "model": "Codex GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "generationParametersFingerprint": "sha256:0e5b5c619108cbe1c221bb5412b3aa4da4db3e537b038ba950e2c6261ff69c2e",
+  "blindToOtherRuns": true,
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6281ef1147db46e92fefb8be78561def48d0fa15db6099a87053c4fe2ca4c4ab"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:e9c0a09f34bab8c13e70209664e5fcf681f9317b64c12cac4e74e79b5f437c35"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:b9ba0d98499ac2a09d6293f972b1d04f74189f522e7bae76397e78c2b21989e1"
+    }
+  ],
+  "startedAt": "2026-11-23T04:40:00Z",
+  "completedAt": "2026-11-23T04:43:17Z",
+  "status": "completed",
+  "outputDigest": "sha256:a46684d7d1ced182b0dba33de8c1502ae31955b53382ccf461e74a7a99f33422",
+  "toolchainVersion": "codex-independent-review-v1"
+}

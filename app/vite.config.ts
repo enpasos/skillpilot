@@ -104,7 +104,7 @@ PACKAGE_CONSUMER_SOURCE_REPLACEMENTS.set(
   path.resolve(APP_ROOT, 'src', 'packageConsumer', 'learnerGoalFeedbackUnavailable.tsx'),
 )
 PACKAGE_CONSUMER_SOURCE_REPLACEMENTS.set(
-  path.resolve(APP_ROOT, 'src', 'components', 'learningUnitMap', 'learnerUnitMapPreviewSubjects'),
+  path.resolve(APP_ROOT, 'src', 'utils', 'learnerNavigation', 'learnerUnitMapPreviewSubjects'),
   path.resolve(APP_ROOT, 'src', 'packageConsumer', 'learnerUnitMapPreviewSubjects.ts'),
 )
 

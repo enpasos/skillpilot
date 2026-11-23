@@ -4,7 +4,7 @@ import { prepareLandscapeEntries, type LandscapeEntry } from '../src/hooks/useLa
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import { applyCompositionViewProjection, applyPersonalCurriculumProjection } from '../src/utils/compositionViewRuntime'
 import { buildLearnerNavigationProjection, normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
-import { buildLearnerUnitMapProjection } from '../src/components/learningUnitMap/learnerUnitMapProjection'
+import { buildLearnerUnitMapProjection } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
 import type { CompositionView } from '../src/utils/authoring/compositionViewAuthoring'
 import { compileCompositionView } from '../src/utils/authoring/compositionViewAuthoring'

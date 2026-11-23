@@ -15,7 +15,7 @@ import { fingerprintCurrentCurriculumDocument as digest, loadCurrentCurriculumCa
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import { assessmentReviewRevisions, UnitGraph, type UnitGraphLandscape } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
-import { validateUnitMaterialOrientations } from './lib/unitMaterialOrientationValidation'
+import { hasGuidedUnitIntroduction, validateUnitMaterialOrientations } from './lib/unitMaterialOrientationValidation'
 import { fingerprintPositiveGoalEvidenceProfile, type PositiveGoalEvidenceReviewRecord } from './positiveGoalEvidenceProfileModel'
 
 interface Part {
@@ -50,6 +50,8 @@ interface MaterialDocument {
   schemaVersion?: number
   unit: MaterialUnit
   intro?: Record<string, unknown>
+  exercises?: { goalId: string }[]
+  individualAssessmentOffers?: { targetGoalId: string; assessmentGoalId: string }[]
 }
 
 const root = realpathSync(resolve(import.meta.dirname, '../..'))
@@ -102,7 +104,7 @@ function orientationIntroduction(unit: MaterialUnit, goalId: string, materials: 
   const material = matches[0]
   assert.equal(material.unit.compositionNodeId, unit.compositionNodeId, 'Orientation material belongs to another section')
   assert.equal(unit.orientationGoalId, goalId, 'Orientation credit must name the material opening')
-  assert.equal(material.schemaVersion, 2, 'Orientation credit requires a version 2 introduction')
+  assert(hasGuidedUnitIntroduction(material.schemaVersion), 'Orientation credit requires a version 2 or 3 introduction')
   const intro = material.intro
   assert(intro && typeof intro === 'object' && !Array.isArray(intro), 'Missing bilingual orientation introduction')
   assert.deepEqual(Object.keys(intro).sort(), ['de', 'en'], 'Orientation requires exactly German and English introductions')
@@ -227,7 +229,7 @@ function matchingStructures(nodes: CompositionViewNode[], id: string): Compositi
   return nodes.flatMap(node => node.kind !== 'structure' ? [] : node.id === id ? [node] : matchingStructures(node.children, id))
 }
 
-function offeredSectionTargetAtoms(view: CompositionView, nodeId: string, entries: LandscapeEntry[]): Map<string, UiGoal> {
+function offeredSectionTargetAtoms(view: CompositionView, nodeId: string | null, entries: LandscapeEntry[]): Map<string, UiGoal> {
   const sectionId = `composition:${view.viewId}:structure:${nodeId}`
   const projected = applyCompositionViewProjection(entries, view)
   const owner = projected.find(entry => entry.meta.landscapeId === view.landscapeId)
@@ -249,13 +251,51 @@ function offeredSectionTargetAtoms(view: CompositionView, nodeId: string, entrie
     return reachable
   }
   const roots = owner.goals.filter(goal => goal.tags?.includes('root')).map(goal => goal.id)
-  assert(reachableFrom(roots).has(sectionId), 'Unreachable section in the selected view: ' + sectionId)
+  const viewGoals = reachableFrom(roots)
+  assert(nodeId === null || viewGoals.has(sectionId), 'Unreachable section in the selected view: ' + sectionId)
   const targets = new Map<string, UiGoal>()
-  for (const id of reachableFrom([sectionId])) {
+  for (const id of nodeId === null ? viewGoals : reachableFrom([sectionId])) {
     const goal = goals.get(id)!
     if (goal.type === 'atomic') targets.set(id, goal)
   }
   return targets
+}
+
+export function validateIndividualAssessmentOffers(materials: MaterialDocument[], graph: UnitGraph,
+  views: Map<string, CompositionView>, entries: LandscapeEntry[]): void {
+  const bound = new Set<string>()
+  for (const material of materials) {
+    if (!material.individualAssessmentOffers) continue
+    const { unit, individualAssessmentOffers } = material
+    assert.equal(material.schemaVersion, 3, 'Individual assessment offers require material v3')
+    for (const viewId of unit.viewIds) {
+      const view = views.get(viewId)
+      assert(view?.landscapeId === unit.landscapeId, 'Missing bound view for an individual assessment')
+      const ownTargets = offeredSectionTargetAtoms(view, unit.compositionNodeId, entries)
+      const viewTargets = offeredSectionTargetAtoms(view, null, entries)
+      for (const { targetGoalId, assessmentGoalId } of individualAssessmentOffers) {
+        const target = graph.resolve(targetGoalId, unit.landscapeId)
+        const assessment = graph.resolve(assessmentGoalId, unit.landscapeId)
+        assert(graph.landscapeId(target) === unit.landscapeId && graph.landscapeId(assessment) === unit.landscapeId,
+          'Individual assessment and exercise must belong to the same subject as the unit')
+        assert(ownTargets.has(targetGoalId) && graph.isAtomic(target) && graph.kind(target) === 'ordinary'
+          && material.exercises?.filter(exercise => exercise.goalId === targetGoalId).length === 1,
+        'Individual assessment offers must name an ordinary exercise of the bound unit')
+        const exam = viewTargets.get(assessmentGoalId)?.examData
+        assert(graph.isAtomic(assessment) && graph.kind(assessment) === 'assessment' && exam?.reviewStatus === 'released',
+          'Individual assessment must be a released, available assessment in the bound view')
+        assert.deepEqual(exam.coveredGoalIds, [targetGoalId], 'Individual assessment must cover exactly its exercise goal')
+        assert(graph.reach(assessment).has(target), 'Individual assessment must require its exercise goal')
+        assert(!materials.some(other => other.unit.landscapeId === unit.landscapeId
+          && other.unit.assessmentContract?.viewIds.includes(viewId)
+          && other.unit.assessmentContract.parts.some(part => part.goalId === assessmentGoalId)),
+        'A required unit part cannot be declared an individual assessment offer')
+        const binding = JSON.stringify([unit.landscapeId, viewId, assessmentGoalId])
+        assert(!bound.has(binding), 'Duplicate individual assessment offer in the bound view')
+        bound.add(binding)
+      }
+    }
+  }
 }
 
 export function validateSectionAssessmentPolicy(
@@ -308,7 +348,7 @@ export function validateSectionAssessmentPolicy(
 
 function loadReleasedViews(materials: MaterialDocument[]): Map<string, CompositionView> {
   const selected = new Set(materials.flatMap(({ schemaVersion, unit }) => [
-    ...(schemaVersion === 2 ? unit.viewIds : []),
+    ...(hasGuidedUnitIntroduction(schemaVersion) ? unit.viewIds : []),
     ...(unit.assessmentContract?.viewIds ?? []),
     ...(unit.assessmentContract?.planningCredits ?? []).flatMap(credit => credit.release.viewIds),
   ]))
@@ -335,6 +375,7 @@ export function checkUnitPlanningReleases(): string[] {
   validateUnitMaterialOrientations(materials, entries.map(entry => entry.landscape), views)
   const graph = new UnitGraph(entries.map(({ landscape }) => landscape as UnitGraphLandscape))
   const projectionEntries = prepareLandscapeEntries(entries.map(({ landscape }) => landscape as SkillLandscape))
+  validateIndividualAssessmentOffers(materials, graph, views, projectionEntries)
   const rollouts: Rollout[] = readJson('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json').subjects
   const active = new Set<string>()
   for (const unit of units) {

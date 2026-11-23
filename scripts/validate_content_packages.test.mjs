@@ -484,3 +484,28 @@ test('curated successors retain pilot links and LEIFIphysik exposes both touch-t
   assert.equal(combinedCircuitLinks.length, 4, 'LEIFI must fit the four-link resolver limit')
   assert.doesNotThrow(() => validatePackage(leifi, goals))
 })
+
+test('translations share the selected material and its provider boundary', async () => {
+  const pkg = packages.find(item => item.packageId === 'enpasos-simufisica')
+  assert.ok(pkg)
+  assert.equal(pkg.materials.length, 1)
+  const material = pkg.materials[0]
+  assert.deepEqual(material.goalIds, ['09029573-864f-40ca-bf8a-cee7bf6dcb73'])
+  assert.equal(material.language, 'de')
+  assert.equal(material.translations.length, 1)
+  assert.equal(material.translations[0].language, 'en')
+  const requested = []
+  await checkPublicLinks([pkg], async url => {
+    requested.push(url)
+    return new Response('simulation', { headers: { 'content-type': 'text/html' } })
+  })
+  assert.deepEqual(requested, ['https://simufisica.com/de/freier-fall/', 'https://simufisica.com/en/free-fall/'])
+  for (const patch of [
+    { language: 'de' }, { language: 'EN' }, { url: 'https://example.org/free-fall/' },
+    { url: 'https://simufisica.com/en/?id=123' }, { title: '' }, { sections: 'private' }, { goalIds: [] },
+  ]) {
+    const modified = structuredClone(pkg)
+    Object.assign(modified.materials[0].translations[0], patch)
+    assert.throws(() => validatePackage(modified, goals))
+  }
+})

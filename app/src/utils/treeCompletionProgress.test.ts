@@ -17,8 +17,8 @@ const children = (...entries: [string, string[]][]) => new Map(entries)
   const visible = children(['root', ['exam', 'a', 'b']])
   const progress = buildTreeCompletionProgressMap(goals, visible, id => id === 'exam' ? 1 : 0, credits(['a', 'b']))
   assert.deepEqual(progress.get('root'), {
-    totalCount: 3, explicitCount: 1, implicitCount: 2, notRequiredCount: 0, openCount: 0,
-    totalWeight: 3, explicitWeight: 1, implicitWeight: 2, notRequiredWeight: 0, openWeight: 0,
+    totalCount: 3, explicitCount: 1, implicitCount: 2, openCount: 0,
+    totalWeight: 3, explicitWeight: 1, implicitWeight: 2, openWeight: 0,
     explicitRatio: 1 / 3, implicitRatio: 2 / 3,
   }, 'one passed goal and two implicit goals fill separate segments without extra mastery')
 }
@@ -42,8 +42,8 @@ const children = (...entries: [string, string[]][]) => new Map(entries)
     return id === 'a' ? 1 : 0
   }, credits(['shared']))
   assert.deepEqual(progress.get('root'), {
-    totalCount: 3, explicitCount: 1, implicitCount: 1, notRequiredCount: 0, openCount: 1,
-    totalWeight: 10, explicitWeight: 2, implicitWeight: 3, notRequiredWeight: 0, openWeight: 5,
+    totalCount: 3, explicitCount: 1, implicitCount: 1, openCount: 1,
+    totalWeight: 10, explicitWeight: 2, implicitWeight: 3, openWeight: 5,
     explicitRatio: 0.2, implicitRatio: 0.3,
   }, 'diamond paths and duplicate child entries count each atom once, using atom weights only')
   assert.equal(progress.get('left')?.totalWeight, 5)
@@ -113,8 +113,8 @@ const children = (...entries: [string, string[]][]) => new Map(entries)
   }
   const result = buildTreeCompletionProgressMap(goals, children(['root', ids]), id => direct.has(id) ? 1 : 0, waivers)
   assert.deepEqual(result.get('root'), {
-    totalCount: 9, explicitCount: 4, implicitCount: 2, notRequiredCount: 2, openCount: 1,
-    totalWeight: 9, explicitWeight: 4, implicitWeight: 2, notRequiredWeight: 2, openWeight: 1,
+    totalCount: 9, explicitCount: 4, implicitCount: 2, openCount: 3,
+    totalWeight: 9, explicitWeight: 4, implicitWeight: 2, openWeight: 3,
     explicitRatio: 4 / 9, implicitRatio: 2 / 9,
   }, 'only individual results and genuine credits supply evidence; waived work and open goals remain distinct')
 }

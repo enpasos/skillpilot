@@ -368,7 +368,7 @@ try {
   const vectorUnit = page.locator(`.lum-node[data-entry-id="${section.vectors}"]`)
   assert.equal(await vectorUnit.locator('.lum-node-meta').innerText(), 'Einheit · 1/3 mit Nachweis')
   assert.equal(await vectorUnit.locator('.lum-node-progress').getAttribute('aria-label'),
-    '1 direkt nachgewiesen, 0 fachlich angerechnet, 0 für diesen Abschnitt nicht mehr erforderlich, 2 offen.',
+    '1 direkt nachgewiesen, 0 fachlich angerechnet, 2 offen.',
     'the unit reports its one directly demonstrated goal and the two goals still open')
   const [vectorsBox, analysisBox] = await Promise.all([node(page, section.vectors).boundingBox(), node(page, id.other).boundingBox()])
   assert.ok(vectorsBox && analysisBox && vectorsBox.x + vectorsBox.width < analysisBox.x,

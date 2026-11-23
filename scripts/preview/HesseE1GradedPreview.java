@@ -146,6 +146,9 @@ public final class HesseE1GradedPreview {
             learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("selectProfile", "automatic:" + section,
                     null, null, revision(id)));
         }
+        // Read the unit's graded evidence while that assessment profile is selected.
+        // The ordinary plan can have the personal curriculum as its active profile.
+        var unit = learners.getLearnerState(id).levelCompletion().unitAssessment();
         if (unitAssignment) {
             // Return to the ordinary plan through the published route exit.
             learners.chooseLevelCompletion(id, new LevelCompletionActionRequest("leaveProfile", null, null, null, revision(id)));
@@ -166,7 +169,6 @@ public final class HesseE1GradedPreview {
         var next = plan.nextEligibleGoal();
         var status = plans.getTodayStatus(id, "de").subjects().stream()
                 .filter(subject -> subject.landscapeIds().contains(PHYSICS)).findFirst().orElseThrow();
-        var unit = learners.getLearnerState(id).levelCompletion().unitAssessment();
         var result = new LinkedHashMap<String, Object>();
         result.put("targetedFrontier", targeted);
         result.put("strictTargetedFrontier", strictTargets);

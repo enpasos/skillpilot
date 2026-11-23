@@ -1,0 +1,207 @@
+{
+  "observation": "Gerenderte persönliche Lernkarten einschließlich aller verschachtelten Beziehungstafeln",
+  "measuredAt": "2026-11-23T06:31:38+01:00",
+  "method": "Die drei Vorschaupfade wurden pro Physikkurs im lokalen Chromium geöffnet. Aus jeder geöffneten Lernkarte wird das vollständige Projektionsobjekt des Renderers einschließlich aller verschachtelten Beziehungstafeln gelesen. Die ursprünglichen Vorher-Rohmessungen bleiben unverändert erhalten; die Nachher-Rohmessungen stammen aus den finalen GK-/LK-Vorschauen.",
+  "reproduction": "Aus dem Repository-Wurzelverzeichnis node contracts/stage-plan-review-evidence/2026-11-23/he-e1-free-fall/measure-map.cjs http://localhost:PORT AUSGABE.json ausführen. Die finalen Nachher-Ports sind 5269 (GK) und 5271 (LK). Die Vorher-Werte sind durch die unveränderten baseline-gk.actual.json und baseline-lk.actual.json gebunden; die flüchtigen alten Server sind keine Reproduktionsvoraussetzung.",
+  "before": {
+    "ports": {
+      "GK": 5253,
+      "LK": 5255
+    },
+    "data": "Unveränderte ursprüngliche Rohmessungen der weiterlaufenden synthetischen G8/G9-Profile vom 22. November. Die Dateien enthalten ausschließlich curriculare Ziel-IDs und fachliche Projektionszählwerte, keine Profil- oder Sitzungsschlüssel. Die Vite-Vorschauen verwendeten das Frontend im gemeinsamen Arbeitsstand.",
+    "referenceMainCommit": "ebdd229938e771dd9e18976f54ddea54fb1a14ea",
+    "canonicalPhysicsAtReferenceCommitSha256": "07d69cbaef9a179e89fae9d98adce2d93aeb99b8f034261aa17f74509ca28e3b",
+    "rawMeasurements": [
+      {
+        "file": "baseline-gk.actual.json",
+        "sha256": "422d995758222dcf9a830edaccc6bad62aa29d22f5617b2b8a81677179f7bdff",
+        "course": "GK"
+      },
+      {
+        "file": "baseline-lk.actual.json",
+        "sha256": "d873b36d28881056ec8acca02384abf58e4bf96f0121760ad23474c3a546a61d",
+        "course": "LK"
+      }
+    ]
+  },
+  "after": {
+    "ports": {
+      "GK": 5269,
+      "LK": 5271
+    },
+    "data": "Frisch gemessene finale Vorschauprofile mit SI-Voraussetzung am Messprotokoll und zusätzlichem individuellem Nachweis.",
+    "canonicalPhysicsSourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "canonicalPhysicsSourceSha256": "b7dbe596d97a935d5c5a10e910826e5783645e253b6f38139e30c0653612af30",
+    "catalogSourceVerification": "Die finalen Vorschau-Backends verwenden einen getrennten Curriculum-Snapshot. Dessen kanonische Physikdatei wurde bei dieser Prüfung mit der Repositorydatei bytegleich verglichen; der Hash bindet diese Quelldatei, keine neu serialisierte API-Antwort.",
+    "rawMeasurements": [
+      {
+        "file": "current-gk.actual.json",
+        "sha256": "a7bac0c43c289eff0b414fb1a939630f2477a1bae8c7e05834c3a5b9f2b25a75",
+        "course": "GK"
+      },
+      {
+        "file": "current-lk.actual.json",
+        "sha256": "ac625edaf9f927e7dc99fa99b4098da3492a764821f814bdf8b0203ec2c4f6f2",
+        "course": "LK"
+      }
+    ]
+  },
+  "hashMethod": "Unveränderte Dateibytes für Kataloge, alphabetisch sortierte UTF-8-Ziel-IDs durch LF getrennt und mit abschließendem LF für Zielmengen.",
+  "views": [
+    {
+      "physicsCourseOfPreview": "GK",
+      "route": "/nativ/G8/E1",
+      "root": "__learner_goal_map_root__",
+      "before": {
+        "goals": 621,
+        "sortedGoalIdsSha256": "47e2d8a4a5226cb167feb5d84e165a4d6dad70052dfccc39181ebdfcec71e343",
+        "units": 72,
+        "boardsWithRelations": 61,
+        "relations": 608,
+        "backwards": []
+      },
+      "after": {
+        "goals": 623,
+        "sortedGoalIdsSha256": "641841378f67386c78b2a603f1e4678fcbceb2a24427cbbc5eda72b8403241f0",
+        "units": 72,
+        "boardsWithRelations": 61,
+        "relations": 608,
+        "backwards": []
+      },
+      "addedGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "removedGoalIds": []
+    },
+    {
+      "physicsCourseOfPreview": "GK",
+      "route": "/nativ/G9/E1",
+      "root": "__learner_goal_map_root__",
+      "before": {
+        "goals": 621,
+        "sortedGoalIdsSha256": "47e2d8a4a5226cb167feb5d84e165a4d6dad70052dfccc39181ebdfcec71e343",
+        "units": 72,
+        "boardsWithRelations": 61,
+        "relations": 608,
+        "backwards": []
+      },
+      "after": {
+        "goals": 623,
+        "sortedGoalIdsSha256": "641841378f67386c78b2a603f1e4678fcbceb2a24427cbbc5eda72b8403241f0",
+        "units": 72,
+        "boardsWithRelations": 61,
+        "relations": 608,
+        "backwards": []
+      },
+      "addedGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "removedGoalIds": []
+    },
+    {
+      "physicsCourseOfPreview": "GK",
+      "route": "/vergleich/mathematik",
+      "root": "__learner_goal_map_root__",
+      "before": {
+        "goals": 679,
+        "sortedGoalIdsSha256": "ba67d4ae14c29fb2f9bc930d409bca279e103f6423f36aadb67da11c74bdcf2c",
+        "units": 62,
+        "boardsWithRelations": 50,
+        "relations": 613,
+        "backwards": []
+      },
+      "after": {
+        "goals": 679,
+        "sortedGoalIdsSha256": "ba67d4ae14c29fb2f9bc930d409bca279e103f6423f36aadb67da11c74bdcf2c",
+        "units": 62,
+        "boardsWithRelations": 50,
+        "relations": 613,
+        "backwards": []
+      },
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    },
+    {
+      "physicsCourseOfPreview": "LK",
+      "route": "/nativ/G8/E1",
+      "root": "__learner_goal_map_root__",
+      "before": {
+        "goals": 668,
+        "sortedGoalIdsSha256": "405066850457297d85a9939b2ac9bf127f388ab4b1366dd6f08ac34df81e0297",
+        "units": 72,
+        "boardsWithRelations": 60,
+        "relations": 636,
+        "backwards": []
+      },
+      "after": {
+        "goals": 670,
+        "sortedGoalIdsSha256": "81dff142bba1a61c27a2be2e620d1b49ff339ea91f0dee836997d33396537c72",
+        "units": 72,
+        "boardsWithRelations": 60,
+        "relations": 636,
+        "backwards": []
+      },
+      "addedGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "removedGoalIds": []
+    },
+    {
+      "physicsCourseOfPreview": "LK",
+      "route": "/nativ/G9/E1",
+      "root": "__learner_goal_map_root__",
+      "before": {
+        "goals": 668,
+        "sortedGoalIdsSha256": "405066850457297d85a9939b2ac9bf127f388ab4b1366dd6f08ac34df81e0297",
+        "units": 72,
+        "boardsWithRelations": 60,
+        "relations": 636,
+        "backwards": []
+      },
+      "after": {
+        "goals": 670,
+        "sortedGoalIdsSha256": "81dff142bba1a61c27a2be2e620d1b49ff339ea91f0dee836997d33396537c72",
+        "units": 72,
+        "boardsWithRelations": 60,
+        "relations": 636,
+        "backwards": []
+      },
+      "addedGoalIds": [
+        "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "removedGoalIds": []
+    },
+    {
+      "physicsCourseOfPreview": "LK",
+      "route": "/vergleich/mathematik",
+      "root": "__learner_goal_map_root__",
+      "before": {
+        "goals": 679,
+        "sortedGoalIdsSha256": "ba67d4ae14c29fb2f9bc930d409bca279e103f6423f36aadb67da11c74bdcf2c",
+        "units": 62,
+        "boardsWithRelations": 50,
+        "relations": 613,
+        "backwards": []
+      },
+      "after": {
+        "goals": 679,
+        "sortedGoalIdsSha256": "ba67d4ae14c29fb2f9bc930d409bca279e103f6423f36aadb67da11c74bdcf2c",
+        "units": 62,
+        "boardsWithRelations": 50,
+        "relations": 613,
+        "backwards": []
+      },
+      "addedGoalIds": [],
+      "removedGoalIds": []
+    }
+  ],
+  "correction": {
+    "previousReportMeasuredAt": "2026-11-23T06:02:00+01:00",
+    "previousUnverifiedAfterCatalogSha256": "f1c6137f190e9884325673d22ffb9e7a6975bcc87b367f43298a770cf08b940f",
+    "description": "Die zunächst notierte Nachher-Hashangabe stimmt nicht mit dem finalen Curriculum-Snapshot überein. Sie wird durch den tatsächlich geprüften Quellenhash und neue Nachher-Rohmessungen auf 5269/5271 ersetzt. Die ursprünglichen Vorher-Rohmessungen bleiben erhalten."
+  }
+}

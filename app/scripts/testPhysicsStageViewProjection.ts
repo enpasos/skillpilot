@@ -13,8 +13,8 @@ import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAut
 import { applyCompositionViewProjection, applyPersonalCurriculumProjection } from '../src/utils/compositionViewRuntime'
 import { normalizeLearnerProjectedEntries, collapseLearnerSubjectRoots } from '../src/utils/learnerTreeProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
-import { deriveLearnerUnitMapPreview, PHYSICS_LANDSCAPE_ID } from '../src/components/learningUnitMap/learnerUnitMapPreview'
-import { buildLearnerUnitMapProjection } from '../src/components/learningUnitMap/learnerUnitMapProjection'
+import { deriveLearnerUnitMapPreview, PHYSICS_LANDSCAPE_ID } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
+import { buildLearnerUnitMapProjection } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
 
 const directory = fileURLToPath(new URL('../../curricula/DE/Gymnasium/', import.meta.url))
 const load = (path: string) => JSON.parse(readFileSync(path, 'utf8'))

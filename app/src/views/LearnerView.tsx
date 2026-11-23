@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import './LearnerViewPresentation.css'
 import { useLearnerUpdates } from '../hooks/useLearnerUpdates'
 import { useTranslation } from '../hooks/useTranslation'
+import { useLearnerUnitFixture } from '../utils/learnerNavigation/useLearnerUnitFixture'
+import type { LearnerUnitMapFixture } from '../utils/learnerNavigation/learnerUnitMapProjection'
 import { CompetenceTree } from '../components/CompetenceTree'
 import { LearnerMapBoundary } from '../components/LearnerMapBoundary'
 import type { TreeStructureMode } from '../components/CompetenceTree'
@@ -23,8 +25,7 @@ import { LearnerDataManagementDialog } from '../components/LearnerDataManagement
 import { GoalCard } from '../components/GoalCard'
 import { MaterialSelectionPanel } from '../components/MaterialSelectionPanel'
 import { GoalExamPassHistory } from '../components/GoalExamPassHistory'
-import { GoalPracticeAction, GoalPracticeDialog } from '../components/GoalPracticeDialog'
-import type { MapPracticeExercise } from '../components/learningUnitMap/types'
+import { GoalExerciseMaterial } from '../components/GoalExerciseMaterial'
 import { UnitIntroduction } from '../components/UnitIntroduction'
 import { requestUnitIntroductionGate, unitIntroductionForSelection } from '../utils/unitIntroduction'
 import { clearUnitStudyIntent, readUnitStudyIntent, saveUnitStudyIntent, unitStudyIntentDecision } from '../utils/unitStudyIntent'
@@ -151,6 +152,7 @@ const NativeGoalNavigationMap = lazy(async () => {
 
 /** The map reads exactly the scoped navigation projection used by the goal tree. */
 export interface LearnerGoalNavigationMapProps {
+  unitFixture?: LearnerUnitMapFixture
   rootGoals: UiGoal[]
   goalIndexAll: Map<string, UiGoal>
   /** Learner landscapes; the map also reads their declared learning units from `meta`. */
@@ -170,10 +172,9 @@ export interface LearnerGoalNavigationMapProps {
   onSelectGoal: (goalId: string) => void
   getFlashcardSource?: (goal: UiGoal) => string | undefined
   onPracticeFlashcards?: (request: FlashcardPracticeRequest) => void
-  onPracticeGoal?: (goalId: string, exercise: MapPracticeExercise) => void
   onOpenGoal?: (goalId: string) => void
   /** Read-only backend gate; a redirect leaves the resource unopened. */
-  onRequestUnitStudy?: (scopeGoalId: string, targetGoalId?: string) => Promise<boolean>
+  onRequestUnitStudy?: (scopeGoalId: string) => Promise<boolean>
   active: boolean
   onReturnToTree?: () => void
   /** Escape outside the map search closes the full-window map instead of leaving a level. */
@@ -566,8 +567,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
   const [srsMasteryTick, setSrsMasteryTick] = useState(0);
   const [srsReloadCounter, setSrsReloadCounter] = useState(0)
   const [optimisticSrsMasteryByGoal, setOptimisticSrsMasteryByGoal] = useState<Record<string, number>>({});
-  const practiceButtonRef = useRef<HTMLButtonElement>(null)
-  const [openPractice, setOpenPractice] = useState<{ goalId: string; exercise: MapPracticeExercise } | null>(null)
   const [memoryPractice, setMemoryPractice] = useState<FlashcardPracticeRequest | null>(null)
   const [verifiedRecallBatchSizeByGoal, setVerifiedRecallBatchSizeByGoal] = useState<Record<string, number>>({})
 
@@ -1232,11 +1231,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
     return visible
   }, [visibleRootGoals, goalIndexAll, isPersonalConfigHydrating, personalConfig, getVisibleChildIds])
 
-  const selectedPracticeGoalId = currentGoal?.id
-  useEffect(() => { setOpenPractice(null) }, [learnerStateScopeKey, learnerTreeScopeKey, localizedLanguage])
-  useEffect(() => {
-    if (selectedPracticeGoalId) setOpenPractice(request => request?.goalId === selectedPracticeGoalId ? request : null)
-  }, [selectedPracticeGoalId])
+  const unitFixture = useLearnerUnitFixture({ rootGoals: visibleRootGoals, goalIndexAll: navigationGoals,
+    canonicalGoalSources, visibleGoalIds: visibleGoals, visibleChildrenByParent: learnerVisibleChildrenByParent,
+    useRawGoalTitles: currentLandscapeHasMatchedCompositionView, language: localizedLanguage })
 
   const goalExercise = useMemo(() => {
     if (!currentGoal || !visibleGoals.has(currentGoal.id)
@@ -1780,7 +1777,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
 
   useEffect(() => {
     if (guidedPersonalizationGateReason !== 'selection') {
-      personalizationAutoOpenKeyRef.current = null
+      // A refresh can temporarily hide the gate. Respect a dismissed setup
+      // until the server confirms completion or the learner profile changes.
+      if (guidedPersonalizationGateReason === null) personalizationAutoOpenKeyRef.current = null
       return
     }
     if (canAutoRepairAbi26Personalization) {
@@ -3823,6 +3822,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
               completionWaivers={completionTreeWaivers}
               audience="learner"
               visibleChildrenByParentOverride={learnerVisibleChildrenByParent}
+              unitFixture={unitFixture}
               useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
             />
           )}
@@ -4178,7 +4178,11 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                       hideTitleWhenPrimaryVisualizationVisible
                       isPlanned={plannedGoals.has(currentGoal.id)}
                       isActive={effectiveActiveGoalId === currentGoal.id}
-                      onSetActive={handleSetActiveGoal}
+                      onSetActive={async goalId => {
+                        if (goalExercise && currentGoalHasOpenIntroduction && goalId === currentGoal.id
+                          && !await requestUnitStudy(goalId, goalId)) return
+                        await handleSetActiveGoal(goalId)
+                      }}
                       onRevealActive={revealActiveGoal}
                       isFrontier={backendFrontierIds.has(currentGoal.id) || currentGoalHasOpenIntroduction}
                       useRawGoalTitles={currentLandscapeHasMatchedCompositionView}
@@ -4254,16 +4258,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                         : 'Für den gewählten Abschnitt ist die Vorbereitung zu diesem Lernziel nicht mehr erforderlich. Du kannst es freiwillig weiterlernen.')}
                   </p>
                 ) : null}
-                {goalExercise && <GoalPracticeAction key={`${learnerStateScopeKey}:${learnerTreeScopeKey}:${currentGoal.id}`} exercise={goalExercise} language={localizedLanguage} buttonRef={practiceButtonRef}
-                  onOpen={async () => {
-                    if (await requestUnitStudy(currentGoal.id, currentGoal.id)) setOpenPractice({ goalId: currentGoal.id, exercise: goalExercise })
-                  }} />}
-                {openPractice?.goalId === currentGoal.id && <GoalPracticeDialog exercise={openPractice.exercise} language={localizedLanguage}
-                  onDismiss={() => {
-                    setOpenPractice(null)
-                    if (practiceButtonRef.current) practiceButtonRef.current.focus()
-                    else focusSelectedGoalCard(currentGoal.id)
-                  }} />}
+                {goalExercise && !currentGoalHasOpenIntroduction && <GoalExerciseMaterial
+                  key={currentGoal.id} exercise={goalExercise} language={localizedLanguage} />}
                 <GoalAdditionalMaterials
                   skillpilotId={skillpilotId}
                   goalId={currentGoal.id}
@@ -4486,6 +4482,7 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           <Suspense fallback={<div className="learner-map-status" role="status">{localizedLanguage === 'en' ? 'Loading map…' : 'Lernkarte wird geladen…'}</div>}>
           {(() => {
             const mapProps: LearnerGoalNavigationMapProps = {
+            unitFixture,
             rootGoals: visibleRootGoals,
             language: localizedLanguage,
             useRawGoalTitles: currentLandscapeHasMatchedCompositionView,
@@ -4508,12 +4505,6 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
             onSelectGoal: selectMapGoal,
             onRequestUnitStudy: requestUnitStudy,
             getFlashcardSource: getSrsSource,
-            onPracticeGoal: (goalId, exercise) => {
-              if (!visibleGoals.has(goalId) || !goalIndexAll.has(goalId)) return
-              setOpenPractice({ goalId, exercise })
-              selectMapGoal(goalId)
-              closeLearningMap('none')
-            },
             onPracticeFlashcards: request => {
               if (!visibleGoals.has(request.goalId) || !goalIndexAll.has(request.goalId)) return
               setMemoryPractice(request)

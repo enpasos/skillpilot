@@ -75,7 +75,7 @@ export function validatePackage(pkg, goalIds) {
   const seen = new Set()
   for (const material of pkg.materials) {
     keys(material, ['id', 'title', 'titleEn', 'url', 'resourceType', 'language', 'status', 'goalIds',
-      'sections', 'review', 'provider'], 'material')
+      'sections', 'review', 'provider', 'translations'], 'material')
     text(material.id, 'material.id', 80)
     assert(/^[a-z\d][a-z\d-]{0,79}$/.test(material.id), 'material.id: invalid identifier')
     assert(!seen.has(material.id), `Duplicate material ${material.id}`)
@@ -88,6 +88,20 @@ export function validatePackage(pkg, goalIds) {
     assert(['article', 'simulation'].includes(material.resourceType),
       'Unsupported material kind')
     assert(/^[a-z]{2}(?:-[A-Z]{2})?$/.test(material.language), 'Invalid material language')
+    if (material.translations != null) {
+      array(material.translations, 'translations', 20)
+      const languages = new Set([material.language])
+      for (const edition of material.translations) {
+        keys(edition, ['language', 'title', 'url', 'sections'], 'translation')
+        assert(typeof edition.language === 'string' && /^[a-z]{2}(?:-[A-Z]{2})?$/.test(edition.language)
+          && !languages.has(edition.language), 'Invalid or duplicate translation language')
+        languages.add(edition.language)
+        text(edition.title, 'translation.title', 300)
+        assert.equal(validatePublicUrl(edition.url).hostname, effectiveProviderUrl.hostname, 'Translation outside declared provider')
+        array(edition.sections, 'translation.sections', 20)
+        for (const section of edition.sections) text(section, 'section', 300)
+      }
+    }
     status(material.status, 'material')
     array(material.goalIds, 'goalIds', 64, 1)
     assert.equal(new Set(material.goalIds).size, material.goalIds.length, 'Duplicate goal mapping')
@@ -157,7 +171,9 @@ export function validateCatalog(catalog) {
 
 export async function checkPublicLinks(packages, fetcher = fetch) {
   const pages = new Map()
-  for (const material of packages.flatMap((pkg) => pkg.materials)) {
+  const editions = packages.flatMap(pkg => pkg.materials).flatMap(material =>
+    [material, ...(material.translations ?? []).map(edition => ({ ...edition, id: material.id }))])
+  for (const material of editions) {
     const url = validatePublicUrl(material.url)
     const fragment = decodeURIComponent(url.hash.slice(1))
     url.hash = ''

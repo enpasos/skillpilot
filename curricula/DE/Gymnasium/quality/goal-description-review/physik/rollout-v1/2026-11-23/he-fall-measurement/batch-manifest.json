@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "he-fall-measurement-20261123",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-23/he-fall-measurement.config.json",
+  "configDigest": "sha256:203b48ba047a643b6fcc12761c3af0945a283640c32598765acfa2d9f8b3414e",
+  "goalIds": [
+    "e0004439-ed34-5caf-858a-6107918224eb"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 486,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-23/he-fall-measurement/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:acb27a932021fda6e4f16a39da1521337d0422d136bb7213f2671e1987ec1ccc"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:16d47d3351966261a5841f7d1e6877c2c1d756d3ceaaf66892ff17a32104c78b",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:ada3e6f86de3b2310c09bccc7623b01622b5d875c3bd348878e2924101839a54",
+    "reviewInputFingerprint": "sha256:495173b04d0d46d70e8286ba46d5663b34273a18abc49d9501f5a6b72b2e81b5",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "he-fall-measurement-20261123-a",
+        "campaignDigest": "sha256:07bac427c5954d461aaecf6ee22b2ddcb0b175d61b6b57992f64fb23d7de5e4d",
+        "roundId": "he-fall-measurement-20261123-first-pass-a",
+        "independenceGroupId": "he-fall-measurement-20261123-independent-a",
+        "batchId": "he-fall-measurement-20261123-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ad86f164d7debcda47bd0a9872cc9cbd324ea0d9e26e9ee86a78575672a6beb4"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "he-fall-measurement-20261123-b",
+        "campaignDigest": "sha256:2eaee6f2a8617da19b3d384d3428aee6ed9be2bcdf68e699641ae19f877f5908",
+        "roundId": "he-fall-measurement-20261123-first-pass-b",
+        "independenceGroupId": "he-fall-measurement-20261123-independent-b",
+        "batchId": "he-fall-measurement-20261123-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b9ba0d98499ac2a09d6293f972b1d04f74189f522e7bae76397e78c2b21989e1"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

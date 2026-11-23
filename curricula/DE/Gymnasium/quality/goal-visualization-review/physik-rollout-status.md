@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-22T06:16:02.567Z
+Generated: 2026-11-23T06:45:01.733Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 856 |
-| Atomare Ziele im Visualisierungs-Scope | 485 |
-| Ziele mit primaerem Visualisierungslink | 485 |
+| Alle Ziele in der Landschaft | 858 |
+| Atomare Ziele im Visualisierungs-Scope | 486 |
+| Ziele mit primaerem Visualisierungslink | 486 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 485 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 486 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -30,7 +30,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 72 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 73 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -38,7 +38,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 92 |
-| `pilot` | 393 |
+| `pilot` | 394 |
 
 ## Ledger Decisions
 
@@ -163,9 +163,9 @@ Keine Eintraege.
 | `bf559969-a05c-58b5-82c5-3d719d96555d` | Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären | `pilot` | `deferred_provider_limitation` |
 | `49bb609a-bfb7-5391-9120-f5fc737efb9a` | Exoplanetenkandidaten mit der Transitmethode erklären | `pilot` | `deferred_provider_limitation` |
 | `6dca3b0a-c872-543b-808f-97e855f5fafd` | Exoplanetenkandidaten mit Stern-Radialbewegungen erklären | `pilot` | `deferred_provider_limitation` |
-| `f9c025ce-4327-5de7-8288-a3358e14a576` | Fraunhoferlinien in Sternspektren deuten | `pilot` | `deferred_provider_limitation` |
+| `e0004439-ed34-5caf-858a-6107918224eb` | Fallhöhe und Fallzeit in einem Messprotokoll festhalten | `pilot` | - |
 
-Weitere 42 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 43 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 

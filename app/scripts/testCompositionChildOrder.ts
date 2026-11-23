@@ -11,8 +11,8 @@ import { applyCompositionViewProjection, applyPersonalCurriculumProjection } fro
 import { collapseLearnerSubjectRoots, normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
 import { createLearnerUnitMapCache, deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math,
-  type LearnerStagePlanMapContext } from '../src/components/learningUnitMap/learnerUnitMapPreview'
-import { buildLearnerUnitMapProjection } from '../src/components/learningUnitMap/learnerUnitMapProjection'
+  type LearnerStagePlanMapContext } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
+import { buildLearnerUnitMapProjection } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
 import { STAGE_PLAN_SCHEMA } from '../src/utils/stagePlan'
 
 const schemaId = 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json'

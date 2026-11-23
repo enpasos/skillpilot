@@ -9,7 +9,9 @@ export interface MapPracticeExercise {
 }
 
 export interface MapPracticeMaterial {
-  schemaVersion?: 1 | 2
+  schemaVersion?: 1 | 2 | 3
+  guidedStudyOrder?: readonly string[]
+  individualAssessmentOffers?: readonly { targetGoalId: string; assessmentGoalId: string }[]
   unit: {
     landscapeId: string
     compositionNodeId: string
@@ -28,7 +30,7 @@ export interface MapPracticeMaterial {
     /** An immediate overview of this unit, never a recursive topic inventory. */
     topics?: string[]
   }>
-  exercises: ({ goalId: string } & Record<'de' | 'en', MapPracticeExercise>)[]
+  exercises: ({ goalId: string; requiredForRegularLearning?: boolean } & Record<'de' | 'en', MapPracticeExercise>)[]
 }
 
 /** A compact record of actual atomic demand, never a new completion contract. */
@@ -44,7 +46,7 @@ export interface LearningMapRequirement {
 export interface LearningMapRelation {
   source: string
   target: string
-  kind: 'requirement' | 'summary' | 'unitEntry'
+  kind: 'requirement' | 'summary' | 'unitEntry' | 'guidedStudy'
   provenance: LearningMapRequirement[]
   /**
    * Unit map only, between two child units of one unit: `declared` follows an
@@ -64,6 +66,8 @@ export interface LearningMapEntry {
   children?: string[]
   /** The authored first atomic step for guided learning on this board. */
   orientationGoalId?: string
+  guidedStudyOrder?: readonly string[]
+  individualAssessmentOffers?: readonly { targetGoalId: string; assessmentGoalId: string }[]
   requires: string[]
   position: { x: number; y: number }
   eyebrow?: string
@@ -98,7 +102,6 @@ export interface LearningEntryProgress {
   total: number
   explicit: number
   implicit: number
-  notRequired?: number
   explicitRatio?: number
   implicitRatio?: number
   sectionTitle?: string

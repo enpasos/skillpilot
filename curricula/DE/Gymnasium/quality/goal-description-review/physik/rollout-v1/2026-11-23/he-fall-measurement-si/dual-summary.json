@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:28cb8f354812fc04fb62a55f74f8207e7d0649df5ad21bbd9cc5bcc2c2d54887",
+  "reviewInputFingerprint": "sha256:188db6d66080a7a841f0b5944d8d83d16fc3fd8f9c0ef9a19c7c499b783c61f5",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "he-fall-measurement-si-20261123-a",
+      "roundId": "he-fall-measurement-si-20261123-first-pass-a",
+      "independenceGroupId": "he-fall-measurement-si-20261123-independent-a",
+      "runIds": [
+        "he-fall-measurement-si-native-a-20261123"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "he-fall-measurement-si-20261123-b",
+      "roundId": "he-fall-measurement-si-20261123-first-pass-b",
+      "independenceGroupId": "he-fall-measurement-si-20261123-independent-b",
+      "runIds": [
+        "he-fall-measurement-si-20261123-first-pass-b-actual-c1da77fe-79eb-426a-bd7e-3f8cd9ac4de8"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+      "firstRecordId": "he-fall-measurement-si-native-a-20261123.e0004439-ed34-5caf-858a-6107918224eb",
+      "secondRecordId": "531ae40f-640f-4403-a557-586f82213a9e",
+      "firstRunId": "he-fall-measurement-si-native-a-20261123",
+      "secondRunId": "he-fall-measurement-si-20261123-first-pass-b-actual-c1da77fe-79eb-426a-bd7e-3f8cd9ac4de8",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import '../../src/index.css'
 import '../../src/views/LearnerViewPresentation.css'
 import type { UiGoal } from '../../src/goalTypes'
 import LearnerGoalNavigationMap from '../../src/components/learningUnitMap/LearnerGoalNavigationMap'
-import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID } from '../../src/components/learningUnitMap/learnerUnitMapPreview'
+import { MATHEMATICS_LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID } from '../../src/utils/learnerNavigation/learnerUnitMapPreview'
 
 // The real map adapter on small hand-made learner trees; no fetch, learner state or backend adapters.
 const chemistry = 'fixture-unit-map-chemistry'

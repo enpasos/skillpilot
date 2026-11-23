@@ -57,13 +57,13 @@ public final class LearningPlanCompletionProjection {
                     "Plan obligations must be atomic targets of the Personal Curriculum");
         }
         Key key = new Key(context.curriculumId(), context.generation(), targets,
-                context.level2TargetGoalIds(), context.semantics(), context.reviewedProfiles().stream()
+                context.level2TargetGoalIds(), context.semantics(), context.requiredRegularGoalIds(), context.reviewedProfiles().stream()
                         .map(p -> p.definition().id() + ":" + p.definition().revision()).sorted().toList());
         CompiledCompletionGraph graph = cache.get(key);
         if (graph != null) return graph;
         graph = automatic
                 ? compiler.compileAutomatic(context.canonicalGoals(), targets, context.level2TargetGoalIds(),
-                        context.generation())
+                        context.generation(), context.requiredRegularGoalIds())
                 : compiler.compilePlan(context, obligations);
         if (graph.size() > MAX_NODES || graph.expandedEdgeCount() > MAX_EDGES) {
             throw new IllegalStateException("Learning-plan completion context exceeds its graph budget");
@@ -93,6 +93,6 @@ public final class LearningPlanCompletionProjection {
     }
 
     private record Key(String curriculumId, String generation, Set<String> obligations,
-            Set<String> level2Targets, LearningPlanCompletionContext.Semantics semantics,
+            Set<String> level2Targets, LearningPlanCompletionContext.Semantics semantics, Set<String> requiredRegularGoalIds,
             java.util.List<String> reviewedProfiles) { }
 }

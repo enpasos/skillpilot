@@ -7,7 +7,7 @@ import { resolve } from 'node:path'
 
 import type { UiGoal } from '../src/goalTypes'
 import { normalizeLandscape, prepareLandscapeEntries } from '../src/hooks/useLandscapes'
-import type { SkillLandscape } from '../src/landscapeTypes'
+import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
 import {
   collectCompositionProjectionRoleGoalIds,
   type CompositionView,
@@ -22,7 +22,7 @@ import { fingerprintCurrentCurriculumDocument, loadCurrentCurriculumCatalog } fr
 import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
 import { assessmentReviewRevisions, UnitGraph, type UnitGraphLandscape } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
-import { checkUnitPlanningReleases, validateSectionAssessmentPolicy } from './checkUnitPlanningReleases'
+import { checkUnitPlanningReleases, validateIndividualAssessmentOffers, validateSectionAssessmentPolicy } from './checkUnitPlanningReleases'
 
 const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
@@ -112,6 +112,35 @@ assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView, Objec
 const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries.map(row => row.landscape as SkillLandscape)
 const sectionGraph = new UnitGraph(currentCatalog as UnitGraphLandscape[])
 const projectionEntries = prepareLandscapeEntries(currentCatalog)
+
+// Individual evidence remains available in the subject, distinct from the required unit sections.
+const childMaterial = readRepoJson('curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json')
+const protocolOffer = childMaterial.individualAssessmentOffers[0]
+const singleView = 'de-he-gym-physics-gk-g9'
+const currentOffer = { ...childMaterial, unit: { ...childMaterial.unit, viewIds: [singleView] } }
+const validateOffer = (change: typeof currentOffer, examPatch?: Partial<LearningGoal>) => {
+  const catalog = examPatch ? currentCatalog.map(landscape => landscape.landscapeId !== canonicalLandscape.landscapeId
+    ? landscape : { ...landscape, goals: landscape.goals.map(goal => goal.id !== protocolOffer.assessmentGoalId
+      ? goal : { ...goal, ...examPatch }) }) : currentCatalog
+  validateIndividualAssessmentOffers([change, { unit: e1Material }], examPatch ? new UnitGraph(catalog as UnitGraphLandscape[]) : sectionGraph,
+    e1Views, examPatch ? prepareLandscapeEntries(catalog) : projectionEntries)
+}
+validateOffer(currentOffer)
+assert.throws(() => validateOffer({ ...currentOffer, schemaVersion: 2 }), /require material v3/)
+assert.throws(() => validateOffer({ ...currentOffer, exercises: [] }), /ordinary exercise/)
+assert.throws(() => validateOffer({ ...currentOffer, unit: { ...currentOffer.unit, landscapeId: 'another-subject' } }), /Missing bound view/)
+assert.throws(() => validateOffer({ ...currentOffer,
+  unit: { ...currentOffer.unit, compositionNodeId: 'physics-e2-newton-and-conservation' } }), /ordinary exercise/)
+assert.throws(() => validateOffer({ ...currentOffer, individualAssessmentOffers: [protocolOffer, protocolOffer] }), /Duplicate/)
+const protocolAssessment = canonicalLandscape.goals.find(goal => goal.id === protocolOffer.assessmentGoalId)!
+assert.throws(() => validateOffer(currentOffer, { examData: { ...protocolAssessment.examData!, reviewStatus: 'draft' } }), /released/)
+assert.throws(() => validateOffer(currentOffer, { examData: { ...protocolAssessment.examData!,
+  coveredGoalIds: [protocolOffer.targetGoalId, childMaterial.unit.orientationGoalId] } }), /exactly its exercise goal/)
+assert.throws(() => validateOffer(currentOffer, { requires: [] }), /must require/)
+assert.throws(() => validateOffer({ ...currentOffer, individualAssessmentOffers: [{
+  targetGoalId: 'e4b38061-1f28-43ad-8371-a3e7c0e81856', assessmentGoalId: childMaterial.unit.assessmentGoalId,
+}] }), /required unit part/)
+
 function checkSectionPolicy(policy: typeof sectionPolicy, landscape?: SkillLandscape) {
   const unit = { ...e1Material, sectionAssessmentPolicy: policy }
   if (!landscape) return validateSectionAssessmentPolicy(unit, e1Views, sectionGraph, projectionEntries)
@@ -248,6 +277,7 @@ const hesseIntroductoryAssessmentPlaces = {
     '0521c3ce-999b-5b35-bb3c-7042f24a30ce', 'de1ed3f0-80b2-5544-9971-c8392f76a3e8', '16bfb017-53d6-5328-a4e3-2e2b4e4398a9',
   ],
   'physics-he-ephase-cross-topic-assessments': [
+    protocolOffer.assessmentGoalId,
     'a9562b05-c54d-5635-9244-3f7dd24a8642', '5773ccbe-cd20-5ba0-99a5-7ccd5f42be51',
     '879491c0-7153-570b-91f4-c61d9fe8a143', '7c0b94b9-2af7-59d4-bfae-278a3418f6a8',
   ],
@@ -461,6 +491,9 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   projected.goals.filter((goal) => goal.tags?.includes('root')).forEach((goal) => visit(goal.id))
   const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, canonicalById)
   const admitsHesseE1Assessments = hesseStageViewIds.has(view.viewId)
+  const offersIndividualProtocol = childMaterial.unit.viewIds.includes(view.viewId)
+  assert.equal(visible.has(protocolOffer.assessmentGoalId), offersIndividualProtocol,
+    `${view.viewId}: the individual assessment must be offered only in its eight bound Hessen views`)
   for (const [id, points] of hesseE1Assessments) {
     assert.equal(targetGoalIds.has(id), admitsHesseE1Assessments, `${view.viewId}: wrong E.1 assessment target role for ${id}`)
     assert(!prerequisiteOnlyGoalIds.has(id), `${view.viewId}: E.1 assessment is not prerequisite support`)
@@ -608,6 +641,7 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     const expectedTasks = [...collectDescendants(rootId, canonicalById)]
       .map((id) => canonicalById.get(id)!)
       .filter((goal) => goal.examData && goalMatchesFilters(goal, filters) && !prerequisiteOnlyGoalIds.has(goal.id)
+        && (goal.id !== protocolOffer.assessmentGoalId || offersIndividualProtocol)
         && !(admitsHesseE1Assessments && hesseChildVariantByHistorical.has(goal.id))
         && (admitsHesseE1Assessments || !hesseChildAssessments.has(goal.id)))
     assert(expectedTasks.length > 0, `${view.viewId}: ${sourceRoot.title} has no applicable source tasks`)
@@ -660,7 +694,7 @@ assertCount('fermiScopeViewCount', 69, 6, 'Check exact Fermi assessment target v
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
 assertCount('kinematicsTaskPairs', 120, 8, 'Both reviewed kinematics assessments must appear in all shared GK/LK exercise views.')
 assertCount('astronomyTaskPairs', 136, 8, 'Every existing ordinary astronomy demand needs its applicable task across all views.')
-assertCount('practiceTaskPairs', 4274, 316,
+assertCount('practiceTaskPairs', 4278, 320,
   'Expose every current canonical collection obligation, including the new individual and nested assessments.')
 assertCount('abiturTaskPairs', 480, 32, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
 assertCount('preservedSekITaskPairs', 30, 0, 'Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements.')

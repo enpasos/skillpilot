@@ -120,6 +120,13 @@ public class CompletionApplicationService {
     public synchronized CompiledCompletionProfile compileAutomatic(CompletionProfileDefinition definition,
             String canonicalGraphIdentity, Map<String, LearningGoal> canonicalGoals,
             Set<String> scopeTargetIds, Set<String> level2TargetIds, Set<String> voluntaryAssessments) {
+        return compileAutomatic(definition, canonicalGraphIdentity, canonicalGoals, scopeTargetIds,
+                level2TargetIds, voluntaryAssessments, Set.of());
+    }
+
+    public synchronized CompiledCompletionProfile compileAutomatic(CompletionProfileDefinition definition,
+            String canonicalGraphIdentity, Map<String, LearningGoal> canonicalGoals, Set<String> scopeTargetIds,
+            Set<String> level2TargetIds, Set<String> voluntaryAssessments, Set<String> requiredRegularGoalIds) {
         if (!catalog.available()) throw new IllegalStateException("Completion curriculum generation is unavailable");
         if (canonicalGraphIdentity == null || canonicalGraphIdentity.isBlank()) {
             throw new IllegalArgumentException("A pinned canonical graph identity is required");
@@ -131,12 +138,12 @@ public class CompletionApplicationService {
         Set<String> targets = Set.copyOf(java.util.Objects.requireNonNull(scopeTargetIds));
         if (level2TargetIds == null || !level2TargetIds.containsAll(targets)) throw new ScopeNotApplicableException();
         AutomaticCacheKey key = new AutomaticCacheKey(definition, catalog.generation(), canonicalGraphIdentity,
-                AUTOMATIC_SEMANTICS_VERSION, targets, Set.copyOf(voluntaryAssessments));
+                AUTOMATIC_SEMANTICS_VERSION, targets, Set.copyOf(voluntaryAssessments), Set.copyOf(requiredRegularGoalIds));
         CompiledCompletionProfile compiled = automaticCache.get(key);
         telemetry.cacheRequest(CompletionTelemetry.CacheKind.COMPILED, compiled != null);
         if (compiled != null) return compiled;
         compiled = telemetry.timeCompile(() -> compiler.compileAutomaticProfile(
-                definition, canonicalGoals, targets, level2TargetIds, catalog.generation(), voluntaryAssessments));
+                definition, canonicalGoals, targets, level2TargetIds, catalog.generation(), voluntaryAssessments, requiredRegularGoalIds));
         if (compiled.expandedEdgeCount() > maximumEdges || compiled.contextGoalIds().size() > maximumNodes) {
             throw new IllegalArgumentException("Automatic completion context exceeds the graph budget");
         }
@@ -267,5 +274,5 @@ public class CompletionApplicationService {
                             String canonicalGraphIdentity, String resolverSemanticsVersion) { }
     private record AutomaticCacheKey(CompletionProfileDefinition definition, String generation,
             String canonicalGraphIdentity, String resolverSemanticsVersion, Set<String> targetGoalIds,
-            Set<String> voluntaryAssessments) { }
+            Set<String> voluntaryAssessments, Set<String> requiredRegularGoalIds) { }
 }

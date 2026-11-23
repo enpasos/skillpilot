@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "packageId": "enpasos-simufisica",
+  "version": "1.0.0",
+  "title": "Physik mit SimuFísica",
+  "titleEn": "Physics with SimuFísica",
+  "description": "Virtuelles Labor zur Zeitmessung beim freien Fall mit zwei verstellbaren Sensoren.",
+  "descriptionEn": "A virtual lab for timing a falling ball between two adjustable sensors.",
+  "curator": {
+    "name": "enpasos",
+    "url": "https://github.com/enpasos"
+  },
+  "provider": {
+    "name": "SimuFísica",
+    "url": "https://simufisica.com/",
+    "relationship": "independent-mapping"
+  },
+  "access": "public-link",
+  "aiUsage": "link-only",
+  "status": "active",
+  "materials": [
+    {
+      "id": "free-fall",
+      "title": "Freier Fall mit zwei Sensoren",
+      "url": "https://simufisica.com/de/freier-fall/",
+      "resourceType": "simulation",
+      "language": "de",
+      "status": "active",
+      "goalIds": [
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+      ],
+      "sections": [
+        "Wähle den Zeitmodus. Setze den ersten Sensor unterhalb der Abwurfstelle und verändere den Sensorabstand. Die Uhr läuft von der ersten bis zur zweiten Sensorpassage. Am ersten Sensor bewegt sich die Kugel bereits."
+      ],
+      "translations": [
+        {
+          "language": "en",
+          "title": "Free fall with two sensors",
+          "url": "https://simufisica.com/en/free-fall/",
+          "sections": [
+            "Select time mode. Place the first sensor below the release point and vary the sensor spacing. The timer runs from the first sensor crossing to the second. The ball is already moving at the first sensor."
+          ]
+        }
+      ],
+      "review": {
+        "checkedAt": "2026-11-23",
+        "authority": "ai",
+        "rationale": "Beide Sprachfassungen der Anbieteranleitung beschreiben verstellbare Sensoren und die Zeit zwischen zwei Durchgängen. Hängt der erste Sensor unterhalb der Freigabe, beginnt diese Messung mit einer bereits bewegten Kugel. Die Simulation ergänzt die eigenständige Untersuchung des freien Falls."
+      }
+    }
+  ]
+}

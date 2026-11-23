@@ -128,7 +128,7 @@ const entry: Plugin = {
       response.setHeader('Content-Type', 'text/html; charset=utf-8')
       response.end('<!doctype html><meta charset="utf-8"><title>SkillPilot</title><script>' +
         'for(const [key,value] of Object.entries(' + JSON.stringify(keys) + '))localStorage.setItem(key,value);' +
-        'location.replace(' + JSON.stringify('/learner/' + goal) + ')</script>')
+        'location.replace(' + JSON.stringify('/learner/' + goal + '?l=' + keys.skillpilot_learner_landscape) + ')</script>')
     })
   },
 }

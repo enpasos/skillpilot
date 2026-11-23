@@ -621,19 +621,19 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
   'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
 ])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 485,
+  curricularAtomic: 486,
   curricularArea: 113,
-  practiceAssessment: 244,
+  practiceAssessment: 245,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 4,
-  total: 856,
+  total: 858,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
 const ATLAS_PREPARATION_ONLY_GOAL_ID = '13b338eb-f761-5817-9058-11043b9cb253'
-const EXPECTED_ATLAS_TARGET_COUNT = 484
+const EXPECTED_ATLAS_TARGET_COUNT = 485
 const STAGE_PLAN_ADDED_NATIONAL_TARGET_IDS = [
   '3ed3279e-c524-5230-a277-dda89493df6d',
   '5355fee0-0477-5570-a234-561477bf77ba',

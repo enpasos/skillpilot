@@ -1,0 +1,27 @@
+
+> skillpilot@0.0.0 test:physics-assessment-projection
+> tsx scripts/testPhysicsAssessmentProjection.ts && python3 -B ../scripts/generate_hessen_physics_stage_views.py --check && python3 -B ../scripts/generate_hessen_physics_stage_views.py --check --duration-views && python3 -B -m unittest discover -s ../scripts -p test_generate_hessen_physics_stage_views.py && tsx scripts/testPhysicsStageViewProjection.ts && python3 ../scripts/generate_laender_physics_stage_views.py --check && python3 ../scripts/test_generate_laender_physics_stage_views.py
+
+National stage compatibility materialization: BW/HE/default, exact neutral GK/LK union, missing endpoint/preparation and 14 fail-closed cases passed.
+Native CQR-104: real BW baseline PASS; missing national terminal FAIL with identical expected counts; missing whole-task preparation FAIL. Active views unchanged.
+Native CQR-003: current scope PASS; visible unsupported HE target FAIL; empty/unknown HE and prerequisiteOnly-only national FAIL with unchanged source obligations; neutral GK/LK, DE, duration and atomic-parent scopes PASS; actual BY-Math direct-mapping fallback preserved. Active inputs unchanged.
+Curriculum quality stage-role specificity: resolved support, strict authority and missing-prerequisite controls passed.
+Physics duration assessment counts: {"total":{"viewCount":64,"fermiScopeViewCount":90,"practiceTaskPairs":4598,"abiturTaskPairs":512,"preservedSekITaskPairs":30,"preservedPrerequisiteOnlyPairs":161,"filteredPrerequisiteOnlyPairs":48,"kinematicsTaskPairs":128,"astronomyTaskPairs":147},"addedHesseDuration":{"viewCount":4,"fermiScopeViewCount":6,"practiceTaskPairs":320,"abiturTaskPairs":32,"preservedSekITaskPairs":0,"preservedPrerequisiteOnlyPairs":0,"filteredPrerequisiteOnlyPairs":0,"kinematicsTaskPairs":8,"astronomyTaskPairs":8},"addedLandSekI":{"viewCount":0,"fermiScopeViewCount":15,"practiceTaskPairs":0,"abiturTaskPairs":0,"preservedSekITaskPairs":0,"preservedPrerequisiteOnlyPairs":0,"filteredPrerequisiteOnlyPairs":0,"kinematicsTaskPairs":0,"astronomyTaskPairs":3}}
+Physics CQR-104 passed: 56 views, 106 actual route scopes.
+Physics assessment projection passed: 64 views, 4598 practice-task pairs, 512 Abitur-task pairs, 30 preserved Sek-I placements; complete texts, solutions and unique course-specific navigation preserved.
+Hessen Physics stage views: 4 checked; atomic target/support roles verified.
+Hessen Physics stage views: 6 checked; atomic target/support roles verified.
+....Hessen Physics stage views: 6 checked; atomic target/support roles verified.
+Hessen Physics stage views: 6 checked; atomic target/support roles verified.
+..............
+----------------------------------------------------------------------
+Ran 18 tests in 7.069s
+
+OK
+Physics stage view product projection passed: 90 authored 1.2 views; schema, full formal compiler, headings, source endpoints, complete composition/personal-curriculum adapter and every nested preview step.
+Physics stage views: 80 ALL views checked; atomic roles preserved.
+......................
+----------------------------------------------------------------------
+Ran 22 tests in 16.344s
+
+OK
