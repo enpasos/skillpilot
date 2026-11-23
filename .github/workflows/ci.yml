@@ -756,6 +756,8 @@ jobs:
         run: npm run test:physics-semiconductor-source-repair
       - name: Check Memory-Card Reviews
         run: npm run quality:memory-card-review:check:all
+      - name: Test memory-card origin checks
+        run: npm run test:memory-card-origins
       - name: Test strict deep curriculum QA and M7 transitions
         run: npm run test:deep-understanding-rollout
       - name: Test repository source availability

@@ -329,6 +329,7 @@ run_curriculum_frontend_ci() {
 
   echo "--> Running Memory-Card Review Check"
   npm run quality:memory-card-review:check:all
+  npm run test:memory-card-origins
 
   echo "--> Verifying Committed Curriculum Quality Status"
   npm run quality:memory-card-review:report:all
