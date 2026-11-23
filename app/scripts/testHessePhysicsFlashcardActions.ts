@@ -13,6 +13,7 @@ import { collapseLearnerSubjectRoots, normalizeLearnerProjectedEntries } from '.
 import { buildDirectChildrenMap } from '../src/utils/treeProjectionRuntime'
 import { buildTreeCompletionProgressMap } from '../src/utils/treeCompletionProgress'
 import { selectPracticeCards } from '../src/utils/flashcardPractice'
+import { cardOriginGoalIds, legacyOriginGoalTagIds } from '../src/utils/memoryCardOrigins'
 import { getSrsFilterTagsForGoal } from '../src/utils/srsTags'
 import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
 import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_LANDSCAPE_ID as physics } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
@@ -136,9 +137,10 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       }
     }
     for (const language of ['de', 'en'] as const) {
-      const deck = await read<{ deckId: string; cards: { id: string; tags?: string[] }[] }>(`memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.${language}.json`)
+      const deck = await read<{ deckId: string; cards: { id: string; tags?: string[]; originGoalIds?: string[] }[] }>(`memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.${language}.json`)
       assert.equal(deck.deckId, 'de_gymnasium_physics_mechanics_ephase')
       assert.equal(deck.cards.length, 87)
+      assert(deck.cards.every(card => card.originGoalIds?.length), 'every deck card names its understanding goals')
       const actions = buildUnitFlashcardActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, deck.cards, language)
       const assessments = buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, language)
       assert.equal(assessments.size, 1, 'E.1 keeps a direct named link to its one canonical assessment')
@@ -180,8 +182,8 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       if (scope === '') assert.equal(selectedCards.length, 9, 'The duration-neutral E.1 topic offers its nine cards')
       assert(selectedCards.length > 0 && selectedCards.length < deck.cards.length, 'E.1 is a strict subset of the original deck')
       assert.equal(new Set(selectedCards.map(card => card.id)).size, selectedCards.length)
-      for (const card of selectedCards) assert(card.tags?.some(tag => e1.goalIds!.some(id => tag === `goal:${id}`)))
-      assert(!selectedCards.some(card => card.tags?.includes('goal:5c44b9ba-9b05-4774-95d5-073230d3fc4f')), 'unrelated mechanics cards cannot pass through broad GK/LK tags')
+      for (const card of selectedCards) assert(card.originGoalIds!.some(id => e1.goalIds!.includes(id)))
+      assert(!selectedCards.some(card => card.originGoalIds!.includes('5c44b9ba-9b05-4774-95d5-073230d3fc4f')), 'unrelated mechanics cards cannot pass through broad GK/LK tags')
       for (const action of actions.values()) for (const goalId of action.goalIds ?? []) {
         assert(value.visibleGoalIds.has(goalId))
         assert.equal(value.goalIndexAll.get(goalId)?.landscapeId, physics, 'topic membership excludes Mathematics preparation')
@@ -210,7 +212,7 @@ for (const duration of ['g8', 'g9']) {
     await read<CompositionView>(`composition-views/physik/de-he-gk-${duration}.view.json`)])
   const preview = deriveLearnerUnitMapPreview(value)
   const fixture = buildLearnerUnitMapProjection({ ...value, units: preview.units, after: preview.after, memberUnits: preview.memberUnits })
-  const cards = (await read<{ cards: { tags?: string[] }[] }>('memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json')).cards
+  const cards = (await read<{ cards: { tags?: string[]; originGoalIds?: string[] }[] }>('memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json')).cards
   const combined = buildUnitFlashcardActions(practiceMaterial, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de')
   const phase = [...combined].find(([, action]) => action.goalIds === undefined)
   assert(phase && fixture.entries[phase[0]].subjects?.includes(math) && fixture.entries[phase[0]].subjects?.includes(physics),
@@ -257,4 +259,9 @@ for (const duration of ['g8', 'g9']) {
 assert.deepEqual(packageMaterials, [], 'the package-consumer edition supplies no repository-specific E.1 materials')
 assert.deepEqual(selectPracticeCards([{ tags: ['GK', 'goal:a'] }, { tags: ['LK', 'goal:b'] }], ['GK'], ['b']), [], 'course and topic selection are intersected')
 assert.deepEqual(selectPracticeCards([{ tags: ['goal:a'] }], undefined, []), [], 'an empty topic cannot accidentally open the full deck')
+assert.deepEqual(selectPracticeCards([{ originGoalIds: ['a'], tags: ['GK'] }, { originGoalIds: ['b'], tags: ['GK', 'goal:a'] }], ['GK'], ['a']),
+  [{ originGoalIds: ['a'], tags: ['GK'] }], 'the card field is authoritative; a legacy tag never adds a goal to a card that names its goals')
+assert.deepEqual(cardOriginGoalIds({ tags: ['GK', 'goal:b', 'goal:a', 'goal:b'] }), ['b', 'a'], 'decks without the field keep the legacy tag relation')
+assert.deepEqual(cardOriginGoalIds({ tags: ['GK'] }), [], 'a card without either encoding names no understanding goal')
+assert.deepEqual(legacyOriginGoalTagIds({ originGoalIds: ['a'], tags: ['goal:c'] }), ['c'])
 console.log(`Hessen Physics flashcard actions passed ${checked} real course/duration/language projections.`)

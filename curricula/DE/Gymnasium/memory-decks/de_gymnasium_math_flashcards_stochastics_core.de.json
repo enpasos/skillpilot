@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "deckId": "de_gymnasium_math_stochastics_core",
   "title": "Stochastik-Core - Kernaussagen",
   "cards": [
@@ -6,6 +7,9 @@
       "id": "math_stoch_c01",
       "front": "Formel für bedingte Wahrscheinlichkeit $P(A|B)$",
       "back": "$P(A|B) = \\frac{P(A \\cap B)}{P(B)}$",
+      "originGoalIds": [
+        "c3b9c561-dd83-5903-9ec6-49c7f51bafd5"
+      ],
       "category": "Grundlagen",
       "tags": [
         "GK",
@@ -16,6 +20,9 @@
       "id": "math_stoch_c02",
       "front": "Bedingung für stochastische Unabhängigkeit von $A$ und $B$",
       "back": "$P(A \\cap B) = P(A) \\cdot P(B)$",
+      "originGoalIds": [
+        "dabff49b-d40a-4c81-a584-21408b2d4219"
+      ],
       "category": "Grundlagen",
       "tags": [
         "GK",
@@ -26,6 +33,9 @@
       "id": "math_stoch_c03",
       "front": "Laplace-Experiment: Bedingung und Berechnung",
       "back": "Alle Ergebnisse sind gleich wahrscheinlich.\n\n$P(E) = \\frac{\\text{Anzahl günstige Ergebnisse}}{\\text{Anzahl mögliche Ergebnisse}}$",
+      "originGoalIds": [
+        "5ab17678-bba7-4e6b-9aff-5a909e24d40e"
+      ],
       "category": "Grundlagen",
       "tags": [
         "GK",
@@ -36,6 +46,9 @@
       "id": "math_stoch_c04",
       "front": "Erwartungswert $E(X)$ einer Zufallsgröße",
       "back": "Summe der Produkte aus Wert und Wahrscheinlichkeit.\n\n$\\mu = \\sum x_i \\cdot P(X=x_i)$",
+      "originGoalIds": [
+        "6053aeda-84f7-4c2c-98d7-1753a7e26dcc"
+      ],
       "category": "Kenngrößen",
       "tags": [
         "GK",
@@ -46,6 +59,9 @@
       "id": "math_stoch_c05",
       "front": "Binomialkoeffizient $\\binom{n}{k}$: Bedeutung",
       "back": "Anzahl der Möglichkeiten, $k$ Elemente aus $n$ Elementen auszuwählen.\n\nOhne Reihenfolge, ohne Zurücklegen.",
+      "originGoalIds": [
+        "e8d810de-95ed-52d6-ab1f-0560398e35c0"
+      ],
       "category": "Kombinatorik",
       "tags": [
         "GK",
@@ -56,6 +72,9 @@
       "id": "math_stoch_c06",
       "front": "Bernoulli-Formel (Binomialverteilung)",
       "back": "$P(X=k) = \\binom{n}{k} \\cdot p^k \\cdot (1-p)^{n-k}$",
+      "originGoalIds": [
+        "837b015a-c2a2-5f31-831c-ae16ee2ee6ce"
+      ],
       "category": "Verteilungen",
       "tags": [
         "GK",
@@ -66,6 +85,9 @@
       "id": "math_stoch_c07",
       "front": "Erwartungswert $\\mu$ einer Binomialverteilung",
       "back": "$\\mu = n \\cdot p$",
+      "originGoalIds": [
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+      ],
       "category": "Verteilungen",
       "tags": [
         "GK",
@@ -76,6 +98,9 @@
       "id": "math_stoch_c08",
       "front": "Standardabweichung $\\sigma$ einer Binomialverteilung",
       "back": "$\\sigma = \\sqrt{n \\cdot p \\cdot (1-p)}$",
+      "originGoalIds": [
+        "7d41b805-0fd8-5ac3-980d-79112a27c1b4"
+      ],
       "category": "Verteilungen",
       "tags": [
         "GK",
@@ -86,6 +111,9 @@
       "id": "math_stoch_c09",
       "front": "1-2-3-Sigma-Regel (Normalverteilung)",
       "back": "$\\approx 68\\%$ in $[\\mu-\\sigma,\\mu+\\sigma]$\n\n$\\approx 95\\%$ in $[\\mu-2\\sigma,\\mu+2\\sigma]$\n\n$\\approx 99{,}7\\%$ in $[\\mu-3\\sigma,\\mu+3\\sigma]$",
+      "originGoalIds": [
+        "8ad2c9c4-9362-5cb9-8fc1-e3815bfa504d"
+      ],
       "category": "Verteilungen",
       "tags": [
         "GK",
@@ -96,6 +124,9 @@
       "id": "math_stoch_c10",
       "front": "Hypothesentest: \n\nFehler 1. Art ($\\alpha$-Fehler)",
       "back": "Die Nullhypothese $H_0$ wird abgelehnt, obwohl sie wahr ist.",
+      "originGoalIds": [
+        "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b"
+      ],
       "category": "Tests",
       "tags": [
         "GK",
@@ -106,6 +137,9 @@
       "id": "math_stoch_c11",
       "front": "Hypothesentest: \n\nFehler 2. Art ($\\beta$-Fehler)",
       "back": "Die Nullhypothese $H_0$ wird beibehalten, obwohl die Alternativhypothese $H_1$ wahr ist.",
+      "originGoalIds": [
+        "d1910e24-bd21-4b51-9f9a-d8c5c5e63e5b"
+      ],
       "category": "Tests",
       "tags": [
         "GK",
@@ -116,6 +150,9 @@
       "id": "math_stoch_c12",
       "front": "Rechtsseitiger Test: Aufbau der Nullhypothese",
       "back": "$H_0: p \\le p_0$.\n\nAblehnungsbereich liegt rechts.",
+      "originGoalIds": [
+        "677be619-5f0a-59bf-9730-0071c7d3f150"
+      ],
       "category": "Tests",
       "tags": [
         "GK",

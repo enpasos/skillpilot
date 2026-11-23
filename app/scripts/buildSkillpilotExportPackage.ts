@@ -475,6 +475,11 @@ const FLASHCARD_DECK_SCHEMA = {
   required: ['deckId', 'title', 'cards'],
   additionalProperties: true,
   properties: {
+    schemaVersion: {
+      description: 'Source deck format. Format 2 (contracts/memory-deck/v2) names understanding goals in originGoalIds.',
+      type: 'integer',
+      minimum: 1,
+    },
     deckId: { type: 'string', minLength: 1 },
     title: { type: 'string', minLength: 1 },
     cards: {
@@ -487,8 +492,16 @@ const FLASHCARD_DECK_SCHEMA = {
           id: { type: 'string', minLength: 1 },
           front: { type: 'string', minLength: 1 },
           back: { type: 'string', minLength: 1 },
+          originGoalIds: {
+            description: 'Understanding goals: IDs of the ordinary atomic goals of this package that the card supports.',
+            type: 'array',
+            minItems: 1,
+            uniqueItems: true,
+            items: { type: 'string', minLength: 1 },
+          },
           category: { type: 'string' },
           tags: {
+            description: 'Selection labels. A goal:<id> tag is the retired encoding of originGoalIds.',
             type: 'array',
             items: { type: 'string' },
           },

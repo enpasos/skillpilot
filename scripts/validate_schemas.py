@@ -15,6 +15,9 @@ UNIT_MATERIAL_SCHEMA_PATH = "contracts/unit-learning-material/v1/material.schema
 UNIT_MATERIAL_V2_SCHEMA_PATH = "contracts/unit-learning-material/v2/material.schema.json"
 UNIT_MATERIAL_V3_SCHEMA_PATH = "contracts/unit-learning-material/v3/material.schema.json"
 COMPILED_SCHEMA_PATH = "contracts/curriculum-package/v1/compiled-landscape.schema.json"
+MEMORY_DECK_SCHEMA_PATH = "contracts/memory-deck/v2/memory-deck.schema.json"
+MEMORY_DECK_DIR = "curricula/DE/Gymnasium/memory-decks"
+LEGACY_ORIGIN_GOAL_TAG_PREFIX = "goal:"
 
 # This exact authoring source is restored at the sourcePath already declared by
 # released tasks. Its retained bytes contain draft author objects, not a runtime
@@ -700,6 +703,67 @@ def validate_unit_learning_materials(curricula_dir, schema_path=UNIT_MATERIAL_SC
     return errors
 
 
+def _legacy_origin_goal_tag_ids(card):
+    tags = card.get("tags") if isinstance(card.get("tags"), list) else []
+    return [tag[len(LEGACY_ORIGIN_GOAL_TAG_PREFIX):] for tag in tags
+            if isinstance(tag, str) and tag.startswith(LEGACY_ORIGIN_GOAL_TAG_PREFIX)]
+
+
+def validate_memory_decks(deck_dir=MEMORY_DECK_DIR, schema_path=MEMORY_DECK_SCHEMA_PATH):
+    """Every canonical deck is format 2; retired goal: tags only mirror originGoalIds."""
+    root = Path(deck_dir)
+    try:
+        schema = json.loads(Path(schema_path).read_text(encoding="utf-8"))
+        jsonschema.Draft202012Validator.check_schema(schema)
+        validator = jsonschema.Draft202012Validator(schema)
+    except (OSError, ValueError, jsonschema.SchemaError) as error:
+        return [f"{schema_path}: {error}"]
+    if not root.is_dir():
+        return [f"{root}: memory deck directory missing"]
+
+    errors = []
+    decks = {}
+    paths = sorted(root.glob("*.json"))
+    for path in paths:
+        try:
+            deck = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError) as error:
+            errors.append(f"{path}: {error}")
+            continue
+        file_errors = list(validator.iter_errors(deck))
+        errors.extend(f"{path} {error.json_path}: {error.message}" for error in file_errors)
+        if file_errors:
+            continue
+        decks[path.name] = deck
+        card_ids = [card["id"] for card in deck["cards"]]
+        for card_id in sorted({card_id for card_id in card_ids if card_ids.count(card_id) > 1}):
+            errors.append(f"{path}: duplicate card id {card_id}")
+        for index, card in enumerate(deck["cards"]):
+            tag_ids = _legacy_origin_goal_tag_ids(card)
+            if tag_ids and set(tag_ids) != set(card.get("originGoalIds", [])):
+                errors.append(
+                    f"{path} $.cards[{index}]: goal: tags must repeat exactly the card's originGoalIds"
+                )
+
+    # A language variant keeps the German deck's identity, cards and origins.
+    for name, variant in sorted(decks.items()):
+        if not name.endswith(".en.json"):
+            continue
+        primary = decks.get(name[: -len(".en.json")] + ".de.json")
+        if primary is None:
+            errors.append(f"{root / name}: language variant without a German deck")
+            continue
+        if variant["deckId"] != primary["deckId"]:
+            errors.append(f"{root / name}: deckId differs from its German deck")
+        primary_origins = [(card["id"], set(card.get("originGoalIds", []))) for card in primary["cards"]]
+        variant_origins = [(card["id"], set(card.get("originGoalIds", []))) for card in variant["cards"]]
+        if variant_origins != primary_origins:
+            errors.append(f"{root / name}: cards or originGoalIds differ from its German deck")
+    if not errors:
+        print(f"Validated {len(paths)} memory deck file(s) against {schema_path}.")
+    return errors
+
+
 def main():
     if not os.path.exists(SCHEMA_PATH):
         print(f"Schema not found: {SCHEMA_PATH}")
@@ -727,7 +791,8 @@ def main():
         print(f"Directory not found: {CURRICULA_DIR}")
         sys.exit(1)
 
-    schema_input_errors = curriculum_symlink_errors() + validate_unit_learning_materials(CURRICULA_DIR)
+    schema_input_errors = (curriculum_symlink_errors() + validate_unit_learning_materials(CURRICULA_DIR)
+                           + validate_memory_decks())
     if schema_input_errors:
         for error in schema_input_errors:
             print(f"❌ {error}")

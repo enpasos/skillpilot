@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "deckId": "de_gymnasium_math_analysis_core",
   "title": "Analysis-Core - Kernaussagen",
   "cards": [
@@ -6,6 +7,9 @@
       "id": "math_analysis_c01",
       "front": "Ableitungsregel für Potenzen: $f(x) = x^n$",
       "back": "$f'(x) = n \\cdot x^{n-1}$",
+      "originGoalIds": [
+        "858113c5-e53b-57bb-b01f-ba95c3ddcb6f"
+      ],
       "category": "Ableitung",
       "tags": [
         "GK",
@@ -16,6 +20,10 @@
       "id": "math_analysis_c02",
       "front": "Produktregel: \n\n$f(x) = u(x) \\cdot v(x)$",
       "back": "$f'(x) = u'(x) \\cdot v(x) + u(x) \\cdot v'(x)$",
+      "originGoalIds": [
+        "864f9a45-badf-5a31-88d3-da4525808c2d",
+        "cf48c918-f6c1-5429-8da6-14df43f2f550"
+      ],
       "category": "Ableitung",
       "tags": [
         "GK",
@@ -26,6 +34,10 @@
       "id": "math_analysis_c03",
       "front": "Kettenregel: $f(x) = u(v(x))$",
       "back": "$f'(x) = u'(v(x)) \\cdot v'(x)$\n\nÄußere Ableitung $\\cdot$ Innere Ableitung.",
+      "originGoalIds": [
+        "864f9a45-badf-5a31-88d3-da4525808c2d",
+        "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75"
+      ],
       "category": "Ableitung",
       "tags": [
         "GK",
@@ -36,6 +48,9 @@
       "id": "math_analysis_c04",
       "front": "Ableitung e-Funktion: \n\n$f(x) = e^{kx}$",
       "back": "$f'(x) = k \\cdot e^{kx}$",
+      "originGoalIds": [
+        "c3c057a3-caf9-44a5-ae60-639e3119e94a"
+      ],
       "category": "Ableitung",
       "tags": [
         "GK",
@@ -46,6 +61,9 @@
       "id": "math_analysis_c05",
       "front": "Ableitung Logarithmus: \n\n$f(x) = \\ln(x)$",
       "back": "$f'(x) = \\frac{1}{x}$",
+      "originGoalIds": [
+        "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4"
+      ],
       "category": "Ableitung",
       "tags": [
         "GK",
@@ -56,6 +74,9 @@
       "id": "math_analysis_c06",
       "front": "Ableitung Sinus: \n\n$f(x) = \\sin(x)$",
       "back": "$f'(x) = \\cos(x)$",
+      "originGoalIds": [
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
       "category": "Ableitung",
       "tags": [
         "GK",
@@ -66,6 +87,9 @@
       "id": "math_analysis_c07",
       "front": "Ableitung Kosinus: \n\n$f(x) = \\cos(x)$",
       "back": "$f'(x) = -\\sin(x)$",
+      "originGoalIds": [
+        "f9fdb733-5838-4983-888a-05624eabbe17"
+      ],
       "category": "Ableitung",
       "tags": [
         "GK",
@@ -76,6 +100,9 @@
       "id": "math_analysis_c08",
       "front": "Notwendige Bedingung: \n\nExtremstelle bei $x_0$",
       "back": "$f'(x_0) = 0$",
+      "originGoalIds": [
+        "d5feba00-4336-4f26-8dba-0537a797eddb"
+      ],
       "category": "Kurvendiskussion",
       "tags": [
         "GK",
@@ -86,6 +113,9 @@
       "id": "math_analysis_c09",
       "front": "Hinreichende Bedingung: \n\nHochpunkt bei $x_0$",
       "back": "$f'(x_0) = 0$ und $f''(x_0) < 0$.\n\nAlternativ: Vorzeichenwechsel von + nach -.",
+      "originGoalIds": [
+        "d5feba00-4336-4f26-8dba-0537a797eddb"
+      ],
       "category": "Kurvendiskussion",
       "tags": [
         "GK",
@@ -96,6 +126,9 @@
       "id": "math_analysis_c10",
       "front": "Notwendige Bedingung: \n\nWendestelle bei $x_0$",
       "back": "$f''(x_0) = 0$",
+      "originGoalIds": [
+        "d5feba00-4336-4f26-8dba-0537a797eddb"
+      ],
       "category": "Kurvendiskussion",
       "tags": [
         "GK",
@@ -106,6 +139,9 @@
       "id": "math_analysis_c13",
       "front": "Stammfunktion von $f(x) = x^n$ \n\n(für $n \\neq -1$)",
       "back": "$F(x) = \\frac{1}{n+1} x^{n+1}$",
+      "originGoalIds": [
+        "a9ed219d-d497-55e5-a4e0-4d45d2554f6b"
+      ],
       "category": "Integral",
       "tags": [
         "GK",
@@ -116,6 +152,9 @@
       "id": "math_analysis_c14",
       "front": "Stammfunktion von $f(x) = \\frac{1}{x}$",
       "back": "$F(x) = \\ln(|x|)$",
+      "originGoalIds": [
+        "3bf1ce9e-f4d3-502e-9d6e-94f7b7f697d4"
+      ],
       "category": "Integral",
       "tags": [
         "GK",
@@ -126,6 +165,9 @@
       "id": "math_analysis_c15",
       "front": "Hauptsatz der Analysis (bestimmtes Integral)",
       "back": "$\\int_a^b f(x) \\, dx = F(b) - F(a)$",
+      "originGoalIds": [
+        "b9bbd2a8-1379-5ffb-817f-41467d48abef"
+      ],
       "category": "Integral",
       "tags": [
         "GK",
@@ -136,6 +178,9 @@
       "id": "math_analysis_c16",
       "front": "Mittelwert einer Funktion auf $[a; b]$",
       "back": "$\\bar{m} = \\frac{1}{b-a} \\int_a^b f(x) \\, dx$",
+      "originGoalIds": [
+        "c1c80b80-733f-599d-a2fc-f4dc50eabde2"
+      ],
       "category": "Integral",
       "tags": [
         "GK",

@@ -756,6 +756,8 @@ jobs:
         run: npm run test:physics-semiconductor-source-repair
       - name: Check Memory-Card Reviews
         run: npm run quality:memory-card-review:check:all
+      - name: Test memory-card origin checks
+        run: npm run test:memory-card-origins
       - name: Test strict deep curriculum QA and M7 transitions
         run: npm run test:deep-understanding-rollout
       - name: Test repository source availability
@@ -964,6 +966,9 @@ jobs:
       - name: Test unit learning material schema gate
         working-directory: .
         run: python -B scripts/test_unit_learning_material_schema.py -v
+      - name: Test memory deck schema gate
+        working-directory: .
+        run: python -B scripts/test_memory_deck_schema.py -v
       - name: Test portable curriculum symlinks
         working-directory: .
         run: python -B scripts/test_validate_schemas_symlinks.py -v

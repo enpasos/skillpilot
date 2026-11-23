@@ -51,6 +51,7 @@ type Flashcard = {
     back: string
     category: string
     tags?: string[]
+    originGoalIds?: string[]
 }
 
 type FlashcardStats = {

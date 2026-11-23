@@ -49,8 +49,9 @@ const view = { viewFormatVersion: '1.2', viewId: 'de-he-gym-sekii-physics-gk', l
     ] },
   ] }
 const deck = { deckId: 'de_gymnasium_physics_mechanics_ephase', title: memory.title, cards: [
-  { id: 'e1-a', front: 'E1 Frage A', back: 'E1 Antwort A', category: 'E1', tags: ['GK', 'goal:' + force.id] },
-  { id: 'e1-b', front: 'E1 Frage B', back: 'E1 Antwort B', category: 'E1', tags: ['GK', 'goal:' + force.id] },
+  // Deck format 2 names understanding goals in originGoalIds; e2-a keeps the legacy tag encoding.
+  { id: 'e1-a', front: 'E1 Frage A', back: 'E1 Antwort A', originGoalIds: [force.id], category: 'E1', tags: ['GK'] },
+  { id: 'e1-b', front: 'E1 Frage B', back: 'E1 Antwort B', originGoalIds: [force.id], category: 'E1', tags: ['GK'] },
   { id: 'e2-a', front: 'E2 Frage', back: 'E2 Antwort', category: 'E2', tags: ['GK', 'goal:' + energyId] },
 ] }
 function monitorBoard(dialog: Locator) {

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/memory-deck/v2/memory-deck.schema.json",
+  "title": "Canonical memory-card deck source v2",
+  "description": "Source deck under curricula/DE/Gymnasium/memory-decks. A card names the ordinary atomic goals it supports in originGoalIds. Card order is normative; card IDs are stable learner-state keys.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "deckId",
+    "title",
+    "cards"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "deckId": {
+      "$ref": "#/$defs/id"
+    },
+    "landscapeId": {
+      "$ref": "#/$defs/id"
+    },
+    "title": {
+      "$ref": "#/$defs/text"
+    },
+    "description": {
+      "$ref": "#/$defs/text"
+    },
+    "subject": {
+      "$ref": "#/$defs/text"
+    },
+    "language": {
+      "$ref": "#/$defs/text"
+    },
+    "stage": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/text"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      ]
+    },
+    "schoolType": {
+      "$ref": "#/$defs/text"
+    },
+    "provenance": {
+      "description": "Authoring provenance. Informational; never read by learner runtimes.",
+      "type": "object"
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "text": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "front",
+        "back"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "front": {
+          "$ref": "#/$defs/text"
+        },
+        "back": {
+          "$ref": "#/$defs/text"
+        },
+        "frontEn": {
+          "$ref": "#/$defs/text"
+        },
+        "backEn": {
+          "$ref": "#/$defs/text"
+        },
+        "originGoalIds": {
+          "description": "Understanding goals: the canonical ordinary atomic goals this card supports. Equal, as a set, to the originGoalIds of the card's kept memory-card review record.",
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "category": {
+          "type": "string"
+        },
+        "tags": {
+          "description": "Selection labels such as course levels. A goal:<id> tag is the retired encoding of originGoalIds and may only repeat that set exactly.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      }
+    }
+  }
+}
