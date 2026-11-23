@@ -212,6 +212,9 @@ run_application_frontend_ci() {
 
   echo "--> Testing Deterministic ZIP32 Writer"
   npm run test:deterministic-zip32
+
+  echo "--> Testing Flashcard Box Rules"
+  npm run test:flashcard-box-rules
 }
 
 run_curriculum_frontend_ci() {

@@ -17,7 +17,8 @@ import { cardOriginGoalIds, legacyOriginGoalTagIds } from '../src/utils/memoryCa
 import { getSrsFilterTagsForGoal } from '../src/utils/srsTags'
 import { buildLearnerUnitMapProjection, filterLearnerUnitMapToSubjects } from '../src/utils/learnerNavigation/learnerUnitMapProjection'
 import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_LANDSCAPE_ID as physics } from '../src/utils/learnerNavigation/learnerUnitMapPreview'
-import { buildUnitAssessmentActions, buildUnitFlashcardActions, findUnitMaterialScopes, placeUnitLearningResources, unitResourcePlacements } from '../src/components/learningUnitMap/unitLearningMaterialActions'
+import { buildUnitAssessmentActions, buildUnitFlashcardActions, cardDeckIdsByScope, findUnitMaterialScopes, mapDeckGoalIds,
+  placeUnitLearningResources, unitResourcePlacements } from '../src/components/learningUnitMap/unitLearningMaterialActions'
 import { getLearningScopeRelations } from '../src/components/learningUnitMap/scopeRelations'
 import { mapEntryPath } from '../src/components/learningUnitMap/mapEntryPath'
 import { UNIT_MAP_LEARNING_MATERIALS as packageMaterials } from '../src/packageConsumer/learnerUnitMapPreviewSubjects'
@@ -76,6 +77,13 @@ const input = (views: CompositionView[]) => {
     canonicalGoalIndexAll: new Map(canonical.flatMap(landscape => landscape.goals).map(goal => [goal.id, goal])) }
 }
 let checked = 0
+let nestedUnitsWithCards = 0
+type DeckFile = { deckId: string; cards: { id: string; tags?: string[]; originGoalIds?: string[] }[] }
+const deckFiles = new Map<string, DeckFile>()
+const deckFor = async (source: string) => {
+  if (!deckFiles.has(source)) deckFiles.set(source, await read<DeckFile>(`memory-decks/${source.replace(/^\/data\//u, '')}`))
+  return deckFiles.get(source)!
+}
 for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'lk'] as const) {
   const filename = scope === '-sekii' ? `de-he-sekii-${course}` : `de-he-${course}${scope}`
   const view = await read<CompositionView>(`composition-views/physik/${filename}.view.json`)
@@ -94,7 +102,7 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       assert.equal(scopes.size, 1, filename)
       const [scopeId] = scopes
       const assessments = buildUnitAssessmentActions(material, original, value.goalIndexAll, value.visibleGoalIds, 'de', scopes)
-      const placed = placeUnitLearningResources(original, unitResourcePlacements({ material, scopes, flashcards: new Map(), assessments }))
+      const placed = placeUnitLearningResources(original, unitResourcePlacements({ material, scopes, assessments }))
       const order = [material.unit.orientationGoalId!, ...material.guidedStudyOrder!]
       const treeScope = [...value.goalIndexAll.values()].find(goal => isUnitMaterialSource(material, goal))!
       const treeRows = treeChildren.get(treeScope.id)!
@@ -141,14 +149,14 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       assert.equal(deck.deckId, 'de_gymnasium_physics_mechanics_ephase')
       assert.equal(deck.cards.length, 87)
       assert(deck.cards.every(card => card.originGoalIds?.length), 'every deck card names its understanding goals')
-      const actions = buildUnitFlashcardActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, deck.cards, language)
+      const actions = buildUnitFlashcardActions(memoryId, original, value.goalIndexAll, value.visibleGoalIds, deck.cards, language)
       const assessments = buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, language)
       assert.equal(assessments.size, 1, 'E.1 keeps a direct named link to its one canonical assessment')
       const examAction = [...assessments.values()][0]
       assert.equal(examAction.goalId, examId)
       assert.equal(examAction.title, `${language === 'de' ? 'Prüfung' : 'Assessment'}: ${value.goalIndexAll.get(examId)!.title}`)
-      const place = (flashcards: typeof actions, exams: typeof assessments) =>
-        placeUnitLearningResources(original, unitResourcePlacements({ scopes: e1Scopes, flashcards, assessments: exams }))
+      const place = (flashcards: typeof actions, exams: typeof assessments) => placeUnitLearningResources(original,
+        unitResourcePlacements({ scopes: e1Scopes, cardDeckIds: cardDeckIdsByScope(new Map([[memoryId, flashcards]])), assessments: exams }))
       const placed = place(actions, assessments)
       assert.deepEqual(placed.entryPaths, original.entryPaths, 'both goals keep their original home and reveal paths')
       assert.deepEqual(placed.entries[e1ScopeId].children, [...original.entries[e1ScopeId].children!, memoryId, examId])
@@ -190,11 +198,44 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       }
       const noVisibleMemory = new Set(value.visibleGoalIds)
       noVisibleMemory.delete(memoryId)
-      assert.equal(buildUnitFlashcardActions(practiceMaterial, original, value.goalIndexAll, noVisibleMemory, deck.cards, language).size, 0)
-      const noTopicCards = buildUnitFlashcardActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, [], language)
+      assert.equal(buildUnitFlashcardActions(memoryId, original, value.goalIndexAll, noVisibleMemory, deck.cards, language).size, 0)
+      const noTopicCards = buildUnitFlashcardActions(memoryId, original, value.goalIndexAll, value.visibleGoalIds, [], language)
       assert(!place(noTopicCards, assessments).entries[e1ScopeId].children?.includes(memoryId))
-      assert.equal(noTopicCards.size, 1,
-        'a topic with no matching card offers no empty drill; the full deck remains accessible')
+      assert.equal(noTopicCards.size, 0,
+        'a topic with no matching card offers no empty drill; the deck without unit cards stays an ordinary goal on its board')
+      assert.equal(buildUnitFlashcardActions(memoryId, original, value.goalIndexAll, value.visibleGoalIds, undefined, language).size, 0,
+        'no card action before the deck has loaded')
+
+      // Issue #85: every unit offers the cards of its atomic content goals, without a unit material file.
+      const deckHomePath = original.entryPaths![memoryId].slice(0, -1)
+      for (const boardId of deckHomePath.slice(0, -1)) assert(!actions.has(boardId), 'boards above the deck home hold no second copy')
+      for (const [unitId, action] of actions) {
+        if (action.goalIds === undefined) continue
+        assert.equal(original.entries[unitId].kind, 'unit')
+        assert(!deckHomePath.includes(unitId))
+        for (const goalId of action.goalIds) {
+          assert(original.entryPaths![goalId].includes(unitId), 'a unit offers only the cards of its own atomic goals')
+          assert.equal(original.entries[goalId].kind, 'goal')
+        }
+        assert(selectPracticeCards(deck.cards, getSrsFilterTagsForGoal(value.goalIndexAll.get(memoryId)!), action.goalIds).length)
+      }
+      const unitOf = (nodeId: string) => Object.keys(original.entries).find(id => original.entries[id].kind === 'unit'
+        && value.goalIndexAll.get(id)?.extendedData?.compositionNodeId === nodeId)
+      const e2 = unitOf('physics-e2-newton-and-conservation')
+      if (e2) assert.equal(actions.get(e2)?.title, language === 'de' ? 'Lernkarten zu E.2 üben' : 'Practice flashcards for E.2',
+        'E.2 has no card material binding and still offers its cards')
+      const nested = unitOf('physics-e1-accelerated-and-free-fall')
+      if (nested) {
+        const nestedAction = actions.get(nested)
+        assert(nestedAction?.goalIds?.length, 'a nested unit offers the cards of its own goals')
+        assert(nestedAction.goalIds.every(goalId => e1.goalIds!.includes(goalId)), 'the nested cards are part of E.1')
+        nestedUnitsWithCards++
+      }
+      const placedEverywhere = placeUnitLearningResources(original, unitResourcePlacements({ scopes: new Set(actions.keys()),
+        cardDeckIds: cardDeckIdsByScope(new Map([[memoryId, actions]])), assessments: new Map() }))
+      for (const unitId of actions.keys()) assert(placedEverywhere.entries[unitId].children!.includes(memoryId))
+      assert.equal(placedEverywhere.entries[deckHomePath.at(-1)!].children!.filter(id => id === memoryId).length, 1,
+        'the deck stays once on its home board')
       const children = new Map(Object.values(original.entries).map(entry => [entry.id, entry.children ?? []]))
       const progressGoals = new Map(Object.keys(original.entries).map(id => [id, value.goalIndexAll.get(id)
         ?? { id, type: 'cluster' as const, contains: [], weight: 1 } as never]))
@@ -202,10 +243,25 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       const phaseId = [...actions.keys()][0]
       assert((progress.get(phaseId)?.explicitCount ?? 0) >= 1, 'the original memory goal still contributes to phase progress')
       assert.equal(JSON.stringify(original), snapshot, 'map actions do not mutate the original completion/demand fixture')
+      if (language === 'de') {
+        // Every deck goal of the projection follows the same rule.
+        for (const deckId of mapDeckGoalIds(original, value.visibleGoalIds)) {
+          const source = value.goalIndexAll.get(deckId)!.extendedData!.vocabularySource as string
+          const otherDeck = await deckFor(source)
+          const otherActions = buildUnitFlashcardActions(deckId, original, value.goalIndexAll, value.visibleGoalIds, otherDeck.cards, 'de')
+          assert(otherActions.size > 1, `${filename}: ${otherDeck.deckId} offers unit card practice`)
+          for (const [unitId, action] of otherActions) {
+            assert.equal(action.goalId, deckId)
+            if (action.goalIds) assert(selectPracticeCards(otherDeck.cards, getSrsFilterTagsForGoal(value.goalIndexAll.get(deckId)!), action.goalIds).length,
+              `${otherDeck.deckId}: ${unitId} has cards`)
+          }
+        }
+      }
       checked++
     }
   }
 }
+assert(nestedUnitsWithCards > 0, 'a nested unit below E.1 is covered')
 assert.equal(JSON.stringify(canonical), canonicalSnapshot, 'source goals and learner results remain untouched')
 for (const duration of ['g8', 'g9']) {
   const value = input([await read<CompositionView>(`composition-views/mathematik/de-he-gk-${duration}.view.json`),
@@ -213,14 +269,14 @@ for (const duration of ['g8', 'g9']) {
   const preview = deriveLearnerUnitMapPreview(value)
   const fixture = buildLearnerUnitMapProjection({ ...value, units: preview.units, after: preview.after, memberUnits: preview.memberUnits })
   const cards = (await read<{ cards: { tags?: string[]; originGoalIds?: string[] }[] }>('memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json')).cards
-  const combined = buildUnitFlashcardActions(practiceMaterial, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de')
+  const combined = buildUnitFlashcardActions(memoryId, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de')
   const phase = [...combined].find(([, action]) => action.goalIds === undefined)
   assert(phase && fixture.entries[phase[0]].subjects?.includes(math) && fixture.entries[phase[0]].subjects?.includes(physics),
     'a combined Mathematics/Physics E phase keeps its Physics practice action through the real scope alias')
   const mathOnly = filterLearnerUnitMapToSubjects(fixture, new Set([math]))
   assert.equal(findUnitMaterialScopes(practiceMaterial, mathOnly, value.goalIndexAll, value.visibleGoalIds).size, 0,
     'a Mathematics-only board cannot offer the Physics E.1 introduction or exercises')
-  assert.equal(buildUnitFlashcardActions(practiceMaterial, mathOnly, value.goalIndexAll, value.visibleGoalIds, cards, 'de').size, 0,
+  assert.equal(buildUnitFlashcardActions(memoryId, mathOnly, value.goalIndexAll, value.visibleGoalIds, cards, 'de').size, 0,
     'hiding Physics removes its action from a shared phase')
 }
 // An unrelated subject has its own view, lesson, graph anchors and deck. No registry entry or
@@ -245,16 +301,27 @@ for (const duration of ['g8', 'g9']) {
   const cards = Array.from({ length: 27 }, (_, index) => ({ id: String(index), tags: [
     ...(getSrsFilterTagsForGoal(value.goalIndexAll.get(memory.id)!) ?? []), `goal:${atomicId}`,
   ] }))
-  const action = buildUnitFlashcardActions(material, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de').get(topic.id)
+  const action = buildUnitFlashcardActions(memory.id, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de').get(topic.id)
   assert(action?.goalIds?.includes(atomicId) && action.goalId === memory.id)
   assert.equal(selectPracticeCards(cards, undefined, action.goalIds).length, 27, 'larger subdecks remain available in full')
   assert.equal(buildUnitAssessmentActions(material, fixture, value.goalIndexAll, value.visibleGoalIds, 'de').size, 0)
   const deckless = { ...material, unit }
   assert.deepEqual([...findUnitMaterialScopes(deckless, fixture, value.goalIndexAll, value.visibleGoalIds)], [topic.id])
-  assert.equal(buildUnitFlashcardActions(deckless, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de').size, 0)
   const wrong = { ...material, unit: { ...material.unit, viewIds: ['some-other-view'] } }
   assert.equal(findUnitMaterialScopes(wrong, fixture, value.goalIndexAll, value.visibleGoalIds).size, 0)
-  assert.equal(buildUnitFlashcardActions(wrong, fixture, value.goalIndexAll, value.visibleGoalIds, cards, 'de').size, 0)
+  // Issue #85: the card action no longer depends on a material binding (flashcardGoalId) at all.
+  const unbound = Object.values(fixture.entries).find(({ id, kind }) => kind === 'unit' && id !== topic.id && id !== owner
+    && fixture.entryPaths![id].includes(owner) && !fixture.entryPaths![topic.id].includes(id)
+    && (fixture.entries[id].children ?? []).some(child => fixture.entries[child]?.kind === 'goal' && value.goalIndexAll.get(child)?.landscapeId === math))!
+  assert(unbound, 'a second lesson without material exists')
+  const unboundGoal = unbound.children!.find(id => fixture.entries[id]?.kind === 'goal' && value.goalIndexAll.get(id)?.landscapeId === math)!
+  const unboundCards = [{ id: 'unbound', tags: [...(getSrsFilterTagsForGoal(value.goalIndexAll.get(memory.id)!) ?? [])], originGoalIds: [unboundGoal] }]
+  assert(buildUnitFlashcardActions(memory.id, fixture, value.goalIndexAll, value.visibleGoalIds, unboundCards, 'de').get(unbound.id)?.goalIds?.includes(unboundGoal),
+    'a unit without material offers the cards of its goals')
+  const hiddenGoals = new Set(value.visibleGoalIds)
+  hiddenGoals.delete(unboundGoal)
+  assert(!buildUnitFlashcardActions(memory.id, fixture, value.goalIndexAll, hiddenGoals, unboundCards, 'de').has(unbound.id),
+    'a card of a goal outside the learner scope offers nothing')
 }
 assert.deepEqual(packageMaterials, [], 'the package-consumer edition supplies no repository-specific E.1 materials')
 assert.deepEqual(selectPracticeCards([{ tags: ['GK', 'goal:a'] }, { tags: ['LK', 'goal:b'] }], ['GK'], ['b']), [], 'course and topic selection are intersected')

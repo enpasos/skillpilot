@@ -1,4 +1,5 @@
 import type { LabelLanguage } from './filterLabels'
+import { getFlashcardDrillCopy } from './flashcardDrillCopy'
 
 export interface LearnerViewCopy {
   activeGoalNotAllowedTitle: string
@@ -33,6 +34,9 @@ export interface LearnerViewCopy {
   memoryVerificationBlockedStatus: string
   memoryVerificationCompleteStatus: string
   memoryVerificationWaitingStatus: string
+  /** No card of the box is testable, and none was tested today: the remaining cards are not released yet. */
+  memoryVerificationNotYetStatus: string
+  memoryLockedCardsHint: (count: number) => string
   memoryPracticeBackAction: string
   memoryVerifiedRecallLaunchFailed: string
 }
@@ -72,6 +76,8 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryVerificationBlockedStatus: '{0} heute gesperrt',
         memoryVerificationCompleteStatus: 'Prüfung bestanden',
         memoryVerificationWaitingStatus: 'Heute keine Karte prüfbar',
+        memoryVerificationNotYetStatus: 'Noch keine Karte prüfbar',
+        memoryLockedCardsHint: getFlashcardDrillCopy('de').lockedCards,
         memoryPracticeBackAction: 'Zur Auswahl',
         memoryVerifiedRecallLaunchFailed: 'Der Lerncoach konnte nicht geöffnet werden. Bitte versuche es erneut.',
       }
@@ -108,6 +114,8 @@ export const getLearnerViewCopy = (language: LabelLanguage): LearnerViewCopy => 
         memoryVerificationBlockedStatus: '{0} locked today',
         memoryVerificationCompleteStatus: 'Verification complete',
         memoryVerificationWaitingStatus: 'No card testable today',
+        memoryVerificationNotYetStatus: 'No card testable yet',
+        memoryLockedCardsHint: getFlashcardDrillCopy('en').lockedCards,
         memoryPracticeBackAction: 'Back to choices',
         memoryVerifiedRecallLaunchFailed: 'The Learning Coach could not be opened. Please try again.',
       }

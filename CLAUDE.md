@@ -18,6 +18,16 @@ visits. Autopilot determines only who chooses the next frontier goal. With it
 off the learner chooses in chat. With it on the backend chooses and the coach
 continues in chat. See the opening product decision in `AGENTS.md`.
 
+**Card memorization (23 November 2026, issue #85).** Cards are not graph
+goals. A card enters the learner's box only when its understanding goals
+(card field `originGoalIds`) in the Personal Curriculum are passed or credited,
+and it leaves the box for good once it is passed in Verified Recall. The cards
+of a unit are the cards of its atomic goals; the deck goal stays derived from
+its cards. The backend sets the card step in coach chat and decides release;
+neither the coach nor the Cockpit does. Card state is one row per learner,
+deck goal and card (`learner_card_state`). See the product decision on card
+memorization at the top of `AGENTS.md`, §7.2 and §13.
+
 **Current execution mandate (15 November 2026):** agents own the resolution
 and implementation of the model, stage-plan and pedagogical findings in
 `docs/dev/stage-plan-units-handover-2026-11-15.md`; the Product Owner reviews
@@ -156,6 +166,8 @@ npm --prefix app run validate:composition-views
 npm --prefix app run check:transitive-minimality
 npm --prefix app run validate:learning-units            # learning units in the canonical landscapes (R1, R3, R4)
 npm --prefix app run check:learning-unit-assessments    # unit assessments in the catalog equal their source files
+npm --prefix app run check:memory-deck-origins          # card `originGoalIds` equal the kept card-review records
+npm --prefix app run quality:memory-card-review:check:all   # card reviews, incl. the deck field against the ledgers
 npm --prefix app run knowledge-context -- <goalId> [--full]   # what a learner can be assumed to know at a goal (AGENTS.md §2.5)
 npm --prefix app run quality:curriculum-status          # regenerate status
 npm --prefix app run quality:curriculum-status:check    # + maturity-floor gate

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import type { UiGoal } from '../goalTypes'
 import { getSrsFilterTags } from '../utils/srsTags'
 import { waitForSrsPracticeWrites } from '../utils/srsPracticeSync'
+import { calculateCardBoxStats, readLockedCardIds } from '../components/srs/cardBox'
 
 type VocabCard = {
   id: string
@@ -15,6 +16,7 @@ type VocabData = {
 }
 
 type SrsReviewState = {
+  interval?: unknown
   nextReview?: number | string
   verifiedRecall?: {
     status?: string
@@ -25,29 +27,13 @@ type SrsReviewState = {
 type ClientStateSnapshot = {
   updatedAt?: string
   srsState?: Record<string, SrsReviewState>
+  lockedCardIds?: string[]
 }
 
 type SrsMasteryMap = Record<string, number>
 export type SrsDeckSourceResolver = (goal: UiGoal, language: 'de' | 'en') => string | undefined
 
 const SRS_TAG_PREFIX = 'srs-deck'
-const parseNextReview = (value: unknown): number => {
-  if (typeof value === 'number') return value
-  if (typeof value === 'string') {
-    const numeric = Number(value)
-    if (Number.isFinite(numeric)) return numeric
-    const parsed = Date.parse(value)
-    return Number.isFinite(parsed) ? parsed : Number.NaN
-  }
-  return Number.NaN
-}
-
-const isVerifiedRecallPassed = (state: SrsReviewState | undefined): boolean => {
-  const verified = state?.verifiedRecall
-  return verified?.status === 'passed'
-    && typeof verified.passedAt === 'string'
-    && verified.passedAt.length > 0
-}
 
 export function useSrsMastery(
   goals: UiGoal[],
@@ -151,32 +137,12 @@ export function useSrsMastery(
       const snapshot = await loadClientState(goal.id)
       if (runId !== runRef.current) return
       if (!snapshot?.srsState) continue
-      const srsState = snapshot.srsState
+      // Mastery stays "every card of the deck verified"; due-ness follows the box (#85).
+      const stats = calculateCardBoxStats(cards, snapshot.srsState, readLockedCardIds(snapshot), now)
 
-      let dueCount = 0
-      let nextDueAt = Number.POSITIVE_INFINITY
-      let verifiedCount = 0
-
-      for (const card of cards) {
-        const state = srsState[card.id]
-        if (isVerifiedRecallPassed(state)) {
-          verifiedCount += 1
-        }
-        const nextReview = parseNextReview(state?.nextReview)
-        if (!state || !Number.isFinite(nextReview)) {
-          dueCount += 1
-          continue
-        }
-        if (nextReview <= now) {
-          dueCount += 1
-          continue
-        }
-        if (nextReview < nextDueAt) nextDueAt = nextReview
-      }
-
-      results[goal.id] = cards.length > 0 && verifiedCount === cards.length ? 1 : 0
-      if (dueCount === 0 && nextDueAt < earliestNextDue) {
-        earliestNextDue = nextDueAt
+      results[goal.id] = stats.total > 0 && stats.verifiedPending === 0 ? 1 : 0
+      if (stats.due === 0 && stats.nextDueAt < earliestNextDue) {
+        earliestNextDue = stats.nextDueAt
       }
     }
 
