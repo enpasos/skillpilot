@@ -35266,6 +35266,7 @@
         "bbe9a270-9b17-519f-8cd7-92c816ac4e29",
         "6c9d0ef3-c82f-534f-8024-6b0efcb88276",
         "dfd2628f-b44e-51b3-86e8-99158861be8c",
+        "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
         "b8c3dfb7-9286-52ac-8b0f-ad0a0ce941ed",
         "a77e53d5-246d-52df-86a2-d14f7a08fb77",
         "e1794352-ceee-5c27-8be4-224592ddbb89",
@@ -37051,7 +37052,8 @@
       },
       "requires": [
         "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
-        "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
       ],
       "contains": [],
       "examples": [],
@@ -37113,6 +37115,117 @@
             }
           ]
         }
+      }
+    },
+    {
+      "id": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "shortKey": "canonical_physics_assessment_horizontal_throw_velocity_vector",
+      "title": "Prüfungsaufgabe: Geschwindigkeit beim waagerechten Wurf als Pfeil bestimmen",
+      "titleEn": "Assessment Task: Determine the Velocity in Horizontal Projection as an Arrow",
+      "description": "Die lernende Person kann beim waagerechten Wurf die Geschwindigkeit zu einem Zeitpunkt und beim Auftreffen aus ihren Komponenten maßstäblich zusammensetzen, Betrag und Auftreffwinkel bestimmen und dieselbe Bewegung aus einem mitbewegten Bezugssystem beschreiben.",
+      "descriptionEn": "The learner can combine the velocity in horizontal projectile motion at a given time and at impact from its components to scale, determine its magnitude and the angle of impact, and describe the same motion from a co-moving frame of reference.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK2_MODELLIEREN",
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.HORIZONTAL_THROW_VELOCITY_VECTOR"
+      },
+      "requires": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "contains": [],
+      "examples": [],
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityFromRequires": true,
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "examData": {
+        "reviewStatus": "needs_review",
+        "reviewNote": "Autorenentwurf zum E.1-Schnitt vom 23. November 2026; unabhängiges Inhalts-, Bewertungs- und Abdeckungsreview ausstehend. Keine Freigabe, keine menschliche Erprobung.",
+        "coveredGoalIds": [
+          "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+          "68c90ba6-c438-463c-9a53-cf61062d416a"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB1",
+          "AB2"
+        ],
+        "taskContent": "**Teil A – Geschwindigkeit als Pfeil:** Eine Kugel rollt mit 2,0 m/s waagerecht über eine Tischkante und trifft 0,30 s später auf dem Boden auf. Der Luftwiderstand ist vernachlässigbar; rechne mit g = 10 m/s².\n1. Bestimme für t = 0,15 s und für den Auftreffzeitpunkt t = 0,30 s jeweils die waagerechte und die senkrechte Geschwindigkeitskomponente. Begründe, warum die waagerechte Komponente gleich bleibt. (4 BE)\n2. Zeichne für beide Zeitpunkte die Komponenten maßstäblich als Pfeile, zum Beispiel 1 cm ≙ 0,5 m/s, und konstruiere daraus jeweils den Geschwindigkeitspfeil. Gib deinen Maßstab an. (4 BE)\n3. Berechne die Beträge der beiden Geschwindigkeiten. (3 BE)\n4. Miss in deiner Zeichnung, unter welchem Winkel gegen die Waagerechte die Kugel auf den Boden trifft. Erkläre, warum dieser Winkel während des Flugs größer wird. (2 BE)\n\n**Teil B – Zwei Bezugssysteme:** Ein flacher Spielzeugwagen fährt auf dem Boden mit konstant 2,0 m/s in dieselbe Richtung wie die Kugel. Im Moment des Abrollens befindet er sich genau unter der Tischkante; seine Höhe ist vernachlässigbar.\n5. Beschreibe die Bewegung der Kugel, wie sie ein Beobachter auf dem Wagen sieht, und gib ihre Geschwindigkeit relativ zum Wagen beim Auftreffen an. Zeige mit einer Pfeiladdition, dass sich daraus zusammen mit der Geschwindigkeit des Wagens wieder die Auftreffgeschwindigkeit aus Teil A ergibt. (3 BE)",
+        "solutionContent": "1. Im Modell ohne Luftwiderstand ist die waagerechte Teilbewegung gleichförmig: v_x = 2,0 m/s zu beiden Zeitpunkten. Die senkrechte Teilbewegung ist ein freier Fall aus der Ruhe: v_y = g·t, also 1,5 m/s nach unten bei 0,15 s und 3,0 m/s nach unten bei 0,30 s.\n2. Mit 1 cm ≙ 0,5 m/s ist der waagerechte Pfeil 4,0 cm lang, der senkrechte 3,0 cm (0,15 s) beziehungsweise 6,0 cm (0,30 s). Der Geschwindigkeitspfeil führt vom Anfang des waagerechten Pfeils zur Spitze des an dessen Spitze angesetzten senkrechten Pfeils.\n3. |v(0,15 s)| = √(2,0² + 1,5²) m/s = 2,5 m/s; |v(0,30 s)| = √(2,0² + 3,0²) m/s = √13 m/s ≈ 3,6 m/s.\n4. Gemessen etwa 56° gegen die Waagerechte (54° bis 58° sind bei einer sorgfältigen Zeichnung richtig). Die senkrechte Komponente wächst gleichmäßig mit der Zeit, die waagerechte bleibt gleich; deshalb zeigt der Pfeil immer steiler nach unten.\n5. Der Wagen bewegt sich waagerecht genauso schnell wie die Kugel. Für den Beobachter auf dem Wagen hat die Kugel keine waagerechte Geschwindigkeit; sie fällt senkrecht nach unten und landet auf dem Wagen. Ihre Geschwindigkeit relativ zum Wagen beträgt beim Auftreffen 3,0 m/s senkrecht nach unten. v(Kugel, Boden) = v(Kugel, Wagen) + v(Wagen, Boden): Der Pfeil 3,0 m/s nach unten und der Pfeil 2,0 m/s waagerecht ergeben denselben Pfeil wie in Teil A, also etwa 3,6 m/s unter etwa 56° gegen die Waagerechte.\n\n**Hinweise zur Bewertung:** Andere sinnvolle Maßstäbe sind gleichwertig. Eine Berechnung des Winkels ist zulässig, aber nicht verlangt; die Messung genügt. Folgefehler aus Teil 1 werden in den Teilen 2 bis 5 nicht erneut abgezogen.",
+        "scoring": {
+          "maxPoints": 16,
+          "passingPoints": 12,
+          "steps": [
+            {
+              "id": "vv_1",
+              "points": 4,
+              "description": "Komponenten bestimmt: v_x = 2,0 m/s konstant und begründet, v_y = 1,5 m/s und 3,0 m/s nach unten / EN: Components determined: v_x = 2.0 m/s constant with a reason, v_y = 1.5 m/s and 3.0 m/s downwards"
+            },
+            {
+              "id": "vv_2",
+              "points": 4,
+              "description": "Komponentenpfeile mit angegebenem Maßstab gezeichnet und beide Geschwindigkeitspfeile richtig konstruiert / EN: Component arrows drawn with a stated scale and both velocity arrows constructed correctly"
+            },
+            {
+              "id": "vv_3",
+              "points": 3,
+              "description": "Beträge 2,5 m/s und etwa 3,6 m/s mit dem Satz des Pythagoras berechnet / EN: Magnitudes 2.5 m/s and about 3.6 m/s calculated with Pythagoras' theorem"
+            },
+            {
+              "id": "vv_4",
+              "points": 2,
+              "description": "Auftreffwinkel gemessen (54° bis 58° gegen die Waagerechte) und Zunahme des Winkels begründet / EN: Impact angle measured (54° to 58° to the horizontal) and its increase explained"
+            },
+            {
+              "id": "vv_5",
+              "points": 3,
+              "description": "Bewegung im Wagensystem als senkrechter Fall beschrieben, Relativgeschwindigkeit 3,0 m/s nach unten angegeben und Bodengeschwindigkeit durch Pfeiladdition bestätigt / EN: Motion in the cart frame described as a vertical fall, relative velocity 3.0 m/s downwards stated and the floor velocity confirmed by arrow addition"
+            }
+          ]
+        },
+        "taskContentEn": "**Part A – velocity as an arrow:** A ball rolls horizontally off a table edge at 2.0 m/s and hits the floor 0.30 s later. Air resistance is negligible; use g = 10 m/s².\n1. For t = 0.15 s and for the moment of impact t = 0.30 s, determine the horizontal and the vertical velocity component. Explain why the horizontal component stays the same. (4 marks)\n2. For both instants, draw the components to scale as arrows, for example 1 cm ≙ 0.5 m/s, and construct the velocity arrow from them. State your scale. (4 marks)\n3. Calculate the magnitudes of the two velocities. (3 marks)\n4. Measure in your drawing the angle to the horizontal at which the ball hits the floor. Explain why this angle increases during the flight. (2 marks)\n\n**Part B – two frames of reference:** A flat toy cart moves on the floor at a constant 2.0 m/s in the same direction as the ball. At the moment the ball leaves the table, the cart is exactly below the table edge; its height is negligible.\n5. Describe the motion of the ball as an observer on the cart sees it, and state its velocity relative to the cart at impact. Show with an arrow addition that, together with the velocity of the cart, this gives the impact velocity from part A again. (3 marks)",
+        "solutionContentEn": "1. In the model without air resistance the horizontal motion is uniform: v_x = 2.0 m/s at both instants. The vertical motion is a free fall from rest: v_y = g·t, i.e. 1.5 m/s downwards at 0.15 s and 3.0 m/s downwards at 0.30 s.\n2. With 1 cm ≙ 0.5 m/s the horizontal arrow is 4.0 cm long, the vertical one 3.0 cm (0.15 s) or 6.0 cm (0.30 s). The velocity arrow runs from the start of the horizontal arrow to the tip of the vertical arrow attached to its tip.\n3. |v(0.15 s)| = √(2.0² + 1.5²) m/s = 2.5 m/s; |v(0.30 s)| = √(2.0² + 3.0²) m/s = √13 m/s ≈ 3.6 m/s.\n4. Measured about 56° to the horizontal (54° to 58° is correct for a careful drawing). The vertical component grows steadily with time while the horizontal one stays the same; therefore the arrow points more and more steeply downwards.\n5. The cart moves horizontally exactly as fast as the ball. For the observer on the cart the ball has no horizontal velocity; it falls vertically downwards and lands on the cart. Its velocity relative to the cart at impact is 3.0 m/s vertically downwards. v(ball, floor) = v(ball, cart) + v(cart, floor): the arrow 3.0 m/s downwards and the arrow 2.0 m/s horizontal give the same arrow as in part A, i.e. about 3.6 m/s at about 56° to the horizontal.\n\n**Scoring notes:** Other sensible scales are equivalent. Calculating the angle is allowed but not required; measuring it is sufficient. Errors carried forward from part 1 are not penalised again in parts 2 to 5."
       }
     },
     {

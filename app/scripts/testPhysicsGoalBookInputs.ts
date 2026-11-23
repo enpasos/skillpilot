@@ -623,12 +623,12 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 490,
   curricularArea: 113,
-  practiceAssessment: 245,
+  practiceAssessment: 246,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 4,
-  total: 862,
+  total: 863,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.

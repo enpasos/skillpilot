@@ -84,6 +84,8 @@ E1_CUT_ORIGINS = {
     "262f807a-30d0-503e-986f-856cbd048e8e": {"d6dc0e02-831d-4894-a61a-852bcc74f147", "e4b38061-1f28-43ad-8371-a3e7c0e81856"},
     "d9a6ea85-f7e8-5cbd-afe9-62596e22040d": {"d6dc0e02-831d-4894-a61a-852bcc74f147", "09029573-864f-40ca-bf8a-cee7bf6dcb73"},
     "0fee53f2-1c02-5b12-9b6c-aa9fa462d921": {"89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "68c90ba6-c438-463c-9a53-cf61062d416a"},
+    # The velocity-vector assessment stands beside the throw/brake assessment of the lower stage.
+    "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": {"0fee53f2-1c02-5b12-9b6c-aa9fa462d921", "dfd2628f-b44e-51b3-86e8-99158861be8c"},
 }
 
 
