@@ -50,6 +50,62 @@ class ChampionPracticeFingerprintTest {
         assertThat(fingerprints.forGoal(goal)).isNotEqualTo(original);
     }
 
+    private static final String CARDS_WITHOUT_ORIGINS = """
+            {"cards":[{"id":"c1","front":"Q","back":"A","category":"K","tags":["GK","goal:g1"]}]}""";
+
+    private static ChampionPracticeFingerprint fingerprints(String deckJson) {
+        DeckResourceService decks = mock(DeckResourceService.class);
+        when(decks.resolveDeckResource("memory", "/data/deck.json")).thenAnswer(call ->
+                new org.springframework.core.io.ByteArrayResource(deckJson.getBytes(java.nio.charset.StandardCharsets.UTF_8)));
+        return new ChampionPracticeFingerprint(new ObjectMapper(), decks);
+    }
+
+    private static LearningGoal memoryGoal() {
+        LearningGoal goal = new LearningGoal(); goal.setId("memory"); goal.setNodeKind("memory");
+        goal.setExtendedData(Map.of("vocabularySource", "/data/deck.json"));
+        return goal;
+    }
+
+    private static String fingerprint(String deckJson) {
+        return fingerprints(deckJson).forGoal(memoryGoal());
+    }
+
+    @Test
+    void originGoalIdsAreReleaseMetadataAndKeepTheFingerprintOfThePracticedCards() {
+        String before = fingerprint(CARDS_WITHOUT_ORIGINS);
+        assertThat(before).isNotNull();
+        // For a deck without the field the new value equals the pre-change rule (whole cards node).
+        assertThat(fingerprints(CARDS_WITHOUT_ORIGINS).legacyForGoal(memoryGoal())).isEqualTo(before);
+
+        assertThat(fingerprint("""
+                {"schemaVersion":2,"cards":[{"id":"c1","front":"Q","back":"A","originGoalIds":["g1"],
+                  "category":"K","tags":["GK","goal:g1"]}]}""")).isEqualTo(before);
+        assertThat(fingerprint("""
+                {"cards":[{"id":"c1","front":"Q2","back":"A","category":"K","tags":["GK","goal:g1"]}]}"""))
+                .isNotEqualTo(before);
+        assertThat(fingerprint("""
+                {"cards":[{"id":"c1","front":"Q","back":"A2","category":"K","tags":["GK","goal:g1"]}]}"""))
+                .isNotEqualTo(before);
+        assertThat(fingerprint("""
+                {"cards":[{"id":"c1","front":"Q","back":"A","category":"K2","tags":["GK","goal:g1"]}]}"""))
+                .isNotEqualTo(before);
+        assertThat(fingerprint("""
+                {"cards":[{"id":"c1","front":"Q","back":"A","category":"K","tags":["LK","goal:g1"]}]}"""))
+                .isNotEqualTo(before);
+    }
+
+    @Test
+    void evidenceOfDecksThatAlreadyCarriedOriginGoalIdsRemainsRecognizable() {
+        String deck = """
+                {"schemaVersion":1,"cards":[{"id":"c1","front":"Q","back":"A","originGoalIds":["g1"]}]}""";
+        var fingerprints = fingerprints(deck);
+        LearningGoal goal = memoryGoal();
+        // The legacy rule reproduces what such a deck produced before issue #85.
+        assertThat(fingerprints.legacyForGoal(goal)).isNotNull().isNotEqualTo(fingerprints.forGoal(goal));
+        assertThat(fingerprints.forGoal(goal)).isEqualTo(fingerprint("""
+                {"cards":[{"id":"c1","front":"Q","back":"A"}]}"""));
+    }
+
     @Test
     void missingBoundMaterialFailsClosed() {
         var resources = mock(ResourceLoader.class);
