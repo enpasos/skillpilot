@@ -560,6 +560,8 @@ jobs:
         run: npm run test:learner-cockpit-startup
       - name: Test native learner map and focused cockpit regression
         run: npm run test:learner-map
+      - name: Test flashcard box rules
+        run: npm run test:flashcard-box-rules
       - name: Test read-only learning-goal book UI
         run: npm run test:goal-book-ui
       - name: Test compact completed session setup

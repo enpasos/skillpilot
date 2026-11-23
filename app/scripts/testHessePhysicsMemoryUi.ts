@@ -53,6 +53,9 @@ const deck = { deckId: 'de_gymnasium_physics_mechanics_ephase', title: memory.ti
   { id: 'e1-a', front: 'E1 Frage A', back: 'E1 Antwort A', originGoalIds: [force.id], category: 'E1', tags: ['GK'] },
   { id: 'e1-b', front: 'E1 Frage B', back: 'E1 Antwort B', originGoalIds: [force.id], category: 'E1', tags: ['GK'] },
   { id: 'e2-a', front: 'E2 Frage', back: 'E2 Antwort', category: 'E2', tags: ['GK', 'goal:' + energyId] },
+  // Issue #85: a card passed in Verified Recall has left the box; a locked card waits for its understanding goal.
+  { id: 'e1-removed', front: 'E1 Frage geprüft', back: 'E1 Antwort geprüft', originGoalIds: [force.id], category: 'E1', tags: ['GK'] },
+  { id: 'e1-locked', front: 'E1 Frage gesperrt', back: 'E1 Antwort gesperrt', originGoalIds: [force.id], category: 'E1', tags: ['GK'] },
 ] }
 function monitorBoard(dialog: Locator) {
   return dialog.evaluateHandle((element, refreshEvent) => {
@@ -296,9 +299,11 @@ try {
     let savePending = false, getsDuringWrite = 0, conflicts = 0
     const verifiedRecall = { status: 'passed', passedAt: '2026-11-01T08:00:00Z' }
     const outside = { id: 'e2-a', interval: 1, repetition: 1, ef: 2.5, nextReview: 0 }
+    const removed = { id: 'e1-removed', interval: 1, repetition: 1, ef: 2.5, nextReview: 0, verifiedRecall }
     let srsState: Record<string, unknown> = {
-      'e1-a': { id: 'e1-a', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0, verifiedRecall },
-      'e1-b': { id: 'e1-b', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0, verifiedRecall }, 'e2-a': outside,
+      'e1-a': { id: 'e1-a', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0 },
+      'e1-b': { id: 'e1-b', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0 }, 'e2-a': outside,
+      'e1-removed': removed,
     }
     const cameraContext = viewFile === 'de-he-sekii-lk'
     const learnerState = { activeGoal: { id: initialGoal.id }, frontier: [{ id: initialGoal.id }],
@@ -368,7 +373,7 @@ try {
           return json({ savedAt: revision })
         }
         if (savePending) getsDuringWrite++
-        return json({ srsState, updatedAt: revision })
+        return json({ srsState, updatedAt: revision, lockedCardIds: ['e1-locked'] })
       }
       if (viewFile && suffix.startsWith('/client-state/') && request.method() === 'GET') return json({ srsState: {}, updatedAt: revision })
       if (suffix === '/content-selection' || suffix === '/content-materials') return json({ error: 'Optional pilot disabled' }, 404)
@@ -485,9 +490,10 @@ try {
     }
     await page.getByText('Karte 1 von 2', { exact: true }).waitFor()
     assert.equal(await page.getByText('E2 Frage', { exact: true }).count(), 0)
+    await page.getByText('1 weitere Karte kommt dazu, sobald du ihr Lernziel geschafft hast.', { exact: true }).waitFor()
     await page.locator(`[data-goal-id="${memoryId}"]`).waitFor()
     assert.equal(await page.locator(`[data-goal-id="${memoryId}"] .lucide-check`).count(), 0,
-      'verified topic cards must not complete the full phase memory goal')
+      'a verified topic card must not complete the full phase memory goal')
     if (switchDuringSave) {
       await page.getByRole('button', { name: 'Antwort zeigen', exact: true }).click()
       await page.getByRole('button', { name: 'Gewusst', exact: true }).click()
@@ -532,7 +538,9 @@ try {
     await page.waitForFunction(({ learner, goal }) => localStorage.getItem(`srs_state_last_sync_${learner}_${goal}`)?.startsWith('2026-11-18T08:10:'), { learner: id.learner, goal: memoryId })
     assert(writes.length > 0)
     assert.deepEqual(writes.at(-1)!.srsState['e2-a'], outside, 'practicing E.1 preserves unrelated card state in the original deck')
-    assert.equal(Object.keys(writes.at(-1)!.srsState).length, 3, 'topic persistence keeps the full original card state')
+    assert.deepEqual(writes.at(-1)!.srsState['e1-removed'], removed, 'a removed card is not practised and keeps its result')
+    assert(writes.every(write => !Object.hasOwn(write.srsState, 'e1-locked')), 'a locked card is never part of a practice save')
+    assert.equal(Object.keys(writes.at(-1)!.srsState).length, 4, 'topic persistence keeps the full original card state')
     for (const card of ['e1-a', 'e1-b']) {
       assert.equal(writes.at(-1)!.srsState[card].repetition, 2, 'the immediate batch save contains the final rating')
       assert((writes.at(-1)!.srsState[card].nextReview ?? 0) > Date.now())

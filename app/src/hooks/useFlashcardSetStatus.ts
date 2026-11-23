@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { UiGoal } from '../goalTypes'
-import {
-  isVerifiedRecallPassed,
-  isVerifiedRecallTestedToday,
-  parseReviewTimestamp,
-} from '../components/srs/srsLogic'
+import { calculateCardBoxStats, readLockedCardIds } from '../components/srs/cardBox'
 import { getSrsFilterTags } from '../utils/srsTags'
 import { waitForSrsPracticeWrites } from '../utils/srsPracticeSync'
 
@@ -18,13 +14,19 @@ type VocabData = {
 }
 
 type SrsReviewState = {
+  interval?: unknown
   nextReview?: number | string
   verifiedRecall?: unknown
 }
 
+/** Practice counts describe the box (#85); `total` and the verified counts describe the deck goal. */
 export type FlashcardSetStatus = {
   total: number
+  /** Released cards that have not passed Verified Recall. */
+  box: number
   due: number
+  /** Cards that follow once their understanding goals are passed. */
+  locked: number
   verifiedPassed: number
   verifiedPending: number
   verificationEligible: number
@@ -34,6 +36,7 @@ export type FlashcardSetStatus = {
 type ClientStateSnapshot = {
   updatedAt?: string
   srsState?: Record<string, SrsReviewState>
+  lockedCardIds?: string[]
 }
 
 const resolveSource = (goal: UiGoal, language: 'de' | 'en') => {
@@ -48,11 +51,6 @@ const resolveSource = (goal: UiGoal, language: 'de' | 'en') => {
     ? extendedData.vocabularySourceEn
     : undefined
   return language === 'en' ? (sourceEn ?? sourceDe) : (sourceDe ?? sourceEn)
-}
-
-const isCardDue = (state: SrsReviewState | undefined, now: number) => {
-  const nextReview = parseReviewTimestamp(state?.nextReview)
-  return !state || !Number.isFinite(nextReview) || nextReview <= now
 }
 
 export function useFlashcardSetStatus(
@@ -114,34 +112,18 @@ export function useFlashcardSetStatus(
           if (!cancelled) setStatus(null)
           return
         }
-        const srsState = snapshot.srsState
-
-        const now = Date.now()
-        let due = 0
-        let verifiedPassed = 0
-        let verificationBlockedToday = 0
-        let verificationEligible = 0
-
-        for (const card of cards) {
-          const cardState = srsState[card.id]
-          if (isCardDue(cardState, now)) due += 1
-          if (isVerifiedRecallPassed(cardState?.verifiedRecall)) {
-            verifiedPassed += 1
-          } else if (isVerifiedRecallTestedToday(cardState?.verifiedRecall, now)) {
-            verificationBlockedToday += 1
-          } else {
-            verificationEligible += 1
-          }
-        }
+        const stats = calculateCardBoxStats(cards, snapshot.srsState, readLockedCardIds(snapshot))
 
         if (!cancelled) {
           setStatus({
-            total: cards.length,
-            due,
-            verifiedPassed,
-            verifiedPending: Math.max(0, cards.length - verifiedPassed),
-            verificationEligible,
-            verificationBlockedToday,
+            total: stats.total,
+            box: stats.box,
+            due: stats.due,
+            locked: stats.locked,
+            verifiedPassed: stats.verifiedPassed,
+            verifiedPending: stats.verifiedPending,
+            verificationEligible: stats.verifiedEligible,
+            verificationBlockedToday: stats.verifiedBlockedToday,
           })
         }
       } catch {

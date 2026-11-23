@@ -50,6 +50,8 @@ export interface FlashcardDrillCopy {
     previousCard: string
     nextCard: string
     cardPosition: (current: number, total: number) => string
+    /** Neutral hint on cards that are not released yet (#85). */
+    lockedCards: (count: number) => string
     notKnown: string
     known: string
     notKnownTooltip: string
@@ -125,6 +127,9 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             previousCard: 'Previous card',
             nextCard: 'Next card',
             cardPosition: (current, total) => `Card ${current} of ${total}`,
+            lockedCards: count => count === 1
+                ? '1 more card joins once you have passed its learning goal.'
+                : `${count} more cards join once you have passed their learning goals.`,
             notKnown: 'Not yet',
             known: 'Got it',
             notKnownTooltip: 'Not recalled yet. Schedule this card sooner.',
@@ -181,6 +186,9 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             previousCard: 'Vorherige Karte',
             nextCard: 'Nächste Karte',
             cardPosition: (current, total) => `Karte ${current} von ${total}`,
+            lockedCards: count => count === 1
+                ? '1 weitere Karte kommt dazu, sobald du ihr Lernziel geschafft hast.'
+                : `${count} weitere Karten kommen dazu, sobald du ihre Lernziele geschafft hast.`,
             notKnown: 'Noch nicht gewusst',
             known: 'Gewusst',
             notKnownTooltip: 'Noch nicht erinnert. Diese Karte wird früher wiederholt.',

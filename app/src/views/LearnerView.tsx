@@ -3333,7 +3333,8 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
           if (payload.updatedAt) localStorage.setItem(lastSyncKey, payload.updatedAt)
           else localStorage.removeItem(lastSyncKey)
           window.dispatchEvent(new CustomEvent(SRS_STATE_RELOADED_EVENT, {
-            detail: { goalId: nodeId, srsState: payload.srsState, expectedUpdatedAt: payload.updatedAt ?? null },
+            detail: { goalId: nodeId, srsState: payload.srsState, expectedUpdatedAt: payload.updatedAt ?? null,
+              lockedCardIds: payload.lockedCardIds },
           }))
         }
       }
@@ -4081,12 +4082,17 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                                 <span className="block text-base font-semibold text-text-primary">
                                   {learnerViewCopy.memoryPracticeAction}
                                 </span>
-                                {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
+                                {currentFlashcardSetStatus && currentFlashcardSetStatus.box > 0 ? (
                                   <span className="mt-1 block text-sm font-semibold text-sky-700 dark:text-sky-300">
                                     {interpolateTemplate(learnerViewCopy.memoryPracticeDueStatus, [
                                       currentFlashcardSetStatus.due,
-                                      currentFlashcardSetStatus.total,
+                                      currentFlashcardSetStatus.box,
                                     ])}
+                                  </span>
+                                ) : null}
+                                {currentFlashcardSetStatus && currentFlashcardSetStatus.locked > 0 ? (
+                                  <span className="mt-1 block text-sm text-text-secondary" data-testid="memory-locked-cards-hint">
+                                    {learnerViewCopy.memoryLockedCardsHint(currentFlashcardSetStatus.locked)}
                                   </span>
                                 ) : null}
                                 <span className="mt-2 block text-sm text-text-secondary">
@@ -4109,7 +4115,9 @@ export const LearnerView: React.FC<LearnerViewProps> = ({
                                   {currentFlashcardVerificationComplete
                                     ? learnerViewCopy.memoryVerificationCompleteStatus
                                     : currentFlashcardVerificationWaiting
-                                      ? learnerViewCopy.memoryVerificationWaitingStatus
+                                      ? currentFlashcardSetStatus?.verificationBlockedToday
+                                        ? learnerViewCopy.memoryVerificationWaitingStatus
+                                        : learnerViewCopy.memoryVerificationNotYetStatus
                                       : learnerViewCopy.memoryVerifiedRecallAction}
                                 </span>
                                 {currentFlashcardSetStatus && currentFlashcardSetStatus.total > 0 ? (
