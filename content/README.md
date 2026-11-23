@@ -19,6 +19,10 @@ directory. Each versioned `package.json` contains:
 - materials with stable local `id`, original-language title, HTTPS `url`, type,
   actual material `language`, independent `status`, precise `goalIds`, section
   references and a dated AI/human mapping-review rationale.
+  An optional `translations` list can supply up to 20 actual language editions.
+  Each edition has a unique `language`, `title`, provider-hosted `url` and
+  `sections`. The resolver selects the exact locale, then its base language,
+  and otherwise serves the original edition.
 
 The PoC supports `article` and `simulation` materials. Catalog entries use
 `provider/1.0.0/package.json`-shaped paths; at most 20 packages, 1,000 materials per
@@ -65,6 +69,9 @@ must not produce recommendations.
   interactive activities authored and hosted by Tom Walsh, using GeoGebra.
 - [Physics with LEIFIphysik](enpasos-leifiphysik/1.0.0/README.md): two German
   activity pages on DC circuits and centripetal force with instructions.
+- [Physics with SimuFísica](enpasos-simufisica/1.0.0/README.md) offers one
+  free-fall simulation in German and English. Learners can time a steel ball
+  between two adjustable sensors.
 
 `enpasos` selects the links; GeoGebra, Desmos, PhET, LabXchange, oPhysics and
 LEIFIphysik supply the linked services. The LabXchange package also attributes

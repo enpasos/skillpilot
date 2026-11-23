@@ -20,6 +20,24 @@ import org.springframework.core.io.ClassPathResource;
 
 class ContentCatalogTest {
     @Test
+    void packagedFreeFallSimulationResolvesOneEditionPerLocale() {
+        var catalog = new ContentCatalog(new ObjectMapper());
+        var selection = mock(ContentSelectionService.class);
+        when(selection.selectedPackageIds("learner")).thenReturn(Set.of("enpasos-simufisica"));
+        var resolver = new ContentMaterialResolver(catalog, selection, true);
+        var goal = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
+        for (String locale : List.of("de-DE", "fr", "en-GB")) {
+            boolean english = locale.startsWith("en");
+            assertThat(resolver.resolve("learner", goal, locale)).singleElement().satisfies(link -> {
+                assertThat(link.language()).isEqualTo(english ? "en" : "de");
+                assertThat(link.title()).isEqualTo(english ? "Free fall with two sensors" : "Freier Fall mit zwei Sensoren");
+                assertThat(link.url()).isEqualTo("https://simufisica.com/" + (english ? "en/free-fall/" : "de/freier-fall/"));
+                assertThat(link.sections()).singleElement().asString().contains(english ? "first sensor crossing" : "zweiten Sensorpassage");
+            });
+        }
+    }
+
+    @Test
     void malformedOptionalCatalogDoesNotPreventApplicationStartup() throws Exception {
         ObjectMapper mapper = mock(ObjectMapper.class);
         when(mapper.readValue(any(InputStream.class), eq(ContentCatalog.Index.class)))
@@ -215,6 +233,23 @@ class ContentCatalogTest {
         assertThatThrownBy(() -> new ContentCatalog(List.of(
                 contentPackage("provider", "active", url, "goal-a", "active"))))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void rejectsLanguageEditionsWithForeignLinksOrRepeatedLanguages() {
+        var source = contentPackage("provider", "active", "https://provider.example", "goal-a", "active");
+        var normal = source.materials().getFirst();
+        for (var edition : List.of(
+                new ContentCatalog.MaterialEdition("de", "Ausgabe", "https://provider.example/de/", List.of()),
+                new ContentCatalog.MaterialEdition("en", "Edition", "https://other.example/en/", List.of()))) {
+            var material = new ContentCatalog.Material(normal.id(), normal.title(), normal.titleEn(), normal.url(),
+                    normal.resourceType(), normal.language(), normal.status(), normal.goalIds(), normal.sections(),
+                    normal.review(), normal.provider(), List.of(edition));
+            var pkg = new ContentCatalog.ContentPackage(1, source.packageId(), source.version(), source.title(),
+                    source.titleEn(), source.description(), source.descriptionEn(), source.provider(), source.access(),
+                    source.aiUsage(), source.status(), List.of(material));
+            assertThatThrownBy(() -> new ContentCatalog(List.of(pkg))).isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Test

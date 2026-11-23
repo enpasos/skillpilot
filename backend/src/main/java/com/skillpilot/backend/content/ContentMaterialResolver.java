@@ -37,12 +37,12 @@ public final class ContentMaterialResolver {
         try {
             return catalog.materialsForGoal(selections.selectedPackageIds(learnerId), goalId).stream()
                     .limit(MAX_MATERIALS_PER_GOAL)
-                    .map(match -> new ResolvedMaterial(
-                            ContentCatalog.localized(match.material().title(), match.material().titleEn(), locale),
-                            match.material().url(), match.provider().name(),
-                            match.material().resourceType(), match.material().language(),
-                            match.material().sections(), match.contentPackage().access(),
-                            match.contentPackage().aiUsage()))
+                    .map(match -> {
+                        var edition = match.material().editionFor(locale);
+                        return new ResolvedMaterial(edition.title(), edition.url(), match.provider().name(),
+                                match.material().resourceType(), edition.language(), edition.sections(),
+                                match.contentPackage().access(), match.contentPackage().aiUsage());
+                    })
                     .toList();
         } catch (RuntimeException exception) {
             // Material preferences must not become a new availability dependency of the coach.

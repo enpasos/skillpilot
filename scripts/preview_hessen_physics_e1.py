@@ -141,7 +141,15 @@ def serve(args, work, stack, physics_course='GK'):
                     str(ROOT / 'scripts/package_consumer_runtime.init.gradle'),
                     'writePackageConsumerRuntimeClasspath', '-PpackageConsumerClasspathOutput=' + str(jars)],
                    cwd=backend, env={**os.environ, 'SKILLPILOT_BACKEND_BUILD_DIR': str(build)}, check=True)
-    classpath = [str(build / 'classes/java/main'), str(backend / 'src/main/resources'), *jars.read_text().splitlines()]
+    # The ordinary Gradle resource build includes the externally authored content JSONs.
+    # Keep the same classpath layout here without copying the static frontend build.
+    catalog_resources = work / 'catalog-resources'
+    for source in (ROOT / 'content').rglob('*.json'):
+        destination = catalog_resources / source.relative_to(ROOT)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, destination)
+    classpath = [str(build / 'classes/java/main'), str(backend / 'src/main/resources'),
+                 str(catalog_resources), *jars.read_text().splitlines()]
     preview_classes = work / 'preview-classes'
     preview_classes.mkdir()
     javac = str(Path(java).with_name('javac'))
@@ -202,6 +210,7 @@ def serve(args, work, stack, physics_course='GK'):
                              str(app / 'scripts/hesseE1Preview.config.ts'), '--host', '127.0.0.1',
                              '--port', str(args.ui_port), '--strictPort'], cwd=app, env=ui_env)
     stack.callback(stop, vite)
+    wait_ready(ui + '/index.html', vite)
     wait_ready(ui + '/nativ/G8/A', vite)
     for d in ('G8', 'G9'):
         print(f'{d}: {browser_ui}/nativ/{d}/E1   {browser_ui}/nativ/{d}/A   {browser_ui}/nativ/{d}/B', flush=True)

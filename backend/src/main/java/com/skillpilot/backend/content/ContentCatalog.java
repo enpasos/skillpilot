@@ -30,10 +30,32 @@ public final class ContentCatalog {
     public record Provider(String name, String url, String relationship) {}
     public record Curator(String name, String url) {}
     public record Review(String checkedAt, String authority, String rationale) {}
+    public record MaterialEdition(String language, String title, String url, List<String> sections) {}
     public record Material(
             String id, String title, String titleEn, String url, String resourceType,
             String language, String status, List<String> goalIds, List<String> sections,
-            Review review, Provider provider) {
+            Review review, Provider provider, List<MaterialEdition> translations) {
+        public Material {
+            if (translations == null) translations = List.of();
+        }
+
+        public Material(String id, String title, String titleEn, String url, String resourceType,
+                String language, String status, List<String> goalIds, List<String> sections,
+                Review review, Provider provider) {
+            this(id, title, titleEn, url, resourceType, language, status, goalIds, sections, review, provider, null);
+        }
+
+        public MaterialEdition editionFor(String locale) {
+            var requested = Locale.forLanguageTag(locale == null ? "" : locale);
+            for (String tag : List.of(requested.toLanguageTag(), requested.getLanguage())) {
+                if (language.equalsIgnoreCase(tag)) break;
+                for (MaterialEdition edition : translations) {
+                    if (edition.language().equalsIgnoreCase(tag)) return edition;
+                }
+            }
+            return new MaterialEdition(language, localized(title, titleEn, locale), url, sections);
+        }
+
         /** Single-provider packages keep their existing authoring and construction contract. */
         public Material(String id, String title, String titleEn, String url, String resourceType,
                 String language, String status, List<String> goalIds, List<String> sections,
@@ -175,11 +197,9 @@ public final class ContentCatalog {
                 }
                 requireText(material.title(), 300);
                 requireOptionalText(material.titleEn(), 300);
-                URI link = requirePublicUrl(material.url());
                 URI provider = material.provider() == null ? packageProvider : requireProvider(material.provider());
-                if (!link.getHost().equalsIgnoreCase(provider.getHost())) {
-                    throw new IllegalArgumentException("Content link outside declared provider");
-                }
+                requireProviderLink(material.url(), provider);
+                List<MaterialEdition> editions = checkedTranslations(material, provider);
                 for (String goalId : material.goalIds()) {
                     if (goalId == null || !goalId.matches("[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}")) {
                         throw new IllegalArgumentException("Invalid public goal reference");
@@ -198,7 +218,7 @@ public final class ContentCatalog {
                 materials.add(new Material(material.id(), material.title(), material.titleEn(), material.url(),
                         material.resourceType(), material.language(), material.status(),
                         List.copyOf(material.goalIds()), List.copyOf(material.sections()), material.review(),
-                        material.provider()));
+                        material.provider(), editions));
             }
             validated.add(new ContentPackage(item.schemaVersion(), item.packageId(), item.version(),
                     item.title(), item.titleEn(), item.description(), item.descriptionEn(), item.provider(),
@@ -209,6 +229,31 @@ public final class ContentCatalog {
 
     private static boolean identifier(String value) {
         return value != null && value.matches("[a-z0-9][a-z0-9-]{0,79}");
+    }
+
+    private static List<MaterialEdition> checkedTranslations(Material material, URI provider) {
+        if (material.translations().size() > 20) {
+            throw new IllegalArgumentException("Too many material translations");
+        }
+        var editions = new ArrayList<MaterialEdition>();
+        Set<String> languages = new HashSet<>(Set.of(material.language()));
+        for (MaterialEdition edition : material.translations()) {
+            if (edition == null || edition.language() == null || !edition.language().matches("[a-z]{2}(?:-[A-Z]{2})?")
+                    || !languages.add(edition.language()) || edition.sections() == null || edition.sections().size() > 20) {
+                throw new IllegalArgumentException("Invalid material translation");
+            }
+            requireText(edition.title(), 300);
+            requireProviderLink(edition.url(), provider);
+            edition.sections().forEach(section -> requireText(section, 300));
+            editions.add(new MaterialEdition(edition.language(), edition.title(), edition.url(), List.copyOf(edition.sections())));
+        }
+        return List.copyOf(editions);
+    }
+
+    private static void requireProviderLink(String url, URI provider) {
+        if (!requirePublicUrl(url).getHost().equalsIgnoreCase(provider.getHost())) {
+            throw new IllegalArgumentException("Content link outside declared provider");
+        }
     }
 
     private static URI requireProvider(Provider provider) {
