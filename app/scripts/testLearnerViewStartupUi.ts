@@ -355,6 +355,34 @@ try {
         scopeKey: null, scopeValue: null, scopeLabel: null, kind: 'VALUE',
       }],
     })
+    const settings = h.page.getByRole('dialog', { name: 'Mein Lehrplan' })
+    const openSettings = h.page.getByRole('button', { name: 'Einstellungen öffnen', exact: true })
+    const strictMode = settings.getByRole('checkbox', { name: /Strict Mode aktivieren/u })
+    const writes: unknown[] = []
+    await h.page.route(`**/api/ui/learners/${learnerA}/preferences`, async route => {
+      assert.equal(route.request().method(), 'PUT')
+      const changed = route.request().postDataJSON()
+      writes.push(changed)
+      h.replies[learnerA]!.profile = { body: { ...profile(learnerA).body as object, ...changed } }
+      await route.fulfill({ status: 204 })
+    })
+    for (const dismiss of ['close', 'escape', 'save'] as const) {
+      await openSettings.click()
+      await settings.getByText('Fächer auswählen', { exact: true }).first().waitFor()
+      assert.equal(await strictMode.isChecked(), false)
+      await strictMode.check()
+      if (dismiss === 'close') {
+        const close = settings.getByRole('button', { name: 'Einstellungen schließen' })
+        assert.equal(await close.isEnabled(), true, 'An unfinished curriculum selection cannot trap the learner in settings')
+        await close.click()
+      } else if (dismiss === 'escape') {
+        await h.page.keyboard.press('Escape')
+      } else {
+        await settings.getByRole('button', { name: 'Fertig', exact: true }).click()
+      }
+      await settings.waitFor({ state: 'hidden' })
+      assert.deepEqual(writes, dismiss === 'save' ? [{ strictMode: true }] : [])
+    }
     await h.page.getByTestId('learner-coach-start-link').click()
     await h.page.getByText('Fächer auswählen', { exact: true }).first().waitFor()
     assert.equal(await h.page.getByTestId('coach-provider-choice').count(), 0,
