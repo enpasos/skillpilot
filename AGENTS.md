@@ -19,6 +19,41 @@ complete the assignment and, if desired, start eligible voluntary study.
 A required Cockpit handoff is a product gap even if it occurs only once.
 See the [learning workflow](docs/concept/runtime-workflows/learning-workflow.md#sec-learning-workflow).
 
+## Product decision on card memorization with learning units
+
+On **23 November 2026**, the Product Owner decided how memory cards work
+together with learning units
+([issue #85](https://github.com/enpasos/skillpilot/issues/85)). Cards do not
+become goals of the graph. Each card has its own state, belongs to its
+understanding goals (the ordinary curricular goals it was written for) and is
+practised and checked through the learning unit. The *box* is the set of a
+learner's released and not yet removed cards; the *deck goal* is the memory
+goal that references a whole deck.
+
+- **Release.** A card enters the box only when its understanding goal is
+  passed. With several understanding goals, all that lie in the learner's
+  Personal Curriculum must be passed. A credited goal (gray check) counts like
+  a passed one.
+- **Context.** The cards of a unit are the cards of its atomic goals, at every
+  level of the unit hierarchy. In the current context all due cards are
+  practised.
+- **Unit check.** Verified Recall runs over the released, not yet verified
+  cards of the unit. Every card gets its own result.
+- **Removal.** A card passed in Verified Recall leaves the box for good and
+  never becomes due again. The coach proposes the check only once the cards
+  were known on at least two days.
+- **Deck goal.** It stays, and stays derived: it is mastered when all cards of
+  the deck are verified.
+- **Coach chat.** The backend supplies the number of due cards of the context
+  and sets the card step itself: at start or resume and at every goal boundary
+  before the next goal. Without Autopilot it is the first option offered. Card
+  texts stay inside the card component.
+
+The decision covers the canonical Gymnasium decks. Large language decks,
+measurements with tens of thousands of cards, the removal of the mirrored
+`goal:` card tags and the further points listed in the issue remain open.
+The runtime rules are in §7.2, the deck format in §13.
+
 ## Current execution mandate: stage plans and pedagogical repairs
 
 On **15 November 2026**, the Product Owner delegated the resolution and
@@ -1511,6 +1546,44 @@ Interpretation:
   twelve-scope semantic audit remains diagnostic, with failure on missing
   M6 ledgers as well; it is not an M7 promotion check.
 * Do not turn a review queue green by bulk-writing `no_memory_needed`; each decision must be made from the current goal semantics.
+* Card box (Product Owner decision of 23 November 2026, see the opening
+  decision on card memorization). A card is *released* when every one of its
+  understanding goals that counts for the learner is passed. Counted goals are
+  the learner-facing target goals of the learner's current projection;
+  prerequisite-only entries do not count. Passed means the learner's own stored
+  mastery or an evidence-backed unit planning credit. A card without an
+  understanding goal, or with none that counts, is released; this keeps
+  language and legacy decks on their former behaviour and avoids a deck goal
+  that can never be mastered. A card is *removed* once its Verified Recall
+  result is passed. The box holds the released, not yet removed cards. A box
+  card is due when it has no practice schedule or its next review is reached.
+  A locked or removed card is never due, never delivered in a practice batch
+  and cannot be rated. Release is derived on read from mastery and credits;
+  passing a goal writes nothing for its cards.
+* The understanding goals of a card are its `originGoalIds` (§13). Backend,
+  Cockpit and scripts read the field first and the card tag `goal:<id>` only as
+  a fallback for decks that do not carry the field.
+* Unit cards are derived from the unit hierarchy: the cards of the deck goals
+  in the learner's target projection whose understanding goals are atomic
+  content goals of the unit. A unit material's `flashcardGoalId` is no longer a
+  condition for practice, and neither is a still open active goal. Guided card
+  work still follows confirmed or credited unit orientation, and a completion
+  route that owns navigation still wins. The context is the learner's explicit
+  unit focus when the active goal lies inside it, otherwise the innermost
+  learner-facing unit on the active goal's unit path that has cards. Due cards
+  of earlier units outside that context are an open point of issue #85.
+* Card state is stored as one row per learner, deck goal node and card in
+  `learner_card_state`; a practice rating or a recall result changes only the
+  rows of the cards concerned. `learner_client_state` is the untouched fallback
+  copy of the one-time migration (Liquibase change 047) and is no longer read
+  or written. The signed learner export and the Cockpit client-state endpoint
+  keep their shape. Whether one card under two deck goals shares one state is
+  not decided. Parsed decks are shared by all learners; no request parses a
+  pinned or packaged deck again.
+* The Cockpit follows the same rules through the server: the client-state
+  snapshot names the cards that are not released in `lockedCardIds`, and the
+  Cockpit sync ignores practice entries for locked cards without stored state.
+  The Cockpit never decides release on its own.
 * The OpenAI V1 coach offers normal due-card practice through the dedicated
   `start_skillpilot_memory_practice` MCP Apps UI resource. The model-visible
   result contains only bounded status and progress; card front, back and the
@@ -2842,6 +2915,9 @@ provider policy and product review explicitly permit it.
 - **Source of Truth:** Canonical German Gymnasium decks live under `curricula/DE/Gymnasium/memory-decks/` (see §7.2), not beside the canonical landscape JSON. Decks of other curricula (`*_deck.json`) and their curriculum-related assets stay in the same directory as that curriculum's JSON files (e.g., `curricula/EU/CEFR/English_From_German/json/`).
 - **Deployment:** `npm --prefix app run deploy:assets` (part of `prepare:runtime-assets` and therefore of `npm --prefix app run build`) copies the registered canonical decks to `app/public/data/` and `backend/src/main/resources/static/data/`. A new canonical deck must be registered in `scripts/deploy_curriculum_decks.ts`; that script covers only the canonical Gymnasium deck directory.
 - **Development:** Edit the source deck and rerun the deployment step; never edit the deployed copies.
+- **Source format 2 (23 November 2026):** A canonical Gymnasium source deck carries `schemaVersion: 2`, and every card names its understanding goals in `originGoalIds`. The contract is `contracts/memory-deck/v2/`; `python3 scripts/validate_schemas.py` validates every deck against it. `npm --prefix app run sync:memory-deck-origins` writes the field from the kept records of the active card-review ledgers, and `check:memory-deck-origins` verifies it. The memory-card review check fails when a card's field differs from its kept record. Never write an understanding goal into a deck by hand that the ledger does not hold.
+- **Card tags `goal:<id>`:** They remain on the Physics and Chemistry cards as a checked mirror of `originGoalIds`, because removing them changes the card fingerprints of the review ledgers. The field is authoritative; a tag that does not mirror it fails the review check. Removing the tags is an open point of issue #85.
+- **Packages:** The closed package deck schema (`contracts/curriculum-package/v1/card-deck.schema.json`) has no such field. The release-model compiler drops `schemaVersion` and `originGoalIds` on purpose, so published package contents stay byte-identical; a package carries the reviewed relation in `lanes.memoryCards.activeCardDecisions`. The ordinary subject export keeps the field.
 
 ---
 
