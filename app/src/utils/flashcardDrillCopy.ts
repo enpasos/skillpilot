@@ -5,6 +5,8 @@ export interface FlashcardDrillCopy {
     loading: string
     allCaughtUp: string
     practiceCaughtUp: string
+    /** The selection's box is empty and its cards wait for their learning goals (#85). */
+    nothingReleased: string
     noCardsForFilter: string
     new: string
     learn: string
@@ -82,6 +84,7 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             loading: 'Loading Data...',
             allCaughtUp: 'All Caught Up!',
             practiceCaughtUp: 'Practice caught up',
+            nothingReleased: 'No card unlocked yet',
             noCardsForFilter: 'No flashcards found for the current filter.',
             new: 'New',
             learn: 'Learn',
@@ -141,6 +144,7 @@ export const getFlashcardDrillCopy = (language: LabelLanguage): FlashcardDrillCo
             loading: 'Lade Daten...',
             allCaughtUp: 'Alles erledigt!',
             practiceCaughtUp: 'Übung erledigt',
+            nothingReleased: 'Noch keine Karte freigeschaltet',
             noCardsForFilter: 'Keine Karteikarten für den aktuellen Filter gefunden.',
             new: 'Neu',
             learn: 'Lernen',

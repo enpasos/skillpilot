@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import {
-  calculateCardBoxStats, cardBoxStatus, isCardDue, practiceSyncState, readLockedCardIds, selectDueCards,
+  calculateCardBoxStats, cardBoxIdleState, cardBoxStatus, isCardDue, practiceSyncState, readLockedCardIds, selectDueCards,
 } from '../src/components/srs/cardBox'
 import { getFlashcardDrillCopy } from '../src/utils/flashcardDrillCopy'
 import { getLearnerViewCopy } from '../src/utils/learnerViewCopy'
@@ -87,6 +87,18 @@ const verifiedDeck = calculateCardBoxStats([{ id: 'removed' }, { id: 'locked-ver
 assert.equal(verifiedDeck.verifiedPending, 0)
 assert.equal(verifiedDeck.box, 0)
 
+// The drill's idle state: an empty box with locked cards is not "practice done".
+assert.equal(cardBoxIdleState(stats), null, 'a due card keeps the drill practising')
+assert.equal(cardBoxIdleState(allLocked), 'nothingReleased')
+assert.equal(cardBoxIdleState(calculateCardBoxStats([{ id: 'removed' }, { id: 'locked-new' }], state, locked, now)), 'nothingReleased',
+  'an empty box with a waiting card has nothing released, even beside verified cards')
+assert.equal(cardBoxIdleState(calculateCardBoxStats([{ id: 'later' }, { id: 'locked-new' }], state, locked, now)), 'caughtUp',
+  'everything due was practised')
+assert.equal(cardBoxIdleState(verifiedDeck), 'allVerified', 'the completion display stays for an all-verified selection')
+assert.equal(cardBoxIdleState(calculateCardBoxStats([], state, locked, now)), null, 'an empty selection has its own message')
+assert.equal(cardBoxIdleState(calculateCardBoxStats([{ id: 'later' }, { id: 'mastered' }], state, readLockedCardIds({}), now)), 'caughtUp',
+  'an older backend never reports nothing released')
+
 // The sync payload: a practice rating of a released card plus every stored
 // entry, but never a state the drill made up for a locked card.
 const server = { ...state }
@@ -118,6 +130,8 @@ assert.equal(de.lockedCards(1), '1 weitere Karte kommt dazu, sobald du ihr Lernz
 assert.equal(de.lockedCards(3), '3 weitere Karten kommen dazu, sobald du ihre Lernziele geschafft hast.')
 assert.equal(en.lockedCards(1), '1 more card joins once you have passed its learning goal.')
 assert.equal(en.lockedCards(2), '2 more cards join once you have passed their learning goals.')
+assert.equal(de.nothingReleased, 'Noch keine Karte freigeschaltet')
+assert.equal(en.nothingReleased, 'No card unlocked yet')
 assert.equal(getLearnerViewCopy('de').memoryLockedCardsHint(2), de.lockedCards(2))
 assert.equal(getLearnerViewCopy('en').memoryLockedCardsHint(2), en.lockedCards(2))
-console.log('Flashcard box rules passed: locked, removed, due, counts, missing lockedCardIds, sync payload, copy.')
+console.log('Flashcard box rules passed: locked, removed, due, counts, idle state, missing lockedCardIds, sync payload, copy.')

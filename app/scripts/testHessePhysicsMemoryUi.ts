@@ -286,7 +286,10 @@ try {
         readyState = 1
         constructor() { super(); window.addEventListener('test-learner-update', this.update) }
         onmessage: ((event: MessageEvent) => void) | null = null
-        update = (event: Event) => this.onmessage?.(new MessageEvent('message', { data: JSON.stringify({ type: (event as CustomEvent).detail }) }))
+        update = (event: Event) => {
+          const detail = (event as CustomEvent).detail
+          this.onmessage?.(new MessageEvent('message', { data: JSON.stringify(typeof detail === 'string' ? { type: detail } : detail) }))
+        }
         close() { window.removeEventListener('test-learner-update', this.update) }
       }
       Object.defineProperty(window, 'EventSource', { configurable: true, value: TestEventSource })
@@ -300,6 +303,7 @@ try {
     const verifiedRecall = { status: 'passed', passedAt: '2026-11-01T08:00:00Z' }
     const outside = { id: 'e2-a', interval: 1, repetition: 1, ef: 2.5, nextReview: 0 }
     const removed = { id: 'e1-removed', interval: 1, repetition: 1, ef: 2.5, nextReview: 0, verifiedRecall }
+    let lockedCardIds = ['e1-locked']
     let srsState: Record<string, unknown> = {
       'e1-a': { id: 'e1-a', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0 },
       'e1-b': { id: 'e1-b', interval: 1, repetition: 1, ef: 2.5, nextReview: futureTopic ? Date.now() + 86_400_000 : 0 }, 'e2-a': outside,
@@ -373,7 +377,7 @@ try {
           return json({ savedAt: revision })
         }
         if (savePending) getsDuringWrite++
-        return json({ srsState, updatedAt: revision, lockedCardIds: ['e1-locked'] })
+        return json({ srsState, updatedAt: revision, lockedCardIds })
       }
       if (viewFile && suffix.startsWith('/client-state/') && request.method() === 'GET') return json({ srsState: {}, updatedAt: revision })
       if (suffix === '/content-selection' || suffix === '/content-materials') return json({ error: 'Optional pilot disabled' }, 404)
@@ -485,6 +489,13 @@ try {
       assert.deepEqual(writes, [], 'a completed non-due topic does not submit an empty or partial original-deck snapshot')
       const restored = await page.evaluate(({ learner, goal }) => JSON.parse(localStorage.getItem(`srs_state_${learner}_${goal}`)!), { learner: id.learner, goal: memoryId })
       assert.deepEqual(restored, srsState, 'loading a non-due subset preserves the complete state')
+      // Issue #85: once every E.1 card is locked or verified, the topic has no released card instead of "practice done".
+      lockedCardIds = ['e1-a', 'e1-b', 'e1-locked']
+      await page.evaluate(nodeId => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: { type: 'CLIENT_STATE_UPDATED', nodeId } })), memoryId)
+      await page.getByRole('heading', { name: 'Noch keine Karte freigeschaltet', exact: true }).waitFor()
+      assert.equal(await page.getByRole('heading', { name: 'Übung erledigt', exact: true }).count(), 0)
+      await page.getByText('3 weitere Karten kommen dazu, sobald du ihre Lernziele geschafft hast.', { exact: true }).waitFor()
+      assert.deepEqual(writes, [])
       await context.close()
       continue
     }

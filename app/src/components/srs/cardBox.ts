@@ -106,6 +106,21 @@ export function calculateCardBoxStats(
     return stats
 }
 
+/**
+ * What the drill shows when it offers no card: `nothingReleased` when its box
+ * is empty and a card still waits for its understanding goal, `caughtUp` when
+ * every box card is practised for now, `allVerified` when every card of the
+ * selection has passed Verified Recall. `null` while a card is due or the
+ * selection has no card at all.
+ */
+export type CardBoxIdleState = 'nothingReleased' | 'caughtUp' | 'allVerified'
+
+export function cardBoxIdleState(stats: Pick<CardBoxStats, 'total' | 'box' | 'due' | 'locked'>): CardBoxIdleState | null {
+    if (stats.total === 0 || stats.due > 0) return null
+    if (stats.box > 0) return 'caughtUp'
+    return stats.locked > 0 ? 'nothingReleased' : 'allVerified'
+}
+
 /** The cards a practice batch may offer: due box cards only. */
 export function selectDueCards<T extends { id: string }>(
     cards: readonly T[],

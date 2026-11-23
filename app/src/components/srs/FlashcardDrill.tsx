@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { ArrowLeft, ArrowRight, Check, CheckCircle, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, CheckCircle, Lock, X } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import {
     calculateReview,
@@ -7,7 +7,7 @@ import {
     parseReviewTimestamp,
     type ReviewItem,
 } from './srsLogic'
-import { calculateCardBoxStats, practiceSyncState, readLockedCardIds, selectDueCards, type CardBoxStats } from './cardBox'
+import { calculateCardBoxStats, cardBoxIdleState, practiceSyncState, readLockedCardIds, selectDueCards, type CardBoxStats } from './cardBox'
 import { FlashcardFlipCard } from './FlashcardFlipCard'
 import { interpolateTemplate } from '../../utils/interpolateTemplate'
 import { selectPracticeCards } from '../../utils/flashcardPractice'
@@ -510,9 +510,19 @@ export function FlashcardDrill({
 
     if (!vocabData) return <div className="p-8 text-center">{t.loading}</div>
 
-    const allCaughtUp = stats.total > 0 && stats.due === 0 && queue.length === 0
+    const idleState = queue.length === 0 ? cardBoxIdleState(stats) : null
 
-    if (allCaughtUp) {
+    if (idleState === 'nothingReleased') {
+        return (
+            <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]" data-testid="flashcard-nothing-released">
+                <Lock aria-hidden="true" className="w-12 h-12 text-gray-400 mb-4" />
+                <h2 className="text-2xl font-bold mb-2">{t.nothingReleased}</h2>
+                <p className="text-gray-500" data-testid="flashcard-locked-hint">{t.lockedCards(stats.locked)}</p>
+            </div>
+        )
+    }
+
+    if (idleState) {
         return (
             <div className="flex flex-col items-center justify-center p-8 text-center h-[60vh]">
                 <CheckCircle className="w-16 h-16 text-green-500 mb-4" />
