@@ -394,6 +394,7 @@ run_curriculum_schema_ci() {
   python3 -B scripts/run_package_consumer_smoke.py --self-test
   SKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \
     bash scripts/run_curriculum_release_model_conformance.sh
+  python3 -B scripts/test_memory_deck_schema.py
   python3 scripts/validate_schemas.py
   echo "--> Validating Curriculum Goal IDs (UUIDs)"
   python3 scripts/validate_goal_ids_uuid.py
