@@ -363,12 +363,20 @@ class LearnerPlanningScopeServiceTest {
         assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).isEmpty();
 
         learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(MOTION_OPENING, 1.0), MOTION_OPENING));
-        assertThat(learner.getActiveGoalId()).isEqualTo(selectedGoal);
-        assertThat(learner.getPendingUnitEntry()).isNull();
+        // Since the E.1 cut (23 Nov 2026) the selected goal belongs to the child unit "Freier Fall
+        // schwerer Kugeln": its own opening follows the parent opening before the exact goal resumes.
+        assertThat(learner.getActiveGoalId()).isEqualTo(FALL_OPENING);
+        assertThat(learner.getPendingUnitEntry()).contains(selectedGoal);
         assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).singleElement()
                 .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(MOTION_OPENING));
         assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, MODEL_GOAL)).isNull();
         assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, FALL_GOAL)).isEqualTo(FALL_OPENING);
+        learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(FALL_OPENING, 1.0), FALL_OPENING));
+        assertThat(learner.getActiveGoalId()).isEqualTo(selectedGoal);
+        assertThat(learner.getPendingUnitEntry()).isNull();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).extracting(Mastery::getGoalKey)
+                .containsExactlyInAnyOrder(MOTION_OPENING, FALL_OPENING);
+        assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, FALL_GOAL)).isNull();
     }
 
     @Test
@@ -402,8 +410,11 @@ class LearnerPlanningScopeServiceTest {
         learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(FALL_OPENING, 1.0), FALL_OPENING));
         assertThat(learnerService.getCoachLearnerState(LEARNER_ID).goals().planned()).extracting(FrontierGoal::id).containsExactly(FALL_SCOPE);
         assertThat(learnerService.getRequiredUnitOrientationGoalId(LEARNER_ID, FALL_GOAL)).isNull();
-        learnerService.setActiveGoal(LEARNER_ID, FALL_GOAL);
-        assertThat(learnerService.getCoachLearnerState(LEARNER_ID).activeGoal().id()).isEqualTo(FALL_GOAL);
+        // Since the E.1 cut (23 Nov 2026) the accelerated-motion goal requires the t-v diagram goal of
+        // the same child unit, so the child's first open content goal is the t-v diagram goal.
+        String childGoal = "1e459a1b-4159-5049-84eb-9928129c1610";
+        learnerService.setActiveGoal(LEARNER_ID, childGoal);
+        assertThat(learnerService.getCoachLearnerState(LEARNER_ID).activeGoal().id()).isEqualTo(childGoal);
         assertThat(learnerService.getMastery(LEARNER_ID)).doesNotContainKey(MOTION_OPENING);
     }
 
@@ -416,6 +427,11 @@ class LearnerPlanningScopeServiceTest {
         learnerService.setPlannedGoals(LEARNER_ID, Set.of(MOTION_SCOPE));
         learnerService.setActiveGoal(LEARNER_ID, target);
         learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(MOTION_OPENING, 1.0), MOTION_OPENING));
+        // Since the E.1 cut (23 Nov 2026) the target belongs to the child unit "Freier Fall schwerer Kugeln",
+        // whose own opening precedes the real foundation.
+        assertThat(learner.getActiveGoalId()).isEqualTo(FALL_OPENING);
+        assertThat(learner.getPendingUnitEntry()).contains(target);
+        learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(FALL_OPENING, 1.0), FALL_OPENING));
         assertThat(learner.getActiveGoalId()).isEqualTo("5c44b9ba-9b05-4774-95d5-073230d3fc4f");
         assertThat(learner.getPendingUnitEntry()).contains(target);
         learnerService.setMastery(LEARNER_ID, new MasteryUpdateRequest(Map.of(learner.getActiveGoalId(), 1.0), learner.getActiveGoalId()));
@@ -429,7 +445,8 @@ class LearnerPlanningScopeServiceTest {
         Learner learner = selectHessenPhysics(duration, "GK");
         String throwGoalId = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
         String assessmentId = "a9562b05-c54d-5635-9244-3f7dd24a8642";
-        String modelGoalId = "d6dc0e02-831d-4894-a61a-852bcc74f147";
+        // Since the E.1 cut (23 Nov 2026) the throw requires the free-fall experiment and the motion laws.
+        String freeFallGoalId = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
         String focus = "composition:de-he-gym-physics-gk-" + duration.toLowerCase(java.util.Locale.ROOT)
                 + ":structure:physics-e1-motion";
         long initialRevision = learner.getCoachStateRevision();
@@ -448,7 +465,7 @@ class LearnerPlanningScopeServiceTest {
 
         learner.setActiveGoalId(throwGoalId);
         learnerRepository.saveAndFlush(learner);
-        masteryRepository.saveAndFlush(new Mastery(learner, modelGoalId, 1.0));
+        masteryRepository.saveAndFlush(new Mastery(learner, freeFallGoalId, 1.0));
         var context = learnerService.getCoachActiveGoalContext(LEARNER_ID, throwGoalId, revision, "de", Set.of(), true);
         assertThat(context).isNotNull();
         assertThat(context.practiceExercise().title()).isEqualTo("Wo muss die Bodenmarke liegen?");
@@ -458,7 +475,7 @@ class LearnerPlanningScopeServiceTest {
         assertThat(context.unitPaths()).anySatisfy(path -> assertThat(path.sections())
                 .contains("E.1 Bewegungen und ihre Beschreibung"));
         assertThat(context.prerequisites()).anySatisfy(prerequisite -> {
-            assertThat(prerequisite.title()).isEqualTo("Modellierung und Idealisierung von Bewegungen");
+            assertThat(prerequisite.title()).isEqualTo("Freier Fall experimentell untersuchen");
             assertThat(prerequisite.recorded()).isTrue();
         }).anySatisfy(prerequisite -> assertThat(prerequisite.recorded()).isFalse());
         assertThat(context.activities()).anySatisfy(activity -> {

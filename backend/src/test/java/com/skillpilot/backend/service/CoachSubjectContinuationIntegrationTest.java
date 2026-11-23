@@ -215,7 +215,8 @@ class CoachSubjectContinuationIntegrationTest {
         if (strictIndividual) {
             confirm(session, before);
             JsonNode confirmed = context(session);
-            assertThat(confirmed.path("levelCompletion").path("individualPractice")).hasSize(11);
+            // The twelve E.1 content goals since the E.1 cut (23 Nov 2026).
+            assertThat(confirmed.path("levelCompletion").path("individualPractice")).hasSize(12);
             String choice = confirmed.path("levelCompletion").path("individualPractice").valueStream()
                     .filter(item -> item.path("choice").asText().contains("Freier Fall experimentell untersuchen"))
                     .findFirst().orElseThrow().path("choice").asText();

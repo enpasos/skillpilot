@@ -149,6 +149,13 @@ class UnitLearningMaterialServiceTest {
         var mapper = new ObjectMapper();
         var example = Path.of("../curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json");
         var source = (ObjectNode) mapper.readTree(example.toFile());
+        // Since the E.1 cut (23 Nov 2026) both throw assessments require the throw goal, so the shipped
+        // material no longer carries these two recommendations. The format is checked on a copy.
+        assertThat(source.has("studyRecommendations")).isFalse();
+        var injected = source.putArray("studyRecommendations");
+        for (String after : List.of("39f52dcb-ff1d-5cad-9ccb-30da803cfa85", "6ea3fb3c-abdc-568f-ab13-97c36dc274e4")) {
+            injected.addObject().put("beforeGoalId", "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2").put("afterGoalId", after);
+        }
         Files.writeString(repository.resolve("unit-learning-materials.json"),
                 "{\"schemaVersion\":1,\"materials\":[\"unit.json\"]}");
         var material = repository.resolve("unit.json");
@@ -185,17 +192,17 @@ class UnitLearningMaterialServiceTest {
         assertThat(g8.promise("en")).contains("measurements", "part B");
         assertThat(g8.flashcardGoalId()).isEqualTo("9f2f5ab8-0ae4-5792-b831-82a05af5895c");
         assertThat(g8.assessmentGoalId()).isEqualTo("a9562b05-c54d-5635-9244-3f7dd24a8642");
-        assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentGoalIds())
-                .containsExactly("6ea3fb3c-abdc-568f-ab13-97c36dc274e4");
+        // E.1 cut (23 Nov 2026): the multiphase exam left E.1 for E.3, so no LK-only voluntary exam
+        // remains; the two-series free-fall exam joined the throw exam as a voluntary E.1 exam.
         String common = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
-        String advanced = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06";
+        String freeFallSeries = "f41e4e30-794e-5ce4-ba5e-cc72712cd691";
+        assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentGoalIds()).containsExactly(common, freeFallSeries);
         for (String view : g8.assessmentContract().viewIds()) {
-            assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentsFor(view))
-                    .containsExactlyElementsOf(view.contains("-lk") ? List.of(common, advanced) : List.of(common));
+            assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentsFor(view)).containsExactly(common, freeFallSeries);
         }
         for (String merged : List.of("merged:de-he-gym-sekii-physics-lk+de-he-gym-sekii-physics-gk",
                 "merged:de-he-gym-sekii-physics-gk+de-he-gym-sekii-physics-lk")) {
-            assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentsFor(merged)).containsExactly(common, advanced);
+            assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentsFor(merged)).containsExactly(common, freeFallSeries);
         }
         assertThat(service.find(PHYSICS, "merged:de-he-gym-physics-lk-g8+another-view", MOTION)).isEmpty();
         assertThat(service.find(PHYSICS, "de-he-gym-physics-gk-g9", "physics-q1")).isEmpty();

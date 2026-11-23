@@ -22,8 +22,10 @@ class AssessmentMaterialRevisionTest {
         JsonNode physics = mapper.readTree(file.toFile());
         var unit = physics.path("programUnits").findParents("coverageReviews").stream()
                 .filter(node -> "physics-constant-acceleration".equals(node.path("id").asText())).findFirst().orElseThrow();
-        assertThat(unit.required("revision").asText()).isEqualTo("2026-11-20-v3");
-        assertThat(unit.path("coverageReviews").size()).isEqualTo(4);
+        // E.1 cut (23 Nov 2026): the unit is child unit 2; the vertical-throw editions credit the
+        // narrowed modelling goal of child unit 3 and left it with their two coverage reviews.
+        assertThat(unit.required("revision").asText()).isEqualTo("2026-11-23-v4");
+        assertThat(unit.path("coverageReviews").size()).isEqualTo(2);
         for (var review : unit.path("coverageReviews")) {
             String goalId = review.path("assessmentGoalId").textValue();
             var goal = physics.path("goals").valueStream().filter(node -> goalId.equals(node.path("id").asText()))

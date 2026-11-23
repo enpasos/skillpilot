@@ -60,7 +60,9 @@ class UnitAssessmentContractTest {
             graph.put(goal.getId(), goal);
         }
         assertThat(contract.parts()).hasSize(4);
-        assertThat(contract.contentGoalIds()).hasSize(11);
+        // E.1 cut (23 Nov 2026): reference frames (to E.3) and road traffic (to E.2) left the section;
+        // the t-v diagram, the motion laws and the light/heavy fall comparison joined it.
+        assertThat(contract.contentGoalIds()).hasSize(12);
         Map<String, List<VerifiedExamPassResponse>> receipts = new HashMap<>();
         for (var part : contract.parts()) {
             var exam = graph.get(part.goalId()).getExamData();
@@ -77,7 +79,7 @@ class UnitAssessmentContractTest {
         assertThat(complete.passed()).isTrue();
         assertThat(contract.planningCredits().getFirst().goalIds()).hasSize(2);
         assertThat(complete.planningCreditGoalIds()).isEmpty();
-        assertThat(complete.individuallyOpenGoalIds()).hasSize(11);
+        assertThat(complete.individuallyOpenGoalIds()).hasSize(12);
 
         var scope = Map.of("durationModel", "G8", "courseProfile", "GK", "stage", "SekII");
         String assignment = contract.assignmentFingerprint("physics", view, section, scope);

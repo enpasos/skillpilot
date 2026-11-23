@@ -183,9 +183,10 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(call(choose, writeArgs("stale-page", revision,
                 Map.of("choice", title, "completionChoicePage", labels.get(title)))).isError()).isTrue();
 
-        // Direct exams remain explicit authorized choices, including both optional Hessian offerings.
+        // Direct exams remain explicit authorized choices, including both optional Hessian offerings
+        // (since the E.1 cut of 23 Nov 2026 the throw exam and the two-series free-fall exam).
         var examPages = new java.util.ArrayList<Integer>();
-        for (String extraId : List.of(WURF_EXTRA, MULTIPHASE_EXTRA)) {
+        for (String extraId : List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA)) {
             var current = readPublishedCompletionPages();
             String examTitle = landscapeDefinitions.getGoalDefinition(extraId).getTitle();
             var entry = current.entrySet().stream().filter(item -> item.getKey().endsWith(examTitle)).findFirst().orElseThrow();
@@ -251,12 +252,14 @@ class ClaudeV1CompletionRouteIntegrationTest {
     @ValueSource(strings = {"G8", "G9"})
     void hessianMotionInTheCoachToolUsesThePersonalMapAndItsOwnAssessmentPlacement(String duration) throws Exception {
         String active = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
-        String recorded = "68c90ba6-c438-463c-9a53-cf61062d416a";
+        // E.1 cut (23 Nov 2026): the throw requires the free-fall experiment and the motion laws;
+        // reference frames left E.1 for E.3.
+        String recorded = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
         String exam = "a9562b05-c54d-5635-9244-3f7dd24a8642";
         selectHessianMotionUnit(duration);
         completeHessianOpeningFixtures();
         // Issue #85: a card enters the box only once its understanding goal is passed. Of the
-        // unit's nine cards only the one for the recorded goal is released here.
+        // unit's seven cards only the one for the recorded goal is released here.
         masteryRepository.saveAndFlush(new Mastery(learnerRepository.findById(learnerId).orElseThrow(), recorded, 1.0));
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
         authenticate();
@@ -292,9 +295,10 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(detail.path("unitIntroduction").path("question").asText()).contains("Ein Ball rollt vom Tisch");
         assertThat(detail.path("practiceExercise").path("prompt").asText()).isNotBlank();
         assertThat(detail.path("prerequisites")).hasSize(2);
-        assertThat(detail.path("prerequisites").get(0).path("title").asText()).isEqualTo("Bezugssysteme und Geschwindigkeitsüberlagerung");
+        assertThat(detail.path("prerequisites").get(0).path("title").asText()).isEqualTo("Freier Fall experimentell untersuchen");
         assertThat(detail.path("prerequisites").get(0).path("recorded").asBoolean()).isTrue();
-        assertThat(detail.path("prerequisites").get(1).path("title").asText()).isEqualTo("Modellierung und Idealisierung von Bewegungen");
+        assertThat(detail.path("prerequisites").get(1).path("title").asText())
+                .isEqualTo("Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben");
         assertThat(detail.path("prerequisites").get(1).path("recorded").asBoolean()).isFalse();
         assertThat(detail.path("activities")).hasSize(2);
         var activity = detail.path("activities").get(1);
@@ -348,9 +352,15 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).isEmpty();
         }
         successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("confirm-unit-opening", version(), Map.of("goalId", MOTION_OPENING)));
-        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(target);
+        // Since the E.1 cut (23 Nov 2026) the chosen goal belongs to the child unit "Freier Fall schwerer
+        // Kugeln", whose own opening follows before the chosen goal resumes.
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(FALL_OPENING);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).singleElement()
                 .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(MOTION_OPENING));
+        successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("confirm-child-opening", version(), Map.of("goalId", FALL_OPENING)));
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(target);
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
+                .containsExactlyInAnyOrder(MOTION_OPENING, FALL_OPENING);
     }
 
     @Test
@@ -391,7 +401,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var pending = context();
         if (pending.containsKey("completionContract")) successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                 Map.of("receiptCapability", map(pending, "completionContract").get("receiptCapability")));
-        String target = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
+        // Since the E.1 cut (23 Nov 2026) accelerated motion requires the t-v diagram goal of the same
+        // child unit, so the child's first open content goal is the t-v diagram goal.
+        String target = "1e459a1b-4159-5049-84eb-9928129c1610";
         learners.setActiveGoal(learnerId, target);
         assertThat(map(context(), "activeGoal")).containsEntry("id", target);
         assertThat(learners.getPlannedGoals(learnerId)).singleElement()
@@ -495,109 +507,17 @@ class ClaudeV1CompletionRouteIntegrationTest {
 
     private static final String WURF_EXTRA = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
     private static final String MULTIPHASE_EXTRA = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06";
+    // E.1 cut (23 Nov 2026): the multiphase exam moved to E.3; the two-series free-fall exam closes
+    // child unit 2 as a voluntary E.1 exam beside the throw exam, in every course.
+    private static final String FREE_FALL_SERIES_EXTRA = "f41e4e30-794e-5ce4-ba5e-cc72712cd691";
+    // E.1 cut (23 Nov 2026): twelve content goals (reference frames and road traffic left; the t-v
+    // diagram, the motion laws and the light/heavy fall comparison joined).
+    private static final int E1_CONTENT_GOALS = 12;
 
-    @ParameterizedTest
-    @CsvSource({"G8,GK", "G9,LK"})
-    void hessianProjectilePreparationIsRecommendedWithBothAssessmentsStillSelectable(String duration, String course)
-            throws Exception {
-        String section = selectHessianMotionUnit(duration, "SekII", course);
-        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
-        String projectile = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
-        String vector = "68c90ba6-c438-463c-9a53-cf61062d416a";
-        String partB = "39f52dcb-ff1d-5cad-9ccb-30da803cfa85";
-        String lastStep = "d6dc0e02-831d-4894-a61a-852bcc74f147";
-        var learner = learnerRepository.findById(learnerId).orElseThrow();
-        var graph = new CompletionProfileCompiler().normalizePrerequisites(
-                learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
-        var prerequisites = new java.util.HashSet<>(graph.transitivePrerequisites(projectile));
-        prerequisites.addAll(graph.transitivePrerequisites(partB));
-        prerequisites.addAll(graph.transitivePrerequisites(WURF_EXTRA));
-        prerequisites.addAll(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section)));
-        prerequisites.addAll(List.of(MOTION_OPENING, FALL_OPENING));
-        prerequisites.removeAll(List.of(projectile, vector, partB, WURF_EXTRA, lastStep));
-        masteryRepository.saveAllAndFlush(prerequisites.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
-
-        var offered = mapper.valueToTree(context()).path("frontier");
-        var partBChoice = offered.valueStream().filter(goal -> partB.equals(goal.path("id").asText()))
-                .findFirst().orElseThrow();
-        var extraChoice = offered.valueStream().filter(goal -> WURF_EXTRA.equals(goal.path("id").asText()))
-                .findFirst().orElseThrow();
-        assertThat(partBChoice.path("studyGuidance").path("recommendedPreparationGoalIds").valueStream()
-                .map(goal -> goal.asText())).contains(vector);
-        assertThat(extraChoice.path("studyGuidance").path("recommendedPreparationGoalIds").valueStream()
-                .map(goal -> goal.asText())).contains(vector).doesNotContain(partB);
-        assertThat(extraChoice.path("studyGuidance").path("voluntary").asBoolean()).isTrue();
-        assertThat(partBChoice.path("studyGuidance").path("voluntary").asBoolean()).isFalse();
-        assertThat(offered.valueStream().map(goal -> goal.path("id").asText()))
-                .containsSubsequence(vector, partB).doesNotContain(projectile);
-        assertThat(learners.getFrontier(learnerId)).containsSubsequence(vector, WURF_EXTRA);
-        assertThat(learners.getUncompactedRichFrontierForFocus(learnerId, List.of(partB)))
-                .filteredOn(goal -> partB.equals(goal.id())).singleElement()
-                .satisfies(goal -> assertThat(goal.studyGuidance()).isNull());
-        for (String assessment : List.of(partB, WURF_EXTRA)) {
-            var chosen = successful(ClaudeV1Contract.TOOL_SET_ACTIVE_GOAL,
-                    writeArgs("choose-" + assessment, version(), Map.of("goalId", assessment, "redirect", true)));
-            assertThat(chosen).containsEntry("activatedGoalId", assessment);
-            assertThat(map(context(), "activeGoal")).containsEntry("id", assessment);
-        }
-        assertThat(examPasses.findForGoals(learnerId, List.of(partB, WURF_EXTRA))).isEmpty();
-
-        learners.setActiveGoal(learnerId, lastStep);
-        learners.setPreferences(learnerId, "SEQUENTIAL", true, true);
-        var afterMastery = successful(ClaudeV1Contract.TOOL_SET_MASTERY,
-                writeArgs("finish-motion-model", version(), Map.of("goalId", lastStep)));
-        assertThat(map(map(afterMastery, "context"), "activeGoal")).containsEntry("id", vector);
-        assertThat(learners.getMastery(learnerId)).doesNotContainKeys(vector, projectile, partB, WURF_EXTRA);
-
-        masteryRepository.saveAllAndFlush(List.of(new Mastery(learner, vector, 1.0), new Mastery(learner, projectile, 1.0)));
-        learners.setActiveGoal(learnerId, partB);
-        var evaluation = successful(ClaudeV1Contract.TOOL_GET_EXAM_EVALUATION, Map.of("goalId", partB));
-        int passingPoints = mapper.valueToTree(evaluation.get("scoring")).required("passingPoints").intValue();
-        var passed = successful(ClaudeV1Contract.TOOL_SET_MASTERY, writeArgs("pass-b", version(),
-                Map.of("goalId", partB, "evaluationCapability", evaluation.get("evaluationCapability"), "earnedPoints", passingPoints)));
-        var successor = mapper.valueToTree(map(passed, "context"));
-        assertThat(successor.path("activeGoal").path("id").asText()).isNotEqualTo(WURF_EXTRA);
-        assertThat(learners.getRichFrontier(learnerId)).filteredOn(goal -> WURF_EXTRA.equals(goal.id())).singleElement()
-                .satisfies(goal -> {
-                    assertThat(goal.voluntaryStudy()).isTrue();
-                    assertThat(goal.studyGuidance().recommendedPreparationGoalIds()).isEmpty();
-                });
-        assertThat(examPasses.findForGoals(learnerId, List.of(partB, WURF_EXTRA))).hasSize(1);
-    }
-
-    @Test
-    void sharedDatedProjectileWorkPrefersItsDueFoundationEvenWithoutTheOpeningInItsCapture() throws Exception {
-        selectHessianMotionUnit("G9", "SekII");
-        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
-        String projectile = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
-        String vector = "68c90ba6-c438-463c-9a53-cf61062d416a";
-        String partB = "39f52dcb-ff1d-5cad-9ccb-30da803cfa85";
-        String completedFirst = "d6dc0e02-831d-4894-a61a-852bcc74f147";
-        var learner = learnerRepository.findById(learnerId).orElseThrow();
-        var graph = new CompletionProfileCompiler().normalizePrerequisites(
-                learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
-        var prerequisites = new java.util.HashSet<>(graph.transitivePrerequisites(projectile));
-        prerequisites.addAll(graph.transitivePrerequisites(partB));
-        prerequisites.addAll(List.of(MOTION_OPENING, FALL_OPENING));
-        prerequisites.removeAll(List.of(vector, completedFirst));
-        masteryRepository.saveAllAndFlush(prerequisites.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
-        var goals = List.of(completedFirst, partB, vector, projectile);
-        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
-        var monday = today.with(java.time.DayOfWeek.MONDAY);
-        var block = new LearnerLearningPlanApi.Block("combined-projectile", "learning", null, "Gemeinsame Wurfarbeit",
-                monday, monday.plusDays(4), null, goals, goals, true);
-        var plan = learningPlans.upsert(learnerId, physics,
-                new LearnerLearningPlanApi.UpsertRequest(0L, "Waagerechter Wurf", List.of(block)), today);
-        assertThat(plan.blocks().getFirst().atomicGoalIds()).containsSubsequence(partB, vector)
-                .doesNotContain(MOTION_OPENING, FALL_OPENING);
-        learners.setPreferences(learnerId, "SEQUENTIAL", true, true, null, true,
-                com.skillpilot.backend.service.learningplan.PeriodBasis.WEEK);
-        learners.setActiveGoal(learnerId, completedFirst);
-        var result = successful(ClaudeV1Contract.TOOL_SET_MASTERY,
-                writeArgs("projectile-plan-handoff", version(), Map.of("goalId", completedFirst)));
-        assertThat(map(map(result, "context"), "activeGoal")).containsEntry("id", vector);
-        assertThat(learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal().goalId()).isEqualTo(vector);
-    }
+    // E.1 cut (23 Nov 2026): both throw assessments require the throw goal, so the two study
+    // recommendations of PR #184 left the E.1 material and their two end-to-end tests were removed.
+    // The format stays covered in UnitLearningMaterialServiceTest and the plan order in
+    // LearnerLearningPlanServiceTest.
 
     @ParameterizedTest
     @CsvSource({"G8,GK", "G9,GK", "G8,LK", "G9,LK"})
@@ -830,7 +750,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(initial.sectionGoalId()).isEqualTo(section);
         assertThat(initial.parts()).extracting(UnitAssessmentResponse.Part::goalId).containsExactlyElementsOf(parts.stream().map(Exam::goalId).toList());
         assertThat(initial.parts()).noneMatch(UnitAssessmentResponse.Part::passed);
-        assertThat(initial.individuallyOpenGoalIds()).hasSize(11);
+        assertThat(initial.individuallyOpenGoalIds()).hasSize(E1_CONTENT_GOALS);
         assertThat(initial.passed()).isFalse();
         var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
         var monday = today.with(java.time.temporal.TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
@@ -886,14 +806,14 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(completion.assessments()).filteredOn(item -> Boolean.TRUE.equals(item.voluntary()))
                     .allMatch(LevelCompletionResponse.Assessment::startAvailable)
                     .extracting(LevelCompletionResponse.Assessment::goalId)
-                    .containsExactlyInAnyOrderElementsOf("LK".equals(course) ? List.of(WURF_EXTRA, MULTIPHASE_EXTRA) : List.of(WURF_EXTRA));
+                    .containsExactlyInAnyOrderElementsOf(List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA));
             assertThat(completion.masteredAssessmentCount()).isEqualTo(passed.size());
             var updated = context();
             var compact = mapper.valueToTree(map(map(updated, "levelCompletion"), "unitAssessment"));
             assertThat(compact.path("passed").asBoolean()).isEqualTo(allPassed);
             assertThat(compact.path("parts").size()).isEqualTo(parts.size());
             assertThat(compact.path("creditedForPlanningCount").asInt()).isEqualTo(unit.planningCreditGoalIds().size());
-            assertThat(compact.path("individuallyOpenCount").asInt()).isEqualTo(11);
+            assertThat(compact.path("individuallyOpenCount").asInt()).isEqualTo(E1_CONTENT_GOALS);
             successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
                     writeArgs("return" + part.goalId(), version(), Map.of("choice", choice(updated, "Zur normalen Lernansicht"))));
         }
@@ -931,7 +851,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(unit.passed()).isFalse();
         assertThat(unit.parts()).filteredOn(UnitAssessmentResponse.Part::passed)
                 .extracting(UnitAssessmentResponse.Part::goalId).containsExactlyInAnyOrder(c, d);
-        assertThat(unit.individuallyOpenGoalIds()).hasSize(11);
+        assertThat(unit.individuallyOpenGoalIds()).hasSize(E1_CONTENT_GOALS);
         assertThat(learners.getUncompactedRichFrontierForFocus(learnerId, List.of(freeFall)))
                 .extracting(com.skillpilot.backend.api.FrontierGoal::id).doesNotContain(freeFall);
 
@@ -1164,7 +1084,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(state.levelCompletion().actions()).filteredOn(item -> "required".equals(item.intent()))
                 .noneMatch(item -> acceleration.equals(item.goalId()));
         assertThat(learners.getFrontier(learnerId)).doesNotContain(acceleration);
-        assertThat(state.levelCompletion().unitAssessment().individuallyOpenGoalIds()).hasSize(11);
+        assertThat(state.levelCompletion().unitAssessment().individuallyOpenGoalIds()).hasSize(E1_CONTENT_GOALS);
         if (strict) {
             var preparationFocus = new java.util.ArrayList<>(expected);
             preparationFocus.add(acceleration);
@@ -1261,7 +1181,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
                     assertThat(item.status()).isEqualTo("completed");
                     assertThat(item.passedParts()).isEqualTo(4);
                 });
-        assertThat(learners.getLearnerState(learnerId).levelCompletion().unitAssessment().individuallyOpenGoalIds()).hasSize(11);
+        assertThat(learners.getLearnerState(learnerId).levelCompletion().unitAssessment().individuallyOpenGoalIds()).hasSize(E1_CONTENT_GOALS);
         assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
                 .containsExactlyInAnyOrderElementsOf(ids);
 
@@ -1362,7 +1282,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         if (passedParts == 4) {
             assertThat((List<?>) assignment.get("voluntaryGoalTitles")).isNotEmpty();
             assertThat(assignment.get("voluntaryGoalTitles").toString())
-                    .contains("Modellierung und Idealisierung von Bewegungen")
+                    // E.1 cut (23 Nov 2026): the modelling goal is narrowed and renamed.
+                    .contains("Idealisierungen und Grenzen von Bewegungsmodellen")
                     .doesNotContain("Bewegungen mit Weg-Zeit-Diagrammen beschreiben");
         } else {
             assertThat(assignment.containsKey("voluntaryGoalTitles")).isFalse();
@@ -1389,9 +1310,10 @@ class ClaudeV1CompletionRouteIntegrationTest {
             successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM, Map.of(
                     "receiptCapability", map(context(), "completionContract").get("receiptCapability")));
             var confirmed = context();
-            String title = "Modellierung und Idealisierung von Bewegungen";
+            String title = "Idealisierungen und Grenzen von Bewegungsmodellen";
             var offered = (List<?>) assignment.get("voluntaryGoalTitles");
-            String bareGoalTitle = "Physik im Straßenverkehr: Sicherheitsabstände bewerten";
+            // Road traffic left E.1 with the cut; the throw goal is another open E.1 goal.
+            String bareGoalTitle = "Waagerechter Wurf analysieren";
             assertThat(offered.toString()).contains(title, bareGoalTitle);
             var beforeBareTitle = version();
             var bareTitleResult = call(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
@@ -1432,7 +1354,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 .filter(item -> section.equals(item.sectionGoalId())).findFirst().orElseThrow();
         var open = option.voluntaryGoals().stream().map(LearnerLearningPlanApi.VoluntaryGoal::goalId).toList();
         assertThat(option.passed()).isTrue();
-        assertThat(open).hasSize(11).contains(requested);
+        assertThat(open).hasSize(E1_CONTENT_GOALS).contains(requested);
         var completion = learners.getLearnerState(learnerId).levelCompletion();
         assertThat(completion.profileId()).isEqualTo("automatic:personal-curriculum");
         assertThat(completion.unitAssessment()).isNull();
@@ -1500,7 +1422,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         learningPlans.setUnitAssignmentActivity(learnerId, plan.planId(),
                 new LearnerLearningPlanApi.UnitAssignmentActivity(plan.revision() + 1, "unit", true));
         masteryRepository.saveAndFlush(new Mastery(learnerRepository.findById(learnerId).orElseThrow(), uniform, 1.0));
-        assertThat(individualPracticeGoalIds()).hasSize(10).contains(freeFall).doesNotContain(uniform, WURF_EXTRA);
+        assertThat(individualPracticeGoalIds()).hasSize(E1_CONTENT_GOALS - 1).contains(freeFall).doesNotContain(uniform, WURF_EXTRA);
         assertThat(examPasses.findForGoals(learnerId, parts)).isEqualTo(receipts);
     }
 
@@ -1591,15 +1513,17 @@ class ClaudeV1CompletionRouteIntegrationTest {
         }
     }
 
+    // E.1 cut (23 Nov 2026): reference frames and road traffic left the section, the t-v diagram, the
+    // motion laws and the light/heavy fall comparison joined it, so each plan gains one position.
     @ParameterizedTest
-    @CsvSource({"G8,SekII,GK,19", "G9,SekII,GK,19", "G8,CrossStage,GK,18", "G9,CrossStage,GK,18",
-            "G8,SekII,LK,19", "G9,SekII,LK,19"})
+    @CsvSource({"G8,SekII,GK,20", "G9,SekII,GK,20", "G8,CrossStage,GK,19", "G9,CrossStage,GK,19",
+            "G8,SekII,LK,20", "G9,SekII,LK,20"})
     void supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String duration, String stage, String course, int expected) throws Exception {
         String section = selectHessianMotionUnit(duration, stage, course);
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         String measurementProtocol = "e0004439-ed34-5caf-858a-6107918224eb";
         String individualProtocolAssessment = "c6e2942d-1ff4-5e86-a52a-4ca4c8568291";
-        String extra = "LK".equals(course) ? MULTIPHASE_EXTRA : WURF_EXTRA;
+        String extra = "LK".equals(course) ? FREE_FALL_SERIES_EXTRA : WURF_EXTRA;
         var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
         var monday = today.with(java.time.DayOfWeek.MONDAY);
         var sunday = monday.plusDays(6);
@@ -1608,7 +1532,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var required = learners.resolveLearningPlanGoalIds(learnerId, physics, sectionRoots);
         var all = learners.resolveLearningPlanGoalIds(learnerId, physics, individual);
         assertThat(required).hasSize(expected).contains(measurementProtocol)
-                .doesNotContain(WURF_EXTRA, MULTIPHASE_EXTRA, individualProtocolAssessment);
+                .doesNotContain(WURF_EXTRA, FREE_FALL_SERIES_EXTRA, MULTIPHASE_EXTRA, individualProtocolAssessment);
         assertThat(all).containsExactlyInAnyOrderElementsOf(
                 java.util.stream.Stream.concat(required.stream(), java.util.stream.Stream.of(extra)).toList());
         assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(extra))).containsExactly(extra);
@@ -1784,8 +1708,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
     void optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String duration, String course) throws Exception {
         String section = selectHessianMotionUnit(duration, "SekII", course);
         String profile = "automatic:" + section;
-        boolean advanced = !"GK".equals(course);
-        String extra = advanced ? MULTIPHASE_EXTRA : WURF_EXTRA;
+        // Since the E.1 cut (23 Nov 2026) every course offers the same two voluntary E.1 exams.
+        String extra = WURF_EXTRA;
         var completion = learners.getLearnerState(learnerId).levelCompletion();
         var sections = completion.profileOptions();
         assertThat(sections).filteredOn(option -> profile.equals(option.profileId())).singleElement().satisfies(option -> {
@@ -1796,7 +1720,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
                     .map(item -> item.goalId()).toList()).containsExactlyInAnyOrderElementsOf(unitParts);
             assertThat(option.assessments().stream().filter(item -> Boolean.TRUE.equals(item.voluntary()))
                     .map(item -> item.goalId()).toList()).containsExactlyInAnyOrderElementsOf(
-                            advanced ? List.of(WURF_EXTRA, MULTIPHASE_EXTRA) : List.of(WURF_EXTRA));
+                            List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA));
         });
         assertThat(sections.stream().filter(option -> !profile.equals(option.profileId()))
                 .flatMap(option -> option.assessments().stream()).filter(item -> extra.equals(item.goalId())).toList())
@@ -1806,8 +1730,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         authenticate();
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                 Map.of("receiptCapability", map(context(), "completionContract").get("receiptCapability")));
-        String start = choice(context(), "Freiwillige Zusatzprüfung versuchen: "
-                + (advanced ? "Mehrphasenbewegung" : "Waagerechter Wurf"));
+        String start = choice(context(), "Freiwillige Zusatzprüfung versuchen: Waagerechter Wurf");
         successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
                 writeArgs("voluntary-start", version(), Map.of("choice", start)));
         assertThat(map(context(), "activeGoal")).containsEntry("id", extra);
@@ -1827,7 +1750,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", false);
         try {
             var ordinary = learners.getLearnerState(learnerId).levelCompletion();
-            assertThat(ordinary.requiredAssessmentCount()).isEqualTo(advanced ? 6 : 5);
+            assertThat(ordinary.requiredAssessmentCount()).isEqualTo(6);
             assertThat(ordinary.masteredAssessmentCount()).isOne();
             assertThat(ordinary.assessments()).allMatch(item -> item.voluntary() == null);
         } finally {
@@ -1839,15 +1762,18 @@ class ClaudeV1CompletionRouteIntegrationTest {
     void draftSupplementaryAssessmentCannotExemptASectionOrDisappearFromItsPlan() throws Exception {
         String section = selectHessianMotionUnit("G8", "SekII", "LK");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
-        var exam = landscapeDefinitions.getGoalDefinition(MULTIPHASE_EXTRA).getExamData();
+        // Since the E.1 cut (23 Nov 2026) the multiphase exam is no longer an E.1 exam; the voluntary
+        // throw exam takes its place as the supplementary assessment that becomes a draft.
+        var exam = landscapeDefinitions.getGoalDefinition(WURF_EXTRA).getExamData();
         var reviewed = exam.getReviewStatus();
         try {
             exam.setReviewStatus("draft");
             var option = learners.getLearnerState(learnerId).levelCompletion().profileOptions().stream()
                     .filter(row -> row.profileId().equals("automatic:" + section)).findFirst().orElseThrow();
             assertThat(option.assessments()).allMatch(item -> item.voluntary() == null);
-            assertThat(option.assessments()).noneMatch(item -> MULTIPHASE_EXTRA.equals(item.goalId()) && item.startAvailable());
-            assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section))).contains(MULTIPHASE_EXTRA, WURF_EXTRA);
+            assertThat(option.assessments()).noneMatch(item -> WURF_EXTRA.equals(item.goalId()) && item.startAvailable());
+            assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section)))
+                    .contains(WURF_EXTRA, FREE_FALL_SERIES_EXTRA);
         } finally {
             exam.setReviewStatus(reviewed);
         }
