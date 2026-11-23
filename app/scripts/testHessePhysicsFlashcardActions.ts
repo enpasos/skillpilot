@@ -5,7 +5,6 @@ import assert from 'node:assert/strict'
 import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import Elk from 'elkjs/lib/elk.bundled.js'
 import { prepareLandscapeEntries, type LandscapeEntry } from '../src/hooks/useLandscapes'
 import type { SkillLandscape } from '../src/landscapeTypes'
 import type { CompositionView } from '../src/utils/authoring/compositionViewAuthoring'
@@ -21,7 +20,6 @@ import { deriveLearnerUnitMapPreview, MATHEMATICS_LANDSCAPE_ID as math, PHYSICS_
 import { buildUnitAssessmentActions, buildUnitFlashcardActions, cardDeckIdsByScope, findUnitMaterialScopes, mapDeckGoalIds,
   placeUnitLearningResources, unitResourcePlacements } from '../src/components/learningUnitMap/unitLearningMaterialActions'
 import { getLearningScopeRelations } from '../src/components/learningUnitMap/scopeRelations'
-import { computeLearningScopeLayout } from '../src/components/learningUnitMap/learningScopeLayoutCore'
 import { mapEntryPath } from '../src/components/learningUnitMap/mapEntryPath'
 import { UNIT_MAP_LEARNING_MATERIALS as packageMaterials } from '../src/packageConsumer/learnerUnitMapPreviewSubjects'
 import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
@@ -61,16 +59,18 @@ const materials = readUnitMapMaterials(fileURLToPath(new URL('../../curricula/',
 const practiceMaterial = materials.find(item => item.unit.landscapeId === physics && item.unit.compositionNodeId === 'physics-e1-motion')!
 const { flashcardGoalId: memoryId, assessmentGoalId: examId } = practiceMaterial.unit
 assert(memoryId && examId)
-const superpositionId = '68c90ba6-c438-463c-9a53-cf61062d416a'
 const horizontalThrowId = '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2'
 const horizontalThrowAssessmentIds = ['39f52dcb-ff1d-5cad-9ccb-30da803cfa85', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4']
-const expectedStudyRecommendations = horizontalThrowAssessmentIds.map(afterGoalId => ({ beforeGoalId: horizontalThrowId, afterGoalId }))
-assert.deepEqual(practiceMaterial.studyRecommendations, expectedStudyRecommendations)
-const elk = new Elk()
+// Since the E.1 cut (23 Nov 2026) both throw assessments require the throw goal, so
+// their order follows from requires; the former study recommendations were removed.
+assert.equal(practiceMaterial.studyRecommendations, undefined)
 const read = async <T,>(path: string): Promise<T> => JSON.parse(await readFile(new URL(`../../curricula/DE/Gymnasium/${path}`, import.meta.url), 'utf8'))
 const physicsLandscape = await read<SkillLandscape>('canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
 const mathematicsLandscape = await read<SkillLandscape>('canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json')
 const canonical = prepareLandscapeEntries([mathematicsLandscape, physicsLandscape])
+for (const id of horizontalThrowAssessmentIds) {
+  assert(physicsLandscape.goals.find(goal => goal.id === id)?.requires.includes(horizontalThrowId), `${id} requires the throw goal`)
+}
 const canonicalSnapshot = JSON.stringify(canonical)
 const input = (views: CompositionView[]) => {
   const projected = normalizeLearnerProjectedEntries(views.reduce<LandscapeEntry[]>((entries, view) =>
@@ -145,65 +145,12 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
     assert.equal(e1Scopes.size, 1)
     const [e1ScopeId] = e1Scopes
     if (!merged && (scope === '-g8' || scope === '-g9')) {
-      const assessments = buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, 'de', e1Scopes)
-      const place = (material: typeof practiceMaterial) => placeUnitLearningResources(original,
-        unitResourcePlacements({ material, scopes: e1Scopes, cardDeckIds: new Map(), assessments }))
-      const placed = place(practiceMaterial)
-      const relations = getLearningScopeRelations(placed, e1ScopeId)
-      const recommended = relations.filter(edge => edge.kind === 'studyRecommendation')
-      assert.deepEqual(recommended, expectedStudyRecommendations.map(({ beforeGoalId, afterGoalId }) => ({
-        source: beforeGoalId, target: afterGoalId, kind: 'studyRecommendation', provenance: [],
-      })), `${filename}: both recommendations attach directly to the visible Wurfziel`)
-      assert.deepEqual(relations.filter(edge => edge.kind !== 'studyRecommendation'),
-        getLearningScopeRelations(place({ ...practiceMaterial, studyRecommendations: undefined }), e1ScopeId),
-        `${filename}: the phase exam and other prerequisite paths keep their existing relations`)
-      assert(!relations.some(({ source, target }) => horizontalThrowAssessmentIds.includes(source)
-        && horizontalThrowAssessmentIds.includes(target)), `${filename}: the two assessments remain independent`)
-      assert.deepEqual(placed.getRequirementContext?.(examId), original.getRequirementContext?.(examId))
-
-      const treeScope = [...value.goalIndexAll.values()].find(goal => isUnitMaterialSource(practiceMaterial, goal))!
-      const rows = treeChildren.get(treeScope.id)!
-      assert(rows.includes(superpositionId) && rows.includes(horizontalThrowId))
-      assert(rows.indexOf(superpositionId) < rows.indexOf(horizontalThrowId), `${filename}: superposition precedes the last throw goal`)
+      // Child unit 4 of E.1 lists the throw goal before both of its assessments.
+      const unitFour = [...value.goalIndexAll.keys()].find(id => id.endsWith(':structure:physics-e1-two-motions'))
+      const rows = unitFour ? treeChildren.get(unitFour) ?? [] : []
       for (const id of horizontalThrowAssessmentIds) {
-        assert(rows.includes(id) && rows.indexOf(horizontalThrowId) < rows.indexOf(id),
-          `${filename}: the tree puts ${id} after the throw goal`)
-        assert.deepEqual(placed.entries[id].requires, original.entries[id].requires)
-        const required = placed.getRequirementContext?.(id) ?? []
-        assert(!required.some(item => item.sourceGoalIds.includes(horizontalThrowId)
-          || item.sourceGoalIds.some(goalId => horizontalThrowAssessmentIds.includes(goalId))))
-      }
-      for (const direction of ['RIGHT', 'DOWN'] as const) {
-        const layout = await computeLearningScopeLayout(elk, placed, e1ScopeId, direction)
-        const axis = direction === 'RIGHT' ? 'x' : 'y'
-        assert(layout.positions[superpositionId][axis] < layout.positions[horizontalThrowId][axis])
-        for (const id of horizontalThrowAssessmentIds) {
-          assert(layout.positions[horizontalThrowId][axis] < layout.positions[id][axis], `${filename} ${direction}: ${id} follows the throw goal`)
-          assert(layout.edges.some(edge => edge.source === horizontalThrowId && edge.target === id && !edge.reversed))
-        }
-      }
-      for (const hiddenId of [horizontalThrowId, ...horizontalThrowAssessmentIds]) {
-        const visibleGoalIds = new Set(value.visibleGoalIds)
-        visibleGoalIds.delete(hiddenId)
-        const visibleChildrenByParent = new Map(value.visibleChildrenByParent)
-        visibleChildrenByParent.set(treeScope.id, visibleChildrenByParent.get(treeScope.id)!.filter(id => id !== hiddenId))
-        const partial = physicsFixture({ ...value, visibleGoalIds, visibleChildrenByParent })
-        const scopes = findUnitMaterialScopes(practiceMaterial, partial, value.goalIndexAll, visibleGoalIds)
-        const partialMap = placeUnitLearningResources(partial, unitResourcePlacements({ material: practiceMaterial,
-          scopes, flashcards: new Map(), assessments: new Map() }))
-        const partialRelations = getLearningScopeRelations(partialMap, e1ScopeId).filter(edge => edge.kind === 'studyRecommendation')
-        assert.deepEqual(partialRelations, recommended.filter(edge => edge.source !== hiddenId && edge.target !== hiddenId),
-          `${filename}: hiding an endpoint discards only its recommendations`)
-        const partialTree = buildSortedChildrenMap(visibleChildrenByParent, value.goalIndexAll, 'learner', partial, materials).get(treeScope.id)!
-        assert(!partialTree.includes(hiddenId))
-        for (const { source, target } of partialRelations) {
-          assert(partialTree.includes(source) && partialTree.includes(target) && partialTree.indexOf(source) < partialTree.indexOf(target))
-        }
-        if (hiddenId === horizontalThrowId) {
-          const treeWithoutRecommendations = buildSortedChildrenMap(visibleChildrenByParent, value.goalIndexAll, 'learner', partial,
-            materials.map(item => item === practiceMaterial ? { ...item, studyRecommendations: undefined } : item)).get(treeScope.id)
-          assert.deepEqual(partialTree, treeWithoutRecommendations, `${filename}: the hidden throw goal implies no order between the remaining exams`)
-        }
+        assert(rows.includes(horizontalThrowId) && rows.includes(id) && rows.indexOf(horizontalThrowId) < rows.indexOf(id),
+          `${filename}: the tree puts ${id} after the throw goal in child unit 4`)
       }
       checkedRecommendationViews++
     }
@@ -411,4 +358,4 @@ assert.deepEqual(cardOriginGoalIds({ tags: ['GK', 'goal:b', 'goal:a', 'goal:b'] 
 assert.deepEqual(cardOriginGoalIds({ tags: ['GK'] }), [], 'a card without either encoding names no understanding goal')
 assert.deepEqual(legacyOriginGoalTagIds({ originGoalIds: ['a'], tags: ['goal:c'] }), ['c'])
 console.log(`Hessen Physics flashcard actions passed ${checked} real course/duration/language projections.`)
-console.log(`Hessen Physics study recommendations passed ${checkedRecommendationViews} real course/duration projections in the tree and both map directions, including hidden endpoints.`)
+console.log(`Hessen Physics throw assessments follow the throw goal in ${checkedRecommendationViews} real course/duration projections.`)

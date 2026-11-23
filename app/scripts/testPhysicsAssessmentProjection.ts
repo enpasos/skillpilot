@@ -91,13 +91,16 @@ assert.equal(e1Scope.childAssessmentReview.sourceFileSha256, 'd5aafed0908cdd8131
   'The 17/20 child release is bound to its independent review; older full-score reviews concern different tasks')
 assert.equal(createHash('sha256').update(childReview).digest('hex'), e1Scope.childAssessmentReview.sourceFileSha256)
 const readRepoJson = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
-assert(checkUnitPlanningReleases().length > 0, 'The independently reviewed child pair must have a current planning release')
+// The E.1 cut (Product Owner, 23 Nov 2026) changed the definitions of both goals the child
+// pair released and moved the vertical-throw pair out of the child unit. The former release
+// lapsed; a new reviewed release is needed before any planning credit applies again.
+assert.equal(checkUnitPlanningReleases().length, 0, 'No stale planning release may remain in the E.1 contract')
 const materialFiles: string[] = readRepoJson('curricula/unit-learning-materials.json').materials
 const e1Contracts = materialFiles.map(path => readRepoJson(`curricula/${path}`).unit)
   .filter(unit => unit.landscapeId === canonicalLandscape.landscapeId && unit.compositionNodeId === 'physics-e1-motion')
 assert.equal(e1Contracts.length, 1)
 const contract = e1Contracts[0].assessmentContract
-assert.equal(contract.revision, '2026-11-20-e1-v2')
+assert.equal(contract.revision, '2026-11-23-e1-v3')
 const e1Material = e1Contracts[0]
 const e1Views = new Map<string, CompositionView>()
 for (const file of readdirSync(viewDirectory).filter(path => path.endsWith('.view.json'))) {
@@ -106,9 +109,10 @@ for (const file of readdirSync(viewDirectory).filter(path => path.endsWith('.vie
 }
 const sectionPolicy = e1Material.sectionAssessmentPolicy
 const multiphaseGoal = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
-assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4'])
-assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView, Object.fromEntries(
-  [...e1Views.values()].filter(view => view.scope.courseProfile === 'LK').map(view => [view.viewId, [multiphaseGoal]])))
+const freeFallSeriesGoal = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
+assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4', freeFallSeriesGoal])
+// The multi-phase model check requires the velocity vector of the throw and left E.1 for E.3.
+assert.equal(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView, undefined)
 const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries.map(row => row.landscape as SkillLandscape)
 const sectionGraph = new UnitGraph(currentCatalog as UnitGraphLandscape[])
 const projectionEntries = prepareLandscapeEntries(currentCatalog)
@@ -156,7 +160,7 @@ assert.throws(() => checkSectionPolicy(sectionPolicy, { ...canonicalLandscape, g
   goal.id === contract.parts[0].goalId ? { ...goal, requires: [...goal.requires, externalExamId] } : goal) }),
   (error: Error) => error.message.includes('Required section assessments differ') && error.message.includes(externalExamId))
 // A forgotten LK exception reproduces the fifth mandatory exam separately in each real LK view.
-for (const [viewId, additional] of Object.entries(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView)) {
+for (const [viewId, additional] of Object.entries(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView ?? {})) {
   const byView = { ...sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView }
   delete byView[viewId]
   assert.throws(() => checkSectionPolicy({ ...sectionPolicy, additionalVoluntaryAssessmentGoalIdsByView: byView }),
@@ -177,24 +181,17 @@ for (const extra of ['unknown-goal', contract.parts[0].goalId, '4a2bf015-052b-4a
 assert.throws(() => checkSectionPolicy({ ...sectionPolicy, additionalVoluntaryAssessmentGoalIdsByView: { 'outside-view': [multiphaseGoal] } }), /contract view/)
 assert.throws(() => checkSectionPolicy({ ...sectionPolicy, requiredPartsFingerprint: 'stale' }), /current unit contract/)
 assert.throws(() => checkSectionPolicy(sectionPolicy, { ...canonicalLandscape, goals: canonicalLandscape.goals.map(goal =>
-  goal.id === multiphaseGoal ? { ...goal, examData: { ...goal.examData!, reviewStatus: 'draft' } } : goal) }), /released additional assessment/)
+  goal.id === freeFallSeriesGoal ? { ...goal, examData: { ...goal.examData!, reviewStatus: 'draft' } } : goal) }), /released additional assessment/)
 
-const creditedGoalIds = [...hesseChildAssessments.values()].map(spec => spec.coverage)
-assert.deepEqual(e1Scope.childPlanningGoalIds, creditedGoalIds)
-assert.deepEqual(e1Scope.unitPlanningGoalIds, [])
-assert.equal(contract.planningCredits.length, 1)
-const [childCredit] = contract.planningCredits
-assert.equal(childCredit.release.fingerprint, 'sha256:d795236680087accef0ab60ed4d4257bbf651d83f8f2a5fc3dbbc5e28d9a96ba',
-  'Only the independently checked Hessen C+D edition may use this approval')
-assert.deepEqual(childCredit.release.review, { path: e1Scope.childAssessmentReview.sourceFile, sha256: 'sha256:' + e1Scope.childAssessmentReview.sourceFileSha256 })
-assert.deepEqual(childCredit.release.viewIds, [...e1Scope.viewIds].sort())
-assert.equal(childCredit.release.revision, e1Scope.childAssessmentScopeRevision)
-assert.equal(childCredit.release.ownerUnitId, e1Scope.childUnitId)
-assert.equal(childCredit.release.ownerRevision, e1Scope.childRevision)
-assert.deepEqual(childCredit.requiredPartIds, [...hesseChildAssessments.keys()],
-  'Only the complete child pair releases the two reviewed prerequisites')
-assert.deepEqual(childCredit.goalIds, creditedGoalIds)
-assert.deepEqual([...contract.contentGoalIds].sort(), [...creditedGoalIds, ...e1Scope.otherContentGoalIds].sort())
+assert.deepEqual(contract.planningCredits, [])
+// Content of E.1 after the cut: the vectors (reference frames) and the traffic goal left E.1;
+// the t-v diagram, the motion laws and the fall of light and heavy bodies joined it.
+assert.deepEqual(contract.contentGoalIds, [
+  'd6dc0e02-831d-4894-a61a-852bcc74f147', 'e4b38061-1f28-43ad-8371-a3e7c0e81856', '8aff7aac-321b-5172-ac55-877876bfd2cd',
+  'f6b1d812-ce8b-5852-b417-e6c29b533c7a', '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd', 'ce431132-dfc4-42c2-aff6-bd72035190f8',
+  'bf8517a9-142b-5789-826a-767f3b277998', '09029573-864f-40ca-bf8a-cee7bf6dcb73', '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2',
+  '1e459a1b-4159-5049-84eb-9928129c1610', '262f807a-30d0-503e-986f-856cbd048e8e', 'd9a6ea85-f7e8-5cbd-afe9-62596e22040d',
+])
 assert.deepEqual(contract.viewIds, e1Scope.viewIds)
 const reviewedParts = [...hesseE1Assessments.keys(), ...hesseChildAssessments.keys()].map(goalId => {
   const { taskRevision, rubricRevision, fingerprint } = e1Scope.ownAssessmentRevisions[goalId] ?? e1Scope.childAssessmentRevisions[goalId]
@@ -202,7 +199,7 @@ const reviewedParts = [...hesseE1Assessments.keys(), ...hesseChildAssessments.ke
 })
 assert.deepEqual(contract.parts, reviewedParts, 'All four production receipt predicates must bind the reviewed materials')
 const child = canonicalLandscape.programUnits?.find(unit => unit.id === 'physics-constant-acceleration')
-assert(child && child.kind === 'learningUnit' && child.revision === e1Scope.childRevision)
+assert(child && child.kind === 'learningUnit' && child.revision === '2026-11-23-v4')
 assert.equal(e1Scope.childUnitId, child.id)
 assert.equal(e1Scope.childAssessmentScopeRevision, '2026-11-20-he-v2')
 for (const [id, spec] of hesseChildAssessments) {
@@ -222,19 +219,19 @@ for (const [id, spec] of hesseChildAssessments) {
   })
   assert.equal(binding.fingerprint, `sha256:${createHash('sha256').update(fingerprint).digest('hex')}`)
   assert.deepEqual(native.applicability?.jurisdiction, ['DE-HE'])
-  assert.deepEqual(native.requires, [spec.coverage])
+  // Since the E.1 cut the acceleration log requires the motion laws; the vertical throw
+  // still requires the narrowed modelling goal and closes child unit 3, which is not declared.
+  const closesChildUnitTwo = spec.prefix === 'D'
+  assert.deepEqual(native.requires, closesChildUnitTwo ? ['262f807a-30d0-503e-986f-856cbd048e8e'] : [spec.coverage])
   assert.deepEqual(exam.coveredGoalIds, [spec.coverage])
   assert.deepEqual(binding.planningGoalIds, [spec.coverage])
   assert.equal(binding.coverageReview, e1Scope.childAssessmentReview.sourceFile)
-  assert.deepEqual(childCredit.release.goalDefinitions[spec.coverage], {
-    definition: spec.definition, profileFingerprint: spec.evidenceProfile,
-  }, 'The review covers this exact goal definition and its performance and transfer expectations')
   for (const ownId of [spec.coverage, spec.historical]) {
     const owners = canonicalLandscape.goalPlacements?.filter(row => row.goalId === ownId && row.relation === 'own')
-    assert.deepEqual(owners?.map(row => row.unitId), [child.id])
+    assert.deepEqual(owners?.map(row => row.unitId), closesChildUnitTwo ? [child.id] : [])
   }
   const originalReview = child.coverageReviews?.find(row => row.assessmentGoalId === spec.historical)
-  assert.deepEqual(originalReview?.goalIds, [spec.coverage])
+  assert.deepEqual(originalReview?.goalIds, closesChildUnitTwo ? [spec.coverage] : undefined)
   const de = source.split(`\n## ${spec.section}\n`)[1].split('\n## ')[0]
   const en = source.split(`\n## ${spec.section}-en\n`)[1]
   const read = (content: string, task: string, solution: string, rubric: string, notes: string) => {
@@ -256,15 +253,16 @@ for (const [id, spec] of hesseChildAssessments) {
   assert(exam.scoring.steps.every(step => step.description.length <= 2000))
   assert.equal(exam.reviewStatus, 'released')
 }
+// The four E.1 child units of the cut accepted on 23 Nov 2026, each with its closing checks.
 const hesseIntroductoryAssessmentPlaces = {
-  'physics-e1-motion': [
-    '2b9e565f-d9b4-5e23-b5b7-b7977cecff06', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4', 'c933b7d2-edcb-5747-9378-9762659f260a',
-    ...hesseE1Assessments.keys(),
-  ],
+  'physics-e1-uniform-motion': ['ee7d5f3d-858f-59d6-89b0-e5a7f437f458'],
+  'physics-e1-accelerated-and-free-fall': ['f41e4e30-794e-5ce4-ba5e-cc72712cd691'],
+  'physics-e1-air-and-vacuum': ['c933b7d2-edcb-5747-9378-9762659f260a'],
+  'physics-e1-two-motions': ['39f52dcb-ff1d-5cad-9ccb-30da803cfa85', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'],
   'physics-e2-newton-and-conservation': [
     '22561c66-3957-5d55-b07a-25de1f359930', '72649cf5-893c-5f03-88bd-a2497171d434', 'be6d4895-65ab-545b-8df9-84e5a308a5e3',
   ],
-  'he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49': ['8320bb17-e6ab-50ea-a965-aa331bfd33e1'],
+  'he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49': ['8320bb17-e6ab-50ea-a965-aa331bfd33e1', '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'],
   'he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9': [
     'dd99528a-bae5-5b78-89e6-c6092c927f8d', '3791c574-2194-52fa-846b-ee1d4e2c5877',
   ],

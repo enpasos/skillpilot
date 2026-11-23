@@ -621,14 +621,14 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
   'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
 ])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 486,
+  curricularAtomic: 490,
   curricularArea: 113,
   practiceAssessment: 245,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 4,
-  total: 858,
+  total: 862,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
@@ -1762,7 +1762,11 @@ for (const reviewed of kinematicsReview.assessments) {
     assert(exam[field].trim().length > 500, `${reviewed.goalId}: missing complete bilingual ${field}`)
     assert.equal(reviewed.bodyHashes[field], `sha256:${sha256(exam[field])}`, `${reviewed.goalId}: stale independent ${field} review`)
   }
-  assert.deepEqual(goal.requires, ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
+  // The E.1 cut (Product Owner, 23 Nov 2026) moved the two-motions exam behind the throw
+  // goal and the narrowed model-limits goal; its preparation needs a fresh independent review.
+  assert.deepEqual(goal.requires, reviewed.goalId === '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+    ? ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', 'd6dc0e02-831d-4894-a61a-852bcc74f147']
+    : ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
   assertReviewedPreparation(reviewed.goalId, goal.requires as string[])
   assert.deepEqual(exam.coveredGoalIds, reviewed.goalId === '4ab1cf6d-b808-5b86-9291-85df0b9f2496'
     ? [] : ['d6dc0e02-831d-4894-a61a-852bcc74f147'])
@@ -1791,14 +1795,19 @@ for (const reviewed of kinematicsReview.assessments) {
     assert(!/vektor|newton|reibung/iu.test(String(required.title)),
       `${reviewed.goalId}: vector-free kinematics must not require ${String(required.title)}`)
   }
-  assert(!prerequisiteIds.has('d6dc0e02-831d-4894-a61a-852bcc74f147'), 'assessed model limits must not import an unrelated prerequisite branch')
+  // Since the E.1 cut (23 Nov 2026) the narrowed model-limits goal is the covered goal and a direct prerequisite.
+  if (reviewed.goalId === '6ea3fb3c-abdc-568f-ab13-97c36dc274e4') {
+    assert(prerequisiteIds.has('d6dc0e02-831d-4894-a61a-852bcc74f147'), 'the covered model-limits goal lies on the prerequisite path')
+  } else {
+    assert(!prerequisiteIds.has('d6dc0e02-831d-4894-a61a-852bcc74f147'), 'assessed model limits must not import an unrelated prerequisite branch')
+  }
   assert(!exam.coveredGoalIds.includes('09029573-864f-40ca-bf8a-cee7bf6dcb73'), 'a written model task does not establish a free-fall experiment')
   assert(!exam.coveredGoalIds.includes('89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2'), 'a written model task does not establish a horizontal-projection experiment')
 }
 assert.deepEqual(rawGoalById.get('4ab1cf6d-b808-5b86-9291-85df0b9f2496')?.requires,
   ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
 assert.deepEqual(rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.requires,
-  ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
+  ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', 'd6dc0e02-831d-4894-a61a-852bcc74f147'])
 assert.deepEqual((rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.examData as { coveredGoalIds: string[] }).coveredGoalIds,
   ['d6dc0e02-831d-4894-a61a-852bcc74f147'])
 const incompleteBilingualAtomicGoals = ledger.decisions

@@ -21,7 +21,8 @@ REVIEWED_LOWER_ASSESSMENTS = {
 NEW_TASK_OFFERS = {
     "3b7b2b62-e39c-5936-b0d8-5406206e57b6": {"DE-MV", "DE-SL"},
     "e6a89922-75ce-53dd-9e7b-3a683398431c": {"DE-MV"},
-    "f41e4e30-794e-5ce4-ba5e-cc72712cd691": {"DE-SN"},
+    # Since the E.1 cut (23 Nov 2026) the two-series free-fall task also closes Hessian E.1 child unit 2.
+    "f41e4e30-794e-5ce4-ba5e-cc72712cd691": {"DE-HE", "DE-SN"},
     "7cfaf48e-e420-5c09-8ec2-932f0dba4d08": {"DE-SN", "DE-ST", "DE-TH"},
     "57a03b38-5ec5-5e4f-b71a-4024bab1584c": {"DE-SN"},
     "797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00": {"DE-HH"},
@@ -76,6 +77,24 @@ def ancestors(unit, pairs):
     return found
 
 
+# E.1 cut accepted by the Product Owner on 23 Nov 2026: each new goal is a target
+# only where a goal it was split from is a target; support roles are derived.
+E1_CUT_ORIGINS = {
+    "1e459a1b-4159-5049-84eb-9928129c1610": {"ce431132-dfc4-42c2-aff6-bd72035190f8", "e4b38061-1f28-43ad-8371-a3e7c0e81856"},
+    "262f807a-30d0-503e-986f-856cbd048e8e": {"d6dc0e02-831d-4894-a61a-852bcc74f147", "e4b38061-1f28-43ad-8371-a3e7c0e81856"},
+    "d9a6ea85-f7e8-5cbd-afe9-62596e22040d": {"d6dc0e02-831d-4894-a61a-852bcc74f147", "09029573-864f-40ca-bf8a-cee7bf6dcb73"},
+    "0fee53f2-1c02-5b12-9b6c-aa9fa462d921": {"89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "68c90ba6-c438-463c-9a53-cf61062d416a"},
+}
+
+
+def e1_cut_delta(roles):
+    added = roles["target"] & set(E1_CUT_ORIGINS)
+    for goal in added:
+        if not E1_CUT_ORIGINS[goal] & roles["target"]:
+            raise AssertionError("A new E.1 goal became a target without the goal it was split from")
+    return added
+
+
 def measurement_delta(view, roles):
     expected = HESSEN_MEASUREMENT_GOALS if view["viewId"] in HESSEN_MEASUREMENT_VIEWS else set()
     if roles["target"] & HESSEN_MEASUREMENT_GOALS != expected:
@@ -99,6 +118,8 @@ def retained_authority_seeds(view, roles, baseline):
             allowed_new_task |= {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b"}
     if state == "DE-HE" and stage in ("CrossStage", "SekII"):
         allowed_new_task.update(authoring.graph.HESSEN_E1_ASSESSMENTS)
+        allowed_new_task.add(authoring.graph.HESSEN_E1_FREE_FALL_ASSESSMENT)
+    allowed_new_task.update(e1_cut_delta(roles))
     if view["viewId"] in HESSEN_GUIDED_OPENING_VIEWS:
         allowed_new_task.update(HESSEN_GUIDED_OPENINGS)
     allowed_new_task.update(measurement_delta(view, roles))

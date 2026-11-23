@@ -16,25 +16,15 @@
     "flashcardGoalId": "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
     "assessmentGoalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
     "sectionAssessmentPolicy": {
-      "unitContractRevision": "2026-11-20-e1-v2",
+      "unitContractRevision": "2026-11-23-e1-v3",
       "requiredPartsFingerprint": "sha256:a786a66a38817bfd3918fbd5d21be7102b202f4b3421da6f37efb9c198b66843",
       "voluntaryAssessmentGoalIds": [
-        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
-      ],
-      "additionalVoluntaryAssessmentGoalIdsByView": {
-        "de-he-gym-physics-lk-g8": [
-          "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
-        ],
-        "de-he-gym-physics-lk-g9": [
-          "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
-        ],
-        "de-he-gym-sekii-physics-lk": [
-          "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
-        ]
-      }
+        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "f41e4e30-794e-5ce4-ba5e-cc72712cd691"
+      ]
     },
     "assessmentContract": {
-      "revision": "2026-11-20-e1-v2",
+      "revision": "2026-11-23-e1-v3",
       "viewIds": [
         "de-he-gym-physics-gk-g8",
         "de-he-gym-physics-lk-g8",
@@ -86,64 +76,15 @@
         "ce431132-dfc4-42c2-aff6-bd72035190f8",
         "bf8517a9-142b-5789-826a-767f3b277998",
         "09029573-864f-40ca-bf8a-cee7bf6dcb73",
-        "68c90ba6-c438-463c-9a53-cf61062d416a",
         "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
-        "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+        "1e459a1b-4159-5049-84eb-9928129c1610",
+        "262f807a-30d0-503e-986f-856cbd048e8e",
+        "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
       ],
-      "planningCredits": [
-        {
-          "requiredPartIds": [
-            "c933b7d2-edcb-5747-9378-9762659f260a",
-            "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
-          ],
-          "goalIds": [
-            "d6dc0e02-831d-4894-a61a-852bcc74f147",
-            "e4b38061-1f28-43ad-8371-a3e7c0e81856"
-          ],
-          "release": {
-            "schemaVersion": 1,
-            "revision": "2026-11-20-he-v2",
-            "ownerUnitId": "physics-constant-acceleration",
-            "ownerRevision": "2026-11-20-v3",
-            "viewIds": [
-              "de-he-gym-physics-gk-g8",
-              "de-he-gym-physics-gk-g9",
-              "de-he-gym-physics-lk-g8",
-              "de-he-gym-physics-lk-g9",
-              "de-he-gym-sekii-physics-gk",
-              "de-he-gym-sekii-physics-lk"
-            ],
-            "review": {
-              "path": "docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md",
-              "sha256": "sha256:d5aafed0908cdd81317e59cad1d0bfb860fc6652950006f15cab8f1ca51883d6"
-            },
-            "goalDefinitions": {
-              "d6dc0e02-831d-4894-a61a-852bcc74f147": {
-                "definition": "sha256:47e0d1bd093ca15e19b6e9de958838f947ed30d6d902a378997d64df504cbff9",
-                "profileFingerprint": "sha256:4ee8d93ca2d11b9106e4051214494a52fd0b0538682e2f30bf8e2668a8c0fd4f"
-              },
-              "e4b38061-1f28-43ad-8371-a3e7c0e81856": {
-                "definition": "sha256:083de95ae0c93aa5f5ba649140a82e724ae7b61a604626a09e9e188acf01cf4b",
-                "profileFingerprint": "sha256:e7d478c83be998c71a1e4ff75e412cbb0558b24403e207a936f1ea38a8174039"
-              }
-            },
-            "fingerprint": "sha256:d795236680087accef0ab60ed4d4257bbf651d83f8f2a5fc3dbbc5e28d9a96ba"
-          }
-        }
-      ]
+      "planningCredits": []
     },
     "orientationGoalId": "a4d4efe1-7d30-526b-ac9c-806113da4363"
   },
-  "studyRecommendations": [
-    {
-      "beforeGoalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
-      "afterGoalId": "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"
-    },
-    {
-      "beforeGoalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
-      "afterGoalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
-    }
-  ],
   "intro": {
     "de": {
       "question": "Ein Ball rollt vom Tisch. Wo landet er?",
@@ -155,7 +96,7 @@
         "Bewegungen messen und in Diagrammen beschreiben",
         "Geschwindigkeit und Beschleunigung unterscheiden",
         "Freien Fall mit eigenen oder bereitgestellten Messdaten untersuchen",
-        "Modelle für Bremsen und Werfen prüfen"
+        "Modelle für Fall und Wurf prüfen"
       ]
     },
     "en": {
@@ -168,7 +109,7 @@
         "Measure motion and describe it in graphs",
         "Distinguish velocity from acceleration",
         "Investigate free fall using your own or supplied measurements",
-        "Check models of braking and throwing"
+        "Check models of falling and throwing"
       ]
     }
   },
@@ -186,21 +127,6 @@
         "prompt": "A toy train rolls along a straight track. Use these simulated video readings. Its front is at 12 / 32 / 52 / 72 centimetres after 0.0 / 0.5 / 1.0 / 1.5 seconds. Choose a simple model and predict the position of the front at 2.5 seconds. The last frame shows it at 95 cm. How well does your prediction fit? Give one possible reason for the difference.",
         "hint": "Compare the changes in position over equal time intervals. How far should the train travel between the last two frames if your model still holds?",
         "solution": "Up to 1.5 s the train covers 20 cm every 0.5 s, consistent with a constant speed of 40 cm/s. Starting at 72 cm it would travel another 40 cm in the next second, reaching 112 cm. The last frame puts it 17 cm short. Assuming accurate positions, its average speed over the final interval was lower. A rougher section of track could explain the difference. The final frame alone cannot establish the cause."
-      }
-    },
-    {
-      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
-      "de": {
-        "title": "Reichen neun Meter zum Anhalten?",
-        "prompt": "Mira radelt auf einer abgesperrten Übungsbahn mit 5 m/s auf eine Haltelinie zu. Sie ist noch 9 m entfernt, als das Stoppsignal kommt. Mira reagiert nach 0,6 s. Ab Bremsbeginn zeigt das Modell nach 0 / 1 / 2 Sekunden ein Tempo von 5 / 2,5 / 0 m/s. Nimm eine gleichmäßige Verzögerung an. Kommt Mira vor der Linie zum Stehen? Was ändert sich, wenn sie erst nach 1,0 s reagiert?",
-        "hint": "Bis zum Bremsbeginn fährt Mira mit ihrem Anfangstempo weiter. Welches mittlere Tempo hat sie anschließend während der zwei Bremssekunden?",
-        "solution": "Während der Reaktion fährt Mira 5 m/s × 0,6 s = 3 m. Beim gleichmäßigen Bremsen beträgt das mittlere Tempo (5 + 0) / 2 = 2,5 m/s. Der Bremsweg ist 2,5 m/s × 2 s = 5 m. Zusammen sind das 8 m. Mira hält 1 m vor der Linie. Bei 1,0 s Reaktionszeit ergeben sich 5 m Reaktionsweg plus 5 m Bremsweg. Mira hält dann 1 m hinter der Linie."
-      },
-      "en": {
-        "title": "Are nine metres enough to stop?",
-        "prompt": "On a closed practice track, Mira cycles towards a stop line at 5 m/s. She is 9 m away when the stop signal appears. She reacts after 0.6 s. In the model her speed is 5 / 2.5 / 0 m/s at 0 / 1 / 2 seconds after she starts braking. Assume constant deceleration. Does Mira stop before the line? What changes if she takes 1.0 s to react?",
-        "hint": "Mira keeps her initial speed until she starts braking. What is her average speed during the two seconds of braking?",
-        "solution": "During her reaction time Mira travels 5 m/s × 0.6 s = 3 m. With constant deceleration her average speed while braking is (5 + 0) / 2 = 2.5 m/s. The braking distance is 2.5 m/s × 2 s = 5 m. The total is 8 m, so she stops 1 m before the line. With a 1.0 s reaction time she travels 5 m before braking and 5 m while braking. She then stops 1 m beyond the line."
       }
     },
     {
