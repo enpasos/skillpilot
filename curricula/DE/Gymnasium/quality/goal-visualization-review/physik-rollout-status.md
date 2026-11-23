@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-23T06:45:01.733Z
+Generated: 2026-11-23T19:55:34.108Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,20 +16,20 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 858 |
-| Atomare Ziele im Visualisierungs-Scope | 486 |
+| Alle Ziele in der Landschaft | 863 |
+| Atomare Ziele im Visualisierungs-Scope | 490 |
 | Ziele mit primaerem Visualisierungslink | 486 |
-| Coverage | 100.0% |
+| Coverage | 99.2% |
 | Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 486 |
-| Dokumentierte Coverage | 100.0% |
-| Coverage-Gate | bestanden |
+| Dokumentierte Coverage | 99.2% |
+| Coverage-Gate | nicht bestanden |
 | Release-approved Visualisierungen | 0 |
 | Review-Ledger-Dateien | 97 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
-| Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
+| Regulaere unvisualisierte Ziele ohne Deferred-Status | 4 |
 | Verlinkt ohne akzeptierende Review-Entscheidung | 73 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 

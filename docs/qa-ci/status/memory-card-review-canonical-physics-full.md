@@ -22,25 +22,25 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Metric | Value |
 | --- | --- |
-| ordinary atomic goals reviewed | 486 |
-| goals without memory need | 358 |
-| goals with intentional memory support | 128 |
+| ordinary atomic goals reviewed | 490 |
+| goals without memory need | 357 |
+| goals with intentional memory support | 127 |
 | goals needing developer review | 0 |
 | primary cards in scope | 146 |
 | kept primary cards with origin trace | 146 |
 | cards removed from active decks | 17 |
 | memory goals traced | 5/5 |
 | composition visibility scopes | 2 |
-| memory-required goals checked in views | 235 |
+| memory-required goals checked in views | 233 |
 | memory-required goals without visible memory node | 0 |
-| blocking issues | 0 |
+| blocking issues | 8 |
 
 ## Composition Visibility
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 559 | 5 | 108 | 0 |
-| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 648 | 5 | 127 | 0 |
+| Physik Gymnasium GK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json` | 563 | 5 | 107 | 0 |
+| Physik Gymnasium LK (DE-HE) | `curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json` | 652 | 5 | 126 | 0 |
 
 ## Memory-Required Goals
 
@@ -90,7 +90,6 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | E: Methode: Linearisierung von Messkurven (`264dc31c-ec92-5e39-a8b8-16f1d74366d4`) | `de_gymnasium_physics_mechanics_ephase` | Memory-Anteil streng begrenzt auf kompakte physikalische Formel-, Definitions-, Gesetzes- oder Merksatzkarten; Verstehen, Experimentieren und Aufgabenpraxis bleiben führend. |
 | E: Methode: Modellbildung mit Tabellenkalkulation (`ac25ffe3-fd42-592d-a937-79cc13460313`) | `de_gymnasium_physics_mechanics_ephase` | Die kompakte Schrittstruktur eines Differenzenverfahrens kann als Abrufstütze dienen; Modellannahmen, Parameterwirkung, Zeitschrittprüfung und Interpretation bleiben Verständnisleistungen. |
 | E: Mittleres Beschleunigungsmoment bestimmen (`c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea`) | `de_gymnasium_physics_mechanics_ephase` | B039-Einzelprüfung: der enge notwendige Recall-Anteil ist mittleres M = I mal mittlere alpha für festes I sowie mittlere alpha = Delta omega/Delta t. Die Karte unterscheidet ihn ausdrücklich vom Energiezustand und nennt die Modellbedingung. Vorzeichen, resultierendes statt beliebiges Einzelmoment und begründete Anwendung bleiben eigenständige Aufgabenpraxis, keine SRS-Mastery des Inhaltsziels. |
-| E: Modellierung und Idealisierung von Bewegungen (`d6dc0e02-831d-4894-a61a-852bcc74f147`) | `de_gymnasium_physics_mechanics_ephase` | Frische Eignungsprüfung: Die vorhandene schmale Mechanik-Memoryspur stützt kompakte Bewegungsgesetze; Begründung der Idealisierungen und Modellgrenzen bleiben ausdrücklich Verständnis- und Anwendungsleistungen. |
 | E: Newtons 1. Axiom (Trägheitsprinzip) (`31a2ef52-114b-4d2c-a720-6ef5a390b6dc`) | `de_gymnasium_physics_mechanics_ephase` | Die Karten 013 und 020 sichern die knappe Gesetzesaussage; Situationsdeutung bleibt Teil des normalen Lernziels. |
 | E: Newtons 1. Axiom anwenden (`32b896b9-f2f1-4d4e-96ad-e869ac3d3759`) | `de_gymnasium_physics_mechanics_ephase` | Karte 014 sichert die kompakte Beziehung zwischen verschwindender resultierender äußerer Kraft und konstantem Geschwindigkeitsvektor; die Situationsanalyse bleibt Verständnis und Aufgabenpraxis. |
 | E: Newtons 2. Axiom (Grundgleichung der Mechanik) (`a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20`) | `de_gymnasium_physics_mechanics_ephase` | Die Karten 015 und 020 bewahren die formal korrekte E-Phasen-Fassung für konstante Masse; Deutung, Systemwahl und Anwendung bleiben im normalen Lernziel. |
@@ -203,7 +202,7 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_008` | Gleichförmige Bewegung: Formel? | $v=\text{konstant}$, $a=0$, $s(t)=s_0+vt$ | E: Gleichförmige Bewegung und Geschwindigkeit (`971beafa-6ba5-4c82-ac8b-7ebf66eec3dd`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_009` | Gleichmäßig beschleunigte Bewegung: Grundformeln? | $a=\text{konstant}$ $v(t)=v_0+at$ $s(t)=s_0+v_0t+\frac12at^2$ | E: Gleichmäßig beschleunigte Bewegung und Beschleunigung (`e4b38061-1f28-43ad-8371-a3e7c0e81856`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_010` | Freier Fall (ohne Luftwiderstand): Grundformeln? | $a=g$ $v(t)=gt$ $s(t)=\frac12gt^2$ (für $v_0=0$ und $s_0=0$) | E: Freier Fall experimentell untersuchen (`09029573-864f-40ca-bf8a-cee7bf6dcb73`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
-| `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_011` | Idealisierungen in der Mechanik? | Häufige Idealisierungen: Massepunkt, reibungsfrei, starrer Körper, abgeschlossenes System | E: Modellierung und Idealisierung von Bewegungen (`d6dc0e02-831d-4894-a61a-852bcc74f147`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
+| `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_011` | Idealisierungen in der Mechanik? | Häufige Idealisierungen: Massepunkt, reibungsfrei, starrer Körper, abgeschlossenes System | E: Idealisierungen und Grenzen von Bewegungsmodellen (`d6dc0e02-831d-4894-a61a-852bcc74f147`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_012` | Anhalteweg: Kerngleichung? | Anhalteweg = Reaktionsweg + Bremsweg$s_A=s_R+s_B$ mit $s_R=v \cdot t_R$ und $s_B \propto v^2$ | E: Physik im Straßenverkehr: Sicherheitsabstände bewerten (`4a2bf015-052b-4af0-aed7-324259fa1a8a`) | Behalten: kompakter Physik-Formel-, Definitions-, Gesetzes- oder Merksatzbaustein mit kanonischer Lernzielherkunft; Anwendung und Deutung bleiben Teil des normalen Lernziels. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_013` | 1. Newtonsches Axiom (Trägheitsprinzip) im Inertialsystem? | Ist die resultierende äußere Kraft null, bleibt ein Körper in Ruhe oder bewegt sich geradlinig mit konstantem Geschwindigkeitsvektor: $\sum \vec F_\mathrm{ext}=0 \Rightarrow \vec v=\text{konstant}$ | E: Newtons 1. Axiom (Trägheitsprinzip) (`31a2ef52-114b-4d2c-a720-6ef5a390b6dc`) | Behalten: präzise, fachlich begrenzte Mechanik-Merkkarte mit aktueller kanonischer Lernzielherkunft; Herleitung, Deutung und Anwendung bleiben im normalen Lernziel. |
 | `de_gymnasium_physics_mechanics_ephase` | `physics_e_cov_014` | Was folgt im Inertialsystem aus $\sum \vec F_\mathrm{ext}=0$? | $\vec a=0$ und damit $\vec v=\text{konstant}$. Kräftegleichgewicht bedeutet keine Beschleunigung, aber nicht zwingend Ruhe. | E: Newtons 1. Axiom anwenden (`32b896b9-f2f1-4d4e-96ad-e869ac3d3759`) | Behalten: Karte 014 bildet die direkte Beziehung zwischen verschwindender resultierender äußerer Kraft und konstantem Geschwindigkeitsvektor weiterhin exakt auf das revidierte Ursprungsziel ab. |
@@ -352,5 +351,12 @@ Entfernte Karten bleiben im Card-Ledger als negative Entscheidung erhalten. Sie 
 
 ## Blocking Issues
 
-Keine.
+- de_gymnasium_physics_mechanics_ephase/physics_e_cov_011: originGoalId d6dc0e02-831d-4894-a61a-852bcc74f147 is not currently marked memory_required
+- de_gymnasium_physics_mechanics_ephase/physics_e_cov_011: originGoalId d6dc0e02-831d-4894-a61a-852bcc74f147 does not reference deck de_gymnasium_physics_mechanics_ephase
+- Missing review record for 262f807a-30d0-503e-986f-856cbd048e8e
+- Missing review record for d9a6ea85-f7e8-5cbd-afe9-62596e22040d
+- Missing review record for 0fee53f2-1c02-5b12-9b6c-aa9fa462d921
+- Missing review record for 1e459a1b-4159-5049-84eb-9928129c1610
+- Stale review record for ce431132-dfc4-42c2-aff6-bd72035190f8
+- Stale review record for d6dc0e02-831d-4894-a61a-852bcc74f147
 
