@@ -190,6 +190,9 @@ public class LearnerServiceTest {
     private CompositionViewService compositionViewService;
 
     @Autowired
+    private DeckResourceService deckResourceService;
+
+    @Autowired
     private PlatformTransactionManager transactionManager;
 
     private String learnerId;
@@ -3131,6 +3134,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         var state = learnerService.getLearnerState(learnerId);
 
@@ -3678,6 +3682,8 @@ public class LearnerServiceTest {
     @Transactional
     void memoryPracticeRejectsAnotherGoalAndInvalidRatingWithoutWritingState() {
         activateSekOneCoreFormulaFlashcards();
+        Set<String> releasedBy = com.skillpilot.backend.service.srs.CardReleaseFixtures.understandingGoalIds(
+                landscapeService, deckResourceService, SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         assertThatThrownBy(() -> learnerService.startMemoryPractice(
                         learnerId,
@@ -3703,7 +3709,9 @@ public class LearnerServiceTest {
         }
 
         assertThat(learnerCardStateRepository.findAll()).isEmpty();
-        assertThat(masteryRepository.findAll()).isEmpty();
+        // Only the fixture's passed understanding goals exist: nothing was written.
+        assertThat(masteryRepository.findAll()).extracting(Mastery::getGoalKey)
+                .containsExactlyInAnyOrderElementsOf(releasedBy);
     }
 
     @Test
@@ -3766,6 +3774,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         assertThat(learnerService.getMastery(learnerId).getOrDefault(SEK1_CORE_FORMULAS_FLASHCARDS_ID, 0.0))
                 .isZero();
@@ -3830,6 +3839,8 @@ public class LearnerServiceTest {
         learnerService.setPlannedGoals(
                 learnerId,
                 Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID, FUNCTIONS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        releaseDeckCards(FUNCTIONS_FLASHCARDS_ID);
 
         var foreignPrompt = learnerService.startVerifiedRecall(
                 learnerId,
@@ -3883,6 +3894,8 @@ public class LearnerServiceTest {
         learnerService.setPlannedGoals(
                 learnerId,
                 Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID, FUNCTIONS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+        releaseDeckCards(FUNCTIONS_FLASHCARDS_ID);
         var originalPrompt = learnerService.startVerifiedRecall(
                 learnerId,
                 "de",
@@ -3943,6 +3956,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         var prompt = learnerService.startVerifiedRecall(
                 learnerId,
@@ -4443,6 +4457,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
         var prompt = learnerService.startVerifiedRecall(
                 learnerId,
                 "de",
@@ -4539,6 +4554,7 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.save(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         var firstPrompt = learnerService.startVerifiedRecall(
                 learnerId,
@@ -4596,6 +4612,7 @@ public class LearnerServiceTest {
         learnerService.setPlannedGoals(
                 learnerId,
                 Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
 
         var prompt = learnerService.startVerifiedRecall(
                 learnerId,
@@ -4851,6 +4868,17 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
         learnerService.setPlannedGoals(learnerId, Set.of(SEK1_CORE_FORMULAS_FLASHCARDS_ID));
+        releaseDeckCards(SEK1_CORE_FORMULAS_FLASHCARDS_ID);
+    }
+
+    /**
+     * Issue #85: a card enters the box only once its understanding goals are
+     * passed. Passes them for every card of the deck goal, nothing else.
+     */
+    private Set<String> releaseDeckCards(String deckGoalId) {
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        return com.skillpilot.backend.service.srs.CardReleaseFixtures.passUnderstandingGoals(
+                masteryRepository, learner, landscapeService, deckResourceService, deckGoalId);
     }
 
     private void prepareMemoryThenRepresentationLearningPlan() {
