@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { ReactFlowProvider } from '@xyflow/react'
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { renderToStaticMarkup } from 'react-dom/server'
@@ -269,10 +270,12 @@ assert.doesNotMatch(emptyTreeHtml, /100 %|NaN|Infinity/u)
 
 const learningEntry: LearningMapEntry = { id: 'goal', title: 'Ziel', description: '', kind: 'goal', requires: [], position: { x: 0, y: 0 } }
 const renderMapRow = (progress: LearningEntryProgress, childCount = 0, activeLearningGoal = false) => renderToStaticMarkup(
-  <MapNode id={learningEntry.id} type="learningUnit" data={{ entry: learningEntry, language: 'de', childCount, progress, activeLearningGoal,
-    outsideCount: 0, ports: [], active: false, related: false, muted: false, onSelect() {}, onOpen() {} }}
-    zIndex={0} dragging={false} selected={false} selectable={false} draggable={false} deletable={false}
-    isConnectable={false} positionAbsoluteX={0} positionAbsoluteY={0} />,
+  <ReactFlowProvider>
+    <MapNode id={learningEntry.id} type="learningUnit" data={{ entry: learningEntry, language: 'de', childCount, progress, activeLearningGoal,
+      outsideCount: 0, ports: [], active: false, related: false, muted: false, onSelect() {}, onOpen() {} }}
+      zIndex={0} dragging={false} selected={false} selectable={false} draggable={false} deletable={false}
+      isConnectable={false} positionAbsoluteX={0} positionAbsoluteY={0} />
+  </ReactFlowProvider>,
 )
 const directRow = renderMapRow({ total: 1, explicit: 1, implicit: 0 })
 assert.match(directRow, /learning-map-direct-evidence/u)
