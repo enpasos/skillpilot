@@ -7512,7 +7512,7 @@
       ],
       "contains": [],
       "requires": [
-        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -7951,8 +7951,11 @@
         "ce431132-dfc4-42c2-aff6-bd72035190f8",
         "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
         "bf8517a9-142b-5789-826a-767f3b277998",
+        "1e459a1b-4159-5049-84eb-9928129c1610",
         "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "262f807a-30d0-503e-986f-856cbd048e8e",
         "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
         "d6dc0e02-831d-4894-a61a-852bcc74f147",
         "4a2bf015-052b-4af0-aed7-324259fa1a8a",
         "230345f3-c360-4963-b390-ab94e3e2c864",
@@ -8329,10 +8332,10 @@
     },
     {
       "id": "ce431132-dfc4-42c2-aff6-bd72035190f8",
-      "title": "Bewegungen mit Diagrammen untersuchen",
-      "titleEn": "Investigate Motions with Diagrams",
-      "description": "Die lernende Person kann einfache eindimensionale Bewegungen experimentell erfassen, Orts-Zeit-Daten und daraus bestimmte mittlere Intervallgeschwindigkeiten in t-s- und t-v-Diagrammen darstellen und interpretieren. Sie berücksichtigt Messauflösung, Ruhe und Bewegungsrichtung und prüft die Konsistenz von Ortsänderungen und vorzeichenbehafteten Flächen im stückweise gleichförmigen Modell.",
-      "descriptionEn": "The learner can experimentally record simple one-dimensional motions, represent and interpret position-time data and the average interval velocities determined from them in time-position and time-velocity graphs. They account for measurement resolution, rest, and direction of motion and check consistency between displacements and signed areas in a piecewise-uniform model.",
+      "title": "Bewegungen messen und im t-s-Diagramm darstellen",
+      "titleEn": "Measure Motions and Represent Them in a Time-Position Graph",
+      "description": "Die lernende Person kann eine einfache eindimensionale Bewegung experimentell erfassen, die Orts-Zeit-Daten im t-s-Diagramm darstellen und daraus Ruhe, Bewegungsrichtung und schnellere oder langsamere Abschnitte ablesen. Sie berücksichtigt die Messauflösung.",
+      "descriptionEn": "The learner can experimentally record a simple one-dimensional motion, represent the position-time data in a time-position graph and read off rest, direction of motion and faster or slower sections from it. They account for the measurement resolution.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -8343,10 +8346,7 @@
       "contains": [],
       "requires": [
         "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
-        "d6c3fb37-ece6-5b56-9221-1eeb21845877",
-        "25593605-5e13-55cc-9a05-8f3d737e15e9",
-        "13b338eb-f761-5817-9058-11043b9cb253",
-        "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8383,7 +8383,7 @@
           "resourceType": "image",
           "role": "primary",
           "skillpilotId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
-          "title": "Visualisierung: Bewegungen mit Diagrammen untersuchen",
+          "title": "Visualisierung: Bewegungen messen und im t-s-Diagramm darstellen",
           "url": "/assets/goal-visualizations/physik/ce431132-dfc4-42c2-aff6-bd72035190f8/ce431132-dfc4-42c2-aff6-bd72035190f8.jpeg",
           "provider": "OpenAI / Codex image_gen",
           "description": "Ruhige, locker gezeichnete Lernillustration; tatsächlich auf Inhalt und Lesbarkeit geprüft. Kein Nachweis einer Lernleistung.",
@@ -8535,6 +8535,55 @@
       ]
     },
     {
+      "id": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "title": "t-v-Diagramm und Ortsänderung als Fläche",
+      "titleEn": "Time-Velocity Graph and Displacement as Area",
+      "description": "Die lernende Person kann aus Orts-Zeit-Daten mittlere Intervallgeschwindigkeiten bestimmen, im t-v-Diagramm darstellen und die Ortsänderung als vorzeichenbehaftete Fläche unter dem Graphen deuten.",
+      "descriptionEn": "The learner can determine average interval velocities from position-time data, represent them in a time-velocity graph and interpret the displacement as the signed area under the graph.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "cross-subject:mathematics"
+      ],
+      "contains": [],
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "13b338eb-f761-5817-9058-11043b9cb253",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_velocity_time_diagram_area",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
       "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
       "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
       "titleEn": "Uniformly Accelerated Motion and Acceleration",
@@ -8551,7 +8600,8 @@
       "requires": [
         "bf8517a9-142b-5789-826a-767f3b277998",
         "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
-        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078"
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8600,6 +8650,54 @@
       ]
     },
     {
+      "id": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben",
+      "titleEn": "Describe Motions with Time-Position and Time-Velocity Laws",
+      "description": "Die lernende Person kann für gleichförmige und gleichmäßig beschleunigte Bewegungen das Zeit-Ort- und das Zeit-Geschwindigkeits-Gesetz aus den Diagrammen ermitteln, ihren Zusammenhang erläutern und damit Ort und Geschwindigkeit zu einem Zeitpunkt vorhersagen.",
+      "descriptionEn": "The learner can determine the time-position law and the time-velocity law of uniform and uniformly accelerated motions from the graphs, explain how the two laws are related and use them to predict position and velocity at a given time.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "cross-subject:mathematics"
+      ],
+      "contains": [],
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_motion_laws_position_velocity",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
       "id": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
       "title": "Freier Fall experimentell untersuchen",
       "titleEn": "Investigate Free Fall Experimentally",
@@ -8614,7 +8712,8 @@
       ],
       "contains": [],
       "requires": [
-        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8663,11 +8762,11 @@
       ]
     },
     {
-      "id": "d6dc0e02-831d-4894-a61a-852bcc74f147",
-      "title": "Modellierung und Idealisierung von Bewegungen",
-      "titleEn": "Modeling and Idealization of Motions",
-      "description": "Die lernende Person kann Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen modellieren, die verwendeten Idealisierungen wie Massepunkt und Reibungsfreiheit begründen und die Grenzen der Modellvorhersagen angeben.",
-      "descriptionEn": "The learner can model motions using time-position and time-velocity laws, justify the idealizations used, such as the point-particle approximation and neglect of friction, and state the limits of the model predictions.",
+      "id": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "title": "Fall leichter und schwerer Körper vergleichen",
+      "titleEn": "Compare the Fall of Light and Heavy Bodies",
+      "description": "Die lernende Person kann den Fall leichter und schwerer Körper in Luft und im Vakuum vergleichen und mit dem Luftwiderstand erklären, warum eine Feder in Luft langsamer fällt als eine Kugel, im Vakuum aber gleich schnell.",
+      "descriptionEn": "The learner can compare the fall of light and heavy bodies in air and in a vacuum and use air resistance to explain why a feather falls more slowly than a ball in air but equally fast in a vacuum.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -8677,8 +8776,55 @@
       ],
       "contains": [],
       "requires": [
-        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
-        "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_fall_light_and_heavy_bodies",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "title": "Idealisierungen und Grenzen von Bewegungsmodellen",
+      "titleEn": "Idealizations and Limits of Motion Models",
+      "description": "Die lernende Person kann die Idealisierungen eines Bewegungsmodells wie Massepunkt und Reibungsfreiheit begründen und angeben, wo die Modellvorhersagen an Grenzen stoßen.",
+      "descriptionEn": "The learner can justify the idealizations of a motion model, such as the point-particle approximation and the neglect of friction, and state where the model predictions reach their limits.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "cross-subject:mathematics"
+      ],
+      "contains": [],
+      "requires": [
+        "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+        "262f807a-30d0-503e-986f-856cbd048e8e"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -8715,11 +8861,11 @@
           "resourceType": "image",
           "role": "primary",
           "skillpilotId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
-          "title": "Visualisierung: Modellierung und Idealisierung von Bewegungen",
+          "title": "Visualisierung: Idealisierungen und Grenzen von Bewegungsmodellen",
           "url": "/assets/goal-visualizations/physik/d6dc0e02-831d-4894-a61a-852bcc74f147/d6dc0e02-831d-4894-a61a-852bcc74f147.jpg",
           "provider": "Google Gemini / Nano Banana Pro",
-          "description": "Visualisierung zum Lernziel: Modellierung und Idealisierung von Bewegungen.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Modellierung und Idealisierung von Bewegungen\". Die lernende Person kann Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen modellieren, die verwendeten Idealisierungen wie Massepunkt und Reibungsfreiheit begründen und die Grenzen der Modellvorhersagen angeben.",
+          "description": "Visualisierung zum Lernziel: Idealisierungen und Grenzen von Bewegungsmodellen.",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Idealisierungen und Grenzen von Bewegungsmodellen\". Die lernende Person kann die Idealisierungen eines Bewegungsmodells wie Massepunkt und Reibungsfreiheit begründen und angeben, wo die Modellvorhersagen an Grenzen stoßen.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
           "reviewStatus": "pilot"
@@ -10595,7 +10741,8 @@
       ],
       "contains": [
         "68c90ba6-c438-463c-9a53-cf61062d416a",
-        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
       ],
       "requires": [],
       "dimensionTags": {
@@ -10764,8 +10911,8 @@
       ],
       "contains": [],
       "requires": [
-        "68c90ba6-c438-463c-9a53-cf61062d416a",
-        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "262f807a-30d0-503e-986f-856cbd048e8e"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -10812,6 +10959,53 @@
           "reviewStatus": "accepted"
         }
       ]
+    },
+    {
+      "id": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "title": "Geschwindigkeit beim waagerechten Wurf als Vektor bestimmen",
+      "titleEn": "Determine the Velocity in Horizontal Projection as a Vector",
+      "description": "Die lernende Person kann die Geschwindigkeit beim waagerechten Wurf aus waagerechter und senkrechter Komponente zusammensetzen und Betrag und Richtung bestimmen, etwa den Auftreffwinkel.",
+      "descriptionEn": "The learner can combine the velocity in horizontal projectile motion from its horizontal and vertical components and determine its magnitude and direction, for example the angle of impact.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "68c90ba6-c438-463c-9a53-cf61062d416a"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_horizontal_throw_velocity_vector",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
     },
     {
       "id": "ec7a0a68-730b-5c94-ac72-a937508f8303",
@@ -11198,7 +11392,7 @@
       ],
       "contains": [],
       "requires": [
-        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -56253,7 +56447,8 @@
       ],
       "contains": [],
       "requires": [
-        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
       ],
       "applicability": {
         "jurisdiction": [
@@ -58305,7 +58500,7 @@
       ],
       "contains": [],
       "requires": [
-        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        "262f807a-30d0-503e-986f-856cbd048e8e"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
@@ -64845,7 +65040,7 @@
       "weight": 1,
       "contains": [],
       "requires": [
-        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
       ],
       "tags": [
         "GK",
@@ -65030,7 +65225,7 @@
       ],
       "contains": [],
       "requires": [
-        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        "262f807a-30d0-503e-986f-856cbd048e8e"
       ],
       "dimensionTags": {
         "framework": "canonical-gymnasium-physics",
