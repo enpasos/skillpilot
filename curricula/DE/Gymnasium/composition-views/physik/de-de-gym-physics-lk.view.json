@@ -2423,18 +2423,36 @@
                       ]
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+                      "kind": "structure",
+                      "id": "physics-acquisition-94784e0a-7ddc-48be-91fb-dc82b78eb322",
+                      "label": "Grundlagen: Mechanische Energie",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+                        }
+                      ]
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "88d07c80-5d7d-5c70-b385-b22769381e44"
+                      "kind": "structure",
+                      "id": "physics-acquisition-88d07c80-5d7d-5c70-b385-b22769381e44",
+                      "label": "Grundlagen: Wärmeenergie als innere Energie deuten",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "88d07c80-5d7d-5c70-b385-b22769381e44"
+                        }
+                      ]
                     },
                     {
                       "kind": "structure",
                       "id": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-230345f3-c360-4963-b390-ab94e3e2c864",
                       "label": "Freier Fall: Experiment und Auswertung",
                       "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "262f807a-30d0-503e-986f-856cbd048e8e"
+                        },
                         {
                           "kind": "canonicalSubtree",
                           "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73"
@@ -2450,10 +2468,6 @@
                       "id": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-65ddd780-0323-45d1-8f94-5e31bf28da23",
                       "label": "E.1 Bewegungen und ihre Beschreibung",
                       "children": [
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "262f807a-30d0-503e-986f-856cbd048e8e"
-                        },
                         {
                           "kind": "canonicalSubtree",
                           "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
@@ -2505,12 +2519,16 @@
                         "after": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-78bcc25b-e48c-471b-9236-6c3b23d48a8b"
                       },
                       {
+                        "unit": "physics-acquisition-88d07c80-5d7d-5c70-b385-b22769381e44",
+                        "after": "physics-acquisition-94784e0a-7ddc-48be-91fb-dc82b78eb322"
+                      },
+                      {
                         "unit": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-65ddd780-0323-45d1-8f94-5e31bf28da23",
                         "after": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-230345f3-c360-4963-b390-ab94e3e2c864"
                       },
                       {
                         "unit": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3",
-                        "after": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-65ddd780-0323-45d1-8f94-5e31bf28da23"
+                        "after": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-230345f3-c360-4963-b390-ab94e3e2c864"
                       }
                     ]
                   }

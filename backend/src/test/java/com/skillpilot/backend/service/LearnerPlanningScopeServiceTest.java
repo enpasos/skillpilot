@@ -445,7 +445,7 @@ class LearnerPlanningScopeServiceTest {
         Learner learner = selectHessenPhysics(duration, "GK");
         String throwGoalId = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
         String assessmentId = "a9562b05-c54d-5635-9244-3f7dd24a8642";
-        // Since the E.1 cut (23 Nov 2026) the throw requires the free-fall experiment and the motion laws.
+        // Since the E.1 cut (23 Nov 2026) the throw requires the free-fall experiment, which requires the motion laws.
         String freeFallGoalId = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
         String focus = "composition:de-he-gym-physics-gk-" + duration.toLowerCase(java.util.Locale.ROOT)
                 + ":structure:physics-e1-motion";
@@ -465,6 +465,12 @@ class LearnerPlanningScopeServiceTest {
 
         learner.setActiveGoalId(throwGoalId);
         learnerRepository.saveAndFlush(learner);
+        // FF->LAWS edge (23 Nov 2026): the free-fall goal is the throw's only direct prerequisite, so its unrecorded state is checked before its evidence is stored.
+        assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, throwGoalId, revision, "de", Set.of(), true).prerequisites())
+                .hasSize(1).allSatisfy(prerequisite -> {
+                    assertThat(prerequisite.title()).isEqualTo("Freier Fall experimentell untersuchen");
+                    assertThat(prerequisite.recorded()).isFalse();
+                });
         masteryRepository.saveAndFlush(new Mastery(learner, freeFallGoalId, 1.0));
         var context = learnerService.getCoachActiveGoalContext(LEARNER_ID, throwGoalId, revision, "de", Set.of(), true);
         assertThat(context).isNotNull();
@@ -474,10 +480,10 @@ class LearnerPlanningScopeServiceTest {
                 .practiceExercise()).isNull();
         assertThat(context.unitPaths()).anySatisfy(path -> assertThat(path.sections())
                 .contains("E.1 Bewegungen und ihre Beschreibung"));
-        assertThat(context.prerequisites()).anySatisfy(prerequisite -> {
+        assertThat(context.prerequisites()).hasSize(1).allSatisfy(prerequisite -> {
             assertThat(prerequisite.title()).isEqualTo("Freier Fall experimentell untersuchen");
             assertThat(prerequisite.recorded()).isTrue();
-        }).anySatisfy(prerequisite -> assertThat(prerequisite.recorded()).isFalse());
+        });
         assertThat(context.activities()).anySatisfy(activity -> {
             assertThat(activity.goalId()).isEqualTo(assessmentId);
             assertThat(activity.route()).isEqualTo("cockpit");

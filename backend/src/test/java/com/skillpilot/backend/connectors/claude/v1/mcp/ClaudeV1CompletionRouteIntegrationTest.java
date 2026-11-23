@@ -252,8 +252,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
     @ValueSource(strings = {"G8", "G9"})
     void hessianMotionInTheCoachToolUsesThePersonalMapAndItsOwnAssessmentPlacement(String duration) throws Exception {
         String active = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
-        // E.1 cut (23 Nov 2026): the throw requires the free-fall experiment and the motion laws;
-        // reference frames left E.1 for E.3.
+        // E.1 cut (23 Nov 2026): the throw requires the free-fall experiment, which requires the
+        // motion laws; reference frames left E.1 for E.3.
         String recorded = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
         String exam = "a9562b05-c54d-5635-9244-3f7dd24a8642";
         selectHessianMotionUnit(duration);
@@ -294,12 +294,10 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 "Sekundarstufe II (GK)", "Physik");
         assertThat(detail.path("unitIntroduction").path("question").asText()).contains("Ein Ball rollt vom Tisch");
         assertThat(detail.path("practiceExercise").path("prompt").asText()).isNotBlank();
-        assertThat(detail.path("prerequisites")).hasSize(2);
+        // FF->LAWS edge (23 Nov 2026): the motion laws now reach the throw through the free-fall goal only.
+        assertThat(detail.path("prerequisites")).hasSize(1);
         assertThat(detail.path("prerequisites").get(0).path("title").asText()).isEqualTo("Freier Fall experimentell untersuchen");
         assertThat(detail.path("prerequisites").get(0).path("recorded").asBoolean()).isTrue();
-        assertThat(detail.path("prerequisites").get(1).path("title").asText())
-                .isEqualTo("Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben");
-        assertThat(detail.path("prerequisites").get(1).path("recorded").asBoolean()).isFalse();
         assertThat(detail.path("activities")).hasSize(2);
         var activity = detail.path("activities").get(1);
         assertThat(activity.path("goalId").asText()).isEqualTo(exam);
