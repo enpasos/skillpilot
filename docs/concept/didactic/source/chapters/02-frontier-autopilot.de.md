@@ -28,9 +28,9 @@ Sobald das Backend aus Skill-Graph, persönlichem Curriculum und Beherrschungsst
 
 ### Autopilot-Modus {#sec:autopilot-mode}
 
-Der Autopilot reduziert Navigationsaufwand, indem er nach dem erfolgreichen Abschluss des aktuellen Ziels automatisch das nächste passende Frontier-Ziel aktiviert.
+Nach der Einrichtung des Lernumfangs muss der gesamte Lernweg im Coach-Chat möglich sein. Der Autopilot regelt allein die Wahl des nächsten Frontier-Ziels. Ist er aus, wählt die lernende Person im Chat. Ist er an, wählt das Backend und der Coach führt im Chat zum gewählten Ziel. Das gilt auch beim Lernen nach Plan. [Produktentscheidung](repo:AGENTS.md#binding-product-decision-on-learning-entirely-in-coach-chat)
 
-#### Laufzeitverhalten
+#### Aktueller Implementierungsstand
 
 - **Auslöser:** Greift, sobald das aktuelle `activeGoal` in den Zustand **Gemeistert** (*Mastered*) übergeht.
 - **Auswahl:** Wählt das **erste** Ziel der gültigen Frontier nach Anwendung der eingestellten Auswahlstrategie (*Zufällig*, *Sequenziell* oder künftig *Einheit für Einheit*). Ist der Planmodus eines gültigen Lernplans aktiv (siehe @ref{sec:existing-learner-setup}), gelten vorrangig dessen Übergaberegeln und der generische Autopilot wird unterdrückt.

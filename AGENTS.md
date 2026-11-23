@@ -1,5 +1,24 @@
 # AGENTS.md – Skill Graph Memory & Design Guide
 
+## Binding product decision on learning entirely in coach chat
+
+On **23 November 2026**, the Product Owner confirmed that once the learner's
+general learning scope (Personal Curriculum) is configured, the entire learning
+path must be possible in the coach chat alone. The Cockpit and the learning map
+are optional for learning. This applies across subjects, providers and plan
+settings, with Autopilot on or off.
+
+**Autopilot determines only who chooses the next frontier goal.** With Autopilot
+off, the coach presents the eligible goals and the learner chooses in chat.
+With Autopilot on, the backend chooses the next goal from that same frontier
+and the coach guides the learner to it in chat.
+
+Acceptance requires **zero mandatory Cockpit visits** to enter a unit or nested
+unit, work on a goal, practise, take or leave an assessment, pause, resume,
+complete the assignment and, if desired, start eligible voluntary study.
+A required Cockpit handoff is a product gap even if it occurs only once.
+See the [learning workflow](docs/concept/runtime-workflows/learning-workflow.md#sec-learning-workflow).
+
 ## Current execution mandate: stage plans and pedagogical repairs
 
 On **15 November 2026**, the Product Owner delegated the resolution and

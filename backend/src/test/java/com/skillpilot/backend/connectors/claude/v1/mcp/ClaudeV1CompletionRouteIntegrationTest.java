@@ -175,7 +175,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(version()).isEqualTo(revision);
         var request = writeArgs("second-page-practice", revision, Map.of("choice", title, "completionChoicePage", labels.get(title)));
         var result = successful(choose, request);
-        assertThat(map(map(result, "context"), "activeGoal")).containsEntry("id", late.goalId());
+        assertThat(map(map(result, "context"), "activeGoal")).containsEntry("id", late.practice().startGoalId());
+        assertThat(learners.getPlannedGoals(learnerId)).contains(late.goalId());
         assertThat(successful(choose, request)).isEqualTo(result);
         assertThat(call(choose, writeArgs("second-page-practice", revision, Map.of("choice", title))).isError()).isTrue();
         assertThat(call(choose, writeArgs("stale-page", revision,

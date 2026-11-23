@@ -4,6 +4,15 @@ This chapter traces the operational runtime flow from static skill landscapes un
 
 Inside the backend the workflow is provider-neutral. For ChatGPT (@ref{sec:openai-mcp-oauth-session}), a registered OAuth client authenticates the integration while every explicit **Start Learning** (*Lernen starten*) click creates a fresh, absolutely expiring 24-hour `learningSessionId` injected into the launch prompt and passed unchanged to every domain MCP tool call; the permanent SkillPilot ID stays strictly backend-only. The [Visible Session Flow](repo:docs/concept/runtime-workflows/chatgpt-visible-session-flow.md) remains an isolated rollback path, and the Claude lane uses the same state projection while awaiting full end-to-end client acceptance. Shared ChatClient/backend boundaries are governed by @ref{sec:provider-neutral-coach-boundary}.
 
+:::principle{title="Learning entirely in coach chat"}
+
+**Binding Product Owner decision of 23 November 2026.** Once the general learning scope is configured in the Personal Curriculum, the entire learning path must be possible in coach chat alone. The learning map and Cockpit are optional ways to access learning.
+
+Autopilot determines only who chooses the next learning goal from the frontier. With Autopilot off, the coach offers the eligible goals in chat and the learner chooses. With Autopilot on, the backend chooses the next goal from that same frontier and the coach guides the learner to it in chat.
+
+**Acceptance in both settings requires zero mandatory Cockpit visits.** The learner must be able to enter units and nested units, change goals, practise and use flashcards, attempt an assessment directly, return to study before submission, pause and resume, complete the assignment and choose to pursue voluntary study afterwards. Even a single mandatory Cockpit handoff fails this criterion.
+:::
+
 ### Data foundation: landscapes, structure, and filters {#sec:workflow-data-foundation}
 
 Each skill landscape under `curricula/` is a DAG with `contains` (hierarchy/composition) and `requires` (didactic prerequisites). During ongoing cluster-edge migration, runtime navigation derives **effective prerequisites** from both direct `requires` and `requires` inherited via `contains` ancestors, while Personal Curriculum filters narrow the visible learner view without preventing strict prerequisite checks across the structural graph.
@@ -15,12 +24,12 @@ Each skill landscape under `curricula/` is a DAG with `contains` (hierarchy/comp
 3. **Focus and Active Goal (Level 3):**
    - **Level 3a (Focus roots):** Once Level 2 is complete, focus is never empty (defaulting deterministically to the first visible root if unset, while multi-root corridors remain supported for backend/coach plans).
    - **Level 3b (Active atomic goal):** At most one atomic goal active in the UI/coach loop.
-   - **Plan-guided progression:** Confirmed teacher schedule activation atomically replaces included subject schedules, enables plan mode (suppressing generic Autopilot), and selects the first due frontier goal for an unfinished period quota; foreground subject switches park unfinished work without mutating mastery, and post-completion handoffs rank unfinished subject quotas deterministically without ever bypassing `requires` or inventing fallback goals (see [Unified Learning-Plan Status](repo:docs/concept/didactic/unified-learning-plan-status.md) and legacy [Daily Learning Progress](repo:docs/concept/runtime-workflows/daily-learning-progress.md)).
+   - **Current implementation of plan-guided progression:** Confirmed teacher schedule activation atomically replaces included subject schedules, enables plan mode (suppressing generic Autopilot), and selects the first due frontier goal for an unfinished period quota; foreground subject switches park unfinished work without mutating mastery, and post-completion handoffs rank unfinished subject quotas deterministically without ever bypassing `requires` or inventing fallback goals (see [Unified Learning-Plan Status](repo:docs/concept/didactic/unified-learning-plan-status.md) and legacy [Daily Learning Progress](repo:docs/concept/runtime-workflows/daily-learning-progress.md)).
    - **Focus widening:** Offers backend-published broader ancestors along the visible path to root only after genuine completion of the current scope and learner confirmation.
 
 ### Step 4: frontier calculation and evaluation modes {#sec:workflow-step4}
 
-For a regular recommendation, the runtime selects from the frontier. It checks the effective prerequisites of open candidates in the selected mode. `requires` describes preparation. What an assessment actually requires and what the learner demonstrated depend on the task, scoring and result. Selection strategies order goals that are already reachable. The proposed unit-by-unit mode using `after` also concerns that ordering. [Frontier selection strategies](repo:docs/concept/didactic/frontier-goal-selection-strategies-autopilot.md)
+The runtime determines the frontier for regular goal selection. It checks the effective prerequisites of open candidates in the selected mode. `requires` describes preparation. What an assessment actually requires and what the learner demonstrated depend on the task, scoring and result. Selection strategies order goals that are already reachable. The proposed unit-by-unit mode using `after` also concerns that ordering. [Frontier selection strategies](repo:docs/concept/didactic/frontier-goal-selection-strategies-autopilot.md)
 
 **Contract in force, 4/11 November.** The regular frontier uses effective mastery $M_{\mathrm{eff}}=M\cup I$. Alongside explicit results $M$, the set $I$ contains ordinary goals implicitly recognized by their directly owning unit under R1–R5. Such recognition also applies outside that unit. The runtime implements this contract only in part. [Validity rules and calculation](repo:docs/concept/skill-graph/assessment-gated-completion.md#sec-why-graph-not-enough)
 
