@@ -52,6 +52,14 @@ public final class CardReleaseFixtures {
         return goalIds;
     }
 
+    /** Every card id of the deck goal's German deck, in deck order. */
+    public static List<String> deckCardIds(LandscapeService landscapes, DeckResourceService decks, String deckGoalId) {
+        LearningGoal goal = landscapes.getGoalDefinition(deckGoalId);
+        String source = (String) goal.getExtendedData().get("vocabularySource");
+        return CATALOG.deck(decks.resolveDeckResource(deckGoalId, source), null).cards(true).stream()
+                .map(SrsCard::id).toList();
+    }
+
     /**
      * Stores a passed result for every understanding goal of the deck goal's
      * cards, so every card of the deck is released. No other goal is touched,

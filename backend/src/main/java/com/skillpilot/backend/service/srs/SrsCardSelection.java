@@ -38,6 +38,18 @@ public final class SrsCardSelection {
         return inBox(card, state, release) && (state == null || !state.testedOn(now, zone));
     }
 
+    /** Cards of a set that a Verified Recall batch may contain now: in the box and not tested today. */
+    public static int recallEligibleCount(List<SrsCard> cards, Map<String, SrsCardStateSummary> states,
+            SrsCardRelease release, Instant now, ZoneId zone) {
+        int eligible = 0;
+        if (cards != null) {
+            for (SrsCard card : cards) {
+                if (recallEligible(card, states.get(card.id()), release, now, zone)) eligible++;
+            }
+        }
+        return eligible;
+    }
+
     /** The next Verified Recall batch of a scope: its first eligible cards in deck order. */
     public static List<SrsCard> nextRecallBatch(List<SrsCard> scope, Map<String, SrsCardStateSummary> states,
             SrsCardRelease release, Instant now, ZoneId zone, int batchSize) {
@@ -67,11 +79,19 @@ public final class SrsCardSelection {
     public static Optional<List<SrsCard>> matchIssuedBatch(Collection<List<SrsCard>> candidateScopes,
             List<String> cardIds, Map<String, SrsCardStateSummary> states, SrsCardRelease release,
             Instant issuedAt, ZoneId zone, int batchSize) {
+        return matchIssuedScope(candidateScopes, cardIds, states, release, issuedAt, zone, batchSize)
+                .map(scope -> nextRecallBatch(scope, states, release, issuedAt, zone, batchSize));
+    }
+
+    /** The candidate scope whose selection at the issue instant is exactly the issued batch. */
+    public static Optional<List<SrsCard>> matchIssuedScope(Collection<List<SrsCard>> candidateScopes,
+            List<String> cardIds, Map<String, SrsCardStateSummary> states, SrsCardRelease release,
+            Instant issuedAt, ZoneId zone, int batchSize) {
         for (List<SrsCard> scope : candidateScopes) {
             List<SrsCard> expected = nextRecallBatch(scope, states, release, issuedAt, zone, batchSize);
             if (expected.size() == cardIds.size()
                     && expected.stream().map(SrsCard::id).toList().equals(cardIds)) {
-                return Optional.of(expected);
+                return Optional.of(scope);
             }
         }
         return Optional.empty();

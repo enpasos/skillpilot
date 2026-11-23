@@ -1164,6 +1164,23 @@ public class LearnerControllerIntegrationTest {
     }
 
     @Test
+    void cockpitClientStateAlwaysCarriesTheLockedCardIdsArray() throws Exception {
+        // Issue #85: the additive field is always present, an empty array when nothing is locked.
+        Learner learner = new Learner();
+        learner.setSkillpilotId("client-state-locked-cards");
+        learnerRepository.save(learner);
+
+        HttpResponse<String> response = getRequest(
+                "/api/ui/learners/client-state-locked-cards/client-state/not-a-deck-goal");
+
+        assertThat(response.statusCode()).isEqualTo(HttpStatus.OK.value());
+        JsonNode body = objectMapper.readTree(response.body());
+        assertThat(body.has("srsState")).isTrue();
+        assertThat(body.path("lockedCardIds").isArray()).isTrue();
+        assertThat(body.path("lockedCardIds")).isEmpty();
+    }
+
+    @Test
     void compatibilitySessionRejectsUiLearningWrites() throws Exception {
         Learner learner = new Learner();
         learner.setSkillpilotId("readonly-ui-learning");

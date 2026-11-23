@@ -73,6 +73,12 @@ public class LearnerGoalCompletionService {
         return repository.findByLearner_SkillpilotIdOrderByOccurredAtDesc(skillpilotId);
     }
 
+    /** The learner's most recent completion record (issue #85: the anchor of the card step after a goal). */
+    @Transactional(readOnly = true)
+    public java.util.Optional<LearnerGoalCompletion> latest(String skillpilotId) {
+        return repository.findFirstByLearner_SkillpilotIdOrderByOccurredAtDesc(skillpilotId);
+    }
+
     @Transactional(readOnly = true)
     public List<LearnerGoalCompletion> getHistory(String skillpilotId) {
         return repository.findByLearner_SkillpilotIdOrderByOccurredAtDesc(skillpilotId)

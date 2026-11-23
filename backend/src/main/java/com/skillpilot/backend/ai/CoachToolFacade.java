@@ -642,6 +642,38 @@ public class CoachToolFacade {
         return learnerService.startVerifiedRecallBatch(skillpilotId, language, goalId, batchSize);
     }
 
+    /** Card-step facts of the learner's current card context (issue #85); counts and identifiers only. */
+    public com.skillpilot.backend.service.srs.SrsCardStepFacts getCardStepFacts(String skillpilotId, String language) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getCardStepFacts(skillpilotId, language);
+    }
+
+    /** Starts the unit check of the learner's current card context without an active deck goal (issue #85). */
+    public com.skillpilot.backend.service.srs.UnitCheckStart startVerifiedRecallUnitCheck(
+            String skillpilotId,
+            String language) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.startVerifiedRecallUnitCheck(skillpilotId, language);
+    }
+
+    public VerifiedRecallBatchAnswerResponse getVerifiedRecallAnswersBatch(
+            String skillpilotId,
+            String language,
+            VerifiedRecallBatchAnswerRequest request,
+            String practiceScopeId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getVerifiedRecallAnswersBatch(skillpilotId, language, request, practiceScopeId);
+    }
+
+    public VerifiedRecallBatchResultResponse recordVerifiedRecallResultsBatch(
+            String skillpilotId,
+            String language,
+            VerifiedRecallBatchResultRequest request,
+            String practiceScopeId) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        return learnerService.recordVerifiedRecallResultsBatch(skillpilotId, language, request, practiceScopeId);
+    }
+
     public VerifiedRecallAnswerResponse getVerifiedRecallAnswer(
             String skillpilotId,
             String language,
