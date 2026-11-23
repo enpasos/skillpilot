@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict'
+import { prepareLandscapeEntries } from '../src/hooks/useLandscapes'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
-import { planningGoalDefinition, planningReleaseFingerprint, validatePlanningRelease } from './checkUnitPlanningReleases'
+import type { CompositionStructureNode, CompositionView } from '../src/utils/authoring/compositionViewAuthoring'
+import { planningGoalDefinition, planningReleaseFingerprint, validatePlanningRelease, validateStudyRecommendations } from './checkUnitPlanningReleases'
 import { fingerprintCurrentCurriculumDocument as digest } from './currentCurriculumCatalog'
 import { UnitGraph, assessmentReviewRevisions, validateOfferedScopes, type LearningUnitCatalog } from './lib/learningUnitContracts'
 
@@ -133,6 +135,9 @@ function orientationEvidence(current = orientedLandscape, documents: PlanningEvi
     } }
 }
 validatePlanningRelease(orientedUnit, orientedCredit, orientationEvidence())
+validatePlanningRelease(orientedUnit, orientedCredit, orientationEvidence(orientedLandscape, [
+  { ...orientedMaterial, schemaVersion: 4 },
+]))
 assert.notEqual(planningReleaseFingerprint(orientedUnit, orientedCredit), decision.release.fingerprint)
 const historicalOrdinaryBinding = structuredClone(orientedCredit)
 historicalOrdinaryBinding.release.fingerprint = decision.release.fingerprint
@@ -201,3 +206,55 @@ validatePlanningRelease(orientedUnit, noCardsCredit, orientationEvidence(noCards
 assert.equal(planningReleaseFingerprint(material, decision), decision.release.fingerprint,
   'An optional orientation credit never rebinds existing ordinary evidence')
 console.log('Orientation release tests passed for explicit complete recall sets, exact own openings, bilingual introductions, ownership and immutable ordinary releases.')
+
+const recommendations = [{
+  schemaVersion: 4,
+  unit: { landscapeId: landscape.landscapeId, compositionNodeId: 'mechanics', viewIds: ['gk', 'lk'] },
+  studyRecommendations: [{ beforeGoalId: atom.id, afterGoalId: assessment.id }],
+}]
+const section: CompositionStructureNode = { kind: 'structure', id: 'mechanics', label: 'Mechanics', children: [
+  { kind: 'goalEntry', goalId: atom.id }, { kind: 'goalEntry', goalId: assessment.id },
+] }
+const baseView: CompositionView = { viewId: 'gk', landscapeId: landscape.landscapeId,
+  scope: { schoolForm: 'Gymnasium', jurisdiction: 'DE-HE', stage: 'CrossStage', courseProfile: 'GK' },
+  rootNodes: [section],
+}
+const otherSection = structuredClone(section)
+const otherView: CompositionView = { ...baseView, viewId: 'lk', scope: { ...baseView.scope, courseProfile: 'LK' },
+  rootNodes: [otherSection] }
+const views = new Map([[baseView.viewId, baseView], [otherView.viewId, otherView]])
+const checkRecommendations = (documents: Parameters<typeof validateStudyRecommendations>[0], current = landscape) =>
+  validateStudyRecommendations(documents, graphFor(current), views, prepareLandscapeEntries([current]))
+checkRecommendations(recommendations)
+assert.throws(() => checkRecommendations([{ ...recommendations[0], schemaVersion: 3 }]),
+  /require material v4/)
+assert.throws(() => checkRecommendations(recommendations, { ...landscape, goals: [atom, { ...assessment, tags: ['GK'] }] }),
+  /atomic target of mechanics in lk: pressure-test/)
+const recommend = (beforeGoalId: string, afterGoalId: string) => ({
+  ...recommendations[0], studyRecommendations: [{ beforeGoalId, afterGoalId }],
+})
+assert.throws(() => checkRecommendations([recommend(assessment.id, atom.id)]),
+  /conflicts with prerequisite or study order in mechanics\/gk/)
+otherSection.children[1] = { kind: 'goalEntry', goalId: assessment.id, projectionRole: 'prerequisiteOnly' }
+assert.throws(() => checkRecommendations(recommendations),
+  /atomic target of mechanics in lk: pressure-test/)
+otherSection.children[1] = { kind: 'goalEntry', goalId: assessment.id }
+
+const transfer = { ...atom, id: 'pressure-transfer' }
+for (const node of [section, otherSection]) {
+  node.children.unshift({ kind: 'goalEntry', goalId: opening.id })
+  node.children.push({ kind: 'goalEntry', goalId: transfer.id })
+}
+const extended = { ...landscape, goals: [opening, atom, assessment, transfer] }
+assert.throws(() => checkRecommendations([recommend(transfer.id, atom.id)],
+  { ...extended, goals: [opening, atom, assessment, { ...transfer, requires: [assessment.id] }] }),
+  /conflicts with prerequisite or study order in mechanics\/gk/)
+const guided = { schemaVersion: 3, unit: { ...recommendations[0].unit, orientationGoalId: opening.id, viewIds: ['lk'] },
+  guidedStudyOrder: [assessment.id, transfer.id] }
+const contraryToGuide = recommend(transfer.id, assessment.id)
+checkRecommendations([{ ...contraryToGuide, unit: { ...contraryToGuide.unit, viewIds: ['gk'] } }, guided], extended)
+assert.throws(() => checkRecommendations([contraryToGuide, guided], extended),
+  /conflicts with prerequisite or study order in mechanics\/lk/)
+assert.throws(() => checkRecommendations([recommend(transfer.id, atom.id), guided], extended),
+  /conflicts with prerequisite or study order in mechanics\/lk/)
+console.log('Study recommendation targets verified in both course views, with negative probes for old versions, excluded goals, and conflicts with prerequisites and guided study.')

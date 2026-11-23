@@ -359,6 +359,7 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     const backward = !!relation?.backward
     const declared = relation?.unitOrder === 'declared'
     const guided = relation?.kind === 'unitEntry' || relation?.kind === 'guidedStudy'
+    const recommended = relation?.kind === 'studyRecommendation'
     const color = backward ? highlighted ? '#b42318' : '#d4553a' : highlighted ? '#2870b0' : declared ? '#6f8193' : '#9aa4ae'
     const summary = relation?.kind === 'summary' && !declared && !backward
     const sourceTitle = fixture.entries[relationSource].title
@@ -372,7 +373,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
         // Declared year/phase order remains orientation context for every selection.
         opacity: selectedId && !highlighted && !declared ? 0.13 : 1 },
       zIndex: highlighted ? 2 : backward ? 1 : 0,
-      ariaLabel: guided ? `${language === 'en' ? 'Guided learning' : 'Geführter Lernweg'}: ${sourceTitle} → ${targetTitle}` : backward ? language === 'en'
+      ariaLabel: recommended ? `${sourceTitle} → ${targetTitle} · ${language === 'en' ? 'Recommended study order' : 'Empfohlene Lernreihenfolge'}`
+        : guided ? `${language === 'en' ? 'Guided learning' : 'Geführter Lernweg'}: ${sourceTitle} → ${targetTitle}` : backward ? language === 'en'
         ? `Backward dependency: ${targetTitle} needs goals from ${sourceTitle}, which comes later`
         : `Rückgriff: ${targetTitle} braucht Ziele aus ${sourceTitle}, das erst danach kommt`
         : declared ? language === 'en' ? `${targetTitle} comes after ${sourceTitle} (declared order)`
@@ -537,7 +539,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
               {!inspectedContext.length && <p>{label('Keine weiteren Voraussetzungen in den verfügbaren Quelldaten.', 'No further prerequisites in the available source data.')}</p>}
             </> : <>
               {selectedRelations.slice(0, contextLimit).map(relation => <div key={`${relation.source}:${relation.target}`}>
-                <h2>{contextTitle(relation.source)} → {contextTitle(relation.target)}{relation.kind === 'unitEntry' || relation.kind === 'guidedStudy' ? label(' · Geführter Lernweg', ' · Guided learning')
+                <h2>{contextTitle(relation.source)} → {contextTitle(relation.target)}{relation.kind === 'studyRecommendation' ? label(' · Empfohlene Lernreihenfolge', ' · Recommended study order')
+                  : relation.kind === 'unitEntry' || relation.kind === 'guidedStudy' ? label(' · Geführter Lernweg', ' · Guided learning')
                   : relation.backward ? label(' · Rückgriff', ' · Backward dependency')
                   : relation.unitOrder === 'declared' ? label(' · Erklärte Reihenfolge', ' · Declared order')
                     : relation.unitOrder === 'derived' ? label(' · Noch nicht erklärte Abhängigkeit', ' · Dependency not declared yet')

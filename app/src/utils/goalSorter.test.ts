@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict'
 import type { UiGoal } from '../goalTypes'
 import { sortGoalsTopologically } from './goalSorter'
-import type { LearningMapFixture } from '../components/learningUnitMap/types'
+import type { LearningMapFixture, MapPracticeMaterial } from '../components/learningUnitMap/types'
+import { getLearningScopeRelations } from '../components/learningUnitMap/scopeRelations'
+import { placeUnitLearningResources, unitResourcePlacements } from '../components/learningUnitMap/unitLearningMaterialActions'
+import { buildSortedChildrenMap } from './learnerNavigation/treeSiblingOrder'
 import { compositionSiblingOrder, projectedSiblingOrder } from './unitStudyOrder'
 
 const goal = (id: string, title: string, overrides: Partial<UiGoal> = {}): UiGoal => ({
@@ -70,6 +73,46 @@ const projected = projectedSiblingOrder(fixture, 'parent', ['next', 'previous', 
 assert.deepEqual(projected, [{ source: 'previous', target: 'next' }])
 assert.deepEqual(sortGoalsTopologically([goal('next', 'A'), goal('previous', 'Z')], { siblingOrder: projected })
   .map(child => child.id), ['previous', 'next'])
+
+// Two independent recommendations belong on their closest common board.
+// Filtering the authored atom removes both even when its branch remains.
+const nestedMaterial: MapPracticeMaterial = {
+  schemaVersion: 4, unit: { landscapeId: 'demo', compositionNodeId: 'unit', viewIds: ['demo-view'] },
+  intro: { de: { question: 'Wie?', promise: 'Erklären.' }, en: { question: 'How?', promise: 'Explain.' } }, exercises: [],
+  studyRecommendations: [
+    { beforeGoalId: 'source', afterGoalId: 'assessment' },
+    { beforeGoalId: 'source', afterGoalId: 'application' },
+  ],
+}
+const nestedGoals = [
+  goal('unit', 'Unit', { landscapeId: 'demo', type: 'cluster',
+    extendedData: { compositionNodeId: 'unit', compositionViewId: 'demo-view' } }),
+  goal('assessment', 'Assessment', { tags: ['order:0'], nodeKind: 'exam' }),
+  goal('branch', 'Branch', { type: 'cluster' }),
+  goal('source', 'Source'),
+  goal('application', 'Application'),
+]
+const nestedGoalIndex = new Map(nestedGoals.map(entry => [entry.id, entry]))
+const nestedPlacements = unitResourcePlacements({ material: nestedMaterial, scopes: new Set(['unit']),
+  cardDeckIds: new Map(), assessments: new Map() })
+for (const visible of [true, false]) {
+  const children = { unit: ['assessment', 'branch'], branch: visible ? ['application', 'source'] : ['application'] }
+  const nestedFixture: LearningMapFixture = { rootId: 'unit', title: 'Unit', scopeRelations: {}, entries: {
+    unit: { ...section('unit'), children: children.unit }, branch: { ...section('branch'), children: children.branch },
+    assessment: { ...section('assessment'), kind: 'assessment' }, application: { ...section('application'), kind: 'goal' },
+    // A filtered atom may still exist in the wider goal catalog.
+    source: { ...section('source'), kind: 'goal' },
+  } }
+  const sorted = buildSortedChildrenMap(new Map(Object.entries(children)), nestedGoalIndex, 'learner', nestedFixture, [nestedMaterial])
+  assert.deepEqual(sorted.get('unit'), visible ? ['branch', 'assessment'] : ['assessment', 'branch'])
+  assert.deepEqual(sorted.get('branch'), visible ? ['source', 'application'] : ['application'])
+  const map = placeUnitLearningResources(nestedFixture, nestedPlacements)
+  const expected = { unit: ['branch', 'assessment'], branch: ['source', 'application'] }
+  for (const id of ['unit', 'branch'] as const) {
+    const pairs = getLearningScopeRelations(map, id).map(({ source, target, kind }) => [source, target, kind])
+    assert.deepEqual(pairs, visible ? [[...expected[id], 'studyRecommendation']] : [])
+  }
+}
 
 // Soft support: a branch whose goals are required from inside another branch
 // comes first, although the alphabet and the missing direct edge say otherwise.

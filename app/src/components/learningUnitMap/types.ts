@@ -8,9 +8,15 @@ export interface MapPracticeExercise {
   evidenceCriteria?: readonly string[]
 }
 
+export interface UnitStudyRecommendation {
+  beforeGoalId: string
+  afterGoalId: string
+}
+
 export interface MapPracticeMaterial {
-  schemaVersion?: 1 | 2 | 3
+  schemaVersion?: 1 | 2 | 3 | 4
   guidedStudyOrder?: readonly string[]
+  studyRecommendations?: readonly UnitStudyRecommendation[]
   individualAssessmentOffers?: readonly { targetGoalId: string; assessmentGoalId: string }[]
   unit: {
     landscapeId: string
@@ -46,7 +52,7 @@ export interface LearningMapRequirement {
 export interface LearningMapRelation {
   source: string
   target: string
-  kind: 'requirement' | 'summary' | 'unitEntry' | 'guidedStudy'
+  kind: 'requirement' | 'summary' | 'unitEntry' | 'guidedStudy' | 'studyRecommendation'
   provenance: LearningMapRequirement[]
   /**
    * Unit map only, between two child units of one unit: `declared` follows an
@@ -67,6 +73,7 @@ export interface LearningMapEntry {
   /** The authored first atomic step for guided learning on this board. */
   orientationGoalId?: string
   guidedStudyOrder?: readonly string[]
+  studyRecommendations?: readonly UnitStudyRecommendation[]
   individualAssessmentOffers?: readonly { targetGoalId: string; assessmentGoalId: string }[]
   requires: string[]
   position: { x: number; y: number }

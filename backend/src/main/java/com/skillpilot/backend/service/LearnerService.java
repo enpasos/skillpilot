@@ -88,6 +88,7 @@ import com.skillpilot.backend.service.srs.SrsPracticeStateGuard;
 import com.skillpilot.backend.service.srs.SrsStateUnavailableException;
 import com.skillpilot.backend.service.srs.UnitCheckStart;
 import com.skillpilot.backend.api.FrontierGoal;
+import com.skillpilot.backend.api.FrontierGoal.StudyGuidance;
 import com.skillpilot.backend.api.GoalSourceLink;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearnerPlanningScopeResponse;
@@ -4533,7 +4534,12 @@ public class LearnerService {
                         projection.canonicalPrerequisiteGoals(), subjectSeeds).learningAtomicGoalIds();
             }
         }
-        return getUncompactedRichFrontierForFocus(skillpilotId, List.copyOf(subjectAtoms)).stream()
+        List<String> prospectiveFocus = List.copyOf(subjectAtoms);
+        if (prospectiveFocus.isEmpty()) return List.of();
+        Set<String> followedScope = followedLearningScopeIds(learner, projection, prospectiveFocus);
+        if (followedScope != null && followedScope.isEmpty()) return List.of();
+        return getRichFrontier(learner, projection, richFrontierFacts(learner, projection),
+                false, prospectiveFocus, false, followedScope, true).stream()
                 .filter(goal -> "atomic".equals(goal.type()))
                 .toList();
     }
@@ -7961,9 +7967,11 @@ public class LearnerService {
         Set<String> unavailableRecall = unavailableVerifiedRecallGoals(skillpilotId,
                 frontier.stream().map(allGoals::get).toList(),
                 () -> cardRelease(projection, masteryMap, prerequisites.planningCredits()));
-        return frontier.stream()
+        List<String> available = frontier.stream()
                 .filter(goalId -> !unavailableRecall.contains(goalId))
                 .toList();
+        return orderByStudyGuidance(available, unitStudyGuidance(learner, projection, projectedFocusIds,
+                scope, followedScope, unitOrientationScopes, completedWork, prerequisites, available));
     }
 
     @Transactional(readOnly = true)
@@ -8033,6 +8041,13 @@ public class LearnerService {
 
     private List<FrontierGoal> getRichFrontier(Learner learner, GoalProjection projection, RichFrontierFacts facts,
             boolean compactFrontier, List<String> prospectiveFocusGoalIds, boolean requiredRecommendations, Set<String> followedScope) {
+        return getRichFrontier(learner, projection, facts, compactFrontier, prospectiveFocusGoalIds,
+                requiredRecommendations, followedScope, false);
+    }
+
+    private List<FrontierGoal> getRichFrontier(Learner learner, GoalProjection projection, RichFrontierFacts facts,
+            boolean compactFrontier, List<String> prospectiveFocusGoalIds, boolean requiredRecommendations,
+            Set<String> followedScope, boolean subjectContinuation) {
         String skillpilotId = learner.getSkillpilotId();
         boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
         Map<String, LearningGoal> allFilteredGoals = projection.visibleGoals();
@@ -8154,6 +8169,11 @@ public class LearnerService {
         frontier = new ArrayList<>(filterVerifiedRecallAvailableMemoryGoals(skillpilotId, frontier,
                 () -> cardRelease(projection, masteryMap, facts.prerequisites().get().planningCredits())));
         frontier = new ArrayList<>(orderFrontierByProjection(frontier, projection));
+        Map<String, StudyGuidance> studyGuidance = requiredRecommendations || prospectiveFocusGoalIds != null
+                ? unitStudyGuidance(learner, projection, subjectContinuation ? List.of() : projectedFocusIds,
+                        scope, followedScope, unitOrientationScopes,
+                        completedWork, prerequisites, frontier.stream().map(FrontierGoal::id).toList()) : Map.of();
+        frontier = applyStudyGuidance(frontier, studyGuidance);
 
         // Compaction Logic: If frontier is too large, prefer atomic goals for
         // actionable next steps.
@@ -8167,9 +8187,10 @@ public class LearnerService {
                         plannedIds,
                         allStructuralGoals);
                 if (!balancedAtomic.isEmpty()) {
-                    return balancedAtomic;
+                    return applyStudyGuidance(retainStudyPreparation(balancedAtomic, atomic, studyGuidance), studyGuidance);
                 }
-                return atomic.subList(0, Math.min(atomic.size(), 20));
+                return applyStudyGuidance(retainStudyPreparation(
+                        atomic.subList(0, Math.min(atomic.size(), 20)), atomic, studyGuidance), studyGuidance);
             }
 
             List<FrontierGoal> clusters = frontier.stream()
@@ -8193,6 +8214,68 @@ public class LearnerService {
         }
 
         return orderFrontierByTargetOrder(frontier, projection.targetGoalIds());
+    }
+
+    private List<FrontierGoal> applyStudyGuidance(List<FrontierGoal> frontier, Map<String, StudyGuidance> guidance) {
+        if (guidance.isEmpty()) return frontier;
+        Map<String, FrontierGoal> available = frontier.stream().collect(Collectors.toMap(
+                FrontierGoal::id, goal -> goal, (first, duplicate) -> first, LinkedHashMap::new));
+        return orderByStudyGuidance(List.copyOf(available.keySet()), guidance).stream().map(id -> {
+            FrontierGoal goal = available.get(id);
+            StudyGuidance item = guidance.get(id);
+            if (item == null) return goal;
+            var preparation = item.recommendedPreparationGoalIds().stream().filter(available::containsKey).toList();
+            return goal.withStudyGuidance(preparation.isEmpty() && !item.voluntary()
+                    ? null : new StudyGuidance(preparation, item.voluntary()));
+        }).toList();
+    }
+
+    /** Keep a reachable teaching step in the displayed choices when compaction retains its assessment. */
+    private static List<FrontierGoal> retainStudyPreparation(List<FrontierGoal> compact, List<FrontierGoal> available,
+            Map<String, StudyGuidance> guidance) {
+        if (guidance.isEmpty()) return compact;
+        var selected = new ArrayList<>(compact);
+        Set<String> selectedIds = compact.stream().map(FrontierGoal::id).collect(Collectors.toSet());
+        Set<String> preparationIds = compact.stream().map(FrontierGoal::id).map(guidance::get).filter(Objects::nonNull)
+                .flatMap(item -> item.recommendedPreparationGoalIds().stream()).collect(Collectors.toSet());
+        for (FrontierGoal goal : compact) {
+            var item = guidance.get(goal.id());
+            if (item == null || item.recommendedPreparationGoalIds().isEmpty()
+                    || item.recommendedPreparationGoalIds().stream().anyMatch(selectedIds::contains)) continue;
+            var preparation = available.stream().filter(choice -> item.recommendedPreparationGoalIds().contains(choice.id()))
+                    .findFirst().orElse(null);
+            if (preparation == null) continue;
+            for (int index = selected.size() - 1; index >= 0; index--) {
+                String id = selected.get(index).id();
+                if (guidance.containsKey(id) || preparationIds.contains(id)) continue;
+                selected.set(index, preparation);
+                selectedIds.remove(id);
+                selectedIds.add(preparation.id());
+                break;
+            }
+        }
+        return selected;
+    }
+
+    private static List<String> orderByStudyGuidance(List<String> frontier, Map<String, StudyGuidance> guidance) {
+        if (guidance.isEmpty()) return frontier;
+        Set<String> available = Set.copyOf(frontier);
+        Set<String> visited = new HashSet<>();
+        Set<String> ordered = new LinkedHashSet<>();
+        for (String id : frontier) addStudyGuidedGoal(id, available, guidance, visited, ordered);
+        return List.copyOf(ordered);
+    }
+
+    private static void addStudyGuidedGoal(String id, Set<String> available, Map<String, StudyGuidance> guidance,
+            Set<String> visited, Set<String> ordered) {
+        if (!visited.add(id)) return;
+        StudyGuidance item = guidance.get(id);
+        if (item != null) {
+            for (String preparation : item.recommendedPreparationGoalIds()) {
+                if (available.contains(preparation)) addStudyGuidedGoal(preparation, available, guidance, visited, ordered);
+            }
+        }
+        ordered.add(id);
     }
 
     private List<FrontierGoal> orderFrontierByTargetOrder(
@@ -8365,6 +8448,58 @@ public class LearnerService {
             }
         }
         return deferred;
+    }
+
+    /** Reorder only eligible choices. When the suggested goal is blocked, prefer a reachable real foundation in focus. */
+    private Map<String, StudyGuidance> unitStudyGuidance(Learner learner, GoalProjection projection,
+            List<String> focusIds, Set<String> scope, Set<String> followedScope, Map<String, Set<String>> unitScopes,
+            Set<String> completedWork, FrontierPrerequisites prerequisites, List<String> frontier) {
+        if (unitScopes.isEmpty() || followedScope != null || completionRouteOwnsNavigation(learner) || frontier.isEmpty()) {
+            return Map.of();
+        }
+        Set<String> available = Set.copyOf(frontier);
+        var preparation = new LinkedHashMap<String, Set<String>>();
+        var voluntary = new LinkedHashSet<String>();
+        for (var binding : unitLearningMaterialService.orientationBindings(projection.compositionViewIds())) {
+            Set<String> unit = unitScopes.get(binding.orientationGoalId());
+            if (unit == null) continue;
+            var material = unitLearningMaterialService.find(binding.landscapeId(), binding.viewId(), binding.compositionNodeId())
+                    .orElse(null);
+            if (scope.contains(binding.orientationGoalId())
+                    && material != null && material.sectionAssessmentPolicy() != null && material.assessmentContract() != null
+                    && material.assessmentContract().appliesTo(binding.viewId())) {
+                for (String id : material.sectionAssessmentPolicy().voluntaryAssessmentsFor(binding.viewId())) {
+                    if (available.contains(id) && unit.contains(id) && releasedSectionAssessment(projection.visibleGoals().get(id))
+                            && !focusIds.contains(id)) {
+                        voluntary.add(id);
+                    }
+                }
+            }
+            for (var recommendation : binding.studyRecommendations()) {
+                String after = recommendation.afterGoalId();
+                String before = recommendation.beforeGoalId();
+                if (!available.contains(after) || !unit.contains(after) || !isAtomicGoal(projection.visibleGoals().get(after))
+                        || !unit.contains(before) || !scope.contains(before) || !projection.targetGoalIds().contains(before)
+                        || !isAtomicGoal(projection.visibleGoals().get(before)) || completedWork.contains(before)
+                        || prerequisites.planningCredits().contains(before)
+                        || Mastery.isMastered(prerequisites.mastery().get(before))) continue;
+                if (available.contains(before)) {
+                    preparation.computeIfAbsent(after, ignored -> new LinkedHashSet<>()).add(before);
+                } else if (prerequisites.topology() != null && prerequisites.lookup().containsKey(before)) {
+                    Set<String> foundations = prerequisites.topology().transitivePrerequisites(before);
+                    for (String candidate : frontier) {
+                        if (foundations.contains(candidate) && !isExamGoal(projection.visibleGoals().get(candidate))
+                                && !completedWork.contains(candidate) && !prerequisites.planningCredits().contains(candidate)) {
+                            preparation.computeIfAbsent(after, ignored -> new LinkedHashSet<>()).add(candidate);
+                        }
+                    }
+                }
+            }
+        }
+        var guidance = new HashMap<String, StudyGuidance>();
+        preparation.forEach((id, goals) -> guidance.put(id, new StudyGuidance(List.copyOf(goals), voluntary.contains(id))));
+        voluntary.forEach(id -> guidance.putIfAbsent(id, new StudyGuidance(List.of(), true)));
+        return guidance;
     }
 
     private boolean isGatedByUnitOpening(String goalId, List<FrontierGoal> openings,
@@ -10241,9 +10376,11 @@ public class LearnerService {
                 var learningScope = LearningPlanScopeResolver.resolve(blocks, asOf,
                         roots -> resolveLearningPlanGoalIds(learner.getSkillpilotId(), plan.getLandscapeId(), roots),
                         getStoredLearningPlanFocus(learner.getSkillpilotId(), plan.getLandscapeId()));
+                Map<String, List<String>> preparation = new HashMap<>();
                 Set<String> eligibleIds = learningScope.goalIds().isEmpty() ? Set.of()
                         : getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), learningScope.goalIds()).stream()
-                                .filter(goal -> "atomic".equals(goal.type()))
+                                .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy())
+                                .peek(goal -> LearnerLearningPlanService.collectStudyPreparation(preparation, goal))
                                 .map(FrontierGoal::id).collect(Collectors.toSet());
                 Optional<LearnerLearningPlanService.DueGoal> selected =
                         LearnerLearningPlanService.firstEligibleDueGoal(
@@ -10256,7 +10393,8 @@ public class LearnerService {
                                         ? requiredUnitOrientationGoalId(learner, projection, goalId,
                                                 "exam".equals(learningScope.kind()) ? learningScope.goalIds() : focusIds)
                                         : null,
-                                goalId -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId));
+                                goalId -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId),
+                                preparation);
                 if (selected.isEmpty()) {
                     continue;
                 }
@@ -10456,16 +10594,27 @@ public class LearnerService {
         if (frontierAtomic == null || frontierAtomic.isEmpty()) {
             return null;
         }
+        List<FrontierGoal> automaticChoices = frontierAtomic.stream()
+                .filter(goal -> !goal.voluntaryStudy()).toList();
         if (isSequentialLearningStrategy(learner)
                 && sequentialAutopilotAnchorGoalId != null
                 && !sequentialAutopilotAnchorGoalId.isBlank()) {
             FrontierGoal localNext = findSequentialLocalFrontierGoal(
                     sequentialAutopilotAnchorGoalId,
                     sequentialAutopilotSearchAtomic == null || sequentialAutopilotSearchAtomic.isEmpty()
-                            ? frontierAtomic
-                            : sequentialAutopilotSearchAtomic,
+                            ? automaticChoices
+                            : sequentialAutopilotSearchAtomic.stream()
+                                    .filter(goal -> !goal.voluntaryStudy()).toList(),
                     structuralGoals);
             if (localNext != null) {
+                if (localNext.studyGuidance() != null && !localNext.studyGuidance().recommendedPreparationGoalIds().isEmpty()) {
+                    List<String> preparation = localNext.studyGuidance().recommendedPreparationGoalIds();
+                    Optional<FrontierGoal> recommended = automaticChoices.stream().filter(goal -> preparation.contains(goal.id()))
+                            .findFirst();
+                    if (recommended.isPresent()) return recommended.get();
+                    return automaticChoices.stream().filter(option -> !localNext.id().equals(option.id()))
+                            .findFirst().orElse(null);
+                }
                 return localNext;
             }
             // A finished program segment is not the end of the learning route. The
@@ -10473,7 +10622,7 @@ public class LearnerService {
             // authored target order, so falling through never leaves the focus and never
             // skips an earlier open goal.
         }
-        return frontierAtomic.get(0);
+        return automaticChoices.isEmpty() ? null : automaticChoices.getFirst();
     }
 
     private boolean isSequentialLearningStrategy(Learner learner) {

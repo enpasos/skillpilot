@@ -1,6 +1,6 @@
 import React from 'react'
 import { ArrowDownRight, Check, Layers3, Link2, Send, Target } from 'lucide-react'
-import { Handle, Position, type Node, type NodeProps } from '@xyflow/react'
+import { Handle, Position, useUpdateNodeInternals, type Node, type NodeProps } from '@xyflow/react'
 import type { LearningEntryProgress, LearningMapEntry } from './types'
 import type { LayoutPort } from './layoutLearningScope'
 import { getEntryKindLabel } from './presentation'
@@ -59,6 +59,11 @@ function entryPresentation(entry: LearningMapEntry, childCount: number, progress
 export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningFlowNode>) {
   const { entry, childCount, outsideCount, ports, active, related, muted, progress, activeLearningGoal,
     goalAction, onSelect, onOpen } = data
+  const updateNodeInternals = useUpdateNodeInternals()
+  React.useLayoutEffect(() => {
+    // A new ELK layout can change the handles while the card dimensions stay fixed.
+    updateNodeInternals(entry.id)
+  }, [entry.id, ports, updateNodeInternals])
   const { english, kindLabel, expandable, total, explicit, implicit, progressLabel, Icon, status, marker, statusLabel, meta,
     preparationLabel, preparationTitle } = entryPresentation(entry, childCount, progress, activeLearningGoal, data.language)
   const source = entry.sourceSections?.map(section => section.title).join(' › ')

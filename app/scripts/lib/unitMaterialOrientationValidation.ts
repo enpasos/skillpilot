@@ -21,7 +21,7 @@ const goalReference = (node: CompositionViewNode): string | undefined =>
   node.kind === 'goalEntry' || node.kind === 'canonicalSubtree' ? node.goalId : undefined
 
 export function hasGuidedUnitIntroduction(version: number | undefined): boolean {
-  return version === 2 || version === 3
+  return version === 2 || version === 3 || version === 4
 }
 
 /** Every guided introduction has one real own opening, first in each bound view. */

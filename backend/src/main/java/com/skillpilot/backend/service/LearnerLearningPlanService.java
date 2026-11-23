@@ -1817,6 +1817,7 @@ public class LearnerLearningPlanService {
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf,
             Map<String, Double> mastery, Set<String> waived) {
+        Map<String, List<String>> preparation = new LinkedHashMap<>();
         return firstEligibleDueGoal(
                 blocks,
                 asOf,
@@ -1826,15 +1827,23 @@ public class LearnerLearningPlanService {
                                 skillpilotId,
                                 focusGoalIds)
                         .stream()
-                        .filter(goal -> "atomic".equals(goal.type()))
+                        .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy())
+                        .peek(goal -> collectStudyPreparation(preparation, goal))
                         .map(FrontierGoal::id)
                         .collect(java.util.stream.Collectors.toSet()),
-                (goalId, focusIds) -> learners.getRequiredUnitOrientationGoalIdForFocus(skillpilotId, goalId, focusIds));
+                (goalId, focusIds) -> learners.getRequiredUnitOrientationGoalIdForFocus(skillpilotId, goalId, focusIds),
+                ignored -> true, preparation);
+    }
+
+    static void collectStudyPreparation(Map<String, List<String>> preparation, FrontierGoal goal) {
+        if (goal.studyGuidance() != null && !goal.studyGuidance().recommendedPreparationGoalIds().isEmpty()) {
+            preparation.putIfAbsent(goal.id(), goal.studyGuidance().recommendedPreparationGoalIds());
+        }
     }
 
     private Optional<DueGoal> firstPersonalCurriculumGoal(String skillpilotId, String landscapeId, Set<String> waived) {
         return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
-                .filter(goal -> "atomic".equals(goal.type()) && !waived.contains(goal.id()))
+                .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy() && !waived.contains(goal.id()))
                 .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
     }
 
@@ -1865,7 +1874,8 @@ public class LearnerLearningPlanService {
             }
             Set<String> inactiveOnly = inactiveOnlyAtomicIds(blocks);
             return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
-                    .filter(goal -> "atomic".equals(goal.type()) && !inactiveOnly.contains(goal.id()) && !waived.contains(goal.id()))
+                    .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy()
+                            && !inactiveOnly.contains(goal.id()) && !waived.contains(goal.id()))
                     .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
         }
         return firstPersonalCurriculumGoal(skillpilotId, landscapeId, waived);
@@ -1991,7 +2001,8 @@ public class LearnerLearningPlanService {
             if (planned.isPresent() || hasActiveUnitAssignment(blocks)) return planned;
             Set<String> inactive = inactiveOnlyAtomicIds(blocks);
             return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
-                    .filter(goal -> "atomic".equals(goal.type()) && !inactive.contains(goal.id()) && !waived.contains(goal.id()))
+                    .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy()
+                            && !inactive.contains(goal.id()) && !waived.contains(goal.id()))
                     .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
         }
         if (scope.goalIds().isEmpty()) return Optional.empty();
@@ -2062,9 +2073,19 @@ public class LearnerLearningPlanService {
             Function<List<String>, Set<String>> frontierIdsForFocus,
             BiFunction<String, List<String>, String> requiredOpeningForFocus,
             Predicate<String> allowedRequestedGoal) {
+        return firstEligibleDueGoal(blocks, asOf, mastery, waived, frontierIdsForFocus, requiredOpeningForFocus,
+                allowedRequestedGoal, Map.of());
+    }
+
+    static Optional<DueGoal> firstEligibleDueGoal(List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf, Map<String, Double> mastery, Set<String> waived,
+            Function<List<String>, Set<String>> frontierIdsForFocus,
+            BiFunction<String, List<String>, String> requiredOpeningForFocus,
+            Predicate<String> allowedRequestedGoal, Map<String, List<String>> studyPreparation) {
         Map<String, LocalDate> dueDates = scheduledAtomicGoalDueDatesForSchedule(blocks);
         LinkedHashSet<String> alreadyDue = new LinkedHashSet<>();
         List<DueGoal> candidates = new ArrayList<>();
+        Map<String, String> blockIds = new LinkedHashMap<>();
         for (DueBlock dueBlock : dueLearningBlocks(blocks, asOf)) {
             LearnerLearningPlanApi.Block block = dueBlock.block();
             List<String> openDueInBlock = dueBlock.atomicGoalIds().stream()
@@ -2074,6 +2095,7 @@ public class LearnerLearningPlanService {
                     .filter(goalId -> mastery.getOrDefault(goalId, 0.0) < MASTERY_THRESHOLD)
                     .toList();
             if (openDueInBlock.isEmpty()) continue;
+            openDueInBlock.forEach(goalId -> blockIds.put(goalId, block.id()));
             if (!block.focusGoalIds().isEmpty()) {
                 Set<String> frontierIds = frontierIdsForFocus.apply(block.focusGoalIds());
                 for (String goalId : openDueInBlock) {
@@ -2092,8 +2114,23 @@ public class LearnerLearningPlanService {
                 }
             }
         }
-        return candidates.stream().min(Comparator.comparing(DueGoal::scheduledDate)
-                .thenComparing(DueGoal::blockEndDate).thenComparing(DueGoal::blockStartDate));
+        Comparator<DueGoal> scheduleOrder = Comparator.comparing(DueGoal::scheduledDate)
+                .thenComparing(DueGoal::blockEndDate).thenComparing(DueGoal::blockStartDate);
+        Optional<DueGoal> first = candidates.stream().min(scheduleOrder);
+        if (first.isEmpty() || studyPreparation.isEmpty()) return first;
+        Set<String> visited = new HashSet<>();
+        DueGoal selected = first.get();
+        while (visited.add(selected.atomicGoalId())) {
+            List<String> preparation = studyPreparation.get(selected.atomicGoalId());
+            if (preparation == null) break;
+            String blockId = blockIds.get(selected.requestedGoalId());
+            Optional<DueGoal> next = candidates.stream().filter(goal -> preparation.contains(goal.atomicGoalId())
+                    && !visited.contains(goal.atomicGoalId()) && Objects.equals(blockId, blockIds.get(goal.requestedGoalId())))
+                    .min(scheduleOrder);
+            if (next.isEmpty()) break;
+            selected = next.get();
+        }
+        return Optional.of(selected);
     }
 
     /** An unscheduled opening may guide an existing obligation; it never joins its fixed plan basis. */

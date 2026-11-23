@@ -1,4 +1,4 @@
-import type { LearningMapFixture } from '../components/learningUnitMap/types'
+import type { LearningMapFixture, UnitStudyRecommendation } from '../components/learningUnitMap/types'
 import type { UiGoal } from '../goalTypes'
 import { projectCompositionChildOrder, readCompositionChildOrder } from './authoring/compositionViewAuthoring'
 
@@ -7,16 +7,65 @@ export interface SiblingRelation {
   target: string
 }
 
+export interface UnitStudyOrder {
+  orientationGoalId?: string
+  guidedStudyOrder?: readonly string[]
+  studyRecommendations?: readonly UnitStudyRecommendation[]
+}
+
+/** Show each pair on the deepest board that has a separate visible branch for each endpoint. */
+export function projectUnitStudyRecommendations(
+  scopeId: string,
+  recommendations: readonly UnitStudyRecommendation[],
+  childrenOf: (id: string) => readonly string[] | undefined,
+): Map<string, UnitStudyRecommendation[]> {
+  const endpoints = new Set(recommendations.flatMap(({ beforeGoalId, afterGoalId }) => [beforeGoalId, afterGoalId]))
+  const paths = new Map<string, string[] | null>()
+  const visit = (id: string, ancestors: string[]) => {
+    if (ancestors.includes(id)) return
+    const path = [...ancestors, id]
+    // An endpoint displayed in multiple branches has no unique visible route.
+    if (endpoints.has(id)) paths.set(id, paths.has(id) ? null : path)
+    for (const child of childrenOf(id) ?? []) visit(child, path)
+  }
+  visit(scopeId, [])
+
+  const boards = new Map<string, UnitStudyRecommendation[]>()
+  for (const { beforeGoalId, afterGoalId } of recommendations) {
+    const before = paths.get(beforeGoalId), after = paths.get(afterGoalId)
+    if (!before || !after) continue
+    let depth = 1
+    while (before[depth] && before[depth] === after[depth]) depth++
+    if (!before[depth] || !after[depth]) continue
+    const board = before[depth - 1]
+    const pairs = boards.get(board) ?? []
+    pairs.push({ beforeGoalId: before[depth], afterGoalId: after[depth] })
+    boards.set(board, pairs)
+  }
+  return boards
+}
+
+export function reachesSibling(successors: ReadonlyMap<string, ReadonlySet<string>>, from: string, to: string): boolean {
+  const pending = [from], visited = new Set<string>()
+  while (pending.length) {
+    const id = pending.pop()!
+    if (id === to) return true
+    if (visited.has(id)) continue
+    visited.add(id)
+    for (const next of successors.get(id) ?? []) pending.push(next)
+  }
+  return false
+}
+
 export function unitStudyRelations(
   children: readonly string[],
-  orientationGoalId: string | undefined,
-  guidedStudyOrder: readonly string[] | undefined,
+  { orientationGoalId, guidedStudyOrder, studyRecommendations }: UnitStudyOrder,
   isStudyStep: (id: string) => boolean,
   relations: readonly (SiblingRelation & { backward?: boolean })[],
-): (SiblingRelation & { kind: 'guidedStudy' | 'unitEntry' })[] {
+): (SiblingRelation & { kind: 'guidedStudy' | 'unitEntry' | 'studyRecommendation' })[] {
   const visible = new Set(children)
   const ordered = (guidedStudyOrder ?? []).filter(id => visible.has(id))
-  const additions: (SiblingRelation & { kind: 'guidedStudy' | 'unitEntry' })[] = []
+  const additions: (SiblingRelation & { kind: 'guidedStudy' | 'unitEntry' | 'studyRecommendation' })[] = []
   for (let index = 1; index < ordered.length; index++) {
     const source = ordered[index - 1], target = ordered[index]
     if (!relations.some(edge => edge.source === source && edge.target === target)) {
@@ -30,6 +79,20 @@ export function unitStudyRelations(
       .filter(edge => !('backward' in edge && edge.backward) && sources.has(edge.source)).map(edge => edge.target))
     for (const target of steps) {
       if (!following.has(target)) additions.push({ source: orientationGoalId, target, kind: 'unitEntry' })
+    }
+  }
+  if (studyRecommendations?.length) {
+    const successors = new Map<string, Set<string>>(children.map(id => [id, new Set()]))
+    for (const { source, target } of [...relations, ...additions]) {
+      if (visible.has(target)) successors.get(source)?.add(target)
+    }
+    // A recommendation has two explicit endpoints. Filtering never connects the
+    // remaining steps to each other, and a recommendation cannot reverse a path.
+    for (const { beforeGoalId: source, afterGoalId: target } of studyRecommendations) {
+      const following = successors.get(source)
+      if (!following || !visible.has(target) || following.has(target) || reachesSibling(successors, target, source)) continue
+      additions.push({ source, target, kind: 'studyRecommendation' })
+      following.add(target)
     }
   }
   return additions

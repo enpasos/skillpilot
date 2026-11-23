@@ -48,7 +48,7 @@ class UnitLearningMaterialServiceTest {
         mapper.writeValue(introFile.toFile(), versioned);
         assertThat(UnitLearningMaterialService.fromRepository(repository, mapper).find("computing", "lecture", "algorithms"))
                 .contains(lecture);
-        versioned.put("schemaVersion", 4);
+        versioned.put("schemaVersion", 5);
         mapper.writeValue(introFile.toFile(), versioned);
         assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper))
                 .isInstanceOf(IOException.class).hasMessageContaining("Unsupported unit learning material version");
@@ -142,6 +142,37 @@ class UnitLearningMaterialServiceTest {
             mapper.writeValue(file.toFile(), source);
             assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper)).hasMessageContaining("guidedStudyOrder");
         }
+    }
+
+    @Test
+    void studyRecommendationsBindTwoIndependentChoicesInTheSelectedViews(@TempDir Path repository) throws IOException {
+        var mapper = new ObjectMapper();
+        var example = Path.of("../curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json");
+        var source = (ObjectNode) mapper.readTree(example.toFile());
+        Files.writeString(repository.resolve("unit-learning-materials.json"),
+                "{\"schemaVersion\":1,\"materials\":[\"unit.json\"]}");
+        var material = repository.resolve("unit.json");
+        mapper.writeValue(material.toFile(), source);
+        var service = UnitLearningMaterialService.fromRepository(repository, mapper);
+        var pairs = service.orientationBindings(List.of("merged:de-he-gym-physics-gk-g8+de-he-gym-physics-lk-g8"))
+                .getFirst().studyRecommendations();
+        assertThat(pairs).hasSize(2);
+        assertThat(pairs).extracting(UnitLearningMaterialService.StudyRecommendation::beforeGoalId)
+                .containsOnly("89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2");
+        assertThat(pairs).extracting(UnitLearningMaterialService.StudyRecommendation::afterGoalId).containsExactlyInAnyOrder(
+                "39f52dcb-ff1d-5cad-9ccb-30da803cfa85", "6ea3fb3c-abdc-568f-ab13-97c36dc274e4");
+        assertThat(service.orientationBindings(List.of("merged:de-he-gym-physics-gk-g8+unrelated"))).isEmpty();
+
+        source.put("schemaVersion", 3);
+        mapper.writeValue(material.toFile(), source);
+        assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper))
+                .hasMessageContaining("version 4 studyRecommendations");
+        source.put("schemaVersion", 4);
+        ((ObjectNode) source.required("studyRecommendations").get(0))
+                .put("afterGoalId", pairs.getFirst().beforeGoalId());
+        mapper.writeValue(material.toFile(), source);
+        assertThatThrownBy(() -> UnitLearningMaterialService.fromRepository(repository, mapper))
+                .hasMessageContaining("Invalid or repeated studyRecommendations pair");
     }
 
     @Test
