@@ -189,6 +189,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         jdbcOperations.update("DELETE FROM openai_native_refresh_family");
         // Each provider-profile invocation starts with the same due Recall deck.
         jdbcOperations.update("DELETE FROM learner_client_state WHERE skillpilot_id = ?", PERMANENT_SKILLPILOT_ID);
+        jdbcOperations.update("DELETE FROM learner_card_state WHERE skillpilot_id = ?", PERMANENT_SKILLPILOT_ID);
         jdbcOperations.update("DELETE FROM oauth2_authorization_consent");
         jdbcOperations.update("DELETE FROM oauth2_authorization");
         pendingLaunchRepository.deleteAllInBatch();

@@ -2814,12 +2814,17 @@ public class LearnerService {
             CardContext context = resolveCardContext(learner, projection, language);
             if (context != null && practiceScopeId.equals(context.section().nodeId())) {
                 List<SrsCard> cards = context.cardsByDeckGoal().get(goalId);
-                if (cards != null && !cards.isEmpty()
-                        && requiredUnitOrientationGoalId(learner, projection, context.section().syntheticGoalId()) == null) {
-                    String sectionTitle = coachSectionTitle(context.section(), projection, language);
-                    String title = (isEnglish(language) ? "Flashcards · " : "Lernkarten · ") + sectionTitle;
-                    return new MemoryPracticeContext(projection.visibleGoals().get(goalId), title, cards,
-                            cardRelease(learner, projection), readableCardStates(skillpilotId, goalId));
+                if (cards != null && !cards.isEmpty()) {
+                    // One mastery and credit read serves the orientation gate and the release rule.
+                    Map<String, Double> mastery = ordinaryGoalMastery(learner);
+                    Set<String> credits = unitEntryPlanningCredits(learner, projection);
+                    if (requiredUnitOrientationGoalId(learner, projection, context.section().syntheticGoalId(),
+                            null, mastery, credits) == null) {
+                        String sectionTitle = coachSectionTitle(context.section(), projection, language);
+                        String title = (isEnglish(language) ? "Flashcards · " : "Lernkarten · ") + sectionTitle;
+                        return new MemoryPracticeContext(projection.visibleGoals().get(goalId), title, cards,
+                                cardRelease(projection, mastery, credits), readableCardStates(skillpilotId, goalId));
+                    }
                 }
             }
         }
