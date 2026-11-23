@@ -71,7 +71,7 @@ Im normalen Einzelzielplan führt der Coach durch die experimentellen Lernziele.
 - **Fallhöhe und Fallzeit in einem Messprotokoll festhalten.** Beim ersten Versuch ordnet die Person Höhen und Zeiten einem gemeinsamen Bezugsereignis zu, benennt Datenquelle und Zeitbasis und führt ein nachvollziehbares Protokoll. Dazu eignet sich der eigene Versuch oder die mitgelieferte Messreihe.
 - **Freier Fall experimentell untersuchen.** Bei „Welche Fallbeschleunigung ergibt der Versuch?“ eine sichere eigene Videoaufnahme oder die fünf mitgelieferten Höhen und Zeiten aus einem dokumentierten Versuch in Prag auswerten. Zu den Ergebnissen gehören ein Diagramm, eine eigene Bestimmung von *g*, eine Vorhersage für einen zurückgehaltenen Messpunkt und der Vergleich unter Berücksichtigung von Auflösung und Modellgrenzen. Die Person kann ihre Auswertung vollständig im Chat vorlegen.
 
-Der Coach beurteilt die vorgelegte Einzelleistung. Bei bereitgestellten Daten bleibt die Herkunft erkennbar. Die Prüfungsteile A–D bleiben von der Wahl des Versuchswegs und vom Öffnen der Materialien unberührt. [Fachreview zu den Messdaten und beiden Auswertungswegen](../../curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-free-fall-2026-11-23/fachreview.md)
+Der Coach beurteilt die vorgelegte Einzelleistung. Bei bereitgestellten Daten bleibt die Herkunft erkennbar. Die Prüfungsteile A–D bleiben von der Wahl des Versuchswegs und vom Öffnen der Materialien unberührt. [Fachreview zu den Messdaten und beiden Auswertungswegen](https://github.com/enpasos/skillpilot/blob/10f9d21bac0fc925960d28f28269f313c84076dc/curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-free-fall-2026-11-23/fachreview.md)
 
 ## Bestehensbelege, Lernplan und Lernfront vergleichen
 
