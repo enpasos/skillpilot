@@ -150,6 +150,16 @@ public class ClaudeV1McpContractAdapter {
                     + "image. If no next action exists, acknowledge the end without implying another task. "
                     + "Do not display feedback field names, completion markers, state revisions or other "
                     + "technical metadata.";
+    /** Issue #85: a unit card check returns to the learner's current goal instead of handing off. */
+    static final String UNIT_CHECK_CONTINUATION_INSTRUCTION =
+            "This was a unit card check, not the completion of a learning goal. The learner already received "
+                    + "feedback and agreed to close this batch before the write. If next.status is ready and the "
+                    + "learner wants to continue the check, present all of its cards; otherwise end the check. Then "
+                    + "return to the learner's current goal or next step in the returned context, which is the "
+                    + "authoritative backend state; do not reload it. Say the memory goal is mastered only when "
+                    + "masterySaved is true. If the learner asked to pause, acknowledge the pause without new content. "
+                    + "Do not display feedback field names, completion markers, state revisions or other "
+                    + "technical metadata.";
     static final String ORIENTATION_MASTERY_CONTINUATION_INSTRUCTION =
             "Apply this instruction silently. Use the returned context as the authoritative canonical backend "
                     + "state; do not reload it. If that context contains goalVisualization, follow its "
@@ -934,7 +944,9 @@ public class ClaudeV1McpContractAdapter {
                 ClaudeV1Contract.TOOL_START_VERIFIED_RECALL,
                 "Start Verified Recall",
                 "Starts a verified recall batch for the learner's active memory goal. The server chooses the goal "
-                        + "and the complete batch size. Returns the prompt cards and a batchCapability. Reads only.",
+                        + "and the complete batch size. Without an active memory goal it starts the unit card check "
+                        + "published as cardStep.checkAction; the server then also chooses the unit and its cards. "
+                        + "Returns the prompt cards and a batchCapability. Reads only.",
                 objectSchema(List.of(), Map.of(ARG_LANGUAGE, languageSchema())),
                 true,
                 this::startVerifiedRecall));
@@ -1626,7 +1638,9 @@ public class ClaudeV1McpContractAdapter {
             UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
             FrontierGoal active = state == null ? null : state.activeGoal();
             if (!isMemoryGoal(active)) {
-                throw new ToolConflictException("Verified Recall requires the active goal to be a memory goal.");
+                // Issue #85: outside an active memory goal the server starts the unit check of the
+                // learner's current card context; it chooses the deck goal, the unit and the batch.
+                return startUnitCheck(connectionId, ctx.skillpilotId(), ctx.stateVersion(), language);
             }
             // The server picks both the goal and the complete batch size; neither is taken from
             // the model. This is the facade variant without a caller-chosen batch size.
@@ -1642,26 +1656,60 @@ public class ClaudeV1McpContractAdapter {
         }).value();
     }
 
+    private Map<String, Object> startUnitCheck(String connectionId, String skillpilotId, long stateVersion,
+            String language) {
+        com.skillpilot.backend.service.srs.UnitCheckStart unit;
+        try {
+            unit = coachToolFacade.startVerifiedRecallUnitCheck(skillpilotId, language);
+        } catch (ResponseStatusException e) {
+            if (e.getStatusCode().value() != 409) throw e;
+            unit = null;
+        }
+        if (unit == null || unit.prompt() == null) {
+            throw new ToolConflictException(
+                    "Verified Recall requires an active memory goal or a unit card check published by cardStep.");
+        }
+        return projectRecallPrompt(connectionId, skillpilotId, unit.goalId(), stateVersion, language,
+                unit.prompt(), unit.practiceScopeId());
+    }
+
+    /**
+     * Verifies a recall capability. The check of the active memory goal needs that goal to stay
+     * active; a unit check (issue #85) is bound to its deck goal and unit by the capability alone,
+     * so it neither needs nor changes the learner's active goal.
+     */
+    private ClaudeV1CapabilityService.RecallBatchClaim verifyRecallClaim(String capability, String connectionId,
+            String skillpilotId, long stateVersion, boolean grading) {
+        ClaudeV1CapabilityService.RecallBatchClaim claim = grading
+                ? capabilityService.verifyRecallGradingCapability(capability, connectionId, null, stateVersion)
+                : capabilityService.verifyRecallBatchCapability(capability, connectionId, null, stateVersion);
+        if (claim.practiceScopeId() != null) return claim;
+        UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(skillpilotId);
+        FrontierGoal active = state == null ? null : state.activeGoal();
+        if (!isMemoryGoal(active)) {
+            throw new ToolConflictException("The active goal is no longer the recall goal.");
+        }
+        return grading
+                ? capabilityService.verifyRecallGradingCapability(capability, connectionId, active.id(), stateVersion)
+                : capabilityService.verifyRecallBatchCapability(capability, connectionId, active.id(), stateVersion);
+    }
+
     private Map<String, Object> getVerifiedRecallAnswers(String connectionId, Map<String, Object> arguments) {
         String batchCapability = requiredString(arguments, ARG_BATCH_CAPABILITY);
         String language = language(arguments);
 
         return sessionCoordinator.read(connectionId, ctx -> {
-            UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
-            FrontierGoal active = state == null ? null : state.activeGoal();
-            if (!isMemoryGoal(active)) {
-                throw new ToolConflictException("The active goal is no longer the recall goal.");
-            }
-            ClaudeV1CapabilityService.RecallBatchClaim claim = capabilityService.verifyRecallBatchCapability(
-                    batchCapability, connectionId, active.id(), ctx.stateVersion());
-            VerifiedRecallBatchAnswerResponse answers = coachToolFacade.getVerifiedRecallAnswersBatch(
-                    ctx.skillpilotId(),
-                    language,
-                    new VerifiedRecallBatchAnswerRequest(
-                            claim.goalId(),
-                            claim.configuredBatchSize(),
-                            claim.cardIds(),
-                            claim.issuedAt()));
+            ClaudeV1CapabilityService.RecallBatchClaim claim = verifyRecallClaim(
+                    batchCapability, connectionId, ctx.skillpilotId(), ctx.stateVersion(), false);
+            VerifiedRecallBatchAnswerRequest answerRequest = new VerifiedRecallBatchAnswerRequest(
+                    claim.goalId(),
+                    claim.configuredBatchSize(),
+                    claim.cardIds(),
+                    claim.issuedAt());
+            VerifiedRecallBatchAnswerResponse answers = claim.practiceScopeId() == null
+                    ? coachToolFacade.getVerifiedRecallAnswersBatch(ctx.skillpilotId(), language, answerRequest)
+                    : coachToolFacade.getVerifiedRecallAnswersBatch(
+                            ctx.skillpilotId(), language, answerRequest, claim.practiceScopeId());
             validateRecallAnswers(answers, claim);
 
             Map<String, Object> response = projectRecallAnswers(language, answers);
@@ -1673,7 +1721,8 @@ public class ClaudeV1McpContractAdapter {
                     claim.cardIds(),
                     claim.configuredBatchSize(),
                     ctx.stateVersion(),
-                    claim.issuedAt()));
+                    claim.issuedAt(),
+                    claim.practiceScopeId()));
             return response;
         }).value();
     }
@@ -2221,27 +2270,21 @@ public class ClaudeV1McpContractAdapter {
                 expectedStateVersion,
                 arguments,
                 ctx -> {
-                    UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
-                    FrontierGoal active = state == null ? null : state.activeGoal();
-                    if (!isMemoryGoal(active)) {
-                        throw new ToolConflictException("The active goal is no longer the recall goal.");
-                    }
-                    ClaudeV1CapabilityService.RecallBatchClaim claim =
-                            capabilityService.verifyRecallGradingCapability(
-                                    gradingCapability,
-                                    connectionId,
-                                    active.id(),
-                                    ctx.stateVersion());
+                    ClaudeV1CapabilityService.RecallBatchClaim claim = verifyRecallClaim(
+                            gradingCapability, connectionId, ctx.skillpilotId(), ctx.stateVersion(), true);
                     requireRecallResultCardOrder(results, claim.cardIds());
-                    VerifiedRecallBatchResultResponse batch = coachToolFacade.recordVerifiedRecallResultsBatch(
-                            ctx.skillpilotId(),
-                            language,
-                            new VerifiedRecallBatchResultRequest(
-                                    claim.goalId(),
-                                    claim.configuredBatchSize(),
-                                    claim.cardIds(),
-                                    claim.issuedAt(),
-                                    results));
+                    VerifiedRecallBatchResultRequest resultRequest = new VerifiedRecallBatchResultRequest(
+                            claim.goalId(),
+                            claim.configuredBatchSize(),
+                            claim.cardIds(),
+                            claim.issuedAt(),
+                            results);
+                    boolean unitCheck = claim.practiceScopeId() != null;
+                    VerifiedRecallBatchResultResponse batch = unitCheck
+                            ? coachToolFacade.recordVerifiedRecallResultsBatch(
+                                    ctx.skillpilotId(), language, resultRequest, claim.practiceScopeId())
+                            : coachToolFacade.recordVerifiedRecallResultsBatch(
+                                    ctx.skillpilotId(), language, resultRequest);
                     if (batch == null) {
                         throw new IllegalStateException("The canonical recall operation returned no result.");
                     }
@@ -2257,7 +2300,8 @@ public class ClaudeV1McpContractAdapter {
                             claim.goalId(),
                             successorStateVersion,
                             language,
-                            batch.next()));
+                            batch.next(),
+                            claim.practiceScopeId()));
                     if (batch.masterySaved()) {
                         if (!claim.goalId().equals(batch.masteryGoalId())
                                 || batch.pendingCards() != 0
@@ -2277,8 +2321,21 @@ public class ClaudeV1McpContractAdapter {
                                     "The recall successor context has an inconsistent state revision.");
                         }
                         summary.put("context", context);
-                        summary.put("presentationInstruction", VERIFIED_RECALL_MASTERY_CONTINUATION_INSTRUCTION
+                        summary.put("presentationInstruction", (unitCheck
+                                ? UNIT_CHECK_CONTINUATION_INSTRUCTION : VERIFIED_RECALL_MASTERY_CONTINUATION_INSTRUCTION)
                                 + " Do not request recall answers or record another mastery update.");
+                    } else if (unitCheck) {
+                        // A unit check returns to the learner's current goal; its successor is the fresh context.
+                        Map<String, Object> context = contextProjector.projectContext(
+                                ctx.skillpilotId(),
+                                successorStateVersion,
+                                ctx.communicationLocale());
+                        if (!Objects.equals(context.get("stateVersion"), successorStateVersion)) {
+                            throw new IllegalStateException(
+                                    "The unit check successor context has an inconsistent state revision.");
+                        }
+                        summary.put("context", context);
+                        summary.put("presentationInstruction", UNIT_CHECK_CONTINUATION_INSTRUCTION);
                     }
                     return summary;
                 });
@@ -2381,6 +2438,19 @@ public class ClaudeV1McpContractAdapter {
             long stateVersion,
             String language,
             VerifiedRecallPromptResponse prompt) {
+        return projectRecallPrompt(connectionId, expectedSkillpilotId, expectedGoalId, stateVersion, language,
+                prompt, null);
+    }
+
+    /** Projects a recall prompt; a non-null {@code practiceScopeId} binds its next batch to that unit check. */
+    Map<String, Object> projectRecallPrompt(
+            String connectionId,
+            String expectedSkillpilotId,
+            String expectedGoalId,
+            long stateVersion,
+            String language,
+            VerifiedRecallPromptResponse prompt,
+            String practiceScopeId) {
         if (prompt == null
                 || !expectedSkillpilotId.equals(prompt.skillpilotId())
                 || !expectedGoalId.equals(prompt.goalId())
@@ -2419,7 +2489,8 @@ public class ClaudeV1McpContractAdapter {
                 language,
                 prompt.status(),
                 cards.size(),
-                prompt.pendingCards()));
+                prompt.pendingCards(),
+                prompt.nextEligibleAt() != null && !prompt.nextEligibleAt().isBlank()));
         response.put("goalTitle", prompt.goalTitle());
         response.put("totalCards", prompt.totalCards());
         response.put("verifiedCards", prompt.verifiedCards());
@@ -2438,7 +2509,8 @@ public class ClaudeV1McpContractAdapter {
                     cards.stream().map(VerifiedRecallPromptCard::cardId).toList(),
                     prompt.configuredBatchSize(),
                     stateVersion,
-                    prompt.issuedAt()));
+                    prompt.issuedAt(),
+                    practiceScopeId));
         }
         return response;
     }
@@ -2462,7 +2534,8 @@ public class ClaudeV1McpContractAdapter {
             String language,
             String status,
             int batchSize,
-            int pendingCards) {
+            int pendingCards,
+            boolean sameDayBlocked) {
         boolean german = LANGUAGE_DE.equals(language);
         if (!german && !LANGUAGE_EN.equals(language)) {
             throw new ToolInputException("language must be either de or en.");
@@ -2473,11 +2546,29 @@ public class ClaudeV1McpContractAdapter {
                             + "die vollständigen Antworten der lernenden Person, bevor du die Lösungen anforderst."
                     : "Present all " + batchSize + " returned cards in order and wait for the learner's complete "
                             + "answers before requesting the answer key.";
-            case "waiting" -> german
-                    ? "Derzeit ist keine Karte verfügbar. Es bleiben " + pendingCards
-                            + " Karten offen; warte bis zum veröffentlichten nächsten Zeitpunkt und erfinde keine Ersatzkarten."
-                    : "No card is available now. " + pendingCards
-                            + " cards remain pending; wait until the published next time and do not invent replacement cards.";
+            // "waiting" also means that every released card of the scope is verified; only a same-day
+            // block carries nextEligibleAt. In both cases the memory goal stays open.
+            case "waiting" -> sameDayBlocked
+                    ? (german
+                            ? "Derzeit ist keine Karte verfügbar. Es bleiben " + pendingCards
+                                    + " Karten offen; heute geprüfte Karten sind erst ab dem veröffentlichten nächsten "
+                                    + "Zeitpunkt wieder verfügbar. Erfinde keine Ersatzkarten. Das Lernkartenziel bleibt "
+                                    + "offen; melde es nicht als abgeschlossen."
+                            : "No card is available now. " + pendingCards
+                                    + " cards remain pending; cards tested today become available again at the published "
+                                    + "next time. Do not invent replacement cards. The memory goal stays open; do not "
+                                    + "report it as completed.")
+                    : (german
+                            ? "Alle derzeit freigegebenen Karten dieser Prüfung sind geprüft. Es bleiben " + pendingCards
+                                    + " Karten offen; sie werden erst verfügbar, wenn ihre Lernziele bestanden sind, oder "
+                                    + "gehören nicht zu dieser Einheit. Es gibt keinen Termin; kündige keine Fortsetzung "
+                                    + "für morgen an und erfinde keine Ersatzkarten. Das Lernkartenziel bleibt offen; "
+                                    + "melde es nicht als abgeschlossen."
+                            : "Every currently released card of this check is verified. " + pendingCards
+                                    + " cards remain pending; they become available only once their learning goals are "
+                                    + "passed, or they lie outside this unit. There is no scheduled time; do not announce "
+                                    + "a continuation tomorrow and do not invent replacement cards. The memory goal stays "
+                                    + "open; do not report it as completed.");
             case "complete" -> german
                     ? "Verified Recall für dieses Lernziel ist abgeschlossen. Fordere keine Lösungen an und speichere "
                             + "keine separate Zielbeherrschung."

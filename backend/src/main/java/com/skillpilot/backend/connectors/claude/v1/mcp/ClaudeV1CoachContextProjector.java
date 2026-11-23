@@ -18,6 +18,7 @@ import com.skillpilot.backend.connectors.claude.v1.ClaudeV1Contract;
 import com.skillpilot.backend.connectors.claude.v1.ConditionalOnClaudeV1Enabled;
 import com.skillpilot.backend.content.ContentMaterialResolver;
 import com.skillpilot.backend.landscape.LandscapeSummary;
+import com.skillpilot.backend.service.srs.SrsCardStepFacts;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
@@ -222,6 +223,10 @@ public class ClaudeV1CoachContextProjector {
             if (activeContext != null) context.put(focusedUnitOnly ? "focusedUnitContext" : "activeGoalContext", activeContext);
         }
 
+        // Issue #85: the server-owned card step of the learner's current card context.
+        context.put("cardStep", projectCardStep(unsupportedCompletion || completionRoute ? null
+                : cardStepFacts(skillpilotId, language), stateVersion));
+
         List<ContentMaterialResolver.ResolvedMaterial> additionalMaterials =
                 coachToolFacade.getAdditionalLearningMaterials(skillpilotId, activeGoal, language);
         if (additionalMaterials != null && !additionalMaterials.isEmpty()) {
@@ -319,6 +324,87 @@ public class ClaudeV1CoachContextProjector {
             if (!activities.isEmpty()) result.put("activities", activities);
         }
         return result;
+    }
+
+    static final String CARD_STEP_PRIORITY =
+            "Status-only questions, pauses, explicit subject or goal requests, feedback or questions still owed "
+                    + "for completed work and a completion route that owns navigation keep their priority. "
+                    + "Never show, answer or rate card content in the chat.";
+    static final String CARD_STEP_MOMENT =
+            "Card step, at most once for each offerKey in this conversation: when teaching is about to start or "
+                    + "continue (a normal learning start, a resume, or the learner's request to continue after a "
+                    + "completed goal), ";
+
+    /** The card step is supplementary: a card-state failure offers no step instead of failing the context. */
+    private SrsCardStepFacts cardStepFacts(String skillpilotId, String language) {
+        try {
+            return coachToolFacade.getCardStepFacts(skillpilotId, language);
+        } catch (com.skillpilot.backend.service.srs.SrsStateUnavailableException unavailable) {
+            return SrsCardStepFacts.none();
+        }
+    }
+
+    /**
+     * Projects the server-owned card step (issue #85): counts and published actions only, never card
+     * text, plus one imperative instruction chosen by the server. Autopilot decides only who chooses:
+     * with it on, the coach opens the cards directly; with it off, the cards are the first option.
+     */
+    Map<String, Object> projectCardStep(SrsCardStepFacts facts, long stateVersion) {
+        SrsCardStepFacts step = facts == null ? SrsCardStepFacts.none() : facts;
+        boolean practice = step.practiceGoalId() != null && step.practiceScopeId() != null;
+        boolean check = step.checkGoalId() != null && step.practiceScopeId() != null;
+        boolean propose = check && step.recallProposalReady();
+        Map<String, Object> projected = new LinkedHashMap<>();
+        projected.put("dueCards", step.dueCards());
+        projected.put("boxCards", step.boxCards());
+        projected.put("proposeCheck", propose);
+        if (step.offerKey() != null && (practice || propose)) projected.put("offerKey", step.offerKey());
+        if (practice) {
+            Map<String, Object> arguments = new LinkedHashMap<>();
+            arguments.put("goalId", step.practiceGoalId());
+            arguments.put("practiceScopeId", step.practiceScopeId());
+            arguments.put("expectedStateVersion", stateVersion);
+            projected.put("practiceAction", Map.of("tool", ClaudeV1Contract.TOOL_START_MEMORY_PRACTICE,
+                    "arguments", arguments));
+        }
+        if (check) {
+            // The server derives the deck goal, the unit and the cards; the call names none of them.
+            projected.put("checkAction", Map.of("tool", ClaudeV1Contract.TOOL_START_VERIFIED_RECALL,
+                    "arguments", Map.of()));
+        }
+        projected.put("instruction", cardStepInstruction(practice, check, propose, step.backendChooses()));
+        return projected;
+    }
+
+    private static String cardStepInstruction(boolean practice, boolean check, boolean propose, boolean backendChooses) {
+        String onRequest = check && !propose
+                ? " If the learner explicitly asks to check this unit's flashcards, call checkAction and follow the "
+                        + "Verified Recall workflow; do not propose the check yourself yet."
+                : "";
+        String proposal = " The learner knew every card of this unit on at least two days: also propose the unit "
+                + "card check and call checkAction only after the learner agrees, then follow the Verified Recall "
+                + "workflow.";
+        if (practice && backendChooses) {
+            return CARD_STEP_MOMENT + "call practiceAction first, before the next goal's content or image, copying "
+                    + "its arguments unchanged and adding only the current learningSessionId. Say only that dueCards "
+                    + "flashcards of this unit are due, then let the learner practise in the card component. When the "
+                    + "learner returns, continue with the active goal or next step of the context." + (propose ? proposal : "")
+                    + onRequest + " " + CARD_STEP_PRIORITY;
+        }
+        if (practice) {
+            return CARD_STEP_MOMENT + "offer the flashcards as the first option, before the next goals: say only that "
+                    + "dueCards flashcards of this unit are due. Call practiceAction, copying its arguments unchanged and "
+                    + "adding only the current learningSessionId, only after the learner chooses the cards; otherwise "
+                    + "follow the learner's choice. When the learner returns from the cards, continue with the active "
+                    + "goal or next step of the context." + (propose ? proposal : "") + onRequest + " " + CARD_STEP_PRIORITY;
+        }
+        if (propose) {
+            return CARD_STEP_MOMENT + "first propose the unit card check: the learner knew every card of this unit on "
+                    + "at least two days and none is due. Call checkAction only after the learner agrees and follow the "
+                    + "Verified Recall workflow; otherwise continue with the active goal or next step of the context. "
+                    + CARD_STEP_PRIORITY;
+        }
+        return "No flashcards are due in the current learning context: continue without a card step." + onRequest;
     }
 
     private List<Map<String, Object>> projectDirectPrerequisites(List<ActiveGoalContext.Prerequisite> prerequisites,
