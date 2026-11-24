@@ -1,0 +1,236 @@
+{
+  "atomicityReviews": [
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "semanticAtomic": true,
+      "reason": "Both languages describe one experimental representation competence: acquire position-time data, plot them and interpret the same motion. Measurement resolution qualifies the reliability of that performance rather than adding a separate competence.",
+      "independentlyAssessableFacets": [
+        "Measure and graph a one-dimensional motion, interpreting rest, direction and relative speed within measurement resolution."
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "semanticAtomic": true,
+      "reason": "Both descriptions coordinate forward and reverse uses of the same relation: interval displacement equals average interval velocity times elapsed time. Computing velocities, representing them and recovering signed displacement are coherent. For interval averages, exact area recovery requires representing each average over its source interval.",
+      "independentlyAssessableFacets": [
+        "Translate between position-time data, interval velocities and signed displacement represented by velocity-time area."
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "semanticAtomic": true,
+      "reason": "Constant acceleration organizes all three representations: constant acceleration, linearly changing velocity and position with changing slope. Both languages require coordinated descriptions of this single model, rather than unrelated graphing competencies.",
+      "independentlyAssessableFacets": [
+        "Explain constant-acceleration motion through mutually consistent position, velocity and acceleration graphs."
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "semanticAtomic": true,
+      "reason": "Extracting related position and velocity laws from graphs and using them for predictions forms one modelling competence in both languages. Uniform motion is the zero-acceleration case of the same constant-acceleration family.",
+      "independentlyAssessableFacets": [
+        "Derive and relate motion laws from graphs and use their parameters and initial values to predict position and velocity."
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "semanticAtomic": true,
+      "reason": "Investigation, graphical data analysis, inference of gravitational acceleration and formulation of the position law constitute one experimental inference chain. Both languages distinguish measured data from the parameter inferred using the near-surface model without air resistance.",
+      "independentlyAssessableFacets": [
+        "Infer gravitational acceleration and a position-time law with stated initial conditions from a free-fall investigation."
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "semanticAtomic": true,
+      "reason": "The air/vacuum comparison and explanation through air resistance form one causal comparison in both languages. Equal vacuum velocities presuppose matched initial conditions; the feather/ball example does not establish a universal rule that lighter objects fall more slowly in air.",
+      "independentlyAssessableFacets": [
+        "Explain contrasting fall behaviour in air and vacuum by distinguishing drag effects from ideal gravitational falling."
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "semanticAtomic": true,
+      "reason": "Justifying omitted features and identifying when their omission undermines predictions are complementary parts of one model-validity judgment. Point-particle and frictionless descriptions are examples of this common competence in both languages.",
+      "independentlyAssessableFacets": [
+        "Justify motion-model idealizations by relating neglected effects to the intended prediction and its limits."
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "semanticAtomic": true,
+      "reason": "The experiment, coordinate-motion interpretation and trajectory representation concern one horizontal-projectile model. Both languages connect uniform horizontal motion and uniformly accelerated vertical motion under negligible drag and constant gravitational acceleration.",
+      "independentlyAssessableFacets": [
+        "Investigate horizontal projection and explain its trajectory through simultaneous horizontal and vertical motions."
+      ],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "semanticAtomic": true,
+      "reason": "Combining orthogonal components and determining magnitude and direction together specify one velocity vector. The impact angle is an application of its direction, not an additional independent competence. The bilingual descriptions agree.",
+      "independentlyAssessableFacets": [
+        "Determine a projectile's velocity vector from its horizontal and vertical components."
+      ],
+      "suggestedSplit": []
+    }
+  ],
+  "prerequisiteReviews": [
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "decision": "accept_current",
+      "reason": "The direct requirements provide qualitative motion-graph interpretation and plotting in scaled Cartesian coordinates. Their recursive context includes reading axes, scales and units. Prior graph interpretation supports the new measurement-to-graph performance without already requiring experimental acquisition or consideration of resolution. Full uncertainty analysis need not precede this elementary investigation.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "decision": "accept_current",
+      "reason": "Uniform-motion competence supplies velocity meaning; measured changes per time interval explicitly supplies signed differences, positive elapsed time, quotient units and the interval/instant distinction; elementary area competence supplies area reasoning. Recursive preparation includes motion measurement, linear-function slope, arithmetic and units. Together these support signed interval-velocity rectangles and displacement recovery without calculus.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "decision": "accept_current",
+      "reason": "The four direct requirements supply average versus instantaneous velocity, function-value calculation, triangle/trapezoid areas and displacement as velocity-graph area. Their recursive context supplies signed rates, plotting and linear functions. This supports constructing position behaviour from a linear velocity graph without assuming prior mastery of constant acceleration. A less mathematical introductory route is possible but does not invalidate this preparation.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "decision": "accept_current",
+      "reason": "The constant-acceleration goal supplies coordinated graphical relationships, while interpreting variable expressions supplies symbolic meaning. Recursive preparation includes linear slopes, signed velocity areas, geometric areas, powers and function evaluation. These support deriving and using the related laws. Knowing the graphical model does not already require extracting and predicting with both symbolic laws.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "decision": "accept_current",
+      "reason": "Motion laws provide the constant-acceleration relationships needed to infer g and formulate the position law. Stating measurement uncertainties supplies experimental qualification, with random/systematic deviations and position-time measurement present recursively. This is an adequate empirical kinematics path; Newton's force law or universal gravitation is not necessary before measuring near-surface free-fall acceleration.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "decision": "accept_current",
+      "reason": "Experimental free fall supplies the ideal constant-g reference, explicit initial conditions and experience separating measurements from model predictions. Its recursive context includes motion laws and uncertainty. Comparing that reference with air-affected falls is a justified experiment-first progression. The authored qualitative comparison does not require quantitative drag laws, terminal-velocity analysis or a prior Newtonian derivation.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "decision": "accept_current",
+      "reason": "The direct air/vacuum fall comparison supplies a concrete example of an omitted interaction changing agreement with an ideal prediction. Its ancestry supplies experimental uncertainty and quantitative motion models. This genuinely prepares generalization to idealizations and their limits. Point-particle applicability belongs to the target learning; requiring prior comprehensive idealization judgment would embed the target itself.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "decision": "accept_current",
+      "reason": "The direct free-fall requirement supplies vertical motion and experimental analysis. Its recursive context already supplies uniform motion, position/velocity laws, coordinate plotting and measurement uncertainty. These prepare investigation of simultaneous coordinate motions and their trajectory. Prior relative-frame velocity composition is unnecessary for this descriptive superposition; the independence interpretation is taught within the target.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "decision": "accept_current",
+      "reason": "Horizontal-projectile analysis supplies the coordinate motions. Reference frames and velocity superposition supplies prior velocity-vector composition, with vector addition and Pythagoras inherited recursively. Components within one frame differ physically from relative velocities between frames, but the vector algebra transfers legitimately. This broader didactic precursor need not be replaced by a minimal mathematics-only route. Direction can be determined geometrically, so inverse trigonometry is not compulsory.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "decision": "accept_current",
+      "reason": "The exact direct requirements supply horizontal-projectile interpretation and motion-model idealization judgments. Their ancestry supplies signed laws, shared-time reasoning, trajectories and acceleration graphs for tasks 1–5; idealization judgments prepare task 6. Both language tasks and all 36 scoring criteria use scalar quantities and exclude vector calculations. Only the idealization goal is credited: using projectile laws and graphs does not establish full coverage of their complete curricular goals, including experimental performance.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "decision": "needs_change",
+      "reason": "The sole direct requirement demands resultant projectile velocity magnitude and direction, which none of the five tasks or scoring steps uses. Replace it with horizontal-projectile analysis, retaining its inherited acceleration, velocity-area and uncertainty preparation. The specified minimum/maximum method and experimental model assumptions support the limited interval calculation and two qualitative model limits. The listed missing ID is a replacement direct requirement, already present recursively. Credited relative-frame composition is untested; scalar range calculation does not demonstrate the credited projectile goal's experimental component, and supplied uncertainties do not demonstrate independently selecting suitable uncertainties. English task and solution bodies are absent.",
+      "unnecessaryCurrentRequires": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "missingRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+      ]
+    }
+  ],
+  "semanticKindReviews": [
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "semanticKind": "curricularAtomic",
+      "reason": "A general measurement-to-graph competence applicable to fresh one-dimensional motions, rather than one fixed dataset or scored check."
+    },
+    {
+      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "semanticKind": "curricularAtomic",
+      "reason": "A reusable velocity-displacement representation competence applicable to new motion records and changes of direction."
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "semanticKind": "curricularAtomic",
+      "reason": "A general constant-acceleration model competence that transfers across initial velocities and acceleration signs."
+    },
+    {
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "semanticKind": "curricularAtomic",
+      "reason": "A general graph-to-law and prediction competence for fresh constant-acceleration motions and initial conditions."
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "semanticKind": "curricularAtomic",
+      "reason": "A transferable experimental inference competence across suitable free-fall arrangements and datasets, without a fixed task or rubric."
+    },
+    {
+      "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "semanticKind": "curricularAtomic",
+      "reason": "A general causal comparison of drag-affected and ideal falling; the feather and ball illustrate the relationship rather than define a scored check."
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "semanticKind": "curricularAtomic",
+      "reason": "A general judgment about model assumptions and prediction limits, applicable to fresh motion systems."
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "semanticKind": "curricularAtomic",
+      "reason": "A general experimental and representational competence for horizontal projection, with no fixed data or scoring."
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "semanticKind": "curricularAtomic",
+      "reason": "A reusable determination of projectile velocity vectors across changed launch speeds, flight times and coordinate directions."
+    },
+    {
+      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "semanticKind": "practiceAssessment",
+      "reason": "One fixed 36-mark written check specifies two bodies, constructed data, six tasks, solutions and 36 scoring criteria."
+    },
+    {
+      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "semanticKind": "practiceAssessment",
+      "reason": "One fixed 30-point stunt scenario supplies a particular velocity table, launch conditions and uncertainties, with five tasks and a scoring scheme."
+    },
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "semanticKind": "practiceAssessment",
+      "reason": "Despite its general-sounding description, this is one fixed 16-mark table-edge and moving-cart check with specified times, velocities, five tasks and scoring."
+    }
+  ],
+  "limitations": [
+    "Review was restricted to canonical-input.json, criteria.md and output.schema.json. Images and cards are absent and were not reviewed; historical-status assertions were not treated as authority.",
+    "Assessment 2b9e565f-d9b4-5e23-b5b7-b7977cecff06 has English title and summary text but no English task or solution body. Task-level DE/EN parity therefore remains unresolved.",
+    "No effective-projection matrix, source manifest, duration policy or curricular source excerpts are supplied. Nationwide stage, course and source alignment cannot be verified from raw applicability metadata.",
+    "For 1e459a1b-4159-5049-84eb-9928129c1610, the packet does not specify how interval-average velocities are plotted. Exact displacement recovery requires interval-area preservation; arbitrary interpolation between plotted averages does not guarantee it."
+  ]
+}

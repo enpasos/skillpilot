@@ -1,0 +1,213 @@
+{
+  "atomicityReviews": [
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "semanticAtomic": true,
+      "reason": "The learner uses one measured position record to describe one motion. On a fixed axis, the sign of the graph’s slope gives direction and its magnitude distinguishes faster and slower sections. Measurement resolution limits how confidently a nearly level section can be called rest.",
+      "independentlyAssessableFacets": ["Record a one-dimensional motion and use the resulting position–time graph to justify which changes the measurements resolve."],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "semanticAtomic": true,
+      "reason": "The two graph operations express the same interval relationship. Dividing signed displacement by elapsed time gives the mean velocity. A rectangle of that height over the same interval recovers the displacement exactly, even when instantaneous velocity varied within the interval.",
+      "independentlyAssessableFacets": ["Construct an interval-mean velocity graph from position data and recover net displacement by summing its signed areas."],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "semanticAtomic": true,
+      "reason": "One model constrains all three graphs. Constant signed acceleration gives equal velocity changes in equal times. The resulting linear velocity gives the changing slope of the position graph. Consistency among the graphs makes the model explanation assessable.",
+      "independentlyAssessableFacets": ["Describe the same constant-acceleration motion in position, velocity and acceleration graphs with consistent slopes and initial values."],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "semanticAtomic": true,
+      "reason": "The learner infers the parameters of one motion from its graphs. Initial position, initial velocity and acceleration determine both laws, with uniform motion as the zero-acceleration case. Predicting position and velocity at a common time checks the inferred laws together.",
+      "independentlyAssessableFacets": ["Recover a consistent pair of motion laws from graphs and use them to predict the motion."],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "semanticAtomic": true,
+      "reason": "The time–position law is the result of the investigation. Its acceleration parameter is inferred from the measurements under the near-Earth, negligible-drag approximation. The chosen axis and release conditions fix the sign and the remaining terms.",
+      "independentlyAssessableFacets": ["Use a graphical analysis of a fall record to estimate g and state the position law for that release."],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "semanticAtomic": true,
+      "reason": "Changing the medium tests one explanation for the different falls. With matched releases in the same gravitational field, the bodies have equal velocities at equal times in vacuum. In air, drag relative to the body’s weight matters, so mass alone cannot determine the ordering.",
+      "independentlyAssessableFacets": ["Explain how removing the air changes a comparison between two bodies dropped under matched conditions."],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "semanticAtomic": true,
+      "reason": "Justifying an idealization and identifying its limit are parts of the same judgment about a specified prediction. A point-particle model may predict the position of a body’s centre while omitting dimensions that matter for its first contact with a surface.",
+      "independentlyAssessableFacets": ["Judge when neglecting a physical feature preserves a specified motion prediction and when that feature matters."],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "semanticAtomic": true,
+      "reason": "Each observed position supplies an x and a y at the same time. Those pairs let the learner test the combination of uniform horizontal motion and vertical fall from zero initial vertical velocity, and draw the resulting trajectory. The interpretation depends on negligible drag and approximately constant g.",
+      "independentlyAssessableFacets": ["Use time-matched projectile positions to test the component-motion model and represent the observed trajectory."],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "semanticAtomic": true,
+      "reason": "The two components at one instant specify one velocity vector. Its magnitude and its direction describe the same resultant. The impact angle is the direction evaluated at the final instant of flight.",
+      "independentlyAssessableFacets": ["Reconstruct the instantaneous projectile velocity from its orthogonal components and determine its magnitude and direction."],
+      "suggestedSplit": []
+    }
+  ],
+  "prerequisiteReviews": [
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "decision": "accept_current",
+      "reason": "Qualitative reading of supplied distance–time graphs prepares the interpretation of rest and changes of speed. Plotting coordinate pairs prepares the construction of a graph from measured values. The target adds collecting those values, accounting for resolution and using a signed position axis to infer direction. A cumulative-distance graph alone cannot give that direction.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "decision": "accept_current",
+      "reason": "Uniform motion supplies the physical meaning of velocity and carries earlier position-graph work. The measured-change goal supplies the signed quotient over a positive time interval. The area goal supplies the geometry of a rectangle. The new step is interpreting its height times its duration as displacement in metres, including cancellation across intervals of opposite sign.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "decision": "accept_current",
+      "reason": "Average and instantaneous velocity prepare the interpretation of the changing position-graph slope. Function values support plotting consistent points at selected times. Signed velocity–time area gives the physical meaning of a position increment, while triangle and trapezoid areas let learners determine that increment under a sloping velocity line. These inputs support constructing the graphs before learners independently infer the motion laws.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "decision": "accept_current",
+      "reason": "The constant-acceleration goal supplies consistent graph shapes and inherits uniform motion, slope, signed area and function evaluation. Reading variable expressions prepares learners to give physical meanings to terms such as v₀t. The target still requires them to infer initial values and acceleration from the particular graphs and use the resulting laws for prediction.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "decision": "accept_current",
+      "reason": "The motion-laws branch supplies the constant-acceleration law, initial conditions and earlier motion measurement. The uncertainty branch prepares learners to report the measured quantities at defensible precision. The free-fall investigation adds the empirical inference of g from those data and the judgment that drag can be neglected over the observed fall.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "decision": "accept_current",
+      "reason": "The free-fall investigation provides an experimental baseline for the vertical motion predicted with negligible drag and specified initial conditions. Comparing bodies and then changing the medium gives that baseline a new explanatory use. A qualitative account of why air affects a feather and a ball differently can be taught here without a prior terminal-velocity calculation.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "decision": "accept_current",
+      "reason": "The air–vacuum comparison supplies a concrete case in which omitting an interaction changes the success of a prediction. Its prerequisite chain includes the measured fall and the ideal motion law. This gives learners evidence from which to generalize to a new judgment, such as whether the size of an object matters for predicting where it lands.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "decision": "accept_current",
+      "reason": "The free-fall experiment supplies the vertical model and experience relating measured positions to a law. Its recursive prerequisites already cover uniform motion, coordinate plotting and measurement uncertainty. The new work is to investigate a horizontal launch and pair x(t) and y(t) at common times to explain the trajectory.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "decision": "needs_change",
+      "reason": "Retain horizontal projection for the physical components at a common instant. The other direct requirement adds frame selection and the composition of velocities measured relative to different observers. Here both components belong to one projectile in one frame. Promote the vector-addition and Pythagorean goals currently reached through that branch. They support the resultant and its magnitude, and their geometry context supports measuring its direction on a scale drawing.",
+      "unnecessaryCurrentRequires": ["68c90ba6-c438-463c-9a53-cf61062d416a"],
+      "missingRequires": ["c63bbffd-8d1c-5fe2-a428-db194e6fe592", "4d78bbcc-89b8-47f0-aa45-516199e4da5d"]
+    },
+    {
+      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "decision": "accept_current",
+      "reason": "Both language versions use horizontal projection for the shared flight time, signed component velocities, trajectory and doubled-launch-speed prediction. The idealizations goal prepares the six marks on size, uniform gravity and the possible vertical effect of drag. It is the only credited goal. The constructed data support written modelling and give no evidence of learner-collected projectile measurements. The 22/36 pass threshold also permits a pass without the six model-limit marks.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "decision": "needs_change",
+      "reason": "The German rubric awards 7 marks for phase-average accelerations, 6 for piecewise-linear velocity–time area, 7 for scalar range, 6 for a range interval using supplied bounds and 4 for model limits. Range uses horizontal speed times fall time. No item requires a resultant velocity, impact angle or change of frame. Replace the sole vector-velocity requirement with horizontal projection and model limits. The projection branch retains acceleration, signed area and measurement uncertainty, and the prompt specifies the endpoint method. Of the credited goals, reference-frame composition is untested, projection is sampled without an experiment or trajectory plot, and the uncertainties are supplied for use rather than chosen by the learner.",
+      "unnecessaryCurrentRequires": ["0fee53f2-1c02-5b12-9b6c-aa9fa462d921"],
+      "missingRequires": ["89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "d6dc0e02-831d-4894-a61a-852bcc74f147"]
+    }
+  ],
+  "semanticKindReviews": [
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "semanticKind": "curricularAtomic",
+      "reason": "Learners can produce and interpret a fresh motion record. Introducing a reversal or changing the sampling resolution changes what they can infer from its graph."
+    },
+    {
+      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "semanticKind": "curricularAtomic",
+      "reason": "The interval-rate and signed-area relationship applies to new position records with unequal time intervals or a change of direction."
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "semanticKind": "curricularAtomic",
+      "reason": "Learners can apply the constant-acceleration model when initial velocity and acceleration have opposite signs, including explaining all three graphs as velocity passes through zero."
+    },
+    {
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "semanticKind": "curricularAtomic",
+      "reason": "New graphs can change the starting position, velocity or acceleration. Learners must recover the corresponding laws and use them to make consistent predictions."
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "semanticKind": "curricularAtomic",
+      "reason": "Inferring g from a new fall series and accounting for its release conditions is a repeatable experimental competence. The description prescribes no fixed dataset or scored trial."
+    },
+    {
+      "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "semanticKind": "curricularAtomic",
+      "reason": "The feather and ball exemplify a transferable comparison. Changing a falling object’s shape while holding its mass fixed tests whether the learner can explain the different roles of gravity and drag."
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "semanticKind": "curricularAtomic",
+      "reason": "The learner judges an approximation for each new prediction. Changing the observable or the length scale can change whether neglecting size or friction is justified."
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "semanticKind": "curricularAtomic",
+      "reason": "Learners can investigate another horizontal launch and use time-matched positions to explain how a changed horizontal speed alters the trajectory under the same vertical conditions."
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "semanticKind": "curricularAtomic",
+      "reason": "Reconstructing velocity from components applies at any selected flight instant. Reversing the launch direction tests whether the learner preserves the direction of the resultant as well as its magnitude."
+    },
+    {
+      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "semanticKind": "practiceAssessment",
+      "reason": "One specified release-and-launch comparison supplies the data, the doubled-speed variation and six fixed six-mark tasks. The variation is part of the same 36-mark written check."
+    },
+    {
+      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "semanticKind": "practiceAssessment",
+      "reason": "One stunt-car sequence fixes the measured speeds, ramp height and uncertainty bounds. Its five scored questions form a single 30-mark assessment."
+    },
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "semanticKind": "practiceAssessment",
+      "reason": "Both versions specify the same ball, two flight times and a cart travelling at the ball’s horizontal speed. Scaled arrows, magnitudes, impact angle and the cart-frame explanation are scored against a fixed 16-mark rubric."
+    }
+  ],
+  "limitations": [
+    "The multi-phase assessment has an English title and summary. Its task, solution and scoring steps are supplied only in German, so equivalence of the English task and marking requirements is unresolved.",
+    "The prerequisite decisions concern direct edges for the assigned goals. Some inherited mathematics requirements extend well beyond their local physics use. For example, the measured-rate branch reaches a proof that the natural numbers are unbounded.",
+    "The packet supports authored goal-core and assessment judgments. It lacks the compiled source and projection material needed to verify nationwide stage, jurisdiction and course-profile scope. Images and memory cards are absent."
+  ]
+}
