@@ -1,0 +1,13 @@
+# D′ codex-v2 nach reject/revise
+
+Direktziel bleibt ausschließlich BES. R2 bezeichnet keine zusätzliche Vollabdeckung: Wagen-/Bremsrechnungen sind kein eigenes Freifallexperiment, kein Messprotokoll und kein Nachweis des ganzen Kindversprechens. Keine E.1-Planungsgutschrift. V1 und alle früheren Quellen-/Rubriken bleiben erhalten.
+
+A12/B8, Max20 und alte fünf IDs bleiben; Schwelle19. A trennt je Diagrammart tatsächlichen Verlauf1 von quantitativer Kenntnis1. Letztere kann korrekt im Text/Gesetz stehen und darf bei fehlendem Graph nicht verschwinden. B trennt je Darstellungsart Wert/Gesetz0,5 von tatsächlichem Verlauf0,5. Damit kostet jedes global ganz fehlende/charakteristisch falsche Darstellungsformat mindestens1,5: höchstens18,5, also unter19. Gute Zahlen werden nicht als zusätzlicher Abzug entwertet.
+
+A2 enthält zwei getrennte physikalische Modellbelege: unveränderte t-v-Steigung trotz Nulldurchgang/Ortsminimum und Bedeutung der konstanten a-Fläche als gleiche Delta-v pro gleicher Zeit. Wer ausdrücklich a mit v verwechselt, bekommt diese beiden Erklärungen nicht allein für richtige reproduzierte Werte. V-Flächen bleiben ein dritter selbstständiger Punkt. Gleichwertige tatsächliche beschriftete graphische Erklärungen zählen.
+
+B5 erhält weiterhin zwei unabhängige Zahlenpunkte. Der dritte Punkt ist die physikalische Gegenüberstellung von vorhergesagter Rückwärtsfahrt und realem Stillstand mit daraus folgendem Gültigkeitsurteil; das bloße Wort Rückwärtsfahrt oder das Minuszeichen reicht nicht. Der vierte betrifft die unabhängige v/a-/Wechselwirkungsbegründung. Ein ausdrücklich falsches Fortsetzungsurteil lässt sich nicht mit richtigen Zahlen retten.
+
+Die Hauptabgaben sind vollständig und enthalten tatsächliche SVG-Graphen. Eigene Noten19/18,5; insbesondere korrigiert die fehlende-Kern-Note den v1-Autorenfehler, textlich vorhandene Beschleunigungswerte nicht anzuerkennen. Weitere vollständige Auditfälle zeigen18,5 bei zwei falschen Ortsverläufen trotz richtigen Gesetzen,18 bei zwei falschen expliziten Modellbelegen,18 bei falscher Fortsetzungsgültigkeit und19 bei einmaligem Kontrollintervallfehler. Die strengere19er-Schwelle toleriert einen ganzen lokalen Ergebnisfehler; es ist kein nur auf eine Antwort zugeschnittener halber Bonus nötig.
+
+Nicht jede einzelne numerische Endzahl oder jede zusätzliche Begründungsnuance wird dadurch unersetzbar. Der globale vollständige Darstellungs- und Modellkern muss aber aus der gesamten eingereichten Evidenz sichtbar sein. Alle verlangten Leistungen bleiben bewertet und sämtliche echten Gegenbelege werden berücksichtigt. Die Aktualisierung der reviewNote grenzt die alte20/20-Notiz als Historie ab; keine Autorfreigabe dieses Kandidaten.
