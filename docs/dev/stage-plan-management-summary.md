@@ -21,13 +21,15 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 24. November 2026, 21:59 MEZ – Erreichbare Bestehensgrenzen in Physik E.1
+## 24. November 2026, 22:18 MEZ – Erreichbare Bestehensgrenzen in Physik E.1
 
 Sechs der sieben strengen E.1-Prüfungen haben neue Bewertungsraster. Die Grenzen betragen 17/20 im Beschleunigungsprotokoll D′, 13,5/16 beim Geschwindigkeitspfeil, 12/16 bei Wurf und Bremsweg, 30,5/36 beim freiwilligen Wurf, 11,5/14 beim Fallprotokoll und 20/24 beim außerhessischen Teil C. Zwei unabhängige Fachprüfer benoteten je 36 ausformulierte Schülerarbeiten. In allen sechs neu bewerteten Prüfungen bestanden Arbeiten mit vier kleinen Fehlern sowie Arbeiten mit einer fehlenden Facette. Die Auslassung einer ganzen tragenden Leistung oder eine ausdrücklich beibehaltene Fehlvorstellung führte jeweils unter die Grenze. [Einzelbewertungen und Schülerarbeiten](../../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/README.md)
 
 Für die Sichtung eignen sich die D′-Arbeit mit vier Formfehlern (18/20), die Gewichtung der Modellkritik beim freiwilligen Wurf (19/36) und der offene Herkunftsnachweis beim eigenen Fallversuch. Dessen bisherige Fassung bleibt bei 23/24. Bei der letzten zulässigen Gegenprüfung war uneindeutig, wann eine gleichlautende Zahl im Bewegungsgesetz als Verwendung des eigenen Fitwerts zählt. Claude klärt den Zuschnitt in PR C. Sämtliche Fachaufträge und Kompetenzzuordnungen sind erhalten. [Eigene Fallmessreihen](../../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/f41e4e30-794e-5ce4-ba5e-cc72712cd691/parked.actual.json)
 
 Zwölf zunächst zu lange Bewertungszeilen wurden in den fünf betroffenen Rastern gekürzt und erneut blind benotet. Die automatischen Prüfungen bestätigen Physik M7 und beide Schulstufen M4. Alle 27 Backendtests zur Material- und Ergebnishistorie bestanden. Die 90 Physiksichten und die 1.036 Mathematik-Bedarfsnachweise stimmen mit dem Ausgangsstand überein. Auf 356 Kartenebenen stehen weiter zehn rückwärts gerichtete Kanten mit 32 Vorkommen. Zusätzlich abgeschlossen sind 0 von 13 K- und 0 von 7 F-Zielen. Es sind 0 weitere Stufenpläne aktiviert. [Technische Prüfungen](../../contracts/stage-plan-review-evidence/2026-11-24/e1-achievable-pass-marks/README.md)
+
+Bei D′, dem Geschwindigkeitspfeil und der freiwilligen Wurfprüfung sehen Coaches die freigegebene Bewertung jetzt unter neutralen deutschen und englischen Überschriften. Beide Reviewer bestätigten den reinen Bezeichnungswechsel. Der Providerabruf, die gebundenen Buchinputs, die Einheitenprüfung und die Bestehensregel bestanden auf dieser Textfassung. [Sechs Textänderungen und Prüfbelege](../../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-released-marking-headings-20261124-v1/checks.actual.json)
 
 **Integration offen.** Der Nachtrag zu #186 bildet den ersten Commit auf dem Arbeitszweig. Die Regel aus #190 und der folgende Main-Stand aus #191 sind integriert. Claude prüft den Zweig und eröffnet PR B. [Arbeitszweig](https://github.com/enpasos/skillpilot/tree/feat/e1-machbare-bestehensgrenzen)
 

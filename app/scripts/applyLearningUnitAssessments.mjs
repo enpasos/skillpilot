@@ -142,8 +142,8 @@ const landscapes = [{
       // its content from a second copy or transfer a historical learner result.
       existingGoalId: 'a8dc0290-9f80-5763-8943-e16b8d2aa860',
       coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
-      reviewPath: 'curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/r2-coverage.actual.json',
-      taskRevision: 'sha256:95465756e95bc782c0f51de78eb656892d6181932202be168043d2f2293fb1a7',
+      reviewPath: 'curricula/DE/Gymnasium/quality/assessment-review/physik/e1-released-marking-headings-20261124-v1/r2-coverage.actual.json',
+      taskRevision: 'sha256:24ce83af76cf0f35cf887456750e3195f1a8dc624d3eb1919c1bd7ca5cf62e1d',
       rubricRevision: 'sha256:bdc5a7d9be989f8f4c27d304253415322c68e4135dd306249a4d8a950d8236e1',
     }, {
       existingGoalId: 'f13ca187-b680-5f47-b4ad-76bd474bd8a2',

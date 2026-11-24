@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import './testHePhysicsQuantumTemplate'
 import { achievableReviewRoot, coachScoringReviewRoot, verifiedCoachScoringReviewChain } from './lib/e1AchievableScoringReviews'
+import { beforeReleasedMarkingHeadings, releasedHeadingsRoot } from './lib/e1ReleasedMarkingHeadings'
 import { assertFinalPhysicsAtlasPublishedTargets, assertFinalPhysicsAtlasDraftTargets } from './lib/physicsFinalGoalBookAtlasTargets'
 import { assessmentReviewRevisions } from './lib/learningUnitContracts'
 import { createHash } from 'node:crypto'
@@ -1385,10 +1386,11 @@ const partialCreditRounds = new Map<string, { version: string; dispositionSha256
   ['a8dc0290-9f80-5763-8943-e16b8d2aa860', { version: 'v3', dispositionSha256: '7bd9a1fc4d27b7085b156a57dcca7d09a9f8a76990bfaac91681974bd58c0e7c' }],
   ['4ea1b93f-2dba-59ac-87ab-29af6c55cc37', { version: 'v4', dispositionSha256: 'fa55c7b482804b78fb1779ce07de652b9bdd5bb9046b5d618afb644a14ad9877' }],
 ])
-const priorAchievableGoals = verifiedCoachScoringReviewChain(repoRoot, rawGoalById, canonicalJson)
+const beforeHeadings = beforeReleasedMarkingHeadings(repoRoot, rawGoalById)
+const priorAchievableGoals = verifiedCoachScoringReviewChain(repoRoot, beforeHeadings, canonicalJson)
 // The last reviewed experimental rubric had one dissent. Its complete scored payload must fail activation.
 const parkedExperimentId = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
-const withParkedExperiment = new Map(rawGoalById)
+const withParkedExperiment = new Map(beforeHeadings)
 withParkedExperiment.set(parkedExperimentId, readJson<Record<string, unknown>>(
   `${achievableReviewRoot}/${parkedExperimentId}/v24/candidate.goal.json`,
 ))
@@ -1639,9 +1641,19 @@ const priorStageNormalized = new Map(normalizeCanonicalLandscape(priorStageCatal
 const lowerSourceBindings = readJson<{reviewedLowerAssessmentBindings: Record<string, {assessments: Record<string, {
   independentReview: string; offerReview: string; requires: string[]; coveredGoalIds: string[]
 }>}>}>('scripts/generate_laender_physics_stage_views.sources.json').reviewedLowerAssessmentBindings
+const headingOfferPath = releasedHeadingsRoot + '/source-stage-offer.actual.json'
+const headingOffer = readJson<{previousOffer: EvidenceFile; r2: EvidenceFile; goalId: string; approvedScopes: unknown[];
+  coveredGoalIds: string[]; requires: string[]; currentPreparation: StageScoringSuccessor['currentPreparation'];
+  diffReview: EvidenceFile; planningCreditGranted: boolean; learnerResultTransfer: boolean}>(headingOfferPath)
+assert.equal(sha256(readFileSync(resolve(repoRoot, headingOfferPath), 'utf8')), '30f9d4fb2b2a1903e2ae8440c9dbb995703c09565f96f83f1ae22acacb46f8b7')
+assert.equal(headingOffer.goalId, saxonAccelerationExam)
+assert.equal(headingOffer.planningCreditGranted, false)
+assert.equal(headingOffer.learnerResultTransfer, false)
+const normalizedBeforeHeadings = new Map(normalizeCanonicalLandscape({...preparationLandscape,
+  goals: preparationLandscape.goals.map(goal => beforeHeadings.get(goal.id) ?? goal)} as unknown as CanonicalAuthoringLandscape).goals.map(g => [g.id,g]))
 for (const row of currentStageOffers.assessments) {
   const id = row.goalId
-  const current = rawGoalById.get(id)!
+  const current = beforeHeadings.get(id)!
   const prior = priorAchievableGoals.get(id)!
   const initialPath = `${achievableReviewRoot}/${id}/source-stage-offer.actual.json`
   const initialHash = stageScoringHashes[id]
@@ -1658,7 +1670,7 @@ for (const row of currentStageOffers.assessments) {
     bindings.assessments[id] ? [{state, row: bindings.assessments[id]}] : [])
   assert.deepEqual(offers.map(offer => offer.state).sort(), id === saxonAccelerationExam ? ['SN','ST'] : ['SN'])
   for (const offer of offers) {
-    assert.equal(offer.row.independentReview, bound ? path : currentStageOffersPath)
+    assert.equal(offer.row.independentReview, bound ? headingOfferPath : currentStageOffersPath)
     assert.equal(offer.row.offerReview, offer.row.independentReview)
     assert.deepEqual(offer.row.requires, current.requires)
     assert.deepEqual(offer.row.coveredGoalIds, (current.examData as ExamData).coveredGoalIds)
@@ -1711,7 +1723,14 @@ for (const row of currentStageOffers.assessments) {
   }
   assert.deepEqual(current, readJson(successor.currentGoal.path))
   assert.equal(sha256(JSON.stringify(current)), successor.currentPreparation.rawSha256)
-  assert.equal(sha256(JSON.stringify(goalById.get(id))), successor.currentPreparation.normalizedSha256)
+  assert.equal(sha256(JSON.stringify(normalizedBeforeHeadings.get(id))), successor.currentPreparation.normalizedSha256)
+  assert.deepEqual(headingOffer.previousOffer, {path, sha256: bound})
+  assert.deepEqual(headingOffer.requires, current.requires)
+  assert.deepEqual(headingOffer.coveredGoalIds, (current.examData as ExamData).coveredGoalIds)
+  assert.deepEqual(headingOffer.approvedScopes, successor.approvedScopes)
+  assert.deepEqual(headingOffer.currentPreparation.fullRealPrerequisiteIds, prep.fullRealPrerequisiteIds)
+  assert.equal(headingOffer.currentPreparation.rawSha256, sha256(JSON.stringify(rawGoalById.get(id))))
+  assert.equal(headingOffer.currentPreparation.normalizedSha256, sha256(JSON.stringify(goalById.get(id))))
   assert.deepEqual(successor.currentPreparation.fullRealPrerequisiteIds, prep.fullRealPrerequisiteIds)
   assert.equal(successor.hessianMaterial.path, 'curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json')
   assert.equal(successor.materialRegistry.path, 'curricula/unit-learning-materials.json')
@@ -1761,14 +1780,23 @@ assert.equal(previousDprimeR2.coverage.taskRevision, 'sha256:76fe443cf24fd8ce182
 assert.equal(previousDprimeR2.coverage.rubricRevision, 'sha256:f6a52fb1691cc147712c707af3a2488e996b7d78c0151127f644301132eef2e2')
 const currentDprimeRevisions = assessmentReviewRevisions({ id: saxonAccelerationExam,
   examData: rawGoalById.get(saxonAccelerationExam)!.examData as ExamData })
-assert.equal(dprimeR2.coverage.taskRevision, currentDprimeRevisions.taskRevision)
-assert.equal(dprimeR2.coverage.rubricRevision, currentDprimeRevisions.rubricRevision)
+const headingR2 = readJson<{previousReview: EvidenceFile; diffReview: EvidenceFile; coverage: typeof dprimeR2.coverage;
+  unitId: string; unitRevision: string; planningCreditGranted: boolean; learnerResultTransfer: boolean}>(headingOffer.r2.path)
+assert.equal(sha256(readFileSync(resolve(repoRoot, headingOffer.r2.path), 'utf8')), headingOffer.r2.sha256)
+assert.deepEqual(headingR2.previousReview, nextR2)
+assert.deepEqual(headingR2.diffReview, headingOffer.diffReview)
+assert.deepEqual([headingR2.unitId,headingR2.unitRevision,headingR2.planningCreditGranted,headingR2.learnerResultTransfer],
+  [dprimeR2.unitId,dprimeR2.unitRevision,false,false])
+assert.deepEqual(headingR2.coverage, {...dprimeR2.coverage, reference: headingOffer.r2.path, taskRevision: currentDprimeRevisions.taskRevision})
+assert.equal(dprimeR2.coverage.taskRevision, assessmentReviewRevisions({id: saxonAccelerationExam,
+  examData: beforeHeadings.get(saxonAccelerationExam)!.examData as ExamData}).taskRevision)
+assert.equal(headingR2.coverage.rubricRevision, currentDprimeRevisions.rubricRevision)
 for (const claimed of [dprimeR2.wholeUnitPromiseCertified, dprimeR2.ownExperimentCertified,
   dprimeR2.requiredHessianE1Part, dprimeR2.planningCreditGranted]) assert.equal(claimed, false)
 const dprimeOwningUnit = (rawLandscape.programUnits as Array<{ id: string; coverageReviews: unknown[] }>)
   .find(unit => unit.id === dprimeR2.unitId)!
 assert.deepEqual(dprimeOwningUnit.coverageReviews.find(row => (row as { assessmentGoalId: string }).assessmentGoalId === saxonAccelerationExam),
-  dprimeR2.coverage)
+  headingR2.coverage)
 assert.equal(sha256(readFileSync(resolve(repoRoot, dprimeR2.reviewBindings.path), 'utf8')), dprimeR2.reviewBindings.sha256)
 const dprimePlanning = readJson<{ material: { path: string; sha256: string }; registry: { path: string; sha256: string }
   credit: { requiredPartIds: string[]; goalIds: string[]; release: { fingerprint: string } }; DCoverage: unknown }>(

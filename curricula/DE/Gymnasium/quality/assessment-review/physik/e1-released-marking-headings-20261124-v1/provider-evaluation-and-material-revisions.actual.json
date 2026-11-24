@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-24T21:11:46+00:00",
+  "currentCatalog": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "ec581e98268e42158eba7f9f65ee60f111c473728b06769ecdb3771e6fcb0d78"
+  },
+  "predecessorCatalog": {
+    "gitCommit": "353eee6246bf7fbf9474ab95302646019b0346d5",
+    "gitPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "76042a25b10ea7f89d461d3be4eeb48b6ae7239f23f7eb02b7132b55f3b60b5c"
+  },
+  "headingDiff": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-released-marking-headings-20261124-v1/heading-diff.json",
+    "sha256": "5971f62bf2fa9054fe8cbb7a33f75e214680c86f1a3578051a92f3288608c7ea"
+  },
+  "dPrimeUnitReview": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-released-marking-headings-20261124-v1/r2-coverage.actual.json",
+    "sha256": "a208f161aba3892ed184ae7ef4223c1fd53462e9ff10f8a28fed95c47d583bad"
+  },
+  "nativeImplementations": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/ai/CoachToolFacade.java",
+      "sha256": "e35078fcdf96cb9ed755f5d52a9e54e007590af1885c483822237cb9fadff5cd"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/ai/CoachStateProjection.java",
+      "sha256": "8c6b785e5f2c27c83423cab6e62b81dbe7f11e9dcefc1bdb8d58d39ee5ec9652"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/AssessmentMaterialRevision.java",
+      "sha256": "21bc4a02b98b3da9e3fb06efb0cce8f6b5d3b31f5335bd8fd5a9b33bc0171d42"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionReviewBindings.java",
+      "sha256": "a4ca86f403018297aa02373734b4f2fe3d57c163fea88eab4d1f9a8e895ee944"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "sha256": "0b45040ad15267426a8cb762dc97b1a4939ec1f9d66dd5a68888a0dae071df0e"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CoachContextProjector.java",
+      "sha256": "2fdbc664fca8403ffd5fd58164211468f7f6794568a6a81a48b2b4a15588d3ed"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1McpContractAdapter.java",
+      "sha256": "c1e2046a69defc918e9dd60f433e81ca17009ee379f9a8f69e881a59025422e9"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1CoachContextProjector.java",
+      "sha256": "865c53d05709abb4ff62ff5cd611168ce9dc3c26f6ddf3adcee2957ff2414fcc"
+    }
+  ],
+  "comparisonScope": "Invoked each shipped provider’s getExamEvaluation handler for every material and request locale on both input catalogs. Real facade evaluation, scoring projection, provider validation and release-content projection read an active assessment. The harness supplies an in-memory learner snapshot, read context and capability collaborator. It emits no capability.",
+  "comparisonCounts": {
+    "changedAssessments": 3,
+    "requestLocales": 2,
+    "providers": 2,
+    "editions": 2,
+    "nativeEvaluationResponses": 24,
+    "nativeMaterialRevisionComparisons": 3
+  },
+  "observations": [
+    {
+      "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+      "materialRevisions": {
+        "prior": {
+          "taskRevision": "sha256:68e004fbaaebc6c5ec97caeca7018f661f5b3f5873da173d98ad81055cce1907",
+          "rubricRevision": "sha256:81089b54bb39ad6467a0597ac9d86955db6f0d6f5945e24ff2a19c0a495b9c34",
+          "fingerprint": "sha256:de182e36bf3449b9c164d8acbc9c2ab9839e421ffc70dcd900c8026acb2a562e"
+        },
+        "current": {
+          "taskRevision": "sha256:50b81476df4ad759cffb0dcbc6bb6304f3baa4f17a2fb1f3388eb9c64381db4b",
+          "rubricRevision": "sha256:81089b54bb39ad6467a0597ac9d86955db6f0d6f5945e24ff2a19c0a495b9c34",
+          "fingerprint": "sha256:11c3b3746bdad6aeb6de22349ddf707acf2e60c93b5e3cf14c34bc34c2bf55e2"
+        }
+      },
+      "observedMaterialReturnedByBothProvidersInBothLocales": {
+        "previousGermanSha256": "575492f44bfc9b3261ef22e053712471371a930564b578ed051d838600bf8252",
+        "germanSha256": "b2186918bd002787d2c406e077b4b001f6cfb4026ef6cf867628e400c090996d",
+        "previousEnglishSha256": "7c449f1f502debdfe9aa066ca61979d1a30eb55536f529de6f4598fc943902e5",
+        "englishSha256": "bd17dd71bdc1638dbf16b238c20e405c67470641a5c407d3545168ddfe7b23b0",
+        "stepCount": 24,
+        "orderedNativeStepsJsonSha256": "dc776c55a642b0ba28df94afc51d33a3fc7c494618a5910a69bd1ca4117a79e2"
+      },
+      "nativeProviderChecks": {
+        "Claude": [
+          "de",
+          "en"
+        ],
+        "Gemini": [
+          "de",
+          "en"
+        ]
+      },
+      "canonicalTextSha256": {
+        "solutionContent": {
+          "previous": "f4b1397da7088bbb4cb935f21f6eab559acd7ee9dc0d5c904af6478742c2b486",
+          "current": "4a7998ef5e78cbde44332ee293cbeee9138266442dc21762e4f701bb68eaf480"
+        },
+        "solutionContentEn": {
+          "previous": "28dc8076f3f522fcaa7146dbffaa7cee4f05d542701d3d7aa7f26ba6e54b4aa8",
+          "current": "6c2d64e587a3ebf3949a8369a1fcaee7aca8bff113f63f98b7bc0c1d071f3421"
+        }
+      }
+    },
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "materialRevisions": {
+        "prior": {
+          "taskRevision": "sha256:95465756e95bc782c0f51de78eb656892d6181932202be168043d2f2293fb1a7",
+          "rubricRevision": "sha256:bdc5a7d9be989f8f4c27d304253415322c68e4135dd306249a4d8a950d8236e1",
+          "fingerprint": "sha256:db1cf6a08c273b05e926ac88f0fff610c2985c4b8a0e22e5f4060df5a9ea6299"
+        },
+        "current": {
+          "taskRevision": "sha256:24ce83af76cf0f35cf887456750e3195f1a8dc624d3eb1919c1bd7ca5cf62e1d",
+          "rubricRevision": "sha256:bdc5a7d9be989f8f4c27d304253415322c68e4135dd306249a4d8a950d8236e1",
+          "fingerprint": "sha256:580e0f19e8568d8243fbef59d0c455a85c8adc9b9bb87d4deddfd5d0a72fac72"
+        }
+      },
+      "observedMaterialReturnedByBothProvidersInBothLocales": {
+        "previousGermanSha256": "cf01931d9ab1ebde723cb2bc43318788865ec9c736e12a4a2d90763b81ed29f4",
+        "germanSha256": "4d3c12d0b67197c6ef10d23858d855f17ad2dbaced7750fe199b91aefef3602f",
+        "previousEnglishSha256": "2ae407dfc7b5f869495b69cd12215239ee8e211a48928abf55b6ead6b3483a1f",
+        "englishSha256": "d2ef695000543138d2a931b4fe4bd10c748cfc61273b28f33c44c85656b0f796",
+        "stepCount": 14,
+        "orderedNativeStepsJsonSha256": "17f6a37f289fe78ac9cf6963c854ff1d9d4ea88f42504741e48a8434fad9b38e"
+      },
+      "nativeProviderChecks": {
+        "Claude": [
+          "de",
+          "en"
+        ],
+        "Gemini": [
+          "de",
+          "en"
+        ]
+      },
+      "canonicalTextSha256": {
+        "solutionContent": {
+          "previous": "cf01931d9ab1ebde723cb2bc43318788865ec9c736e12a4a2d90763b81ed29f4",
+          "current": "4d3c12d0b67197c6ef10d23858d855f17ad2dbaced7750fe199b91aefef3602f"
+        },
+        "solutionContentEn": {
+          "previous": "2ae407dfc7b5f869495b69cd12215239ee8e211a48928abf55b6ead6b3483a1f",
+          "current": "d2ef695000543138d2a931b4fe4bd10c748cfc61273b28f33c44c85656b0f796"
+        }
+      }
+    },
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "materialRevisions": {
+        "prior": {
+          "taskRevision": "sha256:b02f43f7f536418ec7c8ca7ca7dc8af5ee87a0c3543f75b0799821b7d7f7750a",
+          "rubricRevision": "sha256:3fff1648f87a9ae7f48dd94cc8fef1ea47a61cb7187f32d571f4570a3de9d946",
+          "fingerprint": "sha256:7d7a582911bdb8468850276befc23e72ed6deac62cd42b76a5fbbf5283ce23c3"
+        },
+        "current": {
+          "taskRevision": "sha256:d0d8dcf0009b89d3e5f0ee0e1ce6b58a192db060dcd9f2b03aad0135fed8a2e0",
+          "rubricRevision": "sha256:3fff1648f87a9ae7f48dd94cc8fef1ea47a61cb7187f32d571f4570a3de9d946",
+          "fingerprint": "sha256:705a3d12dde027e310ddfd3bc86e8c0235586fc990824ee4c5a38b1868fc1dc9"
+        }
+      },
+      "observedMaterialReturnedByBothProvidersInBothLocales": {
+        "previousGermanSha256": "670571f9747ff663d85f031da91ac817e06b9b9701c04340f7b496104368d517",
+        "germanSha256": "27033f6088f806f06b4c29bbfc387c42a477fac9d75203303cf1e568414ee4ea",
+        "previousEnglishSha256": "d67b86eab47df59b3f81ea7314f5728c47d312c06d6c1d6c2d6baf9fbc8f43bc",
+        "englishSha256": "d7c4c47cb7dcc8482a5091d32ebe2587d8319df334697bbefa0ac1484f13623d",
+        "stepCount": 13,
+        "orderedNativeStepsJsonSha256": "a841d8bd62f753f0000e7726891dc469461cca8ab3317e61f9d15df20122c9a9"
+      },
+      "nativeProviderChecks": {
+        "Claude": [
+          "de",
+          "en"
+        ],
+        "Gemini": [
+          "de",
+          "en"
+        ]
+      },
+      "canonicalTextSha256": {
+        "solutionContent": {
+          "previous": "670571f9747ff663d85f031da91ac817e06b9b9701c04340f7b496104368d517",
+          "current": "27033f6088f806f06b4c29bbfc387c42a477fac9d75203303cf1e568414ee4ea"
+        },
+        "solutionContentEn": {
+          "previous": "d67b86eab47df59b3f81ea7314f5728c47d312c06d6c1d6c2d6baf9fbc8f43bc",
+          "current": "d7c4c47cb7dcc8482a5091d32ebe2587d8319df334697bbefa0ac1484f13623d"
+        }
+      }
+    }
+  ],
+  "revisionMeaning": "The German solution is bound into taskRevision. The scoring object supplies rubricRevision. The material fingerprint additionally binds the English evaluation. All three task revisions and material fingerprints changed. All three rubric revisions and all ordered scoring rows stayed equal.",
+  "nativeRuntime": {
+    "java": "openjdk 25.0.2 2026-01-20 LTS",
+    "verifiedBackendSourcePins": 508,
+    "verifiedClasspathDependencies": 185,
+    "verifiedMainClasses": {
+      "fileCount": 1030,
+      "byteCount": 5691765,
+      "treeSha256": "0f93813916c38a3a2574688b81129dda79e195d4a2e4ebaa116e0968869af14c"
+    }
+  },
+  "commandResults": {
+    "compile": {
+      "startedAt": "2026-11-24T21:11:42.828685+00:00",
+      "finishedAt": "2026-11-24T21:11:43.914476+00:00",
+      "exitCode": 0
+    },
+    "exec": {
+      "startedAt": "2026-11-24T21:11:43.914631+00:00",
+      "finishedAt": "2026-11-24T21:11:45.931670+00:00",
+      "exitCode": 0
+    }
+  },
+  "replay": {
+    "filename": "VerifyReleasedHeadings.java",
+    "sha256": "c1121fc7747e4c1c678527e4ffeb2259b2f7badcb45661b77b6c92d0607026d7",
+    "source": "import com.fasterxml.jackson.databind.JsonNode;\nimport com.fasterxml.jackson.databind.ObjectMapper;\nimport com.fasterxml.jackson.databind.node.ObjectNode;\nimport com.skillpilot.backend.ai.CoachStateProjection;\nimport com.skillpilot.backend.ai.CoachToolFacade;\nimport com.skillpilot.backend.api.FrontierGoal;\nimport com.skillpilot.backend.api.UnifiedLearnerStateResponse;\nimport com.skillpilot.backend.completion.AssessmentMaterialRevision;\nimport com.skillpilot.backend.connectors.claude.v1.mcp.*;\nimport com.skillpilot.backend.connectors.gemini.v1.mcp.*;\nimport com.skillpilot.backend.landscape.ExamData;\nimport com.skillpilot.backend.service.LearnerService;\nimport java.nio.charset.StandardCharsets;\nimport java.nio.file.Path;\nimport java.security.MessageDigest;\nimport java.util.HexFormat;\nimport java.util.List;\nimport java.util.Map;\nimport java.util.function.Function;\nimport static org.mockito.Mockito.*;\n\npublic final class VerifyReleasedHeadings {\n    static final ObjectMapper JSON = new ObjectMapper();\n    static final String FIXTURE = \"fixture\";\n    static final CoachStateProjection PROJECTION = new CoachStateProjection(\"https://skillpilot.com\");\n    static final List<String> IDS = List.of(\"bcc56921-7107-5f5f-b721-3d5e0d7e1cd9\", \"a8dc0290-9f80-5763-8943-e16b8d2aa860\", \"4ea1b93f-2dba-59ac-87ab-29af6c55cc37\");\n    static String hash(String text) throws Exception {\n        return HexFormat.of().formatHex(MessageDigest.getInstance(\"SHA-256\").digest(text.getBytes(StandardCharsets.UTF_8)));\n    }\n    static void check(boolean yes,String reason) {if (!yes) throw new AssertionError(reason);}\n    static void wire(Object obj,String name,Object value) throws Exception {\n        var field=obj.getClass().getDeclaredField(name);field.setAccessible(true);field.set(obj,value);\n    }\n    static JsonNode exam(JsonNode catalog,String id) {\n        for (var goal:catalog.required(\"goals\")) if (goal.required(\"id\").asText().equals(id)) return goal.required(\"examData\");\n        throw new AssertionError(id);\n    }\n    static CoachToolFacade facade(String id,ExamData exam) throws Exception {\n        var active=mock(FrontierGoal.class);when(active.id()).thenReturn(id);when(active.nodeKind()).thenReturn(\"exam\");when(active.examData()).thenReturn(exam);\n        var state=mock(UnifiedLearnerStateResponse.class);when(state.skillpilotId()).thenReturn(FIXTURE);when(state.activeGoal()).thenReturn(active);\n        var learner=mock(LearnerService.class);when(learner.getCoachLearnerState(FIXTURE)).thenReturn(state);\n        var coach=mock(CoachToolFacade.class,CALLS_REAL_METHODS);wire(coach,\"learnerService\",learner);wire(coach,\"coachStateProjection\",PROJECTION);\n        doReturn(state).when(coach).getLearnerState(FIXTURE);return coach;\n    }\n    static Object adapter(boolean claude,CoachToolFacade coach) throws Exception {\n        Object instance;\n        Object projector;\n        if (claude) {\n            var session=mock(ClaudeV1SessionCoordinator.class);\n            when(session.read(eq(FIXTURE),any())).thenAnswer(call -> {\n                Function<ClaudeV1SessionCoordinator.ReadContext,Object> read=call.getArgument(1);\n                return new ClaudeV1SessionCoordinator.Outcome<>(read.apply(new ClaudeV1SessionCoordinator.ReadContext(FIXTURE,FIXTURE,1,\"de\",false,null)),1);\n            });\n            instance=mock(ClaudeV1McpContractAdapter.class,CALLS_REAL_METHODS);\n            projector=mock(ClaudeV1CoachContextProjector.class,CALLS_REAL_METHODS);\n            wire(instance,\"sessionCoordinator\",session);wire(instance,\"capabilityService\",mock(ClaudeV1CapabilityService.class));\n        } else {\n            var session=mock(GeminiV1SessionCoordinator.class);\n            when(session.read(eq(FIXTURE),any())).thenAnswer(call -> {\n                Function<GeminiV1SessionCoordinator.ReadContext,Object> read=call.getArgument(1);\n                return new GeminiV1SessionCoordinator.Outcome<>(read.apply(new GeminiV1SessionCoordinator.ReadContext(FIXTURE,FIXTURE,1,\"de\")),1);\n            });\n            instance=mock(GeminiV1McpContractAdapter.class,CALLS_REAL_METHODS);\n            projector=mock(GeminiV1CoachContextProjector.class,CALLS_REAL_METHODS);\n            wire(instance,\"sessionCoordinator\",session);wire(instance,\"capabilityService\",mock(GeminiV1CapabilityService.class));\n        }\n        wire(projector,\"coachStateProjection\",PROJECTION);wire(instance,\"contextProjector\",projector);wire(instance,\"coachToolFacade\",coach);return instance;\n    }\n    record Delivered(String german,String english,JsonNode steps) {}\n    static Delivered evaluate(Object provider,String id,String language,ExamData exam,JsonNode raw) throws Exception {\n        var handler=provider.getClass().getDeclaredMethod(\"getExamEvaluation\",String.class,Map.class);handler.setAccessible(true);\n        var actual=(Map<?,?>)handler.invoke(provider,FIXTURE,Map.of(\"goalId\",id,\"language\",language));\n        check(id.equals(actual.get(\"goalId\")),\"goal\");String de=(String)actual.get(\"solutionContent\"),en=(String)actual.get(\"solutionContentEn\");\n        check(de.equals(PROJECTION.projectReleasedEvaluationContent(exam.getSolutionContent())),\"German material\");\n        check(en.equals(PROJECTION.projectReleasedEvaluationContent(exam.getSolutionContentEn())),\"English material\");\n        var score=(CoachToolFacade.ExamScoring)actual.get(\"scoring\");var rows=raw.required(\"scoring\").required(\"steps\");\n        check(score.maxPoints()==exam.getScoring().getMaxPoints() && score.passingPoints()==exam.getScoring().getPassingPoints(),\"threshold\");\n        check(score.steps().size()==rows.size(),\"step count\");\n        for (int n=0;n<rows.size();n++) {\n            var nativeStep=score.steps().get(n);var stored=rows.get(n);\n            check(nativeStep.id().equals(stored.required(\"id\").asText()) && nativeStep.points()==stored.required(\"points\").asDouble() && nativeStep.description().equals(stored.required(\"description\").asText()),\"step \"+n);\n        }\n        return new Delivered(de,en,JSON.valueToTree(score.steps()));\n    }\n    static String[] headings(String id,boolean english) {\n        if (id.startsWith(\"bcc56921\")) return english ? new String[]{\"### Marking (author candidate, 24 November 2026, review decision pending)\",\"### Marking\"} : new String[]{\"### Bewertung (Autorenkandidat 24.11.2026, Prüfentscheid offen)\",\"### Bewertung\"};\n        boolean revised=id.startsWith(\"a8dc0290\");\n        return english ? new String[]{\"**Partial credit (\"+(revised?\"revised author candidate\":\"author candidate\")+\", 24 November 2026):**\",\"**Partial credit:**\"} : new String[]{\"**Teilpunktbewertung (\"+(revised?\"überarbeiteter Autorenkandidat\":\"Autorenkandidat\")+\", 24.11.2026):**\",\"**Teilpunktbewertung:**\"};\n    }\n    static void onlyHeading(String before,String after,String[] changes) {\n        int first=before.indexOf(changes[0]);check(first>=0 && first==before.lastIndexOf(changes[0]),\"old heading count\");\n        check(before.replace(changes[0],changes[1]).equals(after) && after.lines().filter(line -> line.startsWith(changes[1])).count()==1,\"heading-only change\");\n    }\n    public static void main(String[] args) throws Exception {\n        var catalogs=List.of(JSON.readTree(Path.of(args[0]).toFile()),JSON.readTree(Path.of(args[1]).toFile()));var output=JSON.createArrayNode();\n        for (String id:IDS) {\n            ObjectNode row=output.addObject();row.put(\"goalId\",id);var revisions=row.putObject(\"materialRevisions\");var results=row.putObject(\"providers\");\n            var old=exam(catalogs.get(0),id);var current=exam(catalogs.get(1),id);\n            var copy=old.deepCopy();var before=(ObjectNode)copy;for (boolean en:List.of(false,true)) {String key=en?\"solutionContentEn\":\"solutionContent\";onlyHeading(old.required(key).asText(),current.required(key).asText(),headings(id,en));before.set(key,current.required(key));}\n            check(before.equals(current),\"other exam field changed\");\n            ExamData oldExam=JSON.treeToValue(old,ExamData.class),newExam=JSON.treeToValue(current,ExamData.class);\n            var prev=AssessmentMaterialRevision.of(oldExam);var next=AssessmentMaterialRevision.of(newExam);\n            check(!prev.taskRevision().equals(next.taskRevision()) && prev.rubricRevision().equals(next.rubricRevision()) && !prev.fingerprint().equals(next.fingerprint()),\"unexpected revision identity\");\n            revisions.set(\"prior\",JSON.valueToTree(prev));revisions.set(\"current\",JSON.valueToTree(next));\n            for (boolean claude:List.of(true,false)) {\n                var label=claude?\"Claude\":\"Gemini\";var provider=results.putObject(label);var predecessor=adapter(claude,facade(id,oldExam));var successor=adapter(claude,facade(id,newExam));\n                for (String language:List.of(\"de\",\"en\")) {\n                    var previous=evaluate(predecessor,id,language,oldExam,old);var active=evaluate(successor,id,language,newExam,current);\n                    onlyHeading(previous.german(),active.german(),headings(id,false));onlyHeading(previous.english(),active.english(),headings(id,true));check(previous.steps().equals(active.steps()),\"projected steps changed\");\n                    var actual=provider.putObject(language);actual.put(\"previousGermanSha256\",hash(previous.german()));actual.put(\"germanSha256\",hash(active.german()));actual.put(\"previousEnglishSha256\",hash(previous.english()));actual.put(\"englishSha256\",hash(active.english()));actual.put(\"stepCount\",active.steps().size());actual.put(\"orderedNativeStepsJsonSha256\",hash(active.steps().toString()));\n                }\n            }\n        }\n        System.out.println(JSON.writerWithDefaultPrettyPrinter().writeValueAsString(output));\n    }\n}\n",
+    "instructions": [
+      "Write the UTF-8 Java source field to its filename, compile it using the project JDK and backend testRuntimeClasspath, and include the compiled backend main classes.",
+      "Extract predecessorCatalog.gitPath at predecessorCatalog.gitCommit. Run java -XX:+EnableDynamicAgentLoading with the same classpath and the compiled VerifyReleasedHeadings class, passing the prior catalog and currentCatalog.path in that order."
+    ]
+  }
+}
