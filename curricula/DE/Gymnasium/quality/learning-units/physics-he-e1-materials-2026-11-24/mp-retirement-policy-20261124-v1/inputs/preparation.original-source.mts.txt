@@ -1,0 +1,29 @@
+import assert from 'node:assert/strict'
+import {readFileSync,writeFileSync} from 'node:fs'
+import {createHash} from 'node:crypto'
+import {planningReleaseFingerprint} from '/home/enpasos/projects/skillpilot-e1-nachweise/app/scripts/checkUnitPlanningReleases.ts'
+import {fingerprintCurrentCurriculumDocument as digest} from '/home/enpasos/projects/skillpilot-e1-nachweise/app/scripts/currentCurriculumCatalog.ts'
+const root='/home/enpasos/projects/skillpilot-e1-nachweise',base='/tmp/e1-t5/material-mp-exit-preflight'
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8')),hash=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex'),write=(n:string,v:any)=>writeFileSync(base+'/'+n,JSON.stringify(v,null,2)+'\n')
+const path=root+'/curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json',current=read(path)
+const childPath=root+'/curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json',child=read(childPath)
+const old='2b9e565f-d9b4-5e23-b5b7-b7977cecff06',next='05cfd298-cb80-54c4-a898-b521ef270843'
+const policy=current.unit.sectionAssessmentPolicy,lk=['de-he-gym-physics-lk-g8','de-he-gym-physics-lk-g9','de-he-gym-sekii-physics-lk']
+assert.deepEqual(policy.additionalVoluntaryAssessmentGoalIdsByView,Object.fromEntries(lk.map(id=>[id,[old]])))
+writeFileSync(base+'/current-parent.material.json',readFileSync(path));writeFileSync(base+'/current-child.material.json',readFileSync(childPath))
+const withNew=structuredClone(current),without=structuredClone(current)
+withNew.unit.sectionAssessmentPolicy.additionalVoluntaryAssessmentGoalIdsByView=Object.fromEntries(lk.map(id=>[id,[next]]))
+delete without.unit.sectionAssessmentPolicy.additionalVoluntaryAssessmentGoalIdsByView
+write('accepted-successor.parent.material.json',withNew);write('no-successor.parent.material.json',without)
+for(const candidate of [withNew,without]){
+ const a=structuredClone(candidate);delete a.unit.sectionAssessmentPolicy.additionalVoluntaryAssessmentGoalIdsByView
+ const b=structuredClone(current);delete b.unit.sectionAssessmentPolicy.additionalVoluntaryAssessmentGoalIdsByView
+ assert.deepEqual(a,b)
+ assert.equal(planningReleaseFingerprint(candidate.unit,candidate.unit.assessmentContract.planningCredits[0]),current.unit.assessmentContract.planningCredits[0].release.fingerprint)
+}
+const canonical=read(root+'/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
+const relevant=new Set([old,...current.exercises.map((e:any)=>e.goalId),...child.exercises.map((e:any)=>e.goalId),current.unit.orientationGoalId,child.unit.orientationGoalId,...current.unit.assessmentContract.parts.map((p:any)=>p.goalId)])
+write('scope-and-goals.json',{schema:'two-conditional-E1-parent-material-policy-successors-v1',currentParent:{sourcePath:path,sha256:hash(path)},unchangedChild:{sourcePath:childPath,sha256:hash(childPath)},requiredParts:current.unit.assessmentContract.parts,contentGoalIds:current.unit.assessmentContract.contentGoalIds,planningCredits:current.unit.assessmentContract.planningCredits,
+ owner:canonical.programUnits.find((u:any)=>u.id==='physics-constant-acceleration'),goals:canonical.goals.filter((g:any)=>relevant.has(g.id)),
+ cases:[{id:'accepted_successor',candidatePath:base+'/accepted-successor.parent.material.json',candidateSha256:hash(base+'/accepted-successor.parent.material.json'),unitIntroFingerprint:digest({unit:withNew.unit,intro:withNew.intro}),expectedConditionalRole:'OldMP archived/no active offer. New05 fully scientifically accepted by2actualfinalreviews and released before activation; voluntaryLK atE1parent after4children in3contractLKviews. No fifth required part or MOD planning credit.'},{id:'no_successor',candidatePath:base+'/no-successor.parent.material.json',candidateSha256:hash(base+'/no-successor.parent.material.json'),unitIntroFingerprint:digest({unit:without.unit,intro:without.intro}),expectedConditionalRole:'OldMP archived/no active offer. New05 not activated/offered. Only commonZB+FFX extras;4requiredparts+singleBEScredit unchanged.'}],oldMpId:old,newMpId:next,priorChildUnitIntroFingerprint:digest({unit:child.unit,intro:child.intro}),activationStatus:'PREPARED_ONLY_WAITING_FOR_FINAL_ASSESSMENT_REVIEW_RESULT_AND_PARENT_SIGNAL',noLearnerResultsWritten:true})
+console.log(JSON.stringify({currentParent:hash(path),acceptedSuccessor:hash(base+'/accepted-successor.parent.material.json'),noSuccessor:hash(base+'/no-successor.parent.material.json'),child:hash(childPath)},null,2))

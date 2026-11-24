@@ -1,0 +1,76 @@
+{
+  "schema": "e1-v5-no-successor-final-scope-native-checks-v1",
+  "checkedAt": "2026-11-24T06:20:01.046040+00:00",
+  "status": "PASS_ALL_FIVE_SCOPED_NATIVE_APP_CHECKS",
+  "scope": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v5-mp-retired-no-successor.scope.actual.json",
+    "sha256": "sha256:c1d62f80583062a93d0896e5b54d0171ed0f8af784ce888e42c45d41220c9df4"
+  },
+  "checks": [
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/testHessePhysicsGuidedEntryMaterials.ts",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v5-no-successor-guided-entry.actual.log",
+        "sha256": "sha256:f123271220bc03a18c4c60b92c9971d4c2e4426fde029b5c90ff8f3968db7192"
+      }
+    },
+    {
+      "command": "app/node_modules/.bin/tsx activate-planning-release.mts (read-only)",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v5-no-successor-strict-BES-release.actual.log",
+        "sha256": "sha256:1e62f301ab363f27d3db52f04b3f1e78f99a5fb5095dc53bc25db268f21c7082"
+      }
+    },
+    {
+      "command": "npm --prefix app run validate:learning-units",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v5-no-successor-learning-units.actual.log",
+        "sha256": "sha256:02852eeb21c05cc235a9f570d63ba557fc03b40ea3b479d9a0043b91fdc44202"
+      }
+    },
+    {
+      "command": "npm --prefix app run check:learning-unit-assessments",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v5-no-successor-unit-assessment-check.actual.log",
+        "sha256": "sha256:92529ded0a47cd3508ceff37558aa2ccada8381f632ff76d8d687506b1da2b02"
+      }
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/testPhysicsAssessmentProjection.ts",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v5-no-successor-physics-projection.actual.log",
+        "sha256": "sha256:1994de189b534456f76fe904c2d771a83395c5842936b7fcd72130b629e0eaf7"
+      }
+    }
+  ],
+  "observed": {
+    "contractViews": 6,
+    "heE1Views": 8,
+    "allPhysicsViewFiles": 90,
+    "removedHistoricalRawViewLocations": 64,
+    "CQR203Complete": 111,
+    "CQR203Total": 111,
+    "CQR104Scopes": 106,
+    "CQR104Views": 56,
+    "physicsProjectionViews": 64,
+    "practiceTaskPairs": 4566,
+    "abiturTaskPairs": 512,
+    "preservedSekIPlacementPairs": 30
+  },
+  "testPins": [
+    {
+      "path": "app/scripts/testHessePhysicsGuidedEntryMaterials.ts",
+      "sha256": "sha256:58998a5d40c2ada55111d84bdec5f6c7bb686186961798ff969fa3ef531cedf9"
+    },
+    {
+      "path": "app/scripts/testPhysicsAssessmentProjection.ts",
+      "sha256": "sha256:d674f7a1c61ef0244db1b5e3e2a3f0b3bd1c35cca07af7611fa6f44d6b2edce3"
+    }
+  ],
+  "limits": "These are actual scoped authoring/role/P/ownership/material checks. The final broad backend execution and main CI are separately owned and are not claimed here. No successor or MOD recognition is activated."
+}
