@@ -50,7 +50,7 @@
     "test:learner-map-native-ui": "tsx scripts/testNativeLearnerMapUi.ts && tsx scripts/testHessePhysicsMemoryUi.ts && npm run test:unit-introduction",
     "test:learner-map-prototype": "tsx scripts/testFullCockpitPrototype.ts && tsx scripts/testLearningUnitMapPrototype.ts",
     "test:learner-map-build": "tsx scripts/testLearnerMapBuild.ts",
-    "test:learner-map-unit-view": "tsx scripts/testCompositionChildOrder.ts && tsx scripts/testCompositionPreparationPlacements.ts && tsx scripts/testLearnerUnitMapProjection.ts && tsx scripts/testLearnerUnitMapPreview.ts && tsx scripts/testHessePhysicsFlashcardActions.ts && tsx scripts/testHesseLearnerUnitMapCalendar.ts && tsx scripts/testLearnerUnitMapLayout.ts",
+    "test:learner-map-unit-view": "tsx scripts/testCompositionChildOrder.ts && tsx scripts/testCompositionPreparationPlacements.ts && tsx scripts/testLearnerUnitMapProjection.ts && tsx scripts/testNestedLearningUnitMapOpening.ts && tsx scripts/testLearnerUnitMapPreview.ts && tsx scripts/testHessePhysicsFlashcardActions.ts && tsx scripts/testHesseLearnerUnitMapCalendar.ts && tsx scripts/testLearnerUnitMapLayout.ts",
     "test:learner-map": "npm run test:learner-map-projection && npm run test:learner-map-native-ui && npm run test:learner-map-prototype && npm run test:learner-map-unit-view",
     "test:composition-projection-roles": "tsx scripts/testCompositionProjectionRoles.ts && tsx src/utils/personalCurriculumProjection.test.tsx && tsx src/utils/goalSorter.test.ts",
     "test:course-level-mapping-consistency": "tsx scripts/testCourseLevelMappingConsistency.ts",
