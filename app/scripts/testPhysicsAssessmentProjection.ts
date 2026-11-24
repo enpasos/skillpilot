@@ -118,8 +118,9 @@ const sectionPolicy = e1Material.sectionAssessmentPolicy
 const multiphaseGoal = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
 const freeFallSeriesGoal = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
 assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4', freeFallSeriesGoal])
-// The multi-phase model check requires the velocity vector of the throw and left E.1 for E.3.
-assert.equal(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView, undefined)
+// The reviewed model check returns to the E.1 parent, voluntarily in each LK contract view.
+assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView, Object.fromEntries(
+  [...e1Views.values()].filter(view => view.scope.courseProfile === 'LK').map(view => [view.viewId, [multiphaseGoal]])))
 const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries.map(row => row.landscape as SkillLandscape)
 const sectionGraph = new UnitGraph(currentCatalog as UnitGraphLandscape[])
 const projectionEntries = prepareLandscapeEntries(currentCatalog)
@@ -301,6 +302,7 @@ for (const [id, spec] of hesseChildAssessments) {
 }
 // The four E.1 child units of the cut accepted on 23 Nov 2026, each with its closing checks.
 const hesseIntroductoryAssessmentPlaces = {
+  'physics-e1-motion': [multiphaseGoal],
   'physics-e1-uniform-motion': ['ee7d5f3d-858f-59d6-89b0-e5a7f437f458'],
   'physics-e1-accelerated-and-free-fall': ['f41e4e30-794e-5ce4-ba5e-cc72712cd691'],
   'physics-e1-air-and-vacuum': ['c933b7d2-edcb-5747-9378-9762659f260a'],
@@ -308,7 +310,7 @@ const hesseIntroductoryAssessmentPlaces = {
   'physics-e2-newton-and-conservation': [
     '22561c66-3957-5d55-b07a-25de1f359930', '72649cf5-893c-5f03-88bd-a2497171d434', 'be6d4895-65ab-545b-8df9-84e5a308a5e3',
   ],
-  'he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49': ['8320bb17-e6ab-50ea-a965-aa331bfd33e1', '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'],
+  'he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49': ['8320bb17-e6ab-50ea-a965-aa331bfd33e1'],
   'he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9': [
     'dd99528a-bae5-5b78-89e6-c6092c927f8d', '3791c574-2194-52fa-846b-ee1d4e2c5877',
   ],

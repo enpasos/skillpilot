@@ -92,14 +92,17 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                 phase = find(view, "physics-e-phase")
                 self.assertFalse(obsolete & {node.get("id") for node in generator.walk(phase["children"])})
                 motion = find(view, "physics-e1-motion")
-                # Each closing check sits directly in its E.1 child unit; the
-                # multi-phase model check needs the velocity vector and is in E.3.
+                # The reviewed multi-phase exam returns to E.1 after its four children.
                 for unit_id, assessments in (("physics-e1-air-and-vacuum", {generator.HESSEN_E1_VERTICAL_THROW_ASSESSMENT}),
                                              ("physics-e1-two-motions", {"6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
                                                                          "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"})):
                     self.assertTrue(assessments <= {node.get("goalId") for node in find(view, unit_id)["children"]})
-                self.assertIn("2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
-                              {node.get("goalId") for node in find(view, generator.E3_TOPIC)["children"]})
+                self.assertEqual(motion["children"][-1].get("goalId"), generator.HESSEN_E1_MULTIPHASE_ASSESSMENT)
+                self.assertEqual([node["id"] for node in motion["children"] if node.get("id") in
+                                  {item[0] for item in generator.HESSEN_E1_CHILD_UNITS}],
+                                 [item[0] for item in generator.HESSEN_E1_CHILD_UNITS])
+                self.assertNotIn(generator.HESSEN_E1_MULTIPHASE_ASSESSMENT,
+                                 {node.get("goalId") for node in find(view, generator.E3_TOPIC)["children"]})
                 self.assertNotIn(generator.TRAFFIC, generator.role_atoms({"rootNodes": [motion]})["target"])
                 # This existing exam requires E.4 modelling and Newtonian
                 # dynamics. Its sole learning place must preserve those needs

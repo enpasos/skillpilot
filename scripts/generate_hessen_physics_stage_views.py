@@ -57,6 +57,7 @@ HESSEN_E1_CHILD_ASSESSMENT_VARIANTS = {
 E3_TOPIC = "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49"
 E2_TOPIC = "physics-e2-newton-and-conservation"
 HESSEN_E1_FREE_FALL_ASSESSMENT = "f41e4e30-794e-5ce4-ba5e-cc72712cd691"
+HESSEN_E1_MULTIPHASE_ASSESSMENT = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
 HESSEN_E1_CHILD_UNITS = (
     ("physics-e1-uniform-motion", "Gleichförmige Bewegung", "Uniform motion", (
         "ce431132-dfc4-42c2-aff6-bd72035190f8", "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
@@ -90,16 +91,15 @@ E_PHASE_ASSESSMENT_PLACEMENTS = {
         "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
         HESSEN_E1_VERTICAL_THROW_ASSESSMENT,
         *HESSEN_E1_ASSESSMENTS,
+        HESSEN_E1_MULTIPHASE_ASSESSMENT,
     ),
     "physics-e2-newton-and-conservation": (
         "22561c66-3957-5d55-b07a-25de1f359930",
         "72649cf5-893c-5f03-88bd-a2497171d434",
         "be6d4895-65ab-545b-8df9-84e5a308a5e3",
     ),
-    # The multi-phase model check requires the velocity vector of the throw (E.1 cut).
     "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49": (
         "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
-        "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
     ),
     "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9": (
         "dd99528a-bae5-5b78-89e6-c6092c927f8d",
@@ -576,6 +576,11 @@ def author_e1_child_units(view_id, phase, motion, find):
         if node.get("id") in unit_ids and remaining:
             raise ValueError(f"{view_id}: {node['id']} keeps targets outside the declared child-unit members: "
                              + str([child["goalId"] for child in remaining]))
+    # The reviewed LK model check uses the throw and model limits from E.1.
+    # Its voluntary offer belongs to the parent after all four child sections.
+    multiphase = take_target(HESSEN_E1_MULTIPHASE_ASSESSMENT)
+    if multiphase is None:
+        raise ValueError(f"{view_id}: missing E.1 multi-phase assessment")
     leftovers = [node for node in motion["children"] if node.get("id") not in unit_ids]
     # Generated preparation groups hold support references only; they stay.
     support = [node for node in leftovers if node["kind"] == "structure"
@@ -586,7 +591,7 @@ def author_e1_child_units(view_id, phase, motion, find):
     if stray or [node.get("goalId") for node in orientation] != ["a4d4efe1-7d30-526b-ac9c-806113da4363"]:
         raise ValueError(f"{view_id}: unexpected E.1 content outside its child units: "
                          + str([node.get("id", node.get("goalId")) for node in leftovers]))
-    motion["children"] = orientation + [node for node in support if node["children"]] + collected
+    motion["children"] = orientation + [node for node in support if node["children"]] + collected + [multiphase]
 
 
 @cache
