@@ -213,7 +213,30 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       const e1 = [...actions.values()].find(action => action.title === (language === 'de' ? 'Lernkarten zu E.1 üben' : 'Practice flashcards for E.1'))
       assert(e1?.goalIds?.length, `${filename}: E.1 has an actual practice action`)
       const selectedCards = selectPracticeCards(deck.cards, getSrsFilterTagsForGoal(value.goalIndexAll.get(memoryId)!), e1.goalIds)
-      if (scope === '') assert.equal(selectedCards.length, 9, 'The duration-neutral E.1 topic offers its nine cards')
+      if (scope === '') {
+        // The E.1 cut moved two of the former nine cards with their origin goals to E.2 and E.3.
+        assert.deepEqual(selectedCards.map(card => card.id).sort(),
+          ['001', '007', '008', '009', '010', '011', '036'].map(number => 'physics_e_cov_' + number))
+        const traffic = '4a2bf015-052b-4af0-aed7-324259fa1a8a'
+        const friction = '5fd45dbc-0eb1-591b-99a9-7386336f1456'
+        const referenceFrames = '68c90ba6-c438-463c-9a53-cf61062d416a'
+        for (const [cardId, origin, topic] of [
+          ['physics_e_cov_012', traffic, 'physics-e2-newton-and-conservation'],
+          ['physics_e_cov_035', referenceFrames, 'he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49'],
+        ]) {
+          const home = mapEntryPath(original, origin)?.find(id => value.goalIndexAll.get(id)?.extendedData?.compositionNodeId === topic)
+          assert(home, filename + ': the relocated goal belongs to its topic')
+          const topicGoals = actions.get(home)?.goalIds
+          assert(topicGoals?.includes(origin), filename + ': the relocated goal has a topic practice action')
+          const cards = selectPracticeCards(deck.cards, getSrsFilterTagsForGoal(value.goalIndexAll.get(memoryId)!), topicGoals)
+          assert(cards.some(card => card.id === cardId && card.originGoalIds?.includes(origin)), filename + ': ' + cardId)
+          if (origin === traffic) {
+            const children = treeChildren.get(home) ?? []
+            assert(children.includes(friction) && children.indexOf(traffic) > children.indexOf(friction),
+              filename + ': the E.2 traffic goal follows friction')
+          }
+        }
+      }
       assert(selectedCards.length > 0 && selectedCards.length < deck.cards.length, 'E.1 is a strict subset of the original deck')
       assert.equal(new Set(selectedCards.map(card => card.id)).size, selectedCards.length)
       for (const card of selectedCards) assert(card.originGoalIds!.some(id => e1.goalIds!.includes(id)))
