@@ -1,0 +1,74 @@
+{
+  "reviews": [
+    {
+      "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "Der Kandidat benötigt eine begrenzte Bewertungskorrektur. Die fachliche Musterlösung ist richtig, aber die ausdrückliche Vollpunktfreigabe für einen bloßen Gesamtabstandsvergleich ermöglicht ein Bestehen ohne eine beanspruchte qualitative Teilkompetenz.\nNachrechnung A: x/t=2,0 m/s; f/t²=5,00;5,00;4,888… m/s². Damit sind x(t)=2,0t und näherungsweise f(t)=5,0t² sowie f≈(1,25 m⁻¹)x² vereinbar. Drei gerundete Datenpaare begründen eine Modellannahme, kein eindeutiges allgemeines Bewegungsgesetz oder ausgewiesene Messunsicherheit.\nNachrechnung B: Reaktionswege 13,888… m und 27,777… m; Anhaltewege 27,888… m und 83,777… m. Das Verhältnis beträgt 3,003984…; der zweite Anhalteweg überschreitet den doppelten ersten um genau 28 m. Beide Bremswege sind mit derselben konstanten Verzögerung von etwa 6,889 m/s² vereinbar. Ein allgemeines Bremsgesetz wird daraus richtigerweise nicht behauptet. Bei X ist 27,8+56=83,7 ein Additionsfehler, keine zulässige Rundung.\nDie Punkte stimmen rechnerisch: A=6×1+2=8, B=2+2+3+1=8, insgesamt 16. Die beiden scoring-IDs tragen jeweils 8 BE. Die Grenze 15 steht konsistent in scoring und beiden Lösungssprachen. Quellen: canonical-input.json:183–202, 1096.",
+      "preparationReview": "Die vollständige Vorbereitung umfasst 77 transitiv erreichbare Knoten; keine Referenz fehlt, kein Zyklus besteht. Die drei unmittelbaren Voraussetzungen bleiben gegenüber dem Original unverändert. Wurf, freier Fall, Bewegungsgesetze, konstante Beschleunigung, Verkehrsmodelle, Modellgrenzen sowie die nötigen mathematischen und messtechnischen Grundlagen sind enthalten. Zusätzliche requires sind nicht erforderlich. Quellen: canonical-input.json:37–41, 137–141, 284–1094; besonders 306–314, 433–441, 516–525, 681–688, 925–932, 975–985.\nPhysikalische Geltungsbedingungen: gemeinsame Zeit seit dem Abrollen, passend gewählte Ortsnullpunkte, vx0=2,0 m/s, vertikale Anfangsgeschwindigkeit null, ax=0, konstantes g und vernachlässigbarer Luftwiderstand. Für sR=v·tR wird gleichbleibende Geschwindigkeit während der Reaktionszeit angenommen; eine Herleitung von sB=v²/(2|a|) würde konstante Bremsverzögerung bis zum Stillstand voraussetzen. Diese Herleitung ist hier nicht verlangt. Ein spezifischer J9-Regeltext und dessen vollständiger Bedingungskatalog fehlen; eine formale J9-Erfüllung ist deshalb nicht bestätigbar.\nSN: reject einer quellenbelegten D′-Freigabe. ST: reject einer quellenbelegten D′-Freigabe. Das sind Ablehnungen einer unbelegten Bestätigung, keine curricularen Gegenbeweise: Die ausschließlich zugelassenen JSON-Dateien enthalten weder bezeichnete SN-/ST-PDFs noch physische Seitenangaben. Das Länderarray allein belegt keine curriculare Passung. Quellenbasis dieser Grenze: canonical-input.json:1–1099, insbesondere 144–166 und 233–243.",
+      "directCoverageReview": "Das einzige unmittelbar anerkannte Ziel ist 4a2bf015-052b-4af0-aed7-324259fa1a8a. Sein vollständiger Wortlaut verlangt qualitative Beurteilung von Reaktions- UND Bremswegen, Beurteilung mithilfe einfacher Modelle und daraus abgeleitete Sicherheitsabstandsbewertung. Teil B fordert dafür geeignete Leistungen: Reaktionsmodell, Anhaltewegsummen und ein mit beiden Einzeländerungen begründetes Abstandsargument. Das stehende Hindernis ist eine passende Alltagssituation; weder ein fahrendes vorausfahrendes Fahrzeug noch die eigenständige Herleitung des Bremsgesetzes gehören zwingend zu diesem Wortlaut. Ein ursprünglicher Inhaltsdeckungsfehler dieses vorhandenen Einzelziels ist insoweit nicht festgestellt. Quellen: canonical-input.json:171–173, 183, 201, 213–217.\nDie Anerkennung ist unter der tatsächlichen Kandidatenregel dennoch nicht gesichert: Die Ausnahme für eine bloße numerische Widerlegung kann volle J-Punkte vergeben, obwohl die qualitative Beurteilung beider Einzelwege fehlt. Die Aufgabe enthält diese Facette bereits; fehlerhaft ist ihre Bewertung.\nR2: reject einer Bestätigung des BES-Einheitsdeckungsanspruchs, weil der genaue BES-Eintrag coverageReviews samt R2-Wortlaut im Input vollständig fehlt. R2 wird ausschließlich diesem fehlenden BES-Eintrag zugeordnet und ausdrücklich nicht mit den Reaktionswegpunkten R2BE verwechselt. Ohne den Wortlaut lässt sich kein konkreter Inhaltsfehler des individuellen R2-Claims feststellen. Insbesondere wäre fehlende Versuchsdurchführung allein kein berechtigter Einwand gegen einen engeren Claim zur schriftlichen Modellauswertung.\nDirekt nachgewiesen werden schriftliche Auswertung und Modellanwendung; die Videoauswertungsbeschreibung liefert Methodenplanung. Eigene Versuchsdurchführung, eigene Datenerhebung, quantitative Unsicherheitsbestimmung und eine ganze Unterrichtseinheit werden nicht geprüft. Ihr Fehlen erweitert den individuellen Verkehrsclaim nicht und widerlegt ihn nicht. Die größere experimentelle Wurfkompetenz bleibt Vorbereitung, ohne zusätzliche direkte Anerkennung. Quellen: canonical-input.json:183–202, 306–314, 681–688. Ein Ganzheits- oder Experimentalqualifikationsversprechen wird durch diese Prüfung nicht getragen.",
+      "languageReview": "DE und EN stimmen in Daten, Arbeitsaufträgen, Lösungen und Punkteverteilung sachlich überein. Beide verlangen ausdrücklich die Erklärung der jeweiligen Änderung von Reaktions- und Bremsweg. Beide Lösungssprachen enthalten auch dieselbe problematische Vollpunktklausel für den bloßen Gesamtabstandsvergleich. Diese steht im Widerspruch zur strengeren J-Beschreibung in beiden Sprachen. Die Erklärung darf verbal oder numerisch erfolgen; eine bestimmte Ausdrucksform oder ein zusätzlich berechneter Dreifachfaktor darf nicht verlangt werden. Quellen: canonical-input.json:183–202.",
+      "recommendedRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedCoveredGoalIds": [
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+      ],
+      "recommendedPassingPoints": 15,
+      "gradedSubmissions": [
+        {
+          "submissionId": "X",
+          "demonstratedCore": true,
+          "scores": [
+            {
+              "criterionId": "motion_models_1",
+              "pointsAwarded": 8,
+              "reason": "Alle sechs Einpunktbeiträge sind sichtbar: Längenkalibrierung, tatsächliche Bildzeiten, derselbe Bezugspunkt in beiden Koordinaten, datenbegründetes lineares x(t), datenbegründetes quadratisches f(t) und gemeinsame Zeit. Die Zeitausschaltung begründet die Parabel vollständig und verdient weitere 2 BE. Formeln und Koordinaten ergänzen die schematischen Graphen. Quellen: canonical-input.json:192, 1096."
+            },
+            {
+              "criterionId": "motion_models_2",
+              "pointsAwarded": 7.5,
+              "reason": "R=2: beide Modellanwendungen und Reaktionswege richtig. S=1,5: beide Additionsansätze und der erste Anhalteweg richtig; für 27,8+56=83,7 entfällt einmalig der halbe Ergebnispunkt. J=3: Verdoppelung und Vervierfachung werden ausdrücklich verknüpft und die Abstandsaussage richtig widerlegt. L=1: Nässe als begründete Modellgrenze. Kein weiterer Abzug für denselben Rechenfehler. Quellen: canonical-input.json:184, 197, 1096."
+            }
+          ],
+          "total": 15.5,
+          "passes": true,
+          "rationale": "15,5≥15. Der vollständige beanspruchte Kern ist trotz eines einzelnen Additionsfehlers nachgewiesen."
+        },
+        {
+          "submissionId": "Y",
+          "demonstratedCore": false,
+          "scores": [
+            {
+              "criterionId": "motion_models_1",
+              "pointsAwarded": 8,
+              "reason": "Die gemeinsame A-Leistung belegt sämtliche sechs Einpunktbeiträge und die vollständige Parabelbegründung mit 2 BE. Gleichwertige Evidenz aus Text, Formeln und Graphen wird gemeinsam berücksichtigt. Quellen: canonical-input.json:192, 1097."
+            },
+            {
+              "criterionId": "motion_models_2",
+              "pointsAwarded": 5,
+              "reason": "R=2 und S=2: beide Reaktions- und Anhaltewege mit richtigen Verfahren und zulässiger Rundung. J=0: Es fehlt jede Beurteilung oder vergleichende Erklärung; die unkommentierten Zahlen ersetzen diese nicht. L=1: Nässe als passende Modellgrenze. Die fehlende Beurteilung wird ausschließlich bei J belastet. Quellen: canonical-input.json:197, 1097."
+            }
+          ],
+          "total": 13,
+          "passes": false,
+          "rationale": "13<15. Die qualitative Beurteilung der Einzelwege und die daraus begründete Sicherheitsabstandsbewertung sind nicht nachgewiesen."
+        }
+      ],
+      "strongestIndependentFalsePassAttempt": "A vollständig; in B beide Reaktions- und Anhaltewege richtig berechnet, anschließend nur „83,8 m > 2·27,9 m, also ist die Behauptung falsch“ und eine zutreffende Modellgrenze. Nach der ausdrücklichen Vollpunktklausel in canonical-input.json:184 und 202 ergibt das A8+R2+S2+J3+L1=16. Der Lernende beurteilt dabei die Summe, erläutert aber weder die Verdoppelung des Reaktionswegs noch die Vervierfachung des Bremswegs. Diese fehlende Interpretation darf nicht aus den Zahlenpaaren hinzugedacht werden; sie wird in Aufgabe und direktem Ziel verlangt (183, 201, 216–217). Jede zulässige Schwelle unter 16 lässt diesen Gegenfall bestehen. Eine reine Schwellenänderung reicht daher nicht. Dagegen ist das Weglassen allein von L bei sonst vollständiger Leistung kein sicherer Gegenbeweis zur Deckung des direkten Zielwortlauts.",
+      "strongestIndependentFalseFailureAttempt": "Unabhängiger Versuch: A vollständig; B mit richtigen Rechnungen, ausdrücklich verknüpfter Verdoppelung/Vervierfachung und richtiger Abstandsbewertung, jedoch dem kleinen Vergleichsfehler „2·27,9=55,7“. Das ergibt A8+R2+S2+J2+L1=15 und besteht. Ebenso bleibt X mit seinem isolierten Ergebnisfehler bei 15,5. Ein falsches Durchfallen allein wegen eines solchen einzelnen kleinen Fehlers wurde nicht gefunden. Zulässige Rundungen sowie numerische oder verbale gleichwertige Begründungen dürfen keinen zusätzlichen Abzug erhalten. Quellen: canonical-input.json:184, 192, 197, 202.",
+      "requiredCorrections": [
+        "Die numerische Vollpunktklausel in solutionContent und solutionContentEn mit der J-Beschreibung harmonisieren: Ein bloßer Vergleich der Gesamtabstände ist ein richtiges Teilargument und erhält ohne den vollständigen qualitativen Zusammenhang höchstens J1. J3 beziehungsweise J2 bei kleinem Vergleichsfehler verlangen sichtbar verknüpfte Evidenz zur Änderung beider Einzelwege, verbal oder numerisch, etwa sR,100≈2·sR,50 und sB,100=4·sB,50 mit daraus abgeleitetem Abstandsargument. Keine zusätzliche Aufgabe, Wortform, Dreifachfaktorberechnung oder Bestehensnebenbedingung einführen. Nach dieser begrenzten Korrektur kann die Grenze 15/16 bestehen bleiben: Ohne vollständigen Urteilskern sind höchstens 14 Punkte erreichbar."
+      ],
+      "materialContinuityAndRecognition": "Außerhalb von examData besteht keine Änderung. Geändert wurden ausschließlich scoring, solutionContent und solutionContentEn; Aufgabenwortlaut, A8/B8, Voraussetzungen, Jurisdiktionsarray und das einzige coveredGoalId bleiben erhalten. Die Gruppierung in zwei scoring-IDs verhindert die begrenzte Korrektur nicht, weil deren Beschreibungen Teilpunkte festlegen. Quellen: canonical-input.json:5–210, besonders 83–102 und 183–210.\nDie eigenständigen fachlichen Leistungen liegen in Datenauswertung, Zusammenführung der Teilbewegungen und Anwendung der Verkehrsmodelle. Eine eigene curriculare Quellenübertragung ist damit nicht belegt. Der Rahmenname hessen-kc-2024-physics mit Phase E und das bundesweite Länderarray ersetzen keine Herkunfts- oder Platzierungsbegründung (144–166, 233–243).\nDie vier ursprünglichen E.1-Pflichtslots, Freiwilligkeitsregeln, ursprüngliche weitergehende Anerkennungsargumente und der BES-Ganzheitsanspruch sind nicht enthalten. Ihre Konsistenz kann daher weder bestätigt noch als widerlegt dargestellt werden. Die Bewertungsänderung liefert dafür keine neuen Belege. Die vorhandene Anerkennung bleibt auf das einzelne Verkehrsziel begrenzt; Planungsleistung begründet keine experimentelle Gesamtqualifikation.",
+      "semanticKind": "practiceAssessment",
+      "semanticKindReason": "Die tatsächlich verlangte Tätigkeit besteht aus schriftlicher Datenauswertung, Modellrechnung, Begründung und Bewertung mit Musterlösung und Punkteschlüssel. Die Änderung betrifft diese Leistungsbewertung; sie verändert den Tätigkeitscharakter nicht. Entscheidend sind die Arbeitsaufträge und die Bewertung, nicht die Tags. Quellen: canonical-input.json:183–202."
+    }
+  ],
+  "limitations": [
+    "Es wurden ausschließlich canonical-input.json und output.schema.json gelesen; keine Verzeichnissuche, keine anderen Quellen und kein Netzwerk wurden verwendet.",
+    "Die zugelassenen Eingaben bezeichnen keine retained SN-/ST-PDFs und keine physischen PDF-Seiten. Eine Prüfung solcher Quellenspannen war deshalb nicht möglich; SN/ST-reject bezeichnet die verweigerte Quellenbestätigung.",
+    "Der genaue BES-coverageReviews-Eintrag mit R2, der J9-Regeltext sowie E.1-Pflichtslots, Freiwilligkeits- und weitergehende Anerkennungsangaben fehlen vollständig. Ihre Inhalte wurden weder rekonstruiert noch aus Labels abgeleitet. R2-reject ist daher keine Feststellung eines nachgewiesenen ursprünglichen Inhaltsfehlers."
+  ]
+}
