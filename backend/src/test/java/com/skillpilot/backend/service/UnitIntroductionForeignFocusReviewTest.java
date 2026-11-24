@@ -13,6 +13,8 @@ import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -32,6 +34,9 @@ class UnitIntroductionForeignFocusReviewTest {
     private static final String PHYSICS_SCOPE = "composition:de-he-gym-physics-gk-g9:structure:physics-e1-motion";
     private static final String PHYSICS_OPENING = "a4d4efe1-7d30-526b-ac9c-806113da4363";
     private static final String PHYSICS_PRACTICE = "8aff7aac-321b-5172-ac55-877876bfd2cd";
+
+    private static final String CHILD_OPENING = "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e";
+    private static final String CHILD_TARGET = "e0004439-ed34-5caf-858a-6107918224eb";
 
     @Autowired private LearnerService learners;
     @Autowired private LearnerRepository repository;
@@ -78,6 +83,42 @@ class UnitIntroductionForeignFocusReviewTest {
         assertThat(repository.findById(ID).orElseThrow().getActiveGoalId()).isEqualTo(PHYSICS_PRACTICE);
         assertThat(mastery.findByLearner_SkillpilotId(ID)).singleElement()
                 .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(PHYSICS_OPENING));
+    }
+
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void directNestedChildConfirmationResumesItsSelectedGoalWithoutReceivingTheParent(boolean autoPilot) {
+        Learner learner = repository.findById(ID).orElseThrow();
+        learner.setAutoPilot(autoPilot);
+        repository.saveAndFlush(learner);
+        learners.setActiveGoal(ID, CHILD_TARGET);
+        assertThat(repository.findById(ID).orElseThrow().getActiveGoalId()).isEqualTo(CHILD_OPENING);
+        assertThat(repository.findById(ID).orElseThrow().getPendingUnitEntry()).contains(CHILD_TARGET);
+
+        learners.setMastery(ID, new MasteryUpdateRequest(Map.of(CHILD_OPENING, 1.0), CHILD_OPENING));
+
+        assertThat(repository.findById(ID).orElseThrow().getActiveGoalId()).isEqualTo(CHILD_TARGET);
+        assertThat(repository.findById(ID).orElseThrow().getPendingUnitEntry()).isNull();
+        assertThat(mastery.findByLearner_SkillpilotId(ID)).singleElement()
+                .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(CHILD_OPENING));
+        assertThat(learners.getRequiredUnitOrientationGoalId(ID, PHYSICS_SCOPE)).isEqualTo(PHYSICS_OPENING);
+    }
+
+    @Test
+    void guidedParentDescentStillConfirmsParentThenChildBeforeResumingTheSelectedGoal() {
+        learners.setPlannedGoals(ID, Set.of(PHYSICS_SCOPE));
+        learners.setActiveGoal(ID, CHILD_TARGET);
+        assertThat(repository.findById(ID).orElseThrow().getActiveGoalId()).isEqualTo(PHYSICS_OPENING);
+
+        learners.setMastery(ID, new MasteryUpdateRequest(Map.of(PHYSICS_OPENING, 1.0), PHYSICS_OPENING));
+        assertThat(repository.findById(ID).orElseThrow().getActiveGoalId()).isEqualTo(CHILD_OPENING);
+        assertThat(mastery.findByLearner_SkillpilotId(ID)).singleElement()
+                .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(PHYSICS_OPENING));
+
+        learners.setMastery(ID, new MasteryUpdateRequest(Map.of(CHILD_OPENING, 1.0), CHILD_OPENING));
+        assertThat(repository.findById(ID).orElseThrow().getActiveGoalId()).isEqualTo(CHILD_TARGET);
+        assertThat(mastery.findByLearner_SkillpilotId(ID)).extracting(result -> result.getGoalKey())
+                .containsExactlyInAnyOrder(PHYSICS_OPENING, CHILD_OPENING);
     }
 
     @Test

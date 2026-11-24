@@ -21,6 +21,20 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 24. November 2026, 05:21 MEZ – Direkter Einstieg in eine Untereinheit: Wiederaufnahme korrigiert
+
+Nach der Bestätigung des eigenen Auftakts nimmt ein bewusst aus dem Mathematikfokus gewähltes Physikziel die gewählte Arbeit wieder auf. Die Wiederaufnahme berücksichtigt den echten Voraussetzungenpfad und unterdrückt nur zusätzlich abgeleitete übergeordnete Auftakte außerhalb der gewählten Einheit. Der geführte Weg über Eltern- und Kindauftakt sowie echte offene Voraussetzungen bleiben erhalten. Das Paket ergänzt null Lernziele, Prüfungsaufgaben und Stufenpläne. K 0/13 und F 0/7 sind im Gesamtauftrag vollständig abgeschlossen; dieses Paket wird noch nicht als integriert gezählt. Curriculum und Platzierungen erhalten keine Änderung; eine neue Rücklaufwirkung wird nicht beansprucht.
+
+Zur Sichtung:
+
+- Aus Mathematik direkt eine Physikuntereinheit wählen, ihren Auftakt bestätigen und das ursprünglich gewählte Ziel wiedersehen; Autopilot an und aus vergleichen.
+- Dieselbe Arbeit aus der Elterneinheit beginnen: zuerst Eltern-, danach Kindauftakt erhalten.
+- Bei einer offenen echten Voraussetzung deren Bearbeitung fortsetzen; der Kindauftakt bestätigt keinen Elternabschluss.
+
+**Automatisierte Nachweise:** 306 Tests in elf Backendklassen bestanden, einschließlich der sechs Fälle im [Einstiegsreview](https://github.com/enpasos/skillpilot/blob/fix/direkteinstieg-kindeinheit/backend/src/test/java/com/skillpilot/backend/service/UnitIntroductionForeignFocusReviewTest.java) und der 14 [Planungsfälle](https://github.com/enpasos/skillpilot/blob/fix/direkteinstieg-kindeinheit/backend/src/test/java/com/skillpilot/backend/service/LearnerPlanningScopeServiceTest.java). Die unveränderte ursprüngliche E.1-Regressionsfixture bestand zusätzlich alle drei Fälle mit den Eingabebytes von `bf34d99e7f`. Diese Laufzeitprüfungen sind von fachlichen Aufgabenreviews und persönlichen Lernendenleistungen getrennt.
+
+**Integration offen.** Der [separate Zweig](https://github.com/enpasos/skillpilot/compare/main...fix/direkteinstieg-kindeinheit) basiert auf `main` bei `d43febbc04`. Die Zusammenführung mit dem von Claude umgesetzten E.1-Schnitt, ein PR und die vollständige frische Main-CI stehen aus. Nächster Schritt ist die Prüfung und gemeinsame Integration beider Lieferungen.
+
 ## 23. November 2026, 12:14 MEZ – Prüfungen im regulären Lernweg nach dem Wurfthema
 
 Das hessische E.1-Material empfiehlt „Waagerechter Wurf analysieren“ vor Pflichtteil B und vor der freiwilligen Aufgabe zur gemeinsamen Flugzeit. Beide Empfehlungen sind einzeln hinterlegt. Die fachlichen Voraussetzungen, Aufgabenfassungen und Nachweise behalten ihre bisherige Bedeutung. Das Paket ergänzt zwei Empfehlungen und aktiviert null zusätzliche Stufenpläne. K 0/13 und F 0/7 vollständig abgeschlossen. [Material](https://github.com/enpasos/skillpilot/blob/df75a44967e914afcfba5471e21387f1e20b1323/curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json)
