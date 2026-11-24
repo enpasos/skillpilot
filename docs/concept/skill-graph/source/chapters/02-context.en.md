@@ -186,6 +186,8 @@ A memory goal bundles the required cards of a flashcard deck. Three distinct con
 - **Verified recall of a card.** Controlled recall records whether an individual card was answered accurately without card hints; flipping cards or self-rating during practice does not constitute verified recall.
 - **Goal completion.** The memory goal stays derived: it is mastered once every required card of its deck has passed verified recall -- *completion recall*.
 
+Practice and check are independent of each other. Practice follows the flashcard principle and only decides when a card is due again. The check, verified recall, can be taken without prior practice, and only a passed check ticks a card off for good.
+
 Card-level process lanes and goal completion must remain distinct; they introduce neither a second mastery tier nor an extra stored goal outcome.
 
 **Cards and learning units (decision of 23 November 2026).** Cards do not become goals of the graph. Each card has its own state, belongs to its understanding goals, the ordinary curricular goals it was written for, and is practised and checked through the learning unit. The learner's box holds the released and not yet removed cards. A card enters the box only when its understanding goal is passed; with several understanding goals, all that lie in the learner's Personal Curriculum must be passed. A credited goal counts like a passed one. The cards of a unit are the cards of its atomic goals, at every level of the unit hierarchy.

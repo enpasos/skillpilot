@@ -30,6 +30,12 @@ practised and checked through the learning unit. The *box* is the set of a
 learner's released and not yet removed cards; the *deck goal* is the memory
 goal that references a whole deck.
 
+The principle, as the Product Owner restated it on 24 November 2026: learning
+follows the flashcard principle; the check is independent of it; a card is
+ticked off for good when its check is passed. Practice therefore only decides
+when a card is due again and never ticks a card off, and the learner can ask
+for the check without prior practice.
+
 - **Release.** A card enters the box only when its understanding goal is
   passed. With several understanding goals, all that lie in the learner's
   Personal Curriculum must be passed. A credited goal (gray check) counts like

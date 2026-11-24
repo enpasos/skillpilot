@@ -186,6 +186,8 @@ Ein Memorierziel bündelt die erforderlichen Karten eines Decks. Drei Dinge sind
 - **Verifizierter Abruf einer Karte.** Der kontrollierte Abruf hält fest, ob eine Karte ohne Kartenhilfe richtig beantwortet wurde. Umdrehen oder Selbsteinschätzung während der Übung sind kein solcher Nachweis.
 - **Abschluss des Ziels.** Das Memorierziel bleibt abgeleitet: Es ist beherrscht, sobald jede erforderliche Karte seines Decks den verifizierten Abruf bestanden hat, der *Abschlussabruf*.
 
+Übung und Prüfung sind voneinander unabhängig. Geübt wird nach dem Karteikartenprinzip; die Übung bestimmt nur, wann eine Karte wieder fällig ist. Die Prüfung, der verifizierte Abruf, kann auch ohne vorherige Übung abgelegt werden, und nur eine bestandene Prüfung hakt eine Karte endgültig ab.
+
 Kartenprozess und Zielabschluss sind zu unterscheiden; sie erzeugen keine zweite Mastery-Stufe oder ein zusätzliches gespeichertes Zielergebnis.
 
 **Karten und Lerneinheiten (Entscheidung vom 23. November 2026).** Karten werden keine Ziele des Graphen. Jede Karte hat einen eigenen Zustand, gehört zu ihren Verständniszielen, den gewöhnlichen curricularen Zielen, für die sie geschrieben wurde, und wird über die Lerneinheit geübt und geprüft. Der Karteikasten der lernenden Person enthält die freigegebenen und noch nicht entnommenen Karten. Eine Karte kommt erst in den Karteikasten, wenn ihr Verständnisziel bestanden ist; bei mehreren Verständniszielen müssen alle bestanden sein, die im Personal Curriculum der Person liegen. Ein angerechnetes Ziel zählt wie ein bestandenes. Die Karten einer Einheit sind die Karten ihrer atomaren Ziele auf jeder Ebene der Einheitenhierarchie.
