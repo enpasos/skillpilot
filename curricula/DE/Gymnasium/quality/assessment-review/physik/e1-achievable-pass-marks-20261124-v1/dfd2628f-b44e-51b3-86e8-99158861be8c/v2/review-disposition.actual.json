@@ -1,0 +1,140 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "2de44b9b39e27e3046e2cd9a87493f9b6a560848bde07839bbbe36a59f37cbc1",
+    "normalizedGoalSha256": "cdda88dbbc7fd28e40008261b9c560b22054602e5a0dc0bae36ef25fa8a9ea41"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "4c218cc8328e89b173b79270f64c8a8566accc7ddb6643ad6328b3b99a5afc14",
+    "normalizedGoalSha256": "92c2dc5580a3dcf326f32283cb5339bde822f178eb95e0bdb31caced8d25fbb5"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "d14df39c3ae694a2f18a5792f3f783df8ccb0598bced0d4708f9429a528165f3"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "ece7e171b71b59321112b9673fc40b2825e27dbfffb6cbe8fc2732d44ddfc55e"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "495edb5aa17f920316d5014eb16283fab387466521fc27394da4c92a63786add"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20e3e-0373-7511-b01f-bf5b97c2b38d",
+      "decision": "accept",
+      "eligibleForActivation": true,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S04",
+          "kind": "missing-facet",
+          "performanceId": "P_BEWERT"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P_ANHALT"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S05",
+          "kind": "misconception",
+          "performanceId": "P_ANHALT"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S01",
+          "kind": "misconception",
+          "performanceId": "P_BEWERT"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P_BEWERT"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "1debe08a431f5d017491a02059183b171be38c96a00007657ac8882f02a483a4"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "4e2350e8889884ab399b4f0670b2c591c998b63f87cf62278ceb85b58f45d7c8"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20e3e-0372-7d00-baa2-5c4f6492d62a",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "incomplete performance review"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S05",
+          "kind": "misconception",
+          "performanceId": "P_ANHALT"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P_ANHALT"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S01",
+          "kind": "misconception",
+          "performanceId": "P_BEWERT"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S04",
+          "kind": "missing-facet",
+          "performanceId": "P_BEWERT"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P_BEWERT"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "3a055438837257721a291a112b930a8426a3e7de53affcfe21153f965dca92b6"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "fea45e5c3561a92327dfbeb33f209716f113dbb46d8543d6e03a225c1bd79cbe"
+      }
+    }
+  ],
+  "eligibleForActivation": false
+}

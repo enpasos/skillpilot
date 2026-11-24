@@ -1,0 +1,139 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "f41f6906b5df5b79225a74b955077dbdc0bb502a04b09fb7e050835595d3152e",
+    "normalizedGoalSha256": "b09d3af871eabbae0dfe5ecf6320a6c645c7ce95bcb0d006eaae4531451f113e"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "df95413e50dddeff78c36447b9b175ea7e1a375a0d9714ff4e9ac306f768a2e1",
+    "normalizedGoalSha256": "3ba2fea8b1db06f8f93ac549984eae94ec510a6af8f922b91ae81f451802985e"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "9e5f444c4cb61e02eb3686014e47eedb76304fedd3b57ef050a7d8ec69801689"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "23c76cfb08dbca8b4af25eee67c4786fa4e4caf5b2143bdf09c6f468d4fbad20"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "0109396fe538f01ba2a49b16700cfc1eaf651bbfd7c505b33ba1eb203b7b75e9"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20e88-85b1-7721-b8cf-d2f2bbfde7b6",
+      "decision": "accept",
+      "eligibleForActivation": true,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S05",
+          "kind": "misconception",
+          "performanceId": "P-A"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P-B"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P-A"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S01",
+          "kind": "misconception",
+          "performanceId": "P-B"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S04",
+          "kind": "missing-facet",
+          "performanceId": "P-B"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "c2422cd156bec4cd284e5d3751e18282f44c6c253debdfadefb270fcfed19e50"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "468a69b2eae21e998d5b1f57fad5d43bf9106063102bf15b2005cb62f1409cbb"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20e88-85b1-71b0-aede-0432ec662848",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P-B"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S05",
+          "kind": "misconception",
+          "performanceId": "P-A"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S01",
+          "kind": "misconception",
+          "performanceId": "P-B"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P-A"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S04",
+          "kind": "missing-facet",
+          "performanceId": "P-B"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "a7d65051150c1b28cf92271fa57a7d6e06b4dd13e5557df7fd1a056574692ee4"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "cf967c1b365f3d272d94efb31e68a654a23034fdca779d4f17869b968d446eef"
+      }
+    }
+  ],
+  "eligibleForActivation": false,
+  "technicalActivationFindings": []
+}

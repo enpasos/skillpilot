@@ -1,0 +1,150 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "9ba62bc0837108c1ae0d23c075c325f49201430a25f68c151b0b031fcff1c7fb",
+    "normalizedGoalSha256": "9352ce7b21b6b6eb4e83cee751009bcef1be87ae7f5261ea40ced6f2ab0f8ff8"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "33423416d7ddeb1f607487b3aee357c1c3f6a34feb5c4d4460746a4c0bcd33a2",
+    "normalizedGoalSha256": "c3a2b4ecfac6d10c684241a778dd6f8cf14e63eba997a05c6148805b1e42e2e2"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "acbb430c1714ab10f54709186a75f22103d6540c321c08124ff2ddf14d53adcc"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "3df50915c3a17aa26b64a3bb9dc1ffe6e87f2b52eb4153c65d403c58623f533e"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "e34d69ec06d2bc77ea0a348e169294fdb1598e5d99976bf1feffdfc6317f6e26"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20e46-fb6d-7b20-a4aa-67c7261b8710",
+      "decision": "accept",
+      "eligibleForActivation": true,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S03",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "quellenbezug"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "hoehenbezug"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "protokoll"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S07",
+          "kind": "missing-performance",
+          "performanceId": "zeitgrenzen"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S06",
+          "kind": "missing-facet",
+          "performanceId": "protokoll"
+        },
+        {
+          "submissionId": "L07",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "hoehenbezug"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "0b1b077c608d6fa1a681a4c912bcd473b7ff47b15aca463f035c22de22e0fb72"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "13535f465d0b5b6fb3078d400b81247265929b0752a57ef0a77f4e3a2c730cbb"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20e46-fb6d-78b3-beda-dde1728cf330",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S03",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "protokoll"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S07",
+          "kind": "missing-performance",
+          "performanceId": "zeitgrenzen"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "hoehenbezug"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S06",
+          "kind": "missing-facet",
+          "performanceId": "protokoll"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "quellenbezug"
+        },
+        {
+          "submissionId": "L07",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "hoehenbezug"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "59d517ec6783b50eed091a6cc660e2d7c702f325d53c78effe3bdddc0ddbd207"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "4bb0a4858ec2ae85901b479b766d668197c33375bdb058f28733c4ae921e090a"
+      }
+    }
+  ],
+  "eligibleForActivation": false
+}

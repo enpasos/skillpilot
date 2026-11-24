@@ -1,0 +1,149 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4",
+    "normalizedGoalSha256": "94caaa5f3f8a3a972d5a47fb25f092fcfbe6a099101e596b2eba36a112688a20"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "006842fc08776538bcd564b74b963cda7602733ae351015f450458e229d56e88",
+    "normalizedGoalSha256": "0edfecc7e70ac844922237c88d0977891e07c031de47a1a63617a247a21babfd"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "481f8984c0df335b795697d9292a8065bbdff7137aac47b470586e8b67be2d3c"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "79a3dcb3599b83f11a49e261c0fd7d111e45e223663ad6b2414983755d428611"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "6c4d31fa22a1643bda3ae6192dd12c3498df2b78f08eb7e7f09dae2b44d2b100"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20e45-b11d-7c23-9f2d-3af29e254e41",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "L01: unaffected performances not fully demonstrated",
+        "L03: additional or repeated minor-slip deductions",
+        "L04: unaffected performances not fully demonstrated",
+        "L06: omitted/misconceived performance received credit",
+        "L06: unaffected performances not fully demonstrated"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P-EXP"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P-GRAPH"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "P-LAW"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "301a653ac3fe5c4ec16d42986e9547a33a8148543e9c821c598c40329ad277b8"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "e45515f8cdfa6ae5dec0cd1867dfbf78a2edd79e8653292180b67116633dd659"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20e45-b11d-73c1-8be1-3420c4de73d3",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "L01: additional or repeated minor-slip deductions",
+        "L02: unaffected performances not fully demonstrated",
+        "L03: unaffected performances not fully demonstrated",
+        "L05: unaffected performances not fully demonstrated"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P-GRAPH"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P-EXP"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "d9ea893f118c424c0e315cd724a0d4fa4c1a994210f318e97549b0460d26c018"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "8990c2bfc925a79ed14cbe20afc1602d2bf2892b2b7a79071d112cf782d109d3"
+      }
+    }
+  ],
+  "eligibleForActivation": false
+}

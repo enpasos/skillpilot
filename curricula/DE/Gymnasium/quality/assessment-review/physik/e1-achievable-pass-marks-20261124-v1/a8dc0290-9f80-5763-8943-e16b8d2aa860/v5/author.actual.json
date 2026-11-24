@@ -1,0 +1,57 @@
+{
+  "provider": "Anthropic",
+  "role": "rubric-author",
+  "requestedModel": "opus",
+  "effort": "high",
+  "tools": [],
+  "startedAt": "2026-11-24T16:35:56.037436+00:00",
+  "finishedAt": "2026-11-24T16:47:04.722661+00:00",
+  "exitCode": 0,
+  "inputArtifacts": [
+    {
+      "path": "author/system.txt",
+      "sha256": "436c4be1a84cfa98d40606cc9ac40bb52299024017a8ae3c4e33241db7122764"
+    },
+    {
+      "path": "author/instructions.txt",
+      "sha256": "af488385cf137084f27b29e663244883731fb54eb0a5320cb0e3bc70c50b9704"
+    },
+    {
+      "path": "author/input.json",
+      "sha256": "3580111926af50147a1fea5cebaf2d2ae3d81eb561da9e87a8e3b2bab5545c05"
+    }
+  ],
+  "outputArtifacts": [
+    {
+      "path": "author/provider-response.json",
+      "sha256": "9068909d12983ae325b264136b90e1e3af1a0921bcb7ecb0f9e657189a7ec0a8"
+    },
+    {
+      "path": "author/authored.json",
+      "sha256": "d645b880c3d1c71b8a2425b278b5daa83be26826d4f5b920311e30404fddd86f"
+    },
+    {
+      "path": "candidate.goal.json",
+      "sha256": "2637ecd48b2717a3fd12508ab6350af6ec747eb8d2344adbef31e50ddc350e23"
+    },
+    {
+      "path": "performances.json",
+      "sha256": "78b856bbb7b5a6d725e1ba1e60b1e3d7da26a1b05f90091c385ce588e7f0f8bd"
+    },
+    {
+      "path": "audits.json",
+      "sha256": "fa2f760549949893d3d87f249e8b174a7376ff3cb59bc503cc212a10798e2db6"
+    },
+    {
+      "path": "goalJudgements.json",
+      "sha256": "fb026240621430dcb687cc24837bd639603bc9810325209f95768330a2c9f7bc"
+    },
+    {
+      "path": "printedLabels.actual.json",
+      "sha256": "a6dde5d103ffa0dc389830198fa8990dc0d38aaf13e464d4f56e6440b4d2140b"
+    }
+  ],
+  "model": "claude-opus-5-5",
+  "sessionId": "1e049d22-88e9-48c9-b144-0d33b2b4eee6",
+  "candidateSha256": "2637ecd48b2717a3fd12508ab6350af6ec747eb8d2344adbef31e50ddc350e23"
+}

@@ -1,0 +1,165 @@
+{
+  "status": "patch",
+  "changes": [
+    {
+      "field": "steps.graph-a.description",
+      "find": "G1 eigenes Messpunktdiagramm mit erkennbar zugeordneten Achsengrößen und sichtbaren Punkten mindestens eines gültigen Laufs.",
+      "replacement": "Bezugsläufe: Hat die Reihe mindestens zwei gültige eigene Läufe, sind genau diese die Bezugsläufe. Zusätzlich beigelegte Fremdläufe sind dann keine Bezugsläufe, verursachen keine Lücke und heben keine Stufe an. Hat die Reihe höchstens einen gültigen eigenen Lauf, sind alle vorgelegten gültigen Läufe Bezugsläufe, eigene wie offen ausgewiesene echte fremde. G1 eigenes Messpunktdiagramm mit erkennbar zugeordneten Achsengrößen und sichtbaren Punkten mindestens eines Bezugslaufs."
+    },
+    {
+      "field": "steps.graph-a.description",
+      "find": "Lücken: Jeder gültige Lauf zählt als genau eine Lücke, wenn er nicht zugleich im Diagramm sichtbar und mit G2 ausgewertet ist.",
+      "replacement": "Lücken: Jeder Bezugslauf zählt als genau eine Lücke, wenn er nicht zugleich im Diagramm sichtbar und mit G2 ausgewertet ist."
+    },
+    {
+      "field": "steps.graph-a.description",
+      "find": "Die Stufen 3/2/1 setzen mindestens einen gezeichneten und zugleich gefitteten Lauf voraus.",
+      "replacement": "Die Stufen 3/2/1 setzen mindestens einen gezeichneten und zugleich gefitteten Bezugslauf voraus; „gültiger Lauf“ meint in den Stufen stets einen Bezugslauf."
+    },
+    {
+      "field": "steps.graph-a.description",
+      "find": "oder Messpunktdiagramm (mit oder ohne Ausgleichsgerade) ohne g; 0 = keine",
+      "replacement": "oder Messpunktdiagramm (mit oder ohne Ausgleichsgerade) ohne g, oder vollständige Auswertung (G1 mit G2) nur an Läufen, die keine Bezugsläufe sind; 0 = keine"
+    },
+    {
+      "field": "steps.graph-a.description",
+      "find": "G1 own measured-point graph with identifiable axis quantities and visible points of at least one valid trial.",
+      "replacement": "Reference trials: if the series has at least two valid own trials, exactly these are the reference trials. Supplementary foreign trials are then not reference trials, cause no gap and raise no band. If the series has at most one valid own trial, all presented valid trials are reference trials, own and declared genuine foreign alike. G1 own measured-point graph with identifiable axis quantities and visible points of at least one reference trial."
+    },
+    {
+      "field": "steps.graph-a.description",
+      "find": "Gaps: each valid trial counts as exactly one gap if it is not both visible in the graph and analysed with G2.",
+      "replacement": "Gaps: each reference trial counts as exactly one gap if it is not both visible in the graph and analysed with G2."
+    },
+    {
+      "field": "steps.graph-a.description",
+      "find": "Bands 3/2/1 require at least one trial that is both plotted and fitted.",
+      "replacement": "Bands 3/2/1 require at least one reference trial that is both plotted and fitted; 'valid trial' in the bands always means a reference trial."
+    },
+    {
+      "field": "steps.graph-a.description",
+      "find": "or a measured-point graph (with or without fitted line) but no g; 0 = no",
+      "replacement": "or a measured-point graph (with or without fitted line) but no g, or a complete analysis (G1 with G2) only of trials that are not reference trials; 0 = no"
+    },
+    {
+      "field": "steps.graph-b.description",
+      "find": "mit den Facetten G1–G3 und denselben Stufen wie bei graph-a",
+      "replacement": "mit Bezugsläufen aus B, den Facetten G1–G3 und denselben Stufen wie bei graph-a"
+    },
+    {
+      "field": "steps.graph-b.description",
+      "find": "with facets G1–G3 and the same bands as graph-a",
+      "replacement": "with reference trials from B, facets G1–G3 and the same bands as graph-a"
+    },
+    {
+      "field": "performances.P-GRAPH.description",
+      "find": "DE: Messdaten grafisch auswerten und daraus im Modell ohne Luftwiderstand g bestimmen, in A und B.",
+      "replacement": "DE: Messdaten grafisch auswerten und daraus im Modell ohne Luftwiderstand g bestimmen, in A und B, jeweils an den Bezugsläufen (bei mindestens zwei gültigen eigenen Läufen: an den eigenen)."
+    },
+    {
+      "field": "performances.P-GRAPH.description",
+      "find": "EN: Analyse measurements graphically and determine g from them in the drag-free model, in A and B.",
+      "replacement": "EN: Analyse measurements graphically and determine g from them in the drag-free model, in A and B, each on the reference trials (with at least two valid own trials: on the own ones)."
+    },
+    {
+      "field": "goalJudgements.09029573-864f-40ca-bf8a-cee7bf6dcb73.mustShow",
+      "find": "in beiden Reihen ein Messpunktdiagramm mit Mehrpunktausgleich",
+      "replacement": "in beiden Reihen ein Messpunktdiagramm der eigenen Läufe mit Mehrpunktausgleich"
+    },
+    {
+      "field": "goalJudgements.09029573-864f-40ca-bf8a-cee7bf6dcb73.why",
+      "find": "Jeder dieser Fälle führt zum Nichtbestehen.",
+      "replacement": "Wird trotz vollständiger eigener Daten in beiden Reihen nur an Fremd- oder Ersatzdaten grafisch ausgewertet, erhalten graph-a und graph-b je höchstens 0,5 BE; es bleiben höchstens 19 BE. Jeder dieser Fälle führt zum Nichtbestehen."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "- A und B werden getrennt bewertet; Leistungen aus A zählen nicht für B.",
+      "replacement": "- Liegen in beiden Reihen mindestens zwei gültige eigene Läufe vor, wird aber nur an Fremd- oder Ersatzdaten grafisch ausgewertet, erhalten graph-a und graph-b je höchstens 0,5 BE. Es bleiben höchstens 24 − 2 · 2,5 = 19 BE. Betrifft dies nur eine Reihe, bleiben höchstens 21,5 BE.\n- A und B werden getrennt bewertet; Leistungen aus A zählen nicht für B."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "graph-a / graph-b (je 3 BE)\nFacetten:",
+      "replacement": "graph-a / graph-b (je 3 BE)\nBezugsläufe: Hat die Reihe mindestens zwei gültige eigene Läufe, sind genau diese die Bezugsläufe. Zusätzlich beigelegte Fremdläufe sind dann keine Bezugsläufe: Sie verursachen keine Lücke, heben keine Stufe an, und ihre Auswertung ersetzt nicht die der eigenen Läufe. Hat die Reihe höchstens einen gültigen eigenen Lauf (Datenschritt 0 BE), sind alle vorgelegten gültigen Läufe Bezugsläufe, eigene wie offen ausgewiesene echte fremde. Die selbst gezeigte Methodenleistung bleibt dann bewertbar.\nFacetten:"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "mindestens eines gültigen Laufs. Jeder gültige Lauf soll mit seinen Punkten erscheinen",
+      "replacement": "mindestens eines Bezugslaufs. Jeder Bezugslauf soll mit seinen Punkten erscheinen"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Lücken zählen: Jeder gültige Lauf der Reihe zählt als genau eine Lücke",
+      "replacement": "Lücken zählen: Jeder Bezugslauf der Reihe zählt als genau eine Lücke"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Mindestens ein Lauf ist im Diagramm sichtbar und zugleich gefittet.",
+      "replacement": "Mindestens ein Bezugslauf ist im Diagramm sichtbar und zugleich gefittet. „Gültiger Lauf“ meint in diesen Stufen stets einen Bezugslauf."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "(iii) Messpunktdiagramm (mit oder ohne Ausgleichsgerade), aber ohne g-Bestimmung",
+      "replacement": "(iii) Messpunktdiagramm (mit oder ohne Ausgleichsgerade), aber ohne g-Bestimmung; (iv) vollständige Auswertung (G1 mit G2) nur an Läufen, die keine Bezugsläufe sind, z. B. ausschließlich an Fremd- oder Ersatzdaten, obwohl mindestens zwei gültige eigene Läufe vorliegen"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Bei der Lückenzählung in graph zählen alle in der Reihe vorgelegten gültigen Läufe, eigene wie offen ausgewiesene fremde.",
+      "replacement": "In graph gilt das nur, wenn die Fremdläufe Bezugsläufe sind, die Reihe also höchstens einen gültigen eigenen Lauf hat. Liegen mindestens zwei gültige eigene Läufe vor, muss die grafische g-Bestimmung an diesen erfolgen. Eine Auswertung ausschließlich fremder Läufe erhält dann höchstens 0,5 BE (Stufe 0,5, (iv)). Ein zusätzlich beigelegter Fremdlauf, ob ausgewertet oder nicht, ändert die Stufe nicht."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "(a) ausdrücklich begründet und nicht zurückgenommen wird, oder",
+      "replacement": "(a) ausdrücklich begründet oder ausdrücklich als allgemeine Regel bzw. Deutung festgehalten und nicht zurückgenommen wird. Ein einziger solcher Satz genügt; eine Begründung ist nicht nötig (z. B. „Für x gegen t² bleibe ich bei g = m.“). Oder er wird"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "- Ein einmaliger unbegründeter Fehler bei sonst richtiger Evidenz ist ein Flüchtigkeitsfehler (−0,5 BE).",
+      "replacement": "- Ein einmaliger, unkommentierter Zahlen- oder Vorzeichenfehler ohne formulierte Regel ist bei sonst richtiger Evidenz ein Flüchtigkeitsfehler (−0,5 BE). Beispiel: In einer Zeile steht g = 4,86 m/s² statt 9,72 m/s², während daneben g = 2m angewendet wird. Eine ausdrücklich festgehaltene falsche Regel ist dagegen auch ohne Begründung und bei nur einmaligem Auftreten eine Fehlvorstellung. Eine erkennbare Rücknahme hebt sie abzugsfrei auf."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "- A and B are graded separately; work in A never counts for B.",
+      "replacement": "- If both series have at least two valid own trials but only foreign or substitute data are analysed graphically, graph-a and graph-b get at most 0.5 each. At most 24 − 2 · 2.5 = 19 remain. If this affects only one series, at most 21.5 remain.\n- A and B are graded separately; work in A never counts for B."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "graph-a / graph-b (3 each)\nFacets:",
+      "replacement": "graph-a / graph-b (3 each)\nReference trials: if the series has at least two valid own trials, exactly these are the reference trials. Supplementary foreign trials are then not reference trials: they cause no gap, raise no band, and analysing them does not replace analysing the own trials. If the series has at most one valid own trial (data step 0), all presented valid trials are reference trials, own and declared genuine foreign alike. The method actually shown by the learner then remains gradable.\nFacets:"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "visible measured points of at least one valid trial. Every valid trial should appear with its points",
+      "replacement": "visible measured points of at least one reference trial. Every reference trial should appear with its points"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "Counting gaps: each valid trial of the series counts as exactly one gap",
+      "replacement": "Counting gaps: each reference trial of the series counts as exactly one gap"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "means that at least one trial is visible in the graph and also fitted.",
+      "replacement": "means that at least one reference trial is visible in the graph and also fitted. 'Valid trial' in these bands always means a reference trial."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "(iii) a measured-point graph (with or without fitted line), but no g determination",
+      "replacement": "(iii) a measured-point graph (with or without fitted line), but no g determination; (iv) a complete analysis (G1 with G2) only of trials that are not reference trials, e.g. exclusively of foreign or substitute data although at least two valid own trials exist"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "For gap counting in graph, all valid trials presented for the series count, own and declared foreign alike.",
+      "replacement": "In graph this applies only if the foreign trials are reference trials, i.e. the series has at most one valid own trial. If at least two valid own trials exist, the graphical determination of g must use them. An analysis of foreign trials only then earns at most 0.5 (band 0.5, (iv)). A supplementary foreign trial, analysed or not, does not change the band."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "(a) explicitly justified and not withdrawn, or",
+      "replacement": "(a) explicitly justified, or explicitly held as a general rule or interpretation, and not withdrawn. A single such sentence suffices; no justification is needed (e.g. 'For x vs t² I stick with g = m.'). Or it is"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "- A single unjustified error amid otherwise correct evidence is a slip (−0.5).",
+      "replacement": "- A single uncommented numerical or sign error, with no stated rule, is a slip (−0.5) if the other evidence is correct. Example: one line gives g = 4.86 m/s² instead of 9.72 m/s², while g = 2m is applied alongside. An explicitly held wrong rule, by contrast, is a misconception even without justification and even if it appears only once. A recognisable withdrawal removes it without deduction."
+    }
+  ]
+}

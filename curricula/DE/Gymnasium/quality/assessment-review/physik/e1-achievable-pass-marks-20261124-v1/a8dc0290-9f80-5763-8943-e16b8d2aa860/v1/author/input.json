@@ -1,0 +1,127 @@
+{
+  "originalGoal": {
+    "id": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+    "shortKey": "canonical_physics_k6_acceleration_log",
+    "title": "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen",
+    "titleEn": "Acceleration log: velocity, position, and model limits",
+    "description": "Die lernende Person kann aus einem Beschleunigungsprotokoll mit Anfangswerten konsistente Bewegungsdarstellungen gewinnen und die Modellgrenzen prüfen.",
+    "descriptionEn": "The learner can obtain consistent motion representations from an acceleration log with initial values and assess model limits.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "262f807a-30d0-503e-986f-856cbd048e8e"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Messdaten und Bewegung",
+      "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.ACCELERATION_LOG"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "Historical predecessor note, not approval of this candidate: Machine content release of exact unchanged full DE/EN assessment and20/20 rubric, based on retained actual independent K6-v2/K6-v3 reviews plus actual integration-agent reading against full current e4b P. Retained review files: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v2-content/CONTENT-REVIEW.md and curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v3-content/CONTENT-REVIEW.md. Root actual direct-claim disposition accepted the necessary two-assessment unit successor. No human acceptance, learner trial, stored-result transfer or final integrated QA claim. Current material: unactivated author candidate codex-v3, 24 November 2026, 19/20, after an independent codex-v2 finding about the constant-acceleration explanation. Direct claim remains only BES. No free-fall experiment, whole child-unit promise, E.1 planning credit or historical-result transfer is claimed.",
+      "coveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "coveredStrands": [
+        "LI_BEWEGUNG"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/acceleration-log.md",
+      "taskContent": "A. Ein Wagen auf einer geraden Bahn hat bei t=2 s den Ort s=5 m und v=−1 m/s. Das t-a-Protokoll gibt a=+2 m/s² auf [2;4] s. 1. Konstruiere t-a, t-v und t-s, bestimme die Ortsmarken bei 2,5;3 und 4 s und kennzeichne den Richtungswechsel. Erkläre die a-Fläche als Geschwindigkeitsänderung und die vorzeichenbehafteten v-Flächen als Ortsänderungen. Bestimme Ortsänderung und gesamte Strecke; erkläre, warum sie verschieden sind. Eine Kontrollmarke bei 4 s lautet (7,03±0,05) m. Prüfe die Übereinstimmung. (12 BE)\n\nB. Ein reales Fahrzeug bremst ab t=0 mit v0=6 m/s und a=−2 m/s² bis zum Stillstand. Stelle v(t) und die Ortsänderung ab s0=0 auf. Zeichne die drei Diagramme, bestimme Stoppzeit und Bremsweg. Ein Programm setzt a unverändert bis 5 s fort. Bestimme die vom Programm vorhergesagten Werte für Geschwindigkeit und Ort bei 5 s. Erläutere, was es dann vorhersagt und warum dies ohne zusätzliche Kraftbegründung kein Modell eines stehen bleibenden Fahrzeugs ist. (8 BE)",
+      "taskContentEn": "A. A cart on a straight track is at s=5 m with v=−1 m/s at t=2 s. Its time-acceleration log gives a=+2 m/s² over [2,4] s. 1. Construct all three motion graphs, find positions at 2.5,3,4 s, and mark the reversal. Explain acceleration area as velocity change and signed velocity areas as displacements. Find displacement and total distance and explain the difference. A check mark at 4 s is (7.03±0.05) m. Test agreement. (12 points)\n\nB. A real vehicle brakes from t=0 with v0=6 m/s and a=−2 m/s² until rest. Write v(t) and displacement from s0=0. Draw all three graphs and find stopping time and distance. A program continues the acceleration unchanged until 5 s. Determine the program’s predicted velocity and position at 5 s. Explain its prediction and why, without an additional force explanation, this is not a model of a vehicle remaining at rest. (8 points)",
+      "solutionContent": "A: Mit τ=t−2 s gelten v=−1 m/s+2 m/s²·τ und s=5 m−1 m/s·τ+1 m/s²·τ². Richtungswechsel bei τ=0,5 s, s=4,75 m; a bleibt +2 m/s². s(3 s)=5 m, s(4 s)=7 m. Δs=+2 m; Strecke=0,25+2,25=2,50 m. Flächen unter v: −0,25 m bis zur Umkehr, danach +2,25 m; die a-Fläche ergibt Δv=4 m/s. Kontrollmarke passt innerhalb 0,05 m. B: v=6−2t in SI; s=6t−t², tStopp=3 s, sStopp=9 m. a waagerecht negativ, v fallende Gerade bis 0, s nach unten gekrümmte Parabel bis waagerechtem Scheitel. Fortsetzung: v(5)=−4 m/s und s(5)=5 m; sie sagt Rückwärtsfahrt voraus. Stehenbleiben verlangt nach 3 s v=0 und a=0 im idealen Modell; die frühere Bremsbeschleunigung darf nicht ohne neuen physikalischen Grund fortgeführt werden.\n\n**Teilpunktbewertung, Autorenkandidat codex-v3 vom 24.11.2026:** Bewertet wird tatsächlich sichtbare Evidenz unabhängig vom Antwortort. Gleichwertige fachlich richtige Methoden, exakte Werte, zulässige Rundungen und passende beschriftete graphische Erklärungen zählen gleich. Quantitative Werte und Gesetze behalten ihren eigenständigen Kredit auch ohne eine Zeichnung. Eine tatsächliche richtige Kurvenform und eine geforderte physikalische Erklärung werden nicht allein aus reproduzierten Zahlen hinzugedacht. Derselbe Zusammenhang darf an anderer Stelle belegt sein; es werden keine getrennten Merksätze an festen Antwortstellen verlangt. Ein lokaler Fehler wird nur an seinem Ursprung belastet, folgerichtige weitere Rechnungen/Zeichnungen bleiben anrechenbar. Nur die Summe ab 19 von 20 BE entscheidet; keine zusätzliche Teilhürde. Die gedruckten Maxima bleiben A 12 / B 8 BE; die fünf Rastermaxima bleiben 6/3/3/4/4 BE. Die gesamte Abgabe muss die konstanten Änderungszusammenhänge erkennen lassen. Für die A-Rechteckdeutung stehen 0,5 BE Gesamt-Delta-v und 0,5 BE konstante Änderung je gleicher Zeit; B prüft denselben Modellkern an der fortgesetzten negativen Rate über den Nulldurchgang mit 1 BE. Ein allgemein richtig erklärter Zusammenhang kann bei eindeutigem Kontextbezug diese Teilaspekte belegen, ohne zwei vorgeschriebene Formulierungen zu erzwingen. Die weiteren B-Punkte sind 0,5/0,5 für die beiden Programmwerte und je 1 für Stillstandsvergleich und unabhängigen Wechselwirkungsgrund. A je Diagrammart2BE:1 für den charakteristischen t-a-/t-v-/t-s-Verlauf;1 für zugehörige quantitative Werte mit Einheiten (a=+2m/s² auch an Umkehr; v(2)=-1,v(2,5)=0,v(3)=1,v(4)=3m/s; s(2)=5,s(2,5)=4,75,s(3)=5,s(4)=7m). Quantitative Werte können ausdrücklich auch im Text, Gesetz oder anderer Darstellung belegt werden; ein fehlender Graph löscht sie nicht. Die Verlaufspunkte benötigen tatsächliche passende graphische Evidenz. Ursprüngliche oder beschriftete verschobene Zeit sind gleichwertig. 1 BE für Umkehrdeutung aus Vorzeichenwechsel von v und Ortsminimum, ohne v = 0 mit a = 0 zu verwechseln. Weitere 1 BE zur a-Fläche: 0,5 für Rechteckfläche 2 m/s² * 2 s = 4 m/s als Delta-v im Gesamtintervall; 0,5 für die erklärte Verbindung von konstanter Rechteckhöhe/konstanter t-v-Steigung mit gleichen vorzeichenbehafteten Delta-v in gleich langen Zeitstücken. Weitere 1 BE für die Deutung der v-Flächen -0,25 m und +2,25 m als gerichtete Ortsänderungen. Erklärende Text-, Gesetzes- und tatsächlich beschriftete Graphikevidenz zählt überall; richtige Zahlen allein ersetzen keine ausstehende Erklärung. Je1BE: Ortsänderung +2m bestimmen; Strecke2,50m und ihre Verschiedenheit durch Beträge statt vorzeichenbehafteter Teilwege erklären; s(4)=7m mit dem vorgegebenen Kontrollintervall [6,98;7,08]m vergleichen. Ein Fehler bei einer Intervallgrenze kostet nur diesen Ursprungspunkt, nicht nochmals die folgerichtige Prüfung. B je1BE für Beschleunigung, Geschwindigkeit und Ort, jeweils0,5 für richtigen Wert/Gesetz und0,5 für tatsächlichen charakteristischen Graphen: a=-2m/s² bis Stopp; v(t)=6-2t in SI; s(t)=6t-t² in SI. Text-/Gesetzesevidenz behält ihre0,5 auch ohne Graph. Weitere1BE für Stoppzeit3s und Bremsweg9m (je0,5). Größen, Einheiten und Zeitbezug beachten. Ein früherer Fehler wird nicht erneut belastet. Je 0,5 BE für Programmwerte v(5) = -4 m/s und s(5) = 5 m. 1 BE für die Erklärung, dass die gleichbleibende negative Änderungsrate die Geschwindigkeit in jedem gleichen Zeitstück weiter senkt, auch nach v = 0, und so die Rückwärtsfahrt erzeugt. 1 BE für den physikalischen Vergleich: Rückwärtsfahrt widerspricht realem Stillstand, also ist die Fortsetzung kein Modell des stehenbleibenden Fahrzeugs. 1 BE für die unabhängige Begründung über v = 0 und a = 0 nach dem Stopp sowie einen neuen physikalischen/Kraftgrund für weitere Beschleunigung. Gleichwertige globale Erklärung oder passend beschriftete Graphik an anderer Stelle zählt. Bloße Formel/Endzahl ohne erklärte Bedeutung der konstanten Rate ersetzt den Erklärungspunkt nicht; richtige Zahlen bleiben unabhängig anrechenbar.",
+      "solutionContentEn": "A: With τ=t−2 s, v=−1 m/s+2 m/s²·τ and s=5 m−1 m/s·τ+1 m/s²·τ². Reversal at τ=0.5 s and s=4.75 m; acceleration remains +2 m/s². s(3 s)=5 m and s(4 s)=7 m. Displacement +2 m; distance 0.25+2.25=2.50 m. Signed velocity areas are −0.25 m then +2.25 m; acceleration area gives Δv=4 m/s. The check agrees within 0.05 m. B: In SI units v=6−2t and s=6t−t²; stopping time 3 s and distance 9 m. Acceleration is constant negative; velocity falls linearly to zero; position is a concave-down parabola with horizontal tangent at the stop. Continuation gives v(5)=−4 m/s and s(5)=5 m, predicting reverse motion. Remaining at rest requires v=0 and a=0 after 3 s in the ideal model; continuing the former braking acceleration requires a new physical reason.\n\n**Partial credit, author candidate codex-v3, 24 November 2026:** Assess the evidence actually visible wherever it occurs. Equivalent correct methods, exact values, permitted rounding and appropriate labelled graphical explanations receive equal credit. Quantities and laws retain independent credit without a drawing. Do not infer an actual correct curve shape or required physical explanation merely from reproduced numbers. The relationship may be demonstrated elsewhere; no separate stock sentences at fixed answer locations are required. Charge a local error only at its origin; consistent subsequent calculations/drawings retain credit. Passing depends only on a total of at least 19 out of 20 marks; no additional part minimum applies. Printed maxima remain A 12 / B 8 marks; the five rubric maxima remain 6/3/3/4/4. The complete answer must demonstrate the constant-rate relationships. A rectangle interpretation earns 0.5 for total Delta-v and 0.5 for constant change per equal time; B examines that same model core through continued negative rate across zero velocity for 1 mark. A correctly explained general relationship may establish these aspects where its context is unambiguous, without requiring two prescribed formulations. Other B marks are 0.5/0.5 for the two program values and 1 each for the rest comparison and independent interaction reason. A2 marks per graph type:1 for the characteristic time-acceleration/time-velocity/time-position shape;1 for corresponding quantitative values with units (a=+2m/s² including reversal; v(2)=-1,v(2.5)=0,v(3)=1,v(4)=3m/s; s(2)=5,s(2.5)=4.75,s(3)=5,s(4)=7m). Values may explicitly be evidenced in text, a law or another representation; a missing graph does not erase them. Shape marks require actual appropriate graphical evidence. Original or labelled shifted time is equivalent. 1 mark for interpreting reversal through a velocity sign change and position minimum without confusing v = 0 with a = 0. A further 1 mark for acceleration area: 0.5 for rectangle area 2 m/s² * 2 s = 4 m/s as total-interval Delta-v; 0.5 for explaining how constant rectangle height/time-velocity slope means equal signed Delta-v in equal time spans. A further 1 mark for interpreting velocity areas -0.25 m and +2.25 m as directed displacements. Explanatory text, laws and actually labelled graphical evidence count wherever present; correct numbers alone do not replace an outstanding explanation. 1 mark each: determine displacement +2m; determine distance2.50m and explain its difference through absolute rather than signed segment lengths; compare s(4)=7m with supplied check interval[6.98,7.08]m. A slip evaluating an interval endpoint loses only this originating mark, not another for a consistent comparison. B1 mark each for acceleration, velocity and position, split into0.5 for correct value/law and0.5 for its actual characteristic graph: a=-2m/s² until rest; v(t)=6-2t in SI; s(t)=6t-t² in SI. Text/law evidence retains its0.5 without a graph. A further1 mark for stop time3s and braking distance9m (0.5 each). Attend to quantities, units and time reference. Do not charge an earlier error again. 0.5 mark each for program values v(5) = -4 m/s and s(5) = 5 m. 1 mark for explaining that the unchanged negative rate keeps reducing velocity in every equal time span, including after v = 0, thereby causing reverse motion. 1 mark for the physical comparison: reverse motion contradicts actual rest, so the continuation does not model the vehicle remaining at rest. 1 mark for independent justification using v = 0 and a = 0 after stopping and a new physical/force reason for further acceleration. Equivalent global explanation or appropriately labelled graphic elsewhere counts. A bare formula/final value without explaining constant rate does not replace its explanation mark; retain independent credit for correct numbers.",
+      "scoring": {
+        "maxPoints": 20,
+        "passingPoints": 19,
+        "steps": [
+          {
+            "id": "acceleration-log_1",
+            "points": 6,
+            "description": "DE: A je Diagrammart2BE:1 für den charakteristischen t-a-/t-v-/t-s-Verlauf;1 für zugehörige quantitative Werte mit Einheiten (a=+2m/s² auch an Umkehr; v(2)=-1,v(2,5)=0,v(3)=1,v(4)=3m/s; s(2)=5,s(2,5)=4,75,s(3)=5,s(4)=7m). Quantitative Werte können ausdrücklich auch im Text, Gesetz oder anderer Darstellung belegt werden; ein fehlender Graph löscht sie nicht. Die Verlaufspunkte benötigen tatsächliche passende graphische Evidenz. Ursprüngliche oder beschriftete verschobene Zeit sind gleichwertig. EN: A2 marks per graph type:1 for the characteristic time-acceleration/time-velocity/time-position shape;1 for corresponding quantitative values with units (a=+2m/s² including reversal; v(2)=-1,v(2.5)=0,v(3)=1,v(4)=3m/s; s(2)=5,s(2.5)=4.75,s(3)=5,s(4)=7m). Values may explicitly be evidenced in text, a law or another representation; a missing graph does not erase them. Shape marks require actual appropriate graphical evidence. Original or labelled shifted time is equivalent."
+          },
+          {
+            "id": "acceleration-log_2",
+            "points": 3,
+            "description": "DE: 1 BE für Umkehrdeutung aus Vorzeichenwechsel von v und Ortsminimum, ohne v = 0 mit a = 0 zu verwechseln. Weitere 1 BE zur a-Fläche: 0,5 für Rechteckfläche 2 m/s² * 2 s = 4 m/s als Delta-v im Gesamtintervall; 0,5 für die erklärte Verbindung von konstanter Rechteckhöhe/konstanter t-v-Steigung mit gleichen vorzeichenbehafteten Delta-v in gleich langen Zeitstücken. Weitere 1 BE für die Deutung der v-Flächen -0,25 m und +2,25 m als gerichtete Ortsänderungen. Erklärende Text-, Gesetzes- und tatsächlich beschriftete Graphikevidenz zählt überall; richtige Zahlen allein ersetzen keine ausstehende Erklärung. EN: 1 mark for interpreting reversal through a velocity sign change and position minimum without confusing v = 0 with a = 0. A further 1 mark for acceleration area: 0.5 for rectangle area 2 m/s² * 2 s = 4 m/s as total-interval Delta-v; 0.5 for explaining how constant rectangle height/time-velocity slope means equal signed Delta-v in equal time spans. A further 1 mark for interpreting velocity areas -0.25 m and +2.25 m as directed displacements. Explanatory text, laws and actually labelled graphical evidence count wherever present; correct numbers alone do not replace an outstanding explanation."
+          },
+          {
+            "id": "acceleration-log_3",
+            "points": 3,
+            "description": "DE: Je1BE: Ortsänderung +2m bestimmen; Strecke2,50m und ihre Verschiedenheit durch Beträge statt vorzeichenbehafteter Teilwege erklären; s(4)=7m mit dem vorgegebenen Kontrollintervall [6,98;7,08]m vergleichen. Ein Fehler bei einer Intervallgrenze kostet nur diesen Ursprungspunkt, nicht nochmals die folgerichtige Prüfung. EN: 1 mark each: determine displacement +2m; determine distance2.50m and explain its difference through absolute rather than signed segment lengths; compare s(4)=7m with supplied check interval[6.98,7.08]m. A slip evaluating an interval endpoint loses only this originating mark, not another for a consistent comparison."
+          },
+          {
+            "id": "acceleration-log_4",
+            "points": 4,
+            "description": "DE: B je1BE für Beschleunigung, Geschwindigkeit und Ort, jeweils0,5 für richtigen Wert/Gesetz und0,5 für tatsächlichen charakteristischen Graphen: a=-2m/s² bis Stopp; v(t)=6-2t in SI; s(t)=6t-t² in SI. Text-/Gesetzesevidenz behält ihre0,5 auch ohne Graph. Weitere1BE für Stoppzeit3s und Bremsweg9m (je0,5). Größen, Einheiten und Zeitbezug beachten. Ein früherer Fehler wird nicht erneut belastet. EN: B1 mark each for acceleration, velocity and position, split into0.5 for correct value/law and0.5 for its actual characteristic graph: a=-2m/s² until rest; v(t)=6-2t in SI; s(t)=6t-t² in SI. Text/law evidence retains its0.5 without a graph. A further1 mark for stop time3s and braking distance9m (0.5 each). Attend to quantities, units and time reference. Do not charge an earlier error again."
+          },
+          {
+            "id": "acceleration-log_5",
+            "points": 4,
+            "description": "DE: Je 0,5 BE für Programmwerte v(5) = -4 m/s und s(5) = 5 m. 1 BE für die Erklärung, dass die gleichbleibende negative Änderungsrate die Geschwindigkeit in jedem gleichen Zeitstück weiter senkt, auch nach v = 0, und so die Rückwärtsfahrt erzeugt. 1 BE für den physikalischen Vergleich: Rückwärtsfahrt widerspricht realem Stillstand, also ist die Fortsetzung kein Modell des stehenbleibenden Fahrzeugs. 1 BE für die unabhängige Begründung über v = 0 und a = 0 nach dem Stopp sowie einen neuen physikalischen/Kraftgrund für weitere Beschleunigung. Gleichwertige globale Erklärung oder passend beschriftete Graphik an anderer Stelle zählt. Bloße Formel/Endzahl ohne erklärte Bedeutung der konstanten Rate ersetzt den Erklärungspunkt nicht; richtige Zahlen bleiben unabhängig anrechenbar. EN: 0.5 mark each for program values v(5) = -4 m/s and s(5) = 5 m. 1 mark for explaining that the unchanged negative rate keeps reducing velocity in every equal time span, including after v = 0, thereby causing reverse motion. 1 mark for the physical comparison: reverse motion contradicts actual rest, so the continuation does not model the vehicle remaining at rest. 1 mark for independent justification using v = 0 and a = 0 after stopping and a new physical/force reason for further acceleration. Equivalent global explanation or appropriately labelled graphic elsewhere counts. A bare formula/final value without explaining constant rate does not replace its explanation mark; retain independent credit for correct numbers."
+          }
+        ]
+      }
+    }
+  },
+  "coveredGoals": [
+    {
+      "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+      "titleEn": "Uniformly Accelerated Motion and Acceleration",
+      "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations."
+    }
+  ],
+  "retainedWorkedSolution": {
+    "solutionContent": "A: Mit τ=t−2 s gelten v=−1 m/s+2 m/s²·τ und s=5 m−1 m/s·τ+1 m/s²·τ². Richtungswechsel bei τ=0,5 s, s=4,75 m; a bleibt +2 m/s². s(3 s)=5 m, s(4 s)=7 m. Δs=+2 m; Strecke=0,25+2,25=2,50 m. Flächen unter v: −0,25 m bis zur Umkehr, danach +2,25 m; die a-Fläche ergibt Δv=4 m/s. Kontrollmarke passt innerhalb 0,05 m. B: v=6−2t in SI; s=6t−t², tStopp=3 s, sStopp=9 m. a waagerecht negativ, v fallende Gerade bis 0, s nach unten gekrümmte Parabel bis waagerechtem Scheitel. Fortsetzung: v(5)=−4 m/s und s(5)=5 m; sie sagt Rückwärtsfahrt voraus. Stehenbleiben verlangt nach 3 s v=0 und a=0 im idealen Modell; die frühere Bremsbeschleunigung darf nicht ohne neuen physikalischen Grund fortgeführt werden.",
+    "solutionContentEn": "A: With τ=t−2 s, v=−1 m/s+2 m/s²·τ and s=5 m−1 m/s·τ+1 m/s²·τ². Reversal at τ=0.5 s and s=4.75 m; acceleration remains +2 m/s². s(3 s)=5 m and s(4 s)=7 m. Displacement +2 m; distance 0.25+2.25=2.50 m. Signed velocity areas are −0.25 m then +2.25 m; acceleration area gives Δv=4 m/s. The check agrees within 0.05 m. B: In SI units v=6−2t and s=6t−t²; stopping time 3 s and distance 9 m. Acceleration is constant negative; velocity falls linearly to zero; position is a concave-down parabola with horizontal tangent at the stop. Continuation gives v(5)=−4 m/s and s(5)=5 m, predicting reverse motion. Remaining at rest requires v=0 and a=0 after 3 s in the ideal model; continuing the former braking acceleration requires a new physical reason."
+  },
+  "printedLabelsInOrder": {
+    "taskContent": [
+      "12",
+      "8"
+    ],
+    "taskContentEn": [
+      "12",
+      "8"
+    ]
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "c5807a37-129e-5df6-8989-482bc7f5683e",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "4b8bc0bbd546bfdb2e33b22177af8d400e99d190bf524d3d88d00b90cc14bc1e",
+    "normalizedGoalSha256": "d5ec1ebb9687e5621bb2a4ddf2cd36851b1a305cc707116b7091982c84cbf27f"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "ab2d48a9f98c46cbb0602cb3d779d1ab845756badba34207ac38930c7f766acb",
+    "normalizedGoalSha256": "f44c4397841ce9b81902b12839efaed3ec0aeab37572aa86373e95a24cce69c6"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "dc9e06605497a1e496ba86609adb8dd46210d806f053daec69c3a231080c1e5b"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "995d6b11e1370bbfb17d063c7a20ede1dd0b3833aed57457caf4864c1f4c5cb2"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "3306c2a42b2396069a96f56a539f8bd6ee53bed86613f12310738fc546bd444f"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20e56-a5b3-7fe3-93e2-de70bf41dda9",
+      "decision": "accept",
+      "eligibleForActivation": true,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S05",
+          "kind": "misconception",
+          "performanceId": "L2_grenzen"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S01",
+          "kind": "misconception",
+          "performanceId": "L1_idealisierung"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "L1_idealisierung"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "L2_grenzen"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S04",
+          "kind": "missing-facet",
+          "performanceId": "L2_grenzen"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "06ab9682bdef98365607c4f1897bb2aa4e8d4ce0156280bd3c494a9ff623172b"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "b014b33999fc3f09cc2f10b0aabcce94ab6a9e1104de5749797cb961a23480bd"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20e56-a5b3-7d22-8e58-d2f1f2ada702",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S05",
+          "kind": "misconception",
+          "performanceId": "L2_grenzen"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S04",
+          "kind": "missing-facet",
+          "performanceId": "L2_grenzen"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "L2_grenzen"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "L1_idealisierung"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S01",
+          "kind": "misconception",
+          "performanceId": "L1_idealisierung"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "132b1110b967bf8d8936dcf66276fad4366b38f19c3e0948d15b655ab2aad3a1"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "ca32ea76e1e73eca3f7e1c351a0ff5f66061718ad4132d3a0d596c823e68a8cf"
+      }
+    }
+  ],
+  "eligibleForActivation": false
+}
