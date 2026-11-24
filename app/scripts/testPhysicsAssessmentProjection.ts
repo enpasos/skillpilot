@@ -192,7 +192,7 @@ for (const [viewId, additional] of Object.entries(sectionPolicy.additionalVolunt
   assert.throws(() => checkSectionPolicy({ ...sectionPolicy, additionalVoluntaryAssessmentGoalIdsByView: byView }),
     (error: Error) => error.message.includes(viewId) && error.message.includes(`extra [${additional}]`))
 }
-assert.throws(() => checkSectionPolicy(undefined), /Required section assessments differ.*6ea3fb3c/)
+assert.throws(() => checkSectionPolicy(undefined), new RegExp(`Required section assessments differ.*${currentTwoMotionsGoal}`))
 const absentPart = { ...contract.parts[0], goalId: 'unoffered-required-assessment' }
 const amendedParts = [...contract.parts, absentPart]
 assert.throws(() => validateSectionAssessmentPolicy({
