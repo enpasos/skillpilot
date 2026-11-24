@@ -1386,6 +1386,14 @@ const partialCreditRounds = new Map<string, { version: string; dispositionSha256
   ['4ea1b93f-2dba-59ac-87ab-29af6c55cc37', { version: 'v4', dispositionSha256: 'fa55c7b482804b78fb1779ce07de652b9bdd5bb9046b5d618afb644a14ad9877' }],
 ])
 const priorAchievableGoals = verifiedPriorExamGoals(repoRoot, rawGoalById, canonicalJson)
+// The last reviewed experimental rubric had one dissent. Its complete scored payload must fail activation.
+const parkedExperimentId = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
+const withParkedExperiment = new Map(rawGoalById)
+withParkedExperiment.set(parkedExperimentId, readJson<Record<string, unknown>>(
+  `${achievableReviewRoot}/${parkedExperimentId}/v24/candidate.goal.json`,
+))
+assert.throws(() => verifiedPriorExamGoals(repoRoot, withParkedExperiment, canonicalJson),
+  new RegExp(parkedExperimentId + ': changed without two accepted reviews'))
 const currentReviewedExams = new Map<string, { before: object; current: object }>()
 function bindCurrentAssessmentSuccessors(round: string, expectedHashes: Record<string, string>): void {
   const rows = assertActualExamRounds(currentExamEvidenceRoot + round, Object.keys(expectedHashes))

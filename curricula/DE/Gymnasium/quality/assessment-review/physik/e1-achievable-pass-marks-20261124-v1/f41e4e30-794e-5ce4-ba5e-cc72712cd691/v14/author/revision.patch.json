@@ -1,0 +1,110 @@
+{
+  "status": "patch",
+  "changes": [
+    {
+      "field": "steps.exp-setup.description",
+      "find": "Stufen: 1,5 = alle Angaben; 1 = genau eine fehlt; 0,5 = genau zwei fehlen; 0 = drei oder mehr fehlen, kein eigener Aufbau oder dokumentierter Sicherheitsverstoß (Stuhl, Fenster, Treppe, harter, schwerer oder zerbrechlicher Gegenstand, Höhe über 0,80 m).",
+      "replacement": "Stufen (von oben geprüft, die erste zutreffende gilt): 0 = kein eigener Aufbau oder dokumentierter Sicherheitsverstoß (Stuhl, Fenster, Treppe, harter, schwerer oder zerbrechlicher Gegenstand, Höhe über 0,80 m). Das gilt unabhängig von der Zahl der vorhandenen Angaben. Sonst: 1,5 = alle Angaben; 1 = genau eine fehlt; 0,5 = genau zwei fehlen; 0 = drei oder mehr fehlen."
+    },
+    {
+      "field": "steps.exp-setup.description",
+      "find": "Bands: 1.5 = all items; 1 = exactly one missing; 0.5 = exactly two missing; 0 = three or more missing, no own setup, or a documented safety violation (chair, window, stairs, hard, heavy or fragile object, height above 0.80 m).",
+      "replacement": "Bands (checked top-down, first match applies): 0 = no own setup or a documented safety violation (chair, window, stairs, hard, heavy or fragile object, height above 0.80 m). This applies regardless of how many items are present. Otherwise: 1.5 = all items; 1 = exactly one missing; 0.5 = exactly two missing; 0 = three or more missing."
+    },
+    {
+      "field": "steps.a-law.description",
+      "find": "Stufen: 2,5 = F1–F3 vorhanden; 1,5 = genau eine Facette fehlt; 0 = zwei oder mehr Facetten fehlen, kein Gesetz oder nicht quadratische Form. Ein Gesetz nur zu Fremdläufen ergibt 0.",
+      "replacement": "Stufen (die erste zutreffende gilt): 0 = kein ausdrücklich für A formuliertes quadratisches Gesetz, also Gesetz fehlt, ist nicht quadratisch oder betrifft nur Fremdläufe. F1–F3 werden dann nicht gezählt, auch wenn sie an anderer Stelle belegt sind. Sonst: 2,5 = F1–F3 vorhanden; 1,5 = genau eine Facette fehlt; 0 = zwei oder mehr Facetten fehlen."
+    },
+    {
+      "field": "steps.a-law.description",
+      "find": "Bands: 2.5 = F1–F3 present; 1.5 = exactly one facet missing; 0 = two or more facets missing, no law, or non-quadratic form. A law for foreign trials only gives 0.",
+      "replacement": "Bands (first match applies): 0 = no quadratic law explicitly formulated for A, i.e. the law is absent, non-quadratic, or for foreign trials only. F1–F3 are then not counted, even if evidenced elsewhere. Otherwise: 2.5 = F1–F3 present; 1.5 = exactly one facet missing; 0 = two or more facets missing."
+    },
+    {
+      "field": "steps.b-law.description",
+      "find": "Stufen: 2,5 = F1–F3 vorhanden; 1,5 = genau eine Facette fehlt; 0 = zwei oder mehr fehlen, kein Gesetz oder nicht quadratische Form. Ein Gesetz nur zu Fremdläufen ergibt 0.",
+      "replacement": "Stufen (die erste zutreffende gilt): 0 = kein ausdrücklich für B formuliertes quadratisches Gesetz, also Gesetz fehlt, ist nicht quadratisch oder betrifft nur Fremdläufe. F1–F3 werden dann nicht gezählt, auch wenn sie an anderer Stelle belegt sind. Sonst: 2,5 = F1–F3 vorhanden; 1,5 = genau eine Facette fehlt; 0 = zwei oder mehr fehlen."
+    },
+    {
+      "field": "steps.b-law.description",
+      "find": "Bands: 2.5 = F1–F3 present; 1.5 = exactly one facet missing; 0 = two or more missing, no law, or non-quadratic form. A law for foreign trials only gives 0.",
+      "replacement": "Bands (first match applies): 0 = no quadratic law explicitly formulated for B, i.e. the law is absent, non-quadratic, or for foreign trials only. F1–F3 are then not counted, even if evidenced elsewhere. Otherwise: 2.5 = F1–F3 present; 1.5 = exactly one facet missing; 0 = two or more missing."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Unsicherheit, Grenzvariation und Vergleichsanteil gehören zur Gruppe ihrer Reihe, weil sie ohne diese Untersuchung nicht erbracht werden können. Fehlt eine Untersuchung ganz, sind genau 24 − 11 = 13 BE erreichbar.",
+      "replacement": "Unsicherheit, Grenzvariation und Vergleichsanteil gehören zur Gruppe ihrer Reihe, weil sie Teile dieser Untersuchung sind.\n- *-unc-own und *-cmp sind nur an eigenen gültigen Läufen der Reihe erbringbar.\n- *-unc-var ist wie *-graph-m ein Methodenanteil. Er kann auch an offen ausgewiesenen echten fremden Läufen dieser Reihe erbracht werden.\nObergrenzen je Gruppe:\n- Die Leistung fehlt vollständig (keine Bearbeitung dieser Reihe), oder die Gruppe geht durch eine beibehaltene Fehlvorstellung verloren: genau 24 − 11 = 13 BE.\n- Es gibt keine eigene Durchführung, aber eine selbst ausgeführte grafische Auswertung und Grenzvariation an offen ausgewiesenen Fremdläufen dieser Reihe: höchstens 13 + 1 = 14 BE. Das ist eine Methodenteilleistung, kein vollständiges Fehlen; die eigene Untersuchung bleibt unbelegt."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "- 1,5 = alle Angaben vorhanden",
+      "replacement": "- zuerst: 0 = kein eigener Aufbau oder dokumentierter Sicherheitsverstoß (Stuhl, Fenster, Treppe, harter, schwerer oder zerbrechlicher Gegenstand, Höhe über 0,80 m), unabhängig von der Zahl der Angaben; sonst gelten die folgenden Stufen\n- 1,5 = alle Angaben vorhanden"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "- 0 = drei oder mehr fehlen, kein eigener Aufbau, oder dokumentierter Sicherheitsverstoß (Stuhl, Fenster, Treppe, harter, schwerer oder zerbrechlicher Gegenstand, Höhe über 0,80 m)",
+      "replacement": "- 0 = drei oder mehr fehlen"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "- 2,5 = F1–F3 vorhanden",
+      "replacement": "- zuerst: 0 = kein ausdrücklich für die Reihe formuliertes quadratisches Gesetz (fehlt, nicht quadratisch oder nur zu Fremdläufen). F1–F3 werden dann nicht gezählt, auch wenn sie an anderer Stelle belegt sind; sonst gelten die folgenden Stufen\n- 2,5 = F1–F3 vorhanden"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "- 0 = zwei oder mehr Facetten fehlen, kein Gesetz oder nicht quadratische Form",
+      "replacement": "- 0 = zwei oder mehr Facetten fehlen"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "Uncertainty, boundary variation and comparison share belong to their series' group because they cannot be produced without that investigation. If one investigation is entirely absent, exactly 24 − 11 = 13 remain attainable.",
+      "replacement": "Uncertainty, boundary variation and comparison share belong to their series' group because they are parts of that investigation.\n- *-unc-own and *-cmp can be earned only on valid own trials of the series.\n- *-unc-var, like *-graph-m, is a method share. It can also be earned on openly declared genuine foreign trials of that series.\nUpper bounds per group:\n- The performance is entirely absent (no work on that series), or the group is lost through a maintained misconception: exactly 24 − 11 = 13.\n- There is no own execution, but the learner's own graphical analysis and boundary variation of openly declared foreign trials of that series are present: at most 13 + 1 = 14. This is partial method credit, not a complete omission; the own investigation remains unevidenced."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "- 1.5 = all items present",
+      "replacement": "- first: 0 = no own setup or a documented safety violation (chair, window, stairs, hard, heavy or fragile object, height above 0.80 m), regardless of the number of items; otherwise the following bands apply\n- 1.5 = all items present"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "- 0 = three or more missing, no own setup, or a documented safety violation (chair, window, stairs, hard, heavy or fragile object, height above 0.80 m)",
+      "replacement": "- 0 = three or more missing"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "- 2.5 = F1–F3 present",
+      "replacement": "- first: 0 = no quadratic law explicitly formulated for the series (absent, non-quadratic, or for foreign trials only). F1–F3 are then not counted, even if evidenced elsewhere; otherwise the following bands apply\n- 2.5 = F1–F3 present"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "- 0 = two or more facets missing, no law, or non-quadratic form",
+      "replacement": "- 0 = two or more facets missing"
+    },
+    {
+      "field": "performances.INV-A.description",
+      "find": "Fehlt die Untersuchung ganz oder wird in ihr eine Fehlvorstellung beibehalten, erhalten alle sieben Zeilen 0. B, exp-setup und cmp-limit werden davon unabhängig bewertet.",
+      "replacement": "Fehlt jede Bearbeitung der Reihe A oder wird in A eine Fehlvorstellung beibehalten, erhalten alle sieben Zeilen 0 (insgesamt höchstens 13 BE). Ohne eigenen A-Lauf, aber mit selbst ausgeführter Auswertung offen ausgewiesener Fremdläufe sind nur a-graph-m und a-unc-var erreichbar (insgesamt höchstens 14 BE). B, exp-setup und cmp-limit werden davon unabhängig bewertet."
+    },
+    {
+      "field": "performances.INV-A.description",
+      "find": "If the investigation is entirely absent or a misconception is maintained in it, all seven rows get 0. B, exp-setup and cmp-limit are graded independently.",
+      "replacement": "If there is no work at all on series A or a misconception is maintained in A, all seven rows get 0 (at most 13 in total). Without an own A trial but with the learner's own analysis of openly declared foreign trials, only a-graph-m and a-unc-var are attainable (at most 14 in total). B, exp-setup and cmp-limit are graded independently."
+    },
+    {
+      "field": "performances.INV-B.description",
+      "find": "Fehlt die Untersuchung ganz oder wird in ihr eine Fehlvorstellung beibehalten, erhalten alle sieben Zeilen 0. A, exp-setup und cmp-limit werden davon unabhängig bewertet.",
+      "replacement": "Fehlt jede Bearbeitung der Reihe B oder wird in B eine Fehlvorstellung beibehalten, erhalten alle sieben Zeilen 0 (insgesamt höchstens 13 BE). Ohne eigenen B-Lauf, aber mit selbst ausgeführter Auswertung offen ausgewiesener Fremdläufe sind nur b-graph-m und b-unc-var erreichbar (insgesamt höchstens 14 BE). A, exp-setup und cmp-limit werden davon unabhängig bewertet."
+    },
+    {
+      "field": "performances.INV-B.description",
+      "find": "If the investigation is entirely absent or a misconception is maintained in it, all seven rows get 0. A, exp-setup and cmp-limit are graded independently.",
+      "replacement": "If there is no work at all on series B or a misconception is maintained in B, all seven rows get 0 (at most 13 in total). Without an own B trial but with the learner's own analysis of openly declared foreign trials, only b-graph-m and b-unc-var are attainable (at most 14 in total). A, exp-setup and cmp-limit are graded independently."
+    },
+    {
+      "field": "goalJudgements.09029573-864f-40ca-bf8a-cee7bf6dcb73.why",
+      "find": "- eine Untersuchung fehlt ganz: 13 BE (24 − 11), mit selbst ausgewerteten Fremdläufen 14 BE;",
+      "replacement": "- eine Untersuchung fehlt ganz (keine Bearbeitung der Reihe): 13 BE (24 − 11);\n- ohne eigenen Lauf, aber mit selbst ausgewerteten, offen ausgewiesenen Fremdläufen: 14 BE (nur die Methodenanteile graph-m und unc-var);"
+    }
+  ]
+}

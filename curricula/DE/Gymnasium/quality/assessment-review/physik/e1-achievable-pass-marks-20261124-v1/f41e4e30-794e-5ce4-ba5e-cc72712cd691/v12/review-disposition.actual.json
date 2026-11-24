@@ -1,0 +1,136 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4",
+    "normalizedGoalSha256": "94caaa5f3f8a3a972d5a47fb25f092fcfbe6a099101e596b2eba36a112688a20"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "78bca2f5b28b4f3922e694d72b9839ab620d705ea3fe582690cc2934f1379f84",
+    "normalizedGoalSha256": "3e9779b963916670d3cdbcc148c142c9faf48ef3a122cfe35f12737468d85b6b"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "c4efd74608772d449715d5a8f5f547d41aa8b9c1685a4f8eb60d4dd8dc9a52a7"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "db8132a9a2a3583278fbeb76b69ec280cd53794ef5e0929e30c53f5063809b66"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "ebea528723685b4d4649d13b6a50a77f08ad0f71370c560a4590b90eb27b45b9"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20eb5-da34-79e3-969d-9689758d2de3",
+      "decision": "accept",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "wrong carrying maximum: INV-A",
+        "wrong carrying maximum: INV-B",
+        "L01: unaffected performances not fully demonstrated",
+        "L04: unaffected performances not fully demonstrated"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S03",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S01",
+          "kind": "missing-facet",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "INV-A"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "INV-B"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "d0042514a61ba984cf9d53e0e6e89541a37b30c5bebf66b3d8504564265b0fa7"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "cfee44853bb39523596089440f6fed72a6c76a647705a63cb547e51515dfc5ab"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20eb5-da33-74a2-8e4b-bdd840d02114",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "wrong carrying maximum: INV-A",
+        "wrong carrying maximum: INV-B",
+        "L01: unaffected performances not fully demonstrated",
+        "L04: unaffected performances not fully demonstrated"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S01",
+          "kind": "missing-facet",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "INV-A"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S03",
+          "kind": "four-slips",
+          "performanceId": null
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "afa74dc7e5c1371d1ef5e9fffef869229d1f18e76f5e19f95b06a2b4e9eb712b"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "0082e561b5286c601dd9bd62239c7a13e15382749f3b8c8789c811a2237af4d2"
+      }
+    }
+  ],
+  "eligibleForActivation": false
+}
