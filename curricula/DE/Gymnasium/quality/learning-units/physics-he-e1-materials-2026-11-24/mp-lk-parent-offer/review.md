@@ -1,0 +1,5 @@
+# E.1-Materialien nach der Rückkehr der Mehrphasenprüfung
+
+Am 24. November 2026 bestätigte der Product Owner den freiwilligen LK-Einstieg in die Mehrphasenprüfung auf der Elternebene von E.1, hinter den vier Kindabschnitten. Die Aufgabe setzt den waagerechten Wurf und die Modellgrenzen voraus. Die vier Pflichtteile und die zugehörigen Bearbeitungsaufträge sind identisch mit dem Stand des unabhängigen [Materialreviews](../fachreview.md).
+
+Die gesamte Materialdatei wurde gegen den geprüften Stand `77cd98398d` verglichen. Der einzige Unterschied ist der Eintrag der Mehrphasenprüfung in den drei LK-Ansichten der Auftragspolitik. Der Vergleich umfasste die Texte in beiden Sprachen, die Bilder, die Einzelversuche, die Modellbrücke, Pflichtteilbindungen und die Planungsfreigabe. Die Kindmaterialdatei blieb vollständig byteidentisch. Der zweiteilige Maschinenbeleg enthält Vorgänger, Nachfolger und die einzige zugelassene Differenz. Für die Freigabe der Zusatzprüfung als bewertete Aufgabe gilt das gesonderte Aufgabenreview.

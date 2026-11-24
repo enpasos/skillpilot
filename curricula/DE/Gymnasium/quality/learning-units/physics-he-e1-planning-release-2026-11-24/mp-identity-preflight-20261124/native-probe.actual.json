@@ -1,0 +1,42 @@
+{
+  "schema": "mp-identity-retention-CQR203-read-only-structural-probe-v1",
+  "status": "NO_ACTIVATION_OR_APPROVAL",
+  "method": "Actual native evaluateRouteProfile; three in-memory structures only. No new task is installed or marked released, no quality rule or live input changes.",
+  "currentActiveOldIdentity": {
+    "id": "CQR-203",
+    "status": "warn",
+    "summary": "1 terminal autonomy examData item(s) lack release or coverage metadata.",
+    "metrics": {
+      "terminalAutonomyGoals": 112,
+      "releasedCoverageCompleteExamData": 111,
+      "releaseCoverageIncompleteExamData": 1
+    },
+    "details": [
+      "Incomplete exam release/coverage: Mehrphasenbewegung und Modellprüfung [2b9e565f-d9b4-5e23-b5b7-b7977cecff06] (missing coveredGoalIds)"
+    ]
+  },
+  "excludedFlagOnly": {
+    "id": "CQR-203",
+    "status": "warn",
+    "summary": "1 terminal autonomy examData item(s) lack release or coverage metadata.",
+    "metrics": {
+      "terminalAutonomyGoals": 112,
+      "releasedCoverageCompleteExamData": 111,
+      "releaseCoverageIncompleteExamData": 1
+    },
+    "details": [
+      "Incomplete exam release/coverage: Mehrphasenbewegung und Modellprüfung [2b9e565f-d9b4-5e23-b5b7-b7977cecff06] (missing coveredGoalIds)"
+    ]
+  },
+  "movedOldIdentityToExistingRetainedCluster": {
+    "id": "CQR-203",
+    "status": "pass",
+    "summary": "All terminal autonomy examData has release and coverage metadata.",
+    "metrics": {
+      "terminalAutonomyGoals": 111,
+      "releasedCoverageCompleteExamData": 111,
+      "releaseCoverageIncompleteExamData": 0
+    }
+  },
+  "limitation": "A future replacement still needs its own genuine current content/release/coverage acceptance. The last case isolates removal of the old task from active terminal obligations; it does not claim a new qualified endpoint."
+}

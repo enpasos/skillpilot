@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "reviewContract": "independent-current-assessment-review-v1",
+  "runId": "e1-assessment-20261124-a-01a20bd6-ba63-7252-acda-b092ec76298e",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "ultra",
+  "cliVersion": "0.171.0-alpha.13.2",
+  "threadId": "01a20bd6-ba63-7252-acda-b092ec76298e",
+  "cwd": "/tmp/e1-t5/assessment-successor-a",
+  "sandbox": {
+    "type": "read-only"
+  },
+  "approvalPolicy": "never",
+  "startedAt": "2026-11-24T04:35:52.512Z",
+  "completedAt": "2026-11-24T04:42:48.170Z",
+  "exitCode": 0,
+  "exitCodeEvidence": "Actual functions.write_stdin completion returned exit_code=0; raw final event is turn.completed.",
+  "blindToOtherRun": true,
+  "sourceSessionRawSha256": "ca57d6bd626eeaa364ac4d2ffdddbbc666d7d4afcc04e8c8a95c191e3cb6a4fb",
+  "sourceSessionBasename": "rollout-2026-11-24T05-35-51-01a20bd6-ba63-7252-acda-b092ec76298e.jsonl",
+  "inputArtifacts": [
+    {
+      "path": "canonical-input.json",
+      "sha256": "bb01d0fb80474caa0c8f6fae2bd636c42866d04ead6ece75dfb002a06944d6cc"
+    },
+    {
+      "path": "output.schema.json",
+      "sha256": "4ff60b1e578a7c14ce30ddf2c809e50e2f17952f167bd6a0958c2d88c2602111"
+    },
+    {
+      "path": "prompt.txt",
+      "sha256": "63c79f6510325546e248a9bb49c180a6b38f53f4d79133502a5bfeea47886397"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "capsulePath": "he-physics-official.pdf",
+      "sha256": "46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+      "retainedRepoBytesIdentical": true
+    }
+  ],
+  "outputArtifacts": [
+    {
+      "path": "response.json",
+      "sha256": "289a9348f52eab6e88152500e1d04cb08a648dd408b192d2039572abe7777b4b"
+    },
+    {
+      "path": "events.jsonl",
+      "sha256": "6c39f6022dfcd92baaa5177155d19c2c79facbbf397d0577f519b9738b4042f0"
+    },
+    {
+      "path": "stderr.log",
+      "sha256": "cf16823316a0b7dde79d9ac4eb861c188b25b3bb952e089eadfb6fc8b8e6c786"
+    }
+  ],
+  "actualUsage": {
+    "input_tokens": 2299040,
+    "cached_input_tokens": 2174080,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 16178,
+    "reasoning_output_tokens": 7021
+  },
+  "scope": {
+    "assessments": 6,
+    "curricularPrerequisiteReview": 0,
+    "contextGoals": 99,
+    "materialsOrPlanningCredits": false
+  },
+  "limits": "Actual independent AI review; no human/learner/host acceptance. Content acceptance does not waive native schema or quality gates, applicability or result-contract checks. No source/planning-credit mutation was performed by these sessions."
+}

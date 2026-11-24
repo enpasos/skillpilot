@@ -1,0 +1,46 @@
+{
+  "schema": "e1-v4-mp-scope-native-checks-v1",
+  "checkedAt": "2026-11-24T05:31:58.860826+00:00",
+  "status": "PASS",
+  "scopeSuccessor": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v4-mp-scope-supersession.actual.json",
+    "sha256": "sha256:4ecf105edf16f9dd134fc6ba5800c84c70128bc4905f5052428e7c8f3fa43ef5"
+  },
+  "checks": [
+    {
+      "command": "tsx activate-planning-release.mts (without --write)",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v4-mp-strict-release-recheck.actual.log",
+        "sha256": "sha256:1e62f301ab363f27d3db52f04b3f1e78f99a5fb5095dc53bc25db268f21c7082"
+      }
+    },
+    {
+      "command": "npm --prefix app run validate:learning-units",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v4-mp-learning-units-recheck.actual.log",
+        "sha256": "sha256:02852eeb21c05cc235a9f570d63ba557fc03b40ea3b479d9a0043b91fdc44202"
+      }
+    }
+  ],
+  "testChangeScope": "Parent already updated voluntary MP list/placement expectations after explicit owner authorization; this review did not edit them. All24 release expectations retain BES-only credit and no learner mastery transfer. Java final verification is owned by /root/th_mv; this record claims no new Java execution.",
+  "currentTestPins": [
+    {
+      "path": "app/scripts/testPhysicsAssessmentProjection.ts",
+      "sha256": "sha256:03c3084a542921739053416db90341f935f1e4a66ea88c291f09d6ba60432a42"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/completion/UnitPlanningReleaseTest.java",
+      "sha256": "sha256:60358822af8dc8136c40b317fb3ae900739f349f23a24c5351750adad70a4d10"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/completion/UnitAssessmentContractTest.java",
+      "sha256": "sha256:5b8eded12eb56f9f516a3207f19d2bbb3c3ee340dfb129550a76c1b8fac980b1"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+      "sha256": "sha256:da62f6fe80064b7c4a2616650503f56f46a838a1c24fc44e944bbbf2a5166004"
+    }
+  ]
+}

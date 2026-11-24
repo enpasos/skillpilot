@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physik-e1-schief-current-v2-20261124",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-schief-current-v2.config.json",
+  "configDigest": "sha256:b7ee7c3e83f93f9f148c23b80dcc6fce3dba33f124e4181132f0ac41950d5b71",
+  "goalIds": [
+    "fbecbd60-5db3-51e8-94be-d66b066ffa06"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 490,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-schief-current-v2/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:861e4d1eb0591a677564af73e9ab15cdab5780118ecd8bb9cf2014eb96cb1862"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ecad58e4979abc8ca4243f22f3934b2b6649855f3614e0f17fa2b0ab4f827d97",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:9edde25076ae2a3846a0da112a60f5bec2580bd1e366682fd10cc34837087292",
+    "reviewInputFingerprint": "sha256:43ae67255904cfb235ee64985c3087ab647458a379c5cc6ff5a73af46324eeb3",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physik-e1-schief-current-v2-20261124-a",
+        "campaignDigest": "sha256:13b7e8765e93d61711a70fcf30439e9767b50de563196d2722eeec06086490c7",
+        "roundId": "physik-e1-schief-current-v2-20261124-first-pass-a",
+        "independenceGroupId": "physik-e1-schief-current-v2-20261124-independent-a",
+        "batchId": "physik-e1-schief-current-v2-20261124-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:33d63ff50284edb8b89658e48ebf15dd19d798eb08f43539f45f9220939788c0"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physik-e1-schief-current-v2-20261124-b",
+        "campaignDigest": "sha256:02a9a3e0a638d662967d7cc3f109690ec6ccf6c1c8448e969559067cea17a3d6",
+        "roundId": "physik-e1-schief-current-v2-20261124-first-pass-b",
+        "independenceGroupId": "physik-e1-schief-current-v2-20261124-independent-b",
+        "batchId": "physik-e1-schief-current-v2-20261124-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9f4e48ffb91b341f90ae67872d815f9e67487bfeb816cb0fe9e7ba6316f65086"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

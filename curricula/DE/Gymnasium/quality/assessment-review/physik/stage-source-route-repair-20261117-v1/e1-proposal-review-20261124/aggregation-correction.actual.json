@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "correctedAt": "2026-11-24T05:35:18.783659+00:00",
+  "scope": "Integration aggregation/verification only; actual independent outputs are unchanged.",
+  "beforeIncorrectLiteralHHLabels": [
+    "revise",
+    "revise"
+  ],
+  "actualLiteralHHLabels": [
+    "revise",
+    "hold_source_preparation"
+  ],
+  "rawResponseBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/round-a/response.json",
+      "sha256": "f22442ea281da12b5755b09ec33cfef4b3bd618438911de5d39d4811a0c4b343"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/round-b/response.json",
+      "sha256": "aa668a2002598450c36b5175785723ecc9991cd329cde6f6096adf488d9c5d6b"
+    }
+  ],
+  "reason": "The first aggregation misreported roundBprimary decision asrevise. Its actual decision ishold_source_preparation with separately listed key/scoring corrections. The initial verification correctly exposed the mistaken equality assumption.",
+  "failedCheckLog": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/validation-attempts/initial-decision-label-guard/verification.actual.log",
+    "sha256": "067d1e54fa73959d9cc0901a9b9df090f216763bbcee79e736a8a1b6b340abfe"
+  },
+  "meaningUnchanged": "No exact HH integration accepted; source-preparation hold and specific revision needs persist. No task/offer binding, authoring or raw review mutation."
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0851bac7e0f6cb70481e2ea2363a7905047fd28a3dfa726d0beb63a30c298f3b",
+  "reviewInputFingerprint": "sha256:bf571f46941466e58b935af1ff246d75d5c65c666b591f4f303605971de69c42",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-e1-bes-current-v2-20261124-a",
+      "roundId": "physik-e1-bes-current-v2-20261124-first-pass-a",
+      "independenceGroupId": "physik-e1-bes-current-v2-20261124-independent-a",
+      "runIds": [
+        "physik-e1-bes-current-v2-20261124-a-01a20bdc-b328-76b1-813c-af337a2e6993"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-e1-bes-current-v2-20261124-b",
+      "roundId": "physik-e1-bes-current-v2-20261124-first-pass-b",
+      "independenceGroupId": "physik-e1-bes-current-v2-20261124-independent-b",
+      "runIds": [
+        "physik-e1-bes-current-v2-20261124-b-01a20bdc-b328-7e01-aeac-1ee57035fbd1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.2-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "firstRecordId": "physik-e1-bes-current-v2-20261124-a-01a20bdc-b328-76b1-813c-af337a2e6993-e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "secondRecordId": "physik-e1-bes-current-v2-20261124-b-01a20bdc-b328-7e01-aeac-1ee57035fbd1-e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "firstRunId": "physik-e1-bes-current-v2-20261124-a-01a20bdc-b328-76b1-813c-af337a2e6993",
+      "secondRunId": "physik-e1-bes-current-v2-20261124-b-01a20bdc-b328-7e01-aeac-1ee57035fbd1",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "reviewContract": "independent-goal-core-review-v1",
+  "runId": "e1-goal-core-20261124-a-01a20bb8-7bb2-7723-8dae-4794f76301b1",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "ultra",
+  "cliVersion": "0.171.0-alpha.13.2",
+  "threadId": "01a20bb8-7bb2-7723-8dae-4794f76301b1",
+  "cwd": "/tmp/e1-t5/goal-core-a",
+  "sandbox": {
+    "type": "read-only"
+  },
+  "approvalPolicy": "never",
+  "startedAt": "2026-11-24T04:02:50.258Z",
+  "completedAt": "2026-11-24T04:08:24.632Z",
+  "exitCode": 0,
+  "blindToOtherRuns": true,
+  "independenceGroupId": "e1-goal-core-20261124-independent-a",
+  "inputArtifacts": [
+    {
+      "path": "canonical-input.json",
+      "sha256": "1c7b6b339cc4dcfc04a717db587799060361cf3dec3b0f3d4b6aa6cfcaf01f12"
+    },
+    {
+      "path": "criteria.md",
+      "sha256": "536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "path": "prompt.txt",
+      "sha256": "6a76766e377e5edf9a6431aece7e14ddc9d64d69052f38f53b6adc36f1c95d7c"
+    },
+    {
+      "path": "output.schema.json",
+      "sha256": "12ed9e9ae14992f62373280aa4e7e3776551b4c71dc2ff0415c0b3a76102707b"
+    }
+  ],
+  "outputArtifacts": [
+    {
+      "path": "response.json",
+      "sha256": "d3f2a7ef152652b49b383bcf878370b5bc6278bad0ab3f986ea34bcbfeea643e"
+    },
+    {
+      "path": "events.jsonl",
+      "sha256": "a66b98d57b763dd257f6a937efcc79a3685109524f2166143cddb0e3827f13b4"
+    }
+  ],
+  "scope": {
+    "atomicity": 9,
+    "strictCurrentPrerequisites": 11,
+    "semanticKinds": 12
+  },
+  "limits": "Goal-core review only. Images, cards, prior reviews, compiled source/projection matrix absent; no D/P presentation/current-source acceptance claimed."
+}

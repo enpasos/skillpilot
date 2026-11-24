@@ -15,13 +15,14 @@ REVIEWED_LOWER_ASSESSMENTS = {
     "HH": {"797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00", "884bd99b-2373-5174-af7c-c6813b91bd93"},
     "SL": {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b", "11c964ff-be82-5d02-8cd7-ccb41cda8f4f", "e0932fef-9e1c-5c95-b00c-7589e76d0e83", "3b7b2b62-e39c-5936-b0d8-5406206e57b6", "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04", "f602680f-ea75-5bed-ae87-72f6be34a99b"},
     "SN": {"11c964ff-be82-5d02-8cd7-ccb41cda8f4f", "e0932fef-9e1c-5c95-b00c-7589e76d0e83", "f41e4e30-794e-5ce4-ba5e-cc72712cd691", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08", "57a03b38-5ec5-5e4f-b71a-4024bab1584c", "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04", "f602680f-ea75-5bed-ae87-72f6be34a99b", "a8dc0290-9f80-5763-8943-e16b8d2aa860"},
-    "ST": {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"},
+    "ST": {"a8dc0290-9f80-5763-8943-e16b8d2aa860", "ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"},
     "TH": {"14cc61c4-4909-5671-b1ee-930a02cb9f51", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"},
 }
 NEW_TASK_OFFERS = {
     "3b7b2b62-e39c-5936-b0d8-5406206e57b6": {"DE-MV", "DE-SL"},
     "e6a89922-75ce-53dd-9e7b-3a683398431c": {"DE-MV"},
-    "f41e4e30-794e-5ce4-ba5e-cc72712cd691": {"DE-SN"},
+    # Since the E.1 cut (23 Nov 2026) the two-series free-fall task also closes Hessian E.1 child unit 2.
+    "f41e4e30-794e-5ce4-ba5e-cc72712cd691": {"DE-HE", "DE-SN"},
     "7cfaf48e-e420-5c09-8ec2-932f0dba4d08": {"DE-SN", "DE-ST", "DE-TH"},
     "57a03b38-5ec5-5e4f-b71a-4024bab1584c": {"DE-SN"},
     "797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00": {"DE-HH"},
@@ -58,11 +59,11 @@ HESSEN_MEASUREMENT_VIEWS = {
 
 NEW_EYE_ASSESSMENT_ID = "3b7b2b62-e39c-5936-b0d8-5406206e57b6"
 REVIEWED_NEW_LOWER_EXCLUSIONS = {
-    "MV": {"09029573-864f-40ca-bf8a-cee7bf6dcb73", "156edddc-ce8d-580d-8d17-d9376d59e60e", "bf8517a9-142b-5789-826a-767f3b277998", "e4b38061-1f28-43ad-8371-a3e7c0e81856", "e918b31f-6f39-5dee-ade6-3617080fb24f", "ec7a0a68-730b-5c94-ac72-a937508f8303"},
+    "MV": {"1e459a1b-4159-5049-84eb-9928129c1610", "09029573-864f-40ca-bf8a-cee7bf6dcb73", "156edddc-ce8d-580d-8d17-d9376d59e60e", "bf8517a9-142b-5789-826a-767f3b277998", "e4b38061-1f28-43ad-8371-a3e7c0e81856", "e918b31f-6f39-5dee-ade6-3617080fb24f", "ec7a0a68-730b-5c94-ac72-a937508f8303"},
     "SL": {"09029573-864f-40ca-bf8a-cee7bf6dcb73", "156edddc-ce8d-580d-8d17-d9376d59e60e", "2b700858-bc2e-5ddf-a791-b14d44160480", "bf8517a9-142b-5789-826a-767f3b277998", "e4b38061-1f28-43ad-8371-a3e7c0e81856", "e6a50c74-c922-508c-aa27-07bac2566955", "e918b31f-6f39-5dee-ade6-3617080fb24f", "eb30189c-27c6-510b-b235-6543afa18b90", "ec7a0a68-730b-5c94-ac72-a937508f8303"},
     "SN": {"156edddc-ce8d-580d-8d17-d9376d59e60e", "84ddb244-e560-592f-9d43-e84c801fe5b4", "8ac61062-f63e-5935-96ae-84014906c368", "bf8517a9-142b-5789-826a-767f3b277998", "bfea7a23-1ce1-4a42-badd-1fc9bf30124a", "e6a50c74-c922-508c-aa27-07bac2566955", "e918b31f-6f39-5dee-ade6-3617080fb24f", "eb30189c-27c6-510b-b235-6543afa18b90", "ec7a0a68-730b-5c94-ac72-a937508f8303"},
     "ST": {"bf8517a9-142b-5789-826a-767f3b277998"},
-    "TH": {"37013646-f13a-5faf-954c-940f2fd7502f"},
+    "TH": {"262f807a-30d0-503e-986f-856cbd048e8e", "37013646-f13a-5faf-954c-940f2fd7502f"},
 }
 
 
@@ -76,6 +77,26 @@ def ancestors(unit, pairs):
     return found
 
 
+# E.1 cut accepted by the Product Owner on 23 Nov 2026: each new goal is a target
+# only where a goal it was split from is a target; support roles are derived.
+E1_CUT_ORIGINS = {
+    "1e459a1b-4159-5049-84eb-9928129c1610": {"ce431132-dfc4-42c2-aff6-bd72035190f8", "e4b38061-1f28-43ad-8371-a3e7c0e81856"},
+    "262f807a-30d0-503e-986f-856cbd048e8e": {"d6dc0e02-831d-4894-a61a-852bcc74f147", "e4b38061-1f28-43ad-8371-a3e7c0e81856"},
+    "d9a6ea85-f7e8-5cbd-afe9-62596e22040d": {"d6dc0e02-831d-4894-a61a-852bcc74f147", "09029573-864f-40ca-bf8a-cee7bf6dcb73"},
+    "0fee53f2-1c02-5b12-9b6c-aa9fa462d921": {"89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "68c90ba6-c438-463c-9a53-cf61062d416a"},
+    # The velocity-vector assessment stands beside the throw/brake assessment of the lower stage.
+    "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": {"0fee53f2-1c02-5b12-9b6c-aa9fa462d921", "dfd2628f-b44e-51b3-86e8-99158861be8c"},
+}
+
+
+def e1_cut_delta(roles):
+    added = roles["target"] & set(E1_CUT_ORIGINS)
+    for goal in added:
+        if not E1_CUT_ORIGINS[goal] & roles["target"]:
+            raise AssertionError("A new E.1 goal became a target without the goal it was split from")
+    return added
+
+
 def measurement_delta(view, roles):
     expected = HESSEN_MEASUREMENT_GOALS if view["viewId"] in HESSEN_MEASUREMENT_VIEWS else set()
     if roles["target"] & HESSEN_MEASUREMENT_GOALS != expected:
@@ -83,6 +104,26 @@ def measurement_delta(view, roles):
     if roles["prerequisiteOnly"] & HESSEN_MEASUREMENT_GOALS:
         raise AssertionError("Measurement delta entered a support role")
     return expected
+
+
+RETIRED_MULTIPHASE_ID = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
+RETIRED_MULTIPHASE_OFFER_VIEWS = frozenset(json.loads((
+    authoring.ROOT / "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-multiphase-disposition-20261124/old-offer-views.actual.json"
+).read_text())["previousTargetViewIds"])
+HISTORICAL_TWO_MOTIONS_ID = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
+CURRENT_TWO_MOTIONS_ID = "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
+_two_motions_scope_bytes = (
+    authoring.ROOT / "curricula/DE/Gymnasium/quality/assessment-review/physik/"
+    "e1-current-assessments-20261124-v1/zb-identity-successor-20261124/native-current-identity.actual.json"
+).read_bytes()
+if hashlib.sha256(_two_motions_scope_bytes).hexdigest() != "f5bdfc1e4923c79e32113e064ff13e08d2cb2782565c42a007e2b8abdf0f9106":
+    raise AssertionError("Changed independently verified two-motions identity scope")
+_two_motions_scope = json.loads(_two_motions_scope_bytes)
+TWO_MOTIONS_SUCCESSOR_VIEWS = frozenset(
+    row["viewId"] for row in _two_motions_scope["viewBindings"] if row["successorVisible"]
+)
+if len(TWO_MOTIONS_SUCCESSOR_VIEWS) != 64:
+    raise AssertionError("Changed reviewed two-motions identity view set")
 
 
 def retained_authority_seeds(view, roles, baseline):
@@ -99,6 +140,8 @@ def retained_authority_seeds(view, roles, baseline):
             allowed_new_task |= {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b"}
     if state == "DE-HE" and stage in ("CrossStage", "SekII"):
         allowed_new_task.update(authoring.graph.HESSEN_E1_ASSESSMENTS)
+        allowed_new_task.add(authoring.graph.HESSEN_E1_FREE_FALL_ASSESSMENT)
+    allowed_new_task.update(e1_cut_delta(roles))
     if view["viewId"] in HESSEN_GUIDED_OPENING_VIEWS:
         allowed_new_task.update(HESSEN_GUIDED_OPENINGS)
     allowed_new_task.update(measurement_delta(view, roles))
@@ -115,6 +158,24 @@ def retained_authority_seeds(view, roles, baseline):
     else:
         if not set(variants.values()).isdisjoint(roles["target"] | roles["prerequisiteOnly"]):
             raise AssertionError("A child assessment variant left its reviewed scope")
+    if RETIRED_MULTIPHASE_ID in roles["target"] | roles["prerequisiteOnly"]:
+        raise AssertionError("A historical multiphase assessment is offered again")
+    if view["viewId"] in RETIRED_MULTIPHASE_OFFER_VIEWS:
+        retained = retained | {RETIRED_MULTIPHASE_ID}
+    # Comparison with the frozen source authority only: the independently
+    # verified successor replaces one identity in exactly these 64 view slots.
+    # Runtime identities and learner results remain distinct; no alias is made.
+    if HISTORICAL_TWO_MOTIONS_ID in roles["target"] | roles["prerequisiteOnly"]:
+        raise AssertionError("A historical two-motions assessment is offered again")
+    if CURRENT_TWO_MOTIONS_ID in roles["prerequisiteOnly"]:
+        raise AssertionError("The reviewed two-motions successor entered a support role")
+    expected_successor = view["viewId"] in TWO_MOTIONS_SUCCESSOR_VIEWS
+    if (CURRENT_TWO_MOTIONS_ID in roles["target"]) != expected_successor:
+        raise AssertionError("Changed reviewed two-motions successor view set")
+    if expected_successor:
+        if CURRENT_TWO_MOTIONS_ID not in retained:
+            raise AssertionError("The two-motions identity delta was counted as a new source addition")
+        retained = (retained - {CURRENT_TWO_MOTIONS_ID}) | {HISTORICAL_TWO_MOTIONS_ID}
     digest = hashlib.sha256(("\n".join(sorted(retained)) + "\n").encode()).hexdigest()
     if digest != baseline["selectedAtomicSha256"]:
         raise AssertionError("Retained source-seed fingerprint changed")
@@ -130,6 +191,30 @@ class PhysicsStageAuthoring(unittest.TestCase):
     def setUpClass(cls):
         cls.views = {path.name: json.loads(path.read_text()) for path in authoring.DIRECTORY.glob("*.view.json")}
         cls.authorities = json.loads((authoring.ROOT / "scripts/generate_laender_physics_stage_views.memberships.json").read_text())["authorities"]
+
+    def test_two_motions_identity_delta_cannot_widen_hide_or_demote_the_frozen_authority(self):
+        view = self.views["de-he-gk.view.json"]
+        baseline = self.authorities[view["viewId"]]
+        roles = authoring.graph.role_atoms(view)
+        retained_authority_seeds(view, roles, baseline)
+        missing = copy.deepcopy(roles)
+        missing["target"].remove(CURRENT_TWO_MOTIONS_ID)
+        with self.assertRaisesRegex(AssertionError, "successor view set"):
+            retained_authority_seeds(view, missing, baseline)
+        for role in ("target", "prerequisiteOnly"):
+            changed = copy.deepcopy(roles)
+            changed[role].add(HISTORICAL_TWO_MOTIONS_ID)
+            with self.subTest(historical_role=role), self.assertRaisesRegex(AssertionError, "historical two-motions"):
+                retained_authority_seeds(view, changed, baseline)
+        demoted = copy.deepcopy(roles)
+        demoted["prerequisiteOnly"].add(CURRENT_TWO_MOTIONS_ID)
+        with self.assertRaisesRegex(AssertionError, "support role"):
+            retained_authority_seeds(view, demoted, baseline)
+        outside = self.views["de-he-seki-g8.view.json"]
+        widened = authoring.graph.role_atoms(outside)
+        widened["target"].add(CURRENT_TWO_MOTIONS_ID)
+        with self.assertRaisesRegex(AssertionError, "successor view set"):
+            retained_authority_seeds(outside, widened, self.authorities[outside["viewId"]])
 
     def test_guided_openings_are_targets_only_in_the_eight_reviewed_views(self):
         self.assertEqual(len(self.views), 90)
@@ -385,8 +470,40 @@ class PhysicsStageAuthoring(unittest.TestCase):
                 self.assertEqual(task in seeds, applicable, (state, task))
             self.assertEqual(seeds | {p for seed in seeds for p in authoring.graph.prerequisites(seed)}, learning | (tasks & seeds))
 
+    def test_e1_acceleration_log_adds_only_the_independently_reviewed_lower_offers(self):
+        task = "a8dc0290-9f80-5763-8943-e16b8d2aa860"
+        laws = "262f807a-30d0-503e-986f-856cbd048e8e"
+        covered = "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        bindings = authoring.SOURCE_PLAN["reviewedLowerAssessmentBindings"]
+        offered = {state for state, binding in bindings.items() if task in binding["assessments"]}
+        self.assertEqual(offered, {"SN", "ST"})
+        self.assertEqual(authoring.graph.GOALS[task]["requires"], [laws])
+        self.assertEqual(authoring.graph.GOALS[task]["examData"]["coveredGoalIds"], [covered])
+        for state in offered:
+            binding = bindings[state]["assessments"][task]
+            self.assertEqual(binding["requires"], [laws])
+            self.assertEqual(binding["coveredGoalIds"], [covered])
+            self.assertTrue((authoring.ROOT / binding["independentReview"]).is_file())
+        for state in ("BW", "BY", "BB", "BE", "HB", "HH", "MV", "NI", "NW", "RP", "SL", "SN", "ST", "SH", "TH"):
+            with self.subTest(state=state):
+                original_offer = any(task in row["sourceSelectedLowerAtomicGoalIds"]
+                    for view_id, row in authoring.MEMBERSHIPS.items()
+                    if view_id.startswith("de-" + state.lower() + "-"))
+                lower = self.views[f"de-{state.lower()}-seki.view.json"]
+                self.assertEqual(task in authoring.graph.role_atoms(lower)["target"],
+                                 original_offer or state in offered)
+        # Hamburg's independent rejection is real: graph membership alone must
+        # not manufacture the missing signed-area / initial-value preparation.
+        self.assertNotIn(task, bindings["HH"]["assessments"])
+
+    def test_historical_two_motions_identity_is_absent_from_active_state_view_references(self):
+        for name, view in self.views.items():
+            with self.subTest(view=name):
+                self.assertNotIn("6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+                                 {node.get("goalId") for node in authoring.graph.walk(view["rootNodes"])})
+
     def test_horizontal_throw_assessment_follows_its_assessed_modeling_competency(self):
-        task, covered = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4", "d6dc0e02-831d-4894-a61a-852bcc74f147"
+        task, covered = "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9", "d6dc0e02-831d-4894-a61a-852bcc74f147"
         for state in ("MV", "SL", "SN"):
             for profile in ("gk", "lk"):
                 view = self.views[f"de-{state.lower()}-{profile}.view.json"]
@@ -436,10 +553,10 @@ class PhysicsStageAuthoring(unittest.TestCase):
             if state == "RP":
                 self.assertTrue(all("Lernjahr" in topic["unit"][2] for topic in topics.values()))
 
-    def test_primary_review_excludes_exactly_26_new_full_atom_claims_not_original_scope(self):
+    def test_primary_review_excludes_exactly_28_new_full_atom_claims_not_original_scope(self):
         decisions = authoring.SOURCE_PLAN["reviewedLowerSourceMembership"]["decisions"]
         self.assertEqual({state: set(rows) for state, rows in decisions.items()}, REVIEWED_NEW_LOWER_EXCLUSIONS)
-        self.assertEqual(sum(map(len, REVIEWED_NEW_LOWER_EXCLUSIONS.values())), 26)
+        self.assertEqual(sum(map(len, REVIEWED_NEW_LOWER_EXCLUSIONS.values())), 28)
         for state, excluded in REVIEWED_NEW_LOWER_EXCLUSIONS.items():
             lower = self.views[f"de-{state.lower()}-seki.view.json"]
             self.assertFalse(excluded & authoring.graph.role_atoms(lower)["target"], state)
@@ -451,6 +568,61 @@ class PhysicsStageAuthoring(unittest.TestCase):
         self.assertIn("37013646-f13a-5faf-954c-940f2fd7502f", authoring.canonical_visible_atoms(e10))
         self.assertIn("af1094c1-511a-5aae-9e0a-3e9196a82d9a",
             authoring.graph.role_atoms(self.views["de-sn-seki.view.json"])["target"])
+
+    def test_e1_source_stage_exclusions_keep_reviewed_partial_routes_and_full_view_targets(self):
+        review_root = (authoring.ROOT / "curricula/DE/Gymnasium/quality/assessment-review/physik/"
+                       "stage-source-route-repair-20261117-v1/e1-stage-20261124/th-mv")
+        repairs = (("TH", "262f807a-30d0-503e-986f-856cbd048e8e",
+                    "th-motion-laws-source-stage.review.actual.json", "upper_e10_not_lower_supplement"),
+                   ("MV", "1e459a1b-4159-5049-84eb-9928129c1610",
+                    "mv-velocity-time-source-scope.review.actual.json", "partial_lower_not_complete_atom"))
+        for state, atom, filename, classification in repairs:
+            with self.subTest(state=state, goal=atom):
+                review = json.loads((review_root / filename).read_text())
+                decision = authoring.SOURCE_PLAN["reviewedLowerSourceMembership"]["decisions"][state][atom]
+                self.assertEqual(decision, review["approvedLowerSourceMembershipEntry"])
+                self.assertEqual(decision["classification"], classification)
+                self.assertEqual(decision["canonicalDescription"], authoring.graph.GOALS[atom]["description"])
+                mapping = json.loads((authoring.ROOT / decision["retainedMapping"]).read_text())
+                source_ids = set(decision["sourceGoalIds"])
+                self.assertEqual([row for row in mapping["decisions"] if row["sourceGoalId"] in source_ids],
+                                 review["reviewedRouteDecisions"])
+                self.assertEqual({row["legacyGoalId"] for row in mapping["mappings"]
+                                  if row["canonicalGoalId"] == atom and row["matchType"] == "partial"
+                                  and row["legacyGoalId"] in source_ids}, source_ids)
+                for profile in ("gk", "lk"):
+                    full = self.views[f"de-{state.lower()}-{profile}.view.json"]
+                    upper = self.views[f"de-{state.lower()}-sekii-{profile}.view.json"]
+                    self.assertIn(atom, authoring.graph.role_atoms(full)["target"])
+                    self.assertIn(atom, authoring.graph.role_atoms(upper)["target"])
+                    if state == "TH":
+                        for view in (full, upper):
+                            e10 = authoring.Author(view).find("physics-th-unit-e10")[2]
+                            self.assertIn(atom, authoring.canonical_visible_atoms(e10))
+                # Rejecting a complete new lower seed must leave a valid partial
+                # source correspondence and the full-view target available.
+                lower = self.views[f"de-{state.lower()}-seki.view.json"]
+                self.assertNotIn(atom, authoring.graph.role_atoms(lower)["target"])
+
+    def test_owner_source_counterreview_preserves_the_corrected_by_pair_and_sn_locator(self):
+        # These semantic assertions survive an ordinary source-pin refresh:
+        # BY's generated view is byte-identical even with the rejected extra
+        # mapping, and SN's page locator does not change any native target set.
+        by = json.loads((authoring.ROOT / "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/"
+                         "bavaria_physics_source_extraction_to_canonical_physics.review.json").read_text())
+        source = "f7f4e1f0-3c48-5f1c-a474-4a41ca6296b6"
+        laws = "262f807a-30d0-503e-986f-856cbd048e8e"
+        decision = next(row for row in by["decisions"] if row["sourceGoalId"] == source)
+        self.assertEqual(decision["canonicalGoalIds"], [laws])
+        self.assertEqual([(row["canonicalGoalId"], row["matchType"]) for row in by["mappings"]
+                          if row["legacyGoalId"] == source], [(laws, "partial")])
+        sn = json.loads((authoring.ROOT / "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/"
+                         "sn_physics_upper_secondary_source_extraction_to_canonical_physics.review.json").read_text())
+        source = "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a"
+        decision = next(row for row in sn["decisions"] if row["sourceGoalId"] == source)
+        self.assertEqual(decision["sourceSpan"],
+                         "Jahrgangsstufe 11 Grundkurs, Anwendung der Kinematik und Dynamik, PDF-S. 48 (Druck-S. 36)")
+        self.assertIn(laws, decision["canonicalGoalIds"])
 
     def test_source_review_cannot_remove_an_original_lower_seed_or_import_a_new_task_basis(self):
         atom = authoring.MEMBERSHIPS["de-mv-gym-physics-gk"]["sourceSelectedLowerAtomicGoalIds"][0]

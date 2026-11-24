@@ -1,0 +1,135 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "atomicityReviews": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "semanticAtomic": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "independentlyAssessableFacets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "suggestedSplit": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "semanticAtomic",
+          "reason",
+          "independentlyAssessableFacets",
+          "suggestedSplit"
+        ]
+      }
+    },
+    "prerequisiteReviews": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "accept_current",
+              "needs_change",
+              "unresolved"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          },
+          "unnecessaryCurrentRequires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "missingRequires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "decision",
+          "reason",
+          "unnecessaryCurrentRequires",
+          "missingRequires"
+        ]
+      }
+    },
+    "semanticKindReviews": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "semanticKind": {
+            "enum": [
+              "curricularAtomic",
+              "practiceAssessment",
+              "programUnit",
+              "orientation",
+              "memorization",
+              "needs_review"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "goalId",
+          "semanticKind",
+          "reason"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "atomicityReviews",
+    "prerequisiteReviews",
+    "semanticKindReviews",
+    "limitations"
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-e1-current-three-v3-20261124-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root/th_mv, non-author informed integrator after examining both actual fresh blind gpt-6.1-sol/ultra and gpt-6.2-astra/ultra exact-body sessions.",
+  "synthesizedAt": "2026-11-24T05:13:24.175Z",
+  "batch": {
+    "batchId": "physik-e1-current-three-v3-20261124",
+    "batchManifestDigest": "sha256:7ba8850ede35df5824cb462a67c667afe333669987b27cadd46f3223df936a05",
+    "configDigest": "sha256:8d948b2efcbe2a802d7999928ec16d17d228ae6cc08bc94f71e322f082085a42",
+    "bundleFingerprint": "sha256:e1bf2eb3b8f465a742c242b5b8c63647961fcf618273bd04c9599963251c2281",
+    "bookDigest": "sha256:a32f6caf564ece78a65d6fec3f12047041d3816d96f05a9deb0667a4853dcc02",
+    "reviewInputFingerprint": "sha256:f5bbc9424884564e5abadf521a72d6a6c19af8994b0114e0e0e903688e51ce2c",
+    "dualSummaryDigest": "sha256:bc025504681b2924f7ca8efb928832b40819a0b8fafa6823094a6d2c480beaf6",
+    "canonicalLandscapeDigest": "sha256:040034d270fad079b53d271cbb640847d1761440b979d9fe52a18c3982a5caf5"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-e1-current-three-v3-20261124-a",
+      "campaignDigest": "sha256:30e980edd40a0bb4ba8bd4e1112c9e72b59b26edb4b10f394e2d4dd41a7eed1c",
+      "roundId": "physik-e1-current-three-v3-20261124-first-pass-a",
+      "independenceGroupId": "physik-e1-current-three-v3-20261124-independent-a",
+      "reviewInputFingerprint": "sha256:f5bbc9424884564e5abadf521a72d6a6c19af8994b0114e0e0e903688e51ce2c",
+      "batchId": "physik-e1-current-three-v3-20261124-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:350552e4fd0e4d8a97156e53b90c43a473320632430e35e9e38d3f2fd4144554",
+      "runId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05",
+      "runManifestDigest": "sha256:0da4ae7663af70dd22d598a796b36cf2ddb28dd19063497b52c9cbe01a4f8ba9",
+      "resultsDigest": "sha256:2c5aa2ea177a72d8315c8580a270e38c372889509c9caee25f70533b43c596e9"
+    },
+    "second": {
+      "campaignId": "physik-e1-current-three-v3-20261124-b",
+      "campaignDigest": "sha256:f7586cb9f02cbf74d4ea3a3ac28a1f918d10375d62709863d5fd7abb1a676848",
+      "roundId": "physik-e1-current-three-v3-20261124-first-pass-b",
+      "independenceGroupId": "physik-e1-current-three-v3-20261124-independent-b",
+      "reviewInputFingerprint": "sha256:f5bbc9424884564e5abadf521a72d6a6c19af8994b0114e0e0e903688e51ce2c",
+      "batchId": "physik-e1-current-three-v3-20261124-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:269c376d50fee75ec7c923c909a8c51471ee033c18d0b58378cfecd350b5bb96",
+      "runId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b",
+      "runManifestDigest": "sha256:f39294c61dc0bafeb122736e375b08cc8fd5f1a1efb43a98672fac82f5facc65",
+      "resultsDigest": "sha256:68249e8d21d35b4809f2d7c6b2b47a43110769196f5b1f96844f18275f1c1686"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-e1-current-three-v3-20261124-informed-synthesis-decision-001",
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9729fe9b2fca11940d48bfb8dfeece1f8f2f90af28740f5bee994cd61fe17818",
+      "pageFingerprint": "sha256:375f21276fccd12f9bee9125d5a916304004eae51019571e0bbfc3af3304eee5",
+      "goalReviewContextFingerprint": "sha256:818836ea0080b4185f307d79e0a86aae3a1bbc4843d9dbb9a980c02e1f34e445",
+      "finalText": {
+        "titleDe": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben",
+        "titleEn": "Describe Motions with Time-Position and Time-Velocity Laws",
+        "descriptionDe": "Die lernende Person kann für gleichförmige und gleichmäßig beschleunigte Bewegungen das Zeit-Ort- und das Zeit-Geschwindigkeits-Gesetz aus den Diagrammen ermitteln, ihren Zusammenhang erläutern und damit Ort und Geschwindigkeit zu einem Zeitpunkt vorhersagen.",
+        "descriptionEn": "The learner can determine the time-position law and the time-velocity law of uniform and uniformly accelerated motions from the graphs, explain how the two laws are related and use them to predict position and velocity at a given time."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05-262f807a-30d0-503e-986f-856cbd048e8e",
+          "recordDigest": "sha256:53c719c848691c074661c9540ccdf8c618f58748f7098af3f57f9a8b6772114d"
+        },
+        "second": {
+          "recordId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b-262f807a-30d0-503e-986f-856cbd048e8e",
+          "recordDigest": "sha256:aa68168acb07df50ed436b086e2bc9f6be691bfa8ef80c387ee8e554237a46fd"
+        }
+      },
+      "rationaleDe": "Beide tatsächlich ausgeführten frischen blinden Runden behalten die aktuelle Beschreibung und den exakten Nachfolger des Profils bei. Die beiden Modelle werden aus unterschiedlicher Ausgangsdarstellung bestimmt. Die aktuellen Fälle liefern den jeweils nötigen Anfangsort ausdrücklich oder lassen ihn aus dem Ortsgraphen bestimmen. Eine feste Achsenkonvention bleibt erhalten, während das Vorzeichen der momentanen Geschwindigkeit einen Richtungswechsel anzeigen kann. Elementare Steigungs-, Flächen- oder Mittelgeschwindigkeitsargumente und gleichwertige fachlich richtige Verfahren sind zugelassen. Die konkreten Vorhersagen −1 m sowie 5,5 m und +3 m/s sind in beiden Runden überprüft. Ich übernehme die positive Verstehensevidenz der ersten Runde. Diese Aktivierung ersetzt die vorherige D-Bindung an den älteren Profilkontext und lässt alle historischen Meinungen und Quellpakete unverändert; sie behauptet keine menschliche Freigabe oder Lernendenleistung.",
+      "rationaleEn": "Both actually executed fresh blind rounds retain the current description and exact successor profile. The two models are inferred from different source representations. Each case now explicitly supplies the required initial position or allows it to be read from the position graph. The axis convention remains fixed while the sign of instantaneous velocity can indicate reversal. Elementary slope, area or mean-velocity arguments and equivalent valid methods are accepted. Both rounds verify the predictions of −1 m and of 5.5 m with +3 m/s. I select the first round's positive understanding evidence. This activation supersedes the previous description binding to the older profile context while retaining every historical opinion and source packet; no human approval or learner performance is claimed."
+    },
+    {
+      "decisionId": "physik-e1-current-three-v3-20261124-informed-synthesis-decision-002",
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:130790489acb03f5ba26be963eb06339ad5f38783763c65e16a1646eb7acd6ab",
+      "pageFingerprint": "sha256:46487f9ae3c3683d0135bb40464a02cf726f987576952e085e0ea48e948adc32",
+      "goalReviewContextFingerprint": "sha256:0b28bf67dd418544144c3575588f81a0ac455b7e34740710df7248d9e2b8579b",
+      "finalText": {
+        "titleDe": "Freier Fall experimentell untersuchen",
+        "titleEn": "Investigate Free Fall Experimentally",
+        "descriptionDe": "Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.",
+        "descriptionEn": "The learner can experimentally investigate free fall near Earth's surface, graphically analyze measurement data, use a model that neglects air resistance to determine gravitational acceleration, and formulate a time-position law with stated initial conditions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05-09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "recordDigest": "sha256:e04cd88b0c397a51006e5bc98fb7be397ba8d4c56d1a7e8a3808bd9dfc63b041"
+        },
+        "second": {
+          "recordId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b-09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "recordDigest": "sha256:ce7fe3b33576ba202601659f54c80e54e22a8d05cdc579e03260d7428d5013d4"
+        }
+      },
+      "rationaleDe": "Beide tatsächlich ausgeführten frischen blinden Runden behalten die aktuelle Beschreibung und den exakten Nachfolger des Profils bei. Eine sichere, kalibrierte und wiederholte eigene Falluntersuchung bleibt Pflicht. Die erste graphische Darstellung ist jetzt ein gültiger Beispielweg statt einer Methodenvorschrift; äquivalente graphische Bestimmungen müssen mit Einheiten und Unsicherheit begründet werden. Eine unabhängige Transferdemonstration kann auf klar zugeordneten fremden Daten beruhen, verlangt aber die eigene Auswertung. Die genannten Zahlen sind ausdrücklich Modellreferenzen; weder eigene Messung noch Übereinstimmung mit einem Sollwert wird fingiert. Ich übernehme die positive Verstehensevidenz der ersten Runde. Diese Aktivierung ersetzt die vorherige D-Bindung an den älteren Profilkontext und lässt alle historischen Meinungen und Quellpakete unverändert; sie behauptet keine menschliche Freigabe oder Lernendenleistung.",
+      "rationaleEn": "Both actually executed fresh blind rounds retain the current description and exact successor profile. A safe, calibrated and repeated personal drop investigation remains required. The first graphical representation is now one valid example rather than a prescribed method; equivalent graphical determinations require justification with units and uncertainty. Independent transfer may use clearly attributed supplied data but requires the learner's own analysis. The numerical examples are explicitly model references; no personal measurement or agreement with a prescribed value is fabricated. I select the first round's positive understanding evidence. This activation supersedes the previous description binding to the older profile context while retaining every historical opinion and source packet; no human approval or learner performance is claimed."
+    },
+    {
+      "decisionId": "physik-e1-current-three-v3-20261124-informed-synthesis-decision-003",
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d589a725624dabbd81123d28bee9c6dd653735297c2a93a044d9165583e7616c",
+      "pageFingerprint": "sha256:1716ca6d3c887d868583e363b7ac3cba0dfbe49662f45ac3af5b1450894603a8",
+      "goalReviewContextFingerprint": "sha256:2127e6e3165515d4f47dec91ffd9fbf6fa5bfa0bff3776a7c6a19c3f1b84a27c",
+      "finalText": {
+        "titleDe": "Waagerechter Wurf analysieren",
+        "titleEn": "Analyze Horizontal Projection",
+        "descriptionDe": "Die lernende Person kann den waagerechten Wurf experimentell untersuchen, bei vernachlässigbarem Luftwiderstand und konstanter Fallbeschleunigung als Überlagerung gleichförmiger horizontaler und gleichmäßig beschleunigter vertikaler Bewegung deuten und die Flugbahn im x-y-Diagramm darstellen.",
+        "descriptionEn": "The learner can experimentally investigate horizontal projectile motion, interpret it under negligible air resistance and constant gravitational acceleration as the superposition of uniform horizontal and uniformly accelerated vertical motion, and represent its trajectory in an x-y diagram."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+          "recordDigest": "sha256:a4979d4e7fa543e70456bb4677ac9039b31950564763ed7da33d3ce6aa0755b7"
+        },
+        "second": {
+          "recordId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+          "recordDigest": "sha256:6de33f237d4b7eebfefccf18d6ba54c33fea5d26a32c9bdb819b16c457233421"
+        }
+      },
+      "rationaleDe": "Beide tatsächlich ausgeführten frischen blinden Runden behalten die aktuelle Beschreibung und den exakten Nachfolger des Profils bei. Beide eigenen Wurfmessungen behalten sichere Start-/Auffangbedingungen und getrennt dokumentierte Raum- und Zeitskalen. Die Pflichtprüfung unterscheidet nun gleiche vorzeichenbehaftete horizontale Ortsänderungen von wachsenden Beträgen der vertikalen Ortsänderungen. Damit gilt die Aussage für beide verwendeten Achsenrichtungen. Die Person konstruiert die räumliche Bahn selbst und prüft die Überlagerung an gleichzeitigen eigenen Daten unter Beachtung der Unsicherheit; ein zusätzliches Vektor-Betrags-/Winkelziel wird nicht vorweggenommen. Ich übernehme die positive Verstehensevidenz der ersten Runde. Diese Aktivierung ersetzt die vorherige D-Bindung an den älteren Profilkontext und lässt alle historischen Meinungen und Quellpakete unverändert; sie behauptet keine menschliche Freigabe oder Lernendenleistung.",
+      "rationaleEn": "Both actually executed fresh blind rounds retain the current description and exact successor profile. Both personal projectile investigations retain safe launch/catch conditions and separately documented space/time calibration. The required check now distinguishes equal signed horizontal displacement from increasing vertical displacement magnitudes, valid under either axis convention. The learner independently constructs the spatial trajectory and tests superposition using simultaneous personal data and uncertainty; the separate vector magnitude/direction competence is not added. I select the first round's positive understanding evidence. This activation supersedes the previous description binding to the older profile context while retaining every historical opinion and source packet; no human approval or learner performance is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:171d04f28baa8bbe31616b1922c1108a5a05734193995c4f16a31b6fd57e94e2"
+}

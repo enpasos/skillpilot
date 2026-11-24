@@ -1,0 +1,68 @@
+{
+  "schema": "actual-independent-pv2-d17-coverage-completion-v1",
+  "status": "TWO_CONTENT_APPROVALS_EXACT_PV2_D17",
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-pv2-d17-coverage-a.md",
+      "sha256": "sha256:2a0ebeabb9e4f81b9e0f4296333dabb6bce18576de1da3bad4dae3e23b6b3426"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-pv2-d17-coverage-a.execution.log",
+      "sha256": "sha256:924dfbb6434126949591b28ad3705140d69824b005c664b1406e0a84e121fb98"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-pv2-d17-coverage-b.md",
+      "sha256": "sha256:9d133cccca748c571b9c07c8f4b1f4479709373a97c42494efa885788028c26a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-pv2-d17-coverage-b.execution.log",
+      "sha256": "sha256:42caf84551267efb16d63539818fddc7edb44f594552c85fbbb85a0c9f697929"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-pv2-d17-coverage-prompt.txt",
+      "sha256": "sha256:b37b38f4657df969f3556aeac398dd66a7ab601a081c3d4ea415af6d18f6ba28"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/pv2-author-metadata-at-initial-copy.json",
+      "sha256": "sha256:ee3dc959f381b3c83fa10463ec8eb432b384c7d50e86c669e7afaca469ce0338"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/pv2-exact-neutral-candidate.json",
+      "sha256": "sha256:3c07b96dd47f877596a43575a44d2a2087624c9a16dae02854acbf7d929704a2"
+    }
+  ],
+  "actualExecutions": [
+    {
+      "review": "independent-pv2-d17-coverage-a.md",
+      "actualTool": "isolated Codex CLI exec",
+      "actualModel": "gpt-6.1-sol",
+      "actualReasoningEffort": "ultra",
+      "actualSessionId": "01a20bdb-b361-7601-b3cc-2375c05b125a",
+      "exitCode": 0,
+      "readOnly": true,
+      "ephemeral": true,
+      "receivedAnotherReviewOrDesiredOutcome": false,
+      "contentVerdict": "APPROVE",
+      "activationOrHumanAcceptanceGranted": false
+    },
+    {
+      "review": "independent-pv2-d17-coverage-b.md",
+      "actualTool": "isolated Codex CLI exec",
+      "actualModel": "gpt-6.1-sol",
+      "actualReasoningEffort": "ultra",
+      "actualSessionId": "01a20bdb-b362-7e32-9cec-36892aa59ca3",
+      "exitCode": 0,
+      "readOnly": true,
+      "ephemeral": true,
+      "receivedAnotherReviewOrDesiredOutcome": false,
+      "contentVerdict": "APPROVE",
+      "activationOrHumanAcceptanceGranted": false
+    }
+  ],
+  "profileCandidateRawSha256ActuallyReadByBoth": "3c07b96dd47f877596a43575a44d2a2087624c9a16dae02854acbf7d929704a2",
+  "nativeProfileFingerprint": "sha256:969277be3831429d8b5ed7d22a1b0b094698ac0a66be635e67c0fd6589bac192",
+  "D17RawSha256": "e12d8bcafaa2bcd824b76bbab56e63ed7d3ef87044eafaa24f30f877a4e3683f",
+  "metadataTransition": "The author candidate reason was neutralized before these actual reviewers read it. Both reports independently hash the same3c07 neutral candidate and the exact same profile body. The earlier local copy differs only in goals[0].reason, not in any profile field. Both actual metadata snapshots are retained.",
+  "scope": "Exact three mandatory BES expectations, min2demonstrations/freshvariation/transfer, D17 ordinary17/20 core thresholds. Starting-representation variation is not observed and is not claimed mandatory by the native profile; relative-sign variation is observed. No other whole goal receives coverage or planning credit.",
+  "limits": "These approve content relationship only. Current input/image P validation, actual D release, exact owner/material/review bindings and tests remain separate. No human acceptance, learner trial, experimental execution or receipt/mastery transfer."
+}

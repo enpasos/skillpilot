@@ -1,0 +1,141 @@
+{
+  "verdict": "NEW_DISTINCT_ASSESSMENT_ID_REQUIRED_FOR_QUALIFIED_ZB_SUCCESSOR",
+  "assessmentId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+  "claimedModelingGoalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+  "testedProductRevision": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+  "productChanges": false,
+  "scoredSuccessorAcceptance": "Not evaluated. The identity finding grants no substantive task approval.",
+  "normativeDistinction": "AGENTS§4 and existing R5 are binding. The explicit exam-identity paragraph in05-assessment.en.md:183 is marked Proposal and cited as consistent context, not an overriding adopted rule.",
+  "effects": {
+    "historicRawMastery": "Goal UUID only. RAW_ONLY proves a material receipt is not required for the optional mastered/startAvailable branch.",
+    "verifiedHistoricalPass": "Normal grading writes mastery plus material receipt. Old30/36-at22 and later36/36 fixtures retain actual previous material; optional mastered=true and startAvailable=false regardless.",
+    "receiptAlone": "No receipt-only runtime case was executed. Source trace shows optional branches read mastery, whereas bound parts read material receipts; receipt alone is not asserted to upgrade optional completion.",
+    "materialCurrent": "The actual predicate returns true for ZB because changedByProfile is derived only from real contract.parts(A–D). A local synthetic ZB task hash change still returns true. Optional assessment response itself has no materialCurrent field. A synthetic bound single-part control rejects the receipt, but is not the actual unit.",
+    "sectionAndVoluntary": "All3 actual H2 fixtures showZB mastered=true,startAvailable=false,voluntary=true. Required unit stays4/4 with unchanged unitAssessment. ZB is no compulsory part.",
+    "globalModeling": "No MOD raw mastery or MOD planning credit appears. coveredGoalIds alone does not award such global mastery today. This limits present damage but does not qualify the old result for a newly valid successor.",
+    "planning": "Exactly BES e4b38061 remains the reviewed unit credit viaD; no ZB credit or invented release binding.",
+    "typescript": "Frontend passes through mastered/startAvailable/voluntary; materialCurrent strictness applies to unit parts. Reference recognition explicitly does not modelR5 and assumes results belong to current contract."
+  },
+  "mpComparison": "Same UUID-only voluntary completion vulnerability as archivedMP. Preserve oldZB identity/material/result history; a qualifying developed successor requires a distinctID, at the intended optional offer, without alias/mastery transfer. No newID allocated or activated.",
+  "scopeBoundary": "This task has old admissible passes and later36/36 wording that do not guarantee newly requiredMODcore. The verdict does not require newID for every rubric edit; equivalent editions preserving a validcore may preserve identity.",
+  "schemaVersion": 1,
+  "recordType": "additive-native-zb-assessment-identity-audit",
+  "archivedAt": "2026-11-24T10:12:29.511374+00:00",
+  "canonicalAtNativeCheckpoint": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "3f04823fba6b532419887537aafd99eecde292477da86dfa549a2bcd98f66ff6",
+    "revision": "a3a0a8517e33d3519dcd238181e3afedfbaadb95"
+  },
+  "counterexample": {
+    "authenticOldEdition": "2a70254ca457b0a13e17246fe065a22660c3cf03",
+    "passingPoints": 22,
+    "maxPoints": 36,
+    "earnedPoints": 30,
+    "answers": "Tasks1–5 fulfill all first30 one-point rows; task6 and all six model-idealisation rows omitted.",
+    "oldPassAllowed": true,
+    "newCoreActuallyEvidenced": false,
+    "path": "counterexample.md"
+  },
+  "nativeRun": {
+    "command": [
+      "./gradlew",
+      "test",
+      "--rerun",
+      "--tests",
+      "com.skillpilot.backend.connectors.claude.v1.mcp.ZbIdentityAuditTest.actualHistoricalZbConsumption",
+      "--init-script",
+      "<original temporary audit directory>/native-audit.init.gradle",
+      "--no-daemon",
+      "--console=plain",
+      "--max-workers=2",
+      "--no-build-cache",
+      "-PbackendTestForks=1"
+    ],
+    "commandNormalization": "Only the absolute temporary init-script path is replaced by a location label. Original invocation JSON is retained outside Git and digest-bound below.",
+    "cwd": "backend",
+    "startedAt": "2026-11-24T10:06:12.110697+00:00",
+    "finishedAt": "2026-11-24T10:08:05.143156+00:00",
+    "exitCode": 0,
+    "headBefore": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+    "headAfter": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+    "CI": "true",
+    "GITHUB_ACTIONS": "true",
+    "java": "Amazon Corretto25.0.2.10.1",
+    "persistentInstance": false
+  },
+  "junit": {
+    "classes": 1,
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "cases": [
+      {
+        "name": "[1] edition = \"HISTORICAL22\"",
+        "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ZbIdentityAuditTest",
+        "timeSeconds": 17.669,
+        "status": "PASS"
+      },
+      {
+        "name": "[2] edition = \"CURRENT36\"",
+        "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ZbIdentityAuditTest",
+        "timeSeconds": 14.794,
+        "status": "PASS"
+      },
+      {
+        "name": "[3] edition = \"RAW_ONLY\"",
+        "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ZbIdentityAuditTest",
+        "timeSeconds": 13.384,
+        "status": "PASS"
+      }
+    ],
+    "rawSha256": "d6e393f275534fda0a4c43b70e7ff9713ece34526c986a7bbab2240a629172f4"
+  },
+  "nativeCases": [
+    "HISTORICAL22.native.actual.json",
+    "CURRENT36.native.actual.json",
+    "RAW_ONLY.native.actual.json"
+  ],
+  "sources": "sources.actual.json",
+  "testSource": "source/ZbIdentityAuditTest.java",
+  "boundedXml": "EXCERPT-TEST-ZbIdentityAuditTest.xml",
+  "transportPolicy": "Additive portable record of the genuine prior audit. Original scratch records remain unchanged. Raw logs/XML are not copied into Git; no profile, credential or learner production state included.",
+  "originalRawEvidence": [
+    {
+      "fileName": "native-audit.log",
+      "sha256": "ae72662f78328a9699352b8c9d00b7554e4d7c2cccd7c8f6cc22ccb85b9603f4",
+      "bytes": 12057,
+      "retainedInRepository": false
+    },
+    {
+      "fileName": "native-audit.actual.json",
+      "sha256": "9ded8ee9fbe92f2e21dcfb51113d9e0f973c6b4a523b491c786485b81b118c82",
+      "bytes": 940,
+      "retainedInRepository": false
+    },
+    {
+      "fileName": "identity-review.actual.json",
+      "sha256": "35e12ffb7508e62d526055f98c28111f7cc36b77366aee9705160085910723d2",
+      "bytes": 15753,
+      "retainedInRepository": false
+    },
+    {
+      "fileName": "identity-review.md",
+      "sha256": "146f8a244f1f5a089c0ab3f8af60b4e120be66b39139ea706d2f4c9bd495c5b3",
+      "bytes": 5153,
+      "retainedInRepository": false
+    },
+    {
+      "fileName": "sources.actual.json",
+      "sha256": "02094418c755065b8f1c22ebd2b8ac6d53980180c9f4f138c484ba1db41038f0",
+      "bytes": 40624,
+      "retainedInRepository": false
+    },
+    {
+      "fileName": "RAW-TEST-ZbIdentityAuditTest.xml",
+      "sha256": "d6e393f275534fda0a4c43b70e7ff9713ece34526c986a7bbab2240a629172f4",
+      "bytes": 6975213,
+      "retainedInRepository": false
+    }
+  ]
+}

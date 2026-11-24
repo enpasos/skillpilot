@@ -1,0 +1,2629 @@
+{
+  "schema": "mp-assessment-identity-and-retained-history-read-only-review-v1",
+  "reviewedAt": "2026-11-24T05:43:27.569704+00:00",
+  "status": "NEW_ID_REQUIRED_FOR_NEW_RECOGNITION_CONTRACT_NO_ACTIVATION",
+  "scope": "Technical result-contract/history review, not a scientific acceptance of the proposed task. No repository product file, canonical goal, view, gate or learner data was changed by this review.",
+  "identities": {
+    "historicalAssessmentId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+    "legacySourceGoalId": "73cb58ec-6ded-4a35-9809-32aa8bfff1b0",
+    "bindingSuccessorId": "05cfd298-cb80-54c4-a898-b521ef270843",
+    "identityAuthority": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/authority-0639.bound.md",
+      "sha256": "b1ce60dd142e36d70a8707b5017a0bc6ac0b0672a58bd3f2598af157b796f9c8"
+    },
+    "noNewIdentityCollisionInCurrentCanonical": true,
+    "previousLocalSuggestedId": "d070cb2d-bbb6-558e-bd36-35fb39ad0127",
+    "previousLocalSuggestionSupersededByBinding0639Decision": true
+  },
+  "deliveredHistoricalContract": {
+    "meaning": "Previously delivered/historically evidenced30maximum/18passing contract under this UUID. No separate published package is claimed.",
+    "currentScoring": {
+      "maxPoints": 30,
+      "passingPoints": 18,
+      "steps": [
+        {
+          "id": "s1",
+          "points": 7,
+          "description": "Phasen aus den Messdaten sinnvoll abgegrenzt und (mittlere) Beschleunigungen korrekt bestimmt"
+        },
+        {
+          "id": "s2",
+          "points": 6,
+          "description": "Gesamtstrecke aus den Messdaten mit stückweise linearer Flächenberechnung korrekt berechnet"
+        },
+        {
+          "id": "s3",
+          "points": 7,
+          "description": "Wurfweite aus dem Mehrphasenmodell korrekt berechnet"
+        },
+        {
+          "id": "s4",
+          "points": 6,
+          "description": "Unsicherheitsintervall fachlich korrekt angegeben"
+        },
+        {
+          "id": "s5",
+          "points": 4,
+          "description": "Modellgrenzen fachlich reflektiert"
+        }
+      ]
+    },
+    "currentCoverage": [],
+    "snapshots": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/before.goal.json",
+        "sha256": "8919811ec34f2eed14fd73822d679315ececf2194bdb6d85f334da22121d5ca4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/approved-current.goal.json",
+        "sha256": "472fce30f7ce9d4b785022ced97e26d1695cd92701157f10f7276d7d6b9c30e2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/activation.actual.json",
+        "sha256": "c91d66f770629e0dc3780837f16833ca1cbe3c043b120f500a7ec93f9c296a5f"
+      }
+    ],
+    "retainedPrimaryInput": {
+      "path": "curricula/DE/Gymnasium/input/HE/abi/Physik/task_bank.json",
+      "sha256": "a588a51a4e74af74f9f106ea55aac05b972f5fed75e4e300ed0de6f1389ef3c8"
+    }
+  },
+  "sameIdentityRisk": {
+    "masteryStorage": "Mastery/MasteryId bind learner,goal UUID,value,timestamp only. No task/rubric/P/recognized-goal fingerprint is stored on the ordinary binary result.",
+    "completion": "CompletionApplicationService.evaluate:216-222 maps any saved mastered UUID to the current compiled profile; CompletionEvaluator:30-35/71/87-97/140 treats the existing result as passed for the current definition.",
+    "offer": "LearnerService:1109-1116 and1175-1184 shows mastery byUUID; mastered makes startAvailable false. MP is voluntary and not a bound required contract part, so currentUnitPart checks only the actual4required parts and do not version this MP result.",
+    "noAutomaticModMasteryClaim": "Today coveredGoalIds alone are not a general runtime rule for MOD mastery/credit. computeEffectiveMastery:9162ff aggregates contains, not exam coverage. Current onlyBES planning release does not include MP. This fact is not an R5 proof that an old pass may acquire a future new recognition meaning.",
+    "strongerRubricNotFreshAttempt": "A new task/scoring material hash does not clear, reset or requalify the old mastered UUID. Old18/30 therefore can display the new36/28 assessment as already completed under the sameID."
+  },
+  "existingVersioningAndMigration": {
+    "materialReceipt": "AssessmentMaterialRevision hashes current task+solution,rubric and bilingual material. VerifiedExamPass is indexed by learner+goal+material fingerprint, preserving distinct actual versions. It is recorded only after a trusted successful evaluation in the same transaction as mastery.",
+    "planningReceipt": "UnitAssessmentContract.parts matches task/rubric/fingerprint; LearnerService.hasBoundPlanningReceipt also requires the exact versioned planning release fingerprint. resolvePlanningCreditBindingsForAssessment grants that binding only for the newly graded active meaning. No old material receipt or plain mastery suffices forBES.",
+    "import": "VerifiedExamPassService.restoreReceipts preserves historical material hashes, dates and existing binding IDs. It does not invent new IDs or a new MOD binding. LearnerService imports Mastery under its supplied goal key.",
+    "packageAliases": "The package migration schema has reassess/retire/history policies, but current Java loader/snapshot only retains migrationAliases JSON. No scored-contract-aware service applying an explicitly reviewed oldMP→newMOD result migration was found in the active runtime paths. A schema is not a completed reviewed migration.",
+    "noMigrationRecommendation": true
+  },
+  "existingRetentionPattern": [
+    {
+      "id": "151edbf8-eb68-5ef7-8786-43e56a281b0b",
+      "role": "existing retained-mixed-assessment cluster",
+      "payload": {
+        "id": "151edbf8-eb68-5ef7-8786-43e56a281b0b",
+        "shortKey": "physics_retained_mixed_assessments",
+        "title": "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis",
+        "titleEn": "Retained Mixed Assessments without Complete Individual-Goal Evidence",
+        "description": "Erhält die bisherige Aufgabenidentität und ihre gemischte Bewertungsleistung. Kein aktiver Lernrouten-Endpunkt und keine vollständige Anerkennung einzelner Inhaltsziele.",
+        "descriptionEn": "Retains the historical task identity and mixed grading outcome. No active learning-route endpoint or complete recognition of individual content goals.",
+        "type": "cluster",
+        "contains": [
+          "44985d9f-7b49-52e4-86ec-eddc7b70429f",
+          "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+          "d44eb772-acb3-5449-accc-36a1fb7a25a5",
+          "e99d87ac-0024-5f2b-ab47-d4d1cebba027",
+          "0432a422-401b-5134-bf08-05cfd8c7a366",
+          "367b17f8-972a-5f3e-8915-8cfe743132a3",
+          "4ab1cf6d-b808-5b86-9291-85df0b9f2496",
+          "d441ee2f-9230-5751-832b-5b0b5cf14605",
+          "5e64eacd-5204-5028-af23-02a43377c56e",
+          "72ee642f-7574-517e-abd6-17d699b05af6",
+          "783c1ffe-d983-5c5a-8897-2c88fc64147c",
+          "841edfdb-5e12-5a37-ab12-552a1d8e92ca",
+          "8ff2a728-fba3-538e-83e9-69bdd8e1369e",
+          "ba29e928-a287-5de7-b3fe-5c8c3731363b",
+          "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
+          "db5f4121-d4b1-5006-b2da-6e76aac72bf5"
+        ],
+        "requires": [],
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "extendedData": {
+          "applicabilityProjection": "excluded",
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "dimensionTags": {
+          "phase": "GLOBAL"
+        },
+        "applicability": {}
+      }
+    },
+    {
+      "id": "4ab1cf6d-b808-5b86-9291-85df0b9f2496",
+      "role": "existing retained vertical-throw assessment; empty coverage, excluded projection, kept canonical ID",
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityFromRequires": true,
+        "applicabilityProjection": "excluded"
+      },
+      "parentIds": [
+        "151edbf8-eb68-5ef7-8786-43e56a281b0b"
+      ]
+    },
+    {
+      "id": "7f83e25c-38f7-5ac2-8f9c-ec54eeef1026",
+      "role": "existing compatibilityOnly aggregate assessment retained outside active projections",
+      "extendedData": {
+        "applicabilityProjection": "excluded",
+        "applicabilityMappingInheritance": "boundary",
+        "compatibilityOnly": true
+      }
+    }
+  ],
+  "safeSuccessorRecommendation": {
+    "condition": "Only after actual final content reviews accept the exact new edition. Until then leave the currently released historical edition active.",
+    "newGoal": "Use binding05cfd298 identity for the accepted new task, with reviewed requiresWW+MOD and wholeMOD claim only if actually accepted. Do not activate the old-id candidate or invent a shortKey unless consistent with existing exam schema.",
+    "oldGoal": "Keep oldUUID canonically resolvable. Preserve current30/18 scored bodies and rubric; retain all earlier exact snapshots. Add the existing excluded/compatibility/boundary metadata and move the old goal from its active E-phase practice parent to the existing retained-mixed cluster. Do not copy or reset learner mastery, dates or material receipts.",
+    "activeContainers": "Replace oldID only in active intended offerings and terminal containers; no oldID remains a target or prerequisiteOnly offered task in current live views. OldID remains under retained historical catalog context.",
+    "noAlias": "Do not add exact/equivalent oldID→newID alias. Keep the retainedHE source73cb exact mapping and canonical provenance on oldID; otherwise legacy result lookup could transfer an unqualified pass to the new identity. The new derivative own assessment needs own provenance, not a rewritten historical source task.",
+    "recognition": "NewID starts unmastered for a learner who only passed oldID. No MOD mastery or planning credit is added by identity/coverage metadata. Any future MOD release needs its separately reviewed owning-unit meaning and fresh, exact receipt bindings.",
+    "inputScope": "BES review.currentGoalPayloads has18 goals and excludesMP; BES required parts/credit/owner/P need no semantic expansion. The changed MP offeringID and view/material-policy bytes need an additive fresh scope successor."
+  },
+  "referenceInventory": {
+    "currentCanonical": {
+      "file": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "040034d270fad079b53d271cbb640847d1761440b979d9fe52a18c3982a5caf5"
+      },
+      "activeParentIds": [
+        "424b07df-bf66-5d7f-99f5-f28b32ad1f22"
+      ],
+      "incomingRequires": []
+    },
+    "activeViews": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json",
+        "sha256": "7036f0c8d638b73e28463e8b224c2ae2cf40c5862a6a28734f2b13b87976e451",
+        "viewId": "de-bb-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/8/children/55/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json",
+        "sha256": "369a003c956f715079dc47142d2d864378f6ff11e7461a6420f42b18ae4fda1c",
+        "viewId": "de-bb-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/8/children/36/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json",
+        "sha256": "7974bf9fa9df1f4eaf94244700db7ae418ed77449f06e1faf488b65ef72fb7bd",
+        "viewId": "de-bb-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/8/children/58/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json",
+        "sha256": "4419af086275f8245442b547ae4d297624ffa1667fc6bf52b18a17a762d33a33",
+        "viewId": "de-bb-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/8/children/43/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json",
+        "sha256": "d994f5948a265b0e87f47b3c5b8c8248a5689577bf854d31e447c3398382af95",
+        "viewId": "de-be-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/8/children/55/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json",
+        "sha256": "ac528289ae09a173aad52a2559d65c81b32e5be1f9b2a0a51c35a9eda2019583",
+        "viewId": "de-be-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/8/children/36/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json",
+        "sha256": "9da3529e61423dae6a09a34aa016e3b2e13cc18e1da8b7aa49a30f36cce4f695",
+        "viewId": "de-be-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/8/children/58/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json",
+        "sha256": "46e4434edf38a21cd30553ff3d51b5d06d22c44f400cb876910477202db9fdbb",
+        "viewId": "de-be-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/8/children/43/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json",
+        "sha256": "d753e9410485db945317ec5c7341e37b7d10efeef0f8b11d4f80d510387b4b4d",
+        "viewId": "de-de-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/23/children/7/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json",
+        "sha256": "d81a7263fba383178105fc3fcd7149cecb84bb1a0a611aafc4dfc50021dd6ce4",
+        "viewId": "de-de-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/25/children/6/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-gk.view.json",
+        "sha256": "d53d914f5af31da9d9fed7aa9cb910f65d8dbee0fe33a03d0b90d7f1d5b56d14",
+        "viewId": "de-de-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/33/children/1/id",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/33/children/1/children/0/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-lk.view.json",
+        "sha256": "4f3ec2b204f47da7ab658ee5463e93141dc2c744e99340ebb4c112623259a12c",
+        "viewId": "de-de-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/33/children/1/id",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/33/children/1/children/0/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json",
+        "sha256": "58146449dac641fb26c98b0f0bd1320ecb071cda727fe9a9efa6ba5e172e7090",
+        "viewId": "de-hb-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/4/children/23/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json",
+        "sha256": "0dad3749c8b635e4f05dd2f3f76a6c457387f6162bf825dd707c72f2d67cbe93",
+        "viewId": "de-hb-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/4/children/26/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-gk.view.json",
+        "sha256": "64f3076eec331b5f30b5b7fff5d30d73c1be857072a58ba1b107410c0fefb617",
+        "viewId": "de-hb-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/4/children/26/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-lk.view.json",
+        "sha256": "7a1cd9d0470114365a6fa9f983cb25ddf162c9c22e46ab71de25cf87ad2d9e04",
+        "viewId": "de-hb-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/4/children/33/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json",
+        "sha256": "e85464c5e4182c43ac95b18e136b31ab781cefb31f93a0657ba15158a4e12b40",
+        "viewId": "de-he-gym-physics-gk-g8",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "durationModel": "G8"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/10/children/0/children/1/children/5/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json",
+        "sha256": "b06dbd57f7c6ea45c874148bb03b621175432ee2e63e731916f94a0e7d417da6",
+        "viewId": "de-he-gym-physics-gk-g9",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "durationModel": "G9"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/10/children/0/children/1/children/5/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+        "sha256": "8eca7d8a16e4b466ee3b8928fa43c0708631993e61ca59b8051e07a782818005",
+        "viewId": "de-he-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/10/children/0/children/1/children/5/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g8.view.json",
+        "sha256": "f3e0b1b0e2fdbf880f3796fe20e1d1428bd85f3fba0ae0dcaa360535352b4feb",
+        "viewId": "de-he-gym-physics-lk-g8",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "durationModel": "G8"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/10/children/0/children/1/children/5/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g9.view.json",
+        "sha256": "e2a86468f705f9ec6f94b882585b922c85f52da968a56a6a49eb02398f557b47",
+        "viewId": "de-he-gym-physics-lk-g9",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "durationModel": "G9"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/10/children/0/children/1/children/5/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+        "sha256": "182c4d19e515872544d75dc3dc1f3ef50a2eab3de441ff1cf94d123ad2ea0c4d",
+        "viewId": "de-he-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/10/children/0/children/1/children/5/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+        "sha256": "90ddb9fe029c1717e58150b216800205a4ead40eafe0313477d9b86165081529",
+        "viewId": "de-he-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/3/children/5/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+        "sha256": "a32e3c989dbbb128560f4a6f303fa5c29eea255adae5c597235e7a94a243d948",
+        "viewId": "de-he-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/3/children/5/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+        "sha256": "2eb37e733c72c0eae868c0d45ee975090a60293be50be87ad2c3034b8703318a",
+        "viewId": "de-hh-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/13/children/55/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+        "sha256": "48cf67d04634c83febd328207cf34bbd642554db94ee2072910f46ce6ee8c03a",
+        "viewId": "de-hh-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/12/children/36/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-gk.view.json",
+        "sha256": "fe146598340b8af5f10c92cf7fe2f3eb9598842533dcda7eaa69b41c6830dcff",
+        "viewId": "de-hh-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/12/children/58/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-lk.view.json",
+        "sha256": "d5f45bb1dae9bf9f726c03140ce5ac10e843cf3798b46f442644900153bf998d",
+        "viewId": "de-hh-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/12/children/43/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-gk.view.json",
+        "sha256": "60fe3bf6c486d8e7c59a2577d1e60ad5b2e5ea362f76c1fafb03399cdeaac5e4",
+        "viewId": "de-mv-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/6/children/22/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-lk.view.json",
+        "sha256": "fb1c09179a11d0408047880e67f76fdfb53badffe37d7ffc6d704a1939eaead4",
+        "viewId": "de-mv-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/6/children/28/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-gk.view.json",
+        "sha256": "25141a1a863f44bf70b97aa75fc2843f40d8aaffc2d4bf2cd8c05cf4fc27c999",
+        "viewId": "de-mv-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/6/children/25/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-lk.view.json",
+        "sha256": "583a9a95f30e12b23a087ceb00484e9607444394c7d43d941ed7f0c3a92c351d",
+        "viewId": "de-mv-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/6/children/35/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-gk.view.json",
+        "sha256": "6a1e82b4b6a7ec2337865bb51927018e602dc0421f79861a690331d14ceb6da9",
+        "viewId": "de-ni-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/7/children/22/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-lk.view.json",
+        "sha256": "f88519b1a176e5dce9db9d740c6454ed9578f2d834886ee6be2181f338efa39a",
+        "viewId": "de-ni-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/7/children/24/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-gk.view.json",
+        "sha256": "792fcfea34886068c466d087d1407f929bf158d598f623333d8bc9d121affa5c",
+        "viewId": "de-ni-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/7/children/26/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-lk.view.json",
+        "sha256": "d5d9c925d6ddb30c9b54eca6cbad8ed159b772bc3d25f996afd38f3631cf883c",
+        "viewId": "de-ni-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/7/children/32/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-gk.view.json",
+        "sha256": "c9a4bdef08cadf8d16a277cd0345734d9dd26f4e9dffc14c72e4806b05e240a6",
+        "viewId": "de-nw-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/4/children/18/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-lk.view.json",
+        "sha256": "b9615e4d847b89f3435133ff2a9dda7b9bf497bc9af5703a74674b36b863655e",
+        "viewId": "de-nw-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/4/children/24/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-gk.view.json",
+        "sha256": "6b1c8d6210018e7b308571393a4aa90d5e05392440c707184bf389b72725b3a5",
+        "viewId": "de-nw-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/4/children/21/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-lk.view.json",
+        "sha256": "94bdf97fc24007514b7bf6223ec6f69f560fcb61211b57c99fbabd47f65310e6",
+        "viewId": "de-nw-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/4/children/31/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+        "sha256": "aa1e1a627d338f04aea81353c4479437e581b3103d4bf17f27d248e7cabcc705",
+        "viewId": "de-rp-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "jurisdiction": "DE-RP"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/4/children/12/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+        "sha256": "e60d2d0c0117a712c8e6b6669d9cc7f5d35a30e546311c0396f00ae413414f04",
+        "viewId": "de-rp-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "jurisdiction": "DE-RP"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/5/children/22/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json",
+        "sha256": "15988bf19773b26b14a3149bcf1d2543aa42c22c86f089fbd05cdc459582ed96",
+        "viewId": "de-rp-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK",
+          "jurisdiction": "DE-RP"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/5/children/14/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-lk.view.json",
+        "sha256": "2e9a8d8931ed64cc9012026687687ef67351adeb7aac36924839712f7ff44acb",
+        "viewId": "de-rp-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "LK",
+          "jurisdiction": "DE-RP"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/6/children/21/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-gk.view.json",
+        "sha256": "893a2e7cb67f22b796764d5d5f274721afc3f742ace41e749af62b73023ed1b8",
+        "viewId": "de-sh-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/5/children/21/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-lk.view.json",
+        "sha256": "e929c6750e44b13f2ca5116177bdba3797ece80f9e1d1bc8330f79c48944029b",
+        "viewId": "de-sh-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/5/children/24/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-gk.view.json",
+        "sha256": "803beb16303f16008a68504bfe72fa040e46c549b348a1bbf6456a6acd65056a",
+        "viewId": "de-sh-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/5/children/24/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-lk.view.json",
+        "sha256": "63c50c35bb95a1a5f40de507aa6c097dcb61cbd129bc5355c1c800c6fab5c8ed",
+        "viewId": "de-sh-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/5/children/31/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json",
+        "sha256": "bb92df2a731611914abbd8cd6ee5ee218ad823b9789adfb7e8688f7d8f70f612",
+        "viewId": "de-sl-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/4/children/28/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+        "sha256": "15a69f4ae072f1ec25d7948cd163743d74701eeabbe866301365325c09026cfc",
+        "viewId": "de-sl-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/4/children/22/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-gk.view.json",
+        "sha256": "350a4ef57a66cee84c268591191e5bc822d56a08929eaf8e77d3297c9486e555",
+        "viewId": "de-sl-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/4/children/31/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-lk.view.json",
+        "sha256": "341a656e5643df26088b079c68d84e566bfc98e312ba870cd9f42ab753a4dbf6",
+        "viewId": "de-sl-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/4/children/34/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json",
+        "sha256": "8ec97cba8a623c7a5c8321e0d95d029e29f808af19be44d4b2fcdb310a904440",
+        "viewId": "de-sn-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/10/children/50/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+        "sha256": "b14ff4ddb368d3dd6cf4df1e964c22ec5f287d234701d926793d7e38ef074d19",
+        "viewId": "de-sn-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/10/children/26/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-gk.view.json",
+        "sha256": "339cd4d2da838da5a29d20bd4dd693148fd52e89b5d846d75d33404eea623d9c",
+        "viewId": "de-sn-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/10/children/53/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-lk.view.json",
+        "sha256": "6b8a99fed7e160e55ca28774d29df16e49bc0377317aa405e949997f7fc8acbe",
+        "viewId": "de-sn-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/10/children/37/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-gk.view.json",
+        "sha256": "f1bf0172cd6e1087fdd65d8298c5f2dbde23bfd320b47bfcfeaf2f6c365d9435",
+        "viewId": "de-st-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/4/children/16/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-lk.view.json",
+        "sha256": "e2ede7a37d61e472db5532d4f983370497125125dddac72037164dccd183f584",
+        "viewId": "de-st-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/0/children/4/children/19/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-gk.view.json",
+        "sha256": "e6d5e759bd68dc1faec61d5bc737768d6128c82d8152aaab35a65f74fd1d676e",
+        "viewId": "de-st-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/3/children/19/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-lk.view.json",
+        "sha256": "141d497359c38808f374986842d40415c5e62755c81298583c7eb9bb6a2a9b0b",
+        "viewId": "de-st-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/0/children/3/children/31/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json",
+        "sha256": "d0cecbfd0575fa82363c01715b920cee1dd5aa30e3693a7fb0296b726248671c",
+        "viewId": "de-th-gym-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/1/children/6/children/57/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+        "sha256": "e5ccff09f19536e142bf97c666c120b6f094c9ac72e27c679c8f2cb7dad50726",
+        "viewId": "de-th-gym-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/1/children/1/children/6/children/38/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-gk.view.json",
+        "sha256": "4310d91d1d60ab971bafaef4574b9731bcbcbbb0ddd8fc09919dc78c63046a16",
+        "viewId": "de-th-gym-sekii-physics-gk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/1/children/6/children/58/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-lk.view.json",
+        "sha256": "9dbc1e78266e05650401a59dd26e2ee8db6c044e3c0fac50f31c73e99dc92f60",
+        "viewId": "de-th-gym-sekii-physics-lk",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "SekII",
+          "courseProfile": "LK"
+        },
+        "references": [
+          {
+            "pointer": "/rootNodes/0/children/0/children/1/children/6/children/40/goalId",
+            "kind": "exact_uuid"
+          }
+        ]
+      }
+    ],
+    "activeViewReferenceFileCount": 64,
+    "currentMaterialPolicy": {
+      "path": "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+      "sha256": "902489158fe7d2be89f3ed2e6db4d9447c71bc1be39f5cf47a97e23ea00c7ce0",
+      "references": [
+        {
+          "pointer": "/unit/sectionAssessmentPolicy/additionalVoluntaryAssessmentGoalIdsByView/de-he-gym-physics-lk-g8/0",
+          "kind": "exact_uuid"
+        },
+        {
+          "pointer": "/unit/sectionAssessmentPolicy/additionalVoluntaryAssessmentGoalIdsByView/de-he-gym-physics-lk-g9/0",
+          "kind": "exact_uuid"
+        },
+        {
+          "pointer": "/unit/sectionAssessmentPolicy/additionalVoluntaryAssessmentGoalIdsByView/de-he-gym-sekii-physics-lk/0",
+          "kind": "exact_uuid"
+        }
+      ]
+    },
+    "currentRetainedSourceMapping": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+      "sha256": "0ded141f0d737a0db2c6297ad67898553468943c0ba5c8dbf4d4c9362edc12ad",
+      "references": [
+        {
+          "pointer": "/mappings/20/canonicalGoalId",
+          "kind": "exact_uuid"
+        }
+      ]
+    },
+    "sourceProvenance": {
+      "path": "curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+      "sha256": "029b5892802c44648d0ebe6cfeb51962e483702f1e72394199a7caec1b49da42",
+      "references": [
+        {
+          "pointer": "/landscapes/1/goalProvenance/2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+          "kind": "object_key"
+        }
+      ]
+    },
+    "generator": {
+      "path": "scripts/generate_hessen_physics_stage_views.py",
+      "sha256": "9d787033c4f8a94651e2b950c3b7788c8fc17a5d13132adb4222306ce1a206ee"
+    },
+    "generatorConstant": "HESSEN_E1_MULTIPHASE_ASSESSMENT,line60; E_PHASE_ASSESSMENT_PLACEMENTS and split_e1_children use it.",
+    "historicalMembershipSnapshot": {
+      "path": "scripts/generate_laender_physics_stage_views.memberships.json",
+      "sha256": "433bbd49f40c66645061b71c00453c97a8a5542863440c31ab54c3e21af512f2",
+      "references": [
+        {
+          "pointer": "/canonicalAcceptedEAtomicGoalIds/de-de-gym-sekii-physics-lk/26",
+          "kind": "exact_uuid"
+        },
+        {
+          "pointer": "/canonicalAcceptedEAtomicGoalIds/de-de-gym-physics-lk/22",
+          "kind": "exact_uuid"
+        },
+        {
+          "pointer": "/canonicalAcceptedEAtomicGoalIds/de-de-gym-sekii-physics-gk/24",
+          "kind": "exact_uuid"
+        },
+        {
+          "pointer": "/canonicalAcceptedEAtomicGoalIds/de-de-gym-physics-gk/20",
+          "kind": "exact_uuid"
+        }
+      ]
+    },
+    "immutablePrerequisiteProofs": [
+      {
+        "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+        "sha256": "a48b52ca0449ff75dce93e93a3ade8982210d32a03f9a585a03b935ebed052b7",
+        "references": [
+          {
+            "pointer": "/transfers/1053/source",
+            "kind": "qualified_or_embedded_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-physics-20261109.json",
+        "sha256": "dd38bd85793769d2afae6b34a3b0b89112c497ee1b17b54f92a61af5bf785c93",
+        "references": [
+          {
+            "pointer": "/batches/1/originalRequires/26/source",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1562/step/source",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1562/step/witness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1562/endWitness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1563/step/source",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1563/step/witness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1563/endWitness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1564/step/source",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1564/step/witness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1564/endWitness/0",
+            "kind": "qualified_or_embedded_uuid"
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry-v6-chemistry-20261110.json",
+        "sha256": "e9d880b8f038b251a766d1208ae04f65004e161c336ee894d31a0433c380c389",
+        "references": [
+          {
+            "pointer": "/batches/1/originalRequires/26/source",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1562/step/source",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1562/step/witness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1562/endWitness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1563/step/source",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1563/step/witness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1563/endWitness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1564/step/source",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1564/step/witness/0",
+            "kind": "qualified_or_embedded_uuid"
+          },
+          {
+            "pointer": "/batches/1/operations/1564/endWitness/0",
+            "kind": "qualified_or_embedded_uuid"
+          }
+        ]
+      }
+    ],
+    "immutableEvidenceReferenceFiles": [
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-23/he-e1-free-fall/baseline-lk.actual.json",
+        "sha256": "d873b36d28881056ec8acca02384abf58e4bf96f0121760ad23474c3a546a61d"
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-23/he-e1-free-fall/current-lk.actual.json",
+        "sha256": "ac625edaf9f927e7dc99fa99b4098da3492a764821f814bdf8b0203ec2c4f6f2"
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-15/real-view-measurements-v1/actual-api-ui-72-checkpoint-before-routes.actual.json",
+        "sha256": "6a9760dd391db13d6d4acfaf014679fe6855203f696af81203b3845e0fcdf1ff"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/ci-followup-v6/integrated-validation/parallel-first-attempt-status.actual.json",
+        "sha256": "fd9fad1588ea768a0396b38f0156a47d2f93ed7c97ea849d178b959388eaa7e4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-model-review/physics-semiconductor-learning-path-20261115/post-independent-review-v2/reviewed-input-before.json",
+        "sha256": "0f14c06880c00164e7a961355acd931c20bc97982ce5ae0f162776aba5245647"
+      },
+      {
+        "path": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/probes/physics-course-filter/native.json",
+        "sha256": "86dcb19e05a14139f24eaad4f86798f3797c48c070fadc7d533d6bc1b37944f6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v4-mp-scope-supersession.actual.json",
+        "sha256": "4ecf105edf16f9dd134fc6ba5800c84c70128bc4905f5052428e7c8f3fa43ef5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/verify-v4-mp-scope-successor.mts",
+        "sha256": "db01e281ccd9fac06b01f27cf7a43f053f7b7676c746cc8b15ead076fede5dbd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "sha256": "1010f9e4d7a10836849382350b375b73f7a911408b4b50ebb3001effd999bb74"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-materials-2026-11-24/mp-lk-parent-offer/regular-study.actual.json",
+        "sha256": "1118f27aa2ecf9d2e7b0dacdfd5724f7105cf529f1404f6d547a7eec66382b0f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-materials-2026-11-24/mp-lk-parent-offer/guided-entry.actual.json",
+        "sha256": "29d72c7e03a6cecdad451096802fa840f0d22e8cd2e3be06e75a2d53d5a50ab4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-23/he-fall-measurement/bundle/book-model.json",
+        "sha256": "a6f00e6f7a5d60f49e4c0364d73e13003c84d86ac1c2c7d2638b16b7f6de7de7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-23/he-fall-measurement-si/bundle/book-model.json",
+        "sha256": "79691995be7e29f59752494f786f554ded4ed9af27236052ba0dd786a4925b4a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-a/canonical-input.json",
+        "sha256": "bb01d0fb80474caa0c8f6fae2bd636c42866d04ead6ece75dfb002a06944d6cc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-b/canonical-input.json",
+        "sha256": "bb01d0fb80474caa0c8f6fae2bd636c42866d04ead6ece75dfb002a06944d6cc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-a/response.json",
+        "sha256": "ac412b433261ad5615f3f071fe9cfb8391b8637cf7aef362c134621eef87b4e3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-a/proposed-goals.json",
+        "sha256": "13a6ce74a0165a51f548cbae391e358596fa947f2a072b49cb2fd8f9ef220bc9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-a/canonical-input.json",
+        "sha256": "0d9db7b65cb922dd576fe5fb6816ca81f680a12dafa88a15942582b88f539cb4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-b/response.json",
+        "sha256": "6c7ea77c79ef185bfc48bc59f5c5a7376afaf439366703ea010539744190a5d8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-b/proposed-goals.json",
+        "sha256": "13a6ce74a0165a51f548cbae391e358596fa947f2a072b49cb2fd8f9ef220bc9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-b/canonical-input.json",
+        "sha256": "0d9db7b65cb922dd576fe5fb6816ca81f680a12dafa88a15942582b88f539cb4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/verify-current-assessments.mts",
+        "sha256": "c271b124f314f85539968a8a0dd242f92a1345e27b89d9c0f8737aaf26890c73"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/before.goal.json",
+        "sha256": "8919811ec34f2eed14fd73822d679315ececf2194bdb6d85f334da22121d5ca4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/approved-current.goal.json",
+        "sha256": "472fce30f7ce9d4b785022ced97e26d1695cd92701157f10f7276d7d6b9c30e2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/activation.actual.json",
+        "sha256": "c91d66f770629e0dc3780837f16833ca1cbe3c043b120f500a7ec93f9c296a5f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/native-contract/mp-empty-native.ts",
+        "sha256": "706730485383cb1e486214ab443f58cc5fca74b35f58fa3babd088cbff61cc8d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/native-contract/mp-empty-native.actual.json",
+        "sha256": "69aee04ab277eef0c1a79e6d2d07ac38bf0a8b6eb070a1f0a5c75434edcfb98d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3/round-a/canonical-input.json",
+        "sha256": "bca7533be093de85e47781cddfea3f38e8c9c2176ebf3a491e0a6ee4ef786cf9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3/round-b/canonical-input.json",
+        "sha256": "bca7533be093de85e47781cddfea3f38e8c9c2176ebf3a491e0a6ee4ef786cf9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/metadata-followup/semantic-ledger.before.original.json",
+        "sha256": "408175ad15b0e60d00bf4fe1069550c3627d4a742857a39f97d34764af47aaaa"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/direct-evidence-gap-repair-20261115-v1/render-evidence/book-model.after.json",
+        "sha256": "52dd65cbd3ae6461203759b26de42bba121b9820f6e5dbe1a89911d9076631eb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/direct-evidence-gap-repair-20261115-v1/render-evidence/book-model.before.json",
+        "sha256": "5fcd7606aa4237484ae26f99cc3c6014df47ebb49f7379cccbeead3227a5b518"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/direct-evidence-gap-repair-20261115-v1/render-evidence/book-model.final.json",
+        "sha256": "978a9de8ba51a257e229816a04efc4b946f6da9d904400d75869ced697aee1cf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-13/feedback-quantum-terminology-current-v1/bundle/book-model.json",
+        "sha256": "5e15dc8a33970641724467415e56ce313b49877ca420401d53bd12f274a86beb"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031t-q2-harmonic-wave-atomicity-third-review-1-v1/bundle/book-model.json",
+        "sha256": "bbd1129d4317cff9de6a1de623c1dac960cf580545e48da7e2333d64379cdf98"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-027-e-friction-2-v1/bundle/book-model.json",
+        "sha256": "b165d58a89da9bf371f28c899b38a181fe5b7980e975ac780552ca3ff669a36f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-030-q1-charge-magnetism-4-v1/bundle/book-model.json",
+        "sha256": "eeebc36d5c02d1eaf7f58311ee9edabc3c4c06188b3bad5b16e675d2eaf0cff7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-028c-e-gravitation-worldviews-revised-3-v1/bundle/book-model.json",
+        "sha256": "3aa7e500491c287af9a9c8ad89111ed250678ca8040c89d9a3ee80a6b48d10b5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029e-e-quantitative-modeling-methods-2-v1/bundle/book-model.json",
+        "sha256": "6d6e3277da7e034a9efa2491bdee4e01d54cce8ed4868a211b41cf0d1f2f4b43"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029d-e-energy-quality-evaluation-2-v1/bundle/book-model.json",
+        "sha256": "14e53f29352553c0e5d1e7130f6e1bb13542f9398b02f9fa90c42ffe86b30aef"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-028b-e-chaos-gravitation-worldviews-revised-6-v1/bundle/book-model.json",
+        "sha256": "f53256886bbc5fbb134f4b2873061afad9a2dfa3c25d039a4953e4ec2ed06c32"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-004/round-a/description-review-input.json",
+        "sha256": "8b9758850e312337119cca643933c163c518f7f3dc6a5918b723bf4eb8aea22a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029r-e-thermodynamics-modeling-revised-8-v1/bundle/book-model.json",
+        "sha256": "7815e8151d22c889b3f275db65e217f98b4715c0a9b24b5404e63b06b3cd7836"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-004/round-b/description-review-input.json",
+        "sha256": "8b9758850e312337119cca643933c163c518f7f3dc6a5918b723bf4eb8aea22a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-004/bundle/review.md",
+        "sha256": "285b2985e063faf39344eeec3468fde869091f0e1f33d5ffe2f4d4d99692c9fc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-004/bundle/review-input.json",
+        "sha256": "315c2e4bfbdeff147f26cfde9961d8cbb219b7d5e7980e0496b82e0b44ea5c7b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-26/batch-004/bundle/book-model.json",
+        "sha256": "7bfbd71acc053c49294097efc3e1f5fc10dc321cd72b8cc3d5e10a08b8146d8a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031s-q2-oscillation-wave-model-limits-final-recheck-4-v1/bundle/book-model.json",
+        "sha256": "190b5b5c448db53cbfdde6ad06133be1f9d542e42cfa8eeef883393eaf2124d5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026-e-reference-circular-motion-3-v1/round-a/description-review-input.json",
+        "sha256": "b10e69113c835354c183cff069c213a8beb55b47048c7254b814f50c3db2aec7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026-e-reference-circular-motion-3-v1/round-b/description-review-input.json",
+        "sha256": "b10e69113c835354c183cff069c213a8beb55b47048c7254b814f50c3db2aec7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026-e-reference-circular-motion-3-v1/bundle/review.md",
+        "sha256": "e65e725be514aeee4353072be081bb11b9a99c2b3bf9c5adec36cf40dba7bba1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026-e-reference-circular-motion-3-v1/bundle/review-input.json",
+        "sha256": "00f4546946ccea5f2588d0bfb5caab15905f6f4ab717fa6c5516abe34be8f675"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026-e-reference-circular-motion-3-v1/bundle/book-model.json",
+        "sha256": "57683b083b085cdc916e32a838184e941e794e28b36ae78762ef595c6a3fa7c9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-028-e-chaos-gravitation-worldviews-6-v1/bundle/book-model.json",
+        "sha256": "5b79b3988540c37e8ac09c3055c7a9a87377494e32e452ef4b947ea81c66e701"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-028e-e-worldviews-revised-1-v1/bundle/book-model.json",
+        "sha256": "3fdd73d26be78cd13fb504a137a67406039e81d520add702f6bed71903fc745d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-030r-q1-charge-magnetism-revised-3-v1/bundle/book-model.json",
+        "sha256": "a87a8d194d52dc24aa728ac0330b13c6cd72abd669a25be8d4f481412ec78c51"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031-q2-oscillations-and-waves-15-v1/bundle/book-model.json",
+        "sha256": "b5b90ee69c44c9da4560863e3085faad01a49373bfda8787665a3dd72203ae5e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031r-q2-oscillations-and-waves-revised-10-v1/bundle/book-model.json",
+        "sha256": "0a1b973e315bf4f3a35527a146864ce85abb32dc0c406acb3f9c7369df8fc73e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026a-e-reference-circular-motion-revised-3-v1/round-a/description-review-input.json",
+        "sha256": "304ff3f5d9eac8def05c691161d956d6a4b113f99a5f623eee43d6284f07abd8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026a-e-reference-circular-motion-revised-3-v1/round-b/description-review-input.json",
+        "sha256": "304ff3f5d9eac8def05c691161d956d6a4b113f99a5f623eee43d6284f07abd8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026a-e-reference-circular-motion-revised-3-v1/bundle/review.md",
+        "sha256": "63571910e61008c2aad02248e8bf71e2bd07cf372cf299e7e766f7a26b03f44c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026a-e-reference-circular-motion-revised-3-v1/bundle/review-input.json",
+        "sha256": "662b755a6ced9d9e92efe48ba63a5e08768542faafd23af4d97b067dc2e82c8a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-026a-e-reference-circular-motion-revised-3-v1/bundle/book-model.json",
+        "sha256": "9b97e021f0e797eebc3774fb9893f1b588c7ce8cc7f20290349e145aa498ecc1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-028a-e-chaos-gravitation-worldviews-revised-6-v1/bundle/book-model.json",
+        "sha256": "e2c64927eaf58078f76d495ad5605100a17c7e2d8e616b838088a83daf3cf743"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029c-e-thermodynamic-energy-transfers-2-v1/bundle/book-model.json",
+        "sha256": "d73173b30d04f80489d45c43b402f3b5978c05584dd73a4d189584ccf71575be"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-027a-e-friction-revised-2-v1/bundle/book-model.json",
+        "sha256": "4caff4786991e55940c16b1adf5b6acdc1bc293dabbd9bd137b9a3af14e5dffa"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-028d-e-worldviews-revised-1-v1/bundle/book-model.json",
+        "sha256": "6bd9f096469f7e6c6ca61d7994d618d33f9511693d39b95cc0525a768860f8b9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/physics-alpha-mass-resumed-20260914-v1/baseline.json",
+        "sha256": "09b289c44166eead229f6630c4c1d181e4f288878da1ff41956146685e577471"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-031d-q2-oscillation-wave-relations-dissent-2-v1/bundle/book-model.json",
+        "sha256": "50af9cc2092e8959fa2c8109ecbb8c630a2c3dbc5c2b9077742a0f2e3c75c9ca"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029a-e-thermodynamic-state-variables-2-v1/bundle/book-model.json",
+        "sha256": "2debfd4eeac4e678d7db7b06b97c48a64e1cffe9ba75eb3bbd837f4921eef0b1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-030s-q1-magnetism-lorentz-conditions-final-recheck-2-v1/bundle/book-model.json",
+        "sha256": "72ea112d8b56fb10fb2dd9ecd89000b78c6c420bbcc3f2ef2948673c5d9468da"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-027b-e-friction-revised-2-v1/bundle/book-model.json",
+        "sha256": "50a5bb62c2d516d0e4a2ab1ad3d7469a54a02e3764a3ab671d50782f177acaab"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-02/batch-029b-e-thermodynamic-process-types-2-v1/bundle/book-model.json",
+        "sha256": "67acfcf3bad8be0059430ea2aa4e09573be8ff773501d9879c54be8be1907c7e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/actual-execution/round-a/book-model.json",
+        "sha256": "020da512784644b38612fcce77e9b6411706c46e68392b28ccd6a21dbbad5407"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/actual-execution/round-b/book-model.json",
+        "sha256": "020da512784644b38612fcce77e9b6411706c46e68392b28ccd6a21dbbad5407"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/bundle/book-model.json",
+        "sha256": "020da512784644b38612fcce77e9b6411706c46e68392b28ccd6a21dbbad5407"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v1/actual-execution/round-a/book-model.json",
+        "sha256": "ab5851088ec30c3acbe7d0bbcb05a59afd778720cc3b5b871823275df7594ad0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v1/actual-execution/round-b/book-model.json",
+        "sha256": "ab5851088ec30c3acbe7d0bbcb05a59afd778720cc3b5b871823275df7594ad0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v1/bundle/book-model.json",
+        "sha256": "ab5851088ec30c3acbe7d0bbcb05a59afd778720cc3b5b871823275df7594ad0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-three-v3/actual-execution/round-a/book-model.json",
+        "sha256": "5bc679476d13090d9109211bdf8fd5bfc1c021a3c98a9cf748f36e60929c9b05"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-three-v3/actual-execution/round-a/description-review-input.json",
+        "sha256": "aaa3860f03f6b7ab9944e4ca6ab321528a588576bb41bf17798005920b24e2f7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-three-v3/actual-execution/round-b/book-model.json",
+        "sha256": "5bc679476d13090d9109211bdf8fd5bfc1c021a3c98a9cf748f36e60929c9b05"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-three-v3/actual-execution/round-b/description-review-input.json",
+        "sha256": "aaa3860f03f6b7ab9944e4ca6ab321528a588576bb41bf17798005920b24e2f7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-three-v3/round-a/description-review-input.json",
+        "sha256": "aaa3860f03f6b7ab9944e4ca6ab321528a588576bb41bf17798005920b24e2f7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-three-v3/round-b/description-review-input.json",
+        "sha256": "aaa3860f03f6b7ab9944e4ca6ab321528a588576bb41bf17798005920b24e2f7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-three-v3/bundle/review.md",
+        "sha256": "95c46e17ddbfff7e34254e9966381eff31fecb26934232fbf4d074c878645329"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-three-v3/bundle/review-input.json",
+        "sha256": "095f864bf212669ecdbb36c723e78c2444ff4caa563a57e429866334cf984ca4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-three-v3/bundle/book-model.json",
+        "sha256": "5bc679476d13090d9109211bdf8fd5bfc1c021a3c98a9cf748f36e60929c9b05"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v2/actual-execution/round-a/book-model.json",
+        "sha256": "7af36d3d9b98327b4cd0afff15068ab4288145e729bbf391072b2d0412288ffc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v2/actual-execution/round-a/description-review-input.json",
+        "sha256": "96f47634e49ee253a6e1585197dfe34ced3938b885dceb5f25b319160f6b1ede"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v2/actual-execution/round-b/book-model.json",
+        "sha256": "7af36d3d9b98327b4cd0afff15068ab4288145e729bbf391072b2d0412288ffc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v2/actual-execution/round-b/description-review-input.json",
+        "sha256": "96f47634e49ee253a6e1585197dfe34ced3938b885dceb5f25b319160f6b1ede"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v2/round-a/description-review-input.json",
+        "sha256": "96f47634e49ee253a6e1585197dfe34ced3938b885dceb5f25b319160f6b1ede"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v2/round-b/description-review-input.json",
+        "sha256": "96f47634e49ee253a6e1585197dfe34ced3938b885dceb5f25b319160f6b1ede"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v2/bundle/review.md",
+        "sha256": "c9d7c738fa03bd2b5a8bc08632d58740eb17b06fca17a61167635564e94b3899"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v2/bundle/review-input.json",
+        "sha256": "f7c1ca57af929a5cf1ca6d5c71203fa90ab8f50c3bf551271af39e1ac30a436d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v2/bundle/book-model.json",
+        "sha256": "7af36d3d9b98327b4cd0afff15068ab4288145e729bbf391072b2d0412288ffc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-schief-current-v2/actual-execution/round-a/book-model.json",
+        "sha256": "7167720ddca372c05ee66d22289b86eede25d964466f7cc95c3108c7eecd227a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-schief-current-v2/actual-execution/round-b/book-model.json",
+        "sha256": "7167720ddca372c05ee66d22289b86eede25d964466f7cc95c3108c7eecd227a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-schief-current-v2/bundle/book-model.json",
+        "sha256": "7167720ddca372c05ee66d22289b86eede25d964466f7cc95c3108c7eecd227a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v1/actual-execution/round-a/book-model.json",
+        "sha256": "00966e10faf64644ae14934b8c04c91e3a1a88f09f4d0252eec2e397a2ee626b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v1/actual-execution/round-a/description-review-input.json",
+        "sha256": "f74e45c4c51520838127363c6015727c936f8f947303704a47c159b6dce13962"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v1/actual-execution/round-b/book-model.json",
+        "sha256": "00966e10faf64644ae14934b8c04c91e3a1a88f09f4d0252eec2e397a2ee626b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v1/actual-execution/round-b/description-review-input.json",
+        "sha256": "f74e45c4c51520838127363c6015727c936f8f947303704a47c159b6dce13962"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v1/round-a/description-review-input.json",
+        "sha256": "f74e45c4c51520838127363c6015727c936f8f947303704a47c159b6dce13962"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v1/round-b/description-review-input.json",
+        "sha256": "f74e45c4c51520838127363c6015727c936f8f947303704a47c159b6dce13962"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v1/bundle/review.md",
+        "sha256": "0e48eaa2ffe3b584b9f6597c8e2a020d9b97662cd443f924677c54b2fc213a14"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v1/bundle/review-input.json",
+        "sha256": "3c49d9a80442c98d166f1313253e5336686afa92bac47289592b721db2a28828"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-current-eight-v1/bundle/book-model.json",
+        "sha256": "00966e10faf64644ae14934b8c04c91e3a1a88f09f4d0252eec2e397a2ee626b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-schief-current-v1/actual-execution/round-a/book-model.json",
+        "sha256": "836c0daa5839a0d3411c225ad712ba0dddd239f366208db42aff6741b12a04ff"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-schief-current-v1/actual-execution/round-b/book-model.json",
+        "sha256": "836c0daa5839a0d3411c225ad712ba0dddd239f366208db42aff6741b12a04ff"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-schief-current-v1/bundle/book-model.json",
+        "sha256": "836c0daa5839a0d3411c225ad712ba0dddd239f366208db42aff6741b12a04ff"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031u-q2-characteristic-oscillation-quantities-final-recheck-1-v1/bundle/book-model.json",
+        "sha256": "7cbccc2c627d997bb3de460ccb421c2c5a5c41ccdec539535c1e15304ff6f696"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031w-q2-harmonic-wave-split-context-recheck-5-v1/bundle/book-model.json",
+        "sha256": "faa3ba77e178a6b25b56ab67185cf1f15ceebbd587354a219c83ad172067a011"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-04/batch-031v-q2-characteristic-oscillation-quantities-explicit-time-equation-final-recheck-1-v1/bundle/book-model.json",
+        "sha256": "09036214642c4dde78aa02485d629def47bf7b2a3e1dafcc998f25d91a055eb5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-10-17/existing-math-prerequisites-current-v1/description-input.json",
+        "sha256": "1dba70e424bacbaae2ec795eda96a5768028e4e46dd9718f2a4a63085a4f4a17"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-10-17/existing-math-prerequisites-current-v1/review-input.json",
+        "sha256": "e835b0e81bebe550fa5d232471582f95f5001779916cadd121e511ebc3f92396"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-10-17/existing-math-prerequisites-current-v1/book-model.json",
+        "sha256": "c7c75025fd0d241378b73afb44bf0f1007e0673fdefe774cfc8a67055f05b67e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-10-17/existing-math-prerequisites-current-v1/followup-five-current-v1/book-model.json",
+        "sha256": "745edbfd907c0ea00149bae086eafeb1462e571ccd7378291bb34535f49a9899"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-contraception-parenthood-split-current191-inactive-technical-rebase-20261008-v1/before/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-056-solar-mass-current-image-1-v1/bundle/book-model.json",
+        "sha256": "662b90eb8bf1aa013b2a4845eb91284fddf7d2b1b1a0c8fd8f312b99dee8f1a5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-055-astro-current-descriptions-3-v1/bundle/book-model.json",
+        "sha256": "c8c19ab9ada54b91c5203ba1e263cafe5d4af6b0e023d30c825cdc30075b7694"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-054-numerical-motion-current-1-v1/bundle/book-model.json",
+        "sha256": "38169f87cfd2c3076dbcbb1dcbd0e59dc028392ae1b9636674d50b4a8e27215e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/resumed-habitability-context-1-v1/bundle/book-model.json",
+        "sha256": "c8243c29a49d61ad44f5e377ec0ac18646fd870fa66307babfca777fc177aaa8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-059-current-image-and-context-4-v1/bundle/book-model.json",
+        "sha256": "fd7712736deeb3ea7b027bd09f3f94844c94fabdfa5a68f37bb0b91bf1593716"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/root-current-nineteen-integration-v1/native-current230-layer-a-v1/actual-current230-applicability.full.json",
+        "sha256": "1c072cc9c83b185c92c0c20b652b9595f1c3828b8fc82caeed38ea4ead12a6c5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-058-current-diode-children-3-v1/bundle/book-model.json",
+        "sha256": "f10ae1db8ffa1a4585e25f47f9eae830c5fa70e4297b0b88732e9c17b5375f2f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-14/batch-057-current-applicability-contexts-9-v1/bundle/book-model.json",
+        "sha256": "02061b0c4cc388c3317ec89a1a2cd97a9a28d4f9d0ef177eb09875a814ed5e5a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-29/batch-025a-e-mechanics-energy-structural-follow-up-17-v1/round-a/description-review-input.json",
+        "sha256": "2781e2672a158e6a00361795cd382d2f583d1f8d369c562324876c6a5b62f180"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-29/batch-025a-e-mechanics-energy-structural-follow-up-17-v1/round-b/description-review-input.json",
+        "sha256": "2781e2672a158e6a00361795cd382d2f583d1f8d369c562324876c6a5b62f180"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-29/batch-025a-e-mechanics-energy-structural-follow-up-17-v1/bundle/review.md",
+        "sha256": "17ee5128a3ea971cdc4e55f0eae67062109ce83f291b3864dd47f433ec641b8c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-29/batch-025a-e-mechanics-energy-structural-follow-up-17-v1/bundle/review-input.json",
+        "sha256": "3af02d49db489e762e4d6b600cd155b1c42842bd955dfd28d5b4e2009011a203"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-29/batch-025a-e-mechanics-energy-structural-follow-up-17-v1/bundle/book-model.json",
+        "sha256": "f4e347bfab970d95d346f8436ad893e1aacb73b7ed8492844c80208f3a994f80"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-035-quantum-models-particles-20-v1/bundle/book-model.json",
+        "sha256": "29e87f83cd964d6329277f0e20e8a26ca30961259c10c70d546be1e2d1b280d0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-038-oscillations-ac-and-light-models-20-v1/bundle/book-model.json",
+        "sha256": "07e2b3b82be3f82a17e9d3f025421449f84962f13602027d6dc90033f1fc41a9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-034-next-unresolved-20-v1/bundle/book-model.json",
+        "sha256": "a101a0c11ada03f801e06977d73bcb9e79d41c3250b3318616378d33c4521393"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-039-quantum-and-rotation-20-v1/bundle/book-model.json",
+        "sha256": "c40d5a57d88967ff7b4e7e404402312906f354b5019ab07160db397100a41399"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-037r-seven-en-and-two-optical-recheck-7-v1/bundle/book-model.json",
+        "sha256": "8ff95aa89b649abba6885a68cdc9a26ea317de43dd4a886294aaf83846cf1388"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036r-four-translations-current-4-v1/bundle/book-model.json",
+        "sha256": "fbc44aef26e625ad7d62cd0ad8b70048f3718b567a8818581bbef990b5c838b6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-036-spectra-models-methods-20-v1/bundle/book-model.json",
+        "sha256": "e6d118d8bfd21af4947a564c3a80609d5557e8383feada842ef50d0c2e8d45bf"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-035r-quantum-description-recheck-5-v1/bundle/book-model.json",
+        "sha256": "cdc5e89e1399b536be3ef92b4eb3ae3369bc5b7dd66a24d07e3d230c3373c675"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-037-biophysics-methods-pv-mechanics-20-v1/bundle/book-model.json",
+        "sha256": "26448617a34957b4a6fe14f32b83196000188d35081ae68b61322ae92c069500"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-034r-cyclotron-planck-recheck-2-v1/bundle/book-model.json",
+        "sha256": "880340c98a38b7bb7b0c48338343aad65cd1823d48b88e63a5da471096fc29ed"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-06/batch-038r-current-oscillations-and-optics-11-v1/bundle/book-model.json",
+        "sha256": "2e90962beae3fbdc9dc2cb26d73db93a530d9f16b975279fac554d57ade7d5a3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-before-entry-markers-v1/bundle/book-model.json",
+        "sha256": "cff1581996a0d933ad3ee411bdd502f3b6329227511e7d0a8b14f125500748ae"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-applicability-current3-v5/bundle/book-model.json",
+        "sha256": "7c5c5a185bff10e7b143f03575da8d1c3a51b9a48654998751f132c586a93fed"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-current10-v3/bundle/book-model.json",
+        "sha256": "30f91c1e970c4e3afb8422222a01df64ed1bd67a50a3fa37c0f8fd8609b9663b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-diode-page-current1-v4/bundle/book-model.json",
+        "sha256": "af448e5f81e875e764c2f9e3b5867f6e2fb877e8b8edbdb0e881b0c573954407"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/q1-whole-current-context18-v1/current18/reviewed-bundle/book-model.json",
+        "sha256": "26a7a986479218385d955d1fc44e178ca5b326f01c037fc1817fdf1146ead3e0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/stage-flow-current-context3-v1/current3/reviewed-bundle/book-model.json",
+        "sha256": "0ef1e933848878e5cb0a20990a745abf5c3ea54830cf5aaa05543337685bac22"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-corrected7-v2/bundle/book-model.json",
+        "sha256": "6cb7d47c7160edf66626eec53ea39954eff012640daa5b6e6f46e61d2df8ec00"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-retained-pages-current3-v4/bundle/book-model.json",
+        "sha256": "baa7f6da03b08875b96dfdc961edf64b5f35e858ff102747aed84502001e3756"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-ci-asset-path-current1-v6/bundle/book-model.json",
+        "sha256": "5ee45c1178d98c3fac50faaa36ddb63ac2175aa017170c2d45b4d3919ee3d1d9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/stage-plan-k3k6-current13-v1/original13/reviewed-bundle/book-model.json",
+        "sha256": "5efd025e5a3a5238503b89934c8fa6f2330f07070efe5883550805a1911b786f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/stage-plan-k3k6-current13-v1/corrected6/reviewed-bundle/book-model.json",
+        "sha256": "53b5ee67564d74cbf049a25e177bd24004c54a62b11742b3810717f4e20f858e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-15/semiconductor-stage-path-current-v1/bundle/book-model.json",
+        "sha256": "8ec9bcb43229aa2a91c3ab0a28cfb9e0e5755c98636e7c91031a5cc7af18c771"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/current-376-inputs/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033zc-gps-rest-energy-final-recheck-2-v1/bundle/book-model.json",
+        "sha256": "97754cc11f85f11d1e7d5ffc68de4e0457779cee42b08991e694a9752c0f6b76"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033s-dependent-context-final-recheck-8-v1/bundle/book-model.json",
+        "sha256": "7b81a281212992fb62ca0846857c951dcd0d0a3eb7f1443095598b8f63e1ea42"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033w-final-adjudication-context-recheck-10-v1/bundle/book-model.json",
+        "sha256": "b9b0afdb3fe8f984ca7592261f81d63cf432614398b7b75f5a5531faec41eb41"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-032r-q3-electromagnetic-waves-final-recheck-7-v1/bundle/book-model.json",
+        "sha256": "e6b4b2f0b01c0a472a5ff46268dbe1a5ddb9d7fe953b312434618c6b43ac7829"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-032-q3-electromagnetic-waves-7-v1/bundle/book-model.json",
+        "sha256": "517d667380f799e2b0cd91fd42cceb4c0718a8e0c2381b39d6701a86c1ab16d5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033x-final-current-recheck-2-v1/bundle/book-model.json",
+        "sha256": "af8ece5cb972609252fb387e13f84c2df508196b668485f473c22b5a3aa2df81"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033v-adjudicated-revisions-context-recheck-12-v1/bundle/book-model.json",
+        "sha256": "230d7645a5445066ac6b53f362d6174ef1c78d988243c41f21cc1334df712763"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033y-relativity-split-final-current-recheck-6-v1/bundle/book-model.json",
+        "sha256": "b5df88356c20df73793d39cd5690126a5ec58c5378481f58404b541b259e8c2e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033za-checkpoint-route-context-recheck-1-v1/bundle/book-model.json",
+        "sha256": "8fd52aa9711bd791f4d2639135a7b9beff47ca126cf4e1a6ead7699e97183f02"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033-atlas-pages-157-186-20-v1/bundle/book-model.json",
+        "sha256": "aed583523658dd6ce6235aed426131acb55360e2f9dddb6e00920008ec8b82dd"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033zb-relativity-current-context-recheck-9-v1/bundle/book-model.json",
+        "sha256": "53838e2b0b33214ae205a2401a131a240009328b78420d61411faaeb17764e44"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033u-final-revisions-context-recheck-17-v1/bundle/book-model.json",
+        "sha256": "ebe6aa27e7faf75fee09693def26e0e22a5dd0b792496fed2a1e2aec5e6af430"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033t-final-corrections-context-recheck-14-v1/bundle/book-model.json",
+        "sha256": "084f50da3e7984a4906637195e25eafccb0696f2226bc64ef457725c1947af20"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033z-relativity-final-splits-current-recheck-9-v1/bundle/book-model.json",
+        "sha256": "332ee952d279c854ace36087178868079b7d33a4ef324b207237b41dcd4253e8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-033r-adjudicated-final-recheck-20-v1/bundle/book-model.json",
+        "sha256": "4b58ab950ac726e2e3b8cc40f2e3bb04e17c92ed04ddb8d37a4761cfb5775420"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-05/batch-031x-q2-harmonic-wave-final-recheck-3-v1/bundle/book-model.json",
+        "sha256": "59bdf7a2b45112ce8b20529ebf422a4721854632921303012461f896150f8fca"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044r-quantum-final-context-4-v1/bundle/book-model.json",
+        "sha256": "58f4fa19c8bf3a505163669e36cd6fc1a0ea41181f928bf364f7b68b33a4cf08"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-044-quantum-final-context-4-v1/bundle/book-model.json",
+        "sha256": "38a3b40bb0d4c49e4c2c0e1726d49207d3b49c6b7f96037f8170cd015c273afe"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-source-485-ENG-EKG-and-e70-BW-author-20261007-v2/native-isolated-repository/curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+        "sha256": "e611cadfb35c7604b9f8c26ac77adba00b4d7463ca818da7db7b7c9567b4daec"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-050-current-dependent-contexts-16-v1/bundle/book-model.json",
+        "sha256": "9b0da6c9a32af88b264327c2103940b865f0164a0c594125f700d1736858c77a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/round-a/description-review-input.json",
+        "sha256": "d463c5f4bf17dd8ce210be6363b0bc5c0e785c87de86342f7dd82ee5d9bda193"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/round-b/description-review-input.json",
+        "sha256": "d463c5f4bf17dd8ce210be6363b0bc5c0e785c87de86342f7dd82ee5d9bda193"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/bundle/review.md",
+        "sha256": "51616acf3721c59164bc4ec5dc8c7f6c1782695b3f4eb11b72a04aaf001d13f7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/bundle/review-input.json",
+        "sha256": "6ec4b2a06ce277c07a3d64a4bd47ff0a8217b7f2f712945bcc845431dac82f16"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-048-current-concepts-final-20-v1/bundle/book-model.json",
+        "sha256": "6687f12887d5bd513441ea617893db2f442b2f51f344399d90743523b03578b9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-045-remaining-e-methods-and-entropy-4-v1/bundle/book-model.json",
+        "sha256": "4ad151c837503b2a7b2760a95912d226a6b150abb2cd9537627c091b81379c40"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-043s-post-two-text-revisions-20-v1/bundle/book-model.json",
+        "sha256": "1392c452de3b4544b083170f68e324db8194c4f1d56973e9f30a2fc3c4f0f1e8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-08/batch-049-current-splits-and-models-final-20-v1/bundle/book-model.json",
+        "sha256": "5a029d47a1f20bd95b21f023497c9d9923a181a4f56a7bb8a3a94cee5ef5f2e1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/round-a/description-review-input.json",
+        "sha256": "b8a52b766376c03dca7fd74a1c14ad83a5326a874b00762f943d1f2751468f93"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/round-b/description-review-input.json",
+        "sha256": "b8a52b766376c03dca7fd74a1c14ad83a5326a874b00762f943d1f2751468f93"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/bundle/review.md",
+        "sha256": "8eefefd26d4928ed3b7c5fd7b3eb66232f8a27da37c3dff19e40d8f6f57a832c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/bundle/review-input.json",
+        "sha256": "df167eb193efd3052ed5d4246d10d46a859854a47def647f0a7862518afcf311"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042-astro-nuclear-electronics-mechanics-20-v1/bundle/book-model.json",
+        "sha256": "a4c24c708db375901dba2d611c7db36cb5b68b1aa4a3d575fbae9ccaef224983"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040s-photoelectric-spelling-current-1-v1/bundle/book-model.json",
+        "sha256": "59fa499fd628a72c76cadda940e962317e68b3647c036509862aced2e5181b26"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-041-diffraction-existing-goals-4-v1/bundle/book-model.json",
+        "sha256": "8457b6b8a9e5c17e920c3f3fffc3016ee95840f3700208fc49d51db0d21c2e3a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040r-final-wording-and-images-6-v1/bundle/book-model.json",
+        "sha256": "a1a2389b36088eefc215f4b735d13f0dc8bb7d73db003abe8f13c86af3fd227c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-043r-current-thermodynamics-20-v1/bundle/book-model.json",
+        "sha256": "b6ea731c92fa881e8ed5300e8d751fe3a1696c821797c205eb5d4b4a7fcf8990"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-041r-diffraction-final-scope-4-v1/bundle/book-model.json",
+        "sha256": "6b246f78af8644d7064bf7e0573388b4b19301aead40028d9c240af42f786a22"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-042r-current-nine-contexts-v1/bundle/book-model.json",
+        "sha256": "43b77513de9cda00bd16d161c7ba7c7fa2303277604a53683e2dd0776d4fae63"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040t-photoelectric-final-image-1-v1/bundle/book-model.json",
+        "sha256": "286f420e70a2377c64d3f4c89dab46e00178f0f3aa85b460860840b384d677f2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/current3-native-quality-capsule-technical-20261007-v1/native-isolated-repository/curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+        "sha256": "e611cadfb35c7604b9f8c26ac77adba00b4d7463ca818da7db7b7c9567b4daec"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-043-thermodynamics-and-entropy-foundations-20-v1/bundle/book-model.json",
+        "sha256": "9b4b2017dd4999508b35e0de4b398dd3fedcf409e003b1638f748d986214bfb0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-039r-rotation-split-and-quantum-image-5-v1/bundle/book-model.json",
+        "sha256": "106eba59c98164f0bea19b35e06dc91a5808c6cfc801bfd1e2fe367be60e7cd6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/bundle/book-model.json",
+        "sha256": "853e9ef654adce1472d82d6f057ce442ab90f57dc96ddefef118c22a0df62b09"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-07/batch-040-gravitation-and-cosmology-20-v1/proposed-assessments.route-diff.json",
+        "sha256": "da49296c44d6994b03b1e03a6193f55a5b4fe488b30bc3c8489b9db380eb091b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-018-fast-measurement-mechanics-energy-18-carryover-11-v1/round-a/description-review-input.json",
+        "sha256": "e58edd4030ac4d3608b2916c33c9c4956696b98103db4875a2532138d3507b73"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-018-fast-measurement-mechanics-energy-18-carryover-11-v1/round-b/description-review-input.json",
+        "sha256": "e58edd4030ac4d3608b2916c33c9c4956696b98103db4875a2532138d3507b73"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-018-fast-measurement-mechanics-energy-18-carryover-11-v1/bundle/review.md",
+        "sha256": "1ce55e7d24a776ea894defadecd0359f2d5b603ecb40d0b53767ab4c4a336020"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-018-fast-measurement-mechanics-energy-18-carryover-11-v1/bundle/review-input.json",
+        "sha256": "6bf745d8ab5248312df62000e46f1d1b5907781eeef29328513f5dd5f003fbc7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-018-fast-measurement-mechanics-energy-18-carryover-11-v1/bundle/book-model.json",
+        "sha256": "30b3b3da8aeac85bb9ee2923e3357d3a8d8fc0c87bc18c4e3f69774e70bc3bcc"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-source-485-and-ENG-EKG-aggregate-author-20261007-v1/native-isolated-repository/curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+        "sha256": "e611cadfb35c7604b9f8c26ac77adba00b4d7463ca818da7db7b7c9567b4daec"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/round-a/description-review-input.json",
+        "sha256": "73d1035534da56680a2209a5b0b2b9a949eb41e8899ac496dc410dded01dc061"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/round-b/description-review-input.json",
+        "sha256": "73d1035534da56680a2209a5b0b2b9a949eb41e8899ac496dc410dded01dc061"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/bundle/review.md",
+        "sha256": "a5367c5efa86296e06dd06d37667fe6a89c360e2b16eed2a23dd90b35521c43e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/bundle/review-input.json",
+        "sha256": "e5b48a806f373811119de2da7110433c9d632fae4aba9f6cae600a11601f1e9c"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-08-28/batch-025-e-mechanics-energy-current-20-v1/bundle/book-model.json",
+        "sha256": "820423ca81e6a61d77bc7e77b1a27d2f5dbd03ecbf6fc5b9904182c3632fa710"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-current-source-method-contexts-4-v1/bundle/book-model.json",
+        "sha256": "d0e8187a851ee11f669925e7abe3e6805c2c1adb37aa1127fb9b3ac40182fb7d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-d048-current-revised-five-v1/round-a/description-review-input.json",
+        "sha256": "7185cf11ea77a5667d9837fe7eeb0f0acd6bbbb7945129bb262a881d54449575"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-d048-current-revised-five-v1/round-b/description-review-input.json",
+        "sha256": "7185cf11ea77a5667d9837fe7eeb0f0acd6bbbb7945129bb262a881d54449575"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-d048-current-revised-five-v1/bundle/review.md",
+        "sha256": "c4488e528ca2e3712f5f7a05cc623614547b8592f6bf44fafe4400b9c5955028"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-d048-current-revised-five-v1/bundle/review-input.json",
+        "sha256": "3a6b06b9ab6285f6644a663b598a654787c8fa8b534bd7474dbb7f0a57a39d6a"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052-d048-current-revised-five-v1/bundle/book-model.json",
+        "sha256": "849ad3610e2b1be870a7b12ad58d22c88c261d0266e83d2341aacc691acb18ca"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-052a-crash-current-alttext-1-v1/bundle/book-model.json",
+        "sha256": "3d1cec4a165ec9233e8bd6e56300787b7042693a562a73f543f4b3c8adc48078"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-053-model-function-current-1-v1/bundle/book-model.json",
+        "sha256": "0c5c75dbb261285f08935ce7022ded470475504f1b5501494e3c7c0074fe34a3"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-13/batch-051-current-hrd-children-3-v1/bundle/book-model.json",
+        "sha256": "421fca19d6c16df5b0ed73a161afc619a71a1f88c10a85734d6a8df9adf48295"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-entropy-final-image-1-v1/bundle/book-model.json",
+        "sha256": "93e34bcb15aa21643f852cc27e8ff0209adb1ac1c2da0aa0729bbd49e266aeef"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-nuclear-current-16-v1/bundle/book-model.json",
+        "sha256": "19e2f876c7c3682579643965b7c5090f9600de6e6bf71323c84688d0b8c9ce46"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/hrd-current-image-hold-1-v1/bundle/book-model.json",
+        "sha256": "0e95643dfe8380de747f11f73e5fe2ddb797dac910e7db86f7cfc555f1df7f4f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-astro-inference-current-18-v1/bundle/book-model.json",
+        "sha256": "f949758c5f6f0ac673f5aa04a98fe1660aa8d9dff16b8bf69ef8813bffe01717"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-09-20/m7-astro-nav-current-16-v1/bundle/book-model.json",
+        "sha256": "b927bf2ac729469eae264a0cddc0dc720b2fc1f4c79fc44bcf31094bbce76c3b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-independent-combined-scope-review-v1/whole-inputs/curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+        "sha256": "e611cadfb35c7604b9f8c26ac77adba00b4d7463ca818da7db7b7c9567b4daec"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-accesses-independent-merge-audit-v1/immutable-current555-machine-input-snapshots-portability-successor-v2/inputs/curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+        "sha256": "e611cadfb35c7604b9f8c26ac77adba00b4d7463ca818da7db7b7c9567b4daec"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current597-legal-social-independent-combined-scope-review-v1/whole-inputs/curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+        "sha256": "e611cadfb35c7604b9f8c26ac77adba00b4d7463ca818da7db7b7c9567b4daec"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-thirteen-macro-current555299-accesses-scope-independent-root-v1/declared-short-viewId-only-independent-followup-v2/immutable-execution-inputs/curricula/DE/Gymnasium/provenance/canonical-goal-provenance-registry.json",
+        "sha256": "e611cadfb35c7604b9f8c26ac77adba00b4d7463ca818da7db7b7c9567b4daec"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/review-evidence/current-catalog/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "232de7625efb87beca686aba8985b5f654602d810e9df2e2e97b19b734a66ec4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-elementary-representations-current-v1/review-evidence/candidate/inputs/catalog/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256": "232de7625efb87beca686aba8985b5f654602d810e9df2e2e97b19b734a66ec4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/semiconductor-stage-path-current-v1/post-corrected-independent-review-v3/strict-central-check/attempt-1/report.json",
+        "sha256": "8eeb4c490323297f4d114aadf8f4c895078bf1ba8c1d4d7b37ec3ae7de9769aa"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/k2-table-task-boundary-current-v2/package-contract/validate-model.stdout.json",
+        "sha256": "3b5b77eafd4d455872b7350c47a4397b209301643f631dee7f44411bca8a23a8"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v2-content/independent-checks.actual.json",
+        "sha256": "5558c4234f664a44ea984ccf4cb98190dbc52f34bd5d2eceea5c6fdfb04bb4b6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/root-review/direct-claim-removal-root-disposition.actual.json",
+        "sha256": "4597192ab361fe4a17e013bcc337eb313a2344851bdb86fb647fa03030ff75a2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/claim-audit/direct-existing-claims-content-audit.actual.json",
+        "sha256": "8d48a5b0e8eb28a1ca9a260a5d76701c4a79ef07270462e44203e82206b4d574"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/claim-audit/residual-ce431-coverage-content-packet.actual.json",
+        "sha256": "a70263fcd4a78f43da6b34bf2a33c8e10137c25dc1382f29b16a5ca7df98cd4d"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/claim-audit/current-claim-correction-activation.actual.json",
+        "sha256": "4034e9b67ea6de6a6a709f16086bdf3a6e8a007784bdc93a50de4563a339b6f7"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/claim-audit/reviewed-semantic-source-updates.actual.json",
+        "sha256": "8dcd26dd93ea0275395ddd8a9612fa2668e0bb9d189d51751b1578c262aee27b"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-flow-current-assessments-v1/release/prior-thirteen-final-content-matrix.actual.json",
+        "sha256": "764b17edc5cc33d43c0d41be9dae781466d7fbe36157ec414883a489a5bf6c8f"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-12/chemie-polymer20-bounded-partner-and-ancestor-remediation-author-20261013-v17/checks/normal-whole-compiler-bounded-partner-impact.author.actual.json",
+        "sha256": "25069b55782851d43e551c81dee4e874606c72d68d4a360e629f2273d110aa93"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/derive-strict-current-registry-audit.mts",
+        "sha256": "dfc10c765152da662a4fd52983c355792ea30ce05b3760241ea0b2070764ba43"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-cut-review-report/quality-status.actual.json",
+        "sha256": "e69e1cbc056bbd0d661598839c6264c1a2068084899679072c3151425ab92136"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/mp-semantic-kind-refresh.actual.json",
+        "sha256": "9e2474061e3bab7eebcb163d64f72598f34acfcd698a311f77e663d16e61d6e1"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/profile-authoring/canonical-input.json",
+        "sha256": "d57f003d368fcee48808513346c1faf2d4c07d67e99e2841066d5f526841f0c6"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/strict-current-registry-audit.mp-checkpoint.actual.json",
+        "sha256": "118931e372ae367ff2ee390125f29f02e8d13ac5574d5c777f3243c58be3b8c0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/core-independent-review/activation.receipt.json",
+        "sha256": "77455058b522c5f145178da62a0c12592e81ec7548dbe33ea0dc9ec9f8a326c2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/core-independent-review/round-a/response.json",
+        "sha256": "d3f2a7ef152652b49b383bcf878370b5bc6278bad0ab3f986ea34bcbfeea643e"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/authorized-mp-placement.actual.json",
+        "sha256": "bffd6ba751dc8d29ddf081187cf54a20d40ec404d35184f019301e3e7471d7c5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/core-independent-review/round-a/canonical-input.json",
+        "sha256": "1c7b6b339cc4dcfc04a717db587799060361cf3dec3b0f3d4b6aa6cfcaf01f12"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-three-v3/strict-current-registry-audit.actual.json",
+        "sha256": "1fc94af71a2a5ab26b4ed1b8aea5026db94dd7d548af192ec5ca007debaee1b5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/core-independent-review/prior-kind-decisions.json",
+        "sha256": "338ec5a6ea75b09201a4feb4142724bab13911e6a69ea8123fc9842ccc6169e5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/core-independent-review/round-b/response.json",
+        "sha256": "7ec47997f548050612934be544813559eb3b84fb7a18d88a3bcc57ab9337ccf2"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/core-independent-review/round-b/canonical-input.json",
+        "sha256": "1c7b6b339cc4dcfc04a717db587799060361cf3dec3b0f3d4b6aa6cfcaf01f12"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/core-independent-review/semantic-kind-current-binding-check.actual.json",
+        "sha256": "d95331f28fb1a5db1667b2c9b296e9bed72c7e12113d48994984051500e7d691"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/post-mp-pre-sn-seventy-view-role-comparison.actual.json",
+        "sha256": "ebc8b1e73bbca28ad5e6bab059ec5f7038a3d678cd6ed5f43cd9fc42a90ba2b0"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-current-nine-v1/final-seventy-view-role-comparison.actual.json",
+        "sha256": "6166c656b99df0ca8b0e5e386b37820f069cdd9b328dd737f16f523ee1c87d27"
+      }
+    ]
+  },
+  "cqr203ReadOnlyProbe": {
+    "script": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/native-probe.mts",
+      "sha256": "6e89f63e86a48929e27bf469ce80333324f64a857fe4781a4e50d16d1ad6c6d6"
+    },
+    "result": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/native-probe.actual.json",
+      "sha256": "b8d1dc15e2011c7731e37bc79f6dd18a033d986c19983ba111dc3e51f23d79ba"
+    },
+    "observed": {
+      "schema": "mp-identity-retention-CQR203-read-only-structural-probe-v1",
+      "status": "NO_ACTIVATION_OR_APPROVAL",
+      "method": "Actual native evaluateRouteProfile; three in-memory structures only. No new task is installed or marked released, no quality rule or live input changes.",
+      "currentActiveOldIdentity": {
+        "id": "CQR-203",
+        "status": "warn",
+        "summary": "1 terminal autonomy examData item(s) lack release or coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 112,
+          "releasedCoverageCompleteExamData": 111,
+          "releaseCoverageIncompleteExamData": 1
+        },
+        "details": [
+          "Incomplete exam release/coverage: Mehrphasenbewegung und Modellprüfung [2b9e565f-d9b4-5e23-b5b7-b7977cecff06] (missing coveredGoalIds)"
+        ]
+      },
+      "excludedFlagOnly": {
+        "id": "CQR-203",
+        "status": "warn",
+        "summary": "1 terminal autonomy examData item(s) lack release or coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 112,
+          "releasedCoverageCompleteExamData": 111,
+          "releaseCoverageIncompleteExamData": 1
+        },
+        "details": [
+          "Incomplete exam release/coverage: Mehrphasenbewegung und Modellprüfung [2b9e565f-d9b4-5e23-b5b7-b7977cecff06] (missing coveredGoalIds)"
+        ]
+      },
+      "movedOldIdentityToExistingRetainedCluster": {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 111,
+          "releasedCoverageCompleteExamData": 111,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      },
+      "limitation": "A future replacement still needs its own genuine current content/release/coverage acceptance. The last case isolates removal of the old task from active terminal obligations; it does not claim a new qualified endpoint."
+    },
+    "interpretation": "Excluded flag alone leaves oldMP a raw active terminal and CQR203 stays111/112. Moving it to the real existing retained cluster also removes it from active terminal contains, yielding111/111 in the structural probe. A genuinely accepted replacement would enter as a new terminal; until then no new endpoint qualification is claimed. No floor or rule changes.",
+    "explicitCounterfactual": "The111/111 case is counterfactual and exists only in memory. No actual oldMP retirement or05cfd298 activation occurred."
+  },
+  "codeAndTestEvidencePins": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "e9df46b0122cb763922e32a2b82fbb8a9b9e5a9f18658095e7ffa213bddb30ff"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/domain/Mastery.java",
+      "sha256": "18578c25d140b73b0cfcf7cbdf270e33e1d1824c07ef7a487284a3c4931d242a"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionApplicationService.java",
+      "sha256": "6e547b5f2f46cd3e0c762c0540d18e51613a02b2f257f235a07b3a6b94b01b4a"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/CompletionEvaluator.java",
+      "sha256": "23499ae137af65697492d6a9ad38fc842bd8189e10cead2a403db4b9b1a23cd0"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/AssessmentMaterialRevision.java",
+      "sha256": "21bc4a02b98b3da9e3fb06efb0cce8f6b5d3b31f5335bd8fd5a9b33bc0171d42"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/UnitAssessmentContract.java",
+      "sha256": "51ed111137b5b374b03420c505257781fca2bdc45df6c7c0fc407ebcf9d3b576"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/completion/UnitPlanningRelease.java",
+      "sha256": "0ff22091fc32863e6480c25a793ae578986fd6112739a284600b575f8ac1b11c"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "92e32795425741e7dd021a46f9c86c78347e87f8f0855b16e999296bccfaf9cc"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/VerifiedExamPassService.java",
+      "sha256": "32f2e374701a2794d95d60f06c9eea21a327ad6e765a5e2ba11320400e9ec283"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/ai/CoachToolFacade.java",
+      "sha256": "e35078fcdf96cb9ed755f5d52a9e54e007590af1885c483822237cb9fadff5cd"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "sha256": "98f57d077502bb30b91a1fa8fbfd60dca0fae70738ea86928331b7ce9d9b65e9"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/JsonCurriculumPackageLoader.java",
+      "sha256": "7863990c6d8fb6cb1fbcc4cd0c2c98f947b069951b61b00050e00362241e28d4"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/curriculumpackage/CurriculumRuntimeSnapshot.java",
+      "sha256": "434f5ac93f1daa2150b8c6567a9dfb9201f3d1b61370d26a0e2c4be74d9de58c"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "dcdd11710b89ec5bae010901e4b927fc46f04e255b266c4308b8a76601d7cc76"
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "624c6baf12688570a2063210399de3fd6ffa0fe53f418eda7bfc20672289c8d1"
+    },
+    {
+      "path": "app/scripts/testPhysicsAssessmentProjection.ts",
+      "sha256": "03c3084a542921739053416db90341f935f1e4a66ea88c291f09d6ba60432a42"
+    },
+    {
+      "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+      "sha256": "be7e6197f7ddb53664cf5d86f377027f10ca8adf593b152fba1fc702caec9c3e"
+    },
+    {
+      "path": "contracts/curriculum-package/v1/migration-aliases.schema.json",
+      "sha256": "87459d64185f4a35da3e9898ee613a312e9ba5710beaa543b8f1f0d6a0aea277"
+    }
+  ],
+  "requiredFutureRegression": [
+    "OldMP binary mastery and old30/18 receipt remain exportable and resolvable under oldID.",
+    "OldMP mastery does not mark new05cfd298 as mastered or suppress the new voluntaryLK start.",
+    "OldMP pass grants noMOD credit/mastery; no alias/legacy73cb rewrites to newID.",
+    "NewID current grading stores only its own material receipt and ownUUID result; no old record is updated.",
+    "OldMP is absent from all active view targets/terminalcontainers and remains under retainedcluster; CQR203 still checks every active new terminal.",
+    "All4requiredE1parts and1BES planning grant remain unchanged; no other11goalcredit appears."
+  ],
+  "activationPerformed": false,
+  "reproducibleFrozenInput": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/canonical-physics.observed-before-new-id.json.gz",
+    "sha256": "1fee4ce907b80212d63a3b3f1e2f44c721958867cb7dbca7c734a81b38a8f6e0",
+    "uncompressedCanonicalRawSha256": "040034d270fad079b53d271cbb640847d1761440b979d9fe52a18c3982a5caf5",
+    "currentLiveProductState": "Historical30/18 identity remains active; all retention/newID changes are recommendations conditional on genuine final content acceptance."
+  },
+  "reproductionCommand": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/native-probe.mts",
+  "originalTemporaryReport": {
+    "description": "Earlier exact technical findings were delivered from a temporary report; this repository successor preserves the findings and replaces temporary artifact references with shipped relative inputs.",
+    "sha256": "ce2efc1a351feea1c3f08cd50f412bb7f165df222d6fd455190babd3cace9288"
+  }
+}

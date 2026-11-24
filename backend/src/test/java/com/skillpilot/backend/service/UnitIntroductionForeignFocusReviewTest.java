@@ -34,6 +34,9 @@ class UnitIntroductionForeignFocusReviewTest {
     private static final String PHYSICS_SCOPE = "composition:de-he-gym-physics-gk-g9:structure:physics-e1-motion";
     private static final String PHYSICS_OPENING = "a4d4efe1-7d30-526b-ac9c-806113da4363";
     private static final String PHYSICS_PRACTICE = "8aff7aac-321b-5172-ac55-877876bfd2cd";
+    // Since the E.1 cut (23 Nov 2026) the practice goal belongs to the child unit "Freier Fall schwerer
+    // Kugeln". Entering it from an unrelated focus opens that child's own orientation.
+    private static final String PHYSICS_PRACTICE_OPENING = "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e";
 
     private static final String CHILD_OPENING = "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e";
     private static final String CHILD_TARGET = "e0004439-ed34-5caf-858a-6107918224eb";
@@ -68,7 +71,7 @@ class UnitIntroductionForeignFocusReviewTest {
     void physicsResourceGateStillRequiresItsOwnOpeningAndDoesNotChangeTheMathematicsFocus() {
         long revision = repository.findById(ID).orElseThrow().getCoachStateRevision();
         assertThat(learners.getRequiredUnitOrientationGoalId(ID, PHYSICS_SCOPE)).isEqualTo(PHYSICS_OPENING);
-        assertThat(learners.getRequiredUnitOrientationGoalId(ID, PHYSICS_PRACTICE)).isEqualTo(PHYSICS_OPENING);
+        assertThat(learners.getRequiredUnitOrientationGoalId(ID, PHYSICS_PRACTICE)).isEqualTo(PHYSICS_PRACTICE_OPENING);
         assertThat(learners.getPlannedGoals(ID)).containsExactly(MATH_SCOPE);
         assertThat(repository.findById(ID).orElseThrow().getCoachStateRevision()).isEqualTo(revision);
         assertThat(mastery.findByLearner_SkillpilotId(ID)).isEmpty();
@@ -77,12 +80,13 @@ class UnitIntroductionForeignFocusReviewTest {
     @Test
     void deliberatePhysicsStartAndConfirmedOpeningResumeTheSelectedGoalFromAnUnrelatedFocus() {
         learners.setActiveGoal(ID, PHYSICS_PRACTICE);
-        assertThat(repository.findById(ID).orElseThrow().getActiveGoalId()).isEqualTo(PHYSICS_OPENING);
+        assertThat(repository.findById(ID).orElseThrow().getActiveGoalId()).isEqualTo(PHYSICS_PRACTICE_OPENING);
         assertThat(repository.findById(ID).orElseThrow().getPendingUnitEntry()).contains(PHYSICS_PRACTICE);
-        learners.setMastery(ID, new MasteryUpdateRequest(Map.of(PHYSICS_OPENING, 1.0), PHYSICS_OPENING));
+        learners.setMastery(ID, new MasteryUpdateRequest(Map.of(PHYSICS_PRACTICE_OPENING, 1.0), PHYSICS_PRACTICE_OPENING));
+        // Direct entry into a child introduces the child, not additionally the parent (decision of 22 Nov 2026).
         assertThat(repository.findById(ID).orElseThrow().getActiveGoalId()).isEqualTo(PHYSICS_PRACTICE);
         assertThat(mastery.findByLearner_SkillpilotId(ID)).singleElement()
-                .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(PHYSICS_OPENING));
+                .satisfies(result -> assertThat(result.getGoalKey()).isEqualTo(PHYSICS_PRACTICE_OPENING));
     }
 
     @ParameterizedTest

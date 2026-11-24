@@ -1,0 +1,162 @@
+{
+  "reviews": [
+    {
+      "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "The calculations are correct. In SI numerical coordinates, v=2t−5 and s=t²−5t+11 satisfy both initial values. Reversal occurs at 2.5 s and 4.75 m; subsequent positions are 5 m and 7 m. Acceleration area is +4 m/s; velocity areas are −0.25 m and +2.25 m, giving displacement +2 m and distance 2.50 m. The prediction lies within [6.98,7.08] m. Braking stops at 3 s and 9 m; unchanged continuation gives v(5)=−4 m/s and s(5)=5 m. The candidate explicitly supplies correct signed-area arithmetic and equivalent time coordinates.",
+      "fullPreparationReview": "The sole direct prerequisite 262f807a-30d0-503e-986f-856cbd048e8e is sufficient. Its supplied ancestry includes accelerated-motion representations, signed velocity areas, triangle areas, graph interpretation and algebraic substitution. Recognising that continued negative acceleration predicts reversal requires the taught kinematics; no separate general idealization or quantitative force-law prerequisite is necessary. Comparing with an already supplied interval does not require independently estimating measurement uncertainty.",
+      "directCoverageReview": "The required consistent t-s, t-v and t-a representations, area explanations and braking-model interpretation establish the whole current goal e4b38061-1f28-43ad-8371-a3e7c0e81856. No additional whole-goal claim follows from prerequisite use.",
+      "falsePassCheck": "At 17/20, every five-point row must score at least 2: any row scoring at most 1 permits only 16 overall. Thus both sets of consistent representations, the signed-area interpretation and the model-limit explanation are mandatory. Optional numerical refinements or the control comparison can be omitted without defeating the sole claimed goal.",
+      "languageReview": "The candidate DE/EN tasks, solutions and scoring are substantively aligned. The original rubric unnecessarily rewards a shifted time origin specifically; the candidate correctly gives equivalent original-time methods equal credit.",
+      "recommendedRequires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "recommendedCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "recommendedPassingPoints": 17,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "Acceptance concerns the exact candidate and its supplied scoring rules.",
+        "This establishes neither every official E.1 subfacet nor actual learner performance."
+      ]
+    },
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "The cart and braking results independently agree with D: reversal at 2.5 s and 4.75 m, displacement +2 m, distance 2.50 m, stopping time 3 s and braking distance 9 m. The program predicts −4 m/s and 5 m at 5 s. The supplied ±0.05 m supports the stated comparison interval; it does not identify an instrument resolution. The candidate corrects that distinction.",
+      "fullPreparationReview": "Retain 262f807a-30d0-503e-986f-856cbd048e8e alone. Its laws, representations and supplied mathematical ancestry prepare all mandatory calculations and explanations. The continuation can be rejected through its contradiction with a vehicle remaining at rest; no additional general MOD or Newtonian calculation is demanded.",
+      "directCoverageReview": "Full marks require the initial-value representations, reversal and areas, displacement/distance distinction, braking representations and numerical validity check. Together these establish the whole current accelerated-motion goal e4b38061-1f28-43ad-8371-a3e7c0e81856.",
+      "falsePassCheck": "The 20/20 threshold requires all five four-point rows in full. Missing any named central contribution prevents passing. The candidate explicitly asks for both program values already required by the numerical-check row. The original could unfairly fail a correct original-time solution and described the supplied uncertainty as resolution.",
+      "languageReview": "Both candidate languages now expressly request velocity and position at 5 s, accept either time coordinate and compare with the same supplied interval. The remaining solutions are consistent with those demands.",
+      "recommendedRequires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "recommendedCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "recommendedPassingPoints": 20,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "A full-score requirement is a coverage guarantee under the rubric, not evidence about learner difficulty or likely success.",
+        "No independent uncertainty-estimation or complete LAWS coverage is claimed."
+      ]
+    },
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "The components are 2 m/s horizontally and 1.5 or 3 m/s downward. Magnitudes are 2.50 and √13≈3.606 m/s; the impact angle is atan(3/2)≈56.310°. The stated arrow lengths and drawing tolerance are consistent. In the cart frame the impact velocity is 3 m/s downward; adding the cart's 2 m/s horizontal velocity recovers the ground-frame result. Negligible cart height makes interception compatible with the stated impact time.",
+      "fullPreparationReview": "The sole direct VEC prerequisite 0fee53f2-1c02-5b12-9b6c-aa9fa462d921 is sufficient through its supplied horizontal-projection, reference-frame, Pythagoras, vector-addition and geometric-angle ancestry. No additional direct prerequisite is necessary; trigonometry is optional because drawing measurement remains available.",
+      "directCoverageReview": "The candidate assesses every current VEC facet: component composition, magnitude and direction. It correctly removes BZ 68c90ba6-c438-463c-9a53-cf61062d416a: both frames are prescribed, so independent selection of a suitable frame is not assessed.",
+      "falsePassCheck": "Original 12/16 permits 13/16 with the entire cart-frame row absent, defeating its BZ claim and its own cart-frame performance description. Candidate 16/16 requires all rows, including every conjunct of vv_5: vertical motion, relative velocity and recovery of ground velocity by arrow addition. Carry-forward protection cannot restore points lost at the originating error and therefore cannot produce a full-score pass from an incorrect first row.",
+      "languageReview": "Candidate DE/EN tasks, solutions and rubric are aligned. Both now expressly permit measurement or calculation of the angle, resolving the original task/rubric tension.",
+      "recommendedRequires": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "recommendedCoveredGoalIds": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "recommendedPassingPoints": 16,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "VEC coverage supplies no automatic or guaranteed planning credit.",
+        "Using prescribed reference frames does not establish the whole BZ goal.",
+        "No learner drawings or performance evidence were supplied."
+      ]
+    },
+    {
+      "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "Reaction distances are 13.8889 and 27.7778 m; stopping distances are 27.8889 and 83.7778 m, a ratio of approximately 3.004. The fixed-obstacle clarification makes this comparison appropriate. The given braking distances are consistent with equal constant deceleration and quadratic speed dependence, without proving a universal law. For A, x/t=2 m/s and fall-distance/t²≈5,5,4.889 m/s² support an approximate parabola. The candidate correctly avoids deriving a parabola merely from superproportional growth or inventing measurement-error bounds.",
+      "fullPreparationReview": "The necessary direct prerequisites are WURF 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 and traffic 4a2bf015-052b-4af0-aed7-324259fa1a8a, with their supplied experimental and mathematical ancestry. The existing MOD edge supplies additional preparation but is not demonstrably necessary: stating one limit, such as a different reaction time or changed road conditions, belongs to the traffic goal's qualitative appraisal of simple models. No mandatory demand independently requires general point-particle or friction-free idealization justification.",
+      "directCoverageReview": "The whole current traffic goal concerns qualitative and model-based reaction/braking assessment and everyday safe-distance evaluation. It permits this stationary-obstacle application; it does not require a moving lead-car calculation. Retain traffic alone as covered. Describing video analysis with supplied numbers does not establish WURF's experimental performance, and a complete x-y representation is not guaranteed.",
+      "falsePassCheck": "Original 10/16 allows the full eight points in A plus partial B credit without the central traffic judgment. Candidate 16/16 requires both complete rows. Their explicit conjunctions prevent omitted calibration, separate representations, parabola reasoning, reaction/stopping calculations, distance judgment or model limit from passing.",
+      "languageReview": "The added English tasks, solutions and scoring gates match the German candidate. One substantive mismatch remains: descriptionEn still promises assessment of a 'safe following distance', contradicting the expressly stationary-obstacle task and its exclusion of a moving following gap.",
+      "recommendedRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+      ],
+      "recommendedCoveredGoalIds": [
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+      ],
+      "recommendedPassingPoints": 16,
+      "requiredCorrections": [
+        "Change descriptionEn from 'safe following distance' to 'safe distance' or 'clear stopping distance before a stationary obstacle', matching the revised task."
+      ],
+      "scopeLimitations": [
+        "recommendedRequires identifies the necessary direct set; MOD is related additional preparation rather than a demonstrated necessity.",
+        "Acceptance remains pending the narrow English-description correction.",
+        "No moving-following-gap, actual video experiment or planning-credit claim is established."
+      ]
+    },
+    {
+      "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "The candidate correctly replaces the German reference to an air-resistance model with the investigated model without air resistance. With justified initial conditions, plotting x against t² gives slope g/2; a justified quadratic fit can accommodate established nonzero initial velocity. Ideal fall times are 0.24731 s at 0.30 m and 0.34975 s at 0.60 m, approximately 30 and 42 intervals at 120 actual frames/s. These are feasibility calculations only. Sensitivity variation is correctly distinguished from guaranteed total-error bounds, and repeat scatter does not replace systematic-error consideration.",
+      "fullPreparationReview": "Retain sole direct FF prerequisite 09029573-864f-40ca-bf8a-cee7bf6dcb73. Its exact description already includes experimental investigation, graphical analysis, determination of g within the drag-free model and laws with initial conditions. LAWS 262f807a-30d0-503e-986f-856cbd048e8e, uncertainty f6b1d812-ce8b-5852-b417-e6c29b533c7a and error-type 8aff7aac-321b-5172-ac55-877876bfd2cd ancestry, together with the supplied procedural guidance, support the mandatory work. The model-limit demand concerns interpreting the two own datasets under the expressly named model. No mandatory demand exposes a missing independent skill in justifying point-particle, rotation/extent or general idealization models; a separate MOD prerequisite is unwarranted.",
+      "directCoverageReview": "The two actual independent series directly assess every current FF facet: experimental collection, graphical analysis, independently inferred g in the stated model and complete laws with checked initial conditions. Claim FF alone.",
+      "falsePassCheck": "Each of eight cores awards 3 for complete correct performance, 2 only for a complete core with one isolated nonconceptual slip, and 0 for a missing central component. Any missing core caps the total at 21; two isolated slips cap it at 22. Thus 23/24 requires both own series, fresh valid trials and pairs, independent graphical determinations, rechecked initial conditions, complete laws and the required uncertainty/boundary comparison. Plans, copied data and sample tables cannot satisfy the actual-data gates.",
+      "languageReview": "The original German solution names the wrong model while English correctly names the drag-free model. The sole candidate change fixes that scientific and bilingual mismatch. The remaining tasks and conjunctive scoring require equivalent performances.",
+      "recommendedRequires": [
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+      ],
+      "recommendedCoveredGoalIds": [
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+      ],
+      "recommendedPassingPoints": 23,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "No actual learner measurements, original recordings or host-equipment evidence were supplied.",
+        "The task does not explicitly require comparison with a literature value and cannot attest every official page-30 subfacet.",
+        "Acceptance concerns an own voluntary practical assessment, not an official state examination or demonstrated learner success."
+      ]
+    },
+    {
+      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "The constructed table and equations agree: vx=+2 m/s, y=1.25−5t² in SI numerical coordinates, vy=−10t and ay=−10 m/s². Both impact at 0.500 s; B's range is 1 m and impact components are +2 and −5 m/s. The trajectory is y=1.25 m−(1.25 m⁻¹)x²; doubling vx preserves time and doubles range to 2 m. The drag discussion correctly rejects guaranteed simultaneous impact without asserting unequal times in every drag model or a universal arrival order. Small size is a suitable sufficient modeling condition, not a universal necessity for centre-of-mass dynamics; the existing scientific-equivalence rule protects correctly bounded alternatives.",
+      "fullPreparationReview": "Retain 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 and d6dc0e02-831d-4894-a61a-852bcc74f147. WURF and its supplied ancestry prepare the scalar kinematics and graphs. MOD is necessary here because task 6 expressly demands independent justification of point-particle and negligible-drag idealizations and their limits. No vector prerequisite is necessary: quantities are signed scalars and no resultant speed is required.",
+      "directCoverageReview": "Task 6 directly assesses the whole current MOD goal: point-particle justification, neglected-resistance justification and limits of model predictions. Candidate 36/36 requires all six existing model criteria through the native total. Retain MOD alone as covered; constructed data do not establish WURF's experimental facet, and no additional coverage claim is proposed.",
+      "falsePassCheck": "Original 22/36 permits a clear false pass: tasks 1–5 yield 30 points with all six MOD criteria omitted. Candidate 36/36 requires every individual criterion, including all six MOD criteria. Carry-forward credit preserves consistent later method work but cannot erase the originating lost point. No separate runtime gate is needed.",
+      "languageReview": "The German and English tasks, solutions, 36 criteria, signs, units, rounding and equivalent-method rules are substantively aligned. Only passingPoints changes, from 22 to 36; there is no conflicting written pass threshold.",
+      "recommendedRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedCoveredGoalIds": [
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedPassingPoints": 36,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "Acceptance uses the unchanged individual criteria and their existing scientific-equivalence and error-carry-forward rules.",
+        "The full-score proposal establishes a rubric requirement, not learner difficulty or observed performance.",
+        "No assessment placement, E.1 cut or content goal is changed."
+      ]
+    }
+  ],
+  "ffxHesseOfferDecision": "accept",
+  "ffxHesseOfferReason": "The corrected candidate is compatible with a voluntary native HE E.1 offer. Official HE PDF printed page 30 includes experimental free-fall data collection, graphical representation, determination of gravitational acceleration and formulation of a mathematical time-position model. Its separate idealization block does not make MOD a prerequisite for every free-fall assessment. FFX's mandatory demands are prepared by its exact FF prerequisite and ancestry. Compatibility does not attest every official subfacet, particularly literature-value discussion, or imply official examination endorsement, learner success or available equipment.",
+  "directCoverageVersusPlanningCredit": "The recommended coveredGoalIds identify directly graded whole-goal evidence under the stated pass rules. They create no automatic mastery transfer, prerequisite completion or planning credit. NVX supplies VEC evidence only and has no guaranteed planning-credit target. Separate planning-credit and final material-byte reviews remain outside this assessment review.",
+  "crossGoalFindings": [
+    "Recommended candidate thresholds are D 17/20, D′ 20/20, NVX 16/16, DFD 16/16, FFX 23/24 and ZB 36/36. Every rubric's maximum equals its summed row points.",
+    "DFD still requires its English-description correction. Its necessary direct preparation is WURF plus traffic; the existing MOD edge is additional preparation without an identified mandatory skill gap.",
+    "FFX's own-data interpretation and limits of an expressly named drag-free model do not require general independent MOD justification. ZB explicitly requires that broader idealization performance and therefore retains MOD.",
+    "Prescribed reference-frame use does not establish independent frame selection; describing video analysis with supplied values does not establish actual experimental performance.",
+    "Historical release labels and review notes supplied no independent approval evidence.",
+    "No unresolved scientific or scoring dissent remains."
+  ],
+  "globalLimitations": [
+    "Only the permitted canonical input, output schema and official HE PDF were used as source material; no files were edited.",
+    "No task images, learner measurements, submissions, trials or host-equipment evidence were supplied. Actual authenticity, learner performance and equipment suitability remain unverified.",
+    "No learner-difficulty calibration or effectiveness claim is supported.",
+    "Official HE source compatibility does not attest every official subfacet or establish an official state examination. Other jurisdictional source alignments were not independently established.",
+    "All recommendations are proposals. No canonical record, historical result, assessment placement, E.1 cut or content goal is changed."
+  ]
+}

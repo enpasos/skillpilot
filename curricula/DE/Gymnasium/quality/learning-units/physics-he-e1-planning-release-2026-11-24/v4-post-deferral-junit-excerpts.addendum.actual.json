@@ -1,0 +1,103 @@
+{
+  "schema": "e1-v4-mp-backend-report-provenance-addendum-v1",
+  "recordedAt": "2026-11-24T05:50:06.495855+00:00",
+  "status": "PASS_CORRECTED_RETAINED_EXCERPT_BINDINGS",
+  "historicalCheckpoint": "22dba2a004",
+  "supersedesOnlyReportLocationClaims": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v4-post-deferral-tests.actual.json",
+    "sha256": "sha256:8563c94a2356c852ef390a49faebd93c23d3c59c100c52331bbd68b22572142c"
+  },
+  "scope": "Corrects the three backend.classes raw-XML repository-path references. The raw reports are unchanged temporary artifacts; stable repository evidence is the explicitly marked case-status excerpt. Previous verification object remains immutable.",
+  "correctedClasses": [
+    {
+      "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "tests": 103,
+      "passed": 103,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "retainedExcerpt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/EXCERPT-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+        "sha256": "sha256:380cf72d802f1baa147d63128e8067e103102094938c9c732a90c412d2ac523e"
+      },
+      "rawReport": {
+        "temporaryPath": "/tmp/e1-t5/backend-mp-return-build/test-results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+        "sha256": "sha256:a0bee30d5a8fd413e605f29e9cb5cc5488e87482cfa3b9c0f071eed8dc447a8a",
+        "storedInGit": false
+      },
+      "correctsEarlierRawRepoPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml"
+    },
+    {
+      "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+      "tests": 70,
+      "passed": 70,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "retainedExcerpt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/EXCERPT-TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml",
+        "sha256": "sha256:7c273c7336e47d79bab6b598eef5aa228ab7cd40bb5ab587ae8496923eac95a2"
+      },
+      "rawReport": {
+        "temporaryPath": "/tmp/e1-t5/backend-mp-return-build/test-results/test/TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml",
+        "sha256": "sha256:084333de2ee322d5a26044d235387f4052c9f724220104836f564788890b0ff6",
+        "storedInGit": false
+      },
+      "correctsEarlierRawRepoPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml"
+    },
+    {
+      "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+      "tests": 9,
+      "passed": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "retainedExcerpt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/EXCERPT-TEST-com.skillpilot.backend.service.UnitLearningMaterialServiceTest.xml",
+        "sha256": "sha256:1ae3f17447e51ff04d0cf3c505a2be9fef742e4723833024cd0c3a8c885b8405"
+      },
+      "rawReport": {
+        "temporaryPath": "/tmp/e1-t5/backend-mp-return-build/test-results/test/TEST-com.skillpilot.backend.service.UnitLearningMaterialServiceTest.xml",
+        "sha256": "sha256:10d91336a0cdc588df1424435499d5f8d544c10c657486cfe2372aac0e5f249e",
+        "storedInGit": false
+      },
+      "correctsEarlierRawRepoPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/TEST-com.skillpilot.backend.service.UnitLearningMaterialServiceTest.xml"
+    }
+  ],
+  "excerptManifest": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/junit-raw-and-excerpts.actual.json",
+    "sha256": "sha256:490f1dfeb19c3e52fe8befa9dc38d0ed5404c19f8a6c697ccaf8be4a3c4e2e3a"
+  },
+  "unchangedResult": {
+    "tests": 182,
+    "passed": 182,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "newTestExecutionClaimed": false,
+    "backendCheckpointBoundary": "The actual three-class voluntary-MP-return run preceded HH/SN deferral; no new05ID was active. The later full current Java run is separately recorded.",
+    "frontendEvidenceUnchanged": {
+      "command": "app/node_modules/.bin/tsx app/scripts/testPhysicsAssessmentProjection.ts",
+      "exitCode": 0,
+      "checkpoint": "Current live views after HH/SN scope deferrals; oldMP30/18 remains active.",
+      "observed": {
+        "views": 64,
+        "practiceTaskPairs": 4598,
+        "abiturTaskPairs": 512,
+        "CQR104Views": 56,
+        "CQR104ActualScopes": 106,
+        "CQR104Status": "PASS"
+      },
+      "script": {
+        "path": "app/scripts/testPhysicsAssessmentProjection.ts",
+        "sha256": "sha256:03c3084a542921739053416db90341f935f1e4a66ea88c291f09d6ba60432a42"
+      },
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v4-post-deferral-physics-assessment-projection.actual.log",
+        "sha256": "sha256:6dd67f76bf048934837cc39bfbe1deb7d17c96579703f4f48d56d93d44e2ded7"
+      }
+    }
+  },
+  "verification": "All three excerpt hashes and every testcase name/class/time/status match the extraction manifest; all three full temporary raw report SHA values were recomputed and match both manifest and historical receipt. Excerpts omit system-out,system-err andproperties and identify themselves as EXCERPT.",
+  "noRuntimeOrTestMutation": true
+}

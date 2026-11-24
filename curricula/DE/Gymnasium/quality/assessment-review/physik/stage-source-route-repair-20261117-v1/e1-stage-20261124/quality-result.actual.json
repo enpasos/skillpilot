@@ -1,0 +1,711 @@
+{
+  "schema": "physics-e1-source-stage-quality-result-v1",
+  "sourceCommit": "bf34d99e7f4c80843567176535d54168f848ff71",
+  "generatedAt": "2026-11-24T03:51:36.059Z",
+  "statusCommand": "npm --prefix app run quality:curriculum-status",
+  "physics": "M3",
+  "physicsSekI": "M2",
+  "cqr104": "fail",
+  "metrics": {
+    "relevantCompositionViews": 56,
+    "invalidExplicitTerminalConfigurations": 0,
+    "evaluatedProjectionScopes": 106,
+    "requiredMotivationAnchors": 2,
+    "minimumRequiredTerminalAutonomyGoals": 40,
+    "requiredTerminalAutonomyGoals": 58,
+    "projectionScopesMissingMotivationAnchors": 0,
+    "projectionScopesMissingTerminalAutonomyGoals": 1,
+    "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+    "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+    "terminalGoalsMissingCompiledApplicability": 0,
+    "projectionScopesWithInvalidStageStructure": 0,
+    "nationalProjectionScopesUsingJurisdictionStageAuthority": 51,
+    "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+    "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+    "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 13733,
+    "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 783,
+    "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 211,
+    "nationalStageTargetGoalOccurrencesMaterializedFromFullExposure": 125,
+    "nationalProjectionScopesWithInvalidExposureFamily": 0,
+    "projectionScopesWithInvalidSourceStageAuthority": 0,
+    "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+    "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+    "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+    "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+    "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+    "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+    "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+    "projectionLocalRouteChecksEnabled": 1,
+    "visibleSelectedAtomicGoalOccurrences": 9248,
+    "visibleProfileSelectedAtomicGoalOccurrences": 8739,
+    "visibleProjectedRouteTargetGoalOccurrences": 9248,
+    "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 509,
+    "uniqueProjectedRouteTargetsExcludedByProfileSelector": 61,
+    "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+    "projectionScopesMissingEffectiveMotivationRoutes": 0,
+    "projectionScopesMissingDirectMotivationRoutes": 0,
+    "projectionScopesMissingEffectiveTerminalRoutes": 12,
+    "projectionScopesMissingDirectTerminalRoutes": 12,
+    "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+    "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+    "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 15,
+    "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 15,
+    "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+    "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+    "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 15,
+    "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 15,
+    "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+    "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+    "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 3,
+    "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 3
+  },
+  "diagnostics": "Native evaluator; details captured before the display limit. All status metrics must equal the materialized curriculum report. Context IDs distinguish Land and jurisdiction-bound national views.",
+  "summary": {
+    "nativeEvaluatedProjectionScopes": 106,
+    "fullDiagnosticDetails": 25,
+    "failingContextCount": 12,
+    "uniqueFailingGoalIds": [
+      "262f807a-30d0-503e-986f-856cbd048e8e",
+      "91c49019-ea51-4ce5-a919-c91c45b25e83",
+      "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+      "b1808b4c-5e02-5e1f-831f-47ee126e00ee"
+    ],
+    "classificationCounts": {
+      "Missing terminal autonomy goal(s)": {
+        "detailCount": 1,
+        "contextCount": 1,
+        "goalIds": [
+          "b1808b4c-5e02-5e1f-831f-47ee126e00ee"
+        ]
+      },
+      "No projection-local effective terminal route": {
+        "detailCount": 12,
+        "contextCount": 12,
+        "goalIds": [
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+        ]
+      },
+      "No projection-local direct terminal route": {
+        "detailCount": 12,
+        "contextCount": 12,
+        "goalIds": [
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+        ]
+      }
+    }
+  },
+  "scopeFindings": [
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "jurisdiction": "DE-HH"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "jurisdiction": "DE-SN"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "91c49019-ea51-4ce5-a919-c91c45b25e83"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "91c49019-ea51-4ce5-a919-c91c45b25e83"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "jurisdiction": "DE-HH"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "jurisdiction": "DE-SN"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "91c49019-ea51-4ce5-a919-c91c45b25e83"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "91c49019-ea51-4ce5-a919-c91c45b25e83"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "jurisdiction": "DE-HH"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "jurisdiction": "DE-SN"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "91c49019-ea51-4ce5-a919-c91c45b25e83"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "91c49019-ea51-4ce5-a919-c91c45b25e83"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-hh-seki.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "262f807a-30d0-503e-986f-856cbd048e8e"
+          ],
+          "goals": [
+            {
+              "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+              "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+            }
+          ],
+          "body": "262f807a-30d0-503e-986f-856cbd048e8e"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+              "title": "Kreisbewegung mit Zentripetalkraft anwenden"
+            },
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "accb1d9e-cd48-5983-bcef-9b9bca4a9114, 91c49019-ea51-4ce5-a919-c91c45b25e83"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+              "title": "Kreisbewegung mit Zentripetalkraft anwenden"
+            },
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "accb1d9e-cd48-5983-bcef-9b9bca4a9114, 91c49019-ea51-4ce5-a919-c91c45b25e83"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "missing": [
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+              "title": "Kreisbewegung mit Zentripetalkraft anwenden"
+            },
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "accb1d9e-cd48-5983-bcef-9b9bca4a9114, 91c49019-ea51-4ce5-a919-c91c45b25e83"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+              "title": "Kreisbewegung mit Zentripetalkraft anwenden"
+            },
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "accb1d9e-cd48-5983-bcef-9b9bca4a9114, 91c49019-ea51-4ce5-a919-c91c45b25e83"
+        }
+      ]
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-sn-seki.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI"
+      },
+      "missing": [
+        {
+          "classification": "Missing terminal autonomy goal(s)",
+          "goalIds": [
+            "b1808b4c-5e02-5e1f-831f-47ee126e00ee"
+          ],
+          "goals": [
+            {
+              "goalId": "b1808b4c-5e02-5e1f-831f-47ee126e00ee",
+              "title": "Prüfungsaufgabe: Eine Kurvenfahrt mit Zentripetalkraft analysieren"
+            }
+          ],
+          "body": "b1808b4c-5e02-5e1f-831f-47ee126e00ee"
+        },
+        {
+          "classification": "No projection-local effective terminal route",
+          "goalIds": [
+            "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+              "title": "Kreisbewegung mit Zentripetalkraft anwenden"
+            },
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "accb1d9e-cd48-5983-bcef-9b9bca4a9114, 91c49019-ea51-4ce5-a919-c91c45b25e83"
+        },
+        {
+          "classification": "No projection-local direct terminal route",
+          "goalIds": [
+            "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "goals": [
+            {
+              "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+              "title": "Kreisbewegung mit Zentripetalkraft anwenden"
+            },
+            {
+              "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "title": "Energieerhaltung"
+            }
+          ],
+          "body": "accb1d9e-cd48-5983-bcef-9b9bca4a9114, 91c49019-ea51-4ce5-a919-c91c45b25e83"
+        }
+      ]
+    }
+  ],
+  "bavariaAddendum": {
+    "beforeFailingContexts": [],
+    "afterFailingContexts": [],
+    "all106MetricsIdentical": true,
+    "bavarianViews": "bavaria-saxony-route-addendum.actual.json",
+    "evaluatedBavarianContexts": [
+      {
+        "scopeLabel": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json [DE-BY]",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BY",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        },
+        "viewId": "de-by-gym-physics-gk",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+        "profileId": "canonical-physics-sek1",
+        "status": "pass"
+      },
+      {
+        "scopeLabel": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json [DE-BY]",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BY",
+          "stage": "CrossStage",
+          "courseProfile": "LK"
+        },
+        "viewId": "de-by-gym-physics-lk",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+        "profileId": "canonical-physics-sek1",
+        "status": "pass"
+      },
+      {
+        "scopeLabel": "curricula/DE/Gymnasium/composition-views/physik/de-by-seki.view.json [DE-BY]",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BY",
+          "stage": "SekI"
+        },
+        "viewId": "de-by-gym-seki-physics",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-by-seki.view.json",
+        "profileId": "canonical-physics-sek1",
+        "status": "pass"
+      },
+      {
+        "scopeLabel": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json [DE-BY]",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "jurisdiction": "DE-BY"
+        },
+        "viewId": "de-de-gym-physics-gk",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json",
+        "profileId": "canonical-physics-sek1",
+        "status": "pass"
+      },
+      {
+        "scopeLabel": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json [DE-BY]",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "LK",
+          "jurisdiction": "DE-BY"
+        },
+        "viewId": "de-de-gym-physics-lk",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json",
+        "profileId": "canonical-physics-sek1",
+        "status": "pass"
+      },
+      {
+        "scopeLabel": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json [DE-BY]",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekI",
+          "jurisdiction": "DE-BY"
+        },
+        "viewId": "de-de-gym-seki-physics",
+        "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json",
+        "profileId": "canonical-physics-sek1",
+        "status": "pass"
+      }
+    ]
+  },
+  "checks": {
+    "testPhysicsGoalBookInputs": {
+      "result": "FAIL",
+      "finding": "dfd2628f-b44e-51b3-86e8-99158861be8c: full atomic preparation must match its reviewed requirement seeds. The Saxon successor payload checks execute before this failure. DFD exam preparation is reviewed separately in lane 9."
+    },
+    "testPhysicsAssessmentProjection": {
+      "result": "FAIL",
+      "finding": "Exact visibility/payload counts pass; native CQR-104 fails with the contexts listed above."
+    },
+    "testPhysicsStageViewProjection": {
+      "result": "PASS",
+      "authoredViews": 90
+    },
+    "lowerStagePythonTests": {
+      "result": "PASS",
+      "tests": 25
+    },
+    "HesseStagePythonTests": {
+      "result": "PASS",
+      "tests": 18
+    },
+    "verifyCurrentSaxonBindings": {
+      "result": "PASS",
+      "historicalRecords": 4,
+      "preparationPayloads": 71,
+      "a8dcRealPrerequisites": 66,
+      "f41RealPrerequisites": 69
+    },
+    "generatorFreshness": {
+      "hessen": 4,
+      "hessenDurationViews": 6,
+      "laenderAndNational": 80,
+      "result": "PASS"
+    },
+    "saxonAdditionalEndpointReview": {
+      "result": "NOT_APPROVED_SOURCE_STAGE",
+      "verifiedCurrentInputs": true,
+      "candidates": 9,
+      "preparationPayloads": 216
+    }
+  }
+}

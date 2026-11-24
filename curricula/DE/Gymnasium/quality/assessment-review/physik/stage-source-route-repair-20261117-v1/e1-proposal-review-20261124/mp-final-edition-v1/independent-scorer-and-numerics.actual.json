@@ -1,0 +1,107 @@
+{
+  "proposalRawSha256": "2f8fb6bacb78981267337e03a9d947cdc8144f51633c7f90f9eab2a419ea423d",
+  "calculationAuthorship": "Independent local calculation by reviewer; no task changes.",
+  "newEdition": {
+    "maximum": 36,
+    "pass": 28,
+    "s5AllowedLevels": [
+      0,
+      1,
+      7,
+      8,
+      9,
+      10
+    ],
+    "enumeratedIntegerVectors": 18816,
+    "passingVectorCount": 1147,
+    "passingVectorsBelowCore7": 0,
+    "byS5Level": {
+      "0": 0,
+      "1": 0,
+      "7": 126,
+      "8": 210,
+      "9": 328,
+      "10": 483
+    },
+    "minimumOtherPointsByS5Level": {
+      "7": 21,
+      "8": 20,
+      "9": 19,
+      "10": 18
+    },
+    "highestTotalMissingAnyK": 27,
+    "highestTotalOmittingPart1to4": [
+      29,
+      30,
+      29,
+      30
+    ],
+    "fractionalScoresReason": "For any real-valued first4 scores within maxima, missing a K caps s5<=1, hence total<=27. Exact integer enumeration is an illustrative finite subset; bound is general."
+  },
+  "oldEdition": {
+    "maximum": 30,
+    "pass": 18,
+    "enumeratedIntegerVectors": 15680,
+    "passingVectorCount": 4642,
+    "canPassOmittingS5": 483,
+    "canPassOmittingS4andS5": 10
+  },
+  "physicsNumerics": {
+    "intervalAccelerations": [
+      1.6,
+      1.6,
+      0.8
+    ],
+    "phaseMeanAccelerations": [
+      1.3333333333333333,
+      0,
+      -2
+    ],
+    "distanceTerms": [
+      3.2,
+      9.6,
+      14.4,
+      16,
+      12
+    ],
+    "distanceSum": 55.2,
+    "flightTime": 0.5048187773461522,
+    "nominalRange": 4.038550218769218,
+    "unroundedInterval": [
+      3.703586463299987,
+      4.385513974238448
+    ],
+    "outwardRoundedInterval": [
+      3.7,
+      4.39
+    ],
+    "measuredMean": 2.99,
+    "measuredPeakToPeakSpread": 0.1299999999999999,
+    "largestMeasurementIncludingUncertainty": 3.11,
+    "gapBelowRoundedPredictionLowerBound": 0.5900000000000003,
+    "nominalMinusMeasuredMean": 1.0485502187692175,
+    "axlePassageScale": 0.325,
+    "scaleToModelFlightTime": 0.643795386749548,
+    "horizontalDragAtNominalTime": 0.025484199796126403,
+    "lowerGFlightTime": 0.5100447838981257,
+    "rangeIncrementAtLowerGOnly": 0.04180805241578778,
+    "conservativeHorizontalLowerBoundUsingGPlus": 3.9730264737760677,
+    "conservativeHorizontalUpperBoundUsingGMinus": 4.106372839343174,
+    "carryForwardExample": {
+      "incorrectFlightTime": 0.375,
+      "ownNominalRange": 3.0,
+      "ownInterval": [
+        2.691,
+        3.3209999999999997
+      ],
+      "allMeasuredIntervalsFit": true,
+      "concern": "Illustrates conflict: generic consistent-comparison carry-forward permits compatibility, but K4 explicitly demands actual incompatibility; not a claim of one uniquely specified native rubric score."
+    }
+  },
+  "interpretationLimits": [
+    "Numeric pass protection does not establish scientific validity of K1–K5.",
+    "No whole WW, VEC, BZ or MU claim is supported or restored by this calculation.",
+    "Axle-passage time is only a characteristic estimate; no supplied angular inertia, body/contact geometry or release state determines the exact COM first-contact coordinate.",
+    "Given drag acceleration bound controls translational acceleration, not unspecified aerodynamic torque or the geometry-dependent first-contact time."
+  ]
+}

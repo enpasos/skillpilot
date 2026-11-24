@@ -1,0 +1,57 @@
+{
+  "reviewContract": "independent-current-assessment-review-v1",
+  "round": "b",
+  "provider": "OpenAI",
+  "model": "gpt-6.2-astra",
+  "reasoningEffort": "ultra",
+  "threadId": "01a20cf5-4278-7fd1-8ab0-7a2c9f556a1f",
+  "cliVersion": "0.171.0-alpha.13.2",
+  "cwd": "/tmp/e1-pr186-ci-20261124/passmark-reviews/v3/a8dc0290-9f80-5763-8943-e16b8d2aa860/round-b",
+  "startedAt": "2026-11-24T09:48:49.508803+00:00",
+  "completedAt": "2026-11-24T09:54:03.530306+00:00",
+  "exitCode": 0,
+  "approvalPolicy": "never",
+  "sourceSessionRawSha256": "93c4c4f5be9b83d9c2dd55611e975e6cb54f262480c97580650cc0561050e263",
+  "sandbox": {
+    "type": "read-only"
+  },
+  "blindToOtherRun": true,
+  "inputArtifacts": [
+    {
+      "path": "canonical-input.json",
+      "sha256": "0a45ac01c54b1a66f9590dc9bc12b876be8baed368c1cb9ab91d14b644cad113"
+    },
+    {
+      "path": "output.schema.json",
+      "sha256": "3e6d4d3a28234aade05e47d8c0d797742a1683e65027326167d8677ce19744c0"
+    },
+    {
+      "path": "prompt.txt",
+      "sha256": "708a3bea4688ddaae02b7939dfac0ca945e7b6e8e768f770aec17609d6004a69"
+    },
+    {
+      "capsulePath": "SN-retained-source.pdf",
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+      "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+    },
+    {
+      "capsulePath": "ST-retained-source.pdf",
+      "path": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+      "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed"
+    }
+  ],
+  "outputArtifacts": [
+    {
+      "path": "events.jsonl",
+      "sha256": "c7a38bc430302d06c98773ee961118ec5e546a02fca2c40fd53912ea9c4a5847"
+    },
+    {
+      "path": "response.json",
+      "sha256": "36ccd865b7b2e77a503ce00e39f3acf8cb792b4f0aba29725c0385530e96cd4f"
+    },
+    {
+      "path": "stderr.log",
+      "sha256": "bd9afaa4e69c2443273c00b90616a1f4137d9563236b8c3caf48731773c52908"
+    }
+  ]
+}

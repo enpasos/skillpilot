@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "inputCommit": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+  "status": "PASS",
+  "previousInvocationCorrection": "The initial python -m unittest invocation omitted PYTHONPATH=scripts and failed at import before any test executed. This successor uses the repository module path; no product code or test was changed.",
+  "nativeReadableTranscriptionOutputByteIdentical": true,
+  "nativeRuntimeInputs": [
+    {
+      "path": "app/src/utils/authoring/canonicalAuthoring.ts",
+      "sha256": "3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43",
+      "unchangedSinceBaseline": true
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "e4d9546dfc613c6c40afa1bc1e410137f51cd3b93c622d77dc38c08d1b9cd22b",
+      "unchangedSinceBaseline": true
+    }
+  ],
+  "proofFiles": [
+    {
+      "path": "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-current-v2/native-rp-closure.mts",
+      "sha256": "fdb10ed193670f148ee26732325be8763f2730c897b7900a88fe1114d9eb5789"
+    },
+    {
+      "path": "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-current-v2/verify-current-policy.py",
+      "sha256": "de33d9065726d0ab223ea844aa8241e90caeff34eb02f70947bf796e840821a9"
+    },
+    {
+      "path": "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-current-v2/native-rp-closure.actual.json",
+      "sha256": "181bdc3539cf4c59e05f643dbba7ed6dcb8014e4f263b83f7535d9fd87909fb7"
+    },
+    {
+      "path": "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-current-v2/recheck.actual.json",
+      "sha256": "6b78ca386fe5817746f82eba9cb955a2ff452638e3a3234036552766da13f74a"
+    }
+  ],
+  "runs": [
+    {
+      "name": "native-rp-closure",
+      "argv": [
+        "node",
+        "--import",
+        "./app/node_modules/tsx/dist/loader.mjs",
+        "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-current-v2/native-rp-closure.mts"
+      ],
+      "cwd": "repository root",
+      "environment": {
+        "PYTHONPATH": "scripts",
+        "nodeVersion": "v20.20.2"
+      },
+      "startedAt": "2026-11-24T08:46:24.044275+00:00",
+      "finishedAt": "2026-11-24T08:46:25.208019+00:00",
+      "exitCode": 0,
+      "outputPath": "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-current-v2/native-rp-closure.actual.txt",
+      "outputSha256": "c59028b3cbdd2a0f1518628bf1dc5c74dc10c68e8f22a2ae88451da22e1d91db"
+    },
+    {
+      "name": "recheck",
+      "argv": [
+        "python3",
+        "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-current-v2/verify-current-policy.py"
+      ],
+      "cwd": "repository root",
+      "environment": {
+        "PYTHONPATH": "scripts"
+      },
+      "startedAt": "2026-11-24T08:46:25.208152+00:00",
+      "finishedAt": "2026-11-24T08:46:34.885041+00:00",
+      "exitCode": 0,
+      "outputPath": "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-current-v2/recheck.actual.txt",
+      "outputSha256": "8c74a2ffedd64ff29881ea931b116645988ccf59b741ab4990f032c7ce72ccbe"
+    },
+    {
+      "name": "focused-policy-tests",
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "scripts.test_mathematics_foreign_acquisition_policy",
+        "scripts.test_mathematics_stage_views.MathematicsStageViewsTest.test_foreign_acquisition_policy_has_current_atomic_witnesses"
+      ],
+      "cwd": "repository root",
+      "environment": {
+        "PYTHONPATH": "scripts"
+      },
+      "startedAt": "2026-11-24T08:46:34.885206+00:00",
+      "finishedAt": "2026-11-24T08:46:37.821747+00:00",
+      "exitCode": 0,
+      "outputPath": "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-current-v2/focused-policy-tests.actual.txt",
+      "outputSha256": "ff56b9c3b1ab696733d25a42c4daa65b94f03dc160b72aa873c11267e0842929"
+    }
+  ]
+}

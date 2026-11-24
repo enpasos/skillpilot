@@ -241,6 +241,7 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_PHYSICS_MOTION_MODELING_ID = "d6dc0e02-831d-4894-a61a-852bcc74f147";
     private static final String CANONICAL_PHYSICS_SUPERPOSITION_ID = "68c90ba6-c438-463c-9a53-cf61062d416a";
     private static final String CANONICAL_PHYSICS_HORIZONTAL_THROW_ID = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
+    private static final String CANONICAL_PHYSICS_THROW_VELOCITY_VECTOR_ID = "0fee53f2-1c02-5b12-9b6c-aa9fa462d921";
     private static final String CANONICAL_PHYSICS_FIRST_LAW_ID = "31a2ef52-114b-4d2c-a720-6ef5a390b6dc";
     private static final String CANONICAL_PHYSICS_F_EQUALS_M_A_ID = "5f289cdc-fda1-4058-b44f-041ba1398e79";
     private static final String CANONICAL_PHYSICS_WORK_AS_ENERGY_CHANGE_ID = "c1c71daa-042b-4f4c-8c31-0ac366f5149e";
@@ -1529,7 +1530,9 @@ class LearnerServiceCrossSubjectPilotTest {
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_PHYSICS_SUPERPOSITION_ID)
-                .doesNotContain(CANONICAL_PHYSICS_HORIZONTAL_THROW_ID);
+                // Since the E.1 cut (23 Nov 2026) the throw no longer requires superposition; the
+                // velocity vector of the throw requires both and stays locked.
+                .doesNotContain(CANONICAL_PHYSICS_THROW_VELOCITY_VECTOR_ID);
     }
 
     @Test

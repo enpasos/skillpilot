@@ -1,0 +1,9 @@
+# Additive Rohbindung des historischen MP-Geltungsfelds
+
+Nach der v5-Messung wurde ausschließlich der explizite, gecachte `applicability`-Wert der bereits archivierten MP-Identität `2b9e565f` berichtigt. Anstelle der alten 15-Länder-Liste steht nun `{}`, wie es der native Compiler für dieses ausgeschlossene Ziel bereits berechnet. Der native APV-203-Befund zu diesem Ziel entfällt.
+
+Der [Rohbindungsnachfolger](v5-archive-applicability-successor.actual.json) beweist die genaue Differenz: Wird ausschließlich der vorherige Länderwert wieder eingesetzt, entsteht bytegenau der gesamte Katalog des [früheren v5-Belegs](v5-mp-retired-no-successor.scope.actual.json), SHA-256 `0ef90731…`. Der neue Katalog hat SHA-256 `c5e2d70a…`. Keine andere Katalogeigenschaft änderte sich in diesem Schritt. Aufgaben, Lösungen, Rubrik, 30/18-Bestehensvertrag, leere Vollzielabdeckung und semantische Art der historischen Aufgabe bleiben unverändert.
+
+Alle 90 Ansichtsdateien wurden bytegenau mit dem unmittelbar vorherigen Retirement-Commit `d7d1759bd0c29e102360d0add0faf712b4352dd9` verglichen; der [vollständige Hashsatz](v5-archive-applicability-prior-views.actual.json) ist mitgeliefert. Auch alle zuvor einzeln gebundenen v5-Ansichts-Hashes stimmen weiterhin. Eltern-/Kindmaterial, vier Pflichtteile, sämtliche 18 R2-Zielpayloads und die vollständige einzige BES-Anrechnung bleiben gleich. Die native Freigabeprüfung bestätigt weiterhin `sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d`.
+
+Die bisherigen Inhalts-, Material- und Policyreviews werden unverändert erhalten. Dieser Nachfolger aktualisiert ausschließlich die rohe Katalog-/Archivzielbindung; er beansprucht weder eine neue Autoren- oder Materialabnahme noch einen neuen breiten Testlauf oder eine Änderung an Lernendenergebnissen. `verify-v5-archive-applicability-successor.mts` reproduziert die Prüfung mit den mitgelieferten Daten ohne Git-Historienzugriff oder Schreibzugriff auf Produktdaten.

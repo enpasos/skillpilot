@@ -30,6 +30,12 @@ practised and checked through the learning unit. The *box* is the set of a
 learner's released and not yet removed cards; the *deck goal* is the memory
 goal that references a whole deck.
 
+The principle, as the Product Owner restated it on 24 November 2026: learning
+follows the flashcard principle; the check is independent of it; a card is
+ticked off for good when its check is passed. Practice therefore only decides
+when a card is due again and never ticks a card off, and the learner can ask
+for the check without prior practice.
+
 - **Release.** A card enters the box only when its understanding goal is
   passed. With several understanding goals, all that lie in the learner's
   Personal Curriculum must be passed. A credited goal (gray check) counts like
@@ -642,8 +648,8 @@ unit-qualification assignment, passing the four designated versions A–D ends
 the required work for that assignment. An individually open goal remains
 available voluntarily or due under a separate explicit assignment. A valid historical part receipt
 counts towards its part after a scope change. If it lacks the planning-release
-binding at grading, the cockpit and coach explain why the two individual
-goals remain open. A separate due assignment takes priority on a request to
+binding at grading, the cockpit and coach explain its missing planning
+credit. A separate due assignment takes priority on a request to
 continue. Once the unit assignment is complete and no such work is due, offer
 a choice of individually open targets of the same unit for voluntary study.
 The additional horizontal-throw examination remains available voluntarily and
@@ -655,11 +661,54 @@ pedagogical acceptance of E.1 and subsequent acceptance of the Hessian template.
 assessment pilot enabled, a section selection contributes the goals required
 by its applicable assessment policy. This applies when reading an existing
 plan as well as creating a new one. An old E.1 section selection that captured
-the voluntary horizontal-throw exam contributes 16 positions instead of 17
-in the GK example. An explicit selection of that exam still counts, including
+the voluntary horizontal-throw exam contributes 20 positions instead of 21
+in the Sek II GK example since the E.1 cut described below (19 instead of 20
+in the cross-stage view). An explicit selection of that exam still counts, including
 in older plans that stored it only once across overlapping blocks. Stored
 selections, assessment receipts and individual mastery are preserved. With
-the pilot disabled, plans use their stored goal lists.
+the pilot disabled, plans use their stored goal lists. A plan that still
+names an exam edition retired since then is outdated; see the E.1 cut below.
+
+**E.1 cut, 23 and 24 November 2026.** The Product Owner accepted a cut of the
+Hessian section E.1 into four child structures in learning order:
+"Gleichförmige Bewegung", "Freier Fall schwerer Kugeln", "Kugel und Feder,
+Luft und Vakuum" and "Zwei Bewegungen zugleich". Only "Freier Fall schwerer
+Kugeln" is a declared unit with its own opening. The other three are view
+structures until they have opening goals and coverage reviews. Reference
+frames and the velocity vector of the horizontal throw belong to E.3. Road
+traffic follows friction in E.2 and has no canonical friction prerequisite,
+because Bavaria assesses it kinematically in Jahrgangsstufe 10. The cut split
+four atomic goals out of existing ones: the t-v diagram with displacement as
+area, the time-position and time-velocity laws, the fall of light and heavy
+bodies, and the velocity vector of the throw.
+
+Parts A–D remain the four required parts of the E.1 assignment. The voluntary
+additions are the horizontal-throw exam and the own task with two free-fall
+series. The horizontal-throw exam is offered in a revised edition since
+24 November 2026: its task 6 and grading now evidence the model-limits goal,
+with a pass mark of 35.5 of 36 points. The earlier edition could be passed
+with task 6 left empty, so the revised edition has its own assessment id
+(`bcc56921-7107-5f5f-b721-3d5e0d7e1cd9`). Passes of the earlier edition stay
+with the earlier id (`6ea3fb3c-abdc-568f-ab13-97c36dc274e4`) in the historical
+container and never count for the revised edition, as the Graph Definition
+requires for a new recognition claim. A stored plan that still names a retired
+edition, this one or the multiphase exam, is outdated and the learner renews
+it. Its stored blocks, the receipts and the mastery are kept unchanged.
+
+On 24 November the Product Owner approved the return of the
+multiphase exam to E.1. Two independent review rounds then found that its
+edition evidences no whole goal, so it is retired in the historical container
+without a successor and without any transfer of results. Its voluntary
+Leistungskurs place after the fourth child is reserved for an edition that
+independent review accepts, under a new assessment id. The planning release
+reviewed on 24 November credits only the accelerated-motion goal from part D.
+
+Three findings of that review are deferred to a follow-up package on
+preparation chains: the Hamburg routes to the motion-law goal and the Saxon
+rows on energy conservation and radial force are supported by the official
+text, but the canonical preparation of these goals is stronger than what the
+lower stage of the Land supplies. Until that package right-sizes the chains,
+these goals are not activated as lower-stage targets there.
 
 The Product Owner confirmed **Lerneinheit** (English **learning unit**,
 conceptual name `LearningUnit`) on **4 November 2026**. This replaces the former
@@ -871,6 +920,10 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   assessment written for it, `c5807a37-129e-5df6-8989-482bc7f5683e`) with
   reviewed coverage for both goals
   (`curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-13.md`).
+  Since the E.1 cut of 23 November 2026 (§2.4) the unit is revision
+  `2026-11-23-v4`, "Freier Fall schwerer Kugeln": it owns its opening goal,
+  the accelerated-motion goal and the acceleration-log exam with its variant,
+  and the planning release of 24 November credits that one goal.
   The goal "Freier Fall experimentell untersuchen" is outside the unit: two
   independent reviewers found R2 not satisfied for an assessment that
   evaluates given measurement data, and disagreed on whether own measurement

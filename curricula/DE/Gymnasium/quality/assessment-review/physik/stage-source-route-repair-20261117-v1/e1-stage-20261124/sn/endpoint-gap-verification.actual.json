@@ -1,0 +1,24 @@
+{
+  "schema": "native-saxon-endpoint-gap-binding-verification-v1",
+  "status": "PASS",
+  "decision": "NOT_APPROVED_SOURCE_STAGE",
+  "at": "2026-11-24T03:58:54.517044+00:00",
+  "review": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/endpoint-gap-review.actual.json",
+    "sha256": "b9d983deb267ce11d38febd1be2ad9e7e05d06808b7c694085195e9663a4dc93"
+  },
+  "verifier": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/verify-endpoint-gap.mts",
+    "sha256": "28c8b9724caa7bc194facfdca392b081aeb7ecba35b48ca413196ca2ba7244aa"
+  },
+  "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/verify-endpoint-gap.mts",
+  "result": {
+    "existingCandidates": 9,
+    "boundPreparationPayloads": 216,
+    "circleClosure": 74,
+    "energyAlternativesRejected": 8,
+    "unresolvedReferences": 0,
+    "unsupportedCircleLowerBindingAbsent": true
+  },
+  "meaning": "PASS verifies the exact inputs and the fail-closed rejection. It is not approval of a lower offer or evidence of learner mastery."
+}

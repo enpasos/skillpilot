@@ -12,9 +12,10 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = ROOT / "contracts/unit-learning-material/v1/material.schema.json"
 HESSE_E1_MATERIAL = ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json"
 FREE_FALL_MATERIAL = ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json"
+PHYSICS_LANDSCAPE = ROOT / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
 HORIZONTAL_THROW = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
 PART_B = "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"
-VOLUNTARY_PART_B = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
+VOLUNTARY_PART_B = "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
 
 
 class UnitLearningMaterialSchemaTests(unittest.TestCase):
@@ -36,6 +37,14 @@ class UnitLearningMaterialSchemaTests(unittest.TestCase):
     def validate_second(self, document):
         (self.root / "two.json").write_text(json.dumps(document))
         return validate_unit_learning_materials(self.root, SCHEMA)
+
+    def recommendation_fixture(self):
+        document = json.loads(HESSE_E1_MATERIAL.read_text())
+        document["studyRecommendations"] = [
+            {"beforeGoalId": HORIZONTAL_THROW, "afterGoalId": PART_B},
+            {"beforeGoalId": HORIZONTAL_THROW, "afterGoalId": VOLUNTARY_PART_B},
+        ]
+        return document
 
     def test_intro_only_and_bilingual_practice(self):
         text = {"title": "Study", "prompt": "Compare two cases.", "hint": "Draw them.", "solution": "They differ."}
@@ -110,17 +119,19 @@ class UnitLearningMaterialSchemaTests(unittest.TestCase):
                 with self.subTest(version=version, order=order):
                     self.assertTrue(self.validate_second({**document, "guidedStudyOrder": order}))
 
-    def test_hesse_e1_v4_recommends_horizontal_throw_before_b_and_voluntary_b(self):
+    def test_hesse_e1_v4_orders_throw_by_prerequisites_without_parent_recommendations(self):
         document = json.loads(HESSE_E1_MATERIAL.read_text())
         self.assertEqual(4, document["schemaVersion"])
-        self.assertEqual([
-            {"beforeGoalId": HORIZONTAL_THROW, "afterGoalId": PART_B},
-            {"beforeGoalId": HORIZONTAL_THROW, "afterGoalId": VOLUNTARY_PART_B},
-        ], document["studyRecommendations"])
+        self.assertNotIn("studyRecommendations", document)
+        # The E.1 cut makes the order a real prerequisite. The four native Hessen
+        # projections and child-unit-4 order are covered by testHessePhysicsFlashcardActions.ts.
+        goals = {goal["id"]: goal for goal in json.loads(PHYSICS_LANDSCAPE.read_text())["goals"]}
+        for assessment_id in (PART_B, VOLUNTARY_PART_B):
+            self.assertIn(HORIZONTAL_THROW, goals[assessment_id]["requires"])
         self.assertEqual([], self.validate_second(document))
 
     def test_study_recommendations_are_optional_v4_pairs_of_goal_uuids(self):
-        document = json.loads(HESSE_E1_MATERIAL.read_text())
+        document = self.recommendation_fixture()
         first, _ = document.pop("studyRecommendations")
         self.assertEqual([], self.validate_second(document))
         self.assertEqual([], self.validate_second({**document, "studyRecommendations": []}))
@@ -135,7 +146,7 @@ class UnitLearningMaterialSchemaTests(unittest.TestCase):
                 self.assertTrue(any("$.studyRecommendations" in error for error in errors))
 
     def test_study_recommendations_reject_self_links_and_indirect_cycles(self):
-        document = json.loads(HESSE_E1_MATERIAL.read_text())
+        document = self.recommendation_fixture()
         first, second = document["studyRecommendations"]
         for recommendations, expected in (
             ([{**first, "afterGoalId": HORIZONTAL_THROW.upper()}], "before itself"),

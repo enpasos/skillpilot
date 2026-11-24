@@ -3358,7 +3358,7 @@ public class LearnerServiceTest {
 
     @Test
     @Transactional
-    void unitPracticeUsesOnlyTheNineMotionCardsAndKeepsTheActiveGoalAndMastery() {
+    void unitPracticeUsesOnlyTheSevenMotionCardsAndKeepsTheActiveGoalAndMastery() {
         String unit = "physics-e1-motion";
         String opening = "a4d4efe1-7d30-526b-ac9c-806113da4363";
         String deck = "9f2f5ab8-0ae4-5792-b831-82a05af5895c";
@@ -3396,7 +3396,9 @@ public class LearnerServiceTest {
         assertThat(locked.cards()).isEmpty();
         assertThat(locked.progress().totalCards()).isZero();
         assertThat(locked.progress().dueCards()).isZero();
+        // Card 007 needs both diagram competencies; card 009 now belongs to the motion laws.
         for (String understanding : List.of("8aff7aac-321b-5172-ac55-877876bfd2cd", "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+                PHYSICS_TV_AREA_ID, PHYSICS_MOTION_LAWS_ID,
                 "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd", "09029573-864f-40ca-bf8a-cee7bf6dcb73",
                 "d6dc0e02-831d-4894-a61a-852bcc74f147", "4a2bf015-052b-4af0-aed7-324259fa1a8a",
                 "68c90ba6-c438-463c-9a53-cf61062d416a")) {
@@ -3404,21 +3406,23 @@ public class LearnerServiceTest {
         }
         var partial = learnerService.startMemoryPractice(learnerId, "de", start);
         // Card 036 belongs to the still open active goal "Waagerechter Wurf analysieren".
+        // Since the E.1 cut (23 Nov 2026) road traffic (card 012) and reference frames (card 035)
+        // are no longer E.1 goals: their released cards stay outside this unit's practice.
         assertThat(partial.cards()).extracting(card -> card.cardId()).containsExactly(
                 "physics_e_cov_001", "physics_e_cov_007", "physics_e_cov_008", "physics_e_cov_009",
-                "physics_e_cov_010", "physics_e_cov_011", "physics_e_cov_012", "physics_e_cov_035");
-        assertThat(partial.progress().totalCards()).isEqualTo(8);
+                "physics_e_cov_010", "physics_e_cov_011");
+        assertThat(partial.progress().totalCards()).isEqualTo(6);
         masteryRepository.saveAndFlush(new Mastery(learner, active, 1.0));
         var practice = learnerService.startMemoryPractice(learnerId, "de", start);
         assertThat(practice.cards()).extracting(card -> card.cardId()).containsExactly(
                 "physics_e_cov_001", "physics_e_cov_007", "physics_e_cov_008", "physics_e_cov_009",
-                "physics_e_cov_010", "physics_e_cov_011", "physics_e_cov_012", "physics_e_cov_035", "physics_e_cov_036");
-        assertThat(practice.progress().totalCards()).isEqualTo(9);
+                "physics_e_cov_010", "physics_e_cov_011", "physics_e_cov_036");
+        assertThat(practice.progress().totalCards()).isEqualTo(7);
         assertThat(practice.goalTitle()).contains("E.1");
         // Issue #85: following learning plans no longer blocks unit practice without an active goal.
         learner.setFollowLearningPlans(true);
         learnerRepository.saveAndFlush(learner);
-        assertThat(learnerService.startMemoryPractice(learnerId, "de", start).cards()).hasSize(9);
+        assertThat(learnerService.startMemoryPractice(learnerId, "de", start).cards()).hasSize(7);
         learner.setActiveGoalId(active);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
@@ -3442,7 +3446,7 @@ public class LearnerServiceTest {
         assertThat(practice.progress().dueCards()).isZero();
         assertThat(learner.getActiveGoalId()).isEqualTo(active);
         assertThat(learnerService.getMastery(learnerId)).isEqualTo(mastery);
-        assertThat(learnerService.getClientState(learnerId, deck).srsState()).hasSize(9);
+        assertThat(learnerService.getClientState(learnerId, deck).srsState()).hasSize(7);
         learner.setActiveGoalId("a9562b05-c54d-5635-9244-3f7dd24a8642");
         learnerRepository.saveAndFlush(learner);
         assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de", start))
@@ -3452,6 +3456,8 @@ public class LearnerServiceTest {
     private static final String PHYSICS_E_PHASE_DECK_ID = "9f2f5ab8-0ae4-5792-b831-82a05af5895c";
     private static final String PHYSICS_GK_VIEW_PREFIX = "composition:de-he-gym-sekii-physics-gk:structure:";
     private static final String PHYSICS_ACCELERATED_MOTION_ID = "e4b38061-1f28-43ad-8371-a3e7c0e81856";
+    private static final String PHYSICS_TV_AREA_ID = "1e459a1b-4159-5049-84eb-9928129c1610";
+    private static final String PHYSICS_MOTION_LAWS_ID = "262f807a-30d0-503e-986f-856cbd048e8e";
     private static final String PHYSICS_FREE_FALL_EXPERIMENT_ID = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
 
     private Learner selectHessenPhysicsGk() {
@@ -3477,7 +3483,8 @@ public class LearnerServiceTest {
         learnerService.setPlannedGoals(learnerId, Set.of(PHYSICS_GK_VIEW_PREFIX + unit));
         var start = new MemoryPracticeStartRequest(PHYSICS_E_PHASE_DECK_ID, unit);
         for (String goal : List.of("a4d4efe1-7d30-526b-ac9c-806113da4363", "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
-                PHYSICS_ACCELERATED_MOTION_ID, PHYSICS_FREE_FALL_EXPERIMENT_ID)) {
+                PHYSICS_ACCELERATED_MOTION_ID, PHYSICS_FREE_FALL_EXPERIMENT_ID,
+                PHYSICS_TV_AREA_ID, PHYSICS_MOTION_LAWS_ID)) {
             masteryRepository.saveAndFlush(new Mastery(learner, goal, 1.0));
         }
         // The active goal is already mastered: unit practice no longer needs an open ordinary goal.
@@ -3749,7 +3756,7 @@ public class LearnerServiceTest {
         // Two planned atomic goals: no single explicit unit focus.
         learnerService.setPlannedGoals(learnerId, Set.of(PHYSICS_ACCELERATED_MOTION_ID, PHYSICS_HORIZONTAL_THROW_ID));
         for (String goal : List.of(PHYSICS_E1_OPENING_ID, "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
-                PHYSICS_FREE_FALL_EXPERIMENT_ID)) {
+                PHYSICS_FREE_FALL_EXPERIMENT_ID, PHYSICS_TV_AREA_ID, PHYSICS_MOTION_LAWS_ID)) {
             masteryRepository.saveAndFlush(new Mastery(learner, goal, 1.0));
         }
         learner = learnerRepository.findById(learnerId).orElseThrow();
@@ -3757,6 +3764,8 @@ public class LearnerServiceTest {
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
         var before = learnerService.getCardStepFacts(learnerId, "de");
+        assertThat(before.boxCards()).as("LAWS and FALL are understood; joint BES/TV card 007 is still locked")
+                .isEqualTo(2);
 
         // Completing the goal releases its cards and clears the active goal (Autopilot off).
         learnerService.setMastery(learnerId, new MasteryUpdateRequest(
@@ -3801,7 +3810,16 @@ public class LearnerServiceTest {
 
     @Test
     void theCockpitReceivesLockedCardsAndItsSyncCannotCreateStateForThem() {
-        activeOrdinaryGoalInEOne();
+        Learner learner = activeOrdinaryGoalInEOne();
+        // BES and FALL alone release card 010. Joint card 007 also needs TV, and 009 needs LAWS.
+        assertThat(learnerService.getClientState(learnerId, PHYSICS_E_PHASE_DECK_ID).lockedCardIds())
+                .contains("physics_e_cov_007", "physics_e_cov_009", "physics_e_cov_036")
+                .doesNotContain("physics_e_cov_010");
+        masteryRepository.saveAndFlush(new Mastery(learner, PHYSICS_TV_AREA_ID, 1.0));
+        assertThat(learnerService.getClientState(learnerId, PHYSICS_E_PHASE_DECK_ID).lockedCardIds())
+                .contains("physics_e_cov_009", "physics_e_cov_036")
+                .doesNotContain("physics_e_cov_007", "physics_e_cov_010");
+        masteryRepository.saveAndFlush(new Mastery(learner, PHYSICS_MOTION_LAWS_ID, 1.0));
         var snapshot = learnerService.getClientState(learnerId, PHYSICS_E_PHASE_DECK_ID);
         // Card 036 belongs to the still open active goal; cards 007, 009 and 010 are released.
         assertThat(snapshot.lockedCardIds()).contains("physics_e_cov_036")

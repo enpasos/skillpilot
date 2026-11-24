@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "status": "READ_ONLY_INDEPENDENT_NUMERICAL_AND_BOUNDARY_OBSERVATION_NOT_A_RELEASE",
+  "checkedAt": "2026-11-24T05:15:25.341149+00:00",
+  "scoreReviews": [
+    {
+      "goalId": "161d60bb-b171-50fe-8222-ae7f71a2a5ad",
+      "rawSha256": "ee6fcaf12fdc8993ad18d3704cf407557491bb53b927cdb367195aeb768de415",
+      "authoredMaxPoints": 15,
+      "sumStepMaxima": 15,
+      "passingPoints": 13,
+      "authoredAllowedCoreScores": [
+        0,
+        2,
+        3
+      ],
+      "policy": "Missing central component or conceptual error=>0; complete core with exactlyoneisolatednonconceptualslip=>2; complete correct=>3. One-point core score is not authored. Error carry-forward is not a new missing conceptual core.",
+      "enumeratedAuthoredScoreStates": 243,
+      "authoredPassingStates": 16,
+      "passingSumDistribution": {
+        "13": 10,
+        "14": 5,
+        "15": 1
+      },
+      "passingPatterns": {
+        "2,2,3,3,3": 10,
+        "2,3,3,3,3": 5,
+        "3,3,3,3,3": 1
+      },
+      "eachWholeCoreOmittedMaximum": [
+        12,
+        12,
+        12,
+        12,
+        12
+      ],
+      "anyAuthoredPassWithZeroCore": false,
+      "maxCountOfTwoPointCoresOnPass": 2,
+      "nativeIntegerScoreBoundaryObservation": {
+        "countAllIntegerStates": 1024,
+        "countIntegerPasses": 21,
+        "maxIfOneCoreIsZero": 12,
+        "ifAnUnauthoredOnePointScoreWereAwardedCouldPass": true,
+        "limits": "The core policy must actually be honored by grading. This observation does not claim that a1point partiallymissingcore is permitted by the written rubric or that a native structured required-step extension exists."
+      }
+    },
+    {
+      "goalId": "8fcedb90-4bab-55dd-9a45-56b7090e7e17",
+      "rawSha256": "f631c9f12c3bc9f1aaccc35da01b3d330a232fb2b11ff54bb9be9f1fdb4c10a6",
+      "authoredMaxPoints": 18,
+      "sumStepMaxima": 18,
+      "passingPoints": 16,
+      "authoredAllowedCoreScores": [
+        0,
+        2,
+        3
+      ],
+      "policy": "Missing central component or conceptual error=>0; complete core with exactlyoneisolatednonconceptualslip=>2; complete correct=>3. One-point core score is not authored. Error carry-forward is not a new missing conceptual core.",
+      "enumeratedAuthoredScoreStates": 729,
+      "authoredPassingStates": 22,
+      "passingSumDistribution": {
+        "16": 15,
+        "17": 6,
+        "18": 1
+      },
+      "passingPatterns": {
+        "2,2,3,3,3,3": 15,
+        "2,3,3,3,3,3": 6,
+        "3,3,3,3,3,3": 1
+      },
+      "eachWholeCoreOmittedMaximum": [
+        15,
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "anyAuthoredPassWithZeroCore": false,
+      "maxCountOfTwoPointCoresOnPass": 2,
+      "nativeIntegerScoreBoundaryObservation": {
+        "countAllIntegerStates": 4096,
+        "countIntegerPasses": 28,
+        "maxIfOneCoreIsZero": 15,
+        "ifAnUnauthoredOnePointScoreWereAwardedCouldPass": true,
+        "limits": "The core policy must actually be honored by grading. This observation does not claim that a1point partiallymissingcore is permitted by the written rubric or that a native structured required-step extension exists."
+      }
+    }
+  ],
+  "independentCalculations": {
+    "HH": {
+      "series1": {
+        "speed": 0.5,
+        "sAt10": 5.0
+      },
+      "series2": {
+        "a": 0.4,
+        "sCoefficient": 0.2,
+        "points": [
+          {
+            "t": 0.0,
+            "s": 0.0,
+            "v": 0.0
+          },
+          {
+            "t": 0.5,
+            "s": 0.05,
+            "v": 0.2
+          },
+          {
+            "t": 1.0,
+            "s": 0.2,
+            "v": 0.4
+          },
+          {
+            "t": 1.5,
+            "s": 0.45,
+            "v": 0.6
+          },
+          {
+            "t": 2.0,
+            "s": 0.8,
+            "v": 0.8
+          },
+          {
+            "t": 2.5,
+            "s": 1.25,
+            "v": 1.0
+          }
+        ],
+        "averageVelocity0to2": 0.4,
+        "instantVelocityAt2": 0.8,
+        "sAt3": 1.8,
+        "vAt3": 1.2,
+        "within2mTrackAt3": true,
+        "idealTrackEndTime": 3.1622776601683795
+      },
+      "freeFallGivenG10": [
+        {
+          "t": 0.2,
+          "s": 0.2,
+          "v": 2.0
+        },
+        {
+          "t": 0.4,
+          "s": 0.8,
+          "v": 4.0
+        },
+        {
+          "t": 0.6,
+          "s": 1.8,
+          "v": 6.0
+        }
+      ],
+      "freeFallArrivalTime": 0.6
+    },
+    "SN": {
+      "pendulum": {
+        "total": 1.0,
+        "potentialAtD": 0.25,
+        "kineticAtD": 0.75,
+        "kineticAtB": 1,
+        "idealTurnHeight": 0.2,
+        "measuredTurnHeight": 0.198,
+        "heightDifference": 0.002,
+        "relativeDifference": 0.01,
+        "mechanicalEnergyAtMeasuredTurn": 0.99,
+        "mechanicalDifference": 0.01,
+        "measurementAgreementLimitation": "No reading-error bound or tolerance is supplied. The numerical1%difference alone establishes no statistical/measurement-uncertainty agreement; small real losses are a possible explanation, not a supplied quantified bound."
+      },
+      "nailPendulum": {
+        "newRadius": 0.5,
+        "requiredRise": 0.2,
+        "turningAngleDeg": 53.13010235415599,
+        "stringCanRemainTautToTurn": true,
+        "idealTurnHeight": 0.2
+      },
+      "trampoline": {
+        "H": {
+          "heightAboveT": 1.5,
+          "potential": 600,
+          "kinetic": 0,
+          "elastic": 0
+        },
+        "K": {
+          "heightAboveT": 0.5,
+          "potential": 200,
+          "kinetic": 400,
+          "elastic": 0
+        },
+        "T": {
+          "heightAboveT": 0,
+          "potential": 0,
+          "kinetic": 0,
+          "elastic": 600
+        },
+        "idealMaximumHeightAboveT": 1.5,
+        "extraMuscleEnergy": "Internal conversion from chemical energy when the child is included; no creation of total energy."
+      },
+      "boundaryLimitation": "A physically closed room is not automatically an energy-isolated system; energy transfer through walls must be neglected/excluded to assert invariant total energy of that larger system."
+    }
+  },
+  "sourceAndContentVerdict": "Separate actual blind review outputs are pending. No final author SHA release has been received at this check.",
+  "noProposalOrRepoMutation": true
+}

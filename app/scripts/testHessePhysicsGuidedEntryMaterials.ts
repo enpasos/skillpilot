@@ -12,8 +12,42 @@ const bytes = (path: string) => readFileSync(new URL(path, root))
 const hash = (value: unknown) => fingerprintCurrentCurriculumDocument(value).slice(7)
 const imageHash = (path: string) => createHash('sha256').update(bytes(path)).digest('hex')
 const landscape = read('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
-const review = read('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-guided-entry-2026-11-22/review.json')
-const regularStudyReview = read('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-free-fall-2026-11-23/review.json')
+const materialReviewDirectory = 'curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-materials-2026-11-24'
+function currentMaterialReview(file: string) {
+  const record = read(`${materialReviewDirectory}/${file}.actual.json`)
+  assert.equal(record.decision, 'accepted')
+  assert.deepEqual(record.requiredCorrections, [])
+  assert.equal(imageHash(record.supersedes.path), record.supersedes.sha256, 'The superseded review must retain its exact bytes')
+  assert.equal(imageHash(record.independentReview.path), record.independentReview.sha256, 'The independent review must match its receipt')
+  return record
+}
+const review = currentMaterialReview('mp-retirement-policy-20261124-v1/no_successor/guided-entry')
+const regularStudyReview = currentMaterialReview('mp-retirement-policy-20261124-v1/no_successor/regular-study')
+// The content reviews retain their exact former unit+intro input. The only
+// successor is the independently approved voluntary assessment identity in
+// sectionAssessmentPolicy; the introduction itself has no content successor.
+const voluntaryScopePath = 'curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/zb-successor-voluntary-scope-20261124/scope-successor.actual.json'
+assert.equal(imageHash(voluntaryScopePath), '48f67d6a51d9b7d561b63d0864adcc1f81dd1490475d866dd937fd0e02294008')
+const voluntaryScope = read(voluntaryScopePath)
+for (const binding of [voluntaryScope.identityActivation, voluntaryScope.materialBefore, voluntaryScope.materialAfter]) {
+  assert.equal(imageHash(binding.path), binding.sha256, 'The additive voluntary identity scope keeps exact before/after evidence')
+}
+const parentBefore = read(voluntaryScope.materialBefore.path)
+const parentAfter = read(voluntaryScope.materialAfter.path)
+assert.equal(voluntaryScope.allowedDelta.path, '/unit/sectionAssessmentPolicy/voluntaryAssessmentGoalIds/0')
+assert.equal(voluntaryScope.allowedDelta.before, '6ea3fb3c-abdc-568f-ab13-97c36dc274e4')
+assert.equal(voluntaryScope.allowedDelta.after, 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9')
+const expectedParentAfter = structuredClone(parentBefore)
+assert.equal(expectedParentAfter.unit.sectionAssessmentPolicy.voluntaryAssessmentGoalIds[0], voluntaryScope.allowedDelta.before)
+expectedParentAfter.unit.sectionAssessmentPolicy.voluntaryAssessmentGoalIds[0] = voluntaryScope.allowedDelta.after
+assert.deepEqual(parentAfter, expectedParentAfter, 'The whole material changes in exactly one reviewed voluntary identity field')
+assert.deepEqual(parentAfter.intro, parentBefore.intro, 'Both language introductions retain their exact reviewed content')
+assert.equal(imageHash(voluntaryScope.currentMaterialPath), voluntaryScope.materialAfter.sha256)
+assert.equal(hash({ unit: parentBefore.unit, intro: parentBefore.intro }), '975f8ca9da549e21c7ee19d1b6ceffd8a332de3356a5abcaf3101b4e82f5d22a')
+assert.equal(hash({ unit: parentAfter.unit, intro: parentAfter.intro }), '060c8ba5bae89686f2436e01e6b9b56dd06e37d894f35f17ca570ee48b182d99')
+const practicalReview = currentMaterialReview('individual-experiments')
+assert.deepEqual(practicalReview.scope.exercises, regularStudyReview.scope.exercises)
+assert.equal(practicalReview.scope.mode, 'requiredForRegularLearning')
 const expected = new Map([
   ['physics-e1-motion', 'a4d4efe1-7d30-526b-ac9c-806113da4363'],
   ['physics-e1-accelerated-and-free-fall', 'b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e'],
@@ -26,7 +60,7 @@ const fallId = '09029573-864f-40ca-bf8a-cee7bf6dcb73'
 const protocolId = 'e0004439-ed34-5caf-858a-6107918224eb'
 const protocolReview = read('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-measurement-entry-2026-11-23/review-v2.json')
 assert.deepEqual(protocolReview.requiredCorrections, [])
-const modelReview = read('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-free-fall-2026-11-23/modellbruecke.json')
+const modelReview = currentMaterialReview('modellbruecke')
 assert.equal(modelReview.decision, 'accepted')
 const modelExercise = read(modelReview.materialPath).exercises.find((exercise: Exercise) => exercise.goalId === modelReview.goalId)
 assert(modelExercise)
@@ -67,7 +101,13 @@ for (const opening of review.scope.openings) {
   assert.equal(expected.get(material.unit.compositionNodeId), opening.goalId)
   assert.equal(material.unit.orientationGoalId, opening.goalId)
   assert.equal(hash(goal), opening.goalSha256, 'Orientation changed since its independent content review')
-  assert.equal(hash({ unit: material.unit, intro: material.intro }),
+  const historicalMaterial = opening.materialPath === voluntaryScope.currentMaterialPath ? parentBefore : material
+  if (opening.materialPath === voluntaryScope.currentMaterialPath) {
+    assert.deepEqual(material, parentAfter, 'Current introduction is bound through the exact one-field voluntary scope successor')
+  }
+  assert.equal(hash({ unit: historicalMaterial.unit, intro: historicalMaterial.intro }), opening.materialSha256,
+    'The immutable introduction review remains bound to its actual input, including its former voluntary identity')
+  assert.equal(opening.materialSha256,
     openings.find(row => row.goalId === opening.goalId)?.materialSha256,
     'Unit introduction changed since its independent bilingual review')
   assert.equal(imageHash(opening.imagePath), opening.imageSha256, 'Image changed since its actual visual review')

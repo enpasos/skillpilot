@@ -152,7 +152,7 @@ Der Zieltyp bestimmt die geforderte Leistung. In beiden Lernwegen gilt für den 
 | --- | --- | --- |
 | Inhaltsziel | Die Person hat das geforderte Verstehen oder Können gezeigt (Abschnitt~@ref{sec:understanding}). | Übersprungene Übungen bleiben ohne Einzelergebnis. Für spätere Voraussetzungen zählt die geprüfte Freigabe des ganzen Atoms. |
 | Orientierungsziel | Die Person hat am Auftakt teilgenommen und seinem Abschluss zugestimmt (Abschnitt~@ref{sec:orientation}). | Vor dem Versuch erfährt sie, was sie zeigen soll. Der übersprungene Auftakt bleibt unbesucht. |
-| Memorierziel | Die Person hat die erforderlichen Karten im Abschlussabruf ohne Hilfe wiedergegeben (Abschnitt~@ref{sec:memory}). | Ein ausdrücklich verlangter Abruf bleibt Pflicht. Gewöhnliche Übungskarten dürfen entfallen. |
+| Memorierziel | Jede erforderliche Karte des Decks hat den verifizierten Abruf bestanden (Abschnitt~@ref{sec:memory}). | Ein ausdrücklich verlangter Abruf bleibt Pflicht. Gewöhnliche Übungskarten dürfen entfallen. |
 | Prüfungsziel | Die Einreichung erfüllt das geltende Bewertungsraster (Abschnitt~@ref{sec:exams}). | Für den Einheitenabschluss zählen alle verlangten Teile in der qualifizierenden Fassung. |
 :::
 
@@ -184,13 +184,17 @@ Ein Memorierziel bündelt die erforderlichen Karten eines Decks. Drei Dinge sind
 
 - **Kartenübung.** Ein Spaced-Repetition-System (SRS), also ein System für zeitlich verteilte Wiederholung, steuert die Übungsintervalle der Karten.
 - **Verifizierter Abruf einer Karte.** Der kontrollierte Abruf hält fest, ob eine Karte ohne Kartenhilfe richtig beantwortet wurde. Umdrehen oder Selbsteinschätzung während der Übung sind kein solcher Nachweis.
-- **Abschluss des Ziels.** Den Nachweis der Beherrschung des Lernziels gibt seine eigene bestandene Abschlussprüfung über die erforderlichen Karten, der *Abschlussabruf*.
+- **Abschluss des Ziels.** Das Memorierziel bleibt abgeleitet: Es ist beherrscht, sobald jede erforderliche Karte seines Decks den verifizierten Abruf bestanden hat, der *Abschlussabruf*.
+
+Übung und Prüfung sind voneinander unabhängig. Geübt wird nach dem Karteikartenprinzip; die Übung bestimmt nur, wann eine Karte wieder fällig ist. Die Prüfung, der verifizierte Abruf, kann auch ohne vorherige Übung abgelegt werden, und nur eine bestandene Prüfung hakt eine Karte endgültig ab.
 
 Kartenprozess und Zielabschluss sind zu unterscheiden; sie erzeugen keine zweite Mastery-Stufe oder ein zusätzliches gespeichertes Zielergebnis.
 
+**Karten und Lerneinheiten (Entscheidung vom 23. November 2026).** Karten werden keine Ziele des Graphen. Jede Karte hat einen eigenen Zustand, gehört zu ihren Verständniszielen, den gewöhnlichen curricularen Zielen, für die sie geschrieben wurde, und wird über die Lerneinheit geübt und geprüft. Der Karteikasten der lernenden Person enthält die freigegebenen und noch nicht entnommenen Karten. Eine Karte kommt erst in den Karteikasten, wenn ihr Verständnisziel bestanden ist; bei mehreren Verständniszielen müssen alle bestanden sein, die im Personal Curriculum der Person liegen. Ein angerechnetes Ziel zählt wie ein bestandenes. Die Karten einer Einheit sind die Karten ihrer atomaren Ziele auf jeder Ebene der Einheitenhierarchie.
+
 #### Abschlussbedingung.
 
-Sei $\operatorname{Cards}(g)$ die vollständig aufgelöste, gültige Menge erforderlicher Karten des Memorierziels $g \in A_{\mathrm{mem}}$. Mit $\operatorname{RecallPassed}(g)$ wird hier nur der ausdrücklich festgestellte erfolgreiche Abschlussabruf über diese erforderliche Kartenmenge bezeichnet. Dieser eigene Zielabschluss ist kein bloßes Zusammenzählen aktueller Einzelkartenflags und kein neues Datenfeld oder zusätzliches Prüfungsziel. Dann gilt
+Sei $\operatorname{Cards}(g)$ die vollständig aufgelöste, gültige Menge erforderlicher Karten des Memorierziels $g \in A_{\mathrm{mem}}$. $\operatorname{RecallPassed}(g)$ besagt, dass jede Karte in $\operatorname{Cards}(g)$ den verifizierten Abruf bestanden hat. Eine Karte zählt, sobald ihr eigenes Ergebnis im verifizierten Abruf bestanden ist. Das Zielergebnis wird aus diesen Kartenergebnissen abgeleitet und ist kein neues Datenfeld oder zusätzliches Prüfungsziel. Dann gilt
 
 $$
 \Complete_{\mathrm{memory}}(g) \iff \operatorname{RecallPassed}(g).
@@ -204,11 +208,11 @@ Gewöhnliche abgeschlossene Lernziele erhalten keine Wiederholungsfälligkeit. B
 
 #### Kartenübung nach SM-2.
 
-Der gegenwärtig dokumentierte SRS-Vertrag verwendet Zustand nach dem Verfahren SM-2 (SuperMemo 2) mit Intervall, Wiederholungszähler, Leichtigkeitsfaktor und nächstem Wiederholungsdatum. Eine Karte ohne gespeicherten Zustand ist fällig. Erfolgreiche Übung verlängert nach den festgelegten Regeln das Intervall; unzureichende Übung setzt die Wiederholungsfolge zurück. Diese Zeitplanung ersetzt den verifizierten Abruf nicht.
+Der gegenwärtig dokumentierte SRS-Vertrag verwendet Zustand nach dem Verfahren SM-2 (SuperMemo 2) mit Intervall, Wiederholungszähler, Leichtigkeitsfaktor und nächstem Wiederholungsdatum. Fällig werden können nur Karten im Karteikasten; eine Karte im Karteikasten ohne gespeicherten Zustand ist fällig. Erfolgreiche Übung verlängert nach den festgelegten Regeln das Intervall; unzureichende Übung setzt die Wiederholungsfolge zurück. Diese Zeitplanung ersetzt den verifizierten Abruf nicht.
 
 #### Ablauf des verifizierten Abrufs.
 
-Einen verifizierten Abruf, die *harte Abfrage*, kann die lernende Person beim aktiven Memorierziel auch beginnen, wenn die SRS-Warteschlange noch nicht leer ist. Zuerst wird nur die Frage abgerufen, dann antwortet die Person ohne Kartenhilfe. Erst anschließend wird die erwartete Antwort geladen und der Abruf als bestanden oder fehlgeschlagen gespeichert. Ein bestandener Abruf aktualisiert auch die SRS-Spur als starke erfolgreiche Wiederholung. Ein Fehlschlag hebt den verifizierten Status dieser Karte auf und führt sie in die Übung zurück.
+Einen verifizierten Abruf, die *harte Abfrage*, kann die lernende Person beim aktiven Memorierziel auch beginnen, wenn die SRS-Warteschlange noch nicht leer ist. Zuerst wird nur die Frage abgerufen, dann antwortet die Person ohne Kartenhilfe. Erst anschließend wird die erwartete Antwort geladen und der Abruf als bestanden oder fehlgeschlagen gespeichert. Eine im verifizierten Abruf bestandene Karte verlässt den Karteikasten endgültig und wird nie wieder fällig; eine nicht bestandene Karte kehrt als fällig in die Übung zurück. In einer Lerneinheit läuft der verifizierte Abruf über die freigegebenen, noch nicht verifizierten Karten der Einheit, und jede Karte erhält ihr eigenes Ergebnis. Der Coach schlägt diese Prüfung erst vor, wenn die Karten an mindestens zwei Tagen gewusst wurden.
 
 #### Implementierungsgrenze.
 

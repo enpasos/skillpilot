@@ -1,0 +1,27 @@
+{
+  "schema": "actual-isolated-material-policy-review-execution-v1",
+  "round": "b",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "ultra",
+  "sessionId": "01a20c1e-6535-7573-97f3-4acf0399c87d",
+  "exitCode": 0,
+  "invocation": "codex exec --skip-git-repo-check --sandbox read-only --model gpt-6.1-sol -c model_reasoning_effort=ultra -C /tmp/e1-t5/material-mp-exit-preflight/round-b --output-last-message /tmp/e1-t5/material-mp-exit-preflight/round-b/response.md - < /tmp/e1-t5/material-mp-exit-preflight/prompt.txt",
+  "completedAt": "2026-11-24T05:58:45.402066+00:00",
+  "inputManifest": {
+    "path": "/tmp/e1-t5/material-mp-exit-preflight/inputs.manifest.actual.json",
+    "sha256": "10c88579a5c6e9a4286e06521bd60f0b47dfcf0d8c09e4a8fe9db1d8b3dc9eeb"
+  },
+  "actualResponse": {
+    "path": "/tmp/e1-t5/material-mp-exit-preflight/round-b/response.md",
+    "sha256": "159548ddf9c65608a27d06462ba821eb0df7c76544d6293dd48703e7ed0ad6cc"
+  },
+  "actualExecutionLog": {
+    "path": "/tmp/e1-t5/material-mp-exit-preflight/round-b/execution.actual.log",
+    "sha256": "57dca10d5f2d72760983736ad6abda4b87ab5dcd7f70e87e03cffbc28d21caa0"
+  },
+  "decision": {
+    "accepted_successor": "APPROVE_CONDITIONAL_POLICY",
+    "no_successor": "APPROVE_CONDITIONAL_POLICY"
+  },
+  "limits": "Actual independent narrow material-policy review only; no scientific assessment acceptance, activation or human/learner/host result."
+}

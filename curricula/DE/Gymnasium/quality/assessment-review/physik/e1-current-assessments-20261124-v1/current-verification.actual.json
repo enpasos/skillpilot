@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_CURRENT_EXACT_ASSESSMENT_SOURCE_STAGE_AND_NATIVE_PREPARATION_BINDINGS",
+  "checkedAt": "2026-11-24T04:56:22.994865+00:00",
+  "command": "PATH=<pinned-node20>:$PATH app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/verify-current-assessments.mts",
+  "exitCode": 0,
+  "script": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/verify-current-assessments.mts",
+    "sha256": "c271b124f314f85539968a8a0dd242f92a1345e27b89d9c0f8737aaf26890c73"
+  },
+  "actualOutput": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-verification.log",
+    "sha256": "b48382bd31ae2bbd27e1bdd7f60abe7e30aa3a06606d06db86b61ab1d3268acf",
+    "record": {
+      "status": "PASS",
+      "actualIndependentRuns": 6,
+      "currentChangedAssessments": 7,
+      "sourceStagePreparationPayloads": 216,
+      "sourceStageOffers": 2,
+      "MPWholeGoalCoverage": [],
+      "MPNativeCoverageGate": "OPEN_CQR203_WARNING",
+      "planningCreditOrLearnerResultTransfer": false
+    }
+  },
+  "goalBookStatus": "New exact-task/source-stage/current216payload/APV guards passed. Last full GoalBook run then correctly stopped at the separately pending fresh FALL atomicity record; final complete run remains required after current A/kind, generator and quality status seal.",
+  "limits": "Automated contract/numerical verification is separate from six actual independent content reviews. No learner trial, official exam endorsement, planning credit, result transfer or integrated mainCI claim."
+}

@@ -1,0 +1,103 @@
+{
+  "reviews": [
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "Die Physik stimmt in beiden Sprachfassungen. In A gilt für τ = t − 2 s auf 0 bis 2 s in SI: v = −1 + 2τ und s = 5 − τ + τ². Der Wagen kehrt bei t = 2,5 s am Ortsminimum 4,75 m um. Dort ist v = 0, während a = +2 m/s² bleibt. Bei 3 s und 4 s sind die Orte 5 m und 7 m, die Geschwindigkeiten +1 m/s und +3 m/s. Die a-Fläche ergibt Δv = +4 m/s. Die gerichteten v-Flächen ergeben −0,25 m und +2,25 m, also +2 m Ortsänderung und 2,50 m Strecke. Die Abweichung der Kontrollmarke beträgt 0,03 m. Die Vorhersage liegt im Intervall von 6,98 m bis 7,08 m. In B gelten v = 6 − 2t und s = 6t − t² in SI bis zum Stopp bei 3 s und 9 m. Bei weiterer Beschleunigung liefert das Programm nach 5 s −4 m/s und einen Ort von 5 m. Es hat das Fahrzeug vom Haltepunkt aus 4 m zurückfahren lassen. Beim realen Stehenbleiben bleibt der Ort bei 9 m, mit v = 0 und a = 0. Belege in canonical-input.json, Z. 172–175 und 180–203.",
+      "preparationReview": "Die einzige unmittelbare Voraussetzung ist 262f807a-30d0-503e-986f-856cbd048e8e. Ihre beiden Zweige über das Beschleunigungsmodell und die Terme mit Variablen erschließen genau alle 66 verschiedenen Ziele der angegebenen Vorbereitung. Dazu gehören Bewegungsgesetze und Prognosen, Sekanten- und Tangentensteigung, Intervallraten, gerichtete v-Flächen, Dreiecks- und Trapezflächen, Achsen, Skalen, Funktionswerte, Einheiten, Vorzeichen, Beträge und Messauflösung. Eigener Transfer ist in A die Verbindung von verschobenem Zeitursprung, Anfangsort und negativer Anfangsgeschwindigkeit mit Umkehr, Flächenbilanz und Kontrollintervall. In B müssen die Lernenden selbst zwischen dem Ende des Bremsvorgangs und der mathematisch möglichen Fortsetzung unterscheiden. Die neue Bepunktung verändert diese Voraussetzungen nicht. Belege in canonical-input.json, Z. 123–125, 230–235, 283–973, besonders 378–389 und 420–430, sowie 991–1065.\n\nSN/J9: Die vollständige Aufgabe als unmittelbar lehrplangedeckte J9-Leistung ablehnen. Als freiwilligen eigenen Transfer nach der vollständigen Vorbereitung zulassen. Der Lernbereich Bewegungsgesetze nennt die Ortsänderung in der Zeit und das Interpretieren von Diagrammen, beschränkt den Umgang mit den kinematischen Gesetzen aber ausdrücklich auf „ohne Anfangsgeschwindigkeit“. In A startet der Wagen mit −1 m/s, in B das Fahrzeug mit +6 m/s. Die Wahl eines anderen Zeitnullpunkts hebt diese Anforderung an die Lernenden nicht auf. Das Praktikum stützt die Auswertung von Bewegungsdiagrammen. Belege im SN-retained-source.pdf, physische S. 36, Lernbereich 3 vom Bewegungsbegriff bis „ohne Anfangsgeschwindigkeit“, und physische S. 38, Lernbereich 4 zur rechnergestützten Messwerterfassung und Diagrammauswertung.\n\nST/J9: Als vorbereitete freiwillige Anwendung zulassen. Der Lehrplan verbindet Bewegungsdiagramme, Flächendeutung, Wechselwirkungen und die Beurteilung von Verkehrsaufgaben. Er führt die gleichmäßig beschleunigte Bewegung „ohne Anfangsbedingungen“ mit s(t)-, v(t)- und a(t)-Diagrammen auf und nennt „Bewegungen mit Anfangsbedingungen“ gesondert. Das trägt die fachliche Anbindung. Die konkrete Kombination aus versetztem Start, Vorzeichenwechsel, Kontrollmarke und Kritik am Programm bleibt Eigenleistung. Belege im ST-retained-source.pdf, physische S. 45, Sach-, Kommunikations- und Bewertungskompetenz, sowie physische S. 46, Wissensbestände zu beschleunigter Bewegung und Anfangsbedingungen.",
+      "directCoverageReview": "Das einzige direkt beanspruchte Ziel e4b38061-1f28-43ad-8371-a3e7c0e81856 verlangt zweierlei: das Modell konstanter Beschleunigung erläutern und es in jeder der drei Darstellungen beschreiben. Dafür bietet die ursprüngliche Aufgabe tatsächlich Gelegenheit. Die konstante Höhe im t-a-Diagramm bestimmt die konstante Steigung im t-v-Diagramm. Die gerichtete Fläche unter v bestimmt die Ortsänderung. In A hat die Ortsparabel ein Minimum, in B flacht sie bis zum Stopp ab. Die Flächenerklärungen und die Gegenüberstellung von Bremsphase und Fortsetzung verlangen physikalische Deutung. Die Anerkennung allein dieses direkten Ziels ist inhaltlich begründet. Ein Bestehen nach der exakten 18er-Regel sichert sie jedoch nicht: In beiden Fällen kann der charakteristische Verlauf derselben Diagrammart verfehlt werden. Auch die ausdrücklich beanspruchte Prüfung der Modellgrenze kann vollständig fehlen. Belege in canonical-input.json, Z. 112–113, 161–163, 172–203 und 215–221.\n\nR2: Als ergänzende Übung zum Modell- und Diagrammanteil von physics-constant-acceleration zulassen. Als Nachweis des gesamten Lernversprechens ablehnen. Niemand muss eine schwere Kugel fallen lassen, Fallhöhe und Fallzeit protokollieren, aus diesen Messdaten die Beschleunigung bestimmen oder die Genauigkeit eigener Messwerte angeben. Beide Beschleunigungen und die Unsicherheit der Kontrollmarke sind vorgegeben. Zeitgesetze und Diagramme werden an Fahrzeugen erarbeitet. Leichte Körper, Würfe, Kräfte und Energie nennt das Versprechen als Ausblick. Diese Grenze bestand bereits beim Original. Dessen einziger direkter Anspruch war das Beschleunigungsmodell, keine experimentelle Vollabdeckung von R2. Belege in canonical-input.json, Z. 59–61, 70–73, 172–175, 978–989 und 1064–1067.",
+      "languageReview": "DE und EN stimmen bei Anfangsdaten, Arbeitsaufträgen, Zahlen, Lösungen und allen fünf Bewertungs-IDs überein. „All three motion graphs“ ist durch den Bewegungskontext und die zweisprachige Aufschlüsselung als t-a, t-v und t-s bestimmt. Beide Aufgaben weisen fest A = 12 und B = 8 aus. Das Original erreicht dies mit 4+4+4 und 4+4, der Kandidat mit 6+3+3 und 4+4. Beide neuen Lösungstexte nennen 18/20, tatsächliche graphische Evidenz, gleichwertige Nachweise an anderer Stelle, zulässige Rundung und einmaligen Abzug am Fehlerursprung. Der Mangel betrifft die erreichbaren Punktverteilungen in beiden Sprachen. Belege in canonical-input.json, Z. 70–102, 172–204 und 210–214.",
+      "recommendedRequires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "recommendedCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "recommendedPassingPoints": 19,
+      "gradedSubmissions": [
+        {
+          "submissionId": "Y",
+          "demonstratedCore": true,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 6,
+              "reason": "Alle drei A-Diagramme sind tatsächlich gezeichnet. Konstante Höhe, steigende Gerade und nach oben gekrümmte Ortskurve stimmen einschließlich Zeitbereich, Einheiten und Wertmarken."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "Y erklärt den Vorzeichenwechsel am Ortsminimum, die a-Fläche als +4 m/s Geschwindigkeitsänderung und beide v-Flächen als gerichtete Ortsänderungen."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "Ortsänderung +2 m und Strecke 2,50 m sind richtig. Y begründet die Betragsaddition und prüft 7 m am richtigen Kontrollintervall."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 4,
+              "reason": "Die drei B-Diagramme zeigen konstantes negatives a, linear fallendes v und einen bis zur waagerechten Tangente zunehmenden Ort. Beide Gesetze, 3 s Stoppzeit und 9 m Bremsweg stimmen."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 3,
+              "reason": "−4 m/s, Rückwärtsfahrt und die physikalische Grenze des Bremsmodells sind richtig. Nur die letzte Subtraktion für den Ort ist falsch: 30 − 25 ergibt 5 m. Die Angabe 4 m ist hier kein Rundungsergebnis."
+            }
+          ],
+          "total": 19,
+          "passes": true,
+          "rationale": "Y belegt Modellzusammenhang, alle Diagrammarten und Modellgrenze. Der einzelne Rechenfehler kostet genau einen Punkt. 19/20 bestehen nach der tatsächlichen Schwelle 18. Abgabe in canonical-input.json, Z. 975."
+        },
+        {
+          "submissionId": "X",
+          "demonstratedCore": false,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 4,
+              "reason": "Die beiden A-Diagramme für v und s erfüllen jeweils Form- und Wertekriterium. X nennt +2 m/s² auch an der Umkehr richtig. In der gesamten Abgabe fehlt aber eine t-a-Darstellung, an der Verlauf und Höhe des A-Graphen erkennbar wären. Beide dafür ausgewiesenen Diagrammpunkte entfallen."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "Umkehr und Minimum sowie die a-Fläche und die beiden gerichteten v-Flächen sind vollständig erklärt. Die fehlende Zeichnung mindert diese Leistung nicht."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "X berechnet +2 m und 2,50 m, erklärt den Unterschied und bestätigt die Übereinstimmung mit dem Intervall von 6,98 m bis 7,08 m."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 3,
+              "reason": "Beide Bewegungsgesetze mit ihren v- und s-Diagrammen sowie Stoppzeit und Bremsweg sind richtig. Das t-a-Diagramm für die Bremsphase fehlt."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 4,
+              "reason": "Beide Programmwerte, die Rückwärtsdeutung und die Begründung mit v = 0, a = 0 beim Stehenbleiben und erforderlicher neuer Kraftbegründung sind richtig."
+            }
+          ],
+          "total": 17,
+          "passes": false,
+          "rationale": "X erreicht 17/20. Die korrekte Flächenrechnung und die Aussage zur Beschleunigung sind voll berücksichtigt. Sie belegen keine tatsächlich ausgeführte t-a-Darstellung. Damit fehlt eine der drei ausdrücklich verlangten Darstellungsarten. Abgabe in canonical-input.json, Z. 976."
+        }
+      ],
+      "strongestIndependentFalsePassAttempt": "Bei sonst vollständiger Lösung trägt eine Person in A alle vier Ortsmarken mit Einheiten ein, zeichnet dazwischen aber Ortssprünge als Treppenfunktion. In B gibt sie das richtige Ortsgesetz an, zeichnet jedoch eine Gerade vom Start zum Haltepunkt. Die Umkehr und ihr Ortsminimum erklärt sie anhand von v und dem richtigen Term. In A bleibt der eigenständige Markenpunkt verdient. In B geht der eine gemeinsame Punkt für Ortsgesetz samt richtigem Diagramm verloren. Ergebnis in Rasterreihenfolge: 5+3+3+3+4 = 18. Die Person besteht, obwohl keines ihrer beiden Ortsdiagramme eine gleichmäßig beschleunigte Bewegung beschreibt. Ein zweiter Gegenfall betrifft die Modellgrenze. Alle Rechnungen und Graphen können richtig sein, während beide physikalischen Deutungen der Fortsetzung fehlen: 6+3+3+4+2 = 18. Wer sogar die Rückwärtsfahrt erkennt, sie aber ausdrücklich für ein gültiges Modell des stehenbleibenden Fahrzeugs hält, erzielt 19. Bloßes Anheben der Schwelle genügt daher nicht. Maßgeblich sind die getrennten Marken- und Verlaufspunkte in Z. 183, die Bündelung in Z. 198 und die vier Einzelpunkte in Z. 203.",
+      "strongestIndependentFalseFailureAttempt": "Eine Person zeichnet alle sechs Kurven, erklärt die Modellzusammenhänge und begründet das Ende der Bremsphase. Nur bei der oberen Kontrollgrenze schreibt sie 7,03 + 0,05 = 7,07 m. Sie ordnet die Vorhersage von 7 m ihrem Intervall folgerichtig zu. Selbst bei Abzug des Kontrollpunkts bleiben 6+3+2+4+4 = 19. Damit besteht sie bei 18 und bei der empfohlenen 19er-Schwelle. Ein zweiter Abzug für die folgerichtige Entscheidung wäre unzulässig. Auch eine beschriftete verschobene Zeitachse oder eine gültige Rundung begründet keinen Abzug. Die ursprüngliche Vollpunktschwelle ließ für einen solchen isolierten Fehler keinen Spielraum.",
+      "requiredCorrections": [
+        "Die alleinige Summenschwelle nach begrenzter Korrektur des Rasters auf 19/20 setzen und in scoring sowie beiden Lösungszusätzen übereinstimmend ausweisen. Bei der bisherigen Verteilung kann jede in A und B verfehlte Kurvenform nur zwei Punkte kosten. 18 lässt diesen Fall durch. Form und quantitative Markierungen weiterhin eigenständig werten.",
+        "Die bereits verlangte Modellerläuterung im Raster durch zwei unterscheidbare fachliche Nachweise absichern. In A lassen sich die unveränderte t-v-Steigung durch den Nulldurchgang mit dem Ortsminimum und die quantitative Beziehung zwischen konstanter Rechteckhöhe, Zeitspanne und Δv bewerten. Wer nur Werte reproduziert und die konstante Geschwindigkeitsänderung pro Zeiteinheit ausdrücklich verkennt, darf die Erklärungspunkte nicht allein aus richtigen Zahlen erhalten. Beschriftete graphische Erklärungen und gleichwertige Herleitungen an anderer Stelle müssen zählen.",
+        "In B die zwei physikalischen Punkte so fassen, dass der eine die vorhergesagte Rückwärtsfahrt im Vergleich zum realen Stillstand und der andere die Begründung über v, a und die für weitere Beschleunigung nötige Wechselwirkung bewertet. Ein bloßes Ablesen des negativen Vorzeichens darf bei ausdrücklich falschem Gültigkeitsurteil nicht zum Bestehen reichen. Die beiden richtigen Programmwerte behalten ihre eigenen Punkte. Diese Präzisierungen in DE und EN innerhalb der festen A12/B8 umsetzen, ohne zusätzliche Aufgabe, Pflichtteil-Schwelle oder mehrfachen Fehlerabzug."
+      ],
+      "materialContinuityAndRecognition": "Die Lernaufgabe, die fachlichen Lösungskerne, die unmittelbare Voraussetzung und das einzige direkt beanspruchte Ziel entsprechen dem Original. Geändert sind das Raster und die Bewertungszusätze in beiden Lösungen. Der übernommene Freigabevermerk bezeichnet ausdrücklich die frühere 20/20-Fassung und einen Zusammenhang aus zwei Assessments. Er belegt keine Anerkennung der 18/20-Regel. D′ bleibt freiwilliges Übungsmaterial. Die vier ursprünglichen hessischen E.1-Pflichtplätze A bis D bleiben eigenständig, einschließlich Pflicht-D f13ca187-b680-5f47-b4ad-76bd474bd8a2. D′ besetzt keinen davon und erzeugt keinen eigenen hessischen Planungscredit. Der im Vertrag genannte einzige Planungszielbezug e4b38061-1f28-43ad-8371-a3e7c0e81856 ist vom direkten fachlichen Prüfgegenstand dieser Aufgabe zu unterscheiden. Die allgemeine Länderanwendbarkeit des Datensatzes trägt keine bundesweite J9-Einstufung. Belege in canonical-input.json, Z. 35–61, 137–163, 210–214, 984–994 und 1064–1067.",
+      "semanticKind": "practiceAssessment",
+      "semanticKindReason": "Die Lernenden lösen zwei vorgegebene Bewegungsprobleme, erstellen überprüfbare Diagramme, rechnen und begründen. Lösung, Punkte und Bestehensregel bewerten diese abgegebene Leistung. Das geänderte Raster ändert den technischen Charakter als bewertete Übungsaufgabe nicht."
+    }
+  ],
+  "limitations": [
+    "Die Jahrgangsurteile betreffen ausschließlich die angebotenen Platzierungen SN/J9 und ST/J9 auf den angegebenen physischen PDF-Seiten. Die Namen und Einzelinhalte der drei übrigen hessischen Pflichtteile sind in den Prüfdaten nicht ausgewiesen.",
+    "Die empfohlenen 19 Punkte gelten zusammen mit den bezeichneten Rasterkorrekturen. Beide eingereichten Arbeiten wurden ausschließlich nach dem vorliegenden Kandidaten mit Bestehensgrenze 18 bewertet."
+  ]
+}

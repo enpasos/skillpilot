@@ -1,0 +1,287 @@
+{
+  "schema": "independent-sn-accb-full-goal-and-optional-stage-followup-v1",
+  "reviewedAt": "2026-11-24T05:16:14.133Z",
+  "reviewer": "Codex GPT-6 /root/sachsen, independent from Claude Opus authors; integrates a fresh primary-source and exact current goal/task/profile reading",
+  "status": "ACCB_LOWER_SEED_EXCLUSION_REJECTED_ENDPOINT_STILL_NOT_QUALIFIED",
+  "scope": {
+    "jurisdiction": "DE-SN",
+    "stage": "SekI",
+    "goalId": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+    "endpointId": "b1808b4c-5e02-5e1f-831f-47ee126e00ee",
+    "noSharedInputsOrViewsWritten": true,
+    "noNewAssessmentOrGoalCut": true
+  },
+  "normativeGoalFinding": {
+    "canonicalDescription": "Die lernende Person kann gleichförmige Kreisbewegungen mithilfe der Zentripetalkraft beschreiben und quantitativ analysieren.",
+    "fullApplicationTextSupportedInJ9Wahlbereich": true,
+    "requiresAngularVelocityInOwnGoalText": false,
+    "requiresForceDerivationInOwnGoalText": false,
+    "requiresMomentumFormInOwnGoalText": false,
+    "source": {
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+      "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+      "pdfPages": [
+        4,
+        5,
+        36,
+        37,
+        39,
+        48,
+        57,
+        58,
+        59
+      ],
+      "printedPages": [
+        "IV",
+        "V",
+        24,
+        25,
+        27,
+        36,
+        45,
+        46,
+        47
+      ]
+    },
+    "exactQuotes": [
+      {
+        "pdfPage": 39,
+        "printedPage": 27,
+        "text": "Anwenden von Gesetzen der Kinematik und Dynamik auf Bewegungen auf gekrümmten Bahnen"
+      },
+      {
+        "pdfPage": 39,
+        "printedPage": 27,
+        "text": "Radialkraft"
+      }
+    ],
+    "equationsVisuallyVerified": [
+      {
+        "pdfPage": 39,
+        "equations": [
+          "v=2πr/T",
+          "Fr=mv²/r"
+        ],
+        "column": "binding learning content, left"
+      },
+      {
+        "pdfPage": 48,
+        "equations": [
+          "v=2πr/T",
+          "Fr=mv²/r"
+        ],
+        "omegaPresent": false
+      },
+      {
+        "pdfPage": 59,
+        "equations": [
+          "Fr=mv²/r=mω²r",
+          "v=ωr"
+        ],
+        "course": "J11 Leistungskurs"
+      }
+    ],
+    "interpretation": "Anwenden has the official transfer/application meaning (PDF5); the formula is binding content, not merely an example. The right-hand force/acceleration comparisons and cornering examples are recommended remarks. The broad canonical application text is therefore not disproved as a lower-stage target. A partial source-route label is retained; it does not license inventing extra full-goal requirements."
+  },
+  "actualPreparationFinding": {
+    "fullRealClosureCount": 74,
+    "unresolvedReferences": 0,
+    "chains": [
+      [
+        "b1808b4c-5e02-5e1f-831f-47ee126e00ee",
+        "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+        "e918b31f-6f39-5dee-ade6-3617080fb24f",
+        "ec7a0a68-730b-5c94-ac72-a937508f8303",
+        "8d30d241-0247-48ac-83d3-4e0de61584d3"
+      ],
+      [
+        "b1808b4c-5e02-5e1f-831f-47ee126e00ee",
+        "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+        "e918b31f-6f39-5dee-ade6-3617080fb24f",
+        "5f289cdc-fda1-4058-b44f-041ba1398e79",
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+      ]
+    ],
+    "difference": "The current required preparation includes a separate derivation atom, a whole angular-speed atom and the full vector-momentum formulation of Newton2. These exceed the actual application wording of accb. Their absence in J9 cannot by itself convert that application goal into an unsupported whole lower atom.",
+    "lowerVsUpperEvidence": [
+      {
+        "goalId": "e918b31f-6f39-5dee-ade6-3617080fb24f",
+        "lower": "J9 applies the printed radial-force law; no complete derivation is demanded by this passage",
+        "retainedExclusion": "partial_lower_not_complete_atom retained"
+      },
+      {
+        "goalId": "ec7a0a68-730b-5c94-ac72-a937508f8303",
+        "lower": "J9 supplies tangential speed and period only",
+        "upper": "Explicit omega relations occur at J11LK PDF59, not GK PDF48",
+        "retainedExclusion": "same action/class/goal/source-row retained; citation correction only"
+      },
+      {
+        "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+        "lower": "J9 PDF37 supplies F=m a",
+        "upper": "J11LK PDF57 introduces momentum/impulse; PDF58 gives force as dp/dt"
+      },
+      {
+        "goalId": "8d30d241-0247-48ac-83d3-4e0de61584d3",
+        "lower": "Mathematics J9 PDF37 restricts trigonometry to degree measure; J10 PDF41 introduces radians",
+        "conclusion": "J10 remains relevant late-SekI mathematics, but this does not prove all upper Physics preparation or a J9 offer."
+      }
+    ],
+    "currentBasisQualifiedForJ9": false,
+    "currentBasisQualifiedForLateSekI": false,
+    "qualificationLimit": "No new scoped preparation override, omitted real prerequisite, synthetic bridge or own extra upper-Physics teaching is accepted here. A genuinely overstrong canonical prerequisite chain needs its own current-input didactic repair; no edge is removed for CQR."
+  },
+  "currentUnderstandingAndTaskFinding": {
+    "activeProfileFingerprint": "sha256:b3e98ad17e374d8df4e697bd7c0d4827b8c23dc6d32812d26bde38b3a364c8aa",
+    "requiredExpectationIds": [
+      "radial-resultant",
+      "held-variable"
+    ],
+    "sourceEquivalentHeldVariableReasoning": "The two printed lower formulas already give Fr=4π²mr/T². Thus a fixed-period versus fixed-speed comparison expresses the physical held-variable distinction without claiming the whole angular-speed atom was officially taught. This is an algebraic interpretation of printed content, not a new assessment or a replacement P.",
+    "taskCalculationCheck": {
+      "a": 2,
+      "force": 160,
+      "maxSpeedApprox": 7.035623639735144,
+      "doubledSpeedForceFactor": 4,
+      "doubledRadiusAtFixedSpeedForceFactor": 0.5
+    },
+    "actualRubricCounterexample": {
+      "circular_1": 0,
+      "circular_2": 5,
+      "circular_3": 6,
+      "total": 11,
+      "passing": 10,
+      "missing": "No velocity/acceleration arrows or explanation of directional acceleration is submitted; no cross-row veto is authored."
+    },
+    "heldVariableGap": "The actual task compares doubled speed and doubled radius at fixed speed. It never elicits the contrasting fixed-period/angular-speed constraint; even full points do not demonstrate that current required P facet.",
+    "independentDemonstrationsLimit": "No extra independent transfer/context is inferred from the existing title, released status or multiple point rows.",
+    "endpointDecision": "NOT_APPROVED as a new current whole-goal lower offer. Normative task content is a reasonable application in optional WB3, but actual full preparation and current P/scoring qualification remain separate unmet conditions. Existing released metadata or other-Land status is not altered by this scoped SN review."
+  },
+  "optionalScopeFinding": {
+    "officialStatus": "optional additional two-week Wahlbereich, not a universal obligation (PDF4)",
+    "currentSaxonTreatmentSnapshotPath": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/accb-scope-followup-20261124/saxon-wahlbereich-projection-observation.json",
+    "currentSelectedWahlbereichMappingRows": 155,
+    "observationLimit": "Observed inclusion is not approval of every one of the155 mappings. It proves that Wahlbereich status alone is not a blanket exclusion criterion in the current Saxon projection.",
+    "nativeMechanism": {
+      "path": "scripts/generate_laender_physics_stage_views.py",
+      "function": "materialize_stage_structure/content_reference and optional_units",
+      "classification": "explicit_optional_lower_extension",
+      "existingExamples": "MV quantitative lens eye and motor construction keep their target references under optional labels"
+    },
+    "recommendedOptionalLabel": "Kreisbewegung und Radialkraft (Wahlbereich 3, Kl. 9; optional)",
+    "predictedEffect": "Only an explicit source-optional wrapper/label. Target atom, complete requires closure, actual endpoint checks and b180 absence remain. No CQR104 pass is manufactured."
+  },
+  "decisions": {
+    "addExcludeNewLowerSeedForAccb": false,
+    "retainPartialRadialForceRoute": true,
+    "retainExistingDerivationAndAngularWholeAtomExclusions": true,
+    "correctOnlyOmegaUpperCitation": true,
+    "newLowerB180Binding": false
+  },
+  "currentSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/accb-scope-followup-20261124/current-goals-profile-and-source-decisions.json",
+    "sha256": "1f52d0430d790d93f3df84dcb8d08464eaa92279854330f5adccb5de2826146f"
+  },
+  "historicalPredecessors": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/review.actual.json",
+      "sha256": "7adc92cdf8395144a2c415d0abb26d147dd7c75b9f24bd1fb4905a55242f1219",
+      "preserved": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/endpoint-gap-review.actual.json",
+      "sha256": "b9d983deb267ce11d38febd1be2ad9e7e05d06808b7c694085195e9663a4dc93",
+      "preserved": true
+    }
+  ],
+  "historicalClarification": "The earlier endpoint refusal on its actual complete preparation remains. This followup expressly separates that refusal from the normative accb goal/source claim and adds the actual active-P/rubric limitation. No previous evidence is edited.",
+  "citationCorrection": {
+    "fieldPrefix": "/reviewedLowerSourceMembership/decisions/SN/ec7a0a68-730b-5c94-ac72-a937508f8303",
+    "previousDecision": {
+      "action": "excludeNewLowerSeed",
+      "classification": "partial_lower_not_complete_atom",
+      "canonicalDescription": "Die lernende Person kann bei Kreisbewegungen Bahn- und Winkelgeschwindigkeit definieren, berechnen und ihren Zusammenhang v = ωr erklären.",
+      "rationale": "J9 Wahlbereich3 verwendet Bahngeschwindigkeit und Umlaufzeit, aber keine Winkelgeschwindigkeit; diese steht erst im oberen GK-Kurs. Der vollständige kombinierte Atomumfang ist daher nicht lower belegt.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            39,
+            48
+          ],
+          "printedPages": [
+            27,
+            36
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "sourceGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-9-wb3-081-01-022e6dc9"
+      ],
+      "retainedMapping": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "retainedExtraction": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json"
+    },
+    "proposedDecision": {
+      "action": "excludeNewLowerSeed",
+      "classification": "partial_lower_not_complete_atom",
+      "canonicalDescription": "Die lernende Person kann bei Kreisbewegungen Bahn- und Winkelgeschwindigkeit definieren, berechnen und ihren Zusammenhang v = ωr erklären.",
+      "rationale": "J9 Wahlbereich3 verwendet Bahngeschwindigkeit und Umlaufzeit, aber keine Winkelgeschwindigkeit. Die direkte Form v=ωr und die Form Fr=mω²r stehen im Leistungskurs11 auf PDF-S.59/Druck-S.47. Die bisher zitierte GK-Seite48/Druck36 enthält nur v=2πr/T und Fr=mv²/r, keinen ω-Beleg. Der bestehende Ausschluss des vollständigen kombinierten Bahn-/Winkelgeschwindigkeitsatoms bleibt in Aktion, Klasse, Zieltext und Quellzeile unverändert; allein die obere Quellenangabe wird berichtigt.",
+      "primaryEvidence": [
+        {
+          "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "pdfPages": [
+            39,
+            59
+          ],
+          "printedPages": [
+            27,
+            47
+          ],
+          "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+        }
+      ],
+      "sourceGoalIds": [
+        "sn-phys-seki-sn-klassenstufe-9-wb3-081-01-022e6dc9"
+      ],
+      "retainedMapping": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "retainedExtraction": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json"
+    },
+    "unchangedFields": [
+      "action",
+      "classification",
+      "canonicalDescription",
+      "sourceGoalIds",
+      "retainedMapping",
+      "retainedExtraction",
+      "primaryEvidence[0].file",
+      "primaryEvidence[0].sha256"
+    ]
+  },
+  "evidencePins": [
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+      "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.pdf",
+      "sha256": "de48e13d404cfb4d155f056efdc1a6888857ccda58cc03cf81bcdabb2141f8ae"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "sha256": "9390aea788f7351f2300cbfe12fb10587d59b49c26e9dad98f3125daa4ac23db"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/retained-P-current840/026-physics-b039-retained-eighteen.config.json",
+      "sha256": "a3810d3f7f02ff73b02c14481b4110f09126425718e42a713ca0ebbeb6e2a4d4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/physics-q1-acquisition-current-v1/retained-P-current840/026-physics-b039-retained-eighteen.config.review.jsonl",
+      "sha256": "1e1bf7a2365556d566ca724754535220e6651f3c221f940961b379b887c03f1b"
+    },
+    {
+      "path": "scripts/generate_laender_physics_stage_views.py",
+      "sha256": "c408164ba9463246634780c02235f89abc750c0e52884b058ae30a5560aff5ad"
+    }
+  ],
+  "limits": "Independent machine source/content review, not human acceptance, a learner trial, source publication, canonical/P/rubric repair or lower-offer activation. Parent counter-review and shared activation are separate."
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "status": "CURRENT_ARCHIVAL_APPLICABILITY_NORMALIZATION_CONFIRMED",
+  "changedGoalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+  "predecessorRawGoalPath": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/mp-revised-edition-v2/metadata-candidates/STOP_NO_SUCCESSOR/2b9e565f-d9b4-5e23-b5b7-b7977cecff06.goal.json",
+  "predecessorRawGoalSha256": "adc3dca2b0e9b71b1ec06a20646e42b7a9507ee8e840c0d04f6e854ccc6b4ed6",
+  "successorRawGoalPath": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/mp-revised-edition-v2/applicability-empty-successor-20261124/current-stop.goal.json",
+  "successorRawGoalSha256": "13ad89ca0dfa042c7d9d1d75aa5cc1057ecd9073b81bd1ada570ee54ea2ffed1",
+  "exactAllowedDelta": {
+    "path": "/applicability",
+    "before": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "after": {}
+  },
+  "cause": "Excluded goals compile to{} at applicabilityCompiler.compileGoal; APV-203 compares a present authored applicability field with the compiled result. The retired task still carried its old15-country value. Explicit{} preserves that comparison and matches the already-empty emitted scope.",
+  "existingMechanism": "applicabilityProjection=excluded and applicabilityMappingInheritance=boundary remain unchanged. Explicit empty authored applicability is already used by most archived sibling tasks; the compiler rule and warning register are untouched.",
+  "nativeResult": {
+    "checkedAt": "2026-11-24T06:24:39.613Z",
+    "beforePhysicsAPV203Count": 1,
+    "afterPhysicsAPV203Count": 0,
+    "all21CompiledGoalApplicabilityAndEvidenceEqual": true,
+    "allOtherFindingsEqual": true,
+    "semanticKindFingerprintBefore": "sha256:9e04c1c5a3b2fce9a3e27c62daca2282d92b436ad6b8b0865565bc85f0b3d3c2",
+    "semanticKindFingerprintAfter": "sha256:9e04c1c5a3b2fce9a3e27c62daca2282d92b436ad6b8b0865565bc85f0b3d3c2",
+    "fullCurrentKindCheck": {
+      "status": "PASS",
+      "goals": 863,
+      "verifiedV9Context": true
+    }
+  },
+  "section4Successor": "Only jurisdiction metadata is normalized on an already excluded historical assessment. Identity, task/solution DE+EN, rubric30/18, prerequisites, direct coverage[], and every other field are identical. This creates no new recognition, offer or learner result.",
+  "semanticKindSuccessor": "/applicability is not part of semantic-kind-source-fingerprint-v1. The full native parser with verified V9 context still passes all863 current goals; all three existing STOP bindings remain current.",
+  "oldEvidenceUnchanged": true,
+  "oldCurrentCheckScope": "The predecessor raw-goal/equality/section4 receipts accurately bind the earlier checkpoint. This additive successor supplies the current explicit-empty raw-goal binding; do not rewrite old records or run their earlier exact-shape check as though no successor existed.",
+  "noNewAssessmentAdmitted": true,
+  "noWarningAllowlistAdded": true,
+  "noQualityRuleChanged": true,
+  "noStoredLearnerResultWritten": true,
+  "limits": "Independent technical metadata review and actual native differential check, not new task content approval or fresh mainCI."
+}

@@ -1,0 +1,67 @@
+{
+  "reviews": [
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "In A, with τ = t − 2 s and numerical values in SI units, v = −1 + 2τ and s = 5 − τ + τ². The cart reverses at t = 2.5 s while acceleration remains positive. Its positions at 2.5, 3 and 4 s are 4.75, 5 and 7 m. The acceleration area gives Δv = +4 m/s. The signed velocity areas are −0.25 and +2.25 m, giving displacement +2.00 m and distance 2.50 m. The predicted 7.00 m lies in [6.98, 7.08] m. In B, v = 6 − 2t and s = 6t − t² give a stop at 3 s and 9 m. Extending those equations to 5 s gives −4 m/s and 5 m. A vehicle remaining at rest stays at 9 m with v = a = 0 after the stop.",
+      "fullPreparationReview": "The motion-laws prerequisite prepares position and velocity prediction from initial conditions. Its supplied prerequisite chain includes constant acceleration, graph slopes, signed velocity areas, interval rates, units, function evaluation and geometric areas. These support both graph constructions, the reversal and the stopping calculation. The supplied interval can be checked directly, and the physical limit follows from the program predicting backward motion.",
+      "directCoverageReview": "The candidate establishes the uniformly accelerated motion goal. The learner constructs time–position, time–velocity and time–acceleration graphs, explains how their changes are related, and distinguishes constant acceleration through a reversal from braking that ends at rest. The broader motion-laws prerequisite also includes recovering laws for uniform motion from graphs, which this assessment does not independently establish.",
+      "falsePassCheck": "All five four-point rows are necessary at 20/20. Row 1 requires the initial conditions and three consistent graphs. Row 2 requires the reversal, positions and area interpretations with units. Row 3 distinguishes displacement from distance and checks the predicted position against the interval. Row 4 requires the braking laws, three graphs, stop time and distance. Row 5 requires the numerical continuation requested in B and a physical reason for its limit. A learner who omits the acceleration graph, treats both velocity areas as positive, or reports the 5 s values without explaining the reversal loses full credit. The original also risks failing a correct solution solely for keeping the original time coordinate.",
+      "languageReview": "The original rubric in both languages prescribed shifted time and called the stated ±0.05 m an instrument resolution. Its prompt left the numerical outputs at 5 s implicit. Both candidate versions accept original or shifted time, ask for velocity and position at 5 s, and use the supplied interval in row 3. The unchanged bilingual solutions give both requested values.",
+      "recommendedRequires": ["262f807a-30d0-503e-986f-856cbd048e8e"],
+      "recommendedCoveredGoalIds": ["e4b38061-1f28-43ad-8371-a3e7c0e81856"],
+      "recommendedPassingPoints": 20,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "Comparing a prediction with a supplied interval establishes neither instrument resolution nor practical measurement performance.",
+        "The two motion cases provide graded evidence for the named goal. Planning credit and proof that two cases were taught require separate evidence."
+      ]
+    },
+    {
+      "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "In A, x/t is 2.0 m/s at all three times. Downward distance divided by t² is approximately 5.00, 5.00 and 4.89 m/s². The near-constant ratios and shared time support an approximately parabolic trajectory. The original solution’s observation of faster-than-linear growth alone is insufficient. In B, the 1.0 s reaction distances are 13.89 and 27.78 m. Adding the supplied braking distances of 14 and 56 m gives 27.89 and 83.78 m, a ratio of 754/251 ≈ 3.004. At fixed reaction time the reaction distance doubles, while the supplied braking distance quadruples. Their sum therefore more than doubles. The stationary obstacle makes this a valid stopping-clearance judgment. Two braking distances are consistent with a quadratic model under equal constant deceleration, without establishing a universal law.",
+      "fullPreparationReview": "Retain horizontal projection, traffic safety and motion-model idealizations. Their supplied prerequisites cover free fall, motion laws and graphs, measurement scales and timing, unit conversion, ratios and substitution. Together they prepare the video-analysis description, component representations, stopping-distance calculation and judgment about transfer to real conditions. The task supplies the braking distances needed for the comparison.",
+      "directCoverageReview": "Traffic safety is the sole whole-goal claim. Row B requires qualitative and quantitative assessment of both distance contributions and a justified clearance judgment in an everyday situation. Describing how to analyze a video and using supplied values cannot establish that the learner performed the experimental investigation required by the horizontal-projection goal. Part A also allows a trajectory explanation without drawing an x–y plot. Naming one traffic-model limit supplies only part of the broader idealizations goal.",
+      "falsePassCheck": "At the original 10/16, 8 points in A plus 2 for numerical work in B could pass without a safety judgment. Even 16 written points could not establish the originally credited practical investigation. At the candidate 16/16, row A requires length and time calibration, tracking both coordinates, separate component representations and a shared-time justification from linear x(t) and approximately quadratic fall distance. Row B requires both reaction distances, use of the supplied braking distances, both totals, the doubled-reaction and quadrupled-braking explanation applied to the stationary obstacle, and one model limit. Correct totals and the verdict “about three times” still lose full row B without the two-part explanation. A bare assertion of a parabola loses full row A. Neither omission can be offset by the other row.",
+      "languageReview": "The original lacks an English task, solution and scoring rows. Its English description suggests a moving following gap, and its German scoring row calls for calculating braking distances already supplied. The candidate German and English tasks, solutions and both eight-point rows agree on the stationary obstacle, the use of the given distances, the qualitative explanation and the requirement to satisfy every contribution for full marks.",
+      "recommendedRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedCoveredGoalIds": ["4a2bf015-052b-4af0-aed7-324259fa1a8a"],
+      "recommendedPassingPoints": 16,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "The supplied original records 10/16 and the specified candidate records 16/16. Both have a maximum of 16. The acceptance decision applies to the exact 16/16 candidate.",
+        "A moving following gap would also depend on the lead vehicle’s motion. The rounded video values supply no measurement-error bounds.",
+        "Two speeds in one obstacle scenario give no two-case teaching proof. Direct coverage grants no automatic planning credit."
+      ]
+    },
+    {
+      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "Criteria 1.1–1.6 correctly give constant vₓ = +2.00 m/s and, in SI units, x = 2t, y = 1.25 − 5t², vᵧ = −10t and aᵧ = −10. At 0.20 s the position is (0.40, 1.05) m. Criteria 2.1–2.6 correctly connect downward gravity, uniform horizontal motion, constant vertical acceleration and identical vertical initial conditions to independent motions sharing one elapsed time. Criteria 3.1–3.6 give impact at 0.500 s for both bodies, range 1.00 m for B, and impact components +2.00 and −5.00 m/s. Criteria 4.1–4.6 give y = 1.25 m − (1.25 m⁻¹)x², the descending branch with horizontal starting tangent through the tabulated points, and range 2.00 m at the same flight time when horizontal speed doubles. Criteria 5.1–5.6 give consistent position, velocity and acceleration graphs with the correct endpoints, units and initial velocity slope. Criteria 6.1–6.6 correctly qualify the point-particle, uniform-field and negligible-drag assumptions. Vertical drag can depend on the overall motion, so the data and assumptions with drag unspecified determine no universal arrival order.",
+      "fullPreparationReview": "The horizontal-projection prerequisite supplies component superposition and trajectory representation. Its free-fall and motion-laws chain prepares the signed equations, graphs and impact calculation. The idealizations prerequisite and its comparison of falling bodies prepare the point-particle and drag arguments. The supplied algebra and graph skills, together with the permitted calculator and formula sheet, support time elimination and numerical checks. The qualitative drag question requires neither vector calculation nor a specific drag law.",
+      "directCoverageReview": "Retain motion-model idealizations and limits (MOD) alone. The learner must justify representing the centre of mass by a point, give conditions on size and orientation or deformation, explain the roles of a uniform field and negligible drag, and identify how vertical drag can invalidate the equal-arrival prediction. The constructed table supplies no experimental performance evidence for the horizontal-projection or free-fall goals. Use of acceleration laws and graphs adds no further whole-goal claim.",
+      "falsePassCheck": "The original cut is 22/36. A learner can skip all six criteria in question 6 and still earn 30/36 while omitting the essential MOD justifications. The candidate retains all 36 distinct one-point criteria and requires 36/36. Omitting the applicability conditions in 6.2 or merely asserting that arrival times may differ without the reasoning in 6.6 caps the score at 35. Carry-forward preserves eligible later method points, while the initial error still costs its mark. It cannot replace an independent physical explanation.",
+      "languageReview": "All 36 German and English rubric entries match their respective structured criteria. The original marking principles simultaneously permitted two- or three-significant-figure answers and imposed a 1% limit. For example, ordinary school rounding takes the final coefficient 1.25 m⁻¹ to 1.3 m⁻¹ at two significant figures, a 4% difference. Both candidate versions award full credit for the exact value or a correctly rounded final value, including this example. Both require 1.25 m⁻¹ to be retained for subsequent calculation. The rounding permission preserves the requirements for correct signs, units, graphs and physical reasoning.",
+      "recommendedRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedCoveredGoalIds": ["d6dc0e02-831d-4894-a61a-852bcc74f147"],
+      "recommendedPassingPoints": 36,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "The supplied original records 22/36 and the specified candidate records 36/36. The maximum and all 36 individual criteria are identical. The acceptance decision applies to the exact 36/36 candidate.",
+        "The two bodies and the doubled-speed variation are written model comparisons. They establish neither a practical investigation nor two-case teaching. Direct coverage grants no automatic planning credit.",
+        "These content decisions provide no learner-trial or official exam endorsement and confer no change to historical results, placement or release status."
+      ]
+    }
+  ]
+}

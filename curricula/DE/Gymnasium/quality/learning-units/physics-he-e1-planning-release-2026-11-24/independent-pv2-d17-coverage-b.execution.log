@@ -1,0 +1,1354 @@
+2026-11-24T04:41:17.415961Z  WARN codex_core::agents_md: project doc exceeds remaining budget; truncating path=file:///home/enpasos/projects/skillpilot-e1-nachweise/AGENTS.md remaining_bytes=32768
+2026-11-24T04:41:17.427859Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-24T04:41:17.441169Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+2026-11-24T04:41:17.453199Z  WARN codex_rollout::list: state db discrepancy during find_thread_path_by_id_str_in_subdir: falling_back
+OpenAI Codex v0.171.0-alpha.13.2
+--------
+workdir: /home/enpasos/projects/skillpilot-e1-nachweise
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: ultra
+reasoning summaries: none
+session id: 01a20bdb-b362-7e32-9cec-36892aa59ca3
+--------
+user
+Perform a fresh independent read-only coverage review. You did not author the goal, profile, assessment or planning release. Do not read other reviewers or integrator notes, and do not edit files.
+
+Read the complete exact candidate understanding profile for BES in:
+/home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json
+Read the exact full D17 candidate goal/task/DE+EN solution/scoring in:
+/tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json
+Read current BES goal meaning, ownership and R2/R5 criteria from /tmp/e1-t5/coverage-successor-inputs.json and /tmp/e1-t5/criteria.md. Do not open referenced foreign review files.
+
+Independently decide whether an ordinary17/20 pass on this exact D17 truly supports the whole current BES goal plus every required understanding expectation/coverage obligation in this exact P-v2. Read all three expectation IDs, the2 cases, variationAxes and minimumIndependentDemonstrations/freshVariation/independentTransfer constraints. Check score ceilings if any essential is absent. Examine the model-assumption versus sparse-data distinction, calculus neutrality, three different graph roles at reversal, and the justified limit of continuation. Distinguish mandatory understanding from a particular illustrative numerical case. Do not grant any additional goal merely because prerequisite examples occur. State any actual missing core plainly; do not invent coverage or lower a gate.
+
+Return APPROVE, CONDITIONAL_APPROVE or REJECT for the exact content relationship, with an expectation-by-D-row crosswalk and independent scoring/physical reasoning. If qualified, name exact owned goal and witness IDs andowner v4. Final current-input P/image activation and final exact D native bindings are pending; this read-only review does not grant activation, human acceptance, a learner trial, personal experiment performance, CI, or transfer of old receipts. Cite exact raw digests/profile body you actually read. German report, concise but enough to audit all3expectations.
+
+warning: Codex could not find bubblewrap on PATH. Install bubblewrap with your OS package manager. See the sandbox prerequisites: https://developers.openai.com/codex/concepts/sandboxing#prerequisites. Codex will use the bundled bubblewrap in the meantime.
+2026-11-24T04:41:18.091762Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+2026-11-24T04:41:18.092277Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+2026-11-24T04:41:18.137983Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp-openai.skillpilot.com/.well-known/oauth-protected-resource/mcp\", scope=\"skillpilot.openai.v1.read skillpilot.openai.v1.write\"" })
+2026-11-24T04:41:18.138101Z  WARN codex_mcp::rmcp_client: MCP server startup failed server_name="skillpilot-coach" error=handshaking with MCP server failed: Send message error Transport [codex_rmcp_client::tool_list_changes::ToolListChanges<codex_rmcp_client::event_notification_transport::EventNotificationTransport<rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<codex_rmcp_client::http_client_adapter::StreamableHttpClientAdapter>>>>] error: Auth required, when send initialize request: Send message error Transport [codex_rmcp_client::tool_list_changes::ToolListChanges<codex_rmcp_client::event_notification_transport::EventNotificationTransport<rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<codex_rmcp_client::http_client_adapter::StreamableHttpClientAdapter>>>>] error: Auth required, when send initialize request
+2026-11-24T04:41:18.138422Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+warning: Loaded only 32768 of 213353 bytes from `/home/enpasos/projects/skillpilot-e1-nachweise/AGENTS.md` in environment `local` under the 32768-byte project instruction budget. Trim your project instructions to fit the budget. If you need to keep them all, increase `project_doc_max_bytes`.
+2026-11-24T04:41:18.735824Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+codex
+Ich lese die genannten Kandidatendateien vollständig und prüfe unabhängig, ob ein reguläres Bestehen mit 17/20 Punkten alle verbindlichen BES-Erwartungen trägt. Andere Reviews und Integratornotizen öffne ich nicht; Dateien bleiben unverändert.
+
+exec
+/bin/bash -lc pwd in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+/home/enpasos/projects/skillpilot-e1-nachweise
+
+exec
+/bin/bash -lc 'wc -c /home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json /tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json /tmp/e1-t5/coverage-successor-inputs.json /tmp/e1-t5/criteria.md' in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+  9518 /home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json
+ 15171 /tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json
+269642 /tmp/e1-t5/coverage-successor-inputs.json
+ 30901 /tmp/e1-t5/criteria.md
+325232 total
+
+exec
+/bin/bash -lc 'sha256sum /home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json /tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json /tmp/e1-t5/coverage-successor-inputs.json /tmp/e1-t5/criteria.md' in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+3c07b96dd47f877596a43575a44d2a2087624c9a16dae02854acbf7d929704a2  /home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json
+e12d8bcafaa2bcd824b76bbab56e63ed7d3ef87044eafaa24f30f877a4e3683f  /tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json
+452986171d8ae100962668877589d89fad7b8e2883ea2047bd88fe6ce3d7b220  /tmp/e1-t5/coverage-successor-inputs.json
+d2e2318ffac0bc56fb454b754163a4379a4d36b31bda8dff8ce37db57f838ef3  /tmp/e1-t5/criteria.md
+
+2026-11-24T04:41:26.016074Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+2026-11-24T04:41:36.040597Z ERROR codex_core::tools::router: error=collab spawn failed: Fatal error: failed to load model context for thread 01a20bdb-b362-7e32-9cec-36892aa59ca3: invalid thread-store request: no rollout found for thread id 01a20bdb-b362-7e32-9cec-36892aa59ca3
+2026-11-24T04:41:36.041200Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+exec
+/bin/bash -lc 'cat /tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json' in /home/enpasos/projects/skillpilot-e1-nachweise
+exec
+/bin/bash -lc 'cat /home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json' in /home/enpasos/projects/skillpilot-e1-nachweise
+exec
+/bin/bash -lc "rg -n '"'^#|R2|R5|owner|BES|coverage'"' /tmp/e1-t5/criteria.md" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "physik-e1-bes-current-20261124-v2",
+  "reviewedAt": "2026-11-24T04:35:57.969Z",
+  "reviewer": "Actual clean Codex CLI gpt-6.1-sol/ultra narrow revision candidate author 01a20bd4-cbc6-7a91-9e60-2ac6a87af88c",
+  "goals": [
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "reason": "Gleiche vorzeichenbehaftete Geschwindigkeitsänderungen in gleichen Zeiten verbinden t-v-Gerade, waagerechten t-a-Graphen und t-s-Parabel. / Equal signed velocity changes over equal times link a straight t-v graph, horizontal t-a graph and parabolic t-s graph.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "constant-acceleration",
+            "essentialUnderstandingDe": "Bei gleichmäßig beschleunigter eindimensionaler Bewegung ist a = Δv/Δt konstant; das Vorzeichen von a allein entscheidet nicht, ob der Geschwindigkeitsbetrag wächst.",
+            "essentialUnderstandingEn": "In uniformly accelerated one-dimensional motion, a = Δv/Δt is constant; the sign of a alone does not determine whether speed increases.",
+            "observablePerformanceDe": "Begründet aus Geschwindigkeitsänderungen das konstante a mit Einheit m/s² und beschreibt anhand der Vorzeichen von v und a schneller oder langsamer werdende Bewegung.",
+            "observablePerformanceEn": "Justifies constant a from velocity changes with unit m/s² and uses the signs of v and a to describe speeding up or slowing down."
+          },
+          {
+            "id": "linked-three-graphs",
+            "essentialUnderstandingDe": "Konstantes a entspricht einer t-v-Geraden und einem waagerechten t-a-Graphen; bei a ≠ 0 ist der t-s-Graph parabelförmig. Seine Steigung beschreibt v, seine Krümmungsrichtung das Vorzeichen von a.",
+            "essentialUnderstandingEn": "Constant a corresponds to a straight t-v graph and a horizontal t-a graph; for a ≠ 0 the t-s graph is parabolic. Its slope describes v and its concavity the sign of a.",
+            "observablePerformanceDe": "Erstellt aus neuen Bewegungsdaten zusammenpassende t-s-, t-v- und t-a-Darstellungen mit Achsen und Einheiten; begründet Steigung, Krümmung und die Übereinstimmung der Ortsänderungen mit vorzeichenbehafteten t-v-Flächen, ohne Differentialrechnung vorauszusetzen. Jede fachlich gültige Erklärung der Graphenbeziehungen ist zulässig.",
+            "observablePerformanceEn": "Constructs consistent t-s, t-v, and t-a representations from fresh motion data with axes and units; explains slope, concavity, and agreement of displacement with signed t-v areas without requiring calculus. Any valid explanation of the graph relationships is accepted."
+          },
+          {
+            "id": "zero-velocity-and-validity",
+            "essentialUnderstandingDe": "v = 0 zu einem Zeitpunkt bedeutet nicht a = 0. Die Darstellungen beschreiben das angegebene Modellintervall und belegen allein keinen bestimmten Kraftmechanismus.",
+            "essentialUnderstandingEn": "v = 0 at one instant does not mean a = 0. The representations describe the stated model interval and alone do not establish a particular force mechanism.",
+            "observablePerformanceDe": "Sagt bei geänderter Bewegungs- oder Beschleunigungsrichtung den Graphenverlauf voraus und erklärt einen möglichen Stillstandsmoment bei fortbestehender Beschleunigung; begrenzt die Aussage auf das Modellintervall.",
+            "observablePerformanceEn": "Predicts graph behavior when motion or acceleration direction changes and explains a possible instant of rest with continuing acceleration; limits the claim to the model interval."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "constant-acceleration",
+            "linked-three-graphs",
+            "zero-velocity-and-validity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "relative-signs",
+            "textDe": "Geschwindigkeit und Beschleunigung gleichgerichtet gegenüber entgegengerichtet, einschließlich eines Richtungswechsels.",
+            "textEn": "Velocity and acceleration in the same versus opposite directions, including a reversal."
+          },
+          {
+            "id": "starting-representation",
+            "textDe": "Orts- und Geschwindigkeitsdaten gegenüber einer beschriebenen t-v-Geraden als Ausgangsdarstellung.",
+            "textEn": "Position and velocity data versus a described straight t-v graph as the starting representation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "starting-from-rest",
+            "taskDemandDe": "Für ein eindimensionales Wagenmodell wird im gesamten Intervall von 0 bis 3 s konstante Beschleunigung angenommen. Bei t = 0; 1; 2; 3 s gelten die Orte 0,20; 0,40; 1,00; 2,00 m und Geschwindigkeiten 0; 0,40; 0,80; 1,20 m/s. Erstelle und erkläre die drei kontinuierlichen Zeitdiagramme unter dieser Annahme.",
+            "taskDemandEn": "For a one-dimensional cart model, constant acceleration is assumed throughout the interval from 0 to 3 s. At t = 0, 1, 2, 3 s, the positions are 0.20, 0.40, 1.00, 2.00 m and velocities are 0, 0.40, 0.80, 1.20 m/s. Construct and explain the three continuous time graphs under this assumption.",
+            "expectedPerformanceDe": "Ermittelt a = +0,40 m/s², zeichnet t-v linear steigend, t-a konstant positiv und t-s zunehmend steil, nach oben gekrümmt. Prüft etwa Δs von 1 bis 2 s = 0,60 m an der Trapezfläche; erklärt, warum v(0) = 0 keine fehlende Beschleunigung bedeutet.",
+            "expectedPerformanceEn": "Finds a = +0.40 m/s² and draws linearly increasing t-v, constant positive t-a, and increasingly steep, concave-up t-s. Checks, for example, Δs from 1 to 2 s = 0.60 m using the trapezoid area; explains why v(0) = 0 does not mean absent acceleration.",
+            "understandingFocusDe": "Konstante Beschleunigung bedeutet gleiche Geschwindigkeitszuwächse in gleichen Zeitintervallen; bei diesem in positiver Richtung fahrenden Wagen wachsen dabei die positiven Ortszuwächse. Die Stützwerte zeigen gleiche mittlere Beschleunigungen in den aufgeführten Intervallen; die Konstanz auch zwischen den Stützstellen ist eine Modellannahme.",
+            "understandingFocusEn": "Constant acceleration means equal velocity increments over equal time intervals; for this cart moving in the positive direction, the positive displacements increase. The samples show equal average accelerations over the listed intervals; constancy between the samples is a model assumption."
+          },
+          {
+            "id": "deceleration-through-reversal",
+            "taskDemandDe": "Ein t-v-Graph verläuft für 0 bis 4 s geradlinig von +1,0 auf −1,0 m/s; s(0) = 0. Entwickle unabhängig passende t-s- und t-a-Darstellungen und beschreibe die Bewegung vor und nach v = 0. Erläutere, was jeder Graph bei 2 s zeigt, was die Angaben bis einschließlich 4 s festlegen und ob sie auch die spätere Bewegung eindeutig bestimmen.",
+            "taskDemandEn": "A t-v graph runs straight from +1.0 to −1.0 m/s over 0 to 4 s; s(0) = 0. Independently develop matching t-s and t-a representations and describe motion before and after v = 0. Explain what each graph shows at 2 s, what the information determines through 4 s, and whether it also uniquely determines later motion.",
+            "expectedPerformanceDe": "Erhält a = −0,50 m/s² und t-s-Punkte bei t = 0; 1; 2; 3; 4 s von 0; 0,75; 1,00; 0,75; 0 m. Erklärt Abbremsen bis 2 s, danach schnelleres Rückwärtsfahren: Im t-v-Graphen durchquert v bei 2 s die Nulllinie von positiv nach negativ, im t-s-Graphen erreicht s dort ein Maximum und der t-a-Graph bleibt durchgehend bei a = −0,50 m/s². Der t-a-Graph allein legt den Umkehrzeitpunkt nicht fest. Die Angaben bestimmen die Bewegung bis einschließlich 4 s samt Ort und Geschwindigkeit bei 4 s, aber keinen eindeutigen Verlauf danach; dafür ist eine zusätzliche Annahme über die Beschleunigung nach 4 s nötig.",
+            "expectedPerformanceEn": "Obtains a = −0.50 m/s² and t-s points at t = 0, 1, 2, 3, 4 s of 0, 0.75, 1.00, 0.75, 0 m. Explains slowing until 2 s, then increasing backward speed: in the t-v graph, v crosses zero from positive to negative at 2 s; in the t-s graph, s reaches a maximum there; and the t-a graph remains at a = −0.50 m/s² throughout. The t-a graph alone does not determine the reversal time. The information determines motion through 4 s, including position and velocity at 4 s, but no unique course afterward; that requires a further assumption about acceleration after 4 s.",
+            "understandingFocusDe": "Negatives a ist mit Abbremsen und mit wachsendem Geschwindigkeitsbetrag vereinbar; beim Richtungswechsel gehören v-Nulldurchgang und s-Maximum zusammen, während a unverändert bleibt. Der t-a-Graph allein zeigt den Umkehrzeitpunkt nicht.",
+            "understandingFocusEn": "Negative a can describe both slowing and increasing speed; at reversal, the zero crossing of v coincides with the maximum of s while a remains unchanged. The t-a graph alone does not show the reversal time."
+          }
+        ]
+      }
+    }
+  ]
+}
+
+ succeeded in 0ms:
+{
+  "id": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+  "shortKey": "canonical_physics_k6_acceleration_log-he-e1",
+  "title": "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen",
+  "titleEn": "Acceleration log: velocity, position, and model limits",
+  "description": "Die lernende Person kann aus einem Beschleunigungsprotokoll mit Anfangswerten konsistente Bewegungsdarstellungen gewinnen und die Modellgrenzen prüfen.",
+  "descriptionEn": "The learner can obtain consistent motion representations from an acceleration log with initial values and assess model limits.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical"
+  ],
+  "contains": [],
+  "requires": [
+    "262f807a-30d0-503e-986f-856cbd048e8e"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "PK3_MATHEMATISIEREN"
+    ],
+    "guidingIdeas": [],
+    "phase": "GLOBAL",
+    "area": "Messdaten und Bewegung",
+    "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.ACCELERATION_LOG"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-HE"
+    ]
+  },
+  "type": "atomic",
+  "examData": {
+    "coveredGoalIds": [
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ],
+    "coveredStrands": [
+      "LI_BEWEGUNG"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "reviewStatus": "released",
+    "reviewNote": "Unabhängige Fachprüfung der DE/EN-Aufgabe und des Rasters an exakter Quelle (SHA-256 ebf5e6e09f67b93aa090d959a0fabab74df163d64def33fd909dd1bf74dfe788). Review: docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md",
+    "sourceArtifactPath": "docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/d-beschleunigungsprotokoll.md",
+    "taskContent": "Ab 17 von 20 BE ist die Prüfung bestanden.\n\n**Wagen auf einer geraden Bahn.** Bei $t=2\\,\\mathrm s$ ist der Wagen am Ort $s=5\\,\\mathrm m$. Er hat die Geschwindigkeit $v=-1\\,\\mathrm{m/s}$. Von $t=2\\,\\mathrm s$ bis $t=4\\,\\mathrm s$ beträgt laut Protokoll seine Beschleunigung $a=+2\\,\\mathrm{m/s^2}$.\n\n1. Zeichne oder beschreibe das Zeit-Beschleunigungs-, Zeit-Geschwindigkeits- und Zeit-Ort-Diagramm in diesem Zeitraum. Zeige, wie die Werte bei 2 s in deine Darstellung eingehen. Markiere den Richtungswechsel. Bestimme die Ortswerte bei 2,5 s, 3 s und 4 s. (5 BE)\n2. Erkläre, was die Flächen im Beschleunigungs- und Geschwindigkeitsdiagramm in diesem Fall bedeuten. Zeige, wie du die Flächen bis und nach dem Richtungswechsel bestimmst und für Ortsänderung und Strecke zusammensetzt. Gib Ortsänderung und Strecke für das ganze Intervall an. Prüfe außerdem, ob deine Vorhersage bei 4 s zur unabhängigen Kontrollablesung $(7{,}03\\pm0{,}05)\\,\\mathrm m$ passt. (5 BE)\n\n3. **Bremsendes Fahrzeug.** Bei $t=0$ beginnt das fahrende Fahrzeug mit $v_0=6\\,\\mathrm{m/s}$ zu bremsen. Die Beschleunigung beträgt bis zum Stillstand $a=-2\\,\\mathrm{m/s^2}$. Der Beginn der Bremsung liegt bei $s=0$.\n\n   Stelle die Geschwindigkeits- und Ortsgesetze für die Bremsung auf. Zeichne oder beschreibe die drei Zeitdiagramme vom Beginn der Bremsung bis zum Stillstand. Bestimme die Stoppzeit und den Bremsweg und zeige die zugehörigen Werte in den Diagrammen. (5 BE)\n4. Ein Programm lässt die Beschleunigung bis 5 s unverändert. Was sagt es dann für Ort und Geschwindigkeit bei 5 s voraus? Erkläre, warum diese Fortsetzung die Bewegung eines nach dem Bremsen stehen bleibenden Fahrzeugs nicht trifft. Gib an, welche Beschleunigung, Geschwindigkeit und Position das Modell nach dem Stillstand stattdessen ansetzen müsste. (5 BE)",
+    "taskContentEn": "A total of 17 out of 20 marks is a pass.\n\n**Cart on a straight track.** At $t=2\\,\\mathrm s$, the cart's position is $s=5\\,\\mathrm m$ and its velocity is $v=-1\\,\\mathrm{m/s}$. For the interval from $t=2\\,\\mathrm s$ to $t=4\\,\\mathrm s$, the log shows that its acceleration is $a=+2\\,\\mathrm{m/s^2}$.\n\n1. Sketch or describe the acceleration–time, velocity–time and position–time graphs for this interval. Show how the values at 2 s enter your representations. Mark the change in direction. Find the positions at 2.5 s, 3 s and 4 s. (5 marks)\n2. Explain what the areas in the acceleration and velocity graphs mean in this case. Show how you find the areas before and after the reversal and combine them for displacement and distance. Give the displacement and total distance over the whole interval. Also check whether your prediction at 4 s agrees with a separate reading of $(7.03\\pm0.05)\\,\\mathrm m$. (5 marks)\n\n3. **Braking vehicle.** At $t=0$, the moving vehicle has velocity $v_0=6\\,\\mathrm{m/s}$ and starts braking with acceleration $a=-2\\,\\mathrm{m/s^2}$. It comes to a stop. Its position is $s=0$ when braking starts.\n\n   Set up the velocity and position laws while the vehicle brakes. Sketch or describe all three time graphs from the start of braking until the vehicle stops. Find the stopping time and braking distance, and show the corresponding values in your graphs. (5 marks)\n4. A program keeps the acceleration unchanged until 5 s. What position and velocity does it predict at 5 s? Explain why this extension fails to describe a vehicle that remains at rest after braking. State what acceleration, velocity and position the model should use once the vehicle has come to rest. (5 marks)",
+    "solutionContent": "1. Verwendet man $\\tau=t-2\\,\\mathrm s$ als Zeit seit dem Beginn des Protokolls, gelten $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ und $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. Gleichwertig sind bei Verwendung der Zeit $t$ in Sekunden die Gesetze $v=2t-5$ in Metern pro Sekunde und $s=t^2-5t+11$ in Metern; beide erfüllen die Anfangswerte bei $t=2\\,\\mathrm s$. Die Beschleunigung ist eine waagerechte Linie bei $+2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade steigt von $-1$ auf $+3\\,\\mathrm{m/s}$ und schneidet bei 2,5 s die Nulllinie. Die nach oben geöffnete Ortsparabel fällt zunächst, hat bei 2,5 s am Richtungswechsel ihr Minimum bei 4,75 m und steigt danach. Bei 3 s liegt der Wagen wieder bei 5,00 m, bei 4 s bei 7,00 m.\n2. Die Beschleunigungsfläche ergibt $(2\\,\\mathrm{m/s^2})\\cdot(2\\,\\mathrm s)=+4\\,\\mathrm{m/s}$ als Geschwindigkeitsänderung. Bis zur Umkehr ist die vorzeichenbehaftete Dreiecksfläche $-\\tfrac12(0{,}5\\,\\mathrm s)(1\\,\\mathrm{m/s})=-0{,}25\\,\\mathrm m$. Danach ist sie $+\\tfrac12(1{,}5\\,\\mathrm s)(3\\,\\mathrm{m/s})=+2{,}25\\,\\mathrm m$. Die Ortsänderung ist die Summe, also $+2{,}00\\,\\mathrm m$. Die Strecke zählt beide Wegstücke positiv, also $2{,}50\\,\\mathrm m$. Die vorhergesagten 7,00 m liegen im Kontrollbereich von 6,98 bis 7,08 m.\n3. Mit $t$ in Sekunden gilt $v=6-2t$ in Metern pro Sekunde und $s=6t-t^2$ in Metern. Im Beschleunigungsdiagramm verläuft die Linie bis zum Stopp waagerecht bei $-2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade fällt von 6 m/s auf null bei 3 s. Der Ortsgraph ist eine nach unten geöffnete Parabel, die von 0 m auf 9 m steigt und beim Stopp eine waagerechte Tangente hat. Der Bremsweg beträgt 9 m.\n4. Mit unveränderter Beschleunigung ergibt das Programm $v(5)=-4\\,\\mathrm{m/s}$ und $s(5)=5\\,\\mathrm m$. Es sagt nach dem Stillstand eine Bewegung rückwärts voraus. Damit das Fahrzeug stehen bleibt, darf man die vorherige Bremsbeschleunigung im Modell nach dem Stopp nicht weiterführen. Dazu müsste eine weitere rückwärts gerichtete Beschleunigung physikalisch begründet sein. Beim Dauerstillstand gilt nach 3 s $a=0$, $v=0$ und $s=9\\,\\mathrm m$.\n\n**Hinweise zur Bewertung**\n\nJe Zeile zählt die höchste belegte Stufe. Die vier Werte werden addiert. Begründete Diagramme und ausreichend genaue Beschreibungen mit nachvollziehbaren Größen und Einheiten zeigen dieselben Leistungen.",
+    "solutionContentEn": "1. With $\\tau=t-2\\,\\mathrm s$ measuring time since the start of the log, $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ and $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. Equivalently, with $t$ in seconds, $v=2t-5$ in metres per second and $s=t^2-5t+11$ in metres satisfy both initial values at $t=2\\,\\mathrm s$. The acceleration graph is horizontal at $+2\\,\\mathrm{m/s^2}$. The velocity rises linearly from $-1$ to $+3\\,\\mathrm{m/s}$, crossing zero at 2.5 s. The position graph is an upward-opening parabola. It falls to its minimum of 4.75 m when the cart changes direction at 2.5 s and then rises. The cart is at 5.00 m again at 3 s and at 7.00 m at 4 s.\n2. The acceleration area gives $(2\\,\\mathrm{m/s^2})\\cdot(2\\,\\mathrm s)=+4\\,\\mathrm{m/s}$ as the velocity change. Before the reversal the signed triangle area is $-\\tfrac12(0.5\\,\\mathrm s)(1\\,\\mathrm{m/s})=-0.25\\,\\mathrm m$. Afterwards it is $+\\tfrac12(1.5\\,\\mathrm s)(3\\,\\mathrm{m/s})=+2.25\\,\\mathrm m$. Adding them gives the displacement, $+2.00\\,\\mathrm m$. Total distance counts both stretches positively and is $2.50\\,\\mathrm m$. The predicted 7.00 m lies inside the check interval from 6.98 to 7.08 m.\n3. For $t$ in seconds, $v=6-2t$ is in metres per second and $s=6t-t^2$ is in metres. The acceleration graph is horizontal at $-2\\,\\mathrm{m/s^2}$ until stopping. The velocity graph is a straight line falling from 6 m/s to zero at 3 s. The position graph is a downward-opening parabola that rises from 0 m to 9 m, with a horizontal tangent at the stop. The braking distance is 9 m.\n4. With unchanged acceleration, the program gives $v(5)=-4\\,\\mathrm{m/s}$ and $s(5)=5\\,\\mathrm m$. After the stop it predicts that the vehicle moves backwards. For the vehicle to remain at rest, the previous braking acceleration cannot continue beyond the stop in the model. A new physical explanation would be needed for acceleration backwards. For a vehicle that stays at rest, $a=0$, $v=0$ and $s=9\\,\\mathrm m$ after 3 s.\n\n**Scoring notes**\n\nScore the highest level demonstrated in each row and add the four results. Reasoned graphs and sufficiently precise descriptions with clearly identifiable quantities and units demonstrate the same skills.",
+    "scoring": {
+      "maxPoints": 20,
+      "passingPoints": 17,
+      "steps": [
+        {
+          "id": "D1",
+          "points": 5,
+          "description": "DE: **Ein Protokoll in drei Darstellungen.** 0 ohne fachlich richtige Leistung. 1 für einen tragfähigen Teilansatz. 2 für drei fachlich konsistente Zeitdiagramme, die mit den Gegebenheiten bei 2 s beginnen, die konstante positive Beschleunigung und den Richtungswechsel in beiden Bewegungsdiagrammen zeigen. Ab dieser Stufe je 1 BE für den abgeleiteten Zeitpunkt des Wechsels und den passenden Ort, die beiden folgenden Ortswerte sowie den nachvollziehbaren Ansatz mit beiden Anfangswerten bei $t=2\\,\\mathrm s$. Ein konsistenter Ansatz mit der ursprünglichen Zeit oder mit verschobenem Zeitnullpunkt ist gleichwertig. EN: **One log in three representations.** 0 for no correct contribution. 1 for a valid partial approach. 2 for three consistent time graphs that start with the given conditions at 2 s and show constant positive acceleration and the reversal in both motion graphs. From this level add 1 mark each for deriving when and where the reversal occurs, the next two position values, and showing a checkable use of both initial values at $t=2\\,\\mathrm s$. A consistent method using the original time or a shifted time origin is equivalent."
+        },
+        {
+          "id": "D2",
+          "points": 5,
+          "description": "DE: **Flächen und Ortsänderung.** 0 ohne fachlich richtiges Ergebnis oder Argument. 1 für einen richtigen Teilnachweis. 2 für die Beschleunigungsfläche als Geschwindigkeitsänderung und eine auf den gegebenen Richtungswechsel angewandte Flächenbilanz. Die zwei bestimmbaren Geschwindigkeitsflächen werden für die Ortsänderung mit Vorzeichen sowie für die Strecke mit ihren Beträgen kombiniert. Eine beschriftete Konstruktion oder ein richtiger Ansatz mit einem einzelnen Rechenfehler genügt. Ab dieser Stufe je 1 BE für den richtigen Wert der Geschwindigkeitsänderung, die richtigen Werte von Ortsänderung und Strecke mit Einheiten und den begründeten Vergleich mit dem Kontrollintervall. EN: **Areas and displacement.** 0 for no correct argument or result. 1 for a valid partial result. 2 for interpreting the acceleration area as velocity change and applying an area balance to the given reversal. The two determinable velocity areas are combined with their signs for displacement and with their magnitudes for distance. A labelled construction or a correct setup with a single calculation slip is sufficient. From this level add 1 mark each for the correct velocity change, correct displacement and distance with units, and a justified comparison with the check interval."
+        },
+        {
+          "id": "D3",
+          "points": 5,
+          "description": "DE: **Bremsmodell.** 0 ohne fachlich richtige Leistung. 1 für einen tragfähigen Teilansatz. 2 für die zur Bremsung passenden Geschwindigkeits- und Ortsgesetze und drei konsistente zugehörige Zeitdiagramme vom Modellbeginn bis zum durch $v=0$ erkannten Stopp. Ab dieser Stufe je 1 BE für die ermittelte Stoppzeit, den ermittelten Bremsweg und die Zahlenwerte mit Einheiten am Beginn und Ende der zugehörigen Darstellungen. EN: **Braking model.** 0 for no correct contribution. 1 for a valid partial approach. 2 for velocity and position laws appropriate for braking and three consistent corresponding time graphs from the start of the model until the stop identified by $v=0$. From this level add 1 mark each for obtaining the stopping time, obtaining the braking distance, and giving numerical values with units at the start and end of the corresponding representations."
+        },
+        {
+          "id": "D4",
+          "points": 5,
+          "description": "DE: **Modellgrenze und Stillstand.** 0 ohne fachlich richtige Leistung. 1 für einen tragfähigen Teilbefund. 2, wenn die Fortsetzung als Rückwärtsbewegung erkannt und erklärt wird, warum eine Beschleunigung rückwärts nach dem Stopp einer neuen physikalischen Begründung bedarf. Ab dieser Stufe je 1 BE für die richtige Geschwindigkeit und den richtigen Ort bei 5 s sowie für die konsistenten Werte von Beschleunigung, Geschwindigkeit und Ort nach dem Stopp im Stillstandsmodell. EN: **Validity and rest.** 0 for no correct contribution. 1 for a valid partial result. 2 for recognising that the extension predicts backward motion and explaining why acceleration backwards after stopping would need a new physical explanation. From this level add 1 mark each for the correct velocity and the correct position at 5 s, and for consistent acceleration, velocity and position in the model where the vehicle remains at rest."
+        }
+      ]
+    }
+  },
+  "nodeKind": "exam",
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "sourceRef": "docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/d-beschleunigungsprotokoll.md"
+}
+
+ succeeded in 0ms:
+1:# Learning-Unit Design Criteria and Examples
+15:## 12. Learning-Unit Design Criteria and Examples
+25:### 12.1. Establish a Secure Foundation
+35:### 12.2. Recognising a Meaningful Boundary
+52:#### 12.2. The Knowledge Context of a Unit
+67:### 12.3. Learn, Demonstrate, and Continue Learning
+79:### 12.4. Main Example: Motion with Constant Acceleration (Upper-Secondary Physics)
+83:#### 12.4. Learning Promise and Coherence
+111:#### 12.4. Entry and Continuation
+123:#### 12.4. What an Independent Assessment Must Reveal
+135:An ordinary pass rule under which the first misconception could be fully compensated by other points does not fit the claimed evidence. Conversely, this requirement implies no duty of flawlessness. It must be implemented in the ordinary task and rubric, without a hidden additional pass condition. If the existing total-score grading cannot carry the claim, the assessment or the claimed coverage must be revised before release. The task sketches and counterexamples do not yet replace a worked-out, independently reviewed production rubric.
+141:#### 12.4. A Larger Candidate: Kinematics Including Superposition
+147:The existing child unit on modelling uniformly accelerated motion has two assessments of its own. The vertical throw can show model choice and its limits. The acceleration protocol also requires motion graphs and the distinction between displacement and distance travelled after a reversal. That distinction was exactly why the reviewers withdrew coverage of the full acceleration goal from the vertical throw. [Current child-unit contract](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md)
+162:#### 12.4. What E.1 evidence means for later learning
+170:#### 12.4. What Textbook Structures Show
+182:#### 12.4. Mathematical Methods Must Be Available in Time
+190:### 12.5. Second Example: Number Sense in Grade 5 Mathematics
+214:### 12.6. How unit order, evidence and recommendations fit together
+231:**Contract in force, 4/11 November.** The three declared subject units retain their assessments and coverage reviews. Under R1–R5 an ordinary goal a unit owns can gain recognition before the whole unit is complete, once the relevant local obligations have been met. That recognition applies globally. Today’s runtime can already credit a goal because no open obligation in the evaluated scope still needs it. The proposal of 19 November would defer additional planning release until the owning unit version is complete. [Confirmed decision](completion-semantics-clarification-2026-11-04.md)
+235:### 12.7. Short Design Sheet
+
+exec
+/bin/bash -lc "python3 -c 'import json; p=json.load(open(\"/tmp/e1-t5/coverage-successor-inputs.json\")); print(type(p).__name__); print(\"\\n\".join((str(k)+\": \"+type(v).__name__+\" \"+str(len(v) if hasattr(v,\"__len__\") else \"\")) for k,v in p.items()))'" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+dict
+scope: str 194
+constraints: list 5
+currentContentGoals: list 12
+currentParts: list 4
+otherOfferedAssessments: list 2
+declaredLearningUnits: list 1
+ownPlacements: list 4
+currentE1Material: dict 4
+currentChild2Material: dict 6
+activePositiveProfilesAtCapsuleSeal: list 9
+proposedD17Successor: dict 4
+proposedBESProfileAtSeal: dict 2
+
+2026-11-24T04:41:43.837064Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+exec
+/bin/bash -lc 'cat /tmp/e1-t5/criteria.md' in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+# Learning-Unit Design Criteria and Examples
+
+> Generated artifact. Do not edit manually.
+>
+> Generated by: `scripts/build_compendia.py`
+> Regenerate with: `python3 scripts/build_compendia.py --compendium skill-graph-architecture --web-and-tex`
+> Source of truth: `docs/concept/skill-graph/architecture-source/`
+
+**Language / Sprache:** **English (EN)** · [Deutsch (DE)](learning-unit-design-and-examples.de.md) | **PDF:** [English PDF](skillpilot-skill-graph-architecture.en.pdf) · [Deutsches PDF](skillpilot-skill-graph-architecture.de.pdf)
+
+**Compendium:** [§1 General Goal System](general-goal-system-and-migration.md) · [§2 Node Types](node-types.md) · [§3 View Projection](view-projection-and-goal-placement.md) · [§4 Source & Resource Links](source-and-resource-links.md) · [§5 Content Integration](content-integration.en.md) · [§6 Source Rationales](human-readable-source-rationales.md) · [§7 Goal Visualizations](atomic-goal-visualizations.md) · [§8 Learning-Goal Book](learning-goal-book-and-evidence-review-pipeline.md) · [§9 Gymnasium Rollout](canonical-gymnasium-rollout.md) · [§10 MEM/FWU Plan](mem-fwu-roundtrip-plan.md) · [§11 Dual Package Releases](dual-curriculum-package-releases.en.md) · **§12 Unit Design & Examples** · [§13 Knowledge Context](knowledge-context.md)
+
+---
+<a id="sec-sga-unit-design"></a>
+## 12. Learning-Unit Design Criteria and Examples
+
+**Working proposal for expert review, 19 November 2026.** Representative unit qualifications are a proposed design. The existing curriculum and assessment contracts apply pending a product decision.
+
+A [learning unit](learning-units.md) needs a clear learning promise. If learners should be able to demonstrate it directly, authors must answer a second question. What independent performance would convince us that someone fulfils this promise at the stated level?
+
+Hessian kinematics provides an existing child unit and a possible qualification for its parent unit E.1. A Mathematics example poses the same question for number sense. The [subject review paper](unit-assessment-discussion-2026-11-19.de.md) contains the E.1 task drafts, scoring examples and open decisions.
+
+<a id="1-establish-a-secure-foundation"></a>
+<a id="sec-sga-ud-foundation"></a>
+### 12.1. Establish a Secure Foundation
+
+A learning unit bundles one coherent conceptual step: learners understand a model or a subject-matter relationship and can act independently with it. The motivation explains which question becomes answerable and why the effort pays off. A unit may correspond to a familiar topic; it may equally open up a new way of thinking that connects several topics. Its scope follows this learning promise. A final application or synthesis can also form a unit; it does not need a later unit to justify its existence.
+
+The regular route leads from an opening question through explanation, examples and practice to independent application. Someone familiar with the unit can choose to demonstrate it directly. They should first see which parts are required and which already have valid evidence. Both routes use the same assessment standard.
+
+Representative performances can support a judgment about the unit. An arithmetic slip may be compatible with the promise. If someone fundamentally misunderstands a central model and can still pass, the task and its scoring rule fail to support the judgment. Reviewers use concrete answers to examine both cases.
+
+<a id="2-recognising-a-meaningful-boundary"></a>
+<a id="sec-sga-ud-boundary"></a>
+### 12.2. Recognising a Meaningful Boundary
+
+A boundary is supported by an understandable shared learning promise and by an independent application that can test the whole claimed conceptual step. A recognisable transition to later demands is another important reason; a final unit needs no successor. Subject proximity and dense prerequisite connections are indications, not an automatic cut. A sparse, transitively minimal chain can also be closely connected. Shared foundations such as equations or number sense connect many topics without turning them into one giant unit.
+
+In the target design the Cockpit tree and graphical learning map share the same hierarchy of units and atomic goals in the same personal scope. Each goal has the same parent path in both views. Prerequisites and linked materials may appear on other boards while keeping their original placement.
+
+The following justifications are unsuitable:
+
+- "There already is an assessment": the assessment must arise from the learning promise; its existing scope does not determine the unit.
+- "The group needs at least a few goals": the learning promise and the application that can be demonstrated determine the scope. An atomic goal opens directly. A folder containing only that goal without a distinct learning path adds no level to learner navigation.
+- "The heading looks tidy": an additional parent heading creates neither coherence nor a new learning outcome.
+- "Then all edges fit": prerequisites are neither invented nor removed to make a desired partition fit afterwards.
+
+A subject-matter questionable edge is a finding of its own. Its review must not be replaced by silently narrowing the meaning of the goals involved. Even an atomically acyclic sequence can, through poor grouping, produce a contradiction between whole blocks; boundary or nesting must then be reconsidered.
+
+<a id="the-knowledge-context-of-a-unit"></a>
+<a id="sec-sga-ud-frame"></a>
+#### 12.2. The Knowledge Context of a Unit
+
+Whatever elaborates the goals of a unit addresses a learner who knows some things and does not yet know others. This knowledge is the [knowledge context](knowledge-context.md): a projection of the skill graph that says for every goal what it builds on, what is secured, what builds on it, and which neighbouring subject matter is not yet secured (Product Owner requirement of 13 November 2026). The knowledge context of a unit is the union of the contexts of its own goals and assessments. Nothing is written for a unit by hand.
+
+In a unit on differentiating polynomial functions, the context secures power functions with natural exponents, their multiples and sums, and the rules the unit develops. Trigonometric, exponential, and logarithmic functions and the product and chain rules are not secured. An application in this unit, and equally the image of one of its goals, then shows a polynomial function and never $\sin x$ or $e^x$, however natural such an example looks to an author who knows the whole subject.
+
+Two rules follow for the design of a unit:
+
+1. **Every elaboration stays inside.** Tasks and sample solutions of the own assessments, memory cards, practice tasks, goal images, and the coach's examples for the unit's goals use only what the context secures and what the unit develops. Whatever leaves it is assigned to the wrong unit or is changed.
+2. **The graph must suffice.** If the unit needs something that its context does not secure, the graph lacks a prerequisite, a goal reaches into later subject matter, or the boundary is wrong. That is a finding for subject review. No edge is invented and no goal text is narrowed to remove it.
+
+The context is derived before tasks, cards, and images of the unit are written or reviewed. It is the same in every curriculum context, because the prerequisite relation is canonical: neither "planned for the same school year" nor a sibling `after` order unlocks concepts inside $W(g)$; in E3’s case of two distinct child units, `after` orders the prerequisite child unit before the dependent one (when either branch is an own atom, demand itself provides the order), whereas only atomic `requires` paths secure concepts for tasks, cards, images, and explanations.
+
+<a id="3-learn-demonstrate-and-continue-learning"></a>
+<a id="sec-sga-ud-loop"></a>
+### 12.3. Learn, Demonstrate, and Continue Learning
+
+“A ball rolls off a table. Where will it land?” The opening question gives a purpose to learning. The coach can explain horizontal motion and falling with one example, demonstrate how to draw the situation, and gradually withdraw help in the next example. An exercise at the end of the path gives learners a chance to predict the landing point independently.
+
+A direct entrant sees the learning promise and the performances required. In a task on superposition, the learner must decide independently how to relate the two motions in time. Whether they must actually perform the experiment depends on the claim. Analysing supplied data may leave experimental execution unobserved.
+
+A gap can lead back to focused work. Once the solution is known, the familiar case serves as practice. A new qualifying attempt that claims independent model choice needs an equivalent, sufficiently fresh situation. The validity and cost of providing such variants need trials.
+
+Passing creates no record of attending the introduction or completing skipped exercises. Later recommendations use only the reviewed scope of the version passed. The sibling relation `after` orders units without creating a subject prerequisite. [Unit progression](learning-unit-progression.md)
+
+<a id="4-main-example-motion-with-constant-acceleration-upper-secondary-physics"></a>
+<a id="sec-sga-ud-physics"></a>
+### 12.4. Main Example: Motion with Constant Acceleration (Upper-Secondary Physics)
+
+<a id="learning-promise-and-coherence"></a>
+<a id="sec-sga-ud-phys-promise"></a>
+#### 12.4. Learning Promise and Coherence
+
+**Candidate:** "I can independently model, calculate, and explain a one-dimensional motion with constant acceleration." Learners choose an axis and signs, take initial position and initial velocity into account, and connect position, velocity, and acceleration in formulas and graphs.
+
+The guiding question can be: "How do I describe a thrown ball from release to impact with a single model?" Free fall from rest and vertical throws are cases of the same model here. They are not split into two single-goal units merely because they carry different names. Different initial conditions make the common relationship visible.
+
+For the time from the chosen start onwards, constant acceleration gives:
+
+$$
+x(t)=x_0+v_0t+\tfrac12at^2,\qquad v(t)=v_0+at,\qquad a(t)=a.
+$$
+
+In a course where derivatives are already available, learners can use them to check and physically interpret the relationships from $x$ to $v$ and from $v$ to $a$. This is not a blanket assumption about every entry course. The quadratic equation of motion can be developed without integral calculus or provided as a model equation; the entry described here requires no formal integral calculus.
+
+The following simplified values illustrate the relationship for a vertical throw from release height ($x_0=0$, $v_0=+20\,\mathrm{m/s}$, $a=-10\,\mathrm{m/s^2}$, no air resistance, up to the return to release height):
+
+| $t$ in $\mathrm{s}$ | $x$ in $\mathrm{m}$ | $v$ in $\mathrm{m/s}$ | $a$ in $\mathrm{m/s^2}$ |
+| --- | --- | --- | --- |
+| $0$ | $0$ | $+20$ | $-10$ |
+| $1$ | $15$ | $+10$ | $-10$ |
+| $2$ | $20$ | $0$ | $-10$ |
+| $3$ | $15$ | $-10$ | $-10$ |
+| $4$ | $0$ | $-20$ | $-10$ |
+
+At $t=2\,\mathrm{s}$ the position reaches its maximum and the velocity is zero, while the acceleration remains $-10\,\mathrm{m/s^2}$. The table serves the concept review only; it is not an approved assessment task.
+
+<a id="entry-and-continuation"></a>
+<a id="sec-sga-ud-phys-entry"></a>
+#### 12.4. Entry and Continuation
+
+What is needed are the mathematical skills these tasks actually require: using terms and units and solving equations, including the quadratic equations that occur. If the chosen task demands derivatives, those must be available beforehand as well. An application visible in the physics task does not prove the complete corresponding mathematics goals across the board; their own meaning and valid evidence count for that.
+
+The knowledge context of this example secures the description of motion in diagrams, uniform motion, and average and instantaneous velocity, together with linear functions and the reading of graphs. Vectors and motion in two dimensions, forces as causes, and derivatives and integrals are not secured. Neither are quadratic equations: no prerequisite path of the two goals provides them, although the tasks need them. That is a finding under the second rule of the knowledge context of a unit.
+
+Uniform motion can form a sensible subject-matter entry, for example to distinguish velocity from acceleration. This creates no obligation to complete every physics unit that comes earlier in the calendar first.
+
+Force-and-motion tasks that actually build on this, or later applications with energy and motion curves, can follow. Forces and energy are new concepts there and are not already mastered through this kinematics evidence. The candidate claims neither an official order that is binding everywhere nor a lock on all other physics topics.
+
+<a id="what-an-independent-assessment-must-reveal"></a>
+<a id="sec-sga-ud-phys-assessment"></a>
+#### 12.4. What an Independent Assessment Must Reveal
+
+A possible task describes a ball thrown vertically upwards from a raised platform. Without a given solution path, learners set up the model, determine the highest point and a later impact, and explain suitable position, velocity, and acceleration graphs. Air resistance is explicitly neglected; the time interval considered ends at the first impact.
+
+A complementary variant changes the release height or prescribes the positive axis pointing downwards. The point is whether initial conditions and signs are derived from the situation instead of being copied from a familiar sequence of numbers. Not every single task must repeat every aspect; the relevant task set must cover the complete claimed learning promise.
+
+| Observation | Meaning for the Claimed Evidence |
+| --- | --- |
+| "At the highest point $v=0$, so $a=0$ as well." | The central distinction is missing; the complete motion model is not yet demonstrated. |
+| A correctly set-up model contains a single calculation error with consistent follow-up working. | Not automatically counter-evidence against understanding the model; judge it by the applicable ordinary grading rule. |
+| After an axis change the signs change, but the predicted impact stays physically consistent. | Indication of transferable understanding rather than mere formula use. |
+
+An ordinary pass rule under which the first misconception could be fully compensated by other points does not fit the claimed evidence. Conversely, this requirement implies no duty of flawlessness. It must be implemented in the ordinary task and rubric, without a hidden additional pass condition. If the existing total-score grading cannot carry the claim, the assessment or the claimed coverage must be revised before release. The task sketches and counterexamples do not yet replace a worked-out, independently reviewed production rubric.
+
+For the misconception at the highest point, learning continues exactly there: for instance by comparing the velocity immediately before and after, with suitable graphs and the distinction between an instantaneous value and a rate of change. A fresh situation then tests the same distinction independently.
+
+<a id="a-larger-candidate-kinematics-including-superposition"></a>
+<a id="sec-sga-ud-phys-larger"></a>
+#### 12.4. A Larger Candidate: Kinematics Including Superposition
+
+The Hessian E.1 learning map for G8 and G9 links measurement and one-dimensional motion models to predicting a horizontal projectile. The projectile comes from curricular topic E.3 and has its learning placement in E.1. This grouping provides a case for assessing how several skills work together in a larger unit.
+
+A possible course leads from representations of position, velocity, and acceleration through uniform and uniformly accelerated motion to independent components and their composition. For an idealised projectile without air resistance, horizontal and vertical motion are described separately in a fixed frame of reference and recombined at the **same time**. Independence follows from this model; it does not hold for arbitrary superposed motions.
+
+The existing child unit on modelling uniformly accelerated motion has two assessments of its own. The vertical throw can show model choice and its limits. The acceleration protocol also requires motion graphs and the distinction between displacement and distance travelled after a reversal. That distinction was exactly why the reviewers withdrew coverage of the full acceleration goal from the vertical throw. [Current child-unit contract](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md)
+
+The initial **E.1 proposal** calls for four independent passes. Previously passed components count if they match the required version.
+
+| Required part | Performance | Status and passing threshold |
+| --- | --- | --- |
+| Child assessment, vertical throw | Choose an axis, model the motion and justify the idealisation | Existing, 24/24 points |
+| Child assessment, acceleration protocol | Construct three graphs and distinguish displacement from distance travelled | Existing, 20/20 points |
+| E.1 assessment A, cart | Justify a prediction from measured data and judge measurement deviations | Draft, 4/4 points |
+| E.1 assessment B, horizontal projectile | Use a shared time for motions in two directions to make a prediction | Draft, 3/3 points |
+
+Four passes would qualify the learner for E.1 in this proposal. A learner who solves A and B but still confuses distance and displacement has an outstanding child obligation. For E.1, learners justify their prediction using supplied data. They may also measure the motion themselves as they learn. Subject reviewers will judge whether the four performances support the agreed promise and whether a different parent-unit promise could be demonstrated with fewer required parts.
+
+<a id="recognition-inside-a-larger-unit"></a>
+<a id="sec-sga-ud-phys-recognition"></a>
+#### 12.4. What E.1 evidence means for later learning
+
+Eleven content goals belong to this E.1 learning placement, two in the child unit and nine directly in E.1. After the four passes, the proposal accepts **four whole atoms for planning**. The child unit supports accelerated motion and the modelling and idealisation of motion. In A the learner must distinguish measurement deviations and state measurement uncertainty. Passing both child assessments activates the two planning permissions from the child unit. Someone who also passes A has the assessment result for the cart. The E.1 permissions for measurement deviations and uncertainty take effect only when B has also been passed and the E.1 qualification is complete.
+
+For the other seven atoms the observed performance samples only part of the skill or leaves it unobserved. Someone who correctly interprets supplied fall data has yet to demonstrate performing a fall experiment. The E.1 route can be complete while a separately assigned experiment remains open. The full [goal-by-goal review](unit-assessment-discussion-2026-11-19.de.md) lets subject reviewers examine these proposed planning decisions.
+
+<a id="what-textbook-structures-show"></a>
+<a id="sec-sga-ud-phys-textbooks"></a>
+#### 12.4. What Textbook Structures Show
+
+Textbooks are examined for how they justify coherence, prior knowledge, inner order, and conclusions. Our own drafts arise from this; tasks, texts, or chapter structures are not adopted as templates. The following first observations were recorded on 6 November 2026 and have not been re-checked for this page:
+
+- The published assignment of **Impulse Physik Oberstufe** to Hessen (Klett, 2022, PDF pages 2–3) leads, within the first book chapter, from linear motion through free fall and two-dimensional motion to projectiles and circular motion. Forces follow in the second chapter. This shows a larger thematic bracket with inner learning steps. [Publisher document](https://asset.klett.de/assets/1fe831bc/Stoffverteilungsplan_Impulse_Physik_Oberstufe_HE.pdf)
+- **OpenStax Physics**, chapter 5, explains its order explicitly: vector operations prepare several two-dimensional applications. The coherence is therefore a shared method. The chapter also includes other applications; its boundary is not simply our proposed kinematics boundary. [Chapter introduction](https://openstax.org/books/physics/pages/5-introduction)
+- In the section on projectile motion, component decomposition and the shared time are central. Teaching notes combine comprehension questions with a targeted return to difficulties. This is a pointer towards inner comprehension checks. [Section 5.3](https://openstax.org/books/physics/pages/5-3-projectile-motion)
+
+**Our conclusion:** a topic can form a larger unit and at the same time need important inner checkpoints. A book chapter provides a justifiable candidate, but not yet evidence of a complete SkillPilot application assessment. A textbook's linear reading order is not a prerequisite graph, and neither a chapter number nor a large end-of-chapter test fixes the only sensible boundary of our units and intermediate assessments. The sources cited prove neither the effectiveness of our cut nor a currently binding curriculum.
+
+<a id="mathematical-methods-must-be-available-in-time"></a>
+<a id="sec-sga-ud-phys-math"></a>
+#### 12.4. Mathematical Methods Must Be Available in Time
+
+Tangents, derivatives, or area methods may be used only if the skills they need were acquired beforehand or are explicitly developed in the unit. "Planned for the same school year" is not sufficient. For every dependent activity it must be clarified whether the method is actually available at that point. Possible solutions are timely joint subject planning, explicit development of the missing method, or a suitable different approach with an unchanged competence claim.
+
+For the entry described here, a subject-correct route without formal integration suffices: for a linear velocity, rectangles and triangles yield the signed change of position. Areas below the time axis count negatively; at a sign change the area is split. The distance travelled must be distinguished from this. This approach claims no corresponding complete method for arbitrary velocity curves. None of this silently credits mathematics mastery or changes existing prerequisites or goal scopes.
+
+<a id="5-preliminary-comparison-number-sense-in-grade-5-mathematics"></a>
+<a id="sec-sga-ud-math5"></a>
+### 12.5. Second Example: Number Sense in Grade 5 Mathematics
+
+The [canonical mathematics graph](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json) contains the following five goals; they are also referenced in the Hessian G9 composition views. This selection is not a partition of the whole year. The goal titles are given in English translation; the stable IDs identify the authored German goals.
+
+| Existing Goal (Translated Title) | Meaning to Be Preserved Completely |
+| --- | --- |
+| Explain and compare the decimal system as a place-value system | Explain the decimal place-value system, decompose numbers into place values, and compare it with a given other number system. |
+| Represent natural numbers and locate them on the number line | Represent natural numbers in digits and words and locate them, with justification, on a scaled number line. |
+| Order and compare natural numbers | Compare and order natural numbers with justification and use relation signs. |
+| Round natural numbers | Round to a given or contextually appropriate place and explain the resulting approximation. |
+| Justify the unboundedness of the natural numbers with the successor principle | Justify with the generalised successor principle that there is no largest natural number. |
+
+For comparison with the graph, the stable IDs in this order are `624764d6-becd-5f9b-ada3-0d4f9d143073`, `cf474eab-1379-4877-907e-58b0892ce734`, `9ef6c4fa-b97a-5d7a-86c1-96690f02d916`, `fe07241a-b779-5f35-a82d-7aa51ae74f42`, and `1a25ef44-f310-4c23-9ba8-44baec60d3b0`.
+
+The learning promise reads: "I understand the structure of the natural numbers, can switch between representations, and estimate orders of magnitude with justification." The five goals are thus connected by one theme. The existing subject-matter paths are sparse, however: representation leads to ordering; place value leads to rounding and to unboundedness. Representation and place value additionally require the existing shared orientation entry, which is not subject-matter evidence. The five goals acquire no additional inherited subject prerequisites through this.
+
+Under compatibility contract 1.2, these five goals together with two associated assessments already form an initial leaf unit. During the top-down subject-unit rollout (`F9`–`F11`), subject review still examines whether separating "number sense" and natural-number arithmetic as child units beneath a shared parent unit holds up didactically and keeps each leaf unit whole inside one plan unit across all 16 Bundesländer. Independent applications, actual downstream demand, and boundary justifiability must be weighed against each other; the count of five decides this question as little as the existence of two branches does.
+
+A shopping problem calls for estimating quantities. A child can succeed without being able to justify the unboundedness of natural numbers using the successor principle. If a new qualifying version is meant to support that claim, it needs a suitable task and an effective passing criterion. If the justification is dispensable to a narrower overall judgment, the goal remains open for later planning. The two existing assessments retain their agreed scope.
+
+The existing edge from the goal "Use multiplication and integer division as inverse operations" (`cafd6520-c4af-4109-9863-cc49ba6fad4d`) to the unboundedness goal is a reason for a subject review of its necessity, not an already decided correction. The calculation goal explicitly covers natural **and integer** numbers, signs, and the conditions of admissible division. Its scope must not be narrowed for the comparison with a unit on natural numbers.
+
+<a id="6-consistency-with-the-recognition-model-and-the-unit-validity-rules"></a>
+<a id="sec-sga-ud-validity"></a>
+### 12.6. How unit order, evidence and recommendations fit together
+
+A workable structure first answers in what order the subject can be learned. Qualification requires an additional answer about what passing actually demonstrates.
+
+Every unit — whether an assessment-free plan unit, a parent subject unit, or a leaf unit with assessments — must first satisfy the four **ordering rules E1–E4** ([Unit Progression](learning-unit-progression.md)):
+
+- **E1 (Subtree and projection shape):** A subject unit is a declared canonical cluster (own goals and child units derive from `contains`), and a plan unit is a projected plan container; leaf subject units stay whole inside a single plan unit across all 16 Bundesländer.
+- **E2 (Contiguous block order):** There exists an order of all atoms that respects atomic demand and `after` while keeping every unit contiguous. Thus the child-block graph formed by crossing demand and `after` must be acyclic at every unit, including the virtual root. Path convexity alone does not suffice: for $\operatorname{Own}(U)=\{a,c\}$, $\operatorname{Own}(V)=\{b,d\}$, $a\to b$, and $d\to c$, the atomic graph is acyclic and both sets are path-convex, yet the blocks require each other.
+- **E3 (Sibling-local completeness of `after`):** Whenever an atom beneath sibling unit $B$ requires an atom beneath sibling unit $A$ of the same parent unit, $B$ follows $A$ in the declared `after` order (zero backflows against unit order; no `requires` edge points to an assessment goal).
+- **E4 (Irredundancy):** No declared `after` link repeats what already follows transitively across other siblings in `after`.
+
+**Proposal of 19 November.** Alongside individual evidence, only the reviewed release of a unit’s own ordinary content goals upon completion of that unit version would count for planning. The same standard applies to each goal on both routes. A child can already release its own goals while the parent route remains open. [Unit evidence and planning](assessment-gated-completion.md#sec-proposal-planning-release)
+
+Reviewers record the learning promise, level, required components, tasks and scoring, aspects left open, and the planning effect for each atom. A subsequent version may require an additional skill. Old results retain the meaning of the version passed. An unsuccessful direct attempt leads to advice on the observed gap. Prior successes remain valid.
+
+Subject trials are particularly important in three places. Do task and rubric actually require the intended independent decision? Does the observed performance justify relying on every *whole* atom claimed? When a later task first needs an unresolved skill, is a short individual check or supported first application more appropriate? A required practical demonstration is a separate obligation in either case.
+
+**Contract in force, 4/11 November.** The three declared subject units retain their assessments and coverage reviews. Under R1–R5 an ordinary goal a unit owns can gain recognition before the whole unit is complete, once the relevant local obligations have been met. That recognition applies globally. Today’s runtime can already credit a goal because no open obligation in the evaluated scope still needs it. The proposal of 19 November would defer additional planning release until the owning unit version is complete. [Confirmed decision](completion-semantics-clarification-2026-11-04.md)
+
+<a id="7-short-design-sheet"></a>
+<a id="sec-sga-ud-sheet"></a>
+### 12.7. Short Design Sheet
+
+1. Which question invites curiosity? What should learners be able to do independently, and at what level?
+2. Which goals and required children belong to the unit? Where can it meaningfully begin and end? Do unit order, canonical prerequisites, knowledge context and learning placement fit the relevant views?
+3. How does the coach explain a new idea? What can they demonstrate, and how can learners try it with decreasing support?
+4. Which required performances and valid prior results are visible before a direct attempt? Which concrete task demands the promised decision in an integrated situation?
+5. Which sample answer must pass, and which must fail despite correct incidental calculations? Does the version justify each proposed atomic planning effect? What may the overall judgment leave open?
+6. What feedback helps after an unsuccessful attempt? After solution disclosure, is an equivalent fresh task available for an independent demonstration? What open questions need trials with subject experts and learners?
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+import json
+p=json.load(open('/tmp/e1-t5/coverage-successor-inputs.json'))
+for k in ['scope','constraints']:
+ print(k, json.dumps(p[k],ensure_ascii=False,indent=2))
+for k in ['currentContentGoals','currentParts','otherOfferedAssessments','declaredLearningUnits','ownPlacements']:
+ print('\\n'+k)
+ for i,v in enumerate(p[k]):
+  print(i, 'keys=',list(v) if isinstance(v,dict) else type(v).__name__)
+  if isinstance(v,dict):
+   for x in ['id','goalId','title','shortKey','unitId','version','ownedGoalIds','assessmentGoalIds','memberGoalIds','kind','role','owner']:
+    if x in v: print(x, json.dumps(v[x],ensure_ascii=False))
+for k in ['currentE1Material','currentChild2Material','proposedD17Successor','proposedBESProfileAtSeal']:
+ print('\\n'+k, {x:type(v).__name__ for x,v in p[k].items()})
+PY" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+scope "Fresh independent review of the exact proposed D17 three-field successor and current unchanged twelve-goal/four-part E.1 cut. Candidate is sealed but not active; no approved outcome is provided."
+constraints [
+  "Preserve current goals, task/rubric texts, thresholds, four assignment parts and accepted cut. Do not create new assessments.",
+  "Children1/3/4 remain undeclared. Do not invent ownership, signatures, learner performance or mastery transfer.",
+  "Any planning credit must be for an owned ordinary atom, covered/required by its own current assessment; exact owner revision and full actual goal meaning matter. Passing an assignment does not automatically master all content goals.",
+  "Whole current goals and the ordinary scoring rule determine coverage. A central conceptual omission must not be compensable.",
+  "The active positive profile may be stale after the cut; separately flag that dependency. Do not manufacture its fresh approval."
+]
+
+currentContentGoals
+0 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'shortKey', 'applicability', 'type', 'resourceLinks']
+id "d6dc0e02-831d-4894-a61a-852bcc74f147"
+title "Idealisierungen und Grenzen von Bewegungsmodellen"
+shortKey "canonical_physics_motion_modeling"
+1 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'shortKey', 'applicability', 'type', 'resourceLinks']
+id "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+title "Gleichmäßig beschleunigte Bewegung und Beschleunigung"
+shortKey "canonical_physics_accelerated_motion"
+2 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'applicability', 'type', 'resourceLinks']
+id "8aff7aac-321b-5172-ac55-877876bfd2cd"
+title "Messabweichungen und Fehlerarten unterscheiden"
+3 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'applicability', 'type', 'resourceLinks']
+id "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+title "Messunsicherheiten angeben"
+4 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'shortKey', 'applicability', 'type', 'resourceLinks']
+id "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+title "Gleichförmige Bewegung und Geschwindigkeit"
+shortKey "canonical_physics_uniform_motion"
+5 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'shortKey', 'applicability', 'type', 'resourceLinks']
+id "ce431132-dfc4-42c2-aff6-bd72035190f8"
+title "Bewegungen messen und im t-s-Diagramm darstellen"
+shortKey "canonical_physics_motion_diagrams"
+6 keys= ['id', 'shortKey', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'applicability', 'extendedData', 'type', 'semanticAtomic', 'competencyRefs', 'resourceLinks']
+id "bf8517a9-142b-5789-826a-767f3b277998"
+title "Durchschnitts- und Momentangeschwindigkeit unterscheiden"
+shortKey "canonical_physics_e_average_instantaneous_velocity"
+7 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'shortKey', 'applicability', 'type', 'resourceLinks']
+id "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+title "Freier Fall experimentell untersuchen"
+shortKey "canonical_physics_determine_free_fall_acceleration"
+8 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'shortKey', 'applicability', 'type', 'resourceLinks']
+id "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+title "Waagerechter Wurf analysieren"
+shortKey "canonical_physics_horizontal_throw"
+9 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'shortKey', 'applicability', 'type', 'resourceLinks']
+id "1e459a1b-4159-5049-84eb-9928129c1610"
+title "t-v-Diagramm und Ortsänderung als Fläche"
+shortKey "canonical_physics_velocity_time_diagram_area"
+10 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'shortKey', 'applicability', 'type', 'resourceLinks']
+id "262f807a-30d0-503e-986f-856cbd048e8e"
+title "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben"
+shortKey "canonical_physics_motion_laws_position_velocity"
+11 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'shortKey', 'applicability', 'type', 'resourceLinks']
+id "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+title "Fall leichter und schwerer Körper vergleichen"
+shortKey "canonical_physics_fall_light_and_heavy_bodies"
+
+currentParts
+0 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'type', 'nodeKind', 'weight', 'contains', 'requires', 'tags', 'applicability', 'dimensionTags', 'examData', 'extendedData']
+id "ee7d5f3d-858f-59d6-89b0-e5a7f437f458"
+title "Wann überquert der Wagen die rote Linie?"
+1 keys= ['id', 'title', 'titleEn', 'description', 'descriptionEn', 'type', 'nodeKind', 'weight', 'contains', 'requires', 'tags', 'applicability', 'dimensionTags', 'examData', 'extendedData']
+id "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"
+title "Wo trifft die waagerecht gestartete Kugel auf?"
+2 keys= ['id', 'shortKey', 'title', 'titleEn', 'description', 'descriptionEn', 'core', 'weight', 'tags', 'applicability', 'extendedData', 'sourceRef', 'dimensionTags', 'requires', 'contains', 'examples', 'resourceLinks', 'examData', 'phase', 'type', 'nodeKind']
+id "c933b7d2-edcb-5747-9378-9762659f260a"
+title "Senkrechten Wurf mit konstanter Beschleunigung modellieren"
+shortKey "canonical_physics_e_unit_constant_acceleration_model-he-e1"
+3 keys= ['id', 'shortKey', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'applicability', 'type', 'examData', 'nodeKind', 'extendedData', 'sourceRef']
+id "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+title "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen"
+shortKey "canonical_physics_k6_acceleration_log-he-e1"
+
+otherOfferedAssessments
+0 keys= ['id', 'shortKey', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'contains', 'requires', 'dimensionTags', 'applicability', 'type', 'examData']
+id "a8dc0290-9f80-5763-8943-e16b8d2aa860"
+title "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen"
+shortKey "canonical_physics_k6_acceleration_log"
+1 keys= ['id', 'shortKey', 'title', 'titleEn', 'description', 'descriptionEn', 'weight', 'tags', 'type', 'contains', 'requires', 'dimensionTags', 'applicability', 'extendedData', 'examData']
+id "f41e4e30-794e-5ce4-ba5e-cc72712cd691"
+title "Prüfungsaufgabe: Freien Fall in zwei eigenen Messreihen untersuchen"
+shortKey "personal_free_fall_two_series"
+
+declaredLearningUnits
+0 keys= ['id', 'kind', 'label', 'labelEn', 'promise', 'promiseEn', 'revision', 'coverageReviews']
+id "physics-constant-acceleration"
+kind "learningUnit"
+
+ownPlacements
+0 keys= ['goalId', 'unitId', 'relation']
+goalId "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+unitId "physics-constant-acceleration"
+1 keys= ['goalId', 'unitId', 'relation']
+goalId "a8dc0290-9f80-5763-8943-e16b8d2aa860"
+unitId "physics-constant-acceleration"
+2 keys= ['goalId', 'unitId', 'relation']
+goalId "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+unitId "physics-constant-acceleration"
+3 keys= ['goalId', 'unitId', 'relation']
+goalId "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+unitId "physics-constant-acceleration"
+
+currentE1Material {'schemaVersion': 'int', 'unit': 'dict', 'intro': 'dict', 'exercises': 'list'}
+
+currentChild2Material {'schemaVersion': 'int', 'unit': 'dict', 'guidedStudyOrder': 'list', 'intro': 'dict', 'exercises': 'list', 'individualAssessmentOffers': 'list'}
+
+proposedD17Successor {'status': 'str', 'sourcePath': 'str', 'rawSha256': 'str', 'allowedDelta': 'dict'}
+
+proposedBESProfileAtSeal {'status': 'str', 'record': 'dict'}
+
+2026-11-24T04:41:56.432770Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+exec
+/bin/bash -lc "python3 - <<'PY'
+import json
+p=json.load(open('/tmp/e1-t5/coverage-successor-inputs.json'))
+for i,g in enumerate(p['currentContentGoals']):
+ if g['id']=='e4b38061-1f28-43ad-8371-a3e7c0e81856':
+  print('currentContentGoals['+str(i)+']'); print(json.dumps(g,ensure_ascii=False,indent=2))
+print('\\ndeclaredLearningUnits (coverageReviews omitted)')
+print(json.dumps([{k:v for k,v in u.items() if k"'!='"'coverageReviews'} for u in p['declaredLearningUnits']],ensure_ascii=False,indent=2))
+print('\\nownPlacements');print(json.dumps(p['ownPlacements'],ensure_ascii=False,indent=2))
+print('\\ncurrentChild2Material.unit');print(json.dumps(p['currentChild2Material']['unit'],ensure_ascii=False,indent=2))
+print('\\nproposedD17Successor'); print(json.dumps(p['proposedD17Successor'],ensure_ascii=False,indent=2))
+PY" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+currentContentGoals[1]
+{
+  "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+  "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+  "titleEn": "Uniformly Accelerated Motion and Acceleration",
+  "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+  "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations.",
+  "weight": 0.9,
+  "tags": [
+    "GK",
+    "LK",
+    "canonical",
+    "cross-subject:mathematics"
+  ],
+  "contains": [],
+  "requires": [
+    "bf8517a9-142b-5789-826a-767f3b277998",
+    "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+    "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+    "1e459a1b-4159-5049-84eb-9928129c1610"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024-physics",
+    "demandLevel": "AB1",
+    "processCompetencies": [],
+    "guidingIdeas": [],
+    "phase": "E"
+  },
+  "shortKey": "canonical_physics_accelerated_motion",
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "type": "atomic",
+  "resourceLinks": [
+    {
+      "type": "goal-visualization",
+      "resourceType": "image",
+      "role": "primary",
+      "skillpilotId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Visualisierung: Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "url": "/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg",
+      "provider": "Google Gemini / Nano Banana Pro",
+      "description": "Visualisierung zum Lernziel: Gleichmäßig beschleunigte Bewegung und Beschleunigung.",
+      "altText": "Didaktische Visualisierung zum Lernziel \"Gleichmäßig beschleunigte Bewegung und Beschleunigung\". Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+      "lang": "de",
+      "license": "AI-generated, SkillPilot-curated",
+      "reviewStatus": "pilot"
+    }
+  ]
+}
+
+declaredLearningUnits (coverageReviews omitted)
+[
+  {
+    "id": "physics-constant-acceleration",
+    "kind": "learningUnit",
+    "label": "Freier Fall schwerer Kugeln",
+    "labelEn": "Free fall of heavy balls",
+    "promise": "Ich kann den freien Fall einer schweren Kugel messen und als gleichmäßig beschleunigte Bewegung beschreiben: Ich halte Fallhöhe und Fallzeit in einem Messprotokoll fest, stelle die Bewegung im t-v-Diagramm dar, bestimme die Beschleunigung und stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz auf. Ich gebe an, wie genau meine Messwerte sind. Darauf bauen der Fall leichter Körper, Würfe in zwei Dimensionen, Kräfte und Energie auf.",
+    "promiseEn": "I can measure the free fall of a heavy ball and describe it as uniformly accelerated motion: I record drop height and fall time in a measurement log, represent the motion in a time-velocity graph, determine the acceleration and set up the time-position and time-velocity laws. I state how precise my measurements are. The fall of light bodies, projectile motion in two dimensions, forces and energy build on it.",
+    "revision": "2026-11-23-v4"
+  }
+]
+
+ownPlacements
+[
+  {
+    "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "unitId": "physics-constant-acceleration",
+    "relation": "own"
+  },
+  {
+    "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+    "unitId": "physics-constant-acceleration",
+    "relation": "own"
+  },
+  {
+    "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+    "unitId": "physics-constant-acceleration",
+    "relation": "own"
+  },
+  {
+    "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+    "unitId": "physics-constant-acceleration",
+    "relation": "own"
+  }
+]
+
+currentChild2Material.unit
+{
+  "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+  "compositionNodeId": "physics-e1-accelerated-and-free-fall",
+  "viewIds": [
+    "de-he-gym-physics-gk",
+    "de-he-gym-physics-lk",
+    "de-he-gym-physics-gk-g8",
+    "de-he-gym-physics-lk-g8",
+    "de-he-gym-physics-gk-g9",
+    "de-he-gym-physics-lk-g9",
+    "de-he-gym-sekii-physics-gk",
+    "de-he-gym-sekii-physics-lk"
+  ],
+  "orientationGoalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+  "assessmentGoalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+}
+
+proposedD17Successor
+{
+  "status": "CANDIDATE_NOT_ACTIVATED",
+  "sourcePath": "/tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json",
+  "rawSha256": "e12d8bcafaa2bcd824b76bbab56e63ed7d3ef87044eafaa24f30f877a4e3683f",
+  "allowedDelta": {
+    "schemaVersion": 1,
+    "candidateOnly": true,
+    "changedFields": [
+      {
+        "path": "examData.solutionContent",
+        "before": "1. Verwendet man $\\tau=t-2\\,\\mathrm s$ als Zeit seit dem Beginn des Protokolls, gelten $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ und $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. Die Beschleunigung ist eine waagerechte Linie bei $+2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade steigt von $-1$ auf $+3\\,\\mathrm{m/s}$ und schneidet bei 2,5 s die Nulllinie. Die nach oben geöffnete Ortsparabel fällt zunächst, hat bei 2,5 s am Richtungswechsel ihr Minimum bei 4,75 m und steigt danach. Bei 3 s liegt der Wagen wieder bei 5,00 m, bei 4 s bei 7,00 m.\n2. Die Beschleunigungsfläche entspricht der Geschwindigkeitsänderung von $+4\\,\\mathrm{m/s}$. Die vorzeichenbehafteten Flächen unter dem Geschwindigkeitsgraphen ergeben zunächst $-0{,}25\\,\\mathrm m$ und danach $+2{,}25\\,\\mathrm m$. Die Ortsänderung ist die Summe, also $+2{,}00\\,\\mathrm m$. Die Strecke zählt beide Wegstücke positiv, also $2{,}50\\,\\mathrm m$. Die vorhergesagten 7,00 m liegen im Kontrollbereich von 6,98 bis 7,08 m.\n3. Mit $t$ in Sekunden gilt $v=6-2t$ in Metern pro Sekunde und $s=6t-t^2$ in Metern. Im Beschleunigungsdiagramm verläuft die Linie bis zum Stopp waagerecht bei $-2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade fällt von 6 m/s auf null bei 3 s. Der Ortsgraph ist eine nach unten geöffnete Parabel, die von 0 m auf 9 m steigt und beim Stopp eine waagerechte Tangente hat. Der Bremsweg beträgt 9 m.\n4. Mit unveränderter Beschleunigung ergibt das Programm $v(5)=-4\\,\\mathrm{m/s}$ und $s(5)=5\\,\\mathrm m$. Es sagt nach dem Stillstand eine Bewegung rückwärts voraus. Damit das Fahrzeug stehen bleibt, darf man die vorherige Bremsbeschleunigung im Modell nach dem Stopp nicht weiterführen. Dazu müsste eine weitere rückwärts gerichtete Beschleunigung physikalisch begründet sein. Beim Dauerstillstand gilt nach 3 s $a=0$, $v=0$ und $s=9\\,\\mathrm m$.\n\n**Hinweise zur Bewertung**\n\nJe Zeile zählt die höchste belegte Stufe. Die vier Werte werden addiert. Begründete Diagramme und ausreichend genaue Beschreibungen mit nachvollziehbaren Größen und Einheiten zeigen dieselben Leistungen.",
+        "after": "1. Verwendet man $\\tau=t-2\\,\\mathrm s$ als Zeit seit dem Beginn des Protokolls, gelten $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ und $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. Gleichwertig sind bei Verwendung der Zeit $t$ in Sekunden die Gesetze $v=2t-5$ in Metern pro Sekunde und $s=t^2-5t+11$ in Metern; beide erfüllen die Anfangswerte bei $t=2\\,\\mathrm s$. Die Beschleunigung ist eine waagerechte Linie bei $+2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade steigt von $-1$ auf $+3\\,\\mathrm{m/s}$ und schneidet bei 2,5 s die Nulllinie. Die nach oben geöffnete Ortsparabel fällt zunächst, hat bei 2,5 s am Richtungswechsel ihr Minimum bei 4,75 m und steigt danach. Bei 3 s liegt der Wagen wieder bei 5,00 m, bei 4 s bei 7,00 m.\n2. Die Beschleunigungsfläche ergibt $(2\\,\\mathrm{m/s^2})\\cdot(2\\,\\mathrm s)=+4\\,\\mathrm{m/s}$ als Geschwindigkeitsänderung. Bis zur Umkehr ist die vorzeichenbehaftete Dreiecksfläche $-\\tfrac12(0{,}5\\,\\mathrm s)(1\\,\\mathrm{m/s})=-0{,}25\\,\\mathrm m$. Danach ist sie $+\\tfrac12(1{,}5\\,\\mathrm s)(3\\,\\mathrm{m/s})=+2{,}25\\,\\mathrm m$. Die Ortsänderung ist die Summe, also $+2{,}00\\,\\mathrm m$. Die Strecke zählt beide Wegstücke positiv, also $2{,}50\\,\\mathrm m$. Die vorhergesagten 7,00 m liegen im Kontrollbereich von 6,98 bis 7,08 m.\n3. Mit $t$ in Sekunden gilt $v=6-2t$ in Metern pro Sekunde und $s=6t-t^2$ in Metern. Im Beschleunigungsdiagramm verläuft die Linie bis zum Stopp waagerecht bei $-2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade fällt von 6 m/s auf null bei 3 s. Der Ortsgraph ist eine nach unten geöffnete Parabel, die von 0 m auf 9 m steigt und beim Stopp eine waagerechte Tangente hat. Der Bremsweg beträgt 9 m.\n4. Mit unveränderter Beschleunigung ergibt das Programm $v(5)=-4\\,\\mathrm{m/s}$ und $s(5)=5\\,\\mathrm m$. Es sagt nach dem Stillstand eine Bewegung rückwärts voraus. Damit das Fahrzeug stehen bleibt, darf man die vorherige Bremsbeschleunigung im Modell nach dem Stopp nicht weiterführen. Dazu müsste eine weitere rückwärts gerichtete Beschleunigung physikalisch begründet sein. Beim Dauerstillstand gilt nach 3 s $a=0$, $v=0$ und $s=9\\,\\mathrm m$.\n\n**Hinweise zur Bewertung**\n\nJe Zeile zählt die höchste belegte Stufe. Die vier Werte werden addiert. Begründete Diagramme und ausreichend genaue Beschreibungen mit nachvollziehbaren Größen und Einheiten zeigen dieselben Leistungen."
+      },
+      {
+        "path": "examData.solutionContentEn",
+        "before": "1. With $\\tau=t-2\\,\\mathrm s$ measuring time since the start of the log, $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ and $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. The acceleration graph is horizontal at $+2\\,\\mathrm{m/s^2}$. The velocity rises linearly from $-1$ to $+3\\,\\mathrm{m/s}$, crossing zero at 2.5 s. The position graph is an upward-opening parabola. It falls to its minimum of 4.75 m when the cart changes direction at 2.5 s and then rises. The cart is at 5.00 m again at 3 s and at 7.00 m at 4 s.\n2. The area under acceleration gives the velocity change of $+4\\,\\mathrm{m/s}$. The signed areas under velocity are first $-0.25\\,\\mathrm m$ and then $+2.25\\,\\mathrm m$. Adding them gives the displacement, $+2.00\\,\\mathrm m$. Total distance counts both stretches positively and is $2.50\\,\\mathrm m$. The predicted 7.00 m lies inside the check interval from 6.98 to 7.08 m.\n3. For $t$ in seconds, $v=6-2t$ is in metres per second and $s=6t-t^2$ is in metres. The acceleration graph is horizontal at $-2\\,\\mathrm{m/s^2}$ until stopping. The velocity graph is a straight line falling from 6 m/s to zero at 3 s. The position graph is a downward-opening parabola that rises from 0 m to 9 m, with a horizontal tangent at the stop. The braking distance is 9 m.\n4. With unchanged acceleration, the program gives $v(5)=-4\\,\\mathrm{m/s}$ and $s(5)=5\\,\\mathrm m$. After the stop it predicts that the vehicle moves backwards. For the vehicle to remain at rest, the previous braking acceleration cannot continue beyond the stop in the model. A new physical explanation would be needed for acceleration backwards. For a vehicle that stays at rest, $a=0$, $v=0$ and $s=9\\,\\mathrm m$ after 3 s.\n\n**Scoring notes**\n\nScore the highest level demonstrated in each row and add the four results. Reasoned graphs and sufficiently precise descriptions with clearly identifiable quantities and units demonstrate the same skills.",
+        "after": "1. With $\\tau=t-2\\,\\mathrm s$ measuring time since the start of the log, $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ and $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. Equivalently, with $t$ in seconds, $v=2t-5$ in metres per second and $s=t^2-5t+11$ in metres satisfy both initial values at $t=2\\,\\mathrm s$. The acceleration graph is horizontal at $+2\\,\\mathrm{m/s^2}$. The velocity rises linearly from $-1$ to $+3\\,\\mathrm{m/s}$, crossing zero at 2.5 s. The position graph is an upward-opening parabola. It falls to its minimum of 4.75 m when the cart changes direction at 2.5 s and then rises. The cart is at 5.00 m again at 3 s and at 7.00 m at 4 s.\n2. The acceleration area gives $(2\\,\\mathrm{m/s^2})\\cdot(2\\,\\mathrm s)=+4\\,\\mathrm{m/s}$ as the velocity change. Before the reversal the signed triangle area is $-\\tfrac12(0.5\\,\\mathrm s)(1\\,\\mathrm{m/s})=-0.25\\,\\mathrm m$. Afterwards it is $+\\tfrac12(1.5\\,\\mathrm s)(3\\,\\mathrm{m/s})=+2.25\\,\\mathrm m$. Adding them gives the displacement, $+2.00\\,\\mathrm m$. Total distance counts both stretches positively and is $2.50\\,\\mathrm m$. The predicted 7.00 m lies inside the check interval from 6.98 to 7.08 m.\n3. For $t$ in seconds, $v=6-2t$ is in metres per second and $s=6t-t^2$ is in metres. The acceleration graph is horizontal at $-2\\,\\mathrm{m/s^2}$ until stopping. The velocity graph is a straight line falling from 6 m/s to zero at 3 s. The position graph is a downward-opening parabola that rises from 0 m to 9 m, with a horizontal tangent at the stop. The braking distance is 9 m.\n4. With unchanged acceleration, the program gives $v(5)=-4\\,\\mathrm{m/s}$ and $s(5)=5\\,\\mathrm m$. After the stop it predicts that the vehicle moves backwards. For the vehicle to remain at rest, the previous braking acceleration cannot continue beyond the stop in the model. A new physical explanation would be needed for acceleration backwards. For a vehicle that stays at rest, $a=0$, $v=0$ and $s=9\\,\\mathrm m$ after 3 s.\n\n**Scoring notes**\n\nScore the highest level demonstrated in each row and add the four results. Reasoned graphs and sufficiently precise descriptions with clearly identifiable quantities and units demonstrate the same skills."
+      },
+      {
+        "path": "examData.scoring.steps[0].description",
+        "before": "DE: **Ein Protokoll in drei Darstellungen.** 0 ohne fachlich richtige Leistung. 1 für einen tragfähigen Teilansatz. 2 für drei fachlich konsistente Zeitdiagramme, die mit den Gegebenheiten bei 2 s beginnen, die konstante positive Beschleunigung und den Richtungswechsel in beiden Bewegungsdiagrammen zeigen. Ab dieser Stufe je 1 BE für den abgeleiteten Zeitpunkt des Wechsels und den passenden Ort, die beiden folgenden Ortswerte sowie den nachvollziehbaren Ansatz mit Anfangswerten und verschobenem Zeitnullpunkt. EN: **One log in three representations.** 0 for no correct contribution. 1 for a valid partial approach. 2 for three consistent time graphs that start with the given conditions at 2 s and show constant positive acceleration and the reversal in both motion graphs. From this level add 1 mark each for deriving when and where the reversal occurs, the next two position values, and showing how the initial values and shifted time origin enter the method.",
+        "after": "DE: **Ein Protokoll in drei Darstellungen.** 0 ohne fachlich richtige Leistung. 1 für einen tragfähigen Teilansatz. 2 für drei fachlich konsistente Zeitdiagramme, die mit den Gegebenheiten bei 2 s beginnen, die konstante positive Beschleunigung und den Richtungswechsel in beiden Bewegungsdiagrammen zeigen. Ab dieser Stufe je 1 BE für den abgeleiteten Zeitpunkt des Wechsels und den passenden Ort, die beiden folgenden Ortswerte sowie den nachvollziehbaren Ansatz mit beiden Anfangswerten bei $t=2\\,\\mathrm s$. Ein konsistenter Ansatz mit der ursprünglichen Zeit oder mit verschobenem Zeitnullpunkt ist gleichwertig. EN: **One log in three representations.** 0 for no correct contribution. 1 for a valid partial approach. 2 for three consistent time graphs that start with the given conditions at 2 s and show constant positive acceleration and the reversal in both motion graphs. From this level add 1 mark each for deriving when and where the reversal occurs, the next two position values, and showing a checkable use of both initial values at $t=2\\,\\mathrm s$. A consistent method using the original time or a shifted time origin is equivalent."
+      }
+    ],
+    "protectedFields": "DE/EN task bodies, requires, coveredGoalIds, max20/pass17 and every other goal field unchanged. Old source artifact remains historical and unmodified."
+  }
+}
+
+2026-11-24T04:42:07.756729Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+codex
+Das Raster setzt vier wirksame Teilhürden: Fehlt die jeweilige Kernleistung, bleiben in D1–D4 höchstens 1 Punkt und insgesamt höchstens 16/20. Ich prüfe nun, ob diese Teilhürden tatsächlich jede P-v2-Erwartung absichern – besonders die Modellgrenze und die Rollen der drei Graphen beim Richtungswechsel.
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+import json
+p=json.load(open('/tmp/e1-t5/coverage-successor-inputs.json'))
+def walk(v,path=''):
+ if isinstance(v,dict):
+  for k,x in v.items():
+   if any(t in k.lower() for t in ['review','note','seal','proposedd17successor']): continue
+   walk(x,path+'.'+k)
+ elif isinstance(v,list):
+  for i,x in enumerate(v): walk(x,path+'['+str(i)+']')
+ elif isinstance(v,str) and ('R2' in v or 'R5' in v):
+  print(path); print(v)
+walk(p)
+print('\\nroot/currentParts D fields:')
+x=p['currentParts'][3]
+print('extendedData=',json.dumps(x['extendedData'],ensure_ascii=False,indent=2))
+print('examData keys=',list(x['examData']))
+PY" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+
+root/currentParts D fields:
+extendedData= {
+  "applicabilityMappingInheritance": "boundary"
+}
+examData keys= ['coveredGoalIds', 'coveredStrands', 'demandLevels', 'reviewStatus', 'reviewNote', 'sourceArtifactPath', 'taskContent', 'taskContentEn', 'solutionContent', 'solutionContentEn', 'scoring']
+
+2026-11-24T04:42:19.389240Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+exec
+/bin/bash -lc "rg -n 'variationAxes|minimumIndependentDemonstrations|independentTransferRequired|freshVariationRequired' schemas scripts --glob '"'!**/*review*'"' --glob '"'!**/*test*'"' --glob '"'!**/fixtures/**'"'" in /home/enpasos/projects/skillpilot-e1-nachweise
+ exited 2 in 0ms:
+rg: schemas: No such file or directory (os error 2)
+
+exec
+/bin/bash -lc "python3 - <<'PY'
+import json,hashlib
+from fractions import Fraction as F
+p=json.load(open('/home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json'))['goals'][0]['profile']
+b=json.dumps(p,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+print('Profile-only: SHA-256 of Python json.dumps(ensure_ascii=False,sort_keys=True,separators=(comma,colon)), UTF-8, no newline:',hashlib.sha256(b).hexdigest())
+print('Cart:')
+for t in [F(2),F(5,2),F(3),F(4)]:
+ print('t=',t,'v=',2*t-5,'s=',t*t-5*t+11)
+print('a area=',2*F(2),'v areas=',-F(1,2)*F(1,2),F(1,2)*F(3,2)*3)
+print('Braking:')
+for t in [F(0),F(3),F(5)]: print('t=',t,'v=',6-2*t,'s=',6*t-t*t)
+print('Core missing in one row: 1+5+5+5=',1+5+5+5)
+print('Gated base only one row: 2+5+5+5=',2+5+5+5)
+PY" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+Profile-only: SHA-256 of Python json.dumps(ensure_ascii=False,sort_keys=True,separators=(comma,colon)), UTF-8, no newline: bad9444b79813bc9ba8be3173d427ed1d84372da4d5f59e7463b8d14cacc0444
+Cart:
+t= 2 v= -1 s= 5
+t= 5/2 v= 0 s= 19/4
+t= 3 v= 1 s= 5
+t= 4 v= 3 s= 7
+a area= 4 v areas= -1/4 9/4
+Braking:
+t= 0 v= 6 s= 0
+t= 3 v= 0 s= 9
+t= 5 v= -4 s= 5
+Core missing in one row: 1+5+5+5= 16
+Gated base only one row: 2+5+5+5= 17
+
+2026-11-24T04:43:30.338134Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+exec
+/bin/bash -lc "rg --files -g '*schema*' -g '*positive*' -g '*understanding*' -g '*evidence*' -g '"'!**/review-history/**'"' -g '"'!**/goal-evidence/**'"' -g '"'!**/*review*'"' -g '"'!**/*test*'"' -g '"'!**/fixtures/**'"' | head -n 100" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+tools/demo-video/src/schema.ts
+validate_schema.py
+contracts/goal-book/v1/goal-book-model-1.1.schema.json
+contracts/goal-book/v1/goal-book-render-manifest-v2.schema.json
+contracts/goal-book/v1/goal-book-model.schema.json
+contracts/goal-book/v1/goal-book-source-manifest-v2.schema.json
+contracts/goal-book/v1/goal-book-render-manifest.schema.json
+contracts/goal-book/v1/goal-book-source-manifest.schema.json
+scripts/run_canonical_chemistry_evidence_watch.sh
+scripts/canonical_chemistry_evidence_watch.py
+scripts/capture_canonical_physics_evidence_watch_baseline.py
+scripts/render_canonical_physics_evidence_watch_status.py
+scripts/validate_curriculum_schema_catalog_contract.py
+scripts/check_canonical_physics_evidence_watch_delta.py
+scripts/validate_schemas.py
+scripts/run_canonical_physics_evidence_watch.sh
+scripts/render_canonical_physics_evidence_watch_delta.py
+contracts/curriculum-package/v1/dependency-closure.schema.json
+contracts/curriculum-package/v1/definition-digest-profile.schema.json
+contracts/curriculum-package/v1/composition-view-index.schema.json
+contracts/curriculum-package/v1/package-readiness-report.schema.json
+contracts/curriculum-package/v1/runtime-catalog.schema.json
+contracts/curriculum-package/v1/embedded-goal-dependency.schema.json
+contracts/curriculum-package/v1/release-quality-evidence.schema.json
+contracts/curriculum-package/v1/package-manifest.schema.json
+contracts/curriculum-package/v1/semantic-content-index.schema.json
+contracts/curriculum-package/v1/fwu-owl-reverse-compilation-report.schema.json
+contracts/curriculum-package/v1/card-index.schema.json
+contracts/curriculum-package/v1/migration-aliases.schema.json
+contracts/curriculum-package/v1/fwu-owl-package-profile.schema.json
+contracts/curriculum-package/v1/installed-package-record.schema.json
+contracts/curriculum-package/v1/field-semantics-registry.schema.json
+contracts/curriculum-package/v1/release-model-build-profile.schema.json
+contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json
+contracts/curriculum-package/v1/publication-evidence-projection.schema.json
+contracts/curriculum-package/v1/fwu-owl-package-manifest.schema.json
+contracts/curriculum-package/v1/fwu-owl-package-validation-report.schema.json
+contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json
+contracts/curriculum-package/v1/full-package-validation-report.schema.json
+contracts/curriculum-package/v1/official-source-index.schema.json
+contracts/curriculum-package/v1/active-package-lock.schema.json
+contracts/curriculum-package/v1/composition-view.schema.json
+contracts/curriculum-package/v1/compiled-landscape.schema.json
+contracts/curriculum-package/v1/dual-release-index.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.10/evidence-manifest.json
+contracts/curriculum-package/v1/equivalence-report.schema.json
+contracts/curriculum-package/v1/package-consumer-smoke-report.schema.json
+contracts/curriculum-package/v1/resource-index.schema.json
+contracts/curriculum-package/v1/source-to-canonical-mappings.schema.json
+contracts/curriculum-package/v1/card-deck.schema.json
+contracts/curriculum-package/v1/source-goal-reference-index.schema.json
+contracts/curriculum-package/v1/semantic-normalization-profile.schema.json
+contracts/curriculum-package/v1/schema-catalog.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.8/evidence-manifest.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.9/evidence-manifest.json
+contracts/curriculum-package/v1.2/runtime-catalog.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.1/evidence-manifest.json
+contracts/curriculum-package/v1.2/fwu-owl-package-profile.schema.json
+contracts/curriculum-package/v1.2/release-model-build-profile.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.13/evidence-manifest.json
+contracts/curriculum-package/v1.2/fwu-owl-package-manifest.schema.json
+contracts/curriculum-package/v1.2/fwu-owl-package-validation-report.schema.json
+contracts/curriculum-package/v1.2/compiled-landscape.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.6/evidence-manifest.json
+contracts/curriculum-package/v1.3/package-readiness-report.schema.json
+contracts/curriculum-package/v1.3/runtime-catalog.schema.json
+contracts/curriculum-package/v1.3/stage-plan.schema.json
+contracts/curriculum-package/v1.3/release-model-build-profile.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.5/evidence-manifest.json
+contracts/curriculum-package/v1.3/runtime-composition-view.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.0/evidence-manifest.json
+contracts/curriculum-package/v1.3/stage-plan-projection-index.schema.json
+contracts/curriculum-package/v1.3/stage-plan-catalog.schema.json
+contracts/curriculum-package/v1.3/composition-view.schema.json
+contracts/curriculum-package/v1.3/package-consumer-smoke-report.schema.json
+contracts/curriculum-package/v1.3/resource-index.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.0.0/evidence-manifest.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.3/evidence-manifest.json
+contracts/curriculum-package/v1.1/completion-artifact.schema.json
+contracts/curriculum-package/v1.1/runtime-catalog.schema.json
+contracts/curriculum-package/v1.1/fwu-owl-package-profile.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.12/evidence-manifest.json
+contracts/curriculum-package/v1.1/release-model-build-profile.schema.json
+contracts/curriculum-package/v1.1/fwu-owl-package-manifest.schema.json
+contracts/curriculum-package/v1.1/fwu-owl-package-validation-report.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.14/evidence-manifest.json
+contracts/memory-deck/v2/memory-deck.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.11/evidence-manifest.json
+contracts/unit-learning-material/v3/material.schema.json
+contracts/unit-learning-material/v1/material.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.2/evidence-manifest.json
+contracts/unit-learning-material/v4/material.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.4/evidence-manifest.json
+contracts/unit-learning-material/v2/material.schema.json
+ai/claude/plugin/skillpilot-coach-v1/release/history/1.1.7/evidence-manifest.json
+ai/claude/plugin/skillpilot-coach-v1/release/evidence-manifest.json
+backend/src/main/resources/db/changelog/changes/001-initial-schema.yaml
+curricula/DE/Gymnasium/assessments/physik/stage-source-route-repair-20261117-v1/astronomical-observation-two-evidence-cases.md
+contracts/assessment-completion/v1/scope.schema.json
+contracts/assessment-completion/v1/profile.schema.json
+
+2026-11-24T04:43:36.254642Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+exec
+/bin/bash -lc "rg -n 'variationAxes|minimumIndependentDemonstrations|independentTransferRequired|freshVariationRequired' contracts backend/src/main frontend/src app/src src --glob '"'!**/*review*'"' --glob '"'!**/*test*'"' --glob '"'!**/fixtures/**'"'" in /home/enpasos/projects/skillpilot-e1-nachweise
+ exited 2 in 0ms:
+rg: frontend/src: No such file or directory (os error 2)
+rg: src: No such file or directory (os error 2)
+contracts/goal-evidence/v1/goal-evidence-profile.schema.json:303:        "variationAxes",
+contracts/goal-evidence/v1/goal-evidence-profile.schema.json:332:        "variationAxes": {
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:234:        "minimumIndependentDemonstrations",
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:235:        "freshVariationRequired",
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:236:        "independentTransferRequired"
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:261:        "minimumIndependentDemonstrations": {
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:266:        "freshVariationRequired": {
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:269:        "independentTransferRequired": {
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:317:        "variationAxes",
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:343:        "variationAxes": {
+
+2026-11-24T04:43:40.776824Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+exec
+/bin/bash -lc "sed -n '195,385p' contracts/goal-evidence/v2/goal-evidence-profile.schema.json" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+        "textEn": {
+          "$ref": "#/$defs/boundedText"
+        }
+      }
+    },
+    "expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "essentialUnderstandingDe",
+        "essentialUnderstandingEn",
+        "observablePerformanceDe",
+        "observablePerformanceEn"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "essentialUnderstandingDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "essentialUnderstandingEn": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "observablePerformanceDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "observablePerformanceEn": {
+          "$ref": "#/$defs/boundedText"
+        }
+      }
+    },
+    "coverageExpectations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requiredExpectationIds",
+        "alternativeExpectationGroups",
+        "minimumIndependentDemonstrations",
+        "freshVariationRequired",
+        "independentTransferRequired"
+      ],
+      "properties": {
+        "requiredExpectationIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/slug"
+          }
+        },
+        "alternativeExpectationGroups": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 8,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "#/$defs/slug"
+            }
+          }
+        },
+        "minimumIndependentDemonstrations": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 8
+        },
+        "freshVariationRequired": {
+          "const": true
+        },
+        "independentTransferRequired": {
+          "const": true
+        }
+      }
+    },
+    "applicationCaseBrief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "taskDemandDe",
+        "taskDemandEn",
+        "expectedPerformanceDe",
+        "expectedPerformanceEn",
+        "understandingFocusDe",
+        "understandingFocusEn"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/slug"
+        },
+        "taskDemandDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "taskDemandEn": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "expectedPerformanceDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "expectedPerformanceEn": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "understandingFocusDe": {
+          "$ref": "#/$defs/boundedText"
+        },
+        "understandingFocusEn": {
+          "$ref": "#/$defs/boundedText"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archetype",
+        "expectations",
+        "coverageExpectations",
+        "variationAxes",
+        "applicationCaseBriefs"
+      ],
+      "properties": {
+        "archetype": {
+          "enum": [
+            "concept",
+            "procedure",
+            "representation",
+            "modeling",
+            "proof",
+            "experiment",
+            "data"
+          ]
+        },
+        "expectations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/expectation"
+          }
+        },
+        "coverageExpectations": {
+          "$ref": "#/$defs/coverageExpectations"
+        },
+        "variationAxes": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/localizedItem"
+          }
+        },
+        "applicationCaseBriefs": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/applicationCaseBrief"
+          }
+        }
+      }
+    }
+  }
+}
+
+exec
+/bin/bash -lc "rg -n 'variationAxes|minimumIndependentDemonstrations|independentTransferRequired|freshVariationRequired' docs/concept/skill-graph/architecture-source --glob '"'!**/*review*'"' --glob '"'!**/*discussion*'"'" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+docs/concept/skill-graph/architecture-source/chapters/08-learning-goal-book.en.md:10:- **Fourteen binding invariants:** Concise canonical `title`/`description`; separate fingerprint-bound V2 evidence profiles (`contracts/goal-evidence/v2/goal-evidence-profile.schema.json` capturing `expectations`, `coverageExpectations`, `variationAxes`, and `applicationCaseBriefs`; V1 retained as archived audit history); **one physical page per ordinary curricular-atomic target goal** displaying full **Lernziel-ID**, chapter path (`canonical-composition-view-v1` + **Bundeslandspezifische Ergänzungen** with gap-free `treeOrder`), stable Kahn topological order from `requires`, clickable named PDF destinations (`goal-<uuid>`), fail-closed overflow/legibility checks, incremental Skia PDF 1.4 bookmark outlines, state-primary applicability tuples (`Bundesland -> [{stage, durationModel, courseProfile}]` — never Cartesian `G8`/`G9` cross-products), and on-demand `/lernzielbuch/<bookId>.original-sources.json` supplements.
+docs/concept/skill-graph/architecture-source/chapters/08-learning-goal-book.de.md:10:- **Vierzehn verbindliche Invarianten:** Knappe kanonische `title`/`description`; separate fingerprint-gebundene V2-Evidenzprofile (`contracts/goal-evidence/v2/goal-evidence-profile.schema.json` mit `expectations`, `coverageExpectations`, `variationAxes` und `applicationCaseBriefs`; V1 bleibt als Archivhistorie erhalten); **genau eine physische Seite je regulärem atomarem Ziel** mit vollständiger **Lernziel-ID**, Kapitelpfad (`canonical-composition-view-v1` + **Bundeslandspezifische Ergänzungen** mit lückenloser `treeOrder`), stabiler Kahn-Topologiesortierung entlang `requires`, klickbaren PDF-Sprungzielen (`goal-<uuid>`), Fail-Closed-Überlauf-/Lesbarkeitsprüfung, inkrementellen Skia-PDF-1.4-Lesezeichen, bundeslandprimären Geltungstupeln (`Bundesland -> [{stage, durationModel, courseProfile}]` – niemals kartesische `G8`/`G9`-Kreuzprodukte) sowie nachgeladenen `/lernzielbuch/<bookId>.original-sources.json`-Quellenmatrizen.
+
+2026-11-24T04:43:45.259636Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+exec
+/bin/bash -lc "rg -n 'Variationsachsen|Variationsachse|variation axes|variation axis|applicationCaseBriefs|Anwendungsfälle|Verständniserwartungen|independentTransfer' docs/concept/skill-graph/architecture-source/chapters/08-learning-goal-book.de.md docs/concept/skill-graph/architecture-source/chapters/08-learning-goal-book.en.md contracts/goal-evidence --glob '"'!**/*review*'"'" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+docs/concept/skill-graph/architecture-source/chapters/08-learning-goal-book.de.md:10:- **Vierzehn verbindliche Invarianten:** Knappe kanonische `title`/`description`; separate fingerprint-gebundene V2-Evidenzprofile (`contracts/goal-evidence/v2/goal-evidence-profile.schema.json` mit `expectations`, `coverageExpectations`, `variationAxes` und `applicationCaseBriefs`; V1 bleibt als Archivhistorie erhalten); **genau eine physische Seite je regulärem atomarem Ziel** mit vollständiger **Lernziel-ID**, Kapitelpfad (`canonical-composition-view-v1` + **Bundeslandspezifische Ergänzungen** mit lückenloser `treeOrder`), stabiler Kahn-Topologiesortierung entlang `requires`, klickbaren PDF-Sprungzielen (`goal-<uuid>`), Fail-Closed-Überlauf-/Lesbarkeitsprüfung, inkrementellen Skia-PDF-1.4-Lesezeichen, bundeslandprimären Geltungstupeln (`Bundesland -> [{stage, durationModel, courseProfile}]` – niemals kartesische `G8`/`G9`-Kreuzprodukte) sowie nachgeladenen `/lernzielbuch/<bookId>.original-sources.json`-Quellenmatrizen.
+docs/concept/skill-graph/architecture-source/chapters/08-learning-goal-book.en.md:10:- **Fourteen binding invariants:** Concise canonical `title`/`description`; separate fingerprint-bound V2 evidence profiles (`contracts/goal-evidence/v2/goal-evidence-profile.schema.json` capturing `expectations`, `coverageExpectations`, `variationAxes`, and `applicationCaseBriefs`; V1 retained as archived audit history); **one physical page per ordinary curricular-atomic target goal** displaying full **Lernziel-ID**, chapter path (`canonical-composition-view-v1` + **Bundeslandspezifische Ergänzungen** with gap-free `treeOrder`), stable Kahn topological order from `requires`, clickable named PDF destinations (`goal-<uuid>`), fail-closed overflow/legibility checks, incremental Skia PDF 1.4 bookmark outlines, state-primary applicability tuples (`Bundesland -> [{stage, durationModel, courseProfile}]` — never Cartesian `G8`/`G9` cross-products), and on-demand `/lernzielbuch/<bookId>.original-sources.json` supplements.
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:236:        "independentTransferRequired"
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:269:        "independentTransferRequired": {
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:318:        "applicationCaseBriefs"
+contracts/goal-evidence/v2/goal-evidence-profile.schema.json:351:        "applicationCaseBriefs": {
+
+2026-11-24T04:44:19.181980Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+codex
+Die Rechnungen und die DE/EN-Fassungen sind konsistent. D1 verlangt beim Umkehren einen v-Nulldurchgang, ein s-Minimum und weiterhin konstantes positives a; D4 prüft die physikalische Begründung einer Fortsetzung nach dem Stopp. Ein Unterschied zum Profil bleibt ausdrücklich sichtbar: D17 gibt in beiden Situationen Anfangswerte und a vor, keine fertige t-v-Gerade als Ausgangsdarstellung.
+
+exec
+/bin/bash -lc 'sha256sum /home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json /tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json /tmp/e1-t5/coverage-successor-inputs.json /tmp/e1-t5/criteria.md' in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+3c07b96dd47f877596a43575a44d2a2087624c9a16dae02854acbf7d929704a2  /home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json
+e12d8bcafaa2bcd824b76bbab56e63ed7d3ef87044eafaa24f30f877a4e3683f  /tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json
+452986171d8ae100962668877589d89fad7b8e2883ea2047bd88fe6ce3d7b220  /tmp/e1-t5/coverage-successor-inputs.json
+d2e2318ffac0bc56fb454b754163a4379a4d36b31bda8dff8ce37db57f838ef3  /tmp/e1-t5/criteria.md
+
+exec
+/bin/bash -lc "rg -n '\"profile\"|\"constant-acceleration\"|\"linked-three-graphs\"|\"zero-velocity-and-validity\"|\"coverageExpectations\"|\"variationAxes\"|\"applicationCaseBriefs\"' /home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+11:      "profile": {
+15:            "id": "constant-acceleration",
+22:            "id": "linked-three-graphs",
+29:            "id": "zero-velocity-and-validity",
+36:        "coverageExpectations": {
+38:            "constant-acceleration",
+39:            "linked-three-graphs",
+40:            "zero-velocity-and-validity"
+47:        "variationAxes": [
+59:        "applicationCaseBriefs": [
+
+exec
+/bin/bash -lc "rg -n '\"taskContent\"|\"taskContentEn\"|\"solutionContent\"|\"solutionContentEn\"|\"scoring\"|\"id\": \"D[1234]\"' /tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json" in /home/enpasos/projects/skillpilot-e1-nachweise
+ succeeded in 0ms:
+51:    "taskContent": "Ab 17 von 20 BE ist die Prüfung bestanden.\n\n**Wagen auf einer geraden Bahn.** Bei $t=2\\,\\mathrm s$ ist der Wagen am Ort $s=5\\,\\mathrm m$. Er hat die Geschwindigkeit $v=-1\\,\\mathrm{m/s}$. Von $t=2\\,\\mathrm s$ bis $t=4\\,\\mathrm s$ beträgt laut Protokoll seine Beschleunigung $a=+2\\,\\mathrm{m/s^2}$.\n\n1. Zeichne oder beschreibe das Zeit-Beschleunigungs-, Zeit-Geschwindigkeits- und Zeit-Ort-Diagramm in diesem Zeitraum. Zeige, wie die Werte bei 2 s in deine Darstellung eingehen. Markiere den Richtungswechsel. Bestimme die Ortswerte bei 2,5 s, 3 s und 4 s. (5 BE)\n2. Erkläre, was die Flächen im Beschleunigungs- und Geschwindigkeitsdiagramm in diesem Fall bedeuten. Zeige, wie du die Flächen bis und nach dem Richtungswechsel bestimmst und für Ortsänderung und Strecke zusammensetzt. Gib Ortsänderung und Strecke für das ganze Intervall an. Prüfe außerdem, ob deine Vorhersage bei 4 s zur unabhängigen Kontrollablesung $(7{,}03\\pm0{,}05)\\,\\mathrm m$ passt. (5 BE)\n\n3. **Bremsendes Fahrzeug.** Bei $t=0$ beginnt das fahrende Fahrzeug mit $v_0=6\\,\\mathrm{m/s}$ zu bremsen. Die Beschleunigung beträgt bis zum Stillstand $a=-2\\,\\mathrm{m/s^2}$. Der Beginn der Bremsung liegt bei $s=0$.\n\n   Stelle die Geschwindigkeits- und Ortsgesetze für die Bremsung auf. Zeichne oder beschreibe die drei Zeitdiagramme vom Beginn der Bremsung bis zum Stillstand. Bestimme die Stoppzeit und den Bremsweg und zeige die zugehörigen Werte in den Diagrammen. (5 BE)\n4. Ein Programm lässt die Beschleunigung bis 5 s unverändert. Was sagt es dann für Ort und Geschwindigkeit bei 5 s voraus? Erkläre, warum diese Fortsetzung die Bewegung eines nach dem Bremsen stehen bleibenden Fahrzeugs nicht trifft. Gib an, welche Beschleunigung, Geschwindigkeit und Position das Modell nach dem Stillstand stattdessen ansetzen müsste. (5 BE)",
+52:    "taskContentEn": "A total of 17 out of 20 marks is a pass.\n\n**Cart on a straight track.** At $t=2\\,\\mathrm s$, the cart's position is $s=5\\,\\mathrm m$ and its velocity is $v=-1\\,\\mathrm{m/s}$. For the interval from $t=2\\,\\mathrm s$ to $t=4\\,\\mathrm s$, the log shows that its acceleration is $a=+2\\,\\mathrm{m/s^2}$.\n\n1. Sketch or describe the acceleration–time, velocity–time and position–time graphs for this interval. Show how the values at 2 s enter your representations. Mark the change in direction. Find the positions at 2.5 s, 3 s and 4 s. (5 marks)\n2. Explain what the areas in the acceleration and velocity graphs mean in this case. Show how you find the areas before and after the reversal and combine them for displacement and distance. Give the displacement and total distance over the whole interval. Also check whether your prediction at 4 s agrees with a separate reading of $(7.03\\pm0.05)\\,\\mathrm m$. (5 marks)\n\n3. **Braking vehicle.** At $t=0$, the moving vehicle has velocity $v_0=6\\,\\mathrm{m/s}$ and starts braking with acceleration $a=-2\\,\\mathrm{m/s^2}$. It comes to a stop. Its position is $s=0$ when braking starts.\n\n   Set up the velocity and position laws while the vehicle brakes. Sketch or describe all three time graphs from the start of braking until the vehicle stops. Find the stopping time and braking distance, and show the corresponding values in your graphs. (5 marks)\n4. A program keeps the acceleration unchanged until 5 s. What position and velocity does it predict at 5 s? Explain why this extension fails to describe a vehicle that remains at rest after braking. State what acceleration, velocity and position the model should use once the vehicle has come to rest. (5 marks)",
+53:    "solutionContent": "1. Verwendet man $\\tau=t-2\\,\\mathrm s$ als Zeit seit dem Beginn des Protokolls, gelten $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ und $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. Gleichwertig sind bei Verwendung der Zeit $t$ in Sekunden die Gesetze $v=2t-5$ in Metern pro Sekunde und $s=t^2-5t+11$ in Metern; beide erfüllen die Anfangswerte bei $t=2\\,\\mathrm s$. Die Beschleunigung ist eine waagerechte Linie bei $+2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade steigt von $-1$ auf $+3\\,\\mathrm{m/s}$ und schneidet bei 2,5 s die Nulllinie. Die nach oben geöffnete Ortsparabel fällt zunächst, hat bei 2,5 s am Richtungswechsel ihr Minimum bei 4,75 m und steigt danach. Bei 3 s liegt der Wagen wieder bei 5,00 m, bei 4 s bei 7,00 m.\n2. Die Beschleunigungsfläche ergibt $(2\\,\\mathrm{m/s^2})\\cdot(2\\,\\mathrm s)=+4\\,\\mathrm{m/s}$ als Geschwindigkeitsänderung. Bis zur Umkehr ist die vorzeichenbehaftete Dreiecksfläche $-\\tfrac12(0{,}5\\,\\mathrm s)(1\\,\\mathrm{m/s})=-0{,}25\\,\\mathrm m$. Danach ist sie $+\\tfrac12(1{,}5\\,\\mathrm s)(3\\,\\mathrm{m/s})=+2{,}25\\,\\mathrm m$. Die Ortsänderung ist die Summe, also $+2{,}00\\,\\mathrm m$. Die Strecke zählt beide Wegstücke positiv, also $2{,}50\\,\\mathrm m$. Die vorhergesagten 7,00 m liegen im Kontrollbereich von 6,98 bis 7,08 m.\n3. Mit $t$ in Sekunden gilt $v=6-2t$ in Metern pro Sekunde und $s=6t-t^2$ in Metern. Im Beschleunigungsdiagramm verläuft die Linie bis zum Stopp waagerecht bei $-2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade fällt von 6 m/s auf null bei 3 s. Der Ortsgraph ist eine nach unten geöffnete Parabel, die von 0 m auf 9 m steigt und beim Stopp eine waagerechte Tangente hat. Der Bremsweg beträgt 9 m.\n4. Mit unveränderter Beschleunigung ergibt das Programm $v(5)=-4\\,\\mathrm{m/s}$ und $s(5)=5\\,\\mathrm m$. Es sagt nach dem Stillstand eine Bewegung rückwärts voraus. Damit das Fahrzeug stehen bleibt, darf man die vorherige Bremsbeschleunigung im Modell nach dem Stopp nicht weiterführen. Dazu müsste eine weitere rückwärts gerichtete Beschleunigung physikalisch begründet sein. Beim Dauerstillstand gilt nach 3 s $a=0$, $v=0$ und $s=9\\,\\mathrm m$.\n\n**Hinweise zur Bewertung**\n\nJe Zeile zählt die höchste belegte Stufe. Die vier Werte werden addiert. Begründete Diagramme und ausreichend genaue Beschreibungen mit nachvollziehbaren Größen und Einheiten zeigen dieselben Leistungen.",
+54:    "solutionContentEn": "1. With $\\tau=t-2\\,\\mathrm s$ measuring time since the start of the log, $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ and $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. Equivalently, with $t$ in seconds, $v=2t-5$ in metres per second and $s=t^2-5t+11$ in metres satisfy both initial values at $t=2\\,\\mathrm s$. The acceleration graph is horizontal at $+2\\,\\mathrm{m/s^2}$. The velocity rises linearly from $-1$ to $+3\\,\\mathrm{m/s}$, crossing zero at 2.5 s. The position graph is an upward-opening parabola. It falls to its minimum of 4.75 m when the cart changes direction at 2.5 s and then rises. The cart is at 5.00 m again at 3 s and at 7.00 m at 4 s.\n2. The acceleration area gives $(2\\,\\mathrm{m/s^2})\\cdot(2\\,\\mathrm s)=+4\\,\\mathrm{m/s}$ as the velocity change. Before the reversal the signed triangle area is $-\\tfrac12(0.5\\,\\mathrm s)(1\\,\\mathrm{m/s})=-0.25\\,\\mathrm m$. Afterwards it is $+\\tfrac12(1.5\\,\\mathrm s)(3\\,\\mathrm{m/s})=+2.25\\,\\mathrm m$. Adding them gives the displacement, $+2.00\\,\\mathrm m$. Total distance counts both stretches positively and is $2.50\\,\\mathrm m$. The predicted 7.00 m lies inside the check interval from 6.98 to 7.08 m.\n3. For $t$ in seconds, $v=6-2t$ is in metres per second and $s=6t-t^2$ is in metres. The acceleration graph is horizontal at $-2\\,\\mathrm{m/s^2}$ until stopping. The velocity graph is a straight line falling from 6 m/s to zero at 3 s. The position graph is a downward-opening parabola that rises from 0 m to 9 m, with a horizontal tangent at the stop. The braking distance is 9 m.\n4. With unchanged acceleration, the program gives $v(5)=-4\\,\\mathrm{m/s}$ and $s(5)=5\\,\\mathrm m$. After the stop it predicts that the vehicle moves backwards. For the vehicle to remain at rest, the previous braking acceleration cannot continue beyond the stop in the model. A new physical explanation would be needed for acceleration backwards. For a vehicle that stays at rest, $a=0$, $v=0$ and $s=9\\,\\mathrm m$ after 3 s.\n\n**Scoring notes**\n\nScore the highest level demonstrated in each row and add the four results. Reasoned graphs and sufficiently precise descriptions with clearly identifiable quantities and units demonstrate the same skills.",
+55:    "scoring": {
+60:          "id": "D1",
+65:          "id": "D2",
+70:          "id": "D3",
+75:          "id": "D4",
+
+2026-11-24T04:45:56.604819Z  WARN codex_otel::auth_storage: credential storage file fallback completed credential_kind="mcp" store_mode="auto" selected_store="direct_keyring" actual_store="file" operation="load" secure_outcome="error" outcome="not_found" fallback_reason="secure_error" secure_error="unavailable" storage_phase="policy" originator="codex_vscode"
+codex
+**APPROVE – für die Inhaltsbeziehung des exakten D17 zum aktuellen BES-Ziel und P-v2.** Ein reguläres Bestehen mit 17/20 trägt die beanspruchte Verständnisleistung. Die offenen Aktivierungs- und Bindungsschritte sind damit nicht erledigt.
+
+Geprüft wurden der vollständige [P-v2-Profilkörper](/home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json:11), das vollständige [D17 einschließlich DE/EN und Raster](/tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json), aktuelle Zielbedeutung und Ownership sowie die gelieferten Kriterien. Referenzierte Fremdreviews wurden nicht geöffnet; Dateien wurden nicht verändert.
+
+| Verbindliche Erwartung | D-Zeilen und fachlicher Nachweis | Wirksame Punktgrenze |
+|---|---|---|
+| `constant-acceleration` | **D1/D2**, erneut **D3/D4**: Konstantes a wird mit linearer Geschwindigkeitsänderung verbunden. Beim Wagen bedeutet positives a zunächst sinkenden, nach der Umkehr steigenden Geschwindigkeitsbetrag. Die Vorzeichenbeziehung wird durch die konsistenten Bewegungsdarstellungen gezeigt; eine bestimmte verbale Formulierung ist dafür nicht erforderlich. | Ohne konstantes a und dazu konsistente Bewegungsgraphen fehlt die Zweipunktbasis in D1 beziehungsweise D3: höchstens **16/20**. |
+| `linked-three-graphs` | **D1 und D3** verlangen jeweils drei konsistente Darstellungen; **D2** zusätzlich die begründete Verbindung zwischen Geschwindigkeitsflächen und Ortsänderung. Ortsgesetze, Graphen und Flächenbilanz bilden gemeinsam eine zulässige Erklärung von Steigung und Krümmung. | Ohne die drei konsistenten Graphen D1/D3 höchstens 1 Punkt; ohne vorzeichenrichtige Flächenbilanz D2 höchstens 1 Punkt. Jeweils insgesamt höchstens **16/20**. |
+| `zero-velocity-and-validity` | **D1**: Beim Umkehren durchquert v die Nulllinie, s erreicht ein Minimum, a bleibt positiv konstant. **D4**: Eine rechnerische Fortsetzung ist von einer physikalisch begründeten Fortsetzung zu unterscheiden; dauerhafter Stillstand verlangt ein anderes Anschlussmodell. | `v=0 ⇒ a=0` widerspricht der konsistenten D1-Basis. Bloße Fortsetzungszahlen ohne Erklärung tragen die D4-Basis nicht. Jeweils höchstens **16/20**. |
+
+Diese Grenzen folgen aus dem vorhandenen Stufenraster: Zusatzpunkte gibt es erst **ab der Zweipunktbasis**. Es wird kein nachträgliches Zusatzveto eingeführt. **2+5+5+5=17** darf bestehen: Die Kernleistungen bleiben vorhanden, während rechnerische oder ergänzende Leistungen fehlen dürfen.
+
+Die physikalischen Ergebnisse habe ich unabhängig nachgerechnet:
+
+- Wagen: \(v=2t-5\), \(s=t^2-5t+11\); Umkehr bei **2,5 s und 4,75 m**, anschließend \(s(3)=5\) m und \(s(4)=7\) m. Die Geschwindigkeitsflächen sind **−0,25 m** und **+2,25 m**: Ortsänderung **+2 m**, Strecke **2,5 m**. 7 m liegt im Kontrollintervall **[6,98; 7,08] m**.
+- Bremsung: \(v=6-2t\), \(s=6t-t^2\); Stopp bei **3 s und 9 m**. Unveränderte Fortsetzung ergibt bei 5 s **−4 m/s und 5 m**. Das ist mathematisch konsistent, beschreibt aber kein stehen bleibendes Fahrzeug. Für dessen Anschlussmodell gelten \(a=0,\ v=0,\ s=9\) m.
+
+Drei Abgrenzungen sind wesentlich:
+
+**Modellannahme und Daten:** In D17 ist a für ein ganzes Intervall vorgegeben. Im Profilfall `starting-from-rest` wird die Konstanz zwischen den Stützstellen ausdrücklich angenommen. Gleiche mittlere Beschleunigungen aus wenigen Messpunkten beweisen diese kontinuierliche Konstanz nicht. Auch die Kontrollablesung in D2 bestätigt nur Verträglichkeit; sie beweist weder den gesamten Verlauf noch einen Kraftmechanismus.
+
+**Umkehr und Gültigkeit:** Die drei Graphen haben unterschiedliche Rollen. Der a-Graph allein bestimmt ohne Anfangsgeschwindigkeit keinen Umkehrzeitpunkt. Die Angaben bestimmen die Bewegung einschließlich des Modellendes; danach ist eine zusätzliche Beschleunigungsannahme nötig. D4 prüft genau diese Unterscheidung anhand zweier verschiedener Anschlussmodelle.
+
+**Methoden:** Die Dreiecks- und Rechtecksflächen benötigen keine Integralrechnung. Auch die Graphenerklärung setzt keine formale Differentialrechnung voraus. DE und EN sind hinsichtlich dieser Anforderungen gleichwertig.
+
+P-v2 verlangt alle drei Erwartungs-IDs, keine Alternativgruppe, **mindestens zwei unabhängige Demonstrationen**, frische Variation und unabhängigen Transfer. D1/D2 bilden eine Anwendung, D3/D4 eine zweite; vier Zeilen werden nicht als vier Anwendungen gezählt. Neue Anfangswerte, ein anderer Zeitbeginn und das umgekehrte Beschleunigungsvorzeichen verlangen erneute Konstruktion.
+
+Die beiden Profilfälle sind fachliche Fallskizzen, keine Pflicht zur Wiederholung ihrer Zahlen. Die Achse `relative-signs` wird deutlich genutzt. `starting-representation` wird **nicht wörtlich** ausgespielt: D17 gibt keine fertige t-v-Gerade vor. Das Profil verlangt jedoch keine gesonderte Abnahme jeder Achse; seine verpflichtenden Erwartungs-IDs und die frische unabhängige Anwendung werden durch D17 getragen. Einen gesonderten Nachweis gerade dieser Eingangsform bescheinige ich nicht.
+
+Qualifizierter Inhaltsbezug ausschließlich:
+
+- **Eigenes gewöhnliches Ziel BES:** `e4b38061-1f28-43ad-8371-a3e7c0e81856`
+- **Prüfungszeuge:** `f13ca187-b680-5f47-b4ad-76bd474bd8a2`, exaktes **D17**, Zeugen D1–D4
+- **Owner:** `physics-constant-acceleration`, Revision **`2026-11-23-v4`**
+
+Aus verwendeten Voraussetzungen oder Kontrollwerten folgt keine zusätzliche Zielanerkennung, insbesondere keine vollständige Anerkennung von Mathematik-, Messunsicherheits- oder Experimentierzielen.
+
+Die Rohdatei-SHA-256 waren vor und nach der Prüfung identisch:
+
+```text
+P-v2:
+3c07b96dd47f877596a43575a44d2a2087624c9a16dae02854acbf7d929704a2
+D17:
+e12d8bcafaa2bcd824b76bbab56e63ed7d3ef87044eafaa24f30f877a4e3683f
+coverage-successor-inputs.json:
+452986171d8ae100962668877589d89fad7b8e2883ea2047bd88fe6ce3d7b220
+criteria.md:
+d2e2318ffac0bc56fb454b754163a4379a4d36b31bda8dff8ce37db57f838ef3
+```
+
+Profilbindung: `reviewId=physik-e1-bes-current-20261124-v2`, vollständiges `goals[0].profile`, nicht ein älterer Profilstand.
+
+Die Freigabe betrifft ausschließlich diese Inhaltsbeziehung. Aktuelle P-/Bildaktivierung und endgültige native D-Bindungen bleiben offen. Sie bescheinigt weder menschliche Abnahme, Lernendenversuch, persönliche Experimentdurchführung, CI noch Übertragung alter Receipts.
+2026-11-24T04:46:51.738619Z  WARN codex_mcp::rmcp_client: failed to initialize MCP client during shutdown: MCP startup failed: handshaking with MCP server failed: Send message error Transport [codex_rmcp_client::tool_list_changes::ToolListChanges<codex_rmcp_client::event_notification_transport::EventNotificationTransport<rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<codex_rmcp_client::http_client_adapter::StreamableHttpClientAdapter>>>>] error: Auth required, when send initialize request: Send message error Transport [codex_rmcp_client::tool_list_changes::ToolListChanges<codex_rmcp_client::event_notification_transport::EventNotificationTransport<rmcp::transport::worker::WorkerTransport<rmcp::transport::streamable_http_client::StreamableHttpClientWorker<codex_rmcp_client::http_client_adapter::StreamableHttpClientAdapter>>>>] error: Auth required, when send initialize request
+2026-11-24T04:46:51.741254Z  WARN codex_core::shell_snapshot: Failed to delete shell snapshot at AbsolutePathBuf("/home/enpasos/.codex/shell_snapshots/01a20bdb-b362-7e32-9cec-36892aa59ca3.1795495277413771448.sh"): Os { code: 2, kind: NotFound, message: "No such file or directory" }
+tokens used
+58,128
+**APPROVE – für die Inhaltsbeziehung des exakten D17 zum aktuellen BES-Ziel und P-v2.** Ein reguläres Bestehen mit 17/20 trägt die beanspruchte Verständnisleistung. Die offenen Aktivierungs- und Bindungsschritte sind damit nicht erledigt.
+
+Geprüft wurden der vollständige [P-v2-Profilkörper](/home/enpasos/projects/skillpilot-e1-nachweise/curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.candidates.json:11), das vollständige [D17 einschließlich DE/EN und Raster](/tmp/e1-t5/successor-candidates/f13ca187.D17.goal.json), aktuelle Zielbedeutung und Ownership sowie die gelieferten Kriterien. Referenzierte Fremdreviews wurden nicht geöffnet; Dateien wurden nicht verändert.
+
+| Verbindliche Erwartung | D-Zeilen und fachlicher Nachweis | Wirksame Punktgrenze |
+|---|---|---|
+| `constant-acceleration` | **D1/D2**, erneut **D3/D4**: Konstantes a wird mit linearer Geschwindigkeitsänderung verbunden. Beim Wagen bedeutet positives a zunächst sinkenden, nach der Umkehr steigenden Geschwindigkeitsbetrag. Die Vorzeichenbeziehung wird durch die konsistenten Bewegungsdarstellungen gezeigt; eine bestimmte verbale Formulierung ist dafür nicht erforderlich. | Ohne konstantes a und dazu konsistente Bewegungsgraphen fehlt die Zweipunktbasis in D1 beziehungsweise D3: höchstens **16/20**. |
+| `linked-three-graphs` | **D1 und D3** verlangen jeweils drei konsistente Darstellungen; **D2** zusätzlich die begründete Verbindung zwischen Geschwindigkeitsflächen und Ortsänderung. Ortsgesetze, Graphen und Flächenbilanz bilden gemeinsam eine zulässige Erklärung von Steigung und Krümmung. | Ohne die drei konsistenten Graphen D1/D3 höchstens 1 Punkt; ohne vorzeichenrichtige Flächenbilanz D2 höchstens 1 Punkt. Jeweils insgesamt höchstens **16/20**. |
+| `zero-velocity-and-validity` | **D1**: Beim Umkehren durchquert v die Nulllinie, s erreicht ein Minimum, a bleibt positiv konstant. **D4**: Eine rechnerische Fortsetzung ist von einer physikalisch begründeten Fortsetzung zu unterscheiden; dauerhafter Stillstand verlangt ein anderes Anschlussmodell. | `v=0 ⇒ a=0` widerspricht der konsistenten D1-Basis. Bloße Fortsetzungszahlen ohne Erklärung tragen die D4-Basis nicht. Jeweils höchstens **16/20**. |
+
+Diese Grenzen folgen aus dem vorhandenen Stufenraster: Zusatzpunkte gibt es erst **ab der Zweipunktbasis**. Es wird kein nachträgliches Zusatzveto eingeführt. **2+5+5+5=17** darf bestehen: Die Kernleistungen bleiben vorhanden, während rechnerische oder ergänzende Leistungen fehlen dürfen.
+
+Die physikalischen Ergebnisse habe ich unabhängig nachgerechnet:
+
+- Wagen: \(v=2t-5\), \(s=t^2-5t+11\); Umkehr bei **2,5 s und 4,75 m**, anschließend \(s(3)=5\) m und \(s(4)=7\) m. Die Geschwindigkeitsflächen sind **−0,25 m** und **+2,25 m**: Ortsänderung **+2 m**, Strecke **2,5 m**. 7 m liegt im Kontrollintervall **[6,98; 7,08] m**.
+- Bremsung: \(v=6-2t\), \(s=6t-t^2\); Stopp bei **3 s und 9 m**. Unveränderte Fortsetzung ergibt bei 5 s **−4 m/s und 5 m**. Das ist mathematisch konsistent, beschreibt aber kein stehen bleibendes Fahrzeug. Für dessen Anschlussmodell gelten \(a=0,\ v=0,\ s=9\) m.
+
+Drei Abgrenzungen sind wesentlich:
+
+**Modellannahme und Daten:** In D17 ist a für ein ganzes Intervall vorgegeben. Im Profilfall `starting-from-rest` wird die Konstanz zwischen den Stützstellen ausdrücklich angenommen. Gleiche mittlere Beschleunigungen aus wenigen Messpunkten beweisen diese kontinuierliche Konstanz nicht. Auch die Kontrollablesung in D2 bestätigt nur Verträglichkeit; sie beweist weder den gesamten Verlauf noch einen Kraftmechanismus.
+
+**Umkehr und Gültigkeit:** Die drei Graphen haben unterschiedliche Rollen. Der a-Graph allein bestimmt ohne Anfangsgeschwindigkeit keinen Umkehrzeitpunkt. Die Angaben bestimmen die Bewegung einschließlich des Modellendes; danach ist eine zusätzliche Beschleunigungsannahme nötig. D4 prüft genau diese Unterscheidung anhand zweier verschiedener Anschlussmodelle.
+
+**Methoden:** Die Dreiecks- und Rechtecksflächen benötigen keine Integralrechnung. Auch die Graphenerklärung setzt keine formale Differentialrechnung voraus. DE und EN sind hinsichtlich dieser Anforderungen gleichwertig.
+
+P-v2 verlangt alle drei Erwartungs-IDs, keine Alternativgruppe, **mindestens zwei unabhängige Demonstrationen**, frische Variation und unabhängigen Transfer. D1/D2 bilden eine Anwendung, D3/D4 eine zweite; vier Zeilen werden nicht als vier Anwendungen gezählt. Neue Anfangswerte, ein anderer Zeitbeginn und das umgekehrte Beschleunigungsvorzeichen verlangen erneute Konstruktion.
+
+Die beiden Profilfälle sind fachliche Fallskizzen, keine Pflicht zur Wiederholung ihrer Zahlen. Die Achse `relative-signs` wird deutlich genutzt. `starting-representation` wird **nicht wörtlich** ausgespielt: D17 gibt keine fertige t-v-Gerade vor. Das Profil verlangt jedoch keine gesonderte Abnahme jeder Achse; seine verpflichtenden Erwartungs-IDs und die frische unabhängige Anwendung werden durch D17 getragen. Einen gesonderten Nachweis gerade dieser Eingangsform bescheinige ich nicht.
+
+Qualifizierter Inhaltsbezug ausschließlich:
+
+- **Eigenes gewöhnliches Ziel BES:** `e4b38061-1f28-43ad-8371-a3e7c0e81856`
+- **Prüfungszeuge:** `f13ca187-b680-5f47-b4ad-76bd474bd8a2`, exaktes **D17**, Zeugen D1–D4
+- **Owner:** `physics-constant-acceleration`, Revision **`2026-11-23-v4`**
+
+Aus verwendeten Voraussetzungen oder Kontrollwerten folgt keine zusätzliche Zielanerkennung, insbesondere keine vollständige Anerkennung von Mathematik-, Messunsicherheits- oder Experimentierzielen.
+
+Die Rohdatei-SHA-256 waren vor und nach der Prüfung identisch:
+
+```text
+P-v2:
+3c07b96dd47f877596a43575a44d2a2087624c9a16dae02854acbf7d929704a2
+D17:
+e12d8bcafaa2bcd824b76bbab56e63ed7d3ef87044eafaa24f30f877a4e3683f
+coverage-successor-inputs.json:
+452986171d8ae100962668877589d89fad7b8e2883ea2047bd88fe6ce3d7b220
+criteria.md:
+d2e2318ffac0bc56fb454b754163a4379a4d36b31bda8dff8ce37db57f838ef3
+```
+
+Profilbindung: `reviewId=physik-e1-bes-current-20261124-v2`, vollständiges `goals[0].profile`, nicht ein älterer Profilstand.
+
+Die Freigabe betrifft ausschließlich diese Inhaltsbeziehung. Aktuelle P-/Bildaktivierung und endgültige native D-Bindungen bleiben offen. Sie bescheinigt weder menschliche Abnahme, Lernendenversuch, persönliche Experimentdurchführung, CI noch Übertragung alter Receipts.

@@ -1946,6 +1946,10 @@
                     },
                     {
                       "kind": "canonicalSubtree",
+                      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
                       "goalId": "bf8517a9-142b-5789-826a-767f3b277998"
                     }
                   ]
@@ -2404,10 +2408,6 @@
                       "acquisitionPlacement": true
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a"
-                    },
-                    {
                       "kind": "structure",
                       "id": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-db0aff75-7c88-52b0-a989-535b411c141e",
                       "label": "Kreisbewegungen und Zentripetalkraft",
@@ -2423,16 +2423,26 @@
                       ]
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147"
+                      "kind": "structure",
+                      "id": "physics-acquisition-94784e0a-7ddc-48be-91fb-dc82b78eb322",
+                      "label": "Grundlagen: Mechanische Energie",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+                        }
+                      ]
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "94784e0a-7ddc-48be-91fb-dc82b78eb322"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "88d07c80-5d7d-5c70-b385-b22769381e44"
+                      "kind": "structure",
+                      "id": "physics-acquisition-88d07c80-5d7d-5c70-b385-b22769381e44",
+                      "label": "Grundlagen: Wärmeenergie als innere Energie deuten",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "88d07c80-5d7d-5c70-b385-b22769381e44"
+                        }
+                      ]
                     },
                     {
                       "kind": "structure",
@@ -2441,11 +2451,51 @@
                       "children": [
                         {
                           "kind": "canonicalSubtree",
+                          "goalId": "262f807a-30d0-503e-986f-856cbd048e8e"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
                           "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73"
                         },
                         {
                           "kind": "goalEntry",
                           "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-65ddd780-0323-45d1-8f94-5e31bf28da23",
+                      "label": "E.1 Bewegungen und ihre Beschreibung",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "structure",
+                      "id": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3",
+                      "label": "Waagerechter Wurf und Superposition",
+                      "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+                          "projectionRole": "prerequisiteOnly",
+                          "acquisitionPlacement": true
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
                         }
                       ]
                     }
@@ -2467,6 +2517,18 @@
                       {
                         "unit": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-6b3e75b2-fbfd-51c1-9e02-e9b9f7080d44",
                         "after": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-78bcc25b-e48c-471b-9236-6c3b23d48a8b"
+                      },
+                      {
+                        "unit": "physics-acquisition-88d07c80-5d7d-5c70-b385-b22769381e44",
+                        "after": "physics-acquisition-94784e0a-7ddc-48be-91fb-dc82b78eb322"
+                      },
+                      {
+                        "unit": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-65ddd780-0323-45d1-8f94-5e31bf28da23",
+                        "after": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-230345f3-c360-4963-b390-ab94e3e2c864"
+                      },
+                      {
+                        "unit": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-82b5df3d-b1a7-4c6f-bd62-18fbbbe097a3",
+                        "after": "physics-canonical-board-topic-physics-required-preparation-physics-e-phase-230345f3-c360-4963-b390-ab94e3e2c864"
                       }
                     ]
                   }
@@ -2499,12 +2561,6 @@
                   "id": "physics-acquisition-fbecbd60-5db3-51e8-94be-d66b066ffa06",
                   "label": "Grundlagen: Schiefen Wurf beschreiben",
                   "children": [
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
                     {
                       "kind": "canonicalSubtree",
                       "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06"
@@ -3572,10 +3628,6 @@
                     },
                     {
                       "kind": "canonicalSubtree",
-                      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
                       "goalId": "8320bb17-e6ab-50ea-a965-aa331bfd33e1"
                     },
                     {
@@ -3616,7 +3668,7 @@
                     },
                     {
                       "kind": "canonicalSubtree",
-                      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
+                      "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
                     },
                     {
                       "kind": "canonicalSubtree",
@@ -3644,6 +3696,10 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37"
                     },
                     {
                       "kind": "goalEntry",
@@ -3678,6 +3734,10 @@
               ],
               "childOrder": {
                 "after": [
+                  {
+                    "unit": "physics-e1-motion",
+                    "after": "physics-required-preparation-physics-e-phase"
+                  },
                   {
                     "unit": "physics-acquisition-fbecbd60-5db3-51e8-94be-d66b066ffa06",
                     "after": "physics-required-preparation-physics-e-phase"

@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "codex",
+    "exec",
+    "--ignore-user-config",
+    "--skip-git-repo-check",
+    "-C",
+    "/tmp/e1-t5/dp-schief-a",
+    "--sandbox",
+    "read-only",
+    "--model",
+    "gpt-6.1-sol",
+    "-c",
+    "model_reasoning_effort=\"ultra\"",
+    "--output-schema",
+    "/tmp/e1-t5/dp-schief-a/output.schema.json",
+    "--output-last-message",
+    "/tmp/e1-t5/dp-schief-a/response.json",
+    "--json",
+    "--image",
+    "/tmp/e1-t5/dp-schief-a/book-page-001.png",
+    "--image",
+    "/tmp/e1-t5/dp-schief-a/book-page-002.png",
+    "--image",
+    "/tmp/e1-t5/dp-schief-a/book-page-003.png",
+    "--image",
+    "/tmp/e1-t5/dp-schief-a/goal-image-fbecbd60-5db3-51e8-94be-d66b066ffa06.jpg",
+    "--",
+    "-"
+  ],
+  "stdinFile": "driver-prompt.txt"
+}

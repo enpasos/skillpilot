@@ -1184,6 +1184,86 @@
               "children": [
                 {
                   "kind": "structure",
+                  "id": "physics-required-preparation-physics-st-unit-j9",
+                  "label": "Notwendige Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
+                  "id": "physics-st-j9-topic-c3f9e8323c3a",
+                  "label": "Mechanik der Punktmasse",
+                  "children": [
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "bf8517a9-142b-5789-826a-767f3b277998"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e"
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-st-j9-topic-ffa957091aaa",
                   "label": "Elektromagnetische Induktion und Leitungsvorgänge",
                   "children": [
@@ -1201,14 +1281,30 @@
                   "children": [
                     {
                       "kind": "goalEntry",
+                      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860"
+                    },
+                    {
+                      "kind": "goalEntry",
                       "goalId": "c61b2a69-b5cd-5785-bb04-5d6bca53b218",
                       "projectionRole": "target"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "cd182a3c-be23-5f5a-87f6-0898ea16cb74"
                     }
                   ]
                 }
               ],
               "childOrder": {
                 "after": [
+                  {
+                    "unit": "physics-st-j9-topic-c3f9e8323c3a",
+                    "after": "physics-required-preparation-physics-st-unit-j9"
+                  },
+                  {
+                    "unit": "physics-st-unit-j9-practice",
+                    "after": "physics-st-j9-topic-c3f9e8323c3a"
+                  },
                   {
                     "unit": "physics-st-unit-j9-practice",
                     "after": "physics-st-j9-topic-ffa957091aaa"
@@ -1253,19 +1349,49 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+                      "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+                      "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+                      "goalId": "a8c42ee9-2898-4247-819f-c235032ac78a",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1289,25 +1415,13 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+                      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+                      "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1319,7 +1433,19 @@
                     },
                     {
                       "kind": "goalEntry",
+                      "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
                       "goalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1451,78 +1577,6 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "a8c42ee9-2898-4247-819f-c235032ac78a",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "06ce2b1b-e888-5322-9ed9-dfc6d322956a",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -1563,30 +1617,6 @@
                       "id": "physics-acquisition-ea2d5085-4ec1-5e33-87e0-15edcad635bf",
                       "label": "Grundlagen: Spektrallinien deuten",
                       "children": [
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "bf8517a9-142b-5789-826a-767f3b277998"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856"
-                        },
                         {
                           "kind": "canonicalSubtree",
                           "goalId": "d03f1cb6-c224-53db-ad91-76cc7827978d"
@@ -1878,6 +1908,23 @@
                         },
                         {
                           "kind": "canonicalSubtree",
+                          "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "0ceb4400-3e8f-586c-a669-a8877906bd8d",
+                          "displayLabel": "Lernkarten"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
                           "goalId": "14d99a65-8d58-5647-88ab-02137b96d55b"
                         },
                         {
@@ -1895,12 +1942,45 @@
                           "goalId": "23335a89-f8e6-5c22-8705-d71193aeac96"
                         },
                         {
+                          "kind": "goalEntry",
+                          "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3"
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "341ec911-6624-529c-8799-b5a5113ee907",
+                          "displayLabel": "Lernkarten"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+                        },
+                        {
                           "kind": "canonicalSubtree",
                           "goalId": "4c5c7cb1-f238-52c8-b82c-159c6c299c0e"
                         },
                         {
                           "kind": "canonicalSubtree",
+                          "goalId": "4e046c1c-bcc7-5e3c-9f71-f80d69027483"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
                           "goalId": "4e823349-b60c-5d2a-b96f-d3f23ae50e3a"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a"
                         },
                         {
                           "kind": "goalEntry",
@@ -1929,7 +2009,19 @@
                         },
                         {
                           "kind": "canonicalSubtree",
+                          "goalId": "75f7139f-0f07-5cec-bcea-4f139502b528"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
                           "goalId": "7c986fca-1129-5eff-a17e-0a04bb7346ee"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
                         },
                         {
                           "kind": "canonicalSubtree",
@@ -1938,6 +2030,18 @@
                         {
                           "kind": "canonicalSubtree",
                           "goalId": "89124b92-5769-5e13-8a5d-78497936260f"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "8eb6456b-d915-50ed-a076-2b23c2e5420c"
                         },
                         {
                           "kind": "canonicalSubtree",
@@ -1955,124 +2059,6 @@
                         {
                           "kind": "canonicalSubtree",
                           "goalId": "a5031dfc-6d25-5a04-850a-5c7d8a254c21"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "aed9161b-ddc4-559c-be8f-baeeddf224f3"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "68c90ba6-c438-463c-9a53-cf61062d416a"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "d024aa45-5dbb-51f7-87a6-9ba939858696"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "da3169ae-c72a-5782-ad95-408167a5c6da"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "db6b8de4-21e0-58e8-a347-2ae39f538f92"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73"
-                        },
-                        {
-                          "kind": "goalEntry",
-                          "goalId": "0ceb4400-3e8f-586c-a669-a8877906bd8d",
-                          "displayLabel": "Lernkarten"
-                        },
-                        {
-                          "kind": "goalEntry",
-                          "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3"
-                        },
-                        {
-                          "kind": "goalEntry",
-                          "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
-                        },
-                        {
-                          "kind": "goalEntry",
-                          "goalId": "341ec911-6624-529c-8799-b5a5113ee907",
-                          "displayLabel": "Lernkarten"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "4e046c1c-bcc7-5e3c-9f71-f80d69027483"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "4b8b5f4c-c222-57b5-a2f2-ef2efacc03dd"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "5c5d6698-c056-5850-8ecd-6dd87fb44549"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "75f7139f-0f07-5cec-bcea-4f139502b528"
-                        },
-                        {
-                          "kind": "canonicalSubtree",
-                          "goalId": "8eb6456b-d915-50ed-a076-2b23c2e5420c"
                         },
                         {
                           "kind": "canonicalSubtree",
@@ -2099,6 +2085,14 @@
                           "goalId": "76fd0ab2-079a-516e-a33b-170355336d40"
                         },
                         {
+                          "kind": "canonicalSubtree",
+                          "goalId": "aa0fa5fb-7bfb-5f9f-a606-3f7187cfb745"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "44f0eefa-2d93-5954-879f-f6c49e5cebc7"
+                        },
+                        {
                           "kind": "goalEntry",
                           "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8"
                         },
@@ -2112,11 +2106,23 @@
                         },
                         {
                           "kind": "canonicalSubtree",
+                          "goalId": "aed9161b-ddc4-559c-be8f-baeeddf224f3"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "b3f3f4f7-b5cc-40e1-b57a-3d93649baa61"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
                           "goalId": "ba16948b-5e07-54af-b77b-776e677c6906"
                         },
                         {
                           "kind": "canonicalSubtree",
                           "goalId": "09995ab9-86aa-5b02-8a58-62b16a37831d"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "bebc3738-0be6-52cf-83db-f8b948f7cf7b"
                         },
                         {
                           "kind": "canonicalSubtree",
@@ -2196,11 +2202,23 @@
                         },
                         {
                           "kind": "canonicalSubtree",
+                          "goalId": "d024aa45-5dbb-51f7-87a6-9ba939858696"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "0b8a4215-e6ed-56c8-88c3-b3a2a99723c7"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
                           "goalId": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
                         },
                         {
                           "kind": "canonicalSubtree",
                           "goalId": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
                         },
                         {
                           "kind": "canonicalSubtree",
@@ -2212,7 +2230,35 @@
                         },
                         {
                           "kind": "canonicalSubtree",
-                          "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+                          "goalId": "da3169ae-c72a-5782-ad95-408167a5c6da"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "db6b8de4-21e0-58e8-a347-2ae39f538f92"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "206a7d3d-9b11-56be-89ff-73898445c4f5"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "5cf160e5-e0c2-5552-b2cf-0f04871c5e7e"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "9f85de48-1b3f-5afb-8a34-ce94cf7a1b49"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "df010b2b-b182-5f7e-bbe4-49b72e48c27a"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "658cf33d-a0c2-5d47-801a-3dbcd5cac074"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "e06dd9c7-8c36-5ca4-880b-57b02d837085"
                         },
                         {
                           "kind": "canonicalSubtree",
@@ -2427,10 +2473,6 @@
                       {
                         "unit": "physics-acquisition-ef6d5067-96b0-5388-87dd-5ac4e6a3e313",
                         "after": "physics-acquisition-9e881b3b-68cd-5f52-819f-c2e33b5ba631"
-                      },
-                      {
-                        "unit": "physics-acquisition-60211ac1-cbe1-5182-87ef-673a068c5b0a",
-                        "after": "physics-acquisition-ea2d5085-4ec1-5e33-87e0-15edcad635bf"
                       },
                       {
                         "unit": "physics-acquisition-60211ac1-cbe1-5182-87ef-673a068c5b0a",
@@ -2718,10 +2760,6 @@
                       "projectionRole": "target"
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
-                    },
-                    {
                       "kind": "goalEntry",
                       "goalId": "2f8d4250-66c5-54e9-abb8-80735dc408d2"
                     },
@@ -2752,10 +2790,6 @@
                     {
                       "kind": "canonicalSubtree",
                       "goalId": "6d25344c-35d7-5853-925d-2bccbaf50630"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
                     },
                     {
                       "kind": "goalEntry",
@@ -2794,10 +2828,6 @@
                       "goalId": "a3e22e70-6629-5c74-a8ae-a8c4f55c72a0"
                     },
                     {
-                      "kind": "goalEntry",
-                      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860"
-                    },
-                    {
                       "kind": "canonicalSubtree",
                       "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642"
                     },
@@ -2812,6 +2842,10 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "bbe9a270-9b17-519f-8cd7-92c816ac4e29"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
                     },
                     {
                       "kind": "canonicalSubtree",
@@ -2832,10 +2866,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "ca13e9cd-6377-540e-88c8-0308cddc8a7e"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "cd182a3c-be23-5f5a-87f6-0898ea16cb74"
                     },
                     {
                       "kind": "canonicalSubtree",
@@ -4770,17 +4800,7 @@
         },
         {
           "kind": "goalEntry",
-          "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
           "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
           "projectionRole": "prerequisiteOnly"
         },
         {
@@ -4791,6 +4811,76 @@
         {
           "kind": "goalEntry",
           "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "a8c42ee9-2898-4247-819f-c235032ac78a",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
           "projectionRole": "prerequisiteOnly"
         },
         {
@@ -4810,22 +4900,17 @@
         },
         {
           "kind": "goalEntry",
-          "goalId": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+          "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
           "projectionRole": "prerequisiteOnly"
         },
         {
           "kind": "goalEntry",
-          "goalId": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
           "projectionRole": "prerequisiteOnly"
         },
         {
           "kind": "goalEntry",
-          "goalId": "c15fe32d-1c83-4127-b1a4-9125af3d8f5d",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "dbc13bb0-963b-49a8-a441-2183f4b64c8e",
+          "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
           "projectionRole": "prerequisiteOnly"
         },
         {
@@ -4835,7 +4920,17 @@
         },
         {
           "kind": "goalEntry",
+          "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
           "goalId": "346efb31-c400-5bd3-a698-dd9a7e1bc3f7",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
           "projectionRole": "prerequisiteOnly"
         },
         {
@@ -4946,71 +5041,6 @@
         {
           "kind": "goalEntry",
           "goalId": "46bdcc16-418f-417a-89cf-033d7ae6c8cc",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "a8c42ee9-2898-4247-819f-c235032ac78a",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "ae20183e-92b5-5521-b8e0-9a8662cf51f5",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "b42bdfcc-3db7-5697-8b3e-69e50962ca86",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "e9445479-c188-5c09-842d-faa5e8678099",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "dde9ae98-d97d-598b-92f4-f1616f4d75c8",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "b1dcc191-d046-50de-984a-ee5c17157628",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "858113c5-e53b-57bb-b01f-ba95c3ddcb6f",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "845440ce-f63f-5835-903f-739145ca27bd",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "628928a6-4f48-54dc-952d-dec0e69dc856",
-          "projectionRole": "prerequisiteOnly"
-        },
-        {
-          "kind": "goalEntry",
-          "goalId": "623cd47f-6f9e-58a7-911c-69e4a8609a27",
           "projectionRole": "prerequisiteOnly"
         },
         {

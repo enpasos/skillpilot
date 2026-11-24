@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "codex",
+    "exec",
+    "--ignore-user-config",
+    "--skip-git-repo-check",
+    "-C",
+    "/tmp/e1-t5/dp-bes-a",
+    "--sandbox",
+    "read-only",
+    "--model",
+    "gpt-6.1-sol",
+    "-c",
+    "model_reasoning_effort=\"ultra\"",
+    "--output-schema",
+    "/tmp/e1-t5/dp-bes-a/output.schema.json",
+    "--output-last-message",
+    "/tmp/e1-t5/dp-bes-a/response.json",
+    "--json",
+    "--image",
+    "/tmp/e1-t5/dp-bes-a/book-page-001.png",
+    "--image",
+    "/tmp/e1-t5/dp-bes-a/book-page-002.png",
+    "--image",
+    "/tmp/e1-t5/dp-bes-a/book-page-003.png",
+    "--image",
+    "/tmp/e1-t5/dp-bes-a/goal-image-e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg",
+    "-"
+  ],
+  "stdinFile": "driver-prompt.txt"
+}

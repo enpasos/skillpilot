@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "contract": "actual-authorized-mp-return-three-class-backend-checkpoint-v1",
+  "status": "PASS",
+  "classes": [
+    {
+      "name": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "tests": "103",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-24T05:26:05.135Z",
+      "time": "416.156"
+    },
+    {
+      "name": "com.skillpilot.backend.service.CompositionViewServiceTest",
+      "tests": "70",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-24T05:32:54.973Z",
+      "time": "7.127"
+    },
+    {
+      "name": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "timestamp": "2026-11-24T05:33:02.782Z",
+      "time": "0.783"
+    }
+  ],
+  "classCount": 3,
+  "tests": 182,
+  "passed": 182,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "buildDuration": "7m42s",
+  "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/backend-targeted.actual.txt",
+  "logSha256": "sha256:a32961b40794492028d629b2359374e36c2663c9de1aca9746a218a2b531ce8f",
+  "testSourcePins": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+      "sha256": "sha256:da62f6fe80064b7c4a2616650503f56f46a838a1c24fc44e944bbbf2a5166004"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/CompositionViewServiceTest.java",
+      "sha256": "sha256:2984d99219af058306a944cc58a7cd37033c64c96e29f82aaa639d9cc112ec90"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/UnitLearningMaterialServiceTest.java",
+      "sha256": "sha256:6868f15d46e32dfdc4444a827d1f8b74b81c010be967af92253836f9c3ecba7b"
+    }
+  ],
+  "runtimeViewCheckpoint": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/post-mp-pre-sn-seventy-view-role-comparison.actual.json",
+  "runtimeBoundary": "MP authorized return is active, HH/SN deferral follows this completed run. Runtime writes were held until actual terminal success. Later combined runs get separate isolated-current receipts; earlier106/106 remains intact history.",
+  "buildDirectory": "/tmp/e1-t5/backend-mp-return-build",
+  "environment": {
+    "JDK": "Amazon Corretto25.0.2.10.1",
+    "Node": "20.20.2",
+    "Gradle": "9.7.1",
+    "resourceOverlay": false
+  },
+  "productionJavaChangesByThisRepair": false,
+  "behavior": "CommonZB+FFX remain; MP additionally available onlyinLK/mixedassignmentviews. MPstarts/passes/visiblepagination,draftfailclosed,GKrefusal,andexplicitindividualselectionaretested. Fourrequiredpartsandthe reviewedBES-onlyplanningcreditremain."
+}

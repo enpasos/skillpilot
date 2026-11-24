@@ -5,9 +5,10 @@ import { chromium } from 'playwright'
 const [site, api, profilesFile, physicsCourse = 'GK', browserCase = 'all'] = process.argv.slice(2)
 assert(['GK', 'LK'].includes(physicsCourse), 'Expected the explicit Physics course GK or LK')
 assert(['all', 'short-map', 'mobile-map', 'structure', 'planning', 'guided', 'foreign-focus'].includes(browserCase), 'Unknown focused browser case')
-const throwAssessment = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
-const multiphaseAssessment = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
-const voluntaryAssessmentIds = physicsCourse === 'LK' ? [throwAssessment, multiphaseAssessment] : [throwAssessment]
+const throwAssessment = 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'
+const historicalMultiphaseAssessment = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
+const freeFallSeriesAssessment = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
+const voluntaryAssessmentIds = [throwAssessment, freeFallSeriesAssessment]
 for (const url of [site, api]) assert(['localhost', '127.0.0.1'].includes(new URL(url).hostname))
 const numericSite = new URL(site)
 numericSite.hostname = '127.0.0.1'
@@ -396,7 +397,7 @@ async function check(duration, part, lang, start, width = 1440, height = 900) {
       const optional = state.assessments.filter(row => row.voluntary)
       assert.deepEqual(optional.map(row => row.goalId).sort(), [...voluntaryAssessmentIds].sort())
       assert(optional.every(row => row.startAvailable), 'Each supplementary assessment must be independently startable')
-      assert.equal(state.assessments.some(row => row.goalId === multiphaseAssessment), physicsCourse === 'LK')
+      assert.equal(state.assessments.some(row => row.goalId === historicalMultiphaseAssessment), false)
       assert.equal(state.masteredAssessmentCount, 0)
       assert.equal(state.complete, false)
       assert.equal(state.directAssessmentRunning, false)
@@ -785,10 +786,9 @@ async function checkTreeAndMapParents(duration) {
       assert(siblings.includes(horizontalLaunch) && siblings.indexOf(horizontalLaunch) < siblings.indexOf(exam),
         'The E.1 tree places the horizontal-launch topic before each of its two assessments')
     }
-    const expectedTreeCount = physicsCourse === 'LK' ? 22 : 21
+    const expectedTreeCount = 21
     assert.equal(treeEntries.length, expectedTreeCount)
-    assert.equal(treeEntries.some(([id]) => id === multiphaseAssessment), physicsCourse === 'LK')
-    if (physicsCourse === 'LK') assert.equal(await directTreeParent(multiphaseAssessment), section)
+    assert.equal(treeEntries.some(([id]) => id === historicalMultiphaseAssessment), false)
 
     const open = page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
     await open.click()
@@ -797,10 +797,9 @@ async function checkTreeAndMapParents(duration) {
     const board = dialog.getByTestId('learning-map-board')
     const mapEntries = []
     const resources = new Map([[unit.flashcardGoalId, 'Aus dem Stapel „Einführungsphase“']])
-    // The external “Bewegungsanalyse und freier Fall” is a GK assessment. In LK the
-    // additional owned multiphase assessment occupies a place on the same 18-entry board.
+    // The external assessment is visible in GK. The retired LK assessment has no board entry.
     if (physicsCourse === 'GK') resources.set(unit.assessmentGoalId, 'Prüfung aus „Themenübergreifende Prüfungen“')
-    for (const [parent, count] of [[section, 18], [childSection, 5]]) {
+    for (const [parent, count] of [[section, physicsCourse === 'LK' ? 17 : 18], [childSection, 5]]) {
       if (parent === childSection) {
         await board.getByRole('button', { name: 'In Beschleunigte Bewegung und freier Fall hineinzoomen', exact: true }).click()
       }
@@ -834,7 +833,7 @@ async function checkTreeAndMapParents(duration) {
             'The two assessments are independent of each other')
         }
         assert.equal(await board.locator('[data-entry-id="' + unit.assessmentGoalId + '"]').count(), physicsCourse === 'GK' ? 1 : 0)
-        assert.equal(await board.locator('[data-entry-id="' + multiphaseAssessment + '"]').count(), physicsCourse === 'LK' ? 1 : 0)
+        assert.equal(await board.locator('[data-entry-id="' + historicalMultiphaseAssessment + '"]').count(), 0)
         assert.equal(await board.locator('[data-entry-id="' + preparationFolder + '"]').count(), 0)
         const pathNode = board.locator('[data-entry-id="' + pathTime + '"]')
         assert((await pathNode.innerText()).includes('Notwendige Grundlagen'))
@@ -1296,7 +1295,7 @@ async function checkVoluntaryStudy(duration, scenario, id, href, mastery, passed
     await page.close()
   }
 }
-async function checkOptionalMultiphaseAttempt(duration) {
+async function checkOptionalFallSeriesAttempt(duration) {
   const id = profiles[duration].unitCD
   const url = site + '/auftraege/' + duration + '/CD'
   const receipts = () => Promise.all([...unitPartIds, ...voluntaryAssessmentIds].map(goal => readApi(id, '/exam-passes/' + goal)))
@@ -1312,21 +1311,24 @@ async function checkOptionalMultiphaseAttempt(duration) {
     const plan = page.getByTestId('learner-plan-unit-assignment')
     await plan.getByText(/2 \/ 4/).waitFor()
     const tree = page.locator('.learner-tree-navigation')
-    const section = tree.locator('[data-goal-id="' + profiles[duration].E1 + '"]')
-    const expand = section.locator('button[aria-expanded]').first()
-    await expand.waitFor()
-    if (await expand.getAttribute('aria-expanded') === 'false') await expand.click()
-    const goal = section.locator('..').locator('[data-goal-id="' + multiphaseAssessment + '"]')
-    await goal.getByText('Mehrphasenbewegung und Modellprüfung', { exact: true }).click()
+    const parentSection = profiles[duration].E1
+    const freeFallSection = parentSection.replace(/physics-e1-motion$/, 'physics-e1-accelerated-and-free-fall')
+    for (const targetId of [parentSection, freeFallSection]) {
+      const expand = tree.locator('[data-goal-id="' + targetId + '"]').locator('button[aria-expanded]').first()
+      await expand.waitFor()
+      if (await expand.getAttribute('aria-expanded') === 'false') await expand.click()
+    }
+    const goal = tree.locator('[data-goal-id="' + freeFallSeriesAssessment + '"]')
+    await goal.getByText('Prüfungsaufgabe: Freien Fall in zwei eigenen Messreihen untersuchen', { exact: true }).click()
     const shortcut = page.getByTestId('selected-goal-assessment-shortcuts')
       .getByRole('link', { name: 'Prüfung direkt versuchen', exact: true })
     const target = new URL(await shortcut.getAttribute('href'), site)
-    assert.equal(target.searchParams.get('completionGoal'), multiphaseAssessment)
+    assert.equal(target.searchParams.get('completionGoal'), freeFallSeriesAssessment)
     await shortcut.click()
-    await launchAssessment(page, multiphaseAssessment)
+    await launchAssessment(page, freeFallSeriesAssessment)
     const running = await readApi(id, '/state')
     assert.equal(running.levelCompletion.directAssessmentRunning, true)
-    assert.equal(running.activeGoal.id ?? running.activeGoal.goalId, multiphaseAssessment)
+    assert.equal(running.activeGoal.id ?? running.activeGoal.goalId, freeFallSeriesAssessment)
     const cockpit = await context.newPage()
     await cockpit.goto(url)
     const active = cockpit.getByTestId('level-completion-card')
@@ -1342,7 +1344,7 @@ async function checkOptionalMultiphaseAttempt(duration) {
     assert.equal((await readApi(id, '/state')).levelCompletion.directAssessmentRunning, false)
     assert.deepEqual(await receipts(), before)
     assert.deepEqual(await readApi(id, '/mastery'), mastery)
-    console.log(duration, 'Freiwillige LK-Mehrphasenprüfung begonnen und vor der Abgabe verlassen; C+D und Einzelmastery erhalten OK')
+    console.log(duration, 'Freiwillige Fallprüfung begonnen und vor der Abgabe verlassen; C+D und Einzelmastery erhalten OK')
   } finally {
     await context.close()
   }
@@ -1378,7 +1380,7 @@ async function checkGradedComparison(duration) {
       assert.equal(scheduled.length, gauge.target)
       assert(orientationGoalIds.every(goal => scheduled.includes(goal)), 'Both authored introductions belong to regular E.1 planning')
       assert(scheduled.includes(tasks.A.id) && scheduled.includes(tasks.B.id))
-      assert(!scheduled.includes(throwAssessment) && !scheduled.includes(multiphaseAssessment))
+      assert(!scheduled.includes(throwAssessment) && !scheduled.includes(historicalMultiphaseAssessment) && !scheduled.includes(freeFallSeriesAssessment))
       assert.equal(gauge.completed, count + (count ? 2 : 0))
       assert.equal(await section.locator('dt').filter({ hasText: 'Erledigte Positionen im E.1-Lernplan' })
         .evaluate(term => term.nextElementSibling.textContent), String(gauge.completed))
@@ -1453,7 +1455,7 @@ try {
     await checkPlanSelection(duration, false)
     await checkPlanSelection(duration, true)
     await checkStoredAssignmentActivity(duration)
-    if (physicsCourse === 'LK') await checkOptionalMultiphaseAttempt(duration)
+    await checkOptionalFallSeriesAttempt(duration)
     for (const part of ['A', 'B']) await check(duration, part, 'de', true)
   }
   }

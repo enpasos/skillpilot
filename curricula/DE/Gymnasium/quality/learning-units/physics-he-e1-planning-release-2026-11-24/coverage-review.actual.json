@@ -1,0 +1,899 @@
+{
+  "schema": "independent-current-e1-r2-r5-bes-only-synthesis-v1",
+  "status": "APPROVED_BES_ONLY_CURRENT_INPUTS",
+  "capsuleSha256": "177a82008417d0a7a7d777a10744e84234a2fa4f70b02526f1bdf473b3b9c421",
+  "goalCount": 12,
+  "requiredPartsCount": 4,
+  "rows": [
+    {
+      "key": "MOD",
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "title": "Idealisierungen und Grenzen von Bewegungsmodellen",
+      "parts": {
+        "A": "partial",
+        "B": "partial",
+        "C": "whole-definition",
+        "D": "partial"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "C3/C4 force justified point-particle/drag idealizations and model limits under17/20. However MOD is no longer owned by the declared unit; its child3 remains undeclared."
+    },
+    {
+      "key": "BES",
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "parts": {
+        "A": "partial-not-whole",
+        "B": "partial",
+        "C": "whole-current-definition/partial-complete-profile/not-own-witness",
+        "D": "whole-for-release"
+      },
+      "currentlyOwnedByDeclaredUnit": true,
+      "candidatePlanningCredit": true,
+      "reason": "D1/D3 each require all three consistent time representations at score2. A row below2 permits at most16/20, so17/20 forces both contexts; D2/D4 additionally force signed-area and validity cores. D′20/20 is another owned current variant. C is insufficient for the retained stronger P/independent-demonstration contract and is not the owning assessment."
+    },
+    {
+      "key": "MA",
+      "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "title": "Messabweichungen und Fehlerarten unterscheiden",
+      "parts": {
+        "A": "partial",
+        "B": "partial",
+        "C": "none",
+        "D": "partial"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "A compares random and systematic error, but15/17 remains possible with the entire systematic-identification pair absent. Provided limits elsewhere do not demonstrate full error-type discrimination. No declared owner."
+    },
+    {
+      "key": "MU",
+      "goalId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "title": "Messunsicherheiten angeben",
+      "parts": {
+        "A": "partial",
+        "B": "partial",
+        "C": "none",
+        "D": "partial"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "A2 forces a quantitative uncertainty effect but its3-point pass core does not force the full correctly written measured value with uncertainty/unit. Other tasks provide rather than elicit uncertainty. No declared owner."
+    },
+    {
+      "key": "UNI",
+      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "title": "Gleichförmige Bewegung und Geschwindigkeit",
+      "parts": {
+        "A": "partial",
+        "B": "whole-current-core-text/partial-complete-profile",
+        "C": "none",
+        "D": "partial-stationary-special-case/not-whole"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "A/B sample recognition and use of uniform motion. Their pass does not force the full active profile, including separating intercept and slope in a controlled variation and two independent demonstrations. Supplied experimental data are allowed by the active profile; absence of personal acquisition is not used as the sole veto. No declared owner."
+    },
+    {
+      "key": "DIA",
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "title": "Bewegungen messen und im t-s-Diagramm darstellen",
+      "parts": {
+        "A": "partial",
+        "B": "partial",
+        "C": "partial",
+        "D": "partial"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "All required parts can pass using supplied data; no required performance establishes actual own experimental motion capture. No declared owner."
+    },
+    {
+      "key": "AVG",
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "parts": {
+        "A": "partial",
+        "B": "partial",
+        "C": "partial",
+        "D": "partial"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "No required part forces the complete average-versus-instantaneous distinction as secant and tangent slopes, even when graphs or speed values occur. No declared owner."
+    },
+    {
+      "key": "FF",
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "parts": {
+        "A": "none",
+        "B": "partial",
+        "C": "partial",
+        "D": "none"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "No required E.1 part forces the full free-fall investigation, graphical determination of g with justified uncertainty and consistent initial conditions. The active profile permits supplied measurements; e.g. B can pass15/18 with B1y=2 and other rows full, without the numerical g determination at B1y=4. Optional FFX is a separate performance, not a required witness. No declared owner."
+    },
+    {
+      "key": "WW",
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "title": "Waagerechter Wurf analysieren",
+      "parts": {
+        "A": "none",
+        "B": "partial",
+        "C": "none",
+        "D": "none"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "B requires common-time model transfer but supplies its complete data; actual own projectile investigation and a complete x-y flight-path representation are not forced. No declared owner."
+    },
+    {
+      "key": "TV",
+      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "title": "t-v-Diagramm und Ortsänderung als Fläche",
+      "parts": {
+        "A": "partial",
+        "B": "partial",
+        "C": "partial",
+        "D": "partial"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "A supplies position-time data but no required velocity diagram/signed area; D forces signed velocity areas but does not require deriving interval means from position-time data and drawing that t-v representation. No required witness covers the complete new atom; no declared owner."
+    },
+    {
+      "key": "LAWS",
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben",
+      "parts": {
+        "A": "partial",
+        "B": "partial",
+        "C": "partial",
+        "D": "partial"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "D forces laws for two accelerated cases; A/B do not require the complete pair of uniform/accelerated time laws to be obtained from diagrams and their relationship explained. Do not infer new full coverage solely from using some formulas. No declared owner."
+    },
+    {
+      "key": "FALL",
+      "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "title": "Fall leichter und schwerer Körper vergleichen",
+      "parts": {
+        "A": "none",
+        "B": "none",
+        "C": "partial",
+        "D": "none"
+      },
+      "currentlyOwnedByDeclaredUnit": false,
+      "candidatePlanningCredit": false,
+      "reason": "C transfers to a light hollow ball in air, but neither that pass nor any other required part forces comparison in vacuum and explanation of feather/ball equal fall. No declared owner."
+    }
+  ],
+  "candidateCredit": {
+    "requiredPartIds": [
+      "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+    ],
+    "goalIds": [
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ],
+    "ownerUnitId": "physics-constant-acceleration",
+    "ownerRevision": "2026-11-23-v4"
+  },
+  "scoreCounterexamples": {
+    "A_missing_systematic_error_identification": {
+      "steps": {
+        "A1": 5,
+        "A2": 6,
+        "A3a": 1,
+        "A3b": 1,
+        "A4a": 1,
+        "A4b": 1,
+        "A4c": 0,
+        "A4d": 0
+      },
+      "total": 15,
+      "passing": 14
+    },
+    "A_without_complete_uncertainty_notation": {
+      "A1": 5,
+      "A2": 3,
+      "A3combined": 2,
+      "A4combined": 4,
+      "total": 14,
+      "passing": 14
+    },
+    "D_any_row_below_essential_core": {
+      "weakRowMaximum": 1,
+      "otherThreeRowsMaximum": 15,
+      "totalMaximum": 16,
+      "passing": 17
+    }
+  },
+  "limits": [
+    "Author proposal, not an independent report or activation.",
+    "Planning credit is not individual mastery, does not settle the opening or all four-part assignment, and cannot be backfilled into old receipts.",
+    "Keep children1/3/4 undeclared; ordinary goals without an owning reviewed contract remain individually open."
+  ],
+  "independentReviewPaths": [
+    "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-a.md",
+    "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-b.md"
+  ],
+  "integratorCorrectionsToRawReports": [
+    "At the reviewed active profile, supplied authentic measurements may evidence UNI or FF. The rejection here does not rely solely on personal acquisition: the complete profile and threshold-forced performance remain absent from A-D. Raw reviewer wording is retained unchanged.",
+    "The two raw matrices agree on A/B/C/D attribution except the P-level qualification for C and BES. Synthesis separates whole current definition (C) from the stronger then-active positive-evidence profile (partial), and from ownership/release (unavailable).",
+    "A has no forced uniformly accelerated three-diagram performance for BES; the author proposal first labelled it partial. The independent reports both mark no supporting BES evidence. Corrected here."
+  ],
+  "uncreditedGoalIds": [
+    "d6dc0e02-831d-4894-a61a-852bcc74f147",
+    "8aff7aac-321b-5172-ac55-877876bfd2cd",
+    "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+    "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+    "ce431132-dfc4-42c2-aff6-bd72035190f8",
+    "bf8517a9-142b-5789-826a-767f3b277998",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+    "1e459a1b-4159-5049-84eb-9928129c1610",
+    "262f807a-30d0-503e-986f-856cbd048e8e",
+    "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+  ],
+  "creditedGoalIds": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+  ],
+  "coverageIsNotUnitPromiseAcceptance": {
+    "declaredOwnOrdinaryGoals": [
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ],
+    "broadUnitPromiseIncludesUnownedOrUncoveredPerformance": [
+      "measurement log",
+      "t-v processing",
+      "motion laws",
+      "measurement deviations and uncertainty",
+      "free-fall experiment and graphical g"
+    ],
+    "finding": "BES coverage and a single-atom planning release do not qualify the entire declared broad child2 promise. These claims remain explicit; children1/3/4 remain undeclared."
+  },
+  "partRows": [
+    {
+      "key": "A",
+      "goalId": "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+      "title": "Wann überquert der Wagen die rote Linie?",
+      "passingPoints": 14,
+      "maxPoints": 17,
+      "currentMaterialBinding": {
+        "taskRevision": "sha256:8c1dadffb91e5a1c585453dbee5c47caa389b2a58645255c3a2c48d6bdc30506",
+        "rubricRevision": "sha256:82e4e0b14410639f1f23d7172fc0fe48a9d4b2c0d75af404f1b62a4cbdbc719c",
+        "fingerprint": "sha256:82ce486eb9bc756a56a89f8208060df26fca425f67a72464df1c1b76d2768a94"
+      },
+      "canonicalCoveredGoalIds": [],
+      "partIsRequiredForAssignment": true,
+      "partIsPlanningWitness": false,
+      "creditedWholeGoals": [],
+      "reason": "Pass14/17 forces the data-based model and a quantitative uncertainty effect; complete error-type discrimination, written measured-value uncertainty and model limits are compensable. No owned whole-content credit."
+    },
+    {
+      "key": "B",
+      "goalId": "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+      "title": "Wo trifft die waagerecht gestartete Kugel auf?",
+      "passingPoints": 15,
+      "maxPoints": 18,
+      "currentMaterialBinding": {
+        "taskRevision": "sha256:8d602025e828af49d51d92c98f6e1eab7254adeedeb067b6c4c3a5b017f023c2",
+        "rubricRevision": "sha256:aedba03dc90e7615eba5ab4a2a32eeac449b749eaa7f24d41984901d47ddaa12",
+        "fingerprint": "sha256:b2186af46d563f538cb29ec277bc01228695b8155f201890c29bc4770beae0af"
+      },
+      "canonicalCoveredGoalIds": [],
+      "partIsRequiredForAssignment": true,
+      "partIsPlanningWitness": false,
+      "creditedWholeGoals": [],
+      "reason": "Pass15/18 forces both component model forms and a quantitative common-time landing link; numerical g investigation/uncertainty, experimental acquisition and the complete x-y representation are not forced. No owned whole-content credit."
+    },
+    {
+      "key": "C",
+      "goalId": "c933b7d2-edcb-5747-9378-9762659f260a",
+      "title": "Senkrechten Wurf mit konstanter Beschleunigung modellieren",
+      "passingPoints": 17,
+      "maxPoints": 20,
+      "currentMaterialBinding": {
+        "taskRevision": "sha256:5fe14a6f9b5a06a7a25bf8ab18275a1102c231197321f7f2eeac302ae735b752",
+        "rubricRevision": "sha256:a117de51728be60b4c881b061f24046a8c34618960108acafb478718fd0317eb",
+        "fingerprint": "sha256:1b2158e1bd095753ea556fd2715d1ce70f523adfc0bb56308859a66f692b387f"
+      },
+      "canonicalCoveredGoalIds": [
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "partIsRequiredForAssignment": true,
+      "partIsPlanningWitness": false,
+      "creditedWholeGoals": [],
+      "reason": "Pass17/20 forces all four2-point cores, so the current MOD wording and BES wording are supported; the then-active stronger BES profile includes displacement-versus-distance not required byC. C andMOD have no own declared release contract. No credit."
+    },
+    {
+      "key": "D",
+      "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+      "title": "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen",
+      "passingPoints": 17,
+      "maxPoints": 20,
+      "currentMaterialBinding": {
+        "taskRevision": "sha256:60fd37773d8c386435226a4afa6e2db9e1edf0e4fa910f7a740762bbbf59b1a2",
+        "rubricRevision": "sha256:8ec3a6879f22c7820b05480a721b34e59bc476f72778997eb309f2f088c4cbb2",
+        "fingerprint": "sha256:b119b70fc75abe39601c9f0dce6cfd9bcda9a9a2e44cb88df6dd37d0010ea5bf"
+      },
+      "canonicalCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "partIsRequiredForAssignment": true,
+      "partIsPlanningWitness": true,
+      "creditedWholeGoals": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "reason": "Pass17/20 forces every2-point core because1+5+5+5=16. D1 andD3 independently require all three consistent diagrams and initial conditions; D2 forces signed displacement-versus-distance andD4 the justified invalid continuation. Exact owned BES-only witness; no other complete ordinary goal."
+    }
+  ],
+  "requiredPartBindings": [
+    {
+      "goalId": "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+      "material": {
+        "taskRevision": "sha256:8c1dadffb91e5a1c585453dbee5c47caa389b2a58645255c3a2c48d6bdc30506",
+        "rubricRevision": "sha256:82e4e0b14410639f1f23d7172fc0fe48a9d4b2c0d75af404f1b62a4cbdbc719c",
+        "fingerprint": "sha256:82ce486eb9bc756a56a89f8208060df26fca425f67a72464df1c1b76d2768a94"
+      }
+    },
+    {
+      "goalId": "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+      "material": {
+        "taskRevision": "sha256:8d602025e828af49d51d92c98f6e1eab7254adeedeb067b6c4c3a5b017f023c2",
+        "rubricRevision": "sha256:aedba03dc90e7615eba5ab4a2a32eeac449b749eaa7f24d41984901d47ddaa12",
+        "fingerprint": "sha256:b2186af46d563f538cb29ec277bc01228695b8155f201890c29bc4770beae0af"
+      }
+    },
+    {
+      "goalId": "c933b7d2-edcb-5747-9378-9762659f260a",
+      "material": {
+        "taskRevision": "sha256:5fe14a6f9b5a06a7a25bf8ab18275a1102c231197321f7f2eeac302ae735b752",
+        "rubricRevision": "sha256:a117de51728be60b4c881b061f24046a8c34618960108acafb478718fd0317eb",
+        "fingerprint": "sha256:1b2158e1bd095753ea556fd2715d1ce70f523adfc0bb56308859a66f692b387f"
+      }
+    },
+    {
+      "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+      "material": {
+        "taskRevision": "sha256:60fd37773d8c386435226a4afa6e2db9e1edf0e4fa910f7a740762bbbf59b1a2",
+        "rubricRevision": "sha256:8ec3a6879f22c7820b05480a721b34e59bc476f72778997eb309f2f088c4cbb2",
+        "fingerprint": "sha256:b119b70fc75abe39601c9f0dce6cfd9bcda9a9a2e44cb88df6dd37d0010ea5bf"
+      }
+    }
+  ],
+  "otherOfferedAssessmentRows": [
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "title": "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen",
+      "passingPoints": 20,
+      "maxPoints": 20,
+      "role": "D′ independent owned variant; R2 BES coverage only, not required E.1 part or planning witness",
+      "currentRawGoalArtifact": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/a8dc0290-9f80-5763-8943-e16b8d2aa860.current.goal.json",
+      "currentNormalizedGoalSha256": "sha256:3f43a827501949892cda1b357be560a0975102368f4b7309fad88a03985bc8a4",
+      "noPlanningCredit": true
+    },
+    {
+      "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+      "title": "Prüfungsaufgabe: Freien Fall in zwei eigenen Messreihen untersuchen",
+      "passingPoints": 23,
+      "maxPoints": 24,
+      "role": "FFX voluntary own-experiment offer; not required E.1 part, no FF ownership or planning release inferred",
+      "currentRawGoalArtifact": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/f41e4e30-794e-5ce4-ba5e-cc72712cd691.current.goal.json",
+      "currentNormalizedGoalSha256": "sha256:94caaa5f3f8a3a972d5a47fb25f092fcfbe6a099101e596b2eba36a112688a20",
+      "noPlanningCredit": true
+    }
+  ],
+  "reviewAuthority": "integrator synthesis of actual independent machine content reviews; no human acceptance",
+  "reviewedAt": "2026-11-24T04:49:50.701Z",
+  "independentRounds": {
+    "initialFullMatrix": {
+      "reports": [
+        "independent-a.md",
+        "independent-b.md"
+      ],
+      "verdicts": "conditional BES-only pending P"
+    },
+    "exactD17FullMatrix": {
+      "reports": [
+        "independent-d17-successor-a.md",
+        "independent-d17-successor-b.md"
+      ],
+      "verdicts": "conditional BES-only pending final P/image/bindings"
+    },
+    "exactFinalP2D17Crosswalk": {
+      "reports": [
+        "independent-pv2-d17-coverage-a.md",
+        "independent-pv2-d17-coverage-b.md"
+      ],
+      "verdicts": "both APPROVE exact content relationship"
+    },
+    "currentDPrimeR2": {
+      "paths": [
+        "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3/round-a/response.json",
+        "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3/round-b/response.json"
+      ],
+      "verdicts": "both accept exact current20/20 D′ and only BES direct coverage; no planning credit inferred"
+    },
+    "boundaries": "Independent reports are actual raw returned bytes. Their scope/conditionality is preserved. Native fresh P/image/description and actual exact D/D′ activation separately discharge their stated preconditions; no reviewer signature or human acceptance is invented."
+  },
+  "currentBinding": {
+    "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "goalDefinition": "sha256:697d7f8dc78e4c9e79c3cda670210afdabd4673487cb1787ba156f3de9cdee33",
+    "currentFullGoalNormalizedSha256": "sha256:5c04362567f92e8c466e4a361dabeb885e807f2bbed7d972c270331d92e925e7",
+    "positiveEvidenceConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.config.json",
+    "positiveEvidenceConfigSha256": "sha256:d86c94c11d48efbdac23cb11afe0bfcae69db8643f163b3ec968b283d1390f8d",
+    "positiveEvidenceReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.review.jsonl",
+    "positiveEvidenceReviewSha256": "sha256:4375ba1253ed0d87ffdef163548e0842e240b51903f837d3e4536b970df5fdcb",
+    "goalFingerprint": "sha256:70e4e02a89e3533891437bcd8ecdb5eebbf6844890928e623f32a6fbb2c2dd58",
+    "reviewInputFingerprint": "sha256:65a58ee7b7036125f9bba0a52b6132a4b533d09ce2ffe8a6cea85388415ffe41",
+    "profileFingerprint": "sha256:969277be3831429d8b5ed7d22a1b0b094698ac0a66be635e67c0fd6589bac192",
+    "profile": {
+      "archetype": "representation",
+      "expectations": [
+        {
+          "id": "constant-acceleration",
+          "essentialUnderstandingDe": "Bei gleichmäßig beschleunigter eindimensionaler Bewegung ist a = Δv/Δt konstant; das Vorzeichen von a allein entscheidet nicht, ob der Geschwindigkeitsbetrag wächst.",
+          "essentialUnderstandingEn": "In uniformly accelerated one-dimensional motion, a = Δv/Δt is constant; the sign of a alone does not determine whether speed increases.",
+          "observablePerformanceDe": "Begründet aus Geschwindigkeitsänderungen das konstante a mit Einheit m/s² und beschreibt anhand der Vorzeichen von v und a schneller oder langsamer werdende Bewegung.",
+          "observablePerformanceEn": "Justifies constant a from velocity changes with unit m/s² and uses the signs of v and a to describe speeding up or slowing down."
+        },
+        {
+          "id": "linked-three-graphs",
+          "essentialUnderstandingDe": "Konstantes a entspricht einer t-v-Geraden und einem waagerechten t-a-Graphen; bei a ≠ 0 ist der t-s-Graph parabelförmig. Seine Steigung beschreibt v, seine Krümmungsrichtung das Vorzeichen von a.",
+          "essentialUnderstandingEn": "Constant a corresponds to a straight t-v graph and a horizontal t-a graph; for a ≠ 0 the t-s graph is parabolic. Its slope describes v and its concavity the sign of a.",
+          "observablePerformanceDe": "Erstellt aus neuen Bewegungsdaten zusammenpassende t-s-, t-v- und t-a-Darstellungen mit Achsen und Einheiten; begründet Steigung, Krümmung und die Übereinstimmung der Ortsänderungen mit vorzeichenbehafteten t-v-Flächen, ohne Differentialrechnung vorauszusetzen. Jede fachlich gültige Erklärung der Graphenbeziehungen ist zulässig.",
+          "observablePerformanceEn": "Constructs consistent t-s, t-v, and t-a representations from fresh motion data with axes and units; explains slope, concavity, and agreement of displacement with signed t-v areas without requiring calculus. Any valid explanation of the graph relationships is accepted."
+        },
+        {
+          "id": "zero-velocity-and-validity",
+          "essentialUnderstandingDe": "v = 0 zu einem Zeitpunkt bedeutet nicht a = 0. Die Darstellungen beschreiben das angegebene Modellintervall und belegen allein keinen bestimmten Kraftmechanismus.",
+          "essentialUnderstandingEn": "v = 0 at one instant does not mean a = 0. The representations describe the stated model interval and alone do not establish a particular force mechanism.",
+          "observablePerformanceDe": "Sagt bei geänderter Bewegungs- oder Beschleunigungsrichtung den Graphenverlauf voraus und erklärt einen möglichen Stillstandsmoment bei fortbestehender Beschleunigung; begrenzt die Aussage auf das Modellintervall.",
+          "observablePerformanceEn": "Predicts graph behavior when motion or acceleration direction changes and explains a possible instant of rest with continuing acceleration; limits the claim to the model interval."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "constant-acceleration",
+          "linked-three-graphs",
+          "zero-velocity-and-validity"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "relative-signs",
+          "textDe": "Geschwindigkeit und Beschleunigung gleichgerichtet gegenüber entgegengerichtet, einschließlich eines Richtungswechsels.",
+          "textEn": "Velocity and acceleration in the same versus opposite directions, including a reversal."
+        },
+        {
+          "id": "starting-representation",
+          "textDe": "Orts- und Geschwindigkeitsdaten gegenüber einer beschriebenen t-v-Geraden als Ausgangsdarstellung.",
+          "textEn": "Position and velocity data versus a described straight t-v graph as the starting representation."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "starting-from-rest",
+          "taskDemandDe": "Für ein eindimensionales Wagenmodell wird im gesamten Intervall von 0 bis 3 s konstante Beschleunigung angenommen. Bei t = 0; 1; 2; 3 s gelten die Orte 0,20; 0,40; 1,00; 2,00 m und Geschwindigkeiten 0; 0,40; 0,80; 1,20 m/s. Erstelle und erkläre die drei kontinuierlichen Zeitdiagramme unter dieser Annahme.",
+          "taskDemandEn": "For a one-dimensional cart model, constant acceleration is assumed throughout the interval from 0 to 3 s. At t = 0, 1, 2, 3 s, the positions are 0.20, 0.40, 1.00, 2.00 m and velocities are 0, 0.40, 0.80, 1.20 m/s. Construct and explain the three continuous time graphs under this assumption.",
+          "expectedPerformanceDe": "Ermittelt a = +0,40 m/s², zeichnet t-v linear steigend, t-a konstant positiv und t-s zunehmend steil, nach oben gekrümmt. Prüft etwa Δs von 1 bis 2 s = 0,60 m an der Trapezfläche; erklärt, warum v(0) = 0 keine fehlende Beschleunigung bedeutet.",
+          "expectedPerformanceEn": "Finds a = +0.40 m/s² and draws linearly increasing t-v, constant positive t-a, and increasingly steep, concave-up t-s. Checks, for example, Δs from 1 to 2 s = 0.60 m using the trapezoid area; explains why v(0) = 0 does not mean absent acceleration.",
+          "understandingFocusDe": "Konstante Beschleunigung bedeutet gleiche Geschwindigkeitszuwächse in gleichen Zeitintervallen; bei diesem in positiver Richtung fahrenden Wagen wachsen dabei die positiven Ortszuwächse. Die Stützwerte zeigen gleiche mittlere Beschleunigungen in den aufgeführten Intervallen; die Konstanz auch zwischen den Stützstellen ist eine Modellannahme.",
+          "understandingFocusEn": "Constant acceleration means equal velocity increments over equal time intervals; for this cart moving in the positive direction, the positive displacements increase. The samples show equal average accelerations over the listed intervals; constancy between the samples is a model assumption."
+        },
+        {
+          "id": "deceleration-through-reversal",
+          "taskDemandDe": "Ein t-v-Graph verläuft für 0 bis 4 s geradlinig von +1,0 auf −1,0 m/s; s(0) = 0. Entwickle unabhängig passende t-s- und t-a-Darstellungen und beschreibe die Bewegung vor und nach v = 0. Erläutere, was jeder Graph bei 2 s zeigt, was die Angaben bis einschließlich 4 s festlegen und ob sie auch die spätere Bewegung eindeutig bestimmen.",
+          "taskDemandEn": "A t-v graph runs straight from +1.0 to −1.0 m/s over 0 to 4 s; s(0) = 0. Independently develop matching t-s and t-a representations and describe motion before and after v = 0. Explain what each graph shows at 2 s, what the information determines through 4 s, and whether it also uniquely determines later motion.",
+          "expectedPerformanceDe": "Erhält a = −0,50 m/s² und t-s-Punkte bei t = 0; 1; 2; 3; 4 s von 0; 0,75; 1,00; 0,75; 0 m. Erklärt Abbremsen bis 2 s, danach schnelleres Rückwärtsfahren: Im t-v-Graphen durchquert v bei 2 s die Nulllinie von positiv nach negativ, im t-s-Graphen erreicht s dort ein Maximum und der t-a-Graph bleibt durchgehend bei a = −0,50 m/s². Der t-a-Graph allein legt den Umkehrzeitpunkt nicht fest. Die Angaben bestimmen die Bewegung bis einschließlich 4 s samt Ort und Geschwindigkeit bei 4 s, aber keinen eindeutigen Verlauf danach; dafür ist eine zusätzliche Annahme über die Beschleunigung nach 4 s nötig.",
+          "expectedPerformanceEn": "Obtains a = −0.50 m/s² and t-s points at t = 0, 1, 2, 3, 4 s of 0, 0.75, 1.00, 0.75, 0 m. Explains slowing until 2 s, then increasing backward speed: in the t-v graph, v crosses zero from positive to negative at 2 s; in the t-s graph, s reaches a maximum there; and the t-a graph remains at a = −0.50 m/s² throughout. The t-a graph alone does not determine the reversal time. The information determines motion through 4 s, including position and velocity at 4 s, but no unique course afterward; that requires a further assumption about acceleration after 4 s.",
+          "understandingFocusDe": "Negatives a ist mit Abbremsen und mit wachsendem Geschwindigkeitsbetrag vereinbar; beim Richtungswechsel gehören v-Nulldurchgang und s-Maximum zusammen, während a unverändert bleibt. Der t-a-Graph allein zeigt den Umkehrzeitpunkt nicht.",
+          "understandingFocusEn": "Negative a can describe both slowing and increasing speed; at reversal, the zero crossing of v coincides with the maximum of s while a remains unchanged. The t-a graph alone does not show the reversal time."
+        }
+      ]
+    },
+    "nativeStrictCurrentInputCheck": {
+      "errors": [],
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 1,
+        "rejected": 0
+      }
+    },
+    "independentDPActivationReceipt": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/activation.receipt.json"
+  },
+  "currentGoalPayloads": [
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "normalizedSha256": "sha256:db9c8ddf38d3910e9586ee073940f4e4cc1214a8f34540520a45cad63bb9fb92"
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "normalizedSha256": "sha256:5c04362567f92e8c466e4a361dabeb885e807f2bbed7d972c270331d92e925e7"
+    },
+    {
+      "goalId": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "normalizedSha256": "sha256:f30623d1b3b7e743db66e2f4fc7bba387e74e30ce322c1e9ccc0edfb6e814cc3"
+    },
+    {
+      "goalId": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "normalizedSha256": "sha256:c52e3a90852f22ecf850e626468c43698f4efa6ed8d252edf2cff46c58f0c65f"
+    },
+    {
+      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "normalizedSha256": "sha256:310b3ca3347114ba28d92fbad623298f8e1f05a096f35be84a2d787efefe3483"
+    },
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "normalizedSha256": "sha256:f94fbd67cdd326c17f0134a1713881acd62ec60e935c8b01ad4842da061cdc83"
+    },
+    {
+      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
+      "normalizedSha256": "sha256:73b3845e36d83b76fff00fd5b47dd3bd6d8782b85a5c6b0c77f11c7e03d58ec4"
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "normalizedSha256": "sha256:c6d27e143c2be6abbeadba39eae37f642b4b478f5d6c2e9f220bb8524e182937"
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "normalizedSha256": "sha256:00cbd570cff584aae273977eb1354ffb6133191347462164672154e6fbb30456"
+    },
+    {
+      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "normalizedSha256": "sha256:02fe1404622cab960d5e308b9c5adc4bb5c0a9c74dd3501abaacf21fb061d7eb"
+    },
+    {
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "normalizedSha256": "sha256:3a450e9ca6831685d5bb73a40b14adb4f2752211d7bf6f8985de6cdddaf38dc5"
+    },
+    {
+      "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "normalizedSha256": "sha256:d65c7e5c7e47f3f218fd47f2d3c5303cec396e59be6ff6424f1222b06aeb26bf"
+    },
+    {
+      "goalId": "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+      "normalizedSha256": "sha256:328dfee737e311617fcbccfec7547b00768c4833a9a3dc0f5272627669368c52"
+    },
+    {
+      "goalId": "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+      "normalizedSha256": "sha256:6f36d0569ab0ec7b9e44cc78ad1970503b32f572cc140f760a4f8a84d6095ebf"
+    },
+    {
+      "goalId": "c933b7d2-edcb-5747-9378-9762659f260a",
+      "normalizedSha256": "sha256:8ecc1a2d94c75364ad18b30140ae3d2980e04e04d6066d3e3a625db942017064"
+    },
+    {
+      "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+      "normalizedSha256": "sha256:c591914f1de2883b9227fb841e88d21a020957019b05b4ea4b12b8a6c0202630"
+    },
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "normalizedSha256": "sha256:3f43a827501949892cda1b357be560a0975102368f4b7309fad88a03985bc8a4"
+    },
+    {
+      "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+      "normalizedSha256": "sha256:94caaa5f3f8a3a972d5a47fb25f092fcfbe6a099101e596b2eba36a112688a20"
+    }
+  ],
+  "requiredPartsFingerprint": "sha256:4e5d2f002c82ee42d6b76565b8f1231f3a52b128df0475327772c8008cd12250",
+  "ownAssessmentBindings": [
+    {
+      "assessmentGoalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+      "goalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "previousRevisions": {
+        "taskRevision": "sha256:e0c8168fd6d8a86ce63012d2bd1241f3a790e39bbbffea6710d7c137c8d24cdd",
+        "rubricRevision": "sha256:88da8d12bcb9f7c8cd3761730755307ba6e8a0a0405cb9a522bf5338d9be715f"
+      },
+      "currentRevisions": {
+        "taskRevision": "sha256:60fd37773d8c386435226a4afa6e2db9e1edf0e4fa910f7a740762bbbf59b1a2",
+        "rubricRevision": "sha256:8ec3a6879f22c7820b05480a721b34e59bc476f72778997eb309f2f088c4cbb2"
+      },
+      "currentGoalArtifact": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/f13ca187-b680-5f47-b4ad-76bd474bd8a2.current.goal.json",
+      "rawSha256": "sha256:e12d8bcafaa2bcd824b76bbab56e63ed7d3ef87044eafaa24f30f877a4e3683f"
+    },
+    {
+      "assessmentGoalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "goalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "previousRevisions": {
+        "taskRevision": "sha256:8a5ccaa3f596ace70e6a4dad6f644a2ddaa046be5f2c598a012a1ff40d9b17ef",
+        "rubricRevision": "sha256:62bf8143588daa963566318ada486cc4a189906d6a6b92d2e428ec8fe5383163"
+      },
+      "currentRevisions": {
+        "taskRevision": "sha256:758a0483d5db68276111ad6ab987bf0d65e1444cc669fbe58a1c93eed4f76555",
+        "rubricRevision": "sha256:639a906fb3ed9c9192e837693597527a082d1e256035b1964a2f77825c699cd0"
+      },
+      "currentGoalArtifact": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/a8dc0290-9f80-5763-8943-e16b8d2aa860.current.goal.json",
+      "rawSha256": "sha256:78fc60eb42b54c884c7a8499ab549b028455a41cffc505c820b01583639f80db"
+    }
+  ],
+  "dSuccessor": {
+    "previousInputCapsulePath": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/review-inputs.json",
+    "currentInputCapsulePath": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/review-inputs.d17-successor.json",
+    "deltaPath": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/d17-successor.delta.json",
+    "previousMaterialBinding": {
+      "taskRevision": "sha256:e0c8168fd6d8a86ce63012d2bd1241f3a790e39bbbffea6710d7c137c8d24cdd",
+      "rubricRevision": "sha256:88da8d12bcb9f7c8cd3761730755307ba6e8a0a0405cb9a522bf5338d9be715f",
+      "fingerprint": "sha256:e5762e0af43aaa168340e7c560bd36f297039cb4b5e2a955eb7116bc290dceef"
+    },
+    "changedFields": [
+      "examData.solutionContent",
+      "examData.solutionContentEn",
+      "examData.scoring.steps[0].description"
+    ],
+    "semantics": "Only explicit equivalent time-coordinate marking and worked area arithmetic. All D cores/20max17pass/requiresLAWS/coverageBES remain. Old exact reports/sources remain immutable; no old receipt transfer."
+  },
+  "dPrimeSuccessor": {
+    "currentGoalArtifact": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/a8dc0290-9f80-5763-8943-e16b8d2aa860.current.goal.json",
+    "rawSha256": "sha256:78fc60eb42b54c884c7a8499ab549b028455a41cffc505c820b01583639f80db",
+    "independentActivationReceipt": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3-activation.actual.json",
+    "scope": "Current20/20 whole BES R2 coverage only. Explicit5s values, equivalent time coordinates and prediction-versus-supplied-interval comparison repair local wording; no new whole goal, practical measurement claim, lower-stage grant or E.1 required/planning witness is added."
+  },
+  "profileCrosswalk": [
+    {
+      "expectationId": "constant-acceleration",
+      "witnessRows": [
+        "D1",
+        "D2",
+        "D3",
+        "D4"
+      ],
+      "forced": "a-area as Δv and both relative-sign cases; missing core leaves at most16/20"
+    },
+    {
+      "expectationId": "linked-three-graphs",
+      "witnessRows": [
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "forced": "Two independently constructed consistent three-graph systems and signed velocity-area/displacement reasoning; missing core leaves at most16/20"
+    },
+    {
+      "expectationId": "zero-velocity-and-validity",
+      "witnessRows": [
+        "D1",
+        "D3",
+        "D4"
+      ],
+      "forced": "v-zero, position extremum and unchanged a have distinct roles; mathematical continuation needs its additional physical assumption; missing core leaves at most16/20"
+    }
+  ],
+  "profileCoverageLimits": {
+    "independentDemonstrations": 2,
+    "demonstrations": [
+      [
+        "D1",
+        "D2"
+      ],
+      [
+        "D3",
+        "D4"
+      ]
+    ],
+    "freshVariation": "relative signs, initial values/time origin, cart reversal versus vehicle stopping and continuation",
+    "startingRepresentationAxisObserved": false,
+    "startingRepresentationAxisIsRequiredSeparately": false,
+    "reason": "Both exact-body independent reviews explicitly note this axis is not observed. The native coverage expectations require fresh variation, not exhaustive performance of every variation axis or repetition of illustrative case numbers."
+  },
+  "matrixDissentRetained": [
+    "Partial-versus-none classifications differ for some subskills (BES/A, ERR/B/D, UNI/D); none of these is whole-goal credit. The synthesis labels only actual partial performance and preserves both raw matrices.",
+    "ReviewerB regards B as carrying the narrower current uniform-motion text via admissible supplied data; the stronger complete profile and ownership remain unmet, so UNI receives no credit.",
+    "C carries current MOD and BES wording, but not their complete then-active/current understanding performance or ownership for this release. In particular C does not force the signed-area link in final BES P."
+  ],
+  "currentMaterialBodiesObservation": {
+    "parentFile": "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+    "childFile": "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json",
+    "parentNonUnitSha256": "sha256:0c6dfbc35771de99ac452784e7cd7f0e4360388d3aa95ca27a88396684ec6722",
+    "childRawSha256": "sha256:15668151caa403d3fe648302180310ef00792bd5a9f8628c160db1ef80e1cc5f",
+    "claim": "Read current complete DE/EN bodies after lane10 repairs. Practice text and supplied authentic data do not become graded A-D receipts or additional planning witnesses. Independent material QA remains the separately bound lane10 decision."
+  },
+  "supersession": {
+    "priorBindingsPath": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/prior-bindings.actual.json",
+    "scope": "Currentv4 own BES/D/D′ R2 references and one D-only BES planning release in unchanged6HE contract views. Preserve all old evidence and historical registry entries. No owner/cut, goal identity, mastery, old result or children1/3/4 declaration is changed."
+  },
+  "evidencePins": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/input-manifest.json",
+      "sha256": "sha256:627ec0095b526ce81e38a6365fa53cc57f0936b7e3af333b36cae8241ad9049f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/review-inputs.json",
+      "sha256": "sha256:177a82008417d0a7a7d777a10744e84234a2fa4f70b02526f1bdf473b3b9c421"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/criteria.snapshot.md",
+      "sha256": "sha256:d2e2318ffac0bc56fb454b754163a4379a4d36b31bda8dff8ce37db57f838ef3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-a.md",
+      "sha256": "sha256:ab84503cc79a59028eda5c311c0eb7e34fd74528bb0873be5ce2e8803db0279e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-b.md",
+      "sha256": "sha256:f834eafd6bfee1cbbe1822ad829c2b08b20b9bd1efbf21dfcd1a0a637e1400fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-a.execution.log",
+      "sha256": "sha256:9330d18b7424ef43aff8943255037438fad863b90d60c5be990d95fd905c78de"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-b.execution.log",
+      "sha256": "sha256:886720f0095b8aefa42a0a70fa590fe3aed0778ac95fbf3a9565732da24e2ab5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/review-inputs.d17-successor.json",
+      "sha256": "sha256:452986171d8ae100962668877589d89fad7b8e2883ea2047bd88fe6ce3d7b220"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/d17-successor.delta.json",
+      "sha256": "sha256:28ac17e30135cfe55173fc311145b4814e75f8a1f34fc222eb955a55e0db799d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/d17-successor.candidate.goal.json",
+      "sha256": "sha256:e12d8bcafaa2bcd824b76bbab56e63ed7d3ef87044eafaa24f30f877a4e3683f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/d17-successor-input-manifest.json",
+      "sha256": "sha256:137d6931f4665c6c5eceab7ea886791ef5070d834545ced70dbbbee174322b81"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/d17-successor-review-completion.actual.json",
+      "sha256": "sha256:a262ee5cae7567ed1fc8d9770fae3c06ef5f2b496018b57b33d4298efefeebe9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-d17-successor-a.md",
+      "sha256": "sha256:f0bffeef1e7da71cfda394107d363f03ed03f87cd496a72a94672189a63ebb2d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-d17-successor-b.md",
+      "sha256": "sha256:69b7efd07f548fb230503e4cc40c40c3a92d2f563b132ea843054e918727acac"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-d17-successor-a.execution.log",
+      "sha256": "sha256:df21185ec4791d187a37ff11a8e54afd35f6e8cec59530771eb69908186c6ff2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-d17-successor-b.execution.log",
+      "sha256": "sha256:76588ba72eab340afab184e5caf5209ff6302198a294ad444c018df422c21f2a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/pv2-d17-coverage-completion.actual.json",
+      "sha256": "sha256:a9ff33c05835536f95e060584e1232b84a6bd6ad00fe85199c12d379cfe7c951"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/pv2-exact-neutral-candidate.json",
+      "sha256": "sha256:3c07b96dd47f877596a43575a44d2a2087624c9a16dae02854acbf7d929704a2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-pv2-d17-coverage-a.md",
+      "sha256": "sha256:2a0ebeabb9e4f81b9e0f4296333dabb6bce18576de1da3bad4dae3e23b6b3426"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-pv2-d17-coverage-b.md",
+      "sha256": "sha256:9d133cccca748c571b9c07c8f4b1f4479709373a97c42494efa885788028c26a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-pv2-d17-coverage-a.execution.log",
+      "sha256": "sha256:924dfbb6434126949591b28ad3705140d69824b005c664b1406e0a84e121fb98"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-pv2-d17-coverage-b.execution.log",
+      "sha256": "sha256:42caf84551267efb16d63539818fddc7edb44f594552c85fbbb85a0c9f697929"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/final-current-inputs.json",
+      "sha256": "sha256:8183c45b7a829b9a44e7a2d67668bf94b899503ffb2d9173aeb1f157f49be5e1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/prior-bindings.actual.json",
+      "sha256": "sha256:aa28f57457f3d4bc05780c30e2dbde7b3f3eac9ff0797017b8b3fa8eaa39c884"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.config.json",
+      "sha256": "sha256:d86c94c11d48efbdac23cb11afe0bfcae69db8643f163b3ec968b283d1390f8d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-bes-current-v2/positive-evidence.review.jsonl",
+      "sha256": "sha256:4375ba1253ed0d87ffdef163548e0842e240b51903f837d3e4536b970df5fdcb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/activation.receipt.json",
+      "sha256": "sha256:65006aa3ce148aa32a312f620d6d5717dd8cc2da8bf582f4dd7df15f1b81f469"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/resolution-index.json",
+      "sha256": "sha256:11ed39cbe55ecab0e8816a6c1514475885ec3ab329cb1a83a336aeb47f60ed3a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/synthesis-decisions.json",
+      "sha256": "sha256:5a2dab0d1b60d446822050f4eb89f266274eb8ecfee1f1bbdf713fdbc5bc3470"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/actual-execution/round-a/response.json",
+      "sha256": "sha256:3f54cc4ac8de230b1ed7906ee0bad20eef1205312637c2f2d639363efbdf7054"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/actual-execution/round-b/response.json",
+      "sha256": "sha256:c727357b556f66e5a447e632d0bebc49f6848027f7033aa6e5b8a48d8a02dbe1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/actual-execution/round-a/execution.actual.json",
+      "sha256": "sha256:2114e3ef5838fe2b03bd819eb333dfcb0bd026d08adee56ed6f2b0d995c76b03"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-24/e1-bes-current-v2/actual-execution/round-b/execution.actual.json",
+      "sha256": "sha256:601243c1096fe8af4a72095c572840b62720c4c1d56ad0548ea0228b6d4340c3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2-activation.actual.json",
+      "sha256": "sha256:897638c1f9679c52edb242f3973435cb8d49c79bd36754561ec04e3233e261af"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3-activation.actual.json",
+      "sha256": "sha256:70ae2513e177fe7d01a088f8cd9911e3ba61f340eefa7ba6bb538f873e04a76e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md",
+      "sha256": "sha256:f44103516b0159993bd6c844cde3c26d88e32eb910e4c5a94940fc05294e2d3e"
+    },
+    {
+      "path": "docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md",
+      "sha256": "sha256:d5aafed0908cdd81317e59cad1d0bfb860fc6652950006f15cab8f1ca51883d6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-a/response.json",
+      "sha256": "sha256:289a9348f52eab6e88152500e1d04cb08a648dd408b192d2039572abe7777b4b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-a/run.actual.json",
+      "sha256": "sha256:888dab3a8dab07dec52ceea959dee710103114db9560ae129e5e01f0c272124a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-b/response.json",
+      "sha256": "sha256:a24fdb003ad77517da9a262a142b086b1c614f45dcfb10e371d8283f551438cc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-b/run.actual.json",
+      "sha256": "sha256:de1a4ce5a4085d10f92adb40353ef2dcb520150babdfcc72033fc6c96c1edda5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3/round-a/response.json",
+      "sha256": "sha256:6b953fdc22fdc266c2d908b47186dbc04f0b909fef5caf0f5bb5b9dd286fb69b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3/round-a/run.actual.json",
+      "sha256": "sha256:5119084a3271c2a0ce26524bd11641944336ac418c2830b5ec581c2b9a66c31e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3/round-b/response.json",
+      "sha256": "sha256:ec49c0e12eab66e10a8eea9a2e90598942b6f7519f4fee77e12d600de2c47c14"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round3/round-b/run.actual.json",
+      "sha256": "sha256:489f798c78310973f8d926b207799108975fb5c7aff6f40993bc8fa975da459f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/f13ca187-b680-5f47-b4ad-76bd474bd8a2.current.goal.json",
+      "sha256": "sha256:e12d8bcafaa2bcd824b76bbab56e63ed7d3ef87044eafaa24f30f877a4e3683f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/a8dc0290-9f80-5763-8943-e16b8d2aa860.current.goal.json",
+      "sha256": "sha256:78fc60eb42b54c884c7a8499ab549b028455a41cffc505c820b01583639f80db"
+    }
+  ]
+}

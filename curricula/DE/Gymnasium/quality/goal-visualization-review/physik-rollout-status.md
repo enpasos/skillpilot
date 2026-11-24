@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-23T06:45:01.733Z
+Generated: 2026-11-24T10:43:33.308Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,15 +16,15 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 858 |
-| Atomare Ziele im Visualisierungs-Scope | 486 |
-| Ziele mit primaerem Visualisierungslink | 486 |
+| Alle Ziele in der Landschaft | 864 |
+| Atomare Ziele im Visualisierungs-Scope | 490 |
+| Ziele mit primaerem Visualisierungslink | 490 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 486 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 490 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 97 |
+| Review-Ledger-Dateien | 99 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
@@ -37,21 +37,22 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 92 |
-| `pilot` | 394 |
+| `accepted` | 97 |
+| `pilot` | 393 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
+| `accepted_after_notation_correction` | 1 |
 | `accepted_ai_pilot` | 2 |
 | `accepted_cluster_overview_after_atomic_split` | 1 |
-| `accepted_documented_repo_native_fallback` | 1 |
-| `accepted_existing_asset` | 8 |
+| `accepted_documented_repo_native_fallback` | 2 |
+| `accepted_existing_asset` | 9 |
 | `accepted_existing_asset_as_cluster_overview` | 8 |
 | `accepted_existing_asset_metadata_rebound` | 15 |
 | `accepted_existing_asset_unchanged_goal` | 2 |
-| `accepted_pilot` | 287 |
+| `accepted_pilot` | 288 |
 | `accepted_pilot_after_fifth_regeneration` | 1 |
 | `accepted_pilot_after_fresh_ai_review` | 281 |
 | `accepted_pilot_after_fresh_ai_review_correction` | 134 |
@@ -60,11 +61,11 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_pilot_after_provider_limitation_revisit` | 3 |
 | `accepted_pilot_after_provider_quota_retry` | 6 |
 | `accepted_pilot_after_provider_retry` | 3 |
-| `accepted_pilot_after_regeneration` | 111 |
+| `accepted_pilot_after_regeneration` | 113 |
 | `accepted_pilot_after_regeneration_and_owner_review` | 3 |
 | `accepted_pilot_after_second_regeneration` | 24 |
 | `accepted_pilot_after_third_regeneration` | 3 |
-| `accepted_pilot_after_user_review_correction` | 15 |
+| `accepted_pilot_after_user_review_correction` | 16 |
 | `accepted_retroactive_nano_banana` | 22 |
 | `accepted_reuse_after_current_visual_review` | 3 |
 | `blocked_provider_quota` | 1 |
@@ -77,8 +78,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-2026-09-14-solar-mass-ai-pilot.md` |
-| Latest ledger status | - |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-093.md` |
+| Latest ledger status | `accepted_ai_pilot` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
 
@@ -127,6 +128,7 @@ Keine Eintraege.
 | 091 | `c64820e1-c0ee-4342-9225-f981650f0c52` | Interferenzminima am Doppelspalt begründen und lokalisieren | `accepted_pilot_after_user_review_correction` |
 | 091 | `91683676-01cf-5003-80fa-a04d043b4e61` | Spektren mit Beugungsgitter deuten | `accepted_pilot_after_user_review_correction` |
 | 091 | `f6a3a602-1e45-5018-b0ff-3d49933cf634` | Beugung am Einzelspalt berechnen | `accepted_pilot_after_user_review_correction` |
+| 092 | `d9a6ea85-f7e8-5cbd-afe9-62596e22040d` | Fall leichter und schwerer Körper vergleichen | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 

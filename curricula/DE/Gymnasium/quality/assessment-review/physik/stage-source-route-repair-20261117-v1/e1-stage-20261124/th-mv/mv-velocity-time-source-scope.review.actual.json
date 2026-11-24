@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "e1-stage-20261124-mv-1e459a1b-independent-v1",
+  "reviewedAt": "2026-11-24T03:35:52.320460+00:00",
+  "reviewer": "Codex independent agent /root/th_mv (GPT-6 family)",
+  "independence": {
+    "originalAuthor": "Claude Opus 5.5 workstream",
+    "separateReviewer": true,
+    "basis": "Fresh official-PDF downloads, independent pypdf text extraction and visual PDF-page inspection; the handover proposal was treated as a claim to verify."
+  },
+  "baseCommit": "bf34d99e7f4c80843567176535d54168f848ff71",
+  "reviewKind": "source-stage-route-review",
+  "taskItem": 4,
+  "jurisdiction": "DE-MV",
+  "canonicalInput": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "f911090df16ec101b595dbc0b461c39910b88d6c5cdfac7cbdcf8b738fd37efe",
+    "matchesBaseCommitBytes": true,
+    "goal": {
+      "id": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "title": "t-v-Diagramm und Ortsänderung als Fläche",
+      "titleEn": "Time-Velocity Graph and Displacement as Area",
+      "description": "Die lernende Person kann aus Orts-Zeit-Daten mittlere Intervallgeschwindigkeiten bestimmen, im t-v-Diagramm darstellen und die Ortsänderung als vorzeichenbehaftete Fläche unter dem Graphen deuten.",
+      "descriptionEn": "The learner can determine average interval velocities from position-time data, represent them in a time-velocity graph and interpret the displacement as the signed area under the graph.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "cross-subject:mathematics"
+      ],
+      "contains": [],
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "13b338eb-f761-5817-9058-11043b9cb253",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_velocity_time_diagram_area",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "title": "Visualisierung: t-v-Diagramm und Ortsänderung als Fläche",
+          "url": "/assets/goal-visualizations/physik/1e459a1b-4159-5049-84eb-9928129c1610/1e459a1b-4159-5049-84eb-9928129c1610.jpeg",
+          "provider": "OpenAI / Codex image_gen",
+          "description": "Messwerte, mittlere Intervallgeschwindigkeiten und gerichtete Flächen im t-v-Diagramm.",
+          "altText": "Aus den Messpunkten bei 0, 2, 3 und 5 s mit Orten von 0, 4, 4 und 2 m ergeben sich nacheinander +2 m/s, 0 m/s und −1 m/s. Die Fläche oberhalb der Nulllinie zählt +4 m, die unterhalb −2 m. Die Ortsänderung beträgt +2 m.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    "goalNormalizedSha256": "02fe1404622cab960d5e308b9c5adc4bb5c0a9c74dd3501abaacf21fb061d7eb",
+    "normalization": "UTF-8 JSON, ensure_ascii=false, sort_keys=true, separators=(comma,colon)"
+  },
+  "retainedMappingInput": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+    "sha256": "f96c8ad31c2163f8dc1fd484b1e4a4582f06937c8233f555560141a86f3d93e1",
+    "matchesBaseCommitBytes": true
+  },
+  "retainedExtractionInput": {
+    "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+    "sha256": "7d83fa679f0bf1bcbd9f3de16505d1a1f29531cd06928785e64dc726ca8c8de5",
+    "matchesBaseCommitBytes": true
+  },
+  "reviewedRouteDecisions": [
+    {
+      "sourceGoalId": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b",
+      "topicCode": "J9-BEWEGUNG",
+      "sourceSpan": "Klasse 9, Klasse 9: Bewegungen - Geradlinige, gleichförmige Bewegung, S. 36",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+        "e452baa3-c9fc-5b62-893c-f91fe8d53715",
+        "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "rationale": "Der Rahmenplan (Klasse 9) nennt für die geradlinige gleichförmige Bewegung das s(t)- und das v(t)-Diagramm. Das neue t-v-Ziel deckt das v(t)-Diagramm ab. Die bestehenden Zuordnungen bleiben unverändert. Die Zuordnung ist partial.",
+      "reviewedAt": "2026-11-23",
+      "reviewer": "claude-opus-5-5"
+    }
+  ],
+  "reviewedMappingRows": [
+    {
+      "legacyGoalId": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b",
+      "canonicalGoalId": "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+      "matchType": "partial",
+      "reviewDecisionId": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b"
+    },
+    {
+      "legacyGoalId": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b",
+      "canonicalGoalId": "e452baa3-c9fc-5b62-893c-f91fe8d53715",
+      "matchType": "partial",
+      "reviewDecisionId": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b"
+    },
+    {
+      "legacyGoalId": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b",
+      "canonicalGoalId": "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+      "matchType": "partial",
+      "reviewDecisionId": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b"
+    },
+    {
+      "legacyGoalId": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b",
+      "canonicalGoalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "matchType": "partial",
+      "reviewDecisionId": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b"
+    }
+  ],
+  "reviewedSourceGoals": [
+    {
+      "id": "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b",
+      "passageId": "mv-physics-seki:j9-bewegung",
+      "topicCode": "J9-BEWEGUNG",
+      "bulletIndex": 98,
+      "aspectIndex": 1,
+      "title": "Geradlinige gleichförmige Bewegungen mit Weg-Zeit- und Geschwindigkeit-Zeit-Diagrammen darstellen",
+      "description": "Die lernende Person kann Geradlinige gleichförmige Bewegungen mit Weg-Zeit- und Geschwindigkeit-Zeit-Diagrammen darstellen.",
+      "sourceText": "Geradlinige gleichförmige Bewegungen mit Weg-Zeit- und Geschwindigkeit-Zeit-Diagrammen darstellen",
+      "sourceSpan": "Klasse 9, Klasse 9: Bewegungen - Geradlinige, gleichförmige Bewegung, S. 36",
+      "parentBulletText": "Geradlinige gleichförmige Bewegungen mit Weg-Zeit- und Geschwindigkeit-Zeit-Diagrammen darstellen",
+      "sourceRef": "Rahmenplan für die Jahrgangsstufen 7 bis 10 Gymnasium Physik Mecklenburg-Vorpommern, Klasse 9, Klasse 9: Bewegungen - Geradlinige, gleichförmige Bewegung, S. 36",
+      "courseLevel": "GK_LK",
+      "granularity": "officialContentGoal",
+      "tags": [
+        "source:mecklenburg-vorpommern",
+        "stage:SekI",
+        "topic:j9-bewegung",
+        "course:GK_LK"
+      ],
+      "rawSourceText": "Geradlinige gleichförmige Bewegungen mit Weg-Zeit- und Geschwindigkeit-Zeit-Diagrammen darstellen",
+      "rawSourceSpan": "Klasse 9, Klasse 9: Bewegungen - Geradlinige, gleichförmige Bewegung, S. 36",
+      "rawParentBulletText": "Geradlinige gleichförmige Bewegungen mit Weg-Zeit- und Geschwindigkeit-Zeit-Diagrammen darstellen"
+    }
+  ],
+  "retainedMembershipInput": {
+    "path": "scripts/generate_laender_physics_stage_views.memberships.json",
+    "sha256": "433bbd49f40c66645061b71c00453c97a8a5542863440c31ab54c3e21af512f2",
+    "matchesBaseCommitBytes": true
+  },
+  "originalLowerMembershipChecks": [
+    {
+      "viewId": "de-mv-gym-physics-gk",
+      "isOriginalLowerSeed": false
+    },
+    {
+      "viewId": "de-mv-gym-physics-lk",
+      "isOriginalLowerSeed": false
+    }
+  ],
+  "assessmentAuthoring": {
+    "newAssessments": 0,
+    "existingAssessmentChanges": 0
+  },
+  "implementationBoundary": "Only a newly promoted lower seed is excluded. Retained partial source correspondences, all full-view roles and real prerequisite closure remain. No mastery or learner result is written. No canonical, retained source, prior review, view or report was changed by this reviewer.",
+  "verificationLimits": "This is independent content/source review with input-byte checks, not generated-view/CQR-104 acceptance or CI. The integrating agent must regenerate and measure current views.",
+  "disposition": "approved_partial_lower_exclusion",
+  "routeDisposition": "retain_partial_correspondence; reject_new_lower_full_atom_seed",
+  "proposalAssessment": "Use the existing partial_lower_not_complete_atom mechanism, rather than deleting a valid v(t)-graph correspondence. The decisive unsupported facet is signed graph-area displacement.",
+  "primaryEvidence": [
+    {
+      "retainedFile": {
+        "path": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+        "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc",
+        "matchesBaseCommitBytes": true
+      },
+      "officialURL": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_PHYS_Gym_Ges_7_10.pdf",
+      "freshDownloadSha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc",
+      "freshDownloadMatchesRetained": true,
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "bytes": 2272290,
+      "pdfPages": [
+        40,
+        41
+      ],
+      "printedPages": [
+        36,
+        37
+      ],
+      "pagesVisuallyInspected": true,
+      "sourceQuoteFragments": [
+        {
+          "pdfPage": 40,
+          "printedPage": 36,
+          "column": "Verbindliche Inhalte",
+          "quote": "Geradlinige, gleichförmige Bewegung"
+        },
+        {
+          "pdfPage": 40,
+          "printedPage": 36,
+          "column": "Verbindliche Inhalte",
+          "quote": "s(t)-Diagramm, v(t)-Diagramm",
+          "notation": "Mathematical letters normalized from PDF typesetting to plain text."
+        },
+        {
+          "pdfPage": 40,
+          "printedPage": 36,
+          "column": "Hinweise und Anregungen",
+          "quote": "Die Geschwindigkeit muss als Anstieg des Graphen im s(t)-Diagramm gedeutet werden.",
+          "notation": "Line break/hyphen in Graphen removed; mathematical letters normalized."
+        },
+        {
+          "pdfPage": 41,
+          "printedPage": 37,
+          "column": "Verbindliche Inhalte",
+          "quote": "Durchschnittsgeschwindigkeit"
+        },
+        {
+          "pdfPage": 41,
+          "printedPage": 37,
+          "column": "Verbindliche Inhalte",
+          "quote": "Momentangeschwindigkeit"
+        }
+      ],
+      "equationObservation": "Printed36 contains s(t)=v*t+s0 and v=Delta_s/Delta_t; printed37 contains the E-Bike average-velocity quotient. These are paraphrased notation transcriptions, not evidence for the area under a velocity graph.",
+      "placementObservation": "PDF37/printed33 starts Klasse9; PDF40/printed36 remains in that class9 block. The next page explicitly retains the Klasse9 header.",
+      "widerContextInspection": {
+        "pdfPages": [
+          37,
+          40,
+          41,
+          42,
+          43
+        ],
+        "printedPages": [
+          33,
+          36,
+          37,
+          38,
+          39
+        ],
+        "method": "pypdf text extraction; visual inspection of PDF40 and41; text search over all50 pages",
+        "result": "Class9 E-Bike adds means and reactions. Class10 motion-law section adds graph slopes and initial conditions. Neither inspected motion section names signed area under the velocity graph; the only full-document Fläche text hits concern contact area and gold surfaces."
+      }
+    }
+  ],
+  "completeSkillComparison": {
+    "currentDescription": "Die lernende Person kann aus Orts-Zeit-Daten mittlere Intervallgeschwindigkeiten bestimmen, im t-v-Diagramm darstellen und die Ortsänderung als vorzeichenbehaftete Fläche unter dem Graphen deuten.",
+    "facets": [
+      {
+        "facet": "determine interval mean velocities from position-time data",
+        "evidence": "Partially supported: uniform Delta_s/Delta_t and the E-Bike average; no explicit full interval-data sequence is required by this route."
+      },
+      {
+        "facet": "represent velocities in the t-v graph",
+        "evidence": "Explicit for uniform motion on printed36/PDF40."
+      },
+      {
+        "facet": "interpret displacement as signed area under the velocity graph",
+        "evidence": "Not supplied by the reviewed class9 route or the adjacent E-Bike context."
+      }
+    ],
+    "result": "The partial graph correspondence is valid; promotion of the complete conjunction to a new lower seed is unsupported. The exclusion does not claim that mean velocity is absent from class9, and it does not remove real acquisition prerequisites."
+  },
+  "approvedLowerSourceMembershipEntry": {
+    "action": "excludeNewLowerSeed",
+    "classification": "partial_lower_not_complete_atom",
+    "canonicalDescription": "Die lernende Person kann aus Orts-Zeit-Daten mittlere Intervallgeschwindigkeiten bestimmen, im t-v-Diagramm darstellen und die Ortsänderung als vorzeichenbehaftete Fläche unter dem Graphen deuten.",
+    "rationale": "Unabhängig bestätigt am 24.11.2026: Klasse9 S.36/PDF40 fordert das s(t)- und v(t)-Diagramm der gleichförmigen Bewegung und Geschwindigkeit als s(t)-Anstieg. Der E-Bike-Kontext S.37/PDF41 behandelt auch Durchschnitts-/Momentangeschwindigkeit; er ergänzt jedoch keine vorzeichenbehaftete Flächendeutung im t-v-Diagramm. Der vollständige kanonische Atomumfang ist damit nicht als unterer Quellenseed belegt. Die ausdrücklich partial verbleibende v(t)-Zuordnung ist fachlich sinnvoll und wird nicht gelöscht.",
+    "primaryEvidence": [
+      {
+        "file": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+        "pdfPages": [
+          40,
+          41
+        ],
+        "printedPages": [
+          36,
+          37
+        ],
+        "sha256": "83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc"
+      }
+    ],
+    "sourceGoalIds": [
+      "mv-phys-seki-rp2022-j9-bewegung-003-64a7b72b"
+    ],
+    "retainedMapping": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+    "retainedExtraction": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_PHYSIK_SEKI_RAHMENPLAN_2022.source-extraction.json",
+    "independentReview": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/th-mv/mv-velocity-time-source-scope.review.actual.json"
+  },
+  "approvedEntryNormalizedSha256": "4803c6919757ac21b05cb68ce8663ddad67528118f22c37bf868639142381702",
+  "stateSpecificRouteEdits": []
+}

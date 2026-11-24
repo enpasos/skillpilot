@@ -1,0 +1,84 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-e1-bes-current-v2-20261124-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root/th_mv, non-author integrator of two actually executed fresh blind gpt-6.1-sol/ultra and gpt-6.2-astra/ultra rounds; no human approval claim.",
+  "synthesizedAt": "2026-11-24T04:45:03.454Z",
+  "batch": {
+    "batchId": "physik-e1-bes-current-v2-20261124",
+    "batchManifestDigest": "sha256:763c0ad8ef621fef8ae51b820a2b26cbcb7cf436320e37a67946354ea6fdea00",
+    "configDigest": "sha256:04c4cbc9986247304a474490e74cdb7183d7a19ac3de3ba67f311fe8301ce9ad",
+    "bundleFingerprint": "sha256:0851bac7e0f6cb70481e2ea2363a7905047fd28a3dfa726d0beb63a30c298f3b",
+    "bookDigest": "sha256:984bb889985b63dd67f406fb487b34a97b2fbcde78e595d110cc29288ccf5f9b",
+    "reviewInputFingerprint": "sha256:bf571f46941466e58b935af1ff246d75d5c65c666b591f4f303605971de69c42",
+    "dualSummaryDigest": "sha256:91e21681e9da73127ca5e533b6852671caab04ca8401e32835274c1a6de9f509",
+    "canonicalLandscapeDigest": "sha256:bc0d8561ec60d4423c03caa16f20b32c4ad160deaa4f289af87bf27545f07524"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-e1-bes-current-v2-20261124-a",
+      "campaignDigest": "sha256:3dc940aead55caafe80c67427d82f482676d055ab12ba7f72f72e41b38ade6da",
+      "roundId": "physik-e1-bes-current-v2-20261124-first-pass-a",
+      "independenceGroupId": "physik-e1-bes-current-v2-20261124-independent-a",
+      "reviewInputFingerprint": "sha256:bf571f46941466e58b935af1ff246d75d5c65c666b591f4f303605971de69c42",
+      "batchId": "physik-e1-bes-current-v2-20261124-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:2671b40d48de66c5a214f580eca770b3b08cd3012ad7a0502eec4a3e023b2ab4",
+      "runId": "physik-e1-bes-current-v2-20261124-a-01a20bdc-b328-76b1-813c-af337a2e6993",
+      "runManifestDigest": "sha256:4bb35fa16617a2690069767c3c1a88b98d3e5875c76c3a31c53e9d49408b6074",
+      "resultsDigest": "sha256:3ab5832d2affa885201e02c2067df9d4d0da43b1999b51434daa8962c0bcd610"
+    },
+    "second": {
+      "campaignId": "physik-e1-bes-current-v2-20261124-b",
+      "campaignDigest": "sha256:af0b5a7ef0cbd1875c926892eb86ea391c3604677f6ccc43d884adf7364e178f",
+      "roundId": "physik-e1-bes-current-v2-20261124-first-pass-b",
+      "independenceGroupId": "physik-e1-bes-current-v2-20261124-independent-b",
+      "reviewInputFingerprint": "sha256:bf571f46941466e58b935af1ff246d75d5c65c666b591f4f303605971de69c42",
+      "batchId": "physik-e1-bes-current-v2-20261124-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:6a9e8ebb55d7bbd936625eaf9a7195fd5292ee5d356b42f1d0f42655b95e5d8c",
+      "runId": "physik-e1-bes-current-v2-20261124-b-01a20bdc-b328-7e01-aeac-1ee57035fbd1",
+      "runManifestDigest": "sha256:aef4e1dfc2301ac1af6ed69fcbb191a0f373bd06b21580e366ae4cf4dd1fd9ca",
+      "resultsDigest": "sha256:12df31c6a7d0735f106ca6c4b6a6256254a675b862c16151dc1e3f386f9e99e1"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-e1-bes-current-v2-20261124-informed-synthesis-decision-001",
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:70e4e02a89e3533891437bcd8ecdb5eebbf6844890928e623f32a6fbb2c2dd58",
+      "pageFingerprint": "sha256:b41cd1524b11e4f6c9905016c197502f503db701d6455e5737001b8be3032658",
+      "goalReviewContextFingerprint": "sha256:5dfe11401becfea225e885a35233e0f722979a35d3e7ce87450df1b275d2a0af",
+      "finalText": {
+        "titleDe": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+        "titleEn": "Uniformly Accelerated Motion and Acceleration",
+        "descriptionDe": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+        "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-e1-bes-current-v2-20261124-a-01a20bdc-b328-76b1-813c-af337a2e6993-e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "recordDigest": "sha256:28a905d3892d1e73f222206f7a4e337182b409990380a8c26bd92fe38ae80783"
+        },
+        "second": {
+          "recordId": "physik-e1-bes-current-v2-20261124-b-01a20bdc-b328-7e01-aeac-1ee57035fbd1-e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "recordDigest": "sha256:95db6bb04531d899c024cd41e292d26e5973e769025ac9bee755080dbfa66c99"
+        }
+      },
+      "revisionDissent": {
+        "sourceRound": "second",
+        "disposition": "rejected_keep_current",
+        "proposedDescriptionDe": "Die lernende Person kann erklären, weshalb sich bei einer geradlinigen Bewegung mit konstanter Beschleunigung die Geschwindigkeit in gleichen Zeitintervallen um denselben vorzeichenbehafteten Wert ändert. Sie kann beschreiben, wie sich dieser Zusammenhang in Zeitdiagrammen für Ort, Geschwindigkeit und Beschleunigung zeigt.",
+        "proposedDescriptionEn": "The learner can explain why, in straight-line motion with constant acceleration, velocity changes by the same signed amount in equal time intervals. They can describe how this relationship appears in position–time, velocity–time and acceleration–time graphs.",
+        "rationaleDe": "Runde A bestätigt die aktuelle Beschreibung. Runde B bevorzugt die operationalisierte Definition durch gleiche vorzeichenbehaftete Geschwindigkeitsänderungen in gleichen Zeitabschnitten. Die aktuelle Formulierung fordert bereits die Erklärung des Modells mit konstanter Beschleunigung und die Beschreibung seiner drei Zeitdarstellungen; sie enthält keine falsche Aussage. Die physikalische Beziehung wird im gemeinsam bestätigten Profil ausdrücklich geprüft. Eine Änderung des kanonischen Beschreibungstextes ist deshalb fachlich nicht erforderlich. Ich behalte den aktuellen Text mit dokumentiertem Dissens und übernehme die positive Verstehensevidenz der ersten Runde. Beide unabhängigen Runden bestätigen das exakte überarbeitete Profil einschließlich Annahme im endlichen Intervall, Vorzeichen, Flächenkontrolle, Umkehr und offener Fortsetzung. Das korrigierte Bild war Teil beider tatsächlichen Pakete; frühere Bild- und Profilfassungen bleiben inaktiv erhalten.",
+        "rationaleEn": "Round A accepts the current description. Round B prefers the operational definition through equal signed velocity changes over equal time intervals. The current wording already requires explaining the constant-acceleration model and describing its three time representations; it contains no false physical claim. The unanimously accepted profile explicitly tests that relationship. A canonical wording change is therefore unnecessary. I retain the current text with the dissent documented and select the first round's positive understanding evidence. Both independent rounds accept the exact revised profile, including its finite-interval assumption, signs, area check, reversal and undetermined continuation. The corrected image was present in both actual packets; earlier image and profile checkpoints remain inactive history."
+      },
+      "rationaleDe": "Runde A bestätigt die aktuelle Beschreibung. Runde B bevorzugt die operationalisierte Definition durch gleiche vorzeichenbehaftete Geschwindigkeitsänderungen in gleichen Zeitabschnitten. Die aktuelle Formulierung fordert bereits die Erklärung des Modells mit konstanter Beschleunigung und die Beschreibung seiner drei Zeitdarstellungen; sie enthält keine falsche Aussage. Die physikalische Beziehung wird im gemeinsam bestätigten Profil ausdrücklich geprüft. Eine Änderung des kanonischen Beschreibungstextes ist deshalb fachlich nicht erforderlich. Ich behalte den aktuellen Text mit dokumentiertem Dissens und übernehme die positive Verstehensevidenz der ersten Runde. Beide unabhängigen Runden bestätigen das exakte überarbeitete Profil einschließlich Annahme im endlichen Intervall, Vorzeichen, Flächenkontrolle, Umkehr und offener Fortsetzung. Das korrigierte Bild war Teil beider tatsächlichen Pakete; frühere Bild- und Profilfassungen bleiben inaktiv erhalten.",
+      "rationaleEn": "Round A accepts the current description. Round B prefers the operational definition through equal signed velocity changes over equal time intervals. The current wording already requires explaining the constant-acceleration model and describing its three time representations; it contains no false physical claim. The unanimously accepted profile explicitly tests that relationship. A canonical wording change is therefore unnecessary. I retain the current text with the dissent documented and select the first round's positive understanding evidence. Both independent rounds accept the exact revised profile, including its finite-interval assumption, signs, area check, reversal and undetermined continuation. The corrected image was present in both actual packets; earlier image and profile checkpoints remain inactive history."
+    }
+  ],
+  "manifestFingerprint": "sha256:faf4e373ff340893e46c619e3ef11b989c0b30c0422a052e5deb01bdc37d8fd2"
+}

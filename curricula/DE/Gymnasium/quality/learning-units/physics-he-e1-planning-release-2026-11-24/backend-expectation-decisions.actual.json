@@ -1,0 +1,179 @@
+{
+  "schema": "e1-reviewed-current-release-backend-expectation-decisions-v1",
+  "baselineTestCount": 106,
+  "baselineFailedInstanceCount": 24,
+  "expectedChangedFailedInstanceCount": 24,
+  "coverage": "Every one of the24 previously failing instances is explicitly enumerated here. Several tests retain their behavior and are repaired solely by the justified current release data.",
+  "decisions": [
+    {
+      "class": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+      "baselineMethod": "usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts",
+      "testInstance": "usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts()",
+      "decision": "Four parts and12 content goals stay. The bound rule credits onlyBES viaD; direct evaluation of unbound receipts stays empty. One individually mastered goal leaves11, correcting the former stale10 expectation.",
+      "currentMethod": "usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts"
+    },
+    {
+      "class": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+      "baselineMethod": "absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial",
+      "testInstance": "absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial()",
+      "decision": "Same fail-closed review digest obligation exercised against the new exact one-BES release.",
+      "currentMethod": "absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial"
+    },
+    {
+      "class": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+      "baselineMethod": "matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews",
+      "testInstance": "matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews()",
+      "decision": "Pin the fresh exact reviewed release fingerprint, one goal definition and unchanged6HE views; changed goal meaning or unreviewed view still rejects.",
+      "currentMethod": "matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews"
+    },
+    {
+      "class": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+      "baselineMethod": "planningCreditRequiresEachOwnAssessmentAndItsCurrentCoverageReview",
+      "testInstance": "planningCreditRequiresEachOwnAssessmentAndItsCurrentCoverageReview()",
+      "decision": "Name and assert the actual sole witnessD, oneBES goal, ownerv4 and current coverage; wrong owner, stale rubric or missing coverage still reject.",
+      "currentMethod": "planningCreditRequiresItsReviewedOwnWitnessAndCurrentCoverage"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "testInstance": "[1] duration = \"G8\", stage = \"CrossStage\", course = \"GK\"",
+      "decision": "Four ordinary passes still required for assignment. D alone supplies exactlyBES planning credit; no content mastery is written and all12 goals stay individually open. The period gauge reflects4 passes+1 real credit=5.",
+      "currentMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "testInstance": "[2] duration = \"G9\", stage = \"CrossStage\", course = \"GK\"",
+      "decision": "Four ordinary passes still required for assignment. D alone supplies exactlyBES planning credit; no content mastery is written and all12 goals stay individually open. The period gauge reflects4 passes+1 real credit=5.",
+      "currentMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "testInstance": "[3] duration = \"G8\", stage = \"SekII\", course = \"GK\"",
+      "decision": "Four ordinary passes still required for assignment. D alone supplies exactlyBES planning credit; no content mastery is written and all12 goals stay individually open. The period gauge reflects4 passes+1 real credit=5.",
+      "currentMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "testInstance": "[4] duration = \"G9\", stage = \"SekII\", course = \"GK\"",
+      "decision": "Four ordinary passes still required for assignment. D alone supplies exactlyBES planning credit; no content mastery is written and all12 goals stay individually open. The period gauge reflects4 passes+1 real credit=5.",
+      "currentMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "testInstance": "[5] duration = \"G8\", stage = \"SekII\", course = \"LK\"",
+      "decision": "Four ordinary passes still required for assignment. D alone supplies exactlyBES planning credit; no content mastery is written and all12 goals stay individually open. The period gauge reflects4 passes+1 real credit=5.",
+      "currentMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "testInstance": "[6] duration = \"G9\", stage = \"SekII\", course = \"LK\"",
+      "decision": "Four ordinary passes still required for assignment. D alone supplies exactlyBES planning credit; no content mastery is written and all12 goals stay individually open. The period gauge reflects4 passes+1 real credit=5.",
+      "currentMethod": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery",
+      "testInstance": "guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery()",
+      "decision": "Existing exactBES skip remains justified byD. This test needs activated data, no broadened credit expectation or new mastery.",
+      "currentMethod": "guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile",
+      "testInstance": "[1] duration = \"G8\", strict = \"false\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+      "decision": "After four passes exactlyBES planning credit exists; all12 individualized routes remain open with true outstanding preparation and required guided openings.",
+      "currentMethod": "completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile",
+      "testInstance": "[2] duration = \"G9\", strict = \"false\", requested = \"971beafa-6ba5-4c82-ac8b-7ebf66eec3dd\"",
+      "decision": "After four passes exactlyBES planning credit exists; all12 individualized routes remain open with true outstanding preparation and required guided openings.",
+      "currentMethod": "completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile",
+      "testInstance": "[3] duration = \"G9\", strict = \"true\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+      "decision": "After four passes exactlyBES planning credit exists; all12 individualized routes remain open with true outstanding preparation and required guided openings.",
+      "currentMethod": "completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes",
+      "testInstance": "[1] duration = \"G8\"",
+      "decision": "CurrentD immediately credits onlyBES; C still required for assignment and adds noMOD credit. Respect FF→LAWS→BES. Test unrelatedC changes preservingBES, Dchanges revokingBES, and feature flags disabling the credit/direct LAWS frontier. The unavailable-material fallback is exact current6IDs A-D/ZB/FFX; the valid reviewed unit keeps4required. MCP presentation is checked by title; native context by goalId. A mastered LAWS fixture is inspected explicitly, and its actual frontier is tested after reopening.",
+      "currentMethod": "hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes",
+      "testInstance": "[2] duration = \"G9\"",
+      "decision": "CurrentD immediately credits onlyBES; C still required for assignment and adds noMOD credit. Respect FF→LAWS→BES. Test unrelatedC changes preservingBES, Dchanges revokingBES, and feature flags disabling the credit/direct LAWS frontier. The unavailable-material fallback is exact current6IDs A-D/ZB/FFX; the valid reviewed unit keeps4required. MCP presentation is checked by title; native context by goalId. A mastered LAWS fixture is inspected explicitly, and its actual frontier is tested after reopening.",
+      "currentMethod": "hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease",
+      "testInstance": "[1] duration = \"G8\"",
+      "decision": "UseD as the historical unbound witness. Enabling later release, exact replay or passing unrelatedC never backfills credit; stale replay still rejects.",
+      "currentMethod": "hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease",
+      "testInstance": "[2] duration = \"G9\"",
+      "decision": "UseD as the historical unbound witness. Enabling later release, exact replay or passing unrelatedC never backfills credit; stale replay still rejects.",
+      "currentMethod": "hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites",
+      "testInstance": "[1] duration = \"G8\", strict = \"false\"",
+      "decision": "The existing voluntary individual BES route remains; true preparation is not erased, strict mode stays enforced, individual mastery only follows a later explicit result.",
+      "currentMethod": "twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites",
+      "testInstance": "[2] duration = \"G9\", strict = \"true\"",
+      "decision": "The existing voluntary individual BES route remains; true preparation is not erased, strict mode stays enforced, individual mastery only follows a later explicit result.",
+      "currentMethod": "twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit",
+      "testInstance": "[1] course = \"GK\", duration = \"G8\"",
+      "decision": "Both C/D passes persist after view change. OnlyD is a missing planning-binding witness; no release is backfilled from either old unbound receipt.",
+      "currentMethod": "changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit",
+      "testInstance": "[2] course = \"LK\", duration = \"G9\"",
+      "decision": "Both C/D passes persist after view change. OnlyD is a missing planning-binding witness; no release is backfilled from either old unbound receipt.",
+      "currentMethod": "changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders",
+      "testInstance": "[1] duration = \"G8\"",
+      "decision": "Four explicit parts still complete only the assignment. Independent milestone/learning orders remain; unrelatedA material drift preserves exactlyBES credit, disabled pilot removes it, noMODcredit.",
+      "currentMethod": "explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "baselineMethod": "explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders",
+      "testInstance": "[2] duration = \"G9\"",
+      "decision": "Four explicit parts still complete only the assignment. Independent milestone/learning orders remain; unrelatedA material drift preserves exactlyBES credit, disabled pilot removes it, noMODcredit.",
+      "currentMethod": "explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders"
+    }
+  ],
+  "noTestGateRelaxation": "Keep historical receipt/material, view, owner, meaning, pilot, unit-assignment and individual-mastery negatives. No new passing rubric, content goal, owner unit or assessment.",
+  "verifiedPriorFailedInstances": 24
+}

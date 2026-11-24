@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "reviewContract": "independent-exact-external-assessment-proposal-review-v1",
+  "runId": "claude-proposal-20261124-a-01a20bf9-477c-7c60-98c2-8b739100bd67",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "ultra",
+  "cliVersion": "0.171.0-alpha.13.2",
+  "threadId": "01a20bf9-477c-7c60-98c2-8b739100bd67",
+  "cwd": "/tmp/e1-t5/claude-proposals-v1-round-a",
+  "sandbox": {
+    "type": "read-only"
+  },
+  "approvalPolicy": "never",
+  "startedAt": "2026-11-24T05:13:36.778Z",
+  "completedAt": "2026-11-24T05:19:50.360Z",
+  "exitCode": 0,
+  "exitCodeEvidence": "Actual functions.write_stdin results returned exit_code0 for sessions72438 and53608; raw final event is turn.completed.",
+  "blindToOtherRun": true,
+  "separateInputCopiesWereByteIdentical": true,
+  "sourceSessionRawSha256": "5eb7c168e714a6d11216ddb026fd39e5659667f6774074a14baed19540ab4114",
+  "executionContextCopy": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/round-a/execution-context.actual.json",
+  "inputArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/input.json",
+      "capsulePath": "input.json",
+      "sha256": "dee7b4ea972977c914ec3e80b7138d29de4181436749aaf928916ac622d7d4c1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/output.schema.json",
+      "capsulePath": "output.schema.json",
+      "sha256": "4c0b1f7525d39c7ae58785468fd34ae8842618e8838c66f965aee9386ba894aa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/prompt.txt",
+      "capsulePath": "prompt.txt",
+      "sha256": "46adfc87dbf463f31ae160d11f71f67a26508387a7b14b1d17f3af311b08fe02"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/primary-source-manifest.json",
+      "capsulePath": "primary-source-manifest.json",
+      "sha256": "26446790fa0761f1449e828896a665a065aba7e6bb121f8938a05a048fce0074"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/exam-hh-motion-laws-from-rest.goal.json",
+      "capsulePath": "exam-hh-motion-laws-from-rest.goal.json",
+      "sha256": "ee6fcaf12fdc8993ad18d3704cf407557491bb53b927cdb367195aeb768de415"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/exam-sn-energy-conservation.goal.json",
+      "capsulePath": "exam-sn-energy-conservation.goal.json",
+      "sha256": "f631c9f12c3bc9f1aaccc35da01b3d330a232fb2b11ff54bb9be9f1fdb4c10a6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/hh-physics-current-2024.txt",
+      "capsulePath": "hh-physics-current-2024.txt",
+      "sha256": "d1564901515ed97869d2055a7022a0c6748ff151885ac972c8271c061842fc91"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/hh-physics-retained-2011.txt",
+      "capsulePath": "hh-physics-retained-2011.txt",
+      "sha256": "1b0ce51f95252c71b87978e77205ca5f334f057abaefc4da8d5a6ddcd4e6d473"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/sn-physics-retained.txt",
+      "capsulePath": "sn-physics-retained.txt",
+      "sha256": "a1ed113c317ecfda53d9182b70e914d42ab1b75d478ed070479757d022ca7bd6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/sn-mathematics-retained.txt",
+      "capsulePath": "sn-mathematics-retained.txt",
+      "sha256": "b0da29617b3b13e4a1ae994d290c7271468f9aaa04755d8bdef070cb282b12e4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/blind-inputs/hh-mathematics-retained.txt",
+      "capsulePath": "hh-mathematics-retained.txt",
+      "sha256": "03e05827fc84d4c5a4c33aac601445c11f9efc6e1c500da161d4da02e52459c3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf",
+      "capsulePath": "hh-physics-retained-2011.pdf",
+      "sha256": "6cd5c7975b0ce1cc5d6e8365b39c632ea67f01fcd5d7f50bb38fc812e2c4e585"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/primary-sources/hh-physics-current-2024.pdf",
+      "capsulePath": "hh-physics-current-2024.pdf",
+      "sha256": "b879d9fc69b72f629135ab3f6b8234ea71ec52588e8333ed769659a346c19c8d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HH/mathematik-gym-seki-2022-data.pdf",
+      "capsulePath": "hh-mathematics-retained.pdf",
+      "sha256": "cd58d4f764c6e7f30d617133b2c437a5b0b1edf7c8bc8599032cd67ff2fc9251"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+      "capsulePath": "sn-physics-retained.pdf",
+      "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-mathematik-sachsen-2019.pdf",
+      "capsulePath": "sn-mathematics-retained.pdf",
+      "sha256": "de48e13d404cfb4d155f056efdc1a6888857ccda58cc03cf81bcdabb2141f8ae"
+    }
+  ],
+  "outputArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/round-a/response.json",
+      "sha256": "f22442ea281da12b5755b09ec33cfef4b3bd618438911de5d39d4811a0c4b343"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/round-a/events.jsonl",
+      "sha256": "ce58cb05f42d06d8fc6ec240d6aa40b7c69f3abf5c7ac724ce0a7eb022eec16c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/round-a/stderr.log",
+      "sha256": "f42db2dce8c3aeeb47edbd79f595d3a03b341795be6dc3ca4fe132e0aca49076"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/round-a/execution-context.actual.json",
+      "sha256": "79271414a400d6ab6a8044997e03b3117f6926f80b4d414193eadbaeffaeed9b"
+    }
+  ],
+  "actualUsage": {
+    "input_tokens": 2041974,
+    "cached_input_tokens": 1929344,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 15288,
+    "reasoning_output_tokens": 4960
+  },
+  "scopeAtRun": [
+    "HH ee6fcaf12fdc8993ad18d3704cf407557491bb53b927cdb367195aeb768de415",
+    "Historical SN f631c9f12c3bc9f1aaccc35da01b3d330a232fb2b11ff54bb9be9f1fdb4c10a6"
+  ],
+  "limits": "Both sessions began before author-final release. HH was subsequently hash-compared exactly with its submitted final file; authorREADME is separately bound, not part of the blind inputs. SN successor19fis not submitted and is not admitted by these reviews. No authoring, integration, canonical/test/count/placement/prerequisite mutation or human/learner/host acceptance."
+}

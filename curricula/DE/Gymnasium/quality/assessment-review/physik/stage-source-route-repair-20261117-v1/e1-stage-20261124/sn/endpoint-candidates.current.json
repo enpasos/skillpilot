@@ -1,0 +1,990 @@
+{
+  "schema": "existing-assessment-candidate-input-snapshots-v1",
+  "goals": [
+    {
+      "goal": {
+        "id": "b1808b4c-5e02-5e1f-831f-47ee126e00ee",
+        "shortKey": "canonical_physics_sek1_assessment_bw_circular_motion",
+        "title": "Prüfungsaufgabe: Eine Kurvenfahrt mit Zentripetalkraft analysieren",
+        "titleEn": "Assessment Task: Analyze Cornering with Centripetal Force",
+        "description": "Die lernende Person kann eine gleichförmige Kreisbewegung mit Zentripetalbeschleunigung und Zentripetalkraft quantitativ analysieren und das Modell auf eine Kurvenfahrt anwenden.",
+        "descriptionEn": "The learner can quantitatively analyze uniform circular motion using centripetal acceleration and force and apply the model to cornering.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "SekI"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG"
+          ],
+          "phase": "GLOBAL",
+          "area": "Mechanik",
+          "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.BW.CIRCULAR_MOTION"
+        },
+        "requires": [
+          "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Ein Fahrrad samt Person hat 80 kg und fährt mit 6,0 m/s auf einer waagerechten Kreisbahn mit Radius 18 m. Die seitliche Haftreibung kann höchstens 220 N betragen.\n\n1. Zeichnen Sie Geschwindigkeits- und Beschleunigungsvektor an drei Punkten der Bahn und erläutern Sie, warum trotz konstantem Geschwindigkeitsbetrag eine Beschleunigung vorliegt. (5 BE)\n2. Berechnen Sie Zentripetalbeschleunigung und Zentripetalkraft und ordnen Sie die Haftreibung als verursachende Kraft ein. (5 BE)\n3. Bestimmen Sie die größte im Modell sichere Geschwindigkeit. Prüfen Sie außerdem, wie sich die notwendige Zentripetalkraft bei doppelter Geschwindigkeit und bei doppeltem Radius verändert. (6 BE)",
+          "solutionContent": "Der Geschwindigkeitsvektor liegt tangential, der Beschleunigungsvektor zeigt zum Kreismittelpunkt. Die Richtungsänderung der Geschwindigkeit ist eine Beschleunigung. Es gilt a = v²/r = 2,0 m/s² und F = ma = 160 N zum Mittelpunkt; diese Kraft stellt die seitliche Haftreibung bereit. Aus 220 N = m v²/r folgt v ≈ 7,0 m/s. Bei doppelter Geschwindigkeit vervierfacht sich die nötige Kraft, bei doppeltem Radius halbiert sie sich.",
+          "scoring": {
+            "maxPoints": 16,
+            "passingPoints": 10,
+            "steps": [
+              {
+                "id": "circular_1",
+                "points": 5,
+                "description": "Geschwindigkeits- und Beschleunigungsvektoren korrekt dargestellt und erklärt"
+              },
+              {
+                "id": "circular_2",
+                "points": 5,
+                "description": "Zentripetalbeschleunigung und -kraft berechnet und physikalischer Kraft zugeordnet"
+              },
+              {
+                "id": "circular_3",
+                "points": 6,
+                "description": "Grenzgeschwindigkeit und Parameterabhängigkeiten quantitativ bestimmt"
+              }
+            ]
+          }
+        }
+      },
+      "currentGoalJsonStringifySha256": "2af0c9425d83e69a93cd5c24625d8631b2bc4b1f5253bd8c2acbb41ca5641096",
+      "normalizedGoalJsonStringifySha256": "2af0c9425d83e69a93cd5c24625d8631b2bc4b1f5253bd8c2acbb41ca5641096"
+    },
+    {
+      "goal": {
+        "id": "b637582c-a618-5698-817a-8d7bd1fa05f6",
+        "shortKey": "canonical_physics_sek1_assessment_bw_inelastic_collision",
+        "title": "Prüfungsaufgabe: Einen inelastischen Stoß bilanzieren",
+        "titleEn": "Assessment Task: Balance an Inelastic Collision",
+        "description": "Die lernende Person kann einen eindimensionalen inelastischen Stoß mit Impulserhaltung berechnen und die dabei auftretende Energieumwandlung qualitativ deuten.",
+        "descriptionEn": "The learner can calculate a one-dimensional inelastic collision using momentum conservation and qualitatively interpret the associated energy conversion.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "SekI"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_ENERGIE"
+          ],
+          "phase": "GLOBAL",
+          "area": "Mechanik",
+          "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.BW.INELASTIC_COLLISION"
+        },
+        "requires": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ],
+          "coveredStrands": [
+            "LI_ENERGIE"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "Ein Wagen mit 0,60 kg fährt mit 1,2 m/s nach rechts und stößt auf einen ruhenden Wagen mit 0,30 kg. Beide Wagen kuppeln und fahren gemeinsam weiter.\n\n1. Zeichnen Sie den Zustand vor und nach dem Stoß mit gewählter positiver Richtung. (3 BE)\n2. Berechnen Sie die gemeinsame Geschwindigkeit aus der Impulserhaltung. (5 BE)\n3. Vergleichen Sie die kinetischen Energien vor und nach dem Stoß. Erklären Sie, warum der fehlende Anteil die Energieerhaltung nicht verletzt, und nennen Sie zwei plausible Umwandlungsformen. (6 BE)",
+          "solutionContent": "Vorher beträgt der Impuls 0,60 kg · 1,2 m/s = 0,72 kg m/s. Nachher bewegen sich 0,90 kg gemeinsam, also v = 0,80 m/s nach rechts. Die kinetische Energie sinkt von 0,432 J auf 0,288 J. Die Differenz 0,144 J wird unter anderem in Verformung, innere Energie und Schall umgewandelt; der Impuls des abgeschlossenen Systems bleibt erhalten.",
+          "scoring": {
+            "maxPoints": 14,
+            "passingPoints": 8,
+            "steps": [
+              {
+                "id": "inelastic_1",
+                "points": 3,
+                "description": "Stoßzustände und Richtung eindeutig modelliert"
+              },
+              {
+                "id": "inelastic_2",
+                "points": 5,
+                "description": "Gemeinsame Geschwindigkeit aus Impulserhaltung berechnet"
+              },
+              {
+                "id": "inelastic_3",
+                "points": 6,
+                "description": "Kinetische Energien verglichen und Energieumwandlung erklärt"
+              }
+            ]
+          }
+        }
+      },
+      "currentGoalJsonStringifySha256": "c0442432c2d1c949d7c6e9bdcc5feed18b7ca26980933d5e5eec7501ab93d313",
+      "normalizedGoalJsonStringifySha256": "c0442432c2d1c949d7c6e9bdcc5feed18b7ca26980933d5e5eec7501ab93d313"
+    },
+    {
+      "goal": {
+        "id": "68061652-d617-5e51-8d2a-1c686c3c49df",
+        "shortKey": "canonical_physics_sek1_assessment_bw_by_collision_inertia",
+        "title": "Prüfungsaufgabe: Trägheit, Kraftstoß und Stoßvorgang untersuchen",
+        "titleEn": "Assessment Task: Investigate Inertia, Impulse, and a Collision",
+        "description": "Die lernende Person kann Trägheit und Kräftegleichgewicht unterscheiden, einen Kraftstoß mit einer Impulsänderung verknüpfen und einen einfachen Stoß mit Impuls- und Energieerhaltung quantitativ untersuchen.",
+        "descriptionEn": "The learner can distinguish inertia from force equilibrium, link an impulse to a change in momentum, and quantitatively investigate a simple collision using momentum and energy conservation.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "SekI"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE"
+          ],
+          "phase": "GLOBAL",
+          "area": "Mechanik",
+          "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.BW_BY.COLLISION_INERTIA"
+        },
+        "requires": [
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Material:** Wagen A (0,40 kg) fährt mit 1,5 m/s nach rechts, Wagen B (0,20 kg) ruht. Nach einem geradlinigen elastischen Stoß fährt A mit 0,50 m/s nach rechts. Während eines vorangehenden Anstoßes wirkte auf A für 0,20 s eine mittlere Kraft von 3,0 N.\n\n1. Ein dritter Wagen fährt auf gerader waagerechter Bahn mit konstanter Geschwindigkeit. Erläutern Sie mit Newtons erstem Axiom, warum dafür keine resultierende Kraft nötig ist, und grenzen Sie dies von „es wirkt gar keine Kraft“ ab. (5 BE)\n2. Bestimmen Sie den Kraftstoß des vorangehenden Anstoßes und die dadurch verursachte Impulsänderung von A. Geben Sie die Richtung an. (5 BE)\n3. Bestimmen Sie mit Impulserhaltung die Geschwindigkeit von B nach dem Stoß. Prüfen Sie anschließend über die kinetischen Energien vor und nach dem Stoß, ob die Angabe „elastisch“ zu den Daten passt, und erläutern Sie die Rolle beider Erhaltungssätze. (8 BE)",
+          "solutionContent": "Bei konstanter Geschwindigkeit ist die resultierende Kraft null; einzelne Kräfte können sich dennoch ausgleichen. Der Kraftstoß beträgt 3,0 N · 0,20 s = 0,60 Ns nach rechts und entspricht der Impulsänderung. Vor dem Stoß ist p = 0,40 kg · 1,5 m/s = 0,60 kg m/s. Danach trägt A 0,20 kg m/s; daher gilt für B p = 0,40 kg m/s und v = 2,0 m/s. Die kinetische Energie beträgt vorher 0,45 J und nachher 0,05 J + 0,40 J = 0,45 J. Impuls und kinetische Energie sind damit erhalten; die Daten sind mit einem elastischen Stoß vereinbar.",
+          "scoring": {
+            "maxPoints": 18,
+            "passingPoints": 11,
+            "steps": [
+              {
+                "id": "collision_inertia_1",
+                "points": 5,
+                "description": "Trägheitsprinzip und Kräftegleichgewicht fachlich unterschieden"
+              },
+              {
+                "id": "collision_inertia_2",
+                "points": 5,
+                "description": "Kraftstoß mit Betrag, Richtung und Impulsänderung bestimmt"
+              },
+              {
+                "id": "collision_inertia_3",
+                "points": 8,
+                "description": "Stoß über Impuls und Energie quantitativ geprüft und Erhaltungssätze erklärt"
+              }
+            ]
+          }
+        }
+      },
+      "currentGoalJsonStringifySha256": "4c978598115d651392937a49825e8f3fe16f0a983d8803d91b99a87fbcf3116a",
+      "normalizedGoalJsonStringifySha256": "4c978598115d651392937a49825e8f3fe16f0a983d8803d91b99a87fbcf3116a"
+    },
+    {
+      "goal": {
+        "id": "72649cf5-893c-5f03-88bd-a2497171d434",
+        "title": "Energie, Impuls und Stöße",
+        "titleEn": "Energy, Momentum, and Collisions",
+        "description": "E.2 Erhaltungssätze in mechanischen Kontexten, 25 BE.",
+        "descriptionEn": "E.2 conservation laws in mechanical contexts, 25 points.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE",
+            "LI_TECHNIK"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE",
+            "LI_TECHNIK"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "**Kontext:**\n\nSie arbeiten in einem kommunalen Crash- und Sicherheitszentrum. Stoßprozesse, Impulsübertragung und Belastungen von Fahrzeuginsassen sollen quantitativ bewertet werden, um Schutzmaßnahmen physikalisch zu begründen.\n\nAlle Materialien gehören zu derselben Sicherheitsanalyse: Material 1 bildet den Modellstoß ab, Material 2 die Fahrzeugsimulation und Material 3 die Belastung einer Person mit und ohne Rückhaltesystem.\n\n**Material 1 (Stoß auf Luftkissenbahn):**\n\n- Wagen 1: $m_1=0.60\\,\\mathrm{kg}$, $v_1=2.5\\,\\mathrm{m/s}$\n- Wagen 2: $m_2=0.90\\,\\mathrm{kg}$, $v_2=0$\n- Beide Wagen koppeln nach dem Stoß (vollständig inelastisch).\n- Stoßmodell: zentraler eindimensionaler Stoß, äußere Kräfte während der Stoßdauer vernachlässigbar.\n\n**Material 2 (Crash-Simulation):**\n\n- Fahrzeugmasse: $m=1200\\,\\mathrm{kg}$\n- Geschwindigkeit vor dem Aufprall: $v_0=50\\,\\mathrm{km/h}$\n- Variante A: Abbremszeit $\\Delta t_A=0.12\\,\\mathrm{s}$\n- Variante B: Abbremszeit $\\Delta t_B=0.06\\,\\mathrm{s}$\n- In beiden Varianten wird das Fahrzeug bis zum Stillstand abgebremst ($v_{\\mathrm{end}}=0$).\n\n**Material 3 (Rückhaltesystem):**\n\n- Masse einer Person: $m_P=75\\,\\mathrm{kg}$\n- Relativgeschwindigkeit vor dem Abbremsen: $v_P=13.9\\,\\mathrm{m/s}$\n- ohne Airbag/Gurtstraffer: $\\Delta t_S=0.040\\,\\mathrm{s}$\n- mit Airbag/Gurtstraffer: $\\Delta t_A=0.18\\,\\mathrm{s}$\n- In beiden Varianten wird die Person relativ zum Fahrzeuginnenraum bis zum Stillstand abgebremst ($v_{\\mathrm{end}}=0$).\n\n**Aufgaben:**\n\n1. Berechnen Sie die gemeinsame Geschwindigkeit direkt nach dem Stoß (Material 1). (6 BE)\n2. Vergleichen Sie die kinetische Energie vor und nach dem Stoß. Bestimmen Sie den Energieverlust. (7 BE)\n3. Berechnen Sie für Material 2 die mittlere Aufprallkraft in Variante A und B. (6 BE)\n4. Berechnen Sie mit Material 3 die mittlere Kraft auf die Person in beiden Varianten und bewerten Sie den Sicherheitsgewinn. (6 BE)",
+          "solutionContent": "1. Impulserhaltung beim vollständig inelastischen Stoß:\n\n$$\nv' = \\frac{m_1 v_1 + m_2 v_2}{m_1+m_2}\n=\\frac{0.60\\cdot 2.5+0}{1.50}=1.0\\,\\mathrm{m/s}\n$$\n\n**6 BE**\n\n2. Kinetische Energie vor dem Stoß:\n\n$$\nE_{\\mathrm{kin,vor}}=\\frac12 m_1 v_1^2=\\frac12\\cdot 0.60\\cdot 2.5^2=1.875\\,\\mathrm{J}\n$$\n\nKinetische Energie nach dem Stoß:\n\n$$\nE_{\\mathrm{kin,nach}}=\\frac12 (m_1+m_2) v'^2=\\frac12\\cdot 1.50\\cdot 1.0^2=0.75\\,\\mathrm{J}\n$$\n\nEnergieverlust:\n\n$$\n\\Delta E=E_{\\mathrm{kin,vor}}-E_{\\mathrm{kin,nach}}=1.125\\,\\mathrm{J}\n$$\n\nDas entspricht ca. $60\\,\\%$ Verlust.\n\n**7 BE**\n\n3. Umrechnung: $v_0=50\\,\\mathrm{km/h}=13.89\\,\\mathrm{m/s}$.\n\nMit\n\n$$\n\\bar F = \\frac{m\\,\\Delta v}{\\Delta t}\n$$\n\nfolgt:\n\n$$\n\\bar F_A=\\frac{1200\\cdot 13.89}{0.12}=1.39\\cdot 10^5\\,\\mathrm{N}\n$$\n\n$$\n\\bar F_B=\\frac{1200\\cdot 13.89}{0.06}=2.78\\cdot 10^5\\,\\mathrm{N}\n$$\n\n**6 BE**\n\n4. Für die Person gilt analog:\n\n$$\n\\bar F_S=\\frac{75\\cdot 13.9}{0.040}=2.61\\cdot 10^4\\,\\mathrm{N}\n$$\n\n$$\n\\bar F_A=\\frac{75\\cdot 13.9}{0.18}=5.79\\cdot 10^3\\,\\mathrm{N}\n$$\n\nDie mittlere Kraft sinkt um etwa den Faktor $4.5$. Längere Abbremszeit durch Airbag/Gurtstraffer reduziert die Belastung deutlich.\n\n**6 BE**",
+          "scoring": {
+            "maxPoints": 25,
+            "passingPoints": 15,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 6,
+                "description": "Stoßgeschwindigkeit mit Impulserhaltung korrekt bestimmt"
+              },
+              {
+                "id": "s2",
+                "points": 7,
+                "description": "Energiebilanz vor und nach dem Stoß korrekt erstellt"
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Mittlere Kräfte in der Crash-Simulation korrekt berechnet"
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Personenbelastung berechnet und Sicherheitsgewinn fachlich bewertet"
+              }
+            ]
+          }
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "currentGoalJsonStringifySha256": "91cfac2708671317505e15a19650edd1db14e803939b980c4123e20cfed3b882",
+      "normalizedGoalJsonStringifySha256": "91cfac2708671317505e15a19650edd1db14e803939b980c4123e20cfed3b882"
+    },
+    {
+      "goal": {
+        "id": "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+        "title": "Grundlagenaufgaben zu Newton, Energie und Impuls lösen",
+        "titleEn": "Solve Fundamental Tasks on Newton, Energy, and Momentum",
+        "description": "Die lernende Person kann Grundlagen zu Newtonschen Axiomen, Energie- und Impulsbetrachtungen in vernetzten Übungsaufgaben sicher anwenden.",
+        "descriptionEn": "The learner can reliably apply fundamentals of Newtonian laws and energy/momentum analysis in integrated practice tasks.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+          "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_ENERGIE"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "**Kontext:**\n\nIn einem Verkehrssicherheitsprojekt für den städtischen Alltag werden Newtonsche Grundlagen, Energie- und Impulsbetrachtungen genutzt, um Transport-, Brems- und Stoßsituationen physikalisch zu bewerten.\n\n**Material 1 (Kraftbilanz und Axiome):**\n\n- Kiste auf horizontaler Fläche, $m = 5.0\\,\\mathrm{kg}$\n- Fall A: Zugkraft nach vorn 18 N, Reibungskraft nach hinten 8 N\n- Fall B: Zugkraft nach vorn 8 N, Reibungskraft nach hinten 8 N\n\n**Material 2 (Energie auf Rampe):**\n\n- $m = 2.0\\,\\mathrm{kg}$\n- Höhenunterschied $h = 3.0\\,\\mathrm{m}$\n- Reibungsarbeit $W_R = -8\\,\\mathrm{J}$\n- Erdbeschleunigung: $g = 9.81\\,\\mathrm{m/s^2}$\n- Startbedingung: Der Körper befindet sich oben auf der Rampe in Ruhe ($v_0 = 0\\,\\mathrm{m/s}$)\n- Bezugsniveau: Am Rampenende gilt $E_{\\mathrm{pot}} = 0$\n- Luftwiderstand wird vernachlässigt\n\n**Material 3 (Stoßprozesse):**\n\n- Modellannahme: geradliniger zentraler Stoß (1D), äußere Kräfte während des Stoßvorgangs vernachlässigbar\n- Fall A (elastisch): $m_1 = 1.0\\,\\mathrm{kg}$, $v_1 = 4.0\\,\\mathrm{m/s}$, $m_2 = 1.0\\,\\mathrm{kg}$, $v_2 = 0$\n- Fall B (vollständig inelastisch): gleiche Anfangsdaten, Körper haften zusammen\n\n**Material 4 (Kraftstoß):**\n\n- Kraft-Zeit-Impuls näherungsweise rechteckig: $F = 3000\\,\\mathrm{N}$, $\\Delta t = 0.040\\,\\mathrm{s}$\n- Masse der Person: 75 kg\n\n**Aufgaben:**\n\n1. Bestimmen Sie für Material 1 im Fall A die resultierende Kraft und Beschleunigung. Deuten Sie Fall B mit dem 1. Newtonschen Axiom und nennen Sie ein passendes Kräftepaar zum 3. Newtonschen Axiom. (7 BE)\n2. Berechnen Sie die mechanische Energieänderung in Material 2 und bestimmen Sie die verbleibende kinetische Energie nach Reibungsverlust. (7 BE)\n3. Bestimmen Sie für Material 3 die Endgeschwindigkeiten in Fall A und B. Vergleichen Sie die kinetischen Energien vor/nach dem Stoß. (8 BE)\n4. Berechnen Sie aus Material 4 die Impulsänderung und die Geschwindigkeitsänderung der Person. Erläutern Sie kurz die Bedeutung längerer Einwirkzeit. (6 BE)\n5. Nennen Sie ein Beispiel, in dem die Wahl des Bezugssystems für die Beschreibung wesentlich ist. (2 BE)",
+          "solutionContent": "1. Fall A:\n$F_{\\mathrm{res}} = 18 - 8 = 10\\,\\mathrm{N}$\nBeschleunigung:\n$a = \\frac{F_{\\mathrm{res}}}{m} = \\frac{10}{5.0} = 2.0\\,\\mathrm{m/s^2}$ (2. Newtonsches Axiom)\n\nFall B:\n$F_{\\mathrm{res}} = 8 - 8 = 0$ $\\Rightarrow$ keine Beschleunigung, der Körper bleibt in Ruhe oder bewegt sich gleichförmig geradlinig (1. Newtonsches Axiom).\n\nBeispiel Kräftepaar (3. Axiom):\nKraft der Hand auf das Seil und gleich große entgegengesetzte Kraft des Seils auf die Hand.\n\n2. Potenzielle Energie oben:\n$E_{\\mathrm{pot}} = m \\cdot g \\cdot h = 2.0 \\cdot 9.81 \\cdot 3.0 = 58.9\\,\\mathrm{J}$\nNach Reibung:\n$E_{\\mathrm{kin}} = 58.9\\,\\mathrm{J} - 8\\,\\mathrm{J} = 50.9\\,\\mathrm{J}$\n\n3. Fall A (elastisch, gleiche Massen):\n$v_1' = 0$, $v_2' = 4.0\\,\\mathrm{m/s}$\nE_kin bleibt erhalten.\n\nFall B (vollständig inelastisch):\nImpulserhaltung: $v' = \\frac{1.0 \\cdot 4.0 + 1.0 \\cdot 0}{2.0} = 2.0\\,\\mathrm{m/s}$\n\n$E_{\\mathrm{vor}} = 0.5 \\cdot 1.0 \\cdot 4.0^2 = 8\\,\\mathrm{J}$\n$E_{\\mathrm{nach}}(B) = 0.5 \\cdot 2.0 \\cdot 2.0^2 = 4\\,\\mathrm{J}$\n$\\Rightarrow$ $4\\,\\mathrm{J}$ werden in innere Energie/Deformation umgewandelt.\n\n4. Kraftstoß:\n$\\Delta p = F \\cdot \\Delta t = 3000 \\cdot 0.040 = 120\\,\\mathrm{N\\,s}$\nGeschwindigkeitsänderung:\n$\\Delta v = \\frac{\\Delta p}{m} = \\frac{120}{75} = 1.6\\,\\mathrm{m/s}$\n\nLängere Einwirkzeit bei gleichem $\\Delta p$ senkt mittlere Kraftspitzen.\n\n5. Beispiel: Mitrotierendes Karussellsystem vs Inertialsystem (Scheinkräfte treten nur im nicht-inertialen System auf).",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 7,
+                "description": "Newton-1/2/3 in der Kraftbilanz korrekt angewendet"
+              },
+              {
+                "id": "s2",
+                "points": 7,
+                "description": "Energiebetrachtung mit Reibungsverlust korrekt"
+              },
+              {
+                "id": "s3",
+                "points": 8,
+                "description": "Elastischer/inelastischer Stoß korrekt analysiert"
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Kraftstoß und Bedeutung der Einwirkzeit korrekt eingeordnet"
+              },
+              {
+                "id": "s5",
+                "points": 2,
+                "description": "Bezugssystembeispiel fachlich korrekt benannt"
+              }
+            ]
+          }
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "currentGoalJsonStringifySha256": "435b556a1d7fbbabaa042e87bd049907b47a712d89116069df95dc0f9fa29ded",
+      "normalizedGoalJsonStringifySha256": "435b556a1d7fbbabaa042e87bd049907b47a712d89116069df95dc0f9fa29ded"
+    },
+    {
+      "goal": {
+        "id": "198bfc8c-25f7-5a02-8618-47650ce36d14",
+        "shortKey": "canonical_physics_sek1_assessment_bw_irreversibility_climate",
+        "title": "Prüfungsaufgabe: Energieumwandlungen und Klimawirkungen beurteilen",
+        "titleEn": "Assessment Task: Assess Energy Conversions and Climate Effects",
+        "description": "Die lernende Person kann reversible und irreversible Vorgänge unterscheiden und eine Energieentscheidung anhand physikalischer Klima- und Umwandlungsdaten fachlich diskutieren.",
+        "descriptionEn": "The learner can distinguish reversible and irreversible processes and discuss an energy decision using physical climate and conversion data.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "SekI"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_ENERGIE",
+            "LI_TECHNIK"
+          ],
+          "phase": "GLOBAL",
+          "area": "Wärmelehre und Energie",
+          "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.BW.IRREVERSIBILITY_CLIMATE"
+        },
+        "requires": [
+          "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+          "f322c268-dc16-5d50-82dd-209834f20208"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+            "f322c268-dc16-5d50-82dd-209834f20208"
+          ],
+          "coveredStrands": [
+            "LI_ENERGIE",
+            "LI_TECHNIK"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Material:** Ein Gebäude benötigt jährlich 12 000 kWh Wärme. Variante D erzeugt Wärme direkt elektrisch; ihr Strommix verursacht 300 g CO₂-Äquivalent pro kWh. Variante W ist eine Wärmepumpe mit Jahresarbeitszahl 3,0 und demselben Strommix. Für Herstellung und Entsorgung der Wärmepumpe werden über ihre Nutzungszeit zusätzlich 6 000 kg CO₂-Äquivalent angesetzt; die Nutzungszeit ist mit 15 bis 25 Jahren unsicher.\n\n1. Ordnen Sie das Abkühlen eines heißen Körpers in einem Raum und die idealisierte quasistatische Kompression eines Gases als irreversiblen beziehungsweise näherungsweise reversiblen Vorgang ein. Begründen Sie und beschreiben Sie die Konsequenz für die Nutzbarkeit der Energie. (6 BE)\n2. Berechnen Sie die jährlichen betriebsbedingten Emissionen beider Heizvarianten. (5 BE)\n3. Diskutieren Sie die Klimawirkung der Entscheidung über 15 und 25 Jahre. Beziehen Sie Betriebs- und Herstellungsdaten ein, weisen Sie die Modellunsicherheiten aus und formulieren Sie ein bedingtes Urteil. (7 BE)",
+          "solutionContent": "Der spontane Temperaturausgleich ist irreversibel: Die Energie bleibt erhalten, wird aber weniger vollständig nutzbar. Eine sehr langsame, reibungsfreie Kompression kann als näherungsweise reversibel modelliert werden. D benötigt 12 000 kWh Strom und verursacht 3 600 kg CO₂e pro Jahr. W benötigt 4 000 kWh und verursacht 1 200 kg pro Jahr. Mit Herstellung ergeben sich für W über 15 Jahre 24 000 kg und über 25 Jahre 36 000 kg; D verursacht 54 000 beziehungsweise 90 000 kg. Unter den gegebenen Annahmen ist W klimatisch günstiger. Strommix, tatsächliche Jahresarbeitszahl, Lebensdauer und Bilanzgrenzen bleiben entscheidende Unsicherheiten.",
+          "scoring": {
+            "maxPoints": 18,
+            "passingPoints": 11,
+            "steps": [
+              {
+                "id": "irreversible_climate_1",
+                "points": 6,
+                "description": "Reversible und irreversible Vorgänge samt Energienutzbarkeit unterschieden"
+              },
+              {
+                "id": "irreversible_climate_2",
+                "points": 5,
+                "description": "Betriebsemissionen beider Varianten korrekt berechnet"
+              },
+              {
+                "id": "irreversible_climate_3",
+                "points": 7,
+                "description": "Lebenszyklusdaten, Unsicherheiten und bedingtes Klimaurteil verbunden"
+              }
+            ]
+          }
+        }
+      },
+      "currentGoalJsonStringifySha256": "0b0524189c365eeac8857d28601bd864fed22f4ab21c2a1771ccb96f0e98554a",
+      "normalizedGoalJsonStringifySha256": "0b0524189c365eeac8857d28601bd864fed22f4ab21c2a1771ccb96f0e98554a"
+    },
+    {
+      "goal": {
+        "id": "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",
+        "title": "Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen",
+        "titleEn": "Solve Context Tasks on Sports, Traffic, and Safety",
+        "description": "Die lernende Person kann physikalische Modelle in Sport- und Verkehrskontexten anwenden und begründete Sicherheitsbewertungen vornehmen.",
+        "descriptionEn": "The learner can apply physical models in sports and traffic contexts and produce reasoned safety evaluations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "e39c83b0-cb4f-5454-a143-b9a159c99cba",
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "1232febe-868a-4dac-b4c2-e35789434601"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "7ead007f-e85a-5cb5-b52d-76aae626119a",
+            "e39c83b0-cb4f-5454-a143-b9a159c99cba",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "**Kontext:**\n\nEine Projektgruppe untersucht Sport- und Verkehrssituationen mit physikalischen Modellen und bewertet Sicherheitsmaßnahmen.\n\n**Material 1 (Sportwurf):**\n\n- Abwurfgeschwindigkeit $v_0 = 14.0\\,\\mathrm{m/s}$\n- Abwurfwinkel Variante A: $30^\\circ$\n- Abwurfwinkel Variante B: $40^\\circ$\n- Start- und Landepunkt gleich hoch; Luftwiderstand wird vernachlässigt\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n\n**Material 2 (Verkehr):**\n\n- Beim Erkennen eines stillstehenden Hindernisses ist das Fahrzeug noch 40 m davon entfernt.\n- Fahrzeuggeschwindigkeit $v = 70\\,\\mathrm{km/h}$\n- Reaktionszeit $t_R = 0.90\\,\\mathrm{s}$; währenddessen bleibt die Geschwindigkeit konstant.\n- Anschließend konstante Bremsverzögerung mit dem Betrag $a_B = 7.0\\,\\mathrm{m/s^2}$ bis zum Stillstand\n- Idealisiertes geradliniges Bremsmodell; kein Ausweichen\n\n**Material 3 (Aufprallbelastung):**\n\n- Masse $m = 75\\,\\mathrm{kg}$\n- Betrag der Geschwindigkeitsänderung $|\\Delta v| = 13.0\\,\\mathrm{m/s}$ beim Abbremsen bis zum Stillstand\n- Variante 1: Abbremszeit 0.05 s\n- Variante 2: durch Verformung verlängerte Abbremszeit 0.15 s\n- Beide Varianten beschreiben dieselbe Masse und dieselbe Impulsänderung in einem idealisierten Aufprallmodell.\n\n**Aufgaben:**\n\n1. Berechnen Sie die Wurfweiten für Variante A und B und begründen Sie, welche Einstellung für größere Reichweite günstiger ist. (6 BE)\n2. Berechnen Sie Reaktionsweg, Bremsweg und Anhalteweg aus Material 2. Bewerten Sie, ob der anfängliche Abstand von 40 m zum stillstehenden Hindernis ausreicht, um davor anzuhalten. (7 BE)\n3. Berechnen Sie den Betrag der mittleren Kraft in beiden Aufprallvarianten aus Material 3 und bewerten Sie die Verringerung der mittleren Kraft als modellierte Schutzwirkung. (6 BE)\n4. Formulieren Sie zwei fachlich begründete Optimierungsvorschläge: einen für die Sportsituation und einen für die Verkehrssituation. (6 BE)",
+          "solutionContent": "1. Reichweite ohne Luftwiderstand bei gleicher Start- und Landehöhe:\n$R = \\frac{v_0^2\\sin(2\\alpha)}{g}$.\n\nVariante A: $R_A=196\\sin(60^\\circ)/9.81\\approx17.3\\,\\mathrm{m}$.\nVariante B: $R_B=196\\sin(80^\\circ)/9.81\\approx19.7\\,\\mathrm{m}$.\nBei gleicher Abwurfgeschwindigkeit ist B günstiger, weil $\\sin(80^\\circ)>\\sin(60^\\circ)$. Die Aussage gilt für die Modellannahmen, nicht für beliebige Abwurfbedingungen.\n\n2. $70\\,\\mathrm{km/h}=19.44\\,\\mathrm{m/s}$.\nReaktionsweg: $s_R=vt_R\\approx17.5\\,\\mathrm{m}$.\nBremsweg: $s_B=v^2/(2a_B)\\approx27.0\\,\\mathrm{m}$.\nAnhalteweg: $s_A=s_R+s_B\\approx44.5\\,\\mathrm{m}$.\nDie anfänglichen 40 m zum stillstehenden Hindernis reichen in diesem Modell nicht aus, um davor anzuhalten: Der benötigte Anhalteweg ist etwa 4.5 m länger. Das ist keine allgemeine Abstandsvorschrift für zwei bewegte Fahrzeuge; dafür wären deren Bewegungen gesondert zu berücksichtigen.\n\n3. Bei gleicher Impulsänderung gilt für die Beträge $|\\overline F|=m|\\Delta v|/\\Delta t$.\nVariante 1: $|\\overline F_1|=75\\cdot13.0/0.05=19500\\,\\mathrm{N}$.\nVariante 2: $|\\overline F_2|=75\\cdot13.0/0.15=6500\\,\\mathrm{N}$.\nDie dreifache Abbremszeit verringert den Betrag der mittleren Kraft auf ein Drittel, obwohl der Kraftstoßbetrag $975\\,\\mathrm{Ns}$ gleich bleibt. Das erklärt die modellierte Schutzwirkung der Verformung. Aus den Mittelwerten allein folgen weder Spitzenkräfte noch eine konkrete Verletzungsprognose.\n\n4. Beispielhafte Optimierungen:\n- Sport: Unter den gegebenen Modellbedingungen einen günstigeren Abwurfwinkel wählen; bei gleicher Abwurfgeschwindigkeit liegt das Reichweitenmaximum bei $45^\\circ$. Eine begründete Verbesserung der Abwurfgeschwindigkeit ist ebenfalls möglich.\n- Verkehr: Größeren anfänglichen Abstand zum Hindernis beziehungsweise geringere Geschwindigkeit wählen, damit rechtzeitiges Anhalten möglich wird. Während eines unvermeidbaren Aufpralls kann eine längere Verformungszeit bei gleicher Impulsänderung die mittlere Kraft verringern; sie verkürzt nicht den vorherigen Anhalteweg. Ein fachlich tragfähiger Vorschlag pro Kontext genügt.",
+          "scoring": {
+            "maxPoints": 25,
+            "passingPoints": 15,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 6,
+                "description": "Sportmodell korrekt berechnet und begründet bewertet"
+              },
+              {
+                "id": "s2",
+                "points": 7,
+                "description": "Reaktionsweg (2 BE), Bremsweg (2 BE) und Anhalteweg (1 BE) korrekt bestimmt; 40 m zum stillstehenden Hindernis mit dem Anhalteweg verglichen und begründet als unzureichend bewertet (2 BE). / Correct reaction distance (2 marks), braking distance (2) and total stopping distance (1); compare 40 m to the stationary obstacle with the stopping distance and justify that it is insufficient (2)."
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Beide mittleren Kraftbeträge korrekt bestimmt (je 2 BE); Verringerung auf ein Drittel bei gleicher Impulsänderung durch dreifache Stoßdauer begründet (2 BE). Keine konkrete Verletzungsprognose aus Mittelwerten. / Correct magnitudes of both average forces (2 marks each); explain the reduction to one third through tripled collision duration at equal momentum change (2). No specific injury prognosis from averages."
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Optimierungsvorschläge fachlich tragfähig formuliert"
+              }
+            ]
+          },
+          "taskContentEn": "**Context:**\n\nA project group investigates sports and traffic situations using physical models and evaluates protective measures.\n\n**Material 1 (sports projectile):**\n\n- Launch speed $v_0 = 14.0\\,\\mathrm{m/s}$\n- Launch angle in variant A: $30^\\circ$\n- Launch angle in variant B: $40^\\circ$\n- Launch and landing points are at the same height; air resistance is neglected.\n- Gravitational acceleration: $g=9.81\\,\\mathrm{m/s^2}$\n\n**Material 2 (traffic):**\n\n- When a stationary obstacle is noticed, the vehicle is still 40 m away from it.\n- Vehicle speed $v = 70\\,\\mathrm{km/h}$\n- Reaction time $t_R = 0.90\\,\\mathrm{s}$; the speed remains constant during this interval.\n- Subsequently, constant deceleration of magnitude $a_B = 7.0\\,\\mathrm{m/s^2}$ until rest\n- Idealised straight-line braking model; no evasive manoeuvre\n\n**Material 3 (impact loading):**\n\n- Mass $m = 75\\,\\mathrm{kg}$\n- Magnitude of the velocity change $|\\Delta v| = 13.0\\,\\mathrm{m/s}$ when slowing to rest\n- Variant 1: stopping time 0.05 s\n- Variant 2: stopping time extended to 0.15 s through deformation\n- Both variants describe the same mass and the same momentum change in an idealised impact model.\n\n**Tasks:**\n\n1. Calculate the projectile ranges for variants A and B and justify which setting is more suitable for a greater range. (6 marks)\n2. Calculate the reaction distance, braking distance and total stopping distance from Material 2. Evaluate whether the initial distance of 40 m to the stationary obstacle is sufficient to stop before it. (7 marks)\n3. Calculate the magnitude of the average force in both impact variants from Material 3 and evaluate the reduction in average force as a modelled protective effect. (6 marks)\n4. Give two physically justified suggestions for improvement: one for the sports situation and one for the traffic situation. (6 marks)",
+          "solutionContentEn": "1. Range without air resistance and with equal launch and landing heights:\n$R = \\frac{v_0^2\\sin(2\\alpha)}{g}$.\n\nVariant A: $R_A=196\\sin(60^\\circ)/9.81\\approx17.3\\,\\mathrm{m}$.\nVariant B: $R_B=196\\sin(80^\\circ)/9.81\\approx19.7\\,\\mathrm{m}$.\nAt equal launch speed, B is preferable because $\\sin(80^\\circ)>\\sin(60^\\circ)$. This statement holds under the model assumptions, not for arbitrary launch conditions.\n\n2. $70\\,\\mathrm{km/h}=19.44\\,\\mathrm{m/s}$.\nReaction distance: $s_R=vt_R\\approx17.5\\,\\mathrm{m}$.\nBraking distance: $s_B=v^2/(2a_B)\\approx27.0\\,\\mathrm{m}$.\nTotal stopping distance: $s_A=s_R+s_B\\approx44.5\\,\\mathrm{m}$.\nThe initial 40 m to the stationary obstacle is insufficient to stop before it in this model: the required stopping distance is about 4.5 m longer. This is not a general following-distance rule for two moving vehicles; their respective motions would have to be considered separately.\n\n3. For the same momentum change, the magnitudes satisfy $|\\overline F|=m|\\Delta v|/\\Delta t$.\nVariant 1: $|\\overline F_1|=75\\cdot13.0/0.05=19500\\,\\mathrm{N}$.\nVariant 2: $|\\overline F_2|=75\\cdot13.0/0.15=6500\\,\\mathrm{N}$.\nTripling the stopping time reduces the magnitude of the average force to one third, although the impulse magnitude remains $975\\,\\mathrm{Ns}$. This explains the modelled protective effect of deformation. The averages alone establish neither peak forces nor a specific injury prognosis.\n\n4. Example improvements:\n- Sports: Choose a more suitable launch angle under the given model conditions; for equal launch speed, maximum range occurs at $45^\\circ$. A justified improvement in launch speed is also possible.\n- Traffic: Choose a greater initial distance from the obstacle or a lower speed to make stopping in time possible. During an unavoidable impact, longer deformation time can reduce the average force for the same momentum change; it does not shorten the preceding total stopping distance. One physically defensible suggestion per context is sufficient.",
+          "reviewNote": "Locally released after informed individual AI author review A and independent informed AI counter-review by OpenAI Codex /root on 2026-09-08. Complete German/English task, solutions and all scoring steps reviewed; exact body, coverage, material and profile hashes are bound in physics100-traffic-flow-audit-v1/informed-counterreview-root-20260908.json. Unchanged 25 marks (6+7+6+6), including the existing 13 traffic/collision marks. Explicit stationary-obstacle model; no general following-distance rule, peak-force inference or medical prognosis. No blind D approval, human approval, deployment or observed learner performance is claimed."
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "currentGoalJsonStringifySha256": "9b6917e4bcaf9fc0c343c90fa28d4916299e3db047299794d58d59e3326dd688",
+      "normalizedGoalJsonStringifySha256": "9b6917e4bcaf9fc0c343c90fa28d4916299e3db047299794d58d59e3326dd688"
+    },
+    {
+      "goal": {
+        "id": "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+        "title": "Gravitation und Weltbilder vertieft herleiten (LK)",
+        "titleEn": "Derive Advanced Gravitation and Worldview Models (Advanced Course)",
+        "description": "Die lernende Person kann im Leistungskurs Kepler-Herleitungen, Zentralfeldargumente und die historische Modellentwicklung in anspruchsvollen Aufgaben selbstständig bearbeiten.",
+        "descriptionEn": "In advanced-course tasks, the learner can independently handle Kepler derivations, central-field arguments, and the historical development of models.",
+        "weight": 1,
+        "tags": [
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "c968d263-8be4-5cf9-b320-e95398fe648f",
+          "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+          "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+          "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_KOSMOS"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "481ffd56-d585-56fe-b525-ed423e30eed3",
+            "1b833656-cd16-5b21-973a-9810960dcfd2",
+            "c968d263-8be4-5cf9-b320-e95398fe648f",
+            "16caf92e-2800-57d1-946c-5b92ce848a96",
+            "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_KOSMOS",
+            "LI_ENERGIE"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Kontext:**\n\nEin Team aus Astrophysik-Interessierten bündelt Kepler-Herleitungen, Zentralfeldargumente und die historische Modellentwicklung in einer vertieften Analyseaufgabe.\n\n**Material 1 (Perihel/Aphel):**\n\n- $r_p = 0.90\\,\\mathrm{AU}$, $v_p = 33.0\\,\\mathrm{km/s}$\n- $r_a = 1.10\\,\\mathrm{AU}$\n\n**Material 2 (Skalierung):**\n\nUnter Newton-Gravitation wird der Bahnradius mit Faktor $\\lambda$ skaliert: $r \\rightarrow \\lambda r$.\n\n**Material 3 (Diskussion):**\n\n- Aussage A: Kepler beschreibt Bahngeometrie und Zeitbeziehungen.\n- Aussage B: Newton erklärt Bahnen über Kräfte und Bewegungsgleichung.\n\n**Aufgaben:**\n\n1. Leiten Sie aus Drehimpulserhaltung die Beziehung $r_p v_p = r_a v_a$ her und berechnen Sie $v_a$. (7 BE)\n2. Begründen Sie mit einem Skalierungsargument, warum $T \\propto r^{3/2}$ ist. (7 BE)\n3. Ein Exoplanet hat $a = 4\\,\\mathrm{AU}$ (um denselben Stern wie die Erde). Bestimmen Sie die Umlaufzeit in Erdjahren. (6 BE)\n4. Erläutern Sie den Unterschied zwischen Keplers Beschreibung und Newtons Erklärung und benennen Sie den wissenschaftshistorischen Fortschritt. (5 BE)\n5. Zeigen Sie kurz, warum in einem Zentralfeld der Drehimpuls erhalten ist. Leiten Sie mit dem Wechselwirkungsprinzip für ein isoliertes Zwei-Körper-System $\\frac{d}{dt}(p_1+p_2)=0$ her und geben Sie den zentralen Schritt an, mit dem aus $F=m \\cdot a$ und konservativer Kraft die Erhaltung der mechanischen Energie folgt. (5 BE)",
+          "solutionContent": "1. Zentralfeld bedeutet: Kraft zeigt radial, daher ist das Drehmoment null.\nDamit bleibt $L = m \\cdot r \\cdot v_{\\mathrm{tang}}$ konstant, also $r_p v_p = r_a v_a$.\n\n$v_a = \\frac{r_p}{r_a} \\cdot v_p = \\frac{0.90}{1.10} \\cdot 33.0 = 27.0\\,\\mathrm{km/s}$\n\n2. Für Kreisbahn gilt $v^2 \\propto 1/r$, also $v \\propto r^{-1/2}$.\nMit $T \\propto r/v$ folgt $T \\propto r / r^{-1/2} = r^{3/2}$.\nDamit $T^2 \\propto r^3$.\n\n3. $T/T_E = (a/a_E)^{3/2} = 4^{3/2} = 8$\n$\\Rightarrow$ $T = 8$ Jahre\n\n4. Kepler liefert präzise empirische Gesetzmäßigkeiten der Bahnen.\nNewton liefert die dynamische Ursache (Gravitation + Bewegungsgleichung) und vereint Himmels- und irdische Mechanik.\nFortschritt: von rein geometrischer Beschreibung zur kausalen Theorie.\n\n5. Drehimpuls: $\\frac{dL}{dt} = \\vec r \\times \\vec F$. Bei Zentralfeld ist $\\vec F$ parallel zu $\\vec r$, also $\\vec r \\times \\vec F = 0$, damit $L$ konstant.\n\nGesamtimpuls im Zwei-Körper-System:\n$\\frac{d}{dt}(p_1+p_2) = F_{12} + F_{21} = 0$ (Newtons 3. Axiom) $\\Rightarrow$ $p_{\\mathrm{ges}}$ konstant.\n\nEnergieerhaltung (Kernschritt):\n$F = m \\cdot a$ mit $v$ skalar multiplizieren: $\\frac{d}{dt}(E_{\\mathrm{kin}})=F \\cdot v$.\nFür konservative Kräfte gilt $F = -\\nabla U$, damit $F \\cdot v = -\\frac{dU}{dt}$ und folglich $\\frac{d}{dt}(E_{\\mathrm{kin}}+U)=0$.",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 7,
+                "description": "Drehimpulsargument und Aphelgeschwindigkeit korrekt"
+              },
+              {
+                "id": "s2",
+                "points": 7,
+                "description": "Skalierungsargument zu Kepler III korrekt"
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Umlaufzeit korrekt bestimmt"
+              },
+              {
+                "id": "s4",
+                "points": 5,
+                "description": "Beschreibung vs Erklärung fachlich sauber differenziert"
+              },
+              {
+                "id": "s5",
+                "points": 5,
+                "description": "Erhaltungsaussagen zu Drehimpuls, Impuls und mechanischer Energie korrekt begründet"
+              }
+            ]
+          }
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "currentGoalJsonStringifySha256": "8e41b26bfc73831d3f5851c85b5ad325662205e7df9fa1530e46d3b01fcfad30",
+      "normalizedGoalJsonStringifySha256": "8e41b26bfc73831d3f5851c85b5ad325662205e7df9fa1530e46d3b01fcfad30"
+    },
+    {
+      "goal": {
+        "id": "6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1",
+        "title": "Thermodynamik, Entropie und Klimakontexte bewerten",
+        "titleEn": "Evaluate Thermodynamics, Entropy, and Climate Contexts",
+        "description": "Die lernende Person kann thermodynamische Rechnungen, Entropieargumente und gesellschaftliche Energieentscheidungen in Übungsaufgaben fachlich bewerten.",
+        "descriptionEn": "The learner can evaluate thermodynamic calculations, entropy arguments, and societal energy decisions in practice tasks.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+          "161502b8-e52d-58d0-8f01-9f777b56d392",
+          "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+          "f322c268-dc16-5d50-82dd-209834f20208"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_ENERGIE",
+            "LI_MATERIE",
+            "LI_TECHNIK"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+            "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+            "161502b8-e52d-58d0-8f01-9f777b56d392",
+            "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+            "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
+            "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+            "f322c268-dc16-5d50-82dd-209834f20208"
+          ],
+          "coveredStrands": [
+            "LI_ENERGIE",
+            "LI_MATERIE",
+            "LI_TECHNIK"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Kontext:**\n\nEin Energieprojekt bewertet thermodynamische Prozesse, Entropie und Klimawirkungen technischer Entscheidungen.\n\n**Material 1 (Wärmekraftprozess):**\n\n- Zugeführte Wärme $Q_{\\mathrm{in}} = 900\\,\\mathrm{kJ}$\n- Nutzarbeit $W_{\\mathrm{nutz}} = 270\\,\\mathrm{kJ}$\n- Heißreservoir $T_h = 600\\,\\mathrm{K}$\n- Kaltreservoir $T_c = 300\\,\\mathrm{K}$\n\n**Material 2 (Entropiebilanz Wärmefluss):**\n\n- $Q = 500\\,\\mathrm{kJ}$ fließt von $600\\,\\mathrm{K}$ nach $300\\,\\mathrm{K}$\n\n**Material 3 (Adiabatische Verdichtung, ideales Gas):**\n\n- $T_1 = 300\\,\\mathrm{K}$\n- $V_1/V_2 = 2.0$\n- $\\kappa = 1.4$\n\n**Material 4 (Energie- und Klimamaßnahmen):**\n\n- Maßnahme A: spart 12 MWh/a, Investitionsenergie 24 MWh\n- Maßnahme B: spart 20 MWh/a, Investitionsenergie 60 MWh\n\n**Aufgaben:**\n\n1. Berechnen Sie den realen Wirkungsgrad und den Carnot-Grenzwert aus Material 1. Bewerten Sie die Differenz. (7 BE)\n2. Berechnen Sie die Entropieänderungen von heißem und kaltem Reservoir sowie $\\Delta S_{\\mathrm{ges}}$ für Material 2. (7 BE)\n3. Berechnen Sie für Material 3 die Endtemperatur $T_2$ der adiabatischen Verdichtung. (6 BE)\n4. Erläutern Sie den Zusammenhang zwischen Entropieerzeugung, Irreversibilität und Zeitpfeil an Material 1/2. (4 BE)\n5. Vergleichen Sie Material 4 mit einer einfachen energetischen Amortisationszeit und begründen Sie, welche Maßnahme unter Klimagesichtspunkten priorisiert werden sollte. Grenzen Sie dabei den alltagssprachlichen Begriff Energieverbrauch von der physikalischen Energieentwertung ab. (6 BE)",
+          "solutionContent": "1. Realer Wirkungsgrad:\n$\\eta = W_{\\mathrm{nutz}} / Q_{\\mathrm{in}} = 270/900 = 0.30 = 30\\%$\nCarnot:\n$\\eta_C = 1 - T_c/T_h = 1 - 300/600 = 0.50 = 50\\%$\n\nDie Differenz zeigt reale Verluste und Irreversibilität.\n\n2. Entropie heißes Reservoir:\n$\\Delta S_h = -Q/T_h = -500000/600 = -833\\,\\mathrm{J/K}$\nEntropie kaltes Reservoir:\n$\\Delta S_c = +Q/T_c = +500000/300 = +1667\\,\\mathrm{J/K}$\nGesamt:\n$\\Delta S_{\\mathrm{ges}} = 834\\,\\mathrm{J/K} > 0$\n\n3. Für adiabatisch ideal gilt:\n$T_2 = T_1 \\cdot (V_1/V_2)^{(\\kappa-1)}$\n$T_2 = 300 \\cdot 2.0^{0.4} = 396\\,\\mathrm{K}$\n\n4. $\\Delta S_{\\mathrm{ges}} > 0$ kennzeichnet irreversible Prozesse.\nEnergie bleibt erhalten, aber ihre Nutzbarkeit sinkt (Entwertung).\nDie bevorzugte Richtung realer Prozesse liefert den makroskopischen Zeitpfeil.\n\n5. Energetische Amortisation:\nA: $24/12 = 2.0$ Jahre\nB: $60/20 = 3.0$ Jahre\n\nA amortisiert schneller energetisch; B spart pro Jahr mehr.\nUnter Klimasicht ist die Priorisierung vom Zeithorizont abhängig: kurzfristig A, langfristig B oder Kombination.\n\nBegriffsklärung:\nEnergieverbrauch ist alltagssprachlich; physikalisch wird Energie nicht vernichtet, sondern in weniger nutzbare Formen überführt (Energieentwertung/Entropieanstieg).",
+          "scoring": {
+            "maxPoints": 30,
+            "passingPoints": 18,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 7,
+                "description": "Wirkungsgrad und Carnot-Grenze korrekt berechnet und eingeordnet"
+              },
+              {
+                "id": "s2",
+                "points": 7,
+                "description": "Entropiebilanz korrekt erstellt"
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Adiabatische Temperatur korrekt berechnet"
+              },
+              {
+                "id": "s4",
+                "points": 4,
+                "description": "Zeitpfeil/Irreversibilität fachlich korrekt erläutert"
+              },
+              {
+                "id": "s5",
+                "points": 6,
+                "description": "Klimabezogene Bewertungsentscheidung inklusive Energieentwertung fachlich nachvollziehbar begründet"
+              }
+            ]
+          }
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "currentGoalJsonStringifySha256": "b152c5caeeac0c61396b0dc01e0bbce2405a620a9487ea310c83323d8d5a7e1f",
+      "normalizedGoalJsonStringifySha256": "b152c5caeeac0c61396b0dc01e0bbce2405a620a9487ea310c83323d8d5a7e1f"
+    }
+  ]
+}

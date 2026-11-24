@@ -93,7 +93,8 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     if (!id || !layout || layout.fixture !== fixture || !layout.data.positions[id]
       || layout.fixture.entries[id]?.kind !== 'assessment' || !canvasWidth || !canvasHeight) return null
     const peers = Object.entries(layout.data.positions).filter(([key]) => layout.fixture.entries[key].kind === 'assessment')
-    if (peers.length < 2) return null
+    // A nested child can own just one assessment. Route it through the same
+    // readable camera as neighbouring assessments rather than the full-board overview.
     const groups = [peers]
     // Optional assessments can extend this board far beyond the selected unit's
     // required parts. Keep those existing parts together before falling back to

@@ -1,0 +1,156 @@
+{
+  "schema": "e1-cut-final-executed-check-results-v1",
+  "productCommit": "571769b53aa6007498c6cec9c78feb8a49115f39",
+  "mergeOfMainWithDirectEntry": "f332c0c989437e61d503c23b15b7835502940897",
+  "generatedReport": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "1d5a2e0a6dc2f6cee05f4031dc4c1fc8ee0ebd8fc367654d8792f71cac04c21d"
+  },
+  "assertions": {
+    "physics": "M7",
+    "physicsSekI": "M4",
+    "physicsSekII": "M4",
+    "failingSekIRouteContexts": []
+  },
+  "checks": [
+    {
+      "command": "npm --prefix app run quality:curriculum-status",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "76af51086cbed131f6548e1ce8afa94d0267abf02acf2a5074ff70aba239fac4",
+      "observed": [
+        "Wrote docs/qa-ci/status/curriculum-quality-status.json",
+        "Wrote docs/qa-ci/status/curriculum-quality-status.md",
+        "Wrote docs/qa-ci/status/curriculum-quality-status.de.md"
+      ]
+    },
+    {
+      "command": "npm --prefix app run quality:curriculum-status:check",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "15decb10ed619875a0489ac2ca2980e765aeabaae4a3db51d1771d1ab5fed20c",
+      "observed": [
+        "Curriculum quality status is up to date.",
+        "curriculum maturity gates passed: 21 curricula, 12 scopes; base origin/main"
+      ]
+    },
+    {
+      "command": "npm --prefix app run check:curriculum-maturity-floors",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "1a8bd87893f926d1906fe147307fffd8b78d22dd8bcde58b17966fe4cea26fbe",
+      "observed": [
+        "curriculum maturity gates passed: 21 curricula, 12 scopes; base origin/main"
+      ]
+    },
+    {
+      "command": "npm --prefix app run test:physics-goal-book-inputs",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "6268b4197a07e689cab72b0d6b9947db774c1fc622d9a3dabdb12d812f245362",
+      "observed": [
+        "Physics goal-book inputs verified: 863 semantic-kind decisions; 490 ordinary curricular atoms, 489 atlas targets in 64 neutral plus six HE duration state views; 16 reviewed duration decisions."
+      ]
+    },
+    {
+      "command": "npm --prefix app run test:physics-assessment-projection",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "6527022956662197cc02b904a5cd2520b2a68acc7b72fa09af92e99cc2e84025",
+      "observed": [
+        "Physics CQR-104 passed: 56 views, 106 actual route scopes.",
+        "Physics assessment projection passed: 64 views, 4566 practice-task pairs, 512 Abitur-task pairs, 30 preserved Sek-I placements; complete texts, solutions and unique course-specific navigation preserved.",
+        "Ran 18 tests in 12.057s",
+        "Physics stage view product projection passed: 90 authored 1.2 views; schema, full formal compiler, headings, source endpoints, complete composition/personal-curriculum adapter and every nested preview step.",
+        "Physics stage views: 80 ALL views checked; atomic roles preserved.",
+        "Ran 25 tests in 17.478s"
+      ]
+    },
+    {
+      "command": "npm --prefix app exec -- tsx app/scripts/testHessePhysicsGuidedEntryMaterials.ts",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "f123271220bc03a18c4c60b92c9971d4c2e4426fde029b5c90ff8f3968db7192",
+      "observed": [
+        "Hessen Physics guided-entry materials PASS: two real orientations, eight views, exact independent bilingual/image bindings, retained assessment claims."
+      ]
+    },
+    {
+      "command": "npm --prefix app exec -- tsx app/scripts/testHessePhysicsFlashcardActions.ts",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "62769a4fa49ba8ab616e5ddd5868614ac0c407a87855081f30154df19023db06",
+      "observed": [
+        "Hessen Physics flashcard actions passed 32 real course/duration/language projections.",
+        "Hessen Physics throw assessments follow the throw goal in 4 real course/duration projections."
+      ]
+    },
+    {
+      "command": "npm --prefix app run test:learner-map-unit-view",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "35dc53bebe1abdffc09d10acfd5a7f37a38a7d19abef48204f26d260cf8c479e",
+      "observed": [
+        "Learner unit map projection passed: units and goals only, unequal depth, removed clusters, merged keys, subject filter, arrows among children, declared/derived/backward order, bad after, preparation and member units.",
+        "Nested composition section and its declared learning unit share one board and the owned opening.",
+        "Hessen Physics flashcard actions passed 32 real course/duration/language projections."
+      ]
+    },
+    {
+      "command": "npm --prefix app run validate:graph",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "5a74fcb75395f8176faef0a9c05f31ab9126c54f8d2bfcd7f82e04bbf24361f8",
+      "observed": [
+        "✅ 548 landscape(s) passed validation."
+      ]
+    },
+    {
+      "command": "npm --prefix app run check:transitive-minimality",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "5688160a82949e168f843b4640c883bcd14496680157c2c896965d54152ac5d5",
+      "observed": [
+        "validation: 08a43a1b-d97e-522c-9dfa-c950a493364e: pass; 485 goals; 884 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 0900df4c-beeb-5542-86f9-bd479c94746a: pass; 6 goals; 3 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37: pass; 9 goals; 6 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 25c6b527-10d6-5d92-9d76-fab23585f29b: pass; 9 goals; 6 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 51b60137-46e8-5498-973e-ea38bb32f327: pass; 513 goals; 1142 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 605bdaf6-32d5-56fd-8d92-5a80c2fd2901: pass; 703 goals; 852 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 668cf206-941e-51f8-8704-3e8938631235: pass; 177 goals; 765 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 67bd301b-e11a-582d-94ba-4f4b1a4cefff: pass; 355 goals; 522 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 68a8ac50-f5f5-4e24-8aa9-5e408ca01ced: pass; 1311 goals; 1604 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 70a2cb55-127b-5c6e-b518-4a1c9f4f77a0: pass; 199 goals; 322 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 7d51b38c-a149-5407-bddc-d2ce7878b020: pass; 283 goals; 654 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a: pass; 1144 goals; 1650 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 8fdb83f5-b42a-5b36-ab5d-64edd4b2ab80: pass; 193 goals; 403 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 90eedebf-9ea8-5247-85dd-31c147f907c3: pass; 84 goals; 76 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 92406d94-e3c1-58ec-b7c6-12122278d25a: pass; 218 goals; 577 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: 96a915cc-4fd6-5dc2-8cee-aaf3ab8c2977: pass; 332 goals; 377 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: a0e13c56-c25f-4742-9272-3a1a603ee52e: pass; 6672 goals; 11517 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: c436b994-8f44-5134-b9f8-0c9f5d6a5ba0: pass; 743 goals; 1283 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: c8c84073-46ae-57ec-898a-882d08d7a72f: pass; 131 goals; 620 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: f145785b-0c44-5246-af66-8a153d202cb9: pass; 6 goals; 3 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches",
+        "validation: f620c251-c1e1-41c1-b4e1-b10950b43608: pass; 77 goals; 72 authored edges; 0 minimality findings; 0 non-atomic requires; 0 explicit type mismatches"
+      ]
+    },
+    {
+      "command": "app/node_modules/.bin/tsc -p app/tsconfig.app.json --noEmit",
+      "exitCode": 0,
+      "scope": "final product inputs",
+      "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "observed": []
+    },
+    {
+      "command": "npm --prefix app run validate:composition-views",
+      "exitCode": 0,
+      "scope": "post-retirement composition view bytes, identical on product revision",
+      "outputSha256": "4761ad0299a44b3c797d40a05626a83721f6eb8fc8b64aabad00d94a6af45a6e",
+      "observed": [
+        "0 error(s), 2576 warning(s).",
+        "Validated composition views: 387",
+        "Canonical landscape registry size: 21"
+      ]
+    }
+  ]
+}

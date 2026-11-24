@@ -22,7 +22,7 @@ import { fingerprintCurrentCurriculumDocument, loadCurrentCurriculumCatalog } fr
 import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
 import { assessmentReviewRevisions, UnitGraph, type UnitGraphLandscape } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
-import { checkUnitPlanningReleases, validateIndividualAssessmentOffers, validateSectionAssessmentPolicy } from './checkUnitPlanningReleases'
+import { checkUnitPlanningReleases, planningGoalDefinition, validateIndividualAssessmentOffers, validateSectionAssessmentPolicy } from './checkUnitPlanningReleases'
 
 const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
@@ -91,13 +91,23 @@ assert.equal(e1Scope.childAssessmentReview.sourceFileSha256, 'd5aafed0908cdd8131
   'The 17/20 child release is bound to its independent review; older full-score reviews concern different tasks')
 assert.equal(createHash('sha256').update(childReview).digest('hex'), e1Scope.childAssessmentReview.sourceFileSha256)
 const readRepoJson = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
-assert(checkUnitPlanningReleases().length > 0, 'The independently reviewed child pair must have a current planning release')
+// The old two-goal/v3 release remains historical. The fresh v4 review qualifies exactly
+// the owned acceleration atom through current D; it cannot release the undeclared children.
+const currentPlanningReviewPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json'
+const currentPlanningReview = readRepoJson(currentPlanningReviewPath)
+const currentPlanningActivation = readRepoJson('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/activation.receipt.json')
+assert.equal(currentPlanningReview.status, 'APPROVED_BES_ONLY_CURRENT_INPUTS')
+for (const pin of currentPlanningReview.evidencePins) {
+  assert.equal(`sha256:${createHash('sha256').update(readFileSync(resolve(root, pin.path))).digest('hex')}`, pin.sha256)
+}
+assert.deepEqual(checkUnitPlanningReleases(), ['sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d'])
+assert.equal(currentPlanningActivation.fingerprint, 'sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d')
 const materialFiles: string[] = readRepoJson('curricula/unit-learning-materials.json').materials
 const e1Contracts = materialFiles.map(path => readRepoJson(`curricula/${path}`).unit)
   .filter(unit => unit.landscapeId === canonicalLandscape.landscapeId && unit.compositionNodeId === 'physics-e1-motion')
 assert.equal(e1Contracts.length, 1)
 const contract = e1Contracts[0].assessmentContract
-assert.equal(contract.revision, '2026-11-20-e1-v2')
+assert.equal(contract.revision, '2026-11-23-e1-v3')
 const e1Material = e1Contracts[0]
 const e1Views = new Map<string, CompositionView>()
 for (const file of readdirSync(viewDirectory).filter(path => path.endsWith('.view.json'))) {
@@ -106,9 +116,29 @@ for (const file of readdirSync(viewDirectory).filter(path => path.endsWith('.vie
 }
 const sectionPolicy = e1Material.sectionAssessmentPolicy
 const multiphaseGoal = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
-assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4'])
-assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView, Object.fromEntries(
-  [...e1Views.values()].filter(view => view.scope.courseProfile === 'LK').map(view => [view.viewId, [multiphaseGoal]])))
+const freeFallSeriesGoal = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
+// Historical ZB passes must not acquire the developed edition's qualifying meaning.
+const historicalTwoMotionsGoal = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+const currentTwoMotionsGoal = 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'
+const historicalTwoMotions = canonicalById.get(historicalTwoMotionsGoal)!
+const historicalTwoMotionsFixture = readRepoJson('contracts/stage-plan-review-evidence/2026-11-24/e1-zb-assessment-identity/historical-base22.goal.json')
+assert.equal(historicalTwoMotions.extendedData?.applicabilityProjection, 'excluded')
+assert.deepEqual(historicalTwoMotions.applicability, {})
+for (const field of ['taskContent', 'taskContentEn', 'solutionContent', 'solutionContentEn', 'scoring'] as const) {
+  assert.deepEqual(historicalTwoMotions.examData?.[field], historicalTwoMotionsFixture.examData[field],
+    `historical ZB retains its authentic 22/36 ${field}`)
+}
+assert(canonicalById.get('151edbf8-eb68-5ef7-8786-43e56a281b0b')?.contains.includes(historicalTwoMotionsGoal))
+assert(!canonicalById.get('424b07df-bf66-5d7f-99f5-f28b32ad1f22')?.contains.includes(historicalTwoMotionsGoal))
+assert(canonicalById.get('424b07df-bf66-5d7f-99f5-f28b32ad1f22')?.contains.includes(currentTwoMotionsGoal))
+assert.deepEqual(canonicalById.get(currentTwoMotionsGoal)?.requires,
+  ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', 'd6dc0e02-831d-4894-a61a-852bcc74f147'])
+assert.deepEqual(canonicalById.get(currentTwoMotionsGoal)?.examData?.coveredGoalIds,
+  ['d6dc0e02-831d-4894-a61a-852bcc74f147'])
+
+assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['bcc56921-7107-5f5f-b721-3d5e0d7e1cd9', freeFallSeriesGoal])
+assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView ?? {}, {},
+  'the LK scope also has exactly the two common voluntary offers after the historical exam is retired')
 const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries.map(row => row.landscape as SkillLandscape)
 const sectionGraph = new UnitGraph(currentCatalog as UnitGraphLandscape[])
 const projectionEntries = prepareLandscapeEntries(currentCatalog)
@@ -156,53 +186,63 @@ assert.throws(() => checkSectionPolicy(sectionPolicy, { ...canonicalLandscape, g
   goal.id === contract.parts[0].goalId ? { ...goal, requires: [...goal.requires, externalExamId] } : goal) }),
   (error: Error) => error.message.includes('Required section assessments differ') && error.message.includes(externalExamId))
 // A forgotten LK exception reproduces the fifth mandatory exam separately in each real LK view.
-for (const [viewId, additional] of Object.entries(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView)) {
+for (const [viewId, additional] of Object.entries(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView ?? {})) {
   const byView = { ...sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView }
   delete byView[viewId]
   assert.throws(() => checkSectionPolicy({ ...sectionPolicy, additionalVoluntaryAssessmentGoalIdsByView: byView }),
     (error: Error) => error.message.includes(viewId) && error.message.includes(`extra [${additional}]`))
 }
-assert.throws(() => checkSectionPolicy(undefined), /Required section assessments differ.*6ea3fb3c/)
+assert.throws(() => checkSectionPolicy(undefined), new RegExp(`Required section assessments differ.*${currentTwoMotionsGoal}`))
 const absentPart = { ...contract.parts[0], goalId: 'unoffered-required-assessment' }
 const amendedParts = [...contract.parts, absentPart]
 assert.throws(() => validateSectionAssessmentPolicy({
   ...e1Material, assessmentContract: { ...contract, parts: amendedParts },
   sectionAssessmentPolicy: { ...sectionPolicy, requiredPartsFingerprint: fingerprintCurrentCurriculumDocument(amendedParts) },
 }, e1Views, sectionGraph, projectionEntries), /missing \[unoffered-required-assessment\]/)
-// A released E.2 exam is still outside this section, and the LK-only exam cannot be common to every view.
+// Out-of-section and retained assessments cannot become voluntary section offers.
 for (const extra of ['unknown-goal', contract.parts[0].goalId, '4a2bf015-052b-4af0-aed7-324259fa1a8a',
-  '22561c66-3957-5d55-b07a-25de1f359930', multiphaseGoal]) {
+  '22561c66-3957-5d55-b07a-25de1f359930', multiphaseGoal, historicalTwoMotionsGoal]) {
   assert.throws(() => checkSectionPolicy({ ...sectionPolicy, voluntaryAssessmentGoalIds: [extra] }), /released additional assessment/)
 }
 assert.throws(() => checkSectionPolicy({ ...sectionPolicy, additionalVoluntaryAssessmentGoalIdsByView: { 'outside-view': [multiphaseGoal] } }), /contract view/)
 assert.throws(() => checkSectionPolicy({ ...sectionPolicy, requiredPartsFingerprint: 'stale' }), /current unit contract/)
 assert.throws(() => checkSectionPolicy(sectionPolicy, { ...canonicalLandscape, goals: canonicalLandscape.goals.map(goal =>
-  goal.id === multiphaseGoal ? { ...goal, examData: { ...goal.examData!, reviewStatus: 'draft' } } : goal) }), /released additional assessment/)
+  goal.id === freeFallSeriesGoal ? { ...goal, examData: { ...goal.examData!, reviewStatus: 'draft' } } : goal) }), /released additional assessment/)
 
-const creditedGoalIds = [...hesseChildAssessments.values()].map(spec => spec.coverage)
-assert.deepEqual(e1Scope.childPlanningGoalIds, creditedGoalIds)
-assert.deepEqual(e1Scope.unitPlanningGoalIds, [])
 assert.equal(contract.planningCredits.length, 1)
-const [childCredit] = contract.planningCredits
-assert.equal(childCredit.release.fingerprint, 'sha256:d795236680087accef0ab60ed4d4257bbf651d83f8f2a5fc3dbbc5e28d9a96ba',
-  'Only the independently checked Hessen C+D edition may use this approval')
-assert.deepEqual(childCredit.release.review, { path: e1Scope.childAssessmentReview.sourceFile, sha256: 'sha256:' + e1Scope.childAssessmentReview.sourceFileSha256 })
-assert.deepEqual(childCredit.release.viewIds, [...e1Scope.viewIds].sort())
-assert.equal(childCredit.release.revision, e1Scope.childAssessmentScopeRevision)
-assert.equal(childCredit.release.ownerUnitId, e1Scope.childUnitId)
-assert.equal(childCredit.release.ownerRevision, e1Scope.childRevision)
-assert.deepEqual(childCredit.requiredPartIds, [...hesseChildAssessments.keys()],
-  'Only the complete child pair releases the two reviewed prerequisites')
-assert.deepEqual(childCredit.goalIds, creditedGoalIds)
-assert.deepEqual([...contract.contentGoalIds].sort(), [...creditedGoalIds, ...e1Scope.otherContentGoalIds].sort())
+const credit = contract.planningCredits[0]
+assert.deepEqual(credit.requiredPartIds, ['f13ca187-b680-5f47-b4ad-76bd474bd8a2'])
+assert.deepEqual(credit.goalIds, ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
+assert.equal(credit.orientation, undefined, 'A content witness grants no orientation or recall result')
+assert.equal(credit.release.ownerUnitId, 'physics-constant-acceleration')
+assert.equal(credit.release.ownerRevision, '2026-11-23-v4')
+assert.equal(credit.release.review.path, currentPlanningReviewPath)
+assert.deepEqual(credit.release.viewIds, contract.viewIds)
+assert.deepEqual(Object.keys(credit.release.goalDefinitions), credit.goalIds)
+assert.equal(credit.release.goalDefinitions[credit.goalIds[0]].definition,
+  planningGoalDefinition(canonicalLandscape.goals.find(goal => goal.id === credit.goalIds[0])!))
+assert.equal(credit.release.goalDefinitions[credit.goalIds[0]].profileFingerprint, currentPlanningReview.currentBinding.profileFingerprint)
+assert.deepEqual(currentPlanningReview.creditedGoalIds, credit.goalIds)
+assert.deepEqual(currentPlanningReview.uncreditedGoalIds, contract.contentGoalIds.filter((id: string) => !credit.goalIds.includes(id)))
+// Content of E.1 after the cut: the vectors (reference frames) and the traffic goal left E.1;
+// the t-v diagram, the motion laws and the fall of light and heavy bodies joined it.
+assert.deepEqual(contract.contentGoalIds, [
+  'd6dc0e02-831d-4894-a61a-852bcc74f147', 'e4b38061-1f28-43ad-8371-a3e7c0e81856', '8aff7aac-321b-5172-ac55-877876bfd2cd',
+  'f6b1d812-ce8b-5852-b417-e6c29b533c7a', '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd', 'ce431132-dfc4-42c2-aff6-bd72035190f8',
+  'bf8517a9-142b-5789-826a-767f3b277998', '09029573-864f-40ca-bf8a-cee7bf6dcb73', '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2',
+  '1e459a1b-4159-5049-84eb-9928129c1610', '262f807a-30d0-503e-986f-856cbd048e8e', 'd9a6ea85-f7e8-5cbd-afe9-62596e22040d',
+])
 assert.deepEqual(contract.viewIds, e1Scope.viewIds)
 const reviewedParts = [...hesseE1Assessments.keys(), ...hesseChildAssessments.keys()].map(goalId => {
+  if (goalId === 'f13ca187-b680-5f47-b4ad-76bd474bd8a2' && currentPlanningReview.dSuccessor) {
+    return currentPlanningReview.requiredPartBindings.find((part: { goalId: string }) => part.goalId === goalId)
+  }
   const { taskRevision, rubricRevision, fingerprint } = e1Scope.ownAssessmentRevisions[goalId] ?? e1Scope.childAssessmentRevisions[goalId]
   return { goalId, material: { taskRevision, rubricRevision, fingerprint } }
 })
 assert.deepEqual(contract.parts, reviewedParts, 'All four production receipt predicates must bind the reviewed materials')
 const child = canonicalLandscape.programUnits?.find(unit => unit.id === 'physics-constant-acceleration')
-assert(child && child.kind === 'learningUnit' && child.revision === e1Scope.childRevision)
+assert(child && child.kind === 'learningUnit' && child.revision === '2026-11-23-v4')
 assert.equal(e1Scope.childUnitId, child.id)
 assert.equal(e1Scope.childAssessmentScopeRevision, '2026-11-20-he-v2')
 for (const [id, spec] of hesseChildAssessments) {
@@ -211,8 +251,14 @@ for (const [id, spec] of hesseChildAssessments) {
   assert.equal(createHash('sha256').update(source).digest('hex'), binding.sourceFileSha256)
   assert(childReview.includes(binding.sourceFileSha256), `${id}: independent review must bind these exact bytes`)
   const native = canonicalLandscape.goals.find(goal => goal.id === id)!
-  const exam = native.examData!
-  const reviews = assessmentReviewRevisions(native)
+  const dSuccessor = spec.prefix === 'D' ? currentPlanningReview.dSuccessor : undefined
+  // Preserve the exact old Markdown/review predicate against its actual old payload.
+  // Current D is checked separately against its reviewed successor below.
+  const historicalGoal = dSuccessor
+    ? readRepoJson(dSuccessor.previousInputCapsulePath).currentParts.find((goal: { id: string }) => goal.id === id)
+    : native
+  const exam = historicalGoal.examData!
+  const reviews = assessmentReviewRevisions(historicalGoal)
   assert.equal(binding.historicalAssessmentGoalId, spec.historical)
   assert.equal(binding.taskRevision, reviews.taskRevision)
   assert.equal(binding.rubricRevision, reviews.rubricRevision)
@@ -222,19 +268,19 @@ for (const [id, spec] of hesseChildAssessments) {
   })
   assert.equal(binding.fingerprint, `sha256:${createHash('sha256').update(fingerprint).digest('hex')}`)
   assert.deepEqual(native.applicability?.jurisdiction, ['DE-HE'])
-  assert.deepEqual(native.requires, [spec.coverage])
+  // Since the E.1 cut the acceleration log requires the motion laws; the vertical throw
+  // still requires the narrowed modelling goal and closes child unit 3, which is not declared.
+  const closesChildUnitTwo = spec.prefix === 'D'
+  assert.deepEqual(native.requires, closesChildUnitTwo ? ['262f807a-30d0-503e-986f-856cbd048e8e'] : [spec.coverage])
   assert.deepEqual(exam.coveredGoalIds, [spec.coverage])
   assert.deepEqual(binding.planningGoalIds, [spec.coverage])
   assert.equal(binding.coverageReview, e1Scope.childAssessmentReview.sourceFile)
-  assert.deepEqual(childCredit.release.goalDefinitions[spec.coverage], {
-    definition: spec.definition, profileFingerprint: spec.evidenceProfile,
-  }, 'The review covers this exact goal definition and its performance and transfer expectations')
   for (const ownId of [spec.coverage, spec.historical]) {
     const owners = canonicalLandscape.goalPlacements?.filter(row => row.goalId === ownId && row.relation === 'own')
-    assert.deepEqual(owners?.map(row => row.unitId), [child.id])
+    assert.deepEqual(owners?.map(row => row.unitId), closesChildUnitTwo ? [child.id] : [])
   }
   const originalReview = child.coverageReviews?.find(row => row.assessmentGoalId === spec.historical)
-  assert.deepEqual(originalReview?.goalIds, [spec.coverage])
+  assert.deepEqual(originalReview?.goalIds, closesChildUnitTwo ? [spec.coverage] : undefined)
   const de = source.split(`\n## ${spec.section}\n`)[1].split('\n## ')[0]
   const en = source.split(`\n## ${spec.section}-en\n`)[1]
   const read = (content: string, task: string, solution: string, rubric: string, notes: string) => {
@@ -255,12 +301,30 @@ for (const [id, spec] of hesseChildAssessments) {
   })) })
   assert(exam.scoring.steps.every(step => step.description.length <= 2000))
   assert.equal(exam.reviewStatus, 'released')
+  if (dSuccessor) {
+    const currentSource = readRepoJson(dSuccessor.currentInputCapsulePath).currentParts
+      .find((goal: { id: string }) => goal.id === id)
+    assert.deepEqual(native.examData, currentSource.examData)
+    assert.deepEqual(native.requires, currentSource.requires)
+    assert.deepEqual(native.examData?.coveredGoalIds, [spec.coverage])
+    const liveRevisions = assessmentReviewRevisions(native)
+    const livePart = contract.parts.find((part: { goalId: string }) => part.goalId === id)
+    assert.equal(livePart.material.taskRevision, liveRevisions.taskRevision)
+    assert.equal(livePart.material.rubricRevision, liveRevisions.rubricRevision)
+    assert.deepEqual(native.examData?.scoring?.steps.map(step => ({ id: step.id, points: step.points })),
+      exam.scoring.steps.map((step: { id: string; points: number }) => ({ id: step.id, points: step.points })))
+    assert.equal(native.examData?.scoring?.passingPoints, 17)
+    assert.equal(native.examData?.scoring?.maxPoints, 20)
+    assert.equal(child.coverageReviews?.find(row => row.assessmentGoalId === id)?.reference, currentPlanningReviewPath)
+  }
 }
+// The four E.1 child units of the cut accepted on 23 Nov 2026, each with its closing checks.
 const hesseIntroductoryAssessmentPlaces = {
-  'physics-e1-motion': [
-    '2b9e565f-d9b4-5e23-b5b7-b7977cecff06', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4', 'c933b7d2-edcb-5747-9378-9762659f260a',
-    ...hesseE1Assessments.keys(),
-  ],
+  'physics-e1-motion': [],
+  'physics-e1-uniform-motion': ['ee7d5f3d-858f-59d6-89b0-e5a7f437f458'],
+  'physics-e1-accelerated-and-free-fall': ['f41e4e30-794e-5ce4-ba5e-cc72712cd691'],
+  'physics-e1-air-and-vacuum': ['c933b7d2-edcb-5747-9378-9762659f260a'],
+  'physics-e1-two-motions': ['39f52dcb-ff1d-5cad-9ccb-30da803cfa85', 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'],
   'physics-e2-newton-and-conservation': [
     '22561c66-3957-5d55-b07a-25de1f359930', '72649cf5-893c-5f03-88bd-a2497171d434', 'be6d4895-65ab-545b-8df9-84e5a308a5e3',
   ],
@@ -293,7 +357,7 @@ const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
 const fermiAssessmentId = '71e8936b-fa8a-50dc-8c47-fca015b85ac5'
 const kinematicsAssessments = [
   { id: 'c5807a37-129e-5df6-8989-482bc7f5683e', maxPoints: 24 },
-  { id: '6ea3fb3c-abdc-568f-ab13-97c36dc274e4', maxPoints: 36 },
+  { id: 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9', maxPoints: 36 },
 ]
 const retainedVerticalAssessmentId = '4ab1cf6d-b808-5b86-9291-85df0b9f2496'
 assert.equal(canonicalById.get(retainedVerticalAssessmentId)?.extendedData?.applicabilityProjection, 'excluded')
@@ -459,6 +523,8 @@ const counts = () => ({ viewCount, fermiScopeViewCount, practiceTaskPairs, abitu
   kinematicsTaskPairs, astronomyTaskPairs })
 const newDurationCounts = Object.fromEntries(Object.keys(counts()).map(key => [key, 0])) as ReturnType<typeof counts>
 const newLandCounts = { ...newDurationCounts }
+const precedingMultiphaseOffers = new Set<string>(readRepoJson('curricula/DE/Gymnasium/quality/assessment-review/physik/e1-multiphase-disposition-20261124/old-offer-views.actual.json').previousVisibleViewIds)
+assert.equal(precedingMultiphaseOffers.size, 32)
 const jurisdictions = new Set<string>()
 for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith('.view.json')).sort()) {
   const view = JSON.parse(readFileSync(resolve(viewDirectory, filename), 'utf8')) as CompositionView
@@ -537,6 +603,10 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     `${view.viewId}: the Fermi assessment must follow exactly its competency's target scope`,
   )
   fermiScopeViewCount++
+  assert(!visible.has('2b9e565f-d9b4-5e23-b5b7-b7977cecff06'),
+    `${view.viewId}: the retired 18/30 exam must stay outside learning offers`)
+  assert(!visible.has(historicalTwoMotionsGoal),
+    `${view.viewId}: historical ZB must not become a current learning offer`)
   assert(!visible.has(retainedVerticalAssessmentId),
     `${view.viewId}: the retained mixed task must not become an active assessment target`)
   astronomyTaskPairs += assertAstronomyTargetVisibility(view, visible)
@@ -694,7 +764,13 @@ assertCount('fermiScopeViewCount', 69, 6, 'Check exact Fermi assessment target v
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
 assertCount('kinematicsTaskPairs', 120, 8, 'Both reviewed kinematics assessments must appear in all shared GK/LK exercise views.')
 assertCount('astronomyTaskPairs', 136, 8, 'Every existing ordinary astronomy demand needs its applicable task across all views.')
-assertCount('practiceTaskPairs', 4278, 320,
+// The historical inventory has one withdrawn assessment in 30 original and two
+// additional duration views. Keep all other practice-task obligations pinned.
+const retiredHesseDurationPairs = [...precedingMultiphaseOffers].filter(id => newHesseDurationViewIds.has(id)).length
+assert.equal(retiredHesseDurationPairs, 2)
+const retiredOriginalPairs = precedingMultiphaseOffers.size - retiredHesseDurationPairs
+assert.equal(retiredOriginalPairs, 30)
+assertCount('practiceTaskPairs', 4278 - retiredOriginalPairs, 320 - retiredHesseDurationPairs,
   'Expose every current canonical collection obligation, including the new individual and nested assessments.')
 assertCount('abiturTaskPairs', 480, 32, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
 assertCount('preservedSekITaskPairs', 30, 0, 'Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements.')

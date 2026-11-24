@@ -1,5 +1,5 @@
 :::titlebox {title="Scope of this edition"}
-**As of 19 November 2026.** The recognition rule confirmed on 4 and 11 November remains in force. It determines how learner outcomes and validly recognized skills affect the next learning goals and completion. Sections~@ref{sec:state}, @ref{sec:unit-completion} and~@ref{sec:assessment} give the formulas. Appendix~@ref{sec:implementation} reports implementation status.
+**As of 24 November 2026.** The recognition rule confirmed on 4 and 11 November remains in force. It determines how learner outcomes and validly recognized skills affect the next learning goals and completion. Sections~@ref{sec:state}, @ref{sec:unit-completion} and~@ref{sec:assessment} give the formulas. Appendix~@ref{sec:implementation} reports implementation status.
 
 **Proposal for expert review, 19 November.** A passed unit could support an overall judgement at the stated level. The unit could release its own content goals for subsequent planning when supported by reviewed evidence. The separately marked Sections~@ref{sec:proposal-unit-completion} and~@ref{sec:proposal-unit-assessment} present this proposal for discussion.
 :::

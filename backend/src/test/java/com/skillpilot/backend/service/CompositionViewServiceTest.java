@@ -1746,19 +1746,26 @@ class CompositionViewServiceTest {
                 "GK", List.of("abe032d3-97dd-5eaf-964e-0439cea27ac2", "f4eac786-a8e1-5f23-aedf-17bc70fc347f"),
                 "LK", List.of("ed3a6f6b-2ca3-51c2-8f00-58e11eb02401", "320732e8-1c44-5fa4-9a47-972243cfc32a"));
         String previousEPhaseCollection = "424b07df-bf66-5d7f-99f5-f28b32ad1f22";
-        Map<String, List<String>> ePhaseAssessmentPlacements = Map.of(
-                "physics-e1-motion", List.of(
-                        "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
-                        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
-                        "ee7d5f3d-858f-59d6-89b0-e5a7f437f458", // A: wagon
-                        "39f52dcb-ff1d-5cad-9ccb-30da803cfa85", // B: horizontal throw
+        // E.1 cut (23 Nov 2026): E.1 groups its targets in four child units, each with its closing
+        // checks. No historical or unactivated multiphase task is offered in E.1;
+        // reference frames and the velocity-vector goal remain in E.3.
+        Map<String, List<String>> ePhaseAssessmentPlacements = new java.util.LinkedHashMap<>(Map.of(
+                "physics-e1-uniform-motion", List.of(
+                        "ee7d5f3d-858f-59d6-89b0-e5a7f437f458"), // A: wagon
+                "physics-e1-accelerated-and-free-fall", List.of(
+                        "f41e4e30-794e-5ce4-ba5e-cc72712cd691"), // voluntary: two free-fall series
+                "physics-e1-air-and-vacuum", List.of(
                         "c933b7d2-edcb-5747-9378-9762659f260a"), // C: vertical throw
+                "physics-e1-two-motions", List.of(
+                        "39f52dcb-ff1d-5cad-9ccb-30da803cfa85", // B: horizontal throw
+                        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"))); // voluntary: two motions, one time
+        ePhaseAssessmentPlacements.putAll(Map.of(
                 "physics-e2-newton-and-conservation", List.of(
                         "22561c66-3957-5d55-b07a-25de1f359930",
                         "72649cf5-893c-5f03-88bd-a2497171d434",
                         "be6d4895-65ab-545b-8df9-84e5a308a5e3"),
-                "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49",
-                        List.of("8320bb17-e6ab-50ea-a965-aa331bfd33e1"), // E.3
+                "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49", List.of( // E.3
+                        "8320bb17-e6ab-50ea-a965-aa331bfd33e1"),
                 "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9",
                         List.of("dd99528a-bae5-5b78-89e6-c6092c927f8d"), // E.4
                 "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089", List.of( // E.5
@@ -1773,7 +1780,7 @@ class CompositionViewServiceTest {
                         "a9562b05-c54d-5635-9244-3f7dd24a8642", // Bewegungsanalyse und freier Fall
                         "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
                         "879491c0-7153-570b-91f4-c61d9fe8a143",
-                        "7c0b94b9-2af7-59d4-bfae-278a3418f6a8"));
+                        "7c0b94b9-2af7-59d4-bfae-278a3418f6a8")));
         for (String durationModel : List.of("G8", "G9")) {
             for (String profile : List.of("GK", "LK", "GK+LK")) {
                 String context = "Hessen Physics " + durationModel + " " + profile;
@@ -1833,7 +1840,7 @@ class CompositionViewServiceTest {
                         .filter(node -> "physics-e-phase".equals(node.get("id"))).findFirst().orElseThrow();
                 List<Map<String, Object>> phaseChildren = (List<Map<String, Object>>) ePhase.get("children");
                 ePhaseAssessmentPlacements.forEach((parentId, assessmentIds) -> {
-                    Map<String, Object> parent = phaseChildren.stream()
+                    Map<String, Object> parent = flattenCompositionNodes(phaseChildren).stream()
                             .filter(node -> parentId.equals(node.get("id"))).findFirst().orElseThrow();
                     List<Map<String, Object>> entries = (List<Map<String, Object>>) parent.get("children");
                     for (String assessmentId : assessmentIds) {
@@ -1846,11 +1853,19 @@ class CompositionViewServiceTest {
                                 .filteredOn(node -> assessmentId.equals(node.get("goalId"))).hasSize(1);
                     }
                 });
-                // In the reviewed Hessian edition C is visible on the E.1 board. D is on its acceleration board.
+                // In the reviewed Hessian edition C is on the board of E.1 child unit 3. D is on the acceleration board.
                 String accelerationProtocol = "f13ca187-b680-5f47-b4ad-76bd474bd8a2";
                 Map<String, Object> motion = phaseChildren.stream()
                         .filter(node -> "physics-e1-motion".equals(node.get("id"))).findFirst().orElseThrow();
                 List<Map<String, Object>> motionChildren = (List<Map<String, Object>>) motion.get("children");
+                assertThat(motionChildren.stream().filter(node -> "structure".equals(node.get("kind")))
+                        .map(node -> String.valueOf(node.getOrDefault("id", node.get("goalId")))).toList())
+                        .as(context + " four E.1 children without a multiphase offering")
+                        .containsExactly("physics-e1-uniform-motion", "physics-e1-accelerated-and-free-fall",
+                                "physics-e1-air-and-vacuum", "physics-e1-two-motions");
+                assertThat(allNodes).as(context + " neither historical nor unactivated MP is offered")
+                        .noneMatch(node -> "2b9e565f-d9b4-5e23-b5b7-b7977cecff06".equals(node.get("goalId"))
+                                || "05cfd298-cb80-54c4-a898-b521ef270843".equals(node.get("goalId")));
                 assertThat(motionChildren).as(context + " acceleration board in E.1")
                         .filteredOn(node -> "physics-e1-accelerated-and-free-fall".equals(node.get("id")))
                         .singleElement().satisfies(board -> assertThat((List<Map<String, Object>>) board.get("children"))

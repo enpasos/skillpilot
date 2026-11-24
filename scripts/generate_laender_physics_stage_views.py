@@ -28,7 +28,7 @@ BY_EXTRACTION = "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_
 BY_MAPPING = "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json"
 SOURCE_PINS = {
     BY_EXTRACTION: "c6771966752d0bb257e1a0fcef7290b92f5eb60534c03458685f2dfc14f32ee7",
-    BY_MAPPING: "adadff796d92577fa02099f3cd5af8b3dd569ee66aa2792cbd2eff3fc95fceb2",
+    BY_MAPPING: "94c8d020a35f4278a6095cfa66e1e482d85c1a1953a340dab721d1f63c1ea0e8",
 }
 SOURCE_PINS.update(SOURCE_PLAN["retainedSourcePins"])
 

@@ -32,7 +32,9 @@ assert.deepEqual(lens.examData!.coveredGoalIds, ['84ddb244-e560-592f-9d43-e84c80
 const offers: Array<[string, string[]]> = [
   [actualIds[4], ['DE-MV', 'DE-SL']], [actualIds[5], ['DE-SN']], [actualIds[6], ['DE-HH']],
   [actualIds[7], ['DE-SN', 'DE-ST', 'DE-TH']], [actualIds[8], ['DE-HH']],
-  [actualIds[9], ['DE-SL', 'DE-SN']], [actualIds[10], ['DE-MV']], [actualIds[11], ['DE-SN']],
+  [actualIds[9], ['DE-SL', 'DE-SN']], [actualIds[10], ['DE-MV']],
+  // Lane 11 independently activated FFX as a voluntary HE E.1 offer while retaining SN J9.
+  [actualIds[11], ['DE-HE', 'DE-SN']],
   [actualIds[12], ['DE-SL', 'DE-SN']],
 ]
 for (const [id, jurisdictions] of offers) {

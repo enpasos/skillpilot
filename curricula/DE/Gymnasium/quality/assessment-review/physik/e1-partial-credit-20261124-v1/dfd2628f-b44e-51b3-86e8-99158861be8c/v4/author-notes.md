@@ -1,0 +1,11 @@
+# DFD codex-v4 nach engem V3-Revisionsbefund
+
+V1–V3 unverändert. Neue begrenzte Präzisierung des R-Falls: Je Geschwindigkeit1BE für kohärent richtige Modellanwendung mit Ergebnis,0,5 für intakten Kern mit lokalem Ausführungsfehler oder einen richtigen isolierten Wert ohne gezeigten Ansatz und ohne ausdrücklichen Kernwiderspruch,0 bei ausdrücklich begründetem/aufrechterhaltenem falschem Modell auch bei zufällig richtiger Zahl. Ein richtiger Modellbeleg kann überall stehen. Eine einzelne verdrehte Formel darf bei sonst klarem richtigem Verständnis als Schreibschnitzer zählen; dafür wird keine anlasslose Fehlvorstellung diagnostiziert.
+
+Die Review-Grenzarbeit sR=v/tR mit ausdrücklich behaupteter falscher Zeitabhängigkeit erhält im50er-Fall0; der richtige100er-Fall1 und S/J/L bleiben vollständig.15 liegt unter15,5. Die Dimensionswidrigkeit ist derselbe Modellfehler, kein zweiter Abzug. Damit wird die numerische Zufallskoinzidenz bei1s nicht zum Modellnachweis.
+
+Das gleiche transparente Fallprinzip gilt bei S für einen eigenständigen ausdrücklich falschen Zusammensetzungsansatz. Ein vorher inR belasteter Wert- oder Modellfehler wird aber nicht nochmals in einer korrekt gebildeten Summe bestraft. Die zusätzliche vollständige S-Grenzarbeit hält ausdrücklich eine physikalische Subtraktionsregel aufrecht und trägt trotzdem die richtige Endzahl ein; nur dieser betroffeneS-Fall0, alle anderen richtigen Leistungen bleiben.15.
+
+Ein ausdrücklich fortbestehender J-Kernwiderspruch wird ebenfalls nicht durch abgeschriebene richtige Zahlen geheilt; die bereits geprüfte Teilargumentstufe bleibt höchstens1. Gleichwertige kohärente numerische/verbale2/4-Beweise behalten volle3, ohne Dreifachzwang. Eine vollständige Autorprobe zeigt die klare Kontrastgruppe zu einem echten lokalen R-Rechenfehler mit korrektem Zeitmodell:15,5, während der folgerichtige S-Wert volle Punkte behält.
+
+AufgabeA8/B8, Max16, Summschwelle15,5, IDs, direkte Verkehrs-Kompetenz, Voraussetzungen und Platzierungen bleiben. A-Kriterien einschließlich1,5/2 für einen echten Syntheseschnitzer und2,5/3 für einen echten J-Schnitzer unverändert. Hauptabgaben bytegleich mit15,5/13. Komplette Grenzarbeiten und neue vollständige Einzelbenotungen separat; keine Aktivierung, Teständerung, unabhängige Autorenfreigabe oder Planungs-/Ergebnisübertragung.

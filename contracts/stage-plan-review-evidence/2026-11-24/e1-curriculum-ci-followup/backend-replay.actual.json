@@ -1,0 +1,2325 @@
+{
+  "scope": "Nested E.1 assessment identity, accepted planning release and original 24 release-bound verification cases. Historical raw mastery and both historical editions were exercised in the native H2 integration.",
+  "finding": "The initial broad test measured the normal personal curriculum after deliberately leaving the assessment, but compared it with the four E.1 parts. A first correction erroneously expected a null public profile on exit. An independently executed single native GK case measured the stored workflow, public personal profile and re-entry. The final test checks the normal return and reselects the same explicit E.1 assignment before rechecking its unchanged four parts and D-only planning credit.",
+  "runs": [
+    {
+      "purpose": "Final activated distinct ZB identity: whole changed backend classes, original mandatory24, actual SekI seed fixture, authentic history anti-transfer, unchanged required parts/planning.",
+      "startedAt": "2026-11-24T10:29:01.661293+00:00",
+      "finishedAt": "2026-11-24T10:45:27.098783+00:00",
+      "headBefore": "fcc57183dab253f812ee0688d45001327b33a9d9",
+      "headAfter": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+      "canonicalPhysicsAfter": "e795626b9d2577141089cb2c592544828d8015204f3461921b481bd7c32afea8",
+      "command": [
+        "./gradlew",
+        "test",
+        "--rerun",
+        "--tests",
+        "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+        "--tests",
+        "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+        "--tests",
+        "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+        "--tests",
+        "com.skillpilot.backend.service.CompositionViewServiceTest",
+        "--tests",
+        "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+        "--tests",
+        "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+        "--tests",
+        "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals",
+        "--init-script",
+        "/tmp/e1-pr186-ci-20261124/zb-successor-final/native-test-events.init.gradle",
+        "--no-daemon",
+        "--console=plain",
+        "--max-workers=2",
+        "--no-build-cache",
+        "-PbackendTestForks=1"
+      ],
+      "cwd": "backend",
+      "exitCode": 1,
+      "log": {
+        "path": "gradle.log",
+        "sha256": "963e640411edb12c4dc4c8c7bfc53ea871b973940e6cfca50d0bc4321068f4b3",
+        "bytes": 89231
+      },
+      "junitReports": [
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.completion.AssessmentMaterialRevisionTest.xml",
+            "sha256": "d8bec3a895f95065d1f1115e3bebfed748037b0080261406f8fddc73bf98b60e",
+            "bytes": 868
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.completion.AssessmentMaterialRevisionTest.xml",
+            "sha256": "5b75b7129947d327ed612479913344723c9591c19bea8135a252154475b38a87",
+            "bytes": 880
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.completion.UnitAssessmentContractTest.xml",
+            "sha256": "a3ac6e9a733cc49a12aa0fc6a883da9e6106cb42ed26d4527d4730963e8f47a4",
+            "bytes": 706
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.completion.UnitAssessmentContractTest.xml",
+            "sha256": "550d2011ec99d15267e3389177c4488f6b8206ebd2ede49f991ae52913d35c12",
+            "bytes": 717
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.completion.UnitPlanningReleaseTest.xml",
+            "sha256": "df85b9590cbe32746650335111ec801c380e27624a34a82308d52cd8d2544b04",
+            "bytes": 866
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.completion.UnitPlanningReleaseTest.xml",
+            "sha256": "a1ead010189535a2a092dfc0450aa3e32e979cb1f581d65d932a1ca38ab3aa00",
+            "bytes": 878
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "tests": 111,
+          "failures": 6,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+            "sha256": "1a814120c5467e9101767978909733ffca4ab155b55557cd13618f854a6c246f",
+            "bytes": 118496498
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+            "sha256": "318e95635b47ba49fe8d160470542b68b291d76cc046cda7f7acd3428bcc8f4e",
+            "bytes": 26304
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+            "sha256": "45dbc8489d326bc7cd65a74fd5ad81341e080f38903208200d9d7e7c6cdf9b36",
+            "bytes": 10369409
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+            "sha256": "c385d6804e33eb3ffad47a917bed61208f7711536634bfd8e1a8568c5fc2397b",
+            "bytes": 553
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "tests": 70,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml",
+            "sha256": "f2043032cd5ce3dcfedd960a7b2b0ef2baaac46a40180e0b3ece777c5ebfb97f",
+            "bytes": 12693
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml",
+            "sha256": "e524b548e376de6483226545296e890176dcfd1f3022b26695ef644db585a8da",
+            "bytes": 12772
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "tests": 16,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.service.ExamLearningScopeIntegrationTest.xml",
+            "sha256": "73207674fad022d92a36bc24b2bf219c2a272e2a3e9d42b6e5faa6e01630b34f",
+            "bytes": 4212628
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.service.ExamLearningScopeIntegrationTest.xml",
+            "sha256": "5ccb4d7b00133132ab446c2add4dfbf853f671f53f3a92b267101bfe1ef97d30",
+            "bytes": 3369
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "tests": 9,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.service.UnitLearningMaterialServiceTest.xml",
+            "sha256": "2686f0104cbd8238703fdaefaec16b9f6c1e7de911a9f5f8875c92f144133950",
+            "bytes": 2014
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.service.UnitLearningMaterialServiceTest.xml",
+            "sha256": "caef93241d55a0b1dcefb37897c231bb2ce786e639f52bfd46583ff17e1c09f2",
+            "bytes": 2032
+          }
+        }
+      ],
+      "totals": {
+        "classes": 8,
+        "cases": 215,
+        "passed": 209,
+        "failed": 6,
+        "skipped": 0
+      },
+      "nativeEventCount": 215,
+      "nativeEventSha256": "c038644a52b1c8048b8d9125381749e5034b85561863c8911322764e8a243c52",
+      "testCases": [
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "name": "translationsAndAdditionalRubricFieldsArePartOfTheGradedMaterial()",
+          "status": "PASS",
+          "timeSeconds": 0.134
+        },
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "name": "allPhysicsChildExamEditionsBindToTheirPublishedCoverageReviews()",
+          "status": "PASS",
+          "timeSeconds": 0.066
+        },
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "name": "evaluationMustMatchTheMaterialThatTheCoachUses()",
+          "status": "PASS",
+          "timeSeconds": 0.008
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+          "name": "usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts()",
+          "status": "PASS",
+          "timeSeconds": 0.357
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+          "name": "oneAssessmentCanProveAUnitWithoutGrantingAnyPlanningCredit()",
+          "status": "PASS",
+          "timeSeconds": 0.001
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "name": "planningCreditRequiresItsReviewedOwnWitnessAndCurrentCoverage()",
+          "status": "PASS",
+          "timeSeconds": 0.334
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "name": "absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial()",
+          "status": "PASS",
+          "timeSeconds": 0.022
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "name": "matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews()",
+          "status": "PASS",
+          "timeSeconds": 0.087
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "aPausedCompletedAssignmentRetainsOpenGoalsAndASeparateResultStaysMastered()",
+          "status": "PASS",
+          "timeSeconds": 23.92
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "failedAssessmentRetryAndConfirmedMasteryUseFreshCapabilitiesAndOneBinaryResult()",
+          "status": "PASS",
+          "timeSeconds": 5.057
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 18.382
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 17.894
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 17.617
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 16.988
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", stage = \"CrossStage\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 18.778
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", stage = \"CrossStage\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 17.787
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", stage = \"SekII\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 17.669
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", stage = \"SekII\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 17.456
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G8\", stage = \"SekII\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 17.527
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[6] duration = \"G9\", stage = \"SekII\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 18.946
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery()",
+          "status": "PASS",
+          "timeSeconds": 9.595
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "ordinaryCoachSessionOffersAndStartsTheExamWithoutPriorSectionSelection()",
+          "status": "PASS",
+          "timeSeconds": 1.939
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "changingDurationInTheSharedSekIIViewNeedsANewAssignmentChoice()",
+          "status": "PASS",
+          "timeSeconds": 2.873
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "explicitChildEntryKeepsItsUnitAfterCompletionAndANewCoachSessionWithoutCompletingTheParent()",
+          "status": "PASS",
+          "timeSeconds": 3.192
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", strict = \"false\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+          "status": "PASS",
+          "timeSeconds": 21.185
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", strict = \"false\", requested = \"971beafa-6ba5-4c82-ac8b-7ebf66eec3dd\"",
+          "status": "PASS",
+          "timeSeconds": 21.395
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G9\", strict = \"true\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+          "status": "PASS",
+          "timeSeconds": 23.579
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", course = \"GK\", sectionOrder = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 2.499
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", course = \"GK\", sectionOrder = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 2.304
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", course = \"LK\", sectionOrder = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 2.403
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", course = \"LK\", sectionOrder = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 2.47
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G8\", course = \"GK\", sectionOrder = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.478
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[6] duration = \"G9\", course = \"GK\", sectionOrder = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.381
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[7] duration = \"G8\", course = \"LK\", sectionOrder = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.358
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[8] duration = \"G9\", course = \"LK\", sectionOrder = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.397
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 15.848
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 15.059
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "guidedUnitOpeningSurvivesAResumedCoachSessionAndItsConfirmationResumesTheChosenGoal()",
+          "status": "PASS",
+          "timeSeconds": 3.046
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "aDirectAssessmentNeedsNoOpeningAndAbandoningItReturnsToTheStillOpenUnitEntry()",
+          "status": "PASS",
+          "timeSeconds": 1.896
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G8\", \"0\" part passes, separate order = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.857
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G8\", \"2\" part passes, separate order = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 7.8
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G8\", \"4\" part passes, separate order = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 16.343
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G8\", \"0\" part passes, separate order = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 3.587
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G8\", \"2\" part passes, separate order = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 9.475
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G8\", \"4\" part passes, separate order = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 15.763
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G9\", \"0\" part passes, separate order = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.696
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G9\", \"2\" part passes, separate order = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 8.092
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G9\", \"4\" part passes, separate order = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 14.952
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G9\", \"0\" part passes, separate order = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 3.104
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G9\", \"2\" part passes, separate order = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 8.571
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "\"G9\", \"4\" part passes, separate order = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 13.382
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] course = \"GK\", edition = \"ORIGINAL22\"",
+          "status": "FAIL",
+          "timeSeconds": 17.009
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] course = \"LK\", edition = \"ORIGINAL22\"",
+          "status": "FAIL",
+          "timeSeconds": 18.643
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] course = \"GK\", edition = \"PREVIOUS36\"",
+          "status": "FAIL",
+          "timeSeconds": 16.537
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] course = \"LK\", edition = \"PREVIOUS36\"",
+          "status": "FAIL",
+          "timeSeconds": 17.845
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] course = \"GK\", edition = \"RAW_ONLY\"",
+          "status": "FAIL",
+          "timeSeconds": 17.526
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[6] course = \"LK\", edition = \"RAW_ONLY\"",
+          "status": "FAIL",
+          "timeSeconds": 17.149
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 4.863
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 5.133
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", course = \"GK\", language = \"de\"",
+          "status": "PASS",
+          "timeSeconds": 1.817
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", course = \"GK\", language = \"de\"",
+          "status": "PASS",
+          "timeSeconds": 1.803
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", course = \"LK\", language = \"de\"",
+          "status": "PASS",
+          "timeSeconds": 1.87
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", course = \"LK\", language = \"de\"",
+          "status": "PASS",
+          "timeSeconds": 1.78
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G8\", course = \"GK\", language = \"en\"",
+          "status": "PASS",
+          "timeSeconds": 1.672
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[6] duration = \"G9\", course = \"GK\", language = \"en\"",
+          "status": "PASS",
+          "timeSeconds": 1.658
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[7] duration = \"G8\", course = \"LK\", language = \"en\"",
+          "status": "PASS",
+          "timeSeconds": 1.744
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[8] duration = \"G9\", course = \"LK\", language = \"en\"",
+          "status": "PASS",
+          "timeSeconds": 1.755
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 3.68
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 4.058
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 4.304
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 3.891
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G9\", course = \"GK+LK\"",
+          "status": "PASS",
+          "timeSeconds": 5.256
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", sectionFirst = \"true\", additionalSection = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.387
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", sectionFirst = \"true\", additionalSection = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.287
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", sectionFirst = \"false\", additionalSection = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 1.317
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", sectionFirst = \"false\", additionalSection = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 1.212
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G9\", sectionFirst = \"true\", additionalSection = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 2.098
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "leavingTheRouteInTheCockpitInvalidatesAlreadyIssuedExamAndRouteCapabilities()",
+          "status": "PASS",
+          "timeSeconds": 2.825
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] language = \"de\"",
+          "status": "PASS",
+          "timeSeconds": 2.147
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] language = \"en\"",
+          "status": "PASS",
+          "timeSeconds": 2.052
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "oldSectionCaptureWithOnlyTheOptionalAssessmentFinishesWithoutAcceptingAnEmptyNewPlan()",
+          "status": "PASS",
+          "timeSeconds": 2.061
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "aFreshSessionWithALegacyOptOutCanUseAnOfferedAssessment()",
+          "status": "PASS",
+          "timeSeconds": 0.688
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", strict = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 6.801
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", strict = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 6.863
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] course = \"GK\", duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 4.38
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] course = \"LK\", duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 4.569
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] storedIdentity = \"OLD_ID\"",
+          "status": "PASS",
+          "timeSeconds": 14.511
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] storedIdentity = \"LEGACY_ID\"",
+          "status": "PASS",
+          "timeSeconds": 14.933
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 3.162
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 3.323
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "draftSupplementaryAssessmentCannotExemptASectionOrDisappearFromItsPlan()",
+          "status": "PASS",
+          "timeSeconds": 1.283
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "anObsoleteOrdinarySessionKeepsTeachingAndOffersOnlyTheReadOnlyCockpitHandoff()",
+          "status": "PASS",
+          "timeSeconds": 0.857
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] locale = \"de\"",
+          "status": "PASS",
+          "timeSeconds": 1.509
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] locale = \"en\"",
+          "status": "PASS",
+          "timeSeconds": 1.576
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 1.728
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 1.54
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 1.45
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 1.601
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", stage = \"SekII\", course = \"GK\", expected = \"20\"",
+          "status": "PASS",
+          "timeSeconds": 2.103
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", stage = \"SekII\", course = \"GK\", expected = \"20\"",
+          "status": "PASS",
+          "timeSeconds": 1.852
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", stage = \"CrossStage\", course = \"GK\", expected = \"19\"",
+          "status": "PASS",
+          "timeSeconds": 2.058
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", stage = \"CrossStage\", course = \"GK\", expected = \"19\"",
+          "status": "PASS",
+          "timeSeconds": 1.943
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G8\", stage = \"SekII\", course = \"LK\", expected = \"20\"",
+          "status": "PASS",
+          "timeSeconds": 1.906
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[6] duration = \"G9\", stage = \"SekII\", course = \"LK\", expected = \"20\"",
+          "status": "PASS",
+          "timeSeconds": 1.919
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[7] duration = \"G8\", stage = \"CrossStage\", course = \"LK\", expected = \"19\"",
+          "status": "PASS",
+          "timeSeconds": 2.116
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[8] duration = \"G9\", stage = \"CrossStage\", course = \"LK\", expected = \"19\"",
+          "status": "PASS",
+          "timeSeconds": 1.856
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", course = \"GK\", parentFocus = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 5.297
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", course = \"GK+LK\", parentFocus = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 2.862
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "twoCompletedAssignmentsAndTheirOptionalAssessmentsRemainSelectableAcrossPages()",
+          "status": "PASS",
+          "timeSeconds": 33.703
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "currentHistoricalPassesCanCompleteALaterOrderWithoutIndividualPlanningCredits()",
+          "status": "PASS",
+          "timeSeconds": 8.051
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 18.998
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 18.26
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "two subjects, unit \"active\", future math plan \"false\", use generic resume \"false\"",
+          "status": "PASS",
+          "timeSeconds": 3.757
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "two subjects, unit \"completed\", future math plan \"false\", use generic resume \"false\"",
+          "status": "PASS",
+          "timeSeconds": 14.634
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "two subjects, unit \"unavailable\", future math plan \"false\", use generic resume \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.981
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "two subjects, unit \"active\", future math plan \"true\", use generic resume \"false\"",
+          "status": "PASS",
+          "timeSeconds": 3.692
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "two subjects, unit \"completed\", future math plan \"true\", use generic resume \"false\"",
+          "status": "PASS",
+          "timeSeconds": 14.356
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "two subjects, unit \"unavailable\", future math plan \"true\", use generic resume \"false\"",
+          "status": "PASS",
+          "timeSeconds": 2.958
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "two subjects, unit \"unavailable\", future math plan \"true\", use generic resume \"true\"",
+          "status": "PASS",
+          "timeSeconds": 2.992
+        },
+        {
+          "className": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "name": "learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals()",
+          "status": "PASS",
+          "timeSeconds": 33.301
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "learnerScopeRejectsUnrelatedExtraDimensionsInsteadOfUsingRepositorySubsetMatching()",
+          "status": "PASS",
+          "timeSeconds": 0.499
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersHeSpecificCrossStagePhysicsViewOverDeWideFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.223
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_rejectsUnsupportedProjectionRole(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.017
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_fallsBackFromCombinedCourseProfileToLkCrossStageView()",
+          "status": "PASS",
+          "timeSeconds": 0.171
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_matchesEveryCanonicalMathCompositionViewByOwnScope()",
+          "status": "PASS",
+          "timeSeconds": 0.248
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersHeSpecificSekTwoMathViewOverDeWideFallback()",
+          "status": "PASS",
+          "timeSeconds": 0.098
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_matchesPhysicsCrossStageViewWithoutJurisdiction()",
+          "status": "PASS",
+          "timeSeconds": 0.107
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findRootScopeOptions_excludesPrerequisiteOnlyRootsAndKeepsDirectTargets(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.007
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersNwSpecificCrossStageMathViewOverSekTwoFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.095
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersNwSpecificCrossStageMathViewOverSekTwoFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.109
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBbSpecificCrossStageMathViewOverSekTwoFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.094
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBbSpecificCrossStageMathViewOverSekTwoFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.113
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "learnerScopePrefiltersStageBeforeChoosingTheMostSpecificAuthoredSubset()",
+          "status": "PASS",
+          "timeSeconds": 0.095
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "learnerScopeDoesNotInferSekTwoFromCourseProfile()",
+          "status": "PASS",
+          "timeSeconds": 0.002
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_matchesDeWideSekOneMathViewWithoutJurisdiction()",
+          "status": "PASS",
+          "timeSeconds": 0.115
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findViewById_prefersAuthoredMergedIdentityAndKeepsVirtualFallback(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.013
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "learnerScopeResolvesExplicitHessianSekTwoPhysicsGkView()",
+          "status": "PASS",
+          "timeSeconds": 0.099
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBwSpecificCrossStageMathViewOverDeWideFallback()",
+          "status": "PASS",
+          "timeSeconds": 0.096
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersExactStageViewOverCrossStageFallback()",
+          "status": "PASS",
+          "timeSeconds": 0.101
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersShSpecificCrossStageMathViewOverSekTwoFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.092
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersShSpecificCrossStageMathViewOverSekTwoFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.107
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBwSpecificSekOneMathViewOverDeWideFallback()",
+          "status": "PASS",
+          "timeSeconds": 0.094
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_mergesHessianSekTwoGkAndLkWithoutDuplicateQuarterStructures()",
+          "status": "PASS",
+          "timeSeconds": 0.123
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "combinedSelectionAndVirtualLookupPreservePartialOrderFormatAndAcquisitionSemantics(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.007
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_mergesProjectionRolesWithTargetDominance(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.004
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersHeSpecificSekTwoPhysicsViewOverDeWideFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.107
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersNiSpecificSekTwoMathViewOverDeWideFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.108
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersNiSpecificSekTwoMathViewOverDeWideFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.097
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_mergesEveryAuthoredExactMathematicsGkLkPair()",
+          "status": "PASS",
+          "timeSeconds": 0.485
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBySpecificSekTwoMathViewOverDeWideFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.153
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBySpecificSekTwoMathViewOverDeWideFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.096
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_rejectsProjectionRoleOnLandscapeEntry(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.005
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBySpecificCrossStagePhysicsViewOverDeWideFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.125
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBwSpecificSekTwoMathViewOverCrossStageFallback()",
+          "status": "PASS",
+          "timeSeconds": 0.104
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersNwSpecificSekTwoMathViewOverDeWideFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.103
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersNwSpecificSekTwoMathViewOverDeWideFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.103
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "learnerScopePrefersReviewedBrandenburgSekOneViewForCommittedJurisdictionAndDuration()",
+          "status": "PASS",
+          "timeSeconds": 0.094
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersHeSpecificCrossStageMathViewOverSekTwoFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.113
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersHeSpecificCrossStageMathViewOverSekTwoFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.098
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "combinedSelectionRejectsUnsupportedAndMixedFormatEnvelopes(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.008
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_matchesDeWideSekTwoGkMathViewWithoutJurisdiction()",
+          "status": "PASS",
+          "timeSeconds": 0.114
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_matchesOverviewCrossStageView()",
+          "status": "PASS",
+          "timeSeconds": 0.098
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_matchesDeWideCrossStageViewWithoutJurisdiction()",
+          "status": "PASS",
+          "timeSeconds": 0.096
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBySpecificSekTwoPhysicsViewOverDeWideFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.102
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findRootScopeOptions_preservesMergedViewIdentity()",
+          "status": "PASS",
+          "timeSeconds": 0.099
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "combinedLegacySubjectPairsRetainSupportedEnvelopesWithoutRequiringNewHeaders()",
+          "status": "PASS",
+          "timeSeconds": 0.262
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_mergesProfileEquivalentStructuresWithoutChangingSingleViews(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.007
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_keepsHessianSekTwoMathLkScopeForBothDurationModels()",
+          "status": "PASS",
+          "timeSeconds": 0.097
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findLearnerFacingFocusAncestors_followsTheSingleAuthoredContainsAndCompositionPath(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.007
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersDurationSpecificScopeOverDurationAgnosticFallback(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.004
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_keepsHessianPhysicsStageTreeForEveryCourseAndDuration()",
+          "status": "PASS",
+          "timeSeconds": 0.142
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBbSpecificSekTwoMathViewOverDeWideFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.095
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBbSpecificSekTwoMathViewOverDeWideFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.104
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBySpecificCrossStageMathViewOverSekTwoFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.096
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBySpecificCrossStageMathViewOverSekTwoFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.11
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersHeSpecificSekTwoMathLkViewOverDeWideFallback()",
+          "status": "PASS",
+          "timeSeconds": 0.097
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_fallsBackFromCombinedCourseProfileToLkSekTwoView()",
+          "status": "PASS",
+          "timeSeconds": 0.12
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "learnerScopeChoosesTheMostSpecificReviewedSekOneSubset()",
+          "status": "PASS",
+          "timeSeconds": 0.114
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersNiSpecificCrossStageMathViewOverSekTwoFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.093
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersNiSpecificCrossStageMathViewOverSekTwoFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.109
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_matchesOverviewExactSekTwoView()",
+          "status": "PASS",
+          "timeSeconds": 0.093
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findRootScopeOptions_returnsResolvableSyntheticRootForAuthoredView()",
+          "status": "PASS",
+          "timeSeconds": 0.116
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersShSpecificSekTwoMathViewOverDeWideFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.094
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersShSpecificSekTwoMathViewOverDeWideFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.099
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBeSpecificCrossStageMathViewOverSekTwoFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.105
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBeSpecificCrossStageMathViewOverSekTwoFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.099
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBeSpecificSekTwoMathViewOverDeWideFallbackForGk()",
+          "status": "PASS",
+          "timeSeconds": 0.121
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_prefersBeSpecificSekTwoMathViewOverDeWideFallbackForLk()",
+          "status": "PASS",
+          "timeSeconds": 0.096
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findMatchingView_matchesPhysicsExactSekTwoView()",
+          "status": "PASS",
+          "timeSeconds": 0.099
+        },
+        {
+          "className": "com.skillpilot.backend.service.CompositionViewServiceTest",
+          "name": "findLearnerFacingFocusAncestors_directGoalEntrySkipsCanonicalParentsAndPrerequisiteOnlyPaths(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.004
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "reorderingTheSameFocusDoesNotWriteAnotherLearnerStateRevision()",
+          "status": "PASS",
+          "timeSeconds": 3.433
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "futurePreparationHasRealScopeAndExplicitStartButNoPrematureAutomaticQuota()",
+          "status": "PASS",
+          "timeSeconds": 1.815
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "savingAndReadingANewExamPreserveTheCurrentGoalUntilExplicitActivation()",
+          "status": "PASS",
+          "timeSeconds": 1.381
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "explicitPhysicsPreparationFromMathReturnsToPhysicsWithoutWritingMathResults()",
+          "status": "PASS",
+          "timeSeconds": 1.049
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "receivingAnOpeningForStrictExamPreparationNeverCompletesItsOutsidePrerequisites()",
+          "status": "PASS",
+          "timeSeconds": 1.46
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "ordinaryExamPreparationReceivesUnitOpeningBeforeTwelveSelectedGoalsWithoutOutsideMastery()",
+          "status": "PASS",
+          "timeSeconds": 2.258
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "fullyInactivePlanHasNoExamScopeAndOffersNoUnselectedSubjectFallback()",
+          "status": "PASS",
+          "timeSeconds": 1.059
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "weeklyAutomaticHandoffAfterTheFirstExamDateKeepsItsCompleteBoundScope()",
+          "status": "PASS",
+          "timeSeconds": 1.709
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "datedPreparationReceivesItsOpeningWithoutCountingItOrLosingTheSelectedTargets()",
+          "status": "PASS",
+          "timeSeconds": 1.914
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "anEarlierOpeningScheduledForAnotherExamCannotReplaceTheCurrentExamTarget()",
+          "status": "PASS",
+          "timeSeconds": 1.219
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "strictExamFocusKeepsOutsidePrerequisitesAndAllNineTopicsAndThreeTasks()",
+          "status": "PASS",
+          "timeSeconds": 2.525
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "milestoneWithoutPreparationStartsExplicitlyInsideItsSelectionWithoutCreatingDueWork()",
+          "status": "PASS",
+          "timeSeconds": 1.458
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "dateChangeAndGenericResumeRemainBoundToFirstExamAndNeverUnionTheSecond()",
+          "status": "PASS",
+          "timeSeconds": 1.628
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "blockedPhysicsExamDoesNotResumeAnOrdinaryMathPlanButAllowsAnExplicitSubjectSwitch()",
+          "status": "PASS",
+          "timeSeconds": 2.619
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "oneSelectedChildTargetReceivesParentThenChildOpeningWithoutChangingTheExamScope()",
+          "status": "PASS",
+          "timeSeconds": 1.12
+        },
+        {
+          "className": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+          "name": "automaticHandoffKeepsCompleteMultiRootExamFocusAndStopsAtTheDatedQuota()",
+          "status": "PASS",
+          "timeSeconds": 1.182
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "name": "studyRecommendationsBindTwoIndependentChoicesInTheSelectedViews(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.233
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "name": "loadsOnlyTheLocalizedTitlePromptAndAnyAuthoredEvidenceCriteria()",
+          "status": "PASS",
+          "timeSeconds": 0.033
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "name": "versionTwoBindsTheExactOpeningAndSharedSceneForActualViews(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.012
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "name": "guidedStudyOrderBelongsToTheSelectedViewsAndEndsAtTheirOwnAssessment(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.01
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "name": "resolvesTheSameIntroductionAndGoalReferencesOnlyForMatchingPersonalViews()",
+          "status": "PASS",
+          "timeSeconds": 0.017
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "name": "anUnknownViewOrRepeatedOrRequiredAdditionalGoalInvalidatesTheSectionPolicy(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.031
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "name": "catalogSupportsLegacyAndVersionedMaterialWithOptionalCardsAndRejectsUnknownVersions(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.009
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "name": "changingOrRemovingARequiredPartDisablesTheVoluntarySectionException(Path)",
+          "status": "PASS",
+          "timeSeconds": 0.016
+        },
+        {
+          "className": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+          "name": "durationNeutralCrossStageOffersLearningMaterialsWhileTheFourPartAwardUsesItsOwnViews()",
+          "status": "PASS",
+          "timeSeconds": 0.44
+        }
+      ],
+      "sourceManifestSha256": "16711b1e80634b8e57b3963f2cc6c28b8741201d0d3c0b486ca809f039478877"
+    },
+    {
+      "purpose": "Focused follow-up after a context-restoration fixture correction: original mandatory24, actual seed, six new ZB anti-transfer, preserved MP history, fresh optional passes and three complete contract classes.",
+      "startedAt": "2026-11-24T10:48:49.870099+00:00",
+      "finishedAt": "2026-11-24T10:55:53.055187+00:00",
+      "headBefore": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+      "headAfter": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+      "canonicalPhysicsAfter": "e795626b9d2577141089cb2c592544828d8015204f3461921b481bd7c32afea8",
+      "command": [
+        "./gradlew",
+        "test",
+        "--rerun",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders",
+        "--tests",
+        "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+        "--tests",
+        "com.skillpilot.backend.completion.UnitAssessmentContractTest.usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts",
+        "--tests",
+        "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+        "--tests",
+        "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalMultiphasePassNeverRecognizesASuccessorOrAddsModelingCredit",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart",
+        "--tests",
+        "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals",
+        "--init-script",
+        "/tmp/e1-pr186-ci-20261124/zb-successor-final/native-test-events.init.gradle",
+        "--no-daemon",
+        "--console=plain",
+        "--max-workers=2",
+        "--no-build-cache",
+        "-PbackendTestForks=1"
+      ],
+      "cwd": "backend",
+      "exitCode": 1,
+      "log": {
+        "path": "gradle.log",
+        "sha256": "98130660d9d1ec0e65d89f6082a4ce460b00f6de5cd46a20b295d366084df198",
+        "bytes": 32703
+      },
+      "junitReports": [
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.completion.AssessmentMaterialRevisionTest.xml",
+            "sha256": "287e7aff33f56e8036e53c7e60929f8932a2cf212b84875e563bdec1d0ed508d",
+            "bytes": 866
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.completion.AssessmentMaterialRevisionTest.xml",
+            "sha256": "9731a1840ee0832a36e8f2b8b656ea6f83e70b79a0ee191e59f0372d49a7e9e9",
+            "bytes": 878
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.completion.UnitAssessmentContractTest.xml",
+            "sha256": "406009d00f03e3f1461ae988dd3e31900ce8fecc5e65547931e5ee4716c53e74",
+            "bytes": 706
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.completion.UnitAssessmentContractTest.xml",
+            "sha256": "5f4c6f7718d651e35ba6656a0f550bf2d4d666768b91657e9860465783e2911f",
+            "bytes": 717
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.completion.UnitPlanningReleaseTest.xml",
+            "sha256": "638a0958d626187c9f37a7c1f2b5bd64a5e01bcd64e422476a9a5cd8769589d7",
+            "bytes": 866
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.completion.UnitPlanningReleaseTest.xml",
+            "sha256": "0daaaa363da48902358a631c9bdeaf5af39d749268e1716cc0bef713e732a805",
+            "bytes": 878
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "tests": 33,
+          "failures": 6,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+            "sha256": "84d2420d8abd4ea95bd12226941804c7b95a39455f270141c05e371a4844f2c6",
+            "bytes": 64136982
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+            "sha256": "2972e600a12c011b60315832a5413340f0c6cf271a6ad1670ada4bd5474b7f1f",
+            "bytes": 9909
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+            "sha256": "23bb0e3263feafa9a81b6d4aa3e879fcc1cfaac6888727d3d1523bb16416dd57",
+            "bytes": 10369405
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+            "sha256": "05fd51758237208cd94b00d5641513a5f0f62f2b829b1d2fd43a950067c9ea95",
+            "bytes": 553
+          }
+        }
+      ],
+      "totals": {
+        "classes": 5,
+        "cases": 42,
+        "passed": 36,
+        "failed": 6,
+        "skipped": 0
+      },
+      "nativeEventCount": 42,
+      "nativeEventSha256": "f9642d825aa726959e885000bdc00cb5c96a97d73cd0462e12a6ac1a3013e767",
+      "testCases": [
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "name": "translationsAndAdditionalRubricFieldsArePartOfTheGradedMaterial()",
+          "status": "PASS",
+          "timeSeconds": 0.149
+        },
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "name": "allPhysicsChildExamEditionsBindToTheirPublishedCoverageReviews()",
+          "status": "PASS",
+          "timeSeconds": 0.07
+        },
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "name": "evaluationMustMatchTheMaterialThatTheCoachUses()",
+          "status": "PASS",
+          "timeSeconds": 0.01
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+          "name": "usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts()",
+          "status": "PASS",
+          "timeSeconds": 0.355
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+          "name": "oneAssessmentCanProveAUnitWithoutGrantingAnyPlanningCredit()",
+          "status": "PASS",
+          "timeSeconds": 0.001
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "name": "planningCreditRequiresItsReviewedOwnWitnessAndCurrentCoverage()",
+          "status": "PASS",
+          "timeSeconds": 0.345
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "name": "absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial()",
+          "status": "PASS",
+          "timeSeconds": 0.023
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "name": "matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews()",
+          "status": "PASS",
+          "timeSeconds": 0.102
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", stage = \"CrossStage\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 18.716
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", stage = \"CrossStage\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 14.759
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", stage = \"SekII\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 13.171
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", stage = \"SekII\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 13.293
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G8\", stage = \"SekII\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 12.87
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[6] duration = \"G9\", stage = \"SekII\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 12.612
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery()",
+          "status": "PASS",
+          "timeSeconds": 6.472
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", strict = \"false\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+          "status": "PASS",
+          "timeSeconds": 13.923
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", strict = \"false\", requested = \"971beafa-6ba5-4c82-ac8b-7ebf66eec3dd\"",
+          "status": "PASS",
+          "timeSeconds": 12.827
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G9\", strict = \"true\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+          "status": "PASS",
+          "timeSeconds": 14.228
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 10.864
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 10.558
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] course = \"GK\", edition = \"ORIGINAL22\"",
+          "status": "FAIL",
+          "timeSeconds": 13.045
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] course = \"LK\", edition = \"ORIGINAL22\"",
+          "status": "FAIL",
+          "timeSeconds": 13.055
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] course = \"GK\", edition = \"PREVIOUS36\"",
+          "status": "FAIL",
+          "timeSeconds": 12.607
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] course = \"LK\", edition = \"PREVIOUS36\"",
+          "status": "FAIL",
+          "timeSeconds": 12.714
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] course = \"GK\", edition = \"RAW_ONLY\"",
+          "status": "FAIL",
+          "timeSeconds": 12.711
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[6] course = \"LK\", edition = \"RAW_ONLY\"",
+          "status": "FAIL",
+          "timeSeconds": 13.483
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 4.091
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 3.931
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 3.183
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 3.205
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 3.263
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 3.082
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G9\", course = \"GK+LK\"",
+          "status": "PASS",
+          "timeSeconds": 3.629
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", strict = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 5.329
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", strict = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 5.472
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] course = \"GK\", duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 3.565
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] course = \"LK\", duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 3.758
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] storedIdentity = \"OLD_ID\"",
+          "status": "PASS",
+          "timeSeconds": 11.699
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] storedIdentity = \"LEGACY_ID\"",
+          "status": "PASS",
+          "timeSeconds": 11.78
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 14.732
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 15.836
+        },
+        {
+          "className": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "name": "learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals()",
+          "status": "PASS",
+          "timeSeconds": 35.097
+        }
+      ],
+      "sourceManifestSha256": "891edad621aff6edaaea5b1dd45f80f619fb60eeb7004d7f2e05c94bd2cdee63"
+    },
+    {
+      "purpose": "Focused follow-up after a context-restoration fixture correction: original mandatory24, actual seed, six new ZB anti-transfer, preserved MP history, fresh optional passes and three complete contract classes.",
+      "startedAt": "2026-11-24T10:57:23.731997+00:00",
+      "finishedAt": "2026-11-24T11:03:29.040397+00:00",
+      "headBefore": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+      "headAfter": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+      "canonicalPhysicsAfter": "e795626b9d2577141089cb2c592544828d8015204f3461921b481bd7c32afea8",
+      "command": [
+        "./gradlew",
+        "test",
+        "--rerun",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders",
+        "--tests",
+        "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+        "--tests",
+        "com.skillpilot.backend.completion.UnitAssessmentContractTest.usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts",
+        "--tests",
+        "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+        "--tests",
+        "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalMultiphasePassNeverRecognizesASuccessorOrAddsModelingCredit",
+        "--tests",
+        "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart",
+        "--tests",
+        "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals",
+        "--init-script",
+        "/tmp/e1-pr186-ci-20261124/zb-successor-final/native-test-events.init.gradle",
+        "--no-daemon",
+        "--console=plain",
+        "--max-workers=2",
+        "--no-build-cache",
+        "-PbackendTestForks=1"
+      ],
+      "cwd": "backend",
+      "exitCode": 0,
+      "log": {
+        "path": "gradle.log",
+        "sha256": "a2c108e6ab567c040eb78d3a598cd9cd989002d099f57b0f26e84451b42d5a09",
+        "bytes": 30534
+      },
+      "junitReports": [
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.completion.AssessmentMaterialRevisionTest.xml",
+            "sha256": "91714db9e0b0e3a383124c2028af8e71eefb57fdb2f1b58beb9faa5fc1e60aa6",
+            "bytes": 868
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.completion.AssessmentMaterialRevisionTest.xml",
+            "sha256": "c4c51a57db5ae7ec81c0af49e4d4dc7ec2b876fa8b62d9e0860f5c1850e7f10f",
+            "bytes": 880
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.completion.UnitAssessmentContractTest.xml",
+            "sha256": "fcb14698c4755e61b3fd6fb5d71d17cf715a7db4da1f6f165a40103e4b9d816f",
+            "bytes": 705
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.completion.UnitAssessmentContractTest.xml",
+            "sha256": "a06a7f60502dfe73f60af75d35b4800cf0708c99720d35ed701e4141a403b7ec",
+            "bytes": 716
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.completion.UnitPlanningReleaseTest.xml",
+            "sha256": "74381c4cc13ebf34fdcbe7c9fde0bc34c2657f89e6d51e92b55d051acf4f6ff3",
+            "bytes": 866
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.completion.UnitPlanningReleaseTest.xml",
+            "sha256": "e3bbca7bfbb996caabf34c7990303e72ea0fea1d108f4a99a9f96bb89ee5ff13",
+            "bytes": 878
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "tests": 33,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+            "sha256": "0c57bccc40d0d58229684c48a1b9041b3556fbff9536a451e770a6730787c2fe",
+            "bytes": 65089248
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+            "sha256": "b5f18f386da56f0d84330ad0b1878e3dbe16a29cbaab6823dcb33120f3a8ef36",
+            "bytes": 6906
+          }
+        },
+        {
+          "className": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "raw": {
+            "path": "RAW-TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+            "sha256": "0db7a454a8fa9dbaa21eabd1dd35dccbd66d1c7a6555d27b37b57c84b745c04e",
+            "bytes": 10369394
+          },
+          "excerpt": {
+            "path": "EXCERPT-TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+            "sha256": "4cd4b3ed86c5a9a7106f18117b80e4da8ebea302ef604885cebdc4d2ad6b3b84",
+            "bytes": 553
+          }
+        }
+      ],
+      "totals": {
+        "classes": 5,
+        "cases": 42,
+        "passed": 42,
+        "failed": 0,
+        "skipped": 0
+      },
+      "nativeEventCount": 42,
+      "nativeEventSha256": "5f622de088d35c8b71121aea28ccb8fe041e8a661912e03fb67ca922816ac966",
+      "testCases": [
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "name": "translationsAndAdditionalRubricFieldsArePartOfTheGradedMaterial()",
+          "status": "PASS",
+          "timeSeconds": 0.119
+        },
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "name": "allPhysicsChildExamEditionsBindToTheirPublishedCoverageReviews()",
+          "status": "PASS",
+          "timeSeconds": 0.065
+        },
+        {
+          "className": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+          "name": "evaluationMustMatchTheMaterialThatTheCoachUses()",
+          "status": "PASS",
+          "timeSeconds": 0.011
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+          "name": "usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts()",
+          "status": "PASS",
+          "timeSeconds": 0.32
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+          "name": "oneAssessmentCanProveAUnitWithoutGrantingAnyPlanningCredit()",
+          "status": "PASS",
+          "timeSeconds": 0.002
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "name": "planningCreditRequiresItsReviewedOwnWitnessAndCurrentCoverage()",
+          "status": "PASS",
+          "timeSeconds": 0.313
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "name": "absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial()",
+          "status": "PASS",
+          "timeSeconds": 0.018
+        },
+        {
+          "className": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+          "name": "matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews()",
+          "status": "PASS",
+          "timeSeconds": 0.091
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", stage = \"CrossStage\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 15.623
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", stage = \"CrossStage\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 11.72
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", stage = \"SekII\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 10.659
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", stage = \"SekII\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 10.801
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G8\", stage = \"SekII\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 10.638
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[6] duration = \"G9\", stage = \"SekII\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 11.543
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery()",
+          "status": "PASS",
+          "timeSeconds": 5.125
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", strict = \"false\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+          "status": "PASS",
+          "timeSeconds": 11.062
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", strict = \"false\", requested = \"971beafa-6ba5-4c82-ac8b-7ebf66eec3dd\"",
+          "status": "PASS",
+          "timeSeconds": 9.775
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G9\", strict = \"true\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+          "status": "PASS",
+          "timeSeconds": 10.935
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 8.511
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 8.12
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] course = \"GK\", edition = \"ORIGINAL22\"",
+          "status": "PASS",
+          "timeSeconds": 11.01
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] course = \"LK\", edition = \"ORIGINAL22\"",
+          "status": "PASS",
+          "timeSeconds": 11.33
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] course = \"GK\", edition = \"PREVIOUS36\"",
+          "status": "PASS",
+          "timeSeconds": 11.876
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] course = \"LK\", edition = \"PREVIOUS36\"",
+          "status": "PASS",
+          "timeSeconds": 12.369
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] course = \"GK\", edition = \"RAW_ONLY\"",
+          "status": "PASS",
+          "timeSeconds": 11.627
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[6] course = \"LK\", edition = \"RAW_ONLY\"",
+          "status": "PASS",
+          "timeSeconds": 12.594
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 4.126
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 3.497
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 2.697
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", course = \"GK\"",
+          "status": "PASS",
+          "timeSeconds": 2.686
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[3] duration = \"G8\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 3.05
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[4] duration = \"G9\", course = \"LK\"",
+          "status": "PASS",
+          "timeSeconds": 3.026
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[5] duration = \"G9\", course = \"GK+LK\"",
+          "status": "PASS",
+          "timeSeconds": 3.285
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\", strict = \"false\"",
+          "status": "PASS",
+          "timeSeconds": 4.362
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\", strict = \"true\"",
+          "status": "PASS",
+          "timeSeconds": 4.428
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] course = \"GK\", duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 3.066
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] course = \"LK\", duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 3.166
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] storedIdentity = \"OLD_ID\"",
+          "status": "PASS",
+          "timeSeconds": 8.984
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] storedIdentity = \"LEGACY_ID\"",
+          "status": "PASS",
+          "timeSeconds": 8.976
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[1] duration = \"G8\"",
+          "status": "PASS",
+          "timeSeconds": 12.66
+        },
+        {
+          "className": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "name": "[2] duration = \"G9\"",
+          "status": "PASS",
+          "timeSeconds": 12.759
+        },
+        {
+          "className": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "name": "learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals()",
+          "status": "PASS",
+          "timeSeconds": 28.705
+        }
+      ],
+      "sourceManifestSha256": "00276a6f3e553237c324590b869c92bf72c6560acce685aad3f021f600ac8e2d"
+    }
+  ],
+  "allBroadFailuresReplayedSuccessfully": true,
+  "singleCaseObservationRawSha256": "62b9f72fdd89659441cf85a0df649a8d2cee17610417bf39459733246e0c25c9",
+  "singleCaseSummary": {
+    "mode": "GK, original22",
+    "unitRequiredAndPassed": [
+      4,
+      4
+    ],
+    "ordinaryRequiredAndPassed": [
+      95,
+      5
+    ],
+    "publicProfile": "automatic:personal-curriculum",
+    "storedWorkflowOnReturn": null,
+    "individualModelLimitsMastery": false
+  }
+}

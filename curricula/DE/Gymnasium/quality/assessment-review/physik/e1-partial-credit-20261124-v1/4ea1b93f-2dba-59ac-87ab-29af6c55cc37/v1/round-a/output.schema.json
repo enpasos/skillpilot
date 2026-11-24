@@ -1,0 +1,161 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reviews",
+    "limitations"
+  ],
+  "properties": {
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "candidateDecision",
+          "scientificAndNumericalReview",
+          "preparationReview",
+          "directCoverageReview",
+          "languageReview",
+          "recommendedRequires",
+          "recommendedCoveredGoalIds",
+          "recommendedPassingPoints",
+          "gradedSubmissions",
+          "strongestIndependentFalsePassAttempt",
+          "strongestIndependentFalseFailureAttempt",
+          "requiredCorrections",
+          "materialContinuityAndRecognition",
+          "semanticKind",
+          "semanticKindReason"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "candidateDecision": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "revise",
+              "reject"
+            ]
+          },
+          "scientificAndNumericalReview": {
+            "type": "string"
+          },
+          "preparationReview": {
+            "type": "string"
+          },
+          "directCoverageReview": {
+            "type": "string"
+          },
+          "languageReview": {
+            "type": "string"
+          },
+          "recommendedRequires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedCoveredGoalIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedPassingPoints": {
+            "type": "integer"
+          },
+          "gradedSubmissions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "submissionId",
+                "demonstratedCore",
+                "scores",
+                "total",
+                "passes",
+                "rationale"
+              ],
+              "properties": {
+                "submissionId": {
+                  "type": "string"
+                },
+                "demonstratedCore": {
+                  "type": "boolean"
+                },
+                "scores": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "criterionId",
+                      "pointsAwarded",
+                      "reason"
+                    ],
+                    "properties": {
+                      "criterionId": {
+                        "type": "string"
+                      },
+                      "pointsAwarded": {
+                        "type": "integer"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "total": {
+                  "type": "integer"
+                },
+                "passes": {
+                  "type": "boolean"
+                },
+                "rationale": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "strongestIndependentFalsePassAttempt": {
+            "type": "string"
+          },
+          "strongestIndependentFalseFailureAttempt": {
+            "type": "string"
+          },
+          "requiredCorrections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "materialContinuityAndRecognition": {
+            "type": "string"
+          },
+          "semanticKind": {
+            "type": "string",
+            "enum": [
+              "practiceAssessment",
+              "other"
+            ]
+          },
+          "semanticKindReason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

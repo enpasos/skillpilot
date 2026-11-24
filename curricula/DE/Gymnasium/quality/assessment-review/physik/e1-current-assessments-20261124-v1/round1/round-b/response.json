@@ -1,0 +1,175 @@
+{
+  "reviews": [
+    {
+      "goalId": "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+      "originalDecision": "accept",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "A horizontal speed of 1.60 m/s fits all four readings, including 0.32 m predicted against 0.33 m observed at 0.20 s. With downward acceleration 10 m/s², the four predicted fall distances are 0.05, 0.20, 0.45 and 0.80 m. All are within the stated ±0.01 m reading bounds. The resulting flight time, range and doubled-speed range are 0.4472 s, 0.7155 m and 1.4311 m. Using 9.81 m/s² also fits and gives 0.4515 s, 0.7224 m and 1.4449 m. These are model-based estimates from a finite table.",
+      "fullPreparationReview": "The sole prerequisite, 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2, prepares the simultaneous horizontal and vertical motions. Its free-fall branch supplies motion laws, graph interpretation, acceleration and reading uncertainty. The item supplies the reading bounds and treats height and time as exact. Scalar calculation or a graphical construction suffices.",
+      "directCoverageReview": "Keep the empty coverage list. The written evidence supports a quantitative landing prediction. It does not establish the experimental investigation and x–y representation in the whole horizontal-projection goal.",
+      "falsePassCheck": "At 15/18 both five-point model rows must reach at least level 2. Without a quantitative shared-time link to a landing position in either launch, B2 and B3 can earn at most two each, for 14 overall. A score of 5+5+4+1 can pass without a quantitative second prediction. The pass therefore supports the stated landing objective without guaranteeing every extension.",
+      "languageReview": "The German and English data, reading bounds, permitted methods, numerical alternatives and four scoring rows agree. A directly evaluable range expression with units is consistent with the task in either language.",
+      "recommendedRequires": ["89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"],
+      "recommendedCoveredGoalIds": [],
+      "recommendedPassingPoints": 15,
+      "requiredCorrections": [],
+      "scopeLimitations": ["The supplied readings support a written prediction. They provide no evidence of personal data collection."]
+    },
+    {
+      "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "With τ=t−2 s, the SI numerical laws are v=−1+2τ and s=5−τ+τ². The reversal is at 2.5 s and 4.75 m. The positions at 3 and 4 s are 5 and 7 m. The signed velocity areas are −0.25 and +2.25 m, giving +2.00 m displacement and 2.50 m distance. The acceleration area gives +4 m/s. The predicted 7.00 m lies in [6.98, 7.08] m. Braking from 6 m/s gives rest at 3 s and 9 m. Continuing the same acceleration gives −4 m/s and 5 m at 5 s. Sustained rest gives zero velocity and acceleration at 9 m.",
+      "fullPreparationReview": "Keep 262f807a-30d0-503e-986f-856cbd048e8e. Its recursive prerequisites prepare the three motion graphs, signed velocity areas, rates, geometric areas, units and initial-value algebra. Checking a supplied interval requires no independent uncertainty estimate. The stopped-vehicle question can be answered from the velocity law and the meaning of rest.",
+      "directCoverageReview": "The sole claim, e4b38061-1f28-43ad-8371-a3e7c0e81856, is supported. The learner must represent and explain constant acceleration in position, velocity and acceleration graphs, including reversal and braking.",
+      "falsePassCheck": "If any of D1–D4 earns at most one mark, the maximum is 16. At 17, D1 and D3 therefore require their three consistent representations, D2 requires the signed-area reasoning, and D4 requires the physical explanation of the model limit. A learner may miss the numerical interval check while still demonstrating the credited goal.",
+      "languageReview": "Both languages give the same data, predictions and level rules. Both versions of D1 risk withholding the last method mark from a learner who correctly imposes the initial conditions at absolute time t=2 s.",
+      "recommendedRequires": ["262f807a-30d0-503e-986f-856cbd048e8e"],
+      "recommendedCoveredGoalIds": ["e4b38061-1f28-43ad-8371-a3e7c0e81856"],
+      "recommendedPassingPoints": 17,
+      "requiredCorrections": [
+        "In D1, credit a checkable use of both initial values at t=2 s in either time coordinate. For example, v=2t−5 and s=t²−5t+11 in SI satisfy the conditions directly.",
+        "In both solution bodies, show the area calculation requested in part 2. The two signed triangle areas are −½×0.5×1 m and +½×1.5×3 m."
+      ],
+      "scopeLimitations": ["The revisions concern marking and the worked explanation. The direct coverage and 17/20 threshold are defensible in both supplied versions."]
+    },
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "The compact log gives the correct reversal at 2.5 s and 4.75 m, subsequent positions of 5 and 7 m, velocity change of +4 m/s, displacement of +2 m and distance of 2.50 m. The 0.03 m difference from the check reading is within its supplied ±0.05 m interval. The braking laws give 3 s and 9 m at the stop. Their mathematical continuation gives v=−4 m/s and s=5 m at 5 s, incompatible with sustained rest.",
+      "fullPreparationReview": "The direct motion-laws prerequisite 262f807a-30d0-503e-986f-856cbd048e8e and its graph, constant-acceleration, signed-area, units and algebra branches prepare both cases. The numerical interval is supplied. Explaining why a continuing negative acceleration predicts reversal requires no additional force calculation.",
+      "directCoverageReview": "Keep e4b38061-1f28-43ad-8371-a3e7c0e81856. The two sets of three motion graphs, initial conditions, signed areas and physical interpretation establish the constant-acceleration goal. The broader prerequisite also includes uniform-motion laws, which this pass does not assess in full.",
+      "falsePassCheck": "At 20/20 every four-mark row must be complete. Omitting either set of graphs, the signed-area account or the validity argument prevents a pass. The more immediate risk is a false failure. A correct absolute-time solution can lose a required mark under a literal reading of acceleration-log_1.",
+      "languageReview": "The numerical content agrees across languages. Both versions of acceleration-log_3 call the comparison one with instrument resolution. The task gives a measurement interval and supplies no instrument resolution. Part B also requests an explanation more generally than the rubric's numerical check.",
+      "recommendedRequires": ["262f807a-30d0-503e-986f-856cbd048e8e"],
+      "recommendedCoveredGoalIds": ["e4b38061-1f28-43ad-8371-a3e7c0e81856"],
+      "recommendedPassingPoints": 20,
+      "requiredCorrections": [
+        "In acceleration-log_1, credit any correct incorporation of s(2 s)=5 m and v(2 s)=−1 m/s, including an absolute-time construction.",
+        "In acceleration-log_3, replace ‘Auflösung’ and ‘resolution’ with the supplied interval [6.98, 7.08] m.",
+        "Make the existing requirement in acceleration-log_5 explicit in both versions of part B by asking for the program's position and velocity at 5 s."
+      ],
+      "scopeLimitations": ["The 20/20 rule is stringent. It does prevent compensation across the five rows."]
+    },
+    {
+      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "The stated model gives x=2t and y=1.25−5t² in SI, a shared flight time of 0.500 s, a 1.00 m range and impact components +2.00 and −5.00 m/s. Eliminating time gives y=1.25 m−(1.25 m⁻¹)x². Doubling the horizontal speed gives 2.00 m at the same time. The drag discussion is sound. Vertical drag can depend on total speed, so the ideal model's simultaneous arrival need no longer hold. The problem does not determine a universal arrival order.",
+      "fullPreparationReview": "Both direct prerequisites have distinct roles. 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 prepares the two scalar motions, graphs and trajectory. d6dc0e02-831d-4894-a61a-852bcc74f147 prepares the point-particle and drag justifications in part 6. Their branches supply free fall, laws, graph skills and the comparison of fall in air and vacuum. The given model and scalar route are sufficient.",
+      "directCoverageReview": "Part 6 genuinely elicits the claimed model-limits goal d6dc0e02-831d-4894-a61a-852bcc74f147. The pass rule makes all six of its marks dispensable. With the fixed 22/36 rule, remove the direct claim. The constructed table and trajectory sketch also supply only part of the experimental horizontal-projection goal.",
+      "falsePassCheck": "Full marks in parts 1, 3 and 5 give 18. Criteria 4.1–4.4 give four more. That is a pass with parts 2 and 6 blank, including every justification of point-particle treatment and the limits under drag. Completing parts 1–5 gives 30/36 with part 6 still blank.",
+      "languageReview": "The DE and EN prompts, supplied assumptions, numerical key, 36 one-mark criteria and marking principles agree. Both explicitly identify the table as constructed model data.",
+      "recommendedRequires": ["89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "d6dc0e02-831d-4894-a61a-852bcc74f147"],
+      "recommendedCoveredGoalIds": [],
+      "recommendedPassingPoints": 22,
+      "requiredCorrections": [
+        "Remove d6dc0e02-831d-4894-a61a-852bcc74f147 from coveredGoalIds at the existing threshold. Keep it in requires. Retaining the claim would require a pass gate on existing part-6 evidence of both justified idealizations and a prediction reaching its limit."
+      ],
+      "scopeLimitations": ["At 22/36 the result is an aggregate written-practice score. Even the explanation of shared time can be omitted while calculations using it earn marks."]
+    },
+    {
+      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "The given phases have mean accelerations 4/3, 0 and −2 m/s². Within the first phase the successive means are 1.6, 1.6 and 0.8 m/s². The specified linear interpolation gives 3.2+9.6+14.4+16.0+12.0=55.2 m. The nominal flight time is 0.5048187773 s and the range is 4.038550219 m. Using the supplied bounds on both positive factors gives 7.8(t−0.03)=3.703586463 m and 8.2(t+0.03)=4.385513974 m, with t in seconds. The original lower endpoint of 3.71 m excludes allowed values. Both candidate solutions give the correct outward-rounded [3.70, 4.39] m.",
+      "fullPreparationReview": "Replace the original vector prerequisite 0fee53f2-1c02-5b12-9b6c-aa9fa462d921 with the candidate pair. Horizontal projection 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 supplies scalar range and flight time. Through free fall and the motion laws it also reaches uncertainty, mean rates, acceleration and velocity-graph areas. MOD d6dc0e02-831d-4894-a61a-852bcc74f147 is warranted independently by part 5 and s5. The learner must justify two limits, for example how drag changes the range or how unobserved curvature changes an interpolated area. Merely repeating a supplied condition would fall short. Resultant-vector magnitude, angle and frame change have no role here.",
+      "directCoverageReview": "Remove all three original claims. For 68c90ba6-c438-463c-9a53-cf61062d416a there is no reference-frame selection or relative-velocity addition. For 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 there is no learner experiment or x–y trajectory representation. For f6b1d812-ce8b-5852-b417-e6c29b533c7a the speed and time uncertainties are given. Propagating them through a product does not demonstrate choosing and reporting suitable uncertainties for measurements. The candidate's empty list is appropriate.",
+      "falsePassCheck": "s1+s2+s3 gives 20/30 with the uncertainty and model-limit parts blank. Conversely, s1+s2+s4 gives 19 without a response to the nominal-range part. Even a perfect script need never select a frame, collect projectile data, plot its trajectory or assign an uncertainty to a measurement. The candidate's 18/30 is defensible for aggregate practice.",
+      "languageReview": "The original has no English task or solution body. The candidate English task and key reproduce all five demands, phase boundaries, interpolation rule, nominal values and interval endpoints. The structured row descriptions remain German, with matching part weights and expectations in the English bodies. In both languages s1 can reward interpreting the supplied phase boundaries, and s5 requires a physical reason for each limit.",
+      "recommendedRequires": ["89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "d6dc0e02-831d-4894-a61a-852bcc74f147"],
+      "recommendedCoveredGoalIds": [],
+      "recommendedPassingPoints": 18,
+      "requiredCorrections": [
+        "For the original, adopt the candidate's two prerequisite IDs, empty coveredGoalIds, English task and solution, and corrected German interval calculation. The exact candidate resolves these issues."
+      ],
+      "scopeLimitations": ["The 55.2 m value is the distance in the stipulated one-dimensional interpolation. The product interval uses the allowed endpoint combinations and has no stated confidence level."]
+    },
+    {
+      "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "The horizontal data fit x=2.0t in SI. The fall distances fit ½gt² to their stated precision, which gives a parabolic x–y path after eliminating time. ‘Overproportional’ growth alone does not identify a parabola. Reaction distances are 13.89 and 27.78 m. Adding the supplied braking distances gives 27.89 and 83.78 m, a ratio of about 3.00. These numbers test the distance needed to stop before a fixed hazard. A following gap to a moving lead vehicle also depends on how far that vehicle travels while braking.",
+      "fullPreparationReview": "The horizontal-projection and traffic goals prepare the two parts, including interpretation of video-derived coordinates, speed conversion, braking and distance judgment. MOD gives a defensible route to the independently requested model limitation. The recursive branches supply the motion laws, measurement and graph skills, arithmetic and units. No additional vector or practical-video prerequisite is needed for the task as written.",
+      "directCoverageReview": "Remove 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2. Describing a video procedure and using supplied coordinates does not demonstrate conducting the investigation, and a learner can answer about shape without producing an x–y diagram. Part B could evidence 4a2bf015-052b-4af0-aed7-324259fa1a8a under a specified traffic scenario, but the existing threshold does not require the safety judgment. At the fixed 10/16, remove this direct claim too.",
+      "falsePassCheck": "An 8/8 projectile response plus two traffic marks for speed conversion or reaction distances can reach 10 without evaluating a safety distance. Conversely, eight traffic marks plus two elementary horizontal observations can pass without a supported trajectory explanation. The two broad rows specify no minimum for these facets.",
+      "languageReview": "Both versions have English title and description only. The task, solution and scoring descriptions are German. English assessment equivalence cannot be established from the metadata.",
+      "recommendedRequires": ["89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "4a2bf015-052b-4af0-aed7-324259fa1a8a", "d6dc0e02-831d-4894-a61a-852bcc74f147"],
+      "recommendedCoveredGoalIds": [],
+      "recommendedPassingPoints": 10,
+      "requiredCorrections": [
+        "At 10/16 remove 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 and 4a2bf015-052b-4af0-aed7-324259fa1a8a from coveredGoalIds.",
+        "Specify a stationary hazard, such as the end of a standing queue, for the existing safety-distance judgment. In motion_models_2 credit using the given braking distances. Only reaction and total stopping distances have to be calculated.",
+        "In the part-A key and motion_models_1, connect near-quadratic fall distance and linear horizontal distance at the same times to the parabolic path. Include calibration, timing and tracking both coordinates in the expected video procedure.",
+        "Supply equivalent English task, solution and marking text for the existing two parts."
+      ],
+      "scopeLimitations": ["Two speed–braking-distance pairs are consistent with the constant-deceleration square law. They do not establish that law for all vehicles or conditions."]
+    },
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "With downward positive, the ground-frame component pairs are (2.0, 1.5) and (2.0, 3.0) m/s. The speeds are 2.50 and √13 ≈ 3.61 m/s. The impact angle is 56.31° below horizontal, within the drawing tolerance. At the example scale the component lengths are 4 and 3 cm, then 4 and 6 cm. Subtracting the cart velocity gives (0, 3.0) m/s at impact. Adding its horizontal 2.0 m/s arrow recovers the ground-frame result.",
+      "fullPreparationReview": "Keep 0fee53f2-1c02-5b12-9b6c-aa9fa462d921 as the sole direct prerequisite. Its two branches supply horizontal projectile motion and reference frames. The latter includes vector addition, Pythagoras and geometry. Measuring the angle from the scale drawing is a complete taught path.",
+      "directCoverageReview": "At 16/16, vv_1–vv_4 establish 0fee53f2-1c02-5b12-9b6c-aa9fa462d921, and vv_5 establishes an actual cart-to-ground transformation. The second claimed goal, 68c90ba6-c438-463c-9a53-cf61062d416a, also requires choosing a suitable frame. The prompt assigns the cart observer and the ground comparison. No row elicits a choice. With the fixed task, retain direct credit only for the projectile-velocity goal.",
+      "falsePassCheck": "At 12/16, part A alone gives 13 with vv_5 blank. Independently, vv_1+vv_2+vv_4+vv_5 gives 13 with neither speed magnitude calculated in vv_3. At the candidate's 16/16 every row must be full, so missing frame-change evidence precludes a pass. A learner can still earn all 16 by following the specified frames without selecting one. No higher numerical threshold can repair that missing performance.",
+      "languageReview": "Both languages agree on the frames, signed directions, magnitudes, scale and tolerance. In both, vv_4 says the angle is measured while the solution explicitly allows calculation. The required drawings in vv_2 provide a clear way to reconcile the two.",
+      "recommendedRequires": ["0fee53f2-1c02-5b12-9b6c-aa9fa462d921"],
+      "recommendedCoveredGoalIds": ["0fee53f2-1c02-5b12-9b6c-aa9fa462d921"],
+      "recommendedPassingPoints": 16,
+      "requiredCorrections": [
+        "Use 16/16 and remove 68c90ba6-c438-463c-9a53-cf61062d416a from coveredGoalIds. Keep vv_5 and its three conjunctive requirements.",
+        "Align vv_4 and part A4 in both languages with the existing solution allowance for a measured or correctly calculated angle, alongside the explanation of steepening. Both scale constructions remain required by vv_2."
+      ],
+      "scopeLimitations": ["Using two specified frames supplies graded evidence of transformation only within this item. NVX has zero guaranteed planning-credit targets."]
+    },
+    {
+      "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "The practical method is sound. With downward positive, a verified release from rest and an appropriate origin, the slope of x against t² is g/2. A justified quadratic fit can accommodate a measured nonzero initial velocity. At 0.30 and 0.60 m the illustrative ideal times are 0.2473 and 0.3497 s, about 30 and 42 frame intervals at 120 acquired frames/s. These are feasibility calculations. The estimate must come from the learner's measurements. The sensitivity test appropriately probes the effect of reading limits without claiming a confidence interval.",
+      "fullPreparationReview": "Keep 09029573-864f-40ca-bf8a-cee7bf6dcb73. It directly prepares experimental free fall, graphical determination of g and a law with initial conditions. Its branches through 262f807a-30d0-503e-986f-856cbd048e8e and f6b1d812-ce8b-5852-b417-e6c29b533c7a supply motion laws, graph slopes, measurement resolution, and random and systematic errors. The full 69-goal prerequisite closure includes Hesse and requires no later phase. The task supplies the calibration, acquisition and sensitivity procedure. The graphical straight-line route suffices without a separate regression prerequisite.",
+      "directCoverageReview": "Retain 09029573-864f-40ca-bf8a-cee7bf6dcb73 alone. Both heights require fresh physical releases, traceable raw time–position pairs, measured-point graphs, an inferred g, checked release conditions and a separate complete law. The two series also require uncertainty work and a bounded comparison. Reusing equipment is allowed and leaves shared systematic errors possible.",
+      "falsePassCheck": "Each series requires at least three valid releases and at least five traceable pairs per release. An absent core gets zero, giving at most 21/24 even if all seven other cores are perfect. A score of 23 requires seven full cores and the eighth fully demonstrated with one isolated nonconceptual slip. A copied second series, an invented or example table, someone else's recording, a plan, or substitution of 9.81 m/s² cannot satisfy the own-data cores. A genuine, well-supported discrepant result can pass.",
+      "languageReview": "The bilingual task and eight core rows agree on authenticity and grading. The German solution switches to ‘Gültigkeit des Luftwiderstandsmodells’, which describes a model of drag. The German prompt and English solution correctly identify the model under investigation as free fall with drag neglected. This wording is the reason for the two revision decisions.",
+      "recommendedRequires": ["09029573-864f-40ca-bf8a-cee7bf6dcb73"],
+      "recommendedCoveredGoalIds": ["09029573-864f-40ca-bf8a-cee7bf6dcb73"],
+      "recommendedPassingPoints": 23,
+      "requiredCorrections": [
+        "In solutionContent for f41e4e30-794e-5ce4-ba5e-cc72712cd691, replace ‘die begrenzte Gültigkeit des Luftwiderstandsmodells’ with ‘die Grenzen des Modells ohne Luftwiderstand’. The practical design and pass gate need no change."
+      ],
+      "scopeLimitations": ["Authenticity is a condition for grading actual submissions. This review establishes neither personal execution nor the availability of suitable equipment at a particular host."]
+    },
+    {
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "originalDecision": "not_an_assessment",
+      "candidateDecision": "not_an_assessment",
+      "scientificAndNumericalReview": "The qualitative description is correct for negligible drag and approximately uniform gravity. Horizontal velocity stays constant while vertical velocity changes uniformly. An upward launch can therefore rise, have zero vertical velocity at the apex and descend along a parabolic trajectory. Constant downward acceleration persists at the apex.",
+      "fullPreparationReview": "Accept the existing taught route through 0fee53f2-1c02-5b12-9b6c-aa9fa462d921. It develops a velocity vector from horizontal and vertical components. Its horizontal-projection branch supplies trajectories, free fall and motion laws, including initial conditions. Its frame/vector branch supplies composition and geometry. Extending the component description to a nonzero initial vertical component is a defensible progression. Numerical impact angles and a reference-frame exercise are not demands of SCHIEF.",
+      "directCoverageReview": "This is a content goal with a prerequisite. It has no task, scoring rubric or direct assessment coverage.",
+      "falsePassCheck": "There is no pass predicate to test.",
+      "languageReview": "The German and English descriptions both require qualitative explanation and sketching under negligible air resistance.",
+      "recommendedRequires": ["0fee53f2-1c02-5b12-9b6c-aa9fa462d921"],
+      "recommendedCoveredGoalIds": [],
+      "recommendedPassingPoints": null,
+      "requiredCorrections": [],
+      "scopeLimitations": ["The review concerns the stated goal and prerequisite path only."]
+    }
+  ],
+  "ffxHesseOfferDecision": "accept",
+  "ffxHesseOfferReason": "Page 30 of the supplied he-physics-official.pdf places experimental acquisition of free-fall data, graphical representation, determination of g, mathematical modeling and the time–position law in Hesse E.1. FFX assesses those performances, and its prerequisite chain prepares an accessible graphical route by that stage. Page 30 also calls for discussion of deviation from a literature value. FFX grades an A/B comparison and does not require that separate discussion. This limits the curriculum coverage one can claim while leaving the voluntary offer defensible. The two-series design and acquisition thresholds belong to this own task. The German solution correction is editorially narrow and does not alter the offer decision.",
+  "directCoverageVersusPlanningCredit": "Direct coverage records whole-goal evidence that a passing script must contain. A prerequisite records preparation. Neither establishes a planning-credit award. The guaranteed planning-credit target set for NVX is empty, including after the recommended 16/16 and direct-coverage correction. No planning-credit award is inferred for any other item.",
+  "crossGoalFindings": [
+    "MP's candidate resolves its three unsupported whole-goal claims and its lower-endpoint error. MOD earns its place as preparation because part 5 requires justified model limits even though the aggregate score can compensate for omitting that part.",
+    "NVX and the 36-mark shared-time assessment have different defects. NVX's full-score rule forces the transformation, but frame selection is absent from the task. The shared-time task does elicit model-limit evidence, but 22/36 permits omitting it entirely.",
+    "The two acceleration logs both support the same direct constant-acceleration goal. Their safeguards differ: the Hesse version forces level 2 in each row, while the compact version requires full marks in every row.",
+    "Reading a supplied bound, propagating two bounds, and estimating uncertainty from one's own recordings are distinct performances. Of the reviewed tasks, FFX requires the last performance in two independent acquisitions.",
+    "The recommended empty coverage lists for the 36-mark shared-time task and the two-part traffic task assume their existing aggregate pass rules. They preserve the written practice while avoiding whole-goal claims that a passing script can bypass."
+  ],
+  "globalLimitations": [
+    "The findings apply to the supplied canonical originals, exact candidates, prerequisite context and Hesse source page. No task images, materials or learner submissions were assessed.",
+    "The Hesse decision concerns curricular fit and preparation for a voluntary own task. Official Land examination status, learner acceptance and host acceptance are outside this decision.",
+    "No files, historical learner results, immutable evidence or V9 proof were changed. Material-intro hashes and final planning-credit byte seals belong to a separate review and were unavailable here."
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "descriptionReviews": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "enum": [
+              "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "revise",
+              "split_review",
+              "block"
+            ]
+          },
+          "proposedDescriptionDe": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "proposedDescriptionEn": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "understandingEvidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "essentialUnderstandingDe": {
+                "type": "string",
+                "minLength": 1
+              },
+              "essentialUnderstandingEn": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observablePerformanceDe": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observablePerformanceEn": {
+                "type": "string",
+                "minLength": 1
+              },
+              "transferExpectationDe": {
+                "type": "string",
+                "minLength": 1
+              },
+              "transferExpectationEn": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "essentialUnderstandingDe",
+              "essentialUnderstandingEn",
+              "observablePerformanceDe",
+              "observablePerformanceEn",
+              "transferExpectationDe",
+              "transferExpectationEn"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceProfileContract": {
+            "type": "string",
+            "const": "positive-understanding-evidence-v2"
+          },
+          "evidenceProfileRecommendation": {
+            "type": "string",
+            "enum": [
+              "none",
+              "create",
+              "revise"
+            ]
+          }
+        },
+        "required": [
+          "goalId",
+          "decision",
+          "proposedDescriptionDe",
+          "proposedDescriptionEn",
+          "understandingEvidence",
+          "rationale",
+          "evidenceProfileContract",
+          "evidenceProfileRecommendation"
+        ]
+      }
+    },
+    "profileReviews": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "enum": [
+              "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "revise",
+              "block"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredChanges": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "decision",
+          "reason",
+          "requiredChanges"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "descriptionReviews",
+    "profileReviews",
+    "limitations"
+  ]
+}

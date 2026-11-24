@@ -1,0 +1,114 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/home/enpasos/.gradle/wrapper/dists/gradle-9.7.1-bin/1w1c7tv4s851m17nbqdsro2tv/gradle-9.7.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :compileJava UP-TO-DATE
+
+> Task :generateClaudePluginPublication
+CHECK claude_build_publication PASS version=1.1.15 bytes=47454 sha256=bec6045dbba0e399b01b223901527083a1c5c437d522211dd1c06f049aba3acb
+Index=/home/enpasos/projects/skillpilot-e1-nachweise/backend/build/generated-resources/claude-plugin-publication/index.json
+
+> Task :processResources
+> Task :classes
+
+> Task :compileTestJava
+/home/enpasos/projects/skillpilot-e1-nachweise/backend/src/test/java/com/skillpilot/backend/ui/LearnerLearningPlanControllerHttpTest.java:65: warning: [removal] MappingJackson2HttpMessageConverter in org.springframework.http.converter.json has been deprecated and marked for removal
+                .setMessageConverters(new MappingJackson2HttpMessageConverter(objectMapper))
+                                          ^
+/home/enpasos/projects/skillpilot-e1-nachweise/backend/src/test/java/com/skillpilot/backend/ui/LearnerExamPassControllerTest.java:33: warning: [removal] MappingJackson2HttpMessageConverter in org.springframework.http.converter.json has been deprecated and marked for removal
+            .setMessageConverters(new MappingJackson2HttpMessageConverter(new SkillpilotApplication().objectMapper()))
+                                      ^
+/home/enpasos/projects/skillpilot-e1-nachweise/backend/src/test/java/com/skillpilot/backend/service/AssessmentCompletionIntegrationTest.java:421: warning: [removal] MappingJackson2HttpMessageConverter in org.springframework.http.converter.json has been deprecated and marked for removal
+                .setMessageConverters(new org.springframework.http.converter.json.MappingJackson2HttpMessageConverter(mapper)).build();
+                                                                                 ^
+/home/enpasos/projects/skillpilot-e1-nachweise/backend/src/test/java/com/skillpilot/backend/service/AssessmentCompletionIntegrationTest.java:445: warning: [removal] MappingJackson2HttpMessageConverter in org.springframework.http.converter.json has been deprecated and marked for removal
+                .setMessageConverters(new org.springframework.http.converter.json.MappingJackson2HttpMessageConverter(mapper)).build();
+                                                                                 ^
+/home/enpasos/projects/skillpilot-e1-nachweise/backend/src/test/java/com/skillpilot/backend/service/AssessmentCompletionIntegrationTest.java:495: warning: [removal] MappingJackson2HttpMessageConverter in org.springframework.http.converter.json has been deprecated and marked for removal
+                .setMessageConverters(new org.springframework.http.converter.json.MappingJackson2HttpMessageConverter(mapper)).build();
+                                                                                 ^
+/home/enpasos/projects/skillpilot-e1-nachweise/backend/src/test/java/com/skillpilot/backend/service/AssessmentCompletionIntegrationTest.java:951: warning: [removal] MappingJackson2HttpMessageConverter in org.springframework.http.converter.json has been deprecated and marked for removal
+                .setMessageConverters(new org.springframework.http.converter.json.MappingJackson2HttpMessageConverter(mapper)).build();
+                                                                                 ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+6 warnings
+
+> Task :processTestResources UP-TO-DATE
+> Task :testClasses
+
+> Task :test
+
+E1CurrentPhysicsSeedCapture > learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() STARTED
+
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+2026-11-24T06:34:36.671+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2026-11-24T06:34:36.671+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.server.servlet.context.AnnotationConfigServletWebServerApplicationContext@41a374be, started on Tue Nov 24 06:34:14 CET 2026
+2026-11-24T06:34:36.674+01:00  INFO 980918 --- [skillpilot-backend] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-24T06:34:36.676+01:00  INFO 980918 --- [skillpilot-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-11-24T06:34:36.682+01:00  INFO 980918 --- [skillpilot-backend] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-24T06:34:36.683+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_session cascade 
+Hibernate: drop table if exists chat_session cascade 
+2026-11-24T06:34:36.684+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_start_code cascade 
+Hibernate: drop table if exists chat_start_code cascade 
+2026-11-24T06:34:36.684+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_binding_grant cascade 
+Hibernate: drop table if exists claude_binding_grant cascade 
+2026-11-24T06:34:36.684+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_connection cascade 
+Hibernate: drop table if exists claude_connection cascade 
+2026-11-24T06:34:36.685+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_pending_launch cascade 
+Hibernate: drop table if exists claude_pending_launch cascade 
+2026-11-24T06:34:36.685+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists curriculum_champion cascade 
+Hibernate: drop table if exists curriculum_champion cascade 
+2026-11-24T06:34:36.685+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_export_batch cascade 
+Hibernate: drop table if exists goal_feedback_export_batch cascade 
+2026-11-24T06:34:36.685+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_submission cascade 
+Hibernate: drop table if exists goal_feedback_submission cascade 
+2026-11-24T06:34:36.686+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner cascade 
+Hibernate: drop table if exists learner cascade 
+2026-11-24T06:34:36.686+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_card_state cascade 
+Hibernate: drop table if exists learner_card_state cascade 
+2026-11-24T06:34:36.686+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_client_state cascade 
+Hibernate: drop table if exists learner_client_state cascade 
+2026-11-24T06:34:36.686+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_copy_sources cascade 
+Hibernate: drop table if exists learner_copy_sources cascade 
+2026-11-24T06:34:36.686+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_goal_completion cascade 
+Hibernate: drop table if exists learner_goal_completion cascade 
+2026-11-24T06:34:36.686+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_learning_plan cascade 
+Hibernate: drop table if exists learner_learning_plan cascade 
+2026-11-24T06:34:36.687+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists mastery cascade 
+Hibernate: drop table if exists mastery cascade 
+2026-11-24T06:34:36.687+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_binding_grant cascade 
+Hibernate: drop table if exists openai_de_binding_grant cascade 
+2026-11-24T06:34:36.687+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_connection cascade 
+Hibernate: drop table if exists openai_de_connection cascade 
+2026-11-24T06:34:36.687+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_idempotency cascade 
+Hibernate: drop table if exists openai_de_idempotency cascade 
+2026-11-24T06:34:36.687+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_learning_session cascade 
+Hibernate: drop table if exists openai_de_learning_session cascade 
+2026-11-24T06:34:36.687+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_pending_launch cascade 
+Hibernate: drop table if exists openai_de_pending_launch cascade 
+2026-11-24T06:34:36.687+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_session_migration cascade 
+Hibernate: drop table if exists openai_de_session_migration cascade 
+2026-11-24T06:34:36.688+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists planned_goal cascade 
+Hibernate: drop table if exists planned_goal cascade 
+2026-11-24T06:34:36.688+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists verified_exam_pass cascade 
+Hibernate: drop table if exists verified_exam_pass cascade 
+2026-11-24T06:34:36.688+01:00 DEBUG 980918 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists verified_exam_pass_credit_binding cascade 
+Hibernate: drop table if exists verified_exam_pass_credit_binding cascade 
+2026-11-24T06:34:36.690+01:00  INFO 980918 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-24T06:34:36.692+01:00  INFO 980918 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+> Task :test
+
+E1CurrentPhysicsSeedCapture > learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() PASSED
+
+[Incubating] Problems report is available at: file:///home/enpasos/projects/skillpilot-e1-nachweise/backend/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 53s
+6 actionable tasks: 4 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html

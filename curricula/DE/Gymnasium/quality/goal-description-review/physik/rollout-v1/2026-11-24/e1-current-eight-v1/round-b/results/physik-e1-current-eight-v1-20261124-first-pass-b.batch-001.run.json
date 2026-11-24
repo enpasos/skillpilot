@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physik-e1-current-eight-v1-20261124-b-01a20bd8-2e71-7cf1-986d-205309461732",
+  "campaignId": "physik-e1-current-eight-v1-20261124-b",
+  "roundId": "physik-e1-current-eight-v1-20261124-first-pass-b",
+  "batchId": "physik-e1-current-eight-v1-20261124-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:7f54d563415aed68ec7c445a1fa96ebbe2e0766bb8e752e581015889436f5f28",
+  "bundleFingerprint": "sha256:92bb96c20a16a9eb1ece4d3f5c851f4e78c51187fb229bdf104fb442506ec554",
+  "bookDigest": "sha256:4c369132bf268bac4b8c405c310c6794eceb3675fd15d99134d9f7f88bb14167",
+  "provider": "OpenAI",
+  "model": "gpt-6.2-astra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:920253ba226cc525623d3fd905e5bbeba14267125dc47d16564555262614c7a8",
+  "independenceGroupId": "physik-e1-current-eight-v1-20261124-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "ce431132-dfc4-42c2-aff6-bd72035190f8",
+    "1e459a1b-4159-5049-84eb-9928129c1610",
+    "262f807a-30d0-503e-986f-856cbd048e8e",
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+    "d6dc0e02-831d-4894-a61a-852bcc74f147",
+    "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+    "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6e78f7409ab16ee23ae6b2f1a43b9983305f27ed66d83354c318db9821ef9564"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:00966e10faf64644ae14934b8c04c91e3a1a88f09f4d0252eec2e397a2ee626b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:7f54d563415aed68ec7c445a1fa96ebbe2e0766bb8e752e581015889436f5f28"
+    }
+  ],
+  "startedAt": "2026-11-24T04:37:27.630Z",
+  "completedAt": "2026-11-24T04:42:58.832Z",
+  "status": "completed",
+  "outputDigest": "sha256:d435b66645776d0a769756006a5432b2642d7d4fbc750a692d3ded48af4f35c2",
+  "toolchainVersion": "codex-cli-0.171.0-alpha.13.2-native-metadata-join-v1"
+}

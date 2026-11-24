@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "contract": "actual-blind-native-description-and-profile-cli-v1",
+  "threadId": "01a20bdc-b328-7e01-aeac-1ee57035fbd1",
+  "provider": "OpenAI",
+  "model": "gpt-6.2-astra",
+  "reasoningEffort": "ultra",
+  "cwd": "/tmp/e1-t5/dp-bes-v2-b",
+  "sandbox": {
+    "type": "read-only"
+  },
+  "approvalPolicy": "never",
+  "startedAt": "2026-11-24T04:42:23.783Z",
+  "completedAt": "2026-11-24T04:44:14.977Z",
+  "exitCode": 0,
+  "blindToOtherRuns": true,
+  "cliVersion": "0.171.0-alpha.13.2",
+  "inputArtifacts": {
+    "attached-images.json": "sha256:a38359fc15ca9ecd6a75ffd7ac79bd1282db78dea1e54540816e7d77c8ebfe13",
+    "batch.input.jsonl": "sha256:6a9e8ebb55d7bbd936625eaf9a7195fd5292ee5d356b42f1d0f42655b95e5d8c",
+    "book-model.json": "sha256:020da512784644b38612fcce77e9b6411706c46e68392b28ccd6a21dbbad5407",
+    "book-page-001.png": "sha256:b988a65481b4e9156cdda9dedb01a7e045377791298dd6cecee2dee9de38d6c8",
+    "book-page-002.png": "sha256:937584b744e5ecdbe62e5632834a5d3b6d1e63466b193d2a553de6716076661e",
+    "book-page-003.png": "sha256:cfd8e4d9ad8271d9b368675ff70b4146dea2c9134c6129353675db388dcd85ec",
+    "book.pdf": "sha256:46d0aecf7a8e0f303d3405a9536a34212aa9475ed011dd9f20ac7da5e11d3310",
+    "criteria.md": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+    "description-review-campaign.json": "sha256:0310b76a3d6f8f4cbe452d2e205250d5430be83d717cc996bd3872b27b50e300",
+    "description-review-input.json": "sha256:18e3e83368aa57ddb476c040626a921ff3115a7ea330f5d0e85c5f033fd97c31",
+    "driver-prompt.txt": "sha256:14f9a23632ec410f406323a4ab6572d5e0b5d35687405021683c2c1927efa2c0",
+    "goal-image-e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg": "sha256:1213e93541e63c32b07b4a1ac428b6a368bac12c554327b67e03bfffdb937f91",
+    "invocation.json": "sha256:a5eb10d088b4a2b2547af75aa10193d54c60c660999bdc44a7cd0c17916ba140",
+    "memory-cards.json": "sha256:c914e49a9a0206bea26102e92171eadaa4fdc229ebdb457b110abddb0f2f9526",
+    "native-national-scope.json": "sha256:9d6eb0cf4a8312da0667fcb1c6644a73c561c7c8cc64895300a0f3ab21e5e478",
+    "native-record.schema.json": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+    "output.schema.json": "sha256:9eb8f005ef1f28f1256dd0f998683d55d00979546bc6d09764df48f701bec43e",
+    "positive-profile-criteria.md": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+    "positive-profiles.json": "sha256:6e550ee0852bbb0352805db17efdb99f30a6efc01062152baaa0f6a8bfb06ef2",
+    "prerequisite-context.json": "sha256:8c6e979c5079479fcbe033534d3be03b47f44706a4e677175e0c3d396f945980",
+    "prompt.md": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+    "review-bundle-manifest.json": "sha256:cec57b305099db15b1cf2421814554eee17537a29923b1c18acf6de3fa4a3d83"
+  },
+  "responseSha256": "sha256:c727357b556f66e5a447e632d0bebc49f6848027f7033aa6e5b8a48d8a02dbe1",
+  "eventsSha256": "sha256:b97414b472cca812706f65aac74184c6dd62f79d0cf3893f711b16d74466bed2",
+  "sessionSource": "/home/enpasos/.codex/sessions/2026/11/24/rollout-2026-11-24T05-42-22-01a20bdc-b328-7e01-aeac-1ee57035fbd1.jsonl",
+  "sessionRawSha256": "sha256:73672772fed292eecf6aad238583660a048bf230cd363c3f37be6fdc5c28c8cd",
+  "turnContext": {
+    "turn_id": "01a20bdc-b69a-7561-aebf-8c9bf9c1f2b9",
+    "root_turn_id": "01a20bdc-b69a-7561-aebf-8c9bf9c1f2b9",
+    "disabled_plugin_ids": [],
+    "cwd": "/tmp/e1-t5/dp-bes-v2-b",
+    "approval_policy": "never",
+    "approvals_reviewer": "user",
+    "permission_profile": {
+      "type": "managed",
+      "file_system": {
+        "type": "restricted",
+        "entries": [
+          {
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "root"
+              }
+            },
+            "access": "read"
+          }
+        ]
+      },
+      "network": "restricted"
+    },
+    "model": "gpt-6.2-astra",
+    "comp_hash": "3000",
+    "collaboration_mode": {
+      "mode": "default",
+      "settings": {
+        "model": "gpt-6.2-astra",
+        "reasoning_effort": "ultra",
+        "developer_instructions": null
+      }
+    },
+    "multi_agent_version": "v2",
+    "realtime_active": false,
+    "cyber_access_program": "standard",
+    "effort": "ultra",
+    "summary": "none",
+    "sandbox_policy": {
+      "type": "read-only"
+    }
+  },
+  "metadataJoin": "The raw scientific D decision bodies are joined mechanically to frozen native batch metadata after the actual run. Raw P decisions and limitations stay in response.json. No decision body is rewritten.",
+  "limits": [
+    "Applicability was checked against the supplied compiled national scope. The underlying state curriculum documents and the compilation process were not independently inspected.",
+    "All three rendered book pages and the listed primary image were inspected. The separate image reference `-` did not resolve to a file."
+  ]
+}

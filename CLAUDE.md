@@ -65,11 +65,25 @@ E.1 awaits pedagogical acceptance.
 
 **21 November 2026.** With the pilot enabled, new and existing atomic plans
 apply the section's assessment policy to goals included by a section selection.
-The older GK example contributes 16 E.1 positions, or 17 when the voluntary
+Since the E.1 cut the older GK example contributes 20 E.1 positions in the
+Sek II view (19 in the cross-stage view), or one more when the voluntary
 horizontal-throw exam was also selected explicitly. This holds even if older
 overlapping blocks stored the exam only once. Use the backend's effective
 plan. Stored selections, receipts and individual mastery are preserved. With
 the pilot disabled the stored lists apply.
+
+**E.1 cut (23 and 24 November 2026).** E.1 has four child structures in
+learning order; only "Freier Fall schwerer Kugeln" is a declared unit with its
+own opening. Reference frames and the velocity vector of the throw belong to
+E.3, road traffic follows friction in E.2. Voluntary E.1 exams are the
+horizontal-throw exam and the own task with two free-fall series; the
+multiphase exam is retired until an edition passes independent review. The
+horizontal-throw exam has a revised edition with its own id since 24 November;
+passes of the earlier edition never count for it. A stored plan that still
+names a retired edition is outdated and the learner renews it; stored blocks,
+receipts and mastery are kept. The
+planning release credits only the accelerated-motion goal from part D. See
+the E.1 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 
 The learner-facing Cockpit tree and graphical map should share one unit and
 atomic-goal hierarchy in the same scope. Present an atomic goal directly

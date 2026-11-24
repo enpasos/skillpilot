@@ -270,6 +270,18 @@ export function buildLearnerUnitMapProjection(input: LearnerUnitMapProjectionInp
       continue
     }
     const parentId = parents[0]
+    const section = goalIndexAll.get(parentId)
+    const firstChild = section?.extendedData?.compositionNodeId ? visibleChildren(parentId)[0] : undefined
+    if (firstChild && present.includes(firstChild) && canonicalGoalIndexAll.get(firstChild)?.semanticKind === 'orientation') {
+      // This view section starts with the declared unit's own opening. Keep its
+      // visible children on that board, including section goals outside 'own'.
+      const board = entries[parentId]
+      board.orientationGoalId = firstChild
+      board.presentationGroup = undefined
+      if (unit.withAssessments) board.unitType = 'unitWithAssessments'
+      unitEntryIdByKey.set(unit.key, parentId)
+      continue
+    }
     const id = syntheticUnitId(unit.key)
     entries[id] = { id, title: unit.label, description: '', kind: 'unit', unitType: unit.withAssessments ? 'unitWithAssessments' : 'unit',
       children: [], requires: [], position: { x: 0, y: 0 } }

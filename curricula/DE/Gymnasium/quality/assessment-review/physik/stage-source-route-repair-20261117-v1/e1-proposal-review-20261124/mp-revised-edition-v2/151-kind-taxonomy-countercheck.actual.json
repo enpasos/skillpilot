@@ -1,0 +1,131 @@
+{
+  "targetGoalId": "151edbf8-eb68-5ef7-8786-43e56a281b0b",
+  "previousKind": "curricularArea",
+  "candidateKind": "practiceAssessment",
+  "purpose": "Retained mixed examination tasks and their historical grading outcomes; no ordinary subject-content children.",
+  "explicitChangeNotOnlyHashRefresh": true,
+  "projectTaxonomyEvidence": {
+    "existingNativePhysicsPracticeAssessmentClusters": [
+      {
+        "goalId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "title": "Übungen E-Phase",
+        "type": "cluster",
+        "childCount": 19
+      },
+      {
+        "goalId": "549a427d-f10a-5537-990e-6fdd7466848b",
+        "title": "Übungen Q1",
+        "type": "cluster",
+        "childCount": 28
+      },
+      {
+        "goalId": "9dd7c596-a751-523c-acba-916f73e900a5",
+        "title": "Übungen Q2",
+        "type": "cluster",
+        "childCount": 9
+      },
+      {
+        "goalId": "b47a2a23-b56d-5433-9036-075d6bb7c782",
+        "title": "Übungen Q3",
+        "type": "cluster",
+        "childCount": 11
+      },
+      {
+        "goalId": "85bbad98-2f48-5d64-85c4-ab6cf67f24c2",
+        "title": "Übungen Q4",
+        "type": "cluster",
+        "childCount": 34
+      },
+      {
+        "goalId": "61684ca7-b725-534f-944b-c7645cea1792",
+        "title": "Abiturprüfung Physik (GK)",
+        "type": "cluster",
+        "childCount": 2
+      },
+      {
+        "goalId": "79028c45-90ae-57eb-8016-f5a96af18fa2",
+        "title": "Abiturprüfung Physik (LK)",
+        "type": "cluster",
+        "childCount": 2
+      },
+      {
+        "goalId": "21ab0854-4d67-5233-9495-ae208e152a3c",
+        "title": "Übungen Sekundarstufe I Physik",
+        "type": "cluster",
+        "childCount": 70
+      },
+      {
+        "goalId": "4ad7303d-22ad-56e6-aee0-f05b2ca42a07",
+        "title": "Gemeinsame Grundlagen- und Methodenübungen",
+        "type": "cluster",
+        "childCount": 4
+      },
+      {
+        "goalId": "8e5c7195-eb30-55c1-a19a-630742620ba0",
+        "title": "Eigenständige Methodenübungen der E-Phase",
+        "type": "cluster",
+        "childCount": 1
+      },
+      {
+        "goalId": "5630f93b-82ce-5d76-a781-31accc6854e9",
+        "title": "Grundlagenaufgaben zu Sonnensystem und Galaxien",
+        "type": "cluster",
+        "childCount": 2
+      },
+      {
+        "goalId": "7bdd1853-164e-54ca-8255-497ea8edd1f1",
+        "title": "Messgenauigkeit untersuchen",
+        "type": "cluster",
+        "childCount": 1
+      },
+      {
+        "goalId": "cc308bcc-435b-527d-b898-efafdf47c48a",
+        "title": "Messdaten und Bewegungen digital modellieren",
+        "type": "cluster",
+        "childCount": 2
+      },
+      {
+        "goalId": "2a5dfdf6-73e7-5336-a37f-cbf2dabec55e",
+        "title": "Magnetfelder und Induktion anwenden",
+        "type": "cluster",
+        "childCount": 2
+      }
+    ],
+    "nativeGoalTypeEnum": {
+      "enum": [
+        "atomic",
+        "cluster"
+      ]
+    },
+    "nativeSemanticKindEnum": {
+      "enum": [
+        "curricularAtomic",
+        "curricularArea",
+        "programStructure",
+        "practiceAssessment",
+        "memory",
+        "orientation",
+        "runtimeSupport"
+      ]
+    },
+    "noAdditionalGoalTypeKindAllOfConstraint": true,
+    "ontologyDefinition": "sp:PracticeAssessmentGoal a owl:Class ; rdfs:subClassOf sp:LearningGoal .",
+    "profileDefinition": "curricularArea maps a curricular subject cluster to Core CE-Bereich; practiceAssessment maps practice and assessment endpoints to sp:PracticeAssessmentGoal. Existing authoritative Physics collections instantiate this kind for clusters.",
+    "boundSourceFiles": [
+      {
+        "path": "contracts/curriculum-package/v1.2/compiled-landscape.schema.json",
+        "sha256": "bcdf0d2c2e1e5343a6dafdae9a624a30e0c5464a13778245bdaec9cfe24e39fd"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-profile-1.0.0.ttl",
+        "sha256": "c42cd5a9698b438c6cb7c1cb4fba02da46fea70c247be75f2f6d57f126c994c6"
+      },
+      {
+        "path": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json",
+        "sha256": "0bc52768dc968510cf09ffa7faa904bbe6465eb5071969949521ae5518016968"
+      }
+    ]
+  },
+  "scope": "Classification only; no source teaching claim, mastery write, implicit recognition, task rewrite or new assessment admission.",
+  "nonAuthoritativeProbeFailure": "Directly validating the raw canonical historical container as an already compiled goal fails the compiled schema because its existing dimensionTags lacks framework. That raw/compiled format mismatch is not a kind incompatibility and is not presented as a successful native whole-goal-schema check. The native semantic-kind parser on the canonical landscape is the applicable final check."
+}

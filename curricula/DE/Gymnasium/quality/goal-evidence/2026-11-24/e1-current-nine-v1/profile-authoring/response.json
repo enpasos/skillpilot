@@ -1,0 +1,650 @@
+{
+  "goals": [
+    {
+      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "reason": "Ortsänderungen in gleichen Zeitspannen verbinden die selbst gemessene Bewegung mit Richtung und Steilheit des t-s-Graphen; die Messauflösung begrenzt die Deutung. / Position changes over equal time spans connect personally measured motion to direction and steepness in the t-s graph; measurement resolution limits interpretation.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "measure-position-time",
+            "essentialUnderstandingDe": "Orts-Zeit-Daten beziehen sich auf einen festgelegten Körperpunkt, Nullpunkt, eine positive Richtung und eine gemeinsame Zeitbasis. Messauflösung und Abtastrate begrenzen erkennbare Änderungen.",
+            "essentialUnderstandingEn": "Position-time data refer to a specified point on the object, origin, positive direction and common time base. Measurement resolution and sampling rate limit detectable changes.",
+            "observablePerformanceDe": "Plant und erhebt selbst Daten zu einer prüfbaren Frage nach Ruhe, Richtung oder Tempo. Legt Messprinzip, Koordinaten, zeitliche Abstände und Auflösung fest, hält die Bewegung eindimensional und sichert den langsamen Aufbau. Dokumentiert Rohdaten, eigene Tätigkeiten und Hilfe.",
+            "observablePerformanceEn": "Plans and personally collects data for a testable question about rest, direction or speed. Specifies the measurement principle, coordinates, sampling intervals and resolution, keeps motion one-dimensional and secures the slow setup. Documents raw data, personal work and assistance."
+          },
+          {
+            "id": "construct-interpret-position-graph",
+            "essentialUnderstandingDe": "Im t-s-Diagramm steht Zeit waagerecht und Ort senkrecht. Waagerechte Abschnitte zeigen innerhalb der Auflösung Ruhe; steigende oder fallende Abschnitte zeigen die Richtung. Größere Ortsänderungen in gleichen Zeitspannen bedeuten schnellere Bewegung.",
+            "essentialUnderstandingEn": "In a t-s graph, time is horizontal and position vertical. Horizontal sections indicate rest within resolution; rising or falling sections indicate direction. Larger position changes over equal time spans mean faster motion.",
+            "observablePerformanceDe": "Erstellt aus eigenen Daten einen beschrifteten, skalierten Graphen und begründet Ruhe, Richtung sowie schnellere und langsamere Abschnitte mit Messintervallen. Unterscheidet die Graphenform vom räumlichen Weg.",
+            "observablePerformanceEn": "Constructs a labeled, scaled graph from personal data and supports judgments about rest, direction and faster or slower sections using measurement intervals. Distinguishes graph shape from the spatial path."
+          },
+          {
+            "id": "qualify-motion-claims",
+            "essentialUnderstandingDe": "Kleine Schwankungen können Messstreuung sein; zwischen diskreten Messpunkten ist der genaue Bewegungsverlauf nicht vollständig bekannt.",
+            "essentialUnderstandingEn": "Small fluctuations may be measurement scatter; the exact motion between discrete measurements is not fully known.",
+            "observablePerformanceDe": "Prüft Deutungen an Auflösung und Streuung, bezeichnet nicht auflösbare Unterschiede als unentschieden und begründet eine Messverbesserung, wenn Ruhe oder eine kurze Umkehr nicht sicher erkennbar sind.",
+            "observablePerformanceEn": "Checks interpretations against resolution and scatter, reports unresolved differences as undecided and justifies a measurement improvement when rest or a brief reversal cannot be established."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "measure-position-time",
+            "construct-interpret-position-graph",
+            "qualify-motion-claims"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "measurement-principle",
+            "textDe": "Elektronische Abstandsmessung gegenüber kalibrierter Bildmessung mit anderer räumlicher und zeitlicher Auflösung.",
+            "textEn": "Electronic distance measurement versus calibrated image measurement with different spatial and temporal resolution."
+          },
+          {
+            "id": "direction-and-pause",
+            "textDe": "Bewegung in positiver Richtung mit Pause gegenüber einer Bewegung mit Umkehr.",
+            "textEn": "Motion in the positive direction with a pause versus motion with a reversal."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "sensor-cart",
+            "taskDemandDe": "Erfasse selbst mit einem Abstandssensor einen langsam bewegten Wagen auf einer gesicherten geraden Strecke: eine Pause und zwei verschieden schnelle Abschnitte. Formuliere die Untersuchungsfrage und wähle eine passende Abtastung.",
+            "taskDemandEn": "Personally record a slowly moving cart with a distance sensor on a secured straight track: include a pause and two sections at different speeds. Formulate the investigation question and choose suitable sampling.",
+            "expectedPerformanceDe": "Legt eigene Rohdaten und einen t-s-Graphen mit Einheiten vor. Ordnet die Pause einem innerhalb der Messunsicherheit konstanten Ort zu und belegt den schnelleren Abschnitt durch größere Ortsänderungen in gleichen Zeitspannen. Nennt Auflösung und Streuung.",
+            "expectedPerformanceEn": "Provides personal raw data and a t-s graph with units. Identifies the pause as position constant within measurement uncertainty and supports the faster section using larger position changes over equal time spans. States resolution and scatter.",
+            "understandingFocusDe": "Orts-Zeit-Daten tragen Bewegungsaussagen zusammen mit Koordinatenkonvention und Messauflösung.",
+            "understandingFocusEn": "Position-time data support motion claims together with coordinate conventions and measurement resolution."
+          },
+          {
+            "id": "own-video-reversal",
+            "taskDemandDe": "Nimm selbst einen entlang eines Maßstabs bewegten Marker mit langsamer Umkehr auf. Gewinne daraus eigenständig Orts-Zeit-Daten, wähle eine positive Richtung und prüfe, ob ein kurzer Halt an der Umkehr auflösbar ist.",
+            "taskDemandEn": "Personally record a marker moving along a scale with a slow reversal. Independently extract position-time data, choose a positive direction and determine whether a brief stop at reversal is resolvable.",
+            "expectedPerformanceDe": "Dokumentiert eigene Aufnahme, Maßstab, Bildzeit und Positionsauflösung. Konstruiert einen neuen Graphen mit steigendem und fallendem Abschnitt und begründet Richtung und Tempovergleich. Unterscheidet eine nachgewiesene Pause von einer wegen grober Abtastung unentschiedenen Aussage.",
+            "expectedPerformanceEn": "Documents the personal recording, scale, frame timing and position resolution. Constructs a new graph with rising and falling sections and justifies direction and speed comparisons. Distinguishes an established pause from an undecided claim caused by coarse sampling.",
+            "understandingFocusDe": "Ein Vorzeichenwechsel der Ortsänderung zeigt eine Umkehr; einzelne Messpunkte beweisen keinen zeitlich ausgedehnten Stillstand.",
+            "understandingFocusEn": "A sign change in position change indicates reversal; individual measurements do not establish rest over an extended interval."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "reason": "Δs = v̄·Δt macht jedes Intervallrechteck zur vorzeichenbehafteten Ortsänderung; die Flächensumme ergibt die gesamte Ortsänderung. / Δs = v̄·Δt makes each interval rectangle a signed displacement; adding the areas recovers net displacement.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "interval-velocity",
+            "essentialUnderstandingDe": "Die mittlere Intervallgeschwindigkeit ist Δs/Δt mit positiver Zeitspanne; ihr Vorzeichen bezieht sich auf die gewählte Ortsachse.",
+            "essentialUnderstandingEn": "Average interval velocity is Δs/Δt with a positive elapsed time; its sign refers to the chosen position axis.",
+            "observablePerformanceDe": "Bestimmt aus neuen Orts-Zeit-Daten die Geschwindigkeiten für die tatsächlichen, auch ungleichen Intervalle und erläutert Vorzeichen und Einheit m/s.",
+            "observablePerformanceEn": "Determines velocities from fresh position-time data using the actual, possibly unequal intervals and explains their signs and unit m/s."
+          },
+          {
+            "id": "construct-interval-graph",
+            "essentialUnderstandingDe": "Ein t-v-Intervallgraph ordnet jedem Zeitintervall seinen Mittelwert zu; seine Stufen behaupten keinen gemessenen momentanen Verlauf innerhalb der Intervalle.",
+            "essentialUnderstandingEn": "An interval t-v graph assigns its mean velocity to each time interval; its steps do not claim a measured instantaneous history within the intervals.",
+            "observablePerformanceDe": "Erstellt einen beschrifteten Stufengraphen mit korrekten Zeitgrenzen und unterscheidet Intervallmittelwerte von unbekannten Momentangeschwindigkeiten.",
+            "observablePerformanceEn": "Constructs a labeled step graph with correct time boundaries and distinguishes interval means from unknown instantaneous velocities."
+          },
+          {
+            "id": "signed-area",
+            "essentialUnderstandingDe": "Die vorzeichenbehaftete Fläche v̄·Δt hat die Einheit Meter und entspricht der Ortsänderung des Intervalls; gegenläufige Änderungen können sich aufheben.",
+            "essentialUnderstandingEn": "The signed area v̄·Δt has unit metres and equals the interval displacement; changes in opposite directions can cancel.",
+            "observablePerformanceDe": "Ermittelt die Netto-Ortsänderung aus positiven und negativen Rechtecksflächen, rekonstruiert mit dem Anfangsort den Endort und prüft ihn an den Ortsdaten.",
+            "observablePerformanceEn": "Finds net displacement from positive and negative rectangle areas, reconstructs the final position using the initial position, and checks it against the position data."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "interval-velocity",
+            "construct-interval-graph",
+            "signed-area"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "direction-and-rest",
+            "textDe": "Nur positive Ortsänderungen gegenüber Richtungswechsel und Ruheintervall.",
+            "textEn": "Only positive displacements versus reversal and a rest interval."
+          },
+          {
+            "id": "time-partition",
+            "textDe": "Gleiche oder ungleiche Messintervalle; die tatsächliche Rechteckbreite entscheidet über den Flächenbeitrag.",
+            "textEn": "Equal or unequal sampling intervals; actual rectangle width determines the area contribution."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "unequal-forward-intervals",
+            "taskDemandDe": "Für t = 0; 1; 3; 4 s liegen Orte s = 1; 3; 9; 10 m vor. Bestimme Intervallgeschwindigkeiten, erstelle den t-v-Intervallgraphen und gewinne daraus die Ortsänderung.",
+            "taskDemandEn": "At t = 0, 1, 3, 4 s, positions are s = 1, 3, 9, 10 m. Determine interval velocities, construct the interval t-v graph, and recover displacement from it.",
+            "expectedPerformanceDe": "Erzeugt Stufen von 2; 3; 1 m/s auf den Breiten 1; 2; 1 s. Begründet Δs = 2 + 6 + 1 = 9 m und sEnde = 10 m; die Stufen legen den inneren Bewegungsverlauf nicht fest.",
+            "expectedPerformanceEn": "Produces steps of 2, 3, 1 m/s over widths 1, 2, 1 s. Justifies Δs = 2 + 6 + 1 = 9 m and final position 10 m; the steps do not determine motion within each interval.",
+            "understandingFocusDe": "Ungleiche Zeitbreiten und Ortsnullpunkt bleiben bei der Flächendeutung erhalten.",
+            "understandingFocusEn": "Area interpretation retains unequal interval widths and the position origin."
+          },
+          {
+            "id": "return-with-pause",
+            "taskDemandDe": "Bearbeite unabhängig neue Daten: t = 0; 2; 3; 5 s und s = 4; 8; 8; 2 m. Stelle die Intervallgeschwindigkeiten dar und erkläre den Endort durch vorzeichenbehaftete Flächen.",
+            "taskDemandEn": "Independently process fresh data: t = 0, 2, 3, 5 s and s = 4, 8, 8, 2 m. Represent the interval velocities and explain the final position through signed areas.",
+            "expectedPerformanceDe": "Erhält +2; 0; −3 m/s und Flächen +4; 0; −6 m. Folgert Δs = −2 m und sEnde = 2 m; begründet Ruhe, Rückbewegung und teilweise Aufhebung der Flächen.",
+            "expectedPerformanceEn": "Obtains +2, 0, −3 m/s and areas +4, 0, −6 m. Concludes Δs = −2 m and final position 2 m; explains rest, return motion, and partial area cancellation.",
+            "understandingFocusDe": "Negative Fläche bedeutet Ortsänderung entgegen der positiven Achse; ein Ruheintervall trägt keine Fläche bei.",
+            "understandingFocusEn": "Negative area means displacement opposite the positive axis; a rest interval contributes no area."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "reason": "Gleiche vorzeichenbehaftete Geschwindigkeitsänderungen in gleichen Zeiten verbinden t-v-Gerade, waagerechten t-a-Graphen und t-s-Parabel. / Equal signed velocity changes over equal times link a straight t-v graph, horizontal t-a graph and parabolic t-s graph.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "constant-acceleration",
+            "essentialUnderstandingDe": "Bei gleichmäßig beschleunigter eindimensionaler Bewegung ist a = Δv/Δt konstant; das Vorzeichen von a allein entscheidet nicht, ob der Geschwindigkeitsbetrag wächst.",
+            "essentialUnderstandingEn": "In uniformly accelerated one-dimensional motion, a = Δv/Δt is constant; the sign of a alone does not determine whether speed increases.",
+            "observablePerformanceDe": "Begründet aus Geschwindigkeitsänderungen das konstante a mit Einheit m/s² und beschreibt anhand der Vorzeichen von v und a schneller oder langsamer werdende Bewegung.",
+            "observablePerformanceEn": "Justifies constant a from velocity changes with unit m/s² and uses the signs of v and a to describe speeding up or slowing down."
+          },
+          {
+            "id": "linked-three-graphs",
+            "essentialUnderstandingDe": "Konstantes a entspricht einer t-v-Geraden und einem waagerechten t-a-Graphen; bei a ≠ 0 ist der t-s-Graph parabelförmig. Seine Steigung beschreibt v, seine Krümmungsrichtung das Vorzeichen von a.",
+            "essentialUnderstandingEn": "Constant a corresponds to a straight t-v graph and a horizontal t-a graph; for a ≠ 0 the t-s graph is parabolic. Its slope describes v and its concavity the sign of a.",
+            "observablePerformanceDe": "Erstellt aus neuen Bewegungsdaten zusammenpassende t-s-, t-v- und t-a-Darstellungen mit Achsen und Einheiten; begründet Steigung, Krümmung und die Übereinstimmung der Ortsänderungen mit t-v-Flächen ohne Differentialrechnung.",
+            "observablePerformanceEn": "Constructs consistent t-s, t-v, and t-a representations from fresh motion data with axes and units; explains slope, concavity, and agreement of displacement with t-v areas without calculus."
+          },
+          {
+            "id": "zero-velocity-and-validity",
+            "essentialUnderstandingDe": "v = 0 zu einem Zeitpunkt bedeutet nicht a = 0. Die Darstellungen beschreiben das angegebene Modellintervall und belegen allein keinen bestimmten Kraftmechanismus.",
+            "essentialUnderstandingEn": "v = 0 at one instant does not mean a = 0. The representations describe the stated model interval and alone do not establish a particular force mechanism.",
+            "observablePerformanceDe": "Sagt bei geänderter Bewegungs- oder Beschleunigungsrichtung den Graphenverlauf voraus und erklärt einen möglichen Stillstandsmoment bei fortbestehender Beschleunigung; begrenzt die Aussage auf das Modellintervall.",
+            "observablePerformanceEn": "Predicts graph behavior when motion or acceleration direction changes and explains a possible instant of rest with continuing acceleration; limits the claim to the model interval."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "constant-acceleration",
+            "linked-three-graphs",
+            "zero-velocity-and-validity"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "relative-signs",
+            "textDe": "Geschwindigkeit und Beschleunigung gleichgerichtet gegenüber entgegengerichtet, einschließlich eines Richtungswechsels.",
+            "textEn": "Velocity and acceleration in the same versus opposite directions, including a reversal."
+          },
+          {
+            "id": "starting-representation",
+            "textDe": "Orts- und Geschwindigkeitsdaten gegenüber einer beschriebenen t-v-Geraden als Ausgangsdarstellung.",
+            "textEn": "Position and velocity data versus a described straight t-v graph as the starting representation."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "starting-from-rest",
+            "taskDemandDe": "Für ein Wagenmodell von 0 bis 3 s gelten bei t = 0; 1; 2; 3 s die Orte 0,20; 0,40; 1,00; 2,00 m und Geschwindigkeiten 0; 0,40; 0,80; 1,20 m/s. Erstelle und erkläre die drei Zeitdiagramme.",
+            "taskDemandEn": "For a cart model from 0 to 3 s, at t = 0, 1, 2, 3 s positions are 0.20, 0.40, 1.00, 2.00 m and velocities are 0, 0.40, 0.80, 1.20 m/s. Construct and explain the three time graphs.",
+            "expectedPerformanceDe": "Ermittelt a = +0,40 m/s², zeichnet t-v linear steigend, t-a konstant positiv und t-s zunehmend steil, nach oben gekrümmt. Prüft etwa Δs von 1 bis 2 s = 0,60 m an der Trapezfläche; erklärt, warum v(0) = 0 keine fehlende Beschleunigung bedeutet.",
+            "expectedPerformanceEn": "Finds a = +0.40 m/s² and draws linearly increasing t-v, constant positive t-a, and increasingly steep, concave-up t-s. Checks, for example, Δs from 1 to 2 s = 0.60 m using the trapezoid area; explains why v(0) = 0 does not mean absent acceleration.",
+            "understandingFocusDe": "Konstante Beschleunigung bedeutet gleiche Geschwindigkeitszuwächse, bei wachsendem Geschwindigkeitsbetrag aber wachsende Ortszuwächse.",
+            "understandingFocusEn": "Constant acceleration means equal velocity increments, but increasing position increments when speed increases."
+          },
+          {
+            "id": "deceleration-through-reversal",
+            "taskDemandDe": "Ein t-v-Graph verläuft für 0 bis 4 s geradlinig von +1,0 auf −1,0 m/s; s(0) = 0. Entwickle unabhängig passende t-s- und t-a-Darstellungen und beschreibe die Bewegung vor und nach v = 0.",
+            "taskDemandEn": "A t-v graph runs straight from +1.0 to −1.0 m/s over 0 to 4 s; s(0) = 0. Independently develop matching t-s and t-a representations and describe motion before and after v = 0.",
+            "expectedPerformanceDe": "Erhält a = −0,50 m/s² und t-s-Punkte bei t = 0; 1; 2; 3; 4 s von 0; 0,75; 1,00; 0,75; 0 m. Erklärt Abbremsen bis 2 s, danach schnelleres Rückwärtsfahren, ein Ortsmaximum bei 2 s und durchgehend negatives a.",
+            "expectedPerformanceEn": "Obtains a = −0.50 m/s² and t-s points at t = 0, 1, 2, 3, 4 s of 0, 0.75, 1.00, 0.75, 0 m. Explains slowing until 2 s, then increasing backward speed, a position maximum at 2 s, and negative a throughout.",
+            "understandingFocusDe": "Negatives a ist mit Abbremsen und mit wachsendem Geschwindigkeitsbetrag vereinbar; alle drei Diagramme müssen denselben Richtungswechsel darstellen.",
+            "understandingFocusEn": "Negative a can describe both slowing and increasing speed; all three graphs must represent the same reversal."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "reason": "Achsenabschnitte und Steigungen legen Anfangswerte und konstante Beschleunigung fest; t-v-Flächen bestimmen dazu das Ortsgesetz. / Graph intercepts and slopes fix initial values and constant acceleration; t-v areas then determine the position law.",
+      "profile": {
+        "archetype": "procedure",
+        "expectations": [
+          {
+            "id": "infer-laws-from-graphs",
+            "essentialUnderstandingDe": "Für gleichförmige Bewegung gilt v(t) = v0 und s(t) = s0 + v0t; bei konstantem a gilt v(t) = v0 + at und s(t) = s0 + v0t + ½at². t wird ab dem angegebenen Anfangszeitpunkt gemessen.",
+            "essentialUnderstandingEn": "For uniform motion, v(t) = v0 and s(t) = s0 + v0t; for constant a, v(t) = v0 + at and s(t) = s0 + v0t + ½at². Time t is measured from the stated initial instant.",
+            "observablePerformanceDe": "Wählt anhand neuer Zeitdiagramme das passende der beiden Modelle und ermittelt s0, v0 und gegebenenfalls a aus Achsenabschnitten, Steigungen oder Flächen; formuliert beide Gesetze mit Einheiten und konsistenten Vorzeichen.",
+            "observablePerformanceEn": "Selects the appropriate model from fresh time graphs and obtains s0, v0, and, where needed, a from intercepts, slopes, or areas; formulates both laws with units and consistent signs."
+          },
+          {
+            "id": "explain-law-connection",
+            "essentialUnderstandingDe": "Die Geschwindigkeit beschreibt die Steigung des Ortsgraphen; die vorzeichenbehaftete t-v-Fläche ergibt s(t) − s0. Bei linear veränderlichem v liefert die Trapezfläche den Faktor ½.",
+            "essentialUnderstandingEn": "Velocity describes the position graph's slope; signed t-v area gives s(t) − s0. For linearly changing v, the trapezoid area supplies the factor ½.",
+            "observablePerformanceDe": "Begründet den Zusammenhang der selbst bestimmten Gesetze durch Steigung und Rechteck- oder Trapezflächen ohne Differentialrechnung und prüft mindestens einen gemeinsamen Zeitpunkt am Ausgangsdiagramm.",
+            "observablePerformanceEn": "Explains the connection between the self-determined laws using slope and rectangle or trapezoid areas without calculus and checks at least one common instant against the source graph."
+          },
+          {
+            "id": "predict-and-check",
+            "essentialUnderstandingDe": "Eine Vorhersage für Ort und Geschwindigkeit gilt für das gewählte Modellintervall; Anfangsort, Bewegungsrichtung und Einheiten bleiben dabei erhalten.",
+            "essentialUnderstandingEn": "A position and velocity prediction applies within the selected model interval; it retains initial position, direction of motion, and units.",
+            "observablePerformanceDe": "Sagt mit den erschlossenen Gesetzen Ort und Geschwindigkeit zu einem neuen Zeitpunkt voraus und prüft Anfangswerte, Vorzeichen und Plausibilität am beschriebenen Bewegungsverlauf.",
+            "observablePerformanceEn": "Uses the inferred laws to predict position and velocity at a new instant and checks initial values, signs, and plausibility against the described motion."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "infer-laws-from-graphs",
+            "explain-law-connection",
+            "predict-and-check"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "motion-model",
+            "textDe": "Gleichförmige Bewegung gegenüber Bewegung mit konstanter, von null verschiedener Beschleunigung.",
+            "textEn": "Uniform motion versus motion with constant nonzero acceleration."
+          },
+          {
+            "id": "graph-and-sign",
+            "textDe": "Zeit-Ort-Graph gegenüber Zeit-Geschwindigkeits-Graph; negativer Bewegungsbeginn mit oder ohne späteren Richtungswechsel.",
+            "textEn": "Time-position versus time-velocity source graph; initially negative velocity with or without a later reversal."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "uniform-negative-velocity",
+            "taskDemandDe": "Ein t-s-Graph ist im Modellintervall 0 bis 6 s die Gerade durch (0 s; 5 m), (2 s; 3 m) und (4 s; 1 m). Erschließe beide Zeitgesetze, erläutere ihren Zusammenhang und sage s und v bei 6 s voraus.",
+            "taskDemandEn": "Within the model interval 0 to 6 s, a t-s graph is the straight line through (0 s, 5 m), (2 s, 3 m), and (4 s, 1 m). Infer both time laws, explain their connection, and predict s and v at 6 s.",
+            "expectedPerformanceDe": "Leitet v0 = −1 m/s und s(t) = 5 m − (1 m/s)t, v(t) = −1 m/s her. Begründet die negative Steigung und Δs = −6 m als t-v-Rechteckfläche; erhält s(6 s) = −1 m und v(6 s) = −1 m/s.",
+            "expectedPerformanceEn": "Derives v0 = −1 m/s and s(t) = 5 m − (1 m/s)t, v(t) = −1 m/s. Explains the negative slope and Δs = −6 m as a t-v rectangle area; obtains s(6 s) = −1 m and v(6 s) = −1 m/s.",
+            "understandingFocusDe": "Ein negativer Endort und eine negative Geschwindigkeit haben unterschiedliche Bedeutungen; der Anfangsort geht nur in das Ortsgesetz ein.",
+            "understandingFocusEn": "Negative final position and negative velocity have distinct meanings; initial position enters only the position law."
+          },
+          {
+            "id": "accelerated-velocity-source",
+            "taskDemandDe": "Ein t-v-Graph ist für 0 bis 5 s eine Gerade durch (0 s; −2 m/s), (2 s; 0) und (4 s; +2 m/s); s(0) = 3 m. Bestimme beide Gesetze, prüfe sie bei 2 s und sage s und v bei 5 s voraus.",
+            "taskDemandEn": "For 0 to 5 s, a t-v graph is a straight line through (0 s, −2 m/s), (2 s, 0), and (4 s, +2 m/s); s(0) = 3 m. Determine both laws, check them at 2 s, and predict s and v at 5 s.",
+            "expectedPerformanceDe": "Erschließt a = +1 m/s², v(t) = −2 m/s + (1 m/s²)t und s(t) = 3 m − (2 m/s)t + (0,5 m/s²)t². Prüft bei 2 s: v = 0 und s = 1 m über die negative Dreiecksfläche; erhält bei 5 s s = 5,5 m und v = +3 m/s.",
+            "expectedPerformanceEn": "Infers a = +1 m/s², v(t) = −2 m/s + (1 m/s²)t and s(t) = 3 m − (2 m/s)t + (0.5 m/s²)t². Checks at 2 s: v = 0 and s = 1 m using the negative triangle area; obtains s = 5.5 m and v = +3 m/s at 5 s.",
+            "understandingFocusDe": "Anfangsgeschwindigkeit und konstante Beschleunigung bestimmen gemeinsam das Ortsgesetz; vorzeichenbehaftete Flächen erhalten den Zusammenhang auch bei Richtungswechsel.",
+            "understandingFocusEn": "Initial velocity and constant acceleration jointly determine the position law; signed areas preserve the connection through a reversal."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "reason": "Die quadratische Zeitabhängigkeit des Orts erlaubt im widerstandsfreien Modell die grafische Bestimmung von g; Anfangswerte und Achsenrichtung bestimmen das vollständige Ortsgesetz. / Quadratic position dependence on time enables graphical determination of g in the drag-free model; initial values and axis direction determine the complete position law.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "collect-free-fall-data",
+            "essentialUnderstandingDe": "Beim freien Fall nahe der Erdoberfläche gilt näherungsweise konstante Beschleunigung, wenn Luftwiderstand vernachlässigbar ist. Gemessene Orte und Zeiten sind von daraus erschlossenem g zu unterscheiden.",
+            "essentialUnderstandingEn": "Free fall near Earth's surface has approximately constant acceleration when air resistance is negligible. Measured positions and times must be distinguished from the inferred g.",
+            "observablePerformanceDe": "Formuliert eine prüfbare Frage zur Zeit-Ort-Beziehung und erhebt selbst mehrere Messpunkte mit Wiederholungen. Begründet Messprinzip, kontrollierte Freigabe und Kalibrierung; dokumentiert Rohdaten, eigene Beiträge sowie Zeit- und Ortsunsicherheiten. Nutzt geringe Fallhöhe, freien Fallbereich und Auffangbehälter.",
+            "observablePerformanceEn": "Formulates a testable question about the time-position relationship and personally collects several measurements with repeats. Justifies the measurement principle, controlled release and calibration; documents raw data, personal contributions and time and position uncertainties. Uses a low drop height, clear falling area and catch container."
+          },
+          {
+            "id": "graphical-g-inference",
+            "essentialUnderstandingDe": "Bei Start aus Ruhe gilt für die Fallstrecke h = g·t²/2; allgemeiner entspricht der quadratische Koeffizient im Zeit-Ort-Graphen der halben vorzeichenbehafteten Beschleunigung.",
+            "essentialUnderstandingEn": "For release from rest, falling distance obeys h = g·t²/2; more generally the quadratic coefficient in the position-time graph equals half the signed acceleration.",
+            "observablePerformanceDe": "Wählt eine zu den eigenen Anfangsbedingungen passende grafische Auswertung, bestimmt g aus einer begründeten Steigung oder quadratischen Anpassung mit Einheit und gibt eine durch Auflösung und Streuung gestützte Unsicherheit an. Prüft Modellabweichungen, ohne Messwerte auf einen Sollwert zu zwingen.",
+            "observablePerformanceEn": "Selects graphical analysis suited to the personal initial conditions, determines g from a justified slope or quadratic fit with units and states uncertainty supported by resolution and scatter. Checks model departures without forcing measurements to a target value."
+          },
+          {
+            "id": "initial-conditions-law",
+            "essentialUnderstandingDe": "Für konstante Beschleunigung gilt s(t) = s0 + v0·t + a·t²/2. Der Betrag g ist positiv; das Vorzeichen von a hängt von der Achsenrichtung ab. v0 = 0 gilt nur bei geeigneter Freigabe und Zeitwahl.",
+            "essentialUnderstandingEn": "For constant acceleration, s(t) = s0 + v0·t + a·t²/2. The magnitude g is positive; the sign of a depends on axis direction. v0 = 0 applies only with suitable release and choice of time origin.",
+            "observablePerformanceDe": "Formuliert für jede eigene Messreihe das vollständige Gesetz mit gemessenem oder begründetem s0, v0 und erschlossenem a. Benennt Nullzeit und Achsenrichtung und vergleicht eine vorhergesagte Position mit der Messung unter Berücksichtigung der Unsicherheit.",
+            "observablePerformanceEn": "Formulates the complete law for each personal series using measured or justified s0 and v0 and inferred a. States the time origin and axis direction and compares a predicted position with measurement while accounting for uncertainty."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "collect-free-fall-data",
+            "graphical-g-inference",
+            "initial-conditions-law"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "measurement-principle",
+            "textDe": "Fallzeitmessung für mehrere Freigabehöhen gegenüber kalibrierter Bildmessung einer neuen eigenen Fallreihe.",
+            "textEn": "Fall-time measurement for several release heights versus calibrated image measurement of a new personal drop series."
+          },
+          {
+            "id": "initial-time-and-sign",
+            "textDe": "Nullzeit bei Freigabe mit abwärts positiver Achse gegenüber Nullzeit während des Falls mit aufwärts positiver Achse und v0 ungleich null.",
+            "textEn": "Time origin at release with downward positive versus time origin during the fall with upward positive and nonzero v0."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "release-height-series",
+            "taskDemandDe": "Untersuche selbst den Fall einer kompakten Kugel aus Ruhe aus mehreren niedrigen Höhen, etwa 0,20–0,65 m. Wähle eine hinreichend genaue Fallzeitmessung, wiederhole die Messungen und bestimme g grafisch mit abwärts positiver Fallstrecke.",
+            "taskDemandEn": "Personally investigate a compact ball released from rest at several low heights, for example 0.20–0.65 m. Choose sufficiently accurate fall-time measurement, repeat measurements and determine g graphically using downward-positive falling distance.",
+            "expectedPerformanceDe": "Liefert eigene Höhen und Zeiten mit Unsicherheiten, einen h-gegen-t²-Graphen und g als doppelte Steigung. Modellreferenz, keine Soll-Rohdaten: Bei g = 9,81 m/s² ergeben 0,20 und 0,50 m etwa 0,202 und 0,319 s. Formuliert h(t) = gMess·t²/2 mit h0 = 0 und v0 = 0 und prüft die Messverträglichkeit.",
+            "expectedPerformanceEn": "Provides personal heights and times with uncertainties, an h-versus-t² graph and g as twice the slope. Model reference, not target raw data: with g = 9.81 m/s², 0.20 and 0.50 m correspond to about 0.202 and 0.319 s. Formulates h(t) = gMeasured·t²/2 with h0 = 0 and v0 = 0 and checks agreement with measurement.",
+            "understandingFocusDe": "Die grafische Steigung erschließt g aus eigenen Messungen; Freigabe und Nullzeit rechtfertigen den fehlenden linearen Term.",
+            "understandingFocusEn": "The graph's slope infers g from personal measurements; release and time origin justify the absent linear term."
+          },
+          {
+            "id": "in-flight-time-origin",
+            "taskDemandDe": "Nimm selbst eine neue sichere Fallmessreihe mit Wiederholungen, kalibriertem Maßstab und bekannter Bildzeit auf. Wähle aufwärts als positive Richtung und t = 0 erst während des Falls. Bestimme grafisch g und ein Gesetz mit passender Anfangsgeschwindigkeit.",
+            "taskDemandEn": "Personally record a new safe drop series with repeats, a calibrated scale and known frame timing. Choose upward positive and t = 0 during the fall. Determine g graphically and obtain a law with the appropriate initial velocity.",
+            "expectedPerformanceDe": "Zeigt eigene Messpunkte und eine grafische quadratische Anpassung mit negativem quadratischem Koeffizienten und v0 < 0. Modellreferenz: Freigabe bei y = 0,80 m, Nullzeit bei y0 = 0,60 m und g = 9,8 m/s² ergibt v0 ≈ −1,98 m/s sowie y(0,10 s) ≈ 0,353 m. Berichtet die eigenen Werte und Unsicherheiten und prüft das Gesetz am eigenen Graphen.",
+            "expectedPerformanceEn": "Shows personal measurements and a graphical quadratic fit with a negative quadratic coefficient and v0 < 0. Model reference: release at y = 0.80 m, time origin at y0 = 0.60 m and g = 9.8 m/s² give v0 ≈ −1.98 m/s and y(0.10 s) ≈ 0.353 m. Reports personal values and uncertainties and checks the law against the personal graph.",
+            "understandingFocusDe": "Koordinaten und Nullzeit ändern Koeffizienten und Anfangswerte, aber nicht den erschlossenen Betrag der Fallbeschleunigung.",
+            "understandingFocusEn": "Coordinates and time origin change coefficients and initial values but not the inferred magnitude of gravitational acceleration."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "reason": "Bei gleichen Anfangsbedingungen ist der Fall ohne Luftwiderstand massenunabhängig; in Luft verändert der Widerstand den Vergleich abhängig von Form und Masse. / With matching initial conditions, falling without air resistance is independent of mass; in air, resistance changes the comparison according to shape and mass.",
+      "profile": {
+        "archetype": "concept",
+        "expectations": [
+          {
+            "id": "matched-fall-conditions",
+            "essentialUnderstandingDe": "Nahe der Erdoberfläche fallen leichte und schwere Körper im Vakuum bei gleicher Anfangshöhe, Anfangsgeschwindigkeit und Startzeit gleich: Zu gleichen Zeiten stimmen Fallstrecke und Geschwindigkeit überein.",
+            "essentialUnderstandingEn": "Near Earth's surface, light and heavy bodies fall alike in a vacuum when initial height, initial velocity and release time match: their fall distances and velocities agree at equal times.",
+            "observablePerformanceDe": "Vergleicht unabhängig neue Fallbeobachtungen, benennt die nötigen Anfangsbedingungen und begründet eine Vorhersage für den Wechsel von Luft zu Vakuum. Unterscheidet beobachtete Ankunftszeiten von der Erklärung durch das Fallmodell.",
+            "observablePerformanceEn": "Independently compares fresh falling observations, identifies the necessary initial conditions and justifies a prediction for changing from air to a vacuum. Distinguishes observed arrival times from explanation using the falling model."
+          },
+          {
+            "id": "air-resistance-comparison",
+            "essentialUnderstandingDe": "Luftwiderstand wirkt der Bewegung relativ zur Luft entgegen. Seine Bedeutung für den Fall hängt auch von Form und Fläche ab; größere Masse allein legt die Ankunftsreihenfolge in Luft nicht fest.",
+            "essentialUnderstandingEn": "Air resistance opposes motion relative to the air. Its importance during falling also depends on shape and area; greater mass alone does not determine arrival order in air.",
+            "observablePerformanceDe": "Erklärt die beobachtete Verzögerung einer Feder gegenüber einer Kugel und beurteilt einen veränderten Form-Masse-Vergleich. Begründet, welche Unterschiede beim Entfernen der Luft verschwinden, ohne einen Widerstandsverlauf zu erfinden.",
+            "observablePerformanceEn": "Explains the observed delay of a feather relative to a ball and evaluates a changed comparison of shape and mass. Justifies which differences disappear when air is removed without inventing a drag history."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "matched-fall-conditions",
+            "air-resistance-comparison"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "medium",
+            "textDe": "Luft gegenüber Vakuum bei kontrollierten Anfangsbedingungen.",
+            "textEn": "Air versus a vacuum with controlled initial conditions."
+          },
+          {
+            "id": "shape-and-mass",
+            "textDe": "Vergleich verschiedener Massen bei zugleich veränderter Form und wirksamer Fläche.",
+            "textEn": "Comparison of different masses with changed shape and effective area."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "feather-and-ball",
+            "taskDemandDe": "Ein neues, als Fremdaufnahme gekennzeichnetes Protokoll zeigt Feder und Kugel, gleichzeitig aus gleicher Höhe aus Ruhe freigegeben: In Luft trifft die Kugel zuerst ein. Entwickle eine begründete Vorhersage für dieselben Startbedingungen im evakuierten Vorführgerät und vergleiche sie anschließend mit dessen Aufnahme.",
+            "taskDemandEn": "A fresh record, identified as someone else's recording, shows a feather and a ball released simultaneously from rest at the same height: in air, the ball arrives first. Develop a justified prediction for the same initial conditions in an evacuated demonstration apparatus, then compare it with its recording.",
+            "expectedPerformanceDe": "Erwartet im Vakuum innerhalb der Zeitauflösung gleichzeitiges Eintreffen und gleiche Fallstrecken zu gleichen Zeiten. Erklärt die Luftbeobachtung mit unterschiedlich bedeutsamem Luftwiderstand und prüft Freigabe und Zeitauflösung vor der Deutung kleiner Zeitdifferenzen.",
+            "expectedPerformanceEn": "Expects simultaneous arrival within time resolution and equal fall distances at equal times in a vacuum. Explains the air observation through the differing importance of air resistance and checks release conditions and time resolution before interpreting small timing differences.",
+            "understandingFocusDe": "Massenunabhängige Fallbewegung gilt bei übereinstimmenden Anfangsbedingungen ohne Luftwiderstand.",
+            "understandingFocusEn": "Mass-independent falling applies to matching initial conditions without air resistance."
+          },
+          {
+            "id": "lighter-body-first",
+            "taskDemandDe": "Neue Fremdmessungen in Luft ergeben beim Fall aus 1,20 m aus Ruhe: kompakte Folienkugel, 0,5 g, 0,55 ± 0,02 s; breites Papierstück, 5 g, 0,90 ± 0,02 s. Erkläre die Reihenfolge und sage den Vergleich im Vakuum bei denselben Anfangsbedingungen voraus; g = 9,81 m/s² darf genutzt werden.",
+            "taskDemandEn": "Fresh measurements collected by others in air give, for release from rest at 1.20 m: compact foil ball, 0.5 g, 0.55 ± 0.02 s; broad piece of paper, 5 g, 0.90 ± 0.02 s. Explain the order and predict the comparison in a vacuum with the same initial conditions; g = 9.81 m/s² may be used.",
+            "expectedPerformanceDe": "Begründet, warum das schwerere Papier in Luft später eintreffen kann, und verwirft eine reine Massenregel. Erwartet im Vakuum für beide etwa 0,495 s und gleiche Bewegung; die unterschiedlichen Luftzeiten belegen keine verschiedenen Vakuum-Fallbeschleunigungen.",
+            "expectedPerformanceEn": "Explains why the heavier paper can arrive later in air and rejects a rule based only on mass. Expects about 0.495 s and identical motion for both in a vacuum; the differing air times do not demonstrate different vacuum gravitational accelerations.",
+            "understandingFocusDe": "Der Wechsel von Form und Medium prüft, ob Luftwiderstand statt Masse allein den beobachteten Unterschied erklärt.",
+            "understandingFocusEn": "Changing shape and medium tests whether air resistance, rather than mass alone, explains the observed difference."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "reason": "Eine Idealisierung ist für eine Vorhersage brauchbar, wenn vernachlässigte Ausdehnung oder Wechselwirkung deren erforderliche Genauigkeit nicht entscheidend verändert. / An idealization is useful for a prediction when neglected size or interaction does not materially change its required accuracy.",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "purpose-and-boundary",
+            "essentialUnderstandingDe": "Ein Bewegungsmodell beschreibt einen festgelegten Körper und eine bestimmte Vorhersagegröße. Der Massepunkt behält die Bewegung eines Bezugspunkts, lässt aber Ausdehnung und Orientierung weg; Reibungsfreiheit vernachlässigt bremsende Wechselwirkungen mit der Umgebung.",
+            "essentialUnderstandingEn": "A motion model describes a specified body and a particular predicted quantity. A point particle retains the motion of a reference point but omits size and orientation; a frictionless model neglects retarding interactions with the surroundings.",
+            "observablePerformanceDe": "Benennt Körper, Umgebung, verfolgten Bezugspunkt und Vorhersagefrage. Begründet unabhängig, welche geometrischen Eigenschaften und Wechselwirkungen für diese Frage berücksichtigt oder vernachlässigt werden dürfen.",
+            "observablePerformanceEn": "Identifies the body, surroundings, tracked reference point and prediction question. Independently justifies which geometric properties and interactions may be retained or neglected for that question."
+          },
+          {
+            "id": "prediction-against-observation",
+            "essentialUnderstandingDe": "Die Brauchbarkeit eines Modells zeigt sich am Vergleich seiner Vorhersage mit Beobachtungen und deren Unsicherheit für die gewählte Frage.",
+            "essentialUnderstandingEn": "A model's usefulness is shown by comparing its prediction with observations and their uncertainty for the chosen question.",
+            "observablePerformanceDe": "Entwickelt eine konkrete Vorhersage, vergleicht sie mit neuen Beobachtungen und entscheidet anhand von Abweichung, Messauflösung und verlangter Genauigkeit über die Verwendbarkeit.",
+            "observablePerformanceEn": "Develops a concrete prediction, compares it with fresh observations and decides its usability from discrepancy, measurement resolution and required accuracy."
+          },
+          {
+            "id": "changed-condition-limit",
+            "essentialUnderstandingDe": "Eine veränderte Oberfläche oder eine Frage nach Rand, Kontakt oder Orientierung kann eine zuvor brauchbare Idealisierung unzureichend machen.",
+            "essentialUnderstandingEn": "A changed surface or a question about an edge, contact or orientation can make a previously useful idealization inadequate.",
+            "observablePerformanceDe": "Begründet in einem unabhängig bearbeiteten veränderten Fall, welche vernachlässigte Eigenschaft nun benötigt wird und für welche Aussage das bisherige Modell weiterhin ausreicht.",
+            "observablePerformanceEn": "In an independently completed changed case, justifies which neglected property is now needed and which statement the existing model can still support."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "purpose-and-boundary",
+            "prediction-against-observation",
+            "changed-condition-limit"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "prediction-and-size",
+            "textDe": "Ankunft des Körpermittelpunkts gegenüber Ankunft der Vorderkante bei endlicher Körperlänge.",
+            "textEn": "Arrival of the body's center versus arrival of its front edge for a body of finite length."
+          },
+          {
+            "id": "surface-interaction",
+            "textDe": "Glatte gegenüber rauer Bahn bei gleicher anfänglicher Bewegung und gleicher Messauflösung.",
+            "textEn": "Smooth versus rough track with the same initial motion and measurement resolution."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "center-or-front",
+            "taskDemandDe": "Ein 0,20 m langer Wagen fährt ohne Drehung gleichförmig mit 0,50 m/s; bei t = 0 liegt sein Mittelpunkt bei x = 0. Ein Massepunktmodell verfolgt diesen Mittelpunkt. Prüfe Vorhersagen für Mittelpunkt und Vorderkante an x = 1,00 m bei geforderter Zeitgenauigkeit 0,03 s. Neue Beobachtungen: Mittelpunkt 2,00 ± 0,02 s, Vorderkante 1,80 ± 0,02 s.",
+            "taskDemandEn": "A cart of length 0.20 m moves uniformly without rotation at 0.50 m/s; its center is at x = 0 at t = 0. A point-particle model tracks this center. Assess predictions for the center and front edge at x = 1.00 m with required timing accuracy 0.03 s. Fresh observations: center 2.00 ± 0.02 s, front edge 1.80 ± 0.02 s.",
+            "expectedPerformanceDe": "Sagt für den Mittelpunkt 2,00 s voraus und bestätigt diese Anwendung. Berücksichtigt für die Vorderkante deren Abstand 0,10 m zum Mittelpunkt und erhält 1,80 s. Begründet, warum die Mittelpunktankunft ohne geometrische Ergänzung die Vorderkantenankunft nicht mit 0,03 s Genauigkeit vorhersagt.",
+            "expectedPerformanceEn": "Predicts 2.00 s for the center and supports this use. Retains the front edge's 0.10 m separation from the center and obtains 1.80 s. Explains why center arrival without a geometric addition does not predict front-edge arrival to 0.03 s accuracy.",
+            "understandingFocusDe": "Die nötige geometrische Information hängt von der Vorhersagefrage ab; ein Massepunkt behauptet keine wirkliche Körpergröße.",
+            "understandingFocusEn": "The geometric information needed depends on the prediction question; a point particle makes no claim about actual body size."
+          },
+          {
+            "id": "smooth-and-rough",
+            "taskDemandDe": "Für einen Wagen auf waagerechter Bahn gilt anfangs x = 0 und v = 0,50 m/s. Erstelle die reibungsfreie Vorhersage für t = 2,0 s und prüfe sie an neuen Ortsdaten für t = 0; 1; 2 s: glatte Bahn 0; 0,50; 0,99 m, raue Bahn 0; 0,45; 0,80 m. Jede Ortsablesung hat ±0,02 m Unsicherheit.",
+            "taskDemandEn": "A cart on a horizontal track initially has x = 0 and v = 0.50 m/s. Make the frictionless prediction for t = 2.0 s and assess it against fresh position data at t = 0, 1, 2 s: smooth track 0, 0.50, 0.99 m; rough track 0, 0.45, 0.80 m. Each position reading has ±0.02 m uncertainty.",
+            "expectedPerformanceDe": "Sagt 1,00 m voraus. Die glatte Bahn ist innerhalb der Unsicherheit vereinbar; die Abweichung 0,20 m auf der rauen Bahn bleibt auch unter Berücksichtigung beider Ortsablesungen zu groß. Benennt Wagen und Umgebung und begründet die nötige Berücksichtigung bremsender Bahnwechselwirkungen, ohne aus drei Ortswerten ein bestimmtes Reibungsgesetz abzuleiten.",
+            "expectedPerformanceEn": "Predicts 1.00 m. The smooth-track result is compatible within uncertainty; the 0.20 m discrepancy on the rough track remains too large even when both position readings are considered. Identifies cart and surroundings and justifies retaining retarding track interactions without inferring a particular friction law from three positions.",
+            "understandingFocusDe": "Reibungsfreiheit wird anhand einer konkreten Bewegungsvorhersage und einer veränderten Wechselwirkung beurteilt.",
+            "understandingFocusEn": "Neglecting friction is judged through a concrete motion prediction and a changed interaction."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "reason": "Dieselbe Zeit verbindet die unabhängigen horizontalen und vertikalen Bewegungen; ihre gemeinsame Ortsdarstellung ergibt die parabelförmige Flugbahn. / The same time connects independent horizontal and vertical motions; their joint position representation yields the parabolic trajectory.",
+      "profile": {
+        "archetype": "experiment",
+        "expectations": [
+          {
+            "id": "record-horizontal-launch",
+            "essentialUnderstandingDe": "Ein waagerechter Start bedeutet vy0 = 0; beide Ortskomponenten müssen zu denselben Zeitpunkten erfasst werden. Eine geneigte Freigabe oder perspektivisch verzerrte Aufnahme kann die Deutung verfälschen.",
+            "essentialUnderstandingEn": "A horizontal launch means vy0 = 0; both position components must be recorded at the same times. An inclined release or perspective-distorted recording can bias interpretation.",
+            "observablePerformanceDe": "Plant und führt selbst einen niedrigen waagerechten Wurf zur Untersuchung der Teilbewegungen aus. Kontrolliert Startausrichtung und Höhe, kalibriert Orts- und Zeitmessung und erhebt eigene zeitgleiche x-y-Daten. Dokumentiert Rohdaten, eigene Beiträge und Unsicherheiten; sichert Flugbereich und Auffangen.",
+            "observablePerformanceEn": "Plans and personally performs a low horizontal launch to investigate component motions. Controls launch alignment and height, calibrates position and time measurement and collects personal simultaneous x-y data. Documents raw data, personal contributions and uncertainties; secures the flight area and catch."
+          },
+          {
+            "id": "test-component-superposition",
+            "essentialUnderstandingDe": "Bei vernachlässigbarem Luftwiderstand und konstantem g bleibt die horizontale Geschwindigkeit konstant; die vertikale Bewegung ist bei vy0 = 0 gleichmäßig beschleunigt. Die Komponenten teilen die Zeit und beeinflussen einander in diesem Modell nicht.",
+            "essentialUnderstandingEn": "With negligible air resistance and constant g, horizontal velocity remains constant; vertical motion with vy0 = 0 is uniformly accelerated. The components share time and do not influence one another in this model.",
+            "observablePerformanceDe": "Prüft eigene Daten auf gleiche horizontale und wachsende vertikale Ortsänderungen in gleichen Zeitspannen. Vergleicht eine begründete Modellvorhersage mit Messpunkten und benennt unter Berücksichtigung der Unsicherheit mögliche Start-, Perspektiv- oder Luftwiderstandseinflüsse.",
+            "observablePerformanceEn": "Checks personal data for equal horizontal and growing vertical position changes over equal time spans. Compares a justified model prediction with measurements and identifies possible launch, perspective or air-resistance effects while accounting for uncertainty."
+          },
+          {
+            "id": "construct-trajectory",
+            "essentialUnderstandingDe": "Das x-y-Diagramm verknüpft zeitgleiche Ortskomponenten und zeigt unter diesen Bedingungen eine Parabel. Es stellt eine räumliche Flugbahn dar.",
+            "essentialUnderstandingEn": "The x-y graph combines simultaneous position components and shows a parabola under these conditions. It represents a spatial trajectory.",
+            "observablePerformanceDe": "Konstruiert aus eigenen Messpunkten ein skaliertes x-y-Diagramm mit Ursprung, Achsenrichtungen und Einheiten. Erklärt die Krümmung durch gleichförmige horizontale und beschleunigte vertikale Bewegung; unterscheidet Messpunkte, Modellkurve und Zeit-Ort-Diagramm.",
+            "observablePerformanceEn": "Constructs a scaled x-y graph from personal measurements with origin, axis directions and units. Explains curvature through uniform horizontal and accelerated vertical motion; distinguishes measured points, model curve and position-time graph."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "record-horizontal-launch",
+            "test-component-superposition",
+            "construct-trajectory"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "launch-direction-and-speed",
+            "textDe": "Start nach rechts gegenüber einem neuen Start nach links mit anderer Geschwindigkeit bei gleicher Höhe.",
+            "textEn": "Launch to the right versus a new launch to the left at a different speed from the same height."
+          },
+          {
+            "id": "vertical-coordinate",
+            "textDe": "Abwärts positive Achse ab Startpunkt gegenüber aufwärts positiver Achse ab Auffanghöhe.",
+            "textEn": "Downward-positive axis from the launch point versus upward-positive axis from the catch height."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rightward-own-launch",
+            "taskDemandDe": "Untersuche selbst einen langsamen waagerechten Kugelstart nach rechts aus etwa 0,45 m Höhe über einem Auffangbehälter. Gewinne eigene zeitgleiche x-y-Messungen, wähle den Startpunkt als Ursprung und y abwärts positiv und prüfe die Überlagerung anhand der Daten.",
+            "taskDemandEn": "Personally investigate a slow horizontal ball launch to the right from about 0.45 m above a catch container. Obtain personal simultaneous x-y measurements, choose the launch point as origin and y downward positive and test superposition using the data.",
+            "expectedPerformanceDe": "Legt eigene Rohdaten, Auflösungen und eine x-y-Flugbahn vor; vergleicht horizontale und vertikale Änderungen in gleichen Zeitspannen. Modellreferenz bei vx = 1,0 m/s und g = 9,8 m/s²: (x,y) = (0,100; 0,049) m bei 0,10 s und (0,200; 0,196) m bei 0,20 s. Bewertet eigene Abweichungen anhand der Unsicherheit.",
+            "expectedPerformanceEn": "Provides personal raw data, resolutions and an x-y trajectory; compares horizontal and vertical changes over equal time spans. Model reference with vx = 1.0 m/s and g = 9.8 m/s²: (x,y) = (0.100, 0.049) m at 0.10 s and (0.200, 0.196) m at 0.20 s. Evaluates personal deviations using uncertainty.",
+            "understandingFocusDe": "Gleiche horizontale Schritte bei zunehmendem vertikalem Fall erzeugen gemeinsam die gekrümmte räumliche Bahn.",
+            "understandingFocusEn": "Equal horizontal steps together with increasing vertical fall generate the curved spatial trajectory."
+          },
+          {
+            "id": "leftward-own-launch",
+            "taskDemandDe": "Führe selbst eine neue Messreihe mit waagerechtem Start nach links und anderer Startgeschwindigkeit aus gleicher Höhe durch. Wähle x nach rechts, x = 0 am Start und y ab Auffanghöhe nach oben positiv. Konstruiere die Flugbahn und prüfe den Einfluss der horizontalen Änderung auf den vertikalen Verlauf.",
+            "taskDemandEn": "Personally perform a new measurement series with horizontal launch to the left at a different speed from the same height. Choose x positive rightward, x = 0 at launch and y positive upward from the catch height. Construct the trajectory and test the effect of the horizontal change on vertical evolution.",
+            "expectedPerformanceDe": "Erhebt neue eigene Daten und zeigt abnehmendes x sowie fallendes y mit wachsenden vertikalen Ortsänderungsbeträgen. Modellreferenz bei y0 = 0,45 m, vx = −1,5 m/s und g = 9,8 m/s²: (x,y) = (−0,150; 0,401) m bei 0,10 s und (−0,300; 0,254) m bei 0,20 s. Vergleicht die Fallstrecken beider Reihen zu gleichen Zeiten mit Unsicherheiten.",
+            "expectedPerformanceEn": "Collects new personal data and shows decreasing x and falling y with growing magnitudes of vertical position changes. Model reference with y0 = 0.45 m, vx = −1.5 m/s and g = 9.8 m/s²: (x,y) = (−0.150, 0.401) m at 0.10 s and (−0.300, 0.254) m at 0.20 s. Compares falling distances in both series at equal times with uncertainties.",
+            "understandingFocusDe": "Horizontale Startrichtung und Geschwindigkeit ändern die räumliche Bahn, im Modell aber nicht die vertikale Bewegung bei gleichen vertikalen Anfangsbedingungen.",
+            "understandingFocusEn": "Horizontal launch direction and speed change the spatial trajectory but, in the model, do not change vertical motion with matching vertical initial conditions."
+          }
+        ]
+      }
+    },
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "reason": "Die momentane Geschwindigkeit ist die Vektorsumme gleichzeitiger senkrechter Komponenten; Betrag und Richtung müssen deren Vorzeichen und Achsen entsprechen. / Instantaneous velocity is the vector sum of simultaneous perpendicular components; magnitude and direction must match their signs and axes.",
+      "profile": {
+        "archetype": "representation",
+        "expectations": [
+          {
+            "id": "simultaneous-components",
+            "essentialUnderstandingDe": "Beim waagerechten Wurf ohne Luftwiderstand und mit konstantem g bleibt die horizontale Geschwindigkeitskomponente konstant, während die anfangs verschwindende vertikale Komponente nach unten wächst. Beide gehören zum selben Zeitpunkt und ergeben gemeinsam die Geschwindigkeit.",
+            "essentialUnderstandingEn": "In horizontal projection without air resistance and with constant g, the horizontal velocity component remains constant while the initially zero vertical component grows downward. Both refer to the same instant and together give the velocity.",
+            "observablePerformanceDe": "Legt Achsen und Vorzeichen fest, gewinnt gleichzeitige Komponenten aus Bewegungsangaben oder Komponentendarstellungen und konstruiert daraus eigenständig einen konsistenten Geschwindigkeitspfeil.",
+            "observablePerformanceEn": "Defines axes and signs, obtains simultaneous components from motion information or component representations and independently constructs a consistent velocity arrow."
+          },
+          {
+            "id": "magnitude-and-direction",
+            "essentialUnderstandingDe": "Der Betrag folgt aus den rechtwinkligen Komponenten, die Richtung aus ihrem Verhältnis und ihren Vorzeichen. Der Geschwindigkeitspfeil zeigt die momentane Bewegungsrichtung und stellt weder Ort noch Beschleunigung dar.",
+            "essentialUnderstandingEn": "Magnitude follows from the perpendicular components, and direction from their ratio and signs. The velocity arrow shows the instantaneous direction of motion and represents neither position nor acceleration.",
+            "observablePerformanceDe": "Bestimmt Betrag und Winkel zu einer benannten Bezugsrichtung, begründet den Quadranten und prüft Einheiten und Plausibilität gegenüber den Komponenten. Übersetzt bei geänderter Wurfrichtung die Vorzeichen eigenständig in die passende Pfeilrichtung.",
+            "observablePerformanceEn": "Determines magnitude and angle relative to a named direction, justifies the quadrant and checks units and plausibility against the components. Independently translates signs into the appropriate arrow direction when launch direction changes."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "simultaneous-components",
+            "magnitude-and-direction"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "horizontal-direction",
+            "textDe": "Waagerechter Start nach rechts gegenüber nach links bei unveränderter Schwerkraftrichtung.",
+            "textEn": "Horizontal launch to the right versus to the left with unchanged gravitational direction."
+          },
+          {
+            "id": "component-source",
+            "textDe": "Komponenten aus Startgeschwindigkeit und Zeit gegenüber Komponenten aus beschriebenen Zeit-Geschwindigkeits-Graphen.",
+            "textEn": "Components obtained from launch speed and time versus components obtained from descriptions of time-velocity graphs."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "rightward-flight",
+            "taskDemandDe": "Ein Körper wird mit 3,00 m/s waagerecht nach rechts gestartet. Ohne Luftwiderstand gilt g = 9,81 m/s². Bestimme und erläutere seinen Geschwindigkeitspfeil nach 0,400 s; wähle x nach rechts und y nach oben. Konstruiere die Zusammensetzung ohne vorgegebenes Pfeilbild.",
+            "taskDemandEn": "A body is launched horizontally to the right at 3.00 m/s. With no air resistance, g = 9.81 m/s². Determine and explain its velocity arrow after 0.400 s, choosing x rightward and y upward. Construct the composition without a supplied arrow diagram.",
+            "expectedPerformanceDe": "Erhält v = (3,00; −3,924) m/s, etwa 4,94 m/s und 52,6° unter der Horizontalen nach rechts. Begründet die rechtwinklige Zusammensetzung, den größeren Betrag gegenüber jeder Einzelkomponente und die waagerechte Geschwindigkeit beim Start.",
+            "expectedPerformanceEn": "Obtains v = (3.00, −3.924) m/s, about 4.94 m/s and 52.6° below the rightward horizontal. Justifies perpendicular composition, a magnitude exceeding either individual component, and horizontal velocity at launch.",
+            "understandingFocusDe": "Die gleichförmige horizontale und beschleunigte vertikale Komponente bilden eine momentane Geschwindigkeit.",
+            "understandingFocusEn": "The uniform horizontal and accelerated vertical components form one instantaneous velocity."
+          },
+          {
+            "id": "leftward-impact",
+            "taskDemandDe": "Neue Komponentenaufzeichnungen eines waagerechten Wurfs verwenden x nach rechts und y nach oben: Der vx-Graph ist konstant bei −2,00 m/s; der vy-Graph fällt geradlinig von 0 auf −1,50 m/s beim Auftreffen. Bestimme den Auftreffgeschwindigkeitspfeil, seinen Betrag und seine Richtung.",
+            "taskDemandEn": "Fresh component records of horizontal projection use x rightward and y upward: the vx graph stays at −2.00 m/s; the vy graph falls linearly from 0 to −1.50 m/s at impact. Determine the impact velocity arrow, its magnitude and direction.",
+            "expectedPerformanceDe": "Konstruiert v = (−2,00; −1,50) m/s mit Betrag 2,50 m/s und Richtung 36,9° unter der Horizontalen nach links, entsprechend 216,9° gegen den Uhrzeigersinn ab +x. Begründet den Quadranten durch beide negativen Komponenten und unterscheidet Komponentenvorzeichen vom positiven Betrag.",
+            "expectedPerformanceEn": "Constructs v = (−2.00, −1.50) m/s with magnitude 2.50 m/s and direction 36.9° below the leftward horizontal, equivalent to 216.9° counterclockwise from +x. Justifies the quadrant from both negative components and distinguishes component signs from positive magnitude.",
+            "understandingFocusDe": "Die geänderte Startrichtung verändert Komponenten und Winkelbezug; die rechtwinklige Vektoraddition bleibt anwendbar.",
+            "understandingFocusEn": "Changed launch direction changes components and angle references; perpendicular vector addition remains applicable."
+          }
+        ]
+      }
+    }
+  ],
+  "limitations": [
+    "Only canonical-input.json, criteria.md and output.schema.json were used. The source/projection matrix and presentation assets were not supplied within those inputs; official coverage and presentation-specific alignment remain unverified.",
+    "output.schema.json admits candidate bodies but no profileRuleVersion, status, reviewAuthority, claim-bound or dissent fields. Those metadata cannot be encoded here; all nine bodies are AI candidates needing human review, with intended initial bounds E1/G1.",
+    "Numerical experiment references are model checks, not collected observations. Experimental demonstrations require actual learner data and honest attribution; these profiles establish neither completed experiments nor mastery or acceptance."
+  ]
+}

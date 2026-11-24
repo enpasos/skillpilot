@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "APPLIED_REVIEWED_CONTENT_WITH_OPEN_CQR203_COVERAGE_GATE",
+  "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+  "appliedAt": "2026-11-24T04:32:23.845471+00:00",
+  "beforeGoalPath": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/before.goal.json",
+  "beforeRawSha256": "8919811ec34f2eed14fd73822d679315ececf2194bdb6d85f334da22121d5ca4",
+  "currentGoalPath": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/approved-current.goal.json",
+  "currentRawSha256": "472fce30f7ce9d4b785022ced97e26d1695cd92701157f10f7276d7d6b9c30e2",
+  "independentReviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-a/response.json",
+      "sha256": "ac412b433261ad5615f3f071fe9cfb8391b8637cf7aef362c134621eef87b4e3",
+      "runManifest": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-a/run.actual.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-b/response.json",
+      "sha256": "6c7ea77c79ef185bfc48bc59f5c5a7376afaf439366703ea010539744190a5d8",
+      "runManifest": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round1/round-b/run.actual.json"
+    }
+  ],
+  "exactReviewedChanges": [
+    "requires: VEC -> WW + MOD",
+    "coveredGoalIds: remove all three unsupported whole-goal claims",
+    "full English task and solution",
+    "German minimum-range calculation retains unrounded flight time; outward interval [3.70,4.39] m"
+  ],
+  "unchanged": [
+    "assessment identity and placement",
+    "German task body",
+    "all scoring rows,30maximum/18passing",
+    "historical evidence and learner results"
+  ],
+  "formatAndGate": "Empty coveredGoalIds is legal in the native compiled idList format, but native actual canonical-physics-sek2 CQR-203 warns missing coveredGoalIds (111/112complete). No quality rule/floor was changed. The required terminal-coverage gate remains open and no M7 completion is claimed.",
+  "nativeProbePath": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/native-contract/mp-empty-native.actual.json",
+  "directCoverage": [],
+  "planningCredit": [],
+  "acceptanceLimits": "Actual independent AI content/scoring/preparation reviews only. A passing aggregate practice result grants none of the withdrawn whole-goal claims. No learner trial, host/human approval, result transfer or production deployment."
+}

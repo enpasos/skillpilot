@@ -1,0 +1,55 @@
+{
+  "schema": "mp-identity-preflight-repository-reproduction-receipt-v1",
+  "checkedAt": "2026-11-24T05:47:16.274988+00:00",
+  "status": "PASS_READ_ONLY_COUNTERFACTUAL_REPRODUCED",
+  "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/native-probe.mts",
+  "exitCode": 0,
+  "allReferencedInputFilesExist": true,
+  "everyReferencedPinnedInputReconstructible": true,
+  "historicalCodePinSnapshots": [
+    {
+      "originalPath": "app/scripts/testPhysicsGoalBookInputs.ts",
+      "originalInspectedSha256": "be7e6197f7ddb53664cf5d86f377027f10ca8adf593b152fba1fc702caec9c3e",
+      "exactSnapshotPath": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/testPhysicsGoalBookInputs.observed.ts",
+      "currentFileSha256": "08fe8824676925f02972db9a6f822cffb5241fbe5a33aa7862c5245551108d03",
+      "reason": "Parent changed the mutable test after the read-only inspection; exact originally inspected bytes are preserved from commit e42f2a19c7, without rewriting the original report."
+    }
+  ],
+  "old18of30IdentityStillActive": true,
+  "new05IdentityActivated": false,
+  "111of111": "Explicitly counterfactual: the old task was moved only inside an in-memory clone; the actual current task remains active. No new task or quality acceptance is inferred.",
+  "artifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/README.md",
+      "sha256": "8f0de070313454bd0a338c11c272b1559ea8433852b0cd68e1bfacfa80218cfe"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/authority-0639.bound.md",
+      "sha256": "b1ce60dd142e36d70a8707b5017a0bc6ac0b0672a58bd3f2598af157b796f9c8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/canonical-physics.observed-before-new-id.json.gz",
+      "sha256": "1fee4ce907b80212d63a3b3f1e2f44c721958867cb7dbca7c734a81b38a8f6e0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/native-probe.actual.json",
+      "sha256": "b8d1dc15e2011c7731e37bc79f6dd18a033d986c19983ba111dc3e51f23d79ba"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/native-probe.mts",
+      "sha256": "6e89f63e86a48929e27bf469ce80333324f64a857fe4781a4e50d16d1ad6c6d6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/native-reproduction.actual.log",
+      "sha256": "56f4e20c4af4fa1bf62f3db9412c1cdb673bd66c9486773742fe84f79828bd75"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/review.actual.json",
+      "sha256": "8865dff11807ad62b3251300528b2afb8a44fede184626fc6a19b9fb56dbd91f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/mp-identity-preflight-20261124/testPhysicsGoalBookInputs.observed.ts",
+      "sha256": "be7e6197f7ddb53664cf5d86f377027f10ca8adf593b152fba1fc702caec9c3e"
+    }
+  ]
+}

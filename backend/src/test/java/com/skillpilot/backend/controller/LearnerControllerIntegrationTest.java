@@ -1831,6 +1831,16 @@ public class LearnerControllerIntegrationTest {
                 "../contracts/stage-plan-review-evidence/2026-11-17/pr160-backend-ci-repair-v1/"
                         + "sek1-seed-fixtures.actual.json").toFile()).path("scopes");
         scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) currentSekOne);
+        var e1Physics = objectMapper.readTree(Path.of(
+                "../contracts/stage-plan-review-evidence/2026-11-24/e1-physics-seki-current-v1/"
+                        + "sek1-seed-fixtures.actual.json").toFile()).path("scopes");
+        scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) e1Physics);
+        // The 24 Nov HH/SN scope deferral withdraws only the new, unprepared
+        // lower targets. Preserve both historical fixtures and all other rows.
+        var deferredHhSn = objectMapper.readTree(Path.of(
+                "../contracts/stage-plan-review-evidence/2026-11-24/e1-physics-seki-deferred-hh-sn-v2/"
+                        + "sek1-seed-fixtures.actual.json").toFile()).path("scopes");
+        scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) deferredHhSn);
         return scopes;
     }
 
@@ -2079,15 +2089,17 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "65", "65" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "67", "67" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "156", "156" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "152", "152" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "161", "161" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "156", "156" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "126", "126" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "130", "130" },
+                // New LAWS source-link activation is deferred; source corrections remain.
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "126", "126" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "124", "124" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "152", "152" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "153", "153" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "131", "131" },
+                // The two source-supported new goals await real preparation repair.
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "155", "155" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "134", "134" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "136", "136" }
         };
         // The verified applicability-cache refresh exposes these already-authored

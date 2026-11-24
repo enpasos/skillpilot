@@ -1,0 +1,500 @@
+{
+  "materials": [
+    {
+      "schemaVersion": 3,
+      "unit": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "compositionNodeId": "physics-e1-accelerated-and-free-fall",
+        "viewIds": [
+          "de-he-gym-physics-gk",
+          "de-he-gym-physics-lk",
+          "de-he-gym-physics-gk-g8",
+          "de-he-gym-physics-lk-g8",
+          "de-he-gym-physics-gk-g9",
+          "de-he-gym-physics-lk-g9",
+          "de-he-gym-sekii-physics-gk",
+          "de-he-gym-sekii-physics-lk"
+        ],
+        "orientationGoalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+        "assessmentGoalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+      },
+      "guidedStudyOrder": [
+        "e0004439-ed34-5caf-858a-6107918224eb",
+        "1e459a1b-4159-5049-84eb-9928129c1610",
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "262f807a-30d0-503e-986f-856cbd048e8e",
+        "8aff7aac-321b-5172-ac55-877876bfd2cd",
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+      ],
+      "intro": {
+        "de": {
+          "question": "Was verrät ein Video über einen fallenden Ball?",
+          "promise": "Du lernst, beschleunigte Bewegungen in Diagrammen und mit passenden Gesetzen zu beschreiben. Am freien Fall prüfst du mit eigenen Messungen oder einem Messprotokoll, wie gut dein Modell die Bewegung beschreibt.",
+          "scene": "Eine Hand hält den Ball neben einem Maßstab, kurz vor dem Loslassen. In E.1 suchst du die Landestelle des Balls am Tisch. Hier untersuchst du dafür zunächst die Bewegung nach unten.",
+          "imageUrl": "/assets/goal-visualizations/physik/b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e/b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e.png",
+          "imageAlt": "Eine Hand hält einen einzelnen blauen Ball neben dem oberen Teil eines senkrechten Maßstabs mit unbeschrifteten Teilstrichen. Boden und Fallraum sind sichtbar; spätere Ballpositionen fehlen.",
+          "topics": [
+            "Änderungen der Geschwindigkeit beschreiben",
+            "Zeit, Ort und Geschwindigkeit in Diagrammen verbinden",
+            "Fallbeschleunigung aus Messdaten bestimmen",
+            "Vorhersagen und Modellgrenzen vergleichen"
+          ]
+        },
+        "en": {
+          "question": "What can a video reveal about a falling ball?",
+          "promise": "You will learn to describe accelerated motion using graphs and suitable laws. For free fall, you will use your own measurements or a lab record to check how well your model describes the motion.",
+          "scene": "A hand holds the ball beside a measuring stick, just before release. In E.1 you are working towards predicting where the ball from the table lands. Here you first investigate its downward motion.",
+          "imageUrl": "/assets/goal-visualizations/physik/b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e/b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e.png",
+          "imageAlt": "A hand holds a single blue ball near the top of a vertical measuring stick with unlabelled tick marks. The floor and falling space are visible; no later ball positions are shown.",
+          "topics": [
+            "Describe changes in velocity",
+            "Connect time, position and velocity in graphs",
+            "Determine the acceleration of free fall from measurements",
+            "Compare predictions and model limits"
+          ]
+        }
+      },
+      "exercises": [
+        {
+          "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+          "requiredForRegularLearning": true,
+          "de": {
+            "title": "Welches Wertepaar gehört zu welchem Abwurf?",
+            "prompt": "Erstelle ein kurzes Messprotokoll für drei getrennte Abwürfe. Wähle einen Weg.\n\nEigene Messung. Lass einen kleinen weichen Ball aus drei verschiedenen Höhen unterhalb deiner Schulter auf einen freien Boden fallen. Lies die Höhe mit einem Maßstab ab. Du kannst die Fallzeit mit einer seitlichen Aufnahme bekannter Bildrate bestimmen. Notiere für jeden Abwurf das Bild beim Loslassen und das Bild beim ersten Bodenkontakt.\n\nPrager Messnotizen. Für Stahlkugel 1 stehen im Laborprotokoll drei einzelne Abwürfe: Bei 40 cm wurden 0,285 s gemessen, bei 20 cm 201 ms und bei 60 cm 0,349 s. Diese Messungen stammen aus Versuch 2 der ČVUT Prag vom 10. März 2017. Dort hatten die Höhenskala 1 cm und die Zeitmessung 1 ms Auflösung.\n\nBeschrifte die beiden Spalten deiner Tabelle mit Messgröße und Einheit. Ordne jedem Abwurf seine Fallhöhe und Fallzeit zu und verwende innerhalb jeder Spalte dieselbe Einheit. Vermerke die Herkunft der Daten. Erkläre, zwischen welchen Positionen du die Fallhöhe bestimmst und mit welchen beiden Ereignissen die Fallzeit beginnt und endet. Hebe dein Protokoll und etwaige eigene Aufnahmen für die Auswertung auf.",
+            "hint": "Behalte beim Umrechnen jedes Zahlenpaar zusammen. Bei einer Videoaufnahme entspricht die Differenz der Bildnummern der Anzahl der verstrichenen Bildintervalle. Wie lang ist bei deiner Bildrate ein Intervall?",
+            "solution": "Im Prager Protokoll passen folgende Tabellenzeilen unter die Überschriften Fallhöhe in cm und Fallzeit in ms: 20 | 201, 40 | 285, 60 | 349. Die Reihenfolge der Zeilen darf sich ändern. Jede Zeit gehört zum Abwurf aus der angegebenen Höhe. Ein möglicher Höhenbezug ist der senkrechte Abstand der Ballunterseite bei der Freigabe bis zum Boden. Gemessen wird vom Loslassen bis zum ersten Bodenkontakt. Bei einer eigenen Videoaufnahme erhältst du die Fallzeit aus der Differenz der Bildnummern geteilt durch die Bildrate. Nenne dabei deine eigenen Werte und deren Herkunft.",
+            "evidenceCriteria": [
+              "Die Tabelle enthält drei getrennte Abwürfe mit der jeweiligen Fallhöhe und Fallzeit. In jeder beschrifteten Spalte stimmen Größe, Einheit und Zahlenwerte überein.",
+              "Die Abgabe benennt den senkrechten Höhenbezug und erklärt die Zeitspanne zwischen Freigabe und erstem Bodenkontakt.",
+              "Die lernende Person nennt die Quelle der Messwerte. Beim eigenen Versuch sind Höhenmessung und Zeitbestimmung nachvollziehbar. Beim bereitgestellten Protokoll stimmen die Zuordnungen und die Umrechnung der Zeiten."
+            ]
+          },
+          "en": {
+            "title": "Which pair of readings belongs to which drop?",
+            "prompt": "Make a short measurement log for three separate drops. Choose one route.\n\nYour own measurements. Drop a small, soft ball onto a clear floor from three different heights below your shoulder. Read the height with a ruler. You can time each fall using a side-on video with a known frame rate. For each drop, note the frame at release and the frame at first contact with the floor.\n\nPrague lab notes. For steel ball 1 the lab record contains three separate drops: the measured time was 0.285 s at 40 cm, 201 ms at 20 cm and 0.349 s at 60 cm. These measurements come from experiment 2 at the Czech Technical University in Prague on 10 March 2017. The height scale had a resolution of 1 cm and the timer a resolution of 1 ms.\n\nLabel both columns of your table with the quantity and unit. Pair the drop height and fall time for each drop, using one unit consistently within each column. State where the measurements came from. Explain the two positions you use for the height and the two events that start and end the fall time. Keep your log and any recordings you made for the later analysis.",
+            "hint": "Keep the two readings for each drop together when converting units. In a video, the difference between the frame numbers gives the number of frame intervals that have passed. How long is one interval at your frame rate?",
+            "solution": "For the Prague record, the rows under drop height in cm and fall time in ms are 20 | 201, 40 | 285 and 60 | 349. The rows can be in any order. Each time belongs to the drop from the corresponding height. One valid height reference is the vertical distance from the bottom of the ball at release to the floor. Time runs from release to first contact with the floor. For your own video, divide the difference between the frame numbers by the frame rate to get the fall time. Report your own readings and their source.",
+            "evidenceCriteria": [
+              "The table contains three separate drops with the corresponding height and fall time. Each labelled column uses a consistent quantity and unit and contains the correct numerical readings.",
+              "The learner specifies the vertical reference for the height and explains the interval from release to first contact with the floor.",
+              "The learner names the source of the readings. For their own experiment, the height and timing method can be followed. For the supplied record, the pairs and the converted times match the source."
+            ]
+          }
+        },
+        {
+          "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "requiredForRegularLearning": true,
+          "de": {
+            "title": "Welche Fallbeschleunigung ergibt der Versuch?",
+            "prompt": "Wähle eine der beiden Möglichkeiten.\n\nEigener Versuch. Lass einen kleinen weichen, kompakten Ball aus ungefähr Hüfthöhe auf eine freie Bodenfläche fallen. Filme von der Seite mit feststehender Kamera. Stelle einen Maßstab in die Ebene der Bewegung. Notiere die Bildrate und lies die Position der Ballmitte bei der Freigabe und in mindestens vier weiteren Bildern ab. Ein Wegsensor mit bekannter Zeitskala geht ebenso.\n\nMessprotokoll im Chat. Im Prager Lehrlabor fiel eine Stahlkugel mehrmals aus der Ruhe. Für jede Fallhöhe wurde die Zeit von der Freigabe bis zum Auftreffen gemessen. Die Höhenskala hatte 1 cm, der Zeitmesser 1 ms Auflösung. Hier stehen fünf Messpaare (Fallhöhe in cm | Fallzeit in ms):\n20 | 201\n40 | 285\n60 | 349\n80 | 403\n90 | 428\nDie Zeilen stammen aus getrennten Abwürfen. Überlege, zwischen welchen Punkten du die Höhe messen und wie du die Zeitmessung starten und stoppen würdest. Die Daten stammen aus Versuch 2, Stahlkugel 1, ČVUT Prag (10. März 2017).\n\nFür beide Wege. Gib Datenquelle, Einheiten, Zeitnullpunkt und positive Richtung an. Halte einen Messpunkt zur Kontrolle zurück. Zeige deine übrigen Daten in einem beschrifteten Diagramm. Im Chat kannst du dafür Achsen, Skala und Punktkoordinaten angeben. Bestimme aus dem Diagramm die Fallbeschleunigung und formuliere das Zeit-Ort-Gesetz für deine Achsen und Anfangsbedingungen. Prüfe deine Vorhersage am zurückgehaltenen Punkt. Wie gut passt dein Wert zu 9,81 m/s²? Woran könnte eine Abweichung liegen, und welche Messung würdest du dafür genauer prüfen?",
+            "hint": "Für einen Start aus der Ruhe kannst du den zurückgelegten Fallweg gegen die quadrierte Zeit seit dem Loslassen auftragen. Achte beim Umrechnen der Einheiten darauf, welche Größe du quadrierst. Welche Einheit hat die Steigung?",
+            "solution": "Bei positiver Richtung nach unten, t = 0 bei der Freigabe und v₀ = 0 gilt ohne merklichen Luftwiderstand s(t) = s₀ + ½gt². Im Fallweg-t²-Diagramm ist die Steigung g/2. Für die ersten vier Prager Werte ergibt eine Ausgleichsgerade durch den Ursprung rund 4,93 m/s² und damit g ≈ 9,85 m/s². Für 0,90 m folgt eine Fallzeit von rund 0,427 s. Gemessen wurden 0,428 s. Die Differenz liegt in der Größenordnung der Zeitauflösung. Schon die Höhenskala begrenzt den Vergleich zusätzlich. Beim Video kann ein verschobener Freigabezeitpunkt die Steigung ändern. Prüfe das etwa mit dem benachbarten Bild als Zeitnullpunkt. Mit eigenen Messungen ergeben sich eigene Zahlen.",
+            "evidenceCriteria": [
+              "Die Abgabe benennt den gewählten Weg. Beim eigenen Fall sind Maßstab, Zeitbasis und Messwerte nachvollziehbar. Beim Prager Protokoll sind Höhenbezug, Start und Stopp der Zeitmessung sowie die getrennten Abwürfe erklärt. Die fremde Datenerhebung ist als solche ausgewiesen.",
+              "Ein beschriftetes Diagramm oder seine im Chat rekonstruierbare Darstellung zeigt die selbst aufbereiteten Messwerte. Die Auswertung ergibt mit begründeter Steigung oder quadratischer Anpassung einen Wert für g mit Einheit.",
+              "Zeitnullpunkt, Ortsachse und Anfangsbedingungen passen zum angegebenen Zeit-Ort-Gesetz. Die Modellannahmen zu g und Luftwiderstand sind auf den Versuch bezogen.",
+              "Die eigene Vorhersage wird am zurückgehaltenen Messpunkt geprüft. Der Vergleich mit 9,81 m/s² berücksichtigt mindestens eine konkrete Mess- oder Modellgrenze sowie eine passende Kontrollmessung."
+            ]
+          },
+          "en": {
+            "title": "What acceleration of free fall does the experiment give?",
+            "prompt": "Choose either route.\n\nYour own experiment. Drop a small, soft, compact ball from about waist height onto a clear floor. Film it from the side with a stationary camera. Place a length scale in the plane of motion. Record the frame rate and read the position of the centre of the ball at release and in at least four later frames. A position sensor with a known time scale also works.\n\nLab record in the chat. In a Prague teaching lab, a steel ball was dropped from rest several times. The time from release to impact was measured for each drop height. The height scale had a resolution of 1 cm and the timer a resolution of 1 ms. Here are five measured pairs (drop height in cm | fall time in ms):\n20 | 201\n40 | 285\n60 | 349\n80 | 403\n90 | 428\nEach row is a separate drop. Explain between which points you would measure the height and how you would start and stop the timer. The data come from experiment 2, steel ball 1, Czech Technical University in Prague (10 March 2017).\n\nFor either route. State the data source, units, time origin and positive direction. Keep one measurement for a separate check. Plot the remaining data on labelled axes. In the chat you can give the axes, scales and point coordinates. Use the graph to determine the acceleration of free fall and write the position–time law for your axes and initial conditions. Test your prediction against the measurement you kept back. How well does your result agree with 9.81 m/s²? What could explain a discrepancy, and which measurement would you check more closely?",
+            "hint": "For release from rest you can plot the distance fallen against the square of the time since release. When converting units, pay attention to which quantity you square. What are the units of the slope?",
+            "solution": "With downwards positive, t = 0 at release and v₀ = 0, negligible air resistance gives s(t) = s₀ + ½gt². The slope of distance fallen against t² is g/2. For the first four Prague points, fitting a line through the origin gives about 4.93 m/s², hence g ≈ 9.85 m/s². The predicted fall time for 0.90 m is about 0.427 s. The measured time was 0.428 s. The difference is comparable to the timer resolution. The height scale also limits this comparison. For a video, shifting the assumed release time can change the slope. Try the neighbouring frame as the time origin to check this. Your own measurements will give their own results.",
+            "evidenceCriteria": [
+              "The work identifies the route used. For the learner’s own drop, the length scale, time base and readings are documented. For the Prague lab record, the height reference, start and stop of the timer, and separate drops are explained. The source of those measurements is identified.",
+              "A labelled graph or a description that makes it possible to reconstruct the graph in the chat shows the learner’s processed data. A justified slope or quadratic fit yields an acceleration with units.",
+              "The time origin, position axis and initial conditions are consistent with the position–time law. The assumptions about g and air resistance are related to the experiment.",
+              "The prediction is tested against the measurement kept back. The comparison with 9.81 m/s² considers a specific measurement or model limitation and a way of checking it experimentally."
+            ]
+          }
+        },
+        {
+          "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "de": {
+            "title": "Was ändert sich beim Fallen?",
+            "prompt": "Nutze das Fallprotokoll aus dem vorigen Schritt. Falls du es gerade nicht zur Hand hast, kannst du mit zwei Messpaaren aus dem Prager Versuch weiterarbeiten. Aus der Ruhe fiel die Kugel 20 cm in 201 ms und 80 cm in 403 ms. Was fällt dir an Weg und Zeit auf? Vermute zunächst, wie sich die Geschwindigkeit verändert. Was hättest du bei konstanter Geschwindigkeit erwartet?\n\nPrüfe nun das Modell einer konstanten Beschleunigung. Wähle die positive Richtung nach unten und beginne beim Loslassen. Beschreibe oder skizziere, wie Fallweg, Geschwindigkeit und Beschleunigung mit der Zeit verlaufen. Wie hängen die drei Darstellungen zusammen? Was ändert sich, wenn die Uhr erst während des Falls startet? Erkläre, welche Annahme du mit weiteren Messpunkten überprüfen möchtest. Hebe bei eigenen Messungen einen weiteren Messpunkt zur Kontrolle auf. Beim Prager Versuch wirst du im nächsten Schritt die Fallzeit für 90 cm vorhersagen und mit der Messung vergleichen.",
+            "hint": "Vergleiche die Fallwege beim Verdoppeln der Zeit. Was würde eine konstante Geschwindigkeit für diesen Vergleich bedeuten? Überlege dann, woran du die Geschwindigkeit in einem Weg-Zeit-Diagramm erkennen kannst.",
+            "solution": "Die Fallzeit verdoppelt sich im Prager Beispiel ungefähr, der Fallweg vervierfacht sich. Bei gleichbleibender Geschwindigkeit wäre nur etwa der doppelte Weg zu erwarten. Das spricht dafür, dass die Kugel schneller wird. Im Modell mit konstanter Beschleunigung und Start aus der Ruhe ist der Fallweg eine nach oben geöffnete Parabel. Ihre Steigung gibt die Geschwindigkeit an. Diese wächst als Gerade ab null. Die Steigung der Geschwindigkeitsgeraden ist die konstante positive Beschleunigung. Zwei Messpaare reichen allein noch nicht aus, um die Konstanz der Beschleunigung über den ganzen Fall zu prüfen. Bei einem späteren Zeitnullpunkt hat der Ball bereits eine Anfangsgeschwindigkeit. Die Geschwindigkeitsgerade beginnt dann oberhalb von null. Die Beschleunigung bleibt gleich. Behältst du die ursprüngliche Nullmarke für den Fallweg bei, ist beim späteren Zeitnullpunkt auch der Anfangsweg bereits positiv."
+          },
+          "en": {
+            "title": "What changes as the ball falls?",
+            "prompt": "Use the fall record from the previous step. If you do not have it handy, you can continue with two pairs from the Prague experiment. Starting from rest, the ball fell 20 cm in 201 ms and 80 cm in 403 ms. What do you notice about distance and time? Predict how the speed changes. What would you expect at constant speed?\n\nNow consider a model with constant acceleration. Take downwards as positive and start the clock at release. Describe or sketch how distance fallen, velocity and acceleration vary with time. How are the three representations connected? What changes if the clock starts while the ball is already moving? Explain which assumption you would like to check with more data. If you have your own readings, set one more aside for that check. For the Prague experiment, your next task will be to predict the fall time at 90 cm and compare it with the measurement.",
+            "hint": "Compare the distances when the time doubles. What would constant speed imply for this comparison? Then consider how to read velocity from a position–time graph.",
+            "solution": "In the Prague example the time roughly doubles while the distance quadruples. At constant speed the ball would cover only about twice the distance. This suggests that it speeds up. Starting from rest with constant acceleration gives an upward-opening parabola for distance fallen. Its slope gives velocity, which increases linearly from zero. The slope of the velocity line is the constant positive acceleration. Two pairs alone cannot establish that the acceleration stayed constant throughout the fall. With a later time origin, the ball already has an initial velocity. The velocity line now starts above zero. The acceleration stays the same. If you keep the original zero for distance fallen, the initial distance at this later time origin is also positive."
+          }
+        }
+      ],
+      "individualAssessmentOffers": [
+        {
+          "targetGoalId": "e0004439-ed34-5caf-858a-6107918224eb",
+          "assessmentGoalId": "c6e2942d-1ff4-5e86-a52a-4ca4c8568291"
+        }
+      ]
+    },
+    {
+      "schemaVersion": 4,
+      "unit": {
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "compositionNodeId": "physics-e1-motion",
+        "viewIds": [
+          "de-he-gym-physics-gk",
+          "de-he-gym-physics-lk",
+          "de-he-gym-physics-gk-g8",
+          "de-he-gym-physics-lk-g8",
+          "de-he-gym-physics-gk-g9",
+          "de-he-gym-physics-lk-g9",
+          "de-he-gym-sekii-physics-gk",
+          "de-he-gym-sekii-physics-lk"
+        ],
+        "flashcardGoalId": "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
+        "assessmentGoalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "sectionAssessmentPolicy": {
+          "unitContractRevision": "2026-11-23-e1-v3",
+          "requiredPartsFingerprint": "sha256:a786a66a38817bfd3918fbd5d21be7102b202f4b3421da6f37efb9c198b66843",
+          "voluntaryAssessmentGoalIds": [
+            "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+            "f41e4e30-794e-5ce4-ba5e-cc72712cd691"
+          ]
+        },
+        "assessmentContract": {
+          "revision": "2026-11-23-e1-v3",
+          "viewIds": [
+            "de-he-gym-physics-gk-g8",
+            "de-he-gym-physics-lk-g8",
+            "de-he-gym-physics-gk-g9",
+            "de-he-gym-physics-lk-g9",
+            "de-he-gym-sekii-physics-gk",
+            "de-he-gym-sekii-physics-lk"
+          ],
+          "parts": [
+            {
+              "goalId": "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+              "material": {
+                "taskRevision": "sha256:8c1dadffb91e5a1c585453dbee5c47caa389b2a58645255c3a2c48d6bdc30506",
+                "rubricRevision": "sha256:82e4e0b14410639f1f23d7172fc0fe48a9d4b2c0d75af404f1b62a4cbdbc719c",
+                "fingerprint": "sha256:82ce486eb9bc756a56a89f8208060df26fca425f67a72464df1c1b76d2768a94"
+              }
+            },
+            {
+              "goalId": "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+              "material": {
+                "taskRevision": "sha256:8d602025e828af49d51d92c98f6e1eab7254adeedeb067b6c4c3a5b017f023c2",
+                "rubricRevision": "sha256:aedba03dc90e7615eba5ab4a2a32eeac449b749eaa7f24d41984901d47ddaa12",
+                "fingerprint": "sha256:b2186af46d563f538cb29ec277bc01228695b8155f201890c29bc4770beae0af"
+              }
+            },
+            {
+              "goalId": "c933b7d2-edcb-5747-9378-9762659f260a",
+              "material": {
+                "taskRevision": "sha256:5fe14a6f9b5a06a7a25bf8ab18275a1102c231197321f7f2eeac302ae735b752",
+                "rubricRevision": "sha256:a117de51728be60b4c881b061f24046a8c34618960108acafb478718fd0317eb",
+                "fingerprint": "sha256:1b2158e1bd095753ea556fd2715d1ce70f523adfc0bb56308859a66f692b387f"
+              }
+            },
+            {
+              "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+              "material": {
+                "taskRevision": "sha256:e0c8168fd6d8a86ce63012d2bd1241f3a790e39bbbffea6710d7c137c8d24cdd",
+                "rubricRevision": "sha256:88da8d12bcb9f7c8cd3761730755307ba6e8a0a0405cb9a522bf5338d9be715f",
+                "fingerprint": "sha256:e5762e0af43aaa168340e7c560bd36f297039cb4b5e2a955eb7116bc290dceef"
+              }
+            }
+          ],
+          "contentGoalIds": [
+            "d6dc0e02-831d-4894-a61a-852bcc74f147",
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+            "8aff7aac-321b-5172-ac55-877876bfd2cd",
+            "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+            "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+            "ce431132-dfc4-42c2-aff6-bd72035190f8",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+            "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "1e459a1b-4159-5049-84eb-9928129c1610",
+            "262f807a-30d0-503e-986f-856cbd048e8e",
+            "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+          ],
+          "planningCredits": []
+        },
+        "orientationGoalId": "a4d4efe1-7d30-526b-ac9c-806113da4363"
+      },
+      "intro": {
+        "de": {
+          "question": "Ein Ball rollt vom Tisch. Wo landet er?",
+          "promise": "Du lernst, Bewegungen mit Messdaten zu beschreiben und Vorhersagen zu prüfen. Im E.1-Einheitenauftrag sagst du in Prüfungsteil B die Landestelle des Balls mit einem passenden Modell voraus.",
+          "scene": "Der blaue Ball liegt an der Tischkante. Gleich soll er darüber hinausrollen. Unterhalb der Kante ist freie Bodenfläche zu sehen.",
+          "imageUrl": "/assets/goal-visualizations/physik/a4d4efe1-7d30-526b-ac9c-806113da4363/a4d4efe1-7d30-526b-ac9c-806113da4363.png",
+          "imageAlt": "Ein einzelner blauer Ball liegt dicht an der Kante eines Tisches. Rechts darunter ist freie Bodenfläche zu sehen; eine Flugbahn oder Landestelle ist nicht eingezeichnet.",
+          "topics": [
+            "Bewegungen messen und in Diagrammen beschreiben",
+            "Geschwindigkeit und Beschleunigung unterscheiden",
+            "Freien Fall mit eigenen oder bereitgestellten Messdaten untersuchen",
+            "Modelle für Fall und Wurf prüfen"
+          ]
+        },
+        "en": {
+          "question": "A ball rolls off a table. Where will it land?",
+          "promise": "You will learn to describe motion using measurements and check predictions. In part B of the E.1 unit assignment, you predict where the ball lands using a suitable model.",
+          "scene": "The blue ball rests at the edge of the table. It is about to roll over the edge. An empty area of floor is visible below the edge.",
+          "imageUrl": "/assets/goal-visualizations/physik/a4d4efe1-7d30-526b-ac9c-806113da4363/a4d4efe1-7d30-526b-ac9c-806113da4363.png",
+          "imageAlt": "A single blue ball rests close to the edge of a table. The floor to the right and below is empty; no flight path or landing point is shown.",
+          "topics": [
+            "Measure motion and describe it in graphs",
+            "Distinguish velocity from acceleration",
+            "Investigate free fall using your own or supplied measurements",
+            "Check models of falling and throwing"
+          ]
+        }
+      },
+      "exercises": [
+        {
+          "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+          "de": {
+            "title": "Wie weit rollt der Spielzeugzug?",
+            "prompt": "Ein Spielzeugzug rollt geradeaus. Für diese Übung sind Videodaten nachgestellt. Die Spitze steht nach 0,0 / 0,5 / 1,0 / 1,5 Sekunden bei 12 / 32 / 52 / 72 Zentimetern. Wähle ein einfaches Bewegungsmodell und sage den Ort der Spitze nach 2,5 Sekunden voraus. Das letzte Bild zeigt sie bei 95 cm. Wie gut passt deine Vorhersage? Nenne eine mögliche Erklärung für die Abweichung.",
+            "hint": "Vergleiche die Ortsänderungen in gleich langen Zeitabschnitten. Wie weit müsste der Zug zwischen dem vorletzten und dem letzten Bild fahren, wenn dein Modell weiter gilt?",
+            "solution": "Bis 1,5 s legt der Zug alle 0,5 s genau 20 cm zurück. Das spricht für konstante 40 cm/s. Von 72 cm aus kämen in der nächsten Sekunde 40 cm hinzu. Vorhergesagt sind also 112 cm. Im letzten Bild fehlen dazu 17 cm. Unter der Annahme genauer Ortsangaben war der Zug im letzten Abschnitt im Mittel langsamer. Eine rauere Schiene wäre eine mögliche Ursache. Aus dem letzten Bild allein lässt sich die Ursache nicht bestimmen."
+          },
+          "en": {
+            "title": "How far will the toy train roll?",
+            "prompt": "A toy train rolls along a straight track. Use these simulated video readings. Its front is at 12 / 32 / 52 / 72 centimetres after 0.0 / 0.5 / 1.0 / 1.5 seconds. Choose a simple model and predict the position of the front at 2.5 seconds. The last frame shows it at 95 cm. How well does your prediction fit? Give one possible reason for the difference.",
+            "hint": "Compare the changes in position over equal time intervals. How far should the train travel between the last two frames if your model still holds?",
+            "solution": "Up to 1.5 s the train covers 20 cm every 0.5 s, consistent with a constant speed of 40 cm/s. Starting at 72 cm it would travel another 40 cm in the next second, reaching 112 cm. The last frame puts it 17 cm short. Assuming accurate positions, its average speed over the final interval was lower. A rougher section of track could explain the difference. The final frame alone cannot establish the cause."
+          }
+        },
+        {
+          "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+          "de": {
+            "title": "Wo muss die Bodenmarke liegen?",
+            "prompt": "Ein kleiner Ball verlässt einen 0,80 m hohen Tisch waagerecht. In den nachgestellten Videodaten ist der Ball nach 0,10 s 13 cm nach vorn und 5 cm nach unten geflogen. Nach 0,20 s sind es 26 cm nach vorn und 20 cm nach unten. Wo würdest du auf dem Boden die Stelle für den ersten Aufprall markieren? Gib den waagerechten Abstand zur Tischkante an und begründe ihn mit beiden Bewegungen. Vernachlässige den Luftwiderstand und verwende g = 10 m/s².",
+            "hint": "Wie ändern sich die beiden Wege, wenn sich die Zeit von 0,10 s auf 0,20 s verdoppelt? Überlege zuerst, wann der Ball die Tischhöhe durchfallen hat.",
+            "solution": "Waagerecht verdoppelt sich der Weg mit der Zeit. Das passt zu 0,13 m / 0,10 s = 1,3 m/s. Senkrecht vervierfacht sich der Fallweg beim Verdoppeln der Zeit. Das passt zum freien Fall aus der Ruhe in senkrechter Richtung. Nach 0,40 s beträgt der Fallweg ½ × 10 m/s² × (0,40 s)² = 0,80 m. Während derselben 0,40 s fliegt der Ball 1,3 m/s × 0,40 s = 0,52 m nach vorn. Die Marke gehört also 52 cm vor den Punkt senkrecht unter der Tischkante."
+          },
+          "en": {
+            "title": "Where should the floor marker go?",
+            "prompt": "A small ball leaves the edge of a 0.80 m high table horizontally. In the simulated video readings, it has travelled 13 cm forwards and 5 cm down after 0.10 s. After 0.20 s the distances are 26 cm forwards and 20 cm down. Where would you mark the spot where it first hits the floor? Give the horizontal distance from the edge and explain your prediction using both motions. Ignore air resistance and use g = 10 m/s².",
+            "hint": "How do the two distances change when the time doubles from 0.10 s to 0.20 s? First work out when the ball has fallen the full height of the table.",
+            "solution": "The horizontal distance doubles when the time doubles, consistent with a speed of 0.13 m / 0.10 s = 1.3 m/s. The downward distance quadruples when the time doubles. This fits free fall with zero initial vertical speed. After 0.40 s the ball has fallen ½ × 10 m/s² × (0.40 s)² = 0.80 m. In those same 0.40 s it moves 1.3 m/s × 0.40 s = 0.52 m forwards. Place the marker 52 cm beyond the point directly below the table edge."
+          }
+        },
+        {
+          "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "requiredForRegularLearning": true,
+          "de": {
+            "title": "Wie schnell bewegt sich dein Wagen?",
+            "prompt": "Lass einen Spielzeugwagen möglichst gleichmäßig geradeaus fahren. Du kannst auch eine geradlinige Gehbewegung untersuchen. Lege eine Ortsachse mit Maßstab fest. Erfasse mit einer Uhr oder einem Video selbst die Zeiten beim Passieren mehrerer Marken. Bewahre die Messung an der letzten Marke zunächst für die Kontrolle auf. Gib deine Ort-Zeit-Paare mit Einheiten an und zeichne das Zeit-Ort-Diagramm. Welcher Abschnitt lässt sich als gleichförmige Bewegung beschreiben? Bestimme dort den Geschwindigkeitsbetrag und sage die Ankunftszeit an der letzten Marke voraus. Vergleiche deine Vorhersage mit der eigenen Messung.",
+            "hint": "Für zwei Messpunkte auf einer Geraden im Zeit-Ort-Diagramm ist die Steigung die Ortsänderung geteilt durch die verstrichene Zeit. Versuche, die Steigung auch mit einem zweiten Punktepaar zu bestimmen. Wie genau kannst du die Zeit oder den Ort ablesen?",
+            "solution": "Deine Messung bestimmt das Ergebnis. Bei gleichförmiger geradliniger Bewegung ergeben verschiedene Punktpaare innerhalb der Messgenauigkeit denselben Wert für Δx/Δt. Das Vorzeichen hängt von der Ortsachse ab. Der Geschwindigkeitsbetrag ist |Δx/Δt|. Berechne von einem gemessenen Punkt aus die restliche Fahrzeit. Eine Abweichung an der letzten Marke kann an der Zeitmessung oder an einer Tempoänderung liegen. Vergleiche beides mit dem Verlauf deiner Messpunkte.",
+            "evidenceCriteria": [
+              "Der Aufbau mit Marken, Maßstab und Zeitmessung ist nachvollziehbar. Das Protokoll enthält selbst erhobene Orte und Zeiten mit Einheiten, einschließlich des Kontrollpunkts.",
+              "Das beschriftete Zeit-Ort-Diagramm zeigt die eigenen Messpunkte. Der gewählte Abschnitt wird anhand der Messwerte auf annähernd konstante Geschwindigkeit geprüft.",
+              "Die gerichtete Geschwindigkeit wird als Ortsänderung pro Zeit erklärt. Aus der Steigung folgt ein nachvollziehbarer Geschwindigkeitsbetrag mit Einheit.",
+              "Die Vorhersage benutzt die zunächst zurückgehaltene Zeit nicht. Ihr Vergleich mit der Messung berücksichtigt Ablesegenauigkeit oder eine erkennbare Abweichung vom Modell."
+            ]
+          },
+          "en": {
+            "title": "How fast is your cart moving?",
+            "prompt": "Let a toy cart move in a straight line at as steady a speed as possible. You can also investigate someone walking in a straight line. Define a position axis and a length scale. Use a clock or video to measure the times at which several marks are passed. Keep the time at the last mark for a separate check. Report your position and time pairs with units and draw a position–time graph. Which section can be described as uniform motion? Determine the speed there and predict when the last mark will be reached. Compare your prediction with your own measurement.",
+            "hint": "For two points on a straight line in a position–time graph, the slope is the change in position divided by the elapsed time. Try a second pair of points. How precisely can you read the position or time?",
+            "solution": "Your measurements determine the result. For uniform straight-line motion, different pairs of points give the same Δx/Δt within measurement uncertainty. Its sign depends on the position axis. The speed is |Δx/Δt|. Calculate the remaining travel time from a measured point. A discrepancy at the last mark could be due to timing uncertainty or a change in speed. Compare both possibilities with the pattern of your measurements.",
+            "evidenceCriteria": [
+              "The setup, marks, length scale and timing method can be followed. The record contains positions and times you measured yourself, including the check point, with units.",
+              "The labelled position–time graph shows your measured points. You use the measurements to check whether the chosen section has approximately constant velocity.",
+              "You explain signed velocity as change in position per unit time and derive a speed with its unit from the slope.",
+              "The prediction is independent of the time you kept for the check. The comparison with your measurement takes reading precision or an observable departure from the model into account."
+            ]
+          }
+        },
+        {
+          "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "requiredForRegularLearning": true,
+          "de": {
+            "title": "Welche Fallbeschleunigung ergibt der Versuch?",
+            "prompt": "Wähle eine der beiden Möglichkeiten.\n\nEigener Versuch. Lass einen kleinen weichen, kompakten Ball aus ungefähr Hüfthöhe auf eine freie Bodenfläche fallen. Filme von der Seite mit feststehender Kamera. Stelle einen Maßstab in die Ebene der Bewegung. Notiere die Bildrate und lies die Position der Ballmitte bei der Freigabe und in mindestens vier weiteren Bildern ab. Ein Wegsensor mit bekannter Zeitskala geht ebenso.\n\nMessprotokoll im Chat. Im Prager Lehrlabor fiel eine Stahlkugel mehrmals aus der Ruhe. Für jede Fallhöhe wurde die Zeit von der Freigabe bis zum Auftreffen gemessen. Die Höhenskala hatte 1 cm, der Zeitmesser 1 ms Auflösung. Hier stehen fünf Messpaare (Fallhöhe in cm | Fallzeit in ms):\n20 | 201\n40 | 285\n60 | 349\n80 | 403\n90 | 428\nDie Zeilen stammen aus getrennten Abwürfen. Überlege, zwischen welchen Punkten du die Höhe messen und wie du die Zeitmessung starten und stoppen würdest. Die Daten stammen aus Versuch 2, Stahlkugel 1, ČVUT Prag (10. März 2017).\n\nFür beide Wege. Gib Datenquelle, Einheiten, Zeitnullpunkt und positive Richtung an. Halte einen Messpunkt zur Kontrolle zurück. Zeige deine übrigen Daten in einem beschrifteten Diagramm. Im Chat kannst du dafür Achsen, Skala und Punktkoordinaten angeben. Bestimme aus dem Diagramm die Fallbeschleunigung und formuliere das Zeit-Ort-Gesetz für deine Achsen und Anfangsbedingungen. Prüfe deine Vorhersage am zurückgehaltenen Punkt. Wie gut passt dein Wert zu 9,81 m/s²? Woran könnte eine Abweichung liegen, und welche Messung würdest du dafür genauer prüfen?",
+            "hint": "Für einen Start aus der Ruhe kannst du den zurückgelegten Fallweg gegen die quadrierte Zeit seit dem Loslassen auftragen. Achte beim Umrechnen der Einheiten darauf, welche Größe du quadrierst. Welche Einheit hat die Steigung?",
+            "solution": "Bei positiver Richtung nach unten, t = 0 bei der Freigabe und v₀ = 0 gilt ohne merklichen Luftwiderstand s(t) = s₀ + ½gt². Im Fallweg-t²-Diagramm ist die Steigung g/2. Für die ersten vier Prager Werte ergibt eine Ausgleichsgerade durch den Ursprung rund 4,93 m/s² und damit g ≈ 9,85 m/s². Für 0,90 m folgt eine Fallzeit von rund 0,427 s. Gemessen wurden 0,428 s. Die Differenz liegt in der Größenordnung der Zeitauflösung. Schon die Höhenskala begrenzt den Vergleich zusätzlich. Beim Video kann ein verschobener Freigabezeitpunkt die Steigung ändern. Prüfe das etwa mit dem benachbarten Bild als Zeitnullpunkt. Mit eigenen Messungen ergeben sich eigene Zahlen.",
+            "evidenceCriteria": [
+              "Die Abgabe benennt den gewählten Weg. Beim eigenen Fall sind Maßstab, Zeitbasis und Messwerte nachvollziehbar. Beim Prager Protokoll sind Höhenbezug, Start und Stopp der Zeitmessung sowie die getrennten Abwürfe erklärt. Die fremde Datenerhebung ist als solche ausgewiesen.",
+              "Ein beschriftetes Diagramm oder seine im Chat rekonstruierbare Darstellung zeigt die selbst aufbereiteten Messwerte. Die Auswertung ergibt mit begründeter Steigung oder quadratischer Anpassung einen Wert für g mit Einheit.",
+              "Zeitnullpunkt, Ortsachse und Anfangsbedingungen passen zum angegebenen Zeit-Ort-Gesetz. Die Modellannahmen zu g und Luftwiderstand sind auf den Versuch bezogen.",
+              "Die eigene Vorhersage wird am zurückgehaltenen Messpunkt geprüft. Der Vergleich mit 9,81 m/s² berücksichtigt mindestens eine konkrete Mess- oder Modellgrenze sowie eine passende Kontrollmessung."
+            ]
+          },
+          "en": {
+            "title": "What acceleration of free fall does the experiment give?",
+            "prompt": "Choose either route.\n\nYour own experiment. Drop a small, soft, compact ball from about waist height onto a clear floor. Film it from the side with a stationary camera. Place a length scale in the plane of motion. Record the frame rate and read the position of the centre of the ball at release and in at least four later frames. A position sensor with a known time scale also works.\n\nLab record in the chat. In a Prague teaching lab, a steel ball was dropped from rest several times. The time from release to impact was measured for each drop height. The height scale had a resolution of 1 cm and the timer a resolution of 1 ms. Here are five measured pairs (drop height in cm | fall time in ms):\n20 | 201\n40 | 285\n60 | 349\n80 | 403\n90 | 428\nEach row is a separate drop. Explain between which points you would measure the height and how you would start and stop the timer. The data come from experiment 2, steel ball 1, Czech Technical University in Prague (10 March 2017).\n\nFor either route. State the data source, units, time origin and positive direction. Keep one measurement for a separate check. Plot the remaining data on labelled axes. In the chat you can give the axes, scales and point coordinates. Use the graph to determine the acceleration of free fall and write the position–time law for your axes and initial conditions. Test your prediction against the measurement you kept back. How well does your result agree with 9.81 m/s²? What could explain a discrepancy, and which measurement would you check more closely?",
+            "hint": "For release from rest you can plot the distance fallen against the square of the time since release. When converting units, pay attention to which quantity you square. What are the units of the slope?",
+            "solution": "With downwards positive, t = 0 at release and v₀ = 0, negligible air resistance gives s(t) = s₀ + ½gt². The slope of distance fallen against t² is g/2. For the first four Prague points, fitting a line through the origin gives about 4.93 m/s², hence g ≈ 9.85 m/s². The predicted fall time for 0.90 m is about 0.427 s. The measured time was 0.428 s. The difference is comparable to the timer resolution. The height scale also limits this comparison. For a video, shifting the assumed release time can change the slope. Try the neighbouring frame as the time origin to check this. Your own measurements will give their own results.",
+            "evidenceCriteria": [
+              "The work identifies the route used. For the learner’s own drop, the length scale, time base and readings are documented. For the Prague lab record, the height reference, start and stop of the timer, and separate drops are explained. The source of those measurements is identified.",
+              "A labelled graph or a description that makes it possible to reconstruct the graph in the chat shows the learner’s processed data. A justified slope or quadratic fit yields an acceleration with units.",
+              "The time origin, position axis and initial conditions are consistent with the position–time law. The assumptions about g and air resistance are related to the experiment.",
+              "The prediction is tested against the measurement kept back. The comparison with 9.81 m/s² considers a specific measurement or model limitation and a way of checking it experimentally."
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "currentGoals": [
+    {
+      "id": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "title": "Messabweichungen und Fehlerarten unterscheiden",
+      "titleEn": "Distinguish Measurement Deviations and Error Types",
+      "description": "Die lernende Person kann Messabweichungen systematisch erfassen und systematische von zufälligen Fehlern unterscheiden.",
+      "descriptionEn": "The learner can systematically identify measurement deviations and distinguish systematic from random errors.",
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+      ]
+    },
+    {
+      "id": "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+      "title": "Messunsicherheiten angeben",
+      "titleEn": "State Measurement Uncertainties",
+      "description": "Die lernende Person kann Messwerte mit geeigneten Unsicherheiten angeben und die Angabe fachgerecht notieren.",
+      "descriptionEn": "The learner can state measured values with suitable uncertainties and record them correctly.",
+      "requires": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f"
+      ]
+    },
+    {
+      "id": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "title": "Bewegungen messen und im t-s-Diagramm darstellen",
+      "titleEn": "Measure Motions and Represent Them in a Time-Position Graph",
+      "description": "Die lernende Person kann eine einfache eindimensionale Bewegung experimentell erfassen, die Orts-Zeit-Daten im t-s-Diagramm darstellen und daraus Ruhe, Bewegungsrichtung und schnellere oder langsamere Abschnitte ablesen. Sie berücksichtigt die Messauflösung.",
+      "descriptionEn": "The learner can experimentally record a simple one-dimensional motion, represent the position-time data in a time-position graph and read off rest, direction of motion and faster or slower sections from it. They account for the measurement resolution.",
+      "requires": [
+        "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ]
+    },
+    {
+      "id": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "title": "Gleichförmige Bewegung und Geschwindigkeit",
+      "titleEn": "Uniform Motion and Velocity",
+      "description": "Die lernende Person kann gleichförmige Bewegungen im Diagramm erkennen, die Geschwindigkeit definieren und den Geschwindigkeitsbetrag experimentell bestimmen.",
+      "descriptionEn": "The learner can recognize uniform motions in the diagram, define velocity, and experimentally determine the magnitude of velocity.",
+      "requires": [
+        "ce431132-dfc4-42c2-aff6-bd72035190f8",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ]
+    },
+    {
+      "id": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "titleEn": "Distinguish Average and Instantaneous Velocity",
+      "description": "Die lernende Person kann Durchschnittsgeschwindigkeit für ein endliches Zeitintervall und Momentangeschwindigkeit für einen Zeitpunkt bestimmen, vergleichen und im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten.",
+      "descriptionEn": "The learner can determine and compare average velocity over a finite interval and instantaneous velocity at an instant, interpreting them in a time-position graph as secant and tangent slopes, respectively.",
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+      ]
+    },
+    {
+      "id": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "title": "t-v-Diagramm und Ortsänderung als Fläche",
+      "titleEn": "Time-Velocity Graph and Displacement as Area",
+      "description": "Die lernende Person kann aus Orts-Zeit-Daten mittlere Intervallgeschwindigkeiten bestimmen, im t-v-Diagramm darstellen und die Ortsänderung als vorzeichenbehaftete Fläche unter dem Graphen deuten.",
+      "descriptionEn": "The learner can determine average interval velocities from position-time data, represent them in a time-velocity graph and interpret the displacement as the signed area under the graph.",
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "13b338eb-f761-5817-9058-11043b9cb253",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+      ]
+    },
+    {
+      "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "titleEn": "Uniformly Accelerated Motion and Acceleration",
+      "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+      "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations.",
+      "requires": [
+        "bf8517a9-142b-5789-826a-767f3b277998",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ]
+    },
+    {
+      "id": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben",
+      "titleEn": "Describe Motions with Time-Position and Time-Velocity Laws",
+      "description": "Die lernende Person kann für gleichförmige und gleichmäßig beschleunigte Bewegungen das Zeit-Ort- und das Zeit-Geschwindigkeits-Gesetz aus den Diagrammen ermitteln, ihren Zusammenhang erläutern und damit Ort und Geschwindigkeit zu einem Zeitpunkt vorhersagen.",
+      "descriptionEn": "The learner can determine the time-position law and the time-velocity law of uniform and uniformly accelerated motions from the graphs, explain how the two laws are related and use them to predict position and velocity at a given time.",
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
+      ]
+    },
+    {
+      "id": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "title": "Freier Fall experimentell untersuchen",
+      "titleEn": "Investigate Free Fall Experimentally",
+      "description": "Die lernende Person kann den freien Fall nahe der Erdoberfläche experimentell untersuchen, Messdaten grafisch auswerten, daraus im Modell ohne Luftwiderstand die Gravitationsbeschleunigung bestimmen und unter Angabe der Anfangsbedingungen ein Zeit-Ort-Gesetz formulieren.",
+      "descriptionEn": "The learner can experimentally investigate free fall near Earth's surface, graphically analyze measurement data, use a model that neglects air resistance to determine gravitational acceleration, and formulate a time-position law with stated initial conditions.",
+      "requires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e",
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+      ]
+    },
+    {
+      "id": "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+      "title": "Fall leichter und schwerer Körper vergleichen",
+      "titleEn": "Compare the Fall of Light and Heavy Bodies",
+      "description": "Die lernende Person kann den Fall leichter und schwerer Körper in Luft und im Vakuum vergleichen und mit dem Luftwiderstand erklären, warum eine Feder in Luft langsamer fällt als eine Kugel, im Vakuum aber gleich schnell.",
+      "descriptionEn": "The learner can compare the fall of light and heavy bodies in air and in a vacuum and use air resistance to explain why a feather falls more slowly than a ball in air but equally fast in a vacuum.",
+      "requires": [
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+      ]
+    },
+    {
+      "id": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "title": "Idealisierungen und Grenzen von Bewegungsmodellen",
+      "titleEn": "Idealizations and Limits of Motion Models",
+      "description": "Die lernende Person kann die Idealisierungen eines Bewegungsmodells wie Massepunkt und Reibungsfreiheit begründen und angeben, wo die Modellvorhersagen an Grenzen stoßen.",
+      "descriptionEn": "The learner can justify the idealizations of a motion model, such as the point-particle approximation and the neglect of friction, and state where the model predictions reach their limits.",
+      "requires": [
+        "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+      ]
+    },
+    {
+      "id": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "title": "Waagerechter Wurf analysieren",
+      "titleEn": "Analyze Horizontal Projection",
+      "description": "Die lernende Person kann den waagerechten Wurf experimentell untersuchen, bei vernachlässigbarem Luftwiderstand und konstanter Fallbeschleunigung als Überlagerung gleichförmiger horizontaler und gleichmäßig beschleunigter vertikaler Bewegung deuten und die Flugbahn im x-y-Diagramm darstellen.",
+      "descriptionEn": "The learner can experimentally investigate horizontal projectile motion, interpret it under negligible air resistance and constant gravitational acceleration as the superposition of uniform horizontal and uniformly accelerated vertical motion, and represent its trajectory in an x-y diagram.",
+      "requires": [
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+      ]
+    },
+    {
+      "id": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+      "title": "Bewegungen entdecken: vom Tisch bis zum Boden",
+      "titleEn": "Explore motion: from the table to the floor",
+      "description": "Die lernende Person erkundet, wie Messungen und Bewegungsmodelle eine Vorhersage zur Landestelle eines Balls ermöglichen. Sie findet einen persönlichen Zugang zu E.1 und kann Interesse, eine Frage oder den Wunsch zum Weiterlernen äußern. Fachwissen wird weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "The learner explores how measurements and models of motion can enable a prediction of where a ball lands. They find a personal way into E.1 and may express an interest, a question or a wish to continue. No prior knowledge is assumed or tested.",
+      "requires": []
+    },
+    {
+      "id": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "title": "Einen fallenden Ball entdecken",
+      "titleEn": "Explore a falling ball",
+      "description": "Die lernende Person erkundet, wie ein Video und ein eigener Fallversuch die Bewegung eines Balls zugänglich machen. Sie verbindet diese Möglichkeit mit der übergeordneten E.1-Frage nach der Landestelle und kann eine persönliche Reaktion, eine Frage oder den Wunsch zum Weiterlernen äußern. Fachwissen wird weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "The learner explores how a video and their own drop experiment make a ball’s motion accessible. They connect this possibility to the parent E.1 question about where the ball lands and may express a personal reaction, a question or a wish to continue. No prior knowledge is assumed or tested.",
+      "requires": []
+    },
+    {
+      "id": "e0004439-ed34-5caf-858a-6107918224eb",
+      "title": "Fallhöhe und Fallzeit in einem Messprotokoll festhalten",
+      "titleEn": "Record drop height and fall time in a measurement log",
+      "description": "Die lernende Person kann für mehrere Abwürfe Fallhöhe und Fallzeit als zusammengehörige Messpaare mit Einheiten protokollieren. Sie benennt die Datenquelle, die Bezugspunkte der Höhenmessung sowie Beginn und Ende der Zeitmessung.",
+      "descriptionEn": "The learner can record drop height and fall time as paired measurements with units for several drops. They identify the data source, the two reference positions for the height, and the events that start and end the time measurement.",
+      "requires": [
+        "3ed3279e-c524-5230-a277-dda89493df6d"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "reviews": [
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "Die Musterlösung ist fachlich und numerisch richtig. Mit t=0 beim Verlassen der Kante, positiver Horizontalrichtung nach rechts und Vertikalrichtung nach unten gelten vx(0)=2,0 m/s, vy(0)=0, ax=0 und ay=g=10 m/s². Daher vx=2,0 m/s und vy=gt: 1,5 beziehungsweise 3,0 m/s. Die Beträge sind 2,5 und √13≈3,60555 m/s; der Auftreffwinkel ist arctan(3/2)≈56,3099°. Beim angegebenen Maßstab sind die Komponenten 4/3 beziehungsweise 4/6 cm lang, die Resultierenden 5 beziehungsweise √52≈7,211 cm. Die Messetoleranz 54–58° ist angemessen. Tischhöhe 0,45 m und Horizontalweg 0,60 m passen zur Situation. Der Wagen legt ebenfalls 0,60 m zurück; im Wagenbezug gelten x′=0, vy′=gt und beim Auftreffen v′=(0;3) m/s. Addition mit (2;0) m/s ergibt (2;3) m/s. Quellen: canonical-input.json:188–189 und 221–222, Aufgaben und Lösungen Nr. 1–5. Die gedruckten Teilmaxima 4+4+3+2+3 ergeben tatsächlich 16 BE; beide neuen Lösungsfassungen und scoring nennen 15/16 als Bestehensgrenze. Der unveränderte reviewNote nennt dagegen weiterhin „at16/16“; dies ist keine Bestätigung des Kandidaten. Das neue Raster lässt X zu Recht bestehen, besitzt aber andere Fehlpassmöglichkeiten.",
+      "preparationReview": "Die vollständige Vorbereitung wurde geprüft: Alle 83 preparation-Knoten sind vom einzigen requires-Ziel erreichbar; es fehlen keine referenzierten Knoten, und es gibt keinen Zyklus. Die wesentlichen Wege sind VEC → waagerechter Wurf → freier Fall → Bewegungsgesetze sowie VEC → Bezugssysteme → Pythagoras und Vektoraddition. Auch Koordinaten, Maßstäbe, Rechenoperationen, rechtwinklige Dreiecke und Winkelmessung sind transitiv vorbereitet. Trigonometrie ist keine Voraussetzung, da Winkelmessung ausdrücklich genügt. Quellen: preparation[0..82], insbesondere [2], [5], [15], [17], [27], [35], [41], [56]; canonical-input.json:318–329, 351–361, 456–486, 581–590, 664–675, 725–734 und 878–887. Die benötigten Bewegungsgesetze gelten unter den ausdrücklich gegebenen Modellbedingungen und den aus dem waagerechten Abrollen folgenden Anfangsbedingungen. Allgemein wären v=v0+at und r=r0+v0t+½at² anzusetzen; hier reduzieren sie sich auf x=2t und y=5t². Ein allgemeiner Bewegungsgesetznachweis wird nicht verlangt: keine Gewinnung aus Diagrammen, kein Zeit-Ort-Gesetz und keine Erläuterung des Zusammenhangs beider Gesetze. Die Bezeichnung J9 ist im Prüfmaterial nicht definiert; eine besondere J9-Anerkennung ist deshalb nicht belegt. Eigener Transfer ist die Anwendung der vorbereiteten Gesetze und Vektorverfahren auf die beiden Zeitpunkte, Zeichnungen und das vorgegebene Wagensystem. Experimente, Messdatenauswertung und selbstständige Bezugssystemwahl werden dadurch nicht direkt geprüft.",
+      "directCoverageReview": "Das tatsächlich kreditierte VEC-Ziel nennt drei Facetten: Geschwindigkeit aus horizontaler und vertikaler Komponente zusammensetzen, Betrag bestimmen und Richtung bestimmen, „etwa den Auftreffwinkel“ (directGoals[0].description, canonical-input.json:236–237). Alle drei werden ausdrücklich verlangt: Komponenten und Konstruktionen in Nr. 1–2, Beträge in Nr. 3, Richtung beziehungsweise Winkel in Nr. 2 und 4. Der ursprüngliche VEC-Inhaltsabdeckungsanspruch ist somit sachlich begründet. Eine fehlende zusätzliche Winkelzahl allein beweist noch kein fehlendes direktes Richtungsverständnis, wenn richtige maßstäbliche Resultierende vorliegen. Die eigene Prüfungsbeschreibung beansprucht jedoch zusätzlich ausdrücklich den Auftreffwinkel und die Beschreibung im mitbewegten System (candidate.description, Zeilen 120–121). Diese eigenen Facetten sind bei 15/16 nicht zuverlässig gesichert: Beide können jeweils nur einen Punkt kosten. Das Betragsraster bündelt außerdem beide Ergebnisleistungen in einem einzigen Punkt. R2: reject einer direkten vollständigen Einheitenabdeckung. Falls damit das vorhandene Einheitenziel f2e42af5-67a6-477e-82ea-e65b09cc6cb3 gemeint ist, verlangt dieses Einheitenwahl, Umrechnung gleichartiger Einheiten, Begründung der unveränderten Größe anhand des Einheitenverhältnisses und Messwertvergleich in gemeinsamer Einheit (preparation[76], canonical-input.json:1092–1103). Dieses Bündel wird nicht geprüft. Vorgegebene SI-Einheiten und cm ≙ m/s als Zeichenmaßstab ersetzen es nicht. R2 selbst ist im Input nicht definiert und steht nicht in coveredGoalIds; eine ursprüngliche R2-Direktanerkennung darf daher auch nicht unterstellt werden. Das Bezugssystemziel 68c90ba6… ist ebenfalls nur Vorbereitung: Seine Facette „geeignetes Bezugssystem wählen“ fehlt in der Aufgabe, weil beide Systeme vorgegeben sind (preparation[35]; Aufgabe Teil B; scoring vv_5). Keine dieser fehlenden Direktabdeckungen lässt sich durch eine großzügigere Schwelle erzeugen.",
+      "languageReview": "Deutsche und englische Aufgabe, Musterlösung und sämtliche fünf Bewertungsschritte sind fachlich gleichwertig. Zeitpunkte, Richtungen, Zahlen, Maßstab, Winkelmessung als Alternative zur Rechnung und Teilmaxima stimmen überein. Beide neuen Bewertungshinweise verlangen sichtbare Evidenz, berücksichtigen gleichwertige Nachweise unabhängig vom Antwortort, verbieten doppelte Vergabe und wiederholte Belastung desselben Rechenfehlers und nennen ausschließlich die Summe 15/16. Der Zusatz „author candidate“ in der englischen Überschrift hat keine fachliche Wirkung. Die Bewertungsprobleme bestehen in beiden Sprachen gleichermaßen. Quellen: canonical-input.json:188–222.",
+      "recommendedRequires": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "recommendedCoveredGoalIds": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "recommendedPassingPoints": 15,
+      "gradedSubmissions": [
+        {
+          "submissionId": "X",
+          "demonstratedCore": true,
+          "scores": [
+            {
+              "criterionId": "vv_1",
+              "pointsAwarded": 4,
+              "reason": "Beide horizontalen Werte, ihre physikalische Konstanzbegründung und beide vertikalen Werte einschließlich Richtung stimmen. Quelle: learnerSubmissions.X, Nr. 1; Raster Zeilen 195–197."
+            },
+            {
+              "criterionId": "vv_2",
+              "pointsAwarded": 4,
+              "reason": "Das tatsächliche SVG enthält beim angegebenen Maßstab Komponenten von 4/3 und 4/6 cm sowie jeweils die richtig gerichtete Resultierende. Beide Zeitpunkte erfüllen beide Teilkriterien. Quelle: learnerSubmissions.X, Nr. 2; Raster Zeilen 200–202."
+            },
+            {
+              "criterionId": "vv_3",
+              "pointsAwarded": 2,
+              "reason": "Beide Pythagorasansätze sind richtig und erhalten je einen Punkt. „4+9=12“ ist ein einzelner Additionsfehler; dadurch entfällt nur der gemeinsame Ergebnispunkt. 3,46 m/s ist hier keine zulässige Rundung von √13. Quelle: learnerSubmissions.X, Nr. 3; Raster Zeilen 205–207."
+            },
+            {
+              "criterionId": "vv_4",
+              "pointsAwarded": 2,
+              "reason": "56,3° unter der Waagerechten ist richtig; das zunehmende Verhältnis vy/vx erklärt die Winkelzunahme. Quelle: learnerSubmissions.X, Nr. 4; Raster Zeilen 210–212."
+            },
+            {
+              "criterionId": "vv_5",
+              "pointsAwarded": 3,
+              "reason": "Aufhebung der horizontalen Relativkomponente, senkrechter Fall, relative Auftreffgeschwindigkeit und tatsächliche maßstäbliche Pfeiladdition sind nachgewiesen. Der Additionsfehler aus Nr. 3 wird nicht erneut belastet. Quelle: learnerSubmissions.X, Nr. 5; Raster Zeilen 215–217."
+            }
+          ],
+          "total": 15,
+          "passes": true,
+          "rationale": "4+4+2+2+3=15: nach der tatsächlichen Regel bestanden. Komponentenzerlegung, maßstäbliche Zusammensetzung, Betragsverfahren, Richtung und Wagenbewegung sind sichtbar nachgewiesen. Der einzelne Additionsfehler rechtfertigt keine Verneinung des gesamten Kerns. Quelle: canonical-input.json:1167."
+        },
+        {
+          "submissionId": "Y",
+          "demonstratedCore": false,
+          "scores": [
+            {
+              "criterionId": "vv_1",
+              "pointsAwarded": 4,
+              "reason": "Alle vier Teilkriterien sind richtig erfüllt: horizontale Werte, Konstanzbegründung und beide vertikalen Werte. Quelle: learnerSubmissions.Y, Nr. 1; Raster Zeilen 195–197."
+            },
+            {
+              "criterionId": "vv_2",
+              "pointsAwarded": 4,
+              "reason": "Beide tatsächlichen SVG-Konstruktionen besitzen den angegebenen richtigen Maßstab, passende Komponenten und richtige Resultierende. Quelle: learnerSubmissions.Y, Nr. 2; Raster Zeilen 200–202."
+            },
+            {
+              "criterionId": "vv_3",
+              "pointsAwarded": 0,
+              "reason": "Nr. 3 enthält „[Keine Antwort.]“. Auch an anderer Stelle stehen weder Pythagorasansätze noch ermittelte Gesamtbeträge. Die vom Prüfer berechenbaren Diagonalen sind kein sichtbarer Nachweis der verlangten Betragsberechnung. Quelle: learnerSubmissions.Y, Nr. 2–5; Aufgabe Nr. 3; Raster Zeilen 205–207."
+            },
+            {
+              "criterionId": "vv_4",
+              "pointsAwarded": 2,
+              "reason": "Auftreffwinkel und physikalische Erklärung seiner Zunahme sind richtig. Quelle: learnerSubmissions.Y, Nr. 4; Raster Zeilen 210–212."
+            },
+            {
+              "criterionId": "vv_5",
+              "pointsAwarded": 3,
+              "reason": "Senkrechter Fall wird durch vx,rel=0 erklärt; 3,0 m/s nach unten und die geometrische Addition sind richtig nachgewiesen. Quelle: learnerSubmissions.Y, Nr. 5; Raster Zeilen 215–217."
+            }
+          ],
+          "total": 13,
+          "passes": false,
+          "rationale": "4+4+0+2+3=13: nicht bestanden. Die Betragsbestimmung im Bodenbezug fehlt vollständig. Der richtige Betrag der rein vertikalen Relativgeschwindigkeit ersetzt diese Kompetenz nicht. Quelle: canonical-input.json:1168."
+        }
+      ],
+      "strongestIndependentFalsePassAttempt": "Eine ansonsten vollständig richtige Antwort behauptet ausdrücklich eine parabelförmige Bahn im Wagenbezug, ohne anderswo eine richtige Beschreibung dieser Bahn zu geben. Sie nennt trotzdem die richtige relative Auftreffgeschwindigkeit 3,0 m/s nach unten und zeichnet die richtige Pfeiladdition. Nach dem tatsächlichen Raster ergeben sich vv_1=4, vv_2=4, vv_3=3, vv_4=2, vv_5=2, insgesamt 15: bestanden trotz fehlender eigener Facette der korrekten Bewegungsbeschreibung im mitbewegten System. Die zwei richtigen Leistungen in vv_5 dürfen nicht zusätzlich gestrichen werden. Quellen: candidate.description, Zeilen 120–121; Aufgabe Nr. 5, Zeile 188; Raster vv_5, Zeilen 215–217. Zweite Verteilung: vollständig fehlende Winkelbestimmung bei sonst richtigen Leistungen einschließlich Winkelzunahmeerklärung ergibt ebenfalls 15. Dies verletzt die engere eigene Winkelfacette, obwohl richtige Resultierende weiterhin die Richtung des direkt kreditierten VEC-Ziels zeigen. Das gemeinsame Ergebnis-BE in vv_3 erlaubt außerdem 15 bei richtigen v²-Ansätzen, aber systematisch falschem Übergang zu v=6,25 beziehungsweise 13 m/s. Korrekte ausgeschriebene Wurzelausdrücke wären dagegen bereits exakte Betragsnachweise und dürfen nicht als fehlende Kompetenz behandelt werden.",
+      "strongestIndependentFalseFailureAttempt": "Ein unabhängiger Prüfversuch setzt bei sonst vollständigem physikalischem Verständnis einmal versehentlich 10·0,15=1,6 m/s und arbeitet damit in Zeichnung und Betragsrechnung konsequent weiter. Nach den tatsächlichen Regeln darf nur der ursprüngliche Zahlenpunkt entfallen: 3+4+3+2+3=15, bestanden. Ein erneuter Abzug bei Konstruktion oder Betrag wäre unzulässig. Für einen einzelnen solchen Fehler wurde bei korrekter Anwendung der Kandidatenregel kein belastbarer Fehlentscheid zum Nichtbestehen gefunden. Eine Anhebung auf 16 würde jedoch diesen Fall und X zu Unrecht ausschließen. Quellen: allgemeiner Bewertungshinweis in Zeilen 189 und 222; vv_1–vv_4, Zeilen 195–212. Damit behebt keine bloße Änderung der Schwelle unter 16 die nachgewiesenen Fehlpässe.",
+      "requiredCorrections": [
+        "Die Ergebnisbündelung in vv_3 auflösen: innerhalb der unveränderten 3 BE einen gemeinsamen Punkt für die beiden gültigen Betragsverfahren und je einen Punkt für die beiden korrekten Beträge vergeben. Exakte Ausdrücke und zulässige Rundungen anerkennen; einen einzelnen Rechenfehler weiterhin nur einmal belasten. Damit bleibt X bei 15, während ausschließlich richtige v²-Ansätze ohne richtige Betragsbestimmung nicht zwei Ansatzpunkte zur Kompensation erhalten.",
+        "Die ausdrücklich beanspruchte Winkelbestimmung innerhalb der unveränderten 2 BE stärker gewichten, beispielsweise 1,5 BE für quantitative Winkelbestimmung und 0,5 BE für die unabhängige Zunahmeerklärung. Einen sichtbaren richtigen Bestimmungsweg bei einem einzelnen Auswertungsfehler weiterhin teilweise honorieren. Vollständig fehlende Winkelbestimmung muss bei sonst vollständiger Arbeit unter 15 bleiben; richtige Erklärungen dürfen keinen sachfremden Zusatzabzug erhalten.",
+        "Innerhalb der unveränderten 3 BE von vv_5 beispielsweise 1,5 BE für die schlüssige Wagenbewegung, 0,5 BE für die relative Auftreffgeschwindigkeit und 1 BE für die geometrische Addition vorsehen. Gleichwertige Evidenz überall berücksichtigen und Widersprüche anhand der tatsächlich betroffenen Leistung bewerten. Der beschriebene Parabel-Fehlpass erreicht damit höchstens 14,5 statt 15 BE.",
+        "Diese begrenzten Bewertungsänderungen in scoring und beiden Lösungshinweisen widerspruchsfrei festhalten; die Teilmaxima 4/4/3/2/3, ausschließlich additive Entscheidung und Schwelle 15/16 beibehalten. Die vorgeschlagene Reparatur benötigt halbe Unterpunkte. Ein Verbot solcher Unterpunkte ist nicht enthalten; falls ausschließlich ganze Unterpunkte verlangt werden, ist diese Reparatur insbesondere für vv_4 nicht verfügbar. Keine zusätzliche Bestehensbedingung oder unbelegte Ausnahme einsetzen."
+      ],
+      "materialContinuityAndRecognition": "Aufgabe, eigene Beschreibung, requires, coveredGoalIds, Länderumfang und Vorbereitungsnetz sind gegenüber dem Original unverändert; tatsächlich geändert sind ausschließlich scoring und die beiden Lösungsfassungen (canonical-input.json:226–229; Original Zeilen 5–112, Kandidat Zeilen 115–222). Der technische und fachliche Gegenstand bleibt derselbe. Die Einstufung revise betrifft die konkrete Bewertung, nicht eine ursprünglich falsche VEC-Inhaltsabdeckung. SN: reject einer quellengestützten D′-Freigabe; ST: reject einer quellengestützten D′-Freigabe. Grund ist jeweils fehlender zugänglicher Quellenbeleg, kein nachgewiesener Lehrplanwiderspruch: Die freigegebenen Dateien nennen weder retained-PDF-Pfade noch physische Seiten. Die Einträge DE-SN und DE-ST in der Länderliste sind keine Quellenprüfung (Zeilen 152–167 und 257–275). Das direkte Ziel trägt weiterhin das Framework hessen-kc-2024-physics und Phase E, während die Prüfung SekI/GLOBAL trägt (Zeilen 122–140 und 249–255). Eine Bewertungsänderung begründet keine neue Quellstufe oder Platzierung. Die vier ursprünglichen E.1-Pflichtslots und ein Beleg der Freiwilligkeit sind nicht enthalten; ihre Erhaltung oder Anerkennung ist deshalb nicht unabhängig verifizierbar. Direkte VEC-Leistungsbewertung gewährt keine garantierte Planungs-, Pflichtslot-, J9-, R2- oder Bezugssystemwahl-Anerkennung. Der reviewNote wird als Behauptung behandelt, nicht als unabhängiges Ergebnis; vergangene Resultate werden nicht übertragen.",
+      "semanticKind": "practiceAssessment",
+      "semanticKindReason": "Unverändert liegt eine konkrete Übungs- und Prüfungsaufgabe mit Lernereinreichungen, Musterlösung und Punktbewertung einer vorbereiteten Kompetenz vor. Die Bewertungsänderung erzeugt weder eine neue Inhaltskompetenz noch einen curricularen Anerkennungsnachweis."
+    }
+  ],
+  "limitations": [
+    "Es wurden ausschließlich canonical-input.json und output.schema.json gelesen; keine weiteren Dateien, Verzeichnisse, Sitzungen, historischen Ergebnisse oder Netzwerkquellen wurden untersucht.",
+    "Die erlaubten Dateien enthalten keine Identifikation von D′, keine retained-SN/ST-PDF-Pfade und keine physischen Seitenangaben. Daher konnten die verlangten PDF-Quellspannen nicht gelesen oder angegeben werden. SN/ST-reject bezeichnet hier die nicht belegbare Quellenfreigabe.",
+    "J9, R2 und die vier ursprünglichen E.1-Pflichtslots sind nicht definiert. Die Bewegungsgesetzprüfung bezieht sich auf die tatsächlich benötigte Physik; die R2-Einheitenprüfung ausdrücklich auf das vorhandene Einheitenziel unter der genannten Zuordnungsannahme.",
+    "Die berichteten Einreichungsnoten verwenden ausschließlich das tatsächliche Kandidatenraster. Die vorgeschlagenen begrenzten Korrekturen sind davon getrennte Empfehlungen und wurden nicht rückwirkend angewandt."
+  ]
+}

@@ -8,29 +8,17 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
-- Status: pilot, independently reviewed 2026-08-29
+- Provider: OpenAI / Codex image_gen + programmatic diagram correction
+- Status: accepted
 - Quellbild: `e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg`
-- Asset SHA-256: `sha256:fd83544e329cc947ab46a9b49f4ab7a461a168a1c086b4624669a44679aa8fbf`
 - Public Asset: `/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg`
 
 ## Prompt
 
 ```text
-Erzeuge eine klare deutsche Physik-Infografik im lockeren Cartoon-Stil zu gleichmäßig beschleunigter Bewegung aus der Ruhe.
-
-Zeige vier getrennte und ausdrücklich als schematisch, nicht maßstäblich bezeichnete Momentaufnahmen für t=0,1,2,3 s mit v=0,2,4,6 m/s und s=0,1,4,9 m.
-
-Zeige drei konsistente Diagramme:
-- t-s: Parabel durch (0,0), (1,1), (2,4), (3,9), Achsen t/s und s/m.
-- t-v: Gerade durch (0,0), (1,2), (2,4), (3,6), Achsen t/s und v/(m/s).
-- t-a: horizontale Linie bei a=2 m/s², Achsen t/s und a/(m/s²).
-
-Formeln und Bedingungen: a=konstant, v₀=0, s₀=0, v(t)=v₀+a·t und s(t)=s₀+v₀·t+½a·t².
-
-Keine gemeinsame räumliche Linealskala für die vier Momentaufnahmen. Keine Inhalte zu Durchschnitts- oder Momentangeschwindigkeit. Keine Kraftpfeile.
+Create a NEW clearly legible German physics teaching illustration, landscape 16:9. Friendly loose ink and pale watercolour on ivory paper, calm layout and dark bold letters, no decorative sparks, highlights or small print. At a phone width of 360 px every label must be legible. Short title “Konstante Beschleunigung”. Below, THREE wide, simple plots arranged side by side. All three have horizontal TIME axes pointing right, with a single large t near each arrowhead, and vertical axes pointing up. At left vertical axis label s. Draw just a smooth upward-opening parabola, starting at the origin with a horizontal tangent, increasing more steeply through time (position from rest). In the centre vertical axis label v. Draw just a straight rising line from the origin (velocity from rest). On the right vertical axis label a. Draw just one straight horizontal line a clearly positive distance ABOVE the time axis (constant acceleration). All curves in dark muted blue, axes in charcoal, no numbers or gridlines, no arrows or little pictures inside the plots. A tiny simple friendly hand-drawn blue wheeled cart may appear just beside the title. At the bottom one large, centered line: “Start aus der Ruhe bei s = 0”. Use exactly these labels, no other text or mathematical symbols. Make all three graphs and the initial conditions easy to read and reserve generous space for them.
 ```
 
 ## Review-Notiz
 
-Unabhängige Originalauflösungsprüfung: Alle Momentwerte, drei Diagramme, Achsen, Einheiten, Formeln und Anfangsbedingungen sind konsistent; die getrennten Panels beseitigen jede falsche Maßstabs-Suggestion.
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

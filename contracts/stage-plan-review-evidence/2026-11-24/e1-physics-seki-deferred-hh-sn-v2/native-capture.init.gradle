@@ -1,0 +1,11 @@
+allprojects { p ->
+  p.afterEvaluate {
+    p.sourceSets.test.java.srcDir('/tmp/e1-t5/seed-capture/java')
+    p.tasks.withType(Test).configureEach { include '**/E1CurrentPhysicsSeedCapture.class' }
+  }
+}
+allprojects { p ->
+  p.afterEvaluate {
+    p.tasks.named('generateClaudePluginPublication',Exec).configure { executable '/home/enpasos/projects/skillpilot/tmp/ci-tools/node-v20.20.2-linux-x64/bin/node' }
+  }
+}

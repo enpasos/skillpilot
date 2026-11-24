@@ -1,0 +1,99 @@
+{
+  "id": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+  "shortKey": "canonical_physics_sek1_assessment_bw_by_motion_models",
+  "title": "Prüfungsaufgabe: Wurf- und Bremsbewegungen modellieren",
+  "titleEn": "Assessment Task: Model Projectile and Braking Motion",
+  "description": "Die lernende Person kann einen waagerechten Wurf als Bewegungsüberlagerung untersuchen und Reaktions- sowie Bremswegmodelle zur Bewertung eines Sicherheitsabstands nutzen.",
+  "descriptionEn": "The learner can investigate a horizontal projectile as superposed motions and use reaction- and braking-distance models to assess a safe following distance.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical",
+    "SekI"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "PK1_EXPERIMENTIEREN",
+      "PK2_MODELLIEREN",
+      "PK5_BEWERTEN"
+    ],
+    "guidingIdeas": [
+      "LI_BEWEGUNG",
+      "LI_TECHNIK"
+    ],
+    "phase": "GLOBAL",
+    "area": "Mechanik und Verkehr",
+    "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.BW_BY.MOTION_MODELS"
+  },
+  "requires": [
+    "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+    "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+    "d6dc0e02-831d-4894-a61a-852bcc74f147"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "type": "atomic",
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+    ],
+    "coveredStrands": [
+      "LI_BEWEGUNG",
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "**Teil A – waagerechter Wurf:** Eine Kugel verlässt einen Tisch waagerecht mit 2,0 m/s. Ein Video liefert nach 0,10 s, 0,20 s und 0,30 s die horizontalen Wege 0,20 m, 0,40 m und 0,60 m sowie die Fallstrecken 0,05 m, 0,20 m und 0,44 m. Beschreiben Sie eine Videoauswertung, stellen Sie beide Teilbewegungen getrennt dar und begründen Sie aus den Daten die Form der x-y-Bahn. (8 BE)\n\n**Teil B – Verkehr:** Für ein Auto gilt im betrachteten Modell: Reaktionszeit 1,0 s; bei 50 km/h beträgt der Bremsweg 14 m, bei 100 km/h 56 m. Berechnen Sie jeweils den Reaktionsweg, bestimmen Sie den Anhalteweg und beurteilen Sie die Aussage „Doppelte Geschwindigkeit braucht nur den doppelten Sicherheitsabstand“. Nennen Sie eine Grenze des Modells. (8 BE)",
+    "solutionContent": "Die x-Koordinate wird Bild für Bild relativ zu einem Maßstab erfasst. Sie wächst in gleichen Zeiten gleichmäßig; die Fallstrecke wächst überproportional. Die Überlagerung einer gleichförmigen horizontalen und beschleunigten vertikalen Bewegung ergibt eine parabelförmige Bahn. 50 km/h entsprechen etwa 13,9 m/s, 100 km/h etwa 27,8 m/s. Die Anhaltewege sind damit ungefähr 27,9 m und 83,8 m. Der zweite ist deutlich mehr als doppelt so groß, weil der Bremsweg im Modell quadratisch mit der Geschwindigkeit zunimmt. Wetter, Reifen, Gefälle und tatsächliche Reaktionszeit begrenzen die Übertragbarkeit.",
+    "scoring": {
+      "maxPoints": 16,
+      "passingPoints": 10,
+      "steps": [
+        {
+          "id": "motion_models_1",
+          "points": 8,
+          "description": "Waagerechten Wurf aus Videodaten als Überlagerung untersucht und Bahnform begründet"
+        },
+        {
+          "id": "motion_models_2",
+          "points": 8,
+          "description": "Reaktions-, Brems- und Anhalteweg berechnet, Aussage bewertet und Modellgrenze benannt"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "sealed-current-e1-unit-coverage-review-inputs-v1",
+  "status": "TWO_INDEPENDENT_REVIEWS_RETURNED_CONDITIONAL_BES_ONLY",
+  "inputCapsuleSha256": "177a82008417d0a7a7d777a10744e84234a2fa4f70b02526f1bdf473b3b9c421",
+  "files": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/review-inputs.json",
+      "sha256": "177a82008417d0a7a7d777a10744e84234a2fa4f70b02526f1bdf473b3b9c421"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/criteria.snapshot.md",
+      "sha256": "d2e2318ffac0bc56fb454b754163a4379a4d36b31bda8dff8ce37db57f838ef3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-review-prompt.txt",
+      "sha256": "4e26854f28922a7859fb93836399778489f63685584427096c65cb76cd39057c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-a.md",
+      "sha256": "ab84503cc79a59028eda5c311c0eb7e34fd74528bb0873be5ce2e8803db0279e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-b.md",
+      "sha256": "f834eafd6bfee1cbbe1822ad829c2b08b20b9bd1efbf21dfcd1a0a637e1400fd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-a.execution.log",
+      "sha256": "9330d18b7424ef43aff8943255037438fad863b90d60c5be990d95fd905c78de"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-b.execution.log",
+      "sha256": "886720f0095b8aefa42a0a70fa590fe3aed0778ac95fbf3a9565732da24e2ab5"
+    }
+  ],
+  "independentExecutions": [
+    {
+      "review": "independent-a.md",
+      "tool": "actual isolated Codex CLI exec",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "ultra",
+      "sessionId": "01a20bba-0887-7122-9ef7-e3d2557bd470",
+      "exitCode": 0,
+      "sandbox": "read-only",
+      "ephemeral": true,
+      "expectedOutcomeProvided": false,
+      "logPath": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-a.execution.log",
+      "logSha256": "9330d18b7424ef43aff8943255037438fad863b90d60c5be990d95fd905c78de"
+    },
+    {
+      "review": "independent-b.md",
+      "tool": "actual isolated Codex CLI exec",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "ultra",
+      "sessionId": "01a20bbb-f161-7463-9619-2be5ef8b3b51",
+      "exitCode": 0,
+      "sandbox": "read-only",
+      "ephemeral": true,
+      "expectedOutcomeProvided": false,
+      "logPath": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/independent-b.execution.log",
+      "logSha256": "886720f0095b8aefa42a0a70fa590fe3aed0778ac95fbf3a9565732da24e2ab5"
+    }
+  ],
+  "boundaries": [
+    "Two fresh isolated executions returned these actual raw reports. Neither execution received an author proposal, another review or a desired credit set. Both conditionally qualify exactly BES via D and refuse immediate activation while P is stale.",
+    "The reports are raw returned bytes; absolute scratch links are retained as history and resolved by this manifest to the persisted input capsule.",
+    "Current BES positive-evidence freshness is a hard dependency before activation. The reports are conditional, machine content reviews, not human acceptance or learner trials. This manifest alone does not activate a release."
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "exactProposalDecision": {
+            "type": "string",
+            "enum": [
+              "integrable_exact",
+              "revise",
+              "hold_source_preparation",
+              "reject"
+            ]
+          },
+          "scientificAndNumericalReview": {
+            "type": "string"
+          },
+          "passBoundaryReview": {
+            "type": "string"
+          },
+          "bilingualParityReview": {
+            "type": "string"
+          },
+          "directWholeGoalClaimReview": {
+            "type": "string"
+          },
+          "necessaryPrerequisitesAndFullClosureReview": {
+            "type": "string"
+          },
+          "immediateTaskSourceStageReview": {
+            "type": "string"
+          },
+          "fullNativePreparationSourceStageReview": {
+            "type": "string"
+          },
+          "acceptedCutCompatibilityReview": {
+            "type": "string"
+          },
+          "actualPerformanceElicited": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "unsupportedClaimsOrFalsePasses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiredCorrections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedRequires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedCoveredGoalIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedPassingPoints": {
+            "type": "integer"
+          },
+          "integrableWithoutAcceptedCutChange": {
+            "type": "boolean"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "exactProposalDecision",
+          "scientificAndNumericalReview",
+          "passBoundaryReview",
+          "bilingualParityReview",
+          "directWholeGoalClaimReview",
+          "necessaryPrerequisitesAndFullClosureReview",
+          "immediateTaskSourceStageReview",
+          "fullNativePreparationSourceStageReview",
+          "acceptedCutCompatibilityReview",
+          "actualPerformanceElicited",
+          "unsupportedClaimsOrFalsePasses",
+          "requiredCorrections",
+          "recommendedRequires",
+          "recommendedCoveredGoalIds",
+          "recommendedPassingPoints",
+          "integrableWithoutAcceptedCutChange",
+          "limitations"
+        ]
+      }
+    },
+    "globalLimitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "reviews",
+    "globalLimitations"
+  ]
+}

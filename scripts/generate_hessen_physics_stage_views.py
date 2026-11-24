@@ -50,13 +50,44 @@ HESSEN_E1_CHILD_ASSESSMENT_VARIANTS = {
     "c5807a37-129e-5df6-8989-482bc7f5683e": HESSEN_E1_VERTICAL_THROW_ASSESSMENT,
     "a8dc0290-9f80-5763-8943-e16b8d2aa860": HESSEN_E1_ACCELERATION_LOG_ASSESSMENT,
 }
+# E.1 cut accepted by the Product Owner on 23 Nov 2026: four child units in
+# learning order, each starting from an experiment. They group the reviewed
+# targets of E.1 for learning; they are structure children, not declared
+# learning units, and their order follows the actual atomic demand.
+E3_TOPIC = "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49"
+E2_TOPIC = "physics-e2-newton-and-conservation"
+HESSEN_E1_FREE_FALL_ASSESSMENT = "f41e4e30-794e-5ce4-ba5e-cc72712cd691"
+HESSEN_E1_CHILD_UNITS = (
+    ("physics-e1-uniform-motion", "Gleichförmige Bewegung", "Uniform motion", (
+        "ce431132-dfc4-42c2-aff6-bd72035190f8", "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        # "Eigene Bewegungsmessung und unabhängiges Geschwindigkeitsprotokoll" stays in
+        # the E-phase methods: it is not released, so it cannot be offered in E.1.
+        "bf8517a9-142b-5789-826a-767f3b277998", "ee7d5f3d-858f-59d6-89b0-e5a7f437f458")),
+    ("physics-e1-accelerated-and-free-fall", "Freier Fall schwerer Kugeln", "Free fall of heavy balls", (
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e", "e0004439-ed34-5caf-858a-6107918224eb",
+        "1e459a1b-4159-5049-84eb-9928129c1610", "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "262f807a-30d0-503e-986f-856cbd048e8e", "8aff7aac-321b-5172-ac55-877876bfd2cd",
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a", "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        HESSEN_E1_ACCELERATION_LOG_ASSESSMENT, HESSEN_E1_FREE_FALL_ASSESSMENT)),
+    ("physics-e1-air-and-vacuum", "Kugel und Feder, Luft und Vakuum", "Ball and feather, air and vacuum", (
+        "d9a6ea85-f7e8-5cbd-afe9-62596e22040d", "d6dc0e02-831d-4894-a61a-852bcc74f147",
+        HESSEN_E1_VERTICAL_THROW_ASSESSMENT)),
+    ("physics-e1-two-motions", "Zwei Bewegungen zugleich", "Two motions at once", (
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9")),
+)
+# Vectors leave E.1: reference frames and the velocity vector of the throw are
+# learned with E.3 (KC 2024 E.3 "Bezugssysteme, Superpositionsprinzip").
+E1_TO_E3 = ("68c90ba6-c438-463c-9a53-cf61062d416a", "0fee53f2-1c02-5b12-9b6c-aa9fa462d921")
+# The traffic goal follows the Hessian friction content; it has no KC 2024 route.
+TRAFFIC = "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+FRICTION = "5fd45dbc-0eb1-591b-99a9-7386336f1456"
 # Learning places follow the work actually assessed in the task and rubric.
 # In particular, a supplied physical context does not turn a measurement or
 # linearisation assessment into a thermodynamics or oscillations assessment.
 E_PHASE_ASSESSMENT_PLACEMENTS = {
     "physics-e1-motion": (
-        "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
-        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
         HESSEN_E1_VERTICAL_THROW_ASSESSMENT,
         *HESSEN_E1_ASSESSMENTS,
     ),
@@ -65,7 +96,9 @@ E_PHASE_ASSESSMENT_PLACEMENTS = {
         "72649cf5-893c-5f03-88bd-a2497171d434",
         "be6d4895-65ab-545b-8df9-84e5a308a5e3",
     ),
-    "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49": ("8320bb17-e6ab-50ea-a965-aa331bfd33e1",),
+    "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49": (
+        "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
+    ),
     "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9": (
         "dd99528a-bae5-5b78-89e6-c6092c927f8d",
         "3791c574-2194-52fa-846b-ee1d4e2c5877",
@@ -154,6 +187,8 @@ def generate(view):
     if motion is not None and set(HESSEN_E1_CHILD_ASSESSMENT_VARIANTS) & (before["target"] | before["prerequisiteOnly"]):
         raise ValueError(f"{view['viewId']}: a historical child assessment is still projected in Hessen E.1")
     before["target"].update(HESSEN_E1_ASSESSMENTS)
+    if motion is not None:
+        before["target"].add(HESSEN_E1_FREE_FALL_ASSESSMENT)
     # Opening Gravitation must retain its three reviewed GK scope exclusions,
     # including their authored reference kinds, once each. In particular, a
     # same-distance target reference must not expose the LK worldview container.
@@ -401,12 +436,16 @@ def generate(view):
             raise ValueError(f"{view['viewId']}: expected one E-phase authoring topic {identifier}")
         matches[0]["label"] = label
     motion = find("physics-e1-motion")[2]
+    # Before the E.1 cut the reviewed horizontal-throw subtree was acquired
+    # whole inside E.1. Open it once: the throw stays in E.1 (child unit 4),
+    # reference frames and the velocity vector go to E.3.
     throws = [node for node in walk(phases[0]["children"]) if node.get("goalId") == HORIZONTAL_THROW]
-    if len(throws) != 1 or throws[0]["kind"] != "canonicalSubtree":
-        raise ValueError(f"{view['viewId']}: expected one reviewed horizontal-throw subtree in E phase")
-    throw = take(HORIZONTAL_THROW)
-    throw["displayLabel"] = "Waagerechter Wurf und Superposition (aus E.3)"
-    motion["children"].append(throw)
+    if len(throws) > 1 or (throws and throws[0]["kind"] != "canonicalSubtree"):
+        raise ValueError(f"{view['viewId']}: expected at most one reviewed horizontal-throw subtree in E phase")
+    if throws:
+        take(HORIZONTAL_THROW)
+        motion["children"].extend({"kind": "canonicalSubtree", "goalId": identifier}
+                                  for identifier in GOALS[HORIZONTAL_THROW]["contains"])
     exam_id = "61684ca7-b725-534f-944b-c7645cea1792" if view["scope"]["courseProfile"] == "GK" else "79028c45-90ae-57eb-8016-f5a96af18fa2"
     exam = take("physics-he-abitur", True)
     if not exam:
@@ -442,6 +481,7 @@ def generate(view):
             if len(references) != 1 or not GOALS[identifier].get("examData"):
                 raise ValueError(f"{view['viewId']}: expected one reviewed E-phase assessment {identifier}")
             target["children"].append(take(identifier))
+    author_e1_child_units(view["viewId"], phases[0], motion, find)
     pull_earlier(phases, atoms, lambda identifier: extract(identifier, upper["children"]), shifts)
     for phase in phases:
         pull_earlier([node for node in phase["children"] if node["kind"] == "structure" and atoms(node)], atoms,
@@ -482,6 +522,69 @@ def generate(view):
     if before["target"] != after["target"] or not before["prerequisiteOnly"] <= after["prerequisiteOnly"] or not (after["prerequisiteOnly"] - before["prerequisiteOnly"]) <= {p for atom in selected for p in prerequisites(atom)}:
         raise ValueError(f"{view['viewId']}: atomic projection roles changed: " + str({role: (before[role] - after[role], after[role] - before[role]) for role in before}))
     return result, shifts
+
+
+def author_e1_child_units(view_id, phase, motion, find):
+    """Group E.1 into its four child units and move the goals that leave E.1.
+
+    Only existing target references of the E phase move; roles stay exact.
+    The free-fall assessment with two own measurement series is brought into
+    child unit 2 (its applicability names Hesse since the E.1 cut).
+    """
+    def take_target(identifier):
+        containers = [phase] + [node for node in walk(phase["children"]) if node["kind"] == "structure"]
+        for container in containers:
+            for index, child in enumerate(container["children"]):
+                if (child.get("goalId") == identifier and child["kind"] != "structure"
+                        and child.get("projectionRole") != "prerequisiteOnly"):
+                    return container["children"].pop(index)
+        return None
+
+    e3 = find(E3_TOPIC)[2]
+    for identifier in E1_TO_E3:
+        node = take_target(identifier)
+        if node is None:
+            raise ValueError(f"{view_id}: expected a target reference of {identifier} in the E phase")
+        e3["children"].append(node)
+    traffic = take_target(TRAFFIC)
+    if traffic is None:
+        raise ValueError(f"{view_id}: expected the traffic goal as an E-phase target")
+    e2 = find(E2_TOPIC)[2]
+    friction = [index for index, node in enumerate(e2["children"])
+                if node.get("goalId") == FRICTION and node.get("projectionRole") != "prerequisiteOnly"]
+    if len(friction) != 1:
+        raise ValueError(f"{view_id}: expected one friction target in E.2")
+    e2["children"].insert(friction[0] + 1, traffic)
+
+    collected = []
+    for unit_id, label, label_en, members in HESSEN_E1_CHILD_UNITS:
+        nodes = []
+        for identifier in members:
+            node = take_target(identifier)
+            if node is None and identifier == HESSEN_E1_FREE_FALL_ASSESSMENT and GOALS[identifier].get("examData"):
+                node = {"kind": "canonicalSubtree", "goalId": identifier}
+            if node is None:
+                raise ValueError(f"{view_id}: missing E.1 child-unit target {identifier}")
+            nodes.append(node)
+        collected.append(structure(unit_id, label, nodes) | {"labelEn": label_en})
+    unit_ids = {unit_id for unit_id, *_ in HESSEN_E1_CHILD_UNITS}
+    for node in motion["children"]:
+        remaining = [child for child in walk(node.get("children", []))
+                     if child["kind"] != "structure" and child.get("projectionRole") != "prerequisiteOnly"]
+        if node.get("id") in unit_ids and remaining:
+            raise ValueError(f"{view_id}: {node['id']} keeps targets outside the declared child-unit members: "
+                             + str([child["goalId"] for child in remaining]))
+    leftovers = [node for node in motion["children"] if node.get("id") not in unit_ids]
+    # Generated preparation groups hold support references only; they stay.
+    support = [node for node in leftovers if node["kind"] == "structure"
+               and all(child["kind"] != "structure" and child.get("projectionRole") == "prerequisiteOnly"
+                       for child in walk(node["children"]))]
+    stray = [node for node in leftovers if node["kind"] == "structure" and node["children"] and node not in support]
+    orientation = [node for node in leftovers if node["kind"] != "structure"]
+    if stray or [node.get("goalId") for node in orientation] != ["a4d4efe1-7d30-526b-ac9c-806113da4363"]:
+        raise ValueError(f"{view_id}: unexpected E.1 content outside its child units: "
+                         + str([node.get("id", node.get("goalId")) for node in leftovers]))
+    motion["children"] = orientation + [node for node in support if node["children"]] + collected
 
 
 @cache

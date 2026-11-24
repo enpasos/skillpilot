@@ -1,0 +1,110 @@
+{
+  "id": "161d60bb-b171-50fe-8222-ae7f71a2a5ad",
+  "shortKey": "canonical_physics_sek1_assessment_motion_laws_from_rest",
+  "title": "Prüfungsaufgabe: Bewegungsgesetze aus Messreihen gewinnen und auf den freien Fall anwenden",
+  "titleEn": "Assessment Task: Derive Motion Laws from Measurement Series and Apply Them to Free Fall",
+  "description": "Die lernende Person kann in einer Prüfungsaufgabe aus Messreihen und Diagrammen einer gleichförmigen und einer aus der Ruhe gleichmäßig beschleunigten Bewegung das Zeit-Ort- und das Zeit-Geschwindigkeits-Gesetz ermitteln, den Zusammenhang beider Gesetze erläutern und damit Ort und Geschwindigkeit zu einem Zeitpunkt vorhersagen, auch beim freien Fall.",
+  "descriptionEn": "The learner can, in an assessment task, determine the time-position law and the time-velocity law of a uniform motion and of a uniformly accelerated motion starting from rest from measurement series and their graphs, explain how the two laws are related and use them to predict position and velocity at a given time, including for free fall.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical",
+    "SekI"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "PK2_MODELLIEREN",
+      "PK3_MATHEMATISIEREN"
+    ],
+    "guidingIdeas": [
+      "LI_BEWEGUNG"
+    ],
+    "phase": "GLOBAL",
+    "area": "Mechanik",
+    "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.MOTION_LAWS_FROM_REST"
+  },
+  "requires": [
+    "262f807a-30d0-503e-986f-856cbd048e8e"
+  ],
+  "contains": [],
+  "examples": [],
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-BY",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "extendedData": {
+    "applicabilityFromRequires": true,
+    "applicabilityMappingInheritance": "boundary"
+  },
+  "type": "atomic",
+  "examData": {
+    "reviewStatus": "needs_review",
+    "reviewNote": "Autorenentwurf (Claude Opus 5.5) vom 24. November 2026 für die offene Hamburger Sek-I-Abschlussroute von 262f807a nach dem E.1-Schnitt: eigene Übungsprüfung zu einer vorhandenen Kompetenz, keine amtliche Prüfungsaufgabe. Ohne Anfangsgeschwindigkeit bei der beschleunigten Bewegung, ohne verschobenen Zeitnullpunkt, ohne vorzeichenbehaftete Flächen und ohne Vektoren. Unabhängiges Inhalts-, Bewertungs-, Abdeckungs- und Stufenreview ausstehend. Keine Freigabe, keine menschliche Erprobung.",
+    "coveredGoalIds": [
+      "262f807a-30d0-503e-986f-856cbd048e8e"
+    ],
+    "coveredStrands": [
+      "LI_BEWEGUNG"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "taskContent": "**Material:** Bei allen Bewegungen wird die Zeit t ab dem Start gemessen. Der Ort s wird vom Startpunkt aus entlang der geraden Bahn gemessen; er ist hier gleich dem zurückgelegten Weg. Ein Bewegungssensor liefert zu jedem Zeitpunkt Ort und Geschwindigkeit (gerundete Messwerte). Nimm an, dass sich die Bewegungen so fortsetzen, wie es die Messreihen zeigen.\n\n**Messreihe 1 – Spielzeugauto:** Ein Spielzeugauto mit Elektromotor fährt geradeaus über den Schulflur. Bei t = 0 s fährt es gerade am Startpunkt vorbei.\n\n| t in s | 0 | 1,0 | 2,0 | 3,0 | 4,0 |\n|---|---:|---:|---:|---:|---:|\n| s in m | 0 | 0,50 | 1,00 | 1,50 | 2,00 |\n| v in m/s | 0,50 | 0,50 | 0,50 | 0,50 | 0,50 |\n\n**Messreihe 2 – Wagen auf der geneigten Fahrbahn:** Ein Wagen wird bei t = 0 s am oberen Ende einer 2,0 m langen, leicht geneigten Fahrbahn aus der Ruhe losgelassen.\n\n| t in s | 0 | 0,5 | 1,0 | 1,5 | 2,0 | 2,5 |\n|---|---:|---:|---:|---:|---:|---:|\n| s in m | 0 | 0,05 | 0,20 | 0,45 | 0,80 | 1,25 |\n| v in m/s | 0 | 0,20 | 0,40 | 0,60 | 0,80 | 1,00 |\n\nZeichne die Diagramme auf Papier oder digital. Im Chat genügt eine genaue Beschreibung mit Achsen, Einheiten und den wichtigen Punkten.\n\n**Aufgaben:**\n\n1. Messreihe 1: Begründe mit den Messwerten, welcher Bewegungstyp vorliegt. Zeichne das t-s-Diagramm und das t-v-Diagramm. Ermittle daraus das Zeit-Ort-Gesetz und das Zeit-Geschwindigkeits-Gesetz mit Zahlenwerten und Einheiten. Erläutere, wie die Steigung im t-s-Diagramm mit dem t-v-Diagramm zusammenhängt. (3 BE)\n2. Messreihe 2: Begründe mit den Messwerten, welcher Bewegungstyp vorliegt. Zeichne das t-v-Diagramm und das t-s-Diagramm. Bestimme aus dem t-v-Diagramm die Beschleunigung a und gib das Zeit-Geschwindigkeits-Gesetz an. Gib das Zeit-Ort-Gesetz mit deinem Wert von a an und prüfe an mindestens drei Wertepaaren der Tabelle, dass es die Messwerte beschreibt. (3 BE)\n3. Messreihe 2: Erläutere, wie die beiden Gesetze zusammenhängen. Erkläre mit dem t-v-Diagramm, warum der Graph im t-s-Diagramm immer steiler wird. Zeige mit den Messwerten, dass die Durchschnittsgeschwindigkeit von 0 s bis 2,0 s halb so groß ist wie die Geschwindigkeit bei 2,0 s. Erkläre damit, wie das Zeit-Ort-Gesetz aus dem Zeit-Geschwindigkeits-Gesetz folgt. (3 BE)\n4. Sage mit deinen Gesetzen vorher: Wo ist das Spielzeugauto bei t = 10 s, und wie schnell ist es dann? Wo ist der Wagen bei t = 3,0 s, und wie schnell ist er dann? Ist er zu diesem Zeitpunkt noch auf der Fahrbahn? (3 BE)\n5. **Freier Fall:** In einem Fallgerät wird eine Stahlkugel aus der Ruhe losgelassen. Sie fällt 1,80 m tief bis in einen Auffangbehälter. Im Modell des freien Falls ist der Luftwiderstand vernachlässigbar, und die Kugel fällt gleichmäßig beschleunigt mit a = g; rechne mit g = 10 m/s². Gib für diesen Fall das Zeit-Geschwindigkeits- und das Zeit-Ort-Gesetz an. Bestimme Fallstrecke und Geschwindigkeit nach 0,20 s, 0,40 s und 0,60 s und zeige, dass die Kugel nach 0,60 s im Auffangbehälter ankommt. Erkläre mit den Gesetzen, warum sich bei doppelter Fallzeit die Geschwindigkeit verdoppelt, die Fallstrecke aber vervierfacht. (3 BE)\n\nDie Prüfung ist ab 13 von 15 BE bestanden. Dafür muss jede der fünf Aufgaben im Kern gelöst sein.",
+    "solutionContent": "1. In gleichen Zeitabschnitten von 1,0 s nimmt der Ort jeweils um 0,50 m zu, und die Geschwindigkeit bleibt 0,50 m/s: gleichförmige Bewegung. Das t-s-Diagramm ist eine Ursprungsgerade durch (4,0 s | 2,00 m), das t-v-Diagramm eine waagerechte Linie bei 0,50 m/s. Steigung der Geraden: 2,00 m : 4,0 s = 0,50 m/s. Zeit-Ort-Gesetz: s = 0,50 m/s · t; Zeit-Geschwindigkeits-Gesetz: v = 0,50 m/s, unabhängig von t. Die Steigung im t-s-Diagramm ist die Geschwindigkeit. Weil sie überall gleich ist, ist der Graph im t-v-Diagramm eine waagerechte Linie in Höhe dieser Steigung.\n2. Der Wagen startet aus der Ruhe. In gleichen Zeitabschnitten von 0,5 s nimmt die Geschwindigkeit jeweils um 0,20 m/s zu; die Ortsänderungen werden dagegen immer größer (0,05 m; 0,15 m; 0,25 m; 0,35 m; 0,45 m): gleichmäßig beschleunigte Bewegung aus der Ruhe. Das t-v-Diagramm ist eine Ursprungsgerade durch (2,5 s | 1,00 m/s). Ihre Steigung ist die Beschleunigung: a = 1,00 m/s : 2,5 s = 0,40 m/s². Zeit-Geschwindigkeits-Gesetz: v = 0,40 m/s² · t. Zeit-Ort-Gesetz: s = ½ · a · t² = 0,20 m/s² · t². Prüfung: t = 1,0 s ergibt 0,20 m, t = 1,5 s ergibt 0,45 m, t = 2,0 s ergibt 0,80 m, t = 2,5 s ergibt 1,25 m; alle Werte stimmen mit der Tabelle überein. Gleichwertig: Der Quotient s : t² ist für alle Wertepaare 0,20 m/s², also s = 0,20 m/s² · t² und a = 2 · 0,20 m/s² = 0,40 m/s². Das t-s-Diagramm ist keine Gerade, sondern eine nach oben gekrümmte Kurve durch den Ursprung, die dort waagerecht beginnt.\n3. Die Steigung des t-s-Graphen zu einem Zeitpunkt ist die Geschwindigkeit in diesem Augenblick. Nach dem Zeit-Geschwindigkeits-Gesetz wächst die Geschwindigkeit gleichmäßig mit der Zeit; deshalb wird der t-s-Graph immer steiler (bei 0 s waagerecht, bei 2,5 s mit der Steigung 1,00 m/s). Durchschnittsgeschwindigkeit von 0 s bis 2,0 s: 0,80 m : 2,0 s = 0,40 m/s. Geschwindigkeit bei 2,0 s: 0,80 m/s, also doppelt so groß. Weil die Geschwindigkeit gleichmäßig von 0 auf a · t wächst, ist die Durchschnittsgeschwindigkeit bis zum Zeitpunkt t halb so groß wie die Endgeschwindigkeit, also ½ · a · t. Der Ort ist Durchschnittsgeschwindigkeit mal Zeit: s = ½ · a · t · t = ½ · a · t².\n4. Spielzeugauto: s = 0,50 m/s · 10 s = 5,0 m; v = 0,50 m/s. Wagen: v = 0,40 m/s² · 3,0 s = 1,2 m/s; s = 0,20 m/s² · (3,0 s)² = 1,8 m. Wegen 1,8 m < 2,0 m ist der Wagen bei 3,0 s noch auf der Fahrbahn.\n5. v = g · t = 10 m/s² · t und s = ½ · g · t² = 5 m/s² · t². Nach 0,20 s: 2,0 m/s und 0,20 m; nach 0,40 s: 4,0 m/s und 0,80 m; nach 0,60 s: 6,0 m/s und 1,80 m. Nach 0,60 s hat die Kugel also die 1,80 m bis zum Auffangbehälter zurückgelegt und kommt mit 6,0 m/s an. Die Geschwindigkeit ist proportional zur Zeit; bei doppelter Zeit verdoppelt sie sich (2,0 m/s auf 4,0 m/s). Die Fallstrecke ist proportional zum Quadrat der Zeit; bei doppelter Zeit wird sie 2² = 4-mal so groß (0,20 m auf 0,80 m).\n\n**Hinweise zur Bewertung:** Jede der fünf Aufgaben ist eine Kernleistung. 3 BE gibt es für eine vollständige und fachlich richtige Lösung. 2 BE gibt es nur, wenn die Aufgabe vollständig bearbeitet ist und genau ein einzelner nicht konzeptioneller Fehler vorliegt, etwa ein Rechen-, Rundungs-, Einheiten- oder Ablesefehler. 0 BE gibt es, wenn ein zentraler Bestandteil fehlt oder ein konzeptioneller Fehler vorliegt, zum Beispiel s = a · t² ohne den Faktor ½, das Gesetz der gleichförmigen Bewegung für den Wagen oder eine Verwechslung von Durchschnitts- und Momentangeschwindigkeit. Bestanden ab 13 von 15 BE; eine fehlende Kernleistung kann nicht durch andere Punkte ausgeglichen werden. Folgefehler, etwa ein falsch abgelesenes a, das in Aufgabe 4 richtig weiterverwendet wird, werden nicht erneut abgezogen. Gleichwertige richtige Wege sind zulässig, zum Beispiel die Prüfung mit s : t², eine Begründung von Aufgabe 3 mit der Dreiecksfläche unter dem t-v-Graphen oder genaue Beschreibungen statt gezeichneter Diagramme im Chat.",
+    "scoring": {
+      "maxPoints": 15,
+      "passingPoints": 13,
+      "steps": [
+        {
+          "id": "hh_motion_laws_1",
+          "points": 3,
+          "description": "Messreihe 1: gleichförmige Bewegung begründet, beide Diagramme, s = 0,50 m/s · t und v = 0,50 m/s aus den Diagrammen ermittelt, Steigung im t-s-Diagramm als Geschwindigkeit gedeutet / EN: Series 1: uniform motion justified, both graphs, s = 0.50 m/s · t and v = 0.50 m/s determined from the graphs, slope of the position-time graph interpreted as the velocity"
+        },
+        {
+          "id": "hh_motion_laws_2",
+          "points": 3,
+          "description": "Messreihe 2: gleichmäßig beschleunigte Bewegung aus der Ruhe begründet, beide Diagramme, a = 0,40 m/s² aus dem t-v-Diagramm, v = 0,40 m/s² · t und s = 0,20 m/s² · t² an mindestens drei Wertepaaren geprüft / EN: Series 2: uniformly accelerated motion from rest justified, both graphs, a = 0.40 m/s² from the velocity-time graph, v = 0.40 m/s² · t and s = 0.20 m/s² · t² checked with at least three pairs of values"
+        },
+        {
+          "id": "hh_motion_laws_3",
+          "points": 3,
+          "description": "Zusammenhang erläutert: steiler werdender t-s-Graph durch wachsende Geschwindigkeit, Durchschnittsgeschwindigkeit 0,40 m/s als halbe Geschwindigkeit bei 2,0 s gezeigt und s = ½ · a · t² damit begründet / EN: Relation explained: steepening position-time graph due to growing velocity, average velocity 0.40 m/s shown to be half the velocity at 2.0 s and s = ½ · a · t² justified with it"
+        },
+        {
+          "id": "hh_motion_laws_4",
+          "points": 3,
+          "description": "Vorhersagen 5,0 m und 0,50 m/s für das Auto sowie 1,8 m und 1,2 m/s für den Wagen, Lage auf der 2,0 m langen Fahrbahn geprüft / EN: Predictions 5.0 m and 0.50 m/s for the car and 1.8 m and 1.2 m/s for the cart, position on the 2.0 m track checked"
+        },
+        {
+          "id": "hh_motion_laws_5",
+          "points": 3,
+          "description": "Freier Fall: v = g · t und s = ½ · g · t², Werte nach 0,20 s, 0,40 s und 0,60 s, Ankunft nach 0,60 s mit 6,0 m/s, Verdopplung und Vervierfachung begründet / EN: Free fall: v = g · t and s = ½ · g · t², values after 0.20 s, 0.40 s and 0.60 s, arrival after 0.60 s at 6.0 m/s, doubling and quadrupling justified"
+        }
+      ]
+    },
+    "taskContentEn": "**Material:** For all motions, the time t is measured from the start. The position s is measured from the starting point along the straight track; here it equals the distance travelled. A motion sensor records position and velocity at every instant (rounded readings). Assume that the motions continue as the measurement series show.\n\n**Series 1 – toy car:** A battery-powered toy car drives straight along the school corridor. At t = 0 s it is just passing the starting point.\n\n| t in s | 0 | 1.0 | 2.0 | 3.0 | 4.0 |\n|---|---:|---:|---:|---:|---:|\n| s in m | 0 | 0.50 | 1.00 | 1.50 | 2.00 |\n| v in m/s | 0.50 | 0.50 | 0.50 | 0.50 | 0.50 |\n\n**Series 2 – cart on an inclined track:** At t = 0 s a cart is released from rest at the upper end of a 2.0 m long, slightly inclined track.\n\n| t in s | 0 | 0.5 | 1.0 | 1.5 | 2.0 | 2.5 |\n|---|---:|---:|---:|---:|---:|---:|\n| s in m | 0 | 0.05 | 0.20 | 0.45 | 0.80 | 1.25 |\n| v in m/s | 0 | 0.20 | 0.40 | 0.60 | 0.80 | 1.00 |\n\nDraw the graphs on paper or digitally. In the chat, a precise description with axes, units and the important points is sufficient.\n\n**Tasks:**\n\n1. Series 1: Use the readings to justify which type of motion this is. Draw the position-time graph and the velocity-time graph. Use them to determine the time-position law and the time-velocity law with numerical values and units. Explain how the slope of the position-time graph is related to the velocity-time graph. (3 marks)\n2. Series 2: Use the readings to justify which type of motion this is. Draw the velocity-time graph and the position-time graph. Determine the acceleration a from the velocity-time graph and state the time-velocity law. State the time-position law with your value of a and check with at least three pairs of values from the table that it describes the readings. (3 marks)\n3. Series 2: Explain how the two laws are related. Use the velocity-time graph to explain why the position-time graph keeps getting steeper. Show with the readings that the average velocity from 0 s to 2.0 s is half the velocity at 2.0 s. Use this to explain how the time-position law follows from the time-velocity law. (3 marks)\n4. Use your laws to predict: Where is the toy car at t = 10 s, and how fast is it moving then? Where is the cart at t = 3.0 s, and how fast is it moving then? Is it still on the track at that moment? (3 marks)\n5. **Free fall:** In a free-fall apparatus a steel ball is released from rest. It falls 1.80 m into a catching container. In the free-fall model, air resistance is negligible and the ball falls with uniform acceleration a = g; use g = 10 m/s². State the time-velocity law and the time-position law for this fall. Determine the distance fallen and the velocity after 0.20 s, 0.40 s and 0.60 s, and show that the ball reaches the catching container after 0.60 s. Use the laws to explain why doubling the falling time doubles the velocity but quadruples the distance fallen. (3 marks)\n\nThe assessment is passed with 13 of 15 marks. To pass, the core of each of the five tasks must be solved.",
+    "solutionContentEn": "1. In equal time intervals of 1.0 s the position increases by 0.50 m each time, and the velocity stays 0.50 m/s: uniform motion. The position-time graph is a straight line through the origin and (4.0 s | 2.00 m); the velocity-time graph is a horizontal line at 0.50 m/s. Slope of the line: 2.00 m : 4.0 s = 0.50 m/s. Time-position law: s = 0.50 m/s · t; time-velocity law: v = 0.50 m/s, independent of t. The slope of the position-time graph is the velocity. Because it is the same everywhere, the velocity-time graph is a horizontal line at the height of this slope.\n2. The cart starts from rest. In equal time intervals of 0.5 s the velocity increases by 0.20 m/s each time, while the changes in position keep growing (0.05 m; 0.15 m; 0.25 m; 0.35 m; 0.45 m): uniformly accelerated motion from rest. The velocity-time graph is a straight line through the origin and (2.5 s | 1.00 m/s). Its slope is the acceleration: a = 1.00 m/s : 2.5 s = 0.40 m/s². Time-velocity law: v = 0.40 m/s² · t. Time-position law: s = ½ · a · t² = 0.20 m/s² · t². Check: t = 1.0 s gives 0.20 m, t = 1.5 s gives 0.45 m, t = 2.0 s gives 0.80 m, t = 2.5 s gives 1.25 m; all values agree with the table. Equivalent: the quotient s : t² is 0.20 m/s² for all pairs, so s = 0.20 m/s² · t² and a = 2 · 0.20 m/s² = 0.40 m/s². The position-time graph is not a straight line but a curve through the origin that bends upwards and starts horizontally there.\n3. The slope of the position-time graph at an instant is the velocity at that instant. According to the time-velocity law the velocity grows steadily with time; therefore the position-time graph keeps getting steeper (horizontal at 0 s, slope 1.00 m/s at 2.5 s). Average velocity from 0 s to 2.0 s: 0.80 m : 2.0 s = 0.40 m/s. Velocity at 2.0 s: 0.80 m/s, i.e. twice as large. Because the velocity grows steadily from 0 to a · t, the average velocity up to the instant t is half the final velocity, i.e. ½ · a · t. The position is average velocity times time: s = ½ · a · t · t = ½ · a · t².\n4. Toy car: s = 0.50 m/s · 10 s = 5.0 m; v = 0.50 m/s. Cart: v = 0.40 m/s² · 3.0 s = 1.2 m/s; s = 0.20 m/s² · (3.0 s)² = 1.8 m. Since 1.8 m < 2.0 m, the cart is still on the track at 3.0 s.\n5. v = g · t = 10 m/s² · t and s = ½ · g · t² = 5 m/s² · t². After 0.20 s: 2.0 m/s and 0.20 m; after 0.40 s: 4.0 m/s and 0.80 m; after 0.60 s: 6.0 m/s and 1.80 m. So after 0.60 s the ball has covered the 1.80 m to the catching container and arrives at 6.0 m/s. The velocity is proportional to time; doubling the time doubles it (2.0 m/s to 4.0 m/s). The distance fallen is proportional to the square of time; doubling the time makes it 2² = 4 times as large (0.20 m to 0.80 m).\n\n**Scoring notes:** Each of the five tasks is a core performance. Award 3 marks for a complete and correct solution. Award 2 marks only if the task is fully worked and contains exactly one isolated non-conceptual slip, such as an arithmetic, rounding, unit or reading error. Award 0 marks if a central component is missing or there is a conceptual error, for example s = a · t² without the factor ½, the law of uniform motion used for the cart, or confusing average and instantaneous velocity. Passed with 13 of 15 marks; a missing core performance cannot be compensated by other marks. Errors carried forward, for example a misread a that is used correctly in task 4, are not penalised again. Equivalent correct methods are accepted, for example the check with s : t², a justification of task 3 with the triangular area under the velocity-time graph, or precise descriptions instead of drawn graphs in the chat."
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:e1bf2eb3b8f465a742c242b5b8c63647961fcf618273bd04c9599963251c2281",
+  "reviewInputFingerprint": "sha256:f5bbc9424884564e5abadf521a72d6a6c19af8994b0114e0e0e903688e51ce2c",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-e1-current-three-v3-20261124-a",
+      "roundId": "physik-e1-current-three-v3-20261124-first-pass-a",
+      "independenceGroupId": "physik-e1-current-three-v3-20261124-independent-a",
+      "runIds": [
+        "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-e1-current-three-v3-20261124-b",
+      "roundId": "physik-e1-current-three-v3-20261124-first-pass-b",
+      "independenceGroupId": "physik-e1-current-three-v3-20261124-independent-b",
+      "runIds": [
+        "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.2-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "firstRecordId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05-262f807a-30d0-503e-986f-856cbd048e8e",
+      "secondRecordId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b-262f807a-30d0-503e-986f-856cbd048e8e",
+      "firstRunId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05",
+      "secondRunId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "firstRecordId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05-09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "secondRecordId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b-09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "firstRunId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05",
+      "secondRunId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "firstRecordId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "secondRecordId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b-89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "firstRunId": "physik-e1-current-three-v3-20261124-a-01a20bf5-5260-7a00-a6ee-0336aec16d05",
+      "secondRunId": "physik-e1-current-three-v3-20261124-b-01a20bf5-5260-7511-a29f-8997a91c2c2b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

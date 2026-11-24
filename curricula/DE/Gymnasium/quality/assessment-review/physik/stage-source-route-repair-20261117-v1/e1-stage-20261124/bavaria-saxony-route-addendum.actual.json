@@ -1,0 +1,298 @@
+{
+  "schema": "e1-independent-source-route-addendum-v1",
+  "reviewDate": "2026-11-24",
+  "reviewer": "Codex /root",
+  "sourceComparison": "2e16c567cf^1..2e16c567cf, verified on bf34d99e7f",
+  "decisions": [
+    {
+      "row": 12,
+      "mapping": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "beforeSha256": "1b9dc430581bca5909913913e68ed5d40b6031f5fdd42157fe676d858f0ea6d8",
+      "afterSha256": "94c8d020a35f4278a6095cfa66e1e482d85c1a1953a340dab721d1f63c1ea0e8",
+      "officialSource": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/physik",
+      "sourceExcerpt": "die Bewegungsfunktionen der Newton’schen Mechanik oder die Erhaltungssätze",
+      "beforeDecision": {
+        "sourceGoalId": "f7f4e1f0-3c48-5f1c-a474-4a41ca6296b6",
+        "topicCode": "Ph10.3",
+        "sourceSpan": "Ph10.3.4",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "d6dc0e02-831d-4894-a61a-852bcc74f147",
+          "262f807a-30d0-503e-986f-856cbd048e8e"
+        ],
+        "rationale": "Ph10.3.4 verlangt die quantitative Beschreibung von Alltagsbewegungen mit selbst gewählten Darstellungen und Konzepten, etwa den Bewegungsfunktionen oder den Erhaltungssätzen. Die Modellierung mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen liegt nach dem Schnitt im neuen Gesetzesziel. Das verengte Modellierungsziel deckt nur noch die Wahl und die Grenzen des idealisierten Modells für reale Bewegungen im Lernbereich „Bewegungen und ihre Modellierung in der Physik“ ab; die Erhaltungssätze deckt keines der beiden Ziele. Die Zuordnung ist partial.",
+        "reviewedAt": "2026-11-23",
+        "reviewer": "claude-opus-5-5"
+      },
+      "afterDecision": {
+        "sourceGoalId": "f7f4e1f0-3c48-5f1c-a474-4a41ca6296b6",
+        "topicCode": "Ph10.3",
+        "sourceSpan": "Ph10.3.4",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "262f807a-30d0-503e-986f-856cbd048e8e"
+        ],
+        "rationale": "Ph10 Lernbereich 3 verlangt in der vierten Kompetenzerwartung die quantitative Beschreibung von Bewegungen anhand gewählter Darstellungen und Konzepte. Genannt werden Bewegungsfunktionen und Erhaltungssätze. Der erste Teil trägt das Gesetzesziel 262f807a. Die Zeile verlangt keine Idealisierung oder Beurteilung einer Modellgrenze.",
+        "reviewedAt": "2026-11-24",
+        "reviewer": "Codex, unabhängige Quellengegenprüfung"
+      },
+      "beforeMappings": [
+        {
+          "legacyGoalId": "f7f4e1f0-3c48-5f1c-a474-4a41ca6296b6",
+          "canonicalGoalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+          "matchType": "partial",
+          "reviewDecisionId": "f7f4e1f0-3c48-5f1c-a474-4a41ca6296b6"
+        },
+        {
+          "legacyGoalId": "f7f4e1f0-3c48-5f1c-a474-4a41ca6296b6",
+          "canonicalGoalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+          "matchType": "partial",
+          "reviewDecisionId": "f7f4e1f0-3c48-5f1c-a474-4a41ca6296b6"
+        }
+      ],
+      "afterMappings": [
+        {
+          "legacyGoalId": "f7f4e1f0-3c48-5f1c-a474-4a41ca6296b6",
+          "canonicalGoalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+          "matchType": "partial",
+          "reviewDecisionId": "f7f4e1f0-3c48-5f1c-a474-4a41ca6296b6"
+        }
+      ]
+    },
+    {
+      "row": 68,
+      "mapping": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "beforeSha256": "a2543423afed14d0d1d765c03095924d332f93384bc65c3779fee29ca07a721e",
+      "afterSha256": "1c9b5121646561d183716a3ec0a90cb012eda7b00b8d0054b311a48730a8a4c7",
+      "officialSource": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+      "sourceExcerpt": "infinitesimale Definition von Geschwindigkeit und Beschleunigung",
+      "beforeDecision": {
+        "sourceGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+        "topicCode": "SN-jahrgangsstufe-11-grundkurs-LB2",
+        "sourceSpan": "Jahrgangsstufe 11 Grundkurs, Anwendung der Kinematik und Dynamik, PDF-S. 47",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "262f807a-30d0-503e-986f-856cbd048e8e"
+        ],
+        "rationale": "Der Lehrplan (Gk 11, LB 2) verlangt Einblick in die Infinitesimalrechnung: infinitesimale Definition von Geschwindigkeit und Beschleunigung, Finden der s(t)-Funktion aus dem Experiment und Ermitteln der v(t)- bzw. a(t)-Funktionen. Das neue Gesetzesziel deckt den Zusammenhang von Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz teilweise ab; das verengte Messziel behält die experimentellen Orts-Zeit-Daten. Die Zuordnung ist partial.",
+        "reviewedAt": "2026-11-23",
+        "reviewer": "claude-opus-5-5"
+      },
+      "afterDecision": {
+        "sourceGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+        "topicCode": "SN-jahrgangsstufe-11-grundkurs-LB2",
+        "sourceSpan": "Jahrgangsstufe 11 Grundkurs, Anwendung der Kinematik und Dynamik, PDF-S. 48 (Druck-S. 36)",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+          "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "262f807a-30d0-503e-986f-856cbd048e8e"
+        ],
+        "rationale": "Der Lehrplan (Gk 11, LB 2) verlangt Einblick in die Infinitesimalrechnung: infinitesimale Definition von Geschwindigkeit und Beschleunigung, Finden der s(t)-Funktion aus dem Experiment und Ermitteln der v(t)- bzw. a(t)-Funktionen. Das neue Gesetzesziel deckt den Zusammenhang von Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz teilweise ab; das verengte Messziel behält die experimentellen Orts-Zeit-Daten. Die Zuordnung ist partial.",
+        "reviewedAt": "2026-11-24",
+        "reviewer": "Codex, unabhängige Quellengegenprüfung"
+      },
+      "beforeMappings": [
+        {
+          "legacyGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+          "canonicalGoalId": "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a"
+        },
+        {
+          "legacyGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+          "canonicalGoalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a"
+        },
+        {
+          "legacyGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+          "canonicalGoalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a"
+        },
+        {
+          "legacyGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+          "canonicalGoalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a"
+        }
+      ],
+      "afterMappings": [
+        {
+          "legacyGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+          "canonicalGoalId": "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a"
+        },
+        {
+          "legacyGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+          "canonicalGoalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a"
+        },
+        {
+          "legacyGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+          "canonicalGoalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a"
+        },
+        {
+          "legacyGoalId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a",
+          "canonicalGoalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+          "matchType": "partial",
+          "reviewDecisionId": "sn-phys-sekii-sn-jahrgangsstufe-11-grundkurs-lb2-006-01-0369799a"
+        }
+      ]
+    }
+  ],
+  "bavarianProjection": {
+    "generator": "python3 scripts/generate_laender_physics_stage_views.py --jurisdiction BY --write",
+    "interpretation": "The goal retains its original target role in both cross-stage profiles and the Sek I view, and is absent in both Sek II views. Original lower memberships are pinned independently of mapping rows. generate_bavaria groups existing targets by authored topics; its fallback topic label is not another official mapping.",
+    "views": [
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+        "beforeAndAfterSha256": "6648e3a7d0b2630c90cdce50988cc4d950e223a27e8c1b101007b2aa3041473d",
+        "changed": false,
+        "placements": [
+          {
+            "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+            "kind": "goalEntry",
+            "role": "target",
+            "path": [
+              "physics-root",
+              "physics-seki",
+              "physics-by-year-10",
+              "physics-by-ph10-3"
+            ]
+          },
+          {
+            "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+            "kind": "goalEntry",
+            "role": "target",
+            "path": [
+              "physics-root",
+              "physics-seki",
+              "physics-by-year-10",
+              "physics-by-ph10-3"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+        "beforeAndAfterSha256": "01d6d9f77646782ad27e5673d2c6c2b0476b3803efd6f0f51c7fdc1cda915916",
+        "changed": false,
+        "placements": [
+          {
+            "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+            "kind": "goalEntry",
+            "role": "target",
+            "path": [
+              "physics-root",
+              "physics-seki",
+              "physics-by-year-10",
+              "physics-by-ph10-3"
+            ]
+          },
+          {
+            "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+            "kind": "goalEntry",
+            "role": "target",
+            "path": [
+              "physics-root",
+              "physics-seki",
+              "physics-by-year-10",
+              "physics-by-ph10-3"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json",
+        "beforeAndAfterSha256": "34655c065d27d32755b109d98d86dc5b3fc9ec7a0ee88d3bd590c7a55f417758",
+        "changed": false,
+        "placements": [
+          {
+            "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+            "kind": "goalEntry",
+            "role": "prerequisiteOnly",
+            "path": [
+              "physics-root",
+              "physics-sekii-gk",
+              "physics-by-year-11",
+              "physics-by-ph11-4"
+            ]
+          },
+          {
+            "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+            "kind": "goalEntry",
+            "role": "prerequisiteOnly",
+            "path": [
+              "physics-root"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json",
+        "beforeAndAfterSha256": "8cdc3efd3c737909eacafa0308c74b6b38d126caace97420f93f54cc763ad789",
+        "changed": false,
+        "placements": [
+          {
+            "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+            "kind": "goalEntry",
+            "role": "prerequisiteOnly",
+            "path": [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-by-year-11",
+              "physics-by-ph11-4"
+            ]
+          },
+          {
+            "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+            "kind": "goalEntry",
+            "role": "prerequisiteOnly",
+            "path": [
+              "physics-root"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-by-seki.view.json",
+        "beforeAndAfterSha256": "b9fa94235e04876ddd43c860ed7a1d7c2a4e150bf72d69d62034c1ff2c82fc2c",
+        "changed": false,
+        "placements": [
+          {
+            "goalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+            "kind": "goalEntry",
+            "role": "target",
+            "path": [
+              "physics-root",
+              "physics-seki",
+              "physics-by-year-10",
+              "physics-by-ph10-3"
+            ]
+          },
+          {
+            "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+            "kind": "goalEntry",
+            "role": "target",
+            "path": [
+              "physics-root",
+              "physics-seki",
+              "physics-by-year-10",
+              "physics-by-ph10-3"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

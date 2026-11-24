@@ -1,0 +1,451 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "e1-stage-20261124-th-262f807a-independent-v1",
+  "reviewedAt": "2026-11-24T03:35:52.320460+00:00",
+  "reviewer": "Codex independent agent /root/th_mv (GPT-6 family)",
+  "independence": {
+    "originalAuthor": "Claude Opus 5.5 workstream",
+    "separateReviewer": true,
+    "basis": "Fresh official-PDF downloads, independent pypdf text extraction and visual PDF-page inspection; the handover proposal was treated as a claim to verify."
+  },
+  "baseCommit": "bf34d99e7f4c80843567176535d54168f848ff71",
+  "reviewKind": "source-stage-route-review",
+  "taskItem": 3,
+  "jurisdiction": "DE-TH",
+  "canonicalInput": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "f911090df16ec101b595dbc0b461c39910b88d6c5cdfac7cbdcf8b738fd37efe",
+    "matchesBaseCommitBytes": true,
+    "goal": {
+      "id": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben",
+      "titleEn": "Describe Motions with Time-Position and Time-Velocity Laws",
+      "description": "Die lernende Person kann für gleichförmige und gleichmäßig beschleunigte Bewegungen das Zeit-Ort- und das Zeit-Geschwindigkeits-Gesetz aus den Diagrammen ermitteln, ihren Zusammenhang erläutern und damit Ort und Geschwindigkeit zu einem Zeitpunkt vorhersagen.",
+      "descriptionEn": "The learner can determine the time-position law and the time-velocity law of uniform and uniformly accelerated motions from the graphs, explain how the two laws are related and use them to predict position and velocity at a given time.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "cross-subject:mathematics"
+      ],
+      "contains": [],
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_motion_laws_position_velocity",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "262f807a-30d0-503e-986f-856cbd048e8e",
+          "title": "Visualisierung: Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben",
+          "url": "/assets/goal-visualizations/physik/262f807a-30d0-503e-986f-856cbd048e8e/262f807a-30d0-503e-986f-856cbd048e8e.png",
+          "provider": "OpenAI / Codex image_gen + programmatic diagram correction",
+          "description": "Orts- und Geschwindigkeitsgraphen zweier Bewegungen mit ihren Zeitgesetzen.",
+          "altText": "Links bei gleichförmiger Bewegung ab s₀ = 0 steigt der Ort linear und die Geschwindigkeit bleibt konstant: s(t) = v₀t und v(t) = v₀. Rechts bei konstanter positiver Beschleunigung aus der Ruhe ab s₀ = 0 steigt der Ort parabelförmig und die Geschwindigkeit linear: s(t) = ½at² und v(t) = at. Die Steigung des Ortsgraphen gibt die Geschwindigkeit an.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "accepted"
+        }
+      ]
+    },
+    "goalNormalizedSha256": "d17b8a300e6b494bb5896b09202b17294a12caff1b4c47eb0798ade4ebf903cb",
+    "normalization": "UTF-8 JSON, ensure_ascii=false, sort_keys=true, separators=(comma,colon)"
+  },
+  "retainedMappingInput": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+    "sha256": "1059f400bd40ea72b2820ed2db03ef50dc912dbf7abc57040df453f2ab968d29",
+    "matchesBaseCommitBytes": true
+  },
+  "retainedExtractionInput": {
+    "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+    "sha256": "ab0b8d7773e6c45e80c5bdd5ce4bdd7fb45d36ae0992598146ea4b08fe5a256d",
+    "matchesBaseCommitBytes": true
+  },
+  "reviewedRouteDecisions": [
+    {
+      "sourceGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927",
+      "topicCode": "TH-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+      "sourceSpan": "Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+        "d3c153b9-e09b-5668-8386-73105546a7c1",
+        "9645f0d8-43a3-5f29-873c-daa5ace638db",
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "rationale": "Der Lehrplan verlangt, die geradlinig gleichförmige Bewegung mit Hilfe von Gleichungen und Diagrammen zu beschreiben. Das neue Gesetzesziel deckt die Gleichungen teilweise ab. Die bestehenden Zuordnungen bleiben unverändert. Die Zuordnung ist partial.",
+      "reviewedAt": "2026-11-23",
+      "reviewer": "claude-opus-5-5"
+    },
+    {
+      "sourceGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5",
+      "topicCode": "TH-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+      "sourceSpan": "Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+        "d3c153b9-e09b-5668-8386-73105546a7c1",
+        "9645f0d8-43a3-5f29-873c-daa5ace638db",
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "rationale": "Der Lehrplan verlangt, die geradlinig gleichmäßig beschleunigte Bewegung mit Hilfe von Gleichungen und Diagrammen zu beschreiben. Das neue Gesetzesziel deckt die Gleichungen teilweise ab. Die bestehenden Zuordnungen bleiben unverändert. Die Zuordnung ist partial.",
+      "reviewedAt": "2026-11-23",
+      "reviewer": "claude-opus-5-5"
+    },
+    {
+      "sourceGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718",
+      "topicCode": "TH-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+      "sourceSpan": "Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+        "d3c153b9-e09b-5668-8386-73105546a7c1",
+        "9645f0d8-43a3-5f29-873c-daa5ace638db",
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "rationale": "Der Lehrplan verlangt, die Bewegungsgesetze auf den freien Fall und andere Beispiele anzuwenden sowie Diagramme zu interpretieren. Das neue Gesetzesziel deckt die Anwendung der Bewegungsgesetze ab. Die bestehenden Zuordnungen bleiben unverändert. Die Zuordnung ist partial.",
+      "reviewedAt": "2026-11-23",
+      "reviewer": "claude-opus-5-5"
+    }
+  ],
+  "reviewedMappingRows": [
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927",
+      "canonicalGoalId": "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927",
+      "canonicalGoalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927",
+      "canonicalGoalId": "9645f0d8-43a3-5f29-873c-daa5ace638db",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927",
+      "canonicalGoalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5",
+      "canonicalGoalId": "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5",
+      "canonicalGoalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5",
+      "canonicalGoalId": "9645f0d8-43a3-5f29-873c-daa5ace638db",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5",
+      "canonicalGoalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718",
+      "canonicalGoalId": "1e9ec823-384b-5e5f-974c-4ce224d05c19",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718",
+      "canonicalGoalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718",
+      "canonicalGoalId": "9645f0d8-43a3-5f29-873c-daa5ace638db",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718"
+    },
+    {
+      "legacyGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718",
+      "canonicalGoalId": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "matchType": "partial",
+      "reviewDecisionId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718"
+    }
+  ],
+  "reviewedSourceGoals": [
+    {
+      "id": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927",
+      "passageId": "th-physics-seki:th-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+      "topicCode": "TH-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+      "bulletIndex": 152,
+      "aspectIndex": 1,
+      "title": "Sachund Methodenkompetenz: die geradlinig gleichförmige Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben",
+      "description": "Die lernende Person kann Sach- und Methodenkompetenz: die geradlinig gleichförmige Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben.",
+      "sourceText": "Sach- und Methodenkompetenz: die geradlinig gleichförmige Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben,",
+      "sourceSpan": "Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "parentBulletText": "die geradlinig gleichförmige Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben,",
+      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyBullet",
+      "tags": [
+        "source:thueringen",
+        "stage:SekI",
+        "topic:th-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+        "competencyArea:sach-und-methodenkompetenz",
+        "course:GK_LK",
+        "sourceDocument:TH-PH-2012"
+      ],
+      "rawSourceText": "Sach- und Methodenkompetenz: die geradlinig gleichförmige Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben,",
+      "rawSourceSpan": "Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "rawParentBulletText": "die geradlinig gleichförmige Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben,"
+    },
+    {
+      "id": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5",
+      "passageId": "th-physics-seki:th-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+      "topicCode": "TH-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+      "bulletIndex": 153,
+      "aspectIndex": 1,
+      "title": "Sachund Methodenkompetenz: die geradlinig gleichmäßig beschleunigte Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben",
+      "description": "Die lernende Person kann Sach- und Methodenkompetenz: die geradlinig gleichmäßig beschleunigte Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben.",
+      "sourceText": "Sach- und Methodenkompetenz: die geradlinig gleichmäßig beschleunigte Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben,",
+      "sourceSpan": "Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "parentBulletText": "die geradlinig gleichmäßig beschleunigte Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben,",
+      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyBullet",
+      "tags": [
+        "source:thueringen",
+        "stage:SekI",
+        "topic:th-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+        "competencyArea:sach-und-methodenkompetenz",
+        "course:GK_LK",
+        "sourceDocument:TH-PH-2012"
+      ],
+      "rawSourceText": "Sach- und Methodenkompetenz: die geradlinig gleichmäßig beschleunigte Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben,",
+      "rawSourceSpan": "Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "rawParentBulletText": "die geradlinig gleichmäßig beschleunigte Bewegung mit Hilfe von Gleichungen und Diagrammen beschreiben,"
+    },
+    {
+      "id": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718",
+      "passageId": "th-physics-seki:th-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+      "topicCode": "TH-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+      "bulletIndex": 154,
+      "aspectIndex": 1,
+      "title": "Sachund Methodenkompetenz: die Bewegungsgesetze auf den freien Fall und andere Beispiele anwenden sowie Diagramme interpretieren",
+      "description": "Die lernende Person kann Sach- und Methodenkompetenz: die Bewegungsgesetze auf den freien Fall und andere Beispiele anwenden sowie Diagramme interpretieren.",
+      "sourceText": "Sach- und Methodenkompetenz: die Bewegungsgesetze auf den freien Fall und andere Beispiele anwenden sowie Diagramme interpretieren,",
+      "sourceSpan": "Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "parentBulletText": "die Bewegungsgesetze auf den freien Fall und andere Beispiele anwenden sowie Diagramme interpretieren,",
+      "sourceRef": "Thüringer Lehrplan Physik 2012, Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "courseLevel": "GK_LK",
+      "granularity": "officialCompetencyBullet",
+      "tags": [
+        "source:thueringen",
+        "stage:SekI",
+        "topic:th-2-2-2-bewegungen-krafte-und-erhaltungssatze",
+        "competencyArea:sach-und-methodenkompetenz",
+        "course:GK_LK",
+        "sourceDocument:TH-PH-2012"
+      ],
+      "rawSourceText": "Sach- und Methodenkompetenz: die Bewegungsgesetze auf den freien Fall und andere Beispiele anwenden sowie Diagramme interpretieren,",
+      "rawSourceSpan": "Klassenstufen 7-10, Bewegungen, Kräfte und Erhaltungssätze, Sach- und Methodenkompetenz, PDF-S. 21",
+      "rawParentBulletText": "die Bewegungsgesetze auf den freien Fall und andere Beispiele anwenden sowie Diagramme interpretieren,"
+    }
+  ],
+  "retainedMembershipInput": {
+    "path": "scripts/generate_laender_physics_stage_views.memberships.json",
+    "sha256": "433bbd49f40c66645061b71c00453c97a8a5542863440c31ab54c3e21af512f2",
+    "matchesBaseCommitBytes": true
+  },
+  "originalLowerMembershipChecks": [
+    {
+      "viewId": "de-th-gym-physics-gk",
+      "isOriginalLowerSeed": false
+    },
+    {
+      "viewId": "de-th-gym-physics-lk",
+      "isOriginalLowerSeed": false
+    }
+  ],
+  "assessmentAuthoring": {
+    "newAssessments": 0,
+    "existingAssessmentChanges": 0
+  },
+  "implementationBoundary": "Only a newly promoted lower seed is excluded. Retained partial source correspondences, all full-view roles and real prerequisite closure remain. No mastery or learner result is written. No canonical, retained source, prior review, view or report was changed by this reviewer.",
+  "verificationLimits": "This is independent content/source review with input-byte checks, not generated-view/CQR-104 acceptance or CI. The integrating agent must regenerate and measure current views.",
+  "disposition": "confirmed_with_explicit_e10_temporal_placement",
+  "routeDisposition": "retain_all_three_partial_correspondences; reject_new_lower_full_atom_seed",
+  "proposalAssessment": "The proposed exclusion is correct. Add the explicit e10 sourceTemporalUnit already used for the independently reviewed tides row from this same chapter.",
+  "primaryEvidence": [
+    {
+      "retainedFile": {
+        "path": "curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf",
+        "sha256": "414be5ac7af13a1cfa33f96d9ca3c50f83c1f1cce4abe61b8e62faea1a24ed8d",
+        "matchesBaseCommitBytes": true
+      },
+      "officialURL": "https://www.schulportal-thueringen.de/tip/resources/medien/14477?dateiname=Physik_GY_Nov_2012_7_12.pdf",
+      "freshDownloadSha256": "414be5ac7af13a1cfa33f96d9ca3c50f83c1f1cce4abe61b8e62faea1a24ed8d",
+      "freshDownloadMatchesRetained": true,
+      "httpStatus": 200,
+      "pdfPage": 21,
+      "printedPage": 21,
+      "pageVisuallyInspected": true,
+      "sourceQuoteFragments": [
+        {
+          "role": "explicit year heading",
+          "quote": "Klassenstufe 10"
+        },
+        {
+          "sourceGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927",
+          "quote": "die geradlinig gleichförmige Bewegung"
+        },
+        {
+          "sourceGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5",
+          "quote": "die geradlinig gleichmäßig beschleunigte Bewegung"
+        },
+        {
+          "role": "common equations and diagrams clause",
+          "quote": "Gleichungen und Diagrammen"
+        },
+        {
+          "sourceGoalId": "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718",
+          "quote": "die Bewegungsgesetze auf den freien Fall und andere Beispiele anwenden"
+        }
+      ],
+      "finding": "All three source bullets sit below the Klasse10 heading, not below a Klasse9 heading. Their broad retained 7–10/9–10 extraction labels cannot override the actual placement."
+    },
+    {
+      "officialURL": "https://schulportal-thueringen.de/services/lib/download.action?id=1391568",
+      "freshDownloadSha256": "217746f21a858daf3f122159535afde8d71b53e8adf04cdf438123983a2be908",
+      "bytes": 672621,
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "matchesHistoricalFetchDigest": true,
+      "historicalFetchRecord": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/18-th-official-source-fetch.actual.json",
+      "pdfPages": [
+        6,
+        7
+      ],
+      "printedPages": [
+        4,
+        5
+      ],
+      "pagesVisuallyInspected": true,
+      "sourceQuoteFragments": [
+        {
+          "pdfPage": 6,
+          "printedPage": 4,
+          "quote": "Mit Versetzung in die Klassenstufe 10 am Gymnasium treten die Schülerinnen und Schüler in die Einführungsphase der gymnasialen Oberstufe ein."
+        }
+      ],
+      "tableObservation": "On PDF7/printed5, the general Gymnasium column shows the introductory year as 10 (11S); the berufliches Gymnasium/integrative Gesamtschule/Kolleg column shows 11. These are distinct access routes."
+    }
+  ],
+  "freshOfficialLandingContext": {
+    "url": "https://www.schulportal-thueringen.de/web/guest/media/detail?tspi=2280",
+    "fetchedAt": "2026-11-24T03:35:52.320460+00:00",
+    "httpStatus": 200,
+    "sha256": "b8b6a9af89d83e41d0e3d05dff28b5c17f7cda9f15452c55673c1991f8ad0568",
+    "observation": "The official page still lists the retained 2012 curriculum as valid in school year2026/27 for grades8,9,10. This review does not substitute a new 2026 trial curriculum for the retained 2012 source."
+  },
+  "completeSkillComparison": {
+    "currentDescription": "Die lernende Person kann für gleichförmige und gleichmäßig beschleunigte Bewegungen das Zeit-Ort- und das Zeit-Geschwindigkeits-Gesetz aus den Diagrammen ermitteln, ihren Zusammenhang erläutern und damit Ort und Geschwindigkeit zu einem Zeitpunkt vorhersagen.",
+    "facets": [
+      "uniform and uniformly accelerated motion",
+      "time-position and time-velocity laws derived from graphs",
+      "relationship between the laws",
+      "prediction of position and velocity"
+    ],
+    "result": "The routes support equations/diagrams and law application as retained partial correspondences, but their actual source stage is E10. This review confirms the temporal boundary, not a blanket exact/full-atom match for each individual source bullet."
+  },
+  "approvedLowerSourceMembershipEntry": {
+    "action": "excludeNewLowerSeed",
+    "classification": "upper_e10_not_lower_supplement",
+    "canonicalDescription": "Die lernende Person kann für gleichförmige und gleichmäßig beschleunigte Bewegungen das Zeit-Ort- und das Zeit-Geschwindigkeits-Gesetz aus den Diagrammen ermitteln, ihren Zusammenhang erläutern und damit Ort und Geschwindigkeit zu einem Zeitpunkt vorhersagen.",
+    "rationale": "Unabhängig bestätigt am 24.11.2026: LP2012 S.21/PDF21 setzt alle drei Bewegungszeilen ausdrücklich unter Klassenstufe 10. Die frisch abgerufene amtliche Oberstufenbroschüre ordnet das reguläre Gymnasium E10 zu (S.4–5/PDF6–7). Die fachlich passenden partial-Zuordnungen bleiben; ihr Kapitelbucket Klassenstufen 9/10 ist keine SekI-Evidenz. Der volle neue Gesetzesatom darf daher kein neuer unterer Seed sein.",
+    "primaryEvidence": [
+      {
+        "file": "curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf",
+        "pdfPages": [
+          21
+        ],
+        "printedPages": [
+          21
+        ],
+        "sha256": "414be5ac7af13a1cfa33f96d9ca3c50f83c1f1cce4abe61b8e62faea1a24ed8d"
+      },
+      {
+        "pdfPages": [
+          6,
+          7
+        ],
+        "printedPages": [
+          4,
+          5
+        ],
+        "sha256": "217746f21a858daf3f122159535afde8d71b53e8adf04cdf438123983a2be908",
+        "sourceURL": "https://schulportal-thueringen.de/services/lib/download.action?id=1391568",
+        "downloadEvidence": "contracts/stage-plan-review-evidence/2026-11-16/composition-partial-order-v1/18-th-official-source-fetch.actual.json"
+      }
+    ],
+    "sourceGoalIds": [
+      "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-152-9fffd927",
+      "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-153-ec1414d5",
+      "th-phys-seki-th-2-2-2-bewegungen-krafte-und-erhaltungssatze-154-9e092718"
+    ],
+    "retainedMapping": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+    "retainedExtraction": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+    "sourceTemporalUnit": {
+      "stage": "SekII",
+      "unit": "e10",
+      "label": "Einführungsphase: Jahrgangsstufe 10",
+      "order": 110,
+      "basis": "LP2012 S.21 explicitly Klassenstufe10; official phase brochure S.4–5/PDF6–7 places ordinary Gymnasium at E10. The separate E11 access route is not the regular Gymnasium phase."
+    },
+    "independentReview": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/th-mv/th-motion-laws-source-stage.review.actual.json"
+  },
+  "approvedEntryNormalizedSha256": "6fdc658e67251cfd4129d518e9f47e3f5f72e5f82fcd3d65b68d3bc443d94949",
+  "stateSpecificRouteEdits": []
+}

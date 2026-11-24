@@ -1,0 +1,101 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "exactProposalDecision": {
+      "type": "string",
+      "enum": [
+        "integrable_exact",
+        "revise",
+        "reject",
+        "hold_preparation"
+      ]
+    },
+    "scientificAndNumericalReview": {
+      "type": "string"
+    },
+    "partOneToThreePreservationReview": {
+      "type": "string"
+    },
+    "partFourIntervalAndComparisonReview": {
+      "type": "string"
+    },
+    "pointParticleAndRotationObservableReview": {
+      "type": "string"
+    },
+    "airResistanceBoundReview": {
+      "type": "string"
+    },
+    "passBoundaryAndMissingCoreReview": {
+      "type": "string"
+    },
+    "MODWholeGoalCoverageReview": {
+      "type": "string"
+    },
+    "fullPreparationAndSourceStageReview": {
+      "type": "string"
+    },
+    "bilingualParityReview": {
+      "type": "string"
+    },
+    "historicalResultRevisionReview": {
+      "type": "string"
+    },
+    "recommendedRequires": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendedCoveredGoalIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "recommendedPassingPoints": {
+      "type": "integer"
+    },
+    "requiredCorrections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unsupportedOrUnderdeterminedInferences": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "integrableWithoutNewPrerequisiteOrCutChange": {
+      "type": "boolean"
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "exactProposalDecision",
+    "scientificAndNumericalReview",
+    "partOneToThreePreservationReview",
+    "partFourIntervalAndComparisonReview",
+    "pointParticleAndRotationObservableReview",
+    "airResistanceBoundReview",
+    "passBoundaryAndMissingCoreReview",
+    "MODWholeGoalCoverageReview",
+    "fullPreparationAndSourceStageReview",
+    "bilingualParityReview",
+    "historicalResultRevisionReview",
+    "recommendedRequires",
+    "recommendedCoveredGoalIds",
+    "recommendedPassingPoints",
+    "requiredCorrections",
+    "unsupportedOrUnderdeterminedInferences",
+    "integrableWithoutNewPrerequisiteOrCutChange",
+    "limits"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:cb1b5089241418c6b78f71a55faca1b3354e1ab239b9e419a89042a8e3dfea7d",
+  "reviewInputFingerprint": "sha256:3dd351fca7b7866d93f1202c644e86ccf64bca3dc80d5c32c62991408cb5cc59",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "physik-e1-schief-current-v1-20261124-a",
+      "roundId": "physik-e1-schief-current-v1-20261124-first-pass-a",
+      "independenceGroupId": "physik-e1-schief-current-v1-20261124-independent-a",
+      "runIds": [
+        "physik-e1-schief-current-v1-20261124-a-01a20be6-4618-7a93-93f2-c8dad4dc923e"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physik-e1-schief-current-v1-20261124-b",
+      "roundId": "physik-e1-schief-current-v1-20261124-first-pass-b",
+      "independenceGroupId": "physik-e1-schief-current-v1-20261124-independent-b",
+      "runIds": [
+        "physik-e1-schief-current-v1-20261124-b-01a20be6-4618-7520-ba28-51bc9777caf2"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.2-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "firstRecordId": "physik-e1-schief-current-v1-20261124-a-01a20be6-4618-7a93-93f2-c8dad4dc923e-fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "secondRecordId": "physik-e1-schief-current-v1-20261124-b-01a20be6-4618-7520-ba28-51bc9777caf2-fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "firstRunId": "physik-e1-schief-current-v1-20261124-a-01a20be6-4618-7a93-93f2-c8dad4dc923e",
+      "secondRunId": "physik-e1-schief-current-v1-20261124-b-01a20be6-4618-7520-ba28-51bc9777caf2",
+      "firstDecision": "keep",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

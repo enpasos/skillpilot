@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "role": "informed_candidate_revision_author",
+  "threadId": "01a20bdf-e705-74c2-b80d-3ea87fc31b0e",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "ultra",
+  "startedAt": "2026-11-24T04:45:53.555Z",
+  "completedAt": "2026-11-24T04:54:34.030Z",
+  "exitCode": 0,
+  "inputArtifacts": {
+    "prompt.txt": "sha256:de00e88fa15b63ca71c8865633fa5e6f58a56de25fff447361a919c00b52637a",
+    "candidate-and-review-input.json": "sha256:536a9e808203acfee0c6c12b702478043df2e1fd96b2cc323b9250d4a67cf0ef",
+    "criteria.md": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+    "output.schema.json": "sha256:35e5ec064002eba89187963df9ddbe78395c3792f69a0dce9cf1251873475d5a"
+  },
+  "responseSha256": "sha256:603a88ffa50eb5be333d067a2fce3331e9d301751aaa4583f04f00f9d39b6115",
+  "eventsSha256": "sha256:db43088039d56451068cf841016649b48c2200b8f643e4e0feb9ba8cf508efb1",
+  "turnContext": {
+    "turn_id": "01a20bdf-ea09-7103-b29a-01455b4b1c87",
+    "root_turn_id": "01a20bdf-ea09-7103-b29a-01455b4b1c87",
+    "disabled_plugin_ids": [],
+    "cwd": "/tmp/e1-t5/eight-profile-author-v2",
+    "approval_policy": "never",
+    "approvals_reviewer": "user",
+    "permission_profile": {
+      "type": "managed",
+      "file_system": {
+        "type": "restricted",
+        "entries": [
+          {
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "root"
+              }
+            },
+            "access": "read"
+          }
+        ]
+      },
+      "network": "restricted"
+    },
+    "model": "gpt-6.1-sol",
+    "comp_hash": "3000",
+    "collaboration_mode": {
+      "mode": "default",
+      "settings": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "ultra",
+        "developer_instructions": null
+      }
+    },
+    "multi_agent_version": "v2",
+    "realtime_active": false,
+    "cyber_access_program": "standard",
+    "effort": "ultra",
+    "summary": "none",
+    "sandbox_policy": {
+      "type": "read-only"
+    }
+  },
+  "limit": "Informed revision author, no independent approval claim. Exact bodies go to two fresh blind reviewers."
+}
