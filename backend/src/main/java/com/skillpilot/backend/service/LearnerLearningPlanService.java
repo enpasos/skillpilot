@@ -2745,7 +2745,45 @@ public class LearnerLearningPlanService {
 
     static List<LearnerLearningPlanApi.Block> effectivePlanBlocks(LearnerService learners, Learner learner,
             String landscapeId, List<LearnerLearningPlanApi.Block> blocks) {
-        return applySectionAssessmentPolicy(learners, learner, landscapeId, blocks, true);
+        return applySectionAssessmentPolicy(learners, learner, landscapeId,
+                withoutRetiredGoals(blocks, learners.retiredGoalIds(landscapeId)), true);
+    }
+
+    /**
+     * The stored plan as it applies today. A goal the catalog retains only as history leaves the
+     * entries that captured it, and an entry naming nothing else disappears. Unit assignments keep
+     * their own edition binding. A plan of which nothing would be left stays as stored and is then
+     * outdated like any plan with unknown goals. The stored blocks themselves are never rewritten.
+     */
+    static List<LearnerLearningPlanApi.Block> withoutRetiredGoals(
+            List<LearnerLearningPlanApi.Block> stored, Set<String> retired) {
+        if (stored == null || retired == null || retired.isEmpty()) return stored;
+        List<LearnerLearningPlanApi.Block> current = new ArrayList<>(stored.size());
+        boolean changed = false;
+        for (LearnerLearningPlanApi.Block block : stored) {
+            boolean ordinary = block != null && block.unitAssignment() == null;
+            boolean retiredRoot = ordinary && block.focusGoalIds().stream().anyMatch(id -> id != null && retired.contains(id));
+            boolean retiredAtom = ordinary && block.atomicGoalIds() != null
+                    && block.atomicGoalIds().stream().anyMatch(id -> id != null && retired.contains(id));
+            if (!retiredRoot && !retiredAtom) {
+                current.add(block);
+                continue;
+            }
+            changed = true;
+            List<String> roots = block.goalIds() == null ? null
+                    : block.goalIds().stream().filter(id -> id == null || !retired.contains(id)).toList();
+            String root = block.goalId() == null || !retired.contains(block.goalId()) ? block.goalId()
+                    : roots == null || roots.isEmpty() ? null : roots.getFirst();
+            List<String> atoms = block.atomicGoalIds() == null ? null
+                    : block.atomicGoalIds().stream().filter(id -> id == null || !retired.contains(id)).toList();
+            boolean noRootLeft = retiredRoot && (roots == null ? root == null : roots.isEmpty());
+            boolean onlyRetiredAtoms = retiredAtom && atoms.isEmpty() && block.focusGoalIds().isEmpty();
+            if (noRootLeft || onlyRetiredAtoms) continue;
+            current.add(new LearnerLearningPlanApi.Block(block.id(), block.kind(), root, block.title(),
+                    block.startDate(), block.endDate(), block.date(), atoms, roots, block.active(),
+                    block.unitAssignment()));
+        }
+        return changed && !current.isEmpty() ? java.util.Collections.unmodifiableList(current) : stored;
     }
 
     private static List<LearnerLearningPlanApi.Block> applySectionAssessmentPolicy(LearnerService learners,

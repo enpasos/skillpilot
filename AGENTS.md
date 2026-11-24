@@ -667,7 +667,8 @@ in the cross-stage view). An explicit selection of that exam still counts, inclu
 in older plans that stored it only once across overlapping blocks. Stored
 selections, assessment receipts and individual mastery are preserved. With
 the pilot disabled, plans use their stored goal lists. A plan that still
-names an exam edition retired since then is outdated; see the E.1 cut below.
+names an exam edition retired since then stays valid without that entry; see
+the E.1 cut below.
 
 **E.1 cut, 23 and 24 November 2026.** The Product Owner accepted a cut of the
 Hessian section E.1 into four child structures in learning order:
@@ -685,15 +686,28 @@ bodies, and the velocity vector of the throw.
 Parts A–D remain the four required parts of the E.1 assignment. The voluntary
 additions are the horizontal-throw exam and the own task with two free-fall
 series. The horizontal-throw exam is offered in a revised edition since
-24 November 2026: its task 6 and grading now evidence the model-limits goal,
-with a pass mark of 35.5 of 36 points. The earlier edition could be passed
+24 November 2026: its task 6 and grading now evidence the model-limits goal.
+Its first pass mark of 35.5 of 36 points falls under the pass-mark decision
+below and is being replaced. The earlier edition could be passed
 with task 6 left empty, so the revised edition has its own assessment id
 (`bcc56921-7107-5f5f-b721-3d5e0d7e1cd9`). Passes of the earlier edition stay
 with the earlier id (`6ea3fb3c-abdc-568f-ab13-97c36dc274e4`) in the historical
 container and never count for the revised edition, as the Graph Definition
-requires for a new recognition claim. A stored plan that still names a retired
-edition, this one or the multiphase exam, is outdated and the learner renews
-it. Its stored blocks, the receipts and the mastery are kept unchanged.
+requires for a new recognition claim.
+
+**Stored plans and retired goals, Product Owner decision of 24 November 2026.**
+A stored plan that still names a retired goal stays valid, as long as the
+rest of it still works. This covers the earlier horizontal-throw edition, the
+multiphase exam and every other atomic goal that the catalog retains only as
+history (`extendedData.applicabilityProjection = "excluded"`, offered in no
+learner-facing view). The backend reads the plan without the retired entry:
+a section selection continues with its other goals, and a block that names
+nothing else is not shown. The stored blocks, the receipts and the mastery
+are kept unchanged, and nothing is pointed at another edition. A plan of
+which nothing else is left is outdated as before. A new or edited plan cannot
+select a retired goal. Unit assignments keep their own edition binding. Goals
+that leave a plan because the learner changed the Personal Curriculum still
+make it outdated.
 
 On 24 November the Product Owner approved the return of the
 multiphase exam to E.1. Two independent review rounds then found that its
@@ -709,6 +723,35 @@ rows on energy conservation and radial force are supported by the official
 text, but the canonical preparation of these goals is stronger than what the
 lower stage of the Land supplies. Until that package right-sizes the chains,
 these goals are not activated as lower-stage targets there.
+
+**Achievable pass marks, Product Owner decision of 24 November 2026.** His
+words: pass marks must be achievable, without frustration for learners "who
+have understood everything but now and then make small formal errors out of
+carelessness". The occasion were the marks of 19 of 20, 15.5 of 16 and 35.5 of
+36 points that the E.1 cut had activated. They met the earlier check (below
+full marks) and still failed a learner after two small slips, because the
+review treated every single facet as indispensable. The rule derived from his
+decision and from the accepted Hessian parts A to D (14 of 17, 15 of 18, 17 of
+20), to be confirmed by him with the first reworked exams:
+
+- A new or revised graded assessment has a pass mark of at most 85 percent of
+  its points. `scripts/check_exam_pass_marks.py` enforces this in curriculum CI
+  against the base commit.
+- Indispensable content is protected by weight, not by the pass mark. A rubric
+  names few carrying performances of the covered goals, each with more points
+  than the slack between the maximum and the pass mark, so that none can be
+  skipped entirely. A single facet inside such a performance may be missing.
+- A minor slip (arithmetic, sign, unit, rounding, label) with the core visibly
+  right costs at most half a point, once, without follow-on deductions. A
+  misconception that is stated and maintained loses the points of its
+  performance.
+- When this is not possible, the remedy is another task, a separate
+  assessment or a narrower coverage claim, never a mark near the maximum.
+
+On 24 November 2026 the canonical catalog held 233 graded assessments above 85
+percent, 134 of them at full marks (Chemistry, Physics and Mathematics). They
+are legacy material: the check reports them and blocks them only when they are
+revised. Their rework is a separate package per subject.
 
 The Product Owner confirmed **Lerneinheit** (English **learning unit**,
 conceptual name `LearningUnit`) on **4 November 2026**. This replaces the former

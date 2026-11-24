@@ -79,11 +79,21 @@ E.3, road traffic follows friction in E.2. Voluntary E.1 exams are the
 horizontal-throw exam and the own task with two free-fall series; the
 multiphase exam is retired until an edition passes independent review. The
 horizontal-throw exam has a revised edition with its own id since 24 November;
-passes of the earlier edition never count for it. A stored plan that still
-names a retired edition is outdated and the learner renews it; stored blocks,
-receipts and mastery are kept. The
+passes of the earlier edition never count for it. The
 planning release credits only the accelerated-motion goal from part D. See
 the E.1 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
+
+**Product Owner decisions of 24 November 2026.** A stored plan that still
+names a retired goal (an atomic goal marked
+`extendedData.applicabilityProjection = "excluded"`) stays valid as long as
+the rest of it works: the backend reads it without that entry and keeps the
+stored blocks, receipts and mastery unchanged. New plans cannot select a
+retired goal. Pass marks must be achievable for a learner who has understood
+everything and makes occasional small formal errors: a new or revised graded
+assessment has a pass mark of at most 85 percent of its points
+(`scripts/check_exam_pass_marks.py`), and indispensable performances are
+protected by their weight, never by a mark near the maximum. The 85 percent
+is derived from the accepted Hessian parts A to D and awaits his confirmation.
 
 The learner-facing Cockpit tree and graphical map should share one unit and
 atomic-goal hierarchy in the same scope. Present an atomic goal directly

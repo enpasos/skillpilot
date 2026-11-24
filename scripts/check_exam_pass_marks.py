@@ -8,6 +8,10 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = Path("curricula/DE/Gymnasium/canonical")
+# Product Owner decision of 24 November 2026: a learner who has understood everything and makes
+# occasional small formal errors must pass. The share follows the accepted Hessian E.1 parts
+# (14 of 17, 15 of 18, 17 of 20). Indispensable performances are protected by their weight.
+MAX_PASSING_SHARE = 0.85
 
 
 def scored_exams(document):
@@ -26,10 +30,18 @@ def grading_material(exam):
     )}
 
 
-def requires_revision(exam, previous):
+def graded_in_parts(exam):
     scoring = exam["scoring"]
-    graded_in_parts = scoring["maxPoints"] > 1 or len(scoring.get("steps", [])) > 1
-    return (graded_in_parts and scoring["passingPoints"] >= scoring["maxPoints"]
+    return scoring["maxPoints"] > 1 or len(scoring.get("steps", [])) > 1
+
+
+def above_achievable_pass_mark(exam):
+    scoring = exam["scoring"]
+    return graded_in_parts(exam) and scoring["passingPoints"] > MAX_PASSING_SHARE * scoring["maxPoints"] + 1e-9
+
+
+def requires_revision(exam, previous):
+    return (above_achievable_pass_mark(exam)
             and (previous is None or grading_material(exam) != grading_material(previous)))
 
 
@@ -46,7 +58,7 @@ def main():
     paths = sorted((ROOT / CATALOG).glob("*.json"))
     if not paths:
         parser.error("canonical Gymnasium catalog missing")
-    total = full_marks = 0
+    total = above = full_marks = 0
     failures = []
     for path in paths:
         rel = path.relative_to(ROOT).as_posix()
@@ -56,14 +68,16 @@ def main():
         exams = scored_exams(json.loads(path.read_bytes()))
         for goal_id, exam in exams.items():
             total += 1
-            if requires_revision(exam, None):
-                full_marks += 1
+            if above_achievable_pass_mark(exam):
+                above += 1
+                full_marks += exam["scoring"]["passingPoints"] >= exam["scoring"]["maxPoints"]
                 if args.base and requires_revision(exam, old.get(goal_id)):
                     failures.append(f"{rel}: {goal_id}")
-    print(f"{total} scored assessments, {full_marks} graded assessments requiring full marks.")
+    print(f"{total} scored assessments, {above} graded assessments with a pass mark above "
+          f"{MAX_PASSING_SHARE:.0%} of the points, {full_marks} of them requiring full marks.")
     for item in failures:
-        print(f"{item} needs a passing score below full marks and a review of partial credit and coverage.",
-              file=sys.stderr)
+        print(f"{item} needs a pass mark of at most {MAX_PASSING_SHARE:.0%} of the points. Protect indispensable "
+              "performances by their weight and review partial credit and coverage.", file=sys.stderr)
     return int(bool(failures))
 
 
