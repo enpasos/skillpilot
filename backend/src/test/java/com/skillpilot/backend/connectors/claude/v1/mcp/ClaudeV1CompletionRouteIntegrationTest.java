@@ -1831,9 +1831,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 ? "2b9e565f-d9b4-5e23-b5b7-b7977cecff06" : "73cb58ec-6ded-4a35-9809-32aa8bfff1b0";
         String successorId = "05cfd298-cb80-54c4-a898-b521ef270843";
         String modeling = "d6dc0e02-831d-4894-a61a-852bcc74f147";
-        var historical = mapper.treeToValue(mapper.readTree(java.nio.file.Path.of(
-                "../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/before.goal.json")
-                .toFile()).required("examData"), com.skillpilot.backend.landscape.ExamData.class);
+        // Byte copy of the reviewed evidence file .../e1-current-assessments-20261124-v1/mp-current/before.goal.json.
+        // The completion CI job checks out no evidence folders, so the test reads its own fixture.
+        com.fasterxml.jackson.databind.JsonNode historicalGoal;
+        try (var fixture = getClass().getResourceAsStream("/fixtures/e1-multiphase-before.goal.json")) {
+            historicalGoal = mapper.readTree(java.util.Objects.requireNonNull(fixture, "fixture missing"));
+        }
+        var historical = mapper.treeToValue(historicalGoal.required("examData"), com.skillpilot.backend.landscape.ExamData.class);
         assertThat(historical.getScoring().getMaxPoints()).isEqualTo(30);
         assertThat(historical.getScoring().getPassingPoints()).isEqualTo(18);
         var revision = AssessmentMaterialRevision.of(historical);

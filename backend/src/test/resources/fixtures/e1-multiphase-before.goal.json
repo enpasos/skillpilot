@@ -1,0 +1,105 @@
+{
+  "id": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+  "title": "Mehrphasenbewegung und Modellprüfung",
+  "titleEn": "Multi-phase Motion and Model Validation",
+  "description": "E.1/E.2 datenbasierte Modellierung, 30 BE.",
+  "descriptionEn": "E.1/E.2 data-based modeling, 30 points.",
+  "weight": 1,
+  "tags": [
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "contains": [],
+  "requires": [
+    "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024-physics",
+    "demandLevel": "AB3",
+    "processCompetencies": [
+      "PK1_EXPERIMENTIEREN",
+      "PK2_MODELLIEREN",
+      "PK3_MATHEMATISIEREN",
+      "PK5_BEWERTEN"
+    ],
+    "guidingIdeas": [
+      "LI_BEWEGUNG",
+      "LI_TECHNIK"
+    ],
+    "phase": "E"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "68c90ba6-c438-463c-9a53-cf61062d416a",
+      "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+      "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+    ],
+    "coveredStrands": [
+      "LI_BEWEGUNG",
+      "LI_TECHNIK",
+      "LI_MATERIE"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "**Kontext:**\n\nFür einen Actionfilm wird ein Stunt mit einem Auto geplant. Das Stunt-Fahrzeug durchläuft Beschleunigungs-, Konstantfahr- und Bremsphasen. Der Sprung an der Rampenkante erfolgt aus der Konstantfahrphase (also mit $v=8.0\\,\\mathrm{m/s}$), und die Messdaten werden mit Unsicherheiten ausgewertet.\n\nAlle Materialien gehören zu dieser einen Stunt-Sequenz: Material 1 beschreibt die Fahrdynamik des Stunt-Wagens, Material 2 den Sprung am Rampenende und Material 3 die Messunsicherheiten derselben Messreihe.\n\n**Material 1 ($v$-$t$-Messreihe eines Stunt-Wagens):**\n\n| Zeit $t$ (s) | 0 | 2 | 4 | 6 | 8 | 10 |\n|---|---:|---:|---:|---:|---:|---:|\n| Geschwindigkeit $v$ (m/s) | 0.0 | 3.2 | 6.4 | 8.0 | 8.0 | 4.0 |\n\n**Material 2 (Sprung von einer Rampenkante):**\n\n- horizontaler Austritt mit der Geschwindigkeit aus der Konstantfahrtphase\n- Kantenhöhe: $h=1.25\\,\\mathrm{m}$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Luftwiderstand wird vernachlässigt.\n\n**Material 3 (Messunsicherheiten):**\n\n- Geschwindigkeitsunsicherheit: $\\Delta v=\\pm 0.20\\,\\mathrm{m/s}$\n- Unsicherheit der Flugzeitbestimmung: $\\Delta t=\\pm 0.03\\,\\mathrm{s}$\n\n**Aufgaben:**\n\n**Hinweis zur Rechnung:** In den Teilaufgaben 1 bis 3 rechnen Sie mit den Nennwerten aus Material 1 und 2 (ohne Unsicherheitsrechnung). Nur in Teilaufgabe 4 sind die Unsicherheiten aus Material 3 einzubeziehen (Intervallabschätzung mit Minimal-/Maximalwerten).\n\n1. Leiten Sie aus Material 1 ein Drei-Phasen-Modell ab: Phase I (Beschleunigen bis $t=6\\,\\mathrm{s}$), Phase II (Konstantfahrt von $t=6\\,\\mathrm{s}$ bis $t=8\\,\\mathrm{s}$), Phase III (Bremsen von $t=8\\,\\mathrm{s}$ bis $t=10\\,\\mathrm{s}$). Bestimmen Sie geeignete Beschleunigungen (mittlere Beschleunigungen je Phase) und charakterisieren Sie die Phasen physikalisch. (7 BE)\n2. Bestimmen Sie die in $0$ bis $10\\,\\mathrm{s}$ zurückgelegte Gesamtstrecke direkt aus den Messdaten von Material 1 als Fläche unter dem $v$-$t$-Verlauf (stückweise lineare Verbindung benachbarter Messpunkte). (6 BE)\n3. Berechnen Sie für Material 2 die Wurfweite. (7 BE)\n4. Bestimmen Sie aus Material 3 ein Intervall für die mögliche Wurfweite. (6 BE)\n5. Nennen Sie zwei fachlich begründete Modellgrenzen der Rechnung. (4 BE)",
+    "solutionContent": "Modellannahme für Teilaufgaben 1 und 2: Drei Phasen aus den Messdaten: $0$-$6\\,\\mathrm{s}$ (Beschleunigen), $6$-$8\\,\\mathrm{s}$ (Konstantfahrt), $8$-$10\\,\\mathrm{s}$ (Bremsen).\n\n1. Phase I ($0$-$6\\,\\mathrm{s}$): mittlere Beschleunigung\n\n$$\na_1=\\frac{8.0-0.0}{6.0}=1.33\\,\\mathrm{m/s^2}\n$$\n\n(Die Messwerte zeigen dabei eine abnehmende Beschleunigung: in den 2-s-Intervallen $1.6$, $1.6$, $0.8\\,\\mathrm{m/s^2}$.)\n\nPhase II ($6$-$8\\,\\mathrm{s}$): $v=8.0\\,\\mathrm{m/s}$ konstant, also $a_2=0$.\n\nPhase III ($8$-$10\\,\\mathrm{s}$):\n\n$$\na_3=\\frac{4.0-8.0}{2.0}=-2.0\\,\\mathrm{m/s^2}\n$$\n\n**7 BE**\n\n2. Strecke = Fläche unter dem stückweise linear verbundenen $v$-$t$-Verlauf der Messdaten:\n\n$$\ns_{0-2}=\\frac{0.0+3.2}{2}\\cdot 2=3.2\\,\\mathrm{m}\n$$\n\n$$\ns_{2-4}=\\frac{3.2+6.4}{2}\\cdot 2=9.6\\,\\mathrm{m}\n$$\n\n$$\ns_{4-6}=\\frac{6.4+8.0}{2}\\cdot 2=14.4\\,\\mathrm{m}\n$$\n\n$$\ns_{6-8}=\\frac{8.0+8.0}{2}\\cdot 2=16.0\\,\\mathrm{m}\n$$\n\n$$\ns_{8-10}=\\frac{8.0+4.0}{2}\\cdot 2=12.0\\,\\mathrm{m}\n$$\n\n$$\ns_\\mathrm{ges}=3.2+9.6+14.4+16.0+12.0=55.2\\,\\mathrm{m}\n$$\n\n**6 BE**\n\n3. Nennwertrechnung (ohne Messunsicherheiten): Aus der Konstantfahrtphase: $v_x=8.0\\,\\mathrm{m/s}$.\n\nFallzeit:\n\n$$\nt_F=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{2\\cdot 1.25}{9.81}}=0.505\\,\\mathrm{s}\n$$\n\nWurfweite:\n\n$$\nx=v_x t_F=8.0\\cdot 0.505=4.04\\,\\mathrm{m}\n$$\n\n**7 BE**\n\n4. Unsicherheitsrechnung (nur hier): Intervallabschätzung mit Minimal-/Maximalwerten:\n\n$$\nx_{\\min}=(8.0-0.20)\\,(0.505-0.03)=3.71\\,\\mathrm{m}\n$$\n\n$$\nx_{\\max}=(8.0+0.20)\\,(0.505+0.03)=4.39\\,\\mathrm{m}\n$$\n\nDamit $x\\in[3.71\\,\\mathrm{m},\\,4.39\\,\\mathrm{m}]$.\n\n**6 BE**\n\n5. Mögliche Modellgrenzen (zwei genügen):\n\n- Luftwiderstand und Wind werden vernachlässigt.\n- Der Übergang von Fahr- zu Wurfphase wird idealisiert (keine Rotations- oder Kantenverluste).\n- Messpunkte sind diskret und nicht kontinuierlich.\n\n**4 BE**",
+    "scoring": {
+      "maxPoints": 30,
+      "passingPoints": 18,
+      "steps": [
+        {
+          "id": "s1",
+          "points": 7,
+          "description": "Phasen aus den Messdaten sinnvoll abgegrenzt und (mittlere) Beschleunigungen korrekt bestimmt"
+        },
+        {
+          "id": "s2",
+          "points": 6,
+          "description": "Gesamtstrecke aus den Messdaten mit stückweise linearer Flächenberechnung korrekt berechnet"
+        },
+        {
+          "id": "s3",
+          "points": 7,
+          "description": "Wurfweite aus dem Mehrphasenmodell korrekt berechnet"
+        },
+        {
+          "id": "s4",
+          "points": 6,
+          "description": "Unsicherheitsintervall fachlich korrekt angegeben"
+        },
+        {
+          "id": "s5",
+          "points": 4,
+          "description": "Modellgrenzen fachlich reflektiert"
+        }
+      ]
+    },
+    "reviewNote": " Aktueller begrenzter AI-Inhaltsentscheid vom15.11.2026: ausschließlich unbelegte Vollclaims ce431132-dfc4-42c2-aff6-bd72035190f8,e4b38061-1f28-43ad-8371-a3e7c0e81856 entfernt; Aufgaben-/Lösungs-/Rastertexte, IDs und Punkteschwellen bleiben unverändert. Root-Disposition: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/root-review/direct-claim-removal-root-disposition.actual.json. Keine pauschale Neuprüfung übriger historischer Claims und keine Änderung gespeicherter Resultate."
+  },
+  "phase": "E",
+  "type": "atomic"
+}
