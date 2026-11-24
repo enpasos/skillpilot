@@ -8048,6 +8048,13 @@ public class LearnerService {
     private List<FrontierGoal> getRichFrontier(Learner learner, GoalProjection projection, RichFrontierFacts facts,
             boolean compactFrontier, List<String> prospectiveFocusGoalIds, boolean requiredRecommendations,
             Set<String> followedScope, boolean subjectContinuation) {
+        return getRichFrontier(learner, projection, facts, compactFrontier, prospectiveFocusGoalIds,
+                requiredRecommendations, followedScope, subjectContinuation, Set.of());
+    }
+
+    private List<FrontierGoal> getRichFrontier(Learner learner, GoalProjection projection, RichFrontierFacts facts,
+            boolean compactFrontier, List<String> prospectiveFocusGoalIds, boolean requiredRecommendations,
+            Set<String> followedScope, boolean subjectContinuation, Set<String> excludedUnitOpenings) {
         String skillpilotId = learner.getSkillpilotId();
         boolean strictMode = Boolean.TRUE.equals(learner.getStrictMode());
         Map<String, LearningGoal> allFilteredGoals = projection.visibleGoals();
@@ -8080,7 +8087,7 @@ public class LearnerService {
                 plannedIds,
                 allStructuralGoals,
                 Collections.emptyMap());
-        includeGuidedOpeningsInAtomFocus(learner, projection, projectedFocusIds, scope);
+        includeGuidedOpeningsInAtomFocus(learner, projection, projectedFocusIds, scope, excludedUnitOpenings);
 
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Plan: " + plannedIds);
         System.out.println("DEBUG_SKILLPILOT: getRichFrontier - Scope Size: " + scope.size());
@@ -8579,7 +8586,20 @@ public class LearnerService {
                 .collect(Collectors.toCollection(ArrayList::new));
         if (!selectedPath.contains(pending.targetGoalId())) selectedPath.add(pending.targetGoalId());
         if (nextOpening != null) selectedPath.add(nextOpening);
-        List<FrontierGoal> frontier = getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), selectedPath);
+        // Keep the reduced work path: broadening it to a section can hide a
+        // real foundation behind an unrelated opening. Only exclude inferred
+        // ancestors outside the selected unit; other prerequisite entries stay.
+        Map<String, Set<String>> unitScopes = guidedUnitOrientationScopes(projection);
+        Set<String> excludedOpenings = unitScopes.keySet().stream()
+                .filter(opening -> !currentScope.contains(opening))
+                .filter(opening -> unitScopes.keySet().stream().anyMatch(entered -> currentScope.contains(entered)
+                        && unitScopes.get(entered).contains(pending.targetGoalId())
+                        && unitScopes.get(opening).contains(entered)))
+                .collect(Collectors.toSet());
+        Set<String> followedScope = followedLearningScopeIds(learner, projection, selectedPath);
+        List<FrontierGoal> frontier = followedScope != null && followedScope.isEmpty() ? List.of()
+                : getRichFrontier(learner, projection, richFrontierFacts(learner, projection), false,
+                        selectedPath, false, followedScope, false, excludedOpenings);
         boolean available = frontier.stream().anyMatch(goal -> destination.equals(goal.id()) && "atomic".equals(goal.type()));
         if (!available) {
             // Receiving the opening never certifies a curricular prerequisite.
@@ -8587,7 +8607,6 @@ public class LearnerService {
                     projection.visibleGoals().get(goal.id()))).map(FrontierGoal::id)
                     .filter(distance::containsKey).min(Comparator.comparingInt(distance::get)).orElse(null);
             if (foundation == null) {
-                Map<String, Set<String>> unitScopes = guidedUnitOrientationScopes(projection);
                 foundation = frontier.stream().map(FrontierGoal::id).filter(unitScopes::containsKey)
                         .filter(id -> distance.keySet().stream().anyMatch(unitScopes.get(id)::contains))
                         .findFirst().orElse(null);
@@ -8632,12 +8651,18 @@ public class LearnerService {
 
     private void includeGuidedOpeningsInAtomFocus(Learner learner, GoalProjection projection,
             List<String> focusIds, Set<String> scope) {
+        includeGuidedOpeningsInAtomFocus(learner, projection, focusIds, scope, Set.of());
+    }
+
+    private void includeGuidedOpeningsInAtomFocus(Learner learner, GoalProjection projection,
+            List<String> focusIds, Set<String> scope, Set<String> excludedOpenings) {
         if (focusIds.isEmpty() || !focusIds.stream().allMatch(id -> isAtomicGoal(projection.visibleGoals().get(id)))) return;
         var unitScopes = guidedUnitOrientationScopes(projection);
         if (unitScopes.isEmpty()) return;
         Map<String, Double> mastery = getMastery(learner.getSkillpilotId());
         Set<String> credits = unitEntryPlanningCredits(learner, projection);
         List<String> pending = unitScopes.keySet().stream()
+                .filter(id -> !excludedOpenings.contains(id))
                 .filter(id -> mastery.getOrDefault(id, 0.0) < PLANNING_SCOPE_MASTERY_THRESHOLD && !credits.contains(id))
                 .filter(id -> focusIds.stream().anyMatch(unitScopes.get(id)::contains)).toList();
         pending.stream().filter(id -> pending.stream().noneMatch(parent -> !parent.equals(id)
