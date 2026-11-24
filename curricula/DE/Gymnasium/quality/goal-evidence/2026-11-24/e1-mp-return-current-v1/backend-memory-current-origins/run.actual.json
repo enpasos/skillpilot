@@ -1,0 +1,29 @@
+{
+  "contract": "actual-four-memory-fixture-current-origin-successor-v1",
+  "sourceBaseCommit": "fbde900bc87417aa718b08d79400a9f811eb5b6e",
+  "worktree": "/tmp/e1-t5/backend-broad-worktree-fbde900bc8",
+  "trackedOverlay": [
+    "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java"
+  ],
+  "testSourceSha256": "sha256:6debeb8ff16add24bb56a4ab5172f9698f8b6662cc00d108520a1bfb8bc5f6e2",
+  "patchPath": "/tmp/e1-t5/memory-fixture-current-origins.patch",
+  "patchSha256": "sha256:20fcc0a35e0fac21eef8bfe9b291e8294590e79c4b26b686d2e7a060cec2097c",
+  "argv": [
+    "./gradlew",
+    "--no-daemon",
+    "test",
+    "--tests",
+    "com.skillpilot.backend.service.LearnerServiceTest.unitPracticeUsesOnlyTheSevenMotionCardsAndKeepsTheActiveGoalAndMastery",
+    "--tests",
+    "com.skillpilot.backend.service.LearnerServiceTest.unitCardsComeFromTheHierarchyWithoutFlashcardGoalAndWithAMasteredActiveGoal",
+    "--tests",
+    "com.skillpilot.backend.service.LearnerServiceTest.theCardStepIsAnchoredAtTheJustCompletedGoalAndPracticeAcceptsExactlyThatContext",
+    "--tests",
+    "com.skillpilot.backend.service.LearnerServiceTest.theCockpitReceivesLockedCardsAndItsSyncCannotCreateStateForThem"
+  ],
+  "startedAt": "2026-11-24T06:00:05.542774+00:00",
+  "state": "completed",
+  "exitCode": 0,
+  "completedAt": "2026-11-24T06:00:42.541488+00:00",
+  "logSha256": "sha256:9b62014f0a9371526804d065d27fffd4fc38d8ec130e48270f715815c4132655"
+}
