@@ -1,0 +1,207 @@
+{
+  "reviewDate": "2026-11-24",
+  "qualityStatusReport": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "1d5a2e0a6dc2f6cee05f4031dc4c1fc8ee0ebd8fc367654d8792f71cac04c21d"
+  },
+  "subject": "Physik",
+  "maturity": "M7",
+  "curricularEvidence": [
+    {
+      "id": "CQR-301",
+      "status": "pass",
+      "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+      "metrics": {
+        "configs": 1,
+        "leafGoals": 490,
+        "atomic": 490,
+        "needsDeveloperReview": 0,
+        "nonAtomic": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0
+      }
+    },
+    {
+      "id": "CQR-302",
+      "status": "pass",
+      "summary": "Memory-card review is current: 130/490 ordinary atomic goals intentionally use memorization support, 146/146 primary cards are kept with origin traces, all 5 memory goals are traced, and 239 view-visible memory-required goals resolve to visible memory nodes.",
+      "metrics": {
+        "configs": 1,
+        "reviewedGoals": 490,
+        "noMemoryNeeded": 360,
+        "memoryRequired": 130,
+        "needsDeveloperReview": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0,
+        "duplicateRecords": 0,
+        "invalidRecords": 0,
+        "primaryCards": 146,
+        "keptCards": 146,
+        "cardsMarkedRemove": 0,
+        "cardNeedsDeveloperReview": 0,
+        "missingCardReviews": 0,
+        "staleCardReviews": 0,
+        "obsoleteCardReviews": 0,
+        "duplicateCardReviewRecords": 0,
+        "invalidCardReviewRecords": 0,
+        "untracedMemoryRequiredGoals": 0,
+        "visibilityScopes": 2,
+        "visibilityCheckedMemoryRequiredGoals": 239,
+        "visibilityMissingVisibleMemoryGoals": 0,
+        "visibilityErrors": 0,
+        "memoryGoals": 5,
+        "tracedMemoryGoals": 5,
+        "untracedMemoryGoals": 0,
+        "deckIds": 5,
+        "deckFiles": 6,
+        "cardRows": 233
+      },
+      "details": [
+        "canonical-physics-full: audit report docs/qa-ci/status/memory-card-review-canonical-physics-full.md"
+      ]
+    },
+    {
+      "id": "CQR-303",
+      "status": "pass",
+      "summary": "Deep curriculum QA is complete for all 490 current curricularAtomic goals.",
+      "metrics": {
+        "expectedGoals": 490,
+        "remaining": 0,
+        "strictComplete": 490,
+        "currentDescriptionResolutions": 490,
+        "currentPositiveEvidenceProfiles": 490,
+        "currentSemanticAtomicityDecisions": 490,
+        "currentMemoryReviewDecisions": 490,
+        "currentVisualizationQaRecords": 490,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    },
+    {
+      "id": "CQR-401",
+      "status": "pass",
+      "summary": "90 composition view(s) are registered.",
+      "metrics": {
+        "compositionViews": 90
+      }
+    },
+    {
+      "id": "CQR-501",
+      "status": "pass",
+      "summary": "13 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+      "metrics": {
+        "activeWarnings": 0,
+        "rawActiveWarnings": 0,
+        "diagnosticPartialOnlyWarnings": 6283,
+        "acceptedWarnings": 13,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 6283",
+        "diagnostic finding type APV-202: 6283",
+        "accepted current warning type APV-201: 13"
+      ]
+    }
+  ],
+  "subjectWarningsOrFailures": [],
+  "stageResults": [
+    {
+      "id": "canonical-physics-sek1",
+      "maturity": "M4",
+      "keyRules": [
+        {
+          "id": "CQR-104",
+          "status": "pass",
+          "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+          "metrics": {
+            "relevantCompositionViews": 56,
+            "invalidExplicitTerminalConfigurations": 0,
+            "evaluatedProjectionScopes": 106,
+            "requiredMotivationAnchors": 2,
+            "minimumRequiredTerminalAutonomyGoals": 40,
+            "requiredTerminalAutonomyGoals": 58,
+            "projectionScopesMissingMotivationAnchors": 0,
+            "projectionScopesMissingTerminalAutonomyGoals": 0,
+            "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+            "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+            "terminalGoalsMissingCompiledApplicability": 0,
+            "projectionScopesWithInvalidStageStructure": 0,
+            "nationalProjectionScopesUsingJurisdictionStageAuthority": 51,
+            "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+            "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 13721,
+            "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 783,
+            "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 191,
+            "nationalStageTargetGoalOccurrencesMaterializedFromFullExposure": 123,
+            "nationalProjectionScopesWithInvalidExposureFamily": 0,
+            "projectionScopesWithInvalidSourceStageAuthority": 0,
+            "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+            "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+            "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+            "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+            "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+            "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+            "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+            "projectionLocalRouteChecksEnabled": 1,
+            "visibleSelectedAtomicGoalOccurrences": 9233,
+            "visibleProfileSelectedAtomicGoalOccurrences": 8739,
+            "visibleProjectedRouteTargetGoalOccurrences": 9233,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 494,
+            "uniqueProjectedRouteTargetsExcludedByProfileSelector": 61,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+            "projectionScopesMissingEffectiveMotivationRoutes": 0,
+            "projectionScopesMissingDirectMotivationRoutes": 0,
+            "projectionScopesMissingEffectiveTerminalRoutes": 0,
+            "projectionScopesMissingDirectTerminalRoutes": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 95,
+            "releasedCoverageCompleteExamData": 95,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ],
+      "blockingOrWarningRules": []
+    },
+    {
+      "id": "canonical-physics-sek2",
+      "maturity": "M4",
+      "keyRules": [
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 111,
+            "releasedCoverageCompleteExamData": 111,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ],
+      "blockingOrWarningRules": []
+    }
+  ],
+  "evaluatedSekIRouteContexts": 106,
+  "CQR104AllUnresolvedContexts": []
+}
