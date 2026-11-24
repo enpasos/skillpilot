@@ -1,0 +1,100 @@
+{
+  "reviews": [
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "Die vollständige Aufgabe und Lösung sind fachlich richtig. A: Mit τ=t−2 s gelten in SI v=−1+2τ und s=5−τ+τ². Die Ortsmarken sind 4,75 m, 5 m und 7 m; die Geschwindigkeiten bei t=2; 2,5; 3; 4 s sind −1; 0; 1; 3 m/s. Die Umkehr liegt bei t=2,5 s im Ortsminimum; a bleibt +2 m/s². Die a-Fläche ergibt Δv=4 m/s, die gerichteten v-Flächen ergeben −0,25 m und +2,25 m. Daher Δs=+2 m und Strecke=2,50 m. 7 m liegt im Kontrollintervall [6,98;7,08] m; die Abweichung beträgt 0,03 m. B: v=6−2t und s=6t−t² ergeben Stoppzeit 3 s und Bremsweg 9 m. Die Programmfortsetzung liefert v(5)=−4 m/s und s(5)=5 m statt realem Stillstand bei 9 m. Weiterhin konstante negative Beschleunigung bedeutet Rückwärtsfahrt; zum Stehenbleiben gehören danach v=0 und a=0. Quellen: canonical-input.json:172–175. Sämtliche SVG-Kurven der Einreichungen wurden einschließlich ihrer Koordinaten und Krümmung geprüft. Die Bewertungsmaxima stimmen: 6+3+3=12 für A, 4+4=8 für B, insgesamt 20; die Schwelle beträgt durchgehend 19. Quellen: canonical-input.json:174–203.",
+      "preparationReview": "SN: allow als freiwilliger, vollständig vorbereiteter Transfer. SN-retained-source.pdf, physische Seite 36, gedruckte Seite 24, Lernbereich 3 „Bewegungsgesetze“, trägt Bezugssystem, Ortsänderung, Diagramme und Massepunkt, begrenzt den Umgang mit Kinematikgesetzen aber ausdrücklich auf „ohne Anfangsgeschwindigkeit“. Die nicht verschwindenden Anfangsgeschwindigkeiten, der verschobene Zeitbezug, die konkrete Umkehr und die Prüfung der Programmfortsetzung sind deshalb eigener Transfer; sie dürfen nicht als ausdrücklich vorgeschriebener SN-J9-Gesetzesumfang ausgegeben werden. Physische Seite 38, gedruckte Seite 26, Lernbereich 4, nennt rechnergestützte Messwerterfassung und Bewegungsdiagramme sowie experimentelle Anforderungen. D′ belegt keine eigene experimentelle Durchführung. ST: allow. ST-retained-source.pdf, physische Seite 45, J9 „Mechanik der Punktmasse“, verlangt geeignete Bewegungsdiagramme, Flächeninterpretationen und selbstständige Beurteilung von Verkehrsaufgaben. Seite 46 nennt neben gleichmäßig beschleunigter Bewegung ohne Anfangsbedingungen ausdrücklich „Bewegungen mit Anfangsbedingungen“ sowie s(t)-, v(t)- und a(t)-Diagramme. Anfangswerte sind hier quellengetragen; die konkrete Umkehr und Modellkritik bleiben selbstständige Anwendung. Die dort ebenfalls verlangten Schülerexperimente werden durch diese Papierprüfung nicht nachgewiesen. Die gesamte rekursive Vorbereitung ab LAWS 262f807a umfasst exakt alle 66 gelieferten Vorbereitungseinträge, ohne fehlende Voraussetzung; sie stimmt mit unchangedWholePreparationIds überein. Besonders einschlägig sind preparation[13] Bewegungsgesetze, [56] BES, [42] Sekanten-/Tangentensteigung, [9] gerichtete v-Fläche, [5] Änderung pro Zeit, [32–33] Achsen und Flächen, [39] lineare Funktionen sowie [44–45] Funktionswerte und Größenrechnung. Auch sämtliche elementaren Vorstufen wurden berücksichtigt. Differential- oder Integralrechnung ist nicht nötig. Eine zusätzliche Kraftberechnung wird nicht verlangt; die Stillstandsbegründung folgt bereits aus dem Beschleunigungsbegriff. requires bleibt unverändert. Quellen: canonical-input.json, candidate.requires, preparation[0–65] und sourceStageAndUnitContext.",
+      "directCoverageReview": "R2: allow ausschließlich für coverageReviews[0] der Einheit physics-constant-acceleration mit assessmentGoalId a8dc0290-9f80-5763-8943-e16b8d2aa860 und dem einzigen goalId e4b38061-1f28-43ad-8371-a3e7c0e81856. Das vollständige BES-Atom verlangt das Erläutern des Modells mit konstanter Beschleunigung und Beschreiben in t-s-, t-v- und t-a-Darstellungen; es enthält keine eigene Experimentierleistung. Quellen: canonical-input.json:221–222 sowie perGoalR2NormativeContext.r2ReviewObject und existingUnchangedWholeUnit.coverageReviews[0]. Jede Facette wird tatsächlich verlangt: zwei selbst konstruierte Diagrammsätze; konstante Beschleunigung trotz momentanen Stillstands; Zusammenhang zwischen a, Geschwindigkeitsänderung und Zeit; gerichtete Flächen und physikalische Modellprüfung. Die Angaben liefern Anfangswerte, aber keine fertigen Diagramme oder Erklärungen. An der Schwelle kann keine Darstellungsart vollständig fehlen: Das kostet zusammen 1 BE in A und 0,5 BE in B, also höchstens 18,5/20. Eine fehlende einzelne Erklärung kann durch die übrige eigenständige Erklärung des konstanten Beschleunigungsmodells fachlich abgedeckt sein; bloße Zahlen ohne entsprechende Deutungen erreichen die Schwelle nicht. Quellen: canonical-input.json:172–175,183,188,198,203. Das weitergehende Einheitsversprechen verlangt eigene Fallhöhen-/Fallzeitmessung, Messprotokoll und Genauigkeitsangabe. Diese Leistungen sind hier nicht nachgewiesen. Das begrenzt eine Aussage über die ganze Einheit, ist aber keine fehlende Facette des tatsächlich beanspruchten BES-Atoms. Der separate Freifall-Experimentalatom gehört nicht zu diesem R2-Eintrag. Quellen: unitLearningPromise.promise, perGoalR2NormativeContext.ownGoalRoles und r2ReviewObject.goalIds. LAWS oder andere Vorbereitungsatome erhalten ebenfalls keine zusätzliche direkte Anerkennung.",
+      "languageReview": "DE und EN sind in Aufgaben, physikalischer Lösung und sämtlichen Teilpunktregeln materiell gleichwertig. Beide unterscheiden displacement/Ortsänderung von distance/Strecke, verlangen die physikalische Kritik der Fortsetzung und akzeptieren ursprüngliche oder beschriftete verschobene Zeit. A12/B8, Gesamtmaximum 20, Schwelle 19, graphische Evidenz, gleichwertige Methoden und einmalige Fehlerbelastung stimmen überein. Die englische Formulierung „all three motion graphs“ entspricht den ausdrücklich genannten deutschen Diagrammen. Quellen: canonical-input.json:172–175,183–203.",
+      "recommendedRequires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "recommendedCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "recommendedPassingPoints": 19,
+      "gradedSubmissions": [
+        {
+          "submissionId": "X",
+          "demonstratedCore": true,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 6,
+              "reason": "Alle drei tatsächlichen A-Graphen mit richtigem Verlauf, Anfangswertbezug, quantitativen Werten und Einheiten. Quelle: learnerSubmissions.X, canonical-input.json:976."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "Umkehr und unveränderte Beschleunigung, a-Fläche einschließlich gleicher Geschwindigkeitsänderung pro Zeit sowie gerichtete v-Flächen vollständig erklärt."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "Ortsänderung +2 m, Strecke 2,50 m mit Betragsbegründung und Prüfung gegen [6,98;7,08] m richtig."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 4,
+              "reason": "Drei richtige B-Graphen, Beschleunigung und Bewegungsgesetze sowie Stoppzeit 3 s und Bremsweg 9 m vollständig belegt."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 3,
+              "reason": "v(5)=−4 m/s richtig. In „s(5)=6*5−5²=4m“ liegt ein einzelner Rechenfehler; richtig sind 5 m: dafür einmal 1 BE Abzug. Der Vergleich Rückwärtsfahrt/Stillstand und die unabhängige Begründung mit v=0, a=0 und neuem Kraftgrund sind richtig und behalten beide Erklärungspunkte."
+            }
+          ],
+          "total": 19,
+          "passes": true,
+          "rationale": "6+3+3+4+3=19. X zeigt das ganze BES-Modell und alle drei Darstellungsarten. Der örtliche Rechenfehler beseitigt keine davon und verursacht keinen weiteren Abzug. Bewertet nach canonical-input.json:174–203; Einreichung:976."
+        },
+        {
+          "submissionId": "Y",
+          "demonstratedCore": false,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 5,
+              "reason": "t-v- und t-s-Verläufe sowie alle quantitativen Werte sind richtig. Das ausdrücklich nicht abgegebene t-a-Diagramm kostet ausschließlich seinen Verlaufspunkt. Der textlich belegte Wert +2 m/s² bleibt erhalten. Quelle: learnerSubmissions.Y, canonical-input.json:977."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "Alle drei physikalischen Erklärungen stehen vollständig im Text. Das fehlende Diagramm rechtfertigt hier keinen weiteren Abzug."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "Ortsänderung, Strecke mit Betragsbegründung und Kontrollintervallprüfung vollständig richtig."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 3.5,
+              "reason": "Geschwindigkeits- und Ortsgesetz mit ihren Graphen ergeben 2 BE; Stoppzeit und Bremsweg ergeben 1 BE. Der Beschleunigungswert −2 m/s² ist im abschließenden Text ausdrücklich belegt und erhält 0,5 BE. Nur der fehlende tatsächliche t-a-Graph kostet 0,5 BE."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 4,
+              "reason": "Beide Programmwerte und beide unabhängigen physikalischen Begründungen sind richtig; kein Abzug wegen des andernorts fehlenden Diagramms."
+            }
+          ],
+          "total": 18.5,
+          "passes": false,
+          "rationale": "5+3+3+3,5+4=18,5. In beiden Teilen fehlt ausdrücklich das t-a-Diagramm. Zahlenwissen und zutreffende Erklärung ersetzen nach der tatsächlichen Regel keine graphische Darstellung dieser beanspruchten Darstellungsart. Y unterschreitet 19 ohne Doppelabzug oder Verlust unrelated richtiger Leistungen. Bewertet nach canonical-input.json:174–203; Einreichung:977."
+        }
+      ],
+      "strongestIndependentFalsePassAttempt": "Alternative zu Y: Eine sonst vollständig richtige Antwort lässt beide t-s-Graphen weg, behält aber Ortsgesetze, sämtliche Ortswerte, Umkehr- und Flächenerklärungen sowie Modellkritik. Die Zahlen-/Gesetzespunkte bleiben erhalten. Es fehlen ausschließlich 1 Verlaufspunkt in A und 0,5 in B: 5+3+3+3,5+4=18,5. Bei 19 besteht sie nicht. Dasselbe gilt für jede global fehlende Diagrammfamilie. Dagegen kann das Weglassen nur eines Graphen bestehen, weil die andere Aufgabe diese Darstellungsart tatsächlich belegt. Als weiterer Angriff kann allein die a-Flächenerklärung fehlen und 19 erreicht werden; die dann vollständige Umkehrerklärung mit unveränderter t-v-Steigung und die unabhängige Stillstands-/Beschleunigungsbegründung belegen weiterhin das Modellverständnis. Quellen: canonical-input.json:183,188,198,203.",
+      "strongestIndependentFalseFailureAttempt": "Eine vollständige Kernleistung enthält nur einen Rechenfehler beim Bilden einer Kontrollintervallgrenze und prüft mit dem eigenen Zwischenwert folgerichtig weiter. Dafür geht genau 1 BE verloren; die übrigen 19 bleiben bestehen. Zusätzliche Abzüge für die folgerichtige Kontrollentscheidung oder richtige Graphen wären unzulässig. Ebenso besteht X mit seinem örtlichen Fehler bei s(5). Damit ist die Grenze 18,5 < Schwelle ≤ 19 durch fachlich unterschiedliche Fälle begründet; die konkrete Schwelle 19 genügt ohne Zusatzbedingung. Quellen: canonical-input.json:174–175,193,203.",
+      "requiredCorrections": [],
+      "materialContinuityAndRecognition": "Der Vergleich von Original und Kandidat bestätigt Änderungen ausschließlich an reviewNote, beiden Lösungstexten einschließlich Bewertungsregeln und scoring. Aufgabenwortlaut, Anfangswerte, gedruckte A12/B8, requires, Jurisdiktionen und direkter BES-Anspruch bleiben erhalten. Die begrenzte Bewertungsänderung wahrt die eigene Platzierung in physics-constant-acceleration; die Quellen- und Vorbereitungsargumente ändern sich dadurch nicht. Die vier ursprünglichen E.1-Pflichtslots ee7d5f3d-858f-59d6-89b0-e5a7f437f458, 39f52dcb-ff1d-5cad-9ccb-30da803cfa85, c933b7d2-edcb-5747-9378-9762659f260a und f13ca187-b680-5f47-b4ad-76bd474bd8a2 bleiben getrennt bestehen. D′ bleibt freiwillig und ersetzt den vierten Slot nicht. Direkte BES-Abdeckung durch D′ ist von der im Kontext ausschließlich dem gesonderten Pflichtteil zugeordneten hessischen Planungsanerkennung zu unterscheiden. Quellen: canonical-input.json:210–215,1101–1175,1250–1255,1332–1333. Dieses Urteil betrifft den exakten Kandidaten und verleiht weder historischen Ergebnissen eine neue Anerkennung noch der ganzen Einheit eine experimentelle Qualifikation.",
+      "semanticKind": "practiceAssessment",
+      "semanticKindReason": "Die lernende Person muss aus vorgegebenen Daten selbst Darstellungen, Berechnungen und physikalische Begründungen erzeugen; diese werden anhand sichtbarer Kriterien mit einer numerischen Bestehensschwelle beurteilt. Die Rubrikänderung erhält diese Funktion. Das Urteil folgt aus der verlangten Leistung, nicht aus Tags oder Freigabevermerken."
+    }
+  ],
+  "limitations": [
+    "Geprüft wurden ausschließlich canonical-input.json, output.schema.json sowie die freigegebenen physischen PDF-Seiten SN 36/38 und ST 45/46. Keine Netzwerk-, Repository-, Elternverzeichnis- oder Sitzungsprüfung.",
+    "Historische Gutachten, Freigabevermerke und referenzierte Dateien wurden nicht als unabhängige Bestätigung übernommen. Das Quellenurteil für SN erlaubt den vorbereiteten freiwilligen Transfer und behauptet keinen verbindlichen J9-Lehrplananspruch für Anfangsgeschwindigkeit ungleich null.",
+    "Eigene Fallmessung, Messprotokoll und Ermittlung der Messgenauigkeit sind durch D′ nicht nachgewiesen; diese Grenze betrifft das weitergehende Einheitsversprechen."
+  ]
+}

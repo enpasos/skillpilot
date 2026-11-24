@@ -635,6 +635,29 @@ try {
   await node(unitPage, 'force-017').click()
   await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'force-017' }).waitFor()
 
+  stage = 'one routed assessment stays readable in its nested child at 1024 pixels'
+  await unitPage.setViewportSize({ width: 1024, height: 900 })
+  await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=nested-single-assessment`)
+  await scope(unitPage, 'composition:fx-single:structure:uniform')
+  await unitPage.locator('[data-entry-id="single-motion-assessment"].is-focused').waitFor()
+  assert.equal(await unitPage.locator('[data-entry-kind="assessment"]').count(), 1)
+  await unitPage.waitForFunction(() => {
+    const surface = document.querySelector('.lum-flow')!.getBoundingClientRect()
+    const card = document.querySelector('[data-entry-id="single-motion-assessment"] .lum-node-main')!.getBoundingClientRect()
+    return card.width >= 170 && card.left >= surface.left && card.right <= surface.right
+      && card.top >= surface.top && card.bottom <= surface.bottom
+  }, undefined, { timeout: 10000 })
+  await unitPage.getByTestId('unit-map-selected').filter({ hasText: 'single-motion-assessment' }).waitFor()
+  const focusedZoom = await unitPage.getByLabel('Zoomwert').innerText()
+  await unitPage.getByRole('button', { name: 'Karte verkleinern', exact: true }).click()
+  await afterEffects(unitPage)
+  const manualZoom = await unitPage.getByLabel('Zoomwert').innerText()
+  assert(Number.parseInt(manualZoom) < Number.parseInt(focusedZoom), 'The learner can still zoom out explicitly')
+  await unitPage.setViewportSize({ width: 1100, height: 900 })
+  await afterEffects(unitPage)
+  assert.equal(await unitPage.getByLabel('Zoomwert').innerText(), manualZoom,
+    'Resizing never resets a manually moved single-assessment camera')
+
   stage = 'a second subject opens neighbouring assessments together on a large board'
   await unitPage.setViewportSize({ width: 1024, height: 768 })
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=math-assessments`)

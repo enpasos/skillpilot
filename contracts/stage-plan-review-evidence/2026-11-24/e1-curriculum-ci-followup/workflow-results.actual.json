@@ -1,0 +1,4629 @@
+{
+  "scope": "Local replay of requested PR #186 workflow steps. GitHub-hosted runner setup has local equivalents as identified per step.",
+  "workflow": ".github/workflows/ci.yml",
+  "workflowSha256": "b285144be947a4a1afc43cc5a48da46736c3ace121b26dcb60ef40960cfd8092",
+  "workflowSourceRevision": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+  "pullRequestBase": "2a70254ca457b0a13e17246fe065a22660c3cf03",
+  "hostedSourceRun": 45350395787,
+  "lastImplementationCommit": "d373976229f680360242b62e2b1991e0580acb0d",
+  "stepsExecutedAcrossSuccessiveRepairs": true,
+  "restoreArtifact": {
+    "id": 14901327795,
+    "name": "goal-book-publication-2ccff73158b2e09878833efaaa6ba27ac380b7cc",
+    "files": 22
+  },
+  "notes": [
+    "Native local workflow commands were run while repairing the original four red hosted jobs. Setup corresponding to GitHub-only actions is designated explicitly. Historical failing attempts remain visible alongside their successful replays.",
+    "The full-point scoring gate on the PR base first failed for four changed assessments. The three accepted rubric-only repairs cleared three; the voluntary throw assessment required a reviewed new task 6 and its own identity. The last replay uses the signed successor and keeps historical learner results on their original ID.",
+    "Physical setup, publication restore and independent evidence are documented per step. The PR and main merge remain with the PR owner."
+  ],
+  "publicPhysicsIndex": {
+    "path": "app/public/data/goal-source-rationales-physics-public.json",
+    "beforeSha256": "9f7695cd5a2d2b3931b96e5bf90ca67c4ec4ed27e850b2c0010948c4e58a4a34",
+    "afterSha256": "ee318db00397df7a965c9f22099505915bfd642caec12b0c0c89c5e7fdd90de2",
+    "counts": {
+      "beforeItems": 442,
+      "afterItems": 447,
+      "unchangedRetainedItems": 421,
+      "changedRetainedItems": 21,
+      "addedItems": 5,
+      "removedItems": 0,
+      "retainedRouteFieldChangeOccurrences": {
+        "sourceSpan": 20,
+        "reviewedAt": 25,
+        "reviewer": 28,
+        "rationale": 34
+      },
+      "distinctReviewRouteIdentitiesByChangedField": {
+        "sourceSpan": 7,
+        "reviewedAt": 10,
+        "reviewer": 11,
+        "rationale": 12
+      },
+      "distinctSourceClausesByChangedField": {
+        "sourceSpan": 7,
+        "reviewedAt": 10,
+        "reviewer": 11,
+        "rationale": 12
+      },
+      "distinctChangedReviewRouteIdentities": 13,
+      "distinctChangedSourceClauses": 13,
+      "removedAlternateRouteObjects": 16,
+      "distinctRemovedReviewRoutes": 16,
+      "distinctRemovedSourceClauses": 8,
+      "addedRetainedRouteObjects": 0,
+      "newItemSerializedLineCount": 498
+    },
+    "invariants": {
+      "allRetainedSourceStatusesUnchanged": true,
+      "allRetainedMemRoutesUnchanged": true,
+      "allRetainedLimitationsUnchanged": true,
+      "retainedSourceFieldChangesOnlyReviewMetadataRationaleAndSpan": true,
+      "retainedOfficialSourceTextDescriptionsAndDocumentsUnchanged": true
+    },
+    "unchangedGoalAndSourceBindingsAlreadyPresentAt": "f11676dc4ff0b163660c5c56b7b21a90d93543e7",
+    "additionalGoals": [
+      {
+        "goalId": "677a192d-8bbe-57fc-bb7a-1c1ed5fba32b",
+        "title": "Einen angeleiteten Versuch zur mittleren Beschleunigung planen und auswerten"
+      },
+      {
+        "goalId": "b615830a-e8b0-5754-81e0-99da98343a8d",
+        "title": "Signifikante Stellen korrekt verwenden"
+      },
+      {
+        "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+        "title": "Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen"
+      },
+      {
+        "goalId": "d8b2b349-b83a-5225-a180-1afe205750cd",
+        "title": "Transistorstromverstärkung selbst experimentell untersuchen"
+      },
+      {
+        "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+        "title": "Fallhöhe und Fallzeit in einem Messprotokoll festhalten"
+      }
+    ],
+    "historicalExecutionCause": "Not established by these Git blobs. No claim that sparse checkout, partial scan or a particular invocation caused the historical omission.",
+    "reproducedByOfficialGeneratorExceptTimestamp": true,
+    "secondIndependentGeneratorOutputSha256": "ec3f17d949c9168c575ea60d94cbba5cb46507d8b79a210727a7232b89545629"
+  },
+  "quality": {
+    "physik": "M7",
+    "scopes": {
+      "canonical-physics-sek1": "M4",
+      "canonical-physics-sek2": "M4"
+    },
+    "sek1Cqr104": {
+      "id": "CQR-104",
+      "status": "pass",
+      "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 56,
+        "invalidExplicitTerminalConfigurations": 0,
+        "evaluatedProjectionScopes": 106,
+        "requiredMotivationAnchors": 2,
+        "minimumRequiredTerminalAutonomyGoals": 40,
+        "requiredTerminalAutonomyGoals": 58,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 0,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 51,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 13721,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 783,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 191,
+        "nationalStageTargetGoalOccurrencesMaterializedFromFullExposure": 123,
+        "nationalProjectionScopesWithInvalidExposureFamily": 0,
+        "projectionScopesWithInvalidSourceStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 1,
+        "visibleSelectedAtomicGoalOccurrences": 9233,
+        "visibleProfileSelectedAtomicGoalOccurrences": 8739,
+        "visibleProjectedRouteTargetGoalOccurrences": 9233,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 494,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 61,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      }
+    },
+    "nativeStatusCheck": {
+      "command": [
+        "npm",
+        "run",
+        "quality:curriculum-status:check"
+      ],
+      "exitCode": 0,
+      "outputSha256": "15decb10ed619875a0489ac2ca2980e765aeabaae4a3db51d1771d1ab5fed20c"
+    },
+    "statusFileSha256": "cb1087cfbe83ae5ecd60684098b2ffebb3825ecd85f6d00af0ce4adc63dd62bd"
+  },
+  "localEvidenceManifestSha256": {
+    "proofsAndFrontend": "79461721aa61755c01a9ba3f4f41f290b3259ae4cea04491d6650f0e80998d5d",
+    "packagesAndBooks": "61c7cf579028d59fd19490750779775c43e4d4f636671144f31fc700849117d6"
+  },
+  "stepCounts": {
+    "graph-validation": {
+      "PASS": 34
+    },
+    "curriculum-assessment-proofs": {
+      "LOCAL_EQUIVALENT": 9,
+      "PASS": 20
+    },
+    "curriculum-integrated-build": {
+      "LOCAL_EQUIVALENT": 10,
+      "PASS": 10
+    },
+    "curriculum-package-contracts": {
+      "LOCAL_EQUIVALENT": 13,
+      "PASS": 17
+    },
+    "goal-book-contracts": {
+      "LOCAL_EQUIVALENT": 9,
+      "PASS": 3
+    },
+    "frontend-ci": {
+      "LOCAL_EQUIVALENT": 9,
+      "PASS": 45
+    }
+  },
+  "steps": [
+    {
+      "job": "graph-validation",
+      "step": 19,
+      "name": "Check generated Math G8/G9 Composition Views",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "b7e04ee7d4cb33f4a1a9129f6e7a09b689e1979ab843cdbb03e363c10aa272c1"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "c26cb36907c2f13db819b065232258c01f5777593fc72d0d926d6f3eda1fc486"
+        },
+        {
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "139f88eef024d4f57b87a5ce89374f6aa84ae8243a19bd1a9ad65110771258fb"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "139f88eef024d4f57b87a5ce89374f6aa84ae8243a19bd1a9ad65110771258fb",
+        "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+        "finishedUtc": "2026-11-24T10:33:50+00:00"
+      },
+      "workflowCommand": "npm run check:math-duration-composition-views",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 20,
+      "name": "Check generated German Sek-I Composition Views",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "5c3b85348a185a7e8b40abb33b37bd89306d5106a4de0f52c42e86cf3d0c86af"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "5c3b85348a185a7e8b40abb33b37bd89306d5106a4de0f52c42e86cf3d0c86af"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "5c3b85348a185a7e8b40abb33b37bd89306d5106a4de0f52c42e86cf3d0c86af"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "5c3b85348a185a7e8b40abb33b37bd89306d5106a4de0f52c42e86cf3d0c86af",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:33:51+00:00"
+      },
+      "workflowCommand": "npm run check:german-seki-composition-views",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 21,
+      "name": "Check generated History Sek-I Composition Views",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "3b9c1415744c9dc57c26fb16b0f07d6128b53114363babf360afe93a8740cdf9"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "3b9c1415744c9dc57c26fb16b0f07d6128b53114363babf360afe93a8740cdf9"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "3b9c1415744c9dc57c26fb16b0f07d6128b53114363babf360afe93a8740cdf9"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "3b9c1415744c9dc57c26fb16b0f07d6128b53114363babf360afe93a8740cdf9",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:33:52+00:00"
+      },
+      "workflowCommand": "npm run check:history-seki-composition-views",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 22,
+      "name": "Check Canonical Math Scope Coverage",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "cde19c3080eeb4b36e23dd23de497be3239a24a6346de68b5f91352244118514"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "cde19c3080eeb4b36e23dd23de497be3239a24a6346de68b5f91352244118514"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "cde19c3080eeb4b36e23dd23de497be3239a24a6346de68b5f91352244118514"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "cde19c3080eeb4b36e23dd23de497be3239a24a6346de68b5f91352244118514",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:33:52+00:00"
+      },
+      "workflowCommand": "npm run check:canonical-math-scope-coverage",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 23,
+      "name": "Check Gymnasium G8/G9 Duration Readiness Report",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "0e32cf26a342cae0c3ce7d644f2183e196f712e8a1123ac44d8825f950decf7b"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "0e32cf26a342cae0c3ce7d644f2183e196f712e8a1123ac44d8825f950decf7b"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "0e32cf26a342cae0c3ce7d644f2183e196f712e8a1123ac44d8825f950decf7b"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "0e32cf26a342cae0c3ce7d644f2183e196f712e8a1123ac44d8825f950decf7b",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:33:55+00:00"
+      },
+      "workflowCommand": "npm run check:gymnasium-duration-readiness",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 24,
+      "name": "Check Mathematics G8/G9 Duration Policy Readiness",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "04741453db52c5fb9f200ac0beff3e6d2de416230549c4f4deede94ac3659596"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "04741453db52c5fb9f200ac0beff3e6d2de416230549c4f4deede94ac3659596"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "04741453db52c5fb9f200ac0beff3e6d2de416230549c4f4deede94ac3659596"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "04741453db52c5fb9f200ac0beff3e6d2de416230549c4f4deede94ac3659596",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:33:57+00:00"
+      },
+      "workflowCommand": "npm run check:math-duration-policy-readiness",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 25,
+      "name": "Check M6 G8/G9 Duration Policy Readiness",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "270a6cbfee3eaa99c33cdc9b4b8ad75ef45b4076db9feb61bdef019166060672"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "270a6cbfee3eaa99c33cdc9b4b8ad75ef45b4076db9feb61bdef019166060672"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "270a6cbfee3eaa99c33cdc9b4b8ad75ef45b4076db9feb61bdef019166060672"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "270a6cbfee3eaa99c33cdc9b4b8ad75ef45b4076db9feb61bdef019166060672",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:33:59+00:00"
+      },
+      "workflowCommand": "npm run check:m6-duration-policy-readiness",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 26,
+      "name": "Check Gymnasium Duration Offerings",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "becb399e54dcb98dc5a9ebcbf775c8d80abe37826e517a8fe2a856f6ba06aabe"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "becb399e54dcb98dc5a9ebcbf775c8d80abe37826e517a8fe2a856f6ba06aabe"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "becb399e54dcb98dc5a9ebcbf775c8d80abe37826e517a8fe2a856f6ba06aabe"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "becb399e54dcb98dc5a9ebcbf775c8d80abe37826e517a8fe2a856f6ba06aabe",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:33:59+00:00"
+      },
+      "workflowCommand": "npm run check:gymnasium-duration-offerings",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 27,
+      "name": "Check Curriculum Source Coverage",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "1db754a69a800d473821409579fea50c8bee3a6c10079b03e5e1653733bd8e1d"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "1e342e559d5b60ff07a63b6e10cc35ea1b795aec71658934525bdd52cd3ec7d4"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "a7a073ca331850d48bd9676aa42754b2f4ac0546f70aad2445052d4fececd5f4"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "a7a073ca331850d48bd9676aa42754b2f4ac0546f70aad2445052d4fececd5f4",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:35:22+00:00"
+      },
+      "workflowCommand": "npm run quality:source-coverage-audit:check",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 28,
+      "name": "Check Goal Source Rationale Runtime Index",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 1,
+          "outputSha256": "857ccb011a9fa8b67f978624daf3575c67722b52653cba3f9ab4547aa85d4a2f"
+        },
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "8b634e571943fa95b331d46fff9a4f52838b4d0bb757364ab7aca69e455c2ba1"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "8b634e571943fa95b331d46fff9a4f52838b4d0bb757364ab7aca69e455c2ba1"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "8b634e571943fa95b331d46fff9a4f52838b4d0bb757364ab7aca69e455c2ba1"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "8b634e571943fa95b331d46fff9a4f52838b4d0bb757364ab7aca69e455c2ba1",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:23+00:00"
+      },
+      "workflowCommand": "npm run check:goal-source-rationales:math-public",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 29,
+      "name": "Check Goal Source Rationale All-Relevant Report",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "17234e4a04564166101bd7d4f0d8e23b6bcd98c66dac627f7800b5cdc6321576"
+        },
+        {
+          "inputCommitAtStart": "0fc6754665ce1e9b28119dbdcc6b1dd925f2cebb",
+          "exitCode": 0,
+          "outputSha256": "17234e4a04564166101bd7d4f0d8e23b6bcd98c66dac627f7800b5cdc6321576"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "17234e4a04564166101bd7d4f0d8e23b6bcd98c66dac627f7800b5cdc6321576"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "17234e4a04564166101bd7d4f0d8e23b6bcd98c66dac627f7800b5cdc6321576"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "17234e4a04564166101bd7d4f0d8e23b6bcd98c66dac627f7800b5cdc6321576",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:22+00:00"
+      },
+      "workflowCommand": "npm run check:goal-source-rationales:math-all-relevant",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 30,
+      "name": "Check Goal Source Rationale Coverage Report",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883"
+        },
+        {
+          "inputCommitAtStart": "0fc6754665ce1e9b28119dbdcc6b1dd925f2cebb",
+          "exitCode": 0,
+          "outputSha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "96777a774bd130acb8b6bdd0bfa19939520cf3917912b75f6b57d43c77e12883",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:23+00:00"
+      },
+      "workflowCommand": "npm run check:goal-source-rationale-coverage",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 31,
+      "name": "Check Goal Source Rationale Gap Issues",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "e69c9191702c69a92e94f9c6808019b9b9e75391622523c077391d9040052bed"
+        },
+        {
+          "inputCommitAtStart": "0fc6754665ce1e9b28119dbdcc6b1dd925f2cebb",
+          "exitCode": 0,
+          "outputSha256": "e69c9191702c69a92e94f9c6808019b9b9e75391622523c077391d9040052bed"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "e69c9191702c69a92e94f9c6808019b9b9e75391622523c077391d9040052bed"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "e69c9191702c69a92e94f9c6808019b9b9e75391622523c077391d9040052bed"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "e69c9191702c69a92e94f9c6808019b9b9e75391622523c077391d9040052bed",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:24+00:00"
+      },
+      "workflowCommand": "npm run check:goal-source-rationale-gap-issues",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 32,
+      "name": "Check Goal Source Rationale Mapping Batch 01",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "9fc6d224bdd0ec22745b61858a5cd1c2300ae20bf4f1f5e3594bbf44e8f25e90"
+        },
+        {
+          "inputCommitAtStart": "0fc6754665ce1e9b28119dbdcc6b1dd925f2cebb",
+          "exitCode": 0,
+          "outputSha256": "9fc6d224bdd0ec22745b61858a5cd1c2300ae20bf4f1f5e3594bbf44e8f25e90"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "9fc6d224bdd0ec22745b61858a5cd1c2300ae20bf4f1f5e3594bbf44e8f25e90"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "9fc6d224bdd0ec22745b61858a5cd1c2300ae20bf4f1f5e3594bbf44e8f25e90"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "9fc6d224bdd0ec22745b61858a5cd1c2300ae20bf4f1f5e3594bbf44e8f25e90",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:24+00:00"
+      },
+      "workflowCommand": "npm run check:goal-source-rationale-mapping-batch-01",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 33,
+      "name": "Check Generated Documentation Notices",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "843bd384f0bc0a812e1aa43e00f27be63eceff9c4d6fc62c43fd0c0b65af424b"
+        },
+        {
+          "inputCommitAtStart": "0fc6754665ce1e9b28119dbdcc6b1dd925f2cebb",
+          "exitCode": 0,
+          "outputSha256": "843bd384f0bc0a812e1aa43e00f27be63eceff9c4d6fc62c43fd0c0b65af424b"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "843bd384f0bc0a812e1aa43e00f27be63eceff9c4d6fc62c43fd0c0b65af424b"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "843bd384f0bc0a812e1aa43e00f27be63eceff9c4d6fc62c43fd0c0b65af424b"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "843bd384f0bc0a812e1aa43e00f27be63eceff9c4d6fc62c43fd0c0b65af424b",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:27+00:00"
+      },
+      "workflowCommand": "npm run check:generated-doc-notices",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 34,
+      "name": "Check Generated Status Registry",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "525a19c2b4bc8a023ecf7306b3ba2d8f27a9f95b141c5e9628a289ee7525736f"
+        },
+        {
+          "inputCommitAtStart": "0fc6754665ce1e9b28119dbdcc6b1dd925f2cebb",
+          "exitCode": 0,
+          "outputSha256": "525a19c2b4bc8a023ecf7306b3ba2d8f27a9f95b141c5e9628a289ee7525736f"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "525a19c2b4bc8a023ecf7306b3ba2d8f27a9f95b141c5e9628a289ee7525736f"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "525a19c2b4bc8a023ecf7306b3ba2d8f27a9f95b141c5e9628a289ee7525736f"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "525a19c2b4bc8a023ecf7306b3ba2d8f27a9f95b141c5e9628a289ee7525736f",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:28+00:00"
+      },
+      "workflowCommand": "npm run check:generated-status-registry",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 35,
+      "name": "Check Documentation Links",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "cd3af12cbefceef669b34b32b709f2a0412b93aaa9ffdea59e76e66c4af528db"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "cd3af12cbefceef669b34b32b709f2a0412b93aaa9ffdea59e76e66c4af528db"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "cd3af12cbefceef669b34b32b709f2a0412b93aaa9ffdea59e76e66c4af528db"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "cd3af12cbefceef669b34b32b709f2a0412b93aaa9ffdea59e76e66c4af528db",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:31+00:00"
+      },
+      "workflowCommand": "npm run check:docs-links",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 36,
+      "name": "Check Documentation Index Coverage",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "8280f01812fcdf945ccd49e63e174212ffaece2508d2b1fdfb028ddbe5dfdf9a"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "8280f01812fcdf945ccd49e63e174212ffaece2508d2b1fdfb028ddbe5dfdf9a"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "8280f01812fcdf945ccd49e63e174212ffaece2508d2b1fdfb028ddbe5dfdf9a"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "8280f01812fcdf945ccd49e63e174212ffaece2508d2b1fdfb028ddbe5dfdf9a",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:34+00:00"
+      },
+      "workflowCommand": "npm run check:docs-indexes",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 37,
+      "name": "Check Terminology",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "45bd2ae7e5a281c3b80e3901975d37727f13293a7cef50dc76acb3f60ffeff33"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "3e3dac77b0dfc6ff93149ea7599103321219589e37d01267578c29f4a2b5a10c"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "f6417cdcca769ba656aa0a1aad2a276613b0b61063b649afa32b606a71119d0e"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "f6417cdcca769ba656aa0a1aad2a276613b0b61063b649afa32b606a71119d0e",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:37:00+00:00"
+      },
+      "workflowCommand": "npm run check:terminology",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 38,
+      "name": "Validate Composition Views",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "4761ad0299a44b3c797d40a05626a83721f6eb8fc8b64aabad00d94a6af45a6e"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "4761ad0299a44b3c797d40a05626a83721f6eb8fc8b64aabad00d94a6af45a6e"
+        },
+        {
+          "inputCommitAtStart": "46c1838604a4df5ccff6eedc1fb8c04c7d8f8ed4",
+          "exitCode": 0,
+          "outputSha256": "03c2f67c64a86e99ee3e5859521a87cf54bf5b1b04acdf6a65c91c16caf63d74"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "03c2f67c64a86e99ee3e5859521a87cf54bf5b1b04acdf6a65c91c16caf63d74",
+        "inputCommitAtStart": "46c1838604a4df5ccff6eedc1fb8c04c7d8f8ed4",
+        "finishedUtc": "2026-11-24T10:48:26+00:00"
+      },
+      "workflowCommand": "npm run validate:composition-views",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 39,
+      "name": "Test Composition Projection Roles",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "51648ad8906d93d62b3a2c559f77e90d3270221687370820c151ab883aa7bbe7"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "51648ad8906d93d62b3a2c559f77e90d3270221687370820c151ab883aa7bbe7"
+        },
+        {
+          "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+          "exitCode": 0,
+          "outputSha256": "51648ad8906d93d62b3a2c559f77e90d3270221687370820c151ab883aa7bbe7"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "51648ad8906d93d62b3a2c559f77e90d3270221687370820c151ab883aa7bbe7",
+        "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+        "finishedUtc": "2026-11-24T10:48:38+00:00"
+      },
+      "workflowCommand": "npm run test:composition-projection-roles",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 40,
+      "name": "Test Declared Stage-Plan Contracts",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "3c208f69fab9cdfcec48de95fa6d6d7598aa5d279d4e716d973a48a50d7aa0f4"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "3c208f69fab9cdfcec48de95fa6d6d7598aa5d279d4e716d973a48a50d7aa0f4"
+        },
+        {
+          "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+          "exitCode": 0,
+          "outputSha256": "3c208f69fab9cdfcec48de95fa6d6d7598aa5d279d4e716d973a48a50d7aa0f4"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "3c208f69fab9cdfcec48de95fa6d6d7598aa5d279d4e716d973a48a50d7aa0f4",
+        "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+        "finishedUtc": "2026-11-24T10:48:56+00:00"
+      },
+      "workflowCommand": "npm run test:stage-plan-contracts",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 41,
+      "name": "Check stage-plan compatibility materialization",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "ba6693de81413592779423778be03dfa2cd5306287ec8dd1219d8025c33fe38a"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "ba6693de81413592779423778be03dfa2cd5306287ec8dd1219d8025c33fe38a"
+        },
+        {
+          "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+          "exitCode": 0,
+          "outputSha256": "ba6693de81413592779423778be03dfa2cd5306287ec8dd1219d8025c33fe38a"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "ba6693de81413592779423778be03dfa2cd5306287ec8dd1219d8025c33fe38a",
+        "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+        "finishedUtc": "2026-11-24T10:48:57+00:00"
+      },
+      "workflowCommand": "npm run test:stage-plan-materialization",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 42,
+      "name": "Test declared stage-plan learning-flow diagnosis",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "c0d42dac7d13ee0ef22b00f902c4091fc5fe5f0228a0fa0f7edb69984002e1d5"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "c0d42dac7d13ee0ef22b00f902c4091fc5fe5f0228a0fa0f7edb69984002e1d5"
+        },
+        {
+          "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+          "exitCode": 0,
+          "outputSha256": "c0d42dac7d13ee0ef22b00f902c4091fc5fe5f0228a0fa0f7edb69984002e1d5"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "c0d42dac7d13ee0ef22b00f902c4091fc5fe5f0228a0fa0f7edb69984002e1d5",
+        "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+        "finishedUtc": "2026-11-24T10:48:57+00:00"
+      },
+      "workflowCommand": "npm run test:stage-plan-learning-flow",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 43,
+      "name": "Test Course-Level Mapping Consistency",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "03f9f6711595d5d474656bd4ad7b0b07ff5c3c258a8d2f4e0516c6528661dddf"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "03f9f6711595d5d474656bd4ad7b0b07ff5c3c258a8d2f4e0516c6528661dddf"
+        },
+        {
+          "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+          "exitCode": 0,
+          "outputSha256": "03f9f6711595d5d474656bd4ad7b0b07ff5c3c258a8d2f4e0516c6528661dddf"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "03f9f6711595d5d474656bd4ad7b0b07ff5c3c258a8d2f4e0516c6528661dddf",
+        "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+        "finishedUtc": "2026-11-24T10:48:57+00:00"
+      },
+      "workflowCommand": "npm run test:course-level-mapping-consistency",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 44,
+      "name": "Test Physics Source Method Routes",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "6ce890da4a24671d69f0dd71d855dc1b13cf84edbae939f6bafc3ce4fe51557c"
+        },
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "866840cc0851aefa569f6993a2e29b8a26b3e187c3ec9ac283b3bb746fc815f9"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "11c80126eddb40dac81c5ebe738c48198b3ac7e2794963ac627f688f6b171c97"
+        },
+        {
+          "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+          "exitCode": 0,
+          "outputSha256": "aeffc82d3d644a04aa996b5a61d8a040ac116aa00c51d813f4b3eb70e03c006f"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "aeffc82d3d644a04aa996b5a61d8a040ac116aa00c51d813f4b3eb70e03c006f",
+        "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+        "finishedUtc": "2026-11-24T10:54:33+00:00"
+      },
+      "workflowCommand": "npm run test:physics-source-method-routes",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 45,
+      "name": "Test Physics Semiconductor Learning-Path Diagnosis",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "eca468b5d7fff049a61ea4ab66d17b378f95c1951713cbe0ede3fbb04c823f29"
+        },
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "a781723805549057673e66d7edb6db52939e0bf8000420f8aa45a806b26f2c9f"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "803cc8ee15bcbfebde4117f3b3f787dea5ce0de0a90e4dd37aa3f4fa9d0056c6"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "44611b8e35853eb6c3b71cea1a1747d40f1734beee8b490a6366dcad9f620aed"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "44611b8e35853eb6c3b71cea1a1747d40f1734beee8b490a6366dcad9f620aed",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:54:34+00:00"
+      },
+      "workflowCommand": "npm run test:physics-semiconductor-learning-path",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 46,
+      "name": "Test Physics Semiconductor Source Repair",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "d95c20a22b370842a166c08e24dc721f43de54bc84426d97a074f65f8b0ce3e1"
+        },
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "d95c20a22b370842a166c08e24dc721f43de54bc84426d97a074f65f8b0ce3e1"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "d95c20a22b370842a166c08e24dc721f43de54bc84426d97a074f65f8b0ce3e1"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "d95c20a22b370842a166c08e24dc721f43de54bc84426d97a074f65f8b0ce3e1"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "d95c20a22b370842a166c08e24dc721f43de54bc84426d97a074f65f8b0ce3e1",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:54:34+00:00"
+      },
+      "workflowCommand": "npm run test:physics-semiconductor-source-repair",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 47,
+      "name": "Check Memory-Card Reviews",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "f7137709a9c54aac410b92e381b362a808d9921b2e43ee362ebd627e00c55c91"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "f7137709a9c54aac410b92e381b362a808d9921b2e43ee362ebd627e00c55c91"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "f7137709a9c54aac410b92e381b362a808d9921b2e43ee362ebd627e00c55c91"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "f7137709a9c54aac410b92e381b362a808d9921b2e43ee362ebd627e00c55c91",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:54:38+00:00"
+      },
+      "workflowCommand": "npm run quality:memory-card-review:check:all",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 48,
+      "name": "Test memory-card origin checks",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "a1f297ef26c9f0271497d04b2f3e358d9ea2f55ee2ceac7aafbcb84420ef13ce"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "a1f297ef26c9f0271497d04b2f3e358d9ea2f55ee2ceac7aafbcb84420ef13ce"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "a1f297ef26c9f0271497d04b2f3e358d9ea2f55ee2ceac7aafbcb84420ef13ce"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "a1f297ef26c9f0271497d04b2f3e358d9ea2f55ee2ceac7aafbcb84420ef13ce",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:54:39+00:00"
+      },
+      "workflowCommand": "npm run test:memory-card-origins",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 49,
+      "name": "Test strict deep curriculum QA and M7 transitions",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "699cb319bb5b97ae268e096680dee9468e1e7f923b40dac08d93b50818133899"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "699cb319bb5b97ae268e096680dee9468e1e7f923b40dac08d93b50818133899"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "699cb319bb5b97ae268e096680dee9468e1e7f923b40dac08d93b50818133899"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "699cb319bb5b97ae268e096680dee9468e1e7f923b40dac08d93b50818133899",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:57:19+00:00"
+      },
+      "workflowCommand": "npm run test:deep-understanding-rollout",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 50,
+      "name": "Test repository source availability",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "341ea4ae5d928c53f3848a3cab5cb864a0ac6932",
+          "exitCode": 0,
+          "outputSha256": "9145a48d5379796eeaaad839a16dc67775d0a89539cf9ec5ee818c5336e31e8d"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "9145a48d5379796eeaaad839a16dc67775d0a89539cf9ec5ee818c5336e31e8d"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "9145a48d5379796eeaaad839a16dc67775d0a89539cf9ec5ee818c5336e31e8d"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "9145a48d5379796eeaaad839a16dc67775d0a89539cf9ec5ee818c5336e31e8d",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:57:19+00:00"
+      },
+      "workflowCommand": "npm run test:repository-source-availability",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 51,
+      "name": "Test source extraction inventory",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "341ea4ae5d928c53f3848a3cab5cb864a0ac6932",
+          "exitCode": 0,
+          "outputSha256": "3e010853b52c26add373bb1b1f85bc3740fa3c4f552e21f4758071d59c4c799e"
+        },
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "3e010853b52c26add373bb1b1f85bc3740fa3c4f552e21f4758071d59c4c799e"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "3e010853b52c26add373bb1b1f85bc3740fa3c4f552e21f4758071d59c4c799e"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "3e010853b52c26add373bb1b1f85bc3740fa3c4f552e21f4758071d59c4c799e",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:57:20+00:00"
+      },
+      "workflowCommand": "npm run test:source-extraction-inventory",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "graph-validation",
+      "step": 52,
+      "name": "Verify committed curriculum quality status",
+      "result": "PASS",
+      "detail": "Status regeneriert, Untergrenzen gegen die PR-Basis geprüft, Statusbaum einschließlich unversionierter Dateien sauber. Die vollständige Basis war bereits geholt.",
+      "checks": [
+        {
+          "command": [
+            "git",
+            "cat-file",
+            "-e",
+            "2a70254ca457b0a13e17246fe065a22660c3cf03^{commit}"
+          ],
+          "exitCode": 0,
+          "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "quality:curriculum-status"
+          ],
+          "exitCode": 0,
+          "outputSha256": "76af51086cbed131f6548e1ce8afa94d0267abf02acf2a5074ff70aba239fac4"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "check:curriculum-maturity-floors",
+            "--",
+            "--base-ref",
+            "2a70254ca457b0a13e17246fe065a22660c3cf03"
+          ],
+          "exitCode": 0,
+          "outputSha256": "b3cb71737c4060888440171f19e2c61ca211a8285cf9d01b79198b306c8e7b2b"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--exit-code",
+            "--",
+            "../docs/qa-ci/status"
+          ],
+          "exitCode": 0,
+          "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "git",
+            "ls-files",
+            "--others",
+            "--exclude-standard",
+            "--",
+            "../docs/qa-ci/status"
+          ],
+          "exitCode": 0,
+          "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "quality:curriculum-status:check"
+          ],
+          "exitCode": 0,
+          "outputSha256": "15decb10ed619875a0489ac2ca2980e765aeabaae4a3db51d1771d1ab5fed20c"
+        }
+      ],
+      "workflowCommand": "git fetch --no-tags --depth=1 origin \"${MATURITY_POLICY_BASE#origin/}\"\nnpm run quality:curriculum-status\nnpm run check:curriculum-maturity-floors -- --base-ref \"${MATURITY_POLICY_BASE}\"\ngit diff --exit-code -- ../docs/qa-ci/status\ntest -z \"$(git ls-files --others --exclude-standard -- ../docs/qa-ci/status)\"\n",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 1,
+      "name": "Reserve disk space for the complete repository",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Hosted-only destructive SDK/Docker cleanup is not run on the shared machine. The complete checkout was already provided; the exact post-checkout8GiB disk gate ran successfully as step3.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ntest \"${RUNNER_ENVIRONMENT:-}\" = github-hosted\ntest \"${RUNNER_OS:-}\" = Linux\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# Keep Python, Java/JDK and Node caches plus system build tools.\nsudo rm -rf -- \\\n  /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \\\n  /usr/share/swift /usr/local/julia* /usr/share/miniconda \\\n  /opt/az /opt/microsoft/powershell /usr/local/share/powershell \\\n  /usr/local/share/boost /usr/local/share/vcpkg \\\n  /home/linuxbrew \"${HOME}/.rustup\" \"${HOME}/.cargo\"\nif [ -d /opt/hostedtoolcache ]; then\n  sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \\\n    ! -name Python ! -name 'Java*' ! -iname 'node*' -exec rm -rf -- {} +\nfi\nif ! sudo docker image prune --all --force; then\n  echo \"::warning::Docker image cleanup unavailable; the disk budget is still required.\"\nfi\nsudo apt-get clean\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.\nrequired_bytes=$((66 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail \"${GITHUB_WORKSPACE}\" | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ runner.temp }}"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 2,
+      "name": "Checkout",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Use the provided complete checkout, initiallyaa5ac41808. Each real command records actual HEAD and dirty-input state; no local Actions checkout/bootstrap is claimed.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        }
+      ],
+      "workflowUses": "actions/checkout@v6"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 3,
+      "name": "Verify disk reserve after the complete checkout",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "259d51c65e0fdac0c24d7f2bd221e2d8d1dceb066aa94529c93f27b34f64eccc"
+        },
+        {
+          "artifact": "03-verify-disk-reserve-after-the-complete-checkout.log",
+          "sha256": "e03a279fef659e71dc5bd682444584303910503db8f0ad35437a680aaa6c6aea"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ndf -h .\ndf -i .\ndu -sh .git\nrequired_bytes=$((8 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail . | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ github.workspace }}"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 4,
+      "name": "Use Node.js",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Use the actual pinnedNode20.20.2/npm10.8.2 toolchain; native --version checks passed. Actions cache provisioning is hosted-only.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        }
+      ],
+      "workflowUses": "actions/setup-node@v6"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 5,
+      "name": "Install dependencies",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Root performed a real separate npmci and atomically mounted physical node_modules in this checkout.795 locked entries compared,726 installed identically,69 platform entries absent on both,0 differences. No parallel app reinstall by this lane.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "npm-ci.log",
+          "sha256": "7eac42cd835e8b5b8c04ac83b63d43255f8c38c3caf3eb605e7d000b9a76c264"
+        },
+        {
+          "artifact": "lockcheck.actual.json",
+          "sha256": "325511c76aa4bcbdb1617327cd6e1c480a2f65a392ff39f34d08dd254a25c8db"
+        }
+      ],
+      "workflowCommand": "npm ci",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 6,
+      "name": "Use Ubuntu package sources",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "No hostAPT source-file mutation. The actual native tools and official Noble packages were verified in isolated paths; packageSHA256 and real capability tests replace local system provisioning.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "provision.actual.json",
+          "sha256": "f69117dd22e5c43dbfe7a8597dc69afb1b5ecc8fabe54dd2251bbff8447000b0"
+        }
+      ],
+      "workflowUses": "./.github/actions/ubuntu-apt"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 7,
+      "name": "Install PDF validation tools",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "No sudoAPT installation on shared host. Real Poppler24.02/fontconfig/Liberation and, for frontend, real UbuntuFFmpeg6.1.1/ffprobe with drawtext/subtitles are exercised.98 signed-index package hashes were verified before extraction solelyunder/tmp.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        },
+        {
+          "artifact": "provision.actual.json",
+          "sha256": "f69117dd22e5c43dbfe7a8597dc69afb1b5ecc8fabe54dd2251bbff8447000b0"
+        }
+      ],
+      "workflowCommand": "sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 8,
+      "name": "Install pinned Playwright Chromium",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "No repeated host dependency installation. Actual pinned appChromium launches and complete browser gates exercise the cached genuine browser with local locked modules; Actions --with-deps OS installation is not claimed.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        }
+      ],
+      "workflowCommand": "npx --no-install playwright install --with-deps chromium",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 9,
+      "name": "Restore same-run verified goal-book publications",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Root downloaded genuine same-run artifact14901327795 from hostedrun45350395787 (publicationhead2ccff73158…,22files). Current source/input/output bindings were independently reverified by the real build:application and publication checks; no duplicate publication writer.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        },
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "318048f12af047b31e5f185313b9f3e73aaed0abf46d4005db38d37ab6cf9bbe"
+        }
+      ],
+      "workflowUses": "actions/download-artifact@v7"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 10,
+      "name": "Fetch trusted semantic-route policy base",
+      "result": "PASS",
+      "detail": "Executed exact workflow depth-fetch once with fixed trusted base2a70254…; per-child SSH→HTTPS rewrite only. Integrator then restored full shared Git history (confirmed2929 reachable base commits and is-shallow=false); no further depth/deepen calls.",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "96735f84d54de587ed5247a7976bee7b994b3a753876f7b236ddae8d5c20fc78"
+        },
+        {
+          "artifact": "10-fetch-trusted-semantic-route-policy-base.log",
+          "sha256": "5d94689876e16ae379228d3a57cd69c781c11a65e27c357a30add27355ca473e"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ntest -n \"${SEMANTIC_ROUTE_POLICY_BASE}\"\nif [ \"${SEMANTIC_ROUTE_POLICY_BASE}\" = origin/main ]; then\n  git fetch --no-tags --depth=1 origin +refs/heads/main:refs/remotes/origin/main\nelse\n  git fetch --no-tags --depth=1 origin \"${SEMANTIC_ROUTE_POLICY_BASE}\"\nfi\ngit rev-parse --verify \"${SEMANTIC_ROUTE_POLICY_BASE}^{commit}\"\n",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 11,
+      "name": "Set up Python for curriculum proof receipts",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Reuse HH’s genuinePython3.10.22 standalone/venv and pinnedjsonschema4.26.0. Exact Python/version/import counterchecks pass; the following pip dependency step ran unchanged.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "workflow-step-manifest.actual.json",
+          "sha256": "61c7cf579028d59fd19490750779775c43e4d4f636671144f31fc700849117d6"
+        }
+      ],
+      "workflowUses": "actions/setup-python@v6"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 12,
+      "name": "Install Python dependencies for curriculum proof receipts",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "259d51c65e0fdac0c24d7f2bd221e2d8d1dceb066aa94529c93f27b34f64eccc"
+        },
+        {
+          "artifact": "12-install-python-dependencies-for-curriculum-proof-receipts.log",
+          "sha256": "8e039ff145c30ea47bd4d299bb6666d5560c81572637b538bdf4eec9e64b1807"
+        }
+      ],
+      "workflowCommand": "python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 13,
+      "name": "Test transitive-minimality auditor and CLI contracts",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "41ecd2a7dd6066d74bc1dd665e01c773d6d4f10f717252d631cb9ebf5afb414b"
+        },
+        {
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "5bb12899ec48e0621c16b1340e19ea01660dcc7cac16b28103f8a99f0a274134"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "5bb12899ec48e0621c16b1340e19ea01660dcc7cac16b28103f8a99f0a274134",
+        "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+        "finishedUtc": "2026-11-24T10:34:08+00:00"
+      },
+      "workflowCommand": "npm run test:transitive-minimality",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 14,
+      "name": "Test graph gate coverage, retirement and normalization",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "b617b9cc7ee84135337a0e3b19889585c6dfee9f2d185fcb72bc5be45a807517"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "c6fce59fe36cacb278b4c62aea7583574e6242c18065c7dae946f74d3faca51d"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "c6fce59fe36cacb278b4c62aea7583574e6242c18065c7dae946f74d3faca51d",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:35:11+00:00"
+      },
+      "workflowCommand": "npm run test:graph-gate-contracts",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 15,
+      "name": "Test learning-unit contract validator",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "ce5cc59b4d9ca0e635cf8b10fd04a05df1816067232a9f76b92ee410ddeae63e"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "ce5cc59b4d9ca0e635cf8b10fd04a05df1816067232a9f76b92ee410ddeae63e"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "ce5cc59b4d9ca0e635cf8b10fd04a05df1816067232a9f76b92ee410ddeae63e",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:35:15+00:00"
+      },
+      "workflowCommand": "npm run test:learning-unit-contracts",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 16,
+      "name": "Validate authored learning-unit contracts",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "02852eeb21c05cc235a9f570d63ba557fc03b40ea3b479d9a0043b91fdc44202"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "d81a87986b96df718a713e7048c178c56e20a6ca4f475047157cb357b25f284c"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "d81a87986b96df718a713e7048c178c56e20a6ca4f475047157cb357b25f284c",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:35:16+00:00"
+      },
+      "workflowCommand": "npm run validate:learning-units",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 17,
+      "name": "Check pass marks of new and revised canonical assessments",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 1,
+          "outputSha256": "738ed5e40e4f3daff869c7c5328379e963d49fb5b54e6adaecf6fbcad92200f5"
+        },
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 1,
+          "outputSha256": "c3b2fa1633c57584b686b556ff51a03ef0ea182b0f8b7b108394bc6877435013"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "48fca26ad851cef6f5f762f3a5eb87bc07ba9140b2d8b8715c9d15193467bd40"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "48fca26ad851cef6f5f762f3a5eb87bc07ba9140b2d8b8715c9d15193467bd40",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:35:17+00:00"
+      },
+      "workflowCommand": "python3 -B ../scripts/test_exam_pass_marks.py\npython3 -B ../scripts/check_exam_pass_marks.py --base \"$SEMANTIC_ROUTE_POLICY_BASE\"\n",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 18,
+      "name": "Check learning-unit assessments against their sources",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "72f950bf095611f1b9e8c713fa533057fa875cf2947af0f8e4a69f0faeecc592"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "72f950bf095611f1b9e8c713fa533057fa875cf2947af0f8e4a69f0faeecc592"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "72f950bf095611f1b9e8c713fa533057fa875cf2947af0f8e4a69f0faeecc592",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:35:19+00:00"
+      },
+      "workflowCommand": "npm run check:learning-unit-assessments",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 19,
+      "name": "Test knowledge-context derivation",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "d3ba121efc9044116e5f687f989cc9cdc528b892e6fe8d3b73f06ec3c19962e0"
+        },
+        {
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "c2e708978f257bf5889db53dcc7a03133df81669a456985b2735cd6b624eeb07"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "c2e708978f257bf5889db53dcc7a03133df81669a456985b2735cd6b624eeb07",
+        "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+        "finishedUtc": "2026-11-24T10:35:23+00:00"
+      },
+      "workflowCommand": "npm run test:knowledge-context",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 20,
+      "name": "Test exam Markdown conventions",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "0789648ab9b2cc9f14fad8018ef52f0339c65dfbeb93688f64dcd0ab4ba1c091"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "0789648ab9b2cc9f14fad8018ef52f0339c65dfbeb93688f64dcd0ab4ba1c091"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "0789648ab9b2cc9f14fad8018ef52f0339c65dfbeb93688f64dcd0ab4ba1c091",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:22+00:00"
+      },
+      "workflowCommand": "npm run test:exam-markdown",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 21,
+      "name": "Test reviewed Mathematics checkpoint assessments",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "77d80e7033b74617a848bb25977d62dd908d996f411389ec781b7e5d01f9b065"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "77d80e7033b74617a848bb25977d62dd908d996f411389ec781b7e5d01f9b065"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "77d80e7033b74617a848bb25977d62dd908d996f411389ec781b7e5d01f9b065",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:23+00:00"
+      },
+      "workflowCommand": "npm run test:math-checkpoint-exams",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 22,
+      "name": "Test HE Q2.5 central-dilation assessment scope",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "2d67483bece2b98d52cc6e227d2c4d2e2891f850b751645dc4c3a64a957de3b6"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "2d67483bece2b98d52cc6e227d2c4d2e2891f850b751645dc4c3a64a957de3b6"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "2d67483bece2b98d52cc6e227d2c4d2e2891f850b751645dc4c3a64a957de3b6",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:35:37+00:00"
+      },
+      "workflowCommand": "npm run test:math-q25-central-dilation-scope",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 23,
+      "name": "Test HE Q2.4/Q2.5 rotation endpoint and GK scope",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "64971cae475e6bb0247b5805778359b384ca99c8ef71154c018cdfed7705e4a3"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "64971cae475e6bb0247b5805778359b384ca99c8ef71154c018cdfed7705e4a3"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "64971cae475e6bb0247b5805778359b384ca99c8ef71154c018cdfed7705e4a3",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:36:26+00:00"
+      },
+      "workflowCommand": "npm run test:hessen-math-q24-q25-scope",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 24,
+      "name": "Test Mathematics Q2 assessment projection and scoring",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "f4ce7fbea8e5c31943cc1d03ce87d6c7aee52b0e178be35c9faa176ea59ba9ac"
+        },
+        {
+          "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+          "exitCode": 0,
+          "outputSha256": "f4ce7fbea8e5c31943cc1d03ce87d6c7aee52b0e178be35c9faa176ea59ba9ac"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "f4ce7fbea8e5c31943cc1d03ce87d6c7aee52b0e178be35c9faa176ea59ba9ac",
+        "inputCommitAtStart": "9325c15266031c787d9617c7eb2bc92735ef6265",
+        "finishedUtc": "2026-11-24T10:37:15+00:00"
+      },
+      "workflowCommand": "npm run test:math-q2-m7-assessment-projection",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 25,
+      "name": "Test Physics practice and Abitur assessment projection",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "1b2d22c371fda72b42ca568b1a2dcb9ad08ec12844fa5194c4cdff4981e78d81"
+        },
+        {
+          "inputCommitAtStart": "46c1838604a4df5ccff6eedc1fb8c04c7d8f8ed4",
+          "exitCode": 0,
+          "outputSha256": "9bc3dec6de4cfa101152b715a5b4d53d464966d6a0d49eb92faee73567a62dd2"
+        },
+        {
+          "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+          "exitCode": 0,
+          "outputSha256": "8fc21f6522a981ccc5e13648cb8a2b9911ca364f5bc812a3369b13c97e91c604"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "8fc21f6522a981ccc5e13648cb8a2b9911ca364f5bc812a3369b13c97e91c604",
+        "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+        "finishedUtc": "2026-11-24T10:59:28+00:00"
+      },
+      "previousFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "9bc3dec6de4cfa101152b715a5b4d53d464966d6a0d49eb92faee73567a62dd2",
+        "inputCommitAtStart": "46c1838604a4df5ccff6eedc1fb8c04c7d8f8ed4",
+        "finishedUtc": "2026-11-24T10:49:39+00:00"
+      },
+      "workflowCommand": "npm run test:physics-assessment-projection",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 26,
+      "name": "Test hard Sek-I/Sek-II learning routes",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "5c520638b0047f3fa1d3b4440b6d68d581d843b670a987e2605dfc715403375f"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "e76a196e2e3c3b935f340c29fcb673afa9e006e6e2c184c2ea8582933f975775"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "e76a196e2e3c3b935f340c29fcb673afa9e006e6e2c184c2ea8582933f975775",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:50:21+00:00"
+      },
+      "workflowCommand": "npm run test:hard-learning-routes",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 27,
+      "name": "Test reviewed canonical Mathematics Sek-I exam routes",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "7759a11f145d9b2262f6b15ceb68f6fb5e022111a0fc46d942f418a14fff8523"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "7759a11f145d9b2262f6b15ceb68f6fb5e022111a0fc46d942f418a14fff8523"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "7759a11f145d9b2262f6b15ceb68f6fb5e022111a0fc46d942f418a14fff8523",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:50:28+00:00"
+      },
+      "workflowCommand": "npm run test:canonical-math-sek1-reviewed-exam-routes",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 28,
+      "name": "Test Q4 Caterer exam coverage and scope",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "482ac3da201b09ed9326342856552df613b91d4b9e0c38d907c1d0aaf6861d66"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "482ac3da201b09ed9326342856552df613b91d4b9e0c38d907c1d0aaf6861d66"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "482ac3da201b09ed9326342856552df613b91d4b9e0c38d907c1d0aaf6861d66",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:50:29+00:00"
+      },
+      "workflowCommand": "npm run test:math-q4-caterer-exam-scope",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-assessment-proofs",
+      "step": 29,
+      "name": "Test learner-facing composition labels",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "fcc57183dab253f812ee0688d45001327b33a9d9",
+          "exitCode": 0,
+          "outputSha256": "8cb418da5b98a83a16664945225f5f4e1a15e71f08c6ce808a32c96b01708c01"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "8cb418da5b98a83a16664945225f5f4e1a15e71f08c6ce808a32c96b01708c01"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "8cb418da5b98a83a16664945225f5f4e1a15e71f08c6ce808a32c96b01708c01",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:50:29+00:00"
+      },
+      "workflowCommand": "npm run test:learner-facing-composition-labels",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 1,
+      "name": "Reserve disk space for the complete repository",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Die Aufräumaktion und ihre 66-GiB-Garantie gelten für GitHub-Runner. Im vorhandenen Vollcheckout waren vor dem Lauf 13.615.218.688 Byte verfügbar.",
+      "workflowCommand": "set -euo pipefail\ntest \"${RUNNER_ENVIRONMENT:-}\" = github-hosted\ntest \"${RUNNER_OS:-}\" = Linux\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# Keep Python, Java/JDK and Node caches plus system build tools.\nsudo rm -rf -- \\\n  /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \\\n  /usr/share/swift /usr/local/julia* /usr/share/miniconda \\\n  /opt/az /opt/microsoft/powershell /usr/local/share/powershell \\\n  /usr/local/share/boost /usr/local/share/vcpkg \\\n  /home/linuxbrew \"${HOME}/.rustup\" \"${HOME}/.cargo\"\nif [ -d /opt/hostedtoolcache ]; then\n  sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \\\n    ! -name Python ! -name 'Java*' ! -iname 'node*' -exec rm -rf -- {} +\nfi\nif ! sudo docker image prune --all --force; then\n  echo \"::warning::Docker image cleanup unavailable; the disk budget is still required.\"\nfi\nsudo apt-get clean\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.\nrequired_bytes=$((66 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail \"${GITHUB_WORKSPACE}\" | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ runner.temp }}"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 2,
+      "name": "Checkout",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Vollständiger ausgecheckter PR-Kopf aa5ac41808 und Fast-forward auf dem Nachweisbranch.",
+      "workflowUses": "actions/checkout@v6"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 3,
+      "name": "Verify disk reserve after the complete checkout",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "13.615.218.688 Byte frei. Die Post-Checkout-Grenze von 8 GiB war erfüllt.",
+      "workflowCommand": "set -euo pipefail\ndf -h .\ndf -i .\ndu -sh .git\nrequired_bytes=$((8 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail . | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ github.workspace }}"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 4,
+      "name": "Use Node.js",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Node 20.20.2, npm 10.8.2.",
+      "workflowUses": "actions/setup-node@v6"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 5,
+      "name": "Install dependencies",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Separates npm ci mit identischer Sperrdatei. Alle 726 installierten und 69 optional fehlenden Einträge stimmten mit dem Arbeitsbaum überein.",
+      "workflowCommand": "npm ci",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 6,
+      "name": "Use Ubuntu package sources",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Bereits bereitgestellte Ubuntu-Werkzeuge im vollständigen lokalen Checkout.",
+      "workflowUses": "./.github/actions/ubuntu-apt"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 7,
+      "name": "Install PDF validation tools",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Poppler 24.02.0, Fontconfig und Liberation Sans/Mono. Alle acht Schriftschnitte wurden vom Buchbau geprüft.",
+      "workflowCommand": "sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 8,
+      "name": "Install pinned Playwright Chromium",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Gepinntes Chromium (Playwright Build 1217) lokal gestartet.",
+      "workflowCommand": "npx --no-install playwright install --with-deps chromium",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 9,
+      "name": "Restore same-run verified goal-book publications",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "22 Publikationsdateien aus demselben GitHub-Lauf, Artefakt 14901327795.",
+      "workflowUses": "actions/download-artifact@v7"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 10,
+      "name": "Use Python for curriculum package boundary checks",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Python 3.12.9 wie im 3.12-Workflowprofil.",
+      "workflowUses": "actions/setup-python@v6"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 11,
+      "name": "Install curriculum package validation dependencies",
+      "result": "PASS",
+      "detail": "Isolierte Installation der festgeschriebenen Validierungsabhängigkeiten.",
+      "checks": [
+        {
+          "exitCode": 0,
+          "outputSha256": "35d48e16aa5b4a1ccb8e7729a10a41bbc04b32fbad1f676a9a746fb6b061cdca"
+        }
+      ],
+      "workflowCommand": "python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 12,
+      "name": "Prepare generated curriculum runtime assets",
+      "result": "PASS",
+      "detail": "Lokale Erzeugung aller Laufzeitartefakte.",
+      "checks": [
+        {
+          "exitCode": 0,
+          "outputSha256": "71c94438a963b6a0ec3e89988107d38f6095a632fa3efa9edc27984a1208c499"
+        },
+        {
+          "label": "final-zb-runtime",
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "71c94438a963b6a0ec3e89988107d38f6095a632fa3efa9edc27984a1208c499"
+        }
+      ],
+      "workflowCommand": "npm run prepare:runtime-assets",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 13,
+      "name": "Check goal visualization runtime assets",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "28f798f01a74a38a5198185811a4990e8b2d1dcb80e547541186bac90f68e72b"
+        },
+        {
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "28f798f01a74a38a5198185811a4990e8b2d1dcb80e547541186bac90f68e72b"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "28f798f01a74a38a5198185811a4990e8b2d1dcb80e547541186bac90f68e72b",
+        "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+        "finishedUtc": "2026-11-24T10:42:52+00:00"
+      },
+      "workflowCommand": "npm run check:goal-visualization-assets",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 14,
+      "name": "Check goal visualization QA freshness",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "a326106e72672f989384e76ee8fba5f7f3b135faba907483a4d80366d92e8803"
+        },
+        {
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "a326106e72672f989384e76ee8fba5f7f3b135faba907483a4d80366d92e8803"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "a326106e72672f989384e76ee8fba5f7f3b135faba907483a4d80366d92e8803",
+        "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+        "finishedUtc": "2026-11-24T10:42:57+00:00"
+      },
+      "workflowCommand": "npm run check:goal-visualization-qa -- --subjects=mathematik,physik,chemie",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 15,
+      "name": "Check goal visualization approval coverage",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "5fa97c6943f6051c8b36937097f7f1cc40ecd089d5e515f29c0267349e76fa95"
+        },
+        {
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "5fa97c6943f6051c8b36937097f7f1cc40ecd089d5e515f29c0267349e76fa95"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "5fa97c6943f6051c8b36937097f7f1cc40ecd089d5e515f29c0267349e76fa95",
+        "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+        "finishedUtc": "2026-11-24T10:42:57+00:00"
+      },
+      "workflowCommand": "npm run check:goal-visualization-approval-coverage",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 16,
+      "name": "Check goal visualization rollout coverage",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "da620ffe5dae9110ae1415f1ae43f6b8b83978b50fc7b6574c3e20c5bfb3080e"
+        },
+        {
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 1,
+          "outputSha256": "bd82e6d726527199e92764f59ea50edfa95766f4622c695aeaf7339667f0c870"
+        },
+        {
+          "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+          "exitCode": 0,
+          "outputSha256": "da620ffe5dae9110ae1415f1ae43f6b8b83978b50fc7b6574c3e20c5bfb3080e"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "da620ffe5dae9110ae1415f1ae43f6b8b83978b50fc7b6574c3e20c5bfb3080e",
+        "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+        "finishedUtc": "2026-11-24T10:43:46+00:00"
+      },
+      "previousFinalRun": {
+        "exitCode": 1,
+        "outputSha256": "bd82e6d726527199e92764f59ea50edfa95766f4622c695aeaf7339667f0c870",
+        "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+        "finishedUtc": "2026-11-24T10:42:58+00:00"
+      },
+      "workflowCommand": "npm run check:goal-visualization-rollout-coverage\nnpm run check:goal-visualization-rollout-coverage:physik\nnpm run check:goal-visualization-rollout-coverage:chemie\nnpm run check:goal-visualization-qa-coverage-parity\n",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 17,
+      "name": "Test full standalone curriculum package builder",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "3a9f734209121b2094ec9288c33c3e13b4872eba1526bd8fa0d5f6c5d55e4c8b"
+        },
+        {
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "9e68683a1307f04f04101666503086535f2e499d1d95d848587ffa7050a85b59"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "9e68683a1307f04f04101666503086535f2e499d1d95d848587ffa7050a85b59",
+        "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+        "finishedUtc": "2026-11-24T10:43:29+00:00"
+      },
+      "workflowCommand": "npm run test:full-standalone-package-builder",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 18,
+      "name": "Build integrated application artifact",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "c804962d5e70a711b7c40d9c5c407d53cf4aa76b26e8e82cefb965531853aaca"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 1,
+          "outputSha256": "8be8e6133b6cd252fcbe9fe0ba084f6888bf80144bb38979f32334c002d2f50a"
+        },
+        {
+          "inputCommitAtStart": "00e0611ad4c5ea49b1cf4a9b780afa925e16ac9d",
+          "exitCode": 0,
+          "outputSha256": "97d052aad226cf3c1ccaedc69fe8d83674c9da71f843b659963745129e9d84ec"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "97d052aad226cf3c1ccaedc69fe8d83674c9da71f843b659963745129e9d84ec",
+        "inputCommitAtStart": "00e0611ad4c5ea49b1cf4a9b780afa925e16ac9d",
+        "finishedUtc": "2026-11-24T11:10:09+00:00"
+      },
+      "previousFinalRun": {
+        "exitCode": 1,
+        "outputSha256": "8be8e6133b6cd252fcbe9fe0ba084f6888bf80144bb38979f32334c002d2f50a",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:56:27+00:00"
+      },
+      "workflowCommand": "npm run build:application",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 19,
+      "name": "Build package-only consumer frontend",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "63215597f84011b299d81903b35726d9b07a9823ec50fe6c5321fa04b47437b1"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "4decab9e77aa84c9c3a9231f69b70f8754bda4b948f53d187ecd992120eae35c"
+        },
+        {
+          "inputCommitAtStart": "43b25cd0918776a63d83c9aa088d9c29d7de5fb5",
+          "exitCode": 0,
+          "outputSha256": "638b938356a39e699f2446019d77947d278ee60ecb9eb8e431d815d08b2a5e25"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "638b938356a39e699f2446019d77947d278ee60ecb9eb8e431d815d08b2a5e25",
+        "inputCommitAtStart": "43b25cd0918776a63d83c9aa088d9c29d7de5fb5",
+        "finishedUtc": "2026-11-24T11:10:27+00:00"
+      },
+      "previousFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "4decab9e77aa84c9c3a9231f69b70f8754bda4b948f53d187ecd992120eae35c",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:57:07+00:00"
+      },
+      "workflowCommand": "npm run build:package-consumer -- --out-dir ../tmp/package-consumer-ci/frontend",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-integrated-build",
+      "step": 20,
+      "name": "Check Goal Source Rationale Build Artifact",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "79e508b4d5621d393d93c7773c3946e0b3b1fc48f77b52ba9015cf848500895c"
+        },
+        {
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "79e508b4d5621d393d93c7773c3946e0b3b1fc48f77b52ba9015cf848500895c"
+        },
+        {
+          "inputCommitAtStart": "43b25cd0918776a63d83c9aa088d9c29d7de5fb5",
+          "exitCode": 0,
+          "outputSha256": "79e508b4d5621d393d93c7773c3946e0b3b1fc48f77b52ba9015cf848500895c"
+        }
+      ],
+      "selectedFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "79e508b4d5621d393d93c7773c3946e0b3b1fc48f77b52ba9015cf848500895c",
+        "inputCommitAtStart": "43b25cd0918776a63d83c9aa088d9c29d7de5fb5",
+        "finishedUtc": "2026-11-24T11:10:28+00:00"
+      },
+      "previousFinalRun": {
+        "exitCode": 0,
+        "outputSha256": "79e508b4d5621d393d93c7773c3946e0b3b1fc48f77b52ba9015cf848500895c",
+        "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+        "finishedUtc": "2026-11-24T10:57:08+00:00"
+      },
+      "workflowCommand": "npm run check:goal-source-rationales:build-artifact",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 1,
+      "name": "Reserve disk space for the complete repository",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "The complete worktree already existed. Destructive hosted-runner SDK cleanup and its pre-checkout 66 GiB reserve were not replayed locally; the actual post-checkout reserve exceeded 8 GiB. No GitHub environment was impersonated.",
+      "checks": [
+        {
+          "label": "29-complete-checkout-and-disk",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "533fc7478b914d9b5df69cd9cf3eb1d4ab6e81b63cc43a2325bc739166e793e5"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ntest \"${RUNNER_ENVIRONMENT:-}\" = github-hosted\ntest \"${RUNNER_OS:-}\" = Linux\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# Keep Python, Java/JDK and Node caches plus system build tools.\nsudo rm -rf -- \\\n  /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \\\n  /usr/share/swift /usr/local/julia* /usr/share/miniconda \\\n  /opt/az /opt/microsoft/powershell /usr/local/share/powershell \\\n  /usr/local/share/boost /usr/local/share/vcpkg \\\n  /home/linuxbrew \"${HOME}/.rustup\" \"${HOME}/.cargo\"\nif [ -d /opt/hostedtoolcache ]; then\n  sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \\\n    ! -name Python ! -name 'Java*' ! -iname 'node*' -exec rm -rf -- {} +\nfi\nif ! sudo docker image prune --all --force; then\n  echo \"::warning::Docker image cleanup unavailable; the disk budget is still required.\"\nfi\nsudo apt-get clean\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.\nrequired_bytes=$((66 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail \"${GITHUB_WORKSPACE}\" | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ runner.temp }}"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 2,
+      "name": "Checkout",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Existing complete isolated worktree, initially aa5ac41808; every tracked path exists. Real commands record their current start/end commits; concurrent authorized repairs are visible rather than attributed to the original head.",
+      "checks": [
+        {
+          "label": "29-complete-checkout-and-disk",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "533fc7478b914d9b5df69cd9cf3eb1d4ab6e81b63cc43a2325bc739166e793e5"
+        }
+      ],
+      "workflowUses": "actions/checkout@v6"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 3,
+      "name": "Verify disk reserve after the complete checkout",
+      "result": "PASS",
+      "detail": "Executed the real df/du and 8 GiB post-checkout disk requirement, together with complete tracked-path existence verification.",
+      "checks": [
+        {
+          "label": "29-complete-checkout-and-disk",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "533fc7478b914d9b5df69cd9cf3eb1d4ab6e81b63cc43a2325bc739166e793e5"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ndf -h .\ndf -i .\ndu -sh .git\nrequired_bytes=$((8 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail . | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ github.workspace }}"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 4,
+      "name": "Use Node.js",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Genuine Node v20.20.2 from .nvmrc and npm10.8.2 are used through PATH; setup-node cache/bootstrap itself is hosted-only.",
+      "checks": [
+        {
+          "label": "00-local-versions",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "984106abfd65ce4e4558abea20e6452f03221abffb491354b6e87c98f64091fd"
+        }
+      ],
+      "workflowUses": "actions/setup-node@v6"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 5,
+      "name": "Install dependencies",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Root executed a fresh isolated npm ci with exit0 observed in its terminal process result (no separately persisted exitcode; explicitly handed over). All795 lock inventory entries were compared,726 installed name/version pairs match and69 optional entries are absent on both. At10:01 Europe/Berlin root placed that same fresh installation physically in this worktree, replacing only its ignored dependency symlink to avoid local Vite external-font403; the main checkout stays unchanged. We made no npm-install mutation.",
+      "workflowCommand": "npm ci",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 6,
+      "name": "Use Ubuntu package sources",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Ubuntu24.04 tools were provisioned in isolated directories. The GitHub APT mirror-configuration action was not applied to this shared host; genuine tool runtime checks and successful rendering verify the local setup.",
+      "workflowUses": "./.github/actions/ubuntu-apt"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 7,
+      "name": "Install PDF validation tools",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Real Poppler24.02, fontconfig and actual Liberation Sans/Mono fonts are used, with no PDF/browser/font fingerprint override. The book job also uses genuine FFmpeg/ffprobe7.0.2-static rather than claiming an Ubuntu APT installation.",
+      "checks": [
+        {
+          "label": "28-media-tools-equivalent",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "405b8e3cede5fe274cea2f3c10817de20c539fa54f369d081b737e565bdc59b4"
+        }
+      ],
+      "workflowCommand": "sudo apt-get update && sudo apt-get install --yes --no-install-recommends poppler-utils fontconfig fonts-liberation",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 8,
+      "name": "Install pinned Playwright Chromium",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Existing lock-matched Playwright1.59.1 Chromium revision1217 was launched successfully; executable digest/version and actual page text are recorded. No browser download was repeated and no fingerprint was spoofed.",
+      "checks": [
+        {
+          "label": "30-genuine-locked-browser-runtime",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "6a46b103038696e7c546894264757faaef39eb1463fd90d9684b7bc45a5253f5"
+        }
+      ],
+      "workflowCommand": "npx --no-install playwright install --with-deps chromium",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 9,
+      "name": "Restore same-run verified goal-book publications",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Root downloaded and extracted the exact artifact14901327795 from the same GitHub run45350395787 (22 files,284MiB). Artifact name follows the actual CI checkout merge2ccff73158b2e09878833efaaa6ba27ac380b7cc (aa5ac41808 into base2a70254c); the original actions log records archive digest07ef7f374598468ed833a7dd45201c96a48e08c2e81cdf46663408cc01cbb558. Real local PDF stack subsequently caused fresh renders instead of accepting a synthetic CI fingerprint.",
+      "workflowUses": "actions/download-artifact@v7"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 10,
+      "name": "Prepare generated curriculum runtime assets",
+      "result": "PASS",
+      "detail": "Executed our separate prepare:runtime-assets after root preparation. Root also records its successful authentic prepare. Initial02 inherited two package-only flags; prepare does not consume those flags.",
+      "checks": [
+        {
+          "label": "02-prepare-runtime-assets",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "71c94438a963b6a0ec3e89988107d38f6095a632fa3efa9edc27984a1208c499"
+        },
+        {
+          "label": "final-zb-runtime",
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "71c94438a963b6a0ec3e89988107d38f6095a632fa3efa9edc27984a1208c499"
+        }
+      ],
+      "workflowCommand": "npm run prepare:runtime-assets",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 11,
+      "name": "Set up Python",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Genuine official actions/python-versions Ubuntu24.04 Python3.10.22 archive, matching published SHA256, extracted to an isolated runtime/venv. This is the actual interpreter used by our commands.",
+      "checks": [
+        {
+          "label": "00-local-versions",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "984106abfd65ce4e4558abea20e6452f03221abffb491354b6e87c98f64091fd"
+        }
+      ],
+      "workflowUses": "actions/setup-python@v6"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 12,
+      "name": "Set up Java for package-consumer smoke",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Existing genuine Corretto25.0.2.10.1 was selected by JAVA_HOME/PATH and verified against .java-version and .corretto-version; no Gradle-cache mutation or setup-java action replay.",
+      "checks": [
+        {
+          "label": "03-exact-java",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "91fb3a51793a80f4b93d47aa0b2c06e7aa2fd5a8544951969e5fd3948a8d1803"
+        }
+      ],
+      "workflowUses": "actions/setup-java@v5"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 13,
+      "name": "Use exact production Corretto build",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Exact real production Corretto25.0.2.10.1 binary is used; version verified, archive re-download/bootstrap unnecessary.",
+      "checks": [
+        {
+          "label": "03-exact-java",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "91fb3a51793a80f4b93d47aa0b2c06e7aa2fd5a8544951969e5fd3948a8d1803"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ncorretto_version=\"$(tr -d '[:space:]' < ../.corretto-version)\"\ninstall_dir=\"${RUNNER_TEMP}/amazon-corretto-${corretto_version}\"\narchive=\"${RUNNER_TEMP}/amazon-corretto-${corretto_version}-linux-x64.tar.gz\"\ncurl -fsSL \"https://corretto.aws/downloads/resources/${corretto_version}/amazon-corretto-${corretto_version}-linux-x64.tar.gz\" -o \"${archive}\"\nmkdir -p \"${install_dir}\"\ntar -xzf \"${archive}\" --strip-components=1 -C \"${install_dir}\"\necho \"JAVA_HOME=${install_dir}\" >> \"${GITHUB_ENV}\"\necho \"${install_dir}/bin\" >> \"${GITHUB_PATH}\"\n\"${install_dir}/bin/java\" -version\n",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 14,
+      "name": "Install package-consumer isolation tools",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Real bwrap0.9.0 and strace6.8 from retained genuine Ubuntu packages; no host APT mutation. Namespace replay binds the exact verified bytes to CI-normal /usr/bin paths without changing product code or isolation requirements.",
+      "checks": [
+        {
+          "label": "04-isolation-tools",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "386150e7679dd8f92f0783e852a572d1ab7d1aa5faf5e2a8793ea5fd3613e352"
+        },
+        {
+          "label": "27-consumer-real-tools-namespace",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "a2ea2265b1aab3660582d14892bcb3af4315dccf66a6e0ce58e1b7df0f66610b"
+        }
+      ],
+      "workflowCommand": "sudo apt-get update && sudo apt-get install -y bubblewrap strace",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 15,
+      "name": "Enable and verify bubblewrap isolation",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "The exact GitHub-only enable script correctly refuses this non-GitHub host (exit2, retained). Real local bwrap user/pid/net/ipc/uts isolation succeeds; package consumer selftest executes its real nested sandbox and strace checks. No GITHUB_ACTIONS spoof, sysctl change or guard relaxation.",
+      "checks": [
+        {
+          "label": "05-enable-bubblewrap-ci-guard",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 2,
+          "outputSha256": "28b0d4e7e7752f2864b976929813d0afeede7b769931439abfd3e19b260b6926"
+        },
+        {
+          "label": "06-real-bubblewrap-local-probe",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "label": "27-consumer-real-tools-namespace",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "a2ea2265b1aab3660582d14892bcb3af4315dccf66a6e0ce58e1b7df0f66610b"
+        }
+      ],
+      "workflowCommand": "bash ../scripts/configure_github_bubblewrap.sh",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 16,
+      "name": "Install Python dependencies",
+      "result": "PASS",
+      "detail": "Exact pinned Python dependency command with Python3.10.22.",
+      "checks": [
+        {
+          "label": "07-python-dependencies",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "36b094bda088764d0deea095126290f25f34612ac42921f782237e819bd20750"
+        }
+      ],
+      "workflowCommand": "python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 17,
+      "name": "Verify curriculum JSON conformance scripts",
+      "result": "PASS",
+      "detail": "Executed the exact bash-n syntax checks of both scripts.",
+      "checks": [
+        {
+          "label": "08-conformance-shell-syntax",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "workflowCommand": "cd ..\nbash -n \\\n  scripts/provision_pinned_fwu_ontology.sh \\\n  scripts/run_curriculum_release_model_conformance.sh\n",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 18,
+      "name": "Validate Curriculum Package Contracts",
+      "result": "PASS",
+      "detail": "All twelve actual commands of the composite workflow step were executed. Original09-k could not find genuine isolated strace inside CI-normal /usr/bin;27 repeats it successfully in an outer tool mount namespace with all inner isolation intact. Release conformance uses the exact workflow SOURCE_PDF_MODE and FULL_PACKAGE_CONFORMANCE=false; no full-package gate was disabled beyond the workflow itself.",
+      "checks": [
+        {
+          "label": "09-a-package-v1",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "9d28e0d27bf830b1fbf2d9866f2df5d86805bab4357e526575db4f7331089ee6"
+        },
+        {
+          "label": "09-b-runtime-catalog",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "7f00d762524068aa0da8b34132bd13f3dcfd004d86ce82fddbfbb5fa5c0f65d1"
+        },
+        {
+          "label": "09-c-schema-catalog",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "557a410b12e30cc5abef3dbcfa201298c672742cf4075e83177f09c77ea1642b"
+        },
+        {
+          "label": "09-d-readiness-self-test",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "148e15610bcb264fd10ae0f6ec9ce07214068bc5a7737aad9c0e9e472f7080ce"
+        },
+        {
+          "label": "09-e-full-standalone-v1-self-test",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "18d942196e3e05d621110b9af83b8aa9c81609f19ae26e0df7c4bd0e40024554"
+        },
+        {
+          "label": "09-f-learning-unit-contracts",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "eb15a4574ad895b862bcaf03b742fa73c733c2734f9d0bb47ad4b12f02c5320c"
+        },
+        {
+          "label": "09-g-package-v12",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "66a18a1fe361925db64380e591a1970f87be276bc87481fd198f820a370cd2b8"
+        },
+        {
+          "label": "09-h-full-standalone-v12-self-test",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "18d942196e3e05d621110b9af83b8aa9c81609f19ae26e0df7c4bd0e40024554"
+        },
+        {
+          "label": "09-i-learning-unit-package-tests",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "48beed2fd040f90218bdeb23dc31b71053f564f04f194fd78002bb5aafa1d26f"
+        },
+        {
+          "label": "09-j-provision-self-test",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "4d31bfe4f37d0949a071d3c0102ea6606c21dbee3315e1b26aa1ecce0b961962"
+        },
+        {
+          "label": "27-consumer-real-tools-namespace",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "a2ea2265b1aab3660582d14892bcb3af4315dccf66a6e0ce58e1b7df0f66610b"
+        },
+        {
+          "label": "22-release-model-conformance",
+          "inputCommitAtStart": "0fc6754665ce1e9b28119dbdcc6b1dd925f2cebb",
+          "exitCode": 0,
+          "outputSha256": "51547de12b103ab8e887448a24fdda62e98b7e5181a8d2091d0ccdd84d54e376"
+        },
+        {
+          "label": "09-k-consumer-self-test",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 1,
+          "outputSha256": "171b8bcaa8ab11b53ce1d1ad816b41b7dc07915f6f42cf544b0afe95ac382a1d"
+        },
+        {
+          "label": "post-scores-22-release-model-conformance",
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "0f44f63c76a300c7bd8019f5d0a96768156b46c2467c8db38d33d55bb898984f"
+        },
+        {
+          "label": "post-zb-22-release-model-conformance",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "0b56d34a6439d15720e32f3a2f04c51968986c4969d373c5a619b0e6985e9a2d"
+        }
+      ],
+      "workflowCommand": "cd ..\npython -B scripts/validate_curriculum_package_contracts.py\npython -B scripts/validate_curriculum_runtime_catalog_contract.py\npython -B scripts/validate_curriculum_schema_catalog_contract.py\npython -B scripts/evaluate_curriculum_package_readiness.py --self-test\npython -B scripts/validate_full_standalone_curriculum_package.py --self-test\npython -B scripts/generate_curriculum_package_learning_unit_contracts.py --check\npython -B scripts/validate_curriculum_package_contracts.py --contracts-dir contracts/curriculum-package/v1.2\npython -B scripts/validate_full_standalone_curriculum_package.py --self-test --contracts-dir contracts/curriculum-package/v1.2\n(cd scripts && python -B test_learning_unit_package.py)\npython -B scripts/provision_curriculum_package.py self-test\npython -B scripts/run_package_consumer_smoke.py --self-test\nSKILLPILOT_FULL_PACKAGE_CONFORMANCE=false \\\n  bash scripts/run_curriculum_release_model_conformance.sh\n",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 19,
+      "name": "Test unit learning material schema gate",
+      "result": "PASS",
+      "detail": "Original local and official hosted failure was three KeyErrors from removed live parent studyRecommendations. Narrow test repair (committed by root as45148b8949) separates full generic schema negatives from real WW prerequisites/child4 ordering.11/11 Python tests and the real four-projection Hesse neighbor now pass; original failure retained.",
+      "checks": [
+        {
+          "label": "10-unit-material-schema",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 1,
+          "outputSha256": "5edb34efb6b437b288279a5415691c59462107aae033a48627c1704191ed4b2c"
+        },
+        {
+          "label": "25-targeted-current-material-schema",
+          "inputCommitAtStart": "0fc6754665ce1e9b28119dbdcc6b1dd925f2cebb",
+          "exitCode": 0,
+          "outputSha256": "59663ef0d06674872210b0e61c4e2b4dd95ced0e99578202482c9e0937346baf"
+        },
+        {
+          "label": "23-unit-material-schema-repaired",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "15a8853461bcad79f918efb2a4d8f32528946bc68b6a1461e182b6652353f0c2"
+        },
+        {
+          "label": "26-targeted-hesse-order-four-projections",
+          "inputCommitAtStart": "0fc6754665ce1e9b28119dbdcc6b1dd925f2cebb",
+          "exitCode": 0,
+          "outputSha256": "62769a4fa49ba8ab616e5ddd5868614ac0c407a87855081f30154df19023db06"
+        },
+        {
+          "label": "24-native-hesse-four-projections",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "62769a4fa49ba8ab616e5ddd5868614ac0c407a87855081f30154df19023db06"
+        },
+        {
+          "label": "post-scores-23-unit-material-schema-repaired",
+          "inputCommitAtStart": "bd4a56f1d0b5cce5f97a88c31079de5024735dec",
+          "exitCode": 0,
+          "outputSha256": "7314c0d8337e3fa24e89855c7ecbe87cb8015ad7e3aa7b4573e890fd990e8d0f"
+        },
+        {
+          "label": "post-zb-23-unit-material-schema-repaired",
+          "inputCommitAtStart": "6f96f9021b7bb6f6acd1c059517cdc976fbddc03",
+          "exitCode": 0,
+          "outputSha256": "da1533ccdf8c2760d00fa313541ba0024dd791da1e3820e918fc44c7a719125f"
+        }
+      ],
+      "workflowCommand": "python -B scripts/test_unit_learning_material_schema.py -v",
+      "workflowWorkingDirectory": "."
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 20,
+      "name": "Test memory deck schema gate",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "11-memory-deck-schema",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "e5b9cc74163f0bf964c9caf52a71f002ea630e7603b343b4cfbe02115177c63e"
+        }
+      ],
+      "workflowCommand": "python -B scripts/test_memory_deck_schema.py -v",
+      "workflowWorkingDirectory": "."
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 21,
+      "name": "Test portable curriculum symlinks",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "12-portable-symlinks",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "7e41d6eef84dc1e449802e2d9e01871d5f7aae36307f1344205333b0868c016e"
+        }
+      ],
+      "workflowCommand": "python -B scripts/test_validate_schemas_symlinks.py -v",
+      "workflowWorkingDirectory": "."
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 22,
+      "name": "Validate Schemas",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "13-all-schemas",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "5203afb1833ca013eb87aeeaf342615f9be20c409b377dd61002b6f34ddecd53"
+        }
+      ],
+      "workflowCommand": "cd .. && python scripts/validate_schemas.py",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 23,
+      "name": "Validate Curriculum Goal IDs (UUIDs)",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "14-uuid-goal-ids",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "6a1204731efb1c657289194f1d041bbd330debf627f41819ff64b5349067a657"
+        }
+      ],
+      "workflowCommand": "cd .. && python scripts/validate_goal_ids_uuid.py",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 24,
+      "name": "Validate Hessen Upper-Secondary Archive Paths",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "15-he-upper-archive",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "deafba21bed4f765c88f857cf9a1af7b0219d9636afd19f5711ca4456778a963"
+        }
+      ],
+      "workflowCommand": "cd .. && python scripts/validate_hessen_upper_secondary_archive_paths.py",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 25,
+      "name": "Validate Hessen Upper-Secondary Legacy References",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "16-he-upper-legacy",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "14731afa672b6f95f5bf0812e2a04765e0fd638f1ead1879c7a897bb046ae670"
+        }
+      ],
+      "workflowCommand": "cd .. && python scripts/validate_hessen_upper_secondary_legacy_refs.py",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 26,
+      "name": "Validate Hessen Chemistry Exam Pipeline",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "17-he-chemistry-exam",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "634e1e610bad554646b9d0185e144e3c58dbfd4eb0f321437ed6bf7eeb5ff115"
+        }
+      ],
+      "workflowCommand": "cd .. && python scripts/validate_chemistry_exam_pipeline.py",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 27,
+      "name": "Validate Hessen Lower-Secondary Archive Paths",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "18-he-lower-archive",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "b1b3ed7fd1d1bf7ea4ed282a695b7c847782f873d6880fee4bf8ce10e6508046"
+        }
+      ],
+      "workflowCommand": "cd .. && python scripts/validate_hessen_lower_secondary_archive_paths.py",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 28,
+      "name": "Validate Hessen Lower-Secondary Legacy References",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "19-he-lower-legacy",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "3ecac28bfbd989b057e6a9d9ae3001feff98f27da8c522436b4a7b0626cfcd13"
+        }
+      ],
+      "workflowCommand": "cd .. && python scripts/validate_hessen_lower_secondary_legacy_refs.py",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 29,
+      "name": "Validate Bavaria Gymnasium Archive Paths",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "20-by-gym-archive",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "bcb70b8e816639100eea1390a01455e30259e7f024ba0f547754faff2d156323"
+        }
+      ],
+      "workflowCommand": "cd .. && python scripts/validate_bavaria_gymnasium_archive_paths.py",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "curriculum-package-contracts",
+      "step": 30,
+      "name": "Validate Bavaria Gymnasium Legacy References",
+      "result": "PASS",
+      "detail": "Executed unchanged product check with its real exit code; independent checks continued after the original schema failure.",
+      "checks": [
+        {
+          "label": "21-by-gym-legacy",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "fa70a3fb6123edbfdbdc94e70f2e496d182d263f02ed77770fae9d3c956bc267"
+        }
+      ],
+      "workflowCommand": "cd .. && python scripts/validate_bavaria_gymnasium_legacy_refs.py",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 1,
+      "name": "Reserve disk space for the complete repository",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "The complete worktree already existed. Destructive hosted-runner SDK cleanup and its pre-checkout 66 GiB reserve were not replayed locally; the actual post-checkout reserve exceeded 8 GiB. No GitHub environment was impersonated.",
+      "checks": [
+        {
+          "label": "29-complete-checkout-and-disk",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "533fc7478b914d9b5df69cd9cf3eb1d4ab6e81b63cc43a2325bc739166e793e5"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ntest \"${RUNNER_ENVIRONMENT:-}\" = github-hosted\ntest \"${RUNNER_OS:-}\" = Linux\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# Keep Python, Java/JDK and Node caches plus system build tools.\nsudo rm -rf -- \\\n  /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \\\n  /usr/share/swift /usr/local/julia* /usr/share/miniconda \\\n  /opt/az /opt/microsoft/powershell /usr/local/share/powershell \\\n  /usr/local/share/boost /usr/local/share/vcpkg \\\n  /home/linuxbrew \"${HOME}/.rustup\" \"${HOME}/.cargo\"\nif [ -d /opt/hostedtoolcache ]; then\n  sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \\\n    ! -name Python ! -name 'Java*' ! -iname 'node*' -exec rm -rf -- {} +\nfi\nif ! sudo docker image prune --all --force; then\n  echo \"::warning::Docker image cleanup unavailable; the disk budget is still required.\"\nfi\nsudo apt-get clean\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.\nrequired_bytes=$((66 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail \"${GITHUB_WORKSPACE}\" | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ runner.temp }}"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 2,
+      "name": "Checkout",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Existing complete isolated worktree, initially aa5ac41808; every tracked path exists. Real commands record their current start/end commits; concurrent authorized repairs are visible rather than attributed to the original head.",
+      "checks": [
+        {
+          "label": "29-complete-checkout-and-disk",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "533fc7478b914d9b5df69cd9cf3eb1d4ab6e81b63cc43a2325bc739166e793e5"
+        }
+      ],
+      "workflowUses": "actions/checkout@v6"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 3,
+      "name": "Verify disk reserve after the complete checkout",
+      "result": "PASS",
+      "detail": "Executed the real df/du and 8 GiB post-checkout disk requirement, together with complete tracked-path existence verification.",
+      "checks": [
+        {
+          "label": "29-complete-checkout-and-disk",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "533fc7478b914d9b5df69cd9cf3eb1d4ab6e81b63cc43a2325bc739166e793e5"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ndf -h .\ndf -i .\ndu -sh .git\nrequired_bytes=$((8 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail . | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ github.workspace }}"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 4,
+      "name": "Use Node.js",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Genuine Node v20.20.2 from .nvmrc and npm10.8.2 are used through PATH; setup-node cache/bootstrap itself is hosted-only.",
+      "checks": [
+        {
+          "label": "00-local-versions",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "984106abfd65ce4e4558abea20e6452f03221abffb491354b6e87c98f64091fd"
+        }
+      ],
+      "workflowUses": "actions/setup-node@v6"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 5,
+      "name": "Install dependencies",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Root executed a fresh isolated npm ci with exit0 observed in its terminal process result (no separately persisted exitcode; explicitly handed over). All795 lock inventory entries were compared,726 installed name/version pairs match and69 optional entries are absent on both. At10:01 Europe/Berlin root placed that same fresh installation physically in this worktree, replacing only its ignored dependency symlink to avoid local Vite external-font403; the main checkout stays unchanged. We made no npm-install mutation.",
+      "workflowCommand": "npm ci",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 6,
+      "name": "Use Ubuntu package sources",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Ubuntu24.04 tools were provisioned in isolated directories. The GitHub APT mirror-configuration action was not applied to this shared host; genuine tool runtime checks and successful rendering verify the local setup.",
+      "workflowUses": "./.github/actions/ubuntu-apt"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 7,
+      "name": "Install FFmpeg and PDF validation tools",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Real Poppler24.02, fontconfig and actual Liberation Sans/Mono fonts are used, with no PDF/browser/font fingerprint override. The book job also uses genuine FFmpeg/ffprobe7.0.2-static rather than claiming an Ubuntu APT installation.",
+      "checks": [
+        {
+          "label": "28-media-tools-equivalent",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "405b8e3cede5fe274cea2f3c10817de20c539fa54f369d081b737e565bdc59b4"
+        }
+      ],
+      "workflowCommand": "sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig fonts-liberation",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 8,
+      "name": "Install pinned Playwright Chromium",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Existing lock-matched Playwright1.59.1 Chromium revision1217 was launched successfully; executable digest/version and actual page text are recorded. No browser download was repeated and no fingerprint was spoofed.",
+      "checks": [
+        {
+          "label": "30-genuine-locked-browser-runtime",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "6a46b103038696e7c546894264757faaef39eb1463fd90d9684b7bc45a5253f5"
+        }
+      ],
+      "workflowCommand": "npx --no-install playwright install --with-deps chromium",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 9,
+      "name": "Restore same-run verified goal-book publications",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Root downloaded and extracted the exact artifact14901327795 from the same GitHub run45350395787 (22 files,284MiB). Artifact name follows the actual CI checkout merge2ccff73158b2e09878833efaaa6ba27ac380b7cc (aa5ac41808 into base2a70254c); the original actions log records archive digest07ef7f374598468ed833a7dd45201c96a48e08c2e81cdf46663408cc01cbb558. Real local PDF stack subsequently caused fresh renders instead of accepting a synthetic CI fingerprint.",
+      "workflowUses": "actions/download-artifact@v7"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 10,
+      "name": "Set up Python for the prerequisite-reduction fixture",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Genuine official actions/python-versions Ubuntu24.04 Python3.10.22 archive, matching published SHA256, extracted to an isolated runtime/venv. This is the actual interpreter used by our commands.",
+      "checks": [
+        {
+          "label": "00-local-versions",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "984106abfd65ce4e4558abea20e6452f03221abffb491354b6e87c98f64091fd"
+        }
+      ],
+      "workflowUses": "actions/setup-python@v6"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 11,
+      "name": "Install Python dependencies for the prerequisite-reduction fixture",
+      "result": "PASS",
+      "detail": "Executed the exact pip requirements command with genuine Python3.10.22; jsonschema4.26.0 is installed.",
+      "checks": [
+        {
+          "label": "01-python-dependencies",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "dd2b054772c4b27eaf0d4e34780a3bfde9e054bea35554f5cceeda5af3283ca0"
+        }
+      ],
+      "workflowCommand": "python -m pip install -r ../scripts/curriculum_package_validation_requirements.txt",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "goal-book-contracts",
+      "step": 12,
+      "name": "Test learning-goal book contracts and publication",
+      "result": "PASS",
+      "detail": "Final full npm lifecycle (including real build/test prehook) uses the actual pinned local stack and no package-only environment flags. The earlier03 attempt is retained as diagnostic because the initial orchestrator supplied package-only flags too broadly.",
+      "checks": [
+        {
+          "label": "31-ci-exact-complete-goal-book-pipeline",
+          "inputCommitAtStart": "4724a3908ef4b8e7fb64dee23b386e3b2a329276",
+          "exitCode": 0,
+          "outputSha256": "0cc10f747c6f7e808c75b9fba1dfc645a8a1976670406adc69a4eccaed5a9ad2"
+        },
+        {
+          "label": "03-complete-goal-book-pipeline",
+          "inputCommitAtStart": "aa5ac41808a97c6f7ca1c2886382a4a98b61693b",
+          "exitCode": 0,
+          "outputSha256": "ac70255692d6dbec9d20bcf7357e77c20fa2f2a4a56b0a05a4e748990d7fb1fa"
+        },
+        {
+          "label": "post-scores-31-ci-exact-complete-goal-book-pipeline",
+          "inputCommitAtStart": "a3a0a8517e33d3519dcd238181e3afedfbaadb95",
+          "exitCode": 0,
+          "outputSha256": "21fbdab0db106a32766377b6bf85e48517df4180e0c51d0f69c6d3c5f0ee2df2"
+        },
+        {
+          "label": "post-zb-31-ci-exact-complete-goal-book-pipeline",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "6c3aaced85eb35d016717585e0da1e1f44c434858e984c5894ed04624e2de283"
+        }
+      ],
+      "workflowCommand": "npm run test:goal-book-pipeline",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 1,
+      "name": "Reserve disk space for the complete repository",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Hosted-only destructive SDK/Docker cleanup is not run on the shared machine. The complete checkout was already provided; the exact post-checkout8GiB disk gate ran successfully as step3.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ntest \"${RUNNER_ENVIRONMENT:-}\" = github-hosted\ntest \"${RUNNER_OS:-}\" = Linux\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# Keep Python, Java/JDK and Node caches plus system build tools.\nsudo rm -rf -- \\\n  /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \\\n  /usr/share/swift /usr/local/julia* /usr/share/miniconda \\\n  /opt/az /opt/microsoft/powershell /usr/local/share/powershell \\\n  /usr/local/share/boost /usr/local/share/vcpkg \\\n  /home/linuxbrew \"${HOME}/.rustup\" \"${HOME}/.cargo\"\nif [ -d /opt/hostedtoolcache ]; then\n  sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \\\n    ! -name Python ! -name 'Java*' ! -iname 'node*' -exec rm -rf -- {} +\nfi\nif ! sudo docker image prune --all --force; then\n  echo \"::warning::Docker image cleanup unavailable; the disk budget is still required.\"\nfi\nsudo apt-get clean\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.\nrequired_bytes=$((66 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail \"${GITHUB_WORKSPACE}\" | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ runner.temp }}"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 2,
+      "name": "Checkout",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Use the provided complete checkout, initiallyaa5ac41808. Each real command records actual HEAD and dirty-input state; no local Actions checkout/bootstrap is claimed.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        }
+      ],
+      "workflowUses": "actions/checkout@v6"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 3,
+      "name": "Verify disk reserve after the complete checkout",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "03-verify-disk-reserve-after-the-complete-checkout.log",
+          "sha256": "3e47d545e16d61f243bb7f4492586ec19c42ae7aeb16d7eaf7c0537b7cbf7c5c"
+        }
+      ],
+      "workflowCommand": "set -euo pipefail\ndf -h .\ndf -i .\ndu -sh .git\nrequired_bytes=$((8 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail . | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain.\"\n  exit 1\nfi\n",
+      "workflowWorkingDirectory": "${{ github.workspace }}"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 4,
+      "name": "Use Node.js",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Use the actual pinnedNode20.20.2/npm10.8.2 toolchain; native --version checks passed. Actions cache provisioning is hosted-only.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        }
+      ],
+      "workflowUses": "actions/setup-node@v6"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 5,
+      "name": "Install dependencies",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Root performed a real separate npmci and atomically mounted physical node_modules in this checkout.795 locked entries compared,726 installed identically,69 platform entries absent on both,0 differences. No parallel app reinstall by this lane.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "npm-ci.log",
+          "sha256": "7eac42cd835e8b5b8c04ac83b63d43255f8c38c3caf3eb605e7d000b9a76c264"
+        },
+        {
+          "artifact": "lockcheck.actual.json",
+          "sha256": "325511c76aa4bcbdb1617327cd6e1c480a2f65a392ff39f34d08dd254a25c8db"
+        }
+      ],
+      "workflowCommand": "npm ci",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 6,
+      "name": "Use Ubuntu package sources",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "No hostAPT source-file mutation. The actual native tools and official Noble packages were verified in isolated paths; packageSHA256 and real capability tests replace local system provisioning.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "provision.actual.json",
+          "sha256": "f69117dd22e5c43dbfe7a8597dc69afb1b5ecc8fabe54dd2251bbff8447000b0"
+        }
+      ],
+      "workflowUses": "./.github/actions/ubuntu-apt"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 7,
+      "name": "Install FFmpeg and PDF validation tools",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "No sudoAPT installation on shared host. Real Poppler24.02/fontconfig/Liberation and, for frontend, real UbuntuFFmpeg6.1.1/ffprobe with drawtext/subtitles are exercised.98 signed-index package hashes were verified before extraction solelyunder/tmp.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        },
+        {
+          "artifact": "provision.actual.json",
+          "sha256": "f69117dd22e5c43dbfe7a8597dc69afb1b5ecc8fabe54dd2251bbff8447000b0"
+        }
+      ],
+      "workflowCommand": "sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig fonts-liberation",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 8,
+      "name": "Install pinned Playwright Chromium",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "No repeated host dependency installation. Actual pinned appChromium launches and complete browser gates exercise the cached genuine browser with local locked modules; Actions --with-deps OS installation is not claimed.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        }
+      ],
+      "workflowCommand": "npx --no-install playwright install --with-deps chromium",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 9,
+      "name": "Restore same-run verified goal-book publications",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Root downloaded genuine same-run artifact14901327795 from hostedrun45350395787 (publicationhead2ccff73158…,22files). Current source/input/output bindings were independently reverified by the real build:application and publication checks; no duplicate publication writer.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "setup.actual.json",
+          "sha256": "827f752942c24b56bd170cf1aac2349d87145ac996082f88c77b0666c1736055"
+        },
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "318048f12af047b31e5f185313b9f3e73aaed0abf46d4005db38d37ab6cf9bbe"
+        }
+      ],
+      "workflowUses": "actions/download-artifact@v7"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 10,
+      "name": "Test deterministic ZIP32 writer",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "10-test-deterministic-zip32-writer.log",
+          "sha256": "0dce640337d7ef26822a5c385e43a47101948a2d6950d9ccf4b26d592d10c0e8"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "0dce640337d7ef26822a5c385e43a47101948a2d6950d9ccf4b26d592d10c0e8"
+        }
+      ],
+      "workflowCommand": "npm run test:deterministic-zip32",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 11,
+      "name": "Test package landscape model parity",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "11-test-package-landscape-model-parity.log",
+          "sha256": "8560e0d5a41a77398265c41a8fa5b04f3658439dcb4fc4858e7500d961d9a457"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "8560e0d5a41a77398265c41a8fa5b04f3658439dcb4fc4858e7500d961d9a457"
+        }
+      ],
+      "workflowCommand": "npm run test:package-landscape-model",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 12,
+      "name": "Test runtime curriculum catalog consumer",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "12-test-runtime-curriculum-catalog-consumer.log",
+          "sha256": "e60615ab6936928b798499e0d3e182121f23527cfd3689cbed9b929fbd817f08"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "e60615ab6936928b798499e0d3e182121f23527cfd3689cbed9b929fbd817f08"
+        }
+      ],
+      "workflowCommand": "npm run test:runtime-curriculum-catalog",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 13,
+      "name": "Test root route policy",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "13-test-root-route-policy.log",
+          "sha256": "36f1f487d5d0bac3deade059c93ea661ee2e9afe7f14e48173f7895d9e14cb8a"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "36f1f487d5d0bac3deade059c93ea661ee2e9afe7f14e48173f7895d9e14cb8a"
+        }
+      ],
+      "workflowCommand": "npm run test:root-route-policy",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 14,
+      "name": "Test Claude v1 first-party start flow",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "14-test-claude-v1-first-party-start-flow.log",
+          "sha256": "cd7708a82b2ae799c81e4437bebe4fc60731687792319a5cc720563767ceb165"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "cd7708a82b2ae799c81e4437bebe4fc60731687792319a5cc720563767ceb165"
+        }
+      ],
+      "workflowCommand": "npm run test:claude-v1-start",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 15,
+      "name": "Test Claude plugin publication consumer",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "15-test-claude-plugin-publication-consumer.log",
+          "sha256": "e6b9d2ea8b96e94bea54ac265313250a57c61723f0b25f5a7c0af793f36cb80c"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "e6b9d2ea8b96e94bea54ac265313250a57c61723f0b25f5a7c0af793f36cb80c"
+        }
+      ],
+      "workflowCommand": "npm run test:claude-plugin-publication",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 16,
+      "name": "Test service-worker navigation policy",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "16-test-service-worker-navigation-policy.log",
+          "sha256": "7ab85939bd6116bd7f764b9b3b32c635b62ecbc7018489090d04c8d9b251dcc7"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "7ab85939bd6116bd7f764b9b3b32c635b62ecbc7018489090d04c8d9b251dcc7"
+        }
+      ],
+      "workflowCommand": "npm run test:service-worker-navigation-policy",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 17,
+      "name": "Test curriculum offering sources",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "17-test-curriculum-offering-sources.log",
+          "sha256": "6c155801394fb858cbf1f834e495d29a9a1654037d3a672631263860550f7820"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "6c155801394fb858cbf1f834e495d29a9a1654037d3a672631263860550f7820"
+        }
+      ],
+      "workflowCommand": "npm run test:curriculum-offering-source",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 18,
+      "name": "Test package goal source evidence consumer",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "18-test-package-goal-source-evidence-consumer.log",
+          "sha256": "01e528c52e7e01e0dafd69cec5486ee4c5fe28c32f445b3ba9d820bd82471afb"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "01e528c52e7e01e0dafd69cec5486ee4c5fe28c32f445b3ba9d820bd82471afb"
+        }
+      ],
+      "workflowCommand": "npm run test:package-goal-source-evidence",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 19,
+      "name": "Test goal source-rationale deployment smoke modes",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "19-test-goal-source-rationale-deployment-smoke-modes.log",
+          "sha256": "f8bc5f1c57df0eb234b247ac5b0a6e56dc669f2cf6d2cd7b7495929cca089e9a"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "f8bc5f1c57df0eb234b247ac5b0a6e56dc669f2cf6d2cd7b7495929cca089e9a"
+        }
+      ],
+      "workflowCommand": "npm run test:goal-source-rationale-deployment-smoke",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 20,
+      "name": "Test goal visualization QA approval model",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "20-test-goal-visualization-qa-approval-model.log",
+          "sha256": "c37ac3557e04bf70d4a6eebf86f95181543ba3221c52359882e15a8bbf1b186e"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "c37ac3557e04bf70d4a6eebf86f95181543ba3221c52359882e15a8bbf1b186e"
+        }
+      ],
+      "workflowCommand": "npm run test:goal-visualization-qa-status\nnpm run test:goal-visualization-qa-model\nnpm run test:goal-visualization-scope\nnpm run test:goal-visualization-rollout-status\nnpm run test:goal-visualization-approval-coverage\n",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 21,
+      "name": "Test learner goal selection",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "21-test-learner-goal-selection.log",
+          "sha256": "7f1bac7485825faf213f637cd38b9fad794c909ffbcbd7a42c39f8586d40f8cf"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "7f1bac7485825faf213f637cd38b9fad794c909ffbcbd7a42c39f8586d40f8cf"
+        }
+      ],
+      "workflowCommand": "npm run validate:learner-goal-selection",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 22,
+      "name": "Check GPT system instruction lengths",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "22-check-gpt-system-instruction-lengths.log",
+          "sha256": "644a9efe27220ff11ff50607e4ac022458b424c5bb0646930983a97313724339"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "644a9efe27220ff11ff50607e4ac022458b424c5bb0646930983a97313724339"
+        }
+      ],
+      "workflowCommand": "npm run check:gpt-system-instruction-lengths",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 23,
+      "name": "Test coach variant selection",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "23-test-coach-variant-selection.log",
+          "sha256": "d0e692bf2bd22906b0063cee7a4edc2e71640e165e937fd95fcae669c62809c4"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "d0e692bf2bd22906b0063cee7a4edc2e71640e165e937fd95fcae669c62809c4"
+        }
+      ],
+      "workflowCommand": "npm run test:coach-variants",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 24,
+      "name": "Test optional learner content materials",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "24-test-optional-learner-content-materials.log",
+          "sha256": "65896d41ebde4ce9f50780200c3d2e5ca5c8723652940ff6fd9fd663128beb89"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "65896d41ebde4ce9f50780200c3d2e5ca5c8723652940ff6fd9fd663128beb89"
+        }
+      ],
+      "workflowCommand": "npm run test:content-materials",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 25,
+      "name": "Test contextual AI transparency",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "25-test-contextual-ai-transparency.log",
+          "sha256": "2d7eaa237748317a427c49eeb27159eb491d7e9ededc03eb50bd59c2715a8e02"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "2d7eaa237748317a427c49eeb27159eb491d7e9ededc03eb50bd59c2715a8e02"
+        }
+      ],
+      "workflowCommand": "npm run test:ai-transparency-ui",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 26,
+      "name": "Test Terms of Use and versioned acceptance",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "26-test-terms-of-use-and-versioned-acceptance.log",
+          "sha256": "0285e1c8d5b6e2119b8901b0c46799351a1b63f5179650184ebcc040d984b65a"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "0285e1c8d5b6e2119b8901b0c46799351a1b63f5179650184ebcc040d984b65a"
+        }
+      ],
+      "workflowCommand": "npm run test:legal-terms",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 27,
+      "name": "Test remote AI transparency artifact crawler",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "27-test-remote-ai-transparency-artifact-crawler.log",
+          "sha256": "9a1921970934ef516d2dac7e623cd9f20c633c9a7396e29490f7a1d38e02fb3c"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "9a1921970934ef516d2dac7e623cd9f20c633c9a7396e29490f7a1d38e02fb3c"
+        }
+      ],
+      "workflowCommand": "npm run test:ai-transparency-artifact",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 28,
+      "name": "Test frontend shell asset verifier",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "28-test-frontend-shell-asset-verifier.log",
+          "sha256": "ca1dc601fa6fb8af31a892b16176a70dfee368bf1c07e64bc690b3e0afea1a96"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "ca1dc601fa6fb8af31a892b16176a70dfee368bf1c07e64bc690b3e0afea1a96"
+        }
+      ],
+      "workflowCommand": "npm run test:frontend-shell-assets",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 29,
+      "name": "Test SkillPilot ID encryption",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "29-test-skillpilot-id-encryption.log",
+          "sha256": "3feb3d613b47e9d0d7907959036f7f5f018b919b60f4408dda6d6d0c90c5be39"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "3feb3d613b47e9d0d7907959036f7f5f018b919b60f4408dda6d6d0c90c5be39"
+        }
+      ],
+      "workflowCommand": "npm run test:skillpilot-id-file",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 30,
+      "name": "Test session setup",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "30-test-session-setup.log",
+          "sha256": "cd489997ea0a0556311cd131fe0b775103c971c626990c485754202d36aa64cb"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "cd489997ea0a0556311cd131fe0b775103c971c626990c485754202d36aa64cb"
+        }
+      ],
+      "workflowCommand": "npm run test:session-setup",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 31,
+      "name": "Test public FAQ copy",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "31-test-public-faq-copy.log",
+          "sha256": "8b534b0fb0c2591c63c8cf62aa7cf106b664e7a2bfada901721367c090a0656f"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "8b534b0fb0c2591c63c8cf62aa7cf106b664e7a2bfada901721367c090a0656f"
+        }
+      ],
+      "workflowCommand": "npm run test:faq",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 32,
+      "name": "Test public landing page and overview",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "32-test-public-landing-page-and-overview.log",
+          "sha256": "292be8b64fdbc340435884919252d5372e1a9e13a0455e1180f7239d1fc309a1"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "292be8b64fdbc340435884919252d5372e1a9e13a0455e1180f7239d1fc309a1"
+        }
+      ],
+      "workflowCommand": "npm run test:public-landing\nnpm run test:public-overview\n",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 33,
+      "name": "Test existing learner linking",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "33-test-existing-learner-linking.log",
+          "sha256": "eeb363f85fbaf2a4ff4df7ff5e2d706d3c9e81c49d5a5d2cd2d209e1e67740ab"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "eeb363f85fbaf2a4ff4df7ff5e2d706d3c9e81c49d5a5d2cd2d209e1e67740ab"
+        }
+      ],
+      "workflowCommand": "npm run test:existing-learner-linking",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 34,
+      "name": "Test trainer course planning",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "34-test-trainer-course-planning.log",
+          "sha256": "eb838e7006d73b12a38639491f13ca72b97934bb5d9917a5e1810a63b896aa25"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "6502025ba13990766ca79cf17606d39ae61b428b",
+          "exitCode": 0,
+          "outputSha256": "eb838e7006d73b12a38639491f13ca72b97934bb5d9917a5e1810a63b896aa25"
+        }
+      ],
+      "workflowCommand": "npm run test:trainer-course-plan",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 35,
+      "name": "Test learner-owned subject plans and Cockpit status",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "35-test-learner-owned-subject-plans-and-cockpit-status.log",
+          "sha256": "65351716ff9882d2be116c967ff2bb6102557a5b39d4d485198f7e51b5a5c22f"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "65351716ff9882d2be116c967ff2bb6102557a5b39d4d485198f7e51b5a5c22f"
+        }
+      ],
+      "workflowCommand": "npm run test:learner-learning-plans",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 36,
+      "name": "Test quiet and bounded learner cockpit startup",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "36-test-quiet-and-bounded-learner-cockpit-startup.log",
+          "sha256": "05261dffc7192403622d0cb3ac594ee729e02e9a1c1248eca0a58119ed349be0"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "05261dffc7192403622d0cb3ac594ee729e02e9a1c1248eca0a58119ed349be0"
+        }
+      ],
+      "workflowCommand": "npm run test:learner-cockpit-startup",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 37,
+      "name": "Test native learner map and focused cockpit regression",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "af062fe12982dfb5ae6cfe68b443106c0bd949c416c46cb9eb1315c88ad653b6"
+        },
+        {
+          "artifact": "37-test-native-learner-map-and-focused-cockpit-regression.log",
+          "sha256": "7718af76f8abe3498faf90680f7b2d3282aa7f05765a8730c0f8138cf6cb45db"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "c9eeba4f6dec5f605a8bc8ebeda5dbc05da67105",
+          "exitCode": 0,
+          "outputSha256": "59f3a142d5ea2ab6256a8b1f14a24701620cfd1134ec8958e9f2a912c9133b8f"
+        },
+        {
+          "label": "learner-map-bound-intro-successor",
+          "command": [
+            "npm",
+            "run",
+            "test:learner-map"
+          ],
+          "cwd": "app",
+          "sourceCommitAtEnd": "92831221d4946b4325956d7287cfa451309f10e1",
+          "inputCommitAtStart": "46c1838604a4df5ccff6eedc1fb8c04c7d8f8ed4",
+          "exitCode": 0,
+          "outputSha256": "ab3a719f0c34b5b85c9ae9cda499c03f4b36d14311d21df77b1e5e8373ae3517"
+        },
+        {
+          "label": "single-assessment-camera",
+          "inputCommitAtStart": "00e0611ad4c5ea49b1cf4a9b780afa925e16ac9d",
+          "exitCode": 0,
+          "outputSha256": "3cc03215f1e26ff0cb290d6e16a810e743548fe74c39a70a21d03136f1881826"
+        }
+      ],
+      "workflowCommand": "npm run test:learner-map",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 38,
+      "name": "Test flashcard box rules",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "38-test-flashcard-box-rules.log",
+          "sha256": "7dcb93b41fdea87e7c2bcf60832a0f6852352fa073ef98df1e3bb74c22b8de86"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "7dcb93b41fdea87e7c2bcf60832a0f6852352fa073ef98df1e3bb74c22b8de86"
+        }
+      ],
+      "workflowCommand": "npm run test:flashcard-box-rules",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 39,
+      "name": "Test read-only learning-goal book UI",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "39-test-read-only-learning-goal-book-ui.log",
+          "sha256": "c88d2841f82d76a0d59046aa7fa1d40ccc0a81226591630367c2d5b27c138f62"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "c88d2841f82d76a0d59046aa7fa1d40ccc0a81226591630367c2d5b27c138f62"
+        }
+      ],
+      "workflowCommand": "npm run test:goal-book-ui",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 40,
+      "name": "Test compact completed session setup",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "40-test-compact-completed-session-setup.log",
+          "sha256": "250b25dc9aa15711cf02ae2b97ad576dec4e8179fd02054cc5998ee5be4455c7"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "250b25dc9aa15711cf02ae2b97ad576dec4e8179fd02054cc5998ee5be4455c7"
+        }
+      ],
+      "workflowCommand": "npm run test:session-setup-ui",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 41,
+      "name": "Test trainer navigation history",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "41-test-trainer-navigation-history.log",
+          "sha256": "3314eaf82dab26b32f6835d92a12692e3551446ffa4256157b553fe7c7a64441"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "3314eaf82dab26b32f6835d92a12692e3551446ffa4256157b553fe7c7a64441"
+        }
+      ],
+      "workflowCommand": "npm run test:trainer-navigation-ui",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 42,
+      "name": "Test trainer Gymnasium scope",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "42-test-trainer-gymnasium-scope.log",
+          "sha256": "3f4c2617002859a4fe64a049ae2486afc3e72804257bbbf7a949b5f78662721b"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "3f4c2617002859a4fe64a049ae2486afc3e72804257bbbf7a949b5f78662721b"
+        }
+      ],
+      "workflowCommand": "npm run test:trainer-gymnasium-scope-ui",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 43,
+      "name": "Test learner data and SkillPilot ID management",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "43-test-learner-data-and-skillpilot-id-management.log",
+          "sha256": "e567818a8f91a84f532e67bdbbec0a0385c745994659274ef29eb117ddfa8f6b"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "e567818a8f91a84f532e67bdbbec0a0385c745994659274ef29eb117ddfa8f6b"
+        }
+      ],
+      "workflowCommand": "npm run test:learner-data-management",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 44,
+      "name": "Test curriculum quality traffic-light interactions",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "44-test-curriculum-quality-traffic-light-interactions.log",
+          "sha256": "e4cde80ba78e32ccef5e7b09bed2cd0b848bbba1a29f471e158d469ebd36df88"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "e4cde80ba78e32ccef5e7b09bed2cd0b848bbba1a29f471e158d469ebd36df88"
+        }
+      ],
+      "workflowCommand": "npm run test:curriculum-quality-ui",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 45,
+      "name": "Test personal curriculum editor",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "c5a287ca9f53bfd3c39ae3bd9f4ce8fddd022230dbd3a146c75cca05f24d7703"
+        },
+        {
+          "artifact": "45-test-personal-curriculum-editor.log",
+          "sha256": "f60b0dcb23151f292c88d64dbc813dc4b7d07d9578f33bb8ad176e9550f21b95"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "f60b0dcb23151f292c88d64dbc813dc4b7d07d9578f33bb8ad176e9550f21b95"
+        }
+      ],
+      "workflowCommand": "npm run test:personal-curriculum-editor",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 46,
+      "name": "Lint",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "af062fe12982dfb5ae6cfe68b443106c0bd949c416c46cb9eb1315c88ad653b6"
+        },
+        {
+          "artifact": "46-lint.log",
+          "sha256": "c31ee7aee37f3feee12610fa6bfbd1ee3b3252ef1922ddb19febfb56dd5d50bc"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "92831221d4946b4325956d7287cfa451309f10e1",
+          "exitCode": 0,
+          "outputSha256": "c31ee7aee37f3feee12610fa6bfbd1ee3b3252ef1922ddb19febfb56dd5d50bc"
+        },
+        {
+          "label": "single-assessment-camera",
+          "inputCommitAtStart": "43b25cd0918776a63d83c9aa088d9c29d7de5fb5",
+          "exitCode": 0,
+          "outputSha256": "c31ee7aee37f3feee12610fa6bfbd1ee3b3252ef1922ddb19febfb56dd5d50bc"
+        }
+      ],
+      "workflowCommand": "npm run lint",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 47,
+      "name": "Build application without regenerating curriculum assets",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "318048f12af047b31e5f185313b9f3e73aaed0abf46d4005db38d37ab6cf9bbe"
+        },
+        {
+          "artifact": "47-build-application-without-regenerating-curriculum-assets.log",
+          "sha256": "149ef4edfc295b6dcf32a5d87a18e2f4601457ece3e349442ff9b982789f10bf"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "2b9a302bd16756ce5e50be2e7166189994d0427fa2c3751bbcf77018f1d3d97b"
+        }
+      ],
+      "workflowCommand": "npm run build:application",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 48,
+      "name": "Check optional learner map stays outside startup precache",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "318048f12af047b31e5f185313b9f3e73aaed0abf46d4005db38d37ab6cf9bbe"
+        },
+        {
+          "artifact": "48-check-optional-learner-map-stays-outside-startup-precache.log",
+          "sha256": "de1aef10d814aabfd7ddf54ccb4857fec944e587de8e4d4c09df6c8f7388722e"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "eca72e437f63bf03d3e47bbce61db4c657dc89e6",
+          "exitCode": 0,
+          "outputSha256": "de1aef10d814aabfd7ddf54ccb4857fec944e587de8e4d4c09df6c8f7388722e"
+        }
+      ],
+      "workflowCommand": "npm run test:learner-map-build",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 49,
+      "name": "Test service-worker update lifecycle",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "318048f12af047b31e5f185313b9f3e73aaed0abf46d4005db38d37ab6cf9bbe"
+        },
+        {
+          "artifact": "49-test-service-worker-update-lifecycle.log",
+          "sha256": "6f6314e54144674155195cbabb1cfb2fbf031b38c1e32e90e0a35edf40577b87"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "00e0611ad4c5ea49b1cf4a9b780afa925e16ac9d",
+          "exitCode": 0,
+          "outputSha256": "6f6314e54144674155195cbabb1cfb2fbf031b38c1e32e90e0a35edf40577b87"
+        }
+      ],
+      "workflowCommand": "npm run test:service-worker-update-lifecycle",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 50,
+      "name": "Check AI transparency inventory",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "318048f12af047b31e5f185313b9f3e73aaed0abf46d4005db38d37ab6cf9bbe"
+        },
+        {
+          "artifact": "50-check-ai-transparency-inventory.log",
+          "sha256": "e70a00bcd1a072d7ca59758f7b61638305d2e9ee8eeca5ee2174f6bd5581a02d"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "00e0611ad4c5ea49b1cf4a9b780afa925e16ac9d",
+          "exitCode": 1,
+          "outputSha256": "4c5855270b5a85862f8cb0fc4508c62aaec6408da7f81f073ac26caa01db14af"
+        },
+        {
+          "label": "regenerated-canonical-count",
+          "inputCommitAtStart": "d373976229f680360242b62e2b1991e0580acb0d",
+          "exitCode": 0,
+          "outputSha256": "e70a00bcd1a072d7ca59758f7b61638305d2e9ee8eeca5ee2174f6bd5581a02d"
+        }
+      ],
+      "previousFinalRunResult": "FAIL",
+      "workflowCommand": "npm run check:ai-transparency-inventory",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 51,
+      "name": "Check frontend shell assets in the built application",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "318048f12af047b31e5f185313b9f3e73aaed0abf46d4005db38d37ab6cf9bbe"
+        },
+        {
+          "artifact": "51-check-frontend-shell-assets-in-the-built-application.log",
+          "sha256": "c916dec6d8aa49ced2cb5eced42f6ba7fb81c54bc09e9f5485088cffb0de79e4"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "00e0611ad4c5ea49b1cf4a9b780afa925e16ac9d",
+          "exitCode": 0,
+          "outputSha256": "c916dec6d8aa49ced2cb5eced42f6ba7fb81c54bc09e9f5485088cffb0de79e4"
+        }
+      ],
+      "workflowCommand": "npm run check:frontend-shell-assets",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 52,
+      "name": "Check AI transparency in the built application",
+      "result": "PASS",
+      "detail": "",
+      "checks": [
+        {
+          "artifact": "steps.actual.json",
+          "sha256": "318048f12af047b31e5f185313b9f3e73aaed0abf46d4005db38d37ab6cf9bbe"
+        },
+        {
+          "artifact": "52-check-ai-transparency-in-the-built-application.log",
+          "sha256": "751db094434901b505a8f1538b44edc6248f53d8ffe653f9672c8078cf4fc9c4"
+        },
+        {
+          "label": "final-zb",
+          "inputCommitAtStart": "00e0611ad4c5ea49b1cf4a9b780afa925e16ac9d",
+          "exitCode": 0,
+          "outputSha256": "751db094434901b505a8f1538b44edc6248f53d8ffe653f9672c8078cf4fc9c4"
+        }
+      ],
+      "workflowCommand": "npm run check:ai-transparency-artifact",
+      "workflowWorkingDirectory": "app"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 53,
+      "name": "Install browser demo-video tool dependencies",
+      "result": "LOCAL_EQUIVALENT",
+      "detail": "Fresh npmci --ignore-scripts and pinned Chromium installation/launch ran in an exact tracked-source /tmp copy of tools/demo-video. Browser --with-deps hostAPT is replaced by available verified libraries. The real isolated Ubuntu binaries use pass-through library-path wrappers, needed when tests intentionally clear LD_LIBRARY_PATH.",
+      "checks": [
+        {
+          "artifact": "setup-counterchecks.actual.json",
+          "sha256": "3363764672f323bb55faeb0662a097d4fcd1c17d79b829f867ac177601dadbf4"
+        },
+        {
+          "artifact": "frontend-demo-video.actual.json",
+          "sha256": "bcb1c3cef400718538584684b5c6a3736aff075ce17060ac8c5ed4932483cf2f"
+        },
+        {
+          "artifact": "frontend-demo-video-ubuntu6-wrapped.actual.json",
+          "sha256": "4df150f9cb07892c5d4216befc63d761e0548e137822e7a0151d65994be7bdad"
+        },
+        {
+          "artifact": "demo-source-copy.actual.json",
+          "sha256": "50c0b2fa6a1310c0896bb7bcc2ee76512a30a1e712e38b51b7c367523b4fb227"
+        },
+        {
+          "artifact": "provision.actual.json",
+          "sha256": "f69117dd22e5c43dbfe7a8597dc69afb1b5ecc8fabe54dd2251bbff8447000b0"
+        }
+      ],
+      "workflowCommand": "npm ci --ignore-scripts\nnpx --no-install playwright install --with-deps chromium\n",
+      "workflowWorkingDirectory": "tools/demo-video"
+    },
+    {
+      "job": "frontend-ci",
+      "step": 54,
+      "name": "Validate reproducible browser demo-video tool",
+      "result": "PASS",
+      "detail": "The original check, both scenario validations, fixture-secret-scoped record and verify-recording commands all ran in the exact isolated tool source copy.",
+      "checks": [
+        {
+          "artifact": "frontend-demo-video-ubuntu6-wrapped.actual.json",
+          "sha256": "4df150f9cb07892c5d4216befc63d761e0548e137822e7a0151d65994be7bdad"
+        },
+        {
+          "artifact": "frontend-demo-ubuntu6-wrapped-04.log",
+          "sha256": "841aa1d5a29387953c9311a7661f1420b6b9b088a684cbd5d46f5932a91fd6f4"
+        },
+        {
+          "artifact": "frontend-demo-ubuntu6-wrapped-05.log",
+          "sha256": "aaa11d448ebe079d692156bcc81d272f4c25606517ab96d0201b9285ae04b776"
+        },
+        {
+          "artifact": "frontend-demo-ubuntu6-wrapped-06.log",
+          "sha256": "8209fbf4be28eb37742797197f3aca7bce1eaf6a35beb35b8b3ad2d52e695837"
+        },
+        {
+          "artifact": "frontend-demo-ubuntu6-wrapped-07.log",
+          "sha256": "1df8ad909b593db115a18807190fb54a7ab72c83594a083e3448defb1e73ced1"
+        },
+        {
+          "artifact": "frontend-demo-ubuntu6-wrapped-08.log",
+          "sha256": "a4494ad5bba32306739652ee3a2381de101abe74c73f62d28464c6cbbbae580a"
+        }
+      ],
+      "workflowCommand": "npm run check\nnpm run demo -- validate --scenario scenarios/example.yaml\nnpm run demo -- validate --scenario scenarios/skillpilot-openai-review.template.yaml\nDEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \\\n  npm run demo -- record --scenario scenarios/example.yaml\nDEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \\\n  npm run demo -- verify-recording --scenario scenarios/example.yaml\n",
+      "workflowWorkingDirectory": "tools/demo-video"
+    }
+  ]
+}

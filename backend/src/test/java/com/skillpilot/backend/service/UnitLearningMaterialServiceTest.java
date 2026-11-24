@@ -153,7 +153,7 @@ class UnitLearningMaterialServiceTest {
         // material no longer carries these two recommendations. The format is checked on a copy.
         assertThat(source.has("studyRecommendations")).isFalse();
         var injected = source.putArray("studyRecommendations");
-        for (String after : List.of("39f52dcb-ff1d-5cad-9ccb-30da803cfa85", "6ea3fb3c-abdc-568f-ab13-97c36dc274e4")) {
+        for (String after : List.of("39f52dcb-ff1d-5cad-9ccb-30da803cfa85", "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9")) {
             injected.addObject().put("beforeGoalId", "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2").put("afterGoalId", after);
         }
         Files.writeString(repository.resolve("unit-learning-materials.json"),
@@ -167,7 +167,7 @@ class UnitLearningMaterialServiceTest {
         assertThat(pairs).extracting(UnitLearningMaterialService.StudyRecommendation::beforeGoalId)
                 .containsOnly("89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2");
         assertThat(pairs).extracting(UnitLearningMaterialService.StudyRecommendation::afterGoalId).containsExactlyInAnyOrder(
-                "39f52dcb-ff1d-5cad-9ccb-30da803cfa85", "6ea3fb3c-abdc-568f-ab13-97c36dc274e4");
+                "39f52dcb-ff1d-5cad-9ccb-30da803cfa85", "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9");
         assertThat(service.orientationBindings(List.of("merged:de-he-gym-physics-gk-g8+unrelated"))).isEmpty();
 
         source.put("schemaVersion", 3);
@@ -193,7 +193,7 @@ class UnitLearningMaterialServiceTest {
         assertThat(g8.flashcardGoalId()).isEqualTo("9f2f5ab8-0ae4-5792-b831-82a05af5895c");
         assertThat(g8.assessmentGoalId()).isEqualTo("a9562b05-c54d-5635-9244-3f7dd24a8642");
         // Both common E.1 extras remain voluntary in every assignment view.
-        String common = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
+        String common = "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9";
         String freeFallSeries = "f41e4e30-794e-5ce4-ba5e-cc72712cd691";
         assertThat(g8.sectionAssessmentPolicy().voluntaryAssessmentGoalIds()).containsExactly(common, freeFallSeries);
 

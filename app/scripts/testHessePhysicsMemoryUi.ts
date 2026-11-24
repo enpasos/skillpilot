@@ -22,7 +22,7 @@ const assessment = canonical.goals.find(goal => goal.id === examId)!
 const requiredAssessmentIds = ['ee7d5f3d-858f-59d6-89b0-e5a7f437f458', '39f52dcb-ff1d-5cad-9ccb-30da803cfa85',
   'c933b7d2-edcb-5747-9378-9762659f260a', 'f13ca187-b680-5f47-b4ad-76bd474bd8a2']
 const horizontalThrow = canonical.goals.find(goal => goal.id === '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2')!
-const horizontalThrowAdditionalAssessmentId = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+const horizontalThrowAdditionalAssessmentId = 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'
 const roadSafety = canonical.goals.find(goal => goal.id === '4a2bf015-052b-4af0-aed7-324259fa1a8a')!
 const nativePhysics = nativeMapLandscapes.find(landscape => landscape.landscapeId === id.physics)!
 const force = nativePhysics.goals.find(goal => goal.id === id.physicsGoal)!
@@ -61,7 +61,7 @@ const deck = { deckId: 'de_gymnasium_physics_mechanics_ephase', title: memory.ti
 function monitorBoard(dialog: Locator) {
   return dialog.evaluateHandle((element, refreshEvent) => {
     const activity = { layouts: 0, busy: 0, loading: 0 }
-    const result = { activity, lastRefresh: '' }
+    const result = { activity, refreshCounts: {} as Record<string, number> }
     const original = Worker.prototype.postMessage
     Worker.prototype.postMessage = function(message, ...args) {
       if (message?.cmd === 'layout') activity.layouts++
@@ -82,7 +82,8 @@ function monitorBoard(dialog: Locator) {
       }
     }).observe(element, { subtree: true, childList: true, attributes: true, attributeFilter: ['aria-busy'], attributeOldValue: true })
     window.addEventListener(refreshEvent, event => {
-      result.lastRefresh = (event as CustomEvent).detail.reason
+      const reason = (event as CustomEvent).detail.reason as string
+      result.refreshCounts[reason] = (result.refreshCounts[reason] ?? 0) + 1
     })
     return result
   }, LEARNER_UI_REFRESH_EVENT)
@@ -118,9 +119,11 @@ async function checkMapLayout(page: Page, dialog: Locator, releaseDeck: () => vo
   await assertBoardStable('selecting another goal on the same board preserves the layout and camera')
   await dialog.locator(`[data-entry-id="${force.id}"][data-active-goal="true"] .lum-node-main`).click()
   await dialog.locator(`[data-selected-goal-id="${force.id}"]`).waitFor()
+  const activeUpdates = await probe.evaluate(value => value.refreshCounts.ACTIVE_GOAL_UPDATE ?? 0)
   changeActiveGoal()
   await page.evaluate(() => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: 'ACTIVE_GOAL_UPDATE' })))
-  await page.waitForFunction(value => value.lastRefresh === 'ACTIVE_GOAL_UPDATE', probe)
+  await page.waitForFunction(({ state, previous }) => (state.refreshCounts.ACTIVE_GOAL_UPDATE ?? 0) > previous,
+    { state: probe, previous: activeUpdates })
   await dialog.locator(`[data-entry-id="${horizontalThrow.id}"][data-active-goal="true"]`).waitFor()
   await dialog.locator(`[data-selected-goal-id="${horizontalThrow.id}"]`).waitFor()
   await assertBoardStable('receiving a new active goal on the same board preserves the layout and camera')
@@ -128,6 +131,12 @@ async function checkMapLayout(page: Page, dialog: Locator, releaseDeck: () => vo
 
 async function centerGoal(dialog: Locator, title: string) {
   const search = dialog.getByRole('textbox', { name: 'In dieser Ebene suchen' })
+  if (await search.count() === 0) {
+    // Small overview/child boards intentionally omit search; use their visible fit control.
+    await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+    await dialog.locator('.lum-node-main').filter({ hasText: title }).first().waitFor()
+    return
+  }
   await search.click()
   await search.fill(title)
   await dialog.getByRole('option').first().waitFor()
@@ -215,15 +224,118 @@ async function checkProjectionGraph(page: Page, dialog: Locator, releaseDeck: ()
   await goal.getByRole('img', { name: 'Noch offen' }).waitFor()
   const originalNode = await goal.elementHandle()
   const beforeMastery = await camera()
+  const masteryUpdates = await probe.evaluate(value => value.refreshCounts.MASTERY_UPDATE ?? 0)
   updateProgress()
   await page.evaluate(() => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: 'MASTERY_UPDATE' })))
-  await page.waitForFunction(value => value.lastRefresh === 'MASTERY_UPDATE', probe)
+  await page.waitForFunction(({ state, previous }) => (state.refreshCounts.MASTERY_UPDATE ?? 0) > previous,
+    { state: probe, previous: masteryUpdates })
   const directEvidence = goal.getByRole('img', { name: 'Direkt nachgewiesen', exact: true })
   await directEvidence.waitFor()
   assert.equal(await directEvidence.getAttribute('data-testid'), 'learning-map-direct-evidence')
   assert.deepEqual(await probe.evaluate(value => value.activity), afterDeck, 'mastery updates without rearranging the graph')
   assert(await originalNode?.evaluate(element => element.isConnected), 'the same graph node remains mounted')
   assert.equal(await camera(), beforeMastery)
+  return initialZoom
+}
+
+/** Real E.1 compares its declared children; each child owns its actual assessment leaves. */
+async function checkNestedProjectionGraph(page: Page, dialog: Locator, releaseDeck: () => void,
+  updateProgress: () => void, viewId: string, verifyRequiredCamera: boolean) {
+  const parentScope = `composition:${viewId}:structure:physics-e1-motion`
+  const parent = dialog.locator(`.lum-canvas[data-scope-id="${parentScope}"][aria-busy="false"]`)
+  const camera = () => dialog.locator('.react-flow__viewport').evaluate(element => (element as HTMLElement).style.transform)
+  const children = [
+    { id: 'physics-e1-uniform-motion', title: 'Gleichförmige Bewegung', assessments: [requiredAssessmentIds[0]] },
+    { id: 'physics-e1-accelerated-and-free-fall', title: 'Freier Fall schwerer Kugeln',
+      assessments: [requiredAssessmentIds[3], 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'] },
+    { id: 'physics-e1-air-and-vacuum', title: 'Kugel und Feder, Luft und Vakuum', assessments: [requiredAssessmentIds[2]] },
+    { id: 'physics-e1-two-motions', title: 'Zwei Bewegungen zugleich',
+      assessments: [requiredAssessmentIds[1], horizontalThrowAdditionalAssessmentId] },
+  ]
+  await parent.waitFor()
+  await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+  await page.waitForFunction(() => document.querySelectorAll('.lum-flow [data-entry-kind="unit"]').length === 4)
+  assert.deepEqual((await parent.locator('[data-entry-kind="unit"]').evaluateAll(nodes =>
+    nodes.map(node => node.getAttribute('data-entry-id')))).sort(),
+  children.map(child => `composition:${viewId}:structure:${child.id}`).sort())
+  const initialZoom = await dialog.getByLabel('Zoomwert').innerText()
+  await dialog.getByRole('button', { name: 'Karte verkleinern', exact: true }).click()
+  const chosenCamera = await camera()
+  const refreshedContext = page.waitForResponse(response => new URL(response.url()).pathname.endsWith('/state'))
+  await page.evaluate(() => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: 'MASTERY_UPDATE' })))
+  const refreshed = await (await refreshedContext).json()
+  if (verifyRequiredCamera) assert.deepEqual(refreshed.levelCompletion.unitAssessment.parts.map((part: { goalId: string }) => part.goalId), requiredAssessmentIds)
+  await parent.waitFor()
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+  assert.equal(await camera(), chosenCamera, 'refresh preserves the manually chosen parent-board camera')
+  await dialog.getByRole('button', { name: 'Lernkarte schließen', exact: true }).click()
+  await dialog.waitFor({ state: 'hidden' })
+  await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
+  await parent.waitFor()
+  assert.equal(await camera(), chosenCamera, 'reopening preserves the explicitly chosen parent scope and camera')
+  const deckProbe = await monitorBoard(dialog)
+  releaseDeck()
+  await parent.locator(`[data-entry-id="${memoryId}"]`).waitFor()
+  await parent.waitFor()
+  assert.deepEqual(await deckProbe.evaluate(value => value.activity), { layouts: 1, busy: 1, loading: 1 },
+    'the real deck changes parent-board topology exactly once')
+  const observed: string[] = []
+  for (const child of children) {
+    const scopeId = `composition:${viewId}:structure:${child.id}`
+    const unit = parent.locator(`[data-entry-id="${scopeId}"]`)
+    await centerGoal(dialog, child.title)
+    await unit.getByRole('button', { name: `In ${child.title} hineinzoomen`, exact: true }).press('Enter')
+    const board = dialog.locator(`.lum-canvas[data-scope-id="${scopeId}"][aria-busy="false"]`)
+    await board.waitFor()
+    await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+    await page.waitForFunction(count => document.querySelectorAll('.lum-flow [data-entry-kind="assessment"]').length === count,
+      child.assessments.length)
+    const leaves = board.locator('[data-entry-kind="assessment"]')
+    const ids = await leaves.evaluateAll(nodes => nodes.map(node => node.getAttribute('data-entry-id')!))
+    assert.deepEqual(ids.sort(), [...child.assessments].sort(), `${child.id}: exact declared assessment membership`)
+    observed.push(...ids)
+    await board.locator(`[data-entry-id="${memoryId}"]`).waitFor()
+    const selectedAssessment = child.assessments.at(-1)!
+    await centerGoal(dialog, canonical.goals.find(goal => goal.id === selectedAssessment)!.title)
+    await board.locator(`[data-entry-id="${selectedAssessment}"] .lum-node-main`).press('Enter')
+    await dialog.locator(`[data-selected-goal-id="${selectedAssessment}"]`).waitFor()
+    assert(await leaves.evaluateAll(nodes => nodes.every(node => getComputedStyle(node).opacity === '1')),
+      'assessments retain full contrast when a peer is selected on their real child board')
+    if (child.id === 'physics-e1-accelerated-and-free-fall') {
+      const protocol = requiredAssessmentIds[3]
+      await centerGoal(dialog, canonical.goals.find(goal => goal.id === protocol)!.title)
+      await board.locator(`[data-entry-id="${protocol}"] .lum-node-main`).press('Enter')
+      await dialog.waitFor({ state: 'hidden' })
+      await page.getByRole('heading', { name: canonical.goals.find(goal => goal.id === protocol)!.title, exact: true }).first().waitFor()
+      await page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open').click()
+      await board.waitFor()
+    }
+    if (child.id === 'physics-e1-two-motions') {
+      for (const assessmentId of child.assessments) await board.locator(
+        `.react-flow__edge[data-id="sibling:${horizontalThrow.id}->${assessmentId}"]`).waitFor({ state: 'attached' })
+      await centerGoal(dialog, horizontalThrow.title)
+      const goal = board.locator(`[data-entry-id="${horizontalThrow.id}"]`)
+      await goal.getByRole('img', { name: 'Noch offen' }).waitFor()
+      const original = await goal.elementHandle()
+      await dialog.getByRole('button', { name: 'Karte verkleinern', exact: true }).click()
+      const before = await camera()
+      const progressProbe = await monitorBoard(dialog)
+      const masteryUpdates = await progressProbe.evaluate(value => value.refreshCounts.MASTERY_UPDATE ?? 0)
+      updateProgress()
+      await page.evaluate(() => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: 'MASTERY_UPDATE' })))
+      await page.waitForFunction(({ state, previous }) => (state.refreshCounts.MASTERY_UPDATE ?? 0) > previous,
+        { state: progressProbe, previous: masteryUpdates })
+      await goal.getByRole('img', { name: 'Direkt nachgewiesen', exact: true }).waitFor()
+      assert.deepEqual(await progressProbe.evaluate(value => value.activity), { layouts: 0, busy: 0, loading: 0 },
+        'mastery refresh preserves the real child graph without a second layout')
+      assert(await original?.evaluate(element => element.isConnected))
+      assert.equal(await camera(), before)
+    }
+    await dialog.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+    await parent.waitFor()
+  }
+  assert.deepEqual(observed.sort(), [...requiredAssessmentIds, horizontalThrowAdditionalAssessmentId,
+    'f41e4e30-794e-5ce4-ba5e-cc72712cd691'].sort(), 'all six assessments remain covered across their four real children')
   return initialZoom
 }
 
@@ -249,6 +361,7 @@ const scenarios: {
   backgroundOverlap?: boolean
   deckDuringSearch?: boolean
   checkChildBoard?: boolean
+  flatCameraFixture?: boolean
 }[] = [
   { width: 1440, viewFile: 'de-he-sekii-gk', checkChildBoard: true },
   ...['de-he-gk-g8', 'de-he-sekii-gk'].flatMap(viewFile => [
@@ -256,6 +369,9 @@ const scenarios: {
   ]),
   ...[{ width: 1024, height: 900 }, { width: 1024, height: 650 }, { width: 1100, height: 900 }, { width: 1440, height: 900 }]
     .map(size => ({ ...size, viewFile: 'de-he-sekii-lk' })),
+  // A separate synthetic flat board retains the earlier three-required-peer camera regression.
+  ...[{ width: 1024, height: 900 }, { width: 1024, height: 650 }, { width: 1100, height: 900 }, { width: 1440, height: 900 }]
+    .map(size => ({ ...size, viewFile: 'de-he-sekii-lk', flatCameraFixture: true })),
   { width: 1440, futureTopic: false, switchDuringSave: false, backgroundOverlap: false },
   { width: 390, futureTopic: false, switchDuringSave: false, backgroundOverlap: false, deckDuringSearch: true },
   { width: 1440, futureTopic: true, switchDuringSave: false, backgroundOverlap: false },
@@ -264,9 +380,31 @@ const scenarios: {
 ]
 try {
   for (const scenario of scenarios) {
-    const { width, futureTopic, switchDuringSave, backgroundOverlap, viewFile, deckDuringSearch, checkChildBoard } = scenario
+    const { width, futureTopic, switchDuringSave, backgroundOverlap, viewFile, deckDuringSearch, checkChildBoard, flatCameraFixture } = scenario
     const dataView = viewFile ? JSON.parse(await readFile(new URL(
       `../../curricula/DE/Gymnasium/composition-views/physik/${viewFile}.view.json`, import.meta.url), 'utf8')) : view
+    if (flatCameraFixture) {
+      const flatten = (nodes: typeof dataView.rootNodes) => {
+        for (const node of nodes) {
+          if (node.kind !== 'structure') continue
+          if (node.id === 'physics-e1-motion') {
+            // Compact synthetic UI board: the response still declares all four required parts.
+            // Keep the current assessed goals and six assessments; outside prerequisites stay context.
+            const goals = ['971beafa-6ba5-4c82-ac8b-7ebf66eec3dd', horizontalThrow.id,
+              ...Array.from({ length: 6 }, (_, index) => `camera-optional-preparation-${index}`),
+              ...requiredAssessmentIds.slice(0, 3), horizontalThrowAdditionalAssessmentId,
+              'f41e4e30-794e-5ce4-ba5e-cc72712cd691']
+            node.children = [...goals.map(goalId => ({ kind: 'goalEntry', goalId })),
+              { kind: 'structure', id: 'camera-fourth-part', label: 'Separate fourth-part camera fixture',
+                children: [{ kind: 'goalEntry', goalId: requiredAssessmentIds[3] }] }]
+            // Four required IDs stay in the response, while only three have positions on this comparison board.
+            delete node.childOrder // The original four-structure order does not describe this synthetic fixture.
+          }
+          else flatten(node.children)
+        }
+      }
+      flatten(dataView.rootNodes)
+    }
     const profile = nativeMapProfile(true)
     if (viewFile) {
       const config = JSON.parse(profile.personalCurriculum)
@@ -275,7 +413,22 @@ try {
       if (dataView.scope.stage === 'CrossStage') config.__skillpilot_stage_scope_sek1__ = { selected: true }
       profile.personalCurriculum = JSON.stringify(config)
     }
-    const dataLandscapes = viewFile ? [nativeMapLandscapes[0], canonical] : landscapes
+    const cameraFoundation = '971beafa-6ba5-4c82-ac8b-7ebf66eec3dd'
+    // Opaque UI geometry only: three nearby required peers, one required part on another board,
+    // and a distant optional peer. The real curriculum and all four returned part IDs stay intact.
+    const cameraRequires = new Map([
+      [cameraFoundation, []], [horizontalThrow.id, [cameraFoundation]],
+      [requiredAssessmentIds[0], [cameraFoundation]], [requiredAssessmentIds[1], [horizontalThrow.id]],
+      [requiredAssessmentIds[2], [cameraFoundation]], [horizontalThrowAdditionalAssessmentId, [horizontalThrow.id]],
+      ['f41e4e30-794e-5ce4-ba5e-cc72712cd691', ['camera-optional-preparation-5']],
+    ])
+    const cameraCanonical = flatCameraFixture ? { ...canonical, goals: [
+      ...canonical.goals.map(goal => cameraRequires.has(goal.id) ? { ...goal, requires: cameraRequires.get(goal.id)! } : goal),
+      ...Array.from({ length: 6 }, (_, index) => ({ ...force, id: `camera-optional-preparation-${index}`,
+        title: `Optional camera context ${index + 1}`, contains: [],
+        requires: [index === 0 ? cameraFoundation : `camera-optional-preparation-${index - 1}`] })),
+    ] } : canonical
+    const dataLandscapes = viewFile ? [nativeMapLandscapes[0], cameraCanonical] : landscapes
     const dataTopic = `composition:${dataView.viewId}:structure:physics-e1-motion`
     const initialGoal = viewFile ? canonical.goals.find(goal => goal.id === '39f52dcb-ff1d-5cad-9ccb-30da803cfa85')! : force
     const mastery: Record<string, number> = {}
@@ -325,8 +478,8 @@ try {
         calculationStatus: 'valid', contextRef: 'camera-scope', profileId: 'automatic:' + dataTopic,
         profileRevision: '1', curriculumGeneration: 'camera-generation', learnerRevision: 1,
         title: { de: 'E.1 Bewegungen und ihre Beschreibung' }, complete: false,
-        masteredTargetCount: 0, waivedTargetCount: 0, pendingTargetCount: 4, targetCount: 4,
-        masteredAssessmentCount: 0, requiredAssessmentCount: 4, waivedTargetGoalIds: [],
+        masteredTargetCount: 0, waivedTargetCount: 0, pendingTargetCount: requiredAssessmentIds.length, targetCount: requiredAssessmentIds.length,
+        masteredAssessmentCount: 0, requiredAssessmentCount: requiredAssessmentIds.length, waivedTargetGoalIds: [],
         assessments: requiredAssessmentIds.map(goalId => ({ goalId, title: { de: canonical.goals.find(goal => goal.id === goalId)!.title },
           mastered: false, startAvailable: false })), profileOptions: [], directAssessmentRunning: false, actions: [],
         unitAssessment: { sectionGoalId: dataTopic, revision: 'camera-contract', passed: false,
@@ -393,25 +546,34 @@ try {
       return json({ error: 'Unexpected isolated browser request' }, 404)
     })
     await page.goto(`${origin}/learner/${initialGoal.id}?l=${id.root}`, { waitUntil: 'domcontentloaded' })
-    await page.getByTestId('learner-current-goal').getByRole('heading', { name: initialGoal.title, exact: true }).first().waitFor({ timeout: 30_000 })
+    await page.getByTestId('learner-current-goal').getByRole('heading', { name: initialGoal.title, exact: true }).first().waitFor({ timeout: 30_000 }).catch(async error => { console.error({ stage: 'initial goal', flatCameraFixture, url: page.url(), body: (await page.locator('body').innerText()).slice(0, 3200), errors, unexpected }); throw error })
     const opener = page.getByTestId('learner-main-content').getByTestId('learner-learning-map-open')
     await opener.click()
     const dialog = page.getByTestId('learner-learning-map-dialog')
-    await page.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor({ timeout: 15_000 }).catch(async error => {
+    const initialTopic = viewFile && !flatCameraFixture
+      ? `composition:${dataView.viewId}:structure:physics-e1-two-motions` : dataTopic
+    await page.locator(`.lum-canvas[data-scope-id="${initialTopic}"][aria-busy="false"]`).waitFor({ timeout: 15_000 }).catch(async error => {
       console.error({ width, board: await page.locator('.lum-canvas').getAttribute('data-scope-id'),
         map: await dialog.innerText(), errors, unexpected })
       throw error
     })
+    if (viewFile && !flatCameraFixture) {
+      assert.equal(await dialog.locator('.lum-canvas').getAttribute('data-scope-id'), initialTopic,
+        'the real selected B assessment opens its actual two-motions child')
+      await dialog.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+      await dialog.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
+      console.log(JSON.stringify({ navigation: 'actual child to parent via visible up button', initialTopic, parent: dataTopic, width }))
+    }
     assert.equal(await dialog.locator('.lum-scope-actions, .lum-inspector, .unit-introduction, [data-testid="unit-assessment-summary"], [data-testid="learner-unit-assignment"], [data-testid="learning-map-flashcard-practice"]').count(), 0,
       'the real subject map shows only its header and graph, including nested topic boards')
     if (checkChildBoard) {
       releaseDeck()
       const nestedScope = `composition:${dataView.viewId}:structure:physics-e1-accelerated-and-free-fall`
-      const title = 'Beschleunigte Bewegung und freier Fall'
+      const title = 'Freier Fall schwerer Kugeln'
       await centerGoal(dialog, title)
       const unit = dialog.locator(`[data-entry-id="${nestedScope}"]`)
       assert.equal(await unit.getByRole('button', { name: /üben/i }).count(), 0)
-      await unit.getByRole('button', { name: `In ${title} hineinzoomen`, exact: true }).click()
+      await unit.getByRole('button', { name: `In ${title} hineinzoomen`, exact: true }).press('Enter')
       const board = dialog.locator(`.lum-canvas[data-scope-id="${nestedScope}"][aria-busy="false"]`)
       await board.waitFor()
       await board.locator('[data-entry-id="09029573-864f-40ca-bf8a-cee7bf6dcb73"] .lum-node-main').waitFor()
@@ -423,7 +585,9 @@ try {
       continue
     }
     if (viewFile) {
-      const initialZoom = await checkProjectionGraph(page, dialog, releaseDeck, () => { mastery[horizontalThrow.id] = 1 }, cameraContext)
+      const initialZoom = flatCameraFixture
+        ? await checkProjectionGraph(page, dialog, releaseDeck, () => { mastery[horizontalThrow.id] = 1 }, cameraContext)
+        : await checkNestedProjectionGraph(page, dialog, releaseDeck, () => { mastery[horizontalThrow.id] = 1 }, dataView.viewId, cameraContext)
       if (width === 390 || width === 1440) {
         const cases = [
           { id: '716acf20-d882-5152-9735-099876d631b4', phase: 'physics-q1', source: 'Übungen' },
@@ -446,7 +610,8 @@ try {
       }
       assert.deepEqual(errors, [])
       assert.deepEqual(unexpected, [])
-      console.log(`${viewFile} ${width}×${scenario.height}: six assessments, graph B→A; initial zoom ${initialZoom}, stable on mastery refresh`)
+      assert.deepEqual(writes, [], 'browsing actual assessments and their D handoff never writes a learner result')
+      console.log(`${flatCameraFixture ? 'synthetic three-visible/four-required camera fixture' : 'real nested ' + viewFile} ${width}×${scenario.height}: initial zoom ${initialZoom}, stable on mastery refresh`)
       await context.close()
       continue
     }

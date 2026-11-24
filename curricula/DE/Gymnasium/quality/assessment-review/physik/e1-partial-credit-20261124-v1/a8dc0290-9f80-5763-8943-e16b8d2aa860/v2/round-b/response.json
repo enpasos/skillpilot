@@ -1,0 +1,102 @@
+{
+  "reviews": [
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "Die Musterlösungen sind physikalisch und numerisch richtig. In A gilt mit τ = t − 2 s die Beziehung v = −1 m/s + (2 m/s²)τ und s = 5 m − (1 m/s)τ + (1 m/s²)τ². Bei t = 2, 2,5, 3 und 4 s erhält man der Reihe nach die Geschwindigkeiten −1, 0, 1 und 3 m/s und die Orte 5, 4,75, 5 und 7 m. Bei 2,5 s hat die Ortsparabel ihr Minimum. Die Beschleunigung bleibt dort +2 m/s². Die Rechteckfläche im t-a-Diagramm ergibt Δv = +4 m/s. Die beiden Dreiecksflächen im t-v-Diagramm ergeben −0,25 m und +2,25 m, somit +2 m Ortsänderung und 2,50 m Strecke. Der vorhergesagte Ort weicht um 0,03 m von 7,03 m ab und liegt im Intervall von 6,98 bis 7,08 m. In B gilt bis zum Stopp in SI-Einheiten v(t) = 6 − 2t und s(t) = 6t − t². Zur horizontalen Beschleunigungslinie bei −2 m/s² gehören die fallende Geschwindigkeitsgerade und die nach unten gekrümmte Ortsparabel mit waagerechter Tangente bei 3 s und 9 m. Das Programm liefert bei 5 s −4 m/s und 5 m. Das stehen bleibende Fahrzeug befindet sich dann bei 9 m mit v = 0 und a = 0. Die weitere negative Beschleunigung bedürfte eines physikalischen Grundes. Fundstelle: canonical-input.json, Z. 172–175.",
+      "preparationReview": "Die einzige unmittelbare Voraussetzung ist LAWS, 262f807a-30d0-503e-986f-856cbd048e8e. Die rekursive Prüfung aller requires-Verweise ergibt genau die 66 verschiedenen Ziele der hinterlegten Vorbereitung und 98 interne Kanten. LAWS baut auf BES und dem Deuten von Variablentermen auf. Unter BES liegen Momentan- und Durchschnittsgeschwindigkeit, Funktionswerte, geometrische Flächen und vorzeichenbehaftete Ortsänderungen im t-v-Diagramm. Die weiteren Voraussetzungen tragen unter anderem Zeitintervalle und Änderungsraten, Steigungen, Achsen und Einheiten, Messauflösung, Beträge und das Rechnen mit rationalen Zahlen. Damit lässt sich A durch Aufaddieren der Geschwindigkeitsänderungen und der gerichteten Teilflächen aus den Anfangswerten lösen. Auch B ist ohne Differential- oder Integralrechnung zugänglich. Fundstellen: canonical-input.json, Z. 123–125, 231–236, 284–974 und 1262–1329.\n\nSN J9 — allow für das freiwillige Angebot nach vollständiger Vorbereitung. Im Lernbereich 3 setzt Sachsen ausdrücklich die Bedingung „ohne Anfangsgeschwindigkeit“. Aufgeführt sind a = Δv/Δt, v = at und s = at²/2, die Steigung im t-v-Diagramm, der Weg als Fläche sowie Bremsverzögerung, Bremsweg und Bremskraft. Lernbereich 4 schließt das Erfassen und Auswerten von Bewegungsdiagrammen ein. Das Arbeiten ab t = 2 s und s = 5 m mit negativem Anfangs-v, die Umkehr, die vorzeichenbehaftete Flächenbilanz und das Bremsen aus 6 m/s mit anschließender hypothetischer Rückfahrt sind vorbereitete eigene Übertragungen. Ein allgemeines Bewegungsgesetz mit beliebigen Anfangswerten lässt sich aus diesen Seiten als sächsische J9-Pflicht nicht ableiten. Fundstelle: SN-retained-source.pdf, physische S. 36–38, gedruckte S. 24–26, Lernbereiche 3 und 4.\n\nST J9 — allow für das freiwillige Angebot nach vollständiger Vorbereitung. Die J9-Kompetenzen umfassen Bewegungsdiagramme, Flächen unter Graphen, Wechselwirkungen und die Beurteilung von Verkehrsaufgaben. Die Wissensbestände ordnen die drei Diagramme der „gleichmäßig beschleunigten Bewegung ohne Anfangsbedingungen“ zu und führen „Bewegungen mit Anfangsbedingungen“ gesondert auf. Das stützt den Anschluss der Aufgabe. Die konkrete Rekonstruktion aus dem zeitversetzten Protokoll, der Richtungswechsel, die Prüfung der Kontrollmarke und die Begründung der Modellgrenze bleiben Eigenleistungen. Das auf S. 46 aufgeführte verbindliche Schülerexperiment ist eine gesonderte Leistung. Fundstelle: ST-retained-source.pdf, physische S. 45–46, „Mechanik der Punktmasse“, Kommunikations- und Bewertungskompetenz, grundlegende Wissensbestände und verbindliche Schülerexperimente.",
+      "directCoverageReview": "R2 — reject für die vorliegende 19/20-Regel. Geprüft ist ausschließlich coverageReviews[0] der Einheit physics-constant-acceleration, Revision 2026-11-23-v4, mit der Zuordnung D′ → BES. BES verlangt das Erläutern des Modells mit konstanter Beschleunigung und das Beschreiben der Bewegung in jeder der drei Darstellungen t-s, t-v und t-a. Die Aufgabe bietet für alle vier Leistungen Gelegenheit. Für die drei Darstellungen trägt auch die Schwelle: Fehlt eine Kurvenart in beiden Fällen, entfallen 1 BE in A und 0,5 BE in B. Selbst mit sämtlichen richtigen Werten und Gesetzen bleiben höchstens 18,5 BE.\n\nDie Lücke betrifft das Erläutern. Nur der Rechteckhöhenpunkt verlangt eindeutig, konstantes a über ein Zeitintervall mit gleichen vorzeichenbehafteten Geschwindigkeitsänderungen in gleich langen Zeiten zu verbinden. Der Umkehrpunkt lässt sich mit Vorzeichenwechsel, Ortsminimum und der richtigen lokalen Aussage über a und die Steigung an der Nullstelle verdienen. Die beiden Begründungen in B betreffen den Widerspruch zum Stillstand und die physikalische Voraussetzung weiterer Beschleunigung. Damit kann eine ausdrücklich falsche Erklärung der Bedeutung von konstantem a bei sonst richtigen Einzelleistungen mit 19 BE bestehen. Das ist ein Mangel des individuellen BES-Nachweises. Der ursprüngliche Aufgabentext selbst enthält die nötigen Anlässe zur Erklärung. BES bleibt deshalb das sachgerechte einzige Deckungsziel einer begrenzten Rasterrevision. Fundstellen: canonical-input.json, Z. 172–203, 218–222, 989–1001 und 1062–1099.\n\nDas weitergehende Versprechen der Einheit umfasst die eigene Fallmessung an einer schweren Kugel, ein Höhen-Zeit-Protokoll, die Bestimmung der Beschleunigung, die Bewegungsgesetze und eine Angabe zur Genauigkeit eigener Messwerte. D′ gibt Beschleunigungen und eine Kontrollmarke vor. Der Vergleich mit deren Toleranz belegt genau diesen Vergleich. Eine experimentelle Qualifikation, das gesonderte Versuchsziel 09029573-864f-40ca-bf8a-cee7bf6dcb73 und der Abschluss des ganzen Einheitenversprechens liegen außerhalb dieser R2-Zeile. Die fehlende Fallmessung ist kein Ablehnungsgrund für BES. Fundstellen: canonical-input.json, Z. 979–983, 1072–1099 und 1176–1189.",
+      "languageReview": "DE und EN geben dieselben Anfangswerte, Zeitintervalle, Arbeitsaufträge, Programmwerte und Modellfragen vor. „Construct all three motion graphs“ entspricht in A den drei ausdrücklich benannten deutschen Darstellungen. In B macht s₀ = 0 die verlangte Ortsänderung zahlenmäßig gleich dem Ort. Die beidsprachigen Ergänzungen zur Lösung stimmen mit den fünf Bewertungs-IDs überein. A ergibt 6 + 3 + 3 = 12 BE, B ergibt 4 + 4 = 8 BE. Beide Aufgabenfassungen drucken 12 und 8, beide Lösungstexte nennen 19/20, und die strukturierten Felder lauten ebenfalls 19 und 20. Im Original ergaben dreimal 4 BE in A und zweimal 4 BE in B dieselben Aufgabenmaxima bei einer Schwelle von 20. Die fehlenden Wortabstände im neuen Raster erschweren das Lesen. Der entscheidende Unterschied zwischen der lokalen Umkehraussage und der Erklärung einer konstanten Änderungsrate besteht in beiden Sprachen. Fundstellen: canonical-input.json, Z. 70–102 und 172–203.",
+      "recommendedRequires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "recommendedCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "recommendedPassingPoints": 19,
+      "gradedSubmissions": [
+        {
+          "submissionId": "Y",
+          "demonstratedCore": true,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 6,
+              "reason": "Die drei tatsächlich gezeichneten SVG-Kurven zeigen die konstante Beschleunigung, die steigende Geschwindigkeitsgerade und die Ortsparabel mit Minimum. Anfangswerte, Marken, Einheiten und Zeitbezug stimmen."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "Y erklärt den Vorzeichenwechsel am Ortsminimum bei unveränderter Steigung, den Zuwachs um 2 m/s je Sekunde aus der konstanten Rechteckhöhe und beide gerichteten Ortsänderungen aus den v-Flächen."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "Ortsänderung +2 m, Strecke 2,50 m mit Begründung über die Beträge und Vergleich von 7 m mit dem korrekten Kontrollintervall sind vollständig."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 4,
+              "reason": "Alle drei Graphen und die zugehörigen Werte beziehungsweise Gesetze sind für die Bremsphase richtig. Stoppzeit 3 s und Bremsweg 9 m ergeben die beiden letzten halben Punkte."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 3,
+              "reason": "v(5) = −4 m/s ist richtig. Bei s(5) ist der Ansatz richtig, aber 30 − 25 wurde als 4 m ausgewertet. Rückwärtsfahrt gegenüber realem Stillstand und die eigenständige Begründung mit v = a = 0 nach dem Stopp und einem nötigen Kraftgrund sind richtig."
+            }
+          ],
+          "total": 19,
+          "passes": true,
+          "rationale": "Y belegt den gesamten BES-Kern einschließlich der physikalischen Erklärung und aller drei Kurvenarten. Der einzelne Rechenfehler kostet genau 1 BE. A ergibt 12 und B 7 BE. Fundstelle: canonical-input.json, Z. 976."
+        },
+        {
+          "submissionId": "X",
+          "demonstratedCore": false,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 5,
+              "reason": "Die t-v- und t-s-Kurven sind gezeichnet. Alle drei quantitativen Nachweise einschließlich a = +2 m/s² an der Umkehr liegen vor. Für den fehlenden t-a-Verlauf entfällt 1 BE."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "X erklärt die Umkehr, die unveränderte Steigung, die Rechteckhöhe als gleichen Geschwindigkeitszuwachs je Sekunde und die beiden gerichteten v-Flächen im Text. Das erfüllt alle drei Deutungskriterien."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "Ortsänderung, Strecke mit Betragsbegründung und die Intervallprüfung sind richtig."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 3.5,
+              "reason": "Die Bremsbeschleunigung −2 m/s² ist durch Gesetz und Text belegt. Dafür bleiben 0,5 BE erhalten. Die t-v- und t-s-Graphen samt Gesetzen sowie 3 s und 9 m sind richtig. Es fehlen allein die 0,5 BE für den t-a-Graphen in B."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 4,
+              "reason": "Beide Programmwerte, der Vergleich der Rückwärtsfahrt mit dem Stillstand und die Begründung über v = a = 0 sowie die erforderliche Kraftwirkung sind belegt."
+            }
+          ],
+          "total": 18.5,
+          "passes": false,
+          "rationale": "X erreicht 11 BE in A und 7,5 BE in B. In der gesamten Einreichung fehlt die t-a-Zeichnung. Alle nachgewiesenen Zahlen-, Gesetzes- und Erklärungsleistungen behalten ihre Punkte. Fundstelle: canonical-input.json, Z. 977."
+        }
+      ],
+      "strongestIndependentFalsePassAttempt": "Eine weitere Einreichung zeichnet alle sechs Kurven richtig und erklärt die Umkehr zutreffend: v wechselt das Vorzeichen, s hat dort sein Minimum, a ist auch dort +2 m/s² und die gezeichnete v-Gerade hat beiderseits dieselbe Steigung. Zur a-Fläche schreibt sie, die Geschwindigkeit ändere sich im gesamten Intervall um 4 m/s. Dann erklärt sie ausdrücklich, ein konstantes a lege nur diesen Mittelwert über das Gesamtintervall fest und erlaube verschieden große Δv in gleich langen Teilintervallen. Für B setzt sie die Gesetze richtig ein, beschreibt die Rückfahrt und begründet, warum ein stehen bleibendes Fahrzeug nach dem Stopp v = 0 und a = 0 verlangt. Damit ist die Bedeutung von konstantem a fachlich falsch erklärt. Nach dem Wortlaut verliert sie genau den Rechteckhöhenpunkt. Die lokale Umkehraussage, die tatsächlich richtigen Graphen und die Stillstandsbegründung erfüllen ihre jeweils eigenen Kriterien. 6 + 2 + 3 + 4 + 4 = 19 BE, also bestanden. Das Gegenbeispiel hängt weder an einem fehlenden Merksatz noch an der Antwortsprache. Demgegenüber bleiben bei einer global fehlenden Kurvenart höchstens 18,5 BE und bei beiden fehlenden physikalischen Modellgründen in B höchstens 18 BE. Fundstellen: canonical-input.json, Z. 174–175, 181–203 und 218–222.",
+      "strongestIndependentFalseFailureAttempt": "Eine fachlich vollständige Lösung schreibt bei der unteren Intervallgrenze versehentlich 6,97 m, berechnet die obere Grenze richtig und prüft die Lage von 7 m folgerichtig. Bei vollständigen übrigen Leistungen ergibt die tatsächliche Regel 6 + 3 + 2 + 4 + 4 = 19 BE. Der Fehler wird einmal belastet. Gleichwertig ist der direkte Vergleich des Abstands 0,03 m mit der Toleranz 0,05 m. Auch 2,5 m und 2,50 m bezeichnen hier dasselbe Ergebnis. Eine Schwelle oberhalb von 19 würde die Lösung mit dem einzelnen Grenzfehler und die Einreichung Y ausschließen. Jede Schwelle bis einschließlich 19 lässt das Gegenbeispiel mit der falschen Modellerklärung bestehen. Eine reine Schwellenverschiebung kann den Konflikt folglich nicht auflösen.",
+      "requiredCorrections": [
+        "Die zentrale Erklärung von konstantem a muss an den bereits gestellten Deutungsaufträgen zusammen mehr als 1 BE tragen, ohne eine einzelne Antwortstelle zur Pflicht zu machen. Eine begrenzte Korrektur bei gleichen ID-Maxima ist möglich. In acceleration-log_2 den bisherigen Rechteckpunkt in 0,5 BE für die Fläche als Δv im Gesamtintervall und 0,5 BE für den Zusammenhang zwischen konstanter Höhe und gleicher Änderung je gleicher Zeit teilen. In acceleration-log_5 je 0,5 BE für die beiden Programmwerte geben und 1 BE dafür, dass die Fortsetzung wegen der gleichbleibenden negativen Änderungsrate die Geschwindigkeit auch nach dem Nulldurchgang weiter senkt. Je 1 BE bleiben für den Vergleich mit dem Stillstand und dessen eigenständige physikalische Begründung. So kosten die beiden fehlenden Erklärungen zusammen 1,5 BE. Beide können einzeln entfallen, ohne das Bestehen auszuschließen.",
+        "Die geänderten Teilpunkte und ihre fachlichen Bedeutungen in beiden Lösungssprachen und in den strukturierten Schritten deckungsgleich ausweisen. Eine erklärte konstante t-v-Steigung, eine beschriftete grafische Begründung oder ein gleichwertiger Zusammenhang an anderer Antwortstelle muss zählen. Eigenständig richtige Zahlen, Graphen und lokale Aussagen behalten ihren Kredit. Mit dieser Korrektur sind eine einzige Summenschwelle von 19/20 und die gedruckten Maxima A 12 und B 8 tragfähig."
+      ],
+      "materialContinuityAndRecognition": "Der Vergleich zeigt vier geänderte Felder: reviewNote, scoring und die beiden Lösungstexte. Die beidsprachige Lernaufgabe, ihre Anfangswerte und gedruckten Maxima, Voraussetzung, Zielzuordnung und allgemeine Länderzuordnung stimmen überein. Die neue Bewertung ändert den Bestehensentscheid und verlangt eine eigene R2-Beurteilung. Die sachliche Einordnung als freiwillige vorbereitete Aufgabe und die bestehende own-Platzierung in physics-constant-acceleration bleiben begründet. Die dortigen Rollen umfassen das gewöhnliche Ziel BES, die beiden Assessments D′ und D sowie die Orientierung. Die vier hessischen E.1-Pflichtplätze sind in Reihenfolge ee7d5f3d-858f-59d6-89b0-e5a7f437f458, 39f52dcb-ff1d-5cad-9ccb-30da803cfa85, c933b7d2-edcb-5747-9378-9762659f260a und f13ca187-b680-5f47-b4ad-76bd474bd8a2. Der vierte Platz gehört D. Der bestehende hessische Planungscredit für BES ist in den sechs angegebenen HE-Ansichten ausschließlich an diesen Pflichtteil gebunden. D′ hat keinen E.1-Pflichtplatz und erzeugt keinen Planungscredit. Das hier empfohlene einzelne Deckungsziel bezeichnet den fachlichen Umfang der Rasterkorrektur. Für den vorliegenden Kandidaten gilt das negative R2-Urteil. Fundstellen: canonical-input.json, Z. 70–102, 158–215, 1080–1175, 1250–1261 und 1330–1333.",
+      "semanticKind": "practiceAssessment",
+      "semanticKindReason": "Die Lernenden bearbeiten selbstständig zwei vorgegebene Bewegungssituationen, zeichnen und deuten Diagramme, rechnen und beurteilen eine Modellgrenze. Die Lösung ordnet diesen beobachtbaren Leistungen Punkte und eine Bestehensschwelle zu. Das trägt die technische Einordnung practiceAssessment auch bei Korrekturbedarf am Raster."
+    }
+  ],
+  "limitations": [
+    "Das Urteil betrifft den exakten vorgelegten Kandidaten. Die 19 BE im Empfehlungsfeld gelten für die beschriebene begrenzte Rasterkorrektur. X und Y wurden ausschließlich nach der tatsächlich vorliegenden Regel bewertet.",
+    "Die Quellenurteile gelten für die beiden angebotenen freiwilligen J9-Platzierungen nach vollständiger Vorbereitung. Die frühere Freigabenotiz und die frühere R2-Zeile liefern keine Anerkennung für die geänderte Bewertung oder für frühere Lernergebnisse."
+  ]
+}

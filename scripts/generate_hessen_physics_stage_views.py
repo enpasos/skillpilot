@@ -74,7 +74,7 @@ HESSEN_E1_CHILD_UNITS = (
         HESSEN_E1_VERTICAL_THROW_ASSESSMENT)),
     ("physics-e1-two-motions", "Zwei Bewegungen zugleich", "Two motions at once", (
         "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
-        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4")),
+        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9")),
 )
 # Vectors leave E.1: reference frames and the velocity vector of the throw are
 # learned with E.3 (KC 2024 E.3 "Bezugssysteme, Superpositionsprinzip").
@@ -87,7 +87,7 @@ FRICTION = "5fd45dbc-0eb1-591b-99a9-7386336f1456"
 # linearisation assessment into a thermodynamics or oscillations assessment.
 E_PHASE_ASSESSMENT_PLACEMENTS = {
     "physics-e1-motion": (
-        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
         HESSEN_E1_VERTICAL_THROW_ASSESSMENT,
         *HESSEN_E1_ASSESSMENTS,
     ),

@@ -24,6 +24,7 @@ const mode = query.get('mode') ?? 'large'
 const physicsBoard = ['large', 'overview', 'wide'].includes(mode)
 const manyIds = Array.from({ length: mode === 'large' ? 205 : 17 }, (_, index) => `force-${String(index + 1).padStart(3, '0')}`)
 const mathTasks = Array.from({ length: 19 }, (_, i) => `quadratic-${i + 1}`)
+const singleAssessmentStudy = Array.from({ length: 5 }, (_, index) => `single-motion-${index + 1}`)
 const goals: UiGoal[] = mode === 'math-assessments' ? [
   root('math-root', MATHEMATICS_LANDSCAPE_ID, 'Mathematik', ['composition:fx-math:structure:sek1']),
   section('fx-math', 'sek1', MATHEMATICS_LANDSCAPE_ID, 'Quadratische Funktionen', mathTasks),
@@ -32,6 +33,17 @@ const goals: UiGoal[] = mode === 'math-assessments' ? [
     nodeKind: index === 8 || index === 10 ? 'exam' : 'tutor',
     requires: index ? [mathTasks[index - 1]] : [],
   })),
+] : mode === 'nested-single-assessment' ? [
+  root('physics-root', PHYSICS_LANDSCAPE_ID, 'Physik', ['composition:fx-single:structure:e1']),
+  section('fx-single', 'e1', PHYSICS_LANDSCAPE_ID, 'Bewegungen', ['composition:fx-single:structure:uniform']),
+  section('fx-single', 'uniform', PHYSICS_LANDSCAPE_ID, 'Gleichförmige Bewegung',
+    [...singleAssessmentStudy, 'single-motion-assessment']),
+  ...singleAssessmentStudy.map((id, index) => goal(id, PHYSICS_LANDSCAPE_ID, [], {
+    title: `Bewegung untersuchen ${index + 1}`, requires: index ? [singleAssessmentStudy[index - 1]] : [],
+  })),
+  goal('single-motion-assessment', PHYSICS_LANDSCAPE_ID, [], {
+    title: 'Eine Bewegung prüfen', nodeKind: 'exam', requires: [singleAssessmentStudy.at(-1)!],
+  }),
 ] : physicsBoard ? [
   root('physics-root', PHYSICS_LANDSCAPE_ID, 'Physik', ['composition:fx-phys:structure:physics-seki', 'why-physics']),
   section('fx-phys', 'physics-seki', PHYSICS_LANDSCAPE_ID, 'Sekundarstufe I', manyIds),
@@ -53,7 +65,8 @@ const beforeLastGoal = new Set([...visibleGoalIds].filter(id => id !== manyIds.a
 const mastered = new Set(['force-001'])
 
 function Fixture() {
-  const [selected, setSelected] = useState(mode === 'math-assessments' ? mathTasks[10] : physicsBoard ? 'force-003' : 'atoms')
+  const [selected, setSelected] = useState(mode === 'math-assessments' ? mathTasks[10]
+    : mode === 'nested-single-assessment' ? 'single-motion-assessment' : physicsBoard ? 'force-003' : 'atoms')
   const [allLoaded, setAllLoaded] = useState(!query.has('hydrate'))
   const [returned, setReturned] = useState(false)
   return <div style={{ display: 'grid', gridTemplateRows: '1fr auto', height: '100vh' }}>

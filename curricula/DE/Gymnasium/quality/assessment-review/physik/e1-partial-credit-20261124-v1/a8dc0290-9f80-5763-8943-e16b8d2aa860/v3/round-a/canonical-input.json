@@ -1,0 +1,1524 @@
+{
+  "scopeGoalIds": [
+    "a8dc0290-9f80-5763-8943-e16b8d2aa860"
+  ],
+  "original": {
+    "id": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+    "shortKey": "canonical_physics_k6_acceleration_log",
+    "title": "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen",
+    "titleEn": "Acceleration log: velocity, position, and model limits",
+    "description": "Die lernende Person kann aus einem Beschleunigungsprotokoll mit Anfangswerten konsistente Bewegungsdarstellungen gewinnen und die Modellgrenzen prüfen.",
+    "descriptionEn": "The learner can obtain consistent motion representations from an acceleration log with initial values and assess model limits.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "262f807a-30d0-503e-986f-856cbd048e8e"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Messdaten und Bewegung",
+      "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.ACCELERATION_LOG"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "Machine content release of exact unchanged full DE/EN assessment and20/20 rubric, based on retained actual independent K6-v2/K6-v3 reviews plus actual integration-agent reading against full current e4b P. Retained review files: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v2-content/CONTENT-REVIEW.md and curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v3-content/CONTENT-REVIEW.md. Root actual direct-claim disposition accepted the necessary two-assessment unit successor. No human acceptance, learner trial, stored-result transfer or final integrated QA claim.",
+      "coveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "coveredStrands": [
+        "LI_BEWEGUNG"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/acceleration-log.md",
+      "taskContent": "A. Ein Wagen auf einer geraden Bahn hat bei t=2 s den Ort s=5 m und v=−1 m/s. Das t-a-Protokoll gibt a=+2 m/s² auf [2;4] s. 1. Konstruiere t-a, t-v und t-s, bestimme die Ortsmarken bei 2,5;3 und 4 s und kennzeichne den Richtungswechsel. Erkläre die a-Fläche als Geschwindigkeitsänderung und die vorzeichenbehafteten v-Flächen als Ortsänderungen. Bestimme Ortsänderung und gesamte Strecke; erkläre, warum sie verschieden sind. Eine Kontrollmarke bei 4 s lautet (7,03±0,05) m. Prüfe die Übereinstimmung. (12 BE)\n\nB. Ein reales Fahrzeug bremst ab t=0 mit v0=6 m/s und a=−2 m/s² bis zum Stillstand. Stelle v(t) und die Ortsänderung ab s0=0 auf. Zeichne die drei Diagramme, bestimme Stoppzeit und Bremsweg. Ein Programm setzt a unverändert bis 5 s fort. Bestimme die vom Programm vorhergesagten Werte für Geschwindigkeit und Ort bei 5 s. Erläutere, was es dann vorhersagt und warum dies ohne zusätzliche Kraftbegründung kein Modell eines stehen bleibenden Fahrzeugs ist. (8 BE)",
+      "taskContentEn": "A. A cart on a straight track is at s=5 m with v=−1 m/s at t=2 s. Its time-acceleration log gives a=+2 m/s² over [2,4] s. 1. Construct all three motion graphs, find positions at 2.5,3,4 s, and mark the reversal. Explain acceleration area as velocity change and signed velocity areas as displacements. Find displacement and total distance and explain the difference. A check mark at 4 s is (7.03±0.05) m. Test agreement. (12 points)\n\nB. A real vehicle brakes from t=0 with v0=6 m/s and a=−2 m/s² until rest. Write v(t) and displacement from s0=0. Draw all three graphs and find stopping time and distance. A program continues the acceleration unchanged until 5 s. Determine the program’s predicted velocity and position at 5 s. Explain its prediction and why, without an additional force explanation, this is not a model of a vehicle remaining at rest. (8 points)",
+      "solutionContent": "A: Mit τ=t−2 s gelten v=−1 m/s+2 m/s²·τ und s=5 m−1 m/s·τ+1 m/s²·τ². Richtungswechsel bei τ=0,5 s, s=4,75 m; a bleibt +2 m/s². s(3 s)=5 m, s(4 s)=7 m. Δs=+2 m; Strecke=0,25+2,25=2,50 m. Flächen unter v: −0,25 m bis zur Umkehr, danach +2,25 m; die a-Fläche ergibt Δv=4 m/s. Kontrollmarke passt innerhalb 0,05 m. B: v=6−2t in SI; s=6t−t², tStopp=3 s, sStopp=9 m. a waagerecht negativ, v fallende Gerade bis 0, s nach unten gekrümmte Parabel bis waagerechtem Scheitel. Fortsetzung: v(5)=−4 m/s und s(5)=5 m; sie sagt Rückwärtsfahrt voraus. Stehenbleiben verlangt nach 3 s v=0 und a=0 im idealen Modell; die frühere Bremsbeschleunigung darf nicht ohne neuen physikalischen Grund fortgeführt werden.",
+      "solutionContentEn": "A: With τ=t−2 s, v=−1 m/s+2 m/s²·τ and s=5 m−1 m/s·τ+1 m/s²·τ². Reversal at τ=0.5 s and s=4.75 m; acceleration remains +2 m/s². s(3 s)=5 m and s(4 s)=7 m. Displacement +2 m; distance 0.25+2.25=2.50 m. Signed velocity areas are −0.25 m then +2.25 m; acceleration area gives Δv=4 m/s. The check agrees within 0.05 m. B: In SI units v=6−2t and s=6t−t²; stopping time 3 s and distance 9 m. Acceleration is constant negative; velocity falls linearly to zero; position is a concave-down parabola with horizontal tangent at the stop. Continuation gives v(5)=−4 m/s and s(5)=5 m, predicting reverse motion. Remaining at rest requires v=0 and a=0 after 3 s in the ideal model; continuing the former braking acceleration requires a new physical reason.",
+      "scoring": {
+        "maxPoints": 20,
+        "passingPoints": 20,
+        "steps": [
+          {
+            "id": "acceleration-log_1",
+            "points": 4,
+            "description": "Anfangswerte bei t=2 s richtig eingesetzt; ursprüngliche Zeit oder verschobener Zeitnullpunkt sind gleichwertig. Drei Diagramme konsistent. / EN: Uses the initial values at t=2 s correctly; original or shifted time coordinates are equivalent. Constructs three consistent graphs."
+          },
+          {
+            "id": "acceleration-log_2",
+            "points": 4,
+            "description": "Umkehr, Ortsmarken, a-Fläche und v-Flächen einschließlich Einheiten richtig erklärt. / EN: Explains reversal, positions, acceleration and velocity areas with units."
+          },
+          {
+            "id": "acceleration-log_3",
+            "points": 4,
+            "description": "Ortsänderung und Strecke getrennt und geprüft, ob der vorhergesagte Ort bei 4 s im angegebenen Kontrollintervall [6,98;7,08] m liegt. / EN: Distinguishes displacement from distance and checks whether the predicted position at 4 s lies in the supplied check interval [6.98,7.08] m."
+          },
+          {
+            "id": "acceleration-log_4",
+            "points": 4,
+            "description": "Bremsgesetze, drei Diagramme, Stoppzeit und Bremsweg richtig bestimmt. / EN: Finds braking laws, three graphs, stopping time, and distance correctly."
+          },
+          {
+            "id": "acceleration-log_5",
+            "points": 4,
+            "description": "Fortgesetztes Modell zahlenmäßig geprüft und sein Geltungsbereich physikalisch begründet. / EN: Checks the extended model numerically and justifies its physical validity interval."
+          }
+        ]
+      }
+    }
+  },
+  "candidate": {
+    "id": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+    "shortKey": "canonical_physics_k6_acceleration_log",
+    "title": "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen",
+    "titleEn": "Acceleration log: velocity, position, and model limits",
+    "description": "Die lernende Person kann aus einem Beschleunigungsprotokoll mit Anfangswerten konsistente Bewegungsdarstellungen gewinnen und die Modellgrenzen prüfen.",
+    "descriptionEn": "The learner can obtain consistent motion representations from an acceleration log with initial values and assess model limits.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "262f807a-30d0-503e-986f-856cbd048e8e"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK3_MATHEMATISIEREN"
+      ],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Messdaten und Bewegung",
+      "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.ACCELERATION_LOG"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "examData": {
+      "reviewStatus": "released",
+      "reviewNote": "Historical predecessor note, not approval of this candidate: Machine content release of exact unchanged full DE/EN assessment and20/20 rubric, based on retained actual independent K6-v2/K6-v3 reviews plus actual integration-agent reading against full current e4b P. Retained review files: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v2-content/CONTENT-REVIEW.md and curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v3-content/CONTENT-REVIEW.md. Root actual direct-claim disposition accepted the necessary two-assessment unit successor. No human acceptance, learner trial, stored-result transfer or final integrated QA claim. Current material: unactivated author candidate codex-v3, 24 November 2026, 19/20, after an independent codex-v2 finding about the constant-acceleration explanation. Direct claim remains only BES. No free-fall experiment, whole child-unit promise, E.1 planning credit or historical-result transfer is claimed.",
+      "coveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "coveredStrands": [
+        "LI_BEWEGUNG"
+      ],
+      "demandLevels": [
+        "AB1",
+        "AB2"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/acceleration-log.md",
+      "taskContent": "A. Ein Wagen auf einer geraden Bahn hat bei t=2 s den Ort s=5 m und v=−1 m/s. Das t-a-Protokoll gibt a=+2 m/s² auf [2;4] s. 1. Konstruiere t-a, t-v und t-s, bestimme die Ortsmarken bei 2,5;3 und 4 s und kennzeichne den Richtungswechsel. Erkläre die a-Fläche als Geschwindigkeitsänderung und die vorzeichenbehafteten v-Flächen als Ortsänderungen. Bestimme Ortsänderung und gesamte Strecke; erkläre, warum sie verschieden sind. Eine Kontrollmarke bei 4 s lautet (7,03±0,05) m. Prüfe die Übereinstimmung. (12 BE)\n\nB. Ein reales Fahrzeug bremst ab t=0 mit v0=6 m/s und a=−2 m/s² bis zum Stillstand. Stelle v(t) und die Ortsänderung ab s0=0 auf. Zeichne die drei Diagramme, bestimme Stoppzeit und Bremsweg. Ein Programm setzt a unverändert bis 5 s fort. Bestimme die vom Programm vorhergesagten Werte für Geschwindigkeit und Ort bei 5 s. Erläutere, was es dann vorhersagt und warum dies ohne zusätzliche Kraftbegründung kein Modell eines stehen bleibenden Fahrzeugs ist. (8 BE)",
+      "taskContentEn": "A. A cart on a straight track is at s=5 m with v=−1 m/s at t=2 s. Its time-acceleration log gives a=+2 m/s² over [2,4] s. 1. Construct all three motion graphs, find positions at 2.5,3,4 s, and mark the reversal. Explain acceleration area as velocity change and signed velocity areas as displacements. Find displacement and total distance and explain the difference. A check mark at 4 s is (7.03±0.05) m. Test agreement. (12 points)\n\nB. A real vehicle brakes from t=0 with v0=6 m/s and a=−2 m/s² until rest. Write v(t) and displacement from s0=0. Draw all three graphs and find stopping time and distance. A program continues the acceleration unchanged until 5 s. Determine the program’s predicted velocity and position at 5 s. Explain its prediction and why, without an additional force explanation, this is not a model of a vehicle remaining at rest. (8 points)",
+      "solutionContent": "A: Mit τ=t−2 s gelten v=−1 m/s+2 m/s²·τ und s=5 m−1 m/s·τ+1 m/s²·τ². Richtungswechsel bei τ=0,5 s, s=4,75 m; a bleibt +2 m/s². s(3 s)=5 m, s(4 s)=7 m. Δs=+2 m; Strecke=0,25+2,25=2,50 m. Flächen unter v: −0,25 m bis zur Umkehr, danach +2,25 m; die a-Fläche ergibt Δv=4 m/s. Kontrollmarke passt innerhalb 0,05 m. B: v=6−2t in SI; s=6t−t², tStopp=3 s, sStopp=9 m. a waagerecht negativ, v fallende Gerade bis 0, s nach unten gekrümmte Parabel bis waagerechtem Scheitel. Fortsetzung: v(5)=−4 m/s und s(5)=5 m; sie sagt Rückwärtsfahrt voraus. Stehenbleiben verlangt nach 3 s v=0 und a=0 im idealen Modell; die frühere Bremsbeschleunigung darf nicht ohne neuen physikalischen Grund fortgeführt werden.\n\n**Teilpunktbewertung, Autorenkandidat codex-v3 vom 24.11.2026:** Bewertet wird tatsächlich sichtbare Evidenz unabhängig vom Antwortort. Gleichwertige fachlich richtige Methoden, exakte Werte, zulässige Rundungen und passende beschriftete graphische Erklärungen zählen gleich. Quantitative Werte und Gesetze behalten ihren eigenständigen Kredit auch ohne eine Zeichnung. Eine tatsächliche richtige Kurvenform und eine geforderte physikalische Erklärung werden nicht allein aus reproduzierten Zahlen hinzugedacht. Derselbe Zusammenhang darf an anderer Stelle belegt sein; es werden keine getrennten Merksätze an festen Antwortstellen verlangt. Ein lokaler Fehler wird nur an seinem Ursprung belastet, folgerichtige weitere Rechnungen/Zeichnungen bleiben anrechenbar. Nur die Summe ab 19 von 20 BE entscheidet; keine zusätzliche Teilhürde. Die gedruckten Maxima bleiben A 12 / B 8 BE; die fünf Rastermaxima bleiben 6/3/3/4/4 BE. Die gesamte Abgabe muss die konstanten Änderungszusammenhänge erkennen lassen. Für die A-Rechteckdeutung stehen 0,5 BE Gesamt-Delta-v und 0,5 BE konstante Änderung je gleicher Zeit; B prüft denselben Modellkern an der fortgesetzten negativen Rate über den Nulldurchgang mit 1 BE. Ein allgemein richtig erklärter Zusammenhang kann bei eindeutigem Kontextbezug diese Teilaspekte belegen, ohne zwei vorgeschriebene Formulierungen zu erzwingen. Die weiteren B-Punkte sind 0,5/0,5 für die beiden Programmwerte und je 1 für Stillstandsvergleich und unabhängigen Wechselwirkungsgrund. A je Diagrammart2BE:1 für den charakteristischen t-a-/t-v-/t-s-Verlauf;1 für zugehörige quantitative Werte mit Einheiten (a=+2m/s² auch an Umkehr; v(2)=-1,v(2,5)=0,v(3)=1,v(4)=3m/s; s(2)=5,s(2,5)=4,75,s(3)=5,s(4)=7m). Quantitative Werte können ausdrücklich auch im Text, Gesetz oder anderer Darstellung belegt werden; ein fehlender Graph löscht sie nicht. Die Verlaufspunkte benötigen tatsächliche passende graphische Evidenz. Ursprüngliche oder beschriftete verschobene Zeit sind gleichwertig. 1 BE für Umkehrdeutung aus Vorzeichenwechsel von v und Ortsminimum, ohne v = 0 mit a = 0 zu verwechseln. Weitere 1 BE zur a-Fläche: 0,5 für Rechteckfläche 2 m/s² * 2 s = 4 m/s als Delta-v im Gesamtintervall; 0,5 für die erklärte Verbindung von konstanter Rechteckhöhe/konstanter t-v-Steigung mit gleichen vorzeichenbehafteten Delta-v in gleich langen Zeitstücken. Weitere 1 BE für die Deutung der v-Flächen -0,25 m und +2,25 m als gerichtete Ortsänderungen. Erklärende Text-, Gesetzes- und tatsächlich beschriftete Graphikevidenz zählt überall; richtige Zahlen allein ersetzen keine ausstehende Erklärung. Je1BE: Ortsänderung +2m bestimmen; Strecke2,50m und ihre Verschiedenheit durch Beträge statt vorzeichenbehafteter Teilwege erklären; s(4)=7m mit dem vorgegebenen Kontrollintervall [6,98;7,08]m vergleichen. Ein Fehler bei einer Intervallgrenze kostet nur diesen Ursprungspunkt, nicht nochmals die folgerichtige Prüfung. B je1BE für Beschleunigung, Geschwindigkeit und Ort, jeweils0,5 für richtigen Wert/Gesetz und0,5 für tatsächlichen charakteristischen Graphen: a=-2m/s² bis Stopp; v(t)=6-2t in SI; s(t)=6t-t² in SI. Text-/Gesetzesevidenz behält ihre0,5 auch ohne Graph. Weitere1BE für Stoppzeit3s und Bremsweg9m (je0,5). Größen, Einheiten und Zeitbezug beachten. Ein früherer Fehler wird nicht erneut belastet. Je 0,5 BE für Programmwerte v(5) = -4 m/s und s(5) = 5 m. 1 BE für die Erklärung, dass die gleichbleibende negative Änderungsrate die Geschwindigkeit in jedem gleichen Zeitstück weiter senkt, auch nach v = 0, und so die Rückwärtsfahrt erzeugt. 1 BE für den physikalischen Vergleich: Rückwärtsfahrt widerspricht realem Stillstand, also ist die Fortsetzung kein Modell des stehenbleibenden Fahrzeugs. 1 BE für die unabhängige Begründung über v = 0 und a = 0 nach dem Stopp sowie einen neuen physikalischen/Kraftgrund für weitere Beschleunigung. Gleichwertige globale Erklärung oder passend beschriftete Graphik an anderer Stelle zählt. Bloße Formel/Endzahl ohne erklärte Bedeutung der konstanten Rate ersetzt den Erklärungspunkt nicht; richtige Zahlen bleiben unabhängig anrechenbar.",
+      "solutionContentEn": "A: With τ=t−2 s, v=−1 m/s+2 m/s²·τ and s=5 m−1 m/s·τ+1 m/s²·τ². Reversal at τ=0.5 s and s=4.75 m; acceleration remains +2 m/s². s(3 s)=5 m and s(4 s)=7 m. Displacement +2 m; distance 0.25+2.25=2.50 m. Signed velocity areas are −0.25 m then +2.25 m; acceleration area gives Δv=4 m/s. The check agrees within 0.05 m. B: In SI units v=6−2t and s=6t−t²; stopping time 3 s and distance 9 m. Acceleration is constant negative; velocity falls linearly to zero; position is a concave-down parabola with horizontal tangent at the stop. Continuation gives v(5)=−4 m/s and s(5)=5 m, predicting reverse motion. Remaining at rest requires v=0 and a=0 after 3 s in the ideal model; continuing the former braking acceleration requires a new physical reason.\n\n**Partial credit, author candidate codex-v3, 24 November 2026:** Assess the evidence actually visible wherever it occurs. Equivalent correct methods, exact values, permitted rounding and appropriate labelled graphical explanations receive equal credit. Quantities and laws retain independent credit without a drawing. Do not infer an actual correct curve shape or required physical explanation merely from reproduced numbers. The relationship may be demonstrated elsewhere; no separate stock sentences at fixed answer locations are required. Charge a local error only at its origin; consistent subsequent calculations/drawings retain credit. Passing depends only on a total of at least 19 out of 20 marks; no additional part minimum applies. Printed maxima remain A 12 / B 8 marks; the five rubric maxima remain 6/3/3/4/4. The complete answer must demonstrate the constant-rate relationships. A rectangle interpretation earns 0.5 for total Delta-v and 0.5 for constant change per equal time; B examines that same model core through continued negative rate across zero velocity for 1 mark. A correctly explained general relationship may establish these aspects where its context is unambiguous, without requiring two prescribed formulations. Other B marks are 0.5/0.5 for the two program values and 1 each for the rest comparison and independent interaction reason. A2 marks per graph type:1 for the characteristic time-acceleration/time-velocity/time-position shape;1 for corresponding quantitative values with units (a=+2m/s² including reversal; v(2)=-1,v(2.5)=0,v(3)=1,v(4)=3m/s; s(2)=5,s(2.5)=4.75,s(3)=5,s(4)=7m). Values may explicitly be evidenced in text, a law or another representation; a missing graph does not erase them. Shape marks require actual appropriate graphical evidence. Original or labelled shifted time is equivalent. 1 mark for interpreting reversal through a velocity sign change and position minimum without confusing v = 0 with a = 0. A further 1 mark for acceleration area: 0.5 for rectangle area 2 m/s² * 2 s = 4 m/s as total-interval Delta-v; 0.5 for explaining how constant rectangle height/time-velocity slope means equal signed Delta-v in equal time spans. A further 1 mark for interpreting velocity areas -0.25 m and +2.25 m as directed displacements. Explanatory text, laws and actually labelled graphical evidence count wherever present; correct numbers alone do not replace an outstanding explanation. 1 mark each: determine displacement +2m; determine distance2.50m and explain its difference through absolute rather than signed segment lengths; compare s(4)=7m with supplied check interval[6.98,7.08]m. A slip evaluating an interval endpoint loses only this originating mark, not another for a consistent comparison. B1 mark each for acceleration, velocity and position, split into0.5 for correct value/law and0.5 for its actual characteristic graph: a=-2m/s² until rest; v(t)=6-2t in SI; s(t)=6t-t² in SI. Text/law evidence retains its0.5 without a graph. A further1 mark for stop time3s and braking distance9m (0.5 each). Attend to quantities, units and time reference. Do not charge an earlier error again. 0.5 mark each for program values v(5) = -4 m/s and s(5) = 5 m. 1 mark for explaining that the unchanged negative rate keeps reducing velocity in every equal time span, including after v = 0, thereby causing reverse motion. 1 mark for the physical comparison: reverse motion contradicts actual rest, so the continuation does not model the vehicle remaining at rest. 1 mark for independent justification using v = 0 and a = 0 after stopping and a new physical/force reason for further acceleration. Equivalent global explanation or appropriately labelled graphic elsewhere counts. A bare formula/final value without explaining constant rate does not replace its explanation mark; retain independent credit for correct numbers.",
+      "scoring": {
+        "maxPoints": 20,
+        "passingPoints": 19,
+        "steps": [
+          {
+            "id": "acceleration-log_1",
+            "points": 6,
+            "description": "DE: A je Diagrammart2BE:1 für den charakteristischen t-a-/t-v-/t-s-Verlauf;1 für zugehörige quantitative Werte mit Einheiten (a=+2m/s² auch an Umkehr; v(2)=-1,v(2,5)=0,v(3)=1,v(4)=3m/s; s(2)=5,s(2,5)=4,75,s(3)=5,s(4)=7m). Quantitative Werte können ausdrücklich auch im Text, Gesetz oder anderer Darstellung belegt werden; ein fehlender Graph löscht sie nicht. Die Verlaufspunkte benötigen tatsächliche passende graphische Evidenz. Ursprüngliche oder beschriftete verschobene Zeit sind gleichwertig. EN: A2 marks per graph type:1 for the characteristic time-acceleration/time-velocity/time-position shape;1 for corresponding quantitative values with units (a=+2m/s² including reversal; v(2)=-1,v(2.5)=0,v(3)=1,v(4)=3m/s; s(2)=5,s(2.5)=4.75,s(3)=5,s(4)=7m). Values may explicitly be evidenced in text, a law or another representation; a missing graph does not erase them. Shape marks require actual appropriate graphical evidence. Original or labelled shifted time is equivalent."
+          },
+          {
+            "id": "acceleration-log_2",
+            "points": 3,
+            "description": "DE: 1 BE für Umkehrdeutung aus Vorzeichenwechsel von v und Ortsminimum, ohne v = 0 mit a = 0 zu verwechseln. Weitere 1 BE zur a-Fläche: 0,5 für Rechteckfläche 2 m/s² * 2 s = 4 m/s als Delta-v im Gesamtintervall; 0,5 für die erklärte Verbindung von konstanter Rechteckhöhe/konstanter t-v-Steigung mit gleichen vorzeichenbehafteten Delta-v in gleich langen Zeitstücken. Weitere 1 BE für die Deutung der v-Flächen -0,25 m und +2,25 m als gerichtete Ortsänderungen. Erklärende Text-, Gesetzes- und tatsächlich beschriftete Graphikevidenz zählt überall; richtige Zahlen allein ersetzen keine ausstehende Erklärung. EN: 1 mark for interpreting reversal through a velocity sign change and position minimum without confusing v = 0 with a = 0. A further 1 mark for acceleration area: 0.5 for rectangle area 2 m/s² * 2 s = 4 m/s as total-interval Delta-v; 0.5 for explaining how constant rectangle height/time-velocity slope means equal signed Delta-v in equal time spans. A further 1 mark for interpreting velocity areas -0.25 m and +2.25 m as directed displacements. Explanatory text, laws and actually labelled graphical evidence count wherever present; correct numbers alone do not replace an outstanding explanation."
+          },
+          {
+            "id": "acceleration-log_3",
+            "points": 3,
+            "description": "DE: Je1BE: Ortsänderung +2m bestimmen; Strecke2,50m und ihre Verschiedenheit durch Beträge statt vorzeichenbehafteter Teilwege erklären; s(4)=7m mit dem vorgegebenen Kontrollintervall [6,98;7,08]m vergleichen. Ein Fehler bei einer Intervallgrenze kostet nur diesen Ursprungspunkt, nicht nochmals die folgerichtige Prüfung. EN: 1 mark each: determine displacement +2m; determine distance2.50m and explain its difference through absolute rather than signed segment lengths; compare s(4)=7m with supplied check interval[6.98,7.08]m. A slip evaluating an interval endpoint loses only this originating mark, not another for a consistent comparison."
+          },
+          {
+            "id": "acceleration-log_4",
+            "points": 4,
+            "description": "DE: B je1BE für Beschleunigung, Geschwindigkeit und Ort, jeweils0,5 für richtigen Wert/Gesetz und0,5 für tatsächlichen charakteristischen Graphen: a=-2m/s² bis Stopp; v(t)=6-2t in SI; s(t)=6t-t² in SI. Text-/Gesetzesevidenz behält ihre0,5 auch ohne Graph. Weitere1BE für Stoppzeit3s und Bremsweg9m (je0,5). Größen, Einheiten und Zeitbezug beachten. Ein früherer Fehler wird nicht erneut belastet. EN: B1 mark each for acceleration, velocity and position, split into0.5 for correct value/law and0.5 for its actual characteristic graph: a=-2m/s² until rest; v(t)=6-2t in SI; s(t)=6t-t² in SI. Text/law evidence retains its0.5 without a graph. A further1 mark for stop time3s and braking distance9m (0.5 each). Attend to quantities, units and time reference. Do not charge an earlier error again."
+          },
+          {
+            "id": "acceleration-log_5",
+            "points": 4,
+            "description": "DE: Je 0,5 BE für Programmwerte v(5) = -4 m/s und s(5) = 5 m. 1 BE für die Erklärung, dass die gleichbleibende negative Änderungsrate die Geschwindigkeit in jedem gleichen Zeitstück weiter senkt, auch nach v = 0, und so die Rückwärtsfahrt erzeugt. 1 BE für den physikalischen Vergleich: Rückwärtsfahrt widerspricht realem Stillstand, also ist die Fortsetzung kein Modell des stehenbleibenden Fahrzeugs. 1 BE für die unabhängige Begründung über v = 0 und a = 0 nach dem Stopp sowie einen neuen physikalischen/Kraftgrund für weitere Beschleunigung. Gleichwertige globale Erklärung oder passend beschriftete Graphik an anderer Stelle zählt. Bloße Formel/Endzahl ohne erklärte Bedeutung der konstanten Rate ersetzt den Erklärungspunkt nicht; richtige Zahlen bleiben unabhängig anrechenbar. EN: 0.5 mark each for program values v(5) = -4 m/s and s(5) = 5 m. 1 mark for explaining that the unchanged negative rate keeps reducing velocity in every equal time span, including after v = 0, thereby causing reverse motion. 1 mark for the physical comparison: reverse motion contradicts actual rest, so the continuation does not model the vehicle remaining at rest. 1 mark for independent justification using v = 0 and a = 0 after stopping and a new physical/force reason for further acceleration. Equivalent global explanation or appropriately labelled graphic elsewhere counts. A bare formula/final value without explaining constant rate does not replace its explanation mark; retain independent credit for correct numbers."
+          }
+        ]
+      }
+    }
+  },
+  "candidateFileSha256": "f41f6906b5df5b79225a74b955077dbdc0bb502a04b09fb7e050835595d3152e",
+  "changedExamFields": [
+    "reviewNote",
+    "scoring",
+    "solutionContent",
+    "solutionContentEn"
+  ],
+  "directGoals": [
+    {
+      "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "titleEn": "Uniformly Accelerated Motion and Acceleration",
+      "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+      "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "cross-subject:mathematics"
+      ],
+      "contains": [],
+      "requires": [
+        "bf8517a9-142b-5789-826a-767f3b277998",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_accelerated_motion",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "title": "Visualisierung: Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+          "url": "/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg",
+          "provider": "OpenAI / Codex image_gen + programmatic diagram correction",
+          "description": "Orts-, Geschwindigkeits- und Beschleunigungsdiagramm für einen Start aus der Ruhe.",
+          "altText": "Bei konstanter positiver Beschleunigung aus der Ruhe am Ort null steigt der Ort s mit der Zeit t parabelförmig. Die Geschwindigkeit v steigt linear ab null. Die Beschleunigung a bleibt auf einem positiven Wert. In allen drei Diagrammen zeigt die Zeitachse nach rechts.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "accepted"
+        }
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "id": "02013455-72a0-5213-9509-ed77f7ede62b",
+      "title": "Brüche mit geeigneten Strategien vergleichen",
+      "description": "Die lernende Person kann Brüche mithilfe gemeinsamer Nenner oder Zähler, geeigneter Bezugsbrüche oder wertgleicher Darstellungen vergleichen, die jeweils passende Strategie auswählen und die Ordnung begründen.",
+      "descriptionEn": "The learner can compare fractions using common denominators or numerators, suitable benchmark fractions, or equivalent forms, choose an appropriate strategy in each case, and justify the ordering.",
+      "contains": [],
+      "requires": [
+        "339a7bf5-f1df-5d5a-9ec4-41f471f0c111"
+      ]
+    },
+    {
+      "id": "05012547-7263-5bfa-9e7c-df970745a011",
+      "title": "Rechengesetze bei rationalen Zahlen nutzen",
+      "description": "Die lernende Person kann Rechengesetze bei rationalen Zahlen gezielt einsetzen, um Terme zu vereinfachen, Rechenvorteile zu nutzen und Umformungen zu begründen.",
+      "descriptionEn": "The learner can purposefully use arithmetic laws with rational numbers to simplify expressions, exploit calculation advantages, and justify transformations.",
+      "contains": [],
+      "requires": [
+        "0a6dab2e-1bbb-5587-adb0-456d3991c327"
+      ]
+    },
+    {
+      "id": "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "title": "Funktionsbegriff und Darstellungen verstehen",
+      "description": "Die lernende Person kann eine reellwertige Funktion als Zuordnung erklären, die jedem zulässigen Eingabewert genau einen Funktionswert zuweist, und Term, Wertetabelle und Graph einer gegebenen Funktion als zusammengehörige Darstellungen verwenden.",
+      "descriptionEn": "The learner can explain a real-valued function as assigning exactly one function value to each permitted input and use the expression, value table, and graph of a given function as corresponding representations.",
+      "contains": [],
+      "requires": [
+        "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+      ]
+    },
+    {
+      "id": "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+      "title": "Terme mit rationalen Zahlen strukturiert auswerten",
+      "description": "Die lernende Person kann die durch Grundrechenarten und Klammern bestimmte Struktur von Termen mit nicht ganzen rationalen Zahlen, insbesondere Brüchen und Dezimalzahlen, erkennen und fachsprachlich beschreiben, diese Terme strukturiert auswerten und die Rechenschritte nachvollziehbar notieren.",
+      "descriptionEn": "The learner can recognise and describe in appropriate mathematical language the structure of expressions with non-integer rational numbers, especially fractions and decimals, as determined by basic operations and brackets, evaluate these expressions systematically, and record the calculation steps clearly.",
+      "contains": [],
+      "requires": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
+      ]
+    },
+    {
+      "id": "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "title": "Einfache additive Gleichungen durch Umkehraufgaben lösen",
+      "description": "Die lernende Person kann einfache Gleichungen wie a+x=b, x-a=b oder a-x=b durch Probieren, Rückwärtsarbeiten oder Umkehraufgaben lösen.",
+      "descriptionEn": "The learner can solve simple equations such as a+x=b, x-a=b, or a-x=b by trial, backward reasoning, or inverse operations.",
+      "contains": [],
+      "requires": [
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+      ]
+    },
+    {
+      "id": "13b338eb-f761-5817-9058-11043b9cb253",
+      "title": "Messwertänderungen pro Zeitintervall bestimmen",
+      "description": "Die lernende Person kann aus zwei tabellierten oder graphisch gegebenen Messwerten die vorzeichenbehaftete Änderung und die zugehörige positive Zeitspanne bestimmen, ihren Quotienten mit Einheit berechnen und als mittlere Änderung pro Zeiteinheit im gewählten Intervall deuten. Sie unterscheidet diesen Wert vom einzelnen Messwert und von Aussagen über jeden Zeitpunkt.",
+      "descriptionEn": "The learner can determine the signed change between two measured values given in a table or graph and the corresponding positive elapsed time, calculate their quotient with units, and interpret it as the average change per unit time over the selected interval. They distinguish this value from a single measured value and from claims about every instant.",
+      "contains": [],
+      "requires": [
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ]
+    },
+    {
+      "id": "191c67db-44a8-4f63-994a-d85e8e301194",
+      "title": "Rechenvorteile mit Kommutativ- und Assoziativgesetz nutzen",
+      "description": "Die lernende Person kann bei Summen und Produkten ganzer Zahlen Rechenvorteile aus Kommutativ- und Assoziativgesetz erkennen, passende Umformungen begründen und unterscheiden, wann diese Gesetze nicht anwendbar sind.",
+      "descriptionEn": "The learner can identify calculation advantages from the commutative and associative laws in sums and products of integers, justify suitable rearrangements, and distinguish cases in which these laws do not apply.",
+      "contains": [],
+      "requires": [
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+      ]
+    },
+    {
+      "id": "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+      "title": "Positive und negative Zahlen an der Zahlengeraden veranschaulichen",
+      "description": "Die lernende Person kann positive und negative Zahlen auf einer passend skalierten Zahlengeraden verorten, ihre Lage relativ zu 0 deuten und Zahlen anhand der Links-rechts-Ordnung begründet vergleichen.",
+      "descriptionEn": "The learner can locate positive and negative numbers on a suitably scaled number line, interpret their positions relative to 0, and justify comparisons using left-to-right order.",
+      "contains": [],
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "title": "Unbegrenztheit der natürlichen Zahlen mit dem Nachfolgerprinzip begründen",
+      "description": "Die lernende Person kann begründen, dass es keine größte natürliche Zahl gibt, indem sie zu jeder vorgegebenen natürlichen Zahl eine größere natürliche Zahl angibt und dieses Nachfolgerprinzip verallgemeinert.",
+      "descriptionEn": "The learner can justify that there is no greatest natural number by giving a larger natural number for any proposed value and generalising this successor principle.",
+      "contains": [],
+      "requires": [
+        "624764d6-becd-5f9b-ada3-0d4f9d143073"
+      ]
+    },
+    {
+      "id": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "title": "t-v-Diagramm und Ortsänderung als Fläche",
+      "description": "Die lernende Person kann aus Orts-Zeit-Daten mittlere Intervallgeschwindigkeiten bestimmen, im t-v-Diagramm darstellen und die Ortsänderung als vorzeichenbehaftete Fläche unter dem Graphen deuten.",
+      "descriptionEn": "The learner can determine average interval velocities from position-time data, represent them in a time-velocity graph and interpret the displacement as the signed area under the graph.",
+      "contains": [],
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "13b338eb-f761-5817-9058-11043b9cb253",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+      ]
+    },
+    {
+      "id": "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "title": "Parallele und senkrechte Lagebeziehungen erkennen und begründen",
+      "description": "Die lernende Person kann bei Strecken und Geraden Parallelität oder Senkrechtlage anhand ihrer geometrischen Bedingungen erkennen, fachsprachlich beschreiben und die Zuordnung unabhängig von Lage oder Ausrichtung begründen.",
+      "descriptionEn": "The learner can identify parallel or perpendicular relations between line segments and lines from their geometric conditions, describe them using mathematical language, and justify the classification regardless of position or orientation.",
+      "contains": [],
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ]
+    },
+    {
+      "id": "2331caf2-ccb2-5492-9fc6-48763b848bae",
+      "title": "Winkelzeichnungen und Gradmaße ineinander überführen",
+      "description": "Die lernende Person kann bei Winkeln bis 360 Grad mit dem Geodreieck eine gezeichnete Winkelöffnung in ihr Gradmaß und ein vorgegebenes Gradmaß in eine Winkelzeichnung überführen und die jeweilige Winkelart aus der Größe fachsprachlich benennen.",
+      "descriptionEn": "The learner can use a protractor, for angles up to 360 degrees, to translate a drawn angle opening into its degree measure and a given degree measure into an angle diagram, and name the corresponding angle type from its measure.",
+      "contains": [],
+      "requires": [
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ]
+    },
+    {
+      "id": "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "title": "Punktlagen und daraus bestimmte lineare Objekte im Koordinatensystem darstellen",
+      "description": "Die lernende Person kann in einem passend skalierten kartesischen Koordinatensystem Punktlagen aus Koordinaten darstellen und daraus vorgegebene Strecken oder Geraden erzeugen, wobei sie die begrenzte beziehungsweise unbegrenzte Ausdehnung begründet.",
+      "descriptionEn": "The learner can plot points from coordinates in an appropriately scaled Cartesian coordinate plane and use them to construct specified line segments or lines, explaining their finite or infinite extent.",
+      "contains": [],
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "262f807a-30d0-503e-986f-856cbd048e8e",
+      "title": "Bewegungen mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen beschreiben",
+      "description": "Die lernende Person kann für gleichförmige und gleichmäßig beschleunigte Bewegungen das Zeit-Ort- und das Zeit-Geschwindigkeits-Gesetz aus den Diagrammen ermitteln, ihren Zusammenhang erläutern und damit Ort und Geschwindigkeit zu einem Zeitpunkt vorhersagen.",
+      "descriptionEn": "The learner can determine the time-position law and the time-velocity law of uniform and uniformly accelerated motions from the graphs, explain how the two laws are related and use them to predict position and velocity at a given time.",
+      "contains": [],
+      "requires": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "f08d06dc-139d-5fd2-892c-8cc919b1e4fc"
+      ]
+    },
+    {
+      "id": "26f668a0-6425-5466-9cf7-6295dd189005",
+      "title": "Potenzen mit rationalen Basen und negativen Exponenten deuten und berechnen",
+      "description": "Die lernende Person kann Potenzen mit rationalen Basen berechnen, negative ganzzahlige Exponenten als Kehrwertschreibweisen deuten und Darstellungen sehr kleiner Größen mit negativen Zehnerpotenzen in Sachzusammenhängen interpretieren.",
+      "descriptionEn": "The learner can compute powers with rational bases, interpret negative integer exponents as reciprocal forms, and interpret representations of very small quantities using negative powers of ten in contextual situations.",
+      "contains": [],
+      "requires": [
+        "e331a425-e9c6-46eb-89cb-dedf72857974"
+      ]
+    },
+    {
+      "id": "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "title": "Einfache Zählprinzipien in Sachsituationen anwenden",
+      "description": "Die lernende Person kann in einfachen realitätsnahen Situationen Möglichkeiten vollständig und ohne Doppelzählung systematisch erfassen, eine passende Zählstrategie wählen und die ermittelte Anzahl nachvollziehbar begründen.",
+      "descriptionEn": "The learner can systematically account for all possibilities in simple real-world situations without double counting, choose a suitable counting strategy, and justify the resulting count clearly.",
+      "contains": [],
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "title": "Zuordnungen analysieren",
+      "description": "Die lernende Person kann Zuordnungstabellen erstellen, grafisch darstellen und einfache funktionale Zusammenhänge deuten.",
+      "descriptionEn": "The learner can create mapping tables, represent them graphically, and interpret simple functional relationships.",
+      "contains": [],
+      "requires": [
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e"
+      ]
+    },
+    {
+      "id": "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "title": "Dezimalzahlen auf der Zahlengeraden, im Stellenwertsystem und als Bruch darstellen",
+      "description": "Die lernende Person kann Dezimalzahlen auf einer passend skalierten Zahlengeraden, im Stellenwertsystem und als wertgleichen Bruch darstellen, die entsprechenden Stellen und Anteile zuordnen und begründet zwischen den Darstellungen wechseln.",
+      "descriptionEn": "The learner can represent decimal numbers on a suitably scaled number line, in the place-value system, and as equivalent fractions, relate the corresponding places and parts, and justify changes between the representations.",
+      "contains": [],
+      "requires": [
+        "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97"
+      ]
+    },
+    {
+      "id": "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+      "title": "Brüche erweitern und kürzen",
+      "description": "Die lernende Person kann Zähler und Nenner mit demselben positiven ganzen Faktor multiplizieren oder durch denselben gemeinsamen Teiler dividieren, so wertgleiche Brüche erzeugen und begründen, warum der Bruchwert erhalten bleibt.",
+      "descriptionEn": "The learner can multiply the numerator and denominator by the same positive integer factor or divide them by the same common divisor, produce equivalent fractions, and explain why the fraction's value is preserved.",
+      "contains": [],
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+      "title": "Ganze Zahlen subtrahieren",
+      "description": "Die lernende Person kann Subtraktionsaufgaben mit ganzen Zahlen sicher lösen, Umkehraufgaben nutzen und Ergebnisse an der Zahlengeraden oder im Sachkontext prüfen.",
+      "descriptionEn": "The learner can reliably solve subtraction tasks with integers, use inverse operations, and check results on the number line or in context.",
+      "contains": [],
+      "requires": [
+        "4b67bed9-06da-40b2-a306-24e9e7dfd390"
+      ]
+    },
+    {
+      "id": "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "title": "Betrag einer Zahl angeben",
+      "description": "Die lernende Person kann den Betrag einer Zahl bestimmen und ihn als Abstand der Zahl von 0 auf der Zahlengeraden deuten.",
+      "descriptionEn": "The learner can determine the absolute value of a number and interpret it as the distance of the number from 0 on the number line.",
+      "contains": [],
+      "requires": [
+        "199fe2ed-2576-4611-b8de-fd56fb9f78fc"
+      ]
+    },
+    {
+      "id": "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "title": "Ganze Zahlen addieren",
+      "description": "Die lernende Person kann Additionsaufgaben mit ganzen Zahlen sicher lösen, Rechenschritte begründen und Ergebnisse an der Zahlengeraden oder im Sachkontext prüfen.",
+      "descriptionEn": "The learner can reliably solve addition tasks with integers, justify calculation steps, and check results on the number line or in context.",
+      "contains": [],
+      "requires": [
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+        "d825f7ce-e19b-594a-8181-eff199c21d93"
+      ]
+    },
+    {
+      "id": "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "title": "Rationale Zahlen addieren und subtrahieren",
+      "description": "Die lernende Person kann nicht ganze rationale Zahlen, insbesondere Brüche und Dezimalzahlen, wertgleich in eine für Addition oder Subtraktion geeignete Darstellung überführen, Additionen und Subtraktionen sicher ausführen, dabei Rechenvorteile nutzen und Ergebnisse durch Überschlag plausibilisieren.",
+      "descriptionEn": "The learner can transform non-integer rational numbers, especially fractions and decimals, into an equivalent representation suitable for addition or subtraction, carry out additions and subtractions reliably, use advantageous calculation structures, and check results for plausibility by estimation.",
+      "contains": [],
+      "requires": [
+        "a4c2b831-02f0-5d55-a300-7823a71352c4",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776"
+      ]
+    },
+    {
+      "id": "54148506-c23f-41b8-959b-068dd194cf15",
+      "title": "Einfache multiplikative Gleichungen unter Bereichsbedingungen lösen",
+      "description": "Die lernende Person kann Gleichungen der Formen a·x=b, x:a=b und a:x=b in einem vorgegebenen Zahlenbereich lösen, dabei Null- und Teilbarkeitsbedingungen prüfen, ein geeignetes Verfahren wählen und die Lösung durch Einsetzen kontrollieren.",
+      "descriptionEn": "The learner can solve equations of the forms a·x=b, x:a=b, and a:x=b in a specified number domain, check zero and divisibility conditions, choose a suitable method, and verify the solution by substitution.",
+      "contains": [],
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+      "title": "Variablen in Sachsituationen einführen und deuten",
+      "description": "Die lernende Person kann in Sachsituationen passende Variablen festlegen, ihre Bedeutung erklären und einfache Abhängigkeiten mit Variablen sprachlich und symbolisch beschreiben.",
+      "descriptionEn": "The learner can choose suitable variables in real-world situations, explain their meaning, and describe simple relationships with variables in words and symbols.",
+      "contains": [],
+      "requires": [
+        "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+        "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+        "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+        "44cb7404-114e-5b14-b33a-ddee41952d46",
+        "26f668a0-6425-5466-9cf7-6295dd189005",
+        "b41cb496-dad5-596e-9c23-cdcbdab3ec2e"
+      ]
+    },
+    {
+      "id": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+      "title": "Warum Physik? – Weltverständnis & Zukunft",
+      "description": "Der 'Big Picture'-Einstieg: Warum das Smartphone funktioniert, wie Ärzte ohne Skalpell in den Körper schauen (MRT), warum Sterne leuchten und wie wir die Energiekrise lösen. Überblick über die Relevanz der Themenfelder von der Mechanik bis zur Quantenphysik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "The 'Big Picture' intro: Why smartphones work, how doctors see inside bodies without scalpels (MRI), why stars shine, and how to solve energy crises. Overview of the relevance of topics from mechanics to quantum physics for your life.",
+      "contains": [],
+      "requires": []
+    },
+    {
+      "id": "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "title": "Klammerterme und Rechenreihenfolge sicher auswerten",
+      "description": "Die lernende Person kann Terme mit Grundrechenarten anhand ihrer Operationsstruktur gliedern, die Vorrangwirkung von Klammern und Rechenregeln begründen und den Term schrittweise korrekt auswerten.",
+      "descriptionEn": "The learner can parse expressions with basic operations by their operation structure, justify the precedence created by brackets and operation rules, and evaluate the expression correctly step by step.",
+      "contains": [],
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "624764d6-becd-5f9b-ada3-0d4f9d143073",
+      "title": "Dezimalsystem als Stellenwertsystem erklären und vergleichen",
+      "description": "Die lernende Person kann erklären, wie im Dezimalsystem der Wert einer Ziffer von ihrer Stelle abhängt, natürliche Zahlen in Stellenwerte zerlegen und das Dezimalsystem anhand dieser Struktur mit einem gegebenen anderen Zahlensystem vergleichen.",
+      "descriptionEn": "The learner can explain how a digit's value in the decimal system depends on its position, decompose natural numbers into place values, and compare the decimal system with another given numeral system based on this structure.",
+      "contains": [],
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "65365dce-f33f-49d8-9516-42f75883aa86",
+      "title": "Warum Mathematik? – Entdecken, Muster & Alltag",
+      "description": "Der Sek-I-Einstieg: Wie Mathematik beim Messen, Vergleichen, Bauen, Planen und in Spielen hilft, wie Muster, Daten und Formen im Alltag auftauchen und warum mathematisches Denken beim Begründen und Problemlösen unterstützt. Überblick über Zahlen, Größen, Geometrie, Daten und erste funktionale Zusammenhänge. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "The lower-secondary entry point: how mathematics helps with measuring, comparing, building, planning and games, how patterns, data and shapes appear in everyday life, and why mathematical thinking supports reasoning and problem solving. Overview of numbers, quantities, geometry, data and first functional relationships.",
+      "contains": [],
+      "requires": []
+    },
+    {
+      "id": "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "title": "Brüche als Zahlen, Anteile und Quotienten deuten",
+      "description": "Die lernende Person kann Brüche situationsbezogen als Anteil, Quotient oder Zahl deuten, dabei das Bezugs-Ganze benennen, eine passende Darstellung auswählen und zugehörige Ganze oder Teilmengen bestimmen.",
+      "descriptionEn": "The learner can interpret fractions in context as a part, quotient, or number, identify the reference whole, choose a suitable representation, and determine corresponding wholes or partial quantities.",
+      "contains": [],
+      "requires": [
+        "624764d6-becd-5f9b-ada3-0d4f9d143073"
+      ]
+    },
+    {
+      "id": "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+      "title": "Teilbarkeit durch 2, 3, 5 und 10 prüfen und begründen",
+      "description": "Die lernende Person kann aus der Stellenwertstruktur natürlicher Zahlen begründen, warum die Endziffernregeln die Teilbarkeit durch 2, 5 und 10 und die Quersummenregel die Teilbarkeit durch 3 anzeigen, und damit begründete Teilbarkeitsentscheidungen treffen.",
+      "descriptionEn": "The learner can use the place-value structure of natural numbers to justify why last-digit rules indicate divisibility by 2, 5, and 10 and why the digit-sum rule indicates divisibility by 3, and use these rules to make justified divisibility decisions.",
+      "contains": [],
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "title": "Warum Mathematik? – Denken, Muster & Zukunft",
+      "description": "Der 'Big Picture'-Einstieg: Wie Algorithmen dein Smartphone antreiben, wie Daten zu Entscheidungen werden (Medizin, Klima), warum Modelle Wachstum und Risiken sichtbar machen und weshalb mathematisches Denken Probleme strukturiert löst. Überblick über die Relevanz der Themenfelder von Analysis bis Stochastik für dein Leben. Hier geht es um Orientierung und Interesse; fachliches Detailwissen wird weder vorausgesetzt noch geprüft.",
+      "descriptionEn": "The 'Big Picture' intro: How algorithms power your smartphone, how data becomes decisions (medicine, climate), why models make growth and risks visible, and why mathematical thinking structures problem solving. Overview of the relevance of topics from calculus to stochastics for your life.",
+      "contains": [],
+      "requires": []
+    },
+    {
+      "id": "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "title": "Achsen, Skalen und Einheiten lesen",
+      "description": "Die lernende Person kann bei Diagrammen Achsenbeschriftung, Skalierung und Einheiten korrekt lesen und daraus Werte bzw. Aussagen ableiten.",
+      "descriptionEn": "The learner can read axis labels, scaling and units correctly and derive values or statements from them.",
+      "contains": [],
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "title": "Flächeninhalte ebener Figuren berechnen",
+      "description": "Die lernende Person kann Flächeninhalte von Parallelogrammen, Dreiecken, Trapezen sowie zusammengesetzten Figuren berechnen, Zerlegungsstrategien nutzen und Ergebnisse mit passenden Einheiten deuten.",
+      "descriptionEn": "The learner can calculate the areas of parallelograms, triangles, trapezoids, and composite figures, use decomposition strategies, and interpret results using appropriate units.",
+      "contains": [],
+      "requires": [
+        "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+      ]
+    },
+    {
+      "id": "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "title": "Aussagen über ganze Zahlen prüfen und mit Gegenbeispielen widerlegen",
+      "description": "Die lernende Person kann Aussagen über ganze Zahlen prüfen, wahre Aussagen allgemein begründen und falsche Aussagen mit passenden Gegenbeispielen widerlegen.",
+      "descriptionEn": "The learner can check statements about integers, justify true statements generally, and refute false statements with suitable counterexamples.",
+      "contains": [],
+      "requires": [
+        "3fde4db5-9e92-5f3a-98e1-d386a42b9e01"
+      ]
+    },
+    {
+      "id": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "title": "Gleichförmige Bewegung und Geschwindigkeit",
+      "description": "Die lernende Person kann gleichförmige Bewegungen im Diagramm erkennen, die Geschwindigkeit definieren und den Geschwindigkeitsbetrag experimentell bestimmen.",
+      "descriptionEn": "The learner can recognize uniform motions in the diagram, define velocity, and experimentally determine the magnitude of velocity.",
+      "contains": [],
+      "requires": [
+        "ce431132-dfc4-42c2-aff6-bd72035190f8",
+        "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186"
+      ]
+    },
+    {
+      "id": "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+      "title": "Natürliche Zahlen ordnen und vergleichen",
+      "description": "Die lernende Person kann natürliche Zahlen begründet vergleichen, der Größe nach ordnen und Vergleichsaussagen mit passenden Relationszeichen notieren.",
+      "descriptionEn": "The learner can justify comparisons of natural numbers, order them by size, and record comparison statements using suitable relation symbols.",
+      "contains": [],
+      "requires": [
+        "cf474eab-1379-4877-907e-58b0892ce734"
+      ]
+    },
+    {
+      "id": "a4c2b831-02f0-5d55-a300-7823a71352c4",
+      "title": "Natürliche Zahlen in Primfaktoren zerlegen",
+      "description": "Die lernende Person kann natürliche Zahlen größer als 1 schrittweise vollständig in Primfaktoren zerlegen, die Zerlegung durch Rückmultiplikation prüfen und an verschiedenen Zerlegungswegen zeigen, dass bis auf die Reihenfolge dieselben Primfaktoren entstehen.",
+      "descriptionEn": "The learner can factor natural numbers greater than 1 completely into primes step by step, check the factorization by multiplying back, and use different factorization paths to show that the same prime factors result, up to order.",
+      "contains": [],
+      "requires": [
+        "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077"
+      ]
+    },
+    {
+      "id": "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+      "title": "Bewegungen mit Weg-Zeit-Diagrammen beschreiben",
+      "description": "Die lernende Person kann in Weg-Zeit-Diagrammen Ruhe, gleichförmige Bewegung und qualitative Geschwindigkeitsänderungen anhand des Verlaufs und seiner Steigung unterscheiden und passende Bewegungen beschreiben.",
+      "descriptionEn": "The learner can distinguish rest, uniform motion, and qualitative changes in speed in distance-time diagrams from the graph's shape and slope and describe the corresponding motions.",
+      "contains": [],
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+        "80c232f1-8f72-5829-9dbe-5a610ccab3be"
+      ]
+    },
+    {
+      "id": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "title": "Lineare Funktionen beschreiben",
+      "description": "Die lernende Person kann lineare Funktionen durch Gleichungen, Wertetabellen und Graphen darstellen sowie die Bedeutung von Steigung und y-Achsenabschnitt in einfachen Situationen deuten.",
+      "descriptionEn": "The learner can represent linear functions using equations, value tables, and graphs and interpret the meaning of slope and the y-intercept in simple situations.",
+      "contains": [],
+      "requires": [
+        "f3167cab-bb23-4bb9-8a27-22e3c5015d44"
+      ]
+    },
+    {
+      "id": "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "title": "Anteilssachprobleme mit rationalen Zahlen modellieren",
+      "description": "Die lernende Person kann Sachprobleme mit Anteilen oder Anteilen von Anteilen in Terme oder Rechenwege mit rationalen Zahlen übersetzen und Ergebnisse im Kontext deuten.",
+      "descriptionEn": "The learner can translate contextual problems involving fractions or fractions of fractions into expressions or calculation paths with rational numbers and interpret the results in context.",
+      "contains": [],
+      "requires": [
+        "05012547-7263-5bfa-9e7c-df970745a011",
+        "6b0075bb-f71c-59f6-ab98-fb894568cc26"
+      ]
+    },
+    {
+      "id": "b5de0574-93ed-409c-80ee-312211420cd6",
+      "title": "Problemstellungen mit ganzen Zahlen heuristisch lösen und Rechenwege dokumentieren",
+      "description": "Die lernende Person kann Problemstellungen mit ganzen Zahlen strukturieren, eine passende heuristische Strategie und geeignete Rechenschritte begründet auswählen, den Lösungsweg nachvollziehbar dokumentieren und das Ergebnis im Sachzusammenhang prüfen.",
+      "descriptionEn": "The learner can structure problems involving integers, justify the choice of a suitable heuristic strategy and calculation steps, document the solution path clearly, and check the result in context.",
+      "contains": [],
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "bf8517a9-142b-5789-826a-767f3b277998",
+      "title": "Durchschnitts- und Momentangeschwindigkeit unterscheiden",
+      "description": "Die lernende Person kann Durchschnittsgeschwindigkeit für ein endliches Zeitintervall und Momentangeschwindigkeit für einen Zeitpunkt bestimmen, vergleichen und im t-s-Diagramm als Sekanten- beziehungsweise Tangentensteigung deuten.",
+      "descriptionEn": "The learner can determine and compare average velocity over a finite interval and instantaneous velocity at an instant, interpreting them in a time-position graph as secant and tangent slopes, respectively.",
+      "contains": [],
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+      ]
+    },
+    {
+      "id": "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+      "title": "Proportionale Zusammenhänge mit Quotientengleichheit prüfen",
+      "description": "Die lernende Person kann in Tabellen und Sachsituationen prüfen, ob das Verhältnis zugeordneter Größen konstant ist, und die Quotientengleichheit fachsprachlich begründen.",
+      "descriptionEn": "The learner can test in tables and real contexts whether the ratio of corresponding quantities is constant and justify constant quotients using mathematical language.",
+      "contains": [],
+      "requires": [
+        "2bb4bb91-7929-483a-b735-44275f6b5cdc"
+      ]
+    },
+    {
+      "id": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+      "title": "Funktionswerte berechnen",
+      "description": "Die lernende Person kann zu gegebenen Funktionstermen $f(x)$ Funktionswerte für konkrete x-Werte korrekt berechnen und als die zu diesen Eingaben gehörigen Ausgabewerte deuten.",
+      "descriptionEn": "The learner can correctly calculate function values for concrete x-values from given function terms $f(x)$ and interpret them as the outputs corresponding to those inputs.",
+      "contains": [],
+      "requires": [
+        "09f47964-2cd0-410e-93ee-9632b582fc91"
+      ]
+    },
+    {
+      "id": "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "title": "Mit Größen einheitengerecht rechnen und Ergebnisse deuten",
+      "description": "Die lernende Person kann in einer Sachsituation anhand der beteiligten Größen entscheiden, welche Rechenoperation sinnvoll ist, beim Addieren und Subtrahieren nur gleichartige Größen in einer gemeinsamen Einheit verknüpfen, eine Größe mit einer Zahl vervielfachen oder teilen und Ergebnis sowie Einheit im Kontext auf Plausibilität prüfen.",
+      "descriptionEn": "The learner can decide which arithmetic operation is appropriate in a context based on the quantities involved, combine only like quantities expressed in a common unit when adding or subtracting, multiply or divide a quantity by a number, and check both the result and its unit for plausibility in context.",
+      "contains": [],
+      "requires": [
+        "f2e42af5-67a6-477e-82ea-e65b09cc6cb3"
+      ]
+    },
+    {
+      "id": "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "title": "Brüche und Dezimalbrüche ineinander umwandeln",
+      "description": "Die lernende Person kann Brüche in endliche oder periodische Dezimalbrüche umwandeln, umgekehrt endliche und einfache periodische Dezimalbrüche als Brüche darstellen und Darstellungswechsel begründet wählen.",
+      "descriptionEn": "The learner can convert fractions into terminating or repeating decimals, represent terminating and simple repeating decimals as fractions, and justify chosen representation changes.",
+      "contains": [],
+      "requires": [
+        "a4c2b831-02f0-5d55-a300-7823a71352c4"
+      ]
+    },
+    {
+      "id": "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "title": "Multiplikation und ganzzahlige Division als Umkehroperationen nutzen",
+      "description": "Die lernende Person kann natürliche und ganze Zahlen multiplizieren, eine zulässige ganzzahlige Division als zugehörige Umkehraufgabe deuten und berechnen, dabei Vorzeichen sowie die Bedingungen „Divisor ungleich null“ und „ganzzahliger Quotient“ begründen und das Ergebnis durch den Wechsel zur Umkehroperation prüfen.",
+      "descriptionEn": "The learner can multiply natural numbers and integers, interpret and calculate an admissible integer division as the corresponding inverse problem, justify signs and the conditions ‘divisor nonzero’ and ‘integer quotient’, and check the result by switching to the inverse operation.",
+      "contains": [],
+      "requires": [
+        "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+        "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+        "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+        "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+        "191c67db-44a8-4f63-994a-d85e8e301194",
+        "11e3cf89-9224-5894-8e4a-ae8ff5af0119"
+      ]
+    },
+    {
+      "id": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "title": "Bewegungen messen und im t-s-Diagramm darstellen",
+      "description": "Die lernende Person kann eine einfache eindimensionale Bewegung experimentell erfassen, die Orts-Zeit-Daten im t-s-Diagramm darstellen und daraus Ruhe, Bewegungsrichtung und schnellere oder langsamere Abschnitte ablesen. Sie berücksichtigt die Messauflösung.",
+      "descriptionEn": "The learner can experimentally record a simple one-dimensional motion, represent the position-time data in a time-position graph and read off rest, direction of motion and faster or slower sections from it. They account for the measurement resolution.",
+      "contains": [],
+      "requires": [
+        "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+        "25593605-5e13-55cc-9a05-8f3d737e15e9"
+      ]
+    },
+    {
+      "id": "cf474eab-1379-4877-907e-58b0892ce734",
+      "title": "Natürliche Zahlen darstellen und am Zahlenstrahl verorten",
+      "description": "Die lernende Person kann natürliche Zahlen in Ziffern und Worten darstellen, sie am Zahlenstrahl sicher eintragen und ihre Positionen anhand der Skalierung begründen.",
+      "descriptionEn": "The learner can represent natural numbers using numerals and words, plot them reliably on a number line, and justify their positions from the scale.",
+      "contains": [],
+      "requires": [
+        "65365dce-f33f-49d8-9516-42f75883aa86"
+      ]
+    },
+    {
+      "id": "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "title": "Ganze Zahlen ordnen und an der Zahlengeraden darstellen",
+      "description": "Die lernende Person kann ganze Zahlen einschließlich null an der Zahlengeraden darstellen, vergleichen und in alltagsnahen Situationen begründet ordnen.",
+      "descriptionEn": "The learner can represent integers, including zero, on the number line, compare them, and order them with justification in everyday contexts.",
+      "contains": [],
+      "requires": [
+        "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+      ]
+    },
+    {
+      "id": "d658e26a-e351-4bca-824e-f346deaa87c5",
+      "contains": [],
+      "title": "Potenzen mit natürlichen Exponenten deuten und berechnen",
+      "description": "Die lernende Person kann bei Potenzen a^n mit ganzzahliger Basis a und natürlichem Exponenten n ≥ 1 Basis und Exponent unterscheiden, a^n als Produkt aus n gleichen Faktoren deuten, den Wert berechnen und das Ergebnis an der Faktorstruktur prüfen.",
+      "descriptionEn": "For powers a^n with integer base a and natural exponent n ≥ 1, the learner can distinguish base and exponent, interpret a^n as a product of n equal factors, calculate its value, and check the result against the factor structure.",
+      "requires": [
+        "cafd6520-c4af-4109-9863-cc49ba6fad4d"
+      ]
+    },
+    {
+      "id": "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "title": "Umfang und Flächeninhalt unterscheiden und anwenden",
+      "description": "Die lernende Person kann Umfang als Länge des Randes und Flächeninhalt als Maß der bedeckten Fläche unterscheiden, in einfachen Sachsituationen die passende Größe und Formel wählen und Ergebnisse mit geeigneten Einheiten deuten.",
+      "descriptionEn": "The learner can distinguish perimeter as the length of a boundary from area as the measure of a covered region, choose the appropriate quantity and formula in simple contexts, and interpret results using suitable units.",
+      "contains": [],
+      "requires": [
+        "ca623958-c204-5d1b-bdd0-3f76765674cb"
+      ]
+    },
+    {
+      "id": "d825f7ce-e19b-594a-8181-eff199c21d93",
+      "title": "Vier Grundrechenarten mit natürlichen Zahlen in Sachsituationen auswählen und prüfen",
+      "description": "Die lernende Person kann in überschaubaren Sach- und Rechensituationen die passende der vier Grundrechenarten mit natürlichen Zahlen auswählen, einen geeigneten Rechenweg begründen und ausführen sowie die Größenordnung des Ergebnisses mit einem Überschlag prüfen.",
+      "descriptionEn": "The learner can select the appropriate one of the four arithmetic operations with natural numbers in straightforward contextual and numerical situations, justify and carry out a suitable calculation path, and check the result's order of magnitude using an estimate.",
+      "contains": [],
+      "requires": [
+        "9ef6c4fa-b97a-5d7a-86c1-96690f02d916"
+      ]
+    },
+    {
+      "id": "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "title": "Vierecke anhand ihrer Eigenschaften einordnen und begründen",
+      "description": "Die lernende Person kann Quadrat, Rechteck, Parallelogramm, Raute, Drachenviereck und Trapez anhand ihrer Eigenschaften erkennen, darstellen und hierarchisch einordnen; dabei verwendet sie für Trapeze die inklusive Definition mit mindestens einem Paar paralleler Gegenseiten und begründet Mehrfachzuordnungen.",
+      "descriptionEn": "The learner can identify, represent, and hierarchically classify squares, rectangles, parallelograms, rhombi, kites, and trapezoids from their properties, using the inclusive definition of a trapezoid as having at least one pair of opposite parallel sides and justifying multiple classifications.",
+      "contains": [],
+      "requires": [
+        "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+        "2331caf2-ccb2-5492-9fc6-48763b848bae"
+      ]
+    },
+    {
+      "id": "e331a425-e9c6-46eb-89cb-dedf72857974",
+      "contains": [],
+      "title": "Große Zahlen mit Zehnerpotenzen darstellen und deuten",
+      "description": "Die lernende Person kann große natürliche Zahlen mithilfe der Stellenwertstruktur zwischen Dezimalschreibweise und Darstellungen durch Zehnerpotenzen mit nichtnegativen Exponenten wechseln, ihre Größenordnung am Exponenten der größten Zehnerpotenz deuten, die die Zahl nicht überschreitet, und die Darstellung in einfachen Sachzusammenhängen auf Plausibilität prüfen.",
+      "descriptionEn": "The learner can use place-value structure to switch large natural numbers between decimal notation and representations using powers of ten with non-negative exponents, interpret their order of magnitude from the exponent of the greatest power of ten that does not exceed the number, and check the representation for plausibility in simple contexts.",
+      "requires": [
+        "d658e26a-e351-4bca-824e-f346deaa87c5"
+      ]
+    },
+    {
+      "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+      "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+      "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations.",
+      "contains": [],
+      "requires": [
+        "bf8517a9-142b-5789-826a-767f3b277998",
+        "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ]
+    },
+    {
+      "id": "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "title": "Rechnungen mit Umkehroperationen überprüfen",
+      "description": "Die lernende Person kann Ergebnisse einfacher Rechnungen mithilfe passender Umkehroperationen überprüfen und Fehler in Rechenwegen erkennen.",
+      "descriptionEn": "The learner can check results of simple calculations using suitable inverse operations and identify errors in calculation paths.",
+      "contains": [],
+      "requires": [
+        "d825f7ce-e19b-594a-8181-eff199c21d93"
+      ]
+    },
+    {
+      "id": "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "title": "Dichtheit der rationalen Zahlen erläutern",
+      "description": "Die lernende Person kann erläutern, dass zwischen zwei verschiedenen rationalen Zahlen stets weitere rationale Zahlen liegen, durch wiederholte Mittelwertbildung beliebig viele davon konstruieren und damit die Dichtheit begründen.",
+      "descriptionEn": "The learner can explain that further rational numbers always lie between any two distinct rational numbers, construct arbitrarily many of them by repeatedly taking midpoints, and thereby justify density.",
+      "contains": [],
+      "requires": [
+        "02013455-72a0-5213-9509-ed77f7ede62b",
+        "f6b13b8e-1ecd-5420-905d-21290aa996a6"
+      ]
+    },
+    {
+      "id": "ee48e811-4c9c-5080-9836-8403fc9f0810",
+      "title": "Rationale Zahlen multiplizieren und dividieren",
+      "description": "Die lernende Person kann nicht ganze rationale Zahlen, insbesondere Brüche und Dezimalzahlen, in verschiedenen Darstellungsformen multiplizieren und dividieren, dabei tragfähige Operationsvorstellungen nutzen und Rechenvorteile gezielt einsetzen.",
+      "descriptionEn": "The learner can multiply and divide non-integer rational numbers, especially fractions and decimals, in different representations, use solid operation concepts, and apply calculation advantages purposefully.",
+      "contains": [],
+      "requires": [
+        "a4c2b831-02f0-5d55-a300-7823a71352c4",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776"
+      ]
+    },
+    {
+      "id": "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+      "title": "Terme mit Variablen lesen und deuten",
+      "description": "Die lernende Person kann Terme mit Variablen lesen, ihre Bestandteile und Rechenstruktur benennen und ihre Bedeutung in einfachen Kontexten erklären.",
+      "descriptionEn": "The learner can read expressions with variables, identify their components and operational structure, and explain their meaning in simple contexts.",
+      "contains": [],
+      "requires": [
+        "5bba4ec2-3781-4624-8b62-e24b38f7f76e"
+      ]
+    },
+    {
+      "id": "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "title": "Größen und Einheiten vergleichen und umrechnen",
+      "description": "Die lernende Person kann für alltagsnahe Größen passende Einheiten auswählen, Größenangaben sicher in gleichartige Einheiten umrechnen, dabei anhand des Einheitenverhältnisses begründen, warum die dargestellte Größe unverändert bleibt, und Messergebnisse in einer gemeinsamen Einheit sinnvoll vergleichen.",
+      "descriptionEn": "The learner can choose suitable units for everyday quantities, reliably convert measurements into equivalent units, justify the unchanged quantity from the relationship between the units, and compare measurement results meaningfully in a common unit.",
+      "contains": [],
+      "requires": [
+        "54148506-c23f-41b8-959b-068dd194cf15",
+        "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+        "2ae76eae-799c-463e-9ec9-82327f8209a8",
+        "b5de0574-93ed-409c-80ee-312211420cd6"
+      ]
+    },
+    {
+      "id": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "title": "Proportionale Funktionen als Ursprungsgeraden deuten und darstellen",
+      "description": "Die lernende Person kann proportionale Funktionen in Tabellen und als Ursprungsgeraden in Graphen darstellen und deuten und dabei erläutern, dass bei Eingabewerten ungleich null der konstante Quotient aus Ausgabe- und Eingabewert der Steigung der Geraden entspricht.",
+      "descriptionEn": "The learner can represent and interpret proportional functions in tables and as lines through the origin in graphs and explain that, for nonzero inputs, the constant ratio of output to input corresponds to the slope of the line.",
+      "contains": [],
+      "requires": [
+        "c1f50bcc-7848-4e49-b9de-0ec030cc6bca"
+      ]
+    },
+    {
+      "id": "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+      "title": "Bruchdarstellungen verwenden und wechseln",
+      "description": "Die lernende Person kann denselben Bruchwert bildlich, verbal, geometrisch und algebraisch darstellen, Informationen zwischen diesen Darstellungen übertragen und begründen, warum der Wert beim Wechsel erhalten bleibt.",
+      "descriptionEn": "The learner can represent the same fractional value visually, verbally, geometrically, and algebraically, transfer information between these representations, and justify why the value is preserved when switching.",
+      "contains": [],
+      "requires": [
+        "6b0075bb-f71c-59f6-ab98-fb894568cc26"
+      ]
+    },
+    {
+      "id": "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+      "title": "Rationale Zahlen an der Zahlengeraden darstellen und ordnen",
+      "description": "Die lernende Person kann positive und negative nicht ganze rationale Zahlen, insbesondere Bruch- und Dezimalzahlen, auf einer passend skalierten Zahlengeraden darstellen, begründet ordnen und wertgleiche Darstellungen demselben Punkt zuordnen.",
+      "descriptionEn": "The learner can represent positive and negative non-integer rational numbers, especially fractions and decimals, on a suitably scaled number line, order them with justification, and assign equivalent representations to the same point.",
+      "contains": [],
+      "requires": [
+        "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe"
+      ]
+    },
+    {
+      "id": "fe07241a-b779-5f35-a82d-7aa51ae74f42",
+      "title": "Natürliche Zahlen runden",
+      "description": "Die lernende Person kann natürliche Zahlen auf eine vorgegebene oder zum Sachzusammenhang passende Stelle runden und die Bedeutung des entstehenden Näherungswerts erläutern.",
+      "descriptionEn": "The learner can round natural numbers to a given place or to a place appropriate to the context and explain the meaning of the resulting approximate value.",
+      "contains": [],
+      "requires": [
+        "624764d6-becd-5f9b-ada3-0d4f9d143073"
+      ]
+    }
+  ],
+  "learnerSubmissions": {
+    "X": "A. Ich benutze tau=t−2s. Die Gesetze sind v=-1m/s+2m/s²*tau und s=5m−1m/s*tau+1m/s²*tau². Für die ursprüngliche Zeit erfüllen sie v(2s)=-1m/s und s(2s)=5m. Meine Diagramme sind unmittelbar hier als SVG dargestellt:\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,78.3333 L47.6250,78.3333 L50.2500,78.3333 L52.8750,78.3333 L55.5000,78.3333 L58.1250,78.3333 L60.7500,78.3333 L63.3750,78.3333 L66.0000,78.3333 L68.6250,78.3333 L71.2500,78.3333 L73.8750,78.3333 L76.5000,78.3333 L79.1250,78.3333 L81.7500,78.3333 L84.3750,78.3333 L87.0000,78.3333 L89.6250,78.3333 L92.2500,78.3333 L94.8750,78.3333 L97.5000,78.3333 L100.1250,78.3333 L102.7500,78.3333 L105.3750,78.3333 L108.0000,78.3333 L110.6250,78.3333 L113.2500,78.3333 L115.8750,78.3333 L118.5000,78.3333 L121.1250,78.3333 L123.7500,78.3333 L126.3750,78.3333 L129.0000,78.3333 L131.6250,78.3333 L134.2500,78.3333 L136.8750,78.3333 L139.5000,78.3333 L142.1250,78.3333 L144.7500,78.3333 L147.3750,78.3333 L150.0000,78.3333 L152.6250,78.3333 L155.2500,78.3333 L157.8750,78.3333 L160.5000,78.3333 L163.1250,78.3333 L165.7500,78.3333 L168.3750,78.3333 L171.0000,78.3333 L173.6250,78.3333 L176.2500,78.3333 L178.8750,78.3333 L181.5000,78.3333 L184.1250,78.3333 L186.7500,78.3333 L189.3750,78.3333 L192.0000,78.3333 L194.6250,78.3333 L197.2500,78.3333 L199.8750,78.3333 L202.5000,78.3333 L205.1250,78.3333 L207.7500,78.3333 L210.3750,78.3333 L213.0000,78.3333 L215.6250,78.3333 L218.2500,78.3333 L220.8750,78.3333 L223.5000,78.3333 L226.1250,78.3333 L228.7500,78.3333 L231.3750,78.3333 L234.0000,78.3333 L236.6250,78.3333 L239.2500,78.3333 L241.8750,78.3333 L244.5000,78.3333 L247.1250,78.3333 L249.7500,78.3333 L252.3750,78.3333 L255.0000,78.3333\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"73.33\" font-size=\"9\">(2;2)</text><text x=\"97.50\" y=\"73.33\" font-size=\"9\">(2.5;2)</text><text x=\"150.00\" y=\"73.33\" font-size=\"9\">(3;2)</text><text x=\"255.00\" y=\"73.33\" font-size=\"9\">(4;2)</text><text x=\"8\" y=\"14\" font-size=\"12\">a/m/s²</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 2 bis 4 s</text></svg>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,143.5000 L47.6250,142.3500 L50.2500,141.2000 L52.8750,140.0500 L55.5000,138.9000 L58.1250,137.7500 L60.7500,136.6000 L63.3750,135.4500 L66.0000,134.3000 L68.6250,133.1500 L71.2500,132.0000 L73.8750,130.8500 L76.5000,129.7000 L79.1250,128.5500 L81.7500,127.4000 L84.3750,126.2500 L87.0000,125.1000 L89.6250,123.9500 L92.2500,122.8000 L94.8750,121.6500 L97.5000,120.5000 L100.1250,119.3500 L102.7500,118.2000 L105.3750,117.0500 L108.0000,115.9000 L110.6250,114.7500 L113.2500,113.6000 L115.8750,112.4500 L118.5000,111.3000 L121.1250,110.1500 L123.7500,109.0000 L126.3750,107.8500 L129.0000,106.7000 L131.6250,105.5500 L134.2500,104.4000 L136.8750,103.2500 L139.5000,102.1000 L142.1250,100.9500 L144.7500,99.8000 L147.3750,98.6500 L150.0000,97.5000 L152.6250,96.3500 L155.2500,95.2000 L157.8750,94.0500 L160.5000,92.9000 L163.1250,91.7500 L165.7500,90.6000 L168.3750,89.4500 L171.0000,88.3000 L173.6250,87.1500 L176.2500,86.0000 L178.8750,84.8500 L181.5000,83.7000 L184.1250,82.5500 L186.7500,81.4000 L189.3750,80.2500 L192.0000,79.1000 L194.6250,77.9500 L197.2500,76.8000 L199.8750,75.6500 L202.5000,74.5000 L205.1250,73.3500 L207.7500,72.2000 L210.3750,71.0500 L213.0000,69.9000 L215.6250,68.7500 L218.2500,67.6000 L220.8750,66.4500 L223.5000,65.3000 L226.1250,64.1500 L228.7500,63.0000 L231.3750,61.8500 L234.0000,60.7000 L236.6250,59.5500 L239.2500,58.4000 L241.8750,57.2500 L244.5000,56.1000 L247.1250,54.9500 L249.7500,53.8000 L252.3750,52.6500 L255.0000,51.5000\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"138.50\" font-size=\"9\">(2;-1)</text><text x=\"97.50\" y=\"115.50\" font-size=\"9\">(2.5;0)</text><text x=\"150.00\" y=\"92.50\" font-size=\"9\">(3;1)</text><text x=\"255.00\" y=\"46.50\" font-size=\"9\">(4;3)</text><text x=\"8\" y=\"14\" font-size=\"12\">v/m/s</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 2 bis 4 s</text></svg>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,135.8333 L47.6250,136.7677 L50.2500,137.6542 L52.8750,138.4927 L55.5000,139.2833 L58.1250,140.0260 L60.7500,140.7208 L63.3750,141.3677 L66.0000,141.9667 L68.6250,142.5177 L71.2500,143.0208 L73.8750,143.4760 L76.5000,143.8833 L79.1250,144.2427 L81.7500,144.5542 L84.3750,144.8177 L87.0000,145.0333 L89.6250,145.2010 L92.2500,145.3208 L94.8750,145.3927 L97.5000,145.4167 L100.1250,145.3927 L102.7500,145.3208 L105.3750,145.2010 L108.0000,145.0333 L110.6250,144.8177 L113.2500,144.5542 L115.8750,144.2427 L118.5000,143.8833 L121.1250,143.4760 L123.7500,143.0208 L126.3750,142.5177 L129.0000,141.9667 L131.6250,141.3677 L134.2500,140.7208 L136.8750,140.0260 L139.5000,139.2833 L142.1250,138.4927 L144.7500,137.6542 L147.3750,136.7677 L150.0000,135.8333 L152.6250,134.8510 L155.2500,133.8208 L157.8750,132.7427 L160.5000,131.6167 L163.1250,130.4427 L165.7500,129.2208 L168.3750,127.9510 L171.0000,126.6333 L173.6250,125.2677 L176.2500,123.8542 L178.8750,122.3927 L181.5000,120.8833 L184.1250,119.3260 L186.7500,117.7208 L189.3750,116.0677 L192.0000,114.3667 L194.6250,112.6177 L197.2500,110.8208 L199.8750,108.9760 L202.5000,107.0833 L205.1250,105.1427 L207.7500,103.1542 L210.3750,101.1177 L213.0000,99.0333 L215.6250,96.9010 L218.2500,94.7208 L220.8750,92.4927 L223.5000,90.2167 L226.1250,87.8927 L228.7500,85.5208 L231.3750,83.1010 L234.0000,80.6333 L236.6250,78.1177 L239.2500,75.5542 L241.8750,72.9427 L244.5000,70.2833 L247.1250,67.5760 L249.7500,64.8208 L252.3750,62.0177 L255.0000,59.1667\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"130.83\" font-size=\"9\">(2;5)</text><text x=\"97.50\" y=\"140.42\" font-size=\"9\">(2.5;4.75)</text><text x=\"150.00\" y=\"130.83\" font-size=\"9\">(3;5)</text><text x=\"255.00\" y=\"54.17\" font-size=\"9\">(4;7)</text><text x=\"8\" y=\"14\" font-size=\"12\">s/m</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 2 bis 4 s</text></svg>\nDie Ortsmarken sind s(2,5s)=4,75m, s(3s)=5m und s(4s)=7m. In den Diagrammen ist bei t=2,5s die Umkehr: v wechselt von negativ nach positiv, am s-Minimum ist die Tangente waagerecht. Die Beschleunigung bleibt währenddessen+2m/s². Die a-Fläche ist2m/s²*(4−2)s=4m/s; die Geschwindigkeit steigt von−1 auf+3m/s. Die konstante Rechteckhöhe bedeutet in jedem gleich langen Zeitstück dieselbe Geschwindigkeitsänderung: pro Sekunde+2m/s. Auch bei v=0 an der Umkehr bleibt die Steigung des t-v-Graphen+2m/s². Die v-Fläche bis2,5s ist−(0,5s*1m/s)/2=−0,25m, danach +(1,5s*3m/s)/2=+2,25m. Das sind gerichtete Ortsänderungen. Insgesamt Delta-s=7−5=−0,25+2,25=+2m. Die Strecke ist0,25+2,25=2,50m, weil zurückgelegte Teilstrecken als Beträge addiert werden; der erste Abschnitt geht in Gegenrichtung. Das Kontrollintervall ist[7,03−0,05;7,03+0,05]m=[6,98;7,08]m. Die Vorhersage7m liegt darin; die Kontrolle stimmt im angegebenen Intervall überein.\nB. Bis zum Stillstand: v(t)=6−2t in SI und s(t)=6t−t² in SI, mit s(0)=0. Aus v=0 folgt tStopp=3s; s(3)=18−9=9m Bremsweg. Die Diagramme sind:\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,116.6667 L47.6250,116.6667 L50.2500,116.6667 L52.8750,116.6667 L55.5000,116.6667 L58.1250,116.6667 L60.7500,116.6667 L63.3750,116.6667 L66.0000,116.6667 L68.6250,116.6667 L71.2500,116.6667 L73.8750,116.6667 L76.5000,116.6667 L79.1250,116.6667 L81.7500,116.6667 L84.3750,116.6667 L87.0000,116.6667 L89.6250,116.6667 L92.2500,116.6667 L94.8750,116.6667 L97.5000,116.6667 L100.1250,116.6667 L102.7500,116.6667 L105.3750,116.6667 L108.0000,116.6667 L110.6250,116.6667 L113.2500,116.6667 L115.8750,116.6667 L118.5000,116.6667 L121.1250,116.6667 L123.7500,116.6667 L126.3750,116.6667 L129.0000,116.6667 L131.6250,116.6667 L134.2500,116.6667 L136.8750,116.6667 L139.5000,116.6667 L142.1250,116.6667 L144.7500,116.6667 L147.3750,116.6667 L150.0000,116.6667 L152.6250,116.6667 L155.2500,116.6667 L157.8750,116.6667 L160.5000,116.6667 L163.1250,116.6667 L165.7500,116.6667 L168.3750,116.6667 L171.0000,116.6667 L173.6250,116.6667 L176.2500,116.6667 L178.8750,116.6667 L181.5000,116.6667 L184.1250,116.6667 L186.7500,116.6667 L189.3750,116.6667 L192.0000,116.6667 L194.6250,116.6667 L197.2500,116.6667 L199.8750,116.6667 L202.5000,116.6667 L205.1250,116.6667 L207.7500,116.6667 L210.3750,116.6667 L213.0000,116.6667 L215.6250,116.6667 L218.2500,116.6667 L220.8750,116.6667 L223.5000,116.6667 L226.1250,116.6667 L228.7500,116.6667 L231.3750,116.6667 L234.0000,116.6667 L236.6250,116.6667 L239.2500,116.6667 L241.8750,116.6667 L244.5000,116.6667 L247.1250,116.6667 L249.7500,116.6667 L252.3750,116.6667 L255.0000,116.6667\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"111.67\" font-size=\"9\">(0;-2)</text><text x=\"97.50\" y=\"111.67\" font-size=\"9\">(0.75;-2)</text><text x=\"150.00\" y=\"111.67\" font-size=\"9\">(1.5;-2)</text><text x=\"255.00\" y=\"111.67\" font-size=\"9\">(3;-2)</text><text x=\"8\" y=\"14\" font-size=\"12\">a/m/s²</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 0 bis 3 s</text></svg>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,56.4286 L47.6250,57.6607 L50.2500,58.8929 L52.8750,60.1250 L55.5000,61.3571 L58.1250,62.5893 L60.7500,63.8214 L63.3750,65.0536 L66.0000,66.2857 L68.6250,67.5179 L71.2500,68.7500 L73.8750,69.9821 L76.5000,71.2143 L79.1250,72.4464 L81.7500,73.6786 L84.3750,74.9107 L87.0000,76.1429 L89.6250,77.3750 L92.2500,78.6071 L94.8750,79.8393 L97.5000,81.0714 L100.1250,82.3036 L102.7500,83.5357 L105.3750,84.7679 L108.0000,86.0000 L110.6250,87.2321 L113.2500,88.4643 L115.8750,89.6964 L118.5000,90.9286 L121.1250,92.1607 L123.7500,93.3929 L126.3750,94.6250 L129.0000,95.8571 L131.6250,97.0893 L134.2500,98.3214 L136.8750,99.5536 L139.5000,100.7857 L142.1250,102.0179 L144.7500,103.2500 L147.3750,104.4821 L150.0000,105.7143 L152.6250,106.9464 L155.2500,108.1786 L157.8750,109.4107 L160.5000,110.6429 L163.1250,111.8750 L165.7500,113.1071 L168.3750,114.3393 L171.0000,115.5714 L173.6250,116.8036 L176.2500,118.0357 L178.8750,119.2679 L181.5000,120.5000 L184.1250,121.7321 L186.7500,122.9643 L189.3750,124.1964 L192.0000,125.4286 L194.6250,126.6607 L197.2500,127.8929 L199.8750,129.1250 L202.5000,130.3571 L205.1250,131.5893 L207.7500,132.8214 L210.3750,134.0536 L213.0000,135.2857 L215.6250,136.5179 L218.2500,137.7500 L220.8750,138.9821 L223.5000,140.2143 L226.1250,141.4464 L228.7500,142.6786 L231.3750,143.9107 L234.0000,145.1429 L236.6250,146.3750 L239.2500,147.6071 L241.8750,148.8393 L244.5000,150.0714 L247.1250,151.3036 L249.7500,152.5357 L252.3750,153.7679 L255.0000,155.0000\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"51.43\" font-size=\"9\">(0;6)</text><text x=\"97.50\" y=\"76.07\" font-size=\"9\">(0.75;4.5)</text><text x=\"150.00\" y=\"100.71\" font-size=\"9\">(1.5;3)</text><text x=\"255.00\" y=\"150.00\" font-size=\"9\">(3;0)</text><text x=\"8\" y=\"14\" font-size=\"12\">v/m/s</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 0 bis 3 s</text></svg>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,155.0000 L47.6250,152.4287 L50.2500,149.8897 L52.8750,147.3830 L55.5000,144.9087 L58.1250,142.4668 L60.7500,140.0572 L63.3750,137.6799 L66.0000,135.3350 L68.6250,133.0224 L71.2500,130.7422 L73.8750,128.4943 L76.5000,126.2788 L79.1250,124.0955 L81.7500,121.9447 L84.3750,119.8262 L87.0000,117.7400 L89.6250,115.6862 L92.2500,113.6647 L94.8750,111.6755 L97.5000,109.7188 L100.1250,107.7943 L102.7500,105.9022 L105.3750,104.0424 L108.0000,102.2150 L110.6250,100.4199 L113.2500,98.6572 L115.8750,96.9268 L118.5000,95.2287 L121.1250,93.5630 L123.7500,91.9297 L126.3750,90.3287 L129.0000,88.7600 L131.6250,87.2237 L134.2500,85.7197 L136.8750,84.2480 L139.5000,82.8087 L142.1250,81.4018 L144.7500,80.0272 L147.3750,78.6849 L150.0000,77.3750 L152.6250,76.0974 L155.2500,74.8522 L157.8750,73.6393 L160.5000,72.4588 L163.1250,71.3105 L165.7500,70.1947 L168.3750,69.1112 L171.0000,68.0600 L173.6250,67.0412 L176.2500,66.0547 L178.8750,65.1005 L181.5000,64.1788 L184.1250,63.2893 L186.7500,62.4322 L189.3750,61.6074 L192.0000,60.8150 L194.6250,60.0549 L197.2500,59.3272 L199.8750,58.6318 L202.5000,57.9688 L205.1250,57.3380 L207.7500,56.7397 L210.3750,56.1737 L213.0000,55.6400 L215.6250,55.1387 L218.2500,54.6697 L220.8750,54.2330 L223.5000,53.8287 L226.1250,53.4568 L228.7500,53.1172 L231.3750,52.8099 L234.0000,52.5350 L236.6250,52.2924 L239.2500,52.0822 L241.8750,51.9043 L244.5000,51.7587 L247.1250,51.6455 L249.7500,51.5647 L252.3750,51.5162 L255.0000,51.5000\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"150.00\" font-size=\"9\">(0;0)</text><text x=\"97.50\" y=\"104.72\" font-size=\"9\">(0.75;3.9375)</text><text x=\"150.00\" y=\"72.38\" font-size=\"9\">(1.5;6.75)</text><text x=\"255.00\" y=\"46.50\" font-size=\"9\">(3;9)</text><text x=\"8\" y=\"14\" font-size=\"12\">s/m</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 0 bis 3 s</text></svg>\nDas bis5s fortgesetzte Programm liefert v(5)=6−2*5=−4m/s und s(5)=6*5−5²=4m. Die unverändert negative Beschleunigung bedeutet weiter dieselbe negative Geschwindigkeitsänderung in jedem gleich langen Zeitstück, auch nach dem Nulldurchgang bei 3 s; dadurch wird v negativ und die Fahrt kehrt sich um. Es lässt das Fahrzeug nach t=3s rückwärts fahren. Für ein stehenbleibendes Fahrzeug müssen nach dem Stopp v=0 und a=0 gelten; die fortgesetzte Beschleunigung−2m/s² und ihre Rückwärtsfahrt brauchen eine neue Kraft-/Physikbegründung. Deshalb gilt das reine Bremsmodell nur bis zum Stopp.\n",
+    "Y": "A. Ich benutze tau=t−2s. Die Gesetze sind v=-1m/s+2m/s²*tau und s=5m−1m/s*tau+1m/s²*tau². Für die ursprüngliche Zeit erfüllen sie v(2s)=-1m/s und s(2s)=5m. Meine Diagramme sind unmittelbar hier als SVG dargestellt:\n[Kein t-a-Diagramm abgegeben.]\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,143.5000 L47.6250,142.3500 L50.2500,141.2000 L52.8750,140.0500 L55.5000,138.9000 L58.1250,137.7500 L60.7500,136.6000 L63.3750,135.4500 L66.0000,134.3000 L68.6250,133.1500 L71.2500,132.0000 L73.8750,130.8500 L76.5000,129.7000 L79.1250,128.5500 L81.7500,127.4000 L84.3750,126.2500 L87.0000,125.1000 L89.6250,123.9500 L92.2500,122.8000 L94.8750,121.6500 L97.5000,120.5000 L100.1250,119.3500 L102.7500,118.2000 L105.3750,117.0500 L108.0000,115.9000 L110.6250,114.7500 L113.2500,113.6000 L115.8750,112.4500 L118.5000,111.3000 L121.1250,110.1500 L123.7500,109.0000 L126.3750,107.8500 L129.0000,106.7000 L131.6250,105.5500 L134.2500,104.4000 L136.8750,103.2500 L139.5000,102.1000 L142.1250,100.9500 L144.7500,99.8000 L147.3750,98.6500 L150.0000,97.5000 L152.6250,96.3500 L155.2500,95.2000 L157.8750,94.0500 L160.5000,92.9000 L163.1250,91.7500 L165.7500,90.6000 L168.3750,89.4500 L171.0000,88.3000 L173.6250,87.1500 L176.2500,86.0000 L178.8750,84.8500 L181.5000,83.7000 L184.1250,82.5500 L186.7500,81.4000 L189.3750,80.2500 L192.0000,79.1000 L194.6250,77.9500 L197.2500,76.8000 L199.8750,75.6500 L202.5000,74.5000 L205.1250,73.3500 L207.7500,72.2000 L210.3750,71.0500 L213.0000,69.9000 L215.6250,68.7500 L218.2500,67.6000 L220.8750,66.4500 L223.5000,65.3000 L226.1250,64.1500 L228.7500,63.0000 L231.3750,61.8500 L234.0000,60.7000 L236.6250,59.5500 L239.2500,58.4000 L241.8750,57.2500 L244.5000,56.1000 L247.1250,54.9500 L249.7500,53.8000 L252.3750,52.6500 L255.0000,51.5000\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"138.50\" font-size=\"9\">(2;-1)</text><text x=\"97.50\" y=\"115.50\" font-size=\"9\">(2.5;0)</text><text x=\"150.00\" y=\"92.50\" font-size=\"9\">(3;1)</text><text x=\"255.00\" y=\"46.50\" font-size=\"9\">(4;3)</text><text x=\"8\" y=\"14\" font-size=\"12\">v/m/s</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 2 bis 4 s</text></svg>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,135.8333 L47.6250,136.7677 L50.2500,137.6542 L52.8750,138.4927 L55.5000,139.2833 L58.1250,140.0260 L60.7500,140.7208 L63.3750,141.3677 L66.0000,141.9667 L68.6250,142.5177 L71.2500,143.0208 L73.8750,143.4760 L76.5000,143.8833 L79.1250,144.2427 L81.7500,144.5542 L84.3750,144.8177 L87.0000,145.0333 L89.6250,145.2010 L92.2500,145.3208 L94.8750,145.3927 L97.5000,145.4167 L100.1250,145.3927 L102.7500,145.3208 L105.3750,145.2010 L108.0000,145.0333 L110.6250,144.8177 L113.2500,144.5542 L115.8750,144.2427 L118.5000,143.8833 L121.1250,143.4760 L123.7500,143.0208 L126.3750,142.5177 L129.0000,141.9667 L131.6250,141.3677 L134.2500,140.7208 L136.8750,140.0260 L139.5000,139.2833 L142.1250,138.4927 L144.7500,137.6542 L147.3750,136.7677 L150.0000,135.8333 L152.6250,134.8510 L155.2500,133.8208 L157.8750,132.7427 L160.5000,131.6167 L163.1250,130.4427 L165.7500,129.2208 L168.3750,127.9510 L171.0000,126.6333 L173.6250,125.2677 L176.2500,123.8542 L178.8750,122.3927 L181.5000,120.8833 L184.1250,119.3260 L186.7500,117.7208 L189.3750,116.0677 L192.0000,114.3667 L194.6250,112.6177 L197.2500,110.8208 L199.8750,108.9760 L202.5000,107.0833 L205.1250,105.1427 L207.7500,103.1542 L210.3750,101.1177 L213.0000,99.0333 L215.6250,96.9010 L218.2500,94.7208 L220.8750,92.4927 L223.5000,90.2167 L226.1250,87.8927 L228.7500,85.5208 L231.3750,83.1010 L234.0000,80.6333 L236.6250,78.1177 L239.2500,75.5542 L241.8750,72.9427 L244.5000,70.2833 L247.1250,67.5760 L249.7500,64.8208 L252.3750,62.0177 L255.0000,59.1667\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"130.83\" font-size=\"9\">(2;5)</text><text x=\"97.50\" y=\"140.42\" font-size=\"9\">(2.5;4.75)</text><text x=\"150.00\" y=\"130.83\" font-size=\"9\">(3;5)</text><text x=\"255.00\" y=\"54.17\" font-size=\"9\">(4;7)</text><text x=\"8\" y=\"14\" font-size=\"12\">s/m</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 2 bis 4 s</text></svg>\nDie Ortsmarken sind s(2,5s)=4,75m, s(3s)=5m und s(4s)=7m. In den Diagrammen ist bei t=2,5s die Umkehr: v wechselt von negativ nach positiv, am s-Minimum ist die Tangente waagerecht. Die Beschleunigung bleibt währenddessen+2m/s². Die a-Fläche ist2m/s²*(4−2)s=4m/s; die Geschwindigkeit steigt von−1 auf+3m/s. Die konstante Rechteckhöhe bedeutet in jedem gleich langen Zeitstück dieselbe Geschwindigkeitsänderung: pro Sekunde+2m/s. Auch bei v=0 an der Umkehr bleibt die Steigung des t-v-Graphen+2m/s². Die v-Fläche bis2,5s ist−(0,5s*1m/s)/2=−0,25m, danach +(1,5s*3m/s)/2=+2,25m. Das sind gerichtete Ortsänderungen. Insgesamt Delta-s=7−5=−0,25+2,25=+2m. Die Strecke ist0,25+2,25=2,50m, weil zurückgelegte Teilstrecken als Beträge addiert werden; der erste Abschnitt geht in Gegenrichtung. Das Kontrollintervall ist[7,03−0,05;7,03+0,05]m=[6,98;7,08]m. Die Vorhersage7m liegt darin; die Kontrolle stimmt im angegebenen Intervall überein.\nB. Bis zum Stillstand: v(t)=6−2t in SI und s(t)=6t−t² in SI, mit s(0)=0. Aus v=0 folgt tStopp=3s; s(3)=18−9=9m Bremsweg. Die Diagramme sind:\n[Kein t-a-Diagramm abgegeben.]\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,56.4286 L47.6250,57.6607 L50.2500,58.8929 L52.8750,60.1250 L55.5000,61.3571 L58.1250,62.5893 L60.7500,63.8214 L63.3750,65.0536 L66.0000,66.2857 L68.6250,67.5179 L71.2500,68.7500 L73.8750,69.9821 L76.5000,71.2143 L79.1250,72.4464 L81.7500,73.6786 L84.3750,74.9107 L87.0000,76.1429 L89.6250,77.3750 L92.2500,78.6071 L94.8750,79.8393 L97.5000,81.0714 L100.1250,82.3036 L102.7500,83.5357 L105.3750,84.7679 L108.0000,86.0000 L110.6250,87.2321 L113.2500,88.4643 L115.8750,89.6964 L118.5000,90.9286 L121.1250,92.1607 L123.7500,93.3929 L126.3750,94.6250 L129.0000,95.8571 L131.6250,97.0893 L134.2500,98.3214 L136.8750,99.5536 L139.5000,100.7857 L142.1250,102.0179 L144.7500,103.2500 L147.3750,104.4821 L150.0000,105.7143 L152.6250,106.9464 L155.2500,108.1786 L157.8750,109.4107 L160.5000,110.6429 L163.1250,111.8750 L165.7500,113.1071 L168.3750,114.3393 L171.0000,115.5714 L173.6250,116.8036 L176.2500,118.0357 L178.8750,119.2679 L181.5000,120.5000 L184.1250,121.7321 L186.7500,122.9643 L189.3750,124.1964 L192.0000,125.4286 L194.6250,126.6607 L197.2500,127.8929 L199.8750,129.1250 L202.5000,130.3571 L205.1250,131.5893 L207.7500,132.8214 L210.3750,134.0536 L213.0000,135.2857 L215.6250,136.5179 L218.2500,137.7500 L220.8750,138.9821 L223.5000,140.2143 L226.1250,141.4464 L228.7500,142.6786 L231.3750,143.9107 L234.0000,145.1429 L236.6250,146.3750 L239.2500,147.6071 L241.8750,148.8393 L244.5000,150.0714 L247.1250,151.3036 L249.7500,152.5357 L252.3750,153.7679 L255.0000,155.0000\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"51.43\" font-size=\"9\">(0;6)</text><text x=\"97.50\" y=\"76.07\" font-size=\"9\">(0.75;4.5)</text><text x=\"150.00\" y=\"100.71\" font-size=\"9\">(1.5;3)</text><text x=\"255.00\" y=\"150.00\" font-size=\"9\">(3;0)</text><text x=\"8\" y=\"14\" font-size=\"12\">v/m/s</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 0 bis 3 s</text></svg>\n<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"8cm\" height=\"6cm\" viewBox=\"0 0 300 210\"><path d=\"M45,175 L270,175 M45,175 L45,20\" fill=\"none\" stroke=\"black\"/><path d=\"M45.0000,155.0000 L47.6250,152.4287 L50.2500,149.8897 L52.8750,147.3830 L55.5000,144.9087 L58.1250,142.4668 L60.7500,140.0572 L63.3750,137.6799 L66.0000,135.3350 L68.6250,133.0224 L71.2500,130.7422 L73.8750,128.4943 L76.5000,126.2788 L79.1250,124.0955 L81.7500,121.9447 L84.3750,119.8262 L87.0000,117.7400 L89.6250,115.6862 L92.2500,113.6647 L94.8750,111.6755 L97.5000,109.7188 L100.1250,107.7943 L102.7500,105.9022 L105.3750,104.0424 L108.0000,102.2150 L110.6250,100.4199 L113.2500,98.6572 L115.8750,96.9268 L118.5000,95.2287 L121.1250,93.5630 L123.7500,91.9297 L126.3750,90.3287 L129.0000,88.7600 L131.6250,87.2237 L134.2500,85.7197 L136.8750,84.2480 L139.5000,82.8087 L142.1250,81.4018 L144.7500,80.0272 L147.3750,78.6849 L150.0000,77.3750 L152.6250,76.0974 L155.2500,74.8522 L157.8750,73.6393 L160.5000,72.4588 L163.1250,71.3105 L165.7500,70.1947 L168.3750,69.1112 L171.0000,68.0600 L173.6250,67.0412 L176.2500,66.0547 L178.8750,65.1005 L181.5000,64.1788 L184.1250,63.2893 L186.7500,62.4322 L189.3750,61.6074 L192.0000,60.8150 L194.6250,60.0549 L197.2500,59.3272 L199.8750,58.6318 L202.5000,57.9688 L205.1250,57.3380 L207.7500,56.7397 L210.3750,56.1737 L213.0000,55.6400 L215.6250,55.1387 L218.2500,54.6697 L220.8750,54.2330 L223.5000,53.8287 L226.1250,53.4568 L228.7500,53.1172 L231.3750,52.8099 L234.0000,52.5350 L236.6250,52.2924 L239.2500,52.0822 L241.8750,51.9043 L244.5000,51.7587 L247.1250,51.6455 L249.7500,51.5647 L252.3750,51.5162 L255.0000,51.5000\" fill=\"none\" stroke=\"blue\" stroke-width=\"1.5\"/><text x=\"45.00\" y=\"150.00\" font-size=\"9\">(0;0)</text><text x=\"97.50\" y=\"104.72\" font-size=\"9\">(0.75;3.9375)</text><text x=\"150.00\" y=\"72.38\" font-size=\"9\">(1.5;6.75)</text><text x=\"255.00\" y=\"46.50\" font-size=\"9\">(3;9)</text><text x=\"8\" y=\"14\" font-size=\"12\">s/m</text><text x=\"240\" y=\"200\" font-size=\"12\">t/s</text><text x=\"45\" y=\"195\" font-size=\"9\">Zeitintervall 0 bis 3 s</text></svg>\nDas bis5s fortgesetzte Programm liefert v(5)=6−2*5=−4m/s und s(5)=6*5−5²=5m. Die unverändert negative Beschleunigung bedeutet weiter dieselbe negative Geschwindigkeitsänderung in jedem gleich langen Zeitstück, auch nach dem Nulldurchgang bei 3 s; dadurch wird v negativ und die Fahrt kehrt sich um. Es lässt das Fahrzeug nach t=3s rückwärts fahren. Für ein stehenbleibendes Fahrzeug müssen nach dem Stopp v=0 und a=0 gelten; die fortgesetzte Beschleunigung−2m/s² und ihre Rückwärtsfahrt brauchen eine neue Kraft-/Physikbegründung. Deshalb gilt das reine Bremsmodell nur bis zum Stopp.\n"
+  },
+  "currentHessianEntryAndRecognition": {
+    "parentMaterialSource": {
+      "path": "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+      "sha256": "sha256:8e496bd920afa825987cfd87077411d12f7e66315f130a933ac3d73ffc95b1ae"
+    },
+    "parentUnit": {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "compositionNodeId": "physics-e1-motion",
+      "viewIds": [
+        "de-he-gym-physics-gk",
+        "de-he-gym-physics-lk",
+        "de-he-gym-physics-gk-g8",
+        "de-he-gym-physics-lk-g8",
+        "de-he-gym-physics-gk-g9",
+        "de-he-gym-physics-lk-g9",
+        "de-he-gym-sekii-physics-gk",
+        "de-he-gym-sekii-physics-lk"
+      ],
+      "flashcardGoalId": "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
+      "assessmentGoalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+      "sectionAssessmentPolicy": {
+        "unitContractRevision": "2026-11-23-e1-v3",
+        "requiredPartsFingerprint": "sha256:4e5d2f002c82ee42d6b76565b8f1231f3a52b128df0475327772c8008cd12250",
+        "voluntaryAssessmentGoalIds": [
+          "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+          "f41e4e30-794e-5ce4-ba5e-cc72712cd691"
+        ]
+      },
+      "assessmentContract": {
+        "revision": "2026-11-23-e1-v3",
+        "viewIds": [
+          "de-he-gym-physics-gk-g8",
+          "de-he-gym-physics-lk-g8",
+          "de-he-gym-physics-gk-g9",
+          "de-he-gym-physics-lk-g9",
+          "de-he-gym-sekii-physics-gk",
+          "de-he-gym-sekii-physics-lk"
+        ],
+        "parts": [
+          {
+            "goalId": "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+            "material": {
+              "taskRevision": "sha256:8c1dadffb91e5a1c585453dbee5c47caa389b2a58645255c3a2c48d6bdc30506",
+              "rubricRevision": "sha256:82e4e0b14410639f1f23d7172fc0fe48a9d4b2c0d75af404f1b62a4cbdbc719c",
+              "fingerprint": "sha256:82ce486eb9bc756a56a89f8208060df26fca425f67a72464df1c1b76d2768a94"
+            }
+          },
+          {
+            "goalId": "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+            "material": {
+              "taskRevision": "sha256:8d602025e828af49d51d92c98f6e1eab7254adeedeb067b6c4c3a5b017f023c2",
+              "rubricRevision": "sha256:aedba03dc90e7615eba5ab4a2a32eeac449b749eaa7f24d41984901d47ddaa12",
+              "fingerprint": "sha256:b2186af46d563f538cb29ec277bc01228695b8155f201890c29bc4770beae0af"
+            }
+          },
+          {
+            "goalId": "c933b7d2-edcb-5747-9378-9762659f260a",
+            "material": {
+              "taskRevision": "sha256:5fe14a6f9b5a06a7a25bf8ab18275a1102c231197321f7f2eeac302ae735b752",
+              "rubricRevision": "sha256:a117de51728be60b4c881b061f24046a8c34618960108acafb478718fd0317eb",
+              "fingerprint": "sha256:1b2158e1bd095753ea556fd2715d1ce70f523adfc0bb56308859a66f692b387f"
+            }
+          },
+          {
+            "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+            "material": {
+              "taskRevision": "sha256:60fd37773d8c386435226a4afa6e2db9e1edf0e4fa910f7a740762bbbf59b1a2",
+              "rubricRevision": "sha256:8ec3a6879f22c7820b05480a721b34e59bc476f72778997eb309f2f088c4cbb2",
+              "fingerprint": "sha256:b119b70fc75abe39601c9f0dce6cfd9bcda9a9a2e44cb88df6dd37d0010ea5bf"
+            }
+          }
+        ],
+        "contentGoalIds": [
+          "d6dc0e02-831d-4894-a61a-852bcc74f147",
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "8aff7aac-321b-5172-ac55-877876bfd2cd",
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+          "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "bf8517a9-142b-5789-826a-767f3b277998",
+          "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+        ],
+        "planningCredits": [
+          {
+            "requiredPartIds": [
+              "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+            ],
+            "goalIds": [
+              "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+            ],
+            "release": {
+              "schemaVersion": 1,
+              "revision": "2026-11-24-e1-bes-v1",
+              "ownerUnitId": "physics-constant-acceleration",
+              "ownerRevision": "2026-11-23-v4",
+              "viewIds": [
+                "de-he-gym-physics-gk-g8",
+                "de-he-gym-physics-lk-g8",
+                "de-he-gym-physics-gk-g9",
+                "de-he-gym-physics-lk-g9",
+                "de-he-gym-sekii-physics-gk",
+                "de-he-gym-sekii-physics-lk"
+              ],
+              "review": {
+                "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json",
+                "sha256": "sha256:b268980418fb9c73d4a23edeb23bf9414ccb8f9f3b6548d7bacffe3854e14199"
+              },
+              "goalDefinitions": {
+                "e4b38061-1f28-43ad-8371-a3e7c0e81856": {
+                  "definition": "sha256:697d7f8dc78e4c9e79c3cda670210afdabd4673487cb1787ba156f3de9cdee33",
+                  "profileFingerprint": "sha256:969277be3831429d8b5ed7d22a1b0b094698ac0a66be635e67c0fd6589bac192"
+                }
+              },
+              "fingerprint": "sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d"
+            }
+          }
+        ]
+      },
+      "orientationGoalId": "a4d4efe1-7d30-526b-ac9c-806113da4363"
+    },
+    "planningScopeAndVoluntarySource": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v5-mp-retired-no-successor.scope.actual.json",
+      "sha256": "c1d62f80583062a93d0896e5b54d0171ed0f8af784ce888e42c45d41220c9df4"
+    },
+    "scope": {
+      "ownerUnitId": "physics-constant-acceleration",
+      "ownerRevision": "2026-11-23-v4",
+      "requiredParts": 4,
+      "contentGoals": 12,
+      "creditedGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "uncreditedGoalIds": [
+        "d6dc0e02-831d-4894-a61a-852bcc74f147",
+        "8aff7aac-321b-5172-ac55-877876bfd2cd",
+        "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+        "ce431132-dfc4-42c2-aff6-bd72035190f8",
+        "bf8517a9-142b-5789-826a-767f3b277998",
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "1e459a1b-4159-5049-84eb-9928129c1610",
+        "262f807a-30d0-503e-986f-856cbd048e8e",
+        "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+      ],
+      "planningWitnessIds": [
+        "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+      ],
+      "undeclaredChildren": [
+        1,
+        3,
+        4
+      ],
+      "commonVoluntaryIds": [
+        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+        "f41e4e30-794e-5ce4-ba5e-cc72712cd691"
+      ],
+      "additionalVoluntaryIds": [],
+      "historicalOldAssessmentId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "successorActivated": false
+    },
+    "planningFingerprint": "sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d"
+  },
+  "unitLearningPromise": {
+    "id": "physics-constant-acceleration",
+    "promise": "Ich kann den freien Fall einer schweren Kugel messen und als gleichmäßig beschleunigte Bewegung beschreiben: Ich halte Fallhöhe und Fallzeit in einem Messprotokoll fest, stelle die Bewegung im t-v-Diagramm dar, bestimme die Beschleunigung und stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz auf. Ich gebe an, wie genau meine Messwerte sind. Darauf bauen der Fall leichter Körper, Würfe in zwei Dimensionen, Kräfte und Energie auf.",
+    "promiseEn": "I can measure the free fall of a heavy ball and describe it as uniformly accelerated motion: I record drop height and fall time in a measurement log, represent the motion in a time-velocity graph, determine the acceleration and set up the time-position and time-velocity laws. I state how precise my measurements are. The fall of light bodies, projectile motion in two dimensions, forces and energy build on it.",
+    "revision": "2026-11-23-v4"
+  },
+  "perGoalR2NormativeContext": {
+    "schema": "dprime-real-r2-contract-scope-v1",
+    "status": "NORMATIVE_CONTEXT_ONLY_NO_CANDIDATE_ACCEPTANCE",
+    "recordedAt": "2026-11-24T09:32:50.152208+00:00",
+    "r2ReviewObject": {
+      "unitId": "physics-constant-acceleration",
+      "unitRevision": "2026-11-23-v4",
+      "assessmentGoalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "goalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "goalDefinitionFull": {
+        "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+        "titleEn": "Uniformly Accelerated Motion and Acceleration",
+        "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+        "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations.",
+        "weight": 0.9,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "cross-subject:mathematics"
+        ],
+        "contains": [],
+        "requires": [
+          "bf8517a9-142b-5789-826a-767f3b277998",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+          "1e459a1b-4159-5049-84eb-9928129c1610"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [],
+          "phase": "E"
+        },
+        "shortKey": "canonical_physics_accelerated_motion",
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+            "title": "Visualisierung: Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+            "url": "/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg",
+            "provider": "OpenAI / Codex image_gen + programmatic diagram correction",
+            "description": "Orts-, Geschwindigkeits- und Beschleunigungsdiagramm für einen Start aus der Ruhe.",
+            "altText": "Bei konstanter positiver Beschleunigung aus der Ruhe am Ort null steigt der Ort s mit der Zeit t parabelförmig. Die Geschwindigkeit v steigt linear ab null. Die Beschleunigung a bleibt auf einem positiven Wert. In allen drei Diagrammen zeigt die Zeitachse nach rechts.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "currentExactCoverageRow": {
+        "assessmentGoalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+        "goalIds": [
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        ],
+        "reference": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json",
+        "taskRevision": "sha256:758a0483d5db68276111ad6ab987bf0d65e1444cc669fbe58a1c93eed4f76555",
+        "rubricRevision": "sha256:639a906fb3ed9c9192e837693597527a082d1e256035b1964a2f77825c699cd0"
+      }
+    },
+    "existingUnchangedWholeUnit": {
+      "id": "physics-constant-acceleration",
+      "kind": "learningUnit",
+      "label": "Freier Fall schwerer Kugeln",
+      "labelEn": "Free fall of heavy balls",
+      "promise": "Ich kann den freien Fall einer schweren Kugel messen und als gleichmäßig beschleunigte Bewegung beschreiben: Ich halte Fallhöhe und Fallzeit in einem Messprotokoll fest, stelle die Bewegung im t-v-Diagramm dar, bestimme die Beschleunigung und stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz auf. Ich gebe an, wie genau meine Messwerte sind. Darauf bauen der Fall leichter Körper, Würfe in zwei Dimensionen, Kräfte und Energie auf.",
+      "promiseEn": "I can measure the free fall of a heavy ball and describe it as uniformly accelerated motion: I record drop height and fall time in a measurement log, represent the motion in a time-velocity graph, determine the acceleration and set up the time-position and time-velocity laws. I state how precise my measurements are. The fall of light bodies, projectile motion in two dimensions, forces and energy build on it.",
+      "revision": "2026-11-23-v4",
+      "coverageReviews": [
+        {
+          "assessmentGoalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+          "goalIds": [
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+          ],
+          "reference": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json",
+          "taskRevision": "sha256:758a0483d5db68276111ad6ab987bf0d65e1444cc669fbe58a1c93eed4f76555",
+          "rubricRevision": "sha256:639a906fb3ed9c9192e837693597527a082d1e256035b1964a2f77825c699cd0"
+        },
+        {
+          "assessmentGoalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+          "goalIds": [
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+          ],
+          "reference": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json",
+          "taskRevision": "sha256:60fd37773d8c386435226a4afa6e2db9e1edf0e4fa910f7a740762bbbf59b1a2",
+          "rubricRevision": "sha256:8ec3a6879f22c7820b05480a721b34e59bc476f72778997eb309f2f088c4cbb2"
+        }
+      ]
+    },
+    "exactExistingOwnPlacements": [
+      {
+        "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "unitId": "physics-constant-acceleration",
+        "relation": "own"
+      },
+      {
+        "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+        "unitId": "physics-constant-acceleration",
+        "relation": "own"
+      },
+      {
+        "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+        "unitId": "physics-constant-acceleration",
+        "relation": "own"
+      },
+      {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+        "unitId": "physics-constant-acceleration",
+        "relation": "own"
+      }
+    ],
+    "ownGoalRoles": {
+      "ordinary": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "assessment": [
+        "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+        "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+      ],
+      "orientation": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ]
+    },
+    "requiredHessianE1PartGoalIds": [
+      "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+      "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+      "c933b7d2-edcb-5747-9378-9762659f260a",
+      "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+    ],
+    "actualPlanningCredits": [
+      {
+        "requiredPartIds": [
+          "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+        ],
+        "goalIds": [
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        ],
+        "release": {
+          "schemaVersion": 1,
+          "revision": "2026-11-24-e1-bes-v1",
+          "ownerUnitId": "physics-constant-acceleration",
+          "ownerRevision": "2026-11-23-v4",
+          "viewIds": [
+            "de-he-gym-physics-gk-g8",
+            "de-he-gym-physics-lk-g8",
+            "de-he-gym-physics-gk-g9",
+            "de-he-gym-physics-lk-g9",
+            "de-he-gym-sekii-physics-gk",
+            "de-he-gym-sekii-physics-lk"
+          ],
+          "review": {
+            "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json",
+            "sha256": "sha256:b268980418fb9c73d4a23edeb23bf9414ccb8f9f3b6548d7bacffe3854e14199"
+          },
+          "goalDefinitions": {
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856": {
+              "definition": "sha256:697d7f8dc78e4c9e79c3cda670210afdabd4673487cb1787ba156f3de9cdee33",
+              "profileFingerprint": "sha256:969277be3831429d8b5ed7d22a1b0b094698ac0a66be635e67c0fd6589bac192"
+            }
+          },
+          "fingerprint": "sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d"
+        }
+      }
+    ],
+    "scopeInterpretation": {
+      "question": "Does this exact task, solution and normal total-score rubric require independent full application of the entire ordinary BES goal, including its actual reviewed performance expectations, at the passing threshold?",
+      "notClaimedByThisR2Entry": [
+        "Full demonstration of the broader free-fall-heavy-balls unit promise",
+        "Own free-fall measurement performance",
+        "Coverage of the separate free-fall experimental goal09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "Coverage of LAWS262f807a or other preparation atoms",
+        "Hessian E1 planning credit from Dprime",
+        "Hessian E1 required-part status for Dprime",
+        "Upgrade of earlier learner results"
+      ],
+      "broaderPromiseBoundary": "The complete unchanged unit promise is included above so its broader measurement/precision language stays visible. R2 entry for the sole owned ordinary BES goal does not certify that whole promise or excuse a separate actual whole-unit completion gap. No review should silently expand the real owned goal list or claim the promise complete.",
+      "experimentalStandard": "If the actually claimed ordinary goal requires own experimentation, its full experiment claim remains indispensable on either route. BES itself is the model/three-representations goal and has no own-experiment clause; the separate experimental goal is not owned/claimed here.",
+      "sourceStageSeparate": "SN/ST admissibility still requires primary-source stage suitability and full realP66; ordinary-goal R2 does not substitute for the source-stage decision.",
+      "v1Outcomes": "The original A reject/B revise remain immutable. Correcting this R2 scope interpretation does not erase their independent score/missing-core/deduction/source objections, and does not approve18/20."
+    },
+    "normativeLocations": [
+      {
+        "path": "app/scripts/lib/learningUnitContracts.ts",
+        "lines": [
+          591,
+          620
+        ],
+        "meaning": "Fresh evidence is checked per own assessment and review.goalIds, each own ordinary/reachable/covered; missing/per-goal reviews are separately reported."
+      },
+      {
+        "path": "docs/concept/skill-graph/assessment-gated-completion.md",
+        "lines": [
+          29,
+          41,
+          110,
+          123,
+          127
+        ],
+        "meaning": "Main local recognition contract quantifies over own goals and requires actual full per-goal application; experimental goals keep the same actual-performance claim."
+      },
+      {
+        "path": "docs/concept/skill-graph/assessment-gated-completion.md",
+        "lines": [
+          219,
+          243
+        ],
+        "meaning": "The distinct broader unit-promise/completion proposal is expressly labelled unadopted; retain its real promise limitations rather than replacing the per-goal R2 review with a full-promise claim."
+      },
+      {
+        "path": "AGENTS.md",
+        "lines": [
+          770,
+          789,
+          865,
+          876,
+          1208,
+          1221,
+          2299,
+          2314
+        ],
+        "meaning": "R1-R5 and fresh reviews after changed task/solution/rubric, actual recognition claim, below-full numeric threshold and criterion-based equivalent-method grading."
+      }
+    ],
+    "boundNormativeFiles": [
+      {
+        "path": "/home/enpasos/projects/skillpilot-e1-nachweise/AGENTS.md",
+        "sha256": "53518f8f88df46ecab4dc03b539363a89c7f124d6789c3724ece1eacef6daf37"
+      },
+      {
+        "path": "/home/enpasos/projects/skillpilot-e1-nachweise/app/scripts/lib/learningUnitContracts.ts",
+        "sha256": "d9885fc641113c928ad4ec496098e9000f304e0368f2c341c3c315c9c7b2f36b"
+      },
+      {
+        "path": "/home/enpasos/projects/skillpilot-e1-nachweise/docs/concept/skill-graph/assessment-gated-completion.md",
+        "sha256": "f97e5b5c1ab3c4e0bf1ab79f72b3cb9d8e8e36601ebb4b3c4f29b839f10f5c8c"
+      }
+    ]
+  },
+  "existingScopeContract": {
+    "DPrimeDirectGoalIds": [
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ],
+    "distinctRequiredHessianPartD": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+    "onlyCurrentE1PlanningCreditGoalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+  },
+  "sourceStageAndUnitContext": {
+    "offeredLowerJurisdictions": [
+      "DE-SN:J9",
+      "DE-ST:J9"
+    ],
+    "unchangedWholePreparationIds": [
+      "02013455-72a0-5213-9509-ed77f7ede62b",
+      "05012547-7263-5bfa-9e7c-df970745a011",
+      "09f47964-2cd0-410e-93ee-9632b582fc91",
+      "0a6dab2e-1bbb-5587-adb0-456d3991c327",
+      "11e3cf89-9224-5894-8e4a-ae8ff5af0119",
+      "13b338eb-f761-5817-9058-11043b9cb253",
+      "191c67db-44a8-4f63-994a-d85e8e301194",
+      "199fe2ed-2576-4611-b8de-fd56fb9f78fc",
+      "1a25ef44-f310-4c23-9ba8-44baec60d3b0",
+      "1e459a1b-4159-5049-84eb-9928129c1610",
+      "2231c29b-eb4e-51ae-9cb1-eb033bf16099",
+      "2331caf2-ccb2-5492-9fc6-48763b848bae",
+      "25593605-5e13-55cc-9a05-8f3d737e15e9",
+      "262f807a-30d0-503e-986f-856cbd048e8e",
+      "26f668a0-6425-5466-9cf7-6295dd189005",
+      "2ae76eae-799c-463e-9ec9-82327f8209a8",
+      "2bb4bb91-7929-483a-b735-44275f6b5cdc",
+      "2f565855-bcd6-4da5-bc80-4b72a2d93d50",
+      "339a7bf5-f1df-5d5a-9ec4-41f471f0c111",
+      "3fde4db5-9e92-5f3a-98e1-d386a42b9e01",
+      "44cb7404-114e-5b14-b33a-ddee41952d46",
+      "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "54148506-c23f-41b8-959b-068dd194cf15",
+      "5bba4ec2-3781-4624-8b62-e24b38f7f76e",
+      "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+      "5d1decb2-b01b-5c85-88fc-9fc255ff9776",
+      "624764d6-becd-5f9b-ada3-0d4f9d143073",
+      "65365dce-f33f-49d8-9516-42f75883aa86",
+      "6b0075bb-f71c-59f6-ab98-fb894568cc26",
+      "6ff61721-b2cc-5b1b-ade5-b3c1fd7f7077",
+      "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+      "80c232f1-8f72-5829-9dbe-5a610ccab3be",
+      "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "8d1bb6ce-2433-4637-94ba-3bdc35fa5b10",
+      "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+      "9ef6c4fa-b97a-5d7a-86c1-96690f02d916",
+      "a4c2b831-02f0-5d55-a300-7823a71352c4",
+      "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+      "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+      "b41cb496-dad5-596e-9c23-cdcbdab3ec2e",
+      "b5de0574-93ed-409c-80ee-312211420cd6",
+      "bf8517a9-142b-5789-826a-767f3b277998",
+      "c1f50bcc-7848-4e49-b9de-0ec030cc6bca",
+      "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+      "ca623958-c204-5d1b-bdd0-3f76765674cb",
+      "ca8b2e67-7d14-5baf-8404-26820fe3d548",
+      "cafd6520-c4af-4109-9863-cc49ba6fad4d",
+      "ce431132-dfc4-42c2-aff6-bd72035190f8",
+      "cf474eab-1379-4877-907e-58b0892ce734",
+      "d07ef7b1-8bd2-56e0-9e74-d90c3c3e02fe",
+      "d658e26a-e351-4bca-824e-f346deaa87c5",
+      "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+      "d825f7ce-e19b-594a-8181-eff199c21d93",
+      "d98849c7-bd0b-50d4-90aa-6293a3adb211",
+      "e331a425-e9c6-46eb-89cb-dedf72857974",
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "e82d8d3a-9012-5482-afe6-ab0d727a49bb",
+      "ec9f2ed4-c9e6-5fb3-a073-75b53127e55d",
+      "ee48e811-4c9c-5080-9836-8403fc9f0810",
+      "f08d06dc-139d-5fd2-892c-8cc919b1e4fc",
+      "f2e42af5-67a6-477e-82ea-e65b09cc6cb3",
+      "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
+      "f6a54a49-b6cf-4ab7-a185-aa08bfcb6c97",
+      "f6b13b8e-1ecd-5420-905d-21290aa996a6",
+      "fe07241a-b779-5f35-a82d-7aa51ae74f42"
+    ],
+    "unitId": "physics-constant-acceleration",
+    "expectedDirectCoverageGoalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "requiredHessianE1Part": false,
+    "hessianPlanningCreditFromThisTask": false,
+    "sources": [
+      {
+        "jurisdiction": "SN",
+        "capsuleFile": "SN-retained-source.pdf",
+        "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+        "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+        "pdfPages": [
+          36,
+          38
+        ]
+      },
+      {
+        "jurisdiction": "ST",
+        "capsuleFile": "ST-retained-source.pdf",
+        "path": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+        "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed",
+        "pdfPages": [
+          45,
+          46
+        ]
+      }
+    ]
+  }
+}

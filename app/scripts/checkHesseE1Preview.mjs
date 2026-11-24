@@ -5,7 +5,7 @@ import { chromium } from 'playwright'
 const [site, api, profilesFile, physicsCourse = 'GK', browserCase = 'all'] = process.argv.slice(2)
 assert(['GK', 'LK'].includes(physicsCourse), 'Expected the explicit Physics course GK or LK')
 assert(['all', 'short-map', 'mobile-map', 'structure', 'planning', 'guided', 'foreign-focus'].includes(browserCase), 'Unknown focused browser case')
-const throwAssessment = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+const throwAssessment = 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'
 const historicalMultiphaseAssessment = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
 const freeFallSeriesAssessment = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
 const voluntaryAssessmentIds = [throwAssessment, freeFallSeriesAssessment]

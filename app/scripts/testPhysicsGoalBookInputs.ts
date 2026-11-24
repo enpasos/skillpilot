@@ -620,6 +620,8 @@ const EXPECTED_JURISDICTIONS = [
   'DE-NI', 'DE-NW', 'DE-RP', 'DE-SH', 'DE-SL', 'DE-SN', 'DE-ST', 'DE-TH',
 ] as const
 
+const historicalThrowExamId = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+const currentThrowExamId = 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'
 const KINEMATICS_ASSESSMENT_IDS = new Set([
   '4ab1cf6d-b808-5b86-9291-85df0b9f2496',
   '6ea3fb3c-abdc-568f-ab13-97c36dc274e4',
@@ -633,12 +635,12 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 490,
   curricularArea: 112,
-  practiceAssessment: 247,
+  practiceAssessment: 248,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 4,
-  total: 863,
+  total: 864,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
@@ -972,7 +974,7 @@ const explicitClassification = (
     }
     if (goal.id === '151edbf8-eb68-5ef7-8786-43e56a281b0b') {
       assert.equal((goal.extendedData as Record<string, unknown>).applicabilityProjection, 'excluded')
-      assert.equal(goal.contains.length, 17, 'the archive keeps all seventeen assessments')
+      assert.equal(goal.contains.length, 18, 'the archive keeps all eighteen original assessment identities')
       assert(goal.contains.every(id => goalsById.get(id)?.examData),
         'each child of the retained assessment collection must carry a scoring contract')
       return {
@@ -1206,7 +1208,7 @@ function assertActualExamRounds(roundFolder: string, ids: string[]): Map<string,
   const reviews = new Map<string, ActualExamReview[]>(ids.map(id => [id, []]))
   const threads: string[] = []
   for (const [round, model] of [['a', 'gpt-6.1-sol'], ['b', 'gpt-6.2-astra']]) {
-    const dir = `${currentExamEvidenceRoot}${roundFolder}/round-${round}/`
+    const dir = `${roundFolder}/round-${round}/`
     const run = readJson<{ model: string; reasoningEffort: string; threadId: string; exitCode: number
       sandbox: { type: string }; blindToOtherRun: boolean
       inputArtifacts: Array<{ path: string; sha256: string; capsulePath?: string }>
@@ -1237,7 +1239,7 @@ function assertActualExamRounds(roundFolder: string, ids: string[]): Map<string,
   return reviews
 }
 const mpId = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
-const mpReviewRows = assertActualExamRounds('round1', [mpId]).get(mpId)!
+const mpReviewRows = assertActualExamRounds(currentExamEvidenceRoot + 'round1', [mpId]).get(mpId)!
 const mpReceipt = readJson<{ status: string; currentGoalPath: string; currentRawSha256: string }>(
   `${currentExamEvidenceRoot}mp-current/activation.actual.json`)
 assert.equal(mpReceipt.status, 'APPLIED_REVIEWED_CONTENT_WITH_OPEN_CQR203_COVERAGE_GATE')
@@ -1289,9 +1291,101 @@ interface CurrentExamActivation {
     reviewedCandidate: { path: string; sha256: string }; current: { path: string; sha256: string }
     postReviewMetadataOnlyDelta: string[] }>
 }
+interface PartialCreditDecision {
+  goalId: string
+  candidate: { path: string; sha256: string }
+  currentGoalComparedTo: { path: string; sha256: string }
+  reviewReceipts: Array<{ path: string; sha256: string }>
+  judgments: Array<{ round: string; decision: string; eligibleForActivation: boolean; validationFindings: string[] }>
+  eligibleForActivation: boolean
+}
+interface PartialCreditGrade {
+  submissionId: string
+  demonstratedCore: boolean
+  scores: Array<{ criterionId: string; pointsAwarded: number }>
+  total: number
+  passes: boolean
+}
+
+function bindPartialCreditSuccessor(
+  original: Record<string, unknown> & { examData: ExamData },
+  id: string,
+  dispositionPath: string,
+  dispositionSha: string,
+) {
+  const directory = dispositionPath.slice(0, dispositionPath.lastIndexOf('/'))
+  assert.equal(sha256(readFileSync(resolve(repoRoot, dispositionPath), 'utf8')), dispositionSha)
+  const receipt = readJson<PartialCreditDecision>(dispositionPath)
+  assert.equal(receipt.goalId, id)
+  assert(receipt.eligibleForActivation)
+  assert.deepEqual(receipt.judgments.map(r => r.round), ['a', 'b'])
+  assert(receipt.judgments.every(r => r.decision === 'accept' && r.eligibleForActivation && !r.validationFindings.length))
+  assert.deepEqual(receipt.reviewReceipts.map(row => row.path), ['a', 'b'].map(letter =>
+    `${directory}/round-${letter}/run.actual.json`))
+  for (const artifact of [receipt.currentGoalComparedTo, receipt.candidate, ...receipt.reviewReceipts]) {
+    assert.equal(sha256(readFileSync(resolve(repoRoot, artifact.path), 'utf8')), artifact.sha256)
+  }
+  assert.deepEqual(readJson(receipt.currentGoalComparedTo.path), original)
+  const current = readJson<typeof original>(receipt.candidate.path)
+  const newEdition = id === currentThrowExamId
+  assert.equal(original.id, newEdition ? historicalThrowExamId : id)
+  assert.deepEqual({ ...original, id, examData: undefined }, { ...current, examData: undefined })
+  if (newEdition) {
+    for (const field of ['taskContent', 'taskContentEn'] as const) {
+      const previousParts = original.examData[field]!.split('\n6. ')
+      const currentParts = current.examData[field]!.split('\n6. ')
+      assert.equal(previousParts.length, 2)
+      assert.equal(currentParts.length, 2)
+      assert.equal(currentParts[0], previousParts[0], 'the approved revision is confined to task 6')
+      assert.notEqual(currentParts[1], previousParts[1])
+    }
+  }
+  const scoring = current.examData.scoring
+  assert(scoring && original.examData.scoring)
+  assert.deepEqual({ ...current.examData, scoring: original.examData.scoring,
+    ...(newEdition ? { taskContent: original.examData.taskContent, taskContentEn: original.examData.taskContentEn } : {}),
+    solutionContent: original.examData.solutionContent, solutionContentEn: original.examData.solutionContentEn,
+    ...(Object.hasOwn(original.examData, 'reviewNote') ? { reviewNote: original.examData.reviewNote } : {}) }, original.examData)
+  assert.equal(scoring.maxPoints, original.examData.scoring.maxPoints)
+  assert(scoring.passingPoints > 0 && scoring.passingPoints < scoring.maxPoints)
+  const reviews = assertActualExamRounds(directory, [id]).get(id)!
+  for (const [i, review] of reviews.entries()) {
+    assert.equal(review.candidateDecision, 'accept')
+    assert.deepEqual(review.recommendedRequires, current.requires)
+    assert.deepEqual(review.recommendedCoveredGoalIds, current.examData.coveredGoalIds)
+    assert.equal(review.recommendedPassingPoints, scoring.passingPoints)
+    const letter = ['a', 'b'][i]
+    const input = readJson<{ original: unknown; candidate: unknown }>(`${directory}/round-${letter}/canonical-input.json`)
+    assert.deepEqual(input.original, original)
+    assert.deepEqual(input.candidate, current)
+    const delivery = readJson<{ reviews: Array<{ goalId: string; gradedSubmissions: PartialCreditGrade[] }> }>(
+      `${directory}/round-${letter}/response.json`)
+    const graded = delivery.reviews.find(r => r.goalId === id)!.gradedSubmissions
+    assert.equal(graded.length, 2)
+    assert.deepEqual(graded.map(g => g.submissionId).sort(), ['X', 'Y'])
+    for (const grade of graded) {
+      assert.deepEqual(grade.scores.map(row => row.criterionId).sort(), scoring.steps.map(step => step.id).sort())
+      for (const row of grade.scores) {
+        const step = scoring.steps.find(item => item.id === row.criterionId)!
+        assert(Number.isFinite(row.pointsAwarded) && row.pointsAwarded >= 0 && row.pointsAwarded <= step.points)
+      }
+      assert.equal(grade.total, grade.scores.reduce((n, row) => n + row.pointsAwarded, 0))
+      assert.equal(grade.passes, grade.total >= scoring.passingPoints)
+      assert.equal(grade.demonstratedCore, grade.submissionId === (letter === 'a' ? 'X' : 'Y'))
+      assert.equal(grade.passes, grade.demonstratedCore)
+    }
+  }
+  return current
+}
+
+const partialCreditRounds = new Map<string, { version: string; dispositionSha256: string }>([
+  ['dfd2628f-b44e-51b3-86e8-99158861be8c', { version: 'v4', dispositionSha256: 'f9ce0fd729a8f6a9bea3385bb2dcbdf7cb454aeb149a8a0a455bfdddabf7419b' }],
+  ['a8dc0290-9f80-5763-8943-e16b8d2aa860', { version: 'v3', dispositionSha256: '7bd9a1fc4d27b7085b156a57dcca7d09a9f8a76990bfaac91681974bd58c0e7c' }],
+  ['4ea1b93f-2dba-59ac-87ab-29af6c55cc37', { version: 'v4', dispositionSha256: 'fa55c7b482804b78fb1779ce07de652b9bdd5bb9046b5d618afb644a14ad9877' }],
+])
 const currentReviewedExams = new Map<string, { before: object; current: object }>()
 function bindCurrentAssessmentSuccessors(round: string, expectedHashes: Record<string, string>): void {
-  const rows = assertActualExamRounds(round, Object.keys(expectedHashes))
+  const rows = assertActualExamRounds(currentExamEvidenceRoot + round, Object.keys(expectedHashes))
   const receipt = readJson<CurrentExamActivation>(`${currentExamEvidenceRoot}${round}-activation.actual.json`)
   for (const [id, expectedHash] of Object.entries(expectedHashes)) {
     const binding = receipt.goals.find(row => row.goalId === id)
@@ -1311,14 +1405,36 @@ function bindCurrentAssessmentSuccessors(round: string, expectedHashes: Record<s
       expected.examData.reviewNote = current.examData.reviewNote
     } else assert.deepEqual(binding.postReviewMetadataOnlyDelta, [])
     assert.deepEqual(current, expected, `${id}: only declared release metadata may follow exact reviewed scoring`)
-    assert.deepEqual(rawGoalById.get(id), current)
     for (const review of rows.get(id)!) {
       assert.equal(review.candidateDecision, 'accept')
       assert.deepEqual(review.recommendedRequires, current.requires)
       assert.deepEqual(review.recommendedCoveredGoalIds, current.examData.coveredGoalIds)
       assert.equal(review.recommendedPassingPoints, current.examData.scoring!.passingPoints)
     }
-    currentReviewedExams.set(id, { before, current })
+    const partial = partialCreditRounds.get(id)
+    if (id === historicalThrowExamId) {
+      const successor = bindPartialCreditSuccessor(current, currentThrowExamId,
+        'curricula/DE/Gymnasium/quality/assessment-review/physik/e1-partial-credit-20261124-v1/6ea3fb3c-abdc-568f-ab13-97c36dc274e4/v2-new-identity/review-disposition.actual.json',
+        '1c3657ba3883f9bc39b6c92c557dc191c317c69bf5f219126471331b243f4dde')
+      const formerPublishedGoal = readJson<Record<string, unknown>>(
+        'contracts/stage-plan-review-evidence/2026-11-24/e1-zb-assessment-identity/historical-base22.goal.json')
+      assert.deepEqual(rawGoalById.get(id), {
+        ...formerPublishedGoal, applicability: {},
+        extendedData: { applicabilityProjection: 'excluded', applicabilityMappingInheritance: 'boundary' },
+      })
+      assert.deepEqual(parentIdsByChild.get(id), ['151edbf8-eb68-5ef7-8786-43e56a281b0b'])
+      assert.deepEqual(rawGoalById.get(currentThrowExamId), successor)
+      assert.deepEqual(parentIdsByChild.get(currentThrowExamId), ['424b07df-bf66-5d7f-99f5-f28b32ad1f22'])
+      currentReviewedExams.set(id, { before, current: successor })
+      continue
+    }
+    const active = partial
+      ? bindPartialCreditSuccessor(current, id,
+        `curricula/DE/Gymnasium/quality/assessment-review/physik/e1-partial-credit-20261124-v1/${id}/${partial.version}/review-disposition.actual.json`,
+        partial.dispositionSha256)
+      : current
+    assert.deepEqual(rawGoalById.get(id), active)
+    currentReviewedExams.set(id, { before, current: active })
   }
 }
 bindCurrentAssessmentSuccessors('round3', {
@@ -1334,8 +1450,8 @@ bindCurrentAssessmentSuccessors('round2', {
 const dfdExam = rawGoalById.get('dfd2628f-b44e-51b3-86e8-99158861be8c')!.examData as ExamData
 assert.deepEqual(dfdExam.coveredGoalIds, ['4a2bf015-052b-4af0-aed7-324259fa1a8a'])
 assert.equal(dfdExam.scoring.maxPoints, 16)
-assert.equal(dfdExam.scoring.passingPoints, 16)
-for (const step of dfdExam.scoring.steps) assert(16 - step.points < 16,
+assert.equal(dfdExam.scoring.passingPoints, 15.5)
+for (const step of dfdExam.scoring.steps) assert(dfdExam.scoring.maxPoints - step.points < dfdExam.scoring.passingPoints,
   'DFD cannot pass while omitting its traffic assessment or projectile part')
 const nvxId = '4ea1b93f-2dba-59ac-87ab-29af6c55cc37'
 const nvxGoal = rawGoalById.get(nvxId)!
@@ -1344,8 +1460,8 @@ assert.deepEqual(nvxGoal.requires, ['0fee53f2-1c02-5b12-9b6c-aa9fa462d921'])
 assertReviewedPreparation(nvxId, ['0fee53f2-1c02-5b12-9b6c-aa9fa462d921'])
 assert.deepEqual(nvxExam.coveredGoalIds, ['0fee53f2-1c02-5b12-9b6c-aa9fa462d921'], 'using assigned frames does not assess BZ frame selection')
 assert.equal(nvxExam.scoring!.maxPoints, 16)
-assert.equal(nvxExam.scoring!.passingPoints, 16)
-for (const step of nvxExam.scoring!.steps) assert(16 - step.points < 16,
+assert.equal(nvxExam.scoring!.passingPoints, 15.5)
+for (const step of nvxExam.scoring!.steps) assert(nvxExam.scoring!.maxPoints - step.points < nvxExam.scoring!.passingPoints,
   'NVX cannot pass while omitting a scored vector or assigned-frame performance')
 const ownTaskActivation = readJson<{ tasks: Array<{
   id: string; releasedPath: string; releasedSha256: string; contentReview: string
@@ -1450,9 +1566,9 @@ for (const row of ownTaskActivation.tasks) {
 }
 // The current source-stage offer dossier supersedes exact scored payloads,
 // while the separate current preparation receipt binds every real dependency.
-const currentStageOffersPath = `${currentExamEvidenceRoot}current-stage-offers.actual.json`
+const currentStageOffersPath = `${currentExamEvidenceRoot}dprime-passmark-successor-20261124/current-stage-offers.actual.json`
 assert.equal(sha256(readFileSync(resolve(repoRoot, currentStageOffersPath), 'utf8')),
-  'e15862c0e9c4dcff0eb4b8b4e5eb3b664e143f8719ff9bceeec4c9ab258ee73d')
+  'd802486bacafdd04bbea0b430edc689309469785262084d95a973a0b4416d451')
 const currentStageOffers = readJson<{ status: string; currentSharedPreparation: { path: string; sha256: string }
   assessments: Array<{ goalId: string; currentGoal: { path: string; sha256: string }; fullRealPrerequisiteClosureCount: number
     approvedScopes: Array<{ jurisdiction: string; stage: string }> }>
@@ -1461,7 +1577,7 @@ const currentStageOffers = readJson<{ status: string; currentSharedPreparation: 
   immutablePredecessors: Array<{ path: string; sha256: string }> }>(currentStageOffersPath)
 assert.equal(currentStageOffers.status, 'ACCEPT_EXACT_CURRENT_OFFERS_WITH_SEPARATE_CURRENT_PREPARATION')
 assert.equal(currentStageOffers.currentSharedPreparation.sha256,
-  'da7a61584ed1926ec8bbf9c6fefb291224c51981f5fad2d3265b43a660b3bb88')
+  'c7ceff01355131a3d846c18e3559138459dd7ac3cb71f0edd4a02a6cd7537607')
 assert.equal(sha256(readFileSync(resolve(repoRoot, currentStageOffers.currentSharedPreparation.path), 'utf8')),
   currentStageOffers.currentSharedPreparation.sha256)
 for (const prior of currentStageOffers.immutablePredecessors) {
@@ -1501,6 +1617,64 @@ for (const row of currentStageOffers.assessments) {
   assert.deepEqual(row.approvedScopes.map(scope => `${scope.jurisdiction}:${scope.stage}`), row.goalId === saxonAccelerationExam
     ? ['DE-SN:SekI', 'DE-ST:SekI'] : ['DE-HE:SekII', 'DE-SN:SekI'])
 }
+// The two actual V3 reviews approve only the owned BES atom at 19/20.
+// The broader child promise and the distinct D-only planning release stay separate.
+const dprimeSuccessorRoot = `${currentExamEvidenceRoot}dprime-passmark-successor-20261124/`
+const dprimeR2Path = `${dprimeSuccessorRoot}r2-coverage.actual.json`
+assert.equal(sha256(readFileSync(resolve(repoRoot, dprimeR2Path), 'utf8')),
+  '3d9151f0e303cbfa302d1bf812580915a92f5765df33704273efc15defa3401b')
+const dprimeR2 = readJson<{ status: string; unitId: string; unitRevision: string; ordinaryGoalIds: string[]
+  coverage: { assessmentGoalId: string; goalIds: string[]; reference: string; taskRevision: string; rubricRevision: string }
+  wholeUnitPromiseCertified: boolean; ownExperimentCertified: boolean; requiredHessianE1Part: boolean
+  planningCreditGranted: boolean; reviewBindings: { path: string; sha256: string } }>(dprimeR2Path)
+assert.equal(dprimeR2.status, 'ACCEPT_EXACT_BES_ONLY_R2_NO_PLANNING_CREDIT')
+assert.equal(dprimeR2.unitId, 'physics-constant-acceleration')
+assert.equal(dprimeR2.unitRevision, '2026-11-23-v4')
+assert.deepEqual(dprimeR2.ordinaryGoalIds, ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
+assert.deepEqual(dprimeR2.coverage.goalIds, dprimeR2.ordinaryGoalIds)
+assert.equal(dprimeR2.coverage.assessmentGoalId, saxonAccelerationExam)
+assert.equal(dprimeR2.coverage.reference, dprimeR2Path)
+assert.equal(dprimeR2.coverage.taskRevision, 'sha256:76fe443cf24fd8ce18237c569eda70913087f7e515e4dec447ed71536ef1e0de')
+assert.equal(dprimeR2.coverage.rubricRevision, 'sha256:f6a52fb1691cc147712c707af3a2488e996b7d78c0151127f644301132eef2e2')
+for (const claimed of [dprimeR2.wholeUnitPromiseCertified, dprimeR2.ownExperimentCertified,
+  dprimeR2.requiredHessianE1Part, dprimeR2.planningCreditGranted]) assert.equal(claimed, false)
+const dprimeOwningUnit = (rawLandscape.programUnits as Array<{ id: string; coverageReviews: unknown[] }>)
+  .find(unit => unit.id === dprimeR2.unitId)!
+assert.deepEqual(dprimeOwningUnit.coverageReviews.find(row => (row as { assessmentGoalId: string }).assessmentGoalId === saxonAccelerationExam),
+  dprimeR2.coverage)
+assert.equal(sha256(readFileSync(resolve(repoRoot, dprimeR2.reviewBindings.path), 'utf8')), dprimeR2.reviewBindings.sha256)
+const dprimePlanning = readJson<{ material: { path: string; sha256: string }; registry: { path: string; sha256: string }
+  credit: { requiredPartIds: string[]; goalIds: string[]; release: { fingerprint: string } }; DCoverage: unknown }>(
+  `${dprimeSuccessorRoot}planning-invariance.actual.json`)
+const scopeSuccessorDir = 'curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/zb-successor-voluntary-scope-20261124/'
+const scopeSuccessor = readJson<{
+  materialBefore: { path: string; sha256: string }; materialAfter: { path: string; sha256: string }
+  priorDprimePlanningProof: { path: string; sha256: string }; unchangedPlanningFingerprint: string
+  noNewPlanningCredit: boolean; noStoredResultTransfer: boolean
+}>(scopeSuccessorDir + 'scope-successor.actual.json')
+const materialBefore = scopeSuccessorDir + 'parent.before.material.json'
+const materialAfter = scopeSuccessorDir + 'parent.after.material.json'
+assert.deepEqual(scopeSuccessor.materialBefore, { path: materialBefore, sha256: dprimePlanning.material.sha256 })
+assert.deepEqual(scopeSuccessor.materialAfter, { path: materialAfter, sha256: '669005e570ca942b2bb2ce8083ce1a1baac2bdadf412aa12f35b3b99d9d838d9' })
+assert.equal(scopeSuccessor.priorDprimePlanningProof.path, dprimeSuccessorRoot + 'planning-invariance.actual.json')
+assert.equal(sha256(readFileSync(resolve(repoRoot, scopeSuccessor.priorDprimePlanningProof.path), 'utf8')), scopeSuccessor.priorDprimePlanningProof.sha256)
+assert.equal(scopeSuccessor.unchangedPlanningFingerprint, dprimePlanning.credit.release.fingerprint)
+assert.equal(scopeSuccessor.noNewPlanningCredit, true)
+assert.equal(scopeSuccessor.noStoredResultTransfer, true)
+assert.equal(sha256(readFileSync(resolve(repoRoot, materialBefore), 'utf8')), dprimePlanning.material.sha256)
+assert.equal(sha256(readFileSync(resolve(repoRoot, materialAfter), 'utf8')), scopeSuccessor.materialAfter.sha256)
+assert.deepEqual(readFileSync(resolve(repoRoot, dprimePlanning.material.path)), readFileSync(resolve(repoRoot, materialAfter)))
+assert.equal(sha256(readFileSync(resolve(repoRoot, dprimePlanning.registry.path), 'utf8')), dprimePlanning.registry.sha256)
+const expectedMaterial = readJson<{ unit: { sectionAssessmentPolicy: { voluntaryAssessmentGoalIds: string[] } } }>(materialBefore)
+const voluntary = expectedMaterial.unit.sectionAssessmentPolicy.voluntaryAssessmentGoalIds
+assert.deepEqual(voluntary, [historicalThrowExamId, 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'])
+voluntary[0] = currentThrowExamId
+assert.deepEqual(readJson(materialAfter), expectedMaterial, 'only the voluntary throw exam changes identity')
+assert.deepEqual(dprimePlanning.credit.requiredPartIds, ['f13ca187-b680-5f47-b4ad-76bd474bd8a2'])
+assert.deepEqual(dprimePlanning.credit.goalIds, dprimeR2.ordinaryGoalIds)
+assert.equal(dprimePlanning.credit.release.fingerprint, 'sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d')
+assert.deepEqual(dprimeOwningUnit.coverageReviews.find(row => (row as { assessmentGoalId: string }).assessmentGoalId === 'f13ca187-b680-5f47-b4ad-76bd474bd8a2'),
+  dprimePlanning.DCoverage)
 const ffxWarningRows = readJson<{ acceptedWarnings: Array<{ code: string; goalId: string; evidence: {
   reviewPath: string; reviewFileSha256: string; releasedGoalPath: string; releasedGoalSha256: string
   currentGoalJsonStringifySha256: string; exactOverrideJurisdictions: string[]; compiledJurisdictions: string[]
@@ -2055,14 +2229,15 @@ const kinematicsBodyFields = ['taskContent', 'taskContentEn', 'solutionContent',
 const rawPhysicsAndMathGoals = new Map([...rawMathLandscape.goals, ...rawLandscape.goals]
   .map((goal) => [String(goal.id), goal]))
 for (const reviewed of kinematicsReview.assessments) {
-  const goal = rawGoalById.get(reviewed.goalId)!
+  const activeId = reviewed.goalId === historicalThrowExamId ? currentThrowExamId : reviewed.goalId
+  const goal = rawGoalById.get(activeId)!
   const exam = goal.examData as {
     reviewStatus: string; coveredGoalIds: string[]; taskContent: string; taskContentEn: string
     solutionContent: string; solutionContentEn: string
     scoring: { maxPoints: number; passingPoints: number; steps: Array<{ id: string; points: number }> }
   }
   assert.equal(exam.reviewStatus, 'released')
-  assert.equal(decisionByGoalId.get(reviewed.goalId)?.semanticKind, 'practiceAssessment')
+  assert.equal(decisionByGoalId.get(activeId)?.semanticKind, 'practiceAssessment')
   assert.equal((goal.extendedData as Record<string, unknown>).applicabilityFromRequires, true)
   for (const field of kinematicsBodyFields) {
     assert(exam[field].trim().length > 500, `${reviewed.goalId}: missing complete bilingual ${field}`)
@@ -2072,10 +2247,10 @@ for (const reviewed of kinematicsReview.assessments) {
   }
   // The E.1 cut (Product Owner, 23 Nov 2026) moved the two-motions exam behind the throw
   // goal and the narrowed model-limits goal; its preparation needs a fresh independent review.
-  assert.deepEqual(goal.requires, reviewed.goalId === '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+  assert.deepEqual(goal.requires, reviewed.goalId === historicalThrowExamId
     ? ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', 'd6dc0e02-831d-4894-a61a-852bcc74f147']
     : ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
-  assertReviewedPreparation(reviewed.goalId, goal.requires as string[])
+  assertReviewedPreparation(activeId, goal.requires as string[])
   assert.deepEqual(exam.coveredGoalIds, reviewed.goalId === '4ab1cf6d-b808-5b86-9291-85df0b9f2496'
     ? [] : ['d6dc0e02-831d-4894-a61a-852bcc74f147'])
   if (reviewed.goalId === '4ab1cf6d-b808-5b86-9291-85df0b9f2496') {
@@ -2083,9 +2258,9 @@ for (const reviewed of kinematicsReview.assessments) {
     assert.deepEqual(parentIdsByChild.get(reviewed.goalId), ['151edbf8-eb68-5ef7-8786-43e56a281b0b'])
   }
   assert.equal(exam.scoring.maxPoints, 36)
-  assert.equal(exam.scoring.passingPoints, reviewed.goalId === '6ea3fb3c-abdc-568f-ab13-97c36dc274e4' ? 36 : 22)
+  assert.equal(exam.scoring.passingPoints, reviewed.goalId === historicalThrowExamId ? 35.5 : 22)
   assert.equal(exam.scoring.steps.length, 36)
-  if (reviewed.goalId === '6ea3fb3c-abdc-568f-ab13-97c36dc274e4') {
+  if (reviewed.goalId === historicalThrowExamId) {
     for (const step of exam.scoring.steps) assert(exam.scoring.maxPoints - step.points < exam.scoring.passingPoints,
       'ZB cannot pass while omitting an existing idealization or prediction-limit criterion')
   }
@@ -2108,7 +2283,7 @@ for (const reviewed of kinematicsReview.assessments) {
       `${reviewed.goalId}: vector-free kinematics must not require ${String(required.title)}`)
   }
   // Since the E.1 cut (23 Nov 2026) the narrowed model-limits goal is the covered goal and a direct prerequisite.
-  if (reviewed.goalId === '6ea3fb3c-abdc-568f-ab13-97c36dc274e4') {
+  if (reviewed.goalId === historicalThrowExamId) {
     assert(prerequisiteIds.has('d6dc0e02-831d-4894-a61a-852bcc74f147'), 'the covered model-limits goal lies on the prerequisite path')
   } else {
     assert(!prerequisiteIds.has('d6dc0e02-831d-4894-a61a-852bcc74f147'), 'assessed model limits must not import an unrelated prerequisite branch')
@@ -2118,9 +2293,9 @@ for (const reviewed of kinematicsReview.assessments) {
 }
 assert.deepEqual(rawGoalById.get('4ab1cf6d-b808-5b86-9291-85df0b9f2496')?.requires,
   ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
-assert.deepEqual(rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.requires,
+assert.deepEqual(rawGoalById.get(currentThrowExamId)?.requires,
   ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', 'd6dc0e02-831d-4894-a61a-852bcc74f147'])
-assert.deepEqual((rawGoalById.get('6ea3fb3c-abdc-568f-ab13-97c36dc274e4')?.examData as { coveredGoalIds: string[] }).coveredGoalIds,
+assert.deepEqual((rawGoalById.get(currentThrowExamId)?.examData as { coveredGoalIds: string[] }).coveredGoalIds,
   ['d6dc0e02-831d-4894-a61a-852bcc74f147'])
 const incompleteBilingualAtomicGoals = ledger.decisions
   .filter(({ semanticKind }) => semanticKind === 'curricularAtomic')
