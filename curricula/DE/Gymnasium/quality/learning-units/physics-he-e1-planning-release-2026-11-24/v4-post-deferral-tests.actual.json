@@ -1,0 +1,120 @@
+{
+  "schema": "e1-v4-mp-scope-frontend-and-backend-actual-checkpoint-bindings-v1",
+  "recordedAt": "2026-11-24T05:47:40.827237+00:00",
+  "status": "PASS_RECORDED_SCOPE_CHECKS_WITH_EXPLICIT_RUN_BOUNDARIES",
+  "oldMpStillActive": true,
+  "new05MpActivated": false,
+  "frontend": {
+    "command": "app/node_modules/.bin/tsx app/scripts/testPhysicsAssessmentProjection.ts",
+    "exitCode": 0,
+    "checkpoint": "Current live views after HH/SN scope deferrals; oldMP30/18 remains active.",
+    "observed": {
+      "views": 64,
+      "practiceTaskPairs": 4598,
+      "abiturTaskPairs": 512,
+      "CQR104Views": 56,
+      "CQR104ActualScopes": 106,
+      "CQR104Status": "PASS"
+    },
+    "script": {
+      "path": "app/scripts/testPhysicsAssessmentProjection.ts",
+      "sha256": "sha256:03c3084a542921739053416db90341f935f1e4a66ea88c291f09d6ba60432a42"
+    },
+    "log": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v4-post-deferral-physics-assessment-projection.actual.log",
+      "sha256": "sha256:6dd67f76bf048934837cc39bfbe1deb7d17c96579703f4f48d56d93d44e2ded7"
+    }
+  },
+  "backend": {
+    "status": "PASS",
+    "tests": 182,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "classes": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+        "sha256": "sha256:a0bee30d5a8fd413e605f29e9cb5cc5488e87482cfa3b9c0f071eed8dc447a8a",
+        "tests": 103,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/TEST-com.skillpilot.backend.service.CompositionViewServiceTest.xml",
+        "sha256": "sha256:084333de2ee322d5a26044d235387f4052c9f724220104836f564788890b0ff6",
+        "tests": 70,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/TEST-com.skillpilot.backend.service.UnitLearningMaterialServiceTest.xml",
+        "sha256": "sha256:10d91336a0cdc588df1424435499d5f8d544c10c657486cfe2372aac0e5f249e",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "verification": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/verification.actual.json",
+      "sha256": "sha256:1ed3626e935ef13bf3c119f9372096856f4fb5c06e9e622ff89d2ae4c32da3e7"
+    },
+    "log": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-24/e1-mp-return-current-v1/backend-pre-deferral/backend-targeted.actual.txt",
+      "sha256": "sha256:a32961b40794492028d629b2359374e36c2663c9de1aca9746a218a2b531ce8f"
+    },
+    "runBoundary": "Actual3-class MP-return run before HH/SN source deferrals. The HEv4 offering remains the same; this is not claimed as the later complete current12-class run, which /root/th_mv is executing separately."
+  },
+  "nativeReleaseAndOwnerChecks": {
+    "scopeSupersession": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v4-mp-scope-supersession.actual.json",
+      "sha256": "sha256:4ecf105edf16f9dd134fc6ba5800c84c70128bc4905f5052428e7c8f3fa43ef5"
+    },
+    "strictPAndUnitChecks": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/v4-mp-scope-checks.actual.json",
+      "sha256": "sha256:999b9738cfe65cb18529dc5f557bc0b51f25cdd4c100a045977e4e19cdd9b3fa"
+    },
+    "unchangedFingerprint": "sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d"
+  },
+  "heCurrentViewPins": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json",
+      "sha256": "sha256:e85464c5e4182c43ac95b18e136b31ab781cefb31f93a0657ba15158a4e12b40"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json",
+      "sha256": "sha256:b06dbd57f7c6ea45c874148bb03b621175432ee2e63e731916f94a0e7d417da6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "sha256": "sha256:8eca7d8a16e4b466ee3b8928fa43c0708631993e61ca59b8051e07a782818005"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g8.view.json",
+      "sha256": "sha256:f3e0b1b0e2fdbf880f3796fe20e1d1428bd85f3fba0ae0dcaa360535352b4feb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g9.view.json",
+      "sha256": "sha256:e2a86468f705f9ec6f94b882585b922c85f52da968a56a6a49eb02398f557b47"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "sha256": "sha256:182c4d19e515872544d75dc3dc1f3ef50a2eab3de441ff1cf94d123ad2ea0c4d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "sha256": "sha256:90ddb9fe029c1717e58150b216800205a4ead40eafe0313477d9b86165081529"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "sha256": "sha256:a32e3c989dbbb128560f4a6f303fa5c29eea255adae5c597235e7a94a243d948"
+    }
+  ],
+  "currentMaterial": {
+    "path": "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+    "sha256": "sha256:902489158fe7d2be89f3ed2e6db4d9447c71bc1be39f5cf47a97e23ea00c7ce0"
+  },
+  "limits": "OldMP still has empty whole-goal coverage and leaves actual CQR203 at111/112. Passing these targeted structural/runtime checks does not grant newMOD recognition, a new assessment release or M7. The111/111 identity-retention experiment is explicitly counterfactual and separately archived."
+}
