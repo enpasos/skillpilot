@@ -8,7 +8,7 @@
 
 ## Prüfstrategie für die Abschlussberechnung {#sec:test-strategy appendix=true}
 
-Das Programm [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py) prüft zwei getrennte Modellfälle ([GD-D04](@rule{GD-D04})). Für den Entwurf zu E.1 vergleicht es alle 16 Teilmengen der vier bestandenen Pflichtprüfungen mit den erwarteten Abschlüssen der Kind- und Elterneinheit. Ein zweiter Fall prüft eine ausdrücklich an einen Beleg gebundene Planfreigabe, eine lediglich berührte Voraussetzung und den Wechsel der Prüfungsfassung. Aufgabenqualität und Wirkung auf Lernende benötigen ein eigenes Review und eine Erprobung.
+Das Programm [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py) prüft zwei getrennte Modellfälle ([GD-D04](@rule{GD-D04})). Für den E.1-Entwurf vom 20. November ([Umfangsdatei](repo:docs/concept/skill-graph/examples/hessen-physik-e1/umfang.json)) vergleicht es alle 16 Teilmengen der vier bestandenen Pflichtprüfungen mit den erwarteten Abschlüssen der Kind- und Elterneinheit; den Zuschnitt vom 24. November bildet es nicht ab. Ein zweiter Fall prüft eine ausdrücklich an einen Beleg gebundene Planfreigabe, eine lediglich berührte Voraussetzung und den Wechsel der Prüfungsfassung. Aufgabenqualität und Wirkung auf Lernende benötigen ein eigenes Review und eine Erprobung.
 
 **Referenzfälle für den geltenden Vertrag vom 4./11. November.** Die folgenden Tests prüfen die Rechnung in Abschnitt~@ref{sec:assessment}.
 
@@ -45,7 +45,7 @@ Die Abbildungen sind beim jeweiligen Sachverhalt zu finden. Abbildungen~@ref{fig
 Alle zweisprachigen Web-Seiten und PDF-Ausgaben entstehen aus der einzigen verfassten Quelle unter `docs/concept/skill-graph/source/` ([source/README.md](repo:docs/concept/skill-graph/source/README.md), [spec-manifest.json](repo:docs/concept/skill-graph/source/spec-manifest.json)). Der Compiler `docs/concept/skill-graph/build_spec.py` prüft die 1:1-Strukturparität zwischen Deutsch (`DE`) und Englisch (`EN`), übersetzt Kapitel und strukturierte JSON-Quellen in MkDocs-Markdown sowie LuaLaTeX-Quellen und bindet die statischen Originalabbildungen (`01`--`07`) sowie die zweisprachig generierten Bitmap-PNGs (`00`, `08`--`18`) aus `docs/concept/skill-graph/assets/graph-definition/` ein. Vom Repositorywurzelverzeichnis aus:
 
 - `python3 docs/concept/skill-graph/build_spec.py --web-and-tex` -- prüft mit reiner Python-Standardbibliothek die `DE`/`EN`-AST-Parität und erzeugt sämtliche zweisprachigen MkDocs-Webseiten sowie die LaTeX-Zwischendateien unter `tmp/skill-graph-document/`.
-- `python3 docs/concept/skill-graph/latex/check-assessment-model.py` -- führt getrennte Referenzfälle zum geltenden Vertrag vom 4./11. November und zum E.1-Vorschlag vom 19. November aus.
+- `python3 docs/concept/skill-graph/latex/check-assessment-model.py` -- führt getrennte Referenzfälle zum geltenden Vertrag vom 4./11. November und zum E.1-Entwurf vom 20. November aus.
 - `python3 docs/concept/skill-graph/latex/generate-completion-diagrams.py --check` -- prüft die deterministisch gerenderten zweisprachigen PNG-Diagramme ohne Dateiveränderung.
 - `python3 docs/concept/skill-graph/build_spec.py --all` -- führt Paritätsprüfung, Formelmodelltest, zweisprachige PNG-Erzeugung, Web-Markdown-Generierung und den mehrstufigen LuaLaTeX-Build für die deutsche (`skillpilot-graph-definition.pdf`, `skillpilot-graph-definition.de.pdf`) und englische (`skillpilot-graph-definition.en.pdf`) PDF-Ausgabe samt `.build.json`-Manifesten aus ([GD-D11](@rule{GD-D11})).
 

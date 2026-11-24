@@ -8,7 +8,7 @@
 
 ## Verification Strategy for Completion Semantics {#sec:test-strategy appendix=true}
 
-The script [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py) checks two distinct models ([GD-D04](@rule{GD-D04})). For the E.1 proposal it evaluates all 16 subsets of the four required passes against the expected child and parent completions. A second case checks an explicit evidence-bound planning release, a prerequisite that was merely sampled and a change of assessment version. Task quality and learning effects require separate review and learner trials.
+The script [check-assessment-model.py](repo:docs/concept/skill-graph/latex/check-assessment-model.py) checks two distinct models ([GD-D04](@rule{GD-D04})). For the E.1 draft of 20 November ([scope fixture](repo:docs/concept/skill-graph/examples/hessen-physik-e1/umfang.json)) it evaluates all 16 subsets of the four required passes against the expected child and parent completions; the cut of 24 November is not modelled there. A second case checks an explicit evidence-bound planning release, a prerequisite that was merely sampled and a change of assessment version. Task quality and learning effects require separate review and learner trials.
 
 **Reference cases for the contract in force since 4/11 November.** The following tests check the calculation in Section~@ref{sec:assessment}.
 
@@ -45,7 +45,7 @@ Figures~@ref{fig:unit-entry-paths} and~@ref{fig:recursive-unit} illustrate entry
 All bilingual web pages and PDF editions are compiled from the sole authored source under `docs/concept/skill-graph/source/` ([source/README.md](repo:docs/concept/skill-graph/source/README.md), [spec-manifest.json](repo:docs/concept/skill-graph/source/spec-manifest.json)). The compiler `docs/concept/skill-graph/build_spec.py` verifies 1:1 structural parity between German (`DE`) and English (`EN`), translates chapters and structured JSON datasets into MkDocs Markdown and LuaLaTeX sources, and embeds both the static original illustrations (`01`--`07`) and the deterministically generated bilingual bitmap PNGs (`00`, `08`--`18`) from `docs/concept/skill-graph/assets/graph-definition/`. From the repository root:
 
 - `python3 docs/concept/skill-graph/build_spec.py --web-and-tex` -- uses only the Python standard library to verify `DE`/`EN` AST parity and generate all bilingual MkDocs web pages plus intermediate LaTeX files under `tmp/skill-graph-document/`.
-- `python3 docs/concept/skill-graph/latex/check-assessment-model.py` -- runs separate reference cases for the contract in force from 4/11 November and the E.1 proposal of 19 November.
+- `python3 docs/concept/skill-graph/latex/check-assessment-model.py` -- runs separate reference cases for the contract in force from 4/11 November and the E.1 draft of 20 November.
 - `python3 docs/concept/skill-graph/latex/generate-completion-diagrams.py --check` -- verifies deterministic bilingual PNG diagram rendering without modifying files.
 - `python3 docs/concept/skill-graph/build_spec.py --all` -- runs the parity check, formula model verification, bilingual PNG rendering, Web Markdown emission, and multi-pass LuaLaTeX builds for both the German (`skillpilot-graph-definition.pdf`, `skillpilot-graph-definition.de.pdf`) and English (`skillpilot-graph-definition.en.pdf`) PDFs together with `.build.json` manifests ([GD-D11](@rule{GD-D11})).
 

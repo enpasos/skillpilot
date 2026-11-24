@@ -152,7 +152,7 @@ The goal type determines the required performance. The same subject standard app
 | --- | --- | --- |
 | Content goal | The learner demonstrated the required understanding or skill (Section~@ref{sec:understanding}). | Skipped practice has no individual outcome. Later prerequisite checks can use reviewed clearance for the entire atom. |
 | Orientation goal | The learner took part in the opening and agreed to complete it (Section~@ref{sec:orientation}). | Before the attempt, the learner sees what they will need to demonstrate. A skipped opening remains unvisited. |
-| Memory goal | The learner recalled the required cards unaided in the completion check (Section~@ref{sec:memory}). | An explicitly required recall check remains compulsory. Ordinary practice cards can be skipped. |
+| Memory goal | Every required card of the deck has passed verified recall (Section~@ref{sec:memory}). | An explicitly required recall check remains compulsory. Ordinary practice cards can be skipped. |
 | Assessment goal | The submission meets the applicable rubric (Section~@ref{sec:exams}). | All specified components in the qualifying revision count towards unit completion. |
 :::
 
@@ -184,13 +184,15 @@ A memory goal bundles the required cards of a flashcard deck. Three distinct con
 
 - **Card practice.** A spaced-repetition system (SRS) schedules card review intervals over time.
 - **Verified recall of a card.** Controlled recall records whether an individual card was answered accurately without card hints; flipping cards or self-rating during practice does not constitute verified recall.
-- **Goal completion.** Mastery of the learning goal itself is established by passing its own controlled completion check across the required deck -- *completion recall*.
+- **Goal completion.** The memory goal stays derived: it is mastered once every required card of its deck has passed verified recall -- *completion recall*.
 
 Card-level process lanes and goal completion must remain distinct; they introduce neither a second mastery tier nor an extra stored goal outcome.
 
+**Cards and learning units (decision of 23 November 2026).** Cards do not become goals of the graph. Each card has its own state, belongs to its understanding goals, the ordinary curricular goals it was written for, and is practised and checked through the learning unit. The learner's box holds the released and not yet removed cards. A card enters the box only when its understanding goal is passed; with several understanding goals, all that lie in the learner's Personal Curriculum must be passed. A credited goal counts like a passed one. The cards of a unit are the cards of its atomic goals, at every level of the unit hierarchy.
+
 #### Completion condition.
 
-Let $\operatorname{Cards}(g)$ denote the fully resolved, valid set of required cards for memory goal $g \in A_{\mathrm{mem}}$, and let $\operatorname{RecallPassed}(g)$ denote an explicitly established passing completion-recall check over that required card set. That goal-level completion check is neither a mere tally of current per-card flags nor an extra data field or separate assessment node:
+Let $\operatorname{Cards}(g)$ denote the fully resolved, valid set of required cards for memory goal $g \in A_{\mathrm{mem}}$, and let $\operatorname{RecallPassed}(g)$ state that every card in $\operatorname{Cards}(g)$ has passed verified recall. A card counts once its own verified recall result is passed. The goal result is derived from these card results and is neither an extra data field nor a separate assessment node:
 
 $$
 \Complete_{\mathrm{memory}}(g) \iff \operatorname{RecallPassed}(g).
@@ -204,11 +206,11 @@ Ordinary completed learning goals carry no recurring review due state. For memor
 
 #### Card scheduling under SM-2.
 
-The currently documented SRS contract tracks SM-2 (SuperMemo 2) state per card: interval, repetition count, easiness factor, and next review timestamp. Any card without stored state is due. Successful practice extends the interval under the documented rules, whereas insufficient recall resets the repetition sequence; scheduling never replaces verified recall.
+The currently documented SRS contract tracks SM-2 (SuperMemo 2) state per card: interval, repetition count, easiness factor, and next review timestamp. Only cards in the box can be due; a box card without stored state is due. Successful practice extends the interval under the documented rules, whereas insufficient recall resets the repetition sequence; scheduling never replaces verified recall.
 
 #### Verified recall workflow.
 
-From an active memory goal, the learner may start verified recall -- the *hard recall check* -- even while the SRS practice queue is non-empty. First only the card prompt is retrieved, and the learner answers without card hints; only afterwards is the expected answer loaded and the attempt recorded as passed or failed. Passing also updates the card's SRS lane as a strong successful retrieval, whereas failing clears the card's verified status and returns it to practice as due.
+From an active memory goal, the learner may start verified recall -- the *hard recall check* -- even while the SRS practice queue is non-empty. First only the card prompt is retrieved, and the learner answers without card hints; only afterwards is the expected answer loaded and the attempt recorded as passed or failed. A card passed in verified recall leaves the box for good and never becomes due again; a failed card returns to practice as due. In a learning unit, verified recall runs over the released, not yet verified cards of the unit, and every card gets its own result. The coach proposes this check only once the cards were known on at least two days.
 
 #### Implementation boundary.
 

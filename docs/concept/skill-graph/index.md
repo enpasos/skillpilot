@@ -68,7 +68,7 @@ python3 docs/concept/skill-graph/latex/check-assessment-model.py
 
 The [single-source compiler](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/build_spec.py) (and compatibility wrapper [latex/build-document.py](latex/build-document.py)) keeps intermediate LaTeX files under `tmp/` and writes the generated Markdown pages, bilingual diagram PNGs, and DE/EN PDFs into `docs/`. Its optional `--texmf` argument accepts a locally unpacked TeX package tree without changing system packages.
 
-The [reference checks](latex/check-assessment-model.py) cover the four-part E.1 example and the recognition rules in force.
+The [reference checks](latex/check-assessment-model.py) cover the four-part E.1 draft of 20 November and the recognition rules in force.
 
 </div>
 
@@ -142,6 +142,6 @@ python3 docs/concept/skill-graph/latex/check-assessment-model.py
 
 Der [Single-Source-Compiler](https://github.com/enpasos/skillpilot/blob/main/docs/concept/skill-graph/build_spec.py) (sowie der Kompatibilitäts-Wrapper [latex/build-document.py](latex/build-document.py)) legt LaTeX-Zwischendateien unter `tmp/` ab und schreibt die generierten Markdown-Seiten, zweisprachigen Diagramm-PNGs und DE/EN-PDFs nach `docs/`. Mit `--texmf` lässt sich ein lokal entpackter TeX-Paketbaum ohne Änderung der Systempakete nutzen.
 
-Die [Referenzprüfung](latex/check-assessment-model.py) behandelt den vierteiligen E.1-Entwurf und die geltende Anerkennungsrechnung.
+Die [Referenzprüfung](latex/check-assessment-model.py) behandelt den vierteiligen E.1-Entwurf vom 20. November und die geltende Anerkennungsrechnung.
 
 </div>

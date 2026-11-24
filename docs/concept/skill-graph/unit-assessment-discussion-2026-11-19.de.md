@@ -2,6 +2,8 @@
 
 **Arbeitsdokument für die Fachrunde · Stand 20. November 2026**
 
+**Einordnung vom 24. November 2026.** Der hessische Abschnitt E.1 ist seit dem 23./24. November in vier Kindstrukturen gegliedert; nur „Freier Fall schwerer Kugeln“ ist eine erklärte Einheit. Die am 24. November geprüfte Planungsfreigabe rechnet nur die beschleunigte Bewegung aus Teil D an, und die Mehrphasenprüfung ist zurückgezogen. Den aktuellen Stand beschreibt [§13](assessment-gated-completion.de.md#sec-unit-assessment-example).
+
 Für die Produktverträge gilt die bestätigte Anerkennungsregel vom 4./11. November. [§11](learning-units.de.md#sec-proposal-unit-completion) und [§13](assessment-gated-completion.de.md#sec-proposal-planning-release) stellen den Vorschlag vom 19. November daneben. Dieses Arbeitsdokument enthält die Aufgaben, Bewertungsbeispiele und offenen Fragen für das Fachreview.
 
 Die Überarbeitung der Graph-Definition ist beauftragt. Die neue Abschlussregel steht dort als **Vorschlag für die Fachrunde**. Eine Produktentscheidung über ihre Übernahme und die Umstellung bestehender Verträge stehen aus. In den Entwurf sind KI-Reviews eingeflossen. Eine erste verdeckte Modellprobe mit Claude Code ist unten dokumentiert. Die Fachabnahme durch Lehrkräfte, der vollständige Vergleich der Coaches und die Erprobung mit Lernenden stehen aus.
