@@ -1,0 +1,94 @@
+{
+  "schema": "sn-accb-review-and-omega-source-correction-fragment-v1",
+  "targetPath": "scripts/generate_laender_physics_stage_views.sources.json",
+  "review": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/accb-scope-followup-20261124/review.actual.json",
+    "sha256": "8e96d35c31d1db9a672c21b81f9aa66de811e9b5faa8563d852fcf1dc057122e"
+  },
+  "notProposed": {
+    "excludeNewLowerSeedFor": "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+    "newLowerAssessmentBinding": "b1808b4c-5e02-5e1f-831f-47ee126e00ee",
+    "canonicalRequiresChange": false,
+    "assessmentOrPChange": false
+  },
+  "citationOnlyJsonPatch": [
+    {
+      "op": "test",
+      "path": "/reviewedLowerSourceMembership/decisions/SN/ec7a0a68-730b-5c94-ac72-a937508f8303",
+      "value": {
+        "action": "excludeNewLowerSeed",
+        "classification": "partial_lower_not_complete_atom",
+        "canonicalDescription": "Die lernende Person kann bei Kreisbewegungen Bahn- und Winkelgeschwindigkeit definieren, berechnen und ihren Zusammenhang v = ωr erklären.",
+        "rationale": "J9 Wahlbereich3 verwendet Bahngeschwindigkeit und Umlaufzeit, aber keine Winkelgeschwindigkeit; diese steht erst im oberen GK-Kurs. Der vollständige kombinierte Atomumfang ist daher nicht lower belegt.",
+        "primaryEvidence": [
+          {
+            "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+            "pdfPages": [
+              39,
+              48
+            ],
+            "printedPages": [
+              27,
+              36
+            ],
+            "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+          }
+        ],
+        "sourceGoalIds": [
+          "sn-phys-seki-sn-klassenstufe-9-wb3-081-01-022e6dc9"
+        ],
+        "retainedMapping": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+        "retainedExtraction": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_PHYSIK_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json"
+      }
+    },
+    {
+      "op": "replace",
+      "path": "/reviewedLowerSourceMembership/decisions/SN/ec7a0a68-730b-5c94-ac72-a937508f8303/rationale",
+      "value": "J9 Wahlbereich3 verwendet Bahngeschwindigkeit und Umlaufzeit, aber keine Winkelgeschwindigkeit. Die direkte Form v=ωr und die Form Fr=mω²r stehen im Leistungskurs11 auf PDF-S.59/Druck-S.47. Die bisher zitierte GK-Seite48/Druck36 enthält nur v=2πr/T und Fr=mv²/r, keinen ω-Beleg. Der bestehende Ausschluss des vollständigen kombinierten Bahn-/Winkelgeschwindigkeitsatoms bleibt in Aktion, Klasse, Zieltext und Quellzeile unverändert; allein die obere Quellenangabe wird berichtigt."
+    },
+    {
+      "op": "replace",
+      "path": "/reviewedLowerSourceMembership/decisions/SN/ec7a0a68-730b-5c94-ac72-a937508f8303/primaryEvidence/0/pdfPages",
+      "value": [
+        39,
+        59
+      ]
+    },
+    {
+      "op": "replace",
+      "path": "/reviewedLowerSourceMembership/decisions/SN/ec7a0a68-730b-5c94-ac72-a937508f8303/primaryEvidence/0/printedPages",
+      "value": [
+        27,
+        47
+      ]
+    }
+  ],
+  "optionalLabelMergeFragment": {
+    "reviewedLowerSourceMembership": {
+      "retainedOptionalExtensions": {
+        "SN": {
+          "accb1d9e-cd48-5983-bcef-9b9bca4a9114": {
+            "classification": "explicit_optional_lower_extension",
+            "rationale": "Der vollständige normative Anwendungsumfang von accb ist im J9-Wahlbereich3 belegt: gleichförmige Kreisbewegung, v=2πr/T und Fr=mv²/r unter Anwenden von Kinematik und Dynamik. PDF4/DruckIV gestattet zusätzlich einen Bereich mit Wahlcharakter; keine allgemeine Pflicht zum Kreisbewegungsthema wird behauptet. Diese optionale Kennzeichnung erhält Ziel und sämtliche echten requires-/Endpunktprüfungen. Sie bestätigt weder die obere Vollvorbereitung noch einen neuen b180-Loweroffer.",
+            "primaryEvidence": [
+              {
+                "file": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+                "pdfPages": [
+                  4,
+                  39
+                ],
+                "printedPages": [
+                  "IV",
+                  27
+                ],
+                "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9"
+              }
+            ],
+            "visibleUnitLabel": "Kreisbewegung und Radialkraft (Wahlbereich 3, Kl. 9; optional)"
+          }
+        }
+      }
+    }
+  },
+  "activationBoundary": "Optional label and omega citation correction only; parent must keep accb selected, the partial route, the existing exclusions and the currently unqualified b180 endpoint unchanged. The historical endpoint record pins the old citation object, so the parent current-payload/source addendum must explicitly bind this citation-only successor instead of editing that history."
+}
