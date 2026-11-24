@@ -144,26 +144,13 @@ The Hessian E.1 learning map for G8 and G9 links measurement and one-dimensional
 
 A possible course leads from representations of position, velocity, and acceleration through uniform and uniformly accelerated motion to independent components and their composition. For an idealised projectile without air resistance, horizontal and vertical motion are described separately in a fixed frame of reference and recombined at the **same time**. Independence follows from this model; it does not hold for arbitrary superposed motions.
 
-Since 24 November 2026 E.1 has four child structures in learning order: “Uniform motion”, “Free fall of heavy balls”, “Ball and feather, air and vacuum” and “Two motions at once”. Only the second is a declared unit with its own opening; it owns accelerated motion and two versions of the acceleration protocol. The protocol requires motion graphs and the distinction between displacement and distance travelled after a reversal. That distinction was exactly why the reviewers withdrew coverage of the full acceleration goal from the vertical throw, which now lies in the third structure. [Current child-unit review](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-24-v4.md)
-
-The initial **E.1 proposal** calls for four independent passes. Previously passed components count if they match the required version.
-
-| Required part | Performance | Passing threshold |
-| --- | --- | --- |
-| A, cart (first structure) | Justify a prediction from measured data and judge measurement deviations | 14/17 points |
-| B, horizontal projectile (fourth structure) | Use a shared time for motions in two directions to make a prediction | 15/18 points |
-| C, vertical throw (third structure) | Choose an axis, model the motion and justify the idealisation | 17/20 points |
-| D, acceleration protocol (declared unit) | Construct three graphs and distinguish displacement from distance travelled | 17/20 points |
-
-Four passes would qualify the learner for E.1 in this proposal. A learner who solves A, B and C but still confuses distance and displacement has an outstanding part D. For E.1, learners justify their prediction using supplied data. They may also measure the motion themselves as they learn. Subject reviewers will judge whether the four performances support the agreed promise and whether a different parent-unit promise could be demonstrated with fewer required parts.
+Since 24 November 2026 E.1 has four child structures in learning order: “Uniform motion”, “Free fall of heavy balls”, “Ball and feather, air and vacuum” and “Two motions at once”. Each holds one of the four required parts A–D; only the second is a declared unit with its own opening. The acceleration protocol D requires motion graphs and the distinction between displacement and distance travelled after a reversal; missing that distinction, the vertical throw C lost coverage of the full acceleration goal. A learner who solves A, B and C but still confuses the two has an outstanding part D. [Parts, thresholds and planning effect (§13)](assessment-gated-completion.md#sec-unit-assessment-example)
 
 <a id="recognition-inside-a-larger-unit"></a>
 <a id="sec-sga-ud-phys-recognition"></a>
 #### 12.4. What E.1 evidence means for later learning
 
-Twelve content goals belong to this E.1 learning placement; the declared child unit owns one of them, accelerated motion. The planning release reviewed on 24 November accepts **this one whole atom for planning**, through D. It takes effect once D is passed, even before A, B and C.
-
-For the other eleven atoms the observed performance samples only part of the skill or leaves it unobserved. Someone who correctly interprets supplied fall data has yet to demonstrate performing a fall experiment. The E.1 route can be complete while a separately assigned experiment remains open. The full [goal-by-goal review](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json) lets subject reviewers examine these planning decisions.
+Of the twelve content goals only accelerated motion is released for planning, through D, even before A, B and C. For the other eleven the observed performance samples only part of the skill or leaves it unobserved: someone who correctly interprets supplied fall data has yet to demonstrate performing a fall experiment. The E.1 route can be complete while a separately assigned experiment remains open. Subject reviewers judge whether the four performances support the agreed promise and whether a different promise could be demonstrated with fewer required parts. [Goal-by-goal review](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json)
 
 <a id="what-textbook-structures-show"></a>
 <a id="sec-sga-ud-phys-textbooks"></a>
