@@ -117,7 +117,16 @@ assert.match(
 )
 assert.doesNotMatch(sessionSetupSource, /handleOpenChatGpt|deliverCoachChatStart/u,
   'the desktop beta does not launch an unselected browser chat')
-assert.match(activeClaudeUiSource, /t\.startPage\.login\.claudeVoiceHint/u)
+assert.doesNotMatch(
+  activeClaudeUiSource,
+  /claudeVoiceHint|Voice/u,
+  'the Claude start panel carries no voice-mode guidance of its own',
+)
+assert.match(
+  readFileSync(new URL('../src/utils/faqViewCopy.ts', import.meta.url), 'utf8'),
+  /id: 'claude-voice'/u,
+  'voice-mode guidance for Claude stays available in the FAQ',
+)
 assert.match(activeClaudeUiSource, /data-testid="claude-plugin-setup-guide"/u)
 assert.match(activeClaudeUiSource, /data-testid="claude-plugin-setup-step-1"/u)
 assert.match(activeClaudeUiSource, /data-testid="claude-plugin-setup-step-2"/u)
@@ -174,10 +183,15 @@ const englishClaudeCopy = englishLocaleSource.slice(
 )
 assert.doesNotMatch(germanClaudeCopy, /Connector|Konnektor|OAuth/u)
 assert.doesNotMatch(englishClaudeCopy, /Connector|Konnektor|OAuth/u)
-assert.match(germanClaudeCopy, /Schritt 1: Plugin einrichten/u)
-assert.match(germanClaudeCopy, /Schritt 2: Mit Claude starten/u)
-assert.match(englishClaudeCopy, /Step 1: Set up plugin/u)
-assert.match(englishClaudeCopy, /Step 2: Start with Claude/u)
+assert.match(germanClaudeCopy, /claudeConnect: "Plugin einrichten"/u)
+assert.match(germanClaudeCopy, /claudeStart: "Lernen mit Claude starten"/u)
+assert.match(englishClaudeCopy, /claudeConnect: "Set up plugin"/u)
+assert.match(englishClaudeCopy, /claudeStart: "Start learning with Claude"/u)
+assert.doesNotMatch(
+  `${germanClaudeCopy}\n${englishClaudeCopy}`,
+  /Schritt \d|step \d/iu,
+  'the Claude start carries no step numbers of its own beside the numbered setup steps of the page',
+)
 
 const SESSION = `spc_${'A'.repeat(43)}`
 const LEARNER_ID = 'c709883e-bf21-4482-9f68-eb6fe921a619'

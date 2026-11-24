@@ -107,7 +107,7 @@ const copy = (version?: string) => ({
     navigationHint: 'Der Link öffnet „Plugins → Entdecken“ in Claude Web, installiert oder aktualisiert aber nichts. Falls er nicht zur Plugin-Ansicht führt: in Claude „Einstellungen“ → „Plugins“ öffnen. Gemeint ist immer das „Hinzufügen“-Menü oben rechts, nicht der Knopf einer beworbenen Plugin-Karte.',
     keepTab: 'Lass diesen SkillPilot-Tab geöffnet.',
     stepReturnTitle: 'Neue Lernsession bei SkillPilot starten',
-    stepReturnBody: 'Sind Version und Konnektor geprüft, kehre zu deinem ursprünglichen SkillPilot-Tab zurück. Prüfe Lernprofil und Curriculum und wähle „Mit Claude starten“. Starte auch nach einem Update eine neue Lernsession von SkillPilot.com aus.',
+    stepReturnBody: 'Sind Version und Konnektor geprüft, kehre zu deinem ursprünglichen SkillPilot-Tab zurück. Prüfe Lernprofil und Curriculum und wähle „Lernen mit Claude starten“. Starte auch nach einem Update eine neue Lernsession von SkillPilot.com aus.',
     returnToSkillPilot: 'Zurück zu SkillPilot',
     updateTitle: 'Deine Installation vergleichen',
     updateBody: version
@@ -222,7 +222,7 @@ const copy = (version?: string) => ({
     navigationHint: 'The link opens Plugins → Discover in Claude Web; it does not install or update anything. If it does not reach that view, open Settings → Plugins in Claude. Always use the Add dropdown at the top right, not the button inside a featured plugin card.',
     keepTab: 'Keep this SkillPilot tab open.',
     stepReturnTitle: 'Start a new learning session at SkillPilot',
-    stepReturnBody: 'After checking the version and connector, return to your original SkillPilot tab. Check your learning profile and curriculum, then select “Start with Claude.” After an update, also start a new learning session from SkillPilot.com.',
+    stepReturnBody: 'After checking the version and connector, return to your original SkillPilot tab. Check your learning profile and curriculum, then select “Start learning with Claude.” After an update, also start a new learning session from SkillPilot.com.',
     returnToSkillPilot: 'Return to SkillPilot',
     updateTitle: 'Compare your installation',
     updateBody: version

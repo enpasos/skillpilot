@@ -302,6 +302,11 @@ try {
     await curriculumStep.locator('p').filter({ hasText: 'Gymnasium (DE)' }).waitFor()
     assert.equal(await curriculumStep.getByRole('combobox').count(), 0,
       'the previously completed curriculum step is compact after server verification')
+    const idStep = h.page.getByRole('heading', { name: 'SkillPilot-ID festlegen' })
+      .locator('xpath=ancestor::section[1]')
+    await idStep.locator('p').filter({ hasText: 'Bestätigt' }).waitFor()
+    assert.equal(await h.page.getByLabel('Deine SkillPilot-ID').isVisible(), false,
+      'the verified ID step is compact as well, so the provider choice follows the confirmed setup directly')
     await providerChoice.getByRole('radio', { name: /ChatGPT Desktop/u }).check()
     await h.page.getByRole('button', { name: 'Lernen mit ChatGPT vorbereiten' }).waitFor()
     assert.deepEqual(await h.page.evaluate(() => ({
@@ -311,6 +316,7 @@ try {
     'the route preserves the existing profile and saved curriculum without logout or a replacement profile')
     assert.deepEqual(h.unexpected, [], 'direct entry does not create a learner, rewrite the curriculum or launch a provider')
 
+    await idStep.getByRole('button', { name: 'Ändern: SkillPilot-ID festlegen' }).click()
     await h.page.getByLabel('Deine SkillPilot-ID').fill(learnerB)
     await settledFrame(h.page)
     assert.equal(await h.page.getByTestId('coach-provider-choice').count(), 0,
