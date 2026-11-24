@@ -2679,6 +2679,15 @@ LLM/learning-coach prompts should reinforce that:
   transports that temporary reference automatically; the learner never copies
   or re-enters it, and the permanent SkillPilot ID never enters the
   conversation.
+- In the Claude lane the prepared start message also carries the learner's own
+  standing request to save learning results. On 24 November 2026 the owner
+  observed in claude.ai that `set_skillpilot_mastery` was not executed after a
+  passed exam although every tool permission was set to "always allow", and
+  that the same save ran once the learner asked for it in the chat. A host can
+  therefore refuse a write that the coach starts on the connector's
+  instructions alone. Keep that sentence in the start message. This is an
+  owner-reported observation, not a trace; whether the standing request is
+  sufficient awaits real-host confirmation.
 
 ---
 

@@ -107,6 +107,7 @@ class AssessmentCompletionBackendBrowserIntegrationTest {
             JsonNode launchResult = mapper.readTree(response.body());
             assertThat(launchResult.path("prompt").asText()).isEqualTo(
                     "Nutze den SkillPilot-Coach-Skill und lerne mit meinem aktuellen SkillPilot-Lernkontext weiter."
+                            + " Speichere meine Lernergebnisse dabei jeweils direkt in SkillPilot."
                             + "\nlearningSessionId: " + launchResult.path("learningSessionId").asText());
             Learner persisted = learners.findById(id).orElseThrow();
             assertThat(persisted.getActiveGoalId()).isEqualTo(EXAM);

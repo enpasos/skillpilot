@@ -101,9 +101,15 @@ public class ClaudeV1LearningSessionService {
     }
 
     private String launchPrompt(String locale, String learningSessionId) {
+        // The second sentence is the learner's own standing request to save results. A Claude host
+        // can refuse a write the model starts without a request from the user, even when every tool
+        // permission is set to "always allow"; without this sentence a passed goal stays unsaved
+        // until the learner asks for the save.
         String instruction = "de".equals(locale)
                 ? "Nutze den SkillPilot-Coach-Skill und lerne mit meinem aktuellen SkillPilot-Lernkontext weiter."
-                : "Use the SkillPilot Coach skill and continue with my current SkillPilot learning context.";
+                        + " Speichere meine Lernergebnisse dabei jeweils direkt in SkillPilot."
+                : "Use the SkillPilot Coach skill and continue with my current SkillPilot learning context."
+                        + " Save my learning results directly to SkillPilot each time.";
         return instruction + "\nlearningSessionId: " + learningSessionId;
     }
 

@@ -103,6 +103,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var launch = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start"));
         assertThat(launch.prompt()).isEqualTo(
                 "Nutze den SkillPilot-Coach-Skill und lerne mit meinem aktuellen SkillPilot-Lernkontext weiter."
+                        + " Speichere meine Lernergebnisse dabei jeweils direkt in SkillPilot."
                         + "\nlearningSessionId: " + launch.learningSessionId());
         session = launch.learningSessionId();
         authenticate();
@@ -1921,7 +1922,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 new com.skillpilot.backend.api.CompletionAssessmentStart(PROFILE, EXAM, before)));
         String instruction = "de".equals(locale)
                 ? "Nutze den SkillPilot-Coach-Skill und lerne mit meinem aktuellen SkillPilot-Lernkontext weiter."
-                : "Use the SkillPilot Coach skill and continue with my current SkillPilot learning context.";
+                        + " Speichere meine Lernergebnisse dabei jeweils direkt in SkillPilot."
+                : "Use the SkillPilot Coach skill and continue with my current SkillPilot learning context."
+                        + " Save my learning results directly to SkillPilot each time.";
         assertThat(launch.prompt()).isEqualTo(instruction + "\nlearningSessionId: " + launch.learningSessionId());
         assertThat(version()).isEqualTo(before + 1);
         session = launch.learningSessionId();
