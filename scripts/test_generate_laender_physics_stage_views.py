@@ -110,6 +110,20 @@ RETIRED_MULTIPHASE_ID = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
 RETIRED_MULTIPHASE_OFFER_VIEWS = frozenset(json.loads((
     authoring.ROOT / "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-multiphase-disposition-20261124/old-offer-views.actual.json"
 ).read_text())["previousTargetViewIds"])
+HISTORICAL_TWO_MOTIONS_ID = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
+CURRENT_TWO_MOTIONS_ID = "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
+_two_motions_scope_bytes = (
+    authoring.ROOT / "curricula/DE/Gymnasium/quality/assessment-review/physik/"
+    "e1-current-assessments-20261124-v1/zb-identity-successor-20261124/native-current-identity.actual.json"
+).read_bytes()
+if hashlib.sha256(_two_motions_scope_bytes).hexdigest() != "f5bdfc1e4923c79e32113e064ff13e08d2cb2782565c42a007e2b8abdf0f9106":
+    raise AssertionError("Changed independently verified two-motions identity scope")
+_two_motions_scope = json.loads(_two_motions_scope_bytes)
+TWO_MOTIONS_SUCCESSOR_VIEWS = frozenset(
+    row["viewId"] for row in _two_motions_scope["viewBindings"] if row["successorVisible"]
+)
+if len(TWO_MOTIONS_SUCCESSOR_VIEWS) != 64:
+    raise AssertionError("Changed reviewed two-motions identity view set")
 
 
 def retained_authority_seeds(view, roles, baseline):
@@ -148,6 +162,20 @@ def retained_authority_seeds(view, roles, baseline):
         raise AssertionError("A historical multiphase assessment is offered again")
     if view["viewId"] in RETIRED_MULTIPHASE_OFFER_VIEWS:
         retained = retained | {RETIRED_MULTIPHASE_ID}
+    # Comparison with the frozen source authority only: the independently
+    # verified successor replaces one identity in exactly these 64 view slots.
+    # Runtime identities and learner results remain distinct; no alias is made.
+    if HISTORICAL_TWO_MOTIONS_ID in roles["target"] | roles["prerequisiteOnly"]:
+        raise AssertionError("A historical two-motions assessment is offered again")
+    if CURRENT_TWO_MOTIONS_ID in roles["prerequisiteOnly"]:
+        raise AssertionError("The reviewed two-motions successor entered a support role")
+    expected_successor = view["viewId"] in TWO_MOTIONS_SUCCESSOR_VIEWS
+    if (CURRENT_TWO_MOTIONS_ID in roles["target"]) != expected_successor:
+        raise AssertionError("Changed reviewed two-motions successor view set")
+    if expected_successor:
+        if CURRENT_TWO_MOTIONS_ID not in retained:
+            raise AssertionError("The two-motions identity delta was counted as a new source addition")
+        retained = (retained - {CURRENT_TWO_MOTIONS_ID}) | {HISTORICAL_TWO_MOTIONS_ID}
     digest = hashlib.sha256(("\n".join(sorted(retained)) + "\n").encode()).hexdigest()
     if digest != baseline["selectedAtomicSha256"]:
         raise AssertionError("Retained source-seed fingerprint changed")
@@ -163,6 +191,30 @@ class PhysicsStageAuthoring(unittest.TestCase):
     def setUpClass(cls):
         cls.views = {path.name: json.loads(path.read_text()) for path in authoring.DIRECTORY.glob("*.view.json")}
         cls.authorities = json.loads((authoring.ROOT / "scripts/generate_laender_physics_stage_views.memberships.json").read_text())["authorities"]
+
+    def test_two_motions_identity_delta_cannot_widen_hide_or_demote_the_frozen_authority(self):
+        view = self.views["de-he-gk.view.json"]
+        baseline = self.authorities[view["viewId"]]
+        roles = authoring.graph.role_atoms(view)
+        retained_authority_seeds(view, roles, baseline)
+        missing = copy.deepcopy(roles)
+        missing["target"].remove(CURRENT_TWO_MOTIONS_ID)
+        with self.assertRaisesRegex(AssertionError, "successor view set"):
+            retained_authority_seeds(view, missing, baseline)
+        for role in ("target", "prerequisiteOnly"):
+            changed = copy.deepcopy(roles)
+            changed[role].add(HISTORICAL_TWO_MOTIONS_ID)
+            with self.subTest(historical_role=role), self.assertRaisesRegex(AssertionError, "historical two-motions"):
+                retained_authority_seeds(view, changed, baseline)
+        demoted = copy.deepcopy(roles)
+        demoted["prerequisiteOnly"].add(CURRENT_TWO_MOTIONS_ID)
+        with self.assertRaisesRegex(AssertionError, "support role"):
+            retained_authority_seeds(view, demoted, baseline)
+        outside = self.views["de-he-seki-g8.view.json"]
+        widened = authoring.graph.role_atoms(outside)
+        widened["target"].add(CURRENT_TWO_MOTIONS_ID)
+        with self.assertRaisesRegex(AssertionError, "successor view set"):
+            retained_authority_seeds(outside, widened, self.authorities[outside["viewId"]])
 
     def test_guided_openings_are_targets_only_in_the_eight_reviewed_views(self):
         self.assertEqual(len(self.views), 90)
