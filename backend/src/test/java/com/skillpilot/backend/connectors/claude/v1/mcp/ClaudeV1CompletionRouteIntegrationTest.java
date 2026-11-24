@@ -1700,6 +1700,50 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
     }
 
+    // A retired edition keeps its identity as history and leaves the learner's scope. A stored
+    // plan that still names it is outdated: it is neither rewritten nor pointed at another edition.
+    @ParameterizedTest
+    @CsvSource({"GK,6ea3fb3c-abdc-568f-ab13-97c36dc274e4", "LK,6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+            "LK,2b9e565f-d9b4-5e23-b5b7-b7977cecff06"})
+    void storedPlanNamingARetiredAssessmentEditionIsOutdatedAndKeptUnchanged(String course, String retired) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", course);
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        assertThat(learners.getPlanningScope(learnerId, physics).scopeAtomicGoalIds())
+                .contains(WURF_EXTRA).doesNotContain(retired);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        assertThat(required).doesNotContain(retired);
+        var current = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, required, List.of(section), true);
+        learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(current)), today);
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isFalse();
+
+        // Before the retirement a section selection stored the edition among its goals, and a
+        // learner could also select it in a block of its own.
+        var captured = new java.util.ArrayList<>(required);
+        captured.add(retired);
+        var oldSection = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, captured, List.of(section), true);
+        var ownExam = new LearnerLearningPlanApi.Block("exam", "learning", retired, "Meine Prüfung",
+                monday.plusDays(1), monday.plusDays(1), null, List.of(retired), List.of(retired), true);
+        for (var stored : List.of(List.of(oldSection), List.of(current, ownExam))) {
+            var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+            record.setBlocksJson(mapper.writeValueAsString(stored));
+            storedPlans.saveAndFlush(record);
+            var plan = learningPlans.getPlan(learnerId, physics, today);
+            assertThat(plan.stale()).isTrue();
+            assertThat(plan.nextEligibleGoal()).isNull();
+            assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).isEqualTo(stored);
+        }
+        // A new plan cannot select the retired edition.
+        long revision = learningPlans.getPlan(learnerId, physics, today).revision();
+        assertThatThrownBy(() -> learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(revision, "Alte Fassung", List.of(current, ownExam)), today))
+                .hasMessageContaining("Unknown atomicGoalIds");
+    }
+
     @Test void changingDurationInTheSharedSekIIViewNeedsANewAssignmentChoice() throws Exception {
         String section = selectHessianMotionUnit("G8", "SekII");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
