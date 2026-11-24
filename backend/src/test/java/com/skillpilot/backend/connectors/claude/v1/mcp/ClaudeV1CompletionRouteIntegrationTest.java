@@ -1888,7 +1888,26 @@ class ClaudeV1CompletionRouteIntegrationTest {
         });
         assertThat(learners.getMastery(learnerId)).containsEntry(HISTORICAL_WURF_EXTRA, 1.0).containsEntry(WURF_EXTRA, 1.0)
                 .doesNotContainKey("d6dc0e02-831d-4894-a61a-852bcc74f147");
+        // The helper deliberately chooses "Return to ordinary learning" after grading.
+        // Prove that exit, then compare the same explicitly selected E.1 assignment as before.
+        var ordinary = learners.getLearnerState(learnerId).levelCompletion();
+        // The ordinary overview publishes a synthetic default profile without a stored workflow.
+        assertThat(ordinary.profileId()).isEqualTo(PROFILE);
+        var returnedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(returnedLearner.getCompletionWorkflow()).isNull();
+        assertThat(learners.completionRouteOwnsNavigation(returnedLearner)).isFalse();
+        var personalProfile = ordinary.profileOptions().stream().filter(option -> PROFILE.equals(option.profileId()))
+                .findFirst().orElseThrow();
+        assertThat(ordinary.requiredAssessmentCount()).isEqualTo(personalProfile.requiredAssessmentCount())
+                .isGreaterThan(parts.size());
+        assertThat(ordinary.masteredAssessmentCount()).isEqualTo(parts.size() + 1);
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
+                "selectProfile", "automatic:" + section, null, null, version()));
         var after = learners.getLearnerState(learnerId).levelCompletion();
+        assertThat(after.profileId()).isEqualTo(before.profileId());
+        var reselectedLearner = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(reselectedLearner.getCompletionWorkflow()).isNotNull();
+        assertThat(learners.completionRouteOwnsNavigation(reselectedLearner)).isTrue();
         assertThat(after.requiredAssessmentCount()).isEqualTo(parts.size());
         assertThat(after.masteredAssessmentCount()).isEqualTo(parts.size());
         assertThat(after.unitAssessment()).isEqualTo(before.unitAssessment());
