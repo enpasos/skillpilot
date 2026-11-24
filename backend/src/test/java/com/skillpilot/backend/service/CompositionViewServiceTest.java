@@ -1747,7 +1747,8 @@ class CompositionViewServiceTest {
                 "LK", List.of("ed3a6f6b-2ca3-51c2-8f00-58e11eb02401", "320732e8-1c44-5fa4-9a47-972243cfc32a"));
         String previousEPhaseCollection = "424b07df-bf66-5d7f-99f5-f28b32ad1f22";
         // E.1 cut (23 Nov 2026): E.1 groups its targets in four child units, each with its closing
-        // checks; the multiphase exam moved with the velocity vector to E.3.
+        // checks. The authorized LK multiphase extra returns directly after those four children;
+        // reference frames and the velocity-vector goal remain in E.3.
         Map<String, List<String>> ePhaseAssessmentPlacements = new java.util.LinkedHashMap<>(Map.of(
                 "physics-e1-uniform-motion", List.of(
                         "ee7d5f3d-858f-59d6-89b0-e5a7f437f458"), // A: wagon
@@ -1758,14 +1759,14 @@ class CompositionViewServiceTest {
                 "physics-e1-two-motions", List.of(
                         "39f52dcb-ff1d-5cad-9ccb-30da803cfa85", // B: horizontal throw
                         "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"))); // voluntary: two motions, one time
+        ePhaseAssessmentPlacements.put("physics-e1-motion", List.of("2b9e565f-d9b4-5e23-b5b7-b7977cecff06"));
         ePhaseAssessmentPlacements.putAll(Map.of(
                 "physics-e2-newton-and-conservation", List.of(
                         "22561c66-3957-5d55-b07a-25de1f359930",
                         "72649cf5-893c-5f03-88bd-a2497171d434",
                         "be6d4895-65ab-545b-8df9-84e5a308a5e3"),
                 "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49", List.of( // E.3
-                        "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
-                        "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"),
+                        "8320bb17-e6ab-50ea-a965-aa331bfd33e1"),
                 "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9",
                         List.of("dd99528a-bae5-5b78-89e6-c6092c927f8d"), // E.4
                 "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089", List.of( // E.5
@@ -1858,6 +1859,13 @@ class CompositionViewServiceTest {
                 Map<String, Object> motion = phaseChildren.stream()
                         .filter(node -> "physics-e1-motion".equals(node.get("id"))).findFirst().orElseThrow();
                 List<Map<String, Object>> motionChildren = (List<Map<String, Object>>) motion.get("children");
+                assertThat(motionChildren.stream().filter(node -> "structure".equals(node.get("kind"))
+                        || "2b9e565f-d9b4-5e23-b5b7-b7977cecff06".equals(node.get("goalId")))
+                        .map(node -> String.valueOf(node.getOrDefault("id", node.get("goalId")))).toList())
+                        .as(context + " four E.1 children followed by the multiphase offering")
+                        .containsExactly("physics-e1-uniform-motion", "physics-e1-accelerated-and-free-fall",
+                                "physics-e1-air-and-vacuum", "physics-e1-two-motions",
+                                "2b9e565f-d9b4-5e23-b5b7-b7977cecff06");
                 assertThat(motionChildren).as(context + " acceleration board in E.1")
                         .filteredOn(node -> "physics-e1-accelerated-and-free-fall".equals(node.get("id")))
                         .singleElement().satisfies(board -> assertThat((List<Map<String, Object>>) board.get("children"))

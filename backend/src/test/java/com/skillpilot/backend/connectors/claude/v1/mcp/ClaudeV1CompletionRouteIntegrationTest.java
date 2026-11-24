@@ -183,10 +183,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(call(choose, writeArgs("stale-page", revision,
                 Map.of("choice", title, "completionChoicePage", labels.get(title)))).isError()).isTrue();
 
-        // Direct exams remain explicit authorized choices, including both optional Hessian offerings
-        // (since the E.1 cut of 23 Nov 2026 the throw exam and the two-series free-fall exam).
+        // All three LK extras remain explicit choices across the published completion pages.
         var examPages = new java.util.ArrayList<Integer>();
-        for (String extraId : List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA)) {
+        for (String extraId : hessianVoluntaryAssessmentIds("LK")) {
             var current = readPublishedCompletionPages();
             String examTitle = landscapeDefinitions.getGoalDefinition(extraId).getTitle();
             var entry = current.entrySet().stream().filter(item -> item.getKey().endsWith(examTitle)).findFirst().orElseThrow();
@@ -505,12 +504,17 @@ class ClaudeV1CompletionRouteIntegrationTest {
 
     private static final String WURF_EXTRA = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
     private static final String MULTIPHASE_EXTRA = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06";
-    // E.1 cut (23 Nov 2026): the multiphase exam moved to E.3; the two-series free-fall exam closes
-    // child unit 2 as a voluntary E.1 exam beside the throw exam, in every course.
+    // The two common E.1 extras remain; the authorized multiphase offering additionally belongs
+    // to LK assignment views and mixed GK+LK selections.
     private static final String FREE_FALL_SERIES_EXTRA = "f41e4e30-794e-5ce4-ba5e-cc72712cd691";
     // E.1 cut (23 Nov 2026): twelve content goals (reference frames and road traffic left; the t-v
     // diagram, the motion laws and the light/heavy fall comparison joined).
     private static final int E1_CONTENT_GOALS = 12;
+
+    private static List<String> hessianVoluntaryAssessmentIds(String course) {
+        return "GK".equals(course) ? List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA)
+                : List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA, MULTIPHASE_EXTRA);
+    }
 
     // E.1 cut (23 Nov 2026): both throw assessments require the throw goal, so the two study
     // recommendations of PR #184 left the E.1 material and their two end-to-end tests were removed.
@@ -806,7 +810,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(completion.assessments()).filteredOn(item -> Boolean.TRUE.equals(item.voluntary()))
                     .allMatch(LevelCompletionResponse.Assessment::startAvailable)
                     .extracting(LevelCompletionResponse.Assessment::goalId)
-                    .containsExactlyInAnyOrderElementsOf(List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA));
+                    .containsExactlyInAnyOrderElementsOf(hessianVoluntaryAssessmentIds(course));
             assertThat(completion.masteredAssessmentCount()).isEqualTo(passed.size());
             var updated = context();
             var compact = mapper.valueToTree(map(map(updated, "levelCompletion"), "unitAssessment"));
@@ -1565,13 +1569,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
     // motion laws and the light/heavy fall comparison joined it, so each plan gains one position.
     @ParameterizedTest
     @CsvSource({"G8,SekII,GK,20", "G9,SekII,GK,20", "G8,CrossStage,GK,19", "G9,CrossStage,GK,19",
-            "G8,SekII,LK,20", "G9,SekII,LK,20"})
+            "G8,SekII,LK,20", "G9,SekII,LK,20", "G8,CrossStage,LK,19", "G9,CrossStage,LK,19"})
     void supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String duration, String stage, String course, int expected) throws Exception {
         String section = selectHessianMotionUnit(duration, stage, course);
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         String measurementProtocol = "e0004439-ed34-5caf-858a-6107918224eb";
         String individualProtocolAssessment = "c6e2942d-1ff4-5e86-a52a-4ca4c8568291";
-        String extra = "LK".equals(course) ? FREE_FALL_SERIES_EXTRA : WURF_EXTRA;
+        String extra = "LK".equals(course) ? MULTIPHASE_EXTRA : WURF_EXTRA;
         var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
         var monday = today.with(java.time.DayOfWeek.MONDAY);
         var sunday = monday.plusDays(6);
@@ -1756,8 +1760,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
     void optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String duration, String course) throws Exception {
         String section = selectHessianMotionUnit(duration, "SekII", course);
         String profile = "automatic:" + section;
-        // Since the E.1 cut (23 Nov 2026) every course offers the same two voluntary E.1 exams.
-        String extra = WURF_EXTRA;
+        boolean advanced = !"GK".equals(course);
+        String extra = advanced ? MULTIPHASE_EXTRA : WURF_EXTRA;
         var completion = learners.getLearnerState(learnerId).levelCompletion();
         var sections = completion.profileOptions();
         assertThat(sections).filteredOn(option -> profile.equals(option.profileId())).singleElement().satisfies(option -> {
@@ -1768,17 +1772,28 @@ class ClaudeV1CompletionRouteIntegrationTest {
                     .map(item -> item.goalId()).toList()).containsExactlyInAnyOrderElementsOf(unitParts);
             assertThat(option.assessments().stream().filter(item -> Boolean.TRUE.equals(item.voluntary()))
                     .map(item -> item.goalId()).toList()).containsExactlyInAnyOrderElementsOf(
-                            List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA));
+                            hessianVoluntaryAssessmentIds(course));
         });
         assertThat(sections.stream().filter(option -> !profile.equals(option.profileId()))
                 .flatMap(option -> option.assessments().stream()).filter(item -> extra.equals(item.goalId())).toList())
                 .isNotEmpty().allMatch(item -> item.voluntary() == null);
+        if (!advanced) {
+            long before = version();
+            assertThatThrownBy(() -> sessions.createFirstPartyLaunch(learnerId,
+                    new ClaudeV1CoachStartRequest("de", "web-start",
+                            new CompletionAssessmentStart(profile, MULTIPHASE_EXTRA, before))))
+                    .isInstanceOf(org.springframework.web.server.ResponseStatusException.class)
+                    .hasMessageContaining("409");
+            assertThat(version()).isEqualTo(before);
+            assertThat(examPasses.findForGoals(learnerId, List.of(MULTIPHASE_EXTRA))).isEmpty();
+        }
         learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("selectProfile", profile, null, null, version()));
         session = sessions.createFirstPartyLaunch(learnerId, new ClaudeV1CoachStartRequest("de", "web-start")).learningSessionId();
         authenticate();
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                 Map.of("receiptCapability", map(context(), "completionContract").get("receiptCapability")));
-        String start = choice(context(), "Freiwillige Zusatzprüfung versuchen: Waagerechter Wurf");
+        String start = choice(context(), "Freiwillige Zusatzprüfung versuchen: "
+                + (advanced ? "Mehrphasenbewegung" : "Waagerechter Wurf"));
         successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
                 writeArgs("voluntary-start", version(), Map.of("choice", start)));
         assertThat(map(context(), "activeGoal")).containsEntry("id", extra);
@@ -1798,7 +1813,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", false);
         try {
             var ordinary = learners.getLearnerState(learnerId).levelCompletion();
-            assertThat(ordinary.requiredAssessmentCount()).isEqualTo(6);
+            assertThat(ordinary.requiredAssessmentCount()).isEqualTo(4 + hessianVoluntaryAssessmentIds(course).size());
             assertThat(ordinary.masteredAssessmentCount()).isOne();
             assertThat(ordinary.assessments()).allMatch(item -> item.voluntary() == null);
         } finally {
@@ -1810,18 +1825,17 @@ class ClaudeV1CompletionRouteIntegrationTest {
     void draftSupplementaryAssessmentCannotExemptASectionOrDisappearFromItsPlan() throws Exception {
         String section = selectHessianMotionUnit("G8", "SekII", "LK");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
-        // Since the E.1 cut (23 Nov 2026) the multiphase exam is no longer an E.1 exam; the voluntary
-        // throw exam takes its place as the supplementary assessment that becomes a draft.
-        var exam = landscapeDefinitions.getGoalDefinition(WURF_EXTRA).getExamData();
+        // A draft LK extra disables the voluntary exception rather than disappearing from E.1.
+        var exam = landscapeDefinitions.getGoalDefinition(MULTIPHASE_EXTRA).getExamData();
         var reviewed = exam.getReviewStatus();
         try {
             exam.setReviewStatus("draft");
             var option = learners.getLearnerState(learnerId).levelCompletion().profileOptions().stream()
                     .filter(row -> row.profileId().equals("automatic:" + section)).findFirst().orElseThrow();
             assertThat(option.assessments()).allMatch(item -> item.voluntary() == null);
-            assertThat(option.assessments()).noneMatch(item -> WURF_EXTRA.equals(item.goalId()) && item.startAvailable());
+            assertThat(option.assessments()).noneMatch(item -> MULTIPHASE_EXTRA.equals(item.goalId()) && item.startAvailable());
             assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section)))
-                    .contains(WURF_EXTRA, FREE_FALL_SERIES_EXTRA);
+                    .contains(WURF_EXTRA, FREE_FALL_SERIES_EXTRA, MULTIPHASE_EXTRA);
         } finally {
             exam.setReviewStatus(reviewed);
         }
