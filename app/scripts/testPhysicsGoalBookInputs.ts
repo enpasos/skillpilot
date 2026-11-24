@@ -705,14 +705,14 @@ const FINAL_SPLIT_ASSESSMENT_COVERAGE = new Map([
   ['092017a7-1ce1-54b7-a14c-1658b72d70a7', FINAL_SPLIT_CHILD_IDS[6]],
   ['027d25fc-b609-5383-ac44-5dd3327ca577', FINAL_SPLIT_CHILD_IDS[7]],
 ])
-// The 2026-11-13 selector repair retains its five explicit targets and their
-// 25+20+10+5+5 occurrences. The 2026-11-15 semiconductor/source corrections
-// additionally change actual projected targets; these current counts come from
-// the native CQR-104 measurement, including every selector-excluded occurrence.
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 9167
+// Actual learner-facing occurrences across all 106 Physics Sek-I route contexts.
+// The four new goals contribute 24 motion-law, 24 signed-area, 6 fall-comparison
+// and 12 velocity-vector occurrences in the reviewed state views.
+// The diagnostic selector still includes 8,739. All 494 outside it enter CQR-104.
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 9233
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 8739
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 428
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 57
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 494
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 61
 const EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES = new Map([
   [FINAL_SPLIT_CHILD_IDS[0], 30], // p-n model: 25 prior + 5 new lower-view occurrences
   [FINAL_SPLIT_CHILD_IDS[1], 24], // diode experiment: 20 + 4
