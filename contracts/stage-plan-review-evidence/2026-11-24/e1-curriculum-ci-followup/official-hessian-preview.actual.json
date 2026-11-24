@@ -1,0 +1,404 @@
+{
+  "contract": "hessian-e1-local-gk-browser-acceptance-after-child-cut-v1",
+  "runner": "app/scripts/checkHesseE1Preview.mjs",
+  "course": "GK",
+  "durations": [
+    "G8",
+    "G9"
+  ],
+  "cases": "all",
+  "nativeCommand": "node app/scripts/checkHesseE1Preview.mjs <local-ui> <local-api> <synthetic-profiles-file> GK all",
+  "executionManifestSha256": "22f74936810b0f13af27d40cd120312a0583e14a5f78145a92db6c306f90e470",
+  "actualFullRun": {
+    "schemaVersion": 1,
+    "course": "GK",
+    "cases": "all",
+    "existingInstanceOnly": true,
+    "serverStartedOrStopped": false,
+    "startedAt": "2026-11-24T12:53:01.240715+00:00",
+    "scriptSha256": "79425ac82a5592762a75fa0744be356f9313fcd97673c99aa0bd66bd132e8939",
+    "profilesSha256": "38c9ab7b248849a8c9223971a4dc59882f9884d15b1c49d0f499157b03cc7f10",
+    "canonicalPhysicsSha256": "e795626b9d2577141089cb2c592544828d8015204f3461921b481bd7c32afea8",
+    "finishedAt": "2026-11-24T13:05:48.229859+00:00",
+    "exitCode": 0,
+    "logSha256": "d2eb47e78b2a3b31ac8fc9df0c8fd676443187d70a247657f6d36a6578ff5c90",
+    "scriptBytesUnchangedDuringRun": true,
+    "profilesBytesUnchangedDuringRun": true
+  },
+  "scope": "Zusätzlicher lokaler Browserlauf außerhalb der 179 Schritte der sechs CI-Jobabschnitte. Beide hessischen Grundkurswege verwenden denselben laufenden lokalen Dienst und synthetische Lernprofile.",
+  "reviewedExpectations": [
+    "Die ausgewählte Prüfung öffnet ihren wirklichen Kindabschnitt. Der sichtbare Wechsel zwischen Pflichtteilen prüft Ausgangs- und Zieladresse. Die Lesbarkeitsgrenze bleibt bei 170 Pixeln.",
+    "Die sieben E.1-Karten sind für die Testprofile mit ausschließlich bestätigtem Auftakt gesperrt. Die Prüfung vergleicht Anzeige und verfügbare Aktion.",
+    "Bei C+D sind drei von zwanzig Planpositionen erfüllt, bei A–D fünf. Nur D trägt BES zur Planung bei. Vier direkte Belege und ein einzelner Planungsbeleg erscheinen auf den zugehörigen vier Kindkarten.",
+    "Die vergleichenden Testläufe wählen E.1 über die öffentliche Lernfokus- und Profilwahl. Die vorhandenen Prüfungsergebnisse, die Einzelkompetenzen und der gespeicherte Plan werden vor und nach der Fokuswahl verglichen."
+  ],
+  "testProfilePreparation": {
+    "scope": "Vor dem finalen Browserlauf wurde für die beiden synthetischen C+D-Auftragsrollen nach einem vorangegangenen freiwilligen Prüfungsabbruch der ursprüngliche E.1-Lernfokus über die öffentliche Schnittstelle wiedergewählt.",
+    "verifiedAt": "2026-11-24T12:53:01.164756+00:00",
+    "sourceReceiptSha256": "c64d3f3aecedf2bc29b6ce2f8e8acbb238db20a4ffdc4cb320c50e330fe47302",
+    "routeReceiptSha256": "5de46839fdf3cdb53e7e88a17f9cab48f5d5dee40cf8eeefb0fd224d4fb4c8ec",
+    "unchangedEvidence": [
+      {
+        "duration": "G8",
+        "role": "unitCD",
+        "focusBefore": {
+          "goals": [
+            "bf980fff-b62b-4ea4-a20d-31681a7ad785"
+          ]
+        },
+        "focusAfter": {
+          "goals": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion"
+          ]
+        },
+        "publicActions": [
+          {
+            "method": "PUT",
+            "path": "/api/ui/learners/{G8-unitCD}/planned",
+            "body": {
+              "goals": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion"
+              ]
+            }
+          }
+        ],
+        "valuesEqual": true,
+        "canonicalJsonByteSha256Before": "348414bc6ed64b492a77ffd59da744721ef46d342537c08a687967aefdc49bf6",
+        "canonicalJsonByteSha256After": "348414bc6ed64b492a77ffd59da744721ef46d342537c08a687967aefdc49bf6",
+        "savedPlanRevisionBefore": 5,
+        "savedPlanRevisionAfter": 5,
+        "allEightReceiptListsUnchanged": true,
+        "masteryUnchanged": true,
+        "planBlocksUnchanged": true
+      },
+      {
+        "duration": "G9",
+        "role": "unitCD",
+        "focusBefore": {
+          "goals": [
+            "bf980fff-b62b-4ea4-a20d-31681a7ad785"
+          ]
+        },
+        "focusAfter": {
+          "goals": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion"
+          ]
+        },
+        "publicActions": [
+          {
+            "method": "PUT",
+            "path": "/api/ui/learners/{G9-unitCD}/planned",
+            "body": {
+              "goals": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion"
+              ]
+            }
+          }
+        ],
+        "valuesEqual": true,
+        "canonicalJsonByteSha256Before": "8de75c2d7a42cfdf082d450f014da145fa17a6d3696f3a9b1568ec1f4e6d9881",
+        "canonicalJsonByteSha256After": "8de75c2d7a42cfdf082d450f014da145fa17a6d3696f3a9b1568ec1f4e6d9881",
+        "savedPlanRevisionBefore": 5,
+        "savedPlanRevisionAfter": 5,
+        "allEightReceiptListsUnchanged": true,
+        "masteryUnchanged": true,
+        "planBlocksUnchanged": true
+      }
+    ],
+    "routeChecks": [
+      {
+        "duration": "G8",
+        "role": "unitCD",
+        "status": "PASS",
+        "urlPath": "/learner/composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion",
+        "visibleStatus": "Einheitenauftrag aktiv. 2 / 4",
+        "nativeProfileId": "automatic:personal-curriculum",
+        "nativeUnitAssessmentAvailable": true,
+        "masteryUnchanged": true,
+        "storedBlocksAndRevisionUnchanged": true
+      },
+      {
+        "duration": "G9",
+        "role": "unitCD",
+        "status": "PASS",
+        "urlPath": "/learner/composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion",
+        "visibleStatus": "Einheitenauftrag aktiv. 2 / 4",
+        "nativeProfileId": "automatic:personal-curriculum",
+        "nativeUnitAssessmentAvailable": true,
+        "masteryUnchanged": true,
+        "storedBlocksAndRevisionUnchanged": true
+      }
+    ]
+  },
+  "successfulScenarios": [
+    "Mathematik Q1.3: 100 % beim Einstieg, 69 % und 18 Einträge in der Übersicht OK",
+    "G8 Vollständiger Eltern-/Kindeinstieg, echter Bildabruf, freie Ansicht, Übungssperre und normaler Anbieterstart ohne Ergebnisänderung OK",
+    "G8 GK Messunsicherheiten: genau ein Prüfungszugang neben Lernen starten im Kopf, DE/EN, gleiche 44px-Kapselform ohne Überlauf OK",
+    "G8 Struktureller Mathematik-Fremdfokus: lesendes Übungsgate, verworfene Ziel-/Lernerwechsel, zwei echte Reloads und bewusster Coach-Start mit exaktem Fachziel ohne Mastery-Änderung OK",
+    "G8 A de Aufgabe und Kartenwechsel 1440×900 OK",
+    "G8 A en Aufgabe und Kartenwechsel 1440×900 OK",
+    "G8 B de Aufgabe und Kartenwechsel 1440×900 OK",
+    "G8 B en Aufgabe und Kartenwechsel 1440×900 OK",
+    "G8 B de Aufgabe und Kartenwechsel 761×900 OK",
+    "G8 B de Aufgabe und Kartenwechsel 1024×900 OK",
+    "G8 B de Aufgabe und Kartenwechsel 1100×900 OK",
+    "G8 B de Aufgabe und Kartenwechsel 1024×650 OK",
+    "G8 B de Aufgabe und Kartenwechsel 390×900 OK",
+    "G8 E.1-Einstieg und beide Untereinheitsprüfungen DE/EN OK",
+    "G8 Alle 26 E.1-Elternpfade (GK), externe Ressourcen auf allen fünf Ebenen, getrennte E.1-/E.3-Suche und direkte Aufrufe beider Ziele sowie ihrer kanonischen Gruppe bestätigt.",
+    "G8 E.1-Vergleichsfokus öffentlich gewählt; Lernresultate, Prüfungsbelege und gespeicherter Plan unverändert OK",
+    "G8 E.1-Vergleichsfokus öffentlich gewählt; Lernresultate, Prüfungsbelege und gespeicherter Plan unverändert OK",
+    "G8 CD freiwilliger Einzelfokus beginnt mit dem erforderlichen Einstieg und behält die echten offenen Fachvoraussetzungen OK",
+    "G8 ABCD strikter Einzelweg beginnt mit dem erforderlichen Einstieg und behält die echten offenen Fachvoraussetzungen OK",
+    "G8 Echte Prüfungsbelege, Lernplan und Lernfront in allen drei Vergleichsprofilen OK",
+    "G8 offen Einheitenauftrag und tatsächlicher nächster Planvorschlag OK",
+    "G8 CD Einheitenauftrag und tatsächlicher nächster Planvorschlag OK",
+    "G8 E.1-Karte: vier direkte Prüfungsbelege in vier Kindern, genau ein graues BES-Häkchen, WW und das E.2-Verkehrsbeispiel ohne Beleg OK",
+    "G8 ABCD Einheitenauftrag und tatsächlicher nächster Planvorschlag OK",
+    "G8 gemischt Einheitenauftrag und tatsächlicher nächster Planvorschlag OK",
+    "G8 Einheitenauftrag im neuen Lernplan über die reguläre WebGUI gespeichert OK",
+    "G8 Einheitenauftrag zusätzlich zum vorhandenen Einzelzielplan über die reguläre WebGUI gespeichert OK",
+    "G8 CD  Einheitenauftrag pausiert und reaktiviert; Originalblöcke, Belege und Mastery bestätigt.",
+    "G8 ABCD  Einheitenauftrag pausiert und reaktiviert; Originalblöcke, Belege und Mastery bestätigt.",
+    "G8 gemischt  Einheitenauftrag pausiert und reaktiviert; Originalblöcke, Belege und Mastery bestätigt.",
+    "G8 CD ohne verfügbares Fachangebot Einheitenauftrag pausiert und reaktiviert; Originalblöcke, Belege und Mastery bestätigt.",
+    "G8 Freiwillige Fallprüfung begonnen und vor der Abgabe verlassen; C+D und Einzelmastery erhalten OK",
+    "G8 A de Erststart 1440×900 OK",
+    "G8 B de Erststart 1440×900 OK",
+    "G9 Vollständiger Eltern-/Kindeinstieg, echter Bildabruf, freie Ansicht, Übungssperre und normaler Anbieterstart ohne Ergebnisänderung OK",
+    "G9 GK Messunsicherheiten: genau ein Prüfungszugang neben Lernen starten im Kopf, DE/EN, gleiche 44px-Kapselform ohne Überlauf OK",
+    "G9 Struktureller Mathematik-Fremdfokus: lesendes Übungsgate, verworfene Ziel-/Lernerwechsel, zwei echte Reloads und bewusster Coach-Start mit exaktem Fachziel ohne Mastery-Änderung OK",
+    "G9 A de Aufgabe und Kartenwechsel 1440×900 OK",
+    "G9 A en Aufgabe und Kartenwechsel 1440×900 OK",
+    "G9 B de Aufgabe und Kartenwechsel 1440×900 OK",
+    "G9 B en Aufgabe und Kartenwechsel 1440×900 OK",
+    "G9 B de Aufgabe und Kartenwechsel 761×900 OK",
+    "G9 B de Aufgabe und Kartenwechsel 1024×900 OK",
+    "G9 B de Aufgabe und Kartenwechsel 1100×900 OK",
+    "G9 B de Aufgabe und Kartenwechsel 1024×650 OK",
+    "G9 B de Aufgabe und Kartenwechsel 390×900 OK",
+    "G9 E.1-Einstieg und beide Untereinheitsprüfungen DE/EN OK",
+    "G9 Alle 26 E.1-Elternpfade (GK), externe Ressourcen auf allen fünf Ebenen, getrennte E.1-/E.3-Suche und direkte Aufrufe beider Ziele sowie ihrer kanonischen Gruppe bestätigt.",
+    "G9 E.1-Vergleichsfokus öffentlich gewählt; Lernresultate, Prüfungsbelege und gespeicherter Plan unverändert OK",
+    "G9 E.1-Vergleichsfokus öffentlich gewählt; Lernresultate, Prüfungsbelege und gespeicherter Plan unverändert OK",
+    "G9 CD freiwilliger Einzelfokus beginnt mit dem erforderlichen Einstieg und behält die echten offenen Fachvoraussetzungen OK",
+    "G9 ABCD strikter Einzelweg beginnt mit dem erforderlichen Einstieg und behält die echten offenen Fachvoraussetzungen OK",
+    "G9 Echte Prüfungsbelege, Lernplan und Lernfront in allen drei Vergleichsprofilen OK",
+    "G9 offen Einheitenauftrag und tatsächlicher nächster Planvorschlag OK",
+    "G9 CD Einheitenauftrag und tatsächlicher nächster Planvorschlag OK",
+    "G9 E.1-Karte: vier direkte Prüfungsbelege in vier Kindern, genau ein graues BES-Häkchen, WW und das E.2-Verkehrsbeispiel ohne Beleg OK",
+    "G9 ABCD Einheitenauftrag und tatsächlicher nächster Planvorschlag OK",
+    "G9 gemischt Einheitenauftrag und tatsächlicher nächster Planvorschlag OK",
+    "G9 Einheitenauftrag im neuen Lernplan über die reguläre WebGUI gespeichert OK",
+    "G9 Einheitenauftrag zusätzlich zum vorhandenen Einzelzielplan über die reguläre WebGUI gespeichert OK",
+    "G9 CD  Einheitenauftrag pausiert und reaktiviert; Originalblöcke, Belege und Mastery bestätigt.",
+    "G9 ABCD  Einheitenauftrag pausiert und reaktiviert; Originalblöcke, Belege und Mastery bestätigt.",
+    "G9 gemischt  Einheitenauftrag pausiert und reaktiviert; Originalblöcke, Belege und Mastery bestätigt.",
+    "G9 CD ohne verfügbares Fachangebot Einheitenauftrag pausiert und reaktiviert; Originalblöcke, Belege und Mastery bestätigt.",
+    "G9 Freiwillige Fallprüfung begonnen und vor der Abgabe verlassen; C+D und Einzelmastery erhalten OK",
+    "G9 A de Erststart 1440×900 OK",
+    "G9 B de Erststart 1440×900 OK"
+  ],
+  "earlierDiagnosticRuns": [
+    {
+      "run": "run-1",
+      "cases": "all",
+      "startedAt": "2026-11-24T10:45:04.016526+00:00",
+      "exitCode": 1,
+      "outputSha256": "1899a68b0091ad118335a68174e5569ec00eeaa2ad0690904547736e2ccac223"
+    },
+    {
+      "run": "run-2",
+      "cases": "all",
+      "startedAt": "2026-11-24T10:47:39.050730+00:00",
+      "exitCode": 1,
+      "outputSha256": "c84418defb56181656d173e7f8cf682ac98c850fc30ff50e4a2343f448ca269c"
+    },
+    {
+      "run": "run-3",
+      "cases": "all",
+      "startedAt": "2026-11-24T10:48:56.385003+00:00",
+      "exitCode": 1,
+      "outputSha256": "94d679db531c21cd986329ad1d5fc82551f9bfe3887bdf364b465a5cf8b8d38a"
+    },
+    {
+      "run": "run-4",
+      "cases": "all",
+      "startedAt": "2026-11-24T10:54:38.880951+00:00",
+      "exitCode": 1,
+      "outputSha256": "44866f4591663cdacb9e05ec0073ea1ca81a3811fc4e441683406d4fa1b9b5d4"
+    },
+    {
+      "run": "run-5",
+      "cases": "all",
+      "startedAt": "2026-11-24T11:00:28.595080+00:00",
+      "exitCode": 1,
+      "outputSha256": "23d81018b3a5923ad5a093cab830533c2af5e778f6f62a4334ed46c69ba3f2c0"
+    },
+    {
+      "run": "run-6",
+      "cases": "all",
+      "startedAt": "2026-11-24T11:02:19.193948+00:00",
+      "exitCode": 1,
+      "outputSha256": "9171b5f7caaa2e628a88a12e4fb1c07aad44bcea769f3696fc0a221f6335ca25"
+    },
+    {
+      "run": "run-7",
+      "cases": "all",
+      "startedAt": "2026-11-24T11:04:37.690126+00:00",
+      "exitCode": 1,
+      "outputSha256": "c695c5c19b90e758b0c8bebfcc3ef8b617c240f4e90adf0fb42685c98d1603fc"
+    },
+    {
+      "run": "structure-1",
+      "cases": "structure",
+      "startedAt": "2026-11-24T11:06:51.013929+00:00",
+      "exitCode": 1,
+      "outputSha256": "99d2e7a87428d3f6d1a9e557daa05be29f14cb915e4cf2f079948fa54ae2a5b2"
+    },
+    {
+      "run": "run-8",
+      "cases": "all",
+      "startedAt": "2026-11-24T12:06:45.852226+00:00",
+      "exitCode": 1,
+      "outputSha256": "604618fb975fd1ddda6d29f490feac15761bc2225d84c1dc72de6ca1234bac63"
+    },
+    {
+      "run": "run-9",
+      "cases": "all",
+      "startedAt": "2026-11-24T12:08:18.135206+00:00",
+      "exitCode": 1,
+      "outputSha256": "91e899da739fb720ee140f09d310c9c9572935a9473c3ea1197f415dc766ad27"
+    },
+    {
+      "run": "planning-2",
+      "cases": "planning",
+      "startedAt": "2026-11-24T12:12:34.838686+00:00",
+      "exitCode": 1,
+      "outputSha256": "05ac651188d1c7127a34e2f55666b2331dbbdf9b2dbeceb6567d5c371d27c26c"
+    },
+    {
+      "run": "planning-3",
+      "cases": "planning",
+      "startedAt": "2026-11-24T12:13:24.883456+00:00",
+      "exitCode": 1,
+      "outputSha256": "e67b31f67030ed4f8628c8c98451abfd8081ef44fd07a982d8061fe3fee2687a"
+    },
+    {
+      "run": "planning-4",
+      "cases": "planning",
+      "startedAt": "2026-11-24T12:15:00.059218+00:00",
+      "exitCode": 1,
+      "outputSha256": "a2cc7d1952fa83ff88b8154cc75c44a39acf266b2edd2483fc6b24dd104a8099"
+    },
+    {
+      "run": "planning-5",
+      "cases": "planning",
+      "startedAt": "2026-11-24T12:15:27.725515+00:00",
+      "exitCode": 1,
+      "outputSha256": "01298e48e7ae8b75073d1129dd8ee2e31b002c66b164c546aec968f8e0b8f46c"
+    },
+    {
+      "run": "planning-6",
+      "cases": "planning",
+      "startedAt": "2026-11-24T12:15:54.557265+00:00",
+      "exitCode": 1,
+      "outputSha256": "23fef67e9341b3a9e50de09957aa0a86a22c08e0dc6c424f46eaf1250abd1392"
+    },
+    {
+      "run": "planning-7",
+      "cases": "planning",
+      "startedAt": "2026-11-24T12:17:57.835129+00:00",
+      "exitCode": 1,
+      "outputSha256": "1cf398cbb229b862f389486a0f3da7d21a7ff4945186e0d187891b3ae8bcc5bc"
+    },
+    {
+      "run": "run-10",
+      "cases": "all",
+      "startedAt": "2026-11-24T12:21:25.796132+00:00",
+      "exitCode": 1,
+      "outputSha256": "b927de80f65c2ee75dcaf221fe818478ea4a413278247b5f44bc97d14a03ee44"
+    },
+    {
+      "run": "run-11",
+      "cases": "all",
+      "startedAt": "2026-11-24T12:22:08.542439+00:00",
+      "exitCode": 1,
+      "outputSha256": "4b13bf6d8a822ca70b8d884aedd80a70bf19bc84c520869db0becaaa7fd89b0f"
+    },
+    {
+      "run": "rest-1",
+      "cases": "Isolated current diagnostic, not official complete GK all acceptance",
+      "startedAt": "2026-11-24T12:29:59.739190+00:00",
+      "exitCode": 1,
+      "outputSha256": "420e2788164d18d36d4f938a585cd484d890ee72854f0920992b212df64124e5"
+    },
+    {
+      "run": "mobile-b-1",
+      "cases": "Isolated current diagnostic, not official complete GK all acceptance",
+      "startedAt": "2026-11-24T12:29:59.739539+00:00",
+      "exitCode": 1,
+      "outputSha256": "37885b722b227a49415be82343c1816775ff589f2ead95646aabd2e384ce747b"
+    },
+    {
+      "run": "rest-repeatable-2",
+      "cases": "Isolated current diagnostic, not official complete GK all acceptance",
+      "startedAt": "2026-11-24T12:30:29.952736+00:00",
+      "exitCode": 1,
+      "outputSha256": "d9612c6a130962a9952b54ff124352f49152338ec03410cdc464204695223063"
+    },
+    {
+      "run": "mobile-b-2",
+      "cases": "Isolated current diagnostic, not official complete GK all acceptance",
+      "startedAt": "2026-11-24T12:32:29.975435+00:00",
+      "exitCode": 0,
+      "outputSha256": "1fcdf84ee4e389d3c549cb9362d94ca6305cf53b1831b6a42d0447d151cc560a"
+    },
+    {
+      "run": "rest-g9-3",
+      "cases": "Isolated current diagnostic, not official complete GK all acceptance",
+      "startedAt": "2026-11-24T12:35:48.261121+00:00",
+      "exitCode": 1,
+      "outputSha256": "7ecc99ea2aeda72c4b495a74f01ef9181452859ec58001015c6d9accb9adf25f"
+    },
+    {
+      "run": "run-12",
+      "cases": "all",
+      "startedAt": "2026-11-24T12:35:48.262713+00:00",
+      "exitCode": 1,
+      "outputSha256": "41b3aebd486aa7263de6b68b4788d38067cadbb253d7f17fa94cdf1c47d97a76"
+    },
+    {
+      "run": "rest-g9-4",
+      "cases": "Isolated current diagnostic, not official complete GK all acceptance",
+      "startedAt": "2026-11-24T12:38:51.921692+00:00",
+      "exitCode": 0,
+      "outputSha256": "d73cb491881394c21be5f12f9ed5529aa8c801150a2afee9de56c2c28bcb339f"
+    },
+    {
+      "run": "qualified-g8-tail-1",
+      "cases": "Predeclared qualified original-case matrix partition; unchanged actual assertion functions, no learner resets",
+      "startedAt": "2026-11-24T12:43:30.294326+00:00",
+      "exitCode": 1,
+      "outputSha256": "383d81c4cfa0f11db9dd08c425b9ba67b4f6c6d6d5dec3b724a9b90c33f0b197"
+    },
+    {
+      "run": "qualified-g9-all-1",
+      "cases": "Predeclared qualified original-case matrix partition; unchanged actual assertion functions, no learner resets",
+      "startedAt": "2026-11-24T12:43:30.294638+00:00",
+      "exitCode": 1,
+      "outputSha256": "27caae6d6c140b79d0ad85ec9163ccb0b1e78943da9899f6eec6fbb8790e6eed"
+    },
+    {
+      "run": "run-13",
+      "cases": "all",
+      "startedAt": "2026-11-24T12:44:13.224817+00:00",
+      "exitCode": 1,
+      "outputSha256": "405d2a75d9d98ac6ec873e8b182e1ea1f37c349b901bdf601e5a11966c4925c9"
+    }
+  ],
+  "supportingChecks": [
+    "assessment-camera.actual.json",
+    "backend-qualified-cases.actual.json"
+  ]
+}
