@@ -1,0 +1,1114 @@
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/home/enpasos/.gradle/wrapper/dists/gradle-9.7.1-bin/1w1c7tv4s851m17nbqdsro2tv/gradle-9.7.1/lib/native-platform-0.22-milestone-29.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :compileJava UP-TO-DATE
+> Task :generateClaudePluginPublication UP-TO-DATE
+> Task :processResources
+> Task :classes
+
+> Task :compileTestJava
+Note: /home/enpasos/projects/skillpilot-e1-nachweise/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: /home/enpasos/projects/skillpilot-e1-nachweise/backend/src/test/java/com/skillpilot/backend/service/ExamLearningScopeIntegrationTest.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :processTestResources
+> Task :testClasses
+
+> Task :test
+
+AssessmentMaterialRevisionTest > translationsAndAdditionalRubricFieldsArePartOfTheGradedMaterial() STARTED
+
+AssessmentMaterialRevisionTest > translationsAndAdditionalRubricFieldsArePartOfTheGradedMaterial() PASSED
+
+AssessmentMaterialRevisionTest > allPhysicsChildExamEditionsBindToTheirPublishedCoverageReviews() STARTED
+
+AssessmentMaterialRevisionTest > allPhysicsChildExamEditionsBindToTheirPublishedCoverageReviews() PASSED
+
+AssessmentMaterialRevisionTest > evaluationMustMatchTheMaterialThatTheCoachUses() STARTED
+
+AssessmentMaterialRevisionTest > evaluationMustMatchTheMaterialThatTheCoachUses() PASSED
+
+UnitAssessmentContractTest > usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts() STARTED
+
+UnitAssessmentContractTest > usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts() PASSED
+
+UnitAssessmentContractTest > oneAssessmentCanProveAUnitWithoutGrantingAnyPlanningCredit() STARTED
+
+UnitAssessmentContractTest > oneAssessmentCanProveAUnitWithoutGrantingAnyPlanningCredit() PASSED
+
+UnitPlanningReleaseTest > planningCreditRequiresItsReviewedOwnWitnessAndCurrentCoverage() STARTED
+
+UnitPlanningReleaseTest > planningCreditRequiresItsReviewedOwnWitnessAndCurrentCoverage() PASSED
+
+UnitPlanningReleaseTest > absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial() STARTED
+
+UnitPlanningReleaseTest > absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial() PASSED
+
+UnitPlanningReleaseTest > matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews() STARTED
+
+UnitPlanningReleaseTest > matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews() PASSED
+
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+> Task :test
+
+ClaudeV1CompletionRouteIntegrationTest > aPausedCompletedAssignmentRetainsOpenGoalsAndASeparateResultStaysMastered() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aPausedCompletedAssignmentRetainsOpenGoalsAndASeparateResultStaysMastered() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > failedAssessmentRetryAndConfirmedMasteryUseFreshCapabilitiesAndOneBinaryResult() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > failedAssessmentRetryAndConfirmedMasteryUseFreshCapabilitiesAndOneBinaryResult() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryFreeFallRemainsDueAlongsideACompletedFourPartAssignment(String, String) > [1] duration = "G8", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryFreeFallRemainsDueAlongsideACompletedFourPartAssignment(String, String) > [1] duration = "G8", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryFreeFallRemainsDueAlongsideACompletedFourPartAssignment(String, String) > [2] duration = "G9", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryFreeFallRemainsDueAlongsideACompletedFourPartAssignment(String, String) > [2] duration = "G9", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryFreeFallRemainsDueAlongsideACompletedFourPartAssignment(String, String) > [3] duration = "G8", course = "LK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryFreeFallRemainsDueAlongsideACompletedFourPartAssignment(String, String) > [3] duration = "G8", course = "LK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryFreeFallRemainsDueAlongsideACompletedFourPartAssignment(String, String) > [4] duration = "G9", course = "LK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryFreeFallRemainsDueAlongsideACompletedFourPartAssignment(String, String) > [4] duration = "G9", course = "LK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [1] duration = "G8", stage = "CrossStage", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [1] duration = "G8", stage = "CrossStage", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [2] duration = "G9", stage = "CrossStage", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [2] duration = "G9", stage = "CrossStage", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [3] duration = "G8", stage = "SekII", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [3] duration = "G8", stage = "SekII", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [4] duration = "G9", stage = "SekII", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [4] duration = "G9", stage = "SekII", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [5] duration = "G8", stage = "SekII", course = "LK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [5] duration = "G8", stage = "SekII", course = "LK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [6] duration = "G9", stage = "SekII", course = "LK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen(String, String, String) > [6] duration = "G9", stage = "SekII", course = "LK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryCoachSessionOffersAndStartsTheExamWithoutPriorSectionSelection() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > ordinaryCoachSessionOffersAndStartsTheExamWithoutPriorSectionSelection() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > changingDurationInTheSharedSekIIViewNeedsANewAssignmentChoice() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > changingDurationInTheSharedSekIIViewNeedsANewAssignmentChoice() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > explicitChildEntryKeepsItsUnitAfterCompletionAndANewCoachSessionWithoutCompletingTheParent() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > explicitChildEntryKeepsItsUnitAfterCompletionAndANewCoachSessionWithoutCompletingTheParent() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile(String, boolean, String) > [1] duration = "G8", strict = "false", requested = "09029573-864f-40ca-bf8a-cee7bf6dcb73" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile(String, boolean, String) > [1] duration = "G8", strict = "false", requested = "09029573-864f-40ca-bf8a-cee7bf6dcb73" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile(String, boolean, String) > [2] duration = "G9", strict = "false", requested = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile(String, boolean, String) > [2] duration = "G9", strict = "false", requested = "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile(String, boolean, String) > [3] duration = "G9", strict = "true", requested = "09029573-864f-40ca-bf8a-cee7bf6dcb73" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile(String, boolean, String) > [3] duration = "G9", strict = "true", requested = "09029573-864f-40ca-bf8a-cee7bf6dcb73" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [1] duration = "G8", course = "GK", sectionOrder = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [1] duration = "G8", course = "GK", sectionOrder = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [2] duration = "G9", course = "GK", sectionOrder = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [2] duration = "G9", course = "GK", sectionOrder = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [3] duration = "G8", course = "LK", sectionOrder = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [3] duration = "G8", course = "LK", sectionOrder = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [4] duration = "G9", course = "LK", sectionOrder = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [4] duration = "G9", course = "LK", sectionOrder = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [5] duration = "G8", course = "GK", sectionOrder = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [5] duration = "G8", course = "GK", sectionOrder = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [6] duration = "G9", course = "GK", sectionOrder = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [6] duration = "G9", course = "GK", sectionOrder = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [7] duration = "G8", course = "LK", sectionOrder = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [7] duration = "G8", course = "LK", sectionOrder = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [8] duration = "G9", course = "LK", sectionOrder = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > datedPlanUsesTheUnitOrderForASectionAndHonorsASeparateAtomicSelection(String, String, boolean) > [8] duration = "G9", course = "LK", sectionOrder = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes(String) > [1] duration = "G8" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes(String) > [1] duration = "G8" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes(String) > [2] duration = "G9" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes(String) > [2] duration = "G9" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > guidedUnitOpeningSurvivesAResumedCoachSessionAndItsConfirmationResumesTheChosenGoal() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > guidedUnitOpeningSurvivesAResumedCoachSessionAndItsConfirmationResumesTheChosenGoal() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > aDirectAssessmentNeedsNoOpeningAndAbandoningItReturnsToTheStillOpenUnitEntry() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aDirectAssessmentNeedsNoOpeningAndAbandoningItReturnsToTheStillOpenUnitEntry() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "0" part passes, separate order = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "0" part passes, separate order = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "2" part passes, separate order = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "2" part passes, separate order = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "4" part passes, separate order = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "4" part passes, separate order = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "0" part passes, separate order = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "0" part passes, separate order = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "2" part passes, separate order = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "2" part passes, separate order = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "4" part passes, separate order = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G8", "4" part passes, separate order = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "0" part passes, separate order = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "0" part passes, separate order = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "2" part passes, separate order = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "2" part passes, separate order = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "4" part passes, separate order = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "4" part passes, separate order = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "0" part passes, separate order = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "0" part passes, separate order = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "2" part passes, separate order = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "2" part passes, separate order = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "4" part passes, separate order = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > genericResumeHonorsTheChosenUnitAndAnySeparatelyDueOrder(String, int, boolean) > "G9", "4" part passes, separate order = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [1] course = "GK", edition = "ORIGINAL22" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [1] course = "GK", edition = "ORIGINAL22" FAILED
+    org.opentest4j.AssertionFailedError: 
+    expected: 4
+     but was: 95
+        at app//com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(ClaudeV1CompletionRouteIntegrationTest.java:1892)
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [2] course = "LK", edition = "ORIGINAL22" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [2] course = "LK", edition = "ORIGINAL22" FAILED
+    org.opentest4j.AssertionFailedError: 
+    expected: 4
+     but was: 113
+        at app//com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(ClaudeV1CompletionRouteIntegrationTest.java:1892)
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [3] course = "GK", edition = "PREVIOUS36" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [3] course = "GK", edition = "PREVIOUS36" FAILED
+    org.opentest4j.AssertionFailedError: 
+    expected: 4
+     but was: 95
+        at app//com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(ClaudeV1CompletionRouteIntegrationTest.java:1892)
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [4] course = "LK", edition = "PREVIOUS36" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [4] course = "LK", edition = "PREVIOUS36" FAILED
+    org.opentest4j.AssertionFailedError: 
+    expected: 4
+     but was: 113
+        at app//com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(ClaudeV1CompletionRouteIntegrationTest.java:1892)
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [5] course = "GK", edition = "RAW_ONLY" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [5] course = "GK", edition = "RAW_ONLY" FAILED
+    org.opentest4j.AssertionFailedError: 
+    expected: 4
+     but was: 95
+        at app//com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(ClaudeV1CompletionRouteIntegrationTest.java:1892)
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [6] course = "LK", edition = "RAW_ONLY" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(String, String) > [6] course = "LK", edition = "RAW_ONLY" FAILED
+    org.opentest4j.AssertionFailedError: 
+    expected: 4
+     but was: 113
+        at app//com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(ClaudeV1CompletionRouteIntegrationTest.java:1892)
+
+ClaudeV1CompletionRouteIntegrationTest > hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease(String) > [1] duration = "G8" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease(String) > [1] duration = "G8" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease(String) > [2] duration = "G9" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease(String) > [2] duration = "G9" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [1] duration = "G8", course = "GK", language = "de" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [1] duration = "G8", course = "GK", language = "de" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [2] duration = "G9", course = "GK", language = "de" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [2] duration = "G9", course = "GK", language = "de" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [3] duration = "G8", course = "LK", language = "de" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [3] duration = "G8", course = "LK", language = "de" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [4] duration = "G9", course = "LK", language = "de" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [4] duration = "G9", course = "LK", language = "de" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [5] duration = "G8", course = "GK", language = "en" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [5] duration = "G8", course = "GK", language = "en" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [6] duration = "G9", course = "GK", language = "en" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [6] duration = "G9", course = "GK", language = "en" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [7] duration = "G8", course = "LK", language = "en" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [7] duration = "G8", course = "LK", language = "en" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [8] duration = "G9", course = "LK", language = "en" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > coachOffersTheAuthoredExperimentInTheSessionLanguage(String, String, String) > [8] duration = "G9", course = "LK", language = "en" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [1] duration = "G8", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [1] duration = "G8", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [2] duration = "G9", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [2] duration = "G9", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [3] duration = "G8", course = "LK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [3] duration = "G8", course = "LK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [4] duration = "G9", course = "LK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [4] duration = "G9", course = "LK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [5] duration = "G9", course = "GK+LK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalSectionExamCanBeChosenAndPassedWithoutCompletingAUnitPart(String, String) > [5] duration = "G9", course = "GK+LK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [1] duration = "G8", sectionFirst = "true", additionalSection = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [1] duration = "G8", sectionFirst = "true", additionalSection = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [2] duration = "G9", sectionFirst = "true", additionalSection = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [2] duration = "G9", sectionFirst = "true", additionalSection = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [3] duration = "G8", sectionFirst = "false", additionalSection = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [3] duration = "G8", sectionFirst = "false", additionalSection = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [4] duration = "G9", sectionFirst = "false", additionalSection = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [4] duration = "G9", sectionFirst = "false", additionalSection = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [5] duration = "G9", sectionFirst = "true", additionalSection = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > separateExplicitAssessmentSurvivesSectionDeduplicationAndSignedArchive(String, boolean, boolean) > [5] duration = "G9", sectionFirst = "true", additionalSection = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > leavingTheRouteInTheCockpitInvalidatesAlreadyIssuedExamAndRouteCapabilities() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > leavingTheRouteInTheCockpitInvalidatesAlreadyIssuedExamAndRouteCapabilities() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalFreeFallSimulationUsesTheSelectedLanguageAndOnlyTheExperimentalGoal(String) > [1] language = "de" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalFreeFallSimulationUsesTheSelectedLanguageAndOnlyTheExperimentalGoal(String) > [1] language = "de" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalFreeFallSimulationUsesTheSelectedLanguageAndOnlyTheExperimentalGoal(String) > [2] language = "en" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > optionalFreeFallSimulationUsesTheSelectedLanguageAndOnlyTheExperimentalGoal(String) > [2] language = "en" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > oldSectionCaptureWithOnlyTheOptionalAssessmentFinishesWithoutAcceptingAnEmptyNewPlan() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > oldSectionCaptureWithOnlyTheOptionalAssessmentFinishesWithoutAcceptingAnEmptyNewPlan() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > aFreshSessionWithALegacyOptOutCanUseAnOfferedAssessment() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aFreshSessionWithALegacyOptOutCanUseAnOfferedAssessment() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites(String, boolean) > [1] duration = "G8", strict = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites(String, boolean) > [1] duration = "G8", strict = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites(String, boolean) > [2] duration = "G9", strict = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites(String, boolean) > [2] duration = "G9", strict = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit(String, String) > [1] course = "GK", duration = "G8" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit(String, String) > [1] course = "GK", duration = "G8" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit(String, String) > [2] course = "LK", duration = "G9" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit(String, String) > [2] course = "LK", duration = "G9" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalMultiphasePassNeverRecognizesASuccessorOrAddsModelingCredit(String) > [1] storedIdentity = "OLD_ID" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalMultiphasePassNeverRecognizesASuccessorOrAddsModelingCredit(String) > [1] storedIdentity = "OLD_ID" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalMultiphasePassNeverRecognizesASuccessorOrAddsModelingCredit(String) > [2] storedIdentity = "LEGACY_ID" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > historicalMultiphasePassNeverRecognizesASuccessorOrAddsModelingCredit(String) > [2] storedIdentity = "LEGACY_ID" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionInTheCoachToolUsesThePersonalMapAndItsOwnAssessmentPlacement(String) > [1] duration = "G8" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionInTheCoachToolUsesThePersonalMapAndItsOwnAssessmentPlacement(String) > [1] duration = "G8" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionInTheCoachToolUsesThePersonalMapAndItsOwnAssessmentPlacement(String) > [2] duration = "G9" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > hessianMotionInTheCoachToolUsesThePersonalMapAndItsOwnAssessmentPlacement(String) > [2] duration = "G9" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > draftSupplementaryAssessmentCannotExemptASectionOrDisappearFromItsPlan() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > draftSupplementaryAssessmentCannotExemptASectionOrDisappearFromItsPlan() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > anObsoleteOrdinarySessionKeepsTeachingAndOffersOnlyTheReadOnlyCockpitHandoff() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > anObsoleteOrdinarySessionKeepsTeachingAndOffersOnlyTheReadOnlyCockpitHandoff() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > firstPartyDirectLaunchSelectsTheSectionAndBindsOnlyItsNewSession(String) > [1] locale = "de" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > firstPartyDirectLaunchSelectsTheSectionAndBindsOnlyItsNewSession(String) > [1] locale = "de" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > firstPartyDirectLaunchSelectsTheSectionAndBindsOnlyItsNewSession(String) > [2] locale = "en" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > firstPartyDirectLaunchSelectsTheSectionAndBindsOnlyItsNewSession(String) > [2] locale = "en" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > individualMeasurementAssessmentIsOutsideTheRegularUnitAndDoesNotExtendThePersonalObligations(String, String) > [1] duration = "G8", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > individualMeasurementAssessmentIsOutsideTheRegularUnitAndDoesNotExtendThePersonalObligations(String, String) > [1] duration = "G8", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > individualMeasurementAssessmentIsOutsideTheRegularUnitAndDoesNotExtendThePersonalObligations(String, String) > [2] duration = "G9", course = "GK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > individualMeasurementAssessmentIsOutsideTheRegularUnitAndDoesNotExtendThePersonalObligations(String, String) > [2] duration = "G9", course = "GK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > individualMeasurementAssessmentIsOutsideTheRegularUnitAndDoesNotExtendThePersonalObligations(String, String) > [3] duration = "G8", course = "LK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > individualMeasurementAssessmentIsOutsideTheRegularUnitAndDoesNotExtendThePersonalObligations(String, String) > [3] duration = "G8", course = "LK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > individualMeasurementAssessmentIsOutsideTheRegularUnitAndDoesNotExtendThePersonalObligations(String, String) > [4] duration = "G9", course = "LK" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > individualMeasurementAssessmentIsOutsideTheRegularUnitAndDoesNotExtendThePersonalObligations(String, String) > [4] duration = "G9", course = "LK" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [1] duration = "G8", stage = "SekII", course = "GK", expected = "20" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [1] duration = "G8", stage = "SekII", course = "GK", expected = "20" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [2] duration = "G9", stage = "SekII", course = "GK", expected = "20" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [2] duration = "G9", stage = "SekII", course = "GK", expected = "20" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [3] duration = "G8", stage = "CrossStage", course = "GK", expected = "19" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [3] duration = "G8", stage = "CrossStage", course = "GK", expected = "19" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [4] duration = "G9", stage = "CrossStage", course = "GK", expected = "19" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [4] duration = "G9", stage = "CrossStage", course = "GK", expected = "19" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [5] duration = "G8", stage = "SekII", course = "LK", expected = "20" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [5] duration = "G8", stage = "SekII", course = "LK", expected = "20" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [6] duration = "G9", stage = "SekII", course = "LK", expected = "20" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [6] duration = "G9", stage = "SekII", course = "LK", expected = "20" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [7] duration = "G8", stage = "CrossStage", course = "LK", expected = "19" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [7] duration = "G8", stage = "CrossStage", course = "LK", expected = "19" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [8] duration = "G9", stage = "CrossStage", course = "LK", expected = "19" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > supplementaryAssessmentRequiresExplicitSelectionInAnIndividualPlan(String, String, String, int) > [8] duration = "G9", stage = "CrossStage", course = "LK", expected = "19" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > normalStudyRecommendsTheFirstOpenExperimentalStepInItsChildAndParent(String, String, boolean) > [1] duration = "G8", course = "GK", parentFocus = "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > normalStudyRecommendsTheFirstOpenExperimentalStepInItsChildAndParent(String, String, boolean) > [1] duration = "G8", course = "GK", parentFocus = "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > normalStudyRecommendsTheFirstOpenExperimentalStepInItsChildAndParent(String, String, boolean) > [2] duration = "G9", course = "GK+LK", parentFocus = "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > normalStudyRecommendsTheFirstOpenExperimentalStepInItsChildAndParent(String, String, boolean) > [2] duration = "G9", course = "GK+LK", parentFocus = "true" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > twoCompletedAssignmentsAndTheirOptionalAssessmentsRemainSelectableAcrossPages() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > twoCompletedAssignmentsAndTheirOptionalAssessmentsRemainSelectableAcrossPages() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > currentHistoricalPassesCanCompleteALaterOrderWithoutIndividualPlanningCredits() STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > currentHistoricalPassesCanCompleteALaterOrderWithoutIndividualPlanningCredits() PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders(String) > [1] duration = "G8" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders(String) > [1] duration = "G8" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders(String) > [2] duration = "G9" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders(String) > [2] duration = "G9" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "active", future math plan "false", use generic resume "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "active", future math plan "false", use generic resume "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "completed", future math plan "false", use generic resume "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "completed", future math plan "false", use generic resume "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "unavailable", future math plan "false", use generic resume "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "unavailable", future math plan "false", use generic resume "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "active", future math plan "true", use generic resume "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "active", future math plan "true", use generic resume "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "completed", future math plan "true", use generic resume "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "completed", future math plan "true", use generic resume "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "unavailable", future math plan "true", use generic resume "false" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "unavailable", future math plan "true", use generic resume "false" PASSED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "unavailable", future math plan "true", use generic resume "true" STARTED
+
+ClaudeV1CompletionRouteIntegrationTest > aNamedMathSubjectAndItsPlanRemainSelectableAlongsidePhysics(String, boolean, boolean) > two subjects, unit "unavailable", future math plan "true", use generic resume "true" PASSED
+
+2026-11-24T11:43:44.064+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@575b5f7d, started on Tue Nov 24 11:29:33 CET 2026
+2026-11-24T11:43:44.086+01:00  INFO 2003619 --- [skillpilot-backend] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-24T11:43:44.087+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_session cascade 
+Hibernate: drop table if exists chat_session cascade 
+2026-11-24T11:43:44.088+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_start_code cascade 
+Hibernate: drop table if exists chat_start_code cascade 
+2026-11-24T11:43:44.088+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_binding_grant cascade 
+Hibernate: drop table if exists claude_binding_grant cascade 
+2026-11-24T11:43:44.089+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_connection cascade 
+Hibernate: drop table if exists claude_connection cascade 
+2026-11-24T11:43:44.089+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_pending_launch cascade 
+Hibernate: drop table if exists claude_pending_launch cascade 
+2026-11-24T11:43:44.090+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists curriculum_champion cascade 
+Hibernate: drop table if exists curriculum_champion cascade 
+2026-11-24T11:43:44.090+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_export_batch cascade 
+Hibernate: drop table if exists goal_feedback_export_batch cascade 
+2026-11-24T11:43:44.091+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_submission cascade 
+Hibernate: drop table if exists goal_feedback_submission cascade 
+2026-11-24T11:43:44.091+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner cascade 
+Hibernate: drop table if exists learner cascade 
+2026-11-24T11:43:44.092+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_card_state cascade 
+Hibernate: drop table if exists learner_card_state cascade 
+2026-11-24T11:43:44.092+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_client_state cascade 
+Hibernate: drop table if exists learner_client_state cascade 
+2026-11-24T11:43:44.092+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_copy_sources cascade 
+Hibernate: drop table if exists learner_copy_sources cascade 
+2026-11-24T11:43:44.092+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_goal_completion cascade 
+Hibernate: drop table if exists learner_goal_completion cascade 
+2026-11-24T11:43:44.093+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_learning_plan cascade 
+Hibernate: drop table if exists learner_learning_plan cascade 
+2026-11-24T11:43:44.094+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists mastery cascade 
+Hibernate: drop table if exists mastery cascade 
+2026-11-24T11:43:44.095+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_binding_grant cascade 
+Hibernate: drop table if exists openai_de_binding_grant cascade 
+2026-11-24T11:43:44.095+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_connection cascade 
+Hibernate: drop table if exists openai_de_connection cascade 
+2026-11-24T11:43:44.096+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_idempotency cascade 
+Hibernate: drop table if exists openai_de_idempotency cascade 
+2026-11-24T11:43:44.096+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_learning_session cascade 
+Hibernate: drop table if exists openai_de_learning_session cascade 
+2026-11-24T11:43:44.097+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_pending_launch cascade 
+Hibernate: drop table if exists openai_de_pending_launch cascade 
+2026-11-24T11:43:44.097+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_session_migration cascade 
+Hibernate: drop table if exists openai_de_session_migration cascade 
+2026-11-24T11:43:44.097+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists planned_goal cascade 
+Hibernate: drop table if exists planned_goal cascade 
+2026-11-24T11:43:44.097+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists verified_exam_pass cascade 
+Hibernate: drop table if exists verified_exam_pass cascade 
+2026-11-24T11:43:44.097+01:00 DEBUG 2003619 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists verified_exam_pass_credit_binding cascade 
+Hibernate: drop table if exists verified_exam_pass_credit_binding cascade 
+2026-11-24T11:43:44.101+01:00  INFO 2003619 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-24T11:43:44.103+01:00  INFO 2003619 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+> Task :test
+
+LearnerControllerIntegrationTest > learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() STARTED
+
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by net.bytebuddy.dynamic.loading.ClassInjector$UsingUnsafe$Dispatcher$CreationAction (file:/home/enpasos/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.18.11/8fcc3779ff85fae5164cd1b977798ca1af388e06/byte-buddy-1.18.11.jar)
+WARNING: Please consider reporting this to the maintainers of class net.bytebuddy.dynamic.loading.ClassInjector$UsingUnsafe$Dispatcher$CreationAction
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+
+> Task :test
+
+LearnerControllerIntegrationTest > learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() PASSED
+
+2026-11-24T11:44:33.039+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2026-11-24T11:44:33.040+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.server.servlet.context.AnnotationConfigServletWebServerApplicationContext@41a374be, started on Tue Nov 24 11:43:45 CET 2026
+2026-11-24T11:44:33.043+01:00  INFO 2048348 --- [skillpilot-backend] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-11-24T11:44:33.045+01:00  INFO 2048348 --- [skillpilot-backend] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-11-24T11:44:33.052+01:00  INFO 2048348 --- [skillpilot-backend] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-24T11:44:33.052+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_session cascade 
+Hibernate: drop table if exists chat_session cascade 
+2026-11-24T11:44:33.053+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_start_code cascade 
+Hibernate: drop table if exists chat_start_code cascade 
+2026-11-24T11:44:33.053+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_binding_grant cascade 
+Hibernate: drop table if exists claude_binding_grant cascade 
+2026-11-24T11:44:33.054+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_connection cascade 
+Hibernate: drop table if exists claude_connection cascade 
+2026-11-24T11:44:33.054+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_pending_launch cascade 
+Hibernate: drop table if exists claude_pending_launch cascade 
+2026-11-24T11:44:33.054+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists curriculum_champion cascade 
+Hibernate: drop table if exists curriculum_champion cascade 
+2026-11-24T11:44:33.055+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_export_batch cascade 
+Hibernate: drop table if exists goal_feedback_export_batch cascade 
+2026-11-24T11:44:33.055+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_submission cascade 
+Hibernate: drop table if exists goal_feedback_submission cascade 
+2026-11-24T11:44:33.056+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner cascade 
+Hibernate: drop table if exists learner cascade 
+2026-11-24T11:44:33.057+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_card_state cascade 
+Hibernate: drop table if exists learner_card_state cascade 
+2026-11-24T11:44:33.057+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_client_state cascade 
+Hibernate: drop table if exists learner_client_state cascade 
+2026-11-24T11:44:33.058+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_copy_sources cascade 
+Hibernate: drop table if exists learner_copy_sources cascade 
+2026-11-24T11:44:33.058+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_goal_completion cascade 
+Hibernate: drop table if exists learner_goal_completion cascade 
+2026-11-24T11:44:33.058+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_learning_plan cascade 
+Hibernate: drop table if exists learner_learning_plan cascade 
+2026-11-24T11:44:33.059+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists mastery cascade 
+Hibernate: drop table if exists mastery cascade 
+2026-11-24T11:44:33.059+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_binding_grant cascade 
+Hibernate: drop table if exists openai_de_binding_grant cascade 
+2026-11-24T11:44:33.059+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_connection cascade 
+Hibernate: drop table if exists openai_de_connection cascade 
+2026-11-24T11:44:33.060+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_idempotency cascade 
+Hibernate: drop table if exists openai_de_idempotency cascade 
+2026-11-24T11:44:33.060+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_learning_session cascade 
+Hibernate: drop table if exists openai_de_learning_session cascade 
+2026-11-24T11:44:33.060+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_pending_launch cascade 
+Hibernate: drop table if exists openai_de_pending_launch cascade 
+2026-11-24T11:44:33.060+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_session_migration cascade 
+Hibernate: drop table if exists openai_de_session_migration cascade 
+2026-11-24T11:44:33.061+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists planned_goal cascade 
+Hibernate: drop table if exists planned_goal cascade 
+2026-11-24T11:44:33.061+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists verified_exam_pass cascade 
+Hibernate: drop table if exists verified_exam_pass cascade 
+2026-11-24T11:44:33.061+01:00 DEBUG 2048348 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists verified_exam_pass_credit_binding cascade 
+Hibernate: drop table if exists verified_exam_pass_credit_binding cascade 
+2026-11-24T11:44:33.063+01:00  INFO 2048348 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-24T11:44:33.064+01:00  INFO 2048348 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+> Task :test
+
+CompositionViewServiceTest > learnerScopeRejectsUnrelatedExtraDimensionsInsteadOfUsingRepositorySubsetMatching() STARTED
+
+CompositionViewServiceTest > learnerScopeRejectsUnrelatedExtraDimensionsInsteadOfUsingRepositorySubsetMatching() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificCrossStagePhysicsViewOverDeWideFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificCrossStagePhysicsViewOverDeWideFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_rejectsUnsupportedProjectionRole(Path) STARTED
+
+CompositionViewServiceTest > findMatchingView_rejectsUnsupportedProjectionRole(Path) PASSED
+
+CompositionViewServiceTest > findMatchingView_fallsBackFromCombinedCourseProfileToLkCrossStageView() STARTED
+
+CompositionViewServiceTest > findMatchingView_fallsBackFromCombinedCourseProfileToLkCrossStageView() PASSED
+
+CompositionViewServiceTest > findMatchingView_matchesEveryCanonicalMathCompositionViewByOwnScope() STARTED
+
+CompositionViewServiceTest > findMatchingView_matchesEveryCanonicalMathCompositionViewByOwnScope() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificSekTwoMathViewOverDeWideFallback() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificSekTwoMathViewOverDeWideFallback() PASSED
+
+CompositionViewServiceTest > findMatchingView_matchesPhysicsCrossStageViewWithoutJurisdiction() STARTED
+
+CompositionViewServiceTest > findMatchingView_matchesPhysicsCrossStageViewWithoutJurisdiction() PASSED
+
+CompositionViewServiceTest > findRootScopeOptions_excludesPrerequisiteOnlyRootsAndKeepsDirectTargets(Path) STARTED
+
+CompositionViewServiceTest > findRootScopeOptions_excludesPrerequisiteOnlyRootsAndKeepsDirectTargets(Path) PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersNwSpecificCrossStageMathViewOverSekTwoFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersNwSpecificCrossStageMathViewOverSekTwoFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersNwSpecificCrossStageMathViewOverSekTwoFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersNwSpecificCrossStageMathViewOverSekTwoFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBbSpecificCrossStageMathViewOverSekTwoFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBbSpecificCrossStageMathViewOverSekTwoFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBbSpecificCrossStageMathViewOverSekTwoFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBbSpecificCrossStageMathViewOverSekTwoFallbackForLk() PASSED
+
+CompositionViewServiceTest > learnerScopePrefiltersStageBeforeChoosingTheMostSpecificAuthoredSubset() STARTED
+
+CompositionViewServiceTest > learnerScopePrefiltersStageBeforeChoosingTheMostSpecificAuthoredSubset() PASSED
+
+CompositionViewServiceTest > learnerScopeDoesNotInferSekTwoFromCourseProfile() STARTED
+
+CompositionViewServiceTest > learnerScopeDoesNotInferSekTwoFromCourseProfile() PASSED
+
+CompositionViewServiceTest > findMatchingView_matchesDeWideSekOneMathViewWithoutJurisdiction() STARTED
+
+CompositionViewServiceTest > findMatchingView_matchesDeWideSekOneMathViewWithoutJurisdiction() PASSED
+
+CompositionViewServiceTest > findViewById_prefersAuthoredMergedIdentityAndKeepsVirtualFallback(Path) STARTED
+
+CompositionViewServiceTest > findViewById_prefersAuthoredMergedIdentityAndKeepsVirtualFallback(Path) PASSED
+
+CompositionViewServiceTest > learnerScopeResolvesExplicitHessianSekTwoPhysicsGkView() STARTED
+
+CompositionViewServiceTest > learnerScopeResolvesExplicitHessianSekTwoPhysicsGkView() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBwSpecificCrossStageMathViewOverDeWideFallback() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBwSpecificCrossStageMathViewOverDeWideFallback() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersExactStageViewOverCrossStageFallback() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersExactStageViewOverCrossStageFallback() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersShSpecificCrossStageMathViewOverSekTwoFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersShSpecificCrossStageMathViewOverSekTwoFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersShSpecificCrossStageMathViewOverSekTwoFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersShSpecificCrossStageMathViewOverSekTwoFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBwSpecificSekOneMathViewOverDeWideFallback() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBwSpecificSekOneMathViewOverDeWideFallback() PASSED
+
+CompositionViewServiceTest > findMatchingView_mergesHessianSekTwoGkAndLkWithoutDuplicateQuarterStructures() STARTED
+
+CompositionViewServiceTest > findMatchingView_mergesHessianSekTwoGkAndLkWithoutDuplicateQuarterStructures() PASSED
+
+CompositionViewServiceTest > combinedSelectionAndVirtualLookupPreservePartialOrderFormatAndAcquisitionSemantics(Path) STARTED
+
+CompositionViewServiceTest > combinedSelectionAndVirtualLookupPreservePartialOrderFormatAndAcquisitionSemantics(Path) PASSED
+
+CompositionViewServiceTest > findMatchingView_mergesProjectionRolesWithTargetDominance(Path) STARTED
+
+CompositionViewServiceTest > findMatchingView_mergesProjectionRolesWithTargetDominance(Path) PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificSekTwoPhysicsViewOverDeWideFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificSekTwoPhysicsViewOverDeWideFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersNiSpecificSekTwoMathViewOverDeWideFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersNiSpecificSekTwoMathViewOverDeWideFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersNiSpecificSekTwoMathViewOverDeWideFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersNiSpecificSekTwoMathViewOverDeWideFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_mergesEveryAuthoredExactMathematicsGkLkPair() STARTED
+
+CompositionViewServiceTest > findMatchingView_mergesEveryAuthoredExactMathematicsGkLkPair() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificSekTwoMathViewOverDeWideFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificSekTwoMathViewOverDeWideFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificSekTwoMathViewOverDeWideFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificSekTwoMathViewOverDeWideFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_rejectsProjectionRoleOnLandscapeEntry(Path) STARTED
+
+CompositionViewServiceTest > findMatchingView_rejectsProjectionRoleOnLandscapeEntry(Path) PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificCrossStagePhysicsViewOverDeWideFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificCrossStagePhysicsViewOverDeWideFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBwSpecificSekTwoMathViewOverCrossStageFallback() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBwSpecificSekTwoMathViewOverCrossStageFallback() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersNwSpecificSekTwoMathViewOverDeWideFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersNwSpecificSekTwoMathViewOverDeWideFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersNwSpecificSekTwoMathViewOverDeWideFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersNwSpecificSekTwoMathViewOverDeWideFallbackForLk() PASSED
+
+CompositionViewServiceTest > learnerScopePrefersReviewedBrandenburgSekOneViewForCommittedJurisdictionAndDuration() STARTED
+
+CompositionViewServiceTest > learnerScopePrefersReviewedBrandenburgSekOneViewForCommittedJurisdictionAndDuration() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificCrossStageMathViewOverSekTwoFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificCrossStageMathViewOverSekTwoFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificCrossStageMathViewOverSekTwoFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificCrossStageMathViewOverSekTwoFallbackForLk() PASSED
+
+CompositionViewServiceTest > combinedSelectionRejectsUnsupportedAndMixedFormatEnvelopes(Path) STARTED
+
+CompositionViewServiceTest > combinedSelectionRejectsUnsupportedAndMixedFormatEnvelopes(Path) PASSED
+
+CompositionViewServiceTest > findMatchingView_matchesDeWideSekTwoGkMathViewWithoutJurisdiction() STARTED
+
+CompositionViewServiceTest > findMatchingView_matchesDeWideSekTwoGkMathViewWithoutJurisdiction() PASSED
+
+CompositionViewServiceTest > findMatchingView_matchesOverviewCrossStageView() STARTED
+
+CompositionViewServiceTest > findMatchingView_matchesOverviewCrossStageView() PASSED
+
+CompositionViewServiceTest > findMatchingView_matchesDeWideCrossStageViewWithoutJurisdiction() STARTED
+
+CompositionViewServiceTest > findMatchingView_matchesDeWideCrossStageViewWithoutJurisdiction() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificSekTwoPhysicsViewOverDeWideFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificSekTwoPhysicsViewOverDeWideFallbackForLk() PASSED
+
+CompositionViewServiceTest > findRootScopeOptions_preservesMergedViewIdentity() STARTED
+
+CompositionViewServiceTest > findRootScopeOptions_preservesMergedViewIdentity() PASSED
+
+CompositionViewServiceTest > combinedLegacySubjectPairsRetainSupportedEnvelopesWithoutRequiringNewHeaders() STARTED
+
+CompositionViewServiceTest > combinedLegacySubjectPairsRetainSupportedEnvelopesWithoutRequiringNewHeaders() PASSED
+
+CompositionViewServiceTest > findMatchingView_mergesProfileEquivalentStructuresWithoutChangingSingleViews(Path) STARTED
+
+CompositionViewServiceTest > findMatchingView_mergesProfileEquivalentStructuresWithoutChangingSingleViews(Path) PASSED
+
+CompositionViewServiceTest > findMatchingView_keepsHessianSekTwoMathLkScopeForBothDurationModels() STARTED
+
+CompositionViewServiceTest > findMatchingView_keepsHessianSekTwoMathLkScopeForBothDurationModels() PASSED
+
+CompositionViewServiceTest > findLearnerFacingFocusAncestors_followsTheSingleAuthoredContainsAndCompositionPath(Path) STARTED
+
+CompositionViewServiceTest > findLearnerFacingFocusAncestors_followsTheSingleAuthoredContainsAndCompositionPath(Path) PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersDurationSpecificScopeOverDurationAgnosticFallback(Path) STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersDurationSpecificScopeOverDurationAgnosticFallback(Path) PASSED
+
+CompositionViewServiceTest > findMatchingView_keepsHessianPhysicsStageTreeForEveryCourseAndDuration() STARTED
+
+CompositionViewServiceTest > findMatchingView_keepsHessianPhysicsStageTreeForEveryCourseAndDuration() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBbSpecificSekTwoMathViewOverDeWideFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBbSpecificSekTwoMathViewOverDeWideFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBbSpecificSekTwoMathViewOverDeWideFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBbSpecificSekTwoMathViewOverDeWideFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificCrossStageMathViewOverSekTwoFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificCrossStageMathViewOverSekTwoFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificCrossStageMathViewOverSekTwoFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBySpecificCrossStageMathViewOverSekTwoFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificSekTwoMathLkViewOverDeWideFallback() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersHeSpecificSekTwoMathLkViewOverDeWideFallback() PASSED
+
+CompositionViewServiceTest > findMatchingView_fallsBackFromCombinedCourseProfileToLkSekTwoView() STARTED
+
+CompositionViewServiceTest > findMatchingView_fallsBackFromCombinedCourseProfileToLkSekTwoView() PASSED
+
+CompositionViewServiceTest > learnerScopeChoosesTheMostSpecificReviewedSekOneSubset() STARTED
+
+CompositionViewServiceTest > learnerScopeChoosesTheMostSpecificReviewedSekOneSubset() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersNiSpecificCrossStageMathViewOverSekTwoFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersNiSpecificCrossStageMathViewOverSekTwoFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersNiSpecificCrossStageMathViewOverSekTwoFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersNiSpecificCrossStageMathViewOverSekTwoFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_matchesOverviewExactSekTwoView() STARTED
+
+CompositionViewServiceTest > findMatchingView_matchesOverviewExactSekTwoView() PASSED
+
+CompositionViewServiceTest > findRootScopeOptions_returnsResolvableSyntheticRootForAuthoredView() STARTED
+
+CompositionViewServiceTest > findRootScopeOptions_returnsResolvableSyntheticRootForAuthoredView() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersShSpecificSekTwoMathViewOverDeWideFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersShSpecificSekTwoMathViewOverDeWideFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersShSpecificSekTwoMathViewOverDeWideFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersShSpecificSekTwoMathViewOverDeWideFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBeSpecificCrossStageMathViewOverSekTwoFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBeSpecificCrossStageMathViewOverSekTwoFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBeSpecificCrossStageMathViewOverSekTwoFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBeSpecificCrossStageMathViewOverSekTwoFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBeSpecificSekTwoMathViewOverDeWideFallbackForGk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBeSpecificSekTwoMathViewOverDeWideFallbackForGk() PASSED
+
+CompositionViewServiceTest > findMatchingView_prefersBeSpecificSekTwoMathViewOverDeWideFallbackForLk() STARTED
+
+CompositionViewServiceTest > findMatchingView_prefersBeSpecificSekTwoMathViewOverDeWideFallbackForLk() PASSED
+
+CompositionViewServiceTest > findMatchingView_matchesPhysicsExactSekTwoView() STARTED
+
+CompositionViewServiceTest > findMatchingView_matchesPhysicsExactSekTwoView() PASSED
+
+CompositionViewServiceTest > findLearnerFacingFocusAncestors_directGoalEntrySkipsCanonicalParentsAndPrerequisiteOnlyPaths(Path) STARTED
+
+CompositionViewServiceTest > findLearnerFacingFocusAncestors_directGoalEntrySkipsCanonicalParentsAndPrerequisiteOnlyPaths(Path) PASSED
+
+ExamLearningScopeIntegrationTest > reorderingTheSameFocusDoesNotWriteAnotherLearnerStateRevision() STARTED
+
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+
+> Task :test
+
+ExamLearningScopeIntegrationTest > reorderingTheSameFocusDoesNotWriteAnotherLearnerStateRevision() PASSED
+
+ExamLearningScopeIntegrationTest > futurePreparationHasRealScopeAndExplicitStartButNoPrematureAutomaticQuota() STARTED
+
+ExamLearningScopeIntegrationTest > futurePreparationHasRealScopeAndExplicitStartButNoPrematureAutomaticQuota() PASSED
+
+ExamLearningScopeIntegrationTest > savingAndReadingANewExamPreserveTheCurrentGoalUntilExplicitActivation() STARTED
+
+ExamLearningScopeIntegrationTest > savingAndReadingANewExamPreserveTheCurrentGoalUntilExplicitActivation() PASSED
+
+ExamLearningScopeIntegrationTest > explicitPhysicsPreparationFromMathReturnsToPhysicsWithoutWritingMathResults() STARTED
+
+ExamLearningScopeIntegrationTest > explicitPhysicsPreparationFromMathReturnsToPhysicsWithoutWritingMathResults() PASSED
+
+ExamLearningScopeIntegrationTest > receivingAnOpeningForStrictExamPreparationNeverCompletesItsOutsidePrerequisites() STARTED
+
+ExamLearningScopeIntegrationTest > receivingAnOpeningForStrictExamPreparationNeverCompletesItsOutsidePrerequisites() PASSED
+
+ExamLearningScopeIntegrationTest > ordinaryExamPreparationReceivesUnitOpeningBeforeTwelveSelectedGoalsWithoutOutsideMastery() STARTED
+
+ExamLearningScopeIntegrationTest > ordinaryExamPreparationReceivesUnitOpeningBeforeTwelveSelectedGoalsWithoutOutsideMastery() PASSED
+
+ExamLearningScopeIntegrationTest > fullyInactivePlanHasNoExamScopeAndOffersNoUnselectedSubjectFallback() STARTED
+
+ExamLearningScopeIntegrationTest > fullyInactivePlanHasNoExamScopeAndOffersNoUnselectedSubjectFallback() PASSED
+
+ExamLearningScopeIntegrationTest > weeklyAutomaticHandoffAfterTheFirstExamDateKeepsItsCompleteBoundScope() STARTED
+
+ExamLearningScopeIntegrationTest > weeklyAutomaticHandoffAfterTheFirstExamDateKeepsItsCompleteBoundScope() PASSED
+
+ExamLearningScopeIntegrationTest > datedPreparationReceivesItsOpeningWithoutCountingItOrLosingTheSelectedTargets() STARTED
+
+ExamLearningScopeIntegrationTest > datedPreparationReceivesItsOpeningWithoutCountingItOrLosingTheSelectedTargets() PASSED
+
+ExamLearningScopeIntegrationTest > anEarlierOpeningScheduledForAnotherExamCannotReplaceTheCurrentExamTarget() STARTED
+
+ExamLearningScopeIntegrationTest > anEarlierOpeningScheduledForAnotherExamCannotReplaceTheCurrentExamTarget() PASSED
+
+ExamLearningScopeIntegrationTest > strictExamFocusKeepsOutsidePrerequisitesAndAllNineTopicsAndThreeTasks() STARTED
+
+ExamLearningScopeIntegrationTest > strictExamFocusKeepsOutsidePrerequisitesAndAllNineTopicsAndThreeTasks() PASSED
+
+ExamLearningScopeIntegrationTest > milestoneWithoutPreparationStartsExplicitlyInsideItsSelectionWithoutCreatingDueWork() STARTED
+
+ExamLearningScopeIntegrationTest > milestoneWithoutPreparationStartsExplicitlyInsideItsSelectionWithoutCreatingDueWork() PASSED
+
+ExamLearningScopeIntegrationTest > dateChangeAndGenericResumeRemainBoundToFirstExamAndNeverUnionTheSecond() STARTED
+
+ExamLearningScopeIntegrationTest > dateChangeAndGenericResumeRemainBoundToFirstExamAndNeverUnionTheSecond() PASSED
+
+ExamLearningScopeIntegrationTest > blockedPhysicsExamDoesNotResumeAnOrdinaryMathPlanButAllowsAnExplicitSubjectSwitch() STARTED
+
+ExamLearningScopeIntegrationTest > blockedPhysicsExamDoesNotResumeAnOrdinaryMathPlanButAllowsAnExplicitSubjectSwitch() PASSED
+
+ExamLearningScopeIntegrationTest > oneSelectedChildTargetReceivesParentThenChildOpeningWithoutChangingTheExamScope() STARTED
+
+ExamLearningScopeIntegrationTest > oneSelectedChildTargetReceivesParentThenChildOpeningWithoutChangingTheExamScope() PASSED
+
+ExamLearningScopeIntegrationTest > automaticHandoffKeepsCompleteMultiRootExamFocusAndStopsAtTheDatedQuota() STARTED
+
+ExamLearningScopeIntegrationTest > automaticHandoffKeepsCompleteMultiRootExamFocusAndStopsAtTheDatedQuota() PASSED
+
+2026-11-24T11:45:22.670+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@60d6fdd4, started on Tue Nov 24 11:44:43 CET 2026
+2026-11-24T11:45:22.679+01:00  INFO 2049751 --- [skillpilot-backend] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-11-24T11:45:22.680+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_session cascade 
+Hibernate: drop table if exists chat_session cascade 
+2026-11-24T11:45:22.681+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists chat_start_code cascade 
+Hibernate: drop table if exists chat_start_code cascade 
+2026-11-24T11:45:22.682+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_binding_grant cascade 
+Hibernate: drop table if exists claude_binding_grant cascade 
+2026-11-24T11:45:22.682+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_connection cascade 
+Hibernate: drop table if exists claude_connection cascade 
+2026-11-24T11:45:22.682+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists claude_pending_launch cascade 
+Hibernate: drop table if exists claude_pending_launch cascade 
+2026-11-24T11:45:22.683+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists curriculum_champion cascade 
+Hibernate: drop table if exists curriculum_champion cascade 
+2026-11-24T11:45:22.683+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_export_batch cascade 
+Hibernate: drop table if exists goal_feedback_export_batch cascade 
+2026-11-24T11:45:22.683+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists goal_feedback_submission cascade 
+Hibernate: drop table if exists goal_feedback_submission cascade 
+2026-11-24T11:45:22.683+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner cascade 
+Hibernate: drop table if exists learner cascade 
+2026-11-24T11:45:22.685+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_card_state cascade 
+Hibernate: drop table if exists learner_card_state cascade 
+2026-11-24T11:45:22.685+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_client_state cascade 
+Hibernate: drop table if exists learner_client_state cascade 
+2026-11-24T11:45:22.685+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_copy_sources cascade 
+Hibernate: drop table if exists learner_copy_sources cascade 
+2026-11-24T11:45:22.685+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_goal_completion cascade 
+Hibernate: drop table if exists learner_goal_completion cascade 
+2026-11-24T11:45:22.685+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists learner_learning_plan cascade 
+Hibernate: drop table if exists learner_learning_plan cascade 
+2026-11-24T11:45:22.685+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists mastery cascade 
+Hibernate: drop table if exists mastery cascade 
+2026-11-24T11:45:22.685+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_binding_grant cascade 
+Hibernate: drop table if exists openai_de_binding_grant cascade 
+2026-11-24T11:45:22.686+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_connection cascade 
+Hibernate: drop table if exists openai_de_connection cascade 
+2026-11-24T11:45:22.686+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_idempotency cascade 
+Hibernate: drop table if exists openai_de_idempotency cascade 
+2026-11-24T11:45:22.686+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_learning_session cascade 
+Hibernate: drop table if exists openai_de_learning_session cascade 
+2026-11-24T11:45:22.686+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_pending_launch cascade 
+Hibernate: drop table if exists openai_de_pending_launch cascade 
+2026-11-24T11:45:22.686+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists openai_de_session_migration cascade 
+Hibernate: drop table if exists openai_de_session_migration cascade 
+2026-11-24T11:45:22.686+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists planned_goal cascade 
+Hibernate: drop table if exists planned_goal cascade 
+2026-11-24T11:45:22.686+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists verified_exam_pass cascade 
+Hibernate: drop table if exists verified_exam_pass cascade 
+2026-11-24T11:45:22.686+01:00 DEBUG 2049751 --- [skillpilot-backend] [ionShutdownHook] org.hibernate.SQL                        : drop table if exists verified_exam_pass_credit_binding cascade 
+Hibernate: drop table if exists verified_exam_pass_credit_binding cascade 
+2026-11-24T11:45:22.689+01:00  INFO 2049751 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-11-24T11:45:22.691+01:00  INFO 2049751 --- [skillpilot-backend] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+> Task :test
+
+UnitLearningMaterialServiceTest > studyRecommendationsBindTwoIndependentChoicesInTheSelectedViews(Path) STARTED
+
+UnitLearningMaterialServiceTest > studyRecommendationsBindTwoIndependentChoicesInTheSelectedViews(Path) PASSED
+
+UnitLearningMaterialServiceTest > loadsOnlyTheLocalizedTitlePromptAndAnyAuthoredEvidenceCriteria() STARTED
+
+UnitLearningMaterialServiceTest > loadsOnlyTheLocalizedTitlePromptAndAnyAuthoredEvidenceCriteria() PASSED
+
+UnitLearningMaterialServiceTest > versionTwoBindsTheExactOpeningAndSharedSceneForActualViews(Path) STARTED
+
+UnitLearningMaterialServiceTest > versionTwoBindsTheExactOpeningAndSharedSceneForActualViews(Path) PASSED
+
+UnitLearningMaterialServiceTest > guidedStudyOrderBelongsToTheSelectedViewsAndEndsAtTheirOwnAssessment(Path) STARTED
+
+UnitLearningMaterialServiceTest > guidedStudyOrderBelongsToTheSelectedViewsAndEndsAtTheirOwnAssessment(Path) PASSED
+
+UnitLearningMaterialServiceTest > resolvesTheSameIntroductionAndGoalReferencesOnlyForMatchingPersonalViews() STARTED
+
+UnitLearningMaterialServiceTest > resolvesTheSameIntroductionAndGoalReferencesOnlyForMatchingPersonalViews() PASSED
+
+UnitLearningMaterialServiceTest > anUnknownViewOrRepeatedOrRequiredAdditionalGoalInvalidatesTheSectionPolicy(Path) STARTED
+
+UnitLearningMaterialServiceTest > anUnknownViewOrRepeatedOrRequiredAdditionalGoalInvalidatesTheSectionPolicy(Path) PASSED
+
+UnitLearningMaterialServiceTest > catalogSupportsLegacyAndVersionedMaterialWithOptionalCardsAndRejectsUnknownVersions(Path) STARTED
+
+UnitLearningMaterialServiceTest > catalogSupportsLegacyAndVersionedMaterialWithOptionalCardsAndRejectsUnknownVersions(Path) PASSED
+
+UnitLearningMaterialServiceTest > changingOrRemovingARequiredPartDisablesTheVoluntarySectionException(Path) STARTED
+
+UnitLearningMaterialServiceTest > changingOrRemovingARequiredPartDisablesTheVoluntarySectionException(Path) PASSED
+
+UnitLearningMaterialServiceTest > durationNeutralCrossStageOffersLearningMaterialsWhileTheFourPartAwardUsesItsOwnViews() STARTED
+
+UnitLearningMaterialServiceTest > durationNeutralCrossStageOffersLearningMaterialsWhileTheFourPartAwardUsesItsOwnViews() PASSED
+
+215 tests completed, 6 failed
+
+> Task :test FAILED
+
+[Incubating] Problems report is available at: file:///home/enpasos/projects/skillpilot-e1-nachweise/backend/build/reports/problems/problems-report.html
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':test'.
+> There were failing tests. See the report at: file:///home/enpasos/projects/skillpilot-e1-nachweise/backend/build/reports/tests/test/index.html
+
+* Try:
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 16m 32s
+6 actionable tasks: 4 executed, 2 up-to-date
