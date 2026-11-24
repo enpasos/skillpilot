@@ -1,0 +1,130 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "reviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "originalDecision": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "revise",
+              "reject",
+              "not_an_assessment"
+            ]
+          },
+          "candidateDecision": {
+            "type": "string",
+            "enum": [
+              "accept",
+              "revise",
+              "reject",
+              "not_an_assessment"
+            ]
+          },
+          "scientificAndNumericalReview": {
+            "type": "string"
+          },
+          "fullPreparationReview": {
+            "type": "string"
+          },
+          "directCoverageReview": {
+            "type": "string"
+          },
+          "falsePassCheck": {
+            "type": "string"
+          },
+          "languageReview": {
+            "type": "string"
+          },
+          "recommendedRequires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedCoveredGoalIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedPassingPoints": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "requiredCorrections": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scopeLimitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "originalDecision",
+          "candidateDecision",
+          "scientificAndNumericalReview",
+          "fullPreparationReview",
+          "directCoverageReview",
+          "falsePassCheck",
+          "languageReview",
+          "recommendedRequires",
+          "recommendedCoveredGoalIds",
+          "recommendedPassingPoints",
+          "requiredCorrections",
+          "scopeLimitations"
+        ]
+      }
+    },
+    "ffxHesseOfferDecision": {
+      "type": "string",
+      "enum": [
+        "accept",
+        "revise",
+        "reject"
+      ]
+    },
+    "ffxHesseOfferReason": {
+      "type": "string"
+    },
+    "directCoverageVersusPlanningCredit": {
+      "type": "string"
+    },
+    "crossGoalFindings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "globalLimitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "reviews",
+    "ffxHesseOfferDecision",
+    "ffxHesseOfferReason",
+    "directCoverageVersusPlanningCredit",
+    "crossGoalFindings",
+    "globalLimitations"
+  ]
+}

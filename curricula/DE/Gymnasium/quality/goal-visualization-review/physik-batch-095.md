@@ -1,0 +1,5 @@
+# Physik · Bildreview 095 · Fallvergleich bei gleichen Anfangsbedingungen
+
+Am 24. November 2026 wurde das vorhandene Bild zum präzisierten deutschen und englischen Lernziel nochmals geprüft. **Entscheidung KEEP.** Die beiden Kammern zeigen dieselbe Startlinie. Die Feder in Luft ist zum gemeinsamen Beobachtungszeitpunkt noch deutlich über der Metallkugel. In der Vakuumkammer haben Feder und Metallkugel dieselbe Höhe. Die Beschriftung „Gleiche Fallzeit“ steht unmittelbar unter der Vakuumkammer. Kammerbezeichnungen, Gegenstände und getrennte Bildunterschriften sind in der 360-Pixel-Fassung erkennbar. Der Alternativtext beschreibt die beiden Fälle getrennt.
+
+Das Ziel bindet den Vergleich ausdrücklich an gleiche Anfangsbedingungen. Die Darstellung zeigt den Vergleich nach dem Loslassen. Das Bild aus [Batch 092](physik-batch-092.md) bleibt in Gebrauch. Anbieter und damalige Prompt- und Korrekturhistorie sind dort dokumentiert. Die JPEG-Datei misst 1600 × 900 px. SHA-256 `9d711525f938cda221ce2c4c63d0d73c516bc781fe27d61cac9857fd8374d355`.

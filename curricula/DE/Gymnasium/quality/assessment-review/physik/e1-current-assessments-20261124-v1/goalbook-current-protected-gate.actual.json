@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "status": "EXACT_CURRENT_GUARDS_PASS_PROTECTED_STAGE_GATE_REMAINS_OPEN",
+  "checkedAt": "2026-11-24T05:07:50.608885+00:00",
+  "command": "PATH=<pinned-node20>:$PATH app/node_modules/.bin/tsx app/scripts/testPhysicsGoalBookInputs.ts",
+  "exitCode": 1,
+  "actualLog": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/goalbook-current-protected-gate.actual.log",
+    "sha256": "4310350159b42c3b0910e72a3003d444faaa3952c59e7dd944000374558c0e82"
+  },
+  "currentTestSource": {
+    "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+    "sha256": "be7e6197f7ddb53664cf5d86f377027f10ca8adf593b152fba1fc702caec9c3e"
+  },
+  "firstFailure": {
+    "line": 3376,
+    "guard": "current acquisition routes must retain the protected Physics quality floor",
+    "scope": "canonical-physics-sek1",
+    "rule": "CQR-104",
+    "actual": "fail",
+    "required": "pass"
+  },
+  "passedBeforeGate": [
+    "Exact dual-current exam/review payloads and native full prerequisite bindings",
+    "All six actual blind review session hashes/model/ultra/exit0/disjoint-thread records",
+    "Fresh current semantic-atomicity490 and kind ledger863",
+    "Atlas485→489 and canonical profile420→424 exact four-ID additions/full old-set conservation",
+    "Current216 distinct prerequisite payloads including final LAWS/BES asset and FALL body successors",
+    "Source-stage FFX HE+SN and D′SN+ST scope/current source/preparation bindings",
+    "Current FFX APV201 exact override and reviewed payload",
+    "Reviewed stronger NVX/DFD/ZB omission gates and immutable original body proof"
+  ],
+  "unchangedQualityFloor": true,
+  "unexecutedAfterFirstFailure": "Later stage-specific count/profile/gate assertions remain pending; this run is not a full GoalBook pass.",
+  "separateOpenGate": "MP has truthful empty full-goal coverage and CQR-203warn; no coverage invented or quality floor lowered.",
+  "supersedesOnlyPriorGoalBookProgressStatus": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-verification.actual.json",
+    "sha256": "54fbf433c68baaff53eddd62e3f1b667bf189ffb008a7b2920ad1c1c6c189b0f",
+    "meaning": "The fast standalone verification remains PASS. Its then-pending FALL A status is superseded by this new run; source-stage floor is still open."
+  },
+  "acceptanceLimits": "Automated checks only. No new learner assessment, human/host acceptance, planning credit, learner-result transfer or integrated mainCI claim."
+}

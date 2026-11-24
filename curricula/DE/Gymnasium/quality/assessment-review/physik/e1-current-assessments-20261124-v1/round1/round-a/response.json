@@ -1,0 +1,233 @@
+{
+  "reviews": [
+    {
+      "goalId": "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+      "originalDecision": "accept",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "The versions are identical and correct. Horizontal speed 1.60 m/s and downward acceleration 10 m/s² fit all readings within the supplied ±0.01 m limits. They give flight time 0.4472 s, range 0.7155 m and doubled-speed range 1.4311 m. Using 9.81 m/s² also fits and gives 0.4515 s, 0.7224 m and 1.4449 m. These are model predictions, not additional measurements.",
+      "fullPreparationReview": "The current prerequisite 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 and its recursive free-fall, motion-law, graph and uncertainty preparation are sufficient. Comparing the given reading limits does not require independently choosing uncertainties. No vector prerequisite is needed.",
+      "directCoverageReview": "There are no directly credited whole goals. The task assesses quantitative landing prediction and explanation through the two simultaneous component motions; prerequisite use supplies no additional whole-goal coverage.",
+      "falsePassCheck": "With the hierarchical model rows, 15/18 requires at least two points in each model row because all other rows total at most 13. Omitting quantitative shared-time composition limits B2 and B3 together to four points, producing at most 14. A pass can omit some doubled-speed extension evidence, for example 5+5+4+1=15; it should not certify complete mastery of that extension.",
+      "languageReview": "DE and EN preserve the data, reading limits, exact supplied quantities, scoring and physical explanations.",
+      "recommendedRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
+      ],
+      "recommendedCoveredGoalIds": [],
+      "recommendedPassingPoints": 15,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "Acceptance concerns the stated prediction objective and practice score, not every extension mark or experimental execution."
+      ]
+    },
+    {
+      "goalId": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+      "originalDecision": "accept",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "Both versions correctly use τ=t−2 s: v=−1+2τ and s=5−τ+τ² in SI units. Reversal occurs at 2.5 s and 4.75 m; subsequent positions are 5.00 and 7.00 m. Signed velocity areas −0.25 and +2.25 m give displacement +2.00 m and distance 2.50 m. The acceleration area gives +4 m/s. The prediction lies inside the supplied [6.98,7.08] m control interval. Braking stops at 3 s and 9 m; continued acceleration gives v(5)=−4 m/s and s(5)=5 m. Remaining at rest instead requires a=v=0 and s=9 m.",
+      "fullPreparationReview": "262f807a-30d0-503e-986f-856cbd048e8e and its complete recursive context provide motion laws, constant acceleration, signed areas, graph interpretation and the necessary mathematics. Explaining why continued negative acceleration contradicts remaining at rest is a defensible kinematic performance; no formal force calculation or additional general model-limits prerequisite is necessary.",
+      "directCoverageReview": "The sole claim e4b38061-1f28-43ad-8371-a3e7c0e81856 is supported through explanations and consistent t-s, t-v and t-a representations in two constant-acceleration situations. No additional whole-goal credit follows.",
+      "falsePassCheck": "At 17/20 every cumulative D1–D4 row must reach level two: the other three rows contribute at most 15. Therefore consistent cart graphs, signed-area interpretation, braking laws and graphs, and the physical model-limit explanation cannot be omitted. A 5+5+5+1 response fails.",
+      "languageReview": "The unchanged DE/EN tasks, solutions and cumulative rubric are materially equivalent, including signs, shifted time origin, control interval and post-stop condition.",
+      "recommendedRequires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "recommendedCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "recommendedPassingPoints": 17,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "The supplied control uncertainty is interpreted, not independently determined.",
+        "No learner calibration or practical execution was reviewed."
+      ]
+    },
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "originalDecision": "accept",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "Both versions are unchanged and numerically correct: reversal at 2.5 s and 4.75 m; s(3)=5 m and s(4)=7 m; acceleration area +4 m/s; signed velocity areas −0.25 and +2.25 m; displacement +2 m and distance 2.50 m. The control interval is [6.98,7.08] m. Braking stops at 3 s after 9 m. Continuing the acceleration produces v(5)=−4 m/s and s(5)=5 m, contradicting the stipulated remaining-at-rest motion rather than demonstrating that reverse motion is universally impossible.",
+      "fullPreparationReview": "262f807a-30d0-503e-986f-856cbd048e8e and its full recursive context supply the laws, graph relationships, signed areas and arithmetic. The physical validity explanation can be made from the continued change of velocity after zero; a quantitative Newtonian calculation is not required.",
+      "directCoverageReview": "The sole directly credited goal e4b38061-1f28-43ad-8371-a3e7c0e81856 is evidenced through the constant-acceleration explanations and all three representations. Applying prerequisite mathematics or interpreting the supplied uncertainty establishes no other whole goals.",
+      "falsePassCheck": "The 20/20 predicate requires all five conjunctive rubric rows. Omitting a graph family, area interpretation, braking model or physical validity explanation prevents passing. No compensating-score false pass was found under those full-row requirements.",
+      "languageReview": "DE and EN task, solution and rubric demands agree. Both languages request physical justification without requiring a numerical force computation.",
+      "recommendedRequires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "recommendedCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "recommendedPassingPoints": 20,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "The strict full-mark threshold has not been empirically calibrated.",
+        "Acceptance assumes full marks require every contribution named in each rubric row."
+      ]
+    },
+    {
+      "goalId": "6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "The unchanged task and solutions are scientifically correct. They give vx=2.00 m/s, y=1.25−5t² m, vy=−10t m/s and ay=−10 m/s²; impact at 0.500 s, range 1.00 m and impact components +2.00 and −5.00 m/s. The trajectory is y=1.25 m−(1.25 m⁻¹)x². Doubling horizontal speed preserves flight time and gives 2.00 m. The drag discussion correctly rejects guaranteed equal arrival times without claiming a universal arrival order. The table explicitly contains constructed model data.",
+      "fullPreparationReview": "The complete recursive paths from 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 and d6dc0e02-831d-4894-a61a-852bcc74f147 supply the required projectile motion, free fall, laws, graph mathematics and idealization reasoning. Both current prerequisites are justified. The explicitly scalar work needs no additional vector prerequisite.",
+      "directCoverageReview": "Task 6 elicits the directly claimed goal d6dc0e02-831d-4894-a61a-852bcc74f147, but the current passing predicate does not require its evidence. Retaining this claim requires a non-compensable gate on the existing conceptual criteria. Constructed data do not establish experimental projectile-motion coverage.",
+      "falsePassCheck": "Leaving all of task 6 blank still permits 30/36, exceeding 22. This omits point-particle justification, drag assumptions and prediction limits while passing the sole claimed target. Requiring merely some task-6 points would still allow its distinct essential facets to compensate for one another.",
+      "languageReview": "DE and EN tasks, solutions and all 36 criteria are materially equivalent, including model-data provenance, signed axes and conditional conclusions about drag.",
+      "recommendedRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedCoveredGoalIds": [
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedPassingPoints": 22,
+      "requiredCorrections": [
+        "For 6ea3fb3c-abdc-568f-ab13-97c36dc274e4, retain 22/36 and the MOD claim only with an explicit bilingual non-compensable pass gate requiring the existing evidence in horizontal-projection-shared-time-v1-6-1, horizontal-projection-shared-time-v1-6-2, horizontal-projection-shared-time-v1-6-4 and horizontal-projection-shared-time-v1-6-6. This requires justified point-particle treatment, the negligible-drag condition linked to the motion laws, and an actual prediction-limit explanation without enlarging the task."
+      ],
+      "scopeLimitations": [
+        "Recommended retained coverage is conditional on implementing the evidence gate; neither exact supplied version contains it.",
+        "The written model task establishes no personal experimental performance."
+      ]
+    },
+    {
+      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "originalDecision": "revise",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "Phase means are 1.333…, 0 and −2.0 m/s². Phase I is not uniformly accelerated: successive interval means are 1.6, 1.6 and 0.8 m/s². The separately prescribed piecewise-linear area calculation correctly gives 55.2 m. Independently, flight time is 0.5048187773 s and nominal range 4.038550219 m. Exact uncertainty endpoints are 3.703586463 and 4.385513974 m. The original [3.71,4.39] m excludes allowed values; candidate DE and EN correctly report outward-rounded [3.70,4.39] m. The supplied uncertainties define the requested endpoint calculation; learners do not determine them.",
+      "fullPreparationReview": "Original VEC 0fee53f2-1c02-5b12-9b6c-aa9fa462d921 imports unused vector and reference-frame preparation while omitting explicit model-limits preparation. Candidate WW 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 recursively supplies projectile motion, free fall, acceleration, graph areas, trapezoid mathematics and uncertainty notation. MOD d6dc0e02-831d-4894-a61a-852bcc74f147 is necessary for the existing physically justified/reflected model-limits performance in task 5 and s5. Both candidate prerequisites are justified; no further requirement is needed for the prescribed endpoint arithmetic.",
+      "directCoverageReview": "All three original whole-goal claims fail. 68c90ba6-c438-463c-9a53-cf61062d416a has no frame choice or relative-velocity composition. 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 has no experimental investigation or x-y trajectory representation. f6b1d812-ce8b-5852-b417-e6c29b533c7a is not established by propagating supplied bounds without choosing suitable measurement uncertainties and recording measured values with them. Candidate correctly removes all three claims.",
+      "falsePassCheck": "Even 30/30 would not establish the missing whole-goal facets. At 18/30 a learner can omit s3 entirely and obtain 23, or omit s5 and obtain 26. Candidate acceptance therefore concerns its fixed practice score with no directly credited whole goals; it does not certify every section or complete model-validation mastery.",
+      "languageReview": "Original lacks English task and solution bodies. Candidate supplies equivalent full bodies, preserving phase boundaries, interpolation, nominal-value instructions, allocations and corrected numerics. The common rubric remains German. Its requirement for reflected limits must govern scoring: an unexplained copied assumption is insufficient.",
+      "recommendedRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedCoveredGoalIds": [],
+      "recommendedPassingPoints": 18,
+      "requiredCorrections": [
+        "Original only: replace 0fee53f2-1c02-5b12-9b6c-aa9fa462d921 with 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 and d6dc0e02-831d-4894-a61a-852bcc74f147; remove coverage claims 68c90ba6-c438-463c-9a53-cf61062d416a, 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 and f6b1d812-ce8b-5852-b417-e6c29b533c7a; add the candidate English bodies and use its unrounded endpoint calculation and [3.70,4.39] m interval."
+      ],
+      "scopeLimitations": [
+        "Candidate acceptance is limited to the fixed practice assessment without whole-goal coverage.",
+        "The solution's model-limit bullets identify topics; they do not override s5's requirement for physical justification."
+      ]
+    },
+    {
+      "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "The unchanged numerical stopping calculations are correct: reaction distances 13.8889 and 27.7778 m, and stopping distances 27.8889 and 83.7778 m. However, own stopping distance does not uniquely determine following distance without assumptions about the leading vehicle. The intended stationary-obstacle or equivalent stopping-clearance criterion needs clarification. Projectile data support an approximately quadratic fall law; merely calling growth superproportional does not establish a parabola. For example, fall-distance/t² is approximately 5.00, 5.00 and 4.89 m/s². No reading intervals are supplied and none should be invented.",
+      "fullPreparationReview": "The current prerequisites 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2, 4a2bf015-052b-4af0-aed7-324259fa1a8a and d6dc0e02-831d-4894-a61a-852bcc74f147, including their recursive contexts, adequately prepare the video-analysis description, motion models, unit conversion, traffic-model assessment and model limit. No additional prerequisite is necessary.",
+      "directCoverageReview": "Remove 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2: describing video analysis of supplied data does not establish that goal's experimental investigation, even at full marks. 4a2bf015-052b-4af0-aed7-324259fa1a8a can remain only after the distance criterion is clarified and passing requires the actual traffic assessment. A conservative repair under the existing coarse rows is 16/16 with conjunctive full-row scoring.",
+      "falsePassCheck": "At 10/16, eight marks in A plus two partial marks in B can pass without evaluating the safety-distance statement. Deleting coverage alone would leave this central performance unprotected. At 16/16, requiring all existing contributions for each full eight-mark row closes that route. It still cannot create the absent experimental WW evidence.",
+      "languageReview": "English title and description exist, but full English task and solution bodies are absent, so bilingual equivalence cannot be accepted. Equivalent English task, solution and scoring wording are needed.",
+      "recommendedRequires": [
+        "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedCoveredGoalIds": [
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+      ],
+      "recommendedPassingPoints": 16,
+      "requiredCorrections": [
+        "Remove 89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2 from dfd2628f-b44e-51b3-86e8-99158861be8c.examData.coveredGoalIds.",
+        "Clarify the existing traffic model's distance criterion as stopping clearance to a stationary obstacle, or an explicitly equivalent criterion, before drawing conclusions from own stopping distances.",
+        "Change passingPoints to 16 and state that full marks in motion_models_1 and motion_models_2 require all existing contributions in their respective task parts.",
+        "In motion_models_2, distinguish calculated reaction/stopping distances from the supplied braking distances; do not require an unasked independent braking-distance calculation.",
+        "Make the approximately quadratic data check explicit in the solution's parabola justification and provide equivalent English task, solution and rubric text."
+      ],
+      "scopeLimitations": [
+        "The recommended traffic coverage is conditional on these local corrections.",
+        "The conservative 16/16 repair is not a learner-calibrated threshold."
+      ]
+    },
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "Both versions are scientifically correct under their idealizations. Components are (2.0,1.5) and (2.0,3.0) m/s with vertical components downward. Magnitudes are 2.5 and 3.60555… m/s; impact angle is 56.3099…° below horizontal. Arrow lengths and the 54–58° drawing tolerance are appropriate. Cart-relative impact velocity is 3.0 m/s downward; adding the cart's horizontal 2.0 m/s restores the ground-frame velocity. The supplied impact time makes a separate table height unnecessary.",
+      "fullPreparationReview": "Retain VEC 0fee53f2-1c02-5b12-9b6c-aa9fa462d921. Its complete recursive WW and reference-frame/vector paths supply the motion components, free fall, vector composition, Pythagoras, scales and angle measurement. No trigonometric prerequisite is necessary because measuring the angle is sufficient.",
+      "directCoverageReview": "VEC 0fee53f2-1c02-5b12-9b6c-aa9fa462d921 is adequately elicited. The additional goal 68c90ba6-c438-463c-9a53-cf61062d416a includes choosing a suitable frame. Part B supplies both frames and the requested observer; describing and transforming between them does not establish that choice facet. The smallest fixed-task correction is removing only this latter whole-goal claim.",
+      "falsePassCheck": "Original vv_1 through vv_4 total 13, so 12/16 permits a pass with all of vv_5 blank. Candidate 16 requires the complete cart-frame description, relative velocity and arrow addition, closing that missing-frame-change route. Nevertheless, 16/16 still requires no frame choice because neither task nor rubric elicits it. Threshold-only repair is therefore insufficient for both retained whole-goal claims. Error follow-through does not bypass vv_1's own full-mark requirements.",
+      "languageReview": "DE and EN task, solution and rubric agree, including scales, directions, angle tolerance, frame relation and follow-through. Candidate changes only the machine-readable threshold.",
+      "recommendedRequires": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "recommendedCoveredGoalIds": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "recommendedPassingPoints": 16,
+      "requiredCorrections": [
+        "Retain candidate passingPoints=16 and remove only 68c90ba6-c438-463c-9a53-cf61062d416a from 4ea1b93f-2dba-59ac-87ab-29af6c55cc37.examData.coveredGoalIds.",
+        "Apply vv_5 conjunctively: a correct ground-frame result cannot substitute for cart-frame motion, relative velocity and arrow addition."
+      ],
+      "scopeLimitations": [
+        "NVX has no guaranteed planning-credit targets, including after the recommended direct-coverage correction."
+      ]
+    },
+    {
+      "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+      "originalDecision": "revise",
+      "candidateDecision": "revise",
+      "scientificAndNumericalReview": "The unchanged own practical task is scientifically adequate: two fresh measurement series, independently checked initial conditions, graphical g determinations, uncertainty sensitivity and separate complete laws. Ideal falls through 0.30 and 0.60 m take 0.2473 and 0.3497 s, providing approximately 30 and 42 frame intervals at 120 fps. These are feasibility calculations, never personal measurements. Shared calibration can create common systematic errors; the solution correctly says repeat scatter does not replace their consideration. One German solution phrase incorrectly names an air-resistance model instead of the model without air resistance.",
+      "fullPreparationReview": "09029573-864f-40ca-bf8a-cee7bf6dcb73 recursively supplies laws, measurement, graphical analysis, uncertainty notation and systematic/random-error distinctions. The final mandatory justified model-limits interpretation, expressly scored in b-boundaries-comparison, needs explicit preparation beyond applying the drag-free model. Add d6dc0e02-831d-4894-a61a-852bcc74f147. Its ancestry also reaches FALL, so retaining the explicit FALL edge adds no further learner obligation.",
+      "directCoverageReview": "Retain only 09029573-864f-40ca-bf8a-cee7bf6dcb73. Actual experimentation, graphical analysis, measured g and a law with initial conditions are required separately for A and B. Neither prerequisite use nor the theoretical feasibility examples establish additional coverage.",
+      "falsePassCheck": "The actual 23/24 rubric protects every core: a missing central component gives zero for its three-point core, limiting the total to 21. Omitting B entirely caps the score at 12. Invented/model/example data, another person's video, planning alone and copied A data cannot satisfy the actual-data cores. Two points are allowed only for an otherwise complete core with an isolated non-conceptual slip.",
+      "languageReview": "DE and EN demands and numerics agree except that German solutionContent says 'die begrenzte Gültigkeit des Luftwiderstandsmodells'. Replace it with 'die begrenzte Gültigkeit des Modells ohne Luftwiderstand', matching the task and English solution.",
+      "recommendedRequires": [
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "d6dc0e02-831d-4894-a61a-852bcc74f147"
+      ],
+      "recommendedCoveredGoalIds": [
+        "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+      ],
+      "recommendedPassingPoints": 23,
+      "requiredCorrections": [
+        "Add d6dc0e02-831d-4894-a61a-852bcc74f147 to f41e4e30-794e-5ce4-ba5e-cc72712cd691.requires for the existing mandatory model-limits performance.",
+        "In German solutionContent replace 'die begrenzte Gültigkeit des Luftwiderstandsmodells' with 'die begrenzte Gültigkeit des Modells ohne Luftwiderstand'. Preserve the authentic two-series task and pass gates."
+      ],
+      "scopeLimitations": [
+        "No personal recordings, apparatus or learner execution were inspected.",
+        "Official p.30 also names discussion of deviation from a literature value. The exact task requires A/B comparison but does not explicitly require that literature comparison; it cannot certify exhaustive attainment of every official free-fall subfacet."
+      ]
+    },
+    {
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "originalDecision": "not_an_assessment",
+      "candidateDecision": "not_an_assessment",
+      "scientificAndNumericalReview": "The unchanged qualitative goal correctly describes ideal oblique projection as uniform horizontal motion superposed with vertical motion under constant gravitational acceleration. There is no numerical task or rubric.",
+      "fullPreparationReview": "Retain the exact current prerequisite 0fee53f2-1c02-5b12-9b6c-aa9fa462d921. Its recursive context supplies horizontal projection, components and superposition, free fall, motion laws and graphical preparation. This is a defensible taught route to qualitative oblique projection. The existence of a simpler route does not invalidate it; no numerical trigonometry requirement should be invented.",
+      "directCoverageReview": "No assessment or direct graded coverage claim exists.",
+      "falsePassCheck": "Not applicable: no scored task or passing predicate is supplied.",
+      "languageReview": "DE and EN descriptions are equivalent.",
+      "recommendedRequires": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "recommendedCoveredGoalIds": [],
+      "recommendedPassingPoints": null,
+      "requiredCorrections": [],
+      "scopeLimitations": [
+        "This is a review of the current goal and prerequisites, not an invented examination or linked image."
+      ]
+    }
+  ],
+  "ffxHesseOfferDecision": "revise",
+  "ffxHesseOfferReason": "The provided official PDF p.30 supports the own voluntary offer's E.1 free-fall and idealization content. Complete preparation requires adding d6dc0e02-831d-4894-a61a-852bcc74f147, and the German drag-free-model wording needs correction. Preserve the actual two-series task and authentic gates. This is neither official Land-exam approval nor learner/host acceptance. The offer does not certify all E.1 content or the unstated literature-value comparison; that limitation does not justify enlarging this fixed task.",
+  "directCoverageVersusPlanningCredit": "Direct graded coverage and planning credit are separate. None of these recommendations creates automatic or planning credit. NVX has no guaranteed planning-credit targets, even if its direct VEC claim is retained after correction. No historical result or immutable evidence may be reinterpreted or transferred through this review.",
+  "crossGoalFindings": [
+    "All nine scope goals and their supplied direct, recursive and credited-goal contexts were reviewed. Referenced prerequisite IDs resolve within the supplied context, and rubric point sums match their stated maxima.",
+    "Supplied conditions are not learner performances: given uncertainty bounds do not establish choosing suitable uncertainties; supplied frames do not establish choosing a frame; constructed data or a described procedure do not establish experimental execution.",
+    "I dissent from accepting the proposed NVX threshold-only repair for both claimed targets. It forces frame-change evidence but leaves suitable-frame choice unassessed.",
+    "The unchanged W task elicits model-limit competence but allows it to be omitted at passing score. Its retained whole-goal claim needs the specified evidence gate.",
+    "MP's candidate removes unsupported whole-goal claims and is acceptable as fixed practice. Its 18-point score must not be promoted into certification of every section.",
+    "FFX's authentic experiment gates are effective. Its remaining corrections concern complete preparation and terminology, not replacement of personal measurements by example data."
+  ],
+  "globalLimitations": [
+    "Only canonical-input.json, output.schema.json and the provided official PDF were used. No files were edited.",
+    "No supplied task images exist. No visual, apparatus or physical-materials review is claimed.",
+    "Status labels and historical review notes were not treated as evidence of approval. Historical learner results and immutable evidence remain untouched.",
+    "Learner trials, scoring calibration, inter-rater reliability and implementation of the recommended corrections remain unverified.",
+    "The official source supports the HE curricular context only; it does not endorse these own assessments or establish a separate SN-source review.",
+    "Material-intro hashes and final planning-credit byte seals were absent and are outside this review."
+  ]
+}

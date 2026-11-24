@@ -20,7 +20,7 @@ import { assertLearningUnitAssessmentReview, readLearningUnitAssessmentSource } 
 const root = resolve(import.meta.dirname, '../..')
 const assessments = 'curricula/DE/Gymnasium/assessments'
 const reviews = 'curricula/DE/Gymnasium/quality/learning-units'
-const hesseChildReview = 'docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md'
+const hesseE1CoverageReview = 'curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json'
 const machineReview = (date, hash, reviewPath, scoring) => {
   const scoringNote = scoring.passingPoints < scoring.maxPoints
     ? 'The rubric describes how each part earns points. The backend enforces the reviewed total passing score.'
@@ -134,22 +134,22 @@ const landscapes = [{
     promiseEn: 'I can measure the free fall of a heavy ball and describe it as uniformly accelerated motion: I record drop height and fall time in a measurement log, represent the motion in a time-velocity graph, determine the acceleration and set up the time-position and time-velocity laws. I state how precise my measurements are. The fall of light bodies, projectile motion in two dimensions, forces and energy build on it.',
     ownGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
     ownOrientationGoalIds: ['b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e'],
-    reviewPath: `${reviews}/physics-constant-acceleration-2026-11-15-v2.md`,
-    reviewDate: '2026-11-15',
+    reviewPath: hesseE1CoverageReview,
+    reviewDate: '2026-11-24',
     assessments: [{
       // This full, independently content-reviewed current assessment already
       // exists in the K3/K6 stream. Bind its exact task/rubric; never regenerate
       // its content from a second copy or transfer a historical learner result.
       existingGoalId: 'a8dc0290-9f80-5763-8943-e16b8d2aa860',
       coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
-      taskRevision: 'sha256:8a5ccaa3f596ace70e6a4dad6f644a2ddaa046be5f2c598a012a1ff40d9b17ef',
-      rubricRevision: 'sha256:62bf8143588daa963566318ada486cc4a189906d6a6b92d2e428ec8fe5383163',
+      taskRevision: 'sha256:758a0483d5db68276111ad6ab987bf0d65e1444cc669fbe58a1c93eed4f76555',
+      rubricRevision: 'sha256:639a906fb3ed9c9192e837693597527a082d1e256035b1964a2f77825c699cd0',
     }, {
       existingGoalId: 'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
       coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
-      reviewPath: hesseChildReview,
-      taskRevision: 'sha256:e0c8168fd6d8a86ce63012d2bd1241f3a790e39bbbffea6710d7c137c8d24cdd',
-      rubricRevision: 'sha256:88da8d12bcb9f7c8cd3761730755307ba6e8a0a0405cb9a522bf5338d9be715f',
+      reviewPath: hesseE1CoverageReview,
+      taskRevision: 'sha256:60fd37773d8c386435226a4afa6e2db9e1edf0e4fa910f7a740762bbbf59b1a2',
+      rubricRevision: 'sha256:8ec3a6879f22c7820b05480a721b34e59bc476f72778997eb309f2f088c4cbb2',
     }],
   }],
 }]

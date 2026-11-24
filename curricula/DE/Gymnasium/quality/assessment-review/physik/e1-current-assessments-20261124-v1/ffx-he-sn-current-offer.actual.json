@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "status": "CURRENT_CONTENT_AND_SOURCE_STAGE_ACCEPTED",
+  "reviewedAt": "2026-11-24T04:45:46.466839+00:00",
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "reviewAuthority": "independentMachineReview",
+  "humanApproval": false,
+  "approvedOwnOfferScopes": [
+    {
+      "jurisdiction": "DE-HE",
+      "stage": "SekII",
+      "phase": "E",
+      "courseProfiles": [
+        "GK",
+        "LK"
+      ]
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "yearUnit": "J9",
+      "courseProfiles": [
+        "GK",
+        "LK"
+      ]
+    }
+  ],
+  "currentGoal": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/f41e4e30-794e-5ce4-ba5e-cc72712cd691.current.goal.json",
+    "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4"
+  },
+  "previousTask4Payload": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/f41e4e30-794e-5ce4-ba5e-cc72712cd691.before.goal.json",
+    "sha256": "1d436fd67ba85b6bc3b2844eae12bd778cb95065483188603b944209da4db8b4"
+  },
+  "immutableTask4SourceStagePredecessor": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/review.actual.json",
+    "sha256": "7adc92cdf8395144a2c415d0abb26d147dd7c75b9f24bd1fb4905a55242f1219"
+  },
+  "contentDelta": {
+    "path": "examData.solutionContent",
+    "beforePhrase": "die begrenzte Gültigkeit des Luftwiderstandsmodells",
+    "afterPhrase": "die Grenzen des Modells ohne Luftwiderstand",
+    "allTaskBodiesEnglishSolutionRubricRequiresCoverageAndPlacementsUnchanged": true
+  },
+  "actualIndependentCurrentReviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-a/response.json",
+      "sha256": "289a9348f52eab6e88152500e1d04cb08a648dd408b192d2039572abe7777b4b",
+      "rowPointer": "/reviews/4",
+      "runManifest": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-a/run.actual.json",
+      "candidateDecision": "accept",
+      "HEOfferDecision": "accept"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-b/response.json",
+      "sha256": "a24fdb003ad77517da9a262a142b086b1c614f45dcfb10e371d8283f551438cc",
+      "rowPointer": "/reviews/4",
+      "runManifest": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/round2/round-b/run.actual.json",
+      "candidateDecision": "accept",
+      "HEOfferDecision": "accept"
+    }
+  ],
+  "preparation": {
+    "requires": [
+      "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+    ],
+    "unprunedNativeAtomicClosureCount": 69,
+    "unchangedFromTask4Closure": true,
+    "fullCurrentPreparationSuccessor": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-stage-preparation.actual.json",
+    "datedNativeCandidateObservation": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/native-contract/assessment-successor-preparation.actual.json",
+    "foreignAndInheritedPrerequisitesIncluded": true,
+    "notSufficientByMembershipAlone": true,
+    "modelPrerequisiteAdjudication": "Both fresh exact-input reviews independently accept sole FF. Applying and testing the named drag-free free-fall model against actual measurements is included in FF with LAWS and measurement-uncertainty ancestry; the task does not independently assess general point-particle idealization. No MOD prerequisite is added.",
+    "fullCurrentPreparationSuccessorSha256": "da7a61584ed1926ec8bbf9c6fefb291224c51981f5fad2d3265b43a660b3bb88"
+  },
+  "sourceStageEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "sha256": "46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+      "officialURL": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "edition": "Kerncurriculum gymnasiale Oberstufe Physik Ausgabe2024/Stand1August2025",
+      "pdfAndPrintedPage": 30,
+      "shortQuote": "freier Fall (experimentelle Datenerhebung, grafische Darstellung, Bestimmung der Gravitationsbeschleunigung",
+      "judgment": "E.1 explicitly supplies experimental free-fall data, graphs, g determination and mathematical time-position models. The exact two-series protocol is own assessment design. FFX does not separately require discussion against a literature value, so this offer attests native FF only, not every official subfacet."
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+      "sha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+      "officialURL": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/125/vo3eXMDs8Ua4hqbRxPxG",
+      "pdfPages": [
+        36,
+        37,
+        38
+      ],
+      "printedPages": [
+        24,
+        25,
+        26
+      ],
+      "shortQuotes": [
+        {
+          "pdfPage": 37,
+          "quote": "Übertragen der Kenntnisse über Bewegungsgesetze auf den freien Fall"
+        },
+        {
+          "pdfPage": 38,
+          "quote": "rechnergestütztes Erfassen und Auswerten von Messwerten"
+        }
+      ],
+      "judgment": "Current primary PDF read directly again. J9 links motion laws, digital/graphical measurement, transfer to free fall and practical experiment design. The right-column friction remark is preserved as a remark, with no claim that it mandates the general air/vacuum comparison goal. This existing two-series own task stays within actual FF preparation; no new unprovided lower-stage skill is introduced by the one phrase correction."
+    }
+  ],
+  "authenticityAndFalsePass": {
+    "maxPoints": 24,
+    "passingPoints": 23,
+    "cores": 8,
+    "pointsPerCore": 3,
+    "missingCoreMaxScore": 21,
+    "condition": "Each of both own series needs3freshvalid releases and5traceablepairs perrelease, own graphs/g/law/initial conditions. Core2points only for complete conceptual evidence with isolated nonconceptual slip. Invented/example/copied/foreign data or a plan cannot replace actual personal measurements."
+  },
+  "directCoverage": [
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73"
+  ],
+  "guaranteedPlanningCredits": [],
+  "limits": "Own voluntary assessment, no official examination mandate or source-wide goal credit. No new task, cut change, later-stage prerequisite, learner trial, host/equipment acceptance or result transfer. The final shared preparation receipt binds current assets/descriptions separately."
+}

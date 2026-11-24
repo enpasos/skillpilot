@@ -1,0 +1,232 @@
+{
+  "schema": "e1-planning-release-before-current-activation-backend-check-v1",
+  "environment": {
+    "java": "Amazon Corretto25.0.2.10.1",
+    "node": "20.20.2",
+    "resourceRoot": "current skillpilot-e1-nachweise curricula (no Gradle init resource overlay)",
+    "isolatedBuildDirectory": "/tmp/e1-t5/backend-build"
+  },
+  "totalTests": 106,
+  "suites": [
+    {
+      "name": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+      "tests": "2",
+      "failures": "1",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.329"
+    },
+    {
+      "name": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+      "tests": "3",
+      "failures": "3",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.228"
+    },
+    {
+      "name": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "tests": "101",
+      "failures": "20",
+      "errors": "0",
+      "skipped": "0",
+      "time": "443.804"
+    }
+  ],
+  "failureCount": 24,
+  "failures": [
+    {
+      "class": "com.skillpilot.backend.completion.UnitAssessmentContractTest",
+      "method": "usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts",
+      "test": "usesAllFourPublishedMaterialsWithoutDerivingPlanningCreditFromUnboundReceipts()",
+      "sourceLine": 80,
+      "failureType": "java.util.NoSuchElementException",
+      "message": "java.util.NoSuchElementException"
+    },
+    {
+      "class": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+      "method": "absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial",
+      "test": "absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial()",
+      "sourceLine": 44,
+      "failureType": "java.util.NoSuchElementException",
+      "message": "java.util.NoSuchElementException"
+    },
+    {
+      "class": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+      "method": "matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews",
+      "test": "matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews()",
+      "sourceLine": 58,
+      "failureType": "java.util.NoSuchElementException",
+      "message": "java.util.NoSuchElementException"
+    },
+    {
+      "class": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+      "method": "planningCreditRequiresEachOwnAssessmentAndItsCurrentCoverageReview",
+      "test": "planningCreditRequiresEachOwnAssessmentAndItsCurrentCoverageReview()",
+      "sourceLine": 20,
+      "failureType": "java.util.NoSuchElementException",
+      "message": "java.util.NoSuchElementException"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "test": "[1] duration = \"G8\", stage = \"CrossStage\", course = \"GK\"",
+      "sourceLine": 798,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpected size: 2 but was: 0 in:\n[]"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "test": "[2] duration = \"G9\", stage = \"CrossStage\", course = \"GK\"",
+      "sourceLine": 798,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpected size: 2 but was: 0 in:\n[]"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "test": "[3] duration = \"G8\", stage = \"SekII\", course = \"GK\"",
+      "sourceLine": 798,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpected size: 2 but was: 0 in:\n[]"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "test": "[4] duration = \"G9\", stage = \"SekII\", course = \"GK\"",
+      "sourceLine": 798,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpected size: 2 but was: 0 in:\n[]"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "test": "[5] duration = \"G8\", stage = \"SekII\", course = \"LK\"",
+      "sourceLine": 798,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpected size: 2 but was: 0 in:\n[]"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianMotionAssessmentNeedsFourVersionedExamPassesAndKeepsIndividualGoalsOpen",
+      "test": "[6] duration = \"G9\", stage = \"SekII\", course = \"LK\"",
+      "sourceLine": 798,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpected size: 2 but was: 0 in:\n[]"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery",
+      "test": "guidedStudySkipsAnOutOfScopeStepAndAnEarnedPlanningCreditWithoutGivingIndividualMastery()",
+      "sourceLine": 497,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpecting actual:\n  {}\nto contain key:\n  \"e4b38061-1f28-43ad-8371-a3e7c0e81856\""
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile",
+      "test": "[1] duration = \"G8\", strict = \"false\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+      "sourceLine": 1362,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpected size: 2 but was: 0 in:\n{}"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile",
+      "test": "[2] duration = \"G9\", strict = \"false\", requested = \"971beafa-6ba5-4c82-ac8b-7ebf66eec3dd\"",
+      "sourceLine": 1362,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpected size: 2 but was: 0 in:\n{}"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "completedAssignmentOffersExactlyItsOpenIndividualGoalsInThePersonalProfile",
+      "test": "[3] duration = \"G9\", strict = \"true\", requested = \"09029573-864f-40ca-bf8a-cee7bf6dcb73\"",
+      "sourceLine": 1362,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpected size: 2 but was: 0 in:\n{}"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes",
+      "test": "[1] duration = \"G8\"",
+      "sourceLine": 847,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpecting actual:\n  {}\nto contain only following keys:\n  [\"e4b38061-1f28-43ad-8371-a3e7c0e81856\", \"d6dc0e02-831d-4894-a61a-852bcc74f147\"]\nbut could not find the following keys:\n  [\"e4b38061-1f28-43ad-8371-a3e7c0e81856\", \"d6dc0e02-831d-4894-a61a-852bcc74f147\"]\n"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes",
+      "test": "[2] duration = \"G9\"",
+      "sourceLine": 847,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpecting actual:\n  {}\nto contain only following keys:\n  [\"e4b38061-1f28-43ad-8371-a3e7c0e81856\", \"d6dc0e02-831d-4894-a61a-852bcc74f147\"]\nbut could not find the following keys:\n  [\"e4b38061-1f28-43ad-8371-a3e7c0e81856\", \"d6dc0e02-831d-4894-a61a-852bcc74f147\"]\n"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease",
+      "test": "[1] duration = \"G8\"",
+      "sourceLine": 1020,
+      "failureType": "org.opentest4j.AssertionFailedError",
+      "message": "org.opentest4j.AssertionFailedError: \nExpecting actual:\n  []\nto contain exactly (and in same order):\n  [\"c933b7d2-edcb-5747-9378-9762659f260a\"]\nbut could not find the following elements:\n  [\"c933b7d2-edcb-5747-9378-9762659f260a\"]\n"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease",
+      "test": "[2] duration = \"G9\"",
+      "sourceLine": 1020,
+      "failureType": "org.opentest4j.AssertionFailedError",
+      "message": "org.opentest4j.AssertionFailedError: \nExpecting actual:\n  []\nto contain exactly (and in same order):\n  [\"c933b7d2-edcb-5747-9378-9762659f260a\"]\nbut could not find the following elements:\n  [\"c933b7d2-edcb-5747-9378-9762659f260a\"]\n"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites",
+      "test": "[1] duration = \"G8\", strict = \"false\"",
+      "sourceLine": 1079,
+      "failureType": "java.util.NoSuchElementException",
+      "message": "java.util.NoSuchElementException: No value present"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "twoChildPassesOfferIndividualStudyWithTheActualOutstandingPrerequisites",
+      "test": "[2] duration = \"G9\", strict = \"true\"",
+      "sourceLine": 1079,
+      "failureType": "java.util.NoSuchElementException",
+      "message": "java.util.NoSuchElementException: No value present"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit",
+      "test": "[1] course = \"GK\", duration = \"G8\"",
+      "sourceLine": 1055,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpecting actual:\n  []\nto contain exactly in any order:\n  [\"c933b7d2-edcb-5747-9378-9762659f260a\", \"f13ca187-b680-5f47-b4ad-76bd474bd8a2\"]\nbut could not find the following elements:\n  [\"c933b7d2-edcb-5747-9378-9762659f260a\", \"f13ca187-b680-5f47-b4ad-76bd474bd8a2\"]\n"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "changingFromAnUnreleasedViewPreservesBothPartPassesAndExplainsTheMissingCredit",
+      "test": "[2] course = \"LK\", duration = \"G9\"",
+      "sourceLine": 1055,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpecting actual:\n  []\nto contain exactly in any order:\n  [\"c933b7d2-edcb-5747-9378-9762659f260a\", \"f13ca187-b680-5f47-b4ad-76bd474bd8a2\"]\nbut could not find the following elements:\n  [\"c933b7d2-edcb-5747-9378-9762659f260a\", \"f13ca187-b680-5f47-b4ad-76bd474bd8a2\"]\n"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders",
+      "test": "[1] duration = \"G8\"",
+      "sourceLine": 1217,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpecting ArrayList:\n  []\nto contain only:\n  [\"e4b38061-1f28-43ad-8371-a3e7c0e81856\", \"d6dc0e02-831d-4894-a61a-852bcc74f147\"]\nbut could not find the following element(s):\n  [\"e4b38061-1f28-43ad-8371-a3e7c0e81856\", \"d6dc0e02-831d-4894-a61a-852bcc74f147\"]\n"
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "method": "explicitUnitAssignmentCountsOnlyCurrentPartsAndPreservesOtherOrders",
+      "test": "[2] duration = \"G9\"",
+      "sourceLine": 1217,
+      "failureType": "java.lang.AssertionError",
+      "message": "java.lang.AssertionError: \nExpecting ArrayList:\n  []\nto contain only:\n  [\"e4b38061-1f28-43ad-8371-a3e7c0e81856\", \"d6dc0e02-831d-4894-a61a-852bcc74f147\"]\nbut could not find the following element(s):\n  [\"e4b38061-1f28-43ad-8371-a3e7c0e81856\", \"d6dc0e02-831d-4894-a61a-852bcc74f147\"]\n"
+    }
+  ],
+  "baselineLogSha256": "2951d9ab99fb4f5f2c58ff208a89c9eae6587a80907f9f4eff3e5e3036b94516"
+}

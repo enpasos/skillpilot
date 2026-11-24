@@ -1,0 +1,3 @@
+**accept.** Die einzige Revision verlangt nun auch auf Englisch, die Erklärung einer Abweichung durch eine weitere Messung zu prüfen. Das entspricht der deutschen Aufgabe und beiden Evidenzkriterien.
+
+Aufgabe, Hinweis und wissenschaftliche Lösung sind kompatibel: Im Fallweg‑t²‑Diagramm beträgt die Steigung g/2. Die ersten vier Messpaare ergeben g ≈ 9,853 m/s². Für den zurückgehaltenen 90‑cm‑Punkt folgt eine Fallzeit von 0,4274 s gegenüber gemessenen 0,428 s; die Differenz passt zur angegebenen Messauflösung. Anfangsbedingungen, Achsen und Modellannahmen werden ausdrücklich verlangt. Damit wird g aus experimentellen Messwerten geschätzt und an einem Punkt geprüft, der nicht zur Anpassung verwendet wurde.

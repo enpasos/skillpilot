@@ -22,7 +22,7 @@ import { fingerprintCurrentCurriculumDocument, loadCurrentCurriculumCatalog } fr
 import { collectRenderedAtomicGoalIdsFromCompositionView, evaluateRouteProfile, createRouteProfiles } from './generateCurriculumQualityStatus'
 import { assessmentReviewRevisions, UnitGraph, type UnitGraphLandscape } from './lib/learningUnitContracts'
 import { liveVerificationInputs } from './lib/verificationInputSnapshot'
-import { checkUnitPlanningReleases, validateIndividualAssessmentOffers, validateSectionAssessmentPolicy } from './checkUnitPlanningReleases'
+import { checkUnitPlanningReleases, planningGoalDefinition, validateIndividualAssessmentOffers, validateSectionAssessmentPolicy } from './checkUnitPlanningReleases'
 
 const routeProfiles = createRouteProfiles()
 const root = resolve(import.meta.dirname, '../..')
@@ -91,10 +91,17 @@ assert.equal(e1Scope.childAssessmentReview.sourceFileSha256, 'd5aafed0908cdd8131
   'The 17/20 child release is bound to its independent review; older full-score reviews concern different tasks')
 assert.equal(createHash('sha256').update(childReview).digest('hex'), e1Scope.childAssessmentReview.sourceFileSha256)
 const readRepoJson = (path: string) => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
-// The E.1 cut (Product Owner, 23 Nov 2026) changed the definitions of both goals the child
-// pair released and moved the vertical-throw pair out of the child unit. The former release
-// lapsed; a new reviewed release is needed before any planning credit applies again.
-assert.equal(checkUnitPlanningReleases().length, 0, 'No stale planning release may remain in the E.1 contract')
+// The old two-goal/v3 release remains historical. The fresh v4 review qualifies exactly
+// the owned acceleration atom through current D; it cannot release the undeclared children.
+const currentPlanningReviewPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json'
+const currentPlanningReview = readRepoJson(currentPlanningReviewPath)
+const currentPlanningActivation = readRepoJson('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/activation.receipt.json')
+assert.equal(currentPlanningReview.status, 'APPROVED_BES_ONLY_CURRENT_INPUTS')
+for (const pin of currentPlanningReview.evidencePins) {
+  assert.equal(`sha256:${createHash('sha256').update(readFileSync(resolve(root, pin.path))).digest('hex')}`, pin.sha256)
+}
+assert.deepEqual(checkUnitPlanningReleases(), ['sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d'])
+assert.equal(currentPlanningActivation.fingerprint, 'sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d')
 const materialFiles: string[] = readRepoJson('curricula/unit-learning-materials.json').materials
 const e1Contracts = materialFiles.map(path => readRepoJson(`curricula/${path}`).unit)
   .filter(unit => unit.landscapeId === canonicalLandscape.landscapeId && unit.compositionNodeId === 'physics-e1-motion')
@@ -183,7 +190,21 @@ assert.throws(() => checkSectionPolicy({ ...sectionPolicy, requiredPartsFingerpr
 assert.throws(() => checkSectionPolicy(sectionPolicy, { ...canonicalLandscape, goals: canonicalLandscape.goals.map(goal =>
   goal.id === freeFallSeriesGoal ? { ...goal, examData: { ...goal.examData!, reviewStatus: 'draft' } } : goal) }), /released additional assessment/)
 
-assert.deepEqual(contract.planningCredits, [])
+assert.equal(contract.planningCredits.length, 1)
+const credit = contract.planningCredits[0]
+assert.deepEqual(credit.requiredPartIds, ['f13ca187-b680-5f47-b4ad-76bd474bd8a2'])
+assert.deepEqual(credit.goalIds, ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])
+assert.equal(credit.orientation, undefined, 'A content witness grants no orientation or recall result')
+assert.equal(credit.release.ownerUnitId, 'physics-constant-acceleration')
+assert.equal(credit.release.ownerRevision, '2026-11-23-v4')
+assert.equal(credit.release.review.path, currentPlanningReviewPath)
+assert.deepEqual(credit.release.viewIds, contract.viewIds)
+assert.deepEqual(Object.keys(credit.release.goalDefinitions), credit.goalIds)
+assert.equal(credit.release.goalDefinitions[credit.goalIds[0]].definition,
+  planningGoalDefinition(canonicalLandscape.goals.find(goal => goal.id === credit.goalIds[0])!))
+assert.equal(credit.release.goalDefinitions[credit.goalIds[0]].profileFingerprint, currentPlanningReview.currentBinding.profileFingerprint)
+assert.deepEqual(currentPlanningReview.creditedGoalIds, credit.goalIds)
+assert.deepEqual(currentPlanningReview.uncreditedGoalIds, contract.contentGoalIds.filter((id: string) => !credit.goalIds.includes(id)))
 // Content of E.1 after the cut: the vectors (reference frames) and the traffic goal left E.1;
 // the t-v diagram, the motion laws and the fall of light and heavy bodies joined it.
 assert.deepEqual(contract.contentGoalIds, [
@@ -194,6 +215,9 @@ assert.deepEqual(contract.contentGoalIds, [
 ])
 assert.deepEqual(contract.viewIds, e1Scope.viewIds)
 const reviewedParts = [...hesseE1Assessments.keys(), ...hesseChildAssessments.keys()].map(goalId => {
+  if (goalId === 'f13ca187-b680-5f47-b4ad-76bd474bd8a2' && currentPlanningReview.dSuccessor) {
+    return currentPlanningReview.requiredPartBindings.find((part: { goalId: string }) => part.goalId === goalId)
+  }
   const { taskRevision, rubricRevision, fingerprint } = e1Scope.ownAssessmentRevisions[goalId] ?? e1Scope.childAssessmentRevisions[goalId]
   return { goalId, material: { taskRevision, rubricRevision, fingerprint } }
 })
@@ -208,8 +232,14 @@ for (const [id, spec] of hesseChildAssessments) {
   assert.equal(createHash('sha256').update(source).digest('hex'), binding.sourceFileSha256)
   assert(childReview.includes(binding.sourceFileSha256), `${id}: independent review must bind these exact bytes`)
   const native = canonicalLandscape.goals.find(goal => goal.id === id)!
-  const exam = native.examData!
-  const reviews = assessmentReviewRevisions(native)
+  const dSuccessor = spec.prefix === 'D' ? currentPlanningReview.dSuccessor : undefined
+  // Preserve the exact old Markdown/review predicate against its actual old payload.
+  // Current D is checked separately against its reviewed successor below.
+  const historicalGoal = dSuccessor
+    ? readRepoJson(dSuccessor.previousInputCapsulePath).currentParts.find((goal: { id: string }) => goal.id === id)
+    : native
+  const exam = historicalGoal.examData!
+  const reviews = assessmentReviewRevisions(historicalGoal)
   assert.equal(binding.historicalAssessmentGoalId, spec.historical)
   assert.equal(binding.taskRevision, reviews.taskRevision)
   assert.equal(binding.rubricRevision, reviews.rubricRevision)
@@ -252,6 +282,22 @@ for (const [id, spec] of hesseChildAssessments) {
   })) })
   assert(exam.scoring.steps.every(step => step.description.length <= 2000))
   assert.equal(exam.reviewStatus, 'released')
+  if (dSuccessor) {
+    const currentSource = readRepoJson(dSuccessor.currentInputCapsulePath).currentParts
+      .find((goal: { id: string }) => goal.id === id)
+    assert.deepEqual(native.examData, currentSource.examData)
+    assert.deepEqual(native.requires, currentSource.requires)
+    assert.deepEqual(native.examData?.coveredGoalIds, [spec.coverage])
+    const liveRevisions = assessmentReviewRevisions(native)
+    const livePart = contract.parts.find((part: { goalId: string }) => part.goalId === id)
+    assert.equal(livePart.material.taskRevision, liveRevisions.taskRevision)
+    assert.equal(livePart.material.rubricRevision, liveRevisions.rubricRevision)
+    assert.deepEqual(native.examData?.scoring?.steps.map(step => ({ id: step.id, points: step.points })),
+      exam.scoring.steps.map((step: { id: string; points: number }) => ({ id: step.id, points: step.points })))
+    assert.equal(native.examData?.scoring?.passingPoints, 17)
+    assert.equal(native.examData?.scoring?.maxPoints, 20)
+    assert.equal(child.coverageReviews?.find(row => row.assessmentGoalId === id)?.reference, currentPlanningReviewPath)
+  }
 }
 // The four E.1 child units of the cut accepted on 23 Nov 2026, each with its closing checks.
 const hesseIntroductoryAssessmentPlaces = {

@@ -77,7 +77,10 @@ class UnitAssessmentContractTest {
         }
         var complete = contract.evaluate(section, graph.keySet(), graph, receipts, Set.of()).orElseThrow();
         assertThat(complete.passed()).isTrue();
-        assertThat(contract.planningCredits().getFirst().goalIds()).hasSize(2);
+        assertThat(contract.planningCredits()).singleElement().satisfies(rule -> {
+            assertThat(rule.goalIds()).containsExactly("e4b38061-1f28-43ad-8371-a3e7c0e81856");
+            assertThat(rule.requiredPartIds()).containsExactly("f13ca187-b680-5f47-b4ad-76bd474bd8a2");
+        });
         assertThat(complete.planningCreditGoalIds()).isEmpty();
         assertThat(complete.individuallyOpenGoalIds()).hasSize(12);
 
@@ -106,7 +109,7 @@ class UnitAssessmentContractTest {
         assertThat(partial.passed()).isFalse();
         assertThat(partial.parts()).filteredOn(part -> !part.passed()).hasSize(1);
         assertThat(partial.planningCreditGoalIds()).isEmpty();
-        assertThat(partial.individuallyOpenGoalIds()).hasSize(10);
+        assertThat(partial.individuallyOpenGoalIds()).hasSize(11);
         assertThat(contract.evaluate(section, Set.of(first.goalId()), graph, receipts, Set.of())).isEmpty();
     }
 }

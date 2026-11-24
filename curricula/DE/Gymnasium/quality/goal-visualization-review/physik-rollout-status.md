@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-24T04:42:57.674Z
+Generated: 2026-11-24T04:54:42.102Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "reviewContract": "independent-current-assessment-review-v1",
+  "runId": "e1-assessment-20261124-a-01a20bdc-9bb0-7a02-9916-192762369dca",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "ultra",
+  "cliVersion": "0.171.0-alpha.13.2",
+  "threadId": "01a20bdc-9bb0-7a02-9916-192762369dca",
+  "cwd": "/tmp/e1-t5/assessment-followup-a",
+  "sandbox": {
+    "type": "read-only"
+  },
+  "approvalPolicy": "never",
+  "startedAt": "2026-11-24T04:42:17.779Z",
+  "completedAt": "2026-11-24T04:46:12.294Z",
+  "exitCode": 0,
+  "exitCodeEvidence": "Actual functions.write_stdin completion returned exit_code=0; raw final event is turn.completed.",
+  "blindToOtherRun": true,
+  "sourceSessionRawSha256": "c49f31f7ccbaaf23c0aee52b698ac13b5a76576f6037665dc5deb0083ae55a07",
+  "sourceSessionBasename": "rollout-2026-11-24T05-42-16-01a20bdc-9bb0-7a02-9916-192762369dca.jsonl",
+  "inputArtifacts": [
+    {
+      "path": "canonical-input.json",
+      "sha256": "bca7533be093de85e47781cddfea3f38e8c9c2176ebf3a491e0a6ee4ef786cf9"
+    },
+    {
+      "path": "output.schema.json",
+      "sha256": "27cb46f8928204bbdd2656ebfc01c77352bcecb76236b9271b8b0a2c1a581f89"
+    },
+    {
+      "path": "prompt.txt",
+      "sha256": "7171f04b03f5e92e5687a320e403ec65c468d1ed337976fd3580d02ced62e06c"
+    }
+  ],
+  "outputArtifacts": [
+    {
+      "path": "response.json",
+      "sha256": "6b953fdc22fdc266c2d908b47186dbc04f0b909fef5caf0f5bb5b9dd286fb69b"
+    },
+    {
+      "path": "events.jsonl",
+      "sha256": "5b21c12cf9f92236072a60f47d561f520a01852a2fbafd259bb44160dc6eb397"
+    },
+    {
+      "path": "stderr.log",
+      "sha256": "6f852d4e82d4591419df186527c402ce43a66fd0b842165870d10433362ec1ba"
+    }
+  ],
+  "actualUsage": {
+    "input_tokens": 1129612,
+    "cached_input_tokens": 1036032,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 9142,
+    "reasoning_output_tokens": 3329
+  },
+  "scope": {
+    "assessments": 3,
+    "curricularPrerequisiteReview": 0,
+    "contextGoals": 99,
+    "materialsOrPlanningCredits": false
+  },
+  "limits": "Actual independent AI review; no human/learner/host acceptance. Content acceptance does not waive native schema or quality gates, applicability or result-contract checks. No source/planning-credit mutation was performed by these sessions."
+}

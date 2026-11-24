@@ -12,8 +12,20 @@ const bytes = (path: string) => readFileSync(new URL(path, root))
 const hash = (value: unknown) => fingerprintCurrentCurriculumDocument(value).slice(7)
 const imageHash = (path: string) => createHash('sha256').update(bytes(path)).digest('hex')
 const landscape = read('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
-const review = read('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-guided-entry-2026-11-22/review.json')
-const regularStudyReview = read('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-free-fall-2026-11-23/review.json')
+const materialReviewDirectory = 'curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-materials-2026-11-24'
+function currentMaterialReview(file: string) {
+  const record = read(`${materialReviewDirectory}/${file}.actual.json`)
+  assert.equal(record.decision, 'accepted')
+  assert.deepEqual(record.requiredCorrections, [])
+  assert.equal(imageHash(record.supersedes.path), record.supersedes.sha256, 'The superseded review must retain its exact bytes')
+  assert.equal(imageHash(record.independentReview.path), record.independentReview.sha256, 'The independent review must match its receipt')
+  return record
+}
+const review = currentMaterialReview('guided-entry')
+const regularStudyReview = currentMaterialReview('regular-study')
+const practicalReview = currentMaterialReview('individual-experiments')
+assert.deepEqual(practicalReview.scope.exercises, regularStudyReview.scope.exercises)
+assert.equal(practicalReview.scope.mode, 'requiredForRegularLearning')
 const expected = new Map([
   ['physics-e1-motion', 'a4d4efe1-7d30-526b-ac9c-806113da4363'],
   ['physics-e1-accelerated-and-free-fall', 'b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e'],
@@ -26,7 +38,7 @@ const fallId = '09029573-864f-40ca-bf8a-cee7bf6dcb73'
 const protocolId = 'e0004439-ed34-5caf-858a-6107918224eb'
 const protocolReview = read('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-measurement-entry-2026-11-23/review-v2.json')
 assert.deepEqual(protocolReview.requiredCorrections, [])
-const modelReview = read('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-free-fall-2026-11-23/modellbruecke.json')
+const modelReview = currentMaterialReview('modellbruecke')
 assert.equal(modelReview.decision, 'accepted')
 const modelExercise = read(modelReview.materialPath).exercises.find((exercise: Exercise) => exercise.goalId === modelReview.goalId)
 assert(modelExercise)
@@ -67,7 +79,8 @@ for (const opening of review.scope.openings) {
   assert.equal(expected.get(material.unit.compositionNodeId), opening.goalId)
   assert.equal(material.unit.orientationGoalId, opening.goalId)
   assert.equal(hash(goal), opening.goalSha256, 'Orientation changed since its independent content review')
-  assert.equal(hash({ unit: material.unit, intro: material.intro }),
+  assert.equal(hash({ unit: material.unit, intro: material.intro }), opening.materialSha256)
+  assert.equal(opening.materialSha256,
     openings.find(row => row.goalId === opening.goalId)?.materialSha256,
     'Unit introduction changed since its independent bilingual review')
   assert.equal(imageHash(opening.imagePath), opening.imageSha256, 'Image changed since its actual visual review')

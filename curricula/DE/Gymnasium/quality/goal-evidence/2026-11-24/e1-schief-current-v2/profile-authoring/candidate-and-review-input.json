@@ -1,0 +1,140 @@
+{
+  "currentGoal": {
+    "id": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+    "title": "Schiefen Wurf beschreiben",
+    "titleEn": "Describe Oblique Projection",
+    "description": "Die lernende Person kann den schiefen Wurf ohne Luftwiderstand als Überlagerung einer gleichförmigen horizontalen und einer durch die Schwerkraft gleichmäßig beschleunigten vertikalen Bewegung beschreiben und typische Flugbahnen qualitativ skizzieren.",
+    "descriptionEn": "The learner can describe oblique projectile motion without air resistance as the superposition of uniform horizontal motion and vertical motion with constant gravitational acceleration and qualitatively sketch typical trajectories.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+        "title": "Visualisierung: Schiefen Wurf beschreiben",
+        "url": "/assets/goal-visualizations/physik/fbecbd60-5db3-51e8-94be-d66b066ffa06/fbecbd60-5db3-51e8-94be-d66b066ffa06.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Schiefen Wurf beschreiben.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Schiefen Wurf beschreiben\". Die lernende Person kann den schiefen Wurf ohne Luftwiderstand als Überlagerung einer gleichförmigen horizontalen und einer durch die Schwerkraft gleichmäßig beschleunigten vertikalen Bewegung beschreiben und typische Flugbahnen qualitativ skizzieren.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "originalCandidate": {
+    "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+    "reason": "Gemeinsame Zeit verbindet die gleichförmige horizontale mit der gleichmäßig beschleunigten vertikalen Bewegung; geänderte vertikale Startanteile prüfen den qualitativen Transfer. / A shared time links uniform horizontal motion with uniformly accelerated vertical motion; changed initial vertical components test qualitative transfer.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "dissent": [],
+    "profile": {
+      "archetype": "representation",
+      "expectations": [
+        {
+          "id": "components",
+          "essentialUnderstandingDe": "Der schiefe Wurf lässt sich aus gleichförmiger Horizontalbewegung und vertikaler Bewegung mit Anfangsanteil und genau einer Fallbeschleunigung zusammensetzen; alle Komponenten verwenden dieselbe Zeit.",
+          "essentialUnderstandingEn": "Oblique projection can be composed from uniform horizontal motion and vertical motion with an initial component and exactly one gravitational acceleration; all components use the same time.",
+          "observablePerformanceDe": "Die lernende Person übersetzt vorgegebene Komponenten- oder Zeitdaten in eine qualitative Flugbahnskizze und erklärt am Scheitel den Unterschied zwischen vertikaler und gesamter Geschwindigkeit.",
+          "observablePerformanceEn": "The learner translates supplied component or time data into a qualitative trajectory sketch and explains the difference between vertical and total velocity at the highest point."
+        },
+        {
+          "id": "changed-launch",
+          "essentialUnderstandingDe": "Ein vertikaler Startanteil nach oben oder unten verändert den vertikalen Bewegungsbeginn, nicht die konstante horizontale Bewegung oder die einmal wirkende Fallbeschleunigung im idealisierten Modell.",
+          "essentialUnderstandingEn": "An upward or downward initial vertical component changes the initial vertical motion, not the constant horizontal motion or the single gravitational acceleration in the idealised model.",
+          "observablePerformanceDe": "Die lernende Person konstruiert für einen geänderten Startanteil eine konsistente qualitative Bahn und begründet, welche bekannten Scheitel-/Symmetrieaussagen für die neue Start- und Endhöhe gelten.",
+          "observablePerformanceEn": "The learner constructs a consistent qualitative trajectory for a changed initial component and explains which familiar highest-point/symmetry statements apply to the new initial and final heights."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "components",
+          "changed-launch"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "vertical-sign",
+          "textDe": "Positiver gegenüber negativem vertikalem Startanteil bei gleichem horizontalem Anteil.",
+          "textEn": "Positive versus negative initial vertical component at equal horizontal component."
+        },
+        {
+          "id": "height-context",
+          "textDe": "Gleiche Start-/Endhöhe gegenüber Abwurf oberhalb des Bodens; typische Symmetrie nicht auf den abgeschnittenen gesamten Flug übertragen.",
+          "textEn": "Equal launch/landing height versus launch above the ground; do not transfer typical symmetry to the entire height-truncated flight."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "upward-components",
+          "taskDemandDe": "Ein ideales Wurfmodell ohne Luftwiderstand gibt für t=0/0,2/0,4/0,6/0,8 s die Positionen (x,y)=(0,0)/(0,6;0,6)/(1,2;0,8)/(1,8;0,6)/(2,4;0) m. Dabei bleibt v_x=3 m/s und v_y durchläuft +4/+2/0/−2/−4 m/s. Skizziere die typische Bahn und erkläre Komponenten und Bewegung am höchsten Punkt; keine trigonometrische Zerlegung ist gefordert.",
+          "taskDemandEn": "An ideal projectile model without air resistance gives positions (x,y)=(0,0)/(0.6,0.6)/(1.2,0.8)/(1.8,0.6)/(2.4,0) m at t=0/0.2/0.4/0.6/0.8 s. Here v_x remains 3 m/s while v_y takes +4/+2/0/−2/−4 m/s. Sketch the typical trajectory and explain components and motion at the highest point; no trigonometric decomposition is required.",
+          "expectedPerformanceDe": "Konstruiert eine nach unten gekrümmte, zur gleichen Start-/Endhöhe passende Bahn mit gleich großen horizontalen Zeitschritten; erklärt, dass am Scheitel nur v_y=0, aber v_x und die abwärts gerichtete Beschleunigung nicht null sind. Verwendet für beide Komponenten dieselben Zeiten.",
+          "expectedPerformanceEn": "Construct a downward-curving trajectory consistent with equal start/landing heights and equal horizontal steps in equal times; explain that only v_y=0 at the highest point, while v_x and downward acceleration are nonzero. Use the same times for both components.",
+          "understandingFocusDe": "Eigenständige Koordination von Tabelle, Geschwindigkeitskomponenten und typischer Bahn statt auswendig gelernter Scheitelbehauptung.",
+          "understandingFocusEn": "Independent coordination of a table, velocity components and typical trajectory rather than a memorised claim about the highest point."
+        },
+        {
+          "id": "downward-launch",
+          "taskDemandDe": "Ein frischer idealer Wurf startet 2 m über dem Boden mit unverändert nach rechts gerichtetem v_x, aber einem von Anfang an nach unten gerichteten vertikalen Startanteil. Die vertikale Beschleunigung bleibt konstant nach unten. Skizziere qualitativ und vergleiche mit dem zuvor nach oben gestarteten Wurf; eine Flugzeitrechnung ist nicht verlangt.",
+          "taskDemandEn": "A fresh ideal projectile starts 2 m above the ground with unchanged rightward v_x but an initially downward vertical component. Vertical acceleration remains constant downward. Sketch qualitatively and compare with the previous upward launch; no flight-time calculation is required.",
+          "expectedPerformanceDe": "Zeichnet eine unmittelbar sinkende, zunehmend steile Bahn bei gleichen horizontalen Zeitabständen und erklärt, warum nach dem Abwurf kein oberhalb des Startpunkts liegender Scheitel auftritt. Beschreibt den schiefen Wurf als waagerechten Wurf plus gleichförmigen vertikalen Startanteil oder als zwei getrennte Komponenten mit nur einmal berücksichtigter Erdbeschleunigung.",
+          "expectedPerformanceEn": "Draw an immediately descending, increasingly steep trajectory with equal horizontal displacements in equal times and explain why no highest point above the launch position occurs after release. Describe oblique projection as horizontal projection plus a uniform initial vertical contribution, or as two components with gravity included only once.",
+          "understandingFocusDe": "Echter Vorzeichen-/Höhenwechsel bleibt qualitative Wurfkompetenz; mathematisch zulässige Überlagerung ohne doppelte Fallbeschleunigung.",
+          "understandingFocusEn": "A genuine sign/height change remains a qualitative projectile competence; mathematically valid superposition without double gravitational acceleration."
+        }
+      ]
+    }
+  },
+  "actualIndependentProfileReview": {
+    "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+    "decision": "revise",
+    "reason": "Beide Modellfälle sind physikalisch stimmig. Im ersten Fall legt der Körper alle 0,2 s horizontal 0,6 m zurück. Bei positiver y-Richtung nach oben ergeben die Geschwindigkeiten eine konstante Beschleunigung von −10 m/s². Am Scheitel nach 0,4 s bewegt sich der Körper mit 3 m/s horizontal weiter. Die Aufgabe gibt diesen Geschwindigkeitsbefund bereits vollständig vor. Der zweite Fall prüft mit geändertem Startvorzeichen und tieferem Landepunkt einen echten Transfer. Beide Fälle verwenden ausdrücklich Modelldaten oder Modellannahmen und verlangen kein Experiment.",
+    "requiredChanges": [
+      "In „upward-components“ die Zeitpunkte und Positionen als Modelldaten beibehalten und die vollständige Geschwindigkeitsliste aus der Aufgabenstellung nehmen. Die lernende Person soll aus den Punktabständen und der Bahnform die Richtung der Geschwindigkeit am Scheitel erschließen und die dort weiterhin wirkende Fallbeschleunigung begründen.",
+      "In beiden deutschen Erwartungstexten „horizontale Zeitschritte“ bzw. „horizontale Zeitabstände“ durch „gleich große horizontale Wegstrecken in gleichen Zeitintervallen“ ersetzen. In beiden Sprachfassungen soll aus der Skizze hervorgehen, dass x und y Ortskoordinaten sind und die Zeit durch Markierungen an den Bahnpunkten dargestellt wird.",
+      "In „changed-launch“ die Formulierung „einmal wirkende Fallbeschleunigung“ präzisieren. Die Beschleunigung wirkt während des gesamten Flugs konstant nach unten. Bei der zulässigen Zerlegung in waagerechten Wurf und gleichförmigen vertikalen Zusatzanteil geht sie genau einmal in die Rechnung ein. In „downward-launch“ die erwartete Symmetriebegründung ausdrücklich benennen: Der tatsächlich durchflogene Abschnitt beginnt am höchsten Punkt dieses Flugs und enthält nur den absteigenden Ast."
+    ]
+  },
+  "boundary": "Other blind current round is still running. Author only these three local P repairs; no description/prerequisite/cut edit or approval claim. Exact successor will go to two fresh blind reviews."
+}

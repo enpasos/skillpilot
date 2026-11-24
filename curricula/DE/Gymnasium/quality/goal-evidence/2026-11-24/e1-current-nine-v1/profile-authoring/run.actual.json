@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "contract": "actual-positive-profile-candidate-author-v1",
+  "threadId": "01a20bc2-89c0-73e2-bc8e-af59f494d5a7",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "ultra",
+  "startedAt": "2026-11-24T04:13:49.291Z",
+  "completedAt": "2026-11-24T04:23:37.252Z",
+  "cwd": "/tmp/e1-t5/profile-author",
+  "sandbox": {
+    "type": "read-only"
+  },
+  "exitCode": 0,
+  "authorRole": "candidate_author; not an independent reviewer of these bodies",
+  "goalCount": 9,
+  "caseCount": 18,
+  "inputPins": [
+    {
+      "path": "canonical-input.json",
+      "sha256": "d57f003d368fcee48808513346c1faf2d4c07d67e99e2841066d5f526841f0c6"
+    },
+    {
+      "path": "criteria.md",
+      "sha256": "8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460"
+    },
+    {
+      "path": "prompt.txt",
+      "sha256": "0b3cc5c28e5826818b7953db102e500cf1ec27c12b4ff4d40fce2bf7ff421527"
+    },
+    {
+      "path": "output.schema.json",
+      "sha256": "b6b10d3c274672657cbf1d5a79845230116628b9dccc2c584e0ba3805064c8c5"
+    }
+  ],
+  "outputPins": [
+    {
+      "path": "events.jsonl",
+      "sha256": "00cf0736e2a2e4f93c653b249a7b186664820f1301b8d001685ef050c53fc0f9"
+    },
+    {
+      "path": "response.json",
+      "sha256": "3b1807579681a6df2320f489715f0df2fdf3efd3036a8217c3ac370703015d44"
+    }
+  ],
+  "limits": "No goal/prerequisite edits. Actual9 profiles and18 fresh case briefs are candidates for subsequent exact-body blind reviews; author did not receive other review outputs. Source/projection and presentation alignment are not claimed by this author."
+}

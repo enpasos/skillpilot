@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "role": "candidate_author",
+  "threadId": "01a20bd4-cbc6-7a91-9e60-2ac6a87af88c",
+  "provider": "OpenAI",
+  "model": "gpt-6.1-sol",
+  "reasoningEffort": "ultra",
+  "startedAt": "2026-11-24T04:33:45.879Z",
+  "completedAt": "2026-11-24T04:35:57.969Z",
+  "inputArtifacts": {
+    "prompt.txt": "sha256:bfd874a6540eeb715e6560eca23b63dd2e4fe0b9e7b2e9602da404fa32951e9b",
+    "candidate-and-review-input.json": "sha256:9889707c5754cb1280f9616aef4fdc2c84b08b126dd6e0028dca06de816d0e77",
+    "criteria.md": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+    "output.schema.json": "sha256:988c17df292b6a459ca3cc5c29d1d608fbc846a867be4f715fd1f7499753dc21"
+  },
+  "responseSha256": "sha256:902b2449a9c0875fe2b53449693ac721b3f395daed8315e63d9fdbb5110921a8",
+  "eventsSha256": "sha256:98fd113d0294f3a5525d70aef4b78ef1b21341f088c73ac610f676df573f4ea6",
+  "turnContext": {
+    "turn_id": "01a20bd4-cf8c-7fd1-8833-436fc64a86c3",
+    "root_turn_id": "01a20bd4-cf8c-7fd1-8833-436fc64a86c3",
+    "disabled_plugin_ids": [],
+    "cwd": "/tmp/e1-t5/bes-profile-author-v2",
+    "approval_policy": "never",
+    "approvals_reviewer": "user",
+    "permission_profile": {
+      "type": "managed",
+      "file_system": {
+        "type": "restricted",
+        "entries": [
+          {
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "root"
+              }
+            },
+            "access": "read"
+          }
+        ]
+      },
+      "network": "restricted"
+    },
+    "model": "gpt-6.1-sol",
+    "comp_hash": "3000",
+    "collaboration_mode": {
+      "mode": "default",
+      "settings": {
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "ultra",
+        "developer_instructions": null
+      }
+    },
+    "multi_agent_version": "v2",
+    "realtime_active": false,
+    "cyber_access_program": "standard",
+    "effort": "ultra",
+    "summary": "none",
+    "sandbox_policy": {
+      "type": "read-only"
+    }
+  },
+  "limit": "Informed profile revision author, no independent approval claim; exact body goes to two fresh blind reviewers.",
+  "completionEvidence": "Actual events.jsonl terminal turn.completed and nonempty structured response; launcher exit status was not retained across context compaction."
+}

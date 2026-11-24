@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physik-e1-schief-current-v2-20261124-informed-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex /root/th_mv, non-author integrator after reading both actually executed fresh blind current D/P reviews.",
+  "synthesizedAt": "2026-11-24T05:03:09.775Z",
+  "batch": {
+    "batchId": "physik-e1-schief-current-v2-20261124",
+    "batchManifestDigest": "sha256:0f0577e1b3ab81f06a74144f7e7d30093986b2b931ad0a2fe5d403d382f84a06",
+    "configDigest": "sha256:b7ee7c3e83f93f9f148c23b80dcc6fce3dba33f124e4181132f0ac41950d5b71",
+    "bundleFingerprint": "sha256:9edde25076ae2a3846a0da112a60f5bec2580bd1e366682fd10cc34837087292",
+    "bookDigest": "sha256:ecad58e4979abc8ca4243f22f3934b2b6649855f3614e0f17fa2b0ab4f827d97",
+    "reviewInputFingerprint": "sha256:43ae67255904cfb235ee64985c3087ab647458a379c5cc6ff5a73af46324eeb3",
+    "dualSummaryDigest": "sha256:c86633e11d703362a99022faf4a29dacdd9ec449dbee4c5d52ebbdcdfaaac01f",
+    "canonicalLandscapeDigest": "sha256:040034d270fad079b53d271cbb640847d1761440b979d9fe52a18c3982a5caf5"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physik-e1-schief-current-v2-20261124-a",
+      "campaignDigest": "sha256:13b7e8765e93d61711a70fcf30439e9767b50de563196d2722eeec06086490c7",
+      "roundId": "physik-e1-schief-current-v2-20261124-first-pass-a",
+      "independenceGroupId": "physik-e1-schief-current-v2-20261124-independent-a",
+      "reviewInputFingerprint": "sha256:43ae67255904cfb235ee64985c3087ab647458a379c5cc6ff5a73af46324eeb3",
+      "batchId": "physik-e1-schief-current-v2-20261124-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:33d63ff50284edb8b89658e48ebf15dd19d798eb08f43539f45f9220939788c0",
+      "runId": "physik-e1-schief-current-v2-20261124-a-01a20bec-c4cd-7ad3-b71f-1665d483a97a",
+      "runManifestDigest": "sha256:47fa2d1fc0151b68f78fb514703ae6628bb1a08f75f0ac28c724ed9408401f0d",
+      "resultsDigest": "sha256:f627ee9fab937f366f4cf65e4f6f3b7f988bc4dd3f3c773602467bc31c672f84"
+    },
+    "second": {
+      "campaignId": "physik-e1-schief-current-v2-20261124-b",
+      "campaignDigest": "sha256:02a9a3e0a638d662967d7cc3f109690ec6ccf6c1c8448e969559067cea17a3d6",
+      "roundId": "physik-e1-schief-current-v2-20261124-first-pass-b",
+      "independenceGroupId": "physik-e1-schief-current-v2-20261124-independent-b",
+      "reviewInputFingerprint": "sha256:43ae67255904cfb235ee64985c3087ab647458a379c5cc6ff5a73af46324eeb3",
+      "batchId": "physik-e1-schief-current-v2-20261124-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9f4e48ffb91b341f90ae67872d815f9e67487bfeb816cb0fe9e7ba6316f65086",
+      "runId": "physik-e1-schief-current-v2-20261124-b-01a20bec-c4cc-7a50-a92d-7d65936e74e7",
+      "runManifestDigest": "sha256:c53fd7dac08400124d914783157df3de206958b56c1991659e5735eeeb7a4047",
+      "resultsDigest": "sha256:d9d24306595519fe3b7b79891ece829ee7b644d72a5ead66a3f0bb93ab9259d8"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physik-e1-schief-current-v2-20261124-informed-synthesis-decision-001",
+      "goalId": "fbecbd60-5db3-51e8-94be-d66b066ffa06",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:eb057cbd36e2324347f60f0c31df17a80b6163948aab8cefb6f0a86b59ca9778",
+      "pageFingerprint": "sha256:5c7bd7db8ffdd463678423276f8fd77c31891dcc88b9b5cad203ac9f3c883ac7",
+      "goalReviewContextFingerprint": "sha256:b5132b41fdd136b327b3b797166b4575518e6be8ffa898889907caac8021121d",
+      "finalText": {
+        "titleDe": "Schiefen Wurf beschreiben",
+        "titleEn": "Describe Oblique Projection",
+        "descriptionDe": "Die lernende Person kann den schiefen Wurf ohne Luftwiderstand als Überlagerung einer gleichförmigen horizontalen und einer durch die Schwerkraft gleichmäßig beschleunigten vertikalen Bewegung beschreiben und typische Flugbahnen qualitativ skizzieren.",
+        "descriptionEn": "The learner can describe oblique projectile motion without air resistance as the superposition of uniform horizontal motion and vertical motion with constant gravitational acceleration and qualitatively sketch typical trajectories."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physik-e1-schief-current-v2-20261124-a-01a20bec-c4cd-7ad3-b71f-1665d483a97a-fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "recordDigest": "sha256:c7806afd7fc50f7814a9f0e09b7510aba02bb01bacbcafa5f6ae9047e3d9fc80"
+        },
+        "second": {
+          "recordId": "physik-e1-schief-current-v2-20261124-b-01a20bec-c4cc-7a50-a92d-7d65936e74e7-fbecbd60-5db3-51e8-94be-d66b066ffa06",
+          "recordDigest": "sha256:7e8aea5795bb4fb0bee61c1500207c8345d3db802a80e670232af993d82c9334"
+        }
+      },
+      "rationaleDe": "Beide frischen unabhängigen Runden behalten die aktuelle Beschreibung und das exakte überarbeitete Profil bei. Die erste Aufgabe liefert nun Orts-Zeit-Modelldaten, ohne die vollständige Geschwindigkeitsliste vorwegzunehmen. Die Person muss gemeinsame Zeitmarkierungen und gleiche horizontale Ortsänderungen koordinieren und die horizontale Scheitelgeschwindigkeit bei fortbestehender Fallbeschleunigung begründen. Der Abwärtswurf aus veränderter Höhe erzwingt einen eigenständigen Transfer auf den absteigenden Ast; die Beschleunigung wirkt durchgehend und wird in jeder zulässigen Überlagerung genau einmal berücksichtigt. Die Voraussetzungen sind aktuell VEC samt geprüfter Abschlusskette; es werden keine neuen Rechen- oder Experimentpflichten aus Bild oder Karten abgeleitet. Ich übernehme die positive Verstehensevidenz der ersten Runde. Kein kanonischer Text, keine Voraussetzung und kein Schnitt wurde verändert; frühere abweichende Meinungen bleiben erhalten.",
+      "rationaleEn": "Both fresh independent rounds retain the current description and exact revised profile. The first task now supplies modeled position-time data without giving the full velocity list in advance. The learner must coordinate common time labels and equal horizontal displacements and justify horizontal apex velocity with continuing gravitational acceleration. Downward launch from a changed height forces independent transfer to the descending branch; acceleration acts throughout and is counted exactly once in each valid superposition. Current preparation is VEC and its reviewed full closure; neither illustrations nor cards create extra calculation or experiment requirements. I select the first round's positive understanding evidence. No canonical wording, prerequisite or cut changed; earlier dissent remains intact."
+    }
+  ],
+  "manifestFingerprint": "sha256:24e91adb5a94147ae692ea52b155df4011613a8df6d2f81c386ef6cbb2162187"
+}

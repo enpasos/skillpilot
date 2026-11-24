@@ -1,0 +1,36 @@
+{
+  "descriptionReviews": [
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Bei eindimensionaler Bewegung bedeutet konstante Beschleunigung gleiche vorzeichenbehaftete Geschwindigkeitsänderungen in gleichen Zeitspannen: a = Δv/Δt. Dazu gehören eine t-v-Gerade, ein waagerechter t-a-Graph und bei a ≠ 0 ein parabelförmiger t-s-Graph. Die t-s-Steigung beschreibt v, die t-v-Steigung a und die vorzeichenbehaftete t-v-Fläche die Ortsänderung. Ob der Geschwindigkeitsbetrag wächst, hängt von den Vorzeichen von v und a ab; momentanes v = 0 schließt Beschleunigung nicht aus.",
+        "essentialUnderstandingEn": "In one-dimensional motion, constant acceleration means equal signed velocity changes over equal time intervals: a = Δv/Δt. This corresponds to a straight t-v graph, a horizontal t-a graph and, for a ≠ 0, a parabolic t-s graph. The t-s slope represents v, the t-v slope represents a and the signed t-v area represents displacement. Whether speed increases depends on the signs of v and a; instantaneous v = 0 does not exclude acceleration.",
+        "observablePerformanceDe": "Die lernende Person konstruiert selbstständig aus einer neuen Bewegungsbeschreibung, einem vorgegebenen Graphen oder Daten unter ausdrücklich angenommener konstanter Beschleunigung zusammenpassende t-s-, t-v- und t-a-Diagramme. Sie berücksichtigt Anfangsort, Anfangsgeschwindigkeit und positive Richtung, beschriftet Achsen mit passenden Einheiten und begründet Steigungen, Krümmung sowie Ortsänderungen durch vorzeichenbehaftete t-v-Flächen. Ihre Aussagen gelten für das angegebene Modellintervall; Differentialrechnung wird nicht vorausgesetzt.",
+        "observablePerformanceEn": "The learner independently constructs consistent t-s, t-v and t-a graphs from a fresh motion description, a supplied graph or data with explicitly assumed constant acceleration. They account for initial position, initial velocity and positive direction, label axes with appropriate units and explain slopes, concavity and displacement through signed t-v areas. Their claims apply to the stated model interval; calculus is not required.",
+        "transferExpectationDe": "In einer unabhängig gestellten neuen Aufgabe ist die Anfangsgeschwindigkeit der konstanten Beschleunigung entgegengerichtet und das Intervall umfasst einen Richtungswechsel. Die lernende Person sagt zunächst qualitativ Abbremsen, momentanen Stillstand und anschließendes Schnellerwerden voraus und entwickelt die passenden Zeitdiagramme. Sie erklärt das Ortsmaximum oder Ortsminimum, die fortbestehende Beschleunigung bei v = 0 und die Vorzeichen der Ortsänderungen.",
+        "transferExpectationEn": "In an independently presented fresh task, initial velocity opposes constant acceleration and the interval includes a reversal. The learner first qualitatively predicts slowing, instantaneous rest and subsequent speeding up, then develops the corresponding time graphs. They explain the position maximum or minimum, continuing acceleration at v = 0 and the signs of displacement."
+      },
+      "rationale": "The descriptions accurately and equivalently identify the constant-acceleration model and its three coordinated representations. This is one coherent competence, with no demonstrated need for splitting or expanding the description. The compiled applicability includes Sek I in Baden-Württemberg and Bavaria and Sek II elsewhere; the core can be demonstrated without calculus. The prerequisite area interpretation supports graph coordination, while force mechanisms, vertical-throw applications, experimental video analysis and general motion-law work remain separate. The supplied profile needs the local clarifications identified below.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise"
+    }
+  ],
+  "profileReviews": [
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "decision": "revise",
+      "reason": "Both cases are numerically correct. The first gives a = +0.40 m/s² and displacement 0.60 m from 1 to 2 s. The second gives a = −0.50 m/s², positions 0, 0.75, 1.00, 0.75, 0 m and reversal at 2 s. However, the first brief supplies only four position/velocity samples without explicitly assuming constant acceleration between them; the samples establish compatibility with that model, not continuous constancy. The phrase 'without calculus' also permits an unnecessary method restriction. Otherwise, the three required expectations, two independent demonstrations and fresh-transfer requirements cover the competence adequately. The reversal and change of starting representation provide meaningful transfer beyond the image. DE/EN content agrees, and these supplied model/graph tasks require no experimental provenance or hazardous physical execution.",
+      "requiredChanges": [
+        "In applicationCaseBriefs[id=starting-from-rest].taskDemandDe, replace the opening with: 'Für ein eindimensionales Wagenmodell wird im gesamten Intervall von 0 bis 3 s konstante Beschleunigung angenommen. Bei t = 0; 1; 2; 3 s gelten die Orte …'. Make the equivalent change in taskDemandEn: 'For a one-dimensional cart model, constant acceleration is assumed throughout the interval from 0 to 3 s. At t = 0, 1, 2, 3 s, the positions are …'. Retain all existing numerical data and expected results.",
+        "In expectations[id=linked-three-graphs].observablePerformanceDe/En, replace 'ohne Differentialrechnung' / 'without calculus' with 'ohne Differentialrechnung vorauszusetzen' / 'without requiring calculus', preserving accessibility across Sek I/II while accepting valid alternative methods."
+      ]
+    }
+  ],
+  "limitations": [
+    "Effective applicability was assessed from native-national-scope.json. The referenced composition-view files, duration policy and official curriculum originals were not independently inspected; complete external source mapping was not verified.",
+    "Inspected the supplied three-page PDF and all four attached images. In book-model.json, inspected the assigned page, chapters, projection information and assigned graph node, rather than every unassigned diagnostic graph node."
+  ]
+}

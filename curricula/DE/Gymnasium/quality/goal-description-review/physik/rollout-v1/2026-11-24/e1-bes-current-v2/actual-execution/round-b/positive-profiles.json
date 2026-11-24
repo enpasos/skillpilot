@@ -1,0 +1,93 @@
+[
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "dissent": [],
+    "evidenceLevel": "E1",
+    "goalFingerprint": "sha256:70e4e02a89e3533891437bcd8ecdb5eebbf6844890928e623f32a6fbb2c2dd58",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "maximumClaimScope": "G1",
+    "profile": {
+      "applicationCaseBriefs": [
+        {
+          "expectedPerformanceDe": "Ermittelt a = +0,40 m/s², zeichnet t-v linear steigend, t-a konstant positiv und t-s zunehmend steil, nach oben gekrümmt. Prüft etwa Δs von 1 bis 2 s = 0,60 m an der Trapezfläche; erklärt, warum v(0) = 0 keine fehlende Beschleunigung bedeutet.",
+          "expectedPerformanceEn": "Finds a = +0.40 m/s² and draws linearly increasing t-v, constant positive t-a, and increasingly steep, concave-up t-s. Checks, for example, Δs from 1 to 2 s = 0.60 m using the trapezoid area; explains why v(0) = 0 does not mean absent acceleration.",
+          "id": "starting-from-rest",
+          "taskDemandDe": "Für ein eindimensionales Wagenmodell wird im gesamten Intervall von 0 bis 3 s konstante Beschleunigung angenommen. Bei t = 0; 1; 2; 3 s gelten die Orte 0,20; 0,40; 1,00; 2,00 m und Geschwindigkeiten 0; 0,40; 0,80; 1,20 m/s. Erstelle und erkläre die drei kontinuierlichen Zeitdiagramme unter dieser Annahme.",
+          "taskDemandEn": "For a one-dimensional cart model, constant acceleration is assumed throughout the interval from 0 to 3 s. At t = 0, 1, 2, 3 s, the positions are 0.20, 0.40, 1.00, 2.00 m and velocities are 0, 0.40, 0.80, 1.20 m/s. Construct and explain the three continuous time graphs under this assumption.",
+          "understandingFocusDe": "Konstante Beschleunigung bedeutet gleiche Geschwindigkeitszuwächse in gleichen Zeitintervallen; bei diesem in positiver Richtung fahrenden Wagen wachsen dabei die positiven Ortszuwächse. Die Stützwerte zeigen gleiche mittlere Beschleunigungen in den aufgeführten Intervallen; die Konstanz auch zwischen den Stützstellen ist eine Modellannahme.",
+          "understandingFocusEn": "Constant acceleration means equal velocity increments over equal time intervals; for this cart moving in the positive direction, the positive displacements increase. The samples show equal average accelerations over the listed intervals; constancy between the samples is a model assumption."
+        },
+        {
+          "expectedPerformanceDe": "Erhält a = −0,50 m/s² und t-s-Punkte bei t = 0; 1; 2; 3; 4 s von 0; 0,75; 1,00; 0,75; 0 m. Erklärt Abbremsen bis 2 s, danach schnelleres Rückwärtsfahren: Im t-v-Graphen durchquert v bei 2 s die Nulllinie von positiv nach negativ, im t-s-Graphen erreicht s dort ein Maximum und der t-a-Graph bleibt durchgehend bei a = −0,50 m/s². Der t-a-Graph allein legt den Umkehrzeitpunkt nicht fest. Die Angaben bestimmen die Bewegung bis einschließlich 4 s samt Ort und Geschwindigkeit bei 4 s, aber keinen eindeutigen Verlauf danach; dafür ist eine zusätzliche Annahme über die Beschleunigung nach 4 s nötig.",
+          "expectedPerformanceEn": "Obtains a = −0.50 m/s² and t-s points at t = 0, 1, 2, 3, 4 s of 0, 0.75, 1.00, 0.75, 0 m. Explains slowing until 2 s, then increasing backward speed: in the t-v graph, v crosses zero from positive to negative at 2 s; in the t-s graph, s reaches a maximum there; and the t-a graph remains at a = −0.50 m/s² throughout. The t-a graph alone does not determine the reversal time. The information determines motion through 4 s, including position and velocity at 4 s, but no unique course afterward; that requires a further assumption about acceleration after 4 s.",
+          "id": "deceleration-through-reversal",
+          "taskDemandDe": "Ein t-v-Graph verläuft für 0 bis 4 s geradlinig von +1,0 auf −1,0 m/s; s(0) = 0. Entwickle unabhängig passende t-s- und t-a-Darstellungen und beschreibe die Bewegung vor und nach v = 0. Erläutere, was jeder Graph bei 2 s zeigt, was die Angaben bis einschließlich 4 s festlegen und ob sie auch die spätere Bewegung eindeutig bestimmen.",
+          "taskDemandEn": "A t-v graph runs straight from +1.0 to −1.0 m/s over 0 to 4 s; s(0) = 0. Independently develop matching t-s and t-a representations and describe motion before and after v = 0. Explain what each graph shows at 2 s, what the information determines through 4 s, and whether it also uniquely determines later motion.",
+          "understandingFocusDe": "Negatives a ist mit Abbremsen und mit wachsendem Geschwindigkeitsbetrag vereinbar; beim Richtungswechsel gehören v-Nulldurchgang und s-Maximum zusammen, während a unverändert bleibt. Der t-a-Graph allein zeigt den Umkehrzeitpunkt nicht.",
+          "understandingFocusEn": "Negative a can describe both slowing and increasing speed; at reversal, the zero crossing of v coincides with the maximum of s while a remains unchanged. The t-a graph alone does not show the reversal time."
+        }
+      ],
+      "archetype": "representation",
+      "coverageExpectations": {
+        "alternativeExpectationGroups": [],
+        "freshVariationRequired": true,
+        "independentTransferRequired": true,
+        "minimumIndependentDemonstrations": 2,
+        "requiredExpectationIds": [
+          "constant-acceleration",
+          "linked-three-graphs",
+          "zero-velocity-and-validity"
+        ]
+      },
+      "expectations": [
+        {
+          "essentialUnderstandingDe": "Bei gleichmäßig beschleunigter eindimensionaler Bewegung ist a = Δv/Δt konstant; das Vorzeichen von a allein entscheidet nicht, ob der Geschwindigkeitsbetrag wächst.",
+          "essentialUnderstandingEn": "In uniformly accelerated one-dimensional motion, a = Δv/Δt is constant; the sign of a alone does not determine whether speed increases.",
+          "id": "constant-acceleration",
+          "observablePerformanceDe": "Begründet aus Geschwindigkeitsänderungen das konstante a mit Einheit m/s² und beschreibt anhand der Vorzeichen von v und a schneller oder langsamer werdende Bewegung.",
+          "observablePerformanceEn": "Justifies constant a from velocity changes with unit m/s² and uses the signs of v and a to describe speeding up or slowing down."
+        },
+        {
+          "essentialUnderstandingDe": "Konstantes a entspricht einer t-v-Geraden und einem waagerechten t-a-Graphen; bei a ≠ 0 ist der t-s-Graph parabelförmig. Seine Steigung beschreibt v, seine Krümmungsrichtung das Vorzeichen von a.",
+          "essentialUnderstandingEn": "Constant a corresponds to a straight t-v graph and a horizontal t-a graph; for a ≠ 0 the t-s graph is parabolic. Its slope describes v and its concavity the sign of a.",
+          "id": "linked-three-graphs",
+          "observablePerformanceDe": "Erstellt aus neuen Bewegungsdaten zusammenpassende t-s-, t-v- und t-a-Darstellungen mit Achsen und Einheiten; begründet Steigung, Krümmung und die Übereinstimmung der Ortsänderungen mit vorzeichenbehafteten t-v-Flächen, ohne Differentialrechnung vorauszusetzen. Jede fachlich gültige Erklärung der Graphenbeziehungen ist zulässig.",
+          "observablePerformanceEn": "Constructs consistent t-s, t-v, and t-a representations from fresh motion data with axes and units; explains slope, concavity, and agreement of displacement with signed t-v areas without requiring calculus. Any valid explanation of the graph relationships is accepted."
+        },
+        {
+          "essentialUnderstandingDe": "v = 0 zu einem Zeitpunkt bedeutet nicht a = 0. Die Darstellungen beschreiben das angegebene Modellintervall und belegen allein keinen bestimmten Kraftmechanismus.",
+          "essentialUnderstandingEn": "v = 0 at one instant does not mean a = 0. The representations describe the stated model interval and alone do not establish a particular force mechanism.",
+          "id": "zero-velocity-and-validity",
+          "observablePerformanceDe": "Sagt bei geänderter Bewegungs- oder Beschleunigungsrichtung den Graphenverlauf voraus und erklärt einen möglichen Stillstandsmoment bei fortbestehender Beschleunigung; begrenzt die Aussage auf das Modellintervall.",
+          "observablePerformanceEn": "Predicts graph behavior when motion or acceleration direction changes and explains a possible instant of rest with continuing acceleration; limits the claim to the model interval."
+        }
+      ],
+      "variationAxes": [
+        {
+          "id": "relative-signs",
+          "textDe": "Geschwindigkeit und Beschleunigung gleichgerichtet gegenüber entgegengerichtet, einschließlich eines Richtungswechsels.",
+          "textEn": "Velocity and acceleration in the same versus opposite directions, including a reversal."
+        },
+        {
+          "id": "starting-representation",
+          "textDe": "Orts- und Geschwindigkeitsdaten gegenüber einer beschriebenen t-v-Geraden als Ausgangsdarstellung.",
+          "textEn": "Position and velocity data versus a described straight t-v graph as the starting representation."
+        }
+      ]
+    },
+    "profileFingerprint": "sha256:969277be3831429d8b5ed7d22a1b0b094698ac0a66be635e67c0fd6589bac192",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reason": "Gleiche vorzeichenbehaftete Geschwindigkeitsänderungen in gleichen Zeiten verbinden t-v-Gerade, waagerechten t-a-Graphen und t-s-Parabel. / Equal signed velocity changes over equal times link a straight t-v graph, horizontal t-a graph and parabolic t-s graph.",
+    "reviewAuthority": "ai_candidate",
+    "reviewCriteriaFingerprint": "sha256:8d64a50ede312df08795f6fddec82c1c3bcc8b77e50dad62220c201c819fd460",
+    "reviewId": "physik-e1-bes-current-20261124-v2",
+    "reviewInputFingerprint": "sha256:65a58ee7b7036125f9bba0a52b6132a4b533d09ce2ffe8a6cea85388415ffe41",
+    "reviewRunIds": [],
+    "reviewedAt": "2026-11-24T04:35:57.969Z",
+    "reviewer": "Actual clean Codex CLI gpt-6.1-sol/ultra narrow revision candidate author 01a20bd4-cbc6-7a91-9e60-2ac6a87af88c",
+    "schemaVersion": 2,
+    "status": "needs_human_review"
+  }
+]
