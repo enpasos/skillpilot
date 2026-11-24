@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "physics-e1-hh-st-lower-offer-independent-20261124-v1",
+  "reviewedAt": "2026-11-24T03:38:34.731429+00:00",
+  "reviewer": "codex-independent-source-stage-review",
+  "reviewType": "actual independent AI source, preparation and existing-content review",
+  "authorInput": "Claude-authored E.1 handover, Task 4 item 6; proposal treated as unreviewed and conclusions chosen independently",
+  "baseCommit": "bf34d99e7f4c80843567176535d54168f848ff71",
+  "scope": "Existing a8dc0290 lower-stage terminal practice in Hamburg and Sachsen-Anhalt; route-source verification. No new assessments, no learner-result transfer and no direct coverage expansion.",
+  "verdicts": {
+    "ST": {
+      "decision": "confirm-with-source-page-correction",
+      "approvedLowerAssessmentGoalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "requires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "coveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "passingPoints": 20,
+      "maxPoints": 20,
+      "reason": "The distinctive current task demands are actually supplied in Schuljahrgang 9: graph-area interpretation in the motion context, all three time diagrams, accelerated motion and motions with initial conditions. This supports the actual generalized initial-value and signed-area tasks as a reasonable transfer within the taught domain. The native full real P is separately complete, including every foreign prerequisite and an actual lower acquisition placement. The endpoint is approved for terminal practice, without assigning whole-goal mastery to TV or LAWS.",
+      "sourcePages": {
+        "physicsPrintedAndPdf": [
+          45,
+          46
+        ],
+        "mathematicsPdf": [
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          41,
+          42,
+          43,
+          47,
+          52
+        ],
+        "mathematicsPrinted": [
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          39,
+          40,
+          41,
+          45,
+          50
+        ]
+      },
+      "interpretationBoundary": "The plan does not literally spell out the exact reversal at t=2.5 s. Applying its motion-with-initial-conditions, signed speed/acceleration and graph-area framework to the given numbers is the independent pedagogical judgment, not a quoted official task or new official full-atom claim."
+    },
+    "HH": {
+      "decision": "reject-current-lower-offer",
+      "rejectedLowerAssessmentGoalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "nativePreparationMembershipPasses": true,
+      "reason": "Neither the retained Hamburg 2011 p.20 nor the current Hamburg 2024 p.32/41 explicitly supplies the signed graph-area reconstruction from an acceleration protocol with nonzero signed initial velocity, nonzero initial position, a shifted time origin and a reversal. The sources support simple motion diagrams and rest-start motion laws, with the current edition also presenting acceleration as a finite velocity change. This does not itself teach the signed area/initial-value coordination assessed at 20/20 in A. All 66 prerequisites occurring in the generated lower graph is insufficient evidence that these extra demands are supplied. Do not add HH binding or any graph-only coverage.",
+      "sourcePages": {
+        "retainedPhysicsPrintedAndPdf": [
+          2,
+          20,
+          23
+        ],
+        "currentPhysicsPrintedAndPdf": [
+          2,
+          4,
+          29,
+          32,
+          41,
+          44
+        ]
+      },
+      "requiredNextStep": "Provide and independently review a bounded lower-stage assessment matching the verified Hamburger supply, or explicitly author and review the missing preparation before an offer. No new exam or bridge authored in this Task 4 review. Do not invent official initial-condition/area claims."
+    }
+  },
+  "creditedCoverage": {
+    "currentAndApproved": [
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ],
+    "notClaimed": [
+      "262f807a-30d0-503e-986f-856cbd048e8e",
+      "1e459a1b-4159-5049-84eb-9928129c1610"
+    ],
+    "reason": "a8dc requires LAWS and practically uses signed v-areas, but it does not ask interval means from given position-time data and does not assess both uniform and accelerated law extraction from supplied diagrams. This review approves only the existing credited e4b coverage; prerequisite use is distinct from direct credited whole-goal coverage."
+  },
+  "exactSourceWitnesses": [
+    {
+      "land": "HH",
+      "edition": "retained Hamburg 2011",
+      "path": "curricula/DE/Gymnasium/input/HH/physik-gym-seki-data.pdf",
+      "sha256": "6cd5c7975b0ce1cc5d6e8365b39c632ea67f01fcd5d7f50bb38fc812e2c4e585",
+      "printedPage": 20,
+      "pdfPage": 20,
+      "quote": "stellen die Bewegungsgleichungen s = ½ at² und v = at dar",
+      "interpretation": "Rest-start equations; simple s-t/v-t communication and free-fall application are on the same page. No signed area or generalized initial-condition law claim is made. Extraction 3.2-MECH is the author-assigned right-column code; official §3.2 is actually p.23."
+    },
+    {
+      "land": "HH",
+      "edition": "current Hamburg 2024; Redaktion 2022",
+      "url": "https://dokumente.hamburg.de/resource/blob/798534/4cf0047ad61effacd1ff7e6ad819fa41/physik-data.pdf",
+      "sha256": "b879d9fc69b72f629135ab3f6b8234ea71ec52588e8333ed769659a346c19c8d",
+      "printedPage": 41,
+      "pdfPage": 41,
+      "quote": "Bewegungsdiagramme aufnehmen und auswerten",
+      "interpretation": "Current Mechanik II is J8/9. Same page supplies rest-start equations and acceleration as a change ratio, no signed graph-area law. Current p.44 has J10 throws; p.4 and p.29 distinguish upper-introduction/Abitur material. This review does not import that J10 material into the retained lower source."
+    },
+    {
+      "land": "ST",
+      "edition": "Fachlehrplan Physik Gymnasium 01.08.2022",
+      "path": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+      "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed",
+      "printedPage": 45,
+      "pdfPage": 45,
+      "quote": "Flächen unter den Graphen interpretieren",
+      "interpretation": "Movement diagrams, traffic applications, experiments and mechanical modeling on p.45 supply a real context for positive and negative graph areas."
+    },
+    {
+      "land": "ST",
+      "edition": "Fachlehrplan Physik Gymnasium 01.08.2022",
+      "path": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+      "sha256": "9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed",
+      "printedPage": 46,
+      "pdfPage": 46,
+      "quote": "Bewegungen mit Anfangsbedingungen",
+      "interpretation": "Same page names uniform motion, mean speed, uniform acceleration, all three time diagrams and experiments. The two new Wissensbestände route sourceSpans had p.45 and are corrected to p.46, retaining their partial mapping."
+    }
+  ],
+  "actualTaskPreparationMatrix": [
+    {
+      "taskDemand": "A: consistent a/v/s representations from shifted initial instant t=2, x=5, v=-1, a=+2; reversal and position predictions",
+      "canonicalSupply": [
+        "262f807a-30d0-503e-986f-856cbd048e8e",
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "bf8517a9-142b-5789-826a-767f3b277998"
+      ],
+      "ST": "Physics p.45-46 coordinated diagrams and motions with initial conditions; Math function values, linear graphs and quadratic terms at PDF p.43/47/52. Choosing tau=t-2 is an algebraic re-expression of the explicitly given initial condition, not calculus.",
+      "HH": "Source p.20/p.41 only prints rest-start laws. General signed initial-condition coordination is not evidenced as supplied by those source routes."
+    },
+    {
+      "taskDemand": "A: a-area as delta-v, signed v-areas, difference between displacement and travelled distance",
+      "canonicalSupply": [
+        "1e459a1b-4159-5049-84eb-9928129c1610",
+        "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+        "d6c3fb37-ece6-5b56-9221-1eeb21845877"
+      ],
+      "ST": "Physics p.45 explicitly supplies graph-area interpretation in motion; p.46 supplies v and a diagrams. Signed velocity before/after zero determines signed displacement; taking magnitudes determines distance. This is reviewed interpretation, not an official verbatim full-goal claim. Triangular areas use lower mathematics.",
+      "HH": "No area interpretation in retained p.20 or current motion modules. General area arithmetic in Mathematics cannot supply the missing physical graph-area relation."
+    },
+    {
+      "taskDemand": "A: compare s(4)=7.00 m with provided interval 7.03±0.05 m",
+      "canonicalSupply": [
+        "ce431132-dfc4-42c2-aff6-bd72035190f8"
+      ],
+      "ST": "The task supplies the numerical interval; compare 7.00 with 6.98..7.08. This is basic interval/rational-number use with the native measurement-resolution goal, not new statistical uncertainty propagation. Physics lower experiments and data comparisons support it.",
+      "HH": "This part by itself is accessible; it does not repair the missing initial-value/area preparation."
+    },
+    {
+      "taskDemand": "B: negative acceleration, general braking laws, stopping time/distance, physical limit of continued model",
+      "canonicalSupply": [
+        "262f807a-30d0-503e-986f-856cbd048e8e",
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "ST": "Initial-condition motions, three diagrams, traffic applications and Newtonian motion in p.45-46. Once v=0, a nonzero constant a changes v and cannot describe permanent rest; no additional mechanics topic or calculus is needed.",
+      "HH": "Simple traffic modeling is source-supported, but the full exact A+B task remains beyond the demonstrated supplied basis."
+    }
+  ],
+  "foreignPreparationReview": {
+    "count": 57,
+    "snapshot": "native-preparation.actual.json",
+    "sources": [
+      {
+        "land": "HH",
+        "key": "HH_GYM_SEKI_MATHEMATIK_2022",
+        "title": "Bildungsplan Gymnasium Sekundarstufe I - Mathematik, Hamburg 2022",
+        "path": "curricula/DE/Gymnasium/input/HH/mathematik-gym-seki-2022-data.pdf",
+        "role": "binding-core",
+        "official": true,
+        "url": "https://www.hamburg.de/resource/blob/122944/62db046dc3abf1ed671370d8c8b36c65/mathematik-gym-seki-2022-data.pdf",
+        "sha256": "cd58d4f764c6e7f30d617133b2c437a5b0b1edf7c8bc8599032cd67ff2fc9251",
+        "extractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_MATHEMATIK_SEKI_BILDUNGSPLAN_2022.source-extraction.json",
+        "extractionSha256": "c2555321823c8ace01aafc5eda4a7d76821638beddd3f7a76c7783a80ee7e53f"
+      },
+      {
+        "land": "ST",
+        "key": "ST_GYM_MATHEMATIK_FACHLEHRPLAN_2019",
+        "title": "Fachlehrplan Mathematik Gymnasium/Berufliches Gymnasium, Sachsen-Anhalt, Stand 01.07.2019",
+        "path": "curricula/DE/Gymnasium/input/ST/Mathematik_FLP_Gym_01_07_2019.pdf",
+        "textPath": "tmp/st_text/Mathematik_FLP_Gym_01_07_2019.layout.txt",
+        "role": "binding-lower-secondary-and-entry-phase",
+        "official": true,
+        "url": "https://lisa.sachsen-anhalt.de/fileadmin/Bibliothek/Politik_und_Verwaltung/MK/LISA/Unterricht/Lehrplaene/Gym/Anpassung/Mathematik_FLP_Gym_01_07_2019.pdf",
+        "sha256": "317e0b55339ca687bf5c0401f57cafdab4e911cb14e5d5bf65696eeeadc73622",
+        "extractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_MATHEMATIK_SEKI_FACHLEHRPLAN_GYMNASIUM_2019.source-extraction.json",
+        "extractionSha256": "700a279bcd17ea09931ab1581a04c221083bd9553a4310fe8c055e9cb5c432e3"
+      }
+    ],
+    "judgment": "Individually read every foreign prerequisite description and actual lower placement. Natural numbers, rational arithmetic, units, coordinates, areas, expressions, functions and linear graphs suffice. Three canonical mathematics phase labels E do not force upper-stage acquisition: their actual descriptions are function value evaluation, function representations and linear functions, covered in lower Mathematics. Quadratic evaluations and turning points are available in ST year 9 (PDF p.52, printed p.50). No derivative, integral, upper-stage vector algebra or probability is required. The broad foundational prerequisites stay counted without pruning."
+  },
+  "contentNumericalRecheck": {
+    "taskAndRubricReadInFullDEandEN": true,
+    "result": "accept unchanged exact assessment for its current e4b target only",
+    "A": {
+      "vAt4": 3,
+      "reversalTime": 2.5,
+      "positionAtReversal": 4.75,
+      "positionAt3": 5,
+      "positionAt4": 7,
+      "signedAreas": [
+        -0.25,
+        2.25
+      ],
+      "velocityChange": 4,
+      "displacement": 2,
+      "distance": 2.5,
+      "checkInterval": [
+        6.98,
+        7.08
+      ]
+    },
+    "B": {
+      "stopTime": 3,
+      "stopDistance": 9,
+      "continuedVelocityAt5": -4,
+      "continuedPositionAt5": 5,
+      "restAfterStop": {
+        "a": 0,
+        "v": 0,
+        "s": 9
+      }
+    },
+    "rubric": "Five 4-point rows at 20/20 require every aspect. No threshold relaxation, no new credited goals and no result-contract revision."
+  },
+  "mappingReview": {
+    "file": "route-review-changes.actual.json",
+    "decisionsRead": 7,
+    "mappingsChanged": 0,
+    "HH": "Four partial LAWS routes remain; now accurately identify retained 2011 edition and table column. No complete-a8dc-preparation assertion.",
+    "ST": "Three partial routes remain; two Wissensbestände page references corrected to 46; real terminal-offer review recorded separately."
+  },
+  "integrationInstruction": "Apply only ST entry from /tmp/e1-t4/hh-st/shared-config-fragment.json. Keep HH absent. Refresh mutable route pins, regenerate views, then validate actual CQR-104/backflow results centrally. No claim of CI, main integration or final stage promotion in this review.",
+  "independenceAndLimits": "This is a new actual independent AI review of current exact inputs. Historical 2026-11-17 records, V9 proof and learner results remain untouched. Source/mapping judgments, direct credited coverage, terminal practice, automated membership checks, and real learner/host acceptance are distinct. No learner trial or human approval is claimed."
+}

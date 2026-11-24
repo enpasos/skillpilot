@@ -1251,8 +1251,8 @@
               "children": [
                 {
                   "kind": "structure",
-                  "id": "physics-st-j9-topic-c3f9e8323c3a",
-                  "label": "Mechanik der Punktmasse",
+                  "id": "physics-required-preparation-physics-st-unit-j9",
+                  "label": "Notwendige Grundlagen",
                   "children": [
                     {
                       "kind": "goalEntry",
@@ -1268,25 +1268,7 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1311,6 +1293,31 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
+                  "id": "physics-st-j9-topic-c3f9e8323c3a",
+                  "label": "Mechanik der Punktmasse",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "bf8517a9-142b-5789-826a-767f3b277998",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1349,6 +1356,11 @@
                   "id": "physics-st-unit-j9-practice",
                   "label": "Übungen und Prüfungsaufgaben",
                   "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+                      "projectionRole": "target"
+                    },
                     {
                       "kind": "goalEntry",
                       "goalId": "c61b2a69-b5cd-5785-bb04-5d6bca53b218",
@@ -1428,6 +1440,14 @@
               ],
               "childOrder": {
                 "after": [
+                  {
+                    "unit": "physics-st-j9-topic-c3f9e8323c3a",
+                    "after": "physics-required-preparation-physics-st-unit-j9"
+                  },
+                  {
+                    "unit": "physics-st-unit-j9-practice",
+                    "after": "physics-st-j9-topic-c3f9e8323c3a"
+                  },
                   {
                     "unit": "physics-st-unit-j9-practice",
                     "after": "physics-st-j9-topic-ffa957091aaa"

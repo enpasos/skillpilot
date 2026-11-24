@@ -1,0 +1,951 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "bf34d99e7f4c80843567176535d54168f848ff71",
+  "scope": "Actual current task, solution, rubric and preparation/applicability inspection; this is not a blanket re-review of unrelated historical direct claims.",
+  "assessments": [
+    {
+      "goal": {
+        "id": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+        "shortKey": "canonical_physics_k6_acceleration_log",
+        "title": "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen",
+        "titleEn": "Acceleration log: velocity, position, and model limits",
+        "description": "Die lernende Person kann aus einem Beschleunigungsprotokoll mit Anfangswerten konsistente Bewegungsdarstellungen gewinnen und die Modellgrenzen prüfen.",
+        "descriptionEn": "The learner can obtain consistent motion representations from an acceleration log with initial values and assess model limits.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "262f807a-30d0-503e-986f-856cbd048e8e"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [],
+          "phase": "GLOBAL",
+          "area": "Messdaten und Bewegung",
+          "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.ACCELERATION_LOG"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Machine content release of exact unchanged full DE/EN assessment and20/20 rubric, based on retained actual independent K6-v2/K6-v3 reviews plus actual integration-agent reading against full current e4b P. Retained review files: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v2-content/CONTENT-REVIEW.md and curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/prior-review/k6-v3-content/CONTENT-REVIEW.md. Root actual direct-claim disposition accepted the necessary two-assessment unit successor. No human acceptance, learner trial, stored-result transfer or final integrated QA claim.",
+          "coveredGoalIds": [
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/acceleration-log.md",
+          "taskContent": "A. Ein Wagen auf einer geraden Bahn hat bei t=2 s den Ort s=5 m und v=−1 m/s. Das t-a-Protokoll gibt a=+2 m/s² auf [2;4] s. 1. Konstruiere t-a, t-v und t-s, bestimme die Ortsmarken bei 2,5;3 und 4 s und kennzeichne den Richtungswechsel. Erkläre die a-Fläche als Geschwindigkeitsänderung und die vorzeichenbehafteten v-Flächen als Ortsänderungen. Bestimme Ortsänderung und gesamte Strecke; erkläre, warum sie verschieden sind. Eine Kontrollmarke bei 4 s lautet (7,03±0,05) m. Prüfe die Übereinstimmung. (12 BE)\n\nB. Ein reales Fahrzeug bremst ab t=0 mit v0=6 m/s und a=−2 m/s² bis zum Stillstand. Stelle v(t) und die Ortsänderung ab s0=0 auf. Zeichne die drei Diagramme, bestimme Stoppzeit und Bremsweg. Ein Programm setzt a unverändert bis 5 s fort. Erläutere, was es dann vorhersagt und warum dies ohne zusätzliche Kraftbegründung kein Modell eines stehen bleibenden Fahrzeugs ist. (8 BE)",
+          "taskContentEn": "A. A cart on a straight track is at s=5 m with v=−1 m/s at t=2 s. Its time-acceleration log gives a=+2 m/s² over [2,4] s. 1. Construct all three motion graphs, find positions at 2.5,3,4 s, and mark the reversal. Explain acceleration area as velocity change and signed velocity areas as displacements. Find displacement and total distance and explain the difference. A check mark at 4 s is (7.03±0.05) m. Test agreement. (12 points)\n\nB. A real vehicle brakes from t=0 with v0=6 m/s and a=−2 m/s² until rest. Write v(t) and displacement from s0=0. Draw all three graphs and find stopping time and distance. A program continues the acceleration unchanged until 5 s. Explain its prediction and why, without an additional force explanation, this is not a model of a vehicle remaining at rest. (8 points)",
+          "solutionContent": "A: Mit τ=t−2 s gelten v=−1 m/s+2 m/s²·τ und s=5 m−1 m/s·τ+1 m/s²·τ². Richtungswechsel bei τ=0,5 s, s=4,75 m; a bleibt +2 m/s². s(3 s)=5 m, s(4 s)=7 m. Δs=+2 m; Strecke=0,25+2,25=2,50 m. Flächen unter v: −0,25 m bis zur Umkehr, danach +2,25 m; die a-Fläche ergibt Δv=4 m/s. Kontrollmarke passt innerhalb 0,05 m. B: v=6−2t in SI; s=6t−t², tStopp=3 s, sStopp=9 m. a waagerecht negativ, v fallende Gerade bis 0, s nach unten gekrümmte Parabel bis waagerechtem Scheitel. Fortsetzung: v(5)=−4 m/s und s(5)=5 m; sie sagt Rückwärtsfahrt voraus. Stehenbleiben verlangt nach 3 s v=0 und a=0 im idealen Modell; die frühere Bremsbeschleunigung darf nicht ohne neuen physikalischen Grund fortgeführt werden.",
+          "solutionContentEn": "A: With τ=t−2 s, v=−1 m/s+2 m/s²·τ and s=5 m−1 m/s·τ+1 m/s²·τ². Reversal at τ=0.5 s and s=4.75 m; acceleration remains +2 m/s². s(3 s)=5 m and s(4 s)=7 m. Displacement +2 m; distance 0.25+2.25=2.50 m. Signed velocity areas are −0.25 m then +2.25 m; acceleration area gives Δv=4 m/s. The check agrees within 0.05 m. B: In SI units v=6−2t and s=6t−t²; stopping time 3 s and distance 9 m. Acceleration is constant negative; velocity falls linearly to zero; position is a concave-down parabola with horizontal tangent at the stop. Continuation gives v(5)=−4 m/s and s(5)=5 m, predicting reverse motion. Remaining at rest requires v=0 and a=0 after 3 s in the ideal model; continuing the former braking acceleration requires a new physical reason.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 20,
+            "steps": [
+              {
+                "id": "acceleration-log_1",
+                "points": 4,
+                "description": "Anfangswerte mit verschobenem Zeitnullpunkt richtig eingesetzt, drei Diagramme konsistent. / EN: Uses initial values with shifted time origin and constructs consistent graphs."
+              },
+              {
+                "id": "acceleration-log_2",
+                "points": 4,
+                "description": "Umkehr, Ortsmarken, a-Fläche und v-Flächen einschließlich Einheiten richtig erklärt. / EN: Explains reversal, positions, acceleration and velocity areas with units."
+              },
+              {
+                "id": "acceleration-log_3",
+                "points": 4,
+                "description": "Ortsänderung und Strecke getrennt und Kontrollmarke mit Auflösung verglichen. / EN: Distinguishes displacement from distance and compares check mark with resolution."
+              },
+              {
+                "id": "acceleration-log_4",
+                "points": 4,
+                "description": "Bremsgesetze, drei Diagramme, Stoppzeit und Bremsweg richtig bestimmt. / EN: Finds braking laws, three graphs, stopping time, and distance correctly."
+              },
+              {
+                "id": "acceleration-log_5",
+                "points": 4,
+                "description": "Fortgesetztes Modell zahlenmäßig geprüft und sein Geltungsbereich physikalisch begründet. / EN: Checks the extended model numerically and justifies its physical validity interval."
+              }
+            ]
+          }
+        }
+      },
+      "goalDigest": "41691a4d6c09ac37fa10b8e1d5841c1a27f3243c8483d0770aca0ad1c53ea8ee",
+      "disposition": "Preferred ST endpoint: current unchanged released e4b assessment, supplied general initial-condition/signed-area demands. Not approved for HH."
+    },
+    {
+      "goal": {
+        "id": "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+        "shortKey": "canonical_physics_k6_acceleration_log-he-e1",
+        "title": "Beschleunigungsprotokoll: Geschwindigkeit, Ort und Modellgrenzen",
+        "titleEn": "Acceleration log: velocity, position, and model limits",
+        "description": "Die lernende Person kann aus einem Beschleunigungsprotokoll mit Anfangswerten konsistente Bewegungsdarstellungen gewinnen und die Modellgrenzen prüfen.",
+        "descriptionEn": "The learner can obtain consistent motion representations from an acceleration log with initial values and assess model limits.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "262f807a-30d0-503e-986f-856cbd048e8e"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [],
+          "phase": "GLOBAL",
+          "area": "Messdaten und Bewegung",
+          "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.ACCELERATION_LOG"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "type": "atomic",
+        "examData": {
+          "coveredGoalIds": [
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "reviewStatus": "released",
+          "reviewNote": "Unabhängige Fachprüfung der DE/EN-Aufgabe und des Rasters an exakter Quelle (SHA-256 ebf5e6e09f67b93aa090d959a0fabab74df163d64def33fd909dd1bf74dfe788). Review: docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/unabhaengiges-fachreview.md",
+          "sourceArtifactPath": "docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/d-beschleunigungsprotokoll.md",
+          "taskContent": "Ab 17 von 20 BE ist die Prüfung bestanden.\n\n**Wagen auf einer geraden Bahn.** Bei $t=2\\,\\mathrm s$ ist der Wagen am Ort $s=5\\,\\mathrm m$. Er hat die Geschwindigkeit $v=-1\\,\\mathrm{m/s}$. Von $t=2\\,\\mathrm s$ bis $t=4\\,\\mathrm s$ beträgt laut Protokoll seine Beschleunigung $a=+2\\,\\mathrm{m/s^2}$.\n\n1. Zeichne oder beschreibe das Zeit-Beschleunigungs-, Zeit-Geschwindigkeits- und Zeit-Ort-Diagramm in diesem Zeitraum. Zeige, wie die Werte bei 2 s in deine Darstellung eingehen. Markiere den Richtungswechsel. Bestimme die Ortswerte bei 2,5 s, 3 s und 4 s. (5 BE)\n2. Erkläre, was die Flächen im Beschleunigungs- und Geschwindigkeitsdiagramm in diesem Fall bedeuten. Zeige, wie du die Flächen bis und nach dem Richtungswechsel bestimmst und für Ortsänderung und Strecke zusammensetzt. Gib Ortsänderung und Strecke für das ganze Intervall an. Prüfe außerdem, ob deine Vorhersage bei 4 s zur unabhängigen Kontrollablesung $(7{,}03\\pm0{,}05)\\,\\mathrm m$ passt. (5 BE)\n\n3. **Bremsendes Fahrzeug.** Bei $t=0$ beginnt das fahrende Fahrzeug mit $v_0=6\\,\\mathrm{m/s}$ zu bremsen. Die Beschleunigung beträgt bis zum Stillstand $a=-2\\,\\mathrm{m/s^2}$. Der Beginn der Bremsung liegt bei $s=0$.\n\n   Stelle die Geschwindigkeits- und Ortsgesetze für die Bremsung auf. Zeichne oder beschreibe die drei Zeitdiagramme vom Beginn der Bremsung bis zum Stillstand. Bestimme die Stoppzeit und den Bremsweg und zeige die zugehörigen Werte in den Diagrammen. (5 BE)\n4. Ein Programm lässt die Beschleunigung bis 5 s unverändert. Was sagt es dann für Ort und Geschwindigkeit bei 5 s voraus? Erkläre, warum diese Fortsetzung die Bewegung eines nach dem Bremsen stehen bleibenden Fahrzeugs nicht trifft. Gib an, welche Beschleunigung, Geschwindigkeit und Position das Modell nach dem Stillstand stattdessen ansetzen müsste. (5 BE)",
+          "taskContentEn": "A total of 17 out of 20 marks is a pass.\n\n**Cart on a straight track.** At $t=2\\,\\mathrm s$, the cart's position is $s=5\\,\\mathrm m$ and its velocity is $v=-1\\,\\mathrm{m/s}$. For the interval from $t=2\\,\\mathrm s$ to $t=4\\,\\mathrm s$, the log shows that its acceleration is $a=+2\\,\\mathrm{m/s^2}$.\n\n1. Sketch or describe the acceleration–time, velocity–time and position–time graphs for this interval. Show how the values at 2 s enter your representations. Mark the change in direction. Find the positions at 2.5 s, 3 s and 4 s. (5 marks)\n2. Explain what the areas in the acceleration and velocity graphs mean in this case. Show how you find the areas before and after the reversal and combine them for displacement and distance. Give the displacement and total distance over the whole interval. Also check whether your prediction at 4 s agrees with a separate reading of $(7.03\\pm0.05)\\,\\mathrm m$. (5 marks)\n\n3. **Braking vehicle.** At $t=0$, the moving vehicle has velocity $v_0=6\\,\\mathrm{m/s}$ and starts braking with acceleration $a=-2\\,\\mathrm{m/s^2}$. It comes to a stop. Its position is $s=0$ when braking starts.\n\n   Set up the velocity and position laws while the vehicle brakes. Sketch or describe all three time graphs from the start of braking until the vehicle stops. Find the stopping time and braking distance, and show the corresponding values in your graphs. (5 marks)\n4. A program keeps the acceleration unchanged until 5 s. What position and velocity does it predict at 5 s? Explain why this extension fails to describe a vehicle that remains at rest after braking. State what acceleration, velocity and position the model should use once the vehicle has come to rest. (5 marks)",
+          "solutionContent": "1. Verwendet man $\\tau=t-2\\,\\mathrm s$ als Zeit seit dem Beginn des Protokolls, gelten $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ und $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. Die Beschleunigung ist eine waagerechte Linie bei $+2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade steigt von $-1$ auf $+3\\,\\mathrm{m/s}$ und schneidet bei 2,5 s die Nulllinie. Die nach oben geöffnete Ortsparabel fällt zunächst, hat bei 2,5 s am Richtungswechsel ihr Minimum bei 4,75 m und steigt danach. Bei 3 s liegt der Wagen wieder bei 5,00 m, bei 4 s bei 7,00 m.\n2. Die Beschleunigungsfläche entspricht der Geschwindigkeitsänderung von $+4\\,\\mathrm{m/s}$. Die vorzeichenbehafteten Flächen unter dem Geschwindigkeitsgraphen ergeben zunächst $-0{,}25\\,\\mathrm m$ und danach $+2{,}25\\,\\mathrm m$. Die Ortsänderung ist die Summe, also $+2{,}00\\,\\mathrm m$. Die Strecke zählt beide Wegstücke positiv, also $2{,}50\\,\\mathrm m$. Die vorhergesagten 7,00 m liegen im Kontrollbereich von 6,98 bis 7,08 m.\n3. Mit $t$ in Sekunden gilt $v=6-2t$ in Metern pro Sekunde und $s=6t-t^2$ in Metern. Im Beschleunigungsdiagramm verläuft die Linie bis zum Stopp waagerecht bei $-2\\,\\mathrm{m/s^2}$. Die Geschwindigkeitsgerade fällt von 6 m/s auf null bei 3 s. Der Ortsgraph ist eine nach unten geöffnete Parabel, die von 0 m auf 9 m steigt und beim Stopp eine waagerechte Tangente hat. Der Bremsweg beträgt 9 m.\n4. Mit unveränderter Beschleunigung ergibt das Programm $v(5)=-4\\,\\mathrm{m/s}$ und $s(5)=5\\,\\mathrm m$. Es sagt nach dem Stillstand eine Bewegung rückwärts voraus. Damit das Fahrzeug stehen bleibt, darf man die vorherige Bremsbeschleunigung im Modell nach dem Stopp nicht weiterführen. Dazu müsste eine weitere rückwärts gerichtete Beschleunigung physikalisch begründet sein. Beim Dauerstillstand gilt nach 3 s $a=0$, $v=0$ und $s=9\\,\\mathrm m$.\n\n**Hinweise zur Bewertung**\n\nJe Zeile zählt die höchste belegte Stufe. Die vier Werte werden addiert. Begründete Diagramme und ausreichend genaue Beschreibungen mit nachvollziehbaren Größen und Einheiten zeigen dieselben Leistungen.",
+          "solutionContentEn": "1. With $\\tau=t-2\\,\\mathrm s$ measuring time since the start of the log, $v=-1\\,\\mathrm{m/s}+(2\\,\\mathrm{m/s^2})\\tau$ and $s=5\\,\\mathrm m-(1\\,\\mathrm{m/s})\\tau+(1\\,\\mathrm{m/s^2})\\tau^2$. The acceleration graph is horizontal at $+2\\,\\mathrm{m/s^2}$. The velocity rises linearly from $-1$ to $+3\\,\\mathrm{m/s}$, crossing zero at 2.5 s. The position graph is an upward-opening parabola. It falls to its minimum of 4.75 m when the cart changes direction at 2.5 s and then rises. The cart is at 5.00 m again at 3 s and at 7.00 m at 4 s.\n2. The area under acceleration gives the velocity change of $+4\\,\\mathrm{m/s}$. The signed areas under velocity are first $-0.25\\,\\mathrm m$ and then $+2.25\\,\\mathrm m$. Adding them gives the displacement, $+2.00\\,\\mathrm m$. Total distance counts both stretches positively and is $2.50\\,\\mathrm m$. The predicted 7.00 m lies inside the check interval from 6.98 to 7.08 m.\n3. For $t$ in seconds, $v=6-2t$ is in metres per second and $s=6t-t^2$ is in metres. The acceleration graph is horizontal at $-2\\,\\mathrm{m/s^2}$ until stopping. The velocity graph is a straight line falling from 6 m/s to zero at 3 s. The position graph is a downward-opening parabola that rises from 0 m to 9 m, with a horizontal tangent at the stop. The braking distance is 9 m.\n4. With unchanged acceleration, the program gives $v(5)=-4\\,\\mathrm{m/s}$ and $s(5)=5\\,\\mathrm m$. After the stop it predicts that the vehicle moves backwards. For the vehicle to remain at rest, the previous braking acceleration cannot continue beyond the stop in the model. A new physical explanation would be needed for acceleration backwards. For a vehicle that stays at rest, $a=0$, $v=0$ and $s=9\\,\\mathrm m$ after 3 s.\n\n**Scoring notes**\n\nScore the highest level demonstrated in each row and add the four results. Reasoned graphs and sufficiently precise descriptions with clearly identifiable quantities and units demonstrate the same skills.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 17,
+            "steps": [
+              {
+                "id": "D1",
+                "points": 5,
+                "description": "DE: **Ein Protokoll in drei Darstellungen.** 0 ohne fachlich richtige Leistung. 1 für einen tragfähigen Teilansatz. 2 für drei fachlich konsistente Zeitdiagramme, die mit den Gegebenheiten bei 2 s beginnen, die konstante positive Beschleunigung und den Richtungswechsel in beiden Bewegungsdiagrammen zeigen. Ab dieser Stufe je 1 BE für den abgeleiteten Zeitpunkt des Wechsels und den passenden Ort, die beiden folgenden Ortswerte sowie den nachvollziehbaren Ansatz mit Anfangswerten und verschobenem Zeitnullpunkt. EN: **One log in three representations.** 0 for no correct contribution. 1 for a valid partial approach. 2 for three consistent time graphs that start with the given conditions at 2 s and show constant positive acceleration and the reversal in both motion graphs. From this level add 1 mark each for deriving when and where the reversal occurs, the next two position values, and showing how the initial values and shifted time origin enter the method."
+              },
+              {
+                "id": "D2",
+                "points": 5,
+                "description": "DE: **Flächen und Ortsänderung.** 0 ohne fachlich richtiges Ergebnis oder Argument. 1 für einen richtigen Teilnachweis. 2 für die Beschleunigungsfläche als Geschwindigkeitsänderung und eine auf den gegebenen Richtungswechsel angewandte Flächenbilanz. Die zwei bestimmbaren Geschwindigkeitsflächen werden für die Ortsänderung mit Vorzeichen sowie für die Strecke mit ihren Beträgen kombiniert. Eine beschriftete Konstruktion oder ein richtiger Ansatz mit einem einzelnen Rechenfehler genügt. Ab dieser Stufe je 1 BE für den richtigen Wert der Geschwindigkeitsänderung, die richtigen Werte von Ortsänderung und Strecke mit Einheiten und den begründeten Vergleich mit dem Kontrollintervall. EN: **Areas and displacement.** 0 for no correct argument or result. 1 for a valid partial result. 2 for interpreting the acceleration area as velocity change and applying an area balance to the given reversal. The two determinable velocity areas are combined with their signs for displacement and with their magnitudes for distance. A labelled construction or a correct setup with a single calculation slip is sufficient. From this level add 1 mark each for the correct velocity change, correct displacement and distance with units, and a justified comparison with the check interval."
+              },
+              {
+                "id": "D3",
+                "points": 5,
+                "description": "DE: **Bremsmodell.** 0 ohne fachlich richtige Leistung. 1 für einen tragfähigen Teilansatz. 2 für die zur Bremsung passenden Geschwindigkeits- und Ortsgesetze und drei konsistente zugehörige Zeitdiagramme vom Modellbeginn bis zum durch $v=0$ erkannten Stopp. Ab dieser Stufe je 1 BE für die ermittelte Stoppzeit, den ermittelten Bremsweg und die Zahlenwerte mit Einheiten am Beginn und Ende der zugehörigen Darstellungen. EN: **Braking model.** 0 for no correct contribution. 1 for a valid partial approach. 2 for velocity and position laws appropriate for braking and three consistent corresponding time graphs from the start of the model until the stop identified by $v=0$. From this level add 1 mark each for obtaining the stopping time, obtaining the braking distance, and giving numerical values with units at the start and end of the corresponding representations."
+              },
+              {
+                "id": "D4",
+                "points": 5,
+                "description": "DE: **Modellgrenze und Stillstand.** 0 ohne fachlich richtige Leistung. 1 für einen tragfähigen Teilbefund. 2, wenn die Fortsetzung als Rückwärtsbewegung erkannt und erklärt wird, warum eine Beschleunigung rückwärts nach dem Stopp einer neuen physikalischen Begründung bedarf. Ab dieser Stufe je 1 BE für die richtige Geschwindigkeit und den richtigen Ort bei 5 s sowie für die konsistenten Werte von Beschleunigung, Geschwindigkeit und Ort nach dem Stopp im Stillstandsmodell. EN: **Validity and rest.** 0 for no correct contribution. 1 for a valid partial result. 2 for recognising that the extension predicts backward motion and explaining why acceleration backwards after stopping would need a new physical explanation. From this level add 1 mark each for the correct velocity and the correct position at 5 s, and for consistent acceleration, velocity and position in the model where the vehicle remains at rest."
+              }
+            ]
+          }
+        },
+        "nodeKind": "exam",
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "sourceRef": "docs/concept/skill-graph/examples/hessen-physik-e1/entwuerfe-kindeinheit/d-beschleunigungsprotokoll.md"
+      },
+      "goalDigest": "43d6f7101a4315426c5a9bf736ce97e9e4b44b41621987732efa8d69ac7b99e6",
+      "disposition": "Hessen-only current own variant, same distinctive general initial-condition/signed-area demands. Its HE applicability cannot be silently expanded. No HH solution."
+    },
+    {
+      "goal": {
+        "id": "4ab1cf6d-b808-5b86-9291-85df0b9f2496",
+        "title": "Senkrechter Wurf: Vorzeichen, Scheitelpunkt und Rückkehr",
+        "titleEn": "Vertical projection: signs, highest point and return",
+        "description": "Die lernende Person kann einen senkrechten Aufwärts- und Abwärtswurf mit konsistenten Vorzeichen, Ereigniszeiten und Orts-, Geschwindigkeits- und Beschleunigungsdiagrammen selbstständig untersuchen und die Ergebnisse begründen. 36 BE.",
+        "descriptionEn": "The learner can independently analyse vertical upward and downward projection using consistent signs, event times and position, velocity and acceleration graphs, and justify the results. 36 marks.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+        ],
+        "applicability": {},
+        "type": "atomic",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK4_KOMMUNIZIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG"
+          ],
+          "phase": "E",
+          "area": "Klausurtraining"
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityFromRequires": true,
+          "applicabilityProjection": "excluded"
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "reviewNote": "Own authored assessment. Independent OpenAI AI counterreview of German and English tasks, solutions, scoring and conservative coverage accepted on 2026-10-22; exact reviewed bodies and mapping rationale are retained in curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json. No human approval, experimental performance, official exam endorsement or automatic mastery of covered goals is claimed. Aktueller begrenzter AI-Inhaltsentscheid vom15.11.2026: ausschließlich unbelegte Vollclaims e4b38061-1f28-43ad-8371-a3e7c0e81856 entfernt; Aufgaben-/Lösungs-/Rastertexte, IDs und Punkteschwellen bleiben unverändert. Root-Disposition: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/root-review/direct-claim-removal-root-disposition.actual.json. Keine pauschale Neuprüfung übriger historischer Claims und keine Änderung gespeicherter Resultate.",
+          "coveredGoalIds": [],
+          "coveredStrands": [
+            "LI_BEWEGUNG"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "## Senkrechter Wurf: Vorzeichen, Scheitelpunkt und Rückkehr\n\n**Umfang: 36 BE.** Eigenständiges Klausurmodul; ein Taschenrechner und eine Formelsammlung sind zulässig. Vektorrechnung ist nicht erforderlich.\n\nEin kleines Objekt wird im Modell von einer Plattform senkrecht nach oben geworfen. Beim Abwurf gilt $t=0$, die Höhe über der Auffangebene beträgt $y_0=20{,}0\\,\\mathrm m$, die Anfangsgeschwindigkeit $v_0=+15{,}0\\,\\mathrm{m/s}$. Die positive $y$-Richtung zeigt nach oben; $y=0$ ist die Auffangebene. Betrachten Sie das Objekt als Massepunkt, vernachlässigen Sie Luftwiderstand und verwenden Sie das homogene Schwerefeld mit dem gerundeten Modellwert $g=10{,}0\\,\\mathrm{m/s^2}$. Die Beschreibung gilt vom Abwurf bis unmittelbar vor dem ersten Auftreffen. Die Zahlen sind eigene didaktisch konstruierte Modelldaten.\n\n1. Geben Sie $y_0$, $v_0$ und die vorzeichenbehaftete Beschleunigung $a$ an. Stellen Sie die Gesetze $y(t)$ und $v(t)$ auf. Erklären Sie anhand der Vorzeichen, weshalb das Objekt zu Beginn langsamer wird, obwohl die Beschleunigung konstant ist. **(6 BE)**\n\n2. Bestimmen Sie Zeitpunkt und Höhe des Scheitelpunkts. Eine Schülerin behauptet: „Am höchsten Punkt ist das Objekt kurz in Ruhe, also ist dort auch seine Beschleunigung null.“ Beurteilen und begründen Sie diese Aussage. **(4 BE)**\n\n3. Eine Lichtschranke liegt in der Höhe $y=25{,}0\\,\\mathrm m$. Berechnen Sie alle Durchgangszeiten während des Flugs und die jeweilige vorzeichenbehaftete Geschwindigkeit. Ordnen Sie die beiden Ereignisse dem Aufstieg und dem Abstieg zu. **(6 BE)**\n\n4. Berechnen Sie den Auftreffzeitpunkt sowie Geschwindigkeit und Geschwindigkeitsbetrag unmittelbar davor. Erläutern Sie, welche Bedeutung die beiden rechnerischen Lösungen der Gleichung $y(t)=0$ für diesen Versuch haben, und geben Sie den physikalisch betrachteten Zeitbereich an. **(6 BE)**\n\n5. Skizzieren Sie für diesen Zeitbereich drei Diagramme: $y$ gegen $t$, $v$ gegen $t$ und $a$ gegen $t$. Beschriften Sie die Achsen mit Größen und Einheiten. Markieren Sie im Ortsdiagramm Abwurf, Scheitelpunkt und Auftreffen sowie im Geschwindigkeitsdiagramm die zugehörigen Geschwindigkeiten. Stellen Sie den Verlauf bis unmittelbar vor dem Auftreffen dar; der Stoß selbst gehört nicht zum Modell. **(8 BE)**\n\n6. In einem getrennten zweiten Versuch wird dasselbe Objekt von derselben Höhe mit dem Anfangsgeschwindigkeitsbetrag $15{,}0\\,\\mathrm{m/s}$ senkrecht **nach unten** geworfen. Die positive Richtung bleibt nach oben, die Uhr startet erneut beim Abwurf. Stellen Sie $y_\\mathrm{ab}(t)$ und $v_\\mathrm{ab}(t)$ auf und berechnen Sie Auftreffzeit und vorzeichenbehaftete Auftreffgeschwindigkeit. Begründen Sie mit dem Bewegungsverlauf, weshalb beide Versuche denselben Auftreffgeschwindigkeitsbetrag, aber verschiedene Flugzeiten liefern. **(6 BE)**",
+          "taskContentEn": "## Vertical projection: signs, highest point and return\n\n**Total: 36 marks.** Independent written-test module; a calculator and formula sheet may be used. No vector calculations are needed.\n\nIn the model, a small object is projected vertically upwards from a platform. At release, $t=0$, its height above the catching plane is $y_0=20.0\\,\\mathrm m$ and its initial velocity is $v_0=+15.0\\,\\mathrm{m/s}$. The positive $y$-direction is upwards; $y=0$ is the catching plane. Treat the object as a point particle, neglect air resistance and use a uniform gravitational field with the rounded model value $g=10.0\\,\\mathrm{m/s^2}$. The description applies from release until immediately before the first impact. These are original, constructed teaching data.\n\n1. State $y_0$, $v_0$ and the signed acceleration $a$. Formulate the equations $y(t)$ and $v(t)$. Use their signs to explain why the object initially slows down even though its acceleration is constant. **(6 marks)**\n\n2. Find the time and height of the highest point. A student claims: “At the highest point the object is momentarily at rest, so its acceleration must also be zero.” Evaluate and explain this claim. **(4 marks)**\n\n3. A light gate is at height $y=25.0\\,\\mathrm m$. Calculate every crossing time during the flight and the corresponding signed velocity. Identify the ascending and descending crossings. **(6 marks)**\n\n4. Calculate the impact time, signed velocity and speed immediately before impact. Explain what the two mathematical solutions of $y(t)=0$ mean for this experiment and specify the physically considered time interval. **(6 marks)**\n\n5. Sketch three graphs for this interval: $y$ against $t$, $v$ against $t$, and $a$ against $t$. Label axes with quantities and units. Mark release, the highest point and impact on the position graph and the corresponding velocities on the velocity graph. Show the motion until immediately before impact; the collision itself is outside the model. **(8 marks)**\n\n6. In a separate second trial, the same object is projected vertically **downwards** from the same height with initial speed $15.0\\,\\mathrm{m/s}$. The positive direction is still upwards and the clock starts again at release. Formulate $y_\\mathrm{down}(t)$ and $v_\\mathrm{down}(t)$ and calculate the impact time and signed impact velocity. Use the motion to explain why both trials produce the same impact speed but different flight times. **(6 marks)**",
+          "solutionContent": "1. Die Anfangsbedingungen sind $y_0=20{,}0\\,\\mathrm m$ und $v_0=+15{,}0\\,\\mathrm{m/s}$. Während des gesamten freien Flugs gilt $a=-g=-10{,}0\\,\\mathrm{m/s^2}$. Somit\n\n$$y(t)=20{,}0\\,\\mathrm m+(15{,}0\\,\\mathrm{m/s})t-\\tfrac12(10{,}0\\,\\mathrm{m/s^2})t^2,$$\n$$v(t)=15{,}0\\,\\mathrm{m/s}-(10{,}0\\,\\mathrm{m/s^2})t.$$\n\nZu Beginn ist $v>0$, aber $a<0$: Die Höhe wächst noch, während die positive Geschwindigkeit und damit ihr Betrag abnehmen. Negative Beschleunigung bedeutet nicht in jedem Bewegungsabschnitt eine Abnahme des Geschwindigkeitsbetrags.\n\n2. Aus $v(t_\\mathrm S)=0$ folgt $t_\\mathrm S=1{,}50\\,\\mathrm s$. Einsetzen ergibt $y_\\mathrm S=31{,}25\\,\\mathrm m$. Dort ist $v=0$, aber weiterhin $a=-10{,}0\\,\\mathrm{m/s^2}$. Die Geschwindigkeit ist nur in diesem Augenblick null und ändert sich weiter von positiv zu negativ; die Schwerkraftwirkung verschwindet am Scheitelpunkt nicht. „In Ruhe“ bezeichnet hier keine Ruhe über ein Zeitintervall.\n\n3. Mit Zahlenwerten in SI-Einheiten:\n\n$$25=20+15t-5t^2,\\qquad t^2-3t+1=0.$$\n$$t_1=\\frac{3-\\sqrt5}{2}\\,\\mathrm s\\approx0{,}382\\,\\mathrm s,\\qquad\nt_2=\\frac{3+\\sqrt5}{2}\\,\\mathrm s\\approx2{,}618\\,\\mathrm s.$$\n\nDie Geschwindigkeiten lauten $v_1=+5\\sqrt5\\,\\mathrm{m/s}\\approx+11{,}18\\,\\mathrm{m/s}$ und $v_2=-5\\sqrt5\\,\\mathrm{m/s}\\approx-11{,}18\\,\\mathrm{m/s}$. Der erste Durchgang erfolgt aufwärts, der zweite abwärts. Die gleichen Beträge sind mit der zeitlichen Symmetrie um $t_\\mathrm S$ vereinbar.\n\n4. $0=20+15t-5t^2$ liefert $t=4{,}00\\,\\mathrm s$ und $t=-1{,}00\\,\\mathrm s$. Nur $t_\\mathrm A=4{,}00\\,\\mathrm s$ liegt nach dem Abwurf. Die negative Lösung ist ein Schnittpunkt der mathematisch rückwärts verlängerten Parabel mit $y=0$; sie beschreibt keinen beobachteten Teil dieses Versuchs. Unmittelbar vor dem Auftreffen gilt $v=-25{,}0\\,\\mathrm{m/s}$ und damit $|v|=25{,}0\\,\\mathrm{m/s}$. Das Modell beschreibt $0\\leq t<4{,}00\\,\\mathrm s$; den Auftreffpunkt darf man als Grenzpunkt markieren. Es macht keine Aussage über die anschließende Bewegung.\n\n5. Das Ortsdiagramm ist eine nach unten geöffnete Parabel durch $(0\\,\\mathrm s,20{,}0\\,\\mathrm m)$, mit Scheitel $(1{,}50\\,\\mathrm s,31{,}25\\,\\mathrm m)$ und Grenzpunkt $(4{,}00\\,\\mathrm s,0\\,\\mathrm m)$. Seine Steigung ist zuerst positiv, am Scheitel null und danach negativ. Das Geschwindigkeitsdiagramm ist eine fallende Gerade durch $(0\\,\\mathrm s,+15{,}0\\,\\mathrm{m/s})$, $(1{,}50\\,\\mathrm s,0)$ und den Grenzwert $(4{,}00\\,\\mathrm s,-25{,}0\\,\\mathrm{m/s})$. Das Beschleunigungsdiagramm ist im gesamten Intervall eine waagerechte Linie bei $-10{,}0\\,\\mathrm{m/s^2}$, auch am Scheitelpunkt. Der Geschwindigkeitsgraph ist kein Graph des stets nichtnegativen Geschwindigkeitsbetrags.\n\n6. Der zweite Abwurf hat $v_0=-15{,}0\\,\\mathrm{m/s}$, weiterhin $a=-10{,}0\\,\\mathrm{m/s^2}$:\n\n$$y_\\mathrm{ab}(t)=20{,}0\\,\\mathrm m-(15{,}0\\,\\mathrm{m/s})t-\\tfrac12(10{,}0\\,\\mathrm{m/s^2})t^2,$$\n$$v_\\mathrm{ab}(t)=-15{,}0\\,\\mathrm{m/s}-(10{,}0\\,\\mathrm{m/s^2})t.$$\n\n$y_\\mathrm{ab}(t)=0$ ergibt als physikalische Lösung $t_\\mathrm{ab}=1{,}00\\,\\mathrm s$ und $v_\\mathrm{ab}=-25{,}0\\,\\mathrm{m/s}$. Beim Aufwärtswurf erreicht das Objekt nach $3{,}00\\,\\mathrm s$ erneut die Abwurfhöhe $20{,}0\\,\\mathrm m$, nun mit $v=-15{,}0\\,\\mathrm{m/s}$. Ab diesem Ereignis sind Höhe, Geschwindigkeit und Beschleunigung dieselben wie unmittelbar beim Abwärtswurf. Daher ist der restliche Flug identisch und dauert nochmals $1{,}00\\,\\mathrm s$: insgesamt $4{,}00\\,\\mathrm s$ statt $1{,}00\\,\\mathrm s$, aber in beiden Fällen derselbe Betrag $25{,}0\\,\\mathrm{m/s}$ beim Auftreffen.\n\n**Bewertungsgrundsätze:** Die Lösung ist ein möglicher Lösungsweg. Gleichwertige fachlich richtige Herleitungen und Darstellungen erhalten dieselben Punkte. Pro Kriterium wird höchstens 1 BE vergeben. Ein Rechenfehler wird an seiner Entstehungsstelle bewertet; rechnerisch und fachlich konsistente Folgeschritte mit dem eigenen Zwischenwert behalten ihre Methodenpunkte. Ein Folgefehler ersetzt keine eigenständige physikalische Begründung. Einheiten und Vorzeichen gehören zu den jeweils benannten Ergebnissen. Exakte Ergebnisse sowie sinnvoll auf zwei bis drei signifikante Stellen gerundete Werte sind gleichwertig; Zwischenwerte sollen nicht vorzeitig gerundet werden. Für die ausgewiesenen Dezimalergebnisse ist eine Abweichung von höchstens 1 % allein durch Rundung zulässig. Diagramme werden nach Verlauf, Achsenbeschriftung, Einheiten und den ausdrücklich verlangten Merkmalen bewertet, nicht nach zeichnerischer Perfektion. Die vorgegebene positive Richtung bleibt für die verlangten Endergebnisse verbindlich; eine intern umgekehrte Achse ist bei korrekter Rückübersetzung zulässig. Es werden keine zusätzlichen Aufgaben, Vektorrechnungen oder Energieargumente verlangt.\n\n### Bewertungsraster: je Kriterium 1 BE\n\n| Kriterium | Leistung | BE |\n| --- | --- | ---: |\n| 1.1 | Anfangshöhe $y_0=20{,}0\\,\\mathrm m$ korrekt angeben. | 1 |\n| 1.2 | Anfangsgeschwindigkeit $v_0=+15{,}0\\,\\mathrm{m/s}$ mit positivem Vorzeichen angeben. | 1 |\n| 1.3 | Während des Flugs $a=-10{,}0\\,\\mathrm{m/s^2}$ angeben. | 1 |\n| 1.4 | Vollständiges Zeit-Ort-Gesetz mit Anfangshöhe, linearem und negativem quadratischem Term aufstellen. | 1 |\n| 1.5 | Vollständiges Zeit-Geschwindigkeits-Gesetz aufstellen. | 1 |\n| 1.6 | Anfängliches Langsamerwerden aus $v>0$ und $a<0$ erklären. | 1 |\n| 2.1 | Aus $v=0$ den Scheitelzeitpunkt $1{,}50\\,\\mathrm s$ bestimmen. | 1 |\n| 2.2 | Scheitelhöhe $31{,}25\\,\\mathrm m$ bestimmen. | 1 |\n| 2.3 | Am Scheitel $v=0$ ausdrücklich von $a=-10{,}0\\,\\mathrm{m/s^2}$ unterscheiden. | 1 |\n| 2.4 | Beschleunigung als fortgesetzte Geschwindigkeitsänderung bzw. unveränderte Schwerkraftwirkung begründen; bloße Behauptung reicht nicht. | 1 |\n| 3.1 | Die Bedingung $y(t)=25{,}0\\,\\mathrm m$ als quadratische Gleichung ansetzen. | 1 |\n| 3.2 | Erste Durchgangszeit $0{,}382\\,\\mathrm s$ oder exakten äquivalenten Wert bestimmen. | 1 |\n| 3.3 | Zweite Durchgangszeit $2{,}618\\,\\mathrm s$ oder exakten äquivalenten Wert bestimmen. | 1 |\n| 3.4 | Erste Geschwindigkeit $+11{,}18\\,\\mathrm{m/s}$ bestimmen. | 1 |\n| 3.5 | Zweite Geschwindigkeit $-11{,}18\\,\\mathrm{m/s}$ bestimmen. | 1 |\n| 3.6 | Die erste Lösung dem Aufstieg und die zweite dem Abstieg zuordnen. | 1 |\n| 4.1 | Auftreffen durch $y(t)=0$ mit dem eigenen konsistenten Ortsgesetz ansetzen. | 1 |\n| 4.2 | Positive Nullstelle $t=4{,}00\\,\\mathrm s$ bestimmen. | 1 |\n| 4.3 | Negative Nullstelle $t=-1{,}00\\,\\mathrm s$ bestimmen. | 1 |\n| 4.4 | Negative Lösung als mathematische Rückverlängerung vor dem Abwurf erkennen und für das Versuchsgeschehen verwerfen. | 1 |\n| 4.5 | Vorzeichenbehaftete Auftreffgeschwindigkeit $-25{,}0\\,\\mathrm{m/s}$ und Betrag $25{,}0\\,\\mathrm{m/s}$ korrekt unterscheiden. | 1 |\n| 4.6 | Gültigkeit ab $t=0$ bis unmittelbar vor $4{,}00\\,\\mathrm s$ nennen; Stoß nicht weiter modellieren. | 1 |\n| 5.1 | Ortsgraph als nach unten geöffnete Parabel mit erst positiver, dann negativer Steigung darstellen. | 1 |\n| 5.2 | Abwurfpunkt $(0\\,\\mathrm s,20{,}0\\,\\mathrm m)$ markieren. | 1 |\n| 5.3 | Scheitelpunkt $(1{,}50\\,\\mathrm s,31{,}25\\,\\mathrm m)$ mit waagerechter Tangente darstellen. | 1 |\n| 5.4 | Auftreffgrenzpunkt $(4{,}00\\,\\mathrm s,0\\,\\mathrm m)$ markieren. | 1 |\n| 5.5 | Geschwindigkeitsgraph als durchgehend fallende Gerade über den positiven und negativen Bereich zeichnen. | 1 |\n| 5.6 | Im Geschwindigkeitsgraphen die Werte $+15$, $0$ und $-25\\,\\mathrm{m/s}$ zu den zugehörigen Zeiten korrekt markieren. | 1 |\n| 5.7 | Beschleunigungsgraph durchgehend bei $-10{,}0\\,\\mathrm{m/s^2}$, ohne Scheitel-Ausnahme, zeichnen. | 1 |\n| 5.8 | Alle drei Diagramme mit Größen, Einheiten und konsistenten Zeitachsen beschriften. | 1 |\n| 6.1 | Abwärtswurf-Ortsgesetz mit $y_0=20$, $v_0=-15$ und $a=-10$ in SI-Einheiten aufstellen. | 1 |\n| 6.2 | Abwärtswurf-Geschwindigkeitsgesetz $v_\\mathrm{ab}(t)=-15-10t$ in SI-Einheiten aufstellen. | 1 |\n| 6.3 | Physikalische Auftreffzeit des Abwärtswurfs $1{,}00\\,\\mathrm s$ bestimmen. | 1 |\n| 6.4 | Abwärtswurf-Auftreffgeschwindigkeit $-25{,}0\\,\\mathrm{m/s}$ bestimmen und gleichen Betrag erkennen. | 1 |\n| 6.5 | Gleichen Auftreffgeschwindigkeitsbetrag kinematisch begründen, etwa über die Rückkehr zur Abwurfhöhe mit $v=-15{,}0\\,\\mathrm{m/s}$ oder über $v^2-v_0^2=2a\\Delta y$. | 1 |\n| 6.6 | Flugzeitunterschied aus zusätzlichem Aufstieg und Rückkehr mit anschließend identischer Bewegung oder einer gleichwertigen kinematischen Begründung erklären. | 1 |",
+          "solutionContentEn": "1. The initial conditions are $y_0=20.0\\,\\mathrm m$ and $v_0=+15.0\\,\\mathrm{m/s}$. Throughout free flight, $a=-g=-10.0\\,\\mathrm{m/s^2}$. Hence\n\n$$y(t)=20.0\\,\\mathrm m+(15.0\\,\\mathrm{m/s})t-\\tfrac12(10.0\\,\\mathrm{m/s^2})t^2,$$\n$$v(t)=15.0\\,\\mathrm{m/s}-(10.0\\,\\mathrm{m/s^2})t.$$\n\nInitially $v>0$ but $a<0$: height still increases while the positive velocity and its magnitude decrease. Negative acceleration does not mean decreasing speed in every part of the motion.\n\n2. Setting $v(t_\\mathrm H)=0$ gives $t_\\mathrm H=1.50\\,\\mathrm s$. Substitution gives $y_\\mathrm H=31.25\\,\\mathrm m$. At that instant $v=0$, but $a$ remains $-10.0\\,\\mathrm{m/s^2}$. Velocity is zero only instantaneously and continues to change from positive to negative; gravity does not stop acting at the highest point. This is not rest over a time interval.\n\n3. Using numerical values in SI units:\n\n$$25=20+15t-5t^2,\\qquad t^2-3t+1=0.$$\n$$t_1=\\frac{3-\\sqrt5}{2}\\,\\mathrm s\\approx0.382\\,\\mathrm s,\\qquad\nt_2=\\frac{3+\\sqrt5}{2}\\,\\mathrm s\\approx2.618\\,\\mathrm s.$$\n\nThe velocities are $v_1=+5\\sqrt5\\,\\mathrm{m/s}\\approx+11.18\\,\\mathrm{m/s}$ and $v_2=-5\\sqrt5\\,\\mathrm{m/s}\\approx-11.18\\,\\mathrm{m/s}$. The first crossing is upwards, the second downwards. Equal speeds agree with time symmetry about $t_\\mathrm H$.\n\n4. $0=20+15t-5t^2$ gives $t=4.00\\,\\mathrm s$ and $t=-1.00\\,\\mathrm s$. Only $t_\\mathrm I=4.00\\,\\mathrm s$ occurs after release. The negative solution is an intersection of the mathematically extended parabola with $y=0$ before the chosen start; it does not describe an observed part of this trial. Immediately before impact, $v=-25.0\\,\\mathrm{m/s}$, so the speed is $|v|=25.0\\,\\mathrm{m/s}$. The model applies for $0\\leq t<4.00\\,\\mathrm s$; the impact point may be marked as a limiting endpoint. It does not describe subsequent motion.\n\n5. The position graph is a downward-opening parabola through $(0\\,\\mathrm s,20.0\\,\\mathrm m)$, with vertex $(1.50\\,\\mathrm s,31.25\\,\\mathrm m)$ and limiting endpoint $(4.00\\,\\mathrm s,0\\,\\mathrm m)$. Its slope is positive initially, zero at the highest point and negative thereafter. The velocity graph is a descending straight line through $(0\\,\\mathrm s,+15.0\\,\\mathrm{m/s})$, $(1.50\\,\\mathrm s,0)$ and the limiting value $(4.00\\,\\mathrm s,-25.0\\,\\mathrm{m/s})$. The acceleration graph is a horizontal line at $-10.0\\,\\mathrm{m/s^2}$ throughout the interval, including at the highest point. The velocity graph is not a graph of the always nonnegative speed.\n\n6. The second release has $v_0=-15.0\\,\\mathrm{m/s}$ and still $a=-10.0\\,\\mathrm{m/s^2}$:\n\n$$y_\\mathrm{down}(t)=20.0\\,\\mathrm m-(15.0\\,\\mathrm{m/s})t-\\tfrac12(10.0\\,\\mathrm{m/s^2})t^2,$$\n$$v_\\mathrm{down}(t)=-15.0\\,\\mathrm{m/s}-(10.0\\,\\mathrm{m/s^2})t.$$\n\nThe physical solution of $y_\\mathrm{down}(t)=0$ is $t_\\mathrm{down}=1.00\\,\\mathrm s$, with $v_\\mathrm{down}=-25.0\\,\\mathrm{m/s}$. In the upwards trial the object returns to its release height $20.0\\,\\mathrm m$ after $3.00\\,\\mathrm s$, now with $v=-15.0\\,\\mathrm{m/s}$. From that event onwards, height, velocity and acceleration match the initial conditions of the downwards trial. The remaining motion is therefore identical and lasts another $1.00\\,\\mathrm s$: a total of $4.00\\,\\mathrm s$ instead of $1.00\\,\\mathrm s$, but the same impact speed of $25.0\\,\\mathrm{m/s}$.\n\n**Marking principles:** The solution is one possible method. Equivalent physically correct derivations and representations receive the same credit. Award at most 1 mark per criterion. Penalize a calculation error where it first occurs; subsequent mathematically and physically consistent work using that intermediate result retains its method marks. Error carry-forward does not replace an independent physical explanation. Units and signs are part of the stated results. Exact answers and sensible rounding to two or three significant figures are equally acceptable; avoid premature rounding of intermediate values. A difference of at most 1% due solely to rounding is acceptable for the listed decimal answers. Assess graphs by shape, labelled axes, units and explicitly requested features, not artistic precision. Final answers must use the specified positive direction; an internally reversed axis is acceptable if results are correctly translated back. No extra tasks, vector calculations or energy arguments are required.\n\n### Marking rubric: 1 mark per criterion\n\n| Criterion | Evidence | Marks |\n| --- | --- | ---: |\n| 1.1 | State the correct initial height $y_0=20.0\\,\\mathrm m$. | 1 |\n| 1.2 | State $v_0=+15.0\\,\\mathrm{m/s}$ with a positive sign. | 1 |\n| 1.3 | State $a=-10.0\\,\\mathrm{m/s^2}$ during flight. | 1 |\n| 1.4 | Form the complete position equation with initial height, linear term and negative quadratic term. | 1 |\n| 1.5 | Form the complete velocity equation. | 1 |\n| 1.6 | Explain initial slowing from $v>0$ and $a<0$. | 1 |\n| 2.1 | Use $v=0$ to obtain the highest-point time $1.50\\,\\mathrm s$. | 1 |\n| 2.2 | Obtain the maximum height $31.25\\,\\mathrm m$. | 1 |\n| 2.3 | Explicitly distinguish $v=0$ from $a=-10.0\\,\\mathrm{m/s^2}$ at the highest point. | 1 |\n| 2.4 | Explain the continuing change in velocity or unchanged action of gravity; a bare assertion is insufficient. | 1 |\n| 3.1 | Set up the quadratic equation for $y(t)=25.0\\,\\mathrm m$. | 1 |\n| 3.2 | Obtain the first crossing time $0.382\\,\\mathrm s$ or its exact equivalent. | 1 |\n| 3.3 | Obtain the second crossing time $2.618\\,\\mathrm s$ or its exact equivalent. | 1 |\n| 3.4 | Obtain the first velocity $+11.18\\,\\mathrm{m/s}$. | 1 |\n| 3.5 | Obtain the second velocity $-11.18\\,\\mathrm{m/s}$. | 1 |\n| 3.6 | Identify the first crossing as ascending and the second as descending. | 1 |\n| 4.1 | Set up impact using $y(t)=0$ and the consistent position equation. | 1 |\n| 4.2 | Obtain the positive root $t=4.00\\,\\mathrm s$. | 1 |\n| 4.3 | Obtain the negative root $t=-1.00\\,\\mathrm s$. | 1 |\n| 4.4 | Recognize the negative root as a backward mathematical extension before release and reject it for this trial. | 1 |\n| 4.5 | Correctly distinguish impact velocity $-25.0\\,\\mathrm{m/s}$ and speed $25.0\\,\\mathrm{m/s}$. | 1 |\n| 4.6 | Specify validity from $t=0$ to immediately before $4.00\\,\\mathrm s$ without modelling the collision. | 1 |\n| 5.1 | Draw a downward-opening position parabola with positive then negative slope. | 1 |\n| 5.2 | Mark release at $(0\\,\\mathrm s,20.0\\,\\mathrm m)$. | 1 |\n| 5.3 | Mark the highest point $(1.50\\,\\mathrm s,31.25\\,\\mathrm m)$ with horizontal tangent. | 1 |\n| 5.4 | Mark the limiting impact point $(4.00\\,\\mathrm s,0\\,\\mathrm m)$. | 1 |\n| 5.5 | Draw velocity as one descending straight line spanning positive and negative values. | 1 |\n| 5.6 | Correctly mark velocity values $+15$, $0$ and $-25\\,\\mathrm{m/s}$ at their corresponding times. | 1 |\n| 5.7 | Draw acceleration at $-10.0\\,\\mathrm{m/s^2}$ throughout, with no exception at the highest point. | 1 |\n| 5.8 | Label all three graphs with quantities, units and consistent time axes. | 1 |\n| 6.1 | Form the downward position law with $y_0=20$, $v_0=-15$ and $a=-10$ in SI units. | 1 |\n| 6.2 | Form the downward velocity law $v_\\mathrm{down}(t)=-15-10t$ in SI units. | 1 |\n| 6.3 | Obtain the physical downward impact time $1.00\\,\\mathrm s$. | 1 |\n| 6.4 | Obtain downward impact velocity $-25.0\\,\\mathrm{m/s}$ and recognize the same speed. | 1 |\n| 6.5 | Justify the equal impact speed kinematically, for example through return to the release height with $v=-15.0\\,\\mathrm{m/s}$ or through $v^2-v_0^2=2a\\Delta y$. | 1 |\n| 6.6 | Explain the different flight times through the additional ascent and return followed by identical motion, or an equivalent kinematic argument. | 1 |",
+          "scoring": {
+            "maxPoints": 36,
+            "passingPoints": 22,
+            "steps": [
+              {
+                "id": "vertical-projection-signs-and-return-v1-1-1",
+                "points": 1,
+                "description": "DE: Anfangshöhe $y_0=20{,}0\\,\\mathrm m$ korrekt angeben. EN: State the correct initial height $y_0=20.0\\,\\mathrm m$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-1-2",
+                "points": 1,
+                "description": "DE: Anfangsgeschwindigkeit $v_0=+15{,}0\\,\\mathrm{m/s}$ mit positivem Vorzeichen angeben. EN: State $v_0=+15.0\\,\\mathrm{m/s}$ with a positive sign."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-1-3",
+                "points": 1,
+                "description": "DE: Während des Flugs $a=-10{,}0\\,\\mathrm{m/s^2}$ angeben. EN: State $a=-10.0\\,\\mathrm{m/s^2}$ during flight."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-1-4",
+                "points": 1,
+                "description": "DE: Vollständiges Zeit-Ort-Gesetz mit Anfangshöhe, linearem und negativem quadratischem Term aufstellen. EN: Form the complete position equation with initial height, linear term and negative quadratic term."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-1-5",
+                "points": 1,
+                "description": "DE: Vollständiges Zeit-Geschwindigkeits-Gesetz aufstellen. EN: Form the complete velocity equation."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-1-6",
+                "points": 1,
+                "description": "DE: Anfängliches Langsamerwerden aus $v>0$ und $a<0$ erklären. EN: Explain initial slowing from $v>0$ and $a<0$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-2-1",
+                "points": 1,
+                "description": "DE: Aus $v=0$ den Scheitelzeitpunkt $1{,}50\\,\\mathrm s$ bestimmen. EN: Use $v=0$ to obtain the highest-point time $1.50\\,\\mathrm s$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-2-2",
+                "points": 1,
+                "description": "DE: Scheitelhöhe $31{,}25\\,\\mathrm m$ bestimmen. EN: Obtain the maximum height $31.25\\,\\mathrm m$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-2-3",
+                "points": 1,
+                "description": "DE: Am Scheitel $v=0$ ausdrücklich von $a=-10{,}0\\,\\mathrm{m/s^2}$ unterscheiden. EN: Explicitly distinguish $v=0$ from $a=-10.0\\,\\mathrm{m/s^2}$ at the highest point."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-2-4",
+                "points": 1,
+                "description": "DE: Beschleunigung als fortgesetzte Geschwindigkeitsänderung bzw. unveränderte Schwerkraftwirkung begründen; bloße Behauptung reicht nicht. EN: Explain the continuing change in velocity or unchanged action of gravity; a bare assertion is insufficient."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-3-1",
+                "points": 1,
+                "description": "DE: Die Bedingung $y(t)=25{,}0\\,\\mathrm m$ als quadratische Gleichung ansetzen. EN: Set up the quadratic equation for $y(t)=25.0\\,\\mathrm m$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-3-2",
+                "points": 1,
+                "description": "DE: Erste Durchgangszeit $0{,}382\\,\\mathrm s$ oder exakten äquivalenten Wert bestimmen. EN: Obtain the first crossing time $0.382\\,\\mathrm s$ or its exact equivalent."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-3-3",
+                "points": 1,
+                "description": "DE: Zweite Durchgangszeit $2{,}618\\,\\mathrm s$ oder exakten äquivalenten Wert bestimmen. EN: Obtain the second crossing time $2.618\\,\\mathrm s$ or its exact equivalent."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-3-4",
+                "points": 1,
+                "description": "DE: Erste Geschwindigkeit $+11{,}18\\,\\mathrm{m/s}$ bestimmen. EN: Obtain the first velocity $+11.18\\,\\mathrm{m/s}$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-3-5",
+                "points": 1,
+                "description": "DE: Zweite Geschwindigkeit $-11{,}18\\,\\mathrm{m/s}$ bestimmen. EN: Obtain the second velocity $-11.18\\,\\mathrm{m/s}$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-3-6",
+                "points": 1,
+                "description": "DE: Die erste Lösung dem Aufstieg und die zweite dem Abstieg zuordnen. EN: Identify the first crossing as ascending and the second as descending."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-4-1",
+                "points": 1,
+                "description": "DE: Auftreffen durch $y(t)=0$ mit dem eigenen konsistenten Ortsgesetz ansetzen. EN: Set up impact using $y(t)=0$ and the consistent position equation."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-4-2",
+                "points": 1,
+                "description": "DE: Positive Nullstelle $t=4{,}00\\,\\mathrm s$ bestimmen. EN: Obtain the positive root $t=4.00\\,\\mathrm s$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-4-3",
+                "points": 1,
+                "description": "DE: Negative Nullstelle $t=-1{,}00\\,\\mathrm s$ bestimmen. EN: Obtain the negative root $t=-1.00\\,\\mathrm s$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-4-4",
+                "points": 1,
+                "description": "DE: Negative Lösung als mathematische Rückverlängerung vor dem Abwurf erkennen und für das Versuchsgeschehen verwerfen. EN: Recognize the negative root as a backward mathematical extension before release and reject it for this trial."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-4-5",
+                "points": 1,
+                "description": "DE: Vorzeichenbehaftete Auftreffgeschwindigkeit $-25{,}0\\,\\mathrm{m/s}$ und Betrag $25{,}0\\,\\mathrm{m/s}$ korrekt unterscheiden. EN: Correctly distinguish impact velocity $-25.0\\,\\mathrm{m/s}$ and speed $25.0\\,\\mathrm{m/s}$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-4-6",
+                "points": 1,
+                "description": "DE: Gültigkeit ab $t=0$ bis unmittelbar vor $4{,}00\\,\\mathrm s$ nennen; Stoß nicht weiter modellieren. EN: Specify validity from $t=0$ to immediately before $4.00\\,\\mathrm s$ without modelling the collision."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-5-1",
+                "points": 1,
+                "description": "DE: Ortsgraph als nach unten geöffnete Parabel mit erst positiver, dann negativer Steigung darstellen. EN: Draw a downward-opening position parabola with positive then negative slope."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-5-2",
+                "points": 1,
+                "description": "DE: Abwurfpunkt $(0\\,\\mathrm s,20{,}0\\,\\mathrm m)$ markieren. EN: Mark release at $(0\\,\\mathrm s,20.0\\,\\mathrm m)$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-5-3",
+                "points": 1,
+                "description": "DE: Scheitelpunkt $(1{,}50\\,\\mathrm s,31{,}25\\,\\mathrm m)$ mit waagerechter Tangente darstellen. EN: Mark the highest point $(1.50\\,\\mathrm s,31.25\\,\\mathrm m)$ with horizontal tangent."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-5-4",
+                "points": 1,
+                "description": "DE: Auftreffgrenzpunkt $(4{,}00\\,\\mathrm s,0\\,\\mathrm m)$ markieren. EN: Mark the limiting impact point $(4.00\\,\\mathrm s,0\\,\\mathrm m)$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-5-5",
+                "points": 1,
+                "description": "DE: Geschwindigkeitsgraph als durchgehend fallende Gerade über den positiven und negativen Bereich zeichnen. EN: Draw velocity as one descending straight line spanning positive and negative values."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-5-6",
+                "points": 1,
+                "description": "DE: Im Geschwindigkeitsgraphen die Werte $+15$, $0$ und $-25\\,\\mathrm{m/s}$ zu den zugehörigen Zeiten korrekt markieren. EN: Correctly mark velocity values $+15$, $0$ and $-25\\,\\mathrm{m/s}$ at their corresponding times."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-5-7",
+                "points": 1,
+                "description": "DE: Beschleunigungsgraph durchgehend bei $-10{,}0\\,\\mathrm{m/s^2}$, ohne Scheitel-Ausnahme, zeichnen. EN: Draw acceleration at $-10.0\\,\\mathrm{m/s^2}$ throughout, with no exception at the highest point."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-5-8",
+                "points": 1,
+                "description": "DE: Alle drei Diagramme mit Größen, Einheiten und konsistenten Zeitachsen beschriften. EN: Label all three graphs with quantities, units and consistent time axes."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-6-1",
+                "points": 1,
+                "description": "DE: Abwärtswurf-Ortsgesetz mit $y_0=20$, $v_0=-15$ und $a=-10$ in SI-Einheiten aufstellen. EN: Form the downward position law with $y_0=20$, $v_0=-15$ and $a=-10$ in SI units."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-6-2",
+                "points": 1,
+                "description": "DE: Abwärtswurf-Geschwindigkeitsgesetz $v_\\mathrm{ab}(t)=-15-10t$ in SI-Einheiten aufstellen. EN: Form the downward velocity law $v_\\mathrm{down}(t)=-15-10t$ in SI units."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-6-3",
+                "points": 1,
+                "description": "DE: Physikalische Auftreffzeit des Abwärtswurfs $1{,}00\\,\\mathrm s$ bestimmen. EN: Obtain the physical downward impact time $1.00\\,\\mathrm s$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-6-4",
+                "points": 1,
+                "description": "DE: Abwärtswurf-Auftreffgeschwindigkeit $-25{,}0\\,\\mathrm{m/s}$ bestimmen und gleichen Betrag erkennen. EN: Obtain downward impact velocity $-25.0\\,\\mathrm{m/s}$ and recognize the same speed."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-6-5",
+                "points": 1,
+                "description": "DE: Gleichen Auftreffgeschwindigkeitsbetrag kinematisch begründen, etwa über die Rückkehr zur Abwurfhöhe mit $v=-15{,}0\\,\\mathrm{m/s}$ oder über $v^2-v_0^2=2a\\Delta y$. EN: Justify the equal impact speed kinematically, for example through return to the release height with $v=-15.0\\,\\mathrm{m/s}$ or through $v^2-v_0^2=2a\\Delta y$."
+              },
+              {
+                "id": "vertical-projection-signs-and-return-v1-6-6",
+                "points": 1,
+                "description": "DE: Flugzeitunterschied aus zusätzlichem Aufstieg und Rückkehr mit anschließend identischer Bewegung oder einer gleichwertigen kinematischen Begründung erklären. EN: Explain the different flight times through the additional ascent and return followed by identical motion, or an equivalent kinematic argument."
+              }
+            ]
+          }
+        }
+      },
+      "goalDigest": "0b7c7cd26200dda34ef0f71b171e5146e81167d9c29b94e5386e6d2d634c73ce",
+      "disposition": "Vertical-throw task has no released direct credited coverage; more advanced vertical launch/turning-point modeling does not repair missing Hamburg signed-area preparation."
+    },
+    {
+      "goal": {
+        "id": "a344295c-c346-58ea-8c69-f3e9caa9c7b6",
+        "shortKey": "canonical_physics_k6_measured_rate",
+        "title": "Messwerte: Änderungen im passenden Zeitintervall",
+        "titleEn": "Measured values: changes over the matching interval",
+        "description": "Die lernende Person kann mittlere Messwertänderungen aus Orts- und Temperaturdaten unabhängig bestimmen und deren Aussage begrenzen.",
+        "descriptionEn": "The learner can independently determine average measured changes from position and temperature data and state their limits.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "13b338eb-f761-5817-9058-11043b9cb253"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [],
+          "phase": "GLOBAL",
+          "area": "Messdaten und Bewegung",
+          "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.MEASURED_RATE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "needs_review",
+          "reviewNote": "Autorenvorschlag; unabhängige Inhalts-, Abdeckungs- und Qualitätsreviews ausstehend. Keine Lernendenresultate.",
+          "coveredGoalIds": [
+            "13b338eb-f761-5817-9058-11043b9cb253"
+          ],
+          "coveredStrands": [],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/measured-rate.md",
+          "taskContent": "![Material B: Temperaturdaten](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/temperature-transfer-material.png)\n\nMaterial A: Ein Wagen liegt bei t=2 s am Ort 4 m, bei t=5 s am Ort 10 m und bei t=7 s wieder am Ort 4 m. Positive Richtung: vom Start zum ersten Wendepunkt. 1. Berechne die mittleren Ortsänderungen pro Zeit auf [2;5], [5;7] und [2;7] s, mit Einheiten. Erkläre das Vorzeichen und warum der Gesamtwert nicht ständige Ruhe beweist. (8 BE)\n\nMaterial B: Das beigefügte Zeit-Temperatur-Diagramm zeigt die folgenden Aufgabedaten (3 min;18 °C), (5 min;17 °C), (7 min;12 °C). 2. Lies Anfangs- und Endwerte ab, bestimme die mittlere Änderung auf [3;7] min und erkläre, ob jede Minute dieselbe Abnahme auftrat. Prüfe dazu auch die beiden Teilintervalle. (8 BE)",
+          "taskContentEn": "![Material B: temperature data](/assets/assessment-materials/physik/k6-measurement-rate-20261115-v3/temperature-transfer-material.en.png)\n\nMaterial A: A cart is at 4 m at t=2 s, 10 m at t=5 s, and back at 4 m at t=7 s. Positive direction is from the initial position toward the first turning point. 1. Calculate the average signed position changes per time over [2,5], [5,7], and [2,7] s, with units. Explain the signs and why the overall result does not prove continuous rest. (8 points)\n\nMaterial B: The attached time-temperature graph shows the following task data (3 min,18 °C), (5 min,17 °C), (7 min,12 °C). 2. Read the endpoints, find the average change over [3,7] min, and assess whether each minute had the same decrease. Also check both subintervals. (8 points)",
+          "solutionContent": "A: (10−4)/(5−2)=+2 m/s; (4−10)/(7−5)=−3 m/s; (4−4)/(7−2)=0 m/s. Die Rückrichtung ergibt einen negativen Wert. Gleiche Endorte bedeuten nur verschwindende Nettoänderung; die Ortswerte zeigen Bewegung. B: (12−18)/(7−3)=−1,5 °C/min. Auf [3;5] gilt −0,5 °C/min, auf [5;7] −2,5 °C/min. Der Gesamtwert ist ein Intervallmittel, kein Beleg gleicher Abnahme in jeder Minute. Die Graphenhöhe 12 °C ist keine Rate.",
+          "solutionContentEn": "A: (10−4)/(5−2)=+2 m/s; (4−10)/(7−5)=−3 m/s; (4−4)/(7−2)=0 m/s. Motion in the return direction gives a negative value. Equal final and initial positions mean only zero net change; the positions show motion. B: (12−18)/(7−3)=−1.5 °C/min. The subinterval averages are −0.5 °C/min and −2.5 °C/min. The overall result is an interval average, not evidence of the same decrease each minute. The graph height 12 °C is not a rate.",
+          "scoring": {
+            "maxPoints": 16,
+            "passingPoints": 16,
+            "steps": [
+              {
+                "id": "measured-rate_1",
+                "points": 4,
+                "description": "Alle drei Ortsraten mit passenden Differenzen und Einheiten bestimmt. / EN: Finds all three position rates with matching differences and units."
+              },
+              {
+                "id": "measured-rate_2",
+                "points": 4,
+                "description": "Vorzeichen gedeutet und Gesamtänderung von ständiger Ruhe getrennt. / EN: Interprets signs and distinguishes net change from continuous rest."
+              },
+              {
+                "id": "measured-rate_3",
+                "points": 4,
+                "description": "Temperaturendpunkte abgelesen und Gesamtmittel korrekt berechnet. / EN: Reads temperature endpoints and calculates the overall average correctly."
+              },
+              {
+                "id": "measured-rate_4",
+                "points": 4,
+                "description": "Beide Temperaturteilmittel bestimmt und die Aussage des Gesamtmittels begrenzt. / EN: Finds both temperature subinterval averages and limits the overall claim."
+              }
+            ]
+          }
+        }
+      },
+      "goalDigest": "2e88958c7fd25e97a3d08bb988bab6a89e3305db412c4afea85faedb3be97d9a",
+      "disposition": "Assessable interval-rate task; it terminates at the general rate goal and never requires the new complete TV or LAWS goal. It does not supply the missing graph-area or motion-law endpoint."
+    },
+    {
+      "goal": {
+        "id": "cd182a3c-be23-5f5a-87f6-0898ea16cb74",
+        "shortKey": "canonical_physics_k6_position_and_velocity",
+        "title": "Eigene Bewegungsmessung und unabhängiges Geschwindigkeitsprotokoll",
+        "titleEn": "Own motion measurements and an independent velocity log",
+        "description": "Die lernende Person kann eigene Bewegungsdaten erfassen und in zwei Diagrammen prüfen sowie ein unabhängiges t-v-Modell in Ortsmarken übertragen.",
+        "descriptionEn": "The learner can record and check their own motion data using two graphs and translate an independent time-velocity model into position marks.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical"
+        ],
+        "contains": [],
+        "requires": [
+          "ce431132-dfc4-42c2-aff6-bd72035190f8"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [],
+          "phase": "GLOBAL",
+          "area": "Messdaten und Bewegung",
+          "topicCode": "CANONICAL.PHYSICS.PRACTICE.K6.POSITION_AND_VELOCITY"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "needs_review",
+          "reviewNote": "Autorenvorschlag; unabhängige Inhalts-, Abdeckungs- und Qualitätsreviews ausstehend. Keine Lernendenresultate.",
+          "coveredGoalIds": [
+            "ce431132-dfc4-42c2-aff6-bd72035190f8"
+          ],
+          "coveredStrands": [],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/k6-measurement-rate-20261115-v3/position-and-velocity.md",
+          "taskContent": "1. Erfasse selbst eine sichere langsame eindimensionale Bewegung eines Spielzeugwagens oder eines auf einem Tisch verschobenen Gegenstands: mindestens ein Hinweg, eine Pause und ein Rückweg, mindestens acht Zeit-Ort-Paare. Vereinbare Achse und Nullpunkt; dokumentiere Gerät, Zeitbasis und Ortsauflösung. Reiche das unveränderte Protokoll und eine Skizze des Aufbaus ein. Wähle und begründe Auswerteintervalle, zeichne t-s und aus Ortsdifferenzen bestimmte mittlere Intervallgeschwindigkeiten im t-v-Diagramm; kennzeichne deren Intervallbezug. Erkläre Ruhe/Richtung und eine durch Auflösung begrenzte Aussage. Erfunde keine Messdaten; gelieferte Beispiele ersetzen das eigene Protokoll nicht. (12 BE)\n\n2. Unabhängiges Idealmodell: s(2 s)=4 m; v=+2 m/s auf [2;4] s, v=0 auf [4;5] s, v=−1 m/s auf [5;8] s. Bestimme die Ortsmarken bei 4,5 und 8 s über vorzeichenbehaftete Flächen und zeichne t-s. Kontrollmessungen mit Ortsauflösung ±0,05 m liefern 8,02 m; 7,98 m; 5,02 m. Beurteile die Konsistenz. Erkläre die Wirkung einer umgekehrten Ortsachse bei demselben Nullpunkt. (8 BE)",
+          "taskContentEn": "1. Record a safe slow one-dimensional motion of a toy cart or an object moved on a table: at least one outward interval, one pause, and one return interval, with at least eight time-position pairs. Define axis and origin; document the device, time base, and position resolution. Submit the unchanged log and a setup sketch. Choose and justify analysis intervals, draw time-position and time-velocity graphs of average interval velocities calculated from position differences, and label their intervals. Explain rest/direction and one claim bounded by resolution. Do not invent measurements; supplied examples do not replace your own log. (12 points)\n\n2. Independent ideal model: s(2 s)=4 m; v=+2 m/s over [2,4] s, v=0 over [4,5] s, and v=−1 m/s over [5,8] s. Use signed areas to find position marks at 4,5,8 s and draw time-position. Check measurements with resolution ±0.05 m are 8.02,7.98,5.02 m. Judge consistency. Explain reversing the position axis while keeping the same origin. (8 points)",
+          "solutionContent": "1. Individuelle Messdaten: Prüfung am unveränderten Protokoll; mindestens acht echte Paare, dokumentierte Geräte/Achse/Auflösung. t-s zeigt Hinweg, Pause und Rückweg. Δs/Δt wird je Intervall mit Einheit bestimmt und im t-v-Diagramm als Mittel gekennzeichnet; keine Punktgeschwindigkeit behaupten. Bei einem beispielhaften Ortsfehler ±ε kann Δs um bis zu 2ε abweichen; deshalb können kleine Δt stärkere Geschwindigkeitsstreuung bewirken. Auch eine korrekte qualitative Begründung genügt, eine formale Fehlerfortpflanzung ist nicht verlangt. Ein Messprotokoll kann nicht aus einer Musterlösung übernommen werden. 2. Δs=+4,0,−3 m; Orte 8,8,5 m. t-s steigt linear, bleibt konstant, fällt linear. Alle Kontrollwerte stimmen innerhalb ±0,05 m. Achsenumkehr negiert Orte und Geschwindigkeiten, nicht Dauer, Strecke oder tatsächliche Bewegung.",
+          "solutionContentEn": "1. Individual data are assessed against the unchanged log: at least eight genuine pairs and documented equipment/axis/resolution. Time-position shows outward motion, pause, and return. Δs/Δt is calculated with units for each interval and labelled as an average in time-velocity; no instantaneous velocity is asserted. With example position error ±ε, Δs can vary by up to 2ε; small Δt can therefore create larger velocity scatter. A correct qualitative explanation is sufficient; formal error propagation is not required. An experimental log cannot be copied from the reference solution. 2. Displacements are +4,0,−3 m; positions 8,8,5 m. Time-position rises linearly, stays constant, then falls linearly. All checks agree within ±0.05 m. Reversing the axis negates positions and velocities, not duration, distance, or the actual motion.",
+          "scoring": {
+            "maxPoints": 20,
+            "passingPoints": 20,
+            "steps": [
+              {
+                "id": "position-and-velocity_1",
+                "points": 4,
+                "description": "Eigenes unverändertes Messprotokoll mit mindestens acht Paaren, Aufbau, Achse und Auflösung vorgelegt. / EN: Submits own unchanged log with at least eight pairs, setup, axis, and resolution."
+              },
+              {
+                "id": "position-and-velocity_2",
+                "points": 4,
+                "description": "t-s und t-v mit Einheiten, korrekten Intervallmitteln und begründeter Intervallwahl konstruiert. / EN: Constructs both graphs with units, correct interval averages, and justified intervals."
+              },
+              {
+                "id": "position-and-velocity_3",
+                "points": 4,
+                "description": "Ruhe, Richtung und den Einfluss der Auflösung anhand der eigenen Daten erklärt. / EN: Explains rest, direction, and resolution effects using own data."
+              },
+              {
+                "id": "position-and-velocity_4",
+                "points": 4,
+                "description": "Drei vorzeichenbehaftete Flächen, Ortsmarken und t-s-Abschnitte korrekt bestimmt. / EN: Finds three signed areas, position marks, and time-position intervals correctly."
+              },
+              {
+                "id": "position-and-velocity_5",
+                "points": 4,
+                "description": "Kontrollmessungen begrenzt verglichen und Achsenumkehr physikalisch korrekt erklärt. / EN: Makes a bounded comparison with check measurements and explains axis reversal correctly."
+              }
+            ]
+          }
+        }
+      },
+      "goalDigest": "12bcad5cfce3a688061503cbeceac2d8138494623f10171fe9041fb0af185397",
+      "disposition": "Own two-measurement task, credited only for ce431132. Its measurement endpoint does not require TV/LAWS and does not establish the new signed-area reconstruction/general initial values demanded by a8dc."
+    },
+    {
+      "goal": {
+        "id": "367b17f8-972a-5f3e-8915-8cfe743132a3",
+        "shortKey": "canonical_physics_sek1_assessment_by_digital_video_data",
+        "title": "Prüfungsaufgabe: Eine Bewegung digital auswerten",
+        "titleEn": "Assessment Task: Analyze Motion Digitally",
+        "description": "Die lernende Person kann Ortsdaten aus einem Bewegungsvideo gewinnen, die Bewegung daraus analysieren und zufällige von systematischen Messabweichungen unterscheiden.",
+        "descriptionEn": "The learner can obtain position data from a motion video, analyze the motion from those data, and distinguish random from systematic measurement deviations.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment",
+          "canonical",
+          "SekI"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK"
+          ],
+          "phase": "GLOBAL",
+          "area": "Mechanik und Messmethoden",
+          "topicCode": "CANONICAL.PHYSICS.SEK1.PRACTICE.BY.DIGITAL_VIDEO_DATA"
+        },
+        "requires": [
+          "72effc66-87f4-5f5e-8d36-1547677365fb",
+          "13b338eb-f761-5817-9058-11043b9cb253",
+          "25593605-5e13-55cc-9a05-8f3d737e15e9"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {},
+        "extendedData": {
+          "applicabilityFromRequires": true,
+          "applicabilityMappingInheritance": "boundary",
+          "applicabilityProjection": "excluded"
+        },
+        "type": "atomic",
+        "examData": {
+          "reviewStatus": "needs_review",
+          "coveredGoalIds": [],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2",
+            "AB3"
+          ],
+          "taskContent": "**Material:** Ein Fahrrad wird mit 25 Bildern pro Sekunde gefilmt. Nach Kalibrierung mit einer im Bild sichtbaren 2,00-m-Marke ergeben sich für die Bildnummern 0, 5, 10, 15 die Ortswerte 0,02 m, 1,01 m, 1,98 m und 3,00 m. Drei wiederholte Markierungen in Bild 10 liefern 1,96 m, 1,98 m und 2,01 m. Später stellt sich heraus, dass die Kalibriermarke tatsächlich 1,96 m lang war.\n\n1. Beschreiben Sie den vollständigen Ablauf von Kalibrierung, Koordinatenwahl und punktweiser Markierung. Wandeln Sie Bildnummern in Zeiten um und erstellen Sie ein t-s-Diagramm. (7 BE)\n2. Bestimmen Sie die mittleren Geschwindigkeiten in den drei Intervallen und beurteilen Sie die Bewegungsart. (5 BE)\n3. Unterscheiden Sie die Streuung der drei Markierungen von der falschen Kalibrierlänge als zufällige beziehungsweise systematische Abweichung. Erklären Sie Wirkung und Begrenzung der Ergebnisgenauigkeit und schlagen Sie je eine Gegenmaßnahme vor. (6 BE)",
+          "solutionContent": "Bei 25 Bildern/s liegen zwischen fünf Bildern 0,20 s. Die Datenpunkte werden relativ zum Ursprung und zur kalibrierten Längenskala erfasst. Die Intervallgeschwindigkeiten betragen etwa 4,95 m/s, 4,85 m/s und 5,10 m/s; innerhalb der Messstreuung ist eine näherungsweise gleichförmige Bewegung plausibel. Die verschiedenen Markierungen zeigen zufällige Streuung und können durch wiederholtes Markieren beziehungsweise Mittelwertbildung reduziert werden. Die falsch angegebene Referenzlänge skaliert alle Ortswerte systematisch zu groß; Wiederholung allein beseitigt sie nicht, wohl aber eine geprüfte Kalibrierung. Beide Abweichungen begrenzen die Aussagekraft.",
+          "scoring": {
+            "maxPoints": 18,
+            "passingPoints": 11,
+            "steps": [
+              {
+                "id": "digital_video_1",
+                "points": 7,
+                "description": "Videoanalyse mit Kalibrierung, Zeitachse und t-s-Daten nachvollziehbar durchgeführt"
+              },
+              {
+                "id": "digital_video_2",
+                "points": 5,
+                "description": "Intervallgeschwindigkeiten berechnet und Bewegungsart datenbasiert beurteilt"
+              },
+              {
+                "id": "digital_video_3",
+                "points": 6,
+                "description": "Zufällige und systematische Abweichungen unterschieden und Gegenmaßnahmen begründet"
+              }
+            ]
+          },
+          "reviewNote": "K6-v2: schriftliche Aufgabe und Identität unverändert; kein Nachweis der vollen eigenen Video-/Wurffitkompetenz d67502e3. Deren Abdeckung wurde entfernt. Reale Aufnahme/Fits nur im gesonderten aktuellen Nachweis6345871e. Vertragskorrektur schreibt oder migriert keine Lernendenresultate; aktuelles unabhängiges Review vor Freigabe nötig."
+        }
+      },
+      "goalDigest": "1ffc7bc98058e2bf7ba5cded390d3a3249f168e3d28da90be47898924ae0537d",
+      "disposition": "Digital movement analysis has no current credited goals; requires the digital measurement goal, rate goal and plotting basis. It does not terminate the new TV/LAWS preparation chain."
+    },
+    {
+      "goal": {
+        "id": "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+        "title": "Wann überquert der Wagen die rote Linie?",
+        "titleEn": "When will the cart cross the red line?",
+        "description": "Die lernende Person kann Messdaten eines Wagens für eine quantitative Vorhersage seiner Ankunft nutzen und die Aussagekraft von Modell oder Messung an konkreten Daten erläutern.",
+        "descriptionEn": "The learner can use cart measurements to make a quantitative arrival prediction and explain what a model or measurement supports using concrete data.",
+        "type": "atomic",
+        "nodeKind": "exam",
+        "weight": 1,
+        "contains": [],
+        "requires": [
+          "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+        ],
+        "tags": [
+          "GK",
+          "LK",
+          "Practice",
+          "Assessment"
+        ],
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-physics",
+          "phase": "E",
+          "area": "Klausurtraining",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [],
+          "coveredStrands": [
+            "LI_BEWEGUNG"
+          ],
+          "demandLevels": [
+            "AB2"
+          ],
+          "taskContent": "Ein Wagen rollt aus der Ruhe eine Rampe hinunter. Bei 0,38 m beginnt die ebene Fahrbahn. Die rote Linie liegt bei 1,20 m. Eine Kamera hat den Ort des Wagens entlang der Fahrbahn erfasst. Für jeden Ortswert gilt eine Ablesegrenze von ±0,01 m. Die Zeitmarken und die Lage der roten Linie gelten als genau.\n\n| Zeit seit dem Start in s | Ort entlang der Fahrbahn in m |\n| ---: | ---: |\n| 0,00 | 0,00 |\n| 0,50 | 0,11 |\n| 1,00 | 0,40 |\n| 1,25 | 0,61 |\n| 1,50 | 0,80 |\n| 1,75 | 1,00 |\n| 1,90 | 1,12 |\n\n1. Wie bewegt sich der Wagen auf der Ebene? Begründe dein Modell mit den Messwerten vom Anfang bis zum Ende des beobachteten Auslaufs.\n2. Wo befand sich der Wagen nach 1,90 s laut Kamera? Gib die Lage mit Ablesegrenze und Einheit an, entlang der Fahrbahn oder bezogen auf die rote Linie. Nutze diese Angabe und dein Modell, um vorherzusagen, wann der Wagen die rote Linie erreicht. Begründe einen Zeitbereich für deine Vorhersage. Du kannst die Ortsangabe mit ±, durch ein Intervall oder in einer eindeutig beschrifteten Grafik darstellen.\n3. Auf welcher Annahme über das letzte Stück beruht deine Vorhersage? Nenne eine konkrete Änderung und erkläre, wie sie die Ankunft beeinflussen würde.\n4. Zur Kontrolle wurde eine feste Marke bei genau 0,50 m dreimal abgelesen. Die Kamera ergab 0,49 / 0,50 / 0,51 m, eine zweite Skala 0,53 / 0,54 / 0,53 m. Welche Reihe ist mit zufälliger Streuung um den Sollwert vereinbar? Welche deutet zusätzlich auf eine systematische Abweichung hin? Begründe dein Urteil mit den Zahlen.\n\nFür Modell, Vorhersage, Modellgrenze und Kontrollmessungen kannst du 5, 6, 2 und 4 Punkte erreichen. Ab 14 von 17 Punkten ist die Prüfung bestanden. Du kannst rechnen, zeichnen oder ein anderes physikalisch begründetes Verfahren verwenden.",
+          "taskContentEn": "A cart rolls down a ramp from rest. The level track begins at 0.38 m. A red line marks 1.20 m. A camera recorded the cart’s position along the track. Each position reading is accurate to within ±0.01 m. Treat the times and the position of the red line as exact.\n\n| Time since release in s | Position along the track in m |\n| ---: | ---: |\n| 0.00 | 0.00 |\n| 0.50 | 0.11 |\n| 1.00 | 0.40 |\n| 1.25 | 0.61 |\n| 1.50 | 0.80 |\n| 1.75 | 1.00 |\n| 1.90 | 1.12 |\n\n1. How does the cart move on the level track? Justify your model using readings from the beginning to the end of the observed motion on that section.\n2. According to the camera, where was the cart at 1.90 s? Give its position with the reading uncertainty and the unit, measured along the track or relative to the red line. Use this information and your model to predict when the cart will reach the red line. Justify a time range for your prediction. You may express the position with ±, as an interval or in a clearly labelled graph.\n3. What assumption does your prediction make about the remaining stretch of track? Describe one specific change and explain how it would affect the arrival.\n4. For a separate check, a fixed mark at exactly 0.50 m was read three times. The camera readings were 0.49 / 0.50 / 0.51 m. A second scale gave 0.53 / 0.54 / 0.53 m. Which set is consistent with random scatter around the reference value? Which also suggests a systematic error? Use the readings to justify your answer.\n\nThe model, prediction, model limitations and control readings are worth 5, 6, 2 and 4 marks respectively. A total of 14 out of 17 marks is a pass. You may use calculations, a drawing or another physically justified approach.",
+          "solutionContent": "**Modell für die Ebene.** Zwischen 1,00 und 1,90 s legt der Wagen ungefähr 0,72 m in 0,90 s zurück. Eine Gerade mit 0,80 m/s durch den ersten dieser Punkte ergibt für die fünf Zeitmarken auf der Ebene 0,40 / 0,60 / 0,80 / 1,00 / 1,12 m. Bei 1,25 s beträgt der Unterschied zur Kameraablesung 0,01 m. Alle fünf Werte liegen innerhalb der Ablesegrenzen.\n\n**Vorhersage aus den Messdaten.** Nach 1,90 s liegt der Wagen laut Kamera bei (1,12 ± 0,01) m, also zwischen 1,11 und 1,13 m. Bis zur Linie fehlen demnach 0,07 bis 0,09 m. Mit den zentralen Werten ergibt sich eine Restzeit von 0,08 m / (0,80 m/s) = 0,10 s. Der Wagen erreicht die Linie etwa 2,00 s nach dem Start.\n\nFür eine vorsichtige Abschätzung nutze ich die letzten 0,40 s. Bei 1,50 s liegt der Ort zwischen 0,79 und 0,81 m. Bis 1,90 s ist der Wagen also mindestens 1,11 − 0,81 = 0,30 m und höchstens 1,13 − 0,79 = 0,34 m weitergerollt. Im Konstanttempomodell liegt sein Tempo damit zwischen 0,75 und 0,85 m/s. Die kurze Reststrecke bei hohem Tempo ergibt die früheste Schranke, die lange Reststrecke bei niedrigem Tempo die späteste. Rechnet man die Restzeiten zu 1,90 s hinzu, erhält man 1,90 + 0,07/0,85 ≈ 1,982 s und 1,90 + 0,09/0,75 = 2,020 s. Nach außen gerundet umfasst ein begründeter Bereich **1,98 bis 2,02 s**.\n\n**Andere passende Modelle.** Die Messgrenzen erlauben eine schwache Verzögerung. Für eine während des Auslaufs und auf dem Reststück konstante, mit allen fünf Ablesungen verträgliche Verzögerung ist zum Beispiel 1,98 bis 2,03 s ein vorsichtiger Bereich. Ein anderes Intervall braucht eine Begründung für das tatsächlich verwendete Modell.\n\n**Grenze der Vorhersage.** Ich nehme an, dass der Wagen auf dem letzten Stück gleich schnell weiterrollt. Gerät er dort auf einen rauen Streifen, kann er stärker abbremsen und später ankommen.\n\n**Kontrollmessungen.** Eine Kameraablesung liegt 0,01 m unter der Marke, eine genau darauf und eine 0,01 m darüber. Das ist mit zufälliger Streuung um den Sollwert vereinbar. Die zweite Skala streut ebenfalls etwas, liegt aber bei allen drei Ablesungen um 0,03 bis 0,04 m zu hoch. Das spricht für eine zusätzliche systematische Abweichung.\n\n**Hinweis zur Bewertung.** Jede fachliche Teilleistung zählt dort, wo sie gezeigt wird. Ein falscher Zahlenwert schließt einen erkennbar richtigen Ansatz oder eine folgerichtige Weiterrechnung nicht aus. Einander widersprechende Angaben betreffen den jeweiligen Beleg. Es gibt keine zusätzliche Mindestpunktzahl pro Teil.",
+          "solutionContentEn": "**Model for the level track.** Between 1.00 and 1.90 s the cart travels about 0.72 m in 0.90 s. A straight line through the first of these points with a speed of 0.80 m/s gives positions of 0.40 / 0.60 / 0.80 / 1.00 / 1.12 m at the five times on the level track. At 1.25 s the line and the camera reading differ by 0.01 m. All five predictions are within the reading limits.\n\n**Prediction from the measurements.** At 1.90 s the camera places the cart at (1.12 ± 0.01) m, between 1.11 and 1.13 m. That leaves 0.07 to 0.09 m to the line. Using the central values gives 0.08 m / (0.80 m/s) = 0.10 s left. The cart reaches the line about 2.00 s after release.\n\nFor a conservative range I use the last 0.40 s. The position at 1.50 s is between 0.79 and 0.81 m. By 1.90 s the cart has therefore travelled at least 1.11 − 0.81 = 0.30 m and at most 1.13 − 0.79 = 0.34 m in that interval. In the constant-speed model this gives 0.75 to 0.85 m/s. The shorter remaining distance at the higher speed gives a lower bound for the time. The longer distance at the lower speed gives an upper bound. Adding these travel times to 1.90 s gives 1.90 + 0.07/0.85 ≈ 1.982 s and 1.90 + 0.09/0.75 = 2.020 s. Rounded outwards, a justified arrival window is **1.98 to 2.02 s**.\n\n**Other consistent models.** The reading limits allow weak deceleration. For a constant deceleration that fits all five readings and continues along the final stretch, 1.98 to 2.03 s is one conservative interval. An alternative interval needs support from the model actually used.\n\n**Limits of the prediction.** I assume that the cart maintains its speed over the remaining distance. If the wheels encounter a rough strip, the cart could slow down more and arrive later.\n\n**Check readings.** One camera reading is 0.01 m below the mark, one equals it and one is 0.01 m above. This is consistent with random scatter around the reference value. The second scale also shows some scatter, but all three readings are 0.03 to 0.04 m too high. That suggests an additional systematic error.\n\n**Scoring note.** Credit each piece of evidence wherever it appears. An incorrect value can still show a sound method or consistent follow-through. Conflicting statements affect the specific claim they concern. There is no separate minimum for any part.",
+          "scoring": {
+            "maxPoints": 17,
+            "passingPoints": 14,
+            "steps": [
+              {
+                "id": "A1",
+                "points": 5,
+                "description": "DE: Bewerte die höchste erreichte Stufe. 0: kein brauchbarer Datenbezug. 1: aus einem Messpaar auf der Ebene ein geeignetes Tempo oder eine Steigung gewonnen. 2: ein passendes Modell durch Vergleich des frühen und späten Auslaufs begründet, etwa mit ähnlichen Wegzuwächsen je Zeit, unterschiedlichen Teilsteigungen oder einer passenden Kurve. Zwei Endpunkte allein zeigen keine Verlaufsform. 3: dieser Vergleich ist für beide Abschnitte quantitativ überprüfbar (z. B. zwei mittlere Geschwindigkeiten oder Modellorte im Inneren). 4: zusätzlich Abweichungen zwischen Modell und Messwerten anhand der Ablesegrenze beurteilt. 5: das Modell über alle fünf Ablesungen belegt, z. B. durch entsprechende Residuen, einen gemeinsamen, datenverträglichen Geschwindigkeitsbereich oder einen Verlauf durch alle Fehlerbalken. Jede Stufe kann auch grafisch belegt werden. EN: Score the highest level demonstrated. 0: no usable reference to the data. 1: obtains a relevant speed or slope from a pair of level-track readings. 2: justifies a suitable model by comparing early and late motion, for example using similar displacements per unit time, different segment slopes or a suitable curve. Two endpoints alone do not show the shape. 3: the early and late comparison is quantitatively checkable for both segments (e.g. two average speeds or predicted interior positions). 4: also assesses model–data differences against the reading limits. 5: supports the model across all five readings, e.g. with residuals, a common data-consistent speed range or a curve through all error bars. A graph may demonstrate any level."
+              },
+              {
+                "id": "A2",
+                "points": 6,
+                "description": "DE: 0: kein brauchbarer Schritt. 1–2: je ein Punkt für einen richtigen Teilschritt, etwa letzte Messlage mit Einheit und Ablesegrenze, zentraler Ansatz aus Restweg und Tempo oder Herleitung und Auswertung einer einseitigen Schranke (bis zu 2). 3: eine plausible Ankunft seit dem Start ist als Schätzwert oder begründeter beidseitiger Zeitbereich bestimmt, und mindestens ein Einfluss der Ortsgrenzen auf die Ankunft ist quantitativ nachvollziehbar. Eine einseitige Schranke allein genügt dafür nicht. Ab Stufe 3 je ein weiterer Punkt für (a) letzte Messlage mit Einheit und Ablesegrenze, (b) eine begründete physikalisch vertretbare Zeitgrenze mit Einheit, (c) die ebenso begründete Gegengrenze. Jede Seite kann zuerst vorliegen. Eine gemeinsame Rechnung oder ablesbare Grafik kann beide Seiten belegen; Runden nach außen zählt. Willkürlich weite Grenzen zeigen keinen Messwerteinfluss. EN: 0: no valid step. 1–2: one mark per correct contribution, e.g. final measured position with unit and reading limits, central estimate set up from distance and speed, or derivation and evaluation of a one-sided bound (up to 2). 3: gives a plausible arrival time from launch as an estimate or justified two-sided interval, and quantitatively shows at least one effect of the position limits on arrival. One bound alone does not reach this level. From level 3 add one mark each for (a) final measured position with unit and reading limits, (b) one physically justified time bound with a unit, (c) the opposite bound, also justified. Either side may come first. One calculation or readable graph may support both; outward rounding is valid. Arbitrarily distant bounds do not show the effect of the readings."
+              },
+              {
+                "id": "A3a",
+                "points": 1,
+                "description": "DE: Macht die Annahme für das unbeobachtete Reststück erkennbar. Auch die Erläuterung einer konkreten Störung kann zeigen, welche Fortsetzung vorausgesetzt wurde. EN: Identifies the assumption for the unobserved final stretch. Explaining a specific change can also show which continuation was assumed."
+              },
+              {
+                "id": "A3b",
+                "points": 1,
+                "description": "DE: Verknüpft eine konkrete Änderung der Bedingungen mit ihrer Wirkung auf die Ankunft, etwa stärkere Reibung mit späterem Erreichen oder Stillstand vorher. EN: Links a specific change in conditions to its effect on arrival, for example increased friction leading to later arrival or a stop before the line."
+              },
+              {
+                "id": "A4a",
+                "points": 1,
+                "description": "DE: Erkennt bei der Kamerareihe eine mit zufälliger Streuung um den Sollwert vereinbare Messung. Eine eindeutige Beschreibung genügt. EN: Recognises that the camera readings are consistent with random scatter about the reference value. A clear description is sufficient."
+              },
+              {
+                "id": "A4b",
+                "points": 1,
+                "description": "DE: Belegt die Lage der Kamerawerte um die Marke anhand der Daten, etwa durch das Paar 0,49 und 0,51 m beiderseits von 0,50 m. EN: Uses the readings to show how the camera values lie around the mark, for example 0.49 and 0.51 m on opposite sides of 0.50 m."
+              },
+              {
+                "id": "A4c",
+                "points": 1,
+                "description": "DE: Erkennt bei der zweiten Skala einen Hinweis auf einen gerichteten Versatz nach oben. Die Aussage darf wegen der kleinen Stichprobe vorsichtig formuliert sein. EN: Recognises evidence of an upward systematic offset for the second scale. A cautious conclusion is appropriate for this small sample."
+              },
+              {
+                "id": "A4d",
+                "points": 1,
+                "description": "DE: Belegt, dass die zweite Reihe trotz kleiner Streuung durchweg über dem Sollwert liegt, etwa mit den Abweichungen von +0,03 bis +0,04 m. EN: Uses the data to show that the second set lies consistently above the reference despite its small scatter, for example by +0.03 to +0.04 m."
+              }
+            ]
+          }
+        },
+        "extendedData": {
+          "applicabilityMappingInheritance": "boundary"
+        }
+      },
+      "goalDigest": "328dfee737e311617fcbccfec7547b00768c4833a9a3dc0f5272627669368c52",
+      "disposition": "Uniform-motion crossing task, no current direct credit; uniform-motion endpoint does not require TV or LAWS and cannot repair a complete accelerated-motion endpoint."
+    },
+    {
+      "goal": {
+        "id": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "title": "Bewegungsanalyse und freier Fall",
+        "titleEn": "Motion Analysis and Free Fall",
+        "description": "E.1 Bewegungen und freier Fall, 25 BE.",
+        "descriptionEn": "E.1 motions and free fall, 25 points.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "Practice",
+          "Assessment"
+        ],
+        "contains": [],
+        "requires": [
+          "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "ac25ffe3-fd42-592d-a937-79cc13460313"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-physics",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN",
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK"
+          ],
+          "phase": "E"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "examData": {
+          "reviewStatus": "released",
+          "coveredGoalIds": [
+            "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "ac25ffe3-fd42-592d-a937-79cc13460313",
+            "230345f3-c360-4963-b390-ab94e3e2c864"
+          ],
+          "coveredStrands": [
+            "LI_BEWEGUNG",
+            "LI_TECHNIK"
+          ],
+          "demandLevels": [
+            "AB1",
+            "AB2"
+          ],
+          "taskContent": "**Kontext:**\n\nSie unterstützen ein kommunales Verkehrssicherheitsprojekt. Auf Basis von Messfahrten, Fallversuchen und Bremsdaten soll bewertet werden, wie Bewegungsmodelle zur Abschätzung realer Risiken im Straßenverkehr genutzt werden können.\n\nAlle Materialien gehören zu derselben Untersuchungssituation: Material 1 liefert Messdaten zur Bewegung, Material 2 ein Vergleichsmodell aus dem freien Fall und Material 3 einen sicherheitsrelevanten Anwendungskontext.\n\n**Material 1 (Messfahrt auf gerader Strecke):**\n\n| Zeit $t$ (s) | 0.0 | 0.5 | 1.0 | 1.5 | 2.0 |\n|---|---:|---:|---:|---:|---:|\n| Weg $s$ (m) | 0.0 | 0.4 | 1.6 | 3.6 | 6.4 |\n\n**Material 2 (Fallversuch):**\n\n- Abwurfhöhe: $h=20.0\\,\\mathrm{m}$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Luftwiderstand wird vernachlässigt.\n\n**Material 3 (Bremsen im Stadtverkehr):**\n\n- Anfangsgeschwindigkeit: $v_0=50\\,\\mathrm{km/h}$\n- Reaktionszeit: $t_R=0.80\\,\\mathrm{s}$\n- mittlere Bremsverzögerung: $a_B=6.5\\,\\mathrm{m/s^2}$\n- verfügbare Strecke bis Hindernis: $24\\,\\mathrm{m}$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1, ob eine gleichförmige oder gleichmäßig beschleunigte Bewegung vorliegt, und berechnen Sie die Beschleunigung. (6 BE)\n2. Bestimmen Sie die Geschwindigkeit bei $t=2.0\\,\\mathrm{s}$ und bei $t=1.2\\,\\mathrm{s}$. (7 BE)\n3. Berechnen Sie für Material 2 die Fallzeit und die Aufprallgeschwindigkeit. (6 BE)\n4. Prüfen Sie mit Material 3, ob das Fahrzeug vor dem Hindernis anhalten kann. (6 BE)",
+          "solutionContent": "1. Die Wegwerte steigen quadratisch mit der Zeit ($s\\propto t^2$). Damit liegt eine gleichmäßig beschleunigte Bewegung vor.\n\n$$\ns(t)=\\frac12 a t^2\n$$\n\nMit $s(2.0\\,\\mathrm{s})=6.4\\,\\mathrm{m}$ folgt:\n\n$$\na=\\frac{2s}{t^2}=\\frac{2\\cdot 6.4}{(2.0)^2}=3.2\\,\\mathrm{m/s^2}\n$$\n\n**6 BE**\n\n2. Bei Start aus Ruhe gilt $v(t)=a\\,t$.\n\n$$\nv(2.0\\,\\mathrm{s})=3.2\\cdot 2.0=6.4\\,\\mathrm{m/s}\n$$\n\n$$\nv(1.2\\,\\mathrm{s})=3.2\\cdot 1.2=3.84\\,\\mathrm{m/s}\n$$\n\n**7 BE**\n\n3. Für den freien Fall:\n\n$$\nt_F=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{40.0}{9.81}}=2.02\\,\\mathrm{s}\n$$\n\n$$\nv_A=g\\,t_F=9.81\\cdot 2.02=19.8\\,\\mathrm{m/s}\n$$\n\n**6 BE**\n\n4. Umrechnung der Anfangsgeschwindigkeit:\n\n$$\nv_0=50\\,\\mathrm{km/h}=13.89\\,\\mathrm{m/s}\n$$\n\nReaktionsweg:\n\n$$\ns_R=v_0 t_R=13.89\\cdot 0.80=11.1\\,\\mathrm{m}\n$$\n\nBremsweg:\n\n$$\ns_B=\\frac{v_0^2}{2a_B}=\\frac{13.89^2}{2\\cdot 6.5}=14.8\\,\\mathrm{m}\n$$\n\nAnhalteweg:\n\n$$\ns_A=s_R+s_B=11.1+14.8=25.9\\,\\mathrm{m}\n$$\n\nDa $25.9\\,\\mathrm{m}>24\\,\\mathrm{m}$, reicht die Strecke nicht aus.\n\n**6 BE**",
+          "scoring": {
+            "maxPoints": 25,
+            "passingPoints": 15,
+            "steps": [
+              {
+                "id": "s1",
+                "points": 6,
+                "description": "Bewegungsart erkannt und Beschleunigung korrekt bestimmt"
+              },
+              {
+                "id": "s2",
+                "points": 7,
+                "description": "Geschwindigkeiten aus dem Modell korrekt berechnet"
+              },
+              {
+                "id": "s3",
+                "points": 6,
+                "description": "Fallzeit und Aufprallgeschwindigkeit korrekt berechnet"
+              },
+              {
+                "id": "s4",
+                "points": 6,
+                "description": "Anhalteweg berechnet und sicherheitsbezogen bewertet"
+              }
+            ]
+          },
+          "reviewNote": " Aktueller begrenzter AI-Inhaltsentscheid vom15.11.2026: ausschließlich unbelegte Vollclaims ce431132-dfc4-42c2-aff6-bd72035190f8,e4b38061-1f28-43ad-8371-a3e7c0e81856 entfernt; Aufgaben-/Lösungs-/Rastertexte, IDs und Punkteschwellen bleiben unverändert. Root-Disposition: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/root-review/direct-claim-removal-root-disposition.actual.json. Keine pauschale Neuprüfung übriger historischer Claims und keine Änderung gespeicherter Resultate."
+        },
+        "phase": "E",
+        "type": "atomic"
+      },
+      "goalDigest": "a17c35adfcedb2db395252be657f94efbd1241fa4440b5a1793cd7f446bcfc4e",
+      "disposition": "Broader historical movement/free-fall/traffic task: additional free-fall, force and traffic prerequisites. Its released credited goals exclude the narrowed e4b after the prior independent removal; not a bounded replacement for the proposed e4b endpoint. No expanded credit inferred."
+    }
+  ]
+}

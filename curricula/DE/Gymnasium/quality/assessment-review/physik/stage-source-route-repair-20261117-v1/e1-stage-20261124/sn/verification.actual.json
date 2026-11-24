@@ -1,0 +1,26 @@
+{
+  "schema": "native-saxon-assessment-binding-verification-v1",
+  "status": "PASS",
+  "at": "2026-11-24T03:43:44.818805+00:00",
+  "review": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/review.actual.json",
+    "sha256": "7adc92cdf8395144a2c415d0abb26d147dd7c75b9f24bd1fb4905a55242f1219"
+  },
+  "verifier": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/verify-current-bindings.mts",
+    "sha256": "25962c40b9a971fbe4634272ac84881e3d60148820740fe2f856c32b554e79c4"
+  },
+  "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/verify-current-bindings.mts",
+  "result": {
+    "assessmentCount": 2,
+    "preparationPayloadCount": 71,
+    "closureCounts": [
+      66,
+      69
+    ],
+    "unresolvedReferences": [],
+    "historicalRecordsUnchanged": 4,
+    "SNViewsWithReviewedJ9Fragments": 3
+  },
+  "meaning": "Automated exact-input/native-closure check; separate from independent source/content judgment and from actual learner work. No generated status, main CI or integration claim."
+}

@@ -1191,6 +1191,41 @@ assert.deepEqual(coveredStrandsFollowup.changes.map(change => change.goalId).sor
   'a8dc0290-9f80-5763-8943-e16b8d2aa860', '7cfaf48e-e420-5c09-8ec2-932f0dba4d08',
   'f41e4e30-794e-5ce4-ba5e-cc72712cd691',
 ].sort(compareCodePoints))
+// Validate the historical strand-only payload first, then apply the two
+// independently reviewed E.1 changes to a copy. Every other field stays pinned.
+const saxonAccelerationExam = 'a8dc0290-9f80-5763-8943-e16b8d2aa860'
+const saxonFreeFallExam = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
+const e1StageReview = readJson<{ schema: string; status: string; goalBindings: Array<{
+  goalId: string; currentGoalPath: string; currentGoalSha256: string; previousGoalPath: string; previousGoalSha256: string
+  allowedDeltas: Array<{ path: string; before: string[]; after: string[] }>; reviewScope: { jurisdictions: string[] }
+}> }>('curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/sn/review.actual.json')
+assert.equal(e1StageReview.schema, 'independent-e1-saxon-source-stage-assessment-supersession-v1')
+assert.equal(e1StageReview.status, 'PASS')
+assert.deepEqual(e1StageReview.goalBindings.map(row => row.goalId).sort(compareCodePoints), [saxonAccelerationExam, saxonFreeFallExam])
+const currentRelease = (id: string, historical: object): object => {
+  const row = e1StageReview.goalBindings.find(binding => binding.goalId === id)
+  if (!row) return historical
+  const previous = coveredStrandsFollowup.changes.find(change => change.goalId === id)!
+  assert.equal(row.previousGoalPath, previous.currentGoalPath)
+  assert.equal(row.previousGoalSha256, previous.currentGoalSha256)
+  assert.deepEqual(historical, readJson(row.previousGoalPath))
+  assert.deepEqual(row.reviewScope.jurisdictions, ['DE-SN'])
+  const deltas = id === saxonAccelerationExam
+    ? [{ path: 'requires', before: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'], after: ['262f807a-30d0-503e-986f-856cbd048e8e'] }]
+    : ['applicability.jurisdiction', 'extendedData.applicabilityOverrides.jurisdiction'].map(path => ({ path, before: ['DE-SN'], after: ['DE-HE', 'DE-SN'] }))
+  assert.deepEqual(row.allowedDeltas, deltas)
+  const expected = structuredClone(historical) as Record<string, unknown>
+  for (const delta of deltas) {
+    const keys = delta.path.split('.')
+    const field = keys.pop()!
+    const parent = keys.reduce((node, key) => node[key] as Record<string, unknown>, expected)
+    assert.deepEqual(parent[field], delta.before)
+    parent[field] = delta.after
+  }
+  assert.equal(sha256(readFileSync(resolve(repoRoot, row.currentGoalPath), 'utf8')), row.currentGoalSha256)
+  assert.deepEqual(readJson(row.currentGoalPath), expected)
+  return expected
+}
 for (const change of coveredStrandsFollowup.changes) {
   assert.deepEqual(change.allowedDelta, { path: 'examData.coveredStrands', before: [], after: ['LI_BEWEGUNG'] })
   assert.equal(sha256(readFileSync(resolve(repoRoot, change.beforeGoalPath), 'utf8')), change.beforeGoalSha256)
@@ -1199,7 +1234,7 @@ for (const change of coveredStrandsFollowup.changes) {
   assert.deepEqual(expected.examData.coveredStrands, [])
   expected.examData.coveredStrands = ['LI_BEWEGUNG']
   assert.deepEqual(readJson(change.currentGoalPath), expected, `${change.goalId}: no other field may change in the followup`)
-  assert.deepEqual(rawGoalById.get(change.goalId), expected, `${change.goalId}: exact separately approved current payload`)
+  assert.deepEqual(rawGoalById.get(change.goalId), currentRelease(change.goalId, expected), `${change.goalId}: exact separately approved current payload`)
 }
 assert.deepEqual(ownTaskActivation.tasks.map(task => task.id).sort(compareCodePoints), [
   '3b7b2b62-e39c-5936-b0d8-5406206e57b6', '57a03b38-5ec5-5e4f-b71a-4024bab1584c',
@@ -1217,7 +1252,7 @@ for (const row of ownTaskActivation.tasks) {
     assert.deepEqual(acceptedRelease, readJson(followup.beforeGoalPath), `${row.id}: followup starts at the exact original release`)
     acceptedRelease.examData.coveredStrands = ['LI_BEWEGUNG']
   }
-  assert.deepEqual(task, acceptedRelease, `${row.id}: exact accepted release plus only its separately approved strand correction`)
+  assert.deepEqual(task, currentRelease(row.id, acceptedRelease), `${row.id}: exact accepted release and reviewed successors`)
   assert.equal(sha256(readFileSync(resolve(repoRoot, row.releasedPath), 'utf8')), row.releasedSha256)
   assert.equal(sha256(readFileSync(resolve(repoRoot, row.sourceArtifactPath), 'utf8')), row.sourceArtifactSha256)
   assert.equal(String(readJson<{ status: string }>(row.contentReview).status).toUpperCase(), 'PASS')
@@ -1228,8 +1263,12 @@ for (const row of ownTaskActivation.tasks) {
   const extended = task.extendedData as { applicabilityFromRequires?: boolean; applicabilityMappingInheritance: string; applicabilityOverrides: { jurisdiction: string[] } }
   assert.equal(extended.applicabilityFromRequires, undefined)
   assert.equal(extended.applicabilityMappingInheritance, 'boundary')
-  assert.deepEqual(extended.applicabilityOverrides.jurisdiction, row.offeredJurisdictions)
-  assert.deepEqual(task.applicability, { jurisdiction: row.offeredJurisdictions })
+  // The E.1 cut also places this task in Hesse. This assertion checks the
+  // live payload. The Saxon source-stage decision covers only the Saxon offer.
+  if (row.id === saxonFreeFallExam) assert.deepEqual(row.offeredJurisdictions, ['DE-SN'])
+  const liveJurisdictions = row.id === saxonFreeFallExam ? ['DE-HE', 'DE-SN'] : row.offeredJurisdictions
+  assert.deepEqual(extended.applicabilityOverrides.jurisdiction, liveJurisdictions)
+  assert.deepEqual(task.applicability, { jurisdiction: liveJurisdictions })
 }
 // The Fermi competency needs its own real band-model assessment; generic
 // historical exam templates must not claim this newly checked coverage.
