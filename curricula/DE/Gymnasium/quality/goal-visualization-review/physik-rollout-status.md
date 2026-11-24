@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-23T21:42:08.907Z
+Generated: 2026-11-24T04:06:28.677Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -24,7 +24,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 98 |
+| Review-Ledger-Dateien | 99 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
@@ -44,6 +44,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Decision | Count |
 | --- | --- |
+| `accepted_after_notation_correction` | 1 |
 | `accepted_ai_pilot` | 2 |
 | `accepted_cluster_overview_after_atomic_split` | 1 |
 | `accepted_documented_repo_native_fallback` | 2 |
@@ -77,7 +78,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-092.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-093.md` |
 | Latest ledger status | `accepted_ai_pilot` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |

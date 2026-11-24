@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: OpenAI / Codex image_gen + programmatic diagram correction
+- Provider: OpenAI / Codex image_gen
 - Status: accepted
 - Quellbild: `262f807a-30d0-503e-986f-856cbd048e8e.png`
 - Public Asset: `/assets/goal-visualizations/physik/262f807a-30d0-503e-986f-856cbd048e8e/262f807a-30d0-503e-986f-856cbd048e8e.png`
@@ -16,9 +16,7 @@
 ## Prompt
 
 ```text
-Use case: precise-object-edit
-Edit the referenced educational illustration with exactly one visual change: remove every horizontal pale blue or pale orange watercolor underline and every colored wash behind text, including under the main title, under both column headings, under the two carts, and behind the bottom statement. Restore those regions to the same warm off-white paper background.
-Preserve all existing words, formulas, subscripts, superscripts, cart illustrations, graph axes, and four graph curves exactly. Preserve placement, sizes, colors, friendly hand-drawn line quality and 16:9 composition. The bottom sentence must stay exactly "Steigung im s-t-Diagramm → Geschwindigkeit", now on plain paper with no colored band. No other changes. No added lines, text, highlights, stars, sparkles, technical IDs, watermark or logos.
+Edit the reference teaching illustration. Correct exactly two letters in its bottom caption: the final caption must read “Steigung im t-s-Diagramm → Geschwindigkeit”. Swap the lowercase t and s in the diagram name. The t comes first. Keep the paper tone, lettering, baseline, framing, entire original two-column composition, all formulas, axes, cart drawings and curve geometry pixel-aligned with the reference. Return the complete 16:9 sheet. Do not add or change any other marks, equations or headings.
 ```
 
 ## Review-Notiz
