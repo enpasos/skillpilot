@@ -666,7 +666,8 @@ in the Sek II GK example since the E.1 cut described below (19 instead of 20
 in the cross-stage view). An explicit selection of that exam still counts, including
 in older plans that stored it only once across overlapping blocks. Stored
 selections, assessment receipts and individual mastery are preserved. With
-the pilot disabled, plans use their stored goal lists.
+the pilot disabled, plans use their stored goal lists. A plan that still
+names an exam edition retired since then is outdated; see the E.1 cut below.
 
 **E.1 cut, 23 and 24 November 2026.** The Product Owner accepted a cut of the
 Hessian section E.1 into four child structures in learning order:
@@ -683,7 +684,18 @@ bodies, and the velocity vector of the throw.
 
 Parts A–D remain the four required parts of the E.1 assignment. The voluntary
 additions are the horizontal-throw exam and the own task with two free-fall
-series. On 24 November the Product Owner approved the return of the
+series. The horizontal-throw exam is offered in a revised edition since
+24 November 2026: its task 6 and grading now evidence the model-limits goal,
+with a pass mark of 35.5 of 36 points. The earlier edition could be passed
+with task 6 left empty, so the revised edition has its own assessment id
+(`bcc56921-7107-5f5f-b721-3d5e0d7e1cd9`). Passes of the earlier edition stay
+with the earlier id (`6ea3fb3c-abdc-568f-ab13-97c36dc274e4`) in the historical
+container and never count for the revised edition, as the Graph Definition
+requires for a new recognition claim. A stored plan that still names a retired
+edition, this one or the multiphase exam, is outdated and the learner renews
+it. Its stored blocks, the receipts and the mastery are kept unchanged.
+
+On 24 November the Product Owner approved the return of the
 multiphase exam to E.1. Two independent review rounds then found that its
 edition evidences no whole goal, so it is retired in the historical container
 without a successor and without any transfer of results. Its voluntary

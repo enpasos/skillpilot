@@ -78,6 +78,10 @@ own opening. Reference frames and the velocity vector of the throw belong to
 E.3, road traffic follows friction in E.2. Voluntary E.1 exams are the
 horizontal-throw exam and the own task with two free-fall series; the
 multiphase exam is retired until an edition passes independent review. The
+horizontal-throw exam has a revised edition with its own id since 24 November;
+passes of the earlier edition never count for it. A stored plan that still
+names a retired edition is outdated and the learner renews it; stored blocks,
+receipts and mastery are kept. The
 planning release credits only the accelerated-motion goal from part D. See
 the E.1 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 

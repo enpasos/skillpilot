@@ -29,7 +29,7 @@ Alle 1.036 Mathematik-Zuordnungen behalten ihren belegten Ort und frühesten Phy
 
 Alle vier geänderten Bewertungsfassungen bestanden zwei unabhängige fachliche Prüfungen. Die beiden Grenzarbeiten der freiwilligen Wurfprüfung erreichen 35,5 und 35 von 36 Punkten. Alte Leistungen bleiben auf der historischen Prüfungs-ID. Das Material behält die vier Pflichtteile und die Planungsanrechnung D→BES. Lokal bestanden 129 von 129 ausgeführten Fach- und Installationsschritten; 50 Runner-Einrichtungsschritte sind als lokale Entsprechungen belegt. Physik erreicht M7, die Sekundarstufen erreichen M4. [Fachurteile und CI-Schritte](https://github.com/enpasos/skillpilot/blob/feat/e1-kindeinheiten-nachweise/contracts/stage-plan-review-evidence/2026-11-24/e1-curriculum-ci-followup/README.md)
 
-**Integration.** Der Nachweisbranch ist zur Übernahme durch Claude vorbereitet. Die Übernahme in PR #186 und die erfolgreiche CI auf dem integrierten Hauptzweig stehen aus. [PR #186](https://github.com/enpasos/skillpilot/pull/186)
+**Integration.** Der Nachweisbranch ist am 24. November 2026 um 13:35 MEZ in PR #186 übernommen. Im zusammengeführten Stand bestanden 595 von 595 Backendfällen in 14 Klassen. Ein gespeicherter Lernplan, der eine abgelöste Prüfungsfassung nennt, gilt als veraltet und wird von der lernenden Person erneuert; gespeicherte Blöcke, Belege und Einzelergebnisse bleiben unverändert. Drei zusätzliche, ebenfalls bestandene Backendfälle halten dieses Verhalten für die frühere Wurfprüfung und die Mehrphasenprüfung fest. Die erfolgreiche CI auf dem integrierten Hauptzweig steht aus. [PR #186](https://github.com/enpasos/skillpilot/pull/186)
 
 ## 24. November 2026, 07:42 MEZ – Physik E.1, unabhängige Nachweise und zurückgestellte LK-Prüfung
 
