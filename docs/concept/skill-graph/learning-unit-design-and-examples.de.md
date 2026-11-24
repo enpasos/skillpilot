@@ -144,26 +144,26 @@ Die hessische E.1-Lernkarte für G8 und G9 verbindet Messung und eindimensionale
 
 Ein möglicher Verlauf führt von Darstellungen für Ort, Geschwindigkeit und Beschleunigung über gleichförmige und gleichmäßig beschleunigte Bewegungen zu unabhängigen Komponenten und deren Überlagerung. Für einen idealisierten Wurf ohne Luftwiderstand werden horizontale und vertikale Bewegung in einem festen Bezugssystem getrennt beschrieben und zur **gleichen Zeit** wieder zusammengeführt. Die Unabhängigkeit folgt aus diesem Modell; sie gilt nicht für beliebige überlagerte Bewegungen.
 
-Die vorhandene Kindeinheit „Gleichmäßig beschleunigte Bewegung modellieren“ hat zwei eigene Prüfungen. Beim Senkrechtwurf lassen sich die Modellwahl und ihre Grenzen zeigen. Das Beschleunigungsprotokoll verlangt zusätzlich Bewegungsdiagramme und die Unterscheidung von Ortsänderung und zurückgelegter Strecke nach einer Umkehr. Das Review entzog dem Senkrechtwurf gerade wegen dieser Lücke die Deckung für das ganze Beschleunigungsziel. [Geltender Vertrag der Kindeinheit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md)
+Seit dem 24. November 2026 gliedert sich E.1 in vier Kindstrukturen in Lernreihenfolge: „Gleichförmige Bewegung“, „Freier Fall schwerer Kugeln“, „Kugel und Feder, Luft und Vakuum“ und „Zwei Bewegungen zugleich“. Nur die zweite ist eine erklärte Einheit mit eigenem Auftakt; sie besitzt die beschleunigte Bewegung und zwei Fassungen des Beschleunigungsprotokolls. Das Protokoll verlangt Bewegungsdiagramme und die Unterscheidung von Ortsänderung und zurückgelegter Strecke nach einer Umkehr. Das Review entzog dem Senkrechtwurf, der jetzt in der dritten Struktur liegt, gerade wegen dieser Lücke die Deckung für das ganze Beschleunigungsziel. [Geltendes Review der Kindeinheit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-24-v4.md)
 
 Für einen ersten **E.1-Entwurf** gelten vier eigenständige Bestehensentscheidungen. Bereits bestandene, zur geforderten Fassung passende Teile zählen mit.
 
-| Pflichtteil | Fachliche Leistung | Stand und Bestehensgrenze |
+| Pflichtteil | Fachliche Leistung | Bestehensgrenze |
 | --- | --- | --- |
-| Kindprüfung Senkrechtwurf | Achse wählen, Bewegung modellieren und Idealisierung begründen | Vorhanden, 24/24 Punkte |
-| Kindprüfung Beschleunigungsprotokoll | Drei Diagramme konstruieren sowie Ortsänderung und Strecke unterscheiden | Vorhanden, 20/20 Punkte |
-| E.1-Prüfung A, Wagen | Vorhersage aus Messdaten begründen und Messabweichungen beurteilen | Entwurf, 4/4 Punkte |
-| E.1-Prüfung B, waagerechter Wurf | Bewegungen in zwei Richtungen mit gemeinsamer Zeit für eine Vorhersage verbinden | Entwurf, 3/3 Punkte |
+| A, Wagen (erste Struktur) | Vorhersage aus Messdaten begründen und Messabweichungen beurteilen | 14/17 Punkte |
+| B, waagerechter Wurf (vierte Struktur) | Bewegungen in zwei Richtungen mit gemeinsamer Zeit für eine Vorhersage verbinden | 15/18 Punkte |
+| C, Senkrechtwurf (dritte Struktur) | Achse wählen, Bewegung modellieren und Idealisierung begründen | 17/20 Punkte |
+| D, Beschleunigungsprotokoll (erklärte Einheit) | Drei Diagramme konstruieren sowie Ortsänderung und Strecke unterscheiden | 17/20 Punkte |
 
-Vier bestandene Teile würden E.1 in diesem Entwurf nachweisen. Wer A und B löst und die Unterscheidung von Strecke und Ortsänderung noch verfehlt, hat einen offenen Kindnachweis. Für E.1 begründen Lernende ihre Vorhersage anhand vorliegender Daten. Im Lernweg können sie die Bewegung auch selbst messen. Die Fachrunde beurteilt, ob die vier Leistungen das vereinbarte Versprechen tragen und ob ein anders gefasstes Lernversprechen mit weniger Pflichtteilen auskäme.
+Vier bestandene Teile würden E.1 in diesem Entwurf nachweisen. Wer A, B und C löst und die Unterscheidung von Strecke und Ortsänderung noch verfehlt, hat einen offenen Teil D. Für E.1 begründen Lernende ihre Vorhersage anhand vorliegender Daten. Im Lernweg können sie die Bewegung auch selbst messen. Die Fachrunde beurteilt, ob die vier Leistungen das vereinbarte Versprechen tragen und ob ein anders gefasstes Lernversprechen mit weniger Pflichtteilen auskäme.
 
 <a id="recognition-inside-a-larger-unit"></a>
 <a id="sec-sga-ud-phys-recognition"></a>
 #### 12.4. Was der E.1-Nachweis für weitere Lernschritte bedeutet
 
-Zum Lernort E.1 gehören elf Inhaltsziele, zwei in der Kindeinheit und neun unmittelbar in E.1. Der Entwurf gibt nach den vier Prüfungen **vier ganze Atome für die Planung** frei. Das Kind belegt die beschleunigte Bewegung sowie Modellierung und Idealisierung. In A muss die Person Messabweichungen unterscheiden und Messunsicherheiten angeben. Sind die beiden Kindprüfungen bestanden, gelten bereits die zwei Freigaben der Kindeinheit. Wer zusätzlich A löst, hat den Prüfungsbeleg für den Wagen. Die beiden Freigaben zu Messabweichungen und Messunsicherheiten aus dem E.1-Vertrag werden erst wirksam, wenn auch B bestanden und E.1 vollständig nachgewiesen ist.
+Zum Lernort E.1 gehören zwölf Inhaltsziele; die erklärte Kindeinheit besitzt eines davon, die beschleunigte Bewegung. Die am 24. November geprüfte Planungsfreigabe gibt **dieses eine ganze Atom für die Planung** frei, über D. Sie wirkt, sobald D bestanden ist, auch vor A, B und C.
 
-Bei den übrigen sieben Atomen reicht die beobachtete Leistung nur für einen Ausschnitt oder fehlt ganz. Wer vorgegebene Falldaten richtig deutet, hat beispielsweise noch keinen eigenen Fallversuch durchgeführt. Die E.1-Route kann abgeschlossen sein. Ein gesondert eingeplanter Versuchsauftrag bleibt offen. Die vollständige [Prüfung jedes Atoms](unit-assessment-discussion-2026-11-19.de.md) macht diese Planungsvorschläge für die Fachrunde überprüfbar.
+Bei den übrigen elf Atomen reicht die beobachtete Leistung nur für einen Ausschnitt oder fehlt ganz. Wer vorgegebene Falldaten richtig deutet, hat beispielsweise noch keinen eigenen Fallversuch durchgeführt. Die E.1-Route kann abgeschlossen sein. Ein gesondert eingeplanter Versuchsauftrag bleibt offen. Die vollständige [Prüfung jedes Atoms](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json) macht diese Planungsentscheidungen für die Fachrunde überprüfbar.
 
 <a id="what-textbook-structures-show"></a>
 <a id="sec-sga-ud-phys-textbooks"></a>

@@ -144,26 +144,26 @@ The Hessian E.1 learning map for G8 and G9 links measurement and one-dimensional
 
 A possible course leads from representations of position, velocity, and acceleration through uniform and uniformly accelerated motion to independent components and their composition. For an idealised projectile without air resistance, horizontal and vertical motion are described separately in a fixed frame of reference and recombined at the **same time**. Independence follows from this model; it does not hold for arbitrary superposed motions.
 
-The existing child unit on modelling uniformly accelerated motion has two assessments of its own. The vertical throw can show model choice and its limits. The acceleration protocol also requires motion graphs and the distinction between displacement and distance travelled after a reversal. That distinction was exactly why the reviewers withdrew coverage of the full acceleration goal from the vertical throw. [Current child-unit contract](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-15-v2.md)
+Since 24 November 2026 E.1 has four child structures in learning order: “Uniform motion”, “Free fall of heavy balls”, “Ball and feather, air and vacuum” and “Two motions at once”. Only the second is a declared unit with its own opening; it owns accelerated motion and two versions of the acceleration protocol. The protocol requires motion graphs and the distinction between displacement and distance travelled after a reversal. That distinction was exactly why the reviewers withdrew coverage of the full acceleration goal from the vertical throw, which now lies in the third structure. [Current child-unit review](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-24-v4.md)
 
 The initial **E.1 proposal** calls for four independent passes. Previously passed components count if they match the required version.
 
-| Required part | Performance | Status and passing threshold |
+| Required part | Performance | Passing threshold |
 | --- | --- | --- |
-| Child assessment, vertical throw | Choose an axis, model the motion and justify the idealisation | Existing, 24/24 points |
-| Child assessment, acceleration protocol | Construct three graphs and distinguish displacement from distance travelled | Existing, 20/20 points |
-| E.1 assessment A, cart | Justify a prediction from measured data and judge measurement deviations | Draft, 4/4 points |
-| E.1 assessment B, horizontal projectile | Use a shared time for motions in two directions to make a prediction | Draft, 3/3 points |
+| A, cart (first structure) | Justify a prediction from measured data and judge measurement deviations | 14/17 points |
+| B, horizontal projectile (fourth structure) | Use a shared time for motions in two directions to make a prediction | 15/18 points |
+| C, vertical throw (third structure) | Choose an axis, model the motion and justify the idealisation | 17/20 points |
+| D, acceleration protocol (declared unit) | Construct three graphs and distinguish displacement from distance travelled | 17/20 points |
 
-Four passes would qualify the learner for E.1 in this proposal. A learner who solves A and B but still confuses distance and displacement has an outstanding child obligation. For E.1, learners justify their prediction using supplied data. They may also measure the motion themselves as they learn. Subject reviewers will judge whether the four performances support the agreed promise and whether a different parent-unit promise could be demonstrated with fewer required parts.
+Four passes would qualify the learner for E.1 in this proposal. A learner who solves A, B and C but still confuses distance and displacement has an outstanding part D. For E.1, learners justify their prediction using supplied data. They may also measure the motion themselves as they learn. Subject reviewers will judge whether the four performances support the agreed promise and whether a different parent-unit promise could be demonstrated with fewer required parts.
 
 <a id="recognition-inside-a-larger-unit"></a>
 <a id="sec-sga-ud-phys-recognition"></a>
 #### 12.4. What E.1 evidence means for later learning
 
-Eleven content goals belong to this E.1 learning placement, two in the child unit and nine directly in E.1. After the four passes, the proposal accepts **four whole atoms for planning**. The child unit supports accelerated motion and the modelling and idealisation of motion. In A the learner must distinguish measurement deviations and state measurement uncertainty. Passing both child assessments activates the two planning permissions from the child unit. Someone who also passes A has the assessment result for the cart. The E.1 permissions for measurement deviations and uncertainty take effect only when B has also been passed and the E.1 qualification is complete.
+Twelve content goals belong to this E.1 learning placement; the declared child unit owns one of them, accelerated motion. The planning release reviewed on 24 November accepts **this one whole atom for planning**, through D. It takes effect once D is passed, even before A, B and C.
 
-For the other seven atoms the observed performance samples only part of the skill or leaves it unobserved. Someone who correctly interprets supplied fall data has yet to demonstrate performing a fall experiment. The E.1 route can be complete while a separately assigned experiment remains open. The full [goal-by-goal review](unit-assessment-discussion-2026-11-19.de.md) lets subject reviewers examine these proposed planning decisions.
+For the other eleven atoms the observed performance samples only part of the skill or leaves it unobserved. Someone who correctly interprets supplied fall data has yet to demonstrate performing a fall experiment. The E.1 route can be complete while a separately assigned experiment remains open. The full [goal-by-goal review](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json) lets subject reviewers examine these planning decisions.
 
 <a id="what-textbook-structures-show"></a>
 <a id="sec-sga-ud-phys-textbooks"></a>
