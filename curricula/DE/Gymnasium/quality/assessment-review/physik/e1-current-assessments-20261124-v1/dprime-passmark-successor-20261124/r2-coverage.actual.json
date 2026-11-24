@@ -1,0 +1,134 @@
+{
+  "schema": "exact-dprime-bes-only-r2-successor-v1",
+  "status": "ACCEPT_EXACT_BES_ONLY_R2_NO_PLANNING_CREDIT",
+  "assessmentGoalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+  "unitId": "physics-constant-acceleration",
+  "unitRevision": "2026-11-23-v4",
+  "coverage": {
+    "assessmentGoalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+    "goalIds": [
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ],
+    "reference": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/dprime-passmark-successor-20261124/r2-coverage.actual.json",
+    "taskRevision": "sha256:76fe443cf24fd8ce18237c569eda70913087f7e515e4dec447ed71536ef1e0de",
+    "rubricRevision": "sha256:f6a52fb1691cc147712c707af3a2488e996b7d78c0151127f644301132eef2e2"
+  },
+  "ordinaryGoalIds": [
+    "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+  ],
+  "wholeBESDefinition": {
+    "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+    "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+    "titleEn": "Uniformly Accelerated Motion and Acceleration",
+    "description": "Die lernende Person kann das Modell der gleichmäßig beschleunigten Bewegung mit konstanter Beschleunigung erläutern und in t-s-, t-v- und t-a-Darstellungen beschreiben.",
+    "descriptionEn": "The learner can explain the model of uniformly accelerated motion with constant acceleration and describe it using time-position, time-velocity, and time-acceleration representations.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "cross-subject:mathematics"
+    ],
+    "contains": [],
+    "requires": [
+      "bf8517a9-142b-5789-826a-767f3b277998",
+      "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+      "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+      "1e459a1b-4159-5049-84eb-9928129c1610"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "shortKey": "canonical_physics_accelerated_motion",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+        "title": "Visualisierung: Gleichmäßig beschleunigte Bewegung und Beschleunigung",
+        "url": "/assets/goal-visualizations/physik/e4b38061-1f28-43ad-8371-a3e7c0e81856/e4b38061-1f28-43ad-8371-a3e7c0e81856.jpg",
+        "provider": "OpenAI / Codex image_gen + programmatic diagram correction",
+        "description": "Orts-, Geschwindigkeits- und Beschleunigungsdiagramm für einen Start aus der Ruhe.",
+        "altText": "Bei konstanter positiver Beschleunigung aus der Ruhe am Ort null steigt der Ort s mit der Zeit t parabelförmig. Die Geschwindigkeit v steigt linear ab null. Die Beschleunigung a bleibt auf einem positiven Wert. In allen drei Diagrammen zeigt die Zeitachse nach rechts.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "accepted"
+      }
+    ]
+  },
+  "unchangedBroaderUnitPromise": {
+    "de": "Ich kann den freien Fall einer schweren Kugel messen und als gleichmäßig beschleunigte Bewegung beschreiben: Ich halte Fallhöhe und Fallzeit in einem Messprotokoll fest, stelle die Bewegung im t-v-Diagramm dar, bestimme die Beschleunigung und stelle Zeit-Ort- und Zeit-Geschwindigkeits-Gesetz auf. Ich gebe an, wie genau meine Messwerte sind. Darauf bauen der Fall leichter Körper, Würfe in zwei Dimensionen, Kräfte und Energie auf.",
+    "en": "I can measure the free fall of a heavy ball and describe it as uniformly accelerated motion: I record drop height and fall time in a measurement log, represent the motion in a time-velocity graph, determine the acceleration and set up the time-position and time-velocity laws. I state how precise my measurements are. The fall of light bodies, projectile motion in two dimensions, forces and energy build on it."
+  },
+  "wholeUnitPromiseCertified": false,
+  "ownExperimentCertified": false,
+  "requiredHessianE1Part": false,
+  "planningCreditGranted": false,
+  "reviewBindings": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/dprime-passmark-successor-20261124/review-bindings.actual.json",
+    "sha256": "fd3bfa3b07fd19aea8ac82747abfb3500e75b899a1624f11459e6db368c13216"
+  },
+  "normativeContext": {
+    "nativeValidator": "app/scripts/lib/learningUnitContracts.ts:591",
+    "mainText": "docs/concept/skill-graph/assessment-gated-completion.md:110",
+    "interpretation": "R2 proves independent full application of the actual owned ordinary BES atom; it does not certify the broader measurement promise. BES has no own-experiment clause. Every facet of BES must still be indispensable at19/20. No source stage is supplied by a requires path alone."
+  },
+  "independentR2Findings": [
+    {
+      "round": "a",
+      "finding": "R2: allow ausschließlich für coverageReviews[0] der Unit physics-constant-acceleration mit diesem Assessment und dem einzigen beanspruchten BES-Ziel e4b38061-1f28-43ad-8371-a3e7c0e81856. Maßgeblich sind dessen sämtliche Facetten: das Modell konstanter Beschleunigung erläutern sowie t-s-, t-v- und t-a-Darstellungen beschreiben. Die Aufgabe verlangt alle drei tatsächlichen Diagrammarten und Erklärungen der Änderungszusammenhänge. Fehlt eine Diagrammart vollständig, entfallen A 1 BE und B 0,5 BE; höchstens 18,5 BE bleiben. Fehlt überall die Erklärung der konstanten Änderungsrate, entfallen A 0,5 BE und B 1 BE; ebenfalls höchstens 18,5 BE. Eine passende globale Erklärung zählt an beiden Stellen, ohne vorgeschriebene doppelte Merksätze. Die feste Aufgabenformulierung trägt diese Konkretisierung durch ihre Erklärungsaufträge zur a-Fläche und zur Programmfortsetzung. Somit genügt 19/20 ohne zusätzliche Teilhürde. Quellen: canonical-input.json, Z.172–205, 1156–1168 und 1247–1256.\nDas weitergehende Kugelfallversprechen umfasst eigene Messung, Messprotokoll und Genauigkeitsangaben. Diese Leistungen werden hier nicht erbracht. Sie gehören jedoch nicht zum beanspruchten BES-Atom; dieses enthält keine Experimentierklausel. Ihre Abwesenheit ist daher kein Fehler dieses individuellen R2-Eintrags und erlaubt zugleich keine Anerkennung des ganzen Unit-Versprechens oder des separaten Experimentalziels. Quellen: Z.1146–1150, 1239–1267 und 1290–1300."
+    },
+    {
+      "round": "b",
+      "finding": "R2 – allow ausschließlich für den Eintrag D′ → BES in coverageReviews der Einheit physics-constant-acceleration, Revision 2026-11-23-v4. Der Zielwortlaut verlangt, das Modell konstanter Beschleunigung zu erläutern und die Bewegung in t-s-, t-v- und t-a-Darstellungen zu beschreiben. A fordert alle drei Konstruktionen und die Erklärung der Flächen. B fordert alle drei erneut und eine Erklärung dafür, was die unverändert negative Beschleunigung über den Stopp hinaus bewirkt. Damit ist die Bedeutung der konstanten Rate aus der Aufgabe heraus erklärbar. Ein auf die Bewegung bezogener Nachweis gleicher gerichteter Δv in gleichen Δt kann sprachlich, durch ein erläutertes Gesetz oder durch eine beschriftete Grafik erfolgen. Der Start aus der Ruhe am Ursprung in der Zielillustration ist ein Beispiel. Ab der Umkehr zeigt A diesen positiven Beschleunigungsverlauf in verschobenen Koordinaten.\n\nBei 19/20 muss mindestens ein vollständiger Satz der drei charakteristischen Diagrammverläufe vorliegen. Schon je eine fehlende Kurve in A und B kostet zusammen 1,5 BE. Ebenso muss die konstante Rate mindestens einmal in ihrer physikalischen Bedeutung erklärt sein. Die beiden Höchstwerte bei fehlender Kompetenz sind unten nachgerechnet. Das trägt den gesamten einzelnen BES-Baustein (canonical-input.json, Z. 172–205, 216–282, 1156–1237 und 1247–1256).\n\nDas weiter reichende Einheitsversprechen umfasst die eigene Fallmessung an einer schweren Kugel, das Protokollieren von Höhe und Zeit, die Bestimmung der Beschleunigung aus Messdaten und die Angabe der Messgenauigkeit. D′ gibt die Beschleunigungen und das Kontrollintervall vor. Es prüft Modellanwendung und Intervallvergleich. Die fehlende eigene Messung begrenzt die Aussage zur Gesamteinheit und zum gesonderten Experimentierziel 09029573-864f-40ca-bf8a-cee7bf6dcb73. BES selbst enthält keine Experimentierklausel. Auch LAWS und die anderen Vorbereitungsziele erhalten keinen eigenen Direktnachweis (canonical-input.json, Z. 1146–1151, 1239–1266 und 1343–1356)."
+    }
+  ],
+  "priorCoverageReview": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/coverage-review.actual.json",
+    "sha256": "b268980418fb9c73d4a23edeb23bf9414ccb8f9f3b6548d7bacffe3854e14199"
+  },
+  "priorDprimePayload": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/a8dc0290-9f80-5763-8943-e16b8d2aa860.current.goal.json",
+    "sha256": "78fc60eb42b54c884c7a8499ab549b028455a41cffc505c820b01583639f80db"
+  },
+  "newRevisions": {
+    "taskRevision": "sha256:76fe443cf24fd8ce18237c569eda70913087f7e515e4dec447ed71536ef1e0de",
+    "rubricRevision": "sha256:f6a52fb1691cc147712c707af3a2488e996b7d78c0151127f644301132eef2e2"
+  },
+  "oldRevisions": {
+    "taskRevision": "sha256:758a0483d5db68276111ad6ab987bf0d65e1444cc669fbe58a1c93eed4f76555",
+    "rubricRevision": "sha256:639a906fb3ed9c9192e837693597527a082d1e256035b1964a2f77825c699cd0"
+  },
+  "sourceStageConsensus": {
+    "SN": "allow existing bounded own transfer after real P66, not a literal whole official J9 task",
+    "ST": "allow existing lower-stage own offer after real P66"
+  },
+  "reviewAuthority": "ai_review",
+  "humanApproval": false
+}

@@ -1,0 +1,106 @@
+// Unactivated technical counterfactual only. This does not assert candidate R2 approval.
+import assert from 'node:assert/strict'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
+const root='/home/enpasos/projects/skillpilot-e1-nachweise'
+const base='/tmp/e1-dprime-successor-20261124/v3'
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'))
+const fileHash=(p:string)=>createHash('sha256').update(readFileSync(p)).digest('hex')
+const objectHash=(x:unknown)=>createHash('sha256').update(JSON.stringify(x)).digest('hex')
+const load=async(p:string)=>await import(pathToFileURL(resolve(root,p)).href)
+const { assessmentReviewRevisions, UnitGraph }=await load('app/scripts/lib/learningUnitContracts.ts')
+const { checkUnitPlanningReleases, validatePlanningRelease, planningReleaseFingerprint }=await load('app/scripts/checkUnitPlanningReleases.ts')
+const { loadCurrentCurriculumCatalog }=await load('app/scripts/currentCurriculumCatalog.ts')
+const { liveVerificationInputs }=await load('app/scripts/lib/verificationInputSnapshot.ts')
+const { fingerprintPositiveGoalEvidenceProfile }=await load('app/scripts/positiveGoalEvidenceProfileModel.ts')
+const { normalizeCanonicalLandscape }=await load('app/src/utils/authoring/canonicalAuthoring.ts')
+const { compileCompositionView, normalizeCompositionView, collectCompositionProjectionRoleGoalIds }=await load('app/src/utils/authoring/compositionViewAuthoring.ts')
+const { collectWholeMaterialPrerequisiteClosure }=await load('app/scripts/generateCurriculumQualityStatus.ts')
+const capsule=read(base+'/inputs/review-input-context.json')
+const candidate=read(base+'/inputs/candidate.goal.json')
+assert.equal(fileHash(base+'/inputs/candidate.goal.json'),'f41f6906b5df5b79225a74b955077dbdc0bb502a04b09fb7e050835595d3152e')
+const id=candidate.id, bes='e4b38061-1f28-43ad-8371-a3e7c0e81856', d='f13ca187-b680-5f47-b4ad-76bd474bd8a2'
+const entries=loadCurrentCurriculumCatalog(liveVerificationInputs).entries
+assert.equal(entries.length,21)
+const catalogs=entries.map((r:any)=>r.landscape)
+const physics=read(resolve(root,'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json'))
+const current=physics.goals.find((g:any)=>g.id===id)
+assert.deepEqual(current,capsule.original,'Live Dprime changed since this exact prospective input; prepare a new checkpoint')
+const future=structuredClone(physics)
+future.goals[future.goals.findIndex((g:any)=>g.id===id)]=candidate
+const own=future.programUnits.find((u:any)=>u.id==='physics-constant-acceleration')
+const oldCoverage=own.coverageReviews.find((r:any)=>r.assessmentGoalId===id)
+assert.deepEqual(oldCoverage.goalIds,[bes])
+const oldRevisions=assessmentReviewRevisions(current), candidateRevisions=assessmentReviewRevisions(candidate)
+assert.deepEqual({taskRevision:oldCoverage.taskRevision,rubricRevision:oldCoverage.rubricRevision},oldRevisions)
+assert.notDeepEqual(oldRevisions,candidateRevisions)
+const currentCatalog=catalogs
+const futureCatalog=catalogs.map((p:any)=>p.landscapeId===physics.landscapeId?future:p)
+const currentGraph=new UnitGraph(currentCatalog), futureGraph=new UnitGraph(futureCatalog)
+const combined={...physics,goals:currentCatalog.flatMap((p:any)=>p.goals)}
+const combinedFuture={...future,goals:futureCatalog.flatMap((p:any)=>p.goals)}
+const currentClosure=collectWholeMaterialPrerequisiteClosure(combined,id)
+const futureClosure=collectWholeMaterialPrerequisiteClosure(combinedFuture,id)
+assert.equal(currentClosure.unresolvedReferences.size,0)
+assert.equal(futureClosure.unresolvedReferences.size,0)
+const preparationIds=[...currentClosure.atomicGoalIds].sort()
+assert.deepEqual([...futureClosure.atomicGoalIds].sort(),preparationIds)
+assert.equal(preparationIds.length,66)
+assert.deepEqual(preparationIds,capsule.sourceStageAndUnitContext.unchangedWholePreparationIds)
+const normalized=normalizeCanonicalLandscape(combinedFuture)
+const nativePhysics=normalizeCanonicalLandscape(future)
+const viewChecks=[]
+for(const state of ['sn','st']) {
+ const path=`curricula/DE/Gymnasium/composition-views/physik/de-${state}-seki.view.json`
+ const raw=read(resolve(root,path)), view=normalizeCompositionView(raw)
+ const compiled=compileCompositionView(view,nativePhysics,normalized)
+ assert.deepEqual(compiled.findings.filter((f:any)=>f.severity==='error'),[])
+ const roles=collectCompositionProjectionRoleGoalIds(view.rootNodes,new Map(normalized.goals.map((g:any)=>[g.id,g])))
+ const supply=new Set([...roles.targetGoalIds,...roles.prerequisiteOnlyGoalIds])
+ const missing=preparationIds.filter((p:string)=>!supply.has(p))
+ assert.deepEqual(missing,[])
+ assert(roles.targetGoalIds.has(id))
+ viewChecks.push({path,sha256:fileHash(resolve(root,path)),candidateEndpointOffered:true,fullClosureCount:66,missingPreparationIds:missing,nativeCompilationErrors:[]})
+}
+const priorPrepPath='curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-stage-preparation.actual.json'
+const priorPrep=read(resolve(root,priorPrepPath))
+const rawMap=new Map(combinedFuture.goals.map((g:any)=>[g.id,g]))
+const normalizedMap=new Map(normalized.goals.map((g:any)=>[g.id,g]))
+assert.equal(priorPrep.payloads.length,216)
+for(const row of priorPrep.payloads) {
+ assert.equal(objectHash(rawMap.get(row.goalId)),row.rawSha256,row.goalId)
+ assert.equal(objectHash(normalizedMap.get(row.goalId)),row.normalizedSha256,row.goalId)
+}
+for(const source of capsule.sourceStageAndUnitContext.sources) assert.equal(fileHash(resolve(root,source.path)),source.sha256)
+const registry=read(resolve(root,'curricula/unit-learning-materials.json'))
+const materials=registry.materials.map((p:string)=>read(resolve(root,'curricula',p)))
+const material=materials.find((m:any)=>m.unit.compositionNodeId==='physics-e1-motion')
+const credit=material.unit.assessmentContract.planningCredits[0]
+assert.deepEqual(credit.requiredPartIds,[d]);assert.deepEqual(credit.goalIds,[bes])
+const beforeFingerprint=planningReleaseFingerprint(material.unit,credit)
+assert.equal(beforeFingerprint,'sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d')
+const rollout=read(resolve(root,'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json')).subjects.find((s:any)=>s.landscapePath.endsWith('PHYSIK.de.json'))
+const configs=rollout.positiveEvidenceConfigPaths.map((p:string)=>read(resolve(root,p)))
+const currentProfile=(goalId:string)=>{
+ const matching=configs.filter((c:any)=>c.landscapeId===physics.landscapeId&&c.scope.goalIds.includes(goalId));assert.equal(matching.length,1)
+ const rows=readFileSync(resolve(root,matching[0].reviewPath),'utf8').trim().split('\n').map((s:string)=>JSON.parse(s)).filter((r:any)=>r.landscapeId===physics.landscapeId&&r.goalId===goalId);assert.equal(rows.length,1);assert.notEqual(rows[0].status,'rejected')
+ const fp=fingerprintPositiveGoalEvidenceProfile(rows[0].profile);assert.equal(fp,rows[0].profileFingerprint);return fp
+}
+const releaseEvidence=(landscape:any,graph:any)=>({landscape,graph,approved:registry.reviewedPlanningReleases,currentProfile,materials,reviewHash:(p:string)=>'sha256:'+fileHash(resolve(root,p))})
+validatePlanningRelease(material.unit,credit,releaseEvidence(physics,currentGraph))
+validatePlanningRelease(material.unit,credit,releaseEvidence(future,futureGraph))
+assert.deepEqual(checkUnitPlanningReleases(),[beforeFingerprint])
+const dBefore=physics.goals.find((g:any)=>g.id===d),dAfter=future.goals.find((g:any)=>g.id===d)
+assert.deepEqual(dBefore,dAfter)
+assert.deepEqual(own.coverageReviews.find((r:any)=>r.assessmentGoalId===d),physics.programUnits.find((u:any)=>u.id===own.id).coverageReviews.find((r:any)=>r.assessmentGoalId===d))
+const output={schema:'unactivated-dprime-candidate-native-dependency-observation-v1',status:'TECHNICAL_COUNTERFACTUAL_ONLY_NOT_ACTIVATED',candidateSha256:fileHash(base+'/inputs/candidate.goal.json'),nativeCatalogRoots:21,
+ currentGoalJsonStringifySha256:objectHash(current),candidateGoalJsonStringifySha256:objectHash(candidate),candidateNormalizedGoalJsonStringifySha256:objectHash(normalizedMap.get(id)),currentRevisions:oldRevisions,candidateRevisions,
+ revisionSemantics:'Native taskRevision hashes DE task AND model solution; therefore solution-only grading additions change taskRevision even though the learner task is byte-identical. rubricRevision hashes scoring.',
+ preparation:{fullRealPrerequisiteIds:preparationIds,count:66,unchanged:true,all216PriorPayloadsRemainExact:true,primarySourceFilesRemainExact:true,views:viewChecks},
+ owningUnit:{id:own.id,revision:own.revision,ordinaryGoalIds:[bes],previousDPrimeCoverage:oldCoverage,candidateR2BindingFresh:false,requiredSuccessor:{assessmentGoalId:id,goalIds:[bes],...candidateRevisions,reference:'PENDING_TWO_REAL_EXACT_CANDIDATE_ACCEPTANCES_AND_ADDITIVE_R2_DOSSIER'}},
+ planning:{currentFingerprint:beforeFingerprint,counterfactualFingerprint:planningReleaseFingerprint(material.unit,credit),nativeCurrentValidation:'PASS',nativeCounterfactualValidation:'PASS_WITH_CURRENT_DPRIME_R2_ROW_INTENTIONALLY_UNCHANGED_AND_NOT_APPROVED_FOR_CANDIDATE',requiredPartIds:[d],creditedGoalIds:[bes],dGoalAndDCoverageUnchanged:true,materialMutationRequiredForDPrimeChangeAlone:false,registryMutationRequiredForDPrimeChangeAlone:false},
+ scope:'No judgment on candidate science, boundary scoring, source-stage sufficiency or R2 approval. General two blind sessions own these decisions. This only verifies actual dependencies, native preparation/view supply and independence of existing D-only planning credit. No canonical, generator, material, registry, APV, historical or test file was changed.'}
+writeFileSync(base+'/native-observation.actual.json',JSON.stringify(output,null,2)+'\n')
+console.log(JSON.stringify(output,null,2))
