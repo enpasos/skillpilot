@@ -1,0 +1,619 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-24",
+  "reviewer": "OpenAI Codex, independent of the Claude-authored E.1 curriculum and routes",
+  "fixtureSha256": "68d2297d283ca4d7e703390978fa0ffa3a5914e5455e633d73401edb0206210d",
+  "independentImplementationSha256": "8757251ca0b2e09ebb48324c52371826008fb9b2da72289dc2e622523ddf3559",
+  "nativeSource": "LearnerControllerIntegrationTest.requiredLearningProjection: exported seedAtomicGoalIds and targetGoalIds, plus GET /api/ui/learners/{id}/state goals.personalized.total_atomic in each isolated GK Sek-I duration scope.",
+  "setDigestFormat": "Sorted UUIDs in UTF-8, one per line, including a final LF.",
+  "scopes": {
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-BW|SekI|G8|GK": {
+      "superseded": true,
+      "viewId": "de-bw-gym-seki-physics",
+      "sourceViewSha256": "2317294f8065436fa0bf4ade55e12718d953f4615c3375cc5740b95f6b5fbb78",
+      "nativeHttpAtomicTotal": 259,
+      "seed": {
+        "predecessorCount": 156,
+        "currentCount": 161,
+        "nativeSortedIdsSha256": "d1b2cf3e64d6b0e17c392942891712c69b8b6eeaba158f8f71abccceae186d34",
+        "independentSortedIdsSha256": "d1b2cf3e64d6b0e17c392942891712c69b8b6eeaba158f8f71abccceae186d34",
+        "addedGoalIds": [
+          "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+          "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 254,
+        "currentCount": 259,
+        "nativeSortedIdsSha256": "4a936d87dd7a7243e09529769f6232d4185adfaf692c1733383777bd35f480f2",
+        "independentSortedIdsSha256": "4a936d87dd7a7243e09529769f6232d4185adfaf692c1733383777bd35f480f2",
+        "addedGoalIds": [
+          "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+          "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-BW|SekI|G9|GK": {
+      "superseded": true,
+      "viewId": "de-bw-gym-seki-physics",
+      "sourceViewSha256": "2317294f8065436fa0bf4ade55e12718d953f4615c3375cc5740b95f6b5fbb78",
+      "nativeHttpAtomicTotal": 259,
+      "seed": {
+        "predecessorCount": 156,
+        "currentCount": 161,
+        "nativeSortedIdsSha256": "d1b2cf3e64d6b0e17c392942891712c69b8b6eeaba158f8f71abccceae186d34",
+        "independentSortedIdsSha256": "d1b2cf3e64d6b0e17c392942891712c69b8b6eeaba158f8f71abccceae186d34",
+        "addedGoalIds": [
+          "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+          "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 254,
+        "currentCount": 259,
+        "nativeSortedIdsSha256": "4a936d87dd7a7243e09529769f6232d4185adfaf692c1733383777bd35f480f2",
+        "independentSortedIdsSha256": "4a936d87dd7a7243e09529769f6232d4185adfaf692c1733383777bd35f480f2",
+        "addedGoalIds": [
+          "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+          "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-BY|SekI|G8|GK": {
+      "superseded": true,
+      "viewId": "de-by-gym-seki-physics",
+      "sourceViewSha256": "b9fa94235e04876ddd43c860ed7a1d7c2a4e150bf72d69d62034c1ff2c82fc2c",
+      "nativeHttpAtomicTotal": 264,
+      "seed": {
+        "predecessorCount": 152,
+        "currentCount": 156,
+        "nativeSortedIdsSha256": "983fe19a1cb8d1a818d2c2bc1b1f9950bda18ee180cd7549f14462338a3df350",
+        "independentSortedIdsSha256": "983fe19a1cb8d1a818d2c2bc1b1f9950bda18ee180cd7549f14462338a3df350",
+        "addedGoalIds": [
+          "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "4ea1b93f-2dba-59ac-87ab-29af6c55cc37"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 258,
+        "currentCount": 264,
+        "nativeSortedIdsSha256": "8c89fd44dcb2845a9ea50422b05db35e8260e804a59c572d02c5c141656b893c",
+        "independentSortedIdsSha256": "8c89fd44dcb2845a9ea50422b05db35e8260e804a59c572d02c5c141656b893c",
+        "addedGoalIds": [
+          "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+          "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-BY|SekI|G9|GK": {
+      "superseded": true,
+      "viewId": "de-by-gym-seki-physics",
+      "sourceViewSha256": "b9fa94235e04876ddd43c860ed7a1d7c2a4e150bf72d69d62034c1ff2c82fc2c",
+      "nativeHttpAtomicTotal": 264,
+      "seed": {
+        "predecessorCount": 152,
+        "currentCount": 156,
+        "nativeSortedIdsSha256": "983fe19a1cb8d1a818d2c2bc1b1f9950bda18ee180cd7549f14462338a3df350",
+        "independentSortedIdsSha256": "983fe19a1cb8d1a818d2c2bc1b1f9950bda18ee180cd7549f14462338a3df350",
+        "addedGoalIds": [
+          "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "4ea1b93f-2dba-59ac-87ab-29af6c55cc37"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 258,
+        "currentCount": 264,
+        "nativeSortedIdsSha256": "8c89fd44dcb2845a9ea50422b05db35e8260e804a59c572d02c5c141656b893c",
+        "independentSortedIdsSha256": "8c89fd44dcb2845a9ea50422b05db35e8260e804a59c572d02c5c141656b893c",
+        "addedGoalIds": [
+          "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+          "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+          "d9a6ea85-f7e8-5cbd-afe9-62596e22040d"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-HB|SekI|G8|GK": {
+      "superseded": false,
+      "viewId": "de-hb-gym-seki-physics",
+      "sourceViewSha256": "6a28428ef6f67a35c147568fabcafec4d31e4105f3dd8cf4cc9192dbb3853a71",
+      "nativeHttpAtomicTotal": 191,
+      "seed": {
+        "predecessorCount": 126,
+        "currentCount": 126,
+        "nativeSortedIdsSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+        "independentSortedIdsSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 191,
+        "currentCount": 191,
+        "nativeSortedIdsSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+        "independentSortedIdsSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-HB|SekI|G9|GK": {
+      "superseded": false,
+      "viewId": "de-hb-gym-seki-physics",
+      "sourceViewSha256": "6a28428ef6f67a35c147568fabcafec4d31e4105f3dd8cf4cc9192dbb3853a71",
+      "nativeHttpAtomicTotal": 191,
+      "seed": {
+        "predecessorCount": 126,
+        "currentCount": 126,
+        "nativeSortedIdsSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+        "independentSortedIdsSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 191,
+        "currentCount": 191,
+        "nativeSortedIdsSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+        "independentSortedIdsSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-HE|SekI|G8|GK": {
+      "superseded": false,
+      "viewId": "de-he-gym-seki-physics-g8",
+      "sourceViewSha256": "48eba06fa1b2d92210ffe12e5ad876a08966b154672cbeea0457e337a650d382",
+      "nativeHttpAtomicTotal": 195,
+      "seed": {
+        "predecessorCount": 130,
+        "currentCount": 130,
+        "nativeSortedIdsSha256": "8df885bd01e51f266723db18209d146bdbadd72a3d35d3d6c5638def07edcf11",
+        "independentSortedIdsSha256": "8df885bd01e51f266723db18209d146bdbadd72a3d35d3d6c5638def07edcf11",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 195,
+        "currentCount": 195,
+        "nativeSortedIdsSha256": "d80a9b4941267758faeba5e5a23db63e82bce7c38ec71a3ed706b0c0396fd87d",
+        "independentSortedIdsSha256": "d80a9b4941267758faeba5e5a23db63e82bce7c38ec71a3ed706b0c0396fd87d",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-HE|SekI|G9|GK": {
+      "superseded": false,
+      "viewId": "de-he-gym-seki-physics-g9",
+      "sourceViewSha256": "3b3051074adf328ba61aec695a9bd90b9b9ac1460fa18ab08bec707449faaddd",
+      "nativeHttpAtomicTotal": 195,
+      "seed": {
+        "predecessorCount": 130,
+        "currentCount": 130,
+        "nativeSortedIdsSha256": "8df885bd01e51f266723db18209d146bdbadd72a3d35d3d6c5638def07edcf11",
+        "independentSortedIdsSha256": "8df885bd01e51f266723db18209d146bdbadd72a3d35d3d6c5638def07edcf11",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 195,
+        "currentCount": 195,
+        "nativeSortedIdsSha256": "d80a9b4941267758faeba5e5a23db63e82bce7c38ec71a3ed706b0c0396fd87d",
+        "independentSortedIdsSha256": "d80a9b4941267758faeba5e5a23db63e82bce7c38ec71a3ed706b0c0396fd87d",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-HH|SekI|G8|GK": {
+      "superseded": true,
+      "viewId": "de-hh-gym-seki-physics",
+      "sourceViewSha256": "754dbc71b4849fd238efdcbe81a52542dddf5a0692797d69e56084ab39606536",
+      "nativeHttpAtomicTotal": 205,
+      "seed": {
+        "predecessorCount": 126,
+        "currentCount": 127,
+        "nativeSortedIdsSha256": "c6334d7a6911a4e83dd024306f01123e3e8aaa5e90cb7689c0fbe1b32173e5a2",
+        "independentSortedIdsSha256": "c6334d7a6911a4e83dd024306f01123e3e8aaa5e90cb7689c0fbe1b32173e5a2",
+        "addedGoalIds": [
+          "262f807a-30d0-503e-986f-856cbd048e8e"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 191,
+        "currentCount": 205,
+        "nativeSortedIdsSha256": "bce86208cb09bf6c1670f2a9dc792b564a5106607653c9ad44fdb4d0089fe08f",
+        "independentSortedIdsSha256": "bce86208cb09bf6c1670f2a9dc792b564a5106607653c9ad44fdb4d0089fe08f",
+        "addedGoalIds": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "13b338eb-f761-5817-9058-11043b9cb253",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+          "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "bf8517a9-142b-5789-826a-767f3b277998",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "f3167cab-bb23-4bb9-8a27-22e3c5015d44"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-HH|SekI|G9|GK": {
+      "superseded": true,
+      "viewId": "de-hh-gym-seki-physics",
+      "sourceViewSha256": "754dbc71b4849fd238efdcbe81a52542dddf5a0692797d69e56084ab39606536",
+      "nativeHttpAtomicTotal": 205,
+      "seed": {
+        "predecessorCount": 126,
+        "currentCount": 127,
+        "nativeSortedIdsSha256": "c6334d7a6911a4e83dd024306f01123e3e8aaa5e90cb7689c0fbe1b32173e5a2",
+        "independentSortedIdsSha256": "c6334d7a6911a4e83dd024306f01123e3e8aaa5e90cb7689c0fbe1b32173e5a2",
+        "addedGoalIds": [
+          "262f807a-30d0-503e-986f-856cbd048e8e"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 191,
+        "currentCount": 205,
+        "nativeSortedIdsSha256": "bce86208cb09bf6c1670f2a9dc792b564a5106607653c9ad44fdb4d0089fe08f",
+        "independentSortedIdsSha256": "bce86208cb09bf6c1670f2a9dc792b564a5106607653c9ad44fdb4d0089fe08f",
+        "addedGoalIds": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "13b338eb-f761-5817-9058-11043b9cb253",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+          "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "bf8517a9-142b-5789-826a-767f3b277998",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "f3167cab-bb23-4bb9-8a27-22e3c5015d44"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-MV|SekI|G8|GK": {
+      "superseded": false,
+      "viewId": "de-mv-gym-seki-physics",
+      "sourceViewSha256": "2b1a057d20a44d6a3187babf44b86a64b8e8a49b8147e4129774cdc3a822ef35",
+      "nativeHttpAtomicTotal": 204,
+      "seed": {
+        "predecessorCount": 124,
+        "currentCount": 124,
+        "nativeSortedIdsSha256": "a0b89d749da9d01acc2b34cf998ea245282e620f60442a45ebd4f7cb77045aaa",
+        "independentSortedIdsSha256": "a0b89d749da9d01acc2b34cf998ea245282e620f60442a45ebd4f7cb77045aaa",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 204,
+        "currentCount": 204,
+        "nativeSortedIdsSha256": "65f9811887fd10878acd71df08868620e406f542bdfb8fabef7113a831c52ccf",
+        "independentSortedIdsSha256": "65f9811887fd10878acd71df08868620e406f542bdfb8fabef7113a831c52ccf",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-MV|SekI|G9|GK": {
+      "superseded": false,
+      "viewId": "de-mv-gym-seki-physics",
+      "sourceViewSha256": "2b1a057d20a44d6a3187babf44b86a64b8e8a49b8147e4129774cdc3a822ef35",
+      "nativeHttpAtomicTotal": 204,
+      "seed": {
+        "predecessorCount": 124,
+        "currentCount": 124,
+        "nativeSortedIdsSha256": "a0b89d749da9d01acc2b34cf998ea245282e620f60442a45ebd4f7cb77045aaa",
+        "independentSortedIdsSha256": "a0b89d749da9d01acc2b34cf998ea245282e620f60442a45ebd4f7cb77045aaa",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 204,
+        "currentCount": 204,
+        "nativeSortedIdsSha256": "65f9811887fd10878acd71df08868620e406f542bdfb8fabef7113a831c52ccf",
+        "independentSortedIdsSha256": "65f9811887fd10878acd71df08868620e406f542bdfb8fabef7113a831c52ccf",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-SL|SekI|G8|GK": {
+      "superseded": true,
+      "viewId": "de-sl-gym-seki-physics",
+      "sourceViewSha256": "0884769c5a2a77725cb84f7f542ec8a26f6cb76a4f0727be07b43eb9a57beeef",
+      "nativeHttpAtomicTotal": 258,
+      "seed": {
+        "predecessorCount": 152,
+        "currentCount": 152,
+        "nativeSortedIdsSha256": "9d36118416247694f858943e1bb7a1b1da1ac83ed21f0536ea5c8a8b813900e4",
+        "independentSortedIdsSha256": "9d36118416247694f858943e1bb7a1b1da1ac83ed21f0536ea5c8a8b813900e4",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 259,
+        "currentCount": 258,
+        "nativeSortedIdsSha256": "123a9e73d0d43625ac4ab165aa7bbe479b3b4a0069aa5893365820e659eacce3",
+        "independentSortedIdsSha256": "123a9e73d0d43625ac4ab165aa7bbe479b3b4a0069aa5893365820e659eacce3",
+        "addedGoalIds": [
+          "1e459a1b-4159-5049-84eb-9928129c1610"
+        ],
+        "removedGoalIds": [
+          "8aff7aac-321b-5172-ac55-877876bfd2cd",
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+        ]
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-SL|SekI|G9|GK": {
+      "superseded": true,
+      "viewId": "de-sl-gym-seki-physics",
+      "sourceViewSha256": "0884769c5a2a77725cb84f7f542ec8a26f6cb76a4f0727be07b43eb9a57beeef",
+      "nativeHttpAtomicTotal": 258,
+      "seed": {
+        "predecessorCount": 152,
+        "currentCount": 152,
+        "nativeSortedIdsSha256": "9d36118416247694f858943e1bb7a1b1da1ac83ed21f0536ea5c8a8b813900e4",
+        "independentSortedIdsSha256": "9d36118416247694f858943e1bb7a1b1da1ac83ed21f0536ea5c8a8b813900e4",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 259,
+        "currentCount": 258,
+        "nativeSortedIdsSha256": "123a9e73d0d43625ac4ab165aa7bbe479b3b4a0069aa5893365820e659eacce3",
+        "independentSortedIdsSha256": "123a9e73d0d43625ac4ab165aa7bbe479b3b4a0069aa5893365820e659eacce3",
+        "addedGoalIds": [
+          "1e459a1b-4159-5049-84eb-9928129c1610"
+        ],
+        "removedGoalIds": [
+          "8aff7aac-321b-5172-ac55-877876bfd2cd",
+          "f6b1d812-ce8b-5852-b417-e6c29b533c7a"
+        ]
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-SN|SekI|G8|GK": {
+      "superseded": true,
+      "viewId": "de-sn-gym-seki-physics",
+      "sourceViewSha256": "cb7b09c60de319d1db9d8c149801391461c423dd34535e4af1d547d280b46d28",
+      "nativeHttpAtomicTotal": 264,
+      "seed": {
+        "predecessorCount": 153,
+        "currentCount": 157,
+        "nativeSortedIdsSha256": "688af7b06db47bb3da12616dc9af8b44272a4b066118ee1e718aab28613ead68",
+        "independentSortedIdsSha256": "688af7b06db47bb3da12616dc9af8b44272a4b066118ee1e718aab28613ead68",
+        "addedGoalIds": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 252,
+        "currentCount": 264,
+        "nativeSortedIdsSha256": "49db7594cd55b0c64b6999d1535c9a1d8cd4882097af264cb9322b8bd481d741",
+        "independentSortedIdsSha256": "49db7594cd55b0c64b6999d1535c9a1d8cd4882097af264cb9322b8bd481d741",
+        "addedGoalIds": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+          "e918b31f-6f39-5dee-ade6-3617080fb24f",
+          "ec7a0a68-730b-5c94-ac72-a937508f8303"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-SN|SekI|G9|GK": {
+      "superseded": true,
+      "viewId": "de-sn-gym-seki-physics",
+      "sourceViewSha256": "cb7b09c60de319d1db9d8c149801391461c423dd34535e4af1d547d280b46d28",
+      "nativeHttpAtomicTotal": 264,
+      "seed": {
+        "predecessorCount": 153,
+        "currentCount": 157,
+        "nativeSortedIdsSha256": "688af7b06db47bb3da12616dc9af8b44272a4b066118ee1e718aab28613ead68",
+        "independentSortedIdsSha256": "688af7b06db47bb3da12616dc9af8b44272a4b066118ee1e718aab28613ead68",
+        "addedGoalIds": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 252,
+        "currentCount": 264,
+        "nativeSortedIdsSha256": "49db7594cd55b0c64b6999d1535c9a1d8cd4882097af264cb9322b8bd481d741",
+        "independentSortedIdsSha256": "49db7594cd55b0c64b6999d1535c9a1d8cd4882097af264cb9322b8bd481d741",
+        "addedGoalIds": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "8d30d241-0247-48ac-83d3-4e0de61584d3",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+          "e918b31f-6f39-5dee-ade6-3617080fb24f",
+          "ec7a0a68-730b-5c94-ac72-a937508f8303"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-ST|SekI|G8|GK": {
+      "superseded": true,
+      "viewId": "de-st-gym-seki-physics",
+      "sourceViewSha256": "a11ff471c739f5b411aa080ebc477cdcbd0b2bd046157c24e507f2622d273cd4",
+      "nativeHttpAtomicTotal": 219,
+      "seed": {
+        "predecessorCount": 131,
+        "currentCount": 134,
+        "nativeSortedIdsSha256": "d4acb3f3a983c719cfb743ccfaedc6fd599adfeb3a2fc384f767d9a63ba4cb8b",
+        "independentSortedIdsSha256": "d4acb3f3a983c719cfb743ccfaedc6fd599adfeb3a2fc384f767d9a63ba4cb8b",
+        "addedGoalIds": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "a8dc0290-9f80-5763-8943-e16b8d2aa860"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 204,
+        "currentCount": 219,
+        "nativeSortedIdsSha256": "7f636c95885f1cc23f5715b37800ad2c33c6cba52ddc8829cde86bc2b0ab83a4",
+        "independentSortedIdsSha256": "7f636c95885f1cc23f5715b37800ad2c33c6cba52ddc8829cde86bc2b0ab83a4",
+        "addedGoalIds": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "13b338eb-f761-5817-9058-11043b9cb253",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+          "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "bf8517a9-142b-5789-826a-767f3b277998",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "f3167cab-bb23-4bb9-8a27-22e3c5015d44"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-ST|SekI|G9|GK": {
+      "superseded": true,
+      "viewId": "de-st-gym-seki-physics",
+      "sourceViewSha256": "a11ff471c739f5b411aa080ebc477cdcbd0b2bd046157c24e507f2622d273cd4",
+      "nativeHttpAtomicTotal": 219,
+      "seed": {
+        "predecessorCount": 131,
+        "currentCount": 134,
+        "nativeSortedIdsSha256": "d4acb3f3a983c719cfb743ccfaedc6fd599adfeb3a2fc384f767d9a63ba4cb8b",
+        "independentSortedIdsSha256": "d4acb3f3a983c719cfb743ccfaedc6fd599adfeb3a2fc384f767d9a63ba4cb8b",
+        "addedGoalIds": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "a8dc0290-9f80-5763-8943-e16b8d2aa860"
+        ],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 204,
+        "currentCount": 219,
+        "nativeSortedIdsSha256": "7f636c95885f1cc23f5715b37800ad2c33c6cba52ddc8829cde86bc2b0ab83a4",
+        "independentSortedIdsSha256": "7f636c95885f1cc23f5715b37800ad2c33c6cba52ddc8829cde86bc2b0ab83a4",
+        "addedGoalIds": [
+          "09f47964-2cd0-410e-93ee-9632b582fc91",
+          "13b338eb-f761-5817-9058-11043b9cb253",
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "262f807a-30d0-503e-986f-856cbd048e8e",
+          "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2",
+          "87c55be5-06a9-41e2-a0d4-c60f7c8b8078",
+          "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+          "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
+          "bf8517a9-142b-5789-826a-767f3b277998",
+          "c65ecabf-d00b-4e2d-99ae-b64692325ffb",
+          "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "d6c3fb37-ece6-5b56-9221-1eeb21845877",
+          "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "f3167cab-bb23-4bb9-8a27-22e3c5015d44"
+        ],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-TH|SekI|G8|GK": {
+      "superseded": false,
+      "viewId": "de-th-gym-seki-physics",
+      "sourceViewSha256": "f38e259cc66e367250042618bc2cafac02e9bbca59052cf9dc0f13340553f33c",
+      "nativeHttpAtomicTotal": 202,
+      "seed": {
+        "predecessorCount": 136,
+        "currentCount": 136,
+        "nativeSortedIdsSha256": "f9969c8a3cc6ce62863ef7da9a7a5593fc1882ed92afe2e2fb901f448b68681d",
+        "independentSortedIdsSha256": "f9969c8a3cc6ce62863ef7da9a7a5593fc1882ed92afe2e2fb901f448b68681d",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 202,
+        "currentCount": 202,
+        "nativeSortedIdsSha256": "e226bc57746a583899eb96aa7d353b35934f7a5f09dbbe547cb92ab2de815bc1",
+        "independentSortedIdsSha256": "e226bc57746a583899eb96aa7d353b35934f7a5f09dbbe547cb92ab2de815bc1",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      }
+    },
+    "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|DE-TH|SekI|G9|GK": {
+      "superseded": false,
+      "viewId": "de-th-gym-seki-physics",
+      "sourceViewSha256": "f38e259cc66e367250042618bc2cafac02e9bbca59052cf9dc0f13340553f33c",
+      "nativeHttpAtomicTotal": 202,
+      "seed": {
+        "predecessorCount": 136,
+        "currentCount": 136,
+        "nativeSortedIdsSha256": "f9969c8a3cc6ce62863ef7da9a7a5593fc1882ed92afe2e2fb901f448b68681d",
+        "independentSortedIdsSha256": "f9969c8a3cc6ce62863ef7da9a7a5593fc1882ed92afe2e2fb901f448b68681d",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      },
+      "learning": {
+        "predecessorCount": 202,
+        "currentCount": 202,
+        "nativeSortedIdsSha256": "e226bc57746a583899eb96aa7d353b35934f7a5f09dbbe547cb92ab2de815bc1",
+        "independentSortedIdsSha256": "e226bc57746a583899eb96aa7d353b35934f7a5f09dbbe547cb92ab2de815bc1",
+        "addedGoalIds": [],
+        "removedGoalIds": []
+      }
+    }
+  }
+}
