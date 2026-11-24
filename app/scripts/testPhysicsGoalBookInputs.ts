@@ -1245,6 +1245,7 @@ assert.equal(sha256(readFileSync(resolve(repoRoot, mpReceipt.currentGoalPath), '
 const mpCurrent = rawGoalById.get(mpId)!
 assert.deepEqual(mpCurrent, {
   ...readJson<Record<string, unknown>>(mpReceipt.currentGoalPath),
+  applicability: {},
   extendedData: { applicabilityProjection: 'excluded', applicabilityMappingInheritance: 'boundary' },
 }, 'historical passes retain the entire original reviewed exam and scoring contract')
 const proposedMpId = '05cfd298-cb80-54c4-a898-b521ef270843'
