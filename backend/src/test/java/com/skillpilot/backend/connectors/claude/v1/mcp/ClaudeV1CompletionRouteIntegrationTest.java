@@ -1700,12 +1700,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
     }
 
-    // A retired edition keeps its identity as history and leaves the learner's scope. A stored
-    // plan that still names it is outdated: it is neither rewritten nor pointed at another edition.
+    // A retired edition keeps its identity as history and leaves the learner's scope. A stored plan
+    // that still names it stays valid for everything else it holds (Product Owner, 24 November 2026).
+    // It is neither rewritten nor pointed at another edition.
     @ParameterizedTest
     @CsvSource({"GK,6ea3fb3c-abdc-568f-ab13-97c36dc274e4", "LK,6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
             "LK,2b9e565f-d9b4-5e23-b5b7-b7977cecff06"})
-    void storedPlanNamingARetiredAssessmentEditionIsOutdatedAndKeptUnchanged(String course, String retired) throws Exception {
+    void storedPlanNamingARetiredAssessmentEditionStaysValidAndIsKeptUnchanged(String course, String retired) throws Exception {
         String section = selectHessianMotionUnit("G9", "SekII", course);
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
@@ -1718,7 +1719,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 null, required, List.of(section), true);
         learningPlans.upsert(learnerId, physics,
                 new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(current)), today);
-        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isFalse();
+        var reference = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(reference.stale()).isFalse();
 
         // Before the retirement a section selection stored the edition among its goals, and a
         // learner could also select it in a block of its own.
@@ -1733,12 +1735,23 @@ class ClaudeV1CompletionRouteIntegrationTest {
             record.setBlocksJson(mapper.writeValueAsString(stored));
             storedPlans.saveAndFlush(record);
             var plan = learningPlans.getPlan(learnerId, physics, today);
-            assertThat(plan.stale()).isTrue();
-            assertThat(plan.nextEligibleGoal()).isNull();
+            assertThat(plan.stale()).isFalse();
+            // The plan continues exactly like the same plan without the retired entry.
+            assertThat(plan.blocks()).isEqualTo(reference.blocks());
+            assertThat(plan.nextEligibleGoal()).isEqualTo(reference.nextEligibleGoal());
+            assertThat(plan.canContinue()).isEqualTo(reference.canContinue());
             assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).isEqualTo(stored);
         }
+        // Nothing is left of a plan that names only the retired edition: it is outdated as before.
+        var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        record.setBlocksJson(mapper.writeValueAsString(List.of(ownExam)));
+        storedPlans.saveAndFlush(record);
+        var emptied = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(emptied.stale()).isTrue();
+        assertThat(emptied.nextEligibleGoal()).isNull();
+        assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).isEqualTo(List.of(ownExam));
         // A new plan cannot select the retired edition.
-        long revision = learningPlans.getPlan(learnerId, physics, today).revision();
+        long revision = emptied.revision();
         assertThatThrownBy(() -> learningPlans.upsert(learnerId, physics,
                 new LearnerLearningPlanApi.UpsertRequest(revision, "Alte Fassung", List.of(current, ownExam)), today))
                 .hasMessageContaining("Unknown atomicGoalIds");

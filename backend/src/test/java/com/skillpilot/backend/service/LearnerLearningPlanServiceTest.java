@@ -34,6 +34,44 @@ import org.springframework.web.server.ResponseStatusException;
 
 class LearnerLearningPlanServiceTest {
 
+    // Product Owner decision of 24 November 2026: a goal the catalog has retired leaves the entries
+    // that captured it, and the rest of the stored plan continues unchanged.
+    @Test
+    void retiredGoalsLeaveTheirEntriesAndNothingElseChanges() {
+        var day = LocalDate.parse("2026-11-23");
+        var retired = java.util.Set.of("old-exam");
+        var section = new LearnerLearningPlanApi.Block("section", "learning", "unit", "E.1", day, day, null,
+                List.of("a", "old-exam", "b"), List.of("unit"), true);
+        var ownExam = new LearnerLearningPlanApi.Block("own", "learning", "old-exam", "Meine Prüfung", day, day, null,
+                List.of("old-exam"), List.of("old-exam"), true);
+        var legacyRoot = new LearnerLearningPlanApi.Block("legacy", "learning", "old-exam", null, day, day, null,
+                List.of("old-exam"));
+        var mixedRoots = new LearnerLearningPlanApi.Block("mixed", "learning", "old-exam", null, day, day, null,
+                List.of("old-exam", "c"), List.of("old-exam", "c"), false);
+        var examDay = new LearnerLearningPlanApi.Block("date", "milestone", null, "Klausur", null, null, day, null,
+                List.of("old-exam"), true);
+        var buffer = new LearnerLearningPlanApi.Block("buffer", "buffer", null, "Puffer", day, day, null, null);
+        var assignment = new LearnerLearningPlanApi.Block("unit", "learning", "unit", "E.1", day, day, null,
+                List.of("old-exam", "a"), List.of("unit"), true,
+                new LearnerLearningPlanApi.UnitAssignment("unit", "v1", "sha256:" + "0".repeat(64)));
+        var stored = List.of(section, ownExam, legacyRoot, mixedRoots, examDay, buffer, assignment);
+
+        var current = LearnerLearningPlanService.withoutRetiredGoals(stored, retired);
+
+        assertThat(current).containsExactly(
+                new LearnerLearningPlanApi.Block("section", "learning", "unit", "E.1", day, day, null,
+                        List.of("a", "b"), List.of("unit"), true),
+                new LearnerLearningPlanApi.Block("mixed", "learning", "c", null, day, day, null,
+                        List.of("c"), List.of("c"), false),
+                buffer, assignment);
+        // Nothing retired: the same list. Nothing left: the stored plan, which is then outdated as before.
+        assertThat(LearnerLearningPlanService.withoutRetiredGoals(stored, java.util.Set.of())).isSameAs(stored);
+        assertThat(LearnerLearningPlanService.withoutRetiredGoals(List.of(buffer, assignment), retired))
+                .isEqualTo(List.of(buffer, assignment));
+        assertThat(LearnerLearningPlanService.withoutRetiredGoals(List.of(ownExam, examDay), retired))
+                .isEqualTo(List.of(ownExam, examDay));
+    }
+
     @Test
     void milestoneTopicsNormalizeWithoutAddingScheduledWorkAndSurviveJsonRoundTrip() throws Exception {
         var learning = learningBlock("learning", "2026-09-01", "2026-09-04", List.of("atom-a"));

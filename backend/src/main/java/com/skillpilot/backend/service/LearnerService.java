@@ -143,6 +143,9 @@ public class LearnerService {
     private static final Logger LOGGER = LoggerFactory.getLogger(LearnerService.class);
     /** Curriculum and failure code pairs already logged; keeps repeated reads quiet. */
     private final Set<String> reportedSeedScopeFallbacks = java.util.concurrent.ConcurrentHashMap.newKeySet();
+    /** Derived once per loaded landscape instance; a reloaded catalog brings new instances. */
+    private final Map<SkillLandscape, Set<String>> retiredGoalIdsByLandscape =
+            Collections.synchronizedMap(new java.util.WeakHashMap<>());
     private static final ZoneId VERIFIED_RECALL_DAY_ZONE = ZoneId.of("Europe/Berlin");
     private static final ZoneId LEARNING_PLAN_ZONE = ZoneId.of("Europe/Berlin");
     private static final int LEGACY_VERIFIED_RECALL_BATCH_SIZE = 1;
@@ -4545,18 +4548,40 @@ public class LearnerService {
     }
 
     /**
+     * Atomic goals of one subject that the catalog retains only as history, such as a withdrawn
+     * assessment edition: marked as excluded from projection and offered in no learner-facing view.
+     */
+    Set<String> retiredGoalIds(String landscapeId) {
+        SkillLandscape landscape = landscapeId == null ? null : landscapeService.getById(landscapeId);
+        if (landscape == null || landscape.getGoals() == null) return Set.of();
+        return retiredGoalIdsByLandscape.computeIfAbsent(landscape, loaded -> {
+            Set<String> ids = new HashSet<>();
+            for (LearningGoal goal : loaded.getGoals()) {
+                if (goal != null && "atomic".equals(goal.getType()) && goal.getExtendedData() != null
+                        && "excluded".equals(goal.getExtendedData().get("applicabilityProjection"))) {
+                    ids.add(goal.getId());
+                }
+            }
+            return ids;
+        });
+    }
+
+    /**
      * Checks current executability, not historical graph identity. Stored v2
      * fingerprints remain capture evidence and are never rewritten by this read.
      * Unplanned additions and content-only edits do not invalidate unchanged
-     * blocks. Missing targets, changed foci or prerequisite schedules do.
+     * blocks. Missing targets, changed foci or prerequisite schedules do. A goal
+     * the catalog has retired does not: the rest of the plan stays valid.
      */
     @Transactional(readOnly = true)
     public boolean isLearningPlanCompatible(
             String skillpilotId,
             String capturedCurriculumId,
             String landscapeId,
-            List<LearnerLearningPlanApi.Block> storedBlocks) {
+            List<LearnerLearningPlanApi.Block> capturedBlocks) {
         try {
+            List<LearnerLearningPlanApi.Block> storedBlocks = LearnerLearningPlanService.withoutRetiredGoals(
+                    capturedBlocks, retiredGoalIds(landscapeId));
             // A retained plan for a deselected subject is history, even when
             // some of its atoms remain necessary foundations of another subject.
             if (!isUnitAssignmentSubjectSelected(getLearner(skillpilotId), landscapeId)) return false;
