@@ -31,6 +31,20 @@ Alle 106 Sek-I-Routen aus 56 Ansichten bestehen. Die Physikkarten zeigen in 90 A
 
 **Integration offen.** Der Nachweisbranch liegt zu [Entwurf #186](https://github.com/enpasos/skillpilot/pull/186). Die hier genannten Fachprüfungen und automatisierten Tests liefen lokal. Überführung nach `main` und erfolgreiche Main-CI stehen aus.
 
+## 24. November 2026, 05:21 MEZ – Direkter Einstieg in eine Untereinheit: Wiederaufnahme korrigiert
+
+Nach der Bestätigung des eigenen Auftakts nimmt ein bewusst aus dem Mathematikfokus gewähltes Physikziel die gewählte Arbeit wieder auf. Die Wiederaufnahme berücksichtigt den echten Voraussetzungenpfad und unterdrückt nur zusätzlich abgeleitete übergeordnete Auftakte außerhalb der gewählten Einheit. Der geführte Weg über Eltern- und Kindauftakt sowie echte offene Voraussetzungen bleiben erhalten. Das Paket ergänzt null Lernziele, Prüfungsaufgaben und Stufenpläne. K 0/13 und F 0/7 sind im Gesamtauftrag vollständig abgeschlossen; dieses Paket wird noch nicht als integriert gezählt. Curriculum und Platzierungen erhalten keine Änderung; eine neue Rücklaufwirkung wird nicht beansprucht.
+
+Zur Sichtung:
+
+- Aus Mathematik direkt eine Physikuntereinheit wählen, ihren Auftakt bestätigen und das ursprünglich gewählte Ziel wiedersehen; Autopilot an und aus vergleichen.
+- Dieselbe Arbeit aus der Elterneinheit beginnen: zuerst Eltern-, danach Kindauftakt erhalten.
+- Bei einer offenen echten Voraussetzung deren Bearbeitung fortsetzen; der Kindauftakt bestätigt keinen Elternabschluss.
+
+**Automatisierte Nachweise:** 306 Tests in elf Backendklassen bestanden, einschließlich der sechs Fälle im [Einstiegsreview](https://github.com/enpasos/skillpilot/blob/fix/direkteinstieg-kindeinheit/backend/src/test/java/com/skillpilot/backend/service/UnitIntroductionForeignFocusReviewTest.java) und der 14 [Planungsfälle](https://github.com/enpasos/skillpilot/blob/fix/direkteinstieg-kindeinheit/backend/src/test/java/com/skillpilot/backend/service/LearnerPlanningScopeServiceTest.java). Die unveränderte ursprüngliche E.1-Regressionsfixture bestand zusätzlich alle drei Fälle mit den Eingabebytes von `bf34d99e7f`. Diese Laufzeitprüfungen sind von fachlichen Aufgabenreviews und persönlichen Lernendenleistungen getrennt.
+
+**Integration offen.** Der [separate Zweig](https://github.com/enpasos/skillpilot/compare/main...fix/direkteinstieg-kindeinheit) basiert auf `main` bei `d43febbc04`. Die Zusammenführung mit dem von Claude umgesetzten E.1-Schnitt, ein PR und die vollständige frische Main-CI stehen aus. Nächster Schritt ist die Prüfung und gemeinsame Integration beider Lieferungen.
+
 ## 24. November 2026, 04:58 MEZ – E.1-Quellen und Nachweise der Sekundarstufe I
 
 Sechs Befunde des E.1-Schnitts sind unabhängig gegen amtliche Lehrpläne geprüft. Sachsen bestätigt die neue Voraussetzung der Beschleunigungsaufgabe und verortet die eigene Freifallprüfung in Klasse 9. Sachsen-Anhalt kann die vorhandene Beschleunigungsaufgabe anbieten. In Hamburg fehlt ein passender Nachweis. Thüringen führt die Bewegungsgesetze in E10. Mecklenburg-Vorpommern behält in Klasse 9 den Teilbezug zum v(t)-Diagramm. Zwei sächsische Fallvergleichszuordnungen und eine bayerische Zuordnung zu Modellgrenzen sind entfallen. K 0/13 und F 0/7 zusätzlich abgeschlossen, null neu aktivierte Stufenpläne, null neu geschriebene Prüfungsaufgaben. Der Vergleich der 90 aktuellen Physiksichten über alle 356 Vorschau-Schritte zeigt vorher und nachher dieselben zehn rückwärts gerichteten Beziehungen. [Fachprüfungen und Quelldateien](https://github.com/enpasos/skillpilot/blob/feat/e1-kindeinheiten-nachweise/curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/README.md) · [Kartenvergleich](https://github.com/enpasos/skillpilot/blob/feat/e1-kindeinheiten-nachweise/curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-stage-20261124/nested-map-comparison.actual.json)
