@@ -642,8 +642,8 @@ unit-qualification assignment, passing the four designated versions A–D ends
 the required work for that assignment. An individually open goal remains
 available voluntarily or due under a separate explicit assignment. A valid historical part receipt
 counts towards its part after a scope change. If it lacks the planning-release
-binding at grading, the cockpit and coach explain why the two individual
-goals remain open. A separate due assignment takes priority on a request to
+binding at grading, the cockpit and coach explain its missing planning
+credit. A separate due assignment takes priority on a request to
 continue. Once the unit assignment is complete and no such work is due, offer
 a choice of individually open targets of the same unit for voluntary study.
 The additional horizontal-throw examination remains available voluntarily and
@@ -902,6 +902,10 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   assessment written for it, `c5807a37-129e-5df6-8989-482bc7f5683e`) with
   reviewed coverage for both goals
   (`curricula/DE/Gymnasium/quality/learning-units/physics-constant-acceleration-2026-11-13.md`).
+  Since the E.1 cut of 23 November 2026 (§2.4) the unit is revision
+  `2026-11-23-v4`, "Freier Fall schwerer Kugeln": it owns its opening goal,
+  the accelerated-motion goal and the acceleration-log exam with its variant,
+  and the planning release of 24 November credits that one goal.
   The goal "Freier Fall experimentell untersuchen" is outside the unit: two
   independent reviewers found R2 not satisfied for an assessment that
   evaluates given measurement data, and disagreed on whether own measurement
