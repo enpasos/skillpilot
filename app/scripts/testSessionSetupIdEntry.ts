@@ -30,17 +30,27 @@ const ciWorkflowSource = readFileSync(
 )
 
 const openLearnerStart = sessionSetupSource.match(
-  /const openLearnerStart = \(\) => \{([\s\S]*?)\n {2}\}\n\n {2}return/u,
+  /const openLearnerStart = \(\) => \{([\s\S]*?)\n {2}\}\n\n {2}const openTrainerStart/u,
 )?.[1] ?? ''
 
 assert(openLearnerStart, 'learner start handler exists')
 assert(
-  openLearnerStart.includes('resetTransientSetupState(true)'),
-  'learner start clears any previously held SkillPilot ID',
+  openLearnerStart.includes('readRememberedSkillpilotId(window.localStorage)')
+    && openLearnerStart.includes('setAutoResumeLearnerId(rememberedId)')
+    && !openLearnerStart.includes("localStorage.getItem('skillpilot_id')")
+    && !openLearnerStart.includes('sessionStorage'),
+  'learner start brings back only an ID the learner let this browser remember',
 )
 assert(
-  !openLearnerStart.includes("localStorage.getItem('skillpilot_id')"),
-  'learner start does not prefill the SkillPilot ID from browser storage',
+  sessionSetupSource.includes(
+    'storeActiveSkillpilotId(window.localStorage, window.sessionStorage, sanitizedId, rememberId)',
+  )
+    && !sessionSetupSource.includes("localStorage.setItem('skillpilot_id'"),
+  'starting stores the SkillPilot ID only according to the learner\'s secure or convenient choice',
+)
+assert(
+  sessionSetupSource.includes('forgetRememberedSkillpilotId(window.localStorage, sanitizedLearnerId)'),
+  'choosing secure removes the remembered copy at once',
 )
 assert(
   !sessionSetupSource.includes('localSkillpilotLogin')
@@ -72,8 +82,8 @@ assert(learnerCockpitLink, 'learner cockpit control is a link')
 assert(
   learnerCockpitLink.includes('href={personalCurriculumReady ? learnerCockpitHref : undefined}')
     && learnerCockpitLink.includes('target="_blank"')
-    && learnerCockpitLink.includes('rel="noopener noreferrer"'),
-  'learner cockpit opens safely in a new browser tab',
+    && learnerCockpitLink.includes("rel={rememberId ? 'noopener noreferrer' : 'opener'}"),
+  'learner cockpit opens in a new browser tab; only a tab-only access keeps the opener so the tab receives it',
 )
 assert(
   learnerCockpitLink.includes('onClick={handleOpenLearnerCockpit}')

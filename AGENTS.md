@@ -2520,6 +2520,24 @@ Guiding principle:
   - store the `skillpilotId` in local storage or cookies,
   - remember additional preferences or display names **locally only**.
 
+**24 November 2026.** The Product Owner decided that the learner chooses
+whether the browser remembers the `skillpilotId`. The learning start asks this
+at the ID field. "Secure" keeps the active access with the open tab only
+(session storage; a Cockpit tab opened from that tab receives a copy).
+"Convenient" stores it durably (local storage), and a later "Lernen starten"
+continues with that ID without entering it. A newly entered, loaded or created
+ID starts as "secure". An ID that an earlier version already stored stays
+remembered, so no learner loses a working access. A remembered ID is removed
+only by the learner's own switch to "secure", by sign-out or by deletion. The
+choice governs the access entry only. Cockpit caches whose keys contain the ID
+(flashcard state, tree expansion) remain in local storage; cleaning them up is
+an open topic.
+
+On the same day the Product Owner clarified the learning start: the coach is
+the way to learn, and the Cockpit beside it is overview and settings (skill
+landscape, own results, plan status), not a second way to learn. Completed
+setup steps collapse and name every chosen value.
+
 ### 11.3 API / Tools conventions
 
 Distinguish trusted browser/domain APIs from provider-facing AI contracts.

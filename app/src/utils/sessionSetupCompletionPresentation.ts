@@ -31,6 +31,16 @@ export const shouldCompactLoadedLearnerSetup = ({
   && !hasError
 )
 
+/**
+ * Short form of a SkillPilot ID for the collapsed step summary. The full ID
+ * stays in its input; the summary only needs to be recognizable.
+ */
+export const formatSkillpilotIdSummary = (skillpilotId: string) => {
+  const id = skillpilotId.trim()
+  if (id.length <= 14) return id
+  return `${id.slice(0, 8)}…${id.slice(-4)}`
+}
+
 export const getPersonalCurriculumSummaryItems = (
   plan: PersonalizationPlan | null,
   language: 'de' | 'en',
@@ -53,12 +63,3 @@ export const getPersonalCurriculumSummaryItems = (
   return items
 }
 
-export const formatPersonalCurriculumSummary = (
-  items: string[],
-  moreLabel: (remaining: number) => string,
-  maxVisibleItems = 3,
-) => {
-  if (items.length <= maxVisibleItems) return items.join(' · ')
-  const remaining = items.length - maxVisibleItems
-  return `${items.slice(0, maxVisibleItems).join(' · ')} · +${remaining} ${moreLabel(remaining)}`
-}

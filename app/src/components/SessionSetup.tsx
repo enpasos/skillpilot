@@ -9,7 +9,7 @@ import { PersonalCurriculumEditor } from './PersonalCurriculumEditor'
 import { SkillpilotIdFilePasswordDialog } from './SkillpilotIdFilePasswordDialog'
 import { LearnerDataManagementDialog } from './LearnerDataManagementDialog'
 import { ThemeToggle } from './ThemeToggle'
-import { ArrowRight, Github, ShieldCheck, Send, Compass, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
+import { ArrowRight, Check, Github, ShieldCheck, Send, Compass, ExternalLink, KeyRound, UserPlus, Bot, FileDown, FileUp, Database } from 'lucide-react'
 
 
 type Role = 'learner' | 'trainer' | 'explorer'
@@ -54,6 +54,12 @@ import {
   SKILLPILOT_ID_FILE_NAME,
 } from '../utils/skillpilotIdFile'
 import { sanitizeSkillpilotId } from '../utils/skillpilotId'
+import {
+  forgetRememberedSkillpilotId,
+  isSkillpilotIdRemembered,
+  readRememberedSkillpilotId,
+  storeActiveSkillpilotId,
+} from '../utils/skillpilotIdBrowserStorage'
 import { readCompletionAssessmentStart } from '../utils/levelCompletionApi'
 import {
   clearDeletedLearnerBrowserState,
@@ -73,7 +79,7 @@ import {
 } from '../utils/learnerProfile'
 import { getLearnerSetupStepVisibility } from '../utils/sessionSetupStepVisibility'
 import {
-  formatPersonalCurriculumSummary,
+  formatSkillpilotIdSummary,
   getPersonalCurriculumSummaryItems,
   shouldCompactLoadedLearnerSetup,
   type SkillpilotIdSource,
@@ -104,6 +110,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const curriculumSelectRef = React.useRef<HTMLSelectElement>(null)
   const restoreCurriculumSelectFocusRef = React.useRef(false)
   const advanceToCurriculumRef = React.useRef(false)
+  const advanceToStartRef = React.useRef(false)
   const evaluatedCompletedSetupScopeRef = React.useRef('')
   // Use location (ensure import is added)
   const location = useLocation()
@@ -176,6 +183,18 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   const [skillpilotIdSource, setSkillpilotIdSource] = useState<SkillpilotIdSource>(() => (
     sanitizeSkillpilotId(skillpilotId) ? 'existing' : null
   ))
+  // The learner's own choice between "secure" (ID stays with this tab) and
+  // "convenient" (this browser remembers it). An ID the browser already holds
+  // starts as remembered; any other ID starts secure.
+  const [rememberId, setRememberId] = useState(() => {
+    try {
+      return isSkillpilotIdRemembered(window.localStorage, skillpilotId)
+    } catch {
+      return false
+    }
+  })
+  // The remembered ID that the learner start resumes without a further click.
+  const [autoResumeLearnerId, setAutoResumeLearnerId] = useState('')
   const [termsAccepted, setTermsAccepted] = useState(() => (
     hasAcceptedCurrentTerms(window.localStorage)
   ))
@@ -235,14 +254,10 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     ),
     [language, personalCurriculumEditor.plan],
   )
+  // The collapsed step names every selected parameter instead of a count of hidden ones.
   const personalCurriculumSummary = personalCurriculumSummaryItems.length > 0
-    ? formatPersonalCurriculumSummary(
-        personalCurriculumSummaryItems,
-        (remaining) => remaining === 1
-          ? t.startPage.login.completedSetup.moreOne
-          : t.startPage.login.completedSetup.moreMany,
-      )
-    : t.startPage.login.completedSetup.noAdditionalChoices
+    ? personalCurriculumSummaryItems
+    : [t.startPage.login.completedSetup.noAdditionalChoices]
   const compactCompletedSetup =
     personalCurriculumReady
     && compactCompletedSetupScope === completedSetupScope
@@ -381,12 +396,35 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     setSkillpilotIdFileDialogError('')
     setPendingSkillpilotIdFile(null)
     advanceToCurriculumRef.current = false
+    advanceToStartRef.current = false
     if (clearSkillpilotId) {
       setSkillpilotId('')
       setSkillpilotIdSource(null)
+      setRememberId(false)
+      setAutoResumeLearnerId('')
     }
   }
   resetTransientSetupStateRef.current = resetTransientSetupState
+
+  // A newly entered ID starts secure unless this browser already remembers it.
+  const applyRetentionDefaultFor = (nextId: string) => {
+    try {
+      setRememberId(isSkillpilotIdRemembered(window.localStorage, nextId))
+    } catch {
+      setRememberId(false)
+    }
+  }
+
+  const chooseIdRetention = (remember: boolean) => {
+    setRememberId(remember)
+    if (remember || !sanitizedLearnerId) return
+    try {
+      // Choosing "secure" takes effect at once: the browser drops its copy.
+      forgetRememberedSkillpilotId(window.localStorage, sanitizedLearnerId)
+    } catch {
+      // Blocked storage holds no remembered copy.
+    }
+  }
 
   const handleSkillpilotIdFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const input = event.currentTarget
@@ -473,6 +511,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       resetTransientSetupState()
       setSkillpilotId(loadedId)
       setSkillpilotIdSource('file')
+      applyRetentionDefaultFor(sanitizeSkillpilotId(loadedId))
       setSkillpilotIdFileStatus('loaded')
     } catch (caught) {
       const message = caught instanceof Error ? caught.message : ''
@@ -511,6 +550,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       const sanitizedId = sanitizeSkillpilotId(String(id))
       setSkillpilotId(sanitizedId)
       setSkillpilotIdSource('generated')
+      setRememberId(false)
       setValidatedLearnerId(sanitizedId)
 
       // Every source fills the same field. The learner advances explicitly
@@ -603,8 +643,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
   React.useEffect(() => {
     // The Cockpit entry resumes only the profile that was already present.
     // Editing the ID returns to the ordinary explicit setup flow.
-    if (!isCoachEntry || !termsAccepted || role !== 'learner'
-      || !sanitizedLearnerId || sanitizedLearnerId !== coachEntryLearnerIdRef.current) return
+    // The same holds for the learner start with an ID this browser remembers.
+    const resumesOnItsOwn = isCoachEntry
+      ? sanitizedLearnerId === coachEntryLearnerIdRef.current
+      : showLogin && sanitizedLearnerId === autoResumeLearnerId
+    if (!resumesOnItsOwn || !termsAccepted || role !== 'learner' || !sanitizedLearnerId) return
     let cancelled = false
     setIdStepComplete(false)
     void checkLearner(sanitizedLearnerId, true).then((checked) => {
@@ -614,7 +657,18 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       cancelled = true
       learnerCheckRequestRef.current += 1
     }
-  }, [checkLearner, isCoachEntry, role, sanitizedLearnerId, termsAccepted])
+  }, [autoResumeLearnerId, checkLearner, isCoachEntry, role, sanitizedLearnerId, showLogin, termsAccepted])
+
+  React.useEffect(() => {
+    // "Convenient" applies as soon as the ID is confirmed, not only at the next start.
+    if (role !== 'learner' || !rememberId || !sanitizedLearnerId
+      || validatedLearnerId !== sanitizedLearnerId) return
+    try {
+      storeActiveSkillpilotId(window.localStorage, window.sessionStorage, sanitizedLearnerId, true)
+    } catch {
+      // Remembering is a convenience; the confirmed setup continues without it.
+    }
+  }, [rememberId, role, sanitizedLearnerId, validatedLearnerId])
 
   React.useEffect(() => {
     if (!isCoachEntry || !personalCurriculumReady || !compactCompletedSetup) return
@@ -629,7 +683,12 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     const sanitizedId = sanitizeSkillpilotId(effectiveId)
     if (!sanitizedId) return ''
 
-    localStorage.setItem('skillpilot_id', sanitizedId)
+    try {
+      storeActiveSkillpilotId(window.localStorage, window.sessionStorage, sanitizedId, rememberId)
+    } catch {
+      // Without browser storage no access can be handed to the Cockpit or a coach.
+      return ''
+    }
     localStorage.setItem('skillpilot_role', 'learner')
     try {
       sessionStorage.setItem('skillpilot_ui_session_id', globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}`)
@@ -741,9 +800,11 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
       return
     }
     advanceToCurriculumRef.current = true
+    advanceToStartRef.current = true
     const checked = await checkLearner(sanitizedId, true)
     if (!checked) {
       advanceToCurriculumRef.current = false
+      advanceToStartRef.current = false
       return
     }
     setIdStepComplete(true)
@@ -816,6 +877,19 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
     const frame = window.requestAnimationFrame(moveToCurriculumStep)
     return () => window.cancelAnimationFrame(frame)
   }, [hasCheckedId, idStepComplete, moveToCurriculumStep])
+
+  React.useEffect(() => {
+    // A returning learner whose setup is already complete continues at the
+    // start step. Scroll only as far as needed so the confirmed steps stay
+    // visible above it.
+    if (isCoachEntry || !compactCompletedSetup || !advanceToStartRef.current) return
+    advanceToStartRef.current = false
+    const frame = window.requestAnimationFrame(() => {
+      coachStartStepRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      coachStartStepRef.current?.focus({ preventScroll: true })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [compactCompletedSetup, isCoachEntry])
 
   const prepareChatGptDesktopStart = async () => {
     if (coachProvider !== 'chatgpt-desktop' || !personalCurriculumReady) return null
@@ -988,7 +1062,26 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
 
   const openLearnerStart = () => {
     setRole('learner')
-    resetTransientSetupState(role !== 'learner' || !sanitizedLearnerId)
+    let rememberedId = ''
+    try {
+      rememberedId = readRememberedSkillpilotId(window.localStorage)
+    } catch {
+      // Blocked storage holds no remembered ID.
+    }
+    if (rememberedId) {
+      // Only an ID the learner let this browser remember returns on its own
+      // and continues without a further click.
+      resetTransientSetupState()
+      setSkillpilotId(rememberedId)
+      setSkillpilotIdSource('existing')
+      setRememberId(true)
+      setAutoResumeLearnerId(rememberedId)
+      advanceToStartRef.current = true
+    } else {
+      resetTransientSetupState(role !== 'learner' || !sanitizedLearnerId)
+      setRememberId(false)
+      setAutoResumeLearnerId('')
+    }
     setShowLogin(true)
   }
 
@@ -1123,26 +1216,28 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 )}
 
                 {termsAccepted && role === 'learner' && (
-                  <div className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm dark:bg-slate-900/50">
-                    <div className="mb-4 flex items-start gap-3">
-                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
-                        1
-                      </div>
+                  <LearnerSetupStepCard
+                    stepNumber={1}
+                    stepLabel={t.startPage.login.completedSetup.step}
+                    title={t.startPage.login.loginTitle}
+                    description={t.startPage.login.loginText}
+                    compact={compactCompletedSetup}
+                    summaryLabel={t.startPage.login.completedSetup.confirmed}
+                    summaryItems={[
+                      formatSkillpilotIdSummary(sanitizedLearnerId),
+                      rememberId
+                        ? t.startPage.login.idRetention.convenientSummary
+                        : t.startPage.login.idRetention.secureSummary,
+                    ]}
+                    changeLabel={t.startPage.login.completedSetup.change}
+                    closeLabel={t.startPage.login.completedSetup.close}
+                  >
+                    <div className="space-y-4">
                       <div>
-                        <h2 className="text-base font-bold text-text-primary">{t.startPage.login.loginTitle}</h2>
-                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">{t.startPage.login.loginText}</p>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="rounded-xl border-2 border-sky-300 bg-sky-50/70 p-4 shadow-sm dark:border-sky-700 dark:bg-sky-950/20">
                         <label htmlFor="skillpilotIdInput" className="flex items-center gap-2 text-sm font-semibold text-text-primary">
                           <KeyRound size={16} className="text-sky-600 dark:text-sky-300" />
                           {t.startPage.login.directIdTitle}
                         </label>
-                        <p className="mt-1 text-xs leading-relaxed text-text-secondary">
-                          {t.startPage.login.idFieldHint}
-                        </p>
                         <input
                           id="skillpilotIdInput"
                           type="text"
@@ -1152,54 +1247,106 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                             resetTransientSetupState()
                             setSkillpilotId(nextId)
                             setSkillpilotIdSource(nextId ? 'existing' : null)
+                            applyRetentionDefaultFor(nextId)
                           }}
                           disabled={idAcquisitionBusy}
-                          className="mt-3 min-h-12 w-full rounded-lg border-2 border-sky-400 bg-white px-3 py-2 text-base font-mono text-text-primary shadow-sm transition-colors focus:border-sky-600 focus:outline-none focus:ring-4 focus:ring-sky-500/20 disabled:cursor-wait disabled:opacity-70 dark:border-sky-500 dark:bg-slate-950"
+                          className="mt-2 min-h-12 w-full rounded-lg border-2 border-sky-400 bg-white px-3 py-2 text-base font-mono text-text-primary shadow-sm transition-colors focus:border-sky-600 focus:outline-none focus:ring-4 focus:ring-sky-500/20 disabled:cursor-wait disabled:opacity-70 dark:border-sky-500 dark:bg-slate-950"
                           placeholder={t.startPage.login.idLabel}
                           required
                         />
-                        {skillpilotIdSourceLabel && sanitizedLearnerId && (
-                          <span className="mt-2 inline-flex rounded-full bg-sky-100 px-2 py-1 text-[11px] font-semibold text-sky-800 dark:bg-sky-900/50 dark:text-sky-100">
-                            {skillpilotIdSourceLabel}
-                          </span>
-                        )}
-                        {hasCheckedId && (
+                        {/* One line below the field: guidance while it is empty, its status once filled. */}
+                        {sanitizedLearnerId ? (
                           <div className="mt-2 flex flex-wrap items-center gap-2 text-[11px]">
-                            <span className="rounded-full bg-emerald-100 px-2 py-1 font-semibold text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200">
-                              {t.startPage.login.idConfirmed}
-                            </span>
+                            {skillpilotIdSourceLabel && (
+                              <span className="inline-flex rounded-full bg-sky-100 px-2 py-1 font-semibold text-sky-800 dark:bg-sky-900/50 dark:text-sky-100">
+                                {skillpilotIdSourceLabel}
+                              </span>
+                            )}
+                            {hasCheckedId && (
+                              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2 py-1 font-semibold text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200">
+                                <Check size={12} strokeWidth={3} aria-hidden="true" />
+                                {t.startPage.login.idConfirmed}
+                              </span>
+                            )}
                           </div>
-                        )}
-                        {validatedLearnerId === sanitizedLearnerId && (
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setLearnerDeleteError(null)
-                              setIsDataManagementOpen(true)
-                            }}
-                            className="mt-3 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-slate-400 bg-white px-3 py-2 text-xs font-semibold text-slate-700 transition-colors hover:border-sky-500 hover:bg-sky-50 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-sky-950/40"
-                          >
-                            <Database size={15} />
-                            {learnerDataManagementCopy.openAction}
-                          </button>
+                        ) : (
+                          <p className="mt-2 text-xs leading-relaxed text-text-secondary">
+                            {t.startPage.login.idFieldHint}
+                          </p>
                         )}
                         {skillpilotIdSource === 'generated' && sanitizedLearnerId && (
-                          <span className="mt-2 block rounded border border-amber-200 bg-amber-100 px-2 py-1 text-[11px] text-amber-800 dark:border-amber-900/50 dark:bg-amber-900/20 dark:text-amber-200">
-                            {t.startPage.login.idWarning}
-                          </span>
+                          <div className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 dark:border-amber-900/50 dark:bg-amber-900/20">
+                            <p className="text-xs font-semibold text-amber-900 dark:text-amber-100">
+                              {t.startPage.login.idWarning}
+                            </p>
+                            <p className="mt-1 text-[11px] leading-relaxed text-amber-900/80 dark:text-amber-100/80">
+                              {t.startPage.login.idFileHint}
+                            </p>
+                            <button
+                              type="button"
+                              onClick={handleOpenSaveSkillpilotIdFileDialog}
+                              disabled={idAcquisitionBusy}
+                              className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-amber-400 bg-white px-3 py-2 text-xs font-semibold text-amber-900 transition-colors hover:bg-amber-100 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-amber-100 dark:hover:bg-amber-950/50"
+                            >
+                              <FileDown size={15} />
+                              {t.startPage.login.saveIdToFile}
+                            </button>
+                          </div>
                         )}
-                        <button
-                          type="button"
-                          onClick={handleOpenSaveSkillpilotIdFileDialog}
-                          disabled={!sanitizedLearnerId || idAcquisitionBusy}
-                          className="mt-3 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-3 py-2 text-xs font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-100 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/50"
-                        >
-                          <FileDown size={15} />
-                          {t.startPage.login.saveIdToFile}
-                        </button>
-                        <p className="mt-2 text-[11px] leading-relaxed text-text-secondary">
-                          {t.startPage.login.idFileHint}
-                        </p>
+                        {sanitizedLearnerId && (
+                          <fieldset data-testid="skillpilot-id-retention" className="mt-3">
+                            <legend className="text-xs font-semibold text-text-primary">
+                              {t.startPage.login.idRetention.question}
+                            </legend>
+                            <div className="mt-1.5 grid gap-2 sm:grid-cols-2">
+                              {([
+                                [false, t.startPage.login.idRetention.secureTitle, t.startPage.login.idRetention.secureText],
+                                [true, t.startPage.login.idRetention.convenientTitle, t.startPage.login.idRetention.convenientText],
+                              ] as const).map(([remember, title, text]) => (
+                                <label key={title} className={`flex cursor-pointer items-start gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${rememberId === remember ? 'border-sky-500 bg-sky-50 ring-1 ring-sky-500 dark:bg-sky-950/30' : 'border-border-color hover:border-sky-300'}`}>
+                                  <input type="radio" name="skillpilot-id-retention"
+                                    checked={rememberId === remember}
+                                    disabled={idAcquisitionBusy}
+                                    onChange={() => chooseIdRetention(remember)}
+                                    className="mt-1 shrink-0 accent-sky-600" />
+                                  <span className="min-w-0">
+                                    <span className="block font-semibold text-text-primary">{title}</span>
+                                    <span className="block text-[11px] leading-snug text-text-secondary">{text}</span>
+                                  </span>
+                                </label>
+                              ))}
+                            </div>
+                          </fieldset>
+                        )}
+                        {sanitizedLearnerId && (
+                          <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-1">
+                            {skillpilotIdSource !== 'generated' && (
+                              <button
+                                type="button"
+                                onClick={handleOpenSaveSkillpilotIdFileDialog}
+                                disabled={idAcquisitionBusy}
+                                title={t.startPage.login.idFileHint}
+                                className="inline-flex min-h-9 items-center gap-1.5 rounded text-xs font-semibold text-sky-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed disabled:opacity-50 dark:text-sky-300"
+                              >
+                                <FileDown size={14} />
+                                {t.startPage.login.saveIdToFile}
+                              </button>
+                            )}
+                            {validatedLearnerId === sanitizedLearnerId && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setLearnerDeleteError(null)
+                                  setIsDataManagementOpen(true)
+                                }}
+                                className="inline-flex min-h-9 items-center gap-1.5 rounded text-xs font-semibold text-sky-700 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-sky-300"
+                              >
+                                <Database size={14} />
+                                {learnerDataManagementCopy.openAction}
+                              </button>
+                            )}
+                          </div>
+                        )}
                       </div>
 
                       <input
@@ -1211,17 +1358,16 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                         aria-label={t.startPage.login.loadIdFromFile}
                       />
 
-                      <div className="grid gap-3 sm:grid-cols-2">
-                        <div className="flex flex-col rounded-lg border border-border-color bg-white p-3 dark:bg-slate-950/40">
-                          <p className="flex items-center gap-2 text-sm font-semibold text-text-primary">
-                            <FileUp size={16} className="text-sky-600 dark:text-sky-300" />
+                      <div className="grid gap-3 border-t border-border-color pt-4 sm:grid-cols-2">
+                        <div className="flex flex-col">
+                          <p className="text-xs font-semibold text-text-secondary">
                             {t.startPage.login.fileLoginTitle}
                           </p>
                           <button
                             type="button"
                             onClick={() => skillpilotIdFileInputRef.current?.click()}
                             disabled={idAcquisitionBusy}
-                            className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-3 py-2 text-xs font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/40"
+                            className="mt-1.5 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-3 py-2 text-xs font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/40"
                           >
                             <FileUp size={15} />
                             {skillpilotIdFileStatus === 'loading'
@@ -1230,62 +1376,63 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           </button>
                         </div>
 
-                        <div className="flex flex-col rounded-lg border border-border-color bg-white p-3 dark:bg-slate-950/40">
-                          <p className="flex items-center gap-2 text-sm font-semibold text-text-primary">
-                            <UserPlus size={16} className="text-sky-600 dark:text-sky-300" />
+                        <div className="flex flex-col">
+                          <p className="text-xs font-semibold text-text-secondary">
                             {t.startPage.login.newLoginTitle}
                           </p>
                           <button
                             type="button"
                             onClick={requestNewId}
                             disabled={!termsAccepted || idAcquisitionBusy}
-                            className="mt-2 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-4 py-2 text-sm font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/40"
+                            className="mt-1.5 inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-3 py-2 text-xs font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/40"
                           >
+                            <UserPlus size={15} />
                             {creatingNewId ? t.startPage.login.creatingNewId : t.startPage.login.requestNewId}
                           </button>
                         </div>
                       </div>
 
-                      <div aria-live="polite">
-                        {skillpilotIdFileStatus === 'loaded' && (
-                          <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                            {t.startPage.login.idFileLoaded}
-                          </p>
-                        )}
-                        {skillpilotIdFileStatus === 'saved' && (
-                          <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
-                            {t.startPage.login.idFileSaved}
-                          </p>
-                        )}
-                        {skillpilotIdFileStatus === 'load-failed' && (
-                          <p className="text-xs font-semibold text-rose-600 dark:text-rose-300">
-                            {t.startPage.login.idFileLoadFailed}
-                          </p>
-                        )}
-                        {skillpilotIdFileStatus === 'save-failed' && (
-                          <p className="text-xs font-semibold text-rose-600 dark:text-rose-300">
-                            {t.startPage.login.idFileSaveFailed}
-                          </p>
-                        )}
-                        {error && (
-                          <span className="block text-xs font-semibold text-rose-600 dark:text-rose-300">
-                            {error}
-                          </span>
-                        )}
+                      <div>
+                        <div aria-live="polite" className="[&:not(:empty)]:mb-3">
+                          {skillpilotIdFileStatus === 'loaded' && (
+                            <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                              {t.startPage.login.idFileLoaded}
+                            </p>
+                          )}
+                          {skillpilotIdFileStatus === 'saved' && (
+                            <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                              {t.startPage.login.idFileSaved}
+                            </p>
+                          )}
+                          {skillpilotIdFileStatus === 'load-failed' && (
+                            <p className="text-xs font-semibold text-rose-600 dark:text-rose-300">
+                              {t.startPage.login.idFileLoadFailed}
+                            </p>
+                          )}
+                          {skillpilotIdFileStatus === 'save-failed' && (
+                            <p className="text-xs font-semibold text-rose-600 dark:text-rose-300">
+                              {t.startPage.login.idFileSaveFailed}
+                            </p>
+                          )}
+                          {error && (
+                            <span className="block text-xs font-semibold text-rose-600 dark:text-rose-300">
+                              {error}
+                            </span>
+                          )}
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={handleContinueToCurriculum}
+                          disabled={!termsAccepted || !sanitizedLearnerId || idAcquisitionBusy}
+                          className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:border-slate-300 disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:border-slate-700 dark:disabled:bg-slate-700 dark:disabled:text-slate-300"
+                        >
+                          {loading && !creatingNewId ? t.startPage.login.checking : t.startPage.login.checkButton}
+                          <ArrowRight size={16} />
+                        </button>
                       </div>
-
-                      <button
-                        type="button"
-                        onClick={handleContinueToCurriculum}
-                        disabled={!termsAccepted || !sanitizedLearnerId || idAcquisitionBusy}
-                        className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:border-slate-300 disabled:bg-slate-300 disabled:text-slate-600 dark:disabled:border-slate-700 dark:disabled:bg-slate-700 dark:disabled:text-slate-300"
-                      >
-                        {loading && !creatingNewId ? t.startPage.login.checking : t.startPage.login.checkButton}
-                        <ArrowRight size={16} />
-                      </button>
-
                     </div>
-                  </div>
+                  </LearnerSetupStepCard>
                 )}
 
                 {termsAccepted && role && role !== 'trainer' && (role !== 'learner' || learnerSetupStepVisibility.curriculum) && (
@@ -1297,7 +1444,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     description={curriculumPanelCopy.text}
                     compact={role === 'learner' && compactCompletedSetup}
                     summaryLabel={t.startPage.login.completedSetup.selected}
-                    summary={selectedCurriculumTitle}
+                    summaryItems={[selectedCurriculumTitle]}
                     changeLabel={t.startPage.login.completedSetup.change}
                     closeLabel={t.startPage.login.completedSetup.close}
                   >
@@ -1347,7 +1494,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                     description={t.startPage.login.personalCurriculumStepText}
                     compact={compactCompletedSetup}
                     summaryLabel={t.startPage.login.completedSetup.configured}
-                    summary={personalCurriculumSummary}
+                    summaryItems={personalCurriculumSummary}
                     changeLabel={t.startPage.login.completedSetup.change}
                     closeLabel={t.startPage.login.completedSetup.close}
                   >
@@ -1360,7 +1507,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                 )}
 
                 {termsAccepted && role === 'learner' && learnerSetupStepVisibility.start && (
-                  <div ref={coachStartStepRef} tabIndex={-1} className="rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
+                  <div ref={coachStartStepRef} tabIndex={-1} className="scroll-mt-4 rounded-xl border border-border-color bg-white/70 p-4 shadow-sm animate-in fade-in slide-in-from-top-2 duration-300 dark:bg-slate-900/50">
                     <div className="mb-4 flex items-start gap-3">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sky-600 text-sm font-bold text-white">
                         4
@@ -1373,35 +1520,37 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       </div>
                     </div>
 
-                    <div className="space-y-3">
-                      <p
-                        role="note"
-                        className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary"
-                      >
-                        <Bot size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
-                        <span>{t.startPage.login.aiCoachNotice}</span>
-                      </p>
+                    <div className="space-y-4">
                       <fieldset data-testid="coach-provider-choice" className="space-y-2">
                         <legend className="text-sm font-semibold text-text-primary">
-                          {t.startPage.login.coachProviderLabel}
+                          <span className="inline-flex items-center gap-2">
+                            {t.startPage.login.coachProviderLabel}
+                            <span className="rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-700 dark:bg-slate-700 dark:text-slate-200">
+                              {t.startPage.login.claudeBetaBadge}
+                            </span>
+                          </span>
                         </legend>
-                        <div className="grid gap-2 sm:grid-cols-2">
+                        <div className="grid gap-2 sm:grid-cols-3">
                           {([
-                            ['claude', t.startPage.login.claudeBetaTitle],
-                            ['chatgpt-desktop', t.startPage.login.chatGptDesktop.title],
-                            ['gemini', getGeminiV1Copy(language).title],
-                          ] as const).map(([provider, title]) => (
-                            <label key={provider} className={`flex min-h-11 cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${coachProvider === provider ? 'border-sky-500 bg-sky-50 dark:bg-sky-950/30' : 'border-border-color'}`}>
-                              <input type="radio" name="coach-provider" value={provider}
-                                checked={coachProvider === provider}
-                                disabled={completionRouteRequested && provider !== 'claude'}
-                                onChange={() => chooseCoachProvider(provider)} />
-                              <span>{title}</span>
-                              <span className="ml-auto rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-bold uppercase dark:bg-slate-700">
-                                {t.startPage.login.claudeBetaBadge}
-                              </span>
-                            </label>
-                          ))}
+                            ['claude', t.startPage.login.claudeBetaTitle, t.startPage.login.coachProviderCaptions.claude],
+                            ['chatgpt-desktop', t.startPage.login.chatGptDesktop.title, t.startPage.login.coachProviderCaptions.chatGptDesktop],
+                            ['gemini', getGeminiV1Copy(language).title, t.startPage.login.coachProviderCaptions.gemini],
+                          ] as const).map(([provider, title, caption]) => {
+                            const providerDisabled = completionRouteRequested && provider !== 'claude'
+                            return (
+                              <label key={provider} className={`flex min-h-11 items-start gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${coachProvider === provider ? 'border-sky-500 bg-sky-50 ring-1 ring-sky-500 dark:bg-sky-950/30' : 'border-border-color hover:border-sky-300'} ${providerDisabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}>
+                                <input type="radio" name="coach-provider" value={provider}
+                                  checked={coachProvider === provider}
+                                  disabled={providerDisabled}
+                                  onChange={() => chooseCoachProvider(provider)}
+                                  className="mt-1 shrink-0 accent-sky-600" />
+                                <span className="min-w-0">
+                                  <span className="block font-semibold text-text-primary">{title}</span>
+                                  <span className="block text-[11px] leading-snug text-text-secondary">{caption}</span>
+                                </span>
+                              </label>
+                            )
+                          })}
                         </div>
                       </fieldset>
                       {completionRouteRequested ? (
@@ -1422,117 +1571,89 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                       {coachProvider === 'claude' && (
                       <div
                         data-testid="claude-v1-start-options"
-                        className="space-y-3 rounded-xl border border-violet-300/80 bg-violet-50/70 p-3 dark:border-violet-700/70 dark:bg-violet-950/20"
+                        className="space-y-2.5 rounded-xl border border-sky-300 bg-sky-50/70 p-3 dark:border-sky-700 dark:bg-sky-950/20"
                       >
-                          <div className="flex items-start justify-between gap-3">
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <Bot size={17} className="text-violet-600 dark:text-violet-300" />
-                                <p className="text-sm font-semibold text-text-primary">
-                                  {t.startPage.login.claudeBetaTitle}
+                          <div>
+                            {/* The one-time setup stays first; the everyday start is the one primary action. */}
+                            <ol
+                              data-testid="claude-plugin-setup-guide"
+                              aria-label={t.startPage.login.claudeSetupTitle}
+                              className="space-y-2.5"
+                            >
+                              <li
+                                data-testid="claude-plugin-setup-step-1"
+                                className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5"
+                              >
+                                <p className="min-w-0 text-xs leading-relaxed text-text-secondary">
+                                  <span className="font-semibold text-text-primary">
+                                    {t.startPage.login.claudeSetupStepOneTitle}
+                                  </span>
+                                  {' '}
+                                  {t.startPage.login.claudeSetupStepOne}
                                 </p>
-                                <span className="rounded-full bg-violet-200 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-violet-800 dark:bg-violet-900 dark:text-violet-200">
-                                  {t.startPage.login.claudeBetaBadge}
-                                </span>
-                              </div>
-                              <p className="mt-1 text-xs leading-relaxed text-text-secondary">
-                                {t.startPage.login.claudeBetaHint}
-                              </p>
-                              <p className="mt-2 text-xs leading-relaxed text-text-secondary">
-                                {t.startPage.login.claudeVoiceHint}
-                              </p>
-                              <p className="mt-1 text-[11px] leading-relaxed text-violet-800 dark:text-violet-200">
-                                {t.startPage.login.claudeAdultsOnly}
-                              </p>
+                                <button
+                                  data-testid="claude-plugin-setup-open"
+                                  type="button"
+                                  onClick={handleOpenClaudePluginSetup}
+                                  disabled={!personalCurriculumReady || claudeActionLoading}
+                                  className="inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-full border border-sky-400 bg-white px-4 py-2 text-xs font-semibold text-sky-700 transition-colors hover:border-sky-500 hover:bg-sky-50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-sky-200 dark:hover:bg-sky-950/40"
+                                >
+                                  <KeyRound size={14} />
+                                  {claudeActionState === 'opening-setup'
+                                    ? t.startPage.login.claudeConnecting
+                                    : t.startPage.login.claudeConnect}
+                                </button>
+                              </li>
+                              <li data-testid="claude-plugin-setup-step-2">
+                                <button
+                                  data-testid="claude-plugin-start"
+                                  type="button"
+                                  onClick={handleLaunchClaude}
+                                  disabled={!personalCurriculumReady || claudeActionLoading || completionChoice.invalid}
+                                  className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-sky-500 bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-sky-400 hover:bg-sky-500 disabled:cursor-not-allowed disabled:opacity-50"
+                                >
+                                  <Bot size={16} />
+                                  {claudeActionState === 'launching'
+                                    ? t.startPage.login.claudeStarting
+                                    : t.startPage.login.claudeStart}
+                                  <ExternalLink size={13} />
+                                </button>
+                              </li>
+                            </ol>
+
+                            <div aria-live="polite" className="space-y-2 [&:not(:empty)]:mt-2.5">
+                              {claudeActionState === 'setup-opened' && (
+                                <p className="text-xs font-semibold text-sky-800 dark:text-sky-200">
+                                  {t.startPage.login.claudeInstallOpened}
+                                </p>
+                              )}
+                              {claudeActionState === 'launched' && (
+                                <p className="text-xs font-semibold text-sky-800 dark:text-sky-200">
+                                  {t.startPage.login.claudeLaunched}
+                                </p>
+                              )}
+                              {claudeInstallFallbackUrl && (
+                                <a
+                                  href={claudeInstallFallbackUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-xs font-semibold text-sky-700 underline hover:text-sky-600 dark:text-sky-300"
+                                >
+                                  {t.startPage.login.claudeInstallFallback}
+                                  <ExternalLink size={12} />
+                                </a>
+                              )}
+                              {claudeActionState === 'failed' && (
+                                <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
+                                  {t.startPage.login.claudeFailed}
+                                </p>
+                              )}
                             </div>
                           </div>
 
-                          <section
-                            data-testid="claude-plugin-setup-guide"
-                            aria-labelledby="claude-plugin-setup-title"
-                            className="rounded-lg border border-violet-200 bg-white/80 p-3 dark:border-violet-800 dark:bg-slate-950/35"
-                          >
-                            <p id="claude-plugin-setup-title" className="text-xs font-bold text-text-primary">
-                              {t.startPage.login.claudeSetupTitle}
-                            </p>
-                            <ol className="mt-2 space-y-2">
-                              <li
-                                data-testid="claude-plugin-setup-step-1"
-                                className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary"
-                              >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet-600 text-[10px] font-bold text-white">
-                                  1
-                                </span>
-                                <span>{t.startPage.login.claudeSetupStepOne}</span>
-                              </li>
-                              <li
-                                data-testid="claude-plugin-setup-step-2"
-                                className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary"
-                              >
-                                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-violet-600 text-[10px] font-bold text-white">
-                                  2
-                                </span>
-                                <span>{t.startPage.login.claudeSetupStepTwo}</span>
-                              </li>
-                            </ol>
-                          </section>
-
-                          <div className="grid gap-2 sm:grid-cols-2">
-                            <button
-                              data-testid="claude-plugin-setup-open"
-                              type="button"
-                              onClick={handleOpenClaudePluginSetup}
-                              disabled={!personalCurriculumReady || claudeActionLoading}
-                              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-violet-400 bg-white px-3 py-2 text-xs font-semibold text-violet-800 transition-colors hover:bg-violet-100 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-slate-900 dark:text-violet-200 dark:hover:bg-violet-950"
-                            >
-                              <KeyRound size={14} />
-                              {claudeActionState === 'opening-setup'
-                                ? t.startPage.login.claudeConnecting
-                                : t.startPage.login.claudeConnect}
-                            </button>
-                            <button
-                              data-testid="claude-plugin-start"
-                              type="button"
-                              onClick={handleLaunchClaude}
-                              disabled={!personalCurriculumReady || claudeActionLoading || completionChoice.invalid}
-                              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-violet-600 bg-violet-600 px-3 py-2 text-xs font-semibold text-white transition-colors hover:border-violet-500 hover:bg-violet-500 disabled:cursor-not-allowed disabled:opacity-50"
-                            >
-                              <Bot size={14} />
-                              {claudeActionState === 'launching'
-                                ? t.startPage.login.claudeStarting
-                                : t.startPage.login.claudeStart}
-                              <ExternalLink size={12} />
-                            </button>
-                          </div>
-
-                          <div aria-live="polite" className="space-y-2">
-                            {claudeActionState === 'setup-opened' && (
-                              <p className="text-xs font-semibold text-violet-800 dark:text-violet-200">
-                                {t.startPage.login.claudeInstallOpened}
-                              </p>
-                            )}
-                            {claudeActionState === 'launched' && (
-                              <p className="text-xs font-semibold text-violet-800 dark:text-violet-200">
-                                {t.startPage.login.claudeLaunched}
-                              </p>
-                            )}
-                            {claudeInstallFallbackUrl && (
-                              <a
-                                href={claudeInstallFallbackUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1 text-xs font-semibold text-violet-700 underline hover:text-violet-600 dark:text-violet-300"
-                              >
-                                {t.startPage.login.claudeInstallFallback}
-                                <ExternalLink size={12} />
-                              </a>
-                            )}
-                            {claudeActionState === 'failed' && (
-                              <p className="text-xs font-semibold text-amber-700 dark:text-amber-300">
-                                {t.startPage.login.claudeFailed}
-                              </p>
-                            )}
-                          </div>
+                          <p className="text-[11px] leading-relaxed text-text-secondary">
+                            {t.startPage.login.claudeAdultsOnly}
+                          </p>
                         </div>
                       )}
                       {coachProvider === 'chatgpt-desktop' && (
@@ -1547,15 +1668,34 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                           onPrepare={prepareGeminiStart}
                         />
                       )}
-                      <div>
+                      <p
+                        role="note"
+                        className="flex items-start gap-2 text-xs leading-relaxed text-text-secondary"
+                      >
+                        <Bot size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
+                        <span>{t.startPage.login.aiCoachNotice}</span>
+                      </p>
+
+                      {/* The Cockpit supports the learning with overview and settings; it is not a second way to learn. */}
+                      <div data-testid="learner-cockpit-start" className="flex flex-col gap-3 border-t border-border-color pt-4 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                        <div className="min-w-0">
+                          <h3 className="text-sm font-semibold text-text-primary">
+                            {t.startPage.login.cockpitSectionTitle}
+                          </h3>
+                          <p className="mt-0.5 text-xs leading-relaxed text-text-secondary">
+                            {t.startPage.login.cockpitSectionText}
+                          </p>
+                        </div>
+                        {/* A tab-only access exists in this tab alone; only a tab opened with its
+                            opener receives a copy. A remembered access needs no such link. */}
                         <a
                           href={personalCurriculumReady ? learnerCockpitHref : undefined}
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel={rememberId ? 'noopener noreferrer' : 'opener'}
                           aria-disabled={!personalCurriculumReady}
                           tabIndex={personalCurriculumReady ? undefined : -1}
                           onClick={handleOpenLearnerCockpit}
-                          className={`inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-sm font-semibold text-text-primary transition-colors dark:bg-slate-800 ${personalCurriculumReady ? 'hover:border-sky-400' : 'cursor-not-allowed opacity-50'}`}
+                          className={`inline-flex min-h-10 shrink-0 items-center justify-center gap-2 rounded-full border border-border-color bg-white px-4 py-2 text-xs font-semibold text-text-primary transition-colors dark:bg-slate-800 ${personalCurriculumReady ? 'hover:border-sky-400' : 'cursor-not-allowed opacity-50'}`}
                         >
                           <Compass size={16} />
                           {t.startPage.login.cockpitButton}

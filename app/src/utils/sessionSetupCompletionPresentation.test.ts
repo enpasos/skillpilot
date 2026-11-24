@@ -4,7 +4,7 @@ import type {
   PersonalizationPlan,
 } from './personalCurriculumEditorApi'
 import {
-  formatPersonalCurriculumSummary,
+  formatSkillpilotIdSummary,
   getPersonalCurriculumSummaryItems,
   shouldCompactLoadedLearnerSetup,
   type CompactCompletedSetupState,
@@ -159,26 +159,20 @@ assert(
   'the compact summary uses the existing localized option labels',
 )
 assert(
-  formatPersonalCurriculumSummary(
-    ['A', 'B', 'C', 'D', 'E'],
-    (remaining) => remaining === 1 ? 'weitere Angabe' : 'weitere Angaben',
-  ) === 'A · B · C · +2 weitere Angaben',
-  'long summaries stay bounded and disclose the number of additional choices',
-)
-assert(
-  formatPersonalCurriculumSummary(
-    ['A', 'B', 'C', 'D'],
-    (remaining) => remaining === 1 ? 'more choice' : 'more choices',
-  ) === 'A · B · C · +1 more choice',
-  'the remaining-choice label stays grammatical for a single hidden choice',
-)
-assert(
   getPersonalCurriculumSummaryItems({
     ...completePlan,
     completedDecisions: [],
     preservedDecisions: [],
   }, 'de').length === 0,
   'a complete curriculum without additional choices produces the dedicated empty summary',
+)
+assert(
+  formatSkillpilotIdSummary('58376705-55bc-449f-93ab-d17886cabc04') === '58376705…bc04',
+  'the collapsed ID step shows a recognizable short form instead of the full SkillPilot ID',
+)
+assert(
+  formatSkillpilotIdSummary(' short-id ') === 'short-id' && formatSkillpilotIdSummary('') === '',
+  'short or missing IDs are shown unchanged',
 )
 
 console.log('session setup completion presentation tests passed')

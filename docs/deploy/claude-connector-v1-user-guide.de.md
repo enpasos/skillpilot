@@ -59,7 +59,7 @@ Lernsitzung.
    Der Link führt in den gemeinsamen SkillPilot-Webstart.
 2. Wähle oder lade dort sichtbar deine SkillPilot-ID und bestätige Curriculum
    und persönliches Curriculum.
-3. Wähle im letzten Schritt ausdrücklich **Mit Claude starten**. Du kannst dich
+3. Wähle im letzten Schritt ausdrücklich **Lernen mit Claude starten**. Du kannst dich
    bei jedem Start neu zwischen ChatGPT und Claude entscheiden.
 4. SkillPilot öffnet Claude Web. Die vorbereitete Startnachricht ist bereits im
    Eingabefeld eingetragen. Prüfe sie und sende sie bewusst ab; du musst nichts
