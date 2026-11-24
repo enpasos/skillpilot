@@ -2542,8 +2542,8 @@
         "en": "Memorization: Practice and Verified Recall"
       },
       "rule": {
-        "de": "Wiederholungen gehören zum Karteikartenlernen; der Abschluss des Kartenziels benötigt seinen eigenen ausdrücklichen Prüfnachweis. Spätere Fälligkeit allein nimmt diesen Abschluss nicht zurück. Gewöhnliche abgeschlossene Ziele erhalten keine Wiederholungsfälligkeit und keine daraus abgeleitete Mastery-Rücknahme; freiwillige Wiederholung bleibt davon getrennt.",
-        "en": "Repetitions belong to flashcard learning; completing a memory goal requires its own explicit verification record. Subsequent review due dates alone do not revoke that completion. Ordinary completed goals receive neither review due dates nor any mastery revocation derived from them; voluntary practice stays separate."
+        "de": "Wiederholungen gehören zum Karteikartenlernen; der Abschluss des Kartenziels verlangt einen bestandenen verifizierten Abruf jeder erforderlichen Karte, und das Zielergebnis bleibt aus diesen Kartenergebnissen abgeleitet. Spätere Fälligkeit allein nimmt diesen Abschluss nicht zurück. Gewöhnliche abgeschlossene Ziele erhalten keine Wiederholungsfälligkeit und keine daraus abgeleitete Mastery-Rücknahme; freiwillige Wiederholung bleibt davon getrennt.",
+        "en": "Repetitions belong to flashcard learning; completing a memory goal requires a passed verified recall of every required card, and the goal result stays derived from these card results. Subsequent review due dates alone do not revoke that completion. Ordinary completed goals receive neither review due dates nor any mastery revocation derived from them; voluntary practice stays separate."
       },
       "milestone": {
         "de": "`RT`, bindende Ownerentscheidung; kein Curriculum-`M`-Gate",
@@ -2594,8 +2594,8 @@
         "en": "Memorization: Practice and Verified Recall"
       },
       "rule": {
-        "de": "Beschriebener SRS-Prozess hält Intervall, Wiederholungszähler, Ease und nächste Fälligkeit; ohne Zustand fällig, erfolgreiche Übung verlängert, unzureichende Übung setzt Folge zurück. Zeitplanung ersetzt keinen verifizierten Abruf.",
-        "en": "The specified SRS process tracks interval, repetition count, ease factor, and next due date: unscheduled cards are due immediately, successful practice extends intervals, and insufficient recall resets the streak. Scheduling never substitutes for verified recall."
+        "de": "Beschriebener SRS-Prozess hält Intervall, Wiederholungszähler, Ease und nächste Fälligkeit; Karten im Karteikasten ohne Zustand fällig, erfolgreiche Übung verlängert, unzureichende Übung setzt Folge zurück. Zeitplanung ersetzt keinen verifizierten Abruf.",
+        "en": "The specified SRS process tracks interval, repetition count, ease factor, and next due date: unscheduled cards in the box are due immediately, successful practice extends intervals, and insufficient recall resets the streak. Scheduling never substitutes for verified recall."
       },
       "milestone": {
         "de": "`RT`",
@@ -2620,8 +2620,8 @@
         "en": "Memorization: Practice and Verified Recall"
       },
       "rule": {
-        "de": "Kontrollierter Abruf darf beim aktiven Memoryziel trotz offener SRS-Warteschlange beginnen. Zuerst Frage, eigenständige Antwort, dann erwartete Antwort und Abrufbewertung. Bestehen aktualisiert Übungsspur; Fehlschlag betrifft Kartenprozess.",
-        "en": "Controlled recall may begin on the active memory goal even while SRS practice items remain queued: prompt first, independent learner response second, expected answer and recall evaluation third. Passing updates the practice trace; failure affects the card process."
+        "de": "Kontrollierter Abruf darf beim aktiven Memoryziel trotz offener SRS-Warteschlange beginnen. Zuerst Frage, eigenständige Antwort, dann erwartete Antwort und Abrufbewertung. Eine bestandene Karte verlässt den Karteikasten endgültig und wird nie wieder fällig; eine nicht bestandene kehrt in die Übung zurück.",
+        "en": "Controlled recall may begin on the active memory goal even while SRS practice items remain queued: prompt first, independent learner response second, expected answer and recall evaluation third. A passed card leaves the box for good and never becomes due again; a failed card returns to practice."
       },
       "milestone": {
         "de": "`RT`",
@@ -4492,8 +4492,8 @@
         "en": "Implementation Status and Boundaries of Claims"
       },
       "rule": {
-        "de": "Der Memory-Zieltyp hat einen eigenen ausdrücklichen Abschlussnachweis; Wiederholungsfälligkeit ist keine Rücknahme abgeschlossener Mastery. Gewöhnliche abgeschlossene Ziele erhalten keine solche Fälligkeit. Units sind dargestellt und validiert, aber noch ohne Laufzeitwirkung; B9 hebt das frühere Ganzheits-Zugangsprofil im Zielmodell auf. Direkter Prüfungszugang bleibt unter seinem Aufgaben-, Authentifizierungs-, Scope- und Sitzungsvertrag erhalten; keine Codeumstellung wird hier behauptet. Zeitplanung bleibt gesondert.",
-        "en": "The memory goal type carries its own explicit completion record; review due dates never revoke completed mastery, and ordinary completed goals receive no review due dates. Learning units are represented and validated but have no runtime effect yet; B9 retires the former whole-unit access profile in the target model. Direct assessment access remains under its task, authentication, scope, and session contract; no code migration is claimed here. Time planning stays separate."
+        "de": "Der Memory-Zieltyp wird durch einen bestandenen verifizierten Abruf jeder erforderlichen Karte abgeschlossen, und sein Ergebnis bleibt aus diesen Kartenergebnissen abgeleitet; Wiederholungsfälligkeit ist keine Rücknahme abgeschlossener Mastery. Gewöhnliche abgeschlossene Ziele erhalten keine solche Fälligkeit. Units sind dargestellt und validiert; zur Laufzeit liest sie nur der standardmäßig ausgeschaltete hessische E.1-Pilot; B9 hebt das frühere Ganzheits-Zugangsprofil im Zielmodell auf. Direkter Prüfungszugang bleibt unter seinem Aufgaben-, Authentifizierungs-, Scope- und Sitzungsvertrag erhalten; keine Codeumstellung wird hier behauptet. Zeitplanung bleibt gesondert.",
+        "en": "The memory goal type is completed by a passed verified recall of every required card, and its result stays derived from these card results; review due dates never revoke completed mastery, and ordinary completed goals receive no review due dates. Learning units are represented and validated; at runtime only the Hessian E.1 pilot, off by default, reads them; B9 retires the former whole-unit access profile in the target model. Direct assessment access remains under its task, authentication, scope, and session contract; no code migration is claimed here. Time planning stays separate."
       },
       "milestone": {
         "de": "`DOKUMENT`/`KONZEPT`/`OPTIONAL`",

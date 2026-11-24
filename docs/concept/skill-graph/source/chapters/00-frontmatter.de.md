@@ -1,5 +1,5 @@
 :::titlebox {title="Geltung dieser Fassung"}
-**Stand 19. November 2026.** Die am 4. und 11. November bestätigte Anerkennungsregel gilt. Sie bestimmt, wie Lernergebnisse und gültig anerkannte Kompetenzen die nächsten Lernziele und den Abschluss beeinflussen. Die Abschnitte~@ref{sec:state}, @ref{sec:unit-completion} und~@ref{sec:assessment} enthalten die Formeln. Anhang~@ref{sec:implementation} beschreibt den Stand der Software.
+**Stand 24. November 2026.** Die am 4. und 11. November bestätigte Anerkennungsregel gilt. Sie bestimmt, wie Lernergebnisse und gültig anerkannte Kompetenzen die nächsten Lernziele und den Abschluss beeinflussen. Die Abschnitte~@ref{sec:state}, @ref{sec:unit-completion} und~@ref{sec:assessment} enthalten die Formeln. Anhang~@ref{sec:implementation} beschreibt den Stand der Software.
 
 **Vorschlag für die Fachrunde vom 19. November.** Eine bestandene Einheit könnte ein Gesamturteil auf dem ausgewiesenen Niveau tragen. Für die weitere Planung würde die zuständige Einheit nur ihre fachlich belegten eigenen Inhaltsziele freigeben. Die gesondert gekennzeichneten Abschnitte~@ref{sec:proposal-unit-completion} und~@ref{sec:proposal-unit-assessment} stellen diesen Entwurf zur Diskussion.
 :::

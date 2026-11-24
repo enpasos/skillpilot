@@ -80,6 +80,10 @@
       "en": "**23 November 2026 (experimental goals):** Experimental subject goals are ordinary required targets. Learners use a feasible own investigation or supplied data; only their own performance is credited (Sections~@ref{sec:local-contract} and~@ref{sec:unit-assessment-example})."
     },
     {
+      "de": "**23. November 2026 (Karten und Lerneinheiten, Issue #85):** Karten werden keine Ziele des Graphen. Eine Karte kommt in den Karteikasten, wenn ihr Verständnisziel bestanden oder angerechnet ist, und verlässt ihn endgültig, sobald sie den verifizierten Abruf bestanden hat. Die Karten einer Einheit sind die Karten ihrer atomaren Ziele. Das Deckziel bleibt abgeleitet: Es ist beherrscht, wenn alle Karten des Decks verifiziert sind (Abschnitt~@ref{sec:memory}).",
+      "en": "**23 November 2026 (cards and learning units, issue #85):** Cards do not become goals of the graph. A card enters the box when its understanding goal is passed or credited and leaves it for good once it passes verified recall. The cards of a unit are the cards of its atomic goals. The deck goal stays derived: it is mastered when all cards of the deck are verified (Section~@ref{sec:memory})."
+    },
+    {
       "de": "**23./24. November 2026 (Zuschnitt der hessischen E.1):** E.1 gliedert sich in vier Kindstrukturen in Lernreihenfolge; nur „Freier Fall schwerer Kugeln“ ist eine erklärte Einheit mit eigenem Auftakt. Vier atomare Ziele wurden aus bestehenden herausgelöst; Bezugssysteme und der Geschwindigkeitsvektor beim waagerechten Wurf gehören zu E.3, der Straßenverkehr folgt der Reibung in E.2. Die Teile A–D bleiben Pflicht; die Mehrphasenprüfung ist ohne Nachfolger zurückgezogen. Die am 24. November geprüfte Planungsfreigabe rechnet nur die beschleunigte Bewegung an, über D (Abschnitt~@ref{sec:unit-assessment-example}).",
       "en": "**23/24 November 2026 (Hessian E.1 cut):** E.1 has four child structures in learning order; only “Free fall of heavy balls” is a declared unit with its own opening. Four atomic goals were split out of existing ones; reference frames and the velocity vector of the horizontal projectile belong to E.3, road traffic follows friction in E.2. Parts A–D stay required; the multi-phase exam is retired without a successor. The planning release reviewed on 24 November credits only accelerated motion, through D (Section~@ref{sec:unit-assessment-example})."
     }
@@ -235,8 +239,8 @@
         "en": "Memorization and card due state"
       },
       "spec": {
-        "de": "Der eigene erfolgreiche Abschlussabruf (`RecallPassed`) begründet den Zielabschluss; spätere SRS-Kartenfälligkeit ist kein Mastery-Entzug, und gewöhnliche Ziele erhalten keine Wiederholungsfälligkeit ([GD-D03](@rule{GD-D03})).",
-        "en": "Verified completion recall (`RecallPassed`) establishes memory-goal completion; subsequent SRS card due dates never revoke completed mastery, and ordinary goals carry no review-due expiry ([GD-D03](@rule{GD-D03}))."
+        "de": "Der bestandene verifizierte Abruf jeder erforderlichen Karte (`RecallPassed`) begründet den Zielabschluss, der aus den Kartenergebnissen abgeleitet bleibt; eine bestandene Karte verlässt den Karteikasten endgültig, spätere SRS-Kartenfälligkeit ist kein Mastery-Entzug, und gewöhnliche Ziele erhalten keine Wiederholungsfälligkeit ([GD-D03](@rule{GD-D03})).",
+        "en": "Verified recall of every required card (`RecallPassed`) establishes memory-goal completion, which stays derived from the card results; a passed card leaves the box for good, subsequent SRS card due dates never revoke completed mastery, and ordinary goals carry no review-due expiry ([GD-D03](@rule{GD-D03}))."
       },
       "repoStatus": {
         "de": "Die ältere Fälligkeits-Sollformel ist überholt; eine historische Ableitung allein aus Abrufflags in `useSrsMastery.ts` beweist noch nicht den vollständigen Laufzeitvertrag über alle Pfade.",
