@@ -191,7 +191,10 @@ export const clearDeletedLearnerBrowserState = (
   skillpilotId: string,
 ) => {
   const id = requireSkillpilotId(skillpilotId)
-  const wasCurrentLearner = local.getItem('skillpilot_id') === id
+  // The deleted learner may be the access this browser remembers or the one of this tab.
+  const wasRememberedLearner = local.getItem('skillpilot_id') === id
+  const wasTabLearner = session.getItem('skillpilot_id') === id
+  const wasCurrentLearner = wasRememberedLearner || wasTabLearner
 
   removeKeysWithPrefixes(local, [
     `srs_state_${id}_`,
@@ -204,10 +207,14 @@ export const clearDeletedLearnerBrowserState = (
   removeMatchingCampaignEvents(local, id)
   removeMatchingTrainerStudents(local, id)
 
+  if (wasTabLearner) session.removeItem('skillpilot_id')
+  if (wasRememberedLearner) local.removeItem('skillpilot_id')
   if (wasCurrentLearner) {
-    local.removeItem('skillpilot_id')
-    local.removeItem('skillpilot_role')
-    local.removeItem('skillpilot_learner_landscape')
+    // Another learner's remembered access keeps its role and curriculum.
+    if (!local.getItem('skillpilot_id')) {
+      local.removeItem('skillpilot_role')
+      local.removeItem('skillpilot_learner_landscape')
+    }
     session.removeItem('skillpilot_ui_session_id')
   }
   if (session.getItem('skillpilot_openai_mcp_eligibility_confirmed') === id) {

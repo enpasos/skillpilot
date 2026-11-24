@@ -524,14 +524,26 @@ try {
   const claudeStart = returning.page.getByTestId('claude-plugin-start')
   await claudeStart.waitFor()
   assert(await claudeStart.isEnabled(), 'the completed setup offers the working Claude beta')
+  // Continuing with an already complete setup brings the start action into view.
+  await returning.page.waitForFunction(() => {
+    const start = document.querySelector('[data-testid="claude-plugin-start"]')
+    if (!start) return false
+    const box = start.getBoundingClientRect()
+    return box.top >= 0 && box.bottom <= window.innerHeight
+  })
   const providerChoice = returning.page.getByTestId('coach-provider-choice')
   assert(await providerChoice.getByRole('radio', { name: /Claude-Lerncoach/u }).isChecked(),
     'Claude remains the default provider')
   assert(await providerChoice.getByRole('radio', { name: /ChatGPT Desktop/u }).count() === 1,
     'ChatGPT Desktop is selectable in the normal authored start flow')
+  const claudeStartText = await returning.page.getByTestId('claude-v1-start-options').textContent() ?? ''
   assert(
-    (await returning.page.getByTestId('claude-v1-start-options').textContent())?.includes('warte einen Moment'),
-    'the Claude start gives the practical voice-pause hint instead of rejecting voice mode',
+    !claudeStartText.includes('Voice') && claudeStartText.includes('ab 18 Jahren'),
+    'the compact Claude start keeps the age notice and leaves voice-mode guidance to the FAQ',
+  )
+  assert(
+    await providerChoice.getByRole('radio', { name: /Claude-Lerncoach.*Voice-Mode/u }).count() === 1,
+    'the Claude choice still names voice mode as available',
   )
   assert(
     returning.apiMetrics.resumeRequests === 1,
@@ -671,8 +683,42 @@ try {
   const compactButtons = returning.page.getByRole('button', { name: /^Ändern:/u })
   await compactButtons.first().waitFor()
   assert(
-    await compactButtons.count() === 2,
-    'a preconfigured returning learner gets exactly two compact setup disclosures',
+    await compactButtons.count() === 3,
+    'a preconfigured returning learner gets all three completed setup steps as compact disclosures',
+  )
+  const idCard = returning.page
+    .getByRole('heading', { name: 'SkillPilot-ID festlegen' })
+    .locator('xpath=ancestor::section[1]')
+  const idSummary = await idCard.locator('p').first().textContent() ?? ''
+  assert(
+    idSummary.includes('Bestätigt')
+      && idSummary.includes('11111111…1111')
+      && !idSummary.includes(existingLearnerId),
+    'the compact ID step confirms the learner with a short form of the SkillPilot ID',
+  )
+  assert(
+    await idCard.getByRole('button', { name: 'Ändern: SkillPilot-ID festlegen' })
+      .getAttribute('aria-expanded') === 'false'
+      && !await returning.page.getByLabel('Deine SkillPilot-ID').isVisible(),
+    'the confirmed ID step starts collapsed, so the start step follows directly',
+  )
+  await idCard.getByRole('button', { name: 'Ändern: SkillPilot-ID festlegen' }).click()
+  assert(
+    await returning.page.getByLabel('Deine SkillPilot-ID').inputValue() === existingLearnerId
+      && await idCard.getByRole('button', { name: 'Daten & SkillPilot-ID' }).isVisible(),
+    'reopening the ID step restores the full ID field and its data management',
+  )
+  await idCard.getByRole('button', { name: 'Einklappen: SkillPilot-ID festlegen' }).click()
+  const cockpitStart = returning.page.getByTestId('learner-cockpit-start')
+  assert(
+    await cockpitStart.getByRole('heading', { name: 'Cockpit: Überblick und Einstellungen' }).isVisible()
+      && await cockpitStart.getByRole('link', { name: 'Cockpit öffnen' }).getAttribute('target') === '_blank',
+    'the start step offers the Cockpit separately as overview and settings',
+  )
+  assert(
+    await returning.page.getByRole('button', { name: /Lernen mit Claude starten/u }).isVisible()
+      && (await cockpitStart.textContent())?.includes('Gelernt wird mit dem Lerncoach'),
+    'the coach start is named as the way to learn, and the Cockpit says so too',
   )
   const curriculumCard = returning.page
     .getByRole('heading', { name: 'Curriculum wählen' })
@@ -698,13 +744,17 @@ try {
     'Alle Bundesländer',
     'Sekundarstufe I und II',
     'Mathematik',
-    '+1 weitere Angabe',
+    'Physik',
   ]) {
     assert(
       personalSummary.includes(selection),
       `the compact personal curriculum shows ${selection}`,
     )
   }
+  assert(
+    !/\+\d|weitere Angabe/u.test(personalSummary),
+    'the compact personal curriculum names every selected parameter instead of counting hidden ones',
+  )
   assert(
     !await curriculumCard.locator('select').isVisible()
       && !await personalCard.getByRole('button', { name: /Bundesland auswählen ändern/u }).isVisible(),
@@ -915,6 +965,120 @@ try {
   )
 
   await context.close()
+
+  // The learner decides whether this browser remembers the SkillPilot ID.
+  const retentionContext = await browser.newContext({ locale: 'de-DE' })
+  await retentionContext.addInitScript((termsVersion) => {
+    localStorage.setItem('skillpilot_lang', 'de')
+    localStorage.setItem('skillpilot_terms_accepted_version', termsVersion)
+  }, CURRENT_TERMS_VERSION)
+  // Stand-in for the Cockpit document only; module requests must reach the test server.
+  await retentionContext.route((url) => url.pathname === '/learner', (route) => route.fulfill({
+    status: 200,
+    contentType: 'text/html',
+    body: '<!doctype html><title>Cockpit</title>',
+  }))
+  const storedId = (page: Page) => page.evaluate(() => ({
+    remembered: localStorage.getItem('skillpilot_id'),
+    tab: sessionStorage.getItem('skillpilot_id'),
+  }))
+
+  const secure = await openFreshSetupPage(retentionContext, baseUrl)
+  await secure.page.getByLabel('Deine SkillPilot-ID').fill(existingLearnerId)
+  const retention = secure.page.getByTestId('skillpilot-id-retention')
+  assert(
+    await retention.getByRole('radio', { name: /^Sicher/u }).isChecked()
+      && !await retention.getByRole('radio', { name: /^Bequem/u }).isChecked(),
+    'a newly entered ID starts with the secure choice',
+  )
+  await continueToCompletedSetup(secure.page)
+  const secureIdCard = secure.page
+    .getByRole('heading', { name: 'SkillPilot-ID festlegen' })
+    .locator('xpath=ancestor::section[1]')
+  await secureIdCard.getByRole('button', { name: 'Ändern: SkillPilot-ID festlegen' }).waitFor()
+  assert(
+    (await secureIdCard.locator('p').first().textContent())?.includes('Sicher: nur in diesem Tab'),
+    'the collapsed ID step names the secure choice',
+  )
+  const afterSecureConfirm = await storedId(secure.page)
+  assert(
+    afterSecureConfirm.remembered === null && afterSecureConfirm.tab === null,
+    'confirming a secure ID stores it nowhere before a start',
+  )
+  const [secureCockpit] = await Promise.all([
+    secure.page.waitForEvent('popup'),
+    secure.page.getByTestId('learner-cockpit-start').getByRole('link').click(),
+  ])
+  await secureCockpit.waitForLoadState('domcontentloaded')
+  const afterSecureStart = await storedId(secure.page)
+  assert(
+    afterSecureStart.remembered === null && afterSecureStart.tab === existingLearnerId,
+    'a secure start keeps the ID with the tab and out of the durable browser storage',
+  )
+  assert(
+    (await storedId(secureCockpit)).tab === existingLearnerId,
+    'the Cockpit tab opened from a secure start receives the access',
+  )
+  await secureCockpit.close()
+  const unrelatedTab = await retentionContext.newPage()
+  await unrelatedTab.goto(baseUrl)
+  const unrelated = await storedId(unrelatedTab)
+  assert(
+    unrelated.remembered === null && unrelated.tab === null,
+    'another tab of the same browser finds no access after a secure start',
+  )
+  await unrelatedTab.close()
+
+  await secureIdCard.getByRole('button', { name: 'Ändern: SkillPilot-ID festlegen' }).click()
+  await retention.getByRole('radio', { name: /^Bequem/u }).check()
+  await secure.page.waitForFunction(
+    (learnerId) => localStorage.getItem('skillpilot_id') === learnerId
+      && sessionStorage.getItem('skillpilot_id') === null,
+    existingLearnerId,
+  )
+  assert(
+    (await secureIdCard.locator('p').first().textContent())?.includes('Bequem: im Browser gemerkt'),
+    'the ID step names the convenient choice',
+  )
+  assert(
+    secure.browserErrors.length === 0,
+    `secure choice browser errors:\n${secure.browserErrors.join('\n')}`,
+  )
+  await secure.page.close()
+
+  const laterVisit = await retentionContext.newPage()
+  laterVisit.setDefaultTimeout(10_000)
+  const laterErrors: string[] = []
+  laterVisit.on('pageerror', (error) => laterErrors.push(error.message))
+  const laterMetrics = await installApi(laterVisit)
+  await laterVisit.goto(baseUrl)
+  await laterVisit.getByTestId('public-landing-action-learning').click()
+  await laterVisit.getByRole('button', { name: 'Ändern: SkillPilot-ID festlegen' }).waitFor()
+  await laterVisit.getByTestId('claude-plugin-start').waitFor()
+  assert(
+    laterMetrics.resumeRequests === 1,
+    'a remembered ID continues with exactly one resume and no further click',
+  )
+  const laterIdCard = laterVisit
+    .getByRole('heading', { name: 'SkillPilot-ID festlegen' })
+    .locator('xpath=ancestor::section[1]')
+  assert(
+    (await laterIdCard.locator('p').first().textContent())?.includes('Bequem: im Browser gemerkt'),
+    'a later visit shows that this browser remembers the ID',
+  )
+  await laterIdCard.getByRole('button', { name: 'Ändern: SkillPilot-ID festlegen' }).click()
+  await laterVisit.getByTestId('skillpilot-id-retention').getByRole('radio', { name: /^Sicher/u }).check()
+  assert(
+    (await storedId(laterVisit)).remembered === null,
+    'switching back to secure removes the remembered ID at once',
+  )
+  assert(
+    await laterVisit.getByLabel('Deine SkillPilot-ID').inputValue() === existingLearnerId
+      && await laterVisit.getByTestId('claude-plugin-start').isEnabled(),
+    'switching to secure keeps the confirmed setup of the open page usable',
+  )
+  assert(laterErrors.length === 0, `later visit browser errors:\n${laterErrors.join('\n')}`)
+  await retentionContext.close()
 } finally {
   try {
     await browser?.close()

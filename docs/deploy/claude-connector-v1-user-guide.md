@@ -56,7 +56,7 @@ learning session.
    The link enters the shared SkillPilot web start.
 2. Visibly choose or load your SkillPilot ID there and confirm the curriculum
    and Personal Curriculum.
-3. Explicitly choose **Start with Claude** in the final step. You can choose
+3. Explicitly choose **Start learning with Claude** in the final step. You can choose
    again between ChatGPT and Claude at every start.
 4. SkillPilot opens Claude Web with the prepared start message already filled
    into the composer. Review and deliberately send it; there is nothing to copy

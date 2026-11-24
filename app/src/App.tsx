@@ -10,6 +10,11 @@ import { useTranslation } from './hooks/useTranslation'
 import { useLanguage } from './contexts/LanguageContext'
 import { clearUnitStudyIntent } from './utils/unitStudyIntent'
 import { sanitizeSkillpilotId } from './utils/skillpilotId'
+import {
+  clearActiveSkillpilotId,
+  readActiveSkillpilotId,
+  readTabSkillpilotId,
+} from './utils/skillpilotIdBrowserStorage'
 import { startCockpitRequests } from './utils/cockpitStartRequests'
 import { getSkillPilotOverviewCopy } from './utils/skillPilotOverviewCopy'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isRepositoryGymnasiumFramework } from './utils/curriculumDisplay'
@@ -173,12 +178,13 @@ const App: React.FC = () => {
   const [role, setRole] = useState<Role | null>(() => {
     return (localStorage.getItem('skillpilot_role') as Role) || null
   })
+  // The access of this tab: its own ID first, then the one the browser remembers.
   const [skillpilotId, setSkillpilotId] = useState(() => {
-    return sanitizeSkillpilotId(localStorage.getItem('skillpilot_id'))
+    return readActiveSkillpilotId(localStorage, sessionStorage)
   })
   const [hasSession, setHasSession] = useState(() => {
     const storedRole = localStorage.getItem('skillpilot_role')
-    const storedId = sanitizeSkillpilotId(localStorage.getItem('skillpilot_id'))
+    const storedId = readActiveSkillpilotId(localStorage, sessionStorage)
     if (!storedRole) return false
     if (storedRole === 'learner') return !!storedId
     return true
@@ -624,7 +630,7 @@ const App: React.FC = () => {
 
   const handleLogout = () => {
     logoutInProgressRef.current = true
-    localStorage.removeItem('skillpilot_id')
+    clearActiveSkillpilotId(localStorage, sessionStorage)
     localStorage.removeItem('skillpilot_role')
     localStorage.removeItem('skillpilot_learner_landscape')
     sessionStorage.removeItem('skillpilot_ui_session_id')
@@ -739,7 +745,10 @@ const App: React.FC = () => {
     setSkillpilotId(sanitizedId)
     setHasSession(true)
     setRole(activeRole) // Explicitly set role to avoid redirect race
-    localStorage.setItem('skillpilot_id', sanitizedId)
+    // An access the learner keeps with this tab only stays out of the durable storage.
+    if (activeRole !== 'learner' || readTabSkillpilotId(sessionStorage) !== sanitizedId) {
+      localStorage.setItem('skillpilot_id', sanitizedId)
+    }
     localStorage.setItem('skillpilot_role', activeRole)
     const effectiveLandscapeId = activeRole === 'trainer'
       ? (landscapeId?.trim() ?? '')
