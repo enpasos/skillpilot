@@ -2679,6 +2679,15 @@ LLM/learning-coach prompts should reinforce that:
   transports that temporary reference automatically; the learner never copies
   or re-enters it, and the permanent SkillPilot ID never enters the
   conversation.
+- Since 24 November 2026 every Claude-lane coach tool carries
+  `destructiveHint: false`. Claude checks a tool that its connector marks as
+  destructive before every call, even when the learner set it to "Always
+  allow". That check refused `set_skillpilot_mastery` after a passed exam
+  until the learner asked for the save in the chat. No coach tool deletes
+  learner data; mark a tool destructive only if it does. A standing request to
+  save in the prepared start message was tested in the real host and did not
+  help. Details:
+  `docs/deploy/claude-connector-v1-concept.md`, section 8.3.
 
 ---
 

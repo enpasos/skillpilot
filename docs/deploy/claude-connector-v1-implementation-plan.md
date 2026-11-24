@@ -511,19 +511,24 @@ Vorgesehene Namen und Annotationen:
 | MCP-Tool | Klasse | Annotation | Fachliche Grenze |
 | --- | --- | --- | --- |
 | `get_skillpilot_coach_context` | read | `readOnlyHint: true` | projizierter aktueller Zustand plus vom Backend formulierter Planstatus und nicht-numerische Fachzeilen, ohne Planzahlen, ohne Plan-/Landscape-IDs und ohne versteckte Mutation |
-| `resume_skillpilot_learning_plan` | write | `destructiveHint: true` | nur ohne aktives Ziel und bei autoritativem `resumeAvailable`; Backend wählt das Ziel und liefert den vollständigen kanonischen Kontext |
-| `switch_skillpilot_learning_plan_subject` | write | `destructiveHint: true` | exakt ein lokalisierter `subject`-Wert aus dem aktuellen Tagesplankontext; Backend parkt ein unfertiges Ziel und wählt das fällige Ziel dieses Fachs, ohne Plan-/Landscape-/Focus-/Goal-ID vom Modell |
+| `resume_skillpilot_learning_plan` | write | `destructiveHint: false` | nur ohne aktives Ziel und bei autoritativem `resumeAvailable`; Backend wählt das Ziel und liefert den vollständigen kanonischen Kontext |
+| `switch_skillpilot_learning_plan_subject` | write | `destructiveHint: false` | exakt ein lokalisierter `subject`-Wert aus dem aktuellen Tagesplankontext; Backend parkt ein unfertiges Ziel und wählt das fällige Ziel dieses Fachs, ohne Plan-/Landscape-/Focus-/Goal-ID vom Modell |
 | `render_skillpilot_goal_visualization` | read + App | `readOnlyHint: true` | freigegebenes Bild nur für das exakte aktive Ziel und den aktuellen Zustand |
 | `start_skillpilot_memory_practice` | read + App | `readOnlyHint: true` | private vollständige Fälligkeitsauswahl, keine Mastery-Mutation |
 | `review_skillpilot_memory_practice_card` | app-only write | `destructiveHint: false` | exakt angezeigte Karte; nur Wiederholungsplan, niemals Mastery |
 | `get_skillpilot_navigation_options` | read | `readOnlyHint: true` | aktuelle Level-3-Optionen, kein Level 2 |
-| `set_skillpilot_focus` | write | `destructiveHint: true` | exakt eine frisch publizierte Focus-Option |
-| `set_skillpilot_active_goal` | write | `destructiveHint: true` | erlaubtes aktives Ziel, expliziter Redirect |
-| `set_skillpilot_mastery` | write | `destructiveHint: true` | aktives Ziel, Orientation-/Exam-Regeln |
+| `set_skillpilot_focus` | write | `destructiveHint: false` | exakt eine frisch publizierte Focus-Option |
+| `set_skillpilot_active_goal` | write | `destructiveHint: false` | erlaubtes aktives Ziel, expliziter Redirect |
+| `set_skillpilot_mastery` | write | `destructiveHint: false` | aktives Ziel, Orientation-/Exam-Regeln |
 | `start_skillpilot_verified_recall` | read | `readOnlyHint: true` | servergewählter vollständiger Batch ohne Zustandsmutation |
 | `get_skillpilot_verified_recall_answers` | sensitive read | `readOnlyHint: true` | capability-gebundene Gesamtantworten |
-| `record_skillpilot_verified_recall_results` | write | `destructiveHint: true` | ein vollständiger atomarer Befund |
+| `record_skillpilot_verified_recall_results` | write | `destructiveHint: false` | ein vollständiger atomarer Befund |
 | `get_skillpilot_exam_evaluation` | sensitive read | `readOnlyHint: true` | freigegebene Lösung/Rubrik für aktives Exam |
+
+Seit dem 24. November 2026 trägt kein Coach-Tool mehr `destructiveHint: true`.
+Kein Tool löscht Lernerdaten, und Claude prüft ein als destruktiv markiertes
+Tool vor jedem Aufruf, auch wenn es auf „Immer erlauben“ steht. Die Begründung
+steht im [Konzept, Abschnitt 8.3](claude-connector-v1-concept.md#83-anthropic-annotations).
 
 Jedes Tool erhält zusätzlich einen menschlich lesbaren `title`. Namen bleiben
 unter 64 Zeichen. Beschreibungen erklären ausschließlich Zweck,

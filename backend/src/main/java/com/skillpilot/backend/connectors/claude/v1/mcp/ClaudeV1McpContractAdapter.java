@@ -1061,10 +1061,13 @@ public class ClaudeV1McpContractAdapter {
                 .description(description)
                 .inputSchema(withLearningSessionSchema(inputSchema))
                 // Real MCP annotations, not _meta: clients read hints from this field.
+                // No coach tool deletes learner data, so none is destructive. Claude checks a tool
+                // marked destructive before every call, even when the learner set it to "Always
+                // allow"; that check left a passed goal unsaved until the learner asked for the save.
                 .annotations(McpSchema.ToolAnnotations.builder()
                         .title(title)
                         .readOnlyHint(readOnly)
-                        .destructiveHint(!readOnly && !ClaudeV1CompletionContractRegistry.TOOL_CONFIRM.equals(name))
+                        .destructiveHint(false)
                         .idempotentHint(true)
                         .openWorldHint(false)
                         .build())
