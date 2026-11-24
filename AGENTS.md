@@ -655,11 +655,42 @@ pedagogical acceptance of E.1 and subsequent acceptance of the Hessian template.
 assessment pilot enabled, a section selection contributes the goals required
 by its applicable assessment policy. This applies when reading an existing
 plan as well as creating a new one. An old E.1 section selection that captured
-the voluntary horizontal-throw exam contributes 16 positions instead of 17
-in the GK example. An explicit selection of that exam still counts, including
+the voluntary horizontal-throw exam contributes 20 positions instead of 21
+in the Sek II GK example since the E.1 cut described below (19 instead of 20
+in the cross-stage view). An explicit selection of that exam still counts, including
 in older plans that stored it only once across overlapping blocks. Stored
 selections, assessment receipts and individual mastery are preserved. With
 the pilot disabled, plans use their stored goal lists.
+
+**E.1 cut, 23 and 24 November 2026.** The Product Owner accepted a cut of the
+Hessian section E.1 into four child structures in learning order:
+"Gleichförmige Bewegung", "Freier Fall schwerer Kugeln", "Kugel und Feder,
+Luft und Vakuum" and "Zwei Bewegungen zugleich". Only "Freier Fall schwerer
+Kugeln" is a declared unit with its own opening. The other three are view
+structures until they have opening goals and coverage reviews. Reference
+frames and the velocity vector of the horizontal throw belong to E.3. Road
+traffic follows friction in E.2 and has no canonical friction prerequisite,
+because Bavaria assesses it kinematically in Jahrgangsstufe 10. The cut split
+four atomic goals out of existing ones: the t-v diagram with displacement as
+area, the time-position and time-velocity laws, the fall of light and heavy
+bodies, and the velocity vector of the throw.
+
+Parts A–D remain the four required parts of the E.1 assignment. The voluntary
+additions are the horizontal-throw exam and the own task with two free-fall
+series. On 24 November the Product Owner approved the return of the
+multiphase exam to E.1. Two independent review rounds then found that its
+edition evidences no whole goal, so it is retired in the historical container
+without a successor and without any transfer of results. Its voluntary
+Leistungskurs place after the fourth child is reserved for an edition that
+independent review accepts, under a new assessment id. The planning release
+reviewed on 24 November credits only the accelerated-motion goal from part D.
+
+Three findings of that review are deferred to a follow-up package on
+preparation chains: the Hamburg routes to the motion-law goal and the Saxon
+rows on energy conservation and radial force are supported by the official
+text, but the canonical preparation of these goals is stronger than what the
+lower stage of the Land supplies. Until that package right-sizes the chains,
+these goals are not activated as lower-stage targets there.
 
 The Product Owner confirmed **Lerneinheit** (English **learning unit**,
 conceptual name `LearningUnit`) on **4 November 2026**. This replaces the former
