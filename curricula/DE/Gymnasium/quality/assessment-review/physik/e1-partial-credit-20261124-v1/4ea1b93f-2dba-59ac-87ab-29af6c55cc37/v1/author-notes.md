@@ -1,0 +1,7 @@
+# NVX: Autorenkandidat, keine Freigabe
+
+Direkte Abdeckung bleibt ausschließlich VEC. Alle fünf Zeilen und die auf der Aufgabe gedruckten Maxima4/4/3/2/3 bleiben bestehen. Eine vollständig leere Zeile verliert mindestens2BE; bei15/16 kann deshalb keine alte zentrale Zeile ganz kompensiert werden.15 folgt aus der kleinsten gedruckten2-BE-Zeile und einer tolerierten1-BE-Unschärfe;14 würde das vollständige Auslassen von Teil4 erlauben. Das ist eine aufgabenbezogene Grenze, keine globale Wahl max−1.
+
+Die Betragsbestimmung erhält zwei eigenständige Ansatzpunkte und einen gemeinsamen Ergebnispunkt. Dies unterscheidet fehlenden Rechennachweis von einem einzelnen arithmetischen Fehler, ohne den Betrag oder die Vektorbildung zu erlassen. Die Komponenten, Maßstäbe und Richtung werden weiterhin numerisch/graphisch geprüft. Eine falsche vx-/vy-Komponente verliert ihren Ursprungspunkt; konsistente spätere Konstruktionen werden nicht erneut bestraft. Geometrische Pfeile allein ersetzen keine in Teil3 verlangte Berechnung.
+
+Keine Aufgabenbytes oder physikalischen Lösungswerte geändert; nur Bewertungsanhang und scoring. Alte Release-Notiz ist keine Freigabe des Kandidaten. Das vollständige Komponenten-/Konstruktions-/Betrags-/Richtungsziel sowie die Aufgabenleistung im zugewiesenen Wagenbezug bleiben beansprucht; keine eigene Framewahl, kein Planungskredit. SVG ist im jeweiligen vollständigen Antworttext enthalten, nicht nur als Behauptung oder externe Referenz.
