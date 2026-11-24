@@ -632,8 +632,8 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
 ])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 490,
-  curricularArea: 113,
-  practiceAssessment: 246,
+  curricularArea: 112,
+  practiceAssessment: 247,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
@@ -1240,7 +1240,12 @@ const mpReceipt = readJson<{ status: string; currentGoalPath: string; currentRaw
 assert.equal(mpReceipt.status, 'APPLIED_REVIEWED_CONTENT_WITH_OPEN_CQR203_COVERAGE_GATE')
 assert.equal(sha256(readFileSync(resolve(repoRoot, mpReceipt.currentGoalPath), 'utf8')), mpReceipt.currentRawSha256)
 const mpCurrent = rawGoalById.get(mpId)!
-assert.deepEqual(mpCurrent, readJson(mpReceipt.currentGoalPath), 'MP must match the exact dual-reviewed candidate')
+assert.deepEqual(mpCurrent, {
+  ...readJson<Record<string, unknown>>(mpReceipt.currentGoalPath),
+  extendedData: { applicabilityProjection: 'excluded', applicabilityMappingInheritance: 'boundary' },
+}, 'historical passes retain the entire original reviewed exam and scoring contract')
+const mpParents = rawLandscape.goals.filter(goal => Array.isArray(goal.contains) && goal.contains.includes(mpId))
+assert.deepEqual(mpParents.map(goal => goal.id), ['151edbf8-eb68-5ef7-8786-43e56a281b0b'])
 assert.deepEqual(mpCurrent.requires, ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', 'd6dc0e02-831d-4894-a61a-852bcc74f147'])
 const mpExam = mpCurrent.examData as ExamData
 assert.deepEqual(mpExam.coveredGoalIds, [])
@@ -3381,9 +3386,10 @@ const currentPhysics = rawLandscape as unknown as SkillLandscape
 const currentSekIIProfile = createRouteProfiles(repoRoot).find(profile => profile.profileId === 'canonical-physics-sek2')!
 const currentTerminalRelease = evaluateRouteProfile(currentPhysics, currentSekIIProfile, applicabilityCompilation)
   .rules.find(rule => rule.id === 'CQR-203')!
-assert.equal(currentTerminalRelease.status, 'warn', 'the actual native terminal-coverage gate stays open for honest MP practice coverage')
-assert(currentTerminalRelease.details?.some(detail => detail.includes(mpId) && detail.includes('missing coveredGoalIds')),
-  'the current gate must identify MP’s actual missing whole-goal claim')
+assert.equal(currentTerminalRelease.status, 'pass', 'every active terminal assessment must carry reviewed whole-goal coverage')
+assert.equal(currentTerminalRelease.metrics?.releaseCoverageIncompleteExamData, 0)
+assert.equal(currentTerminalRelease.metrics?.releasedCoverageCompleteExamData, 111)
+assert.equal(currentTerminalRelease.metrics?.terminalAutonomyGoals, currentTerminalRelease.metrics?.releasedCoverageCompleteExamData)
 
 const legacySelectedGoalIds = currentPhysics.goals.filter(legacyRouteProfile.goalSelector).map(goal => goal.id)
 const currentSelectedGoalIds = currentPhysics.goals.filter(currentRouteProfile.goalSelector).map(goal => goal.id)

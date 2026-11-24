@@ -118,9 +118,8 @@ const sectionPolicy = e1Material.sectionAssessmentPolicy
 const multiphaseGoal = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
 const freeFallSeriesGoal = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
 assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4', freeFallSeriesGoal])
-// The reviewed model check returns to the E.1 parent, voluntarily in each LK contract view.
-assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView, Object.fromEntries(
-  [...e1Views.values()].filter(view => view.scope.courseProfile === 'LK').map(view => [view.viewId, [multiphaseGoal]])))
+assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView ?? {}, {},
+  'the LK scope also has exactly the two common voluntary offers after the historical exam is retired')
 const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries.map(row => row.landscape as SkillLandscape)
 const sectionGraph = new UnitGraph(currentCatalog as UnitGraphLandscape[])
 const projectionEntries = prepareLandscapeEntries(currentCatalog)
@@ -181,7 +180,7 @@ assert.throws(() => validateSectionAssessmentPolicy({
   ...e1Material, assessmentContract: { ...contract, parts: amendedParts },
   sectionAssessmentPolicy: { ...sectionPolicy, requiredPartsFingerprint: fingerprintCurrentCurriculumDocument(amendedParts) },
 }, e1Views, sectionGraph, projectionEntries), /missing \[unoffered-required-assessment\]/)
-// A released E.2 exam is still outside this section, and the LK-only exam cannot be common to every view.
+// Out-of-section and retained assessments cannot become voluntary section offers.
 for (const extra of ['unknown-goal', contract.parts[0].goalId, '4a2bf015-052b-4af0-aed7-324259fa1a8a',
   '22561c66-3957-5d55-b07a-25de1f359930', multiphaseGoal]) {
   assert.throws(() => checkSectionPolicy({ ...sectionPolicy, voluntaryAssessmentGoalIds: [extra] }), /released additional assessment/)
@@ -302,7 +301,7 @@ for (const [id, spec] of hesseChildAssessments) {
 }
 // The four E.1 child units of the cut accepted on 23 Nov 2026, each with its closing checks.
 const hesseIntroductoryAssessmentPlaces = {
-  'physics-e1-motion': [multiphaseGoal],
+  'physics-e1-motion': [],
   'physics-e1-uniform-motion': ['ee7d5f3d-858f-59d6-89b0-e5a7f437f458'],
   'physics-e1-accelerated-and-free-fall': ['f41e4e30-794e-5ce4-ba5e-cc72712cd691'],
   'physics-e1-air-and-vacuum': ['c933b7d2-edcb-5747-9378-9762659f260a'],
@@ -505,6 +504,8 @@ const counts = () => ({ viewCount, fermiScopeViewCount, practiceTaskPairs, abitu
   kinematicsTaskPairs, astronomyTaskPairs })
 const newDurationCounts = Object.fromEntries(Object.keys(counts()).map(key => [key, 0])) as ReturnType<typeof counts>
 const newLandCounts = { ...newDurationCounts }
+const precedingMultiphaseOffers = new Set<string>(readRepoJson('curricula/DE/Gymnasium/quality/assessment-review/physik/e1-multiphase-disposition-20261124/old-offer-views.actual.json').previousVisibleViewIds)
+assert.equal(precedingMultiphaseOffers.size, 32)
 const jurisdictions = new Set<string>()
 for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith('.view.json')).sort()) {
   const view = JSON.parse(readFileSync(resolve(viewDirectory, filename), 'utf8')) as CompositionView
@@ -583,6 +584,8 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     `${view.viewId}: the Fermi assessment must follow exactly its competency's target scope`,
   )
   fermiScopeViewCount++
+  assert(!visible.has('2b9e565f-d9b4-5e23-b5b7-b7977cecff06'),
+    `${view.viewId}: the retired 18/30 exam must stay outside learning offers`)
   assert(!visible.has(retainedVerticalAssessmentId),
     `${view.viewId}: the retained mixed task must not become an active assessment target`)
   astronomyTaskPairs += assertAstronomyTargetVisibility(view, visible)
@@ -740,7 +743,13 @@ assertCount('fermiScopeViewCount', 69, 6, 'Check exact Fermi assessment target v
 assert.equal(jurisdictions.size, 14, 'Cover all jurisdictions using these Physics assessment collections.')
 assertCount('kinematicsTaskPairs', 120, 8, 'Both reviewed kinematics assessments must appear in all shared GK/LK exercise views.')
 assertCount('astronomyTaskPairs', 136, 8, 'Every existing ordinary astronomy demand needs its applicable task across all views.')
-assertCount('practiceTaskPairs', 4278, 320,
+// The historical inventory has one withdrawn assessment in 30 original and two
+// additional duration views. Keep all other practice-task obligations pinned.
+const retiredHesseDurationPairs = [...precedingMultiphaseOffers].filter(id => newHesseDurationViewIds.has(id)).length
+assert.equal(retiredHesseDurationPairs, 2)
+const retiredOriginalPairs = precedingMultiphaseOffers.size - retiredHesseDurationPairs
+assert.equal(retiredOriginalPairs, 30)
+assertCount('practiceTaskPairs', 4278 - retiredOriginalPairs, 320 - retiredHesseDurationPairs,
   'Expose every current canonical collection obligation, including the new individual and nested assessments.')
 assertCount('abiturTaskPairs', 480, 32, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
 assertCount('preservedSekITaskPairs', 30, 0, 'Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements.')

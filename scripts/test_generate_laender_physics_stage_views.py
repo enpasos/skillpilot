@@ -106,6 +106,12 @@ def measurement_delta(view, roles):
     return expected
 
 
+RETIRED_MULTIPHASE_ID = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
+RETIRED_MULTIPHASE_OFFER_VIEWS = frozenset(json.loads((
+    authoring.ROOT / "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-multiphase-disposition-20261124/old-offer-views.actual.json"
+).read_text())["previousTargetViewIds"])
+
+
 def retained_authority_seeds(view, roles, baseline):
     """Remove only explicit reviewed additions, then enforce the old authority."""
     allowed_new_task = set()
@@ -138,6 +144,10 @@ def retained_authority_seeds(view, roles, baseline):
     else:
         if not set(variants.values()).isdisjoint(roles["target"] | roles["prerequisiteOnly"]):
             raise AssertionError("A child assessment variant left its reviewed scope")
+    if RETIRED_MULTIPHASE_ID in roles["target"] | roles["prerequisiteOnly"]:
+        raise AssertionError("A historical multiphase assessment is offered again")
+    if view["viewId"] in RETIRED_MULTIPHASE_OFFER_VIEWS:
+        retained = retained | {RETIRED_MULTIPHASE_ID}
     digest = hashlib.sha256(("\n".join(sorted(retained)) + "\n").encode()).hexdigest()
     if digest != baseline["selectedAtomicSha256"]:
         raise AssertionError("Retained source-seed fingerprint changed")

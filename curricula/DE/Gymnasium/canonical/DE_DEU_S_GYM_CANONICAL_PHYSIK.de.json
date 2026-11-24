@@ -7033,7 +7033,6 @@
         "22561c66-3957-5d55-b07a-25de1f359930",
         "72649cf5-893c-5f03-88bd-a2497171d434",
         "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
-        "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
         "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
         "1b432223-3d59-5586-86a9-2214b4844101",
         "879491c0-7153-570b-91f4-c61d9fe8a143",
@@ -7600,7 +7599,11 @@
         "solutionContentEn": "The data are represented by three phases: accelerating from 0 to 6 s, constant speed from 6 to 8 s, and braking from 8 to 10 s.\n\n1. The mean acceleration in phase I is (8.0−0.0)/6.0 = 1.33 m/s². The individual 2 s intervals show decreasing acceleration: 1.6, 1.6 and 0.8 m/s². In phase II v = 8.0 m/s is constant, so a = 0. In phase III a = (4.0−8.0)/2.0 = −2.0 m/s². (7 marks)\n2. Find the area below the piecewise linear velocity-time graph. The five trapezoid areas are (0.0+3.2)/2×2 = 3.2 m; (3.2+6.4)/2×2 = 9.6 m; (6.4+8.0)/2×2 = 14.4 m; (8.0+8.0)/2×2 = 16.0 m; and (8.0+4.0)/2×2 = 12.0 m. Their sum is 55.2 m. (6 marks)\n3. Use the nominal horizontal speed v_x = 8.0 m/s. The fall time is t_F = sqrt(2h/g) = sqrt(2×1.25/9.81) s ≈ 0.505 s. The nominal range is x = v_x t_F ≈ 4.04 m. (7 marks)\n4. Include uncertainties only here. Keep t_F unrounded until the final interval limits are evaluated: t_F ≈ 0.50482 s. Then x_min = (8.0−0.20) m/s×(t_F−0.03 s) ≈ 3.7036 m and x_max = (8.0+0.20) m/s×(t_F+0.03 s) ≈ 4.3855 m. Rounding the limits outward to centimetres gives x in [3.70 m, 4.39 m]. (6 marks)\n5. Two physically justified limits suffice. Examples are neglected air resistance and wind, the idealised transition from driving to flight without rotation or edge losses, and discrete rather than continuous measurement points. (4 marks)"
       },
       "phase": "E",
-      "type": "atomic"
+      "type": "atomic",
+      "extendedData": {
+        "applicabilityProjection": "excluded",
+        "applicabilityMappingInheritance": "boundary"
+      }
     },
     {
       "id": "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
@@ -58055,7 +58058,8 @@
         "8ff2a728-fba3-538e-83e9-69bdd8e1369e",
         "ba29e928-a287-5de7-b3fe-5c8c3731363b",
         "d8442d03-8b7e-54b7-9d9a-dc31ce541daa",
-        "db5f4121-d4b1-5006-b2da-6e76aac72bf5"
+        "db5f4121-d4b1-5006-b2da-6e76aac72bf5",
+        "2b9e565f-d9b4-5e23-b5b7-b7977cecff06"
       ],
       "requires": [],
       "weight": 1,

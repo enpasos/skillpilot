@@ -21,8 +21,8 @@ function currentMaterialReview(file: string) {
   assert.equal(imageHash(record.independentReview.path), record.independentReview.sha256, 'The independent review must match its receipt')
   return record
 }
-const review = currentMaterialReview('mp-lk-parent-offer/guided-entry')
-const regularStudyReview = currentMaterialReview('mp-lk-parent-offer/regular-study')
+const review = currentMaterialReview('mp-retirement-policy-20261124-v1/no_successor/guided-entry')
+const regularStudyReview = currentMaterialReview('mp-retirement-policy-20261124-v1/no_successor/regular-study')
 const practicalReview = currentMaterialReview('individual-experiments')
 assert.deepEqual(practicalReview.scope.exercises, regularStudyReview.scope.exercises)
 assert.equal(practicalReview.scope.mode, 'requiredForRegularLearning')

@@ -504,16 +504,15 @@ class ClaudeV1CompletionRouteIntegrationTest {
 
     private static final String WURF_EXTRA = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4";
     private static final String MULTIPHASE_EXTRA = "2b9e565f-d9b4-5e23-b5b7-b7977cecff06";
-    // The two common E.1 extras remain; the authorized multiphase offering additionally belongs
-    // to LK assignment views and mixed GK+LK selections.
+    // The old multiphase identity is retained as history and is never offered in E.1.
+    // WURF and FFX remain the two active voluntary assessments for every course.
     private static final String FREE_FALL_SERIES_EXTRA = "f41e4e30-794e-5ce4-ba5e-cc72712cd691";
     // E.1 cut (23 Nov 2026): twelve content goals (reference frames and road traffic left; the t-v
     // diagram, the motion laws and the light/heavy fall comparison joined).
     private static final int E1_CONTENT_GOALS = 12;
 
     private static List<String> hessianVoluntaryAssessmentIds(String course) {
-        return "GK".equals(course) ? List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA)
-                : List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA, MULTIPHASE_EXTRA);
+        return List.of(WURF_EXTRA, FREE_FALL_SERIES_EXTRA);
     }
 
     // E.1 cut (23 Nov 2026): both throw assessments require the throw goal, so the two study
@@ -1575,7 +1574,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         String measurementProtocol = "e0004439-ed34-5caf-858a-6107918224eb";
         String individualProtocolAssessment = "c6e2942d-1ff4-5e86-a52a-4ca4c8568291";
-        String extra = "LK".equals(course) ? MULTIPHASE_EXTRA : WURF_EXTRA;
+        String extra = "LK".equals(course) ? FREE_FALL_SERIES_EXTRA : WURF_EXTRA;
         var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
         var monday = today.with(java.time.DayOfWeek.MONDAY);
         var sunday = monday.plusDays(6);
@@ -1761,7 +1760,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         String section = selectHessianMotionUnit(duration, "SekII", course);
         String profile = "automatic:" + section;
         boolean advanced = !"GK".equals(course);
-        String extra = advanced ? MULTIPHASE_EXTRA : WURF_EXTRA;
+        String extra = advanced ? FREE_FALL_SERIES_EXTRA : WURF_EXTRA;
         var completion = learners.getLearnerState(learnerId).levelCompletion();
         var sections = completion.profileOptions();
         assertThat(sections).filteredOn(option -> profile.equals(option.profileId())).singleElement().satisfies(option -> {
@@ -1777,7 +1776,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(sections.stream().filter(option -> !profile.equals(option.profileId()))
                 .flatMap(option -> option.assessments().stream()).filter(item -> extra.equals(item.goalId())).toList())
                 .isNotEmpty().allMatch(item -> item.voluntary() == null);
-        if (!advanced) {
+        {
             long before = version();
             assertThatThrownBy(() -> sessions.createFirstPartyLaunch(learnerId,
                     new ClaudeV1CoachStartRequest("de", "web-start",
@@ -1793,7 +1792,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         successful(ClaudeV1CompletionContractRegistry.TOOL_CONFIRM,
                 Map.of("receiptCapability", map(context(), "completionContract").get("receiptCapability")));
         String start = choice(context(), "Freiwillige Zusatzprüfung versuchen: "
-                + (advanced ? "Mehrphasenbewegung" : "Waagerechter Wurf"));
+                + landscapeDefinitions.getGoalDefinition(extra).getTitle());
         successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
                 writeArgs("voluntary-start", version(), Map.of("choice", start)));
         assertThat(map(context(), "activeGoal")).containsEntry("id", extra);
@@ -1821,21 +1820,89 @@ class ClaudeV1CompletionRouteIntegrationTest {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"OLD_ID", "LEGACY_ID"})
+    void historicalMultiphasePassNeverRecognizesASuccessorOrAddsModelingCredit(String storedIdentity) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", "LK");
+        var parts = prepareUnitContinuation(section, 4, false);
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest(
+                "selectProfile", "automatic:" + section, null, null, version()));
+        String historicalId = "OLD_ID".equals(storedIdentity)
+                ? "2b9e565f-d9b4-5e23-b5b7-b7977cecff06" : "73cb58ec-6ded-4a35-9809-32aa8bfff1b0";
+        String successorId = "05cfd298-cb80-54c4-a898-b521ef270843";
+        String modeling = "d6dc0e02-831d-4894-a61a-852bcc74f147";
+        var historical = mapper.treeToValue(mapper.readTree(java.nio.file.Path.of(
+                "../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/mp-current/before.goal.json")
+                .toFile()).required("examData"), com.skillpilot.backend.landscape.ExamData.class);
+        assertThat(historical.getScoring().getMaxPoints()).isEqualTo(30);
+        assertThat(historical.getScoring().getPassingPoints()).isEqualTo(18);
+        var revision = AssessmentMaterialRevision.of(historical);
+        transactions.executeWithoutResult(status -> examPasses.record(learnerId, historicalId, revision, 18, 30, 18));
+        var learner = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAndFlush(new Mastery(learner, historicalId, 1.0));
+        var history = examPasses.findForGoals(learnerId, List.of(historicalId));
+        assertThat(history.get(historicalId)).singleElement().satisfies(pass -> {
+            assertThat(pass.earnedPoints()).isEqualTo(18);
+            assertThat(pass.maxPoints()).isEqualTo(30);
+            assertThat(pass.passingPoints()).isEqualTo(18);
+            assertThat(pass.planningCreditBindingIds()).isEmpty();
+        });
+        var before = learners.getLearnerState(learnerId).levelCompletion();
+        assertThat(before.requiredAssessmentCount()).isEqualTo(4);
+        assertThat(before.masteredAssessmentCount()).isEqualTo(4);
+        assertThat(before.unitAssessment().parts()).allMatch(UnitAssessmentResponse.Part::passed);
+        assertThat(before.unitAssessment().planningCreditGoalIds())
+                .containsExactly("e4b38061-1f28-43ad-8371-a3e7c0e81856");
+        assertThat(learners.getMastery(learnerId)).containsEntry(historicalId, 1.0)
+                .doesNotContainKeys(successorId, modeling);
+        assertThat(examPasses.findForGoals(learnerId, List.of(successorId))).isEmpty();
+        assertThat(before.assessments()).noneMatch(item -> "2b9e565f-d9b4-5e23-b5b7-b7977cecff06".equals(item.goalId())
+                || "73cb58ec-6ded-4a35-9809-32aa8bfff1b0".equals(item.goalId()));
+        long prior = version();
+        for (String unavailable : List.of("2b9e565f-d9b4-5e23-b5b7-b7977cecff06", "73cb58ec-6ded-4a35-9809-32aa8bfff1b0")) {
+            assertThatThrownBy(() -> sessions.createFirstPartyLaunch(learnerId,
+                    new ClaudeV1CoachStartRequest("de", "web-start",
+                            new CompletionAssessmentStart("automatic:" + section, unavailable, prior))))
+                    .isInstanceOf(org.springframework.web.server.ResponseStatusException.class).hasMessageContaining("409");
+            assertThat(version()).isEqualTo(prior);
+        }
+        assertThat(before.assessments()).noneMatch(item -> successorId.equals(item.goalId()));
+        assertThatThrownBy(() -> sessions.createFirstPartyLaunch(learnerId,
+                new ClaudeV1CoachStartRequest("de", "web-start",
+                        new CompletionAssessmentStart("automatic:" + section, successorId, prior))))
+                .isInstanceOf(org.springframework.web.server.ResponseStatusException.class).hasMessageContaining("409");
+        assertThat(version()).isEqualTo(prior);
+        assertThat(examPasses.findForGoals(learnerId, List.of(successorId))).isEmpty();
+        assertThat(masteryRepository.findByLearner_SkillpilotId(learnerId)).extracting(Mastery::getGoalKey)
+                .containsExactlyInAnyOrderElementsOf(java.util.stream.Stream.concat(parts.stream(),
+                        java.util.stream.Stream.of(historicalId)).toList());
+        assertThat(examPasses.findForGoals(learnerId, List.of(historicalId))).isEqualTo(history);
+        assertThat(learners.getMastery(learnerId)).containsEntry(historicalId, 1.0).doesNotContainKey(modeling);
+        var after = learners.getLearnerState(learnerId).levelCompletion();
+        assertThat(after.requiredAssessmentCount()).isEqualTo(4);
+        assertThat(after.masteredAssessmentCount()).isEqualTo(4);
+        assertThat(after.unitAssessment().parts()).extracting(UnitAssessmentResponse.Part::goalId)
+                .containsExactlyElementsOf(parts);
+        assertThat(after.unitAssessment().parts()).allMatch(UnitAssessmentResponse.Part::passed);
+        assertThat(after.unitAssessment().planningCreditGoalIds())
+                .containsExactly("e4b38061-1f28-43ad-8371-a3e7c0e81856");
+    }
+
     @Test
     void draftSupplementaryAssessmentCannotExemptASectionOrDisappearFromItsPlan() throws Exception {
         String section = selectHessianMotionUnit("G8", "SekII", "LK");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
-        // A draft LK extra disables the voluntary exception rather than disappearing from E.1.
-        var exam = landscapeDefinitions.getGoalDefinition(MULTIPHASE_EXTRA).getExamData();
+        // A draft free-fall extra disables the voluntary exception rather than disappearing from E.1.
+        var exam = landscapeDefinitions.getGoalDefinition(FREE_FALL_SERIES_EXTRA).getExamData();
         var reviewed = exam.getReviewStatus();
         try {
             exam.setReviewStatus("draft");
             var option = learners.getLearnerState(learnerId).levelCompletion().profileOptions().stream()
                     .filter(row -> row.profileId().equals("automatic:" + section)).findFirst().orElseThrow();
             assertThat(option.assessments()).allMatch(item -> item.voluntary() == null);
-            assertThat(option.assessments()).noneMatch(item -> MULTIPHASE_EXTRA.equals(item.goalId()) && item.startAvailable());
+            assertThat(option.assessments()).noneMatch(item -> FREE_FALL_SERIES_EXTRA.equals(item.goalId()) && item.startAvailable());
             assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section)))
-                    .contains(WURF_EXTRA, FREE_FALL_SERIES_EXTRA, MULTIPHASE_EXTRA);
+                    .contains(WURF_EXTRA, FREE_FALL_SERIES_EXTRA).doesNotContain(MULTIPHASE_EXTRA);
         } finally {
             exam.setReviewStatus(reviewed);
         }
