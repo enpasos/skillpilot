@@ -1,0 +1,98 @@
+{
+  "reviews": [
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "Teil A. Mit τ = t − 2 s gelten v = −1 m/s + (2 m/s²)τ und s = 5 m − (1 m/s)τ + (1 m/s²)τ². Bei t = 2, 2,5, 3 und 4 s ergeben sich der Reihe nach v = −1, 0, 1 und 3 m/s sowie s = 5, 4,75, 5 und 7 m. Bei 2,5 s wechselt v das Vorzeichen. Der Ort hat dort ein Minimum mit waagerechter Tangente, während a bei +2 m/s² bleibt. Die Rechteckfläche im t-a-Diagramm ergibt Δv = +4 m/s. Die beiden Dreiecke im t-v-Diagramm liefern gerichtete Ortsänderungen von −0,25 m und +2,25 m. Ihre Summe ist +2 m, die Summe ihrer Beträge 2,50 m. Der vorhergesagte Ort liegt mit 7 m im Kontrollintervall von 6,98 m bis 7,08 m. Die Abweichung vom Zentralwert beträgt 0,03 m.\n\nTeil B. Bis zum Stopp gelten in SI-Einheiten a = −2, v = 6 − 2t und s = 6t − t². Dazu gehören eine waagerechte Beschleunigungslinie, eine fallende Geschwindigkeitsgerade und eine nach unten gekrümmte Ortsparabel mit waagerechter Tangente beim Stopp. Aus v = 0 folgen 3 s Stoppzeit und 9 m Bremsweg. Die Programmfortsetzung ergibt bei 5 s v = −4 m/s und s = 5 m. Das Fahrzeug wäre seit dem Stopp 4 m zurückgefahren. Beim tatsächlichen Stehenbleiben gelten danach s = 9 m, v = 0 und a = 0. Für eine weitere negative Beschleunigung wäre eine entsprechende resultierende Kraft zu begründen. Beide Musterlösungen und die quantitativen Rasterangaben stimmen mit dieser Rechnung überein (canonical-input.json, Z. 172–205).",
+      "preparationReview": "Die einzige unmittelbare Voraussetzung ist LAWS, das Ziel zu Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen. Die rekursive Prüfung seiner requires-Verweise ergibt genau die 66 verschiedenen Ziele der angegebenen Vorbereitung. Jeder Verweis ist aufgelöst. LAWS führt zu BES und zum Deuten von Variablentermen. Unter BES liegen mittlere und momentane Geschwindigkeit, Funktionswerte, geometrische Flächen und die gerichtete Fläche im t-v-Diagramm. Die weiteren Voraussetzungen tragen unter anderem Änderungsraten, Steigungen, Achsen und Einheiten, Messauflösung, Vorzeichen, Beträge und Bruchrechnung. Damit sind die Konstruktionen aus gegebenen Anfangswerten durch Geraden und Flächen ohne Integralrechnung zugänglich (canonical-input.json, Z. 284–973 und 1424–1500).\n\nSN J9 – allow für D′ als eigene Transferaufgabe nach dieser Vorbereitung. Lernbereich 3 beschränkt die kinematischen Gesetze ausdrücklich auf Bewegungen „ohne Anfangsgeschwindigkeit“. Er führt v = at und s = at²/2 für den entsprechenden Ursprung ein, außerdem Beschleunigung als Steigung, Weg als Fläche, Newtonsche Gesetze und Bremsvorgänge. Lernbereich 4 greift die Auswertung von Bewegungsdiagrammen auf. Bei D′ sind beide Anfangsgeschwindigkeiten von null verschieden. Die Lernenden können die Geschwindigkeitsgerade mit der gegebenen Steigung durch den gegebenen Anfangspunkt legen und die gerichteten Flächen zum Anfangsort addieren. Der versetzte Zeit- und Ortsursprung, die Flächenbilanz über die Umkehr, die Kontrollmarke und die Fortsetzung über den Stopp sind eigene Anwendungen. Eine Zuschreibung der allgemeinen Anfangswertgesetze als sächsischer J9-Pflichtstoff wäre abzulehnen (SN-retained-source.pdf, physische S. 36–38, Druck-S. 24–26, Lernbereiche 3–4).\n\nST J9 – allow für D′ nach derselben Vorbereitung. „Mechanik der Punktmasse“ fordert Bewegungsdiagramme und Flächendeutung, die Rückführung von Bewegungsänderungen auf Wechselwirkungen sowie das Beurteilen von Verkehrsaufgaben. Die Wissensbestände nennen s(t), v(t) und a(t) ausdrücklich unter „Gleichmäßig beschleunigte Bewegung ohne Anfangsbedingungen“. „Bewegungen mit Anfangsbedingungen“ stehen als eigener Eintrag daneben. Die konkrete Verbindung beider Inhalte mit Zeitversatz, Vorzeichenwechsel und Prüfung der Programmvorhersage ist eigener Transfer. Das separat aufgeführte verbindliche Schülerexperiment wird durch D′ nicht absolviert (ST-retained-source.pdf, physische S. 45–46, Kompetenzschwerpunkt und grundlegende Wissensbestände).",
+      "directCoverageReview": "R2 – allow ausschließlich für den Eintrag D′ → BES in coverageReviews der Einheit physics-constant-acceleration, Revision 2026-11-23-v4. Der Zielwortlaut verlangt, das Modell konstanter Beschleunigung zu erläutern und die Bewegung in t-s-, t-v- und t-a-Darstellungen zu beschreiben. A fordert alle drei Konstruktionen und die Erklärung der Flächen. B fordert alle drei erneut und eine Erklärung dafür, was die unverändert negative Beschleunigung über den Stopp hinaus bewirkt. Damit ist die Bedeutung der konstanten Rate aus der Aufgabe heraus erklärbar. Ein auf die Bewegung bezogener Nachweis gleicher gerichteter Δv in gleichen Δt kann sprachlich, durch ein erläutertes Gesetz oder durch eine beschriftete Grafik erfolgen. Der Start aus der Ruhe am Ursprung in der Zielillustration ist ein Beispiel. Ab der Umkehr zeigt A diesen positiven Beschleunigungsverlauf in verschobenen Koordinaten.\n\nBei 19/20 muss mindestens ein vollständiger Satz der drei charakteristischen Diagrammverläufe vorliegen. Schon je eine fehlende Kurve in A und B kostet zusammen 1,5 BE. Ebenso muss die konstante Rate mindestens einmal in ihrer physikalischen Bedeutung erklärt sein. Die beiden Höchstwerte bei fehlender Kompetenz sind unten nachgerechnet. Das trägt den gesamten einzelnen BES-Baustein (canonical-input.json, Z. 172–205, 216–282, 1156–1237 und 1247–1256).\n\nDas weiter reichende Einheitsversprechen umfasst die eigene Fallmessung an einer schweren Kugel, das Protokollieren von Höhe und Zeit, die Bestimmung der Beschleunigung aus Messdaten und die Angabe der Messgenauigkeit. D′ gibt die Beschleunigungen und das Kontrollintervall vor. Es prüft Modellanwendung und Intervallvergleich. Die fehlende eigene Messung begrenzt die Aussage zur Gesamteinheit und zum gesonderten Experimentierziel 09029573-864f-40ca-bf8a-cee7bf6dcb73. BES selbst enthält keine Experimentierklausel. Auch LAWS und die anderen Vorbereitungsziele erhalten keinen eigenen Direktnachweis (canonical-input.json, Z. 1146–1151, 1239–1266 und 1343–1356).",
+      "languageReview": "Deutsch und Englisch verlangen dieselben Anfangswerte, Ortsmarken, Richtungs- und Flächendeutungen, den Intervallvergleich sowie Brems- und Programmrechnung mit physikalischer Begründung. Deutsch benennt in A die drei Diagrammarten einzeln. Das englische „all three motion graphs“ bezeichnet im Zusammenhang dieselben Größen. Beide Lösungen lassen ursprüngliche und beschriftete verschobene Zeit, gleichwertige Wege und sachgerechte Rundung zu. Die eingebetteten Teilmaxima stimmen mit allen fünf Rasterstufen überein. A ergibt 6 + 3 + 3 = 12 BE, B ergibt 4 + 4 = 8 BE. Beide Sprachfassungen und das strukturierte Raster setzen dieselbe einzige Schwelle von 19/20. Der Vorgänger hatte fünfmal 4 BE und verlangte 20/20 (canonical-input.json, Z. 70–104 und 172–205).",
+      "recommendedRequires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "recommendedCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "recommendedPassingPoints": 19,
+      "gradedSubmissions": [
+        {
+          "submissionId": "Y",
+          "demonstratedCore": true,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 6,
+              "reason": "Die drei beschrifteten A-Kurven zeigen die konstante Beschleunigung, die steigende Geschwindigkeitsgerade und die Ortsparabel mit Minimum. Gesetze, Zeitbezug, Werte und Einheiten stimmen."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "Y erklärt Vorzeichenwechsel und Ortsminimum bei weiterhin positivem a, die Rechteckfläche von +4 m/s und den gleichen Zuwachs von +2 m/s je Sekunde. Beide gerichteten v-Flächen sind richtig gedeutet."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "Y unterscheidet +2 m Ortsänderung von 2,50 m Strecke durch Addition der Teilbeträge und prüft 7 m am korrekt bestimmten Kontrollintervall."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 4,
+              "reason": "Alle drei B-Kurven passen zu Beschleunigung und Gesetzen bis zum Stopp. Stoppzeit 3 s und Bremsweg 9 m sind richtig."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 3.5,
+              "reason": "v(5) = −4 m/s ist richtig. Bei s(5) wird der richtige Ansatz 30 − 25 als 4 m ausgewertet. Das kostet allein die 0,5 BE für diesen Wert. Ratenerklärung über den Nulldurchgang, Stillstandsvergleich und Kraftbegründung sind vollständig."
+            }
+          ],
+          "total": 19.5,
+          "passes": true,
+          "rationale": "12 BE in A und 7,5 BE in B. Y zeigt den gesamten BES-Kern. Der örtlich begrenzte Rechenfehler lässt die physikalische Erklärung und die übrigen Ergebnisse gültig."
+        },
+        {
+          "submissionId": "X",
+          "demonstratedCore": false,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 5,
+              "reason": "t-v- und t-s-Kurve sind richtig. Für a = +2 m/s² einschließlich der Umkehr liegt quantitative Evidenz vor. Der eine Verlaufspunkt für das fehlende t-a-Diagramm entfällt."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "Die Erklärung belegt Umkehr und Ortsminimum, Gesamt-Δv, konstante Änderung je Sekunde und beide gerichteten Ortsflächen. Sie ist auch ohne gezeichnete a-Kurve bewertbar."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "Ortsänderung, Strecke mit Betragsbegründung und Vergleich mit dem Kontrollintervall sind vollständig richtig."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 3.5,
+              "reason": "In B fehlt ebenfalls die t-a-Kurve. Der Beschleunigungswert ist belegt. Beide Bewegungsgesetze, die zugehörigen v- und s-Kurven sowie Stoppzeit und Bremsweg stimmen. Es entfallen 0,5 BE für die Kurve."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 4,
+              "reason": "X berechnet −4 m/s und 5 m und erläutert die fortgesetzte negative Rate, den Widerspruch zum Stehenbleiben und die nötige neue Kraftbegründung."
+            }
+          ],
+          "total": 18.5,
+          "passes": false,
+          "rationale": "11 BE in A und 7,5 BE in B. X erklärt konstante Beschleunigung und verwendet ihre Werte richtig. In beiden unabhängig verlangten Konstruktionen fehlt die grafische Darstellung von a über t. Alle durch Text, Gesetze und andere Kurven belegten Leistungen erhalten ihre Punkte."
+        }
+      ],
+      "strongestIndependentFalsePassAttempt": "Eine Abgabe kann sämtliche Kurven, Zahlen und Flächenbilanzen richtig liefern, aus dem negativen Programmwert Rückwärtsfahrt ablesen und sogar den Widerspruch zum Stillstand samt Kraftgrund erklären. Fehlt überall die Erklärung, wie konstantes a die Geschwindigkeit in gleichen Zeitspannen ändert, entfallen 0,5 BE in A und 1 BE in B. Die Verteilung 6 + 2,5 + 3 + 4 + 3 ergibt 18,5. Der zweite Grenzfall gilt für jede Diagrammart. Wer etwa beide Ortskurven auslässt, aber die Ortsgesetze und sämtliche Werte richtig angibt, erreicht höchstens 5 + 3 + 3 + 3,5 + 4 = 18,5. In beiden Fällen trennt die Summe allein. Eine Schwelle von 18,5 würde beide Lücken zulassen.",
+      "strongestIndependentFalseFailureAttempt": "Eine fachlich vollständige Abgabe verrechnet allein die obere Kontrollgrenze zu 7,09 m und prüft die Lage von 7 m folgerichtig. Dafür entfällt einmal der Kontrollpunkt. Mit 6 + 3 + 2 + 4 + 4 = 19 besteht sie genau an der Schwelle. Auch ein einzelner fehlender A-Verlauf lässt bei richtigem B-Verlauf derselben Art 19 BE zu. Eine korrekt erläuterte Beziehung Δv = a·Δt mit eindeutigem Bezug zu beiden Bewegungen darf beide Ratenanteile belegen. Ein zweiter Merksatz an vorgeschriebener Stelle, eine Ermessensgutschrift oder eine zusätzliche Teilhürde ist dafür entbehrlich.",
+      "requiredCorrections": [],
+      "materialContinuityAndRecognition": "Die Änderung ist auf Bewertungsvermerk, Raster und Bewertungshinweise in den beiden Lösungen begrenzt. Beide Lernaufträge, die gedruckten 12/8 BE, die unmittelbare Voraussetzung und der direkte BES-Anspruch stimmen mit dem Vorgänger überein. Die eigene Platzierung in physics-constant-acceleration bleibt fachlich begründet. Dort ist BES das einzige reguläre eigene Lernziel, D′ und D sind die beiden eigenen Prüfungen, hinzu kommt das Orientierungsziel. Die allgemeine Anwendbarkeit in 16 Ländern ist von der hier belegten J9-Eignung für SN und ST zu unterscheiden.\n\nDie vier hessischen E.1-Pflichtplätze sind in ihrer Reihenfolge ee7d5f3d, 39f52dcb, c933b7d2 und f13ca187. Ausschließlich der vierte Teil D (f13ca187-b680-5f47-b4ad-76bd474bd8a2) trägt die bestehende Planungsanrechnung für BES in den sechs ausgewiesenen hessischen G8-, G9- und Sek-II-Ansichten für GK und LK. Die übrigen elf Inhaltsziele haben dort keine Planungsanrechnung. D′ gehört weder zu den vier Pflichtteilen noch zu den zwei gemeinsam geführten freiwilligen Einträgen 6ea3fb3c und f41e4e30. Sein direkter BES-Nachweis begründet keinen zusätzlichen hessischen Eintrag. Das Votum betrifft die geprüfte Fassung codex-v3 und überträgt keine früheren Ergebnisse (canonical-input.json, Z. 158–175, 209–215, 979–1145, 1268–1342 und 1417–1427).",
+      "semanticKind": "practiceAssessment",
+      "semanticKindReason": "D′ verlangt eine eigenständige, bewertbare Bearbeitung zweier Bewegungen mit Konstruktionen, Rechnungen und physikalischen Erklärungen. Musterlösung, Teilpunkte und Bestehensschwelle dienen der Bewertung dieser Bearbeitung. Das entspricht weiterhin einer practiceAssessment."
+    }
+  ],
+  "limitations": [
+    "Die J9-Voten setzen die ausgewiesene vollständige Vorbereitung voraus. Die Bewertung erfasst die beiden gelieferten Abgaben und die rechnerisch geprüften Grenzfälle. Eine empirische Aussage zur Schwierigkeit für eine Lerngruppe lässt sich daraus nicht ableiten."
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "reviews": [
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "candidateDecision": "accept",
+      "scientificAndNumericalReview": "Aufgabe, vollständige Lösung und sämtliche Teilpunkte sind fachlich konsistent. A: Mit τ=t−2 s gelten v=−1 m/s+2 m/s²·τ und s=5 m−1 m/s·τ+1 m/s²·τ². Die Umkehr liegt bei t=2,5 s und s=4,75 m; dort bleibt a=+2 m/s². Es folgen s(3 s)=5 m, s(4 s)=7 m, Δv=4 m/s, gerichtete Teilwege −0,25 m und +2,25 m, Ortsänderung +2 m und Strecke 2,50 m. Der Modellort liegt im Kontrollintervall [6,98;7,08] m. B: v=6−2t und s=6t−t² in SI ergeben Stillstand nach 3 s bei 9 m. Die Programmfortsetzung liefert v(5 s)=−4 m/s und s(5 s)=5 m. Fortgesetzte negative Beschleunigung erzeugt Rückwärtsfahrt; dauerhaftes Stehen verlangt anschließend v=0 und a=0. Die Maxima stimmen überall überein: A=6+3+3=12 BE, B=4+4=8 BE, insgesamt 20 BE. Die einzige Bestehensgrenze beträgt 19 BE. Quellen: canonical-input.json, Z.172–205.",
+      "preparationReview": "Die vollständige Vorbereitung wurde geprüft: Die transitive Hülle von candidate.requires umfasst genau alle 66 preparation-Einträge, ohne fehlende Referenzen oder Zyklen; sie entspricht unverändert unchangedWholePreparationIds. LAWS bereitet Bewegungsgesetze und Prognosen vor; darunter liegen BES, Sekanten-/Tangentensteigung, Funktionswerte, Figurenflächen, vorzeichenbehaftete t-v-Flächen sowie die rechnerischen, geometrischen und graphischen Grundlagen. Formale Differential- oder Integralrechnung ist nicht erforderlich. Quellen: canonical-input.json, Z.284–973, besonders Z.338–349, 380–392, 422–431, 626–636, 720–728 und 867–878.\nSN: allow für das bestehende eigene Transferangebot nach dieser vollständigen Vorbereitung. Reject wäre die weitergehende Behauptung, die gesamte Aufgabe sei unmittelbar SN-J9-Pflichtstoff: SN-retained-source.pdf, physische Seite 36, Lernbereich 3, begrenzt den Gesetzesumgang ausdrücklich auf „ohne Anfangsgeschwindigkeit“. Seite 38, Lernbereich 4, stützt Messdatenauswertung und Bewegungsdiagramme, erweitert diese Bedingung aber nicht. Nichtverschwindende Anfangsgeschwindigkeiten, Zeit-/Ortversatz und die Fortsetzung über v=0 sind daher als eigener Transfer zu begründen.\nST: allow. ST-retained-source.pdf, physische Seite 45, nennt Bewegungsdiagramme, Flächendeutung, Verkehrsanwendungen und Wechselwirkungen. Seite 46 führt neben beschleunigter Bewegung ohne Anfangsbedingungen ausdrücklich Bewegungen mit Anfangsbedingungen auf. Die konkreten Vorzeichen, Umkehr, Kontrollintervallprüfung und Modellfortsetzung bleiben selbstständige Anwendungen. Die Bewertungsänderung verändert diese Vorbereitungs- und Platzierungsargumente nicht.",
+      "directCoverageReview": "R2: allow ausschließlich für coverageReviews[0] der Unit physics-constant-acceleration mit diesem Assessment und dem einzigen beanspruchten BES-Ziel e4b38061-1f28-43ad-8371-a3e7c0e81856. Maßgeblich sind dessen sämtliche Facetten: das Modell konstanter Beschleunigung erläutern sowie t-s-, t-v- und t-a-Darstellungen beschreiben. Die Aufgabe verlangt alle drei tatsächlichen Diagrammarten und Erklärungen der Änderungszusammenhänge. Fehlt eine Diagrammart vollständig, entfallen A 1 BE und B 0,5 BE; höchstens 18,5 BE bleiben. Fehlt überall die Erklärung der konstanten Änderungsrate, entfallen A 0,5 BE und B 1 BE; ebenfalls höchstens 18,5 BE. Eine passende globale Erklärung zählt an beiden Stellen, ohne vorgeschriebene doppelte Merksätze. Die feste Aufgabenformulierung trägt diese Konkretisierung durch ihre Erklärungsaufträge zur a-Fläche und zur Programmfortsetzung. Somit genügt 19/20 ohne zusätzliche Teilhürde. Quellen: canonical-input.json, Z.172–205, 1156–1168 und 1247–1256.\nDas weitergehende Kugelfallversprechen umfasst eigene Messung, Messprotokoll und Genauigkeitsangaben. Diese Leistungen werden hier nicht erbracht. Sie gehören jedoch nicht zum beanspruchten BES-Atom; dieses enthält keine Experimentierklausel. Ihre Abwesenheit ist daher kein Fehler dieses individuellen R2-Eintrags und erlaubt zugleich keine Anerkennung des ganzen Unit-Versprechens oder des separaten Experimentalziels. Quellen: Z.1146–1150, 1239–1267 und 1290–1300.",
+      "languageReview": "DE und EN stimmen bei Anfangswerten, Zeitintervallen, Arbeitsaufträgen, Lösungen und sämtlichen Teilpunkten überein. Beide Fassungen behalten A 12/B 8 BE und nennen ausdrücklich 19/20 als einzige Schwelle. Beide erlauben gleichwertige Methoden, zulässige Rundungen, Nachweise an anderer Antwortstelle und die einmalige Belastung eines lokalen Fehlers. Beide unterscheiden quantitative Leistungen von tatsächlich vorhandenen Graphen und physikalischen Erklärungen. Keine entscheidungsrelevante Sprachabweichung festgestellt. Quelle: canonical-input.json, Z.172–205.",
+      "recommendedRequires": [
+        "262f807a-30d0-503e-986f-856cbd048e8e"
+      ],
+      "recommendedCoveredGoalIds": [
+        "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+      ],
+      "recommendedPassingPoints": 19,
+      "gradedSubmissions": [
+        {
+          "submissionId": "X",
+          "demonstratedCore": true,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 6,
+              "reason": "Alle drei A-SVGs zeigen passende charakteristische Verläufe; Anfangswerte, Ortsmarken, Geschwindigkeiten, Beschleunigung und Einheiten stimmen. Quelle: canonical-input.json, Z.976; Raster Z.183."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "Umkehr, konstante Beschleunigung trotz v=0, Rechteckfläche als Δv, gleiche Geschwindigkeitsänderungen in gleichen Zeiten und gerichtete v-Flächen sind ausdrücklich erklärt. Quelle: Z.976; Raster Z.188."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "Ortsänderung, Strecke mit Betragsbegründung und Kontrollintervallvergleich sind vollständig richtig. Quelle: Z.976; Raster Z.193."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 4,
+              "reason": "Bremsgesetze, alle drei tatsächlichen B-Graphen, Stoppzeit 3 s und Bremsweg 9 m sind richtig. Quelle: Z.976; Raster Z.198."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 3.5,
+              "reason": "v(5)=−4 m/s sowie Raten-, Rückwärtsfahrt- und Stillstandsbegründung stimmen. Nur s(5)=30−25 wurde fälschlich als 4 statt 5 m ausgewertet; dafür entfallen einmalig 0,5 BE. Quelle: Z.976; Raster Z.203."
+            }
+          ],
+          "total": 19.5,
+          "passes": true,
+          "rationale": "6+3+3+4+3,5=19,5 BE. Der vollständige BES-Kern und die Modellgrenzen sind nachgewiesen. Der isolierte Rechenfehler verhindert das Bestehen nicht; weitere richtige Leistungen bleiben ungekürzt."
+        },
+        {
+          "submissionId": "Y",
+          "demonstratedCore": false,
+          "scores": [
+            {
+              "criterionId": "acceleration-log_1",
+              "pointsAwarded": 5,
+              "reason": "t-v- und t-s-Graph sowie sämtliche quantitativen Angaben stimmen. Der tatsächliche A-t-a-Graph fehlt: 1 BE Verlust ausschließlich für dessen Verlauf; der richtige Beschleunigungswert bleibt anrechenbar. Quelle: canonical-input.json, Z.977; Raster Z.183."
+            },
+            {
+              "criterionId": "acceleration-log_2",
+              "pointsAwarded": 3,
+              "reason": "Umkehr, konstante Änderungsrate, a-Fläche und gerichtete v-Flächen sind im Text vollständig erklärt. Der fehlende t-a-Graph wird hier nicht erneut belastet. Quelle: Z.977; Raster Z.188."
+            },
+            {
+              "criterionId": "acceleration-log_3",
+              "pointsAwarded": 3,
+              "reason": "Ortsänderung, Strecke samt Unterschied und Kontrollintervallprüfung stimmen. Quelle: Z.977; Raster Z.193."
+            },
+            {
+              "criterionId": "acceleration-log_4",
+              "pointsAwarded": 3.5,
+              "reason": "Gesetze, Beschleunigungswert, t-v-/t-s-Graphen und Stoppwerte stimmen. Der tatsächliche B-t-a-Graph fehlt; nur dessen 0,5 BE entfallen. Quelle: Z.977; Raster Z.198."
+            },
+            {
+              "criterionId": "acceleration-log_5",
+              "pointsAwarded": 4,
+              "reason": "Beide Programmwerte und sämtliche geforderten Erklärungen zur konstanten Rate, Rückwärtsfahrt und physikalischen Modellgrenze stimmen. Quelle: Z.977; Raster Z.203."
+            }
+          ],
+          "total": 18.5,
+          "passes": false,
+          "rationale": "5+3+3+3,5+4=18,5 BE. Die tatsächliche t-a-Darstellung fehlt in beiden Aufgabenteilen. Richtige Werte und Erklärungen erhalten ihren vollständigen eigenen Kredit, ersetzen aber diese geforderte Darstellungsleistung nicht."
+        }
+      ],
+      "strongestIndependentFalsePassAttempt": "Eine ansonsten vollständige Abgabe enthält alle richtigen Gesetze, Zahlen und Erklärungen, aber weder in A noch in B einen t-s-Graphen. Sie erreicht 5+3+3+3,5+4=18,5 BE und scheitert. Dasselbe gilt symmetrisch für jede vollständig fehlende Diagrammart. Ein anderer Angriff liefert alle Zahlen und Graphen, erklärt aber nirgends die Bedeutung der konstanten Änderungsrate: 6+2,5+3+4+3=18,5 BE. Auch vollständiges Weglassen der physikalischen Modellgrenzen kostet mindestens die beiden eigenständigen Begründungspunkte. Bei 19 BE kann ein einzelner Graph oder Erklärungssatz fehlen; die entsprechende gesamte BES-Facette bleibt dann anderweitig belegt. Quellen: canonical-input.json, Z.174–175, 183, 188, 198 und 203.",
+      "strongestIndependentFalseFailureAttempt": "Eine Abgabe zeigt den gesamten Kern, verrechnet sich aber einmal bei einer Kontrollintervallgrenze und prüft anschließend folgerichtig. Nach der ausdrücklichen Ursprungsfehlerregel entfällt nur der eine Intervallpunkt: 6+3+2+4+4=19 BE, bestanden. Ebenso darf ein einzelner A-Graph fehlen, wenn die betreffende Diagrammart in B tatsächlich richtig gezeigt wird; bei sonst vollständiger Leistung bleiben 19 BE und der vollständige BES-Nachweis. X bestätigt zusätzlich die Toleranz eines isolierten numerischen Fehlers mit 19,5 BE. Quellen: canonical-input.json, Z.174–175, 183, 193 und 976.",
+      "requiredCorrections": [],
+      "materialContinuityAndRecognition": "Gegenüber dem Original ändern sich nur reviewNote, beide Lösungsfassungen und scoring. Aufgaben, direkte BES-Behauptung, Voraussetzungen, Zuständigkeiten und eigene Platzierung bleiben erhalten. Die begrenzte Bewertungsänderung ersetzt 20/20 durch 19/20 und die fünf Maxima 4/4/4/4/4 durch 6/3/3/4/4; gedruckte Aufgabenpunkte bleiben konsistent. Quellen: canonical-input.json, original/candidate und Z.210–215.\nDie vier hessischen Pflichtslots bleiben ee7d5f3d-858f-59d6-89b0-e5a7f437f458, 39f52dcb-ff1d-5cad-9ccb-30da803cfa85, c933b7d2-edcb-5747-9378-9762659f260a und f13ca187-b680-5f47-b4ad-76bd474bd8a2. D′ ersetzt keinen davon. Der bestehende BES-Planungskredit verweist ausschließlich auf f13ca187…; diese direkte D′-Prüfung erzeugt keinen zusätzlichen Planungskredit. Auch die beiden bestehenden freiwilligen Elternangebote bleiben unverändert; additionalVoluntaryIds ist leer. D′ wird damit nicht zu einem neuen freiwilligen E.1-Elternslot. Quellen: Z.1017–1100 und 1107–1142.\nDie positive Beurteilung betrifft den exakten aktuellen Kandidaten und seinen BES-Eintrag. Sie aktiviert keinen Nachfolger, überträgt keine früheren Ergebnisse und bestätigt keine historische Freigabe durch deren bloße Erwähnung.",
+      "semanticKind": "practiceAssessment",
+      "semanticKindReason": "Die tatsächliche Tätigkeit bleibt eine individuelle schriftliche Übungsprüfung mit Berechnungen, Diagrammkonstruktion, physikalischen Erklärungen, Musterlösung und numerischem Bewertungsraster. Die Bewertungsänderung verändert diesen semantischen Typ nicht. Eine eigene experimentelle Durchführung wird nicht verlangt. Quelle: canonical-input.json, Z.172–205."
+    }
+  ],
+  "limitations": [
+    "Gelesen wurden ausschließlich canonical-input.json, output.schema.json sowie die freigegebenen physischen PDF-Seiten SN 36/38 und ST 45/46. Andere Dateien, Verzeichnisse, historische Ergebnisse und Netzwerkquellen wurden nicht herangezogen.",
+    "Die Zuständigkeitsentscheidung betrifft die angebotenen SN-/ST-J9-Platzierungen als vorbereitete eigene Angebote; eine vollständige Lehrplanprüfung anderer Länder oder eine beobachtete experimentelle Qualifikation ist damit nicht verbunden."
+  ]
+}
