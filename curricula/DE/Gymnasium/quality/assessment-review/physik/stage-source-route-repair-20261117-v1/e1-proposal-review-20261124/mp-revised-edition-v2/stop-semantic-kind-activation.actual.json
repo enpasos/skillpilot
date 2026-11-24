@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "appliedAt": "2026-11-24T06:13:35.289499+00:00",
+  "selectedScenario": "STOP_NO_SUCCESSOR",
+  "canonicalStopWasAlreadyAppliedByParent": true,
+  "newAssessmentAdmitted": false,
+  "nativeNewAssessmentReleaseExecuted": false,
+  "reviewedProposalRawSha256": "00da776e5807fc11c602914f326fc3f86b88cc279e00c8f4d0190e03b5dae0a6",
+  "actualPairLiteralContentDecisions": [
+    "revise",
+    "revise"
+  ],
+  "actualPairStopKindConsensus": "All three records practiceAssessment, metadataSemanticallyCoherent=true in each genuine round.",
+  "beforeLedgerRawSha256": "1010f9e4d7a10836849382350b375b73f7a911408b4b50ebb3001effd999bb74",
+  "afterLedgerRawSha256": "d287a0238534297bc541f5d8e2fc7fb7076648a80fa9a4848dff55458e26651a",
+  "currentCanonicalRawSha256": "0ef90731b62db8a2e60eb193d8db3a0fc143d3886063d79594f5841ad9f61f67",
+  "beforeCounts": {
+    "practiceAssessment": 246,
+    "programStructure": 1,
+    "curricularAtomic": 490,
+    "curricularArea": 113,
+    "orientation": 4,
+    "memory": 5,
+    "runtimeSupport": 4,
+    "total": 863
+  },
+  "afterCounts": {
+    "practiceAssessment": 247,
+    "programStructure": 1,
+    "curricularAtomic": 490,
+    "curricularArea": 112,
+    "orientation": 4,
+    "memory": 5,
+    "runtimeSupport": 4,
+    "total": 863
+  },
+  "beforeRecords": [
+    {
+      "goalId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+      "sourceFingerprint": "sha256:29a34cf74041b157e90102e3531850f5404538b5c091e1088cf84cf39b24bb74",
+      "semanticKind": "practiceAssessment",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-practice-assessment"
+    },
+    {
+      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "sourceFingerprint": "sha256:62a6f63acf91c7217bf1faed2c01ebe56929e9c49f12504ec0fa9f2743254d9e",
+      "semanticKind": "practiceAssessment",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-practice-assessment"
+    },
+    {
+      "goalId": "151edbf8-eb68-5ef7-8786-43e56a281b0b",
+      "sourceFingerprint": "sha256:9e4c8672ebf014a00fbb7d2b7ead164cb4106be5d1f853af35e2588a0750d4aa",
+      "semanticKind": "curricularArea",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-post-split-curricular-area"
+    }
+  ],
+  "afterRecords": [
+    {
+      "goalId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+      "sourceFingerprint": "sha256:4962a1a4549e9253b46da4859bf8fec27a50b042b7b88cb3a6460b73f4a4f312",
+      "semanticKind": "practiceAssessment",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-practice-assessment"
+    },
+    {
+      "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+      "sourceFingerprint": "sha256:9e04c1c5a3b2fce9a3e27c62daca2282d92b436ad6b8b0865565bc85f0b3d3c2",
+      "semanticKind": "practiceAssessment",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-practice-assessment"
+    },
+    {
+      "goalId": "151edbf8-eb68-5ef7-8786-43e56a281b0b",
+      "sourceFingerprint": "sha256:3c65bf3161751153ae40de283327d554335f214b4379ad4c308210b6900e7cb3",
+      "semanticKind": "practiceAssessment",
+      "decisionStatus": "authoritative",
+      "decisionBasis": "reviewed-current-pilot-practice-assessment"
+    }
+  ],
+  "explicitSemanticCorrection": {
+    "goalId": "151edbf8-eb68-5ef7-8786-43e56a281b0b",
+    "before": "curricularArea",
+    "after": "practiceAssessment",
+    "reason": "Historical collection of examination tasks, not an ordinary curricular subject-content area. Both independent actual judgments agree; native Physics already has14 authoritative assessment collections of cluster form. The native taxonomy and ontology permit that shape.",
+    "taxonomyEvidencePath": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/mp-revised-edition-v2/151-kind-taxonomy-countercheck.actual.json"
+  },
+  "limits": [
+    "No new UUID added to canonical or kind ledger.",
+    "Old task/solution/scoring/identity/results remain unchanged; only reviewed exclusion metadata and containment have been applied by parent.",
+    "No mastery write, implicit credit, changed ordinary490goal inventory, acceptance of MOD coverage or lowering of a quality floor.",
+    "Native whole-ledger verification follows against these exact current bytes."
+  ],
+  "nativeEnumGuardCorrection": {
+    "preValidationLedgerRawSha256": "3001a0a56405c4f398d103e3433bf89b9ef6a98f16d501ba481915d874cfc029",
+    "rejectedDecisionBasis": "reviewed-current-independent-mp-stop-v1",
+    "acceptedNativeDecisionBasis": "reviewed-current-pilot-practice-assessment",
+    "meaning": "Only native enum spelling corrected; semantic changes and independent evidence remain explicit in this receipt.",
+    "failedAttempt": "validation-attempts/decision-basis-enum/attempt.actual.json"
+  },
+  "nativeCurrentKindVerification": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/mp-revised-edition-v2/stop-native-current-kind-check.actual.json",
+    "sha256": "875e2d84e6d7516ff495d0135b495b58dde0248111d690e984e7eb7c44e501b5",
+    "status": "PASS",
+    "checkedAt": "2026-11-24T06:16:07.142Z",
+    "goals": 863
+  }
+}

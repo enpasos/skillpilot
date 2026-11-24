@@ -972,9 +972,12 @@ const explicitClassification = (
     }
     if (goal.id === '151edbf8-eb68-5ef7-8786-43e56a281b0b') {
       assert.equal((goal.extendedData as Record<string, unknown>).applicabilityProjection, 'excluded')
+      assert.equal(goal.contains.length, 17, 'the archive keeps all seventeen assessments')
+      assert(goal.contains.every(id => goalsById.get(id)?.examData),
+        'each child of the retained assessment collection must carry a scoring contract')
       return {
-        semanticKind: 'curricularArea',
-        decisionBasis: 'reviewed-current-post-split-curricular-area',
+        semanticKind: 'practiceAssessment',
+        decisionBasis: 'reviewed-current-pilot-practice-assessment',
       }
     }
     const isAssessmentSubtree = (goalId: string, ancestors = new Set<string>()): boolean => {
@@ -1244,6 +1247,23 @@ assert.deepEqual(mpCurrent, {
   ...readJson<Record<string, unknown>>(mpReceipt.currentGoalPath),
   extendedData: { applicabilityProjection: 'excluded', applicabilityMappingInheritance: 'boundary' },
 }, 'historical passes retain the entire original reviewed exam and scoring contract')
+const proposedMpId = '05cfd298-cb80-54c4-a898-b521ef270843'
+assert(!rawGoalById.has(proposedMpId), 'both final reviews require a rubric revision before this identity can be offered')
+const mpDispositionDirectory = 'curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/e1-proposal-review-20261124/mp-revised-edition-v2'
+for (const round of ['a', 'b']) {
+  const result = readJson<{
+    exactProposalDecision: string
+    recommendedCoveredGoalIds: string[]
+    semanticKindReviews: Array<{ scenario: string; goalId: string; semanticKind: string }>
+  }>(`${mpDispositionDirectory}/round-${round}/response.json`)
+  assert.equal(result.exactProposalDecision, 'revise')
+  assert.deepEqual(result.recommendedCoveredGoalIds, [])
+  const retained = result.semanticKindReviews.filter(row => row.scenario === 'STOP_NO_SUCCESSOR')
+  assert.deepEqual(new Set(retained.map(row => row.goalId)), new Set([
+    mpId, '151edbf8-eb68-5ef7-8786-43e56a281b0b', '424b07df-bf66-5d7f-99f5-f28b32ad1f22',
+  ]))
+  assert(retained.every(row => row.semanticKind === 'practiceAssessment'))
+}
 const mpParents = rawLandscape.goals.filter(goal => Array.isArray(goal.contains) && goal.contains.includes(mpId))
 assert.deepEqual(mpParents.map(goal => goal.id), ['151edbf8-eb68-5ef7-8786-43e56a281b0b'])
 assert.deepEqual(mpCurrent.requires, ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', 'd6dc0e02-831d-4894-a61a-852bcc74f147'])
