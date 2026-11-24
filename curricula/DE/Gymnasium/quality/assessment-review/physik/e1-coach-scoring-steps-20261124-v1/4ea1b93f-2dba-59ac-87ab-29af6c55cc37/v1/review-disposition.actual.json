@@ -1,0 +1,146 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "b77518f0bbf3c6da5dc04ade55c786e68f811a984ed6c798a7e47a455b1bc8a8",
+    "normalizedGoalSha256": "c4551749174c8aca0ba144cfb69a59baf5c1ebc8c4aa1b5f2eeda79f13336bcd"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "fa49ecebdcafa363e627b7197bafb8c4f2ecd378f2042e03706dbb2a1d418dbf",
+    "normalizedGoalSha256": "e52f24385ab6c1e3b259c331058674ed190cfce03a89b8b1107d23312c8c2ed0"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "6cfd445af7468d3a4e95585e8f7df58366be220fb1b60be15d051ccdeec2c6cb"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "d9414d56981e77765a7a29fea7dd9214db88a0e0a19758289bde73907a1d161b"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "6e408eb315336dbc96d9b9974ff425f935e2314fe9c3acb0637918d1a1abf9d1"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20f3a-a4d2-7260-9f64-21df49eb1b45",
+      "decision": "accept",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "semantic kind not confirmed"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S03",
+          "kind": "misconception",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S04",
+          "kind": "missing-performance",
+          "performanceId": "ZUS"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "BET"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "4ca15ec0da65c8561e3c7245bf1a81c7adaf2dbb22077155f00262166944cb82"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "79a44d49ae8f7e2116abda2db325f927aa5dda4101ab33e5af322757e04a1f6d"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20f3a-a4d0-7472-990a-a272c8a1439e",
+      "decision": "accept",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "semantic kind not confirmed"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "BET"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S03",
+          "kind": "misconception",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S04",
+          "kind": "missing-performance",
+          "performanceId": "ZUS"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "0274194d3c8282c2afacdfb7ce08f709488a101a9b1c725bf816f171ced107b6"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "fdc9ffe562dc3133ea468f7d32fbd44483585dbc97b7d2fd95d36a1eff2eb72d"
+      }
+    }
+  ],
+  "eligibleForActivation": false,
+  "priorMarksComparison": {
+    "path": "prior-marks-comparison.actual.json",
+    "sha256": "69f34ae18b39acc45cb711e34ff36a183c7c87867a56eefe686c0dc2460050f4"
+  }
+}

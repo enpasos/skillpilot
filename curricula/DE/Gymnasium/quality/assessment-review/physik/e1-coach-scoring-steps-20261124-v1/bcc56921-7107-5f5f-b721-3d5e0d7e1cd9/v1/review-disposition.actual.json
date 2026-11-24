@@ -1,0 +1,134 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "858d5f3d73421fc4d63c439ac5f3bd08c4dbefb503a99d728c18d7d9875705ff",
+    "normalizedGoalSha256": "2b8a9ed96cc4c8380f7f1713c578d50a155043bdefbd76dd1b25a4de1d57c0b0"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "7fef257c821e8145f6ac618038f5cbdbcb4f9b8f63287a40ff15ceab37b981b9",
+    "normalizedGoalSha256": "981d0955dc9e2ef412455445cb3a249be5fba41ffbb08eb3e77f565fae75e37d"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "b8706b1ced2379e479433cc404472dfd27e00c0c32637f73d542dda041cab05d"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "56c9156f74583bd02fd4d9882fa92c6a1490a547633406e3293a97604755e6be"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "3e78fbdd27f5fc0d04018fe16c89a60ab8f95f635a04806d08cbdcb3fe1120dd"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20f3a-a4d2-7fc2-b6ae-e853f6d0fe38",
+      "decision": "accept",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "semantic kind not confirmed"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S03",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S01",
+          "kind": "missing-facet",
+          "performanceId": "P-MP"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "P-DRAG"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "P-MP"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "P-DRAG"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "f73c2f67c4ae3da4e4d2f26047f73717e1e8a83973b5dc785bfd75d8f2fab28c"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "596998cf36eb38fc930f852d3db4ced3dfa14374344ee358e519b446708b1da3"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20f3a-a4d2-73c3-adf1-ab69798de8df",
+      "decision": "accept",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "semantic kind not confirmed"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S01",
+          "kind": "missing-facet",
+          "performanceId": "P-MP"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "P-DRAG"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "P-MP"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S03",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "P-DRAG"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "ee389aad71aecc6490e1bb90d859ab59c9141a3de2654be6d3333b0509f4c249"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "0c9ba83cfc8b4b4785b9d1932080b9bb2da6b827e6adfee8eef99c382c75e2bd"
+      }
+    }
+  ],
+  "eligibleForActivation": false,
+  "priorMarksComparison": {
+    "path": "prior-marks-comparison.actual.json",
+    "sha256": "20858c4777eec287e9f63b5f7a369a3387242b40b4c06f20fcde60d8d623415c"
+  }
+}

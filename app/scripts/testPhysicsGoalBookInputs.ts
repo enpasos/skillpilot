@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import './testHePhysicsQuantumTemplate'
-import { achievableReviewRoot, verifiedPriorExamGoals } from './lib/e1AchievableScoringReviews'
+import { achievableReviewRoot, coachScoringReviewRoot, verifiedCoachScoringReviewChain } from './lib/e1AchievableScoringReviews'
 import { assertFinalPhysicsAtlasPublishedTargets, assertFinalPhysicsAtlasDraftTargets } from './lib/physicsFinalGoalBookAtlasTargets'
 import { assessmentReviewRevisions } from './lib/learningUnitContracts'
 import { createHash } from 'node:crypto'
@@ -1385,14 +1385,14 @@ const partialCreditRounds = new Map<string, { version: string; dispositionSha256
   ['a8dc0290-9f80-5763-8943-e16b8d2aa860', { version: 'v3', dispositionSha256: '7bd9a1fc4d27b7085b156a57dcca7d09a9f8a76990bfaac91681974bd58c0e7c' }],
   ['4ea1b93f-2dba-59ac-87ab-29af6c55cc37', { version: 'v4', dispositionSha256: 'fa55c7b482804b78fb1779ce07de652b9bdd5bb9046b5d618afb644a14ad9877' }],
 ])
-const priorAchievableGoals = verifiedPriorExamGoals(repoRoot, rawGoalById, canonicalJson)
+const priorAchievableGoals = verifiedCoachScoringReviewChain(repoRoot, rawGoalById, canonicalJson)
 // The last reviewed experimental rubric had one dissent. Its complete scored payload must fail activation.
 const parkedExperimentId = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
 const withParkedExperiment = new Map(rawGoalById)
 withParkedExperiment.set(parkedExperimentId, readJson<Record<string, unknown>>(
   `${achievableReviewRoot}/${parkedExperimentId}/v24/candidate.goal.json`,
 ))
-assert.throws(() => verifiedPriorExamGoals(repoRoot, withParkedExperiment, canonicalJson),
+assert.throws(() => verifiedCoachScoringReviewChain(repoRoot, withParkedExperiment, canonicalJson),
   new RegExp(parkedExperimentId + ': changed without two accepted reviews'))
 const currentReviewedExams = new Map<string, { before: object; current: object }>()
 function bindCurrentAssessmentSuccessors(round: string, expectedHashes: Record<string, string>): void {
@@ -1629,6 +1629,9 @@ type StageScoringSuccessor = {
 const stageScoringHashes: Record<string, string> = {
   'a8dc0290-9f80-5763-8943-e16b8d2aa860': 'a868da38f0d2515b0d7f50139889e09785f67c02f63e5dccba0992a0130ff2b4',
 }
+const coachStageScoringHashes: Record<string, string> = {
+  'a8dc0290-9f80-5763-8943-e16b8d2aa860': 'a40333754c4c87cf567fde4ff35f5c7b96ee754942116e5c5aee225b51938a67',
+}
 const stageScoring = new Map<string, {record: StageScoringSuccessor; path: string}>()
 const priorStageCatalog = {...preparationLandscape, goals: preparationLandscape.goals.map(goal => priorAchievableGoals.get(goal.id) ?? goal)}
 const priorStageNormalized = new Map(normalizeCanonicalLandscape(priorStageCatalog as unknown as CanonicalAuthoringLandscape)
@@ -1640,10 +1643,17 @@ for (const row of currentStageOffers.assessments) {
   const id = row.goalId
   const current = rawGoalById.get(id)!
   const prior = priorAchievableGoals.get(id)!
-  const path = `${achievableReviewRoot}/${id}/source-stage-offer.actual.json`
-  const bound = stageScoringHashes[id]
+  const initialPath = `${achievableReviewRoot}/${id}/source-stage-offer.actual.json`
+  const initialHash = stageScoringHashes[id]
+  assert.equal(Boolean(initialHash), existsSync(resolve(repoRoot, initialPath)))
+  assert.equal(Boolean(initialHash), existsSync(resolve(repoRoot, achievableReviewRoot, id, 'accepted.actual.json')))
+  if (initialHash) assert.equal(sha256(readFileSync(resolve(repoRoot, initialPath), 'utf8')), initialHash)
+  const initial = initialHash ? readJson<StageScoringSuccessor>(initialPath) : undefined
+  const path = `${coachScoringReviewRoot}/${id}/source-stage-offer.actual.json`
+  const bound = coachStageScoringHashes[id]
+  assert.equal(Boolean(bound), Boolean(initial))
   assert.equal(Boolean(bound), existsSync(resolve(repoRoot, path)))
-  assert.equal(Boolean(bound), existsSync(resolve(repoRoot, achievableReviewRoot, id, 'accepted.actual.json')))
+  assert.equal(Boolean(bound), existsSync(resolve(repoRoot, coachScoringReviewRoot, id, 'accepted.actual.json')))
   const offers = Object.entries(lowerSourceBindings).flatMap(([state, bindings]) =>
     bindings.assessments[id] ? [{state, row: bindings.assessments[id]}] : [])
   assert.deepEqual(offers.map(offer => offer.state).sort(), id === saxonAccelerationExam ? ['SN','ST'] : ['SN'])
@@ -1675,11 +1685,14 @@ for (const row of currentStageOffers.assessments) {
   assert.equal(successor.goalId, id)
   assert.equal(successor.status, 'ACCEPT_CURRENT_EXACT_PAYLOAD_FOR_OWN_OFFER')
   assert.deepEqual(successor.approvedScopes, row.approvedScopes)
-  assert.equal(successor.predecessorOffer.path, currentStageOffersPath)
+  assert(initial)
+  assert.equal(initial.predecessorOffer.path, currentStageOffersPath)
+  assert.deepEqual(initial.previousGoal, row.currentGoal)
+  assert.deepEqual(successor.predecessorOffer, {path: initialPath, sha256: initialHash})
   assert.deepEqual(successor.predecessorPreparation, currentStageOffers.currentSharedPreparation)
-  assert.deepEqual(successor.previousGoal, row.currentGoal)
-  assert.equal(successor.accepted.path, `${achievableReviewRoot}/${id}/accepted.actual.json`)
-  const attempt = `${achievableReviewRoot}/${id}/${readJson<{ reviewPath: string }>(successor.accepted.path).reviewPath}`
+  assert.deepEqual(successor.previousGoal, initial.currentGoal)
+  assert.equal(successor.accepted.path, `${coachScoringReviewRoot}/${id}/accepted.actual.json`)
+  const attempt = `${coachScoringReviewRoot}/${id}/${readJson<{ reviewPath: string }>(successor.accepted.path).reviewPath}`
   assert.equal(successor.currentGoal.path, attempt + '/candidate.goal.json')
   assert.deepEqual(successor.reviews.map(review => review.receipt.path), ['a','b'].map(r => `${attempt}/round-${r}/run.actual.json`))
   assert.equal(successor.reviews.length, 2)
@@ -1727,7 +1740,16 @@ const dprimeR2 = readJson<{ status: string; unitId: string; unitRevision: string
   wholeUnitPromiseCertified: boolean; ownExperimentCertified: boolean; requiredHessianE1Part: boolean
   planningCreditGranted: boolean; reviewBindings: { path: string; sha256: string } }>(dprimeR2Path)
 assert.equal(dprimeR2.status, 'ACCEPT_EXACT_BES_ONLY_R2_NO_PLANNING_CREDIT')
-if (nextR2) assert.deepEqual(readJson<{technicalActivationFindings: string[]}>(dprimeR2Path).technicalActivationFindings, [])
+if (nextR2) {
+  const currentReview = readJson<{technicalActivationFindings: string[]; priorCoverageReview: EvidenceFile}>(dprimeR2Path)
+  assert.deepEqual(currentReview.technicalActivationFindings, [])
+  const initialOffer = readJson<StageScoringSuccessor>(`${achievableReviewRoot}/${saxonAccelerationExam}/source-stage-offer.actual.json`)
+  assert(initialOffer.r2)
+  assert.deepEqual(currentReview.priorCoverageReview, initialOffer.r2)
+  assert.equal(sha256(readFileSync(resolve(repoRoot, initialOffer.r2.path),'utf8')), initialOffer.r2.sha256)
+  assert.deepEqual(readJson<{priorCoverageReview: EvidenceFile}>(initialOffer.r2.path).priorCoverageReview,
+    {path: previousDprimeR2Path, sha256: previousDprimeR2Hash})
+}
 assert.equal(dprimeR2.unitId, 'physics-constant-acceleration')
 assert.equal(dprimeR2.unitRevision, '2026-11-23-v4')
 assert.deepEqual(dprimeR2.ordinaryGoalIds, ['e4b38061-1f28-43ad-8371-a3e7c0e81856'])

@@ -1,0 +1,1100 @@
+{
+  "schemaVersion": 1,
+  "comparisonBaseCommit": "3d10e3ed6083482b3f9d26047fd5005e5c2dd96b",
+  "currentPhysics": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "76042a25b10ea7f89d461d3be4eeb48b6ae7239f23f7eb02b7132b55f3b60b5c"
+  },
+  "recordedAt": "2026-11-24T20:59:10+00:00",
+  "testInputBinding": "Commands used the PR B working tree and the Physics file identified by currentPhysics.sha256. Each recorded checkout commit identifies the working tree base at command start.",
+  "purpose": "Recalculated Physics views and retained Mathematics demand after the active E.1 rubric revisions.",
+  "currentSourcePlan": {
+    "path": "scripts/generate_laender_physics_stage_views.sources.json",
+    "sha256": "81f100a4753ba4f6343d980499951df8b7df8bc6d0009abde3e7ca1d32972cc1"
+  },
+  "activeMathematicsPolicy": {
+    "path": "app/scripts/config/math-foreign-acquisition-demand.json",
+    "sha256": "a5e5a4e8f544bb67acfb4d5f1a7d05554d4eb2098636bda02eab33440edb02e5"
+  },
+  "precedingMathematicsProof": {
+    "path": "contracts/stage-plan-review-evidence/2026-11-24/math-foreign-acquisition-post-zb/recheck-e795626b9d.actual.json",
+    "sha256": "8b3f95d3fa768ac1e4db2f3c213e216beb33cae44e1b9fb0ff5c026d85cee245"
+  },
+  "generators": [
+    {
+      "path": "scripts/generate_hessen_physics_stage_views.py",
+      "sha256": "7afbda1f7da59a35c3150d442ac3745f74d6c8f68b091a02c86a3bf2b9cbb947"
+    },
+    {
+      "path": "scripts/generate_laender_physics_stage_views.py",
+      "sha256": "c408164ba9463246634780c02235f89abc750c0e52884b058ae30a5560aff5ad"
+    }
+  ],
+  "steps": [
+    {
+      "step": "hessen-core-write",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:34:35.672313+00:00",
+      "finishedAt": "2026-11-24T20:34:37.759321+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/generate_hessen_physics_stage_views.py",
+        "--write"
+      ],
+      "workingDirectory": "."
+    },
+    {
+      "step": "hessen-duration-write",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:34:37.759406+00:00",
+      "finishedAt": "2026-11-24T20:34:38.680191+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/generate_hessen_physics_stage_views.py",
+        "--write",
+        "--duration-views"
+      ],
+      "workingDirectory": "."
+    },
+    {
+      "step": "laender-write",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:34:38.680271+00:00",
+      "finishedAt": "2026-11-24T20:38:12.983610+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/generate_laender_physics_stage_views.py",
+        "--write"
+      ],
+      "workingDirectory": "."
+    },
+    {
+      "step": "hessen-core-check",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:38:12.983710+00:00",
+      "finishedAt": "2026-11-24T20:38:14.697895+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/generate_hessen_physics_stage_views.py",
+        "--check"
+      ],
+      "workingDirectory": "."
+    },
+    {
+      "step": "hessen-duration-check",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:38:14.697977+00:00",
+      "finishedAt": "2026-11-24T20:38:15.399635+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/generate_hessen_physics_stage_views.py",
+        "--check",
+        "--duration-views"
+      ],
+      "workingDirectory": "."
+    },
+    {
+      "step": "laender-check",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:38:15.399761+00:00",
+      "finishedAt": "2026-11-24T20:41:52.561172+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/generate_laender_physics_stage_views.py",
+        "--check"
+      ],
+      "workingDirectory": "."
+    }
+  ],
+  "generatedFilesByCommand": {
+    "hessen-core-write": 4,
+    "hessen-duration-write": 6,
+    "laender-write": 80,
+    "hessen-core-check": 4,
+    "hessen-duration-check": 6,
+    "laender-check": 80
+  },
+  "viewInventory": {
+    "count": 90,
+    "beforeInventorySha256": "179c98d1ff45c50469215d165bc86477d51d03d27e92723484ddece304041aee",
+    "afterInventorySha256": "179c98d1ff45c50469215d165bc86477d51d03d27e92723484ddece304041aee",
+    "changedFiles": []
+  },
+  "inputAndWitnessCounts": {
+    "physicsViewsChecked": 90,
+    "physicsCurrentSourcePinsChecked": 63,
+    "actualMathViewsChecked": 100,
+    "checkedRetainedWitnesses": 1036,
+    "checkedMathAtoms": 47,
+    "actualEarliestConsumersAndLocationsMatched": 1036,
+    "requiresEdgesChecked": 4349,
+    "regularMathTargetPlaces": 15,
+    "explicitAcquisitionPlaces": 1021,
+    "atlasSourceViewCount": 70,
+    "allPriorWitnessInputCount": 263
+  },
+  "perView": {
+    "de-bb-gk.view.json": {
+      "viewId": "de-bb-gym-physics-gk",
+      "rawSha256": "658514392bf42690ee0b97b8f6175e32d17f5144909e2dbd35bdb7d298f2fa28",
+      "seedCount": 482,
+      "seedSha256": "9f0dbe11420f60c42073b70a1773d33274fad1889f0ccd30df18d179430b6662",
+      "fullClosureCount": 707,
+      "fullClosureSha256": "53617d4debba3944ef69d1efe219025235c16375f66bf71d5248820e9703758c",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-bb-lk.view.json": {
+      "viewId": "de-bb-gym-physics-lk",
+      "rawSha256": "c1a0528edac03b3e2d0036347e40e35fe704c5f59826c8ed7295322a26ff489e",
+      "seedCount": 563,
+      "seedSha256": "ea7acdd1706b61fac74d6ed397e21120c19ea71ba4dd4f9e208fdf38812b2236",
+      "fullClosureCount": 747,
+      "fullClosureSha256": "30173e9d8d84a452593d00c3e8164ca689799f297bd2d57bc4d3dbce09700929",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-bb-seki.view.json": {
+      "viewId": "de-bb-gym-seki-physics",
+      "rawSha256": "1ca974a12cbcec39dcec2e0dbf628350c96ce7515d8d2ce8b23194cde7812a42",
+      "seedCount": 126,
+      "seedSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+      "fullClosureCount": 191,
+      "fullClosureSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-bb-sekii-gk.view.json": {
+      "viewId": "de-bb-gym-sekii-physics-gk",
+      "rawSha256": "930f176defb29226600b33f9e61093be25bcda846d557dca7e5941c8b40979ef",
+      "seedCount": 367,
+      "seedSha256": "a711513e5d9bbee1377a07e0416d4e68970b4a5e4cb555de850fae29d526b4d7",
+      "fullClosureCount": 617,
+      "fullClosureSha256": "c771386c8d3e5442d0a743ef146f9cd68b8984f90da890b850b074dddda111c9",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-bb-sekii-lk.view.json": {
+      "viewId": "de-bb-gym-sekii-physics-lk",
+      "rawSha256": "047674f642e668270db23405249d37cdb25af76f16518595e2c459c8d39df84a",
+      "seedCount": 448,
+      "seedSha256": "a0ac46a772c62c7c478a62c4c0a91712975cbff08182771a1484c70a9a5fc810",
+      "fullClosureCount": 657,
+      "fullClosureSha256": "305b316dd6f1179fb9f3382b1ddd1422e0893e8eb6b7a1c73ded83c02b7d82c4",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-be-gk.view.json": {
+      "viewId": "de-be-gym-physics-gk",
+      "rawSha256": "a077f450d007580920a57984ad34526fcfffdb931e169e886114092ebdbe608c",
+      "seedCount": 482,
+      "seedSha256": "9f0dbe11420f60c42073b70a1773d33274fad1889f0ccd30df18d179430b6662",
+      "fullClosureCount": 707,
+      "fullClosureSha256": "53617d4debba3944ef69d1efe219025235c16375f66bf71d5248820e9703758c",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-be-lk.view.json": {
+      "viewId": "de-be-gym-physics-lk",
+      "rawSha256": "8a7c8533b8a667fc3aea2785cea2c40e3ae8e909d387cb0ae068b5893bf2baf3",
+      "seedCount": 563,
+      "seedSha256": "ea7acdd1706b61fac74d6ed397e21120c19ea71ba4dd4f9e208fdf38812b2236",
+      "fullClosureCount": 747,
+      "fullClosureSha256": "30173e9d8d84a452593d00c3e8164ca689799f297bd2d57bc4d3dbce09700929",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-be-seki.view.json": {
+      "viewId": "de-be-gym-seki-physics",
+      "rawSha256": "20a123935113a8608b6dc956168820d7150dbaf70c609c98894c82dbf642a410",
+      "seedCount": 126,
+      "seedSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+      "fullClosureCount": 191,
+      "fullClosureSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-be-sekii-gk.view.json": {
+      "viewId": "de-be-gym-sekii-physics-gk",
+      "rawSha256": "88576d705c6a484b2427216b3e0257d92e29c9394e11b20cc1e9da52d7257b5a",
+      "seedCount": 367,
+      "seedSha256": "a711513e5d9bbee1377a07e0416d4e68970b4a5e4cb555de850fae29d526b4d7",
+      "fullClosureCount": 617,
+      "fullClosureSha256": "c771386c8d3e5442d0a743ef146f9cd68b8984f90da890b850b074dddda111c9",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-be-sekii-lk.view.json": {
+      "viewId": "de-be-gym-sekii-physics-lk",
+      "rawSha256": "11302a5c86d5b332ecf693b3ef36f80880d6299d6db436e5ea4d1ae0e8f4810e",
+      "seedCount": 448,
+      "seedSha256": "a0ac46a772c62c7c478a62c4c0a91712975cbff08182771a1484c70a9a5fc810",
+      "fullClosureCount": 657,
+      "fullClosureSha256": "305b316dd6f1179fb9f3382b1ddd1422e0893e8eb6b7a1c73ded83c02b7d82c4",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-bw-gk.view.json": {
+      "viewId": "de-bw-gym-physics-gk",
+      "rawSha256": "cf7ec79225faf838a960789b1e2720ba8a65390b77bba6f2a08098d3fb87e99d",
+      "seedCount": 272,
+      "seedSha256": "cc7c73af73febeb7ef9cc5049662befd5e1dbdb5b452b5bb3a4657505161e348",
+      "fullClosureCount": 398,
+      "fullClosureSha256": "ae38d3e168d6265b88d9202911213e223c386126aa7ea369205f57f68d78d713",
+      "mathDemandCount": 91,
+      "mathDemandSha256": "772e5cf900e8de1ddad6d6031744bd7164e32381f671968ee839c11aba2dbece"
+    },
+    "de-bw-lk.view.json": {
+      "viewId": "de-bw-gym-physics-lk",
+      "rawSha256": "889a16111d8827176e824acfe5c439bdb844a2478f4f8bcef74d5cef03b72214",
+      "seedCount": 313,
+      "seedSha256": "c46778fbdb51fbdbf37726a37cc8c1c0775b33e0955135a8de40c6b6d24969a1",
+      "fullClosureCount": 469,
+      "fullClosureSha256": "b836189cb360cc53ab3244b458e29f6985a3bf449afd7ad5551827d361a7ec15",
+      "mathDemandCount": 123,
+      "mathDemandSha256": "e712ee6546245614c96b1b644532e55cd4eed53fdcb75ce1d829778ae5cd5979"
+    },
+    "de-bw-seki.view.json": {
+      "viewId": "de-bw-gym-seki-physics",
+      "rawSha256": "2317294f8065436fa0bf4ade55e12718d953f4615c3375cc5740b95f6b5fbb78",
+      "seedCount": 161,
+      "seedSha256": "d1b2cf3e64d6b0e17c392942891712c69b8b6eeaba158f8f71abccceae186d34",
+      "fullClosureCount": 259,
+      "fullClosureSha256": "4a936d87dd7a7243e09529769f6232d4185adfaf692c1733383777bd35f480f2",
+      "mathDemandCount": 83,
+      "mathDemandSha256": "57995b7c21afeed691eaccba75996f61efb99880462b7be46aa9ba820b5c8f74"
+    },
+    "de-bw-sekii-gk.view.json": {
+      "viewId": "de-bw-gym-sekii-physics-gk",
+      "rawSha256": "6f566013f90b7aa94bdb8626f10e2bf0732011d2b68602b385e33a8e98d08adc",
+      "seedCount": 127,
+      "seedSha256": "9399a14cdd396fa58dc43165c3e5c592f179128e776ada3f67e0724a14ddc95f",
+      "fullClosureCount": 276,
+      "fullClosureSha256": "79df101f4a19c24bb6a4386687c261cf7d3db5588493da59ceafc4307e8fa9f4",
+      "mathDemandCount": 89,
+      "mathDemandSha256": "1d6932e7f05dfbeb9e27c7aedee25ca7bef4d870feddffd179ee207763cee81f"
+    },
+    "de-bw-sekii-lk.view.json": {
+      "viewId": "de-bw-gym-sekii-physics-lk",
+      "rawSha256": "9a19cce5c0e41d4bef46c9e83125e308f324bc81a0a518609e6a9800262a44ed",
+      "seedCount": 168,
+      "seedSha256": "d19458381a8514d70344ca874288ed1b81bf4442e843fc3c63645134d2076916",
+      "fullClosureCount": 347,
+      "fullClosureSha256": "d4196f02c31b57ce56b41bbdc1531ad4b3e982ba91c4e93d9d7141cbde2e2061",
+      "mathDemandCount": 121,
+      "mathDemandSha256": "c6a1957af6e95729121144bde810c4db75b0b5e61831c7114c758cb51a9c2212"
+    },
+    "de-by-gk.view.json": {
+      "viewId": "de-by-gym-physics-gk",
+      "rawSha256": "6648e3a7d0b2630c90cdce50988cc4d950e223a27e8c1b101007b2aa3041473d",
+      "seedCount": 372,
+      "seedSha256": "108b3e5be6ff8e591f93c650d3d487e1d033471523ed00a1ecd8c7a5f59cd408",
+      "fullClosureCount": 561,
+      "fullClosureSha256": "547e74ca0d273bac21e1dc9ceb292dd8e6f14eeea48c213080dfccede482710f",
+      "mathDemandCount": 126,
+      "mathDemandSha256": "f87a7c11418a38473030217538ba981ba52341bd9ad2b190c730d56b5a1206b9"
+    },
+    "de-by-lk.view.json": {
+      "viewId": "de-by-gym-physics-lk",
+      "rawSha256": "01d6d9f77646782ad27e5673d2c6c2b0476b3803efd6f0f51c7fdc1cda915916",
+      "seedCount": 419,
+      "seedSha256": "33e03a5483ad0ea5ab622c3749f34bbd346686a679e8b840f8dbb2dd23d34e02",
+      "fullClosureCount": 621,
+      "fullClosureSha256": "11effec9b2fee06366d01b7ee5d387decec096280dd0b877ff972699eacb9ca8",
+      "mathDemandCount": 140,
+      "mathDemandSha256": "5ae4090f2023f121c68de2c8187d0558994ec9d31f9529f8e92c5aa759a23ee8"
+    },
+    "de-by-seki.view.json": {
+      "viewId": "de-by-gym-seki-physics",
+      "rawSha256": "b9fa94235e04876ddd43c860ed7a1d7c2a4e150bf72d69d62034c1ff2c82fc2c",
+      "seedCount": 156,
+      "seedSha256": "983fe19a1cb8d1a818d2c2bc1b1f9950bda18ee180cd7549f14462338a3df350",
+      "fullClosureCount": 264,
+      "fullClosureSha256": "8c89fd44dcb2845a9ea50422b05db35e8260e804a59c572d02c5c141656b893c",
+      "mathDemandCount": 84,
+      "mathDemandSha256": "0681787cd10d94c7ce927c385df7237000cddd1a5b6f9ab1135b3f0ea897617e"
+    },
+    "de-by-sekii-gk.view.json": {
+      "viewId": "de-by-gym-sekii-physics-gk",
+      "rawSha256": "34655c065d27d32755b109d98d86dc5b3fc9ec7a0ee88d3bd590c7a55f417758",
+      "seedCount": 265,
+      "seedSha256": "6451087b67117c3a0f8c3e6fb97edb680300e97013a80bc7419fa9cb79b1bcd9",
+      "fullClosureCount": 489,
+      "fullClosureSha256": "11a7d8374a47879f71a716c704db627be26778b754f075bff712a6dcf9e0989c",
+      "mathDemandCount": 126,
+      "mathDemandSha256": "f87a7c11418a38473030217538ba981ba52341bd9ad2b190c730d56b5a1206b9"
+    },
+    "de-by-sekii-lk.view.json": {
+      "viewId": "de-by-gym-sekii-physics-lk",
+      "rawSha256": "8cdc3efd3c737909eacafa0308c74b6b38d126caace97420f93f54cc763ad789",
+      "seedCount": 312,
+      "seedSha256": "47d924b9d2756aedc304ff9b247049827746bafb3bde347ef2be9fc5e69eb59f",
+      "fullClosureCount": 550,
+      "fullClosureSha256": "0868f720b4465fed998cd53556fc3933051b214187276871638b28812bc71223",
+      "mathDemandCount": 140,
+      "mathDemandSha256": "5ae4090f2023f121c68de2c8187d0558994ec9d31f9529f8e92c5aa759a23ee8"
+    },
+    "de-de-gym-physics-gk.view.json": {
+      "viewId": "de-de-gym-physics-gk",
+      "rawSha256": "2aa18379c9381e3d10558372171467f4e69d383dd676c8cc004d9f611a3f26ed",
+      "seedCount": 523,
+      "seedSha256": "3d945e3908fbe2e62b83c0f67145cb135a6c8ced7e882213863b6bfb2937b975",
+      "fullClosureCount": 765,
+      "fullClosureSha256": "5a88e852a5a0fcf64642c4b091c3b736c6b343ca1ead131816005cfd6e33708d",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-de-gym-physics-lk.view.json": {
+      "viewId": "de-de-gym-physics-lk",
+      "rawSha256": "78a5983718393dc4a888c1ef393ef483bc941d396af0c4263a2ad6c920d74e45",
+      "seedCount": 607,
+      "seedSha256": "d58d811437f3017d1f98be3efb014328c1188d5d120a75b0fc829bff7e70feb4",
+      "fullClosureCount": 810,
+      "fullClosureSha256": "8f05a1e3c6200f2f7c234109e775aa297c5f450072cf8d6a6ffa0f903babe14a",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-de-gym-seki-physics.view.json": {
+      "viewId": "de-de-gym-seki-physics",
+      "rawSha256": "d948a2d535f022844cbc74da9fe6a5a7ed30db4570e8808f82d67c7aa0963a3c",
+      "seedCount": 169,
+      "seedSha256": "c94fb069aacf91d6d95fee826ae0cdf836c17f546b57ec0a75c40e61aff7098b",
+      "fullClosureCount": 247,
+      "fullClosureSha256": "fe21750865b2d8217a61b99279348b405bf46245885ef3a4b12263201d69e31d",
+      "mathDemandCount": 63,
+      "mathDemandSha256": "97e61fa922e2225c9d8828c6fba0826bf4261dcc12352e7f131da6988c651b9e"
+    },
+    "de-de-gym-sekii-physics-gk.view.json": {
+      "viewId": "de-de-gym-sekii-physics-gk",
+      "rawSha256": "bea0a8e0f11e0b925fcbf7c65c970e957a1a4ec435a0c38dda6a3ca3c40ea3f1",
+      "seedCount": 402,
+      "seedSha256": "c1e6ccd692aa5ffb162fcd3fde47f942effe99e9d45526de25a8c219652ff0d9",
+      "fullClosureCount": 648,
+      "fullClosureSha256": "1dc4c99603180050065266fa2dec2cf41667c6f60fafccb25f78276e011340e1",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-de-gym-sekii-physics-lk.view.json": {
+      "viewId": "de-de-gym-sekii-physics-lk",
+      "rawSha256": "d35e00a3f622830f0964ea42b5f9414e4e88a7182b3955eb01319ad458051d18",
+      "seedCount": 484,
+      "seedSha256": "4ec84c0dea5768afe766260382e1d3e409158fd544b36d1135478717ef997ea8",
+      "fullClosureCount": 691,
+      "fullClosureSha256": "75f668ecd05f04284bf6f77c52f4f4c6fabad1d51dae722b2a62f9781850c4db",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-hb-gk.view.json": {
+      "viewId": "de-hb-gym-physics-gk",
+      "rawSha256": "fe0387e394ebba4c195aeb94cd5a682b413a371c8c8289cdb55508199bd1ad8d",
+      "seedCount": 482,
+      "seedSha256": "9f0dbe11420f60c42073b70a1773d33274fad1889f0ccd30df18d179430b6662",
+      "fullClosureCount": 707,
+      "fullClosureSha256": "53617d4debba3944ef69d1efe219025235c16375f66bf71d5248820e9703758c",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-hb-lk.view.json": {
+      "viewId": "de-hb-gym-physics-lk",
+      "rawSha256": "42f4086bedbc631f088c3e3bc158db6bf1d934449da021baf6887d3eeabc05be",
+      "seedCount": 563,
+      "seedSha256": "ea7acdd1706b61fac74d6ed397e21120c19ea71ba4dd4f9e208fdf38812b2236",
+      "fullClosureCount": 747,
+      "fullClosureSha256": "30173e9d8d84a452593d00c3e8164ca689799f297bd2d57bc4d3dbce09700929",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-hb-seki.view.json": {
+      "viewId": "de-hb-gym-seki-physics",
+      "rawSha256": "6a28428ef6f67a35c147568fabcafec4d31e4105f3dd8cf4cc9192dbb3853a71",
+      "seedCount": 126,
+      "seedSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+      "fullClosureCount": 191,
+      "fullClosureSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-hb-sekii-gk.view.json": {
+      "viewId": "de-hb-gym-sekii-physics-gk",
+      "rawSha256": "7f9ce61a8b64203f04e9613cfa3886d18f79303dfa2c4eedeb148fdada51732e",
+      "seedCount": 367,
+      "seedSha256": "a711513e5d9bbee1377a07e0416d4e68970b4a5e4cb555de850fae29d526b4d7",
+      "fullClosureCount": 617,
+      "fullClosureSha256": "c771386c8d3e5442d0a743ef146f9cd68b8984f90da890b850b074dddda111c9",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-hb-sekii-lk.view.json": {
+      "viewId": "de-hb-gym-sekii-physics-lk",
+      "rawSha256": "740f66af25b67b4e4b3ffa7c6e7d498ad8c370b1103f8ceb268e106fe26c8150",
+      "seedCount": 448,
+      "seedSha256": "a0ac46a772c62c7c478a62c4c0a91712975cbff08182771a1484c70a9a5fc810",
+      "fullClosureCount": 657,
+      "fullClosureSha256": "305b316dd6f1179fb9f3382b1ddd1422e0893e8eb6b7a1c73ded83c02b7d82c4",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-he-gk-g8.view.json": {
+      "viewId": "de-he-gym-physics-gk-g8",
+      "rawSha256": "89be642a5b92be654e28956b57b7de0c7556eab7c19ecaf84d1223e0e33a380d",
+      "seedCount": 512,
+      "seedSha256": "f1d7fe9ed98a54b3ce93d0ed3c3653ae54c02ca8142dbfdf90c9d67d11fc2cd1",
+      "fullClosureCount": 730,
+      "fullClosureSha256": "cf255fba85f89a6f5c2ef90c2868cfa644d3d32967aa15e9819226c7d6496a10",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-he-gk-g9.view.json": {
+      "viewId": "de-he-gym-physics-gk-g9",
+      "rawSha256": "c0571a656d442647738d9cf3f4ef0c29864a16e0d488b2858e12663ec3a7df8e",
+      "seedCount": 512,
+      "seedSha256": "f1d7fe9ed98a54b3ce93d0ed3c3653ae54c02ca8142dbfdf90c9d67d11fc2cd1",
+      "fullClosureCount": 730,
+      "fullClosureSha256": "cf255fba85f89a6f5c2ef90c2868cfa644d3d32967aa15e9819226c7d6496a10",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-he-gk.view.json": {
+      "viewId": "de-he-gym-physics-gk",
+      "rawSha256": "e39433b3ddcaf0a9f0e600af7b112db430c0cdf42eead69b18c2d8d57c291b73",
+      "seedCount": 512,
+      "seedSha256": "f1d7fe9ed98a54b3ce93d0ed3c3653ae54c02ca8142dbfdf90c9d67d11fc2cd1",
+      "fullClosureCount": 730,
+      "fullClosureSha256": "cf255fba85f89a6f5c2ef90c2868cfa644d3d32967aa15e9819226c7d6496a10",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-he-lk-g8.view.json": {
+      "viewId": "de-he-gym-physics-lk-g8",
+      "rawSha256": "9c44a9c90fbcb64481d7d5a565fa1c0c34029993b912ed927a3aad919dbb80ab",
+      "seedCount": 599,
+      "seedSha256": "ce8ddb8247141ba96d683af2c05ed196d54c9cf107b6cc0e7adb9729d0bdaf9b",
+      "fullClosureCount": 773,
+      "fullClosureSha256": "51ca08c3d1c232f22a59999cb49fcc88040c6dc3ffec092fd5f6fb85e8ffcc30",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-he-lk-g9.view.json": {
+      "viewId": "de-he-gym-physics-lk-g9",
+      "rawSha256": "322c1a66ce704b6e434465e819de810cb59c84aefc376167a5ffcc68c849ac45",
+      "seedCount": 599,
+      "seedSha256": "ce8ddb8247141ba96d683af2c05ed196d54c9cf107b6cc0e7adb9729d0bdaf9b",
+      "fullClosureCount": 773,
+      "fullClosureSha256": "51ca08c3d1c232f22a59999cb49fcc88040c6dc3ffec092fd5f6fb85e8ffcc30",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-he-lk.view.json": {
+      "viewId": "de-he-gym-physics-lk",
+      "rawSha256": "75fc607922641c4d539f52f353fadbeeb8d44792ade565b2c5db8a5c6aa98494",
+      "seedCount": 599,
+      "seedSha256": "ce8ddb8247141ba96d683af2c05ed196d54c9cf107b6cc0e7adb9729d0bdaf9b",
+      "fullClosureCount": 773,
+      "fullClosureSha256": "51ca08c3d1c232f22a59999cb49fcc88040c6dc3ffec092fd5f6fb85e8ffcc30",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-he-seki-g8.view.json": {
+      "viewId": "de-he-gym-seki-physics-g8",
+      "rawSha256": "48eba06fa1b2d92210ffe12e5ad876a08966b154672cbeea0457e337a650d382",
+      "seedCount": 130,
+      "seedSha256": "8df885bd01e51f266723db18209d146bdbadd72a3d35d3d6c5638def07edcf11",
+      "fullClosureCount": 195,
+      "fullClosureSha256": "d80a9b4941267758faeba5e5a23db63e82bce7c38ec71a3ed706b0c0396fd87d",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-he-seki-g9.view.json": {
+      "viewId": "de-he-gym-seki-physics-g9",
+      "rawSha256": "3b3051074adf328ba61aec695a9bd90b9b9ac1460fa18ab08bec707449faaddd",
+      "seedCount": 130,
+      "seedSha256": "8df885bd01e51f266723db18209d146bdbadd72a3d35d3d6c5638def07edcf11",
+      "fullClosureCount": 195,
+      "fullClosureSha256": "d80a9b4941267758faeba5e5a23db63e82bce7c38ec71a3ed706b0c0396fd87d",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-he-sekii-gk.view.json": {
+      "viewId": "de-he-gym-sekii-physics-gk",
+      "rawSha256": "1cc22500fb32885c814834287d79d3be35448130b42240ad863f2f8cb7ba33ca",
+      "seedCount": 395,
+      "seedSha256": "7eb9454d1a45b49ad94e6852d54e0c394b0cb51b4bd37fcead7e54b880137eae",
+      "fullClosureCount": 637,
+      "fullClosureSha256": "9644c8251a737a34269b4c9e0ae837bf563d872ee784364a6a372084f7397fc9",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-he-sekii-lk.view.json": {
+      "viewId": "de-he-gym-sekii-physics-lk",
+      "rawSha256": "ed1a0be8ca40bd6a6b0e1d272aef867c108449e227d81448d419a1e7231b08ec",
+      "seedCount": 482,
+      "seedSha256": "a552cc58ae58526298c9d48615579f8d606086361f30e14688edb47e94ebf754",
+      "fullClosureCount": 680,
+      "fullClosureSha256": "a0b512be40fd7d4cdba45fd3f92f73fb406d276384d8bfb53c0c001393f33566",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-hh-gk.view.json": {
+      "viewId": "de-hh-gym-physics-gk",
+      "rawSha256": "73887b9042f5d8d762e8d83705881d866df73b515aa8fcfea05b1dc463b1f2f0",
+      "seedCount": 482,
+      "seedSha256": "9f0dbe11420f60c42073b70a1773d33274fad1889f0ccd30df18d179430b6662",
+      "fullClosureCount": 707,
+      "fullClosureSha256": "53617d4debba3944ef69d1efe219025235c16375f66bf71d5248820e9703758c",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-hh-lk.view.json": {
+      "viewId": "de-hh-gym-physics-lk",
+      "rawSha256": "70cafce152b790f79927d40354240b84c676deffae0175d9b182ced11c719d2c",
+      "seedCount": 565,
+      "seedSha256": "2abc0c9a341157dde421d7830af97b1ed8781bfe3551ca8af39c0e6945f1f26d",
+      "fullClosureCount": 749,
+      "fullClosureSha256": "4bd7f7fb37f92cc1da796cc8c6fe6c1fb37a2594943bb13e347dcc80a7f05306",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-hh-seki.view.json": {
+      "viewId": "de-hh-gym-seki-physics",
+      "rawSha256": "cd843888dccb1cda7c344bc84f0b7998a90bddbdef2a414bcecb1f3ef2380202",
+      "seedCount": 130,
+      "seedSha256": "d48e85f677763e48cb5e7094f56961056416a5ffa0b6255ae36ab47765a5b1cf",
+      "fullClosureCount": 198,
+      "fullClosureSha256": "2c095866143b708479c6a4e3c49a0dce78a6204b03113733059141467ff1149f",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-hh-sekii-gk.view.json": {
+      "viewId": "de-hh-gym-sekii-physics-gk",
+      "rawSha256": "15e1b567a6089ee8ccfd80dab7605f5e9c6e90c9196067c4f8b372c0baf440d5",
+      "seedCount": 367,
+      "seedSha256": "a711513e5d9bbee1377a07e0416d4e68970b4a5e4cb555de850fae29d526b4d7",
+      "fullClosureCount": 617,
+      "fullClosureSha256": "c771386c8d3e5442d0a743ef146f9cd68b8984f90da890b850b074dddda111c9",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-hh-sekii-lk.view.json": {
+      "viewId": "de-hh-gym-sekii-physics-lk",
+      "rawSha256": "746df9336e528ea45bdd4c99739a84bf98c0428744c02fb5feb9fb8fc9587d6c",
+      "seedCount": 448,
+      "seedSha256": "a0ac46a772c62c7c478a62c4c0a91712975cbff08182771a1484c70a9a5fc810",
+      "fullClosureCount": 657,
+      "fullClosureSha256": "305b316dd6f1179fb9f3382b1ddd1422e0893e8eb6b7a1c73ded83c02b7d82c4",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-mv-gk.view.json": {
+      "viewId": "de-mv-gym-physics-gk",
+      "rawSha256": "1f960947bf75a10cbfaad97872ef78ec0222f750a5322e55954e2cc7cf3b3f40",
+      "seedCount": 489,
+      "seedSha256": "f295b29924f8a3993950aed83e76a803c9795c0418bd4e86471248802ff24a47",
+      "fullClosureCount": 716,
+      "fullClosureSha256": "a7d4e1ffc3b23fda98dcc7285082b1e94e7488f63fa1b9d1768adc74d0d952f5",
+      "mathDemandCount": 153,
+      "mathDemandSha256": "02d731e97d7310da33cd170344a7ea28806bfe6216de220710005ff388e92764"
+    },
+    "de-mv-lk.view.json": {
+      "viewId": "de-mv-gym-physics-lk",
+      "rawSha256": "59b9f55b0fc8abba9e66ee4ee3e3f9c63f7e82fa51d2a9f08771a19ef68f65e5",
+      "seedCount": 570,
+      "seedSha256": "a04b64dce23c187536a01abd13d436bf36ed147adf10939f6d7934bdde1dcc8a",
+      "fullClosureCount": 756,
+      "fullClosureSha256": "c27f6285173a8e083199def60bef766082477e032c838f727c7e168a6e3ff763",
+      "mathDemandCount": 162,
+      "mathDemandSha256": "1c7855736332deeb0ebc1c7dd71aafb07e892cfb33123c221f04c3ae8b45b873"
+    },
+    "de-mv-seki.view.json": {
+      "viewId": "de-mv-gym-seki-physics",
+      "rawSha256": "2b1a057d20a44d6a3187babf44b86a64b8e8a49b8147e4129774cdc3a822ef35",
+      "seedCount": 124,
+      "seedSha256": "a0b89d749da9d01acc2b34cf998ea245282e620f60442a45ebd4f7cb77045aaa",
+      "fullClosureCount": 204,
+      "fullClosureSha256": "65f9811887fd10878acd71df08868620e406f542bdfb8fabef7113a831c52ccf",
+      "mathDemandCount": 68,
+      "mathDemandSha256": "6f974c58803595ac51ce0c5cfe177490b36830269c66fa27dbeb7c3fa29b6af4"
+    },
+    "de-mv-sekii-gk.view.json": {
+      "viewId": "de-mv-gym-sekii-physics-gk",
+      "rawSha256": "9a2bbb6e2542be2537b0154e32de298fc5df75595acd1c6abe17056fcecf093c",
+      "seedCount": 368,
+      "seedSha256": "0d03f8cbb488237934978c54a5e669756cc209c5d1eb9e20dfa60426ab7ff736",
+      "fullClosureCount": 617,
+      "fullClosureSha256": "c771386c8d3e5442d0a743ef146f9cd68b8984f90da890b850b074dddda111c9",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-mv-sekii-lk.view.json": {
+      "viewId": "de-mv-gym-sekii-physics-lk",
+      "rawSha256": "f7513adbb70d8a3d02d12baaf9ce94e9e3c8c249c152f56bad55393fc6865895",
+      "seedCount": 449,
+      "seedSha256": "22c869099093b35cb7c4aad1ba1c83a90facca6376161bf27fb8935123c5988f",
+      "fullClosureCount": 657,
+      "fullClosureSha256": "305b316dd6f1179fb9f3382b1ddd1422e0893e8eb6b7a1c73ded83c02b7d82c4",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-ni-gk.view.json": {
+      "viewId": "de-ni-gym-physics-gk",
+      "rawSha256": "9b440c37be71104756a4cbe686e9fdb0f8c3ce2409b145006f7adf04cc6d8472",
+      "seedCount": 484,
+      "seedSha256": "96216ac8edc45e89991b3bf349b41ed17dc47483a9ce78b81eb80b4670ef02a5",
+      "fullClosureCount": 713,
+      "fullClosureSha256": "d8b6d292558acdec1e10b01d2057f2682b51112c4acc3e864ce68bd0b5c44096",
+      "mathDemandCount": 153,
+      "mathDemandSha256": "02d731e97d7310da33cd170344a7ea28806bfe6216de220710005ff388e92764"
+    },
+    "de-ni-lk.view.json": {
+      "viewId": "de-ni-gym-physics-lk",
+      "rawSha256": "c36fd70fd17acdb4e3d1ddedc527aab1f93c8dbdda740d0fabc8fe49488bdfbe",
+      "seedCount": 565,
+      "seedSha256": "bcd6187291ef426bf367c1e05056611b7040d2c6d46aef18f833411971a59483",
+      "fullClosureCount": 753,
+      "fullClosureSha256": "8a4216ece491a30570c423a6583fbc2f30f710c9f0ba8830d7f13b6bf0535e76",
+      "mathDemandCount": 162,
+      "mathDemandSha256": "1c7855736332deeb0ebc1c7dd71aafb07e892cfb33123c221f04c3ae8b45b873"
+    },
+    "de-ni-seki.view.json": {
+      "viewId": "de-ni-gym-seki-physics",
+      "rawSha256": "e157679b5675f7dd15cdd6d008d4373c00be432b973e8ab6d775d62e487fd596",
+      "seedCount": 126,
+      "seedSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+      "fullClosureCount": 191,
+      "fullClosureSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-ni-sekii-gk.view.json": {
+      "viewId": "de-ni-gym-sekii-physics-gk",
+      "rawSha256": "afe47146f38b9af01fb3bfa81f2993dab7f871d5bc9a0f9108279d067c3fa0fa",
+      "seedCount": 371,
+      "seedSha256": "041e3730d5af93ee08a86f0505a6710776e73b4dfb2822dad23c918d7f88e69c",
+      "fullClosureCount": 628,
+      "fullClosureSha256": "d34011ae4497fb12c0697963977d88362c1edf1b18f561630c920af25df820b5",
+      "mathDemandCount": 150,
+      "mathDemandSha256": "a726ff49abd17d8eee85667a1349369afd7a860f2f5810f214b83e9454692c55"
+    },
+    "de-ni-sekii-lk.view.json": {
+      "viewId": "de-ni-gym-sekii-physics-lk",
+      "rawSha256": "7a76bee01d5ae1ef9d74d21fcef695d1bae88aa54fc0b98fc6b34afd0086810d",
+      "seedCount": 452,
+      "seedSha256": "75b15557b4bfb06b64d97db7cc22a90a447fa2ba24e6bfcc74bb18fb2ea6b539",
+      "fullClosureCount": 668,
+      "fullClosureSha256": "52b316415cb967850afde54dfd20d9dfda1e4c1087ad337aa1c357d8f805b153",
+      "mathDemandCount": 159,
+      "mathDemandSha256": "660e7f5faa1117a2296e547c0438a1d814d9e3b26cbbec7eded6412817c9b66c"
+    },
+    "de-nw-gk.view.json": {
+      "viewId": "de-nw-gym-physics-gk",
+      "rawSha256": "cbc572070cf5a48624cec2e6737ab4ef9726b73e5ce687da427aec3ee985f749",
+      "seedCount": 482,
+      "seedSha256": "9f0dbe11420f60c42073b70a1773d33274fad1889f0ccd30df18d179430b6662",
+      "fullClosureCount": 707,
+      "fullClosureSha256": "53617d4debba3944ef69d1efe219025235c16375f66bf71d5248820e9703758c",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-nw-lk.view.json": {
+      "viewId": "de-nw-gym-physics-lk",
+      "rawSha256": "aae317da8acbb527eafaa7f80cd0a8789987ef09b30e5c7ddb4014830213e39c",
+      "seedCount": 563,
+      "seedSha256": "ea7acdd1706b61fac74d6ed397e21120c19ea71ba4dd4f9e208fdf38812b2236",
+      "fullClosureCount": 747,
+      "fullClosureSha256": "30173e9d8d84a452593d00c3e8164ca689799f297bd2d57bc4d3dbce09700929",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-nw-seki.view.json": {
+      "viewId": "de-nw-gym-seki-physics",
+      "rawSha256": "d2f14371e6a9545f7d70d2ed15c309b01745ab0d3b68a2e1a077e8b65483376d",
+      "seedCount": 126,
+      "seedSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+      "fullClosureCount": 191,
+      "fullClosureSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-nw-sekii-gk.view.json": {
+      "viewId": "de-nw-gym-sekii-physics-gk",
+      "rawSha256": "e187e6aacca0fd6398a58794f50dfd5618a3fb5454a8ab74222f1d4a5fcfcc9d",
+      "seedCount": 367,
+      "seedSha256": "a711513e5d9bbee1377a07e0416d4e68970b4a5e4cb555de850fae29d526b4d7",
+      "fullClosureCount": 617,
+      "fullClosureSha256": "c771386c8d3e5442d0a743ef146f9cd68b8984f90da890b850b074dddda111c9",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-nw-sekii-lk.view.json": {
+      "viewId": "de-nw-gym-sekii-physics-lk",
+      "rawSha256": "24b70c10c9c0a72050f6e1412d8733485f644795561ba4c24013add7cf913c5c",
+      "seedCount": 448,
+      "seedSha256": "a0ac46a772c62c7c478a62c4c0a91712975cbff08182771a1484c70a9a5fc810",
+      "fullClosureCount": 657,
+      "fullClosureSha256": "305b316dd6f1179fb9f3382b1ddd1422e0893e8eb6b7a1c73ded83c02b7d82c4",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-rp-gk.view.json": {
+      "viewId": "de-rp-gym-physics-gk",
+      "rawSha256": "0f7f6cbd4485c427c81d1d287017ce9b58b9104cb30d292f77aa8d3282b60d47",
+      "seedCount": 479,
+      "seedSha256": "7c8359be01fdf7749a8d9272baf2cb5e55017422177a8aa3d92d3b94ed56faa1",
+      "fullClosureCount": 732,
+      "fullClosureSha256": "65e775bc725921a12c161404362f5dc2de65c0d8b2d935354c81d3344a38777c",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-rp-lk.view.json": {
+      "viewId": "de-rp-gym-physics-lk",
+      "rawSha256": "ca431b78d787690f3ad152174cbb25d155c93fad41167e6b7af58cc8e07fea61",
+      "seedCount": 559,
+      "seedSha256": "7b4b22f184898feb3364e3abb18e7dfc54d83eea40f4c0835204d2310179a74d",
+      "fullClosureCount": 769,
+      "fullClosureSha256": "736805ed369a6cd7a814490a64b1440042bce9c9f63e8c821a4fcecae6b97e35",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-rp-seki.view.json": {
+      "viewId": "de-rp-gym-seki-physics",
+      "rawSha256": "7ec166c48ac9f7eb4452cb6fd1ca93c2a0410c88f94efae0c6a86729f27f90ff",
+      "seedCount": 143,
+      "seedSha256": "b4ee81bd82635bfb0bccb40ca70d3670a5d3038f7e44d86c054769e377fe31e8",
+      "fullClosureCount": 295,
+      "fullClosureSha256": "2cf211d16a79571db56fa70c8c6548546f8345ce1b3967a91a4561d775695e7a",
+      "mathDemandCount": 85,
+      "mathDemandSha256": "3af9acde357f35e45440c35bbfd0aee53e311158a7a4083600c6e39954332778"
+    },
+    "de-rp-sekii-gk.view.json": {
+      "viewId": "de-rp-gym-sekii-physics-gk",
+      "rawSha256": "da0e28afc2e83ce66cbb44aecc7478b49f521c40f7123d9bce48209fc5230e9d",
+      "seedCount": 380,
+      "seedSha256": "3560ba4fa290af20a0bf1753aa1860b338f4340c74c35aa202395006ff7b231d",
+      "fullClosureCount": 627,
+      "fullClosureSha256": "0f8f329fb6158122f5bae142809838214f8adc6be13a88c9e4644c6d8f1938f7",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-rp-sekii-lk.view.json": {
+      "viewId": "de-rp-gym-sekii-physics-lk",
+      "rawSha256": "1a021bf0258412930c495dee9d036f7ec1f3c45a04671016e186abf38a3d6b92",
+      "seedCount": 460,
+      "seedSha256": "84481d08740116f2a1fd4c44987e3d9afa32b3341b79b2263e5fce1239f42274",
+      "fullClosureCount": 663,
+      "fullClosureSha256": "a4dab044d035fa8438069f34c4cfffce5d637d48299e17b2dec4bf611da25038",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-sh-gk.view.json": {
+      "viewId": "de-sh-gym-physics-gk",
+      "rawSha256": "86516949c1134c34896d4c8848ee020fa0d1cbb385bad1e1b514c4598a2b3078",
+      "seedCount": 483,
+      "seedSha256": "31a5df6ebc87d8e8771f2fe069e505094e219935baa8882ebef9d80e4d328b4e",
+      "fullClosureCount": 707,
+      "fullClosureSha256": "53617d4debba3944ef69d1efe219025235c16375f66bf71d5248820e9703758c",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-sh-lk.view.json": {
+      "viewId": "de-sh-gym-physics-lk",
+      "rawSha256": "c69309d888a0c98397f0996517f439b2e4de5d215cd5e66e044b3a636da91726",
+      "seedCount": 564,
+      "seedSha256": "fd98a7531b7527f33e2db063959a0560469c4ec31be61b894157f2f559d7b34a",
+      "fullClosureCount": 747,
+      "fullClosureSha256": "30173e9d8d84a452593d00c3e8164ca689799f297bd2d57bc4d3dbce09700929",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-sh-seki.view.json": {
+      "viewId": "de-sh-gym-seki-physics",
+      "rawSha256": "9142d92a0bd0b8311bd48dbf86bc4ae3478c9c13bced987c970259d386060bcc",
+      "seedCount": 126,
+      "seedSha256": "3691b3611ebbb16d131556f3b8b170f0bf4d5cf0e4e2fabce3ce0ac56ca402f5",
+      "fullClosureCount": 191,
+      "fullClosureSha256": "9d2782dd8801c99c09da7afd4a39df4fdf60d25083bc441d94cb75d6a6058ebf",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-sh-sekii-gk.view.json": {
+      "viewId": "de-sh-gym-sekii-physics-gk",
+      "rawSha256": "a896b3ad5c14406e4a2b5ae0bda971819fe9309b63f512f856968e1c05f7c1d8",
+      "seedCount": 368,
+      "seedSha256": "0d03f8cbb488237934978c54a5e669756cc209c5d1eb9e20dfa60426ab7ff736",
+      "fullClosureCount": 617,
+      "fullClosureSha256": "c771386c8d3e5442d0a743ef146f9cd68b8984f90da890b850b074dddda111c9",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-sh-sekii-lk.view.json": {
+      "viewId": "de-sh-gym-sekii-physics-lk",
+      "rawSha256": "72f67a7e14d6488e6072ff60864c9ecb68e0c92332f7653781b512b535532d42",
+      "seedCount": 449,
+      "seedSha256": "22c869099093b35cb7c4aad1ba1c83a90facca6376161bf27fb8935123c5988f",
+      "fullClosureCount": 657,
+      "fullClosureSha256": "305b316dd6f1179fb9f3382b1ddd1422e0893e8eb6b7a1c73ded83c02b7d82c4",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-sl-gk.view.json": {
+      "viewId": "de-sl-gym-physics-gk",
+      "rawSha256": "a657f566aa94c09e005d1443a31970c68f11c0be1a0846b5105687ea4e041f64",
+      "seedCount": 501,
+      "seedSha256": "b93ea95536a8415225549b7e6d5f4fdad191aac4cfa334f2aeccd1f1179d85d4",
+      "fullClosureCount": 725,
+      "fullClosureSha256": "b5c695a41847d02cfce28a54bdcf22a875fe306d29f6071eaf9a42172e865c1b",
+      "mathDemandCount": 153,
+      "mathDemandSha256": "02d731e97d7310da33cd170344a7ea28806bfe6216de220710005ff388e92764"
+    },
+    "de-sl-lk.view.json": {
+      "viewId": "de-sl-gym-physics-lk",
+      "rawSha256": "edb2a04375a8a0aa010a97b64532987339dad2fcfb200a44db6fe91b9e29e4a3",
+      "seedCount": 582,
+      "seedSha256": "3bc1783839306d7af277c54481f6e1f03731cef8b8ce2f61adf768a87bb200db",
+      "fullClosureCount": 765,
+      "fullClosureSha256": "d8efeca968e1b9e42c450425dbe22a0cf7f9e5448b20a4ec394a4effa05f8d2d",
+      "mathDemandCount": 162,
+      "mathDemandSha256": "1c7855736332deeb0ebc1c7dd71aafb07e892cfb33123c221f04c3ae8b45b873"
+    },
+    "de-sl-seki.view.json": {
+      "viewId": "de-sl-gym-seki-physics",
+      "rawSha256": "0884769c5a2a77725cb84f7f542ec8a26f6cb76a4f0727be07b43eb9a57beeef",
+      "seedCount": 152,
+      "seedSha256": "9d36118416247694f858943e1bb7a1b1da1ac83ed21f0536ea5c8a8b813900e4",
+      "fullClosureCount": 258,
+      "fullClosureSha256": "123a9e73d0d43625ac4ab165aa7bbe479b3b4a0069aa5893365820e659eacce3",
+      "mathDemandCount": 89,
+      "mathDemandSha256": "64b662087580d8f2cda745d4417ec6cf928c63097b641818db9b1d74f4e00c7a"
+    },
+    "de-sl-sekii-gk.view.json": {
+      "viewId": "de-sl-gym-sekii-physics-gk",
+      "rawSha256": "322c4a5e7ad739bb5604e82ffb3fab100dd9c821e817f951995c3f4b339d13fe",
+      "seedCount": 370,
+      "seedSha256": "22830d82047a0152aa7faffbc39af33a6cde2a214b67d0c7d52c8fd3159aa344",
+      "fullClosureCount": 623,
+      "fullClosureSha256": "8d925768b4268dfd8b5314f93e964b7a8042724a91c324b2cf4709915d56101b",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-sl-sekii-lk.view.json": {
+      "viewId": "de-sl-gym-sekii-physics-lk",
+      "rawSha256": "6a565265b7164b4bae243c83c61004052a968de1ac6efde718752d9f82299491",
+      "seedCount": 451,
+      "seedSha256": "691bac77fd6225dce1dae723d2b0727f3b6b49cee0f68c10e292ee5a94963846",
+      "fullClosureCount": 663,
+      "fullClosureSha256": "9e07ca4dfe126372aeb1d5ef363260c55e25b33ad9f257b81a8139baaed8b6a7",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-sn-gk.view.json": {
+      "viewId": "de-sn-gym-physics-gk",
+      "rawSha256": "f97e8128f28288baeb79b309ae9474520e3d45d46dc2bbfabad09936553d9b00",
+      "seedCount": 501,
+      "seedSha256": "aa68d0704b46af41c5ebe24634c20f4fe38113e2d3672d2a47c2fb6d614555bd",
+      "fullClosureCount": 725,
+      "fullClosureSha256": "c96bf1ae50d2346f3e70b637b2ebe65c46c976f6d52f2e0e1448d524b7d3bbe0",
+      "mathDemandCount": 153,
+      "mathDemandSha256": "02d731e97d7310da33cd170344a7ea28806bfe6216de220710005ff388e92764"
+    },
+    "de-sn-lk.view.json": {
+      "viewId": "de-sn-gym-physics-lk",
+      "rawSha256": "4935ada43bd7c03f69c6e20f6dbc6d7fea17d9a12f95ae7052ca65aa21630fd0",
+      "seedCount": 582,
+      "seedSha256": "4eb59ea6d97a17d6d5d48f14b372252d056f8e1bc62b26d8e264c24671148657",
+      "fullClosureCount": 765,
+      "fullClosureSha256": "f47fdbc32cfd724835df0fa0a34dfda6f421c096308971c74f6ec62967f7598b",
+      "mathDemandCount": 162,
+      "mathDemandSha256": "1c7855736332deeb0ebc1c7dd71aafb07e892cfb33123c221f04c3ae8b45b873"
+    },
+    "de-sn-seki.view.json": {
+      "viewId": "de-sn-gym-seki-physics",
+      "rawSha256": "333806309161d89ce51008370e79de5e92d36302428530396fe0f0849d4ec12f",
+      "seedCount": 155,
+      "seedSha256": "d22f3172b5e1d8d81422bcb2186b7600f9ea8dc45e39fb59977f820a1599596b",
+      "fullClosureCount": 254,
+      "fullClosureSha256": "3bff2d9251b3632e50fa079984ae3691cb748cd67559befdf4db448741972e0c",
+      "mathDemandCount": 83,
+      "mathDemandSha256": "983747e5fecc119160c058776ea5ad93edcff620f27cbded543ff292278a2997"
+    },
+    "de-sn-sekii-gk.view.json": {
+      "viewId": "de-sn-gym-sekii-physics-gk",
+      "rawSha256": "67c1f3e5674a1da56bd51757ff5972d14f35afab58eed63f8c7a50d43d0b065f",
+      "seedCount": 372,
+      "seedSha256": "268a789b70f4e1b95f2d246f5deb12aa2927ee56fca24d795556dc00db788bd0",
+      "fullClosureCount": 624,
+      "fullClosureSha256": "ce9229a3e698d5a283253ae202047ec86a960d4d6bba99eee46bc065c5a1e62f",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-sn-sekii-lk.view.json": {
+      "viewId": "de-sn-gym-sekii-physics-lk",
+      "rawSha256": "296512e2a32e1a06b5fb2f8c5bd2c06e4da14101d2aeb8aab40b6c8c03e1e362",
+      "seedCount": 454,
+      "seedSha256": "518250978c60684f709ddb011cdfed749077b959c5c233fe2fed49d3d930e696",
+      "fullClosureCount": 664,
+      "fullClosureSha256": "5f59c9ce99846908b62ec11bdc6bbf82ad5dde21f3e40436dffac91b5d95e29c",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-st-gk.view.json": {
+      "viewId": "de-st-gym-physics-gk",
+      "rawSha256": "ae5f8cb4126059f406658bba8949181e013367b2c89cbf4cbac6d9acc3ce45de",
+      "seedCount": 493,
+      "seedSha256": "0bf357fd7683eb082124220ac63955790416770588efd92906c4f35718c13609",
+      "fullClosureCount": 715,
+      "fullClosureSha256": "98aa79f1abd54a2d7af7986093423f857f43d637a7b04854a0c30c8e3fa2e487",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-st-lk.view.json": {
+      "viewId": "de-st-gym-physics-lk",
+      "rawSha256": "a66283cd8532231a1305844a00148257cab7fa39cedce0c7e65b39e444cb5404",
+      "seedCount": 574,
+      "seedSha256": "bf0c01951312af0b46d0aac79eb8d5b44579540d1875d2c833cdc35f23311e67",
+      "fullClosureCount": 755,
+      "fullClosureSha256": "01e8b3016d9a9f759b4b3806f17f6ef9ac4c9d62fd57997c489b019060d91cae",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-st-seki.view.json": {
+      "viewId": "de-st-gym-seki-physics",
+      "rawSha256": "a11ff471c739f5b411aa080ebc477cdcbd0b2bd046157c24e507f2622d273cd4",
+      "seedCount": 134,
+      "seedSha256": "d4acb3f3a983c719cfb743ccfaedc6fd599adfeb3a2fc384f767d9a63ba4cb8b",
+      "fullClosureCount": 219,
+      "fullClosureSha256": "7f636c95885f1cc23f5715b37800ad2c33c6cba52ddc8829cde86bc2b0ab83a4",
+      "mathDemandCount": 69,
+      "mathDemandSha256": "467d724bd3d3fa9936aa493566b5c7bac6055e36cbda4f00cb6afc1cd1392cdd"
+    },
+    "de-st-sekii-gk.view.json": {
+      "viewId": "de-st-gym-sekii-physics-gk",
+      "rawSha256": "89a9e30a7b9c1eb9082c5a53caa1e25299cd6ec013ccc55d1f76b286f4d82173",
+      "seedCount": 370,
+      "seedSha256": "ffbeabe7d02a96c020cab06d21d00a8d47bebcacc5d35375b6aaa696b4169269",
+      "fullClosureCount": 618,
+      "fullClosureSha256": "149bb1690728dffe09eb0625ae18c38e8ea9c5168d19b6f6d8b54d20eba5dfbd",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-st-sekii-lk.view.json": {
+      "viewId": "de-st-gym-sekii-physics-lk",
+      "rawSha256": "4cc6587f12837995d9ca0c7bb9575d774ed76f256f53d9247cd6bc6d5d5ffa45",
+      "seedCount": 451,
+      "seedSha256": "422d52d0e60a8aed29fa78e3eca21381c135f9d2e7b1025658880bada163d8b6",
+      "fullClosureCount": 658,
+      "fullClosureSha256": "d8eb276dc6466c09b6f3adc5923ea01b7b50ae949f31a595d9ce346175305bab",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    },
+    "de-th-gk.view.json": {
+      "viewId": "de-th-gym-physics-gk",
+      "rawSha256": "1bde9ff38a9ae5b40dea3f6cf6500f13a08a7a07c0076cd448e1aee01d7ed773",
+      "seedCount": 491,
+      "seedSha256": "3c54989a83fa3f246b0e475508a8acdcb8d4361dd3f40bdcd177851b7d5dfc27",
+      "fullClosureCount": 715,
+      "fullClosureSha256": "7e7d69650a9cdcde2a627e518034c39eef8544a030b8b75a7daa78ccc1e9fd39",
+      "mathDemandCount": 149,
+      "mathDemandSha256": "2a00694ac1958641c2a09fba71f0b8077d3e82c7dc229720953c182ad19db498"
+    },
+    "de-th-lk.view.json": {
+      "viewId": "de-th-gym-physics-lk",
+      "rawSha256": "fac8c6151cb6ad66356ab9442a54a5b594c60592f464e793622798cb66693e0d",
+      "seedCount": 572,
+      "seedSha256": "47794512fe2bb8765b0e8236330f83afe03ccd1b2662c69bd2da46b56a72aedc",
+      "fullClosureCount": 755,
+      "fullClosureSha256": "4689094475c100f91f752b95064c2cea0e5b8a2892f62d3b24ba8efa3ba4b211",
+      "mathDemandCount": 158,
+      "mathDemandSha256": "2cf732f2b00b2f3a305d6222bfcb5078f13c389bb6797499ab455179dbd784a4"
+    },
+    "de-th-seki.view.json": {
+      "viewId": "de-th-gym-seki-physics",
+      "rawSha256": "f38e259cc66e367250042618bc2cafac02e9bbca59052cf9dc0f13340553f33c",
+      "seedCount": 136,
+      "seedSha256": "f9969c8a3cc6ce62863ef7da9a7a5593fc1882ed92afe2e2fb901f448b68681d",
+      "fullClosureCount": 202,
+      "fullClosureSha256": "e226bc57746a583899eb96aa7d353b35934f7a5f09dbbe547cb92ab2de815bc1",
+      "mathDemandCount": 62,
+      "mathDemandSha256": "83c5c414a77b93d1503ebdd14c86e9953e9bea286bfec3c5ce71f6d6d7a6df49"
+    },
+    "de-th-sekii-gk.view.json": {
+      "viewId": "de-th-gym-sekii-physics-gk",
+      "rawSha256": "8df7c1a0ee56590b057fda31ecfb1879bca3311c38dc034074ee9870a5dbdfa8",
+      "seedCount": 373,
+      "seedSha256": "011e8d41a4a005c670a029c299db9dd178cd98e65093e4c47ee05791c2dc02d8",
+      "fullClosureCount": 621,
+      "fullClosureSha256": "edbe69bdfd59ebad5f86bf83bd38ba3d4be90edcab1a4a67a0f263594f180b60",
+      "mathDemandCount": 146,
+      "mathDemandSha256": "f1ffaa01ad7ec04307367d76801eb397352585688659b5a0122a51494e109032"
+    },
+    "de-th-sekii-lk.view.json": {
+      "viewId": "de-th-gym-sekii-physics-lk",
+      "rawSha256": "1a764f749df6e0ac52db23b7f9fae317af2818114a31630f4608cb8c1b1a406c",
+      "seedCount": 454,
+      "seedSha256": "5380dcbbe8a8d280886101a3c82126717f71e57cbeb48662c607749580348bf1",
+      "fullClosureCount": 661,
+      "fullClosureSha256": "5d794bce59f19f46e5a1e7c89dbfea2750ec50629cd1ee269cd35e530fa317fa",
+      "mathDemandCount": 155,
+      "mathDemandSha256": "c484aee35a68efd93cd72a185cf7cec609740bd033ddc729995b65258e13de6f"
+    }
+  },
+  "nativeWitnessTests": {
+    "command": [
+      "python3",
+      "-B",
+      "-m",
+      "unittest",
+      "scripts.test_mathematics_foreign_acquisition_policy",
+      "scripts.test_mathematics_stage_views.MathematicsStageViewsTest.test_foreign_acquisition_policy_has_current_atomic_witnesses"
+    ],
+    "environment": {
+      "PYTHONPATH": "scripts"
+    },
+    "exitCode": 0,
+    "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 2.274s\n\nOK\n"
+  },
+  "witnessComparison": {
+    "currentOrderedWitnessesSha256": "4ac5c2241c524444ef559150165c35e44e0214159adff09bc4de36a77a424a88",
+    "changedSourcePins": [],
+    "changedWitnessRows": [],
+    "reviewedClosureInputsSha256": "9d03b9e22dfabb4369cb3efdfcca3b889e0dc0bed954834a441d7257a907e755"
+  },
+  "method": "In each Physics view, collect actual authored seed positions and independently traverse requires to its complete atomic closure. In each Mathematics view, reconstruct the earliest Physics consumer and its location, follow every recorded requires edge, and compare the original row and its Mathematics placement with the previous proof.",
+  "perViewDirectory": "curricula/DE/Gymnasium/composition-views/physik",
+  "currentDPrimeBindings": {
+    "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+    "sourceReview": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/source-stage-offer.actual.json",
+      "sha256": "a40333754c4c87cf567fde4ff35f5c7b96ee754942116e5c5aee225b51938a67"
+    },
+    "unitCoverageReview": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/r2-coverage.actual.json",
+      "sha256": "c11ca7a5c7e96b5860c28cf4587eac1c18ebb8d2dc45c7c5a57e606429e0ecf6"
+    },
+    "approvedScopes": [
+      {
+        "jurisdiction": "DE-SN",
+        "stage": "SekI",
+        "yearUnit": "J9",
+        "courseProfiles": [
+          "GK",
+          "LK"
+        ]
+      },
+      {
+        "jurisdiction": "DE-ST",
+        "stage": "SekI",
+        "yearUnit": "J9",
+        "courseProfiles": [
+          "GK",
+          "LK"
+        ]
+      }
+    ],
+    "additionalPlanningCredit": false,
+    "learnerResultTransfer": false
+  }
+}

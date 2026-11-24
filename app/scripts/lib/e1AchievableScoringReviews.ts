@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
-import { join } from 'node:path'
+import { basename, join } from 'node:path'
 import type { ExamData } from '../../src/landscapeTypes'
 import { fingerprintSemanticKindSourceGoal } from '../goalBookModel'
 import { assessmentReviewRevisions } from './learningUnitContracts'
@@ -218,12 +218,27 @@ function verifyGrades(goal: Goal, review: Review, performances: Performance[], s
     }
   }
 }
-export function verifiedPriorExamGoals(repoRoot: string, goals: Map<string, Record<string, unknown>>, canonical: (obj: unknown) => string) {
+type GoalMap = Map<string, Record<string, unknown>>
+type Canonical = (object: unknown) => string
+type Digests = Record<string, string>
+type ReviewFamily = {root: string; originals: Digests; accepted: Digests; semantic: Digests; rejected: Digests}
+
+const achievableFamily = {root: achievableReviewRoot, originals: originalGoalHashes, accepted: acceptedPointerHashes,
+  semantic: semanticKindReceiptHashes, rejected: rejectedDispositionHashes}
+
+export function verifiedPriorExamGoals(repoRoot: string, goals: GoalMap, canonical: Canonical) {
+  return verifyReviewFamily(repoRoot, goals, canonical, achievableFamily, verifyScoringDelta)
+}
+
+function verifyReviewFamily(repoRoot: string, goals: GoalMap, canonical: Canonical, spec: ReviewFamily,
+  verifyDelta: (original: Goal, current: Goal, attempt: string) => void) {
+  const {root, originals: originalGoalHashes, accepted: acceptedPointerHashes, semantic: semanticKindReceiptHashes,
+    rejected: rejectedDispositionHashes} = spec
   for (const [version, digest] of Object.entries(rejectedDispositionHashes)) {
     const [id, attempt] = version.split('/')
     assert.match(attempt, /^v[1-9]\d*$/u)
     assert(Object.hasOwn(originalGoalHashes, id))
-    const directory = join(repoRoot, achievableReviewRoot, version)
+    const directory = join(repoRoot, root, version)
     const record = json<{goalId: string; eligibleForActivation: boolean; original: FileRef; candidate: FileRef; performances: FileRef;
       audits: FileRef; author: FileRef; judgments: Judgment[]; technicalActivationFindings?: string[]}>(
       verifyRef(directory, {path: 'review-disposition.actual.json', sha256: digest}))
@@ -240,8 +255,9 @@ export function verifiedPriorExamGoals(repoRoot: string, goals: Map<string, Reco
       assert(technical.every(finding => finding.startsWith('LU-R2-EVIDENCE:')))
       assert.throws(() => assessmentReviewRevisions(json<Goal>(join(directory, record.candidate.path))), /integer numbers/u)
     }
+    const scoresChanged = root === coachScoringReviewRoot && !verifiedCompactAwards(repoRoot, directory, id)
     assert(record.judgments.some(j => !j.eligibleForActivation)
-      || new Set(record.judgments.map(j => j.threadId)).size !== 2 || technical.length > 0)
+      || new Set(record.judgments.map(j => j.threadId)).size !== 2 || technical.length > 0 || scoresChanged)
     for (const row of record.judgments) {
       const folder = 'round-' + row.round
       const run = json<Run>(verifyRef(directory, row.receipt, folder + '/run.actual.json'))
@@ -258,7 +274,7 @@ export function verifiedPriorExamGoals(repoRoot: string, goals: Map<string, Reco
     }
   }
   const originals = new Map<string, Goal>()
-  const family = join(repoRoot, achievableReviewRoot)
+  const family = join(repoRoot, root)
   const rejected = []
   for (const id of Object.keys(originalGoalHashes)) {
     const dir = join(family, id)
@@ -281,7 +297,7 @@ export function verifiedPriorExamGoals(repoRoot: string, goals: Map<string, Reco
   for (const [id, originalHash] of Object.entries(originalGoalHashes)) {
     const current = goals.get(id) as Goal
     assert.equal(current?.id, id, `missing E.1 assessment ${id}`)
-    const dir = join(repoRoot, achievableReviewRoot, id)
+    const dir = join(repoRoot, root, id)
     const pointer = join(dir, 'accepted.actual.json')
     const selected = acceptedPointerHashes[id]
     if (!selected) {
@@ -307,7 +323,7 @@ export function verifiedPriorExamGoals(repoRoot: string, goals: Map<string, Reco
     const original = json<Goal>(verifyRef(attempt, decision.original, 'original.goal.json'))
     assert.equal(hash(canonical(original)), originalHash)
     assert.deepEqual(json(verifyRef(attempt, decision.candidate, 'candidate.goal.json')), current)
-    verifyScoringDelta(original, current)
+    verifyDelta(original, current, attempt)
     const kind = json<{goalId: string; accepted: FileRef; original: FileRef; currentGoal: FileRef; semanticKind: string;
       previousSourceFingerprint: string; currentSourceFingerprint: string; humanApproval: boolean;
       reviews: Array<{response: FileRef; semanticKind: string; semanticKindReason: string}>}>(
@@ -400,6 +416,150 @@ export function verifiedPriorExamGoals(repoRoot: string, goals: Map<string, Reco
       verifyGrades(current, review, performances, judgment.submissionKey)
     }
     originals.set(id, original)
+  }
+  return originals
+}
+
+export const coachScoringReviewRoot = 'curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1'
+const coachAcceptedPointerHashes: Record<string, string> = {
+  'c5807a37-129e-5df6-8989-482bc7f5683e': 'ec98513563df4488435cd1bc611f1b82d0955634acc7665f026fbea21329e5d7',
+  'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9': '3658cd20e20ce5f73b475fe25728fc284ac1b5e2deee3b255ea7b2f6f7184b7b',
+  'dfd2628f-b44e-51b3-86e8-99158861be8c': '88270533af35b8bb674b063ae922425c2231de4ff0a334c0c8de582e3d0b8ffa',
+  '4ea1b93f-2dba-59ac-87ab-29af6c55cc37': '428067b397919c118a570a267e79e5376806e50caf2dc558c49733138bc377f1',
+  'a8dc0290-9f80-5763-8943-e16b8d2aa860': 'ae4d3200d9ad089bc3e80149799965822e4049c738b4410e5ca70892e34117b2',
+}
+const coachSemanticKindReceiptHashes: Record<string, string> = {
+  'c5807a37-129e-5df6-8989-482bc7f5683e': '27ee0d1efd583a16f4a3bb467b9dd80842e3ae14271c677d0b8ce7b2992787f2',
+  'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9': '07d56be3241c1c2c70845d888b0789fa7dc95bd40935c263d24d6f253201217f',
+  'dfd2628f-b44e-51b3-86e8-99158861be8c': 'c26b495c43643b88a3cf2843acafaaa6eebf113f181bbdd7576a09554c7ee5c8',
+  '4ea1b93f-2dba-59ac-87ab-29af6c55cc37': 'a0606c7d76e92e745599103613e4e5d7f2671d651a5e7e78665d2799c01ca4b2',
+  'a8dc0290-9f80-5763-8943-e16b8d2aa860': '9ef199e5a239eb3766f0125d8952c6764802094f61aa83a7f310ab950fed3c5d',
+}
+const coachRejectedDispositionHashes: Record<string, string> = {
+  '4ea1b93f-2dba-59ac-87ab-29af6c55cc37/v1': '59c66e0dfcdd893ddee648591120d7239504fe4facb3ebd6eec5f025d09728fc',
+  'a8dc0290-9f80-5763-8943-e16b8d2aa860/v1': 'c04d61b66624516d6c3a626c109ee7fd4f6974040265a111b9cfe1665a8e7fa3',
+  'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9/v1': 'f514dfbd6e7ea646fd1341479efba4ea626ba8a0c0e8353af0f8eb50ca3b4586',
+  'c5807a37-129e-5df6-8989-482bc7f5683e/v1': '3bf0f261176597e26dffe4b6fd751cd32662d616223ae0859f00a8d2080b7380',
+  'dfd2628f-b44e-51b3-86e8-99158861be8c/v1': '30835872e0cbe90eb9c44ee9cef0b9e69c68c1132bcba8c09f5ccd6537c0dc21',
+}
+// Java String.length() and JS string.length both count UTF-16 code units.
+export const coachDescriptionLimit = 2000
+const oversizedStepIds: Record<string, string[]> = {
+  '4ea1b93f-2dba-59ac-87ab-29af6c55cc37': ['z_res15', 'b_15', 'r_verf', 'r_wink', 'r_zun'],
+  'a8dc0290-9f80-5763-8943-e16b8d2aa860': ['A-DIA'],
+  'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9': ['t6-mp-size', 't6-drag-cond', 't6-drag-claim'],
+  'c5807a37-129e-5df6-8989-482bc7f5683e': ['t7_abweichung'],
+  'dfd2628f-b44e-51b3-86e8-99158861be8c': ['B_RW', 'B_URT'],
+}
+
+function scoreMatrix(attempt: string, round: string) {
+  const keys = json<Record<string, Submission[]>>(join(attempt, 'round-keys.actual.json'))[round]
+  const judgment = json<{judgments: Judgment[]}>(join(attempt, 'review-disposition.actual.json')).judgments.find(j => j.round === round)!
+  assert.deepEqual(keys, judgment.submissionKey)
+  const grades = json<Review>(verifyRef(attempt, judgment.response)).gradedSubmissions
+  return new Map(grades.map(grade => {
+    const audit = keys.find(row => row.submissionId === grade.submissionId)!
+    return [audit.auditId, new Map(grade.scores.map(s => [s.criterionId, s.pointsAwarded]))]
+  }))
+}
+
+function verifiedCompactAwards(repoRoot: string, attempt: string, id: string) {
+  const earlier = join(repoRoot, achievableReviewRoot, id)
+  const pointer = json<{reviewPath: string}>(verifyRef(earlier, {path:'accepted.actual.json', sha256:acceptedPointerHashes[id]}))
+  const parent = join(earlier, pointer.reviewPath)
+  const decision = json<{priorMarksComparison: FileRef}>(join(attempt, 'review-disposition.actual.json'))
+  type Difference = {auditId: string; criterionId: string; previousPoints: number; awardedPoints: number}
+  const postReview = json<{contract: string; goalId: string; parentVersion: string; baselineCommit: string; parentArtifacts: FileRef[];
+    previousIndependentMarksAgreed: boolean; unchangedAllAwards: boolean; differencesByRound: Record<string, Difference[]>;
+    auditsCompared: number; criterionAwardsComparedPerRound: number}>(verifyRef(attempt, decision.priorMarksComparison, 'prior-marks-comparison.actual.json'))
+  assert.equal(postReview.contract, 'coach-scoring-unchanged-submission-comparison-v1')
+  assert.equal(postReview.goalId, id)
+  assert.equal(postReview.parentVersion, pointer.reviewPath)
+  assert.equal(postReview.baselineCommit, '7cea780f4f0beadef97ab5ed16de1571cfbbfa42')
+  const parentPaths = ['review-disposition.actual.json','round-keys.actual.json','candidate.goal.json','audits.json','performances.json',
+    'round-a/run.actual.json','round-a/response.json','round-b/run.actual.json','round-b/response.json']
+  assert.deepEqual(postReview.parentArtifacts.map(item => verifyRef(repoRoot, item)).sort(),
+    [join(earlier, 'accepted.actual.json'), ...parentPaths.map(name => join(parent, name))].sort())
+  const baseline = scoreMatrix(parent, 'a')
+  assert.deepEqual(baseline, scoreMatrix(parent, 'b'))
+  assert.equal(postReview.previousIndependentMarksAgreed, true)
+  assert.equal(postReview.auditsCompared, baseline.size)
+  assert.equal(postReview.criterionAwardsComparedPerRound, sum([...baseline.values()].map(awards => awards.size)))
+  let unchanged = true
+  for (const round of ['a', 'b']) {
+    const awards = scoreMatrix(attempt, round)
+    assert.deepEqual([...awards.keys()].sort(), [...baseline.keys()].sort())
+    const differences: Difference[] = []
+    for (const [auditId, previous] of baseline) {
+      const current = awards.get(auditId)!
+      assert.deepEqual([...current.keys()].sort(), [...previous.keys()].sort())
+      for (const [criterionId, previousPoints] of previous) {
+        const awardedPoints = current.get(criterionId)!
+        if (previousPoints !== awardedPoints) differences.push({auditId, criterionId, previousPoints, awardedPoints})
+      }
+    }
+    assert.deepEqual(postReview.differencesByRound[round], differences)
+    unchanged &&= differences.length === 0
+  }
+  assert.equal(postReview.unchangedAllAwards, unchanged)
+  return unchanged
+}
+
+export function verifiedCoachScoringReviewChain(repoRoot: string, goals: GoalMap, canonical: Canonical) {
+  const firstCatalog = new Map(goals)
+  const originalHashes: Digests = {}
+  const firstAttempts = new Map<string, string>()
+  for (const [id, digest] of Object.entries(acceptedPointerHashes)) {
+    const dir = join(repoRoot, achievableReviewRoot, id)
+    const accepted = json<{reviewPath: string; currentGoalSha256: string}>(verifyRef(dir, {path:'accepted.actual.json', sha256:digest}))
+    const attempt = join(dir, accepted.reviewPath)
+    const goal = json<Goal>(join(attempt, 'candidate.goal.json'))
+    assert.equal(accepted.currentGoalSha256, hash(canonical(goal)))
+    assert.deepEqual(goal.examData.scoring.steps.filter(step => step.description.length > coachDescriptionLimit)
+      .map(step => step.id), oversizedStepIds[id] ?? [])
+    firstCatalog.set(id, goal)
+    originalHashes[id] = accepted.currentGoalSha256
+    firstAttempts.set(id, attempt)
+  }
+  const originals = verifiedPriorExamGoals(repoRoot, firstCatalog, canonical)
+  assert.deepEqual(Object.keys(coachAcceptedPointerHashes).sort(), Object.keys(oversizedStepIds).sort())
+  const bounded = {root: coachScoringReviewRoot, originals: originalHashes, accepted: coachAcceptedPointerHashes,
+    semantic: coachSemanticKindReceiptHashes, rejected: coachRejectedDispositionHashes}
+  verifyReviewFamily(repoRoot, goals, canonical, bounded, (original, current, attempt) => {
+    const parent = firstAttempts.get(current.id)!
+    assert(verifiedCompactAwards(repoRoot, attempt, current.id), 'the cost of each demonstrated error must agree with the previous reviews')
+    for (const filename of ['audits.json', 'performances.json']) {
+      assert.deepEqual(readFileSync(join(attempt, filename)), readFileSync(join(parent, filename)),
+        'The same performances and the same submitted answers must be independently marked again')
+    }
+    const expected = structuredClone(original)
+    const previous = expected.examData.scoring.steps, shorter = current.examData.scoring.steps
+    assert.equal(shorter.length, previous.length)
+    for (const [index, step] of previous.entries()) {
+      if (step.description.length > coachDescriptionLimit) step.description = shorter[index].description
+    }
+    assert.deepEqual(current, expected, 'Only previously oversized scoring step descriptions may change')
+    const criteria = oversizedStepIds[current.id]
+    for (const round of ['round-a', 'round-b']) {
+      const input = json<{compactScoringScope: {criterionIds: string[]; maximumUTF16CodeUnits: number}; parentEvidence: {
+        baselineCommit: string; parentGoalNormalizedSha256: string; parentVersion: string
+      }}>(join(attempt, round, 'canonical-input.json'))
+      assert.equal(input.compactScoringScope.maximumUTF16CodeUnits, coachDescriptionLimit)
+      assert.deepEqual([...input.compactScoringScope.criterionIds].sort(), [...criteria].sort())
+      assert.deepEqual(input.parentEvidence, {baselineCommit: '7cea780f4f0beadef97ab5ed16de1571cfbbfa42',
+        parentGoalNormalizedSha256: originalHashes[current.id], parentVersion: basename(parent)})
+      const {stepCompressionChecks} = json<{stepCompressionChecks: Array<{criterionId: string; equivalent: boolean; reason: string}>}>(
+        join(attempt, round, 'response.json'))
+      assert.deepEqual(stepCompressionChecks.map(check => check.criterionId).sort(), [...criteria].sort())
+      assert(stepCompressionChecks.every(check => check.equivalent === true && check.reason.trim()))
+    }
+  })
+  for (const id of Object.keys(originalHashes)) {
+    const current = goals.get(id) as Goal
+    for (const step of current.examData.scoring.steps) {
+      assert(step.description.trim() && step.description.length <= coachDescriptionLimit,
+        `${id}/${step.id}: scoring description must fit the coach limit of ${coachDescriptionLimit} UTF-16 code units`)
+    }
   }
   return originals
 }

@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "method": "com.skillpilot.backend.completion.AssessmentMaterialRevision.of",
+  "recordedAt": "2026-11-24T20:36:51.782603+00:00",
+  "integratedHeadAtRun": "dd5851ea8cb7db9ac82177b72c808225c7b136e9",
+  "priorCatalog": {
+    "gitCommit": "e5946655f7d450444f3a487107ce27dc9abe8a83",
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "e795626b9d2577141089cb2c592544828d8015204f3461921b481bd7c32afea8",
+    "gitBlob": "ebefc9e95424927f2780eec3a38f0ef03a4ce6f0"
+  },
+  "currentCatalog": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "76042a25b10ea7f89d461d3be4eeb48b6ae7239f23f7eb02b7132b55f3b60b5c"
+  },
+  "implementation": {
+    "path": "backend/src/main/java/com/skillpilot/backend/completion/AssessmentMaterialRevision.java",
+    "sha256": "21bc4a02b98b3da9e3fb06efb0cce8f6b5d3b31f5335bd8fd5a9b33bc0171d42"
+  },
+  "measurement": "Jackson decoded examData for both editions. The native Java calculation produced these task, rubric and material fingerprints.",
+  "identityDeltas": [
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "priorScore": {
+        "passingPoints": 19,
+        "maxPoints": 20
+      },
+      "currentScore": {
+        "passingPoints": 17,
+        "maxPoints": 20
+      },
+      "changedExamFields": [
+        "reviewNote",
+        "solutionContent",
+        "solutionContentEn",
+        "scoring"
+      ],
+      "priorAndCurrentMaterial": {
+        "prior": {
+          "taskRevision": "sha256:76fe443cf24fd8ce18237c569eda70913087f7e515e4dec447ed71536ef1e0de",
+          "rubricRevision": "sha256:f6a52fb1691cc147712c707af3a2488e996b7d78c0151127f644301132eef2e2",
+          "fingerprint": "sha256:0333693ae85ee212f3df6c0d9c92c2909dd1b60157b45e4961a816f9af72768c"
+        },
+        "current": {
+          "taskRevision": "sha256:95465756e95bc782c0f51de78eb656892d6181932202be168043d2f2293fb1a7",
+          "rubricRevision": "sha256:bdc5a7d9be989f8f4c27d304253415322c68e4135dd306249a4d8a950d8236e1",
+          "fingerprint": "sha256:db1cf6a08c273b05e926ac88f0fff610c2985c4b8a0e22e5f4060df5a9ea6299"
+        }
+      },
+      "state": "approved-new-rubric",
+      "approvedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/accepted.actual.json",
+        "sha256": "ae4d3200d9ad089bc3e80149799965822e4049c738b4410e5ca70892e34117b2"
+      },
+      "priorGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/v8/original.goal.json",
+        "sha256": "f41f6906b5df5b79225a74b955077dbdc0bb502a04b09fb7e050835595d3152e"
+      },
+      "currentGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/v2/candidate.goal.json",
+        "sha256": "5a80276afd2122a62005291d5d04c4d5b616f89a17533a911991bec1f3fd6ea7"
+      },
+      "substantiveReview": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/accepted.actual.json",
+        "sha256": "1bdba792044f0fd7044358ea31d6bdfe33caf73a35aced09239f15b2a2e8633c"
+      },
+      "initialReviewedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/v8/candidate.goal.json",
+        "sha256": "61c690b4dcbf399fd277d3c8d2dcea18700a39cf930b5cdca7f68dbc6a265c83"
+      },
+      "coachPresentationReviewInput": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/v2/original.goal.json",
+        "sha256": "61c690b4dcbf399fd277d3c8d2dcea18700a39cf930b5cdca7f68dbc6a265c83"
+      }
+    },
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "priorScore": {
+        "passingPoints": 15.5,
+        "maxPoints": 16
+      },
+      "currentScore": {
+        "passingPoints": 13.5,
+        "maxPoints": 16
+      },
+      "changedExamFields": [
+        "reviewNote",
+        "taskContent",
+        "solutionContent",
+        "scoring",
+        "taskContentEn",
+        "solutionContentEn"
+      ],
+      "priorAndCurrentMaterial": {
+        "prior": {
+          "taskRevision": "sha256:e560bffc3ec03005286e3c537b4cc6f02f729f18881c0f9facea8e9020b2f417",
+          "rubricRevision": "sha256:9eb9804c1dba922dd0a87295f7da48691e11699db98a6b57e54e4022f5ca76d4",
+          "fingerprint": "sha256:3eadbdfd5031870233a0755e75150711b76181d835227fc32ebcf4261a607201"
+        },
+        "current": {
+          "taskRevision": "sha256:b02f43f7f536418ec7c8ca7ca7dc8af5ee87a0c3543f75b0799821b7d7f7750a",
+          "rubricRevision": "sha256:3fff1648f87a9ae7f48dd94cc8fef1ea47a61cb7187f32d571f4570a3de9d946",
+          "fingerprint": "sha256:7d7a582911bdb8468850276befc23e72ed6deac62cd42b76a5fbbf5283ce23c3"
+        }
+      },
+      "state": "approved-new-rubric",
+      "approvedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/4ea1b93f-2dba-59ac-87ab-29af6c55cc37/accepted.actual.json",
+        "sha256": "428067b397919c118a570a267e79e5376806e50caf2dc558c49733138bc377f1"
+      },
+      "priorGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/4ea1b93f-2dba-59ac-87ab-29af6c55cc37/v6/original.goal.json",
+        "sha256": "1a1bc43a764cc7fb6fb0bbddba3a923fe862e2cb02c2eaaf63f2f2bc36539bb6"
+      },
+      "currentGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/4ea1b93f-2dba-59ac-87ab-29af6c55cc37/v2/candidate.goal.json",
+        "sha256": "fa49ecebdcafa363e627b7197bafb8c4f2ecd378f2042e03706dbb2a1d418dbf"
+      },
+      "substantiveReview": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/4ea1b93f-2dba-59ac-87ab-29af6c55cc37/accepted.actual.json",
+        "sha256": "bc4b0bc77e418e31f02d613c706323614a17cc2f4ee10b6afae6d12fb22dfb9c"
+      },
+      "initialReviewedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/4ea1b93f-2dba-59ac-87ab-29af6c55cc37/v6/candidate.goal.json",
+        "sha256": "b77518f0bbf3c6da5dc04ade55c786e68f811a984ed6c798a7e47a455b1bc8a8"
+      },
+      "coachPresentationReviewInput": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/4ea1b93f-2dba-59ac-87ab-29af6c55cc37/v2/original.goal.json",
+        "sha256": "b77518f0bbf3c6da5dc04ade55c786e68f811a984ed6c798a7e47a455b1bc8a8"
+      }
+    },
+    {
+      "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+      "priorScore": {
+        "passingPoints": 15.5,
+        "maxPoints": 16
+      },
+      "currentScore": {
+        "passingPoints": 12,
+        "maxPoints": 16
+      },
+      "changedExamFields": [
+        "taskContent",
+        "solutionContent",
+        "scoring",
+        "taskContentEn",
+        "solutionContentEn"
+      ],
+      "priorAndCurrentMaterial": {
+        "prior": {
+          "taskRevision": "sha256:0601ccb2cc0b4176da363ae78a8654352f9d49b97edec3a6180ea7402e6fbb42",
+          "rubricRevision": "sha256:61a5a480163b87cb1afd8dfd3654c5c4a0c6af27fb6d2d509fe4414fc076b5f3",
+          "fingerprint": "sha256:ebe43e55c8e149ea2409ce4777814989800dcd0958b8794fabb3f8114e363b01"
+        },
+        "current": {
+          "taskRevision": "sha256:e8e386c49ceeb7d97b99f3bdde49e88b7ddf1e30447add8defd0d340e7b0f8a9",
+          "rubricRevision": "sha256:c5c09773e225fb14f58e45e18df36436ccb32592639b4583957fda31aa9a96e7",
+          "fingerprint": "sha256:1483e121605fa1d5ff663f31b09c218f7e3890a5b9ccd4628d36920ddb57d91c"
+        }
+      },
+      "state": "approved-new-rubric",
+      "approvedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/dfd2628f-b44e-51b3-86e8-99158861be8c/accepted.actual.json",
+        "sha256": "88270533af35b8bb674b063ae922425c2231de4ff0a334c0c8de582e3d0b8ffa"
+      },
+      "priorGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/dfd2628f-b44e-51b3-86e8-99158861be8c/v4/original.goal.json",
+        "sha256": "2de44b9b39e27e3046e2cd9a87493f9b6a560848bde07839bbbe36a59f37cbc1"
+      },
+      "currentGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/dfd2628f-b44e-51b3-86e8-99158861be8c/v2/candidate.goal.json",
+        "sha256": "9656ce71b469de66203e1efef082ebb0fb7e0aad1f8ffadfed61ff8cc54d382e"
+      },
+      "substantiveReview": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/dfd2628f-b44e-51b3-86e8-99158861be8c/accepted.actual.json",
+        "sha256": "5ff9b9e88bbbc9800233b25969963a56604e20161d404ef992fea7d34645e17a"
+      },
+      "initialReviewedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/dfd2628f-b44e-51b3-86e8-99158861be8c/v4/candidate.goal.json",
+        "sha256": "4427099a394b5be12f3d72e922cc37aab7e70cc9d823c70d985a19afce759976"
+      },
+      "coachPresentationReviewInput": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/dfd2628f-b44e-51b3-86e8-99158861be8c/v2/original.goal.json",
+        "sha256": "4427099a394b5be12f3d72e922cc37aab7e70cc9d823c70d985a19afce759976"
+      }
+    },
+    {
+      "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+      "priorScore": {
+        "passingPoints": 35.5,
+        "maxPoints": 36
+      },
+      "currentScore": {
+        "passingPoints": 30.5,
+        "maxPoints": 36
+      },
+      "changedExamFields": [
+        "reviewNote",
+        "taskContent",
+        "taskContentEn",
+        "solutionContent",
+        "solutionContentEn",
+        "scoring"
+      ],
+      "priorAndCurrentMaterial": {
+        "prior": {
+          "taskRevision": "sha256:9751e9c86579577820290bb9171ef3d6b4457d30bc661932a165e7baa0e72322",
+          "rubricRevision": "sha256:3eb30ca6ff8f1bc1432819e0cc531565c2e451b0b096124fee7024a0db8daa18",
+          "fingerprint": "sha256:8d8a4f06b852fb409ed9860ca0920a390c99a0d5ab6094cdec16f42a2f3d6023"
+        },
+        "current": {
+          "taskRevision": "sha256:68e004fbaaebc6c5ec97caeca7018f661f5b3f5873da173d98ad81055cce1907",
+          "rubricRevision": "sha256:81089b54bb39ad6467a0597ac9d86955db6f0d6f5945e24ff2a19c0a495b9c34",
+          "fingerprint": "sha256:de182e36bf3449b9c164d8acbc9c2ab9839e421ffc70dcd900c8026acb2a562e"
+        }
+      },
+      "state": "approved-new-rubric",
+      "approvedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/bcc56921-7107-5f5f-b721-3d5e0d7e1cd9/accepted.actual.json",
+        "sha256": "3658cd20e20ce5f73b475fe25728fc284ac1b5e2deee3b255ea7b2f6f7184b7b"
+      },
+      "priorGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/bcc56921-7107-5f5f-b721-3d5e0d7e1cd9/v5/original.goal.json",
+        "sha256": "c296fa2301f35817e8cd8aeb38c91e575fea9bc35fc4c7e0cb1a3d48d43bbe60"
+      },
+      "currentGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/bcc56921-7107-5f5f-b721-3d5e0d7e1cd9/v2/candidate.goal.json",
+        "sha256": "7fef257c821e8145f6ac618038f5cbdbcb4f9b8f63287a40ff15ceab37b981b9"
+      },
+      "substantiveReview": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/bcc56921-7107-5f5f-b721-3d5e0d7e1cd9/accepted.actual.json",
+        "sha256": "4af140b83ca363fca2d1a53f49a51ddc2afb824457782cc1ca5e50b5500940f0"
+      },
+      "initialReviewedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/bcc56921-7107-5f5f-b721-3d5e0d7e1cd9/v5/candidate.goal.json",
+        "sha256": "858d5f3d73421fc4d63c439ac5f3bd08c4dbefb503a99d728c18d7d9875705ff"
+      },
+      "coachPresentationReviewInput": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/bcc56921-7107-5f5f-b721-3d5e0d7e1cd9/v2/original.goal.json",
+        "sha256": "858d5f3d73421fc4d63c439ac5f3bd08c4dbefb503a99d728c18d7d9875705ff"
+      }
+    },
+    {
+      "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+      "priorScore": {
+        "passingPoints": 23,
+        "maxPoints": 24
+      },
+      "currentScore": {
+        "passingPoints": 23,
+        "maxPoints": 24
+      },
+      "changedExamFields": [],
+      "priorAndCurrentMaterial": {
+        "prior": {
+          "taskRevision": "sha256:7fd05b35c502823d161ebeb0dc0e53aa67f832f47b1f5c4b2330a6b926bd75fc",
+          "rubricRevision": "sha256:5d941fb9634861f15025157ffe15fe0c24565bfdc1cf7aa734887174f8b32973",
+          "fingerprint": "sha256:7d7a57fd467f66e17cdc103b17a1b3beda8c0f576f78d09507acb3df0343e72f"
+        },
+        "current": {
+          "taskRevision": "sha256:7fd05b35c502823d161ebeb0dc0e53aa67f832f47b1f5c4b2330a6b926bd75fc",
+          "rubricRevision": "sha256:5d941fb9634861f15025157ffe15fe0c24565bfdc1cf7aa734887174f8b32973",
+          "fingerprint": "sha256:7d7a57fd467f66e17cdc103b17a1b3beda8c0f576f78d09507acb3df0343e72f"
+        }
+      },
+      "state": "parked-original-edition-identical"
+    },
+    {
+      "goalId": "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+      "priorScore": {
+        "passingPoints": 13,
+        "maxPoints": 14
+      },
+      "currentScore": {
+        "passingPoints": 11.5,
+        "maxPoints": 14
+      },
+      "changedExamFields": [
+        "solutionContent",
+        "solutionContentEn",
+        "scoring"
+      ],
+      "priorAndCurrentMaterial": {
+        "prior": {
+          "taskRevision": "sha256:983ce30ec2dee399513149836b2c43a68f53c80d5f085eadcbe994c9d653872d",
+          "rubricRevision": "sha256:41f51a969873e72bcb0e76336c0c1f8621636c5c49ba94596af277e23bb0ffeb",
+          "fingerprint": "sha256:866cc5a35c4cf25fe08388fb8bab351c46d5d56913477a024e1cdf1d69ba13ed"
+        },
+        "current": {
+          "taskRevision": "sha256:6e44e55d36f0e2743ad42a4d57bba4bdbab2981cbfeb8c232b46b3de49d503a3",
+          "rubricRevision": "sha256:2ab94a03f82d20bbbfbc7e732ac5d29c1b3b08a9039a39142ed90ed98632bac5",
+          "fingerprint": "sha256:4b00e01a5b23d4ec483df0713ebb33846f01f716cbf329e6b148bfee31deccb5"
+        }
+      },
+      "state": "approved-new-rubric",
+      "approvedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/c6e2942d-1ff4-5e86-a52a-4ca4c8568291/accepted.actual.json",
+        "sha256": "477a0199f25f2c57f6a746720582f8a28ae8e63daacd49d9ecd35cf1795944f7"
+      },
+      "priorGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/c6e2942d-1ff4-5e86-a52a-4ca4c8568291/v3/original.goal.json",
+        "sha256": "9ba62bc0837108c1ae0d23c075c325f49201430a25f68c151b0b031fcff1c7fb"
+      },
+      "currentGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/c6e2942d-1ff4-5e86-a52a-4ca4c8568291/v3/candidate.goal.json",
+        "sha256": "1425690ef3c1038ef30cdf6f80703a51c01801047dbf65ec2f035c77fc6f475e"
+      }
+    },
+    {
+      "goalId": "c5807a37-129e-5df6-8989-482bc7f5683e",
+      "priorScore": {
+        "passingPoints": 24,
+        "maxPoints": 24
+      },
+      "currentScore": {
+        "passingPoints": 20,
+        "maxPoints": 24
+      },
+      "changedExamFields": [
+        "reviewNote",
+        "taskContent",
+        "solutionContent",
+        "scoring"
+      ],
+      "priorAndCurrentMaterial": {
+        "prior": {
+          "taskRevision": "sha256:45c2c559b0ddf2b4f35060b459438cd9dd22dac456abfc04ef91855538c68324",
+          "rubricRevision": "sha256:dc7256b9a559ea7ec359f8b5c53c377a4b99481628aced62a68b885d71c11ad7",
+          "fingerprint": "sha256:884f20ecc952f261c516e1d051bf121d0b8beb59144735810af42624a3787fda"
+        },
+        "current": {
+          "taskRevision": "sha256:4c8687b2bccff5ed8694d24a0f736e04d5ed2147902c9b71441b771f11c2a043",
+          "rubricRevision": "sha256:a380bb1c4ca02c6d6ed0bb5a30fb0b4b19106b79d22a2bf030d3d35e4509e70c",
+          "fingerprint": "sha256:2db792b6cc60150894fca1b8eba83df26308dedaf882c13ad7bd02c19452284e"
+        }
+      },
+      "state": "approved-new-rubric",
+      "approvedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/c5807a37-129e-5df6-8989-482bc7f5683e/accepted.actual.json",
+        "sha256": "ec98513563df4488435cd1bc611f1b82d0955634acc7665f026fbea21329e5d7"
+      },
+      "priorGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/c5807a37-129e-5df6-8989-482bc7f5683e/v5/original.goal.json",
+        "sha256": "4b8bc0bbd546bfdb2e33b22177af8d400e99d190bf524d3d88d00b90cc14bc1e"
+      },
+      "currentGoal": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/c5807a37-129e-5df6-8989-482bc7f5683e/v2/candidate.goal.json",
+        "sha256": "f953fb9d37da321a946e59886b452b712ef03dd7d22c1d2231e4b5695579869a"
+      },
+      "substantiveReview": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/c5807a37-129e-5df6-8989-482bc7f5683e/accepted.actual.json",
+        "sha256": "dd1934c567806e799b4b79bad6acc014e473664715888d42c3debe1e71a12a9e"
+      },
+      "initialReviewedRubric": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/c5807a37-129e-5df6-8989-482bc7f5683e/v5/candidate.goal.json",
+        "sha256": "b23aed2a9b36057c7bd693b0eb34e095137283185943bbf7a191fc04694ed501"
+      },
+      "coachPresentationReviewInput": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/c5807a37-129e-5df6-8989-482bc7f5683e/v2/original.goal.json",
+        "sha256": "b23aed2a9b36057c7bd693b0eb34e095137283185943bbf7a191fc04694ed501"
+      }
+    }
+  ],
+  "existingPlanningReleaseAndMandatoryPartsUnchanged": true,
+  "persistenceCheck": "The native JUnit Platform ran the original test classes against current compiled sources. Database cases used in-memory H2. No catalog operation writes a mastery result.",
+  "testsSucceeded": 27,
+  "nativeTests": [
+    {
+      "exitCode": 0,
+      "testSource": {
+        "path": "backend/src/test/java/com/skillpilot/backend/completion/AssessmentMaterialRevisionTest.java",
+        "sha256": "b249ba13e22b12792538cb9c4e0354c375e692c903da2df7e8aaf4872c3f91ee"
+      },
+      "junitResult": {
+        "runner": "JUnit Platform Launcher, existing source tests, no test modifications",
+        "class": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+        "methodSelection": [],
+        "startedAt": "2026-11-24T20:34:37.485756103Z",
+        "finishedAt": "2026-11-24T20:34:38.373080918Z",
+        "found": 3,
+        "started": 3,
+        "succeeded": 3,
+        "failed": 0,
+        "skipped": 0,
+        "aborted": 0,
+        "containerFailures": 0,
+        "tests": [
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.completion.AssessmentMaterialRevisionTest]/[method:translationsAndAdditionalRubricFieldsArePartOfTheGradedMaterial()]",
+            "displayName": "translationsAndAdditionalRubricFieldsArePartOfTheGradedMaterial()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.completion.AssessmentMaterialRevisionTest', methodName = 'translationsAndAdditionalRubricFieldsArePartOfTheGradedMaterial', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.completion.AssessmentMaterialRevisionTest]/[method:allPhysicsChildExamEditionsBindToTheirPublishedCoverageReviews()]",
+            "displayName": "allPhysicsChildExamEditionsBindToTheirPublishedCoverageReviews()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.completion.AssessmentMaterialRevisionTest', methodName = 'allPhysicsChildExamEditionsBindToTheirPublishedCoverageReviews', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.completion.AssessmentMaterialRevisionTest]/[method:evaluationMustMatchTheMaterialThatTheCoachUses()]",
+            "displayName": "evaluationMustMatchTheMaterialThatTheCoachUses()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.completion.AssessmentMaterialRevisionTest', methodName = 'evaluationMustMatchTheMaterialThatTheCoachUses', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          }
+        ],
+        "failures": []
+      }
+    },
+    {
+      "exitCode": 0,
+      "testSource": {
+        "path": "backend/src/test/java/com/skillpilot/backend/service/VerifiedExamPassIntegrationTest.java",
+        "sha256": "a10923274b425280ea21224fcd563ec59de41e255c85db71326c2ba97639dd82"
+      },
+      "junitResult": {
+        "runner": "JUnit Platform Launcher, existing source tests, no test modifications",
+        "class": "com.skillpilot.backend.service.VerifiedExamPassIntegrationTest",
+        "methodSelection": [],
+        "startedAt": "2026-11-24T20:34:38.670066872Z",
+        "finishedAt": "2026-11-24T20:34:52.268904129Z",
+        "found": 5,
+        "started": 5,
+        "succeeded": 5,
+        "failed": 0,
+        "skipped": 0,
+        "aborted": 0,
+        "containerFailures": 0,
+        "tests": [
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassIntegrationTest]/[method:rejectsUnqualifiedScoresAndMissingRevisions()]",
+            "displayName": "rejectsUnqualifiedScoresAndMissingRevisions()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassIntegrationTest', methodName = 'rejectsUnqualifiedScoresAndMissingRevisions', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassIntegrationTest]/[method:requiresTheCallerTransactionAndRollsBackAlongsideTheMasteryWrite()]",
+            "displayName": "requiresTheCallerTransactionAndRollsBackAlongsideTheMasteryWrite()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassIntegrationTest', methodName = 'requiresTheCallerTransactionAndRollsBackAlongsideTheMasteryWrite', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassIntegrationTest]/[method:deletingOneLearnerErasesOnlyTheirPasses()]",
+            "displayName": "deletingOneLearnerErasesOnlyTheirPasses()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassIntegrationTest', methodName = 'deletingOneLearnerErasesOnlyTheirPasses', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassIntegrationTest]/[method:concurrentPassingSubmissionsForTheSameMaterialAreIdempotent()]",
+            "displayName": "concurrentPassingSubmissionsForTheSameMaterialAreIdempotent()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassIntegrationTest', methodName = 'concurrentPassingSubmissionsForTheSameMaterialAreIdempotent', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassIntegrationTest]/[method:retainsFirstPassingScoreForEachRevisionAcrossTransactionsAndCurriculumChanges()]",
+            "displayName": "retainsFirstPassingScoreForEachRevisionAcrossTransactionsAndCurriculumChanges()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassIntegrationTest', methodName = 'retainsFirstPassingScoreForEachRevisionAcrossTransactionsAndCurriculumChanges', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          }
+        ],
+        "failures": []
+      }
+    },
+    {
+      "exitCode": 0,
+      "testSource": {
+        "path": "backend/src/test/java/com/skillpilot/backend/service/VerifiedExamPassBackupIntegrationTest.java",
+        "sha256": "3cf46f3ca0280d5781a456241158aeec15b0bbbd631f389666e4df70d1c1fcb3"
+      },
+      "junitResult": {
+        "runner": "JUnit Platform Launcher, existing source tests, no test modifications",
+        "class": "com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest",
+        "methodSelection": [],
+        "startedAt": "2026-11-24T20:34:52.970964381Z",
+        "finishedAt": "2026-11-24T20:35:07.398047198Z",
+        "found": 7,
+        "started": 7,
+        "succeeded": 7,
+        "failed": 0,
+        "skipped": 0,
+        "aborted": 0,
+        "containerFailures": 0,
+        "tests": [
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest]/[method:anOlderOwnBackupRestoresTheEarlierFirstScoreAfterTheSameExamWasRetaken()]",
+            "displayName": "anOlderOwnBackupRestoresTheEarlierFirstScoreAfterTheSameExamWasRetaken()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest', methodName = 'anOlderOwnBackupRestoresTheEarlierFirstScoreAfterTheSameExamWasRetaken', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest]/[method:archiveWithoutEvidenceAndLaterMasteryResetKeepHistoryDistinctFromCurrentMastery()]",
+            "displayName": "archiveWithoutEvidenceAndLaterMasteryResetKeepHistoryDistinctFromCurrentMastery()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest', methodName = 'archiveWithoutEvidenceAndLaterMasteryResetKeepHistoryDistinctFromCurrentMastery', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest]/[method:aSignatureOverTheOriginalSevenReceiptFieldsRestoresUnboundHistory()]",
+            "displayName": "aSignatureOverTheOriginalSevenReceiptFieldsRestoresUnboundHistory()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest', methodName = 'aSignatureOverTheOriginalSevenReceiptFieldsRestoresUnboundHistory', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest]/[method:changingTheScoreInTheFileInvalidatesTheArchiveBeforeAnyWrite()]",
+            "displayName": "changingTheScoreInTheFileInvalidatesTheArchiveBeforeAnyWrite()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest', methodName = 'changingTheScoreInTheFileInvalidatesTheArchiveBeforeAnyWrite', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest]/[method:restoresTheRecordedScoreAndDateOnlyForTheOriginAndRetainsAdditionalRevisions()]",
+            "displayName": "restoresTheRecordedScoreAndDateOnlyForTheOriginAndRetainsAdditionalRevisions()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest', methodName = 'restoresTheRecordedScoreAndDateOnlyForTheOriginAndRetainsAdditionalRevisions', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest]/[method:thePublicDevelopmentKeyCannotRestoreAProofFromAFile()]",
+            "displayName": "thePublicDevelopmentKeyCannotRestoreAProofFromAFile()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest', methodName = 'thePublicDevelopmentKeyCannotRestoreAProofFromAFile', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest]/[method:addingAPlanningBindingInvalidatesTheArchiveBeforeAnyWrite()]",
+            "displayName": "addingAPlanningBindingInvalidatesTheArchiveBeforeAnyWrite()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest', methodName = 'addingAPlanningBindingInvalidatesTheArchiveBeforeAnyWrite', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          }
+        ],
+        "failures": []
+      }
+    },
+    {
+      "exitCode": 0,
+      "testSource": {
+        "path": "backend/src/test/java/com/skillpilot/backend/completion/UnitPlanningReleaseTest.java",
+        "sha256": "60358822af8dc8136c40b317fb3ae900739f349f23a24c5351750adad70a4d10"
+      },
+      "junitResult": {
+        "runner": "JUnit Platform Launcher, existing source tests, no test modifications",
+        "class": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+        "methodSelection": [],
+        "startedAt": "2026-11-24T20:35:07.988861189Z",
+        "finishedAt": "2026-11-24T20:35:08.898699542Z",
+        "found": 3,
+        "started": 3,
+        "succeeded": 3,
+        "failed": 0,
+        "skipped": 0,
+        "aborted": 0,
+        "containerFailures": 0,
+        "tests": [
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.completion.UnitPlanningReleaseTest]/[method:planningCreditRequiresItsReviewedOwnWitnessAndCurrentCoverage()]",
+            "displayName": "planningCreditRequiresItsReviewedOwnWitnessAndCurrentCoverage()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.completion.UnitPlanningReleaseTest', methodName = 'planningCreditRequiresItsReviewedOwnWitnessAndCurrentCoverage', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.completion.UnitPlanningReleaseTest]/[method:absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial()]",
+            "displayName": "absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.completion.UnitPlanningReleaseTest', methodName = 'absentReviewDigestDisablesTheReleaseWithoutRejectingTheUnitMaterial', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.completion.UnitPlanningReleaseTest]/[method:matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews()]",
+            "displayName": "matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.completion.UnitPlanningReleaseTest', methodName = 'matchesTheIndependentAuthoringDigestAndRejectsChangedMeaningsAndViews', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          }
+        ],
+        "failures": []
+      }
+    },
+    {
+      "exitCode": 0,
+      "testSource": {
+        "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+        "sha256": "88b0537d427cbea79c36f866c08a87522a9dce7093875f0b7607a89fca99f83d"
+      },
+      "junitResult": {
+        "runner": "JUnit Platform Launcher, existing source tests, no test modifications",
+        "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+        "methodSelection": [
+          "hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease",
+          "currentHistoricalPassesCanCompleteALaterOrderWithoutIndividualPlanningCredits",
+          "historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition"
+        ],
+        "startedAt": "2026-11-24T20:35:09.087243887Z",
+        "finishedAt": "2026-11-24T20:36:51.239912312Z",
+        "found": 9,
+        "started": 9,
+        "succeeded": 9,
+        "failed": 0,
+        "skipped": 0,
+        "aborted": 0,
+        "containerFailures": 0,
+        "tests": [
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest]/[test-template:hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease(java.lang.String)]/[test-template-invocation:#1]",
+            "displayName": "[1] duration = \"G8\"",
+            "source": "MethodSource [className = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest', methodName = 'hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease', methodParameterTypes = 'java.lang.String']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest]/[test-template:hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease(java.lang.String)]/[test-template-invocation:#2]",
+            "displayName": "[2] duration = \"G9\"",
+            "source": "MethodSource [className = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest', methodName = 'hessianHistoricalPartPassAndItsIdempotentReplayCannotGainALaterPlanningRelease', methodParameterTypes = 'java.lang.String']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest]/[method:currentHistoricalPassesCanCompleteALaterOrderWithoutIndividualPlanningCredits()]",
+            "displayName": "currentHistoricalPassesCanCompleteALaterOrderWithoutIndividualPlanningCredits()",
+            "source": "MethodSource [className = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest', methodName = 'currentHistoricalPassesCanCompleteALaterOrderWithoutIndividualPlanningCredits', methodParameterTypes = '']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest]/[test-template:historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(java.lang.String, java.lang.String)]/[test-template-invocation:#1]",
+            "displayName": "[1] course = \"GK\", edition = \"ORIGINAL22\"",
+            "source": "MethodSource [className = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest', methodName = 'historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition', methodParameterTypes = 'java.lang.String, java.lang.String']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest]/[test-template:historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(java.lang.String, java.lang.String)]/[test-template-invocation:#2]",
+            "displayName": "[2] course = \"LK\", edition = \"ORIGINAL22\"",
+            "source": "MethodSource [className = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest', methodName = 'historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition', methodParameterTypes = 'java.lang.String, java.lang.String']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest]/[test-template:historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(java.lang.String, java.lang.String)]/[test-template-invocation:#3]",
+            "displayName": "[3] course = \"GK\", edition = \"PREVIOUS36\"",
+            "source": "MethodSource [className = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest', methodName = 'historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition', methodParameterTypes = 'java.lang.String, java.lang.String']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest]/[test-template:historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(java.lang.String, java.lang.String)]/[test-template-invocation:#4]",
+            "displayName": "[4] course = \"LK\", edition = \"PREVIOUS36\"",
+            "source": "MethodSource [className = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest', methodName = 'historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition', methodParameterTypes = 'java.lang.String, java.lang.String']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest]/[test-template:historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(java.lang.String, java.lang.String)]/[test-template-invocation:#5]",
+            "displayName": "[5] course = \"GK\", edition = \"RAW_ONLY\"",
+            "source": "MethodSource [className = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest', methodName = 'historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition', methodParameterTypes = 'java.lang.String, java.lang.String']",
+            "status": "SUCCESSFUL"
+          },
+          {
+            "uniqueId": "[engine:junit-jupiter]/[class:com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest]/[test-template:historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition(java.lang.String, java.lang.String)]/[test-template-invocation:#6]",
+            "displayName": "[6] course = \"LK\", edition = \"RAW_ONLY\"",
+            "source": "MethodSource [className = 'com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest', methodName = 'historicalTwoMotionsPassNeverCompletesTheNewVoluntaryEdition', methodParameterTypes = 'java.lang.String, java.lang.String']",
+            "status": "SUCCESSFUL"
+          }
+        ],
+        "failures": []
+      }
+    }
+  ]
+}

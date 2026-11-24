@@ -1,0 +1,17 @@
+# Technische Prüfung der E.1-Bestehensgrenzen
+
+Im ersten Coach-Test überschritten zwölf Kriterientexte in fünf Rastern die native Grenze von 2.000 UTF-16-Codeeinheiten. Bei der freiwilligen Wurfprüfung scheiterten dadurch sechs der 27 Fälle. Fünf erneute fachliche Doppelfreigaben bestätigen die gekürzten Kriterien. [Erster Backendtest](six-rubric-coach-preflight.actual.json) · [Messung beider Coach-Adapter](provider-evaluation-contracts.actual.json)
+
+Die Prüfungen beziehen sich auf den aktivierten Physikkatalog mit SHA-256 `76042a25b10ea7f89d461d3be4eeb48b6ae7239f23f7eb02b7132b55f3b60b5c`. Die sieben bisherigen Prüfungs-IDs bleiben erhalten. Das Backend berechnete die Materialkennungen für alle sechs neuen Bewertungen und die beibehaltene siebte Prüfung aus den tatsächlich gespeicherten Aufgaben- und Bewertungsdaten.
+
+| Prüfung | Ergebnis | Beleg |
+|---|---|---|
+| Materialrevision und frühere Ergebnisse | Alle sechs neuen Raster haben eine eigene Materialkennung. Der Fallversuch behält seine bisherige Kennung. Alle 27 JUnit-Fälle für Revisionen, gespeicherte Prüfungsnachweise, signierte Sicherungen und Anrechnung waren erfolgreich. Die Datenbankfälle liefen mit H2. | [Messwerte und einzelne Testergebnisse](material-identity-and-history.actual.json) |
+| Reifegrade und Bewertungsregel | Physik M7, Sekundarstufe I und II jeweils M4. Alle sechs geänderten Grenzen liegen bei höchstens 85 Prozent. Der unveränderte Fallversuch wird als Bestandsprüfung ausgewiesen. | [Status, Prüfbefehle und Rastergewichte](native-checks.actual.json) |
+| Physiksichten und Mathematikbedarf | Alle 90 erzeugten Physiksichten sind bytegleich zur Ausgangsfassung. Für 100 Mathematiksichten wurden 1.036 frühere Bedarfsnachweise und die 63 gebundenen Physikquellen nachgerechnet. | [Quellen, Generatoren und Einzelbefunde](projections.actual.json) |
+| Lernlandkarten | Auf 356 untersuchten Kartenebenen ergeben sich vor und nach der Änderung dieselben zehn rückwärts gerichteten Kanten mit 32 Vorkommen. | [Vorher-Nachher-Messung](nested-map.actual.json) |
+| Buch- und Paketverträge | Der Buchlauf prüfte fünf Bücher einschließlich Physik mit 489 Zielseiten. Alle 15 gezielten Paketprüfungen bestanden. Die beiden nativen Verbraucher und die Paketschemata v1 und v1.2 prüften die tatsächlichen Physikprüfungen. Das vorhandene v1.3-Konformitätsprofil gilt für Mathematik. | [Prüfumfang und Einzelergebnisse](native-checks.actual.json) |
+
+Die integrierte Regel prüfte 1.056 bewertete Prüfungen. In Physik liegen noch 50 von 233 Bestandsprüfungen über 85 Prozent, gegenüber 56 vor dieser Änderung. Der geparkte Fallversuch ist eine davon. Die drei Tests der Bestehensregel waren erfolgreich. Die reguläre TypeScript-Projektprüfung der App (`tsc -b app/tsconfig.json --force`) und ESLint für die drei geänderten App-Skripte meldeten Exit 0. Ein zusätzlicher Strict-Aufruf ohne Projektkonfiguration über den Skript-Importbaum meldete auf Main und auf diesem Zweig dieselben 53 Diagnosen in sieben Dateien. Die drei hinzugekommenen TypeScript-Dateien erzeugten keine Diagnose.
+
+Die Fachprüfung umfasst 36 unterschiedliche Schülerarbeiten der freigegebenen Fassungen, jeweils in zwei unabhängigen Blindkorrekturen. Die Ergebnistabelle verlinkt die abgegebenen Arbeiten, die Bewertungsgewichte und die Urteile jeder Runde. [Fachlicher Prüfbericht](../../../../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/README.md)
