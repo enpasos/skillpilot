@@ -62,6 +62,8 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                           if node.get("id") in dict(expected_topics)]
                 self.assertEqual(actual, expected_topics)
                 motion = find(view, "physics-e1-motion")
+                self.assertNotIn("6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+                                 {node.get("goalId") for node in generator.walk(view["rootNodes"])})
                 motion_atoms = generator.role_atoms({"rootNodes": [motion]})["target"]
                 e3 = find(view, expected_topics[2][0])
                 e3_atoms = generator.role_atoms({"rootNodes": [e3]})["target"]
@@ -93,7 +95,7 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                 self.assertFalse(obsolete & {node.get("id") for node in generator.walk(phase["children"])})
                 motion = find(view, "physics-e1-motion")
                 for unit_id, assessments in (("physics-e1-air-and-vacuum", {generator.HESSEN_E1_VERTICAL_THROW_ASSESSMENT}),
-                                             ("physics-e1-two-motions", {"6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+                                             ("physics-e1-two-motions", {"bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
                                                                          "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"})):
                     self.assertTrue(assessments <= {node.get("goalId") for node in find(view, unit_id)["children"]})
                 self.assertEqual(motion["children"][-1]["id"], generator.HESSEN_E1_CHILD_UNITS[-1][0])

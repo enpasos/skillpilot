@@ -444,8 +444,14 @@ class PhysicsStageAuthoring(unittest.TestCase):
         # not manufacture the missing signed-area / initial-value preparation.
         self.assertNotIn(task, bindings["HH"]["assessments"])
 
+    def test_historical_two_motions_identity_is_absent_from_active_state_view_references(self):
+        for name, view in self.views.items():
+            with self.subTest(view=name):
+                self.assertNotIn("6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
+                                 {node.get("goalId") for node in authoring.graph.walk(view["rootNodes"])})
+
     def test_horizontal_throw_assessment_follows_its_assessed_modeling_competency(self):
-        task, covered = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4", "d6dc0e02-831d-4894-a61a-852bcc74f147"
+        task, covered = "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9", "d6dc0e02-831d-4894-a61a-852bcc74f147"
         for state in ("MV", "SL", "SN"):
             for profile in ("gk", "lk"):
                 view = self.views[f"de-{state.lower()}-{profile}.view.json"]

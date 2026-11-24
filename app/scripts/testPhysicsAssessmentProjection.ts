@@ -117,7 +117,26 @@ for (const file of readdirSync(viewDirectory).filter(path => path.endsWith('.vie
 const sectionPolicy = e1Material.sectionAssessmentPolicy
 const multiphaseGoal = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
 const freeFallSeriesGoal = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
-assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['6ea3fb3c-abdc-568f-ab13-97c36dc274e4', freeFallSeriesGoal])
+// Historical ZB passes must not acquire the developed edition's qualifying meaning.
+const historicalTwoMotionsGoal = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+const currentTwoMotionsGoal = 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'
+const historicalTwoMotions = canonicalById.get(historicalTwoMotionsGoal)!
+const historicalTwoMotionsFixture = readRepoJson('contracts/stage-plan-review-evidence/2026-11-24/e1-zb-assessment-identity/historical-base22.goal.json')
+assert.equal(historicalTwoMotions.extendedData?.applicabilityProjection, 'excluded')
+assert.deepEqual(historicalTwoMotions.applicability, {})
+for (const field of ['taskContent', 'taskContentEn', 'solutionContent', 'solutionContentEn', 'scoring'] as const) {
+  assert.deepEqual(historicalTwoMotions.examData?.[field], historicalTwoMotionsFixture.examData[field],
+    `historical ZB retains its authentic 22/36 ${field}`)
+}
+assert(canonicalById.get('151edbf8-eb68-5ef7-8786-43e56a281b0b')?.contains.includes(historicalTwoMotionsGoal))
+assert(!canonicalById.get('424b07df-bf66-5d7f-99f5-f28b32ad1f22')?.contains.includes(historicalTwoMotionsGoal))
+assert(canonicalById.get('424b07df-bf66-5d7f-99f5-f28b32ad1f22')?.contains.includes(currentTwoMotionsGoal))
+assert.deepEqual(canonicalById.get(currentTwoMotionsGoal)?.requires,
+  ['89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2', 'd6dc0e02-831d-4894-a61a-852bcc74f147'])
+assert.deepEqual(canonicalById.get(currentTwoMotionsGoal)?.examData?.coveredGoalIds,
+  ['d6dc0e02-831d-4894-a61a-852bcc74f147'])
+
+assert.deepEqual(sectionPolicy.voluntaryAssessmentGoalIds, ['bcc56921-7107-5f5f-b721-3d5e0d7e1cd9', freeFallSeriesGoal])
 assert.deepEqual(sectionPolicy.additionalVoluntaryAssessmentGoalIdsByView ?? {}, {},
   'the LK scope also has exactly the two common voluntary offers after the historical exam is retired')
 const currentCatalog = loadCurrentCurriculumCatalog(liveVerificationInputs).entries.map(row => row.landscape as SkillLandscape)
@@ -182,7 +201,7 @@ assert.throws(() => validateSectionAssessmentPolicy({
 }, e1Views, sectionGraph, projectionEntries), /missing \[unoffered-required-assessment\]/)
 // Out-of-section and retained assessments cannot become voluntary section offers.
 for (const extra of ['unknown-goal', contract.parts[0].goalId, '4a2bf015-052b-4af0-aed7-324259fa1a8a',
-  '22561c66-3957-5d55-b07a-25de1f359930', multiphaseGoal]) {
+  '22561c66-3957-5d55-b07a-25de1f359930', multiphaseGoal, historicalTwoMotionsGoal]) {
   assert.throws(() => checkSectionPolicy({ ...sectionPolicy, voluntaryAssessmentGoalIds: [extra] }), /released additional assessment/)
 }
 assert.throws(() => checkSectionPolicy({ ...sectionPolicy, additionalVoluntaryAssessmentGoalIdsByView: { 'outside-view': [multiphaseGoal] } }), /contract view/)
@@ -305,7 +324,7 @@ const hesseIntroductoryAssessmentPlaces = {
   'physics-e1-uniform-motion': ['ee7d5f3d-858f-59d6-89b0-e5a7f437f458'],
   'physics-e1-accelerated-and-free-fall': ['f41e4e30-794e-5ce4-ba5e-cc72712cd691'],
   'physics-e1-air-and-vacuum': ['c933b7d2-edcb-5747-9378-9762659f260a'],
-  'physics-e1-two-motions': ['39f52dcb-ff1d-5cad-9ccb-30da803cfa85', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'],
+  'physics-e1-two-motions': ['39f52dcb-ff1d-5cad-9ccb-30da803cfa85', 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'],
   'physics-e2-newton-and-conservation': [
     '22561c66-3957-5d55-b07a-25de1f359930', '72649cf5-893c-5f03-88bd-a2497171d434', 'be6d4895-65ab-545b-8df9-84e5a308a5e3',
   ],
@@ -338,7 +357,7 @@ const fermiGoalId = '658cf33d-a0c2-5d47-801a-3dbcd5cac074'
 const fermiAssessmentId = '71e8936b-fa8a-50dc-8c47-fca015b85ac5'
 const kinematicsAssessments = [
   { id: 'c5807a37-129e-5df6-8989-482bc7f5683e', maxPoints: 24 },
-  { id: '6ea3fb3c-abdc-568f-ab13-97c36dc274e4', maxPoints: 36 },
+  { id: 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9', maxPoints: 36 },
 ]
 const retainedVerticalAssessmentId = '4ab1cf6d-b808-5b86-9291-85df0b9f2496'
 assert.equal(canonicalById.get(retainedVerticalAssessmentId)?.extendedData?.applicabilityProjection, 'excluded')
@@ -586,6 +605,8 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
   fermiScopeViewCount++
   assert(!visible.has('2b9e565f-d9b4-5e23-b5b7-b7977cecff06'),
     `${view.viewId}: the retired 18/30 exam must stay outside learning offers`)
+  assert(!visible.has(historicalTwoMotionsGoal),
+    `${view.viewId}: historical ZB must not become a current learning offer`)
   assert(!visible.has(retainedVerticalAssessmentId),
     `${view.viewId}: the retained mixed task must not become an active assessment target`)
   astronomyTaskPairs += assertAstronomyTargetVisibility(view, visible)

@@ -1758,7 +1758,7 @@ class CompositionViewServiceTest {
                         "c933b7d2-edcb-5747-9378-9762659f260a"), // C: vertical throw
                 "physics-e1-two-motions", List.of(
                         "39f52dcb-ff1d-5cad-9ccb-30da803cfa85", // B: horizontal throw
-                        "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"))); // voluntary: two motions, one time
+                        "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"))); // voluntary: two motions, one time
         ePhaseAssessmentPlacements.putAll(Map.of(
                 "physics-e2-newton-and-conservation", List.of(
                         "22561c66-3957-5d55-b07a-25de1f359930",

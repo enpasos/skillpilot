@@ -22,7 +22,7 @@ const assessment = canonical.goals.find(goal => goal.id === examId)!
 const requiredAssessmentIds = ['ee7d5f3d-858f-59d6-89b0-e5a7f437f458', '39f52dcb-ff1d-5cad-9ccb-30da803cfa85',
   'c933b7d2-edcb-5747-9378-9762659f260a', 'f13ca187-b680-5f47-b4ad-76bd474bd8a2']
 const horizontalThrow = canonical.goals.find(goal => goal.id === '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2')!
-const horizontalThrowAdditionalAssessmentId = '6ea3fb3c-abdc-568f-ab13-97c36dc274e4'
+const horizontalThrowAdditionalAssessmentId = 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'
 const roadSafety = canonical.goals.find(goal => goal.id === '4a2bf015-052b-4af0-aed7-324259fa1a8a')!
 const nativePhysics = nativeMapLandscapes.find(landscape => landscape.landscapeId === id.physics)!
 const force = nativePhysics.goals.find(goal => goal.id === id.physicsGoal)!

@@ -60,7 +60,7 @@ const practiceMaterial = materials.find(item => item.unit.landscapeId === physic
 const { flashcardGoalId: memoryId, assessmentGoalId: examId } = practiceMaterial.unit
 assert(memoryId && examId)
 const horizontalThrowId = '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2'
-const horizontalThrowAssessmentIds = ['39f52dcb-ff1d-5cad-9ccb-30da803cfa85', '6ea3fb3c-abdc-568f-ab13-97c36dc274e4']
+const horizontalThrowAssessmentIds = ['39f52dcb-ff1d-5cad-9ccb-30da803cfa85', 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9']
 // Since the E.1 cut (23 Nov 2026) both throw assessments require the throw goal, so
 // their order follows from requires; the former study recommendations were removed.
 assert.equal(practiceMaterial.studyRecommendations, undefined)

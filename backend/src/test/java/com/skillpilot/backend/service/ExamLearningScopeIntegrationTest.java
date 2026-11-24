@@ -64,7 +64,7 @@ class ExamLearningScopeIntegrationTest {
             "4a2bf015-052b-4af0-aed7-324259fa1a8a", "68c90ba6-c438-463c-9a53-cf61062d416a",
             "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
             "a9562b05-c54d-5635-9244-3f7dd24a8642", HESSIAN_VERTICAL_THROW_EXAM,
-            "6ea3fb3c-abdc-568f-ab13-97c36dc274e4");
+            "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9");
     private static final LocalDate TODAY = LocalDate.parse("2026-10-22");
     private static final ZoneId BERLIN = ZoneId.of("Europe/Berlin");
 

@@ -15,7 +15,7 @@ FREE_FALL_MATERIAL = ROOT / "curricula/DE/Gymnasium/materials/physics/he-e1-acce
 PHYSICS_LANDSCAPE = ROOT / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json"
 HORIZONTAL_THROW = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2"
 PART_B = "39f52dcb-ff1d-5cad-9ccb-30da803cfa85"
-VOLUNTARY_PART_B = "6ea3fb3c-abdc-568f-ab13-97c36dc274e4"
+VOLUNTARY_PART_B = "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9"
 
 
 class UnitLearningMaterialSchemaTests(unittest.TestCase):
