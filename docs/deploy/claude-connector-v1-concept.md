@@ -645,11 +645,26 @@ Each tool has:
 - a narrow description matching actual behaviour;
 - `readOnlyHint: true` only when the complete operation performs no state,
   activity, retention, session, or audit mutation with user-visible effect;
-- `destructiveHint: true` for ordinary coach tools that create, update or delete
-  learner or connector state;
-- `destructiveHint: false` for the app-only normal-card review because it is an
-  idempotent, recoverable spaced-repetition scheduling update, not mastery,
-  focus, active-goal or content deletion.
+- `destructiveHint: false` for every coach tool. No coach tool deletes learner
+  data: the write tools record a passed goal or recall results, schedule a
+  card, or change the current selection (focus, active goal, plan subject,
+  completion route). `destructiveHint: true` is reserved for a tool that
+  deletes learner data or irreversibly overwrites a recorded result.
+
+Claude treats a destructive tool differently from an ordinary write tool. A
+tool the learner has set to "Always allow" runs without the host's automated
+check, except a tool its connector marks as destructive: that tool is still
+checked before every call
+([Get started with Claude Cowork](https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork),
+read on 24 November 2026). Until that day every ordinary write tool was
+marked destructive. The check then refused `set_skillpilot_mastery` after a
+passed exam, because the coach saves on its own and the learner's message had
+not asked for the save. The result stayed unsaved until the learner typed a
+request. A standing request in the prepared start message did not change this.
+
+A tool left at the host's default approval level is still subject to that
+check in automatic mode. Learners should set the SkillPilot tools to "Always
+allow".
 
 Descriptions explain the tool operation, not general model behaviour or hidden
 prompt instructions. Behavioural coaching policy belongs in the connector's

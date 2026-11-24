@@ -113,10 +113,9 @@ class ClaudeV1McpContractTest {
 
             boolean expectedReadOnly = ClaudeV1Contract.READ_TOOL_NAMES.contains(tool.name());
             assertEquals(expectedReadOnly, annotations.readOnlyHint(), () -> "readOnlyHint: " + tool.name());
-            boolean expectedDestructive = !expectedReadOnly
-                    && !ClaudeV1Contract.TOOL_REVIEW_MEMORY_PRACTICE_CARD.equals(tool.name())
-                    && !ClaudeV1CompletionContractRegistry.TOOL_CONFIRM.equals(tool.name());
-            assertEquals(expectedDestructive, annotations.destructiveHint(), () -> "destructiveHint: " + tool.name());
+            // No coach tool deletes learner data. A tool marked destructive is checked by Claude before
+            // every call even under "Always allow", which left a passed goal unsaved.
+            assertEquals(Boolean.FALSE, annotations.destructiveHint(), () -> "destructiveHint: " + tool.name());
             assertEquals(Boolean.TRUE, annotations.idempotentHint(), () -> "idempotentHint: " + tool.name());
             assertEquals(Boolean.FALSE, annotations.openWorldHint(), () -> "openWorldHint: " + tool.name());
         }
