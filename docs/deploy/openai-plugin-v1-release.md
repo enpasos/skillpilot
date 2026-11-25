@@ -55,9 +55,10 @@ Permanente SkillPilot-ID, CREATE/EXISTING, Providerhinweis sowie Curriculum,
 Stage, Subjects, Profile und Personalisierung werden ausschließlich im
 First-Party-WebGUI konfiguriert. Der normale Einstieg **Lernen starten** /
 **Start learning** und der Cockpit-Einstieg führen zur Anbieterauswahl.
-Für **ChatGPT Desktop (Beta)** erzeugt **Lernen mit ChatGPT vorbereiten** eine
-frische opake `learningSessionId`; die vorbereitete Nachricht wird in einen
-neuen Desktop-Chat kopiert. `?coach=chatgpt-desktop` ist eine optionale
+Für **ChatGPT Desktop (Beta)** erzeugt **Lernen mit ChatGPT starten** eine
+frische opake `learningSessionId`; die vorbereitete Nachricht wird über den
+App-Link in den Entwurf eines neuen lokalen Desktop-Chats übergeben und lässt
+sich ersatzweise kopieren. `?coach=chatgpt-desktop` ist eine optionale
 Vorauswahl, `?chatgptTest=1` bleibt eine kompatible Vorauswahl ohne separaten
 Startkasten. OAuth autorisiert die feste App, wählt aber keinen Lernenden aus.
 

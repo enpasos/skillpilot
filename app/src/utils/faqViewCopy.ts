@@ -102,7 +102,7 @@ const germanCopy: FaqViewCopy = {
           id: 'chatgpt-work',
           question: 'In welchem Bereich von ChatGPT Desktop funktioniert das Plugin?',
           paragraphs: [
-            'Wähle in der Windows-App „Modus wechseln“ → „Codex“. Verwende danach neben deiner Startnachricht in SkillPilot den Link „Lokalen Codex-Chat öffnen“. Wähle ein lokales Projekt und „Dieser Computer“. Du lernst direkt im Chat und brauchst dafür kein Terminal.',
+            'Starte in SkillPilot mit „Lernen mit ChatGPT starten“. SkillPilot öffnet in der Windows-App einen neuen Chat mit deiner Startnachricht. Er muss beim Absenden auf „Codex“ stehen („Modus wechseln“ → „Codex“). Wähle ein lokales Projekt und „Dieser Computer“. Du lernst direkt im Chat und brauchst dafür kein Terminal.',
             'Du kannst den Marketplace auch über „Work“ öffnen. Lernen in Work wird getrennt getestet und ist für diese Plugin-Version noch nicht bestätigt.',
           ],
           link: { href: '/plugins#chatgpt-desktop', label: 'ChatGPT-Desktop-Installationsanleitung' },
@@ -112,8 +112,8 @@ const germanCopy: FaqViewCopy = {
           question: 'Wie starte ich den ChatGPT-Desktop-Betatest?',
           paragraphs: [
             'Öffne in ChatGPT Desktop „Plugins“ und prüfe, ob unter „Hinzufügen“ die Option „Marketplace hinzufügen“ vorhanden ist. Die ChatGPT-Anleitung unter „Plugins“ in SkillPilot nennt den Git-Marketplace und die Version für diesen Betatest. Sobald sie im Marketplace angeboten wird, installiere oder aktualisiere „SkillPilot Coach“.',
-            'Wähle anschließend in SkillPilot ausdrücklich „ChatGPT Desktop“ als Coach und „Lernen mit ChatGPT vorbereiten“. Sende die vollständige Startnachricht im neuen lokalen Codex-Chat mit ausgewähltem SkillPilot Coach. Halte die Startnachricht privat. Eine für Claude vorbereitete Startnachricht funktioniert nicht mit ChatGPT.',
-            'Der Vorabtest unter Windows bestätigte, dass der lokale Codex-Chat das Lernziel laden und anzeigen kann. Wenn ein Update bereitsteht, aktualisiere Marketplace und Plugin, prüfe die installierte Version und bereite eine frische Lernsession vor.',
+            'Wähle anschließend in SkillPilot ausdrücklich „ChatGPT Desktop“ als Coach und „Lernen mit ChatGPT starten“. SkillPilot öffnet einen neuen lokalen Codex-Chat, in dem der SkillPilot Coach ausgewählt und die Startnachricht bereits eingetragen ist. Sende sie dort ab. Halte die Startnachricht privat. Eine für Claude vorbereitete Startnachricht funktioniert nicht mit ChatGPT.',
+            'Der Vorabtest unter Windows bestätigte, dass der lokale Codex-Chat das Lernziel laden und anzeigen kann. Wenn ein Update bereitsteht, aktualisiere Marketplace und Plugin, prüfe die installierte Version und starte eine frische Lernsession.',
             'SkillPilot ist noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht. Einen Veröffentlichungstermin können wir noch nicht nennen.',
           ],
           link: { href: '/plugins#chatgpt-desktop', label: 'ChatGPT-Desktop-Installationsanleitung' },
@@ -326,7 +326,7 @@ const englishCopy: FaqViewCopy = {
           id: 'chatgpt-work',
           question: 'Which section of ChatGPT Desktop supports the plugin?',
           paragraphs: [
-            'In the Windows app, switch modes to “Codex”. Then use “Open local Codex chat” next to your start message in SkillPilot. Select a local project and “This Computer”. You learn in the chat without using a terminal.',
+            'Start in SkillPilot with “Start learning with ChatGPT”. SkillPilot opens a new chat in the Windows app with your start message. It must be set to “Codex” when you send (“Switch mode” → “Codex”). Select a local project and “This Computer”. You learn in the chat without using a terminal.',
             'You can also open the marketplace from “Work”. Learning in Work is being tested separately and is still unconfirmed for this plugin version.',
           ],
           link: { href: '/plugins#chatgpt-desktop', label: 'ChatGPT desktop installation guide' },
@@ -336,8 +336,8 @@ const englishCopy: FaqViewCopy = {
           question: 'How do I start the ChatGPT desktop beta?',
           paragraphs: [
             'Open “Plugins” in ChatGPT Desktop and check whether “Add” offers “Add marketplace”. The ChatGPT guide under “Plugins” in SkillPilot gives the Git marketplace and the version for this beta test. When the marketplace offers that version, install or update “SkillPilot Coach”.',
-            'Then explicitly select “ChatGPT Desktop” as your coach and “Prepare learning with ChatGPT” in SkillPilot. Send the complete start message in your new local Codex chat with SkillPilot Coach selected. Keep the start message private. A start message prepared for Claude does not work with ChatGPT.',
-            'An initial Windows test confirmed that local Codex could load and display the learning goal. When an update is available, update the marketplace and plugin, check the installed version, and prepare a fresh learning session.',
+            'Then explicitly select “ChatGPT Desktop” as your coach and “Start learning with ChatGPT” in SkillPilot. SkillPilot opens a new local Codex chat with SkillPilot Coach selected and your start message already filled in. Send it there. Keep the start message private. A start message prepared for Claude does not work with ChatGPT.',
+            'An initial Windows test confirmed that local Codex could load and display the learning goal. When an update is available, update the marketplace and plugin, check the installed version, and start a fresh learning session.',
             'SkillPilot has not been published in the public ChatGPT app directory. We cannot give a release date yet.',
           ],
           link: { href: '/plugins#chatgpt-desktop', label: 'ChatGPT desktop installation guide' },

@@ -39,13 +39,16 @@ sign-in succeeds, start the local Codex chat as described below.
 
 ### Start learning in a local Codex chat { #windows-local-codex }
 
-In the ChatGPT desktop app, first switch modes to **Codex**. Select **Open
-local Codex chat** next to the start message in SkillPilot. The link opens a
-draft with the Git plugin chip and an example prompt. Select a local project,
-for example in your own empty folder, and **This Computer**. Keep the **SkillPilot
-Coach** chip and replace the example with the complete, freshly prepared SkillPilot
-start message. The app link carries only the plugin reference and the example
-text. You can learn in the chat without opening a terminal.
+Select **Start learning with ChatGPT** in SkillPilot. SkillPilot creates the
+learning session and opens, through an app link, a draft with the Git plugin
+chip and the start message. The chat must be set to **Codex** when you send
+(**Switch mode → Codex**). Select a local project, for example in your own
+empty folder, and **This Computer**, and send the message. The app link carries the
+plugin reference and the freshly created start message with its short-lived
+session key, never the permanent SkillPilot ID. It is handed to the desktop
+app locally. If no chat opens, SkillPilot offers the start message for copying
+under **The chat does not open?**. You can learn in the chat without opening a
+terminal.
 [Tester guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme)
 
 At **05:13:59 UTC on 25 November 2026**, the visible Codex chat with the
@@ -54,6 +57,11 @@ then-current backend with 14 tools. The chat displayed the tool result, the
 learning goal and four learning routes. The same test confirmed saved progress
 and continuation. At **10:24:45 UTC**, after the backend rollout, a fresh call
 returned a learning context from the new build.
+In these tests the start message was pasted by hand. Since 25 November 2026
+SkillPilot hands it over through the app link. On the same day the Product
+Owner reported from a Windows test against a local backend that the chat opened
+with the start message filled in. This is an observation without a trace. A
+learning step through this path is not yet accepted.
 
 **Work** is a separate test path. The current Work test encountered an MCP
 `401`. Work tool execution remains unconfirmed for this version.
@@ -432,9 +440,9 @@ This section records the original **1.1.2** test. For **1.2.0**, use the
    and timestamp rather than changing authentication rules.
 4. Use SkillPilot's normal **Lernen starten** entry, or return there from the
    Cockpit. Load the learner, finish configuration and select
-   **ChatGPT Desktop (Beta)**. Choose **Lernen mit ChatGPT vorbereiten** and copy
-   the whole message unchanged into a **new desktop chat** with this plugin
-   enabled. `?coach=chatgpt-desktop` optionally preselects the provider;
+   **ChatGPT Desktop (Beta)**. Choose **Lernen mit ChatGPT starten**. SkillPilot hands
+   the whole message through the app link to a **new local Codex chat** with this
+   plugin selected; send it there unchanged. `?coach=chatgpt-desktop` optionally preselects the provider;
    `?chatgptTest=1` remains a compatible preselection without a separate
    start box in the updated GUI. Until the owner deploys that GUI, the legacy
    query reaches the previously available OpenAI test handoff.

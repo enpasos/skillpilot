@@ -1584,7 +1584,7 @@ export const SessionSetup: React.FC<SessionSetupProps> = ({ role, setRole, skill
                                 data-testid="claude-plugin-setup-step-1"
                                 className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1.5"
                               >
-                                <p className="min-w-0 text-xs leading-relaxed text-text-secondary">
+                                <p className="min-w-0 flex-1 basis-56 text-xs leading-relaxed text-text-secondary">
                                   <span className="font-semibold text-text-primary">
                                     {t.startPage.login.claudeSetupStepOneTitle}
                                   </span>

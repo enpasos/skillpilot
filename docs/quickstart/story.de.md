@@ -68,6 +68,6 @@ Du kannst jederzeit eine Pause machen. Ist die Lernsession beim nächsten Besuch
 
 Wenn der Anmeldeknopf fehlt, verwende die [Anmeldung über Windows PowerShell](../deploy/openai-personal-marketplace-release.de.md#windows-oauth-fallback).
 
-Wähle im SkillPilot-Lernstart **ChatGPT Desktop**, **Lernen mit ChatGPT vorbereiten** und **ChatGPT-Startnachricht kopieren**. Wähle in der Desktop-App **Modus wechseln → Codex** und folge dem Link **Lokalen Codex-Chat öffnen** in SkillPilot. Wähle ein lokales Projekt und **Dieser Computer**. Ersetze den Beispieltext durch die vollständige Startnachricht, lass den Chip **SkillPilot Coach** stehen und sende die Nachricht im Chat. Halte sie privat. Für das Lernen brauchst du kein Terminal. Lernen in Work wird separat erprobt.
+Wähle im SkillPilot-Lernstart **ChatGPT Desktop** und **Lernen mit ChatGPT starten**. SkillPilot öffnet in der Desktop-App einen neuen Chat, in dem der Chip **SkillPilot Coach** und deine Startnachricht bereits eingetragen sind. Der Chat muss beim Absenden auf **Codex** stehen (**Modus wechseln → Codex**). Wähle ein lokales Projekt und **Dieser Computer** und sende die Nachricht im Chat. Halte sie privat. Öffnet sich kein Chat, findest du die Startnachricht in SkillPilot unter **Der Chat öffnet sich nicht?**. Für das Lernen brauchst du kein Terminal. Lernen in Work wird separat erprobt.
 
 Gemini steht für eigens eingerichtete Testkonten bereit. [Zugangsvoraussetzungen je Anbieter](https://skillpilot.com/faq/coach-setup)

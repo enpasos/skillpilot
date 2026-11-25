@@ -1264,10 +1264,10 @@ browser-launched flows, the user never needs to copy or edit the session ID.
 - CREATE/EXISTING selection, provider notice, and full Level 2 configuration are
   completed exclusively in the first-party WebGUI.
 - The ordinary entry **Start learning** / **Lernen starten** leads to provider
-  selection. **Prepare learning with ChatGPT** (**Lernen mit ChatGPT
-  vorbereiten**) generates a fresh opaque `learningSessionId` for **ChatGPT
-  Desktop (Beta)** along with a short start message to copy into a new desktop
-  chat, keeping the permanent SkillPilot ID outside the chat.
+  selection. **Start learning with ChatGPT** (**Lernen mit ChatGPT
+  starten**) generates a fresh opaque `learningSessionId` for **ChatGPT
+  Desktop (Beta)** along with a short start message that the app link hands to
+  a new local desktop chat, keeping the permanent SkillPilot ID outside the chat.
 - Full context must load successfully at the beginning of every learner turn.
   After a successful mutation, its complete successor state is authoritative for
   the remainder of that same assistant turn and is not redundantly refetched.
@@ -1327,9 +1327,10 @@ creates neither another host nor another app.
 The ordinary GUI entry **Start learning** (**Lernen starten**) offers Claude and
 **ChatGPT Desktop (Beta)**, and the Cockpit entry returns to this provider
 choice. Selecting ChatGPT calls
-`POST /api/ui/learners/{skillpilotId}/openai/v1/launch` and presents the
-prepared start message for copying into a fresh desktop chat via the button
-**Prepare learning with ChatGPT** (**Lernen mit ChatGPT vorbereiten**).
+`POST /api/ui/learners/{skillpilotId}/openai/v1/launch` and hands the
+prepared start message through the app link to a fresh local desktop chat, with
+copying as a fallback, via the button
+**Start learning with ChatGPT** (**Lernen mit ChatGPT starten**).
 `?coach=chatgpt-desktop` serves as an optional preselection; `?chatgptTest=1`
 remains a compatible preselection without a separate launch card. The confirmed
 Git/desktop beta route uses no automatic browser launch. Dedicated Recall and

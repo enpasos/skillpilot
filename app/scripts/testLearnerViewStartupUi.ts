@@ -308,7 +308,7 @@ try {
     assert.equal(await h.page.getByLabel('Deine SkillPilot-ID').isVisible(), false,
       'the verified ID step is compact as well, so the provider choice follows the confirmed setup directly')
     await providerChoice.getByRole('radio', { name: /ChatGPT Desktop/u }).check()
-    await h.page.getByRole('button', { name: 'Lernen mit ChatGPT vorbereiten' }).waitFor()
+    await h.page.getByRole('button', { name: 'Lernen mit ChatGPT starten' }).waitFor()
     assert.deepEqual(await h.page.evaluate(() => ({
       id: localStorage.getItem('skillpilot_id'), role: localStorage.getItem('skillpilot_role'),
       curriculum: localStorage.getItem('skillpilot_learner_landscape'),

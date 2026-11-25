@@ -2652,6 +2652,21 @@ the way to learn, and the Cockpit beside it is overview and settings (skill
 landscape, own results, plan status), not a second way to learn. Completed
 setup steps collapse and name every chosen value.
 
+**25 November 2026.** The Product Owner decided that the ChatGPT Desktop start
+is one click, shaped like the Claude start. "Lernen mit ChatGPT starten"
+creates the learning session and opens the local chat through the app link
+`codex://threads/new?prompt=…`. The `prompt` argument carries the plugin
+mention and the prepared start message with its `learningSessionId`, never the
+permanent ID. The link is handed to the desktop app on the learner's machine.
+Copying the start message remains a collapsed fallback, because an app link
+can fail without any signal to the page. This replaces the earlier form of the
+same day, whose app link carried only an example text. The Product Owner
+reported from a Windows test against a local backend that the chat opened with
+the start message filled in; this is an observation without a trace. The start
+offers the path that works best by evidence: the hint names the local Codex
+chat, where the morning test loaded the goal, while Work returned `401` in
+that test. A recorded successful Work run would change the hint.
+
 ### 11.3 API / Tools conventions
 
 Distinguish trusted browser/domain APIs from provider-facing AI contracts.
