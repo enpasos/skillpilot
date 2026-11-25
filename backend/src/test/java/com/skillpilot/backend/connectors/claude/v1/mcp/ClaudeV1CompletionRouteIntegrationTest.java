@@ -284,6 +284,16 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(practice.meta()).containsOnlyKeys("skillpilotMemoryCard");
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
         var learner = learnerRepository.findById(learnerId).orElseThrow();
+        // A learner who was working on the retired mixed exam keeps that id as stored active goal.
+        // The coach reports no active goal and still describes the focused unit with its activity.
+        learner.setActiveGoalId(retiredMixedExam);
+        learnerRepository.saveAndFlush(learner);
+        var afterRetirement = context();
+        assertThat(afterRetirement.get("activeGoal")).isNull();
+        var unitAfterRetirement = mapper.valueToTree(map(afterRetirement, "focusedUnitContext"));
+        assertThat(unitAfterRetirement.path("unitIntroduction").path("sectionTitle").asText()).isEqualTo("E.1 Bewegungen und ihre Beschreibung");
+        assertThat(unitAfterRetirement.path("activities")).hasSize(1);
+        assertThat(afterRetirement.toString()).doesNotContain(retiredMixedExam, "Bewegungsanalyse und freier Fall");
         learner.setActiveGoalId(active);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);

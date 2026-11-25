@@ -468,6 +468,18 @@ class LearnerPlanningScopeServiceTest {
             assertThat(path.sections()).contains("E.1 Bewegungen und ihre Beschreibung");
             assertThat(path.inCurrentFocus()).isTrue();
         });
+        // A stored active goal that has left the learner's scope is no active goal for the coach: the
+        // focused unit keeps its introduction and activities (here the retired mixed E.1 exam).
+        learner.setActiveGoalId(retiredMixedExamId);
+        learnerRepository.saveAndFlush(learner);
+        var withRetiredActiveGoal = learnerService.getCoachActiveGoalContext(LEARNER_ID, null, revision, "de", Set.of(), true);
+        assertThat(withRetiredActiveGoal).isNotNull();
+        assertThat(withRetiredActiveGoal.goalId()).isNull();
+        assertThat(withRetiredActiveGoal.unitIntroduction()).isEqualTo(entry.unitIntroduction());
+        assertThat(withRetiredActiveGoal.activities()).isEqualTo(entry.activities());
+        assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, retiredMixedExamId, revision, "de", Set.of(), true)).isNull();
+        learner.setActiveGoalId(null);
+        learnerRepository.saveAndFlush(learner);
 
         learner.setActiveGoalId(throwGoalId);
         learnerRepository.saveAndFlush(learner);

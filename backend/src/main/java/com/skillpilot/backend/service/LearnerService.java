@@ -9387,7 +9387,9 @@ public class LearnerService {
         GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
         String activeId = resolveGoalIdInVisibleGoals(learner.getActiveGoalId(), projection.visibleGoals(), false);
         if (goalId == null) {
-            return includeActivities && !org.springframework.util.StringUtils.hasText(learner.getActiveGoalId())
+            // A stored active goal that is no longer visible (a retired assessment, a goal outside the
+            // Personal Curriculum) is reported as no active goal; the focused unit is then described as usual.
+            return includeActivities && activeId == null
                     ? getCoachFocusedUnitContext(learner, projection, publishedFrontierIds, language) : null;
         }
         if (!goalId.equals(activeId) || !projection.targetGoalIds().contains(activeId)) return null;
