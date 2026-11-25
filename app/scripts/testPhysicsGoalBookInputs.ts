@@ -1665,6 +1665,22 @@ assert.deepEqual(e2Preparation.additionalPreparationPayloads.map(row => row.goal
   [...newClosureIds].sort(compareCodePoints))
 currentPreparationPins.push(...e2Preparation.additionalPreparationPayloads)
 assert.equal(new Set(currentPreparationPins.map(row => row.goalId)).size, 219)
+const conservationPreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/conservation-preparation.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, conservationPreparationPath), 'utf8')), '35cf6085d2fafa237ad67bb0fb70270076776e97c3031cfd0effd7b558bb02cb')
+const conservationPreparation = readJson<{
+  predecessor: { path: string; sha256: string; payloadCount: number }
+  changedFields: string[]; before: PreparationPin; current: PreparationPin; unchangedPreparationPayloads: number
+}>(conservationPreparationPath)
+assert.deepEqual(conservationPreparation.predecessor, {
+  path: e2PreparationPath, sha256: sha256(readFileSync(resolve(repoRoot, e2PreparationPath), 'utf8')), payloadCount: 219,
+})
+assert.deepEqual(conservationPreparation.changedFields, ['description', 'descriptionEn', 'resourceLinks'])
+const conservationGoalId = '839ecc8f-3a60-418b-bc92-64bfeef33824'
+assert.equal(conservationPreparation.current.goalId, conservationGoalId)
+const conservationIndex = currentPreparationPins.findIndex(row => row.goalId === conservationGoalId)
+assert.deepEqual(currentPreparationPins[conservationIndex], conservationPreparation.before)
+currentPreparationPins[conservationIndex] = conservationPreparation.current
+assert.equal(conservationPreparation.unchangedPreparationPayloads, currentPreparationPins.length - 1)
 for (const payload of currentPreparationPins) {
   assert.equal(sha256(JSON.stringify(rawStagePreparationById.get(payload.goalId))), payload.rawSha256,
     `${payload.goalId}: stale actual source-stage prerequisite bytes`)

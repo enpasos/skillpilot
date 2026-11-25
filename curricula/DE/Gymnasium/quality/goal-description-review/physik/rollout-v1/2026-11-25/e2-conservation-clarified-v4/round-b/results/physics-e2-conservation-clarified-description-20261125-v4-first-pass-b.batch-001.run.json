@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-e2-conservation-clarified-description-20261125-v4-b-01a213a6-81c6-7273-9f3e-07eb7aece8b1",
+  "campaignId": "physics-e2-conservation-clarified-description-20261125-v4-b",
+  "roundId": "physics-e2-conservation-clarified-description-20261125-v4-first-pass-b",
+  "batchId": "physics-e2-conservation-clarified-description-20261125-v4-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:a15a6d0fe40302da4a18ed454cce43775790b3ce5787c23b74bfddd553a619ee",
+  "bundleFingerprint": "sha256:b9d41401a840383c1030c5da831feb59a2ff87626cc464e968dd9ffe7ea978ea",
+  "bookDigest": "sha256:94c1152d30df5f302c22dc8a1a479aea4608882ddbae4f79c6f43190bb553f15",
+  "provider": "OpenAI",
+  "model": "gpt-6.2-astra",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:8db3bd985a7cebba6cadaea10ffa715670ba4b88987b2f000f6b689d882259cb",
+  "independenceGroupId": "physics-e2-conservation-clarified-description-20261125-v4-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "839ecc8f-3a60-418b-bc92-64bfeef33824"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:004e04ca7b8023b87d7905db00b6cf7f231585bfe39e9afafe40a1a2332145a9"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:662b7e9e80473557da78a6968228ba78eb99e59f5365e7e781e75ff2c55ba883"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a15a6d0fe40302da4a18ed454cce43775790b3ce5787c23b74bfddd553a619ee"
+    }
+  ],
+  "startedAt": "2026-11-25T17:00:09.925Z",
+  "completedAt": "2026-11-25T17:02:56.370Z",
+  "status": "completed",
+  "outputDigest": "sha256:418ff544029fa85c936e69ad457b9290b0bab74d302693b0760c24134d18cde4",
+  "toolchainVersion": "codex-cli-0.171.0-alpha.13.2-native-metadata-join-v1"
+}

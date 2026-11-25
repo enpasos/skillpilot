@@ -1,0 +1,4358 @@
+{
+  "schemaVersion": 1,
+  "contract": "839-before-owner-wording-change-source-and-target-baseline-v1",
+  "head": "38538f8bb4a3410ff2b6e9f8235cf28fbdbb18d6",
+  "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+  "canonicalRawSha256": "sha256:53a1c07636996ad3196c24cb475ff3c0cf902e31ccc8e426d1ab9036e5e1ae19",
+  "goalBefore": {
+    "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+    "title": "Impulserhaltung",
+    "titleEn": "Momentum Conservation",
+    "description": "Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.",
+    "descriptionEn": "In a defined system with no net external impulse, the learner can use total momentum as a conserved vector quantity and apply it to qualitatively justify simple recoil situations.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+      "53afbda1-5776-502b-8867-471975d7b766"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "shortKey": "canonical_physics_momentum_conservation",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+        "title": "Visualisierung: Impulserhaltung",
+        "url": "/assets/goal-visualizations/physik/839ecc8f-3a60-418b-bc92-64bfeef33824/839ecc8f-3a60-418b-bc92-64bfeef33824.jpg",
+        "provider": "Google Gemini / Nano Banana Pro",
+        "description": "Visualisierung zum Lernziel: Impulserhaltung.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Impulserhaltung\". Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "sourceRouteCountingRule": "One existing classic source route per distinct mappingReviewPath+sourceGoalId directly naming839; mappings/decisions representations of one source route are deduplicated; no prerequisite placement or inferred subtree target counted here as direct source route.",
+  "publishedRationaleRawSha256": "sha256:1e13d5c6ebf11867f3e53e968e8663a8f8a75f35bdaf76ab2d222f16652d714f",
+  "rawPublishedRouteRepresentations": 16,
+  "directSourceRoutesTotal": 8,
+  "directSourceRoutesPerLand": {
+    "DE-BW": 3,
+    "DE-BY": 1,
+    "DE-HE": 3,
+    "DE-RP": 1
+  },
+  "sourceRoutes": [
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "reviewId": "hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+      "sourceExtractionTitle": null,
+      "jurisdiction": "DE-HE",
+      "sourceGoalId": "he-phys-sekii-e-2-b09-a01-cc89cbd5",
+      "sourceGoalTitle": "Impuls und Impulserhaltung",
+      "sourceGoalDescription": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Impuls und Impulserhaltung\" im Kontext \"Newton’sche Axiome und Erhaltungssätze\" fachgerecht bearbeiten.",
+      "sourceText": "Impuls und Impulserhaltung",
+      "sourceSpan": "Impuls und Impulserhaltung",
+      "parentBulletText": "Impuls und Impulserhaltung",
+      "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, E.2, S. 30, Spiegelstrich 9",
+      "sourceDocument": {
+        "key": "KC2024",
+        "title": "Kerncurriculum Physik gymnasiale Oberstufe Hessen 2024",
+        "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf",
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+        "textPath": null,
+        "role": null,
+        "official": true
+      },
+      "matchType": null,
+      "decision": "mapped",
+      "reviewDecisionId": null,
+      "reviewedAt": "2026-05-09",
+      "reviewer": "codex",
+      "rationale": "Der amtliche Sek-II-Lehrplanaspekt wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
+      "topicCode": "E.2",
+      "evidenceMethod": null
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "reviewId": "bavaria_physics_source_extraction_to_canonical_physics.review",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sourceExtractionTitle": "DE-BY - Physik Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+      "jurisdiction": "DE-BY",
+      "sourceGoalId": "713ad139-bcb8-5a71-a520-3f194a0f8754",
+      "sourceGoalTitle": "schließen aus der Betrachtung zweidimensionaler Bewegungen auf die Erhaltung des Impulses und grenze...",
+      "sourceGoalDescription": "schließen aus der Betrachtung zweidimensionaler Bewegungen auf die Erhaltung des Impulses und grenzen ihn gegen den Energieerhaltungssatz ab.",
+      "sourceText": "schließen aus der Betrachtung zweidimensionaler Bewegungen auf die Erhaltung des Impulses und grenzen ihn gegen den Energieerhaltungssatz ab.",
+      "sourceSpan": "Ph10.2.1",
+      "parentBulletText": "schließen aus der Betrachtung zweidimensionaler Bewegungen auf die Erhaltung des Impulses und grenzen ihn gegen den Energieerhaltungssatz ab.",
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Physik, Ph10.2.1",
+      "sourceDocument": {
+        "key": "LEHRPLANPLUS_PHYSIK_GYMNASIUM",
+        "title": "LehrplanPLUS Gymnasium Bayern - Physik",
+        "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/physik",
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Physik.json",
+        "textPath": null,
+        "role": "binding-core",
+        "official": true
+      },
+      "matchType": "exact",
+      "decision": null,
+      "reviewDecisionId": "713ad139-bcb8-5a71-a520-3f194a0f8754",
+      "reviewedAt": null,
+      "reviewer": null,
+      "rationale": null,
+      "topicCode": null,
+      "evidenceMethod": null
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "reviewId": "bw_physics_lower_secondary_source_extraction_to_canonical_physics.review",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_PHYSIK_SEKI_BP2016_V2.source-extraction.json",
+      "sourceExtractionTitle": "Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+      "jurisdiction": "DE-BW",
+      "sourceGoalId": "bw-phys-seki-3-3-5-2-b02-a01-06b90b93",
+      "sourceGoalTitle": "BW 3.3.5.2 (2): Bewegungsabläufe beschreiben und erklären. Dazu wenden sie die Newton'schen Prinzipien der Mecha...",
+      "sourceGoalDescription": "Die lernende Person kann bewegungsabläufe beschreiben und erklären. Dazu wenden sie die Newton'schen Prinzipien der Mechanik an und beschreiben sie auch mithilfe des Impulses (Trägheitsprinzip, und, Wechselwirkungsprinzip,, Impulserhaltungssatz)",
+      "sourceText": "Bewegungsabläufe beschreiben und erklären. Dazu wenden sie die Newton'schen Prinzipien der Mechanik an und beschreiben sie auch mithilfe des Impulses (Trägheitsprinzip, und, Wechselwirkungsprinzip,, Impulserhaltungssatz)",
+      "sourceSpan": "3.3.5.2 (2)",
+      "parentBulletText": "Bewegungsabläufe beschreiben und erklären. Dazu wenden sie die Newton'schen Prinzipien der Mechanik an und beschreiben sie auch mithilfe des Impulses (Trägheitsprinzip, und, Wechselwirkungsprinzip,, Impulserhaltungssatz)",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, 3.3.5.2 (2), S. 10.",
+      "sourceDocument": {
+        "key": "BP2016-PH-V2",
+        "title": "Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, ueberarbeitete Fassung vom 25. Maerz 2022",
+        "url": "https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_PH.pdf",
+        "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH_V2.pdf",
+        "textPath": null,
+        "role": null,
+        "official": true
+      },
+      "matchType": null,
+      "decision": "mapped",
+      "reviewDecisionId": null,
+      "reviewedAt": "2026-05-10",
+      "reviewer": "codex",
+      "rationale": "Das amtliche BW-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die passende Zuordnungsform.",
+      "topicCode": "3.3.5.2",
+      "evidenceMethod": null
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "reviewId": "bw_physics_lower_secondary_source_extraction_to_canonical_physics.review",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_PHYSIK_SEKI_BP2016_V2.source-extraction.json",
+      "sourceExtractionTitle": "Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+      "jurisdiction": "DE-BW",
+      "sourceGoalId": "bw-phys-seki-3-3-5-3-b05-a01-115ca7a9",
+      "sourceGoalTitle": "BW 3.3.5.3 (5): Vorgänge aus Alltag und Technik mithilfe des Impulses beschreiben",
+      "sourceGoalDescription": "Die lernende Person kann vorgänge aus Alltag und Technik mithilfe des Impulses beschreiben",
+      "sourceText": "Vorgänge aus Alltag und Technik mithilfe des Impulses beschreiben",
+      "sourceSpan": "3.3.5.3 (5)",
+      "parentBulletText": "Vorgänge aus Alltag und Technik mithilfe des Impulses beschreiben",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, 3.3.5.3 (5), S. 10.",
+      "sourceDocument": {
+        "key": "BP2016-PH-V2",
+        "title": "Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, ueberarbeitete Fassung vom 25. Maerz 2022",
+        "url": "https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_PH.pdf",
+        "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH_V2.pdf",
+        "textPath": null,
+        "role": null,
+        "official": true
+      },
+      "matchType": null,
+      "decision": "mapped",
+      "reviewDecisionId": null,
+      "reviewedAt": "2026-05-10",
+      "reviewer": "codex",
+      "rationale": "Das amtliche BW-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die passende Zuordnungsform.",
+      "topicCode": "3.3.5.3",
+      "evidenceMethod": null
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "reviewId": "bw_physics_lower_secondary_source_extraction_to_canonical_physics.review",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_PHYSIK_SEKI_BP2016_V2.source-extraction.json",
+      "sourceExtractionTitle": "Physik Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+      "jurisdiction": "DE-BW",
+      "sourceGoalId": "bw-phys-seki-3-3-5-3-b06-a01-6ea47dbb",
+      "sourceGoalTitle": "BW 3.3.5.3 (6): den Impulserhaltungssatz erläutern und zur quantitativen Beschreibung eines Prozesses anwenden (...",
+      "sourceGoalDescription": "Die lernende Person kann den Impulserhaltungssatz erläutern und zur quantitativen Beschreibung eines Prozesses anwenden (unter anderem inelastischer Stoß, Rückstoßprinzip). Dabei wählen sie geeignete Zustände zur Impulsbilanzierung aus",
+      "sourceText": "den Impulserhaltungssatz erläutern und zur quantitativen Beschreibung eines Prozesses anwenden (unter anderem inelastischer Stoß, Rückstoßprinzip). Dabei wählen sie geeignete Zustände zur Impulsbilanzierung aus",
+      "sourceSpan": "3.3.5.3 (6)",
+      "parentBulletText": "den Impulserhaltungssatz erläutern und zur quantitativen Beschreibung eines Prozesses anwenden (unter anderem inelastischer Stoß, Rückstoßprinzip). Dabei wählen sie geeignete Zustände zur Impulsbilanzierung aus",
+      "sourceRef": "Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, 3.3.5.3 (6), S. 10.",
+      "sourceDocument": {
+        "key": "BP2016-PH-V2",
+        "title": "Bildungsplan 2016 Gymnasium Physik Baden-Wuerttemberg, ueberarbeitete Fassung vom 25. Maerz 2022",
+        "url": "https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_PH.pdf",
+        "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH_V2.pdf",
+        "textPath": null,
+        "role": null,
+        "official": true
+      },
+      "matchType": null,
+      "decision": "mapped",
+      "reviewDecisionId": null,
+      "reviewedAt": "2026-05-10",
+      "reviewer": "codex",
+      "rationale": "Das amtliche BW-Source-Ziel ist inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die passende Zuordnungsform.",
+      "topicCode": "3.3.5.3",
+      "evidenceMethod": null
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "reviewId": "hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+      "sourceExtractionTitle": null,
+      "jurisdiction": "DE-HE",
+      "sourceGoalId": "he-phys-sekii-e-2-b11-a01-363dcddb",
+      "sourceGoalTitle": "Notwendigkeit einer weiteren Erhaltungsgröße, Begriff des Impulses",
+      "sourceGoalDescription": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Notwendigkeit einer weiteren Erhaltungsgröße, Begriff des Impulses\" im Kontext \"Newton’sche Axiome und Erhaltungssätze\" fachgerecht bearbeiten.",
+      "sourceText": "Notwendigkeit einer weiteren Erhaltungsgröße, Begriff des Impulses",
+      "sourceSpan": "Notwendigkeit einer weiteren Erhaltungsgröße, Begriff des Impulses",
+      "parentBulletText": "Notwendigkeit einer weiteren Erhaltungsgröße, Begriff des Impulses",
+      "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, E.2, S. 30, Spiegelstrich 11",
+      "sourceDocument": {
+        "key": "KC2024",
+        "title": "Kerncurriculum Physik gymnasiale Oberstufe Hessen 2024",
+        "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf",
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+        "textPath": null,
+        "role": null,
+        "official": true
+      },
+      "matchType": null,
+      "decision": "mapped",
+      "reviewDecisionId": null,
+      "reviewedAt": "2026-05-09",
+      "reviewer": "codex",
+      "rationale": "Der amtliche Sek-II-Lehrplanaspekt wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
+      "topicCode": "E.2",
+      "evidenceMethod": null
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "reviewId": "hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+      "sourceExtractionTitle": null,
+      "jurisdiction": "DE-HE",
+      "sourceGoalId": "he-phys-sekii-e-2-b12-a01-a1fb7ddb",
+      "sourceGoalTitle": "Rückstoß",
+      "sourceGoalDescription": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Rückstoß\" im Kontext \"Newton’sche Axiome und Erhaltungssätze\" fachgerecht bearbeiten.",
+      "sourceText": "Rückstoß",
+      "sourceSpan": "Rückstoß",
+      "parentBulletText": "Rückstoß",
+      "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, E.2, S. 30, Spiegelstrich 12",
+      "sourceDocument": {
+        "key": "KC2024",
+        "title": "Kerncurriculum Physik gymnasiale Oberstufe Hessen 2024",
+        "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf",
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+        "textPath": null,
+        "role": null,
+        "official": true
+      },
+      "matchType": null,
+      "decision": "mapped",
+      "reviewDecisionId": null,
+      "reviewedAt": "2026-05-09",
+      "reviewer": "codex",
+      "rationale": "Der amtliche Sek-II-Lehrplanaspekt wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
+      "topicCode": "E.2",
+      "evidenceMethod": null
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "reviewId": "DE-RP-PHYSIK-SEKII-MSS-DRAFT-MAPPING-3-SOURCE-EXTRACTION-1",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/RP/upper-secondary/source-extraction/DE_RP_PHYSIK_SEKII_MSS_SOURCE_EXTRACTION_DRAFT.source-extraction.json",
+      "sourceExtractionTitle": "DE-RP - Physik Sekundarstufe II (Rheinland-Pfalz, MSS Source-Extraction Draft)",
+      "jurisdiction": "DE-RP",
+      "sourceGoalId": "rp-phys-sek2-ef-momentum-conservation",
+      "sourceGoalTitle": "Impulserhaltung bilanzierend nutzen",
+      "sourceGoalDescription": "Die lernende Person kann Impulserhaltung als Erhaltungsprinzip nutzen und mechanische Vorgänge vektoriell bilanzieren.",
+      "sourceText": "Impulserhaltung bilanzierend nutzen",
+      "sourceSpan": "4.3 Erhaltungsgrößen der Mechanik und 5.3 Erhaltungsgrößen der Mechanik, S. 25 und 52",
+      "parentBulletText": "Impulserhaltung bilanzierend nutzen",
+      "sourceRef": "Rheinland-Pfalz Lehrplan Physik MSS, 4.3 Erhaltungsgrößen der Mechanik und 5.3 Erhaltungsgrößen der Mechanik, S. 25 und 52",
+      "sourceDocument": {
+        "key": "MSS-PHYSIK",
+        "title": "Lehrplan Physik Grund- und Leistungsfach in der gymnasialen Oberstufe (Mainzer Studienstufe)",
+        "url": "https://static.bildung-rp.de/lehrplaene/naturwissenschaften/Lehrplan_Physik-Web.pdf",
+        "path": "curricula/DE/Gymnasium/input/RP/Physik_Sekundarstufe_II_MSS.pdf",
+        "textPath": null,
+        "role": null,
+        "official": true
+      },
+      "matchType": null,
+      "decision": "mapped",
+      "reviewDecisionId": null,
+      "reviewedAt": "2026-05-11",
+      "reviewer": "codex",
+      "rationale": "Das RP-Source-Ziel ist inhaltlich durch ein kanonisches Physikziel abgedeckt.",
+      "topicCode": "INTRO-CONSERVATION",
+      "evidenceMethod": null
+    }
+  ],
+  "publishedDuplicateRepresentationCounts": [
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalId": "he-phys-sekii-e-2-b09-a01-cc89cbd5",
+      "representations": 2
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalId": "713ad139-bcb8-5a71-a520-3f194a0f8754",
+      "representations": 2
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalId": "bw-phys-seki-3-3-5-2-b02-a01-06b90b93",
+      "representations": 2
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalId": "bw-phys-seki-3-3-5-3-b05-a01-115ca7a9",
+      "representations": 2
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_physics_lower_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalId": "bw-phys-seki-3-3-5-3-b06-a01-6ea47dbb",
+      "representations": 2
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalId": "he-phys-sekii-e-2-b11-a01-363dcddb",
+      "representations": 2
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalId": "he-phys-sekii-e-2-b12-a01-a1fb7ddb",
+      "representations": 2
+    },
+    {
+      "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+      "sourceGoalId": "rp-phys-sek2-ef-momentum-conservation",
+      "representations": 2
+    }
+  ],
+  "targetCountingRule": "Actual native operational target after subtree expansion and course/applicability filtering; independently tallied and cross-checked against authored projection; all90 current raw view hashes verified.",
+  "nativeReceiptRawSha256": "sha256:98a8728df68ecbd449fe477e8c3d138c5ac618b94356a9655fa7bb7a5d2e3bf1",
+  "authoredReceiptRawSha256": "sha256:a2cc96b4e12546127eddeaf8293b9daff200406f250371768f1dac9f75d5fc7f",
+  "viewCount": 90,
+  "targetViewCount": 70,
+  "targetViewsPerLand": {
+    "DE-BB": 4,
+    "DE-BE": 4,
+    "DE-BW": 3,
+    "DE-BY": 3,
+    "DE-HB": 4,
+    "DE-HE": 8,
+    "DE-HH": 4,
+    "DE-MV": 4,
+    "DE-NI": 4,
+    "DE-NW": 4,
+    "DE-RP": 4,
+    "DE-SH": 4,
+    "DE-SL": 4,
+    "DE-SN": 4,
+    "DE-ST": 4,
+    "DE-TH": 4,
+    "DE-national": 4
+  },
+  "learningViewCount": 71,
+  "learningViewsPerLand": {
+    "DE-BB": 4,
+    "DE-BE": 4,
+    "DE-BW": 3,
+    "DE-BY": 3,
+    "DE-HB": 4,
+    "DE-HE": 8,
+    "DE-HH": 4,
+    "DE-MV": 4,
+    "DE-NI": 4,
+    "DE-NW": 4,
+    "DE-RP": 5,
+    "DE-SH": 4,
+    "DE-SL": 4,
+    "DE-SN": 4,
+    "DE-ST": 4,
+    "DE-TH": 4,
+    "DE-national": 4
+  },
+  "views": [
+    {
+      "viewId": "de-bb-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json",
+      "sha256": "sha256:c2474adcbb0a5c62d0fc905dda675bd5f1e1580802632c7447bba13b01d45814",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-bb-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-bb-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-bb-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-bb-gym-physics-gk:structure:physics-bb-unit-q",
+          "title": "Qualifikationsphase",
+          "compositionNodeId": "physics-bb-unit-q",
+          "compositionViewId": "de-bb-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-bb-gym-physics-gk:structure:physics-bb-q-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-bb-q-supplements",
+          "compositionViewId": "de-bb-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-bb-gym-physics-gk:structure:physics-bb-q-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-bb-q-supplements-d145ce4f",
+          "compositionViewId": "de-bb-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-bb-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-bb-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-lk.view.json",
+      "sha256": "sha256:82c3a68517883b560d3d8cf12922bdfc4c7956da993a03abd55ff8272cd59b0d",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-bb-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-bb-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-bb-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-bb-gym-physics-lk:structure:physics-bb-unit-q",
+          "title": "Qualifikationsphase",
+          "compositionNodeId": "physics-bb-unit-q",
+          "compositionViewId": "de-bb-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-bb-gym-physics-lk:structure:physics-bb-q-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-bb-q-supplements",
+          "compositionViewId": "de-bb-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-bb-gym-physics-lk:structure:physics-bb-q-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-bb-q-supplements-d145ce4f",
+          "compositionViewId": "de-bb-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-bb-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-bb-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-seki.view.json",
+      "sha256": "sha256:a8d3cde386bfcc6a7920d43c7cadf96722fe74dde2312c884b8d4d6627b24eb6",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-bb-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-gk.view.json",
+      "sha256": "sha256:006b437efa083f1cae72e65ebd5efd66516c1375a1d26facc2baf1e0ecc48e1a",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-bb-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-bb-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-bb-gym-sekii-physics-gk:structure:physics-bb-unit-q",
+          "title": "Qualifikationsphase",
+          "compositionNodeId": "physics-bb-unit-q",
+          "compositionViewId": "de-bb-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-bb-gym-sekii-physics-gk:structure:physics-bb-q-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-bb-q-supplements",
+          "compositionViewId": "de-bb-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-bb-gym-sekii-physics-gk:structure:physics-bb-q-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-bb-q-supplements-d145ce4f",
+          "compositionViewId": "de-bb-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-bb-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-bb-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bb-sekii-lk.view.json",
+      "sha256": "sha256:abb1ab4e492f15d3d0e34f62d2b60262678921bd4a7e69826e434ff1dde835b3",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BB",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-bb-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-bb-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-bb-gym-sekii-physics-lk:structure:physics-bb-unit-q",
+          "title": "Qualifikationsphase",
+          "compositionNodeId": "physics-bb-unit-q",
+          "compositionViewId": "de-bb-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-bb-gym-sekii-physics-lk:structure:physics-bb-q-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-bb-q-supplements",
+          "compositionViewId": "de-bb-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-bb-gym-sekii-physics-lk:structure:physics-bb-q-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-bb-q-supplements-d145ce4f",
+          "compositionViewId": "de-bb-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-bb-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-be-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-gk.view.json",
+      "sha256": "sha256:31d88cc2bfdb08a64703cf4f7156ea87db56b73baf31f1e0f8dba1d51cb97764",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-be-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-be-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-be-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-be-gym-physics-gk:structure:physics-be-unit-q",
+          "title": "Qualifikationsphase",
+          "compositionNodeId": "physics-be-unit-q",
+          "compositionViewId": "de-be-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-be-gym-physics-gk:structure:physics-be-q-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-be-q-supplements",
+          "compositionViewId": "de-be-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-be-gym-physics-gk:structure:physics-be-q-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-be-q-supplements-d145ce4f",
+          "compositionViewId": "de-be-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-be-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-be-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-lk.view.json",
+      "sha256": "sha256:faab6ec8ba6674bb4bbb19b420b1e1fb71a3ef132b7aaeaab7c63f4b364ec547",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-be-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-be-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-be-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-be-gym-physics-lk:structure:physics-be-unit-q",
+          "title": "Qualifikationsphase",
+          "compositionNodeId": "physics-be-unit-q",
+          "compositionViewId": "de-be-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-be-gym-physics-lk:structure:physics-be-q-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-be-q-supplements",
+          "compositionViewId": "de-be-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-be-gym-physics-lk:structure:physics-be-q-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-be-q-supplements-d145ce4f",
+          "compositionViewId": "de-be-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-be-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-be-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-seki.view.json",
+      "sha256": "sha256:eb03d6cbc715e9701732e9ddacb4635a52b7794a788283ff4667beea07ee8532",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-be-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-gk.view.json",
+      "sha256": "sha256:fed07f47a49a76ac7ba6179331734975d767914997d26cd14ecc3f2b48730af7",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-be-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-be-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-be-gym-sekii-physics-gk:structure:physics-be-unit-q",
+          "title": "Qualifikationsphase",
+          "compositionNodeId": "physics-be-unit-q",
+          "compositionViewId": "de-be-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-be-gym-sekii-physics-gk:structure:physics-be-q-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-be-q-supplements",
+          "compositionViewId": "de-be-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-be-gym-sekii-physics-gk:structure:physics-be-q-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-be-q-supplements-d145ce4f",
+          "compositionViewId": "de-be-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-be-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-be-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-be-sekii-lk.view.json",
+      "sha256": "sha256:e69597be2e33823d468976bbcd0ca6338d5983798fbcff4cafc6c75aa4cd3f64",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-be-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-be-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-be-gym-sekii-physics-lk:structure:physics-be-unit-q",
+          "title": "Qualifikationsphase",
+          "compositionNodeId": "physics-be-unit-q",
+          "compositionViewId": "de-be-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-be-gym-sekii-physics-lk:structure:physics-be-q-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-be-q-supplements",
+          "compositionViewId": "de-be-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-be-gym-sekii-physics-lk:structure:physics-be-q-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-be-q-supplements-d145ce4f",
+          "compositionViewId": "de-be-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-be-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+      "sha256": "sha256:599e221f361d662f11df26b6e8fac2cc7ee1cb763847b015c7bbb204857dfa0b",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-bw-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-bw-gym-physics-gk:structure:physics-bw-seki",
+          "title": "Sekundarstufe I",
+          "compositionNodeId": "physics-bw-seki",
+          "compositionViewId": "de-bw-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-bw-gym-physics-gk:structure:physics-bw-unit-j9-10",
+          "title": "Jahrgangsstufen 9/10",
+          "compositionNodeId": "physics-bw-unit-j9-10",
+          "compositionViewId": "de-bw-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-bw-gym-physics-gk:structure:physics-bw-j9-10-topic-eca8c7909eaa",
+          "title": "Erhaltungssaetze",
+          "compositionNodeId": "physics-bw-j9-10-topic-eca8c7909eaa",
+          "compositionViewId": "de-bw-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-bw-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "sha256": "sha256:eb0623a9ed7bab832a38960033158e65fd40d90109b21f2eb77b9882fa1c2747",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-bw-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-bw-gym-physics-lk:structure:physics-bw-seki",
+          "title": "Sekundarstufe I",
+          "compositionNodeId": "physics-bw-seki",
+          "compositionViewId": "de-bw-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-bw-gym-physics-lk:structure:physics-bw-unit-j9-10",
+          "title": "Jahrgangsstufen 9/10",
+          "compositionNodeId": "physics-bw-unit-j9-10",
+          "compositionViewId": "de-bw-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-bw-gym-physics-lk:structure:physics-bw-j9-10-topic-eca8c7909eaa",
+          "title": "Erhaltungssaetze",
+          "compositionNodeId": "physics-bw-j9-10-topic-eca8c7909eaa",
+          "compositionViewId": "de-bw-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-bw-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json",
+      "sha256": "sha256:ac23d0e3f0c14ee3d0e83abfc71bbaf455932e9f4dc607451616b23fea9a64cc",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-bw-gym-seki-physics:structure:physics-bw-seki",
+          "title": "Sekundarstufe I",
+          "compositionNodeId": "physics-bw-seki",
+          "compositionViewId": "de-bw-gym-seki-physics"
+        },
+        {
+          "id": "composition:de-bw-gym-seki-physics:structure:physics-bw-unit-j9-10",
+          "title": "Jahrgangsstufen 9/10",
+          "compositionNodeId": "physics-bw-unit-j9-10",
+          "compositionViewId": "de-bw-gym-seki-physics"
+        },
+        {
+          "id": "composition:de-bw-gym-seki-physics:structure:physics-bw-j9-10-topic-eca8c7909eaa",
+          "title": "Erhaltungssaetze",
+          "compositionNodeId": "physics-bw-j9-10-topic-eca8c7909eaa",
+          "compositionViewId": "de-bw-gym-seki-physics"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-bw-gym-seki-physics"
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-gk.view.json",
+      "sha256": "sha256:6f566013f90b7aa94bdb8626f10e2bf0732011d2b68602b385e33a8e98d08adc",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-bw-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-bw-sekii-lk.view.json",
+      "sha256": "sha256:9a19cce5c0e41d4bef46c9e83125e308f324bc81a0a518609e6a9800262a44ed",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-by-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-by-gk.view.json",
+      "sha256": "sha256:55bccde7a922f62e3a4b8ced46e187f29b257469ff0e0d16dd12c7b4600fad81",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-by-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-by-gym-physics-gk:structure:physics-seki",
+          "title": "Sekundarstufe I",
+          "compositionNodeId": "physics-seki",
+          "compositionViewId": "de-by-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-by-gym-physics-gk:structure:physics-by-year-8",
+          "title": "Jahrgangsstufe 8",
+          "compositionNodeId": "physics-by-year-8",
+          "compositionViewId": "de-by-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-by-gym-physics-gk:structure:physics-by-ph8-3",
+          "title": "Ph8.3 Mechanik",
+          "compositionNodeId": "physics-by-ph8-3",
+          "compositionViewId": "de-by-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-by-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-by-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-by-lk.view.json",
+      "sha256": "sha256:360451c3ba3eeca05c4af9537c4024ade2d322a4426090bbfb32d83ed899dfca",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-by-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-by-gym-physics-lk:structure:physics-seki",
+          "title": "Sekundarstufe I",
+          "compositionNodeId": "physics-seki",
+          "compositionViewId": "de-by-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-by-gym-physics-lk:structure:physics-by-year-8",
+          "title": "Jahrgangsstufe 8",
+          "compositionNodeId": "physics-by-year-8",
+          "compositionViewId": "de-by-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-by-gym-physics-lk:structure:physics-by-ph8-3",
+          "title": "Ph8.3 Mechanik",
+          "compositionNodeId": "physics-by-ph8-3",
+          "compositionViewId": "de-by-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-by-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-by-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-by-seki.view.json",
+      "sha256": "sha256:82280b224ce30d09e90acfcbeb9b1d162c74814b2a188e3d75632d9d7150c62e",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekI"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-by-gym-seki-physics:structure:physics-seki",
+          "title": "Sekundarstufe I",
+          "compositionNodeId": "physics-seki",
+          "compositionViewId": "de-by-gym-seki-physics"
+        },
+        {
+          "id": "composition:de-by-gym-seki-physics:structure:physics-by-year-8",
+          "title": "Jahrgangsstufe 8",
+          "compositionNodeId": "physics-by-year-8",
+          "compositionViewId": "de-by-gym-seki-physics"
+        },
+        {
+          "id": "composition:de-by-gym-seki-physics:structure:physics-by-ph8-3",
+          "title": "Ph8.3 Mechanik",
+          "compositionNodeId": "physics-by-ph8-3",
+          "compositionViewId": "de-by-gym-seki-physics"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-by-gym-seki-physics"
+        }
+      ]
+    },
+    {
+      "viewId": "de-by-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-gk.view.json",
+      "sha256": "sha256:34655c065d27d32755b109d98d86dc5b3fc9ec7a0ee88d3bd590c7a55f417758",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-by-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-by-sekii-lk.view.json",
+      "sha256": "sha256:8cdc3efd3c737909eacafa0308c74b6b38d126caace97420f93f54cc763ad789",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-de-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-gk.view.json",
+      "sha256": "sha256:0723b34bd3cafbfc053a617b9b6f84a7b3e50e6fa9f693e0dfbc6e7c21b209a4",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-de-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-de-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-de-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-de-gym-physics-gk:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-de-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-de-gym-physics-gk:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-de-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-de-gym-physics-gk:structure:physics-required-preparation-physics-e2-newton-and-conservation",
+          "title": "Notwendige Grundlagen",
+          "compositionNodeId": "physics-required-preparation-physics-e2-newton-and-conservation",
+          "compositionViewId": "de-de-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-de-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-de-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-physics-lk.view.json",
+      "sha256": "sha256:9bec74cad23c2beb86278ffdf748783a32d906a7e337982d9d44e752ca0c545a",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-de-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-de-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-de-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-de-gym-physics-lk:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-de-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-de-gym-physics-lk:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-de-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-de-gym-physics-lk:structure:physics-required-preparation-physics-e2-newton-and-conservation",
+          "title": "Notwendige Grundlagen",
+          "compositionNodeId": "physics-required-preparation-physics-e2-newton-and-conservation",
+          "compositionViewId": "de-de-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-de-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-de-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-seki-physics.view.json",
+      "sha256": "sha256:d948a2d535f022844cbc74da9fe6a5a7ed30db4570e8808f82d67c7aa0963a3c",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-de-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-gk.view.json",
+      "sha256": "sha256:89635fae277a84af1f4e68fa789c3890665474a785ff03bb47fba5154adb63a6",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-de-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-gk:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-de-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-gk:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-de-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-gk:structure:physics-open-e9d616d8-685f-4129-a36f-dae7a280bae7",
+          "title": "Erhaltungssätze",
+          "compositionNodeId": "physics-open-e9d616d8-685f-4129-a36f-dae7a280bae7",
+          "compositionViewId": "de-de-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-gk:structure:physics-open-912febf0-754a-4409-9f8b-7d66810edc08",
+          "title": "Impuls",
+          "compositionNodeId": "physics-open-912febf0-754a-4409-9f8b-7d66810edc08",
+          "compositionViewId": "de-de-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-de-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-de-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-de-gym-sekii-physics-lk.view.json",
+      "sha256": "sha256:acf1f1d6bbcea915259c333d82ca85a02efef4bd09feeeea75f5002a6f17ebac",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-de-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-lk:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-de-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-lk:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-de-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-lk:structure:physics-open-e9d616d8-685f-4129-a36f-dae7a280bae7",
+          "title": "Erhaltungssätze",
+          "compositionNodeId": "physics-open-e9d616d8-685f-4129-a36f-dae7a280bae7",
+          "compositionViewId": "de-de-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-de-gym-sekii-physics-lk:structure:physics-open-912febf0-754a-4409-9f8b-7d66810edc08",
+          "title": "Impuls",
+          "compositionNodeId": "physics-open-912febf0-754a-4409-9f8b-7d66810edc08",
+          "compositionViewId": "de-de-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-de-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-hb-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hb-gk.view.json",
+      "sha256": "sha256:4d38de1927a554e9961cf4b3f88f6fa596c935965503de0de89495f6eacbdcca",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-hb-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-hb-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-hb-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-hb-gym-physics-gk:structure:physics-hb-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-hb-unit-e",
+          "compositionViewId": "de-hb-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-hb-gym-physics-gk:structure:physics-hb-e-topic-39a31692360d",
+          "title": "Energie",
+          "compositionNodeId": "physics-hb-e-topic-39a31692360d",
+          "compositionViewId": "de-hb-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-hb-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-hb-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hb-lk.view.json",
+      "sha256": "sha256:e262097fa88a7d65310c67b868d687822519101b40225b8f5c65e2867d88027d",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-hb-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-hb-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-hb-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-hb-gym-physics-lk:structure:physics-hb-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-hb-unit-e",
+          "compositionViewId": "de-hb-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-hb-gym-physics-lk:structure:physics-hb-e-topic-39a31692360d",
+          "title": "Energie",
+          "compositionNodeId": "physics-hb-e-topic-39a31692360d",
+          "compositionViewId": "de-hb-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-hb-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-hb-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hb-seki.view.json",
+      "sha256": "sha256:314c4ef430434297783ca8cb98ebbfc45cb093765865149e5477102ab72428de",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-hb-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-gk.view.json",
+      "sha256": "sha256:8a2483579c478d2c9ab9018e0ca54e0763e9030c2f742063c32447cc22db1193",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-hb-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-hb-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-hb-gym-sekii-physics-gk:structure:physics-hb-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-hb-unit-e",
+          "compositionViewId": "de-hb-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-hb-gym-sekii-physics-gk:structure:physics-hb-e-topic-39a31692360d",
+          "title": "Energie",
+          "compositionNodeId": "physics-hb-e-topic-39a31692360d",
+          "compositionViewId": "de-hb-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-hb-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-hb-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hb-sekii-lk.view.json",
+      "sha256": "sha256:0a1c474b9069fef14100b2d590f9629e55faee10ea23e078af09d955826da752",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HB",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-hb-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-hb-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-hb-gym-sekii-physics-lk:structure:physics-hb-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-hb-unit-e",
+          "compositionViewId": "de-hb-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-hb-gym-sekii-physics-lk:structure:physics-hb-e-topic-39a31692360d",
+          "title": "Energie",
+          "compositionNodeId": "physics-hb-e-topic-39a31692360d",
+          "compositionViewId": "de-hb-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-hb-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-physics-gk-g8",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json",
+      "sha256": "sha256:6b65f9d0c098521a16c0f91f9469fbe9cc017e30baadb1e74baaa6b9b0c3a10c",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G8"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk-g8:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-he-gym-physics-gk-g8"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk-g8:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-he-gym-physics-gk-g8"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk-g8:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-he-gym-physics-gk-g8"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk-g8:structure:physics-e2-momentum",
+          "title": "Impuls und Stöße",
+          "compositionNodeId": "physics-e2-momentum",
+          "compositionViewId": "de-he-gym-physics-gk-g8"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-he-gym-physics-gk-g8"
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-physics-gk-g9",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json",
+      "sha256": "sha256:0baed0d4e71f9587ceb8632926d8376c0f725a608e4b3aad51f9ce34fcee20de",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "durationModel": "G9"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk-g9:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-he-gym-physics-gk-g9"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk-g9:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-he-gym-physics-gk-g9"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk-g9:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-he-gym-physics-gk-g9"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk-g9:structure:physics-e2-momentum",
+          "title": "Impuls und Stöße",
+          "compositionNodeId": "physics-e2-momentum",
+          "compositionViewId": "de-he-gym-physics-gk-g9"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-he-gym-physics-gk-g9"
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "sha256": "sha256:60d9247f0caf7d79de91186b1830d35bffd99f1297c4d91ef8200287fa1592e1",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-he-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-he-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-he-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-he-gym-physics-gk:structure:physics-e2-momentum",
+          "title": "Impuls und Stöße",
+          "compositionNodeId": "physics-e2-momentum",
+          "compositionViewId": "de-he-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-he-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-physics-lk-g8",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g8.view.json",
+      "sha256": "sha256:0bf9265c6ef9a8722321dfdc30713cfeed1377e285f8a197e591511d755e4811",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G8"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk-g8:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-he-gym-physics-lk-g8"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk-g8:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-he-gym-physics-lk-g8"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk-g8:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-he-gym-physics-lk-g8"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk-g8:structure:physics-e2-momentum",
+          "title": "Impuls und Stöße",
+          "compositionNodeId": "physics-e2-momentum",
+          "compositionViewId": "de-he-gym-physics-lk-g8"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-he-gym-physics-lk-g8"
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-physics-lk-g9",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g9.view.json",
+      "sha256": "sha256:6785078a35cf22fc0e0f39d209f9575e5cd21a538e41a16be4c7e953a2eaae3f",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "durationModel": "G9"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk-g9:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-he-gym-physics-lk-g9"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk-g9:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-he-gym-physics-lk-g9"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk-g9:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-he-gym-physics-lk-g9"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk-g9:structure:physics-e2-momentum",
+          "title": "Impuls und Stöße",
+          "compositionNodeId": "physics-e2-momentum",
+          "compositionViewId": "de-he-gym-physics-lk-g9"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-he-gym-physics-lk-g9"
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "sha256": "sha256:ab208082b13bc38bbf74ff1896b19973b18ad018e33fc41568076a8d1677da53",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-he-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-he-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-he-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-he-gym-physics-lk:structure:physics-e2-momentum",
+          "title": "Impuls und Stöße",
+          "compositionNodeId": "physics-e2-momentum",
+          "compositionViewId": "de-he-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-he-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-seki-physics-g8",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-seki-g8.view.json",
+      "sha256": "sha256:48eba06fa1b2d92210ffe12e5ad876a08966b154672cbeea0457e337a650d382",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G8"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-he-gym-seki-physics-g9",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-seki-g9.view.json",
+      "sha256": "sha256:3b3051074adf328ba61aec695a9bd90b9b9ac1460fa18ab08bec707449faaddd",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekI",
+        "durationModel": "G9"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-he-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "sha256": "sha256:7e9f28936fbe649a2ffd5d9b7fac30b7e1e97e08162b4d44b6bda727259dd096",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-he-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-he-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-he-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-he-gym-sekii-physics-gk:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-he-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-he-gym-sekii-physics-gk:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-he-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-he-gym-sekii-physics-gk:structure:physics-e2-momentum",
+          "title": "Impuls und Stöße",
+          "compositionNodeId": "physics-e2-momentum",
+          "compositionViewId": "de-he-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-he-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-he-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "sha256": "sha256:3d909cd1d8e1fdf7fa17cdbe0c7f069282c105c42b54d7c42d4bec7d2d94e6b1",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-he-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-he-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-he-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-he-gym-sekii-physics-lk:structure:physics-e-phase",
+          "title": "Einführungsphase: Mechanik",
+          "compositionNodeId": "physics-e-phase",
+          "compositionViewId": "de-he-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-he-gym-sekii-physics-lk:structure:physics-e2-newton-and-conservation",
+          "title": "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "compositionNodeId": "physics-e2-newton-and-conservation",
+          "compositionViewId": "de-he-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-he-gym-sekii-physics-lk:structure:physics-e2-momentum",
+          "title": "Impuls und Stöße",
+          "compositionNodeId": "physics-e2-momentum",
+          "compositionViewId": "de-he-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-he-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-hh-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+      "sha256": "sha256:59e57b25affee6c96fda8534624afe51466b390eef0b0c547aaec35024d011ba",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-hh-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-hh-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-hh-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-hh-gym-physics-gk:structure:physics-hh-unit-studienstufe",
+          "title": "Studienstufe",
+          "compositionNodeId": "physics-hh-unit-studienstufe",
+          "compositionViewId": "de-hh-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-hh-gym-physics-gk:structure:physics-hh-studienstufe-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-hh-studienstufe-supplements",
+          "compositionViewId": "de-hh-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-hh-gym-physics-gk:structure:physics-hh-studienstufe-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-hh-studienstufe-supplements-d145ce4f",
+          "compositionViewId": "de-hh-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-hh-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-hh-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+      "sha256": "sha256:9d5f1b8ff3a6032dc43a9e34bc58f58a41776d0b4f3f7c20fffd0f38f715be59",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-hh-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-hh-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-hh-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-hh-gym-physics-lk:structure:physics-hh-unit-studienstufe",
+          "title": "Studienstufe",
+          "compositionNodeId": "physics-hh-unit-studienstufe",
+          "compositionViewId": "de-hh-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-hh-gym-physics-lk:structure:physics-hh-studienstufe-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-hh-studienstufe-supplements",
+          "compositionViewId": "de-hh-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-hh-gym-physics-lk:structure:physics-hh-studienstufe-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-hh-studienstufe-supplements-d145ce4f",
+          "compositionViewId": "de-hh-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-hh-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-hh-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-seki.view.json",
+      "sha256": "sha256:831b8b0581c589da798d9e8b0b2be604c5148d1dccd612b98bcb957a749b52d0",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-hh-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-gk.view.json",
+      "sha256": "sha256:f8e22b497a56d03f0d66c2ad7256f0f48d0ea7d2141bd7c696af66cde40d559a",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-hh-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-hh-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-hh-gym-sekii-physics-gk:structure:physics-hh-unit-studienstufe",
+          "title": "Studienstufe",
+          "compositionNodeId": "physics-hh-unit-studienstufe",
+          "compositionViewId": "de-hh-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-hh-gym-sekii-physics-gk:structure:physics-hh-studienstufe-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-hh-studienstufe-supplements",
+          "compositionViewId": "de-hh-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-hh-gym-sekii-physics-gk:structure:physics-hh-studienstufe-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-hh-studienstufe-supplements-d145ce4f",
+          "compositionViewId": "de-hh-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-hh-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-hh-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-hh-sekii-lk.view.json",
+      "sha256": "sha256:d1dc33faa70c52395b776576a75f2607355a7fff74c5e896ff283615b42c21c5",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HH",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-hh-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-hh-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-hh-gym-sekii-physics-lk:structure:physics-hh-unit-studienstufe",
+          "title": "Studienstufe",
+          "compositionNodeId": "physics-hh-unit-studienstufe",
+          "compositionViewId": "de-hh-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-hh-gym-sekii-physics-lk:structure:physics-hh-studienstufe-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-hh-studienstufe-supplements",
+          "compositionViewId": "de-hh-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-hh-gym-sekii-physics-lk:structure:physics-hh-studienstufe-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-hh-studienstufe-supplements-d145ce4f",
+          "compositionViewId": "de-hh-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-hh-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-mv-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-mv-gk.view.json",
+      "sha256": "sha256:0e02f47b5f3057e4321d0c9688c121c664edf2fa32456d3343cf2c5be4b89587",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-mv-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-mv-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-mv-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-mv-gym-physics-gk:structure:physics-mv-unit-e10",
+          "title": "Einführungsphase: Jahrgangsstufe 10",
+          "compositionNodeId": "physics-mv-unit-e10",
+          "compositionViewId": "de-mv-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-mv-gym-physics-gk:structure:physics-mv-e10-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-mv-e10-supplements",
+          "compositionViewId": "de-mv-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-mv-gym-physics-gk:structure:physics-acquisition-839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Grundlagen: Impulserhaltung",
+          "compositionNodeId": "physics-acquisition-839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "compositionViewId": "de-mv-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-mv-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-mv-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-mv-lk.view.json",
+      "sha256": "sha256:53982e4be58d8805e760ca8a7b9caa55678175915951dbc265bc6dda648cb1a1",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-mv-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-mv-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-mv-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-mv-gym-physics-lk:structure:physics-mv-unit-e10",
+          "title": "Einführungsphase: Jahrgangsstufe 10",
+          "compositionNodeId": "physics-mv-unit-e10",
+          "compositionViewId": "de-mv-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-mv-gym-physics-lk:structure:physics-mv-e10-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-mv-e10-supplements",
+          "compositionViewId": "de-mv-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-mv-gym-physics-lk:structure:physics-acquisition-839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Grundlagen: Impulserhaltung",
+          "compositionNodeId": "physics-acquisition-839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "compositionViewId": "de-mv-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-mv-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-mv-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-mv-seki.view.json",
+      "sha256": "sha256:52db8c15a3cd37f8316ed1d1c54c8871be85a658a5af1663bbaae07fc139068a",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-mv-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-gk.view.json",
+      "sha256": "sha256:6e73af7f3eae152e1e782fa0de61e7f1a2cff3f9e7bebdb3c90532c84182a692",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-mv-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-mv-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-mv-gym-sekii-physics-gk:structure:physics-mv-unit-e10",
+          "title": "Einführungsphase: Jahrgangsstufe 10",
+          "compositionNodeId": "physics-mv-unit-e10",
+          "compositionViewId": "de-mv-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-mv-gym-sekii-physics-gk:structure:physics-mv-e10-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-mv-e10-supplements",
+          "compositionViewId": "de-mv-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-mv-gym-sekii-physics-gk:structure:physics-acquisition-839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Grundlagen: Impulserhaltung",
+          "compositionNodeId": "physics-acquisition-839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "compositionViewId": "de-mv-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-mv-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-mv-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-mv-sekii-lk.view.json",
+      "sha256": "sha256:9c0a1b538cc76597f147f39daa28d4aa3f09cc9b60f83a45611e50d08b5877fa",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-mv-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-mv-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-mv-gym-sekii-physics-lk:structure:physics-mv-unit-e10",
+          "title": "Einführungsphase: Jahrgangsstufe 10",
+          "compositionNodeId": "physics-mv-unit-e10",
+          "compositionViewId": "de-mv-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-mv-gym-sekii-physics-lk:structure:physics-mv-e10-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-mv-e10-supplements",
+          "compositionViewId": "de-mv-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-mv-gym-sekii-physics-lk:structure:physics-acquisition-839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Grundlagen: Impulserhaltung",
+          "compositionNodeId": "physics-acquisition-839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "compositionViewId": "de-mv-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-mv-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-ni-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-ni-gk.view.json",
+      "sha256": "sha256:21849033bab755b0fdd720462a4a2546cfe3100fe3adf8d87f351c39d3da7c48",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-ni-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-ni-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-ni-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-ni-gym-physics-gk:structure:physics-ni-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-ni-unit-e",
+          "compositionViewId": "de-ni-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-ni-gym-physics-gk:structure:physics-ni-e-topic-21d60c22e6a5",
+          "title": "Dynamik",
+          "compositionNodeId": "physics-ni-e-topic-21d60c22e6a5",
+          "compositionViewId": "de-ni-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-ni-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-ni-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-ni-lk.view.json",
+      "sha256": "sha256:763894391ef977464b0155c05ce29b8a1aaca34b9fae45316f652dafa3a3d4e9",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-ni-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-ni-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-ni-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-ni-gym-physics-lk:structure:physics-ni-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-ni-unit-e",
+          "compositionViewId": "de-ni-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-ni-gym-physics-lk:structure:physics-ni-e-topic-21d60c22e6a5",
+          "title": "Dynamik",
+          "compositionNodeId": "physics-ni-e-topic-21d60c22e6a5",
+          "compositionViewId": "de-ni-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-ni-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-ni-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-ni-seki.view.json",
+      "sha256": "sha256:dc2a62d1aeeedbb4fc3e37d81c1b0751b285c36575b9bae960ec6fd7059ca56b",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-ni-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-gk.view.json",
+      "sha256": "sha256:290823d5ec983eebd7816c2c710ea27fc148bb73cf10ba6d355d65bf68736cef",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-ni-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-ni-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-ni-gym-sekii-physics-gk:structure:physics-ni-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-ni-unit-e",
+          "compositionViewId": "de-ni-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-ni-gym-sekii-physics-gk:structure:physics-ni-e-topic-21d60c22e6a5",
+          "title": "Dynamik",
+          "compositionNodeId": "physics-ni-e-topic-21d60c22e6a5",
+          "compositionViewId": "de-ni-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-ni-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-ni-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-ni-sekii-lk.view.json",
+      "sha256": "sha256:5d6cbf2f91c7b94afeb9ef272c7aff97a71ac879ed075d155d61b85ffb5b0e20",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-ni-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-ni-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-ni-gym-sekii-physics-lk:structure:physics-ni-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-ni-unit-e",
+          "compositionViewId": "de-ni-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-ni-gym-sekii-physics-lk:structure:physics-ni-e-topic-21d60c22e6a5",
+          "title": "Dynamik",
+          "compositionNodeId": "physics-ni-e-topic-21d60c22e6a5",
+          "compositionViewId": "de-ni-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-ni-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-nw-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-nw-gk.view.json",
+      "sha256": "sha256:f0bed464ef96e56fa1a473295b3ca0d977e0fca6a47f23b5c8589854dceedaed",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-nw-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-nw-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-nw-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-nw-gym-physics-gk:structure:physics-nw-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-nw-unit-e",
+          "compositionViewId": "de-nw-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-nw-gym-physics-gk:structure:physics-nw-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-nw-e-supplements",
+          "compositionViewId": "de-nw-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-nw-gym-physics-gk:structure:physics-nw-e-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-nw-e-supplements-d145ce4f",
+          "compositionViewId": "de-nw-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-nw-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-nw-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-nw-lk.view.json",
+      "sha256": "sha256:0a4fdde3306ff1e9db970d0fedb4c7ec17ef9ce94e8571714aa182c5eb9378e3",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-nw-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-nw-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-nw-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-nw-gym-physics-lk:structure:physics-nw-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-nw-unit-e",
+          "compositionViewId": "de-nw-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-nw-gym-physics-lk:structure:physics-nw-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-nw-e-supplements",
+          "compositionViewId": "de-nw-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-nw-gym-physics-lk:structure:physics-nw-e-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-nw-e-supplements-d145ce4f",
+          "compositionViewId": "de-nw-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-nw-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-nw-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-nw-seki.view.json",
+      "sha256": "sha256:c949434f21350d8134cb2349c532f21d86e1a1cec57fe74d99fcfbb04463d2c2",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-nw-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-gk.view.json",
+      "sha256": "sha256:c11f9c082e78f16ee196b4e0b103c9981d0b9c3b6efc6f2faec0045f72f622cb",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-nw-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-nw-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-nw-gym-sekii-physics-gk:structure:physics-nw-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-nw-unit-e",
+          "compositionViewId": "de-nw-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-nw-gym-sekii-physics-gk:structure:physics-nw-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-nw-e-supplements",
+          "compositionViewId": "de-nw-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-nw-gym-sekii-physics-gk:structure:physics-nw-e-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-nw-e-supplements-d145ce4f",
+          "compositionViewId": "de-nw-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-nw-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-nw-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-nw-sekii-lk.view.json",
+      "sha256": "sha256:8551cc10741326393b510d1856961378bb03b398b3cbecd87ba0cb6111754b60",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NW",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-nw-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-nw-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-nw-gym-sekii-physics-lk:structure:physics-nw-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-nw-unit-e",
+          "compositionViewId": "de-nw-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-nw-gym-sekii-physics-lk:structure:physics-nw-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-nw-e-supplements",
+          "compositionViewId": "de-nw-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-nw-gym-sekii-physics-lk:structure:physics-nw-e-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-nw-e-supplements-d145ce4f",
+          "compositionViewId": "de-nw-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-nw-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-gk.view.json",
+      "sha256": "sha256:e83f76da4bb7acc09e8c738dce460d2d780e33098db9b95c7efdc6187b1be3d3",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK",
+        "jurisdiction": "DE-RP"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-rp-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-rp-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-rp-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-rp-gym-physics-gk:structure:physics-rp-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-rp-unit-e",
+          "compositionViewId": "de-rp-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-rp-gym-physics-gk:structure:physics-rp-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-rp-e-supplements",
+          "compositionViewId": "de-rp-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-rp-gym-physics-gk:structure:physics-rp-e-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-rp-e-supplements-d145ce4f",
+          "compositionViewId": "de-rp-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-rp-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-lk.view.json",
+      "sha256": "sha256:cd94f13906de02ccda38517715335f2e772d234529af892ec5d9e22cafa7600a",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "LK",
+        "jurisdiction": "DE-RP"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-rp-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-rp-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-rp-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-rp-gym-physics-lk:structure:physics-rp-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-rp-unit-e",
+          "compositionViewId": "de-rp-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-rp-gym-physics-lk:structure:physics-rp-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-rp-e-supplements",
+          "compositionViewId": "de-rp-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-rp-gym-physics-lk:structure:physics-rp-e-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-rp-e-supplements-d145ce4f",
+          "compositionViewId": "de-rp-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-rp-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-seki.view.json",
+      "sha256": "sha256:8b0b0ca7936be0d98d57d729ef000002eb8d037c356efe56bbeb30c8e0d1ac68",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI",
+        "jurisdiction": "DE-RP"
+      },
+      "target": false,
+      "inLearningBasis": true,
+      "authoredRole": "prerequisiteOnly",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-rp-gym-seki-physics:structure:physics-seki",
+          "title": "Sekundarstufe I",
+          "compositionNodeId": "physics-seki",
+          "compositionViewId": "de-rp-gym-seki-physics"
+        },
+        {
+          "id": "composition:de-rp-gym-seki-physics:structure:physics-rp-unit-lern3",
+          "title": "3. Lernjahr: Themenfelder 9–12",
+          "compositionNodeId": "physics-rp-unit-lern3",
+          "compositionViewId": "de-rp-gym-seki-physics"
+        },
+        {
+          "id": "composition:de-rp-gym-seki-physics:structure:physics-rp-source-lower-additional",
+          "title": "Weitere Themen und Prüfungsaufgaben",
+          "compositionNodeId": "physics-rp-source-lower-additional",
+          "compositionViewId": "de-rp-gym-seki-physics"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung"
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-gk.view.json",
+      "sha256": "sha256:5a3be734195afe484f3edb4a5d0ef1cdb6fe5a410e2cbb81fd80413dea14a2c8",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "GK",
+        "jurisdiction": "DE-RP"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-rp-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-rp-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-rp-gym-sekii-physics-gk:structure:physics-rp-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-rp-unit-e",
+          "compositionViewId": "de-rp-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-rp-gym-sekii-physics-gk:structure:physics-rp-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-rp-e-supplements",
+          "compositionViewId": "de-rp-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-rp-gym-sekii-physics-gk:structure:physics-rp-e-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-rp-e-supplements-d145ce4f",
+          "compositionViewId": "de-rp-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-rp-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-rp-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-rp-sekii-lk.view.json",
+      "sha256": "sha256:13482dcfa4138f7a6b963a98fc455417967a0d7b729f20415b8111d5fc4ad6c5",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekII",
+        "courseProfile": "LK",
+        "jurisdiction": "DE-RP"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-rp-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-rp-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-rp-gym-sekii-physics-lk:structure:physics-rp-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-rp-unit-e",
+          "compositionViewId": "de-rp-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-rp-gym-sekii-physics-lk:structure:physics-rp-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-rp-e-supplements",
+          "compositionViewId": "de-rp-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-rp-gym-sekii-physics-lk:structure:physics-rp-e-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-rp-e-supplements-d145ce4f",
+          "compositionViewId": "de-rp-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-rp-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sh-gk.view.json",
+      "sha256": "sha256:e2f187b7706be22c1c3e2f830741a0807c25d86793643a9a4b1ad9f57ffdb1a4",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-sh-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sh-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-sh-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sh-gym-physics-gk:structure:physics-sh-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-sh-unit-e",
+          "compositionViewId": "de-sh-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sh-gym-physics-gk:structure:physics-sh-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-sh-e-supplements",
+          "compositionViewId": "de-sh-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sh-gym-physics-gk:structure:physics-acquisition-37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+          "title": "Grundlagen: Drehimpuls als Erhaltungsgröße",
+          "compositionNodeId": "physics-acquisition-37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+          "compositionViewId": "de-sh-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sh-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sh-lk.view.json",
+      "sha256": "sha256:5244d792a45c3715d1c9ae18eaa030f684ba7224f55a6ff52985916e8024d099",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-sh-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sh-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-sh-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sh-gym-physics-lk:structure:physics-sh-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-sh-unit-e",
+          "compositionViewId": "de-sh-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sh-gym-physics-lk:structure:physics-sh-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-sh-e-supplements",
+          "compositionViewId": "de-sh-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sh-gym-physics-lk:structure:physics-acquisition-37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+          "title": "Grundlagen: Drehimpuls als Erhaltungsgröße",
+          "compositionNodeId": "physics-acquisition-37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+          "compositionViewId": "de-sh-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sh-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sh-seki.view.json",
+      "sha256": "sha256:915c384cf229a6a736077f1932af147370563cf8f918db211fd17d93802298fe",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-sh-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-gk.view.json",
+      "sha256": "sha256:83d6d98e53c768abad8eece5959b2e80f6c9346c80e4ab5ad36fc9cdc089c1c6",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-sh-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-sh-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-sh-gym-sekii-physics-gk:structure:physics-sh-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-sh-unit-e",
+          "compositionViewId": "de-sh-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-sh-gym-sekii-physics-gk:structure:physics-sh-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-sh-e-supplements",
+          "compositionViewId": "de-sh-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-sh-gym-sekii-physics-gk:structure:physics-acquisition-37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+          "title": "Grundlagen: Drehimpuls als Erhaltungsgröße",
+          "compositionNodeId": "physics-acquisition-37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+          "compositionViewId": "de-sh-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sh-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sh-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sh-sekii-lk.view.json",
+      "sha256": "sha256:e49b3c83f734db33f06e91927ecb5d295013c4a30b90730e27a364a64483864c",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SH",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-sh-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-sh-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-sh-gym-sekii-physics-lk:structure:physics-sh-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-sh-unit-e",
+          "compositionViewId": "de-sh-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-sh-gym-sekii-physics-lk:structure:physics-sh-e-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-sh-e-supplements",
+          "compositionViewId": "de-sh-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-sh-gym-sekii-physics-lk:structure:physics-acquisition-37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+          "title": "Grundlagen: Drehimpuls als Erhaltungsgröße",
+          "compositionNodeId": "physics-acquisition-37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+          "compositionViewId": "de-sh-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sh-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sl-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json",
+      "sha256": "sha256:4bcd67ccfd1ece6fa1ef476471176d1111f0344f8ae58d68233e4add51f387fe",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-sl-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sl-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-sl-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sl-gym-physics-gk:structure:physics-sl-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-sl-unit-e",
+          "compositionViewId": "de-sl-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sl-gym-physics-gk:structure:physics-sl-e-topic-c929bd3f033c",
+          "title": "Kernenergie und Radioaktivität",
+          "compositionNodeId": "physics-sl-e-topic-c929bd3f033c",
+          "compositionViewId": "de-sl-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sl-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sl-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+      "sha256": "sha256:461b72c2ec2f38da51e9373544e822ad9a0525b0db139928ce00fa5d65f0b6b4",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-sl-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sl-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-sl-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sl-gym-physics-lk:structure:physics-sl-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-sl-unit-e",
+          "compositionViewId": "de-sl-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sl-gym-physics-lk:structure:physics-sl-e-topic-c929bd3f033c",
+          "title": "Kernenergie und Radioaktivität",
+          "compositionNodeId": "physics-sl-e-topic-c929bd3f033c",
+          "compositionViewId": "de-sl-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sl-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sl-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-seki.view.json",
+      "sha256": "sha256:d10dbef76a16b7b84073fe0e99ac3cc5424a6e947d6af64a1dc511d83a07b983",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-sl-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-gk.view.json",
+      "sha256": "sha256:898f626d5ec8cf7dfa863e40be1d621f674b0d70d1f305f36ea70a71ae4e1b06",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-sl-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-sl-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-sl-gym-sekii-physics-gk:structure:physics-sl-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-sl-unit-e",
+          "compositionViewId": "de-sl-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-sl-gym-sekii-physics-gk:structure:physics-sl-e-topic-c929bd3f033c",
+          "title": "Kernenergie und Radioaktivität",
+          "compositionNodeId": "physics-sl-e-topic-c929bd3f033c",
+          "compositionViewId": "de-sl-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sl-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sl-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-lk.view.json",
+      "sha256": "sha256:349ba82dedb0adbaa67490cc7e98cfab0febe17d4d9863e1789d99442a382f22",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SL",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-sl-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-sl-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-sl-gym-sekii-physics-lk:structure:physics-sl-unit-e",
+          "title": "Einführungsphase",
+          "compositionNodeId": "physics-sl-unit-e",
+          "compositionViewId": "de-sl-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-sl-gym-sekii-physics-lk:structure:physics-sl-e-topic-c929bd3f033c",
+          "title": "Kernenergie und Radioaktivität",
+          "compositionNodeId": "physics-sl-e-topic-c929bd3f033c",
+          "compositionViewId": "de-sl-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sl-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sn-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-gk.view.json",
+      "sha256": "sha256:ee2d32a5ca42eb87dbbc35ec427afa0fe737dc6f10a937fc527507560506d664",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-sn-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sn-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-sn-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sn-gym-physics-gk:structure:physics-sn-unit-q11",
+          "title": "Qualifikationsphase: Jahrgangsstufe 11",
+          "compositionNodeId": "physics-sn-unit-q11",
+          "compositionViewId": "de-sn-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-sn-gym-physics-gk:structure:physics-sn-q11-topic-c4407de522ff",
+          "title": "Einblick in die Relativitätstheorie",
+          "compositionNodeId": "physics-sn-q11-topic-c4407de522ff",
+          "compositionViewId": "de-sn-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sn-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sn-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+      "sha256": "sha256:16e2f34dd010184d311d4fc06ceee9e3b42f7e63b6c5d2a13df72b27be771706",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-sn-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sn-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-sn-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sn-gym-physics-lk:structure:physics-sn-unit-q11",
+          "title": "Qualifikationsphase: Jahrgangsstufe 11",
+          "compositionNodeId": "physics-sn-unit-q11",
+          "compositionViewId": "de-sn-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-sn-gym-physics-lk:structure:physics-sn-q11-topic-c4407de522ff",
+          "title": "Einblick in die Relativitätstheorie",
+          "compositionNodeId": "physics-sn-q11-topic-c4407de522ff",
+          "compositionViewId": "de-sn-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sn-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sn-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-seki.view.json",
+      "sha256": "sha256:280e52d7ea0dd03a768455fc239a1c57e9c30fc5944f41eb48bd7faef9a871c7",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-sn-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-gk.view.json",
+      "sha256": "sha256:fabc9229c8e1a927be637df99b9cbbaa2f596479563b3ab3ded110ab08eb7d6d",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-sn-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-sn-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-sn-gym-sekii-physics-gk:structure:physics-sn-unit-q11",
+          "title": "Qualifikationsphase: Jahrgangsstufe 11",
+          "compositionNodeId": "physics-sn-unit-q11",
+          "compositionViewId": "de-sn-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-sn-gym-sekii-physics-gk:structure:physics-sn-q11-topic-c4407de522ff",
+          "title": "Einblick in die Relativitätstheorie",
+          "compositionNodeId": "physics-sn-q11-topic-c4407de522ff",
+          "compositionViewId": "de-sn-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sn-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-sn-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-lk.view.json",
+      "sha256": "sha256:d8d6d60f1d33ea7dce9c9852ae441d4ecf6f8372da01771c05093920f7c061dd",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-sn-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-sn-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-sn-gym-sekii-physics-lk:structure:physics-sn-unit-q11",
+          "title": "Qualifikationsphase: Jahrgangsstufe 11",
+          "compositionNodeId": "physics-sn-unit-q11",
+          "compositionViewId": "de-sn-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-sn-gym-sekii-physics-lk:structure:physics-sn-q11-topic-c4407de522ff",
+          "title": "Einblick in die Relativitätstheorie",
+          "compositionNodeId": "physics-sn-q11-topic-c4407de522ff",
+          "compositionViewId": "de-sn-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-sn-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-st-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-st-gk.view.json",
+      "sha256": "sha256:00b2b38c44532b607710e5741d0202a962da821fa2509029e3dcfe0d019f6f6e",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-st-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-st-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-st-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-st-gym-physics-gk:structure:physics-st-unit-e10",
+          "title": "Einführungsphase: Jahrgangsstufe 10",
+          "compositionNodeId": "physics-st-unit-e10",
+          "compositionViewId": "de-st-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-st-gym-physics-gk:structure:physics-st-e10-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-st-e10-supplements",
+          "compositionViewId": "de-st-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-st-gym-physics-gk:structure:physics-st-e10-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-st-e10-supplements-d145ce4f",
+          "compositionViewId": "de-st-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-st-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-st-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-st-lk.view.json",
+      "sha256": "sha256:08fa0449fced43c61138dc9e60ff971de591a86e89e99288071b86b7a691ec5c",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-st-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-st-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-st-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-st-gym-physics-lk:structure:physics-st-unit-e10",
+          "title": "Einführungsphase: Jahrgangsstufe 10",
+          "compositionNodeId": "physics-st-unit-e10",
+          "compositionViewId": "de-st-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-st-gym-physics-lk:structure:physics-st-e10-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-st-e10-supplements",
+          "compositionViewId": "de-st-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-st-gym-physics-lk:structure:physics-st-e10-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-st-e10-supplements-d145ce4f",
+          "compositionViewId": "de-st-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-st-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-st-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-st-seki.view.json",
+      "sha256": "sha256:67cc9e1b2479729c7ae8f114ab4d44d837c915e634507a59e60e4ee9055f4c3d",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-st-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-gk.view.json",
+      "sha256": "sha256:239ee5e47817920b33988ae2ca542d64d62c5e35f62d1d6916512e8f0b5e9ac4",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-st-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-st-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-st-gym-sekii-physics-gk:structure:physics-st-unit-e10",
+          "title": "Einführungsphase: Jahrgangsstufe 10",
+          "compositionNodeId": "physics-st-unit-e10",
+          "compositionViewId": "de-st-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-st-gym-sekii-physics-gk:structure:physics-st-e10-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-st-e10-supplements",
+          "compositionViewId": "de-st-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-st-gym-sekii-physics-gk:structure:physics-st-e10-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-st-e10-supplements-d145ce4f",
+          "compositionViewId": "de-st-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-st-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-st-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-st-sekii-lk.view.json",
+      "sha256": "sha256:5c9a05e80c331e4cb7a1476dc5fcfe69565cb08a293a658add3386bb87f53e76",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-st-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-st-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-st-gym-sekii-physics-lk:structure:physics-st-unit-e10",
+          "title": "Einführungsphase: Jahrgangsstufe 10",
+          "compositionNodeId": "physics-st-unit-e10",
+          "compositionViewId": "de-st-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-st-gym-sekii-physics-lk:structure:physics-st-e10-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-st-e10-supplements",
+          "compositionViewId": "de-st-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-st-gym-sekii-physics-lk:structure:physics-st-e10-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-st-e10-supplements-d145ce4f",
+          "compositionViewId": "de-st-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-st-gym-sekii-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-th-gym-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json",
+      "sha256": "sha256:156cd5acc76371adbfbb57f36d7b58744756a97b7eb7aa8dd0832447404ca213",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-th-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-th-gym-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-th-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-th-gym-physics-gk:structure:physics-th-unit-q11-12",
+          "title": "Qualifikationsphase: Jahrgangsstufen 11/12",
+          "compositionNodeId": "physics-th-unit-q11-12",
+          "compositionViewId": "de-th-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-th-gym-physics-gk:structure:physics-th-q11-12-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-th-q11-12-supplements",
+          "compositionViewId": "de-th-gym-physics-gk"
+        },
+        {
+          "id": "composition:de-th-gym-physics-gk:structure:physics-th-q11-12-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-th-q11-12-supplements-d145ce4f",
+          "compositionViewId": "de-th-gym-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-th-gym-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-th-gym-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+      "sha256": "sha256:3cc40e93ad40808dd7322712c6286cd90f75c97cfc1439472183b11f19a1ab5d",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik",
+          "compositionViewId": "de-th-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-th-gym-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-th-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-th-gym-physics-lk:structure:physics-th-unit-q11-12",
+          "title": "Qualifikationsphase: Jahrgangsstufen 11/12",
+          "compositionNodeId": "physics-th-unit-q11-12",
+          "compositionViewId": "de-th-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-th-gym-physics-lk:structure:physics-th-q11-12-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-th-q11-12-supplements",
+          "compositionViewId": "de-th-gym-physics-lk"
+        },
+        {
+          "id": "composition:de-th-gym-physics-lk:structure:physics-th-q11-12-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-th-q11-12-supplements-d145ce4f",
+          "compositionViewId": "de-th-gym-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-th-gym-physics-lk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-th-gym-seki-physics",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-seki.view.json",
+      "sha256": "sha256:ee0e42d62a7fd7dab3736f907a6f7662e9981611d5d9584ce9ebcb7e86383826",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI"
+      },
+      "target": false,
+      "inLearningBasis": false,
+      "authoredRole": "absent",
+      "actualMapPath": null
+    },
+    {
+      "viewId": "de-th-gym-sekii-physics-gk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-gk.view.json",
+      "sha256": "sha256:3b4ba26c0d8da002cf1877a31d7707aa1f38a428b815316cf4e0c6ad85738f9a",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-th-gym-sekii-physics-gk:structure:physics-sekii-gk",
+          "title": "Sekundarstufe II (GK)",
+          "compositionNodeId": "physics-sekii-gk",
+          "compositionViewId": "de-th-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-th-gym-sekii-physics-gk:structure:physics-th-unit-q11-12",
+          "title": "Qualifikationsphase: Jahrgangsstufen 11/12",
+          "compositionNodeId": "physics-th-unit-q11-12",
+          "compositionViewId": "de-th-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-th-gym-sekii-physics-gk:structure:physics-th-q11-12-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-th-q11-12-supplements",
+          "compositionViewId": "de-th-gym-sekii-physics-gk"
+        },
+        {
+          "id": "composition:de-th-gym-sekii-physics-gk:structure:physics-th-q11-12-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-th-q11-12-supplements-d145ce4f",
+          "compositionViewId": "de-th-gym-sekii-physics-gk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-th-gym-sekii-physics-gk"
+        }
+      ]
+    },
+    {
+      "viewId": "de-th-gym-sekii-physics-lk",
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-th-sekii-lk.view.json",
+      "sha256": "sha256:02526f9587a5df40c77d83ecb026e921af641fd5630085ca28481d23a5810484",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "target": true,
+      "inLearningBasis": true,
+      "authoredRole": "target",
+      "actualMapPath": [
+        {
+          "id": "__learner_goal_map_root__",
+          "title": "Meine Lernziele"
+        },
+        {
+          "id": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+          "title": "Physik"
+        },
+        {
+          "id": "composition:de-th-gym-sekii-physics-lk:structure:physics-sekii-lk",
+          "title": "Sekundarstufe II (LK)",
+          "compositionNodeId": "physics-sekii-lk",
+          "compositionViewId": "de-th-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-th-gym-sekii-physics-lk:structure:physics-th-unit-q11-12",
+          "title": "Qualifikationsphase: Jahrgangsstufen 11/12",
+          "compositionNodeId": "physics-th-unit-q11-12",
+          "compositionViewId": "de-th-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-th-gym-sekii-physics-lk:structure:physics-th-q11-12-supplements",
+          "title": "Ergänzende Themen und Grundlagen",
+          "compositionNodeId": "physics-th-q11-12-supplements",
+          "compositionViewId": "de-th-gym-sekii-physics-lk"
+        },
+        {
+          "id": "composition:de-th-gym-sekii-physics-lk:structure:physics-th-q11-12-supplements-d145ce4f",
+          "title": "Weitere Grundlagen",
+          "compositionNodeId": "physics-th-q11-12-supplements-d145ce4f",
+          "compositionViewId": "de-th-gym-sekii-physics-lk"
+        },
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung",
+          "compositionViewId": "de-th-gym-sekii-physics-lk"
+        }
+      ]
+    }
+  ],
+  "canonicalOrEvidenceEditsBeforeCounting": 0
+}
