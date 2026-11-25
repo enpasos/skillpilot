@@ -349,6 +349,7 @@ const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
   'f203a552-fcf0-560c-baa2-47d4eb2379c8',
 ])
 const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
+  'd8fc6295-d0db-59e5-bd90-080bbc508c3a', // Individual and total momenta (Hamburg and Thuringia).
   'b50e9903-58b3-520d-96bf-d5bc1fe51ebf', // Mean resultant force (Baden-Württemberg).
   '4ea1b93f-2dba-59ac-87ab-29af6c55cc37',
   // B034: actual individually counter-reviewed tasks for the separated competencies.
@@ -643,12 +644,12 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 493,
   curricularArea: 112,
-  practiceAssessment: 249,
+  practiceAssessment: 250,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 4,
-  total: 868,
+  total: 869,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
@@ -2653,20 +2654,87 @@ const lowerMomentumKinds = readJson<{
   root: { goalId: string; previousChildren: number; currentChildren: number; currentSourceFingerprint: string }
   newExams: Array<{ goalId: string; canonicalPayloadSha256: string; sourceFingerprint: string; semanticKind: string; contentReview: EvidenceFile }>
 }>(lowerMomentumKindsPath)
-const lowerMomentumCatalogRoot = goalById.get(lowerMomentumKinds.root.goalId)!
-assert.equal(lowerMomentumCatalogRoot.contains.length, lowerMomentumKinds.root.currentChildren)
-assert.equal(lowerMomentumKinds.root.currentChildren - lowerMomentumKinds.root.previousChildren, 1)
-assert.equal(decisionByGoalId.get(lowerMomentumCatalogRoot.id)?.sourceFingerprint, lowerMomentumKinds.root.currentSourceFingerprint)
-assert.deepEqual(lowerMomentumKinds.newExams.map(r => r.goalId), [
-  'b50e9903-58b3-520d-96bf-d5bc1fe51ebf',
-])
-for (const row of lowerMomentumKinds.newExams) {
-  assert.equal(sha256(readFileSync(resolve(repoRoot, row.contentReview.path), 'utf8')), row.contentReview.sha256)
-  assert.deepEqual(parentIdsByChild.get(row.goalId), [lowerMomentumCatalogRoot.id])
-  assert.equal(row.semanticKind, 'practiceAssessment')
-  assert.equal(decisionByGoalId.get(row.goalId)?.semanticKind, row.semanticKind)
+const examFormPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/exam-form-successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, examFormPath), 'utf8')), 'd9dd798d0d119a19066a606de1b2ce982d3ce52d4e27463e0ee78954c9364a40')
+type ExerciseParentReview = {
+  goalId: string; previousChildren: number; currentChildren: number
+  previousSourceFingerprint: string; currentSourceFingerprint: string
+}
+const examForms = readJson<{
+  historicalK2Placement: EvidenceFile; root: ExerciseParentReview; lowerStageExercises: ExerciseParentReview
+  total: number; practiceAssessments: number
+  currentGoals: Array<{
+    goalId: string; currentCanonicalPayloadSha256: string; currentParentGoalId: string; currentTag: string
+    sourceFingerprint: string; reviewedCandidate: EvidenceFile; releasedGoal: EvidenceFile
+    contentReview: EvidenceFile; reviewedSourceArtifact: EvidenceFile; sourceArtifact: EvidenceFile
+    unchangedExamFields: Record<string, string>
+  }>
+}>(examFormPath)
+const verifyExerciseArtifact = (file: EvidenceFile) =>
+  assert.equal(sha256(readFileSync(resolve(repoRoot, file.path), 'utf8')), file.sha256, file.path)
+verifyExerciseArtifact(examForms.historicalK2Placement)
+assert.equal(examForms.historicalK2Placement.path, lowerMomentumKindsPath)
+assert.equal(examForms.total, EXPECTED_COUNTS.total)
+assert.equal(examForms.practiceAssessments, EXPECTED_COUNTS.practiceAssessment)
+const priorMeanForce = lowerMomentumKinds.newExams[0]
+assert.equal(priorMeanForce.goalId, 'b50e9903-58b3-520d-96bf-d5bc1fe51ebf')
+const exerciseIds = examForms.currentGoals.map(r => r.goalId)
+assert.deepEqual(exerciseIds, ['d8fc6295-d0db-59e5-bd90-080bbc508c3a', priorMeanForce.goalId])
+const rootForPractice = rawGoalById.get(examForms.root.goalId)!
+const lowerExercises = rawGoalById.get(examForms.lowerStageExercises.goalId)!
+assert.equal(examForms.root.goalId, lowerMomentumKinds.root.goalId)
+assert.equal(examForms.lowerStageExercises.goalId, '21ab0854-4d67-5233-9495-ae208e152a3c')
+assert.equal(examForms.root.previousChildren, lowerMomentumKinds.root.currentChildren)
+assert.equal(examForms.root.currentChildren, lowerMomentumKinds.root.currentChildren + 1)
+assert.equal(examForms.root.previousSourceFingerprint, lowerMomentumKinds.root.currentSourceFingerprint)
+assert.deepEqual((rootForPractice.contains as string[]).slice(-2), [priorMeanForce.goalId, exerciseIds[0]])
+assert.equal(fingerprintSemanticKindSourceGoal({...rootForPractice, contains: (rootForPractice.contains as string[]).slice(0, -1)}), examForms.root.previousSourceFingerprint)
+assert.equal(examForms.lowerStageExercises.previousChildren, 70)
+assert.equal(examForms.lowerStageExercises.currentChildren, 70)
+assert.equal(examForms.lowerStageExercises.previousSourceFingerprint, examForms.lowerStageExercises.currentSourceFingerprint)
+for (const parent of [examForms.root, examForms.lowerStageExercises]) {
+  assert.equal((rawGoalById.get(parent.goalId)!.contains as string[]).length, parent.currentChildren)
+  assert.equal(decisionByGoalId.get(parent.goalId)?.sourceFingerprint, parent.currentSourceFingerprint)
+}
+for (const row of examForms.currentGoals) {
+  for (const file of [row.reviewedCandidate, row.releasedGoal, row.contentReview, row.reviewedSourceArtifact, row.sourceArtifact]) {
+    verifyExerciseArtifact(file)
+  }
+  const reviewed = readJson<Record<string, unknown>>(row.reviewedCandidate.path)
+  const released = rawGoalById.get(row.goalId)!
+  assert.deepEqual(readJson<Record<string, unknown>>(row.releasedGoal.path), released)
+  assert.deepEqual(parentIdsByChild.get(row.goalId), [rootForPractice.id])
+  assert.equal(row.currentParentGoalId, rootForPractice.id)
+  assert.equal(row.currentTag, 'SekI')
+  assert.deepEqual(released.tags, [...(reviewed.tags as string[]), row.currentTag])
+  assert.equal(decisionByGoalId.get(row.goalId)?.semanticKind, 'practiceAssessment')
   assert.equal(decisionByGoalId.get(row.goalId)?.sourceFingerprint, row.sourceFingerprint)
-  assert.equal(sha256(JSON.stringify(rawGoalById.get(row.goalId))), row.canonicalPayloadSha256)
+  assert.equal(sha256(JSON.stringify(released)), row.currentCanonicalPayloadSha256)
+  if (row.goalId === priorMeanForce.goalId) {
+    assert.equal(sha256(JSON.stringify(reviewed)), priorMeanForce.canonicalPayloadSha256)
+    assert.equal(fingerprintSemanticKindSourceGoal(reviewed), priorMeanForce.sourceFingerprint)
+    assert.deepEqual(row.contentReview, priorMeanForce.contentReview)
+  }
+  const exam = released.examData as Record<string, unknown>
+  const oldExam = reviewed.examData as Record<string, unknown>
+  assert.deepEqual(Object.keys(row.unchangedExamFields).sort(), Object.keys(oldExam).filter(k => k !== 'sourceArtifactPath').sort())
+  for (const [field, digest] of Object.entries(row.unchangedExamFields)) {
+    assert.equal(sha256(JSON.stringify(exam[field])), digest)
+    assert.deepEqual(exam[field], oldExam[field])
+  }
+  assert.deepEqual(released, {
+    ...reviewed, title: released.title, titleEn: released.titleEn,
+    description: released.description, descriptionEn: released.descriptionEn,
+    tags: released.tags, examData: {...oldExam, sourceArtifactPath: row.sourceArtifact.path},
+  })
+  const source = (file: EvidenceFile) => readFileSync(resolve(repoRoot, file.path), 'utf8').split('\n')
+  const oldLines = source(row.reviewedSourceArtifact)
+  const oldHeadings = new Map([
+    [`# ${reviewed.title} / ${reviewed.titleEn}`, `# ${released.title} / ${released.titleEn}`],
+    [`# ${reviewed.title}`, `# ${released.title}`],
+    [`# ${reviewed.titleEn}`, `# ${released.titleEn}`],
+  ])
+  assert.deepEqual(source(row.sourceArtifact), oldLines.map(line => oldHeadings.get(line) ?? line))
 }
 
 const kinematicsReviewPath = 'curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json'
