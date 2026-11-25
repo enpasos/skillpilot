@@ -1803,6 +1803,273 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 .hasMessageContaining("Unknown atomicGoalIds");
     }
 
+    // A backup restores the learning results also when a plan it holds cannot be read against the
+    // curriculum today (Product Owner, 25 November 2026). Such a plan is taken over as the backup
+    // held it and marked outdated: it supplies no next step, credit or focus, a readable plan next
+    // to it is restored as usual, and saving the plan anew makes it an ordinary plan again. Before,
+    // one unreadable plan refused the whole backup.
+    @ParameterizedTest
+    @CsvSource({"sectionUnknown,true", "sectionUnknown,false", "goalUnknown,true", "onlyRetiredExam,true",
+            "nothingCaptured,true", "nothingCaptured,false", "examTopicUnknown,true", "examTopicUnknown,false",
+            "landscapeUnknown,true", "landscapeUnknown,false"})
+    void backupWithAPlanThatCannotBeReadTodayRestoresTheResultsAndKeepsThePlanAsOutdated(
+            String kind, boolean followingPlans) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var current = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, required, List.of(section), true);
+        learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(current)), today);
+        var readable = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(readable.stale()).isFalse();
+        if (followingPlans) {
+            transactions.executeWithoutResult(status -> {
+                var following = learnerRepository.findById(learnerId).orElseThrow();
+                following.setFollowLearningPlans(true);
+                learnerRepository.saveAndFlush(following);
+            });
+        }
+
+        String unknown = UUID.randomUUID().toString();
+        // The mixed E.1 exam, retired on 25 November 2026.
+        String retired = "a9562b05-c54d-5635-9244-3f7dd24a8642";
+        // The last kind is a plan of a landscape the catalog no longer has, next to a readable plan.
+        boolean ownLandscape = !kind.equals("landscapeUnknown");
+        String landscape = ownLandscape ? physics : unknown;
+        var withUnknownGoal = new java.util.ArrayList<>(required);
+        withUnknownGoal.add(unknown);
+        // The exam day of the fifth kind names a topic that no longer exists, next to a readable block.
+        var examDay = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, monday.plusDays(10), null, List.of(unknown), true);
+        List<LearnerLearningPlanApi.Block> unreadable = kind.equals("examTopicUnknown") ? List.of(current, examDay)
+                : List.of(switch (kind) {
+            case "sectionUnknown" -> new LearnerLearningPlanApi.Block("section", "learning", unknown, "E.1",
+                    monday, monday, null, required, List.of(unknown), true);
+            case "goalUnknown" -> new LearnerLearningPlanApi.Block("section", "learning", section, "E.1",
+                    monday, monday, null, withUnknownGoal, List.of(section), true);
+            case "onlyRetiredExam" -> new LearnerLearningPlanApi.Block("exam", "learning", retired, "Meine Prüfung",
+                    monday, monday, null, List.of(retired), List.of(retired), true);
+            case "nothingCaptured" -> new LearnerLearningPlanApi.Block("section", "learning", section, "E.1",
+                    monday, monday, null, List.of(), List.of(section), true);
+            default -> current;
+        });
+        var physicsRecord = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        if (ownLandscape) {
+            physicsRecord.setBlocksJson(mapper.writeValueAsString(unreadable));
+            storedPlans.saveAndFlush(physicsRecord);
+            assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
+        } else {
+            var other = new com.skillpilot.backend.domain.LearnerLearningPlan();
+            other.setLearner(learnerRepository.findById(learnerId).orElseThrow());
+            other.setLandscapeId(landscape);
+            other.setCurriculumId(physicsRecord.getCurriculumId());
+            other.setScopeFingerprint("sha256:" + "0".repeat(64));
+            other.setRevision(4);
+            other.setPlanLabel("Früherer Plan");
+            other.setBlocksJson(mapper.writeValueAsString(unreadable));
+            other.setCapturedAt(java.time.Instant.now());
+            storedPlans.saveAndFlush(other);
+        }
+        String learned = required.getFirst();
+        masteryRepository.saveAndFlush(new Mastery(learners.getLearner(learnerId), learned, 1.0));
+        var archive = learners.exportLearner(learnerId);
+        assertThat(archive.data().learningPlans()).filteredOn(plan -> landscape.equals(plan.landscapeId()))
+                .singleElement().satisfies(plan -> assertThat(plan.blocks()).isEqualTo(unreadable));
+
+        // After the backup the learner loses the result and every plan.
+        var lost = masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(learnerId, learned)).orElseThrow();
+        lost.setValue(0.0);
+        masteryRepository.saveAndFlush(lost);
+        storedPlans.deleteAll(storedPlans.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId));
+        storedPlans.flush();
+        assertThat(learners.getMastery(learnerId).getOrDefault(learned, 0.0)).isZero();
+
+        learners.importLearner(learnerId, archive);
+
+        assertThat(learners.getMastery(learnerId)).containsEntry(learned, 1.0);
+        var kept = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, landscape).orElseThrow();
+        assertThat(kept.getCurriculumId())
+                .isEqualTo(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID)
+                .isNotEqualTo(learners.getLearner(learnerId).getSelectedCurriculum());
+        assertThat(mapper.readValue(kept.getBlocksJson(), new TypeReference<List<LearnerLearningPlanApi.Block>>() { }))
+                .isEqualTo(unreadable);
+        assertThat(kept.getRevision()).isEqualTo(1L);
+        assertThat(kept.getScopeFingerprint()).matches("sha256:[a-f0-9]{64}");
+        assertThat(kept.getPlanLabel()).isEqualTo(ownLandscape ? "E.1" : "Früherer Plan");
+
+        // Every reader of plans treats it as outdated, and none of them fails.
+        var collection = learningPlans.getPlans(learnerId, today);
+        assertThat(collection.plans()).filteredOn(plan -> landscape.equals(plan.landscapeId())).allSatisfy(plan -> {
+            assertThat(plan.stale()).isTrue();
+            assertThat(plan.nextEligibleGoal()).isNull();
+            assertThat(plan.canContinue()).isFalse();
+        });
+        if (ownLandscape) {
+            var outdated = learningPlans.getPlan(learnerId, physics, today);
+            assertThat(outdated.stale()).isTrue();
+            assertThat(outdated.nextEligibleGoal()).isNull();
+            assertThat(outdated.canContinue()).isFalse();
+            assertThat(outdated.continueReason()).isIn("personal-curriculum-changed", "learning-plan-following-disabled");
+            assertThat(outdated.blocks()).isEqualTo(unreadable);
+        } else {
+            // The readable plan next to it is restored as usual.
+            var restored = learningPlans.getPlan(learnerId, physics, today);
+            assertThat(restored.stale()).isFalse();
+            assertThat(restored.blocks()).isEqualTo(readable.blocks());
+            assertThat(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow()
+                    .getCurriculumId()).isEqualTo(learners.getLearner(learnerId).getSelectedCurriculum());
+        }
+        assertThatCode(() -> learningPlans.getTodayStatus(learnerId, "de")).doesNotThrowAnyException();
+        assertThatCode(() -> learningPlans.getCoachTodayStatus(learnerId, "de")).doesNotThrowAnyException();
+        assertThatCode(() -> learners.getLearnerState(learnerId)).doesNotThrowAnyException();
+        String inProgress = learners.getLearner(learnerId).getActiveGoalId();
+        assertThatCode(() -> learningPlans.reconcile(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today)))
+                .doesNotThrowAnyException();
+        if (ownLandscape) {
+            // The outdated plan supplies no step: automatic continuation starts nothing.
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(inProgress);
+        }
+        assertThatCode(() -> learningPlans.resumeExplicitly(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today)))
+                .doesNotThrowAnyException();
+        if (followingPlans && !kind.equals("examTopicUnknown")) {
+            // An explicit request to continue still finds a goal of the Personal Curriculum. With an
+            // exam day the outdated plan offers none while plans are followed (open, see AGENTS.md).
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isNotNull();
+        }
+        assertThat(map(context(), "learningPlanToday")).containsEntry("followLearningPlans", followingPlans);
+        assertThat(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, landscape).orElseThrow())
+                .satisfies(read -> {
+                    assertThat(read.getCurriculumId())
+                            .isEqualTo(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
+                    assertThat(read.getRevision()).isEqualTo(1L);
+                });
+
+        // A backup of the outdated plan holds the same blocks and restores the same way.
+        var second = learners.exportLearner(learnerId);
+        assertThat(second.data().learningPlans()).filteredOn(plan -> landscape.equals(plan.landscapeId()))
+                .singleElement().satisfies(plan -> assertThat(plan.blocks()).isEqualTo(unreadable));
+        learners.importLearner(learnerId, second);
+        var again = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, landscape).orElseThrow();
+        assertThat(again.getCurriculumId())
+                .isEqualTo(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
+        assertThat(again.getScopeFingerprint()).isEqualTo(kept.getScopeFingerprint());
+
+        if (ownLandscape) {
+            // Saving the plan anew makes it an ordinary plan of today's curriculum.
+            var repaired = learningPlans.upsert(learnerId, physics,
+                    new LearnerLearningPlanApi.UpsertRequest(again.getRevision(), "E.1", List.of(current)), today);
+            assertThat(repaired.stale()).isFalse();
+            // The goal passed meanwhile stays only where the outdated plan had captured it.
+            assertThat(repaired.blocks()).singleElement().satisfies(block -> assertThat(block.atomicGoalIds())
+                    .containsAll(required.subList(1, required.size())).isSubsetOf(required));
+            assertThat(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow()
+                    .getCurriculumId()).isEqualTo(learners.getLearner(learnerId).getSelectedCurriculum());
+        }
+    }
+
+    // Readers of stored plans treat a plan whose exam topic no longer resolves as outdated: they
+    // catch the client error of the goal resolution. Before, that caught error had already marked
+    // their transaction for rollback, so the plan list of the Cockpit, the plan status, plan
+    // continuation and the coach context all ended in a server error. A learner reaches this state
+    // by changing the course of the subject, without any backup.
+    @ParameterizedTest
+    @CsvSource({"courseChanged,true", "courseChanged,false", "topicUnknown,true", "topicUnknown,false"})
+    void storedPlanWhoseExamTopicNoLongerResolvesIsOutdatedAndBreaksNoReader(
+            String cause, boolean followingPlans) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var learning = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, required, List.of(section), true);
+        var examDay = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, monday.plusDays(10), null, List.of(section), true);
+        var saved = learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "E.1 mit Klausur", List.of(learning, examDay)), today);
+        assertThat(saved.stale()).isFalse();
+        assertThat(saved.nextMilestone().goalIds()).containsExactly(section);
+
+        if (cause.equals("courseChanged")) {
+            // The sections of the Leistungskurs view have other ids than those of the Grundkurs view.
+            assertThat(configureHessianMotionUnit("G9", "SekII", "LK")).isNotEqualTo(section);
+        } else {
+            String unknown = UUID.randomUUID().toString();
+            var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+            record.setBlocksJson(mapper.writeValueAsString(List.of(learning, new LearnerLearningPlanApi.Block(
+                    "exam", "milestone", null, "Klausur", null, null, monday.plusDays(10), null, List.of(unknown), true))));
+            storedPlans.saveAndFlush(record);
+        }
+        if (followingPlans) {
+            transactions.executeWithoutResult(status -> {
+                var following = learnerRepository.findById(learnerId).orElseThrow();
+                following.setFollowLearningPlans(true);
+                learnerRepository.saveAndFlush(following);
+            });
+        }
+
+        assertThat(learningPlans.getPlans(learnerId, today).plans()).singleElement().satisfies(plan -> {
+            assertThat(plan.stale()).isTrue();
+            assertThat(plan.canContinue()).isFalse();
+            assertThat(plan.nextEligibleGoal()).isNull();
+        });
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
+        assertThatCode(() -> learningPlans.getTodayStatus(learnerId, "de")).doesNotThrowAnyException();
+        assertThatCode(() -> learningPlans.getCoachTodayStatus(learnerId, "de")).doesNotThrowAnyException();
+        assertThatCode(() -> learners.getLearnerState(learnerId)).doesNotThrowAnyException();
+        assertThatCode(() -> learningPlans.reconcile(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today)))
+                .doesNotThrowAnyException();
+        assertThatCode(() -> learningPlans.resumeExplicitly(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today)))
+                .doesNotThrowAnyException();
+        assertThat(map(context(), "learningPlanToday")).containsEntry("followLearningPlans", followingPlans);
+        if (!followingPlans) {
+            // Without plan following the outdated plan limits nothing.
+            assertThat(learners.getLearnerState(learnerId).frontier()).isNotEmpty();
+        }
+    }
+
+    // A plan that is not well formed is no outdated plan. Its backup is refused as before, and the
+    // refusal changes nothing: neither the results nor the plans the learner has.
+    @Test void backupWithAMalformedPlanIsStillRefusedAndChangesNothing() throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var current = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, required, List.of(section), true);
+        learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(current)), today);
+        var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        String valid = record.getBlocksJson();
+        String learned = required.getFirst();
+        masteryRepository.saveAndFlush(new Mastery(learners.getLearner(learnerId), learned, 1.0));
+        // A learning block without dates, next to goals that no longer exist.
+        record.setBlocksJson(mapper.writeValueAsString(List.of(new LearnerLearningPlanApi.Block("section", "learning",
+                section, "E.1", null, null, null, List.of(UUID.randomUUID().toString()), List.of(section), true))));
+        storedPlans.saveAndFlush(record);
+        var archive = learners.exportLearner(learnerId);
+
+        record.setBlocksJson(valid);
+        storedPlans.saveAndFlush(record);
+        var lost = masteryRepository.findById(new com.skillpilot.backend.domain.MasteryId(learnerId, learned)).orElseThrow();
+        lost.setValue(0.0);
+        masteryRepository.saveAndFlush(lost);
+
+        assertThatThrownBy(() -> learners.importLearner(learnerId, archive))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class,
+                        exception -> assertThat(exception.getStatusCode().value()).isEqualTo(400));
+        assertThat(learners.getMastery(learnerId).getOrDefault(learned, 0.0)).isZero();
+        assertThat(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow())
+                .satisfies(kept -> {
+                    assertThat(kept.getBlocksJson()).isEqualTo(valid);
+                    assertThat(kept.getCurriculumId()).isEqualTo(learners.getLearner(learnerId).getSelectedCurriculum());
+                });
+    }
+
     // A regrouping of the curriculum moves goals to another section. A plan that existed before keeps
     // the goals it captured (Product Owner, 24 November 2026: old plans stay valid as long as they
     // still work): when it is read, when a backup of it is restored and when it is edited. A newly

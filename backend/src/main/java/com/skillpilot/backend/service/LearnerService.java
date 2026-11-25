@@ -5163,8 +5163,15 @@ public class LearnerService {
         return atoms;
     }
 
-    /** Visible, subject-local atoms of an explicit selection, never its requires closure. */
-    @Transactional(readOnly = true)
+    /**
+     * Visible, subject-local atoms of an explicit selection, never its requires closure.
+     *
+     * <p>A selection that no longer resolves is an ordinary answer for the readers of stored
+     * plans: they catch the client error and treat the plan as outdated. The error must therefore
+     * not mark their transaction for rollback. This method only reads; a caller that lets the error
+     * pass still rolls its own transaction back.
+     */
+    @Transactional(readOnly = true, noRollbackFor = ResponseStatusException.class)
     public List<String> resolveLearningPlanGoalIds(
             String skillpilotId, String landscapeId, List<String> roots) {
         Learner learner = getLearner(skillpilotId);
@@ -15057,49 +15064,19 @@ public class LearnerService {
                         org.springframework.http.HttpStatus.BAD_REQUEST,
                         "learningPlans must contain at most one plan per landscape");
             }
-            LearnerPlanningScopeResponse scope = getPlanningScope(
-                    learner.getSkillpilotId(),
-                    landscapeId);
-            // A backup restores a plan that existed. It is read like a stored plan: goals the
-            // catalog retains only as history leave it, and goals a regrouping moved to another
-            // section stay in their blocks.
-            List<LearnerLearningPlanApi.Block> restorableBlocks = LearnerLearningPlanService.withoutRetiredGoals(
-                    portable.blocks(), retiredGoalIds(landscapeId));
-            Map<Set<String>, Set<String>> capturedSelections = learningPlanCapturedSelections(restorableBlocks);
-            List<LearnerLearningPlanApi.Block> normalizedBlocks =
-                    LearnerLearningPlanService.normalizeBlocks(
-                            restorableBlocks,
-                            scope,
-                            Set.of(),
-                            true);
-            validateLearningPlanBlockFoci(
-                    learner.getSkillpilotId(),
-                    landscapeId,
-                    normalizedBlocks,
-                    capturedSelections);
-            normalizedBlocks = orderLearningPlanBlocksByPrerequisites(
-                    learner.getSkillpilotId(),
-                    normalizedBlocks);
-            LearnerLearningPlan plan = new LearnerLearningPlan();
-            plan.setLearner(learner);
-            plan.setLandscapeId(landscapeId);
-            plan.setCurriculumId(scope.curriculumId());
-            plan.setScopeFingerprint(learningPlanFingerprint(
-                    learner.getSkillpilotId(),
-                    landscapeId,
-                    normalizedBlocks,
-                    capturedSelections));
-            plan.setRevision(1);
-            plan.setPlanLabel(optionalPortableText(
-                    portable.planLabel(),
-                    "learningPlans.planLabel",
-                    160));
+            String planLabel = optionalPortableText(portable.planLabel(), "learningPlans.planLabel", 160);
+            // The learning results of a backup are restored also when one of its plans cannot be
+            // read against the curriculum today (Product Owner, 25 November 2026). A server error
+            // still refuses the backup.
+            LearnerLearningPlan plan;
             try {
-                plan.setBlocksJson(objectMapper.writeValueAsString(normalizedBlocks));
-            } catch (Exception exception) {
-                throw new IllegalStateException("Could not import personal learning-plan blocks", exception);
+                plan = restoredCurrentLearningPlan(learner, landscapeId, planLabel, portable.blocks());
+            } catch (ResponseStatusException exception) {
+                if (!exception.getStatusCode().is4xxClientError()) throw exception;
+                plan = restoredOutdatedLearningPlan(learner, landscapeId, planLabel, portable.blocks(), exception);
+            } catch (IllegalStateException | IllegalArgumentException exception) {
+                plan = restoredOutdatedLearningPlan(learner, landscapeId, planLabel, portable.blocks(), exception);
             }
-            plan.setCapturedAt(scope.capturedAt());
             restored.add(plan);
         }
 
@@ -15113,6 +15090,87 @@ public class LearnerService {
                 this,
                 learner.getSkillpilotId(),
                 "LEARNING_PLAN_IMPORT"));
+    }
+
+    /** A plan of the backup as it applies today; throws when it cannot be read against the curriculum. */
+    private LearnerLearningPlan restoredCurrentLearningPlan(Learner learner, String landscapeId, String planLabel,
+            List<LearnerLearningPlanApi.Block> portableBlocks) {
+        LearnerPlanningScopeResponse scope = getPlanningScope(
+                learner.getSkillpilotId(),
+                landscapeId);
+        // A backup restores a plan that existed. It is read like a stored plan: goals the
+        // catalog retains only as history leave it, and goals a regrouping moved to another
+        // section stay in their blocks.
+        List<LearnerLearningPlanApi.Block> restorableBlocks = LearnerLearningPlanService.withoutRetiredGoals(
+                portableBlocks, retiredGoalIds(landscapeId));
+        Map<Set<String>, Set<String>> capturedSelections = learningPlanCapturedSelections(restorableBlocks);
+        List<LearnerLearningPlanApi.Block> normalizedBlocks =
+                LearnerLearningPlanService.normalizeBlocks(
+                        restorableBlocks,
+                        scope,
+                        Set.of(),
+                        true);
+        validateLearningPlanBlockFoci(
+                learner.getSkillpilotId(),
+                landscapeId,
+                normalizedBlocks,
+                capturedSelections);
+        normalizedBlocks = orderLearningPlanBlocksByPrerequisites(
+                learner.getSkillpilotId(),
+                normalizedBlocks);
+        LearnerLearningPlan plan = new LearnerLearningPlan();
+        plan.setLearner(learner);
+        plan.setLandscapeId(landscapeId);
+        plan.setCurriculumId(scope.curriculumId());
+        plan.setScopeFingerprint(learningPlanFingerprint(
+                learner.getSkillpilotId(),
+                landscapeId,
+                normalizedBlocks,
+                capturedSelections));
+        plan.setRevision(1);
+        plan.setPlanLabel(planLabel);
+        plan.setBlocksJson(portableBlocksJson(normalizedBlocks));
+        plan.setCapturedAt(scope.capturedAt());
+        return plan;
+    }
+
+    /**
+     * A plan of the backup that cannot be read today. Its learning results are restored with the
+     * rest of the backup; the plan itself is kept as the backup held it and marked outdated, see
+     * {@link LearnerLearningPlan#RESTORED_OUTDATED_CURRICULUM_ID}. A plan that is not well formed is
+     * refused as before. The stored fingerprint is the digest of the kept blocks, not a statement
+     * about today's graph.
+     */
+    private LearnerLearningPlan restoredOutdatedLearningPlan(Learner learner, String landscapeId, String planLabel,
+            List<LearnerLearningPlanApi.Block> portableBlocks, RuntimeException unreadable) {
+        LearnerLearningPlanService.requireWellFormedBlocks(landscapeId, portableBlocks);
+        LOGGER.info("Restoring a learning plan of landscape {} as outdated: {}", landscapeId, unreadable.getMessage());
+        String blocksJson = portableBlocksJson(portableBlocks);
+        LearnerLearningPlan plan = new LearnerLearningPlan();
+        plan.setLearner(learner);
+        plan.setLandscapeId(landscapeId);
+        plan.setCurriculumId(LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
+        try {
+            plan.setScopeFingerprint("sha256:" + java.util.HexFormat.of().formatHex(
+                    java.security.MessageDigest.getInstance("SHA-256").digest(blocksJson.getBytes(StandardCharsets.UTF_8))));
+        } catch (java.security.NoSuchAlgorithmException exception) {
+            throw new IllegalStateException("SHA-256 is unavailable", exception);
+        }
+        plan.setRevision(1);
+        plan.setPlanLabel(planLabel);
+        plan.setBlocksJson(blocksJson);
+        plan.setCapturedAt(Instant.now(learningPlanClock));
+        return plan;
+    }
+
+    private String portableBlocksJson(List<LearnerLearningPlanApi.Block> blocks) {
+        try {
+            return objectMapper.writeValueAsString(blocks);
+        } catch (Exception exception) {
+            throw new ResponseStatusException(
+                    org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR,
+                    "Could not import personal learning-plan blocks", exception);
+        }
     }
 
     private static String requirePortableText(String value, String field, int maxLength) {

@@ -738,9 +738,44 @@ exam's next goal is chosen. A backup
 whose plan names a retired goal next to other goals is restored as the plan
 applies today, without that entry; before, such a backup could not be
 restored. Still outdated: a plan whose section no longer resolves in the
-learner's views, and a plan of which nothing is left. A backup that holds such
-a plan is still refused as a whole (open question to the Product Owner,
-25 November 2026).
+learner's views, and a plan of which nothing is left.
+
+**Backup with a plan that cannot be read, Product Owner decision of
+25 November 2026.** A backup restores the learning results also when a plan
+it holds cannot be read against the curriculum today: a section or exam topic
+of it no longer resolves, it names a goal the learner's scope does not know,
+nothing of it is left, or the catalog no longer has its landscape. Before, one such plan
+refused the whole backup. A plan of a subject the learner no longer chooses is
+not such a plan: it restores as before and is history until the subject is
+chosen again. The plan is taken over as the backup held it and stored as
+outdated: its stored curriculum is the fixed marker
+`LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID` instead of a curriculum
+id, because the backup does not carry the curriculum the plan was captured
+for. Every reader of plans compares the stored curriculum with the learner's
+chosen one, so the plan is outdated for all of them and behaves like every
+outdated plan: it supplies no next step, obligation, credit or continuation,
+and a readable plan next to it is restored as usual. Saving the plan anew
+makes it an ordinary plan of today's curriculum. A backup of the outdated plan
+holds the same blocks. A plan that is not well formed (missing ids, unknown
+kinds, missing dates, exceeded limits) still refuses the backup, and so does a
+server error while the plan is read.
+
+**Outdated plan with an exam day, 25 November 2026.** The readers of stored
+plans catch the client error of `LearnerService.resolveLearningPlanGoalIds`
+when an exam topic no longer resolves, and treat the plan as outdated. A
+learner reaches this state by changing the course of a subject (the sections
+of the Leistungskurs view have other ids than those of the Grundkurs view), or
+by restoring such a plan. The caught error had still marked the readers'
+transaction for rollback: for a learner following plans the plan list of the
+Cockpit, the plan status, plan continuation and the coach context ended in a
+server error. The method now declares `noRollbackFor` for the client error; it
+only reads, and a caller that lets the error pass still rolls back. Rule for
+new code: a transactional read method whose client error a caller handles must
+not mark that caller's transaction, either by `noRollbackFor` or by returning
+the outcome instead of throwing. Still open (issue #205): while the learner
+follows plans, an outdated plan with an active exam day offers no goal in its
+subject until the plan is saved anew or plan following is switched off; an
+outdated plan without an exam day leaves ordinary learning available.
 
 **Goal in progress after a regrouping, 25 November 2026.** The same holds for
 the goal a learner is working on. When a regrouping moves an ordinary goal in
@@ -817,7 +852,12 @@ therefore waits for the E.5 review. The four mixed E.2 exams stay at E.2 level
 until each child has its own closing check. New goals (force decomposition on
 the incline, force balance, friction from the normal force, momentum of two
 bodies) and the narrower text of Newton's second axiom follow in a second step
-with their reviews. Record:
+with their reviews. For that step the Product Owner decided on 25 November
+2026: in Hesse the incline with trigonometry and the friction coefficient with
+its sticking limit are a voluntary deepening of "Mehrere Kräfte zugleich" with
+their own check, because no Hessian official text carries them; the mandatory
+closing check of that child uses the balance of forces on a line (drive,
+friction, braking). Record:
 `curricula/DE/Gymnasium/quality/learning-units/physics-he-e2-child-structures-2026-11-25/`.
 
 **Achievable pass marks, Product Owner decision of 24 November 2026.** His
@@ -828,7 +868,7 @@ carelessness". The occasion were the marks of 19 of 20, 15.5 of 16 and 35.5 of
 full marks) and still failed a learner after two small slips, because the
 review treated every single facet as indispensable. The rule derived from his
 decision and from the accepted Hessian parts A to D (14 of 17, 15 of 18, 17 of
-20), to be confirmed by him with the first reworked exams:
+20). He confirmed the bound of 85 percent on 25 November 2026:
 
 - A new or revised graded assessment has a pass mark of at most 85 percent of
   its points. `scripts/check_exam_pass_marks.py` enforces this in curriculum CI
