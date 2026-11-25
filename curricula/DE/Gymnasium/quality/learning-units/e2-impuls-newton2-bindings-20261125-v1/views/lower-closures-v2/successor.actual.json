@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "status": "READY_OUTSIDE_CHECKOUT",
+  "contract": "e2-source-companion-reproducer-successor-v2",
+  "baselinePushedCommit": "e0c85865e8bc329d4b3e4efca91d1d7dfa92e424",
+  "reason": "Repair the reproducer full-report normal-form assumptions while preserving complete source-assignment equality. No scientific source/value mismatch was found.",
+  "usageCorrection": "The sealed v1 helper remains historical and supports the recorded BW-only recovery. Use this normal successor for full80; the v1 full-report instruction is superseded.",
+  "positiveFull80": {
+    "path": "replay.actual.json",
+    "sha256": "b6789b0c06034d7ae0f1abe5a13c103b227b5ccc88bedf58a4d03fe90bae0838",
+    "assignmentComparisons": 48,
+    "normalForms": {
+      "nestedWithoutRedundantGoalIdentity": 36,
+      "flatBY": 4,
+      "nestedWithGoalIdentity": 8
+    },
+    "outputsByteExact": {
+      "source-demand-place-exceptions.actual.json": "01cac447e25f0a6ceb21bacf6b2838568ca788d67092ea0bc5356829913910e0",
+      "source-placement-witnesses.actual.json": "adb68358ac3610b3772c29de78e82de76a535d39487bffbd884c014a5993c435"
+    }
+  },
+  "negativeControls": {
+    "path": "negative-controls.actual.json",
+    "sha256": "c5a2b96f6c456a0c755cd82ffa89b575c49e4abeb18b9a2a0f836a62ee29174f",
+    "testsRun": 13,
+    "status": "PASS"
+  },
+  "sealedPredecessors": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/refresh-source-companions.py",
+      "sha256": "76fc6b96bfb75c40987eafd96c57faeb0979f5eeedc72f62aecad65b82ef22f9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/README.md",
+      "sha256": "4d4494f66e088b62c4793f2d437535a3b86afaa57ab6a2a515fab3ef7b8c5a77"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/checks.actual.json",
+      "sha256": "32abedd753f3110d942ee32080cbf106020d4e9fc198d6b854e4e70d74d31d52"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/source-demand-place-exceptions.actual.json",
+      "sha256": "0143bd662c571cdf768f0fdf7e35a12e42b1d390c008a1b7668b5aba7ebeac1d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/source-placement-witnesses.actual.json",
+      "sha256": "da22fa26cb75dc7f3a791702d0458bbd806806fd9eef67ac8ef059ceb496e268"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/closing-task-selection.actual.json",
+      "sha256": "cedd1b000f17e48c3529009bf25199ff8d7efba8c3f535fffaeb2ee7097e6612"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/source-demand-place-exceptions.actual.json",
+      "sha256": "01cac447e25f0a6ceb21bacf6b2838568ca788d67092ea0bc5356829913910e0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/source-placement-witnesses.actual.json",
+      "sha256": "adb68358ac3610b3772c29de78e82de76a535d39487bffbd884c014a5993c435"
+    }
+  ],
+  "preparedFiles": [
+    {
+      "path": "README.md",
+      "sha256": "aa587f85637112b1443cca5d2e13c1e8fe7c81a4bf48cf190d95d598ab3829e1"
+    },
+    {
+      "path": "negative-controls.actual.json",
+      "sha256": "c5a2b96f6c456a0c755cd82ffa89b575c49e4abeb18b9a2a0f836a62ee29174f"
+    },
+    {
+      "path": "refresh-source-companions.py",
+      "sha256": "f44bdcbc051211ec1b9221bb09cdd1d24fc52ea014131c0a63115dab966eb0d8"
+    },
+    {
+      "path": "replay.actual.json",
+      "sha256": "b6789b0c06034d7ae0f1abe5a13c103b227b5ccc88bedf58a4d03fe90bae0838"
+    },
+    {
+      "path": "test_refresh_source_companions.py",
+      "sha256": "4f87fb2afcb588bbf977be1625d782a11cad1e2e660d2dc636dc10eb3b9340f6"
+    }
+  ],
+  "bounds": {
+    "trackedCheckoutWrites": 0,
+    "newGoalOrSourceClaim": false,
+    "originalRootedScriptPreserved": true,
+    "originalReadmeAndChecksPreserved": true,
+    "currentSourceCompanionsPreserved": true,
+    "newViewOrMathPinBytes": false,
+    "configuredCqr104StillFailsSixHH_TH_IMPRoutes": true
+  },
+  "rawPositiveOutputsOutsideRepository": true
+}
