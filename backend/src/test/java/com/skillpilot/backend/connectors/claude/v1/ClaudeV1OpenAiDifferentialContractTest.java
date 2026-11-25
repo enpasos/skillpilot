@@ -68,6 +68,8 @@ class ClaudeV1OpenAiDifferentialContractTest {
             "../contracts/drafts/openai/skillpilot-coach");
 
     private static final Set<String> OPENAI_CANDIDATE_TOOL_NAMES = Set.of(
+            "choose_skillpilot_completion_route",
+            "confirm_skillpilot_completion_contract",
             "get_skillpilot_context",
             "get_skillpilot_exam_evaluation",
             "get_skillpilot_navigation",
@@ -121,7 +123,8 @@ class ClaudeV1OpenAiDifferentialContractTest {
     @Test
     void openAiToolSurfaceIsUnaffectedByTheClaudeLane() throws IOException {
         List<McpStatelessServerFeatures.SyncToolSpecification> tools = openAiContract.toolSpecifications();
-        assertEquals(14, tools.size(), "The current OpenAI candidate must publish exactly 14 tools");
+        assertEquals(OPENAI_CANDIDATE_TOOL_NAMES.size(), tools.size(),
+                "The OpenAI candidate must publish each expected tool exactly once");
 
         Set<String> openAiToolNames = tools.stream()
                 .map(specification -> specification.tool().name())

@@ -605,6 +605,9 @@ try {
   nativeTest.page.once('dialog', dialog => void dialog.dismiss())
   await nativeTest.page.getByRole('button', { name: 'Lernen mit ChatGPT vorbereiten' }).click()
   assert(nativeLaunches === 0, 'declining eligibility does not create a learning session')
+  assert(await nativeTest.page.getByTestId('chatgpt-desktop-open-codex').count() === 0,
+    'the local Codex link is shown with the prepared handoff')
+  const locationBeforePreparation = nativeTest.page.url()
   nativeTest.page.once('dialog', dialog => void dialog.accept())
   await nativeTest.page.getByRole('button', { name: 'Lernen mit ChatGPT vorbereiten' }).click()
   const preparedMessage = nativeTest.page.getByLabel('Startnachricht für ChatGPT Desktop')
@@ -613,6 +616,20 @@ try {
     'one explicit test start displays the authoritative session handoff unchanged')
   assert(!(await preparedMessage.inputValue()).includes(existingLearnerId),
     'the handoff excludes the permanent learner ID')
+  const localCodexLink = nativeTest.page.getByRole('link', { name: 'Lokalen Codex-Chat öffnen' })
+  const href = await localCodexLink.getAttribute('href')
+  assert(href, 'the desktop handoff offers a user-activated local Codex link')
+  const localCodexStart = new URL(href)
+  assert(localCodexStart.protocol === 'codex:' && localCodexStart.hostname === 'threads'
+    && localCodexStart.pathname === '/new' && !localCodexStart.hash,
+    'the link opens a new local Codex thread')
+  assert([...localCodexStart.searchParams.keys()].join(',') === 'prompt'
+    && localCodexStart.searchParams.get('prompt') ===
+      '[@SkillPilot Coach](plugin://skillpilot-coach@skillpilot-chatgpt-marketplace) How do I start a learning session with SkillPilot?',
+    'the URI carries only the Git plugin mention and harmless example, with no learner data or local path')
+  assert(nativeTest.page.url() === locationBeforePreparation && await nativeTest.page.evaluate(() => navigator.clipboard.readText()) ===
+    'https://github.com/enpasos/skillpilot-chatgpt-marketplace',
+    'preparing the handoff leaves navigation and the clipboard alone')
   await nativeTest.page.getByRole('button', { name: 'ChatGPT-Startnachricht kopieren' }).click()
   await nativeTest.page.getByRole('button', { name: 'ChatGPT-Startnachricht kopiert', exact: true }).waitFor()
   assert(await nativeTest.page.evaluate(() => navigator.clipboard.readText()) === startMessage,

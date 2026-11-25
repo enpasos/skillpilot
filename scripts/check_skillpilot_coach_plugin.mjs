@@ -881,7 +881,7 @@ assert.doesNotMatch(
 );
 assert.match(
   mcpContract,
-  /withSessionSchema\(\s*inputSchema,\s*writeScope && !RECORD_RECALL_RESULTS\.equals\(name\)\)/u,
+  /withSessionSchema\(\s*inputSchema,\s*writeScope && !RECORD_RECALL_RESULTS\.equals\(name\) && !CONFIRM_COMPLETION_CONTRACT\.equals\(name\)\)/u,
   "The Recall batch write schema must omit model-supplied state and retry fields.",
 );
 assert.match(
@@ -1415,14 +1415,14 @@ assertBehaviorFragments(
     /meaningful engagement with that follow-up or a direct-continue\s+request as orientation completion evidence, not advance consent/u,
     /Wait for a separate\s+learner answer and consent before the write/u,
     /content-free\s+acknowledgement\s+is insufficient evidence/u,
-    /Connect the next hint or explanation explicitly to the learner's answer/u,
+    /Build on the learner's reasoning and explain the missing link/u,
     /Offer a hint or smaller substep when needed, not the full answer/u,
-    /worked mini-example[\s\S]+genuinely different next task/u,
+    /worked mini-example[\s\S]+genuinely different case for independent practice/u,
     /Reconstruct unusual approaches charitably[\s\S]+Credit valid alternatives/u,
     /Cover every explicitly named aspect/u,
     /two independent checks[\s\S]+genuine multi-step transfer in a changed context/u,
     /visual, graph, or GeoGebra goals[\s\S]+observe, enter, change, and read representations/u,
-    /exactly one goal is\s+selectable[\s\S]+at\s+most three current options/u,
+    /offer the published eligible goals and wait for the\s+learner to choose, even if there is one/u,
     /requires a specialized app or cockpit activity[\s\S]+do not teach the same activity in parallel/u,
     /Treat the person as a learner/u,
     /Work patiently, concisely, clearly, and dialogically[\s\S]+small steps and\s+frequent feedback/u,

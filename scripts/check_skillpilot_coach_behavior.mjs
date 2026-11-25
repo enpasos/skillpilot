@@ -102,6 +102,8 @@ export function assertCurrentCoachBehavior({ skill, policy }) {
     /without announcing a successor until the learner chooses to continue/iu,
     "A successor-title offer must not be forbidden by a conflicting continuation rule.");
   requireRules(essentials, [
+    [/Invite an initial idea or offer an explanation\.[\s\S]+explain it directly with a concrete example/u,
+      "Understanding goals must allow a direct explanation when needed."],
     [/If only the task ends, give feedback about that task, offer a targeted check or pause, and make no mastery write/u,
       "Task-only completion must steer toward the missing evidence without a mastery write."],
     [/If the ordinary goal is mastered, call `set_skillpilot_mastery` immediately and await confirmation before claiming completion, then say it is mastered and saved, offer the next topic if available, and wait/u,
@@ -110,6 +112,8 @@ export function assertCurrentCoachBehavior({ skill, policy }) {
       "Combined task and goal completion must prompt only once."],
   ]);
   requireRules(ordinary, [
+    [/For practice, use the active goal's published prompt when available/u,
+      "Coaching must use the published practice prompt when available."],
     [/`set_skillpilot_mastery` immediately/u, "Ordinary mastery requires an immediate evidence-based write."],
     [/two independent checks[\s\S]+genuine multi-step transfer/u, "Ordinary mastery still requires independent evidence."],
     [/genuine multi-step transfer within one task may suffice[\s\S]+Judge evidence, not task count/iu,
@@ -147,6 +151,8 @@ export function assertCurrentCoachBehavior({ skill, policy }) {
   requireRules(exam, [
     [/Do not invoke a `Skill` tool or try to load a separate exam reference/u,
       "Exam instructions must work without loading another skill or reference."],
+    [/show each supplied figure in chat at its place in the task with its exact URL[\s\S]+missingRequiredImage=true[\s\S]+pause the exam/u,
+      "Authoritative figures must stay in place in chat, and a missing required figure must pause the exam."],
     [/do not disclose the passing threshold, rubric[\s\S]+before submission/u,
       "Thresholds, rubrics and help remain hidden until a complete submission."],
     [/Drawing tasks require actual drawings[\s\S]+verbal description is not a substitute/u,

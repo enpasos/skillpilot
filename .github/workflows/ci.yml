@@ -206,7 +206,7 @@ jobs:
         run: node --test scripts/check_openai_coach_v11_candidate.test.mjs
       - name: Test submission generation, export audit and trace validation
         run: |
-          node --test scripts/openai_plugin_submission.test.mjs scripts/reproducible_plugin_zip.test.mjs
+          node --test scripts/openai_plugin_submission.test.mjs scripts/reproducible_plugin_zip.test.mjs scripts/openai_private_plugin.test.mjs
           node --test scripts/openai_dialog_eval.test.mjs scripts/openai_dialog_assertions.test.mjs
           node scripts/openai_plugin_submission.mjs check
       - name: Build current OpenAI submission ZIP

@@ -1,5 +1,11 @@
 # Changelog
 
+## SkillPilot Coach 1.2.0 — ChatGPT beta candidate
+
+- Follow the current Claude coach workflow for explaining, practising and closing a learning goal.
+- Use the current unit, practice cards, assessments and authorized completion choices supplied by the SkillPilot backend.
+- Package the private beta skill and OAuth connection under the permanent plugin identity.
+
 ## SkillPilot Coach 1.1.3 — unpublished neutral candidate
 
 - Prepare the durable `skillpilot-coach` identity and

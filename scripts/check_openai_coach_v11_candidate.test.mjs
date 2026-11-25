@@ -54,7 +54,8 @@ test("historical baseline cannot be redirected to mutable source or forged", () 
 test("plan projection and tool evolution are explicit", () => {
   const descriptor = actualDescriptor();
   assert.deepEqual(descriptor.toolSurface.addedTools,
-    ["resume_skillpilot_learning_plan", "switch_skillpilot_learning_plan_subject"]);
+    ["resume_skillpilot_learning_plan", "switch_skillpilot_learning_plan_subject",
+      "choose_skillpilot_completion_route", "confirm_skillpilot_completion_contract"]);
   assert.equal(descriptor.toolSurface.unpublishedToolRemoved, "get_skillpilot_daily_plan");
   descriptor.featureGate.defaultEnabled = false;
   assert.throws(() => verifyDescriptor(descriptor));

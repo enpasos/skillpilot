@@ -2,6 +2,7 @@ package com.skillpilot.backend.openai.mcp.de;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.List;
+import java.util.Map;
 
 /** Compact, allowlist-only state returned to the OpenAI Coach V1. */
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -25,7 +26,54 @@ public record OpenAiDeCoachContext(
         Completion completion,
         List<String> policies,
         String instruction,
-        OpenAiDeLearningPlanToday learningPlanToday) {
+        OpenAiDeLearningPlanToday learningPlanToday,
+        Map<String, Object> levelCompletion,
+        CompletionContract completionContract,
+        Map<String, Object> activeGoalContext,
+        Map<String, Object> focusedUnitContext,
+        Map<String, Object> cardStep) {
+
+    public OpenAiDeCoachContext(String learningState, String requiredAction, String interactionMode,
+            Curriculum curriculum, Orientation orientation, OrientationOutlook orientationOutlook,
+            ActiveGoal activeGoal, List<Option> options, CurriculumCatalog curriculumCatalog,
+            PersonalizationHistory personalizationHistory, Decision decision, List<Goal> frontier,
+            List<Resource> resources, GoalVisualization goalVisualization, List<String> nextAllowedTools,
+            Progress progress, Completion completion, List<String> policies, String instruction,
+            OpenAiDeLearningPlanToday learningPlanToday) {
+        this(learningState, requiredAction, interactionMode, curriculum, orientation, orientationOutlook,
+                activeGoal, options, curriculumCatalog, personalizationHistory, decision, frontier, resources,
+                goalVisualization, nextAllowedTools, progress, completion, policies, instruction, learningPlanToday,
+                null, null, null, null, null);
+    }
+
+    public OpenAiDeCoachContext withUnits(Map<String, Object> goalDetail, Map<String, Object> focusedDetail,
+            Map<String, Object> cards, List<String> nextTools) {
+        return new OpenAiDeCoachContext(learningState, requiredAction, interactionMode, curriculum, orientation,
+                orientationOutlook, activeGoal, options, curriculumCatalog, personalizationHistory, decision,
+                frontier, resources, goalVisualization, nextTools, progress, completion, policies, instruction,
+                learningPlanToday, levelCompletion, completionContract, goalDetail, focusedDetail, cards);
+    }
+
+    public OpenAiDeCoachContext withCompletion(Map<String, Object> levelCompletion,
+            CompletionContract completionContract, boolean ownsNavigation, List<String> nextTools) {
+        boolean awaitingChoice = ownsNavigation && activeGoal == null;
+        String routeAction = levelCompletion != null && levelCompletion.get("choices") instanceof List<?> choices
+                && !choices.isEmpty() ? "chooseCompletionRoute" : "completionUnavailable";
+        return new OpenAiDeCoachContext(
+                awaitingChoice ? "levelCompletion" : learningState,
+                awaitingChoice ? routeAction : requiredAction,
+                awaitingChoice ? "levelCompletion" : interactionMode,
+                curriculum, orientation, orientationOutlook, activeGoal,
+                ownsNavigation ? List.of() : options, curriculumCatalog, personalizationHistory, decision,
+                ownsNavigation ? List.of() : frontier, resources, goalVisualization, nextTools,
+                progress, completion, policies,
+                awaitingChoice ? (String) levelCompletion.get("instruction") : instruction,
+                ownsNavigation ? null : learningPlanToday, levelCompletion, completionContract,
+                activeGoalContext, focusedUnitContext, cardStep);
+    }
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public record CompletionContract(String status, String receiptCapability) {}
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public record Curriculum(
@@ -88,7 +136,8 @@ public record OpenAiDeCoachContext(
     public record ExamTask(
             String taskContent,
             Double maxPoints,
-            boolean hasImage) {
+            boolean hasImage,
+            boolean missingRequiredImage) {
     }
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)

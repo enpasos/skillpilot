@@ -66,6 +66,7 @@ type Copy = {
 type MemoryCardPracticeWidgetState = {
   version: 1;
   goalId: string;
+  practiceScopeId?: string;
   batchStartStateVersion: number;
   expectedStateVersion: number;
   activeCardIndex: number;
@@ -389,7 +390,7 @@ async function submitReview(args: MemoryCardReviewArguments, copy: Copy): Promis
     const receipt = memoryCardReviewReceiptFromToolResult(result);
     const current = practice;
     if (!receipt) throw new Error("missing-review-receipt");
-    if (!current || receipt.goalId !== current.goalId) {
+    if (!current || receipt.goalId !== current.goalId || receipt.practiceScopeId !== current.practiceScopeId) {
       throw new Error("review-goal-mismatch");
     }
     practice = {
@@ -433,7 +434,9 @@ async function loadNextBatch(
       allowMetadataStateVersion: false
     });
     if (!next) throw new Error("missing-private-card-batch");
-    if (next.goalId !== args.goalId) throw new Error("batch-goal-mismatch");
+    if (next.goalId !== args.goalId || next.practiceScopeId !== args.practiceScopeId) {
+      throw new Error("batch-goal-mismatch");
+    }
     adoptPractice(next);
   } catch {
     if (gate.isCurrent(generation)) renderError(practice, copy, true);
@@ -692,6 +695,7 @@ function persistSafeWidgetState(): void {
     const state: MemoryCardPracticeWidgetState = {
       version: 1,
       goalId: current.goalId,
+      ...(current.practiceScopeId ? { practiceScopeId: current.practiceScopeId } : {}),
       batchStartStateVersion,
       expectedStateVersion: current.expectedStateVersion,
       activeCardIndex,
@@ -717,6 +721,7 @@ function restoreSafeWidgetState(
   if (
     candidate?.version !== 1 ||
     candidate.goalId !== current.goalId ||
+    candidate.practiceScopeId !== current.practiceScopeId ||
     candidate.batchStartStateVersion !== batchStartStateVersion ||
     !isNonNegativeInteger(candidate.expectedStateVersion) ||
     candidate.expectedStateVersion < current.expectedStateVersion ||
