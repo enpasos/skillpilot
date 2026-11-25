@@ -1,6 +1,6 @@
 {
   "name": "skillpilot-coach",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Web-started, session-bound SkillPilot learning coach with curriculum-grounded coaching and daily multi-subject learning plans.",
   "author": {
     "name": "enpasos GmbH",
@@ -100,7 +100,7 @@
         "demo_recording_url": ""
       },
       "publication": {
-        "release_notes": "# SkillPilot Coach 1.2.0\n\nPrivate ChatGPT beta of the permanent `skillpilot-coach` plugin. It connects to\n`https://mcp-openai.skillpilot.com/mcp` and uses the existing SkillPilot web start.\n\nThe coach follows the Claude learning workflow for understanding goals. It can\nexplain a new idea directly, use the published practice task, and save mastery\nwhen independent evidence covers the goal. It follows the current unit, card\nand assessment choices returned by the backend. Practice uses the private card\ncomponent. Verified Recall records each assessed card separately.\n\nThe matching adapter adds explicit assessment-route selection and technical\ncontract confirmation. A connection to an earlier backend only offers the\nactions that backend actually supplies. The beta uses an installable private\npackage with the skill and its OAuth-protected MCP connection. Host acceptance\nis recorded separately for each client and release."
+        "release_notes": "# SkillPilot Coach 1.2.1\n\nThe coach records an eligible active goal after the required learning evidence\nand, for an orientation, the learner's explicit closure. The context's\nimmediate actions can omit this conditional write.\n\nThe coach distinguishes a confirmed save, a pending host approval, a denied\nsave, a recoverable SkillPilot error and a missing response. It explains the\nsave status while keeping the demonstrated learning evidence in the chat.\nIt waits for approval when required and stops a denied write.\n\nThis draft keeps the current SkillPilot tool and authorization contract."
       }
     }
   }

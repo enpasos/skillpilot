@@ -1911,7 +1911,7 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
-    void orientationCompletionWithoutASelectedPathLeavesGoalChoiceToTheFreshState() {
+    void eligibleOrientationCompletionUsesTheCurrentGoalDespiteTheImmediateToolList() {
         FrontierGoal orientation = orientationGoal();
         FrontierGoal firstEntry = contentGoal("first-entry", "Funktionen und Modelle verstehen");
         UnifiedLearnerStateResponse before = state("orientActiveGoal", orientation);
@@ -1927,7 +1927,7 @@ class OpenAiDeCoachMcpContractTest {
                 successor.stateMachine(),
                 successor.goals());
 
-        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before, successor);
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(before, before, successor);
         when(coachTools.setMastery(eq(LEARNER_ID), any(MasteryUpdateRequest.class)))
                 .thenReturn(new CoachToolFacade.MasteryResult(
                         CoachToolFacade.MasteryStatus.UPDATED,
@@ -1935,15 +1935,47 @@ class OpenAiDeCoachMcpContractTest {
                         null,
                         null));
 
+        McpSchema.CallToolResult read = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+        assertThat(read.isError()).isFalse();
+        OpenAiDeCoachContext context = structured(read, OpenAiDeCoachContext.class);
+        assertThat(context.requiredAction()).isEqualTo("orientActiveGoal");
+        assertThat(context.activeGoal().goalId()).isEqualTo(orientation.id());
+        assertThat(context.nextAllowedTools()).doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+        assertThat(context.instruction()).contains(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+
         McpSchema.CallToolResult result = call(
                 OpenAiDeV1McpContractAdapter.SET_MASTERY,
-                masteryArguments(orientation.id()));
+                masteryArguments(context.activeGoal().goalId()));
 
         assertThat(result.isError()).isFalse();
         OpenAiDeV1McpContractAdapter.MasteryToolResult payload =
                 structured(result, OpenAiDeV1McpContractAdapter.MasteryToolResult.class);
+        assertThat(payload.status()).isEqualTo("updated");
+        assertThat(payload.savedGoalId()).isEqualTo(orientation.id());
+        assertThat(payload.savedMastery()).isEqualTo(1.0);
         assertThat(payload.context().requiredAction()).isEqualTo("setActiveGoal");
         verify(coachTools, never()).setActiveGoal(any(), any());
+    }
+
+    @Test
+    void anOrientationOptionCannotBeSavedAsAnActiveGoal() {
+        FrontierGoal orientation = orientationGoal();
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(goalSelectionState(orientation));
+
+        McpSchema.CallToolResult read = call(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Map.of());
+        assertThat(read.isError()).isFalse();
+        OpenAiDeCoachContext context = structured(read, OpenAiDeCoachContext.class);
+        assertThat(context.requiredAction()).isEqualTo("setActiveGoal");
+        assertThat(context.activeGoal()).isNull();
+        assertThat(context.nextAllowedTools()).doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+        assertThat(context.instruction()).doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+
+        McpSchema.CallToolResult rejected = call(
+                OpenAiDeV1McpContractAdapter.SET_MASTERY, masteryArguments(orientation.id()));
+        assertThat(rejected.isError()).isTrue();
+        assertThat(objectMapper.valueToTree(rejected.structuredContent()).path("code").asText())
+                .isEqualTo("STATE_CONFLICT");
+        verify(coachTools, never()).setMastery(any(), any());
     }
 
     @Test
