@@ -1,0 +1,5 @@
+allprojects {
+    afterEvaluate {
+        tasks.named('test') { include '**/ClaudeV1CompletionRouteIntegrationTest.class' }
+    }
+}

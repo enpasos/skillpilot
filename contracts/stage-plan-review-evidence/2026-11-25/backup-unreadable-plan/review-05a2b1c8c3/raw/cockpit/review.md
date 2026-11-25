@@ -1,0 +1,12 @@
+Read-only optional Cockpit subcheck, main HEAD `05a2b1c8c3a50f276a9a7efe9e3d942849b9dca7` (25 November 2026).
+
+Headless Chromium mounted the actual `LearnerPlanTodayOverview`, `LearnerPlanManagement` and `LearnerUnitAssignment` components with synthetic API fixtures. No backup import, real learner, full LearnerView, production styling or backend save acceptance is claimed. Main tracked diff stayed unchanged.
+
+- **List / visible:** the unavailable subject notice and Physik row render, both gauges say “Nicht auswertbar”. The restored plan label and “Plandetails” are absent because `plansForSubject` excludes `stale` plans. No subject-switch action is offered.
+- **Open:** the generic “Lernplan” management disclosure opens. It does not reveal the restored ordinary blocks or offer a general plan editor. In the plain outdated-plan fixture, a current unit option renders with the add action disabled. There is no specific recovery explanation beside that disabled action.
+- **Save anew, narrow supported surface:** an existing unit assignment from another version exposes enabled “Aktuelle Fassung für diesen Auftrag wählen”. The PUT uses expected revision3, replaces only that assignment’s current binding/parts, and retains the buffer. With a synthetic200 response, the actual UI shows the active assignment and the now-current plan’s details/label. This verifies the request and UI response only.
+- **Negative presentation control:** when another unresolved ordinary block coexists, the same PUT retains that goal (the API parser also normalizes its legacy `goalId` alias). A deliberately mocked400 yields the generic load/save error with “Neu laden”; the test does not establish which real backend inputs reject.
+
+The Cockpit therefore exposes unavailability honestly, but the measured ordinary stale-plan surface has no general open/re-author/save-anew route. Versioned unit rebind is narrower and cannot by itself repair unrelated unreadable blocks. This is a UI follow-up/coverage limit, separate from the backend backup acceptance.
+
+Evidence: `result.actual.json` contains exact rendered text, requests and assertions; six PNG files record the unstyled functional component states. `probe.mts` and `fixture.tsx` preserve the executable test. Attempts01–05 are retained: initial module format, root-scanner/serving setup and an expected legacy-alias normalization mismatch; only the final successful run is acceptance evidence.

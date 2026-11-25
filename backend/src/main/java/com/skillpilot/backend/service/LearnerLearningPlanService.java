@@ -1576,7 +1576,7 @@ public class LearnerLearningPlanService {
                 requestedBlocks,
                 scope,
                 capturedAtomicIds(existingBlocks), false,
-                blocks -> applySectionAssessmentPolicy(learners, learner, landscapeId, blocks, false));
+                blocks -> applySectionAssessmentPolicy(learners, learner, landscapeId, blocks, false), true);
         // Editing keeps a goal the stored plan had captured in a block with the same sections,
         // also where a regrouping moved it out of them. A newly selected goal and a block with
         // other sections are checked strictly.
@@ -2310,19 +2310,40 @@ public class LearnerLearningPlanService {
         return openingId != null && frontierIds.contains(openingId) ? openingId : null;
     }
 
+    /**
+     * Checks the form of stored or restored blocks without asking whether their goals and sections
+     * exist today or whether anything is left to learn: entries, ids, kinds, dates, limits. Throws
+     * the same client error as a save.
+     */
+    static void requireWellFormedBlocks(String landscapeId, List<LearnerLearningPlanApi.Block> blocks) {
+        LinkedHashSet<String> named = new LinkedHashSet<>();
+        if (blocks != null) {
+            for (LearnerLearningPlanApi.Block block : blocks) {
+                if (block == null || block.atomicGoalIds() == null) continue;
+                block.atomicGoalIds().stream().filter(id -> id != null && !id.isBlank()).map(String::trim).forEach(named::add);
+            }
+        }
+        if (named.isEmpty()) named.add("form-check-only");
+        List<String> ids = List.copyOf(named);
+        normalizeBlocks(blocks, new LearnerPlanningScopeResponse(
+                "form-check-only", landscapeId, ids, ids.size(), 0, ids, Instant.EPOCH), Set.of(), true,
+                java.util.function.UnaryOperator.identity(), false);
+    }
+
     static List<LearnerLearningPlanApi.Block> normalizeBlocks(
             List<LearnerLearningPlanApi.Block> requested,
             LearnerPlanningScopeResponse scope,
             Set<String> previouslyCaptured,
             boolean preserveAllScopeAtoms) {
         return normalizeBlocks(requested, scope, previouslyCaptured, preserveAllScopeAtoms,
-                java.util.function.UnaryOperator.identity());
+                java.util.function.UnaryOperator.identity(), true);
     }
 
     private static List<LearnerLearningPlanApi.Block> normalizeBlocks(
             List<LearnerLearningPlanApi.Block> requested, LearnerPlanningScopeResponse scope,
             Set<String> previouslyCaptured, boolean preserveAllScopeAtoms,
-            java.util.function.UnaryOperator<List<LearnerLearningPlanApi.Block>> selectRequired) {
+            java.util.function.UnaryOperator<List<LearnerLearningPlanApi.Block>> selectRequired,
+            boolean requireOpenGoal) {
         if (requested == null || requested.isEmpty()) {
             throw badRequest("blocks must not be empty");
         }
@@ -2481,7 +2502,8 @@ public class LearnerLearningPlanService {
         }
         boolean allLearningInactive = indexed.stream().anyMatch(entry -> "learning".equals(entry.block().kind()))
                 && indexed.stream().noneMatch(entry -> "learning".equals(entry.block().kind()) && entry.block().isActive());
-        if (seenAtoms.isEmpty() && !allLearningInactive && normalized.stream().noneMatch(block -> block.unitAssignment() != null)) {
+        if (requireOpenGoal && seenAtoms.isEmpty() && !allLearningInactive
+                && normalized.stream().noneMatch(block -> block.unitAssignment() != null)) {
             throw conflict("The plan contains no currently open atomic goals");
         }
         return List.copyOf(normalized);

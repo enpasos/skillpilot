@@ -1,6 +1,7 @@
 package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -191,6 +192,57 @@ class LearnerLearningPlanServiceTest {
                 }).orElseThrow();
         assertThat(due.atomicGoalId()).isEqualTo("atom-b");
         assertThat(due.focusGoalId()).isEqualTo("atom-b");
+    }
+
+    // The form check of a restored plan asks neither whether its goals and sections exist today
+    // nor whether anything is left to learn. It refuses what no save ever accepted.
+    @Test
+    void formCheckOfARestoredPlanAcceptsUnknownGoalsAndRefusesMalformedBlocks() {
+        var unknownGoals = new LearnerLearningPlanApi.Block("section", "learning", "gone-section", "Abschnitt",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-04"), null,
+                List.of("gone-a", "gone-b"), List.of("gone-section"), true);
+        var nothingCaptured = new LearnerLearningPlanApi.Block("empty", "learning", "gone-section", "Abschnitt",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-04"), null,
+                List.of(), List.of("gone-section"), true);
+        var examDay = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, LocalDate.parse("2026-09-07"), null, List.of("gone-topic"));
+        for (var wellFormed : List.of(List.of(unknownGoals), List.of(nothingCaptured), List.of(examDay),
+                List.of(unknownGoals, examDay))) {
+            assertThatCode(() -> LearnerLearningPlanService.requireWellFormedBlocks("math", wellFormed))
+                    .doesNotThrowAnyException();
+        }
+        // The same goals fail the check a save makes against today's scope.
+        assertThatThrownBy(() -> LearnerLearningPlanService.normalizeBlocks(
+                List.of(unknownGoals), singleGoalScope(), java.util.Set.of(), true))
+                .hasMessageContaining("Unknown atomicGoalIds");
+
+        var unknownKind = new LearnerLearningPlanApi.Block("weird", "holiday", null, "Ferien",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-04"), null, null, null, true);
+        var withoutDates = new LearnerLearningPlanApi.Block("section", "learning", "gone-section", "Abschnitt",
+                null, null, null, List.of("gone-a"), List.of("gone-section"), true);
+        var blankGoal = new LearnerLearningPlanApi.Block("section", "learning", "gone-section", "Abschnitt",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-04"), null,
+                List.of("gone-a", " "), List.of("gone-section"), true);
+        var withoutId = new LearnerLearningPlanApi.Block(null, "learning", "gone-section", "Abschnitt",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-04"), null,
+                List.of("gone-a"), List.of("gone-section"), true);
+        var reversedDates = new LearnerLearningPlanApi.Block("section", "learning", "gone-section", "Abschnitt",
+                LocalDate.parse("2026-09-04"), LocalDate.parse("2026-09-01"), null,
+                List.of("gone-a"), List.of("gone-section"), true);
+        var tooManyGoals = new LearnerLearningPlanApi.Block("section", "learning", "gone-section", "Abschnitt",
+                LocalDate.parse("2026-09-01"), LocalDate.parse("2026-09-04"), null,
+                java.util.stream.IntStream.rangeClosed(0, 10_000).mapToObj(index -> "gone-" + index).toList(),
+                List.of("gone-section"), true);
+        var malformed = new java.util.ArrayList<List<LearnerLearningPlanApi.Block>>(List.of(
+                List.of(), List.of(unknownKind), List.of(withoutDates), List.of(blankGoal), List.of(withoutId),
+                List.of(reversedDates), List.of(tooManyGoals), List.of(unknownGoals, unknownGoals)));
+        malformed.add(java.util.Collections.singletonList(null));
+        malformed.add(null);
+        for (var blocks : malformed) {
+            assertThatThrownBy(() -> LearnerLearningPlanService.requireWellFormedBlocks("math", blocks))
+                    .isInstanceOfSatisfying(ResponseStatusException.class,
+                            exception -> assertThat(exception.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST));
+        }
     }
 
     private static LearnerPlanningScopeResponse singleGoalScope() {
