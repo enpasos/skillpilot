@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "contract": "h-a492-literal-raw-path-pair-reproduction-v1",
+  "publishedClaim": {
+    "JSONRecords": 651,
+    "match": 1463,
+    "mismatch": 97,
+    "missing": 77
+  },
+  "actualReproduction": {
+    "head": "a4923a80928e4211c02fb53feaadad2054a3fb94",
+    "baseline": "84b220d0e562a1655386e03524a8b40b505d4e2c",
+    "AMFiles": 830,
+    "jsonPaths": 652,
+    "parsedJsonRecords": 652,
+    "invalidJson": [],
+    "pathShaPairs": 1637,
+    "firstExisting": {
+      "match": 1450,
+      "mismatch": 97,
+      "missing": 90
+    },
+    "anyAllowedBase": {
+      "match": 1450,
+      "mismatch": 97,
+      "missing": 90
+    },
+    "withExplicitAbsoluteExternalFiles": {
+      "match": 1463,
+      "mismatch": 97,
+      "missing": 77,
+      "absoluteExternalMatchedBindings": 13
+    }
+  },
+  "jsonRecordCountDifference": {
+    "literalGitAMJsonPaths": 652,
+    "allParseSuccessfully": true,
+    "difference": 1,
+    "silentlyExcludedPaths": [],
+    "limitation": "The exact 651-record selection was not supplied; the literal added/modified JSON domain contains652. All1637pair classifications reproduce the stated1463/97/77 after13existing absolute external diagnostics."
+  },
+  "method": "Git a492 tree; recursively collect objects with string path and64hex sha256 or digest; resolve record directory, ancestors, repo root; compare raw bytes. Include13actual absolute external diagnostic bindings. Native model value digests deliberately remain mismatches under this literal raw-file comparator; the native binding inventory verifies their real serialization separately.",
+  "reproductionCommand": "python3 verify_lifecycle.py --repo <checkout> --legacy-a492 --external-root viewsScratch=<retained-views-scratch> [allotherrequiredexternalroots]"
+}
