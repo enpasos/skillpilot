@@ -1,16 +1,15 @@
 # SkillPilot Coach für ChatGPT Desktop
 
-Diese Anleitung gilt für den Windows-Betatest mit **SkillPilot Coach 1.2.0**
-im Bereich **Work** der ChatGPT-Desktop-App. Du brauchst ein ChatGPT-Konto, in
-dem du unter **Plugins** einen Git-Marketplace hinzufügen kannst. In einem
-verwalteten Workspace kann dafür eine Freigabe nötig sein. Für diesen Test
-verwende die Windows-App.
+Diese Anleitung gilt für **SkillPilot Coach 1.2.0** in der ChatGPT-Desktop-App
+unter Windows. Du installierst den Coach über den Git-Marketplace und lernst
+im **lokalen Codex-Chat** der App. Zum Lernen brauchst du kein Terminal.
+In einem verwalteten Workspace kann für die Installation eine Freigabe nötig sein.
 
 ## 1. Plugin installieren und verbinden
 
-1. Öffne ChatGPT Desktop und wähle **Work**. Öffne **Plugins →
-   Hinzufügen → Marketplace hinzufügen**. Je nach Spracheinstellung
-   heißen die Einträge **Add** und **Add marketplace**.
+1. Öffne in ChatGPT Desktop **Plugins → Hinzufügen → Marketplace hinzufügen**.
+   Du kannst die Plugin-Ansicht auch über **Work** öffnen. Je nach
+   Spracheinstellung heißen die Einträge **Add** und **Add marketplace**.
 2. Füge diese Repository-Adresse hinzu.
 
    `https://github.com/enpasos/skillpilot-chatgpt-marketplace`
@@ -46,8 +45,8 @@ $codex = Join-Path $app.InstallLocation 'app\resources\codex.exe'
 
 Bestätige im Browser die SkillPilot-Freigabe für Lese- und Schreibzugriff auf
 die separate Lernsitzung und für das Aufrechterhalten der Verbindung. Sobald
-die Anmeldung erfolgreich beendet ist, starte wie unten beschrieben eine
-**neue Unterhaltung in Work**.
+die Anmeldung erfolgreich beendet ist, starte wie unten beschrieben einen
+**neuen lokalen Codex-Chat**.
 
 **Wechsel von 1.1.2 oder älter.** Das frühere Plugin **SkillPilot Coach v1**
 hat eine eigene Kennung. Installiere und verbinde **SkillPilot Coach** aus
@@ -55,7 +54,7 @@ dem Marketplace wie oben. Deaktiviere die alte Ausgabe und eine eventuell
 installierte Archivkopie für den Test. Deinen bisherigen Lernstand kannst
 du mit deiner SkillPilot-ID in einer neu gestarteten Sitzung weiterverwenden.
 
-## 2. Eine Lernsession in Work starten
+## 2. Eine Lernsession im lokalen Codex-Chat starten
 
 1. Öffne [SkillPilot mit ChatGPT](https://skillpilot.com/?coach=chatgpt-desktop)
    und wähle **Jetzt lernen**. Verwende für den Test eine **neue SkillPilot-ID**
@@ -64,15 +63,30 @@ du mit deiner SkillPilot-ID in einer neu gestarteten Sitzung weiterverwenden.
 2. Lege dein **persönliches Curriculum** fest und schließe die Auswahl ab.
    Wähle als Lerncoach **ChatGPT Desktop** und dann
    **Lernen mit ChatGPT vorbereiten**.
-3. Wähle **ChatGPT-Startnachricht kopieren**. Öffne in **Work** eine **neue
-   Unterhaltung** mit ausgewähltem **SkillPilot Coach**. Füge die ganze
-   Startnachricht unverändert ein und sende sie ab. Verwende für jeden neuen
-   Lernstart eine frisch in SkillPilot erzeugte Nachricht.
-4. Beginne im Textmodus. Lass dir dein Lernziel nennen, bearbeite eine Aufgabe
-   und setze das Lernen nach der Rückmeldung fort. Wenn der Coach Lernkarten
-   oder eine Prüfung anbietet, kannst du sie im selben Chat öffnen, pausieren
-   und später weiterarbeiten. Für einen Voice-Test prüfe gesondert, ob beim
-   Wechsel zum nächsten bebilderten Lernziel auch dessen Bild sichtbar wird.
+3. Wähle **ChatGPT-Startnachricht kopieren**. Wähle in der Desktop-App
+   **Modus wechseln → Codex**. Öffne dann in SkillPilot den Link **Lokalen
+   Codex-Chat öffnen** neben der Startnachricht. Der Link öffnet einen
+   Chatentwurf mit dem Chip **SkillPilot Coach** und einem Beispieltext.
+4. Wähle ein lokales Projekt, etwa in einem eigenen leeren Ordner, und prüfe
+   **Dieser Computer**. Ersetze den Beispieltext durch die vollständige
+   Startnachricht, lass den Plugin-Chip stehen und sende die Nachricht ab.
+   Verwende für jeden neuen Lernstart eine frisch in SkillPilot erzeugte Nachricht.
+5. Beginne im Textmodus und prüfe, ob der Coach dein Lernziel anzeigt. Danach
+   kannst du die angebotenen Lernschritte ausprobieren und Rückmeldung geben.
+
+Ein Windows-Vorabtest bestätigte den sichtbaren Lernstart in diesem lokalen
+Codex-Chat. Lernen in **Work** ist ein separater Testpfad und für diese
+Plugin-Version noch nicht bestätigt.
+
+Falls der App-Link in SkillPilot fehlt, wechsle in der Desktop-App zu
+**Codex**. Öffne dann **Ausführen** mit **Windows-Taste + R**, füge diese
+feste App-Adresse ein und bestätige. Sie enthält nur den Chip und den
+Beispieltext. Kopiere danach die vorbereitete Startnachricht erneut aus
+SkillPilot und füge sie in den geöffneten Chat ein.
+
+```text
+codex://threads/new?prompt=%5B%40SkillPilot%20Coach%5D(plugin%3A%2F%2Fskillpilot-coach%40skillpilot-chatgpt-marketplace)%20How%20do%20I%20start%20a%20learning%20session%20with%20SkillPilot%3F
+```
 
 Die vorbereitete Nachricht enthält den Zugang zur kurzen Lernsession.
 Teile sie ausschließlich mit dem ausgewählten Coach-Chat. Halte auch
@@ -91,7 +105,7 @@ auftrat. Ein bereinigter Screenshot kann helfen.
 bereitsteht. Aktualisiere auch das installierte **SkillPilot Coach**,
 falls ChatGPT das separat anbietet. Prüfe anschließend die Versionsnummer
 im installierten Plugin. Erzeuge für den nächsten Test in SkillPilot eine
-neue Startnachricht und öffne eine neue Unterhaltung in **Work**.
+neue Startnachricht und öffne einen neuen lokalen **Codex**-Chat.
 
 Falls weiterhin **SkillPilot Coach v1** oder **1.1.2** angezeigt wird, prüfe
 die Marketplace-Adresse und wiederhole den manuellen Abruf. Sobald **SkillPilot

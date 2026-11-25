@@ -108,8 +108,8 @@ for (const chatGptVariant of ['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-bu
   )
 }
 assert(
-  de.caveat.includes('Installation und Lernstart in ChatGPT Desktop unter Windows sind im Betatest bestätigt')
-    && en.caveat.includes('Installation and learning start in ChatGPT Desktop on Windows are confirmed in the beta')
+  de.caveat.includes('Der Windows-Vorabtest bestätigte den Lernstart im lokalen Codex-Chat')
+    && en.caveat.includes('The initial Windows test confirmed the learning start in a local Codex chat')
     && de.caveat.includes('noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht')
     && en.caveat.includes('not been published in the public ChatGPT app directory'),
   'the confirmed Windows installation and learning start are distinguished from public directory publication',

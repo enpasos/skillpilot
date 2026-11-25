@@ -2,9 +2,10 @@
 
 ## External beta with SkillPilot Coach 1.2.0
 
-External testers use their own eligible Windows ChatGPT Work account and the
-public marketplace. The owner authorized the regular backend rollout following
-successful CI. The first Windows host check used a privately installed copy.
+External testers use their own eligible account in the Windows app and the
+public Git marketplace. **Work** can be used to open the plugin browser. For
+learning, switch to **Codex → This Computer** in the same app. The owner
+authorized the regular backend rollout following successful CI.
 See the [release sequence and host evidence](openai-beta-distribution-assessment.md)
 and the [German installation guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
 
@@ -32,10 +33,28 @@ $codex = Join-Path $app.InstallLocation 'app\resources\codex.exe'
 
 In the browser, approve SkillPilot's read and write access to the separate
 learning session and permission to keep the connection active (`offline_access`).
-After sign-in succeeds, start a **new Work chat** with **SkillPilot Coach**
-enabled and use a freshly prepared start message. The Windows test confirmed
-successful sign-in with exit code `0`. Tool calls in the new chat are checked
-separately.
+The Windows test confirmed successful sign-in with exit code `0`. After
+sign-in succeeds, start the local Codex chat as described below.
+
+### Start learning in a local Codex chat { #windows-local-codex }
+
+In the ChatGPT desktop app, first switch modes to **Codex**. Select **Open
+local Codex chat** next to the start message in SkillPilot. The link opens a
+draft with the Git plugin chip and an example prompt. Select a local project,
+for example in your own empty folder, and **This Computer**. Keep the **SkillPilot
+Coach** chip and replace the example with the complete, freshly prepared SkillPilot
+start message. The app link carries only the plugin reference and the example
+text. You can learn in the chat without opening a terminal.
+[Tester guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme)
+
+At **05:13:59 UTC on 25 November 2026**, the visible Codex chat with the
+**1.2.0** Git package successfully called `get_skillpilot_context` on the
+then-current backend with 14 tools. The chat displayed the tool result, the
+learning goal and four learning routes. This initial check covers the learning
+start. The updated backend and further learning steps require separate checks.
+
+**Work** is a separate test path. The current Work test encountered an MCP
+`401`. Work tool execution remains unconfirmed for this version.
 
 ## Neutral plugin candidate as of 19 October 2026
 
@@ -319,9 +338,9 @@ Neither proves the reported Windows host incident is fully resolved. Claude's
 own candidate-specific two-image host acceptance also remains pending; its
 local implementation is a comparison baseline, not ChatGPT host evidence.
 
-For the owner rollout, deploy the matching backend/resource and update the Git
-plugin to **1.1.2**, then check the installed version and use a fresh ChatGPT
-start in **Work**. Verify: first image, saved success, an explicit agreement
+The historical **1.1.2** retest called for the matching backend and resource,
+verification of the installed version, and a fresh start in **Work**.
+It covered the first image, saved success, an explicit agreement
 to continue, and the next image in the same Voice chat. If the image is still
 missing, distinguish an absent renderer call from a successful renderer call
 whose UI never becomes visible. Keep any tool/status evidence sanitized; do
@@ -366,8 +385,8 @@ Claude/OpenAI differential contract; and **65 release/candidate/marketplace
 tests**. Versioning, historical review evidence and exact unpublished-draft
 verification also passed. These checks are local, not a new desktop acceptance.
 
-After the owner backend rollout, use a fresh SkillPilot-started Work chat with
-the already published **1.1.2** plugin. Verify the first image, saved success,
+To retest this historical Voice incident with **1.1.2**, use a fresh Work
+chat. Verify the first image, saved success,
 explicit agreement to continue and the next image. If it still fails, retain
 only sanitized tool/status evidence: whether the fresh context offered an
 image, whether `render_skillpilot_goal_visualization` ran successfully, and
@@ -396,6 +415,9 @@ the local follow-up build calls `08030bd956b6` active.
 Keep the owner-reported visible result separate from every server success.
 
 ## Tester walkthrough: Windows ChatGPT Desktop
+
+This section records the original **1.1.2** test. For **1.2.0**, use the
+[local Codex learning start](#windows-local-codex).
 
 1. In **Plugins → Hinzufügen → Marketplace hinzufügen**, add
    `https://github.com/enpasos/skillpilot-chatgpt-marketplace`.

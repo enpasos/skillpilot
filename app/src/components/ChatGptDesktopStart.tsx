@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import type { OpenAiMcpStartResponse } from '../coachVariants/openAiMcp/request'
 import { useTranslation } from '../hooks/useTranslation'
+import { CHATGPT_DESKTOP_LOCAL_CHAT_URL } from '../utils/chatGptDesktopBeta'
 import { ChatGptDesktopSetupGuide } from './ChatGptDesktopSetupGuide'
 
 interface Props {
@@ -67,10 +68,16 @@ export function ChatGptDesktopStart({ onPrepare }: Props) {
           <textarea ref={promptField} readOnly value={session.prompt} rows={5}
             className="mt-1 w-full rounded border border-border-color bg-transparent p-2" />
         </label>
-        <button type="button" onClick={() => void copyPrompt()}
-          className="min-h-11 rounded-full border border-sky-500 px-4 py-2 font-semibold text-text-primary">
-          {copied ? copy.promptCopied : copy.copyPrompt}
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button type="button" onClick={() => void copyPrompt()}
+            className="min-h-11 rounded-full border border-sky-500 px-4 py-2 font-semibold text-text-primary">
+            {copied ? copy.promptCopied : copy.copyPrompt}
+          </button>
+          <a href={CHATGPT_DESKTOP_LOCAL_CHAT_URL} rel="noreferrer" data-testid="chatgpt-desktop-open-codex"
+            className="inline-flex min-h-11 items-center rounded-full border border-sky-500 px-4 py-2 font-semibold text-text-primary">
+            {copy.openCodex}
+          </a>
+        </div>
         <p role="status" className="text-xs leading-relaxed text-text-secondary">{copy.pasteHint}</p>
       </div>}
     </section>

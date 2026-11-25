@@ -10,7 +10,9 @@ The new ChatGPT package uses the permanent identity `skillpilot-coach` and
 version 1.2.0. External testers need to be able to install the plugin in
 their own account by following a guide. Use the public Git marketplace for
 that distribution and a private upload for the first host check. On Windows,
-the tester's Work client must offer **Add marketplace**.
+the client must offer **Add marketplace**. Work can provide the installation
+view. Start the learning test in a local **Codex** chat with **This Computer**
+selected in the same desktop app.
 
 | Deployment option | Fit for this beta |
 | --- | --- |
@@ -44,8 +46,9 @@ and access is needed before using it for this workspace package.
    branch and compare an anonymous fresh clone to the canonical export with
    `node scripts/openai_marketplace_release.mjs verify --output <clone>`.
 4. Give testers the [public installation and update guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
-   It covers installation in Work, connection, a disposable learner and a
-   fresh learning session. Record a second-account host test when observed.
+   It covers marketplace installation, connection, a disposable learner and a
+   fresh learning session in the local Codex chat. Record a second-account host
+   test when observed.
 
 ### Build and test in the owner's account
 
@@ -62,7 +65,7 @@ and access is needed before using it for this workspace package.
    update the same private plugin. Confirm the version, the skill and the MCP
    connection in the installed plugin and connect over SkillPilot OAuth.
 4. Start a disposable learner through the SkillPilot web start. In a fresh
-   ChatGPT Work chat use the configured Personal Curriculum. Test choosing a
+   local Codex chat use the configured Personal Curriculum. Test choosing a
    goal with Autopilot off, an explanation and practice, completing a goal,
    pausing, resuming and moving to the next named goal. Record whether the
    first and second images actually appear. Use a separate fixture for unit
@@ -95,9 +98,15 @@ client reached the protected endpoint. Its bundled CLI completed Auto/CIMD
 sign-in through SkillPilot's consent screen at 04:39 UTC. The grant covered
 learning-session reads and writes and keeping that connection active.
 The consent and CLI success are evidence of native authorization. The
-[Windows guide](openai-personal-marketplace-release.md) includes the tested
-command for clients without a sign-in button. A visible Work tool result,
-saved learning progress and a second account each require their own evidence.
+[Windows guide](openai-personal-marketplace-release.md#windows-oauth-fallback)
+includes the tested command for clients without a sign-in button.
+
+At **05:13:59 UTC**, a visible **local Codex chat** in the same Windows app
+used the same Git package to call `get_skillpilot_context` successfully on the
+then-current 14-tool backend. The tool result, the learning goal and four
+learning routes appeared in the chat. The Work path encountered an MCP `401`.
+Acceptance of the updated backend, further learning steps and a second account
+remains separate from this initial Codex check.
 
 On the same morning an unauthenticated GET to `/mcp` returned the expected
 401 with discovery on the neutral host. Protected-resource and issuer
