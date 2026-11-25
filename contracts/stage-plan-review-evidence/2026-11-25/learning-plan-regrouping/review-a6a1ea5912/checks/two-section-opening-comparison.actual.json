@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "method": "Paired public plan get/reconcile and real post-mastery handoff in new learners. On the fresh continuation arm restore the original focus and clear the active navigation and cursor after the same real mastery event. Unit assessment feature tested both off and on, learner Autopilot off, strict mode and plan-following on. No active exam or assessment shortcut.",
+  "methodBodySha256": "f34b02d4db60e3b9e598988d0b131c60c05dba200f82f1000fd7c99029fede6b",
+  "revisions": [
+    {
+      "commit": "4e085e990ba4a05053904ee5cb34f5dd82418358",
+      "report": {
+        "path": "parent/report.actual.json",
+        "sha256": "15a0bff94884e6b0bb5fb95c45128c943b4f1e9e0c86de83ce6acfd32108888b"
+      },
+      "junit": {
+        "tests": 8,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "sourceGitBlobs": {
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "ed954f7cae7f042cebbee53e61926ef87c7f7942",
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java": "7e9c684fa28e9586b8bc49c7a69c6506d406df90",
+        "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java": "5407e5a503ecaf71c5368254eb62df0102740ad3"
+      },
+      "consumedGitTrees": {
+        "curricula": "f15d397b9b8d89fb0f1ee386761c350d9b363a06",
+        "app": "a7f37a0faa7eb52d314dcc82162a9e934f6ac71c",
+        "contracts": "4067b9aa45131762020be0c8887449727db301ea",
+        "scripts": "4e8600bd181a29230979893b123dc48b631444d0",
+        "ai": "3f07083ca451bd416bd7b26144a49adab4ba79ea",
+        "docs": "7ca11a4b5f10ade410a1cd4ec9f7d58a65d1fb47",
+        "content": "cc1506405e2aafa6a006fa8a201454aa81722f44"
+      },
+      "observedWhenUnitAssessmentPilotDisabled": [
+        {
+          "path": "handoff",
+          "scenario": "child-parent-pending",
+          "active": null,
+          "focus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+          ],
+          "pending": null
+        },
+        {
+          "path": "reconcile",
+          "scenario": "child-parent-pending",
+          "viewNext": {
+            "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+          },
+          "reportedGoal": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "active": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "focus": [
+            "8aff7aac-321b-5172-ac55-877876bfd2cd"
+          ],
+          "pending": "{\"targetGoalId\":\"8aff7aac-321b-5172-ac55-877876bfd2cd\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"0df94dea068aae3a1fd59bcc9f3299bbe58c2c12145dd3c0cd2d3f2d96c5494e\",\"focusIds\":[\"8aff7aac-321b-5172-ac55-877876bfd2cd\"],\"completionWorkflow\":null}"
+        },
+        {
+          "path": "handoff",
+          "scenario": "child-only-parent-pending",
+          "active": null,
+          "focus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+          ],
+          "pending": null
+        },
+        {
+          "path": "reconcile",
+          "scenario": "child-only-parent-pending",
+          "viewNext": {
+            "goalId": "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          },
+          "reportedGoal": null,
+          "active": null,
+          "focus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+          ],
+          "pending": null
+        }
+      ]
+    },
+    {
+      "commit": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+      "report": {
+        "path": "report.actual.json",
+        "sha256": "c9f98d9f2f93fab07861da2f282cffa07b470663bcb51f5e29a5c121f3d3f971"
+      },
+      "junit": {
+        "tests": 16,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "sourceGitBlobs": {
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "82dc89d2b3458e4840c9bc247b8eebac0ac077a9",
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java": "9d722b529e028c48bef95f364f0e741fee57f89b",
+        "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java": "c280dd6e0865f001922c67c771fbafb3c9d99d02"
+      },
+      "consumedGitTrees": {
+        "curricula": "f15d397b9b8d89fb0f1ee386761c350d9b363a06",
+        "app": "a7f37a0faa7eb52d314dcc82162a9e934f6ac71c",
+        "contracts": "dbb4b41f4d005282aa11a9af871982d08612e3f5",
+        "scripts": "4e8600bd181a29230979893b123dc48b631444d0",
+        "ai": "3f07083ca451bd416bd7b26144a49adab4ba79ea",
+        "docs": "7ca11a4b5f10ade410a1cd4ec9f7d58a65d1fb47",
+        "content": "cc1506405e2aafa6a006fa8a201454aa81722f44"
+      },
+      "observedWhenUnitAssessmentPilotDisabled": [
+        {
+          "path": "handoff",
+          "scenario": "child-parent-pending",
+          "active": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "focus": [
+            "8aff7aac-321b-5172-ac55-877876bfd2cd"
+          ],
+          "pending": "{\"targetGoalId\":\"8aff7aac-321b-5172-ac55-877876bfd2cd\",\"openingGoalId\":\"b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e\",\"curriculumDigest\":\"0df94dea068aae3a1fd59bcc9f3299bbe58c2c12145dd3c0cd2d3f2d96c5494e\",\"focusIds\":[\"8aff7aac-321b-5172-ac55-877876bfd2cd\"],\"completionWorkflow\":null}"
+        },
+        {
+          "path": "reconcile",
+          "scenario": "child-parent-pending",
+          "viewNext": {
+            "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+          },
+          "reportedGoal": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "active": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "focus": [
+            "8aff7aac-321b-5172-ac55-877876bfd2cd"
+          ],
+          "pending": "{\"targetGoalId\":\"8aff7aac-321b-5172-ac55-877876bfd2cd\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"0df94dea068aae3a1fd59bcc9f3299bbe58c2c12145dd3c0cd2d3f2d96c5494e\",\"focusIds\":[\"8aff7aac-321b-5172-ac55-877876bfd2cd\"],\"completionWorkflow\":null}"
+        },
+        {
+          "path": "handoff",
+          "scenario": "child-only-parent-pending",
+          "active": null,
+          "focus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+          ],
+          "pending": null
+        },
+        {
+          "path": "reconcile",
+          "scenario": "child-only-parent-pending",
+          "viewNext": {
+            "goalId": "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          },
+          "reportedGoal": null,
+          "active": null,
+          "focus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+          ],
+          "pending": null
+        }
+      ]
+    }
+  ],
+  "actualMaterialSource": "Same main-checkout read-only mounts on both runs, at a6a1ea59122b2c2cb6c82540ba20fcc996af1208. All tree identities agree other than contracts; the 34 contract-path changes are additions of previous independent review evidence under contracts/stage-plan-review-evidence/2026-11-25/learning-plan-regrouping/.",
+  "finding": "With both unit openings open, the revised ordinary handoff starts the child opening and records the child cursor where fresh normal reconciliation persists the parent opening and cursor. Both use the same final target and focus. Baseline handoff remained inactive and kept the previous focus; baseline reconciliation already advertised the child but persisted the parent. No target content started in these probes. With only the parent unpassed both arms of both revisions remained inactive; the target cases with parent already passed agreed on the child opening."
+}

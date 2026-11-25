@@ -1,0 +1,695 @@
+{
+  "schemaVersion": 1,
+  "method": "Separate real service/H2 learners with the same current, validated ordinary two-block plan. Child focus and its opening already mastered. Actual mastery writes for the measurement protocol. The control retains the exact real mastery write and clears its automatic navigation, restores child focus, then uses public reconcile. Both unit-assessment feature flag settings. Learner Autopilot off, strict and plan-following on. Read-only common host runtime files, no manufactured old-plan record.",
+  "rawRoot": "Paths relative to this JSON",
+  "revisions": [
+    {
+      "key": "target",
+      "commit": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+      "checks": {
+        "tests": 4,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "bindings": [
+        {
+          "path": "target/raw/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.HandoffRound3Test.xml",
+          "sha256": "61c3a24b1ad395173d07182890cbb316a36308e64514cbcf401cf3aa7e46355b"
+        },
+        {
+          "path": "target/raw/gradle.log",
+          "sha256": "b66091b5abe352e1429f3326be1fb2b48b803358e11835d16d06ed2d6adbf698"
+        },
+        {
+          "path": "target/probe.java",
+          "sha256": "7dad8329b98ef19b29a51b1b2efd31859cc3ffd146c23c36032dd2939f64467d"
+        },
+        {
+          "path": "target/prepare.py",
+          "sha256": "62b281b7fbddaac97b5dfff05a6652147a41b87c391225e810a6644b76abc097"
+        },
+        {
+          "path": "target/init.gradle",
+          "sha256": "5fdcbc90030f2a920132943eb7527b98bcb8862ac3537f0c6149e55e930dbca4"
+        },
+        {
+          "path": "target/run.sh",
+          "sha256": "5e637d1f8d741f94c8ea0cb2d818fc1f792dee2423501c1b36b8bdebee510d51"
+        }
+      ],
+      "sourceFiles": {
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "82dc89d2b3458e4840c9bc247b8eebac0ac077a9",
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java": "9d722b529e028c48bef95f364f0e741fee57f89b",
+        "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java": "c280dd6e0865f001922c67c771fbafb3c9d99d02",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "5142a6eea7d773d08a3c66ee1c316ddaaeac4c3b",
+        "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json": "029dd6fe999736d610a3b48ee6665686a2ffd174",
+        "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json": "3e2effc3420b778009b4218e280bc384c0fad2c2"
+      },
+      "observations": [
+        {
+          "pilot": false,
+          "path": "handoff",
+          "scenario": "diagram",
+          "anchor": "e0004439-ed34-5caf-858a-6107918224eb",
+          "target": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "blockRoots": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "initialFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "parent": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "child": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "parentAlreadyMastered": false,
+          "childAlreadyMastered": true,
+          "realPlanBlocks": [
+            {
+              "id": "first",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "Messprotokoll",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "e0004439-ed34-5caf-858a-6107918224eb"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+              ],
+              "active": true
+            },
+            {
+              "id": "second",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "t-v-Diagramm",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "active": true
+            }
+          ],
+          "parentMastery": null,
+          "childMastery": 1.0,
+          "anchorMastery": 1.0,
+          "targetMastery": null,
+          "membership": true,
+          "requiredForRoots": null,
+          "requiredForOwn": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "rootsFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "ownFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "wholePlanFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "active": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "focus": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "pending": null
+        },
+        {
+          "pilot": false,
+          "path": "reconcile",
+          "scenario": "diagram",
+          "anchor": "e0004439-ed34-5caf-858a-6107918224eb",
+          "target": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "blockRoots": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "initialFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "parent": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "child": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "parentAlreadyMastered": false,
+          "childAlreadyMastered": true,
+          "realPlanBlocks": [
+            {
+              "id": "first",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "Messprotokoll",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "e0004439-ed34-5caf-858a-6107918224eb"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+              ],
+              "active": true
+            },
+            {
+              "id": "second",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "t-v-Diagramm",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "active": true
+            }
+          ],
+          "parentMastery": null,
+          "childMastery": 1.0,
+          "anchorMastery": 1.0,
+          "targetMastery": null,
+          "membership": true,
+          "requiredForRoots": null,
+          "requiredForOwn": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "rootsFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "ownFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "wholePlanFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "viewNext": {
+            "goalId": "1e459a1b-4159-5049-84eb-9928129c1610"
+          },
+          "reportedGoal": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "reportedFocus": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "active": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "focus": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "pending": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"c0b52bc485d9d630fe898b89307507aadd40ccf8228c816ef5ee2e8e6a22801d\",\"focusIds\":[\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}"
+        },
+        {
+          "pilot": true,
+          "path": "handoff",
+          "scenario": "diagram",
+          "anchor": "e0004439-ed34-5caf-858a-6107918224eb",
+          "target": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "blockRoots": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "initialFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "parent": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "child": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "parentAlreadyMastered": false,
+          "childAlreadyMastered": true,
+          "realPlanBlocks": [
+            {
+              "id": "first",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "Messprotokoll",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "e0004439-ed34-5caf-858a-6107918224eb"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+              ],
+              "active": true
+            },
+            {
+              "id": "second",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "t-v-Diagramm",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "active": true
+            }
+          ],
+          "parentMastery": null,
+          "childMastery": 1.0,
+          "anchorMastery": 1.0,
+          "targetMastery": null,
+          "membership": true,
+          "requiredForRoots": null,
+          "requiredForOwn": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "rootsFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "ownFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "wholePlanFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "active": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "focus": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "pending": null
+        },
+        {
+          "pilot": true,
+          "path": "reconcile",
+          "scenario": "diagram",
+          "anchor": "e0004439-ed34-5caf-858a-6107918224eb",
+          "target": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "blockRoots": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "initialFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "parent": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "child": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "parentAlreadyMastered": false,
+          "childAlreadyMastered": true,
+          "realPlanBlocks": [
+            {
+              "id": "first",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "Messprotokoll",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "e0004439-ed34-5caf-858a-6107918224eb"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+              ],
+              "active": true
+            },
+            {
+              "id": "second",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "t-v-Diagramm",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "active": true
+            }
+          ],
+          "parentMastery": null,
+          "childMastery": 1.0,
+          "anchorMastery": 1.0,
+          "targetMastery": null,
+          "membership": true,
+          "requiredForRoots": null,
+          "requiredForOwn": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "rootsFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "ownFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "wholePlanFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "viewNext": {
+            "goalId": "1e459a1b-4159-5049-84eb-9928129c1610"
+          },
+          "reportedGoal": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "reportedFocus": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "active": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "focus": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "pending": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"c0b52bc485d9d630fe898b89307507aadd40ccf8228c816ef5ee2e8e6a22801d\",\"focusIds\":[\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}"
+        }
+      ]
+    },
+    {
+      "key": "before",
+      "commit": "4e085e990ba4a05053904ee5cb34f5dd82418358",
+      "checks": {
+        "tests": 4,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "bindings": [
+        {
+          "path": "before/raw/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.HandoffRound3Test.xml",
+          "sha256": "904b1d9c2c4b3be838cb364e14014d69e4a3a39b3d024ec42d687a0a0bb77d34"
+        },
+        {
+          "path": "before/raw/gradle.log",
+          "sha256": "3b53b9b0a4a42ab0f354935170fa5e641a2156ce7390c8f9048e495cc460e99a"
+        },
+        {
+          "path": "before/probe.java",
+          "sha256": "7dad8329b98ef19b29a51b1b2efd31859cc3ffd146c23c36032dd2939f64467d"
+        },
+        {
+          "path": "before/prepare.py",
+          "sha256": "62b281b7fbddaac97b5dfff05a6652147a41b87c391225e810a6644b76abc097"
+        },
+        {
+          "path": "before/init.gradle",
+          "sha256": "9b958dc0f7d6139a86b636522a22047377e0b426e73d64bc089a57a4dbdd5816"
+        },
+        {
+          "path": "before/run.sh",
+          "sha256": "10bec7f0a7f8990eabe69e8c995b60ce61e89fb14aca2558462b596c433f0323"
+        }
+      ],
+      "sourceFiles": {
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "ed954f7cae7f042cebbee53e61926ef87c7f7942",
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java": "7e9c684fa28e9586b8bc49c7a69c6506d406df90",
+        "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java": "5407e5a503ecaf71c5368254eb62df0102740ad3",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json": "5142a6eea7d773d08a3c66ee1c316ddaaeac4c3b",
+        "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json": "029dd6fe999736d610a3b48ee6665686a2ffd174",
+        "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json": "3e2effc3420b778009b4218e280bc384c0fad2c2"
+      },
+      "observations": [
+        {
+          "pilot": false,
+          "path": "handoff",
+          "scenario": "diagram",
+          "anchor": "e0004439-ed34-5caf-858a-6107918224eb",
+          "target": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "blockRoots": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "initialFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "parent": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "child": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "parentAlreadyMastered": false,
+          "childAlreadyMastered": true,
+          "realPlanBlocks": [
+            {
+              "id": "first",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "Messprotokoll",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "e0004439-ed34-5caf-858a-6107918224eb"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+              ],
+              "active": true
+            },
+            {
+              "id": "second",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "t-v-Diagramm",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "active": true
+            }
+          ],
+          "parentMastery": null,
+          "childMastery": 1.0,
+          "anchorMastery": 1.0,
+          "targetMastery": null,
+          "membership": true,
+          "requiredForRoots": null,
+          "requiredForOwn": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "rootsFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "ownFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "wholePlanFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "active": null,
+          "focus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "pending": null
+        },
+        {
+          "pilot": false,
+          "path": "reconcile",
+          "scenario": "diagram",
+          "anchor": "e0004439-ed34-5caf-858a-6107918224eb",
+          "target": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "blockRoots": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "initialFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "parent": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "child": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "parentAlreadyMastered": false,
+          "childAlreadyMastered": true,
+          "realPlanBlocks": [
+            {
+              "id": "first",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "Messprotokoll",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "e0004439-ed34-5caf-858a-6107918224eb"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+              ],
+              "active": true
+            },
+            {
+              "id": "second",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "t-v-Diagramm",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "active": true
+            }
+          ],
+          "parentMastery": null,
+          "childMastery": 1.0,
+          "anchorMastery": 1.0,
+          "targetMastery": null,
+          "membership": true,
+          "requiredForRoots": null,
+          "requiredForOwn": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "rootsFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "ownFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "wholePlanFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "viewNext": {
+            "goalId": "1e459a1b-4159-5049-84eb-9928129c1610"
+          },
+          "reportedGoal": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "reportedFocus": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "active": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "focus": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "pending": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"5ea2ae8382bd9f3646388da27fa0782be2bd176fa5fc94a8a6eff3231bf94df6\",\"focusIds\":[\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}"
+        },
+        {
+          "pilot": true,
+          "path": "handoff",
+          "scenario": "diagram",
+          "anchor": "e0004439-ed34-5caf-858a-6107918224eb",
+          "target": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "blockRoots": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "initialFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "parent": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "child": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "parentAlreadyMastered": false,
+          "childAlreadyMastered": true,
+          "realPlanBlocks": [
+            {
+              "id": "first",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "Messprotokoll",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "e0004439-ed34-5caf-858a-6107918224eb"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+              ],
+              "active": true
+            },
+            {
+              "id": "second",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "t-v-Diagramm",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "active": true
+            }
+          ],
+          "parentMastery": null,
+          "childMastery": 1.0,
+          "anchorMastery": 1.0,
+          "targetMastery": null,
+          "membership": true,
+          "requiredForRoots": null,
+          "requiredForOwn": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "rootsFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "ownFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "wholePlanFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "active": null,
+          "focus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "pending": null
+        },
+        {
+          "pilot": true,
+          "path": "reconcile",
+          "scenario": "diagram",
+          "anchor": "e0004439-ed34-5caf-858a-6107918224eb",
+          "target": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "blockRoots": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "initialFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "parent": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "child": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+          "parentAlreadyMastered": false,
+          "childAlreadyMastered": true,
+          "realPlanBlocks": [
+            {
+              "id": "first",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "Messprotokoll",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "e0004439-ed34-5caf-858a-6107918224eb"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+              ],
+              "active": true
+            },
+            {
+              "id": "second",
+              "kind": "learning",
+              "goalId": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+              "title": "t-v-Diagramm",
+              "startDate": "2026-11-23",
+              "endDate": "2026-11-23",
+              "atomicGoalIds": [
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "goalIds": [
+                "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall",
+                "1e459a1b-4159-5049-84eb-9928129c1610"
+              ],
+              "active": true
+            }
+          ],
+          "parentMastery": null,
+          "childMastery": 1.0,
+          "anchorMastery": 1.0,
+          "targetMastery": null,
+          "membership": true,
+          "requiredForRoots": null,
+          "requiredForOwn": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "rootsFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "ownFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "wholePlanFrontier": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "viewNext": {
+            "goalId": "1e459a1b-4159-5049-84eb-9928129c1610"
+          },
+          "reportedGoal": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "reportedFocus": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "active": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "focus": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "pending": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"5ea2ae8382bd9f3646388da27fa0782be2bd176fa5fc94a8a6eff3231bf94df6\",\"focusIds\":[\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}"
+        }
+      ]
+    }
+  ]
+}

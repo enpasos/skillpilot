@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-25T06:38:49+01:00",
+  "branch": "fix/alte-lernplaene-nach-umgruppierung",
+  "reviewedCommit": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+  "reviewedTree": "4c82e8c3fbbf69dc72e620ddab3048a134aaba35",
+  "previousReviewedCommit": "4e085e990ba4a05053904ee5cb34f5dd82418358",
+  "reviewedCorrectionCommits": [
+    "a6a1ea59122b2c2cb6c82540ba20fcc996af1208"
+  ],
+  "paths": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+    "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+    "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java"
+  ],
+  "patch": {
+    "command": "git diff --no-ext-diff --no-color 4e085e990b a6a1ea5912 -- backend/src AGENTS.md CLAUDE.md",
+    "sha256": "1a4b5410a07ad059e67f3a9b9688a3ab8322ca8939b1b631bd9d7da2bbf2872a"
+  },
+  "reviewerInputShow": {
+    "command": "git show --format=fuller a6a1ea5912 -- backend/src AGENTS.md CLAUDE.md",
+    "sha256": "9e7deef1eb85ba807a9167a8e8cdb2ab84e2f76c4f13edef2083ed9a99faff23"
+  },
+  "disposition": "REQUEST_CHANGES",
+  "reviewers": [
+    {
+      "reviewer": "A",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "ultra",
+      "driver": "collaboration.spawn_agent",
+      "agent": "/root/round3_a",
+      "method": "Independent read-only source review, separate model context.",
+      "verdict": "ACCEPT",
+      "original": {
+        "path": "reviewer-a.original.md",
+        "sha256": "018be96c3fe6b8b58ca0f38f87c37462cae08563e7fefb9e4d2923b003570076"
+      }
+    },
+    {
+      "reviewer": "B",
+      "model": "gpt-6.2-astra",
+      "reasoningEffort": "ultra",
+      "driver": "codex exec",
+      "sessionId": "01a2112d-1551-7922-9824-5510f5c6d398",
+      "method": "Independent read-only source review, separate ephemeral process.",
+      "verdict": "REQUEST_CHANGES",
+      "original": {
+        "path": "reviewer-b.original.md",
+        "sha256": "af2b557fd02251d97943fea83d6b9d8ec8056de7aa233c446624c157065797b5"
+      },
+      "execution": {
+        "path": "reviewer-b.run.actual.json",
+        "sha256": "e697a01005ae478165df0d0516b295609809d0ec856b28ca025b6290019f97d6"
+      }
+    }
+  ],
+  "questions": [
+    {
+      "question": 1,
+      "decision": "ACCEPT",
+      "originalCounterexamplesClosed": 3,
+      "answer": "The original ordinary handoff, exam activation and two-step transfer are closed. Retention requires the exact captured section set. Reordering and renaming work and dropping either previous root alone fails."
+    },
+    {
+      "question": 2,
+      "decision": "REQUEST_CHANGES",
+      "answer": "The changed ordinary handoff starts the t-v diagram directly while fresh regular continuation stores the E.1 parent opening and parks the diagram. In another valid two-section plan it starts a child opening while fresh continuation saves its parent. Both handoffs were inactive on the parent revision. The exam branch of post-mastery handoff still uses one exam frontier."
+    },
+    {
+      "question": 3,
+      "decision": "REQUEST_CHANGES",
+      "answer": "A directly eligible active exam goal survives. An active diagram that the writer accepts behind the required opening is dropped as the return target. After passing the opening the target is empty on the reviewed commit, the diagram on the parent and in direct-writer controls on both revisions."
+    }
+  ],
+  "nativeTests": {
+    "head": {
+      "casesByGroup": {
+        "authoredRegressions": 17,
+        "independentSingleOpening": 4,
+        "twoEligibleExamGoals": 8,
+        "exactStoredSectionSet": 1,
+        "twoSectionOpening": 16,
+        "protocolToDiagram": 4,
+        "examOpeningAndReturn": 4
+      },
+      "totalTestExecutions": 54,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "parent": {
+      "casesByGroup": {
+        "twoSectionOpening": 8,
+        "protocolToDiagram": 4,
+        "examOpeningAndReturn": 4
+      },
+      "totalTestExecutions": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "reviewReport": {
+    "path": "review.md",
+    "sha256": "779d65feb487ba1d92656c6d27f5267518fd982645daf4ed295b3c5b124cc58a"
+  },
+  "artifacts": [
+    {
+      "path": "checks/diagram-handoff-comparison.actual.json",
+      "sha256": "1de5b933f1ba913d99cd71c8ace559d7caadf635adcb83438b0b9108d503f52a"
+    },
+    {
+      "path": "checks/exam-opening-comparison.actual.json",
+      "sha256": "ed8c5a1ff833177515cb4bfc1d68e8c316f5693f9ccb06470219f222a4d76f6f"
+    },
+    {
+      "path": "checks/exam-opening.actual.json",
+      "sha256": "4b80177570bf9c52e11f7121c9d2f8326ce59f7ffd6423a2d388db612ab9fe18"
+    },
+    {
+      "path": "checks/regressions-and-opening-controls.actual.json",
+      "sha256": "0a9e4b2d6bc5bceef39dc9e8a1f8514428936098d1e0dd80286a4e0c4ff254ab"
+    },
+    {
+      "path": "checks/section-identity-and-exam-preservation.actual.json",
+      "sha256": "ce243615b6435a2a9ac682a66051bfe285107bbf0b8fe80b25d89f8dcb60e817"
+    },
+    {
+      "path": "checks/two-section-opening-comparison.actual.json",
+      "sha256": "e20674826830d068f31fe743a39bf7dfc3a4afe1fd5af1626ce7a8eeaf40a7ce"
+    },
+    {
+      "path": "checks/two-section-opening-parent.actual.json",
+      "sha256": "15a0bff94884e6b0bb5fb95c45128c943b4f1e9e0c86de83ce6acfd32108888b"
+    },
+    {
+      "path": "checks/two-section-opening-target.actual.json",
+      "sha256": "c9f98d9f2f93fab07861da2f282cffa07b470663bcb51f5e29a5c121f3d3f971"
+    },
+    {
+      "path": "probes/eligible-active-exam-goal.java.txt",
+      "sha256": "6f74afd7d4c8bf5f5c9a70860794010c319b899ac919339d1f8e05ad68a372aa"
+    },
+    {
+      "path": "probes/exact-section-set.java.txt",
+      "sha256": "bf56374c4b7c59964f1051320a3774397d9b4a2d1561c5d63cbebb27e063c391"
+    },
+    {
+      "path": "probes/exam-opening-return.java.txt",
+      "sha256": "1c6bb737ada17be731d2ca131175e405521ce40519e777941dce03987dc37db6"
+    },
+    {
+      "path": "probes/protocol-to-diagram.java.txt",
+      "sha256": "7dad8329b98ef19b29a51b1b2efd31859cc3ffd146c23c36032dd2939f64467d"
+    },
+    {
+      "path": "probes/single-section-opening.java.txt",
+      "sha256": "9e839cc4be0b72f31f4782be14f490327075b99d5268614e15f0ac1749ad9b5e"
+    },
+    {
+      "path": "probes/two-section-opening.java.txt",
+      "sha256": "1d0303d68ec25610c0c2742c6fa21c97e944df4b130fc662470249efb64d44be"
+    },
+    {
+      "path": "review.md",
+      "sha256": "779d65feb487ba1d92656c6d27f5267518fd982645daf4ed295b3c5b124cc58a"
+    },
+    {
+      "path": "reviewer-a.original.md",
+      "sha256": "018be96c3fe6b8b58ca0f38f87c37462cae08563e7fefb9e4d2923b003570076"
+    },
+    {
+      "path": "reviewer-b.original.md",
+      "sha256": "af2b557fd02251d97943fea83d6b9d8ec8056de7aa233c446624c157065797b5"
+    },
+    {
+      "path": "reviewer-b.run.actual.json",
+      "sha256": "e697a01005ae478165df0d0516b295609809d0ec856b28ca025b6290019f97d6"
+    }
+  ],
+  "rawEvidence": "Raw JUnit XML and logs stay outside the delivery. Each compact receipt binds its raw evidence with SHA-256. Probe fragments use the project integration-test fixtures. Observational H2 cases record actual state on both paths; process success alone is not a product pass.",
+  "writeScope": "Local review files and the ignored handover status. Existing checkout. No tracked changes, commit or push by the reviewers. Task B had already been delivered."
+}

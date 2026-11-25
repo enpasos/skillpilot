@@ -729,8 +729,12 @@ in automatic and explicit continuation and in the handoff after a passed goal,
 before any other goal of the subject. The handoff of an ordinary plan judges
 every goal under the focus it will run under, as plan continuation does; the
 frontier of all plan goals taken together can hide a due goal behind one that
-is scheduled later. A plan with an exam decides under the exam's scope, also
-when its activation keeps a goal in progress. A backup
+is scheduled later. It then stores what plan continuation would store for that
+goal and focus: a unit opening the stored focus requires comes first, and the
+goal is kept for the return. A plan with an exam decides under the exam's
+scope. Its activation keeps a goal in progress exactly if the write under that
+scope accepts it, directly or behind its required opening; otherwise the
+exam's next goal is chosen. A backup
 whose plan names a retired goal next to other goals is restored as the plan
 applies today, without that entry; before, such a backup could not be
 restored. Still outdated: a plan whose section no longer resolves in the

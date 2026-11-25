@@ -1567,11 +1567,14 @@ public class LearnerLearningPlanService {
                                     skillpilotId, plan.getLandscapeId(), block.focusGoalIds()));
                     String focusGoalId = ownFocus ? activeGoalId : runtimeFocusGoalId(block, activeGoalId);
                     // An exam binds the whole selected scope, and the activation writes under it. The
-                    // goal is kept only if it is eligible there; otherwise the exam's next goal is chosen.
-                    boolean remainsEligible = learners.getUncompactedRichFrontierForFocus(
+                    // goal is kept exactly if that write accepts it: directly, or behind a required unit
+                    // opening, which the write starts while it keeps the goal for the return. Otherwise
+                    // the exam's next goal is chosen.
+                    boolean remainsEligible = "exam".equals(scope.kind())
+                            ? learners.learningPlanTransitionAccepts(skillpilotId, activeGoalId, scope.goalIds())
+                            : learners.getUncompactedRichFrontierForFocus(
                                     skillpilotId,
-                                    "exam".equals(scope.kind()) ? scope.goalIds()
-                                            : ownFocus ? List.of(activeGoalId) : block.focusGoalIds())
+                                    ownFocus ? List.of(activeGoalId) : block.focusGoalIds())
                             .stream()
                             .filter(goal -> "atomic".equals(goal.type()))
                             .anyMatch(goal -> activeGoalId.equals(goal.id()));

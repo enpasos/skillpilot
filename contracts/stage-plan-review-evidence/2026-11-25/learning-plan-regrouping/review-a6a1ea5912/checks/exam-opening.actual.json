@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "question": 3,
+  "case": "Active Physics t-v diagram under its child before exam-plan activation; compare preserving the active goal and scheduled parent opening with a direct call to the actual transition writer. The parent opening is due today; the diagram is scheduled next week. Each test starts with independent Spring/H2 state.",
+  "probe": {
+    "path": "probe.java",
+    "sha256": "1c6bb737ada17be731d2ca131175e405521ce40519e777941dce03987dc37db6"
+  },
+  "runs": {
+    "head": {
+      "commit": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+      "tree": "4c82e8c3fbbf69dc72e620ddab3048a134aaba35",
+      "startedAt": "2026-11-25T06:36:20.647830+01:00",
+      "completedAt": "2026-11-25T06:37:18.382224+01:00",
+      "gradleExitCode": 0,
+      "xml": {
+        "path": "head/raw/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ExamOpeningReviewTest.xml",
+        "sha256": "ade3ffc83e904aeb30fedb9c114f2ec8163427f9da9a3967f0fe329acb4af28d"
+      },
+      "log": {
+        "path": "head/raw/test.log",
+        "sha256": "688014bfb2be64372c05654048c884b25c9ad701d3ab50eb5973f9f81e2d947b"
+      },
+      "driver": {
+        "path": "head/safe.sh",
+        "sha256": "a7d79be2fc90576fe60f0378d06aa59a626bc5c986c39ae552337c8e7e0f6304"
+      },
+      "runnerCommand": "unshare -Ur --mount bash /tmp/e1-regroup-r3-exam-opening/head/safe.sh",
+      "sourceHashes": {
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java": "96297a70c84fdf7e166eafc3a7b7314e44488260d1380f06b88b3541e37afcaa",
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "bc57e7a48507d930abc490e691e9868fc369d0ee1a1fde63582a6b1fe6b07aa0",
+        "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java": "066efc2f51dc0a8ccf6e03ce338015819b950532f89be4c3c446d225f201bb46"
+      },
+      "classes": [
+        {
+          "tests": 4,
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0
+        }
+      ],
+      "observations": [
+        {
+          "pilot": false,
+          "directWriter": false,
+          "childFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "previousFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "previousPending": null,
+          "parentScoreBefore": null,
+          "childScoreBefore": 1.0,
+          "fallLogScoreBefore": 1.0,
+          "creditForParentOrDiagram": [],
+          "examFrontierBefore": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activationResult": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "pendingAfterActivation": null,
+          "focusAfterActivation": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "afterPassingParent": null,
+          "pendingAfterPassingParent": null
+        },
+        {
+          "pilot": false,
+          "directWriter": true,
+          "childFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "previousFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "previousPending": null,
+          "parentScoreBefore": null,
+          "childScoreBefore": 1.0,
+          "fallLogScoreBefore": 1.0,
+          "creditForParentOrDiagram": [],
+          "examFrontierBefore": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"7ce8f766a867ff73865c5633075bad52e93462499119ea434299902ec7bdd0c4\",\"focusIds\":[\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}",
+          "focusAfterActivation": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "pendingAfterPassingParent": null
+        },
+        {
+          "pilot": true,
+          "directWriter": false,
+          "childFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "previousFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "previousPending": null,
+          "parentScoreBefore": null,
+          "childScoreBefore": 1.0,
+          "fallLogScoreBefore": 1.0,
+          "creditForParentOrDiagram": [],
+          "examFrontierBefore": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activationResult": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "pendingAfterActivation": null,
+          "focusAfterActivation": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "afterPassingParent": null,
+          "pendingAfterPassingParent": null
+        },
+        {
+          "pilot": true,
+          "directWriter": true,
+          "childFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "previousFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "previousPending": null,
+          "parentScoreBefore": null,
+          "childScoreBefore": 1.0,
+          "fallLogScoreBefore": 1.0,
+          "creditForParentOrDiagram": [],
+          "examFrontierBefore": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"7ce8f766a867ff73865c5633075bad52e93462499119ea434299902ec7bdd0c4\",\"focusIds\":[\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}",
+          "focusAfterActivation": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "pendingAfterPassingParent": null
+        }
+      ]
+    },
+    "parent": {
+      "commit": "4e085e990ba4a05053904ee5cb34f5dd82418358",
+      "tree": "412bc705dfb5b9c5776069d8f82226c1a60db935",
+      "startedAt": "2026-11-25T06:36:20.648143+01:00",
+      "completedAt": "2026-11-25T06:37:18.010957+01:00",
+      "gradleExitCode": 0,
+      "xml": {
+        "path": "parent/raw/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ExamOpeningReviewTest.xml",
+        "sha256": "769053170ccbfd17eabd5da83ca6f7839d47e908cbca05b6139afb524fe833b5"
+      },
+      "log": {
+        "path": "parent/raw/test.log",
+        "sha256": "79296e5ad4d18148e7c5296f0059f1ff2865f7a3a163813ba3dd2e54a83bc571"
+      },
+      "driver": {
+        "path": "parent/safe.sh",
+        "sha256": "9d6c6062f7186ee755c82e6b9735d8a75cf9a9df36ea0be54a745527af68abdb"
+      },
+      "runnerCommand": "unshare -Ur --mount bash /tmp/e1-regroup-r3-exam-opening/parent/safe.sh",
+      "sourceHashes": {
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java": "82e408425ef0735f9e572df83936cf2a10544b625549863c1bdf7efcf8daa638",
+        "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": "c473051fa4b7fc47906790c05db0eca47d9dcd77391c66a53f323d360b82bd3f",
+        "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java": "9a8e8840746fe68f81772364be9a92c0944a60a29ec240a22241817325fb7e51"
+      },
+      "classes": [
+        {
+          "tests": 4,
+          "errors": 0,
+          "failures": 0,
+          "skipped": 0
+        }
+      ],
+      "observations": [
+        {
+          "pilot": false,
+          "directWriter": false,
+          "childFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "previousFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "previousPending": null,
+          "parentScoreBefore": null,
+          "childScoreBefore": 1.0,
+          "fallLogScoreBefore": 1.0,
+          "creditForParentOrDiagram": [],
+          "examFrontierBefore": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activationResult": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"0df94dea068aae3a1fd59bcc9f3299bbe58c2c12145dd3c0cd2d3f2d96c5494e\",\"focusIds\":[\"1e459a1b-4159-5049-84eb-9928129c1610\",\"a4d4efe1-7d30-526b-ac9c-806113da4363\"],\"completionWorkflow\":null}",
+          "focusAfterActivation": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "pendingAfterPassingParent": null
+        },
+        {
+          "pilot": false,
+          "directWriter": true,
+          "childFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "previousFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "previousPending": null,
+          "parentScoreBefore": null,
+          "childScoreBefore": 1.0,
+          "fallLogScoreBefore": 1.0,
+          "creditForParentOrDiagram": [],
+          "examFrontierBefore": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"0df94dea068aae3a1fd59bcc9f3299bbe58c2c12145dd3c0cd2d3f2d96c5494e\",\"focusIds\":[\"1e459a1b-4159-5049-84eb-9928129c1610\",\"a4d4efe1-7d30-526b-ac9c-806113da4363\"],\"completionWorkflow\":null}",
+          "focusAfterActivation": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "pendingAfterPassingParent": null
+        },
+        {
+          "pilot": true,
+          "directWriter": false,
+          "childFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "previousFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "previousPending": null,
+          "parentScoreBefore": null,
+          "childScoreBefore": 1.0,
+          "fallLogScoreBefore": 1.0,
+          "creditForParentOrDiagram": [],
+          "examFrontierBefore": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activationResult": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"0df94dea068aae3a1fd59bcc9f3299bbe58c2c12145dd3c0cd2d3f2d96c5494e\",\"focusIds\":[\"1e459a1b-4159-5049-84eb-9928129c1610\",\"a4d4efe1-7d30-526b-ac9c-806113da4363\"],\"completionWorkflow\":null}",
+          "focusAfterActivation": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "pendingAfterPassingParent": null
+        },
+        {
+          "pilot": true,
+          "directWriter": true,
+          "childFrontier": [
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "previousFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+          ],
+          "previousPending": null,
+          "parentScoreBefore": null,
+          "childScoreBefore": 1.0,
+          "fallLogScoreBefore": 1.0,
+          "creditForParentOrDiagram": [],
+          "examFrontierBefore": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363"
+          ],
+          "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+          "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"0df94dea068aae3a1fd59bcc9f3299bbe58c2c12145dd3c0cd2d3f2d96c5494e\",\"focusIds\":[\"1e459a1b-4159-5049-84eb-9928129c1610\",\"a4d4efe1-7d30-526b-ac9c-806113da4363\"],\"completionWorkflow\":null}",
+          "focusAfterActivation": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "1e459a1b-4159-5049-84eb-9928129c1610"
+          ],
+          "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+          "pendingAfterPassingParent": null
+        }
+      ]
+    }
+  }
+}

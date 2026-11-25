@@ -2129,6 +2129,134 @@ class ClaudeV1CompletionRouteIntegrationTest {
         }
     }
 
+    // The handoff after a passed goal and plan continuation must store the same navigation. Here
+    // the next goal sits in a block with two foci, the child unit and the goal itself. Under both
+    // together the goal is offered directly; the stored focus is the goal alone, and under it the
+    // parent unit's opening comes first. Plan continuation starts that opening and keeps the goal
+    // for the return, and so must the handoff (independent review, third round, 25 November 2026).
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void handoffStoresTheSameOpeningAndReturnGoalAsPlanContinuation(boolean pilot) throws Exception {
+        Object pilotBefore = org.springframework.test.util.ReflectionTestUtils.getField(learners, "unitAssessmentPilotEnabled");
+        org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+        try {
+            String section = selectHessianMotionUnit("G9", "SekII", "GK");
+            String child = section.replace(":structure:physics-e1-motion", ":structure:physics-e1-accelerated-and-free-fall");
+            String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+            String fallLog = "e0004439-ed34-5caf-858a-6107918224eb";
+            String diagram = "1e459a1b-4159-5049-84eb-9928129c1610";
+            var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+            var monday = today.with(java.time.DayOfWeek.MONDAY);
+            learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "Messplan", List.of(
+                    new LearnerLearningPlanApi.Block("first", "learning", child, "Messprotokoll", monday, monday,
+                            null, List.of(fallLog), List.of(child), true),
+                    new LearnerLearningPlanApi.Block("second", "learning", child, "t-v-Diagramm", monday, monday,
+                            null, List.of(diagram), List.of(child, diagram), true))), today);
+            var learner = learnerRepository.findById(learnerId).orElseThrow();
+            var prerequisites = new CompletionProfileCompiler().normalizePrerequisites(
+                    learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+            var finished = new java.util.LinkedHashSet<String>(prerequisites.transitivePrerequisites(fallLog));
+            finished.addAll(prerequisites.transitivePrerequisites(diagram));
+            finished.removeAll(List.of(fallLog, diagram, MOTION_OPENING));
+            finished.add(FALL_OPENING);
+            masteryRepository.saveAllAndFlush(finished.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+            learners.setPreferences(learnerId, null, false, true, null, true);
+            learners.setPlannedGoals(learnerId, java.util.Set.of(child));
+            learners.setActiveGoal(learnerId, fallLog);
+            // The selection sees the goal directly, the stored focus asks for the parent opening.
+            assertThat(learners.getUncompactedRichFrontierForFocus(learnerId, List.of(child, diagram)))
+                    .anyMatch(goal -> diagram.equals(goal.id()));
+            assertThat(learners.getRequiredUnitOrientationGoalIdForFocus(learnerId, diagram, List.of(diagram)))
+                    .isEqualTo(MOTION_OPENING);
+
+            learners.setMastery(learnerId, new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of(fallLog, 1.0), fallLog));
+            record Navigation(String active, List<String> focus, String returnGoal, String opening) { }
+            java.util.function.Supplier<Navigation> stored = () -> {
+                try {
+                    var state = learnerRepository.findById(learnerId).orElseThrow();
+                    var pending = state.getPendingUnitEntry() == null ? null : mapper.readTree(state.getPendingUnitEntry());
+                    return new Navigation(state.getActiveGoalId(),
+                            focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).sorted().toList(),
+                            pending == null ? null : pending.path("targetGoalId").asText(null),
+                            pending == null ? null : pending.path("openingGoalId").asText(null));
+                } catch (Exception error) { throw new IllegalStateException(error); }
+            };
+            Navigation handedOver = stored.get();
+            assertThat(handedOver).isEqualTo(new Navigation(MOTION_OPENING, List.of(diagram), diagram, MOTION_OPENING));
+
+            // The same starting point through plan continuation: undo only the navigation.
+            var reset = learnerRepository.findById(learnerId).orElseThrow();
+            reset.setActiveGoalId(null);
+            reset.setPendingUnitEntry(null);
+            learnerRepository.saveAndFlush(reset);
+            learners.setPlannedGoals(learnerId, java.util.Set.of(child));
+            learningPlans.reconcile(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today));
+            assertThat(stored.get()).isEqualTo(handedOver);
+
+            // After the opening the learner returns to the kept goal.
+            learners.setMastery(learnerId, new com.skillpilot.backend.api.MasteryUpdateRequest(
+                    Map.of(MOTION_OPENING, 1.0), MOTION_OPENING));
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(diagram);
+        } finally {
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilotBefore);
+        }
+    }
+
+    // Activating a plan with an exam keeps a goal in progress exactly if the write under the exam's
+    // scope accepts it. Here the scope first asks for the unit opening: the activation starts the
+    // opening and keeps the goal in progress for the return, as before the exam scope decided
+    // (independent review, third round). A goal the scope does not accept at all is replaced by the
+    // exam's next goal; LearnerServiceTest covers that case.
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void activatingAnExamPlanKeepsAGoalInProgressBehindItsRequiredOpening(boolean pilot) throws Exception {
+        Object pilotBefore = org.springframework.test.util.ReflectionTestUtils.getField(learners, "unitAssessmentPilotEnabled");
+        org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+        try {
+            String section = selectHessianMotionUnit("G9", "SekII", "GK");
+            String child = section.replace(":structure:physics-e1-motion", ":structure:physics-e1-accelerated-and-free-fall");
+            String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+            String fallLog = "e0004439-ed34-5caf-858a-6107918224eb";
+            String diagram = "1e459a1b-4159-5049-84eb-9928129c1610";
+            var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+            var learner = learnerRepository.findById(learnerId).orElseThrow();
+            var finished = new java.util.LinkedHashSet<String>(new CompletionProfileCompiler().normalizePrerequisites(
+                    learners.getLearningPlanCompletionContext(learnerId).canonicalGoals()).transitivePrerequisites(diagram));
+            finished.addAll(List.of(fallLog, FALL_OPENING));
+            finished.removeAll(List.of(diagram, MOTION_OPENING));
+            masteryRepository.saveAllAndFlush(finished.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+            learners.setPreferences(learnerId, null, false, true, null, false);
+            learners.setPlannedGoals(learnerId, java.util.Set.of(child));
+            learners.setActiveGoal(learnerId, diagram);
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(diagram);
+            List<String> examScope = List.of(MOTION_OPENING, diagram);
+            assertThat(learners.getUncompactedRichFrontierForFocus(learnerId, examScope))
+                    .noneMatch(goal -> diagram.equals(goal.id()));
+            assertThat(learners.getRequiredUnitOrientationGoalIdForFocus(learnerId, diagram, examScope))
+                    .isEqualTo(MOTION_OPENING);
+
+            var activated = learningPlans.activatePlans(learnerId, new LearnerLearningPlanApi.ActivateRequest(today, List.of(
+                    new LearnerLearningPlanApi.ActivationPlan(physics, 0L, "Klausur", List.of(
+                            new LearnerLearningPlanApi.Block("opening", "learning", section, "Einstieg", today, today,
+                                    null, List.of(MOTION_OPENING), List.of(section), true),
+                            new LearnerLearningPlanApi.Block("later", "learning", child, "Diagramm", today.plusDays(7),
+                                    today.plusDays(7), null, List.of(diagram), List.of(child), true),
+                            new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur", null, null,
+                                    today.plusDays(8), null, examScope, true))))));
+
+            assertThat(activated.plans()).isNotEmpty();
+            var afterActivation = learnerRepository.findById(learnerId).orElseThrow();
+            assertThat(afterActivation.getActiveGoalId()).isEqualTo(MOTION_OPENING);
+            assertThat(mapper.readTree(afterActivation.getPendingUnitEntry()).path("targetGoalId").asText())
+                    .isEqualTo(diagram);
+            learners.setMastery(learnerId, new com.skillpilot.backend.api.MasteryUpdateRequest(
+                    Map.of(MOTION_OPENING, 1.0), MOTION_OPENING));
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(diagram);
+        } finally {
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilotBefore);
+        }
+    }
+
     @Test void changingDurationInTheSharedSekIIViewNeedsANewAssignmentChoice() throws Exception {
         String section = selectHessianMotionUnit("G8", "SekII");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";

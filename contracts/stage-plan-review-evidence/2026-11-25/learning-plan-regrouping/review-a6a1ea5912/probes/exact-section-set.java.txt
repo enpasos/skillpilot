@@ -1,0 +1,30 @@
+    @Test void exactHistoricalRootSetSurvivesPermutationOnly() throws Exception {
+        LocalDate day=LocalDate.parse("2026-09-02");
+        prepareRepresentationLearningPlan();
+        String subject=CANONICAL_MATH_LANDSCAPE_ID, atom=CANONICAL_CHOOSE_REPRESENTATION_ID;
+        var roots=java.util.stream.Stream.of(COMPOSITION_J10_SCOPE_ID,COMPOSITION_J9_SCOPE_ID,COMPOSITION_J8_SCOPE_ID)
+            .filter(id->{var ids=learnerService.getLearningPlanFocusAtomicGoalIds(learnerId,subject,List.of(id));
+                return ids!=null&&!ids.isEmpty()&&!ids.contains(atom);}).limit(2).toList();
+        assertThat(roots).hasSize(2);
+        java.util.function.BiFunction<String,List<String>,List<LearnerLearningPlanApi.Block>> block=(id,terms)->List.of(
+            new LearnerLearningPlanApi.Block(id,"learning",terms.getFirst(),"Zwei frühere Abschnitte",day,day,null,List.of(atom),terms,true));
+        var record=learnerLearningPlanRepository.findByLearner_SkillpilotIdAndLandscapeId(learnerId,subject).orElseThrow();
+        record.setBlocksJson(objectMapper.writeValueAsString(block.apply("old",roots)));
+        learnerLearningPlanRepository.saveAndFlush(record);
+        var view=learnerLearningPlanService.getPlan(learnerId,subject,day);
+        assertThat(view.stale()).isFalse();
+        var rev=learnerLearningPlanService.upsert(learnerId,subject,new LearnerLearningPlanApi.UpsertRequest(view.revision(),
+            "Umbenannt",block.apply("renamed",List.of(roots.get(1),roots.get(0)))),day).revision();
+        for(String only:roots){
+            assertThatThrownBy(()->learnerLearningPlanService.upsert(learnerId,subject,new LearnerLearningPlanApi.UpsertRequest(
+                rev,"Nur ein Abschnitt",block.apply("single",List.of(only))),day)).hasMessageContaining("not a subject-local ancestor");
+            assertThat(learnerLearningPlanService.getPlan(learnerId,subject,day).revision()).isEqualTo(rev);
+        }
+        var valid=learnerLearningPlanService.upsert(learnerId,subject,new LearnerLearningPlanApi.UpsertRequest(rev,
+            "Heutiger Abschnitt",block.apply("new",List.of(CANONICAL_REPRESENTATION_CLUSTER_ID))),day);
+        assertThat(valid.stale()).isFalse();
+        assertThat(valid.blocks().getFirst().atomicGoalIds()).containsExactly(atom);
+        System.out.println("REGROUP_SET "+objectMapper.writeValueAsString(Map.of("originalRoots",roots,"permutedRevision",rev,
+            "bothSingleRootsRejected",true,"currentSection",CANONICAL_REPRESENTATION_CLUSTER_ID,
+            "newCurrentSectionAccepted",valid.revision(),"atom",atom)));
+    }
