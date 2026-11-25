@@ -1,0 +1,6 @@
+allprojects {
+    afterEvaluate {
+        sourceSets.test.java.srcDir(System.getenv('B_REVIEW_SOURCES'))
+        tasks.named('test') { include '**/ProgressReviewProbe.class' }
+    }
+}

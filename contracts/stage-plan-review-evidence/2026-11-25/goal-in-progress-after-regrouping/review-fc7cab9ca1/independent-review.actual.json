@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-25T10:14:37+01:00",
+  "branch": "fix/laufendes-ziel-nach-umgruppierung",
+  "reviewedCommit": "fc7cab9ca11e795a982081af293eff3e357f5551",
+  "reviewedTree": "b4c5e227414b858021e27c00b65b507e70bb173c",
+  "previousReviewedCommit": "1431a79dbea806dfed00a268b0b2bec4e58f7faa",
+  "baseCommit": "53fd44c88b4da1380297112d3e2f67b1bab65980",
+  "reviewDiffPaths": [
+    "backend/src/main",
+    "AGENTS.md"
+  ],
+  "correctionDiffSha256": "b8b55875c05ef5d403a652e21be8cc45013f349ad114f17dbf8dee3457348d64",
+  "wholeFixDiffSha256": "881fb23bca90102b775ad64c312e1356efa81245f08ef16bb85dd3f20c8870bb",
+  "priorEvidence": {
+    "path": "../independent-review.actual.json",
+    "sha256": "328c49d0315d86786371f3b0bb1811258a61271662dc908a6b318faf5b178d34",
+    "verifiedArtifacts": 59
+  },
+  "disposition": "confirm-ordinary-goals-in-progress",
+  "requiredCorrections": [],
+  "findings": {
+    "coachAndMastery": [
+      "4a2bf015",
+      "68c90ba6"
+    ],
+    "freshOutsideStartDenied": true,
+    "backupsAndRestoresContainChosenSectionOnly": [
+      "direct-assessment",
+      "moved-ordinary-goal"
+    ],
+    "globalPointerWithoutOfferOrBindingCleared": true,
+    "chosenFocusResolverIdenticalToBase": true,
+    "runtimeReaders": [
+      "getFrontier",
+      "getRichFrontier",
+      "requiredUnitOrientationGoalId",
+      "getCoachActiveGoalContext"
+    ],
+    "candidateNavigationOptions": 4,
+    "candidateCompletionOptions": 6,
+    "assessmentOrderMatchesBaselineInEachScenario": true,
+    "assessmentCount": 95,
+    "observations": "comparison.actual.json",
+    "explicitRepeatClearsAndKeepsMastery": true,
+    "cockpitReselectReturnsBeforePut": true
+  },
+  "acceptedBoundaries": [
+    "A normally started local exam moved outside scope without an applicable exam exception may lose its cursor. Confirmed from source.",
+    "An explicit same-focus write clears the out-of-scope goal. The ordinary re-click with a single chosen focus returns before the PUT.",
+    "A memory deck and the scope of a followed plan are excluded from ordinary-goal retention."
+  ],
+  "nonblockingEditorialNotes": [
+    "AGENTS.md:755 qualify new goal as ordinary.",
+    "AGENTS.md:754 explicitly include reasserting the same focus."
+  ],
+  "reviewers": [
+    {
+      "id": "A",
+      "agent": "/root/running_goal_review_a",
+      "modelSelection": "gpt-6.1-sol ultra",
+      "driver": "collaboration.followup_task",
+      "context": "returning independent reviewer; only the two path-limited Git diffs in this round; no new test evidence or other review before submitting",
+      "answer": {
+        "path": "reviewer-a.md",
+        "bytes": 6957,
+        "sha256": "b87e52e97f786c97d3d4c27f41524c32ad2a2f6186311ac91d06ab1bce88784b"
+      }
+    },
+    {
+      "id": "B",
+      "agent": "/root/running_goal_review_b",
+      "modelSelection": "inherited session model",
+      "driver": "collaboration.followup_task",
+      "context": "returning independent reviewer; only the two path-limited Git diffs in this round; no new test evidence or other review before submitting",
+      "answer": {
+        "path": "reviewer-b.md",
+        "bytes": 4269,
+        "sha256": "bfb2ed4eb1d79b331a0c68aef650596aae99803d1955f0fa0a68933d37d80622"
+      }
+    }
+  ],
+  "nativeTests": {
+    "tests": 18,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "unitAssessmentPilot": [
+      false,
+      true
+    ],
+    "testSuites": [
+      {
+        "suite": "com.skillpilot.backend.connectors.claude.v1.mcp.ExplicitFocusWriteProbe",
+        "junitXml": "raw/explicit-write/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ExplicitFocusWriteProbe.xml",
+        "tests": 2,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.skillpilot.backend.connectors.claude.v1.mcp.FocusSurfacesProbe",
+        "junitXml": "raw/functional/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.FocusSurfacesProbe.xml",
+        "tests": 2,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe",
+        "junitXml": "raw/functional/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+        "tests": 8,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe",
+        "junitXml": "raw/native-a/fresh48-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+        "tests": 6,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      }
+    ],
+    "additionalBeforeCompilationAttemptExcluded": "raw/explicit-write/setup-attempt",
+    "completeBackendSuiteRunByThisReview": false
+  },
+  "timing": {
+    "cells": 16,
+    "warmupReads": 256,
+    "measuredReads": 768,
+    "currentPairedBaseline": false,
+    "source": "raw/native-a/fresh48-summary.json"
+  },
+  "reviewReport": "review.md",
+  "writeScope": "ignored local review directory and handover status; existing native checkout restored to starting branch; no product change, commit or push",
+  "artifacts": [
+    {
+      "path": "callers.actual.json",
+      "bytes": 7926,
+      "sha256": "9cb40dacea62ea8d31026c2ba204092071af5c1f594dd3b9766599ee1fa8d587"
+    },
+    {
+      "path": "comparison.actual.json",
+      "bytes": 26396,
+      "sha256": "7970722848ddaf5992412ec4df88391e2d00818e298f51fc189b1c1437786c20"
+    },
+    {
+      "path": "probes/callers.py",
+      "bytes": 2134,
+      "sha256": "59a1a3b37b7ac18ea7ac0470b8f3a2e72602326c833d04d587b4ca9123d34836"
+    },
+    {
+      "path": "probes/compare.py",
+      "bytes": 7295,
+      "sha256": "0072213e058469e2149941636612effcf24c86621103d451e8716ef5f0d3f91d"
+    },
+    {
+      "path": "probes/explicit-write/probe.gradle",
+      "bytes": 189,
+      "sha256": "cb1f15e224c827e1212520bab56533672138eebc750226802e84914a77c77ce9"
+    },
+    {
+      "path": "probes/explicit-write/probe.method.java",
+      "bytes": 5426,
+      "sha256": "a6c480b22e3a0f45044588f507735a514e38cce92b3312109fc9e29c32f17a86"
+    },
+    {
+      "path": "probes/explicit-write/run.sh",
+      "bytes": 2703,
+      "sha256": "fea8234018e38662344c0b4a0e1213a6532871dbb792cd44b6340696ca3a727f"
+    },
+    {
+      "path": "probes/explicit-write/summarize.py",
+      "bytes": 2990,
+      "sha256": "275fa92234faa7dc73821a70157c50b0e430e253e6e5a07ed186acfd1bae6308"
+    },
+    {
+      "path": "probes/functional.gradle",
+      "bytes": 216,
+      "sha256": "4d00e030197820abfb18954113978d3107d3c1b958c92d1516c167aafb1fffc7"
+    },
+    {
+      "path": "probes/native-a/run.sh",
+      "bytes": 3554,
+      "sha256": "a36ceff389cd382feb26325ac082a21d4f304d6617ff2dd0cc9d5923ce6781ca"
+    },
+    {
+      "path": "probes/native-a/summarize.py",
+      "bytes": 5770,
+      "sha256": "91bc8f463d1e02dada338388e5d2dfe29f975c7b152585c92a91fcbae9c47b86"
+    },
+    {
+      "path": "probes/run-functional.sh",
+      "bytes": 2818,
+      "sha256": "590be695bbd158b0805c8400d7d6f54638182d2ad38c98486c4e8c2fa08e7c5a"
+    },
+    {
+      "path": "probes/ui-replay.mts",
+      "bytes": 1021,
+      "sha256": "d0f8c0e993c67c21296971907ee0ce000bc4452114524ec1230db21c9f93dd57"
+    },
+    {
+      "path": "raw/explicit-write/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ExplicitFocusWriteProbe.xml",
+      "bytes": 723589,
+      "sha256": "ff173ef571033dc219e11ce3f4c16569d65acd7ef2061290f613f828a2981070"
+    },
+    {
+      "path": "raw/explicit-write/actual.json",
+      "bytes": 5189,
+      "sha256": "a649051051aa900a0bb5799b8c4038ba8724b98736f13e49b9838bff2a297ad8"
+    },
+    {
+      "path": "raw/explicit-write/environment.txt",
+      "bytes": 379,
+      "sha256": "d7933727d1f283cbf450b6317ec3414ada25a6f46a18da04ba837b970bd7371d"
+    },
+    {
+      "path": "raw/explicit-write/exit-code.txt",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "path": "raw/explicit-write/fc7cab9ca11e795a982081af293eff3e357f5551.log",
+      "bytes": 12104,
+      "sha256": "a47361118fd7bf6eeb81e9853c67a3fce316e9414ceb8e7304a46f9b91851bd6"
+    },
+    {
+      "path": "raw/explicit-write/setup-attempt/aborted-before-compile.log",
+      "bytes": 807,
+      "sha256": "363916c57779ba834b3a53a6c41a0a851b91ad150e2c983a0d550e78cd2426d9"
+    },
+    {
+      "path": "raw/explicit-write/setup-attempt/environment.txt",
+      "bytes": 379,
+      "sha256": "c023012c358ddad73df6a1778341ed5be900b5d73fa1f9a6f54cb75c1a4432fd"
+    },
+    {
+      "path": "raw/functional/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.FocusSurfacesProbe.xml",
+      "bytes": 1345681,
+      "sha256": "f55985b7d5775601ceacf6b06b7b792ee1da9399e6c911d14ad7bd5128b06c94"
+    },
+    {
+      "path": "raw/functional/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+      "bytes": 2331382,
+      "sha256": "a8e5cd5cc332ac71b18e20473e53587bdc23e76cf5df36b3098f798c060db19f"
+    },
+    {
+      "path": "raw/functional/fc7cab9ca11e795a982081af293eff3e357f5551.log",
+      "bytes": 20401,
+      "sha256": "b0c8db4ef7812af4fe88b8c5c0d109fd5389ce28a249f0a9a8906daa85c5b184"
+    },
+    {
+      "path": "raw/native-a/fresh48-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+      "bytes": 22975878,
+      "sha256": "0430398d223cd450ed3b3c722a114956d5ce3ceb867f8aa9f9b740c96d23f756"
+    },
+    {
+      "path": "raw/native-a/fresh48-environment.txt",
+      "bytes": 1313,
+      "sha256": "b7e765b949ec422a5dc4d647e14c1c7255018e9da7dfddc2d55f7954059a80ad"
+    },
+    {
+      "path": "raw/native-a/fresh48-summary.json",
+      "bytes": 16770,
+      "sha256": "aca4c882b0664bea7b686b4aadd5d244f5314409d835e86c4570ed383de2cab6"
+    },
+    {
+      "path": "raw/native-a/fresh48.log",
+      "bytes": 12758,
+      "sha256": "4e468394a711a9f7e28ce31ffd17f36d9aec2c49236802e1cc9bd38c07fb89b3"
+    },
+    {
+      "path": "review.md",
+      "bytes": 9638,
+      "sha256": "2e813155ed0d0c3cad1bcc7eeed46f55c0c5b5eee75f864b33f2c3d0e19ef40b"
+    },
+    {
+      "path": "reviewer-a.md",
+      "bytes": 6957,
+      "sha256": "b87e52e97f786c97d3d4c27f41524c32ad2a2f6186311ac91d06ab1bce88784b"
+    },
+    {
+      "path": "reviewer-b.md",
+      "bytes": 4269,
+      "sha256": "bfb2ed4eb1d79b331a0c68aef650596aae99803d1955f0fa0a68933d37d80622"
+    },
+    {
+      "path": "runtime.actual.json",
+      "bytes": 17834,
+      "sha256": "68bd05f69a2f65663ddd618ecb1d010391bd36f869e5826d68b6c82b00e3b8d5"
+    },
+    {
+      "path": "surfaces.actual.json",
+      "bytes": 27697,
+      "sha256": "c59663c3569dc708a12bd53d1b89355aae495040a52b55d38ff0286cf8fd2d2f"
+    },
+    {
+      "path": "ui-fixtures.actual.json",
+      "bytes": 666,
+      "sha256": "d8c55b27da633604850c5f6fcbf63ad184e2226e5415002e902d61afa3b1ce18"
+    },
+    {
+      "path": "ui-replay.actual.json",
+      "bytes": 887,
+      "sha256": "61cfe341ffc286a00c7796d920a209db17ee257596992d1e9c0a37a171e2ee2a"
+    }
+  ]
+}

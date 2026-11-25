@@ -1967,6 +1967,96 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 .hasMessageContaining("not a subject-local ancestor");
     }
 
+    // A regrouping can move the goal a learner is working on out of the section they focus. The
+    // learner keeps their place: the goal stays in progress for teaching and completion. What the
+    // learner chose stays what they chose: the focus shown in the Cockpit, the stored focus, the
+    // backup and the navigation options do not gain the goal. Found by the independent review of
+    // the E.2 cut (25 November 2026); the E.1 cut of 23 November had moved road traffic out of
+    // E.1 in the same way.
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void goalInProgressSurvivesARegroupingOutOfTheFocusedSection(boolean pilot) throws Exception {
+        Object pilotBefore = org.springframework.test.util.ReflectionTestUtils.getField(learners, "unitAssessmentPilotEnabled");
+        org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+        try {
+            String section = selectHessianMotionUnit("G9", "SekII", "GK");
+            String child = section.replace(":structure:physics-e1-motion", ":structure:physics-e1-accelerated-and-free-fall");
+            String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+            String moved = "4a2bf015-052b-4af0-aed7-324259fa1a8a";
+            assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section))).doesNotContain(moved);
+            var learner = learnerRepository.findById(learnerId).orElseThrow();
+            var finished = new CompletionProfileCompiler().normalizePrerequisites(
+                    learners.getLearningPlanCompletionContext(learnerId).canonicalGoals()).transitivePrerequisites(moved);
+            masteryRepository.saveAllAndFlush(finished.stream().filter(id -> !id.equals(moved))
+                    .map(id -> new Mastery(learner, id, 1.0)).toList());
+            java.util.function.Supplier<List<String>> storedFocus = () ->
+                    focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).toList();
+            assertThat(storedFocus.get()).containsExactly(section);
+            // A new start outside the focus is refused, as before.
+            assertThatThrownBy(() -> learners.setActiveGoal(learnerId, moved))
+                    .isInstanceOf(org.springframework.web.server.ResponseStatusException.class);
+            var optionsWithoutGoal = learners.getScopeNavigationOptions(learnerId).stream().map(goal -> goal.id()).toList();
+
+            // The state a learner had before the cut: the goal in progress under the focus on E.1.
+            Runnable inProgressBeforeTheCut = () -> {
+                var stored = learnerRepository.findById(learnerId).orElseThrow();
+                stored.setActiveGoalId(moved);
+                stored.setLearningState(LearningState.TEACHING);
+                learnerRepository.saveAndFlush(stored);
+            };
+            inProgressBeforeTheCut.run();
+
+            // The coach read writes nothing and teaches the goal in progress.
+            var coach = learners.getCoachLearnerState(learnerId);
+            assertThat(coach.learningState()).isEqualTo("TEACHING");
+            assertThat(coach.activeGoal()).isNotNull();
+            assertThat(coach.activeGoal().id()).isEqualTo(moved);
+            // The regular state read keeps the pointer and the chosen focus.
+            var state = learners.getLearnerState(learnerId);
+            assertThat(state.learningState()).isEqualTo("TEACHING");
+            assertThat(state.activeGoal().id()).isEqualTo(moved);
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(moved);
+            assertThat(storedFocus.get()).containsExactly(section);
+            // The chosen focus is shown, queried, offered and exported as chosen.
+            assertThat(state.goals().planned()).extracting(goal -> goal.id()).containsExactly(section);
+            assertThat(learners.getPlannedGoals(learnerId)).containsExactly(section);
+            assertThat(learners.getScopeNavigationOptions(learnerId)).extracting(goal -> goal.id())
+                    .containsExactlyElementsOf(optionsWithoutGoal);
+            learners.importLearner(learnerId, learners.exportLearner(learnerId));
+            assertThat(storedFocus.get()).containsExactly(section);
+            inProgressBeforeTheCut.run();
+            assertThat(learners.getLearnerState(learnerId).activeGoal().id()).isEqualTo(moved);
+
+            // An exam is not kept this way. Its pointer outside the focus needs a valid direct
+            // assessment or the explicit choice of its offer; without them it is cleared as before.
+            String exam = "26c1e946-e858-57ef-a19b-d6bb295c76f4";
+            assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section))).doesNotContain(exam);
+            var withExam = learnerRepository.findById(learnerId).orElseThrow();
+            withExam.setActiveGoalId(exam);
+            learnerRepository.saveAndFlush(withExam);
+            assertThat(learners.getLearnerState(learnerId).activeGoal()).isNull();
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+            inProgressBeforeTheCut.run();
+
+            // A focus change by the learner still ends work on a goal outside the new focus.
+            learners.setPlannedGoals(learnerId, java.util.Set.of(child));
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+            assertThat(learners.getLearnerState(learnerId).activeGoal()).isNull();
+
+            // Passing the goal ends it; the focus is the chosen section again and nothing else.
+            learners.setPlannedGoals(learnerId, java.util.Set.of(section));
+            inProgressBeforeTheCut.run();
+            learners.setMastery(learnerId, new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of(moved, 1.0), moved));
+            var after = learners.getLearnerState(learnerId);
+            assertThat(after.activeGoal() == null ? null : after.activeGoal().id()).isNotEqualTo(moved);
+            assertThat(storedFocus.get()).containsExactly(section);
+            assertThat(learners.getUncompactedRichFrontierForFocus(learnerId, storedFocus.get()))
+                    .noneMatch(goal -> moved.equals(goal.id()));
+        } finally {
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilotBefore);
+        }
+    }
+
     // A kept goal must stay reachable as planned work, not only counted: the plan names it as the
     // next goal, and continuing starts exactly it under its own focus, before any other goal of the
     // subject. Found by the independent review of 25 November 2026: the search for due work asked

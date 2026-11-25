@@ -1,0 +1,6 @@
+allprojects {
+    afterEvaluate {
+        sourceSets.test.java.srcDir(System.getenv('CUT_PROBE_SOURCES'))
+        tasks.named('test') { include '**/ExplicitFocusWriteProbe.class' }
+    }
+}
