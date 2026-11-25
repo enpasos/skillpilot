@@ -101,12 +101,21 @@ The consent and CLI success are evidence of native authorization. The
 [Windows guide](openai-personal-marketplace-release.md#windows-oauth-fallback)
 includes the tested command for clients without a sign-in button.
 
-At **05:13:59 UTC**, a visible **local Codex chat** in the same Windows app
-used the same Git package to call `get_skillpilot_context` successfully on the
-then-current 14-tool backend. The tool result, the learning goal and four
-learning routes appeared in the chat. The Work path encountered an MCP `401`.
-Acceptance of the updated backend, further learning steps and a second account
-remains separate from this initial Codex check.
+At **05:13:59 UTC**, a visible **local Codex chat** in Windows ChatGPT
+26.1117.4957.0 used the Git package with the then-current 14-tool backend.
+The chat displayed the learning goal and four routes. After the learner chose
+a route and agreed to continue, the backend saved mastery at **05:18:53 UTC**
+and advanced the learner state from 6 to 7. The learner received feedback on
+a number-line exercise, paused and resumed. At **05:32:41 UTC** a fresh chat
+using the same disposable learner recovered the active goal at state 7. The
+server completed two image-renderer calls during the flow. The test did not
+establish whether either image appeared in the client.
+
+At **05:37 UTC**, after a regular restart of the same desktop app, a **Work**
+chat reported that SkillPilot Coach was unavailable. The protected endpoint
+returned HTTP 401 and the server recorded no successful tool call for that
+turn. The Windows instructions therefore direct testers to **Switch mode →
+Codex → This Computer** for learning.
 
 On the same morning an unauthenticated GET to `/mcp` returned the expected
 401 with discovery on the neutral host. Protected-resource and issuer
@@ -114,6 +123,51 @@ discovery returned 200, including the public read/write scopes and S256.
 The earlier versioned MCP origin returned 404. During testing there was a
 short interval with HTTP 502 from the public site; subsequent checks recovered.
 The public website version file identifies the GUI build only.
+
+The [source PR](https://github.com/enpasos/skillpilot/pull/196) was merged
+as `f63898e9d0fe5e6c7635ad36640ce01dbfb91fc9`. All six push workflows
+succeeded on that commit, including all 14 jobs in the
+[main CI run](https://github.com/enpasos/skillpilot/actions/runs/45578571852).
+The regular production deployment completed its database backup, restarted
+the service at **10:22 UTC** and received HTTP 200 from public readiness.
+The website served the matching commit. Public OAuth discovery advertised the
+neutral resource, read/write scopes and S256. At **10:24 UTC** the bundled
+Windows app server listed 16 SkillPilot tools over OAuth, including
+`choose_skillpilot_completion_route` and
+`confirm_skillpilot_completion_contract`. A fresh disposable learner then
+received a structured learning context. The server logged that successful
+`get_skillpilot_context` call at **10:24:45 UTC** with the deployed commit
+as its build. The disposable learner was deleted.
+
+At **10:30 UTC**, a separate learner in the Hessen G9 upper-secondary Physics
+basic course, with Autopilot off, exercised the new assessment tools through
+the bundled Windows app server. After the contract was confirmed, a fresh
+context offered the examination *Wann überquert der Wagen die rote Linie?*.
+Choosing it opened the task. The tool response exposed the question and
+withheld the marking rubric and solution. Pausing the assessment and returning
+to ordinary study left the mastery count unchanged. This test exercised the
+production tool responses. The earlier learning flow recorded the visible
+chat behavior.
+
+External testers can install version **1.2.0** from the public marketplace's
+default branch and follow the [German installation guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
+The [marketplace release](https://github.com/enpasos/skillpilot-chatgpt-marketplace/pull/1)
+merged at `291e84fdc5c52f42526f7f7b485ce6dbd695a7d2`.
+An anonymous fresh clone passed both the canonical export comparison and the
+marketplace validator. Its seven install files have the package digest
+`3ad26270620b34df8beac12c8fb7a70870165e42e0f1ec83e810a6bd2e7d54af`,
+matching the package used in the Windows tests above. The
+[default-branch validation](https://github.com/enpasos/skillpilot-chatgpt-marketplace/actions/runs/45594885295)
+and [v1.2.0 tag validation](https://github.com/enpasos/skillpilot-chatgpt-marketplace/actions/runs/45595061908)
+both passed on the release commit.
+
+A fresh installation with the official Linux Codex CLI used an empty profile.
+It added the public marketplace URL without a Git ref and installed
+`skillpilot-coach@skillpilot-chatgpt-marketplace`. The CLI reported
+`installed, enabled` for version 1.2.0. All seven files in its installed cache
+matched the canonical package. The interactive Windows learning test used the
+same seven files from the marketplace PR and the owner's account. An external
+tester signing in with a second ChatGPT account has yet to report results.
 
 ## Historical distribution assessment of 12 September 2026
 

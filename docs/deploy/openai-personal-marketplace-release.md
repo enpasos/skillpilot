@@ -4,8 +4,9 @@
 
 External testers use their own eligible account in the Windows app and the
 public Git marketplace. **Work** can be used to open the plugin browser. For
-learning, switch to **Codex → This Computer** in the same app. The owner
-authorized the regular backend rollout following successful CI.
+learning, switch to **Codex → This Computer** in the same app. Version
+**1.2.0** is available in the public Git marketplace. The production server
+has provided all 16 tools since 25 November 2026.
 See the [release sequence and host evidence](openai-beta-distribution-assessment.md)
 and the [German installation guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
 
@@ -50,8 +51,9 @@ text. You can learn in the chat without opening a terminal.
 At **05:13:59 UTC on 25 November 2026**, the visible Codex chat with the
 **1.2.0** Git package successfully called `get_skillpilot_context` on the
 then-current backend with 14 tools. The chat displayed the tool result, the
-learning goal and four learning routes. This initial check covers the learning
-start. The updated backend and further learning steps require separate checks.
+learning goal and four learning routes. The same test confirmed saved progress
+and continuation. At **10:24:45 UTC**, after the backend rollout, a fresh call
+returned a learning context from the new build.
 
 **Work** is a separate test path. The current Work test encountered an MCP
 `401`. Work tool execution remains unconfirmed for this version.
