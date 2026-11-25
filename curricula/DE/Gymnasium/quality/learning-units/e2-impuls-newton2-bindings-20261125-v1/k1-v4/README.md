@@ -69,3 +69,5 @@ Der dokumentierte vollständige Quellengegenlauf verarbeitet das flache bayerisc
 Der [Schlussvergleich der Ländersichten](../views/lower-closures-v5/README.md) verzeichnet die neun Angebote, die Prüfung des Übungsclusters und die Sichtbarkeit im Lernpfad. Der [Nachweisstand](../quality/record-lifecycle-v1/record-lifecycle.actual.json) führt die aktuellen und früheren Bindungen sowie die extern aufbewahrten Buchdateien auf. [Entwurf des Managementeintrags](management-summary-entwurf.md)
 
 Die Prüfung des aktuellen Bildkontexts bestätigt unveränderte fachliche Anforderungen an das Verständnisprofil. Alle sechs extern aufbewahrten Buchdateien konnten bytegenau rekonstruiert werden. [Bild und Verständnisprofil](../quality/imp-mass-example-successor-20261125-v1/README.md)
+
+Die Prüfung über die Lernenden-API vergleicht je zwei Bildungsgänge pro Land. In Hamburg umfassen die Startmengen 128 Ziele und die Lernmengen 193, in Thüringen 138 und 204. Jede der vier Mengenpaare gewinnt ausschließlich K1. Beide baden-württembergischen Kontrollen bleiben bei 164 und 262. [Unabhängige Neuberechnung und sechs API-Vergleiche](../inventory/k1-v4-seed-successor-v1/README.md)
