@@ -2682,7 +2682,6 @@ assert.equal(priorMeanForce.goalId, 'b50e9903-58b3-520d-96bf-d5bc1fe51ebf')
 const exerciseIds = examForms.currentGoals.map(r => r.goalId)
 assert.deepEqual(exerciseIds, ['d8fc6295-d0db-59e5-bd90-080bbc508c3a', priorMeanForce.goalId])
 const rootForPractice = rawGoalById.get(examForms.root.goalId)!
-const lowerExercises = rawGoalById.get(examForms.lowerStageExercises.goalId)!
 assert.equal(examForms.root.goalId, lowerMomentumKinds.root.goalId)
 assert.equal(examForms.lowerStageExercises.goalId, '21ab0854-4d67-5233-9495-ae208e152a3c')
 assert.equal(examForms.root.previousChildren, lowerMomentumKinds.root.currentChildren)
@@ -3716,7 +3715,24 @@ const changedMomentumAtlasPaths = [
 assert.deepEqual(lowerMomentumAtlas.changedSourceViews.map(row => row.path).sort(compareCodePoints), changedMomentumAtlasPaths)
 assert.deepEqual(lowerMomentumAtlas.sourceViews.filter(row => row.previousSha256 !== row.sha256)
   .map(row => row.path).sort(compareCodePoints), changedMomentumAtlasPaths)
-for (const row of lowerMomentumAtlas.sourceViews) {
+const signedMomentumAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v4/national-atlas-current-sources.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, signedMomentumAtlasPath), 'utf8')), 'de351715bfee09d102ee215e938e7d8f9cc36e78433e2ac319515a9488ee0fc4')
+const signedMomentumAtlas = readJson<typeof lowerMomentumAtlas>(signedMomentumAtlasPath)
+assert.deepEqual(signedMomentumAtlas.predecessor, {
+  path: lowerMomentumAtlasPath, sha256: sha256(readFileSync(resolve(repoRoot, lowerMomentumAtlasPath), 'utf8')),
+})
+assert.deepEqual(signedMomentumAtlas.currentUnionGoalIds, lowerMomentumAtlas.currentUnionGoalIds)
+assert.deepEqual(signedMomentumAtlas.canonicalProfileTargets.goalIds, lowerMomentumAtlas.canonicalProfileTargets.goalIds)
+assert.deepEqual(signedMomentumAtlas.sourceViews.map(r => ({path: r.path, sha256: r.previousSha256})),
+  lowerMomentumAtlas.sourceViews.map(r => ({path: r.path, sha256: r.sha256})))
+const signedMomentumAtlasChanges = [
+  `${COMPOSITION_VIEW_DIRECTORY}/de-hh-gk.view.json`, `${COMPOSITION_VIEW_DIRECTORY}/de-hh-lk.view.json`,
+  `${COMPOSITION_VIEW_DIRECTORY}/de-th-gk.view.json`, `${COMPOSITION_VIEW_DIRECTORY}/de-th-lk.view.json`,
+]
+assert.deepEqual(signedMomentumAtlas.changedSourceViews.map(r => r.path).sort(compareCodePoints), signedMomentumAtlasChanges)
+assert.deepEqual(signedMomentumAtlas.sourceViews.filter(r => r.sha256 !== r.previousSha256)
+  .map(r => r.path).sort(compareCodePoints), signedMomentumAtlasChanges)
+for (const row of signedMomentumAtlas.sourceViews) {
   assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale Physics atlas source`)
 }
 assert.equal(atlasCurricularAtomicGoalIds.size, EXPECTED_ATLAS_TARGET_COUNT)
