@@ -187,9 +187,10 @@ This procedure records the test sequence for **1.1.x**.
    preselection, without a separate test-start box in the updated GUI.
    Until the owner deploys the updated GUI, that legacy URL reaches the
    previously available OpenAI test handoff.
-3. Choose **Lernen mit ChatGPT vorbereiten** and confirm the existing provider
+3. Choose **Lernen mit ChatGPT starten** and confirm the existing provider
    eligibility prompt. The first-party UI calls the existing V1 launch endpoint
-   once, obtaining a fresh session and an authoritative prepared message.
+   once, obtaining a fresh session and an authoritative prepared message, and
+   hands that message to the local desktop chat through the app link.
 4. The historical test used a new **Work** conversation in ChatGPT Desktop
    with **SkillPilot Coach v1** selected for the prepared message.
    The message stays in component memory until copied; it is not stored in

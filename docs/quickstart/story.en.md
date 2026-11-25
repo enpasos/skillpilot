@@ -68,6 +68,6 @@ In the Windows app, open **Plugins → Add → Add marketplace**. You can also r
 
 If the sign-in button is missing, [sign in through Windows PowerShell](../deploy/openai-personal-marketplace-release.md#windows-oauth-fallback).
 
-In SkillPilot, select **ChatGPT Desktop**, **Prepare learning with ChatGPT**, and **Copy ChatGPT start message**. Switch modes to **Codex** in the desktop app, then follow **Open local Codex chat** in SkillPilot. Select a local project and **This Computer**. Replace the example text with your complete start message, keep the **SkillPilot Coach** chip, and send the message in the chat. Keep it private. You do not need a terminal to learn. Learning in Work is being tested separately.
+Select **ChatGPT Desktop** and **Start learning with ChatGPT** in SkillPilot. SkillPilot opens a new chat in the desktop app with the **SkillPilot Coach** chip and your start message already filled in. The chat must be set to **Codex** when you send (**Switch mode → Codex**). Select a local project and **This Computer**, and send the message in the chat. Keep it private. If no chat opens, you find the start message in SkillPilot under **The chat does not open?**. You do not need a terminal to learn. Learning in Work is being tested separately.
 
 Gemini is available for accounts set up for the controlled test. [Access requirements by provider](https://skillpilot.com/faq/coach-setup)

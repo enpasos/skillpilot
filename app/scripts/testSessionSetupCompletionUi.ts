@@ -566,15 +566,14 @@ try {
   const desktopStart = nativeTest.page.getByTestId('chatgpt-desktop-start')
   assert((await desktopStart.textContent())?.includes('Browser und Mobil-App sind dafür noch nicht bestätigt'),
     'the beta makes its confirmed desktop scope clear')
-  await nativeTest.page.getByText('Plugin einrichten oder aktualisieren', { exact: true }).click()
-  assert(await nativeTest.page.getByLabel('GitHub-Adresse des SkillPilot-Marketplace').inputValue()
-    === 'https://github.com/enpasos/skillpilot-chatgpt-marketplace',
-    'the guide uses the actual Git marketplace address')
-  await nativeTest.page.getByRole('button', { name: 'Marketplace-Adresse kopieren' }).click()
-  await nativeTest.page.getByRole('button', { name: 'Marketplace-Adresse kopiert', exact: true }).waitFor()
-  assert(await nativeTest.page.evaluate(() => navigator.clipboard.readText())
-    === 'https://github.com/enpasos/skillpilot-chatgpt-marketplace',
-    'the repository can be copied into the Desktop marketplace dialog')
+  const setupLink = desktopStart.getByRole('link', { name: 'Plugin einrichten' })
+  assert(await setupLink.getAttribute('href') === '/plugins#chatgpt-desktop'
+    && await setupLink.getAttribute('target') === '_blank',
+    'the one-time setup opens the maintained desktop plugin guide in its own tab')
+  assert((await desktopStart.textContent())?.includes('Zum ersten Mal mit ChatGPT?')
+    && await desktopStart.getByText('GitHub-Adresse des SkillPilot-Marketplace').count() === 0,
+    'the start step keeps the setup to one line, as the Claude start does')
+  await nativeTest.page.evaluate(() => navigator.clipboard.writeText('clipboard before the start'))
   let nativeLaunches = 0
   let heldPreparation: { started: () => void; release: Promise<void> } | null = null
   let claudeLaunches = 0
@@ -602,48 +601,77 @@ try {
       expiresAt: '2099-09-25T10:00:00Z', webUrl: 'https://chatgpt.com/',
     }) })
   })
+  // The test browser has no desktop app: record each followed app link instead of leaving the page.
+  await nativeTest.page.evaluate(() => {
+    const opened: string[] = []
+    ;(window as unknown as { __chatLinkOpens: string[] }).__chatLinkOpens = opened
+    document.addEventListener('click', (event) => {
+      const link = (event.target as Element | null)?.closest?.('a[href^="codex:"]')
+      if (!link) return
+      opened.push(link.getAttribute('href') ?? '')
+      event.preventDefault()
+    }, true)
+  })
+  const chatLinkOpens = () => nativeTest.page.evaluate(
+    () => (window as unknown as { __chatLinkOpens: string[] }).__chatLinkOpens,
+  )
+  const startButton = nativeTest.page.getByRole('button', { name: 'Lernen mit ChatGPT starten' })
   nativeTest.page.once('dialog', dialog => void dialog.dismiss())
-  await nativeTest.page.getByRole('button', { name: 'Lernen mit ChatGPT vorbereiten' }).click()
+  await startButton.click()
   assert(nativeLaunches === 0, 'declining eligibility does not create a learning session')
-  assert(await nativeTest.page.getByTestId('chatgpt-desktop-open-codex').count() === 0,
-    'the local Codex link is shown with the prepared handoff')
-  const locationBeforePreparation = nativeTest.page.url()
+  assert(await nativeTest.page.getByTestId('chatgpt-desktop-open-codex').count() === 0
+    && (await chatLinkOpens()).length === 0,
+    'without a learning session no chat is opened')
+  const locationBeforeStart = nativeTest.page.url()
   nativeTest.page.once('dialog', dialog => void dialog.accept())
-  await nativeTest.page.getByRole('button', { name: 'Lernen mit ChatGPT vorbereiten' }).click()
-  const preparedMessage = nativeTest.page.getByLabel('Startnachricht für ChatGPT Desktop')
-  await preparedMessage.waitFor()
-  assert(Number(nativeLaunches) === 1 && await preparedMessage.inputValue() === startMessage,
-    'one explicit test start displays the authoritative session handoff unchanged')
-  assert(!(await preparedMessage.inputValue()).includes(existingLearnerId),
-    'the handoff excludes the permanent learner ID')
-  const localCodexLink = nativeTest.page.getByRole('link', { name: 'Lokalen Codex-Chat öffnen' })
-  const href = await localCodexLink.getAttribute('href')
-  assert(href, 'the desktop handoff offers a user-activated local Codex link')
+  await startButton.click()
+  const handoff = nativeTest.page.getByTestId('chatgpt-desktop-handoff')
+  await handoff.waitFor()
+  await nativeTest.page.waitForFunction(
+    () => (window as unknown as { __chatLinkOpens: string[] }).__chatLinkOpens.length === 1,
+  )
+  const chatLink = nativeTest.page.getByRole('link', { name: 'Chat erneut öffnen' })
+  const href = await chatLink.getAttribute('href')
+  assert(href && Number(nativeLaunches) === 1 && (await chatLinkOpens())[0] === href,
+    'one click creates one learning session and opens the chat through the visible app link')
   const localCodexStart = new URL(href)
   assert(localCodexStart.protocol === 'codex:' && localCodexStart.hostname === 'threads'
     && localCodexStart.pathname === '/new' && !localCodexStart.hash,
     'the link opens a new local Codex thread')
   assert([...localCodexStart.searchParams.keys()].join(',') === 'prompt'
     && localCodexStart.searchParams.get('prompt') ===
-      '[@SkillPilot Coach](plugin://skillpilot-coach@skillpilot-chatgpt-marketplace) How do I start a learning session with SkillPilot?',
-    'the URI carries only the Git plugin mention and harmless example, with no learner data or local path')
-  assert(nativeTest.page.url() === locationBeforePreparation && await nativeTest.page.evaluate(() => navigator.clipboard.readText()) ===
-    'https://github.com/enpasos/skillpilot-chatgpt-marketplace',
-    'preparing the handoff leaves navigation and the clipboard alone')
+      `[@SkillPilot Coach](plugin://skillpilot-coach@skillpilot-chatgpt-marketplace) ${startMessage}`,
+    'the link carries the Git plugin mention and the authoritative start message as its only argument')
+  assert(!href.includes(existingLearnerId) && !decodeURIComponent(href).includes(existingLearnerId),
+    'the app link excludes the permanent learner ID')
+  assert((await handoff.getByRole('status').textContent())?.includes('Startnachricht bereits eingetragen'),
+    'the learner is told that the start message is already in the chat')
+  assert(nativeTest.page.url() === locationBeforeStart
+    && await nativeTest.page.evaluate(() => navigator.clipboard.readText()) === 'clipboard before the start',
+    'starting leaves the page and the clipboard alone')
+  await chatLink.click()
+  assert((await chatLinkOpens()).length === 2 && Number(nativeLaunches) === 1,
+    'the visible link opens the same chat again without creating another session')
+  const fallback = nativeTest.page.getByTestId('chatgpt-desktop-fallback')
+  const preparedMessage = nativeTest.page.getByLabel('Startnachricht für ChatGPT Desktop')
+  assert(!await preparedMessage.isVisible(), 'the manual way stays closed while the direct start is the main path')
+  await fallback.getByText('Der Chat öffnet sich nicht?', { exact: true }).click()
+  assert(await preparedMessage.inputValue() === startMessage,
+    'the fallback shows the authoritative session handoff unchanged')
   await nativeTest.page.getByRole('button', { name: 'ChatGPT-Startnachricht kopieren' }).click()
   await nativeTest.page.getByRole('button', { name: 'ChatGPT-Startnachricht kopiert', exact: true }).waitFor()
   assert(await nativeTest.page.evaluate(() => navigator.clipboard.readText()) === startMessage,
-    'the copy action hands the exact server prompt to the clipboard')
+    'the fallback copy hands the exact server prompt to the clipboard')
   assert(await nativeTest.page.evaluate(() => !JSON.stringify(localStorage).includes('sps_')
     && !JSON.stringify(sessionStorage).includes('sps_')), 'session capabilities are not persisted in browser storage')
-  assert(chatTestContext.pages().length === 1, 'preparing a desktop test does not navigate to an unselected web chat')
-  assert(claudeLaunches === 0, 'ChatGPT preparation never falls back to a Claude launch')
+  assert(chatTestContext.pages().length === 1, 'a desktop start does not navigate to an unselected web chat')
+  assert(claudeLaunches === 0, 'a ChatGPT start never falls back to a Claude launch')
   await nativeTest.page.getByRole('radio', { name: /Claude-Lerncoach/u }).check()
   assert(await nativeTest.page.getByTestId('chatgpt-desktop-handoff').count() === 0,
     'switching provider removes the provider-bound start message')
   await nativeTest.page.getByRole('radio', { name: /ChatGPT Desktop/u }).check()
-  assert(await nativeTest.page.getByLabel('Startnachricht für ChatGPT Desktop').count() === 0,
-    'returning to ChatGPT requires a fresh explicit preparation')
+  assert(await nativeTest.page.getByTestId('chatgpt-desktop-handoff').count() === 0,
+    'returning to ChatGPT requires a fresh explicit start')
   let releasePreparation!: () => void
   let preparationStarted!: () => void
   const started = new Promise<void>(resolve => { preparationStarted = resolve })
@@ -651,15 +679,17 @@ try {
     started: preparationStarted,
     release: new Promise<void>(resolve => { releasePreparation = resolve }),
   }
-  await nativeTest.page.getByRole('button', { name: 'Lernen mit ChatGPT vorbereiten' }).click()
+  await nativeTest.page.getByRole('button', { name: 'Lernen mit ChatGPT starten' }).click()
   await started
   await nativeTest.page.getByRole('radio', { name: /Claude-Lerncoach/u }).check()
   await nativeTest.page.getByRole('radio', { name: /ChatGPT Desktop/u }).check()
   const finished = nativeTest.page.waitForResponse('**/openai/v1/launch')
   releasePreparation()
   await finished
-  assert(await nativeTest.page.getByLabel('Startnachricht für ChatGPT Desktop').count() === 0,
-    'an in-flight launch from the previous provider mount cannot resurrect its prompt')
+  await nativeTest.page.waitForTimeout(150)
+  assert(await nativeTest.page.getByTestId('chatgpt-desktop-handoff').count() === 0
+    && (await chatLinkOpens()).length === 2,
+    'an in-flight launch from the previous provider mount can neither resurrect its prompt nor open a chat')
   assert(Number(nativeLaunches) === 2 && claudeLaunches === 0,
     'provider switching does not generate a substitute session')
   await nativeTest.page.unroute('**/claude/v1/launch')

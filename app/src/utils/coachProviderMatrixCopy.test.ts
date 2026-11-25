@@ -174,9 +174,9 @@ assert(
 )
 for (const variantId of ['chatgpt-free-go', 'chatgpt-plus-pro', 'chatgpt-business', 'chatgpt-enterprise-edu'] as const) {
   assert(
-    row(de, 'start-path').cells[variantId].value.includes(germanLabels.startPage.login.chatGptDesktop.prepare)
-      && row(en, 'start-path').cells[variantId].value.includes(englishLabels.startPage.login.chatGptDesktop.prepare),
-    `${variantId}: both languages name the actual desktop preparation button`,
+    row(de, 'start-path').cells[variantId].value.includes(germanLabels.startPage.login.chatGptDesktop.start)
+      && row(en, 'start-path').cells[variantId].value.includes(englishLabels.startPage.login.chatGptDesktop.start),
+    `${variantId}: both languages name the actual desktop start button`,
   )
   const expectedVoiceStatus = variantId === 'chatgpt-free-go' || variantId === 'chatgpt-plus-pro' ? 'conditional' : 'admin'
   assert(

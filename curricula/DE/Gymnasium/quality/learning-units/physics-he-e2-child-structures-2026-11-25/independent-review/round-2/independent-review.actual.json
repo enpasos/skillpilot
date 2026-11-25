@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-25T11:10:39+01:00",
+  "branch": "feat/e2-zuschnitt",
+  "reviewedCommit": "4f963b4b78922d11fea4029e15fa8183e572dd35",
+  "reviewedTree": "8ba11a325205966cce1625104879c301061d3f0a",
+  "firstRoundCommit": "a88f17523bbafd63a5b3d98b48cc3c8e8b6ed24d",
+  "firstRoundParent": "948f2a419d18c08c7edd6b5d7f9a5367fe81bcf6",
+  "stackBase": "19c14af91ec51f184ce14d7e19980b5c96175f7f",
+  "intermediate": "f934207147c82eae7c624cae04bb36cf88943b89",
+  "patchSha256": "f9f27b2e4b93edb05733d181150e5c6ed4485eda408611c11ad26212f0c681e7",
+  "priorEvidence": {
+    "sha256": "45d029ae72d1ff880bdcced9b9b7188b4939d1f076e23bdcf3aa7dfae7f833cd",
+    "verifiedArtifacts": 145
+  },
+  "disposition": "confirm-curriculum-and-runtime-request-two-readme-corrections",
+  "questions": {
+    "a": {
+      "verdict": "confirm",
+      "exactMoves": 30,
+      "distinctGoals": 9,
+      "mathMoves": 24,
+      "physicsMoves": 6,
+      "allNinetyViewsEqualToFirstRound": true,
+      "viewsChangedFromStackBase": 8
+    },
+    "b": {
+      "verdict": "confirm",
+      "goal": "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+      "courses": [
+        "GK",
+        "LK"
+      ],
+      "unitPilot": [
+        false,
+        true
+      ],
+      "autopilot": false,
+      "nativeCoachPasses": 4,
+      "chosenFocus": "E.2"
+    },
+    "c": {
+      "verdict": "confirm",
+      "datedPlanBlock": "2026-11-23",
+      "oldGoals": {
+        "GK": 32,
+        "LK": 32
+      },
+      "newSelection": {
+        "GK": 28,
+        "LK": 27
+      },
+      "includes": "9c328f68-41ed-55dd-9e02-34414a6246f2",
+      "oldBlockAndFingerprintReplayed": true,
+      "restoredCurrent": true,
+      "individualStarts": {
+        "predecessor": 18,
+        "candidate": 18
+      }
+    },
+    "d": {
+      "verdict": "correct-readme",
+      "items": [
+        {
+          "readmeLine": 71,
+          "finding": "Personal GK shows 10 entries, personal LK 8, in both board and cockpit."
+        },
+        {
+          "readmeLine": 59,
+          "finding": "E.5 alone in the E phase is correct. The second and third Kepler laws also require five of the six Mathematics preparations."
+        }
+      ]
+    }
+  },
+  "pr199Comment": {
+    "originalFixture": "FRONTIER with ordinary cursor",
+    "amendedFixture": "TEACHING with same ordinary cursor",
+    "observed": "Both return TEACHING and retain the cursor and chosen focus; stored state label is preserved. Original test exercised cleanup on a read.",
+    "evidence": "projection.actual.json"
+  },
+  "reviewers": [
+    {
+      "id": "A",
+      "driver": "collaboration.spawn_agent",
+      "agent": "/root/d2_record",
+      "modelSelection": "gpt-6.1-sol ultra",
+      "context": "fresh independent review, fork_turns=none",
+      "assessment": "confirms corrections with qualifications",
+      "answer": {
+        "path": "reviewer-a.md",
+        "bytes": 14114,
+        "sha256": "25e8cbb6309c6f96c31e17374f5df465c6ad1d8d28f49e0b59b21f65af7a96fa"
+      }
+    },
+    {
+      "id": "B",
+      "driver": "collaboration.spawn_agent",
+      "agent": "/root/d2_plans",
+      "modelSelection": "inherited session model",
+      "context": "fresh independent review, fork_turns=none",
+      "assessment": "confirms implementation; two README corrections",
+      "answer": {
+        "path": "reviewer-b.md",
+        "bytes": 9087,
+        "sha256": "c1aa51e707901ab25630f9b9bc5b2bf05265523076ee15579109395bd8542380"
+      }
+    }
+  ],
+  "validation": {
+    "tests": 23,
+    "errors": 0,
+    "failures": 0,
+    "skips": 0,
+    "junit": [
+      {
+        "suite": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+        "xml": "raw/native/candidate-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+        "tests": 6,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.skillpilot.backend.connectors.claude.v1.mcp.E2ContextProbe",
+        "xml": "raw/native/candidate-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.E2ContextProbe.xml",
+        "tests": 8,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.skillpilot.backend.connectors.claude.v1.mcp.E2ContextProbe",
+        "xml": "raw/native/closure-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.E2ContextProbe.xml",
+        "tests": 2,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.skillpilot.backend.connectors.claude.v1.mcp.E2ContextProbe",
+        "xml": "raw/native/predecessor-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.E2ContextProbe.xml",
+        "tests": 4,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.skillpilot.backend.service.ProjectionStateProbe",
+        "xml": "raw/projection/TEST-com.skillpilot.backend.service.ProjectionStateProbe.xml",
+        "tests": 3,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      }
+    ],
+    "uiReplay": "learner-rows.actual.json",
+    "fullFrontendOnThisHead": false,
+    "priorFrontendSteps": 54,
+    "oldFrontendRunCommit": "a88f17523bbafd63a5b3d98b48cc3c8e8b6ed24d",
+    "changedAppPathsFromFirstRound": 10,
+    "firstAttempt": "Independent AssertJ probe failed to compile before test execution; first-attempt logs retained. Corrected probe passed."
+  },
+  "writeScope": "local review evidence and handover status; original answers preserved, existing checkout restored; no commits, pushes or product edits",
+  "reviewReport": "review.md",
+  "artifacts": [
+    {
+      "path": "energy-role.actual.json",
+      "bytes": 3451,
+      "sha256": "f87b7b2a17b950e1c2a19f30edf11e7b472ac4bc5b4f41d7d692aca62eda9f36"
+    },
+    {
+      "path": "learner-rows.actual.json",
+      "bytes": 4570,
+      "sha256": "019a9a09272ca41f3ace960e6337a5b81661f2ecd1c29fd3ad8e3813da704bfe"
+    },
+    {
+      "path": "math-demand.actual.json",
+      "bytes": 4995,
+      "sha256": "978cdee92a6720ac01ff78a71dcde67555502e0b6e8f64b96bad389b40990ae3"
+    },
+    {
+      "path": "placements.actual.json",
+      "bytes": 15241,
+      "sha256": "769dc7ebc25f037ef54d86f83ab83da3290b1a132e4639536f80568a88627718"
+    },
+    {
+      "path": "plan-and-coach.actual.json",
+      "bytes": 28448,
+      "sha256": "2a0ddfa2c451b946f3529a4d60df0d4a8ab5d87c9abd540a207922e6fab78888"
+    },
+    {
+      "path": "probes/bind-review.py",
+      "bytes": 5510,
+      "sha256": "b9f3745f1bcb51eb9f943bc167f3f4977ab8ff7ee860f0dab05452d0688aeb63"
+    },
+    {
+      "path": "probes/compact-evidence.py",
+      "bytes": 2576,
+      "sha256": "48d1248dc51e3e5a803a56c71015307486b6037b4161cd19141840bb00c209eb"
+    },
+    {
+      "path": "probes/compare-placements.py",
+      "bytes": 5764,
+      "sha256": "8553be173bdee0010d74aab95434e195fae6a943dc36d67d59a4f26b93d72602"
+    },
+    {
+      "path": "probes/learner-rows.mts",
+      "bytes": 4216,
+      "sha256": "fd48b9c026612bfb7ac3e356029226ad25538fb3bde653c361ccd4a08347f44b"
+    },
+    {
+      "path": "probes/native/README.md",
+      "bytes": 4694,
+      "sha256": "04a044b945389ec35739f9a3571a2589638779f985463086bef0f618f2eded2b"
+    },
+    {
+      "path": "probes/native/actual.json",
+      "bytes": 92312,
+      "sha256": "39f84762b6a71ddb87d9a17f474765c2c6690572e5fa6d542da1c581e5cfb88e"
+    },
+    {
+      "path": "probes/native/captured-GK-false.json",
+      "bytes": 3194,
+      "sha256": "7aea72b0e70514a5078ea1550c9deca1ac15d13cad8cc7afba1fba180d4787d7"
+    },
+    {
+      "path": "probes/native/captured-GK-true.json",
+      "bytes": 3194,
+      "sha256": "7aea72b0e70514a5078ea1550c9deca1ac15d13cad8cc7afba1fba180d4787d7"
+    },
+    {
+      "path": "probes/native/captured-LK-false.json",
+      "bytes": 3194,
+      "sha256": "cbf92f096911a6be87e4e6cb0400685de73a409953af2c82c220223ddd7e5a6e"
+    },
+    {
+      "path": "probes/native/captured-LK-true.json",
+      "bytes": 3194,
+      "sha256": "cbf92f096911a6be87e4e6cb0400685de73a409953af2c82c220223ddd7e5a6e"
+    },
+    {
+      "path": "probes/native/coach-init.gradle",
+      "bytes": 251,
+      "sha256": "9f56a08aa72940b17dfa98c513acb1ed4a996cfe41a128f631ba72aa57abc6e8"
+    },
+    {
+      "path": "probes/native/probe.method.java",
+      "bytes": 16350,
+      "sha256": "be4325c46da51198740d59d628a4d9a516c02b2ca43cc9dd24af940d38a73331"
+    },
+    {
+      "path": "probes/native/projection-GK-false.json",
+      "bytes": 47220,
+      "sha256": "f0632e0f121e58920bc3d739bf7732a75dd44c00c193552e6bea08b9ee06ce5b"
+    },
+    {
+      "path": "probes/native/projection-GK-true.json",
+      "bytes": 47219,
+      "sha256": "ac597a3f68c583bf283238c7cb24efeca86236ddb6d2ce314a73289b7797ac9e"
+    },
+    {
+      "path": "probes/native/projection-LK-false.json",
+      "bytes": 50626,
+      "sha256": "ad56d2718b018ce579a078a1becdd2c955735308e5f9de48ebac15dec27a01df"
+    },
+    {
+      "path": "probes/native/projection-LK-true.json",
+      "bytes": 50625,
+      "sha256": "00c0825ee65aa62f8d4061ad7cb187824c3a7d8fc74145c1d44ae3c586495e04"
+    },
+    {
+      "path": "probes/native/recaptured-GK-false.json",
+      "bytes": 3194,
+      "sha256": "7afb83d7d85af924728e30cca24f735d0051ffb5cb8c9ee54ff59729e9d463ec"
+    },
+    {
+      "path": "probes/native/recaptured-GK-true.json",
+      "bytes": 3194,
+      "sha256": "7afb83d7d85af924728e30cca24f735d0051ffb5cb8c9ee54ff59729e9d463ec"
+    },
+    {
+      "path": "probes/native/recaptured-LK-false.json",
+      "bytes": 3194,
+      "sha256": "4c74eea0012ef2519b43d3c5968dc8b71368cc7d9c17fd1c7b10ca326d9eb32a"
+    },
+    {
+      "path": "probes/native/recaptured-LK-true.json",
+      "bytes": 3194,
+      "sha256": "4c74eea0012ef2519b43d3c5968dc8b71368cc7d9c17fd1c7b10ca326d9eb32a"
+    },
+    {
+      "path": "probes/native/run-closure.sh",
+      "bytes": 2567,
+      "sha256": "6a3370b3cec03753e00de614fd3126416489a4f76f3e61cb2d4e442334db7d4f"
+    },
+    {
+      "path": "probes/native/run.sh",
+      "bytes": 4014,
+      "sha256": "39b7f03f2cf70be45ce5149bd815c0e698cd58b37dbc4e3caf755f77bde66751"
+    },
+    {
+      "path": "probes/native/summarize.py",
+      "bytes": 6185,
+      "sha256": "5a5f0629ed4a8703daae2bcdd09ff1ff8db8bf0accaf72d76a77314394e23572"
+    },
+    {
+      "path": "probes/native/ui-closure-metadata-GK.json",
+      "bytes": 33789,
+      "sha256": "aa6ef8e6f13dcf903e13efb229114a8e4bb451e1c480b6f5c4d27af3feeb0041"
+    },
+    {
+      "path": "probes/native/ui-closure-metadata-LK.json",
+      "bytes": 35991,
+      "sha256": "be2f9d26c6cd757d9c3463d3a1d8a952a25326706348db856a162e2be308effd"
+    },
+    {
+      "path": "probes/projection.gradle",
+      "bytes": 186,
+      "sha256": "9260701a40797fd1bcf98a4964c2a1c959719a99a2ce1de3100919ea09a718b2"
+    },
+    {
+      "path": "probes/projection.method.java",
+      "bytes": 1462,
+      "sha256": "8fee59a4f6f7e323f6116dbbc073b4f14f34a5fb0364974dd9449d8de5d2b8d8"
+    },
+    {
+      "path": "probes/projection.sh",
+      "bytes": 2492,
+      "sha256": "5c192b2d7c591fcb90ad1d9c783c5eb36822053fb26e8b01642ec668e6abad7d"
+    },
+    {
+      "path": "probes/reviewer-a/measure.py",
+      "bytes": 9256,
+      "sha256": "902b65a28ddf72fa0286ba030b0c8949761fed8423ae2f6ec270ecb94719c05a"
+    },
+    {
+      "path": "probes/reviewer-a/measurement.actual.json",
+      "bytes": 44440,
+      "sha256": "1c4ca56191281d185975dbb948f0362892e48dadd8b5ca0f15a8c2a1c3e11e3b"
+    },
+    {
+      "path": "probes/reviewer-b/measure.actual.json",
+      "bytes": 33863,
+      "sha256": "894f8612b22f6a19081561cccd6d4a31d34af8d394b457961772c9c7dda40ded"
+    },
+    {
+      "path": "probes/reviewer-b/measure.py",
+      "bytes": 7685,
+      "sha256": "65bb8295349d235758293ce098ad3bd3853ae202eec85eb786ab632495d2da45"
+    },
+    {
+      "path": "probes/reviewer-b/personalized-rows.actual.json",
+      "bytes": 3467,
+      "sha256": "a9506eb47239d1c3645b078ceeebf05b8e5e091be9f20fc94902bae71be50303"
+    },
+    {
+      "path": "probes/reviewer-b/personalized-rows.mts",
+      "bytes": 4332,
+      "sha256": "e997fb6f8e7937232bc81d116ea264e0c24cbc0d6e49e19fcde2159c43264412"
+    },
+    {
+      "path": "projection.actual.json",
+      "bytes": 838,
+      "sha256": "871e4739a8c17337f5fea3cb08a41221ed4b72cc12ed49d1fc358054029da92c"
+    },
+    {
+      "path": "raw/learner-rows.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "raw/native/candidate-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+      "bytes": 2458533,
+      "sha256": "7f9e36c5e7ffbf8b73c9c1fe69e9bf83db4ec994fdb9461468766154b203545c"
+    },
+    {
+      "path": "raw/native/candidate-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.E2ContextProbe.xml",
+      "bytes": 7109457,
+      "sha256": "d884e01ca09e4808178cc61308d25de1933dc4346368694ae8ca799106ebfab1"
+    },
+    {
+      "path": "raw/native/candidate.environment.txt",
+      "bytes": 1371,
+      "sha256": "f21fd93c4bfd42f46b269d8c373bb536dc596af6ce6abf4fb50c49df6e0fa0fe"
+    },
+    {
+      "path": "raw/native/candidate.exit.json",
+      "bytes": 141,
+      "sha256": "93367e879e20206c30746f45c15d19a6c4249a66161e96539db3d1dd723906b7"
+    },
+    {
+      "path": "raw/native/candidate.log",
+      "bytes": 21975,
+      "sha256": "1d0d53020866ce44de44885c412dcd930ec7786d7387fa4dfb5501859e039754"
+    },
+    {
+      "path": "raw/native/closure-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.E2ContextProbe.xml",
+      "bytes": 554688,
+      "sha256": "ead75bd1b9942974f7ca8c1bbf991ad8bfa3a4ca823c7c50f1a0d4038b6ad53a"
+    },
+    {
+      "path": "raw/native/closure.environment.txt",
+      "bytes": 617,
+      "sha256": "3f5d15af0639c08ffb7c07a6afa6b9bd56fe56bb4f3284f5059e1f9add81e3a9"
+    },
+    {
+      "path": "raw/native/closure.exit.json",
+      "bytes": 139,
+      "sha256": "f9b487dd34dec54121334bac841ecb3d08ca93a46dc34b275922f226093d838f"
+    },
+    {
+      "path": "raw/native/closure.log",
+      "bytes": 8596,
+      "sha256": "68533ebc414de3b18b0c78b88e10f5b730b2dd2047a003c5d1fedfc4cb0c2979"
+    },
+    {
+      "path": "raw/native/first-attempt-compile/actual.json",
+      "bytes": 1090,
+      "sha256": "e1318d8929b26a972215b477a333fc2dd23ac37b6cf1e545e54b09f21b5b3543"
+    },
+    {
+      "path": "raw/native/first-attempt-compile/candidate.environment.txt",
+      "bytes": 1371,
+      "sha256": "6c590a3347b8cfc8bb511cc6d901ba1bc18405acbeaa5c4d7231836341bc9699"
+    },
+    {
+      "path": "raw/native/first-attempt-compile/candidate.exit.json",
+      "bytes": 141,
+      "sha256": "69cdfd5db77f8a2daa95751a39f79ffc1c525db3eb87a97e6c2494cd1b30c1be"
+    },
+    {
+      "path": "raw/native/first-attempt-compile/candidate.log",
+      "bytes": 9088,
+      "sha256": "77bd65fe438268e2d358d3aaee20b1d0d0d5d7bef305a8b7a2d1945832164634"
+    },
+    {
+      "path": "raw/native/first-attempt-compile/generated-source.java",
+      "bytes": 236807,
+      "sha256": "314498256ecd3d520d0a584cfffba298fadb615cd72be9501f02c12ef929f56f"
+    },
+    {
+      "path": "raw/native/first-attempt-compile/predecessor.environment.txt",
+      "bytes": 1371,
+      "sha256": "a084f36cfa801cc42dc9bf7c39bdb709468425bbe429951dedd8fbcd3649f9ce"
+    },
+    {
+      "path": "raw/native/first-attempt-compile/predecessor.exit.json",
+      "bytes": 143,
+      "sha256": "d038f88e62b5def83b4f02feb5b73ca5bc961f7700de53dfc9ad3ed8c4fd8fe3"
+    },
+    {
+      "path": "raw/native/first-attempt-compile/predecessor.log",
+      "bytes": 9088,
+      "sha256": "07202bb7d7841757d08651cee751c0391a69192cdf18461cb9bede2fdb85e62f"
+    },
+    {
+      "path": "raw/native/observations.actual.json",
+      "bytes": 898551,
+      "sha256": "99a9765ea9400b8dbf2c6f41010b52372df5e83ccb49cc699aecbd3725e089c5"
+    },
+    {
+      "path": "raw/native/predecessor-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.E2ContextProbe.xml",
+      "bytes": 4990748,
+      "sha256": "010e504a5287fb4eafe2e3da5b841965a0ae2ab5d3835e410953e4cb23f5a2d2"
+    },
+    {
+      "path": "raw/native/predecessor.environment.txt",
+      "bytes": 1371,
+      "sha256": "af8f37b5bc2285a1da04fa77cbc59414297c96210969b2507284870acc5f6edf"
+    },
+    {
+      "path": "raw/native/predecessor.exit.json",
+      "bytes": 143,
+      "sha256": "2654f78907ba583715490c3ee08223c947e4e060b596c6400738e59c227e8fd2"
+    },
+    {
+      "path": "raw/native/predecessor.log",
+      "bytes": 12557,
+      "sha256": "10a2578235239174dd1263b447d56d1ab241d07bdd74992ea49641ea41cdd7da"
+    },
+    {
+      "path": "raw/native/ui-closure-GK.json",
+      "bytes": 2815961,
+      "sha256": "03956477a66db6ec34e41cb0d997a8aa4d9b1bcdf0d76573348241de9558c722"
+    },
+    {
+      "path": "raw/native/ui-closure-LK.json",
+      "bytes": 3112938,
+      "sha256": "3cf9e74e4c3f1427465cdb4dcf963bc78db3afc0d449ae61c2365a8d09e89ba2"
+    },
+    {
+      "path": "raw/projection/4f963b4b78922d11fea4029e15fa8183e572dd35.log",
+      "bytes": 5552,
+      "sha256": "d5c00bc24e84be3e75d379985dbf06a7bb25a0fdfa86bf327dce530d6618a76a"
+    },
+    {
+      "path": "raw/projection/TEST-com.skillpilot.backend.service.ProjectionStateProbe.xml",
+      "bytes": 19300,
+      "sha256": "d3eb00634d09d03ec1ce19c20bd396301888bab740a6674f1e2f577e7bb8775b"
+    },
+    {
+      "path": "review.md",
+      "bytes": 10778,
+      "sha256": "81c24bd60c38cc366df52e92515185955eb6c8355d4aa90e2a99b612b553bcf2"
+    },
+    {
+      "path": "reviewer-a.md",
+      "bytes": 14114,
+      "sha256": "25e8cbb6309c6f96c31e17374f5df465c6ad1d8d28f49e0b59b21f65af7a96fa"
+    },
+    {
+      "path": "reviewer-b.md",
+      "bytes": 9087,
+      "sha256": "c1aa51e707901ab25630f9b9bc5b2bf05265523076ee15579109395bd8542380"
+    }
+  ]
+}

@@ -1320,10 +1320,10 @@ Der Benutzer muss die Session-ID weder kopieren noch verändern.
 - CREATE/EXISTING, Providerhinweis und die vollständige Level-2-Konfiguration
   werden ausschließlich im First-Party-WebGUI abgeschlossen.
 - Der normale Einstieg **Lernen starten** / **Start learning** führt zur
-  Anbieterauswahl. **Lernen mit ChatGPT vorbereiten** erzeugt für
+  Anbieterauswahl. **Lernen mit ChatGPT starten** erzeugt für
   **ChatGPT Desktop (Beta)** eine neue opake `learningSessionId` und eine kurze
-  Startnachricht zum Kopieren in einen neuen Desktop-Chat; die permanente
-  SkillPilot-ID bleibt außerhalb des Chats.
+  Startnachricht, die über den App-Link in einen neuen lokalen Desktop-Chat
+  übergeben wird; die permanente SkillPilot-ID bleibt außerhalb des Chats.
 - Zu Beginn jedes Learner-Turns muss der Vollkontext erfolgreich geladen worden
   sein. Nach einer erfolgreichen Mutation ist ihr vollständiger
   Nachfolgerzustand für den Rest desselben Assistant-Turns autoritativ und wird
@@ -1388,8 +1388,9 @@ Englisch. Eine Sprache erzeugt weder einen weiteren Host noch eine weitere App.
 Der normale GUI-Einstieg **Lernen starten** bietet Claude und **ChatGPT Desktop
 (Beta)** an; der Cockpit-Einstieg führt zurück zu dieser Anbieterauswahl. Der
 ChatGPT-Start ruft `POST /api/ui/learners/{skillpilotId}/openai/v1/launch` auf und
-zeigt die vorbereitete Startnachricht zum Kopieren in einen neuen Desktop-Chat.
-Der Button heißt **Lernen mit ChatGPT vorbereiten**.
+übergibt die vorbereitete Startnachricht über den App-Link an einen neuen
+lokalen Desktop-Chat; ersatzweise lässt sie sich kopieren.
+Der Button heißt **Lernen mit ChatGPT starten**.
 `?coach=chatgpt-desktop` ist eine optionale Vorauswahl; `?chatgptTest=1`
 bleibt eine kompatible Vorauswahl ohne separaten Startkasten.
 Der bestätigte Git-/Desktop-Betaweg verwendet keinen automatischen Browserstart.

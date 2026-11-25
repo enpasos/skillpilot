@@ -126,6 +126,51 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                                  "16bfb017-53d6-5328-a4e3-2e2b4e4398a9"}
                                 <= {node.get("goalId") for node in methods["children"]})
 
+    def test_e2_groups_its_content_into_six_child_structures_in_learning_order(self):
+        # Cut accepted by the Product Owner on 24 Nov 2026: three axioms, one interplay of
+        # forces, two conservation laws. Gravitation is E.5 content.
+        exams = {"68061652-d617-5e51-8d2a-1c686c3c49df", "22561c66-3957-5d55-b07a-25de1f359930",
+                 "72649cf5-893c-5f03-88bd-a2497171d434", "be6d4895-65ab-545b-8df9-84e5a308a5e3"}
+        outputs = {name: generator.generate(view)[0] for name, view in self.views.items()}
+        outputs.update({path.name: view for path, view, _ in generator.duration_outputs()
+                        if view["scope"]["stage"] != "SekI"})
+        self.assertEqual(len(outputs), 8)
+        for name, view in outputs.items():
+            with self.subTest(view=name):
+                targets = generator.role_atoms(view)["target"]
+                e2 = find(view, generator.E2_TOPIC)
+                self.assertEqual([node["id"] for node in e2["children"] if node["kind"] == "structure"],
+                                 [unit_id for unit_id, *_ in generator.HESSEN_E2_CHILD_UNITS])
+                placed = set()
+                for unit_id, label, label_en, members in generator.HESSEN_E2_CHILD_UNITS:
+                    unit = find(view, unit_id)
+                    self.assertEqual((unit["label"], unit["labelEn"]), (label, label_en))
+                    own = [node["goalId"] for node in unit["children"] if node.get("projectionRole") != "prerequisiteOnly"]
+                    self.assertEqual(own, [member for member in members if member in targets])
+                    self.assertTrue(all(node["kind"] != "structure" for node in unit["children"]))
+                    placed.update(own)
+                # Everything else at E.2 level is one of its four exams, after the child structures,
+                # or the explicit support reference of a goal that is no target of this view.
+                direct = [node for node in e2["children"] if node["kind"] != "structure"]
+                self.assertEqual({node["goalId"] for node in direct if node.get("projectionRole") != "prerequisiteOnly"}, exams)
+                support = [node["goalId"] for node in direct if node.get("projectionRole") == "prerequisiteOnly"]
+                self.assertEqual(len(support), len(set(support)))
+                self.assertFalse(set(support) & targets)
+                self.assertEqual([node["goalId"] for node in e2["children"][-len(exams):]],
+                                 [node["goalId"] for node in direct if node["goalId"] in exams])
+                e2_atoms = generator.role_atoms({"rootNodes": [e2]})["target"]
+                self.assertEqual(e2_atoms, placed | exams)
+                e5_atoms = generator.role_atoms({"rootNodes": [find(view, generator.E5_TOPIC)]})["target"]
+                for identifier in generator.E2_TO_E5:
+                    self.assertNotIn(identifier, e2_atoms)
+                    self.assertEqual(identifier in e5_atoms, identifier in targets)
+                # The child order is the actual demand between the structures, nothing more.
+                short = lambda identifier: identifier.removeprefix("physics-e2-")
+                self.assertEqual({(short(pair["unit"]), short(pair["after"])) for pair in e2["childOrder"]["after"]}, {
+                    ("force-mass-acceleration", "inertia"), ("force-and-counterforce", "force-mass-acceleration"),
+                    ("several-forces", "force-mass-acceleration"), ("energy", "force-mass-acceleration"),
+                    ("momentum", "force-and-counterforce"), ("momentum", "energy")})
+
     def test_e1_assessment_admission_only_adds_the_two_targets(self):
         exams = set(generator.HESSEN_E1_ASSESSMENTS)
         for name, current in self.views.items():

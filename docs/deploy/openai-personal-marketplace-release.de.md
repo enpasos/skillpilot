@@ -41,13 +41,16 @@ Starten Sie anschließend den lokalen Codex-Chat wie unten beschrieben.
 
 ### Lernstart im lokalen Codex-Chat { #windows-local-codex }
 
-Wählen Sie in der ChatGPT-Desktop-App zuerst **Modus wechseln → Codex** und
-danach **Lokalen Codex-Chat öffnen** neben der Startnachricht in SkillPilot.
-Der Link öffnet einen Entwurf mit dem Git-Plugin-Chip und einem Beispieltext.
-Wählen Sie ein lokales Projekt, etwa in einem eigenen leeren Ordner, und
-**Dieser Computer**. Behalten Sie den Chip **SkillPilot Coach** und ersetzen
-Sie den Beispieltext durch die vollständige, frisch vorbereitete Startnachricht.
-Der App-Link enthält ausschließlich den Plugin-Verweis und den Beispieltext.
+Wählen Sie in SkillPilot **Lernen mit ChatGPT starten**. SkillPilot erzeugt
+die Lernsitzung und öffnet über einen App-Link einen Entwurf mit dem
+Git-Plugin-Chip und der Startnachricht. Der Chat muss beim Absenden auf
+**Codex** stehen (**Modus wechseln → Codex**). Wählen Sie ein lokales Projekt,
+etwa in einem eigenen leeren Ordner, und **Dieser Computer** und senden Sie die
+Nachricht ab. Der App-Link enthält den Plugin-Verweis und die frisch erzeugte
+Startnachricht mit dem kurzlebigen Sitzungsschlüssel, nie die dauerhafte
+SkillPilot-ID. Er wird lokal an die Desktop-App übergeben. Öffnet sich kein
+Chat, bietet SkillPilot unter **Der Chat öffnet sich nicht?** die
+Startnachricht zum Kopieren an.
 Das Lernen erfolgt im Chat. [Tester-Anleitung](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme)
 
 Am **25. November 2026 um 05:13:59 UTC** rief der sichtbare Codex-Chat mit
@@ -56,6 +59,12 @@ dem Git-Paket **1.2.0** `get_skillpilot_context` gegen das damalige Backend mit
 vier Lernwege sichtbar. Derselbe Test bestätigte das Speichern und Fortsetzen
 des Lernstands. Ein frischer Aufruf nach dem Backend-Rollout lieferte um
 **10:24:45 UTC** einen Lernkontext vom neuen Build.
+In diesen Tests wurde die Startnachricht von Hand eingefügt. Seit dem
+25. November 2026 übergibt SkillPilot sie über den App-Link. Der Product Owner
+berichtete am selben Tag aus einem Windows-Test gegen ein lokales Backend, dass
+sich der Chat mit eingetragener Startnachricht öffnete. Das ist eine
+Beobachtung ohne Protokoll. Ein Lernschritt über diesen Weg ist damit noch
+nicht abgenommen.
 
 **Work** ist ein separater Testpfad. Im aktuellen Work-Test erhielt der
 MCP-Aufruf `401`. Ein erfolgreicher Work-Toolaufruf steht weiterhin aus.
@@ -434,9 +443,9 @@ Dieser Abschnitt dokumentiert den ursprünglichen Test mit **1.1.2**. Für
    und Zeitstempel, anstatt Authentifizierungsregeln zu ändern.
 4. Nutzen Sie den regulären Einstieg **Lernen starten** in SkillPilot oder kehren Sie aus dem
    Cockpit dorthin zurück. Laden Sie den Lernstand, schließen Sie die Konfiguration ab und wählen Sie
-   **ChatGPT Desktop (Beta)**. Wählen Sie **Lernen mit ChatGPT vorbereiten** und kopieren Sie
-   die gesamte Nachricht unverändert in einen **neuen Desktop-Chat**, in dem dieses Plugin
-   aktiviert ist. `?coach=chatgpt-desktop` wählt den Provider optional vorab aus;
+   **ChatGPT Desktop (Beta)**. Wählen Sie **Lernen mit ChatGPT starten**. SkillPilot übergibt
+   die gesamte Nachricht über den App-Link an einen **neuen lokalen Codex-Chat**, in dem dieses
+   Plugin ausgewählt ist; senden Sie sie dort unverändert ab. `?coach=chatgpt-desktop` wählt den Provider optional vorab aus;
    `?chatgptTest=1` bleibt in der aktualisierten GUI eine kompatible Vorauswahl ohne separates
    Startfeld. Bis der Owner diese GUI deployt, erreicht der bisherige Query-Parameter
    weiterhin die zuvor verfügbare OpenAI-Testübergabe.
