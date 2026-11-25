@@ -742,6 +742,17 @@ learner's views, and a plan of which nothing is left. A backup that holds such
 a plan is still refused as a whole (open question to the Product Owner,
 25 November 2026).
 
+**Goal in progress after a regrouping, 25 November 2026.** The same holds for
+the goal a learner is working on. When a regrouping moves it out of the section
+the learner focuses, it stays in progress: as long as it is a target of the
+Personal Curriculum in the subject of the focus, the backend counts it to the
+effective focus, so that coach, frontier and learner state agree. The stored
+focus is not changed. A focus change by the learner still ends work on a goal
+outside the new focus when it is written, and a new goal can only be started
+inside the focus; that is why a stored goal in progress outside the stored
+focus can only come from a regrouping. A learner who follows plans is governed
+by the scope of the plans instead.
+
 On 24 November the Product Owner approved the return of the
 multiphase exam to E.1. Two independent review rounds then found that its
 edition evidences no whole goal, so it is retired in the historical container

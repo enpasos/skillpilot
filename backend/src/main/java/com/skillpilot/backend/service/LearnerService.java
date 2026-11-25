@@ -5908,7 +5908,7 @@ public class LearnerService {
                 projection);
         if (!projectedFocusIds.isEmpty()
                 || !hasCompletedPersonalCurriculum(learner)) {
-            return projectedFocusIds;
+            return withRegroupedGoalInProgress(learner, projection, projectedFocusIds);
         }
         String defaultFocusId = resolveDefaultProjectedFocusId(
                 learner.getSelectedCurriculum(),
@@ -5916,6 +5916,43 @@ public class LearnerService {
         return defaultFocusId == null
                 ? Collections.emptyList()
                 : List.of(defaultFocusId);
+    }
+
+    /**
+     * A regrouping of the curriculum can move the goal a learner is working on out of the section
+     * they focus. Every focus change the learner makes clears a goal outside the new focus when it
+     * is written, and a goal can only be started inside the focus. A stored goal in progress that
+     * lies outside the stored focus at read time was therefore moved by the curriculum, not by the
+     * learner. As long as it is a target of the Personal Curriculum in the subject of the focus,
+     * it belongs to the effective focus: the learner keeps their place, and the stored focus stays
+     * as chosen. Once the goal is passed or the learner changes the focus, nothing of this remains.
+     */
+    private List<String> withRegroupedGoalInProgress(
+            Learner learner, GoalProjection projection, List<String> projectedFocusIds) {
+        String storedActiveGoalId = learner.getActiveGoalId();
+        if (storedActiveGoalId == null || storedActiveGoalId.isBlank() || projectedFocusIds.isEmpty()
+                || projectedFocusIds.contains(storedActiveGoalId)) {
+            return projectedFocusIds;
+        }
+        String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, projection.visibleGoals(), false);
+        if (!storedActiveGoalId.equals(activeGoalId)
+                || !projection.targetGoalIds().contains(activeGoalId)
+                || !isAtomicGoal(projection.visibleGoals().get(activeGoalId))) {
+            return projectedFocusIds;
+        }
+        List<String> focusScopeIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
+        if (focusScopeIds.isEmpty()
+                || !isGoalOutOfPlannedScope(activeGoalId, focusScopeIds, projection.structuralGoals(), null)) {
+            return projectedFocusIds;
+        }
+        String landscapeId = landscapeService.getLandscapeIdForGoal(activeGoalId);
+        if (landscapeId == null || focusScopeIds.stream()
+                .noneMatch(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id)))) {
+            return projectedFocusIds;
+        }
+        List<String> widened = new ArrayList<>(projectedFocusIds);
+        widened.add(activeGoalId);
+        return widened;
     }
 
     private boolean hasCompletedPersonalCurriculum(Learner learner) {
