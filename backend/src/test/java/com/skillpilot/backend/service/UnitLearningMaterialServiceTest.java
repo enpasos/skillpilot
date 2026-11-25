@@ -191,7 +191,9 @@ class UnitLearningMaterialServiceTest {
         assertThat(g8.question("de")).isEqualTo("Ein Ball rollt vom Tisch. Wo landet er?");
         assertThat(g8.promise("en")).contains("measurements", "part B");
         assertThat(g8.flashcardGoalId()).isEqualTo("9f2f5ab8-0ae4-5792-b831-82a05af5895c");
-        assertThat(g8.assessmentGoalId()).isEqualTo("a9562b05-c54d-5635-9244-3f7dd24a8642");
+        // The parent unit is checked by its four contract parts. The mixed exam it once named as
+        // closing exam is retired for all Länder (25 Nov 2026).
+        assertThat(g8.assessmentGoalId()).isNull();
         // Both common E.1 extras remain voluntary in every assignment view.
         String common = "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9";
         String freeFallSeries = "f41e4e30-794e-5ce4-ba5e-cc72712cd691";

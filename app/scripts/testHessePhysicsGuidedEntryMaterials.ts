@@ -42,7 +42,26 @@ assert.equal(expectedParentAfter.unit.sectionAssessmentPolicy.voluntaryAssessmen
 expectedParentAfter.unit.sectionAssessmentPolicy.voluntaryAssessmentGoalIds[0] = voluntaryScope.allowedDelta.after
 assert.deepEqual(parentAfter, expectedParentAfter, 'The whole material changes in exactly one reviewed voluntary identity field')
 assert.deepEqual(parentAfter.intro, parentBefore.intro, 'Both language introductions retain their exact reviewed content')
-assert.equal(imageHash(voluntaryScope.currentMaterialPath), voluntaryScope.materialAfter.sha256)
+// 25 Nov 2026: one further reviewed one-field successor. The mixed exam "Bewegungsanalyse und freier
+// Fall" is retired for all Länder, so the parent material no longer names it as closing exam. The
+// introduction never referred to that exam; its texts and images are the reviewed bytes.
+const mixedRetirement = read('curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/retirement.actual.json')
+for (const binding of [mixedRetirement.material.before, mixedRetirement.material.after]) {
+  assert.equal(imageHash(binding.path), binding.sha256, 'The closing-exam removal keeps exact before/after evidence')
+}
+assert.equal(mixedRetirement.material.before.sha256, voluntaryScope.materialAfter.sha256,
+  'The removal starts from the bytes the voluntary-identity successor ended with')
+assert.deepEqual(mixedRetirement.material.supersedes, { path: voluntaryScopePath, sha256: imageHash(voluntaryScopePath) })
+assert.deepEqual(mixedRetirement.material.allowedDelta,
+  { path: '/unit/assessmentGoalId', before: 'a9562b05-c54d-5635-9244-3f7dd24a8642', after: null, operation: 'remove' })
+const parentCurrent = read(mixedRetirement.material.after.path)
+const expectedParentCurrent = structuredClone(parentAfter)
+assert.equal(expectedParentCurrent.unit.assessmentGoalId, mixedRetirement.material.allowedDelta.before)
+delete expectedParentCurrent.unit.assessmentGoalId
+assert.deepEqual(parentCurrent, expectedParentCurrent, 'The whole material changes in exactly one removed field')
+assert.deepEqual(parentCurrent.intro, parentBefore.intro, 'Both language introductions retain their exact reviewed content')
+assert.equal(mixedRetirement.material.currentPath, voluntaryScope.currentMaterialPath)
+assert.equal(imageHash(voluntaryScope.currentMaterialPath), mixedRetirement.material.after.sha256)
 assert.equal(hash({ unit: parentBefore.unit, intro: parentBefore.intro }), '975f8ca9da549e21c7ee19d1b6ceffd8a332de3356a5abcaf3101b4e82f5d22a')
 assert.equal(hash({ unit: parentAfter.unit, intro: parentAfter.intro }), '060c8ba5bae89686f2436e01e6b9b56dd06e37d894f35f17ca570ee48b182d99')
 const practicalReview = currentMaterialReview('individual-experiments')
@@ -125,7 +144,7 @@ for (const opening of review.scope.openings) {
   assert.equal(hash(goal), opening.goalSha256, 'Orientation changed since its independent content review')
   const historicalMaterial = opening.materialPath === voluntaryScope.currentMaterialPath ? parentBefore : material
   if (opening.materialPath === voluntaryScope.currentMaterialPath) {
-    assert.deepEqual(material, parentAfter, 'Current introduction is bound through the exact one-field voluntary scope successor')
+    assert.deepEqual(material, parentCurrent, 'Current introduction is bound through the two exact one-field successors')
   }
   assert.equal(hash({ unit: historicalMaterial.unit, intro: historicalMaterial.intro }), opening.materialSha256,
     'The immutable introduction review remains bound to its actual input, including its former voluntary identity')

@@ -707,7 +707,10 @@ are kept unchanged, and nothing is pointed at another edition. A plan of
 which nothing else is left is outdated as before. A new or edited plan cannot
 select a retired goal. Unit assignments keep their own edition binding. Goals
 that leave a plan because the learner changed the Personal Curriculum still
-make it outdated.
+make it outdated. A stored active goal that is no longer visible to the
+learner counts as no active goal in the coach context (25 November 2026): the
+coach offers the frontier and describes the focused unit as usual, and the
+stored id stays until the learner chooses the next goal.
 
 On 24 November the Product Owner approved the return of the
 multiphase exam to E.1. Two independent review rounds then found that its
@@ -723,6 +726,27 @@ rows on energy conservation and radial force are supported by the official
 text, but the canonical preparation of these goals is stronger than what the
 lower stage of the Land supplies. Until that package right-sizes the chains,
 these goals are not activated as lower-stage targets there.
+
+**Mixed E.1 exam retired, 25 November 2026.** The exam "Bewegungsanalyse und
+freier Fall" (`a9562b05-c54d-5635-9244-3f7dd24a8642`) is retired for all
+Länder. The Product Owner had asked on 24 November why it showed as a single
+exam on the E.1 board, and whether it was needed and fitted its context. It
+listed the free-fall experiment, road traffic and spreadsheet modelling as
+covered, but asked for no experiment and no spreadsheet, and any one of its
+four steps could be left out at the pass mark of 15 of 25 points. It keeps its
+identity, task and rubric in the historical container; no view offers it, and
+stored plans and passes follow the decision of 24 November above. The E.1
+parent material names no closing exam. Its parts A–D remain: as the unit
+assignment where the pilot is enabled, as ordinary exams of the child units
+otherwise. The child unit "Freier Fall schwerer Kugeln" keeps its own closing
+exam. The
+free-fall experiment has a dedicated exam in Hesse and Saxony only, as before.
+Four sister exams of the same build keep their places until the unit reviews
+of E.2 to E.4 have given their goals own checks ("Kreisbewegung,
+Gravitation und Gasmodell", "Thermodynamik und Rotationssystem",
+"Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen", "Mehrschrittige
+Bewegungsmodelle mit Reibung und Chaos analysieren"). Record:
+`curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/`.
 
 **Achievable pass marks, Product Owner decision of 24 November 2026.** His
 words: pass marks must be achievable, without frustration for learners "who

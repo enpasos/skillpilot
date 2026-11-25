@@ -14,7 +14,15 @@ import { nativeMapIds as id, nativeMapLandscapes, nativeMapProfile } from './fix
 import { readUnitMapMaterials } from './lib/unitLearningMaterialCatalog'
 
 const materials = readUnitMapMaterials(fileURLToPath(new URL('../../curricula/', import.meta.url)))
-const { flashcardGoalId: memoryId, assessmentGoalId: examId } = materials.find(item => item.unit.compositionNodeId === 'physics-e1-motion')!.unit
+// The shipped E.1 parent material names no closing exam since the mixed exam "Bewegungsanalyse und
+// freier Fall" was retired for all Länder (25 Nov 2026). The map still supports a unit material that
+// names an exam placed on another board. This regression keeps that path covered: it adds a
+// cross-topic exam of the Einführungsphase to the material that is handed to the app under test.
+const parentMaterial = materials.find(item => item.unit.compositionNodeId === 'physics-e1-motion')!
+assert.equal(parentMaterial.unit.assessmentGoalId, undefined, 'the shipped E.1 parent names no closing exam')
+const examId = '5773ccbe-cd20-5ba0-99a5-7ccd5f42be51'
+;(parentMaterial.unit as { assessmentGoalId?: string }).assessmentGoalId = examId
+const memoryId = parentMaterial.unit.flashcardGoalId
 assert(memoryId && examId)
 const canonical = JSON.parse(await readFile(new URL('../../curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json', import.meta.url), 'utf8')) as SkillLandscape
 const memory = canonical.goals.find(goal => goal.id === memoryId)!

@@ -7,6 +7,8 @@ assert(['GK', 'LK'].includes(physicsCourse), 'Expected the explicit Physics cour
 assert(['all', 'short-map', 'mobile-map', 'structure', 'planning', 'guided', 'foreign-focus'].includes(browserCase), 'Unknown focused browser case')
 const throwAssessment = 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9'
 const historicalMultiphaseAssessment = '2b9e565f-d9b4-5e23-b5b7-b7977cecff06'
+// Retired for all Länder on 25 Nov 2026; until then the E.1 material named it as the unit's closing exam.
+const retiredMixedMotionAssessment = 'a9562b05-c54d-5635-9244-3f7dd24a8642'
 const freeFallSeriesAssessment = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
 const voluntaryAssessmentIds = [throwAssessment, freeFallSeriesAssessment]
 for (const url of [site, api]) assert(['localhost', '127.0.0.1'].includes(new URL(url).hostname))
@@ -31,7 +33,8 @@ const e1ChildUnits = [
   ['physics-e1-two-motions', 'Zwei Bewegungen zugleich'],
 ]
 const e1ChildScope = (section, child) => section.replace(/physics-e1-motion$/, child)
-const parentMapCardCount = physicsCourse === 'GK' ? 7 : 6
+// Both courses show the same six cards since the mixed GK exam left the board as an external resource.
+const parentMapCardCount = 6
 const freeFallMapCardCount = childMaterial => childMaterial.guidedStudyOrder.length + 3
 assert(orientationGoalIds.every(id => typeof id === 'string'))
 const exercises = [...new Map([...ownExercises, ...childMaterial.exercises].map(exercise => [exercise.goalId, exercise])).values()]
@@ -968,9 +971,7 @@ async function checkTreeAndMapParents(duration) {
       assert.equal(await board.getAttribute('data-scope-id'), parent)
       const resources = new Map([[unit.flashcardGoalId, 'Aus dem Stapel „Einführungsphase“']])
       // External resources are displayed on their actual board, outside the owned tree.
-      if (parent === section && physicsCourse === 'GK') {
-        resources.set(unit.assessmentGoalId, 'Prüfung aus „Themenübergreifende Prüfungen“')
-      }
+      assert.equal(unit.assessmentGoalId, undefined, 'The E.1 parent names no single closing exam; its contract has four parts')
       for (const node of await board.locator('.lum-flow [data-entry-id]').all()) {
         const id = await node.getAttribute('data-entry-id')
         if (resources.has(id)) {
@@ -980,6 +981,7 @@ async function checkTreeAndMapParents(duration) {
       }
       assert.equal(resources.size, 0, 'Every declared external resource is present on ' + title)
       assert.equal(await board.locator('[data-entry-id="' + historicalMultiphaseAssessment + '"]').count(), 0)
+      assert.equal(await board.locator('[data-entry-id="' + retiredMixedMotionAssessment + '"]').count(), 0)
       assert.equal(await board.locator('[data-entry-id="' + preparationFolder + '"]').count(), 0)
       if (parent === launchSection) {
         const card = id => board.locator(`[data-entry-id="${id}"]`)

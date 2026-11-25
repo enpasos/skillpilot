@@ -124,6 +124,18 @@ TWO_MOTIONS_SUCCESSOR_VIEWS = frozenset(
 )
 if len(TWO_MOTIONS_SUCCESSOR_VIEWS) != 64:
     raise AssertionError("Changed reviewed two-motions identity view set")
+# The mixed E.1 exam "Bewegungsanalyse und freier Fall" is retired for all Länder (25 Nov 2026).
+# Its record lists the views in which it was an atomic target before.
+RETIRED_MIXED_MOTION_ID = "a9562b05-c54d-5635-9244-3f7dd24a8642"
+_mixed_motion_retirement = json.loads((
+    authoring.ROOT / "curricula/DE/Gymnasium/quality/assessment-review/physik/"
+    "e1-mixed-exam-retirement-20261125-v1/retirement.actual.json"
+).read_text())
+if _mixed_motion_retirement["goalId"] != RETIRED_MIXED_MOTION_ID:
+    raise AssertionError("The retirement record names another goal")
+RETIRED_MIXED_MOTION_OFFER_VIEWS = frozenset(_mixed_motion_retirement["views"]["previousTargetViewIds"])
+if len(RETIRED_MIXED_MOTION_OFFER_VIEWS) != 64:
+    raise AssertionError("Changed reviewed view set of the retired mixed E.1 assessment")
 
 
 def retained_authority_seeds(view, roles, baseline):
@@ -162,6 +174,12 @@ def retained_authority_seeds(view, roles, baseline):
         raise AssertionError("A historical multiphase assessment is offered again")
     if view["viewId"] in RETIRED_MULTIPHASE_OFFER_VIEWS:
         retained = retained | {RETIRED_MULTIPHASE_ID}
+    # Same comparison for the mixed E.1 exam: it left exactly the views that offered it, and the
+    # frozen authority is compared with its seed restored. No other seed may change with it.
+    if RETIRED_MIXED_MOTION_ID in roles["target"] | roles["prerequisiteOnly"]:
+        raise AssertionError("The retired mixed E.1 assessment is offered again")
+    if view["viewId"] in RETIRED_MIXED_MOTION_OFFER_VIEWS:
+        retained = retained | {RETIRED_MIXED_MOTION_ID}
     # Comparison with the frozen source authority only: the independently
     # verified successor replaces one identity in exactly these 64 view slots.
     # Runtime identities and learner results remain distinct; no alias is made.
@@ -215,6 +233,29 @@ class PhysicsStageAuthoring(unittest.TestCase):
         widened["target"].add(CURRENT_TWO_MOTIONS_ID)
         with self.assertRaisesRegex(AssertionError, "successor view set"):
             retained_authority_seeds(outside, widened, self.authorities[outside["viewId"]])
+
+    def test_mixed_motion_retirement_cannot_return_or_take_another_seed_with_it(self):
+        self.assertTrue(RETIRED_MIXED_MOTION_OFFER_VIEWS <= set(self.authorities))
+        self.assertEqual({view["viewId"] for view in self.views.values()} & RETIRED_MIXED_MOTION_OFFER_VIEWS,
+                         RETIRED_MIXED_MOTION_OFFER_VIEWS)
+        view = self.views["de-bb-gk.view.json"]
+        baseline = self.authorities[view["viewId"]]
+        roles = authoring.graph.role_atoms(view)
+        retained_authority_seeds(view, roles, baseline)
+        for role in ("target", "prerequisiteOnly"):
+            returned = copy.deepcopy(roles)
+            returned[role].add(RETIRED_MIXED_MOTION_ID)
+            with self.subTest(returned_role=role), self.assertRaisesRegex(AssertionError, "retired mixed E.1"):
+                retained_authority_seeds(view, returned, baseline)
+        # A further seed that leaves together with the exam is not covered by the retirement.
+        further = copy.deepcopy(roles)
+        further["target"].remove("7c0b94b9-2af7-59d4-bfae-278a3418f6a8")
+        with self.assertRaisesRegex(AssertionError, "fingerprint changed"):
+            retained_authority_seeds(view, further, baseline)
+        # A view that never offered the exam gets no restored seed.
+        outside = self.views["de-by-gk.view.json"]
+        self.assertNotIn(outside["viewId"], RETIRED_MIXED_MOTION_OFFER_VIEWS)
+        retained_authority_seeds(outside, authoring.graph.role_atoms(outside), self.authorities[outside["viewId"]])
 
     def test_guided_openings_are_targets_only_in_the_eight_reviewed_views(self):
         self.assertEqual(len(self.views), 90)
@@ -496,11 +537,17 @@ class PhysicsStageAuthoring(unittest.TestCase):
         # not manufacture the missing signed-area / initial-value preparation.
         self.assertNotIn(task, bindings["HH"]["assessments"])
 
-    def test_historical_two_motions_identity_is_absent_from_active_state_view_references(self):
+    def test_retired_exam_identities_are_absent_from_active_state_view_references(self):
+        # The earlier throw edition (24 Nov 2026) and the mixed E.1 exam (25 Nov 2026) keep their
+        # identity in the catalog; no view offers them and no acquisition seed names them.
+        retired = {"6ea3fb3c-abdc-568f-ab13-97c36dc274e4", "a9562b05-c54d-5635-9244-3f7dd24a8642"}
         for name, view in self.views.items():
             with self.subTest(view=name):
-                self.assertNotIn("6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
-                                 {node.get("goalId") for node in authoring.graph.walk(view["rootNodes"])})
+                self.assertFalse(retired & {node.get("goalId") for node in authoring.graph.walk(view["rootNodes"])})
+                self.assertFalse(retired & authoring.graph.role_atoms(view)["target"])
+        for view_id, seeds in authoring.CANONICAL_E_SEEDS.items():
+            with self.subTest(seeds=view_id):
+                self.assertFalse(retired & set(seeds))
 
     def test_horizontal_throw_assessment_follows_its_assessed_modeling_competency(self):
         task, covered = "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9", "d6dc0e02-831d-4894-a61a-852bcc74f147"

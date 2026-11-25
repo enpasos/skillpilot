@@ -62,8 +62,10 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                           if node.get("id") in dict(expected_topics)]
                 self.assertEqual(actual, expected_topics)
                 motion = find(view, "physics-e1-motion")
-                self.assertNotIn("6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
-                                 {node.get("goalId") for node in generator.walk(view["rootNodes"])})
+                # Retired exams keep their identity in the catalog and have no place in a view:
+                # the earlier throw edition and, since 25 Nov 2026, the mixed E.1 exam.
+                self.assertFalse({"6ea3fb3c-abdc-568f-ab13-97c36dc274e4", "a9562b05-c54d-5635-9244-3f7dd24a8642"}
+                                 & {node.get("goalId") for node in generator.walk(view["rootNodes"])})
                 motion_atoms = generator.role_atoms({"rootNodes": [motion]})["target"]
                 e3 = find(view, expected_topics[2][0])
                 e3_atoms = generator.role_atoms({"rootNodes": [e3]})["target"]
@@ -104,16 +106,16 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                                  [item[0] for item in generator.HESSEN_E1_CHILD_UNITS])
                 self.assertNotIn("2b9e565f-d9b4-5e23-b5b7-b7977cecff06", generator.role_atoms(view)["target"])
                 self.assertNotIn(generator.TRAFFIC, generator.role_atoms({"rootNodes": [motion]})["target"])
-                # This existing exam requires E.4 modelling and Newtonian
-                # dynamics. Its sole learning place must preserve those needs
-                # instead of silently moving them into E.1 for its title.
+                # The mixed E.1 exam "Bewegungsanalyse und freier Fall" is retired (25 Nov 2026):
+                # its claimed goals have their own exams, and its steps do not fit E.1 since
+                # the cut. The cross-topic section keeps the other mixed exams.
                 mixed = "a9562b05-c54d-5635-9244-3f7dd24a8642"
-                self.assertNotIn(mixed, generator.role_atoms({"rootNodes": [motion]})["target"])
                 cross_topic = find(view, generator.E_PHASE_CROSS_TOPIC_ASSESSMENTS)
                 self.assertEqual(cross_topic["label"], "Themenübergreifende Prüfungen")
-                self.assertIn(mixed, {node.get("goalId") for node in cross_topic["children"]})
-                references = [node for node in generator.walk(phase["children"]) if node.get("goalId") == mixed]
-                self.assertEqual(len(references), 1)
+                self.assertEqual([node.get("goalId") for node in cross_topic["children"]],
+                                 list(generator.E_PHASE_ASSESSMENT_PLACEMENTS[generator.E_PHASE_CROSS_TOPIC_ASSESSMENTS]))
+                self.assertNotIn(mixed, {node.get("goalId") for node in generator.walk(phase["children"])})
+                self.assertNotIn(mixed, generator.role_atoms(view)["target"])
                 for identifier in ("ac25ffe3-fd42-592d-a937-79cc13460313", "30ddb2d7-b991-55fe-9e74-37ffe1048f9f"):
                     self.assertIn(identifier, generator.role_atoms({"rootNodes": [find(view,
                         "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9")]})["target"])
