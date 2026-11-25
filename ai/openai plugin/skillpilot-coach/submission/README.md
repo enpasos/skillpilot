@@ -23,7 +23,7 @@ node --test scripts/reproducible_plugin_zip.test.mjs
 node scripts/openai_plugin_submission.mjs prepare
 node scripts/openai_plugin_submission.mjs check
 node scripts/openai_plugin_submission.mjs package --out-dir tmp/openai-submission
-node scripts/openai_plugin_submission.mjs audit-zip --zip tmp/openai-submission/skillpilot-coach-1.2.0-submission.zip
+node scripts/openai_plugin_submission.mjs audit-zip --zip tmp/openai-submission/skillpilot-coach-1.2.1-submission.zip
 node scripts/openai_plugin_submission.mjs audit-export --export /exact/local/path/export.json
 node scripts/openai_plugin_submission.mjs validate-trace --trace /exact/local/path/trace.json
 ```

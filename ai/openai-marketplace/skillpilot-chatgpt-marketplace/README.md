@@ -1,6 +1,6 @@
 # SkillPilot Coach für ChatGPT Desktop
 
-Diese Anleitung gilt für **SkillPilot Coach 1.2.0** in der ChatGPT-Desktop-App
+Diese Anleitung gilt für **SkillPilot Coach 1.2.1** in der ChatGPT-Desktop-App
 unter Windows. Du installierst den Coach über den Git-Marketplace und lernst
 im **lokalen Codex-Chat** der App. Zum Lernen brauchst du kein Terminal.
 In einem verwalteten Workspace kann für die Installation eine Freigabe nötig sein.
@@ -16,7 +16,7 @@ In einem verwalteten Workspace kann für die Installation eine Freigabe nötig s
 
 3. Wähle den Marketplace **skillpilot-chatgpt-marketplace**. Installiere
    **SkillPilot Coach** und prüfe unter den installierten Plugins, dass
-   **Version 1.2.0** angezeigt wird und das Plugin aktiviert ist.
+   **Version 1.2.1** angezeigt wird und das Plugin aktiviert ist.
 4. Öffne beim installierten Plugin die SkillPilot-Verbindung. Wähle bei Bedarf
    **Verbinden** (**Connect**) und bestätige die Freigabe. Falls die App nach
    der Registrierungsmethode fragt, wähle **Auto** oder **CIMD**.
@@ -72,10 +72,13 @@ du mit deiner SkillPilot-ID in einer neu gestarteten Sitzung weiterverwenden.
    SkillPilot.
 5. Beginne im Textmodus und prüfe, ob der Coach dein Lernziel anzeigt. Danach
    kannst du die angebotenen Lernschritte ausprobieren und Rückmeldung geben.
+   Falls ChatGPT beim Speichern eine Freigabe anzeigt, entscheide dort.
+   Bis der Coach den gespeicherten Lernfortschritt bestätigt, bleibt der
+   Speicherstatus offen.
 
-Ein Windows-Vorabtest bestätigte den sichtbaren Lernstart in diesem lokalen
-Codex-Chat. Lernen in **Work** ist ein separater Testpfad und für diese
-Plugin-Version noch nicht bestätigt.
+Ein Windows-Vorabtest mit 1.2.0 bestätigte den sichtbaren Lernstart im lokalen
+Codex-Chat. Die Host-Prüfung für 1.2.1 steht aus. Lernen in **Work** ist ein
+separater Testpfad.
 
 Falls sich kein Chat öffnet, wechsle in der Desktop-App zu **Codex** und
 wähle in SkillPilot **Chat erneut öffnen**. Hilft das nicht, öffne
@@ -104,12 +107,12 @@ auftrat. Ein bereinigter Screenshot kann helfen.
 **Aktualisieren** oder **Synchronisieren**, wenn eine neue Testversion
 bereitsteht. Aktualisiere auch das installierte **SkillPilot Coach**,
 falls ChatGPT das separat anbietet. Prüfe anschließend die Versionsnummer
-im installierten Plugin. Erzeuge für den nächsten Test in SkillPilot eine
-neue Startnachricht und öffne einen neuen lokalen **Codex**-Chat.
+im installierten Plugin. Wähle für den nächsten Test wieder **Lernen mit
+ChatGPT starten** und sende die Startnachricht im neuen lokalen **Codex**-Chat.
 
 Falls weiterhin **SkillPilot Coach v1** oder **1.1.2** angezeigt wird, prüfe
 die Marketplace-Adresse und wiederhole den manuellen Abruf. Sobald **SkillPilot
-Coach 1.2.0** installiert und verbunden ist, kannst du dieser Anleitung folgen.
+Coach 1.2.1** installiert und verbunden ist, kannst du dieser Anleitung folgen.
 
 ## Paket und Nachweise
 

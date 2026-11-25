@@ -75,6 +75,8 @@ export function assertCurrentCoachBehavior({ skill, policy }) {
   const ordinary = section(policy, "5. Dialogic learning and mastery");
   const exam = section(skill, "Exams");
   const accessible = section(skill, "Accessible tasks");
+  const masteryEligibility = section(skill, "Mastery eligibility");
+  const saves = section(skill, "Save outcomes");
   const boundaries = section(skill, "Boundaries");
   const orientation = section(policy, "4. Motivation and orientation");
   const memory = section(policy, "6. Memory practice and verified recall");
@@ -89,6 +91,8 @@ export function assertCurrentCoachBehavior({ skill, policy }) {
       "Ordinary and exam success must be written before result feedback."],
     [/learner agreement is neither evidence nor a persistence gate/u,
       "Continuation consent must not gate ordinary/exam persistence."],
+    [/Apply the save-outcome rules below before offering a successor/u,
+      "Apply the write-outcome rules before any successor offer."],
     [/During feedback, questions or a pause, render nothing/u,
       "Result feedback must not expose the next task or image."],
     [/name its exact localized title as the continuation offer and wait/u,
@@ -101,6 +105,36 @@ export function assertCurrentCoachBehavior({ skill, policy }) {
   assert.doesNotMatch(workflow,
     /without announcing a successor until the learner chooses to continue/iu,
     "A successor-title offer must not be forbidden by a conflicting continuation rule.");
+  requireRules(masteryEligibility, [
+    [/`nextAllowedTools` lists immediate backend actions\. It intentionally omits `set_skillpilot_mastery` because evidence and closure are evaluated in chat/u,
+      "The immediate action list must not forbid the conversation-dependent mastery write."],
+    [/When `requiredAction` is `orientActiveGoal`, `teachActiveGoal` or `setMastery`, use the current host's mastery tool for the active atomic non-memory goal once the mode-specific rules are met/u,
+      "Conditional mastery must require the current active goal and a valid backend action."],
+    [/For an orientation, wait for explicit acceptance of the offered closure and then save that same active goal, even though mastery is absent from `nextAllowedTools`/u,
+      "Orientation closure must save the same goal after acceptance despite the immediate-list omission."],
+    [/Use its `activeGoal.goalId`, the current session, fresh `stateVersion` as `expectedStateVersion` and a new `clientRequestId` for the first write/u,
+      "An eligible write must use the current goal, session, revision and request ID."],
+    [/A missing or changed active goal, a different required action, or an actual session, authorization or host restriction blocks the write\. Empty options or a changed frontier alone authorize no write/u,
+      "Conditional mastery must never bypass an actual block or rely on frontier hints."],
+  ]);
+  requireRules(saves, [
+    [/saved only on a successful `set_skillpilot_mastery` result with `status=updated`, the matching `savedGoalId` and `savedMastery=1`/u,
+      "Persisted mastery needs a successful receipt for the same goal."],
+    [/A new active goal, a changed revision, and aggregate progress do not confirm the save/u,
+      "Changes in successor or aggregate state do not prove the attempted save."],
+    [/host explicitly reports that approval is pending[\s\S]+approval control only if confirmed available and wait without a second write/u,
+      "Wait on a pending approval without inventing a control or duplicating the write."],
+    [/explicitly denies or cancels approval[\s\S]+Do not retry or bypass that decision with another tool, a component, a new chat, or a permissions change/u,
+      "A host denial or cancellation must stop the write without a retry or alternate route."],
+    [/structured error, follow its recovery\. A correctable input must actually be corrected[\s\S]+new `clientRequestId` for changed arguments[\s\S]+Preserve the assessed goal and verdict[\s\S]+reload context at most once/u,
+      "Backend recovery must validate a genuine correction without changing the result or reusing the request ID."],
+    [/reply is lost, missing or ambiguous, say that saving could not be confirmed[\s\S]+Do not guess that approval was denied or the write failed/u,
+      "Missing replies leave the save uncertain without guessing a refusal."],
+    [/next authorized fresh read to check for explicit confirmation[\s\S]+No automatic write[\s\S]+learner later requests an identical transport retry and it is still authorized in the same session, reuse the original arguments and `clientRequestId`/u,
+      "Uncertain transport uses read-only recovery first and only a learner-requested authorized identical retry."],
+    [/While unresolved, preserve the evidence and verdict in this chat[\s\S]+withhold the completion handoff and successor/u,
+      "An unresolved save must preserve the assessment and withhold continuation."],
+  ]);
   requireRules(essentials, [
     [/Invite an initial idea or offer an explanation\.[\s\S]+explain it directly with a concrete example/u,
       "Understanding goals must allow a direct explanation when needed."],
@@ -122,6 +156,8 @@ export function assertCurrentCoachBehavior({ skill, policy }) {
       "Sufficient evidence must stop assessment without an extra task quota."],
     [/(?:verdict|fixed decision)[\s\S]+new substantive work[\s\S]+grading error/iu, "Continuation alone must not reassess an existing verdict."],
     [/(?:write fails|failed or conflicting write)[\s\S]+(?:do not|never) claim/u, "Failed writes must never be presented as saved mastery."],
+    [/Follow the skill's \*\*Save outcomes\*\* for mastery and Verified Recall/u,
+      "The detailed coaching policy must use the shared write-outcome workflow."],
     [/Guide the learner toward mastery with targeted checks/u, "Coaching must target the missing evidence."],
     [/Do not offer to mark the goal mastered or move to a next topic as mastered while that evidence is missing/u,
       "Mastery and a mastered successor must not be offered without evidence."],

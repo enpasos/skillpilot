@@ -332,6 +332,8 @@ class OpenAiDeCoachContextProjectorTest {
                         "persönliche Anschlussfrage",
                         "biete Rückfragen oder Abschluss an und warte auf eine weitere Antwort",
                         "Speichere den Orientierungsabschluss erst danach",
+                        "nextAllowedTools listet unmittelbare Aktionen und lässt den bedingten Abschlussaufruf aus",
+                        "rufe set_skillpilot_mastery für diese activeGoal.goalId",
                         "nicht zu einer unverbundenen Zielliste",
                         "keine Fachkompetenz")
                 .doesNotContain("Ein Überblick über Möglichkeiten von Analysis bis Stochastik.")
@@ -373,6 +375,7 @@ class OpenAiDeCoachContextProjectorTest {
                 .isEqualTo("Why mathematics? – Thinking, patterns & the future");
         assertThat(context.activeGoal().description())
                 .isEqualTo("An overview of possibilities from calculus to probability.");
+        assertThat(context.nextAllowedTools()).doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
         assertThat(context.orientationOutlook().paths())
                 .extracting(OpenAiDeCoachContext.OrientationPath::title)
                 .containsExactly(
@@ -388,6 +391,8 @@ class OpenAiDeCoachContextProjectorTest {
                         "active personal follow-up",
                         "invite questions or closure, and wait for a further learner answer",
                         "Save completion only after that separate consent",
+                        "nextAllowedTools lists immediate actions and omits the conditional mastery write",
+                        "call set_skillpilot_mastery for this activeGoal.goalId",
                         "never claim subject mastery")
                 .doesNotContain("An overview of possibilities from calculus to probability.");
         assertThat(context.policies())
@@ -412,7 +417,9 @@ class OpenAiDeCoachContextProjectorTest {
 
         assertThat(context.interactionMode()).isEqualTo("chat");
         assertThat(context.activeGoal().semanticKind()).isEqualTo("curricularAtomic");
-        assertThat(context.instruction()).contains("zwei unabhängigen Checks");
+        assertThat(context.instruction()).contains("zwei unabhängigen Checks",
+                "rufe set_skillpilot_mastery für diese activeGoal.goalId");
+        assertThat(context.nextAllowedTools()).doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
         assertThat(context.policies())
                 .anySatisfy(policy -> assertThat(policy)
                         .contains("Setup, Ablaufreihenfolge und Speicherung nicht didaktisch")
@@ -421,6 +428,20 @@ class OpenAiDeCoachContextProjectorTest {
                         .contains("Kompetenz noch nicht gezeigt", "bleibe beim aktiven Ziel")
                         .contains("Zusatzfrage", "gezielten Hinweis oder Teilschritt", "neue Evidenz")
                         .contains("neue Aufgabe erst nach Rückmeldung und Zustimmung zum Weitergehen"));
+    }
+
+    @Test
+    void masteryGuidanceDoesNotAppearForAnOrientationWhenAnotherActionIsRequired() {
+        var projector = new OpenAiDeCoachContextProjector(new CoachStateProjection("https://skillpilot.test"),
+                "https://skillpilot.test");
+        for (String locale : List.of("de", "en-GB")) {
+            var context = projector.project(
+                    motivationState("orientation", List.of("Motivation", "Orientation"), "setScope"),
+                    PersonalizationPlan.complete(List.of()), true, locale, motivationOutlook(false));
+            assertThat(context.requiredAction()).isEqualTo("setScope");
+            assertThat(context.instruction()).doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+            assertThat(context.nextAllowedTools()).doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+        }
     }
 
     @Test
@@ -588,6 +609,8 @@ class OpenAiDeCoachContextProjectorTest {
                         OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
                         OpenAiDeV1McpContractAdapter.START_RECALL)
                 .doesNotContain(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD);
+        assertThat(german.instruction()).doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
+        assertThat(english.instruction()).doesNotContain(OpenAiDeV1McpContractAdapter.SET_MASTERY);
         assertThat(german.instruction())
                 .contains(
                         "Während Rückmeldung, Rückfragen oder einer Pause biete keinen neuen Lernmodus an",
