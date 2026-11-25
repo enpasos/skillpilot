@@ -736,8 +736,10 @@ covered, but asked for no experiment and no spreadsheet, and any one of its
 four steps could be left out at the pass mark of 15 of 25 points. It keeps its
 identity, task and rubric in the historical container; no view offers it, and
 stored plans and passes follow the decision of 24 November above. The E.1
-parent material names no closing exam: the parent unit is checked by its parts
-A–D, and the child unit "Freier Fall schwerer Kugeln" keeps its own. The
+parent material names no closing exam. Its parts A–D remain: as the unit
+assignment where the pilot is enabled, as ordinary exams of the child units
+otherwise. The child unit "Freier Fall schwerer Kugeln" keeps its own closing
+exam. The
 free-fall experiment has a dedicated exam in Hesse and Saxony only, as before.
 Four sister exams of the same build keep their places until the unit reviews
 of E.2 to E.4 have given their goals own checks ("Kreisbewegung,

@@ -39,8 +39,11 @@ its context. The answers, read from the catalog:
   from each of them. In every one of the 64 views all other atomic targets and all
   prerequisite-only goals are unchanged; the other 26 views are byte-identical.
 - **Unit material.** `he-e1-motion-practice.json` no longer names the exam as closing exam of the
-  parent unit (`/unit/assessmentGoalId` removed, nothing else). The parent unit is checked by its
-  four contract parts A to D.
+  parent unit (`/unit/assessmentGoalId` removed, nothing else). The parent unit therefore offers
+  no single closing exam. Its four parts A to D remain: as the unit assignment in the six contract
+  views when the unit-assignment pilot is on, and as ordinary exams on the boards of the child
+  units otherwise (the pilot defaults to off, and two of the eight material views have no
+  contract).
 - **Semantic kinds.** The three changed goals keep the kind `practiceAssessment`; their source
   fingerprints are renewed.
 
@@ -56,8 +59,9 @@ its context. The answers, read from the catalog:
 ## Stored data
 
 A stored pass stays with this goal id; nothing is copied, reset or transferred. A stored plan that
-names the exam stays valid and is read without that entry (Product Owner decision of
-24 November 2026). A new plan cannot select it. A learner whose stored active goal is the exam is
+names the exam together with other valid goals stays valid and is read without that entry (Product
+Owner decision of 24 November 2026). A plan that names only this exam stays stored unchanged and is
+outdated, as before. A new plan cannot select it. A learner whose stored active goal is the exam is
 treated as having no active goal: the coach offers the frontier and describes the focused unit with
 its activities. Before this change the coach left out the focused unit in that case; the guard in
 `LearnerService.getCoachActiveGoalContext` now uses the visible active goal, not the stored id.

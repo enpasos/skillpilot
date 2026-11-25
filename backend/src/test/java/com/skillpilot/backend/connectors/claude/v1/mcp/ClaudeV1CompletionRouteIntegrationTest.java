@@ -288,8 +288,12 @@ class ClaudeV1CompletionRouteIntegrationTest {
         // The coach reports no active goal and still describes the focused unit with its activity.
         learner.setActiveGoalId(retiredMixedExam);
         learnerRepository.saveAndFlush(learner);
+        long versionWithRetiredActiveGoal = version();
         var afterRetirement = context();
         assertThat(afterRetirement.get("activeGoal")).isNull();
+        // Reading stays read-only: the stored id and the state version are untouched.
+        assertThat(version()).isEqualTo(versionWithRetiredActiveGoal);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(retiredMixedExam);
         var unitAfterRetirement = mapper.valueToTree(map(afterRetirement, "focusedUnitContext"));
         assertThat(unitAfterRetirement.path("unitIntroduction").path("sectionTitle").asText()).isEqualTo("E.1 Bewegungen und ihre Beschreibung");
         assertThat(unitAfterRetirement.path("activities")).hasSize(1);

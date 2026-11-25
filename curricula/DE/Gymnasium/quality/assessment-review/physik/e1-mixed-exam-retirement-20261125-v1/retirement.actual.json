@@ -950,7 +950,7 @@
   },
   "storedData": {
     "results": "A stored pass of the exam stays with this goal id. Nothing is copied, reset or transferred.",
-    "plans": "A stored plan that names the exam stays valid and is read without that entry (Product Owner decision of 24 Nov 2026, implemented by PR #190). New plans cannot select it.",
+    "plans": "A stored plan that names the exam together with other valid goals stays valid and is read without that entry (Product Owner decision of 24 Nov 2026, implemented by PR #190). A stored plan that names only this exam stays stored unchanged and is outdated, as before. New plans cannot select the exam.",
     "activeGoal": "A learner whose stored active goal is the exam is treated as having no active goal: the coach offers the frontier and describes the focused unit with its activities, and unit card practice works. The stored id is not rewritten by reading; the next chosen goal replaces it.",
     "noNewPlanningCredit": true
   }

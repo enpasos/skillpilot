@@ -81,8 +81,8 @@ multiphase exam is retired until an edition passes independent review. The
 horizontal-throw exam has a revised edition with its own id since 24 November;
 passes of the earlier edition never count for it. The mixed exam
 "Bewegungsanalyse und freier Fall" is retired for all Länder since
-25 November; the E.1 parent names no closing exam and is checked by parts
-A–D. The
+25 November; the E.1 parent names no closing exam. Parts A–D remain, as the
+unit assignment with the pilot on and as ordinary exams otherwise. The
 planning release credits only the accelerated-motion goal from part D. See
 the E.1 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 
