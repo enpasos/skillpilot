@@ -161,7 +161,8 @@
         "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04",
         "e6a89922-75ce-53dd-9e7b-3a683398431c",
         "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
-        "f602680f-ea75-5bed-ae87-72f6be34a99b"
+        "f602680f-ea75-5bed-ae87-72f6be34a99b",
+        "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"
       ],
       "requires": [],
       "applicability": {
@@ -66219,6 +66220,85 @@
               "id": "t6-drag-claim",
               "points": 3,
               "description": "DE: Nur eigenständiger Beitrag zur Gleichzeitigkeit; „wirkt auch senkrecht“ und „gleiche Fallzeit nicht gesichert“ zählen nur in t6-drag-limits. (a) Urteil „nicht zwangsläufig gleichzeitig“, gestützt auf benannten Unterschied A–B (zusätzliches v_x/schneller, andere Bahn, evtl. andere Widerstandseigenschaften). (b) Mechanismus: senkrechter Widerstand kann von der Gesamtbewegung abhängen, oder begründeter Gegenfall; (b) für A und B schließt (a) ein. 3 = (a)+(b); 1,5 = (a) ohne (b); 0 = fehlend, bloßes „falsch“ ohne Unterschied A–B, nur senkrechte Wirkung, Gruppenregel P-DRAG. Reihenfolge nicht verlangt; bedingt für genanntes Modell kein Abzug; allgemein zwingende, beibehaltene Reihenfolge: Gruppenregel. Selbstkorrektur: Schlussaussage zählt. Je geringfügigem Fehler −0,5. EN: Only the independent contribution to simultaneity; ‘drag also acts vertically’ and ‘equal fall time not secured’ count only in t6-drag-limits. (a) Judgement ‘not necessarily simultaneous’, resting on a named A–B difference (extra v_x/faster, different path, possibly different drag properties). (b) Mechanism: vertical drag can depend on the overall motion, or a justified counter-case; (b) for A and B includes (a). 3 = (a)+(b); 1.5 = (a) without (b); 0 = missing, bare ‘wrong’ without A–B difference, only the vertical effect, group rule P-DRAG. No order required; conditional for a named model: no deduction; universally necessary order maintained: group rule. Self-correction: final statement counts. Each minor slip −0.5."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+      "shortKey": "seki_mean_resultant_force_from_momentum_interval",
+      "title": "Mittlere Kraft auf einen Wagen",
+      "titleEn": "Average force on a cart",
+      "description": "Aus zwei vorzeichenbehafteten Impulsmessungen die mittlere resultierende äußere Kraft bestimmen und ihre Richtung deuten.",
+      "descriptionEn": "Determine the average net external force from two signed momentum measurements and interpret its direction.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "SEKI_MEAN_RESULTANT_FORCE_FROM_MOMENTUM_INTERVAL"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+        ],
+        "coveredStrands": [],
+        "demandLevels": [
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v1/seki_mean_resultant_force_from_momentum_interval.md",
+        "taskContent": "Ein Wagen mit unveränderlicher Masse bewegt sich auf einer geraden Bahn. Das ruhende Labor wird als Inertialsystem betrachtet. Nach rechts ist die positive Richtung.\n\nGemessen werden:\n• bei t₁=2,0 s: p₁=+8,0 kg·m/s;\n• bei t₂=5,0 s: p₂=−4,0 kg·m/s.\n\nBestimme die mittlere resultierende äußere Kraft auf den Wagen zwischen diesen Zeitpunkten. Gib dein Ergebnis in Newton an und erkläre, was sein Vorzeichen für die Kraftrichtung bedeutet. Zeige deinen Rechenweg.",
+        "taskContentEn": "A cart of fixed mass moves along a straight track. The stationary laboratory is treated as an inertial frame. Right is the positive direction.\n\nMeasurements:\n• at t₁=2.0 s: p₁=+8.0 kg·m/s;\n• at t₂=5.0 s: p₂=−4.0 kg·m/s.\n\nDetermine the average net external force on the cart between these times. Give your result in newtons and explain what its sign means for the force direction. Show your working.",
+        "solutionContent": "Δp=p₂−p₁=(−4)−(+8)=−12 kg·m/s; Δt=5−2=3 s.\nF̄=Δp/Δt=−12/3=−4 N. Negativ bedeutet bei rechts positiv: Die mittlere resultierende äußere Kraft zeigt nach links.\nGleichwertige gültige Wege, exakte Zahlenterme und konsistent umgekehrte Achsen zählen; getrennte Zwischenzeilen sind unnötig. Die Daten liefern einen Intervallmittelwert.\nBewertung: 3+4+3 P; bestanden allein ab 8/10. Nur allgemeine Änderungsformel: 0,5/3. Quotient ohne angewandte Zeitspanne: A=0,5/3. Deutung: 0,5 für das Kraftvorzeichen, 2,5 für die physikalische Richtung. Eine ausdrückliche unbegründete Folgerung auf konstante oder bestimmte momentane Kraft kostet einmal 2,5 in meanForce (mindestens 0); Schweigen kostet nichts, eine Momentanrechnung ist nicht verlangt. Je eigenständigem isoliertem Formfehler bei sichtbarem Kern höchstens 0,5 einmal am Ursprung; keine Folgeabzüge. Details und Teilpunkte stehen in den Kriterien.",
+        "solutionContentEn": "Δp=p₂−p₁=(−4)−(+8)=−12 kg·m/s; Δt=5−2=3 s.\nF̄=Δp/Δt=−12/3=−4 N. With right positive, negative means that the average net external force points left.\nEquivalent valid methods, exact numerical expressions and consistently reversed axes count; separate intermediate lines are unnecessary. The data give an interval average.\nScoring: 3+4+3 points; pass solely at 8/10. General change formula only: 0.5/3. Quotient without applied elapsed time: A=0.5/3. Direction: 0.5 for force sign, 2.5 for physical interpretation. An explicit unsupported inference of constant force or a particular instantaneous force costs 2.5 once in meanForce (floor 0); silence costs nothing and no instantaneous calculation is required. Each distinct isolated formal slip with visible core costs at most 0.5 once at its origin; no consequential deductions. The criteria specify partial credit.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "momentumChange",
+              "points": 3,
+              "description": "3 P: vorzeichenbehaftete Zahlenänderung −12 kg·m/s, exakter Term (−4)−(+8) oder gleichwertige numerische Evidenz, auch eingebettet/bei umgekehrter Achse. 0,5: nur unbestrittenes p_Ende−p_Anfang ohne Zahlenanwendung; sonst 0. Beibehaltener falscher Änderungs-/Vorzeichenansatz: 0, auch neben richtiger Formel. Keine Zahlenänderung aus der Endkraft rekonstruieren. Klare Zwischeneinheiten dürfen implizit sein. Sichtbar richtiger Kern mit isoliertem Fehler: höchstens −0,5 einmal am Ursprung, konsistente Folgen anerkennen. / EN: 3: signed numerical change −12 kg·m/s, exact term (−4)−(+8), or equivalent numerical evidence, including embedded working/reversed axis. 0.5: only uncontradicted p_end−p_start with no numerical application; otherwise 0. A maintained wrong change/sign operation earns 0 even beside a correct formula. Do not reconstruct a numerical change from the final force. Clear intermediate units may be implicit. A visibly sound core with an isolated slip loses at most 0.5 once at its origin; credit consistent consequences."
+            },
+            {
+              "id": "meanForce",
+              "points": 4,
+              "description": "A+B+C. A=3: Δp/Δt (auch Betrag) mit benutzten 3 s bzw. (5−2) s; andernorts gezeigte und benutzte Dauer zählt. A=0,5: nur allgemeiner Quotient ohne angewandte Dauer ODER nur richtige Dauer; nicht addieren; sonst 0. Beibehaltene falsche Beziehung/Dauer: A=0, höchstens 0,5 für unabhängig richtige Dauer. B=0,5: richtiger Kraftwert, exakter numerisch bestimmter Term oder richtige Rechnung im eigenen Ansatz. C=0,5: N/gleichwertige Einheit am Kraftergebnis. Eigene falsche Δp zulässig. Δp/(3 s) ohne numerische Δp und ohne Kraftwert: B=0. Unbegründete Folgerung aus dem Mittelwert auf konstante/bestimmte momentane Kraft: hier einmal −2,5, Minimum 0, auch bei beiden Behauptungen. Schweigen: kein Abzug. Isolierter Fehler: höchstens −0,5 einmal am Ursprung, keine Folgeabzüge. / EN: A+B+C. A=3: Δp/Δt (also magnitude) using 3 s or (5−2) s; elapsed time shown elsewhere and used counts. A=0.5: only a general quotient without applied duration OR correct duration alone; do not add; otherwise 0. Maintained wrong relation/duration: A=0, at most 0.5 for independently correct duration. B=0.5: correct force value, exact numerically fixed expression or correct arithmetic in the own setup. C=0.5: N/equivalent unit on the force result. Own wrong Δp is allowed. Δp/(3 s) without numerical Δp or force value: B=0. Unsupported inference from the mean to constant/a particular instantaneous force: subtract 2.5 here once, floor 0, even for both claims. Silence: no deduction. Isolated slip: at most 0.5 once at its origin, no consequential deductions."
+            },
+            {
+              "id": "direction",
+              "points": 3,
+              "description": "0,5 P: Kraftvorzeichen zur gewählten Achse; 2,5: physikalische Deutung dieses Vorzeichens (hier negativ = links). Gerichteter Wert „4 N nach links“: 3; vorzeichenbehaftete Kraft ohne Deutung: 0,5; nur Betrag: 0. Fehlende oder beibehaltene falsche Deutung: keine 2,5. Hier neu eingeführte systematische Umkehr von Kraftvorzeichen und Richtung: 0, auch bei richtiger Übersetzung des eigenen falschen Vorzeichens. Vorgelagert bereits abgezogene Fehler: konsistente Vorzeichen-/Richtungsfolgen voll anerkennen, ohne die fehlende Ursprungsevidenz zu ersetzen. Widersprüche verlieren nur betroffene Evidenz; ein nachweislich isolierter Zeichen-/Beschriftungsfehler bei sichtbarem Kern kostet höchstens 0,5 einmal am Ursprung. / EN: 0.5: force sign for the chosen axis; 2.5: physical interpretation of that sign (here negative = left). Directed value '4 N leftwards': 3; signed force without interpretation: 0.5; magnitude alone: 0. Missing or maintained wrong interpretation earns no 2.5. A systematic force-sign and direction reversal newly introduced here earns 0, even if the own wrong sign is decoded correctly. For upstream errors already charged, fully credit consistent sign/direction consequences without replacing missing evidence at the origin. Contradictions lose only affected evidence; a demonstrably isolated sign/label slip with visible core costs at most 0.5 once at its origin."
             }
           ]
         }

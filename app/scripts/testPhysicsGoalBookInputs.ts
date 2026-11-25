@@ -349,6 +349,7 @@ const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
   'f203a552-fcf0-560c-baa2-47d4eb2379c8',
 ])
 const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
+  'b50e9903-58b3-520d-96bf-d5bc1fe51ebf', // Mean resultant force (Baden-Württemberg).
   '4ea1b93f-2dba-59ac-87ab-29af6c55cc37',
   // B034: actual individually counter-reviewed tasks for the separated competencies.
   '51af53cb-8866-52cd-b2ca-af8bd8a836e0',
@@ -642,12 +643,12 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
   curricularAtomic: 493,
   curricularArea: 112,
-  practiceAssessment: 248,
+  practiceAssessment: 249,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 4,
-  total: 867,
+  total: 868,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
@@ -2630,6 +2631,28 @@ ledger.decisions.forEach((decision) => {
 })
 assert.equal(decisionByGoalId.size, goalById.size, 'semantic-kind ledger must bind every Physics goal exactly once')
 assert.deepEqual(actualCounts, EXPECTED_COUNTS)
+const lowerMomentumKindsPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/lower-assessments-kinds.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, lowerMomentumKindsPath), 'utf8')), 'b8da1f2bf192ca1039591a003ac975fff2eb49b6039bfbeeac0e2b939deaea8c')
+const lowerMomentumKinds = readJson<{
+  root: { goalId: string; previousChildren: number; currentChildren: number; currentSourceFingerprint: string }
+  newExams: Array<{ goalId: string; canonicalPayloadSha256: string; sourceFingerprint: string; semanticKind: string; contentReview: EvidenceFile }>
+}>(lowerMomentumKindsPath)
+const lowerMomentumCatalogRoot = goalById.get(lowerMomentumKinds.root.goalId)!
+assert.equal(lowerMomentumCatalogRoot.contains.length, lowerMomentumKinds.root.currentChildren)
+assert.equal(lowerMomentumKinds.root.currentChildren - lowerMomentumKinds.root.previousChildren, 1)
+assert.equal(decisionByGoalId.get(lowerMomentumCatalogRoot.id)?.sourceFingerprint, lowerMomentumKinds.root.currentSourceFingerprint)
+assert.deepEqual(lowerMomentumKinds.newExams.map(r => r.goalId), [
+  'b50e9903-58b3-520d-96bf-d5bc1fe51ebf',
+])
+for (const row of lowerMomentumKinds.newExams) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, row.contentReview.path), 'utf8')), row.contentReview.sha256)
+  assert.deepEqual(parentIdsByChild.get(row.goalId), [lowerMomentumCatalogRoot.id])
+  assert.equal(row.semanticKind, 'practiceAssessment')
+  assert.equal(decisionByGoalId.get(row.goalId)?.semanticKind, row.semanticKind)
+  assert.equal(decisionByGoalId.get(row.goalId)?.sourceFingerprint, row.sourceFingerprint)
+  assert.equal(sha256(JSON.stringify(rawGoalById.get(row.goalId))), row.canonicalPayloadSha256)
+}
+
 const kinematicsReviewPath = 'curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json'
 // This immutable receipt binds the original material review, not today's
 // narrowed/withdrawn coverage or the current acquisition-contract approval.
