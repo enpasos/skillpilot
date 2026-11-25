@@ -1848,17 +1848,42 @@ public class LearnerServiceTest {
             assertThat(learnerService.isLearningPlanCompatible(
                     learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(changed))).isFalse();
         }
+        // A single goal used as the focus of another goal is damage, never the trace of a
+        // regrouping: one goal has no content that a new cut could move away.
         var wrongFocus = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
                 original.id(), original.kind(), CANONICAL_CHOOSE_REPRESENTATION_ID, original.title(),
                 original.startDate(), original.endDate(), original.date(), original.atomicGoalIds());
-        // A stored plan keeps goals that lie outside the focus of their block: a regrouping of the
-        // curriculum moves goals to another section, and the plan still works (Product Owner,
-        // 24 November 2026). A new plan with the same block is refused, and so is a focus that
-        // does not resolve.
         assertThat(learnerService.isLearningPlanCompatible(
-                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(wrongFocus))).isTrue();
+                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(wrongFocus))).isFalse();
+        // A stored plan keeps goals that lie outside the section of their block: a regrouping of
+        // the curriculum moves goals to another section, and the plan still works (Product Owner,
+        // 24 November 2026). Here the stored section is the neighbouring cluster "Zwischen
+        // Darstellungen wechseln", which holds neither goal today. A new plan with the same block
+        // is refused, and so is a focus that does not resolve.
+        String otherSection = "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e";
+        assertThat(learnerService.resolveLearningPlanGoalIds(learnerId, plan.getLandscapeId(), List.of(otherSection)))
+                .isNotEmpty().doesNotContainAnyElementsOf(original.atomicGoalIds());
+        var formerSection = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                original.id(), original.kind(), otherSection, original.title(),
+                original.startDate(), original.endDate(), original.date(), original.atomicGoalIds());
+        assertThat(learnerService.isLearningPlanCompatible(
+                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(formerSection))).isTrue();
         assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
-                learnerId, plan.getLandscapeId(), List.of(wrongFocus)))
+                learnerId, plan.getLandscapeId(), List.of(formerSection)))
+                .hasMessageContaining("not a subject-local ancestor");
+        // The goals stay with the section they were captured with, not with any section.
+        assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(formerSection),
+                Map.of(CANONICAL_REPRESENTATION_CLUSTER_ID, Set.copyOf(original.atomicGoalIds()))))
+                .hasMessageContaining("not a subject-local ancestor");
+        assertThatCode(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(formerSection),
+                LearnerService.learningPlanCapturedSelections(List.of(formerSection))))
+                .doesNotThrowAnyException();
+        // ... and only the goals that were captured with it.
+        assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(formerSection),
+                Map.of(otherSection, Set.of(CANONICAL_CHOOSE_REPRESENTATION_ID))))
                 .hasMessageContaining("not a subject-local ancestor");
         var unknownFocus = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
                 original.id(), original.kind(), "unknown-focus", original.title(),
