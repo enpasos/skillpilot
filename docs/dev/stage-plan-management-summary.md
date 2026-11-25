@@ -21,11 +21,11 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 25. November 2026, 08:06 MEZ – Bestehensgrenze für zwei eigene Fallmessreihen
+## 25. November 2026, 08:30 MEZ – Bestehensgrenze für zwei eigene Fallmessreihen
 
-Die unabhängige Bewertung bestätigt für das freiwillige Zwei-Messreihen-Experiment die Grenze von 22/26 Punkten. Auf Daten und grafische Bestimmung entfallen je drei Punkte pro Reihe. Gesetz und geprüfte Anfangsbedingungen tragen je 2,5 Punkte. Die beiden unabhängigen Prüfungen umfassen jeweils 19 geschriebene Abgaben. Vier lokale Formfehler, ausgelassene Anfangsbedingungen in beiden Reihen und ein als eigene Bestimmung beibehaltener Literaturwert sind die Prüffälle für die fachliche Grenze. [Aufgabenbewertung und Ergebnisse](../../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v2/README.md)
+Die unabhängige Bewertung bestätigt für das freiwillige Zwei-Messreihen-Experiment die Grenze von 22/26 Punkten. Auf Daten und grafische Bestimmung entfallen je drei Punkte pro Reihe. Gesetz und geprüfte Anfangsbedingungen tragen je 2,5 Punkte. Die beiden unabhängigen Prüfungen umfassen jeweils 19 geschriebene Abgaben. Vier lokale Formfehler, ausgelassene Anfangsbedingungen in beiden Reihen und ein als eigene Bestimmung beibehaltener Literaturwert sind die Prüffälle für die fachliche Grenze. [Aufgabenbewertung und Ergebnisse](https://github.com/enpasos/skillpilot/blob/e3d0f261af01dce9c5f7386c78cd9836072c265f/curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v2/README.md)
 
-Zusätzlich abgeschlossen sind 0 von 13 K-Zielen und 0 von 7 F-Zielen. Die Bearbeitung aktiviert keinen weiteren Stufenplan. Hessen E und Sachsen J9 führen die freiwillige Aufgabe weiterhin in beiden Kursprofilen. Die Integration liegt bei Claude. [Gebundene Entscheidung](../../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v2/accepted.actual.json)
+Zusätzlich abgeschlossen sind 0 von 13 K-Zielen und 0 von 7 F-Zielen. Die Bearbeitung aktiviert keinen weiteren Stufenplan. Die Messung vor und nach der Änderung ergibt in 90 Physikansichten und 356 Lernschritten in der Vorschau auf Untereinheiten jeweils 32 Vorkommen stufenrückläufiger Beziehungen, verteilt auf dieselben zehn Beziehungen. Hessen E und Sachsen J9 führen die freiwillige Aufgabe weiterhin in beiden Kursprofilen. Die Integration liegt bei Claude. [Gebundene Entscheidung](https://github.com/enpasos/skillpilot/blob/e3d0f261af01dce9c5f7386c78cd9836072c265f/curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v2/accepted.actual.json)
 
 ## 25. November 2026, 04:54 MEZ – Eigene Fallmessreihen in Physik E.1
 
