@@ -17,11 +17,17 @@ its context. The answers, read from the catalog:
   is 15.
 - **It no longer fits E.1.** Since the E.1 cut of 23 November 2026 road traffic belongs to E.2 and
   spreadsheet modelling to E.4.
-- **Nothing is lost.** Road traffic and spreadsheet modelling have dedicated exams in all Länder.
-  The free-fall experiment has its dedicated exam in Hesse and Saxony only. In the other Länder it
-  had none before and has none now, because this exam never asked for an experiment.
+- **No real check is lost.** Counted over all 90 Physics views: spreadsheet modelling keeps its
+  dedicated exam in each of the 68 views where it is a target. Road traffic keeps an exam that
+  requires it in each of its 70 views: its dedicated exam in 12 of them and, in 64, the mixed exam
+  "Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen", which has the same build and stays
+  until the E.2 review. The free-fall experiment has its dedicated exam in 13 of its 68 views
+  (Hesse 8, Saxony 3, the national cross-stage views 2). In 52 views the retired exam was the only exam that named the experiment as a
+  prerequisite; it asked for no experiment, so those views had no real check of it before and
+  have none now. The review of the free-fall routes in the follow-up package decides where a
+  dedicated exam is needed.
 
-`retirement.actual.json` lists each claim with the other active exams of the claimed goal.
+`retirement.actual.json` lists each claim with the active exams that remain, counted per view.
 
 ## What changed
 
@@ -51,8 +57,10 @@ its context. The answers, read from the catalog:
 
 A stored pass stays with this goal id; nothing is copied, reset or transferred. A stored plan that
 names the exam stays valid and is read without that entry (Product Owner decision of
-24 November 2026). A new plan cannot select it. A stored active goal that names the exam does not
-block the practice of the focused unit.
+24 November 2026). A new plan cannot select it. A learner whose stored active goal is the exam is
+treated as having no active goal: the coach offers the frontier and describes the focused unit with
+its activities. Before this change the coach left out the focused unit in that case; the guard in
+`LearnerService.getCoachActiveGoalContext` now uses the visible active goal, not the stored id.
 
 ## Files
 
@@ -61,8 +69,24 @@ block the practice of the focused unit.
 | `retirement.actual.json` | The record: reason with the four claims, goal and catalog delta, the 64 views with hashes and role counts, generator inputs, semantic kinds, material successor, stored-data rules |
 | `goal.before.json`, `goal.after.json` | The exam goal at the base commit and now |
 | `material.before.json`, `material.after.json` | The E.1 parent material before and after; the before bytes equal the after bytes of the earlier one-field successor (`zb-successor-voluntary-scope-20261124`) |
+| `follow-up-checks.actual.json` | Measured effects beyond the 64 view nodes: the learning set of each changed view, the Mathematics demand policy and the quality status |
+
+## Measured effects
+
+- **Learning sets.** In each of the 64 changed views the learning set (atomic targets and
+  prerequisite-only goals plus all their prerequisites in every subject) loses exactly the retired
+  exam. No other Physics goal and no Mathematics goal leaves or enters it.
+- **Mathematics demand.** The Mathematics views place 1,036 demands of Physics goals. All rows are
+  identical to the base commit; only the 48 pinned hashes of changed Physics source views are
+  renewed in `app/scripts/config/math-foreign-acquisition-demand.json`.
+- **Quality status.** No rule status and no maturity level changed: Physics M7, both stages M4.
+  The active terminal exams of the Sek II scope go from 111 to 110.
 
 ## Checks that bind this record
+
+The tests assert what must stay true (the exam is excluded, has one owner, appears in no view, keeps
+its released content; the material chain; stored plans). The hashes of views, catalog and ledgers
+in the two records describe the state of 25 November 2026 and are not compared with later bytes.
 
 - `app/scripts/testPhysicsGoalBookInputs.ts`: goal, catalog, all 90 views, semantic kinds and the
   material chain against the record.

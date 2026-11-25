@@ -8,7 +8,7 @@
   "decidedBy": "Claude (coordinating agent) under the execution mandate of 15 Nov 2026, following the Product Owner's question of 24 Nov 2026 whether the exam is needed, where, and whether it fits its context.",
   "baseCommit": "3e6af47aec2f7f3046c316e8d4981858b943c4a6",
   "reason": {
-    "need": "No claimed goal loses a check that this exam really provided (see claims). Road traffic and spreadsheet modelling have dedicated exams in all Länder. The free-fall experiment has its dedicated exam in Hesse and Saxony only; in the other Länder it had none before and has none now, because this exam never asked for an experiment.",
+    "need": "No claimed goal loses a check that this exam really provided; the numbers are counted over all 90 Physics views. Spreadsheet modelling keeps its dedicated exam in each of the 68 views where it is a target. Road traffic keeps an exam that requires it in each of its 70 views: its dedicated exam in 12 of them and, in 64, the mixed exam 'Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen', which has the same build and stays until the E.2 review. The free-fall experiment has its dedicated exam in 13 of its 68 views (DE-HE 8, DE-SN 3, national 2). In 52 views the retired exam was the only exam that named the experiment as a prerequisite; it asked for no experiment, so those views had no real check of it before and have none now.",
     "fit": "25 points, pass mark 15, four steps of 6, 7, 6 and 6 points: any one step can be left out entirely. Steps 1 and 2 evaluate a given table for a uniformly accelerated motion; step 3 calculates a free fall from given values; step 4 calculates a stopping distance, which belongs to E.2 since the E.1 cut.",
     "claims": [
       {
@@ -17,45 +17,25 @@
         "type": "atomic",
         "claimStatus": "not tested",
         "finding": "Step 3 gives the height and g and asks for fall time and impact speed. No experiment, no measured data, no graphical evaluation, no own determination of g.",
-        "otherActiveAssessments": [
+        "viewsWhereTheGoalIsATarget": 68,
+        "activeExamsAfterTheRetirement": [
           {
             "goalId": "dd99528a-bae5-5b78-89e6-c6092c927f8d",
             "title": "Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren",
-            "covers": true,
-            "requires": false,
-            "jurisdictions": [
-              "DE-BB",
-              "DE-BE",
-              "DE-BW",
-              "DE-HB",
-              "DE-HE",
-              "DE-HH",
-              "DE-MV",
-              "DE-NI",
-              "DE-NW",
-              "DE-RP",
-              "DE-SH",
-              "DE-SL",
-              "DE-SN",
-              "DE-ST",
-              "DE-TH"
-            ],
-            "applicabilityFromRequires": false,
+            "relation": "covers only",
+            "views": 64,
             "passMark": "18/30"
           },
           {
             "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
             "title": "Prüfungsaufgabe: Freien Fall in zwei eigenen Messreihen untersuchen",
-            "covers": true,
-            "requires": true,
-            "jurisdictions": [
-              "DE-HE",
-              "DE-SN"
-            ],
-            "applicabilityFromRequires": false,
+            "relation": "requires",
+            "views": 13,
             "passMark": "23/24"
           }
-        ]
+        ],
+        "viewsWhereTheRetiredExamWasTheOnlyExamRequiringTheGoal": 52,
+        "viewsLeftWithoutAnyExamOfTheGoal": 0
       },
       {
         "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
@@ -63,59 +43,25 @@
         "type": "atomic",
         "claimStatus": "one skippable step",
         "finding": "Step 4 (6 of 25 points) calculates one stopping distance against a given gap. The step can be left out entirely at the pass mark of 15.",
-        "otherActiveAssessments": [
+        "viewsWhereTheGoalIsATarget": 70,
+        "activeExamsAfterTheRetirement": [
           {
             "goalId": "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",
             "title": "Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen",
-            "covers": true,
-            "requires": true,
-            "jurisdictions": [
-              "DE-BB",
-              "DE-BE",
-              "DE-BW",
-              "DE-HB",
-              "DE-HE",
-              "DE-HH",
-              "DE-MV",
-              "DE-NI",
-              "DE-NW",
-              "DE-RP",
-              "DE-SH",
-              "DE-SL",
-              "DE-SN",
-              "DE-ST",
-              "DE-TH"
-            ],
-            "applicabilityFromRequires": false,
+            "relation": "requires",
+            "views": 64,
             "passMark": "15/25"
           },
           {
             "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
             "title": "Prüfungsaufgabe: Wurf- und Bremsbewegungen modellieren",
-            "covers": true,
-            "requires": true,
-            "jurisdictions": [
-              "DE-BB",
-              "DE-BE",
-              "DE-BW",
-              "DE-BY",
-              "DE-HB",
-              "DE-HE",
-              "DE-HH",
-              "DE-MV",
-              "DE-NI",
-              "DE-NW",
-              "DE-RP",
-              "DE-SH",
-              "DE-SL",
-              "DE-SN",
-              "DE-ST",
-              "DE-TH"
-            ],
-            "applicabilityFromRequires": true,
+            "relation": "requires",
+            "views": 12,
             "passMark": "12/16"
           }
-        ]
+        ],
+        "viewsWhereTheRetiredExamWasTheOnlyExamRequiringTheGoal": 0,
+        "viewsLeftWithoutAnyExamOfTheGoal": 0
       },
       {
         "goalId": "ac25ffe3-fd42-592d-a937-79cc13460313",
@@ -123,68 +69,25 @@
         "type": "atomic",
         "claimStatus": "not tested",
         "finding": "No step uses a spreadsheet, finite time steps or a parameter variation.",
-        "otherActiveAssessments": [
+        "viewsWhereTheGoalIsATarget": 68,
+        "activeExamsAfterTheRetirement": [
           {
             "goalId": "3791c574-2194-52fa-846b-ee1d4e2c5877",
             "title": "Prüfungsaufgabe: Zwei Bewegungsmodelle in der Tabellenkalkulation",
-            "covers": true,
-            "requires": true,
-            "jurisdictions": [
-              "DE-BB",
-              "DE-BE",
-              "DE-BW",
-              "DE-BY",
-              "DE-HB",
-              "DE-HE",
-              "DE-HH",
-              "DE-MV",
-              "DE-NI",
-              "DE-NW",
-              "DE-RP",
-              "DE-SH",
-              "DE-SL",
-              "DE-SN",
-              "DE-ST",
-              "DE-TH"
-            ],
-            "applicabilityFromRequires": true,
+            "relation": "requires",
+            "views": 68,
             "passMark": "11/12"
           }
-        ]
+        ],
+        "viewsWhereTheRetiredExamWasTheOnlyExamRequiringTheGoal": 0,
+        "viewsLeftWithoutAnyExamOfTheGoal": 0
       },
       {
         "goalId": "230345f3-c360-4963-b390-ab94e3e2c864",
         "title": "Freier Fall experimentell untersuchen",
         "type": "cluster",
         "claimStatus": "not tested",
-        "finding": "Cluster of the free-fall experiment goal; same finding as for its atomic goal.",
-        "otherActiveAssessments": [
-          {
-            "goalId": "dd99528a-bae5-5b78-89e6-c6092c927f8d",
-            "title": "Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren",
-            "covers": true,
-            "requires": false,
-            "jurisdictions": [
-              "DE-BB",
-              "DE-BE",
-              "DE-BW",
-              "DE-HB",
-              "DE-HE",
-              "DE-HH",
-              "DE-MV",
-              "DE-NI",
-              "DE-NW",
-              "DE-RP",
-              "DE-SH",
-              "DE-SL",
-              "DE-SN",
-              "DE-ST",
-              "DE-TH"
-            ],
-            "applicabilityFromRequires": false,
-            "passMark": "18/30"
-          }
-        ]
+        "finding": "Cluster of the free-fall experiment goal; same finding as for its atomic goal."
       }
     ]
   },
@@ -343,6 +246,42 @@
       "de-th-gym-sekii-physics-gk",
       "de-th-gym-sekii-physics-lk"
     ],
+    "previousVisibleViewIds": [
+      "de-bb-gym-physics-gk",
+      "de-bb-gym-sekii-physics-gk",
+      "de-be-gym-physics-gk",
+      "de-be-gym-sekii-physics-gk",
+      "de-de-gym-physics-gk",
+      "de-de-gym-sekii-physics-gk",
+      "de-hb-gym-physics-gk",
+      "de-hb-gym-sekii-physics-gk",
+      "de-he-gym-physics-gk",
+      "de-he-gym-physics-gk-g8",
+      "de-he-gym-physics-gk-g9",
+      "de-he-gym-sekii-physics-gk",
+      "de-hh-gym-physics-gk",
+      "de-hh-gym-sekii-physics-gk",
+      "de-mv-gym-physics-gk",
+      "de-mv-gym-sekii-physics-gk",
+      "de-ni-gym-physics-gk",
+      "de-ni-gym-sekii-physics-gk",
+      "de-nw-gym-physics-gk",
+      "de-nw-gym-sekii-physics-gk",
+      "de-rp-gym-physics-gk",
+      "de-rp-gym-sekii-physics-gk",
+      "de-sh-gym-physics-gk",
+      "de-sh-gym-sekii-physics-gk",
+      "de-sl-gym-physics-gk",
+      "de-sl-gym-sekii-physics-gk",
+      "de-sn-gym-physics-gk",
+      "de-sn-gym-sekii-physics-gk",
+      "de-st-gym-physics-gk",
+      "de-st-gym-sekii-physics-gk",
+      "de-th-gym-physics-gk",
+      "de-th-gym-sekii-physics-gk"
+    ],
+    "visibilityFinding": "The exam carries the course tag GK only. It was a target node in 64 views and visible to learners in the 32 Grundkurs views among them.",
+    "visibilityMethod": "applyCompositionViewProjection, normalizeLearnerProjectedEntries and buildVisibleChildrenMap with each view's course, jurisdiction and stage; target roles from collectCompositionProjectionRoleGoalIds.",
     "roleDelta": "In each changed view the exam was an atomic target and is now in no role. Every other atomic target and every prerequisite-only goal is unchanged.",
     "generatorFollowUps": "The Länder generator dropped one empty childOrder declaration in each national Sek II view and re-derived one child order edge in the national Sek II GK view.",
     "files": [
@@ -1012,6 +951,7 @@
   "storedData": {
     "results": "A stored pass of the exam stays with this goal id. Nothing is copied, reset or transferred.",
     "plans": "A stored plan that names the exam stays valid and is read without that entry (Product Owner decision of 24 Nov 2026, implemented by PR #190). New plans cannot select it.",
+    "activeGoal": "A learner whose stored active goal is the exam is treated as having no active goal: the coach offers the frontier and describes the focused unit with its activities, and unit card practice works. The stored id is not rewritten by reading; the next chosen goal replaces it.",
     "noNewPlanningCredit": true
   }
 }

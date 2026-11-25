@@ -535,6 +535,9 @@ const newDurationCounts = Object.fromEntries(Object.keys(counts()).map(key => [k
 const newLandCounts = { ...newDurationCounts }
 const precedingMultiphaseOffers = new Set<string>(readRepoJson('curricula/DE/Gymnasium/quality/assessment-review/physik/e1-multiphase-disposition-20261124/old-offer-views.actual.json').previousVisibleViewIds)
 assert.equal(precedingMultiphaseOffers.size, 32)
+// The mixed E.1 exam "Bewegungsanalyse und freier Fall" (Grundkurs only) was retired on 25 Nov 2026.
+const precedingMixedMotionOffers = new Set<string>(readRepoJson('curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/retirement.actual.json').views.previousVisibleViewIds)
+assert.equal(precedingMixedMotionOffers.size, 32)
 const jurisdictions = new Set<string>()
 for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith('.view.json')).sort()) {
   const view = JSON.parse(readFileSync(resolve(viewDirectory, filename), 'utf8')) as CompositionView
@@ -782,7 +785,13 @@ const retiredHesseDurationPairs = [...precedingMultiphaseOffers].filter(id => ne
 assert.equal(retiredHesseDurationPairs, 2)
 const retiredOriginalPairs = precedingMultiphaseOffers.size - retiredHesseDurationPairs
 assert.equal(retiredOriginalPairs, 30)
-assertCount('practiceTaskPairs', 4278 - retiredOriginalPairs, 320 - retiredHesseDurationPairs,
+// The retired mixed E.1 exam was visible in 30 original and two additional duration views as well.
+const retiredMixedMotionDurationPairs = [...precedingMixedMotionOffers].filter(id => newHesseDurationViewIds.has(id)).length
+assert.equal(retiredMixedMotionDurationPairs, 2)
+const retiredMixedMotionOriginalPairs = precedingMixedMotionOffers.size - retiredMixedMotionDurationPairs
+assert.equal(retiredMixedMotionOriginalPairs, 30)
+assertCount('practiceTaskPairs', 4278 - retiredOriginalPairs - retiredMixedMotionOriginalPairs,
+  320 - retiredHesseDurationPairs - retiredMixedMotionDurationPairs,
   'Expose every current canonical collection obligation, including the new individual and nested assessments.')
 assertCount('abiturTaskPairs', 480, 32, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
 assertCount('preservedSekITaskPairs', 30, 0, 'Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements.')

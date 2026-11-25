@@ -1873,24 +1873,20 @@ assert.deepEqual(retiredMixedExam.extendedData, { applicabilityProjection: 'excl
 assert.deepEqual(mixedRetirement.catalog.changedGoalIds, ['151edbf8-eb68-5ef7-8786-43e56a281b0b', '424b07df-bf66-5d7f-99f5-f28b32ad1f22', retiredMixedExamId])
 assert.deepEqual((rawLandscape.goals as Array<{ id: string; contains?: string[] }>).filter(goal => goal.contains?.includes(retiredMixedExamId))
   .map(goal => goal.id), ['151edbf8-eb68-5ef7-8786-43e56a281b0b'])
-// Every Physics view is bound in its final state, and none names the retired exam.
+// Lasting state, checked on the current files: no Physics view names the retired exam. The hashes of
+// the 64 views, of the catalog and of the semantic-kind ledger in the record are the state of
+// 25 Nov 2026 and are deliberately not compared with later bytes.
 assert.equal(mixedRetirement.views.changed, mixedRetirement.views.files.length)
-for (const view of mixedRetirement.views.files) {
-  const text = readFileSync(resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/physik', view.file), 'utf8')
-  assert.equal(sha256(text), view.afterSha256, view.file)
-}
-const physicsViewFiles = readdirSync(resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/physik')).filter(name => name.endsWith('.view.json'))
-assert.equal(physicsViewFiles.length, mixedRetirement.views.total)
-for (const name of physicsViewFiles) {
+assert.equal(mixedRetirement.views.changed, 64)
+for (const name of readdirSync(resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/physik')).filter(file => file.endsWith('.view.json'))) {
   assert(!readFileSync(resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/physik', name), 'utf8').includes(retiredMixedExamId),
     `${name}: no Physics view offers the retired mixed exam`)
 }
-assert.equal(sha256(readFileSync(resolve(repoRoot, mixedRetirement.semanticKinds.path), 'utf8')), mixedRetirement.semanticKinds.afterSha256)
 assert.deepEqual(mixedRetirement.semanticKinds.changes.map(change => change.goalId).sort(), [...mixedRetirement.catalog.changedGoalIds].sort())
-for (const change of mixedRetirement.semanticKinds.changes) {
-  assert.equal(change.semanticKind, 'practiceAssessment')
-  assert.equal(fingerprintSemanticKindSourceGoal(rawGoalById.get(change.goalId)!), change.currentSourceFingerprint)
-}
+for (const change of mixedRetirement.semanticKinds.changes) assert.equal(change.semanticKind, 'practiceAssessment')
+// The retired goal itself is history and keeps its recorded fingerprint.
+assert.equal(fingerprintSemanticKindSourceGoal(retiredMixedExam),
+  mixedRetirement.semanticKinds.changes.find(change => change.goalId === retiredMixedExamId)!.currentSourceFingerprint)
 assert.equal(sha256(readFileSync(resolve(repoRoot, dprimePlanning.registry.path), 'utf8')), dprimePlanning.registry.sha256)
 const expectedMaterial = readJson<{ unit: { sectionAssessmentPolicy: { voluntaryAssessmentGoalIds: string[] } } }>(materialBefore)
 const voluntary = expectedMaterial.unit.sectionAssessmentPolicy.voluntaryAssessmentGoalIds
