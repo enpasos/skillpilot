@@ -2767,6 +2767,37 @@ for (const [index, row] of closureStrands.currentGoals.entries()) {
   assert.equal(decisionByGoalId.get(row.goalId)?.sourceFingerprint, row.sourceFingerprint)
 }
 
+const closureWarningsPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/applicability-warnings.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, closureWarningsPath), 'utf8')), '7fce8f9dfe68be3ec901f589c03e3e46c1eae00cfc6e45684084f91e3d23267a')
+const closureWarnings = readJson<{
+  currentRelease: EvidenceFile; exactOfferEvidence: EvidenceFile; sourceProjection: EvidenceFile
+  decisions: Array<{code: string; landscapeId: string; goalId: string; dimension: string; evidence: {
+    exactWarningKey: string; compiledJurisdictions: string[]; exactOverrideJurisdictions: string[]
+    currentGoalJsonStringifySha256: string; offeredViewIds: string[]
+  }}>
+}>(closureWarningsPath)
+for (const file of [closureWarnings.currentRelease, closureWarnings.exactOfferEvidence, closureWarnings.sourceProjection]) verifyExerciseArtifact(file)
+assert.equal(closureWarnings.currentRelease.path, closureStrandsPath)
+const acceptedClosureWarnings = readJson<{acceptedWarnings: typeof closureWarnings.decisions}>(
+  'docs/qa-ci/applicability-accepted-warnings.json',
+).acceptedWarnings.filter(row => row.landscapeId === LANDSCAPE_ID && exerciseIds.includes(row.goalId))
+assert.deepEqual(acceptedClosureWarnings, closureWarnings.decisions)
+assert.deepEqual(acceptedClosureWarnings.map(row => row.goalId), exerciseIds)
+for (const [index, row] of acceptedClosureWarnings.entries()) {
+  const jurisdictions = index === 0 ? ['DE-HH', 'DE-TH'] : ['DE-BW']
+  assert.deepEqual(row.evidence.exactOverrideJurisdictions, jurisdictions)
+  assert.deepEqual(row.evidence.compiledJurisdictions, jurisdictions)
+  assert.equal(row.evidence.exactWarningKey, `APV-201|${LANDSCAPE_ID}|${row.goalId}|jurisdiction|`)
+  const found = physicsApplicabilityReport.findings.filter(w => w.goalId === row.goalId && w.code === 'APV-201')
+  assert.equal(found.length, 1)
+  assert.equal(found[0].message, `Goal uses applicability override for ${jurisdictions.join(', ')}.`)
+  const compiled = physicsApplicabilityReport.goals.find(g => g.goalId === row.goalId)
+  assert.deepEqual(compiled?.compiledApplicability, {jurisdiction: jurisdictions})
+  assert.equal(row.evidence.currentGoalJsonStringifySha256, closureStrands.currentGoals[index].currentCanonicalPayloadSha256)
+  const expectedViews = jurisdictions.flatMap(land => ['gym-physics-gk', 'gym-physics-lk', 'gym-seki-physics'].map(scope => `${land.toLowerCase()}-${scope}`))
+  assert.deepEqual([...row.evidence.offeredViewIds].sort(), expectedViews.sort())
+}
+
 const kinematicsReviewPath = 'curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json'
 // This immutable receipt binds the original material review, not today's
 // narrowed/withdrawn coverage or the current acquisition-contract approval.
@@ -3762,7 +3793,19 @@ const signedMomentumAtlasChanges = [
 assert.deepEqual(signedMomentumAtlas.changedSourceViews.map(r => r.path).sort(compareCodePoints), signedMomentumAtlasChanges)
 assert.deepEqual(signedMomentumAtlas.sourceViews.filter(r => r.sha256 !== r.previousSha256)
   .map(r => r.path).sort(compareCodePoints), signedMomentumAtlasChanges)
-for (const row of signedMomentumAtlas.sourceViews) {
+const closureStrandsAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v5/national-atlas-current-sources.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, closureStrandsAtlasPath), 'utf8')), 'afb980498719cc55652bad8eccf058b90289eb34495c4b711fa64b4d31c40025')
+const closureStrandsAtlas = readJson<typeof signedMomentumAtlas>(closureStrandsAtlasPath)
+assert.deepEqual(closureStrandsAtlas.predecessor, {
+  path: signedMomentumAtlasPath, sha256: sha256(readFileSync(resolve(repoRoot, signedMomentumAtlasPath), 'utf8')),
+})
+assert.deepEqual(closureStrandsAtlas.currentUnionGoalIds, signedMomentumAtlas.currentUnionGoalIds)
+assert.deepEqual(closureStrandsAtlas.canonicalProfileTargets.goalIds, signedMomentumAtlas.canonicalProfileTargets.goalIds)
+assert.deepEqual(closureStrandsAtlas.changedSourceViews, [])
+assert.deepEqual(closureStrandsAtlas.sourceViews.map(row => ({path: row.path, sha256: row.previousSha256})),
+  signedMomentumAtlas.sourceViews.map(row => ({path: row.path, sha256: row.sha256})))
+for (const row of closureStrandsAtlas.sourceViews) {
+  assert.equal(row.sha256, row.previousSha256)
   assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale Physics atlas source`)
 }
 assert.equal(atlasCurricularAtomicGoalIds.size, EXPECTED_ATLAS_TARGET_COUNT)
