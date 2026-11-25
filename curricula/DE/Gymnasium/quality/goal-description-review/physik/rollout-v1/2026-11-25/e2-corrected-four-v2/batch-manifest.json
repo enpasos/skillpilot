@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-e2-corrected-four-description-20261125-v2",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-25/e2-corrected-four-v2.config.json",
+  "configDigest": "sha256:6778c12ac33a78d856adb58cf23347a20136fc5dc50b26e5de1f024dff5efb8b",
+  "goalIds": [
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+    "059c1adc-e4d2-5222-a923-15abc417d59f",
+    "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+    "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 493,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-25/e2-impuls-newton2-v2/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:fc88bdb61212735419025d8e0fce9810f149a8f86fcac17f2732e3952c785ccb"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:fee031bfa5d5b5d4743f38384cd00dac6e6dcf0f3bb9d086d2547700e53cd496",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:125c2474a08c8e59489a7e4a48532229c74f5c7c9e584b7a3c0177e4683c3db7",
+    "reviewInputFingerprint": "sha256:7824d8a563d2b0837e156855c50eb80a5a976e60031233bc6e5164168d238fc8",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-e2-corrected-four-description-20261125-v2-a",
+        "campaignDigest": "sha256:b44127326f6989032b86eb3b76ec57a2c6ba7a2ced98d3db3d91f98a0bed1f41",
+        "roundId": "physics-e2-corrected-four-description-20261125-v2-first-pass-a",
+        "independenceGroupId": "physics-e2-corrected-four-description-20261125-v2-independent-a",
+        "batchId": "physics-e2-corrected-four-description-20261125-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:72a3876274d065710700b4bc792b6044f1395a0b666098c781036d9d49da0d64"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-e2-corrected-four-description-20261125-v2-b",
+        "campaignDigest": "sha256:49b6b6e69f09bde6ad33b8aa16c184a7be3573f5ebc49eb5ff16fde0cc6ca8c5",
+        "roundId": "physics-e2-corrected-four-description-20261125-v2-first-pass-b",
+        "independenceGroupId": "physics-e2-corrected-four-description-20261125-v2-independent-b",
+        "batchId": "physics-e2-corrected-four-description-20261125-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:82891ff42cb83fa81a32ba75d7c87c9bc062604e199b5ae6407f1377d0a0ebf0"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

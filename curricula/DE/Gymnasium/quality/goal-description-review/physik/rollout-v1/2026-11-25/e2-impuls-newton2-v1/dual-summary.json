@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9eddd6d66dc9409da34e63b1d7ea36c96414fffe939be6ed787d3f9f35cb68b8",
+  "reviewInputFingerprint": "sha256:bec54277b29267d1d7e073bd466e8bf1e7b83eb037d08fe91edf39ac0952f2a0",
+  "goalCount": 6,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-impuls-newton2-20261125-v1-a",
+      "roundId": "physics-e2-impuls-newton2-20261125-v1-first-pass-a",
+      "independenceGroupId": "physics-e2-impuls-newton2-20261125-v1-independent-a",
+      "runIds": [
+        "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-e2-impuls-newton2-20261125-v1-b",
+      "roundId": "physics-e2-impuls-newton2-20261125-v1-first-pass-b",
+      "independenceGroupId": "physics-e2-impuls-newton2-20261125-v1-independent-b",
+      "runIds": [
+        "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.2-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 6,
+    "unavailable": 0,
+    "requiresSynthesis": 6
+  },
+  "goals": [
+    {
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+      "firstRecordId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87-53afbda1-5776-502b-8867-471975d7b766",
+      "secondRecordId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b-53afbda1-5776-502b-8867-471975d7b766",
+      "firstRunId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87",
+      "secondRunId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "firstRecordId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87-ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "secondRecordId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b-ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "firstRunId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87",
+      "secondRunId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+      "firstRecordId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87-059c1adc-e4d2-5222-a923-15abc417d59f",
+      "secondRecordId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b-059c1adc-e4d2-5222-a923-15abc417d59f",
+      "firstRunId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87",
+      "secondRunId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "firstRecordId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87-a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "secondRecordId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b-a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "firstRunId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87",
+      "secondRunId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "firstRecordId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87-839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "secondRecordId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b-839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "firstRunId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87",
+      "secondRunId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b",
+      "firstDecision": "revise",
+      "secondDecision": "revise",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "firstRecordId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "secondRecordId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "firstRunId": "physics-e2-impuls-newton2-20261125-v1-a-01a21319-00a3-7df2-8902-f7cbb505fe87",
+      "secondRunId": "physics-e2-impuls-newton2-20261125-v1-b-01a21319-00a3-7553-86f3-11c73c59443b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

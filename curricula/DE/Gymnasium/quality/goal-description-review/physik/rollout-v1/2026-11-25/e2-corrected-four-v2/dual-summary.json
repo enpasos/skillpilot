@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:125c2474a08c8e59489a7e4a48532229c74f5c7c9e584b7a3c0177e4683c3db7",
+  "reviewInputFingerprint": "sha256:7824d8a563d2b0837e156855c50eb80a5a976e60031233bc6e5164168d238fc8",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-corrected-four-description-20261125-v2-a",
+      "roundId": "physics-e2-corrected-four-description-20261125-v2-first-pass-a",
+      "independenceGroupId": "physics-e2-corrected-four-description-20261125-v2-independent-a",
+      "runIds": [
+        "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.1-sol::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "physics-e2-corrected-four-description-20261125-v2-b",
+      "roundId": "physics-e2-corrected-four-description-20261125-v2-first-pass-b",
+      "independenceGroupId": "physics-e2-corrected-four-description-20261125-v2-independent-b",
+      "runIds": [
+        "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::gpt-6.2-astra::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "firstRecordId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30-ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "secondRecordId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca-ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "firstRunId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30",
+      "secondRunId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+      "firstRecordId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30-059c1adc-e4d2-5222-a923-15abc417d59f",
+      "secondRecordId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca-059c1adc-e4d2-5222-a923-15abc417d59f",
+      "firstRunId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30",
+      "secondRunId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "firstRecordId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30-a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "secondRecordId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca-a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "firstRunId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30",
+      "secondRunId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "firstRecordId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "secondRecordId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "firstRunId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30",
+      "secondRunId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

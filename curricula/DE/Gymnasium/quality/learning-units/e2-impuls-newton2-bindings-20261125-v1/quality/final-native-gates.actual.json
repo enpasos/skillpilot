@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-final-current-physics-gates-after-839-withdrawal-v1",
+  "measuredAt": "2026-11-25T15:11:12.253798+00:00",
+  "nativeTool": "app/scripts/reportDeepUnderstandingRollout.ts --config=<focused exact-current Physics config> --format=json",
+  "diagnosticOnlySubjectSelection": true,
+  "centralRegistryPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+  "centralRegistryRawSha256": "sha256:004add30920c2c0144d6c225c39e29e60046f0289894cdef235c98a6311d6627",
+  "canonicalPhysicsRawSha256": "sha256:53a1c07636996ad3196c24cb475ff3c0cf902e31ccc8e426d1ab9036e5e1ae19",
+  "fullNativeReportRawSha256": "sha256:cf44e6630aadf70b66ceee5d9438e60ce6084d885f4b423c85ae96e82a42deee",
+  "denominator": 493,
+  "strictComplete": 492,
+  "gates": {
+    "currentDescriptionResolutions": 492,
+    "currentPositiveEvidenceProfiles": 493,
+    "currentSemanticAtomicityDecisions": 493,
+    "currentMemoryReviewDecisions": 493,
+    "currentVisualizationQaRecords": 493
+  },
+  "requiredChecks": [
+    {
+      "id": "semantic-kind-scope",
+      "status": "pass"
+    },
+    {
+      "id": "description-review-validation",
+      "status": "pass"
+    },
+    {
+      "id": "positive-evidence-validation",
+      "status": "pass"
+    },
+    {
+      "id": "semantic-atomicity-check",
+      "status": "pass"
+    },
+    {
+      "id": "memory-card-check",
+      "status": "pass"
+    },
+    {
+      "id": "visualization-freshness-and-approval-check",
+      "status": "pass"
+    }
+  ],
+  "remainingGoalIds": [
+    "839ecc8f-3a60-418b-bc92-64bfeef33824"
+  ],
+  "issues": [],
+  "strictCompletionReady": false,
+  "gateOrFloorLowered": false,
+  "m7Claim": false,
+  "validationLimits": "Focused diagnostic does not replace final full-catalog status, complete frontend/backend suites, pushed-head CI or integration. Missing839 D remains an explicit failure to reach full Physics M7."
+}

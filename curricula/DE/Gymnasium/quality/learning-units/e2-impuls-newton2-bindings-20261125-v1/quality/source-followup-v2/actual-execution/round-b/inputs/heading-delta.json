@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 2,
+  "status": "CURRENT_AFTER_SOURCE_REVIEW_CORRECTION",
+  "corrects": {
+    "path": "final-heading-delta.actual.json",
+    "sha256": "13907a87cc386263f0677bd9833aa4b59b35d926e757fa19a68645a125f754be",
+    "problem": "The earlier old-target-only invariant missed acquisition-wrapper reparenting in two SL GK views. That intermediate is rejected and retained."
+  },
+  "rejectedRawPairs": "source-review-predecessors/rejected-pairs.actual.json",
+  "scope": "Only IMP moves to mechanics headings in six views; only the approved broad WHY orientation also moves in the two SL SekII views, within E. Every other target and acquisition reference retains its exact old path, kind and role.",
+  "sourcePlanSha256": "a9365a49dddb19b1ea46a0ae4aaa77b29b75cf30f20b85628cbadd492a7f2027",
+  "changedViews": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-gk.view.json",
+      "viewId": "de-sl-gym-physics-gk",
+      "beforeSha256": "a0c449352ef5bbd7adc0acaeedc5232fa8afabbae8f2c28699e8af007c231495",
+      "rejectedIntermediateSha256": "046692170cfd9d217c5d51069bb1844fcdd55e6339407b4362cb22928336bd55",
+      "sha256": "4bcd67ccfd1ece6fa1ef476471176d1111f0344f8ae58d68233e4add51f387fe",
+      "changedReferences": [
+        {
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "before": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-gk",
+                "physics-sl-unit-e",
+                "physics-sl-e-topic-c929bd3f033c"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ],
+          "after": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-gk",
+                "physics-sl-unit-e",
+                "physics-sl-e-momentum-preparation"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ]
+        }
+      ],
+      "allOtherTargetAndAcquisitionReferencePlacesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-lk.view.json",
+      "viewId": "de-sl-gym-physics-lk",
+      "beforeSha256": "4af5e87d5d8874de74d2971e364d4786ca71e60e54b51594f83b3ab7a6a74890",
+      "rejectedIntermediateSha256": "1bca219c1fb3b7189f93da7d2f907da6c4535e363bbaa07acc631515bb278576",
+      "sha256": "461b72c2ec2f38da51e9373544e822ad9a0525b0db139928ce00fa5d65f0b6b4",
+      "changedReferences": [
+        {
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "before": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sl-unit-e",
+                "physics-sl-e-topic-c929bd3f033c"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ],
+          "after": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sl-unit-e",
+                "physics-sl-e-momentum-preparation"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ]
+        }
+      ],
+      "allOtherTargetAndAcquisitionReferencePlacesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-gk.view.json",
+      "viewId": "de-sl-gym-sekii-physics-gk",
+      "beforeSha256": "0b1437629163ef6e491764c329fc16689e47d69c4e7e7bcef1bafb1df513051f",
+      "rejectedIntermediateSha256": "48e6b6ff5c316487a091e06ea128b5cbfa33b3696cd75d61e36e61bc98fe4e2e",
+      "sha256": "898f626d5ec8cf7dfa863e40be1d621f674b0d70d1f305f36ea70a71ae4e1b06",
+      "changedReferences": [
+        {
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "before": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-gk",
+                "physics-sl-unit-e",
+                "physics-sl-e-topic-c929bd3f033c"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ],
+          "after": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-gk",
+                "physics-sl-unit-e",
+                "physics-sl-e-momentum-preparation"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ]
+        },
+        {
+          "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+          "before": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-gk",
+                "physics-sl-unit-e",
+                "physics-sl-e-topic-c929bd3f033c"
+              ],
+              "kind": "canonicalSubtree",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ],
+          "after": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-gk",
+                "physics-sl-unit-e",
+                "physics-sl-e-momentum-preparation"
+              ],
+              "kind": "canonicalSubtree",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ]
+        }
+      ],
+      "allOtherTargetAndAcquisitionReferencePlacesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sl-sekii-lk.view.json",
+      "viewId": "de-sl-gym-sekii-physics-lk",
+      "beforeSha256": "56b8caaf5bc9abf6c7846298290e70a1d7181e89d98a2d403b02820e25aa7457",
+      "rejectedIntermediateSha256": "8856d3aade853770fb0927621e7b3e8b03276438066025293f8155dbb6e1428a",
+      "sha256": "349ba82dedb0adbaa67490cc7e98cfab0febe17d4d9863e1789d99442a382f22",
+      "changedReferences": [
+        {
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "before": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sl-unit-e",
+                "physics-sl-e-topic-c929bd3f033c"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ],
+          "after": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sl-unit-e",
+                "physics-sl-e-momentum-preparation"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ]
+        },
+        {
+          "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+          "before": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sl-unit-e",
+                "physics-sl-e-topic-c929bd3f033c"
+              ],
+              "kind": "canonicalSubtree",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ],
+          "after": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sl-unit-e",
+                "physics-sl-e-momentum-preparation"
+              ],
+              "kind": "canonicalSubtree",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ]
+        }
+      ],
+      "allOtherTargetAndAcquisitionReferencePlacesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-lk.view.json",
+      "viewId": "de-sn-gym-physics-lk",
+      "beforeSha256": "ccfb3103e6fe8d539a38f88c87502cfa8921d38db5ff9378d3b0452d0bfab5a9",
+      "rejectedIntermediateSha256": "16e2f34dd010184d311d4fc06ceee9e3b42f7e63b6c5d2a13df72b27be771706",
+      "sha256": "16e2f34dd010184d311d4fc06ceee9e3b42f7e63b6c5d2a13df72b27be771706",
+      "changedReferences": [
+        {
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "before": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sn-unit-q11",
+                "physics-sn-q11-topic-c4407de522ff"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ],
+          "after": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sn-unit-q11",
+                "physics-sn-q11-momentum-preparation"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ]
+        }
+      ],
+      "allOtherTargetAndAcquisitionReferencePlacesUnchanged": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/physik/de-sn-sekii-lk.view.json",
+      "viewId": "de-sn-gym-sekii-physics-lk",
+      "beforeSha256": "4218a23402563a037e9fa7abb82861813df0ad7feff23f026e44486b4fd07e42",
+      "rejectedIntermediateSha256": "d8d6d60f1d33ea7dce9c9852ae441d4ecf6f8372da01771c05093920f7c061dd",
+      "sha256": "d8d6d60f1d33ea7dce9c9852ae441d4ecf6f8372da01771c05093920f7c061dd",
+      "changedReferences": [
+        {
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "before": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sn-unit-q11",
+                "physics-sn-q11-topic-c4407de522ff"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ],
+          "after": [
+            {
+              "path": [
+                "physics-root",
+                "physics-sekii-lk",
+                "physics-sn-unit-q11",
+                "physics-sn-q11-momentum-preparation"
+              ],
+              "kind": "goalEntry",
+              "role": "target",
+              "acquisitionPlacement": false
+            }
+          ]
+        }
+      ],
+      "allOtherTargetAndAcquisitionReferencePlacesUnchanged": true
+    }
+  ]
+}

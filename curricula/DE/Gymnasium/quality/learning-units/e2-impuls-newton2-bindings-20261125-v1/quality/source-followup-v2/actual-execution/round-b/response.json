@@ -1,0 +1,59 @@
+{
+  "records": [
+    {
+      "recordId": "03-SL-53afbda1",
+      "decision": "needs_change",
+      "recordIsTruthful": false,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "The official assignment and all four acquisition paths are accurate. Each witness assigns IMP to E, “Impuls und gerader zentraler Stoß”, physical page 12, with an empty boundary string. In all four views IMP is a target under physics-sl-unit-e/physics-sl-e-momentum-preparation. The record needs correction because all four actualTargetPlaces[].sha256 values identify rejected intermediate snapshots.",
+      "inspectedOfficialAreas": [
+        "LP_Ph_EP_GOS_2023.pdf, physical and printed page 12, “Kraft und Bewegung”, Physik EP, “Wechselwirkungsprinzip und Stoßprozesse”. The left column defines the central straight collision, vector momentum p = mv, its unit, and conservation of total momentum in a mechanically closed system. The right column gives the two-body momentum balance, derives it from the interaction principle, and applies it to recoil. These rows support choosing a positive direction and adding signed momenta on one line."
+      ],
+      "remainingFindings": [
+        "Replace the four SL view digests in source-exceptions.json with the verified current digests from heading-delta.json. The recorded → current SHA-256 prefixes are 04669217 → 4bcd67cc for CrossStage GK, 1bca219c → 461b72c2 for CrossStage LK, 48e6b6ff → 898f626d for SekII GK, and 8856d3aa → 349ba82d for SekII LK.",
+        "Elastische Stöße requires Impulserhaltung, which requires IMP. The first two goals still sit under “Kernenergie und Radioaktivität” in all four views. The new preparation heading addresses IMP alone. The inherited consumer placement remains unresolved."
+      ]
+    },
+    {
+      "recordId": "04-SN-53afbda1",
+      "decision": "needs_change",
+      "recordIsTruthful": false,
+      "sourceAssignmentSupported": false,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "Physical page 57 supports the LK11 IMP goal. Both current view digests and the target path physics-root/physics-sekii-lk/physics-sn-unit-q11/physics-sn-q11-momentum-preparation match the record. The explicit assignment is inaccurate as written. In both SN views, reviewedMomentumBindings and sourceAssignments give IMP on page 57, RATE-M on page 58, and RATE-I on page 58 the identical boundary “LK only; tangent reading is an elementary operationalisation of the printed differential law.”",
+      "inspectedOfficialAreas": [
+        "lehrplan-gymnasium-physik-sachsen-2025.pdf, physical page 57, printed page 45, LK11 table above Lernbereich 2. The two columns specify one-dimensional momentum conservation, two-body problems, signs, p = mv, central elastic and inelastic collisions, and finite impulse Δp = FΔt. The graphical rate material below that table concerns kinematics.",
+        "Same PDF, physical page 58, printed page 46, upper Lernbereich 3 table, “Grundgesetz der Mechanik” row. The left cell gives ΣF = ma = dp/dt. The right cell calls for graphical interpretation in a p(t) diagram. These cells support interpreting the local tangent slope as instantaneous resultant force."
+      ],
+      "remainingFindings": [
+        "Correct both witness fields in both SN views. Scope the page 57 IMP boundary to signed collinear momentum and its two-body application. Describe RATE-M as the interval mean Δp/Δt, supported by the finite-impulse relation on page 57 and the rate law on page 58. Reserve the tangent interpretation for RATE-I on page 58.",
+        "The authored J11 heading precedes the conservation and rate consumers. Impulserhaltung and Elastische Stöße retain their inherited “Einblick in die Relativitätstheorie” placement. Its curricular justification remains unresolved."
+      ]
+    }
+  ],
+  "headingDelta": {
+    "decision": "accept_record_with_stated_limits",
+    "roleAndLearningSetsPreserved": true,
+    "oldCompetencyPlacesPreserved": true,
+    "orientationReparentingBounded": true,
+    "checkedViewIds": [
+      "de-sl-gym-physics-gk",
+      "de-sl-gym-physics-lk",
+      "de-sl-gym-sekii-physics-gk",
+      "de-sl-gym-sekii-physics-lk",
+      "de-sn-gym-physics-lk",
+      "de-sn-gym-sekii-physics-lk"
+    ],
+    "reason": "All 12 snapshot SHA-256 values match heading-delta.json. Each side contains 5,777 reference occurrences, comprising 3,164 goalEntry and 2,613 canonicalSubtree occurrences, with 1,190 acquisition flags set. Comparing every occurrence by identity, kind, role, flag, full path and relative sibling order found exactly the declared moves. IMP moves in all six views. Only in the two SL SekII views does the broad WHY orientation move with it, retaining its canonicalSubtree target role and preceding IMP within E. All other references retain their paths and relative order. Course and year assignments agree across each pair. All 120 named acquisition wrappers retain their paths and complete subtrees, and all 69 ordering links involving those wrappers survive. All 226 current childOrder edges resolve to immediate siblings, and every local ordering graph is acyclic.",
+    "remainingFindings": [
+      "Some direct topic-order edges changed with the insertion. In both SL SekII views, the old E preparation-to-nuclear precedence now runs through the new heading. In both SN views, the rate heading now depends directly on the mechanics heading in place of the relativity heading. The stored relative order of existing siblings is preserved."
+    ]
+  },
+  "limitations": [
+    "The source review used the supplied page images and extract files. The extract PDF and text digests match the manifest. Physical page numbers include covers. Full original PDFs were not independently retrieved or rehashed.",
+    "The preparation headings and their prerequisite-driven positions are authored choices. The cited pages support the stated mechanics content. They do not establish an earlier official teaching mandate or require the exact advanced symbolic proof in every LK view.",
+    "The comparison establishes static reference identities, placements and ordering for these six pairs. Initial-native90-scope.json served only as historical diagnostic context. This review supplies no frontend or backend execution evidence, learner results, full-landscape acceptance or deployment finding.",
+    "The decisions cover only these two records and this heading delta. Other source records, D/P/card decisions, inherited historical mappings and the parked canonical issue remain outside the decision."
+  ]
+}

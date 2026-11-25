@@ -1,0 +1,68 @@
+{
+  "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+  "reason": "Letzte eng begrenzte P-Präzisierung nach tatsächlichem zweiten Doppelreview: näherungsweise Endpunktgleichheit bei nur vernachlässigbarem Kraftstoß und explizit horizontale reibungsarme Bahn. Der kanonische Beschreibungs-/Voraussetzungsbefund bleibt offen.",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "dissent": [],
+  "profile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "fixed-system-endpoints",
+        "essentialUnderstandingDe": "Für dieselben Körper in einem gemeinsamen Inertialsystem gilt: Wenn der resultierende äußere Kraftstoß über das betrachtete Intervall null ist, sind die vektoriellen Gesamtimpulse vor und nach der Wechselwirkung gleich. Innere Wechselwirkungen können die Teilimpulse verändern.",
+        "essentialUnderstandingEn": "For the same bodies in one common inertial frame, zero net external impulse over the interval implies equal vector total momenta before and after the interaction. Internal interactions can change the individual momenta.",
+        "observablePerformanceDe": "Die Person benennt die betrachteten Körper, das gemeinsame Bezugssystem und die beiden Vergleichszeitpunkte. Sie begründet, wann der äußere Kraftstoß vernachlässigbar ist, und nutzt eine qualitative gerichtete Vorher-Nachher-Bilanz zur Erklärung eines Rückstoßes.",
+        "observablePerformanceEn": "The learner identifies the bodies, common reference frame and two comparison instants. They justify when external impulse is negligible and use a qualitative directed before-and-after balance to explain recoil."
+      },
+      {
+        "id": "unequal-masses-and-drift",
+        "essentialUnderstandingDe": "Bei einem anfangs ruhenden Paar entstehen gleich große entgegengesetzte Teilimpulse. Bei ungleichen Massen ist der leichtere Körper deshalb schneller. Bei anfänglicher Drift müssen die Endgeschwindigkeiten nicht entgegengesetzt gerichtet sein.",
+        "essentialUnderstandingEn": "For an initially resting pair, the final individual momenta have equal magnitudes and opposite directions. The lighter body therefore moves faster when masses differ. With initial drift, the final velocities need not point in opposite directions.",
+        "observablePerformanceDe": "Die Person prognostiziert Rückstoßrichtungen aus der Ruhe und den qualitativen Einfluss ungleicher Massen. Bei einem bereits driftenden Paar unterscheidet sie die Richtung einer Impulsänderung von einer nicht eindeutig bestimmten Endbewegungsrichtung. Numerische Inversion und ein exaktes Geschwindigkeitsverhältnis sind keine Pflicht.",
+        "observablePerformanceEn": "The learner predicts recoil directions from rest and the qualitative effect of unequal masses. For an already drifting pair, they distinguish the direction of momentum change from a final motion direction that is not uniquely determined. Numerical inversion and an exact speed ratio are not required."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "fixed-system-endpoints",
+        "unequal-masses-and-drift"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "initial-total-momentum",
+        "textDe": "Paar anfangs in Ruhe oder gemeinsam nach rechts driftend; Bilanz in einem gemeinsamen Inertialsystem.",
+        "textEn": "Pair initially at rest or drifting together rightward; balance in one common inertial frame."
+      },
+      {
+        "id": "mass-and-system",
+        "textDe": "Gleiche oder ungleiche Massen; richtige Systemabgrenzung und Begründung eines vernachlässigbaren äußeren Kraftstoßes.",
+        "textEn": "Equal or unequal masses; correct system boundary and justification for negligible external impulse."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "astronaut-tool-recoil",
+        "taskDemandDe": "Eine Astronautin und ein Werkzeugpaket driften gemeinsam nach rechts. Im betrachteten gemeinsamen Inertialsystem erhöht ein Abstoßen den nach rechts gerichteten Impuls des Pakets. Äußere Kraftstöße sind vernachlässigbar. Betrachte dieselben beiden Körper vor und nach dem Abstoßen. Erkläre die Richtung der Impulsänderung der Astronautin und beurteile, ob daraus zwingend folgt, dass sie danach nach links fliegt.",
+        "taskDemandEn": "An astronaut and tool package drift together to the right. In the common inertial frame being considered, a push increases the package’s rightward momentum. External impulses are negligible. Consider the same two bodies before and after the push. Explain the direction of the astronaut’s momentum change and assess whether this necessarily means she subsequently moves left.",
+        "expectedPerformanceDe": "Die Impulsänderung der Astronautin ist nach links gerichtet und gleicht die nach rechts gerichtete Änderung des Pakets näherungsweise aus. Ihre Endbewegung kann weiterhin nach rechts, in Ruhe oder nach links sein; ohne Betrag der Änderung ist das nicht festgelegt. Begründet werden Systemgrenze, vernachlässigbarer äußerer Kraftstoß und näherungsweise gleiche Gesamtimpulsvektoren an den beiden Vergleichszeitpunkten.",
+        "expectedPerformanceEn": "The astronaut’s momentum change is leftward and approximately balances the package’s rightward change. Her final motion may still be rightward, at rest or leftward; the change’s magnitude is needed to decide. The explanation identifies the system, negligible external impulse and approximately equal total momentum vectors at the two comparison instants.",
+        "understandingFocusDe": "Gesamtbilanz, Impulsänderung und Endbewegungsrichtung unterscheiden.",
+        "understandingFocusEn": "Distinguish total balance, momentum change and final motion direction."
+      },
+      {
+        "id": "two-carts-spring-recoil",
+        "taskDemandDe": "Zwei unterschiedlich schwere Wagen stehen auf einer geraden horizontalen reibungsarmen Bahn. Eine idealisierte Feder vernachlässigbarer Masse drückt sie auseinander. Betrachte beide Wagen und die Feder im gemeinsamen Inertialsystem der Bahn. Begründe die Vernachlässigung des äußeren horizontalen Kraftstoßes, prognostiziere die Richtungen nach dem Lösen und erkläre, welcher Wagen schneller ist.",
+        "taskDemandEn": "Two unequal-mass carts are at rest on a straight horizontal low-friction track. An idealized negligible-mass spring pushes them apart. Consider both carts and spring in the common inertial frame of the track. Justify neglecting external horizontal impulse, predict their directions after release and explain which cart moves faster.",
+        "expectedPerformanceDe": "Beide Wagen bewegen sich entgegengesetzt. Ihre Endimpulse sind näherungsweise gleich groß und entgegengesetzt, da der Anfangsgesamtimpuls null ist und der Federimpuls vernachlässigt wird. Der leichtere Wagen ist schneller. Gelieferte Zahlen oder Messdaten dürfen die qualitative Bilanz optional prüfen; eine exakte Verhältnisrechnung ist keine Pflicht. Eine nur vernachlässigbare äußere Wirkung führt zu einer näherungsweisen, nicht behauptet exakten Messgleichheit.",
+        "expectedPerformanceEn": "The carts move in opposite directions. Their final momenta are approximately equal and opposite because initial total momentum is zero and spring momentum is neglected. The lighter cart moves faster. Supplied numbers or measurements may optionally check the qualitative balance; an exact ratio calculation is not required. Negligible external influence gives approximate equality rather than an assertion of exact equality for measured data.",
+        "understandingFocusDe": "Qualitativer Rückstoß aus der Ruhe bei ungleichen Massen und offengelegtem Federidealmodell.",
+        "understandingFocusEn": "Qualitative recoil from rest with unequal masses and an explicit ideal-spring model."
+      }
+    ]
+  }
+}

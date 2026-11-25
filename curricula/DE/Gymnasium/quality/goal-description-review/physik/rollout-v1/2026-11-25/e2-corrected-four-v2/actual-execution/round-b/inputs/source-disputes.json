@@ -1,0 +1,2630 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-source-disputes-and-actions-v1",
+  "boundary": "Preserves every actual source dispute, including inherited ones. A displayed learning place is not automatically an official source assignment. The initial measured places remain historical; the bounded current deltas are separate witnesses. No broad mapping migration or full-source certification is claimed.",
+  "initialNativeScopeSha256": "sha256:da9edeb5f2af6327bf5d8fd11896c158f89c6e1c35069fc131ae50c2d1a6e512",
+  "originalPageLocatorMap": [
+    {
+      "land": "BW",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_PH_V2.pdf",
+      "officialPdfSha256": "sha256:78933aa2f00d4e293ba62fe3e8a5c553565143b8adbae95bb1be40baaa12e450",
+      "physicalPages": [
+        27,
+        28,
+        57
+      ],
+      "excerptFile": "01-BW-official-extract.pdf",
+      "excerptSha256": "sha256:e34cf3bdd6e32ccfe347f82139f2ff8ba1438ac0703ec77084b2cf0592a3d40b",
+      "textFile": "01-BW-official-extract.json",
+      "textSha256": "sha256:f6641d23b0715cf77001df17b85a0e434b90486fe6d3db9d8183cfa87dd07cef"
+    },
+    {
+      "land": "BY",
+      "officialSourcePath": "tmp/e1-handover/reviews/e2-step2-plan/raw/by-official/BY-10-physik.pdf",
+      "officialPdfSha256": "sha256:006d6d8cb0d13a697b3d5dba6e3cea771bd03645bfdf9505739ac3dfa9b8e8ba",
+      "physicalPages": [
+        2
+      ],
+      "excerptFile": "02-BY-official-extract.pdf",
+      "excerptSha256": "sha256:152760335bcf26d9d9dec83fd8d82816f0d189537450309a35abe7caeebf0cca",
+      "textFile": "02-BY-official-extract.json",
+      "textSha256": "sha256:5ecb97489084acc51cb68ec3c41354ddf7acce910bbb3fff221fba1c2e563337"
+    },
+    {
+      "land": "BE",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/BE/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf",
+      "officialPdfSha256": "sha256:603e0804936e4eea34cf16ea85f3a4c8b86dea4a3f4bc531a5718ea2d41947f7",
+      "physicalPages": [
+        17,
+        21
+      ],
+      "excerptFile": "03-BE-official-extract.pdf",
+      "excerptSha256": "sha256:be2488147b7a468c41e1d0226a9c491e02ad02f6e7f74e2dbf6a7fdd433213cf",
+      "textFile": "03-BE-official-extract.json",
+      "textSha256": "sha256:a821845c7dc79cafa044708465d89abb6133b265db6344ddbb3f581cc0305e42"
+    },
+    {
+      "land": "BB",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/BB/upper-secondary/Teil_C_RLP_GOST_2022_Physik.pdf",
+      "officialPdfSha256": "sha256:603e0804936e4eea34cf16ea85f3a4c8b86dea4a3f4bc531a5718ea2d41947f7",
+      "physicalPages": [
+        17,
+        21
+      ],
+      "excerptFile": "04-BB-official-extract.pdf",
+      "excerptSha256": "sha256:85dfbc6189e43cbb64f446d9affc2dbd055762dad6c10a142046ba6cc1e4581f",
+      "textFile": "04-BB-official-extract.json",
+      "textSha256": "sha256:a821845c7dc79cafa044708465d89abb6133b265db6344ddbb3f581cc0305e42"
+    },
+    {
+      "land": "HB",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/HB/GyO_Physik_2022.pdf",
+      "officialPdfSha256": "sha256:29232f8d01828d3d3dee9d63c43c3e3a44e5ea4b6cc7b876367ddb4766762800",
+      "physicalPages": [
+        15
+      ],
+      "excerptFile": "05-HB-official-extract.pdf",
+      "excerptSha256": "sha256:d1cdd185d39279e3d2124f8766e2639697aee9d8b4a94979abe393fb5f588450",
+      "textFile": "05-HB-official-extract.json",
+      "textSha256": "sha256:09f302aa71adf8f5c7c409e8dd882623b1b2b49225d8a6a85bc21db7827eb974"
+    },
+    {
+      "land": "HH",
+      "officialSourcePath": "tmp/e1-handover/reviews/e2-step2-plan/raw/a/HH_physik-data.pdf",
+      "officialPdfSha256": "sha256:b879d9fc69b72f629135ab3f6b8234ea71ec52588e8333ed769659a346c19c8d",
+      "physicalPages": [
+        25,
+        41,
+        44
+      ],
+      "excerptFile": "06-HH-official-extract.pdf",
+      "excerptSha256": "sha256:adfca2bdc079f62c1a54988f798c39265b146596a44e0756737417ac438da807",
+      "textFile": "06-HH-official-extract.json",
+      "textSha256": "sha256:10a7252b0621b1508ae66cce8c92bc16b1a4123e8a697c99e33d01a2f9716fa2"
+    },
+    {
+      "land": "HE",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+      "officialPdfSha256": "sha256:46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+      "physicalPages": [
+        29,
+        30
+      ],
+      "excerptFile": "07-HE-official-extract.pdf",
+      "excerptSha256": "sha256:204808a7cb9e7372884b3579fc40f75200bf24cb32ca1a6753190ad6c1dc3618",
+      "textFile": "07-HE-official-extract.json",
+      "textSha256": "sha256:27cf81048884283454e519fb5f9761628ec367f8aa3132c243c2c6b8a3c7d615"
+    },
+    {
+      "land": "MV",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_11_12_2022.pdf",
+      "officialPdfSha256": "sha256:cdac77c51fba64b9aab094fe4b68da281d6f91f71d092e2fe986121691b6a252",
+      "physicalPages": [
+        21
+      ],
+      "excerptFile": "08-MV-official-extract.pdf",
+      "excerptSha256": "sha256:b1cbfa2fd7af0fe073dd336fa9509ffe25125018620a488a5b9327420f2d5f31",
+      "textFile": "08-MV-official-extract.json",
+      "textSha256": "sha256:717dcba393127fb40432f36d83decf2bb16964724a9911aad33d0eb427a0ef9d"
+    },
+    {
+      "land": "BY",
+      "officialSourcePath": "tmp/e1-handover/reviews/e2-step2-plan/raw/by-official/BY-8-physik.pdf",
+      "officialPdfSha256": "sha256:7233e85d56d8992497b926254ce5c0476a6cf976dd234bc388e06da5d0109b59",
+      "physicalPages": [
+        3,
+        4
+      ],
+      "excerptFile": "09-BY-official-extract.pdf",
+      "excerptSha256": "sha256:86ef8214e1c4266ebb0653f461bebc2cb3a02a11f6e8aa9041f40a3d322f5735",
+      "textFile": "09-BY-official-extract.json",
+      "textSha256": "sha256:839d0d7700086dbde51bba3e12f13acd5b96c4dffbc42763cbc2503ebeeeb6fd"
+    },
+    {
+      "land": "BE",
+      "officialSourcePath": "tmp/e1-handover/reviews/e2-step2-plan/raw/a/BE_BB_Teil_C_Physik_2015_11_16.pdf",
+      "officialPdfSha256": "sha256:12272ba2d036195dadf93d0bcda20ea50ba670976285e7f85002f333909af40e",
+      "physicalPages": [
+        42
+      ],
+      "excerptFile": "10-BE-official-extract.pdf",
+      "excerptSha256": "sha256:e9e10bec3b5d02cb4284f4679e49b24b91963f70c75322ecd845083c203f76ad",
+      "textFile": "10-BE-official-extract.json",
+      "textSha256": "sha256:8eef56a136371b998e6ea156aa2851c2e70fc077741ad913ce08515b8c50fa6d"
+    },
+    {
+      "land": "BB",
+      "officialSourcePath": "tmp/e1-handover/reviews/e2-step2-plan/raw/a/BE_BB_Teil_C_Physik_2015_11_16.pdf",
+      "officialPdfSha256": "sha256:12272ba2d036195dadf93d0bcda20ea50ba670976285e7f85002f333909af40e",
+      "physicalPages": [
+        42
+      ],
+      "excerptFile": "11-BB-official-extract.pdf",
+      "excerptSha256": "sha256:deed7eab725163460681bbe57c6b4da258e4ee6f8af3009ba7e0e22e7595730e",
+      "textFile": "11-BB-official-extract.json",
+      "textSha256": "sha256:8eef56a136371b998e6ea156aa2851c2e70fc077741ad913ce08515b8c50fa6d"
+    },
+    {
+      "land": "MV",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/MV/Physik_Gymnasium_7_10_2022.pdf",
+      "officialPdfSha256": "sha256:83efd5c391146abe487269f6d9a984da75e9d7e48c3374d3dab6f989bb0d5bbc",
+      "physicalPages": [
+        45
+      ],
+      "excerptFile": "12-MV-official-extract.pdf",
+      "excerptSha256": "sha256:53a13a690b6517f1ecbbd3d06e5821a1bbe6effeedc4219cc9abc1d32f82a47a",
+      "textFile": "12-MV-official-extract.json",
+      "textSha256": "sha256:8ddfe777d9bbb7d20e646266cfb08d69df8332e5d0d107828b6b82bd0dc9ecb4"
+    },
+    {
+      "land": "NI",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/NI/lower-secondary/kc_naturwissenschaften_gymnasium_sek_i_2015.pdf",
+      "officialPdfSha256": "sha256:7b3c69767b4c9a47d87598bee76a28bf7b6d2f6c9b039f2e655a9ad14d47aeac",
+      "physicalPages": [
+        17,
+        101
+      ],
+      "excerptFile": "13-NI-official-extract.pdf",
+      "excerptSha256": "sha256:d6d07188ae1913ed26ed0ff9d429e4e8c8d73045164030ec71817095e7cbbedb",
+      "textFile": "13-NI-official-extract.json",
+      "textSha256": "sha256:a4d28da134257842d60079db419752280552b52ec34eb61b0042b29f1e37c180"
+    },
+    {
+      "land": "NI",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/NI/upper-secondary/kerncurriculum_gymnasiale_oberstufe-physik_2022.pdf",
+      "officialPdfSha256": "sha256:772914377e9ce1cd3f4c804d86e488e0957ce4a40de8885f8b2fe6ef6de05a0b",
+      "physicalPages": [
+        28
+      ],
+      "excerptFile": "14-NI-official-extract.pdf",
+      "excerptSha256": "sha256:202bbcd015e32aff4d9acc957ef7d99bd4c417dfc947cf73b3e1fd14f4f5c528",
+      "textFile": "14-NI-official-extract.json",
+      "textSha256": "sha256:d1a7a84186fb884fc01aa9cf477f3b08cf88e7cccfc8479874f18ab926e906d6"
+    },
+    {
+      "land": "NW",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/NW/upper-secondary/gost_klp_ph_2022_06_07.pdf",
+      "officialPdfSha256": "sha256:648605d32584d44319f1e0b8b34cffe0519926f22a68137f2dd21520f1377f7d",
+      "physicalPages": [
+        26,
+        27,
+        28
+      ],
+      "excerptFile": "15-NW-official-extract.pdf",
+      "excerptSha256": "sha256:4d887c90e504880f4e8da59a91355303da5a18128f4f7c8c2175e258e70e7779",
+      "textFile": "15-NW-official-extract.json",
+      "textSha256": "sha256:f55cd3b142861ac11c4a884054e23b71f09b0cd97e6dab8ef7dac44cfca432d9"
+    },
+    {
+      "land": "RP",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/RP/Chemie_Sekundarstufe_I_Biologie_Physik_Chemie_2014.pdf",
+      "officialPdfSha256": "sha256:307f5d841072a1a34d846554c7397c9b8355a9c05d49c8c223ccd9c64d877350",
+      "physicalPages": [
+        109
+      ],
+      "excerptFile": "16-RP-official-extract.pdf",
+      "excerptSha256": "sha256:fce270824ef94c07710aeaf29b63e5a5b0a6db49d50543fe36626ee08ed98063",
+      "textFile": "16-RP-official-extract.json",
+      "textSha256": "sha256:c93804e8434f9bde74a6b368ee09b7fd465720cbe0ce014a6752739938b8891d"
+    },
+    {
+      "land": "RP",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/RP/Physik_Sekundarstufe_II_MSS.pdf",
+      "officialPdfSha256": "sha256:3bf220e5e409fc4ae057b3327dfa3d445a8f27ad6961925aae5eb16f2d1c12cc",
+      "physicalPages": [
+        24,
+        25,
+        51,
+        52
+      ],
+      "excerptFile": "17-RP-official-extract.pdf",
+      "excerptSha256": "sha256:d75890ed74d0e73a933e8dd60492c0d41bb50b31280ae2b7dde726c998304dec",
+      "textFile": "17-RP-official-extract.json",
+      "textSha256": "sha256:ec18de55821400b4401fe61d3cf98afbb08435322e2dc8834aa7af44d8c7e304"
+    },
+    {
+      "land": "SL",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/SL/LP_Ph_EP_GOS_2023.pdf",
+      "officialPdfSha256": "sha256:908313618ec41ea03d7eea65174598ecc9dc6961c17bbe29d27bd379b16ad827",
+      "physicalPages": [
+        10,
+        12
+      ],
+      "excerptFile": "18-SL-official-extract.pdf",
+      "excerptSha256": "sha256:45bf42ecab4bd0c4e320cccc909f930f2be50a9ba30e52dfeb9927fa1fd0f5e3",
+      "textFile": "18-SL-official-extract.json",
+      "textSha256": "sha256:92b7b39e6e6c036cfffba57941aff85104bbfd18f6979b2b8e9a22ef749597b7"
+    },
+    {
+      "land": "SN",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+      "officialPdfSha256": "sha256:8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+      "physicalPages": [
+        37,
+        57,
+        58
+      ],
+      "excerptFile": "19-SN-official-extract.pdf",
+      "excerptSha256": "sha256:4ddcb1d0d6ff1d4b14b8a2cd25bd8b0d9ab7141ecf0bc389b9ef80bfc3c526cf",
+      "textFile": "19-SN-official-extract.json",
+      "textSha256": "sha256:8b8a9614458321979597e6b7e285213a0cf0a429855a3242a168e8da1e8f2b3e"
+    },
+    {
+      "land": "ST",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/ST/FLP_Physik_Gym_01082022_swd.pdf",
+      "officialPdfSha256": "sha256:9154693501a6351a7ce27701b722c261135484a64e9633404cafadf94af983ed",
+      "physicalPages": [
+        45,
+        54,
+        79
+      ],
+      "excerptFile": "20-ST-official-extract.pdf",
+      "excerptSha256": "sha256:9b33974b6c85834bc8e4eb0c564e397f71c3c483d8a43c4fd773850b9cce5893",
+      "textFile": "20-ST-official-extract.json",
+      "textSha256": "sha256:22e1f5bcc4c945b1de50b04637f07806816ebace4df70da6c15beca1d00e95a9"
+    },
+    {
+      "land": "SH",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Physik_Sekundarstufe_2022_barrierearm.pdf",
+      "officialPdfSha256": "sha256:7bb873096e00f55c9d2be2203767ef9ef54c6939b9608788ba0177d9911bd165",
+      "physicalPages": [
+        54,
+        55
+      ],
+      "excerptFile": "21-SH-official-extract.pdf",
+      "excerptSha256": "sha256:a95ebeca645ad27fd4cb5fce98e407d74717bedfbafc6d40e6a63346b89c1ab3",
+      "textFile": "21-SH-official-extract.json",
+      "textSha256": "sha256:6f6a536c61f671b9a1815d8f47ab464d40606f0bb38ceefa052ac7adc8187727"
+    },
+    {
+      "land": "TH",
+      "officialSourcePath": "curricula/DE/Gymnasium/input/TH/LP_GY_Physik_2012.pdf",
+      "officialPdfSha256": "sha256:414be5ac7af13a1cfa33f96d9ca3c50f83c1f1cce4abe61b8e62faea1a24ed8d",
+      "physicalPages": [
+        22,
+        23,
+        26,
+        30
+      ],
+      "excerptFile": "22-TH-official-extract.pdf",
+      "excerptSha256": "sha256:a78c755bce468caf7e7de6f96cc30e10b74a6ef5764010a49e918a92d53de8fe",
+      "textFile": "22-TH-official-extract.json",
+      "textSha256": "sha256:575b0d68e24598a195e8a542bb417820296bf79361c092dd8f8252459e4c7b5c"
+    }
+  ],
+  "entries": [
+    {
+      "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+      "independentSourceFindings": [
+        {
+          "round": "a",
+          "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+          "decision": "accept_current",
+          "reason": "SN physical p.58 supplies the differential momentum law and graphical interpretation in a p(t) diagram for LK11. Reading a supplied tangent numerically is a bounded operationalization of that clause. The actual target scope is SN LK; preparation elsewhere must not be presented as a mandatory national RATE-I target.",
+          "inspectedOfficialPages": [
+            "official-pages/19-SN-official-extract.pdf: original physical pp.57–58; p.58 positioned formula glyphs, vector arrows and fraction graphic inspected"
+          ],
+          "unsupportedClaims": []
+        },
+        {
+          "round": "b",
+          "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+          "decision": "accept_current",
+          "reason": "SN physical p. 58 prints the vector equation ΣFᵢ = ma = dp/dt and specifies graphical interpretation in a p(t) diagram in LK 11. Estimating the slope of a drawn tangent is a close operationalization. Both native target views correspond to that same SN LK placement. The 30 other views that reach RATE-I use it as preparation.",
+          "inspectedOfficialPages": [
+            "19-SN pp. 57–58",
+            "01-BW pp. 27, 57",
+            "03-BE and 04-BB, each pp. 17, 21",
+            "07-HE p. 30"
+          ],
+          "unsupportedClaims": [
+            "BW's finite-difference formula, HE's F = ma and the conditional BE/BB temporal-change clause do not prescribe a numerical instantaneous tangent reading. The packet supports no nationwide or general Sek I RATE-I target."
+          ]
+        }
+      ],
+      "actualLearningPlacesAtInitialReview": [
+        {
+          "jurisdiction": "DE-BB",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Grundlagen: Impulserhaltung aus Newtonschen Axiomen (LK)",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Erhaltungssätze",
+              "Impuls",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Energie",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "targetViews": 0,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Impuls und Stöße",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Studienstufe",
+              "Veränderliche elektromagnetische Felder",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "System - Erhaltungssätze",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Dynamik",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Grundlagen der Mechanik",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Mechanik: Impuls",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Kraft und Bewegung",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufe 11",
+              "Newtonsche Gesetze: Impulsänderungsrate",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Herleitung der Impulserhaltung nach den Analysisgrundlagen",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen"
+            ]
+          ]
+        }
+      ],
+      "recommendedAction": "Die numerische Tangentenauswertung als begrenzte Operationalisierung des sächsischen LK-11-Belegs erhalten. Eine echte frische skalierte Grafik verlangen; Koordinaten und Ergebnis ausschließlich im Vorbereitungs-/Prüferhinweis.",
+      "officialAreaLocator": "See independentSourceFindings.inspectedOfficialPages and originalPageLocatorMap for full publication path, original physical page and digest.",
+      "inheritedFindingsAreNotNewlyApproved": true
+    },
+    {
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+      "independentSourceFindings": [
+        {
+          "round": "a",
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "decision": "needs_change",
+          "reason": "The bounded atom is supported by momentum and balance clauses, particularly BW and SN. However, the actual Bayern Sek-I view places it in Grade 8. The supplied Ph8 pages do not substantiate the two-body momentum-sum target; explicit momentum support is supplied for Ph10. Review or substantiate that placement rather than changing the sound atom to match it.",
+          "inspectedOfficialPages": [
+            "official-pages/01-BW-official-extract.pdf: original physical pp.27–28, 57; p.27 formula graphics inspected",
+            "official-pages/02-BY-official-extract.pdf: original physical p.2, Ph10",
+            "official-pages/09-BY-official-extract.pdf: original physical pp.3–4, Ph8",
+            "official-pages/03-BE-official-extract.pdf: original physical pp.17, 21",
+            "official-pages/04-BB-official-extract.pdf: original physical pp.17, 21",
+            "official-pages/07-HE-official-extract.pdf: original physical pp.29–30",
+            "official-pages/19-SN-official-extract.pdf: original physical p.57, text clauses"
+          ],
+          "unsupportedClaims": [
+            "The current Bayern Grade 8 target placement is not substantiated by the supplied Ph8 pages; the supplied explicit momentum support is at Grade 10."
+          ]
+        },
+        {
+          "round": "b",
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "decision": "needs_change",
+          "reason": "The atom is a defensible bounded operationalization. BW prints vector p = mv and asks for states suitable for momentum balances. SN LK 11 names two-body problems and signs. SL explicitly sums the two mass–velocity products in a straight collision. The native scope has 48 target views and 25 further views in which the goal is reached as a prerequisite. Some target locations need a corrected source attribution or placement.",
+          "inspectedOfficialPages": [
+            "01-BW pp. 27–28, 57",
+            "02-BY Ph10 p. 2 and 09-BY Ph8 pp. 3–4",
+            "03-BE and 04-BB, each pp. 17, 21",
+            "05-HB p. 15",
+            "06-HH p. 44",
+            "07-HE pp. 29–30",
+            "08-MV p. 21",
+            "13-NI pp. 17, 101",
+            "15-NW pp. 26, 28",
+            "16-RP p. 109 and 17-RP pp. 25, 52",
+            "18-SL p. 12",
+            "19-SN p. 57",
+            "20-ST pp. 54, 79",
+            "21-SH pp. 54–55",
+            "22-TH pp. 23, 30"
+          ],
+          "unsupportedClaims": [
+            "BY's two-body momentum support is in Ph10, while the native target sits under Ph8.3. MV's cited balance is in the qualification phase, while the native place says introductory year 10. ST's stronger two-body balance evidence is at elevated level on p. 79.",
+            "SL's nuclear-physics heading and SN's relativity heading do not identify the mechanics clauses that support this atom. NI's optional route to force through momentum and RP's conditional Sek I treatment do not establish a compulsory two-body atom there.",
+            "BE/BB p. 21 belongs to one selectable theme under p. 17. Neither the school-form condition nor the selection rule supports a universal Gymnasium obligation."
+          ]
+        }
+      ],
+      "actualLearningPlacesAtInitialReview": [
+        {
+          "jurisdiction": "DE-BB",
+          "targetViews": 0,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "targetViews": 0,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BW",
+          "targetViews": 3,
+          "learningViews": 3,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Jahrgangsstufen 9/10",
+              "Erhaltungssaetze",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BY",
+          "targetViews": 3,
+          "learningViews": 3,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Jahrgangsstufe 8",
+              "Ph8.3 Mechanik",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE",
+          "targetViews": 0,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Notwendige Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Notwendige Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Erhaltungssätze",
+              "Impuls",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Erhaltungssätze",
+              "Impuls",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Energie",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Energie",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "targetViews": 8,
+          "learningViews": 8,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Mechanik",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Impuls und Stöße",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Impuls und Stöße",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "targetViews": 3,
+          "learningViews": 5,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Jahrgangsstufen 7–10",
+              "Jahrgangsstufe 10: Mechanik III – Impuls",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Studienstufe",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Studienstufe",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Impulserhaltung",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Impulserhaltung",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "targetViews": 0,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Dynamik",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Dynamik",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "targetViews": 4,
+          "learningViews": 5,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "3. Lernjahr: Themenfelder 9–12",
+              "Weitere Themen und Prüfungsaufgaben",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Drehimpuls als Erhaltungsgröße",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Drehimpuls als Erhaltungsgröße",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Kernenergie und Radioaktivität",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Kernenergie und Radioaktivität",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "targetViews": 2,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase: Jahrgangsstufe 11",
+              "Einblick in die Relativitätstheorie",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufe 11",
+              "Einblick in die Relativitätstheorie",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "targetViews": 2,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "targetViews": 3,
+          "learningViews": 5,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Klassenstufen 9/10",
+              "Klasse 10: Impuls und zentrale Stöße",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen"
+            ]
+          ]
+        }
+      ],
+      "recommendedAction": "Amtliche Zielquelle und tatsächlichen Erwerbsort getrennt binden. Die neuen Zielrollen bleiben auf die F/G-Quellen begrenzt. Frühere Erwerbsorte in BY/MV/ST sind mit tatsächlichen geerbten Bedarfswegen auszuweisen, ohne eine frühere amtliche Zielpflicht zu behaupten. Eigene Mechanik-Vorbereitungsüberschriften für das neue IMP in SL/SN werden gesondert geprüft.",
+      "officialAreaLocator": "See independentSourceFindings.inspectedOfficialPages and originalPageLocatorMap for full publication path, original physical page and digest.",
+      "inheritedFindingsAreNotNewlyApproved": true
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "independentSourceFindings": [
+        {
+          "round": "a",
+          "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "decision": "needs_change",
+          "reason": "BW, HE, BY Ph10 and SL support simple momentum conservation and recoil without requiring the advanced proof. The actual Bayern Grade 8 target placement is not substantiated by the supplied Ph8 pages. The BE/BB introductory elective pages also retain their school-form and selection conditions.",
+          "inspectedOfficialPages": [
+            "official-pages/01-BW-official-extract.pdf: original physical pp.27–28, 57",
+            "official-pages/02-BY-official-extract.pdf: original physical p.2, Ph10",
+            "official-pages/09-BY-official-extract.pdf: original physical pp.3–4, Ph8",
+            "official-pages/07-HE-official-extract.pdf: original physical pp.29–30",
+            "official-pages/18-SL-official-extract.pdf: original physical p.12",
+            "official-pages/03-BE-official-extract.pdf: original physical pp.17, 21",
+            "official-pages/04-BB-official-extract.pdf: original physical pp.17, 21"
+          ],
+          "unsupportedClaims": [
+            "The current Bayern Grade 8 conservation target placement is not substantiated by the supplied Ph8 pages; the supplied explicit momentum-conservation support is at Grade 10."
+          ]
+        },
+        {
+          "round": "b",
+          "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "decision": "needs_change",
+          "reason": "BW, HE, MV and SL provide direct recoil support. SL p. 12 explicitly connects the vector sum for a mechanically closed system with recoil. MV p. 21 allows simple recoil at GK, and ST p. 79 explicitly relates recoil to momentum conservation at elevated level. A qualitative before-and-after explanation fits these clauses. Their scope is narrower than attribution of the same obligation to every current target place.",
+          "inspectedOfficialPages": [
+            "01-BW pp. 27–28, 57",
+            "02-BY Ph10 p. 2 and 09-BY Ph8 pp. 3–4",
+            "03-BE and 04-BB, each pp. 17, 21",
+            "05-HB p. 15",
+            "06-HH p. 44",
+            "07-HE p. 30",
+            "08-MV p. 21 and 12-MV p. 45",
+            "13-NI pp. 17, 101 and 14-NI p. 28",
+            "15-NW pp. 26, 28",
+            "16-RP p. 109 and 17-RP pp. 25, 52",
+            "18-SL p. 12",
+            "19-SN p. 57",
+            "20-ST pp. 54, 79",
+            "21-SH p. 55",
+            "22-TH pp. 23, 30"
+          ],
+          "unsupportedClaims": [
+            "The 70 native target views are product placements. BE/BB's school-form-limited elective theme gives recoil as a possible context. NI's supplied pages do not establish the specific recoil outcome as mandatory. ST p. 54 covers momentum as a state quantity at basic level.",
+            "BY Ph10 supports conservation and the interaction-law connection, while the displayed goal sits under Ph8.3. The SL recoil clause is in force and motion, while the displayed place is nuclear physics.",
+            "A requirement for a general Newtonian derivation or a numerical solution for an astronaut's final speed does not follow from this qualitative recoil atom."
+          ]
+        }
+      ],
+      "actualLearningPlacesAtInitialReview": [
+        {
+          "jurisdiction": "DE-BB",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BW",
+          "targetViews": 3,
+          "learningViews": 3,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Jahrgangsstufen 9/10",
+              "Erhaltungssaetze",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BY",
+          "targetViews": 3,
+          "learningViews": 3,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Jahrgangsstufe 8",
+              "Ph8.3 Mechanik",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Notwendige Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Notwendige Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Erhaltungssätze",
+              "Impuls",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Erhaltungssätze",
+              "Impuls",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Energie",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Energie",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "targetViews": 8,
+          "learningViews": 8,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Mechanik",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Impuls und Stöße",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Impuls und Stöße",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Studienstufe",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Studienstufe",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Impulserhaltung",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Impulserhaltung",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Dynamik",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Dynamik",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "targetViews": 4,
+          "learningViews": 5,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "3. Lernjahr: Themenfelder 9–12",
+              "Weitere Themen und Prüfungsaufgaben",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Drehimpuls als Erhaltungsgröße",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Drehimpuls als Erhaltungsgröße",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Kernenergie und Radioaktivität",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Kernenergie und Radioaktivität",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase: Jahrgangsstufe 11",
+              "Einblick in die Relativitätstheorie",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufe 11",
+              "Einblick in die Relativitätstheorie",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung"
+            ]
+          ]
+        }
+      ],
+      "recommendedAction": "Kanonische Präzisierung auf festes materielles System, gemeinsames Inertialsystem und Vorher-Nachher-Gleichheit sowie den zusätzlichen 5f289-Voraussetzungsbefund parken. BY-Quellenbindung Ph10.2 getrennt vom geerbten frühen Lernort offen ausweisen. Übrige geerbte Quellen-/Themenbefunde bleiben gesondert offen.",
+      "officialAreaLocator": "See independentSourceFindings.inspectedOfficialPages and originalPageLocatorMap for full publication path, original physical page and digest.",
+      "inheritedFindingsAreNotNewlyApproved": true
+    },
+    {
+      "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "independentSourceFindings": [
+        {
+          "round": "a",
+          "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "decision": "accept_current",
+          "reason": "The inspected core originals support the force–mass–acceleration relation and its directional meaning. The current constant-mass, inertial-frame concept is a bounded operationalization. Neither this decision nor the 16-Länder support table establishes a nationwide dp/dt obligation or verifies every projected placement.",
+          "inspectedOfficialPages": [
+            "official-pages/01-BW-official-extract.pdf: original physical pp.27, 57; p.27 formula graphics inspected",
+            "official-pages/09-BY-official-extract.pdf: original physical pp.3–4, Ph8",
+            "official-pages/07-HE-official-extract.pdf: original physical pp.29–30; p.30 embedded vector F=ma graphic inspected",
+            "official-pages/18-SL-official-extract.pdf: original physical p.10",
+            "official-pages/19-SN-official-extract.pdf: original physical pp.37, 58"
+          ],
+          "unsupportedClaims": []
+        },
+        {
+          "round": "b",
+          "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "decision": "needs_change",
+          "reason": "The constant-mass law has broad curricular support across the 16 Länder. HE p. 30 prints vector F = ma and names the inertial frame. MV p. 45 and SL p. 10 directly support magnitude and direction. Other clauses concern Newton's laws more broadly or give an interval formulation. The descriptive content fits. Some of the 70 native target views place it under topics or at stages for which the cited pages supply no such attribution.",
+          "inspectedOfficialPages": [
+            "01-BW pp. 27, 57",
+            "09-BY Ph8 pp. 3–4",
+            "10-BE and 11-BB, each p. 42, with 03-BE and 04-BB pp. 17, 21 for the separate elective theme",
+            "05-HB p. 15",
+            "06-HH pp. 25, 41",
+            "07-HE pp. 29–30",
+            "12-MV p. 45",
+            "14-NI p. 28",
+            "15-NW pp. 26–27",
+            "16-RP p. 109 and 17-RP pp. 24, 51",
+            "18-SL p. 10",
+            "19-SN pp. 37, 58",
+            "20-ST pp. 45, 54, 79",
+            "21-SH pp. 54–55",
+            "22-TH pp. 22, 26"
+          ],
+          "unsupportedClaims": [
+            "The cited BW starred dynamics section supports Klasse 10. It does not verify the displayed Klasse 7/8 placement. BE/BB have independent dynamics support on Sek I p. 42, distinct from the elective E-phase clause and the displayed qualification-phase location.",
+            "SL's nuclear-physics branch, SN's electromagnetic-induction branch and RP's complementarity branch are not the mechanics locations evidenced by their respective pages.",
+            "The narrower Newton II goal does not include dp/dt, numerical tangent reading or a requirement to derive the force law experimentally."
+          ]
+        }
+      ],
+      "actualLearningPlacesAtInitialReview": [
+        {
+          "jurisdiction": "DE-BB",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BW",
+          "targetViews": 3,
+          "learningViews": 5,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Jahrgangsstufen 7/8",
+              "Mechanik: Dynamik",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Kursstufe: Jahrgangsstufen 11/12",
+              "Schwingungen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Kursstufe: Jahrgangsstufen 11/12",
+              "Schwingungen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BY",
+          "targetViews": 3,
+          "learningViews": 5,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Jahrgangsstufe 8",
+              "Ph8.3 Mechanik",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Jahrgangsstufe 11: Einführungsphase",
+              "Ph11.1 Kreisbewegung",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Jahrgangsstufe 11: Einführungsphase",
+              "Ph11.1 Kreisbewegung",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Vorschlag A (GK) - Felder und Induktion",
+              "Die drei Newtonschen Axiome benennen und erklären",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "Grundlagen: Schwingungsgleichung lösen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "Grundlagen: Schwingungsgleichung lösen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Energie",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Energie",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "targetViews": 8,
+          "learningViews": 8,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Mechanik",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Kraft, Masse und Beschleunigung",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Kraft, Masse und Beschleunigung",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Studienstufe",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Studienstufe",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Klasse 10: Wechselwirkung - Dynamik",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Klasse 10: Wechselwirkung - Dynamik",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Dynamik",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Dynamik",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Kreisbewegung, Gravitation und physikalische Weltbilder",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Kreisbewegung, Gravitation und physikalische Weltbilder",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "targetViews": 4,
+          "learningViews": 5,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Komplementaritaet durch Interferenzfaehigkeit und Welcher-Weg-Information erlaeutern",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "3. Lernjahr: Themenfelder 9–12",
+              "Weitere Themen und Prüfungsaufgaben",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Mechanik: Dynamik",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Mechanik: Dynamik",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase",
+              "Kernenergie und Radioaktivität",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Kernenergie und Radioaktivität",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase: Jahrgangsstufe 11",
+              "Elektromagnetische Induktion",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufe 11",
+              "Elektromagnetische Induktion",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Planetenbewegungen deuten",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Jahrgangsstufe 10",
+              "Ergänzende Themen und Grundlagen",
+              "Grundlagen: Planetenbewegungen deuten",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (GK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+            ]
+          ]
+        }
+      ],
+      "recommendedAction": "Die engere Physikaussage ist belegt. Geerbte Zuordnungs-/Themenbefunde in BW, SL, SN und RP offen dokumentieren und in einer gesonderten Quellen-/Platzierungsreparatur prüfen; diese Lieferung bestätigt sie nicht neu als amtliche Jahrgangspflichten.",
+      "officialAreaLocator": "See independentSourceFindings.inspectedOfficialPages and originalPageLocatorMap for full publication path, original physical page and digest.",
+      "inheritedFindingsAreNotNewlyApproved": true
+    },
+    {
+      "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "independentSourceFindings": [
+        {
+          "round": "a",
+          "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+          "decision": "accept_current",
+          "reason": "BW p.27 actually prints F=Δp/Δt; p.57 makes listed formulas binding and locates the starred section in Klasse 10. SN LK11 provides the momentum-rate context, with the interval mean a bounded preparatory operationalization. Actual RATE-M targets are BW and SN LK. BE/BB support remains conditional elective content under p.17, and prerequisite-only appearances elsewhere establish no nationwide target obligation.",
+          "inspectedOfficialPages": [
+            "official-pages/01-BW-official-extract.pdf: original physical pp.27, 57; p.27 formula graphics inspected",
+            "official-pages/19-SN-official-extract.pdf: original physical p.58; differential-law graphic inspected",
+            "official-pages/03-BE-official-extract.pdf: original physical pp.17, 21",
+            "official-pages/04-BB-official-extract.pdf: original physical pp.17, 21"
+          ],
+          "unsupportedClaims": []
+        },
+        {
+          "round": "b",
+          "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+          "decision": "accept_current",
+          "reason": "The printed BW formula on physical p. 27 is F = Δp/Δt. Page 57 makes the printed formulas binding and places the starred section in Klasse 10. For a varying force, the quotient is correctly interpreted as the interval mean. SN LK 11 p. 57 gives the finite impulse relation, and p. 58 prints the differential law with graphical interpretation. The mean-force task is a bounded preparation there. The five target views are the three BW views carrying this Klasse 10 place and the two SN views carrying the LK 11 place. A further 30 views reach it only as a prerequisite.",
+          "inspectedOfficialPages": [
+            "01-BW pp. 27, 57",
+            "19-SN pp. 57–58",
+            "03-BE and 04-BB, each pp. 17, 21",
+            "05-HB p. 15",
+            "06-HH pp. 25, 41",
+            "07-HE p. 30"
+          ],
+          "unsupportedClaims": [
+            "BE/BB p. 21 describes force as temporal change of momentum in theme 3.1.4. Page 17 provides for selecting at least three of five themes in both course forms in year 11 at Berlin's integrated secondary schools and community schools and Brandenburg's comprehensive schools and vocational Gymnasien. This does not establish a mandatory RATE-M target in either Land.",
+            "HB and HH provide related impulse formulations. HE p. 30 prints vector F = ma. These pages and the diagnostic prerequisite placements do not extend the measured RATE-M target scope."
+          ]
+        }
+      ],
+      "actualLearningPlacesAtInitialReview": [
+        {
+          "jurisdiction": "DE-BB",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BW",
+          "targetViews": 3,
+          "learningViews": 3,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe I",
+              "Jahrgangsstufen 9/10",
+              "Klasse 10: Kraft als mittlere Impulsänderungsrate",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Grundlagen: Impulserhaltung aus Newtonschen Axiomen (LK)",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Erhaltungssätze",
+              "Impuls",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Energie",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "targetViews": 0,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Impuls und Stöße",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Studienstufe",
+              "Veränderliche elektromagnetische Felder",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "System - Erhaltungssätze",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Dynamik",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Grundlagen der Mechanik",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Mechanik: Impuls",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Kraft und Bewegung",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufe 11",
+              "Newtonsche Gesetze: Impulsänderungsrate",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Herleitung der Impulserhaltung nach den Analysisgrundlagen",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "targetViews": 0,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Mittlere resultierende Kraft aus der Impulsänderung bestimmen"
+            ]
+          ]
+        }
+      ],
+      "recommendedAction": "Die amtlichen BW- und SN-Belege sowie die BE/BB-Wahlgrenzen erhalten. Die tatsächlichen P-Fehler durch frische Zahlen und korrekte Grenzen zweier Endpunktmessungen beheben; keine neue amtliche Differentialforderung ableiten.",
+      "officialAreaLocator": "See independentSourceFindings.inspectedOfficialPages and originalPageLocatorMap for full publication path, original physical page and digest.",
+      "inheritedFindingsAreNotNewlyApproved": true
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "independentSourceFindings": [
+        {
+          "round": "a",
+          "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+          "decision": "unresolved",
+          "reason": "SN supplies the differential second law and interaction law, and BE/BB explicitly connect conservation with Newton's axioms, supporting a bounded proof operationalization. Full current projection support remains unresolved: BE/BB p.17 limits the introductory elective framework to specified school forms and selection of at least three of five themes, which does not establish a mandatory Gymnasium Q-phase target. HE p.30 does not explicitly demand this differential/integral proof formalism.",
+          "inspectedOfficialPages": [
+            "official-pages/19-SN-official-extract.pdf: original physical pp.57–58; p.58 differential-law graphic inspected",
+            "official-pages/03-BE-official-extract.pdf: original physical pp.17, 21",
+            "official-pages/04-BB-official-extract.pdf: original physical pp.17, 21",
+            "official-pages/07-HE-official-extract.pdf: original physical pp.29–30; p.30 formula graphic inspected"
+          ],
+          "unsupportedClaims": [
+            "A mandatory Gymnasium Q-phase proof target in BE/BB cannot be established from the supplied school-form-conditional introductory elective pages.",
+            "The inspected broad clauses do not establish a nationwide mandatory obligation for this exact differential/integral proof."
+          ]
+        },
+        {
+          "round": "b",
+          "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+          "decision": "unresolved",
+          "reason": "SL p. 12 explicitly asks for a derivation from the interaction law for a central straight two-body collision. SN LK 11 pp. 57–58 supply conservation, the differential law, system/environment and action–reaction. These give a defensible basis for an advanced synthesis. The retained pages do not settle the official status of the complete proof with external impulses and both time conditions in all 32 native LK target views.",
+          "inspectedOfficialPages": [
+            "18-SL pp. 10, 12",
+            "19-SN pp. 57–58",
+            "07-HE pp. 29–30",
+            "03-BE and 04-BB, each pp. 17, 21",
+            "02-BY Ph10 p. 2",
+            "08-MV p. 21",
+            "14-NI p. 28",
+            "15-NW pp. 26–28",
+            "17-RP pp. 25, 52",
+            "20-ST pp. 54, 79",
+            "21-SH pp. 54–55"
+          ],
+          "unsupportedClaims": [
+            "HE lists the laws, momentum conservation and recoil. BE/BB conditionally connect conservation to Newton's axioms. Neither text explicitly mandates this general differential-and-integral proof in every projected course.",
+            "RP presents conservation as an axiom for balance reasoning. ST's elevated-level collision and recoil requirements support applications. These clauses do not verify the exact proof as a compulsory outcome.",
+            "An LK product placement, including one under changing electromagnetic fields in HH, cannot independently establish an official proof requirement or its teaching date."
+          ]
+        }
+      ],
+      "actualLearningPlacesAtInitialReview": [
+        {
+          "jurisdiction": "DE-BB",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-BE",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Grundlagen: Impulserhaltung aus Newtonschen Axiomen (LK)",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ],
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Erhaltungssätze",
+              "Impuls",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HB",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Energie",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HE",
+          "targetViews": 4,
+          "learningViews": 4,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase: Mechanik",
+              "E.2 Newton'sche Axiome und Erhaltungssätze",
+              "Impuls und Stöße",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-HH",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Studienstufe",
+              "Veränderliche elektromagnetische Felder",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-MV",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "System - Erhaltungssätze",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NI",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Dynamik",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-NW",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Grundlagen der Mechanik",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-RP",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SH",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Mechanik: Impuls",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SL",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Einführungsphase",
+              "Kraft und Bewegung",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-SN",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufe 11",
+              "Herleitung der Impulserhaltung nach der Differentialform",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-ST",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Herleitung der Impulserhaltung nach den Analysisgrundlagen",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        },
+        {
+          "jurisdiction": "DE-TH",
+          "targetViews": 2,
+          "learningViews": 2,
+          "places": [
+            [
+              "Meine Lernziele",
+              "Physik",
+              "Sekundarstufe II (LK)",
+              "Qualifikationsphase: Jahrgangsstufen 11/12",
+              "Ergänzende Themen und Grundlagen",
+              "Weitere Grundlagen",
+              "Impulserhaltung aus Newtonschen Axiomen (LK)"
+            ]
+          ]
+        }
+      ],
+      "recommendedAction": "Wissenschaftlich tragfähige LK-Synthese von ihrer amtlichen Verbindlichkeit trennen. Die vollständige formale Herleitung ist durch die geprüften Ausschnitte nicht in allen 32 LK-Zielsichten als exakte amtliche Pflicht bestätigt. Keine solche Gesamtbehauptung neu veröffentlichen; geerbte Ziel-/Quellenzuordnungen gesondert prüfen.",
+      "officialAreaLocator": "See independentSourceFindings.inspectedOfficialPages and originalPageLocatorMap for full publication path, original physical page and digest.",
+      "inheritedFindingsAreNotNewlyApproved": true
+    }
+  ],
+  "sourceSupportPath": "quality/official-source-support.actual.json",
+  "portableOutsideGitOriginalsPath": "quality/external-original-locators.actual.json"
+}

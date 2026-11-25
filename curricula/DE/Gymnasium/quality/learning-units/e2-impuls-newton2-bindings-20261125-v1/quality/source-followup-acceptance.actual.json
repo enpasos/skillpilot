@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "contract": "actual-bounded-source-synthesis-v1",
+  "actualIndependentThreads": 6,
+  "rounds": {
+    "source-followup": {
+      "a": {
+        "execution": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup/actual-execution/round-a/execution.actual.json",
+        "executionSha256": "sha256:e5e3627c28d6519f8d95ec645e6cac579f69682db8a1095118febe5f604955d2",
+        "response": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup/actual-execution/round-a/response.json",
+        "responseSha256": "sha256:721948221ffb65a555c0a495d2ecdcac8495670d940220fc02d926935ac72a49",
+        "threadId": "01a21332-cec2-7b93-b3ab-3de1cd083aa2",
+        "model": "gpt-6.1-sol",
+        "reasoningEffort": "ultra",
+        "responseBodyUnmodified": true
+      },
+      "b": {
+        "execution": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup/actual-execution/round-b/execution.actual.json",
+        "executionSha256": "sha256:f3cbbeddc5b0556eceaf65aa71bb0a2789ea2607102ca2d6c11b4e942a7ba271",
+        "response": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup/actual-execution/round-b/response.json",
+        "responseSha256": "sha256:32b46703459fac0d08567256fd2ceab6cb8b398aad92ee7cbcc208ccf9a5a77c",
+        "threadId": "01a21332-cec2-7b12-862e-1d436cbd5710",
+        "model": "gpt-6.2-astra",
+        "reasoningEffort": "ultra",
+        "responseBodyUnmodified": true
+      }
+    },
+    "source-followup-v2": {
+      "a": {
+        "execution": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup-v2/actual-execution/round-a/execution.actual.json",
+        "executionSha256": "sha256:194905707886be19f76508f4c3012bb048c41ec69d2ac3f1c7abddbdaebfcee5",
+        "response": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup-v2/actual-execution/round-a/response.json",
+        "responseSha256": "sha256:226774617513b0479db0d8b7881461f82080cb4af8a77e76bdcdc8a9b10b8df6",
+        "threadId": "01a2133e-c59d-7ca0-acbf-a71062b213ea",
+        "model": "gpt-6.1-sol",
+        "reasoningEffort": "ultra",
+        "responseBodyUnmodified": true
+      },
+      "b": {
+        "execution": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup-v2/actual-execution/round-b/execution.actual.json",
+        "executionSha256": "sha256:b206eb0cd729eec30e028fa70f0657ad710095b35fb7647bef7a7a88186d6d1e",
+        "response": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup-v2/actual-execution/round-b/response.json",
+        "responseSha256": "sha256:5fdf348d13d09326a84dd6e6a22f1b5da55d3fb50ed48b654b610189d7d262ea",
+        "threadId": "01a2133e-c59d-71c2-83dc-7086efaa35e3",
+        "model": "gpt-6.2-astra",
+        "reasoningEffort": "ultra",
+        "responseBodyUnmodified": true
+      }
+    },
+    "source-followup-v3": {
+      "a": {
+        "execution": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup-v3/actual-execution/round-a/execution.actual.json",
+        "executionSha256": "sha256:63de13b71d9308df9e8b250d3297a03d2f833d8bda51d1d61e246398a0d433e2",
+        "response": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup-v3/actual-execution/round-a/response.json",
+        "responseSha256": "sha256:85b0090e602b966f754dd7126d87655c3455763b9a55111d503d2cd1d6231413",
+        "threadId": "01a21351-6b54-7812-9084-70ec4f87d331",
+        "model": "gpt-6.1-sol",
+        "reasoningEffort": "ultra",
+        "responseBodyUnmodified": true
+      },
+      "b": {
+        "execution": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup-v3/actual-execution/round-b/execution.actual.json",
+        "executionSha256": "sha256:16b08b00257a3b9c498032db0e9cebfe60c50f393eb66d9e1f5b3fb7ce088f24",
+        "response": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source-followup-v3/actual-execution/round-b/response.json",
+        "responseSha256": "sha256:3ba4ec62fb6412e2b99c85ae08955985cc177f7137fd10470f38d6b92688482c",
+        "threadId": "01a21351-6b54-7432-af91-d3425791ba08",
+        "model": "gpt-6.2-astra",
+        "reasoningEffort": "ultra",
+        "responseBodyUnmodified": true
+      }
+    }
+  },
+  "effectiveRecords": [
+    {
+      "recordId": "00-BY-53afbda1",
+      "decision": "accept_record_with_stated_limits",
+      "acceptingPair": "source-followup",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "01-MV-53afbda1",
+      "decision": "accept_record_with_stated_limits",
+      "acceptingPair": "source-followup",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "02-ST-53afbda1",
+      "decision": "accept_record_with_stated_limits",
+      "acceptingPair": "source-followup",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "03-SL-53afbda1",
+      "decision": "accept_current_bounded_metadata",
+      "acceptingPair": "source-followup-v3",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "04-SN-53afbda1",
+      "decision": "accept_current_bounded_metadata",
+      "acceptingPair": "source-followup-v3",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "05-BW-a94cfe1c",
+      "decision": "accept_record_with_stated_limits",
+      "acceptingPair": "source-followup",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "06-SL-a94cfe1c",
+      "decision": "accept_record_with_stated_limits",
+      "acceptingPair": "source-followup",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "07-SN-a94cfe1c",
+      "decision": "accept_record_with_stated_limits",
+      "acceptingPair": "source-followup",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "08-RP-a94cfe1c",
+      "decision": "accept_record_with_stated_limits",
+      "acceptingPair": "source-followup",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "09-SL-839ecc8f",
+      "decision": "accept_record_with_stated_limits",
+      "acceptingPair": "source-followup",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    },
+    {
+      "recordId": "10-ALL-f524f05c",
+      "decision": "accept_record_with_stated_limits",
+      "acceptingPair": "source-followup",
+      "boundary": "Only the stated source/actual-placement distinction and remaining inherited findings; no source mandate for authored deepening."
+    }
+  ],
+  "headingRepair": {
+    "acceptedPair": "source-followup-v2",
+    "views": 6,
+    "referenceOccurrencesComparedPerSide": 5777,
+    "allOtherTargetAndAcquisitionPathsKindsRolesAndRelativeOrdersPreserved": true,
+    "onlyAllowedMoves": "IMP in six views; existing WHY additionally in two SL SekII views, within the same year.",
+    "currentDeltaPath": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/final-heading-delta-v2.actual.json",
+    "currentDeltaSha256": "sha256:a065f6390b8be885782147546acdb75fe54c83e81596fe53f44179629407989a"
+  },
+  "originalRefusalsPreserved": {
+    "source-followup": "SL GK inherited acquisition wrapper/path/order loss; SN IMP generic tangent boundary at physical57; actual refusals retained.",
+    "source-followup-v2": "Both heading repairs accepted; both remaining SL current-hash and SN stale source-boundary metadata refused.",
+    "source-followup-v3": "Only corrected two current metadata records accepted; no retrospective acquittal of refused inputs."
+  },
+  "mechanicalPreflight": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/source3-preflight.actual.json",
+    "sha256": "sha256:b8f880ecb1de201d195b10b70e2d2b255c6968fad3cbf6979941a8953758b6e0",
+    "all66CurrentExceptionViewHashBindingsVerified": true,
+    "bothWitnessFormsMatchGoalSpecificRawSnPolicy": true
+  },
+  "currentCompanions": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/source-demand-place-exceptions.actual.json",
+      "sha256": "sha256:0143bd662c571cdf768f0fdf7e35a12e42b1d390c008a1b7668b5aba7ebeac1d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/source-placement-witnesses.actual.json",
+      "sha256": "sha256:da22fa26cb75dc7f3a791702d0458bbd806806fd9eef67ac8ef059ceb496e268"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/current-source-binding.actual.json",
+      "sha256": "sha256:b64e0b436340cda3d6351cd80c5d7f55eb9207d61554ac260bdca237d44b4084"
+    },
+    {
+      "path": "scripts/generate_laender_physics_stage_views.sources.json",
+      "sha256": "sha256:173f0de537a2f7253b8250e1b2c5af53f3ea0be3b1285d7204aa6988c02416bf"
+    }
+  ],
+  "retainedLimits": [
+    "Earlier acquisition does not establish earlier official curriculum mandate.",
+    "BY Ph10.2 source correction does not repair inherited e790 to839 year8 consumer placement.",
+    "Inherited SL nuclear and SN relativity consumer mappings remain unresolved.",
+    "Exact advanced differential derivation is authored deepening; no general official full-goal LK mandate is asserted.",
+    "Original full PDFs are located by edition/URL/digest; independent fresh review rehashed supplied extracts and screenshots, not absent full original PDF bytes.",
+    "No D/P/card/assessment/learner-result/human-approval/deployment acceptance follows from this source-only synthesis."
+  ]
+}

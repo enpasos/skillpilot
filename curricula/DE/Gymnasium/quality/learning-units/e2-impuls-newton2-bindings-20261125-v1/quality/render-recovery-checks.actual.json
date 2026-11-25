@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-exact-native-render-recovery-checks-v1",
+  "measuredAt": "2026-11-25T15:35:23.598544+00:00",
+  "helperPath": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/reproduce-review-artifacts.mts",
+  "helperRawSha256": "sha256:eda834b2b55c6301ea7a0735b087a44d27838dac57eb6cfca3b26bf6e7186350",
+  "recipePath": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/review-render-recovery.recipe.json",
+  "recipeRawSha256": "sha256:859fec1b5d2a8f25b5719f1beb54351be210da4320e6c29d6eb436a97774be3d",
+  "allFourCompleteImmutableArtifactMatches": [
+    {
+      "batch": "e2-impuls-newton2-v1",
+      "role": "book_html",
+      "bytes": 423424,
+      "sha256": "sha256:088dfdbcfdc544ed2d400ae9262abd34ee3276e0264007a242f012fbfef1d43e",
+      "exactAuditOriginalRetainedOutsideGit": true,
+      "workingCopyRestoredUnchanged": true
+    },
+    {
+      "batch": "e2-impuls-newton2-v1",
+      "role": "book_pdf",
+      "bytes": 615009,
+      "sha256": "sha256:74f330391e26de50f237616234d5ae4b0fbbf806534adb198de76f4d55f5a2c7",
+      "exactAuditOriginalRetainedOutsideGit": true,
+      "workingCopyRestoredUnchanged": true
+    },
+    {
+      "batch": "e2-corrected-four-v2",
+      "role": "book_html",
+      "bytes": 410567,
+      "sha256": "sha256:d6afee63f4ac6180116c77850352be4914a576ab5b02b7dafd55595ca2bc1fc9",
+      "exactAuditOriginalRetainedOutsideGit": true,
+      "workingCopyRestoredUnchanged": true
+    },
+    {
+      "batch": "e2-corrected-four-v2",
+      "role": "book_pdf",
+      "bytes": 410544,
+      "sha256": "sha256:de190c95e2b5c5e67a94e68be5cab80ebf26ad86d19918813d771e0aad5963ef",
+      "exactAuditOriginalRetainedOutsideGit": true,
+      "workingCopyRestoredUnchanged": true
+    }
+  ],
+  "defaultInMemoryRecovery": {
+    "actualRunExitCode": 0,
+    "materialized": false,
+    "repositoryWrites": 0,
+    "fullLengthsAndDigestsMatched": true
+  },
+  "privateFreshCheckoutRecovery": {
+    "initialMissingRenderOutputs": 4,
+    "exitCode": 0,
+    "allFourMaterializedOnlyAfterAllFullHashChecks": true,
+    "unmodifiedNativeBundleArtifactByteChecksPassed": 2,
+    "rawReceiptSha256": "sha256:ba201832c0c6bdb8c2411f95794b55120fb11706a4e30fd542a5a1724153c75d"
+  },
+  "currentCheckoutNativeFullCampaignVerification": {
+    "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/reproduce-review-artifacts.mts --materialize --check-native",
+    "exitCode": 0,
+    "unmodifiedFunction": "validatePreparedGoalDescriptionRolloutBatch",
+    "verifiedConfigs": [
+      "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-25/e2-impuls-newton2-v1.config.json",
+      "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-25/e2-corrected-four-v2.config.json"
+    ],
+    "verifiedPreparedBatches": 2,
+    "unmodifiedBundleByteVerifier": "verifyGoalBookReviewBundleArtifactBytes",
+    "allOriginalArtifactHashChecksRemainMandatory": true,
+    "rawReceiptSha256": "sha256:ba201832c0c6bdb8c2411f95794b55120fb11706a4e30fd542a5a1724153c75d"
+  },
+  "negativeCorruptFourthArtifact": {
+    "corruptedFourthArtifactRejected": true,
+    "exitCode": 1,
+    "noneOfFourOutputsWritten": true,
+    "allInputsUnmodified": true
+  },
+  "withoutAllFourRenderOutputs": {
+    "allFourRenderOutputsAbsentDuringChecks": true,
+    "explicitUnmodifiedNativeCampaignCheck": {
+      "exitCode": 1,
+      "missingArtifactRejected": true
+    },
+    "activeCurrentPhysicsGateCheck": {
+      "exitCode": 0,
+      "gates": {
+        "currentDescriptionResolutions": 492,
+        "currentPositiveEvidenceProfiles": 493,
+        "currentSemanticAtomicityDecisions": 493,
+        "currentMemoryReviewDecisions": 493,
+        "currentVisualizationQaRecords": 493
+      },
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ],
+      "issues": [],
+      "strictComplete": 492
+    },
+    "originalsRestoredInFinally": true
+  },
+  "withoutOutputsCurrentNativeReportRawSha256": "sha256:cf44e6630aadf70b66ceee5d9438e60ce6084d885f4b423c85ae96e82a42deee",
+  "independentReadOnlyHelperReview": {
+    "reviewerRole": "separate view/source implementation agent; no author edit",
+    "blockingFindings": 0,
+    "checked": "Bound model/manifest inputs, no default repository writes, same-length two-date restoration, exact raw prefix SHA before native outline reinjection, all four full hash checks before wx writes, unchanged native verifiers."
+  },
+  "ciBoundary": {
+    "workflowChanged": false,
+    "ordinaryCiNeedsHydration": false,
+    "reason": "Existing product/status CI validates current JSON/resolution bindings and fixture campaigns; it does not run prepared-batch byte verification against these two historical E2 bundles. Explicit native historical campaign tooling requires recovery first.",
+    "noPlatformDigestOverride": true,
+    "differentFontsChromiumOrPlatformBytesFailClosed": true,
+    "sparseCheckoutInputsRequired": "Both full bound bundles, renderer source, app dependencies, referenced public assets and ordinary PDF/font tools; no missing input is skipped."
+  },
+  "unchangedInputs": [
+    "canonical goals",
+    "bundle manifests",
+    "book models",
+    "review inputs",
+    "sealed responses",
+    "resolutions",
+    "global checkers",
+    "quality floors"
+  ],
+  "humanOrLearnerAcceptanceClaim": false
+}

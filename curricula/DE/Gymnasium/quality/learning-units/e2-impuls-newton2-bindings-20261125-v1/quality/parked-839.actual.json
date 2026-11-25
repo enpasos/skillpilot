@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-canonical-839-parked-findings-v1",
+  "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+  "currentDescriptionDe": "Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.",
+  "currentRequires": [
+    "5f289cdc-fda1-4058-b44f-041ba1398e79",
+    "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+    "53afbda1-5776-502b-8867-471975d7b766"
+  ],
+  "originalDDecisions": [
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "revise",
+      "proposedDescriptionDe": "Die lernende Person kann in einem Inertialsystem die vektoriellen Gesamtimpulse eines materiell abgeschlossenen Systems vor und nach einer Wechselwirkung bei verschwindendem resultierendem äußerem Kraftstoß gleichsetzen und einfache Rückstoßsituationen damit qualitativ begründen.",
+      "proposedDescriptionEn": "In an inertial frame, the learner can equate the vector total momenta of a materially closed system before and after an interaction when the net external impulse is zero, and use this to qualitatively justify simple recoil situations.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Für dasselbe materielle System im Inertialsystem sind Anfangs- und Endgesamtimpuls bei äußerem Nettokraftstoß null gleich. Innere Wechselwirkungen ändern die Teilimpulse; beim Rückstoß aus der Ruhe bedeuten entgegengesetzt gleiche Impulse bei ungleichen Massen verschiedene Geschwindigkeitsbeträge.",
+        "essentialUnderstandingEn": "For the same material system in an inertial frame, initial and final total momentum are equal when net external impulse is zero. Internal interactions change component momenta; in recoil from rest, equal opposite momenta imply different speed magnitudes for unequal masses.",
+        "observablePerformanceDe": "Die Person grenzt das System und Intervall ab, begründet die Vernachlässigung des äußeren Kraftstoßes, vergleicht die gerichteten Gesamtimpulse vor und nach dem Abstoßen und erklärt Rückstoßrichtungen sowie den Einfluss ungleicher Massen.",
+        "observablePerformanceEn": "The learner defines the system and interval, justifies neglecting external impulse, compares directed total momenta before and after the push, and explains recoil directions and the effect of unequal masses.",
+        "transferExpectationDe": "Bei einem frischen, anfangs gemeinsam driftenden Zweikörpersystem erklärt die Person die Geschwindigkeitsänderungen durch die Impulsbilanz, ohne entgegengesetzte Endgeschwindigkeiten oder die Erhaltung jedes Einzelimpulses vorauszusetzen.",
+        "transferExpectationEn": "For a fresh two-body system initially drifting together, the learner explains velocity changes through momentum balance without assuming opposite final velocities or conservation of each individual momentum."
+      },
+      "rationale": "The local revision makes the material-system and inertial-frame conditions explicit and bounds zero interval impulse to before/after equality. It retains simple recoil reasoning without importing the advanced proof or a continuous-conservation assessment.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise"
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "revise",
+      "proposedDescriptionDe": "Die lernende Person kann einen einfachen Rückstoß in einem Inertialsystem qualitativ erklären. Dazu betrachtet sie dieselben Körper vor und nach dem Rückstoß als System und nutzt die Gleichheit ihrer vektoriellen Gesamtimpulse, wenn der resultierende äußere Kraftstoß über das betrachtete Intervall null ist.",
+      "proposedDescriptionEn": "The learner can explain a simple recoil qualitatively in an inertial frame. The learner treats the same bodies as the system before and after recoil and uses the equality of their total momentum vectors when the net external impulse over the interval is zero.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Bei einem Rückstoß überträgt die innere Wechselwirkung Impuls zwischen den beteiligten Körpern. Ist der äußere Gesamtkraftstoß auf diese Körper null, ist ihre Impulssumme vor und nach dem Vorgang gleich. Bei einem Paar, das anfangs ruht, sind die Endimpulse daher gleich groß und entgegengesetzt.",
+        "essentialUnderstandingEn": "During recoil, the internal interaction transfers momentum between the bodies. If the net external impulse on those bodies is zero, their momentum sum is equal before and after the event. For a pair initially at rest, their final momenta therefore have equal magnitudes and opposite directions.",
+        "observablePerformanceDe": "Für zwei unterschiedlich schwere Wagen, die aus der Ruhe auseinanderrollen, grenzt die lernende Person das System ab und begründet, wann äußere horizontale Einwirkungen vernachlässigbar sind. Sie skizziert die Impulspfeile danach und erklärt, warum der leichtere Wagen schneller ist.",
+        "observablePerformanceEn": "For two unequal-mass carts rolling apart from rest, the learner identifies the system and explains when external horizontal effects are negligible. The learner sketches the final momentum arrows and explains why the lighter cart moves faster.",
+        "transferExpectationDe": "Ein neues Paar driftet vor dem Abstoßen gemeinsam nach rechts. Die lernende Person beurteilt die Vermutung, danach müsse ein Körper nach links fahren. Sie begründet ihre Antwort anhand der entgegengesetzten Impulsänderungen und des positiven Anfangsgesamtimpulses.",
+        "transferExpectationEn": "A fresh pair drifts together to the right before pushing apart. The learner evaluates the claim that one body must then move left, using the opposite momentum changes and the positive initial total momentum."
+      },
+      "rationale": "The original can be read as asserting constancy throughout any interval whose net external impulse is zero. The before-and-after wording gives precisely the conclusion needed for recoil and identifies whose momentum is being compared. It preserves the qualitative demand.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise"
+    }
+  ],
+  "prerequisiteDecisions": [
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "accept_current",
+      "reason": "The direct requirements and complete 61-node closure prepare signed total momentum, force balance and interaction forces acting on different bodies. These support simple system-boundary and recoil reasoning. The advanced differential/integral proof and RATE-I are not necessary prerequisites for this goal.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "needs_change",
+      "reason": "IMP supplies the signed sum. Applying Newton III prepares the distinction between an interaction pair on two bodies and forces on one body, and its closure already includes the conceptual Newton II goal. The additional gate requiring application of ΣF = ma to accelerated motion contributes no quantity or inference needed for this qualitative endpoint comparison. The external-impulse condition can be introduced through the system boundary here. The formal impulse goal is downstream.",
+      "unnecessaryCurrentRequires": [
+        "5f289cdc-fda1-4058-b44f-041ba1398e79"
+      ],
+      "missingRequires": []
+    }
+  ],
+  "recommendationDe": "Den qualitativen Rückstoßtext auf dieselben materiellen Körper in einem gemeinsamen Inertialsystem und die Gleichheit an den Intervallgrenzen präzisieren. Die zusätzliche Anwendungsvoraussetzung5f289 getrennt fachlich entscheiden. Diese Lieferung ändert weder Text noch Kante und behauptet keine aktuelle D-Freigabe.",
+  "noVetoOverride": true,
+  "descriptionResolutionActivated": false,
+  "correctedProfileSeparatelyAccepted": true,
+  "overallM7Acceptance": false
+}

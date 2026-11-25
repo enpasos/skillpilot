@@ -1,0 +1,485 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "descriptionReviews": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "enum": [
+              "53afbda1-5776-502b-8867-471975d7b766",
+              "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "059c1adc-e4d2-5222-a923-15abc417d59f",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "revise",
+              "split_review",
+              "block"
+            ]
+          },
+          "proposedDescriptionDe": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "proposedDescriptionEn": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "understandingEvidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "essentialUnderstandingDe": {
+                "type": "string",
+                "minLength": 1
+              },
+              "essentialUnderstandingEn": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observablePerformanceDe": {
+                "type": "string",
+                "minLength": 1
+              },
+              "observablePerformanceEn": {
+                "type": "string",
+                "minLength": 1
+              },
+              "transferExpectationDe": {
+                "type": "string",
+                "minLength": 1
+              },
+              "transferExpectationEn": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "essentialUnderstandingDe",
+              "essentialUnderstandingEn",
+              "observablePerformanceDe",
+              "observablePerformanceEn",
+              "transferExpectationDe",
+              "transferExpectationEn"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidenceProfileContract": {
+            "type": "string",
+            "const": "positive-understanding-evidence-v2"
+          },
+          "evidenceProfileRecommendation": {
+            "type": "string",
+            "enum": [
+              "none",
+              "create",
+              "revise"
+            ]
+          }
+        },
+        "required": [
+          "goalId",
+          "decision",
+          "proposedDescriptionDe",
+          "proposedDescriptionEn",
+          "understandingEvidence",
+          "rationale",
+          "evidenceProfileContract",
+          "evidenceProfileRecommendation"
+        ]
+      }
+    },
+    "profileReviews": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "enum": [
+              "53afbda1-5776-502b-8867-471975d7b766",
+              "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "059c1adc-e4d2-5222-a923-15abc417d59f",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "keep",
+              "revise",
+              "block"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredChanges": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "decision",
+          "reason",
+          "requiredChanges"
+        ]
+      }
+    },
+    "atomicityReviews": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "enum": [
+              "53afbda1-5776-502b-8867-471975d7b766",
+              "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "059c1adc-e4d2-5222-a923-15abc417d59f",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+            ]
+          },
+          "semanticAtomic": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "independentlyAssessableFacets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "suggestedSplit": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "semanticAtomic",
+          "reason",
+          "independentlyAssessableFacets",
+          "suggestedSplit"
+        ]
+      }
+    },
+    "prerequisiteReviews": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "enum": [
+              "53afbda1-5776-502b-8867-471975d7b766",
+              "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "059c1adc-e4d2-5222-a923-15abc417d59f",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "accept_current",
+              "needs_change",
+              "unresolved"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "unnecessaryCurrentRequires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "missingRequires": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "decision",
+          "reason",
+          "unnecessaryCurrentRequires",
+          "missingRequires"
+        ]
+      }
+    },
+    "semanticKindReviews": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "enum": [
+              "53afbda1-5776-502b-8867-471975d7b766",
+              "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "059c1adc-e4d2-5222-a923-15abc417d59f",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+            ]
+          },
+          "semanticKind": {
+            "type": "string",
+            "enum": [
+              "curricularAtomic",
+              "practiceAssessment",
+              "navigationOnly"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "goalId",
+          "semanticKind",
+          "reason"
+        ]
+      }
+    },
+    "sourceReviews": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "enum": [
+              "53afbda1-5776-502b-8867-471975d7b766",
+              "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "059c1adc-e4d2-5222-a923-15abc417d59f",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "accept_current",
+              "needs_change",
+              "unresolved"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "inspectedOfficialPages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "unsupportedClaims": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "decision",
+          "reason",
+          "inspectedOfficialPages",
+          "unsupportedClaims"
+        ]
+      }
+    },
+    "memoryGoalReviews": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string",
+            "enum": [
+              "53afbda1-5776-502b-8867-471975d7b766",
+              "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "059c1adc-e4d2-5222-a923-15abc417d59f",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "accept_current",
+              "needs_change",
+              "unresolved"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredChanges": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goalId",
+          "decision",
+          "reason",
+          "requiredChanges"
+        ]
+      }
+    },
+    "cardReviews": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cardId": {
+            "type": "string",
+            "enum": [
+              "physics_e_cov_015",
+              "physics_e_cov_020",
+              "physics_e_cov_028",
+              "physics_e_cov_029",
+              "physics_e_cov_092",
+              "physics_e_cov_093",
+              "physics_e_cov_094"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "accept_current",
+              "needs_change",
+              "unresolved"
+            ]
+          },
+          "scientificCorrectness": {
+            "type": "string",
+            "minLength": 1
+          },
+          "languageEquivalence": {
+            "type": "string",
+            "minLength": 1
+          },
+          "originFit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "promptAnswerFit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recallBoundary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredChanges": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "cardId",
+          "decision",
+          "scientificCorrectness",
+          "languageEquivalence",
+          "originFit",
+          "promptAnswerFit",
+          "recallBoundary",
+          "requiredChanges"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "descriptionReviews",
+    "profileReviews",
+    "atomicityReviews",
+    "prerequisiteReviews",
+    "semanticKindReviews",
+    "sourceReviews",
+    "memoryGoalReviews",
+    "cardReviews",
+    "limitations"
+  ]
+}
