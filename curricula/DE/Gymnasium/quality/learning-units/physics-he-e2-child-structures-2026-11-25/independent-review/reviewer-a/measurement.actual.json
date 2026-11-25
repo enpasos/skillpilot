@@ -1,0 +1,5340 @@
+{
+  "base": "948f2a419d",
+  "head": "a88f17523b",
+  "totalViews": 90,
+  "views": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json",
+      "viewId": "de-he-gym-physics-gk-g8",
+      "sha256": "7e19e0b95ad9c299b45def35297a2f6a8137fb0a8a451b17184f01b755667288",
+      "roles": {
+        "target": {
+          "before": 591,
+          "after": 591,
+          "removed": [],
+          "added": []
+        },
+        "prerequisiteOnly": {
+          "before": 1076,
+          "after": 1076,
+          "removed": [],
+          "added": []
+        }
+      },
+      "learningSet": {
+        "before": 1667,
+        "after": 1667,
+        "removed": [],
+        "added": []
+      },
+      "children": {
+        "physics-e2-inertia": 3,
+        "physics-e2-energy": 6,
+        "physics-e2-several-forces": 2,
+        "physics-e2-momentum": 7,
+        "physics-e2-force-and-counterforce": 2,
+        "physics-e2-force-mass-acceleration": 2
+      },
+      "declared": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "reducedDirectDemand": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directDemandWitnesses": [
+        {
+          "unit": "physics-e2-energy",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-and-counterforce",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-mass-acceleration",
+          "after": "physics-e2-inertia",
+          "witnesses": [
+            [
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-energy",
+          "witnesses": [
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+            ],
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-and-counterforce",
+          "witnesses": [
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-several-forces",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        }
+      ],
+      "reverseTransitiveWitnesses": [],
+      "e2ToE5TransitiveWitnesses": [],
+      "targetPathChanges": {
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ]
+        },
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ]
+        },
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ]
+        },
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ]
+        },
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ]
+        },
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ]
+        },
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ]
+        },
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ]
+        },
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        },
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ]
+        },
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ]
+        },
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        },
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ]
+        },
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ]
+        },
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ]
+        },
+        "5f289cdc-fda1-4058-b44f-041ba1398e79": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        },
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ]
+        },
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ]
+        },
+        "91c49019-ea51-4ce5-a919-c91c45b25e83": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        },
+        "ad984bb6-e225-432a-952d-d83cda40b7f8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ]
+        },
+        "1232febe-868a-4dac-b4c2-e35789434601": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ]
+        },
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        },
+        "253a71d2-e751-4c63-acbe-238b71463cd8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ]
+        },
+        "839ecc8f-3a60-418b-bc92-64bfeef33824": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ]
+        },
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ]
+        },
+        "00245a43-eb89-47d2-92d7-21799dbec9f3": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ]
+        }
+      },
+      "e5ExamClosures": {
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "count": 146,
+          "sameCatalog": true
+        },
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "count": 90,
+          "sameCatalog": true
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "count": 114,
+          "sameCatalog": true
+        }
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json",
+      "viewId": "de-he-gym-physics-gk-g9",
+      "sha256": "450b755e3ef6ab6130deb2cde65e8905bfa5fed6574f32181fe0cc5a6248ba94",
+      "roles": {
+        "target": {
+          "before": 591,
+          "after": 591,
+          "removed": [],
+          "added": []
+        },
+        "prerequisiteOnly": {
+          "before": 1076,
+          "after": 1076,
+          "removed": [],
+          "added": []
+        }
+      },
+      "learningSet": {
+        "before": 1667,
+        "after": 1667,
+        "removed": [],
+        "added": []
+      },
+      "children": {
+        "physics-e2-inertia": 3,
+        "physics-e2-energy": 6,
+        "physics-e2-several-forces": 2,
+        "physics-e2-momentum": 7,
+        "physics-e2-force-and-counterforce": 2,
+        "physics-e2-force-mass-acceleration": 2
+      },
+      "declared": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "reducedDirectDemand": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directDemandWitnesses": [
+        {
+          "unit": "physics-e2-energy",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-and-counterforce",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-mass-acceleration",
+          "after": "physics-e2-inertia",
+          "witnesses": [
+            [
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-energy",
+          "witnesses": [
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+            ],
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-and-counterforce",
+          "witnesses": [
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-several-forces",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        }
+      ],
+      "reverseTransitiveWitnesses": [],
+      "e2ToE5TransitiveWitnesses": [],
+      "targetPathChanges": {
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ]
+        },
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ]
+        },
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ]
+        },
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ]
+        },
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ]
+        },
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ]
+        },
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ]
+        },
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ]
+        },
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        },
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ]
+        },
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ]
+        },
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        },
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ]
+        },
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ]
+        },
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ]
+        },
+        "5f289cdc-fda1-4058-b44f-041ba1398e79": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        },
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ]
+        },
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ]
+        },
+        "91c49019-ea51-4ce5-a919-c91c45b25e83": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        },
+        "ad984bb6-e225-432a-952d-d83cda40b7f8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ]
+        },
+        "1232febe-868a-4dac-b4c2-e35789434601": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ]
+        },
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        },
+        "253a71d2-e751-4c63-acbe-238b71463cd8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ]
+        },
+        "839ecc8f-3a60-418b-bc92-64bfeef33824": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ]
+        },
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ]
+        },
+        "00245a43-eb89-47d2-92d7-21799dbec9f3": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ]
+        }
+      },
+      "e5ExamClosures": {
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "count": 146,
+          "sameCatalog": true
+        },
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "count": 90,
+          "sameCatalog": true
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "count": 114,
+          "sameCatalog": true
+        }
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "viewId": "de-he-gym-physics-gk",
+      "sha256": "05eea6c12fbad55fa33693b84e16f4a5f72f0cd37191c4a2c3cd5d7bce3004fe",
+      "roles": {
+        "target": {
+          "before": 591,
+          "after": 591,
+          "removed": [],
+          "added": []
+        },
+        "prerequisiteOnly": {
+          "before": 1076,
+          "after": 1076,
+          "removed": [],
+          "added": []
+        }
+      },
+      "learningSet": {
+        "before": 1667,
+        "after": 1667,
+        "removed": [],
+        "added": []
+      },
+      "children": {
+        "physics-e2-inertia": 3,
+        "physics-e2-energy": 6,
+        "physics-e2-several-forces": 2,
+        "physics-e2-momentum": 7,
+        "physics-e2-force-and-counterforce": 2,
+        "physics-e2-force-mass-acceleration": 2
+      },
+      "declared": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "reducedDirectDemand": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directDemandWitnesses": [
+        {
+          "unit": "physics-e2-energy",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-and-counterforce",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-mass-acceleration",
+          "after": "physics-e2-inertia",
+          "witnesses": [
+            [
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-energy",
+          "witnesses": [
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+            ],
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-and-counterforce",
+          "witnesses": [
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-several-forces",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        }
+      ],
+      "reverseTransitiveWitnesses": [],
+      "e2ToE5TransitiveWitnesses": [],
+      "targetPathChanges": {
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ]
+        },
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ]
+        },
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ]
+        },
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ]
+        },
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ]
+        },
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ]
+        },
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ]
+        },
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ]
+        },
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        },
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ]
+        },
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ]
+        },
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        },
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ]
+        },
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ]
+        },
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ]
+        },
+        "5f289cdc-fda1-4058-b44f-041ba1398e79": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        },
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ]
+        },
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ]
+        },
+        "91c49019-ea51-4ce5-a919-c91c45b25e83": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        },
+        "ad984bb6-e225-432a-952d-d83cda40b7f8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ]
+        },
+        "1232febe-868a-4dac-b4c2-e35789434601": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ]
+        },
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        },
+        "253a71d2-e751-4c63-acbe-238b71463cd8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ]
+        },
+        "839ecc8f-3a60-418b-bc92-64bfeef33824": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ]
+        },
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ]
+        },
+        "00245a43-eb89-47d2-92d7-21799dbec9f3": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ]
+        }
+      },
+      "e5ExamClosures": {
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "count": 146,
+          "sameCatalog": true
+        },
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "count": 90,
+          "sameCatalog": true
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "count": 114,
+          "sameCatalog": true
+        }
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g8.view.json",
+      "viewId": "de-he-gym-physics-lk-g8",
+      "sha256": "a3364a59353064f7cfbf6bdde046987da1ccce6f14a76c1c0360109363fdb252",
+      "roles": {
+        "target": {
+          "before": 614,
+          "after": 614,
+          "removed": [],
+          "added": []
+        },
+        "prerequisiteOnly": {
+          "before": 1053,
+          "after": 1053,
+          "removed": [],
+          "added": []
+        }
+      },
+      "learningSet": {
+        "before": 1667,
+        "after": 1667,
+        "removed": [],
+        "added": []
+      },
+      "children": {
+        "physics-e2-inertia": 3,
+        "physics-e2-energy": 6,
+        "physics-e2-several-forces": 2,
+        "physics-e2-momentum": 8,
+        "physics-e2-force-and-counterforce": 2,
+        "physics-e2-force-mass-acceleration": 2
+      },
+      "declared": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "reducedDirectDemand": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directDemandWitnesses": [
+        {
+          "unit": "physics-e2-energy",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-and-counterforce",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-mass-acceleration",
+          "after": "physics-e2-inertia",
+          "witnesses": [
+            [
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-energy",
+          "witnesses": [
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+            ],
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-and-counterforce",
+          "witnesses": [
+            [
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ],
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ],
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-several-forces",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        }
+      ],
+      "reverseTransitiveWitnesses": [],
+      "e2ToE5TransitiveWitnesses": [],
+      "targetPathChanges": {
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ]
+        },
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ]
+        },
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ]
+        },
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ]
+        },
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ]
+        },
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ]
+        },
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ]
+        },
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ]
+        },
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        },
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ]
+        },
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ]
+        },
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        },
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ]
+        },
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ]
+        },
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ]
+        },
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ]
+        },
+        "5f289cdc-fda1-4058-b44f-041ba1398e79": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        },
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ]
+        },
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ]
+        },
+        "91c49019-ea51-4ce5-a919-c91c45b25e83": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        },
+        "ad984bb6-e225-432a-952d-d83cda40b7f8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ]
+        },
+        "1232febe-868a-4dac-b4c2-e35789434601": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ]
+        },
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        },
+        "253a71d2-e751-4c63-acbe-238b71463cd8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ]
+        },
+        "839ecc8f-3a60-418b-bc92-64bfeef33824": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ]
+        },
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ]
+        },
+        "00245a43-eb89-47d2-92d7-21799dbec9f3": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ]
+        }
+      },
+      "e5ExamClosures": {
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "count": 146,
+          "sameCatalog": true
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "count": 114,
+          "sameCatalog": true
+        },
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "count": 90,
+          "sameCatalog": true
+        }
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g9.view.json",
+      "viewId": "de-he-gym-physics-lk-g9",
+      "sha256": "65b79160f22b6731b2a2d2beac5ea30dfe0f93c0bb7eac573122131e3bacae9e",
+      "roles": {
+        "target": {
+          "before": 614,
+          "after": 614,
+          "removed": [],
+          "added": []
+        },
+        "prerequisiteOnly": {
+          "before": 1053,
+          "after": 1053,
+          "removed": [],
+          "added": []
+        }
+      },
+      "learningSet": {
+        "before": 1667,
+        "after": 1667,
+        "removed": [],
+        "added": []
+      },
+      "children": {
+        "physics-e2-inertia": 3,
+        "physics-e2-energy": 6,
+        "physics-e2-several-forces": 2,
+        "physics-e2-momentum": 8,
+        "physics-e2-force-and-counterforce": 2,
+        "physics-e2-force-mass-acceleration": 2
+      },
+      "declared": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "reducedDirectDemand": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directDemandWitnesses": [
+        {
+          "unit": "physics-e2-energy",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-and-counterforce",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-mass-acceleration",
+          "after": "physics-e2-inertia",
+          "witnesses": [
+            [
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-energy",
+          "witnesses": [
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+            ],
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-and-counterforce",
+          "witnesses": [
+            [
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ],
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ],
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-several-forces",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        }
+      ],
+      "reverseTransitiveWitnesses": [],
+      "e2ToE5TransitiveWitnesses": [],
+      "targetPathChanges": {
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ]
+        },
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ]
+        },
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ]
+        },
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ]
+        },
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ]
+        },
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ]
+        },
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ]
+        },
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ]
+        },
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        },
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ]
+        },
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ]
+        },
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        },
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ]
+        },
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ]
+        },
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ]
+        },
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ]
+        },
+        "5f289cdc-fda1-4058-b44f-041ba1398e79": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        },
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ]
+        },
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ]
+        },
+        "91c49019-ea51-4ce5-a919-c91c45b25e83": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        },
+        "ad984bb6-e225-432a-952d-d83cda40b7f8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ]
+        },
+        "1232febe-868a-4dac-b4c2-e35789434601": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ]
+        },
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        },
+        "253a71d2-e751-4c63-acbe-238b71463cd8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ]
+        },
+        "839ecc8f-3a60-418b-bc92-64bfeef33824": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ]
+        },
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ]
+        },
+        "00245a43-eb89-47d2-92d7-21799dbec9f3": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ]
+        }
+      },
+      "e5ExamClosures": {
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "count": 146,
+          "sameCatalog": true
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "count": 114,
+          "sameCatalog": true
+        },
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "count": 90,
+          "sameCatalog": true
+        }
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "viewId": "de-he-gym-physics-lk",
+      "sha256": "5733ac23971bfa406c6799debcda43ca66ea28527a5c91515c9033e4cee4cf8d",
+      "roles": {
+        "target": {
+          "before": 614,
+          "after": 614,
+          "removed": [],
+          "added": []
+        },
+        "prerequisiteOnly": {
+          "before": 1053,
+          "after": 1053,
+          "removed": [],
+          "added": []
+        }
+      },
+      "learningSet": {
+        "before": 1667,
+        "after": 1667,
+        "removed": [],
+        "added": []
+      },
+      "children": {
+        "physics-e2-inertia": 3,
+        "physics-e2-energy": 6,
+        "physics-e2-several-forces": 2,
+        "physics-e2-momentum": 8,
+        "physics-e2-force-and-counterforce": 2,
+        "physics-e2-force-mass-acceleration": 2
+      },
+      "declared": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "reducedDirectDemand": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directDemandWitnesses": [
+        {
+          "unit": "physics-e2-energy",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-and-counterforce",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-mass-acceleration",
+          "after": "physics-e2-inertia",
+          "witnesses": [
+            [
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-energy",
+          "witnesses": [
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+            ],
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-and-counterforce",
+          "witnesses": [
+            [
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ],
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ],
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-several-forces",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        }
+      ],
+      "reverseTransitiveWitnesses": [],
+      "e2ToE5TransitiveWitnesses": [],
+      "targetPathChanges": {
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ]
+        },
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ]
+        },
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ]
+        },
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ]
+        },
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ]
+        },
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ]
+        },
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ]
+        },
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ]
+        },
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        },
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ]
+        },
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ]
+        },
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        },
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ]
+        },
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ]
+        },
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ]
+        },
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ]
+        },
+        "5f289cdc-fda1-4058-b44f-041ba1398e79": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        },
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ]
+        },
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ]
+        },
+        "91c49019-ea51-4ce5-a919-c91c45b25e83": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        },
+        "ad984bb6-e225-432a-952d-d83cda40b7f8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ]
+        },
+        "1232febe-868a-4dac-b4c2-e35789434601": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ]
+        },
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        },
+        "253a71d2-e751-4c63-acbe-238b71463cd8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ]
+        },
+        "839ecc8f-3a60-418b-bc92-64bfeef33824": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ]
+        },
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ]
+        },
+        "00245a43-eb89-47d2-92d7-21799dbec9f3": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ]
+        }
+      },
+      "e5ExamClosures": {
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "count": 146,
+          "sameCatalog": true
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "count": 114,
+          "sameCatalog": true
+        },
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "count": 90,
+          "sameCatalog": true
+        }
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "viewId": "de-he-gym-sekii-physics-gk",
+      "sha256": "be14fce7d054fcd277e73e9530d6c0e365cf734b376f1095b6799f6a9f3ec60f",
+      "roles": {
+        "target": {
+          "before": 475,
+          "after": 475,
+          "removed": [],
+          "added": []
+        },
+        "prerequisiteOnly": {
+          "before": 1097,
+          "after": 1097,
+          "removed": [],
+          "added": []
+        }
+      },
+      "learningSet": {
+        "before": 1572,
+        "after": 1572,
+        "removed": [],
+        "added": []
+      },
+      "children": {
+        "physics-e2-inertia": 3,
+        "physics-e2-energy": 6,
+        "physics-e2-several-forces": 2,
+        "physics-e2-momentum": 7,
+        "physics-e2-force-and-counterforce": 2,
+        "physics-e2-force-mass-acceleration": 2
+      },
+      "declared": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "reducedDirectDemand": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directDemandWitnesses": [
+        {
+          "unit": "physics-e2-energy",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-and-counterforce",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-mass-acceleration",
+          "after": "physics-e2-inertia",
+          "witnesses": [
+            [
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-energy",
+          "witnesses": [
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+            ],
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-and-counterforce",
+          "witnesses": [
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-several-forces",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        }
+      ],
+      "reverseTransitiveWitnesses": [],
+      "e2ToE5TransitiveWitnesses": [],
+      "targetPathChanges": {
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ]
+        },
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ]
+        },
+        "5f289cdc-fda1-4058-b44f-041ba1398e79": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        },
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ]
+        },
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ]
+        },
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ]
+        },
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ]
+        },
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ]
+        },
+        "91c49019-ea51-4ce5-a919-c91c45b25e83": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        },
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ]
+        },
+        "ad984bb6-e225-432a-952d-d83cda40b7f8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ]
+        },
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ]
+        },
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ]
+        },
+        "1232febe-868a-4dac-b4c2-e35789434601": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ]
+        },
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        },
+        "253a71d2-e751-4c63-acbe-238b71463cd8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ]
+        },
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ]
+        },
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        },
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ]
+        },
+        "839ecc8f-3a60-418b-bc92-64bfeef33824": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ]
+        },
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ]
+        },
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ]
+        },
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        },
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ]
+        },
+        "00245a43-eb89-47d2-92d7-21799dbec9f3": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ]
+        },
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae": {
+          "old": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-gk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ]
+        }
+      },
+      "e5ExamClosures": {
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "count": 146,
+          "sameCatalog": true
+        },
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "count": 90,
+          "sameCatalog": true
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "count": 114,
+          "sameCatalog": true
+        }
+      }
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "viewId": "de-he-gym-sekii-physics-lk",
+      "sha256": "bf6627604057bf34de836dddfa861e4ef6ca1ca974bbb195ff3abc89fbba5402",
+      "roles": {
+        "target": {
+          "before": 493,
+          "after": 493,
+          "removed": [],
+          "added": []
+        },
+        "prerequisiteOnly": {
+          "before": 1079,
+          "after": 1079,
+          "removed": [],
+          "added": []
+        }
+      },
+      "learningSet": {
+        "before": 1572,
+        "after": 1572,
+        "removed": [],
+        "added": []
+      },
+      "children": {
+        "physics-e2-inertia": 3,
+        "physics-e2-energy": 6,
+        "physics-e2-several-forces": 2,
+        "physics-e2-momentum": 8,
+        "physics-e2-force-and-counterforce": 2,
+        "physics-e2-force-mass-acceleration": 2
+      },
+      "declared": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "reducedDirectDemand": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directDemandWitnesses": [
+        {
+          "unit": "physics-e2-energy",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-and-counterforce",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-force-mass-acceleration",
+          "after": "physics-e2-inertia",
+          "witnesses": [
+            [
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-energy",
+          "witnesses": [
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+            ],
+            [
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ],
+            [
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-and-counterforce",
+          "witnesses": [
+            [
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ],
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-momentum",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ],
+            [
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        },
+        {
+          "unit": "physics-e2-several-forces",
+          "after": "physics-e2-force-mass-acceleration",
+          "witnesses": [
+            [
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79"
+            ]
+          ]
+        }
+      ],
+      "reverseTransitiveWitnesses": [],
+      "e2ToE5TransitiveWitnesses": [],
+      "targetPathChanges": {
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ]
+        },
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ]
+        },
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ]
+        },
+        "5f289cdc-fda1-4058-b44f-041ba1398e79": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        },
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+          ]
+        },
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ]
+        },
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+          ]
+        },
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ]
+        },
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+          ]
+        },
+        "91c49019-ea51-4ce5-a919-c91c45b25e83": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        },
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ]
+        },
+        "ad984bb6-e225-432a-952d-d83cda40b7f8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ]
+        },
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+          ]
+        },
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+          ]
+        },
+        "1232febe-868a-4dac-b4c2-e35789434601": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "1232febe-868a-4dac-b4c2-e35789434601"
+          ]
+        },
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-and-counterforce",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        },
+        "253a71d2-e751-4c63-acbe-238b71463cd8": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ]
+        },
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089",
+            "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+          ]
+        },
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        },
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ]
+        },
+        "839ecc8f-3a60-418b-bc92-64bfeef33824": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824"
+          ]
+        },
+        "4a2bf015-052b-4af0-aed7-324259fa1a8a": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-several-forces",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ]
+        },
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+          ]
+        },
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-force-mass-acceleration",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        },
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "feb70838-931c-4b45-b9a9-930605d93efa",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-energy",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+          ]
+        },
+        "00245a43-eb89-47d2-92d7-21799dbec9f3": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-inertia",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ]
+        },
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae": {
+          "old": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "e9d616d8-685f-4129-a36f-dae7a280bae7",
+            "912febf0-754a-4409-9f8b-7d66810edc08",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ],
+          "new": [
+            "physics-root",
+            "physics-sekii-lk",
+            "physics-e-phase",
+            "physics-e2-newton-and-conservation",
+            "physics-e2-momentum",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+          ]
+        }
+      },
+      "e5ExamClosures": {
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "count": 146,
+          "sameCatalog": true
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "count": 114,
+          "sameCatalog": true
+        },
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "count": 90,
+          "sameCatalog": true
+        }
+      }
+    }
+  ],
+  "changed": 8,
+  "byteIdentical": 82,
+  "math": {
+    "remainingObjectEqual": true,
+    "demandRows": 1036,
+    "changedPins": [
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json",
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json",
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g8.view.json",
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g9.view.json",
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json"
+    ],
+    "currentPinsMatch": true
+  },
+  "recordBaseCurriculaTreeEqual": true,
+  "canonicalCatalogUnchanged": true
+}

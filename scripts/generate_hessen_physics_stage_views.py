@@ -76,6 +76,39 @@ HESSEN_E1_CHILD_UNITS = (
         "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2", "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
         "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9")),
 )
+# E.2 cut accepted by the Product Owner on 24 Nov 2026: six child structures in
+# learning order (three axioms, one interplay of forces, two conservation
+# laws). Like the E.1 children they group reviewed targets for learning; they
+# are structure children, not declared learning units.
+E5_TOPIC = "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+HESSEN_E2_CHILD_UNITS = (
+    ("physics-e2-inertia", "Trägheit: Was ohne Kraft geschieht", "Inertia: what happens without a force", (
+        "31a2ef52-114b-4d2c-a720-6ef5a390b6dc", "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+        "00245a43-eb89-47d2-92d7-21799dbec9f3")),
+    ("physics-e2-force-mass-acceleration", "Kraft, Masse und Beschleunigung", "Force, mass and acceleration", (
+        "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20", "5f289cdc-fda1-4058-b44f-041ba1398e79")),
+    ("physics-e2-force-and-counterforce", "Kraft und Gegenkraft", "Force and counterforce", (
+        "ad984bb6-e225-432a-952d-d83cda40b7f8", "a0aaedcb-41f8-4891-af77-a69a76b8c10d")),
+    ("physics-e2-several-forces", "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+     "Several forces at once: inclined plane, friction, braking", (
+        "5fd45dbc-0eb1-591b-99a9-7386336f1456", "4a2bf015-052b-4af0-aed7-324259fa1a8a")),
+    ("physics-e2-energy", "Energie bleibt erhalten", "Energy is conserved", (
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e", "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b", "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83", "253a71d2-e751-4c63-acbe-238b71463cd8")),
+    ("physics-e2-momentum", "Impuls und Stöße", "Momentum and collisions", (
+        "839ecc8f-3a60-418b-bc92-64bfeef33824", "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1", "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+        "2eecd0e2-a7ca-4568-9b12-3d47706c65fb", "1232febe-868a-4dac-b4c2-e35789434601",
+        # Stays until the mixed exams that require it have their successors (E.2 step 3).
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+        # Leistungskurs deepening; the E.5 Leistungskurs exam requires it in the Einführungsphase.
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16")),
+)
+# Gravitation is E.5 content. The Leistungskurs energy goal needs the
+# potential and follows it; it stands after the three gravitation goals.
+E2_TO_E5 = ("eb0ffdea-c12d-56df-b7e8-c0297d2f8aff", "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+            "594f7f21-6b8a-531c-8424-5f1dcbaf0f23", "e359f8bb-6106-44aa-9edf-694528d2d2a9")
 # Vectors leave E.1: reference frames and the velocity vector of the throw are
 # learned with E.3 (KC 2024 E.3 "Bezugssysteme, Superpositionsprinzip").
 E1_TO_E3 = ("68c90ba6-c438-463c-9a53-cf61062d416a", "0fee53f2-1c02-5b12-9b6c-aa9fa462d921")
@@ -479,6 +512,7 @@ def generate(view):
                 raise ValueError(f"{view['viewId']}: expected one reviewed E-phase assessment {identifier}")
             target["children"].append(take(identifier))
     author_e1_child_units(view["viewId"], phases[0], motion, find)
+    author_e2_child_units(view["viewId"], find, extract, atoms, selected)
     pull_earlier(phases, atoms, lambda identifier: extract(identifier, upper["children"]), shifts)
     for phase in phases:
         pull_earlier([node for node in phase["children"] if node["kind"] == "structure" and atoms(node)], atoms,
@@ -546,12 +580,9 @@ def author_e1_child_units(view_id, phase, motion, find):
     traffic = take_target(TRAFFIC)
     if traffic is None:
         raise ValueError(f"{view_id}: expected the traffic goal as an E-phase target")
-    e2 = find(E2_TOPIC)[2]
-    friction = [index for index, node in enumerate(e2["children"])
-                if node.get("goalId") == FRICTION and node.get("projectionRole") != "prerequisiteOnly"]
-    if len(friction) != 1:
-        raise ValueError(f"{view_id}: expected one friction target in E.2")
-    e2["children"].insert(friction[0] + 1, traffic)
+    # The traffic goal follows friction; the E.2 child structures place both
+    # in "Mehrere Kräfte zugleich" (author_e2_child_units).
+    find(E2_TOPIC)[2]["children"].append(traffic)
 
     collected = []
     for unit_id, label, label_en, members in HESSEN_E1_CHILD_UNITS:
@@ -582,6 +613,60 @@ def author_e1_child_units(view_id, phase, motion, find):
         raise ValueError(f"{view_id}: unexpected E.1 content outside its child units: "
                          + str([node.get("id", node.get("goalId")) for node in leftovers]))
     motion["children"] = orientation + [node for node in support if node["children"]] + collected
+
+
+def author_e2_child_units(view_id, find, extract, atoms, selected):
+    """Group E.2 into its six child structures and move the gravitation goals to E.5.
+
+    Only existing atomic targets move; a goal that is no target of the view
+    (a Leistungskurs goal in a Grundkurs view) keeps its reviewed support role.
+    The canonical group "Erhaltungssätze" is opened where its parts need
+    different learning places. The mixed E.2 exams stay at E.2 level.
+    """
+    e2, e5 = find(E2_TOPIC)[2], find(E5_TOPIC)[2]
+    # Re-append on every run, so that the following sort starts from the same order.
+    moved = []
+    for identifier in E2_TO_E5:
+        node = extract(identifier, e2["children"]) or extract(identifier, e5["children"])
+        if node is not None:
+            moved.append(node)
+        elif identifier in selected:
+            raise ValueError(f"{view_id}: expected the target {identifier} in E.2 or E.5")
+    e5["children"].extend(moved)
+    collected = []
+    for unit_id, label, label_en, members in HESSEN_E2_CHILD_UNITS:
+        nodes = []
+        for identifier in members:
+            node = extract(identifier, e2["children"])
+            if node is None and identifier in selected:
+                raise ValueError(f"{view_id}: missing E.2 child-structure target {identifier}")
+            if node is not None:
+                nodes.append(node)
+        collected.append(structure(unit_id, label, nodes) | {"labelEn": label_en})
+    unit_ids = {unit_id for unit_id, *_ in HESSEN_E2_CHILD_UNITS}
+    leftovers, exclusions = [], []
+    for node in e2["children"]:
+        if node.get("id") in unit_ids:
+            continue
+        if node["kind"] == "structure" and node["id"].startswith("he-physics-open-") and not atoms(node):
+            # All targets of this opened canonical group have their child structure. What is left
+            # are reviewed scope exclusions (a Leistungskurs goal in a Grundkurs view): keep each
+            # as one explicit support reference at E.2 level, not as a group of its own.
+            exclusions.extend(child["goalId"] for child in walk(node["children"]) if child["kind"] != "structure")
+            continue
+        leftovers.append(node)
+    explicit = {node["goalId"] for node in leftovers
+                if node["kind"] != "structure" and node.get("projectionRole") == "prerequisiteOnly"}
+    for identifier in exclusions:
+        if identifier not in explicit:
+            leftovers.append({"kind": "goalEntry", "goalId": identifier, "projectionRole": "prerequisiteOnly"})
+            explicit.add(identifier)
+    stray = sorted(identifier for node in leftovers for identifier in atoms(node)
+                   if not GOALS[identifier].get("examData"))
+    if stray:
+        raise ValueError(f"{view_id}: E.2 content outside its child structures: {stray}")
+    e2["children"] = ([node for node in leftovers if not atoms(node)] + collected
+                      + [node for node in leftovers if atoms(node)])
 
 
 @cache

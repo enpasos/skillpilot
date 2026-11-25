@@ -795,6 +795,31 @@ Gravitation und Gasmodell", "Thermodynamik und Rotationssystem",
 Bewegungsmodelle mit Reibung und Chaos analysieren"). Record:
 `curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/`.
 
+**E.2 cut, 24 and 25 November 2026.** The Product Owner accepted a cut of the
+Hessian section E.2 into six child structures in learning order: "Trägheit:
+Was ohne Kraft geschieht", "Kraft, Masse und Beschleunigung", "Kraft und
+Gegenkraft", "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+"Energie bleibt erhalten" and "Impuls und Stöße" (three axioms, one interplay
+of forces, two conservation laws). They are view structures of the eight
+Hessian views until they have opening goals and coverage reviews. Their order
+is the actual demand between their goals. The three gravitation goals moved
+to E.5, together with the Leistungskurs energy goal that needs the potential.
+Explicit learning places of prerequisite-only goals follow that demand: in the
+four Leistungskurs views six Mathematics preparations (vectors in space, scalar
+product, chain rule) moved from the common preparation area of the
+Einführungsphase to E.5, where alone they are needed in that phase.
+The Leistungskurs momentum goal and the collisions in the centre-of-mass frame
+stay at the end of "Impuls und Stöße": the first because the E.5
+Leistungskurs exam requires it in the Einführungsphase, the second until the
+mixed E.2 exams that require it have successors. The move of both
+Leistungskurs deepenings to the Qualifikationsphase, part of the accepted cut,
+therefore waits for the E.5 review. The four mixed E.2 exams stay at E.2 level
+until each child has its own closing check. New goals (force decomposition on
+the incline, force balance, friction from the normal force, momentum of two
+bodies) and the narrower text of Newton's second axiom follow in a second step
+with their reviews. Record:
+`curricula/DE/Gymnasium/quality/learning-units/physics-he-e2-child-structures-2026-11-25/`.
+
 **Achievable pass marks, Product Owner decision of 24 November 2026.** His
 words: pass marks must be achievable, without frustration for learners "who
 have understood everything but now and then make small formal errors out of

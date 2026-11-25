@@ -2057,6 +2057,110 @@ class ClaudeV1CompletionRouteIntegrationTest {
         }
     }
 
+    // The same for the E.2 cut of 25 November 2026: with E.2 as the focus and the law of
+    // gravitation in progress, which the cut moved to E.5, the learner keeps their place.
+    @ParameterizedTest
+    @CsvSource({"GK,false", "GK,true", "LK,false", "LK,true"})
+    void goalInProgressSurvivesTheCutOfForces(String course, boolean pilot) throws Exception {
+        Object pilotBefore = org.springframework.test.util.ReflectionTestUtils.getField(learners, "unitAssessmentPilotEnabled");
+        org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+        try {
+            String forces = selectHessianMotionUnit("G9", "SekII", course)
+                    .replace(":structure:physics-e1-motion", ":structure:physics-e2-newton-and-conservation");
+            String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+            String gravitation = "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff";
+            learners.setPlannedGoals(learnerId, java.util.Set.of(forces));
+            assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(forces))).doesNotContain(gravitation);
+            var learner = learnerRepository.findById(learnerId).orElseThrow();
+            masteryRepository.saveAllAndFlush(new CompletionProfileCompiler().normalizePrerequisites(
+                            learners.getLearningPlanCompletionContext(learnerId).canonicalGoals())
+                    .transitivePrerequisites(gravitation).stream().filter(id -> !id.equals(gravitation))
+                    .map(id -> new Mastery(learner, id, 1.0)).toList());
+            var stored = learnerRepository.findById(learnerId).orElseThrow();
+            stored.setActiveGoalId(gravitation);
+            stored.setLearningState(LearningState.TEACHING);
+            learnerRepository.saveAndFlush(stored);
+
+            assertThat(learners.getCoachLearnerState(learnerId).activeGoal().id()).isEqualTo(gravitation);
+            var state = learners.getLearnerState(learnerId);
+            assertThat(state.learningState()).isEqualTo("TEACHING");
+            assertThat(state.activeGoal().id()).isEqualTo(gravitation);
+            assertThat(state.goals().planned()).extracting(goal -> goal.id()).containsExactly(forces);
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(gravitation);
+            learners.setMastery(learnerId, new com.skillpilot.backend.api.MasteryUpdateRequest(
+                    Map.of(gravitation, 1.0), gravitation));
+            assertThat(learners.getMastery(learnerId).get(gravitation)).isEqualTo(1.0);
+            assertThat(focus.findByLearner_SkillpilotId(learnerId)).extracting(PlannedGoal::getGoalId)
+                    .containsExactly(forces);
+        } finally {
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilotBefore);
+        }
+    }
+
+    // The E.2 cut of 25 November 2026 moved the gravitation goals from E.2 to E.5. A plan stored
+    // for the section E.2 before the cut keeps them: it stays current, restores from a backup and
+    // names one of them as its next goal once the rest of the section is done.
+    @ParameterizedTest
+    @ValueSource(strings = {"GK", "LK"})
+    void planStoredForForcesBeforeTheCutKeepsTheGravitationGoals(String course) throws Exception {
+        String forces = selectHessianMotionUnit("G9", "SekII", course)
+                .replace(":structure:physics-e1-motion", ":structure:physics-e2-newton-and-conservation");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var currentSection = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(forces));
+        // What left the section selection of the Sek II view with the cut: the three gravitation
+        // goals and "Masse und Gewichtskraft unterscheiden", whose explicit learning place followed
+        // them to E.5. The Leistungskurs deepening of energy conservation needs the potential and
+        // moved too. Before the cut the section held 32 goals in both courses.
+        var moved = new java.util.ArrayList<>(List.of("eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+                "a42f91a4-0d21-5aa9-ae11-f48be6f2e431", "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+                "9c328f68-41ed-55dd-9e02-34414a6246f2"));
+        if (course.equals("LK")) moved.add("e359f8bb-6106-44aa-9edf-694528d2d2a9");
+        assertThat(currentSection).isNotEmpty().doesNotContainAnyElementsOf(moved);
+        assertThat(currentSection.size() + moved.size()).isEqualTo(32);
+        assertThat(learners.getPlanningScope(learnerId, physics).scopeAtomicGoalIds()).containsAll(moved);
+        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.2", List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", forces, "E.2", monday, monday,
+                        null, currentSection, List.of(forces), true))), today);
+
+        var captured = new java.util.ArrayList<>(currentSection);
+        captured.addAll(moved);
+        var stored = learners.orderLearningPlanBlocksByPrerequisites(learnerId, List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", forces, "E.2", monday, monday,
+                        null, captured, List.of(forces), true)));
+        var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        record.setBlocksJson(mapper.writeValueAsString(stored));
+        storedPlans.saveAndFlush(record);
+        var plan = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(plan.stale()).isFalse();
+        assertThat(plan.blocks()).isEqualTo(stored);
+
+        learners.importLearner(learnerId, learners.exportLearner(learnerId));
+        var restored = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(restored.stale()).isFalse();
+        assertThat(restored.blocks()).isEqualTo(stored);
+
+        // Everything of the section and every prerequisite of the moved goals is done.
+        var learner = learnerRepository.findById(learnerId).orElseThrow();
+        var prerequisites = new CompletionProfileCompiler().normalizePrerequisites(
+                learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+        var finished = new java.util.LinkedHashSet<String>(currentSection);
+        for (String goal : moved) finished.addAll(prerequisites.transitivePrerequisites(goal));
+        finished.removeAll(moved);
+        masteryRepository.saveAllAndFlush(finished.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+        // The plan offers every one of the moved goals in turn, and nothing else of the subject.
+        var offered = new java.util.LinkedHashSet<String>();
+        for (int step = 0; step < moved.size(); step++) {
+            var next = learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal();
+            assertThat(next).isNotNull();
+            assertThat(moved).contains(next.goalId());
+            assertThat(offered.add(next.goalId())).isTrue();
+            masteryRepository.saveAndFlush(new Mastery(learner, next.goalId(), 1.0));
+        }
+        assertThat(offered).containsExactlyInAnyOrderElementsOf(moved);
+    }
+
     // A kept goal must stay reachable as planned work, not only counted: the plan names it as the
     // next goal, and continuing starts exactly it under its own focus, before any other goal of the
     // subject. Found by the independent review of 25 November 2026: the search for due work asked

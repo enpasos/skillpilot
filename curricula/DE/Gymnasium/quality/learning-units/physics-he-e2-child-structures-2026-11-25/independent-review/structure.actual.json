@@ -1,0 +1,5494 @@
+{
+  "base": "948f2a419d18c08c7edd6b5d7f9a5367fe81bcf6",
+  "catalogTree": "aceb771ff330667cfad93ba8d91e60091d5055e8",
+  "changed": [
+    {
+      "acquisitionPlacementMoves": [],
+      "childMembers": {
+        "physics-e2-energy": [
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+        ],
+        "physics-e2-force-and-counterforce": [
+          "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "physics-e2-force-mass-acceleration": [
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "physics-e2-inertia": [
+          "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+        ],
+        "physics-e2-momentum": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+        ],
+        "physics-e2-several-forces": [
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+        ]
+      },
+      "declaredPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directWitnesses": {
+        "physics-e2-energy | physics-e2-force-mass-acceleration": [
+          [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-force-and-counterforce | physics-e2-force-mass-acceleration": [
+          [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        ],
+        "physics-e2-force-mass-acceleration | physics-e2-inertia": [
+          [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-energy": [
+          [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-and-counterforce": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-mass-acceleration": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-several-forces | physics-e2-force-mass-acceleration": [
+          [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ]
+      },
+      "e2DependsOnMoved": [],
+      "e5DeltaMatches": true,
+      "e5Exams": {
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "learning": {
+            "after": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            },
+            "before": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            },
+            "before": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            },
+            "before": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            }
+          }
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "learning": {
+            "after": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            },
+            "before": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            },
+            "before": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            },
+            "before": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            }
+          }
+        },
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "learning": {
+            "after": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            },
+            "before": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 115,
+              "sha256": "3b31779d853e42b456e71985394c0aa65902e7fe6400647d96c854eccd1f79ec"
+            },
+            "before": {
+              "count": 115,
+              "sha256": "3b31779d853e42b456e71985394c0aa65902e7fe6400647d96c854eccd1f79ec"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 31,
+              "sha256": "b6a2682bb650131ff8524d379871bb53933cb938ad634422f666d549ef31ec92"
+            },
+            "before": {
+              "count": 31,
+              "sha256": "b6a2682bb650131ff8524d379871bb53933cb938ad634422f666d549ef31ec92"
+            }
+          }
+        }
+      },
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json",
+      "includingAcquisitionPlacement": {
+        "backflows": [],
+        "directPairs": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "missing": [],
+        "reachability": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-inertia"
+          ]
+        ],
+        "reduced": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "redundant": []
+      },
+      "kernel": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "missing": [],
+      "movedToE5": [
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "rawDemandPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-energy",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-inertia"
+        ]
+      ],
+      "recordMismatches": {},
+      "recordOrderWitnessMismatches": [],
+      "redundant": [],
+      "reverseChains": [],
+      "roles": {
+        "learning": {
+          "added": [],
+          "after": {
+            "count": 1667,
+            "sha256": "45bc609500f212435163eade1a8763f1837eea63b0543505d66e289de02ef415"
+          },
+          "before": {
+            "count": 1667,
+            "sha256": "45bc609500f212435163eade1a8763f1837eea63b0543505d66e289de02ef415"
+          },
+          "removed": []
+        },
+        "prerequisiteOnly": {
+          "added": [],
+          "after": {
+            "count": 1076,
+            "sha256": "f0b164e97d717b3e00f3d404f5ce4ea98f6e2e6d654aec440ac01fb480649f65"
+          },
+          "before": {
+            "count": 1076,
+            "sha256": "f0b164e97d717b3e00f3d404f5ce4ea98f6e2e6d654aec440ac01fb480649f65"
+          },
+          "removed": []
+        },
+        "target": {
+          "added": [],
+          "after": {
+            "count": 591,
+            "sha256": "62ece9c956fb0f21fc624146fb9cb2e71fc63d751596b64d84121e2f620772fd"
+          },
+          "before": {
+            "count": 591,
+            "sha256": "62ece9c956fb0f21fc624146fb9cb2e71fc63d751596b64d84121e2f620772fd"
+          },
+          "removed": []
+        }
+      },
+      "trailingE2Exams": [
+        "68061652-d617-5e51-8d2a-1c686c3c49df",
+        "22561c66-3957-5d55-b07a-25de1f359930",
+        "72649cf5-893c-5f03-88bd-a2497171d434",
+        "be6d4895-65ab-545b-8df9-84e5a308a5e3"
+      ],
+      "unchangedOutsideE2E5": true
+    },
+    {
+      "acquisitionPlacementMoves": [],
+      "childMembers": {
+        "physics-e2-energy": [
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+        ],
+        "physics-e2-force-and-counterforce": [
+          "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "physics-e2-force-mass-acceleration": [
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "physics-e2-inertia": [
+          "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+        ],
+        "physics-e2-momentum": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+        ],
+        "physics-e2-several-forces": [
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+        ]
+      },
+      "declaredPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directWitnesses": {
+        "physics-e2-energy | physics-e2-force-mass-acceleration": [
+          [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-force-and-counterforce | physics-e2-force-mass-acceleration": [
+          [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        ],
+        "physics-e2-force-mass-acceleration | physics-e2-inertia": [
+          [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-energy": [
+          [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-and-counterforce": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-mass-acceleration": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-several-forces | physics-e2-force-mass-acceleration": [
+          [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ]
+      },
+      "e2DependsOnMoved": [],
+      "e5DeltaMatches": true,
+      "e5Exams": {
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "learning": {
+            "after": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            },
+            "before": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            },
+            "before": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            },
+            "before": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            }
+          }
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "learning": {
+            "after": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            },
+            "before": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            },
+            "before": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            },
+            "before": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            }
+          }
+        },
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "learning": {
+            "after": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            },
+            "before": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 115,
+              "sha256": "3b31779d853e42b456e71985394c0aa65902e7fe6400647d96c854eccd1f79ec"
+            },
+            "before": {
+              "count": 115,
+              "sha256": "3b31779d853e42b456e71985394c0aa65902e7fe6400647d96c854eccd1f79ec"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 31,
+              "sha256": "b6a2682bb650131ff8524d379871bb53933cb938ad634422f666d549ef31ec92"
+            },
+            "before": {
+              "count": 31,
+              "sha256": "b6a2682bb650131ff8524d379871bb53933cb938ad634422f666d549ef31ec92"
+            }
+          }
+        }
+      },
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json",
+      "includingAcquisitionPlacement": {
+        "backflows": [],
+        "directPairs": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "missing": [],
+        "reachability": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-inertia"
+          ]
+        ],
+        "reduced": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "redundant": []
+      },
+      "kernel": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "missing": [],
+      "movedToE5": [
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "rawDemandPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-energy",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-inertia"
+        ]
+      ],
+      "recordMismatches": {},
+      "recordOrderWitnessMismatches": [],
+      "redundant": [],
+      "reverseChains": [],
+      "roles": {
+        "learning": {
+          "added": [],
+          "after": {
+            "count": 1667,
+            "sha256": "45bc609500f212435163eade1a8763f1837eea63b0543505d66e289de02ef415"
+          },
+          "before": {
+            "count": 1667,
+            "sha256": "45bc609500f212435163eade1a8763f1837eea63b0543505d66e289de02ef415"
+          },
+          "removed": []
+        },
+        "prerequisiteOnly": {
+          "added": [],
+          "after": {
+            "count": 1076,
+            "sha256": "f0b164e97d717b3e00f3d404f5ce4ea98f6e2e6d654aec440ac01fb480649f65"
+          },
+          "before": {
+            "count": 1076,
+            "sha256": "f0b164e97d717b3e00f3d404f5ce4ea98f6e2e6d654aec440ac01fb480649f65"
+          },
+          "removed": []
+        },
+        "target": {
+          "added": [],
+          "after": {
+            "count": 591,
+            "sha256": "62ece9c956fb0f21fc624146fb9cb2e71fc63d751596b64d84121e2f620772fd"
+          },
+          "before": {
+            "count": 591,
+            "sha256": "62ece9c956fb0f21fc624146fb9cb2e71fc63d751596b64d84121e2f620772fd"
+          },
+          "removed": []
+        }
+      },
+      "trailingE2Exams": [
+        "68061652-d617-5e51-8d2a-1c686c3c49df",
+        "22561c66-3957-5d55-b07a-25de1f359930",
+        "72649cf5-893c-5f03-88bd-a2497171d434",
+        "be6d4895-65ab-545b-8df9-84e5a308a5e3"
+      ],
+      "unchangedOutsideE2E5": true
+    },
+    {
+      "acquisitionPlacementMoves": [],
+      "childMembers": {
+        "physics-e2-energy": [
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+        ],
+        "physics-e2-force-and-counterforce": [
+          "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "physics-e2-force-mass-acceleration": [
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "physics-e2-inertia": [
+          "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+        ],
+        "physics-e2-momentum": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+        ],
+        "physics-e2-several-forces": [
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+        ]
+      },
+      "declaredPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directWitnesses": {
+        "physics-e2-energy | physics-e2-force-mass-acceleration": [
+          [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-force-and-counterforce | physics-e2-force-mass-acceleration": [
+          [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        ],
+        "physics-e2-force-mass-acceleration | physics-e2-inertia": [
+          [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-energy": [
+          [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-and-counterforce": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-mass-acceleration": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-several-forces | physics-e2-force-mass-acceleration": [
+          [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ]
+      },
+      "e2DependsOnMoved": [],
+      "e5DeltaMatches": true,
+      "e5Exams": {
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "learning": {
+            "after": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            },
+            "before": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            },
+            "before": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            },
+            "before": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            }
+          }
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "learning": {
+            "after": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            },
+            "before": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            },
+            "before": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            },
+            "before": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            }
+          }
+        },
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "learning": {
+            "after": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            },
+            "before": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 115,
+              "sha256": "3b31779d853e42b456e71985394c0aa65902e7fe6400647d96c854eccd1f79ec"
+            },
+            "before": {
+              "count": 115,
+              "sha256": "3b31779d853e42b456e71985394c0aa65902e7fe6400647d96c854eccd1f79ec"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 31,
+              "sha256": "b6a2682bb650131ff8524d379871bb53933cb938ad634422f666d549ef31ec92"
+            },
+            "before": {
+              "count": 31,
+              "sha256": "b6a2682bb650131ff8524d379871bb53933cb938ad634422f666d549ef31ec92"
+            }
+          }
+        }
+      },
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "includingAcquisitionPlacement": {
+        "backflows": [],
+        "directPairs": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "missing": [],
+        "reachability": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-inertia"
+          ]
+        ],
+        "reduced": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "redundant": []
+      },
+      "kernel": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "missing": [],
+      "movedToE5": [
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "rawDemandPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-energy",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-inertia"
+        ]
+      ],
+      "recordMismatches": {},
+      "recordOrderWitnessMismatches": [],
+      "redundant": [],
+      "reverseChains": [],
+      "roles": {
+        "learning": {
+          "added": [],
+          "after": {
+            "count": 1667,
+            "sha256": "45bc609500f212435163eade1a8763f1837eea63b0543505d66e289de02ef415"
+          },
+          "before": {
+            "count": 1667,
+            "sha256": "45bc609500f212435163eade1a8763f1837eea63b0543505d66e289de02ef415"
+          },
+          "removed": []
+        },
+        "prerequisiteOnly": {
+          "added": [],
+          "after": {
+            "count": 1076,
+            "sha256": "f0b164e97d717b3e00f3d404f5ce4ea98f6e2e6d654aec440ac01fb480649f65"
+          },
+          "before": {
+            "count": 1076,
+            "sha256": "f0b164e97d717b3e00f3d404f5ce4ea98f6e2e6d654aec440ac01fb480649f65"
+          },
+          "removed": []
+        },
+        "target": {
+          "added": [],
+          "after": {
+            "count": 591,
+            "sha256": "62ece9c956fb0f21fc624146fb9cb2e71fc63d751596b64d84121e2f620772fd"
+          },
+          "before": {
+            "count": 591,
+            "sha256": "62ece9c956fb0f21fc624146fb9cb2e71fc63d751596b64d84121e2f620772fd"
+          },
+          "removed": []
+        }
+      },
+      "trailingE2Exams": [
+        "68061652-d617-5e51-8d2a-1c686c3c49df",
+        "22561c66-3957-5d55-b07a-25de1f359930",
+        "72649cf5-893c-5f03-88bd-a2497171d434",
+        "be6d4895-65ab-545b-8df9-84e5a308a5e3"
+      ],
+      "unchangedOutsideE2E5": true
+    },
+    {
+      "acquisitionPlacementMoves": [
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Punkte und Vektoren im Raum koordinatisieren"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Skalarprodukt von Vektoren definieren"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Kettenregel beim Ableiten anwenden (LK)"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Betrag eines Vektors im Raum bestimmen"
+        }
+      ],
+      "childMembers": {
+        "physics-e2-energy": [
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+        ],
+        "physics-e2-force-and-counterforce": [
+          "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "physics-e2-force-mass-acceleration": [
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "physics-e2-inertia": [
+          "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+        ],
+        "physics-e2-momentum": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+        ],
+        "physics-e2-several-forces": [
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+        ]
+      },
+      "declaredPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directWitnesses": {
+        "physics-e2-energy | physics-e2-force-mass-acceleration": [
+          [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-force-and-counterforce | physics-e2-force-mass-acceleration": [
+          [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        ],
+        "physics-e2-force-mass-acceleration | physics-e2-inertia": [
+          [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-energy": [
+          [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-and-counterforce": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          [
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-mass-acceleration": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          [
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-several-forces | physics-e2-force-mass-acceleration": [
+          [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ]
+      },
+      "e2DependsOnMoved": [],
+      "e5DeltaMatches": true,
+      "e5Exams": {
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "learning": {
+            "after": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            },
+            "before": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            },
+            "before": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            },
+            "before": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            }
+          }
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "learning": {
+            "after": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            },
+            "before": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            },
+            "before": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            },
+            "before": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            }
+          }
+        },
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "learning": {
+            "after": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            },
+            "before": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 109,
+              "sha256": "ac3eb584abf773421e17db3df5805a85383945c825213c96642d1b491c332ac6"
+            },
+            "before": {
+              "count": 109,
+              "sha256": "ac3eb584abf773421e17db3df5805a85383945c825213c96642d1b491c332ac6"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 37,
+              "sha256": "08a82aa3a91112083eb9db9ddb9d441d5acfeef84b812819aa6fc555fa4df8b4"
+            },
+            "before": {
+              "count": 37,
+              "sha256": "08a82aa3a91112083eb9db9ddb9d441d5acfeef84b812819aa6fc555fa4df8b4"
+            }
+          }
+        }
+      },
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g8.view.json",
+      "includingAcquisitionPlacement": {
+        "backflows": [],
+        "directPairs": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "missing": [],
+        "reachability": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-inertia"
+          ]
+        ],
+        "reduced": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "redundant": []
+      },
+      "kernel": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "missing": [],
+      "movedToE5": [
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "rawDemandPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-energy",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-inertia"
+        ]
+      ],
+      "recordMismatches": {},
+      "recordOrderWitnessMismatches": [],
+      "redundant": [],
+      "reverseChains": [],
+      "roles": {
+        "learning": {
+          "added": [],
+          "after": {
+            "count": 1667,
+            "sha256": "17805dc0498a29602cfcf6bc23a8e90051a2a9a7d7b503301649f6b484b779d8"
+          },
+          "before": {
+            "count": 1667,
+            "sha256": "17805dc0498a29602cfcf6bc23a8e90051a2a9a7d7b503301649f6b484b779d8"
+          },
+          "removed": []
+        },
+        "prerequisiteOnly": {
+          "added": [],
+          "after": {
+            "count": 1053,
+            "sha256": "e0f047b944573b32a25a5fa0211ac4434f48a6d02ad5f2e142b7d78f1e0514c9"
+          },
+          "before": {
+            "count": 1053,
+            "sha256": "e0f047b944573b32a25a5fa0211ac4434f48a6d02ad5f2e142b7d78f1e0514c9"
+          },
+          "removed": []
+        },
+        "target": {
+          "added": [],
+          "after": {
+            "count": 614,
+            "sha256": "150a51b171a15f67323104324d8aa79b5d20bf3e5315c70d28892693367c2a68"
+          },
+          "before": {
+            "count": 614,
+            "sha256": "150a51b171a15f67323104324d8aa79b5d20bf3e5315c70d28892693367c2a68"
+          },
+          "removed": []
+        }
+      },
+      "trailingE2Exams": [
+        "68061652-d617-5e51-8d2a-1c686c3c49df",
+        "22561c66-3957-5d55-b07a-25de1f359930",
+        "72649cf5-893c-5f03-88bd-a2497171d434",
+        "be6d4895-65ab-545b-8df9-84e5a308a5e3"
+      ],
+      "unchangedOutsideE2E5": false
+    },
+    {
+      "acquisitionPlacementMoves": [
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Punkte und Vektoren im Raum koordinatisieren"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Skalarprodukt von Vektoren definieren"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Kettenregel beim Ableiten anwenden (LK)"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Betrag eines Vektors im Raum bestimmen"
+        }
+      ],
+      "childMembers": {
+        "physics-e2-energy": [
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+        ],
+        "physics-e2-force-and-counterforce": [
+          "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "physics-e2-force-mass-acceleration": [
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "physics-e2-inertia": [
+          "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+        ],
+        "physics-e2-momentum": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+        ],
+        "physics-e2-several-forces": [
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+        ]
+      },
+      "declaredPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directWitnesses": {
+        "physics-e2-energy | physics-e2-force-mass-acceleration": [
+          [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-force-and-counterforce | physics-e2-force-mass-acceleration": [
+          [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        ],
+        "physics-e2-force-mass-acceleration | physics-e2-inertia": [
+          [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-energy": [
+          [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-and-counterforce": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          [
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-mass-acceleration": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          [
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-several-forces | physics-e2-force-mass-acceleration": [
+          [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ]
+      },
+      "e2DependsOnMoved": [],
+      "e5DeltaMatches": true,
+      "e5Exams": {
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "learning": {
+            "after": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            },
+            "before": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            },
+            "before": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            },
+            "before": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            }
+          }
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "learning": {
+            "after": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            },
+            "before": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            },
+            "before": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            },
+            "before": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            }
+          }
+        },
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "learning": {
+            "after": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            },
+            "before": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 109,
+              "sha256": "ac3eb584abf773421e17db3df5805a85383945c825213c96642d1b491c332ac6"
+            },
+            "before": {
+              "count": 109,
+              "sha256": "ac3eb584abf773421e17db3df5805a85383945c825213c96642d1b491c332ac6"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 37,
+              "sha256": "08a82aa3a91112083eb9db9ddb9d441d5acfeef84b812819aa6fc555fa4df8b4"
+            },
+            "before": {
+              "count": 37,
+              "sha256": "08a82aa3a91112083eb9db9ddb9d441d5acfeef84b812819aa6fc555fa4df8b4"
+            }
+          }
+        }
+      },
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g9.view.json",
+      "includingAcquisitionPlacement": {
+        "backflows": [],
+        "directPairs": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "missing": [],
+        "reachability": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-inertia"
+          ]
+        ],
+        "reduced": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "redundant": []
+      },
+      "kernel": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "missing": [],
+      "movedToE5": [
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "rawDemandPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-energy",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-inertia"
+        ]
+      ],
+      "recordMismatches": {},
+      "recordOrderWitnessMismatches": [],
+      "redundant": [],
+      "reverseChains": [],
+      "roles": {
+        "learning": {
+          "added": [],
+          "after": {
+            "count": 1667,
+            "sha256": "17805dc0498a29602cfcf6bc23a8e90051a2a9a7d7b503301649f6b484b779d8"
+          },
+          "before": {
+            "count": 1667,
+            "sha256": "17805dc0498a29602cfcf6bc23a8e90051a2a9a7d7b503301649f6b484b779d8"
+          },
+          "removed": []
+        },
+        "prerequisiteOnly": {
+          "added": [],
+          "after": {
+            "count": 1053,
+            "sha256": "e0f047b944573b32a25a5fa0211ac4434f48a6d02ad5f2e142b7d78f1e0514c9"
+          },
+          "before": {
+            "count": 1053,
+            "sha256": "e0f047b944573b32a25a5fa0211ac4434f48a6d02ad5f2e142b7d78f1e0514c9"
+          },
+          "removed": []
+        },
+        "target": {
+          "added": [],
+          "after": {
+            "count": 614,
+            "sha256": "150a51b171a15f67323104324d8aa79b5d20bf3e5315c70d28892693367c2a68"
+          },
+          "before": {
+            "count": 614,
+            "sha256": "150a51b171a15f67323104324d8aa79b5d20bf3e5315c70d28892693367c2a68"
+          },
+          "removed": []
+        }
+      },
+      "trailingE2Exams": [
+        "68061652-d617-5e51-8d2a-1c686c3c49df",
+        "22561c66-3957-5d55-b07a-25de1f359930",
+        "72649cf5-893c-5f03-88bd-a2497171d434",
+        "be6d4895-65ab-545b-8df9-84e5a308a5e3"
+      ],
+      "unchangedOutsideE2E5": false
+    },
+    {
+      "acquisitionPlacementMoves": [
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Punkte und Vektoren im Raum koordinatisieren"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Skalarprodukt von Vektoren definieren"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Kettenregel beim Ableiten anwenden (LK)"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Betrag eines Vektors im Raum bestimmen"
+        }
+      ],
+      "childMembers": {
+        "physics-e2-energy": [
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+        ],
+        "physics-e2-force-and-counterforce": [
+          "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "physics-e2-force-mass-acceleration": [
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "physics-e2-inertia": [
+          "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+        ],
+        "physics-e2-momentum": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+        ],
+        "physics-e2-several-forces": [
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+        ]
+      },
+      "declaredPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directWitnesses": {
+        "physics-e2-energy | physics-e2-force-mass-acceleration": [
+          [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-force-and-counterforce | physics-e2-force-mass-acceleration": [
+          [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        ],
+        "physics-e2-force-mass-acceleration | physics-e2-inertia": [
+          [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-energy": [
+          [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-and-counterforce": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          [
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-mass-acceleration": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          [
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-several-forces | physics-e2-force-mass-acceleration": [
+          [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ]
+      },
+      "e2DependsOnMoved": [],
+      "e5DeltaMatches": true,
+      "e5Exams": {
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "learning": {
+            "after": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            },
+            "before": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            },
+            "before": {
+              "count": 71,
+              "sha256": "e93c8388c465a06c6520666e8273b92b656d9c9861227f7b34d239890203db89"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            },
+            "before": {
+              "count": 19,
+              "sha256": "97ebf5b5dd9c892a0bf49af9b4b3cae25703d2320ce9b2ebb69e9e859ead42ad"
+            }
+          }
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "learning": {
+            "after": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            },
+            "before": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            },
+            "before": {
+              "count": 84,
+              "sha256": "fce844e7a1dd6dc4e8dbfdc21e356556b7991a2c0952cebf98bfeaf9942b3fb0"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            },
+            "before": {
+              "count": 30,
+              "sha256": "6adb5d43b41be03801ce7fd5726621fbb014d9c3bb7045594b9c9d4342782bb8"
+            }
+          }
+        },
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "learning": {
+            "after": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            },
+            "before": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 109,
+              "sha256": "ac3eb584abf773421e17db3df5805a85383945c825213c96642d1b491c332ac6"
+            },
+            "before": {
+              "count": 109,
+              "sha256": "ac3eb584abf773421e17db3df5805a85383945c825213c96642d1b491c332ac6"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 37,
+              "sha256": "08a82aa3a91112083eb9db9ddb9d441d5acfeef84b812819aa6fc555fa4df8b4"
+            },
+            "before": {
+              "count": 37,
+              "sha256": "08a82aa3a91112083eb9db9ddb9d441d5acfeef84b812819aa6fc555fa4df8b4"
+            }
+          }
+        }
+      },
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "includingAcquisitionPlacement": {
+        "backflows": [],
+        "directPairs": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "missing": [],
+        "reachability": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-inertia"
+          ]
+        ],
+        "reduced": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "redundant": []
+      },
+      "kernel": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "missing": [],
+      "movedToE5": [
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "rawDemandPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-energy",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-inertia"
+        ]
+      ],
+      "recordMismatches": {},
+      "recordOrderWitnessMismatches": [],
+      "redundant": [],
+      "reverseChains": [],
+      "roles": {
+        "learning": {
+          "added": [],
+          "after": {
+            "count": 1667,
+            "sha256": "17805dc0498a29602cfcf6bc23a8e90051a2a9a7d7b503301649f6b484b779d8"
+          },
+          "before": {
+            "count": 1667,
+            "sha256": "17805dc0498a29602cfcf6bc23a8e90051a2a9a7d7b503301649f6b484b779d8"
+          },
+          "removed": []
+        },
+        "prerequisiteOnly": {
+          "added": [],
+          "after": {
+            "count": 1053,
+            "sha256": "e0f047b944573b32a25a5fa0211ac4434f48a6d02ad5f2e142b7d78f1e0514c9"
+          },
+          "before": {
+            "count": 1053,
+            "sha256": "e0f047b944573b32a25a5fa0211ac4434f48a6d02ad5f2e142b7d78f1e0514c9"
+          },
+          "removed": []
+        },
+        "target": {
+          "added": [],
+          "after": {
+            "count": 614,
+            "sha256": "150a51b171a15f67323104324d8aa79b5d20bf3e5315c70d28892693367c2a68"
+          },
+          "before": {
+            "count": 614,
+            "sha256": "150a51b171a15f67323104324d8aa79b5d20bf3e5315c70d28892693367c2a68"
+          },
+          "removed": []
+        }
+      },
+      "trailingE2Exams": [
+        "68061652-d617-5e51-8d2a-1c686c3c49df",
+        "22561c66-3957-5d55-b07a-25de1f359930",
+        "72649cf5-893c-5f03-88bd-a2497171d434",
+        "be6d4895-65ab-545b-8df9-84e5a308a5e3"
+      ],
+      "unchangedOutsideE2E5": false
+    },
+    {
+      "acquisitionPlacementMoves": [
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-gk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation",
+              "physics-e2-inertia"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-gk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9": [
+              "12260012-cf04-5409-b57d-f5b3a46d9126",
+              "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+              "3791c574-2194-52fa-846b-ee1d4e2c5877",
+              "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+              "76fd0ab2-079a-516e-a33b-170355336d40",
+              "ac25ffe3-fd42-592d-a937-79cc13460313",
+              "dd99528a-bae5-5b78-89e6-c6092c927f8d",
+              "e39c83b0-cb4f-5454-a143-b9a159c99cba"
+            ],
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "1b432223-3d59-5586-86a9-2214b4844101",
+              "497f1311-17d6-56ff-afb1-422a738e5c16",
+              "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+              "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+              "6d18104b-5704-5c45-b39a-2c84565b1796",
+              "7e0308d8-a239-5c0f-b2c0-724f21e4da60",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+              "d873ffa2-04b3-5978-a955-89563802a348",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+              "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+            ],
+            "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49": [
+              "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+              "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
+              "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+              "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+              "e918b31f-6f39-5dee-ade6-3617080fb24f"
+            ],
+            "he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701": [
+              "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+              "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+              "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+              "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+              "642aebd7-66cd-5a50-b543-73c4b207525d",
+              "6d25344c-35d7-5853-925d-2bccbaf50630",
+              "8daaf751-93fe-56d9-8697-ac30237061bd",
+              "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+              "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+              "cf570e66-2ce2-5923-9033-c97d74119553"
+            ],
+            "he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28": [
+              "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+              "14099861-897c-53f4-8c6c-48d088ee9f01",
+              "161502b8-e52d-58d0-8f01-9f777b56d392",
+              "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+              "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+              "239aac49-1137-5df5-b197-49e72292e40c",
+              "23c5382a-4b0f-5715-84b5-cf87b8323152",
+              "36c4590c-6032-5a37-b660-f15951dee076",
+              "37b33812-d428-5953-852e-57a53a4347fe",
+              "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+              "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+              "6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1",
+              "6e79ef4a-2666-5f7a-885c-b175954506f8",
+              "73b5af24-7750-520a-bb16-43136ce19a5c",
+              "741e7056-69e4-59be-a159-0e2583d748d1",
+              "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+              "7982cd8e-2151-59e7-858d-c1361c5d249e",
+              "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+              "81a45dec-37be-529b-89ce-2f3101237293",
+              "88d07c80-5d7d-5c70-b385-b22769381e44",
+              "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+              "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+              "93ece389-78c5-5141-9ef1-c68bd558306e",
+              "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+              "b61d233a-1902-526b-a9b5-6b3d553f4013",
+              "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+              "be921c3b-7db9-50b5-a110-92f31673fc62",
+              "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
+              "cd1903a5-d70a-5320-9124-b6b24917ba14",
+              "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+              "e713dc34-beeb-5807-8a90-f872e049aa4e",
+              "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+              "f322c268-dc16-5d50-82dd-209834f20208",
+              "fb73c94b-6a23-5351-8fef-db2c2533e361"
+            ],
+            "physics-e2-newton-and-conservation": [
+              "00245a43-eb89-47d2-92d7-21799dbec9f3",
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "1232febe-868a-4dac-b4c2-e35789434601",
+              "22561c66-3957-5d55-b07a-25de1f359930",
+              "253a71d2-e751-4c63-acbe-238b71463cd8",
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+              "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79",
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "68061652-d617-5e51-8d2a-1c686c3c49df",
+              "72649cf5-893c-5f03-88bd-a2497171d434",
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+              "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+            ],
+            "physics-he-ephase-cross-topic-assessments": [
+              "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
+              "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",
+              "879491c0-7153-570b-91f4-c61d9fe8a143"
+            ]
+          },
+          "id": "5ea765ac-c279-551a-8a94-a07da2381e5b",
+          "subject": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "title": "Kräfte und Trägheit qualitativ erklären"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-gk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation",
+              "physics-e2-energy"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-gk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9": [
+              "e39c83b0-cb4f-5454-a143-b9a159c99cba"
+            ],
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ],
+            "he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28": [
+              "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+              "14099861-897c-53f4-8c6c-48d088ee9f01",
+              "161502b8-e52d-58d0-8f01-9f777b56d392",
+              "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+              "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+              "239aac49-1137-5df5-b197-49e72292e40c",
+              "23c5382a-4b0f-5715-84b5-cf87b8323152",
+              "36c4590c-6032-5a37-b660-f15951dee076",
+              "37b33812-d428-5953-852e-57a53a4347fe",
+              "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+              "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+              "6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1",
+              "6e79ef4a-2666-5f7a-885c-b175954506f8",
+              "73b5af24-7750-520a-bb16-43136ce19a5c",
+              "741e7056-69e4-59be-a159-0e2583d748d1",
+              "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+              "7982cd8e-2151-59e7-858d-c1361c5d249e",
+              "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+              "81a45dec-37be-529b-89ce-2f3101237293",
+              "88d07c80-5d7d-5c70-b385-b22769381e44",
+              "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+              "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+              "93ece389-78c5-5141-9ef1-c68bd558306e",
+              "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+              "b61d233a-1902-526b-a9b5-6b3d553f4013",
+              "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+              "be921c3b-7db9-50b5-a110-92f31673fc62",
+              "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
+              "cd1903a5-d70a-5320-9124-b6b24917ba14",
+              "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+              "e713dc34-beeb-5807-8a90-f872e049aa4e",
+              "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+              "f322c268-dc16-5d50-82dd-209834f20208",
+              "fb73c94b-6a23-5351-8fef-db2c2533e361"
+            ],
+            "physics-e2-newton-and-conservation": [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "253a71d2-e751-4c63-acbe-238b71463cd8",
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "68061652-d617-5e51-8d2a-1c686c3c49df",
+              "72649cf5-893c-5f03-88bd-a2497171d434",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+              "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+            ],
+            "physics-he-ephase-cross-topic-assessments": [
+              "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
+              "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",
+              "879491c0-7153-570b-91f4-c61d9fe8a143"
+            ]
+          },
+          "id": "722857cf-f327-5740-8151-64eb92195ec8",
+          "subject": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "title": "Mechanische Energieformen qualitativ unterscheiden"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-gk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-gk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "1b432223-3d59-5586-86a9-2214b4844101",
+              "497f1311-17d6-56ff-afb1-422a738e5c16",
+              "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+              "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+              "6d18104b-5704-5c45-b39a-2c84565b1796",
+              "7e0308d8-a239-5c0f-b2c0-724f21e4da60",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+              "d873ffa2-04b3-5978-a955-89563802a348",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+              "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+            ],
+            "physics-he-ephase-cross-topic-assessments": [
+              "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51"
+            ]
+          },
+          "id": "9c328f68-41ed-55dd-9e02-34414a6246f2",
+          "subject": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "title": "Masse und Gewichtskraft unterscheiden"
+        }
+      ],
+      "childMembers": {
+        "physics-e2-energy": [
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+        ],
+        "physics-e2-force-and-counterforce": [
+          "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "physics-e2-force-mass-acceleration": [
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "physics-e2-inertia": [
+          "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+        ],
+        "physics-e2-momentum": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+        ],
+        "physics-e2-several-forces": [
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+        ]
+      },
+      "declaredPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directWitnesses": {
+        "physics-e2-energy | physics-e2-force-mass-acceleration": [
+          [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-force-and-counterforce | physics-e2-force-mass-acceleration": [
+          [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        ],
+        "physics-e2-force-mass-acceleration | physics-e2-inertia": [
+          [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-energy": [
+          [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-and-counterforce": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-mass-acceleration": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-several-forces | physics-e2-force-mass-acceleration": [
+          [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ]
+      },
+      "e2DependsOnMoved": [],
+      "e5DeltaMatches": true,
+      "e5Exams": {
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "learning": {
+            "after": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            },
+            "before": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 74,
+              "sha256": "4a07e5d551c3a849c1a200b3f483d58402ba216e88cdffd781d33f4c73ed1036"
+            },
+            "before": {
+              "count": 74,
+              "sha256": "4a07e5d551c3a849c1a200b3f483d58402ba216e88cdffd781d33f4c73ed1036"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 16,
+              "sha256": "9997edf30dd8fecc09c6cc12cb187570dcb3f3123c00c4f90acc5f1705693b97"
+            },
+            "before": {
+              "count": 16,
+              "sha256": "9997edf30dd8fecc09c6cc12cb187570dcb3f3123c00c4f90acc5f1705693b97"
+            }
+          }
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "learning": {
+            "after": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            },
+            "before": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 87,
+              "sha256": "719e0e18f2c7554b0e88916b9918be3a1c8fbe47320d471898e8b7ac787b8440"
+            },
+            "before": {
+              "count": 87,
+              "sha256": "719e0e18f2c7554b0e88916b9918be3a1c8fbe47320d471898e8b7ac787b8440"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 27,
+              "sha256": "b68d89d2d29359fe8562561fc8da0780ddec035cfd00bc1dbbb4b0c617d41e4b"
+            },
+            "before": {
+              "count": 27,
+              "sha256": "b68d89d2d29359fe8562561fc8da0780ddec035cfd00bc1dbbb4b0c617d41e4b"
+            }
+          }
+        },
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "learning": {
+            "after": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            },
+            "before": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 119,
+              "sha256": "30db5ab2274365711b4b92bc4cce9949be850a6d46b80a1b0c8360e407551a6a"
+            },
+            "before": {
+              "count": 119,
+              "sha256": "30db5ab2274365711b4b92bc4cce9949be850a6d46b80a1b0c8360e407551a6a"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 27,
+              "sha256": "18375003896386db5b7d85f2a478e4fc34ff8190d3509b3542950512c8d20344"
+            },
+            "before": {
+              "count": 27,
+              "sha256": "18375003896386db5b7d85f2a478e4fc34ff8190d3509b3542950512c8d20344"
+            }
+          }
+        }
+      },
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "includingAcquisitionPlacement": {
+        "backflows": [],
+        "directPairs": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "missing": [],
+        "reachability": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-inertia"
+          ]
+        ],
+        "reduced": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "redundant": []
+      },
+      "kernel": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "missing": [],
+      "movedToE5": [
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "rawDemandPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-energy",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-inertia"
+        ]
+      ],
+      "recordMismatches": {},
+      "recordOrderWitnessMismatches": [],
+      "redundant": [],
+      "reverseChains": [],
+      "roles": {
+        "learning": {
+          "added": [],
+          "after": {
+            "count": 1572,
+            "sha256": "fbaa4c1c4fbdbf3264c867611d6eae732b074c13e014470fe27a1dc38ed7d5c1"
+          },
+          "before": {
+            "count": 1572,
+            "sha256": "fbaa4c1c4fbdbf3264c867611d6eae732b074c13e014470fe27a1dc38ed7d5c1"
+          },
+          "removed": []
+        },
+        "prerequisiteOnly": {
+          "added": [],
+          "after": {
+            "count": 1097,
+            "sha256": "8dbc187573ef1704944626899be4ed30eb0787172264f0318ec5d6952d1a141e"
+          },
+          "before": {
+            "count": 1097,
+            "sha256": "8dbc187573ef1704944626899be4ed30eb0787172264f0318ec5d6952d1a141e"
+          },
+          "removed": []
+        },
+        "target": {
+          "added": [],
+          "after": {
+            "count": 475,
+            "sha256": "f23b8e7f918daa6d2fa57133be2fb52938d256d1b7c0cf3b31667cc2b0f653ae"
+          },
+          "before": {
+            "count": 475,
+            "sha256": "f23b8e7f918daa6d2fa57133be2fb52938d256d1b7c0cf3b31667cc2b0f653ae"
+          },
+          "removed": []
+        }
+      },
+      "trailingE2Exams": [
+        "68061652-d617-5e51-8d2a-1c686c3c49df",
+        "22561c66-3957-5d55-b07a-25de1f359930",
+        "72649cf5-893c-5f03-88bd-a2497171d434",
+        "be6d4895-65ab-545b-8df9-84e5a308a5e3"
+      ],
+      "unchangedOutsideE2E5": true
+    },
+    {
+      "acquisitionPlacementMoves": [
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "075f1ef2-6860-4b20-9df2-878157eb395e",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Punkte und Vektoren im Raum koordinatisieren"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Skalarprodukt von Vektoren definieren"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation",
+              "physics-e2-inertia"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9": [
+              "12260012-cf04-5409-b57d-f5b3a46d9126",
+              "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+              "3791c574-2194-52fa-846b-ee1d4e2c5877",
+              "761a0879-fc15-5d0c-a2b7-2b439efecd5b",
+              "76fd0ab2-079a-516e-a33b-170355336d40",
+              "ac25ffe3-fd42-592d-a937-79cc13460313",
+              "dd99528a-bae5-5b78-89e6-c6092c927f8d",
+              "e39c83b0-cb4f-5454-a143-b9a159c99cba"
+            ],
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "1b432223-3d59-5586-86a9-2214b4844101",
+              "1b833656-cd16-5b21-973a-9810960dcfd2",
+              "497f1311-17d6-56ff-afb1-422a738e5c16",
+              "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+              "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+              "6d18104b-5704-5c45-b39a-2c84565b1796",
+              "7e0308d8-a239-5c0f-b2c0-724f21e4da60",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+              "c968d263-8be4-5cf9-b320-e95398fe648f",
+              "d873ffa2-04b3-5978-a955-89563802a348",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+              "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+            ],
+            "he-physics-topic-287739a3-6143-55d0-abe7-1a08889e9b49": [
+              "39b2a0c4-eecf-5049-b58f-e790790a3bf2",
+              "8320bb17-e6ab-50ea-a965-aa331bfd33e1",
+              "accb1d9e-cd48-5983-bcef-9b9bca4a9114",
+              "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+              "e918b31f-6f39-5dee-ade6-3617080fb24f"
+            ],
+            "he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701": [
+              "07f298b2-2f5e-5b16-8150-bc603fa78ecd",
+              "21c0a5f2-4152-549a-aa9c-e02ab772f589",
+              "37f17e7e-9fcf-5dca-ac10-e94cb8420be5",
+              "5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
+              "642aebd7-66cd-5a50-b543-73c4b207525d",
+              "6d25344c-35d7-5853-925d-2bccbaf50630",
+              "8daaf751-93fe-56d9-8697-ac30237061bd",
+              "b49e0f6b-df2a-5643-b3ce-a9dfdf25f3bc",
+              "c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea",
+              "cf570e66-2ce2-5923-9033-c97d74119553"
+            ],
+            "he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28": [
+              "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+              "14099861-897c-53f4-8c6c-48d088ee9f01",
+              "161502b8-e52d-58d0-8f01-9f777b56d392",
+              "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+              "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+              "239aac49-1137-5df5-b197-49e72292e40c",
+              "23c5382a-4b0f-5715-84b5-cf87b8323152",
+              "36c4590c-6032-5a37-b660-f15951dee076",
+              "37b33812-d428-5953-852e-57a53a4347fe",
+              "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+              "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+              "6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1",
+              "6e79ef4a-2666-5f7a-885c-b175954506f8",
+              "73b5af24-7750-520a-bb16-43136ce19a5c",
+              "741e7056-69e4-59be-a159-0e2583d748d1",
+              "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+              "7982cd8e-2151-59e7-858d-c1361c5d249e",
+              "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+              "81a45dec-37be-529b-89ce-2f3101237293",
+              "88d07c80-5d7d-5c70-b385-b22769381e44",
+              "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+              "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+              "93ece389-78c5-5141-9ef1-c68bd558306e",
+              "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+              "b61d233a-1902-526b-a9b5-6b3d553f4013",
+              "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+              "be921c3b-7db9-50b5-a110-92f31673fc62",
+              "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
+              "cd1903a5-d70a-5320-9124-b6b24917ba14",
+              "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+              "e713dc34-beeb-5807-8a90-f872e049aa4e",
+              "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+              "f322c268-dc16-5d50-82dd-209834f20208",
+              "fb73c94b-6a23-5351-8fef-db2c2533e361"
+            ],
+            "physics-e2-newton-and-conservation": [
+              "00245a43-eb89-47d2-92d7-21799dbec9f3",
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "1232febe-868a-4dac-b4c2-e35789434601",
+              "22561c66-3957-5d55-b07a-25de1f359930",
+              "253a71d2-e751-4c63-acbe-238b71463cd8",
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+              "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+              "5f289cdc-fda1-4058-b44f-041ba1398e79",
+              "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+              "68061652-d617-5e51-8d2a-1c686c3c49df",
+              "72649cf5-893c-5f03-88bd-a2497171d434",
+              "839ecc8f-3a60-418b-bc92-64bfeef33824",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+              "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+              "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+              "ad984bb6-e225-432a-952d-d83cda40b7f8",
+              "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+              "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+              "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+              "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+            ],
+            "physics-he-ephase-cross-topic-assessments": [
+              "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
+              "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",
+              "879491c0-7153-570b-91f4-c61d9fe8a143"
+            ]
+          },
+          "id": "5ea765ac-c279-551a-8a94-a07da2381e5b",
+          "subject": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "title": "Kräfte und Trägheit qualitativ erklären"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation",
+              "physics-e2-energy"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-04d1d2df-a94b-5db4-8d07-cbb512c2e0b9": [
+              "e39c83b0-cb4f-5454-a143-b9a159c99cba"
+            ],
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ],
+            "he-physics-topic-df11eb33-4900-52bf-93b3-eb82ff0f9a28": [
+              "0de2ca8c-7272-59ed-9c89-0971d6ce2f47",
+              "14099861-897c-53f4-8c6c-48d088ee9f01",
+              "161502b8-e52d-58d0-8f01-9f777b56d392",
+              "18058384-a1bc-5ba2-8f5d-1fe9498acbf0",
+              "2088ccf0-48f4-51d4-be5f-67affd0fb099",
+              "239aac49-1137-5df5-b197-49e72292e40c",
+              "23c5382a-4b0f-5715-84b5-cf87b8323152",
+              "36c4590c-6032-5a37-b660-f15951dee076",
+              "37b33812-d428-5953-852e-57a53a4347fe",
+              "5f17e992-fd07-56ee-80a0-567f45bbd10c",
+              "616ac6cf-901b-509a-8cbb-bd422ddecf05",
+              "6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1",
+              "6e79ef4a-2666-5f7a-885c-b175954506f8",
+              "73b5af24-7750-520a-bb16-43136ce19a5c",
+              "741e7056-69e4-59be-a159-0e2583d748d1",
+              "77604656-7ffe-516c-8af3-7cbe7de2f2a4",
+              "7982cd8e-2151-59e7-858d-c1361c5d249e",
+              "7fe3022f-fad0-5f41-af1c-d55ff214ebc6",
+              "81a45dec-37be-529b-89ce-2f3101237293",
+              "88d07c80-5d7d-5c70-b385-b22769381e44",
+              "912a5489-abcc-55f9-8f1a-9ee1e2d7fd9d",
+              "91b20476-12cf-50d6-880a-ea509ffe8a9a",
+              "93ece389-78c5-5141-9ef1-c68bd558306e",
+              "aed9161b-ddc4-559c-be8f-baeeddf224f3",
+              "b61d233a-1902-526b-a9b5-6b3d553f4013",
+              "b6dfd3e6-2dd3-5983-9a27-7e7db70e8db8",
+              "be921c3b-7db9-50b5-a110-92f31673fc62",
+              "cbdc0b5f-8a48-5ade-be53-ab6aacaa3e73",
+              "cd1903a5-d70a-5320-9124-b6b24917ba14",
+              "d0cebf18-8b2a-52d6-857d-ef18cd64541c",
+              "e713dc34-beeb-5807-8a90-f872e049aa4e",
+              "eaef821b-4dbe-52a4-a0e2-574e5ce2040d",
+              "f322c268-dc16-5d50-82dd-209834f20208",
+              "fb73c94b-6a23-5351-8fef-db2c2533e361"
+            ],
+            "physics-e2-newton-and-conservation": [
+              "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+              "253a71d2-e751-4c63-acbe-238b71463cd8",
+              "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+              "68061652-d617-5e51-8d2a-1c686c3c49df",
+              "72649cf5-893c-5f03-88bd-a2497171d434",
+              "91c49019-ea51-4ce5-a919-c91c45b25e83",
+              "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+              "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+              "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+              "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+            ],
+            "physics-he-ephase-cross-topic-assessments": [
+              "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
+              "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",
+              "879491c0-7153-570b-91f4-c61d9fe8a143"
+            ]
+          },
+          "id": "722857cf-f327-5740-8151-64eb92195ec8",
+          "subject": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "title": "Mechanische Energieformen qualitativ unterscheiden"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-e2-newton-and-conservation"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "1b432223-3d59-5586-86a9-2214b4844101",
+              "1b833656-cd16-5b21-973a-9810960dcfd2",
+              "497f1311-17d6-56ff-afb1-422a738e5c16",
+              "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+              "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+              "6d18104b-5704-5c45-b39a-2c84565b1796",
+              "7e0308d8-a239-5c0f-b2c0-724f21e4da60",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+              "c968d263-8be4-5cf9-b320-e95398fe648f",
+              "d873ffa2-04b3-5978-a955-89563802a348",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+              "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+            ],
+            "physics-he-ephase-cross-topic-assessments": [
+              "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51"
+            ]
+          },
+          "id": "9c328f68-41ed-55dd-9e02-34414a6246f2",
+          "subject": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "title": "Masse und Gewichtskraft unterscheiden"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Kettenregel beim Ableiten anwenden (LK)"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten"
+        },
+        {
+          "after": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+            ]
+          ],
+          "before": [
+            [
+              "physics-root",
+              "physics-sekii-lk",
+              "physics-e-phase",
+              "physics-required-preparation-physics-e-phase"
+            ]
+          ],
+          "demandingTopicsInEPhase": {
+            "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089": [
+              "16caf92e-2800-57d1-946c-5b92ce848a96",
+              "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+              "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+              "e359f8bb-6106-44aa-9edf-694528d2d2a9"
+            ]
+          },
+          "id": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+          "subject": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+          "title": "Betrag eines Vektors im Raum bestimmen"
+        }
+      ],
+      "childMembers": {
+        "physics-e2-energy": [
+          "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+        ],
+        "physics-e2-force-and-counterforce": [
+          "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "ad984bb6-e225-432a-952d-d83cda40b7f8"
+        ],
+        "physics-e2-force-mass-acceleration": [
+          "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+        ],
+        "physics-e2-inertia": [
+          "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+        ],
+        "physics-e2-momentum": [
+          "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "1232febe-868a-4dac-b4c2-e35789434601",
+          "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+        ],
+        "physics-e2-several-forces": [
+          "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+        ]
+      },
+      "declaredPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "directWitnesses": {
+        "physics-e2-energy | physics-e2-force-mass-acceleration": [
+          [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-force-and-counterforce | physics-e2-force-mass-acceleration": [
+          [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ]
+        ],
+        "physics-e2-force-mass-acceleration | physics-e2-inertia": [
+          [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-energy": [
+          [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+          ],
+          [
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-and-counterforce": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          [
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ]
+        ],
+        "physics-e2-momentum | physics-e2-force-mass-acceleration": [
+          [
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          [
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ],
+        "physics-e2-several-forces | physics-e2-force-mass-acceleration": [
+          [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ]
+        ]
+      },
+      "e2DependsOnMoved": [],
+      "e5DeltaMatches": true,
+      "e5Exams": {
+        "1b432223-3d59-5586-86a9-2214b4844101": {
+          "learning": {
+            "after": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            },
+            "before": {
+              "count": 90,
+              "sha256": "fe367b0b4cfe8a26a2d5d913d9ba46e88c9ceb67efc2ff76777f8d66167ca380"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 74,
+              "sha256": "4a07e5d551c3a849c1a200b3f483d58402ba216e88cdffd781d33f4c73ed1036"
+            },
+            "before": {
+              "count": 74,
+              "sha256": "4a07e5d551c3a849c1a200b3f483d58402ba216e88cdffd781d33f4c73ed1036"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 16,
+              "sha256": "9997edf30dd8fecc09c6cc12cb187570dcb3f3123c00c4f90acc5f1705693b97"
+            },
+            "before": {
+              "count": 16,
+              "sha256": "9997edf30dd8fecc09c6cc12cb187570dcb3f3123c00c4f90acc5f1705693b97"
+            }
+          }
+        },
+        "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+          "learning": {
+            "after": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            },
+            "before": {
+              "count": 114,
+              "sha256": "47085db799274645a56c0a34769519561d5755a342774123d1b8312d001bbc0e"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 87,
+              "sha256": "719e0e18f2c7554b0e88916b9918be3a1c8fbe47320d471898e8b7ac787b8440"
+            },
+            "before": {
+              "count": 87,
+              "sha256": "719e0e18f2c7554b0e88916b9918be3a1c8fbe47320d471898e8b7ac787b8440"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 27,
+              "sha256": "b68d89d2d29359fe8562561fc8da0780ddec035cfd00bc1dbbb4b0c617d41e4b"
+            },
+            "before": {
+              "count": 27,
+              "sha256": "b68d89d2d29359fe8562561fc8da0780ddec035cfd00bc1dbbb4b0c617d41e4b"
+            }
+          }
+        },
+        "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+          "learning": {
+            "after": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            },
+            "before": {
+              "count": 146,
+              "sha256": "1aae0f7e360c9429b1d1f4e1a7d0a2b430561e0d3e1480e2bc546346a05cfbc9"
+            }
+          },
+          "prerequisiteOnly": {
+            "after": {
+              "count": 113,
+              "sha256": "a8daf3290852d5ee0881d9a29c757f246dfa9ee0fafbb97cd9a4cd8aa6dcdf06"
+            },
+            "before": {
+              "count": 113,
+              "sha256": "a8daf3290852d5ee0881d9a29c757f246dfa9ee0fafbb97cd9a4cd8aa6dcdf06"
+            }
+          },
+          "target": {
+            "after": {
+              "count": 33,
+              "sha256": "d547db26e2e9ae9dc0bb5b597ce3082600805711c6e547022a8ca54524cdafb6"
+            },
+            "before": {
+              "count": 33,
+              "sha256": "d547db26e2e9ae9dc0bb5b597ce3082600805711c6e547022a8ca54524cdafb6"
+            }
+          }
+        }
+      },
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "includingAcquisitionPlacement": {
+        "backflows": [],
+        "directPairs": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "missing": [],
+        "reachability": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-energy",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-inertia"
+          ]
+        ],
+        "reduced": [
+          [
+            "physics-e2-energy",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-and-counterforce",
+            "physics-e2-force-mass-acceleration"
+          ],
+          [
+            "physics-e2-force-mass-acceleration",
+            "physics-e2-inertia"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-energy"
+          ],
+          [
+            "physics-e2-momentum",
+            "physics-e2-force-and-counterforce"
+          ],
+          [
+            "physics-e2-several-forces",
+            "physics-e2-force-mass-acceleration"
+          ]
+        ],
+        "redundant": []
+      },
+      "kernel": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ]
+      ],
+      "missing": [],
+      "movedToE5": [
+        "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+        "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+        "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+        "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+      ],
+      "rawDemandPairs": [
+        [
+          "physics-e2-energy",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-energy",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-force-and-counterforce",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-force-mass-acceleration",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-energy"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-and-counterforce"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-momentum",
+          "physics-e2-inertia"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-force-mass-acceleration"
+        ],
+        [
+          "physics-e2-several-forces",
+          "physics-e2-inertia"
+        ]
+      ],
+      "recordMismatches": {},
+      "recordOrderWitnessMismatches": [],
+      "redundant": [],
+      "reverseChains": [],
+      "roles": {
+        "learning": {
+          "added": [],
+          "after": {
+            "count": 1572,
+            "sha256": "482e6cbaa0be907a34ddda5dc909981688824978a8cb4bb5ec73ad9cba435846"
+          },
+          "before": {
+            "count": 1572,
+            "sha256": "482e6cbaa0be907a34ddda5dc909981688824978a8cb4bb5ec73ad9cba435846"
+          },
+          "removed": []
+        },
+        "prerequisiteOnly": {
+          "added": [],
+          "after": {
+            "count": 1079,
+            "sha256": "48249f78f6719ab3043542bf28761ae5d0b3f979026781337ec676b664f652b2"
+          },
+          "before": {
+            "count": 1079,
+            "sha256": "48249f78f6719ab3043542bf28761ae5d0b3f979026781337ec676b664f652b2"
+          },
+          "removed": []
+        },
+        "target": {
+          "added": [],
+          "after": {
+            "count": 493,
+            "sha256": "9c013eba47fb9d6c18fa957966b1012a0c601ddb2dd49280ac08599de96c0d42"
+          },
+          "before": {
+            "count": 493,
+            "sha256": "9c013eba47fb9d6c18fa957966b1012a0c601ddb2dd49280ac08599de96c0d42"
+          },
+          "removed": []
+        }
+      },
+      "trailingE2Exams": [
+        "68061652-d617-5e51-8d2a-1c686c3c49df",
+        "22561c66-3957-5d55-b07a-25de1f359930",
+        "72649cf5-893c-5f03-88bd-a2497171d434",
+        "be6d4895-65ab-545b-8df9-84e5a308a5e3"
+      ],
+      "unchangedOutsideE2E5": false
+    }
+  ],
+  "curriculaTrees": {
+    "948f2a419d18c08c7edd6b5d7f9a5367fe81bcf6": "f15d397b9b8d89fb0f1ee386761c350d9b363a06",
+    "ae04d42ef9": "f15d397b9b8d89fb0f1ee386761c350d9b363a06"
+  },
+  "goalTexts": {
+    "00245a43-eb89-47d2-92d7-21799dbec9f3": {
+      "description": "Die lernende Person kann Inertialsysteme definieren und von nicht-inertialen Bezugssystemen unterscheiden.",
+      "id": "00245a43-eb89-47d2-92d7-21799dbec9f3",
+      "requires": [
+        {
+          "id": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "title": "Newtons 1. Axiom (Trägheitsprinzip)"
+        }
+      ],
+      "title": "Inertialsysteme und Bezugssysteme"
+    },
+    "0da13365-02c2-44f1-8a81-d524ca0ac3ae": {
+      "description": "Die lernende Person kann inelastische Stöße in einer Dimension mithilfe der Impulserhaltung analysieren und Energieumwandlungen qualitativ beschreiben.",
+      "id": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+      "requires": [
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung"
+        },
+        {
+          "id": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "title": "Energieerhaltung"
+        }
+      ],
+      "title": "Inelastische Stöße"
+    },
+    "1232febe-868a-4dac-b4c2-e35789434601": {
+      "description": "Die lernende Person kann bei gleicher Impulsänderung mit der verlängerten Stoßdauer erklären, wie eine Knautschzone den Betrag der mittleren Kraft bei einem Verkehrsunfall verringert.",
+      "id": "1232febe-868a-4dac-b4c2-e35789434601",
+      "requires": [
+        {
+          "id": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "title": "Kraftstoß"
+        }
+      ],
+      "title": "Unfallphysik: Kraftstoß und Knautschzone"
+    },
+    "1b432223-3d59-5586-86a9-2214b4844101": {
+      "description": "E.4 Gravitation mit erweiterten Rechnungen, 30 BE.",
+      "id": "1b432223-3d59-5586-86a9-2214b4844101",
+      "requires": [
+        {
+          "id": "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+          "title": "Gravitationskraft und Gravitationspotential"
+        },
+        {
+          "id": "60211ac1-cbe1-5182-87ef-673a068c5b0a",
+          "title": "Planetenbewegungen deuten"
+        }
+      ],
+      "title": "Orbitaldynamik und Energiebilanz"
+    },
+    "22561c66-3957-5d55-b07a-25de1f359930": {
+      "description": "E.2 Kräfte, Reibung und Dynamik, 25 BE.",
+      "id": "22561c66-3957-5d55-b07a-25de1f359930",
+      "requires": [
+        {
+          "id": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+          "title": "Reibungskräfte qualitativ verstehen"
+        },
+        {
+          "id": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "title": "Newtons 3. Axiom anwenden"
+        }
+      ],
+      "title": "Newtonsche Axiome und Kräftebilanz"
+    },
+    "253a71d2-e751-4c63-acbe-238b71463cd8": {
+      "description": "Die lernende Person kann den Begriff Reibungsenergie als Bilanzgröße für den Anteil mechanischer Energie deuten, der bei Reibung in innere Energie der beteiligten Körper umgewandelt wird, und diese Energieumwandlung für ein festgelegtes System qualitativ bilanzieren.",
+      "id": "253a71d2-e751-4c63-acbe-238b71463cd8",
+      "requires": [
+        {
+          "id": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "title": "Energieerhaltung"
+        }
+      ],
+      "title": "Reibungsenergie"
+    },
+    "2eecd0e2-a7ca-4568-9b12-3d47706c65fb": {
+      "description": "Die lernende Person kann einfache Stossvorgaenge quantitativ untersuchen, dabei Impuls- und Energieerhaltung fachlich nutzen und die Rolle von Erhaltungssaetzen in der Mechanik erklaeren.",
+      "id": "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+      "requires": [
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung"
+        },
+        {
+          "id": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "title": "Energieerhaltung"
+        },
+        {
+          "id": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+          "title": "Termwerte durch Einsetzen berechnen"
+        }
+      ],
+      "title": "Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren"
+    },
+    "31a2ef52-114b-4d2c-a720-6ef5a390b6dc": {
+      "description": "Die lernende Person kann Newtons erstes Axiom formulieren und einfache Situationen damit deuten: In einem Inertialsystem bleibt ein Körper bei verschwindender resultierender äußerer Kraft in Ruhe oder bewegt sich geradlinig mit konstanter Geschwindigkeit.",
+      "id": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "requires": [
+        {
+          "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung"
+        },
+        {
+          "id": "5ea765ac-c279-551a-8a94-a07da2381e5b",
+          "title": "Kräfte und Trägheit qualitativ erklären"
+        }
+      ],
+      "title": "Newtons 1. Axiom (Trägheitsprinzip)"
+    },
+    "32b896b9-f2f1-4d4e-96ad-e869ac3d3759": {
+      "description": "Die lernende Person kann das Trägheitsprinzip auf Alltagssituationen in Inertialsystemen anwenden und erklären, dass eine verschwindende resultierende äußere Kraft sowohl mit Ruhe als auch mit gleichförmig-geradliniger Bewegung vereinbar ist.",
+      "id": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+      "requires": [
+        {
+          "id": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "title": "Newtons 1. Axiom (Trägheitsprinzip)"
+        }
+      ],
+      "title": "Newtons 1. Axiom anwenden"
+    },
+    "4a2bf015-052b-4af0-aed7-324259fa1a8a": {
+      "description": "Die lernende Person kann Reaktions- und Bremswege qualitativ und mithilfe einfacher Modelle beurteilen und daraus Sicherheitsabstände in Alltagssituationen bewerten.",
+      "id": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "requires": [
+        {
+          "id": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+          "title": "Gleichmäßig beschleunigte Bewegung und Beschleunigung"
+        },
+        {
+          "id": "71d43fcc-d787-4874-ae4a-2336364e9c0a",
+          "title": "Grundaufgaben der Prozentrechnung lösen"
+        },
+        {
+          "id": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+          "title": "Termwerte durch Einsetzen berechnen"
+        }
+      ],
+      "title": "Physik im Straßenverkehr: Sicherheitsabstände bewerten"
+    },
+    "594f7f21-6b8a-531c-8424-5f1dcbaf0f23": {
+      "description": "Die lernende Person kann potenzielle Energie über ein Potential beschreiben, einfache Fälle etwa im Gravitationsfeld berechnen und erläutern, wie Lage und gewähltes Nullniveau den Energiewert bestimmen, während Energiedifferenzen vom Nullniveau unabhängig sind.",
+      "id": "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+      "requires": [
+        {
+          "id": "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+          "title": "Gravitationskraft und Gravitationspotential"
+        }
+      ],
+      "title": "Potenzielle Energie und Potential"
+    },
+    "5f289cdc-fda1-4058-b44f-041ba1398e79": {
+      "description": "Die lernende Person kann für einfache eindimensionale Bewegungen eines Körpers konstanter Masse in einem Inertialsystem die Beziehung $\\sum F_\\mathrm{ext}=m\\cdot a$ mit einer gewählten Vorzeichenrichtung anwenden und Kräftegleichgewicht ($\\sum F_\\mathrm{ext}=0$) von beschleunigter Bewegung unterscheiden.",
+      "id": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "requires": [
+        {
+          "id": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "title": "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+        }
+      ],
+      "title": "Grundgleichung der Mechanik anwenden"
+    },
+    "5fd45dbc-0eb1-591b-99a9-7386336f1456": {
+      "description": "Die lernende Person kann Haft- und Gleitreibung anhand der drohenden beziehungsweise bestehenden Relativbewegung an der Kontaktfläche unterscheiden, die Reibungskraft jeweils entgegen dieser Relativbewegung oder Relativbewegungstendenz einzeichnen und ihre Wirkung auf die Bewegung erläutern.",
+      "id": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "requires": [
+        {
+          "id": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "title": "Grundgleichung der Mechanik anwenden"
+        }
+      ],
+      "title": "Reibungskräfte qualitativ verstehen"
+    },
+    "68061652-d617-5e51-8d2a-1c686c3c49df": {
+      "description": "Die lernende Person kann Trägheit und Kräftegleichgewicht unterscheiden, einen Kraftstoß mit einer Impulsänderung verknüpfen und einen einfachen Stoß mit Impuls- und Energieerhaltung quantitativ untersuchen.",
+      "id": "68061652-d617-5e51-8d2a-1c686c3c49df",
+      "requires": [
+        {
+          "id": "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+          "title": "Einfache Stossvorgaenge mit Impuls- und Energieerhaltung analysieren"
+        },
+        {
+          "id": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "title": "Kraftstoß"
+        },
+        {
+          "id": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+          "title": "Newtons 1. Axiom anwenden"
+        }
+      ],
+      "title": "Prüfungsaufgabe: Trägheit, Kraftstoß und Stoßvorgang untersuchen"
+    },
+    "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b": {
+      "description": "Die lernende Person kann in einfachen Situationen nahe der Erdoberfläche die gravitative potenzielle Energie des Systems Erde–Körper relativ zu einer gewählten Bezugshöhe beschreiben und ohne Feldbegriff berechnen.",
+      "id": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "requires": [
+        {
+          "id": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "title": "Kinetische Energie"
+        }
+      ],
+      "title": "Potenzielle Energie (Lageenergie)"
+    },
+    "72649cf5-893c-5f03-88bd-a2497171d434": {
+      "description": "E.2 Erhaltungssätze in mechanischen Kontexten, 25 BE.",
+      "id": "72649cf5-893c-5f03-88bd-a2497171d434",
+      "requires": [
+        {
+          "id": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "title": "Inelastische Stöße"
+        },
+        {
+          "id": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "title": "Elastische Stöße im Schwerpunktsystem analysieren"
+        },
+        {
+          "id": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "title": "Kraftstoß"
+        }
+      ],
+      "title": "Energie, Impuls und Stöße"
+    },
+    "7e0308d8-a239-5c0f-b2c0-724f21e4da60": {
+      "description": "Die lernende Person kann Gravitationsmodelle und historische Weltbilder im Grundkurs in argumentativen und rechnerischen Aufgaben zusammenführen.",
+      "id": "7e0308d8-a239-5c0f-b2c0-724f21e4da60",
+      "requires": [
+        {
+          "id": "156edddc-ce8d-580d-8d17-d9376d59e60e",
+          "title": "Gravitationsfeld als Feldgröße einführen"
+        },
+        {
+          "id": "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+          "title": "Potenzielle Energie und Potential"
+        },
+        {
+          "id": "497f1311-17d6-56ff-afb1-422a738e5c16",
+          "title": "Kepler-Gesetze anwenden"
+        },
+        {
+          "id": "d873ffa2-04b3-5978-a955-89563802a348",
+          "title": "Newtons Beitrag zur Erklärung von Planetenbewegungen erläutern (GK)"
+        }
+      ],
+      "title": "Gravitation und Weltbilder in GK-Aufgaben verknüpfen"
+    },
+    "7eeff2de-6015-49a6-a96e-a488d886dc9f": {
+      "description": "Die lernende Person kann die kinetische Energie $E_\\mathrm{k}=\\frac{1}{2}mv^2$ berechnen und die Abhängigkeit von Masse und Geschwindigkeit erläutern.",
+      "id": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+      "requires": [
+        {
+          "id": "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+          "title": "Gleichförmige Bewegung und Geschwindigkeit"
+        },
+        {
+          "id": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+          "title": "Termwerte durch Einsetzen berechnen"
+        }
+      ],
+      "title": "Kinetische Energie"
+    },
+    "839ecc8f-3a60-418b-bc92-64bfeef33824": {
+      "description": "Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.",
+      "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "requires": [
+        {
+          "id": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "title": "Grundgleichung der Mechanik anwenden"
+        },
+        {
+          "id": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "title": "Newtons 3. Axiom anwenden"
+        }
+      ],
+      "title": "Impulserhaltung"
+    },
+    "8a1d4093-9832-5010-b1ca-9d32d8c05afa": {
+      "description": "Die lernende Person kann im Leistungskurs Kepler-Herleitungen, Zentralfeldargumente und die historische Modellentwicklung in anspruchsvollen Aufgaben selbstständig bearbeiten.",
+      "id": "8a1d4093-9832-5010-b1ca-9d32d8c05afa",
+      "requires": [
+        {
+          "id": "c968d263-8be4-5cf9-b320-e95398fe648f",
+          "title": "Übergang von geometrischen zu dynamischen Modellen darstellen (LK)"
+        },
+        {
+          "id": "89cadf81-143b-5f6b-82bd-29ba20d92a1b",
+          "title": "3. Kepler-Gesetz per Skalierungsargument herleiten (LK)"
+        },
+        {
+          "id": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+          "title": "Erhaltung der mechanischen Energie tiefer verstehen (LK)"
+        },
+        {
+          "id": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+          "title": "Impulserhaltung aus Newtonschen Axiomen (LK)"
+        }
+      ],
+      "title": "Gravitation und Weltbilder vertieft herleiten (LK)"
+    },
+    "91c49019-ea51-4ce5-a919-c91c45b25e83": {
+      "description": "Die lernende Person kann für ein System, über dessen Grenze keine Energie übertragen wird, die Energieerhaltung formulieren und einfache Umwandlungen zwischen Energieformen bilanziell beschreiben.",
+      "id": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+      "requires": [
+        {
+          "id": "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+          "title": "Mechanische Energie"
+        }
+      ],
+      "title": "Energieerhaltung"
+    },
+    "94784e0a-7ddc-48be-91fb-dc82b78eb322": {
+      "description": "Die lernende Person kann die mechanische Energie als Summe aus kinetischer und potenzieller Energie beschreiben und einfache Beispiele deuten.",
+      "id": "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+      "requires": [
+        {
+          "id": "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+          "title": "Mechanische Arbeit als Energieänderung"
+        },
+        {
+          "id": "722857cf-f327-5740-8151-64eb92195ec8",
+          "title": "Mechanische Energieformen qualitativ unterscheiden"
+        }
+      ],
+      "title": "Mechanische Energie"
+    },
+    "a0aaedcb-41f8-4891-af77-a69a76b8c10d": {
+      "description": "Die lernende Person kann in Alltagssituationen Wechselwirkungskräfte als gleich große, entgegengesetzt gerichtete Kräfte identifizieren, die gleichzeitig auf zwei verschiedene Körper wirken, und sie von einer Kräftebilanz an einem einzelnen Körper unterscheiden.",
+      "id": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+      "requires": [
+        {
+          "id": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+          "title": "Newtons 3. Axiom (Wechselwirkungsprinzip)"
+        }
+      ],
+      "title": "Newtons 3. Axiom anwenden"
+    },
+    "a42f91a4-0d21-5aa9-ae11-f48be6f2e431": {
+      "description": "Der Lernende versteht die Gravitationskraft als konservative Kraft, die aus einem Potential abgeleitet ist. Das wird im Rahmen der mathematischen Möglichkeiten der Oberstufe erklärt.",
+      "id": "a42f91a4-0d21-5aa9-ae11-f48be6f2e431",
+      "requires": [
+        {
+          "id": "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+          "title": "Gravitationsgesetz und Gewichtskraft anwenden"
+        }
+      ],
+      "title": "Gravitationskraft und Gravitationspotential"
+    },
+    "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20": {
+      "description": "Die lernende Person kann den vektoriellen Impuls $\\vec p=m\\vec v$ einführen, Newtons zweites Axiom in einem Inertialsystem für ein materiell abgeschlossenes System als Zusammenhang zwischen der resultierenden äußeren Kraft und der zeitlichen Änderung des Impulses formulieren und deuten sowie für konstante Masse auf $\\sum \\vec F_\\mathrm{ext}=m\\vec a$ zurückführen.",
+      "id": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "requires": [
+        {
+          "id": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+          "title": "Newtons 1. Axiom (Trägheitsprinzip)"
+        }
+      ],
+      "title": "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+    },
+    "ad984bb6-e225-432a-952d-d83cda40b7f8": {
+      "description": "Die lernende Person kann Newtons drittes Axiom formulieren und an Beispielen erläutern, dass zwei wechselwirkende Körper gleichzeitig gleich große, entgegengesetzt gerichtete Kräfte aufeinander ausüben.",
+      "id": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "requires": [
+        {
+          "id": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "title": "Newtons 2. Axiom (Grundgleichung der Mechanik)"
+        }
+      ],
+      "title": "Newtons 3. Axiom (Wechselwirkungsprinzip)"
+    },
+    "be6d4895-65ab-545b-8df9-84e5a308a5e3": {
+      "description": "Die lernende Person kann Grundlagen zu Newtonschen Axiomen, Energie- und Impulsbetrachtungen in vernetzten Übungsaufgaben sicher anwenden.",
+      "id": "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+      "requires": [
+        {
+          "id": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+          "title": "Newtons 1. Axiom anwenden"
+        },
+        {
+          "id": "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "title": "Inertialsysteme und Bezugssysteme"
+        },
+        {
+          "id": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "title": "Potenzielle Energie (Lageenergie)"
+        },
+        {
+          "id": "253a71d2-e751-4c63-acbe-238b71463cd8",
+          "title": "Reibungsenergie"
+        },
+        {
+          "id": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+          "title": "Elastische Stöße im Schwerpunktsystem analysieren"
+        },
+        {
+          "id": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+          "title": "Kraftstoß"
+        },
+        {
+          "id": "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+          "title": "Inelastische Stöße"
+        }
+      ],
+      "title": "Grundlagenaufgaben zu Newton, Energie und Impuls lösen"
+    },
+    "c1c71daa-042b-4f4c-8c31-0ac366f5149e": {
+      "description": "Die lernende Person kann mechanische Arbeit als Energieübertragung über eine festgelegte Systemgrenze deuten, ihr Vorzeichen aus Kraft- und Wegrichtung bestimmen und die am System verrichtete Arbeit konsistent mit dessen Energieänderung bilanzieren.",
+      "id": "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+      "requires": [
+        {
+          "id": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "title": "Grundgleichung der Mechanik anwenden"
+        },
+        {
+          "id": "71a483ba-9680-4654-bb5e-5ab5427f0919",
+          "title": "Trigonometrie am rechtwinkligen Dreieck anwenden"
+        }
+      ],
+      "title": "Mechanische Arbeit als Energieänderung"
+    },
+    "d168ae5d-f36f-4ad4-b070-d5931f8d70d1": {
+      "description": "Die lernende Person kann elastische Stöße in einer Dimension mithilfe von Impuls- und kinetischer Energieerhaltung analysieren und sie fachlich von inelastischen Stößen abgrenzen.",
+      "id": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+      "requires": [
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung"
+        },
+        {
+          "id": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+          "title": "Kinetische Energie"
+        },
+        {
+          "id": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "title": "Energieerhaltung"
+        }
+      ],
+      "title": "Elastische Stöße"
+    },
+    "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2": {
+      "description": "Die lernende Person kann elastische Stöße im Schwerpunktsystem analysieren, Relativgeschwindigkeiten vor und nach dem Stoß verknüpfen und Ergebnisse ins Laborsystem zurücktransformieren.",
+      "id": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+      "requires": [
+        {
+          "id": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+          "title": "Elastische Stöße"
+        }
+      ],
+      "title": "Elastische Stöße im Schwerpunktsystem analysieren"
+    },
+    "e359f8bb-6106-44aa-9edf-694528d2d2a9": {
+      "description": "Die lernende Person kann für ein System konstanter Masse, auf das nur konservative Kräfte mit zeitunabhängigem Potenzial wirken, aus dem zweiten Newtonschen Axiom und F = −∇U die Erhaltung der mechanischen Energie herleiten und die Gültigkeitsbedingungen erläutern.",
+      "id": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "requires": [
+        {
+          "id": "00245a43-eb89-47d2-92d7-21799dbec9f3",
+          "title": "Inertialsysteme und Bezugssysteme"
+        },
+        {
+          "id": "594f7f21-6b8a-531c-8424-5f1dcbaf0f23",
+          "title": "Potenzielle Energie und Potential"
+        },
+        {
+          "id": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "title": "Potenzielle Energie (Lageenergie)"
+        },
+        {
+          "id": "91c49019-ea51-4ce5-a919-c91c45b25e83",
+          "title": "Energieerhaltung"
+        },
+        {
+          "id": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+          "title": "Skalarprodukt von Vektoren definieren"
+        },
+        {
+          "id": "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
+          "title": "Terme im Bereich rationaler Zahlen äquivalent umformen"
+        },
+        {
+          "id": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+          "title": "Kettenregel beim Ableiten anwenden (LK)"
+        }
+      ],
+      "title": "Erhaltung der mechanischen Energie tiefer verstehen (LK)"
+    },
+    "e790de73-f8e5-4027-bc05-9f12a0e8c9cb": {
+      "description": "Die lernende Person kann den Kraftstoß als über die Einwirkdauer aufsummierte Wirkung der resultierenden äußeren Kraft beschreiben, ihn in einer gewählten Richtung als vorzeichenbehaftete Fläche unter einem Kraft-Zeit-Diagramm und bei konstanter Kraft als Produkt aus Kraft und Einwirkdauer bestimmen sowie mit der Impulsänderung verknüpfen.",
+      "id": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+      "requires": [
+        {
+          "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+          "title": "Impulserhaltung"
+        }
+      ],
+      "title": "Kraftstoß"
+    },
+    "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff": {
+      "description": "Die lernende Person kann das Gravitationsgesetz formulieren, die Gewichtskraft aus der Feldstärke herleiten und einfache Aufgaben zu Gravitationskräften lösen.",
+      "id": "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff",
+      "requires": [
+        {
+          "id": "9c328f68-41ed-55dd-9e02-34414a6246f2",
+          "title": "Masse und Gewichtskraft unterscheiden"
+        },
+        {
+          "id": "a6469c01-6ca3-5eb2-a82c-94f3d0560b32",
+          "title": "Termwerte durch Einsetzen berechnen"
+        }
+      ],
+      "title": "Gravitationsgesetz und Gewichtskraft anwenden"
+    },
+    "f524f05c-4456-4fc3-a1f7-f40741fc1f16": {
+      "description": "Die lernende Person kann in einem Inertialsystem für ein materiell abgeschlossenes System aus Newtons zweitem und drittem Axiom herleiten, dass der Gesamtimpuls bei verschwindendem resultierendem äußerem Kraftstoß an den Intervallgrenzen gleich ist, und die Voraussetzungen für seine fortlaufende Erhaltung diskutieren.",
+      "id": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "requires": [
+        {
+          "id": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+          "title": "Grundgleichung der Mechanik anwenden"
+        },
+        {
+          "id": "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+          "title": "Newtons 3. Axiom anwenden"
+        },
+        {
+          "id": "34604a97-0c64-5b06-81e2-6ac818732d60",
+          "title": "Integralterme interpretieren und begründen"
+        },
+        {
+          "id": "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+          "title": "Vektoren komponentenweise addieren und subtrahieren"
+        }
+      ],
+      "title": "Impulserhaltung aus Newtonschen Axiomen (LK)"
+    }
+  },
+  "head": "a88f17523bbafd63a5b3d98b48cc3c8e8b6ed24d",
+  "math": {
+    "allPinsMatchEachSnapshot": true,
+    "changedPins": {
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json": {
+        "after": "7e19e0b95ad9c299b45def35297a2f6a8137fb0a8a451b17184f01b755667288",
+        "before": "a548e0f7cde9432490560a578fd5a6ab577b6378c1b7a8ca4d8e40ad7025fc58"
+      },
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json": {
+        "after": "450b755e3ef6ab6130deb2cde65e8905bfa5fed6574f32181fe0cc5a6248ba94",
+        "before": "76d5d5a83bdd757f3e1d1b6385fa3683afcd8c1ebb32d2d06eaa5511da05c877"
+      },
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g8.view.json": {
+        "after": "a3364a59353064f7cfbf6bdde046987da1ccce6f14a76c1c0360109363fdb252",
+        "before": "9038952acea7b2f5c53d43764b21c4d8a42d0cb6f79ab2b9a5193e83095c2126"
+      },
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g9.view.json": {
+        "after": "65b79160f22b6731b2a2d2beac5ea30dfe0f93c0bb7eac573122131e3bacae9e",
+        "before": "d8b206ed5da39eb5ebbc6eff9c6541a6125fe957ab7fb07861f068cc71ba0aca"
+      },
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json": {
+        "after": "be14fce7d054fcd277e73e9530d6c0e365cf734b376f1095b6799f6a9f3ec60f",
+        "before": "1218320a196f4ce1fa4a83f111da6adbeda2ab72df3906ae29ff2c41f11b5c08"
+      },
+      "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json": {
+        "after": "bf6627604057bf34de836dddfa861e4ef6ca1ca974bbb195ff3abc89fbba5402",
+        "before": "852d89c8483d504ce130f9d001e1d6edde94cefe28b6bf475e0404ca38ed7005"
+      }
+    },
+    "policyExceptPinsEqual": true,
+    "totalPins": 63,
+    "unchangedRowCount": 1036
+  },
+  "recordBase": "ae04d42ef9",
+  "unchangedViews": 82,
+  "viewCount": 90
+}

@@ -1,0 +1,39 @@
+{
+  "reviewedHead": "a88f17523bbafd63a5b3d98b48cc3c8e8b6ed24d",
+  "type": "independently-executed-reviewer-a-check-results",
+  "runs": [
+    {
+      "command": "python3 -B tmp/e1-handover/reviews/e2-child-structures/reviewer-a/measure.py",
+      "exitCode": 0,
+      "result": "8 changed of 90 views; 82 byte-identical; exact target/support/learning sets unchanged; six reduced direct demand pairs match; no reverse chain; 1036 demand rows unchanged"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx tmp/e1-handover/reviews/e2-child-structures/reviewer-a/map-probe.mts",
+      "exitCode": 0,
+      "result": "8 pinned before/after projection pairs; zero map findings; board/card changes retained in map-probe.actual.json"
+    },
+    {
+      "command": "python3 -B scripts/test_generate_hessen_physics_stage_views.py",
+      "exitCode": 0,
+      "tests": 19,
+      "testDurationSeconds": 12.382
+    },
+    {
+      "command": "python3 -B scripts/test_mathematics_stage_views.py",
+      "exitCode": 0,
+      "tests": 33,
+      "testDurationSeconds": 17.741
+    },
+    {
+      "command": "npm run validate:composition-views",
+      "cwd": "app",
+      "exitCode": 0,
+      "errors": 0,
+      "warnings": 2576,
+      "compositionViews": 387,
+      "canonicalLandscapes": 21,
+      "rawEvidence": "../raw/reviewer-a/composition-terminal.txt",
+      "note": "Natural completion before a planned stop of this duplicate; the stop command found no process. Full warning output was tool-truncated."
+    }
+  ]
+}

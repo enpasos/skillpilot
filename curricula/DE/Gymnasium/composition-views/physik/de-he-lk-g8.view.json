@@ -1286,12 +1286,6 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -1299,12 +1293,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "f3167cab-bb23-4bb9-8a27-22e3c5015d44",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1376,12 +1364,6 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "b9bbd2a8-1379-5ffb-817f-41467d48abef",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -1401,12 +1383,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "af3d6bff-c5fb-4ec6-a9f0-c0be09fc9186",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1574,12 +1550,6 @@
                     },
                     {
                       "kind": "goalEntry",
-                      "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
                       "goalId": "28b3a12f-aa7a-5c2a-92c7-6d64fa543ee5",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -1605,12 +1575,6 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "09f47964-2cd0-410e-93ee-9632b582fc91",
-                      "projectionRole": "prerequisiteOnly",
-                      "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1779,56 +1743,144 @@
                   "label": "E.2 Newton'sche Axiome und Erhaltungssätze",
                   "children": [
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
+                      "kind": "structure",
+                      "id": "physics-e2-inertia",
+                      "label": "Trägheit: Was ohne Kraft geschieht",
+                      "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3"
+                        }
+                      ],
+                      "labelEn": "Inertia: what happens without a force"
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+                      "kind": "structure",
+                      "id": "physics-e2-force-mass-acceleration",
+                      "label": "Kraft, Masse und Beschleunigung",
+                      "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79"
+                        }
+                      ],
+                      "labelEn": "Force, mass and acceleration"
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+                      "kind": "structure",
+                      "id": "physics-e2-force-and-counterforce",
+                      "label": "Kraft und Gegenkraft",
+                      "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8"
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+                        }
+                      ],
+                      "labelEn": "Force and counterforce"
                     },
                     {
-                      "kind": "goalEntry",
-                      "goalId": "31a2ef52-114b-4d2c-a720-6ef5a390b6dc"
+                      "kind": "structure",
+                      "id": "physics-e2-several-forces",
+                      "label": "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+                        }
+                      ],
+                      "labelEn": "Several forces at once: inclined plane, friction, braking"
                     },
                     {
-                      "kind": "goalEntry",
-                      "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+                      "kind": "structure",
+                      "id": "physics-e2-energy",
+                      "label": "Energie bleibt erhalten",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "94784e0a-7ddc-48be-91fb-dc82b78eb322"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "91c49019-ea51-4ce5-a919-c91c45b25e83"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "253a71d2-e751-4c63-acbe-238b71463cd8"
+                        }
+                      ],
+                      "labelEn": "Energy is conserved"
                     },
                     {
-                      "kind": "goalEntry",
-                      "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a"
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8"
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "e9d616d8-685f-4129-a36f-dae7a280bae7"
+                      "kind": "structure",
+                      "id": "physics-e2-momentum",
+                      "label": "Impuls und Stöße",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "0da13365-02c2-44f1-8a81-d524ca0ac3ae"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "2eecd0e2-a7ca-4568-9b12-3d47706c65fb"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "1232febe-868a-4dac-b4c2-e35789434601"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+                        }
+                      ],
+                      "labelEn": "Momentum and collisions"
                     },
                     {
                       "kind": "goalEntry",
@@ -1847,7 +1899,35 @@
                       "kind": "canonicalSubtree",
                       "goalId": "be6d4895-65ab-545b-8df9-84e5a308a5e3"
                     }
-                  ]
+                  ],
+                  "childOrder": {
+                    "after": [
+                      {
+                        "unit": "physics-e2-force-mass-acceleration",
+                        "after": "physics-e2-inertia"
+                      },
+                      {
+                        "unit": "physics-e2-force-and-counterforce",
+                        "after": "physics-e2-force-mass-acceleration"
+                      },
+                      {
+                        "unit": "physics-e2-several-forces",
+                        "after": "physics-e2-force-mass-acceleration"
+                      },
+                      {
+                        "unit": "physics-e2-energy",
+                        "after": "physics-e2-force-mass-acceleration"
+                      },
+                      {
+                        "unit": "physics-e2-momentum",
+                        "after": "physics-e2-force-and-counterforce"
+                      },
+                      {
+                        "unit": "physics-e2-momentum",
+                        "after": "physics-e2-energy"
+                      }
+                    ]
+                  }
                 },
                 {
                   "kind": "structure",
@@ -1922,7 +2002,31 @@
                   "children": [
                     {
                       "kind": "goalEntry",
+                      "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
                       "goalId": "cf48c918-f6c1-5429-8da6-14df43f2f550",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -1939,12 +2043,28 @@
                       "acquisitionPlacement": true
                     },
                     {
+                      "kind": "goalEntry",
+                      "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
                       "kind": "canonicalSubtree",
                       "goalId": "92d8f398-0c9f-523c-88d7-44165b6b4768"
                     },
                     {
                       "kind": "canonicalSubtree",
                       "goalId": "156edddc-ce8d-580d-8d17-d9376d59e60e"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "eb0ffdea-c12d-56df-b7e8-c0297d2f8aff"
                     },
                     {
                       "kind": "canonicalSubtree",
@@ -1976,11 +2096,23 @@
                     },
                     {
                       "kind": "canonicalSubtree",
+                      "goalId": "a42f91a4-0d21-5aa9-ae11-f48be6f2e431"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
                       "goalId": "1b432223-3d59-5586-86a9-2214b4844101"
                     },
                     {
                       "kind": "canonicalSubtree",
+                      "goalId": "594f7f21-6b8a-531c-8424-5f1dcbaf0f23"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
                       "goalId": "7e0308d8-a239-5c0f-b2c0-724f21e4da60"
+                    },
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9"
                     },
                     {
                       "kind": "canonicalSubtree",
