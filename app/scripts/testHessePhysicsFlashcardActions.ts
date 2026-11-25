@@ -57,7 +57,14 @@ try {
 
 const materials = readUnitMapMaterials(fileURLToPath(new URL('../../curricula/', import.meta.url)))
 const practiceMaterial = materials.find(item => item.unit.landscapeId === physics && item.unit.compositionNodeId === 'physics-e1-motion')!
-const { flashcardGoalId: memoryId, assessmentGoalId: examId } = practiceMaterial.unit
+const memoryId = practiceMaterial.unit.flashcardGoalId
+// The shipped E.1 parent names no closing exam since the mixed exam "Bewegungsanalyse und freier Fall"
+// was retired for all Länder (25 Nov 2026). The map still supports a unit that names an exam placed on
+// another board; that path is checked below on a copy of the material that names the fall-log exam of
+// the cross-topic section, which really requires an E.1 goal.
+assert.equal(practiceMaterial.unit.assessmentGoalId, undefined, 'the shipped E.1 parent names no closing exam')
+const examId = 'c6e2942d-1ff4-5e86-a52a-4ca4c8568291'
+const linkedMaterial = { ...practiceMaterial, unit: { ...practiceMaterial.unit, assessmentGoalId: examId } }
 assert(memoryId && examId)
 const horizontalThrowId = '89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2'
 const horizontalThrowAssessmentIds = ['39f52dcb-ff1d-5cad-9ccb-30da803cfa85', 'bcc56921-7107-5f5f-b721-3d5e0d7e1cd9']
@@ -176,8 +183,10 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       assert.equal(deck.cards.length, 87)
       assert(deck.cards.every(card => card.originGoalIds?.length), 'every deck card names its understanding goals')
       const actions = buildUnitFlashcardActions(memoryId, original, value.goalIndexAll, value.visibleGoalIds, deck.cards, language)
-      const assessments = buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, language)
-      assert.equal(assessments.size, 1, 'E.1 keeps a direct named link to its one canonical assessment')
+      assert.equal(buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, language).size, 0,
+        'the shipped E.1 parent offers no single closing exam')
+      const assessments = buildUnitAssessmentActions(linkedMaterial, original, value.goalIndexAll, value.visibleGoalIds, language)
+      assert.equal(assessments.size, 1, 'a unit that names an exam on another board keeps a direct named link to it')
       const examAction = [...assessments.values()][0]
       assert.equal(examAction.goalId, examId)
       assert.equal(examAction.title, `${language === 'de' ? 'Prüfung' : 'Assessment'}: ${value.goalIndexAll.get(examId)!.title}`)
@@ -200,7 +209,7 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       assert.equal(Object.values(placed.entries).filter(entry => entry.id === examId).length, 1)
       const withoutExam = new Set(value.visibleGoalIds)
       withoutExam.delete(examId)
-      const hiddenAssessment = buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, withoutExam, language)
+      const hiddenAssessment = buildUnitAssessmentActions(linkedMaterial, original, value.goalIndexAll, withoutExam, language)
       assert.equal(hiddenAssessment.size, 0)
       assert(!place(actions, hiddenAssessment).entries[e1ScopeId].children?.includes(examId))
       assert(placed.entries[original.entryPaths![examId].at(-2)!].children?.includes(examId), 'the assessment keeps its original phase placement')
