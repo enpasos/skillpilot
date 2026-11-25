@@ -62,7 +62,19 @@ the first eight seconds even when captions are disabled,
 without speaking it or including it in the narration captions. This does not
 change the default or the historical review scenario.
 
-### Claude-first public Quickstart
+### Public Quickstart from setup to the first learning question
+
+The November 24, 2026 edition uses the local SkillPilot web interface with
+synthetic profile data. It shows the Claude setup steps with dated, privacy-reviewed
+Claude Web stills and labelled chat examples for both Autopilot settings. The German and English scenarios
+are `scenarios/skillpilot-learning-quickstart.de.yaml` and
+`scenarios/skillpilot-learning-quickstart.en.yaml`. The capture server, build
+commands and export paths are documented in the
+[current Quickstart video instructions](../../docs/quickstart/video-production.md#aktuelle-fassung-vom-24-november-2026).
+
+### Claude-first public Quickstart from September 2026
+
+The following commands and recording notes refer to the earlier tutorial.
 
 The learner Quickstart has its own entry point, separate from the historical
 OpenAI review. The exports import four separately captured, privacy-reviewed

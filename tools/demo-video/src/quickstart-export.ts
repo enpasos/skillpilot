@@ -50,6 +50,16 @@ const quickstartCaptureSchema = z.discriminatedUnion('kind', [
   }).strict(),
   z.object({
     ...captureMetadata,
+    kind: z.literal('local-first-party-browser-with-labelled-coach-examples'),
+    actualClaudeHostRecording: z.literal(false),
+    claudeInstructionStills: z.object({
+      marketplace: sha256Schema,
+      connector: sha256Schema,
+      'start-message': sha256Schema,
+    }).strict(),
+  }).strict(),
+  z.object({
+    ...captureMetadata,
     kind: z.literal('first-party-browser-with-verified-claude-web-clips'),
     actualClaudeHostRecording: z.literal(true),
     hostClips: hostClipEvidenceSchema,
@@ -178,14 +188,17 @@ export function validateQuickstartHostClipArtifact(captureValue: unknown, artifa
 /** Public evidence never promotes browser clips into native or full acceptance. */
 export function quickstartCaptureProvenance(captureValue: unknown) {
   const capture = validateQuickstartCapture(captureValue);
+  const localExample = capture.kind === 'local-first-party-browser-with-labelled-coach-examples';
   return {
     capture: capture.actualClaudeHostRecording
       ? 'Production SkillPilot browser recording and verified Claude browser recordings replayed locally at original speed'
-      : 'Production SkillPilot browser recording and explicitly labelled Claude instruction cards',
+      : localExample ? 'Local SkillPilot browser recording with synthetic learner data, archival Claude Web stills and explicitly labelled coach examples'
+        : 'Production SkillPilot browser recording and explicitly labelled Claude instruction cards',
     actualClaudeHostRecording: capture.actualClaudeHostRecording,
     nativeAppRecording: false as const,
     hostAcceptanceEvidence: false as const,
     ...(capture.actualClaudeHostRecording ? { hostClips: capture.hostClips } : {}),
+    ...(localExample ? { claudeInstructionStills: { recordedOn: '2026-09-13', sha256: capture.claudeInstructionStills } } : {}),
   };
 }
 
@@ -244,24 +257,35 @@ export function resolveQuickstartExportTarget(scenarioValue: unknown) {
     narration: z.object({ visualDisclosure: z.string() }),
   }).parse(scenarioValue);
   const language = scenario.browser.locale.startsWith('de') ? 'de' : 'en';
-  if (scenario.id !== `skillpilot-claude-quickstart-2026-09-13-${language}`) {
+  const folder = scenario.id === `skillpilot-learning-quickstart-2026-11-24-${language}` ? 'learning/2026-11-24'
+    : scenario.id === `skillpilot-claude-quickstart-2026-09-13-${language}` ? 'claude/2026-09-13' : undefined;
+  if (!folder) {
     throw new Error('Quickstart scenario identity must match its supported recording language');
   }
   const voiceNotice = language === 'de' ? 'KI-generierte Sprecherstimme' : 'AI-generated voice';
   if (scenario.narration.visualDisclosure !== voiceNotice) {
     throw new Error('Quickstart voice notice must match its recording language');
   }
-  return { language, publicRoot: `/media/quickstart/claude/2026-09-13/${language}` } as const;
+  return { language, publicRoot: `/media/quickstart/${folder}/${language}` } as const;
 }
 
 async function main() {
   const workDir = resolve(process.argv[2] ?? '');
-  if (!process.argv[2] || !basename(workDir).startsWith('skillpilot-claude-quickstart-')) {
-    throw new Error('Pass a completed SkillPilot Claude Quickstart work directory');
+  if (!process.argv[2] || !/^skillpilot-(?:claude|learning)-quickstart-/u.test(basename(workDir))) {
+    throw new Error('Pass a completed SkillPilot Quickstart work directory');
   }
   const manifest = JSON.parse(await readFile(join(workDir, 'manifest.json'), 'utf8'));
   const capture = validateQuickstartCapture(manifest.quickstartCapture);
   const { language, publicRoot } = resolveQuickstartExportTarget(manifest.scenario);
+  if (publicRoot.startsWith('/media/quickstart/learning/') !== (capture.kind === 'local-first-party-browser-with-labelled-coach-examples')) {
+    throw new Error('Quickstart capture must match its export edition');
+  }
+  if (capture.kind === 'local-first-party-browser-with-labelled-coach-examples') {
+    for (const [name, sha256] of Object.entries(capture.claudeInstructionStills)) {
+      const still = await readFile(join(repoRoot, 'docs/quickstart', `quickstart-claude-${name}.${language}.webp`));
+      if (digest(still) !== sha256) throw new Error('Claude instruction still has changed since recording');
+    }
+  }
   validateQuickstartCaptureLanguage(capture, language);
   const hostClipArtifact = manifest.artifacts?.hostClipEvidence === undefined
     ? undefined : hostClipArtifactSchema.parse(manifest.artifacts.hostClipEvidence);

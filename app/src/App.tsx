@@ -498,11 +498,11 @@ const App: React.FC = () => {
         description = overview.description
       } else if (isQuickstartPath) {
         title = metadataLanguage === 'en'
-          ? `Start SkillPilot in 5 Steps | ${baseTitle}`
-          : `SkillPilot in 5 Schritten starten | ${baseTitle}`
+          ? `From Learn now to your first problem | ${baseTitle}`
+          : `Von „Jetzt lernen“ zur ersten Aufgabe | ${baseTitle}`
         description = metadataLanguage === 'en'
-          ? 'Set up your learning context in SkillPilot and choose Claude, the ChatGPT Desktop beta, or Gemini for controlled beta testing with separately configured access.'
-          : 'Lernkontext in SkillPilot einrichten und Claude, die ChatGPT-Desktop-Beta oder Gemini für kontrollierte Betatests mit separat eingerichtetem Zugang wählen.'
+          ? 'Follow a first session with Claude, from saving your SkillPilot ID and choosing a curriculum to practising in the coach chat. Includes a video and illustrated steps.'
+          : 'Vom Sichern deiner SkillPilot-ID über die Wahl des Curriculums bis zur ersten Aufgabe im Coach-Chat mit Claude. Mit Video und bebilderter Anleitung.'
       } else if (path === '/users') {
         const usersTitle = t.usersPage?.title || 'SkillPilot IDs'
         title = `${usersTitle} | ${baseTitle}`

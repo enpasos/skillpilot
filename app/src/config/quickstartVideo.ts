@@ -12,11 +12,11 @@ interface QuickstartVideo {
 // Captions stay available in the player without being enabled by default.
 export const QUICKSTART_VIDEOS: Record<LabelLanguage, QuickstartVideo | null> = {
   de: {
-    url: '/media/quickstart/claude/2026-09-13/de/sha256-807d717e651bc789a6c5dadb0d2a6015510862c5e4ecfe517623a596cacf945a.mp4',
-    poster: '/media/quickstart/claude/2026-09-13/de/sha256-ff24179da7398ff23613472f138b21faae0c39e2425481764c8ab110fdc91823.webp',
+    url: '/media/quickstart/learning/2026-11-24/de/sha256-0909986cc26217987fc4f491f6a257f922fe2646a62a51e2d74d89d79e6a53bd.mp4',
+    poster: '/media/quickstart/learning/2026-11-24/de/sha256-00f20bb877c44355e057e1e24f272d0b5a21fda62c28d98dca17b6955c15bcdc.webp',
     tracks: [
       {
-        src: '/media/quickstart/claude/2026-09-13/de/sha256-bc0d920cfc8ab811473d006f137dd103aa35bf2ddaaa3f7c14c8c915ac3200fc.vtt',
+        src: '/media/quickstart/learning/2026-11-24/de/sha256-40db4a97c55d4a89430333f16920938af56a284b2f58070ba89e94b79e93b5fc.vtt',
         srcLang: 'de',
         label: 'Deutsch',
         kind: 'captions',
@@ -25,11 +25,11 @@ export const QUICKSTART_VIDEOS: Record<LabelLanguage, QuickstartVideo | null> = 
     ],
   },
   en: {
-    url: '/media/quickstart/claude/2026-09-13/en/sha256-29c3a5606e9ca4f22815a13ba6f8e56990a32e9a151a11fdaee37605de0b54b2.mp4',
-    poster: '/media/quickstart/claude/2026-09-13/en/sha256-c082f1d2f84295974b9f2ea89b6f08b2735dab91b661f88c647b277b9123be48.webp',
+    url: '/media/quickstart/learning/2026-11-24/en/sha256-2ae412fb2582a158e98ccec54f33ec4ee87b453341ff56e6e91dd60cd50044eb.mp4',
+    poster: '/media/quickstart/learning/2026-11-24/en/sha256-df511911d1c1f1c63c02ca37a017e71e326e34e1da69ae25cb602a95e7cb001f.webp',
     tracks: [
       {
-        src: '/media/quickstart/claude/2026-09-13/en/sha256-76792a440ba97001cb56c25b93dc9bb7e56cf5d8783ed080497bc751a5a8cf64.vtt',
+        src: '/media/quickstart/learning/2026-11-24/en/sha256-e049dfd186796b983ccff92786a7821a0b9594dbdba92ff815d36d789f3188ba.vtt',
         srcLang: 'en',
         label: 'English',
         kind: 'captions',

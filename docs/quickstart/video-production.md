@@ -1,8 +1,53 @@
 # Quickstart-Video aktualisieren
 
-**Stand: 13. September 2026.** Dieser Ablauf erzeugt ein öffentliches
-Einführungsvideos zur Claude-Beta auf Deutsch und Englisch, keine Einreichungs-
-oder Abnahmevideos.
+## Aktuelle Fassung vom 24. November 2026
+
+Die deutschen und englischen Videos zeigen den Einstieg von der SkillPilot-ID
+über das persönliche Curriculum und die Wahl des Claude-Coachs bis zur ersten
+Lernfrage am Zahlenstrahl. Die SkillPilot-Oberflächen einschließlich der
+Marketplace- und Konnektor-Anleitung stammen aus dem lokalen WebGUI. Die
+Profile und Sitzungen der lokalen Oberfläche sind synthetisch. Aufnahmen aus
+Claude Web vom 13. September 2026 zeigen den Marketplace-Dialog, den Status
+des Konnektors und die vorbereitete Startnachricht mit verdeckter Kennung. Die
+Videos kennzeichnen diese Standbilder mit Datum und die Gespräche mit und ohne
+Autopilot als Beispiele. Die Export-Provenienz bindet jedes verwendete Bild.
+Autopilot entscheidet, wer das nächste Ziel auswählt. Cockpit und Lernkarte
+stehen zur Übersicht zur Verfügung. Die Aufnahme prüft den Einrichtungsweg im
+WebGUI. Anbieteranmeldung, Plugininstallation im Host und Lernbetrieb im Host
+haben eigene Prüfungen.
+
+Starte für eine Neuaufnahme den lokalen Fixtureserver und führe Aufnahme und
+Export aus. Die Szenarien zeigen die SkillPilot-Oberfläche auf Port 4177 und
+beziehen für die Sprecherstimme ausschließlich den Skripttext über die vorhandene
+Gemini-Konfiguration.
+
+```bash
+cd app
+npx tsx scripts/serveQuickstartCapture.ts
+```
+
+```bash
+cd tools/demo-video
+npx tsx src/quickstart-build.ts --scenario scenarios/skillpilot-learning-quickstart.de.yaml
+npx tsx src/quickstart-build.ts --scenario scenarios/skillpilot-learning-quickstart.en.yaml
+npx tsx src/quickstart-export.ts "PFAD_ZUM_DE_ARBEITSORDNER"
+npx tsx src/quickstart-export.ts "PFAD_ZUM_EN_ARBEITSORDNER"
+```
+
+Verwende für jeden Export den Ordner der jeweiligen unter `OUTPUT` ausgegebenen
+MP4-Datei.
+
+Die neuen Exporte liegen unter `app/public/media/quickstart/learning/2026-11-24/`.
+Die sprachspezifischen Unterordner enthalten MP4, Poster, Untertitel und
+Provenienz mit SHA-256-Prüfsummen. Die öffentliche Zuordnung liegt in
+`app/src/config/quickstartVideo.ts`. Prüfe vor einer neuen Zuordnung alle Kapitel,
+Datenschutzmasken, Sprechertext, Untertitel und Wiedergabe auf beiden Seiten.
+
+## Historische Fassung vom 13. September 2026
+
+Die folgenden Abschnitte dokumentieren die frühere Claude-Einführung. Sie
+beschreiben die damalige Fassung auf Deutsch und Englisch einschließlich der
+eigenständigen Aufnahmen in Claude Web.
 
 ## Inhalt und Aufnahmegrenze
 
