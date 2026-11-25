@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-k2-bw-only-controller-count-and-fixture-binding-v1",
+  "testPath": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+  "beforeRawSha256": "sha256:3b27ca456283c59302eaf4a88832e9f759745d2348908403ba4b5177a72cf815",
+  "currentRawSha256": "sha256:8faf396a352410d61cb860719523e4f076b4e4a3f788cbe18c008656704296b4",
+  "seedFixture": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/physics-seki-k2-seed-successor.actual.json",
+    "sha256": "sha256:2ff486c746998856ce32674e0c8754e888510247230230c6f845d58033b599d8",
+    "bytes": 64025
+  },
+  "changes": [
+    "Load exactly2 guarded BW G8/G9 successor rows after the preserved original fixture chain.",
+    "Only BW technical seed count163→164 in both durations.",
+    "HH127/TH137 and all unrelated rows unchanged; exact identity assertions remain."
+  ],
+  "nativeVerificationReceiptPath": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/k2-seed-successor-v1/native-after.verification.actual.json",
+  "productionChanged": false,
+  "learnerResultsWritten": false
+}

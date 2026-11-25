@@ -1851,6 +1851,18 @@ public class LearnerControllerIntegrationTest {
                         + "e2-impuls-newton2-bindings-20261125-v1/inventory/"
                         + "physics-seki-seed-fixtures.actual.json").toFile()).path("scopes");
         scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) e2Physics);
+        // Accepted BW K2 adds only a local assessment seed in each duration.
+        // Preserve the sealed HH/SN and E.2 fixtures and all unrelated scopes.
+        var e2BwAssessment = objectMapper.readTree(Path.of(
+                "../curricula/DE/Gymnasium/quality/learning-units/"
+                        + "e2-impuls-newton2-bindings-20261125-v1/inventory/"
+                        + "physics-seki-k2-seed-successor.actual.json").toFile()).path("scopes");
+        assertThat(e2BwAssessment.size()).isEqualTo(2);
+        for (String duration : List.of("G8", "G9")) {
+            assertThat(e2BwAssessment.has(String.join("|", CANONICAL_PHYSICS_ID,
+                    "DE-BW", "SekI", duration, "GK"))).isTrue();
+        }
+        scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) e2BwAssessment);
         return scopes;
     }
 
@@ -2099,7 +2111,7 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "65", "65" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "67", "67" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "163", "163" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "164", "164" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "157", "157" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "126", "126" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "130", "130" },
