@@ -1,0 +1,91 @@
+{
+  "role": "Rubric author, single authorized v5 revision; no marking performed",
+  "version": 5,
+  "sealStatus": "finalized for independent blind review after the coordinating signal; no acceptance claimed",
+  "coordinatingSignal": "The coordinating agent reported that v4 replacement grading was complete and there was no further content feedback. The final correction to raw-total-only passing was already included. Finalization was then explicitly requested.",
+  "tool": "OpenAI Codex agent using functions.exec and exec_command/apply_patch",
+  "model": "GPT-6 as identified by the session instructions; exact engine identifier not exposed to the author",
+  "fileInputs": [
+    {
+      "path": "candidate.goal.json (authorized unchanged v4 exam-data payload)",
+      "sha256": "65c77d078d4dbc9c75b47048753e731e940b20b28fea0a55e0cdeb7bb3c32d90"
+    }
+  ],
+  "relayedGuidance": [
+    "Only the raw total decides: multiple defects scoring at least 22 pass, below 22 fail; no generic disqualification.",
+    "An actually stated own estimate must connect numerically to at least one own graphical run value or a joint fit within that series. An unsupported estimate or no shown numerical connection caps only graphical determination at 0.5 of 3. Supported but unrepresentative single-run estimates may receive ordinary partial credit. Missing own estimate keeps exactly the 0.5 determination plus 2.5 law effect. Other directed policies remain.",
+    "Point summaries must clearly state both effects of a missing estimate, without a blanket only-one-criterion claim. Bilingual parity and all 2000 UTF-16 caps remain. Final sealing must wait for the signal after v4 replacement grading and incorporate any further actual feedback."
+  ],
+  "exposure": {
+    "readOriginalV4Payload": true,
+    "readStudentScripts": false,
+    "readIntent": false,
+    "readSealedKey": false,
+    "readRawMarkerOrReviewerOutputs": false,
+    "readOtherMaterials": false
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "b6f3cb6924d3461ed399df3ef0a5d474b5394d84dbd8ace9f7939bf93bd87c54",
+    "shape": "Complete exam-data payload, as authorized"
+  },
+  "fieldLevelChanges": [
+    {
+      "field": "/solutionContent",
+      "change": "Clarified supported vs unsupported estimates and limited the new traceability cap to graphical determination; retained the missing-estimate exception; repaired the complete-chain proof; explicitly states raw-total-only passing even with multiple defects"
+    },
+    {
+      "field": "/solutionContentEn",
+      "change": "Meaning-matched English wording for every revised German rule"
+    },
+    {
+      "field": "/scoring/steps/1/description",
+      "change": "Replaced only the bilingual graphical-determination descriptor to state traceability cap, supported single-run partial credit, local-slip policy, and missing-estimate exception"
+    },
+    {
+      "field": "/scoring/steps/6/description",
+      "change": "Replaced only the bilingual graphical-determination descriptor to state traceability cap, supported single-run partial credit, local-slip policy, and missing-estimate exception"
+    },
+    {
+      "field": "/reviewNote",
+      "change": "Names v5 author revision and current author-finalization status; acceptance remains pending"
+    }
+  ],
+  "unchanged": "Both task texts; source and scope metadata; weights, maxima and pass threshold; all 10 stable criterion IDs; the other 8 native step descriptions; law equality; initial conditions/release; material safety; boundary variations; comparison; nonattempt and evidenced maintained-misconception policies",
+  "authorDecisions": [
+    "Traceability is numerical evidence in graphical determination, not an inference that a number came from literature. Direct numerical adoption or a shown calculation can supply it. Mere uncertainty compatibility cannot.",
+    "An explicit local error in a shown connecting calculation keeps the link and receives the existing single half-point deduction. A bare mean label without numerical connection cannot establish such a slip.",
+    "A supported but unrepresentative single-run estimate stays on the old component levels; support by all valid runs is not required for the existence of a chain.",
+    "Missing own series estimate never triggers the new cap. Only its 0.5 result and 2.5 law effects are charged for the absence itself. Independently missing graphs retain their pre-existing cap.",
+    "The cap permits 0.5 of 3 at most, so unsupported chains in both investigations lose at least 5 without adding a global gate."
+  ],
+  "criterionUtf16Lengths": {
+    "a-actual-data": 1449,
+    "a-graph-g": 1950,
+    "a-law": 1647,
+    "a-initial-conditions": 1687,
+    "a-boundaries": 1554,
+    "b-actual-data": 1628,
+    "b-graph-g": 1950,
+    "b-law": 1647,
+    "b-initial-conditions": 1687,
+    "b-boundaries-comparison": 1637
+  },
+  "validation": {
+    "maxStepUtf16": 1950,
+    "allStepStringsAtMost2000Utf16": true,
+    "pointsSum": 26,
+    "passingPoints": 22,
+    "bothTasksUnchanged": true,
+    "stableCriterionIdsUnchanged": true,
+    "onlyTwoStepDescriptionsChanged": true,
+    "v4InputHashUnchanged": true,
+    "jsonRoundTrip": true
+  },
+  "noClaims": [
+    "No student answer scored",
+    "No expected student-script totals authored",
+    "No independent reviewer acceptance",
+    "No release or integration"
+  ]
+}

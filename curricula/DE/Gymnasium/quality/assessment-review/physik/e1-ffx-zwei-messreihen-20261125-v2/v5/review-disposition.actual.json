@@ -1,0 +1,1063 @@
+{
+  "schemaVersion": 1,
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "version": 5,
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "aaa5f61c3001da42d4cf5d4aadad5ac364c69ab1c54a9cbfeddc344b850372e5"
+  },
+  "currentGoalSha256": "b4d4a533a0511e950bdd7535eac214a7ae396445deb999b69acdfda36dbb8dcd",
+  "author": {
+    "provider": "OpenAI",
+    "tool": "collaboration.spawn_agent",
+    "modelId": "gpt-6.1-sol",
+    "sessionId": "01a21166-ba1f-7781-a646-97d709e3e42b",
+    "reasoningEffort": "ultra",
+    "response": {
+      "path": "author/examData.json",
+      "sha256": "b6f3cb6924d3461ed399df3ef0a5d474b5394d84dbd8ace9f7939bf93bd87c54"
+    },
+    "memorandum": {
+      "path": "author/author-memorandum.json",
+      "sha256": "a97e5b236ffeec3135e16e3263ef4a7993a6043febbcd3f1b223fb4d2a2994d7"
+    },
+    "inputs": [
+      {
+        "path": "candidate.goal.json (authorized unchanged v4 exam-data payload)",
+        "sha256": "65c77d078d4dbc9c75b47048753e731e940b20b28fea0a55e0cdeb7bb3c32d90"
+      }
+    ],
+    "sourceSessionRawSha256": "00bc81997cf7f3a456134c18976b6fb33dabfb79bf8eab3757c0215fc749a08e",
+    "role": "Author only, isolated from grading, panel and previous marker responses."
+  },
+  "rounds": [
+    {
+      "round": "a",
+      "run": {
+        "path": "round-a/run.actual.json",
+        "sha256": "6644b1d65b969163458d1dec0cbcdaee64e269e81ba0757b0d5ff7349f6fa49a"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "3b1b789db0b8d582cfdf396d24a0171ce1a44d6bc66e840c6e2d9a208fab0f79"
+      }
+    },
+    {
+      "round": "b",
+      "run": {
+        "path": "round-b/run.actual.json",
+        "sha256": "3604894176858889b88225fd6bcc378c3a2e8c1ffe408e8348aa7630ae2bd3ad"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "6dc6afea539e37420f33a3b7b0d895bf89f468204e656daee53836e6ae545988"
+      }
+    }
+  ],
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a2117e-7935-7e11-aed9-db5d3f431cd3",
+      "decision": "accept",
+      "validationFindings": [],
+      "eligibleForActivation": true,
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "6644b1d65b969163458d1dec0cbcdaee64e269e81ba0757b0d5ff7349f6fa49a"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "3b1b789db0b8d582cfdf396d24a0171ce1a44d6bc66e840c6e2d9a208fab0f79"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a2117e-7936-7131-a34e-9130cc78d316",
+      "decision": "accept",
+      "validationFindings": [],
+      "eligibleForActivation": true,
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "3604894176858889b88225fd6bcc378c3a2e8c1ffe408e8348aa7630ae2bd3ad"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "6dc6afea539e37420f33a3b7b0d895bf89f468204e656daee53836e6ae545988"
+      }
+    }
+  ],
+  "adjudicatedSubmissions": [
+    {
+      "auditId": "L7Q4",
+      "kind": "control",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L01",
+          "total": 26,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L12",
+          "total": 26,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "C2V9",
+      "kind": "four_slips",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L18",
+          "total": 24,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L15",
+          "total": 24,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "N8D3",
+      "kind": "one_missing_facet",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L10",
+          "total": 25.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L17",
+          "total": 25.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "F5W1",
+      "kind": "B_absent",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L06",
+          "total": 13,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 0,
+            "b-graph-g": 0,
+            "b-law": 0,
+            "b-initial-conditions": 0,
+            "b-boundaries-comparison": 0
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L18",
+          "total": 13,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 0,
+            "b-graph-g": 0,
+            "b-law": 0,
+            "b-initial-conditions": 0,
+            "b-boundaries-comparison": 0
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "R3J6",
+      "kind": "A_absent",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L12",
+          "total": 12,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 0,
+            "a-graph-g": 0,
+            "a-law": 0,
+            "a-initial-conditions": 0,
+            "a-boundaries": 0,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 1
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L05",
+          "total": 12,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 0,
+            "a-graph-g": 0,
+            "a-law": 0,
+            "a-initial-conditions": 0,
+            "a-boundaries": 0,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 1
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "U9H2",
+      "kind": "maintained_misconception",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L16",
+          "total": 20.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 0,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L19",
+          "total": 20.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 0,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "K4P8",
+      "kind": "A_weak_estimate_B_law_mismatch",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L11",
+          "total": 22.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L10",
+          "total": 22.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "E6S5",
+      "kind": "A_no_series_estimate",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L02",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L03",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "V1M7",
+      "kind": "pooled_comparison",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L14",
+          "total": 26,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L09",
+          "total": 26,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "J8B4",
+      "kind": "pooled_substitution",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L13",
+          "total": 20,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 2.5,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L16",
+          "total": 20,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 2.5,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "Q2X6",
+      "kind": "boundary_minus_four_slips",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L03",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L14",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "H6T9",
+      "kind": "boundary_minus_five_slips",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L07",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 1.5
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L02",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "D3Z7",
+      "kind": "both_explicit_law_mismatches",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L09",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L07",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "T9G2",
+      "kind": "one_explicit_law_mismatch",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L05",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L06",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "G7N2",
+      "kind": "A_initial_conditions_and_release_check_omitted",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L17",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L01",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "P4R8",
+      "kind": "both_initial_conditions_and_release_checks_omitted",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L08",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 0,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L08",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 0,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "S6Y3",
+      "kind": "crossed_A_conditions_and_B_law_omissions",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L04",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L13",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "W2J5",
+      "kind": "one_foreign_coefficient_plus_four_slips",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L19",
+          "total": 21.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L11",
+          "total": 21.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "X4U7",
+      "kind": "both_reported_estimates_unsupported_by_own_graphical_fits",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L15",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 0.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 0.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L04",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 0.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 0.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    }
+  ],
+  "prospectiveCriterionIdAliases": {
+    "a-law": "a-law",
+    "b-law": "b-law"
+  },
+  "panelDifferences": [],
+  "criterionScorePairs": 190,
+  "criterionScoresMatchingBetweenReviewers": 190,
+  "passDecisionsMatchingBetweenReviewers": 19,
+  "validationFindings": [],
+  "eligibleForActivation": true,
+  "accepted": true,
+  "artifacts": [
+    {
+      "path": "author/author-memorandum.json",
+      "sha256": "a97e5b236ffeec3135e16e3263ef4a7993a6043febbcd3f1b223fb4d2a2994d7"
+    },
+    {
+      "path": "author/author-memorandum.md",
+      "sha256": "32acd2c32f0ee84c9df446a1587eee7caefe3af40618a80846bf12c537cf7f3a"
+    },
+    {
+      "path": "author/author-validation.actual.json",
+      "sha256": "6bae853d6fbdcac8142c0020c366493c9333bddda1c57d05a25a72a42ee517bc"
+    },
+    {
+      "path": "author/examData.json",
+      "sha256": "b6f3cb6924d3461ed399df3ef0a5d474b5394d84dbd8ace9f7939bf93bd87c54"
+    },
+    {
+      "path": "author/receipt.actual.json",
+      "sha256": "37ec18fc1baeba03c0fdff673e6392341f01f14fa392ee231aec626a5984de50"
+    },
+    {
+      "path": "candidate.goal.json",
+      "sha256": "aaa5f61c3001da42d4cf5d4aadad5ac364c69ab1c54a9cbfeddc344b850372e5"
+    },
+    {
+      "path": "expected-marks.json",
+      "sha256": "128fb21789829d2b80480fc3284fbb4af51c0a8ee3ab13e3d1cfe4fa917ea5fb"
+    },
+    {
+      "path": "graphs/appendix-p6.png",
+      "sha256": "9ccde0147743e3d3709c3b9f54db189c794831d9508f84318c6cdee4eb8c870a"
+    },
+    {
+      "path": "graphs/appendix-r8.png",
+      "sha256": "8ea9f29a16498dc6546f03ddbaac566fbb3e8c49593770aef5472c2a92243648"
+    },
+    {
+      "path": "graphs/appendix-t3.png",
+      "sha256": "86e3e2d9fb46f59e53cc495720577e2674fabfc4d83ff8f9ffd233efc02f67f5"
+    },
+    {
+      "path": "native-description-lengths.actual.json",
+      "sha256": "91b46703e0f99b41f2f6c2ec0208b7ac86cef66ffdb998c22ac58a0385ba03ff"
+    },
+    {
+      "path": "original.goal.json",
+      "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4"
+    },
+    {
+      "path": "panel-audit/audit.md",
+      "sha256": "e968268783921679225d630a13e7e8a4fef366582347210e07b0065f3b44b72b"
+    },
+    {
+      "path": "panel-audit/replay.actual.json",
+      "sha256": "bfb65ec415ee0347560fa14bdae55f392f851b5938d5d9500307b378428b5687"
+    },
+    {
+      "path": "panel-audit/seal.actual.json",
+      "sha256": "ee2023b8b6dfae086a46b5fe057eb4e0e4278354622cfb6d04e4b5452f6a568d"
+    },
+    {
+      "path": "panel-audit/traceability-recomputation.actual.json",
+      "sha256": "820fbce418c4a8fb2aa0a824beb3ed88d620efee7b6c3e3d29a6bf3d730a5fe1"
+    },
+    {
+      "path": "performances.json",
+      "sha256": "e2860ae2398e10ae6e9a6d08ebb8baea5acf1b751ec80fbf20a36ef060dc289a"
+    },
+    {
+      "path": "round-a/canonical-input.json",
+      "sha256": "f33adc5c7e34e4135e8ee94e17ca5ab9972d878a0f876c4929dc33afdba0f42a"
+    },
+    {
+      "path": "round-a/events.jsonl",
+      "sha256": "c5b2540c34fd8833ceba8e986906b4d94e3c1631a99d7181a3790a0303edc821"
+    },
+    {
+      "path": "round-a/output.schema.json",
+      "sha256": "381db6413ea801977b894a35f27a76a4a3943e83e678a6773896f9c42bfc1737"
+    },
+    {
+      "path": "round-a/prompt.txt",
+      "sha256": "19db7c0685bbbf575b389c8bd0bb7500c3b9851751da196838334965c31c3206"
+    },
+    {
+      "path": "round-a/response.json",
+      "sha256": "3b1b789db0b8d582cfdf396d24a0171ce1a44d6bc66e840c6e2d9a208fab0f79"
+    },
+    {
+      "path": "round-a/run.actual.json",
+      "sha256": "6644b1d65b969163458d1dec0cbcdaee64e269e81ba0757b0d5ff7349f6fa49a"
+    },
+    {
+      "path": "round-a/stderr.txt",
+      "sha256": "f849188137223bd68dc8f7be2d541e2911f59f1dcde810a90b274b2da5774f9d"
+    },
+    {
+      "path": "round-b/canonical-input.json",
+      "sha256": "e555f296ebead1a335646d01a3f119302a5dadd4e6ccf3ed214684aa3fb8d82b"
+    },
+    {
+      "path": "round-b/events.jsonl",
+      "sha256": "f074bd3ba523d86b03183a74afaecc540bf27e4a29c336cb1758b7d7d6f579ba"
+    },
+    {
+      "path": "round-b/output.schema.json",
+      "sha256": "381db6413ea801977b894a35f27a76a4a3943e83e678a6773896f9c42bfc1737"
+    },
+    {
+      "path": "round-b/prompt.txt",
+      "sha256": "2c8435981ef1926ce31bb51b617b9d990ec301a1ece7a572562cb14ddb0dfbb7"
+    },
+    {
+      "path": "round-b/response.json",
+      "sha256": "6dc6afea539e37420f33a3b7b0d895bf89f468204e656daee53836e6ae545988"
+    },
+    {
+      "path": "round-b/run.actual.json",
+      "sha256": "3604894176858889b88225fd6bcc378c3a2e8c1ffe408e8348aa7630ae2bd3ad"
+    },
+    {
+      "path": "round-b/stderr.txt",
+      "sha256": "ebdb036c90db37a82894be1f6d15805877fe4528ca70fb53d207941d61b595a1"
+    },
+    {
+      "path": "round-keys.actual.json",
+      "sha256": "4bb574883b22e172843a5d5469d3538a78d5e604705c251d81d6a1406815597c"
+    },
+    {
+      "path": "script-intent.json",
+      "sha256": "c23267eb822c403d0ff2b691b0185445d7549e3ba556ce99c2e228e00a1b65ba"
+    },
+    {
+      "path": "scripts.json",
+      "sha256": "0ab57635d78bc143b2a5a2b8ab5bb67cfde0371537f2ae84f760b01104633d05"
+    }
+  ]
+}

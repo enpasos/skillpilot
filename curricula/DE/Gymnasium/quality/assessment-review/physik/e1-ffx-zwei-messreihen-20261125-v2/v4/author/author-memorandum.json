@@ -1,0 +1,110 @@
+{
+  "role": "Independent new rubric author; no marking performed",
+  "version": 4,
+  "assessmentId": "f41e4e30",
+  "tool": "OpenAI Codex agent using functions.exec and exec_command/apply_patch",
+  "model": "GPT-6 as identified by the session instructions; exact engine identifier not exposed to the author",
+  "inputs": [
+    {
+      "path": "tmp/e1-handover/claude-antworten.md",
+      "sha256": "ebcfa310726fa8d6aad54c1d6665940a671744774fae2a75302e259794adf751",
+      "use": "Only 07:29 concept decision and earlier B2-relevant task scope; unrelated entries not used"
+    },
+    {
+      "path": "candidate-v3.json",
+      "sha256": "5085ab826954d38f616e8cb05bc8d875d1bf30bc59080f9acf0054c003ff4725",
+      "use": "Entire exam-data payload; no canonical goal wrapper supplied"
+    },
+    {
+      "path": "author-notes-v3.md",
+      "sha256": "9187c4a00c2c458829f7c3be25bec86d0d56ec01c36240ffd4b6dd041bf2cf20",
+      "use": "v3 rubric-author rationale, not marking evidence"
+    }
+  ],
+  "blindness": {
+    "studentScriptsRead": false,
+    "intentRead": false,
+    "sealedKeyRead": false,
+    "markerRecordsRead": false,
+    "otherNewDraftsOrReviewsRead": false
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "65c77d078d4dbc9c75b47048753e731e940b20b28fea0a55e0cdeb7bb3c32d90",
+    "shape": "Complete exam-data payload in the supplied v3 shape; canonical goal wrapper belongs to integrator"
+  },
+  "changes": [
+    {
+      "field": "/taskContentEn",
+      "change": "Added cordoned off to the drop-area safety instruction; the German task is byte-identical"
+    },
+    {
+      "field": "/solutionContent",
+      "change": "Rebuilt German marking guidance for 13 points per investigation, 22/26 pass, protected complete initial/release link, narrowed evidenced-misconception sanction, exact missing-estimate effects, written-precision equality convention, variation/comparison clarifications, and one-time local slips"
+    },
+    {
+      "field": "/solutionContentEn",
+      "change": "Meaning-matched English marking guidance for the same rules; introductory model/material safety/time-zero guidance preserved"
+    },
+    {
+      "field": "/scoring/maxPoints",
+      "before": 24,
+      "after": 26
+    },
+    {
+      "field": "/scoring/passingPoints",
+      "before": 20,
+      "after": 22
+    },
+    {
+      "field": "/scoring/steps",
+      "change": "Retained the six native data/g/limits IDs at 3/3/2; split combined a-initial-law and b-initial-law into a-law/a-initial-conditions and b-law/b-initial-conditions, each 2.5, in that order per investigation"
+    },
+    {
+      "field": "/reviewNote",
+      "change": "Removed old acceptance claim for unchanged candidate; explicitly marks v4 author status and pending independent acceptance"
+    }
+  ],
+  "unchangedFields": [
+    "reviewStatus",
+    "coveredGoalIds",
+    "coveredStrands",
+    "demandLevels",
+    "sourceArtifactPath",
+    "taskContent"
+  ],
+  "statusNote": "reviewStatus is retained from the supplied input as a structural field, not a claim that this new candidate is accepted or released",
+  "criterionUtf16Lengths": {
+    "a-actual-data": 1449,
+    "a-graph-g": 1369,
+    "a-law": 1647,
+    "a-initial-conditions": 1687,
+    "a-boundaries": 1554,
+    "b-actual-data": 1628,
+    "b-graph-g": 1369,
+    "b-law": 1647,
+    "b-initial-conditions": 1687,
+    "b-boundaries-comparison": 1637
+  },
+  "validation": {
+    "jsonRoundTrip": true,
+    "allStepStringsAtMost2000Utf16": true,
+    "maxStepUtf16": 1687,
+    "pointsSum": 26.0,
+    "exactlyOneVersionWritten": true
+  },
+  "authorDecisions": [
+    "The initial-conditions/release criterion is a complete 2.5-point link; absent conceptual evidence receives 0. Local nonconceptual slips within an otherwise complete link cost 0.5 once. Explicitly applied common conventions count; early points remain series-specific.",
+    "A concrete law can mathematically set x_0=v_0=0 by omitted lower terms. Coordinate location, direction and the event t=0 still require explicit evidence under initial conditions.",
+    "The law criterion remains a numerical comparison independent of estimate derivation. A genuine coefficient mismatch costs 2.5 there alone, even if called a transcription slip; an earlier slip consistently propagated from ĝ is charged once at its origin.",
+    "The equality rule now explicitly follows the written precision requested at 07:29, retaining written trailing zeros, rather than v3 overlapping rounding windows. Its decimal/expression mechanics and examples are stated in both languages.",
+    "An explicitly selected single-run variation requires that changed run value. Otherwise a varied series result suffices; without a nominal series estimate a stated varied series mean is sufficient, without inventing per-run values.",
+    "The nonattempt rule, distinct from the narrowed maintained-misconception rule, still requires actual own runs and never infers data origin from values."
+  ],
+  "noClaims": [
+    "No student answer scored",
+    "No expected totals assigned to student scripts",
+    "No independent reviewer acceptance",
+    "No release, integration or provider-host acceptance"
+  ]
+}

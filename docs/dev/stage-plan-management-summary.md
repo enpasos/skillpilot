@@ -21,6 +21,12 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 25. November 2026, 08:06 MEZ – Bestehensgrenze für zwei eigene Fallmessreihen
+
+Die unabhängige Bewertung bestätigt für das freiwillige Zwei-Messreihen-Experiment die Grenze von 22/26 Punkten. Auf Daten und grafische Bestimmung entfallen je drei Punkte pro Reihe. Gesetz und geprüfte Anfangsbedingungen tragen je 2,5 Punkte. Die beiden unabhängigen Prüfungen umfassen jeweils 19 geschriebene Abgaben. Vier lokale Formfehler, ausgelassene Anfangsbedingungen in beiden Reihen und ein als eigene Bestimmung beibehaltener Literaturwert sind die Prüffälle für die fachliche Grenze. [Aufgabenbewertung und Ergebnisse](../../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v2/README.md)
+
+Zusätzlich abgeschlossen sind 0 von 13 K-Zielen und 0 von 7 F-Zielen. Die Bearbeitung aktiviert keinen weiteren Stufenplan. Hessen E und Sachsen J9 führen die freiwillige Aufgabe weiterhin in beiden Kursprofilen. Die Integration liegt bei Claude. [Gebundene Entscheidung](../../curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v2/accepted.actual.json)
+
 ## 25. November 2026, 04:54 MEZ – Eigene Fallmessreihen in Physik E.1
 
 Für Lernende gelten weiterhin 23 von 24 Punkten. Beide Einzelurteile zur dritten und letzten Fassung sind dokumentiert. Die vorgeschlagenen 20 Punkte sind nicht freigegeben. Pro Untersuchung sind die eigenen Daten und die Bestimmung von g mit je drei Punkten vorgesehen, das Gesetz mit vier und die Aussagegrenzen mit zwei Punkten. Beide Prüfer benoteten zwölf Abgaben in der ersten sowie je vierzehn in den beiden folgenden Runden. Die unabhängig nachgerechneten Zeitgrenzen des ersten freien Bildes liegen der letzten Runde zugrunde. [Fassungen und Einzelbewertungen](https://github.com/enpasos/skillpilot/blob/feat/e1-ffx-zwei-messreihen/curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v1/README.md)

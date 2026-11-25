@@ -1,0 +1,1206 @@
+{
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "candidateDecision": "revise",
+  "semanticKind": "assessment",
+  "semanticKindReason": "Experimentelle Prüfungsaufgabe zum einzigen direkten Lernziel; A und B sind zwei Untersuchungskontexte desselben Könnens. Die atomare Zuordnung ist dafür vertretbar.",
+  "physicsAndLanguage": "Modell, Steigung g/2, Zeitnullpunktprüfung und Grenzen gemeinsamer systematischer Fehler sind fachlich angemessen. Fallzeiten und verfügbare Bildintervalle sind plausibel; die Daten passen innerhalb ihrer Ablesegrenzen zum Näherungsmodell. Regelmäßigkeit oder 9,81 belegen keine fremde Herkunft. Beide Aufgabenfassungen verlangen sichtbar einen abgesperrten, personenfreien Fallbereich und enthalten dieselben übrigen Sicherheitsvorgaben. DE und EN stimmen weitgehend überein; der deutsche Kombinationssatz widerspricht jedoch der englischen Fassung und der numerischen Bestehensregel.",
+  "scopeVerdict": "Als eigenes freiwilliges Angebot bestätige ich die Aufgabe auf dem angegebenen Vorbereitungsstand für die hessische E-Phase sowie die sächsische Sek I/J9, jeweils für die angebotenen Profile GK und LK. Bewegungsgesetze, Diagramme und Unsicherheiten sind vorbereitet; besondere Regressionsstatistik wird nicht vorausgesetzt. Die Profilbezeichnungen begründen keine amtlichen Kursstrukturen oder Prüfungsansprüche. Die Bewertungsfreigabe erfordert die unten genannte Sprachkorrektur.",
+  "scoringConsistency": "Die Höchstsumme ist 26, die numerische Bestehensgrenze 22 BE. Zwei fehlende Kettenverbindungen kosten mindestens 5 BE: höchstens 21, also kein Bestehen ohne mindestens eine vollständige Kette im ausdrücklich definierten Sinn. Vier verschiedene Beschriftungsverfehler kosten zusammen 2 BE; Wiederholungen derselben falschen Beschriftung nur einmal. Fehlendes ĝ betrifft ausdrücklich zwei verschiedene Nachweise: Ergebnisangabe 0,5 und Gesetzverknüpfung 2,5; L04 verliert sonst nichts. L05 erlaubt keine Herkunftsvermutung; der Koeffizientenwiderspruch betrifft allein b-law. L09 erhält die zwei ersetzenden Nullwertungen, keine zusätzliche Sanktion im Vergleich. Unauflösbar bleibt DE „Kombinationen mehrerer Fälle dürfen nicht bestehen“ gegenüber EN „may fail“ und der ausdrücklich ausgeschlossenen Zusatzhürde. Beispielsweise erreichen L01 23,5 und L16 23 BE. Die folgenden Bestehensangaben folgen der expliziten 22-BE-Regel und lassen diesen Textwiderspruch sichtbar.",
+  "carryingPerformanceAudit": [
+    {
+      "performanceId": "investigation-a",
+      "earnedFromTask": "Eigene A-Messungen, grafische Bestimmung, verknüpftes Gesetz, Anfangsbedingungen und Grenzen.",
+      "weight": 13,
+      "completeOmissionMaximum": 12,
+      "safeguardsAndLimits": "Vollständiges Auslassen verhindert Bestehen; zusätzlich fehlt dann der eigene A/B-Vergleich. Eine einzelne offene Verbindung in A bleibt bei vollständiger B-Kette tolerierbar."
+    },
+    {
+      "performanceId": "investigation-b",
+      "earnedFromTask": "Frische B-Messungen bei anderer Höhe mit eigener Auswertung, Gesetz, Loslassprüfung und Vergleich.",
+      "weight": 13,
+      "completeOmissionMaximum": 13,
+      "safeguardsAndLimits": "Vollständiges Auslassen verhindert Bestehen. Beide Untersuchungen sind gleich gewichtet; B gewichtet den Vergleich stärker als seine Unsicherheitsdarstellung."
+    }
+  ],
+  "coveredGoalReviews": [
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "mustShow": "Mindestens eine zusammenhängende Untersuchung aus eigenen Messdaten, tatsächlicher eigener grafischer g-Bestimmung, numerisch verknüpftem konkretem Bewegungsgesetz und vollständig belegten Anfangsbedingungen einschließlich Loslassprüfung.",
+      "mayRemainOpen": "Eine zweite vollständige Kette oder einzelne Grenzfacetten, etwa die A-Grenzvariation in L07. Selbst beide Grenzkriterien können bei sonst voller Leistung mit 22 BE offenbleiben.",
+      "whyTolerable": "Das einzige beanspruchte Ziel verlangt experimentelle Untersuchung, grafische Auswertung, g-Bestimmung und ein Gesetz mit Anfangsbedingungen. Bestehen belegt dafür mindestens eine vollständige Kette, jedoch keine vollständige Beherrschung sämtlicher zusätzlichen Unsicherheits- und Vergleichsanforderungen."
+    }
+  ],
+  "gradedSubmissions": [
+    {
+      "submissionId": "L01",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 2.5,
+          "reason": "Aufbau und drei vollständige Läufe belegt; falsches cm im Tabellenkopf einmal abgezogen."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Alle Läufe in R8 angepasst und gemittelt; falsche t²-Einheit einmal abgezogen."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes A-Gesetz stimmt mit ĝ_A=9,81 überein."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Bezüge, volle Bildzeitgrenze und frühe A-Punkte nachvollziehbar geprüft."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 1.5,
+          "reason": "Unsicherheitsgrundlagen und begrenzte Aussage vorhanden; tatsächliche Grenzvariation fehlt."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 2.5,
+          "reason": "Frische vollständige B-Daten belegt; falsches ms im Tabellenkopf einmal abgezogen."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "T3 und getrennte Laufbestimmungen vollständig; falsche Steigungseinheit einmal abgezogen."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes B-Gesetz stimmt mit ĝ_B=9,72 überein."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-spezifische Loslassprüfung und sämtliche Anfangsfestlegungen belegt."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Unsicherheit, Neuberechnungen und Vergleich 0,09 gegenüber 1,0 vollständig."
+        }
+      ],
+      "total": 23.5,
+      "passes": true,
+      "diagnosis": "Nach der numerischen Regel bestanden: 26−2−0,5=23,5. Beide Ketten bleiben vorhanden. Der deutsche pauschale Kombinationssatz widerspricht dieser Bestehensentscheidung.",
+      "localizedSlips": [
+        {
+          "location": "a-actual-data: A-Tabelle, drei x-Spaltenköpfe",
+          "description": "cm statt der ausdrücklich erläuterten und verwendeten Meter; dieselbe Wiederholung einmal.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "a-graph-g: Anhang R8, horizontale Achsen",
+          "description": "t² mit [s] statt [s²]; alle drei Felder bilden einen wiederholten Beschriftungsfehler.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "b-actual-data: B-Tabelle, Zeitspaltenkopf",
+          "description": "ms statt s bei ausdrücklich in Sekunden berechneten Werten.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "b-graph-g: B-Steigungstabelle",
+          "description": "m/s statt m/s²; Rechnung und Folgegesetz werden nicht erneut belastet.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ]
+    },
+    {
+      "submissionId": "L02",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 2.5,
+          "reason": "Vollständige eigene A-Daten; falsches cm im Tabellenkopf einmal abgezogen."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Vollständige Auswertung aller Läufe; falsche t²-Einheit in R8 einmal abgezogen."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "A-Gesetz und eigener Reihenschätzwert stimmen überein."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Koordinaten, Zeitbezug, Genauigkeiten und frühe A-Punkte vollständig belegt."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Beide Unsicherheitsgrundlagen, tatsächliche Reihenvariationen und Modellgrenzen vorhanden."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 2.5,
+          "reason": "Drei frische vollständige Läufe; falsches ms im Tabellenkopf einmal abgezogen."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Alle B-Läufe angepasst und verglichen; falsche Steigungseinheit einmal abgezogen."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "B-Gesetz stimmt mit eigenem ĝ_B=9,72 überein."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Erneute B-Prüfung einschließlich Zeitnullpunkt und früher Punkte vollständig."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "Unsicherheit, Grenzvariation und begrenzter quantitativer Vergleich vollständig."
+        }
+      ],
+      "total": 24,
+      "passes": true,
+      "diagnosis": "26−4·0,5=24; bestanden. Vier verschiedene Beschriftungsfehler, keine Folgeabzüge.",
+      "localizedSlips": [
+        {
+          "location": "a-actual-data: A-Tabelle, x-Spaltenköpfe",
+          "description": "cm statt m; die drei gleichartigen Spaltenköpfe zählen einmal.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "a-graph-g: Anhang R8, horizontale Achsen",
+          "description": "[s] statt [s²] an t²; die Wiederholung zählt einmal.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "b-actual-data: B-Tabelle, Zeitspaltenkopf",
+          "description": "ms statt der erläuterten Sekunden.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "b-graph-g: B-Steigungstabelle",
+          "description": "m/s statt m/s².",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ]
+    },
+    {
+      "submissionId": "L03",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Sicherer kalibrierter Aufbau und drei eigene vollständige A-Läufe belegt."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 3,
+          "reason": "P6, sämtliche Laufanpassungen, Vergleich und eigener A-Schätzwert vorhanden."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkrete Gleichung mit G=9,81 entspricht dem eigenen A-Schätzwert."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 0,
+          "reason": "A-Ursprungslage, positive Richtung, Loslassereignis und Loslassprüfung fehlen."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Ablesung, Streuung, nachgerechnete Varianten und konkrete Aussagegrenzen belegt."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Neue Höhe und drei frische B-Läufe mit zugeordneten Punkten vollständig."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "T3 und alle Laufanpassungen liefern den ausdrücklich eigenen B-Schätzwert."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "B-Gesetz stimmt mit ĝ_B=9,72 überein."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B legt sämtliche Bezüge fest und prüft Freigabe sowie frühe Punkte."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Grenzen und Vergleich mit beiden Unsicherheiten vollständig."
+        }
+      ],
+      "total": 23.5,
+      "passes": true,
+      "diagnosis": "26−2,5=23,5; bestanden durch vollständige B-Kette. Das A-Gesetz setzt mathematisch x₀=v₀=0, ersetzt aber keine räumliche und zeitliche Festlegung oder Loslassprüfung.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L04",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Aufbau, drei eigene Läufe und jeweils sieben zugeordnete Punkte vollständig."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Alle Läufe angepasst und verglichen; ausdrücklicher eigener Reihenschätzwert fehlt."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 0,
+          "reason": "Ohne ausdrücklich eigenen ĝ_A ist die geforderte Verknüpfung nicht nachgewiesen."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Anfangsfestlegungen und Loslassprüfung unabhängig vom fehlenden ĝ_A vollständig."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Unsicherheit der A-Werte, Reihenvariationen und begrenzte Aussage vollständig."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Neue eigene B-Daten bei zweiter gemessener Höhe vollständig."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "Alle B-Läufe grafisch angepasst, verglichen und zu ĝ_B zusammengeführt."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes B-Gesetz passt zum eigenen ĝ_B=9,72."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Eigenständige B-Loslassprüfung und sämtliche Anfangsbedingungen vorhanden."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "Alle drei A/B-Laufdifferenzen ausdrücklich mit beiden Unsicherheiten verglichen."
+        }
+      ],
+      "total": 23,
+      "passes": true,
+      "diagnosis": "26−0,5−2,5=23; bestanden. Der fehlende A-Schätzwert wird weder aus dem Gesetz erschlossen noch bei Grenzen oder Vergleich ein drittes Mal belastet.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L05",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Sicherer Aufbau und vollständige eigene A-Messdaten vorhanden."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 3,
+          "reason": "P6 und sämtliche Laufbestimmungen ergeben den eigenen A-Schätzwert."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "A-Gesetz stimmt mit ĝ_A=9,81 überein."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "A-Bezüge, Genauigkeiten und Freigabeprüfung vollständig."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Unsicherheit, tatsächliche Grenzvariation und begrenzte Aussage vollständig."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Drei neue vollständige B-Läufe bei eigener zweiter Höhe belegt."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "T3 und alle B-Läufe führen zum eigenen ĝ_B=9,72."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 0,
+          "reason": "Geschriebenes G=10,90 stimmt nicht mit ĝ_B=9,72 überein."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-Anfangsbedingungen und erneute Freigabeprüfung sind vollständig belegt."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Variationen und Vergleich der tatsächlich angegebenen Schätzwerte vollständig."
+        }
+      ],
+      "total": 23.5,
+      "passes": true,
+      "diagnosis": "26−2,5=23,5; bestanden durch vollständige A-Kette. Die Herkunft von 10,90 bleibt unbekannt; weder Fremdübernahme noch beharrliche Fehlvorstellung dürfen erschlossen werden. Kein zusätzlicher Versehenabzug.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L06",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Eigene A-Aufnahmen, kalibrierter Aufbau und vollständige Punktzuordnung belegt."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Alle A-Läufe angepasst und verglichen; eigener A-Reihenschätzwert ausdrücklich ausgelassen."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 0,
+          "reason": "Der eingesetzte A+B-Fit ist kein eigener A-Reihenschätzwert."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "A-Freigabe und Anfangsbedingungen vollständig, unabhängig vom fehlenden Schätzwert."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "A-Unsicherheit und tatsächliche Reihenvariationen auch ohne nominalen ĝ_A belegt."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Frische vollständige B-Läufe und zweite gemessene Höhe vorhanden."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Alle B-Läufe angepasst und verglichen; eigener B-Reihenschätzwert fehlt."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 0,
+          "reason": "Gemeinsames G=9,78 ersetzt keine Verknüpfung mit eigenem ĝ_B."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-Bezüge und erneute Prüfung der frühen eigenen Punkte vollständig."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Grenzen sowie ausdrücklich gezeigte Extremdifferenzen mit beiden Unsicherheiten verglichen."
+        }
+      ],
+      "total": 20,
+      "passes": false,
+      "diagnosis": "26−2·3=20; nicht bestanden. Beiden Gesetzen fehlt die Verknüpfung mit einem eigenen Reihenschätzwert. Der zusätzlich vollständige Laufvergleich bleibt voll gewertet.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L07",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Sicherer kalibrierter Aufbau und drei vollständige eigene A-Läufe vorhanden."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 3,
+          "reason": "P6 und sämtliche Laufanpassungen samt eigenem Reihenschätzwert vollständig."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes A-Gesetz entspricht dem eigenen ĝ_A."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Zeit- und Ortsbezug sowie A-Loslassprüfung vollständig."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 1.5,
+          "reason": "Unsicherheitsgrundlagen und Aussagegrenzen vorhanden; Neuberechnung einer Grenzvariation fehlt."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Drei frische vollständige B-Läufe bei zweiter eigener Höhe belegt."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "T3, alle Laufbestimmungen und eigener B-Schätzwert vollständig."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes B-Gesetz entspricht ĝ_B=9,72."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-spezifische Freigabeprüfung mit vollständigen Anfangsfestlegungen belegt."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Unsicherheit, tatsächliche Variation und quantitativer Vergleich vollständig."
+        }
+      ],
+      "total": 25.5,
+      "passes": true,
+      "diagnosis": "26−0,5=25,5; bestanden. Die fehlende A-Grenzvariation ist eine offene Facette, kein Formversehen und keine weitere Sanktion beim Vergleich.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L08",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 2.5,
+          "reason": "Vollständige eigene A-Daten; falsches cm im Tabellenkopf einmal abgezogen."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Alle A-Läufe vollständig ausgewertet; falsche t²-Einheit in R8 einmal abgezogen."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "A-Gesetz stimmt mit dem eigenen ĝ_A überein."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Anfangsbedingungen und A-Loslassprüfung vollständig nachgewiesen."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Begründete Unsicherheit, Neuberechnungen und begrenzte Aussage vollständig."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 2.5,
+          "reason": "Frische vollständige B-Daten; falsches ms im Tabellenkopf einmal abgezogen."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Eigene B-Bestimmung vollständig; falsche Steigungseinheit einmal abgezogen."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 0,
+          "reason": "Übernommenes G=10,90 widerspricht dem eigenen ĝ_B=9,72."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-Anfangsfestlegungen und erneute Loslassprüfung vollständig."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "Eigene B-Grenzen und Vergleich der eigenen Schätzwerte vollständig."
+        }
+      ],
+      "total": 21.5,
+      "passes": false,
+      "diagnosis": "26−2−2,5=21,5; nicht bestanden. Die erklärte Übernahme betrifft hier den Gesetzeskoeffizienten; eine eigene B-Bestimmung bleibt vorhanden. Keine belegte beharrliche Fehlvorstellung und kein weiterer Abzug.",
+      "localizedSlips": [
+        {
+          "location": "a-actual-data: A-Tabelle, x-Spaltenköpfe",
+          "description": "cm statt m; die wiederholten Spaltenköpfe zählen einmal.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "a-graph-g: Anhang R8, horizontale Achsen",
+          "description": "t² mit [s] statt [s²]; einmaliger Abzug für die Wiederholung.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "b-actual-data: B-Tabelle, Zeitspaltenkopf",
+          "description": "ms statt s.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "b-graph-g: B-Steigungstabelle",
+          "description": "m/s statt m/s².",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ]
+    },
+    {
+      "submissionId": "L09",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Eigene A-Daten und geeigneter tatsächlicher Aufbau bleiben vollständig belegt."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 0,
+          "reason": "Buchwert als eigenes Messergebnis trotz dokumentierten Hinweises ausdrücklich beibehalten."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 0,
+          "reason": "Sonderregel der vollständig belegten beharrlichen Fehlvorstellung greift."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Anfangsfestlegungen und A-Loslassprüfung sind unabhängig davon vollständig."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Gezeigte Unsicherheitsarbeit, tatsächliche Variationen und begrenzte Aussage bleiben erhalten."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Neue vollständige B-Läufe bei selbst gemessener zweiter Höhe vorhanden."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "Eigene B-Auswertung aller Läufe mit eigenem Schätzwert vollständig."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "B-Gesetz stimmt mit eigenem ĝ_B überein."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-Anfangsbedingungen und eigenständige Loslassprüfung vollständig."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "Grenzen und quantitativer Vergleich zugeordneter Werte bleiben nach Sonderregel vollwertig."
+        }
+      ],
+      "total": 20.5,
+      "passes": false,
+      "diagnosis": "26−3−2,5=20,5; nicht bestanden. Alle drei Belege der Sonderregel liegen vor. Sie ersetzt nur a-graph-g und a-law; keine pauschale A-Nullwertung und keine zweite Sanktion in B.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L10",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Sicherer Aufbau und vollständige eigene A-Läufe belegt."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 3,
+          "reason": "Eigene A-Diagramme und sämtliche Laufbestimmungen vollständig."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 0,
+          "reason": "G=8,60 stimmt nicht mit eigenem ĝ_A=9,81 überein."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Anfangsbedingungen und A-Freigabeprüfung vollständig belegt."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Unsicherheit, Neuberechnungen und konkrete Modellgrenzen vollständig."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Frische eigene B-Läufe mit vollständiger Punktzuordnung vorhanden."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "Eigene grafische B-Auswertung und ĝ_B vollständig."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 0,
+          "reason": "G=10,90 stimmt nicht mit eigenem ĝ_B=9,72 überein."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-Anfangsbedingungen und erneute Freigabeprüfung vollständig belegt."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Grenzen und Vergleich der angegebenen Reihenschätzwerte vollständig."
+        }
+      ],
+      "total": 21,
+      "passes": false,
+      "diagnosis": "26−2·2,5=21; nicht bestanden. In beiden Untersuchungen fehlt die numerische Gesetzverknüpfung. Die unbekannte Herkunft der abweichenden Koeffizienten bleibt offen; keine Zusatzabzüge.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L11",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Aufbau, Kalibrierung und drei vollständige eigene A-Läufe belegt."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 3,
+          "reason": "P6, alle Laufanpassungen, Vergleich und eigener A-Schätzwert vollständig."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes A-Gesetz stimmt mit ĝ_A überein."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Sämtliche Bezüge, Genauigkeiten und A-Loslassprüfung nachvollziehbar."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Unsicherheitsgrundlagen, tatsächliche Varianten und begrenzte Aussage vollständig."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Andere gemessene Höhe und drei frische vollständige B-Läufe belegt."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "T3 und eigenständige B-Auswertung aller Läufe vollständig."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes B-Gesetz stimmt mit ĝ_B überein."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-Freigabe erneut geprüft und sämtliche Anfangsfestlegungen angegeben."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Unsicherheit, Grenzvariation und begrenzter quantitativer Vergleich vollständig."
+        }
+      ],
+      "total": 26,
+      "passes": true,
+      "diagnosis": "Volle 26 BE; bestanden mit zwei vollständigen Untersuchungsketten. Nominale Referenzbildnähe und tatsächliches Loslassintervall werden ausdrücklich unterschieden.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L12",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Drei vollständige eigene A-Läufe im geeigneten Aufbau dokumentiert."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Alle Läufe angepasst; A2 und A3 ohne Begründung aus ĝ_A ausgeschlossen."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "G=9,79 entspricht dem ausdrücklich als Reihenschätzwert gewählten A1-Wert."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Vollständige Anfangsfestlegungen und A-Loslassprüfung belegt."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 1.5,
+          "reason": "Unsicherheit und Aussage belegt; Varianten mitteln drei Läufe statt des gewählten A1-Schätzers."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Frische vollständige B-Daten bei eigener zweiter Höhe dokumentiert."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "Alle B-Läufe grafisch bestimmt, verglichen und zu ĝ_B zusammengeführt."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 0,
+          "reason": "G=10,20 entspricht nicht dem eigenen ĝ_B=9,72; Unsicherheitsüberlappung zählt hier nicht."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-Anfangsbedingungen und eigenständige Loslassprüfung vollständig."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Grenzen und Vergleich 0,07 gegenüber beiden Unsicherheiten vollständig."
+        }
+      ],
+      "total": 22.5,
+      "passes": true,
+      "diagnosis": "26−0,5−0,5−2,5=22,5; nach numerischer Regel bestanden. Angepasste und im Schätzwert verwendete Läufe sind getrennt bewertet. Für die A-Grenzvariation fehlt das Ergebnis des nominal gewählten Einzellaufverfahrens; die angegebenen Reihenmittel ersetzen es nicht. Der deutsche Kombinationssatz bleibt widersprüchlich.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L13",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Drei eigene vollständige A-Läufe und kalibrierter Aufbau belegt."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 3,
+          "reason": "P6 und sämtliche A-Laufbestimmungen samt eigenem Schätzwert vollständig."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes A-Gesetz entspricht ĝ_A=9,81."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 0,
+          "reason": "A-Ursprungslage, Richtung, Loslassereignis und Freigabeprüfung nicht belegt."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Unsicherheit, tatsächliche Varianten und konkrete Aussagegrenzen vorhanden."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Neue vollständige B-Läufe bei zweiter gemessener Höhe dokumentiert."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "T3 und eigenständige B-Auswertung aller Läufe vollständig."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 0,
+          "reason": "G=10,90 widerspricht ĝ_B=9,72; Herkunft bleibt unbekannt."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B legt alle Bezüge fest und prüft Freigabe sowie frühe Punkte."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Grenzen und quantitativer Vergleich mit beiden Unsicherheiten vollständig."
+        }
+      ],
+      "total": 21,
+      "passes": false,
+      "diagnosis": "26−2,5−2,5=21; nicht bestanden. A fehlt die Anfangsverbindung, B die Gesetzverknüpfung; keine Untersuchungskette ist vollständig. Keine Folgeabzüge.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L14",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 0,
+          "reason": "A ausdrücklich nicht durchgeführt."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 0,
+          "reason": "Keine eigene A-Untersuchung und keine A-Grafikauswertung."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 0,
+          "reason": "Kein A-Gesetz; Untersuchung nicht bearbeitet."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 0,
+          "reason": "Keine tatsächliche A-Loslassprüfung; gemeinsame Planung ersetzt sie nicht."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 0,
+          "reason": "Keine eigene A-Auswertung oder A-Grenzuntersuchung."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Geeigneter Aufbau und drei vollständige eigene B-Läufe belegt."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "T3, alle B-Laufanpassungen und eigener ĝ_B vollständig."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes B-Gesetz entspricht eigenem ĝ_B=9,72."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Sämtliche B-Bezüge und tatsächliche Freigabeprüfung vollständig."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 1,
+          "reason": "B-Unsicherheit und Variation vollständig; eigener A-Wert für den Vergleich fehlt."
+        }
+      ],
+      "total": 12,
+      "passes": false,
+      "diagnosis": "0+3+3+2,5+2,5+1=12; nicht bestanden. Der offen als Beispiel bezeichnete A-Wert ersetzt keine eigene Reihe. Der fehlende Vergleich ist ein eigener nicht erbrachter Nachweis.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L15",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Geeigneter Aufbau, Kalibrierung und vollständige eigene A-Daten belegt."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 3,
+          "reason": "P6 und alle Laufbestimmungen mit getrenntem eigenem A-Schätzwert vollständig."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "A-Gesetz bleibt korrekt mit eigenem ĝ_A verknüpft."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "A-Anfangsbedingungen und Loslassprüfung vollständig."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "A-Unsicherheit, tatsächliche Grenzvariation und begrenzte Aussage vollständig."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Drei frische vollständige B-Läufe bei zweiter gemessener Höhe vorhanden."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "T3 und alle Laufbestimmungen mit getrenntem eigenem B-Schätzwert vollständig."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "B-Gesetz bleibt korrekt mit eigenem ĝ_B verknüpft."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-Anfangsbedingungen und erneute Freigabeprüfung vollständig."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "Getrennter quantitativer Vergleich vollständig; gemeinsamer Fit nur ergänzend verwendet."
+        }
+      ],
+      "total": 26,
+      "passes": true,
+      "diagnosis": "Volle 26 BE; bestanden. Der zusätzliche A+B-Fit ersetzt ausdrücklich keinen getrennten Nachweis und verursacht keinen Abzug.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L16",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 2.5,
+          "reason": "Vollständige eigene A-Daten; falsches cm im Tabellenkopf einmal abgezogen."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Vollständige A-Auswertung; falsche t²-Einheit in R8 einmal abgezogen."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "A-Gesetz stimmt mit dem eigenen Reihenschätzwert überein."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Anfangsfestlegungen und A-Loslassprüfung vollständig belegt."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 1.5,
+          "reason": "Unsicherheitsgrundlagen und Aussagegrenzen vorhanden; tatsächliche Grenzvariation fehlt."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 2.5,
+          "reason": "Frische vollständige B-Daten; falsches ms im Tabellenkopf einmal abgezogen."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 2.5,
+          "reason": "Vollständige eigene B-Bestimmung; falsche Steigungseinheit einmal abgezogen."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "B-Gesetz stimmt mit eigenem ĝ_B=9,72 überein."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "B-Bezüge und erneute Prüfung der frühen eigenen Punkte vollständig."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 1.5,
+          "reason": "Alle Facetten vorhanden; Differenz 0,10 statt 0,09 als örtliches Rechenversehen abgezogen."
+        }
+      ],
+      "total": 23,
+      "passes": true,
+      "diagnosis": "26−2−0,5−0,5=23; nach numerischer Regel bestanden. Fünf örtliche Versehen und eine fehlende Grenzvariation; keine Folgeabzüge. Der deutsche Kombinationssatz widerspricht der Bestehensregel.",
+      "localizedSlips": [
+        {
+          "location": "a-actual-data: A-Tabelle, x-Spaltenköpfe",
+          "description": "cm statt m; die Wiederholung in drei Spalten zählt einmal.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "a-graph-g: Anhang R8, horizontale Achsen",
+          "description": "[s] statt [s²] bei t²; die Wiederholung zählt einmal.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "b-actual-data: B-Tabelle, Zeitspaltenkopf",
+          "description": "ms statt s.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "b-graph-g: B-Steigungstabelle",
+          "description": "m/s statt m/s².",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "b-boundaries-comparison: Vergleich, Differenzrechnung",
+          "description": "9,81−9,72 ergibt 0,09, nicht 0,10; Unsicherheitsvergleich und Schluss bleiben tragfähig.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ]
+    },
+    {
+      "submissionId": "L17",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Geeigneter Aufbau und drei vollständige eigene A-Läufe dokumentiert."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 3,
+          "reason": "P6, sämtliche Laufanpassungen und eigener A-Schätzwert vollständig."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes A-Gesetz stimmt mit ĝ_A=9,81 überein."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 0,
+          "reason": "A-Ursprungslage, positive Richtung, Freigabeereignis und Loslassprüfung fehlen."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Unsicherheit, tatsächliche Varianten und begrenzte Modellaussage vorhanden."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Zweite gemessene Höhe und drei frische vollständige B-Läufe belegt."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 3,
+          "reason": "T3 und sämtliche B-Laufbestimmungen samt eigenem Schätzwert vollständig."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes B-Gesetz stimmt mit ĝ_B=9,72 überein."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 0,
+          "reason": "Auch B fehlen Ursprungslage, Richtung, Freigabeereignis und Loslassprüfung."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 2,
+          "reason": "B-Unsicherheit, nachgerechnete Varianten und quantitativer Vergleich vollständig."
+        }
+      ],
+      "total": 21,
+      "passes": false,
+      "diagnosis": "26−2·2,5=21; nicht bestanden. Beide Gleichungen bestimmen mathematisch x₀=v₀=0, belegen aber weder die Lage der Ursprünge noch die Loslassbedingungen. Diese Lücken werden nicht bei den Grenzen erneut belastet.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L18",
+      "scores": [
+        {
+          "criterionId": "a-actual-data",
+          "pointsAwarded": 3,
+          "reason": "Sicherer kalibrierter Aufbau und drei vollständige eigene A-Läufe belegt."
+        },
+        {
+          "criterionId": "a-graph-g",
+          "pointsAwarded": 3,
+          "reason": "P6, sämtliche Laufanpassungen, Vergleich und eigener A-Schätzwert vollständig."
+        },
+        {
+          "criterionId": "a-law",
+          "pointsAwarded": 2.5,
+          "reason": "Konkretes A-Gesetz entspricht dem eigenen ĝ_A=9,81."
+        },
+        {
+          "criterionId": "a-initial-conditions",
+          "pointsAwarded": 2.5,
+          "reason": "Sämtliche A-Bezüge, Genauigkeiten und tatsächliche Loslassprüfung vollständig."
+        },
+        {
+          "criterionId": "a-boundaries",
+          "pointsAwarded": 2,
+          "reason": "Unsicherheit, tatsächliche Grenzvariationen und begrenzte Aussage vollständig."
+        },
+        {
+          "criterionId": "b-actual-data",
+          "pointsAwarded": 0,
+          "reason": "B ausdrücklich nicht durchgeführt; keine eigenen B-Messdaten."
+        },
+        {
+          "criterionId": "b-graph-g",
+          "pointsAwarded": 0,
+          "reason": "Keine eigene B-Untersuchung oder grafische Bestimmung."
+        },
+        {
+          "criterionId": "b-law",
+          "pointsAwarded": 0,
+          "reason": "Kein B-Gesetz und kein B-Reihenschätzwert."
+        },
+        {
+          "criterionId": "b-initial-conditions",
+          "pointsAwarded": 0,
+          "reason": "Keine tatsächlich ausgeführte B-Loslassprüfung."
+        },
+        {
+          "criterionId": "b-boundaries-comparison",
+          "pointsAwarded": 0,
+          "reason": "Keine B-Grenzuntersuchung und kein Vergleich zweier eigener Reihen."
+        }
+      ],
+      "total": 13,
+      "passes": false,
+      "diagnosis": "13+0=13; nicht bestanden. Die vollständige A-Kette kompensiert das vollständige Auslassen der tragenden B-Untersuchung nicht.",
+      "localizedSlips": []
+    }
+  ],
+  "requiredCorrections": [
+    "Den deutschen Schlusssatz „Kombinationen mehrerer Fälle dürfen nicht bestehen“ durch eine Aussage entsprechend EN ersetzen: Kombinationen können zum Nichtbestehen führen; allein die festgelegte Punktesumme entscheidet. Andernfalls bleiben insbesondere die Bestehensentscheidungen bei L01, L12 und L16 normativ widersprüchlich."
+  ]
+}
