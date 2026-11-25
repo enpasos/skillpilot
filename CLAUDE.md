@@ -86,6 +86,14 @@ unit assignment with the pilot on and as ordinary exams otherwise. The
 planning release credits only the accelerated-motion goal from part D. See
 the E.1 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 
+**E.2 cut (24 and 25 November 2026).** E.2 has six child structures in
+learning order in the eight Hessian views: inertia; force, mass and
+acceleration; force and counterforce; several forces at once; energy;
+momentum and collisions. They are view structures, not declared units. The
+gravitation goals lie in E.5. The move of the two Leistungskurs deepenings to
+the Qualifikationsphase waits for the E.5 review. See the E.2 cut in
+[AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
+
 **Product Owner decisions of 24 November 2026.** A stored plan that still
 names a retired goal (an atomic goal marked
 `extendedData.applicabilityProjection = "excluded"`) stays valid as long as

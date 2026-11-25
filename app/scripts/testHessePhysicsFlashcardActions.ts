@@ -240,7 +240,14 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
           const cards = selectPracticeCards(deck.cards, getSrsFilterTagsForGoal(value.goalIndexAll.get(memoryId)!), topicGoals)
           assert(cards.some(card => card.id === cardId && card.originGoalIds?.includes(origin)), filename + ': ' + cardId)
           if (origin === traffic) {
-            const children = treeChildren.get(home) ?? []
+            // Since the E.2 cut of 25 November 2026 both goals sit in the child structure
+            // "Mehrere Kräfte zugleich" of E.2.
+            const path = mapEntryPath(original, traffic) ?? []
+            const severalForces = path.at(-2)
+            assert.equal(severalForces && value.goalIndexAll.get(severalForces)?.extendedData?.compositionNodeId,
+              'physics-e2-several-forces', filename + ': the E.2 traffic goal sits in the child structure of several forces')
+            assert.equal(path.at(-3), home, filename + ': that child structure belongs to E.2')
+            const children = treeChildren.get(severalForces!) ?? []
             assert(children.includes(friction) && children.indexOf(traffic) > children.indexOf(friction),
               filename + ': the E.2 traffic goal follows friction')
           }
