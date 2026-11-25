@@ -149,6 +149,15 @@ to ordinary study left the mastery count unchanged. This test exercised the
 production tool responses. The earlier learning flow recorded the visible
 chat behavior.
 
+From **10:38 to 10:46 UTC**, a fresh Windows app-server learning session in
+the same Physics course tested the path towards a unit card with Autopilot off.
+After three introductory goals and two exercises on recording fall height and
+time, the coach saved the subject goal. The next eligible goal concerned a
+velocity–time diagram. The understanding goal used by the intended card had
+not yet been reached, and the learner's card box was empty. Card practice,
+widget display and Verified Recall remain open for an interactive desktop run
+with released cards. The test learners were deleted.
+
 External testers can install version **1.2.0** from the public marketplace's
 default branch and follow the [German installation guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
 The [marketplace release](https://github.com/enpasos/skillpilot-chatgpt-marketplace/pull/1)
