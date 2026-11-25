@@ -1,0 +1,736 @@
+{
+  "before": "3e6af47aec2f7f3046c316e8d4981858b943c4a6",
+  "after": "a6117075c1ac7776a1af0a0c9b790fda9a980225",
+  "testPath": "app/scripts/testPhysicsAssessmentProjection.ts",
+  "staleCallLines": [
+    785,
+    786
+  ],
+  "staleEqualityChecks": 3,
+  "staleMetric": "practiceTaskPairs",
+  "allCountChecks": [
+    {
+      "key": "viewCount",
+      "expected": {
+        "legacy": 60,
+        "addedHesseDuration": 4,
+        "addedLandSekI": 0,
+        "total": 64
+      },
+      "actual": {
+        "legacy": 60,
+        "addedHesseDuration": 4,
+        "addedLandSekI": 0,
+        "total": 64
+      },
+      "stale": {
+        "legacy": false,
+        "addedHesseDuration": false,
+        "total": false
+      },
+      "message": "Cover every existing GK/LK and SekII/CrossStage assessment-collection view."
+    },
+    {
+      "key": "fermiScopeViewCount",
+      "expected": {
+        "legacy": 69,
+        "addedHesseDuration": 6,
+        "addedLandSekI": 15,
+        "total": 90
+      },
+      "actual": {
+        "legacy": 69,
+        "addedHesseDuration": 6,
+        "addedLandSekI": 15,
+        "total": 90
+      },
+      "stale": {
+        "legacy": false,
+        "addedHesseDuration": false,
+        "total": false
+      },
+      "message": "Check exact Fermi assessment target visibility in every Physics composition view."
+    },
+    {
+      "key": "kinematicsTaskPairs",
+      "expected": {
+        "legacy": 120,
+        "addedHesseDuration": 8,
+        "addedLandSekI": 0,
+        "total": 128
+      },
+      "actual": {
+        "legacy": 120,
+        "addedHesseDuration": 8,
+        "addedLandSekI": 0,
+        "total": 128
+      },
+      "stale": {
+        "legacy": false,
+        "addedHesseDuration": false,
+        "total": false
+      },
+      "message": "Both reviewed kinematics assessments must appear in all shared GK/LK exercise views."
+    },
+    {
+      "key": "astronomyTaskPairs",
+      "expected": {
+        "legacy": 136,
+        "addedHesseDuration": 8,
+        "addedLandSekI": 3,
+        "total": 147
+      },
+      "actual": {
+        "legacy": 136,
+        "addedHesseDuration": 8,
+        "addedLandSekI": 3,
+        "total": 147
+      },
+      "stale": {
+        "legacy": false,
+        "addedHesseDuration": false,
+        "total": false
+      },
+      "message": "Every existing ordinary astronomy demand needs its applicable task across all views."
+    },
+    {
+      "key": "practiceTaskPairs",
+      "expected": {
+        "legacy": 4248,
+        "addedHesseDuration": 318,
+        "addedLandSekI": 0,
+        "total": 4566
+      },
+      "actual": {
+        "legacy": 4218,
+        "addedHesseDuration": 316,
+        "addedLandSekI": 0,
+        "total": 4534
+      },
+      "stale": {
+        "legacy": true,
+        "addedHesseDuration": true,
+        "total": true
+      },
+      "message": "Expose every current canonical collection obligation, including the new individual and nested assessments."
+    },
+    {
+      "key": "abiturTaskPairs",
+      "expected": {
+        "legacy": 480,
+        "addedHesseDuration": 32,
+        "addedLandSekI": 0,
+        "total": 512
+      },
+      "actual": {
+        "legacy": 480,
+        "addedHesseDuration": 32,
+        "addedLandSekI": 0,
+        "total": 512
+      },
+      "stale": {
+        "legacy": false,
+        "addedHesseDuration": false,
+        "total": false
+      },
+      "message": "Every applicable view must expose both Abitur sample exams and all eight proposals."
+    },
+    {
+      "key": "preservedSekITaskPairs",
+      "expected": {
+        "legacy": 30,
+        "addedHesseDuration": 0,
+        "addedLandSekI": 0,
+        "total": 30
+      },
+      "actual": {
+        "legacy": 30,
+        "addedHesseDuration": 0,
+        "addedLandSekI": 0,
+        "total": 30
+      },
+      "stale": {
+        "legacy": false,
+        "addedHesseDuration": false,
+        "total": false
+      },
+      "message": "Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements."
+    },
+    {
+      "key": "preservedPrerequisiteOnlyPairs",
+      "expected": {
+        "legacy": 161,
+        "addedHesseDuration": 0,
+        "addedLandSekI": 0,
+        "total": 161
+      },
+      "actual": {
+        "legacy": 161,
+        "addedHesseDuration": 0,
+        "addedLandSekI": 0,
+        "total": 161
+      },
+      "stale": {
+        "legacy": false,
+        "addedHesseDuration": false,
+        "total": false
+      },
+      "message": "Preserve every existing Q4 prerequisite-only role affected by explicit task references."
+    },
+    {
+      "key": "filteredPrerequisiteOnlyPairs",
+      "expected": {
+        "legacy": 48,
+        "addedHesseDuration": 0,
+        "addedLandSekI": 0,
+        "total": 48
+      },
+      "actual": {
+        "legacy": 48,
+        "addedHesseDuration": 0,
+        "addedLandSekI": 0,
+        "total": 48
+      },
+      "stale": {
+        "legacy": false,
+        "addedHesseDuration": false,
+        "total": false
+      },
+      "message": "Course and jurisdiction filters must not silently reintroduce these support tasks as targets."
+    }
+  ],
+  "nativeTotals": {
+    "viewCount": 64,
+    "fermiScopeViewCount": 90,
+    "practiceTaskPairs": 4534,
+    "abiturTaskPairs": 512,
+    "preservedSekITaskPairs": 30,
+    "preservedPrerequisiteOnlyPairs": 161,
+    "filteredPrerequisiteOnlyPairs": 48,
+    "kinematicsTaskPairs": 128,
+    "astronomyTaskPairs": 147
+  },
+  "pairComparison": {
+    "before": "3e6af47aec",
+    "after": "a6117075c1",
+    "oldCount": 4566,
+    "newCount": 4534,
+    "oldGroups": {
+      "legacy": 4248,
+      "addedHesseDuration": 318,
+      "addedLandSekI": 0
+    },
+    "newGroups": {
+      "legacy": 4218,
+      "addedHesseDuration": 316,
+      "addedLandSekI": 0
+    },
+    "removedGroups": {
+      "legacy": 30,
+      "addedHesseDuration": 2,
+      "addedLandSekI": 0
+    },
+    "addedGroups": {
+      "legacy": 0,
+      "addedHesseDuration": 0,
+      "addedLandSekI": 0
+    },
+    "removed": [
+      {
+        "viewId": "de-bb-gym-physics-gk",
+        "filename": "de-bb-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-bb-gym-sekii-physics-gk",
+        "filename": "de-bb-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BB",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-be-gym-physics-gk",
+        "filename": "de-be-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-be-gym-sekii-physics-gk",
+        "filename": "de-be-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-BE",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-de-gym-physics-gk",
+        "filename": "de-de-gym-physics-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-de-gym-sekii-physics-gk",
+        "filename": "de-de-gym-sekii-physics-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-hb-gym-physics-gk",
+        "filename": "de-hb-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-hb-gym-sekii-physics-gk",
+        "filename": "de-hb-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HB",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-he-gym-physics-gk-g8",
+        "filename": "de-he-gk-g8.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "addedHesseDuration",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "durationModel": "G8"
+        }
+      },
+      {
+        "viewId": "de-he-gym-physics-gk-g9",
+        "filename": "de-he-gk-g9.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "addedHesseDuration",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "durationModel": "G9"
+        }
+      },
+      {
+        "viewId": "de-he-gym-physics-gk",
+        "filename": "de-he-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-he-gym-sekii-physics-gk",
+        "filename": "de-he-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HE",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-hh-gym-physics-gk",
+        "filename": "de-hh-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-hh-gym-sekii-physics-gk",
+        "filename": "de-hh-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-HH",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-mv-gym-physics-gk",
+        "filename": "de-mv-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-mv-gym-sekii-physics-gk",
+        "filename": "de-mv-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-MV",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-ni-gym-physics-gk",
+        "filename": "de-ni-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-ni-gym-sekii-physics-gk",
+        "filename": "de-ni-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NI",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-nw-gym-physics-gk",
+        "filename": "de-nw-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-nw-gym-sekii-physics-gk",
+        "filename": "de-nw-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-NW",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-rp-gym-physics-gk",
+        "filename": "de-rp-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "CrossStage",
+          "courseProfile": "GK",
+          "jurisdiction": "DE-RP"
+        }
+      },
+      {
+        "viewId": "de-rp-gym-sekii-physics-gk",
+        "filename": "de-rp-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "stage": "SekII",
+          "courseProfile": "GK",
+          "jurisdiction": "DE-RP"
+        }
+      },
+      {
+        "viewId": "de-sh-gym-physics-gk",
+        "filename": "de-sh-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-sh-gym-sekii-physics-gk",
+        "filename": "de-sh-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SH",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-sl-gym-physics-gk",
+        "filename": "de-sl-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-sl-gym-sekii-physics-gk",
+        "filename": "de-sl-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SL",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-sn-gym-physics-gk",
+        "filename": "de-sn-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-sn-gym-sekii-physics-gk",
+        "filename": "de-sn-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-SN",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-st-gym-physics-gk",
+        "filename": "de-st-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-st-gym-sekii-physics-gk",
+        "filename": "de-st-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-ST",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-th-gym-physics-gk",
+        "filename": "de-th-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "CrossStage",
+          "courseProfile": "GK"
+        }
+      },
+      {
+        "viewId": "de-th-gym-sekii-physics-gk",
+        "filename": "de-th-sekii-gk.view.json",
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "rootId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "group": "legacy",
+        "scope": {
+          "schoolForm": "Gymnasium",
+          "jurisdiction": "DE-TH",
+          "stage": "SekII",
+          "courseProfile": "GK"
+        }
+      }
+    ],
+    "added": []
+  },
+  "nativePairInventoryEqualsIndependentCurrentComputation": true,
+  "everyRemovedGoalId": [
+    "a9562b05-c54d-5635-9244-3f7dd24a8642"
+  ],
+  "everyRemovedCanonicalRootId": [
+    "424b07df-bf66-5d7f-99f5-f28b32ad1f22"
+  ],
+  "removedCourseProfile": "GK",
+  "precedingIndependentMultiphaseRetirement": {
+    "goalId": "2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+    "courseProfiles": {
+      "LK": 32
+    },
+    "groups": {
+      "legacy": 30,
+      "addedHesseDuration": 2,
+      "addedLandSekI": 0
+    },
+    "evidencePath": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-multiphase-disposition-20261124/old-offer-views.actual.json",
+    "unchangedByTaskA": true
+  },
+  "historicalFloorReconstruction": {
+    "legacy": {
+      "current": 4218,
+      "precedingRetiredMP": 30,
+      "newlyRetiredMixed": 30,
+      "reconstructed": 4278,
+      "originalFixedFloor": 4278
+    },
+    "addedHesseDuration": {
+      "current": 316,
+      "precedingRetiredMP": 2,
+      "newlyRetiredMixed": 2,
+      "reconstructed": 320,
+      "originalFixedFloor": 320
+    },
+    "addedLandSekI": {
+      "current": 0,
+      "precedingRetiredMP": 0,
+      "newlyRetiredMixed": 0,
+      "reconstructed": 0,
+      "originalFixedFloor": 0
+    },
+    "total": {
+      "current": 4534,
+      "precedingRetiredMP": 32,
+      "newlyRetiredMixed": 32,
+      "reconstructed": 4598,
+      "originalFixedFloor": 4598
+    }
+  },
+  "laterAssertions": {
+    "otherAggregateCountKeys": [
+      "viewCount",
+      "fermiScopeViewCount",
+      "kinematicsTaskPairs",
+      "astronomyTaskPairs",
+      "abiturTaskPairs",
+      "preservedSekITaskPairs",
+      "preservedPrerequisiteOnlyPairs",
+      "filteredPrerequisiteOnlyPairs"
+    ],
+    "allOtherAggregateChecksPass": true,
+    "missingAstronomyNegativeCheck": "PASS",
+    "CQR104": {
+      "status": "pass",
+      "relevantCompositionViews": 56,
+      "evaluatedProjectionScopes": 106
+    }
+  },
+  "method": "Scratch copy of exact A test records all three assertCount equalities instead of throwing; other own-module assertions retained and run through final CQR check. Unrelated imported testCurriculumQualityStatus fixture suite omitted in the scratch copy. Independent native normalizeLandscape/collectCompositionProjectionRoleGoalIds/goalMatchesFilters computation compares per-pair before/after from Git objects. No claim of full npm test-chain success.",
+  "scopedRecommendation": [
+    "Keep the original fixed floor 4278 legacy / 320 added HE duration (total4598).",
+    "Derive eligible retirement pairs from the exact retained pre-retirement goal/catalog and view inventory with the same course, jurisdiction, prerequisiteOnly and own-variant filters. Compare pair identities, not raw removed-node counts: only32 of64 raw removed view nodes were eligible here.",
+    "Assert old-vs-current pair difference equals exactly the32 a9562b05 pairs in this result; assert zero additions and no other removals. Validate a reconstructed before-inventory against4248 legacy /318 addedHE (already after preceding MP retirement); restoring the prior documented MP pairs then gives4278/320.",
+    "Use current counts plus the explicitly proven retired-pair groups to retain the original floor; change only this practiceTaskPairs aggregate call/comment. Preserve all other exact count assertions, old MP retirement counts and CQR/negative checks.",
+    "Add/retain a negative check that removing an unrelated current eligible offer fails the reconstructed floor rather than enlarging a retirement allowance."
+  ]
+}

@@ -1,0 +1,1055 @@
+{
+  "workflow": ".github/workflows/ci.yml",
+  "workflowFileSHA256": "b285144be947a4a1afc43cc5a48da46736c3ace121b26dcb60ef40960cfd8092",
+  "jobId": "frontend-ci",
+  "jobName": "Application frontend CI",
+  "head": "048683d361d2b559240a279d86a3a5562402899e",
+  "tree": "43912446cfb0fce1a40123cd1024c978153d5929",
+  "result": "failure",
+  "exitCode": 1,
+  "completedAtUtc": "2026-11-25T02:22:10.817846+00:00",
+  "stepCount": 54,
+  "failedSteps": [
+    "Test native learner map and focused cockpit regression"
+  ],
+  "steps": [
+    {
+      "workflowPosition": 1,
+      "name": "Reserve disk space for the complete repository",
+      "workingDirectory": "runner temporary directory",
+      "definition": {
+        "run": "set -euo pipefail\ntest \"${RUNNER_ENVIRONMENT:-}\" = github-hosted\ntest \"${RUNNER_OS:-}\" = Linux\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# Keep Python, Java/JDK and Node caches plus system build tools.\nsudo rm -rf -- \\\n  /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup \\\n  /usr/share/swift /usr/local/julia* /usr/share/miniconda \\\n  /opt/az /opt/microsoft/powershell /usr/local/share/powershell \\\n  /usr/local/share/boost /usr/local/share/vcpkg \\\n  /home/linuxbrew \"${HOME}/.rustup\" \"${HOME}/.cargo\"\nif [ -d /opt/hostedtoolcache ]; then\n  sudo find /opt/hostedtoolcache -mindepth 1 -maxdepth 1 \\\n    ! -name Python ! -name 'Java*' ! -iname 'node*' -exec rm -rf -- {} +\nfi\nif ! sudo docker image prune --all --force; then\n  echo \"::warning::Docker image cleanup unavailable; the disk budget is still required.\"\nfi\nsudo apt-get clean\ndf -h \"${GITHUB_WORKSPACE}\"\ndf -i \"${GITHUB_WORKSPACE}\"\n# 43 GiB worktree + 15 GiB shallow Git reserve + 8 GiB dependencies/builds.\nrequired_bytes=$((66 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail \"${GITHUB_WORKSPACE}\" | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Full checkout needs ${required_bytes} free bytes; only ${available_bytes} are available after cleanup.\"\n  exit 1\nfi\n"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "evidenceType": "local disk preflight",
+      "detail": "Checked real native-ext4 plus external overflow pool availability against the workflow 66-GiB threshold. The shared machine retained its installed SDKs.",
+      "requiredBytes": 70866960384,
+      "availableBytes": 750889041920,
+      "logSHA256": "dd875ea5ceccafa7995d86b1ce7a4848bd4767c687dc1ba91348d3d2aef0bae0"
+    },
+    {
+      "workflowPosition": 2,
+      "name": "Checkout",
+      "workingDirectory": "app",
+      "definition": {
+        "action": "actions/checkout@v6",
+        "with": {}
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "evidenceType": "local checkout equivalent",
+      "detail": "Fresh detached, tracked-only candidate inventory. Validated seven changed blobs over the verified previous tree, the complete Git staged tree hash and a clean ignored/untracked report before attaching dependencies.",
+      "tree": "43912446cfb0fce1a40123cd1024c978153d5929",
+      "trackedPathCount": 215618,
+      "logSHA256": "53f087c04dcc14a7a5f86639dc6748abad5bd85adbe753db995d7bb7d72306f6"
+    },
+    {
+      "workflowPosition": 3,
+      "name": "Verify disk reserve after the complete checkout",
+      "workingDirectory": "checkout directory",
+      "definition": {
+        "run": "set -euo pipefail\ndf -h .\ndf -i .\ndu -sh .git\nrequired_bytes=$((8 * 1024 * 1024 * 1024))\navailable_bytes=\"$(df -B1 --output=avail . | tail -n 1)\"\nif [ \"${available_bytes}\" -lt \"${required_bytes}\" ]; then\n  echo \"::error::Dependencies and builds need ${required_bytes} free bytes after checkout; only ${available_bytes} remain.\"\n  exit 1\nfi\n"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "evidenceType": "local disk reserve",
+      "requiredBytes": 8589934592,
+      "availableBytes": 750889025536,
+      "logSHA256": "24c1b4d0922fd23c53944675d88a510bb794b01e1eb2efcfbab34da273c71493"
+    },
+    {
+      "workflowPosition": 4,
+      "name": "Use Node.js",
+      "workingDirectory": "app",
+      "definition": {
+        "action": "actions/setup-node@v6",
+        "with": {
+          "node-version-file": ".nvmrc",
+          "cache": "npm",
+          "cache-dependency-path": "app/package-lock.json"
+        }
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "505a3415201a37668a0b0d4d118573125c507a5a",
+      "startedAtUtc": "2026-11-25T01:44:06.165485+00:00",
+      "finishedAtUtc": "2026-11-25T01:44:06.274428+00:00",
+      "durationSeconds": 0.108943,
+      "logSHA256": "956de3d85d7653691a444e40beb10c49434e17021b331c934966bf7c86aaf6da",
+      "evidenceType": "verified reuse of completed local setup",
+      "detail": "Originating setup command exited 0 on the prior head. Verified the same workflow, lockfiles and runtime on the frozen head; reused the installed tools and app dependencies.",
+      "frozenSetupVerificationSHA256": "1cf7da30a56379b36fa535b14928e3e3108f8520f32b92165a13622d6293ecd9"
+    },
+    {
+      "workflowPosition": 5,
+      "name": "Install dependencies",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm ci"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "505a3415201a37668a0b0d4d118573125c507a5a",
+      "startedAtUtc": "2026-11-25T01:44:06.274740+00:00",
+      "finishedAtUtc": "2026-11-25T01:45:37.542812+00:00",
+      "durationSeconds": 91.268072,
+      "logSHA256": "979952d3f66a673d615f2f0b64a0648e4cad4e606e9802a4f1263d5d3c305d2d",
+      "evidenceType": "verified reuse of completed local setup",
+      "detail": "Originating setup command exited 0 on the prior head. Verified the same workflow, lockfiles and runtime on the frozen head; reused the installed tools and app dependencies.",
+      "frozenSetupVerificationSHA256": "1cf7da30a56379b36fa535b14928e3e3108f8520f32b92165a13622d6293ecd9"
+    },
+    {
+      "workflowPosition": 6,
+      "name": "Use Ubuntu package sources",
+      "workingDirectory": "app",
+      "definition": {
+        "action": "./.github/actions/ubuntu-apt",
+        "with": {}
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "505a3415201a37668a0b0d4d118573125c507a5a",
+      "startedAtUtc": "2026-11-25T01:45:37.548231+00:00",
+      "finishedAtUtc": "2026-11-25T01:45:37.610876+00:00",
+      "durationSeconds": 0.062645,
+      "logSHA256": "462e219dfd237191cba3c55d3c78a6618f41888f80efb259b24d2f1f0032e053",
+      "evidenceType": "verified reuse of completed local setup",
+      "detail": "Originating setup command exited 0 on the prior head. Verified the same workflow, lockfiles and runtime on the frozen head; reused the installed tools and app dependencies.",
+      "frozenSetupVerificationSHA256": "1cf7da30a56379b36fa535b14928e3e3108f8520f32b92165a13622d6293ecd9"
+    },
+    {
+      "workflowPosition": 7,
+      "name": "Install FFmpeg and PDF validation tools",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "sudo apt-get update && sudo apt-get install --yes --no-install-recommends ffmpeg poppler-utils fontconfig fonts-liberation"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "505a3415201a37668a0b0d4d118573125c507a5a",
+      "startedAtUtc": "2026-11-25T01:45:37.611180+00:00",
+      "finishedAtUtc": "2026-11-25T01:45:45.555645+00:00",
+      "durationSeconds": 7.944465,
+      "logSHA256": "8eee8d7066d4f9c543aa214500f2d02abdf5e4cc0eec794ef650fe166612da4d",
+      "evidenceType": "verified reuse of completed local setup",
+      "detail": "Originating setup command exited 0 on the prior head. Verified the same workflow, lockfiles and runtime on the frozen head; reused the installed tools and app dependencies.",
+      "frozenSetupVerificationSHA256": "1cf7da30a56379b36fa535b14928e3e3108f8520f32b92165a13622d6293ecd9"
+    },
+    {
+      "workflowPosition": 8,
+      "name": "Install pinned Playwright Chromium",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npx --no-install playwright install --with-deps chromium"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "505a3415201a37668a0b0d4d118573125c507a5a",
+      "startedAtUtc": "2026-11-25T01:45:45.555932+00:00",
+      "finishedAtUtc": "2026-11-25T01:45:53.782403+00:00",
+      "durationSeconds": 8.226471,
+      "logSHA256": "357dfd3a389ff0b8c8fc188347fd954669a3f3ffe79c42c1263fff8cf0672197",
+      "evidenceType": "verified reuse of completed local setup",
+      "detail": "Originating setup command exited 0 on the prior head. Verified the same workflow, lockfiles and runtime on the frozen head; reused the installed tools and app dependencies.",
+      "frozenSetupVerificationSHA256": "1cf7da30a56379b36fa535b14928e3e3108f8520f32b92165a13622d6293ecd9"
+    },
+    {
+      "workflowPosition": 9,
+      "name": "Restore same-run verified goal-book publications",
+      "workingDirectory": "app",
+      "definition": {
+        "action": "actions/download-artifact@v7",
+        "with": {
+          "name": "goal-book-publication-${{ github.sha }}",
+          "path": "app/public/lernzielbuch/"
+        }
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:17.965488+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:25.064917+00:00",
+      "durationSeconds": 7.099429,
+      "logSHA256": "b6d282362e2a738265ac9445f31bbb7cd542e878232aef4d989c484ff03b1f19",
+      "evidenceType": "candidate-verified local artifact restore",
+      "originatingProducerHead": "a6117075c1ac7776a1af0a0c9b790fda9a980225",
+      "zipSHA256": "b5a856a2b1dc8c6d9db547ed58fa23a564a9a76ce63845412a36523a9ab27f11",
+      "verifiedFiles": 22
+    },
+    {
+      "workflowPosition": 10,
+      "name": "Test deterministic ZIP32 writer",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:deterministic-zip32"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:25.065526+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:26.342499+00:00",
+      "durationSeconds": 1.276973,
+      "logSHA256": "90f4b62c70be5225ee11ffbf570620d7c77d5ea81fdf459941bc93e6abfab004",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 11,
+      "name": "Test package landscape model parity",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:package-landscape-model"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:26.342791+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:26.694776+00:00",
+      "durationSeconds": 0.351985,
+      "logSHA256": "0082b6553b928ca29169c79d0b1ceedb68b2d52b10ca700ee85bdba9a00ffc51",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 12,
+      "name": "Test runtime curriculum catalog consumer",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:runtime-curriculum-catalog"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:26.695136+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:27.057139+00:00",
+      "durationSeconds": 0.362003,
+      "logSHA256": "2ecd6ff613a3119fd3cb48bb3691a9b3928c1686e15e80226e11812730b7ada8",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 13,
+      "name": "Test root route policy",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:root-route-policy"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:27.057407+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:27.455099+00:00",
+      "durationSeconds": 0.397692,
+      "logSHA256": "9b5d74a0fdf7788b12999add3c6abe45efff7091de8dce007018373eeb3a52fb",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 14,
+      "name": "Test Claude v1 first-party start flow",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:claude-v1-start"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:27.455349+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:28.110875+00:00",
+      "durationSeconds": 0.655526,
+      "logSHA256": "a9607b334cc5c851f20160f29ed2749d5424e86867ae60bb06034aa6570fefed",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 15,
+      "name": "Test Claude plugin publication consumer",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:claude-plugin-publication"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:28.111211+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:55.746381+00:00",
+      "durationSeconds": 27.63517,
+      "logSHA256": "a4aa18a4c125548945067a5b1d1d27cef39aef396cd1134bd4c91d800a5bd910",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 16,
+      "name": "Test service-worker navigation policy",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:service-worker-navigation-policy"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:55.746619+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:56.085064+00:00",
+      "durationSeconds": 0.338445,
+      "logSHA256": "f67bca67a2a32ff22c8ab0b04e48f6cc8a5ffad3f7682998f2b164acddc76015",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 17,
+      "name": "Test curriculum offering sources",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:curriculum-offering-source"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:56.085371+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:56.562080+00:00",
+      "durationSeconds": 0.476709,
+      "logSHA256": "1413542be4be606f9ac2c490021c70ec99110ab9d3e2533c86cce3171f3e9159",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 18,
+      "name": "Test package goal source evidence consumer",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:package-goal-source-evidence"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:56.562440+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:56.948842+00:00",
+      "durationSeconds": 0.386402,
+      "logSHA256": "eaf154a09281d34a1b1203de9e0aa9f4f6ff37ec252075a2133564303bfc3cf2",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 19,
+      "name": "Test goal source-rationale deployment smoke modes",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:goal-source-rationale-deployment-smoke"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:56.949121+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:57.424630+00:00",
+      "durationSeconds": 0.475509,
+      "logSHA256": "01e3d4302d5b793ca1c8ae16d816f7f99bfb9f5c55e2a5334412f12b1cbf92be",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 20,
+      "name": "Test goal visualization QA approval model",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:goal-visualization-qa-status\nnpm run test:goal-visualization-qa-model\nnpm run test:goal-visualization-scope\nnpm run test:goal-visualization-rollout-status\nnpm run test:goal-visualization-approval-coverage\n"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:57.424923+00:00",
+      "finishedAtUtc": "2026-11-25T01:51:59.067232+00:00",
+      "durationSeconds": 1.642309,
+      "logSHA256": "d8517947f2e749519dec44bf87a0ffd6c4bd0bcd123b56fefe9ecbcda2b25734",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 21,
+      "name": "Test learner goal selection",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run validate:learner-goal-selection"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:51:59.067553+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:02.055583+00:00",
+      "durationSeconds": 2.98803,
+      "logSHA256": "2e799d1bb82b54d2b9847a39d91dc5012ce310e2691f168cb2671ed8a6eb2fa6",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 22,
+      "name": "Check GPT system instruction lengths",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run check:gpt-system-instruction-lengths"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:02.055933+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:02.223085+00:00",
+      "durationSeconds": 0.167152,
+      "logSHA256": "190cc979f2ad7f6910716177bfddc0d0a4872ba75d61d13d2c8224753dd59451",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 23,
+      "name": "Test coach variant selection",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:coach-variants"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:02.223328+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:03.513491+00:00",
+      "durationSeconds": 1.290163,
+      "logSHA256": "a448485a209706b1551230b87a90a6032f20835bed1db5a5add9be2962aaa0a6",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 24,
+      "name": "Test optional learner content materials",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:content-materials"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:03.513753+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:12.680894+00:00",
+      "durationSeconds": 9.167141,
+      "logSHA256": "b00a7640ed68b12f201ff2fdfa2fcd02061eeca1ddac739c72b3f3e94792dea9",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 25,
+      "name": "Test contextual AI transparency",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:ai-transparency-ui"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:12.681225+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:13.167167+00:00",
+      "durationSeconds": 0.485942,
+      "logSHA256": "8648ec956bf7544fc69947e102417dd04544d048f45493b6d1a9c6292e18c4d1",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 26,
+      "name": "Test Terms of Use and versioned acceptance",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:legal-terms"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:13.167501+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:14.248642+00:00",
+      "durationSeconds": 1.081141,
+      "logSHA256": "3336151208df314c6ce196661d7717fde3ebdf6e58878764f405a54cee55da9e",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 27,
+      "name": "Test remote AI transparency artifact crawler",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:ai-transparency-artifact"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:14.248914+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:15.081184+00:00",
+      "durationSeconds": 0.83227,
+      "logSHA256": "455664737f95283fb5c0320647df12e082fdaeee7d4bedf8e38dbc77183792dc",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 28,
+      "name": "Test frontend shell asset verifier",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:frontend-shell-assets"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:15.081494+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:15.639498+00:00",
+      "durationSeconds": 0.558004,
+      "logSHA256": "462d97d4839c0e67ddb840691366d62b5152a4a3d7b549d848e242f0596829c2",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 29,
+      "name": "Test SkillPilot ID encryption",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:skillpilot-id-file"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:15.639857+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:16.610588+00:00",
+      "durationSeconds": 0.970731,
+      "logSHA256": "a292cd83f9ebcb70e93b45a3f4da4368ea5bd073582a198d7416580801c4c283",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 30,
+      "name": "Test session setup",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:session-setup"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:16.610933+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:18.353384+00:00",
+      "durationSeconds": 1.742451,
+      "logSHA256": "1a2eb33693eb72e24850f2664a987402a3090f682661e58e8f0cd1ae40fa545d",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 31,
+      "name": "Test public FAQ copy",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:faq"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:18.353631+00:00",
+      "finishedAtUtc": "2026-11-25T01:52:19.745966+00:00",
+      "durationSeconds": 1.392335,
+      "logSHA256": "6a88edcf728b17e9f95e40a412c7052373507cd24959769bcfb0d4d786ed69f8",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 32,
+      "name": "Test public landing page and overview",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:public-landing\nnpm run test:public-overview\n"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:52:19.746236+00:00",
+      "finishedAtUtc": "2026-11-25T01:53:47.714503+00:00",
+      "durationSeconds": 87.968267,
+      "logSHA256": "cecbd8a6c4aefdd18105d3f4e97b7edb0dc7782bc8435a93c23062a3b4d56bec",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 33,
+      "name": "Test existing learner linking",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:existing-learner-linking"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:53:47.715077+00:00",
+      "finishedAtUtc": "2026-11-25T01:54:14.870361+00:00",
+      "durationSeconds": 27.155284,
+      "logSHA256": "f9c186a77b0817c59881117a88946a999028e1de1560a274549aefdd338a31f5",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 34,
+      "name": "Test trainer course planning",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:trainer-course-plan"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:54:14.870558+00:00",
+      "finishedAtUtc": "2026-11-25T01:54:59.868729+00:00",
+      "durationSeconds": 44.998171,
+      "logSHA256": "2fd269371dc01519dfb7b45a7cb894142a1cd3a0ce015c35b15f738258a7e1c7",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 35,
+      "name": "Test learner-owned subject plans and Cockpit status",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:learner-learning-plans"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:54:59.868969+00:00",
+      "finishedAtUtc": "2026-11-25T01:55:42.403849+00:00",
+      "durationSeconds": 42.53488,
+      "logSHA256": "d072957e6b96bccad5a22250f5bddbd83602ec017db5976db60b594b979b7647",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 36,
+      "name": "Test quiet and bounded learner cockpit startup",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:learner-cockpit-startup"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:55:42.404062+00:00",
+      "finishedAtUtc": "2026-11-25T01:56:13.404034+00:00",
+      "durationSeconds": 30.999972,
+      "logSHA256": "e76e4736948cbf11ae752cd16132520b1e10fc4d004e576cb92478dd30b64c93",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 37,
+      "name": "Test native learner map and focused cockpit regression",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:learner-map"
+      },
+      "result": "failure",
+      "exitCode": 1,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T01:56:13.404272+00:00",
+      "finishedAtUtc": "2026-11-25T02:02:36.101571+00:00",
+      "durationSeconds": 382.697299,
+      "logSHA256": "f03f1a50e5814985158f7ac495e2241781ea1528c1a13331379230b2e720357e",
+      "evidenceType": "local workflow command"
+    },
+    {
+      "workflowPosition": 38,
+      "name": "Test flashcard box rules",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:flashcard-box-rules"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:02:37.211199+00:00",
+      "finishedAtUtc": "2026-11-25T02:02:37.573231+00:00",
+      "durationSeconds": 0.362032,
+      "logSHA256": "746a0103aa34799566bbfc85415c633539a4538c436ede1d77bd0ee1a7d9103e",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 39,
+      "name": "Test read-only learning-goal book UI",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:goal-book-ui"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:02:37.573564+00:00",
+      "finishedAtUtc": "2026-11-25T02:02:58.065525+00:00",
+      "durationSeconds": 20.491961,
+      "logSHA256": "67bd0ec73c6d9aef77149108a910f1213b329749a68af1c4c71070cd556e4b17",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 40,
+      "name": "Test compact completed session setup",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:session-setup-ui"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:02:58.065754+00:00",
+      "finishedAtUtc": "2026-11-25T02:03:16.943185+00:00",
+      "durationSeconds": 18.877431,
+      "logSHA256": "3a0f77ac42048d0745c603409a3a44542f8e6bf07f4ea124234fa5536dd3a41a",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 41,
+      "name": "Test trainer navigation history",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:trainer-navigation-ui"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:03:16.943400+00:00",
+      "finishedAtUtc": "2026-11-25T02:03:27.453837+00:00",
+      "durationSeconds": 10.510437,
+      "logSHA256": "e23eb30b11a5aab72fd2d00ab761b456adf212047f81d7daccff87958095513d",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 42,
+      "name": "Test trainer Gymnasium scope",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:trainer-gymnasium-scope-ui"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:03:27.454059+00:00",
+      "finishedAtUtc": "2026-11-25T02:03:35.904717+00:00",
+      "durationSeconds": 8.450658,
+      "logSHA256": "a543abe0aa908e57eca210c7dcd0b0978447c9d39379e9f5be96c1c286cfc0fc",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 43,
+      "name": "Test learner data and SkillPilot ID management",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:learner-data-management"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:03:35.904955+00:00",
+      "finishedAtUtc": "2026-11-25T02:03:40.851017+00:00",
+      "durationSeconds": 4.946062,
+      "logSHA256": "22415bc9316ab4275b7896801acd23d47e20a9c7e0447b6c1c179466fe6b5fa3",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 44,
+      "name": "Test curriculum quality traffic-light interactions",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:curriculum-quality-ui"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:03:40.851305+00:00",
+      "finishedAtUtc": "2026-11-25T02:04:07.890289+00:00",
+      "durationSeconds": 27.038984,
+      "logSHA256": "c2bfe459b310c2853ebb1566f677e8400ea80612e581b083ffd4f47bf9876192",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 45,
+      "name": "Test personal curriculum editor",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:personal-curriculum-editor"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:04:07.890509+00:00",
+      "finishedAtUtc": "2026-11-25T02:04:09.344810+00:00",
+      "durationSeconds": 1.454301,
+      "logSHA256": "63ba170a37f8ddd8b8fe2a4562023a01d01fa51db47a835edc88ad0bb878e340",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 46,
+      "name": "Lint",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run lint"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:04:09.345041+00:00",
+      "finishedAtUtc": "2026-11-25T02:05:19.074720+00:00",
+      "durationSeconds": 69.729679,
+      "logSHA256": "fcc850d83a5dfc09ffcf5ed7b7be0e29b70e79b65641013caa322ca563024748",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 47,
+      "name": "Build application without regenerating curriculum assets",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run build:application"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:05:19.074999+00:00",
+      "finishedAtUtc": "2026-11-25T02:20:21.031717+00:00",
+      "durationSeconds": 901.956718,
+      "logSHA256": "5ab99c229aa5522c878c99fe1e74b8ae126cf7e108b12058d5237a04d4f6564c",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 48,
+      "name": "Check optional learner map stays outside startup precache",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:learner-map-build"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:20:21.060215+00:00",
+      "finishedAtUtc": "2026-11-25T02:20:21.408386+00:00",
+      "durationSeconds": 0.348171,
+      "logSHA256": "acd6ab3c75c68f360757222074657914377e213f3e74bcc0f9ed106e0b917ec4",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 49,
+      "name": "Test service-worker update lifecycle",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run test:service-worker-update-lifecycle"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:20:21.409559+00:00",
+      "finishedAtUtc": "2026-11-25T02:20:24.707539+00:00",
+      "durationSeconds": 3.29798,
+      "logSHA256": "1657363783685c37bf3830c06c4d01f786f8ef99a9aae55ea259b87b888820d2",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 50,
+      "name": "Check AI transparency inventory",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run check:ai-transparency-inventory"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:20:24.707758+00:00",
+      "finishedAtUtc": "2026-11-25T02:20:52.708727+00:00",
+      "durationSeconds": 28.000969,
+      "logSHA256": "b5827a8c80c7a4d1e2da9923d8cafb271b7087a9b6ac6722c50a87fbe391a561",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 51,
+      "name": "Check frontend shell assets in the built application",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run check:frontend-shell-assets"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:20:52.710436+00:00",
+      "finishedAtUtc": "2026-11-25T02:20:52.839456+00:00",
+      "durationSeconds": 0.12902,
+      "logSHA256": "9387d60b49d810d20ca78e09e1ec9fdf456489235fa292f6cf0dd5dc2efe83ab",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 52,
+      "name": "Check AI transparency in the built application",
+      "workingDirectory": "app",
+      "definition": {
+        "run": "npm run check:ai-transparency-artifact"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:20:52.840335+00:00",
+      "finishedAtUtc": "2026-11-25T02:20:53.703961+00:00",
+      "durationSeconds": 0.863626,
+      "logSHA256": "b16c2d40928233ed660b4e36eefe7e2e9d0d3462320135709d8701caf41728bc",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 53,
+      "name": "Install browser demo-video tool dependencies",
+      "workingDirectory": "tools/demo-video",
+      "definition": {
+        "run": "npm ci --ignore-scripts\nnpx --no-install playwright install --with-deps chromium\n"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:20:53.704915+00:00",
+      "finishedAtUtc": "2026-11-25T02:21:36.321266+00:00",
+      "durationSeconds": 42.616351,
+      "logSHA256": "582673a456926ce63fc03153aff37f1a0cd2a450bc37ef1a297ae537d5c7a6ef",
+      "evidenceType": "diagnostic after workflow failure"
+    },
+    {
+      "workflowPosition": 54,
+      "name": "Validate reproducible browser demo-video tool",
+      "workingDirectory": "tools/demo-video",
+      "definition": {
+        "run": "npm run check\nnpm run demo -- validate --scenario scenarios/example.yaml\nnpm run demo -- validate --scenario scenarios/skillpilot-openai-review.template.yaml\nDEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \\\n  npm run demo -- record --scenario scenarios/example.yaml\nDEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \\\n  npm run demo -- verify-recording --scenario scenarios/example.yaml\n"
+      },
+      "result": "success",
+      "exitCode": 0,
+      "verifiedForHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "originallyRunOnHead": "048683d361d2b559240a279d86a3a5562402899e",
+      "startedAtUtc": "2026-11-25T02:21:36.321526+00:00",
+      "finishedAtUtc": "2026-11-25T02:22:08.999883+00:00",
+      "durationSeconds": 32.678357,
+      "logSHA256": "039ba95d2f6734109d29c61b1a4780eacee437074fa64a721f45858fddac3706",
+      "evidenceType": "diagnostic after workflow failure"
+    }
+  ],
+  "executionScope": {
+    "kind": "local workflow replay",
+    "hostedGitHubActionsRun": false,
+    "environment": "Ubuntu 24.04.5 userspace in a private Linux namespace on WSL2",
+    "infrastructure": "Local tracked checkout, disk preflights, runtime provisioning and same-task artifact restore stand in for GitHub-hosted actions. The clean workspace contains only version-controlled inputs before setup reuse. All 45 entries after the restore were issued locally in the committed workflow order.",
+    "pushedOrMergedByThisJob": false
+  },
+  "setupEquivalence": {
+    "from_head": "505a3415201a37668a0b0d4d118573125c507a5a",
+    "to_head": "048683d361d2b559240a279d86a3a5562402899e",
+    "sha256": {
+      "app/package.json": "e450c9c2633abc3d642675a74a5d7f12f71ba94b093708ec965ff9d0611d0d2b",
+      "app/package-lock.json": "c9504dadb8643394ab72484c77560dd599fe50e9487cf6470fc6bb41038bc175",
+      ".nvmrc": "75053fb82fe4512318dd99556daf58b862fb81c96cf1153249b75f8116edf440",
+      ".github/workflows/ci.yml": "b285144be947a4a1afc43cc5a48da46736c3ace121b26dcb60ef40960cfd8092",
+      ".github/actions/ubuntu-apt/action.yml": "52e0d216d8fa8e28a799be23e24aae1be2ebbc68b83cfd9f967c164e939db274",
+      ".github/actions/ubuntu-apt/apt.conf": "2763854d2c416c4a49db527329e53ebb2753d8e51cfd4ebdcf45c49dffa6b9c3",
+      ".github/actions/ubuntu-apt/render-ubuntu-sources.sh": "86916a2007e57cb2c61788a5940f19a3f8eda4e0ec95fe417d4aa28176db531f",
+      ".github/actions/ubuntu-apt/order-ubuntu-mirrors.sh": "888a3e964634c6ab0dfede9ff4d8496530e0fd9ba4aee772a4c743ab14c195ab",
+      "tools/demo-video/package.json": "738d57f02045b722e67e296770a7b7fa2a0b322884bc37273e93200fe8b07154",
+      "tools/demo-video/package-lock.json": "af7759f70306eae98922f6941a8a830b0136227a0e3274721a73e9ebc7945289"
+    }
+  },
+  "frozenSetupVerification": [
+    "048683d361d2b559240a279d86a3a5562402899e",
+    "v20.20.2",
+    "10.8.2",
+    "c9504dadb8643394ab72484c77560dd599fe50e9487cf6470fc6bb41038bc175  package-lock.json",
+    "d111e11b1ca05ed38c8677a3137115e51c9e51f5117f6feb105f26ebb30a2e6c  node_modules/.package-lock.json",
+    "ffmpeg\t7:6.1.1-3ubuntu5",
+    "fontconfig\t2.15.0-1.1ubuntu2",
+    "fonts-liberation\t1:2.1.5-3",
+    "poppler-utils\t24.02.0-1ubuntu9.11",
+    "1.59.1 147.0.7727.15"
+  ],
+  "publication": {
+    "originatingProducerHead": "a6117075c1ac7776a1af0a0c9b790fda9a980225",
+    "frozenVerificationHead": "048683d361d2b559240a279d86a3a5562402899e",
+    "originalZipSHA256": "b5a856a2b1dc8c6d9db547ed58fa23a564a9a76ce63845412a36523a9ab27f11",
+    "restoredZipSHA256": "b5a856a2b1dc8c6d9db547ed58fa23a564a9a76ce63845412a36523a9ab27f11",
+    "fileCount": 22,
+    "allPayloadsUnchanged": true,
+    "matchingBookIds": [
+      "de-gym-biologie-bundesweit",
+      "de-gym-chemie-bundesweit",
+      "de-gym-mathematik-bundesweit",
+      "de-gym-physik-bundesweit",
+      "de-gym-wirtschaftswissenschaften-bundesweit"
+    ],
+    "fullPublicationVerification": "5 books verified; 0 re-rendered on frozen head",
+    "inputAndOutputLogSHA256": "120d66847d9a391e757aade0398c51635a4e76be958623143d5cd3c5c4f10ddd"
+  },
+  "diagnosticsFollowingAShortCircuitedCommand": [
+    {
+      "parent": 36,
+      "sequence": 1,
+      "command": "tsx scripts/testHesseLearnerUnitMapCalendar.ts",
+      "exit": 0,
+      "log": "36-diagnostic-01.log"
+    },
+    {
+      "parent": 36,
+      "sequence": 2,
+      "command": "tsx scripts/testLearnerUnitMapLayout.ts",
+      "exit": 0,
+      "log": "36-diagnostic-02.log"
+    }
+  ],
+  "demoTool": {
+    "tap": {
+      "tests": 171,
+      "pass": 171,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "checks": [
+      "CHECK scenario PASS id=local-example chapters=1",
+      "CHECK scenario PASS id=skillpilot-openai-review-v1 chapters=5",
+      "CHECK recording PASS output/local-example-a72b33734d22/recording.webm",
+      "CHECK recording_privacy PASS screenshots=3 mask_pixels=39804"
+    ]
+  },
+  "failureDetails": [
+    {
+      "workflowPosition": 37,
+      "step": "Test native learner map and focused cockpit regression",
+      "exitCode": 1,
+      "excerpt": "AssertionError [ERR_ASSERTION]: undefined == true\n    at <anonymous> (app/scripts/testHessePhysicsFlashcardActions.ts:61:1) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: undefined,\n  expected: true,\n  operator: '=='",
+      "assertion": "assert(memoryId && examId)",
+      "source": "app/scripts/testHessePhysicsFlashcardActions.ts:61",
+      "material": "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+      "unit": "physics-e1-motion",
+      "flashcardGoalId": "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
+      "assessmentGoalIdPresent": false,
+      "assessmentGoalId": null,
+      "precedingMemoryUiPassed": true
+    }
+  ]
+}

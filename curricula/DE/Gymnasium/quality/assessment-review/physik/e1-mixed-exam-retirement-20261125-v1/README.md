@@ -82,6 +82,24 @@ its activities. Before this change the coach left out the focused unit in that c
 | `goal.before.json`, `goal.after.json` | The exam goal at the base commit and now |
 | `material.before.json`, `material.after.json` | The E.1 parent material before and after; the before bytes equal the after bytes of the earlier one-field successor (`zb-successor-voluntary-scope-20261124`) |
 | `follow-up-checks.actual.json` | Measured effects beyond the 64 view nodes: the learning set of each changed view, the Mathematics demand policy and the quality status |
+| `independent-review/` | The independent review: `independent-review.actual.json` (verdict per question, bound to both records at `e36e7579f8`), the report `review.md`, the unchanged answers of both reviewers and their execution records |
+
+## Independent review
+
+The retirement was implemented by Claude and reviewed by two separate reviewer models run by Codex
+(`gpt-6.1-sol`, `gpt-6.2-astra`), first on `a6117075c1`, finally on `e36e7579f8`. Both accept it;
+no required correction is open. The status field in `retirement.actual.json` describes the record
+at the time it was handed to review and is not rewritten, because the review binds its bytes.
+
+The review found, and the following commits corrected: the coach left out the focused unit when
+the retired exam was still the stored active goal; 48 stale pinned hashes of Physics source views
+in the Mathematics demand policy; a floor of visible practice tasks and two map tests that still
+counted or named the exam; my statement about dedicated exams "in all Länder", now counted per
+view; and the two qualifications on stored plans and on parts A to D.
+
+Not covered by an automated test: the coach tool with the unit-assignment pilot off. The service
+test runs with the pilot off, the coach tool test with the pilot on, both through the same guard;
+the review probed the real read with the pilot off (`independent-review/coach-probe-method.java`).
 
 ## Measured effects
 
