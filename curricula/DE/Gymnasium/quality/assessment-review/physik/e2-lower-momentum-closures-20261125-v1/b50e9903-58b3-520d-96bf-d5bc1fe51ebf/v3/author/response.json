@@ -1,0 +1,595 @@
+{
+  "assessment": {
+    "titleDE": "Mittlere Kraft auf einen Wagen",
+    "titleEN": "Average force on a cart",
+    "descriptionDE": "Aus zwei vorzeichenbehafteten Impulsmessungen die mittlere resultierende äußere Kraft bestimmen und ihre Richtung deuten.",
+    "descriptionEN": "Determine the average net external force from two signed momentum measurements and interpret its direction.",
+    "taskDE": "Ein Wagen mit unveränderlicher Masse bewegt sich auf einer geraden Bahn. Das ruhende Labor wird als Inertialsystem betrachtet. Nach rechts ist die positive Richtung.\n\nGemessen werden:\n• bei t₁=2,0 s: p₁=+8,0 kg·m/s;\n• bei t₂=5,0 s: p₂=−4,0 kg·m/s.\n\nBestimme die mittlere resultierende äußere Kraft auf den Wagen zwischen diesen Zeitpunkten. Gib dein Ergebnis in Newton an und erkläre, was sein Vorzeichen für die Kraftrichtung bedeutet. Zeige deinen Rechenweg.",
+    "taskEN": "A cart of fixed mass moves along a straight track. The stationary laboratory is treated as an inertial frame. Right is the positive direction.\n\nMeasurements:\n• at t₁=2.0 s: p₁=+8.0 kg·m/s;\n• at t₂=5.0 s: p₂=−4.0 kg·m/s.\n\nDetermine the average net external force on the cart between these times. Give your result in newtons and explain what its sign means for the force direction. Show your working.",
+    "solutionDE": "Δp=p₂−p₁=(−4)−(+8)=−12 kg·m/s; Δt=5−2=3 s.\nF̄=Δp/Δt=−12/3=−4 N. Negativ bedeutet bei rechts positiv: Die mittlere resultierende äußere Kraft zeigt nach links.\nGleichwertige gültige Wege, exakte Zahlenterme und konsistent umgekehrte Achsen zählen; getrennte Zwischenzeilen sind unnötig. Die Daten liefern einen Intervallmittelwert.\nBewertung: 3+4+3 P; bestanden allein ab 8/10. Nur allgemeine Änderungsformel: 0,5/3. Quotient ohne angewandte Zeitspanne: A=0,5/3. Deutung: 0,5 für das Kraftvorzeichen, 2,5 für die physikalische Richtung. Eine ausdrückliche unbegründete Folgerung auf konstante oder bestimmte momentane Kraft kostet einmal 2,5 in meanForce (mindestens 0); Schweigen kostet nichts, eine Momentanrechnung ist nicht verlangt. Je eigenständigem isoliertem Formfehler bei sichtbarem Kern höchstens 0,5 einmal am Ursprung; keine Folgeabzüge. Details und Teilpunkte stehen in den Kriterien.",
+    "solutionEN": "Δp=p₂−p₁=(−4)−(+8)=−12 kg·m/s; Δt=5−2=3 s.\nF̄=Δp/Δt=−12/3=−4 N. With right positive, negative means that the average net external force points left.\nEquivalent valid methods, exact numerical expressions and consistently reversed axes count; separate intermediate lines are unnecessary. The data give an interval average.\nScoring: 3+4+3 points; pass solely at 8/10. General change formula only: 0.5/3. Quotient without applied elapsed time: A=0.5/3. Direction: 0.5 for force sign, 2.5 for physical interpretation. An explicit unsupported inference of constant force or a particular instantaneous force costs 2.5 once in meanForce (floor 0); silence costs nothing and no instantaneous calculation is required. Each distinct isolated formal slip with visible core costs at most 0.5 once at its origin; no consequential deductions. The criteria specify partial credit.",
+    "maxPoints": 10,
+    "passingPoints": 8,
+    "criteria": [
+      {
+        "id": "momentumChange",
+        "points": 3,
+        "descriptionDE": "3 P: vorzeichenbehaftete Zahlenänderung −12 kg·m/s, exakter Term (−4)−(+8) oder gleichwertige numerische Evidenz, auch eingebettet/bei umgekehrter Achse. 0,5: nur unbestrittenes p_Ende−p_Anfang ohne Zahlenanwendung; sonst 0. Beibehaltener falscher Änderungs-/Vorzeichenansatz: 0, auch neben richtiger Formel. Keine Zahlenänderung aus der Endkraft rekonstruieren. Klare Zwischeneinheiten dürfen implizit sein. Sichtbar richtiger Kern mit isoliertem Fehler: höchstens −0,5 einmal am Ursprung, konsistente Folgen anerkennen.",
+        "descriptionEN": "3: signed numerical change −12 kg·m/s, exact term (−4)−(+8), or equivalent numerical evidence, including embedded working/reversed axis. 0.5: only uncontradicted p_end−p_start with no numerical application; otherwise 0. A maintained wrong change/sign operation earns 0 even beside a correct formula. Do not reconstruct a numerical change from the final force. Clear intermediate units may be implicit. A visibly sound core with an isolated slip loses at most 0.5 once at its origin; credit consistent consequences.",
+        "carryingPerformance": "Signed numerical momentum-change application carries 3 points. General order alone retains only 0.5: missing numerical application loses 2.5 > 2 slack, capping the total at 7.5. A maintained wrong change rule earns 0, capping it at 7 even with full follow-through."
+      },
+      {
+        "id": "meanForce",
+        "points": 4,
+        "descriptionDE": "A+B+C. A=3: Δp/Δt (auch Betrag) mit benutzten 3 s bzw. (5−2) s; andernorts gezeigte und benutzte Dauer zählt. A=0,5: nur allgemeiner Quotient ohne angewandte Dauer ODER nur richtige Dauer; nicht addieren; sonst 0. Beibehaltene falsche Beziehung/Dauer: A=0, höchstens 0,5 für unabhängig richtige Dauer. B=0,5: richtiger Kraftwert, exakter numerisch bestimmter Term oder richtige Rechnung im eigenen Ansatz. C=0,5: N/gleichwertige Einheit am Kraftergebnis. Eigene falsche Δp zulässig. Δp/(3 s) ohne numerische Δp und ohne Kraftwert: B=0. Unbegründete Folgerung aus dem Mittelwert auf konstante/bestimmte momentane Kraft: hier einmal −2,5, Minimum 0, auch bei beiden Behauptungen. Schweigen: kein Abzug. Isolierter Fehler: höchstens −0,5 einmal am Ursprung, keine Folgeabzüge.",
+        "descriptionEN": "A+B+C. A=3: Δp/Δt (also magnitude) using 3 s or (5−2) s; elapsed time shown elsewhere and used counts. A=0.5: only a general quotient without applied duration OR correct duration alone; do not add; otherwise 0. Maintained wrong relation/duration: A=0, at most 0.5 for independently correct duration. B=0.5: correct force value, exact numerically fixed expression or correct arithmetic in the own setup. C=0.5: N/equivalent unit on the force result. Own wrong Δp is allowed. Δp/(3 s) without numerical Δp or force value: B=0. Unsupported inference from the mean to constant/a particular instantaneous force: subtract 2.5 here once, floor 0, even for both claims. Silence: no deduction. Isolated slip: at most 0.5 once at its origin, no consequential deductions.",
+        "carryingPerformance": "The interval-average calculation carries 4 points. Without numerical application of the actual elapsed interval, A is at most 0.5 and B+C at most 1, so the total is at most 7.5. A maintained wrong relation retains at most the same 1.5/4. An explicit false inference from average to constancy or a particular instantaneous force loses 2.5 once, also capping an otherwise complete answer at 7.5."
+      },
+      {
+        "id": "direction",
+        "points": 3,
+        "descriptionDE": "0,5 P: Kraftvorzeichen zur gewählten Achse; 2,5: physikalische Deutung dieses Vorzeichens (hier negativ = links). Gerichteter Wert „4 N nach links“: 3; vorzeichenbehaftete Kraft ohne Deutung: 0,5; nur Betrag: 0. Fehlende oder beibehaltene falsche Deutung: keine 2,5. Hier neu eingeführte systematische Umkehr von Kraftvorzeichen und Richtung: 0, auch bei richtiger Übersetzung des eigenen falschen Vorzeichens. Vorgelagert bereits abgezogene Fehler: konsistente Vorzeichen-/Richtungsfolgen voll anerkennen, ohne die fehlende Ursprungsevidenz zu ersetzen. Widersprüche verlieren nur betroffene Evidenz; ein nachweislich isolierter Zeichen-/Beschriftungsfehler bei sichtbarem Kern kostet höchstens 0,5 einmal am Ursprung.",
+        "descriptionEN": "0.5: force sign for the chosen axis; 2.5: physical interpretation of that sign (here negative = left). Directed value '4 N leftwards': 3; signed force without interpretation: 0.5; magnitude alone: 0. Missing or maintained wrong interpretation earns no 2.5. A systematic force-sign and direction reversal newly introduced here earns 0, even if the own wrong sign is decoded correctly. For upstream errors already charged, fully credit consistent sign/direction consequences without replacing missing evidence at the origin. Contradictions lose only affected evidence; a demonstrably isolated sign/label slip with visible core costs at most 0.5 once at its origin.",
+        "carryingPerformance": "Force sign and physical interpretation carry 3 points. The physical interpretation alone carries 2.5 > 2 slack, so its omission or maintained error caps otherwise complete numerical work at 7.5. A new systematic force-sign/direction reversal earns 0 and caps it at 7."
+      }
+    ]
+  },
+  "goalDemandAnalysis": "Only ecbaa101-cb10-5da3-9368-ae40ff587d74 is covered: calculate the average net external force for one fixed-mass body on one line in an inertial frame from two signed momentum values and times, state a force unit, and interpret the force sign. The unchanged cart task has opposite-signed endpoints, requiring signed chronological change and actual elapsed-time application. Signed arithmetic and interval reasoning serve as direct prerequisites; the supplied required goals 53afbda1-5776-502b-8867-471975d7b766 and 13b338eb-f761-5817-9058-11043b9cb253 remain prerequisites, not additional covered goals. No derivative, instantaneous-force calculation, constancy test, collision, conservation or multi-body argument is required. This is a signed numerical one-dimensional task with no displayed or required arrows/diagrams; body-anchor, arrow-scale, arrow-endpoint and arrow-sum criteria are N/A.",
+  "protectedCarriersAndSlack": "Maximum 10, pass 8 (80%): slack 2. Integer criterion weights are 3+4+3. Signed numerical momentum application: 3; general order alone retains 0.5, so missing numerical application loses 2.5 and caps the total at 7.5. A maintained wrong change rule earns 0 and caps it at 7, even with full follow-through. Interval-average calculation: 4; without application of the actual elapsed time, A≤0.5 and B+C≤1, so the total is at most 7.5. A wrong endpoint-time rule without a separately correct duration yields at most 1/4 and total 7. Physical sign interpretation: 2.5 within direction's 3; omission or a maintained wrong interpretation caps the total at 7.5. A new systematic force-sign/direction reversal earns 0/3 and caps it at 7. An explicit unsupported inference of constancy or a particular instantaneous force loses 2.5 once within meanForce, capping otherwise complete work at 7.5. Each missing whole core loses more than slack; signs, units and labels are not themselves substituted for conceptual rules. Pass depends only on total≥8, with no veto or criterion minimum. For clean omission-only minimum-completeness probes, 9.5 is the nearest pass and 7.5 the nearest fail; no deficient core is awarded compensatory points to manufacture 8. Distinct isolated formal slips can produce other totals, including 8, if all underlying cores are actually evidenced.",
+  "minorSlipPolicy": "Use correct evidence wherever written and accept equivalent valid methods, consistent coordinate reversals, exact numerical expressions and equivalent force units. A force expression is numerically fixed when its operands have been numerically established in the learner's work, even across lines; task data alone do not turn a generic formula into numerical application. Never infer unshown momentum change or elapsed-time application from a final force. Correct downstream follow-through does not prove a missing underlying core. First recognize the core actually evidenced: if a correct setup/rule makes a genuinely isolated arithmetic, sign, rounding, unit or label slip identifiable, deduct 0.5 once at its origin, limited by that criterion's available points. Do not additionally withhold core credit or charge its consequences. Distinct independent slips may each lose 0.5 only where they affect assessed evidence; there is no global one-slip immunity. A missing/wrong force-result unit loses only the allocated C=0.5, without a second formal-slip deduction. Corrected or irrelevant marks lose nothing. For a maintained conceptual rule error or absent core evidence, use the criterion's published partial credit instead of the formal-slip allowance. A wrong unexplained number alone does not establish an isolated slip; a visibly correct signed numerical setup can, without requiring a second correct result elsewhere. Retain independent evidence and consistent sign/direction follow-through after an upstream error is charged. A newly maintained force-sign reversal or wrong sign-direction rule is charged in direction, rather than excused by decoding its own wrong sign. Apply the unsupported mean-to-constant/instantaneous deduction once in meanForce, even for both claims, and floor each criterion at zero. Silence on this optional discussion costs nothing.",
+  "answerBank": [
+    {
+      "caseId": "B01",
+      "caseIntent": "Fully correct",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4 N. Das Minus bedeutet: Die mittlere resultierende Kraft zeigt nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4 N. The minus sign means that the average net force points left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "why": "Correct signed change, elapsed interval, average-force value and physical direction."
+    },
+    {
+      "caseId": "B02",
+      "caseIntent": "Consistent reversed axis and slope method",
+      "answerDE": "Ich wähle links als positiv. Dann gilt p(2 s)=−8 kg·m/s und p(5 s)=+4 kg·m/s. Die Steigung der Verbindung im p-t-Diagramm ist [(+4)−(−8)]/(5−2)=+4 N. Das ist die mittlere resultierende Kraft; positiv heißt bei meiner Achse nach links.",
+      "answerEN": "I choose left as positive. Then p(2 s)=−8 kg·m/s and p(5 s)=+4 kg·m/s. The slope of the connecting line in the p-t graph is [(+4)−(−8)]/(5−2)=+4 N. This is the average net force; positive means left on my axis.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "why": "Both momenta and the force sign are consistently reversed. The secant slope is an equivalent valid interval method; the physical force still points left."
+    },
+    {
+      "caseId": "B03",
+      "caseIntent": "One isolated arithmetic slip with sound core",
+      "answerDE": "Δp=(−4)−(+8)=−10 kg·m/s. Δt=5−2=3 s. F̄=−10/3 N≈−3,33 N. Das negative Vorzeichen bedeutet nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−10 kg·m/s. Δt=5−2=3 s. F̄=−10/3 N≈−3.33 N. The negative sign means left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 2.5},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 9.5,
+      "expectedPass": true,
+      "why": "The correct signed subtraction is visibly set up; its evaluation contains one arithmetic slip. Deduct 0.5 once from momentumChange. Subsequent division and direction are sound follow-through."
+    },
+    {
+      "caseId": "B04",
+      "caseIntent": "One missing minor subordinate facet: force unit",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4. Das Minus bedeutet, dass die mittlere Kraft nach links zeigt.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4. The minus sign means that the average force points left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 9.5,
+      "expectedPass": true,
+      "why": "Only the force-result unit is missing. Lose the 0.5 unit component in meanForce once; retain all calculation and direction credit."
+    },
+    {
+      "caseId": "B05",
+      "caseIntent": "Complete numerical work, physical interpretation omitted",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 0.5}
+      ],
+      "expectedTotal": 7.5,
+      "expectedPass": false,
+      "why": "The signed change and interval calculation earn 3+4. The signed force earns only 0.5 in direction; no physical interpretation is given, so its 2.5 is absent. Total 7.5 fails by score alone."
+    },
+    {
+      "caseId": "B06",
+      "caseIntent": "Complete numerical work, physical interpretation and force unit omitted",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 0.5}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "The missing physical interpretation loses 2.5 in direction. The missing force unit independently loses its allocated 0.5 in meanForce, with no repeated unit deduction. Total 3+3.5+0.5=7 fails."
+    },
+    {
+      "caseId": "B07",
+      "caseIntent": "Qualitative only",
+      "answerDE": "Zuerst bewegt sich der Wagen nach rechts, später nach links. Die mittlere resultierende Kraft ist negativ und zeigt nach links.",
+      "answerEN": "The cart initially moves right and later left. The average net force is negative and points left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0},
+        {"criterionId": "meanForce", "points": 0},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 3,
+      "expectedPass": false,
+      "why": "The stated negative force and leftwards interpretation earn 0.5+2.5. No numerical momentum change, chronological subtraction, duration or quantitative average-force relation is supplied."
+    },
+    {
+      "caseId": "B08",
+      "caseIntent": "Formula only",
+      "answerDE": "F̄=(p_Ende−p_Anfang)/(t_Ende−t_Anfang).",
+      "answerEN": "F̄=(p_end−p_start)/(t_end−t_start).",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0.5},
+        {"criterionId": "meanForce", "points": 0.5},
+        {"criterionId": "direction", "points": 0}
+      ],
+      "expectedTotal": 1,
+      "expectedPass": false,
+      "why": "General chronological subtraction earns 0.5; the general quotient without applied elapsed time earns A=0.5. No numerical application, force result/unit or direction interpretation: total 1, fail."
+    },
+    {
+      "caseId": "B09",
+      "caseIntent": "Omission of signed momentum-change carrier",
+      "answerDE": "Δt=5−2=3 s. F̄=Δp/(3 s)=−4 N. Die mittlere Kraft ist negativ, also nach links gerichtet.",
+      "answerEN": "Δt=5−2=3 s. F̄=Δp/(3 s)=−4 N. The average force is negative, so it points left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "No momentum-change value or end-minus-start operation is shown; it cannot be reconstructed from the final force. The substituted-duration quotient, correct reported force with unit and physical interpretation independently earn 4+3. Total 7 fails."
+    },
+    {
+      "caseId": "B10",
+      "caseIntent": "Omission of interval-average calculation carrier",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Die mittlere resultierende Kraft ist negativ und zeigt deshalb nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. The average net force is negative and therefore points left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 0},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 6,
+      "expectedPass": false,
+      "why": "The signed momentum change earns 3 and negative/left interpretation earns 3. No duration, force quotient or numerical force result appears, so meanForce earns 0. Total 6 fails."
+    },
+    {
+      "caseId": "B11",
+      "caseIntent": "Omission of signed-force/direction carrier",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. Ich berechne nur den Betrag: |F̄|=12/3=4 N.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. I calculate only the magnitude: |F̄|=12/3=4 N.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 0}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "The signed change earns 3 and the average-force magnitude calculation earns 4. An explicitly magnitude-only result supplies neither a force sign nor a physical direction; direction earns 0. Total 7 fails."
+    },
+    {
+      "caseId": "B12",
+      "caseIntent": "Maintained sign/change misconception",
+      "answerDE": "Die Impulsänderung erhält man durch Addition: Δp=(+8)+(−4)=+4 kg·m/s. Δt=5−2=3 s. F̄=+4/3 N. Positiv bedeutet, dass die mittlere Kraft nach rechts zeigt.",
+      "answerEN": "The momentum change is found by addition: Δp=(+8)+(−4)=+4 kg·m/s. Δt=5−2=3 s. F̄=+4/3 N. Positive means that the average force points right.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "Explicitly using addition for a change is a maintained conceptual error: momentumChange earns 0. Correct averaging of that own change earns 4; the consistent interpretation of its positive sign earns 3 as follow-through after the origin was charged. Total 7 fails; no duplicate sign deduction."
+    },
+    {
+      "caseId": "B13",
+      "caseIntent": "Critical misconception: inferring constant force",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N, also nach links. Daraus folgt, dass die resultierende Kraft während des ganzen Intervalls konstant −4 N war.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N, so left. It follows that the net force was constantly −4 N throughout the interval.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 1.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7.5,
+      "expectedPass": false,
+      "why": "The numerical average and direction are correct. The unsupported inference that this proves constancy costs 2.5 once in meanForce: 4−2.5=1.5. Total 7.5 fails; silence on constancy would cost nothing."
+    },
+    {
+      "caseId": "B14",
+      "caseIntent": "Critical misconception: inferring instantaneous force",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N. Negativ bedeutet nach links. Damit muss auch die momentane resultierende Kraft bei t=5 s genau −4 N betragen.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N. Negative means left. Therefore the instantaneous net force at t=5 s must also be exactly −4 N.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 1.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7.5,
+      "expectedPass": false,
+      "why": "The numerical average and direction are correct. Inferring the particular instantaneous force at 5 s from the interval average costs 2.5 once in meanForce. Total 7.5 fails; no instantaneous calculation was required."
+    },
+    {
+      "caseId": "B15",
+      "caseIntent": "General change setup with no numerical momentum application",
+      "answerDE": "Δp=p_Ende−p_Anfang; Δt=3 s. F̄=Δp/(3 s)=−4 N, also nach links.",
+      "answerEN": "Δp=p_end−p_start; Δt=3 s. F̄=Δp/(3 s)=−4 N, so left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0.5},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7.5,
+      "expectedPass": false,
+      "why": "Only the symbolic chronological change is evidenced: 0.5. The applied-duration quotient, stated force and unit earn 4; leftwards interpretation earns 3. Total 7.5 fails. The final force cannot supply the missing numerical momentum change."
+    },
+    {
+      "caseId": "B16",
+      "caseIntent": "Genuine near-cutoff fail with maintained product relation",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s. Die mittlere Kraft berechne ich durch Multiplikation: F̄=Δp·Δt=−36 N. Negativ bedeutet nach links.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s. I calculate the average force by multiplication: F̄=Δp·Δt=−36 N. Negative means left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 1.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7.5,
+      "expectedPass": false,
+      "why": "The product is an explicit conceptual relation error. In meanForce, only the correct duration (0.5), correct arithmetic for the stated setup (0.5) and force unit (0.5) remain. The change and sign-to-direction interpretation retain credit. Total 7.5 fails."
+    },
+    {
+      "caseId": "B17",
+      "caseIntent": "Equivalent force unit and directed quantity",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s. |F̄|=12/3=4 kg·m/s². Die mittlere Kraft beträgt 4 kg·m/s² nach links.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s. |F̄|=12/3=4 kg·m/s². The average force is 4 kg·m/s² leftwards.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "why": "kg·m/s² is equivalent to N. The directed force '4 kg·m/s² leftwards' supplies the same sign and direction information as −4 N with a leftwards interpretation."
+    },
+    {
+      "caseId": "B18",
+      "caseIntent": "Exact numerical expression without separate intermediate lines",
+      "answerDE": "F̄=[(−4)−(+8)]/(5−2) N. Das Ergebnis ist negativ, also zeigt die mittlere Kraft nach links.",
+      "answerEN": "F̄=[(−4)−(+8)]/(5−2) N. The result is negative, so the average force points left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "why": "The exact numerical expression contains the complete signed difference and elapsed-duration quotient and is a valid exact force result in newtons. Separate intermediate lines or decimal evaluation are unnecessary."
+    },
+    {
+      "caseId": "B19",
+      "caseIntent": "Maintained wrong physical interpretation despite complete numerical work",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4 N. Bei rechts positiv bedeutet −4 N eine Kraft nach rechts.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4 N. With right positive, −4 N means a force to the right.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 0.5}
+      ],
+      "expectedTotal": 7.5,
+      "expectedPass": false,
+      "why": "The numerical carriers are complete. The negative force sign earns 0.5, but the explicitly wrong physical sign interpretation earns 0 of its 2.5; no correct interpretation elsewhere establishes a label slip. Total 7.5 fails with no veto."
+    },
+    {
+      "caseId": "B20",
+      "caseIntent": "Correct direction and partial numerical work without numerical change or force unit",
+      "answerDE": "Δp=p₂−p₁; F̄=Δp/(3 s)=−4. Negativ bedeutet nach links.",
+      "answerEN": "Δp=p₂−p₁; F̄=Δp/(3 s)=−4. Negative means left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0.5},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "The general change earns 0.5. In meanForce, A=3 for the applied duration, B=0.5 for the stated correct value and C=0 for the absent force unit. Direction earns 3. Total 7 fails."
+    },
+    {
+      "caseId": "B21",
+      "caseIntent": "Correct direction and applied duration without numerical change or force result",
+      "answerDE": "Δp=p₂−p₁; F̄=Δp/(3 s). Die mittlere Kraft ist negativ, also nach links.",
+      "answerEN": "Δp=p₂−p₁; F̄=Δp/(3 s). The average force is negative, so leftwards.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0.5},
+        {"criterionId": "meanForce", "points": 3},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 6.5,
+      "expectedPass": false,
+      "why": "The general change earns 0.5, and the applied-duration quotient earns A=3. No numerical momentum change fixes its numerator and no force value is stated, so B=0; the denominator's s is not a force-result unit, so C=0. Direction earns 3. Total 6.5 fails."
+    },
+    {
+      "caseId": "B22",
+      "caseIntent": "Maintained new force-sign misconception after correct signed change",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. Ich nehme für die Kraft immer den positiven Betrag: F̄=|Δp|/Δt=+4 N. Da rechts positiv ist, zeigt diese mittlere Kraft nach rechts.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. I always take the positive magnitude as the force: F̄=|Δp|/Δt=+4 N. Since right is positive, this average force points right.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 0}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "The signed change and magnitude averaging are correct, earning 3+4. The maintained conversion of a negative change into a positive force and rightwards direction originates in direction, which earns 0. Decoding the own wrong sign does not restore interpretation credit. Total 7 fails; the same sign error is not charged in meanForce."
+    },
+    {
+      "caseId": "B23",
+      "caseIntent": "One isolated force-sign slip with unmistakably sound quotient and interpretation",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=+4 N. Der Quotient ist negativ; die mittlere Kraft zeigt nach links.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=+4 N. The quotient is negative; the average force points left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 9.5,
+      "expectedPass": true,
+      "why": "The correct quotient and explicit negative/left interpretation identify the stray plus as one isolated evaluation/sign slip. Deduct 0.5 once in meanForce, with no repeated direction loss. Total 9.5 passes."
+    },
+    {
+      "caseId": "B24",
+      "caseIntent": "Maintained reversed chronological change with consistent follow-through",
+      "answerDE": "Die Änderung ist Anfang minus Ende: Δp=p₁−p₂=(+8)−(−4)=+12 kg·m/s. Δt=3 s; F̄=+12/3=+4 N. Positiv bedeutet nach rechts.",
+      "answerEN": "The change is start minus end: Δp=p₁−p₂=(+8)−(−4)=+12 kg·m/s. Δt=3 s; F̄=+12/3=+4 N. Positive means right.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "The explicitly maintained reversed change earns 0 in momentumChange. Division over the correct duration and the interpretation of the resulting own sign are consistent follow-through and earn 4+3. Total 7 fails; the origin is charged only once."
+    },
+    {
+      "caseId": "B25",
+      "caseIntent": "Maintained use of endpoint time instead of elapsed duration",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Für die mittlere Kraft teilt man durch den Endzeitpunkt: F̄=−12/(5 s)=−2,4 N. Negativ bedeutet nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. For average force, divide by the final time: F̄=−12/(5 s)=−2.4 N. Negative means left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 1},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "The signed change earns 3. The explicit endpoint-time rule earns A=0, while the correct arithmetic within that setup earns B=0.5 and N earns C=0.5. Negative/left interpretation earns 3. Total 7 fails; this maintained duration misconception is not an isolated arithmetic slip."
+    },
+    {
+      "caseId": "B26",
+      "caseIntent": "Correct momentum change and final force, but no numerical elapsed-time application",
+      "answerDE": "Δp=−12 kg·m/s. F̄=Δp/Δt=−4 N. Negativ bedeutet nach links.",
+      "answerEN": "Δp=−12 kg·m/s. F̄=Δp/Δt=−4 N. Negative means left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 1.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7.5,
+      "expectedPass": false,
+      "why": "The numerical momentum change earns 3. No numerical duration is established or used: A=0.5, B=0.5 for the stated correct value, C=0.5 for N. Direction earns 3. Total 7.5 fails; do not infer the unshown duration from the final force."
+    },
+    {
+      "caseId": "B27",
+      "caseIntent": "Elapsed interval established and used across separate lines",
+      "answerDE": "Δp=(−4)−(+8) kg·m/s. Die Zeitspanne ist Δt=5−2=3 s. Damit F̄=Δp/Δt=−4 N, also nach links.",
+      "answerEN": "Δp=(−4)−(+8) kg·m/s. The elapsed time is Δt=5−2=3 s. Thus F̄=Δp/Δt=−4 N, so left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "why": "The exact signed difference and elapsed time are explicitly established, then used through their symbols. Evidence across lines counts fully: 10."
+    },
+    {
+      "caseId": "B28",
+      "caseIntent": "Compact minimum-completeness pass with exact expression but no force unit",
+      "answerDE": "F̄=[(−4)−(+8)]/(5−2). Das Minus bedeutet: Die mittlere Kraft zeigt nach links.",
+      "answerEN": "F̄=[(−4)−(+8)]/(5−2). The minus sign means that the average force points left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 9.5,
+      "expectedPass": true,
+      "why": "The numerical difference, actual duration and exact force expression fully evidence the calculation: momentumChange=3, A=3, B=0.5. Only C=0 because the force unit is absent. Direction=3; total 9.5 passes."
+    },
+    {
+      "caseId": "B29",
+      "caseIntent": "Both unsupported inferences receive one interval-meaning deduction",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N, also nach links. Daher war die Kraft stets konstant −4 N und muss bei t=5 s momentan genau −4 N sein.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N, so left. Therefore the force was constantly −4 N throughout and must be exactly −4 N instantaneously at t=5 s.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 1.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7.5,
+      "expectedPass": false,
+      "why": "Both claims make the same unsupported inference from an interval mean. Subtract 2.5 once within meanForce, not twice: 4−2.5=1.5. Total 7.5 fails."
+    },
+    {
+      "caseId": "B30",
+      "caseIntent": "Isolated elapsed-time arithmetic slip with correct interval setup",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=4 s. F̄=−12/4=−3 N. Negativ bedeutet nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=4 s. F̄=−12/4=−3 N. Negative means left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 9.5,
+      "expectedPass": true,
+      "why": "The chronological duration subtraction is correctly set up; its evaluation has one arithmetic slip. Deduct 0.5 once in meanForce. Credit the subsequent division and direction as follow-through: 9.5 passes."
+    },
+    {
+      "caseId": "B31",
+      "caseIntent": "Two independent isolated arithmetic slips are charged separately",
+      "answerDE": "Δp=(−4)−(+8)=−10 kg·m/s. Δt=5−2=4 s. F̄=−10/4=−2,5 N. Negativ bedeutet nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−10 kg·m/s. Δt=5−2=4 s. F̄=−10/4=−2.5 N. Negative means left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 2.5},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 9,
+      "expectedPass": true,
+      "why": "The correct change and duration setups each have a distinct evaluation slip. Deduct 0.5 at each origin: momentumChange=2.5, meanForce=3.5. The final quotient and direction are consistent consequences, with no further losses. Total 9 passes."
+    },
+    {
+      "caseId": "B32",
+      "caseIntent": "Unsupported wrong momentum value is not established as an isolated slip by follow-through",
+      "answerDE": "Δp=+12 kg·m/s. Δt=3 s; F̄=+12/3=+4 N. Positiv bedeutet nach rechts.",
+      "answerEN": "Δp=+12 kg·m/s. Δt=3 s; F̄=+12/3=+4 N. Positive means right.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "The unexplained wrong momentum change supplies neither a correct value nor correct signed operation. Later coherent division and sign decoding do not prove that missing core: momentumChange=0. They independently earn 4+3 as follow-through. Total 7 fails."
+    },
+    {
+      "caseId": "B33",
+      "caseIntent": "Correct numerical evidence appearing after the force calculation counts",
+      "answerDE": "F̄=Δp/Δt=−4 N, also nach links. Verwendet habe ich Δt=3 s und Δp=(−4)−(+8) kg·m/s.",
+      "answerEN": "F̄=Δp/Δt=−4 N, so left. I used Δt=3 s and Δp=(−4)−(+8) kg·m/s.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "why": "Correct numerical change and elapsed time are explicitly supplied later in the response and identified as used. Their location does not reduce credit: 10."
+    },
+    {
+      "caseId": "B34",
+      "caseIntent": "Correct general formula does not cancel a maintained wrong numerical rule",
+      "answerDE": "Allgemein Δp=p₂−p₁. Hier addiert man aber die Impulse: Δp=(+8)+(−4)=+4 kg·m/s. Δt=3 s; F̄=+4/3 N. Positiv bedeutet nach rechts.",
+      "answerEN": "In general Δp=p₂−p₁. Here, however, add the momenta: Δp=(+8)+(−4)=+4 kg·m/s. Δt=3 s; F̄=+4/3 N. Positive means right.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 0},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7,
+      "expectedPass": false,
+      "why": "The maintained addition rule contradicts the general formula, so momentumChange=0. Correct averaging of the own change and consistent direction decoding earn 4+3 without restoring that missing core. Total 7 fails."
+    },
+    {
+      "caseId": "B35",
+      "caseIntent": "One erroneous force-unit label with sound calculation and interpretation",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. F̄=−12/3=−4 kg. Negativ bedeutet nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. F̄=−12/3=−4 kg. Negative means left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 9.5,
+      "expectedPass": true,
+      "why": "The incorrect force-unit label loses only C=0.5. The numerical change, quotient and sign interpretation remain evidenced. No additional unit or dimensional deduction is made: 9.5 passes."
+    },
+    {
+      "caseId": "B36",
+      "caseIntent": "Isolated quotient-sign arithmetic slip with consistent downstream interpretation",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. F̄=−12/3=+4 N. Positiv bedeutet nach rechts.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. F̄=−12/3=+4 N. Positive means right.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 9.5,
+      "expectedPass": true,
+      "why": "The explicit correct signed quotient establishes the underlying rule; its evaluation contains one sign slip, unlike the maintained magnitude rule in B22. Deduct 0.5 in meanForce only. The own positive sign is decoded consistently as follow-through: 9.5 passes."
+    },
+    {
+      "caseId": "B37",
+      "caseIntent": "Correct duration written elsewhere does not rescue maintained use of endpoint time",
+      "answerDE": "Δp=−12 kg·m/s; die Zeitspanne ist 3 s. Trotzdem muss man für die mittlere Kraft durch den Endzeitpunkt teilen: F̄=−12/(5 s)=−2,4 N. Negativ bedeutet nach links.",
+      "answerEN": "Δp=−12 kg·m/s; the elapsed time is 3 s. Nevertheless, average force must be found by dividing by the final time: F̄=−12/(5 s)=−2.4 N. Negative means left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 1.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 7.5,
+      "expectedPass": false,
+      "why": "The maintained endpoint-time rule earns no quotient credit. The independently correct duration earns A=0.5; own arithmetic B=0.5 and N C=0.5 remain. Momentum and direction earn 3 each. Total 7.5 fails."
+    },
+    {
+      "caseId": "B38",
+      "caseIntent": "Equivalent numerical impulse-balance method without an explicit change line",
+      "answerDE": "−4 kg·m/s=+8 kg·m/s+F̄·(5−2) s. Auflösen ergibt F̄=−4 N, also nach links.",
+      "answerEN": "−4 kg·m/s=+8 kg·m/s+F̄·(5−2) s. Solving gives F̄=−4 N, so left.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 4},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "why": "The numerical balance p₂=p₁+F̄Δt applies both signed endpoints in chronological order and uses the actual elapsed interval. Rearrangement is equivalent to the difference quotient. All three performances are evidenced: 10."
+    },
+    {
+      "caseId": "B39",
+      "caseIntent": "Numerically fixed symbolic force expression using values already established",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s. F̄=Δp/Δt. Die mittlere Kraft ist negativ, also nach links.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s. F̄=Δp/Δt. The average force is negative, so leftwards.",
+      "expectedScores": [
+        {"criterionId": "momentumChange", "points": 3},
+        {"criterionId": "meanForce", "points": 3.5},
+        {"criterionId": "direction", "points": 3}
+      ],
+      "expectedTotal": 9.5,
+      "expectedPass": true,
+      "why": "The learner explicitly fixes both operands numerically, so the force expression is an exact result even without re-substitution: A=3, B=0.5. No force-result unit is explicitly supplied, so C=0; intermediate units are not an explicit result unit. With full change and direction evidence, total 9.5 passes."
+    }
+  ],
+  "knownLimitations": "One sign-crossing interval samples this narrow goal; it does not establish transfer to other data or representations. B01–B25 retain their learner-response texts verbatim and are scored by the same published rubric as B26–B39. In clean omission-only probes the core-complete exact expression without a force unit scores 9.5, while absence of a whole required numerical application or physical interpretation scores at most 7.5; there is no natural omission-only 8-point case. This is a scoped boundary observation, not a different threshold: any total≥8 passes, and several independent formal slips can attain 8 with every core visible. B31 additionally shows that distinct slips are charged separately. These answer-bank expectations do not claim new empirical blind-marker agreement. All 39 criterion sums and threshold labels have been checked; combined DE/EN criterion descriptions are below 2000 UTF-16 units each.",
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "This node is a genuine standalone practice assessment: it supplies its own single numerical cart context, learner task, worked solution and point rubric for the one atomic covered goal. Its prerequisites support the calculation without being separately assessed. It is neither a curricular competency nor a capstone or goal cluster.",
+  "standalone": true,
+  "coveredGoalIds": [
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+  ]
+}

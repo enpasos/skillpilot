@@ -1,0 +1,276 @@
+{
+  "candidate": {
+    "id": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+    "shortKey": "seki_mean_resultant_force_from_momentum_interval",
+    "title": "Mittlere Kraft auf einen Wagen",
+    "titleEn": "Average force on a cart",
+    "description": "Aus zwei vorzeichenbehafteten Impulsmessungen die mittlere resultierende äußere Kraft bestimmen und ihre Richtung deuten.",
+    "descriptionEn": "Determine the average net external force from two signed momentum measurements and interpret its direction.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical"
+    ],
+    "type": "atomic",
+    "contains": [],
+    "requires": [
+      "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "topicCode": "SEKI_MEAN_RESULTANT_FORCE_FROM_MOMENTUM_INTERVAL"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BW"
+      ]
+    },
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary",
+      "applicabilityOverrides": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      }
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+      ],
+      "coveredStrands": [],
+      "demandLevels": [
+        "AB2"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v1/seki_mean_resultant_force_from_momentum_interval.md",
+      "taskContent": "Ein Wagen mit unveränderlicher Masse bewegt sich auf einer geraden Bahn. Das ruhende Labor wird als Inertialsystem betrachtet. Nach rechts ist die positive Richtung.\n\nGemessen werden:\n• bei t₁=2,0 s: p₁=+8,0 kg·m/s;\n• bei t₂=5,0 s: p₂=−4,0 kg·m/s.\n\nBestimme die mittlere resultierende äußere Kraft auf den Wagen zwischen diesen Zeitpunkten. Gib dein Ergebnis in Newton an und erkläre, was sein Vorzeichen für die Kraftrichtung bedeutet. Zeige deinen Rechenweg.",
+      "taskContentEn": "A cart of fixed mass moves along a straight track. The stationary laboratory is treated as an inertial frame. Right is the positive direction.\n\nMeasurements:\n• at t₁=2.0 s: p₁=+8.0 kg·m/s;\n• at t₂=5.0 s: p₂=−4.0 kg·m/s.\n\nDetermine the average net external force on the cart between these times. Give your result in newtons and explain what its sign means for the force direction. Show your working.",
+      "solutionContent": "Eine mögliche Lösung mit rechts als positiver Richtung:\nΔp=p₂−p₁=(−4,0)−(+8,0)=−12,0 kg·m/s.\nΔt=t₂−t₁=5,0−2,0=3,0 s.\nF̄=Δp/Δt=−12,0/3,0=−4,0 N.\nDas Minus bedeutet: Die mittlere resultierende äußere Kraft zeigt nach links.\n\nGleichwertig sind andere gültige Wege, etwa die Sekantensteigung im Impuls-Zeit-Diagramm. Bei links als positiver Richtung werden die Impulse −8 und +4 kg·m/s; dann sind Δp=+12 kg·m/s und F̄=+4 N, ebenfalls nach links. Ein exakter Zahlenterm, eine gleichwertige Krafteinheit oder „4 N nach links“ genügt; getrennte Zwischenzeilen sind unnötig. Die Daten bestimmen einen Intervallmittelwert, keine bestimmte momentane oder konstante Kraft.\n\nBewertung: 3 P für die vorzeichenbehaftete Änderung, 4 P für die Intervallrechnung, 3 P für Kraftvorzeichen und physikalische Deutung (0,5+2,5). Bestanden allein ab 8 von 10 P. Die Kriterien bestimmen Teilpunkte; fehlende Schritte nicht aus der Endkraft ergänzen. Reine allgemeine Formeln belegen keine Zahlenanwendung. Betrag und konsistente Folgen eines bereits abgezogenen Fehlers anerkennen. Ein neuer beibehaltener Vorzeichen-/Richtungskonzeptfehler verliert die betroffene Evidenz, auch bei sonst richtiger Rechnung.\n\nEin isolierter Rechen-, Vorzeichen-, Einheiten-, Rundungs- oder Beschriftungsfehler bei sichtbar richtigem Kern kostet insgesamt 0,5 P einmal, ohne Folgeabzüge. Fehlende Krafteinheit: nur die vorgesehenen 0,5 P. Keine Richtungsdeutung zu zeigen ist kein Beschriftungsfehler. Eine ausdrückliche Behauptung, der Mittelwert beweise eine konstante Kraft oder einen bestimmten Momentanwert, kostet einmal 1,5 P im Intervallkriterium; bloßes Schweigen dazu kostet nichts.",
+      "solutionContentEn": "One possible solution with right positive:\nΔp=p₂−p₁=(−4.0)−(+8.0)=−12.0 kg·m/s.\nΔt=t₂−t₁=5.0−2.0=3.0 s.\nF̄=Δp/Δt=−12.0/3.0=−4.0 N.\nThe minus sign means that the average net external force points left.\n\nOther valid methods are equivalent, such as the secant slope on a momentum-time graph. With left positive, the momenta become −8 and +4 kg·m/s; then Δp=+12 kg·m/s and F̄=+4 N, still leftwards. An exact numerical expression, equivalent force unit or '4 N leftwards' suffices; separate intermediate lines are unnecessary. The data determine an interval average, not a particular instantaneous or constant force.\n\nGrading: 3 points for signed change, 4 for the interval calculation, 3 for force sign and physical interpretation (0.5+2.5). Pass solely at 8 of 10. The criteria define partial credit; do not infer missing working from the final force. General formulas alone do not establish numerical application. Credit magnitudes and consistent consequences of an error already charged. A new maintained force-sign/direction misconception loses the affected evidence even with otherwise correct calculation.\n\nOne isolated arithmetic, sign, unit, rounding or label slip with visibly sound core costs 0.5 once overall, without consequential losses. A missing force unit costs only its allocated 0.5. Showing no direction interpretation is not a label slip. An explicit claim that the mean proves constant force or a particular instantaneous value costs 1.5 once in the interval criterion; silence on this costs nothing.",
+      "scoring": {
+        "maxPoints": 10,
+        "passingPoints": 8,
+        "steps": [
+          {
+            "id": "momentumChange",
+            "points": 3,
+            "description": "3 P: richtige vorzeichenbehaftete Änderung −12 kg·m/s, auch als (−4)−(+8) oder mit konsistent umgekehrter Achse. 1,5 P: nur unbestrittenes p_Ende−p_Anfang ohne Zahleneinsatz. 0 P: fehlende Evidenz oder beibehaltener falscher Änderungs-/Vorzeichenansatz, auch neben richtiger allgemeiner Formel. Ein falscher Wert allein belegt keinen isolierten Fehler. Aus der Endkraft keine Änderung rekonstruieren. Klare Zwischeneinheiten dürfen implizit bleiben. Isolierter Fehler bei sichtbar richtigem Kern: global −0,5 P einmal, keine Folgeabzüge. / EN: 3 points: correct signed change −12 kg·m/s, including (−4)−(+8) or a consistently reversed axis. 1.5: only uncontradicted p_end−p_start without numerical application. 0: absent evidence or a maintained incorrect change/sign operation, even alongside a correct general formula. A wrong value alone does not establish an isolated slip. Do not reconstruct a change from the final force. Clear intermediate units may be implicit. An isolated slip with visibly sound core costs 0.5 once overall, without consequential losses."
+          },
+          {
+            "id": "meanForce",
+            "points": 4,
+            "description": "A+B+C: A=3 P für Δp/Δt mit eingesetzten 3 s oder (5−2) s; 1,5 nur richtige Quotientenbeziehung ohne eingesetzte Dauer; 0,5 nur richtige Dauer; sonst 0. Bei beibehaltener falscher Kraftbeziehung/Dauer keine Quotientenpunkte, aber 0,5 für richtige Dauer. Betragsrechnung und eigene falsche Δp-Werte zulässig. B=0,5 für richtigen Kraftwert, exakten Zahlenterm oder richtige Rechnung im eigenen Ansatz; C=0,5 für N/gleichwertige Krafteinheit am Kraftergebnis. Δp/(3 s) allein ist kein ausgewerteter Zahlenterm. Explizite Behauptung, der Mittelwert beweise konstante Kraft oder einen bestimmten Momentanwert: einmal −1,5 hier (Minimum 0), auch bei beiden Behauptungen; ohne solche Behauptung kein Abzug. Isolierter kleiner Fehler: global −0,5 einmal, keine Folgeabzüge. / EN: A+B+C: A=3 for Δp/Δt with substituted 3 s or (5−2) s; 1.5 only a correct quotient relation with no substituted duration; 0.5 correct duration alone; otherwise 0. A maintained wrong force relation/duration earns no quotient credit, but 0.5 for a correct duration. Magnitude and own incorrect Δp qualify. B=0.5 for a correct force value, exact numerical expression or correct arithmetic in the own setup; C=0.5 for N/equivalent force unit on the force result. Δp/(3 s) alone is not an evaluated numerical expression. Explicit claim that the mean proves constant force or a particular instantaneous value: subtract 1.5 here once (floor 0), even for both claims; no such claim means no deduction. An isolated minor slip costs 0.5 once overall, without consequential losses."
+          },
+          {
+            "id": "direction",
+            "points": 3,
+            "description": "0,5 P: Kraftvorzeichen zur gewählten Achse; 2,5 P: richtige physikalische Deutung dieses Vorzeichens für die mittlere Kraft (hier negativ = links). Nur vorzeichenbehaftete Kraft ohne Deutung: 0,5. Gerichteter Wert wie „4 N nach links“: 3; nur Betrag: 0. Beibehaltene widersprüchliche Angaben erhalten keine betroffene Teilpunktzahl. Bei beibehaltener falscher Deutung wie „negativ heißt rechts“ entfallen 2,5; ein hier neu eingeführtes systematisch falsches Kraftvorzeichen mit falscher Kraftrichtung erhält 0, auch wenn das eigene Vorzeichen richtig übersetzt wird. Für bereits anderswo abgezogene vorgelagerte Fehler konsistente Folgen anerkennen. Ein nachweislich isolierter Vorzeichen-/Beschriftungsfehler bei sonst klar richtiger Deutung kostet global 0,5 einmal. / EN: 0.5: force sign for the chosen axis; 2.5: correct physical interpretation of that sign for the average force (here negative = left). Signed force without interpretation: 0.5. Directed value such as '4 N leftwards': 3; magnitude alone: 0. Maintained contradictory statements earn no affected component. A maintained wrong interpretation such as 'negative means right' loses 2.5; a systematic wrong force sign and direction originating here earns 0, even if the own sign is decoded correctly. Credit consistent consequences of upstream errors already charged elsewhere. A demonstrably isolated sign/label slip with otherwise clearly correct interpretation costs 0.5 once overall."
+          }
+        ]
+      }
+    }
+  },
+  "candidateStatus": "proposed-only; no active release or acceptance yet",
+  "proposedSemanticKind": "practiceAssessment",
+  "proposedParent": "standalone direct member of canonical Physics root, no assessment/learning-unit cluster",
+  "coveredOrdinaryGoal": {
+    "id": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+    "title": "Mittlere resultierende Kraft aus der Impulsänderung bestimmen",
+    "titleEn": "Determine the average net force from a change in momentum",
+    "description": "Die lernende Person kann für einen Körper fester Masse auf einer Geraden in einem Inertialsystem aus zwei gegebenen vorzeichenbehafteten Impulswerten und ihren Zeitpunkten die mittlere resultierende äußere Kraft im Intervall als $\\Delta p/\\Delta t$ berechnen. Sie gibt das Ergebnis in Newton an und deutet sein Vorzeichen bezogen auf die gewählte positive Richtung.",
+    "descriptionEn": "For a body of fixed mass moving along a line in an inertial frame, the learner can use two given signed momentum values and their times to calculate the average net external force over the interval as $\\Delta p/\\Delta t$. The learner gives the result in newtons and interprets its sign relative to the chosen positive direction.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "53afbda1-5776-502b-8867-471975d7b766",
+      "13b338eb-f761-5817-9058-11043b9cb253"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "shortKey": "canonical_physics_mean_force_from_momentum_change",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "title": "Visualisierung: Mittlere resultierende Kraft aus der Impulsänderung bestimmen",
+        "url": "/assets/goal-visualizations/physik/ecbaa101-cb10-5da3-9368-ae40ff587d74/ecbaa101-cb10-5da3-9368-ae40ff587d74.jpg",
+        "provider": "ChatGPT / Codex image generation",
+        "description": "Visualisierung zum Lernziel: Mittlere resultierende Kraft aus der Impulsänderung bestimmen.",
+        "altText": "Derselbe Wagen hat bei 1 s den Impuls +3 kg·m/s nach rechts und bei 3 s den Impuls −1 kg·m/s nach links. Rechts ist positiv. Die Änderung −4 kg·m/s in 2 s ergibt eine mittlere resultierende Kraft von −2 N.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "submissions": [
+    {
+      "submissionId": "S725e73f3e7",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s. Die mittlere Kraft berechne ich durch Multiplikation: F̄=Δp·Δt=−36 N. Negativ bedeutet nach links.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s. I calculate the average force by multiplication: F̄=Δp·Δt=−36 N. Negative means left."
+    },
+    {
+      "submissionId": "S0de4cfc60e",
+      "answerDE": "Δp=p₂−p₁; F̄=Δp/(3 s)=−4. Negativ bedeutet nach links.",
+      "answerEN": "Δp=p₂−p₁; F̄=Δp/(3 s)=−4. Negative means left."
+    },
+    {
+      "submissionId": "S9c0396911e",
+      "answerDE": "Δt=5−2=3 s. F̄=Δp/(3 s)=−4 N. Die mittlere Kraft ist negativ, also nach links gerichtet.",
+      "answerEN": "Δt=5−2=3 s. F̄=Δp/(3 s)=−4 N. The average force is negative, so it points left."
+    },
+    {
+      "submissionId": "Sfb48fe8f11",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N. Negativ bedeutet nach links. Damit muss auch die momentane resultierende Kraft bei t=5 s genau −4 N betragen.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N. Negative means left. Therefore the instantaneous net force at t=5 s must also be exactly −4 N."
+    },
+    {
+      "submissionId": "S41d4e7224e",
+      "answerDE": "Δp=p_Ende−p_Anfang; Δt=3 s. F̄=Δp/(3 s)=−4 N, also nach links.",
+      "answerEN": "Δp=p_end−p_start; Δt=3 s. F̄=Δp/(3 s)=−4 N, so left."
+    },
+    {
+      "submissionId": "Sa38a58dc0d",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s. |F̄|=12/3=4 kg·m/s². Die mittlere Kraft beträgt 4 kg·m/s² nach links.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s. |F̄|=12/3=4 kg·m/s². The average force is 4 kg·m/s² leftwards."
+    },
+    {
+      "submissionId": "S6167620642",
+      "answerDE": "Die Impulsänderung erhält man durch Addition: Δp=(+8)+(−4)=+4 kg·m/s. Δt=5−2=3 s. F̄=+4/3 N. Positiv bedeutet, dass die mittlere Kraft nach rechts zeigt.",
+      "answerEN": "The momentum change is found by addition: Δp=(+8)+(−4)=+4 kg·m/s. Δt=5−2=3 s. F̄=+4/3 N. Positive means that the average force points right."
+    },
+    {
+      "submissionId": "S251956d8aa",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=+4 N. Der Quotient ist negativ; die mittlere Kraft zeigt nach links.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=+4 N. The quotient is negative; the average force points left."
+    },
+    {
+      "submissionId": "Sbeea0c7531",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N, also nach links. Daraus folgt, dass die resultierende Kraft während des ganzen Intervalls konstant −4 N war.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N, so left. It follows that the net force was constantly −4 N throughout the interval."
+    },
+    {
+      "submissionId": "Sb7e1bbf25a",
+      "answerDE": "Ich wähle links als positiv. Dann gilt p(2 s)=−8 kg·m/s und p(5 s)=+4 kg·m/s. Die Steigung der Verbindung im p-t-Diagramm ist [(+4)−(−8)]/(5−2)=+4 N. Das ist die mittlere resultierende Kraft; positiv heißt bei meiner Achse nach links.",
+      "answerEN": "I choose left as positive. Then p(2 s)=−8 kg·m/s and p(5 s)=+4 kg·m/s. The slope of the connecting line in the p-t graph is [(+4)−(−8)]/(5−2)=+4 N. This is the average net force; positive means left on my axis."
+    },
+    {
+      "submissionId": "S8236112158",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4 N."
+    },
+    {
+      "submissionId": "S2c7862e71d",
+      "answerDE": "F̄=[(−4)−(+8)]/(5−2) N. Das Ergebnis ist negativ, also zeigt die mittlere Kraft nach links.",
+      "answerEN": "F̄=[(−4)−(+8)]/(5−2) N. The result is negative, so the average force points left."
+    },
+    {
+      "submissionId": "Scc6ab2d811",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4 N. Bei rechts positiv bedeutet −4 N eine Kraft nach rechts.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4 N. With right positive, −4 N means a force to the right."
+    },
+    {
+      "submissionId": "Sd2b9d940fa",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Die mittlere resultierende Kraft ist negativ und zeigt deshalb nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. The average net force is negative and therefore points left."
+    },
+    {
+      "submissionId": "S2e029fb3a4",
+      "answerDE": "F̄=(p_Ende−p_Anfang)/(t_Ende−t_Anfang).",
+      "answerEN": "F̄=(p_end−p_start)/(t_end−t_start)."
+    },
+    {
+      "submissionId": "Sa620a462f1",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4. Das Minus bedeutet, dass die mittlere Kraft nach links zeigt.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4. The minus sign means that the average force points left."
+    },
+    {
+      "submissionId": "S4f2f4b3bd4",
+      "answerDE": "Die Änderung ist Anfang minus Ende: Δp=p₁−p₂=(+8)−(−4)=+12 kg·m/s. Δt=3 s; F̄=+12/3=+4 N. Positiv bedeutet nach rechts.",
+      "answerEN": "The change is start minus end: Δp=p₁−p₂=(+8)−(−4)=+12 kg·m/s. Δt=3 s; F̄=+12/3=+4 N. Positive means right."
+    },
+    {
+      "submissionId": "S65e45c5975",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. Ich berechne nur den Betrag: |F̄|=12/3=4 N.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. I calculate only the magnitude: |F̄|=12/3=4 N."
+    },
+    {
+      "submissionId": "Sdab7b1290e",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. Ich nehme für die Kraft immer den positiven Betrag: F̄=|Δp|/Δt=+4 N. Da rechts positiv ist, zeigt diese mittlere Kraft nach rechts.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s; Δt=3 s. I always take the positive magnitude as the force: F̄=|Δp|/Δt=+4 N. Since right is positive, this average force points right."
+    },
+    {
+      "submissionId": "Sf648fd244c",
+      "answerDE": "Δp=(−4)−(+8)=−10 kg·m/s. Δt=5−2=3 s. F̄=−10/3 N≈−3,33 N. Das negative Vorzeichen bedeutet nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−10 kg·m/s. Δt=5−2=3 s. F̄=−10/3 N≈−3.33 N. The negative sign means left."
+    },
+    {
+      "submissionId": "S783ee55c0d",
+      "answerDE": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4.",
+      "answerEN": "Δp=−12 kg·m/s; Δt=3 s; F̄=−12/3=−4."
+    },
+    {
+      "submissionId": "S8c421eb043",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4 N. Das Minus bedeutet: Die mittlere resultierende Kraft zeigt nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. Δt=5−2=3 s. F̄=−12/3=−4 N. The minus sign means that the average net force points left."
+    },
+    {
+      "submissionId": "S41c18bfd4f",
+      "answerDE": "Δp=p₂−p₁; F̄=Δp/(3 s). Die mittlere Kraft ist negativ, also nach links.",
+      "answerEN": "Δp=p₂−p₁; F̄=Δp/(3 s). The average force is negative, so leftwards."
+    },
+    {
+      "submissionId": "S7bace706df",
+      "answerDE": "Δp=(−4)−(+8)=−12 kg·m/s. Für die mittlere Kraft teilt man durch den Endzeitpunkt: F̄=−12/(5 s)=−2,4 N. Negativ bedeutet nach links.",
+      "answerEN": "Δp=(−4)−(+8)=−12 kg·m/s. For average force, divide by the final time: F̄=−12/(5 s)=−2.4 N. Negative means left."
+    },
+    {
+      "submissionId": "Sff8afeec1c",
+      "answerDE": "Zuerst bewegt sich der Wagen nach rechts, später nach links. Die mittlere resultierende Kraft ist negativ und zeigt nach links.",
+      "answerEN": "The cart initially moves right and later left. The average net force is negative and points left."
+    }
+  ],
+  "authorExpectedScoresIncluded": false,
+  "ownOfferContract": "Only states DE-BW; no official task/source claim; no HE; no new source/curricular learning competency"
+}

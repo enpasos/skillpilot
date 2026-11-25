@@ -1,0 +1,184 @@
+{
+  "type": "object",
+  "properties": {
+    "assessment": {
+      "type": "object",
+      "properties": {
+        "titleDE": {
+          "type": "string"
+        },
+        "titleEN": {
+          "type": "string"
+        },
+        "descriptionDE": {
+          "type": "string"
+        },
+        "descriptionEN": {
+          "type": "string"
+        },
+        "taskDE": {
+          "type": "string"
+        },
+        "taskEN": {
+          "type": "string"
+        },
+        "solutionDE": {
+          "type": "string"
+        },
+        "solutionEN": {
+          "type": "string"
+        },
+        "maxPoints": {
+          "type": "number"
+        },
+        "passingPoints": {
+          "type": "number"
+        },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "points": {
+                "type": "number"
+              },
+              "descriptionDE": {
+                "type": "string"
+              },
+              "descriptionEN": {
+                "type": "string"
+              },
+              "carryingPerformance": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "points",
+              "descriptionDE",
+              "descriptionEN",
+              "carryingPerformance"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "titleDE",
+        "titleEN",
+        "descriptionDE",
+        "descriptionEN",
+        "taskDE",
+        "taskEN",
+        "solutionDE",
+        "solutionEN",
+        "maxPoints",
+        "passingPoints",
+        "criteria"
+      ],
+      "additionalProperties": false
+    },
+    "goalDemandAnalysis": {
+      "type": "string"
+    },
+    "protectedCarriersAndSlack": {
+      "type": "string"
+    },
+    "minorSlipPolicy": {
+      "type": "string"
+    },
+    "answerBank": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "caseId": {
+            "type": "string"
+          },
+          "caseIntent": {
+            "type": "string"
+          },
+          "answerDE": {
+            "type": "string"
+          },
+          "answerEN": {
+            "type": "string"
+          },
+          "expectedScores": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "criterionId": {
+                  "type": "string"
+                },
+                "points": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "criterionId",
+                "points"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "expectedTotal": {
+            "type": "number"
+          },
+          "expectedPass": {
+            "type": "boolean"
+          },
+          "why": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "caseId",
+          "caseIntent",
+          "answerDE",
+          "answerEN",
+          "expectedScores",
+          "expectedTotal",
+          "expectedPass",
+          "why"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "knownLimitations": {
+      "type": "string"
+    },
+    "semanticKind": {
+      "type": "string"
+    },
+    "semanticKindReason": {
+      "type": "string"
+    },
+    "standalone": {
+      "type": "boolean"
+    },
+    "coveredGoalIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "assessment",
+    "goalDemandAnalysis",
+    "protectedCarriersAndSlack",
+    "minorSlipPolicy",
+    "answerBank",
+    "knownLimitations",
+    "semanticKind",
+    "semanticKindReason",
+    "standalone",
+    "coveredGoalIds"
+  ],
+  "additionalProperties": false
+}

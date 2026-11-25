@@ -1,0 +1,398 @@
+[
+  {
+    "submissionId": "Sf557b17bd8",
+    "authorCaseId": "B01",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 10,
+    "expectedPass": true,
+    "caseIntent": "Fully correct",
+    "why": "Correct signed change, elapsed interval, average-force value and physical direction."
+  },
+  {
+    "submissionId": "S447f4d8bbf",
+    "authorCaseId": "B02",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 10,
+    "expectedPass": true,
+    "caseIntent": "Consistent reversed axis and slope method",
+    "why": "Both momenta and the force sign are consistently reversed. The secant slope is an equivalent valid interval method; the physical force still points left."
+  },
+  {
+    "submissionId": "S9dd21e44be",
+    "authorCaseId": "B03",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 2.5
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 9.5,
+    "expectedPass": true,
+    "caseIntent": "One isolated arithmetic slip with sound core",
+    "why": "The correct signed subtraction is visibly set up; its evaluation contains one arithmetic slip. Deduct 0.5 once from momentumChange. Subsequent division and direction are sound follow-through."
+  },
+  {
+    "submissionId": "Sf47395052f",
+    "authorCaseId": "B04",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 3.5
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 9.5,
+    "expectedPass": true,
+    "caseIntent": "One missing minor subordinate facet: force unit",
+    "why": "Only the force-result unit is missing. Lose the 0.5 unit component in meanForce once; retain all calculation and direction credit."
+  },
+  {
+    "submissionId": "S2a75233472",
+    "authorCaseId": "B05",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 1
+      }
+    ],
+    "expectedTotal": 8,
+    "expectedPass": true,
+    "caseIntent": "Genuine minimal exact-cutoff pass",
+    "why": "Complete signed calculation with force unit. The negative force sign earns 1 direction point, but no physical direction is named, losing 2. Total is exactly 8."
+  },
+  {
+    "submissionId": "Sdf13b2fe72",
+    "authorCaseId": "B06",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 3.5
+      },
+      {
+        "criterionId": "direction",
+        "points": 1
+      }
+    ],
+    "expectedTotal": 7.5,
+    "expectedPass": false,
+    "caseIntent": "Genuine minimal response 0.5 below cutoff",
+    "why": "As in the exact-cutoff calculation, physical direction is absent. The additional missing force unit loses only 0.5 in meanForce, giving 7.5; no extra gate is used."
+  },
+  {
+    "submissionId": "S37153d1d76",
+    "authorCaseId": "B07",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 0
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 0
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 3,
+    "expectedPass": false,
+    "caseIntent": "Qualitative only",
+    "why": "The force sign and its direction are correct. No numerical momentum change, general end-minus-start operation, elapsed-time calculation or quantitative force relation is supplied."
+  },
+  {
+    "submissionId": "S89b3ab22a9",
+    "authorCaseId": "B08",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 1.5
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 1.5
+      },
+      {
+        "criterionId": "direction",
+        "points": 0
+      }
+    ],
+    "expectedTotal": 3,
+    "expectedPass": false,
+    "caseIntent": "Formula only",
+    "why": "The symbolic numerator earns general chronological-difference credit. The general quotient earns 1.5 in meanForce. There is no numerical application, force result/unit or sign-to-direction interpretation."
+  },
+  {
+    "submissionId": "S1f953ae644",
+    "authorCaseId": "B09",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 0
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 7,
+    "expectedPass": false,
+    "caseIntent": "Omission of signed momentum-change carrier",
+    "why": "No momentum-change value or end-minus-start operation is shown; it is not reconstructed from the final force. The elapsed-duration quotient, correct reported force and direction independently earn their points."
+  },
+  {
+    "submissionId": "S5195703aef",
+    "authorCaseId": "B10",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 0
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 6,
+    "expectedPass": false,
+    "caseIntent": "Omission of interval-average calculation carrier",
+    "why": "The signed momentum change and qualitative force sign/direction are complete. There is no elapsed-time calculation, force quotient or numerical force result."
+  },
+  {
+    "submissionId": "S8a2ab0e602",
+    "authorCaseId": "B11",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 0
+      }
+    ],
+    "expectedTotal": 7,
+    "expectedPass": false,
+    "caseIntent": "Omission of signed-force/direction carrier",
+    "why": "The signed change and correct average-force magnitude are present. The response explicitly gives only a magnitude, with neither a signed force nor a physical force direction; the whole direction carrier is absent."
+  },
+  {
+    "submissionId": "S7dcbb0d122",
+    "authorCaseId": "B12",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 0
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 7,
+    "expectedPass": false,
+    "caseIntent": "Maintained sign/change misconception",
+    "why": "Addition is an explicitly maintained incorrect change operation, so momentumChange earns 0 rather than the minor-slip treatment. Correct averaging of the learner's own change and correct interpretation of its positive force sign retain follow-through credit. Total 7 fails."
+  },
+  {
+    "submissionId": "Sc9dc9a630b",
+    "authorCaseId": "B13",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 2.5
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 8.5,
+    "expectedPass": true,
+    "caseIntent": "Critical misconception: inferring constant force",
+    "why": "The requested average and direction are correct. The endpoints do not establish constant force; the explicit unsupported inference loses 1.5 within meanForce. The remaining 8.5 points pass under the score-only rule."
+  },
+  {
+    "submissionId": "Sdd6b44f4a1",
+    "authorCaseId": "B14",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 2.5
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 8.5,
+    "expectedPass": true,
+    "caseIntent": "Critical misconception: inferring instantaneous force",
+    "why": "The requested average and direction are correct. Two momentum endpoints do not determine the force at the endpoint instant. Deduct 1.5 once within meanForce for this explicit overclaim; total 8.5 still passes."
+  },
+  {
+    "submissionId": "Se7168e62bd",
+    "authorCaseId": "B15",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 1.5
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 8.5,
+    "expectedPass": true,
+    "caseIntent": "Genuine near-cutoff pass with only general change setup",
+    "why": "The momentum change is specified only symbolically, earning 1.5. The correct elapsed-duration quotient, reported force with unit and physical direction are present. Total 8.5 passes."
+  },
+  {
+    "submissionId": "S916b9b9e98",
+    "authorCaseId": "B16",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 1.5
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 7.5,
+    "expectedPass": false,
+    "caseIntent": "Genuine near-cutoff fail with maintained product relation",
+    "why": "The product is an explicit conceptual relation error. In meanForce, only the correct duration (0.5), correct arithmetic for the stated setup (0.5) and force unit (0.5) remain. The change and sign-to-direction interpretation retain credit. Total 7.5 fails."
+  },
+  {
+    "submissionId": "S02e3a7b244",
+    "authorCaseId": "B17",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 10,
+    "expectedPass": true,
+    "caseIntent": "Equivalent force unit and directed quantity",
+    "why": "kg·m/s² is equivalent to N. The directed force '4 kg·m/s² leftwards' supplies the same sign and direction information as −4 N with a leftwards interpretation."
+  },
+  {
+    "submissionId": "Se5f5cece76",
+    "authorCaseId": "B18",
+    "expectedScores": [
+      {
+        "criterionId": "momentumChange",
+        "points": 3
+      },
+      {
+        "criterionId": "meanForce",
+        "points": 4
+      },
+      {
+        "criterionId": "direction",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 10,
+    "expectedPass": true,
+    "caseIntent": "Exact numerical expression without separate intermediate lines",
+    "why": "The exact numerical expression contains the complete signed difference and elapsed-duration quotient and is a valid exact force result in newtons. Separate intermediate lines or decimal evaluation are unnecessary."
+  }
+]

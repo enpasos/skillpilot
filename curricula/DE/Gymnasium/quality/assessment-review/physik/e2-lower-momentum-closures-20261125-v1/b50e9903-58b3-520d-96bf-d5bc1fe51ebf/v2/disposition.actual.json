@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "assessmentGoalId": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+  "version": 2,
+  "candidateSha256": "sha256:9632f37c270225214b0360907f974900e784f41a09817a55a7b4c98a5ce70e3e",
+  "status": "rejected",
+  "eligibleForActivation": false,
+  "basis": "Both actual independent blind marker decisions, not a changed hidden pass rule. Bad point-allocation false passes remain reported as passes under the actual reviewed rubric.",
+  "models": [
+    "gpt-6.1-sol",
+    "gpt-6.2-astra"
+  ],
+  "distinctBlindThreads": true,
+  "differentAnswerOrders": true,
+  "caseCount": 25,
+  "decisions": [
+    {
+      "round": "round-a",
+      "candidateDecision": "needs_change",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "needs_change",
+      "requiredCorrections": [
+        "Protect numerical momentum-change application through the published points: reduce formula-only momentumChange credit from 1.5 to 0.5, making absent numerical application lose 2.5 points, greater than the 2-point slack. Update both languages and shared notes consistently; continue accepting numerical evidence embedded anywhere in valid working.",
+        "Increase the explicit unsupported instantaneous/constant-force inference deduction from 1.5 to 2.5 points, applied once in meanForce with floor zero. Preserve zero deduction for omitted optional discussion, require no instantaneous-force calculation, and retain the 10-point total, 8-point threshold, isolated-slip allowance and absence of an extra pass gate."
+      ],
+      "authorComparisonDifferences": []
+    },
+    {
+      "round": "round-b",
+      "candidateDecision": "needs_change",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "needs_change",
+      "requiredCorrections": [
+        "At the 8/10 cutoff, reduce credit for stating p_end−p_start without numerical application from 1.5 to 0.5 out of 3. Reserve 2.5 points for evidence of the signed numerical change. Accept −12 kg·m/s, the unevaluated difference (−4)−(+8), or equivalent evidence anywhere in the work.",
+        "In meanForce component A, reduce credit for a general quotient without numerical use of the elapsed interval from 1.5 to 0.5 out of 3. Even with the correct final value and unit, such work would then earn at most 7.5 overall. Accept 3 s established and used across lines, or 5−2 within an exact quotient.",
+        "Increase the once-only meanForce deduction for explicitly claiming that the mean proves constancy or determines a particular instantaneous force from 1.5 to 2.5 points, with a floor of zero. Apply it once even if both claims appear. Silence earns full eligible credit. Update both languages and the shared marking notes together, retaining the single numerical pass threshold and the once-only 0.5 formal-slip rule."
+      ],
+      "authorComparisonDifferences": []
+    }
+  ],
+  "humanApproval": false
+}
