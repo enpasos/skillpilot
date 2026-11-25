@@ -1,0 +1,59 @@
+
+    @Test
+    void supplementalRawShapeCheckIsNormalizationAcceptanceNotCanonicalStorage() throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        String atom = required.stream().filter(id -> !CompletionProfileCompiler.isAssessment(landscapeDefinitions.getGoalDefinition(id))
+                && !CompletionProfileCompiler.isMemory(landscapeDefinitions.getGoalDefinition(id))).findFirst().orElseThrow();
+        var raw = new LearnerLearningPlanApi.Block(" section ", " LEARNING ", " " + section + " ", " E.1 ", monday, monday,
+                null, List.of(" " + atom + " ", atom), List.of(" " + section + " ", section), true);
+        var form = LearnerLearningPlanService.class.getDeclaredMethod("requireWellFormedBlocks", String.class, List.class);
+        form.setAccessible(true);
+        assertThatCode(() -> form.invoke(null, physics, List.of(raw))).doesNotThrowAnyException();
+        var saved = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(raw)), today);
+        var normalized = saved.blocks().getFirst();
+        assertThat(normalized.id()).isEqualTo("section");
+        assertThat(normalized.kind()).isEqualTo("learning");
+        assertThat(normalized.atomicGoalIds()).containsExactly(atom);
+        assertThat(normalized.goalIds()).containsExactly(section);
+        assertThat(normalized).isNotEqualTo(raw);
+        assertThatCode(() -> form.invoke(null, physics, saved.blocks())).doesNotThrowAnyException();
+        System.out.println("SUPPLEMENT-Q2 " + mapper.writeValueAsString(Map.of("rawAccepted",true,"saveNormalized",true,
+                "normalizedStoredBlocksAccepted",true,"rawKind",raw.kind(),"savedKind",normalized.kind(),
+                "rawAtoms",raw.atomicGoalIds().size(),"storedAtoms",normalized.atomicGoalIds().size())));
+    }
+
+    @ParameterizedTest
+    @CsvSource({"course,true", "course,false", "duration,true", "duration,false", "stage,true", "stage,false"})
+    void supplementalOrdinaryScopeChangeWithoutExamDoesNotPoisonTransaction(String change, boolean following) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var block = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, required, List.of(section), true);
+        learningPlans.upsert(learnerId, physics,new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(block)), today);
+        configureHessianMotionUnit(change.equals("duration") ? "G8" : "G9", change.equals("stage") ? "CrossStage" : "SekII",change.equals("course") ? "LK" : "GK");
+        transactions.executeWithoutResult(status -> {
+            var learner = learnerRepository.findById(learnerId).orElseThrow();
+            learner.setFollowLearningPlans(following);learnerRepository.saveAndFlush(learner);
+        });
+        var before = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId,physics).orElseThrow();
+        String bytes = before.getBlocksJson();long revision = before.getRevision();
+        assertThatCode(() -> learningPlans.getPlans(learnerId,today)).doesNotThrowAnyException();
+        assertThatCode(() -> learningPlans.getPlan(learnerId,physics,today)).doesNotThrowAnyException();
+        assertThatCode(() -> learningPlans.getTodayStatus(learnerId,"de")).doesNotThrowAnyException();
+        assertThatCode(() -> learningPlans.getCoachTodayStatus(learnerId,"de")).doesNotThrowAnyException();
+        assertThatCode(() -> learners.getLearnerState(learnerId)).doesNotThrowAnyException();
+        assertThatCode(() -> learningPlans.reconcile(learnerId,new LearnerLearningPlanApi.ReconcileRequest(today))).doesNotThrowAnyException();
+        assertThatCode(() -> learningPlans.resumeExplicitly(learnerId,new LearnerLearningPlanApi.ReconcileRequest(today))).doesNotThrowAnyException();
+        var after = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId,physics).orElseThrow();
+        assertThat(after.getBlocksJson()).isEqualTo(bytes);assertThat(after.getRevision()).isEqualTo(revision);
+        System.out.println("SUPPLEMENT-Q4 " + mapper.writeValueAsString(Map.of("change",change,"following",following,
+                "readerAndReconcileCallsPassed",7,"planBytesUnchanged",true,"revisionUnchanged",true,
+                "stale",learningPlans.getPlan(learnerId,physics,today).stale())));
+    }

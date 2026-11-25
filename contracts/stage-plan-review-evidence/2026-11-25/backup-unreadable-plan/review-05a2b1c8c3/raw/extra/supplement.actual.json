@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "contract": "task-i-supplemental-raw-shape-and-transactions-v1",
+  "head": "05a2b1c8c3a50f276a9a7efe9e3d942849b9dca7",
+  "nativeReceiptPath": "tmp/e1-handover/reviews/backup-unreadable-plan/raw/extra/native.actual.json",
+  "nativeReceiptSha256": "sha256:bb84ffec7ff147554570a87a64175937576ff29ea8bd6df6887c3103f75c90e7",
+  "testXmlPath": "tmp/e1-handover/reviews/backup-unreadable-plan/raw/extra/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+  "testXmlSha256": "sha256:8b20561cb0329a027534317ca004cf661d85fbc45939c0226c67b40d4208a092",
+  "nativePassed": 7,
+  "nativeFailures": 0,
+  "nativeErrors": 0,
+  "measurements": [
+    {
+      "question": "SUPPLEMENT-Q4",
+      "measurement": {
+        "following": true,
+        "readerAndReconcileCallsPassed": 7,
+        "change": "course",
+        "planBytesUnchanged": true,
+        "revisionUnchanged": true,
+        "stale": true
+      }
+    },
+    {
+      "question": "SUPPLEMENT-Q4",
+      "measurement": {
+        "following": false,
+        "readerAndReconcileCallsPassed": 7,
+        "change": "course",
+        "planBytesUnchanged": true,
+        "revisionUnchanged": true,
+        "stale": true
+      }
+    },
+    {
+      "question": "SUPPLEMENT-Q4",
+      "measurement": {
+        "following": true,
+        "readerAndReconcileCallsPassed": 7,
+        "change": "duration",
+        "planBytesUnchanged": true,
+        "revisionUnchanged": true,
+        "stale": false
+      }
+    },
+    {
+      "question": "SUPPLEMENT-Q4",
+      "measurement": {
+        "following": false,
+        "readerAndReconcileCallsPassed": 7,
+        "change": "duration",
+        "planBytesUnchanged": true,
+        "revisionUnchanged": true,
+        "stale": false
+      }
+    },
+    {
+      "question": "SUPPLEMENT-Q4",
+      "measurement": {
+        "following": true,
+        "readerAndReconcileCallsPassed": 7,
+        "change": "stage",
+        "planBytesUnchanged": true,
+        "revisionUnchanged": true,
+        "stale": true
+      }
+    },
+    {
+      "question": "SUPPLEMENT-Q4",
+      "measurement": {
+        "following": false,
+        "readerAndReconcileCallsPassed": 7,
+        "change": "stage",
+        "planBytesUnchanged": true,
+        "revisionUnchanged": true,
+        "stale": true
+      }
+    },
+    {
+      "question": "SUPPLEMENT-Q2",
+      "measurement": {
+        "normalizedStoredBlocksAccepted": true,
+        "storedAtoms": 1,
+        "rawAtoms": 2,
+        "savedKind": "learning",
+        "rawKind": " LEARNING ",
+        "saveNormalized": true,
+        "rawAccepted": true
+      }
+    }
+  ],
+  "q2Verdict": "Same form-normalizer acceptance, not canonical raw-shape equality: accepted padded/uppercase/duplicate request becomes canonical on real save. No newly refused previously-successful restore counterexample found.",
+  "q4Verdict": "No additional concrete transaction failure reproduced. All six ordinary no-exam scope-change cases passed all seven asserted reader/reconcile/resume calls, preserving stored plan bytes and revision. No existing write path found that needs a swallowed selection-read error to mark rollback.",
+  "assertedOrdinaryReaderOrReconcileCalls": 42,
+  "otherSevenTransactionAnnotationsChanged": false,
+  "hypotheticalOperationalOutagesInjected": false,
+  "rawBackupAttackConstructed": false,
+  "productionSourcesExactlyMatchPinnedHead": true,
+  "trackedFilesChangedBySupplement": 0,
+  "execution": {
+    "readOnlyBindMounts": true,
+    "offline": true,
+    "pinnedCorretto": "25.0.2.10.1",
+    "isolatedBuildDirectory": true,
+    "classFileInclude": "**/ClaudeV1CompletionRouteIntegrationTest.class"
+  },
+  "firstAttempt": {
+    "path": "tmp/e1-handover/reviews/backup-unreadable-plan/raw/extra/before-narrow-class-include.actual.json",
+    "selectedTestsPassed": 7,
+    "terminalExitCode": 1,
+    "reason": "Stopped own isolated daemon after selected tests passed because forkEvery=1 kept spawning workers for unmatched classes. Original log retained; final narrow repetition is authoritative."
+  },
+  "scopeLimits": [
+    "Supplemental own runtime/static check, not a blind reviewer.",
+    "No universal noRollback guarantee for every error of the other seven read methods.",
+    "No full backend-suite, client UI, archive-contract, negative-control, cross-learner import or issue205 claim; coordinator owns those."
+  ],
+  "staticReportPath": "tmp/e1-handover/reviews/backup-unreadable-plan/raw/extra/supplement-static.md",
+  "staticReportSha256": "sha256:b6936c0b13c4777950c043dfef94407ab8509ee2e356adc34dc44a47002cbd08"
+}
