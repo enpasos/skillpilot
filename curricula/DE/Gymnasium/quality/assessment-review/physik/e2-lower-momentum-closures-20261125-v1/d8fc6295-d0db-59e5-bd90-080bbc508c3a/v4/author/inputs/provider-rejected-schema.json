@@ -1,0 +1,208 @@
+{
+  "type": "object",
+  "properties": {
+    "assessment": {
+      "type": "object",
+      "properties": {
+        "titleDE": {
+          "type": "string",
+          "enum": [
+            "Impulse zweier Wagen"
+          ]
+        },
+        "titleEN": {
+          "type": "string",
+          "enum": [
+            "Momentum of two carts"
+          ]
+        },
+        "descriptionDE": {
+          "type": "string",
+          "enum": [
+            "Bestimme die Einzelimpulse und den Gesamtimpuls zweier Wagen für zwei Momentaufnahmen auf einer geraden Bahn."
+          ]
+        },
+        "descriptionEN": {
+          "type": "string",
+          "enum": [
+            "Determine the individual momenta and total momentum of two carts in two snapshots on a straight track."
+          ]
+        },
+        "taskDE": {
+          "type": "string",
+          "enum": [
+            "Zwei Wagen A und B bewegen sich auf derselben geraden Bahn. Ihre Massen sind m_A = 0,50 kg und m_B = 1,00 kg. Alle Geschwindigkeiten einer Tabellenzeile gelten zum selben Zeitpunkt.\n\n| Momentaufnahme | Geschwindigkeit von A | Geschwindigkeit von B |\n|---|---:|---:|\n| I | +4,0 m/s | −1,0 m/s |\n| II | +2,0 m/s | −1,0 m/s |\n\nDie Vorzeichen der Tabelle beziehen sich auf rechts als positive Richtung. Du darfst für deine Rechnung rechts oder links als positive Richtung wählen. Nenne deine Wahl und berücksichtige sie bei den Vorzeichen.\n\nBestimme für jede Momentaufnahme die vorzeichenbehafteten Einzelimpulse von A und B sowie den Gesamtimpuls beider Wagen. Halte deinen Rechenweg kurz fest und gib die Einheiten an."
+          ]
+        },
+        "taskEN": {
+          "type": "string",
+          "enum": [
+            "Two carts, A and B, move along the same straight track. Their masses are m_A = 0.50 kg and m_B = 1.00 kg. All velocities in one table row apply at the same instant.\n\n| Snapshot | Velocity of A | Velocity of B |\n|---|---:|---:|\n| I | +4.0 m/s | −1.0 m/s |\n| II | +2.0 m/s | −1.0 m/s |\n\nThe signs in the table use right as the positive direction. You may choose either right or left as positive for your calculations. State your choice and use signs consistent with it.\n\nFor each snapshot, determine the signed individual momenta of A and B and the total momentum of both carts. Show brief working and include units."
+          ]
+        },
+        "solutionDE": {
+          "type": "string"
+        },
+        "solutionEN": {
+          "type": "string"
+        },
+        "maxPoints": {
+          "type": "number",
+          "enum": [
+            12
+          ]
+        },
+        "passingPoints": {
+          "type": "number",
+          "enum": [
+            10
+          ]
+        },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "points": {
+                "type": "number"
+              },
+              "descriptionDE": {
+                "type": "string"
+              },
+              "descriptionEN": {
+                "type": "string"
+              },
+              "carryingPerformance": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "points",
+              "descriptionDE",
+              "descriptionEN",
+              "carryingPerformance"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "titleDE",
+        "titleEN",
+        "descriptionDE",
+        "descriptionEN",
+        "taskDE",
+        "taskEN",
+        "solutionDE",
+        "solutionEN",
+        "maxPoints",
+        "passingPoints",
+        "criteria"
+      ],
+      "additionalProperties": false
+    },
+    "goalDemandAnalysis": {
+      "type": "string"
+    },
+    "protectedCarriersAndSlack": {
+      "type": "string"
+    },
+    "minorSlipPolicy": {
+      "type": "string"
+    },
+    "answerBank": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "caseId": {
+            "type": "string"
+          },
+          "caseIntent": {
+            "type": "string"
+          },
+          "answerDE": {
+            "type": "string"
+          },
+          "answerEN": {
+            "type": "string"
+          },
+          "expectedScores": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "criterionId": {
+                  "type": "string"
+                },
+                "points": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "criterionId",
+                "points"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "expectedTotal": {
+            "type": "number"
+          },
+          "expectedPass": {
+            "type": "boolean"
+          },
+          "why": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "caseId",
+          "caseIntent",
+          "answerDE",
+          "answerEN",
+          "expectedScores",
+          "expectedTotal",
+          "expectedPass",
+          "why"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "knownLimitations": {
+      "type": "string"
+    },
+    "semanticKind": {
+      "type": "string"
+    },
+    "semanticKindReason": {
+      "type": "string"
+    },
+    "standalone": {
+      "type": "boolean"
+    },
+    "coveredGoalIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "assessment",
+    "goalDemandAnalysis",
+    "protectedCarriersAndSlack",
+    "minorSlipPolicy",
+    "answerBank",
+    "knownLimitations",
+    "semanticKind",
+    "semanticKindReason",
+    "standalone",
+    "coveredGoalIds"
+  ],
+  "additionalProperties": false
+}

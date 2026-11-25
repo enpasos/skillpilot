@@ -1,0 +1,400 @@
+{
+  "candidate": {
+    "id": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+    "shortKey": "seki_total_momentum_two_bodies_line",
+    "title": "Impulse zweier Wagen",
+    "titleEn": "Momentum of two carts",
+    "description": "Bestimme die Einzelimpulse und den Gesamtimpuls zweier Wagen für zwei Momentaufnahmen auf einer geraden Bahn.",
+    "descriptionEn": "Determine the individual momenta and total momentum of two carts in two snapshots on a straight track.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "Practice",
+      "Assessment",
+      "canonical"
+    ],
+    "type": "atomic",
+    "contains": [],
+    "requires": [
+      "53afbda1-5776-502b-8867-471975d7b766"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-physics",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "GLOBAL",
+      "area": "Mechanik",
+      "topicCode": "SEKI_TOTAL_MOMENTUM_TWO_BODIES_LINE"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-HH",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary",
+      "applicabilityOverrides": {
+        "jurisdiction": [
+          "DE-HH",
+          "DE-TH"
+        ]
+      }
+    },
+    "examData": {
+      "reviewStatus": "released",
+      "coveredGoalIds": [
+        "53afbda1-5776-502b-8867-471975d7b766"
+      ],
+      "coveredStrands": [],
+      "demandLevels": [
+        "AB1"
+      ],
+      "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v1/seki_total_momentum_two_bodies_line.md",
+      "taskContent": "Zwei Wagen A und B bewegen sich auf derselben geraden Bahn. Ihre Massen sind m_A = 0,50 kg und m_B = 1,00 kg. Alle Geschwindigkeiten einer Tabellenzeile gelten zum selben Zeitpunkt.\n\n| Momentaufnahme | Geschwindigkeit von A | Geschwindigkeit von B |\n|---|---:|---:|\n| I | +4,0 m/s | −1,0 m/s |\n| II | +2,0 m/s | −1,0 m/s |\n\nDie Vorzeichen der Tabelle beziehen sich auf rechts als positive Richtung. Du darfst für deine Rechnung rechts oder links als positive Richtung wählen. Nenne deine Wahl und berücksichtige sie bei den Vorzeichen.\n\nBestimme für jede Momentaufnahme die vorzeichenbehafteten Einzelimpulse von A und B sowie den Gesamtimpuls beider Wagen. Halte deinen Rechenweg kurz fest und gib die Einheiten an.",
+      "taskContentEn": "Two carts, A and B, move along the same straight track. Their masses are m_A = 0.50 kg and m_B = 1.00 kg. All velocities in one table row apply at the same instant.\n\n| Snapshot | Velocity of A | Velocity of B |\n|---|---:|---:|\n| I | +4.0 m/s | −1.0 m/s |\n| II | +2.0 m/s | −1.0 m/s |\n\nThe signs in the table use right as the positive direction. You may choose either right or left as positive for your calculations. State your choice and use signs consistent with it.\n\nFor each snapshot, determine the signed individual momenta of A and B and the total momentum of both carts. Show brief working and include units.",
+      "solutionContent": "Rechts positiv, p = m·v; alle Impulse in kg·m/s.\nI: p_A = 0,50·(+4,0) = +2; p_B = 1,00·(−1,0) = −1; P_I = (+2)+(−1) = +1.\nII: p_A = 0,50·(+2,0) = +1; p_B = 1,00·(−1,0) = −1; P_II = (+1)+(−1) = 0.\n\nLinks positiv ist gleichwertig: alle Geschwindigkeitszeichen umkehren. I: −2, +1, Gesamt −1; II: −1, +1, Gesamt 0. Eindeutige Richtungswörter, gerichtete Beträge, exakte numerische Ausdrücke und N·s sind gleichwertig. Eine zusätzliche Erklärung zu null ist nicht verlangt.\n\nBewertung: MI, TI, MII, TII je 3 P; ab 10 von 12 P bestanden, allein nach der Summe. Richtige, der jeweiligen Momentaufnahme zuordenbare Evidenz zählt überall. Exakte numerische Ausdrücke und eindeutig zugeordnete Einzelwerte innerhalb von Gesamtrechnungen zählen. Widersprechende falsche Endwerte nicht übergehen. Bloße Gesamtwerte belegen keine fehlenden Einzelimpulse; allgemeine Formeln ohne Datenanwendung: 0 P.\n\nJe Wagen und Momentaufnahme zählen 1,5 P für den richtigen vorzeichenbehafteten Zahlenimpuls. Ein einzelner sachlich falscher Wert, falscher Masseneinsatz oder eine falsche Wagenzuordnung kostet die betroffenen 1,5 P einmal; mit sonst voller Leistung sind 10,5 P und Bestehen beabsichtigt. Zwei sachlich falsch zugeordnete Wagenwerte einer Momentaufnahme verlieren beide Anteile, auch bei richtiger Summe. Eine wirkliche Vertauschung der Wagen-Datenpaare ist kein bloßer Beschriftungsaussetzer.\n\nSteht derselbe falsche Einzelimpuls desselben Wagens oder dieselbe falsche Regel in beiden Momentaufnahmen, entfallen beide betroffenen 1,5-P-Anteile, mindestens 3 P. Das gilt auch bei Kopieren/Wiederverwenden eines zuerst falsch berechneten Werts sowie für falsche Masse, ignoriertes Vorzeichen, bloße Beträge oder vermischte Wagendaten. Dies ist kein einmaliger Formfehler. Ein Wert, der in einer Momentaufnahme richtig ist, ist dort nicht allein wegen seiner Wiederholung falsch; ein ausdrücklich falscher Rechenweg bleibt aber zu berücksichtigen.\n\nEin nachweislich isolierter kleiner Form-/Ausführungsfehler (Rechnen, Vorzeichen, Einheit, Rundung, Beschriftung) bei sichtbar richtigem Kern kostet höchstens 0,5 P einmal an seiner Quelle. Richtiger vorzeichenbehafteter lokaler Ansatz und richtig ausgeführte Vergleichsrechnungen können dies belegen. Drei andere richtige Endwerte allein machen einen unbelegten falschen Einzelwert nicht zum Formfehler. Verschiedene nachweislich lokale Fehler dürfen je 0,5 P kosten. Die Wiederholungsregel hat Vorrang; durchgehend falsche Produkte sind keine automatische Folge kleiner Aussetzer.\n\nGültige Gesamtrechnungen mit eigenen falschen Einzelwerten erhalten volle Weiterrechnungspunkte; ihre Folgen nicht nochmals abziehen. Das beweist keinen fehlenden richtigen Einzelimpuls. Ein falscher Gesamtwert aus solchen Eingaben allein ist keine Aussage gegen die Aufhebung. Sonstige zusätzliche Deutungen wirken nur, wenn sie gefragte Ergebnisse ersetzen oder zurücknehmen; die folgende Ausnahme hat ausdrücklich Vorrang.\n\nTII ist 0 P bei einer ausdrücklich aufrechterhaltenen Aussage gegen die Aufhebung entgegengesetzter Impulse bewegter Wagen, auch bei richtigem Zahlenwert 0 und unverändert richtigen übrigen Antworten. Beispiele: „Gesamtimpuls null bedeutet, dass beide ruhen“ oder „Bewegte Wagen können keinen Gesamtimpuls null haben“. Dies überschreibt auch sonst gültiges Weiterrechnen in TII. Ein kommentarlos richtiges Nullergebnis oder eine im selben Text ausdrücklich zurückgenommene/korrigierte Behauptung erhält die normalen Punkte; eine Erklärung ist nicht verlangt. Eine bloß danebenstehende 0 ist keine Rücknahme. Korrekte Einzelimpulse verlieren dadurch keine MI/MII-Punkte; tatsächlich ersetzte/falsche Einzelwerte werden dort nach ihren eigenen Belegen bewertet.\n\nEine fehlende Achsenangabe bei sonst klarer konsistenter Konvention kostet einmal 0,5 P. Fehlende/falsche Impulseinheiten als reine Formangabe kosten zusammen einmal 0,5 P; eine gemeinsame gültige Einheit genügt. Diese beiden unabhängigen Auslassungen dürfen zusammen 1 P kosten. Gemeinsame Berichtsmängel im ersten betroffenen Kriterium mit Punkten verbuchen (MI, TI, MII, TII), örtliche Fehler an ihrer Quelle; nie negativ, nie doppelt und keine weiteren Abzüge für bloße Folgen.",
+      "solutionContentEn": "Choose right positive and use p = m·v; all momenta are in kg·m/s.\nI: p_A = 0.50·(+4.0) = +2; p_B = 1.00·(−1.0) = −1; P_I = (+2)+(−1) = +1.\nII: p_A = 0.50·(+2.0) = +1; p_B = 1.00·(−1.0) = −1; P_II = (+1)+(−1) = 0.\n\nLeft positive is equivalent: reverse every velocity sign. I: −2, +1, total −1; II: −1, +1, total 0. Unambiguous direction words, directed magnitudes, exact numerical expressions and N·s are equivalent. An additional explanation of zero is not required.\n\nScoring: MI, TI, MII, TII each carry 3 points; 10 out of 12 passes by the total alone. Correct evidence attributable to the relevant snapshot counts wherever given. Exact numerical expressions and identifiable individual terms within total calculations count. Do not ignore contradictory wrong final values. Bare totals cannot establish missing individual momenta; generic formulas without data application earn 0.\n\nEach cart in each snapshot earns 1.5 points for its correct signed numerical momentum. One substantive wrong value, wrong mass input or wrong cart assignment loses that 1.5 once; with all other performance present, 10.5 and a pass are intended. Two substantively misassigned cart values in one snapshot lose both allocations, even with a correct sum. An actual swap of the carts' input pairs is not merely a clerical label slip.\n\nThe same wrong individual momentum for the same cart or the same wrong rule in both snapshots loses both affected 1.5-point allocations, at least 3 points. This includes copying/reusing an initially miscalculated value, a wrong mass, ignored signs, magnitudes only or mixed cart data. It is not one formal slip. A value correct in one snapshot is not wrong there merely because it is repeated; an explicitly wrong calculation method must still be considered.\n\nA demonstrably isolated minor reporting/execution slip (arithmetic, sign, unit, rounding, label), with visibly sound core reasoning, costs at most 0.5 once at its source. A correct local signed setup and correctly executed comparable calculations can establish this. Three other correct final values alone do not turn an unsupported wrong individual value into a formal slip. Distinct demonstrably local mistakes may each cost 0.5. The repetition rule takes precedence; consistently wrong products are not automatically a series of minor slips.\n\nValid total calculations using the learner's wrong individual values retain full follow-through credit; do not deduct again for their consequences. This does not prove a missing correct individual momentum. A wrong total arising from such inputs alone is not an assertion denying cancellation. Other extra interpretations affect scoring only when they replace or retract requested results; the following exception explicitly takes precedence.\n\nTII earns 0 for an explicit maintained assertion denying cancellation of opposite momenta of moving carts, even with the correct number 0 and all other correct answers left intact. Examples: 'Zero total momentum means both carts are at rest' or 'Moving carts cannot have zero total momentum.' This overrides otherwise valid follow-through in TII. A correct zero without comment or an assertion expressly retracted/corrected in the same response receives normal credit; no explanation is required. Merely writing 0 alongside the assertion is not a retraction. Correct individual momenta lose no MI/MII credit because of the assertion; individual values actually replaced or made wrong are assessed there on their own evidence.\n\nA missing axis declaration with an otherwise clear consistent convention costs 0.5 once. Missing/incorrect momentum units solely as reporting cost 0.5 altogether; one shared valid unit suffices. These two independent omissions may together cost 1. Record common reporting omissions in the first affected criterion with credit (MI, TI, MII, TII), local mistakes at their source; never negative, never twice and no further loss for mere consequences.",
+      "scoring": {
+        "maxPoints": 12,
+        "passingPoints": 10,
+        "steps": [
+          {
+            "id": "MI",
+            "points": 3,
+            "description": "Momentaufnahme I: je 1,5 P für den richtigen vorzeichenbehafteten Zahlenimpuls von A und B: rechts positiv +2 und −1 kg·m/s, links positiv −2 und +1. Pro Wagen 1,5 oder 0 P; nur nachgewiesene kleine lokale Fehler nach der gemeinsamen Regel begrenzen. Ein sachlich falscher Einzelwert verliert 1,5 P; ein solcher Fehler allein darf mit gültigem Weiterrechnen 10,5 P erreichen. Gerichtete Beträge und exakte numerische Produkte zählen ebenso. Richtige, der Momentaufnahme zuordenbare Evidenz zählt überall, auch in Gesamtrechnungen. Bloße Beträge, qualitative Richtungen und allgemeine Formeln ergeben keine getrennten Teilpunkte. Ein falscher Endwert wird nicht durch seinen richtigen Zwischenansatz gelöscht. Wiederholungs- und Fehlerregel der Lösung anwenden. / EN: Snapshot I: 1.5 points for each correct signed numerical momentum of A and B: right positive +2 and −1 kg·m/s, left positive −2 and +1. Per cart, award 1.5 or 0; cap losses only for demonstrated minor local slips under the shared policy. A substantive wrong individual value loses 1.5; one such error alone may reach 10.5 with valid follow-through. Directed magnitudes and exact numerical products also count. Correct evidence attributable to the snapshot counts wherever written, including total calculations. Bare magnitudes, qualitative directions and generic formulas earn no separate fragments. A wrong final value is not erased by its correct intermediate setup. Apply the solution's repetition and error policies."
+          },
+          {
+            "id": "TI",
+            "points": 3,
+            "description": "Gesamtimpuls I: 2,5 P für gültiges numerisches algebraisches Verknüpfen beider zugeordneten Einzelimpulse; 0,5 P für richtige Auswertung oder einen bloßen richtigen Gesamtwert (+1 rechts positiv, −1 links positiv). Ein exakter numerischer Summenausdruck gilt als richtiges Ergebnis. Einzelwerte mit passendem Gesamtwert belegen die Verknüpfung auch ohne Plus- oder P-Zeichen; Einzelwerte ohne Summe/Gesamtwert: 0 P. Subtraktion entgegengesetzter gerichteter Beträge ist gleichwertig. Gültiges Weiterrechnen mit eigenen falschen Einzelwerten voll anerkennen, ohne Folgeverluste; es ersetzt keine fehlende MI-Evidenz. Eine aufrechterhaltene falsche Verknüpfungsregel erhält keine Ansatzpunkte; ein unabhängig richtiger Gesamtwert höchstens 0,5 P. Gemeinsame Fehlerregel anwenden. / EN: Total I: 2.5 points for valid numerical algebraic combination of both assigned individual momenta; 0.5 for correct evaluation or a bare correct total (+1 right positive, −1 left positive). An exact numerical sum expression counts as a correct result. Individual values with their matching total establish combination without a plus sign or P label; individual values without a sum/total earn 0. Subtracting opposing directed magnitudes is equivalent. Fully credit valid follow-through with wrong individual values, without consequence losses; it replaces no missing MI evidence. A maintained wrong combining rule earns no setup credit; an independently correct total earns at most 0.5. Apply the shared error policy."
+          },
+          {
+            "id": "MII",
+            "points": 3,
+            "description": "Momentaufnahme II: je 1,5 P für den richtigen vorzeichenbehafteten Zahlenimpuls von A und B: rechts positiv +1 und −1 kg·m/s, links positiv −1 und +1. Die Evidenzregeln von MI gelten. Derselbe falsche Wagenwert oder dieselbe falsche Regel in beiden Momentaufnahmen verliert beide betroffenen 1,5-P-Anteile, mindestens 3 P; auch Kopieren/Wiederverwenden macht daraus keinen einmaligen Formfehler. Dies gilt etwa für falsche Masse, ignoriertes Vorzeichen, bloße Beträge oder vermischte Wagendaten. Richtiges Weiterrechnen stellt die Anteile nicht wieder her. Zwei sachlich vertauschte Wagenwerte verlieren beide Anteile, auch bei richtiger Summe. Ein alleinstehender sachlicher Fehler kostet 1,5 P; nachgewiesene kleine lokale Fehler nach gemeinsamer Regel. Korrekte Einzelwerte bleiben bei einer zusätzlichen Null-Widerspruchsaussage hier erhalten. / EN: Snapshot II: 1.5 points for each correct signed numerical momentum of A and B: right positive +1 and −1 kg·m/s, left positive −1 and +1. MI's evidence rules apply. The same wrong cart value or wrong rule in both snapshots loses both affected 1.5-point allocations, at least 3; copying/reusing it does not make this one formal slip. Examples include a wrong mass, ignored signs, magnitudes only or mixed cart data. Correct follow-through cannot restore those allocations. Two substantively swapped cart values lose both allocations even with a correct sum. One substantive error alone costs 1.5; demonstrated minor local slips use the shared policy. Correct individual values remain credited here despite an additional assertion contradicting zero cancellation."
+          },
+          {
+            "id": "TII",
+            "points": 3,
+            "description": "Gesamtimpuls II: 2,5 P für gültige numerische algebraische Verknüpfung; 0,5 P für richtige Auswertung oder den bloßen richtigen Gesamtwert 0. Die Evidenz-/Weiterrechnungsregeln von TI gelten, auch für exakte Summenausdrücke; Einzelwerte ohne Summe/Gesamtwert: 0 P. Numerische Aufhebung genügt ohne Erklärung. Vorrang: Eine ausdrücklich aufrechterhaltene Aussage gegen die Aufhebung entgegengesetzter Impulse bewegter Wagen setzt TII auf 0 P, auch bei richtigem 0 und unverändert richtigen übrigen Antworten; z.B. „null bedeutet beide ruhen“ oder „bewegte Wagen können nicht null ergeben“. Dies überschreibt auch gültiges Weiterrechnen. Kommentarlos richtiges 0 und eine ausdrücklich im selben Text zurückgenommene/korrigierte Behauptung erhalten normale Punkte. Eine 0 neben der Behauptung ist keine Rücknahme. Ein falscher Gesamtwert aus gültigem Weiterrechnen allein ist keine solche Aussage. Gemeinsame Fehlerregel anwenden. / EN: Total II: 2.5 points for valid numerical algebraic combination; 0.5 for correct evaluation or the bare correct total 0. TI's evidence/follow-through rules apply, including exact sum expressions; individual values without a sum/total earn 0. Numerical cancellation suffices without explanation. Precedence: an explicit maintained assertion denying cancellation of opposite momenta of moving carts sets TII to 0, even with correct 0 and all other correct answers retained; e.g. 'zero means both rest' or 'moving carts cannot give zero'. This overrides valid follow-through too. A correct zero without comment and an assertion expressly retracted/corrected in the same response receive normal credit. A 0 alongside the assertion is not a retraction. A wrong total from valid follow-through alone is not such an assertion. Apply the shared error policy."
+          }
+        ]
+      }
+    }
+  },
+  "candidateStatus": "proposed-only; no active release or acceptance yet",
+  "proposedSemanticKind": "practiceAssessment",
+  "proposedParent": "standalone direct member of canonical Physics root, no assessment/learning-unit cluster",
+  "coveredOrdinaryGoal": {
+    "id": "53afbda1-5776-502b-8867-471975d7b766",
+    "title": "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+    "titleEn": "Determine individual and total momentum along a line",
+    "description": "Die lernende Person kann für zwei Körper, die sich auf derselben Geraden bewegen oder ruhen, eine positive Richtung wählen, aus ihren gegebenen Massen und Geschwindigkeiten zu einem gemeinsamen Zeitpunkt die vorzeichenbehafteten Einzelimpulse bestimmen und diese zum Gesamtimpuls addieren.",
+    "descriptionEn": "The learner can choose a positive direction for two objects at rest or moving along the same straight line, use their given masses and velocities at the same instant to determine their signed momenta, and add them to find the total momentum.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "ee48e811-4c9c-5080-9836-8403fc9f0810"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "shortKey": "canonical_physics_momentum_of_two_bodies",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "53afbda1-5776-502b-8867-471975d7b766",
+        "title": "Visualisierung: Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+        "url": "/assets/goal-visualizations/physik/53afbda1-5776-502b-8867-471975d7b766/53afbda1-5776-502b-8867-471975d7b766.jpg",
+        "provider": "ChatGPT / Codex image generation",
+        "description": "Visualisierung zum Lernziel: Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen.",
+        "altText": "Zwei Wagen von je 1 kg fahren gleichzeitig auf einer Geraden. Rechts ist positiv. Links fährt ein Wagen mit +3 m/s nach rechts, rechts fährt der andere mit −1 m/s nach links. Ihre Impulse ergeben zusammen +2 kg·m/s.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "submissions": [
+    {
+      "submissionId": "S7c205c2a84",
+      "answerDE": "p = m·v. P = p_A + p_B.",
+      "answerEN": "p = m·v. P = p_A + p_B."
+    },
+    {
+      "submissionId": "Sd5c5efe329",
+      "answerDE": "Rechts positiv. I: p_A = +2 kg·m/s, p_B = −1 kg·m/s; P_I = 2+(−1) = +1 kg·m/s². II: p_A = +1 kg·m/s, p_B = −1 kg·m/s; P_II = 1+(−1) = 0 kg·m/s.",
+      "answerEN": "Right is positive. I: p_A = +2 kg·m/s, p_B = −1 kg·m/s; P_I = 2+(−1) = +1 kg·m/s². II: p_A = +1 kg·m/s, p_B = −1 kg·m/s; P_II = 1+(−1) = 0 kg·m/s."
+    },
+    {
+      "submissionId": "S1a8be51d9d",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. Ich verwende für A in beiden Zeilen m_A = 1 kg. I: p_A = 1·(+4) = +4; p_B = 1·(−1) = −1; P_I = 4+(−1) = +3. II: p_A = 1·(+2) = +2; p_B = 1·(−1) = −1; P_II = 2+(−1) = +1.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I use m_A = 1 kg for A in both rows. I: p_A = 1·(+4) = +4; p_B = 1·(−1) = −1; P_I = 4+(−1) = +3. II: p_A = 1·(+2) = +2; p_B = 1·(−1) = −1; P_II = 2+(−1) = +1."
+    },
+    {
+      "submissionId": "S645830459d",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1. In II muss ich wegen der Linksbewegung den bereits negativen Impuls abziehen: P_II = 1−(−1) = +2.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1. In II, the leftward motion requires me to subtract the already negative momentum: P_II = 1−(−1) = +2."
+    },
+    {
+      "submissionId": "Sa4f266318f",
+      "answerDE": "Rechts positiv. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1.",
+      "answerEN": "Right is positive. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1."
+    },
+    {
+      "submissionId": "S65fdb5c7cd",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·(+4) = +3; p_B = 1·(−1) = −2; P_I = 3+(−2) = +1. II: p_A = 0,50·(+2) = +0,75; p_B = 1·(−1) = −0,50; P_II = 0,75+(−0,50) = +0,25.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = 0.50·(+4) = +3; p_B = 1·(−1) = −2; P_I = 3+(−2) = +1. II: p_A = 0.50·(+2) = +0.75; p_B = 1·(−1) = −0.50; P_II = 0.75+(−0.50) = +0.25."
+    },
+    {
+      "submissionId": "S221fc1e450",
+      "answerDE": "Rechts positiv. Beim Impuls nehme ich immer den Geschwindigkeitsbetrag, also sind beide Impulse positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·|+4| = +2; p_B = 1·|−1| = +1; P_I = 2+1 = +3. II: p_A = 0,50·|+2| = +1; p_B = 1·|−1| = +1; P_II = 1+1 = +2.",
+      "answerEN": "Right is positive. For momentum I always use the speed magnitude, so both momenta are positive. All momenta are in kg·m/s. I: p_A = 0.50·|+4| = +2; p_B = 1·|−1| = +1; P_I = 2+1 = +3. II: p_A = 0.50·|+2| = +1; p_B = 1·|−1| = +1; P_II = 1+1 = +2."
+    },
+    {
+      "submissionId": "S9b75d50f7b",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: P_I = +1. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: P_I = +1. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0."
+    },
+    {
+      "submissionId": "S63530cd55e",
+      "answerDE": "Rechts positiv. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −2; P_II = 1+(−2) = −1.",
+      "answerEN": "Right positive. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −2; P_II = 1+(−2) = −1."
+    },
+    {
+      "submissionId": "S51910a002b",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·(+4,0); p_B = 1,00·(−1,0); P_I = 0,50·(+4,0)+1,00·(−1,0). II: p_A = 0,50·(+2,0); p_B = 1,00·(−1,0); P_II = 0,50·(+2,0)+1,00·(−1,0).",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = 0.50·(+4.0); p_B = 1.00·(−1.0); P_I = 0.50·(+4.0)+1.00·(−1.0). II: p_A = 0.50·(+2.0); p_B = 1.00·(−1.0); P_II = 0.50·(+2.0)+1.00·(−1.0)."
+    },
+    {
+      "submissionId": "S2c782e64d9",
+      "answerDE": "Rechts positiv. Die Impulse haben die Einheit kg·m/s. I: A hat positiven, B negativen Impuls. Der Betrag von A ist größer; der Gesamtimpuls ist positiv. II: A hat positiven, B negativen Impuls. Die Beträge sind gleich und der Gesamtimpuls ist null.",
+      "answerEN": "Right is positive. Momentum has the unit kg·m/s. I: A has positive momentum and B negative momentum. A has the greater magnitude; total momentum is positive. II: A has positive momentum and B negative momentum. Their magnitudes are equal and total momentum is zero."
+    },
+    {
+      "submissionId": "S5e21cdcbd5",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. Die Zahlen bleiben stehen, aber ich halte daran fest: Bewegte Wagen können keinen Gesamtimpuls null haben.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. I retain the numbers, but maintain that moving carts cannot have zero total momentum."
+    },
+    {
+      "submissionId": "Se173d68e1c",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: A hat 0,50·4 = 2 nach rechts, B hat 1·1 = 1 nach links. Gesamt: 2−1 = +1. II: A hat 0,50·2 = 1 nach rechts, B hat 1·1 = 1 nach links. Gesamt: 1−1 = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: A has 0.50·4 = 2 to the right; B has 1·1 = 1 to the left. Total: 2−1 = +1. II: A has 0.50·2 = 1 to the right; B has 1·1 = 1 to the left. Total: 1−1 = 0."
+    },
+    {
+      "submissionId": "S5e192fc7bb",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1. In I muss ich wegen der Linksbewegung den bereits negativen Impuls abziehen: P_I = 2−(−1) = +3. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1. In I, the leftward motion requires me to subtract the already negative momentum: P_I = 2−(−1) = +3. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0."
+    },
+    {
+      "submissionId": "Sf44e711af8",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. Weil zwei Wagen beteiligt sind, verdopple ich jeden Impuls nach p = 2m·v. I: p_A = +4; p_B = −2; P_I = 4+(−2) = +2. II: p_A = +2; p_B = −2; P_II = 2+(−2) = 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. Because two carts are involved, I double every momentum using p = 2m·v. I: p_A = +4; p_B = −2; P_I = 4+(−2) = +2. II: p_A = +2; p_B = −2; P_II = 2+(−2) = 0."
+    },
+    {
+      "submissionId": "S0a7cb0eaaa",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. Diese Ergebnisse bleiben meine Antworten. Zusätzlich behaupte ich: Ein Gesamtimpuls von null bedeutet immer, dass alle Körper ruhen.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. These results remain my answers. I additionally claim: Zero total momentum always means that every object is at rest."
+    },
+    {
+      "submissionId": "S4ee6c4447f",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. Für I verwende ich m_A = 1 kg: p_A = 1·(+4) = +4; p_B = 1·(−1) = −1; P_I = 4+(−1) = +3. II: p_A = 0,50·(+2) = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. For I I use m_A = 1 kg: p_A = 1·(+4) = +4; p_B = 1·(−1) = −1; P_I = 4+(−1) = +3. II: p_A = 0.50·(+2) = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0."
+    },
+    {
+      "submissionId": "S2004548d4a",
+      "answerDE": "Rechts positiv; Einheit für alle Impulse: kg·m/s. I: P_I = [A: +2]+[B: −1] = +1. II: P_II = [A: +1]+[B: −1] = 0.",
+      "answerEN": "Right positive; all momenta are in kg·m/s. I: P_I = [A: +2]+[B: −1] = +1. II: P_II = [A: +1]+[B: −1] = 0."
+    },
+    {
+      "submissionId": "Sab1a3f0a48",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +1; p_B = −1; P_I = 1+(−1) = 0. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +1; p_B = −1; P_I = 1+(−1) = 0. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0."
+    },
+    {
+      "submissionId": "S4ca874545b",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = +1; P_I = 2+(+1) = +3. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = +1; P_I = 2+(+1) = +3. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0."
+    },
+    {
+      "submissionId": "S5188440a12",
+      "answerDE": "Rechts ist positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·(+4,0) = +2; p_B = 1,00·(−1,0) = −1; P_I = (+2)+(−1) = +1. II: p_A = 0,50·(+2,0) = +1; p_B = 1,00·(−1,0) = −1; P_II = (+1)+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·(+4.0) = +2; p_B = 1.00·(−1.0) = −1; P_I = (+2)+(−1) = +1. II: p_A = 0.50·(+2.0) = +1; p_B = 1.00·(−1.0) = −1; P_II = (+1)+(−1) = 0."
+    },
+    {
+      "submissionId": "S7f61869b97",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = 1·(−1) = −2; P_I = 2+(−2) = 0. II: p_A = +1; p_B = −2, aus I übernommen; P_II = 1+(−2) = −1.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = 1·(−1) = −2; P_I = 2+(−2) = 0. II: p_A = +1; p_B = −2, copied from I; P_II = 1+(−2) = −1."
+    },
+    {
+      "submissionId": "Sffc6e848f1",
+      "answerDE": "I: p_A = 0,50·(+4) = +2,5; p_B = 1·(−1) = −1; P_I = 2,5+(−1) = +1,5. II: p_A = 0,50·(+2) = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = +0,1.",
+      "answerEN": "I: p_A = 0.50·(+4) = +2.5; p_B = 1·(−1) = −1; P_I = 2.5+(−1) = +1.5. II: p_A = 0.50·(+2) = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = +0.1."
+    },
+    {
+      "submissionId": "S21445d9bf5",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2,5; p_B = 1·(−1) = −1; P_I = 2,5+(−1) = +1,5. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2.5; p_B = 1·(−1) = −1; P_I = 2.5+(−1) = +1.5. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0."
+    },
+    {
+      "submissionId": "S918a8cbb3a",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −2; P_II = 1+(−2) = −1.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −2; P_II = 1+(−2) = −1."
+    },
+    {
+      "submissionId": "S4308f23fd0",
+      "answerDE": "Rechts positiv. Ich kehre trotzdem in beiden Zeilen alle Tabellenzeichen um. Alle Impulse in kg·m/s. I: p_A = −2, p_B = +1, P_I = −2+1 = −1. II: p_A = −1, p_B = +1, P_II = −1+1 = 0.",
+      "answerEN": "Right is positive. Nevertheless I reverse every table sign in both rows. All momenta are in kg·m/s. I: p_A = −2, p_B = +1, P_I = −2+1 = −1. II: p_A = −1, p_B = +1, P_II = −1+1 = 0."
+    },
+    {
+      "submissionId": "S88d3cf99a1",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. Für A nehme ich jeweils m_A und v_B. I: p_A = 0,50·(−1) = −0,5; p_B = 1·(−1) = −1; P_I = −0,5+(−1) = −1,5. II: p_A = 0,50·(−1) = −0,5; p_B = 1·(−1) = −1; P_II = −0,5+(−1) = −1,5.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. For A I use m_A and v_B each time. I: p_A = 0.50·(−1) = −0.5; p_B = 1·(−1) = −1; P_I = −0.5+(−1) = −1.5. II: p_A = 0.50·(−1) = −0.5; p_B = 1·(−1) = −1; P_II = −0.5+(−1) = −1.5."
+    },
+    {
+      "submissionId": "Sf4c6ea7c3e",
+      "answerDE": "Rechts positiv. P_I = +1 kg·m/s. P_II = 0 kg·m/s.",
+      "answerEN": "Right is positive. P_I = +1 kg·m/s. P_II = 0 kg·m/s."
+    },
+    {
+      "submissionId": "Sb215aa9a73",
+      "answerDE": "Alle Impulse in kg·m/s. I: p_A = +2, p_B = −1, P_I = 2+(−1) = +1. II: p_A = +1, p_B = −1, P_II = 1+(−1) = 0.",
+      "answerEN": "All momenta are in kg·m/s. I: p_A = +2, p_B = −1, P_I = 2+(−1) = +1. II: p_A = +1, p_B = −1, P_II = 1+(−1) = 0."
+    },
+    {
+      "submissionId": "Sef1ed6f291",
+      "answerDE": "Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1.",
+      "answerEN": "All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1."
+    },
+    {
+      "submissionId": "Scef6c3a723",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0."
+    },
+    {
+      "submissionId": "S043ffa5a43",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. Zuerst schrieb ich: Gesamtimpuls null bedeutet, beide Wagen ruhen. Diese Aussage streiche ich ausdrücklich und korrigiere sie: Die entgegengesetzten Impulse können sich bei fahrenden Wagen aufheben.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. I first wrote: Zero total momentum means both carts are at rest. I expressly retract and correct that statement: Opposite momenta can cancel while the carts are moving."
+    },
+    {
+      "submissionId": "S5e7ea5baf8",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: Der Einzelimpuls von A ist positiv, der von B negativ. P_I = +1. II: Der Einzelimpuls von A ist positiv, der von B negativ. P_II = 0. Einzelbeträge und Produkte habe ich nicht bestimmt.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: A's individual momentum is positive and B's is negative. P_I = +1. II: A's individual momentum is positive and B's is negative. P_II = 0. I have not determined individual magnitudes or products."
+    },
+    {
+      "submissionId": "Scae23f162c",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2 und p_B = −1. Weil B nach links fährt, ziehe ich seinen negativen Impuls ab: P_I = 2−(−1) = +3. II: p_A = +1 und p_B = −1; genauso P_II = 1−(−1) = +2.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = +2 and p_B = −1. Since B moves left, I subtract its negative momentum: P_I = 2−(−1) = +3. II: p_A = +1 and p_B = −1; likewise P_II = 1−(−1) = +2."
+    },
+    {
+      "submissionId": "S6c3af64c9b",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. In II ordne ich A die Daten von B und B die Daten von A zu: p_A = 1·(−1) = −1; p_B = 0,50·(+2) = +1; P_II = −1+1 = 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. In II I assign B's inputs to A and A's inputs to B: p_A = 1·(−1) = −1; p_B = 0.50·(+2) = +1; P_II = −1+1 = 0."
+    },
+    {
+      "submissionId": "Se9fd42fbb8",
+      "answerDE": "I: p_A = 0,50·(+4) = +2,5; p_B = 1·(−1) = −1; P_I = 2,5+(−1) = +1,5. II: p_A = 0,50·(+2) = +1; p_B = 1·(−1) = −1,5; P_II = 1+(−1,5) = −0,4.",
+      "answerEN": "I: p_A = 0.50·(+4) = +2.5; p_B = 1·(−1) = −1; P_I = 2.5+(−1) = +1.5. II: p_A = 0.50·(+2) = +1; p_B = 1·(−1) = −1.5; P_II = 1+(−1.5) = −0.4."
+    },
+    {
+      "submissionId": "S2e4d11380f",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. Nur die Beträge der Einzelimpulse: I: |p_A| = 0,50·4 = 2; |p_B| = 1·1 = 1. II: |p_A| = 0,50·2 = 1; |p_B| = 1·1 = 1. Gesamtwerte: P_I = +1; P_II = 0. Die Richtungen der Einzelimpulse und die Summenansätze lasse ich weg.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. Individual momentum magnitudes only: I: |p_A| = 0.50·4 = 2; |p_B| = 1·1 = 1. II: |p_A| = 0.50·2 = 1; |p_B| = 1·1 = 1. Totals: P_I = +1; P_II = 0. I leave out individual momentum directions and sum setups."
+    },
+    {
+      "submissionId": "S85880389fd",
+      "answerDE": "Links positiv. Daher sind die Geschwindigkeiten in I −4 und +1 m/s, in II −2 und +1 m/s. Alle Impulse in N·s. I: p_A = 0,50·(−4) = −2; p_B = 1·(+1) = +1; P_I = −2+1 = −1. II: p_A = 0,50·(−2) = −1; p_B = +1; P_II = −1+1 = 0.",
+      "answerEN": "Left is positive. The velocities are therefore −4 and +1 m/s in I, and −2 and +1 m/s in II. All momenta are in N·s. I: p_A = 0.50·(−4) = −2; p_B = 1·(+1) = +1; P_I = −2+1 = −1. II: p_A = 0.50·(−2) = −1; p_B = +1; P_II = −1+1 = 0."
+    },
+    {
+      "submissionId": "S22cb8cdfe3",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. In I ordne ich A die Daten von B und B die Daten von A zu: p_A = 1·(−1) = −1; p_B = 0,50·(+4) = +2; P_I = −1+2 = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. In I I assign B's inputs to A and A's inputs to B: p_A = 1·(−1) = −1; p_B = 0.50·(+4) = +2; P_I = −1+2 = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0."
+    },
+    {
+      "submissionId": "Sef74bb9072",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: P_II = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: P_II = 0."
+    },
+    {
+      "submissionId": "S0be0971aad",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = 1·(−1) = +1; P_I = 2+(+1) = +3. II: p_A = +1; p_B = 1·(−1) = +1; P_II = 1+(+1) = +2.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = 1·(−1) = +1; P_I = 2+(+1) = +3. II: p_A = +1; p_B = 1·(−1) = +1; P_II = 1+(+1) = +2."
+    },
+    {
+      "submissionId": "S339c29fd58",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1."
+    },
+    {
+      "submissionId": "S0fbcf1c58c",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II gebe ich nur die Beträge an: |p_A| = 1; |p_B| = 1. P_II = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. For II I give only the magnitudes: |p_A| = 1; |p_B| = 1. P_II = 0."
+    },
+    {
+      "submissionId": "S6896d9d441",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: Gesamtimpuls null geht nur, wenn beide Wagen ruhen. Daher p_A = 0 und p_B = 0; P_II = 0+0 = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: Total momentum can be zero only if both carts are at rest. Therefore p_A = 0 and p_B = 0; P_II = 0+0 = 0."
+    },
+    {
+      "submissionId": "S10cb492e7d",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: A +2, B −1, zusammen +1. II: A +1, B −1, zusammen 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: A +2, B −1, together +1. II: A +1, B −1, together 0."
+    },
+    {
+      "submissionId": "S8948865e9a",
+      "answerDE": "I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −2; P_II = 1+(−2) = −1.",
+      "answerEN": "I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −2; P_II = 1+(−2) = −1."
+    },
+    {
+      "submissionId": "S664ec70c63",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1."
+    },
+    {
+      "submissionId": "Sd38c1bf8c1",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0."
+    }
+  ],
+  "authorExpectedScoresIncluded": false,
+  "ownOfferContract": "Only states DE-HH,DE-TH; no official task/source claim; no HE; no new source/curricular learning competency",
+  "ownerDecidedAssessmentContract": "**From Claude. Task H, K1 (total momentum, HH and TH): my decision as owner of the cut, after your report at the bound of three versions. K2 is accepted as you delivered it. One further and last version of K1 with the two rules below; the task text stays.** I read the README, version 3 and both final votes. The two markers agree on every score; what they reject are two rules of the rubric, and both are questions of what passing must show. That is mine to decide, so a fourth version is no further search but the rubric for a decided contract.\n\n**What passing K1 must show:** for both snapshots the signed individual momenta of both carts and their sum, and no maintained statement that contradicts the cancelling of two opposite momenta.\n\n**Rule 1, the contradiction to the zero total.** A statement that is explicit and maintained and contradicts the computed zero total (for example \"total momentum zero means both carts are at rest\", or \"moving carts cannot have total momentum zero\") loses the three points of the total of snapshot II, also with the right number. The paper then has at most 9 of 12 and fails. A correct zero without any comment keeps all points; no explanation is asked. A remark the learner corrects in the same paper is not maintained. This is the rule of 24 Nov: a misconception that is stated and maintained loses the points of its performance.\n\n**Rule 2, a wrong value for one cart.** (a) One wrong individual momentum in one snapshot, carried on consistently, loses its 1.5 points and nothing else; the paper can pass with 10.5. This is intended and I decide it against the second vote: a learner who shows the method correctly for three of four values and makes one mistake must not fail (Product Owner, 24 Nov). (b) The same wrong value or the same wrong rule in both snapshots (the wrong mass for a cart, the sign ignored, magnitudes only, mass and velocity of different carts combined) is a maintained error: it loses the points of that cart in both snapshots, at least 3, and fails. (c) Follow-through in the totals stays credited as in version 3.\n\n**Procedure.** Version 4 by the same author with these two rules as the stated contract; both markers get the contract with the rubric and judge the rubric against it, with written works for each side of both rules (the work C32, a correct zero without comment, a self-corrected remark, one wrong value once, the same wrong value twice, a swapped pair). Pass mark stays 10 of 12. If both accept: K1 goes into the HH and TH views as planned and you finish H. If one of them does not accept, K1 stays parked, you report both votes, and I re-cut the task itself with an explicit question about the zero total; no fifth version.\n\n**Your complete runs on `a4923a8092`** show the known consequences of the six missing routes; they need no separate report beyond what you wrote at 19:47. Final runs after K1."
+}

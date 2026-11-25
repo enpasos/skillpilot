@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "contract": "owner-decided-final-v4-two-independent-blind-marker-disposition-v1",
+  "assessmentGoalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+  "version": 4,
+  "candidateSha256": "sha256:f750a65ef1d2791b5c3de999eba0f21abcb3bd8202ebe535017bfa6f22836c32",
+  "status": "accepted-by-both-blind-markers",
+  "eligibleForActivation": true,
+  "ownerDecision": "2026-11-25T19:55:00+01:00",
+  "noFifthVersion": true,
+  "preservesHistoricalParkedV3Outcome": true,
+  "basis": "Actual separately blind marker verdicts against the owner-decided two-rule assessment contract on the exact frozen V4 candidate; points alone decide each synthetic work.",
+  "models": [
+    "gpt-6.1-sol",
+    "gpt-6.2-astra"
+  ],
+  "distinctBlindThreads": true,
+  "sameOriginalAuthorThread": true,
+  "differentAnswerOrders": true,
+  "caseCount": 48,
+  "decisions": [
+    {
+      "round": "round-a",
+      "candidateDecision": "accept_current",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "accept_current",
+      "ownerContractVerdict": "accept_current",
+      "requiredCorrections": [],
+      "rule1Findings": "The published solution and TII criterion expressly implement the cancellation-contradiction rule, including its precedence over follow-through. S0a7cb0eaaa and S5e21cdcbd5 retain all correct numerical answers but maintain contradictory assertions: each scores TII=0 and 9 overall, failing. S6896d9d441 additionally replaces both II individual values and scores 6. On the other side, commentless correct zero in Sd38c1bf8c1 and genuine express self-correction in S043ffa5a43 each retain 12. No additional explanatory task or hidden pass veto was applied.",
+      "rule2Findings": "One substantive wrong cart value in S918a8cbb3a and Sab1a3f0a48, and one wrong mass in S4ee6c4447f, each costs 1.5 once: all score 10.5 and deliberately pass. Repeated wrong mass in S1a8be51d9d, copied wrong B value in S7f61869b97, repeated ignored sign in S0be0971aad, repeated magnitude rule in S221fc1e450 and mixed-cart inputs in S88d3cf99a1 each lose at least 3 and score 9, failing. Actual pair swaps in S22cb8cdfe3 and S6c3af64c9b lose both affected cart allocations and score 9. Valid totals retain follow-through throughout. Supported isolated arithmetic and sign slips in S21445d9bf5 and S4ca874545b instead lose 0.5 once at their source and score 11.5.",
+      "authorComparisonDifferences": []
+    },
+    {
+      "round": "round-b",
+      "candidateDecision": "accept_current",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "accept_current",
+      "ownerContractVerdict": "accept_current",
+      "requiredCorrections": [],
+      "rule1Findings": "The published solution and TII criterion expressly give the contradiction rule precedence over a correct zero and valid follow-through. S0a7cb0eaaa and S5e21cdcbd5 each retain all correct numerical answers, earn zero for TII and fail at 9. S6896d9d441 also replaces the individual values and earns 6. Sd38c1bf8c1 and S5188440a12 show cancellation without commentary and earn 12. S043ffa5a43 expressly retracts and corrects its remark and earns 12. The rubric distinguishes an asserted scientific contradiction from an omitted optional explanation.",
+      "rule2Findings": "S4ee6c4447f uses a wrong mass once and S918a8cbb3a gives one unsupported wrong cart value. Each loses 1.5 once, retains both totals and passes at 10.5. Sab1a3f0a48 also earns 10.5 because the repeated A value is correct in II. S21445d9bf5 and S4ca874545b instead demonstrate isolated execution slips and earn 11.5. Repeating a wrong mass in S1a8be51d9d, copying a wrong value in S7f61869b97, repeating B’s wrong sign in S0be0971aad or mixing carts’ inputs twice in S88d3cf99a1 gives 9 in each case. S221fc1e450 expressly applies a magnitude-only rule to both carts twice and earns 6. The explicit pair swaps in S22cb8cdfe3 and S6c3af64c9b each lose both affected cart allocations and fail at 9. The totals in all these cases retain full valid follow-through.",
+      "authorComparisonDifferences": [
+        {
+          "submissionId": "S221fc1e450",
+          "authorCaseId": "C18",
+          "authorTotal": 9,
+          "markerTotal": 6,
+          "authorPass": false,
+          "markerPass": false
+        }
+      ]
+    }
+  ],
+  "markerScoreOrPassDisagreements": [
+    {
+      "authorCaseId": "C18",
+      "roundATotal": 9,
+      "roundBTotal": 6,
+      "roundAPass": false,
+      "roundBPass": false
+    }
+  ],
+  "humanApproval": false,
+  "learnerMasteryWritten": false
+}
