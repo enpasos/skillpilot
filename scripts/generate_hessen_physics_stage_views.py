@@ -81,6 +81,7 @@ HESSEN_E1_CHILD_UNITS = (
 # laws). Like the E.1 children they group reviewed targets for learning; they
 # are structure children, not declared learning units.
 E5_TOPIC = "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+HESSEN_MOMENTUM = "53afbda1-5776-502b-8867-471975d7b766"
 HESSEN_E2_CHILD_UNITS = (
     ("physics-e2-inertia", "Trägheit: Was ohne Kraft geschieht", "Inertia: what happens without a force", (
         "31a2ef52-114b-4d2c-a720-6ef5a390b6dc", "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
@@ -97,7 +98,7 @@ HESSEN_E2_CHILD_UNITS = (
         "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b", "94784e0a-7ddc-48be-91fb-dc82b78eb322",
         "91c49019-ea51-4ce5-a919-c91c45b25e83", "253a71d2-e751-4c63-acbe-238b71463cd8")),
     ("physics-e2-momentum", "Impuls und Stöße", "Momentum and collisions", (
-        "839ecc8f-3a60-418b-bc92-64bfeef33824", "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+        HESSEN_MOMENTUM, "839ecc8f-3a60-418b-bc92-64bfeef33824", "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
         "d168ae5d-f36f-4ad4-b070-d5931f8d70d1", "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
         "2eecd0e2-a7ca-4568-9b12-3d47706c65fb", "1232febe-868a-4dac-b4c2-e35789434601",
         # Stays until the mixed exams that require it have their successors (E.2 step 3).
@@ -213,6 +214,9 @@ def generate(view):
             if len(references) != 1 or not GOALS.get(variant, {}).get("examData"):
                 raise ValueError(f"{view['viewId']}: expected one E.1 child assessment reference and a canonical variant for {historical}")
             references[0]["goalId"] = variant
+    e2 = next((node for node in walk(result["rootNodes"]) if node.get("id") == E2_TOPIC), None)
+    if e2 is not None and HESSEN_MOMENTUM not in role_atoms(result)["target"]:
+        e2["children"].append({"kind": "goalEntry", "goalId": HESSEN_MOMENTUM})
     before = role_atoms(result)
     if motion is not None and set(HESSEN_E1_CHILD_ASSESSMENT_VARIANTS) & (before["target"] | before["prerequisiteOnly"]):
         raise ValueError(f"{view['viewId']}: a historical child assessment is still projected in Hessen E.1")

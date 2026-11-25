@@ -138,6 +138,29 @@ if len(RETIRED_MIXED_MOTION_OFFER_VIEWS) != 64:
     raise AssertionError("Changed reviewed view set of the retired mixed E.1 assessment")
 
 
+
+MOMENTUM_IDS = {"53afbda1-5776-502b-8867-471975d7b766", "ecbaa101-cb10-5da3-9368-ae40ff587d74", "059c1adc-e4d2-5222-a923-15abc417d59f"}
+
+def momentum_delta(view, roles):
+    """Independent expected full-competence routes, not the authoring policy."""
+    state, stage = view["scope"].get("jurisdiction", "DE"), view["scope"]["stage"]
+    profile = view["scope"].get("courseProfile")
+    imp, mean, instant = "53afbda1-5776-502b-8867-471975d7b766", "ecbaa101-cb10-5da3-9368-ae40ff587d74", "059c1adc-e4d2-5222-a923-15abc417d59f"
+    lower = {"DE-BW", "DE-BY", "DE-HH", "DE-TH"}
+    upper = {"DE-HB", "DE-HE", "DE-MV", "DE-NW", "DE-RP", "DE-SH", "DE-SL"}
+    expected = set()
+    if (state in lower and stage in ("CrossStage", "SekI")) or (state in upper and stage in ("CrossStage", "SekII")):
+        expected.add(imp)
+    if state == "DE-BW" and stage in ("CrossStage", "SekI"):
+        expected.add(mean)
+    if state in ("DE-SN", "DE-ST") and profile == "LK" and stage in ("CrossStage", "SekII"):
+        expected.add(imp)
+        if state == "DE-SN":
+            expected.update((mean, instant))
+    if roles["target"] & MOMENTUM_IDS != expected:
+        raise AssertionError("Changed reviewed momentum target delta: " + view["viewId"])
+    return expected
+
 def retained_authority_seeds(view, roles, baseline):
     """Remove only explicit reviewed additions, then enforce the old authority."""
     allowed_new_task = set()
@@ -157,6 +180,7 @@ def retained_authority_seeds(view, roles, baseline):
     if view["viewId"] in HESSEN_GUIDED_OPENING_VIEWS:
         allowed_new_task.update(HESSEN_GUIDED_OPENINGS)
     allowed_new_task.update(measurement_delta(view, roles))
+    allowed_new_task.update(momentum_delta(view, roles))
     if not allowed_new_task <= roles["target"]:
         raise AssertionError("A reviewed addition is missing")
     retained = roles["target"] - allowed_new_task
@@ -209,6 +233,112 @@ class PhysicsStageAuthoring(unittest.TestCase):
     def setUpClass(cls):
         cls.views = {path.name: json.loads(path.read_text()) for path in authoring.DIRECTORY.glob("*.view.json")}
         cls.authorities = json.loads((authoring.ROOT / "scripts/generate_laender_physics_stage_views.memberships.json").read_text())["authorities"]
+
+    def test_momentum_target_routes_and_uncovered_electives(self):
+        for view in self.views.values():
+            with self.subTest(view=view["viewId"]):
+                momentum_delta(view, authoring.graph.role_atoms(view))
+        for state in ("BE", "BB"):
+            decision = authoring.SOURCE_PLAN["reviewedMomentumBindings"]["excludedElectives"][state]
+            self.assertEqual(decision["pages"], [17, 21])
+            self.assertEqual(decision["schoolForms"], (["Integrierte Sekundarschule", "Gemeinschaftsschule"] if state == "BE" else ["Gesamtschule", "berufliches Gymnasium"]))
+        # No national official target is invented from the canonical catalog.
+        for view in self.views.values():
+            if view["scope"].get("jurisdiction", "DE") in ("DE", "DE-BE", "DE-BB", "DE-NI"):
+                self.assertFalse(authoring.graph.role_atoms(view)["target"] & MOMENTUM_IDS)
+
+    def test_new_momentum_primary_source_pin_fails_closed(self):
+        broken = copy.deepcopy(authoring.SOURCE_PLAN)
+        target = next(row for row in broken["reviewedMomentumBindings"]["targets"] if row["state"] == "BW")
+        target["sourceSha256"] = "0" * 64
+        with patch.object(authoring, "SOURCE_PLAN", broken):
+            with self.assertRaisesRegex(ValueError, "Reviewed momentum primary source changed"):
+                authoring.momentum_source_plan(self.views["de-bw-gk.view.json"], {}, {})
+
+    def test_by_conservation_source_correction_does_not_reclassify_its_old_consumer(self):
+        correction = authoring.SOURCE_PLAN["reviewedMomentumBindings"]["sourceAssignmentCorrections"]["BY"]
+        self.assertEqual((correction["goalId"], correction["sourceTopicCode"], correction["sourceYear"]),
+                         ("839ecc8f-3a60-418b-bc92-64bfeef33824", "Ph10.2", 10))
+        self.assertEqual(correction["retainedEarlierConsumerGoalId"], "e790de73-f8e5-4027-bc05-9f12a0e8c9cb")
+        self.assertIn(correction["goalId"], authoring.graph.GOALS[correction["retainedEarlierConsumerGoalId"]]["requires"])
+        for filename in ("de-by-gk.view.json", "de-by-lk.view.json", "de-by-seki.view.json"):
+            roles = authoring.graph.role_atoms(self.views[filename])
+            self.assertTrue({correction["goalId"], correction["retainedEarlierConsumerGoalId"]} <= roles["target"])
+
+    def test_new_momentum_content_has_its_own_mechanics_heading(self):
+        imp = "53afbda1-5776-502b-8867-471975d7b766"
+        for state, unit, profiles in (("sl", "e", ("gk", "lk")), ("sn", "q11", ("lk",))):
+            for profile in profiles:
+                for stage in ("", "-sekii"):
+                    view = self.views[f"de-{state}{stage}-{profile}.view.json"]
+                    group = next(n for n in authoring.graph.walk(view["rootNodes"]) if n.get("id") == f"physics-{state}-{unit}-momentum-preparation")
+                    shared = state == "sl" and stage == "-sekii"
+                    self.assertEqual(group["label"], "Einstieg und mechanische Grundlagen" if shared else "Mechanische Grundlage: Impulse zweier Körper")
+                    if shared:
+                        self.assertIn("5c44b9ba-9b05-4774-95d5-073230d3fc4f", authoring.graph.role_atoms({"rootNodes": [group]})["target"])
+                    self.assertIn(imp, authoring.graph.role_atoms({"rootNodes": [group]})["target"])
+                    self.assertNotIn("Kern", group["label"])
+                    self.assertNotIn("Relativität", group["label"])
+
+    def test_heading_repair_preserves_all_preexisting_acquisition_places(self):
+        base = authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views"
+        predecessor = json.loads((base / "source-review-predecessors/rejected-pairs.actual.json").read_text())
+        def references(view):
+            found = {}
+            def visit(nodes, trail=()):
+                for node in nodes:
+                    if node["kind"] == "structure":
+                        visit(node["children"], (*trail, node["id"]))
+                    else:
+                        found.setdefault(node["goalId"], []).append((trail, node["kind"],
+                            node.get("projectionRole", "target"), node.get("acquisitionPlacement") is True))
+            visit(view["rootNodes"])
+            return found
+        for row in predecessor["pairs"]:
+            payload = {}
+            for label, pin in row["pair"].items():
+                raw = (base / pin["path"]).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), pin["sha256"])
+                payload[label] = references(json.loads(raw))
+            allowed = {"53afbda1-5776-502b-8867-471975d7b766"}
+            if "-sekii-" in row["viewFile"]:
+                allowed.add("5c44b9ba-9b05-4774-95d5-073230d3fc4f")
+            retained = lambda data: {k:v for k,v in data.items() if k not in allowed}
+            with self.subTest(view=row["viewFile"]):
+                self.assertNotEqual(retained(payload["before-heading"]), retained(payload["rejected-acquisition-rebuild"]),
+                    "the retained negative fixture must detect the actual acquisition-wrapper regression")
+                self.assertEqual(retained(payload["before-heading"]), retained(references(self.views[row["viewFile"]])))
+
+    def test_sn_shared_newton_topic_keeps_goal_specific_source_passages(self):
+        _, report = authoring.generate_source_land(self.views["de-sn-lk.view.json"])
+        expected = {"53afbda1-5776-502b-8867-471975d7b766": [57],
+                    "ecbaa101-cb10-5da3-9368-ae40ff587d74": [57, 58],
+                    "059c1adc-e4d2-5222-a923-15abc417d59f": [58]}
+        for goal, pages in expected.items():
+            with self.subTest(goal=goal):
+                passages = report["sourceAssignments"][goal]["sourcePassages"]
+                self.assertEqual(len(passages), 1)
+                self.assertEqual(passages[0]["canonicalGoalId"], goal)
+                self.assertEqual(passages[0]["pages"], pages)
+        imp = report["sourceAssignments"]["53afbda1-5776-502b-8867-471975d7b766"]["sourcePassages"][0]
+        self.assertNotIn("tangent", imp["boundary"].lower())
+        self.assertNotIn("differential", imp["boundary"].lower())
+
+    def test_momentum_derivation_moves_and_actual_preparation_chain(self):
+        proof = "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+        rate = "059c1adc-e4d2-5222-a923-15abc417d59f"
+        math = "b1dcc191-d046-50de-984a-ee5c17157628"
+        self.assertIn(rate, authoring.graph.GOALS[proof]["requires"])
+        self.assertIn(math, authoring.graph.GOALS[rate]["requires"])
+        for state, unit, label in (("st", "physics-st-unit-q11-12", "Herleitung der Impulserhaltung nach den Analysisgrundlagen"), ("sn", "physics-sn-unit-q11", "Herleitung der Impulserhaltung nach der Differentialform")):
+            for name in (f"de-{state}-lk.view.json", f"de-{state}-sekii-lk.view.json"):
+                view = self.views[name]
+                node = next(n for n in authoring.graph.walk(view["rootNodes"]) if n.get("id") == unit)
+                groups = [n for n in authoring.graph.walk(node["children"]) if n.get("label") == label]
+                self.assertEqual(len(groups), 1)
+                self.assertIn(proof, authoring.graph.role_atoms({"rootNodes": groups})["target"])
+                learning = {n.get("goalId") for n in authoring.graph.walk(node["children"]) if n.get("acquisitionPlacement") is True or n.get("projectionRole") != "prerequisiteOnly"}
+                self.assertIn(rate, learning)
 
     def test_two_motions_identity_delta_cannot_widen_hide_or_demote_the_frozen_authority(self):
         view = self.views["de-he-gk.view.json"]

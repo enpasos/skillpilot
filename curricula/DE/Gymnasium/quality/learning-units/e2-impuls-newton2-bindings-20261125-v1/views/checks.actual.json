@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-25T14:57:00.041250+00:00",
+  "scope": "Block3 focused automated checks, not complete frontend/backend CI or independent subject acceptance",
+  "checks": [
+    {
+      "command": [
+        [
+          "python3",
+          "scripts/generate_hessen_physics_stage_views.py",
+          "--check"
+        ],
+        [
+          "python3",
+          "scripts/generate_hessen_physics_stage_views.py",
+          "--check",
+          "--duration-views"
+        ]
+      ],
+      "exitCode": 0,
+      "checkedCount": 10,
+      "output": "Hessen Physics stage views: 4 checked; atomic target/support roles verified.\nHessen Physics stage views: 6 checked; atomic target/support roles verified.\n",
+      "outputSha256": "d417a78b6425be2a5b1d996b0090837e51bbdb509b56c2c953a6fd24e5b514e0"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/generate_laender_physics_stage_views.py",
+        "--check",
+        "--report",
+        "<temporary report>"
+      ],
+      "exitCode": 0,
+      "checkedCount": 80,
+      "output": "Physics authoring: de-bb-gk.view.json\nPhysics authoring: de-bb-lk.view.json\nPhysics authoring: de-bb-sekii-gk.view.json\nPhysics authoring: de-bb-sekii-lk.view.json\nPhysics authoring: de-be-gk.view.json\nPhysics authoring: de-be-lk.view.json\nPhysics authoring: de-be-sekii-gk.view.json\nPhysics authoring: de-be-sekii-lk.view.json\nPhysics authoring: de-bw-gk.view.json\nPhysics authoring: de-bw-lk.view.json\nPhysics authoring: de-bw-sekii-gk.view.json\nPhysics authoring: de-bw-sekii-lk.view.json\nPhysics authoring: de-by-gk.view.json\nPhysics authoring: de-by-lk.view.json\nPhysics authoring: de-by-sekii-gk.view.json\nPhysics authoring: de-by-sekii-lk.view.json\nPhysics authoring: de-de-gym-physics-gk.view.json\nPhysics authoring: de-de-gym-physics-lk.view.json\nPhysics authoring: de-de-gym-seki-physics.view.json\nPhysics authoring: de-de-gym-sekii-physics-gk.view.json\nPhysics authoring: de-de-gym-sekii-physics-lk.view.json\nPhysics authoring: de-hb-gk.view.json\nPhysics authoring: de-hb-lk.view.json\nPhysics authoring: de-hb-sekii-gk.view.json\nPhysics authoring: de-hb-sekii-lk.view.json\nPhysics authoring: de-hh-gk.view.json\nPhysics authoring: de-hh-lk.view.json\nPhysics authoring: de-hh-sekii-gk.view.json\nPhysics authoring: de-hh-sekii-lk.view.json\nPhysics authoring: de-mv-gk.view.json\nPhysics authoring: de-mv-lk.view.json\nPhysics authoring: de-mv-sekii-gk.view.json\nPhysics authoring: de-mv-sekii-lk.view.json\nPhysics authoring: de-ni-gk.view.json\nPhysics authoring: de-ni-lk.view.json\nPhysics authoring: de-ni-sekii-gk.view.json\nPhysics authoring: de-ni-sekii-lk.view.json\nPhysics authoring: de-nw-gk.view.json\nPhysics authoring: de-nw-lk.view.json\nPhysics authoring: de-nw-sekii-gk.view.json\nPhysics authoring: de-nw-sekii-lk.view.json\nPhysics authoring: de-rp-gk.view.json\nPhysics authoring: de-rp-lk.view.json\nPhysics authoring: de-rp-sekii-gk.view.json\nPhysics authoring: de-rp-sekii-lk.view.json\nPhysics authoring: de-sh-gk.view.json\nPhysics authoring: de-sh-lk.view.json\nPhysics authoring: de-sh-sekii-gk.view.json\nPhysics authoring: de-sh-sekii-lk.view.json\nPhysics authoring: de-sl-gk.view.json\nPhysics authoring: de-sl-lk.view.json\nPhysics authoring: de-sl-sekii-gk.view.json\nPhysics authoring: de-sl-sekii-lk.view.json\nPhysics authoring: de-sn-gk.view.json\nPhysics authoring: de-sn-lk.view.json\nPhysics authoring: de-sn-sekii-gk.view.json\nPhysics authoring: de-sn-sekii-lk.view.json\nPhysics authoring: de-st-gk.view.json\nPhysics authoring: de-st-lk.view.json\nPhysics authoring: de-st-sekii-gk.view.json\nPhysics authoring: de-st-sekii-lk.view.json\nPhysics authoring: de-th-gk.view.json\nPhysics authoring: de-th-lk.view.json\nPhysics authoring: de-th-sekii-gk.view.json\nPhysics authoring: de-th-sekii-lk.view.json\nCommon course planning: BB CrossStage\nCommon course planning: BB SekII\nCommon course planning: BE CrossStage\nCommon course planning: BE SekII\nCommon course planning: BW CrossStage\nCommon course planning: BW SekII\nCommon course planning: BY CrossStage\nCommon course planning: BY SekII\nCommon course planning: DE CrossStage\nCommon course planning: DE SekII\nCommon course planning: HB CrossStage\nCommon course planning: HB SekII\nCommon course planning: HH CrossStage\nCommon course planning: HH SekII\nCommon course planning: MV CrossStage\nCommon course planning: MV SekII\nCommon course planning: NI CrossStage\nCommon course planning: NI SekII\nCommon course planning: NW CrossStage\nCommon course planning: NW SekII\nCommon course planning: RP CrossStage\nCommon course planning: RP SekII\nCommon course planning: SH CrossStage\nCommon course planning: SH SekII\nCommon course planning: SL CrossStage\nCommon course planning: SL SekII\nCommon course planning: SN CrossStage\nCommon course planning: SN SekII\nCommon course planning: ST CrossStage\nCommon course planning: ST SekII\nCommon course planning: TH CrossStage\nCommon course planning: TH SekII\nPhysics stage views: 80 ALL views checked; atomic roles preserved.\n",
+      "outputSha256": "c47cf81ba20204633d952be4a00b9945d6d13f79c5fb2af3278eed1e6332f7ff"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_generate_hessen_physics_stage_views.py"
+      ],
+      "exitCode": 0,
+      "checkedCount": 20,
+      "output": "....Hessen Physics stage views: 6 checked; atomic target/support roles verified.\nHessen Physics stage views: 6 checked; atomic target/support roles verified.\n................\n----------------------------------------------------------------------\nRan 20 tests in 11.712s\n\nOK\n",
+      "outputSha256": "c3481ab0870c44dd32d17ee7d583a037e403da9942c9b1c2e52af2e319e1d718"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_generate_laender_physics_stage_views.py"
+      ],
+      "exitCode": 0,
+      "checkedCount": 33,
+      "output": ".................................\n----------------------------------------------------------------------\nRan 33 tests in 20.268s\n\nOK\n",
+      "outputSha256": "3fca52ceb6b12cb284767463f1774290220f16b5942e792602c16e249fa70a05"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "scripts.test_mathematics_foreign_acquisition_policy",
+        "scripts.test_mathematics_stage_views.MathematicsStageViewsTest.test_foreign_acquisition_policy_has_current_atomic_witnesses"
+      ],
+      "exitCode": 0,
+      "checkedCount": 6,
+      "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 2.097s\n\nOK\n",
+      "outputSha256": "131451b6fec3dcc07ce97be6941a07cf61c0581ce13b1a5f2bba2c26e163aead",
+      "environment": {
+        "PYTHONPATH": "scripts"
+      }
+    }
+  ],
+  "measurementArtifacts": [
+    {
+      "path": "placements.actual.json",
+      "sha256": "0b2f9a7f0d85568448d0f5539d648caa1bb7b2b72949927fea35a95849a6db75"
+    },
+    {
+      "path": "native-projection.actual.json",
+      "sha256": "b306bf6b1af6078e75994f1defbcedc776baf231ae1ff28a247f0678d340ff58"
+    },
+    {
+      "path": "source-placement-witnesses.actual.json",
+      "sha256": "3a34b8c0ba78c11df8f606c49874a39d5287835fded8d56a60ffeaa8aa63e67d"
+    },
+    {
+      "path": "foreign-math-recheck.actual.json",
+      "sha256": "a417b6e642b42e27b8dc9d0575e3e897957152cd3867b0fded99489fc492500e"
+    },
+    {
+      "path": "backflows.actual.json",
+      "sha256": "3a9f176ab5067fe1c8b9dec414c0d558bdce33f11a22c083ad4902b148f35cd6"
+    },
+    {
+      "path": "hessen-children.successor.actual.json",
+      "sha256": "ef008e91d0a3ca1bfaa87a742110cf9d028a17852fd4766753442b002dc3bdde"
+    },
+    {
+      "path": "final-heading-delta.actual.json",
+      "sha256": "13907a87cc386263f0677bd9833aa4b59b35d926e757fa19a68645a125f754be"
+    }
+  ]
+}

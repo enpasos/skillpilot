@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS",
+  "checkedCurrentExceptionViewHashes": 66,
+  "checkedSNGoalBindingsInBothForms": 6,
+  "currentSourcePolicy": {
+    "path": "scripts/generate_laender_physics_stage_views.sources.json",
+    "sha256": "173f0de537a2f7253b8250e1b2c5af53f3ea0be3b1285d7204aa6988c02416bf"
+  },
+  "currentCompanions": {
+    "source-demand-place-exceptions.actual.json": {
+      "path": "source-demand-place-exceptions.actual.json",
+      "sha256": "0143bd662c571cdf768f0fdf7e35a12e42b1d390c008a1b7668b5aba7ebeac1d"
+    },
+    "source-placement-witnesses.actual.json": {
+      "path": "source-placement-witnesses.actual.json",
+      "sha256": "da22fa26cb75dc7f3a791702d0458bbd806806fd9eef67ac8ef059ceb496e268"
+    },
+    "final-heading-delta-v2.actual.json": {
+      "path": "final-heading-delta-v2.actual.json",
+      "sha256": "a065f6390b8be885782147546acdb75fe54c83e81596fe53f44179629407989a"
+    }
+  },
+  "snGoalSpecificBoundaries": [
+    {
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+      "pages": [
+        57
+      ],
+      "boundary": "LK only: signed individual momentum and two-body total momentum in one dimension, grounded in the two-body problems and signs on PDF57."
+    },
+    {
+      "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "pages": [
+        57,
+        58
+      ],
+      "boundary": "LK only: finite impulse relation on PDF57 and force-momentum connection on PDF58; determining the interval mean from two momenta is a bounded operationalisation."
+    },
+    {
+      "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+      "pages": [
+        58
+      ],
+      "boundary": "LK only: printed differential force-momentum law and graphical interpretation in p(t) on PDF58; reading a drawn tangent is the bounded operationalisation."
+    }
+  ],
+  "boundary": "This is a literal current-input consistency check, not a new source-review vote. Sealed earlier review packets and rejected intermediates remain untouched."
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "status": "REJECTED_INTERMEDIATE",
+  "reason": "The first mechanics-heading transform reran acquisition placement and changed existing acquisition-wrapper paths in the two SL GK views. Old target-place invariance alone was insufficient. These exact pairs remain source-review predecessors; they are not accepted final output.",
+  "pairs": [
+    {
+      "viewFile": "de-sl-gk.view.json",
+      "pair": {
+        "before-heading": {
+          "path": "source-review-predecessors/de-sl-gk.before-heading.snapshot.json",
+          "sha256": "a0c449352ef5bbd7adc0acaeedc5232fa8afabbae8f2c28699e8af007c231495"
+        },
+        "rejected-acquisition-rebuild": {
+          "path": "source-review-predecessors/de-sl-gk.rejected-acquisition-rebuild.snapshot.json",
+          "sha256": "046692170cfd9d217c5d51069bb1844fcdd55e6339407b4362cb22928336bd55"
+        }
+      }
+    },
+    {
+      "viewFile": "de-sl-sekii-gk.view.json",
+      "pair": {
+        "before-heading": {
+          "path": "source-review-predecessors/de-sl-sekii-gk.before-heading.snapshot.json",
+          "sha256": "0b1437629163ef6e491764c329fc16689e47d69c4e7e7bcef1bafb1df513051f"
+        },
+        "rejected-acquisition-rebuild": {
+          "path": "source-review-predecessors/de-sl-sekii-gk.rejected-acquisition-rebuild.snapshot.json",
+          "sha256": "48e6b6ff5c316487a091e06ea128b5cbfa33b3696cd75d61e36e61bc98fe4e2e"
+        }
+      }
+    }
+  ]
+}
