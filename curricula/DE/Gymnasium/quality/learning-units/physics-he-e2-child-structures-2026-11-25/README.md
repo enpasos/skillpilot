@@ -57,8 +57,9 @@ Roles, learning sets and all Mathematics demand rows are unchanged.
 
 The three Grundkurs views across both stages have no such move. For the six Mathematics
 preparations nothing that stays in E.2 needs them; in the Einführungsphase their demand lies in
-E.5 only (the Leistungskurs energy goal and the E.5 exams). They are therefore placed later than
-before, directly where they are used. `regrouping.actual.json` lists every move per view under
+E.5 only: the Leistungskurs energy goal, the Leistungskurs derivations of Kepler's second and
+third law (each needs five of the six, all but the chain rule) and the E.5 exams. They are
+therefore placed later than before, directly where they are used. `regrouping.actual.json` lists every move per view under
 `preparationPlaces`.
 
 ## What a learner with stored state sees
@@ -68,8 +69,10 @@ before, directly where they are used. `regrouping.actual.json` lists every move 
   selection holds 28 in the Grundkurs and 27 in the Leistungskurs.
 - A goal in progress among the moved goals stays in progress under a focus on E.2 (pull request
   #199, on which this branch is stacked).
-- The learner map and the Cockpit show ten rows under E.2: the six child structures and the four
-  mixed exams. Cards of the moved goals are practised with E.5.
+- E.2 holds six child structures and four mixed exams. In the personal view of G9 and Sek II the
+  learner map and the Cockpit show all four exams in the Grundkurs (ten rows) and two of them in
+  the Leistungskurs (eight rows); the other two are Grundkurs exams. Cards of the moved goals
+  belong to E.5; which of them a learner practises also depends on release and due dates.
 
 ## Not part of this step
 

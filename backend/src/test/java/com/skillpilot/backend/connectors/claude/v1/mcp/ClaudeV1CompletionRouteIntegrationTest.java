@@ -2149,9 +2149,16 @@ class ClaudeV1CompletionRouteIntegrationTest {
         for (String goal : moved) finished.addAll(prerequisites.transitivePrerequisites(goal));
         finished.removeAll(moved);
         masteryRepository.saveAllAndFlush(finished.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
-        var next = learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal();
-        assertThat(next).isNotNull();
-        assertThat(moved).contains(next.goalId());
+        // The plan offers every one of the moved goals in turn, and nothing else of the subject.
+        var offered = new java.util.LinkedHashSet<String>();
+        for (int step = 0; step < moved.size(); step++) {
+            var next = learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal();
+            assertThat(next).isNotNull();
+            assertThat(moved).contains(next.goalId());
+            assertThat(offered.add(next.goalId())).isTrue();
+            masteryRepository.saveAndFlush(new Mastery(learner, next.goalId(), 1.0));
+        }
+        assertThat(offered).containsExactlyInAnyOrderElementsOf(moved);
     }
 
     // A kept goal must stay reachable as planned work, not only counted: the plan names it as the
