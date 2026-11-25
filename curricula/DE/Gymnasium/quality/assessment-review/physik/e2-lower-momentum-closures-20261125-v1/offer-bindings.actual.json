@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "contract": "actual-reviewed-k2-bw-only-own-assessment-offer-binding-v1",
+  "status": "accepted_for_declared_offer_only",
+  "boundedOfferChecks": "PASS",
+  "recordedAt": "2026-11-25T17:58:06.462817+00:00",
+  "activeAssessmentGoalIds": [
+    "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"
+  ],
+  "inactiveAssessmentGoalIds": [
+    "d8fc6295-d0db-59e5-bd90-080bbc508c3a"
+  ],
+  "ownTaskOffersOnly": true,
+  "officialTaskClaim": false,
+  "hessenExcluded": true,
+  "activeOfferCount": 3,
+  "approvedJurisdictions": [
+    "DE-BW"
+  ],
+  "approvedCourseProfiles": [
+    "GK",
+    "LK"
+  ],
+  "approvedStages": [
+    "CrossStage",
+    "SekI"
+  ],
+  "contentReview": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/content-review.actual.json",
+    "sha256": "90d8695d0aa63adbc6935cb295983688f0b75240793fbb27e5301b3d5fe57472"
+  },
+  "candidateGoal": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/candidate.goal.json",
+    "sha256": "0bf7765691458ad43bb2e8efbad97c6d0a0055a1ce0cb9a8ce73d4b6bf1aff3b"
+  },
+  "canonicalGoalValueSha256": "d9081a7952edb7b7ef5a1eb049fbe1601ffa89b14047151040146fb999410bb1",
+  "coveredGoalIds": [
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+  ],
+  "directRequires": [
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+  ],
+  "semanticKind": "practiceAssessment",
+  "standalone": true,
+  "sourceArtifact": {
+    "path": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v1/seki_mean_resultant_force_from_momentum_interval.md",
+    "sha256": "b2834b29f06f977fc6990007590af7b9480347e63de2418f21a2ce9e60d22a39"
+  },
+  "independentOfferFitVotes": [
+    {
+      "model": "gpt-6.1-sol",
+      "threadId": "01a213cc-3793-7c81-8e37-8f2784c35636",
+      "offerVerdict": "accept_current",
+      "execution": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-a/execution.actual.json",
+        "sha256": "85014c0a06bd4ae77c2e25c1df1fc69060861f0e1666e0753b12e87253e88d1e"
+      },
+      "response": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-a/response.json",
+        "sha256": "2d467af2b6cf7544a20e11baff10e4261b8fdc0a5d3dc37851c6ac463d0759e4"
+      }
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "threadId": "01a213cc-3793-72f0-90f8-50a6d7a2126b",
+      "offerVerdict": "accept_current",
+      "execution": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-b/execution.actual.json",
+        "sha256": "04928b33f272955fb7e157baef3f09ddc8730deb0e5d970fd10d24718b670a93"
+      },
+      "response": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-b/response.json",
+        "sha256": "ecd0e13c5710e07f9970093beb9cebfd776c2bd207474e80deb9fa3d4f669e9b"
+      }
+    }
+  ],
+  "currentNativeOfferContext": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/current-offer-context.actual.json",
+    "sha256": "00fc16cbb8790e6115283bf51cfe595e895c29376ec1572a23ced5a3dad1d81e"
+  },
+  "nativeInputArtifactsChecked": 119,
+  "completeDemandGoalCount": 25,
+  "allDeclaredOffersMissingDemand": 0,
+  "allDeclaredOffersUnexposedDemand": 0,
+  "newCurricularTargets": 0,
+  "newForeignMathLearningGoals": 0,
+  "all90PriorReferenceContractsUnchanged": true,
+  "priorReferencesChecked": 75670,
+  "offers": [
+    {
+      "viewId": "de-bw-gym-physics-gk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+      "viewSha256": "f57fcc455decb41db17e1637142fed86547d70c6f7cab4faf1bbeb1123847a13",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "lowerAuthority": {
+        "viewId": "de-bw-gym-seki-physics",
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json",
+        "sha256": "22a6a6ada525d6f720438dc6a3028a171f3a25edd5e00524e9c2855ee2a12127"
+      },
+      "visibleDirectRequiresPath": [
+        "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+      ],
+      "actualTaskTargetPlaces": [
+        {
+          "kind": "goalEntry",
+          "role": "target",
+          "path": [
+            {
+              "id": "physics-root",
+              "label": "Physik"
+            },
+            {
+              "id": "physics-bw-seki",
+              "label": "Sekundarstufe I"
+            },
+            {
+              "id": "physics-bw-unit-j9-10",
+              "label": "Jahrgangsstufen 9/10"
+            },
+            {
+              "id": "physics-bw-unit-j9-10-practice",
+              "label": "Übungen und Prüfungsaufgaben"
+            }
+          ]
+        }
+      ],
+      "actualCoveredTargetPlaces": [
+        {
+          "kind": "goalEntry",
+          "role": "target",
+          "path": [
+            {
+              "id": "physics-root",
+              "label": "Physik"
+            },
+            {
+              "id": "physics-bw-seki",
+              "label": "Sekundarstufe I"
+            },
+            {
+              "id": "physics-bw-unit-j9-10",
+              "label": "Jahrgangsstufen 9/10"
+            },
+            {
+              "id": "physics-bw-j9-10-topic-c01fa8f1e143",
+              "label": "Klasse 10: Kraft als mittlere Impulsänderungsrate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-physics-lk",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+      "viewSha256": "8699534a8c078c9230b496985009fba6f3672a2812144e3ccc7b6108e735fc11",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "lowerAuthority": {
+        "viewId": "de-bw-gym-seki-physics",
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json",
+        "sha256": "22a6a6ada525d6f720438dc6a3028a171f3a25edd5e00524e9c2855ee2a12127"
+      },
+      "visibleDirectRequiresPath": [
+        "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+      ],
+      "actualTaskTargetPlaces": [
+        {
+          "kind": "goalEntry",
+          "role": "target",
+          "path": [
+            {
+              "id": "physics-root",
+              "label": "Physik"
+            },
+            {
+              "id": "physics-bw-seki",
+              "label": "Sekundarstufe I"
+            },
+            {
+              "id": "physics-bw-unit-j9-10",
+              "label": "Jahrgangsstufen 9/10"
+            },
+            {
+              "id": "physics-bw-unit-j9-10-practice",
+              "label": "Übungen und Prüfungsaufgaben"
+            }
+          ]
+        }
+      ],
+      "actualCoveredTargetPlaces": [
+        {
+          "kind": "goalEntry",
+          "role": "target",
+          "path": [
+            {
+              "id": "physics-root",
+              "label": "Physik"
+            },
+            {
+              "id": "physics-bw-seki",
+              "label": "Sekundarstufe I"
+            },
+            {
+              "id": "physics-bw-unit-j9-10",
+              "label": "Jahrgangsstufen 9/10"
+            },
+            {
+              "id": "physics-bw-j9-10-topic-c01fa8f1e143",
+              "label": "Klasse 10: Kraft als mittlere Impulsänderungsrate"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "viewId": "de-bw-gym-seki-physics",
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json",
+      "viewSha256": "22a6a6ada525d6f720438dc6a3028a171f3a25edd5e00524e9c2855ee2a12127",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BW",
+        "stage": "SekI"
+      },
+      "lowerAuthority": {
+        "viewId": "de-bw-gym-seki-physics",
+        "path": "curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json",
+        "sha256": "22a6a6ada525d6f720438dc6a3028a171f3a25edd5e00524e9c2855ee2a12127"
+      },
+      "visibleDirectRequiresPath": [
+        "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+      ],
+      "actualTaskTargetPlaces": [
+        {
+          "kind": "goalEntry",
+          "role": "target",
+          "path": [
+            {
+              "id": "physics-root",
+              "label": "Physik"
+            },
+            {
+              "id": "physics-bw-seki",
+              "label": "Sekundarstufe I"
+            },
+            {
+              "id": "physics-bw-unit-j9-10",
+              "label": "Jahrgangsstufen 9/10"
+            },
+            {
+              "id": "physics-bw-unit-j9-10-practice",
+              "label": "Übungen und Prüfungsaufgaben"
+            }
+          ]
+        }
+      ],
+      "actualCoveredTargetPlaces": [
+        {
+          "kind": "goalEntry",
+          "role": "target",
+          "path": [
+            {
+              "id": "physics-root",
+              "label": "Physik"
+            },
+            {
+              "id": "physics-bw-seki",
+              "label": "Sekundarstufe I"
+            },
+            {
+              "id": "physics-bw-unit-j9-10",
+              "label": "Jahrgangsstufen 9/10"
+            },
+            {
+              "id": "physics-bw-j9-10-topic-c01fa8f1e143",
+              "label": "Klasse 10: Kraft als mittlere Impulsänderungsrate"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "globalConfiguredCqr104": {
+    "status": "fail",
+    "evaluatedScopes": 106,
+    "remainingEffectiveTerminalRouteGapOccurrences": 6,
+    "remainingGoalId": "53afbda1-5776-502b-8867-471975d7b766",
+    "remainingJurisdictions": [
+      "DE-HH",
+      "DE-TH"
+    ],
+    "remainingScopes": "CrossStage GK/LK and neutral SekI for each jurisdiction; no K1 accepted or activated"
+  },
+  "integrationComplete": false,
+  "historicalPlannedAuthorContext": {
+    "reference": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/inputs/planned-offer-context.actual.json",
+      "sha256": "4e7d47e4e56fdcbc388b467812ab6410dc85e5981bc6d657ec1575e44c5f5157"
+    },
+    "status": "Historical proposed9-scope author context only; not a current offer inventory or K1 approval",
+    "documentation": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/inputs/README.md",
+      "sha256": "ef599be56f666cfbaaf54d0b49e4e426239342feee6c01b9c9c5920a3167bba7"
+    }
+  },
+  "parkedK1Outcome": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/bounded-outcome.actual.json",
+    "sha256": "bfac59d883baf1dce1d4f0d401f91d96fe68cc4a50ca67167c387dff0193ccb6"
+  },
+  "reviewBoundary": "The two actual independent model votes qualify the exact K2 payload and its bounded own offer. This synthesis binds a prior native current snapshot and does not claim the whole Physics route gate is green. The native snapshot does not hash this downstream receipt.",
+  "humanApproval": false,
+  "externalPublicationClaimed": false,
+  "learnerMasteryWritten": false,
+  "rawLogsOutsideRepository": true
+}

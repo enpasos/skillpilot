@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-bounded-closing-task-selection-v1",
+  "state": "active-approved-selection",
+  "scenario": "k2-only",
+  "approvedAssessmentGoalIds": [
+    "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"
+  ],
+  "knownAssessmentGoalIds": [
+    "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+    "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"
+  ],
+  "newCurricularTargets": 0,
+  "expectedActualOfferCount": 3,
+  "expectedUnresolvedRouteCount": 6,
+  "expectedCqr104Status": "fail",
+  "expectedUnresolvedRoutes": [
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json",
+      "jurisdiction": "DE-HH",
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766"
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json",
+      "jurisdiction": "DE-HH",
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766"
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-hh-seki.view.json",
+      "jurisdiction": "DE-HH",
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766"
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json",
+      "jurisdiction": "DE-TH",
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766"
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json",
+      "jurisdiction": "DE-TH",
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766"
+    },
+    {
+      "viewPath": "curricula/DE/Gymnasium/composition-views/physik/de-th-seki.view.json",
+      "jurisdiction": "DE-TH",
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766"
+    }
+  ],
+  "expectedChangedPhysicsViewPaths": [
+    "curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json",
+    "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json",
+    "curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json"
+  ],
+  "expectedChangedAtlasSourceCount": 2,
+  "expectedChangedMathSourcePinPaths": [
+    "curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json"
+  ],
+  "atlasTargetCount": 492,
+  "nationalProfileTargetCount": 424,
+  "atlasSourcePathCount": 70,
+  "neitherBoundary": "With no accepted task, current installed views, source policy and terminal inventory remain untouched. Remaining route gaps are reported, never waived.",
+  "decision": "Only K2 V3 accepted by both independent markers. K1 remains absent after rejection within the three-version ceiling. Six HH/TH IMP route gaps remain.",
+  "acceptedContentInputs": [
+    {
+      "goalId": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+      "candidatePath": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/candidate.goal.json",
+      "candidateSha256": "0bf7765691458ad43bb2e8efbad97c6d0a0055a1ce0cb9a8ce73d4b6bf1aff3b",
+      "contentReceiptPath": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/content-review.actual.json",
+      "contentReceiptSha256": "90d8695d0aa63adbc6935cb295983688f0b75240793fbb27e5301b3d5fe57472"
+    }
+  ]
+}

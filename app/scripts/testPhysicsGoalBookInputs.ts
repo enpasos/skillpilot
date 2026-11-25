@@ -3608,8 +3608,31 @@ assert.deepEqual(e2AtlasDelta.removedTargetGoalIds, [])
 assert.deepEqual([...atlasCurricularAtomicGoalIds].sort(compareCodePoints), e2AtlasDelta.currentUnionGoalIds,
   'E.2 adds exactly its three source-backed atlas targets and retains the complete previous target set')
 assert.deepEqual(e2AtlasDelta.sourceViews.map(row => row.path), sourceManifest.sourcePaths)
-for (const row of e2AtlasDelta.sourceViews) {
-  assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale E.2 atlas witness`)
+const lowerMomentumAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/national-atlas-current-sources.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, lowerMomentumAtlasPath), 'utf8')), 'db56e1e8232bae9dd20cec4b2249408b506d9e2b0732e8b7a380cbcc129382dc')
+const lowerMomentumAtlas = readJson<{
+  predecessor: { path: string; sha256: string }
+  sourceViews: Array<{ path: string; previousSha256: string; sha256: string }>
+  changedSourceViews: Array<{ path: string }>
+  currentUnionGoalIds: string[]
+  canonicalProfileTargets: { goalIds: string[] }
+}>(lowerMomentumAtlasPath)
+assert.deepEqual(lowerMomentumAtlas.predecessor, {
+  path: e2AtlasDeltaPath, sha256: sha256(readFileSync(resolve(repoRoot, e2AtlasDeltaPath), 'utf8')),
+})
+assert.deepEqual(lowerMomentumAtlas.currentUnionGoalIds, e2AtlasDelta.currentUnionGoalIds)
+assert.deepEqual(lowerMomentumAtlas.canonicalProfileTargets.goalIds, e2AtlasDelta.canonicalProfileTargets.goalIds)
+assert.deepEqual(lowerMomentumAtlas.sourceViews.map(row => ({ path: row.path, sha256: row.previousSha256 })),
+  e2AtlasDelta.sourceViews.map(row => ({ path: row.path, sha256: row.sha256 })))
+const changedMomentumAtlasPaths = [
+  `${COMPOSITION_VIEW_DIRECTORY}/de-bw-gk.view.json`,
+  `${COMPOSITION_VIEW_DIRECTORY}/de-bw-lk.view.json`,
+]
+assert.deepEqual(lowerMomentumAtlas.changedSourceViews.map(row => row.path).sort(compareCodePoints), changedMomentumAtlasPaths)
+assert.deepEqual(lowerMomentumAtlas.sourceViews.filter(row => row.previousSha256 !== row.sha256)
+  .map(row => row.path).sort(compareCodePoints), changedMomentumAtlasPaths)
+for (const row of lowerMomentumAtlas.sourceViews) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale Physics atlas source`)
 }
 assert.equal(atlasCurricularAtomicGoalIds.size, EXPECTED_ATLAS_TARGET_COUNT)
 assert(atlasPreparationOnlyOccurrences > 0, 'the omitted target page must have a real authored prerequisite-only placement')
