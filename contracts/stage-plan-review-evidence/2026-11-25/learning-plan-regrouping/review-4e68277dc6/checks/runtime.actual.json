@@ -1,0 +1,729 @@
+{
+  "version": 1,
+  "reviewedCommit": "4e68277dc632f3a5de62c78c34d5bfbbf9135754",
+  "reviewedTree": "5cd767fd1a8f127c761fbeedfe0d05604029b8ec",
+  "comparedCommit": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+  "sourceTrees": {
+    "backend": "39dcd8514c00dcded32d8f05c9a34cda892f239f",
+    "curricula": "f15d397b9b8d89fb0f1ee386761c350d9b363a06",
+    "contracts": "00c899b780b246d08fa94757ccd4324dd750f6e2",
+    "scripts": "4e8600bd181a29230979893b123dc48b631444d0",
+    "app": "a7f37a0faa7eb52d314dcc82162a9e934f6ac71c",
+    "ai": "3f07083ca451bd416bd7b26144a49adab4ba79ea",
+    "docs": "7ca11a4b5f10ade410a1cd4ec9f7d58a65d1fb47",
+    "content": "cc1506405e2aafa6a006fa8a201454aa81722f44"
+  },
+  "sourceFiles": {
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java": {
+      "gitBlob": "90d01e67ddeab3da2ec326653b4c5403c3d20887",
+      "sha256": "f335d02d7201ac3917698f68b7d4e050290df759c58515f62b481037741ae11d"
+    },
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java": {
+      "gitBlob": "22bb14631f165996ef0a9cc3489933885cd9f04e",
+      "sha256": "3e7496a2f227e682a60b718a52b4e9ab1833e7e650da0b227d73c6462b853a18"
+    },
+    "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java": {
+      "gitBlob": "5e53394791215db8427eb37ca5f49e77c70f2cef",
+      "sha256": "3d6b57620f0ecfb0675b780e8c69fcd96696f36da8f445fedc254dec506cfda8"
+    },
+    "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java": {
+      "gitBlob": "05075f92b6dbb62490903a29b0da1d5d4b6ca37b",
+      "sha256": "153190aa3e96608e715e41b0dcc0cd8d4532b0f8fbd99b4cdbd6c1539e30832b"
+    }
+  },
+  "startedAt": "2026-11-25T07:19:54+01:00",
+  "completedAt": "2026-11-25T07:22:46+01:00",
+  "command": "unshare -Ur --mount bash /tmp/e1-regroup-r4-runtime/safe.sh",
+  "nativeGradleCommand": "--offline --no-daemon --project-cache-dir \"$p/gradle-project\" --max-workers=2 -PbackendTestForks=1 --console=plain -I \"$p/probe.init.gradle\" test  --tests '*.LearnerServiceTest.passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne'  --tests '*.LearnerServiceTest.activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet'  --tests '*.LearnerServiceTest.currentPlanCompatibilityRejectsInvalidAtomsFocusAndPrerequisiteOrder'  --tests '*.ClaudeV1CompletionRouteIntegrationTest.existingPlanKeepsGoalsThatARegroupingMovedToAnotherSection'  --tests '*.ClaudeV1CompletionRouteIntegrationTest.planOffersTheGoalThatARegroupingMovedOutOfItsSection'  --tests '*.ClaudeV1CompletionRouteIntegrationTest.passingAPlanGoalHandsOverToTheGoalThatARegroupingMoved'  --tests '*.Round3OpeningIntegrationTest.compareHandoffAndPlanWithPendingOpening'  --tests '*.ClaudeV1CompletionRouteIntegrationTest.handoffStoresTheSameOpeningAndReturnGoalAsPlanContinuation'  --tests '*.ClaudeV1CompletionRouteIntegrationTest.activatingAnExamPlanKeepsAGoalInProgressBehindItsRequiredOpening'  --tests '*.ExamOpeningReviewTest.examActivationWithRequiredParentOpening'",
+  "nativeReturnCode": 0,
+  "counts": {
+    "tests": 29,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "perType": {
+      "authored-original": 17,
+      "authored-new": 4,
+      "independent-exam": 4,
+      "independent-nested-opening": 4
+    }
+  },
+  "rawLogsAt": "/tmp/e1-regroup-r4-runtime/raw",
+  "log": {
+    "name": "test.log",
+    "sha256": "869acff5434751d5c0be657e07d016ca0d4a5597694c4adf5b5b2770ceb2a7c6"
+  },
+  "driver": {
+    "name": "safe.sh",
+    "sha256": "2d7c7c9d51b5b96f2d89d877cd6054026285871d9c13f870ccdb031e16b37cd3"
+  },
+  "testFilter": {
+    "name": "probe.init.gradle",
+    "sha256": "2c90c76aaf6a8e6de5e010451070f2c62bbc590b03b2c1e0e6332f6380dd9a2a"
+  },
+  "perClass": [
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "counts": {
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "xml": {
+        "name": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+        "sha256": "5c5cce69b2a217bb43639500c84bb3a309a19df7ac00aced40b58bfa1a28308e"
+      },
+      "methods": [
+        {
+          "method": "planOffersTheGoalThatARegroupingMovedOutOfItsSection",
+          "parameters": "[1] pilot = \"false\", wholeFormerSection = \"false\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "planOffersTheGoalThatARegroupingMovedOutOfItsSection",
+          "parameters": "[2] pilot = \"false\", wholeFormerSection = \"true\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "planOffersTheGoalThatARegroupingMovedOutOfItsSection",
+          "parameters": "[3] pilot = \"true\", wholeFormerSection = \"false\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "planOffersTheGoalThatARegroupingMovedOutOfItsSection",
+          "parameters": "[4] pilot = \"true\", wholeFormerSection = \"true\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheGoalThatARegroupingMoved",
+          "parameters": "[1] pilot = false",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheGoalThatARegroupingMoved",
+          "parameters": "[2] pilot = true",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "existingPlanKeepsGoalsThatARegroupingMovedToAnotherSection",
+          "parameters": "[1] course = \"GK\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "existingPlanKeepsGoalsThatARegroupingMovedToAnotherSection",
+          "parameters": "[2] course = \"LK\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "handoffStoresTheSameOpeningAndReturnGoalAsPlanContinuation",
+          "parameters": "[1] pilot = false",
+          "result": "PASSED",
+          "kind": "authored-new"
+        },
+        {
+          "method": "handoffStoresTheSameOpeningAndReturnGoalAsPlanContinuation",
+          "parameters": "[2] pilot = true",
+          "result": "PASSED",
+          "kind": "authored-new"
+        },
+        {
+          "method": "activatingAnExamPlanKeepsAGoalInProgressBehindItsRequiredOpening",
+          "parameters": "[1] pilot = false",
+          "result": "PASSED",
+          "kind": "authored-new"
+        },
+        {
+          "method": "activatingAnExamPlanKeepsAGoalInProgressBehindItsRequiredOpening",
+          "parameters": "[2] pilot = true",
+          "result": "PASSED",
+          "kind": "authored-new"
+        }
+      ]
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ExamOpeningReviewTest",
+      "counts": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "xml": {
+        "name": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ExamOpeningReviewTest.xml",
+        "sha256": "cd7ac2ffb2df195b0e10ceda31bba52cc474ec2d3a081f9b8fc797ef696e3209"
+      },
+      "methods": [
+        {
+          "method": "examActivationWithRequiredParentOpening",
+          "parameters": "[1] pilot = \"false\", directWriter = \"false\"",
+          "result": "PASSED",
+          "kind": "independent-exam"
+        },
+        {
+          "method": "examActivationWithRequiredParentOpening",
+          "parameters": "[2] pilot = \"false\", directWriter = \"true\"",
+          "result": "PASSED",
+          "kind": "independent-exam"
+        },
+        {
+          "method": "examActivationWithRequiredParentOpening",
+          "parameters": "[3] pilot = \"true\", directWriter = \"false\"",
+          "result": "PASSED",
+          "kind": "independent-exam"
+        },
+        {
+          "method": "examActivationWithRequiredParentOpening",
+          "parameters": "[4] pilot = \"true\", directWriter = \"true\"",
+          "result": "PASSED",
+          "kind": "independent-exam"
+        }
+      ]
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.Round3OpeningIntegrationTest",
+      "counts": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "xml": {
+        "name": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.Round3OpeningIntegrationTest.xml",
+        "sha256": "9afe6ee55945f9673457ff22b9e3a0f3f348b6089c628e8604f5de5dd3a1082e"
+      },
+      "methods": [
+        {
+          "method": "compareHandoffAndPlanWithPendingOpening",
+          "parameters": "[1] pilot = \"false\", applyOrdinaryMastery = \"false\"",
+          "result": "PASSED",
+          "kind": "independent-nested-opening"
+        },
+        {
+          "method": "compareHandoffAndPlanWithPendingOpening",
+          "parameters": "[2] pilot = \"false\", applyOrdinaryMastery = \"true\"",
+          "result": "PASSED",
+          "kind": "independent-nested-opening"
+        },
+        {
+          "method": "compareHandoffAndPlanWithPendingOpening",
+          "parameters": "[3] pilot = \"true\", applyOrdinaryMastery = \"false\"",
+          "result": "PASSED",
+          "kind": "independent-nested-opening"
+        },
+        {
+          "method": "compareHandoffAndPlanWithPendingOpening",
+          "parameters": "[4] pilot = \"true\", applyOrdinaryMastery = \"true\"",
+          "result": "PASSED",
+          "kind": "independent-nested-opening"
+        }
+      ]
+    },
+    {
+      "class": "com.skillpilot.backend.service.LearnerServiceTest",
+      "counts": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "xml": {
+        "name": "TEST-com.skillpilot.backend.service.LearnerServiceTest.xml",
+        "sha256": "50248928c6c88a828eb470d10bbea05ab678df19fcac1ebd024807e111037196"
+      },
+      "methods": [
+        {
+          "method": "activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet",
+          "parameters": "[1] pilot = \"false\", moved = \"false\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet",
+          "parameters": "[2] pilot = \"false\", moved = \"true\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet",
+          "parameters": "[3] pilot = \"true\", moved = \"false\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet",
+          "parameters": "[4] pilot = \"true\", moved = \"true\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "currentPlanCompatibilityRejectsInvalidAtomsFocusAndPrerequisiteOrder",
+          "parameters": null,
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne",
+          "parameters": "[1] pilot = \"false\", moved = \"false\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne",
+          "parameters": "[2] pilot = \"false\", moved = \"true\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne",
+          "parameters": "[3] pilot = \"true\", moved = \"false\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne",
+          "parameters": "[4] pilot = \"true\", moved = \"true\"",
+          "result": "PASSED",
+          "kind": "authored-original"
+        }
+      ]
+    }
+  ],
+  "unchangedIndependentInputs": [
+    {
+      "class": "Round3OpeningIntegrationTest",
+      "sameBytesAsRound3": true,
+      "source": {
+        "name": "Round3OpeningIntegrationTest.method.java",
+        "sha256": "9e839cc4be0b72f31f4782be14f490327075b99d5268614e15f0ac1749ad9b5e"
+      },
+      "round3Source": {
+        "name": "opening.java",
+        "sha256": "9e839cc4be0b72f31f4782be14f490327075b99d5268614e15f0ac1749ad9b5e"
+      }
+    },
+    {
+      "class": "ExamOpeningReviewTest",
+      "sameBytesAsRound3": true,
+      "source": {
+        "name": "ExamOpeningReviewTest.method.java",
+        "sha256": "1c6bb737ada17be731d2ca131175e405521ce40519e777941dce03987dc37db6"
+      },
+      "round3Source": {
+        "name": "probe.java",
+        "sha256": "1c6bb737ada17be731d2ca131175e405521ce40519e777941dce03987dc37db6"
+      }
+    }
+  ],
+  "round3Baselines": {
+    "singleSectionControls": {
+      "name": "runtime.actual.json",
+      "sha256": "0a9e4b2d6bc5bceef39dc9e8a1f8514428936098d1e0dd80286a4e0c4ff254ab"
+    },
+    "examControls": {
+      "name": "observations.actual.json",
+      "sha256": "4b80177570bf9c52e11f7121c9d2f8326ce59f7ffd6423a2d388db612ab9fe18"
+    }
+  },
+  "comparisons": [
+    {
+      "case": "singleSectionRequiredChildOpening",
+      "pilot": false,
+      "publicMastery": false,
+      "completeObservationEqualToParent": true,
+      "activeAfterPassing": null,
+      "planNext": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      },
+      "storedFocus": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+      ]
+    },
+    {
+      "case": "singleSectionRequiredChildOpening",
+      "pilot": false,
+      "publicMastery": true,
+      "completeObservationEqualToParent": true,
+      "activeAfterPassing": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "planNext": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      },
+      "storedFocus": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd"
+      ]
+    },
+    {
+      "case": "singleSectionRequiredChildOpening",
+      "pilot": true,
+      "publicMastery": false,
+      "completeObservationEqualToParent": true,
+      "activeAfterPassing": null,
+      "planNext": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      },
+      "storedFocus": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+      ]
+    },
+    {
+      "case": "singleSectionRequiredChildOpening",
+      "pilot": true,
+      "publicMastery": true,
+      "completeObservationEqualToParent": true,
+      "activeAfterPassing": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "planNext": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      },
+      "storedFocus": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd"
+      ]
+    },
+    {
+      "case": "examOpeningReturn",
+      "pilot": false,
+      "directWriter": false,
+      "atRound3": {
+        "storedActive": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "storedExamFocus": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "a4d4efe1-7d30-526b-ac9c-806113da4363"
+        ],
+        "parkedTarget": null,
+        "parkedOpening": null,
+        "activeAfterParentMastery": null,
+        "remainingPointer": null
+      },
+      "atConfirmation": {
+        "storedActive": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "storedExamFocus": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "a4d4efe1-7d30-526b-ac9c-806113da4363"
+        ],
+        "parkedTarget": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "parkedOpening": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "activeAfterParentMastery": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "remainingPointer": null
+      }
+    },
+    {
+      "case": "examOpeningReturn",
+      "pilot": false,
+      "directWriter": true,
+      "atRound3": {
+        "storedActive": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "storedExamFocus": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "a4d4efe1-7d30-526b-ac9c-806113da4363"
+        ],
+        "parkedTarget": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "parkedOpening": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "activeAfterParentMastery": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "remainingPointer": null
+      },
+      "atConfirmation": {
+        "storedActive": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "storedExamFocus": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "a4d4efe1-7d30-526b-ac9c-806113da4363"
+        ],
+        "parkedTarget": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "parkedOpening": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "activeAfterParentMastery": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "remainingPointer": null
+      }
+    },
+    {
+      "case": "examOpeningReturn",
+      "pilot": true,
+      "directWriter": false,
+      "atRound3": {
+        "storedActive": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "storedExamFocus": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "a4d4efe1-7d30-526b-ac9c-806113da4363"
+        ],
+        "parkedTarget": null,
+        "parkedOpening": null,
+        "activeAfterParentMastery": null,
+        "remainingPointer": null
+      },
+      "atConfirmation": {
+        "storedActive": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "storedExamFocus": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "a4d4efe1-7d30-526b-ac9c-806113da4363"
+        ],
+        "parkedTarget": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "parkedOpening": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "activeAfterParentMastery": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "remainingPointer": null
+      }
+    },
+    {
+      "case": "examOpeningReturn",
+      "pilot": true,
+      "directWriter": true,
+      "atRound3": {
+        "storedActive": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "storedExamFocus": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "a4d4efe1-7d30-526b-ac9c-806113da4363"
+        ],
+        "parkedTarget": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "parkedOpening": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "activeAfterParentMastery": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "remainingPointer": null
+      },
+      "atConfirmation": {
+        "storedActive": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "storedExamFocus": [
+          "1e459a1b-4159-5049-84eb-9928129c1610",
+          "a4d4efe1-7d30-526b-ac9c-806113da4363"
+        ],
+        "parkedTarget": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "parkedOpening": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "activeAfterParentMastery": "1e459a1b-4159-5049-84eb-9928129c1610",
+        "remainingPointer": null
+      }
+    }
+  ],
+  "examObservations": [
+    {
+      "pilot": false,
+      "directWriter": false,
+      "childFrontier": [
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "previousFocus": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+      ],
+      "previousPending": null,
+      "parentScoreBefore": null,
+      "childScoreBefore": 1.0,
+      "fallLogScoreBefore": 1.0,
+      "creditForParentOrDiagram": [],
+      "examFrontierBefore": [
+        "a4d4efe1-7d30-526b-ac9c-806113da4363"
+      ],
+      "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+      "activationResult": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+      "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"c0b52bc485d9d630fe898b89307507aadd40ccf8228c816ef5ee2e8e6a22801d\",\"focusIds\":[\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}",
+      "focusAfterActivation": [
+        "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "pendingAfterPassingParent": null
+    },
+    {
+      "pilot": false,
+      "directWriter": true,
+      "childFrontier": [
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "previousFocus": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+      ],
+      "previousPending": null,
+      "parentScoreBefore": null,
+      "childScoreBefore": 1.0,
+      "fallLogScoreBefore": 1.0,
+      "creditForParentOrDiagram": [],
+      "examFrontierBefore": [
+        "a4d4efe1-7d30-526b-ac9c-806113da4363"
+      ],
+      "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+      "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+      "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"c0b52bc485d9d630fe898b89307507aadd40ccf8228c816ef5ee2e8e6a22801d\",\"focusIds\":[\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}",
+      "focusAfterActivation": [
+        "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "pendingAfterPassingParent": null
+    },
+    {
+      "pilot": true,
+      "directWriter": false,
+      "childFrontier": [
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "previousFocus": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+      ],
+      "previousPending": null,
+      "parentScoreBefore": null,
+      "childScoreBefore": 1.0,
+      "fallLogScoreBefore": 1.0,
+      "creditForParentOrDiagram": [],
+      "examFrontierBefore": [
+        "a4d4efe1-7d30-526b-ac9c-806113da4363"
+      ],
+      "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+      "activationResult": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+      "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"c0b52bc485d9d630fe898b89307507aadd40ccf8228c816ef5ee2e8e6a22801d\",\"focusIds\":[\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}",
+      "focusAfterActivation": [
+        "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "pendingAfterPassingParent": null
+    },
+    {
+      "pilot": true,
+      "directWriter": true,
+      "childFrontier": [
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "previousActive": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "previousFocus": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-accelerated-and-free-fall"
+      ],
+      "previousPending": null,
+      "parentScoreBefore": null,
+      "childScoreBefore": 1.0,
+      "fallLogScoreBefore": 1.0,
+      "creditForParentOrDiagram": [],
+      "examFrontierBefore": [
+        "a4d4efe1-7d30-526b-ac9c-806113da4363"
+      ],
+      "requiredWhenWriting": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+      "activeAfterActivation": "a4d4efe1-7d30-526b-ac9c-806113da4363",
+      "pendingAfterActivation": "{\"targetGoalId\":\"1e459a1b-4159-5049-84eb-9928129c1610\",\"openingGoalId\":\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"curriculumDigest\":\"c0b52bc485d9d630fe898b89307507aadd40ccf8228c816ef5ee2e8e6a22801d\",\"focusIds\":[\"a4d4efe1-7d30-526b-ac9c-806113da4363\",\"1e459a1b-4159-5049-84eb-9928129c1610\"],\"completionWorkflow\":null}",
+      "focusAfterActivation": [
+        "a4d4efe1-7d30-526b-ac9c-806113da4363",
+        "1e459a1b-4159-5049-84eb-9928129c1610"
+      ],
+      "afterPassingParent": "1e459a1b-4159-5049-84eb-9928129c1610",
+      "pendingAfterPassingParent": null
+    }
+  ],
+  "singleSectionObservations": [
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "pilot": false,
+      "publicMastery": false,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": null,
+      "focusAfterPassing": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    },
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "pilot": false,
+      "publicMastery": true,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "focusAfterPassing": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    },
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "pilot": true,
+      "publicMastery": false,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": null,
+      "focusAfterPassing": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    },
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "pilot": true,
+      "publicMastery": true,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "focusAfterPassing": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    }
+  ],
+  "scope": "Offline native Gradle/Spring/H2, targeted selectors. Separate private overlay build and cache, with read-only host source and input mounts and private backend source archive. Exact Git object for changed host management summary supplied in namespace. Additional review probes occupy their own test source set.",
+  "resourcesVerifiedAfter": {
+    "sourceTreesAndOnlyKnownHostDocsDifferenceConfirmed": true,
+    "hostStaticInventoriesUnchanged": true,
+    "inventories": {
+      "/home/enpasos/projects/skillpilot": {
+        "fileCount": 3290,
+        "bytes": 6129767199,
+        "pathSizeModeMtimeNsSha256": "e17ddf408be64702a84457a3e66557b71dfbd6043941b843ed6276c2e616b6bd"
+      },
+      "/home/enpasos/projects/skillpilot-e1-bilder": {
+        "fileCount": 2795,
+        "bytes": 5281179374,
+        "pathSizeModeMtimeNsSha256": "829eb0b3513c8342148873979339e763c59490db95f23183c775eef1ad000d40"
+      }
+    }
+  }
+}

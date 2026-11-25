@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.skillpilot.backend.api.OrientationOutlook;
+import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.completion.PersonalCurriculumLearningScope;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.domain.LearningState;
@@ -26,6 +27,7 @@ import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpSessionCoordinator;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionStateException;
 import com.skillpilot.backend.service.LearnerService;
+import com.skillpilot.backend.service.LearnerLearningPlanService;
 import com.skillpilot.backend.service.CompositionViewService;
 import io.modelcontextprotocol.spec.McpSchema;
 import java.net.CookieManager;
@@ -39,6 +41,8 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.HexFormat;
@@ -91,6 +95,8 @@ import org.springframework.test.util.ReflectionTestUtils;
         "skillpilot.openai.coach.v1.oauth.enabled=true",
         "skillpilot.openai.coach.v1.oauth.native-cimd.enabled=true",
         "skillpilot.openai.coach.v1.mcp.enabled=true",
+        // Both long parameterized flows use the same loopback rate-limit bucket.
+        "skillpilot.openai.coach.v1.rate-limit.mcp-requests=300",
         "skillpilot.openai.coach.v1.mcp-url=https://mcp-openai.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth-resource=https://mcp-openai.skillpilot.com/mcp",
         "skillpilot.openai.coach.v1.oauth.client-id=chatgpt-e2e-client",
@@ -116,6 +122,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     private static final String CALLBACK = "https://chatgpt.com/connector/oauth/e2e-callback";
     private static final String VERIFIER = "openai-de-e2e-pkce-verifier-with-more-than-forty-three-characters";
     private static final Set<String> MUTATING_TOOLS = Set.of(
+            OpenAiDeV1McpContractAdapter.CHOOSE_COMPLETION_ROUTE,
+            OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN,
             OpenAiDeV1McpContractAdapter.SET_SCOPE,
             OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL,
             OpenAiDeV1McpContractAdapter.SET_MASTERY);
@@ -149,6 +157,9 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
     @Autowired
     private LearnerService learnerService;
+
+    @Autowired
+    private LearnerLearningPlanService learningPlanService;
 
     @Autowired
     private LandscapeService landscapeService;
@@ -209,6 +220,7 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         jdbcOperations.update(
                 "DELETE FROM mastery WHERE skillpilot_id = ?",
                 PERMANENT_SKILLPILOT_ID);
+        jdbcOperations.update("DELETE FROM verified_exam_pass WHERE learner_id = ?", PERMANENT_SKILLPILOT_ID);
         Learner learner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseGet(() -> {
             Learner created = new Learner();
             created.setSkillpilotId(PERMANENT_SKILLPILOT_ID);
@@ -217,8 +229,10 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         learner.setSelectedCurriculum(CURRICULUM_ID);
         learner.setPersonalCurriculum(configuredPersonalCurriculum());
         learner.setActiveGoalId(null);
+        learner.setCompletionWorkflow(null);
         learner.setLearningStrategy("RANDOM");
         learner.setAutoPilot(false);
+        learner.setFollowLearningPlans(false);
         learner.setStrictMode(false);
         learner.setShowGoalVisualizationsInChat(true);
         learner.setCoachStateRevision(0L);
@@ -595,8 +609,10 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                 """);
         assertMcpPayloadDoesNotExposeIdentity(tools, applicationSubject);
         assertThat(toolNames(tools))
-                .hasSize(14)
+                .hasSize(16)
                 .contains(
+                        OpenAiDeV1McpContractAdapter.CHOOSE_COMPLETION_ROUTE,
+                        OpenAiDeV1McpContractAdapter.CONFIRM_COMPLETION_CONTRACT,
                         OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN,
                         OpenAiDeV1McpContractAdapter.SWITCH_LEARNING_PLAN_SUBJECT,
                         OpenAiDeV1McpContractAdapter.GET_CONTEXT,
@@ -617,8 +633,11 @@ class OpenAiDeCoachEndToEndIntegrationTest {
                         OpenAiDeV1McpContractAdapter.START_RECALL)
                 .path("inputSchema")
                 .path("properties");
-        assertThat(recallStartProperties.size()).isEqualTo(1);
-        assertThat(recallStartProperties.has(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID)).isTrue();
+        assertThat(recallStartProperties.size()).isEqualTo(3);
+        for (String input : List.of(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID, "practiceScopeId",
+                OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION)) {
+            assertThat(recallStartProperties.has(input)).as(input).isTrue();
+        }
         JsonNode recallAnswersProperties = toolDescriptor(
                         tools,
                         OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS)
@@ -818,6 +837,30 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         assertThat(initialContext.path("workflowVersion").asText()).isEqualTo("coach@1.1");
         assertThat(initialContext.path("curriculumRevision").asText()).isNotBlank();
         assertThat(initialContext.path("extensions").isObject()).isTrue();
+        JsonNode pendingContract = initialContext.path("completionContract");
+        assertThat(pendingContract.path("status").asText()).isEqualTo("pending");
+        String receipt = pendingContract.path("receiptCapability").asText();
+        assertThat(receipt).isNotBlank();
+        long initialRevision = initialContext.path("stateVersion").asLong();
+        String receiptTool = OpenAiDeV1McpContractAdapter.CONFIRM_COMPLETION_CONTRACT;
+        HttpResponse<String> forgedReceipt = callTool(accessToken, 201, receiptTool,
+                "{\"receiptCapability\":\"forged\"}", initialLearningSessionId);
+        assertToolError(forgedReceipt, "STATE_CONFLICT");
+        String receiptArguments = objectMapper.createObjectNode().put("receiptCapability", receipt).toString();
+        for (int id : List.of(202, 203)) {
+            HttpResponse<String> acknowledgement = callTool(
+                    accessToken, id, receiptTool, receiptArguments, initialLearningSessionId);
+            assertMcpPayloadDoesNotExposeIdentity(acknowledgement, applicationSubject);
+            assertThat(acknowledgement.body()).doesNotContain(receipt);
+            JsonNode confirmed = result(acknowledgement);
+            assertThat(confirmed.path("isError").asBoolean()).isFalse();
+            assertThat(confirmed.path("structuredContent").path("confirmed").asBoolean()).isTrue();
+            assertThat(confirmed.path("structuredContent").path("stateVersion").asLong()).isEqualTo(initialRevision);
+        }
+        JsonNode refreshed = result(callTool(accessToken, 204, OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                "{}", initialLearningSessionId)).path("structuredContent");
+        assertThat(refreshed.path("completionContract").isMissingNode()).isTrue();
+        assertThat(refreshed.path("stateVersion").asLong()).isEqualTo(initialRevision);
 
         var initialSession = learningSessionRepository.findAll().getFirst();
         Instant originalExpiresAt = initialSession.getExpiresAt();
@@ -1450,6 +1493,8 @@ class OpenAiDeCoachEndToEndIntegrationTest {
 
         assertLegacyStateIsEmpty();
         assertThat(learningSessionRepository.count()).isEqualTo(1);
+        verifyCompletionRoute(accessToken, resumedLearningSessionId);
+        if (!nativeClient) verifyManualPlanGoalSelection(accessToken, resumedLearningSessionId);
 
         HttpResponse<String> revocation = postProfileForm(nativeClient,
                 OpenAiDeOAuthConfiguration.REVOCATION_ENDPOINT,
@@ -1468,12 +1513,169 @@ class OpenAiDeCoachEndToEndIntegrationTest {
         }
         assertThat(learningSessionRepository.count())
                 .as("OAuth revocation does not revoke the independent learning session")
-                .isEqualTo(1);
+                .isEqualTo(2);
         assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID))
                 .get()
                 .extracting(Learner::getSelectedCurriculum)
                 .isEqualTo(CURRICULUM_ID);
         assertLegacyStateIsEmpty();
+    }
+
+    private void verifyManualPlanGoalSelection(String accessToken, String sessionId) throws Exception {
+        String contextTool = OpenAiDeV1McpContractAdapter.GET_CONTEXT;
+        String resumeTool = OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN;
+        String chooseTool = OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL;
+        LocalDate today = LocalDate.now(ZoneId.of("Europe/Berlin"));
+        var masteryBefore = learnerService.getMastery(PERMANENT_SKILLPILOT_ID);
+        String scheduledGoal = null;
+        UUID createdPlan = null;
+        try {
+            for (boolean withSchedule : List.of(false, true)) {
+                Learner learner = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+                learner.setActiveGoalId(null);
+                learner.setPendingUnitEntry(null);
+                learner.setCompletionWorkflow(null);
+                learner.setLearningState(LearningState.FRONTIER);
+                learner.setAutoPilot(false);
+                learner.setFollowLearningPlans(true);
+                learner.setCoachStateRevision(learner.getCoachStateRevision() + 1L);
+                learnerRepository.saveAndFlush(learner);
+                if (withSchedule) {
+                    var plan = learningPlanService.upsert(PERMANENT_SKILLPILOT_ID, MATHEMATICS_CURRICULUM_ID,
+                            new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik", List.of(
+                                    new LearnerLearningPlanApi.Block("e2e-manual", "learning", null, "Lernplan",
+                                            today.minusDays(7), today, null, List.of(scheduledGoal), null, true))), today);
+                    createdPlan = plan.planId();
+                }
+
+                long revision = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow().getCoachStateRevision();
+                long writes = idempotencyRecordRepository.count();
+                JsonNode status = successfulTool(accessToken, 301, contextTool, "{}", sessionId);
+                assertThat(status.path("stateVersion").asLong()).isEqualTo(revision);
+                assertThat(status.path("learningPlanToday").path("text").asText()).isNotBlank();
+                assertThat(idempotencyRecordRepository.count()).isEqualTo(writes);
+                assertThat(status.at("/learningPlanToday/guidance/state").asText()).isEqualTo("chooseGoal");
+                assertThat(status.path("activeGoal").isMissingNode()).isTrue();
+                assertThat(status.path("options").size()).isGreaterThan(1);
+                List<String> options = status.path("options").findValuesAsText("id");
+                if (withSchedule) assertThat(options).contains(scheduledGoal);
+                assertToolError(callTool(accessToken, 302, resumeTool, "{}", sessionId), "STATE_CONFLICT");
+                var invalid = objectMapper.createObjectNode().put("goalId", "not-a-published-goal");
+                assertToolError(callTool(accessToken, 303, chooseTool, invalid.toString(), sessionId), "STATE_CONFLICT");
+                var after = learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow();
+                assertThat(after.getActiveGoalId()).isNull();
+                assertThat(after.getCoachStateRevision()).isEqualTo(revision);
+                assertThat(idempotencyRecordRepository.count()).isEqualTo(writes);
+
+                if (!withSchedule) {
+                    var planScope = learnerService.getPlanningScope(PERMANENT_SKILLPILOT_ID, MATHEMATICS_CURRICULUM_ID);
+                    scheduledGoal = options.stream().filter(planScope.openAtomicGoalIds()::contains).findFirst().orElseThrow();
+                }
+                String selected = withSchedule ? scheduledGoal : options.stream()
+                        .filter(id -> !id.equals(options.getFirst())).findFirst().orElseThrow();
+                var selection = objectMapper.createObjectNode().put("goalId", selected);
+                JsonNode successor = successfulTool(accessToken, 304, chooseTool, selection.toString(), sessionId);
+                assertThat(successor.at("/activeGoal/goalId").asText()).isEqualTo(selected);
+                assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow().getActiveGoalId())
+                        .isEqualTo(selected);
+                assertThat(learnerService.getMastery(PERMANENT_SKILLPILOT_ID)).isEqualTo(masteryBefore);
+            }
+        } finally {
+            if (createdPlan != null) {
+                jdbcOperations.update("DELETE FROM learner_learning_plan WHERE learner_id = ?", PERMANENT_SKILLPILOT_ID);
+            }
+        }
+    }
+
+    private void verifyCompletionRoute(String accessToken, String sessionId) throws Exception {
+        String contextTool = OpenAiDeV1McpContractAdapter.GET_CONTEXT;
+        String confirmTool = OpenAiDeV1McpContractAdapter.CONFIRM_COMPLETION_CONTRACT;
+        String chooseTool = OpenAiDeV1McpContractAdapter.CHOOSE_COMPLETION_ROUTE;
+        Map<String, Double> mastery = learnerService.getMastery(PERMANENT_SKILLPILOT_ID);
+        JsonNode pending = successfulTool(accessToken, 211, contextTool, "{}", sessionId);
+        String ownerReceipt = pending.path("completionContract").path("receiptCapability").asText();
+        assertThat(ownerReceipt).isNotBlank();
+        String receiptArguments = objectMapper.createObjectNode().put("receiptCapability", ownerReceipt).toString();
+        successfulTool(accessToken, 212, confirmTool, receiptArguments, sessionId);
+        JsonNode context = successfulTool(accessToken, 213, contextTool, "{}", sessionId);
+        long revision = context.path("stateVersion").asLong();
+        JsonNode choices = context.path("levelCompletion").path("choices");
+        String exam = choices.valueStream().map(JsonNode::asText)
+                .filter(choice -> choice.startsWith("Prüfung direkt versuchen: "))
+                .findFirst().orElseThrow(() -> new AssertionError("Expected an available mathematics assessment: " + choices));
+        String examArguments = objectMapper.createObjectNode().put("choice", exam).toString();
+        String wrongPage = objectMapper.createObjectNode().put("choice", exam)
+                .put("completionChoicePage", Integer.MAX_VALUE).toString();
+        String forged = objectMapper.createObjectNode().put("choice", "Erfundene Prüfung").toString();
+        for (String arguments : List.of(wrongPage, forged)) {
+            assertToolError(callTool(accessToken, 214, chooseTool, arguments, sessionId), "INVALID_INPUT");
+        }
+        String extraInput = objectMapper.createObjectNode().put("choice", exam).put("earnedPoints", 10).toString();
+        JsonNode rejectedExtraInput = result(callTool(accessToken, 214, chooseTool, extraInput, sessionId), true);
+        assertThat(rejectedExtraInput.path("content").findValuesAsText("text"))
+                .singleElement().asString().contains("input validation failed", "earnedPoints");
+        assertThat(successfulTool(accessToken, 215, contextTool, "{}", sessionId)
+                .path("stateVersion").asLong()).isEqualTo(revision);
+        JsonNode started = successfulTool(accessToken, 216, chooseTool, examArguments, sessionId);
+        assertThat(started.path("stateVersion").asLong()).isGreaterThan(revision);
+        assertThat(started.path("context").path("levelCompletion").path("directAssessmentRunning").asBoolean()).isTrue();
+        JsonNode activeExam = started.path("context").path("activeGoal");
+        assertThat(activeExam.path("goalId").asText()).isNotBlank();
+        assertThat(activeExam.path("exam").path("taskContent").asText()).isNotBlank();
+        assertThat(started.path("context").path("nextAllowedTools").valueStream().map(JsonNode::asText).toList())
+                .contains(chooseTool).doesNotContain(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL);
+
+        HttpResponse<String> launch = postJson(
+                "/api/ui/learners/" + encode(PERMANENT_SKILLPILOT_ID) + "/openai/v1/launch",
+                """
+                {"communicationLocale":"de","client":"openai-completion-other-session",
+                 "providerEligibilityConfirmed":true}
+                """, Map.of());
+        assertThat(launch.statusCode()).withFailMessage(launch.body()).isEqualTo(200);
+        String otherSessionId = objectMapper.readTree(launch.body()).path("learningSessionId").asText();
+        JsonNode otherPending = successfulTool(accessToken, 217, contextTool, "{}", otherSessionId);
+        assertThat(otherPending.path("learningState").asText()).isEqualTo("completionContractPaused");
+        assertThat(otherPending.path("activeGoal").isMissingNode()).isTrue();
+        assertToolError(callTool(accessToken, 218, confirmTool, receiptArguments, otherSessionId), "STATE_CONFLICT");
+        String otherReceipt = otherPending.path("completionContract").path("receiptCapability").asText();
+        assertThat(otherReceipt).isNotBlank().isNotEqualTo(ownerReceipt);
+        successfulTool(accessToken, 219, confirmTool,
+                objectMapper.createObjectNode().put("receiptCapability", otherReceipt).toString(), otherSessionId);
+        JsonNode foreignContext = successfulTool(accessToken, 220, contextTool, "{}", otherSessionId);
+        assertThat(foreignContext.path("activeGoal").isMissingNode()).isTrue();
+        assertThat(foreignContext.path("levelCompletion").path("choices").isEmpty()).isTrue();
+        String pause = objectMapper.createObjectNode().put("choice", "Prüfung beenden und pausieren").toString();
+        assertToolError(callTool(accessToken, 221, chooseTool, pause, otherSessionId), "INVALID_INPUT");
+
+        JsonNode paused = successfulTool(accessToken, 222, chooseTool, pause, sessionId).path("context");
+        assertThat(paused.path("activeGoal").isMissingNode()).isTrue();
+        assertThat(paused.path("levelCompletion").path("paused").asBoolean()).isTrue();
+        assertThat(paused.path("levelCompletion").path("directAssessmentRunning").asBoolean()).isFalse();
+        String leave = objectMapper.createObjectNode().put("choice", "Zur normalen Lernansicht").toString();
+        successfulTool(accessToken, 223, chooseTool, leave, sessionId);
+        assertThat(learnerRepository.findById(PERMANENT_SKILLPILOT_ID).orElseThrow().getCompletionWorkflow()).isNull();
+        assertThat(learnerService.getMastery(PERMANENT_SKILLPILOT_ID)).isEqualTo(mastery);
+
+        JsonNode retried = successfulTool(accessToken, 224, chooseTool, examArguments, sessionId).path("context");
+        String examId = retried.path("activeGoal").path("goalId").asText();
+        assertThat(examId).isEqualTo(activeExam.path("goalId").asText());
+        JsonNode evaluation = successfulTool(accessToken, 225, OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION,
+                objectMapper.createObjectNode().put("goalId", examId).toString(), sessionId);
+        double passingPoints = evaluation.path("scoring").path("passingPoints").asDouble();
+        assertThat(passingPoints).isPositive();
+        String passArguments = objectMapper.createObjectNode().put("goalId", examId)
+                .put("evaluationCapability", evaluation.path("evaluationCapability").asText())
+                .put("earnedPoints", passingPoints).toString();
+        successfulTool(accessToken, 226, OpenAiDeV1McpContractAdapter.SET_MASTERY, passArguments, sessionId);
+        assertThat(learnerService.getMastery(PERMANENT_SKILLPILOT_ID)).containsEntry(examId, 1.0);
+        assertThat(jdbcOperations.queryForObject(
+                "SELECT earned_points FROM verified_exam_pass WHERE learner_id = ? AND goal_id = ?",
+                Double.class, PERMANENT_SKILLPILOT_ID, examId)).isEqualTo(passingPoints);
+    }
+
+    private JsonNode successfulTool(String accessToken, int id, String name, String arguments, String sessionId)
+            throws Exception {
+        return result(callTool(accessToken, id, name, arguments, sessionId)).path("structuredContent");
     }
 
     private HttpResponse<String> get(String path) throws Exception {
@@ -1695,10 +1897,21 @@ class OpenAiDeCoachEndToEndIntegrationTest {
     }
 
     private JsonNode result(HttpResponse<String> response) throws Exception {
+        return result(response, false);
+    }
+
+    private void assertToolError(HttpResponse<String> response, String code) throws Exception {
+        assertThat(result(response, true).path("structuredContent").path("code").asText())
+                .withFailMessage(response.body()).isEqualTo(code);
+    }
+
+    private JsonNode result(HttpResponse<String> response, boolean isError) throws Exception {
         JsonNode root = objectMapper.readTree(response.body());
         assertThat(root.path("error").isMissingNode()).withFailMessage(response.body()).isTrue();
-        assertThat(root.path("result").path("isError").asBoolean()).withFailMessage(response.body()).isFalse();
-        return root.path("result");
+        JsonNode result = root.path("result");
+        assertThat(result.isObject()).withFailMessage(response.body()).isTrue();
+        assertThat(result.path("isError").asBoolean()).withFailMessage(response.body()).isEqualTo(isError);
+        return result;
     }
 
     private McpSchema.CallToolResult successfulCoordinatorResult(

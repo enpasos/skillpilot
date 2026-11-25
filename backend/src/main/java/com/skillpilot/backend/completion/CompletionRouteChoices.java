@@ -1,9 +1,8 @@
-package com.skillpilot.backend.connectors.claude.v1.mcp;
+package com.skillpilot.backend.completion;
 
 import com.skillpilot.backend.api.LevelCompletionActionRequest;
 import com.skillpilot.backend.api.LevelCompletionResponse;
 import com.skillpilot.backend.api.UnitAssessmentResponse;
-import com.skillpilot.backend.completion.CompletionCallContext;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -11,45 +10,59 @@ import java.util.Map;
 import java.util.Set;
 
 /** Projects authorized choices; it never calculates mastery, waivers or prerequisite access. */
-final class ClaudeV1CompletionChoices {
-    static final int MAX_CHOICES = 24;
-    private ClaudeV1CompletionChoices() { }
+public final class CompletionRouteChoices {
+    public static final CompletionRouteChoices CLAUDE = new CompletionRouteChoices("claude", "get_skillpilot_coach_context");
+    public static final CompletionRouteChoices OPENAI = new CompletionRouteChoices("openai", "get_skillpilot_context");
+    public static final int MAX_CHOICES = 24;
+    private final String provider;
+    private final String contextTool;
 
-    record Choice(String label, String action, String profileId, String goalId, String intent) {
-        LevelCompletionActionRequest request(long revision) {
+    private CompletionRouteChoices(String provider, String contextTool) {
+        this.provider = provider;
+        this.contextTool = contextTool;
+    }
+
+    public static final class UnavailablePageException extends IllegalArgumentException {
+        private UnavailablePageException() {
+            super("The completion choice page is unavailable. Reload the current coach context.");
+        }
+    }
+
+    public record Choice(String label, String action, String profileId, String goalId, String intent) {
+        public LevelCompletionActionRequest request(long revision) {
             return new LevelCompletionActionRequest(action, profileId, goalId, intent, revision);
         }
     }
 
-    static boolean supported() {
+    public boolean supported() {
         CompletionCallContext call = CompletionCallContext.current();
-        return call != null && call.supported() && "claude".equals(call.provider());
+        return call != null && call.supported() && provider.equals(call.provider());
     }
 
-    static boolean active(LevelCompletionResponse completion) {
-        return completion != null && completion.profileId() != null
-                && (!completion.profileId().startsWith("automatic:")
-                    || completion.navigationIntent() != null || completion.directAssessmentRunning());
+    public static boolean active(LevelCompletionResponse completion) {
+        return completion != null && (completion.actions() != null
+                && completion.actions().stream().anyMatch(action -> "leaveProfile".equals(action.action()))
+                || completion.profileId() != null && (!completion.profileId().startsWith("automatic:")
+                    || completion.navigationIntent() != null || completion.directAssessmentRunning()));
     }
 
-    record Page(List<Choice> choices, int number, int count) { }
+    public record Page(List<Choice> choices, int number, int count) { }
 
-    static List<Choice> published(LevelCompletionResponse completion, String language) {
+    public List<Choice> published(LevelCompletionResponse completion, String language) {
         return page(completion, language, 1).choices();
     }
 
-    static Page page(LevelCompletionResponse completion, String language, int number) {
+    public Page page(LevelCompletionResponse completion, String language, int number) {
         var ordered = authorizedChoices(completion, language);
         int count = Math.max(1, Math.ceilDiv(ordered.size(), MAX_CHOICES));
         if (number < 1 || number > count) {
-            throw new ClaudeV1McpContractAdapter.ToolInputException(
-                    "The completion choice page is unavailable. Reload the current coach context.");
+            throw new UnavailablePageException();
         }
         int start = (number - 1) * MAX_CHOICES;
         return new Page(ordered.subList(start, start + Math.min(MAX_CHOICES, ordered.size() - start)), number, count);
     }
 
-    private static List<Choice> authorizedChoices(LevelCompletionResponse completion, String language) {
+    private List<Choice> authorizedChoices(LevelCompletionResponse completion, String language) {
         if (completion == null || !supported()
                 || "completion_assessment_owned_elsewhere".equals(completion.notice())) return List.of();
         boolean en = "en".equals(language);
@@ -131,11 +144,11 @@ final class ClaudeV1CompletionChoices {
         return List.copyOf(ordered);
     }
 
-    static Map<String, Object> project(LevelCompletionResponse completion, String language) {
+    public Map<String, Object> project(LevelCompletionResponse completion, String language) {
         return project(completion, language, page(completion, language, 1));
     }
 
-    static Map<String, Object> project(LevelCompletionResponse completion, String language, Page page) {
+    public Map<String, Object> project(LevelCompletionResponse completion, String language, Page page) {
         if (completion == null) return null;
         boolean en = "en".equals(language);
         Map<String, Object> result = new LinkedHashMap<>();
@@ -255,7 +268,7 @@ final class ClaudeV1CompletionChoices {
                 + "Available direct assessment choices can be selected from ordinary learning without choosing a section first. "
                 + "Offer them when the learner asks for a shortcut, an assessment or to demonstrate existing knowledge; do not interrupt ordinary teaching unprompted. "
                 + (page.count() > 1 ? "If the requested goal or assessment is missing here, read the remaining choicePagination pages with "
-                    + "get_skillpilot_coach_context(completionChoicePage=nextPage). Paging is read-only and requires no additional consent. "
+                    + contextTool + "(completionChoicePage=nextPage). Paging is read-only and requires no additional consent. "
                     + "Use the page containing the chosen exact title as completionChoicePage when selecting it. "
                     + "If several titles fit, ask which one; never guess or expose technical page arguments. " : "")
                 + "For an explicit learner choice, copy exactly one current choices entry into choose_skillpilot_completion_route. "
@@ -278,7 +291,7 @@ final class ClaudeV1CompletionChoices {
         return prefix + label(assessment.title(), language);
     }
 
-    private static Map<String, Object> projectedAssessment(LevelCompletionResponse.Assessment assessment, String language) {
+    private Map<String, Object> projectedAssessment(LevelCompletionResponse.Assessment assessment, String language) {
         var result = new LinkedHashMap<String, Object>();
         result.put("title", label(assessment.title(), language));
         result.put("mastered", assessment.mastered());

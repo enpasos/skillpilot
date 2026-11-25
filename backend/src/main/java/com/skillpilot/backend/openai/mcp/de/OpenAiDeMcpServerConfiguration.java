@@ -3,6 +3,7 @@ package com.skillpilot.backend.openai.mcp.de;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import com.skillpilot.backend.mcp.SkillPilotStatelessMcpServerFactory;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1CompletionContractRegistry;
 import java.time.Duration;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -32,8 +33,9 @@ public class OpenAiDeMcpServerConfiguration {
     SkillPilotStatelessMcpServerFactory.Registration openAiDeMcpServerRegistration(
             SkillPilotStatelessMcpServerFactory serverFactory,
             OpenAiDeV1McpContractAdapter contract,
+            OpenAiDeV1CompletionContractRegistry completionContract,
             Environment environment) {
-        return serverFactory.create(
+        var registration = serverFactory.create(
                 DEFAULT_ENDPOINT,
                 environment.getProperty("skillpilot.openai.coach.v1.mcp.server-name", DEFAULT_SERVER_NAME),
                 environment.getProperty("skillpilot.openai.coach.v1.mcp.server-version", DEFAULT_SERVER_VERSION),
@@ -44,6 +46,8 @@ public class OpenAiDeMcpServerConfiguration {
                         DEFAULT_REQUEST_TIMEOUT),
                 contract.toolSpecifications(),
                 contract.resourceSpecifications());
+        completionContract.register(contract);
+        return registration;
     }
 
     @Bean(name = "openAiDeMcpRouterFunction")

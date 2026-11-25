@@ -1,0 +1,69 @@
+    @ParameterizedTest
+    @org.junit.jupiter.params.provider.CsvSource({"false,false,diagram", "false,true,diagram", "true,false,diagram", "true,true,diagram"})
+    void compareDirectHandoffWithFreshReconcile(boolean pilot,boolean doReconcile,String scenario) throws Exception {
+        Object saved=org.springframework.test.util.ReflectionTestUtils.getField(learners,"unitAssessmentPilotEnabled");
+        org.springframework.test.util.ReflectionTestUtils.setField(learners,"unitAssessmentPilotEnabled",pilot);
+        try {
+            String e1=selectHessianMotionUnit("G9","SekII","GK");
+            String magnet=e1.replace(":structure:physics-e1-motion",":structure:physics-current-magnetic-fields-0bd4a459");
+            String child=e1.replace(":structure:physics-e1-motion",":structure:physics-e1-accelerated-and-free-fall");
+            String anchor="e0004439-ed34-5caf-858a-6107918224eb", target="1e459a1b-4159-5049-84eb-9928129c1610";
+            String physics="7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+            var day=java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin")).with(java.time.DayOfWeek.MONDAY);
+            var today=java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+            var roots=List.of(child,target);
+            boolean parentDone=false,childDone=true;
+            var first=new LearnerLearningPlanApi.Block("first","learning",child,"Messprotokoll",day,day,null,List.of(anchor),List.of(child),true);
+            var second=new LearnerLearningPlanApi.Block("second","learning",child,"t-v-Diagramm",day,day,null,List.of(target),roots,true);
+            learningPlans.upsert(learnerId,physics,new LearnerLearningPlanApi.UpsertRequest(0L,"Messplan",List.of(first,second)),today);
+            var learner=learnerRepository.findById(learnerId).orElseThrow();
+            var graph=new CompletionProfileCompiler().normalizePrerequisites(learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+            var prereqs=new java.util.LinkedHashSet<>(graph.transitivePrerequisites(anchor));
+            prereqs.addAll(graph.transitivePrerequisites(target));prereqs.removeAll(List.of(anchor,target,MOTION_OPENING,FALL_OPENING));
+            if(parentDone)prereqs.add(MOTION_OPENING);
+            if(childDone)prereqs.add(FALL_OPENING);
+            masteryRepository.saveAllAndFlush(prereqs.stream().map(id->new Mastery(learner,id,1.0)).toList());
+            learners.setPreferences(learnerId,null,false,true,null,true);
+            learners.setPlannedGoals(learnerId,java.util.Set.of(child));
+            learners.setActiveGoal(learnerId,anchor);
+            var held=learnerRepository.findById(learnerId).orElseThrow();
+            assertThat(held.getActiveGoalId()).isEqualTo(anchor);
+            var originalFocus=focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).toList();
+            assertThat(learningPlans.getPlan(learnerId,physics,today).stale()).isFalse();
+            learners.setMastery(learnerId,new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of(anchor,1.0),anchor));
+            // In the control, undo only navigation so exactly the same real mastery and quota write remains.
+            if(doReconcile) {
+                var reset=learnerRepository.findById(learnerId).orElseThrow();
+                reset.setActiveGoalId(null);reset.setPendingUnitEntry(null);learnerRepository.saveAndFlush(reset);
+                focus.deleteAll(focus.findByLearner_SkillpilotId(learnerId));focus.flush();
+                for(String id:originalFocus)focus.save(new PlannedGoal(reset,id));focus.flush();
+            }
+            var out=new java.util.LinkedHashMap<String,Object>();
+            out.put("pilot",pilot);out.put("path",doReconcile?"reconcile":"handoff");out.put("scenario",scenario);
+            out.put("anchor",anchor);out.put("target",target);out.put("blockRoots",roots);out.put("initialFocus",originalFocus);
+            out.put("parent",MOTION_OPENING);out.put("child",FALL_OPENING);out.put("parentAlreadyMastered",parentDone);out.put("childAlreadyMastered",childDone);
+            out.put("realPlanBlocks",learningPlans.getPlan(learnerId,physics,today).blocks());
+            out.put("parentMastery",learners.getMastery(learnerId).get(MOTION_OPENING));out.put("childMastery",learners.getMastery(learnerId).get(FALL_OPENING));
+            out.put("anchorMastery",learners.getMastery(learnerId).get(anchor));out.put("targetMastery",learners.getMastery(learnerId).get(target));
+            out.put("membership",learners.getLearningPlanFocusAtomicGoalIds(learnerId,physics,roots).contains(target));
+            out.put("requiredForRoots",learners.getRequiredUnitOrientationGoalIdForFocus(learnerId,target,roots));
+            out.put("requiredForOwn",learners.getRequiredUnitOrientationGoalIdForFocus(learnerId,target,List.of(target)));
+            out.put("rootsFrontier",learners.getUncompactedRichFrontierForFocus(learnerId,roots).stream().map(g->g.id()).toList());
+            out.put("ownFrontier",learners.getUncompactedRichFrontierForFocus(learnerId,List.of(target)).stream().map(g->g.id()).toList());
+            out.put("wholePlanFrontier",learners.getUncompactedRichFrontierForFocus(learnerId,List.of(anchor,target)).stream().map(g->g.id()).toList());
+            if(doReconcile){
+                var detail=learningPlans.getPlan(learnerId,physics,today);
+                out.put("viewNext",detail.nextEligibleGoal());
+                try {
+                    var resumed=learningPlans.reconcile(learnerId,new LearnerLearningPlanApi.ReconcileRequest(today));
+                    out.put("reportedGoal",resumed.activeGoalId());out.put("reportedFocus",resumed.focusGoalId());
+                } catch(org.springframework.web.server.ResponseStatusException ex){out.put("http",ex.getStatusCode().value());out.put("reason",ex.getReason());}
+            }
+            var finalState=learnerRepository.findById(learnerId).orElseThrow();
+            out.put("active",finalState.getActiveGoalId());out.put("focus",focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).toList());
+            out.put("pending",finalState.getPendingUnitEntry());
+            System.out.println("R3_OPENING "+mapper.writeValueAsString(out));
+        } finally{
+            org.springframework.test.util.ReflectionTestUtils.setField(learners,"unitAssessmentPilotEnabled",saved);
+        }
+    }

@@ -1586,7 +1586,8 @@ public class LearnerService {
                 || (!newRoute && (!completionWorkflowMatches(learner, workflow)
                     || !Objects.equals(workflow.profileId(), request.profileId())))
                 || (newRoute && Boolean.TRUE.equals(request.restartCurrent()))
-                || !"claude".equals(provider) || sessionBinding == null || sessionBinding.isBlank()
+                || !("claude".equals(provider) || "openai".equals(provider) && call != null)
+                || sessionBinding == null || sessionBinding.isBlank()
                 || expiresAt == null || !expiresAt.isAfter(Instant.now())
                 || (call != null && (!call.supported() || !Objects.equals(call.provider(), provider)
                     || !Objects.equals(call.sessionBinding(), sessionBinding) || !Objects.equals(call.expiresAt(), expiresAt)))) {
@@ -4595,7 +4596,11 @@ public class LearnerService {
             if (!normalized.equals(storedBlocks)) {
                 return false;
             }
-            validateLearningPlanBlockFoci(skillpilotId, landscapeId, storedBlocks);
+            // A stored plan keeps the goals it captured when a later regrouping moved them to
+            // another section (Product Owner, 24 November 2026: old plans stay valid as long as
+            // they still work).
+            validateLearningPlanBlockFoci(skillpilotId, landscapeId, storedBlocks,
+                    learningPlanCapturedSelections(storedBlocks));
             validateLearningPlanCurrentGraph(skillpilotId, storedBlocks);
             return orderLearningPlanBlocksByPrerequisites(skillpilotId, storedBlocks).equals(storedBlocks);
         } catch (ResponseStatusException exception) {
@@ -4734,11 +4739,21 @@ public class LearnerService {
             String skillpilotId,
             String landscapeId,
             List<LearnerLearningPlanApi.Block> blocks) {
+        return learningPlanFingerprint(skillpilotId, landscapeId, blocks, Map.of());
+    }
+
+    /** As above for a plan that already existed; see {@link #validateLearningPlanBlockFoci(String, String, List, Map)}. */
+    @Transactional(readOnly = true)
+    public String learningPlanFingerprint(
+            String skillpilotId,
+            String landscapeId,
+            List<LearnerLearningPlanApi.Block> blocks,
+            Map<Set<String>, Set<String>> capturedSelections) {
         List<LearnerLearningPlanApi.Block> effectiveBlocks = blocks == null
                 ? Collections.emptyList()
                 : List.copyOf(blocks);
         try {
-            validateLearningPlanBlockFoci(skillpilotId, landscapeId, effectiveBlocks);
+            validateLearningPlanBlockFoci(skillpilotId, landscapeId, effectiveBlocks, capturedSelections);
             List<LearnerLearningPlanApi.Block> currentOrder =
                     orderLearningPlanBlocksByPrerequisites(skillpilotId, effectiveBlocks);
             if (!currentOrder.equals(effectiveBlocks)) {
@@ -5029,9 +5044,30 @@ public class LearnerService {
             String skillpilotId,
             String landscapeId,
             List<LearnerLearningPlanApi.Block> blocks) {
+        validateLearningPlanBlockFoci(skillpilotId, landscapeId, blocks, Map.of());
+    }
+
+    /**
+     * As above, for a plan that already existed. {@code capturedSelections} names, per set of
+     * foci, the goals the plan held in a block with exactly these foci before this check (see
+     * {@link #learningPlanCapturedSelections(List)}): a stored or restored plan, or the stored
+     * state of a plan that is being edited. A regrouping of the curriculum can move such a goal
+     * out of its section. It stays in a block that names the same foci as long as it is a counted
+     * goal of this subject. A block with other foci is a new selection: which of several foci a
+     * goal came from is not stored, so adding or removing one must not hand the goal on to
+     * another section. A block whose foci are all single goals loses nothing to a regrouping and
+     * never keeps another goal. Every other goal must lie under a focus of its block.
+     */
+    @Transactional(readOnly = true)
+    public void validateLearningPlanBlockFoci(
+            String skillpilotId,
+            String landscapeId,
+            List<LearnerLearningPlanApi.Block> blocks,
+            Map<Set<String>, Set<String>> capturedSelections) {
         if (blocks == null || blocks.isEmpty()) {
             return;
         }
+        Map<Set<String>, Set<String>> captured = capturedSelections == null ? Map.of() : capturedSelections;
         Learner learner = getLearner(skillpilotId);
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null || curriculumId.isBlank()) {
@@ -5055,12 +5091,76 @@ public class LearnerService {
                 allowedAtoms.addAll(validateLearningPlanFocus(root, block.id(), requestedLandscapeId, projection));
             }
             // Multiple canonical roots are a union, not an intersection. Each
-            // submitted atom must still belong to this subject and to that union.
-            if (block.isAtomicLearning() && block.atomicGoalIds() != null
-                    && !allowedAtoms.containsAll(block.atomicGoalIds())) {
-                throw invalidLearningPlanFocus(block.id());
+            // submitted atom must still belong to this subject and to that union,
+            // unless the plan had captured it in a block with exactly these roots
+            // before and it is still a goal of the subject.
+            if (!block.isAtomicLearning() || block.atomicGoalIds() == null) continue;
+            Set<String> keptWithTheseSections = roots.stream().allMatch(root -> isSingleGoalFocus(root, projection))
+                    ? Set.of() : captured.getOrDefault(new HashSet<>(roots), Set.of());
+            for (String atomicGoalId : block.atomicGoalIds()) {
+                if (allowedAtoms.contains(atomicGoalId)) continue;
+                if (!keptWithTheseSections.contains(atomicGoalId)
+                        || !isCountedAtomicGoal(projection.structuralGoals().get(atomicGoalId))
+                        || !requestedLandscapeId.equals(landscapeService.getLandscapeIdForGoal(atomicGoalId))) {
+                    throw invalidLearningPlanFocus(block.id());
+                }
             }
         }
+    }
+
+    /**
+     * The focus selections a plan holds: per set of foci of a learning block, the goals of the
+     * blocks with exactly these foci. This is what a stored or restored plan, or the stored state
+     * of an edited plan, may keep. Block ids play no part, so renaming or splitting a block keeps
+     * its goals.
+     */
+    public static Map<Set<String>, Set<String>> learningPlanCapturedSelections(
+            List<LearnerLearningPlanApi.Block> blocks) {
+        Map<Set<String>, Set<String>> selections = new LinkedHashMap<>();
+        if (blocks == null) return selections;
+        for (LearnerLearningPlanApi.Block block : blocks) {
+            if (block == null || !block.isAtomicLearning() || block.atomicGoalIds() == null
+                    || block.focusGoalIds().isEmpty() || block.focusGoalIds().stream().anyMatch(Objects::isNull)) {
+                continue;
+            }
+            Set<String> goals = selections.computeIfAbsent(
+                    new HashSet<>(block.focusGoalIds()), ignored -> new LinkedHashSet<>());
+            block.atomicGoalIds().stream().filter(Objects::nonNull).forEach(goals::add);
+        }
+        return selections;
+    }
+
+    /** A section or cluster can lose a goal to a regrouping; a single goal used as a focus cannot. */
+    private boolean isSingleGoalFocus(String focusGoalId, GoalProjection projection) {
+        if (isCompositionStructureGoalId(focusGoalId)) return false;
+        String projectedGoalId = resolveGoalIdInVisibleGoals(focusGoalId, projection.visibleGoals(), true);
+        return projectedGoalId == null || isAtomicGoal(projection.visibleGoals().get(projectedGoalId));
+    }
+
+    /**
+     * The counted goals of this subject that lie under the given plan foci today, including
+     * voluntary assessments. {@code null} when a focus no longer resolves; that plan is outdated.
+     * Plan navigation uses this to find a goal that a regrouping moved out of its block's section.
+     */
+    @Transactional(readOnly = true)
+    public Set<String> getLearningPlanFocusAtomicGoalIds(
+            String skillpilotId, String landscapeId, List<String> roots) {
+        if (roots == null || roots.isEmpty()) return null;
+        Learner learner = getLearner(skillpilotId);
+        if (learner.getSelectedCurriculum() == null || learner.getSelectedCurriculum().isBlank()) return null;
+        GoalProjection projection = getGoalProjection(
+                learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        String requestedLandscapeId = landscapeId == null ? "" : landscapeId.trim();
+        LinkedHashSet<String> atoms = new LinkedHashSet<>();
+        try {
+            for (String root : roots) {
+                atoms.addAll(validateLearningPlanFocus(root, "selected-scope", requestedLandscapeId, projection));
+            }
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) throw exception;
+            return null;
+        }
+        return atoms;
     }
 
     /** Visible, subject-local atoms of an explicit selection, never its requires closure. */
@@ -5083,6 +5183,17 @@ public class LearnerService {
     public List<String> getStoredLearningPlanFocus(String skillpilotId, String landscapeId) {
         return getStoredPlannedGoals(skillpilotId).stream()
                 .filter(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id))).toList();
+    }
+
+    /** The explicit focus binds manual plan choices only if its projected targets lie in one subject. */
+    @Transactional(readOnly = true)
+    Optional<String> getStoredLearningPlanFocusSubject(Learner learner) {
+        List<String> focus = getStoredPlannedGoals(learner.getSkillpilotId());
+        if (focus.isEmpty() || !hasCompletedPersonalCurriculum(learner)) return Optional.empty();
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        List<String> subjects = projectedAtomicTargetIds(focus, projection).stream()
+                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull).distinct().limit(2).toList();
+        return subjects.size() == 1 ? Optional.of(subjects.getFirst()) : Optional.empty();
     }
 
     /** Names real missing requirements without enrolling or marking any of them. */
@@ -10429,24 +10540,32 @@ public class LearnerService {
                         roots -> resolveLearningPlanGoalIds(learner.getSkillpilotId(), plan.getLandscapeId(), roots),
                         getStoredLearningPlanFocus(learner.getSkillpilotId(), plan.getLandscapeId()));
                 Map<String, List<String>> preparation = new HashMap<>();
-                Set<String> eligibleIds = learningScope.goalIds().isEmpty() ? Set.of()
-                        : getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), learningScope.goalIds()).stream()
+                java.util.function.Function<List<String>, Set<String>> frontierOf = roots -> roots.isEmpty() ? Set.of()
+                        : getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), roots).stream()
                                 .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy())
                                 .peek(goal -> LearnerLearningPlanService.collectStudyPreparation(preparation, goal))
                                 .map(FrontierGoal::id).collect(Collectors.toSet());
+                // An exam binds the whole selected scope. An ordinary plan judges each goal under the
+                // focus it will run under, exactly like plan continuation: the frontier of all plan
+                // goals taken together can hide a due goal behind a goal that is scheduled later.
+                Set<String> examEligibleIds = "exam".equals(learningScope.kind())
+                        ? frontierOf.apply(learningScope.goalIds()) : null;
                 Optional<LearnerLearningPlanService.DueGoal> selected =
                         LearnerLearningPlanService.firstEligibleDueGoal(
                                 blocks,
                                 periodEnd,
                                 mastery,
                                 fulfillment.waived(plan.getLandscapeId()),
-                                ignored -> eligibleIds,
+                                examEligibleIds != null ? ignored -> examEligibleIds : frontierOf,
                                 (goalId, focusIds) -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId)
                                         ? requiredUnitOrientationGoalId(learner, projection, goalId,
                                                 "exam".equals(learningScope.kind()) ? learningScope.goalIds() : focusIds)
                                         : null,
                                 goalId -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId),
-                                preparation);
+                                preparation,
+                                // As in plan continuation: a goal moved out of its section runs under its own focus.
+                                roots -> "exam".equals(learningScope.kind()) ? null : getLearningPlanFocusAtomicGoalIds(
+                                        learner.getSkillpilotId(), plan.getLandscapeId(), roots));
                 if (selected.isEmpty()) {
                     continue;
                 }
@@ -10519,12 +10638,26 @@ public class LearnerService {
         List<String> selectedFocus = candidate.scopeGoalIds() == null
                 ? List.of(candidate.focusGoalId()) : candidate.scopeGoalIds();
         GoalProjection entryProjection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
-        Set<String> expandedFocus = computeScope(resolveProjectedTargetScopeIds(selectedFocus, entryProjection),
-                entryProjection.structuralGoals(), Map.of());
-        if (!expandedFocus.contains(candidate.atomicGoalId()) && !selectedFocus.stream()
-                .allMatch(id -> isAtomicGoal(entryProjection.visibleGoals().get(id)))) {
-            selectedFocus = new ArrayList<>(selectedFocus);
-            selectedFocus.add(candidate.atomicGoalId());
+        String activeGoalId = candidate.atomicGoalId();
+        if (candidate.scopeGoalIds() == null) {
+            // An ordinary plan stores exactly what plan continuation would store for this goal
+            // under this focus: the selection may have judged the goal under all sections of its
+            // block, while the stored focus is one of them or the goal itself, and a unit opening
+            // that this focus requires comes first. A goal the stored focus does not offer is left
+            // to plan continuation.
+            LearningPlanEntry entry = resolveLearningPlanEntry(
+                    learner, entryProjection, candidate.requestedGoalId(), selectedFocus);
+            if (!isLearningPlanEntryEligible(learner.getSkillpilotId(), entry)) return;
+            selectedFocus = entry.focusGoalIds();
+            activeGoalId = entry.activeGoalId();
+        } else {
+            Set<String> expandedFocus = computeScope(resolveProjectedTargetScopeIds(selectedFocus, entryProjection),
+                    entryProjection.structuralGoals(), Map.of());
+            if (!expandedFocus.contains(candidate.atomicGoalId()) && !selectedFocus.stream()
+                    .allMatch(id -> isAtomicGoal(entryProjection.visibleGoals().get(id)))) {
+                selectedFocus = new ArrayList<>(selectedFocus);
+                selectedFocus.add(candidate.atomicGoalId());
+            }
         }
         boolean focusAlreadySelected = currentFocus.stream().map(PlannedGoal::getGoalId).collect(Collectors.toSet())
                 .equals(Set.copyOf(selectedFocus));
@@ -10532,10 +10665,10 @@ public class LearnerService {
             plannedGoalRepository.deleteAll(currentFocus);
             for (String goalId : selectedFocus) plannedGoalRepository.save(new PlannedGoal(learner, goalId));
         }
-        learner.setActiveGoalId(candidate.atomicGoalId());
+        learner.setActiveGoalId(activeGoalId);
         learner.setLearningState(LearningState.TEACHING);
-        if (!Objects.equals(candidate.atomicGoalId(), candidate.requestedGoalId())) {
-            parkUnitEntry(learner, candidate.requestedGoalId(), candidate.atomicGoalId());
+        if (!Objects.equals(activeGoalId, candidate.requestedGoalId())) {
+            parkUnitEntry(learner, candidate.requestedGoalId(), activeGoalId);
         } else learner.setPendingUnitEntry(null);
         advanceCoachStateRevision(learner);
         if (publishEvent) {
@@ -11504,29 +11637,15 @@ public class LearnerService {
                     org.springframework.http.HttpStatus.BAD_REQUEST,
                     "focusGoalId is required when activating a learning-plan goal");
         }
-        GoalProjection entryProjection = requestedActiveGoalId == null ? null
-                : getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
-        String requiredOpening = requestedActiveGoalId == null ? null : requiredUnitOrientationGoalId(
-                learner, entryProjection, requestedActiveGoalId, normalizedFocusGoalIds);
-        String normalizedActiveGoalId = requiredOpening == null ? requestedActiveGoalId : requiredOpening;
-        if (requiredOpening != null) {
-            Set<String> expanded = computeScope(resolveProjectedTargetScopeIds(normalizedFocusGoalIds, entryProjection),
-                    entryProjection.structuralGoals(), Map.of());
-            if (!expanded.contains(requiredOpening) && !normalizedFocusGoalIds.stream()
-                    .allMatch(id -> isAtomicGoal(entryProjection.visibleGoals().get(id)))) {
-                normalizedFocusGoalIds = new ArrayList<>(normalizedFocusGoalIds);
-                normalizedFocusGoalIds.add(requiredOpening);
-            }
-        }
-        if (normalizedActiveGoalId != null) {
+        LearningPlanEntry entry = requestedActiveGoalId == null ? null : resolveLearningPlanEntry(learner,
+                getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()),
+                requestedActiveGoalId, normalizedFocusGoalIds);
+        String requiredOpening = entry == null ? null : entry.requiredOpening();
+        String normalizedActiveGoalId = entry == null ? null : entry.activeGoalId();
+        if (entry != null) {
+            normalizedFocusGoalIds = entry.focusGoalIds();
             assertPersonalizationCompleteForLearning(learner);
-            boolean eligible = getUncompactedRichFrontierForFocus(
-                            skillpilotId,
-                            normalizedFocusGoalIds)
-                    .stream()
-                    .filter(goal -> "atomic".equals(goal.type()))
-                    .anyMatch(goal -> normalizedActiveGoalId.equals(goal.id()));
-            if (!eligible) {
+            if (!isLearningPlanEntryEligible(skillpilotId, entry)) {
                 throw new ResponseStatusException(
                         org.springframework.http.HttpStatus.CONFLICT,
                         "activeGoalId must be an atomic goal from the requested plan focus frontier");
@@ -11587,6 +11706,51 @@ public class LearnerService {
     public record LearningPlanTransitionResult(
             boolean changed,
             UnifiedLearnerStateResponse state) { }
+
+    /**
+     * What a plan transition stores for a requested goal under a focus. A required unit opening
+     * comes first; the requested goal is then kept for the return. A section focus that does not
+     * hold the opening is widened by it.
+     */
+    private record LearningPlanEntry(String activeGoalId, String requiredOpening, List<String> focusGoalIds) { }
+
+    private LearningPlanEntry resolveLearningPlanEntry(Learner learner, GoalProjection projection,
+            String requestedGoalId, List<String> focusGoalIds) {
+        String requiredOpening = requiredUnitOrientationGoalId(learner, projection, requestedGoalId, focusGoalIds);
+        List<String> focus = focusGoalIds;
+        if (requiredOpening != null) {
+            Set<String> expanded = computeScope(resolveProjectedTargetScopeIds(focus, projection),
+                    projection.structuralGoals(), Map.of());
+            if (!expanded.contains(requiredOpening) && !focus.stream()
+                    .allMatch(id -> isAtomicGoal(projection.visibleGoals().get(id)))) {
+                focus = new ArrayList<>(focus);
+                focus.add(requiredOpening);
+            }
+        }
+        return new LearningPlanEntry(requiredOpening == null ? requestedGoalId : requiredOpening, requiredOpening, focus);
+    }
+
+    private boolean isLearningPlanEntryEligible(String skillpilotId, LearningPlanEntry entry) {
+        return getUncompactedRichFrontierForFocus(skillpilotId, entry.focusGoalIds()).stream()
+                .filter(goal -> "atomic".equals(goal.type()))
+                .anyMatch(goal -> entry.activeGoalId().equals(goal.id()));
+    }
+
+    /**
+     * Whether a plan transition would accept this goal under this focus: directly, or behind its
+     * required unit opening, which the transition then starts while it keeps the goal for the return.
+     */
+    @Transactional(readOnly = true)
+    public boolean learningPlanTransitionAccepts(String skillpilotId, String requestedGoalId, List<String> focusGoalIds) {
+        if (requestedGoalId == null || requestedGoalId.isBlank() || focusGoalIds == null || focusGoalIds.isEmpty()) {
+            return false;
+        }
+        Learner learner = getLearner(skillpilotId);
+        if (learner.getSelectedCurriculum() == null || learner.getSelectedCurriculum().isBlank()) return false;
+        return isLearningPlanEntryEligible(skillpilotId, resolveLearningPlanEntry(learner,
+                getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum()),
+                requestedGoalId, focusGoalIds));
+    }
 
     /**
      * Acquires the learner write lock before a plan transition. An unrelated
@@ -14841,16 +15005,23 @@ public class LearnerService {
             LearnerPlanningScopeResponse scope = getPlanningScope(
                     learner.getSkillpilotId(),
                     landscapeId);
+            // A backup restores a plan that existed. It is read like a stored plan: goals the
+            // catalog retains only as history leave it, and goals a regrouping moved to another
+            // section stay in their blocks.
+            List<LearnerLearningPlanApi.Block> restorableBlocks = LearnerLearningPlanService.withoutRetiredGoals(
+                    portable.blocks(), retiredGoalIds(landscapeId));
+            Map<Set<String>, Set<String>> capturedSelections = learningPlanCapturedSelections(restorableBlocks);
             List<LearnerLearningPlanApi.Block> normalizedBlocks =
                     LearnerLearningPlanService.normalizeBlocks(
-                            portable.blocks(),
+                            restorableBlocks,
                             scope,
                             Set.of(),
                             true);
             validateLearningPlanBlockFoci(
                     learner.getSkillpilotId(),
                     landscapeId,
-                    normalizedBlocks);
+                    normalizedBlocks,
+                    capturedSelections);
             normalizedBlocks = orderLearningPlanBlocksByPrerequisites(
                     learner.getSkillpilotId(),
                     normalizedBlocks);
@@ -14861,7 +15032,8 @@ public class LearnerService {
             plan.setScopeFingerprint(learningPlanFingerprint(
                     learner.getSkillpilotId(),
                     landscapeId,
-                    normalizedBlocks));
+                    normalizedBlocks,
+                    capturedSelections));
             plan.setRevision(1);
             plan.setPlanLabel(optionalPortableText(
                     portable.planLabel(),

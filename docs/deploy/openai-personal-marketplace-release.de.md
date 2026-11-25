@@ -1,6 +1,64 @@
 # SkillPilot ChatGPT Desktop Beta: Git-Marketplace und Updates
 
-## Aktueller neutraler Plugin-Kandidat — 19. Oktober 2026
+## Externer Betatest mit SkillPilot Coach 1.2.0
+
+Externe Tester verwenden ihr eigenes ChatGPT-Konto mit Marketplace-Import in
+der Windows-App. **Work** kann als Installationsansicht dienen. Für den Lernstart
+wechseln sie in derselben App zu **Codex → Dieser Computer**. Der Product Owner
+hat den regulären Backend-Rollout nach erfolgreicher CI freigegeben. Den
+aktuellen Stand halten der
+[Ablauf mit Testnachweisen](openai-beta-distribution-assessment.md) und die
+[deutsche Installationsanleitung](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme) fest.
+
+### Windows-Anmeldung bei fehlendem Anmeldeknopf { #windows-oauth-fallback }
+
+Im Windows-Test mit **SkillPilot Coach 1.2.0** trug der Git-Import den
+MCP-Server `skillpilot-coach` in Work ein. In der App war kein Anmeldeknopf
+sichtbar. Die mitgelieferte Windows-CLI schloss die OAuth-Anmeldung mit
+automatischer Client-Registrierung (CIMD) erfolgreich ab.
+
+Wenn der Server schon eingetragen ist und der Anmeldeknopf fehlt, öffnen Sie
+**Windows PowerShell**. Ist `codex` auf dem `PATH` verfügbar, führen Sie den
+folgenden Befehl aus.
+
+```powershell
+codex mcp login skillpilot-coach --oauth-client-registration auto
+```
+
+Andernfalls rufen Sie die CLI aus der installierten Windows-App auf.
+
+```powershell
+$app = Get-AppxPackage -Name OpenAI.Codex
+$codex = Join-Path $app.InstallLocation 'app\resources\codex.exe'
+& $codex mcp login skillpilot-coach --oauth-client-registration auto
+```
+
+Bestätigen Sie im Browser die SkillPilot-Freigabe für Lese- und Schreibzugriff
+auf die separate Lernsitzung und für das Aufrechterhalten der Verbindung
+(`offline_access`). Der Windows-Test bestätigte die Anmeldung mit Exit-Code `0`.
+Starten Sie anschließend den lokalen Codex-Chat wie unten beschrieben.
+
+### Lernstart im lokalen Codex-Chat { #windows-local-codex }
+
+Wählen Sie in der ChatGPT-Desktop-App zuerst **Modus wechseln → Codex** und
+danach **Lokalen Codex-Chat öffnen** neben der Startnachricht in SkillPilot.
+Der Link öffnet einen Entwurf mit dem Git-Plugin-Chip und einem Beispieltext.
+Wählen Sie ein lokales Projekt, etwa in einem eigenen leeren Ordner, und
+**Dieser Computer**. Behalten Sie den Chip **SkillPilot Coach** und ersetzen
+Sie den Beispieltext durch die vollständige, frisch vorbereitete Startnachricht.
+Der App-Link enthält ausschließlich den Plugin-Verweis und den Beispieltext.
+Das Lernen erfolgt im Chat. [Tester-Anleitung](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme)
+
+Am **25. November 2026 um 05:13:59 UTC** rief der sichtbare Codex-Chat mit
+dem Git-Paket **1.2.0** `get_skillpilot_context` gegen das damalige Backend mit
+14 Tools erfolgreich auf. Im Chat waren das Tool-Ergebnis, das Lernziel und
+vier Lernwege sichtbar. Dieser Vorabtest gilt für den Lernstart. Eine Abnahme
+des aktualisierten Backends und weiterer Lernschritte erfolgt separat.
+
+**Work** ist ein separater Testpfad. Im aktuellen Work-Test erhielt der
+MCP-Aufruf `401`. Ein erfolgreicher Work-Toolaufruf steht weiterhin aus.
+
+## Neutraler Plugin-Kandidat vom 19. Oktober 2026
 
 Die aktuelle bearbeitbare Quelle ist `ai/openai plugin/skillpilot-coach/`:
 **SkillPilot Coach**, Identität `skillpilot-coach`, Paket **1.1.3**, exakter MCP-Endpunkt
@@ -282,9 +340,9 @@ Beides beweist nicht, dass der gemeldete Vorfall auf dem Windows-Host vollständ
 selbst steht die kandidatenspezifische Zwei-Bilder-Host-Abnahme noch aus; dessen
 lokale Implementierung dient als Vergleichsbasis, nicht als ChatGPT-Host-Nachweis.
 
-Für den Rollout durch den Owner sind das passende Backend samt Ressource zu deployen und das Git-Plugin
-auf **1.1.2** zu aktualisieren, anschließend die installierte Version zu prüfen und ein frischer ChatGPT-Start
-in **Work** zu verwenden. Zu prüfen sind: erstes Bild, gespeicherter Erfolg, ausdrückliche Zustimmung
+Der historische Nachtest für **1.1.2** sah das passende Backend samt Ressource,
+die Prüfung der installierten Version und einen frischen Start in **Work** vor.
+Zu prüfen waren das erste Bild, der gespeicherte Erfolg, die ausdrückliche Zustimmung
 zum Fortfahren und das nächste Bild im selben Voice-Chat. Fehlt das Bild weiterhin,
 ist zwischen einem fehlenden Renderer-Aufruf und einem erfolgreichen Renderer-Aufruf,
 dessen UI nie sichtbar wird, zu unterscheiden. Halten Sie sämtliche Tool-/Status-Nachweise bereinigt; nehmen Sie
@@ -329,8 +387,8 @@ Claude-/OpenAI-Differenzialvertrag sowie **65 Release-/Kandidaten-/Marketplace-T
 Versionierung, historische Review-Nachweise und die exakte Prüfung des unveröffentlichten Entwurfs
 waren ebenfalls erfolgreich. Diese Prüfungen sind lokal und stellen keine neue Desktop-Abnahme dar.
 
-Nutzen Sie nach dem Backend-Rollout durch den Owner einen frisch über SkillPilot gestarteten Work-Chat mit
-dem bereits veröffentlichten Plugin **1.1.2**. Prüfen Sie das erste Bild, den gespeicherten Erfolg,
+Für einen gezielten Nachtest dieses historischen Voice-Vorfalls mit **1.1.2**
+verwenden Sie einen frischen Work-Chat. Prüfen Sie das erste Bild, den gespeicherten Erfolg,
 die ausdrückliche Zustimmung zum Fortfahren und das nächste Bild. Schlägt dies weiterhin fehl, bewahren Sie
 ausschließlich bereinigte Tool-/Status-Nachweise auf: ob der frische Kontext ein
 Bild angeboten hat, ob `render_skillpilot_goal_visualization` erfolgreich lief und
@@ -359,6 +417,9 @@ der lokale Folge-Build `08030bd956b6` als aktiv ausweist.
 Halten Sie das vom Owner berichtete sichtbare Ergebnis strikt getrennt von jedem Server-Erfolg.
 
 ## Tester-Durchlauf: Windows ChatGPT Desktop
+
+Dieser Abschnitt dokumentiert den ursprünglichen Test mit **1.1.2**. Für
+**1.2.0** gilt der [Lernstart im lokalen Codex-Chat](#windows-local-codex).
 
 1. Fügen Sie unter **Plugins → Hinzufügen → Marketplace hinzufügen** die Adresse
    `https://github.com/enpasos/skillpilot-chatgpt-marketplace` hinzu.

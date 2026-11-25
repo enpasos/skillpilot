@@ -26,6 +26,8 @@ import com.skillpilot.backend.api.MasteryUpdateResponse;
 import com.skillpilot.backend.api.MemoryPracticeCard;
 import com.skillpilot.backend.api.MemoryPracticeProgress;
 import com.skillpilot.backend.api.MemoryPracticeResponse;
+import com.skillpilot.backend.api.MemoryPracticeReviewRequest;
+import com.skillpilot.backend.api.MemoryPracticeStartRequest;
 import com.skillpilot.backend.api.OrientationOutlook;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.PersonalizationRequest;
@@ -52,6 +54,8 @@ import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1SessionStateException;
 import com.skillpilot.backend.service.OpenAiDeLearningSessionRequiredException;
+import com.skillpilot.backend.service.srs.SrsCardStepFacts;
+import com.skillpilot.backend.service.srs.UnitCheckStart;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import io.modelcontextprotocol.common.McpTransportContext;
 import io.modelcontextprotocol.json.jackson3.JacksonMcpJsonMapperSupplier;
@@ -124,7 +128,8 @@ class OpenAiDeCoachMcpContractTest {
     private static final List<String> HISTORICAL_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S = List.of(
             "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852",
             "7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962",
-            "3665591f88892a89ce22bec7076e7ed7727db8b9360b438f1e1345e9a01bf7cb");
+            "3665591f88892a89ce22bec7076e7ed7727db8b9360b438f1e1345e9a01bf7cb",
+            "aae01ed523f6268fd5948db66879176049e99140e7bda48d8891a425a89fe2eb");
     private static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_URI =
             "ui://skillpilot/coach/v1/1.0.0/goal-visualization.html";
     private static final String LEGACY_GOAL_VISUALIZATION_ARTIFACT_SHA256 =
@@ -333,6 +338,7 @@ class OpenAiDeCoachMcpContractTest {
                 .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
                         .containsOnlyKeys(
                                 "goalId",
+                                "practiceScopeId",
                                 OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
                                 OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION));
         assertThat(spec(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD)
@@ -382,7 +388,8 @@ class OpenAiDeCoachMcpContractTest {
                         objectMapper.valueToTree(OpenAiDeV1McpContractAdapter.CLIENT_REQUEST_ID));
         assertThat(spec(OpenAiDeV1McpContractAdapter.START_RECALL).tool().inputSchema().get("properties"))
                 .isInstanceOfSatisfying(Map.class, properties -> assertThat(properties)
-                        .containsOnlyKeys(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID));
+                        .containsOnlyKeys(OpenAiDeV1McpContractAdapter.LEARNING_SESSION_ID,
+                                "practiceScopeId", OpenAiDeV1McpContractAdapter.EXPECTED_STATE_VERSION));
         JsonNode recallStartOutputSchema = objectMapper.valueToTree(
                 spec(OpenAiDeV1McpContractAdapter.START_RECALL).tool().outputSchema());
         assertThat(recallStartOutputSchema.at("/properties").has("batchCapability")).isTrue();
@@ -754,7 +761,7 @@ class OpenAiDeCoachMcpContractTest {
         Map<String, Set<String>> toolStrings = Map.ofEntries(
                 Map.entry(OpenAiDeV1McpContractAdapter.GET_CONTEXT, Set.of()),
                 Map.entry(OpenAiDeV1McpContractAdapter.RENDER_GOAL_VISUALIZATION, Set.of("goalId")),
-                Map.entry(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE, Set.of("goalId")),
+                Map.entry(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE, Set.of("goalId", "practiceScopeId")),
                 Map.entry(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
                         Set.of("goalId", "cardId", "rating", "reviewCapability", "clientRequestId")),
                 Map.entry(OpenAiDeV1McpContractAdapter.GET_NAVIGATION, Set.of("target")),
@@ -762,7 +769,7 @@ class OpenAiDeCoachMcpContractTest {
                 Map.entry(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL, Set.of("goalId", "clientRequestId")),
                 Map.entry(OpenAiDeV1McpContractAdapter.SET_MASTERY,
                         Set.of("goalId", "orientationPathId", "evaluationCapability", "clientRequestId")),
-                Map.entry(OpenAiDeV1McpContractAdapter.START_RECALL, Set.of()),
+                Map.entry(OpenAiDeV1McpContractAdapter.START_RECALL, Set.of("practiceScopeId")),
                 Map.entry(OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS, Set.of("batchCapability")),
                 Map.entry(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, Set.of("gradingCapability")),
                 Map.entry(OpenAiDeV1McpContractAdapter.GET_EXAM_EVALUATION, Set.of("goalId")),
@@ -1279,7 +1286,7 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("alternative methods")
                 .contains("explicit format")
                 .contains("follow-up questions")
-                .contains("show every returned question in order, and wait for all answers")
+                .containsIgnoringCase("show every returned question in order, and wait for all answers")
                 .contains("Load all expected answers once with batchCapability")
                 .contains("one ordered assessment per answer in one atomic call with gradingCapability")
                 .contains("Never invent counts, expose answers early, use per-card tools, grade from memory")
@@ -1341,8 +1348,8 @@ class OpenAiDeCoachMcpContractTest {
                 .contains("If no approved link is available, do not output a link")
                 .contains("never with dollar delimiters")
                 .contains("activeGoal.exam.hasImage=true")
-                .contains("activeGoal.cockpitUrl verbatim")
-                .contains("do not invent or describe it")
+                .contains("show the supplied figures in chat at their authored positions")
+                .contains("activeGoal.exam.missingRequiredImage=true")
                 .contains("matching fixed sentence from the conversation language")
                 .contains("Öffne SkillPilot unter https://skillpilot.com/, schließe dort die Lernkonfiguration "
                         + "ab, wähle „Lernen starten“ und verwende die vorbereitete Startnachricht in einem neuen "
@@ -2341,6 +2348,134 @@ class OpenAiDeCoachMcpContractTest {
     }
 
     @Test
+    void unitPracticePublishesPrivateCardsAndBindsEachRatingToItsIssuedUnit() throws Exception {
+        String deck = "memory-public-id";
+        String unit = "unit-vectors";
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(visualizationState());
+        when(coachTools.getCardStepFacts(LEARNER_ID, "de")).thenReturn(
+                new SrsCardStepFacts(unit, List.of(deck), 2, 2, false, deck, null, false, "offer"));
+        when(coachTools.startMemoryPractice(LEARNER_ID, "de", new MemoryPracticeStartRequest(deck, unit)))
+                .thenReturn(memoryPracticeBatch("card-public-id"));
+        when(coachTools.reviewMemoryPracticeCard(LEARNER_ID, "de",
+                new MemoryPracticeReviewRequest(deck, "card-public-id", "known", unit)))
+                .thenReturn(new MemoryPracticeResponse("complete", "Complete", deck, "Lernkarten · Vektoren",
+                        new MemoryPracticeProgress(2, 0, 2), List.of()));
+
+        var wrongUnit = call(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                Map.of("goalId", deck, "practiceScopeId", "foreign-unit", "expectedStateVersion", 0L));
+        assertThat(wrongUnit.isError()).isTrue();
+        verify(coachTools, never()).startMemoryPractice(any(), any(), any());
+
+        var start = call(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE,
+                Map.of("goalId", deck, "practiceScopeId", unit, "expectedStateVersion", 0L));
+        assertThat(start.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.START_MEMORY_PRACTICE, start);
+        String capability = reviewCapability(start, 0);
+        assertThat(capability).hasSizeGreaterThan(43);
+        assertThat(memoryPracticeComponent(start)).containsEntry("practiceScopeId", unit).doesNotContainKey("cockpitUrl");
+        assertThat(objectMapper.writeValueAsString(start.structuredContent()))
+                .contains(unit).doesNotContain("card-public-id", capability, "reviewCapability");
+
+        var wrongCard = call(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
+                Map.of("goalId", deck, "cardId", "foreign-card", "rating", "known", "reviewCapability", capability));
+        assertThat(wrongCard.isError()).isTrue();
+        verify(coachTools, never()).reviewMemoryPracticeCard(any(), any(), any());
+
+        var review = call(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD,
+                Map.of("goalId", deck, "cardId", "card-public-id", "rating", "known", "reviewCapability", capability));
+        assertThat(review.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD, review);
+        assertThat(memoryPracticeComponent(review)).containsEntry("practiceScopeId", unit).doesNotContainKey("cardBatch");
+        verify(coachTools).reviewMemoryPracticeCard(LEARNER_ID, "de",
+                new MemoryPracticeReviewRequest(deck, "card-public-id", "known", unit));
+        verify(coachTools, never()).setMastery(any(), any());
+    }
+
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(strings = {"unit-vectors", "another-unit", ""})
+    void unitRecallRequiresTheCurrentOfferAndKeepsItsScopeThroughAnswersAndWrite(String successorUnit) {
+        useCurrentContract();
+        String deck = "memory-public-id";
+        String nextDeck = "second-memory-public-id";
+        String unit = "unit-vectors";
+        String card = "unit-card";
+        var state = visualizationState();
+        Instant issuedAt = Instant.ofEpochMilli(Instant.now().minusSeconds(20).toEpochMilli());
+        var prompt = new VerifiedRecallPromptResponse("ready", "Ask", LEARNER_ID, deck, "Grundwissen",
+                1, 0, 1, 1, 0, null, 1, List.of(new VerifiedRecallPromptCard(card, "Was gilt?", "Formel")),
+                card, "Was gilt?", "Formel", 10, issuedAt);
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(state);
+        when(coachTools.getCardStepFacts(LEARNER_ID, "de")).thenReturn(
+                new SrsCardStepFacts(unit, List.of(deck), 0, 1, false, null, deck, false, null));
+        when(coachTools.startVerifiedRecallUnitCheck(LEARNER_ID, "de"))
+                .thenReturn(new UnitCheckStart(deck, "different-unit", prompt), new UnitCheckStart(deck, unit, prompt));
+        when(coachTools.getVerifiedRecallAnswersBatch(eq(LEARNER_ID), eq("de"), any(), eq(unit)))
+                .thenReturn(new VerifiedRecallBatchAnswerResponse("Grade", deck,
+                        List.of(new VerifiedRecallBatchAnswerCard(card, "Was gilt?", "Die Sollantwort.", "Formel"))));
+        when(coachTools.recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), any(), eq(unit)))
+                .thenAnswer(invocation -> {
+                    when(coachTools.getCoachStateRevision(LEARNER_ID)).thenReturn(1L);
+                    when(coachTools.getCardStepFacts(LEARNER_ID, "de")).thenReturn(successorUnit.isEmpty()
+                            ? SrsCardStepFacts.none()
+                            : new SrsCardStepFacts(successorUnit, List.of(nextDeck), 0, 1, false, null, nextDeck, false, null));
+                    return new VerifiedRecallBatchResultResponse(List.of(new VerifiedRecallBatchSavedResult(card, true)),
+                            1, 0, false, null, null, state);
+                });
+        org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
+                .when(sessionCoordinator).write(any(), any(), anyLong(), any(), any(), any());
+        Map<String, Object> action = Map.of("practiceScopeId", unit, "expectedStateVersion", 0L);
+
+        var stale = call(OpenAiDeV1McpContractAdapter.START_RECALL,
+                Map.of("practiceScopeId", unit, "expectedStateVersion", 1L));
+        assertThat(stale.isError()).isTrue();
+        verify(coachTools, never()).startVerifiedRecallUnitCheck(any(), any());
+        assertThat(call(OpenAiDeV1McpContractAdapter.START_RECALL, action).isError()).isTrue();
+        var start = call(OpenAiDeV1McpContractAdapter.START_RECALL, action);
+        assertThat(start.isError()).isFalse();
+        String issued = structured(start, OpenAiDeV1McpContractAdapter.RecallPromptResult.class).batchCapability();
+        var answers = call(OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS, Map.of("batchCapability", issued));
+        assertThat(answers.isError()).isFalse();
+        String grading = structured(answers, OpenAiDeV1McpContractAdapter.RecallAnswersResult.class).gradingCapability();
+        var saved = call(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS,
+                Map.of("gradingCapability", grading, "assessments", List.of(Map.of("passed", true))));
+        assertThat(saved.isError()).isFalse();
+        assertMatchesOutputSchema(OpenAiDeV1McpContractAdapter.RECORD_RECALL_RESULTS, saved);
+        var receipt = structured(saved, OpenAiDeV1McpContractAdapter.RecallResultsReceipt.class);
+        assertThat(receipt.continuation().action()).isEqualTo("returnToUnitContext");
+        assertThat(receipt.context().activeGoal().goalId()).isEqualTo(state.activeGoal().id());
+        assertThat(receipt.continuation().toolCall()).isNull();
+        assertThat(receipt.continuation().instruction()).contains("Bei einer Pause bestätige nur den gespeicherten Teil");
+        if (unit.equals(successorUnit)) {
+            assertThat(receipt.continuation().instruction())
+                    .contains("Bei vereinbartem Weitergehen", "context.cardStep.checkAction", "starte keinen neuen Stapel");
+            var check = objectMapper.valueToTree(receipt.context().cardStep()).path("checkAction");
+            assertThat(check.path("tool").asText()).isEqualTo(OpenAiDeV1McpContractAdapter.START_RECALL);
+            assertThat(check.at("/arguments/practiceScopeId").asText()).isEqualTo(unit);
+            assertThat(check.at("/arguments/expectedStateVersion").asLong()).isEqualTo(1L);
+        } else {
+            assertThat(receipt.continuation().instruction())
+                    .contains("zur offenen Frage oder zum aktiven Lernziel")
+                    .doesNotContain("context.cardStep.checkAction");
+        }
+        verify(coachTools).getVerifiedRecallAnswersBatch(LEARNER_ID, "de",
+                new VerifiedRecallBatchAnswerRequest(deck, 10, List.of(card), issuedAt), unit);
+        var request = ArgumentCaptor.forClass(VerifiedRecallBatchResultRequest.class);
+        verify(coachTools).recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), request.capture(), eq(unit));
+        assertThat(request.getValue().cardIds()).containsExactly(card);
+        verify(coachTools, never()).startVerifiedRecallBatch(any(), any(), any(), any(Integer.class));
+    }
+
+    @Test
+    void requestingUnitCheckWhileMemoryGoalIsActiveDoesNotStartDeckRecall() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(memoryState("memory-public-id"));
+        var result = call(OpenAiDeV1McpContractAdapter.START_RECALL,
+                Map.of("practiceScopeId", "different-unit", "expectedStateVersion", 0L));
+        assertThat(result.isError()).isTrue();
+        verify(coachTools, never()).startVerifiedRecallUnitCheck(any(), any());
+        verify(coachTools, never()).startVerifiedRecallBatch(any(), any(), any(), any(Integer.class));
+    }
+
+    @Test
     void recallWaitingWordingIsTruthfulForASameDayBlockAndForVerifiedReleasedCards() {
         // Issue #85: "waiting" without nextEligibleAt means every released card is verified;
         // nothing continues tomorrow, and the memory goal stays open in both cases.
@@ -3261,8 +3396,8 @@ class OpenAiDeCoachMcpContractTest {
                 .orElseThrow();
         assertThat(navigationTool.description())
                 .contains(
-                        "only after the learner explicitly requests a change",
-                        "Never call it for a normal start, continuation, or resumption",
+                        "after the learner explicitly requests a change",
+                        "Use the full context for a normal start, continuation, or resumption",
                         "focus clusters, never next learning goals",
                         "learner-facing ancestors come first",
                         "nearest broader focus first",

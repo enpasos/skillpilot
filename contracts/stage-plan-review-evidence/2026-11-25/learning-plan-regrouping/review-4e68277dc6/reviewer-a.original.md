@@ -1,0 +1,11 @@
+Gesamturteil: ACCEPT
+
+1. Gewöhnlicher Handoff nach Mastery und unveränderter Exam-Handoff: ACCEPT.
+
+Im gewöhnlichen Zweig verwendet der Handoff jetzt denselben `resolveLearningPlanEntry` und dieselbe Zulässigkeitsprüfung wie der reguläre Übergangsschreiber (`backend/src/main/java/com/skillpilot/backend/service/LearnerService.java`, Zeilen 10630–10640 und 11628–11636). Der gemeinsame Resolver bestimmt das erforderliche Opening, den dafür gegebenenfalls erweiterten Fokus und das aktive Ziel; die gemeinsame Prüfung verlangt dieses aktive atomare Ziel in der Frontier dieses Fokus (Zeilen 11705–11725). Der Handoff speichert anschließend den aufgelösten Fokus und das aktive Ziel und parkt das angeforderte Ziel für die Rückkehr, wenn zunächst das Opening aktiv ist (Zeilen 10639–10640, 10653–10660). Im Exam-Zweig bleibt die bisherige Fokus-Erweiterung erhalten (Zeilen 10641–10648); dort bleibt `activeGoalId` beim ursprünglichen `candidate.atomicGoalId()`. Damit bleiben auch Zielsetzung und Parkentscheidung dieses Zweigs gegenüber dem gezeigten Vorzustand gleich. In dieser Korrektur ist kein Defekt erkennbar.
+
+2. Erhalt eines laufenden Ziels bei Exam-Aktivierung: ACCEPT.
+
+Nur für den Exam-Scope wird `remainsEligible` auf `learningPlanTransitionAccepts` umgestellt; die gewöhnliche Frontier-Prüfung bleibt im anderen Zweig erhalten (`backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java`, Zeilen 1573–1580). Die neue Methode prüft über genau den Resolver und die Frontier-Prüfung des Übergangsschreibers (LearnerService.java, Zeilen 11732–11740). Dadurch kann ein laufendes Ziel auch dann erhalten bleiben, wenn der Schreiber zunächst ein zulässiges erforderliches Opening aktiviert. Fehlt die Zulässigkeit des aufgelösten aktiven Ziels im aufgelösten Fokus, liefert die Methode `false`; die Änderung erweitert diesen Fall nicht zu einer Annahme. Der bestehende anschließende Umgang mit `remainsEligible` wird im Diff nicht geändert. In dieser Korrektur ist kein Defekt erkennbar.
+
+Prüfgrundlage war ausschließlich der bereitgestellte Diff `git diff a6a1ea5912 4e68277dc6 -- backend/src/main AGENTS.md`. Dieses Urteil enthält keinen Test- oder Laufzeitnachweis. Keine sachfremden Anmerkungen.

@@ -1,0 +1,4 @@
+allprojects { afterEvaluate {
+    sourceSets.test.java.srcDir('/tmp/e1-regroup-r2-math/probe')
+    tasks.matching { it.name == 'test' }.configureEach { include '**/MathRegroupTest.class' }
+} }

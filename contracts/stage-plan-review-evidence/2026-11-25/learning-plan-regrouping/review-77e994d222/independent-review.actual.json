@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "reviewedCommit": "77e994d22274596fb010ac2abd5ade71abfff8a2",
+  "comparedWith": "b784ed837abdf26dc5148e9b55baebc821947538",
+  "reviewedAt": "2026-11-25T04:45:54+01:00",
+  "disposition": "REQUEST_CHANGES",
+  "reviews": [
+    {
+      "reviewer": "a",
+      "modelId": "gpt-6.1-sol",
+      "reasoningEffort": "ultra",
+      "source": {
+        "path": "reviewer-a.original.md",
+        "sha256": "5d9a38b57c4a4266d0504fb3e369720089d904535618f787f362a799b0b461da"
+      },
+      "verdict": "REQUEST_CHANGES"
+    },
+    {
+      "reviewer": "b",
+      "modelId": "gpt-6.2-astra",
+      "reasoningEffort": "ultra",
+      "source": {
+        "path": "reviewer-b.original.md",
+        "sha256": "9ffd2ac3a2c4ae1f649dad3a0ffa3e2011479847a79080cd58d1b2f54137327e"
+      },
+      "verdict": "REQUEST_CHANGES"
+    }
+  ],
+  "questions": [
+    {
+      "question": 1,
+      "verdict": "PARTIAL"
+    },
+    {
+      "question": 2,
+      "verdict": "CORRECT_EDIT_RETENTION"
+    },
+    {
+      "question": 3,
+      "verdict": "CORRECT_FIXTURE_AND_ATOM_FOCUS"
+    },
+    {
+      "question": 4,
+      "verdict": "CONFIRM_EFFECTIVE_CONTENT_WITH_IMPORT_NORMALIZATION"
+    },
+    {
+      "question": 5,
+      "verdict": "REJECT_CURRENT_CONTINUATION"
+    },
+    {
+      "question": 6,
+      "verdict": "PROPOSE_SEPARATE_OUTDATED_STORAGE"
+    }
+  ],
+  "requiredCorrections": [
+    "Keep retained ordinary plan atoms reachable before optional subject fallback under both pilot settings, through due-work, today and continuation.",
+    "Limit edit-time exceptions to previously captured focus/atom associations and restore the strict rule for an unrelated atom used as a focus."
+  ],
+  "inspectionReport": {
+    "path": "review.md",
+    "sha256": "8a89a5e57af14cca714afa60bf1ed84e5ecd00ccac3dfdbb2aa3147237b5c724"
+  },
+  "runtime": {
+    "path": "runtime.actual.json",
+    "sha256": "9d89158a1693f35bebcb8b76c6110ae2bc91cadd2d7abab02d65a52c12d9c092"
+  },
+  "probeSources": [
+    {
+      "path": "observation.java",
+      "sha256": "fec8500fcee77404d948c8c9914e4fedc255196f93c5126821e22670e0fc3f14"
+    },
+    {
+      "path": "following.java",
+      "sha256": "5e5cbee29656ce61c28d94d6056000f07aa0930d4b45fad0dd0e580b3a31885e"
+    }
+  ],
+  "writeScope": "Handover evidence only."
+}

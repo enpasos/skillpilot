@@ -6,6 +6,9 @@ new exact native client and callback. The V1 host and client values below docume
 the earlier integration; they must not be copied into the new setup. Published
 V1 package bytes and their evidence remain historical records.
 
+For **SkillPilot Coach 1.2.0**, follow the [local Codex learning start on
+Windows](openai-personal-marketplace-release.md#windows-local-codex).
+
 The Product Owner authorized this integration on **24 September 2026**, after
 successfully importing and installing the `1.1.0` plugin archive in ChatGPT.
 The connection failed when **Authenticate** was selected. The desktop UI
@@ -19,8 +22,8 @@ unauthenticated MCP probe receives `401 / authentication_required` with the
 correct protected-resource challenge. These public observations establish
 available discovery and an OAuth barrier; they do not identify the deployed
 source revision or record a native OAuth exchange. After the Git **1.1.1** release and corrected
-OpenAI start, the owner confirmed that the Windows desktop route works in
-**Work**. Start the plugin learning flow in **Work**, not **Chat**.
+OpenAI start, the owner reported that the Windows desktop launch worked in
+**Work** in that test of 1.1.1.
 Installation and learning start are therefore owner-confirmed; detailed
 OAuth/tool traces, persisted progress, continuation and renewal remain separate
 acceptance evidence. The [active Git beta](openai-personal-marketplace-release.md)
@@ -172,6 +175,8 @@ client that demonstrably supplies the required certificate.
 
 ## Real-host test
 
+This procedure records the test sequence for **1.1.x**.
+
 1. In the desktop app's MCP settings, use the installed
    `skillpilot-coach-v1` entry. Leave registration at Auto (or select CIMD),
    choose **Authenticate**, and complete authorization.
@@ -185,8 +190,8 @@ client that demonstrably supplies the required certificate.
 3. Choose **Lernen mit ChatGPT vorbereiten** and confirm the existing provider
    eligibility prompt. The first-party UI calls the existing V1 launch endpoint
    once, obtaining a fresh session and an authoritative prepared message.
-4. Open **Work** in ChatGPT Desktop and copy that message into a new conversation
-   with **SkillPilot Coach v1** selected.
+4. The historical test used a new **Work** conversation in ChatGPT Desktop
+   with **SkillPilot Coach v1** selected for the prepared message.
    The message stays in component memory until copied; it is not stored in
    browser storage. A changed learner, curriculum or language clears the handoff.
 5. Verify the actual `get_skillpilot_context` call and expected session language,

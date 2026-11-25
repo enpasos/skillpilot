@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-25T05:41:44+01:00",
+  "reviewedCommit": "4e085e990ba4a05053904ee5cb34f5dd82418358",
+  "reviewedTree": "412bc705dfb5b9c5776069d8f82226c1a60db935",
+  "previousReviewedCommit": "77e994d22274596fb010ac2abd5ade71abfff8a2",
+  "incomingMainExcluded": "7669426fee4d99a0e967b5fe565a1cd5dff501e4",
+  "reviewedCorrectionCommits": [
+    "916b03da07e801d23be01e37f4a669c4974f2e8b",
+    "4e085e990ba4a05053904ee5cb34f5dd82418358"
+  ],
+  "patchSha256": "80be31a36f2591334ffa7ad7bb45e9efbce2a1ce6ab4739610109865f1cac232",
+  "disposition": "REQUEST_CHANGES",
+  "reviewers": [
+    {
+      "modelId": "gpt-6.1-sol",
+      "reasoningEffort": "ultra",
+      "reviewSession": "01a210f6-2366-73a3-848b-0e693351af6b",
+      "answer": {
+        "path": "reviewer-a.original.md",
+        "sha256": "1084dcf019618fa1ec88a201514bf0387706caad808691079fd2bb343e8e538e"
+      },
+      "providerRun": {
+        "path": "reviewer-a.run.actual.json",
+        "sha256": "930f220e845971f9790d5353ba86d99a259b412e369bca5ec1440835e8a8d77f"
+      },
+      "verdict": "REQUEST_CHANGES"
+    },
+    {
+      "modelId": "gpt-6.2-astra",
+      "reasoningEffort": "ultra",
+      "reviewSession": "01a210f6-2366-7790-ada7-629b4c144b83",
+      "answer": {
+        "path": "reviewer-b.original.md",
+        "sha256": "6f0bc087e450ed4ff64b25172d98321a69ab9f1ee011b8bc3379eab36213ecc4"
+      },
+      "providerRun": {
+        "path": "reviewer-b.run.actual.json",
+        "sha256": "2ee3b72e64a254602d8eddc67f606adbcce0754c73116c541e9abcc84b589be0"
+      },
+      "verdict": "REQUEST_CHANGES"
+    }
+  ],
+  "questions": [
+    {
+      "question": 1,
+      "decision": "PARTIAL",
+      "finding": "The real Physics case is reachable. A required ordinary post-mastery handoff in Mathematics misses a reachable goal when the whole scope prioritizes a future orientation."
+    },
+    {
+      "question": 2,
+      "decision": "CORRECT_EXAM_PACKAGE_ACTIVATION",
+      "finding": "Membership, assignments and milestones retain their stated roles. Confirmation of a previously active goal in an exam package uses the wrong frontier; activation returns 409."
+    },
+    {
+      "question": 3,
+      "decision": "CORRECT_HISTORICAL_PAIR_PROVENANCE",
+      "finding": "Two valid revisions can transfer an unproven (focus, goal) pair. Both historical and unchanged-curriculum counterexamples reproduced."
+    },
+    {
+      "question": 4,
+      "decision": "PARTIAL",
+      "finding": "Pilot and end-to-end active IDs covered on the Physics fixture. The staged-edit, divergent frontiers and package-activation counterexamples are absent."
+    }
+  ],
+  "reviewReport": {
+    "path": "review.md",
+    "sha256": "066fb023a938aa0a532c4c25fd47486db89eb24f4fe333f6f64447b3fd8e4db0"
+  },
+  "runtimeReceipts": [
+    {
+      "path": "physics/runtime.actual.json",
+      "sha256": "dc0338af6bdf72b5e95dfd612db50f72892c0d5339525e7ff71aeb4b3df0adb7"
+    },
+    {
+      "path": "physics/opening.actual.json",
+      "sha256": "8e18c67f325e3fa0fc87311f8e3383efbe5cda652699107ebb2ca2e6c556813e"
+    },
+    {
+      "path": "math/runtime.actual.json",
+      "sha256": "a0455b18cf71f9df145d850fcf310e80d482620298af40d942b090b5f0653a08"
+    }
+  ],
+  "nativeTests": {
+    "total": 14,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "observedProductDefects": 3
+  },
+  "writeScope": "Local independent review evidence. No target branch edits."
+}

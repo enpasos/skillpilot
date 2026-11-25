@@ -97,6 +97,11 @@ public class LearnerLearningPlanService {
                     .anyMatch(assignment -> assignment.option() != null);
         }
 
+        boolean hasAvailableUnitAssignment(String landscapeId) {
+            return assignmentsByLandscape.getOrDefault(landscapeId, List.of()).stream()
+                    .anyMatch(assignment -> assignment.option() != null);
+        }
+
         Set<String> waived(String landscapeId) {
             if (unavailable.contains(landscapeId)) {
                 throw conflict("Learning-plan completion calculation is currently unavailable");
@@ -424,8 +429,12 @@ public class LearnerLearningPlanService {
         boolean personalContinuationAvailable = false;
         Map<String, SubjectAggregate> subjectsWithoutPlan = new TreeMap<>();
         boolean unitBindsContinuation = fulfillment.hasAvailableUnitAssignment();
-        if (enabled && !hasExamScope(skillpilotId, subjectPlans, asOf)) {
+        boolean examBindsContinuation = enabled && hasExamScope(skillpilotId, subjectPlans, asOf);
+        boolean explicitManualSubjects = includeSubjectChoices && !Boolean.TRUE.equals(learner.getAutoPilot());
+        if (enabled && (!examBindsContinuation || explicitManualSubjects)) {
             for (String landscapeId : learners.getPersonalCurriculumSubjectIds(skillpilotId)) {
+                if (examBindsContinuation && hasExamScope(skillpilotId, subjectPlans.stream()
+                        .filter(plan -> landscapeId.equals(plan.getLandscapeId())).toList(), asOf)) continue;
                 String subjectKey = stableSubjectKey(landscapeId);
                 SubjectAggregate plannedSubject = subjectKey == null ? null : bySubject.get(subjectKey);
                 // A plan describes only its captured landscapes, even when another personal subject has the same name.
@@ -440,7 +449,7 @@ public class LearnerLearningPlanService {
                         ? firstPersonalCurriculumGoalForPlanContinuation(skillpilotId, landscapeId, subjectPlans, fulfillment)
                         : firstPersonalCurriculumGoal(skillpilotId, landscapeId, fulfillment.navigationWaived(landscapeId));
                 if (personalGoal.isPresent()) {
-                    personalContinuationAvailable |= !unitBindsContinuation;
+                    personalContinuationAvailable |= !unitBindsContinuation && !examBindsContinuation;
                     if (aggregate == null && includeSubjectChoices && subjectKey != null) {
                         aggregate = plannedSubject;
                         if (aggregate == null) {
@@ -1251,6 +1260,103 @@ public class LearnerLearningPlanService {
         return reconcileInternal(skillpilotId, request, true);
     }
 
+    public record CoachPlanGoal(String goalId, String title, String subject) { }
+
+    /** Read the ordinary choices without changing focus, plan or learner progress. */
+    @Transactional(readOnly = true)
+    public Optional<List<CoachPlanGoal>> getManualCoachPlanGoals(String skillpilotId, String locale) {
+        return manualCoachCandidates(skillpilotId, null).map(candidates -> candidates.stream()
+                .map(candidate -> new CoachPlanGoal(candidate.goal().atomicGoalId(),
+                        localizedGoalTitle(landscapeService.getGoalDefinition(candidate.goal().atomicGoalId()), locale),
+                        localizedSubjectLabel(candidate.landscapeId(), locale).orElse(null)))
+                .filter(goal -> goal.title() != null && goal.subject() != null)
+                .distinct().toList());
+    }
+
+    /** Select one previously offered target through the same plan transition as Resume. */
+    @Transactional
+    public UnifiedLearnerStateResponse selectManualCoachPlanGoal(String skillpilotId, String goalId) {
+        learners.acquireLearningPlanMutationLock(skillpilotId);
+        ManualCoachCandidate candidate = manualCoachCandidates(skillpilotId, null).orElse(List.of()).stream()
+                .filter(choice -> choice.goal().atomicGoalId().equals(goalId)).findFirst()
+                .orElseThrow(() -> conflict("Choose a goal from the current learning-plan options"));
+        var selected = candidate.goal();
+        var result = learners.applyLearningPlanTransition(skillpilotId, false, true,
+                selected.focusGoalId(), selected.requestedGoalId(), true, "LEARNING_PLAN_GOAL_SELECTED");
+        if (!result.changed() || result.state() == null) {
+            throw conflict("The chosen learning-plan goal did not change the learner state");
+        }
+        return result.state();
+    }
+
+    /** A named subject can set the next learning focus while leaving the atomic choice open. */
+    @Transactional
+    public Optional<LearnerLearningPlanApi.TransitionResponse> focusManualCoachPlanSubject(
+            String skillpilotId, String landscapeId) {
+        learners.acquireLearningPlanMutationLock(skillpilotId);
+        var manual = manualCoachCandidates(skillpilotId, landscapeId);
+        if (manual.isEmpty()) return Optional.empty();
+        List<ManualCoachCandidate> choices = manual.get();
+        if (choices.isEmpty()) throw conflict("No current goal choices for the requested subject");
+        List<String> focus = choices.stream().map(candidate -> candidate.goal().atomicGoalId())
+                .filter(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id)))
+                .distinct().toList();
+        if (focus.isEmpty()) {
+            // A subject can have only foreign prerequisites on its frontier. Persist a target in the
+            // named subject so the next context still resolves the subject that the learner chose.
+            var targets = learners.getPersonalCurriculumAtomicTargetsByLandscape(skillpilotId)
+                    .getOrDefault(landscapeId, List.of());
+            if (targets.isEmpty()) throw conflict("The requested subject has no current learning focus");
+            focus = List.of(targets.getFirst());
+        }
+        var result = learners.applyLearningPlanScopeTransition(skillpilotId, false, true,
+                focus, null, true, "LEARNING_PLAN_SUBJECT_SWITCH");
+        return Optional.of(new LearnerLearningPlanApi.TransitionResponse(null, null, landscapeId,
+                null, null, result.changed(), result.state()));
+    }
+
+    private Optional<List<ManualCoachCandidate>> manualCoachCandidates(String skillpilotId, String namedLandscape) {
+        Learner learner = learners.getLearner(skillpilotId);
+        if (Boolean.TRUE.equals(learner.getAutoPilot())
+                || !com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner)) {
+            return Optional.empty();
+        }
+        Map<String, Double> mastery = learners.getMastery(skillpilotId);
+        String activeId = learner.getActiveGoalId();
+        if (namedLandscape == null && activeId != null && !activeId.isBlank()
+                && mastery.getOrDefault(activeId, 0.0) < MASTERY_THRESHOLD) return Optional.empty();
+        List<LearnerLearningPlan> currentPlans = plans.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId);
+        LocalDate asOf = LocalDate.now(clock.withZone(PLAN_ZONE));
+        List<String> curriculumSubjects = learners.getPersonalCurriculumSubjectIds(skillpilotId);
+        String subjectFocus = namedLandscape == null
+                ? learners.getStoredLearningPlanFocusSubject(learner).filter(curriculumSubjects::contains).orElse(null)
+                : namedLandscape;
+        List<String> subjects = subjectFocus == null ? curriculumSubjects
+                : curriculumSubjects.contains(subjectFocus) ? List.of(subjectFocus) : List.of();
+        List<LearnerLearningPlan> bindingPlans = subjectFocus == null ? currentPlans
+                : currentPlans.stream().filter(plan -> subjectFocus.equals(plan.getLandscapeId())).toList();
+        PlanFulfillment fulfillment = planFulfillment(skillpilotId, currentPlans, mastery);
+        boolean unitBindsChoices = subjectFocus == null ? fulfillment.hasAvailableUnitAssignment()
+                : fulfillment.hasAvailableUnitAssignment(subjectFocus);
+        if (hasExamScope(skillpilotId, bindingPlans, asOf) || unitBindsChoices) return Optional.empty();
+
+        Map<String, ManualCoachCandidate> candidates = new LinkedHashMap<>();
+        // The schedule's current first recommendation still leads the display. Eligible
+        // alternatives use the same personal subject frontier as ordinary plan fallback.
+        var relevantPlans = bindingPlans.stream().filter(plan -> subjects.contains(plan.getLandscapeId())).toList();
+        firstCandidateAcrossPlans(skillpilotId, relevantPlans, asOf, mastery, false, true, true, fulfillment)
+                .ifPresent(candidate -> candidates.put(candidate.dueGoal().atomicGoalId(),
+                        new ManualCoachCandidate(candidate.plan().getLandscapeId(), candidate.dueGoal())));
+        for (String subject : subjects) {
+            for (DueGoal goal : personalCurriculumGoalsForPlanContinuation(skillpilotId, subject, currentPlans, fulfillment)) {
+                candidates.putIfAbsent(goal.atomicGoalId(), new ManualCoachCandidate(subject, goal));
+            }
+        }
+        return Optional.of(List.copyOf(candidates.values()));
+    }
+
+    private record ManualCoachCandidate(String landscapeId, DueGoal goal) { }
+
     /** Subject-name resolution has already been authorized by the coach facade. */
     @Transactional
     public LearnerLearningPlanApi.TransitionResponse switchPersonalCurriculumSubject(
@@ -1471,14 +1577,20 @@ public class LearnerLearningPlanService {
                 scope,
                 capturedAtomicIds(existingBlocks), false,
                 blocks -> applySectionAssessmentPolicy(learners, learner, landscapeId, blocks, false));
-        learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks);
+        // Editing keeps a goal the stored plan had captured in a block with the same sections,
+        // also where a regrouping moved it out of them. A newly selected goal and a block with
+        // other sections are checked strictly.
+        Map<Set<String>, Set<String>> capturedSelections =
+                LearnerService.learningPlanCapturedSelections(existingBlocks);
+        learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks, capturedSelections);
         normalizedBlocks = learners.orderLearningPlanBlocksByPrerequisites(
                 skillpilotId,
                 normalizedBlocks);
         String fingerprint = learners.learningPlanFingerprint(
                 skillpilotId,
                 landscapeId,
-                normalizedBlocks);
+                normalizedBlocks,
+                capturedSelections);
         return new PreparedPlan(
                 learner,
                 landscapeId,
@@ -1548,16 +1660,27 @@ public class LearnerLearningPlanService {
         }
         List<PlanGoalCandidate> candidates = new ArrayList<>();
         for (LearnerLearningPlan plan : activatedPlans) {
-            if (!learningScope(skillpilotId, plan.getLandscapeId(), readBlocks(plan),
-                    LocalDate.now(clock.withZone(PLAN_ZONE)), false).goalIds().contains(activeGoalId)) continue;
+            var scope = learningScope(skillpilotId, plan.getLandscapeId(), readBlocks(plan),
+                    LocalDate.now(clock.withZone(PLAN_ZONE)), false);
+            if (!scope.goalIds().contains(activeGoalId)) continue;
             for (LearnerLearningPlanApi.Block block : readBlocks(plan)) {
                 if (block.isActive() && block.isAtomicLearning()
                         && block.atomicGoalIds() != null
                         && block.atomicGoalIds().contains(activeGoalId)) {
-                    String focusGoalId = runtimeFocusGoalId(block, activeGoalId);
-                    boolean remainsEligible = learners.getUncompactedRichFrontierForFocus(
+                    // A goal that a regrouping moved out of its block's section runs under its own focus.
+                    boolean ownFocus = block.focusGoalIds().isEmpty() || isOutsideBlockFocus(block, activeGoalId,
+                            learners.getLearningPlanFocusAtomicGoalIds(
+                                    skillpilotId, plan.getLandscapeId(), block.focusGoalIds()));
+                    String focusGoalId = ownFocus ? activeGoalId : runtimeFocusGoalId(block, activeGoalId);
+                    // An exam binds the whole selected scope, and the activation writes under it. The
+                    // goal is kept exactly if that write accepts it: directly, or behind a required unit
+                    // opening, which the write starts while it keeps the goal for the return. Otherwise
+                    // the exam's next goal is chosen.
+                    boolean remainsEligible = "exam".equals(scope.kind())
+                            ? learners.learningPlanTransitionAccepts(skillpilotId, activeGoalId, scope.goalIds())
+                            : learners.getUncompactedRichFrontierForFocus(
                                     skillpilotId,
-                                    block.focusGoalIds().isEmpty() ? List.of(activeGoalId) : block.focusGoalIds())
+                                    ownFocus ? List.of(activeGoalId) : block.focusGoalIds())
                             .stream()
                             .filter(goal -> "atomic".equals(goal.type()))
                             .anyMatch(goal -> activeGoalId.equals(goal.id()));
@@ -1599,6 +1722,8 @@ public class LearnerLearningPlanService {
         Map<String, Map<String, LocalDate>> datesBySubject = new LinkedHashMap<>();
         Set<String> unavailableSubjects = new HashSet<>();
         boolean examBound = hasExamScope(skillpilotId, candidatePlans, asOf);
+        boolean unitBindsCandidates = candidatePlans.stream()
+                .anyMatch(plan -> fulfillment.hasAvailableUnitAssignment(plan.getLandscapeId()));
         Map<String, Instant> completions = periodBasis == PeriodBasis.WEEK
                 ? learners.getGoalCompletionsBetween(skillpilotId, periodStart, periodEnd)
                 : learners.getGoalCompletionsOnDate(skillpilotId, asOf);
@@ -1649,12 +1774,12 @@ public class LearnerLearningPlanService {
                     ? firstEligibleDueGoal(blocks, periodEnd, mastery, waived, ignored -> frontierIds,
                             (goalId, ignored) -> learners.getRequiredUnitOrientationGoalIdForFocus(
                                     skillpilotId, goalId, scope.goalIds()), scopeIds::contains)
-                    : firstEligibleDueGoal(skillpilotId, blocks, periodEnd, mastery, waived);
+                    : firstEligibleDueGoal(skillpilotId, plan.getLandscapeId(), blocks, periodEnd, mastery, waived);
             if (due.isPresent()) {
                 // With explicit authorization, an earlier open goal keeps its priority
                 // even when advance work has already covered this subject's quota.
                 candidates.add(new PlanGoalCandidate(plan, due.get()));
-            } else if (allowExtra && !fulfillment.hasAvailableUnitAssignment()) {
+            } else if (allowExtra && !unitBindsCandidates) {
                 firstScopeContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery, keepBinding, fulfillment)
                         .ifPresent(goal -> furtherLearning.add(new PlanGoalCandidate(plan, goal)));
             }
@@ -1814,6 +1939,7 @@ public class LearnerLearningPlanService {
 
     private Optional<DueGoal> firstEligibleDueGoal(
             String skillpilotId,
+            String landscapeId,
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf,
             Map<String, Double> mastery, Set<String> waived) {
@@ -1832,7 +1958,8 @@ public class LearnerLearningPlanService {
                         .map(FrontierGoal::id)
                         .collect(java.util.stream.Collectors.toSet()),
                 (goalId, focusIds) -> learners.getRequiredUnitOrientationGoalIdForFocus(skillpilotId, goalId, focusIds),
-                ignored -> true, preparation);
+                ignored -> true, preparation,
+                focusGoalIds -> learners.getLearningPlanFocusAtomicGoalIds(skillpilotId, landscapeId, focusGoalIds));
     }
 
     static void collectStudyPreparation(Map<String, List<String>> preparation, FrontierGoal goal) {
@@ -1842,14 +1969,24 @@ public class LearnerLearningPlanService {
     }
 
     private Optional<DueGoal> firstPersonalCurriculumGoal(String skillpilotId, String landscapeId, Set<String> waived) {
+        return personalCurriculumGoals(skillpilotId, landscapeId, waived).findFirst();
+    }
+
+    private java.util.stream.Stream<DueGoal> personalCurriculumGoals(String skillpilotId, String landscapeId, Set<String> excluded) {
         return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
-                .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy() && !waived.contains(goal.id()))
-                .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
+                .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy() && !excluded.contains(goal.id()))
+                .map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
     }
 
     private Optional<DueGoal> firstPersonalCurriculumGoalForPlanContinuation(
             String skillpilotId, String landscapeId, List<LearnerLearningPlan> currentPlans, PlanFulfillment fulfillment) {
-        if (fulfillment.pausesPersonalContinuation(landscapeId)) return Optional.empty();
+        return personalCurriculumGoalsForPlanContinuation(skillpilotId, landscapeId, currentPlans, fulfillment)
+                .stream().findFirst();
+    }
+
+    private List<DueGoal> personalCurriculumGoalsForPlanContinuation(
+            String skillpilotId, String landscapeId, List<LearnerLearningPlan> currentPlans, PlanFulfillment fulfillment) {
+        if (fulfillment.pausesPersonalContinuation(landscapeId)) return List.of();
         Set<String> waived = fulfillment.navigationWaived(landscapeId);
         for (LearnerLearningPlan plan : currentPlans) {
             if (!landscapeId.equals(plan.getLandscapeId())) continue;
@@ -1860,25 +1997,23 @@ public class LearnerLearningPlanService {
                 if (exception.getStatusCode().is5xxServerError()) throw exception;
                 // An unreadable old plan cannot define an inactivity choice.
                 // Explicit personal-curriculum learning remains available.
-                return firstPersonalCurriculumGoal(skillpilotId, landscapeId, waived);
+                return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
             }
             var scope = learningScope(skillpilotId, landscapeId, blocks,
                     LocalDate.now(clock.withZone(PLAN_ZONE)), true);
             if ("exam".equals(scope.kind())) return firstScopeContinuationGoal(skillpilotId, landscapeId, blocks,
-                    LocalDate.now(clock.withZone(PLAN_ZONE)), learners.getMastery(skillpilotId), true);
+                    LocalDate.now(clock.withZone(PLAN_ZONE)), learners.getMastery(skillpilotId), true).stream().toList();
             boolean hasInactiveLearning = blocks.stream().anyMatch(block -> block != null
                     && !block.isActive() && block.isAtomicLearning() && block.unitAssignment() == null);
-            if (!hasInactiveLearning) return firstPersonalCurriculumGoal(skillpilotId, landscapeId, waived);
+            if (!hasInactiveLearning) return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
             if (blocks.stream().noneMatch(block -> block.isActive() && block.isAtomicLearning())) {
-                return Optional.empty();
+                return List.of();
             }
-            Set<String> inactiveOnly = inactiveOnlyAtomicIds(blocks);
-            return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
-                    .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy()
-                            && !inactiveOnly.contains(goal.id()) && !waived.contains(goal.id()))
-                    .findFirst().map(goal -> new DueGoal(goal.id(), goal.id(), null, null));
+            Set<String> excluded = new HashSet<>(waived);
+            excluded.addAll(inactiveOnlyAtomicIds(blocks));
+            return personalCurriculumGoals(skillpilotId, landscapeId, excluded).toList();
         }
-        return firstPersonalCurriculumGoal(skillpilotId, landscapeId, waived);
+        return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
     }
 
     /** A schedule orders explicit further learning; dates never deny it. */
@@ -1992,12 +2127,12 @@ public class LearnerLearningPlanService {
                 return firstPersonalCurriculumGoal(skillpilotId, landscapeId, excluded);
             }
             LocalDate cutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);
-            var due = firstEligibleDueGoal(skillpilotId, blocks, cutoff, mastery, waived);
+            var due = firstEligibleDueGoal(skillpilotId, landscapeId, blocks, cutoff, mastery, waived);
             if (due.isPresent()) return due;
             LocalDate scheduleEnd = blocks.stream().filter(LearnerLearningPlanApi.Block::isActive)
                     .filter(block -> block.isAtomicLearning()).map(LearnerLearningPlanApi.Block::endDate)
                     .max(LocalDate::compareTo).orElse(asOf);
-            var planned = firstEligibleDueGoal(skillpilotId, blocks, scheduleEnd, mastery, waived);
+            var planned = firstEligibleDueGoal(skillpilotId, landscapeId, blocks, scheduleEnd, mastery, waived);
             if (planned.isPresent() || hasActiveUnitAssignment(blocks)) return planned;
             Set<String> inactive = inactiveOnlyAtomicIds(blocks);
             return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
@@ -2025,6 +2160,17 @@ public class LearnerLearningPlanService {
                     String entry = opening == null ? id : opening;
                     return frontierIds.contains(entry) ? new DueGoal(entry, id, null, null, null, id) : null;
                 }).filter(Objects::nonNull).findFirst();
+    }
+
+    /**
+     * True for a goal of an ordinary learning block that no longer lies under a focus of that block.
+     * A resolved focus always holds at least one goal, so no answer and an empty answer both mean
+     * that the content of the focus is not known; the section then decides as before.
+     */
+    private static boolean isOutsideBlockFocus(LearnerLearningPlanApi.Block block, String atomicGoalId,
+            Set<String> underFocus) {
+        return underFocus != null && !underFocus.isEmpty() && block.unitAssignment() == null
+                && !underFocus.contains(atomicGoalId);
     }
 
     private static String runtimeFocusGoalId(LearnerLearningPlanApi.Block block, String atomicGoalId) {
@@ -2082,6 +2228,22 @@ public class LearnerLearningPlanService {
             Function<List<String>, Set<String>> frontierIdsForFocus,
             BiFunction<String, List<String>, String> requiredOpeningForFocus,
             Predicate<String> allowedRequestedGoal, Map<String, List<String>> studyPreparation) {
+        return firstEligibleDueGoal(blocks, asOf, mastery, waived, frontierIdsForFocus, requiredOpeningForFocus,
+                allowedRequestedGoal, studyPreparation, ignored -> null);
+    }
+
+    /**
+     * {@code focusAtomicIds} names the goals that lie under a block's foci today; {@code null} or
+     * an empty set when that is not known. A scheduled goal outside them was moved out of its section by a
+     * regrouping. It keeps its place in the schedule and runs under its own focus, exactly like a
+     * goal of a block without a section.
+     */
+    static Optional<DueGoal> firstEligibleDueGoal(List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf, Map<String, Double> mastery, Set<String> waived,
+            Function<List<String>, Set<String>> frontierIdsForFocus,
+            BiFunction<String, List<String>, String> requiredOpeningForFocus,
+            Predicate<String> allowedRequestedGoal, Map<String, List<String>> studyPreparation,
+            Function<List<String>, Set<String>> focusAtomicIds) {
         Map<String, LocalDate> dueDates = scheduledAtomicGoalDueDatesForSchedule(blocks);
         LinkedHashSet<String> alreadyDue = new LinkedHashSet<>();
         List<DueGoal> candidates = new ArrayList<>();
@@ -2098,10 +2260,15 @@ public class LearnerLearningPlanService {
             openDueInBlock.forEach(goalId -> blockIds.put(goalId, block.id()));
             if (!block.focusGoalIds().isEmpty()) {
                 Set<String> frontierIds = frontierIdsForFocus.apply(block.focusGoalIds());
+                Set<String> underFocus = focusAtomicIds.apply(block.focusGoalIds());
                 for (String goalId : openDueInBlock) {
-                    String entryId = dueEntryGoalId(block, goalId, block.focusGoalIds(), frontierIds, requiredOpeningForFocus);
+                    boolean moved = isOutsideBlockFocus(block, goalId, underFocus);
+                    List<String> focusIds = moved ? List.of(goalId) : block.focusGoalIds();
+                    String entryId = dueEntryGoalId(block, goalId, focusIds,
+                            moved ? frontierIdsForFocus.apply(focusIds) : frontierIds, requiredOpeningForFocus);
                     if (entryId != null) candidates.add(new DueGoal(
-                            entryId, runtimeFocusGoalId(block, goalId), block.startDate(), block.endDate(), dueDates.get(goalId), goalId));
+                            entryId, moved ? goalId : runtimeFocusGoalId(block, goalId),
+                            block.startDate(), block.endDate(), dueDates.get(goalId), goalId));
                 }
             } else {
                 for (String goalId : openDueInBlock) {

@@ -138,6 +138,7 @@ function practiceResult({
   due = 4,
   scheduled = 1,
   total = 5,
+  practiceScopeId,
   hasMore = due > cards.length
 } = {}) {
   return {
@@ -147,6 +148,7 @@ function practiceResult({
         communicationLocale: "de",
         learningSessionId,
         goalId: "memory-goal",
+        ...(practiceScopeId ? { practiceScopeId } : {}),
         goalTitle: "Lernkarten – Funktionen und Gleichungen",
         progress: { total, due, scheduled },
         cockpitUrl: "https://skillpilot.com/?goal=memory-goal",
@@ -162,13 +164,14 @@ function practiceResult({
   };
 }
 
-function reviewReceipt({ stateVersion, due, scheduled, completed = due === 0 }) {
+function reviewReceipt({ stateVersion, due, scheduled, practiceScopeId, completed = due === 0 }) {
   return {
     structuredContent: {
       contractMajor: 1,
       stateVersion,
       status: completed ? "complete" : "ready",
       goalId: "memory-goal",
+      ...(practiceScopeId ? { practiceScopeId } : {}),
       goalTitle: "Lernkarten – Funktionen und Gleichungen",
       progress: { totalCards: 5, dueCards: due, scheduledCards: scheduled },
       completed
@@ -415,6 +418,33 @@ test("a REVIEW replay without _meta is accepted as success", async () => {
 
   assert.ok(findByText(harness.rootElement, "Bewertet: Gewusst"));
   assert.equal(findByText(harness.rootElement, "Karteikartenlernen nicht verfügbar"), undefined);
+});
+
+test("the widget rejects a continuation for another unit of the same deck and retries with the original scope", async () => {
+  const harness = createHarness({ initialPayload: false });
+  const practiceScopeId = "unit-one";
+  harness.context.__deliverToolResult(practiceResult({
+    cards: [card("card-1", "Front one", "Back one")], practiceScopeId, due: 2, scheduled: 3
+  }));
+  harness.setToolHandler((name) => Promise.resolve(name === "review_skillpilot_memory_practice_card"
+    ? reviewReceipt({ stateVersion: 8, due: 1, scheduled: 4, practiceScopeId })
+    : practiceResult({ cards: [card("foreign", "Foreign front", "Foreign back")], stateVersion: 8,
+      practiceScopeId: "unit-two", due: 1, scheduled: 4 })));
+  findByText(harness.rootElement, "Antwort zeigen").dispatch("click");
+  findByText(harness.rootElement, "Gewusst").dispatch("click");
+  await flushPromises();
+  findByText(harness.rootElement, "Nächsten Stapel öffnen").dispatch("click");
+  await flushPromises();
+  assert.equal(harness.context.__toolCalls[1].args.practiceScopeId, practiceScopeId);
+  assert.equal(findByText(harness.rootElement, "Foreign front"), undefined);
+
+  harness.setToolHandler(() => Promise.resolve(practiceResult({
+    cards: [card("next", "Next front", "Next back")], stateVersion: 8, practiceScopeId, due: 1, scheduled: 4
+  })));
+  findByText(harness.rootElement, "Erneut versuchen").dispatch("click");
+  await flushPromises();
+  assert.equal(harness.context.__toolCalls[2].args.practiceScopeId, practiceScopeId);
+  assert.ok(findByText(harness.rootElement, "Next front"));
 });
 
 test("safe widget state restores position and ratings without persisting private batch data", async () => {

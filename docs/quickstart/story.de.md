@@ -62,4 +62,12 @@ Jetzt bist du dran. Beschreibe, wo du **407 und 470** auf einem Zahlenstrahl mit
 
 Du kannst jederzeit eine Pause machen. Ist die Lernsession beim nächsten Besuch abgelaufen, starte mit derselben ID eine neue. Dein gespeicherter Lernstand bleibt erhalten. Wenn du deinen Fortschritt auf der Lernkarte sehen möchtest, wähle **Cockpit öffnen**.
 
-**Andere Anbieter.** ChatGPT Desktop benötigt für den Bereich **Work** das Plugin **SkillPilot Coach** ab 1.1.3. Der öffentliche Marketplace bietet am 24. November 2026 noch die Vorgängerversion 1.1.2 an. Gemini steht für eigens eingerichtete Testkonten bereit. [Zugangsvoraussetzungen](https://skillpilot.com/faq/coach-setup) · [Einrichtung je Anbieter](https://skillpilot.com/plugins)
+## Mit ChatGPT Desktop am Betatest teilnehmen
+
+Öffne in der Windows-App **Plugins → Hinzufügen → Marketplace hinzufügen**. Die Plugin-Ansicht ist auch in **Work** erreichbar. Kopiere die GitHub-Adresse aus der Installationsanleitung in **Quelle** und lasse **Git-Ref** und **Sparse-Pfade** leer. Sobald der Marketplace **SkillPilot Coach** in Version **1.2.0** oder neuer anbietet, installiere oder aktualisiere den Coach und prüfe die installierte Version. Folge der Anmeldung, wenn ChatGPT eine Verbindung anfordert. [Installationsanleitung](https://skillpilot.com/plugins#chatgpt-desktop)
+
+Wenn der Anmeldeknopf fehlt, verwende die [Anmeldung über Windows PowerShell](../deploy/openai-personal-marketplace-release.de.md#windows-oauth-fallback).
+
+Wähle im SkillPilot-Lernstart **ChatGPT Desktop**, **Lernen mit ChatGPT vorbereiten** und **ChatGPT-Startnachricht kopieren**. Wähle in der Desktop-App **Modus wechseln → Codex** und folge dem Link **Lokalen Codex-Chat öffnen** in SkillPilot. Wähle ein lokales Projekt und **Dieser Computer**. Ersetze den Beispieltext durch die vollständige Startnachricht, lass den Chip **SkillPilot Coach** stehen und sende die Nachricht im Chat. Halte sie privat. Für das Lernen brauchst du kein Terminal. Lernen in Work wird separat erprobt.
+
+Gemini steht für eigens eingerichtete Testkonten bereit. [Zugangsvoraussetzungen je Anbieter](https://skillpilot.com/faq/coach-setup)

@@ -64,6 +64,9 @@ public class OpenAiDeLearningSession {
     @Column(name = "verified_recall_batch_size", nullable = false)
     private int verifiedRecallBatchSize;
 
+    @Column(name = "completion_contract", length = 96)
+    private String completionContract;
+
     /**
      * Hash of the successor session after an explicit cross-major migration.
      *
@@ -161,6 +164,14 @@ public class OpenAiDeLearningSession {
 
     public void setVerifiedRecallBatchSize(int verifiedRecallBatchSize) {
         this.verifiedRecallBatchSize = verifiedRecallBatchSize;
+    }
+
+    public String getCompletionContract() {
+        return completionContract;
+    }
+
+    public void setCompletionContract(String completionContract) {
+        this.completionContract = completionContract;
     }
 
     public String getMigratedToTokenHash() {

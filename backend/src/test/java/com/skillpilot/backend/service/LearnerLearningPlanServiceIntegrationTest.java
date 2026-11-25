@@ -34,6 +34,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
@@ -110,10 +111,10 @@ class LearnerLearningPlanServiceIntegrationTest {
                         PHYSICS_LANDSCAPE_ID,
                         List.of("atom-p", "atom-q"),
                         List.of("atom-p", "atom-q")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(LANDSCAPE_ID), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(LANDSCAPE_ID), any(), any()))
                 .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
                         learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID)));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(PHYSICS_LANDSCAPE_ID), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(PHYSICS_LANDSCAPE_ID), any(), any()))
                 .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
                         learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID)));
         when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
@@ -317,7 +318,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.isUnitAssignmentSubjectSelected(learner, extension)).thenReturn(true);
         when(learnerService.getPlanningScope(LEARNER_ID, extension))
                 .thenReturn(scopeFor(extension, List.of("atom-a", "atom-b"), List.of("atom-a", "atom-b")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any())).thenReturn("extension");
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any(), any())).thenReturn("extension");
         service.upsert(LEARNER_ID, LANDSCAPE_ID,
                 new LearnerLearningPlanApi.UpsertRequest(0L, "Earlier", List.of(
                         learning("earlier", "2026-09-03", "2026-09-03", "atom-a"))), TODAY);
@@ -410,7 +411,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.isUnitAssignmentSubjectSelected(learner, extension)).thenReturn(true);
         when(learnerService.getPlanningScope(LEARNER_ID, extension))
                 .thenReturn(scopeFor(extension, List.of("atom-b"), List.of("atom-b")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any(), any()))
                 .thenReturn("extension");
         when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("block-focus")))
                 .thenReturn(List.of(frontier("atom-a")));
@@ -679,7 +680,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
                 .thenAnswer(invocation -> invocation.getArgument(1));
         doThrow(new ResponseStatusException(HttpStatus.CONFLICT, "Focus is outside the subject target"))
-                .when(learnerService).validateLearningPlanBlockFoci(eq(LEARNER_ID), eq(LANDSCAPE_ID), any());
+                .when(learnerService).validateLearningPlanBlockFoci(eq(LEARNER_ID), eq(LANDSCAPE_ID), any(), any());
         assertStoredPlanCannotDriveLearning(created);
         assertThat(planRepository.findById(created.planId()).orElseThrow().getBlocksJson())
                 .isEqualTo(originalBlocks);
@@ -998,6 +999,68 @@ class LearnerLearningPlanServiceIntegrationTest {
                 false,
                 "LEARNING_PLAN_PACKAGE_ACTIVATED");
         verify(eventPublisher, times(1)).publishEvent(any(LearnerStateChangedEvent.class));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"exam", "unit"})
+    void manualCoachChoicesAndWritesRespectStoredSubjectFocus(String binding) {
+        learner.setSelectedCurriculum(CURRICULUM_ID);
+        learner.setFollowLearningPlans(true);
+        learner.setAutoPilot(false);
+        when(learnerService.getPersonalCurriculumSubjectIds(LEARNER_ID))
+                .thenReturn(List.of(LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID));
+        when(learnerService.getPersonalCurriculumSubjectFrontier(LEARNER_ID, PHYSICS_LANDSCAPE_ID))
+                .thenReturn(List.of(frontier("atom-p")));
+        when(landscapeService.getLandscapeIdForGoal("atom-p")).thenReturn(PHYSICS_LANDSCAPE_ID);
+        LearningGoal physics = new LearningGoal();
+        physics.setTitle("Kräfte darstellen");
+        when(landscapeService.getGoalDefinition("atom-p")).thenReturn(physics);
+        List<LearnerLearningPlanApi.Block> mathBlocks;
+        if ("exam".equals(binding)) {
+            when(learnerService.resolveLearningPlanGoalIds(LEARNER_ID, LANDSCAPE_ID, List.of("atom-a")))
+                    .thenReturn(List.of("atom-a"));
+            mathBlocks = List.of(learning("math", TODAY.toString(), TODAY.toString(), "atom-a"),
+                    new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur", null, null,
+                            TODAY.plusDays(7), null, List.of("atom-a"), true));
+        } else {
+            var part = new LearnerLearningPlanApi.UnitAssignmentPart("atom-a", Map.of("de", "Teil"), false, true, false);
+            var unit = new LearnerLearningPlanApi.UnitAssignmentOption("section", "v1", "sha256:" + "a".repeat(64),
+                    Map.of("de", "Einheit"), false, List.of(part));
+            when(learnerService.getUnitAssignmentOptions(LEARNER_ID, LANDSCAPE_ID)).thenReturn(List.of(unit));
+            mathBlocks = List.of(new LearnerLearningPlanApi.Block("unit", "learning", null, "Einheit", TODAY,
+                    TODAY, null, List.of(part.goalId()), List.of(unit.sectionGoalId()), true, unit.binding()));
+        }
+        service.upsert(LEARNER_ID, LANDSCAPE_ID, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik", mathBlocks), TODAY);
+        var state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.applyLearningPlanScopeTransition(LEARNER_ID, false, true, List.of("atom-p"),
+                null, true, "LEARNING_PLAN_SUBJECT_SWITCH"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true,
+                "atom-p", "atom-p", true, "LEARNING_PLAN_GOAL_SELECTED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+
+        assertThat(service.getManualCoachPlanGoals(LEARNER_ID, "de")).isEmpty();
+        assertThat(service.getTodayStatus(LEARNER_ID, "de").subjects())
+                .noneMatch(subject -> PHYSICS_LANDSCAPE_ID.equals(subject.landscapeId()));
+        assertThat(service.getCoachTodayStatus(LEARNER_ID, "de").subjects())
+                .filteredOn(subject -> PHYSICS_LANDSCAPE_ID.equals(subject.landscapeId())).singleElement()
+                .satisfies(subject -> assertThat(subject.canContinue()).isTrue());
+        assertThat(service.focusManualCoachPlanSubject(LEARNER_ID, LANDSCAPE_ID)).isEmpty();
+        assertThat(service.focusManualCoachPlanSubject(LEARNER_ID, PHYSICS_LANDSCAPE_ID)).get().satisfies(transition -> {
+            assertThat(transition.landscapeId()).isEqualTo(PHYSICS_LANDSCAPE_ID);
+            assertThat(transition.activeGoalId()).isNull();
+            assertThat(transition.changed()).isTrue();
+        });
+
+        when(learnerService.getStoredLearningPlanFocusSubject(learner)).thenReturn(Optional.of(PHYSICS_LANDSCAPE_ID));
+        clearInvocations(learnerService);
+        assertThat(service.getManualCoachPlanGoals(LEARNER_ID, "de")).get()
+                .isEqualTo(List.of(new LearnerLearningPlanService.CoachPlanGoal("atom-p", "Kräfte darstellen", "Physik")));
+        assertStatus(() -> service.selectManualCoachPlanGoal(LEARNER_ID, "atom-a"), HttpStatus.CONFLICT);
+        verify(learnerService, never()).applyLearningPlanTransition(
+                any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());
+        assertThat(service.selectManualCoachPlanGoal(LEARNER_ID, "atom-p")).isSameAs(state);
+        verify(learnerService, never()).getPersonalCurriculumSubjectFrontier(LEARNER_ID, LANDSCAPE_ID);
     }
 
     @Test
@@ -2243,7 +2306,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape))
                 .thenReturn(scopeFor(secondMathLandscape,
                         List.of("atom-m1", "atom-m2"), List.of("atom-m1", "atom-m2")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any(), any()))
                 .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
                         learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape)));
         when(landscapeService.getById(secondMathLandscape))
@@ -2320,7 +2383,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape))
                 .thenReturn(scopeFor(secondMathLandscape,
                         List.of("atom-a", "atom-m1"), List.of("atom-a", "atom-m1")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any(), any()))
                 .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
                         learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape)));
         when(landscapeService.getById(secondMathLandscape))

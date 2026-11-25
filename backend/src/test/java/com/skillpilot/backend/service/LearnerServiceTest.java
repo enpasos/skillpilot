@@ -1848,13 +1848,193 @@ public class LearnerServiceTest {
             assertThat(learnerService.isLearningPlanCompatible(
                     learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(changed))).isFalse();
         }
+        // A single goal used as the focus of another goal is damage, never the trace of a
+        // regrouping: one goal has no content that a new cut could move away.
         var wrongFocus = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
                 original.id(), original.kind(), CANONICAL_CHOOSE_REPRESENTATION_ID, original.title(),
                 original.startDate(), original.endDate(), original.date(), original.atomicGoalIds());
         assertThat(learnerService.isLearningPlanCompatible(
                 learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(wrongFocus))).isFalse();
+        // A stored plan keeps goals that lie outside the section of their block: a regrouping of
+        // the curriculum moves goals to another section, and the plan still works (Product Owner,
+        // 24 November 2026). Here the stored section is the neighbouring cluster "Zwischen
+        // Darstellungen wechseln", which holds neither goal today. A new plan with the same block
+        // is refused, and so is a focus that does not resolve.
+        String otherSection = "e41a9eb4-8d3f-5f45-b3f3-5a88072e6f4e";
+        assertThat(learnerService.resolveLearningPlanGoalIds(learnerId, plan.getLandscapeId(), List.of(otherSection)))
+                .isNotEmpty().doesNotContainAnyElementsOf(original.atomicGoalIds());
+        var formerSection = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                original.id(), original.kind(), otherSection, original.title(),
+                original.startDate(), original.endDate(), original.date(), original.atomicGoalIds());
+        assertThat(learnerService.isLearningPlanCompatible(
+                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(formerSection))).isTrue();
+        assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(formerSection)))
+                .hasMessageContaining("not a subject-local ancestor");
+        // The goals stay with the section they were captured with, not with any section.
+        Set<String> heldGoals = Set.copyOf(original.atomicGoalIds());
+        assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(formerSection),
+                Map.of(Set.of(CANONICAL_REPRESENTATION_CLUSTER_ID), heldGoals)))
+                .hasMessageContaining("not a subject-local ancestor");
+        assertThat(LearnerService.learningPlanCapturedSelections(List.of(formerSection)))
+                .containsExactly(Map.entry(Set.of(otherSection), heldGoals));
+        assertThatCode(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(formerSection),
+                LearnerService.learningPlanCapturedSelections(List.of(formerSection))))
+                .doesNotThrowAnyException();
+        // ... and only the goals that were captured with it.
+        assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(formerSection),
+                Map.of(Set.of(otherSection), Set.of(CANONICAL_CHOOSE_REPRESENTATION_ID))))
+                .hasMessageContaining("not a subject-local ancestor");
+        // Which of several sections a goal came from is not stored. A block that names another set
+        // of sections is therefore a new selection: adding a section must not make it a place of
+        // the kept goals, and removing one must not leave them with the other.
+        String thirdSection = "5da9f264-25d1-54c7-a4d3-709c1b9b287a";
+        assertThat(learnerService.resolveLearningPlanGoalIds(learnerId, plan.getLandscapeId(), List.of(thirdSection)))
+                .isNotEmpty().doesNotContainAnyElementsOf(original.atomicGoalIds());
+        var twoSections = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                original.id(), original.kind(), otherSection, original.title(), original.startDate(),
+                original.endDate(), original.date(), original.atomicGoalIds(), List.of(otherSection, thirdSection), true);
+        var remainingSection = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                original.id(), original.kind(), thirdSection, original.title(), original.startDate(),
+                original.endDate(), original.date(), original.atomicGoalIds(), List.of(thirdSection), true);
+        assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(twoSections),
+                LearnerService.learningPlanCapturedSelections(List.of(formerSection))))
+                .hasMessageContaining("not a subject-local ancestor");
+        assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(remainingSection),
+                LearnerService.learningPlanCapturedSelections(List.of(twoSections))))
+                .hasMessageContaining("not a subject-local ancestor");
+        assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(formerSection),
+                LearnerService.learningPlanCapturedSelections(List.of(twoSections))))
+                .hasMessageContaining("not a subject-local ancestor");
+        // A stored block with two sections stays what it is.
+        assertThatCode(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(twoSections),
+                LearnerService.learningPlanCapturedSelections(List.of(twoSections))))
+                .doesNotThrowAnyException();
+        var unknownFocus = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                original.id(), original.kind(), "unknown-focus", original.title(),
+                original.startDate(), original.endDate(), original.date(), original.atomicGoalIds());
+        assertThat(learnerService.isLearningPlanCompatible(
+                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(unknownFocus))).isFalse();
         assertThat(learnerService.isLearningPlanCompatible(
                 learnerId, plan.getCurriculumId(), plan.getLandscapeId(), blocks)).isTrue();
+    }
+
+    // Passing a plan goal hands over to the next due goal. Each goal is judged under the focus it
+    // will run under, as in plan continuation. The frontier of all plan goals taken together offers
+    // only the orientation that the plan schedules for next week and would hide the goal due today.
+    // With "moved" the due goal sits in a block whose section no longer holds it (found by the
+    // independent review of 25 November 2026).
+    @ParameterizedTest
+    @org.junit.jupiter.params.provider.CsvSource({"false,false", "false,true", "true,false", "true,true"})
+    void passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne(boolean pilot, boolean moved)
+            throws Exception {
+        Object pilotBefore = ReflectionTestUtils.getField(learnerService, "unitAssessmentPilotEnabled");
+        ReflectionTestUtils.setField(learnerService, "unitAssessmentPilotEnabled", pilot);
+        try {
+            LocalDate day = LocalDate.parse("2026-09-02");
+            storeTwoDueRepresentationGoals(day, moved, false);
+            learnerService.setPreferences(learnerId, "SEQUENTIAL", false, null, null, true);
+            learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_CHOOSE_REPRESENTATION_ID));
+            learnerService.setActiveGoal(learnerId, CANONICAL_CHOOSE_REPRESENTATION_ID);
+
+            learnerService.setMastery(learnerId, new MasteryUpdateRequest(
+                    Map.of(CANONICAL_CHOOSE_REPRESENTATION_ID, 1.0), CANONICAL_CHOOSE_REPRESENTATION_ID));
+
+            assertThat(learnerService.getUncompactedRichFrontierForFocus(learnerId, List.of(
+                    CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID,
+                    CANONICAL_MATH_SEK_ONE_ORIENTATION_ID)))
+                    .extracting(FrontierGoal::id).doesNotContain(CANONICAL_CREATE_REPRESENTATION_ID);
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())
+                    .isEqualTo(CANONICAL_CREATE_REPRESENTATION_ID);
+            assertThat(learnerService.getStoredLearningPlanFocus(learnerId, CANONICAL_MATH_LANDSCAPE_ID))
+                    .containsExactly(moved ? CANONICAL_CREATE_REPRESENTATION_ID : CANONICAL_REPRESENTATION_CLUSTER_ID);
+            // Plan continuation agrees: the goal in progress stays.
+            assertThat(learnerLearningPlanService.reconcile(
+                    learnerId, new LearnerLearningPlanApi.ReconcileRequest(day)).changed()).isFalse();
+        } finally {
+            ReflectionTestUtils.setField(learnerService, "unitAssessmentPilotEnabled", pilotBefore);
+        }
+    }
+
+    // Activating a plan with an exam writes under the exam's scope. A goal in progress is kept only
+    // if it is eligible there; otherwise the exam's next goal is chosen. Before, the goal was
+    // accepted under its own or its block's focus, and the write then refused the activation.
+    @ParameterizedTest
+    @org.junit.jupiter.params.provider.CsvSource({"false,false", "false,true", "true,false", "true,true"})
+    void activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet(boolean pilot, boolean moved)
+            throws Exception {
+        Object pilotBefore = ReflectionTestUtils.getField(learnerService, "unitAssessmentPilotEnabled");
+        ReflectionTestUtils.setField(learnerService, "unitAssessmentPilotEnabled", pilot);
+        try {
+            LocalDate day = LocalDate.parse("2026-09-02");
+            var blocks = storeTwoDueRepresentationGoals(day, moved, true);
+            long revision = learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, day).revision();
+            learnerService.setPlannedGoals(learnerId, Set.of(CANONICAL_CREATE_REPRESENTATION_ID));
+            learnerService.setActiveGoal(learnerId, CANONICAL_CREATE_REPRESENTATION_ID);
+            assertThat(learnerService.getUncompactedRichFrontierForFocus(learnerId, List.of(
+                    CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID)))
+                    .extracting(FrontierGoal::id).containsExactly(CANONICAL_CHOOSE_REPRESENTATION_ID);
+
+            var activated = learnerLearningPlanService.activatePlans(learnerId,
+                    new LearnerLearningPlanApi.ActivateRequest(day, List.of(new LearnerLearningPlanApi.ActivationPlan(
+                            CANONICAL_MATH_LANDSCAPE_ID, revision, "Mit Klausur", blocks))));
+
+            assertThat(activated.activeGoalId()).isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())
+                    .isEqualTo(CANONICAL_CHOOSE_REPRESENTATION_ID);
+            assertThat(learnerService.getStoredLearningPlanFocus(learnerId, CANONICAL_MATH_LANDSCAPE_ID))
+                    .containsExactlyInAnyOrder(CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID);
+        } finally {
+            ReflectionTestUtils.setField(learnerService, "unitAssessmentPilotEnabled", pilotBefore);
+        }
+    }
+
+    /**
+     * A stored Mathematics plan with two goals due on {@code day} in two blocks, and either an exam
+     * over both or an orientation scheduled a week later. With {@code moved} the block of the second
+     * goal names a section that does not hold it today, as after a regrouping.
+     */
+    private List<LearnerLearningPlanApi.Block> storeTwoDueRepresentationGoals(
+            LocalDate day, boolean moved, boolean exam) throws Exception {
+        prepareRepresentationLearningPlan();
+        ZoneId berlin = ZoneId.of("Europe/Berlin");
+        ReflectionTestUtils.setField(learnerLearningPlanService, "clock",
+                Clock.fixed(day.atStartOfDay(berlin).toInstant(), berlin));
+        String section = !moved ? CANONICAL_REPRESENTATION_CLUSTER_ID
+                : java.util.stream.Stream.of(COMPOSITION_J10_SCOPE_ID, COMPOSITION_J9_SCOPE_ID, COMPOSITION_J8_SCOPE_ID)
+                        .filter(root -> {
+                            Set<String> held = learnerService.getLearningPlanFocusAtomicGoalIds(
+                                    learnerId, CANONICAL_MATH_LANDSCAPE_ID, List.of(root));
+                            return held != null && !held.isEmpty()
+                                    && !held.contains(CANONICAL_CHOOSE_REPRESENTATION_ID)
+                                    && !held.contains(CANONICAL_CREATE_REPRESENTATION_ID);
+                        }).findFirst().orElseThrow();
+        List<LearnerLearningPlanApi.Block> blocks = new ArrayList<>();
+        blocks.add(new LearnerLearningPlanApi.Block("first", "learning", CANONICAL_REPRESENTATION_CLUSTER_ID,
+                "Erste", day, day, null, List.of(CANONICAL_CHOOSE_REPRESENTATION_ID),
+                List.of(CANONICAL_REPRESENTATION_CLUSTER_ID), true));
+        blocks.add(new LearnerLearningPlanApi.Block("second", "learning", section,
+                "Zweite", day, day, null, List.of(CANONICAL_CREATE_REPRESENTATION_ID), List.of(section), true));
+        blocks.add(exam
+                ? new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur", null, null, day.plusDays(3),
+                        null, List.of(CANONICAL_CHOOSE_REPRESENTATION_ID, CANONICAL_CREATE_REPRESENTATION_ID), true)
+                : new LearnerLearningPlanApi.Block("later", "learning", CANONICAL_MATH_SEK_ONE_ORIENTATION_ID,
+                        "Orientierung", day.plusDays(7), day.plusDays(7), null,
+                        List.of(CANONICAL_MATH_SEK_ONE_ORIENTATION_ID),
+                        List.of(CANONICAL_MATH_SEK_ONE_ORIENTATION_ID), true));
+        LearnerLearningPlan record = learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdAndLandscapeId(learnerId, CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
+        record.setBlocksJson(objectMapper.writeValueAsString(blocks));
+        learnerLearningPlanRepository.saveAndFlush(record);
+        assertThat(learnerLearningPlanService.getPlan(learnerId, CANONICAL_MATH_LANDSCAPE_ID, day).stale()).isFalse();
+        return blocks;
     }
 
     @Test

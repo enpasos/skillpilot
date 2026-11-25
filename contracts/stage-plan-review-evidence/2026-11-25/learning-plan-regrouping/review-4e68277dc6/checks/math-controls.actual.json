@@ -1,0 +1,194 @@
+{
+  "reviewedCommit": "4e68277dc632f3a5de62c78c34d5bfbbf9135754",
+  "before": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+  "beforeReceiptSha256": "ce243615b6435a2a9ac682a66051bfe285107bbf0b8fe80b25d89f8dcb60e817",
+  "junit": {
+    "tests": 9,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0
+  },
+  "command": "unshare -Ur --mount bash /tmp/e1-regroup-r4-exam/safe.sh",
+  "testClass": "com.skillpilot.backend.service.IndependentExamPreservationTest",
+  "cases": [
+    "[1] pilot = \"false\", keptSection = \"false\", alreadyActive = \"false\"",
+    "[2] pilot = \"false\", keptSection = \"false\", alreadyActive = \"true\"",
+    "[3] pilot = \"false\", keptSection = \"true\", alreadyActive = \"false\"",
+    "[4] pilot = \"false\", keptSection = \"true\", alreadyActive = \"true\"",
+    "[5] pilot = \"true\", keptSection = \"false\", alreadyActive = \"false\"",
+    "[6] pilot = \"true\", keptSection = \"false\", alreadyActive = \"true\"",
+    "[7] pilot = \"true\", keptSection = \"true\", alreadyActive = \"false\"",
+    "[8] pilot = \"true\", keptSection = \"true\", alreadyActive = \"true\"",
+    "exactHistoricalRootSetSurvivesPermutationOnly()"
+  ],
+  "unchangedProbeSources": {
+    "eligible-active-exam-goal": {
+      "previouslyDelivered": "tmp/e1-handover/reviews/learning-plan-regrouping/round-3/probes/eligible-active-exam-goal.java.txt",
+      "sha256": "6f74afd7d4c8bf5f5c9a70860794010c319b899ac919339d1f8e05ad68a372aa"
+    },
+    "exact-section-set": {
+      "previouslyDelivered": "tmp/e1-handover/reviews/learning-plan-regrouping/round-3/probes/exact-section-set.java.txt",
+      "sha256": "bf56374c4b7c59964f1051320a3774397d9b4a2d1561c5d63cbebb27e063c391"
+    }
+  },
+  "authoredFixture": {
+    "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java",
+    "gitBlobBothRevisions": "5e53394791215db8427eb37ca5f49e77c70f2cef"
+  },
+  "driverSha256": "536bfc4a99548d3635662598700e41cc25f5ba53b8082a7b7f869dc2b7610407",
+  "gradleInitSha256": "b3e899decfe60e41d057790822f78313cc872456a8a0156f9406717ad3fb55c1",
+  "generatedClassSha256": "0d5458b92a0cf28a8d59037a637962b7f4c43d37922ef885f545fb33a1ccd821",
+  "xmlSha256": "651eb7af6a76f361e84915c26b8cea54ee455e7d6d7294d44da3eecf9c9bd4f1",
+  "logSha256": "ff44617bc51cee5e783be7c99cefcaf184643909debf6815235bbdb5955d04bc",
+  "results": {
+    "eligible-active-exam-goal": {
+      "allMatchedBefore": true,
+      "observations": [
+        {
+          "result": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": false,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": false,
+          "keptSection": false,
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ]
+        },
+        {
+          "result": "8dd9f210-2683-5902-acab-e3be22725232",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": true,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": false,
+          "keptSection": false,
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ]
+        },
+        {
+          "result": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": false,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": false,
+          "keptSection": true,
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ]
+        },
+        {
+          "result": "8dd9f210-2683-5902-acab-e3be22725232",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": true,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": false,
+          "keptSection": true,
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ]
+        },
+        {
+          "result": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": false,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": true,
+          "keptSection": false,
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ]
+        },
+        {
+          "result": "8dd9f210-2683-5902-acab-e3be22725232",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": true,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": true,
+          "keptSection": false,
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ]
+        },
+        {
+          "result": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": false,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": true,
+          "keptSection": true,
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ]
+        },
+        {
+          "result": "8dd9f210-2683-5902-acab-e3be22725232",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": true,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": true,
+          "keptSection": true,
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ]
+        }
+      ]
+    },
+    "exact-section-set": {
+      "allMatchedBefore": true,
+      "observations": [
+        {
+          "bothSingleRootsRejected": true,
+          "permutedRevision": 2,
+          "currentSection": "34047d7c-3a92-59fa-91b4-354211ff36e1",
+          "newCurrentSectionAccepted": 3,
+          "originalRoots": [
+            "composition:de-he-gym-math-gk-g9:structure:j10-g9",
+            "composition:de-he-gym-math-gk-g9:structure:j9-g9"
+          ],
+          "atom": "8dd9f210-2683-5902-acab-e3be22725232"
+        }
+      ]
+    }
+  }
+}

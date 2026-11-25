@@ -1,0 +1,336 @@
+{
+  "version": 1,
+  "reviewedCommit": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+  "reviewedTree": "4c82e8c3fbbf69dc72e620ddab3048a134aaba35",
+  "sourceInputs": {
+    "backend": "99543d128678674f009da66c68ea8f0e02683d79",
+    "curricula": "f15d397b9b8d89fb0f1ee386761c350d9b363a06",
+    "contracts": "dbb4b41f4d005282aa11a9af871982d08612e3f5",
+    "scripts": "4e8600bd181a29230979893b123dc48b631444d0",
+    "app": "a7f37a0faa7eb52d314dcc82162a9e934f6ac71c",
+    "ai": "3f07083ca451bd416bd7b26144a49adab4ba79ea",
+    "docs": "7ca11a4b5f10ade410a1cd4ec9f7d58a65d1fb47",
+    "content": "cc1506405e2aafa6a006fa8a201454aa81722f44"
+  },
+  "boundSourceFiles": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "gitBlob": "82dc89d2b3458e4840c9bc247b8eebac0ac077a9",
+      "sha256": "bc57e7a48507d930abc490e691e9868fc369d0ee1a1fde63582a6b1fe6b07aa0"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+      "gitBlob": "9d722b529e028c48bef95f364f0e741fee57f89b",
+      "sha256": "96297a70c84fdf7e166eafc3a7b7314e44488260d1380f06b88b3541e37afcaa"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java",
+      "gitBlob": "5e53394791215db8427eb37ca5f49e77c70f2cef",
+      "sha256": "3d6b57620f0ecfb0675b780e8c69fcd96696f36da8f445fedc254dec506cfda8"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+      "gitBlob": "c280dd6e0865f001922c67c771fbafb3c9d99d02",
+      "sha256": "066efc2f51dc0a8ccf6e03ce338015819b950532f89be4c3c446d225f201bb46"
+    }
+  ],
+  "scope": "Local Gradle Spring/H2 verification on exact source, built offline using the existing checkout. The 17 authored cases cover regressions from round 2. Four independent controls exercise a moved Physics goal with its child opening still outstanding, with pilot off and on and with either isolated completion or the public mastery transition. The report verifies the control outcomes from observation rows after JUnit exited.",
+  "startedAt": "2026-11-25T06:29:06+01:00",
+  "finishedAt": "2026-11-25T06:31:15+01:00",
+  "rawPlacement": "Raw Gradle log and XML are retained in the local scratch directory /tmp/e1-regroup-r3-tests/raw. They may be omitted from the shared review directory.",
+  "driver": {
+    "file": "safe.sh",
+    "sha256": "b8950c7952f7b0540942d4c4e997d8112ecda54556a3be667c2f81d9a7dde983"
+  },
+  "controlMethod": {
+    "file": "opening.java",
+    "sha256": "9e839cc4be0b72f31f4782be14f490327075b99d5268614e15f0ac1749ad9b5e"
+  },
+  "gradleTestSourceSet": {
+    "file": "probe.init.gradle",
+    "sha256": "798f71ee52769d8e1f4656033afa5fca8c09034345ba20faa7ffa1c87b8dd798"
+  },
+  "command": "unshare -Ur --mount bash /tmp/e1-regroup-r3-tests/safe.sh",
+  "gradleCommand": "--offline --no-daemon --project-cache-dir \"$p/gradle-project\" --max-workers=2 -PbackendTestForks=1 --console=plain -I \"$p/probe.init.gradle\" test  --tests '*.LearnerServiceTest.passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne'  --tests '*.LearnerServiceTest.activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet'  --tests '*.LearnerServiceTest.currentPlanCompatibilityRejectsInvalidAtomsFocusAndPrerequisiteOrder'  --tests '*.ClaudeV1CompletionRouteIntegrationTest.existingPlanKeepsGoalsThatARegroupingMovedToAnotherSection'  --tests '*.ClaudeV1CompletionRouteIntegrationTest.planOffersTheGoalThatARegroupingMovedOutOfItsSection'  --tests '*.ClaudeV1CompletionRouteIntegrationTest.passingAPlanGoalHandsOverToTheGoalThatARegroupingMoved'  --tests '*.Round3OpeningIntegrationTest.compareHandoffAndPlanWithPendingOpening'",
+  "gradleExitCode": 0,
+  "rawLog": {
+    "file": "test.log",
+    "sha256": "b7bce609013b488c14498c680ac83d55991388542f8540d6ddc6e1aa5feac2ba"
+  },
+  "authoredCases": 17,
+  "independentOpeningControls": 4,
+  "tests": 21,
+  "errors": 0,
+  "failures": 0,
+  "skipped": 0,
+  "classes": [
+    {
+      "name": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "source": "authored-regression",
+      "counts": {
+        "tests": 8,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "xml": {
+        "file": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+        "sha256": "73ac644eca474ba47474d8320885d0703fb18fda8c0ac3f1c141aaff6836cce7"
+      },
+      "cases": [
+        {
+          "method": "planOffersTheGoalThatARegroupingMovedOutOfItsSection",
+          "result": "passed",
+          "displayParameters": "[1] pilot = \"false\", wholeFormerSection = \"false\""
+        },
+        {
+          "method": "planOffersTheGoalThatARegroupingMovedOutOfItsSection",
+          "result": "passed",
+          "displayParameters": "[2] pilot = \"false\", wholeFormerSection = \"true\""
+        },
+        {
+          "method": "planOffersTheGoalThatARegroupingMovedOutOfItsSection",
+          "result": "passed",
+          "displayParameters": "[3] pilot = \"true\", wholeFormerSection = \"false\""
+        },
+        {
+          "method": "planOffersTheGoalThatARegroupingMovedOutOfItsSection",
+          "result": "passed",
+          "displayParameters": "[4] pilot = \"true\", wholeFormerSection = \"true\""
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheGoalThatARegroupingMoved",
+          "result": "passed",
+          "displayParameters": "[1] pilot = false"
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheGoalThatARegroupingMoved",
+          "result": "passed",
+          "displayParameters": "[2] pilot = true"
+        },
+        {
+          "method": "existingPlanKeepsGoalsThatARegroupingMovedToAnotherSection",
+          "result": "passed",
+          "displayParameters": "[1] course = \"GK\""
+        },
+        {
+          "method": "existingPlanKeepsGoalsThatARegroupingMovedToAnotherSection",
+          "result": "passed",
+          "displayParameters": "[2] course = \"LK\""
+        }
+      ]
+    },
+    {
+      "name": "com.skillpilot.backend.connectors.claude.v1.mcp.Round3OpeningIntegrationTest",
+      "source": "independent-control",
+      "counts": {
+        "tests": 4,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "xml": {
+        "file": "TEST-com.skillpilot.backend.connectors.claude.v1.mcp.Round3OpeningIntegrationTest.xml",
+        "sha256": "560ab11a6434656b72ac8a2c3463a27ecc9ae015d28cea490fb2809221ea984f"
+      },
+      "cases": [
+        {
+          "method": "compareHandoffAndPlanWithPendingOpening",
+          "result": "passed",
+          "displayParameters": "[1] pilot = \"false\", applyOrdinaryMastery = \"false\""
+        },
+        {
+          "method": "compareHandoffAndPlanWithPendingOpening",
+          "result": "passed",
+          "displayParameters": "[2] pilot = \"false\", applyOrdinaryMastery = \"true\""
+        },
+        {
+          "method": "compareHandoffAndPlanWithPendingOpening",
+          "result": "passed",
+          "displayParameters": "[3] pilot = \"true\", applyOrdinaryMastery = \"false\""
+        },
+        {
+          "method": "compareHandoffAndPlanWithPendingOpening",
+          "result": "passed",
+          "displayParameters": "[4] pilot = \"true\", applyOrdinaryMastery = \"true\""
+        }
+      ]
+    },
+    {
+      "name": "com.skillpilot.backend.service.LearnerServiceTest",
+      "source": "authored-regression",
+      "counts": {
+        "tests": 9,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "xml": {
+        "file": "TEST-com.skillpilot.backend.service.LearnerServiceTest.xml",
+        "sha256": "cb56591be34faa4f3c6a5f7932cdc6f9ce508c2399af1231082607a5e16561c4"
+      },
+      "cases": [
+        {
+          "method": "activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet",
+          "result": "passed",
+          "displayParameters": "[1] pilot = \"false\", moved = \"false\""
+        },
+        {
+          "method": "activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet",
+          "result": "passed",
+          "displayParameters": "[2] pilot = \"false\", moved = \"true\""
+        },
+        {
+          "method": "activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet",
+          "result": "passed",
+          "displayParameters": "[3] pilot = \"true\", moved = \"false\""
+        },
+        {
+          "method": "activatingAnExamPlanReplacesAGoalInProgressThatTheExamScopeDoesNotOfferYet",
+          "result": "passed",
+          "displayParameters": "[4] pilot = \"true\", moved = \"true\""
+        },
+        {
+          "method": "currentPlanCompatibilityRejectsInvalidAtomsFocusAndPrerequisiteOrder",
+          "result": "passed"
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne",
+          "result": "passed",
+          "displayParameters": "[1] pilot = \"false\", moved = \"false\""
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne",
+          "result": "passed",
+          "displayParameters": "[2] pilot = \"false\", moved = \"true\""
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne",
+          "result": "passed",
+          "displayParameters": "[3] pilot = \"true\", moved = \"false\""
+        },
+        {
+          "method": "passingAPlanGoalHandsOverToTheDueGoalAndNotToALaterScheduledOne",
+          "result": "passed",
+          "displayParameters": "[4] pilot = \"true\", moved = \"true\""
+        }
+      ]
+    }
+  ],
+  "openingObservations": [
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "pilot": false,
+      "publicMastery": false,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": null,
+      "focusAfterPassing": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    },
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "pilot": false,
+      "publicMastery": true,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "focusAfterPassing": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    },
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "pilot": true,
+      "publicMastery": false,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": null,
+      "focusAfterPassing": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    },
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "pilot": true,
+      "publicMastery": true,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "focusAfterPassing": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    }
+  ],
+  "hostSourceCheck": {
+    "mounts": "Both the main checkout and the Physics evidence checkout were read-only. Gradle ran on a private overlay of a Git archive of the target backend with only tracked static inputs; the host Gradle cache was a read-only lower layer. Host material trees matched target before and after. The documentation file already modified in the main checkout was shadowed inside the namespace by its Git-target blob.",
+    "trackedOrGeneratedStaticInventoriesBeforeAfter": {
+      "/home/enpasos/projects/skillpilot": {
+        "fileCount": 3290,
+        "bytes": 6129767199,
+        "pathSizeModeMtimeNsSha256": "e17ddf408be64702a84457a3e66557b71dfbd6043941b843ed6276c2e616b6bd"
+      },
+      "/home/enpasos/projects/skillpilot-e1-bilder": {
+        "fileCount": 2795,
+        "bytes": 5281179374,
+        "pathSizeModeMtimeNsSha256": "829eb0b3513c8342148873979339e763c59490db95f23183c775eef1ad000d40"
+      }
+    },
+    "staticResourceBeforeAfterIdentical": true,
+    "privateBackendBuild": true
+  },
+  "limit": "Targeted native cases. This result does not report a complete backend suite or hosted CI."
+}
