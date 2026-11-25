@@ -16,7 +16,7 @@
 ## Prompt
 
 ```text
-Erstelle ein maßstabsgerechtes Vektordiagramm mit zwei Wagen von je 1 kg in derselben Momentaufnahme auf einer Geraden. Rechts ist positiv. Die Geschwindigkeitspfeile beginnen auf den Wagen und zeigen nach rechts für +3 m/s und nach links für −1 m/s. Die zwei Längen sind genau im Verhältnis 3 zu 1. Ein davon getrennter Maßstabsbalken entspricht 1 m/s. Zeige die Fahrzeugorte schematisch. Keine Spitze berührt den anderen Wagen. Gib den Gesamtimpuls beider Wagen als Zahl +2 kg·m/s an. Ruhiger, freundlicher Zeichenstil, Querformat 1600 × 900 und gut lesbar bei 360 Pixeln Breite.
+Ein übersichtliches maßstäbliches Diagramm mit zwei freundlichen Wagen in derselben Momentaufnahme auf einer Geraden. Rechts ist positiv. A wiegt 2 kg und fährt mit +3 m/s, B wiegt 8 kg und fährt mit −1 m/s. Zeige p = m · v. Beschrifte die beiden am Wagen beginnenden Impulspfeile mit +6 und −8 kg·m/s. Für 2 kg·m/s stehen 120 Pixel, also 360 Pixel nach rechts und 480 Pixel nach links. Die Pfeilspitzen bleiben frei. Geschwindigkeiten stehen als Zahlen. Benenne die Orte als schematisch. Zeige getrennt die Summe beider Wagen (+6 − 8) kg·m/s = −2 kg·m/s. Ruhiges Querformat 1600 × 900, auch bei 360 Pixeln lesbar.
 ```
 
 ## Review-Notiz

@@ -1706,6 +1706,22 @@ for (const change of vectorPreparation.changes) {
   assert.deepEqual(currentPreparationPins[index], change.before)
   currentPreparationPins[index] = change.current
 }
+const individualMomentumPreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/individual-momenta-preparation.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, individualMomentumPreparationPath), 'utf8')), 'b94c94a682ab924f7400cdfd5044eb9bb2e9c1142196a3bd5084f6108a6789c6')
+const individualMomentumPreparation = readJson<{
+  predecessor: {path: string; sha256: string; payloadCount: number}
+  before: PreparationPin; current: PreparationPin; changedFields: string[]; retainedOtherPayloads: number
+}>(individualMomentumPreparationPath)
+assert.deepEqual(individualMomentumPreparation.predecessor, {
+  path: vectorPreparationPath, sha256: sha256(readFileSync(resolve(repoRoot, vectorPreparationPath), 'utf8')),
+  payloadCount: currentPreparationPins.length,
+})
+assert.equal(individualMomentumPreparation.current.goalId, '53afbda1-5776-502b-8867-471975d7b766')
+assert.deepEqual(individualMomentumPreparation.changedFields, ['resourceLinks'])
+assert.equal(individualMomentumPreparation.retainedOtherPayloads, currentPreparationPins.length - 1)
+const individualPreparationIndex = currentPreparationPins.findIndex(row => row.goalId === individualMomentumPreparation.current.goalId)
+assert.deepEqual(currentPreparationPins[individualPreparationIndex], individualMomentumPreparation.before)
+currentPreparationPins[individualPreparationIndex] = individualMomentumPreparation.current
 for (const payload of currentPreparationPins) {
   assert.equal(sha256(JSON.stringify(rawStagePreparationById.get(payload.goalId))), payload.rawSha256,
     `${payload.goalId}: stale actual source-stage prerequisite bytes`)
