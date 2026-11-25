@@ -98,9 +98,10 @@ restores without that entry. A kept goal stays only in a block that names the
 same sections as the block it was captured in, and the backend still offers it
 as planned work under the goal's own focus (plan view, continuation, handoff);
 a newly selected goal, and a block with other sections, must satisfy the
-ordinary rule that the goal lies under its section. A goal in progress that a
-regrouping moves out of the focused section stays in progress (effective focus);
-the stored focus is unchanged. Pass marks must be achievable for a learner who has understood
+ordinary rule that the goal lies under its section. An ordinary goal in progress
+that a regrouping moves out of the focused section stays in progress for
+teaching and completion; the chosen focus (Cockpit, storage, backup) is
+unchanged. Pass marks must be achievable for a learner who has understood
 everything and makes occasional small formal errors: a new or revised graded
 assessment has a pass mark of at most 85 percent of its points
 (`scripts/check_exam_pass_marks.py`), and indispensable performances are

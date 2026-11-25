@@ -5908,7 +5908,7 @@ public class LearnerService {
                 projection);
         if (!projectedFocusIds.isEmpty()
                 || !hasCompletedPersonalCurriculum(learner)) {
-            return withRegroupedGoalInProgress(learner, projection, projectedFocusIds);
+            return projectedFocusIds;
         }
         String defaultFocusId = resolveDefaultProjectedFocusId(
                 learner.getSelectedCurriculum(),
@@ -5919,40 +5919,57 @@ public class LearnerService {
     }
 
     /**
-     * A regrouping of the curriculum can move the goal a learner is working on out of the section
-     * they focus. Every focus change the learner makes clears a goal outside the new focus when it
-     * is written, and a goal can only be started inside the focus. A stored goal in progress that
-     * lies outside the stored focus at read time was therefore moved by the curriculum, not by the
-     * learner. As long as it is a target of the Personal Curriculum in the subject of the focus,
-     * it belongs to the effective focus: the learner keeps their place, and the stored focus stays
-     * as chosen. Once the goal is passed or the learner changes the focus, nothing of this remains.
+     * The focus the learner chose, plus the goal in progress that a regrouping moved out of it.
+     * Only what teaches and completes that goal reads this: frontier, required unit opening, the
+     * coach's unit context and the check that would otherwise clear the goal. Everything that
+     * shows, stores or exports the learner's choice keeps reading the chosen focus.
      */
-    private List<String> withRegroupedGoalInProgress(
-            Learner learner, GoalProjection projection, List<String> projectedFocusIds) {
+    private List<String> resolveRuntimeProjectedFocusIds(Learner learner, GoalProjection projection) {
+        List<String> chosenFocusIds = resolveEffectiveProjectedFocusIds(learner, projection);
+        String regrouped = regroupedGoalInProgress(learner, projection, chosenFocusIds);
+        if (regrouped == null) return chosenFocusIds;
+        List<String> widened = new ArrayList<>(chosenFocusIds);
+        widened.add(regrouped);
+        return widened;
+    }
+
+    /**
+     * A regrouping of the curriculum can move the goal a learner is working on out of the section
+     * they focus. A focus change by the learner clears a goal outside the new focus when it is
+     * written, and an ordinary goal can only be started inside the focus, so an ordinary goal in
+     * progress outside the chosen focus was moved by the curriculum. It stays in progress as long
+     * as it is a target of the Personal Curriculum in a subject of the focus. Exams and card decks
+     * are not kept this way: an exam outside the focus is governed by its own direct-assessment
+     * binding or by the explicit choice of its offer, a deck by its practice context. A learner
+     * who follows plans is governed by the scope of the plans.
+     */
+    private String regroupedGoalInProgress(
+            Learner learner, GoalProjection projection, List<String> chosenFocusIds) {
+        if (learner == null || projection == null || chosenFocusIds == null || chosenFocusIds.isEmpty()) return null;
         String storedActiveGoalId = learner.getActiveGoalId();
-        if (storedActiveGoalId == null || storedActiveGoalId.isBlank() || projectedFocusIds.isEmpty()
-                || projectedFocusIds.contains(storedActiveGoalId)) {
-            return projectedFocusIds;
+        if (storedActiveGoalId == null || storedActiveGoalId.isBlank()
+                || chosenFocusIds.contains(storedActiveGoalId)) {
+            return null;
         }
         String activeGoalId = resolveGoalIdInVisibleGoals(storedActiveGoalId, projection.visibleGoals(), false);
+        LearningGoal goal = activeGoalId == null ? null : projection.visibleGoals().get(activeGoalId);
         if (!storedActiveGoalId.equals(activeGoalId)
                 || !projection.targetGoalIds().contains(activeGoalId)
-                || !isAtomicGoal(projection.visibleGoals().get(activeGoalId))) {
-            return projectedFocusIds;
+                || !isAtomicGoal(goal) || isExamGoal(goal) || CompletionProfileCompiler.isMemory(goal)) {
+            return null;
         }
-        List<String> focusScopeIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
+        if (followedLearningScopeIds(learner, projection, null) != null) return null;
+        List<String> focusScopeIds = resolveProjectedTargetScopeIds(chosenFocusIds, projection);
         if (focusScopeIds.isEmpty()
                 || !isGoalOutOfPlannedScope(activeGoalId, focusScopeIds, projection.structuralGoals(), null)) {
-            return projectedFocusIds;
+            return null;
         }
         String landscapeId = landscapeService.getLandscapeIdForGoal(activeGoalId);
         if (landscapeId == null || focusScopeIds.stream()
                 .noneMatch(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id)))) {
-            return projectedFocusIds;
+            return null;
         }
-        List<String> widened = new ArrayList<>(projectedFocusIds);
-        widened.add(activeGoalId);
-        return widened;
+        return activeGoalId;
     }
 
     private boolean hasCompletedPersonalCurriculum(Learner learner) {
@@ -8049,7 +8066,7 @@ public class LearnerService {
         if (waived == null) return List.of();
         Set<String> completedWork = completedFrontierWork(allGoals, effectiveMastery, waived);
 
-        List<String> projectedFocusIds = resolveEffectiveProjectedFocusIds(
+        List<String> projectedFocusIds = resolveRuntimeProjectedFocusIds(
                 learner,
                 projection);
         List<String> plannedIds = resolveProjectedTargetScopeIds(projectedFocusIds, projection);
@@ -8231,7 +8248,7 @@ public class LearnerService {
 
         // The focus is the union of selected roots and their contains descendants.
         List<String> projectedFocusIds = prospectiveFocusGoalIds == null
-                ? resolveEffectiveProjectedFocusIds(learner, projection)
+                ? resolveRuntimeProjectedFocusIds(learner, projection)
                 : resolveProjectedTargetFocusIds(prospectiveFocusGoalIds, projection);
         List<String> plannedIds = resolveProjectedTargetScopeIds(
                 projectedFocusIds,
@@ -8849,7 +8866,7 @@ public class LearnerService {
                 .map(UnitLearningMaterialService.OrientationBinding::orientationGoalId).collect(Collectors.toSet()) : Set.of();
         boolean explicitOpening = unitScopes.containsKey(requestedGoalId);
         List<String> focusedRoots = prospectiveFocus == null
-                ? resolveEffectiveProjectedFocusIds(learner, projection) : prospectiveFocus;
+                ? resolveRuntimeProjectedFocusIds(learner, projection) : prospectiveFocus;
         Set<String> focusedScope = computeScope(resolveProjectedTargetScopeIds(
                 focusedRoots, projection), projection.structuralGoals(), Map.of());
         boolean atomFocus = !focusedRoots.isEmpty() && focusedRoots.stream()
@@ -9538,7 +9555,7 @@ public class LearnerService {
             return new ActiveGoalContext(activeId, phase, List.of(), List.of(), null, List.of());
         }
 
-        Set<String> focus = new LinkedHashSet<>(resolveEffectiveProjectedFocusIds(learner, projection));
+        Set<String> focus = new LinkedHashSet<>(resolveRuntimeProjectedFocusIds(learner, projection));
         List<List<CompositionViewService.CompositionStructureResolution>> paths = compositionViewService == null
                 ? List.of()
                 : projection.compositionViewIds().stream().flatMap(viewId -> compositionViewService
@@ -10172,7 +10189,8 @@ public class LearnerService {
                 && !activeGuidedNavigation
                 && activeGoalId != null
                 && !exactFollowedScope
-                && isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, structuralGoals, scope);
+                && isGoalOutOfPlannedScope(activeGoalId, plannedScopeIds, structuralGoals, scope)
+                && !activeGoalId.equals(regroupedGoalInProgress(learner, goalProjection, plannedIds));
         GlobalAssessmentFocus globalAssessmentFocus = resolveGlobalAssessmentFocus(
                 structuralGoals,
                 plannedIds);

@@ -1967,9 +1967,11 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     // A regrouping can move the goal a learner is working on out of the section they focus. The
-    // learner keeps their place: the goal stays in progress and the stored focus stays as chosen.
-    // Found by the independent review of the E.2 cut (25 November 2026); the E.1 cut of
-    // 23 November had moved road traffic out of E.1 in the same way.
+    // learner keeps their place: the goal stays in progress for teaching and completion. What the
+    // learner chose stays what they chose: the focus shown in the Cockpit, the stored focus, the
+    // backup and the navigation options do not gain the goal. Found by the independent review of
+    // the E.2 cut (25 November 2026); the E.1 cut of 23 November had moved road traffic out of
+    // E.1 in the same way.
     @ParameterizedTest
     @ValueSource(booleans = {false, true})
     void goalInProgressSurvivesARegroupingOutOfTheFocusedSection(boolean pilot) throws Exception {
@@ -1992,6 +1994,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
             // A new start outside the focus is refused, as before.
             assertThatThrownBy(() -> learners.setActiveGoal(learnerId, moved))
                     .isInstanceOf(org.springframework.web.server.ResponseStatusException.class);
+            var optionsWithoutGoal = learners.getScopeNavigationOptions(learnerId).stream().map(goal -> goal.id()).toList();
 
             // The state a learner had before the cut: the goal in progress under the focus on E.1.
             Runnable inProgressBeforeTheCut = () -> {
@@ -2013,6 +2016,26 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(state.activeGoal().id()).isEqualTo(moved);
             assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(moved);
             assertThat(storedFocus.get()).containsExactly(section);
+            // The chosen focus is shown, queried, offered and exported as chosen.
+            assertThat(state.goals().planned()).extracting(goal -> goal.id()).containsExactly(section);
+            assertThat(learners.getPlannedGoals(learnerId)).containsExactly(section);
+            assertThat(learners.getScopeNavigationOptions(learnerId)).extracting(goal -> goal.id())
+                    .containsExactlyElementsOf(optionsWithoutGoal);
+            learners.importLearner(learnerId, learners.exportLearner(learnerId));
+            assertThat(storedFocus.get()).containsExactly(section);
+            inProgressBeforeTheCut.run();
+            assertThat(learners.getLearnerState(learnerId).activeGoal().id()).isEqualTo(moved);
+
+            // An exam is not kept this way. Its pointer outside the focus needs a valid direct
+            // assessment or the explicit choice of its offer; without them it is cleared as before.
+            String exam = "26c1e946-e858-57ef-a19b-d6bb295c76f4";
+            assertThat(learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section))).doesNotContain(exam);
+            var withExam = learnerRepository.findById(learnerId).orElseThrow();
+            withExam.setActiveGoalId(exam);
+            learnerRepository.saveAndFlush(withExam);
+            assertThat(learners.getLearnerState(learnerId).activeGoal()).isNull();
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
+            inProgressBeforeTheCut.run();
 
             // A focus change by the learner still ends work on a goal outside the new focus.
             learners.setPlannedGoals(learnerId, java.util.Set.of(child));
