@@ -1,0 +1,73 @@
+{
+  "reviewScope": "Independent strand-classification review of the complete frozen input.json. accept_current means approve the proposed successor changing only examData.coveredStrands from [] to [\"LI_BEWEGUNG\"]. Original tasks, reference solutions, full rubrics, predecessors, successors, learning goals and supplied taxonomy/examples were inspected. No marking, threshold reconsideration or file changes.",
+  "overallDecision": "accept_current",
+  "items": [
+    {
+      "assessmentGoalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+      "decision": "accept_current",
+      "approvedCoveredStrands": [
+        "LI_BEWEGUNG"
+      ],
+      "rationale": "K1 assesses the learning goal 'Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen': applying p = m·v with direction signs and combining simultaneous momenta algebraically. All 12 available points concern these mechanical quantities. Exactly LI_BEWEGUNG is justified by inference from this scored content and the supplied released mechanics examples. The permitted token alone would not establish coverage.",
+      "actualTaskAndRubricEvidence": [
+        "The task supplies masses 0.50 kg and 1.00 kg and two simultaneous velocity pairs. The reference solution gives right-positive momenta (+2, −1), total +1, and (+1, −1), total 0, in kg·m/s; consistently reversing the axis is equivalent.",
+        "MI and MII carry 3 points each: 1.5 per correctly assigned signed individual momentum. These 6 points directly assess numerical momentum determination; generic formulas, qualitative directions and bare totals cannot replace the required individual evidence.",
+        "TI and TII carry 3 points each: 2.5 for numerical algebraic combination and 0.5 for evaluation or a correct bare total. Follow-through credit remains evidence of combining directed mechanical quantities.",
+        "TII explicitly gives 0 for a maintained assertion denying cancellation of opposite momenta of moving carts. A correct uncommented zero earns normal credit; an additional explanation is not required. This binds the rubric to mechanical vector cancellation.",
+        "Recursive comparison found exactly one predecessor-to-successor difference: examData.coveredStrands, [] → [\"LI_BEWEGUNG\"]. Every other field is identical. Both language versions of task and solution, the full scoring object and the 10/12 passing threshold are also identical across original, predecessor and successor. K1 remains actual V4."
+      ],
+      "taxonomyEvidence": [
+        "The supplied validateGraph.ts excerpt permits LI_BEWEGUNG. This establishes identifier validity, not an official prose definition.",
+        "The supplied applyPhysicsSekIRouteStabilization.ts excerpt explicitly normalizes LI_KRAEFTE to LI_BEWEGUNG in both guidingIdeas and coveredStrands, establishing a local mechanics/force classification convention.",
+        "Released assessment 4ea1b93f-2dba-59ac-87ab-29af6c55cc37 has solely LI_BEWEGUNG and scores velocity-vector composition (3/16), magnitudes (4/16), impact direction (4/16) and supporting motion performance (5/16). It provides an actual analogy for assessed directed mechanical quantities.",
+        "Released assessment 8f62ab5e-20fc-562f-8121-63c082313e6e has solely LI_BEWEGUNG and scores force representation (4/15), resultant construction (6/15) and balancing to vector sum zero (5/15). Its cancellation content supports the analogy without making force and momentum interchangeable.",
+        "Released circular-motion assessment b1808b4c-5e02-5e1f-831f-47ee126e00ee combines motion vectors and force calculations under solely LI_BEWEGUNG. Extending this demonstrated local mechanics usage to signed linear momentum and its sum is an inference, not an explicit momentum-to-strand mapping."
+      ],
+      "otherStrandsExcludedReason": "No weighted criterion assesses energy, work, energy conservation, fields, waves, material structure, technology or cosmology. Two snapshot momentum sums do not establish an assessed conservation-law goal. The carts provide the mechanical setting; their presence does not establish LI_TECHNIK or LI_ENERGIE coverage.",
+      "noAdditionalGoalCoverage": true,
+      "allOtherPayloadFieldsIdentical": true,
+      "taskSolutionScoringUnchanged": true,
+      "rubricVersionUnchanged": true,
+      "limitations": [
+        "LI_BEWEGUNG coverage is a bounded local taxonomic inference; no official prose definition or exact released momentum analogue is supplied.",
+        "The sole covered learning goal remains 53afbda1-5776-502b-8867-471975d7b766. No coverage is added from its prerequisites."
+      ]
+    },
+    {
+      "assessmentGoalId": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+      "decision": "accept_current",
+      "approvedCoveredStrands": [
+        "LI_BEWEGUNG"
+      ],
+      "rationale": "K2 assesses the learning goal 'Mittlere resultierende Kraft aus der Impulsänderung bestimmen': determining signed momentum change, applying mean net external force = Δp/Δt and interpreting force direction. Its complete 3+4+3-point rubric assesses linear mechanics. The explicit local LI_KRAEFTE→LI_BEWEGUNG normalization and released force assessments support exactly LI_BEWEGUNG. Applying that convention to this interval-force task is an inference.",
+      "actualTaskAndRubricEvidence": [
+        "For a fixed-mass cart in an inertial laboratory frame, the task supplies p1 = +8 kg·m/s at 2 s and p2 = −4 kg·m/s at 5 s. The reference solution obtains Δp = −12 kg·m/s, Δt = 3 s and mean net external force −4 N, directed left for right-positive coordinates.",
+        "momentumChange carries 3 points for the applied signed numerical change. An uncontradicted general change formula alone receives only 0.5; a final force does not retrospectively establish missing momentum-change evidence.",
+        "meanForce carries 4 points: 3 for applying Δp/Δt with the elapsed 3 s, 0.5 for the force value or valid own calculation and 0.5 for the force unit. These points directly assess the mechanical force–momentum relation.",
+        "direction carries 3 points: 0.5 for the force sign and 2.5 for its physical directional interpretation. The solution and rubric distinguish an interval average from an unsupported assertion of constant or particular instantaneous force; the latter costs 2.5 once in meanForce.",
+        "Recursive comparison found exactly one predecessor-to-successor difference: examData.coveredStrands, [] → [\"LI_BEWEGUNG\"]. Every other field is identical. Both language versions of task and solution, the full scoring object and the 8/10 passing threshold are also identical across original, predecessor and successor. K2 remains V3."
+      ],
+      "taxonomyEvidence": [
+        "The supplied validateGraph.ts excerpt permits LI_BEWEGUNG but supplies no substantive strand definition.",
+        "The supplied normalization explicitly maps LI_KRAEFTE to LI_BEWEGUNG in coveredStrands and guidingIdeas. This directly supports including assessed mechanical forces within the local normalized strand.",
+        "Released circular-motion assessment b1808b4c-5e02-5e1f-831f-47ee126e00ee has solely LI_BEWEGUNG: 5/16 points assess velocity/acceleration vectors, 5/16 centripetal acceleration and force, and 6/16 limiting speed and force dependencies. It demonstrates actual classification of quantitative dynamics under this strand.",
+        "Released force-vector assessment 8f62ab5e-20fc-562f-8121-63c082313e6e uses solely LI_BEWEGUNG for directed forces, resultant construction and equilibrium, supporting K2's force-direction classification.",
+        "The released horizontal-projection assessment also uses solely LI_BEWEGUNG for motion vectors and a scored no-horizontal-force explanation. Together these examples support the local dynamics classification; none explicitly defines the strand or maps Δp/Δt by name."
+      ],
+      "otherStrandsExcludedReason": "Every scored component concerns momentum change, elapsed time, resultant force or force direction. No criterion assesses energy transfer, work, fields, waves, material properties, technological design or cosmology. The cart and laboratory context do not independently assess technology or energy.",
+      "noAdditionalGoalCoverage": true,
+      "allOtherPayloadFieldsIdentical": true,
+      "taskSolutionScoringUnchanged": true,
+      "rubricVersionUnchanged": true,
+      "limitations": [
+        "The force normalization and released examples support a local classification inference, not a fabricated official definition of LI_BEWEGUNG.",
+        "The sole covered learning goal remains ecbaa101-cb10-5da3-9368-ae40ff587d74. Prerequisite momentum knowledge does not add another covered goal."
+      ]
+    }
+  ],
+  "limitations": [
+    "Only frozen input.json was consulted. Referenced source files and review receipts were not opened or independently authenticated.",
+    "For each item, original-to-predecessor differences are confined to title, titleEn, description, descriptionEn, tags adding SekI, and sourceArtifactPath changing v1 to v2. allOtherPayloadFieldsIdentical refers to the mechanically verified predecessor-to-successor comparison. These existing form changes introduce no new rubric version.",
+    "The supplied competency catalog defines process axes only. Taxonomic conclusions rely on the permitted identifier, explicit normalization and actual released examples; the historical metadata precedent does not determine either verdict."
+  ]
+}

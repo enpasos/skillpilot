@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "contract": "independent-per-assessment-release-strand-metadata-attribution-v1",
+  "assessmentGoalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+  "status": "accepted",
+  "eligibleForReleaseMetadataSuccessor": true,
+  "recordedAt": "2026-11-25T19:38:49.903423+00:00",
+  "reviewKind": "independent-informed-metadata-review",
+  "beforeGoal": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/release-metadata-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/before.goal.json",
+    "sha256": "cf9e781b138a64699cc803b8649ac74d3ce71d012f32432aa0a77b7a7c7cf94f"
+  },
+  "proposalGoal": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/release-metadata-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/proposal.goal.json",
+    "sha256": "02618de0ed152d1cc0c72e3e28ca6bbd68a50e87bb8b62053c4748c09e00a5bb"
+  },
+  "allowedDelta": {
+    "path": "examData.coveredStrands",
+    "before": [],
+    "after": [
+      "LI_BEWEGUNG"
+    ]
+  },
+  "acceptedContentReview": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/content-review-v4.actual.json",
+    "sha256": "b74b7fd1b25c22eeca26822e9d7e4e02a0211585941c5d3dab67d1aaac7a5a17"
+  },
+  "acceptedOriginalCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/v4/candidate.goal.json",
+    "sha256": "f750a65ef1d2791b5c3de999eba0f21abcb3bd8202ebe535017bfa6f22836c32"
+  },
+  "formPredecessorReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/exam-form-successor.actual.json",
+    "sha256": "d9dd798d0d119a19066a606de1b2ce982d3ce52d4e27463e0ee78954c9364a40"
+  },
+  "independentReview": {
+    "model": "gpt-6.1-sol",
+    "reasoningEffort": "ultra",
+    "threadId": "01a21434-7d39-7833-aec9-b82a4f28bba0",
+    "execution": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/release-metadata-20261125-v1/independent/execution.actual.json",
+      "sha256": "8e2b7b4e4f99253e84bc683eea6b925c300dc123ede0e48fdd9137a4c1e61c56"
+    },
+    "response": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/release-metadata-20261125-v1/independent/response.json",
+      "sha256": "795d0bac9a9dc3b5eb2f764fa0d8e6b63666f57c18cd32e662bf51ae8a8f81f0"
+    },
+    "input": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/release-metadata-20261125-v1/independent/inputs/input.json",
+      "sha256": "bfd7fceb7ee7655b6ec0fa5f1c30d595e50672ac2452c2f1de36fc6c484e2464"
+    },
+    "itemDecision": {
+      "assessmentGoalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+      "decision": "accept_current",
+      "approvedCoveredStrands": [
+        "LI_BEWEGUNG"
+      ],
+      "rationale": "K1 assesses the learning goal 'Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen': applying p = m·v with direction signs and combining simultaneous momenta algebraically. All 12 available points concern these mechanical quantities. Exactly LI_BEWEGUNG is justified by inference from this scored content and the supplied released mechanics examples. The permitted token alone would not establish coverage.",
+      "actualTaskAndRubricEvidence": [
+        "The task supplies masses 0.50 kg and 1.00 kg and two simultaneous velocity pairs. The reference solution gives right-positive momenta (+2, −1), total +1, and (+1, −1), total 0, in kg·m/s; consistently reversing the axis is equivalent.",
+        "MI and MII carry 3 points each: 1.5 per correctly assigned signed individual momentum. These 6 points directly assess numerical momentum determination; generic formulas, qualitative directions and bare totals cannot replace the required individual evidence.",
+        "TI and TII carry 3 points each: 2.5 for numerical algebraic combination and 0.5 for evaluation or a correct bare total. Follow-through credit remains evidence of combining directed mechanical quantities.",
+        "TII explicitly gives 0 for a maintained assertion denying cancellation of opposite momenta of moving carts. A correct uncommented zero earns normal credit; an additional explanation is not required. This binds the rubric to mechanical vector cancellation.",
+        "Recursive comparison found exactly one predecessor-to-successor difference: examData.coveredStrands, [] → [\"LI_BEWEGUNG\"]. Every other field is identical. Both language versions of task and solution, the full scoring object and the 10/12 passing threshold are also identical across original, predecessor and successor. K1 remains actual V4."
+      ],
+      "taxonomyEvidence": [
+        "The supplied validateGraph.ts excerpt permits LI_BEWEGUNG. This establishes identifier validity, not an official prose definition.",
+        "The supplied applyPhysicsSekIRouteStabilization.ts excerpt explicitly normalizes LI_KRAEFTE to LI_BEWEGUNG in both guidingIdeas and coveredStrands, establishing a local mechanics/force classification convention.",
+        "Released assessment 4ea1b93f-2dba-59ac-87ab-29af6c55cc37 has solely LI_BEWEGUNG and scores velocity-vector composition (3/16), magnitudes (4/16), impact direction (4/16) and supporting motion performance (5/16). It provides an actual analogy for assessed directed mechanical quantities.",
+        "Released assessment 8f62ab5e-20fc-562f-8121-63c082313e6e has solely LI_BEWEGUNG and scores force representation (4/15), resultant construction (6/15) and balancing to vector sum zero (5/15). Its cancellation content supports the analogy without making force and momentum interchangeable.",
+        "Released circular-motion assessment b1808b4c-5e02-5e1f-831f-47ee126e00ee combines motion vectors and force calculations under solely LI_BEWEGUNG. Extending this demonstrated local mechanics usage to signed linear momentum and its sum is an inference, not an explicit momentum-to-strand mapping."
+      ],
+      "otherStrandsExcludedReason": "No weighted criterion assesses energy, work, energy conservation, fields, waves, material structure, technology or cosmology. Two snapshot momentum sums do not establish an assessed conservation-law goal. The carts provide the mechanical setting; their presence does not establish LI_TECHNIK or LI_ENERGIE coverage.",
+      "noAdditionalGoalCoverage": true,
+      "allOtherPayloadFieldsIdentical": true,
+      "taskSolutionScoringUnchanged": true,
+      "rubricVersionUnchanged": true,
+      "limitations": [
+        "LI_BEWEGUNG coverage is a bounded local taxonomic inference; no official prose definition or exact released momentum analogue is supplied.",
+        "The sole covered learning goal remains 53afbda1-5776-502b-8867-471975d7b766. No coverage is added from its prerequisites."
+      ]
+    }
+  },
+  "supportedCoveredStrands": [
+    "LI_BEWEGUNG"
+  ],
+  "coveredGoalIdsUnchanged": [
+    "53afbda1-5776-502b-8867-471975d7b766"
+  ],
+  "directRequiresUnchanged": [
+    "53afbda1-5776-502b-8867-471975d7b766"
+  ],
+  "taskSolutionScoringUnchanged": true,
+  "allOtherPayloadFieldsIdentical": true,
+  "rubricVersionUnchanged": 4,
+  "newRubricVersion": false,
+  "fifthRubricCreated": false,
+  "noAdditionalGoalCoverage": true,
+  "noAdditionalStrands": true,
+  "noOfficialSourceClaim": true,
+  "taxonomyEvidenceLimit": "Local allowed native taxon ID, explicit mechanical-force→movement normalization and actual released mechanics examples support classification; no official prose definition is invented. The independent item rationale states its inference.",
+  "learnerSourceArtifactUnchanged": {
+    "path": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v2/seki_total_momentum_two_bodies_line.md",
+    "sha256": "0dc7690fe460890624583cf39acc9a0c3d137f07e8ff59c0e79c87971aecf682"
+  },
+  "humanApproval": false,
+  "learnerMasteryWritten": false,
+  "activeCatalogMutationSeparate": true,
+  "rawLogsOutsideRepository": true
+}

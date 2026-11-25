@@ -2701,14 +2701,13 @@ for (const row of examForms.currentGoals) {
     verifyExerciseArtifact(file)
   }
   const reviewed = readJson<Record<string, unknown>>(row.reviewedCandidate.path)
-  const released = rawGoalById.get(row.goalId)!
-  assert.deepEqual(readJson<Record<string, unknown>>(row.releasedGoal.path), released)
+  const released = readJson<Record<string, unknown>>(row.releasedGoal.path)
   assert.deepEqual(parentIdsByChild.get(row.goalId), [rootForPractice.id])
   assert.equal(row.currentParentGoalId, rootForPractice.id)
   assert.equal(row.currentTag, 'SekI')
   assert.deepEqual(released.tags, [...(reviewed.tags as string[]), row.currentTag])
   assert.equal(decisionByGoalId.get(row.goalId)?.semanticKind, 'practiceAssessment')
-  assert.equal(decisionByGoalId.get(row.goalId)?.sourceFingerprint, row.sourceFingerprint)
+  assert.equal(fingerprintSemanticKindSourceGoal(released), row.sourceFingerprint)
   assert.equal(sha256(JSON.stringify(released)), row.currentCanonicalPayloadSha256)
   if (row.goalId === priorMeanForce.goalId) {
     assert.equal(sha256(JSON.stringify(reviewed)), priorMeanForce.canonicalPayloadSha256)
@@ -2735,6 +2734,37 @@ for (const row of examForms.currentGoals) {
     [`# ${reviewed.titleEn}`, `# ${released.titleEn}`],
   ])
   assert.deepEqual(source(row.sourceArtifact), oldLines.map(line => oldHeadings.get(line) ?? line))
+}
+
+const closureStrandsPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/exam-strand-successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, closureStrandsPath), 'utf8')), '7010c0d0a04096437ed7af34078cfe4f5b2cdfd724d1f982fa97232091e3f60d')
+const closureStrands = readJson<{
+  predecessorForm: EvidenceFile; diagnosis: EvidenceFile
+  currentGoals: Array<typeof examForms.currentGoals[number] & {
+    previousReleasedGoal: EvidenceFile; previousCanonicalPayloadSha256: string; previousSourceFingerprint: string
+    metadataReview: EvidenceFile; currentCoveredStrands: string[]; beforeCoveredStrands: string[]
+  }>
+}>(closureStrandsPath)
+assert.equal(closureStrands.predecessorForm.path, examFormPath)
+for (const file of [closureStrands.predecessorForm, closureStrands.diagnosis]) verifyExerciseArtifact(file)
+assert.deepEqual(closureStrands.currentGoals.map(row => row.goalId), exerciseIds)
+for (const [index, row] of closureStrands.currentGoals.entries()) {
+  const previous = examForms.currentGoals[index]
+  assert.deepEqual(row.previousReleasedGoal, previous.releasedGoal)
+  assert.equal(row.previousCanonicalPayloadSha256, previous.currentCanonicalPayloadSha256)
+  assert.equal(row.previousSourceFingerprint, previous.sourceFingerprint)
+  assert.deepEqual(row.beforeCoveredStrands, [])
+  assert.deepEqual(row.currentCoveredStrands, ['LI_BEWEGUNG'])
+  for (const file of [row.previousReleasedGoal, row.releasedGoal, row.metadataReview]) verifyExerciseArtifact(file)
+  const before = readJson<Record<string, unknown>>(row.previousReleasedGoal.path)
+  const exam = before.examData as Record<string, unknown>
+  assert.deepEqual(exam.coveredStrands, row.beforeCoveredStrands)
+  const active = rawGoalById.get(row.goalId)!
+  assert.deepEqual(active, {...before, examData: {...exam, coveredStrands: row.currentCoveredStrands}})
+  assert.deepEqual(readJson<Record<string, unknown>>(row.releasedGoal.path), active)
+  assert.equal(row.currentCanonicalPayloadSha256, sha256(JSON.stringify(active)))
+  assert.equal(row.sourceFingerprint, fingerprintSemanticKindSourceGoal(active))
+  assert.equal(decisionByGoalId.get(row.goalId)?.sourceFingerprint, row.sourceFingerprint)
 }
 
 const kinematicsReviewPath = 'curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json'
