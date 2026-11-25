@@ -1,0 +1,294 @@
+{
+  "coordinator_only": true,
+  "purpose": "Synthetic counterfactual learner scripts for blind rubric marking. These are authored test artifacts, not claims of actual learner experiments or empirical learning effectiveness.",
+  "source_commit": "a6117075c1",
+  "goal_id": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "task_unchanged": true,
+  "cases": [
+    {
+      "id": "L7Q4",
+      "kind": "control",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "C2V9",
+      "kind": "four_slips",
+      "slips": true,
+      "appendices": [
+        "appendix-r8.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "N8D3",
+      "kind": "one_missing_facet",
+      "omit": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "F5W1",
+      "kind": "B_absent",
+      "missing": "B",
+      "appendices": [
+        "appendix-p6.png"
+      ]
+    },
+    {
+      "id": "R3J6",
+      "kind": "A_absent",
+      "missing": "A",
+      "appendices": [
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "U9H2",
+      "kind": "maintained_misconception",
+      "misconception": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "K4P8",
+      "kind": "A_weak_estimate_B_law_mismatch",
+      "weak": true,
+      "mismatch": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "E6S5",
+      "kind": "A_no_series_estimate",
+      "no_est": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "V1M7",
+      "kind": "pooled_comparison",
+      "pooled_comparison": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "J8B4",
+      "kind": "pooled_substitution",
+      "pooled_substitution": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "Q2X6",
+      "kind": "boundary_minus_four_slips",
+      "omit": true,
+      "slips": true,
+      "appendices": [
+        "appendix-r8.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "H6T9",
+      "kind": "boundary_minus_five_slips",
+      "omit": true,
+      "slips": true,
+      "fifth": true,
+      "appendices": [
+        "appendix-r8.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "D3Z7",
+      "kind": "both_explicit_law_mismatches",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ],
+      "reasonAdded": "Added after both v1 reviews asked what a pass can certify about the link between a fitted estimate and the coefficient. Only the two reported coefficients differ from the complete control. First twelve scripts remain byte-identical in content."
+    },
+    {
+      "id": "T9G2",
+      "kind": "one_explicit_law_mismatch",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ],
+      "reasonAdded": "Mirror of D3Z7 required by the 04:03 decision: series A uses the stated own estimate; B has the same explicit difference as D3Z7. Both investigations otherwise fully evidenced."
+    }
+  ],
+  "numeric_method": "Recorded positions rounded to 0.001 m; seven post-release points/run. Origin-constrained least squares x=m t²; independent g=2m. Graphs show per-run fits only, never a series/pooled estimate.",
+  "A": {
+    "ds": [
+      6,
+      12,
+      24,
+      36,
+      48,
+      60,
+      72
+    ],
+    "t": [
+      0.025,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3
+    ],
+    "xs": [
+      [
+        0.003,
+        0.012,
+        0.049,
+        0.11,
+        0.195,
+        0.306,
+        0.441
+      ],
+      [
+        0.003,
+        0.012,
+        0.049,
+        0.11,
+        0.196,
+        0.306,
+        0.441
+      ],
+      [
+        0.003,
+        0.012,
+        0.049,
+        0.111,
+        0.197,
+        0.308,
+        0.443
+      ]
+    ],
+    "m": [
+      4.8956457240185705,
+      4.8984588335485295,
+      4.924304277355018
+    ],
+    "g": [
+      9.791291448037141,
+      9.796917667097059,
+      9.848608554710037
+    ],
+    "vv": [
+      -0.00517443340972822,
+      -0.0020344878946432473,
+      -0.00029491041699712266
+    ],
+    "avg": 9.812272556614746,
+    "spread": 0.05731710667289569,
+    "timeplus": 9.50184417017193,
+    "timeminus": 10.136366354929612,
+    "posplus": 9.844359587190828,
+    "posminus": 9.780185526038661,
+    "unc": 0.5,
+    "seed": 0
+  },
+  "B": {
+    "ds": [
+      6,
+      12,
+      20,
+      30,
+      40,
+      50,
+      60
+    ],
+    "t": [
+      0.025,
+      0.05,
+      0.08333333333333333,
+      0.125,
+      0.16666666666666666,
+      0.20833333333333334,
+      0.25
+    ],
+    "xs": [
+      [
+        0.003,
+        0.012,
+        0.034,
+        0.076,
+        0.135,
+        0.21,
+        0.303
+      ],
+      [
+        0.004,
+        0.012,
+        0.034,
+        0.076,
+        0.135,
+        0.211,
+        0.303
+      ],
+      [
+        0.003,
+        0.011,
+        0.034,
+        0.077,
+        0.136,
+        0.212,
+        0.305
+      ]
+    ],
+    "m": [
+      4.8475739600049765,
+      4.853991383546073,
+      4.884408351591807
+    ],
+    "g": [
+      9.695147920009953,
+      9.707982767092146,
+      9.768816703183614
+    ],
+    "vv": [
+      0.0033301730305643567,
+      0.006037968411322514,
+      0.0014811768997790209
+    ],
+    "avg": 9.723982463428571,
+    "spread": 0.07366878317366066,
+    "timeplus": 9.355978619662343,
+    "timeminus": 10.11141979861625,
+    "posplus": 9.77044299032705,
+    "posminus": 9.677521936530095,
+    "unc": 0.5
+  },
+  "pooled_g": 9.783537537850815,
+  "marking_notes": [
+    "L7Q4: complete control. A estimate rounds to exactly 9.81 from actual listed points and is used in A law.",
+    "C2V9: four separate local formal slips together: A raw x header says cm rather than m (paragraph still states m); A graph t² horizontal label says s rather than s²; B raw time header says ms rather than s (traceable formula and all other labels use s); B slope header says m/s rather than m/s². Each is one isolated occurrence/category, not a change of the numerical method.",
+    "N8D3: A actual boundary variation alone omitted; all other submitted content remains.",
+    "F5W1 and R3J6: complete B and complete A investigation omissions respectively. R3J6 explicitly admits no own two-series comparison; its numeric A comparator is identified as a referenced example, never as personal A evidence.",
+    "U9H2: maintained A misconception is explicit after a verbatim visible task reminder; this is not inferred from matching a familiar g value.",
+    "K4P8: A estimate is first-run-only and A law uses it exactly; quality of that estimator belongs only to A g-determination. B estimator is properly independent but B law uses 10.20 instead of stated B value. Distinct investigations make the two criterion effects visible.",
+    "E6S5: A has all individual run values and graphs, but explicitly no own series estimate. A law contains 9.81. B comparison references individual A runs without silently manufacturing an A series estimate.",
+    "V1M7: separate own A and B estimates/laws first; pooled fit used only as additional quantitative comparison.",
+    "J8B4: pooled fit explicitly replaces both separate series estimates and is used in both laws, while all raw points and per-run fits remain visible.",
+    "Q2X6/H6T9: threshold pair if a missing facet costs 2 and isolated slips cost 0.5. Both omit only A actual boundary variation and contain the four independently located formal slips above. H6T9 additionally reports |gA-gB| 0.01 too large; displayed A/B values and interval endpoints otherwise remain correct. Do not send these expectations or descriptions to markers.",
+    "All submissions share the same base data intentionally to control evidence changes; tables are repeated in full, not incorporated by reference. Graph associations are exact and each plot can be forwarded natively with --image. Markers must receive canonical-task.md too."
+  ]
+}

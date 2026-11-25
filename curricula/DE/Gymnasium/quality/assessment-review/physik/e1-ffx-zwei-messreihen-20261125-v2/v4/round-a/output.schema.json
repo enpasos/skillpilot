@@ -1,0 +1,197 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "goalId": {
+      "type": "string"
+    },
+    "candidateDecision": {
+      "type": "string",
+      "enum": [
+        "accept",
+        "revise",
+        "park",
+        "reject"
+      ]
+    },
+    "semanticKind": {
+      "type": "string"
+    },
+    "semanticKindReason": {
+      "type": "string"
+    },
+    "physicsAndLanguage": {
+      "type": "string"
+    },
+    "scopeVerdict": {
+      "type": "string"
+    },
+    "scoringConsistency": {
+      "type": "string"
+    },
+    "carryingPerformanceAudit": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "performanceId": {
+            "type": "string"
+          },
+          "earnedFromTask": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "number"
+          },
+          "completeOmissionMaximum": {
+            "type": "number"
+          },
+          "safeguardsAndLimits": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "performanceId",
+          "earnedFromTask",
+          "weight",
+          "completeOmissionMaximum",
+          "safeguardsAndLimits"
+        ]
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "coveredGoalReviews": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "mustShow": {
+            "type": "string"
+          },
+          "mayRemainOpen": {
+            "type": "string"
+          },
+          "whyTolerable": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "goalId",
+          "mustShow",
+          "mayRemainOpen",
+          "whyTolerable"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 1
+    },
+    "gradedSubmissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "submissionId": {
+            "type": "string"
+          },
+          "scores": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "criterionId": {
+                  "type": "string"
+                },
+                "pointsAwarded": {
+                  "type": "number"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "criterionId",
+                "pointsAwarded",
+                "reason"
+              ]
+            },
+            "minItems": 10,
+            "maxItems": 10
+          },
+          "total": {
+            "type": "number"
+          },
+          "passes": {
+            "type": "boolean"
+          },
+          "diagnosis": {
+            "type": "string"
+          },
+          "localizedSlips": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "location": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "deductedPoints": {
+                  "type": "number"
+                },
+                "followOnDeduction": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "location",
+                "description",
+                "deductedPoints",
+                "followOnDeduction"
+              ]
+            }
+          }
+        },
+        "required": [
+          "submissionId",
+          "scores",
+          "total",
+          "passes",
+          "diagnosis",
+          "localizedSlips"
+        ]
+      },
+      "minItems": 18,
+      "maxItems": 18
+    },
+    "requiredCorrections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "goalId",
+    "candidateDecision",
+    "semanticKind",
+    "semanticKindReason",
+    "physicsAndLanguage",
+    "scopeVerdict",
+    "scoringConsistency",
+    "carryingPerformanceAudit",
+    "coveredGoalReviews",
+    "gradedSubmissions",
+    "requiredCorrections"
+  ]
+}

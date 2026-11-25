@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { execFileSync } from 'node:child_process'
 import './testHePhysicsQuantumTemplate'
 import { achievableReviewRoot, coachScoringReviewRoot, verifiedCoachScoringReviewChain } from './lib/e1AchievableScoringReviews'
 import { beforeReleasedMarkingHeadings, releasedHeadingsRoot } from './lib/e1ReleasedMarkingHeadings'
@@ -1387,16 +1388,30 @@ const partialCreditRounds = new Map<string, { version: string; dispositionSha256
   ['a8dc0290-9f80-5763-8943-e16b8d2aa860', { version: 'v3', dispositionSha256: '7bd9a1fc4d27b7085b156a57dcca7d09a9f8a76990bfaac91681974bd58c0e7c' }],
   ['4ea1b93f-2dba-59ac-87ab-29af6c55cc37', { version: 'v4', dispositionSha256: 'fa55c7b482804b78fb1779ce07de652b9bdd5bb9046b5d618afb644a14ad9877' }],
 ])
-const beforeHeadings = beforeReleasedMarkingHeadings(repoRoot, rawGoalById)
+const ffxBindingRoot = 'curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v2/'
+const ffxSuccessor = readJson<{reviewPath: string; original: {path: string; sha256: string}; candidate: {path: string; sha256: string};
+  supersedes: {path: string; sha256: string}}>(ffxBindingRoot + 'accepted.actual.json')
+execFileSync('python3', [resolve(repoRoot, ffxBindingRoot, 'verify.py')], {cwd: repoRoot})
+assert.equal(ffxSuccessor.supersedes.path, 'curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v1/parked.actual.json')
+assert.equal(sha256(readFileSync(resolve(repoRoot, ffxSuccessor.supersedes.path), 'utf8')), ffxSuccessor.supersedes.sha256)
+const ffxGoalId = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
+const acceptedFfxGoal = readJson<Record<string, unknown>>(ffxBindingRoot + ffxSuccessor.candidate.path)
+assert.deepEqual(rawGoalById.get(ffxGoalId), acceptedFfxGoal, 'live scored goal must be the candidate both markers accepted')
+assert.equal(ffxSuccessor.original.path, ffxSuccessor.reviewPath + '/original.goal.json')
+const originalFfxBytes = readFileSync(resolve(repoRoot, ffxBindingRoot + ffxSuccessor.original.path), 'utf8')
+assert.equal(sha256(originalFfxBytes), 'c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4')
+assert.equal(ffxSuccessor.original.sha256, sha256(originalFfxBytes))
+const beforeFfx = new Map(rawGoalById)
+beforeFfx.set(ffxGoalId, JSON.parse(originalFfxBytes))
+const beforeHeadings = beforeReleasedMarkingHeadings(repoRoot, beforeFfx)
 const priorAchievableGoals = verifiedCoachScoringReviewChain(repoRoot, beforeHeadings, canonicalJson)
 // The last reviewed experimental rubric had one dissent. Its complete scored payload must fail activation.
-const parkedExperimentId = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
 const withParkedExperiment = new Map(beforeHeadings)
-withParkedExperiment.set(parkedExperimentId, readJson<Record<string, unknown>>(
-  `${achievableReviewRoot}/${parkedExperimentId}/v24/candidate.goal.json`,
+withParkedExperiment.set(ffxGoalId, readJson<Record<string, unknown>>(
+  `${achievableReviewRoot}/${ffxGoalId}/v24/candidate.goal.json`,
 ))
 assert.throws(() => verifiedCoachScoringReviewChain(repoRoot, withParkedExperiment, canonicalJson),
-  new RegExp(parkedExperimentId + ': changed without two accepted reviews'))
+  new RegExp(ffxGoalId + ': changed without two accepted reviews'))
 const currentReviewedExams = new Map<string, { before: object; current: object }>()
 function bindCurrentAssessmentSuccessors(round: string, expectedHashes: Record<string, string>): void {
   const rows = assertActualExamRounds(currentExamEvidenceRoot + round, Object.keys(expectedHashes))
@@ -1498,7 +1513,7 @@ assert.deepEqual(coveredStrandsFollowup.changes.map(change => change.goalId).sor
 // Validate the historical strand-only payload first, then apply the two
 // independently reviewed E.1 changes to a copy. Every other field stays pinned.
 const saxonAccelerationExam = 'a8dc0290-9f80-5763-8943-e16b8d2aa860'
-const saxonFreeFallExam = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
+const saxonFreeFallExam = ffxGoalId
 const e1StageReview = readJson<{ schema: string; status: string; goalBindings: Array<{
   goalId: string; currentGoalPath: string; currentGoalSha256: string; previousGoalPath: string; previousGoalSha256: string
   allowedDeltas: Array<{ path: string; before: string[]; after: string[] }>; reviewScope: { jurisdictions: string[] }
@@ -1651,6 +1666,7 @@ const coachStageScoringHashes: Record<string, string> = {
   'a8dc0290-9f80-5763-8943-e16b8d2aa860': 'a40333754c4c87cf567fde4ff35f5c7b96ee754942116e5c5aee225b51938a67',
 }
 const stageScoring = new Map<string, {record: StageScoringSuccessor; path: string}>()
+const ffxStageOfferPath = ffxBindingRoot + 'source-stage-offer.actual.json'
 const priorStageCatalog = {...preparationLandscape, goals: preparationLandscape.goals.map(goal => priorAchievableGoals.get(goal.id) ?? goal)}
 const priorStageNormalized = new Map(normalizeCanonicalLandscape(priorStageCatalog as unknown as CanonicalAuthoringLandscape)
   .goals.map(goal => [goal.id, goal]))
@@ -1686,7 +1702,7 @@ for (const row of currentStageOffers.assessments) {
     bindings.assessments[id] ? [{state, row: bindings.assessments[id]}] : [])
   assert.deepEqual(offers.map(offer => offer.state).sort(), id === saxonAccelerationExam ? ['SN','ST'] : ['SN'])
   for (const offer of offers) {
-    assert.equal(offer.row.independentReview, bound ? headingOfferPath : currentStageOffersPath)
+    assert.equal(offer.row.independentReview, id === saxonFreeFallExam ? ffxStageOfferPath : bound ? headingOfferPath : currentStageOffersPath)
     assert.equal(offer.row.offerReview, offer.row.independentReview)
     assert.deepEqual(offer.row.requires, current.requires)
     assert.deepEqual(offer.row.coveredGoalIds, (current.examData as ExamData).coveredGoalIds)
@@ -1704,7 +1720,8 @@ for (const row of currentStageOffers.assessments) {
     ? ['DE-SN:SekI', 'DE-ST:SekI'] : ['DE-HE:SekII', 'DE-SN:SekI'])
   if (!bound) {
     assert.deepEqual(current, prior)
-    assert.equal(sha256(JSON.stringify(goalById.get(id))), prep.assessmentNormalizedSha256)
+    // The pooled record is historical. A new FFX rubric is verified against the live goal separately below.
+    assert.equal(sha256(JSON.stringify(normalizedBeforeHeadings.get(id))), prep.assessmentNormalizedSha256)
     continue
   }
   assert.equal(sha256(readFileSync(resolve(repoRoot, path), 'utf8')), bound)
@@ -1766,6 +1783,86 @@ for (const row of currentStageOffers.assessments) {
   assert.equal(successor.planningCreditGranted, false)
   assert.equal(successor.learnerResultTransfer, false)
 }
+
+
+// The pooled HE/SN record above describes the original 23/24 task. Bind the separately accepted successor to the live offers.
+const ffxManifestPath = ffxBindingRoot + 'binding-successors.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, ffxManifestPath), 'utf8')), '0b19b85864dc39476cd0fbd622b84db42d5c71147a6a02389af3540479e4349b')
+const ffxBindings = readJson<{
+  accepted: EvidenceFile; stage: EvidenceFile; coverage: EvidenceFile
+  warningRows: { after: object }; sourceRows: Array<{ authority: string; after: object }>
+}>(ffxManifestPath)
+const ffxStageOffer = readJson<StageScoringSuccessor>(ffxStageOfferPath)
+assert.equal(ffxBindings.stage.path, ffxStageOfferPath)
+assert.deepEqual(ffxStageOffer.accepted, ffxBindings.accepted)
+assert.equal(ffxBindings.accepted.path, ffxBindingRoot + 'accepted.actual.json')
+assert.deepEqual(ffxStageOffer.currentGoal, {path: ffxBindingRoot + ffxSuccessor.candidate.path, sha256: ffxSuccessor.candidate.sha256})
+const ffxPriorOffer = currentStageOffers.assessments.find(row => row.goalId === ffxGoalId)!
+assert.deepEqual(ffxStageOffer.previousGoal, ffxPriorOffer.currentGoal)
+assert.deepEqual(ffxStageOffer.approvedScopes, ffxPriorOffer.approvedScopes)
+assert.deepEqual(ffxStageOffer.predecessorPreparation, currentStageOffers.currentSharedPreparation)
+const ffxPriorPrep = currentStagePreparation.assessments.find(row => row.goalId === ffxGoalId)!
+assert.deepEqual(ffxStageOffer.currentPreparation, {
+  fullRealPrerequisiteIds: ffxPriorPrep.fullRealPrerequisiteIds,
+  rawSha256: sha256(JSON.stringify(acceptedFfxGoal)), normalizedSha256: sha256(JSON.stringify(goalById.get(ffxGoalId))),
+})
+assert.deepEqual(ffxStageOffer.reviews.map(review => review.receipt.path), ['a', 'b'].map(round =>
+  ffxBindingRoot + ffxSuccessor.reviewPath + '/round-' + round + '/run.actual.json'))
+for (const review of ffxStageOffer.reviews) {
+  const response = readJson<{scopeVerdict: string; candidateDecision: string}>(review.response.path)
+  assert.equal(review.response.path, review.receipt.path.replace('run.actual.json', 'response.json'))
+  assert.equal(response.candidateDecision, 'accept')
+  assert.equal(review.scopeVerdict, response.scopeVerdict)
+  const { additionalFixedContext } = readJson<{additionalFixedContext: {
+    ownOfferScopes: unknown; currentPreparation: {goalIds: string[]}; sourceDocuments: EvidenceFile[]
+  }}>(review.receipt.path.replace('run.actual.json', 'canonical-input.json'))
+  assert.deepEqual(additionalFixedContext.ownOfferScopes, ffxStageOffer.approvedScopes)
+  assert.deepEqual(additionalFixedContext.currentPreparation.goalIds, ffxPriorPrep.fullRealPrerequisiteIds)
+  assert.deepEqual(additionalFixedContext.sourceDocuments, ffxStageOffer.sourceDocuments)
+}
+for (const file of [ffxBindings.accepted, ffxBindings.stage, ffxBindings.coverage, ffxStageOffer.predecessorOffer,
+  ffxStageOffer.currentGoal, ...ffxStageOffer.sourceDocuments, ...ffxStageOffer.reviews.flatMap(review => [review.response, review.receipt])]) {
+  assert.equal(createHash('sha256').update(readFileSync(resolve(repoRoot, file.path))).digest('hex'), file.sha256, file.path)
+}
+const nationalFfx = readJson<{reviewedCrossStageAssessmentExposures: {DE: Record<string, unknown>}}>(
+  'scripts/generate_laender_physics_stage_views.sources.json').reviewedCrossStageAssessmentExposures.DE[ffxGoalId]
+assert.deepEqual(ffxBindings.sourceRows.map(row => [row.authority, row.after]), [
+  ['SN', lowerSourceBindings.SN.assessments[ffxGoalId]], ['DE', nationalFfx],
+])
+stageScoring.set(ffxGoalId, {record: ffxStageOffer, path: ffxStageOfferPath})
+
+const ffxCoverage = readJson<{
+  supersedes: EvidenceFile; previousPayload: {goalId: string; normalizedSha256: string}
+  previousOfferedAssessmentRow: Record<string, unknown>; currentOfferedAssessmentRow: Record<string, unknown>
+  currentPayload: {goalId: string; normalizedSha256: string}; currentAssessmentRevisions: object
+  accepted: EvidenceFile; coveredGoalIds: string[]; planningCreditGranted: boolean; declaredOwningUnitId: null
+}>(ffxBindings.coverage.path)
+const oldFfxCoverage = readJson<{otherOfferedAssessmentRows: Array<{goalId: string}>;
+  currentGoalPayloads: Array<{goalId: string}>}>(ffxCoverage.supersedes.path)
+assert.equal(sha256(readFileSync(resolve(repoRoot, ffxCoverage.supersedes.path), 'utf8')), ffxCoverage.supersedes.sha256)
+assert.deepEqual(ffxCoverage.previousOfferedAssessmentRow, oldFfxCoverage.otherOfferedAssessmentRows.find(row => row.goalId === ffxGoalId))
+assert.deepEqual(ffxCoverage.previousPayload, oldFfxCoverage.currentGoalPayloads.find(row => row.goalId === ffxGoalId))
+assert.deepEqual(ffxCoverage.currentPayload, {goalId: ffxGoalId, normalizedSha256: 'sha256:' + sha256(canonicalJson(acceptedFfxGoal))})
+assert.deepEqual(ffxCoverage.currentOfferedAssessmentRow, {
+  ...ffxCoverage.previousOfferedAssessmentRow, passingPoints: 22, maxPoints: 26,
+  currentRawGoalArtifact: ffxStageOffer.currentGoal.path, currentNormalizedGoalSha256: ffxCoverage.currentPayload.normalizedSha256,
+})
+assert.deepEqual(ffxCoverage.accepted, ffxStageOffer.accepted)
+const ffxExam = acceptedFfxGoal.examData as ExamData
+assert.deepEqual(ffxCoverage.coveredGoalIds, ffxExam.coveredGoalIds)
+assert.deepEqual([ffxCoverage.planningCreditGranted, ffxCoverage.declaredOwningUnitId], [false, null])
+assert(!(rawLandscape.programUnits as Array<{coverageReviews?: Array<{assessmentGoalId: string}>}>)
+  .some(unit => unit.coverageReviews?.some(review => review.assessmentGoalId === ffxGoalId)))
+assert(!(rawLandscape.goalPlacements as Array<{goalId: string; relation: string}>)
+  .some(placement => placement.goalId === ffxGoalId && placement.relation === 'own'))
+const ffxTaskRevision = 'sha256:' + sha256(canonicalJson({taskContent: ffxExam.taskContent, solutionContent: ffxExam.solutionContent}))
+const ffxRubricRevision = 'sha256:' + sha256(canonicalJson(ffxExam.scoring))
+assert.deepEqual(ffxCoverage.currentAssessmentRevisions, {
+  taskRevision: ffxTaskRevision, rubricRevision: ffxRubricRevision,
+  fingerprint: 'sha256:' + sha256(canonicalJson({taskRevision: ffxTaskRevision, rubricRevision: ffxRubricRevision,
+    taskContentEn: ffxExam.taskContentEn, solutionContentEn: ffxExam.solutionContentEn})),
+})
+
 // The V3 record bound R2 to the owned BES atom at 19/20. A reviewed scoring
 // revision retains this coverage and the distinct D-only planning release.
 const dprimeSuccessorRoot = `${currentExamEvidenceRoot}dprime-passmark-successor-20261124/`
@@ -1905,6 +2002,7 @@ const ffxWarningRows = readJson<{ acceptedWarnings: Array<{ code: string; goalId
 } }> }>('docs/qa-ci/applicability-accepted-warnings.json').acceptedWarnings
   .filter(row => row.code === 'APV-201' && row.goalId === saxonFreeFallExam)
 assert.equal(ffxWarningRows.length, 1)
+assert.deepEqual(ffxWarningRows[0], ffxBindings.warningRows.after)
 const ffxWarning = ffxWarningRows[0].evidence
 const ffxStage = stageScoring.get(saxonFreeFallExam)
 assert.equal(ffxWarning.reviewPath, ffxStage?.path ?? currentStageOffersPath)

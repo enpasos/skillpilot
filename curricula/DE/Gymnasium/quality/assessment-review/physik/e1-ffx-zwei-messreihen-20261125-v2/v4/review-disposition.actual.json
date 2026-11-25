@@ -1,0 +1,1066 @@
+{
+  "schemaVersion": 1,
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "version": 4,
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "c178a3b6b7c0b65147e59d660ea07abeadd336118483f3af01f0c34a95272234"
+  },
+  "currentGoalSha256": "4c9f46abb094bf183556d5e6094e38aaa86f79b37252322649333495d50b1017",
+  "author": {
+    "provider": "OpenAI",
+    "tool": "collaboration.spawn_agent",
+    "modelId": "gpt-6.1-sol",
+    "sessionId": "01a21166-ba1f-7781-a646-97d709e3e42b",
+    "reasoningEffort": "ultra",
+    "response": {
+      "path": "author/examData.json",
+      "sha256": "65c77d078d4dbc9c75b47048753e731e940b20b28fea0a55e0cdeb7bb3c32d90"
+    },
+    "memorandum": {
+      "path": "author/author-memorandum.json",
+      "sha256": "09ae95f8b4b6261eb94ab7195a5da21befbb35781ef7952fb37e120277ee893b"
+    },
+    "inputs": [
+      {
+        "path": "tmp/e1-handover/claude-antworten.md",
+        "sha256": "ebcfa310726fa8d6aad54c1d6665940a671744774fae2a75302e259794adf751",
+        "use": "Only 07:29 concept decision and earlier B2-relevant task scope; unrelated entries not used"
+      },
+      {
+        "path": "candidate-v3.json",
+        "sha256": "5085ab826954d38f616e8cb05bc8d875d1bf30bc59080f9acf0054c003ff4725",
+        "use": "Entire exam-data payload; no canonical goal wrapper supplied"
+      },
+      {
+        "path": "author-notes-v3.md",
+        "sha256": "9187c4a00c2c458829f7c3be25bec86d0d56ec01c36240ffd4b6dd041bf2cf20",
+        "use": "v3 rubric-author rationale, not marking evidence"
+      }
+    ],
+    "sourceSessionRawSha256": "862e67b2e99defa29763076ed45587f4b28701a9f0eba4d9af74c5b2845653b9",
+    "role": "Author only, isolated from grading, panel and previous marker responses."
+  },
+  "rounds": [
+    {
+      "round": "a",
+      "run": {
+        "path": "round-a/run.actual.json",
+        "sha256": "260375dbdee1998dea5938e7e9d366a2048c0f3c9e2b5d07efba4747e4e822a5"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "d7a62b741dba46624487d4290c3ae5b1ab48da95aa39d2eb3d3e23f016b90323"
+      }
+    },
+    {
+      "round": "b",
+      "run": {
+        "path": "round-b/run.actual.json",
+        "sha256": "aee5917809a01d98f8bcf2b54b976ef89b17d8cce3ecfb6be5372c079ac7c697"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "ed36e9499358737faa930cc2b383497dbb9601c10d3794daeeafe6be42a30081"
+      }
+    }
+  ],
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a21176-6594-76d1-9bc5-967d398ed670",
+      "decision": "revise",
+      "validationFindings": [
+        "Reviewer decision: revise",
+        "Den deutschen Schlusssatz „Kombinationen mehrerer Fälle dürfen nicht bestehen“ durch eine Aussage entsprechend EN ersetzen: Kombinationen können zum Nichtbestehen führen; allein die festgelegte Punktesumme entscheidet. Andernfalls bleiben insbesondere die Bestehensentscheidungen bei L01, L12 und L16 normativ widersprüchlich."
+      ],
+      "eligibleForActivation": false,
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "260375dbdee1998dea5938e7e9d366a2048c0f3c9e2b5d07efba4747e4e822a5"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "d7a62b741dba46624487d4290c3ae5b1ab48da95aa39d2eb3d3e23f016b90323"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a2116e-88f1-7953-935d-658c96213b9c",
+      "decision": "revise",
+      "validationFindings": [
+        "Reviewer decision: revise",
+        "Den deutschen und englischen Schlusssatz an die eindeutige Summenregel angleichen. Eine geeignete deutsche Fassung lautet „Bei mehreren Mängeln entscheidet die ungerundete Summe. Ab 22 BE ist die Prüfung bestanden.“ L12 muss dabei mit 23,5 BE bestehen und L17 mit 21,5 BE durchfallen.",
+        "Für die behauptete vollständige Untersuchungskette ausdrücklich prüfen, ob mindestens ein eigener grafischer Laufwert oder eine eigene Reihenanpassung den im Gesetz verwendeten Schätzwert nachvollziehbar trägt. Eine bloße Übereinstimmung zweier geschriebener Zahlen sichert diese fachliche Verbindung nicht. Die Korrektur muss eine unbelegte Herleitung von einer belegten Fremdübernahme unterscheiden.",
+        "Die Punktewirkung der Verknüpfungsprüfung an einer Stelle vollständig ausweisen. Bei vorhandener Schätzung und abweichendem Gesetzeswert entfällt allein das Gesetzeskriterium. Bei fehlender eigener Schätzung sieht das jetzige Raster ausdrücklich zwei Wertungen vor. Bei Grenzvariation und Vergleich müssen die tatsächlich gezeigten eigenständigen Leistungen weiterhin zählen."
+      ],
+      "eligibleForActivation": false,
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "aee5917809a01d98f8bcf2b54b976ef89b17d8cce3ecfb6be5372c079ac7c697"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "ed36e9499358737faa930cc2b383497dbb9601c10d3794daeeafe6be42a30081"
+      }
+    }
+  ],
+  "adjudicatedSubmissions": [
+    {
+      "auditId": "L7Q4",
+      "kind": "control",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L11",
+          "total": 26,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L09",
+          "total": 26,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "C2V9",
+      "kind": "four_slips",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L02",
+          "total": 24,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L01",
+          "total": 24,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "N8D3",
+      "kind": "one_missing_facet",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L07",
+          "total": 25.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L02",
+          "total": 25.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "F5W1",
+      "kind": "B_absent",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L18",
+          "total": 13,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 0,
+            "b-graph-g": 0,
+            "b-law": 0,
+            "b-initial-conditions": 0,
+            "b-boundaries-comparison": 0
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L08",
+          "total": 13,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 0,
+            "b-graph-g": 0,
+            "b-law": 0,
+            "b-initial-conditions": 0,
+            "b-boundaries-comparison": 0
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "R3J6",
+      "kind": "A_absent",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L14",
+          "total": 12,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 0,
+            "a-graph-g": 0,
+            "a-law": 0,
+            "a-initial-conditions": 0,
+            "a-boundaries": 0,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 1
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L13",
+          "total": 12,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 0,
+            "a-graph-g": 0,
+            "a-law": 0,
+            "a-initial-conditions": 0,
+            "a-boundaries": 0,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 1
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "U9H2",
+      "kind": "maintained_misconception",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L09",
+          "total": 20.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 0,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L10",
+          "total": 20.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 0,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "K4P8",
+      "kind": "A_weak_estimate_B_law_mismatch",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L12",
+          "total": 22.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L03",
+          "total": 22.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "E6S5",
+      "kind": "A_no_series_estimate",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L04",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L18",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "V1M7",
+      "kind": "pooled_comparison",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L15",
+          "total": 26,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L05",
+          "total": 26,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "J8B4",
+      "kind": "pooled_substitution",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L06",
+          "total": 20,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 2.5,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L15",
+          "total": 20,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 2.5,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "Q2X6",
+      "kind": "boundary_minus_four_slips",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L01",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L12",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "H6T9",
+      "kind": "boundary_minus_five_slips",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L16",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 1.5
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L11",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 1.5,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 1.5
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "D3Z7",
+      "kind": "both_explicit_law_mismatches",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L10",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L04",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 0,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "T9G2",
+      "kind": "one_explicit_law_mismatch",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L05",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L06",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "G7N2",
+      "kind": "A_initial_conditions_and_release_check_omitted",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L03",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L16",
+          "total": 23.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "P4R8",
+      "kind": "both_initial_conditions_and_release_checks_omitted",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L17",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 0,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L14",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 2.5,
+            "b-initial-conditions": 0,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "S6Y3",
+      "kind": "crossed_A_conditions_and_B_law_omissions",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L13",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L07",
+          "total": 21,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-law": 2.5,
+            "a-initial-conditions": 0,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "W2J5",
+      "kind": "one_foreign_coefficient_plus_four_slips",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L08",
+          "total": 21.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L17",
+          "total": 21.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-law": 2.5,
+            "a-initial-conditions": 2.5,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-law": 0,
+            "b-initial-conditions": 2.5,
+            "b-boundaries-comparison": 2
+          }
+        }
+      ]
+    }
+  ],
+  "prospectiveCriterionIdAliases": {
+    "a-law": "a-law",
+    "b-law": "b-law"
+  },
+  "panelDifferences": [],
+  "criterionScorePairs": 180,
+  "criterionScoresMatchingBetweenReviewers": 180,
+  "passDecisionsMatchingBetweenReviewers": 18,
+  "validationFindings": [
+    "Reviewer decision: revise",
+    "Den deutschen Schlusssatz „Kombinationen mehrerer Fälle dürfen nicht bestehen“ durch eine Aussage entsprechend EN ersetzen: Kombinationen können zum Nichtbestehen führen; allein die festgelegte Punktesumme entscheidet. Andernfalls bleiben insbesondere die Bestehensentscheidungen bei L01, L12 und L16 normativ widersprüchlich.",
+    "Reviewer decision: revise",
+    "Den deutschen und englischen Schlusssatz an die eindeutige Summenregel angleichen. Eine geeignete deutsche Fassung lautet „Bei mehreren Mängeln entscheidet die ungerundete Summe. Ab 22 BE ist die Prüfung bestanden.“ L12 muss dabei mit 23,5 BE bestehen und L17 mit 21,5 BE durchfallen.",
+    "Für die behauptete vollständige Untersuchungskette ausdrücklich prüfen, ob mindestens ein eigener grafischer Laufwert oder eine eigene Reihenanpassung den im Gesetz verwendeten Schätzwert nachvollziehbar trägt. Eine bloße Übereinstimmung zweier geschriebener Zahlen sichert diese fachliche Verbindung nicht. Die Korrektur muss eine unbelegte Herleitung von einer belegten Fremdübernahme unterscheiden.",
+    "Die Punktewirkung der Verknüpfungsprüfung an einer Stelle vollständig ausweisen. Bei vorhandener Schätzung und abweichendem Gesetzeswert entfällt allein das Gesetzeskriterium. Bei fehlender eigener Schätzung sieht das jetzige Raster ausdrücklich zwei Wertungen vor. Bei Grenzvariation und Vergleich müssen die tatsächlich gezeigten eigenständigen Leistungen weiterhin zählen."
+  ],
+  "eligibleForActivation": false,
+  "accepted": false,
+  "artifacts": [
+    {
+      "path": "author/author-memorandum.json",
+      "sha256": "09ae95f8b4b6261eb94ab7195a5da21befbb35781ef7952fb37e120277ee893b"
+    },
+    {
+      "path": "author/author-memorandum.md",
+      "sha256": "1020f4e122e93451edf47b68a9d9973b184c6a44e31e2f844074e86019a69a67"
+    },
+    {
+      "path": "author/examData.json",
+      "sha256": "65c77d078d4dbc9c75b47048753e731e940b20b28fea0a55e0cdeb7bb3c32d90"
+    },
+    {
+      "path": "author/receipt.actual.json",
+      "sha256": "b8d38ced5dbed66a72bfb82828f9b5583613f62be3371088b7a7ad5caac480b6"
+    },
+    {
+      "path": "candidate.goal.json",
+      "sha256": "c178a3b6b7c0b65147e59d660ea07abeadd336118483f3af01f0c34a95272234"
+    },
+    {
+      "path": "expected-marks.json",
+      "sha256": "5d40fc7de23aced2415add326e935129cb776f5be7d1dba48c8114f5ed7725c1"
+    },
+    {
+      "path": "graphs/appendix-p6.png",
+      "sha256": "9ccde0147743e3d3709c3b9f54db189c794831d9508f84318c6cdee4eb8c870a"
+    },
+    {
+      "path": "graphs/appendix-r8.png",
+      "sha256": "8ea9f29a16498dc6546f03ddbaac566fbb3e8c49593770aef5472c2a92243648"
+    },
+    {
+      "path": "graphs/appendix-t3.png",
+      "sha256": "86e3e2d9fb46f59e53cc495720577e2674fabfc4d83ff8f9ffd233efc02f67f5"
+    },
+    {
+      "path": "incomplete-first-marking-a/canonical-input.json",
+      "sha256": "e211672634c566886710c79f71d4c44319b36052ae03a04d0239b915edcda7a3"
+    },
+    {
+      "path": "incomplete-first-marking-a/events.jsonl",
+      "sha256": "86675682b1053cf1db06643f68b884d03e7f3b0c967cf52ef35358e1c26b8dde"
+    },
+    {
+      "path": "incomplete-first-marking-a/output.schema.json",
+      "sha256": "4569c0c9277afe914670fc40cf4c9b016a31254f57a0ba27e2bb499e7318aa88"
+    },
+    {
+      "path": "incomplete-first-marking-a/prompt.txt",
+      "sha256": "b2af322f0c13014ada2bf600bda190067173db3277b8082046a22d94aafe70ce"
+    },
+    {
+      "path": "incomplete-first-marking-a/response.json",
+      "sha256": "0ac6df9519c73c38fed77b7a13c68a0d04a281e2d610eb407d3080a0d5aab860"
+    },
+    {
+      "path": "incomplete-first-marking-a/run.actual.json",
+      "sha256": "be5e7b764d61f6f378375096a2d6f88f5c7ed8766a0e8d4878d8dc78474d0e23"
+    },
+    {
+      "path": "incomplete-first-marking-a/stderr.txt",
+      "sha256": "691ac28824df04a6eef298a4ad8012b9af29bc653e6f4b133cd8c002c16dd2a8"
+    },
+    {
+      "path": "native-description-lengths.actual.json",
+      "sha256": "d4e613bbdafa41460d5fde8d0632ad01d5c55163f1fa7909ead0d396dcfda3f0"
+    },
+    {
+      "path": "original.goal.json",
+      "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4"
+    },
+    {
+      "path": "panel-audit/audit.md",
+      "sha256": "1dd6a05826577628114c670c0b2d51a9a14d9763abbc80e074c3d9f3833fbca1"
+    },
+    {
+      "path": "panel-audit/replay.actual.json",
+      "sha256": "43f5c42b34a3f738f1598cead24c2c982e9388d72f3d3955fc0419e5460d6f40"
+    },
+    {
+      "path": "panel-audit/seal.actual.json",
+      "sha256": "aa79042355befb60d9a608ec44f714aeee0b2800b6afc4749de035a6bb93af9d"
+    },
+    {
+      "path": "performances.json",
+      "sha256": "e2860ae2398e10ae6e9a6d08ebb8baea5acf1b751ec80fbf20a36ef060dc289a"
+    },
+    {
+      "path": "round-a/canonical-input.json",
+      "sha256": "e211672634c566886710c79f71d4c44319b36052ae03a04d0239b915edcda7a3"
+    },
+    {
+      "path": "round-a/events.jsonl",
+      "sha256": "7cd56d0bf5bf28a19cf384f4ae50f6cd5f878498a83b1c1708ca52c218bf46d0"
+    },
+    {
+      "path": "round-a/output.schema.json",
+      "sha256": "baadfe847c706becd3c05a6ac3cc0f547e305aa57472204df80a1d71aef81e1b"
+    },
+    {
+      "path": "round-a/prompt.txt",
+      "sha256": "ba5a5ab2afc211d74820221255a6703b14b18b7507689184237eb21de0334522"
+    },
+    {
+      "path": "round-a/response.json",
+      "sha256": "d7a62b741dba46624487d4290c3ae5b1ab48da95aa39d2eb3d3e23f016b90323"
+    },
+    {
+      "path": "round-a/run.actual.json",
+      "sha256": "260375dbdee1998dea5938e7e9d366a2048c0f3c9e2b5d07efba4747e4e822a5"
+    },
+    {
+      "path": "round-a/stderr.txt",
+      "sha256": "fde743b4f6900983d374536aff4b926f97be150641c64dbae2a191dedbd7badd"
+    },
+    {
+      "path": "round-b/canonical-input.json",
+      "sha256": "01e9258a0b7638fa82ee644dcf167d40e4088e0768c06df126f46f74ef68ff41"
+    },
+    {
+      "path": "round-b/events.jsonl",
+      "sha256": "56fb440b7d28262e8f378b5a05ba4a0f4451d75d141cae5d2806d7d262dc164f"
+    },
+    {
+      "path": "round-b/output.schema.json",
+      "sha256": "4569c0c9277afe914670fc40cf4c9b016a31254f57a0ba27e2bb499e7318aa88"
+    },
+    {
+      "path": "round-b/prompt.txt",
+      "sha256": "d3cda30b7fe6f8ae69fbf47288781da79f23d5a14d7c86d6968d4e262fb91264"
+    },
+    {
+      "path": "round-b/response.json",
+      "sha256": "ed36e9499358737faa930cc2b383497dbb9601c10d3794daeeafe6be42a30081"
+    },
+    {
+      "path": "round-b/run.actual.json",
+      "sha256": "aee5917809a01d98f8bcf2b54b976ef89b17d8cce3ecfb6be5372c079ac7c697"
+    },
+    {
+      "path": "round-b/stderr.txt",
+      "sha256": "d55f38f1a905f60492badd0f217e838c4463730f2be05e603ef9345c097e462b"
+    },
+    {
+      "path": "round-keys.actual.json",
+      "sha256": "156781c3b4b31089b6c807ce96adcc550b37183848918975ef23deddea2b9b1f"
+    },
+    {
+      "path": "script-intent.json",
+      "sha256": "8309c500ffec83ff15b20e93f01fedc2b8627f2cac705e17d5a49a3f984a2ebc"
+    },
+    {
+      "path": "scripts.json",
+      "sha256": "3cecca31e00c0192828c293bdd8598d43bc7e17b966427fbc7dda893a6d0f7bf"
+    }
+  ]
+}

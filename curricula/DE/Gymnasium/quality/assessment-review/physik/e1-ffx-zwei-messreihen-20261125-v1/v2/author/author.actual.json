@@ -1,0 +1,70 @@
+{
+  "provider": "Anthropic",
+  "role": "rubric-author",
+  "candidateVersion": 2,
+  "requestedModel": "opus",
+  "effort": "high",
+  "tools": [],
+  "startedAt": "2026-11-25T03:05:55.127215+00:00",
+  "finishedAt": "2026-11-25T03:15:26.073983+00:00",
+  "exitCode": 0,
+  "inputArtifacts": [
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/system.txt",
+      "sha256": "30070b2704bd2a5d24e4f7c6fbf324c9eb1eaa5dbc23299408f60fca5ca0b998",
+      "bytes": 526
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/instructions.txt",
+      "sha256": "8790fb527da039bc2d43dbb23a8bea285e3a60156c899c03640fa5674fb90811",
+      "bytes": 8990
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/input.json",
+      "sha256": "ac4c19cec91c0496711926d7056eac0ffd878e43ce7f6a80588ae02e54b42d6e",
+      "bytes": 74289
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/review-findings.anonymized.json",
+      "sha256": "d1f97838b161980de1311d9dd7b9e9fc0a9759457bc451a74cce9e287546eef9",
+      "bytes": 8359
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/binding-decision-0403.md",
+      "sha256": "83147e2cb85d97c1a8c07554d38bffdf4826b3f9604fe763b25643f55ae990f9",
+      "bytes": 2284
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/prompt.txt",
+      "sha256": "0d922e911293a94bc5f8c3f7ff3100318afee6e13b84165177e3bd06f6f940ec",
+      "bytes": 81926
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/invocation.json",
+      "sha256": "35780132e91597a5a9a23c1b0e6de2853dcaee00d5e9fa48532d72142cf6939e",
+      "bytes": 1182
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/auth-status.actual.json",
+      "sha256": "3fa2dd7b3241efe1dbf32b0c8d781a25d77d3e22acc134c25b97ae7b29614d56",
+      "bytes": 513
+    }
+  ],
+  "outputArtifacts": [
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/provider-response.json",
+      "sha256": "1ab96ab49052e6c3303ee0ca49ed9221fa0081707dd5747612a72dbe9ef4bdbe",
+      "bytes": 53539
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "model": [
+    "claude-opus-5-5"
+  ],
+  "sessionId": "c3e521a0-a685-483b-adaa-8ad2c74761d2",
+  "providerResultIsError": false
+}

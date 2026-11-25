@@ -1,0 +1,34 @@
+{
+  "provider": "OpenAI",
+  "tool": "collaboration.spawn_agent",
+  "modelId": "gpt-6.1-sol",
+  "sessionId": "01a21166-ba1f-7781-a646-97d709e3e42b",
+  "reasoningEffort": "ultra",
+  "response": {
+    "path": "author/examData.json",
+    "sha256": "65c77d078d4dbc9c75b47048753e731e940b20b28fea0a55e0cdeb7bb3c32d90"
+  },
+  "memorandum": {
+    "path": "author/author-memorandum.json",
+    "sha256": "09ae95f8b4b6261eb94ab7195a5da21befbb35781ef7952fb37e120277ee893b"
+  },
+  "inputs": [
+    {
+      "path": "tmp/e1-handover/claude-antworten.md",
+      "sha256": "ebcfa310726fa8d6aad54c1d6665940a671744774fae2a75302e259794adf751",
+      "use": "Only 07:29 concept decision and earlier B2-relevant task scope; unrelated entries not used"
+    },
+    {
+      "path": "candidate-v3.json",
+      "sha256": "5085ab826954d38f616e8cb05bc8d875d1bf30bc59080f9acf0054c003ff4725",
+      "use": "Entire exam-data payload; no canonical goal wrapper supplied"
+    },
+    {
+      "path": "author-notes-v3.md",
+      "sha256": "9187c4a00c2c458829f7c3be25bec86d0d56ec01c36240ffd4b6dd041bf2cf20",
+      "use": "v3 rubric-author rationale, not marking evidence"
+    }
+  ],
+  "sourceSessionRawSha256": "862e67b2e99defa29763076ed45587f4b28701a9f0eba4d9af74c5b2845653b9",
+  "role": "Author only, isolated from grading, panel and previous marker responses."
+}

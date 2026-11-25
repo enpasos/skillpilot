@@ -1,0 +1,182 @@
+{
+  "coordinator_only": true,
+  "purpose": "Synthetic counterfactual learner scripts for blind rubric marking. These are authored test artifacts, not claims of actual learner experiments or empirical learning effectiveness.",
+  "goal_id": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "source": "c00a057b91",
+  "cases": [
+    {
+      "id": "L7Q4",
+      "kind": "control",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "C2V9",
+      "kind": "four_slips",
+      "slips": true,
+      "appendices": [
+        "appendix-r8.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "N8D3",
+      "kind": "one_missing_facet",
+      "omit": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "F5W1",
+      "kind": "B_absent",
+      "missing": "B",
+      "appendices": [
+        "appendix-p6.png"
+      ]
+    },
+    {
+      "id": "R3J6",
+      "kind": "A_absent",
+      "missing": "A",
+      "appendices": [
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "U9H2",
+      "kind": "maintained_misconception",
+      "misconception": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "K4P8",
+      "kind": "A_weak_estimate_B_law_mismatch",
+      "weak": true,
+      "mismatch": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "E6S5",
+      "kind": "A_no_series_estimate",
+      "no_est": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "V1M7",
+      "kind": "pooled_comparison",
+      "pooled_comparison": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "J8B4",
+      "kind": "pooled_substitution",
+      "pooled_substitution": true,
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "Q2X6",
+      "kind": "boundary_minus_four_slips",
+      "omit": true,
+      "slips": true,
+      "appendices": [
+        "appendix-r8.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "H6T9",
+      "kind": "boundary_minus_five_slips",
+      "omit": true,
+      "slips": true,
+      "fifth": true,
+      "appendices": [
+        "appendix-r8.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "D3Z7",
+      "kind": "both_explicit_law_mismatches",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ],
+      "reasonAdded": "Added after both v1 reviews asked what a pass can certify about the link between a fitted estimate and the coefficient. Only the two reported coefficients differ from the complete control. First twelve scripts remain byte-identical in content. Historical parent-panel note; this prospective panel applies the same common time-origin correction to every applicable case."
+    },
+    {
+      "id": "T9G2",
+      "kind": "one_explicit_law_mismatch",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ],
+      "reasonAdded": "Mirror of D3Z7 required by the 04:03 decision: series A uses the stated own estimate; B has the same explicit difference as D3Z7. Both investigations otherwise fully evidenced. Historical parent-panel note; this prospective panel applies the same common time-origin correction to every applicable case."
+    },
+    {
+      "id": "G7N2",
+      "kind": "A_initial_conditions_and_release_check_omitted",
+      "derivedFrom": "L7Q4",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "P4R8",
+      "kind": "both_initial_conditions_and_release_checks_omitted",
+      "derivedFrom": "L7Q4",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "S6Y3",
+      "kind": "crossed_A_conditions_and_B_law_omissions",
+      "derivedFrom": "G7N2",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "W2J5",
+      "kind": "one_foreign_coefficient_plus_four_slips",
+      "derivedFrom": "C2V9",
+      "appendices": [
+        "appendix-r8.png",
+        "appendix-t3.png"
+      ]
+    },
+    {
+      "id": "X4U7",
+      "kind": "both_reported_estimates_unsupported_by_own_graphical_fits",
+      "derivedFrom": "L7Q4",
+      "appendices": [
+        "appendix-p6.png",
+        "appendix-t3.png"
+      ]
+    }
+  ],
+  "parentVersion": 4,
+  "addition": "One prospective synthetic script testing numerical traceability of each stated series estimate to the own graphical determinations."
+}

@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "candidateVersion": 3,
+  "lastAllowedVersion": true,
+  "provider": "Anthropic",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "sessionId": "897365f2-feed-4c1e-b4eb-b5693410b9c2",
+  "extractedAt": "2026-11-25T03:40:45.732756+00:00",
+  "reconstruction": "Deep copy of exact original canonical examData from a6117075c1 preserved in author-v1/input.json; replaced only the native-authored two solution strings and eight descriptions, plus passingPoints 20 and maxima 3/3/4/2 per investigation expressly authorized by 25 November 2026 04:03 CET decision. No authored string was manually edited.",
+  "baselineArtifact": {
+    "path": "/tmp/e1-ffx-20261125/author-v1/input.json",
+    "sha256": "26843b955a5463f1cde2ab8d27d4a13d3a4267cbd4e8b35e943dce615bcb8bfc",
+    "bytes": 27999
+  },
+  "bindingDecision": {
+    "path": "/tmp/e1-ffx-20261125/author-v3/binding-decision-0403.md",
+    "sha256": "83147e2cb85d97c1a8c07554d38bffdf4826b3f9604fe763b25643f55ae990f9",
+    "bytes": 2284
+  },
+  "baselineEquivalence": {
+    "path": "/tmp/e1-ffx-20261125/author-v2/baseline-equivalence.actual.json",
+    "sha256": "5df8395d8cfb055b40b2712c54aef851995617de7a8a9b233accd2703866755d",
+    "bytes": 686
+  },
+  "authenticationEvidenceRetainedPrivately": true,
+  "authorizedPoints": [
+    3,
+    3,
+    4,
+    2,
+    3,
+    3,
+    4,
+    2
+  ],
+  "changedExamDataFields": [
+    "/solutionContent",
+    "/solutionContentEn",
+    "/scoring/passingPoints",
+    "/scoring/steps/0/description",
+    "/scoring/steps/1/description",
+    "/scoring/steps/2/points",
+    "/scoring/steps/2/description",
+    "/scoring/steps/3/points",
+    "/scoring/steps/3/description",
+    "/scoring/steps/4/description",
+    "/scoring/steps/5/description",
+    "/scoring/steps/6/points",
+    "/scoring/steps/6/description",
+    "/scoring/steps/7/points",
+    "/scoring/steps/7/description"
+  ],
+  "utf16StepLengths": {
+    "a-actual-data": 1449,
+    "a-graph-g": 1353,
+    "a-initial-law": 1458,
+    "a-boundaries": 1294,
+    "b-actual-data": 1628,
+    "b-graph-g": 1325,
+    "b-initial-law": 1521,
+    "b-boundaries-comparison": 1524
+  },
+  "targetUtf16Units": 1450,
+  "targetExceeded": [
+    "a-initial-law",
+    "b-actual-data",
+    "b-initial-law",
+    "b-boundaries-comparison"
+  ],
+  "structuralStatus": "pass",
+  "structuralChecks": "pass",
+  "structuralIssues": [],
+  "allOtherStructuralChecks": "pass",
+  "semanticReviewStatus": "pending independent blind marking; structural pass does not establish semantic acceptance",
+  "parseOnlyTransformations": [],
+  "artifacts": [
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v3/provider-response.json",
+      "sha256": "4454739ae5eea74759e7d5a0b8565e4e60b47b255f8c7f44d501a43116177e8d",
+      "bytes": 70540
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v3/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v3/authored-response.parsed.json",
+      "sha256": "9b452f18a3c93bf609a9aa48c8b493691402d683d7581da22f5e5a226b1bd8ba",
+      "bytes": 68174
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/candidate-v3.json",
+      "sha256": "5085ab826954d38f616e8cb05bc8d875d1bf30bc59080f9acf0054c003ff4725",
+      "bytes": 73429
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-notes-v3.md",
+      "sha256": "9187c4a00c2c458829f7c3be25bec86d0d56ec01c36240ffd4b6dd041bf2cf20",
+      "bytes": 5757
+    }
+  ]
+}

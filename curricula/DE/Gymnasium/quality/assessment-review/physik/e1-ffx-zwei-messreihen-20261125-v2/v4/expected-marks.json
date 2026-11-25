@@ -1,0 +1,411 @@
+{
+  "coordinatorOnly": true,
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "criterionOrder": [
+    "a-actual-data",
+    "a-graph-g",
+    "a-law",
+    "a-initial-conditions",
+    "a-boundaries",
+    "b-actual-data",
+    "b-graph-g",
+    "b-law",
+    "b-initial-conditions",
+    "b-boundaries-comparison"
+  ],
+  "maxima": [
+    3,
+    3,
+    2.5,
+    2.5,
+    2,
+    3,
+    3,
+    2.5,
+    2.5,
+    2
+  ],
+  "passingPoints": 22,
+  "maxPoints": 26,
+  "decisionReference": "25 Nov 2026 07:29 CET, B2 decision, plus the adjudicated v3 scores for unchanged marking dimensions.",
+  "rows": [
+    {
+      "auditId": "L7Q4",
+      "kind": "control",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 3,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 26,
+      "passes": true,
+      "reason": "Full control.",
+      "submissionUtf8Sha256": "8b7090cbf8544a4034a91f0927db7c79a56fa44f152a9442a2969a111193922e",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "C2V9",
+      "kind": "four_slips",
+      "scores": {
+        "a-actual-data": 2.5,
+        "a-graph-g": 2.5,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 2.5,
+        "b-graph-g": 2.5,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 24,
+      "passes": true,
+      "reason": "Four independent local slips in table/graph units.",
+      "submissionUtf8Sha256": "47a1a0f659b7f8869fad8606d47273c887e2618161abe577c686ac036fdb0929",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "N8D3",
+      "kind": "one_missing_facet",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 3,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 1.5,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 25.5,
+      "passes": true,
+      "reason": "No A limit re-fit.",
+      "submissionUtf8Sha256": "501638922c5264ccaed85905c8e8b5b2308d4e7d13cd77361f5ffa672b4877df",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "F5W1",
+      "kind": "B_absent",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 3,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 0,
+        "b-graph-g": 0,
+        "b-law": 0,
+        "b-initial-conditions": 0,
+        "b-boundaries-comparison": 0
+      },
+      "total": 13,
+      "passes": false,
+      "reason": "No B investigation.",
+      "submissionUtf8Sha256": "b07614581c2d712ccf4a9738f65a966117098ffa45b6b529a7f44eddb874bae4",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "R3J6",
+      "kind": "A_absent",
+      "scores": {
+        "a-actual-data": 0,
+        "a-graph-g": 0,
+        "a-law": 0,
+        "a-initial-conditions": 0,
+        "a-boundaries": 0,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 1
+      },
+      "total": 12,
+      "passes": false,
+      "reason": "No A investigation and no evidence for B's one-point comparison.",
+      "submissionUtf8Sha256": "cb2cb1c7815d3923665fd242ae41346a65914196a431b9228048ec5eb70b7b08",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "U9H2",
+      "kind": "maintained_misconception",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 0,
+        "a-law": 0,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 20.5,
+      "passes": false,
+      "reason": "Book value as own A result maintained after hint; only A determination and matching coefficient lost.",
+      "submissionUtf8Sha256": "4ef64029cfdd0186ba5fa7902e1c1c9fdbdfb7b07f603c13f3de1aee33379553",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "K4P8",
+      "kind": "A_weak_estimate_B_law_mismatch",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 2.5,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 1.5,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 0,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 22.5,
+      "passes": true,
+      "reason": "A selects only run 1 without justification, but reports only the varied mean and supplies no changed run-1 value. Its own law matches 9.79. B law 10.20 differs from 9.72.",
+      "submissionUtf8Sha256": "b7559a49461e8ee10fe1112c97c745f3bf8910b53ed6689cfec8f6275a4ba819",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "E6S5",
+      "kind": "A_no_series_estimate",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 2.5,
+        "a-law": 0,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 23,
+      "passes": true,
+      "reason": "No stated A estimate: result subpart and A coefficient only. Varied mean and comparisons of assigned run differences with both uncertainties retained.",
+      "submissionUtf8Sha256": "b8ad7acf0530a19d77cfb9975f5ba07bfcd77f33feb6d9f44d2f0b31383577c6",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "V1M7",
+      "kind": "pooled_comparison",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 3,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 26,
+      "passes": true,
+      "reason": "Separate results and laws; pooled estimate is an additional diagnostic.",
+      "submissionUtf8Sha256": "66bab5779d5fb169f4157c3c8bb1110209f5fb8474b27aaa3f58ed06dde815fb",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "J8B4",
+      "kind": "pooled_substitution",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 2.5,
+        "a-law": 0,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 2.5,
+        "b-law": 0,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 20,
+      "passes": false,
+      "reason": "Pooled estimate substituted; each series lacks its nominal estimate and corresponding law coefficient. Comparison uses extrema of the assigned differences and both uncertainties.",
+      "submissionUtf8Sha256": "89d739caf000f0031b965b679d2204aa56443240bea167e704822cf084aa440c",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "Q2X6",
+      "kind": "boundary_minus_four_slips",
+      "scores": {
+        "a-actual-data": 2.5,
+        "a-graph-g": 2.5,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 1.5,
+        "b-actual-data": 2.5,
+        "b-graph-g": 2.5,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 23.5,
+      "passes": true,
+      "reason": "Four slips and missing A variation.",
+      "submissionUtf8Sha256": "651d223a587b5d543f11800cc4733d5f44f21f23aca28d475decae01c8e6c386",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "H6T9",
+      "kind": "boundary_minus_five_slips",
+      "scores": {
+        "a-actual-data": 2.5,
+        "a-graph-g": 2.5,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 1.5,
+        "b-actual-data": 2.5,
+        "b-graph-g": 2.5,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 1.5
+      },
+      "total": 23,
+      "passes": true,
+      "reason": "As Q2X6, with additional local subtraction slip in the B comparison.",
+      "submissionUtf8Sha256": "b8b9f3f42b3aab5f7c61a8d23e3320586c5aef80871534b3b07ce91295634934",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "D3Z7",
+      "kind": "both_explicit_law_mismatches",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 3,
+        "a-law": 0,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 0,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 21,
+      "passes": false,
+      "reason": "Neither numerical coefficient corresponds; the source of a coefficient is not stated or inferred.",
+      "submissionUtf8Sha256": "edbbc8f18f2181bc86d7985bf4f41e62941b54833b9dde9fe5e5d663ee268e55",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "T9G2",
+      "kind": "one_explicit_law_mismatch",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 3,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 0,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 23.5,
+      "passes": true,
+      "reason": "Only the B coefficient differs. The cause/source remains unstated.",
+      "submissionUtf8Sha256": "2fb1423445c57f695953831ebf594bdcb0eb2afb60206869f90000141b5b6a58",
+      "auditedV3Submission": true
+    },
+    {
+      "auditId": "G7N2",
+      "kind": "A_initial_conditions_and_release_check_omitted",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 3,
+        "a-law": 2.5,
+        "a-initial-conditions": 0,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 2.5,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 23.5,
+      "passes": true,
+      "reason": "Explicit initial conditions and release check omitted for A only. A's formula still has the matching coefficient.",
+      "submissionUtf8Sha256": "3cb93bb709bf92f358f446de64acd804b2707a236699099d659c935476d3f8ff",
+      "auditedV3Submission": false
+    },
+    {
+      "auditId": "P4R8",
+      "kind": "both_initial_conditions_and_release_checks_omitted",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 3,
+        "a-law": 2.5,
+        "a-initial-conditions": 0,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 2.5,
+        "b-initial-conditions": 0,
+        "b-boundaries-comparison": 2
+      },
+      "total": 21,
+      "passes": false,
+      "reason": "Explicit initial conditions and release check omitted for both; both formula coefficients match.",
+      "submissionUtf8Sha256": "d30093e21b9901e4d8ab68583feaa7e156c425b4b0b8be60cc186245a3dc6c5e",
+      "auditedV3Submission": false
+    },
+    {
+      "auditId": "S6Y3",
+      "kind": "crossed_A_conditions_and_B_law_omissions",
+      "scores": {
+        "a-actual-data": 3,
+        "a-graph-g": 3,
+        "a-law": 2.5,
+        "a-initial-conditions": 0,
+        "a-boundaries": 2,
+        "b-actual-data": 3,
+        "b-graph-g": 3,
+        "b-law": 0,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 21,
+      "passes": false,
+      "reason": "Crossed links: A's matching coefficient lacks stated initial conditions/release check; B's stated initial conditions and release check accompany a mismatching coefficient.",
+      "submissionUtf8Sha256": "8dc67dcc243d29e5ff78c944bd22a6eea0b62fb8f3ed329eadb8f68fe99ff2bc",
+      "auditedV3Submission": false
+    },
+    {
+      "auditId": "W2J5",
+      "kind": "one_foreign_coefficient_plus_four_slips",
+      "scores": {
+        "a-actual-data": 2.5,
+        "a-graph-g": 2.5,
+        "a-law": 2.5,
+        "a-initial-conditions": 2.5,
+        "a-boundaries": 2,
+        "b-actual-data": 2.5,
+        "b-graph-g": 2.5,
+        "b-law": 0,
+        "b-initial-conditions": 2.5,
+        "b-boundaries-comparison": 2
+      },
+      "total": 21.5,
+      "passes": false,
+      "reason": "Four independent local slips plus the explicitly borrowed, numerically mismatching B coefficient. B's own graphical determination remains intact.",
+      "submissionUtf8Sha256": "25288018cb3b7c37861b5cf87860d6649d3ba2422d4bc77d8e91abcb3eab5ee0",
+      "auditedV3Submission": false
+    }
+  ]
+}
