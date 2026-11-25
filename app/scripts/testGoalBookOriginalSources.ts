@@ -73,6 +73,12 @@ try {
   assert.equal(serializeGoalBookOriginalSources(build()), serializeGoalBookOriginalSources(direct), 'deterministic bytes')
   assert.ok(serializeGoalBookOriginalSources(direct).endsWith('\n'))
 
+  write(extractionPath, { ...baselineExtraction, sourceGoals: [
+    sourceGoal('source', { sourceRef: 'S. 28 · Verkehrsrisiken\n   und Sicherheitsmaßnahmen' }),
+  ] })
+  assert.equal(build().evidence[0].sourceRef, 'S. 28 · Verkehrsrisiken und Sicherheitsmaßnahmen')
+  reset()
+
   write(mappingPath, mapping('topic'))
   const inherited = build()
   assert.equal(inherited.evidence[0].kind, 'inherited')

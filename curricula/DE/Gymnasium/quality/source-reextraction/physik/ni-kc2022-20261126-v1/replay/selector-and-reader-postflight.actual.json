@@ -1,0 +1,167 @@
+{
+  "dataSnapshotUnchanged": true,
+  "dataAndStatusHashes": {
+    "curricula/DE/Gymnasium/input/NI/upper-secondary/editions/kc2022-literal-20261126/extraction.json": "83b2b882c8531d242a912808a51862d1d6f895e248d2c1187224a2379aea3899",
+    "curricula/DE/Gymnasium/input/NI/upper-secondary/editions/kc2022-literal-20261126/mapping-review.json": "afc8e185cdfb3810308772e85d264b766e64da67d5a49f89a3ecd29c0f7d8a20",
+    "curricula/DE/Gymnasium/provenance/source-landscape-registry.json": "31c90d82d1eaaa6e5995f0c9e40df1dfcb2efc13756cfddcf3a855e9e20e61da",
+    "docs/qa-ci/status/curriculum-quality-status.json": "285d791f48fd4441cecee281db285d40239c195eaf4dbde41b7aec5c08d469f4",
+    "app/scripts/config/curriculum-maturity-floor-policy.json": "ab71dc368bbe4e3e77a5f8aa8e2ad21585af0af7c8961c3a08af76e9b9faa77d"
+  },
+  "pythonSelectionByteIdentical": true,
+  "pythonSelectionSha256": "9560a115089445b00a0c124cffff57642a07e599dbbf643c63c29c3ff7440850",
+  "tsSelectionByteIdentical": true,
+  "tsSelectionSha256": "4e011e3218014341d04289fe5088aae43dbc9555b651509f2be3a8403132b018",
+  "readerChanges": [
+    {
+      "path": "scripts/current_source_packages.py",
+      "beforeSha256": "dc85397dd27934c2b6a2ec0731c66887e02d18a80f9f717e9ec3a25529e71b4b",
+      "afterSha256": "da635d05c05cf4a04f06f45f991d68d93786f8416d6c217a5bfc096680035510",
+      "sourceSha256": "da635d05c05cf4a04f06f45f991d68d93786f8416d6c217a5bfc096680035510"
+    },
+    {
+      "path": "scripts/test_current_source_packages.py",
+      "beforeSha256": "8db0833b1bdea20f08ae6002b42a833265a2e9477cc68f4cf22270e5fccefecd",
+      "afterSha256": "96eb76c2917ac86058318edc26d115db2ae8cbe47270c822c172f48989dec8e5",
+      "sourceSha256": "96eb76c2917ac86058318edc26d115db2ae8cbe47270c822c172f48989dec8e5"
+    },
+    {
+      "path": "app/scripts/currentSourcePackages.ts",
+      "beforeSha256": "ba581d7376156bb69b26dc014a15a2b3bad0534c46b111fc0e6907b7c51602c1",
+      "afterSha256": "6034fed0bbae8ab3532e637a961a35272c221ce41c5fe2538b0e8cae6f528994",
+      "sourceSha256": "6034fed0bbae8ab3532e637a961a35272c221ce41c5fe2538b0e8cae6f528994"
+    },
+    {
+      "path": "app/scripts/goalBookOriginalSources.ts",
+      "beforeSha256": "2e3af3372c7e6a51b7461db18eea2a7830660dbf3ee4b3d93469abdec95459fe",
+      "afterSha256": "1240aab20b363aeca683a629c02e4a1aca4619f1c18ae1c2f52fae8431df995c",
+      "sourceSha256": "1240aab20b363aeca683a629c02e4a1aca4619f1c18ae1c2f52fae8431df995c"
+    },
+    {
+      "path": "app/scripts/testGoalBookOriginalSources.ts",
+      "beforeSha256": "96b8a5c91e9a564811f751e008bc07e70db42de40d8ebf1ecc4e1d5ecd8214d6",
+      "afterSha256": "96b8a5c91e9a564811f751e008bc07e70db42de40d8ebf1ecc4e1d5ecd8214d6",
+      "sourceSha256": "96b8a5c91e9a564811f751e008bc07e70db42de40d8ebf1ecc4e1d5ecd8214d6"
+    }
+  ],
+  "commands": [
+    {
+      "name": "postflight-python-selection-before",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/current_source_packages.py",
+        "."
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 0.042,
+      "log": "postflight-python-selection-before.log"
+    },
+    {
+      "name": "postflight-ts-selection-before",
+      "argv": [
+        "/tmp/skillpilot-ni-candidate-tizrggqc/app/node_modules/.bin/tsx",
+        "scripts/niPilotSelectorOutput.ts"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "elapsedSeconds": 0.341,
+      "log": "postflight-ts-selection-before.log"
+    },
+    {
+      "name": "postflight-python-selection-after",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/current_source_packages.py",
+        "."
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 0.041,
+      "log": "postflight-python-selection-after.log"
+    },
+    {
+      "name": "postflight-ts-selection-after",
+      "argv": [
+        "/tmp/skillpilot-ni-candidate-tizrggqc/app/node_modules/.bin/tsx",
+        "scripts/niPilotSelectorOutput.ts"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "elapsedSeconds": 0.325,
+      "log": "postflight-ts-selection-after.log"
+    },
+    {
+      "name": "postflight-package-negative-controls",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/test_current_source_packages.py"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 0.107,
+      "log": "postflight-package-negative-controls.log"
+    },
+    {
+      "name": "postflight-focused-book-reader-tests",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-original-sources"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 3.791,
+      "log": "postflight-focused-book-reader-tests.log"
+    },
+    {
+      "name": "postflight-book-original-sources",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-book-original-sources"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 4.719,
+      "log": "postflight-book-original-sources.log"
+    },
+    {
+      "name": "postflight-book-original-sources-check",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-original-sources"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 4.717,
+      "log": "postflight-book-original-sources-check.log"
+    },
+    {
+      "name": "postflight-native-ni-view-check",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/generate_laender_physics_stage_views.py",
+        "--check",
+        "--jurisdiction",
+        "NI"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 15.439,
+      "log": "postflight-native-ni-view-check.log"
+    }
+  ],
+  "normalizationScope": "Book display sourceRef only folds layout control whitespace. Source literal text, parent stems, spans and canonical data remain unchanged.",
+  "notAnIndependentContentReview": true
+}

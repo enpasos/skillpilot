@@ -1,3 +1,4 @@
+import { readCurrentSourcePackages } from './currentSourcePackages'
 import { existsSync, readFileSync, statSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -162,6 +163,7 @@ function main() {
     throw new Error(`Unsupported source landscape registry shape: ${registryPath}`)
   }
 
+  readCurrentSourcePackages(repoRoot)
   const findings = registry.entries
     .map((entry) => checkEntry(entry))
     .filter((finding): finding is Finding => finding !== null)

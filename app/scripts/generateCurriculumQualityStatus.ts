@@ -1,3 +1,4 @@
+import { currentSourcePaths } from './currentSourcePackages'
 import { validateSemanticAtomicityRecordShape } from './lib/semanticAtomicityRecordValidation'
 import { evaluateDirectAtomicRouteCoverage } from './lib/directAtomicRouteCoverage'
 import { explicitAtomicEndpointApplies, resolveExplicitAtomicRouteEndpoints } from './lib/explicitAtomicRouteEndpoints'
@@ -4652,7 +4653,8 @@ export function readSourceExtractionGoalIdsByLandscapeId(
     return result
   }
 
-  const files = collectFiles(root, (fileName) => /\.source-extraction\.json$/i.test(fileName))
+  const discovered = collectFiles(root, (fileName) => /\.source-extraction\.json$/i.test(fileName))
+  const files = useDefaultCache ? currentSourcePaths(repoRoot, discovered, 'extraction', sourceExtractionRoot).map((file) => resolve(repoRoot, file)) : discovered
   const componentGoalIds = new Map<string, Set<string>>()
   files.forEach((file) => {
     try {
@@ -4794,7 +4796,7 @@ export function readAllGoalMappingFiles(
 ): Array<GoalMappingFile & { file: string }> {
   const useDefaultCache = mappingRoot === resolve(repoRoot, 'curricula/DE')
   if (useDefaultCache && allGoalMappingFilesCache) return allGoalMappingFilesCache
-  const mappingFiles = collectFiles(mappingRoot, (fileName) => fileName.endsWith('.json'))
+  const discovered = collectFiles(mappingRoot, (fileName) => fileName.endsWith('.json'))
     .filter((file) => {
       const directories = relative(mappingRoot, file).replace(/\\/g, '/').split('/').slice(0, -1)
       // Match runtime discovery: quality owns review inputs, historical copies
@@ -4802,7 +4804,8 @@ export function readAllGoalMappingFiles(
       // mappings remain subject to the same strict consistency checks.
       return directories.includes('mapping') && !directories.includes('quality')
     })
-    .map((file) => ({ ...loadJson<GoalMappingFile>(file), file: toRepoPath(file) }))
+  const paths = useDefaultCache ? currentSourcePaths(repoRoot, discovered, 'review', mappingRoot) : discovered
+  const mappingFiles = paths.map((file) => ({ ...loadJson<GoalMappingFile>(resolve(repoRoot, file)), file: toRepoPath(resolve(repoRoot, file)) }))
   if (useDefaultCache) allGoalMappingFilesCache = mappingFiles
   return mappingFiles
 }
@@ -5133,7 +5136,8 @@ export function evaluateCourseLevelMappingConsistency(
 function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipelineSourceStatus> {
   const result = new Map<string, MappingPipelineSourceStatus>()
   const registryEntriesById = readSourceLandscapeRegistryEntriesById()
-  const files = collectFiles(sourceExtractionRoot, (fileName) => /\.source-extraction\.json$/i.test(fileName))
+  const discovered = collectFiles(sourceExtractionRoot, (fileName) => /\.source-extraction\.json$/i.test(fileName))
+  const files = currentSourcePaths(repoRoot, discovered, 'extraction', sourceExtractionRoot).map((file) => resolve(repoRoot, file))
   const knownCanonicalGoalIds = new Set(
     collectFiles(canonicalRoot, (fileName) => /\.json$/i.test(fileName) && !/_deck/i.test(fileName))
       .flatMap((file) => {

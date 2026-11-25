@@ -1,10 +1,12 @@
 package com.skillpilot.backend.landscape;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -750,6 +752,212 @@ class LandscapeServiceTest {
                                 .isEqualTo("DE-SL");
                 assertThat(landscapeService.isCompatibilityOnlyLandscape(SAARLAND_CHEMISTRY_LOWER_ID)).isTrue();
                 assertThat(landscapeService.isCompatibilityOnlyLandscape(SAARLAND_CHEMISTRY_UPPER_ID)).isTrue();
+        }
+
+        @Test
+        void registeredEditionSelectsItsCompletePackageEvenWhenThePredecessorCanBeDiscovered(@TempDir Path curriculaDir)
+                        throws Exception {
+                VersionedSourceFixture fixture = new VersionedSourceFixture(curriculaDir);
+                assertThat(fixture.load().getGoals()).extracting(LearningGoal::getId).containsExactly("new");
+                assertThat(Files.readString(fixture.history)).contains("Old");
+        }
+
+        @Test
+        void registeredEditionRequiresItsActiveReviewWithoutFallingBackToHistory(@TempDir Path curriculaDir)
+                        throws Exception {
+                VersionedSourceFixture fixture = new VersionedSourceFixture(curriculaDir);
+                Files.delete(fixture.reviewPath);
+                assertThatThrownBy(fixture::load).hasStackTraceContaining("mapping-review.json");
+                assertThat(Files.exists(fixture.history)).isTrue();
+        }
+
+        @Test
+        void registeredEditionChecksAllThreeComponentDigests(@TempDir Path curriculaDir) throws Exception {
+                VersionedSourceFixture fixture = new VersionedSourceFixture(curriculaDir);
+                for (Path component : List.of(fixture.document, fixture.extractionPath, fixture.reviewPath)) {
+                        byte[] original = Files.readAllBytes(component);
+                        Files.writeString(component, "changed bytes");
+                        assertThatThrownBy(fixture::load).hasStackTraceContaining("Stale source package binding");
+                        Files.write(component, original);
+                }
+                assertThat(fixture.load().getGoals()).hasSize(1);
+        }
+
+        @Test
+        void repinningAnEditedLiteralExtractionDoesNotCertifyItsOldRowReview(@TempDir Path curriculaDir)
+                        throws Exception {
+                VersionedSourceFixture fixture = new VersionedSourceFixture(curriculaDir);
+                ((ObjectNode) fixture.source.path("sourceGoals").get(0)).put("sourceText", "Vor dem Körper messen.");
+                fixture.writeExtraction();
+                assertThatThrownBy(fixture::load).hasStackTraceContaining("Changed reviewed source row: new");
+        }
+
+        @Test
+        void repinningAnEditedLiteralLocatorDoesNotCertifyItsOldRowReview(@TempDir Path curriculaDir)
+                        throws Exception {
+                VersionedSourceFixture fixture = new VersionedSourceFixture(curriculaDir);
+                ((ObjectNode) fixture.review.path("decisions").get(0)).put("sourceSpan", "S. 7");
+                fixture.writeReview();
+                assertThatThrownBy(fixture::load).hasStackTraceContaining("Changed reviewed source row: new");
+        }
+
+        @Test
+        void registeredEditionRejectsOrphanedAndInconsistentMappingPairs(@TempDir Path curriculaDir)
+                        throws Exception {
+                VersionedSourceFixture fixture = new VersionedSourceFixture(curriculaDir);
+                ObjectNode mapping = (ObjectNode) fixture.review.path("mappings").get(0);
+                mapping.put("canonicalGoalId", "another-target");
+                fixture.writeReview();
+                assertThatThrownBy(fixture::load).hasStackTraceContaining("Inconsistent source package mapping pairs");
+                mapping.put("canonicalGoalId", "target");
+                ((ObjectNode) fixture.review.path("decisions").get(0)).put("sourceGoalId", "orphan");
+                fixture.writeReview();
+                assertThatThrownBy(fixture::load).hasStackTraceContaining("orphaned ID");
+        }
+
+        @Test
+        void registeredEditionRejectsIncompleteDecisionsEvenWithMatchingPairs(@TempDir Path curriculaDir)
+                        throws Exception {
+                VersionedSourceFixture fixture = new VersionedSourceFixture(curriculaDir);
+                ((ObjectNode) fixture.review.path("decisions").get(0)).putArray("canonicalGoalIds");
+                fixture.review.putArray("mappings");
+                fixture.writeReview();
+                assertThatThrownBy(fixture::load).hasStackTraceContaining("Incomplete mapping decision");
+        }
+
+        @Test
+        void registeredEditionRejectsRepinnedWrongIdentity(@TempDir Path curriculaDir) throws Exception {
+                VersionedSourceFixture fixture = new VersionedSourceFixture(curriculaDir);
+                fixture.source.put("stage", "SekI");
+                fixture.writeExtraction();
+                assertThatThrownBy(fixture::load).hasStackTraceContaining("Inconsistent source package identity");
+        }
+
+        @Test
+        void registeredEditionRequiresExactlyOneCurrentPackage(@TempDir Path curriculaDir) throws Exception {
+                VersionedSourceFixture fixture = new VersionedSourceFixture(curriculaDir);
+                fixture.edition.put("status", "draft");
+                fixture.writeRegistry();
+                assertThatThrownBy(fixture::load).hasStackTraceContaining("Missing current extraction");
+                fixture.edition.put("status", "current");
+                fixture.previous.put("status", "current");
+                fixture.writeRegistry();
+                assertThatThrownBy(fixture::load).hasStackTraceContaining("Multiple current extractions");
+        }
+
+        @Test
+        void javaValidatesTheRealNiedersachsenLiteralPackageWithItsPythonRowDigests() throws Exception {
+                ObjectMapper mapper = new ObjectMapper();
+                Path curriculaDir = Path.of("../curricula");
+                JsonNode registry = mapper.readTree(curriculaDir.resolve("DE/Gymnasium/provenance/source-landscape-registry.json").toFile());
+                ObjectNode entry = null;
+                for (JsonNode item : registry.path("entries")) {
+                        if (item.has("sourcePackages") && "DE-NI".equals(item.path("jurisdiction").asText())
+                                        && "Physik".equals(item.path("packageScope").path("subject").asText())) {
+                                entry = item.deepCopy();
+                        }
+                }
+                assertThat(entry).isNotNull();
+                String expected = null;
+                for (JsonNode edition : entry.path("sourcePackages")) {
+                        boolean literal = "literal-v1".equals(edition.path("format").asText());
+                        ((ObjectNode) edition).put("status", literal ? "current" : "historical");
+                        if (literal) expected = edition.path("extraction").path("path").asText();
+                }
+                assertThat(expected).isNotNull();
+                assertThat(CurrentSourcePackage.currentExtractions(curriculaDir, mapper.createArrayNode().add(entry), mapper))
+                                .containsEntry(entry.path("landscapeId").asText(), curriculaDir.resolve(expected.substring("curricula/".length())));
+        }
+
+        private static final class VersionedSourceFixture {
+                private final ObjectMapper mapper = new ObjectMapper();
+                private final Path curriculaDir;
+                private final Path history;
+                private final Path document;
+                private final Path extractionPath;
+                private final Path reviewPath;
+                private final Path registryPath;
+                private final ObjectNode source;
+                private final ObjectNode review;
+                private final ObjectNode entry;
+                private final ObjectNode edition;
+                private final ObjectNode previous;
+
+                private VersionedSourceFixture(Path curriculaDir) throws Exception {
+                        this.curriculaDir = curriculaDir;
+                        String area = "curricula/DE/Gymnasium/input/NI/upper-secondary/";
+                        history = local(area + "source-extraction/old.source-extraction.json");
+                        document = local(area + "official.pdf");
+                        extractionPath = local(area + "editions/current/extraction.json");
+                        reviewPath = local(area + "editions/current/mapping-review.json");
+                        registryPath = local("curricula/DE/Gymnasium/provenance/source-landscape-registry.json");
+                        for (Path path : List.of(history, document, extractionPath, reviewPath, registryPath)) {
+                                Files.createDirectories(path.getParent());
+                        }
+                        Files.writeString(document, "retained official document fixture");
+                        Files.writeString(history, "{\"sourceLandscapeId\":\"versioned-source\",\"sourceGoals\":[{\"id\":\"old\",\"title\":\"Old\"}]}");
+                        source = (ObjectNode) mapper.readTree("""
+                                        {"sourceLandscapeId":"versioned-source","jurisdiction":"DE-NI","subject":"Physik","stage":"SekII",
+                                         "passages":[{"id":"p"}],"sourceGoals":[{"id":"new","title":"Neu","sourceText":"Am Körper messen.",
+                                         "sourceSpan":"S. 8","passageId":"p","metadata":{"z":["α",{"b":2,"a":"𝑣"}],"a":true}}]}
+                                        """);
+                        source.putObject("sourceDocument").put("path", area + "official.pdf");
+                        // Produced with Python json.dumps(sort_keys=True, ensure_ascii=False, separators=(',', ':')).
+                        review = (ObjectNode) mapper.readTree("""
+                                        {"sourceLandscapeId":"versioned-source","targetLandscapeId":"physics",
+                                         "decisions":[{"sourceGoalId":"new","decision":"mapped","sourceSpan":"S. 8",
+                                         "sourceGoalSha256":"f7b843bccbe2427fea27e8c8f845fddf87a6760b58be9f0dd122cfb953ce9190","canonicalGoalIds":["target"]}],
+                                         "mappings":[{"legacyGoalId":"new","canonicalGoalId":"target"}]}
+                                        """);
+                        review.put("sourceExtractionPath", area + "editions/current/extraction.json");
+                        entry = mapper.createObjectNode().put("landscapeId", "versioned-source").put("jurisdiction", "DE-NI");
+                        entry.put("archiveSourcePath", area + "official.pdf");
+                        entry.putObject("packageScope").put("subject", "Physik").put("stage", "SekII")
+                                        .put("schoolType", "Gymnasium").put("validity", "KC fixture").put("targetLandscapeId", "physics");
+                        previous = mapper.createObjectNode().put("id", "previous").put("status", "historical").put("format", "retained-v1");
+                        previous.putObject("extraction").put("path", area + "source-extraction/old.source-extraction.json");
+                        previous.putObject("review").put("path", area + "old-review.json");
+                        edition = mapper.createObjectNode().put("id", "current").put("status", "current").put("format", "literal-v1");
+                        edition.set("document", binding(document));
+                        entry.putArray("sourcePackages").add(previous).add(edition);
+                        writeExtraction();
+                        writeReview();
+                }
+
+                private Path local(String relative) {
+                        return curriculaDir.resolve(relative.substring("curricula/".length()));
+                }
+
+                private ObjectNode binding(Path path) throws Exception {
+                        String relative = "curricula/" + curriculaDir.relativize(path).toString().replace('\\', '/');
+                        String digest = java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256")
+                                        .digest(Files.readAllBytes(path)));
+                        return mapper.createObjectNode().put("path", relative).put("sha256", digest);
+                }
+
+                private void writeExtraction() throws Exception {
+                        mapper.writeValue(extractionPath.toFile(), source);
+                        edition.set("extraction", binding(extractionPath));
+                        writeRegistry();
+                }
+
+                private void writeReview() throws Exception {
+                        mapper.writeValue(reviewPath.toFile(), review);
+                        edition.set("review", binding(reviewPath));
+                        writeRegistry();
+                }
+
+                private void writeRegistry() throws Exception {
+                        ObjectNode registry = mapper.createObjectNode().put("version", 1);
+                        registry.putArray("entries").add(entry);
+                        mapper.writeValue(registryPath.toFile(), registry);
+                }
+
+                private SkillLandscape load() {
+                        LandscapeProperties props = new LandscapeProperties();
+                        props.setDirectory(curriculaDir.toString());
+                        return new LandscapeService(props, mapper).getRetainedSourceLandscape("versioned-source");
+                }
         }
 
         @Test

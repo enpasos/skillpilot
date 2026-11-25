@@ -1,3 +1,4 @@
+import { currentSourcePaths } from './currentSourcePackages'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -606,7 +607,7 @@ function collectSourceBackedGoalIds(input: {
   const sourceExtractionCache = new Map<string, SourceExtraction>()
   const goalIds = new Set<string>()
 
-  collectReviewFiles(input.mappingRoot).forEach((mappingReviewPath) => {
+  currentSourcePaths(repoRoot, collectReviewFiles(input.mappingRoot), 'review', input.mappingRoot).forEach((mappingReviewPath) => {
     const mappingReview = readJsonFile<MappingReview>(mappingReviewPath)
     if (!mappingReviewTargetsLandscape(mappingReview, targetLandscapeId)) return
     if (input.jurisdiction !== null) {
@@ -934,7 +935,7 @@ function findCandidatesForGoals(
 
   goalIds.forEach((goalId) => candidatesByGoal.set(goalId, []))
 
-  collectReviewFiles(mappingRoot).forEach((mappingReviewPath) => {
+  currentSourcePaths(repoRoot, collectReviewFiles(mappingRoot), 'review', mappingRoot).forEach((mappingReviewPath) => {
     const mappingReview = readJsonFile<MappingReview>(mappingReviewPath)
     if (!mappingReviewTargetsLandscape(mappingReview, targetLandscapeId)) return
     mappingReviewDecisions(mappingReview)

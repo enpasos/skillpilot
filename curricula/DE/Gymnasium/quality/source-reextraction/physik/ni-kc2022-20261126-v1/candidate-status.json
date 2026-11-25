@@ -1,0 +1,919 @@
+{
+  "statusReportSha256": "285d791f48fd4441cecee281db285d40239c195eaf4dbde41b7aec5c08d469f4",
+  "extractionSha256": "83b2b882c8531d242a912808a51862d1d6f895e248d2c1187224a2379aea3899",
+  "reviewSha256": "afc8e185cdfb3810308772e85d264b766e64da67d5a49f89a3ecd29c0f7d8a20",
+  "unchangedFloorPolicySha256": "ab71dc368bbe4e3e77a5f8aa8e2ad21585af0af7c8961c3a08af76e9b9faa77d",
+  "maturity": "M1",
+  "subjectRules": [
+    {
+      "id": "CQR-001",
+      "status": "pass",
+      "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
+      "metrics": {
+        "goals": 1150,
+        "authoredRequires": 1662,
+        "effectiveRequires": 1662,
+        "crossLandscapeReferences": 167,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      }
+    },
+    {
+      "id": "CQR-002",
+      "status": "pass",
+      "summary": "Explicit type metadata matches graph structure.",
+      "metrics": {
+        "mismatches": 0
+      }
+    },
+    {
+      "id": "CQR-000",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "completeSourceJurisdictions": 16,
+        "emptySourceJurisdictions": 0,
+        "missingReadableSourceInventoryJurisdictions": 0,
+        "originalSourceUrlIssues": 0,
+        "sourceExtractedGoals": 6513,
+        "sourceOriginalGoals": 6513,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 6513,
+        "sourceUnregisteredAtomicGoals": 0
+      }
+    },
+    {
+      "id": "CQR-003",
+      "status": "fail",
+      "summary": "15/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "emptyCanonicalViewProjection": 0,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 15,
+        "fullCoverageJurisdictions": 15,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 0,
+        "unsupportedAssignmentJurisdictions": 0,
+        "sourceUnmappedJurisdictions": 1,
+        "unsupportedAssignedAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 71,
+        "sourceAtomicGoals": 6513,
+        "sourceMappedToViewAtomicGoals": 6442,
+        "sourceOriginalGoals": 6513,
+        "sourceFullyCoveredOriginalGoals": 6442,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 71,
+        "surrogateBackedAtomicGoals": 0,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 15,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 1,
+        "minSourceBackedAtomicGoals": 226,
+        "maxVisibleAtomicGoals": 434,
+        "maxSourceBackedAtomicGoals": 434,
+        "totalAtomicGoals": 452
+      },
+      "details": [
+        "DE-NI: 71 source Lehrplan atom(s) do not map into the Bundesland view"
+      ]
+    },
+    {
+      "id": "CQR-004",
+      "status": "pass",
+      "summary": "Course-level mapping is clean for 650 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+      "metrics": {
+        "configuredMappingFiles": 27,
+        "sourceGoals": 4213,
+        "sourceGoalsWithCourseLevel": 4213,
+        "gkLkSourceGoals": 1895,
+        "lkSourceGoals": 1499,
+        "unspecifiedSourceGoals": 0,
+        "checkedMappingEdges": 650,
+        "defaultedUnspecifiedMappingEdges": 0,
+        "reviewedCourseLevelExceptions": 0,
+        "mismatches": 0,
+        "missingSourceGoals": 0,
+        "missingTargetGoals": 0,
+        "unmappedCourseLevelSourceGoals": 0
+      }
+    },
+    {
+      "id": "CQR-005",
+      "status": "pass",
+      "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+      "metrics": {
+        "sourceExtractionSources": 25,
+        "peerBaselineChecks": 21,
+        "failedPeerBaselineChecks": 0,
+        "granularityChecks": 0,
+        "failedGranularityChecks": 0
+      }
+    },
+    {
+      "id": "CQR-301",
+      "status": "pass",
+      "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+      "metrics": {
+        "configs": 1,
+        "leafGoals": 493,
+        "atomic": 493,
+        "needsDeveloperReview": 0,
+        "nonAtomic": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0
+      }
+    },
+    {
+      "id": "CQR-302",
+      "status": "pass",
+      "summary": "Memory-card review is current: 133/493 ordinary atomic goals intentionally use memorization support, 149/149 primary cards are kept with origin traces, all 5 memory goals are traced, and 371 view-visible memory-required goals resolve to visible memory nodes.",
+      "metrics": {
+        "configs": 1,
+        "reviewedGoals": 493,
+        "noMemoryNeeded": 360,
+        "memoryRequired": 133,
+        "needsDeveloperReview": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0,
+        "duplicateRecords": 0,
+        "invalidRecords": 0,
+        "primaryCards": 149,
+        "keptCards": 149,
+        "cardsMarkedRemove": 0,
+        "cardNeedsDeveloperReview": 0,
+        "missingCardReviews": 0,
+        "staleCardReviews": 0,
+        "obsoleteCardReviews": 0,
+        "duplicateCardReviewRecords": 0,
+        "invalidCardReviewRecords": 0,
+        "untracedMemoryRequiredGoals": 0,
+        "visibilityScopes": 3,
+        "visibilityCheckedMemoryRequiredGoals": 371,
+        "visibilityMissingVisibleMemoryGoals": 0,
+        "visibilityErrors": 0,
+        "memoryGoals": 5,
+        "tracedMemoryGoals": 5,
+        "untracedMemoryGoals": 0,
+        "deckIds": 5,
+        "deckFiles": 6,
+        "cardRows": 239
+      },
+      "details": [
+        "canonical-physics-full: audit report docs/qa-ci/status/memory-card-review-canonical-physics-full.md"
+      ]
+    },
+    {
+      "id": "CQR-303",
+      "status": "pass",
+      "summary": "Deep curriculum QA is complete for all 493 current curricularAtomic goals.",
+      "metrics": {
+        "expectedGoals": 493,
+        "remaining": 0,
+        "strictComplete": 493,
+        "currentDescriptionResolutions": 493,
+        "currentPositiveEvidenceProfiles": 493,
+        "currentSemanticAtomicityDecisions": 493,
+        "currentMemoryReviewDecisions": 493,
+        "currentVisualizationQaRecords": 493,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    },
+    {
+      "id": "CQR-401",
+      "status": "pass",
+      "summary": "90 composition view(s) are registered.",
+      "metrics": {
+        "compositionViews": 90
+      }
+    },
+    {
+      "id": "CQR-501",
+      "status": "pass",
+      "summary": "15 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+      "metrics": {
+        "activeWarnings": 0,
+        "rawActiveWarnings": 0,
+        "diagnosticPartialOnlyWarnings": 6302,
+        "acceptedWarnings": 15,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 6302",
+        "diagnostic finding type APV-202: 6302",
+        "accepted current warning type APV-201: 15"
+      ]
+    }
+  ],
+  "scopes": [
+    {
+      "id": "canonical-physics-sek1",
+      "maturity": "M4",
+      "ruleResults": {
+        "CQR-101": "pass",
+        "CQR-102": "pass",
+        "CQR-103": "pass",
+        "CQR-104": "pass",
+        "CQR-201": "pass",
+        "CQR-202": "pass",
+        "CQR-203": "pass"
+      }
+    },
+    {
+      "id": "canonical-physics-sek2",
+      "maturity": "M4",
+      "ruleResults": {
+        "CQR-101": "pass",
+        "CQR-102": "pass",
+        "CQR-103": "pass",
+        "CQR-201": "pass",
+        "CQR-202": "pass",
+        "CQR-203": "pass"
+      }
+    }
+  ],
+  "jurisdiction": {
+    "jurisdiction": "DE-NI",
+    "labelDe": "Niedersachsen",
+    "labelEn": "Lower Saxony",
+    "visibleGoals": 779,
+    "visibleAtomicGoals": 416,
+    "visibleClusterGoals": 363,
+    "viewAtomicGoals": 416,
+    "sourceBackedAtomicGoals": 416,
+    "surrogateBackedAtomicGoals": 0,
+    "unsupportedAssignedAtomicGoals": 0,
+    "partialSourceLinkedAtomicGoals": 0,
+    "sourceAtomicGoals": 378,
+    "sourceMappedToViewAtomicGoals": 307,
+    "unmappedSourceAtomicGoals": 71,
+    "sourceExtractedGoals": 378,
+    "sourceUnregisteredGoals": 0,
+    "sourceExtractedAtomicGoals": 378,
+    "sourceUnregisteredAtomicGoals": 0,
+    "sourceOriginalGoals": 378,
+    "sourceFullyCoveredOriginalGoals": 307,
+    "sourcePartiallyCoveredOriginalGoals": 0,
+    "sourceUncoveredOriginalGoals": 71,
+    "errors": 0,
+    "warnings": 0,
+    "diagnosticPartialOnlyWarnings": 323,
+    "atomicCoveragePercent": 92,
+    "sourceBackedCoveragePercent": 100,
+    "sourceReverseCoveragePercent": 81.2,
+    "status": "error"
+  },
+  "sourceRowsOutsideTargetCoverage": [
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-arg-p16-e-01",
+      "sourceText": "geben ihre erworbenen Kenntnisse wieder und nutzen erlerntes Vokabular.",
+      "sourcePage": 16,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "6d323d54-0aee-55d0-a9e1-ef2efdea0346"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-arg-p16-e-02",
+      "sourceText": "verwenden die erlernte Fachsprache zunehmend sicher und wählen die Sprachebene bewusst aus.",
+      "sourcePage": 16,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "6d323d54-0aee-55d0-a9e1-ef2efdea0346"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-arg-p16-q-02",
+      "sourceText": "verwenden die erlernte Fachsprache sicher und wählen die Sprachebene bewusst aus.",
+      "sourcePage": 16,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "6d323d54-0aee-55d0-a9e1-ef2efdea0346"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-arg-p16-q-05",
+      "sourceText": "formulieren Hypothesen und überprüfen sie mithilfe von Experimenten.",
+      "sourcePage": 16,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-prob-p17-e-03",
+      "sourceText": "führen selbstverantwortlich ihre Notizen.",
+      "sourcePage": 17,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-e-02",
+      "sourceText": "planen einfache Experimente zur Untersuchung ausgewählter, auch eigener Fragestellungen selbst und achten darauf, jeweils nur einen Parameter zu variieren.",
+      "sourcePage": 18,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "d3c153b9-e09b-5668-8386-73105546a7c1"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-e-03",
+      "sourceText": "legen selbstständig geeignete Messtabellen an.",
+      "sourcePage": 18,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-e-05",
+      "sourceText": "fertigen bei Bedarf Versuchsprotokolle selbstständig an.",
+      "sourcePage": 18,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-e-06",
+      "sourceText": "tragen Ergebnisse von z. B. arbeitsteilig ausgeführten Experimenten sachgerecht und adressatenbezogen vor.",
+      "sourcePage": 18,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "6d323d54-0aee-55d0-a9e1-ef2efdea0346"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-q-02",
+      "sourceText": "planen Experimente zur Untersuchung ausgewählter, auch eigener Fragestellungen selbst und führen diese sachgerecht durch.",
+      "sourcePage": 18,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "d3c153b9-e09b-5668-8386-73105546a7c1"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-q-04",
+      "sourceText": "dokumentieren Aufbau, Durchführung, Beobachtung und Auswertung von Experimenten selbstständig.",
+      "sourcePage": 18,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-math-p20-e-01",
+      "sourceText": "verwenden die wissenschaftliche Notation für Zahlenangaben und Vorsilben von Einheiten.",
+      "sourcePage": 20,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-math-p20-e-02",
+      "sourceText": "verwenden Größen und Einheiten und führen erforderliche Umrechnungen durch.",
+      "sourcePage": 20,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-math-p21-q-06",
+      "sourceText": "dokumentieren Herleitungen sachgerecht.",
+      "sourcePage": 21,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-mod-p22-e-02",
+      "sourceText": "überprüfen Hypothesen an ausgewählten Beispielen durch selbst entworfene Experimente.",
+      "sourcePage": 22,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-ewg-p23-q-02",
+      "sourceText": "erläutern, dass man mithilfe experimenteller Daten Hypothesen zwar widerlegen, aber nie beweisen kann.",
+      "sourcePage": 23,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "da26294f-4316-5bd5-a37a-bd89397b3b8b"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-ewg-p23-q-03",
+      "sourceText": "erörtern die Funktion eines Experiments bei der Entscheidung über Hypothesen bzw. zur Initiierung von Ideen.",
+      "sourcePage": 23,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "da26294f-4316-5bd5-a37a-bd89397b3b8b"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-01",
+      "sourceText": "wählen die Sprachebene adressatengerecht aus.",
+      "sourcePage": 24,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "6d323d54-0aee-55d0-a9e1-ef2efdea0346"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-04",
+      "sourceText": "verfassen Berichte selbstständig.",
+      "sourcePage": 24,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-05",
+      "sourceText": "stellen die Ergebnisse einer selbstständigen Arbeit zu einem Thema in angemessener Form schriftlich dar.",
+      "sourcePage": 24,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-06",
+      "sourceText": "referieren über selbst durchgeführte Experimente sachgerecht und adressatenbezogen und wählen dazu geeignete Medien aus.",
+      "sourcePage": 24,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "6d323d54-0aee-55d0-a9e1-ef2efdea0346"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-07",
+      "sourceText": "entwickeln die Arbeit in der Gruppe weiter.",
+      "sourcePage": 24,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-q-01",
+      "sourceText": "verwenden die Fachsprache in den behandelten Gebieten sicher.",
+      "sourcePage": 24,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "6d323d54-0aee-55d0-a9e1-ef2efdea0346"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-q-04",
+      "sourceText": "präsentieren Arbeitsergebnisse sach-, situations- und adressatengerecht unter Verwendung geeigneter, auch digitaler Darstellungsmethoden und beachten dabei Urheberrecht und Zitierregeln.",
+      "sourcePage": 24,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "6d323d54-0aee-55d0-a9e1-ef2efdea0346"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-q-06",
+      "sourceText": "führen zu einem Sachverhalt ein Fachgespräch auf angemessenem Niveau.",
+      "sourcePage": 24,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-q-07",
+      "sourceText": "arbeiten sachgerecht und zielgerichtet in einer Gruppe.",
+      "sourcePage": 24,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-e-01",
+      "sourceText": "führen ihre Notizen selbstständig.",
+      "sourcePage": 25,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-e-02",
+      "sourceText": "dokumentieren ihre Arbeitsschritte auch bei selbst geplanten Experimenten oder Auswertungen in geeigneter schriftlicher Darstellung.",
+      "sourcePage": 25,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-e-04",
+      "sourceText": "fertigen Messtabellen selbstständig an und geben Größensymbole und Einheiten an.",
+      "sourcePage": 25,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "e0004439-ed34-5caf-858a-6107918224eb"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-q-01",
+      "sourceText": "dokumentieren Versuchsergebnisse selbstständig.",
+      "sourcePage": 25,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-q-02",
+      "sourceText": "ziehen zur Dokumentation selbstständig Bilder, Texte, Skizzen und Diagramme heran.",
+      "sourcePage": 25,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-q-03",
+      "sourceText": "dokumentieren Arbeitsschritte mit dem eingeführten elektronischen Rechenwerkzeug in der vereinbarten Weise.",
+      "sourcePage": 25,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-dyn-c3",
+      "sourceText": "erläutern die sich daraus ergebende Definition der Krafteinheit.",
+      "sourcePage": 28,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-dyn-p11",
+      "sourceText": "unterscheiden dabei zwischen alltagssprachlicher und fachsprachlicher Beschreibung.",
+      "sourcePage": 28,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "6d323d54-0aee-55d0-a9e1-ef2efdea0346"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-c1",
+      "sourceText": "beschreiben ein Verfahren zur Bestimmung der Schallgeschwindigkeit in Luft und einem anderen Medium.",
+      "sourcePage": 29,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-c5",
+      "sourceText": "erläutern den Zusammenhang zwischen Frequenzverhältnissen und musikalischen Intervallen.",
+      "sourcePage": 29,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-p5",
+      "sourceText": "beschreiben Gemeinsamkeiten und Unterschiede in den Schwingungsbildern von gleichen Noten, die auf verschiedenen Instrumenten gespielt werden.",
+      "sourcePage": 29,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [
+        "f06c581a-7157-584e-a692-99bcd613cff9"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-c6",
+      "sourceText": "beschreiben Gemeinsamkeiten und Unterschiede bei der Frequenzanalyse des Signals gleicher Noten, die auf verschiedenen Instrumenten gespielt werden.",
+      "sourcePage": 29,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [
+        "f06c581a-7157-584e-a692-99bcd613cff9"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-c7",
+      "sourceText": "erläutern den Begriff Klangfarbe.",
+      "sourcePage": 29,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [
+        "f06c581a-7157-584e-a692-99bcd613cff9"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-p6",
+      "sourceText": "wenden dazu Ergebnisse der Frequenzanalyse von Tönen und Klängen an.",
+      "sourcePage": 29,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [
+        "f06c581a-7157-584e-a692-99bcd613cff9"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-p7",
+      "sourceText": "bestätigen die Beziehung fₙ = (n + 1) ⋅ f₀ zwischen Frequenz des n-ten Obertons und Frequenz f₀ des Grundtons.",
+      "sourcePage": 29,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [
+        "f06c581a-7157-584e-a692-99bcd613cff9"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-atom-p1",
+      "sourceText": "deuten das Phänomen der Ionisation mithilfe dieses Modells.",
+      "sourcePage": 30,
+      "normativeStatus": "proposedElectiveModuleRecommendedContent",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p1",
+      "sourceText": "führen Experimente zur Erzeugung optischer Abbildungen durch.",
+      "sourcePage": 31,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [
+        "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p3",
+      "sourceText": "bestimmen den Abbildungsmaßstab.",
+      "sourcePage": 31,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p5",
+      "sourceText": "überprüfen die theoretischen Vorhersagen anhand entsprechender Experimente.",
+      "sourcePage": 31,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [
+        "ce14a7e7-7e2a-517f-a465-78ba3fbe414d"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p6",
+      "sourceText": "leiten diese Gleichung her.",
+      "sourcePage": 31,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p8",
+      "sourceText": "beschreiben den Unterschied zwischen abbildenden und den Sehwinkel vergrößernden Geräten.",
+      "sourcePage": 31,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-strahlung-c4",
+      "sourceText": "beschreiben ein Experiment zur selektiven Absorption.",
+      "sourcePage": 32,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-strahlung-p5",
+      "sourceText": "wenden dazu vorgelegte grafische Darstellungen an.",
+      "sourcePage": 32,
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p34-process-gA-05",
+      "sourceText": "begründen die Auswahl einer exponentiellen Regression auf der Grundlage der Messdaten.",
+      "sourcePage": 34,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p34-process-gA-07",
+      "sourceText": "führen ein Experiment zur Bestimmung der Kapazität eines Kondensators durch.",
+      "sourcePage": 34,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "d3c153b9-e09b-5668-8386-73105546a7c1"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p34-process-eA-07",
+      "sourceText": "planen ein Experiment zur Bestimmung der Kapazität eines Kondensators und führen es durch.",
+      "sourcePage": 34,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "d3c153b9-e09b-5668-8386-73105546a7c1"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p35-process-gA-06",
+      "sourceText": "leiten die zugehörige Gleichung für die Geschwindigkeit angeleitet her.",
+      "sourcePage": 35,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p35-process-eA-07",
+      "sourceText": "leiten die zugehörige Gleichung für die Geschwindigkeit her.",
+      "sourcePage": 35,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p36-process-gA-04",
+      "sourceText": "führen einfache qualitative Experimente zur Erzeugung einer Induktionsspannung durch.",
+      "sourcePage": 36,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "d3c153b9-e09b-5668-8386-73105546a7c1"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p37-process-gA-02",
+      "sourceText": "ermitteln Werte durch Ablesen an einem registrierenden Messinstrument (Oszilloskop oder geeignetes digitales Werkzeug).",
+      "sourcePage": 37,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p38-process-eA-02",
+      "sourceText": "beschreiben ein Experiment zur Erzeugung einer Resonanzkurve.",
+      "sourcePage": 38,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "d3c153b9-e09b-5668-8386-73105546a7c1"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p38-process-eA-09",
+      "sourceText": "interpretieren in diesem Zusammenhang das Quadrat der Zeigerlänge bzw. das Quadrat der Amplitude der zugehörigen Sinuskurve als Intensität.",
+      "sourcePage": 38,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p39-process-eA-09",
+      "sourceText": "erläutern ein Verfahren zur Aufnahme eines Röntgenspektrums.",
+      "sourcePage": 39,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p39-process-eA-10",
+      "sourceText": "leiten die Bragg-Gleichung selbstständig und begründet her.",
+      "sourcePage": 39,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p40-content-03",
+      "sourceText": "nur eA: nennen in diesem Zusammenhang die Definition des Impulses.",
+      "sourcePage": 40,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "53afbda1-5776-502b-8867-471975d7b766"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p42-content-01",
+      "sourceText": "erläutern die experimentelle Bestimmung der planckschen Konstante h mit LEDs in ihrer Funktion als Energiewandler.",
+      "sourcePage": 42,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p43-content-02",
+      "sourceText": "nennen die Gleichung für die Gesamtenergie eines Elektrons in diesem Modell.",
+      "sourcePage": 43,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [
+        "d05a146f-7fcd-56ae-b9b9-b54203328579"
+      ],
+      "reason": "noEligibleViewEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p43-process-eA-02",
+      "sourceText": "leiten die Gleichung für die Gesamtenergie eines Elektrons in diesem Modell her.",
+      "sourcePage": 43,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p44-content-04",
+      "sourceText": "nur eA: beschreiben die „Orbitale“ bis n = 2 in einem dreidimensionalen Potenzialtopf.",
+      "sourcePage": 44,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p44-process-eA-06",
+      "sourceText": "erläutern Gemeinsamkeiten zwischen den Orbitalen des Wasserstoffatoms und denen des dreidimensionalen Potenzialtopfs.",
+      "sourcePage": 44,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p45-process-eA-04",
+      "sourceText": "modellieren einen radioaktiven Zerfall mit dem Differenzenverfahren unter Einsatz einer Tabellenkalkulation oder eines Modellbildungssystems.",
+      "sourcePage": 45,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p45-process-eA-05",
+      "sourceText": "wenden dieses Verfahren auf einen Mutter-Tochter-Zerfall an.",
+      "sourcePage": 45,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p46-content-01",
+      "sourceText": "erläutern das grundlegende Funktionsprinzip eines Halbleiterdetektors für die Energiemessung von Kernstrahlung.",
+      "sourcePage": 46,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p46-process-gA-01",
+      "sourceText": "beschreiben die in Energiespektren verwendete Darstellungsform (Energie-Häufigkeits-Diagramm).",
+      "sourcePage": 46,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p46-process-eA-03",
+      "sourceText": "erläutern die Bedeutung der Bragg-Kurve in der Strahlentherapie.",
+      "sourcePage": 46,
+      "normativeStatus": "binding",
+      "canonicalGoalIds": [],
+      "reason": "noCanonicalEndpoint"
+    }
+  ]
+}

@@ -15,6 +15,7 @@ import re
 from functools import cache
 from pathlib import Path
 
+from current_source_packages import current_packages
 import generate_hessen_physics_stage_views as graph
 from generate_physics_partial_orders import (partial_order as derive_partial_order,
     acquisition_placements, contextual_targets, course_seeds)
@@ -552,26 +553,42 @@ def source_topic_title(state, passage, pdf_pages, extraction_path):
     return title
 
 
+@cache
+def registered_physics_packages():
+    return [item for item in current_packages(ROOT) if item["targetLandscapeId"] == "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a"]
+
+
 def retained_source_plan(state, profile):
     topics, candidates, sources, pdf_pages = {}, {}, [], {}
-    for path in sorted((ROOT / "curricula/DE/Gymnasium/input" / state).glob("**/*PHYSIK*.source-extraction.json")):
+    packages = [item for item in registered_physics_packages() if item["jurisdiction"] == "DE-" + state]
+    registered = {ROOT / path for item in packages for path in item["extraction"]["registered"]}
+    paths = set((ROOT / "curricula/DE/Gymnasium/input" / state).glob("**/*PHYSIK*.source-extraction.json")) - registered
+    reviews = {ROOT / item["extraction"]["path"]: ROOT / item["review"]["path"] for item in packages}
+    for path in sorted(paths | reviews.keys()):
         extraction = load_pinned(str(path.relative_to(ROOT)))
+        if path not in reviews and any(item["landscapeId"] == extraction.get("sourceLandscapeId") for item in packages):
+            raise ValueError("Unregistered edition of a versioned source: " + str(path))
         if extraction.get("stage") not in ("SekI", "SekII"):
             continue
-        mapping_paths = [mapping for mapping in (ROOT / "curricula/DE/Gymnasium/mapping" / ("DE-" + state)).glob("**/*source_extraction*.review.json")
+        mapping_paths = [reviews[path]] if path in reviews else [mapping for mapping in (ROOT / "curricula/DE/Gymnasium/mapping" / ("DE-" + state)).glob("**/*source_extraction*.review.json")
                          if json.loads(mapping.read_text()).get("sourceExtractionPath") == str(path.relative_to(ROOT))]
         if len(mapping_paths) != 1:
             raise ValueError("Missing or ambiguous Physics source review for " + str(path))
         mapping = load_pinned(str(mapping_paths[0].relative_to(ROOT)))
         sources.extend({"path": str(p.relative_to(ROOT)), "sha256": hashlib.sha256(p.read_bytes()).hexdigest()}
                        for p in (path, mapping_paths[0]))
+        passage_by_id = {passage["id"]: passage for passage in extraction["passages"]}
         passage_by_code = {passage["topicCode"]: passage for passage in extraction["passages"]}
         goals = {goal["id"]: goal for goal in extraction["sourceGoals"]}
         for record in mapping["mappings"]:
             source_goal = goals.get(record["legacyGoalId"])
             if source_goal is None or source_goal.get("courseLevel") not in (None, "unspecified", "GK_LK", profile):
                 continue
-            passage = passage_by_code[source_goal["topicCode"]]
+            if source_goal.get("normativeStatus", "").startswith("proposedElectiveModule"):
+                continue
+            passage = passage_by_id.get(source_goal.get("passageId")) if path in reviews else None
+            if passage is None:
+                passage = passage_by_code[source_goal["topicCode"]]
             unit = source_unit(state, extraction["stage"], passage)
             if unit is None:
                 continue

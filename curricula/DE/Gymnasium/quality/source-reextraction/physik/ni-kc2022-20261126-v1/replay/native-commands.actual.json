@@ -1,0 +1,558 @@
+[
+  {
+    "phase": "baseline",
+    "name": "current-package-validation",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/current_source_packages.py",
+      "."
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 0.031,
+    "log": "current-package-validation.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "view-generation",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/generate_laender_physics_stage_views.py",
+      "--check",
+      "--jurisdiction",
+      "NI",
+      "--report",
+      "<scratch>/tmp/ni-pilot-preview/round-01/baseline/view-generation.json"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 11.863,
+    "log": "view-generation.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "views-native-check",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/generate_laender_physics_stage_views.py",
+      "--check",
+      "--jurisdiction",
+      "NI"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 11.7,
+    "log": "views-native-check.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "actual-nested-map-projection",
+    "argv": [
+      "<scratch>/app/node_modules/.bin/tsx",
+      "scripts/niPilotActualProjection.ts",
+      "--jurisdiction=NI"
+    ],
+    "cwd": "app",
+    "exitCode": 0,
+    "elapsedSeconds": 26.918,
+    "log": "actual-nested-map-projection.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "public-physics-rationale",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:goal-source-rationales:physics-public"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 1.557,
+    "log": "public-physics-rationale.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "ni-rationale",
+    "argv": [
+      "<scratch>/app/node_modules/.bin/tsx",
+      "scripts/generateGoalSourceRationales.ts",
+      "--landscape=curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "--jurisdiction=DE-NI",
+      "--audience=plain",
+      "--goals=source-backed-relevant-leaves",
+      "--output-json=tmp/ni-pilot-preview/round-01/baseline/ni-rationale.json",
+      "--no-md"
+    ],
+    "cwd": "app",
+    "exitCode": 0,
+    "elapsedSeconds": 1.369,
+    "log": "ni-rationale.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "book-original-sources",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "build:goal-book-original-sources"
+    ],
+    "cwd": ".",
+    "exitCode": 1,
+    "elapsedSeconds": 0.544,
+    "log": "book-original-sources.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "book-original-sources-check",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:goal-book-original-sources"
+    ],
+    "cwd": ".",
+    "exitCode": 1,
+    "elapsedSeconds": 0.466,
+    "log": "book-original-sources-check.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "public-rationale-check",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:goal-source-rationales:public"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 0.86,
+    "log": "public-rationale-check.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "source-inventory",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "test:source-extraction-inventory"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 1.118,
+    "log": "source-inventory.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "quality-curriculum-status",
+    "argv": [
+      "<scratch>/app/node_modules/.bin/tsx",
+      "scripts/generateCurriculumQualityStatus.ts"
+    ],
+    "cwd": "app",
+    "exitCode": 0,
+    "elapsedSeconds": 218.078,
+    "log": "quality-curriculum-status.log"
+  },
+  {
+    "phase": "baseline",
+    "name": "quality-status-and-floors",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:curriculum-status:check"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 209.72,
+    "log": "quality-status-and-floors.log"
+  },
+  {
+    "phase": "baseline-addendum",
+    "name": "book-original-sources-after-model-copy",
+    "exitCode": 0,
+    "log": "book-original-sources-after-model-copy.log",
+    "reason": "Initial tracked-only scratch lacked ignored book-model inputs; copied five source models by digest and repeated native builder."
+  },
+  {
+    "phase": "baseline-addendum",
+    "name": "book-original-sources-check-after-model-copy",
+    "exitCode": 0,
+    "log": "book-original-sources-check-after-model-copy.log"
+  },
+  {
+    "phase": "baseline-addendum",
+    "name": "actual-full-runtime-map-projection",
+    "exitCode": 0,
+    "log": "actual-full-runtime-map-projection.log",
+    "reason": "Uses the production createLearnerUnitMapCache including memberUnits, enhancing the existing native test adapter path."
+  },
+  {
+    "phase": "final-candidate",
+    "name": "current-package-validation",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/current_source_packages.py",
+      "."
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 0.04,
+    "log": "current-package-validation.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "view-generation",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/generate_laender_physics_stage_views.py",
+      "--write",
+      "--jurisdiction",
+      "NI",
+      "--report",
+      "<scratch>/tmp/ni-pilot-preview/round-02/candidate/view-generation.json"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 14.69,
+    "log": "view-generation.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "views-native-check",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/generate_laender_physics_stage_views.py",
+      "--check",
+      "--jurisdiction",
+      "NI"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 14.426,
+    "log": "views-native-check.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "actual-nested-map-projection",
+    "argv": [
+      "<scratch>/app/node_modules/.bin/tsx",
+      "scripts/niPilotActualProjection.ts",
+      "--jurisdiction=NI"
+    ],
+    "cwd": "app",
+    "exitCode": 0,
+    "elapsedSeconds": 22.485,
+    "log": "actual-nested-map-projection.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "public-physics-rationale",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:goal-source-rationales:physics-public"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 1.587,
+    "log": "public-physics-rationale.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "ni-rationale",
+    "argv": [
+      "<scratch>/app/node_modules/.bin/tsx",
+      "scripts/generateGoalSourceRationales.ts",
+      "--landscape=curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "--jurisdiction=DE-NI",
+      "--audience=plain",
+      "--goals=source-backed-relevant-leaves",
+      "--output-json=tmp/ni-pilot-preview/round-02/candidate/ni-rationale.json",
+      "--no-md"
+    ],
+    "cwd": "app",
+    "exitCode": 0,
+    "elapsedSeconds": 1.385,
+    "log": "ni-rationale.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "book-original-sources",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "build:goal-book-original-sources"
+    ],
+    "cwd": ".",
+    "exitCode": 1,
+    "elapsedSeconds": 3.333,
+    "log": "book-original-sources.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "book-original-sources-check",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:goal-book-original-sources"
+    ],
+    "cwd": ".",
+    "exitCode": 1,
+    "elapsedSeconds": 3.245,
+    "log": "book-original-sources-check.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "public-rationale-check",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:goal-source-rationales:public"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 0.802,
+    "log": "public-rationale-check.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "book-original-sources-runtime-tests",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "test:goal-book-original-sources"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 3.648,
+    "log": "book-original-sources-runtime-tests.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "rationale-coverage-check",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:goal-source-rationale-coverage"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 0.618,
+    "log": "rationale-coverage-check.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "source-inventory",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "test:source-extraction-inventory"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 3.333,
+    "log": "source-inventory.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "quality-curriculum-status",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:curriculum-status"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 209.194,
+    "log": "quality-curriculum-status.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "quality-status-and-floors",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:curriculum-maturity-floors"
+    ],
+    "cwd": ".",
+    "exitCode": 1,
+    "elapsedSeconds": 0.892,
+    "log": "quality-status-and-floors.log"
+  },
+  {
+    "phase": "final-candidate",
+    "name": "physics-book-inputs-after-fresh-status",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "test:physics-goal-book-inputs"
+    ],
+    "cwd": ".",
+    "exitCode": 1,
+    "elapsedSeconds": 220.679,
+    "log": "physics-book-inputs-after-fresh-status.log"
+  },
+  {
+    "phase": "postflight",
+    "name": "postflight-python-selection-before",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/current_source_packages.py",
+      "."
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 0.042,
+    "log": "postflight-python-selection-before.log"
+  },
+  {
+    "phase": "postflight",
+    "name": "postflight-ts-selection-before",
+    "argv": [
+      "<scratch>/app/node_modules/.bin/tsx",
+      "scripts/niPilotSelectorOutput.ts"
+    ],
+    "cwd": "app",
+    "exitCode": 0,
+    "elapsedSeconds": 0.341,
+    "log": "postflight-ts-selection-before.log"
+  },
+  {
+    "phase": "postflight",
+    "name": "postflight-python-selection-after",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/current_source_packages.py",
+      "."
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 0.041,
+    "log": "postflight-python-selection-after.log"
+  },
+  {
+    "phase": "postflight",
+    "name": "postflight-ts-selection-after",
+    "argv": [
+      "<scratch>/app/node_modules/.bin/tsx",
+      "scripts/niPilotSelectorOutput.ts"
+    ],
+    "cwd": "app",
+    "exitCode": 0,
+    "elapsedSeconds": 0.325,
+    "log": "postflight-ts-selection-after.log"
+  },
+  {
+    "phase": "postflight",
+    "name": "postflight-package-negative-controls",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/test_current_source_packages.py"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 0.107,
+    "log": "postflight-package-negative-controls.log"
+  },
+  {
+    "phase": "postflight",
+    "name": "postflight-focused-book-reader-tests",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "test:goal-book-original-sources"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 3.791,
+    "log": "postflight-focused-book-reader-tests.log"
+  },
+  {
+    "phase": "postflight",
+    "name": "postflight-book-original-sources",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "build:goal-book-original-sources"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 4.719,
+    "log": "postflight-book-original-sources.log"
+  },
+  {
+    "phase": "postflight",
+    "name": "postflight-book-original-sources-check",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "check:goal-book-original-sources"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 4.717,
+    "log": "postflight-book-original-sources-check.log"
+  },
+  {
+    "phase": "postflight",
+    "name": "postflight-native-ni-view-check",
+    "argv": [
+      "python3",
+      "-B",
+      "scripts/generate_laender_physics_stage_views.py",
+      "--check",
+      "--jurisdiction",
+      "NI"
+    ],
+    "cwd": ".",
+    "exitCode": 0,
+    "elapsedSeconds": 15.439,
+    "log": "postflight-native-ni-view-check.log"
+  }
+]

@@ -1,12 +1,17 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   createMissingSourceExtractionPipeline,
+  readAllGoalMappingFiles,
   readSourceExtractionGoalIdsByLandscapeId,
 } from './generateCurriculumQualityStatus'
+import { currentSourcePaths } from './currentSourcePackages'
+import { buildGoalBookOriginalSources } from './goalBookOriginalSources'
+import type { GoalBookModel } from './goalBookModel'
 
 const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const fullPath = 'curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json'
@@ -39,7 +44,131 @@ const assertUnreviewed = (pipeline: ReturnType<typeof createMissingSourceExtract
   assert(pipeline.steps.every(({ status }) => status !== 'complete'))
 }
 
+const versionedFixture = (name: string) => {
+  const root = join(temporaryRoot, name)
+  const sourceLandscapeId = 'versioned-source'
+  const targetLandscapeId = 'versioned-target'
+  const registryPath = 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'
+  const inputDirectory = 'curricula/DE/Gymnasium/input/NI'
+  const mappingDirectory = 'curricula/DE/Gymnasium/mapping/DE-NI'
+  const bind = (path: string, value: unknown) => {
+    const absolutePath = writeJson(root, path, value)
+    return { path, sha256: createHash('sha256').update(readFileSync(absolutePath)).digest('hex') }
+  }
+  const document = bind(`${inputDirectory}/official.json`, { content: 'retained primary fixture bytes' })
+  const edition = (id: string, status: string, sourceRef: string) => {
+    const goal = { id: 'same-source-goal', passageId: 'p1', sourceRef, sourceSpan: sourceRef, sourceText: `${id} wording` }
+    const extraction = bind(id === 'historical'
+      ? `${inputDirectory}/source-extraction/previous.source-extraction.json`
+      : `${inputDirectory}/editions/current/extraction.json`, {
+      sourceLandscapeId, jurisdiction: 'DE-NI', subject: 'Physik', stage: 'SekII',
+      sourceDocument: { path: document.path, title: 'Official fixture', official: true, url: 'https://example.org/current.pdf' },
+      passages: [{ id: 'p1' }], sourceGoals: [goal],
+    })
+    const sortedGoal = Object.fromEntries(Object.entries(goal).sort(([left], [right]) => left.localeCompare(right)))
+    const review = bind(id === 'historical'
+      ? `${mappingDirectory}/previous.review.json`
+      : `${inputDirectory}/editions/current/mapping-review.json`, {
+      sourceLandscapeId, targetLandscapeId, sourceExtractionPath: extraction.path,
+      decisions: [{ sourceGoalId: goal.id, decision: 'mapped', sourceSpan: sourceRef,
+        sourceGoalSha256: createHash('sha256').update(JSON.stringify(sortedGoal)).digest('hex'), canonicalGoalIds: ['target-goal'] }],
+      mappings: [{ legacyGoalId: goal.id, canonicalGoalId: 'target-goal', matchType: 'exact' }],
+    })
+    return { id, status, format: 'literal-v1', document, extraction, review }
+  }
+  const historical = edition('historical', 'historical', 'Previous paraphrase, S. 3')
+  const current = edition('current', 'current', 'Current original, S. 8')
+  const entry = {
+    landscapeId: sourceLandscapeId, jurisdiction: 'DE-NI',
+    packageScope: { subject: 'Physik', stage: 'SekII', schoolType: 'Gymnasium', validity: 'KC fixture', targetLandscapeId },
+    sourcePackages: [historical, current],
+  }
+  const registry = () => writeJson(root, registryPath, { version: 1, entries: [entry] })
+  registry()
+  return { root, sourceLandscapeId, targetLandscapeId, inputDirectory, mappingDirectory, historical, current, entry, registry }
+}
+
 try {
+  const versioned = versionedFixture('registered-version-readers')
+  for (const component of ['extraction', 'review'] as const) {
+    const previous = versioned.historical[component].path
+    const current = versioned.current[component].path
+    for (const discovered of [[previous, current], [current, previous], [previous]]) {
+      assert.deepEqual(currentSourcePaths(versioned.root, discovered, component), [current],
+        'Discovery order and an explicit retained predecessor must select exactly the current registered component.')
+    }
+    const directory = component === 'extraction' ? versioned.inputDirectory : versioned.mappingDirectory
+    assert.deepEqual(currentSourcePaths(versioned.root, [], component, directory), [current],
+      'Full scoped discovery must find the active edition even when no predecessor was discovered and the active review lives outside mapping/.')
+    const unrelatedScope = component === 'extraction' ? 'curricula/DE/Gymnasium/input/HE' : 'curricula/DE/Gymnasium/mapping/DE-HE'
+    assert.deepEqual(currentSourcePaths(versioned.root, [], component, unrelatedScope), [],
+      'A different jurisdiction scope must not acquire this package.')
+    const unrelated = `${directory}/other-subject.json`
+    writeJson(versioned.root, unrelated, { sourceLandscapeId: 'another-subject' })
+    assert.deepEqual(currentSourcePaths(versioned.root, [unrelated], component), [unrelated],
+      'Other subjects sharing the directory keep their independently discovered inputs.')
+    const unregistered = `${directory}/unregistered.json`
+    writeJson(versioned.root, unregistered, { sourceLandscapeId: versioned.sourceLandscapeId, sourceExtractionPath: previous })
+    assert.throws(() => currentSourcePaths(versioned.root, [unregistered], component), /Unregistered edition/u,
+      'An unregistered edition of the selected source cannot silently enter a reader.')
+  }
+  const canonicalPath = 'curricula/DE/Gymnasium/canonical/fixture.json'
+  writeJson(versioned.root, canonicalPath, {
+    landscapeId: versioned.targetLandscapeId, goals: [{ id: 'target-goal', contains: [], requires: [] }],
+  })
+  // The citation projection reads this model subset; no generated publication is required by this regression.
+  const citationModel = {
+    book: { id: 'fixture-book', landscapeId: versioned.targetLandscapeId },
+    source: { landscapePath: canonicalPath }, digest: 'fixture-digest',
+    pages: [{ goalId: 'target-goal', applicability: [{ jurisdiction: 'DE-NI', scopes: [
+      { stage: 'SekII', durationModel: null, courseProfile: null },
+    ] }] }],
+  } as GoalBookModel
+  const citations = buildGoalBookOriginalSources(citationModel, versioned.root, [versioned.historical.review.path])
+  assert.deepEqual(citations.evidence.map(({ sourceRef }) => sourceRef), ['Current original, S. 8'],
+    'An explicitly selected predecessor review must never reintroduce its old paraphrase into the learner book.')
+  assert.deepEqual(buildGoalBookOriginalSources(citationModel, versioned.root).evidence, citations.evidence,
+    'Unscoped learner-book discovery must select the same current evidence as an explicit predecessor reference.')
+  assert.equal(JSON.parse(readFileSync(join(versioned.root, versioned.historical.extraction.path), 'utf8')).sourceGoals[0].sourceRef,
+    'Previous paraphrase, S. 3', 'The historical extraction remains directly readable with its exact retained wording.')
+  assert.equal(JSON.parse(readFileSync(join(versioned.root, versioned.historical.review.path), 'utf8')).sourceExtractionPath,
+    versioned.historical.extraction.path, 'Historical review evidence retains its original explicit extraction binding.')
+
+  for (const broken of ['missing-extraction', 'missing-review', 'no-current', 'two-current'] as const) {
+    const fixture = versionedFixture(`incomplete-${broken}`)
+    writeJson(fixture.root, canonicalPath, {
+      landscapeId: fixture.targetLandscapeId, goals: [{ id: 'target-goal', contains: [], requires: [] }],
+    })
+    if (broken === 'missing-extraction') rmSync(join(fixture.root, fixture.current.extraction.path))
+    if (broken === 'missing-review') rmSync(join(fixture.root, fixture.current.review.path))
+    if (broken === 'no-current') fixture.current.status = 'draft'
+    if (broken === 'two-current') fixture.historical.status = 'current'
+    fixture.registry()
+    assert.throws(() => currentSourcePaths(fixture.root, [fixture.historical.review.path], 'review'),
+      /ENOENT|No such file|exactly one/u, 'An incomplete or ambiguous active package must fail without falling back to retained history.')
+    assert.throws(() => buildGoalBookOriginalSources(citationModel, fixture.root, [fixture.historical.review.path]),
+      /ENOENT|No such file|exactly one/u, 'The learner-book reader must propagate incomplete package selection instead of publishing old evidence.')
+  }
+
+  const registry = JSON.parse(readFileSync(join(repoRoot, 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json'), 'utf8')) as {
+    entries: Array<{ landscapeId: string, jurisdiction: string, packageScope?: { subject: string }, sourcePackages?: Array<{
+      status: string, extraction: { path: string }, review: { path: string },
+    }> }>
+  }
+  const registeredPhysics = registry.entries.find((entry) => entry.jurisdiction === 'DE-NI'
+    && entry.packageScope?.subject === 'Physik' && entry.sourcePackages)
+  assert(registeredPhysics?.sourcePackages, 'The real NI Physics package must exercise the runtime reader regressions.')
+  const active = registeredPhysics.sourcePackages.find(({ status }) => status === 'current')
+  assert(active)
+  const activeExtraction = JSON.parse(readFileSync(join(repoRoot, active.extraction.path), 'utf8')) as { sourceGoals: Array<{ id: string }> }
+  assert.deepEqual([...(readSourceExtractionGoalIdsByLandscapeId().get(registeredPhysics.landscapeId) ?? [])].sort(),
+    activeExtraction.sourceGoals.map(({ id }) => id).sort(), 'Runtime coverage inventory must contain exactly the active registered NI Physics goals.')
+  const activeReviews = readAllGoalMappingFiles().filter(({ sourceLandscapeId, sourceExtractionPath }) => (
+    sourceLandscapeId === registeredPhysics.landscapeId && sourceExtractionPath
+  ))
+  assert.deepEqual(activeReviews.map(({ file }) => file), [active.review.path],
+    'The actual runtime mapping reader must discover the current registered review and exclude the retained or draft partner.')
+
   // Reproduce the actual 9 + 1 collision, and reverse its lexical load order.
   for (const reverse of [false, true]) {
     const root = join(temporaryRoot, reverse ? 'component-first' : 'full-first')

@@ -1,0 +1,97 @@
+{
+  "reviewer": "/root/ni_independent",
+  "authorship": "Reviewer did not author the extraction or mappings; source-only backwards record preceded candidate inspection.",
+  "status": "Source wording/scope/count and bounded correction package independently checked; successor remains draft; no full source-to-catalog coverage approval.",
+  "bindings": {
+    "extraction.json": "83b2b882c8531d242a912808a51862d1d6f895e248d2c1187224a2379aea3899",
+    "mapping-review.json": "afc8e185cdfb3810308772e85d264b766e64da67d5a49f89a3ecd29c0f7d8a20",
+    "sample.json": "301666b6b996a0f5ae660583645e8b694c19293a6ced7ad3bed0131d26e88bbf",
+    "concordance.json": "aa498d0de0bc07d1a82d5f14ceb7cbe2aef2e143e6264f2e9af2de55f0a19dc9",
+    "fidelity.json": "03e64b50ace057fdb564b01538d350f7e3c03eaa27da531f01d621d690fc038d",
+    "canonical-physics.json": "2ae256c5ca3a63c130a5fb7d34f115f4cc97addd9b5c23751c70885ed259fd6b"
+  },
+  "originalPdfSha256": "772914377e9ce1cd3f4c804d86e488e0957ce4a40de8885f8b2fe6ef6de05a0b",
+  "sourceOnlyRecord": "source-only-backward-reading.md",
+  "checks": {
+    "samplePdfMatchesOriginal": true,
+    "sampleExtractionHash": true,
+    "sampleMappingHash": true,
+    "sampleConcordanceHash": true,
+    "all378RowHashesMatch": true,
+    "all378DecisionSpansMatch": true,
+    "all64EndpointsMatchIndependentRecommendations": true,
+    "all35GapsHaveConcreteProposal": true,
+    "all29PartialRealisationsKeepMissingDemand": true,
+    "allTargetLinksPartial": true,
+    "withdrawnOldIdsAbsentFromSuccessorRowsAndMappings": true,
+    "randomReplayExact": true
+  },
+  "counts": {
+    "pdfPagesReadBackwards": 55,
+    "sourceRows": 378,
+    "bindingRows": 328,
+    "conditionalElectiveRows": 50,
+    "contextPassages": 9,
+    "mappingPairs": 407,
+    "sampleRows": 346,
+    "sampleTargetLinks": 368,
+    "sampleUniqueTargets": 141,
+    "purposive": 336,
+    "remaining": 42,
+    "random": 10,
+    "oldTransitionsRead": 154,
+    "withdrawnEntireClaims": 6,
+    "gapAuditRows": 64,
+    "boundedPartialRealisations": 29,
+    "realGaps": 35,
+    "newGoalsCreated": 0,
+    "fullyAcceptedSourceCompetencies": 0
+  },
+  "randomDraw": {
+    "input": "lowercase hex original PDF SHA256 immediately followed by UTF8 sourceGoalId",
+    "expected": [
+      "ni-kc2022-dyn-c5",
+      "ni-kc2022-p46-content-02",
+      "ni-kc2022-p33-process-gA-02",
+      "ni-kc2022-ni-2022-3.1-arg-p16-e-06",
+      "ni-kc2022-p34-content-01",
+      "ni-kc2022-p38-content-03",
+      "ni-kc2022-p45-process-gA-03",
+      "ni-kc2022-p46-process-gA-01",
+      "ni-kc2022-dyn-c3",
+      "ni-kc2022-ni-2022-3.1-math-p21-q-06"
+    ],
+    "actual": [
+      "ni-kc2022-ni-2022-3.1-arg-p16-e-06",
+      "ni-kc2022-ni-2022-3.1-math-p21-q-06",
+      "ni-kc2022-dyn-c3",
+      "ni-kc2022-dyn-c5",
+      "ni-kc2022-p33-process-gA-02",
+      "ni-kc2022-p34-content-01",
+      "ni-kc2022-p38-content-03",
+      "ni-kc2022-p45-process-gA-03",
+      "ni-kc2022-p46-content-02",
+      "ni-kc2022-p46-process-gA-01"
+    ]
+  },
+  "fidelityReportedByAuthor": {
+    "median": 1.0,
+    "below02": 0,
+    "withAbsentStem": 0,
+    "scorable": 376
+  },
+  "quantityDerivation": {
+    "printedProcess": 111,
+    "printedE": 74,
+    "printedQ": 228,
+    "replaceTwoParentsByNineP39Subitems": 7,
+    "repeatedProcessRemoved": 8,
+    "repeatedCourseColumnsRemoved": 34,
+    "total": 378
+  },
+  "limits": [
+    "HE/BW originals were not independently recounted here; NI derivation is verified.",
+    "Source role changes, actual learner views, active-reader absence, immutability, full QA and CI are separate implementation evidence.",
+    "No canonical gaps repaired by a new goal; no learner result written; no exact/full-coverage acceptance asserted."
+  ]
+}

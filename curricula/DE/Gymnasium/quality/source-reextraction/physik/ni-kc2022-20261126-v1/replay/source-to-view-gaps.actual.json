@@ -1,0 +1,1280 @@
+{
+  "kind": "native-CQR-source-to-view-target-diagnostic",
+  "nativeHelpers": [
+    "readCompositionViewAtomicGoalIds",
+    "sourceCoverageAtomicScopeMatcher"
+  ],
+  "sourceGoals": 378,
+  "coveredSourceGoals": 307,
+  "uncoveredSourceGoals": 71,
+  "noMappedEndpoint": 35,
+  "mappedButNoEffectiveNIViewTarget": 36,
+  "viewTargetCounts": [
+    {
+      "view": "de-ni-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      },
+      "targetAtomsAfterNativeScopeFilter": 477,
+      "coveredSourceGoals": 274
+    },
+    {
+      "view": "de-ni-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "CrossStage",
+        "courseProfile": "LK"
+      },
+      "targetAtomsAfterNativeScopeFilter": 560,
+      "coveredSourceGoals": 307
+    },
+    {
+      "view": "de-ni-seki.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekI"
+      },
+      "targetAtomsAfterNativeScopeFilter": 126,
+      "coveredSourceGoals": 43
+    },
+    {
+      "view": "de-ni-sekii-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "targetAtomsAfterNativeScopeFilter": 364,
+      "coveredSourceGoals": 251
+    },
+    {
+      "view": "de-ni-sekii-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-NI",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "targetAtomsAfterNativeScopeFilter": 447,
+      "coveredSourceGoals": 284
+    }
+  ],
+  "missingSourceGoals": [
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-arg-p16-e-01",
+      "topicCode": "3.1-ARG",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "geben ihre erworbenen Kenntnisse wieder und nutzen erlerntes Vokabular.",
+      "sourceSpan": "Physikalisch argumentieren · S. 16 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-arg-p16-e-02",
+      "topicCode": "3.1-ARG",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "verwenden die erlernte Fachsprache zunehmend sicher und wählen die Sprachebene bewusst aus.",
+      "sourceSpan": "Physikalisch argumentieren · S. 16 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-arg-p16-q-02",
+      "topicCode": "3.1-ARG",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "verwenden die erlernte Fachsprache sicher und wählen die Sprachebene bewusst aus.",
+      "sourceSpan": "Physikalisch argumentieren · S. 16 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-arg-p16-q-05",
+      "topicCode": "3.1-ARG",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "formulieren Hypothesen und überprüfen sie mithilfe von Experimenten.",
+      "sourceSpan": "Physikalisch argumentieren · S. 16 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-prob-p17-e-03",
+      "topicCode": "3.1-PROB",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "führen selbstverantwortlich ihre Notizen.",
+      "sourceSpan": "Probleme lösen · S. 17 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-e-02",
+      "topicCode": "3.1-EXP",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "planen einfache Experimente zur Untersuchung ausgewählter, auch eigener Fragestellungen selbst und achten darauf, jeweils nur einen Parameter zu variieren.",
+      "sourceSpan": "Planen, experimentieren, auswerten · S. 18 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "title": "Experimente planen und Messdaten auswerten",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-e-03",
+      "topicCode": "3.1-EXP",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "legen selbstständig geeignete Messtabellen an.",
+      "sourceSpan": "Planen, experimentieren, auswerten · S. 18 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+          "title": "Fallhöhe und Fallzeit in einem Messprotokoll festhalten",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-e-05",
+      "topicCode": "3.1-EXP",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "fertigen bei Bedarf Versuchsprotokolle selbstständig an.",
+      "sourceSpan": "Planen, experimentieren, auswerten · S. 18 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "7cfaf48e-e420-5c09-8ec2-932f0dba4d08",
+          "title": "Prüfungsaufgabe: Zwei Untersuchungen nachvollziehbar dokumentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-e-06",
+      "topicCode": "3.1-EXP",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "tragen Ergebnisse von z. B. arbeitsteilig ausgeführten Experimenten sachgerecht und adressatenbezogen vor.",
+      "sourceSpan": "Planen, experimentieren, auswerten · S. 18 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-q-02",
+      "topicCode": "3.1-EXP",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "planen Experimente zur Untersuchung ausgewählter, auch eigener Fragestellungen selbst und führen diese sachgerecht durch.",
+      "sourceSpan": "Planen, experimentieren, auswerten · S. 18 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "title": "Experimente planen und Messdaten auswerten",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-exp-p18-q-04",
+      "topicCode": "3.1-EXP",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "dokumentieren Aufbau, Durchführung, Beobachtung und Auswertung von Experimenten selbstständig.",
+      "sourceSpan": "Planen, experimentieren, auswerten · S. 18 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "7cfaf48e-e420-5c09-8ec2-932f0dba4d08",
+          "title": "Prüfungsaufgabe: Zwei Untersuchungen nachvollziehbar dokumentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-math-p20-e-01",
+      "topicCode": "3.1-MATH",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "verwenden die wissenschaftliche Notation für Zahlenangaben und Vorsilben von Einheiten.",
+      "sourceSpan": "Mathematisieren · S. 20 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-math-p20-e-02",
+      "topicCode": "3.1-MATH",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "verwenden Größen und Einheiten und führen erforderliche Umrechnungen durch.",
+      "sourceSpan": "Mathematisieren · S. 20 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+          "title": "Fallhöhe und Fallzeit in einem Messprotokoll festhalten",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-math-p21-q-06",
+      "topicCode": "3.1-MATH",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "dokumentieren Herleitungen sachgerecht.",
+      "sourceSpan": "Mathematisieren · S. 21 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-mod-p22-e-02",
+      "topicCode": "3.1-MOD",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "überprüfen Hypothesen an ausgewählten Beispielen durch selbst entworfene Experimente.",
+      "sourceSpan": "Mit Modellen arbeiten · S. 22 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-ewg-p23-q-02",
+      "topicCode": "3.1-EWG",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "erläutern, dass man mithilfe experimenteller Daten Hypothesen zwar widerlegen, aber nie beweisen kann.",
+      "sourceSpan": "Erkenntniswege der Physik beschreiben und reflektieren · S. 23 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "da26294f-4316-5bd5-a37a-bd89397b3b8b",
+          "title": "Physikalische Aussagen empirisch überprüfen",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-ewg-p23-q-03",
+      "topicCode": "3.1-EWG",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "erörtern die Funktion eines Experiments bei der Entscheidung über Hypothesen bzw. zur Initiierung von Ideen.",
+      "sourceSpan": "Erkenntniswege der Physik beschreiben und reflektieren · S. 23 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "da26294f-4316-5bd5-a37a-bd89397b3b8b",
+          "title": "Physikalische Aussagen empirisch überprüfen",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-01",
+      "topicCode": "3.1-KOM",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "wählen die Sprachebene adressatengerecht aus.",
+      "sourceSpan": "Kommunizieren · S. 24 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-04",
+      "topicCode": "3.1-KOM",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "verfassen Berichte selbstständig.",
+      "sourceSpan": "Kommunizieren · S. 24 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "7cfaf48e-e420-5c09-8ec2-932f0dba4d08",
+          "title": "Prüfungsaufgabe: Zwei Untersuchungen nachvollziehbar dokumentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-05",
+      "topicCode": "3.1-KOM",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "stellen die Ergebnisse einer selbstständigen Arbeit zu einem Thema in angemessener Form schriftlich dar.",
+      "sourceSpan": "Kommunizieren · S. 24 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "7cfaf48e-e420-5c09-8ec2-932f0dba4d08",
+          "title": "Prüfungsaufgabe: Zwei Untersuchungen nachvollziehbar dokumentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-06",
+      "topicCode": "3.1-KOM",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "referieren über selbst durchgeführte Experimente sachgerecht und adressatenbezogen und wählen dazu geeignete Medien aus.",
+      "sourceSpan": "Kommunizieren · S. 24 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-e-07",
+      "topicCode": "3.1-KOM",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "entwickeln die Arbeit in der Gruppe weiter.",
+      "sourceSpan": "Kommunizieren · S. 24 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-q-01",
+      "topicCode": "3.1-KOM",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "verwenden die Fachsprache in den behandelten Gebieten sicher.",
+      "sourceSpan": "Kommunizieren · S. 24 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-q-04",
+      "topicCode": "3.1-KOM",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "präsentieren Arbeitsergebnisse sach-, situations- und adressatengerecht unter Verwendung geeigneter, auch digitaler Darstellungsmethoden und beachten dabei Urheberrecht und Zitierregeln.",
+      "sourceSpan": "Kommunizieren · S. 24 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-q-06",
+      "topicCode": "3.1-KOM",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "führen zu einem Sachverhalt ein Fachgespräch auf angemessenem Niveau.",
+      "sourceSpan": "Kommunizieren · S. 24 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-kom-p24-q-07",
+      "topicCode": "3.1-KOM",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "arbeiten sachgerecht und zielgerichtet in einer Gruppe.",
+      "sourceSpan": "Kommunizieren · S. 24 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-e-01",
+      "topicCode": "3.1-DOK",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "führen ihre Notizen selbstständig.",
+      "sourceSpan": "Dokumentieren · S. 25 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-e-02",
+      "topicCode": "3.1-DOK",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "dokumentieren ihre Arbeitsschritte auch bei selbst geplanten Experimenten oder Auswertungen in geeigneter schriftlicher Darstellung.",
+      "sourceSpan": "Dokumentieren · S. 25 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "7cfaf48e-e420-5c09-8ec2-932f0dba4d08",
+          "title": "Prüfungsaufgabe: Zwei Untersuchungen nachvollziehbar dokumentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-e-04",
+      "topicCode": "3.1-DOK",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "fertigen Messtabellen selbstständig an und geben Größensymbole und Einheiten an.",
+      "sourceSpan": "Dokumentieren · S. 25 · am Ende der Einführungsphase · E · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "e0004439-ed34-5caf-858a-6107918224eb",
+          "title": "Fallhöhe und Fallzeit in einem Messprotokoll festhalten",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-q-01",
+      "topicCode": "3.1-DOK",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "dokumentieren Versuchsergebnisse selbstständig.",
+      "sourceSpan": "Dokumentieren · S. 25 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "7cfaf48e-e420-5c09-8ec2-932f0dba4d08",
+          "title": "Prüfungsaufgabe: Zwei Untersuchungen nachvollziehbar dokumentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-q-02",
+      "topicCode": "3.1-DOK",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "ziehen zur Dokumentation selbstständig Bilder, Texte, Skizzen und Diagramme heran.",
+      "sourceSpan": "Dokumentieren · S. 25 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [
+        {
+          "goalId": "7cfaf48e-e420-5c09-8ec2-932f0dba4d08",
+          "title": "Prüfungsaufgabe: Zwei Untersuchungen nachvollziehbar dokumentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-ni-2022-3.1-dok-p25-q-03",
+      "topicCode": "3.1-DOK",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "requiredCompetency",
+      "normativeStatus": "binding",
+      "sourceText": "dokumentieren Arbeitsschritte mit dem eingeführten elektronischen Rechenwerkzeug in der vereinbarten Weise.",
+      "sourceSpan": "Dokumentieren · S. 25 · zusätzlich am Ende der Qualifikationsphase · gA/eA · Prozesskompetenz",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-dyn-c3",
+      "topicCode": "3.2-DYN",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "content",
+      "normativeStatus": "binding",
+      "sourceText": "erläutern die sich daraus ergebende Definition der Krafteinheit.",
+      "sourceSpan": "3.2 Dynamik · S. 28 · Inhaltsbezogene Kompetenzen · E · Tabellenbezug „nennen die Grundgleichung der Mechanik.\nerläutern die sich daraus ergebende Definition der Krafteinheit.\nerläutern die drei newtonschen Axiome.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-dyn-p11",
+      "topicCode": "3.2-DYN",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "process",
+      "normativeStatus": "binding",
+      "sourceText": "unterscheiden dabei zwischen alltagssprachlicher und fachsprachlicher Beschreibung.",
+      "sourceSpan": "3.2 Dynamik · S. 28 · Prozessbezogene Kompetenzen · E · Tabellenbezug „beschreiben die gleichförmige Kreisbewegung mithilfe der Begriffe Umlaufdauer, Bahngeschwindigkeit und Zentripetalbeschleunigung.\nnennen die Gleichung für die Zentripetalkraft.“",
+      "mappedTargets": [
+        {
+          "goalId": "6d323d54-0aee-55d0-a9e1-ef2efdea0346",
+          "title": "Physikalische Arbeitsergebnisse fachsprachlich präsentieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-c1",
+      "topicCode": "3.2-AKU",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalContent",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "beschreiben ein Verfahren zur Bestimmung der Schallgeschwindigkeit in Luft und einem anderen Medium.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Akustik · S. 29 · Inhaltsbezogene Kompetenzen · E · Wahlmodul, Vorschlag",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-c5",
+      "topicCode": "3.2-AKU",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalContent",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "erläutern den Zusammenhang zwischen Frequenzverhältnissen und musikalischen Intervallen.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Akustik · S. 29 · Inhaltsbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „vergleichen Ton, Klang und Geräusch anhand der zugehörigen Schwingungsbilder.\nbeschreiben die Frequenz als Maß für die Tonhöhe und die Amplitude als Maß für die Lautstärke eines akustischen Signals.\nbeschreiben die Lautstärke von Signalen mithilfe des Schalldruckpegels.\nerläutern den Zusammenhang zwischen Frequenzverhältnissen und musikalischen Intervallen.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-p5",
+      "topicCode": "3.2-AKU",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "beschreiben Gemeinsamkeiten und Unterschiede in den Schwingungsbildern von gleichen Noten, die auf verschiedenen Instrumenten gespielt werden.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Akustik · S. 29 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „vergleichen Ton, Klang und Geräusch anhand der zugehörigen Schwingungsbilder.\nbeschreiben die Frequenz als Maß für die Tonhöhe und die Amplitude als Maß für die Lautstärke eines akustischen Signals.\nbeschreiben die Lautstärke von Signalen mithilfe des Schalldruckpegels.\nerläutern den Zusammenhang zwischen Frequenzverhältnissen und musikalischen Intervallen.“",
+      "mappedTargets": [
+        {
+          "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+          "title": "Frequenzspektren von Tönen und Klängen analysieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-c6",
+      "topicCode": "3.2-AKU",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalContent",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "beschreiben Gemeinsamkeiten und Unterschiede bei der Frequenzanalyse des Signals gleicher Noten, die auf verschiedenen Instrumenten gespielt werden.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Akustik · S. 29 · Inhaltsbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „beschreiben Gemeinsamkeiten und Unterschiede bei der Frequenzanalyse des Signals gleicher Noten, die auf verschiedenen Instrumenten gespielt werden.\nerläutern den Begriff Klangfarbe.“",
+      "mappedTargets": [
+        {
+          "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+          "title": "Frequenzspektren von Tönen und Klängen analysieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-c7",
+      "topicCode": "3.2-AKU",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalContent",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "erläutern den Begriff Klangfarbe.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Akustik · S. 29 · Inhaltsbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „beschreiben Gemeinsamkeiten und Unterschiede bei der Frequenzanalyse des Signals gleicher Noten, die auf verschiedenen Instrumenten gespielt werden.\nerläutern den Begriff Klangfarbe.“",
+      "mappedTargets": [
+        {
+          "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+          "title": "Frequenzspektren von Tönen und Klängen analysieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-p6",
+      "topicCode": "3.2-AKU",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "wenden dazu Ergebnisse der Frequenzanalyse von Tönen und Klängen an.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Akustik · S. 29 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „beschreiben Gemeinsamkeiten und Unterschiede bei der Frequenzanalyse des Signals gleicher Noten, die auf verschiedenen Instrumenten gespielt werden.\nerläutern den Begriff Klangfarbe.“",
+      "mappedTargets": [
+        {
+          "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+          "title": "Frequenzspektren von Tönen und Klängen analysieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-aku-p7",
+      "topicCode": "3.2-AKU",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "bestätigen die Beziehung fₙ = (n + 1) ⋅ f₀ zwischen Frequenz des n-ten Obertons und Frequenz f₀ des Grundtons.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Akustik · S. 29 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „beschreiben Gemeinsamkeiten und Unterschiede bei der Frequenzanalyse des Signals gleicher Noten, die auf verschiedenen Instrumenten gespielt werden.\nerläutern den Begriff Klangfarbe.“",
+      "mappedTargets": [
+        {
+          "goalId": "f06c581a-7157-584e-a692-99bcd613cff9",
+          "title": "Frequenzspektren von Tönen und Klängen analysieren",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-atom-p1",
+      "topicCode": "3.2-ATOMKERN",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModuleRecommendedContent",
+      "sourceText": "deuten das Phänomen der Ionisation mithilfe dieses Modells.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Atom- und Kernphysik · S. 30 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „beschreiben das Kern-Hülle-Modell des Atoms und erläutern den Begriff Isotop.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p1",
+      "topicCode": "3.2-OPTIK",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "führen Experimente zur Erzeugung optischer Abbildungen durch.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Optische Abbildungen · S. 31 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „erläutern die Entstehung eines Bildes an Linsen.\nbeschreiben den Einfluss verschiedener Brennweiten auf die Größe und Lage des Bildes.“",
+      "mappedTargets": [
+        {
+          "goalId": "ce14a7e7-7e2a-517f-a465-78ba3fbe414d",
+          "title": "Sehschwaechen mit dem Linse-Schirm-Modell untersuchen",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p3",
+      "topicCode": "3.2-OPTIK",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "bestimmen den Abbildungsmaßstab.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Optische Abbildungen · S. 31 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „erläutern die Entstehung eines Bildes an Linsen.\nbeschreiben den Einfluss verschiedener Brennweiten auf die Größe und Lage des Bildes.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p5",
+      "topicCode": "3.2-OPTIK",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "überprüfen die theoretischen Vorhersagen anhand entsprechender Experimente.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Optische Abbildungen · S. 31 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „beschreiben die Eigenschaften des Bildes in Abhängigkeit von der Gegenstandsweite.“",
+      "mappedTargets": [
+        {
+          "goalId": "ce14a7e7-7e2a-517f-a465-78ba3fbe414d",
+          "title": "Sehschwaechen mit dem Linse-Schirm-Modell untersuchen",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p6",
+      "topicCode": "3.2-OPTIK",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "leiten diese Gleichung her.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Optische Abbildungen · S. 31 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „nennen die Gleichung für den Zusammenhang zwischen Brenn-, Gegenstands- und Bildweite.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-optik-p8",
+      "topicCode": "3.2-OPTIK",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "beschreiben den Unterschied zwischen abbildenden und den Sehwinkel vergrößernden Geräten.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Optische Abbildungen · S. 31 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „erläutern die grundlegende Funktionsweise ausgewählter Geräte (z. B. Beamer, Fotoapparat, Mikroskop, Fernrohr).“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-strahlung-c4",
+      "topicCode": "3.2-STRAHLUNG",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalContent",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "beschreiben ein Experiment zur selektiven Absorption.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Strahlungsphysik · S. 32 · Inhaltsbezogene Kompetenzen · E · Wahlmodul, Vorschlag",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-strahlung-p5",
+      "topicCode": "3.2-STRAHLUNG",
+      "phase": "E",
+      "courseLevel": "GK_LK",
+      "statementKind": "optionalProcess",
+      "normativeStatus": "proposedElectiveModulePossibleContent",
+      "sourceText": "wenden dazu vorgelegte grafische Darstellungen an.",
+      "sourceSpan": "3.2 Wahlmodule für die Einführungsphase / Strahlungsphysik · S. 32 · Prozessbezogene Kompetenzen · E · Wahlmodul, Vorschlag · Tabellenbezug „stellen den Treibhauseffekt an einem geeignet vereinfachten Modell dar.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p34-process-gA-05",
+      "topicCode": "3.3-ELEK",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "begründen die Auswahl einer exponentiellen Regression auf der Grundlage der Messdaten.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Elektrizität · S. 34 · Prozessbezogene Kompetenzen (gA/eA) · gA/eA · Tabellenbezug „beschreiben den t-I-Zusammenhang (nur eA: und die t-U-Zusammenhänge) beim Aufladevorgang und beim Entladevorgang eines Kondensators mithilfe einer Exponentialfunktion.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p34-process-gA-07",
+      "topicCode": "3.3-ELEK",
+      "phase": "Q",
+      "courseLevel": "GK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "führen ein Experiment zur Bestimmung der Kapazität eines Kondensators durch.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Elektrizität · S. 34 · Prozessbezogene Kompetenzen (gA) · gA · Tabellenbezug „nennen die Definition der Kapazität eines Kondensators.\nnennen die Gleichung für die Energie des elektrischen Feldes eines Plattenkondensators.“",
+      "mappedTargets": [
+        {
+          "goalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "title": "Experimente planen und Messdaten auswerten",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p34-process-eA-07",
+      "topicCode": "3.3-ELEK",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "planen ein Experiment zur Bestimmung der Kapazität eines Kondensators und führen es durch.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Elektrizität · S. 34 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „nennen die Definition der Kapazität eines Kondensators.\nnennen die Gleichung für die Energie des elektrischen Feldes eines Plattenkondensators.“",
+      "mappedTargets": [
+        {
+          "goalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "title": "Experimente planen und Messdaten auswerten",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p35-process-gA-06",
+      "topicCode": "3.3-ELEK",
+      "phase": "Q",
+      "courseLevel": "GK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "leiten die zugehörige Gleichung für die Geschwindigkeit angeleitet her.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Elektrizität · S. 35 · Prozessbezogene Kompetenzen (gA) · gA · Tabellenbezug „beschreiben die Bewegung von freien Elektronen: o unter Einfluss der Lorentzkraft, o unter Einfluss der Kraft im homogenen elektrischen Querfeld, o im Wien-Filter.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p35-process-eA-07",
+      "topicCode": "3.3-ELEK",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "leiten die zugehörige Gleichung für die Geschwindigkeit her.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Elektrizität · S. 35 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „beschreiben die Bewegung von freien Elektronen: o unter Einfluss der Lorentzkraft, o unter Einfluss der Kraft im homogenen elektrischen Querfeld, o im Wien-Filter.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p36-process-gA-04",
+      "topicCode": "3.3-ELEK",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "führen einfache qualitative Experimente zur Erzeugung einer Induktionsspannung durch.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Elektrizität · S. 36 · Prozessbezogene Kompetenzen (gA/eA) · gA/eA · Tabellenbezug „beschreiben die Erzeugung einer Induktionsspannung qualitativ mithilfe des magnetischen Flusses.“",
+      "mappedTargets": [
+        {
+          "goalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "title": "Experimente planen und Messdaten auswerten",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p37-process-gA-02",
+      "topicCode": "3.3-SCHWING-WELLEN",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "ermitteln Werte durch Ablesen an einem registrierenden Messinstrument (Oszilloskop oder geeignetes digitales Werkzeug).",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Schwingungen und Wellen · S. 37 · Prozessbezogene Kompetenzen (gA/eA) · gA/eA · Tabellenbezug „stellen harmonische Schwingungen grafisch dar.\nbeschreiben harmonische Schwingungen mithilfe von Auslenkung, Amplitude, Periodendauer und Frequenz.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p38-process-eA-02",
+      "topicCode": "3.3-SCHWING-WELLEN",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "beschreiben ein Experiment zur Erzeugung einer Resonanzkurve.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Schwingungen und Wellen · S. 38 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „beschreiben den Aufbau eines elektromagnetischen Schwingkreises.“",
+      "mappedTargets": [
+        {
+          "goalId": "d3c153b9-e09b-5668-8386-73105546a7c1",
+          "title": "Experimente planen und Messdaten auswerten",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p38-process-eA-09",
+      "topicCode": "3.3-SCHWING-WELLEN",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "interpretieren in diesem Zusammenhang das Quadrat der Zeigerlänge bzw. das Quadrat der Amplitude der zugehörigen Sinuskurve als Intensität.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Schwingungen und Wellen · S. 38 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „vergleichen longitudinale und transversale Wellen.\nbeschreiben Polarisierbarkeit als Unterscheidungsmerkmal zwischen transversalen und longitudinalen Wellen.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p39-process-eA-09",
+      "topicCode": "3.3-SCHWING-WELLEN",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "erläutern ein Verfahren zur Aufnahme eines Röntgenspektrums.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Schwingungen und Wellen · S. 39 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „beschreiben je ein Experiment zur Bestimmung der Wellenlänge o von Ultraschall bei durch Reflexion entstandenen stehenden Wellen, o von weißem und monochromatischem Licht mit einem Gitter (objektiv / nur eA: subjektiv), o nur eA: mit dem Michelson-Interferometer, o nur eA: von Röntgenstrahlung mit Bragg-Reflexion.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p39-process-eA-10",
+      "topicCode": "3.3-SCHWING-WELLEN",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "leiten die Bragg-Gleichung selbstständig und begründet her.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Schwingungen und Wellen · S. 39 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „beschreiben je ein Experiment zur Bestimmung der Wellenlänge o von Ultraschall bei durch Reflexion entstandenen stehenden Wellen, o von weißem und monochromatischem Licht mit einem Gitter (objektiv / nur eA: subjektiv), o nur eA: mit dem Michelson-Interferometer, o nur eA: von Röntgenstrahlung mit Bragg-Reflexion.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p40-content-03",
+      "topicCode": "3.3-QUANTEN",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryContent",
+      "normativeStatus": "binding",
+      "sourceText": "nur eA: nennen in diesem Zusammenhang die Definition des Impulses.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Quantenobjekte · S. 40 · Inhaltsbezogene Kompetenzen · eA · Tabellenbezug „beschreiben ein Doppelspaltexperiment zur Interferenz von Quantenobjekten mit Ruhemasse (z. B. kalte Neutronen, Fullerene).\nermitteln die Wellenlänge bei Quantenobjekten mit Ruhemasse mithilfe der de-Broglie-Gleichung.\nnur eA: nennen in diesem Zusammenhang die Definition des Impulses.\nbeschreiben das Experiment mit der Elektronenbeugungsröhre.“",
+      "mappedTargets": [
+        {
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "title": "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p42-content-01",
+      "topicCode": "3.3-QUANTEN",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "obligatoryContent",
+      "normativeStatus": "binding",
+      "sourceText": "erläutern die experimentelle Bestimmung der planckschen Konstante h mit LEDs in ihrer Funktion als Energiewandler.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Quantenobjekte · S. 42 · Inhaltsbezogene Kompetenzen · gA/eA · Tabellenbezug „erläutern die experimentelle Bestimmung der planckschen Konstante h mit LEDs in ihrer Funktion als Energiewandler.\nnur eA: beschreiben ein Experiment zur Bestimmung der Energie der Photoelektronen beim äußeren lichtelektrischen Effekt mit der Vakuum-Fotozelle.\nnur eA: erläutern die Entstehung des Röntgenbremsspektrums als Energieübertragung von Elektronen auf Photonen.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p43-content-02",
+      "topicCode": "3.3-ATOMHUELLE",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "obligatoryContent",
+      "normativeStatus": "binding",
+      "sourceText": "nennen die Gleichung für die Gesamtenergie eines Elektrons in diesem Modell.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Atomhülle · S. 43 · Inhaltsbezogene Kompetenzen · gA/eA · Tabellenbezug „erläutern die Quantisierung der Gesamtenergie von Elektronen in der Atomhülle.\nnennen die Gleichung für die Gesamtenergie eines Elektrons in diesem Modell.“",
+      "mappedTargets": [
+        {
+          "goalId": "d05a146f-7fcd-56ae-b9b9-b54203328579",
+          "title": "Diskrete Energien im unendlichen Potenzialtopf berechnen",
+          "matchType": "partial"
+        }
+      ],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "mapped-endpoint-not-an-effective-target-of-any-current-NI-view"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p43-process-eA-02",
+      "topicCode": "3.3-ATOMHUELLE",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "leiten die Gleichung für die Gesamtenergie eines Elektrons in diesem Modell her.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Atomhülle · S. 43 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „erläutern die Quantisierung der Gesamtenergie von Elektronen in der Atomhülle.\nnennen die Gleichung für die Gesamtenergie eines Elektrons in diesem Modell.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p44-content-04",
+      "topicCode": "3.3-ATOMHUELLE",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryContent",
+      "normativeStatus": "binding",
+      "sourceText": "nur eA: beschreiben die „Orbitale“ bis n = 2 in einem dreidimensionalen Potenzialtopf.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Atomhülle · S. 44 · Inhaltsbezogene Kompetenzen · eA · Tabellenbezug „beschreiben die Orbitale des Wasserstoffatoms bis n = 2.\nnur eA: beschreiben die „Orbitale“ bis n = 2 in einem dreidimensionalen Potenzialtopf.\nnur eA: nennen das Pauliprinzip.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p44-process-eA-06",
+      "topicCode": "3.3-ATOMHUELLE",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "erläutern Gemeinsamkeiten zwischen den Orbitalen des Wasserstoffatoms und denen des dreidimensionalen Potenzialtopfs.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Atomhülle · S. 44 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „beschreiben die Orbitale des Wasserstoffatoms bis n = 2.\nnur eA: beschreiben die „Orbitale“ bis n = 2 in einem dreidimensionalen Potenzialtopf.\nnur eA: nennen das Pauliprinzip.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p45-process-eA-04",
+      "topicCode": "3.3-ATOMKERN",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "modellieren einen radioaktiven Zerfall mit dem Differenzenverfahren unter Einsatz einer Tabellenkalkulation oder eines Modellbildungssystems.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Atomkern · S. 45 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „erläutern das grundlegende Funktionsprinzip eines Geiger-Müller-Zählrohrs als Messgerät für Zählraten.\nerläutern das Zerfallsgesetz.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p45-process-eA-05",
+      "topicCode": "3.3-ATOMKERN",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "wenden dieses Verfahren auf einen Mutter-Tochter-Zerfall an.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Atomkern · S. 45 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „erläutern das grundlegende Funktionsprinzip eines Geiger-Müller-Zählrohrs als Messgerät für Zählraten.\nerläutern das Zerfallsgesetz.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p46-content-01",
+      "topicCode": "3.3-ATOMKERN",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "obligatoryContent",
+      "normativeStatus": "binding",
+      "sourceText": "erläutern das grundlegende Funktionsprinzip eines Halbleiterdetektors für die Energiemessung von Kernstrahlung.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Atomkern · S. 46 · Inhaltsbezogene Kompetenzen · gA/eA · Tabellenbezug „erläutern das grundlegende Funktionsprinzip eines Halbleiterdetektors für die Energiemessung von Kernstrahlung.\ninterpretieren ein α-Spektrum auf der Basis der zugehörigen Zerfallsreihe.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p46-process-gA-01",
+      "topicCode": "3.3-ATOMKERN",
+      "phase": "Q",
+      "courseLevel": "GK_LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "beschreiben die in Energiespektren verwendete Darstellungsform (Energie-Häufigkeits-Diagramm).",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Atomkern · S. 46 · Prozessbezogene Kompetenzen (gA/eA) · gA/eA · Tabellenbezug „erläutern das grundlegende Funktionsprinzip eines Halbleiterdetektors für die Energiemessung von Kernstrahlung.\ninterpretieren ein α-Spektrum auf der Basis der zugehörigen Zerfallsreihe.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    },
+    {
+      "sourceGoalId": "ni-kc2022-p46-process-eA-03",
+      "topicCode": "3.3-ATOMKERN",
+      "phase": "Q",
+      "courseLevel": "LK",
+      "statementKind": "obligatoryProcess",
+      "normativeStatus": "binding",
+      "sourceText": "erläutern die Bedeutung der Bragg-Kurve in der Strahlentherapie.",
+      "sourceSpan": "3.3 Inhaltsbezogene Kompetenzen mit Zuordnung prozessbezogener Kompetenzen in der Qualifikationsphase – Atomkern · S. 46 · Prozessbezogene Kompetenzen (eA) · eA · Tabellenbezug „erläutern das grundlegende Funktionsprinzip eines Halbleiterdetektors für die Energiemessung von Kernstrahlung.\ninterpretieren ein α-Spektrum auf der Basis der zugehörigen Zerfallsreihe.“",
+      "mappedTargets": [],
+      "coveredViews": [],
+      "coveredInUnion": false,
+      "reason": "no-mapped-endpoint"
+    }
+  ]
+}

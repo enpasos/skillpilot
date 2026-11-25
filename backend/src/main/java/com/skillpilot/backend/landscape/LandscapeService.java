@@ -1001,11 +1001,25 @@ public class LandscapeService {
                 throw new IllegalStateException("Source landscape registry has no entries array: " + registryFile);
             }
 
+            Map<String, Path> currentSourceExtractions = CurrentSourcePackage.currentExtractions(dir, entriesNode, objectMapper);
             for (JsonNode entry : entriesNode) {
                 if (entry == null || !entry.isObject()) {
                     continue;
                 }
                 String landscapeId = readRegistryText(entry, "landscapeId");
+                if (entry.has("sourcePackages")) {
+                    if (!StringUtils.hasText(landscapeId) || !loadedLandscapeIds.add(landscapeId)) {
+                        throw new IllegalStateException("Duplicate or missing versioned source identity: " + landscapeId);
+                    }
+                    Path source = currentSourceExtractions.get(landscapeId);
+                    SkillLandscape landscape = sourceExtractionToLandscape(objectMapper.readTree(source.toFile()), landscapeId);
+                    if (landscape == null) {
+                        throw new IllegalStateException("Invalid registered source extraction: " + source);
+                    }
+                    loaded.add(landscape);
+                    maxLastModified = Math.max(maxLastModified, Files.getLastModifiedTime(source).toMillis());
+                    continue;
+                }
                 String archiveSourcePath = readRegistryText(entry, "archiveSourcePath");
                 if (!StringUtils.hasText(landscapeId) || !StringUtils.hasText(archiveSourcePath)
                         || loadedLandscapeIds.contains(landscapeId)) {

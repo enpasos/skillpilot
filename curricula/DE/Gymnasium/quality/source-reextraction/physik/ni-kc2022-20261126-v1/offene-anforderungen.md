@@ -1,0 +1,41 @@
+# Amtliche Anforderungen ohne kanonischen Endpunkt
+
+Für 35 Anforderungen fand die unabhängige Prüfung weder ein tragendes Lernziel noch eine hinreichende vorhandene Prozessreferenz. 27 gehören zum verbindlichen Bereich, acht zu Vorschlägen für ein Wahlmodul. Jeder Vorschlag benennt eine mögliche spätere inhaltliche Arbeit.
+
+| Seite, Spalte | Reichweite | Amtliche Anforderung | Vorschlag |
+|---|---|---|---|
+| 16, zusätzlich am Ende der Qualifikationsphase | GK_LK (Q) | formulieren Hypothesen und überprüfen sie mithilfe von Experimenten. | Ein eigenes sicheres Hypothesenexperiment mit vorab notierter Vorhersage und Beobachtungsentscheidung vorsehen. |
+| 17, am Ende der Einführungsphase | GK_LK (E) | führen selbstverantwortlich ihre Notizen. | Ein fortlaufendes eigenes Lern-/Versuchsnotizbuch an zwei Lerngelegenheiten mit Quellen- und Datumsbezug prüfen. |
+| 20, am Ende der Einführungsphase | GK_LK (E) | verwenden die wissenschaftliche Notation für Zahlenangaben und Vorsilben von Einheiten. | Zahlen in wissenschaftlicher Notation und Einheitenpräfixen darstellen, umrechnen und auf Größenordnung prüfen. |
+| 21, zusätzlich am Ende der Qualifikationsphase | GK_LK (Q) | dokumentieren Herleitungen sachgerecht. | Eine Herleitung mit benannten Annahmen, Zwischenrelationen und Schlussgleichung nachvollziehbar dokumentieren lassen. |
+| 22, am Ende der Einführungsphase | GK_LK (E) | überprüfen Hypothesen an ausgewählten Beispielen durch selbst entworfene Experimente. | Zu einer überprüfbaren Hypothese einen eigenen Kontrollversuch entwerfen, durchführen und begrenzt auswerten. |
+| 24, am Ende der Einführungsphase | GK_LK (E) | entwickeln die Arbeit in der Gruppe weiter. | Eine Gruppenarbeitsphase mit eigener Rollen-/Ablaufänderung und begründeter gemeinsamer Reflexion beobachten. |
+| 24, zusätzlich am Ende der Qualifikationsphase | GK_LK (Q) | führen zu einem Sachverhalt ein Fachgespräch auf angemessenem Niveau. | Ein kurzes Fachgespräch mit begründeten Antworten, Rückfragen und fachlicher Reaktion auf einen Einwand prüfen. |
+| 24, zusätzlich am Ende der Qualifikationsphase | GK_LK (Q) | arbeiten sachgerecht und zielgerichtet in einer Gruppe. | Eine gemeinsame Untersuchung mit dokumentierten Beiträgen, Abstimmungen und gemeinsam geprüftem Ergebnis beobachten. |
+| 25, am Ende der Einführungsphase | GK_LK (E) | führen ihre Notizen selbstständig. | Zu zwei Unterrichtsgelegenheiten eigene geordnete Notizen mit offenen Fragen und Ergebnissicherung anfertigen. |
+| 25, zusätzlich am Ende der Qualifikationsphase | GK_LK (Q) | dokumentieren Arbeitsschritte mit dem eingeführten elektronischen Rechenwerkzeug in der vereinbarten Weise. | Bei einer Rechnerauswertung Eingaben, Verfahren, wesentliche Zwischenergebnisse und physikalisches Ergebnis festhalten. |
+| 28, content | GK_LK (E) | erläutern die sich daraus ergebende Definition der Krafteinheit. | Aus F=ma erklären, warum 1 N die Kraft für 1 m/s² Beschleunigung von 1 kg bezeichnet. |
+| 29, content | Wahlmodul | beschreiben ein Verfahren zur Bestimmung der Schallgeschwindigkeit in Luft und einem anderen Medium. | Ein Laufzeitverfahren mit Strecke, Zeitbezug und zwei Medien beschreiben. |
+| 29, content | Wahlmodul | erläutern den Zusammenhang zwischen Frequenzverhältnissen und musikalischen Intervallen. | An Oktave und einem weiteren Intervall das Frequenzverhältnis bestimmen und die Beziehung zur Tonhöhe erklären. |
+| 30, process | Wahlmodul | deuten das Phänomen der Ionisation mithilfe dieses Modells. | Das Entfernen oder Hinzufügen eines Hüllenelektrons als Entstehung eines Ions bei unverändertem Atomkern deuten. |
+| 31, process | Wahlmodul | bestimmen den Abbildungsmaßstab. | Den Abbildungsmaßstab aus Bild- und Gegenstandsgröße bestimmen und mit einer Linsenkonstruktion vergleichen. |
+| 31, process | Wahlmodul | leiten diese Gleichung her. | Die Linsengleichung aus einer konsistent beschrifteten Strahlenkonstruktion mit ähnlichen Dreiecken herleiten. |
+| 31, process | Wahlmodul | beschreiben den Unterschied zwischen abbildenden und den Sehwinkel vergrößernden Geräten. | Kamera und Fernrohr anhand Bildort, Beobachtung und Sehwinkelvergrößerung fachlich unterscheiden. |
+| 32, content | Wahlmodul | beschreiben ein Experiment zur selektiven Absorption. | Einen sicheren selektiven Absorptionsversuch mit Quelle, Probe, Referenz und beobachteter Transmission beschreiben. |
+| 32, process | Wahlmodul | wenden dazu vorgelegte grafische Darstellungen an. | Energieflüsse aus einer vorgelegten Treibhausmodellgrafik erklären und zur Modellfrage nutzen. |
+| 34, process-both | GK_LK (Q) | begründen die Auswahl einer exponentiellen Regression auf der Grundlage der Messdaten. | Aus RC-Messdaten eine exponentielle Modellwahl begründen und ihre Grenzen anhand der Daten nennen. |
+| 35, process-gA | GK (Q) | leiten die zugehörige Gleichung für die Geschwindigkeit angeleitet her. | Für geraden Durchgang qE=qvB mit passenden Richtungen begründen und daraus v=E/B im jeweiligen Kursgrad herleiten. |
+| 35, process-eA | LK (Q) | leiten die zugehörige Gleichung für die Geschwindigkeit her. | Für geraden Durchgang qE=qvB mit passenden Richtungen begründen und daraus v=E/B im jeweiligen Kursgrad herleiten. |
+| 37, process-both | GK_LK (Q) | ermitteln Werte durch Ablesen an einem registrierenden Messinstrument (Oszilloskop oder geeignetes digitales Werkzeug). | Amplitude und Periodendauer von einer Oszilloskop-/Digitalanzeige mit Achsenskalierung ablesen. |
+| 38, process-eA | LK (Q) | interpretieren in diesem Zusammenhang das Quadrat der Zeigerlänge bzw. das Quadrat der Amplitude der zugehörigen Sinuskurve als Intensität. | An einer Wellenüberlagerung resultierende Amplitude und zugehörige relative Intensität getrennt bestimmen und erklären. |
+| 39, process-eA | LK (Q) | erläutern ein Verfahren zur Aufnahme eines Röntgenspektrums. | Röntgenquelle, Kristall/Detektor und Winkelabtastung eines Spektrometers als Messverfahren erläutern. |
+| 39, process-eA | LK (Q) | leiten die Bragg-Gleichung selbstständig und begründet her. | Den Gangunterschied 2d sinθ geometrisch herleiten und zur Interferenzbedingung nλ verbinden. |
+| 42, content | GK_LK (Q) | erläutern die experimentelle Bestimmung der planckschen Konstante h mit LEDs in ihrer Funktion als Energiewandler. | LED-Versuch mit Spannung, Frequenz, Energieannahme und begrenzter h-Auswertung erklären. |
+| 43, process-eA | LK (Q) | leiten die Gleichung für die Gesamtenergie eines Elektrons in diesem Modell her. | Stehende de-Broglie-Wellen, Randbedingung und kinetische Energie zu E_n selbstständig verbinden. |
+| 44, content | LK (Q) | nur eA: beschreiben die „Orbitale“ bis n = 2 in einem dreidimensionalen Potenzialtopf. | Die Zustände des dreidimensionalen Kastens bis zur vorgegebenen n=2-Konvention anhand ihrer Knotenstruktur beschreiben. |
+| 44, process-eA | LK (Q) | erläutern Gemeinsamkeiten zwischen den Orbitalen des Wasserstoffatoms und denen des dreidimensionalen Potenzialtopfs. | Je einen Wasserstoff- und 3D-Kastenzustand nach Nachweiswahrscheinlichkeit und Knotenstruktur begrenzt vergleichen. |
+| 45, process-eA | LK (Q) | modellieren einen radioaktiven Zerfall mit dem Differenzenverfahren unter Einsatz einer Tabellenkalkulation oder eines Modellbildungssystems. | Ein Zerfallsmodell N(t+Δt)=N(t)−λN(t)Δt mit Startwert und Zeitschrittprüfung in Tabellenkalkulation umsetzen. |
+| 45, process-eA | LK (Q) | wenden dieses Verfahren auf einen Mutter-Tochter-Zerfall an. | Ein gekoppeltes Mutter-Tochter-Differenzenmodell mit Produktion und Zerfall der Tochter numerisch auswerten. |
+| 46, content | GK_LK (Q) | erläutern das grundlegende Funktionsprinzip eines Halbleiterdetektors für die Energiemessung von Kernstrahlung. | Die Erzeugung und Sammlung von Ladungsträgern im Halbleiter als energieabhängigen Messimpuls erläutern. |
+| 46, process-both | GK_LK (Q) | beschreiben die in Energiespektren verwendete Darstellungsform (Energie-Häufigkeits-Diagramm). | Achsen, Energiekanäle und Häufigkeiten eines Kernstrahlungsspektrums beschreiben und einen Peak fachlich deuten. |
+| 46, process-eA | LK (Q) | erläutern die Bedeutung der Bragg-Kurve in der Strahlentherapie. | Den Verlauf der Bragg-Kurve mit Energiedeposition und der Schonung von Gewebe vor/hinter dem Zielgebiet erklären. |

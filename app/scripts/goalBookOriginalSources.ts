@@ -1,3 +1,4 @@
+import { currentSourcePaths } from './currentSourcePackages'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, isAbsolute, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -136,7 +137,8 @@ const officialUrl = (document: Row): string | null => {
 const loadCandidates = (model: GoalBookModel, root: string, mappingPaths?: readonly string[]): Candidate[] => {
   const result: Candidate[] = []
   const extractionCache = new Map<string, Row>()
-  for (const mappingPath of mappingPaths ?? reviewFiles(root, 'curricula/DE/Gymnasium/mapping')) {
+  const paths = mappingPaths ? [...mappingPaths] : reviewFiles(root, 'curricula/DE/Gymnasium/mapping')
+  for (const mappingPath of currentSourcePaths(root, paths, 'review', mappingPaths ? undefined : 'curricula/DE/Gymnasium/mapping')) {
     const mapping = readJson(root, mappingPath)
     if (string(mapping.targetLandscapeId) !== model.book.landscapeId) {
       if (mappingPaths) throw new Error(`Original-source selected mapping targets a different landscape: ${mappingPath}`)
@@ -174,7 +176,9 @@ const loadCandidates = (model: GoalBookModel, root: string, mappingPaths?: reado
       const topic = string(goal.topicCode) || string(passage.topicCode)
       const page = goal.sourcePage ?? passage.page
       // A stored page is display text, never an unverified PDF #page anchor.
-      const sourceRef = explicitRef || [topic, typeof page === 'number' ? `S. ${page}` : ''].filter(Boolean).join(', ')
+      const locator = explicitRef || [topic, typeof page === 'number' ? `S. ${page}` : ''].filter(Boolean).join(', ')
+      // Printed table cells may wrap; the book index carries a single-line citation.
+      const sourceRef = locator.replace(/ *[\t\n\r\f]+[ \t\n\r\f]*/gu, ' ')
       if (!sourceRef) continue
       const levels = [goal, passage, document, extraction]
       const stage = facet(levels, 'stage')
