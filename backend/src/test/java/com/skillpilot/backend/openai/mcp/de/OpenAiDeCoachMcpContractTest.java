@@ -2391,9 +2391,11 @@ class OpenAiDeCoachMcpContractTest {
         verify(coachTools, never()).setMastery(any(), any());
     }
 
-    @Test
-    void unitRecallRequiresTheCurrentOfferAndKeepsItsScopeThroughAnswersAndWrite() {
+    @org.junit.jupiter.params.ParameterizedTest
+    @org.junit.jupiter.params.provider.ValueSource(strings = {"unit-vectors", "another-unit", ""})
+    void unitRecallRequiresTheCurrentOfferAndKeepsItsScopeThroughAnswersAndWrite(String successorUnit) {
         String deck = "memory-public-id";
+        String nextDeck = "second-memory-public-id";
         String unit = "unit-vectors";
         String card = "unit-card";
         var state = visualizationState();
@@ -2410,8 +2412,14 @@ class OpenAiDeCoachMcpContractTest {
                 .thenReturn(new VerifiedRecallBatchAnswerResponse("Grade", deck,
                         List.of(new VerifiedRecallBatchAnswerCard(card, "Was gilt?", "Die Sollantwort.", "Formel"))));
         when(coachTools.recordVerifiedRecallResultsBatch(eq(LEARNER_ID), eq("de"), any(), eq(unit)))
-                .thenReturn(new VerifiedRecallBatchResultResponse(List.of(new VerifiedRecallBatchSavedResult(card, true)),
-                        1, 0, false, null, null, state));
+                .thenAnswer(invocation -> {
+                    when(coachTools.getCoachStateRevision(LEARNER_ID)).thenReturn(1L);
+                    when(coachTools.getCardStepFacts(LEARNER_ID, "de")).thenReturn(successorUnit.isEmpty()
+                            ? SrsCardStepFacts.none()
+                            : new SrsCardStepFacts(successorUnit, List.of(nextDeck), 0, 1, false, null, nextDeck, false, null));
+                    return new VerifiedRecallBatchResultResponse(List.of(new VerifiedRecallBatchSavedResult(card, true)),
+                            1, 0, false, null, null, state);
+                });
         org.mockito.Mockito.doAnswer(invocation -> sessionOperation(invocation.getArgument(5), 0L))
                 .when(sessionCoordinator).write(any(), any(), anyLong(), any(), any(), any());
         Map<String, Object> action = Map.of("practiceScopeId", unit, "expectedStateVersion", 0L);
@@ -2434,6 +2442,20 @@ class OpenAiDeCoachMcpContractTest {
         var receipt = structured(saved, OpenAiDeV1McpContractAdapter.RecallResultsReceipt.class);
         assertThat(receipt.continuation().action()).isEqualTo("returnToUnitContext");
         assertThat(receipt.context().activeGoal().goalId()).isEqualTo(state.activeGoal().id());
+        assertThat(receipt.continuation().toolCall()).isNull();
+        assertThat(receipt.continuation().instruction()).contains("Bei einer Pause bestätige nur den gespeicherten Teil");
+        if (unit.equals(successorUnit)) {
+            assertThat(receipt.continuation().instruction())
+                    .contains("Bei vereinbartem Weitergehen", "context.cardStep.checkAction", "starte keinen neuen Stapel");
+            var check = objectMapper.valueToTree(receipt.context().cardStep()).path("checkAction");
+            assertThat(check.path("tool").asText()).isEqualTo(OpenAiDeV1McpContractAdapter.START_RECALL);
+            assertThat(check.at("/arguments/practiceScopeId").asText()).isEqualTo(unit);
+            assertThat(check.at("/arguments/expectedStateVersion").asLong()).isEqualTo(1L);
+        } else {
+            assertThat(receipt.continuation().instruction())
+                    .contains("zur offenen Frage oder zum aktiven Lernziel")
+                    .doesNotContain("context.cardStep.checkAction");
+        }
         verify(coachTools).getVerifiedRecallAnswersBatch(LEARNER_ID, "de",
                 new VerifiedRecallBatchAnswerRequest(deck, 10, List.of(card), issuedAt), unit);
         var request = ArgumentCaptor.forClass(VerifiedRecallBatchResultRequest.class);

@@ -97,6 +97,11 @@ public class LearnerLearningPlanService {
                     .anyMatch(assignment -> assignment.option() != null);
         }
 
+        boolean hasAvailableUnitAssignment(String landscapeId) {
+            return assignmentsByLandscape.getOrDefault(landscapeId, List.of()).stream()
+                    .anyMatch(assignment -> assignment.option() != null);
+        }
+
         Set<String> waived(String landscapeId) {
             if (unavailable.contains(landscapeId)) {
                 throw conflict("Learning-plan completion calculation is currently unavailable");
@@ -424,8 +429,12 @@ public class LearnerLearningPlanService {
         boolean personalContinuationAvailable = false;
         Map<String, SubjectAggregate> subjectsWithoutPlan = new TreeMap<>();
         boolean unitBindsContinuation = fulfillment.hasAvailableUnitAssignment();
-        if (enabled && !hasExamScope(skillpilotId, subjectPlans, asOf)) {
+        boolean examBindsContinuation = enabled && hasExamScope(skillpilotId, subjectPlans, asOf);
+        boolean explicitManualSubjects = includeSubjectChoices && !Boolean.TRUE.equals(learner.getAutoPilot());
+        if (enabled && (!examBindsContinuation || explicitManualSubjects)) {
             for (String landscapeId : learners.getPersonalCurriculumSubjectIds(skillpilotId)) {
+                if (examBindsContinuation && hasExamScope(skillpilotId, subjectPlans.stream()
+                        .filter(plan -> landscapeId.equals(plan.getLandscapeId())).toList(), asOf)) continue;
                 String subjectKey = stableSubjectKey(landscapeId);
                 SubjectAggregate plannedSubject = subjectKey == null ? null : bySubject.get(subjectKey);
                 // A plan describes only its captured landscapes, even when another personal subject has the same name.
@@ -440,7 +449,7 @@ public class LearnerLearningPlanService {
                         ? firstPersonalCurriculumGoalForPlanContinuation(skillpilotId, landscapeId, subjectPlans, fulfillment)
                         : firstPersonalCurriculumGoal(skillpilotId, landscapeId, fulfillment.navigationWaived(landscapeId));
                 if (personalGoal.isPresent()) {
-                    personalContinuationAvailable |= !unitBindsContinuation;
+                    personalContinuationAvailable |= !unitBindsContinuation && !examBindsContinuation;
                     if (aggregate == null && includeSubjectChoices && subjectKey != null) {
                         aggregate = plannedSubject;
                         if (aggregate == null) {
@@ -1285,8 +1294,10 @@ public class LearnerLearningPlanService {
     public Optional<LearnerLearningPlanApi.TransitionResponse> focusManualCoachPlanSubject(
             String skillpilotId, String landscapeId) {
         learners.acquireLearningPlanMutationLock(skillpilotId);
-        List<ManualCoachCandidate> choices = manualCoachCandidates(skillpilotId, landscapeId).orElse(List.of());
-        if (choices.isEmpty()) return Optional.empty();
+        var manual = manualCoachCandidates(skillpilotId, landscapeId);
+        if (manual.isEmpty()) return Optional.empty();
+        List<ManualCoachCandidate> choices = manual.get();
+        if (choices.isEmpty()) throw conflict("No current goal choices for the requested subject");
         List<String> focus = choices.stream().map(candidate -> candidate.goal().atomicGoalId())
                 .filter(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id)))
                 .distinct().toList();
@@ -1295,7 +1306,7 @@ public class LearnerLearningPlanService {
             // named subject so the next context still resolves the subject that the learner chose.
             var targets = learners.getPersonalCurriculumAtomicTargetsByLandscape(skillpilotId)
                     .getOrDefault(landscapeId, List.of());
-            if (targets.isEmpty()) return Optional.empty();
+            if (targets.isEmpty()) throw conflict("The requested subject has no current learning focus");
             focus = List.of(targets.getFirst());
         }
         var result = learners.applyLearningPlanScopeTransition(skillpilotId, false, true,
@@ -1316,20 +1327,23 @@ public class LearnerLearningPlanService {
                 && mastery.getOrDefault(activeId, 0.0) < MASTERY_THRESHOLD) return Optional.empty();
         List<LearnerLearningPlan> currentPlans = plans.findByLearner_SkillpilotIdOrderByLandscapeIdAsc(skillpilotId);
         LocalDate asOf = LocalDate.now(clock.withZone(PLAN_ZONE));
-        PlanFulfillment fulfillment = planFulfillment(skillpilotId, currentPlans, mastery);
-        if (hasExamScope(skillpilotId, currentPlans, asOf)
-                || fulfillment.hasAvailableUnitAssignment()) return Optional.empty();
-
         List<String> curriculumSubjects = learners.getPersonalCurriculumSubjectIds(skillpilotId);
         String subjectFocus = namedLandscape == null
                 ? learners.getStoredLearningPlanFocusSubject(learner).filter(curriculumSubjects::contains).orElse(null)
                 : namedLandscape;
         List<String> subjects = subjectFocus == null ? curriculumSubjects
                 : curriculumSubjects.contains(subjectFocus) ? List.of(subjectFocus) : List.of();
+        List<LearnerLearningPlan> bindingPlans = subjectFocus == null ? currentPlans
+                : currentPlans.stream().filter(plan -> subjectFocus.equals(plan.getLandscapeId())).toList();
+        PlanFulfillment fulfillment = planFulfillment(skillpilotId, currentPlans, mastery);
+        boolean unitBindsChoices = subjectFocus == null ? fulfillment.hasAvailableUnitAssignment()
+                : fulfillment.hasAvailableUnitAssignment(subjectFocus);
+        if (hasExamScope(skillpilotId, bindingPlans, asOf) || unitBindsChoices) return Optional.empty();
+
         Map<String, ManualCoachCandidate> candidates = new LinkedHashMap<>();
         // The schedule's current first recommendation still leads the display. Eligible
         // alternatives use the same personal subject frontier as ordinary plan fallback.
-        var relevantPlans = currentPlans.stream().filter(plan -> subjects.contains(plan.getLandscapeId())).toList();
+        var relevantPlans = bindingPlans.stream().filter(plan -> subjects.contains(plan.getLandscapeId())).toList();
         firstCandidateAcrossPlans(skillpilotId, relevantPlans, asOf, mastery, false, true, true, fulfillment)
                 .ifPresent(candidate -> candidates.put(candidate.dueGoal().atomicGoalId(),
                         new ManualCoachCandidate(candidate.plan().getLandscapeId(), candidate.dueGoal())));
@@ -1691,6 +1705,8 @@ public class LearnerLearningPlanService {
         Map<String, Map<String, LocalDate>> datesBySubject = new LinkedHashMap<>();
         Set<String> unavailableSubjects = new HashSet<>();
         boolean examBound = hasExamScope(skillpilotId, candidatePlans, asOf);
+        boolean unitBindsCandidates = candidatePlans.stream()
+                .anyMatch(plan -> fulfillment.hasAvailableUnitAssignment(plan.getLandscapeId()));
         Map<String, Instant> completions = periodBasis == PeriodBasis.WEEK
                 ? learners.getGoalCompletionsBetween(skillpilotId, periodStart, periodEnd)
                 : learners.getGoalCompletionsOnDate(skillpilotId, asOf);
@@ -1746,7 +1762,7 @@ public class LearnerLearningPlanService {
                 // With explicit authorization, an earlier open goal keeps its priority
                 // even when advance work has already covered this subject's quota.
                 candidates.add(new PlanGoalCandidate(plan, due.get()));
-            } else if (allowExtra && !fulfillment.hasAvailableUnitAssignment()) {
+            } else if (allowExtra && !unitBindsCandidates) {
                 firstScopeContinuationGoal(skillpilotId, plan.getLandscapeId(), blocks, asOf, mastery, keepBinding, fulfillment)
                         .ifPresent(goal -> furtherLearning.add(new PlanGoalCandidate(plan, goal)));
             }

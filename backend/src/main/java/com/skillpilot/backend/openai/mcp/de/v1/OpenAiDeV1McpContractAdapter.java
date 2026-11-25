@@ -1450,7 +1450,7 @@ public final class OpenAiDeV1McpContractAdapter {
         UnifiedLearnerStateResponse before = coachTools.getLearnerState(skillpilotId);
         requireWebFirstContextConfigured(before);
         OpenAiDeLearningPlanToday today = projectLearningPlanToday(skillpilotId, before, metadata);
-        if (activeGoal(before) != null || !today.resumeAvailable()
+        if (CompletionRouteChoices.active(before.levelCompletion()) || activeGoal(before) != null || !today.resumeAvailable()
                 || manualPlanGoals(skillpilotId, before, metadata).isPresent()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
                     "No learning-plan target can currently be resumed. Keep the current goal unchanged.");
@@ -1466,7 +1466,7 @@ public final class OpenAiDeV1McpContractAdapter {
         UnifiedLearnerStateResponse before = coachTools.getLearnerState(skillpilotId);
         requireWebFirstContextConfigured(before);
         OpenAiDeLearningPlanToday today = projectLearningPlanToday(skillpilotId, before, metadata);
-        if (isExamGoal(activeGoal(before)) || !today.followLearningPlans()
+        if (CompletionRouteChoices.active(before.levelCompletion()) || isExamGoal(activeGoal(before)) || !today.followLearningPlans()
                 || today.subjects().stream().noneMatch(candidate -> subject.equals(candidate.subject())
                         && !candidate.current() && candidate.canContinue())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT,
@@ -2022,7 +2022,7 @@ public final class OpenAiDeV1McpContractAdapter {
             OpenAiDeCoachContext context,
             OpenAiDeV1SessionMetadata metadata,
             long successorStateVersion,
-            boolean unitCheck) {
+            String practiceScopeId) {
         if (next != null && "ready".equals(next.status())) {
             return new RecallContinuation(
                     "askNextRecallBatch",
@@ -2034,17 +2034,37 @@ public final class OpenAiDeV1McpContractAdapter {
                                     + "all answers; on a pause do not show it."),
                     null);
         }
-        if (unitCheck) {
+        if (practiceScopeId != null) {
+            boolean moreInUnit = context != null && context.cardStep() != null
+                    && context.cardStep().get("checkAction") instanceof Map<?, ?> action
+                    && START_RECALL.equals(action.get("tool"))
+                    && action.get("arguments") instanceof Map<?, ?> arguments
+                    && practiceScopeId.equals(arguments.get(PRACTICE_SCOPE_ID));
+            if (moreInUnit) {
+                return new RecallContinuation(
+                        "returnToUnitContext",
+                        false,
+                        localized(metadata,
+                                "Die Ergebnisse für diesen Stapel sind gespeichert. Für dieselbe Einheit sind weitere Karten prüfbar. "
+                                        + "Bei vereinbartem Weitergehen rufe jetzt context.cardStep.checkAction "
+                                        + "mit den veröffentlichten Argumenten und der aktuellen learningSessionId auf. "
+                                        + "Bei einer Pause bestätige nur den gespeicherten Teil und starte keinen neuen Stapel.",
+                                "The results for this deck are saved. More cards can be checked in the same unit. "
+                                        + "If the learner agreed to continue, call context.cardStep.checkAction "
+                                        + "with its published arguments and the current learningSessionId. "
+                                        + "On a pause, acknowledge only the recorded part and do not start a new deck."),
+                        null);
+            }
             return new RecallContinuation(
                     "returnToUnitContext",
                     false,
                     localized(metadata,
                             "Dieser Teil der Kartenprüfung ist beendet. Kehre bei vereinbartem Weitergehen "
                                     + "zur offenen Frage oder zum aktiven Lernziel im bestätigten Folgezustand zurück. "
-                                    + "Bei einer Pause bestätige nur den Abschluss der Kartenprüfung.",
+                                    + "Bei einer Pause bestätige nur den gespeicherten Teil.",
                             "This part of the unit card check is complete. If the learner agreed to continue, return to "
                                     + "their open question or the active goal in the confirmed successor context. "
-                                    + "On a pause, acknowledge only the end of the card check."),
+                                    + "On a pause, acknowledge only the recorded part."),
                     null);
         }
         if (context != null
@@ -2926,7 +2946,7 @@ public final class OpenAiDeV1McpContractAdapter {
                 successorContext,
                 metadata,
                 successorStateVersion,
-                payload.practiceScopeId() != null);
+                payload.practiceScopeId());
         OpenAiDeCoachContext publicSuccessorContext = next == null
                 ? recallSuccessorContext(successorContext)
                 : null;
