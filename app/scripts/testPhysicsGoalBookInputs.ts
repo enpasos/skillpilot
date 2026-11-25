@@ -1681,6 +1681,30 @@ const conservationIndex = currentPreparationPins.findIndex(row => row.goalId ===
 assert.deepEqual(currentPreparationPins[conservationIndex], conservationPreparation.before)
 currentPreparationPins[conservationIndex] = conservationPreparation.current
 assert.equal(conservationPreparation.unchangedPreparationPayloads, currentPreparationPins.length - 1)
+const vectorPreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/vector-scale-preparation.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, vectorPreparationPath), 'utf8')), '67afc0f8e739c9b0ed24eb0999989d927a9bf67392c5fe15416c429c67f4a811')
+const vectorPreparation = readJson<{
+  predecessor: { path: string; sha256: string; payloadCount: number }
+  changes: Array<{ goalId: string; changedFields: string[]; before: PreparationPin; current: PreparationPin }>
+  retainedOtherPayloads: number
+}>(vectorPreparationPath)
+assert.deepEqual(vectorPreparation.predecessor, {
+  path: conservationPreparationPath,
+  sha256: sha256(readFileSync(resolve(repoRoot, conservationPreparationPath), 'utf8')),
+  payloadCount: currentPreparationPins.length,
+})
+assert.deepEqual(vectorPreparation.changes.map(change => change.goalId).sort(compareCodePoints), [
+  '53afbda1-5776-502b-8867-471975d7b766', conservationGoalId,
+  'a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20', 'ecbaa101-cb10-5da3-9368-ae40ff587d74',
+])
+assert.equal(vectorPreparation.retainedOtherPayloads, currentPreparationPins.length - 4)
+for (const change of vectorPreparation.changes) {
+  assert.deepEqual(change.changedFields, ['resourceLinks'])
+  assert.equal(change.current.goalId, change.goalId)
+  const index = currentPreparationPins.findIndex(pin => pin.goalId === change.goalId)
+  assert.deepEqual(currentPreparationPins[index], change.before)
+  currentPreparationPins[index] = change.current
+}
 for (const payload of currentPreparationPins) {
   assert.equal(sha256(JSON.stringify(rawStagePreparationById.get(payload.goalId))), payload.rawSha256,
     `${payload.goalId}: stale actual source-stage prerequisite bytes`)

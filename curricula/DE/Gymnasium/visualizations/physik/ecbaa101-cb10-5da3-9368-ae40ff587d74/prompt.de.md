@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: ChatGPT / Codex image generation
+- Provider: SkillPilot / precise diagram
 - Status: pilot
 - Quellbild: `ecbaa101-cb10-5da3-9368-ae40ff587d74.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/ecbaa101-cb10-5da3-9368-ae40ff587d74/ecbaa101-cb10-5da3-9368-ae40ff587d74.jpg`
@@ -16,7 +16,7 @@
 ## Prompt
 
 ```text
-Freundliche ruhig komponierte Physikillustration für Jugendliche auf hellem Papier, feine Tuschekontur und matte Aquarellflächen, 16:9 quer, 1600 mal 900. Zwei klar getrennte Momentaufnahmen desselben petrolfarbenen kleinen Laborwagens entlang einer horizontalen Schiene. Oben links und rechts eindeutig groß die zwei Zeitpunkte „1 s“ und „3 s“. Links fährt er nach RECHTS; ein waagerechter Pfeil nach RECHTS und unmittelbar darüber „+3 kg·m/s“. Rechts fährt derselbe Wagen nach LINKS; ein waagerechter Pfeil nach LINKS und unmittelbar darüber „−1 kg·m/s“. Eine fein gesetzte, gut lesbare Legende „Positive Richtung: rechts“. Unten als ganz klare Zusammenfassung „Mittlere Kraft: −2 N“. Der Wechsel von +3 zu −1 in zwei Sekunden ergibt −4 kg·m/s Impulsänderung. Diesen letzten Erläuterungssatz nicht abdrucken. Keine Behauptung konstanter Kraft, keine zusätzlichen Zahlen oder Pfeile, keine generischen Dekorationen. Alle fünf kurzen Beschriftungen groß, gute Lesbarkeit bei einer Verkleinerung auf 360 Pixel Breite.
+Erstelle ein maßstabsgerechtes Vektordiagramm für denselben Wagen zu zwei Zeitpunkten. Zeichne bei 1 s einen am Wagen beginnenden Impulspfeil für +3 kg·m/s nach rechts und bei 3 s einen für −1 kg·m/s nach links. Der lange Pfeil hat genau die dreifache Länge des kurzen. Ein getrennter Maßstabsbalken entspricht 1 kg·m/s, die Wagenpositionen sind schematisch. Beide Spitzen enden im Freien. Gib die mittlere resultierende Kraft im Intervall als −2 N an. Ruhiger, freundlicher Zeichenstil, Querformat 1600 × 900 und gut lesbar bei 360 Pixeln Breite.
 ```
 
 ## Review-Notiz

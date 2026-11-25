@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-25T17:11:52.644Z
+Generated: 2026-11-25T17:33:41.057Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -24,7 +24,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 100 |
+| Review-Ledger-Dateien | 101 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
@@ -47,8 +47,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_after_notation_correction` | 1 |
 | `accepted_ai_pilot` | 4 |
 | `accepted_cluster_overview_after_atomic_split` | 1 |
-| `accepted_documented_repo_native_fallback` | 3 |
-| `accepted_existing_asset` | 9 |
+| `accepted_documented_repo_native_fallback` | 5 |
+| `accepted_existing_asset` | 10 |
 | `accepted_existing_asset_as_cluster_overview` | 8 |
 | `accepted_existing_asset_metadata_rebound` | 15 |
 | `accepted_existing_asset_unchanged_goal` | 2 |
@@ -61,7 +61,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_pilot_after_provider_limitation_revisit` | 3 |
 | `accepted_pilot_after_provider_quota_retry` | 6 |
 | `accepted_pilot_after_provider_retry` | 3 |
-| `accepted_pilot_after_regeneration` | 115 |
+| `accepted_pilot_after_regeneration` | 117 |
 | `accepted_pilot_after_regeneration_and_owner_review` | 3 |
 | `accepted_pilot_after_second_regeneration` | 24 |
 | `accepted_pilot_after_third_regeneration` | 3 |
@@ -78,7 +78,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-097.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-098.md` |
 | Latest ledger status | `accepted_ai_pilot` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
