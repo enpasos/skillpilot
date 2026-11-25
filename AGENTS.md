@@ -60,6 +60,40 @@ measurements with tens of thousands of cards, the removal of the mirrored
 `goal:` card tags and the further points listed in the issue remain open.
 The runtime rules are in §7.2, the deck format in §13.
 
+## Product decision on arrows of directed quantities
+
+On **25 November 2026**, the Product Owner decided that Physics teaches one
+idea explicitly and conveys it again at every phase of use: an arrow for
+force, velocity or another directed quantity that is drawn into a sketch of
+position space is a property of the point it sits at. As a point can have a
+temperature, a vector belongs to it; the space this vector lies in is not the
+position space of the sketch, and drawing it there is only practical. A
+learner who has not understood this draws arrows anywhere.
+
+Standing criterion for every Physics goal text, image, card and task that
+draws or reads such an arrow, from the lower stage to fields:
+
+- The arrow starts at the body or point the quantity belongs to.
+- Its direction is the direction in the sketch. Its length follows its own
+  scale in the unit of the quantity and is no distance in the picture; a
+  legend names quantity and arrow scale.
+- The tip of the arrow marks no place and does not end on another object
+  where that reads as contact.
+- Only arrows of the same quantity at the same body or point are added.
+- Fields are the general case: a quantity at every point, a number for
+  temperature, an arrow for field strength.
+
+The decision has four parts: one explicit early Physics goal that teaches and
+assesses the reading and setting of such arrows; the idea named again in the
+text of each goal that introduces a new kind of arrow; the criterion above for
+images, cards and tasks; and the bridge in Mathematics, where a displacement
+arrow is the special case in which arrow scale and picture scale coincide.
+The criterion applies at once to new and revised material. The catalog changes
+follow the packages A1 to A5 of the
+[plan](docs/dev/directed-quantity-arrows-plan-2026-11-25.md); nothing of them
+is in the catalog yet. All 90 Physics views hold at least one goal that uses
+arrows, so the new goal reaches every view.
+
 ## Current execution mandate: stage plans and pedagogical repairs
 
 On **15 November 2026**, the Product Owner delegated the resolution and

@@ -98,6 +98,17 @@ closing check uses the balance of forces on a line (decision of 25 November
 2026 for the second step). See the E.2 cut in
 [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 
+**Arrows of directed quantities (25 November 2026).** An arrow for force,
+velocity, momentum or field strength in a sketch of position space is a
+property of the point it sits at, in a space of its own. Every Physics goal
+text, image, card and task that draws or reads such an arrow follows the
+criterion: the arrow starts at its body or point, its length has its own scale
+in the unit of the quantity (named in a legend), its tip marks no place, and
+only arrows of the same quantity at the same body are added. An explicit early
+Physics goal and the catalog changes follow
+`docs/dev/directed-quantity-arrows-plan-2026-11-25.md`; nothing of them is in
+the catalog yet. See the product decision at the top of `AGENTS.md`.
+
 **Product Owner decisions of 24 November 2026.** A stored plan that still
 names a retired goal (an atomic goal marked
 `extendedData.applicabilityProjection = "excluded"`) stays valid as long as
