@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-25T15:36:49.620686+00:00",
+  "scope": "Block3 focused stage/generator/source/math checks, not complete frontend/backend CI or independent subject acceptance",
+  "checks": [
+    {
+      "command": [
+        [
+          "python3",
+          "scripts/generate_hessen_physics_stage_views.py",
+          "--check"
+        ],
+        [
+          "python3",
+          "scripts/generate_hessen_physics_stage_views.py",
+          "--check",
+          "--duration-views"
+        ]
+      ],
+      "exitCode": 0,
+      "checkedCount": 10,
+      "output": "Hessen Physics stage views: 4 checked; atomic target/support roles verified.\nHessen Physics stage views: 6 checked; atomic target/support roles verified.\n",
+      "outputSha256": "d417a78b6425be2a5b1d996b0090837e51bbdb509b56c2c953a6fd24e5b514e0"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/generate_laender_physics_stage_views.py",
+        "--check",
+        "--report",
+        "<temporary report>"
+      ],
+      "exitCode": 0,
+      "checkedCount": 80,
+      "output": "Physics authoring: de-bb-gk.view.json\nPhysics authoring: de-bb-lk.view.json\nPhysics authoring: de-bb-sekii-gk.view.json\nPhysics authoring: de-bb-sekii-lk.view.json\nPhysics authoring: de-be-gk.view.json\nPhysics authoring: de-be-lk.view.json\nPhysics authoring: de-be-sekii-gk.view.json\nPhysics authoring: de-be-sekii-lk.view.json\nPhysics authoring: de-bw-gk.view.json\nPhysics authoring: de-bw-lk.view.json\nPhysics authoring: de-bw-sekii-gk.view.json\nPhysics authoring: de-bw-sekii-lk.view.json\nPhysics authoring: de-by-gk.view.json\nPhysics authoring: de-by-lk.view.json\nPhysics authoring: de-by-sekii-gk.view.json\nPhysics authoring: de-by-sekii-lk.view.json\nPhysics authoring: de-de-gym-physics-gk.view.json\nPhysics authoring: de-de-gym-physics-lk.view.json\nPhysics authoring: de-de-gym-seki-physics.view.json\nPhysics authoring: de-de-gym-sekii-physics-gk.view.json\nPhysics authoring: de-de-gym-sekii-physics-lk.view.json\nPhysics authoring: de-hb-gk.view.json\nPhysics authoring: de-hb-lk.view.json\nPhysics authoring: de-hb-sekii-gk.view.json\nPhysics authoring: de-hb-sekii-lk.view.json\nPhysics authoring: de-hh-gk.view.json\nPhysics authoring: de-hh-lk.view.json\nPhysics authoring: de-hh-sekii-gk.view.json\nPhysics authoring: de-hh-sekii-lk.view.json\nPhysics authoring: de-mv-gk.view.json\nPhysics authoring: de-mv-lk.view.json\nPhysics authoring: de-mv-sekii-gk.view.json\nPhysics authoring: de-mv-sekii-lk.view.json\nPhysics authoring: de-ni-gk.view.json\nPhysics authoring: de-ni-lk.view.json\nPhysics authoring: de-ni-sekii-gk.view.json\nPhysics authoring: de-ni-sekii-lk.view.json\nPhysics authoring: de-nw-gk.view.json\nPhysics authoring: de-nw-lk.view.json\nPhysics authoring: de-nw-sekii-gk.view.json\nPhysics authoring: de-nw-sekii-lk.view.json\nPhysics authoring: de-rp-gk.view.json\nPhysics authoring: de-rp-lk.view.json\nPhysics authoring: de-rp-sekii-gk.view.json\nPhysics authoring: de-rp-sekii-lk.view.json\nPhysics authoring: de-sh-gk.view.json\nPhysics authoring: de-sh-lk.view.json\nPhysics authoring: de-sh-sekii-gk.view.json\nPhysics authoring: de-sh-sekii-lk.view.json\nPhysics authoring: de-sl-gk.view.json\nPhysics authoring: de-sl-lk.view.json\nPhysics authoring: de-sl-sekii-gk.view.json\nPhysics authoring: de-sl-sekii-lk.view.json\nPhysics authoring: de-sn-gk.view.json\nPhysics authoring: de-sn-lk.view.json\nPhysics authoring: de-sn-sekii-gk.view.json\nPhysics authoring: de-sn-sekii-lk.view.json\nPhysics authoring: de-st-gk.view.json\nPhysics authoring: de-st-lk.view.json\nPhysics authoring: de-st-sekii-gk.view.json\nPhysics authoring: de-st-sekii-lk.view.json\nPhysics authoring: de-th-gk.view.json\nPhysics authoring: de-th-lk.view.json\nPhysics authoring: de-th-sekii-gk.view.json\nPhysics authoring: de-th-sekii-lk.view.json\nCommon course planning: BB CrossStage\nCommon course planning: BB SekII\nCommon course planning: BE CrossStage\nCommon course planning: BE SekII\nCommon course planning: BW CrossStage\nCommon course planning: BW SekII\nCommon course planning: BY CrossStage\nCommon course planning: BY SekII\nCommon course planning: DE CrossStage\nCommon course planning: DE SekII\nCommon course planning: HB CrossStage\nCommon course planning: HB SekII\nCommon course planning: HH CrossStage\nCommon course planning: HH SekII\nCommon course planning: MV CrossStage\nCommon course planning: MV SekII\nCommon course planning: NI CrossStage\nCommon course planning: NI SekII\nCommon course planning: NW CrossStage\nCommon course planning: NW SekII\nCommon course planning: RP CrossStage\nCommon course planning: RP SekII\nCommon course planning: SH CrossStage\nCommon course planning: SH SekII\nCommon course planning: SL CrossStage\nCommon course planning: SL SekII\nCommon course planning: SN CrossStage\nCommon course planning: SN SekII\nCommon course planning: ST CrossStage\nCommon course planning: ST SekII\nCommon course planning: TH CrossStage\nCommon course planning: TH SekII\nPhysics stage views: 80 ALL views checked; atomic roles preserved.\n",
+      "outputSha256": "c47cf81ba20204633d952be4a00b9945d6d13f79c5fb2af3278eed1e6332f7ff"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_generate_hessen_physics_stage_views.py"
+      ],
+      "exitCode": 0,
+      "checkedCount": 20,
+      "output": "....Hessen Physics stage views: 6 checked; atomic target/support roles verified.\nHessen Physics stage views: 6 checked; atomic target/support roles verified.\n................\n----------------------------------------------------------------------\nRan 20 tests in 10.359s\n\nOK\n",
+      "outputSha256": "6a19bfdb5f43f763ac9a6bea63546f290b2e38c7c96f63dbca12cab25b8a0cce"
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/test_generate_laender_physics_stage_views.py"
+      ],
+      "exitCode": 0,
+      "checkedCount": 35,
+      "output": "...................................\n----------------------------------------------------------------------\nRan 35 tests in 20.411s\n\nOK\n",
+      "outputSha256": "ffd3836b48aff49404cd9138ade0875e4f5d95d0707a99d5f0b02aee1efd3ca8"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:math-duration-composition-views"
+      ],
+      "exitCode": 0,
+      "checkedCount": 100,
+      "output": "\n> skillpilot@0.0.0 check:math-duration-composition-views\n> tsx scripts/testMathDurationStagePlacementPolicy.ts && tsx scripts/generateMathDurationCompositionViews.ts --check && python3 -B ../scripts/generate_mathematics_seki_excerpts.py --check && python3 -B ../scripts/normalize_mathematics_stage_views.py --check && python3 -B ../scripts/test_mathematics_seki_excerpts.py && python3 -B ../scripts/test_mathematics_foreign_acquisition_policy.py && python3 -B ../scripts/test_mathematics_stage_views.py && python3 -B ../scripts/check_mathematics_course_view_pairs.py && python3 -B -m unittest discover -s ../scripts -p test_mathematics_course_view_pairs.py && tsx scripts/testMathematicsStageViewConsumers.ts\n\nMathematics duration stage-placement replay passed: immutable successful replay and 12 fail-closed cases.\nok de-he-seki-g8.view.json {\"5\":0,\"6\":1,\"7\":1,\"8\":37,\"9\":4} filteredAssessments=13\nok de-he-seki-g9.view.json {\"5\":0,\"6\":1,\"7\":1,\"8\":40,\"9\":8,\"10\":1} filteredAssessments=21\nok de-he-gk-g8.view.json {\"5\":0,\"6\":1,\"7\":3,\"8\":2,\"9\":20} filteredAssessments=8\nok de-he-gk-g9.view.json {\"5\":0,\"6\":1,\"7\":3,\"8\":2,\"9\":1,\"10\":1} filteredAssessments=16\nok de-he-lk-g8.view.json {\"5\":0,\"6\":1,\"7\":3,\"8\":2,\"9\":20} filteredAssessments=8\nok de-he-lk-g9.view.json {\"5\":0,\"6\":1,\"7\":3,\"8\":2,\"9\":1,\"10\":1} filteredAssessments=16\nok de-rp-seki-g8.view.json {\"orientierungsstufe\":0,\"klasse7-8\":0,\"klasse9-10-msa\":0} filteredAssessments=25\nok de-rp-seki-g9.view.json {\"orientierungsstufe\":0,\"klasse7-8\":0,\"klasse9-10-msa\":0} filteredAssessments=29\nok de-rp-gk-g8.view.json {\"orientierungsstufe\":0,\"klasse7-8\":0,\"klasse9-10-msa\":0} filteredAssessments=25\nok de-rp-gk-g9.view.json {\"orientierungsstufe\":0,\"klasse7-8\":0,\"klasse9-10-msa\":0} filteredAssessments=29\nok de-rp-lk-g8.view.json {\"orientierungsstufe\":0,\"klasse7-8\":0,\"klasse9-10-msa\":0} filteredAssessments=25\nok de-rp-lk-g9.view.json {\"orientierungsstufe\":0,\"klasse7-8\":0,\"klasse9-10-msa\":0} filteredAssessments=29\nok de-sh-seki-g8.view.json {\"jg5-6\":0,\"jg7-9\":0,\"jg10\":0} filteredAssessments=28\nok de-sh-seki-g9.view.json {\"jg5-6\":0,\"jg7-9\":0,\"jg10\":0} filteredAssessments=32\nok de-sh-gk-g8.view.json {\"jg5-6\":0,\"jg7-9\":0,\"jg10\":0} filteredAssessments=28\nok de-sh-gk-g9.view.json {\"jg5-6\":0,\"jg7-9\":0,\"jg10\":0} filteredAssessments=31\nok de-sh-lk-g8.view.json {\"jg5-6\":0,\"jg7-9\":0,\"jg10\":0} filteredAssessments=28\nok de-sh-lk-g9.view.json {\"jg5-6\":0,\"jg7-9\":0,\"jg10\":0} filteredAssessments=31\nMathematics source-stage excerpts: 0 differences / 12 routes\nMathematics stage views: 0 differences\nUnresolved learning windows: 0; grouping conflicts: 0\n.......\n----------------------------------------------------------------------\nRan 7 tests in 2.859s\n\nOK\n.....\n----------------------------------------------------------------------\nRan 5 tests in 0.007s\n\nOK\n.................................\n----------------------------------------------------------------------\nRan 33 tests in 16.135s\n\nOK\nMathematics course-pair structure contract: 0 issues / 40 pairs / 100 views\n...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\nMathematics source/consumer stage identity: 100 views, 198 stage wrappers PASS\n",
+      "outputSha256": "f7693b9aed69a8e38a5e3e748c53522783f5cde8ede173b619ae55976e8d6718",
+      "environment": {
+        "nodeVersion": "20.20.2",
+        "runtimeSelection": "existing project CI tools cache"
+      }
+    }
+  ],
+  "measurementArtifacts": [
+    {
+      "path": "placements.actual.json",
+      "sha256": "a2cc96b4e12546127eddeaf8293b9daff200406f250371768f1dac9f75d5fc7f"
+    },
+    {
+      "path": "native-projection.actual.json",
+      "sha256": "98a8728df68ecbd449fe477e8c3d138c5ac618b94356a9655fa7bb7a5d2e3bf1"
+    },
+    {
+      "path": "source-placement-witnesses.actual.json",
+      "sha256": "da22fa26cb75dc7f3a791702d0458bbd806806fd9eef67ac8ef059ceb496e268"
+    },
+    {
+      "path": "source-demand-place-exceptions.actual.json",
+      "sha256": "0143bd662c571cdf768f0fdf7e35a12e42b1d390c008a1b7668b5aba7ebeac1d"
+    },
+    {
+      "path": "current-source-binding.actual.json",
+      "sha256": "b64e0b436340cda3d6351cd80c5d7f55eb9207d61554ac260bdca237d44b4084"
+    },
+    {
+      "path": "foreign-math-recheck.actual.json",
+      "sha256": "01f6dc33b393a763d0b50ae704b70e20d3e3b9a32df494efcf45ab00b939e10f"
+    },
+    {
+      "path": "backflows.actual.json",
+      "sha256": "3a9f176ab5067fe1c8b9dec414c0d558bdce33f11a22c083ad4902b148f35cd6"
+    },
+    {
+      "path": "hessen-children.successor.actual.json",
+      "sha256": "ef008e91d0a3ca1bfaa87a742110cf9d028a17852fd4766753442b002dc3bdde"
+    },
+    {
+      "path": "final-heading-delta-v2.actual.json",
+      "sha256": "a065f6390b8be885782147546acdb75fe54c83e81596fe53f44179629407989a"
+    }
+  ],
+  "supersedes": {
+    "path": "checks.actual.json",
+    "sha256": "37a42baacbcde107cc7af5208d643d4a5262462d9be8a1c8bd1a125efc5c11d1",
+    "reason": "Final source-location checks bind the accepted Saarland views and six Saxony source records. The earlier aggregate used intermediate measurement hashes."
+  }
+}
