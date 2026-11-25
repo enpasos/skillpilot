@@ -1310,7 +1310,7 @@
   },
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v6",
-  "generatedAt": "2026-11-25T17:59:37.964Z",
+  "generatedAt": "2026-11-25T19:49:32.856Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -1332,16 +1332,16 @@
       "M0": 11,
       "M1": 0,
       "M2": 0,
-      "M3": 1,
+      "M3": 0,
       "M4": 0,
       "M5": 0,
       "M6": 5,
-      "M7": 4
+      "M7": 5
     },
     "ruleStatus": {
-      "pass": 232,
-      "warn": 20,
-      "fail": 5,
+      "pass": 235,
+      "warn": 18,
+      "fail": 4,
       "not_configured": 65
     }
   },
@@ -27504,9 +27504,9 @@
           "status": "pass",
           "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
           "metrics": {
-            "goals": 6677,
-            "authoredRequires": 11528,
-            "effectiveRequires": 11528,
+            "goals": 6678,
+            "authoredRequires": 11529,
+            "effectiveRequires": 11529,
             "crossLandscapeReferences": 184,
             "minimalityFindings": 0,
             "atomicNormalFormFindings": 0,
@@ -45344,17 +45344,17 @@
       "subject": "Physik",
       "frameworkId": "canonical-gymnasium-physics",
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
-      "maturity": "M3",
+      "maturity": "M7",
       "humanTrialBlockingFindings": 0,
-      "goals": 868,
-      "atomicGoals": 736,
+      "goals": 869,
+      "atomicGoals": 737,
       "clusterGoals": 132,
       "jurisdictionCoverage": {
         "dimension": "jurisdiction",
         "emptyCanonicalViewProjection": false,
         "totalJurisdictions": 16,
         "totalAtomicGoals": 452,
-        "rawAtomicGoals": 736,
+        "rawAtomicGoals": 737,
         "coveredJurisdictions": 16,
         "sourceBackedJurisdictions": 16,
         "sourceCompleteJurisdictions": 16,
@@ -45663,9 +45663,9 @@
             "jurisdiction": "DE-HH",
             "labelDe": "Hamburg",
             "labelEn": "Hamburg",
-            "visibleGoals": 781,
+            "visibleGoals": 782,
             "visibleAtomicGoals": 416,
-            "visibleClusterGoals": 365,
+            "visibleClusterGoals": 366,
             "viewAtomicGoals": 416,
             "sourceBackedAtomicGoals": 416,
             "surrogateBackedAtomicGoals": 0,
@@ -45849,9 +45849,9 @@
             "jurisdiction": "DE-TH",
             "labelDe": "Thüringen",
             "labelEn": "Thuringia",
-            "visibleGoals": 787,
+            "visibleGoals": 788,
             "visibleAtomicGoals": 420,
-            "visibleClusterGoals": 367,
+            "visibleClusterGoals": 368,
             "viewAtomicGoals": 420,
             "sourceBackedAtomicGoals": 420,
             "surrogateBackedAtomicGoals": 0,
@@ -49564,7 +49564,7 @@
           "scopeId": "canonical-physics-sek1",
           "label": "Sekundarstufe I",
           "selectedAtomicGoals": 116,
-          "maturity": "M2",
+          "maturity": "M4",
           "rules": [
             {
               "id": "CQR-101",
@@ -49596,8 +49596,8 @@
             },
             {
               "id": "CQR-104",
-              "status": "fail",
-              "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+              "status": "pass",
+              "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
               "metrics": {
                 "relevantCompositionViews": 56,
                 "invalidExplicitTerminalConfigurations": 0,
@@ -49636,43 +49636,29 @@
                 "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
                 "projectionScopesMissingEffectiveMotivationRoutes": 0,
                 "projectionScopesMissingDirectMotivationRoutes": 0,
-                "projectionScopesMissingEffectiveTerminalRoutes": 6,
-                "projectionScopesMissingDirectTerminalRoutes": 6,
+                "projectionScopesMissingEffectiveTerminalRoutes": 0,
+                "projectionScopesMissingDirectTerminalRoutes": 0,
                 "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
                 "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
-                "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 6,
-                "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 6,
+                "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+                "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
                 "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
                 "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
-                "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 6,
-                "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 6,
+                "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+                "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
                 "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
                 "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
-                "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 1,
-                "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 1
-              },
-              "details": [
-                "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-seki.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-seki.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-seki.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
-                "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-seki.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766"
-              ]
+                "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+                "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+              }
             },
             {
               "id": "CQR-201",
               "status": "pass",
               "summary": "All configured terminal autonomy goals have examData.",
               "metrics": {
-                "terminalAutonomyGoals": 96,
-                "terminalAutonomyGoalsWithExamData": 96,
+                "terminalAutonomyGoals": 97,
+                "terminalAutonomyGoalsWithExamData": 97,
                 "terminalAutonomyGoalsWithoutExamData": 0
               }
             },
@@ -49681,23 +49667,20 @@
               "status": "pass",
               "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
               "metrics": {
-                "terminalAutonomyGoals": 96,
-                "concreteExamData": 96,
+                "terminalAutonomyGoals": 97,
+                "concreteExamData": 97,
                 "weakExamData": 0
               }
             },
             {
               "id": "CQR-203",
-              "status": "warn",
-              "summary": "1 terminal autonomy examData item(s) lack release or coverage metadata.",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
               "metrics": {
-                "terminalAutonomyGoals": 96,
-                "releasedCoverageCompleteExamData": 95,
-                "releaseCoverageIncompleteExamData": 1
-              },
-              "details": [
-                "Incomplete exam release/coverage: Mittlere Kraft auf einen Wagen [b50e9903-58b3-520d-96bf-d5bc1fe51ebf] (missing coveredStrands)"
-              ]
+                "terminalAutonomyGoals": 97,
+                "releasedCoverageCompleteExamData": 97,
+                "releaseCoverageIncompleteExamData": 0
+              }
             }
           ]
         },
@@ -49774,9 +49757,9 @@
           "status": "pass",
           "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
           "metrics": {
-            "goals": 1149,
-            "authoredRequires": 1661,
-            "effectiveRequires": 1661,
+            "goals": 1150,
+            "authoredRequires": 1662,
+            "effectiveRequires": 1662,
             "crossLandscapeReferences": 167,
             "minimalityFindings": 0,
             "atomicNormalFormFindings": 0,
@@ -49961,20 +49944,19 @@
         },
         {
           "id": "CQR-501",
-          "status": "warn",
-          "summary": "1 active and 0 obsolete accepted applicability warning(s) need review; 6302 partial-only diagnostic finding(s) are non-blocking.",
+          "status": "pass",
+          "summary": "15 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
           "metrics": {
-            "activeWarnings": 1,
-            "rawActiveWarnings": 1,
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
             "diagnosticPartialOnlyWarnings": 6302,
-            "acceptedWarnings": 13,
+            "acceptedWarnings": 15,
             "obsoleteAcceptedWarnings": 0
           },
           "details": [
             "non-blocking partial-only applicability diagnostics APV-202: 6302",
-            "active warning type APV-201: 1",
             "diagnostic finding type APV-202: 6302",
-            "accepted current warning type APV-201: 13"
+            "accepted current warning type APV-201: 15"
           ]
         }
       ]
