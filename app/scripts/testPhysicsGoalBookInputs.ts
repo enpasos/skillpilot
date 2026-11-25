@@ -30,7 +30,7 @@ import {
 import { buildApplicabilityCompilation } from './applicabilityCompiler'
 import { collectRenderedAtomicGoalIdsFromCompositionView, collectWholeMaterialPrerequisiteClosure, createRouteProfiles, evaluateRouteProfile, routeProfileDefinitions, sourceCoverageAtomicScopeMatcher } from './generateCurriculumQualityStatus'
 import type { ExamData, SkillLandscape } from '../src/landscapeTypes'
-import { parseSubjectDurationModelPolicy, type GoalBookDurationPolicyViewSource } from './goalBookModel'
+import { fingerprintSemanticKindSourceGoal, parseSubjectDurationModelPolicy, type GoalBookDurationPolicyViewSource } from './goalBookModel'
 import { loadActiveGymnasiumDurationPolicy } from './gymnasiumDurationPolicy'
 import {
   loadVerifiedPrerequisiteReductionContext,
@@ -977,7 +977,8 @@ const explicitClassification = (
     }
     if (goal.id === '151edbf8-eb68-5ef7-8786-43e56a281b0b') {
       assert.equal((goal.extendedData as Record<string, unknown>).applicabilityProjection, 'excluded')
-      assert.equal(goal.contains.length, 18, 'the archive keeps all eighteen original assessment identities')
+      // Eighteen identities since 24 Nov 2026; the mixed E.1 exam joined on 25 Nov 2026.
+      assert.equal(goal.contains.length, 19, 'the archive keeps all nineteen original assessment identities')
       assert(goal.contains.every(id => goalsById.get(id)?.examData),
         'each child of the retained assessment collection must carry a scoring contract')
       return {
@@ -1618,6 +1619,21 @@ for (const payload of currentStagePreparation.payloads) {
 }
 assert.deepEqual(currentStageOffers.assessments.map(row => row.goalId), [saxonAccelerationExam, saxonFreeFallExam])
 type EvidenceFile = { path: string; sha256: string }
+// 25 Nov 2026: the mixed exam "Bewegungsanalyse und freier Fall" is retired for all Länder. The E.1
+// material no longer names it as closing exam: one further one-field successor of the same bytes.
+const mixedRetirementDir = 'curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/'
+const retiredMixedExamId = 'a9562b05-c54d-5635-9244-3f7dd24a8642'
+const mixedRetirement = readJson<{
+  goalId: string
+  goal: { before: EvidenceFile & { jsonStringifySha256: string }; after: EvidenceFile & { jsonStringifySha256: string }; changedFields: string[] }
+  catalog: { changedGoalIds: string[] }
+  views: { total: number; changed: number; files: Array<{ file: string; afterSha256: string }> }
+  semanticKinds: { path: string; afterSha256: string; changes: Array<{ goalId: string; semanticKind: string; currentSourceFingerprint: string }> }
+  material: { currentPath: string; before: EvidenceFile; after: EvidenceFile
+    allowedDelta: { path: string; before: string; after: null; operation: string }; supersedes: EvidenceFile
+    unchangedPlanningFingerprints: string[] }
+  storedData: { noNewPlanningCredit: boolean }
+}>(mixedRetirementDir + 'retirement.actual.json')
 type StageScoringSuccessor = {
   goalId: string; status: string; predecessorOffer: EvidenceFile; predecessorPreparation: EvidenceFile
   approvedScopes: Array<{jurisdiction: string; stage: string}>; previousGoal: EvidenceFile; currentGoal: EvidenceFile
@@ -1718,9 +1734,15 @@ for (const row of currentStageOffers.assessments) {
     assert.deepEqual(context.sourceDocuments, successor.sourceDocuments)
   }
   for (const ref of [successor.predecessorOffer, successor.predecessorPreparation, successor.previousGoal, successor.currentGoal,
-    successor.accepted, successor.hessianMaterial, successor.materialRegistry, ...successor.sourceDocuments, ...successor.reviews.flatMap(r => [r.receipt, r.response])]) {
+    successor.accepted, successor.materialRegistry, ...successor.sourceDocuments, ...successor.reviews.flatMap(r => [r.receipt, r.response])]) {
     assert.equal(createHash('sha256').update(readFileSync(resolve(repoRoot, ref.path))).digest('hex'), ref.sha256)
   }
+  // The offer bound the Hessian parent material in its state before the mixed E.1 exam was retired.
+  // The retirement record continues that state: the current bytes differ only by the removed
+  // closing-exam binding, and the planning parts, credit and fingerprint named below are unchanged.
+  assert.deepEqual(successor.hessianMaterial, { path: mixedRetirement.material.currentPath, sha256: mixedRetirement.material.before.sha256 })
+  assert.equal(createHash('sha256').update(readFileSync(resolve(repoRoot, successor.hessianMaterial.path))).digest('hex'),
+    mixedRetirement.material.after.sha256)
   assert.deepEqual(current, readJson(successor.currentGoal.path))
   assert.equal(sha256(JSON.stringify(current)), successor.currentPreparation.rawSha256)
   assert.equal(sha256(JSON.stringify(normalizedBeforeHeadings.get(id))), successor.currentPreparation.normalizedSha256)
@@ -1818,7 +1840,57 @@ assert.equal(scopeSuccessor.noNewPlanningCredit, true)
 assert.equal(scopeSuccessor.noStoredResultTransfer, true)
 assert.equal(sha256(readFileSync(resolve(repoRoot, materialBefore), 'utf8')), dprimePlanning.material.sha256)
 assert.equal(sha256(readFileSync(resolve(repoRoot, materialAfter), 'utf8')), scopeSuccessor.materialAfter.sha256)
-assert.deepEqual(readFileSync(resolve(repoRoot, dprimePlanning.material.path)), readFileSync(resolve(repoRoot, materialAfter)))
+// The E.1 material no longer names the retired mixed exam as closing exam (record read above).
+assert.equal(mixedRetirement.goalId, retiredMixedExamId)
+assert.deepEqual(mixedRetirement.material.before, { path: mixedRetirementDir + 'material.before.json', sha256: scopeSuccessor.materialAfter.sha256 })
+assert.deepEqual(readFileSync(resolve(repoRoot, mixedRetirement.material.before.path)), readFileSync(resolve(repoRoot, materialAfter)),
+  'the retirement starts from the exact bytes the voluntary-identity successor ended with')
+assert.equal(sha256(readFileSync(resolve(repoRoot, mixedRetirement.material.after.path), 'utf8')), mixedRetirement.material.after.sha256)
+assert.deepEqual(mixedRetirement.material.supersedes, { path: scopeSuccessorDir + 'scope-successor.actual.json',
+  sha256: sha256(readFileSync(resolve(repoRoot, scopeSuccessorDir + 'scope-successor.actual.json'), 'utf8')) })
+assert.deepEqual(mixedRetirement.material.allowedDelta, { path: '/unit/assessmentGoalId', before: retiredMixedExamId, after: null, operation: 'remove' })
+const materialWithoutClosingExam = readJson<{ unit: Record<string, unknown> }>(materialAfter)
+assert.equal(materialWithoutClosingExam.unit.assessmentGoalId, retiredMixedExamId)
+delete materialWithoutClosingExam.unit.assessmentGoalId
+assert.deepEqual(readJson(mixedRetirement.material.after.path), materialWithoutClosingExam, 'only the closing-exam binding leaves the material')
+assert.equal(mixedRetirement.material.currentPath, dprimePlanning.material.path)
+assert.deepEqual(readFileSync(resolve(repoRoot, dprimePlanning.material.path)), readFileSync(resolve(repoRoot, mixedRetirement.material.after.path)))
+assert.deepEqual(mixedRetirement.material.unchangedPlanningFingerprints, [dprimePlanning.credit.release.fingerprint])
+assert.equal(mixedRetirement.storedData.noNewPlanningCredit, true)
+// The retired goal itself: only applicability and the exclusion marker changed; task, rubric and requires are the released bytes.
+const retiredMixedExam = rawGoalById.get(retiredMixedExamId)!
+for (const side of [mixedRetirement.goal.before, mixedRetirement.goal.after]) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, side.path), 'utf8')), side.sha256)
+  assert.equal(sha256(JSON.stringify(readJson(side.path))), side.jsonStringifySha256)
+}
+assert.deepEqual(readJson(mixedRetirement.goal.after.path), retiredMixedExam)
+const retiredMixedExamBefore = readJson<Record<string, unknown>>(mixedRetirement.goal.before.path)
+assert.deepEqual(mixedRetirement.goal.changedFields, ['applicability', 'extendedData'])
+assert.deepEqual(Object.keys(retiredMixedExam).filter(key => JSON.stringify(retiredMixedExam[key]) !== JSON.stringify(retiredMixedExamBefore[key])).sort(),
+  mixedRetirement.goal.changedFields)
+assert.deepEqual(retiredMixedExam.applicability, {})
+assert.deepEqual(retiredMixedExam.extendedData, { applicabilityProjection: 'excluded', applicabilityMappingInheritance: 'boundary' })
+assert.deepEqual(mixedRetirement.catalog.changedGoalIds, ['151edbf8-eb68-5ef7-8786-43e56a281b0b', '424b07df-bf66-5d7f-99f5-f28b32ad1f22', retiredMixedExamId])
+assert.deepEqual((rawLandscape.goals as Array<{ id: string; contains?: string[] }>).filter(goal => goal.contains?.includes(retiredMixedExamId))
+  .map(goal => goal.id), ['151edbf8-eb68-5ef7-8786-43e56a281b0b'])
+// Every Physics view is bound in its final state, and none names the retired exam.
+assert.equal(mixedRetirement.views.changed, mixedRetirement.views.files.length)
+for (const view of mixedRetirement.views.files) {
+  const text = readFileSync(resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/physik', view.file), 'utf8')
+  assert.equal(sha256(text), view.afterSha256, view.file)
+}
+const physicsViewFiles = readdirSync(resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/physik')).filter(name => name.endsWith('.view.json'))
+assert.equal(physicsViewFiles.length, mixedRetirement.views.total)
+for (const name of physicsViewFiles) {
+  assert(!readFileSync(resolve(repoRoot, 'curricula/DE/Gymnasium/composition-views/physik', name), 'utf8').includes(retiredMixedExamId),
+    `${name}: no Physics view offers the retired mixed exam`)
+}
+assert.equal(sha256(readFileSync(resolve(repoRoot, mixedRetirement.semanticKinds.path), 'utf8')), mixedRetirement.semanticKinds.afterSha256)
+assert.deepEqual(mixedRetirement.semanticKinds.changes.map(change => change.goalId).sort(), [...mixedRetirement.catalog.changedGoalIds].sort())
+for (const change of mixedRetirement.semanticKinds.changes) {
+  assert.equal(change.semanticKind, 'practiceAssessment')
+  assert.equal(fingerprintSemanticKindSourceGoal(rawGoalById.get(change.goalId)!), change.currentSourceFingerprint)
+}
 assert.equal(sha256(readFileSync(resolve(repoRoot, dprimePlanning.registry.path), 'utf8')), dprimePlanning.registry.sha256)
 const expectedMaterial = readJson<{ unit: { sectionAssessmentPolicy: { voluntaryAssessmentGoalIds: string[] } } }>(materialBefore)
 const voluntary = expectedMaterial.unit.sectionAssessmentPolicy.voluntaryAssessmentGoalIds
@@ -3742,7 +3814,8 @@ const currentTerminalRelease = evaluateRouteProfile(currentPhysics, currentSekII
   .rules.find(rule => rule.id === 'CQR-203')!
 assert.equal(currentTerminalRelease.status, 'pass', 'every active terminal assessment must carry reviewed whole-goal coverage')
 assert.equal(currentTerminalRelease.metrics?.releaseCoverageIncompleteExamData, 0)
-assert.equal(currentTerminalRelease.metrics?.releasedCoverageCompleteExamData, 111)
+// 110 since the mixed E.1 exam "Bewegungsanalyse und freier Fall" was retired on 25 Nov 2026 (111 before).
+assert.equal(currentTerminalRelease.metrics?.releasedCoverageCompleteExamData, 110)
 assert.equal(currentTerminalRelease.metrics?.terminalAutonomyGoals, currentTerminalRelease.metrics?.releasedCoverageCompleteExamData)
 
 const legacySelectedGoalIds = currentPhysics.goals.filter(legacyRouteProfile.goalSelector).map(goal => goal.id)

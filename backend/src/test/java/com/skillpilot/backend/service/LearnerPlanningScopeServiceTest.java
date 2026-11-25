@@ -444,7 +444,13 @@ class LearnerPlanningScopeServiceTest {
     void physicsActiveContextUsesSelectedDurationAndOnlyStoredPrerequisiteEvidence(String duration) {
         Learner learner = selectHessenPhysics(duration, "GK");
         String throwGoalId = "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2";
-        String assessmentId = "a9562b05-c54d-5635-9244-3f7dd24a8642";
+        // The parent unit E.1 names no closing exam since the mixed exam "Bewegungsanalyse und freier
+        // Fall" was retired (25 Nov 2026). A cross-topic exam stands for an active assessment; the
+        // child unit "Freier Fall schwerer Kugeln" still names its own closing exam.
+        String retiredMixedExamId = "a9562b05-c54d-5635-9244-3f7dd24a8642";
+        String assessmentId = "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51";
+        String childGoalId = "8aff7aac-321b-5172-ac55-877876bfd2cd";
+        String childAssessmentId = "f13ca187-b680-5f47-b4ad-76bd474bd8a2";
         // Since the E.1 cut (23 Nov 2026) the throw requires the free-fall experiment, which requires the motion laws.
         String freeFallGoalId = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
         String focus = "composition:de-he-gym-physics-gk-" + duration.toLowerCase(java.util.Locale.ROOT)
@@ -484,10 +490,20 @@ class LearnerPlanningScopeServiceTest {
             assertThat(prerequisite.title()).isEqualTo("Freier Fall experimentell untersuchen");
             assertThat(prerequisite.recorded()).isTrue();
         });
-        assertThat(context.activities()).anySatisfy(activity -> {
-            assertThat(activity.goalId()).isEqualTo(assessmentId);
-            assertThat(activity.route()).isEqualTo("cockpit");
+        assertThat(context.activities()).isNotEmpty().allSatisfy(activity -> {
+            assertThat(activity.kind()).isEqualTo("memory");
+            assertThat(activity.goalId()).isNotEqualTo(retiredMixedExamId);
         });
+        learner.setActiveGoalId(childGoalId);
+        learnerRepository.saveAndFlush(learner);
+        assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, childGoalId, revision, "de", Set.of(), true).activities())
+                .anySatisfy(activity -> {
+                    assertThat(activity.goalId()).isEqualTo(childAssessmentId);
+                    assertThat(activity.sectionTitle()).isEqualTo("Freier Fall schwerer Kugeln · E.1 Bewegungen und ihre Beschreibung");
+                    assertThat(activity.route()).isEqualTo("cockpit");
+                });
+        learner.setActiveGoalId(throwGoalId);
+        learnerRepository.saveAndFlush(learner);
         assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, throwGoalId, revision + 1, "de", Set.of(), true)).isNull();
         assertThat(learnerService.getCoachActiveGoalContext(LEARNER_ID, assessmentId, revision, "de", Set.of(), true)).isNull();
 

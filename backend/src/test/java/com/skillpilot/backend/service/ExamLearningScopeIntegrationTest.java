@@ -63,7 +63,9 @@ class ExamLearningScopeIntegrationTest {
             "09029573-864f-40ca-bf8a-cee7bf6dcb73", "d6dc0e02-831d-4894-a61a-852bcc74f147",
             "4a2bf015-052b-4af0-aed7-324259fa1a8a", "68c90ba6-c438-463c-9a53-cf61062d416a",
             "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
-            "a9562b05-c54d-5635-9244-3f7dd24a8642", HESSIAN_VERTICAL_THROW_EXAM,
+            // The dedicated free-fall exam. The mixed exam "Bewegungsanalyse und freier Fall" is
+            // retired since 25 Nov 2026 and cannot be selected in a new plan.
+            "f41e4e30-794e-5ce4-ba5e-cc72712cd691", HESSIAN_VERTICAL_THROW_EXAM,
             "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9");
     private static final LocalDate TODAY = LocalDate.parse("2026-10-22");
     private static final ZoneId BERLIN = ZoneId.of("Europe/Berlin");

@@ -1,0 +1,101 @@
+{
+  "id": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+  "title": "Bewegungsanalyse und freier Fall",
+  "titleEn": "Motion Analysis and Free Fall",
+  "description": "E.1 Bewegungen und freier Fall, 25 BE.",
+  "descriptionEn": "E.1 motions and free fall, 25 points.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "Practice",
+    "Assessment"
+  ],
+  "contains": [],
+  "requires": [
+    "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+    "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+    "ac25ffe3-fd42-592d-a937-79cc13460313"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024-physics",
+    "demandLevel": "AB2",
+    "processCompetencies": [
+      "PK1_EXPERIMENTIEREN",
+      "PK2_MODELLIEREN",
+      "PK3_MATHEMATISIEREN",
+      "PK5_BEWERTEN"
+    ],
+    "guidingIdeas": [
+      "LI_BEWEGUNG",
+      "LI_TECHNIK"
+    ],
+    "phase": "E"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-BW",
+      "DE-HB",
+      "DE-HE",
+      "DE-HH",
+      "DE-MV",
+      "DE-NI",
+      "DE-NW",
+      "DE-RP",
+      "DE-SH",
+      "DE-SL",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "ac25ffe3-fd42-592d-a937-79cc13460313",
+      "230345f3-c360-4963-b390-ab94e3e2c864"
+    ],
+    "coveredStrands": [
+      "LI_BEWEGUNG",
+      "LI_TECHNIK"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "taskContent": "**Kontext:**\n\nSie unterstützen ein kommunales Verkehrssicherheitsprojekt. Auf Basis von Messfahrten, Fallversuchen und Bremsdaten soll bewertet werden, wie Bewegungsmodelle zur Abschätzung realer Risiken im Straßenverkehr genutzt werden können.\n\nAlle Materialien gehören zu derselben Untersuchungssituation: Material 1 liefert Messdaten zur Bewegung, Material 2 ein Vergleichsmodell aus dem freien Fall und Material 3 einen sicherheitsrelevanten Anwendungskontext.\n\n**Material 1 (Messfahrt auf gerader Strecke):**\n\n| Zeit $t$ (s) | 0.0 | 0.5 | 1.0 | 1.5 | 2.0 |\n|---|---:|---:|---:|---:|---:|\n| Weg $s$ (m) | 0.0 | 0.4 | 1.6 | 3.6 | 6.4 |\n\n**Material 2 (Fallversuch):**\n\n- Abwurfhöhe: $h=20.0\\,\\mathrm{m}$\n- Erdbeschleunigung: $g=9.81\\,\\mathrm{m/s^2}$\n- Luftwiderstand wird vernachlässigt.\n\n**Material 3 (Bremsen im Stadtverkehr):**\n\n- Anfangsgeschwindigkeit: $v_0=50\\,\\mathrm{km/h}$\n- Reaktionszeit: $t_R=0.80\\,\\mathrm{s}$\n- mittlere Bremsverzögerung: $a_B=6.5\\,\\mathrm{m/s^2}$\n- verfügbare Strecke bis Hindernis: $24\\,\\mathrm{m}$\n\n**Aufgaben:**\n\n1. Bestimmen Sie aus Material 1, ob eine gleichförmige oder gleichmäßig beschleunigte Bewegung vorliegt, und berechnen Sie die Beschleunigung. (6 BE)\n2. Bestimmen Sie die Geschwindigkeit bei $t=2.0\\,\\mathrm{s}$ und bei $t=1.2\\,\\mathrm{s}$. (7 BE)\n3. Berechnen Sie für Material 2 die Fallzeit und die Aufprallgeschwindigkeit. (6 BE)\n4. Prüfen Sie mit Material 3, ob das Fahrzeug vor dem Hindernis anhalten kann. (6 BE)",
+    "solutionContent": "1. Die Wegwerte steigen quadratisch mit der Zeit ($s\\propto t^2$). Damit liegt eine gleichmäßig beschleunigte Bewegung vor.\n\n$$\ns(t)=\\frac12 a t^2\n$$\n\nMit $s(2.0\\,\\mathrm{s})=6.4\\,\\mathrm{m}$ folgt:\n\n$$\na=\\frac{2s}{t^2}=\\frac{2\\cdot 6.4}{(2.0)^2}=3.2\\,\\mathrm{m/s^2}\n$$\n\n**6 BE**\n\n2. Bei Start aus Ruhe gilt $v(t)=a\\,t$.\n\n$$\nv(2.0\\,\\mathrm{s})=3.2\\cdot 2.0=6.4\\,\\mathrm{m/s}\n$$\n\n$$\nv(1.2\\,\\mathrm{s})=3.2\\cdot 1.2=3.84\\,\\mathrm{m/s}\n$$\n\n**7 BE**\n\n3. Für den freien Fall:\n\n$$\nt_F=\\sqrt{\\frac{2h}{g}}=\\sqrt{\\frac{40.0}{9.81}}=2.02\\,\\mathrm{s}\n$$\n\n$$\nv_A=g\\,t_F=9.81\\cdot 2.02=19.8\\,\\mathrm{m/s}\n$$\n\n**6 BE**\n\n4. Umrechnung der Anfangsgeschwindigkeit:\n\n$$\nv_0=50\\,\\mathrm{km/h}=13.89\\,\\mathrm{m/s}\n$$\n\nReaktionsweg:\n\n$$\ns_R=v_0 t_R=13.89\\cdot 0.80=11.1\\,\\mathrm{m}\n$$\n\nBremsweg:\n\n$$\ns_B=\\frac{v_0^2}{2a_B}=\\frac{13.89^2}{2\\cdot 6.5}=14.8\\,\\mathrm{m}\n$$\n\nAnhalteweg:\n\n$$\ns_A=s_R+s_B=11.1+14.8=25.9\\,\\mathrm{m}\n$$\n\nDa $25.9\\,\\mathrm{m}>24\\,\\mathrm{m}$, reicht die Strecke nicht aus.\n\n**6 BE**",
+    "scoring": {
+      "maxPoints": 25,
+      "passingPoints": 15,
+      "steps": [
+        {
+          "id": "s1",
+          "points": 6,
+          "description": "Bewegungsart erkannt und Beschleunigung korrekt bestimmt"
+        },
+        {
+          "id": "s2",
+          "points": 7,
+          "description": "Geschwindigkeiten aus dem Modell korrekt berechnet"
+        },
+        {
+          "id": "s3",
+          "points": 6,
+          "description": "Fallzeit und Aufprallgeschwindigkeit korrekt berechnet"
+        },
+        {
+          "id": "s4",
+          "points": 6,
+          "description": "Anhalteweg berechnet und sicherheitsbezogen bewertet"
+        }
+      ]
+    },
+    "reviewNote": " Aktueller begrenzter AI-Inhaltsentscheid vom15.11.2026: ausschließlich unbelegte Vollclaims ce431132-dfc4-42c2-aff6-bd72035190f8,e4b38061-1f28-43ad-8371-a3e7c0e81856 entfernt; Aufgaben-/Lösungs-/Rastertexte, IDs und Punkteschwellen bleiben unverändert. Root-Disposition: curricula/DE/Gymnasium/quality/goal-evidence/2026-11-15/stage-plan-k3k6-current-v1/root-review/direct-claim-removal-root-disposition.actual.json. Keine pauschale Neuprüfung übriger historischer Claims und keine Änderung gespeicherter Resultate."
+  },
+  "phase": "E",
+  "type": "atomic"
+}

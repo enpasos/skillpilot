@@ -342,7 +342,7 @@ const hesseIntroductoryAssessmentPlaces = {
   ],
   'physics-he-ephase-cross-topic-assessments': [
     protocolOffer.assessmentGoalId,
-    'a9562b05-c54d-5635-9244-3f7dd24a8642', '5773ccbe-cd20-5ba0-99a5-7ccd5f42be51',
+    '5773ccbe-cd20-5ba0-99a5-7ccd5f42be51',
     '879491c0-7153-570b-91f4-c61d9fe8a143', '7c0b94b9-2af7-59d4-bfae-278a3418f6a8',
   ],
 }
@@ -362,6 +362,16 @@ const kinematicsAssessments = [
 const retainedVerticalAssessmentId = '4ab1cf6d-b808-5b86-9291-85df0b9f2496'
 assert.equal(canonicalById.get(retainedVerticalAssessmentId)?.extendedData?.applicabilityProjection, 'excluded')
 assert.deepEqual(canonicalById.get(retainedVerticalAssessmentId)?.examData?.coveredGoalIds, [])
+// The mixed E.1 exam "Bewegungsanalyse und freier Fall" is retired for all Länder (25 Nov 2026).
+// It keeps its identity, task and rubric among the retained mixed assessments; no view offers it.
+const retiredMixedMotionAssessmentId = 'a9562b05-c54d-5635-9244-3f7dd24a8642'
+const retiredMixedMotionAssessment = canonicalById.get(retiredMixedMotionAssessmentId)!
+assert.equal(retiredMixedMotionAssessment.extendedData?.applicabilityProjection, 'excluded')
+assert.equal(retiredMixedMotionAssessment.extendedData?.applicabilityMappingInheritance, 'boundary')
+assert.deepEqual(retiredMixedMotionAssessment.applicability, {})
+assert.deepEqual(canonicalLandscape.goals.filter(goal => goal.contains?.includes(retiredMixedMotionAssessmentId)).map(goal => goal.id),
+  ['151edbf8-eb68-5ef7-8786-43e56a281b0b'], 'the retired exam has exactly one owner, the retained mixed assessments')
+assert(!canonicalLandscape.goals.some(goal => goal.requires?.includes(retiredMixedMotionAssessmentId)))
 const astronomyAssessments = new Map([
   ['14cc61c4-4909-5671-b1ee-930a02cb9f51', 'af5dfdbc-5fd6-5c3e-a81b-093cb7c14b93'],
   ['50521f0d-71b1-51cf-b30d-650e3abf3036', '1b060e79-dc2d-5e4e-abb5-42eca39f9cc7'],
@@ -609,6 +619,8 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     `${view.viewId}: historical ZB must not become a current learning offer`)
   assert(!visible.has(retainedVerticalAssessmentId),
     `${view.viewId}: the retained mixed task must not become an active assessment target`)
+  assert(!visible.has(retiredMixedMotionAssessmentId),
+    `${view.viewId}: the retired mixed E.1 exam must stay outside learning offers`)
   astronomyTaskPairs += assertAstronomyTargetVisibility(view, visible)
   for (const taskId of astronomyAssessments.keys()) {
     if (!visible.has(taskId)) continue
