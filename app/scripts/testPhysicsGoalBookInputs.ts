@@ -725,10 +725,11 @@ const FINAL_SPLIT_ASSESSMENT_COVERAGE = new Map([
 // The four new goals contribute 24 motion-law, 24 signed-area, 6 fall-comparison
 // and 12 velocity-vector occurrences in the reviewed state views.
 // The diagnostic selector still includes 8,739. All 494 outside it enter CQR-104.
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 9233
+// E.2 adds twelve system-momentum and three mean-force occurrences in the actual source views.
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 9233 + 12 + 3
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 8739
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 494
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 61
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 494 + 12 + 3
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 61 + 2
 const EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES = new Map([
   [FINAL_SPLIT_CHILD_IDS[0], 30], // p-n model: 25 prior + 5 new lower-view occurrences
   [FINAL_SPLIT_CHILD_IDS[1], 24], // diode experiment: 20 + 4
@@ -4158,6 +4159,15 @@ const routeProjectionRule = physicsSekIRouteScope.rules.find(({ id }) => id === 
 assert(routeProjectionRule, 'curriculum-quality status lacks Physics Sek-I CQR-104')
 assert.equal(routeProjectionRule.status, 'pass', 'current acquisition routes must retain the protected Physics quality floor')
 const routeMetrics = routeProjectionRule.metrics ?? {}
+const currentE2RouteCountsPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/route-counts.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, currentE2RouteCountsPath), 'utf8')), '7f372a5b57c595be77879bc02b8aec54260c9cc44730ed75d3367c41aeddf7b1')
+const currentE2RouteCounts = readJson<{
+  observedWithBothAssessments: { metrics: Record<string, number>; perNewGoalWhenSelected: Record<string, number> }
+}>(currentE2RouteCountsPath).observedWithBothAssessments
+for (const [metric, value] of Object.entries(currentE2RouteCounts.metrics)) {
+  assert.equal(routeMetrics[metric], value, `Current E.2 lower-stage route metric ${metric}`)
+}
+
 const legacyRouteProfile = routeProfileDefinitions.find(profile => profile.profileId === 'canonical-physics-sek1')!
 const currentRouteProfile = createRouteProfiles(repoRoot).find(profile => profile.profileId === legacyRouteProfile.profileId)!
 const currentPhysics = rawLandscape as unknown as SkillLandscape
