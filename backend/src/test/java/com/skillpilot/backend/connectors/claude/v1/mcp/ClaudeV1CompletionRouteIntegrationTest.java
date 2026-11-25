@@ -2118,19 +2118,41 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 "9c328f68-41ed-55dd-9e02-34414a6246f2"));
         if (course.equals("LK")) moved.add("e359f8bb-6106-44aa-9edf-694528d2d2a9");
         assertThat(currentSection).isNotEmpty().doesNotContainAnyElementsOf(moved);
-        assertThat(currentSection.size() + moved.size()).isEqualTo(32);
+        // This is the actual dated native capture from before the cut, not today's section
+        // with moved goals added. Later curricular additions never enter the old learner's plan.
+        byte[] captureBytes;
+        try (var input = getClass().getResourceAsStream("/fixtures/e2-forces-before-cut-20261125.json")) {
+            assertThat(input).isNotNull();
+            captureBytes = input.readAllBytes();
+        }
+        assertThat(java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256")
+                .digest(captureBytes))).isEqualTo("6367068e3613691e269209889f476c5fe557e611ec46d08248db643e8172bada");
+        var dated = mapper.readTree(captureBytes).path("courses").path(course);
+        assertThat(dated.path("sourceRawSha256").asText()).isEqualTo(course.equals("GK")
+                ? "sha256:7aea72b0e70514a5078ea1550c9deca1ac15d13cad8cc7afba1fba180d4787d7"
+                : "sha256:cbf92f096911a6be87e4e6cb0400685de73a409953af2c82c220223ddd7e5a6e");
+        var capture = dated.path("capture");
+        var stored = mapper.readValue(capture.path("storedBlockJson").asText(),
+                new TypeReference<List<LearnerLearningPlanApi.Block>>() { });
+        assertThat(stored).hasSize(1);
+        var captured = stored.getFirst().atomicGoalIds();
+        assertThat(capture.path("staleAtCapture").asBoolean()).isFalse();
+        assertThat(captured).hasSize(32).doesNotHaveDuplicates().containsAll(moved);
+        assertThat(stored).singleElement().satisfies(block -> {
+            assertThat(block.focusGoalIds()).containsExactly(forces);
+            assertThat(block.startDate()).isEqualTo(java.time.LocalDate.parse("2026-11-23"));
+            assertThat(block.endDate()).isEqualTo(java.time.LocalDate.parse("2026-11-23"));
+        });
         assertThat(learners.getPlanningScope(learnerId, physics).scopeAtomicGoalIds()).containsAll(moved);
         learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.2", List.of(
                 new LearnerLearningPlanApi.Block("section", "learning", forces, "E.2", monday, monday,
                         null, currentSection, List.of(forces), true))), today);
 
-        var captured = new java.util.ArrayList<>(currentSection);
-        captured.addAll(moved);
-        var stored = learners.orderLearningPlanBlocksByPrerequisites(learnerId, List.of(
-                new LearnerLearningPlanApi.Block("section", "learning", forces, "E.2", monday, monday,
-                        null, captured, List.of(forces), true)));
         var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
-        record.setBlocksJson(mapper.writeValueAsString(stored));
+        record.setBlocksJson(capture.path("storedBlockJson").asText());
+        record.setCurriculumId(capture.path("curriculumId").asText());
+        record.setScopeFingerprint(capture.path("scopeFingerprint").asText());
+        record.setRevision(capture.path("revision").asLong());
         storedPlans.saveAndFlush(record);
         var plan = learningPlans.getPlan(learnerId, physics, today);
         assertThat(plan.stale()).isFalse();
@@ -2141,11 +2163,11 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(restored.stale()).isFalse();
         assertThat(restored.blocks()).isEqualTo(stored);
 
-        // Everything of the section and every prerequisite of the moved goals is done.
+        // Every other goal of the captured section and each current prerequisite of the moved goals is done.
         var learner = learnerRepository.findById(learnerId).orElseThrow();
         var prerequisites = new CompletionProfileCompiler().normalizePrerequisites(
                 learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
-        var finished = new java.util.LinkedHashSet<String>(currentSection);
+        var finished = new java.util.LinkedHashSet<String>(captured);
         for (String goal : moved) finished.addAll(prerequisites.transitivePrerequisites(goal));
         finished.removeAll(moved);
         masteryRepository.saveAllAndFlush(finished.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
