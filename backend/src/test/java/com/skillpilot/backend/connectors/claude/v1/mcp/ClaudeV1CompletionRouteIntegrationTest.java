@@ -1833,18 +1833,31 @@ class ClaudeV1CompletionRouteIntegrationTest {
         var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
         record.setBlocksJson(mapper.writeValueAsString(stored));
         storedPlans.saveAndFlush(record);
+        String capturedFingerprint = record.getScopeFingerprint();
+        long capturedRevision = record.getRevision();
         var plan = learningPlans.getPlan(learnerId, physics, today);
         assertThat(plan.stale()).isFalse();
         assertThat(plan.blocks()).isEqualTo(stored);
         assertThat(plan.blocks().getFirst().atomicGoalIds()).containsAll(moved);
         assertThat(plan.nextEligibleGoal()).isNotNull();
         assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).isEqualTo(stored);
+        // Reading rewrites nothing: the stored capture keeps its fingerprint and revision.
+        assertThat(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow())
+                .satisfies(read -> {
+                    assertThat(read.getScopeFingerprint()).isEqualTo(capturedFingerprint);
+                    assertThat(read.getRevision()).isEqualTo(capturedRevision);
+                    assertThat(read.getBlocksJson()).isEqualTo(mapper.writeValueAsString(stored));
+                });
 
-        // A backup of it restores with the same goals.
+        // A backup of it restores with the same goals. The restore is a new capture: it starts
+        // at revision 1 with a fingerprint of today's graph.
         learners.importLearner(learnerId, learners.exportLearner(learnerId));
         var restored = learningPlans.getPlan(learnerId, physics, today);
         assertThat(restored.stale()).isFalse();
         assertThat(restored.blocks()).isEqualTo(stored);
+        assertThat(restored.revision()).isEqualTo(1L);
+        assertThat(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow()
+                .getScopeFingerprint()).isNotBlank();
 
         // Editing keeps what the plan had captured.
         var renamed = learningPlans.upsert(learnerId, physics,
@@ -2010,6 +2023,55 @@ class ClaudeV1CompletionRouteIntegrationTest {
             // Passing it completes the plan's work; nothing of the plan stays open.
             masteryRepository.saveAndFlush(new Mastery(learner, moved, 1.0));
             assertThat(captured).allMatch(id -> learners.getMastery(learnerId).getOrDefault(id, 0.0) >= 1.0);
+        } finally {
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", true);
+        }
+    }
+
+    // The third way to the next goal: passing a goal of the plan hands over to the next due one.
+    // It treats a kept goal like plan continuation does, with the goal as its own focus.
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void passingAPlanGoalHandsOverToTheGoalThatARegroupingMoved(boolean pilot) throws Exception {
+        org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+        try {
+            String section = selectHessianMotionUnit("G9", "SekII", "GK");
+            String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+            String moved = "4a2bf015-052b-4af0-aed7-324259fa1a8a";
+            var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+            var monday = today.with(java.time.DayOfWeek.MONDAY);
+            var current = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+            // An ordinary content goal of the section is still open and comes first in the plan.
+            String open = current.stream().map(landscapeDefinitions::getGoalDefinition)
+                    .filter(goal -> !CompletionProfileCompiler.isAssessment(goal) && !CompletionProfileCompiler.isMemory(goal)
+                            && !CompletionProfileCompiler.isOrientation(goal))
+                    .map(goal -> goal.getId()).reduce((first, second) -> second).orElseThrow();
+            learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(
+                    new LearnerLearningPlanApi.Block("old-e1", "learning", section, "E.1", monday, monday,
+                            null, current, List.of(section), true))), today);
+            var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+            record.setBlocksJson(mapper.writeValueAsString(List.of(
+                    new LearnerLearningPlanApi.Block("old-e1", "learning", section, "E.1", monday, monday,
+                            null, List.of(open, moved), List.of(section), true))));
+            storedPlans.saveAndFlush(record);
+            var learner = learnerRepository.findById(learnerId).orElseThrow();
+            var prerequisites = new CompletionProfileCompiler().normalizePrerequisites(
+                    learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+            var finished = new java.util.LinkedHashSet<String>(prerequisites.transitivePrerequisites(moved));
+            finished.addAll(prerequisites.transitivePrerequisites(open));
+            finished.addAll(current);
+            finished.removeAll(List.of(open, moved));
+            masteryRepository.saveAllAndFlush(finished.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+            learners.setPreferences(learnerId, null, false, true, null, true);
+
+            var first = learningPlans.reconcile(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today));
+            assertThat(first.activeGoalId()).isEqualTo(open);
+            assertThat(first.focusGoalId()).isEqualTo(section);
+
+            learners.setMastery(learnerId, new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of(open, 1.0), open));
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(moved);
+            assertThat(focus.findByLearner_SkillpilotId(learnerId)).extracting(PlannedGoal::getGoalId)
+                    .containsExactly(moved);
         } finally {
             org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", true);
         }

@@ -2038,10 +2038,15 @@ public class LearnerLearningPlanService {
                 }).filter(Objects::nonNull).findFirst();
     }
 
-    /** True for a goal of an ordinary learning block that no longer lies under a focus of that block. */
+    /**
+     * True for a goal of an ordinary learning block that no longer lies under a focus of that block.
+     * A resolved focus always holds at least one goal, so no answer and an empty answer both mean
+     * that the content of the focus is not known; the section then decides as before.
+     */
     private static boolean isOutsideBlockFocus(LearnerLearningPlanApi.Block block, String atomicGoalId,
             Set<String> underFocus) {
-        return underFocus != null && block.unitAssignment() == null && !underFocus.contains(atomicGoalId);
+        return underFocus != null && !underFocus.isEmpty() && block.unitAssignment() == null
+                && !underFocus.contains(atomicGoalId);
     }
 
     private static String runtimeFocusGoalId(LearnerLearningPlanApi.Block block, String atomicGoalId) {
@@ -2104,8 +2109,8 @@ public class LearnerLearningPlanService {
     }
 
     /**
-     * {@code focusAtomicIds} names the goals that lie under a block's foci today, or {@code null}
-     * when that is not known. A scheduled goal outside them was moved out of its section by a
+     * {@code focusAtomicIds} names the goals that lie under a block's foci today; {@code null} or
+     * an empty set when that is not known. A scheduled goal outside them was moved out of its section by a
      * regrouping. It keeps its place in the schedule and runs under its own focus, exactly like a
      * goal of a block without a section.
      */

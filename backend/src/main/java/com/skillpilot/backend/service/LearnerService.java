@@ -10540,7 +10540,10 @@ public class LearnerService {
                                                 "exam".equals(learningScope.kind()) ? learningScope.goalIds() : focusIds)
                                         : null,
                                 goalId -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId),
-                                preparation);
+                                preparation,
+                                // As in plan continuation: a goal moved out of its section runs under its own focus.
+                                roots -> "exam".equals(learningScope.kind()) ? null : getLearningPlanFocusAtomicGoalIds(
+                                        learner.getSkillpilotId(), plan.getLandscapeId(), roots));
                 if (selected.isEmpty()) {
                     continue;
                 }
