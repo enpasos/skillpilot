@@ -1471,14 +1471,20 @@ public class LearnerLearningPlanService {
                 scope,
                 capturedAtomicIds(existingBlocks), false,
                 blocks -> applySectionAssessmentPolicy(learners, learner, landscapeId, blocks, false));
-        learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks);
+        // Editing keeps a goal the stored plan had captured in a block with the same sections,
+        // also where a regrouping moved it out of them. A newly selected goal and a block with
+        // other sections are checked strictly.
+        Map<Set<String>, Set<String>> capturedSelections =
+                LearnerService.learningPlanCapturedSelections(existingBlocks);
+        learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks, capturedSelections);
         normalizedBlocks = learners.orderLearningPlanBlocksByPrerequisites(
                 skillpilotId,
                 normalizedBlocks);
         String fingerprint = learners.learningPlanFingerprint(
                 skillpilotId,
                 landscapeId,
-                normalizedBlocks);
+                normalizedBlocks,
+                capturedSelections);
         return new PreparedPlan(
                 learner,
                 landscapeId,
@@ -1548,16 +1554,27 @@ public class LearnerLearningPlanService {
         }
         List<PlanGoalCandidate> candidates = new ArrayList<>();
         for (LearnerLearningPlan plan : activatedPlans) {
-            if (!learningScope(skillpilotId, plan.getLandscapeId(), readBlocks(plan),
-                    LocalDate.now(clock.withZone(PLAN_ZONE)), false).goalIds().contains(activeGoalId)) continue;
+            var scope = learningScope(skillpilotId, plan.getLandscapeId(), readBlocks(plan),
+                    LocalDate.now(clock.withZone(PLAN_ZONE)), false);
+            if (!scope.goalIds().contains(activeGoalId)) continue;
             for (LearnerLearningPlanApi.Block block : readBlocks(plan)) {
                 if (block.isActive() && block.isAtomicLearning()
                         && block.atomicGoalIds() != null
                         && block.atomicGoalIds().contains(activeGoalId)) {
-                    String focusGoalId = runtimeFocusGoalId(block, activeGoalId);
-                    boolean remainsEligible = learners.getUncompactedRichFrontierForFocus(
+                    // A goal that a regrouping moved out of its block's section runs under its own focus.
+                    boolean ownFocus = block.focusGoalIds().isEmpty() || isOutsideBlockFocus(block, activeGoalId,
+                            learners.getLearningPlanFocusAtomicGoalIds(
+                                    skillpilotId, plan.getLandscapeId(), block.focusGoalIds()));
+                    String focusGoalId = ownFocus ? activeGoalId : runtimeFocusGoalId(block, activeGoalId);
+                    // An exam binds the whole selected scope, and the activation writes under it. The
+                    // goal is kept exactly if that write accepts it: directly, or behind a required unit
+                    // opening, which the write starts while it keeps the goal for the return. Otherwise
+                    // the exam's next goal is chosen.
+                    boolean remainsEligible = "exam".equals(scope.kind())
+                            ? learners.learningPlanTransitionAccepts(skillpilotId, activeGoalId, scope.goalIds())
+                            : learners.getUncompactedRichFrontierForFocus(
                                     skillpilotId,
-                                    block.focusGoalIds().isEmpty() ? List.of(activeGoalId) : block.focusGoalIds())
+                                    ownFocus ? List.of(activeGoalId) : block.focusGoalIds())
                             .stream()
                             .filter(goal -> "atomic".equals(goal.type()))
                             .anyMatch(goal -> activeGoalId.equals(goal.id()));
@@ -1649,7 +1666,7 @@ public class LearnerLearningPlanService {
                     ? firstEligibleDueGoal(blocks, periodEnd, mastery, waived, ignored -> frontierIds,
                             (goalId, ignored) -> learners.getRequiredUnitOrientationGoalIdForFocus(
                                     skillpilotId, goalId, scope.goalIds()), scopeIds::contains)
-                    : firstEligibleDueGoal(skillpilotId, blocks, periodEnd, mastery, waived);
+                    : firstEligibleDueGoal(skillpilotId, plan.getLandscapeId(), blocks, periodEnd, mastery, waived);
             if (due.isPresent()) {
                 // With explicit authorization, an earlier open goal keeps its priority
                 // even when advance work has already covered this subject's quota.
@@ -1814,6 +1831,7 @@ public class LearnerLearningPlanService {
 
     private Optional<DueGoal> firstEligibleDueGoal(
             String skillpilotId,
+            String landscapeId,
             List<LearnerLearningPlanApi.Block> blocks,
             LocalDate asOf,
             Map<String, Double> mastery, Set<String> waived) {
@@ -1832,7 +1850,8 @@ public class LearnerLearningPlanService {
                         .map(FrontierGoal::id)
                         .collect(java.util.stream.Collectors.toSet()),
                 (goalId, focusIds) -> learners.getRequiredUnitOrientationGoalIdForFocus(skillpilotId, goalId, focusIds),
-                ignored -> true, preparation);
+                ignored -> true, preparation,
+                focusGoalIds -> learners.getLearningPlanFocusAtomicGoalIds(skillpilotId, landscapeId, focusGoalIds));
     }
 
     static void collectStudyPreparation(Map<String, List<String>> preparation, FrontierGoal goal) {
@@ -1992,12 +2011,12 @@ public class LearnerLearningPlanService {
                 return firstPersonalCurriculumGoal(skillpilotId, landscapeId, excluded);
             }
             LocalDate cutoff = periodEnd(learners.getLearner(skillpilotId).getLearningPlanPeriodBasis(), asOf);
-            var due = firstEligibleDueGoal(skillpilotId, blocks, cutoff, mastery, waived);
+            var due = firstEligibleDueGoal(skillpilotId, landscapeId, blocks, cutoff, mastery, waived);
             if (due.isPresent()) return due;
             LocalDate scheduleEnd = blocks.stream().filter(LearnerLearningPlanApi.Block::isActive)
                     .filter(block -> block.isAtomicLearning()).map(LearnerLearningPlanApi.Block::endDate)
                     .max(LocalDate::compareTo).orElse(asOf);
-            var planned = firstEligibleDueGoal(skillpilotId, blocks, scheduleEnd, mastery, waived);
+            var planned = firstEligibleDueGoal(skillpilotId, landscapeId, blocks, scheduleEnd, mastery, waived);
             if (planned.isPresent() || hasActiveUnitAssignment(blocks)) return planned;
             Set<String> inactive = inactiveOnlyAtomicIds(blocks);
             return learners.getPersonalCurriculumSubjectFrontier(skillpilotId, landscapeId).stream()
@@ -2025,6 +2044,17 @@ public class LearnerLearningPlanService {
                     String entry = opening == null ? id : opening;
                     return frontierIds.contains(entry) ? new DueGoal(entry, id, null, null, null, id) : null;
                 }).filter(Objects::nonNull).findFirst();
+    }
+
+    /**
+     * True for a goal of an ordinary learning block that no longer lies under a focus of that block.
+     * A resolved focus always holds at least one goal, so no answer and an empty answer both mean
+     * that the content of the focus is not known; the section then decides as before.
+     */
+    private static boolean isOutsideBlockFocus(LearnerLearningPlanApi.Block block, String atomicGoalId,
+            Set<String> underFocus) {
+        return underFocus != null && !underFocus.isEmpty() && block.unitAssignment() == null
+                && !underFocus.contains(atomicGoalId);
     }
 
     private static String runtimeFocusGoalId(LearnerLearningPlanApi.Block block, String atomicGoalId) {
@@ -2082,6 +2112,22 @@ public class LearnerLearningPlanService {
             Function<List<String>, Set<String>> frontierIdsForFocus,
             BiFunction<String, List<String>, String> requiredOpeningForFocus,
             Predicate<String> allowedRequestedGoal, Map<String, List<String>> studyPreparation) {
+        return firstEligibleDueGoal(blocks, asOf, mastery, waived, frontierIdsForFocus, requiredOpeningForFocus,
+                allowedRequestedGoal, studyPreparation, ignored -> null);
+    }
+
+    /**
+     * {@code focusAtomicIds} names the goals that lie under a block's foci today; {@code null} or
+     * an empty set when that is not known. A scheduled goal outside them was moved out of its section by a
+     * regrouping. It keeps its place in the schedule and runs under its own focus, exactly like a
+     * goal of a block without a section.
+     */
+    static Optional<DueGoal> firstEligibleDueGoal(List<LearnerLearningPlanApi.Block> blocks,
+            LocalDate asOf, Map<String, Double> mastery, Set<String> waived,
+            Function<List<String>, Set<String>> frontierIdsForFocus,
+            BiFunction<String, List<String>, String> requiredOpeningForFocus,
+            Predicate<String> allowedRequestedGoal, Map<String, List<String>> studyPreparation,
+            Function<List<String>, Set<String>> focusAtomicIds) {
         Map<String, LocalDate> dueDates = scheduledAtomicGoalDueDatesForSchedule(blocks);
         LinkedHashSet<String> alreadyDue = new LinkedHashSet<>();
         List<DueGoal> candidates = new ArrayList<>();
@@ -2098,10 +2144,15 @@ public class LearnerLearningPlanService {
             openDueInBlock.forEach(goalId -> blockIds.put(goalId, block.id()));
             if (!block.focusGoalIds().isEmpty()) {
                 Set<String> frontierIds = frontierIdsForFocus.apply(block.focusGoalIds());
+                Set<String> underFocus = focusAtomicIds.apply(block.focusGoalIds());
                 for (String goalId : openDueInBlock) {
-                    String entryId = dueEntryGoalId(block, goalId, block.focusGoalIds(), frontierIds, requiredOpeningForFocus);
+                    boolean moved = isOutsideBlockFocus(block, goalId, underFocus);
+                    List<String> focusIds = moved ? List.of(goalId) : block.focusGoalIds();
+                    String entryId = dueEntryGoalId(block, goalId, focusIds,
+                            moved ? frontierIdsForFocus.apply(focusIds) : frontierIds, requiredOpeningForFocus);
                     if (entryId != null) candidates.add(new DueGoal(
-                            entryId, runtimeFocusGoalId(block, goalId), block.startDate(), block.endDate(), dueDates.get(goalId), goalId));
+                            entryId, moved ? goalId : runtimeFocusGoalId(block, goalId),
+                            block.startDate(), block.endDate(), dueDates.get(goalId), goalId));
                 }
             } else {
                 for (String goalId : openDueInBlock) {

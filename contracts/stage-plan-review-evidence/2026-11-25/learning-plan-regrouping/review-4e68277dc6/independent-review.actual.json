@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-25T07:23:32+01:00",
+  "branch": "fix/alte-lernplaene-nach-umgruppierung",
+  "reviewedCommit": "4e68277dc632f3a5de62c78c34d5bfbbf9135754",
+  "reviewedTree": "5cd767fd1a8f127c761fbeedfe0d05604029b8ec",
+  "previousReviewedCommit": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+  "reviewedCorrectionCommits": [
+    "4e68277dc632f3a5de62c78c34d5bfbbf9135754"
+  ],
+  "patch": {
+    "command": "git diff a6a1ea5912 4e68277dc6 -- backend/src/main AGENTS.md",
+    "sha256": "f36af6bc73b2c3c08512b01be0a5af3d9618b63b17ee446d0f1f71623b0e910b",
+    "paths": [
+      "AGENTS.md",
+      "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+      "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java"
+    ]
+  },
+  "disposition": "ACCEPT",
+  "questions": [
+    {
+      "subject": "Ordinary post-mastery handoff",
+      "decision": "ACCEPT",
+      "result": "All ten paired runs now have identical persisted active goal, focus and complete pending navigation. Both diagrams and mixed-structure plans start the same opening as fresh plan continuation. Exam handoff remains equivalent in the reviewed diff."
+    },
+    {
+      "subject": "Exam activation preserving an in-progress goal",
+      "decision": "ACCEPT",
+      "result": "Activation now parks the ongoing diagram for return after the required opening. Actual mastery resumes it, agreeing with a direct write under the same exam scope. A blocked Mathematics goal still falls back; a directly eligible active goal stays selected."
+    }
+  ],
+  "reviewers": [
+    {
+      "id": "A",
+      "driver": "collaboration.spawn_agent",
+      "context": "fresh, fork_turns=none",
+      "agent": "/root/confirm_a",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "ultra",
+      "inputDiffSha256": "f36af6bc73b2c3c08512b01be0a5af3d9618b63b17ee446d0f1f71623b0e910b",
+      "outcomes": [
+        "ACCEPT",
+        "ACCEPT"
+      ],
+      "original": {
+        "path": "reviewer-a.original.md",
+        "sha256": "1bce970af131cfd0536dd8c23344a118606935c3bf3c0b9c73bcf75f546bed2a"
+      }
+    },
+    {
+      "id": "B",
+      "driver": "codex exec",
+      "thread": "01a2115c-6a15-72f1-9fa4-9c460d0bb158",
+      "model": "gpt-6.2-astra",
+      "reasoningEffort": "ultra",
+      "inputDiffSha256": "f36af6bc73b2c3c08512b01be0a5af3d9618b63b17ee446d0f1f71623b0e910b",
+      "outcomes": [
+        "ACCEPT",
+        "ACCEPT"
+      ],
+      "original": {
+        "path": "reviewer-b.original.md",
+        "sha256": "1f8db1589c299ba7d33b8b796bc003b1c1dfc718d35f140c2a0bdc6232ec5c93"
+      },
+      "execution": {
+        "path": "reviewer-b.run.actual.json",
+        "sha256": "2d00911263aa8d313a1cba0352180611a1b69bfa4ceccdf1acc3af08685f9d9c"
+      }
+    }
+  ],
+  "beforeEvidence": {
+    "commit": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+    "round3ReceiptSha256": "546909bc9ce82456a90b4b96df673534af6c71a6323ddd0e6682deaacbc87346",
+    "retainedCopyInReviewedCommit": "contracts/stage-plan-review-evidence/2026-11-25/learning-plan-regrouping/review-a6a1ea5912/independent-review.actual.json",
+    "method": "Bound observations from round 3. No new run claimed on the previous revision.",
+    "unchangedMethodHashes": {
+      "probes/eligible-active-exam-goal.java.txt": "6f74afd7d4c8bf5f5c9a70860794010c319b899ac919339d1f8e05ad68a372aa",
+      "probes/exact-section-set.java.txt": "bf56374c4b7c59964f1051320a3774397d9b4a2d1561c5d63cbebb27e063c391",
+      "probes/exam-opening-return.java.txt": "1c6bb737ada17be731d2ca131175e405521ce40519e777941dce03987dc37db6",
+      "probes/protocol-to-diagram.java.txt": "7dad8329b98ef19b29a51b1b2efd31859cc3ffd146c23c36032dd2939f64467d",
+      "probes/single-section-opening.java.txt": "9e839cc4be0b72f31f4782be14f490327075b99d5268614e15f0ac1749ad9b5e",
+      "probes/two-section-opening.java.txt": "1d0303d68ec25610c0c2742c6fa21c97e944df4b130fc662470249efb64d44be"
+    }
+  },
+  "nativeTests": {
+    "reviewedCommit": "4e68277dc632f3a5de62c78c34d5bfbbf9135754",
+    "groups": {
+      "round3TwoSectionHandoff": 16,
+      "round3ProtocolToDiagram": 4,
+      "round3ExamOpeningReturn": 4,
+      "round3SingleSectionOpening": 4,
+      "round3DirectlyEligibleExamGoal": 8,
+      "round3ExactSectionSet": 1,
+      "priorAuthoredRegressions": 17,
+      "newAuthoredRegressions": 4
+    },
+    "independentCases": 37,
+    "authoredCases": 21,
+    "executions": 58,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "scope": "Local focused Gradle and Spring/H2. No independent full-suite or hosted CI claim."
+  },
+  "followUpOnly": [
+    "Continuation may report the diagram or child opening while persisting the parent opening.",
+    "With only the parent opening outstanding in the separate two-section control the plan view predicts that opening, while both persisted paths remain without an active goal."
+  ],
+  "rawEvidence": "Raw JUnit XML and logs are omitted from this handover and bound by the three machine-readable test receipts.",
+  "writeScope": "Existing checkout, read-only source review, local handover artifacts. No repository commit or push.",
+  "reviewReport": {
+    "path": "review.md",
+    "sha256": "15886ec15b051ac34065a01b4d1da905c888c96201d446da729a4cec31c99d78"
+  },
+  "artifacts": [
+    {
+      "path": "checks/math-controls.actual.json",
+      "sha256": "849636162f92572065fe7a69dfbcc8ccd9ed0eab34c8652e0aea8dd27961cce3"
+    },
+    {
+      "path": "checks/physics-handoff-confirmation.actual.json",
+      "sha256": "899a2ca124c51648fad145c997f62d341d5c0a80c802aa47b5ab78861c20342e"
+    },
+    {
+      "path": "checks/runtime.actual.json",
+      "sha256": "bbc1cab8ff248b9bbf6f9ab1eb55ffc44d8dbd257fd09f26c04294764f032fab"
+    },
+    {
+      "path": "review.md",
+      "sha256": "15886ec15b051ac34065a01b4d1da905c888c96201d446da729a4cec31c99d78"
+    },
+    {
+      "path": "reviewer-a.original.md",
+      "sha256": "1bce970af131cfd0536dd8c23344a118606935c3bf3c0b9c73bcf75f546bed2a"
+    },
+    {
+      "path": "reviewer-b.original.md",
+      "sha256": "1f8db1589c299ba7d33b8b796bc003b1c1dfc718d35f140c2a0bdc6232ec5c93"
+    },
+    {
+      "path": "reviewer-b.run.actual.json",
+      "sha256": "2d00911263aa8d313a1cba0352180611a1b69bfa4ceccdf1acc3af08685f9d9c"
+    }
+  ]
+}

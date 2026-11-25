@@ -712,6 +712,36 @@ learner counts as no active goal in the coach context (25 November 2026): the
 coach offers the frontier and describes the focused unit as usual, and the
 stored id stays until the learner chooses the next goal.
 
+**Existing plans after a regrouping, 25 November 2026.** The same decision
+covers goals that a regrouping of the curriculum moves to another section (the
+E.1 cut moved road traffic to E.2 and reference frames to E.3). A plan that
+existed before keeps the goals it captured, as long as each is still a goal of
+the subject in the learner's scope: when the plan is read, when a backup of it
+is restored and when it is edited. A kept goal stays only in a block that
+names the same sections as the block it was captured in. Which of several
+sections a goal came from is not stored, so a block with one section more or
+one less is a new selection, and a block whose foci are all single goals never
+keeps another goal. A newly selected goal must satisfy the ordinary rule, it
+lies under a section of its block. A kept goal remains planned work, not only
+a counted entry: the backend offers it at its scheduled place under the goal's
+own focus, with the usual frontier and unit-opening checks, in the plan view,
+in automatic and explicit continuation and in the handoff after a passed goal,
+before any other goal of the subject. The handoff of an ordinary plan judges
+every goal under the focus it will run under, as plan continuation does; the
+frontier of all plan goals taken together can hide a due goal behind one that
+is scheduled later. It then stores what plan continuation would store for that
+goal and focus: a unit opening the stored focus requires comes first, and the
+goal is kept for the return. A plan with an exam decides under the exam's
+scope. Its activation keeps a goal in progress exactly if the write under that
+scope accepts it, directly or behind its required opening; otherwise the
+exam's next goal is chosen. A backup
+whose plan names a retired goal next to other goals is restored as the plan
+applies today, without that entry; before, such a backup could not be
+restored. Still outdated: a plan whose section no longer resolves in the
+learner's views, and a plan of which nothing is left. A backup that holds such
+a plan is still refused as a whole (open question to the Product Owner,
+25 November 2026).
+
 On 24 November the Product Owner approved the return of the
 multiphase exam to E.1. Two independent review rounds then found that its
 edition evidences no whole goal, so it is retired in the historical container

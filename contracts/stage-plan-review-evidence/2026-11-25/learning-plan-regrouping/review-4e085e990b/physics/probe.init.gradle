@@ -1,0 +1,8 @@
+allprojects {
+    afterEvaluate {
+        sourceSets.test.java.srcDir('/tmp/e1-regroup-r2-runtime/probes')
+        tasks.matching { it.name == 'test' }.configureEach {
+            include '**/Round2HistoryIntegrationTest.class', '**/Round2OnIntegrationTest.class', '**/Round2OffIntegrationTest.class', '**/ClaudeV1CompletionRouteIntegrationTest.class'
+        }
+    }
+}

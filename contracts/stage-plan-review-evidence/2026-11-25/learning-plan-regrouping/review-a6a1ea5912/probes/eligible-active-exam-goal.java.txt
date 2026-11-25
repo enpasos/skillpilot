@@ -1,0 +1,43 @@
+    @ParameterizedTest
+    @org.junit.jupiter.params.provider.CsvSource({"false,false,false","false,false,true","false,true,false","false,true,true",
+                                                  "true,false,false","true,false,true","true,true,false","true,true,true"})
+    void roundThreePreservesEligibleExamGoal(boolean pilot, boolean keptSection, boolean alreadyActive) throws Exception {
+        Object previousPilot=ReflectionTestUtils.getField(learnerService,"unitAssessmentPilotEnabled");
+        ReflectionTestUtils.setField(learnerService,"unitAssessmentPilotEnabled",pilot);
+        try {
+            LocalDate day=LocalDate.parse("2026-09-02");
+            var standard=storeTwoDueRepresentationGoals(day,keptSection,true);
+            String early="50b9426f-ebec-526d-8b9d-e61d9707a46e";
+            String active=CANONICAL_CHOOSE_REPRESENTATION_ID;
+            var roots=List.of(early,active);
+            String section=keptSection?standard.get(1).focusGoalIds().getFirst():CANONICAL_REPRESENTATION_CLUSTER_ID;
+            var sectionAtoms=learnerService.getLearningPlanFocusAtomicGoalIds(learnerId,CANONICAL_MATH_LANDSCAPE_ID,List.of(section));
+            assertThat(sectionAtoms.contains(active)).isEqualTo(!keptSection);
+            var blocks=List.of(
+                new LearnerLearningPlanApi.Block("earlier","learning",early,"Früher",day.minusDays(1),day.minusDays(1),null,List.of(early),List.of(early),true),
+                new LearnerLearningPlanApi.Block("later","learning",section,"Später",day,day,null,List.of(active),List.of(section),true),
+                new LearnerLearningPlanApi.Block("exam","milestone",null,"Klausur",null,null,day.plusDays(3),null,roots,true));
+            var record=learnerLearningPlanRepository.findByLearner_SkillpilotIdAndLandscapeId(learnerId,CANONICAL_MATH_LANDSCAPE_ID).orElseThrow();
+            record.setBlocksJson(objectMapper.writeValueAsString(blocks));
+            learnerLearningPlanRepository.saveAndFlush(record);
+            var plan=learnerLearningPlanService.getPlan(learnerId,CANONICAL_MATH_LANDSCAPE_ID,day);
+            assertThat(plan.stale()).isFalse();
+            if(alreadyActive){
+                learnerService.setPlannedGoals(learnerId,Set.of(active));
+                learnerService.setActiveGoal(learnerId,active);
+            }
+            var eligible=learnerService.getUncompactedRichFrontierForFocus(learnerId,roots).stream().map(FrontierGoal::id).toList();
+            assertThat(eligible).contains(early,active);
+            var activated=learnerLearningPlanService.activatePlans(learnerId,
+                new LearnerLearningPlanApi.ActivateRequest(day,List.of(new LearnerLearningPlanApi.ActivationPlan(
+                    CANONICAL_MATH_LANDSCAPE_ID,plan.revision(),"Zwei erreichbare Klausurziele",blocks))));
+            String expected=alreadyActive?active:early;
+            assertThat(activated.activeGoalId()).isEqualTo(expected);
+            assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(expected);
+            var saved=learnerService.getStoredLearningPlanFocus(learnerId,CANONICAL_MATH_LANDSCAPE_ID);
+            assertThat(saved).containsExactlyInAnyOrder(early,active);
+            System.out.println("EXAM_PRESERVATION "+objectMapper.writeValueAsString(Map.of(
+                "pilot",pilot,"keptSection",keptSection,"previouslyActive",alreadyActive,"eligible",eligible,
+                "firstDue",early,"laterDue",active,"result",activated.activeGoalId(),"storedScope",saved)));
+        } finally {ReflectionTestUtils.setField(learnerService,"unitAssessmentPilotEnabled",previousPilot);}
+    }

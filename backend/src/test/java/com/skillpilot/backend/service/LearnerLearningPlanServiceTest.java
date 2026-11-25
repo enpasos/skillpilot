@@ -220,7 +220,7 @@ class LearnerLearningPlanServiceTest {
                         List.of("atom-a"), 1, 0, List.of("atom-a"), Instant.parse("2026-09-03T23:30:00Z")));
         when(learners.orderLearningPlanBlocksByPrerequisites(eq("preview-learner"), any()))
                 .thenAnswer(invocation -> invocation.getArgument(1));
-        when(learners.learningPlanFingerprint(eq("preview-learner"), eq("math"), any())).thenReturn("current");
+        when(learners.learningPlanFingerprint(eq("preview-learner"), eq("math"), any(), any())).thenReturn("current");
         when(learners.getMastery("preview-learner")).thenReturn(Map.of());
         when(learners.isLearningPlanCompatible(eq("preview-learner"), any(), eq("math"), any()))
                 .thenReturn(true);
@@ -283,6 +283,52 @@ class LearnerLearningPlanServiceTest {
         assertThat(dueWithPreparation).map(LearnerLearningPlanService.DueGoal::atomicGoalId).contains("foundation");
         assertThat(dueWithUnavailablePreparation).map(LearnerLearningPlanService.DueGoal::atomicGoalId).contains("assessment");
         assertThat(dueFromSeparateBlocks).map(LearnerLearningPlanService.DueGoal::atomicGoalId).contains("assessment");
+    }
+
+    @Test
+    void aGoalMovedOutOfItsSectionKeepsItsPlaceAndRunsUnderItsOwnFocus() {
+        var block = new LearnerLearningPlanApi.Block("old", "learning", "section", "Section",
+                LocalDate.parse("2026-09-03"), LocalDate.parse("2026-09-04"), null,
+                List.of("moved", "stays"));
+        var dates = LearnerLearningPlanService.scheduledAtomicGoalDueDatesForSchedule(List.of(block));
+        java.util.function.Function<List<String>, java.util.Set<String>> frontier = roots ->
+                roots.equals(List.of("section")) ? java.util.Set.of("stays")
+                        : roots.equals(List.of("moved")) ? java.util.Set.of("moved") : java.util.Set.of();
+        // The section no longer holds the first goal. It is offered first all the same, as scheduled.
+        var selected = LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of(), frontier, (goal, roots) -> null, ignored -> true, Map.of(),
+                roots -> java.util.Set.of("stays")).orElseThrow();
+        assertThat(selected.atomicGoalId()).isEqualTo("moved");
+        assertThat(selected.requestedGoalId()).isEqualTo("moved");
+        assertThat(selected.focusGoalId()).isEqualTo("moved");
+        assertThat(selected.scheduledDate()).isEqualTo(dates.get("moved"));
+        // Its opening is asked for under its own focus, never under the former section.
+        var opened = LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.startDate(), Map.of(),
+                java.util.Set.of(), roots -> roots.equals(List.of("moved")) ? java.util.Set.of("opening") : java.util.Set.of(),
+                (goal, roots) -> {
+                    assertThat(roots).containsExactly("moved");
+                    return "opening";
+                }, ignored -> true, Map.of(), roots -> java.util.Set.of("stays")).orElseThrow();
+        assertThat(opened.atomicGoalId()).isEqualTo("opening");
+        assertThat(opened.requestedGoalId()).isEqualTo("moved");
+        assertThat(opened.focusGoalId()).isEqualTo("moved");
+        // A goal under the section keeps the section as its focus.
+        var inside = LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(),
+                Map.of("moved", 1.0), java.util.Set.of(), frontier, (goal, roots) -> null, ignored -> true, Map.of(),
+                roots -> java.util.Set.of("stays")).orElseThrow();
+        assertThat(inside.atomicGoalId()).isEqualTo("stays");
+        assertThat(inside.focusGoalId()).isEqualTo("section");
+        // Without knowledge of the section's content nothing changes: the section decides.
+        var unknown = LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of(), frontier, (goal, roots) -> null, ignored -> true, Map.of()).orElseThrow();
+        assertThat(unknown.atomicGoalId()).isEqualTo("stays");
+        // A unit assignment is bound to its edition and never falls back to a single goal.
+        var assignment = new LearnerLearningPlanApi.Block("unit", "learning", "section", "Section",
+                LocalDate.parse("2026-09-03"), LocalDate.parse("2026-09-04"), null, List.of("moved"),
+                List.of("section"), true, new LearnerLearningPlanApi.UnitAssignment("section", "edition", "sha256:x"));
+        assertThat(LearnerLearningPlanService.firstEligibleDueGoal(List.of(assignment), assignment.endDate(), Map.of(),
+                java.util.Set.of(), frontier, (goal, roots) -> null, ignored -> true, Map.of(),
+                roots -> java.util.Set.of("stays"))).isEmpty();
     }
 
     @Test

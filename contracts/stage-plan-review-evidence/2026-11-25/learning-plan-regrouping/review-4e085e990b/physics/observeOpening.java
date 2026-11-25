@@ -1,0 +1,48 @@
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void compareHandoffAndPlanWithPendingOpening(boolean applyOrdinaryMastery) throws Exception {
+        String e1=selectHessianMotionUnit("G9","SekII","GK");
+        String c=e1.replace(":structure:physics-e1-motion",":structure:physics-current-magnetic-fields-0bd4a459");
+        String other="b4175564-4397-5c08-90ba-4f13231a75ec";
+        String target="8aff7aac-321b-5172-ac55-877876bfd2cd";
+        String physics="7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today=java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var day=today.with(java.time.DayOfWeek.MONDAY);
+        var cGoals=learners.resolveLearningPlanGoalIds(learnerId,physics,List.of(c));
+        assertThat(cGoals).contains(other).doesNotContain(target);
+        learners.setPlannedGoals(learnerId,java.util.Set.of(c));
+        learningPlans.upsert(learnerId,physics,new LearnerLearningPlanApi.UpsertRequest(0L,"Feldmodelle",List.of(
+                new LearnerLearningPlanApi.Block("q1","learning",c,"Q1",day,day,null,List.of(other),List.of(c),true))),today);
+        var rec=storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId,physics).orElseThrow();
+        rec.setBlocksJson(mapper.writeValueAsString(List.of(new LearnerLearningPlanApi.Block(
+                "q1","learning",c,"Q1",day,day,null,List.of(other,target),List.of(c),true))));
+        storedPlans.saveAndFlush(rec);
+        var learner=learnerRepository.findById(learnerId).orElseThrow();
+        var graph=new CompletionProfileCompiler().normalizePrerequisites(learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+        var prereqs=new java.util.LinkedHashSet<String>(graph.transitivePrerequisites(other));
+        prereqs.addAll(graph.transitivePrerequisites(target));
+        prereqs.add(MOTION_OPENING); prereqs.removeAll(List.of(other,target,FALL_OPENING));
+        masteryRepository.saveAllAndFlush(prereqs.stream().map(id->new Mastery(learner,id,1.0)).toList());
+        learners.setPreferences(learnerId,null,false,true,null,true);
+        var first=learningPlans.reconcile(learnerId,new LearnerLearningPlanApi.ReconcileRequest(today));
+        var out=new java.util.LinkedHashMap<String,Object>();
+        out.put("test","mixed-plan-pending-child-opening");out.put("publicMastery",applyOrdinaryMastery);
+        out.put("anchor",other);out.put("moved",target);out.put("requiredChild",FALL_OPENING);
+        out.put("hypotheticalCaptureSection",c);out.put("firstFocus",first.focusGoalId());out.put("firstActive",first.activeGoalId());
+        if(other.equals(first.activeGoalId())) {
+            if(applyOrdinaryMastery) {
+                learners.setMastery(learnerId,new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of(other,1.0),other));
+            } else {
+                masteryRepository.saveAndFlush(new Mastery(learner,other,1.0));
+                var held=learnerRepository.findById(learnerId).orElseThrow();
+                held.setActiveGoalId(null);learnerRepository.saveAndFlush(held);
+            }
+            var resumed=learnerRepository.findById(learnerId).orElseThrow();
+            out.put("activeAfterPassing",resumed.getActiveGoalId());
+            out.put("focusAfterPassing",focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).toList());
+            out.put("ownFrontier",learners.getUncompactedRichFrontierForFocus(learnerId,List.of(target)).stream().map(g->g.id()).toList());
+            out.put("planScopeFrontier",learners.getUncompactedRichFrontierForFocus(learnerId,List.of(other,target)).stream().map(g->g.id()).toList());
+            out.put("nextPlan",learningPlans.getPlan(learnerId,physics,today).nextEligibleGoal());
+        }
+        System.out.println("REGROUP_OBSERVATION "+mapper.writeValueAsString(out));
+    }

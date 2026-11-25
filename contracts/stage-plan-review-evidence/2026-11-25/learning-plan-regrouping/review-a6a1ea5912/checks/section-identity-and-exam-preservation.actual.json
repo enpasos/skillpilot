@@ -1,0 +1,196 @@
+{
+  "reviewedCommit": "a6a1ea59122b2c2cb6c82540ba20fcc996af1208",
+  "method": "Isolated Gradle/JUnit Spring H2 on Git-object-bound code. Inputs and raw XML/logs are bound here and omitted from the handover.",
+  "datasets": {
+    "regular-versus-existing-exam-goal": {
+      "junit": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "class": "com.skillpilot.backend.service.IndependentExamPreservationTest",
+      "junitTimestamp": "2026-11-25T05:30:31.408Z",
+      "xmlSha256": "38179de41284a08578f16224a49088f84e8dc112cefa55c8515803db5292d266",
+      "inputAndLogDigests": {
+        "probe.java.txt": "6f74afd7d4c8bf5f5c9a70860794010c319b899ac919339d1f8e05ad68a372aa",
+        "safe.sh": "0ccd35704880ba3aa060e92bd73286c79d2cb143343d86756dcb21adb65f86da",
+        "probe.init.gradle": "bf4f8f8a5c23a9ff802c4df4d366cc9a6ad8f0a27c50094da6fd26bbf591cffd",
+        "test.log": "16cd527b364f74b646522716a6516df54866cd8b13f84f2360ba04aad98cb89a"
+      },
+      "testCases": [
+        "[1] pilot = \"false\", keptSection = \"false\", alreadyActive = \"false\"",
+        "[2] pilot = \"false\", keptSection = \"false\", alreadyActive = \"true\"",
+        "[3] pilot = \"false\", keptSection = \"true\", alreadyActive = \"false\"",
+        "[4] pilot = \"false\", keptSection = \"true\", alreadyActive = \"true\"",
+        "[5] pilot = \"true\", keptSection = \"false\", alreadyActive = \"false\"",
+        "[6] pilot = \"true\", keptSection = \"false\", alreadyActive = \"true\"",
+        "[7] pilot = \"true\", keptSection = \"true\", alreadyActive = \"false\"",
+        "[8] pilot = \"true\", keptSection = \"true\", alreadyActive = \"true\""
+      ],
+      "observations": [
+        {
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "result": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": false,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": false,
+          "keptSection": false
+        },
+        {
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "result": "8dd9f210-2683-5902-acab-e3be22725232",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": true,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": false,
+          "keptSection": false
+        },
+        {
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "result": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": false,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": false,
+          "keptSection": true
+        },
+        {
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "result": "8dd9f210-2683-5902-acab-e3be22725232",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": true,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": false,
+          "keptSection": true
+        },
+        {
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "result": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": false,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": true,
+          "keptSection": false
+        },
+        {
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "result": "8dd9f210-2683-5902-acab-e3be22725232",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": true,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": true,
+          "keptSection": false
+        },
+        {
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "result": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": false,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": true,
+          "keptSection": true
+        },
+        {
+          "firstDue": "50b9426f-ebec-526d-8b9d-e61d9707a46e",
+          "storedScope": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "result": "8dd9f210-2683-5902-acab-e3be22725232",
+          "laterDue": "8dd9f210-2683-5902-acab-e3be22725232",
+          "previouslyActive": true,
+          "eligible": [
+            "8dd9f210-2683-5902-acab-e3be22725232",
+            "50b9426f-ebec-526d-8b9d-e61d9707a46e"
+          ],
+          "pilot": true,
+          "keptSection": true
+        }
+      ]
+    },
+    "two-stored-sections": {
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "class": "com.skillpilot.backend.service.IndependentExamPreservationTest",
+      "junitTimestamp": "2026-11-25T05:31:32.388Z",
+      "xmlSha256": "6259637f3fe2bfcb5d55191cd567b0a1c6eb640441c76708665481ee238d1d37",
+      "inputAndLogDigests": {
+        "sets.java.txt": "bf56374c4b7c59964f1051320a3774397d9b4a2d1561c5d63cbebb27e063c391",
+        "sets-safe.sh": "d04f4685cb8ec73f9e3bb8f2c117a44e74c0e505b3eba7d8c62ccb4c46b32d19",
+        "probe.init.gradle": "bf4f8f8a5c23a9ff802c4df4d366cc9a6ad8f0a27c50094da6fd26bbf591cffd",
+        "sets.log": "1a2ae9900cab0352f4462c857df6a0547619886245d69038fdc4c6fd883a6670"
+      },
+      "testCases": [
+        "exactHistoricalRootSetSurvivesPermutationOnly()"
+      ],
+      "observations": [
+        {
+          "atom": "8dd9f210-2683-5902-acab-e3be22725232",
+          "bothSingleRootsRejected": true,
+          "permutedRevision": 2,
+          "currentSection": "34047d7c-3a92-59fa-91b4-354211ff36e1",
+          "newCurrentSectionAccepted": 3,
+          "originalRoots": [
+            "composition:de-he-gym-math-gk-g9:structure:j10-g9",
+            "composition:de-he-gym-math-gk-g9:structure:j9-g9"
+          ]
+        }
+      ]
+    }
+  }
+}
