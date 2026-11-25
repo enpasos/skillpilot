@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-25T18:04:57.800786+00:00",
+  "rule": "TRM-005",
+  "eligibility": "A verbatim response from the retired second version of the parked K1 assessment. The marker used the term in its explanation of coverage. All released learning material is checked under the current terminology rules.",
+  "archivedResponse": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/v2/round-b/response.json",
+    "sha256": "29e98f40a6ae0df4c9e1744b795a0b4994dfa8ef092d1d2303cdda0fa4d0d3b1",
+    "bytes": 24149
+  },
+  "nativeExecution": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/v2/round-b/execution.actual.json",
+    "sha256": "644172cd223f996be7c9b4550d67e2a9f9f79eef36dcd78fb240036b8685bb46",
+    "completedWithExitCode": 0
+  },
+  "occurrence": {
+    "line": 13,
+    "column": 474,
+    "lineSha256": "ca767350894632d07dab6ecc12fa43f335b238b77515180807d5f5aa7db37e75"
+  },
+  "independentInspection": "The reviewer independently compared the original native output, exported archive, committed historical copy and response digest in the execution receipt. All four agree. The K1 goal is absent from the active catalog.",
+  "predecessorGuard": {
+    "path": "app/scripts/checkTerminology.ts",
+    "sha256": "0bf3ba7eda1229744c014c9805926ae2e39994d0700999c27a100813dba9f43c"
+  },
+  "currentGuard": {
+    "path": "app/scripts/checkTerminology.ts",
+    "sha256": "ed563a1458fa1c634ed24c0e2a2047cd298015cd8577f2161fdad4034cb2dc23",
+    "allPriorExactOccurrencesRetained": true,
+    "changesToRulesAndScannedPaths": 0
+  },
+  "nativeControls": [
+    {
+      "case": "original-fails-on-the-single-archived-line",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "verifiedDiagnostic": true,
+      "outputSha256": "dfa3891c36a1d8fb276ac3f9d781dd8e52f0756ad79ad05b0fa615406dea118b"
+    },
+    {
+      "case": "historical-byte-exact-match",
+      "expectedExit": 0,
+      "actualExit": 0,
+      "verifiedDiagnostic": true,
+      "outputSha256": "572f05954b7ec8b0b7c1b5ad98a4d7ce4fa39c2699d08d28d1642ed82aa8cd24"
+    },
+    {
+      "case": "changed-wording-same-position",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "verifiedDiagnostic": true,
+      "outputSha256": "a808d82fa3dfd8d701c7099a428f1f08598308dd8e30c5578b35cfd284f37ef2"
+    },
+    {
+      "case": "same-term-in-current-prose",
+      "expectedExit": 1,
+      "actualExit": 1,
+      "verifiedDiagnostic": true,
+      "outputSha256": "de4d958ad1d70b19ec7dad8f1d3fd0be505cc003b14f26f612373ff1c71d5698"
+    }
+  ],
+  "controlInputs": "Native checker with its existing 57 historical occurrences at their 41 distinct paths and the single additional archival response. The changed-line and current-prose controls both use genuine negative native results.",
+  "learnerTextChanged": false,
+  "historicalBytesChanged": false
+}
