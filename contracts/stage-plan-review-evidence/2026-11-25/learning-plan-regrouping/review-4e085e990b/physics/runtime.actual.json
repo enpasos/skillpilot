@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 1,
+  "reviewedCommit": "4e085e990ba4a05053904ee5cb34f5dd82418358",
+  "reviewedTree": "412bc705dfb5b9c5776069d8f82226c1a60db935",
+  "previousReviewedCommit": "77e994d22274596fb010ac2abd5ade71abfff8a2",
+  "checkedAt": "2026-11-25T05:36:46+01:00",
+  "method": "The backend build files, Java and both test and production sources were extracted from the reviewed Git object to a 40 MiB scratch snapshot. Native Spring Boot/H2 and the real Gradle wrapper ran offline with Corretto 25. The confirmed history run used existing static assets and read-only mounted catalogs; the positive replay used an independent complete nine-blob static directory and read-only mounts for both full repository roots. Runtime input catalogs came from the evidence checkout; the sole catalog difference at its bound commit is its unconsumed FFX evidence family. Captured old blocks and mastery are synthetic, all plan mutations go through the real services. Local result.",
+  "runtimeInputCheckout": "c00a057b91644dc7f257ad6625a414c5df2cee08",
+  "sourceGitTrees": {
+    "backend/src/main/java": "4597b54f73a6d75a86ad7e436630366f3bd79a56",
+    "backend/src/test/java": "29dbd4c7124c3f99a833061d85d97f9ee1332c19",
+    "backend/src/main/resources": "f776444d649acc25042e9e8622db1b0ce8be98f7",
+    "curricula/DE/Gymnasium/canonical": "aceb771ff330667cfad93ba8d91e60091d5055e8",
+    "curricula/DE/Gymnasium/composition-views": "84861b28379f1bb4943fa504ffcf673a587a09ab",
+    "contracts": "4067b9aa45131762020be0c8887449727db301ea"
+  },
+  "methodSources": [
+    {
+      "path": "observeContinuation.java",
+      "sha256": "235287f83ceb2ce079ce50042331d04a903d9e9334414ee4388efe92563a628f"
+    },
+    {
+      "path": "observeMulti.java",
+      "sha256": "b3f826281ce8602f17a2d29d60118a4bf4d31926a9639133afd6d5e1e2203dde"
+    },
+    {
+      "path": "observeHistory.java",
+      "sha256": "4cf6c401d5190a4c7732159602d4f8c75c896f55a6e89a5e88255915ca6e5f31"
+    },
+    {
+      "path": "probe.init.gradle",
+      "sha256": "a667b249be0af980d328a2cd9760a379caa9e55df69bf8ccaa281b543db9a217"
+    },
+    {
+      "path": "prep.py",
+      "sha256": "a40b0d9198b3a4dc03cffb1d2d9403ac2f9678b4c25c6dbe342cdb73d6b04cbd"
+    },
+    {
+      "path": "history.py",
+      "sha256": "7537d9663a11978506f3b3bfe8ee4fcdc4339c0570623c37f6090c8cca9a7e20"
+    },
+    {
+      "path": "private.sh",
+      "sha256": "7d1e3af1b8efb934c1bd21317ae863d0097fd6c5b5108bfe8264cb098325339e"
+    },
+    {
+      "path": "history.sh",
+      "sha256": "b131a8b26ba90de52dcde5dec130c7f3411879633758d0f47fb97c364d2a196e"
+    }
+  ],
+  "setupDiagnostics": "Initial scratch run did not discover landscapes because its curricula root was a symlink. Full read-only directory bind mounts supplied the catalogs on replay. The pre-fix native console and binary outputs remain in setup-diagnostics. The interrupted positive replay was retired after discovering a scratch output linked to an existing source static tree. Both roots were remounted read-only, a private exact static copy installed, and the positive run restarted. Current preview still served HTTP 200 on :5286 and :8286/actuator/health.",
+  "runs": [
+    {
+      "name": "continuation, post-mastery handoff and ordinary two-edit control",
+      "command": "./gradlew --offline --no-daemon --project-cache-dir \"$p/gradle-cache\" --max-workers=2 -PbackendTestForks=1 --console=plain -I \"$p/probe.init.gradle\" test --tests '*.Round2OnIntegrationTest.observeFollowedRegroupedGoal' --tests '*.Round2OffIntegrationTest.observeFollowedRegroupedGoal' --tests '*.Round2OnIntegrationTest.compareDirectAndSequentialRefocusing' --tests '*.ClaudeV1CompletionRouteIntegrationTest.passingAPlanGoalHandsOverToTheGoalThatARegroupingMoved' > \"$p/tests.log\" 2>&1",
+      "driver": {
+        "path": "run.sh",
+        "sha256": "fea13dd087ca2432e0ce93cd54142c2f2bd822ead7d9cdd07e7182be9318b30e"
+      },
+      "gradleExitCode": 0,
+      "log": {
+        "path": "tests.log",
+        "sha256": "8266f6f03bb802db6b7ef563da3408f8c4a911c88e8aa54eea0b0c5bd2ad7418"
+      },
+      "classes": [
+        {
+          "name": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "methods": [
+            "[1] pilot = false",
+            "[2] pilot = true"
+          ],
+          "xml": {
+            "path": "first-xml/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+            "sha256": "1c97d944b9ee0549be6cbb86317269dd672e3871d0ffca0ed579acdfe09b93d3"
+          }
+        },
+        {
+          "name": "com.skillpilot.backend.connectors.claude.v1.mcp.Round2OffIntegrationTest",
+          "tests": 2,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "methods": [
+            "[1] wholeFormerSection = false",
+            "[2] wholeFormerSection = true"
+          ],
+          "xml": {
+            "path": "first-xml/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.Round2OffIntegrationTest.xml",
+            "sha256": "1d4aaaec22e1cd2cb969fd9d3ca92b37939e1c724736bb38fe13e60bb36c157c"
+          }
+        },
+        {
+          "name": "com.skillpilot.backend.connectors.claude.v1.mcp.Round2OnIntegrationTest",
+          "tests": 3,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "methods": [
+            "[1] wholeFormerSection = false",
+            "[2] wholeFormerSection = true",
+            "compareDirectAndSequentialRefocusing()"
+          ],
+          "xml": {
+            "path": "first-xml/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.Round2OnIntegrationTest.xml",
+            "sha256": "cdd9ee882997fc73a32cd820eba896e4a90fddc6680892a723057ffe35acb396"
+          }
+        }
+      ],
+      "observations": [
+        {
+          "fixture": "Round2OffIntegrationTest",
+          "wholeFormerSection": false,
+          "assignedIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "onlyUnmasteredCapturedGoal": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "subjectEligible": false,
+          "oldSectionEligible": false,
+          "directEligible": true,
+          "stale": false,
+          "next": {
+            "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          },
+          "canContinue": true,
+          "activePilot": false,
+          "test": "public-plan-continuation",
+          "reason": null,
+          "resumedFocus": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "resumedActive": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "todaySubject": {
+            "subjectKey": "physik",
+            "current": false,
+            "canContinue": true,
+            "periodText": "Wochenziel 0 von 1",
+            "planStatusText": "im Plan",
+            "statusDirection": "on_track"
+          },
+          "coachToday": {
+            "followLearningPlans": true,
+            "resumeAvailable": true,
+            "unavailablePlanCount": 0
+          }
+        },
+        {
+          "fixture": "Round2OffIntegrationTest",
+          "wholeFormerSection": true,
+          "assignedIds": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "ce431132-dfc4-42c2-aff6-bd72035190f8",
+            "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+            "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+            "e0004439-ed34-5caf-858a-6107918224eb",
+            "1e459a1b-4159-5049-84eb-9928129c1610",
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+            "262f807a-30d0-503e-986f-856cbd048e8e",
+            "8aff7aac-321b-5172-ac55-877876bfd2cd",
+            "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+            "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+            "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+            "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+            "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+            "d6dc0e02-831d-4894-a61a-852bcc74f147",
+            "c933b7d2-edcb-5747-9378-9762659f260a",
+            "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+            "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+            "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "onlyUnmasteredCapturedGoal": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "subjectEligible": false,
+          "oldSectionEligible": false,
+          "directEligible": true,
+          "stale": false,
+          "next": {
+            "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          },
+          "canContinue": true,
+          "activePilot": false,
+          "test": "public-plan-continuation",
+          "reason": null,
+          "automaticFocus": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "automaticActive": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "automaticChanged": true,
+          "todaySubject": {
+            "subjectKey": "physik",
+            "current": false,
+            "canContinue": true,
+            "periodText": "Wochenziel 22 von 23",
+            "planStatusText": "im Plan",
+            "statusDirection": "on_track"
+          },
+          "coachToday": {
+            "followLearningPlans": true,
+            "resumeAvailable": true,
+            "unavailablePlanCount": 0
+          }
+        },
+        {
+          "fixture": "Round2OnIntegrationTest",
+          "wholeFormerSection": false,
+          "assignedIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "onlyUnmasteredCapturedGoal": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "subjectEligible": false,
+          "oldSectionEligible": false,
+          "directEligible": true,
+          "stale": false,
+          "next": {
+            "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          },
+          "canContinue": true,
+          "activePilot": true,
+          "test": "public-plan-continuation",
+          "reason": null,
+          "resumedFocus": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "resumedActive": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "todaySubject": {
+            "subjectKey": "physik",
+            "current": false,
+            "canContinue": true,
+            "periodText": "Wochenziel 0 von 1",
+            "planStatusText": "im Plan",
+            "statusDirection": "on_track"
+          },
+          "coachToday": {
+            "followLearningPlans": true,
+            "resumeAvailable": true,
+            "unavailablePlanCount": 0
+          }
+        },
+        {
+          "fixture": "Round2OnIntegrationTest",
+          "wholeFormerSection": true,
+          "assignedIds": [
+            "a4d4efe1-7d30-526b-ac9c-806113da4363",
+            "ce431132-dfc4-42c2-aff6-bd72035190f8",
+            "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd",
+            "bf8517a9-142b-5789-826a-767f3b277998",
+            "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+            "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+            "e0004439-ed34-5caf-858a-6107918224eb",
+            "1e459a1b-4159-5049-84eb-9928129c1610",
+            "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+            "262f807a-30d0-503e-986f-856cbd048e8e",
+            "8aff7aac-321b-5172-ac55-877876bfd2cd",
+            "f6b1d812-ce8b-5852-b417-e6c29b533c7a",
+            "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+            "f13ca187-b680-5f47-b4ad-76bd474bd8a2",
+            "d9a6ea85-f7e8-5cbd-afe9-62596e22040d",
+            "d6dc0e02-831d-4894-a61a-852bcc74f147",
+            "c933b7d2-edcb-5747-9378-9762659f260a",
+            "89a8cf15-7ba4-46c1-b1dc-fd161b20d9c2",
+            "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+            "ae67bcf1-f3ee-50d6-9a12-25a159dff659",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "onlyUnmasteredCapturedGoal": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "subjectEligible": false,
+          "oldSectionEligible": false,
+          "directEligible": true,
+          "stale": false,
+          "next": {
+            "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          },
+          "canContinue": true,
+          "activePilot": true,
+          "test": "public-plan-continuation",
+          "reason": null,
+          "automaticFocus": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "automaticActive": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "automaticChanged": true,
+          "todaySubject": {
+            "subjectKey": "physik",
+            "current": false,
+            "canContinue": true,
+            "periodText": "Wochenziel 20 von 21",
+            "planStatusText": "im Plan",
+            "statusDirection": "on_track"
+          },
+          "coachToday": {
+            "followLearningPlans": true,
+            "resumeAvailable": true,
+            "unavailablePlanCount": 0
+          }
+        },
+        {
+          "test": "mixed-focus-substitution",
+          "goal": "ce431132-dfc4-42c2-aff6-bd72035190f8",
+          "e1": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion",
+          "e2": "composition:de-he-gym-sekii-physics-gk:structure:physics-e2-newton-and-conservation",
+          "itemUnderE1": true,
+          "itemUnderE2": false,
+          "directE1ToE2": "rejected",
+          "addedSecondFocus": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion",
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e2-newton-and-conservation"
+          ],
+          "sequentialE1ToE2": "accepted",
+          "persistedGoals": [
+            "ce431132-dfc4-42c2-aff6-bd72035190f8"
+          ],
+          "persistedFoci": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e2-newton-and-conservation"
+          ],
+          "stale": false
+        }
+      ]
+    },
+    {
+      "name": "historically moved goal with fresh revision and two edit controls",
+      "command": "./gradlew --offline --no-daemon --project-cache-dir \"$p/gradle-cache\" --max-workers=2 -PbackendTestForks=1 --console=plain -I \"$p/probe.init.gradle\" test --tests '*.Round2HistoryIntegrationTest.observeHistoricalTwoEditRefocusing' > \"$p/history.log\" 2>&1",
+      "driver": {
+        "path": "history.native.sh",
+        "sha256": "c6a90205efe14b6457137face2eda757af4e4936ffb3b82ba345e9a3f5d447f4"
+      },
+      "gradleExitCode": 0,
+      "log": {
+        "path": "history.log",
+        "sha256": "7a63569a466caf63046f60720dc0ffd21ea4dc1c4136f7af625c5608ce85f722"
+      },
+      "classes": [
+        {
+          "name": "com.skillpilot.backend.connectors.claude.v1.mcp.Round2HistoryIntegrationTest",
+          "tests": 1,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "methods": [
+            "observeHistoricalTwoEditRefocusing()"
+          ],
+          "xml": {
+            "path": "history-xml/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.Round2HistoryIntegrationTest.xml",
+            "sha256": "8033d14a9382e0fd8104d3448c22aef60fa7bba2d33d91f6d66ed808262eaa56"
+          }
+        }
+      ],
+      "observations": [
+        {
+          "test": "historical-two-edit-refocusing",
+          "goal": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+          "e1": "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion",
+          "newC": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+          "underE1Now": false,
+          "underCNow": false,
+          "cCurrentAtoms": [
+            "b4175564-4397-5c08-90ba-4f13231a75ec"
+          ],
+          "newPlanCOnly": "rejected",
+          "originalRevision": 1,
+          "directHistoricalToCOnly": "rejected",
+          "afterDirectRefusalRevision": 1,
+          "afterAddingCRevision": 2,
+          "addedFoci": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion",
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+          ],
+          "sequentialCOnly": "accepted",
+          "finalRevision": 3,
+          "persistedFoci": [
+            "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+          ],
+          "persistedAtoms": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "stale": false
+        }
+      ]
+    }
+  ],
+  "tests": 8,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0
+}

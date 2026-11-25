@@ -1471,10 +1471,11 @@ public class LearnerLearningPlanService {
                 scope,
                 capturedAtomicIds(existingBlocks), false,
                 blocks -> applySectionAssessmentPolicy(learners, learner, landscapeId, blocks, false));
-        // Editing keeps a goal the stored plan had captured with the section its block still
-        // names, also where a regrouping moved it out of that section. A newly selected goal
-        // or a newly selected section is checked strictly.
-        Map<String, Set<String>> capturedSelections = LearnerService.learningPlanCapturedSelections(existingBlocks);
+        // Editing keeps a goal the stored plan had captured in a block with the same sections,
+        // also where a regrouping moved it out of them. A newly selected goal and a block with
+        // other sections are checked strictly.
+        Map<Set<String>, Set<String>> capturedSelections =
+                LearnerService.learningPlanCapturedSelections(existingBlocks);
         learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks, capturedSelections);
         normalizedBlocks = learners.orderLearningPlanBlocksByPrerequisites(
                 skillpilotId,
@@ -1553,8 +1554,9 @@ public class LearnerLearningPlanService {
         }
         List<PlanGoalCandidate> candidates = new ArrayList<>();
         for (LearnerLearningPlan plan : activatedPlans) {
-            if (!learningScope(skillpilotId, plan.getLandscapeId(), readBlocks(plan),
-                    LocalDate.now(clock.withZone(PLAN_ZONE)), false).goalIds().contains(activeGoalId)) continue;
+            var scope = learningScope(skillpilotId, plan.getLandscapeId(), readBlocks(plan),
+                    LocalDate.now(clock.withZone(PLAN_ZONE)), false);
+            if (!scope.goalIds().contains(activeGoalId)) continue;
             for (LearnerLearningPlanApi.Block block : readBlocks(plan)) {
                 if (block.isActive() && block.isAtomicLearning()
                         && block.atomicGoalIds() != null
@@ -1564,9 +1566,12 @@ public class LearnerLearningPlanService {
                             learners.getLearningPlanFocusAtomicGoalIds(
                                     skillpilotId, plan.getLandscapeId(), block.focusGoalIds()));
                     String focusGoalId = ownFocus ? activeGoalId : runtimeFocusGoalId(block, activeGoalId);
+                    // An exam binds the whole selected scope, and the activation writes under it. The
+                    // goal is kept only if it is eligible there; otherwise the exam's next goal is chosen.
                     boolean remainsEligible = learners.getUncompactedRichFrontierForFocus(
                                     skillpilotId,
-                                    ownFocus ? List.of(activeGoalId) : block.focusGoalIds())
+                                    "exam".equals(scope.kind()) ? scope.goalIds()
+                                            : ownFocus ? List.of(activeGoalId) : block.focusGoalIds())
                             .stream()
                             .filter(goal -> "atomic".equals(goal.type()))
                             .anyMatch(goal -> activeGoalId.equals(goal.id()));

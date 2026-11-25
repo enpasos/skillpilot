@@ -1806,7 +1806,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
     // the goals it captured (Product Owner, 24 November 2026: old plans stay valid as long as they
     // still work): when it is read, when a backup of it is restored and when it is edited. A newly
     // selected goal must lie under the section of its block, as before, and a kept goal stays only
-    // with the section it was captured with.
+    // in a block that names the same sections as the block it was captured in.
     @ParameterizedTest
     @ValueSource(strings = {"GK", "LK"})
     void existingPlanKeepsGoalsThatARegroupingMovedToAnotherSection(String course) throws Exception {
@@ -1857,7 +1857,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(restored.blocks()).isEqualTo(stored);
         assertThat(restored.revision()).isEqualTo(1L);
         assertThat(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow()
-                .getScopeFingerprint()).isNotBlank();
+                .getScopeFingerprint()).isEqualTo(learners.learningPlanFingerprint(
+                        learnerId, physics, stored, LearnerService.learningPlanCapturedSelections(stored)));
 
         // Editing keeps what the plan had captured.
         var renamed = learningPlans.upsert(learnerId, physics,
@@ -1865,7 +1866,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(renamed.stale()).isFalse();
         assertThat(renamed.blocks().getFirst().atomicGoalIds()).containsExactlyInAnyOrderElementsOf(captured);
 
-        // Splitting the block keeps them too: each part still names the section they were captured with.
+        // Splitting the block keeps them too: each part names the sections they were captured with.
         var split = learners.orderLearningPlanBlocksByPrerequisites(learnerId, List.of(
                 new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
                         null, currentSection, List.of(section), true),
@@ -1880,8 +1881,10 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 new LearnerLearningPlanApi.UpsertRequest(divided.revision(), "E.1 vor dem Zuschnitt", stored), today);
         assertThat(rejoined.blocks()).isEqualTo(stored);
 
-        // A kept goal stays only with the section it was captured with. Naming another section
-        // for its block is a new selection and is checked like one.
+        // A kept goal stays only in a block with the sections it was captured with. Naming another
+        // section, or one more, is a new selection and is checked like one. Which of several
+        // sections a goal came from is not stored, so a second section must not become a place of
+        // the goal that a later edit could leave it with.
         String forces = section.replace(":structure:physics-e1-motion", ":structure:physics-e2-newton-and-conservation");
         var forcesGoals = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(forces));
         assertThat(forcesGoals).contains(moved.getFirst()).doesNotContain(moved.getLast());
@@ -1894,6 +1897,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
                                 null, currentSection, List.of(section), true),
                         new LearnerLearningPlanApi.Block("moved", "learning", forces, "E.2", monday, monday,
                                 null, moved, List.of(forces), true)),
+                // the block names E.2 next to E.1: reference frames lie under neither
+                List.of(new LearnerLearningPlanApi.Block("section", "learning", section, "E.1 und E.2", monday, monday,
+                        null, captured, List.of(section, forces), true)),
                 // both kept goals under one of them as their focus
                 List.of(new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
                                 null, currentSection, List.of(section), true),
@@ -1941,6 +1947,23 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 new LearnerLearningPlanApi.UpsertRequest(0L, "Neu", stored), today))
                 .hasMessageContaining("not a subject-local ancestor");
         assertThat(created.revision()).isPositive();
+
+        // The same holds without any regrouping: a block of two sections cannot hand a goal of one
+        // section on to the other by dropping the first.
+        var bothSections = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section, forces));
+        var joint = learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.1 und E.2",
+                learners.orderLearningPlanBlocksByPrerequisites(learnerId, List.of(
+                        new LearnerLearningPlanApi.Block("both", "learning", section, "E.1 und E.2", monday, monday,
+                                null, bothSections, List.of(section, forces), true)))), today);
+        assertThat(joint.stale()).isFalse();
+        String onlyInMotion = currentSection.stream().filter(id -> !forcesGoals.contains(id)).findFirst().orElseThrow();
+        var carried = new java.util.ArrayList<>(forcesGoals);
+        carried.add(onlyInMotion);
+        assertThatThrownBy(() -> learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(joint.revision(), "Nur E.2", List.of(
+                        new LearnerLearningPlanApi.Block("both", "learning", forces, "E.2", monday, monday,
+                                null, carried, List.of(forces), true))), today))
+                .hasMessageContaining("not a subject-local ancestor");
     }
 
     // A kept goal must stay reachable as planned work, not only counted: the plan names it as the
@@ -1979,11 +2002,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
             finished.addAll(current);
             finished.remove(moved);
             masteryRepository.saveAllAndFlush(finished.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
-            // The former section no longer offers the goal, and other goals of the subject are open.
+            // The former section no longer offers the goal. The subject offers other work, and
+            // that is what continuing fell back to before: its first ordinary goal is another one.
             assertThat(learners.getUncompactedRichFrontierForFocus(learnerId, List.of(section)))
                     .noneMatch(goal -> moved.equals(goal.id()));
-            assertThat(learners.getPersonalCurriculumSubjectFrontier(learnerId, physics))
-                    .anyMatch(goal -> "atomic".equals(goal.type()) && !moved.equals(goal.id()));
+            assertThat(learners.getPersonalCurriculumSubjectFrontier(learnerId, physics).stream()
+                    .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy()).findFirst())
+                    .get().satisfies(goal -> assertThat(goal.id()).isNotEqualTo(moved));
 
             // Following switched off: the plan still names the goal as its next step.
             var paused = learningPlans.getPlan(learnerId, physics, today);
@@ -1997,7 +2022,15 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(view.stale()).isFalse();
             assertThat(view.nextEligibleGoal()).isEqualTo(new LearnerLearningPlanApi.NextEligibleGoal(moved));
             assertThat(view.canContinue()).isTrue();
-            assertThat(learningPlans.getCoachTodayStatus(learnerId, "de").resumeAvailable()).isTrue();
+            // The coach's today status reports that the plan can be continued and counts the goal as
+            // open plan work. Which goal that is, the plan view above and the calls below state.
+            var status = learningPlans.getCoachTodayStatus(learnerId, "de");
+            assertThat(status.resumeAvailable()).isTrue();
+            assertThat(status.subjects()).singleElement().satisfies(subject -> {
+                assertThat(subject.canContinue()).isTrue();
+                assertThat(subject.learningScope().goalIds()).contains(moved);
+                assertThat(subject.periodGauge().target() - subject.periodGauge().completed()).isEqualTo(1);
+            });
 
             // Automatic continuation starts the goal, under its own focus.
             var automatic = learningPlans.reconcile(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today));
@@ -2010,19 +2043,38 @@ class ClaudeV1CompletionRouteIntegrationTest {
                     .isFalse();
             assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(moved);
 
-            // The explicit continuation does the same from a state without an active goal.
-            var parked = learnerRepository.findById(learnerId).orElseThrow();
-            parked.setActiveGoalId(null);
-            learnerRepository.saveAndFlush(parked);
-            var again = learningPlans.getPlan(learnerId, physics, today);
-            var resumed = learningPlans.continuePlan(learnerId, again.planId(),
-                    new LearnerLearningPlanApi.ContinueRequest(again.revision(), today));
-            assertThat(resumed.activeGoalId()).isEqualTo(moved);
-            assertThat(resumed.focusGoalId()).isEqualTo(moved);
+            // Both explicit continuations do the same from a state without an active goal and with
+            // the former section as the stored focus: the coach's (resumeExplicitly) and the Cockpit's
+            // (continuePlan).
+            for (boolean coach : List.of(true, false)) {
+                var parked = learnerRepository.findById(learnerId).orElseThrow();
+                parked.setActiveGoalId(null);
+                learnerRepository.saveAndFlush(parked);
+                learners.setPlannedGoals(learnerId, java.util.Set.of(section));
+                if (coach) {
+                    var resumed = learningPlans.resumeExplicitly(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today));
+                    assertThat(resumed.activeGoalId()).isEqualTo(moved);
+                    assertThat(resumed.focusGoalId()).isEqualTo(moved);
+                } else {
+                    var again = learningPlans.getPlan(learnerId, physics, today);
+                    var resumed = learningPlans.continuePlan(learnerId, again.planId(),
+                            new LearnerLearningPlanApi.ContinueRequest(again.revision(), today));
+                    assertThat(resumed.activeGoalId()).isEqualTo(moved);
+                    assertThat(resumed.focusGoalId()).isEqualTo(moved);
+                }
+                assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(moved);
+                assertThat(focus.findByLearner_SkillpilotId(learnerId)).extracting(PlannedGoal::getGoalId)
+                        .containsExactly(moved);
+            }
 
-            // Passing it completes the plan's work; nothing of the plan stays open.
-            masteryRepository.saveAndFlush(new Mastery(learner, moved, 1.0));
-            assertThat(captured).allMatch(id -> learners.getMastery(learnerId).getOrDefault(id, 0.0) >= 1.0);
+            // Passing it completes the plan's work: the plan no longer names it and the week is done.
+            learners.setMastery(learnerId, new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of(moved, 1.0), moved));
+            var done = learningPlans.getPlan(learnerId, physics, today);
+            assertThat(done.stale()).isFalse();
+            assertThat(done.nextEligibleGoal()).isNotEqualTo(new LearnerLearningPlanApi.NextEligibleGoal(moved));
+            assertThat(learningPlans.getCoachTodayStatus(learnerId, "de").subjects()).singleElement()
+                    .satisfies(subject -> assertThat(subject.periodGauge().completed())
+                            .isEqualTo(subject.periodGauge().target()));
         } finally {
             org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", true);
         }

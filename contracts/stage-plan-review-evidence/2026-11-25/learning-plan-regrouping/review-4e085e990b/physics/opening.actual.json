@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "reviewedCommit": "4e085e990ba4a05053904ee5cb34f5dd82418358",
+  "test": "Discriminating proposed ordinary two-goal Physics plan with a nested entry, separate public post-mastery and direct result controls; synthetic hypothetical historic capture and synthetic prerequisite mastery.",
+  "case": "Historical placement of a nested E.1 goal under Q1 (hypothetical), compared using real remaining child opening with E.1 parent already passed.",
+  "command": "./gradlew --offline --no-daemon --project-cache-dir \"$p/gradle-cache\" --max-workers=2 -PbackendTestForks=1 --console=plain -I \"$p/opening.init.gradle\" test --tests '*.Round2OpeningIntegrationTest.compareHandoffAndPlanWithPendingOpening' > \"$p/opening.log\" 2>&1",
+  "gradleExitCode": 0,
+  "methodSourceAndRunBindings": [
+    {
+      "path": "observeOpening.java",
+      "sha256": "f4b921b8bfa6aef61714ddcc7fa88390b541a517877e9e74fcc7fda21a67b682"
+    },
+    {
+      "path": "opening.init.gradle",
+      "sha256": "c3d062b8a01c951432e0b563ac4e1e7b01f97ba9b161a4cb2d36b5f332dba755"
+    },
+    {
+      "path": "opening.native.sh",
+      "sha256": "96313b75bc04674a132fa49de60d348ecf947ab8ed243301fc7b48f0e26c5600"
+    },
+    {
+      "path": "private.sh",
+      "sha256": "7d1e3af1b8efb934c1bd21317ae863d0097fd6c5b5108bfe8264cb098325339e"
+    },
+    {
+      "path": "prepareOpening.py",
+      "sha256": "df9af81a2bf6421828ef362140d31c5367bc8f065b614a020fa23fdc1830ca59"
+    },
+    {
+      "path": "opening.log",
+      "sha256": "4c8a2aa2e767c20b06d96ee12d9a3e5df0e136598d0fb91c618f2659c344f0d1"
+    },
+    {
+      "path": "opening-xml/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.Round2OpeningIntegrationTest.xml",
+      "sha256": "36cbe5e069c9f0cd227561b584479a5eb99fa6ed50d41eccd304f0f483d5c450"
+    }
+  ],
+  "tests": 2,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "observations": [
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "publicMastery": false,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": null,
+      "focusAfterPassing": [
+        "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    },
+    {
+      "test": "mixed-plan-pending-child-opening",
+      "publicMastery": true,
+      "anchor": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "moved": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredChild": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "hypotheticalCaptureSection": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstFocus": "composition:de-he-gym-sekii-physics-gk:structure:physics-current-magnetic-fields-0bd4a459",
+      "firstActive": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "activeAfterPassing": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e",
+      "focusAfterPassing": [
+        "8aff7aac-321b-5172-ac55-877876bfd2cd"
+      ],
+      "ownFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "planScopeFrontier": [
+        "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      ],
+      "nextPlan": {
+        "goalId": "b4e95dce-8537-5e38-8aa6-0d9cfaa2b19e"
+      }
+    }
+  ]
+}

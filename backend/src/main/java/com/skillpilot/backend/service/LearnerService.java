@@ -4747,7 +4747,7 @@ public class LearnerService {
             String skillpilotId,
             String landscapeId,
             List<LearnerLearningPlanApi.Block> blocks,
-            Map<String, Set<String>> capturedSelections) {
+            Map<Set<String>, Set<String>> capturedSelections) {
         List<LearnerLearningPlanApi.Block> effectiveBlocks = blocks == null
                 ? Collections.emptyList()
                 : List.copyOf(blocks);
@@ -5047,24 +5047,26 @@ public class LearnerService {
     }
 
     /**
-     * As above, for a plan that already existed. {@code capturedSelections} names, per focus, the
-     * goals the plan held in a block with that focus before this check (see
+     * As above, for a plan that already existed. {@code capturedSelections} names, per set of
+     * foci, the goals the plan held in a block with exactly these foci before this check (see
      * {@link #learningPlanCapturedSelections(List)}): a stored or restored plan, or the stored
      * state of a plan that is being edited. A regrouping of the curriculum can move such a goal
-     * out of its section. It stays in a block that still names that section as long as it is a
-     * counted goal of this subject. A single goal used as a focus loses nothing to a regrouping,
-     * so it never keeps another goal. Every other goal must lie under a focus of its block.
+     * out of its section. It stays in a block that names the same foci as long as it is a counted
+     * goal of this subject. A block with other foci is a new selection: which of several foci a
+     * goal came from is not stored, so adding or removing one must not hand the goal on to
+     * another section. A block whose foci are all single goals loses nothing to a regrouping and
+     * never keeps another goal. Every other goal must lie under a focus of its block.
      */
     @Transactional(readOnly = true)
     public void validateLearningPlanBlockFoci(
             String skillpilotId,
             String landscapeId,
             List<LearnerLearningPlanApi.Block> blocks,
-            Map<String, Set<String>> capturedSelections) {
+            Map<Set<String>, Set<String>> capturedSelections) {
         if (blocks == null || blocks.isEmpty()) {
             return;
         }
-        Map<String, Set<String>> captured = capturedSelections == null ? Map.of() : capturedSelections;
+        Map<Set<String>, Set<String>> captured = capturedSelections == null ? Map.of() : capturedSelections;
         Learner learner = getLearner(skillpilotId);
         String curriculumId = learner.getSelectedCurriculum();
         if (curriculumId == null || curriculumId.isBlank()) {
@@ -5089,15 +5091,14 @@ public class LearnerService {
             }
             // Multiple canonical roots are a union, not an intersection. Each
             // submitted atom must still belong to this subject and to that union,
-            // unless the plan had captured it under one of these sections before
-            // and it is still a goal of the subject.
+            // unless the plan had captured it in a block with exactly these roots
+            // before and it is still a goal of the subject.
             if (!block.isAtomicLearning() || block.atomicGoalIds() == null) continue;
+            Set<String> keptWithTheseSections = roots.stream().allMatch(root -> isSingleGoalFocus(root, projection))
+                    ? Set.of() : captured.getOrDefault(new HashSet<>(roots), Set.of());
             for (String atomicGoalId : block.atomicGoalIds()) {
                 if (allowedAtoms.contains(atomicGoalId)) continue;
-                boolean keptWithItsSection = roots.stream().anyMatch(root ->
-                        captured.getOrDefault(root, Set.of()).contains(atomicGoalId)
-                                && !isSingleGoalFocus(root, projection));
-                if (!keptWithItsSection
+                if (!keptWithTheseSections.contains(atomicGoalId)
                         || !isCountedAtomicGoal(projection.structuralGoals().get(atomicGoalId))
                         || !requestedLandscapeId.equals(landscapeService.getLandscapeIdForGoal(atomicGoalId))) {
                     throw invalidLearningPlanFocus(block.id());
@@ -5107,19 +5108,23 @@ public class LearnerService {
     }
 
     /**
-     * The focus selections a plan holds: per focus of a learning block, the goals of that block.
-     * This is what a stored or restored plan, or the stored state of an edited plan, may keep.
+     * The focus selections a plan holds: per set of foci of a learning block, the goals of the
+     * blocks with exactly these foci. This is what a stored or restored plan, or the stored state
+     * of an edited plan, may keep. Block ids play no part, so renaming or splitting a block keeps
+     * its goals.
      */
-    static Map<String, Set<String>> learningPlanCapturedSelections(List<LearnerLearningPlanApi.Block> blocks) {
-        Map<String, Set<String>> selections = new LinkedHashMap<>();
+    public static Map<Set<String>, Set<String>> learningPlanCapturedSelections(
+            List<LearnerLearningPlanApi.Block> blocks) {
+        Map<Set<String>, Set<String>> selections = new LinkedHashMap<>();
         if (blocks == null) return selections;
         for (LearnerLearningPlanApi.Block block : blocks) {
-            if (block == null || !block.isAtomicLearning() || block.atomicGoalIds() == null) continue;
-            for (String focusGoalId : block.focusGoalIds()) {
-                if (focusGoalId == null) continue;
-                Set<String> goals = selections.computeIfAbsent(focusGoalId, ignored -> new LinkedHashSet<>());
-                block.atomicGoalIds().stream().filter(Objects::nonNull).forEach(goals::add);
+            if (block == null || !block.isAtomicLearning() || block.atomicGoalIds() == null
+                    || block.focusGoalIds().isEmpty() || block.focusGoalIds().stream().anyMatch(Objects::isNull)) {
+                continue;
             }
+            Set<String> goals = selections.computeIfAbsent(
+                    new HashSet<>(block.focusGoalIds()), ignored -> new LinkedHashSet<>());
+            block.atomicGoalIds().stream().filter(Objects::nonNull).forEach(goals::add);
         }
         return selections;
     }
@@ -10523,18 +10528,23 @@ public class LearnerService {
                         roots -> resolveLearningPlanGoalIds(learner.getSkillpilotId(), plan.getLandscapeId(), roots),
                         getStoredLearningPlanFocus(learner.getSkillpilotId(), plan.getLandscapeId()));
                 Map<String, List<String>> preparation = new HashMap<>();
-                Set<String> eligibleIds = learningScope.goalIds().isEmpty() ? Set.of()
-                        : getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), learningScope.goalIds()).stream()
+                java.util.function.Function<List<String>, Set<String>> frontierOf = roots -> roots.isEmpty() ? Set.of()
+                        : getUncompactedRichFrontierForFocus(learner.getSkillpilotId(), roots).stream()
                                 .filter(goal -> "atomic".equals(goal.type()) && !goal.voluntaryStudy())
                                 .peek(goal -> LearnerLearningPlanService.collectStudyPreparation(preparation, goal))
                                 .map(FrontierGoal::id).collect(Collectors.toSet());
+                // An exam binds the whole selected scope. An ordinary plan judges each goal under the
+                // focus it will run under, exactly like plan continuation: the frontier of all plan
+                // goals taken together can hide a due goal behind a goal that is scheduled later.
+                Set<String> examEligibleIds = "exam".equals(learningScope.kind())
+                        ? frontierOf.apply(learningScope.goalIds()) : null;
                 Optional<LearnerLearningPlanService.DueGoal> selected =
                         LearnerLearningPlanService.firstEligibleDueGoal(
                                 blocks,
                                 periodEnd,
                                 mastery,
                                 fulfillment.waived(plan.getLandscapeId()),
-                                ignored -> eligibleIds,
+                                examEligibleIds != null ? ignored -> examEligibleIds : frontierOf,
                                 (goalId, focusIds) -> !"exam".equals(learningScope.kind()) || learningScope.goalIds().contains(goalId)
                                         ? requiredUnitOrientationGoalId(learner, projection, goalId,
                                                 "exam".equals(learningScope.kind()) ? learningScope.goalIds() : focusIds)
@@ -14943,7 +14953,7 @@ public class LearnerService {
             // section stay in their blocks.
             List<LearnerLearningPlanApi.Block> restorableBlocks = LearnerLearningPlanService.withoutRetiredGoals(
                     portable.blocks(), retiredGoalIds(landscapeId));
-            Map<String, Set<String>> capturedSelections = learningPlanCapturedSelections(restorableBlocks);
+            Map<Set<String>, Set<String>> capturedSelections = learningPlanCapturedSelections(restorableBlocks);
             List<LearnerLearningPlanApi.Block> normalizedBlocks =
                     LearnerLearningPlanService.normalizeBlocks(
                             restorableBlocks,
