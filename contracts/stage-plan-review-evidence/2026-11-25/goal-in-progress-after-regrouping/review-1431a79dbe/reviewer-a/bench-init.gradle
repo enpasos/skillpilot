@@ -1,0 +1,9 @@
+allprojects {
+    afterEvaluate {
+        sourceSets.test.java.srcDir(System.getenv('PROBE_SOURCES'))
+        tasks.named('test') {
+            include '**/GoalInProgressProbe.class'
+            testLogging.showStandardStreams = false
+        }
+    }
+}

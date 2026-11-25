@@ -751,8 +751,10 @@ required unit opening, the coach's unit context, and the state check that
 would otherwise clear it). The focus the learner chose stays what they chose:
 the focus list of the Cockpit, the stored focus, navigation options,
 completion offers and the backup do not gain the goal, and nothing is written.
-A focus change by the learner still ends work on a goal outside the new focus,
-and a new goal can only be started inside the focus. Exams and card decks are
+A focus written by the learner, also the same focus written again, still ends
+work on a goal outside it, and a new ordinary goal can only be started inside
+the focus. The rule reads the present state of goal and focus; it keeps no
+record of why the goal lies outside. Exams and card decks are
 not kept this way: an exam outside the focus is governed by its
 direct-assessment binding or the explicit choice of its offer. A learner who
 follows plans is governed by the scope of the plans.

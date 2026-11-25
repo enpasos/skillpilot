@@ -1156,26 +1156,31 @@ class LearnerServiceCanonicalProjectionTest {
                 .containsExactly(CANONICAL_FUNCTION_CONCEPT_ID);
     }
 
+    // Until 25 November 2026 a regular state read cleared a goal in progress outside the stored
+    // focus. Such a state arises when a regrouping of the curriculum moves the goal out of the
+    // focused section: a focus written by the learner clears the goal at once, and an ordinary
+    // goal can only be started inside the focus. The learner now keeps their place, and the
+    // chosen focus stays what they chose.
     @Test
-    void getLearnerStateClearsActiveGoalWhenPlannedFocusExcludesIt() {
+    void getLearnerStateKeepsAnOrdinaryGoalInProgressOutsideTheChosenFocus() {
         learner.setActiveGoalId(CANONICAL_SEK1_COORDINATE_GEOMETRY_ID);
+        learner.setLearningState(LearningState.TEACHING);
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_ANALYSIS_CLUSTER_ID)));
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID)).thenReturn(List.of());
 
         UnifiedLearnerStateResponse state = learnerService.getLearnerState(LEARNER_ID);
 
-        assertThat(state.activeGoal()).isNull();
-        assertThat(learner.getActiveGoalId()).isNull();
-        assertThat(learner.getLearningState()).isEqualTo(LearningState.FRONTIER);
-        verify(learnerRepository).save(argThat(saved ->
-                saved != null
-                        && saved.getActiveGoalId() == null
-                        && saved.getLearningState() == LearningState.FRONTIER));
-        verify(eventPublisher).publishEvent(argThat(event ->
+        assertThat(state.activeGoal()).isNotNull();
+        assertThat(state.activeGoal().id()).isEqualTo(CANONICAL_SEK1_COORDINATE_GEOMETRY_ID);
+        assertThat(state.learningState()).isEqualTo("TEACHING");
+        assertThat(state.goals().planned()).extracting(FrontierGoal::id)
+                .containsExactly(CANONICAL_ANALYSIS_CLUSTER_ID);
+        assertThat(learner.getActiveGoalId()).isEqualTo(CANONICAL_SEK1_COORDINATE_GEOMETRY_ID);
+        verify(eventPublisher, never()).publishEvent(argThat(event ->
                 event instanceof LearnerStateChangedEvent changedEvent
-                        && "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE".equals(changedEvent.getChangeType())
-                        && LEARNER_ID.equals(changedEvent.getSkillpilotId())));
+                        && "ACTIVE_GOAL_CLEARED_OUT_OF_SCOPE".equals(changedEvent.getChangeType())));
+        verify(plannedGoalRepository, never()).save(any());
     }
 
     @Test

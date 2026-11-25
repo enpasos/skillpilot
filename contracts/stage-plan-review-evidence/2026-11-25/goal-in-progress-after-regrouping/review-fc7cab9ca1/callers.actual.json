@@ -1,0 +1,261 @@
+{
+  "commit": "fc7cab9ca11e795a982081af293eff3e357f5551",
+  "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+  "fileSha256": "488baee1dfe5f17ceccea86f210f026a74eb03b810e05bbf5a24dcabf2a3ae57",
+  "chosenResolverMatchesBase": true,
+  "uiSourceMatchesBase": true,
+  "runtimeCallers": [
+    {
+      "method": "getFrontier",
+      "methodLine": 8052,
+      "line": 8069,
+      "text": "List<String> projectedFocusIds = resolveRuntimeProjectedFocusIds("
+    },
+    {
+      "method": "getRichFrontier",
+      "methodLine": 8233,
+      "line": 8251,
+      "text": "? resolveRuntimeProjectedFocusIds(learner, projection)"
+    },
+    {
+      "method": "requiredUnitOrientationGoalId",
+      "methodLine": 8856,
+      "line": 8869,
+      "text": "? resolveRuntimeProjectedFocusIds(learner, projection) : prospectiveFocus;"
+    },
+    {
+      "method": "getCoachActiveGoalContext",
+      "methodLine": 9534,
+      "line": 9558,
+      "text": "Set<String> focus = new LinkedHashSet<>(resolveRuntimeProjectedFocusIds(learner, projection));"
+    }
+  ],
+  "regroupedGoalCallers": [
+    {
+      "method": "resolveRuntimeProjectedFocusIds",
+      "methodLine": 5927,
+      "line": 5929,
+      "text": "String regrouped = regroupedGoalInProgress(learner, projection, chosenFocusIds);"
+    },
+    {
+      "method": "getLearnerState",
+      "methodLine": 10029,
+      "line": 10193,
+      "text": "&& !activeGoalId.equals(regroupedGoalInProgress(learner, goalProjection, plannedIds));"
+    }
+  ],
+  "directCallers": [
+    {
+      "method": "automaticCompletionOptions",
+      "methodLine": 547,
+      "line": 549,
+      "text": "List<String> focuses = resolveEffectiveProjectedFocusIds(learner, projection);"
+    },
+    {
+      "method": "completionAssessmentOrder",
+      "methodLine": 568,
+      "line": 571,
+      "text": "List<String> focusRoots = resolveEffectiveProjectedFocusIds(learner, projection);"
+    },
+    {
+      "method": "completionSnapshot",
+      "methodLine": 1033,
+      "line": 1213,
+      "text": "resolveEffectiveProjectedFocusIds(learner, projection), projection);"
+    },
+    {
+      "method": "resolveCardContext",
+      "methodLine": 2911,
+      "line": 2936,
+      "text": "var path = preferredCoachUnitPath(paths, new LinkedHashSet<>(resolveEffectiveProjectedFocusIds(learner, projection)));"
+    },
+    {
+      "method": "requireActiveVisibleMemoryGoal",
+      "methodLine": 3198,
+      "line": 3230,
+      "text": "List<String> plannedIds = resolveEffectiveProjectedFocusIds("
+    },
+    {
+      "method": "getPlannedGoals",
+      "methodLine": 4377,
+      "line": 4389,
+      "text": "return resolveEffectiveProjectedFocusIds(learner, projection);"
+    },
+    {
+      "method": "resolveRuntimeProjectedFocusIds",
+      "methodLine": 5927,
+      "line": 5928,
+      "text": "List<String> chosenFocusIds = resolveEffectiveProjectedFocusIds(learner, projection);"
+    },
+    {
+      "method": "getCoachOrientationOutlook",
+      "methodLine": 9753,
+      "line": 9783,
+      "text": "List<String> focusIds = resolveEffectiveProjectedFocusIds("
+    },
+    {
+      "method": "getScopeNavigationOptions",
+      "methodLine": 9976,
+      "line": 9985,
+      "text": "List<String> currentFocusIds = resolveEffectiveProjectedFocusIds("
+    },
+    {
+      "method": "getLearnerState",
+      "methodLine": 10029,
+      "line": 10130,
+      "text": "List<String> plannedIds = resolveEffectiveProjectedFocusIds("
+    },
+    {
+      "method": "setActiveGoal",
+      "methodLine": 11509,
+      "line": 11585,
+      "text": "resolveEffectiveProjectedFocusIds(learner, entryProjection), entryProjection),"
+    }
+  ],
+  "selectedDownstreamUses": {
+    "getPlannedGoals(": [
+      {
+        "method": "setPlannedGoals",
+        "methodLine": 6093,
+        "line": 6182,
+        "text": "return getPlannedGoals(skillpilotId);"
+      },
+      {
+        "method": "exportLearner",
+        "methodLine": 14686,
+        "line": 14692,
+        "text": "? getPlannedGoals(skillpilotId)"
+      }
+    ],
+    "isGlobalAssessmentGoalWithoutExplicitFocus(": [
+      {
+        "method": "resolveActiveGoalInvalidationReason",
+        "methodLine": 7510,
+        "line": 7545,
+        "text": "if (!preservesDirectAssessment(learner, projectedActiveGoalId) && isGlobalAssessmentGoalWithoutExplicitFocus("
+      },
+      {
+        "method": "getLearnerState",
+        "methodLine": 10029,
+        "line": 10202,
+        "text": "&& isGlobalAssessmentGoalWithoutExplicitFocus("
+      }
+    ],
+    "restoreImportedPlannedGoals(": [
+      {
+        "method": "importLearner",
+        "methodLine": 14932,
+        "line": 15021,
+        "text": "restoreImportedPlannedGoals(existing, data.plannedGoals());"
+      }
+    ],
+    "setActiveGoalId(request.goalId())": [
+      {
+        "method": "startCompletionAssessment",
+        "methodLine": 1577,
+        "line": 1629,
+        "text": "learner.setActiveGoalId(request.goalId()); learner.setLearningState(LearningState.TEACHING);"
+      }
+    ],
+    "explicitlyFocusedGoalIds.addAll(offerBranch)": [
+      {
+        "method": "resolveGlobalAssessmentFocus",
+        "methodLine": 11867,
+        "line": 11908,
+        "text": "explicitlyFocusedGoalIds.addAll(offerBranch);"
+      }
+    ],
+    "setActiveGoalId(null)": [
+      {
+        "method": "chooseLevelCompletion",
+        "methodLine": 1441,
+        "line": 1477,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "chooseLevelCompletion",
+        "methodLine": 1441,
+        "line": 1497,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "chooseLevelCompletion",
+        "methodLine": 1441,
+        "line": 1514,
+        "text": "learner.setActiveGoalId(null); learner.setLearningState(LearningState.FRONTIER);"
+      },
+      {
+        "method": "chooseLevelCompletion",
+        "methodLine": 1441,
+        "line": 1558,
+        "text": "learner.setActiveGoalId(null); learner.setLearningState(LearningState.FRONTIER);"
+      },
+      {
+        "method": "createLearner",
+        "methodLine": 2167,
+        "line": 2171,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "persistVerifiedRecallMastery",
+        "methodLine": 2820,
+        "line": 2840,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "setMastery",
+        "methodLine": 4225,
+        "line": 4349,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "setPlannedGoals",
+        "methodLine": 6093,
+        "line": 6100,
+        "text": "if (old != null && old.directAssessment() != null) learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "applyCurriculumSelection",
+        "methodLine": 6440,
+        "line": 6462,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "restartPersonalization",
+        "methodLine": 6557,
+        "line": 6619,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "revalidatePlannedGoalsForProjectedScope",
+        "methodLine": 7428,
+        "line": 7441,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "revalidatePlannedGoalsForProjectedScope",
+        "methodLine": 7428,
+        "line": 7458,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "revalidatePlannedGoalsForProjectedScope",
+        "methodLine": 7428,
+        "line": 7499,
+        "text": "learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "persistPersonalCurriculum",
+        "methodLine": 7589,
+        "line": 7594,
+        "text": "if (old != null && old.directAssessment() != null) learner.setActiveGoalId(null);"
+      },
+      {
+        "method": "clearPersistedActiveGoal",
+        "methodLine": 15253,
+        "line": 15258,
+        "text": "learner.setActiveGoalId(null);"
+      }
+    ]
+  }
+}
