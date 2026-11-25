@@ -98,6 +98,10 @@ test('localized exports keep German and English assets and disclosures separate'
       id: `skillpilot-claude-quickstart-2026-09-13-${language}`,
       browser: { locale }, narration: { visualDisclosure: voiceNotice },
     }), { language, publicRoot: `/media/quickstart/claude/2026-09-13/${language}` });
+    assert.deepEqual(resolveQuickstartExportTarget({
+      id: `skillpilot-learning-quickstart-2026-11-24-${language}`,
+      browser: { locale }, narration: { visualDisclosure: voiceNotice },
+    }), { language, publicRoot: `/media/quickstart/learning/2026-11-24/${language}` });
   }
 });
 
@@ -156,6 +160,14 @@ test('capture export distinguishes instruction cards from four verified Claude b
   assert.match(host.capture, /browser recordings replayed locally at original speed/u);
   assert.deepEqual(host.hostClips, hostCapture().hostClips);
   assert.equal(JSON.stringify(host).includes('evidence.json'), false);
+  const learning = quickstartCaptureProvenance({ ...cardCapture(),
+    kind: 'local-first-party-browser-with-labelled-coach-examples', instructionScreenshotSha256: null,
+    claudeInstructionStills: { marketplace: 'a'.repeat(64), connector: 'b'.repeat(64), 'start-message': 'c'.repeat(64) },
+  });
+  assert.match(learning.capture, /Local SkillPilot browser recording with synthetic learner data/u);
+  assert.equal(learning.actualClaudeHostRecording, false);
+  assert.equal(learning.hostAcceptanceEvidence, false);
+  assert.equal(learning.claudeInstructionStills?.recordedOn, '2026-09-13');
 });
 
 test('optional chat-start evidence exports without promoting historical clips into chat footage', () => {

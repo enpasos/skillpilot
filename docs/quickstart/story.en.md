@@ -1,99 +1,65 @@
-# SkillPilot: Start Learning in 5 Steps
+# From “Learn now” to your first problem
 
-**Updated:** November 19, 2026
+You start on the SkillPilot website and learn in your coach’s chat. This example takes you to your first maths problem with Claude. You’ll need a Claude Pro account and must be at least 18.
 
-Your learning. Your pace. Choose your curriculum, get support while practising, and discover your achievements in the Cockpit.
+[Watch the walkthrough](https://skillpilot.com/quickstart/en#video)
 
-Choose **Claude**, **ChatGPT Desktop (Beta)** or, with a separately configured test connection, **Gemini (Beta)** as your learning coach. The ChatGPT learning start through the Git marketplace works on Windows. Claude uses **Claude Pro** and can also be used in the Claude app after setup. Gemini currently has a controlled web test with one privately configured test account; general access for multiple accounts has not yet been checked. The [access overview](https://skillpilot.com/faq/coach-setup) explains the requirements and age limits for your chosen provider.
+## 1. Start on the home page
 
-This quickstart explains the basics in about five minutes. The September 13 video and older screenshots show the Claude route; the video's statement about ChatGPT availability is outdated. This current guide describes the Gemini route. Take as much time as you need for the initial setup.
+Open [skillpilot.com](https://skillpilot.com/) and select **Learn now**. Read and accept the terms of use.
 
-## 1. Set up your learning coach once
+![The Learn now button on the home page opens the learning setup.](quickstart-home.en.webp)
 
-### Claude
+Select **Create a new SkillPilot ID**. Your ID gives you access to your learning record. Select **Save SkillPilot ID securely** to download a password-protected copy. Already have an ID? Enter it or load your protected file.
 
-You need a **Claude Pro account first**. Sign in to **Claude Web** with that account. If the current SkillPilot plugin is already installed from the marketplace and connected, go straight to step 2.
+![The ID field with options to create an ID or load a file and the Secure and Convenient browser settings.](quickstart-start.en.webp)
 
-1. Open **Settings → Plugins → Add → Add marketplace → Add from a repository**.
-2. Enter `enpasos/skillpilot-claude-marketplace`. This is the [public SkillPilot marketplace](https://github.com/enpasos/skillpilot-claude-marketplace). Keep **Sync automatically** switched on and select **Sync**.
-3. Find **SkillPilot Coach v1** from that marketplace and add the plugin. Under **Your plugins**, it should be installed exactly once and enabled. Compare the version with the [current SkillPilot installation guide](https://skillpilot.com/plugins).
-4. Inside the plugin, open **Connectors → skillpilot** and select **Connect**. Follow any prompts shown, then check that the status says **Connected**.
+**Secure** remembers your ID only in the open tab. **Convenient** remembers it for your next visit. Use **Convenient** only on your own device, since anyone using that browser can open your learning record.
 
-The marketplace connection is also your route for future updates. Automatic updates have been observed during the beta; timing can vary. For an existing installation, follow the **Update** section of the current guide. Once the plugin and connector are ready, open SkillPilot for the following steps.
+## 2. Choose what you want to learn
 
-### ChatGPT Desktop (Beta)
+Select **Continue to step 2: Choose curriculum**. For this example, choose **Gymnasium (DE)**, the German secondary school curriculum. Under **Set your personal curriculum**, choose **Hesse → G9 → Sekundarstufe I → Mathematik**, then **Finish this selection**. The last two labels are German for lower secondary and mathematics. Your choices are saved for your next visit with the same ID.
 
-1. In ChatGPT Desktop, open **Plugins → Add → Add marketplace**.
-2. Add the address of the [SkillPilot ChatGPT marketplace](https://github.com/enpasos/skillpilot-chatgpt-marketplace).
-3. Install **SkillPilot Coach v1** from this marketplace. Check that at least **1.1.1** is installed and the plugin is enabled.
-4. Open the SkillPilot connection in the plugin and complete sign-in.
+![Setting up a personal curriculum for the German Gymnasium programme.](quickstart-curriculum.en.webp)
 
-For later fixes, refresh the marketplace and check the version actually installed. The [ChatGPT guide](https://skillpilot.com/plugins#chatgpt-desktop) also explains switching from an archive installation. This learning start uses ChatGPT Desktop; browser, mobile ChatGPT app and voice mode have not been confirmed.
+## 3. Install the coach in Claude once
 
-### Gemini (Beta): controlled web test
+Under **Let’s go**, select **Claude learning coach**, then **Set up plugin**. The setup guide opens in a new tab. Keep the SkillPilot learning setup open. If your coach is already installed and connected, go straight to step 4.
 
-You need a **personal Google account, age 18 or over**, **US access**, an **English Gemini interface** and **Keep Activity enabled**. Custom apps and Skills are rolling out gradually; check that your account offers both features. The English interface does not determine the coach's language: SkillPilot sets German or English for this integration when you start learning. See [Google: custom apps](https://support.google.com/gemini/answer/17209137?hl=en-12) and [Google: Skills](https://support.google.com/gemini/answer/17094296?hl=en).
+![The coach selector showing Claude, ChatGPT Desktop and Gemini.](quickstart-provider.en.webp)
 
-1. Connect the custom app **SkillPilot** using the server address and private connection details configured for your own test account. A shared public connection is currently unavailable; production activation requires separate setup and verification.
-2. Download the **Gemini coaching Skill** from the [Gemini guide](https://skillpilot.com/plugins#gemini). Import the ZIP under **Gemini Settings → Skills → Upload skill** and save the Skill.
-3. Check that the app is connected and **skillpilot-coach-v1** is available. After a Skill update, import the current ZIP again.
+1. **Open the marketplace menu.** Sign in to Claude in your browser and open **Settings → Plugins**. The **Open plugins in Claude** button on the SkillPilot setup page takes you there directly. From the **Add** menu at the top right, choose **Add marketplace → Add from a repository**.
+2. **Enter the address.** Copy this address into the repository field, leave **Sync automatically** on and select **Sync**.
 
-The controlled test loaded the learning context, saved two learning goals and continued learning in a new Gemini web chat. A working direct link opens the learning-goal image; embedded display has not been observed. Additional accounts, mobile apps, voice mode, card practice, Verified Recall and exams have not yet been checked in an actual Gemini chat. The [integration runbook](https://enpasos.github.io/skillpilot/deploy/gemini-integration.en/) documents the tested scope and test-connection setup.
+    `https://github.com/enpasos/skillpilot-claude-marketplace`
 
-## 2. Open SkillPilot and protect your SkillPilot ID
+    *Claude Web, September 13, 2026. The URL field also accepts the shorter repository name shown here.*
 
-Open [skillpilot.com](https://skillpilot.com) and select **Learn now**. Read the notices and terms before accepting them.
+    ![The Claude Web dialog shows the repository field, automatic updates and the Sync button.](quickstart-claude-marketplace.en.webp)
 
-Select **Create a new SkillPilot ID**. Your permanent ID is the key to your learning record: select **Save SkillPilot ID securely** and keep the encrypted file and its password safe. To access your record later, you need your ID or this file and its password.
+3. **Add the plugin.** Under **Discover**, find **SkillPilot Coach v1** from **skillpilot-claude-marketplace**. Compare the version with the one shown in the **SkillPilot plugins** tab, then select **Add**. You should now see the coach enabled under **Your plugins**.
+4. **Connect it.** In the installed plugin, open **Connectors → skillpilot**. If needed, select **Connect**, sign in and approve access. Once you see **Connected**, you’re ready to start learning.
 
-Already have an ID? Enter it in SkillPilot or select **Choose protected file**. Keep your permanent ID and its password private.
+![Under Connectors, Claude shows Connected next to skillpilot.](quickstart-claude-connector.en.webp)
 
-## 3. Choose your curriculum
+*Claude Web, September 13, 2026.*
 
-Select **Continue to step 2: Choose curriculum** and decide what you want to learn. Then configure your personal curriculum, such as school type, learning stage and subjects, along with the further choices offered for your selection.
+If the marketplace is missing or offers an older version, download the current `.plugin` file from the SkillPilot setup page. In Claude, select the file under **Plugins → Add → Upload plugin**, then connect it as described above. [SkillPilot setup page](https://skillpilot.com/plugins#claude-plugin)
 
-The English video uses **University & Higher Ed → All → MIT OpenCourseWare Foundations** as an example. Choose the curriculum that fits your own learning plans.
+## 4. Try your first problem in the chat
 
-These choices define your lasting learning framework. You can change your current focus in the Cockpit later. Review the summary before continuing.
+Go back to the SkillPilot learning setup and select **Start learning with Claude**. A new Claude chat opens with your start message filled in. Claude may show a warning because the message came from another site. Review the text, then send it using the arrow at the bottom right. Keep the start message private.
 
-## 4. Start your learning session
+![Claude opens with the SkillPilot start message in the composer. The send button is on the right.](quickstart-claude-start-message.en.webp)
 
-Select your learning coach in the **Let’s go** section.
+*Claude Web, September 13, 2026. The session ID is hidden in the image.*
 
-**Claude:** Select **Step 2: Start with Claude**. SkillPilot opens a new Claude chat with the prepared start message. Send it unchanged and complete any sign-in or authorization shown.
+Your coach knows your curriculum. After the introduction, you choose from the goals you’re ready for if Autopilot is off. With Autopilot on, SkillPilot suggests one of those goals. In this example, you choose the **number line**.
 
-**ChatGPT Desktop:** Select **Prepare learning with ChatGPT**, then **Copy ChatGPT start message**. Open a new chat in ChatGPT Desktop with **SkillPilot Coach v1**, paste the message and send it.
+![Example chat after the introduction. You choose the number line. The coach asks where 407 and 470 belong on a scale from 400 to 500.](quickstart-chat.en.webp)
 
-**Gemini:** Select **Gemini (Beta)**, confirm that your custom app and imported Skill are ready, then select **Prepare learning with Gemini → Copy start message → Open Gemini**. In the new Gemini chat, use **/** to select **skillpilot-coach-v1** and **@** to select the custom app **SkillPilot**. Paste and send the complete start message. If Gemini offers **Allow** when saving, review the requested action before approving it. Check the saved progress in the Cockpit afterwards.
+Now it’s your turn. Describe where you would place **407 and 470** on a number line marked in tens. If you get stuck, try asking **“How do I find a number between two marks?”** You can then try another problem. If your coach offers flashcards or an assessment, you can start those in the chat too.
 
-Each start option creates a separate learning session for the selected provider. The prepared start message contains a **learning session valid for 24 hours**. Keep this message and your learning chat private. Gemini tool calls require at least one hour of validity remaining, so prepare a new learning session after at most 23 hours. In a new Gemini chat, activate the Skill and app again and send the same start message while this limit is still met.
+Take a break whenever you need one. If your session has expired when you return, start a new one with the same ID. Your saved progress carries over. To see your progress on the learning map, select **Open Cockpit**.
 
-## 5. Learn and see your achievements in the Cockpit
-
-The coach loads your learning context and guides you through the current goal. Ask for an explanation when a concept is new. In physics, for instance, you could ask “I know what average speed means. Can you explain instantaneous speed using a bicycle speedometer?” You can ask follow-up questions, discuss a sketch, and try explaining an idea in your own words. Exercises help you apply what you learn; work independently during an explicitly started assessment. AI can make mistakes: check explanations and assessments, and explain your reasoning when you disagree.
-
-Select **Open Cockpit** to see your current learning record and active goal. After completing a goal, check your **saved progress** there. To demonstrate prior knowledge, open the assessment goal in your unit on the learning map. If **Try assessment directly** is available, you can begin right away. You can also ask your coach about the assessment. The task and its marking criteria determine what a pass demonstrates.
-
-For the goal displayed automatically, choose **Give feedback on this learning goal** to report a problem, including coach behaviour. Describe the issue briefly in your own words, focusing on the learning goal and what you observed. Keep personal details and your start message private.
-
-## With Claude: Phone, photos and voice mode
-
-- Open the same chat in the app using the same Claude account. You can continue there within the session's 24-hour validity.
-- Upload a photo of your calculation or sketch, or use the camera directly in the Claude app. This works especially conveniently on a phone. Cover personal details first.
-- **Voice mode works in the ongoing beta.** If speech pauses, wait briefly; in our experience so far, Claude then continues. You can also continue in text chat when needed.
-
-Claude processes your chat, photos and voice inputs. Through the coach interface, SkillPilot receives only the intended structured learning-state data.
-
-## If something goes wrong
-
-**Trouble opening Claude?** Allow pop-ups for SkillPilot and try starting again.
-
-**Session expired?** Start a new learning session from SkillPilot and send the prepared message in the new chat. Your saved achievements remain accessible with the same SkillPilot ID.
-
-**Gemini reports missing tool access?** Select the app with **@SkillPilot** and the Skill with **/** again. The current test connection requires a new sign-in after at most one hour or a restart of the test environment. Reconnecting does not extend your learning session. Do not copy backend data into the chat as a substitute.
-
-**Saving failed?** Ask the coach to check the current state and save the completion again if needed. Then check the Cockpit; if the session has expired, start a new one first.
-
-Find more answers in the [FAQs](https://skillpilot.com/faq) and [setup guides for Claude, ChatGPT and Gemini](https://skillpilot.com/plugins).
-
-Discover what you can do — and celebrate every success.
+**Other providers.** The **Work** section in ChatGPT Desktop requires the **SkillPilot Coach** plugin, version 1.1.3 or later. As of November 24, 2026, the public marketplace still offers the previous version, 1.1.2. Gemini is available for accounts set up for the controlled test. [Access requirements](https://skillpilot.com/faq/coach-setup) · [Setup guides by provider](https://skillpilot.com/plugins)

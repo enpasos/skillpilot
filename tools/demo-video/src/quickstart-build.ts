@@ -19,6 +19,10 @@ import type { TtsOpenAIClient } from "./tts.js";
 const TOOL_ROOT = fileURLToPath(new URL("../", import.meta.url));
 const LEARNER_ID = /^[A-Za-z0-9_-]{16,128}$/u;
 const CARD_IDS = new Set(["intro", "marketplace", "repository", "install", "connect", "mobile", "finish", "start", "feedback", "chat-start"]);
+const LEARNING_CARD_IDS = new Set(["intro", "marketplace", "marketplace-view", "plugin-connect", "connector-view",
+  "chat-start", "start-message-view", "goal-choice", "autopilot", "keep-learning"]);
+const LEARNING_CLAUDE_STILLS = ["marketplace", "connector", "start-message"] as const;
+const isLearningEdition = (id: string) => /^skillpilot-learning-quickstart-2026-11-24-(?:de|en)$/u.test(id);
 const CAPTURE_CLEANUP_FILE = "capture-cleanup.json";
 type CreationResponse = Pick<BrowserResponse, "url" | "ok" | "request" | "json">;
 
@@ -49,13 +53,18 @@ export async function loadQuickstartApiKey(path: string): Promise<string> {
 export function resolveQuickstartCards(scenario: DemoScenario): string {
   const language = scenario.browser.locale.split("-")[0];
   if (language !== "de" && language !== "en") throw new Error("Quickstart instruction cards support only German or English");
-  const cardsPath = join(TOOL_ROOT, "assets", "quickstart", language === "en" ? "cards.en.html" : "cards.html");
+  const learningEdition = isLearningEdition(scenario.id);
+  const cardsPath = join(TOOL_ROOT, "assets", "quickstart", learningEdition ? "learning-cards.html"
+    : language === "en" ? "cards.en.html" : "cards.html");
+  const cardsUrl = pathToFileURL(cardsPath);
+  if (learningEdition) cardsUrl.searchParams.set("lang", language);
+  const allowedCards = learningEdition ? LEARNING_CARD_IDS : CARD_IDS;
   for (const chapter of scenario.chapters) {
     for (const step of chapter.steps) {
       if (step.action !== "goto" || !step.url?.startsWith("quickstart-card:")) continue;
       const id = step.url.slice("quickstart-card:".length);
-      if (!CARD_IDS.has(id)) throw new Error("Unknown Quickstart instruction card");
-      step.url = `${pathToFileURL(cardsPath).href}#${id}`;
+      if (!allowedCards.has(id)) throw new Error("Unknown Quickstart instruction card");
+      step.url = `${cardsUrl.href}#${id}`;
     }
   }
   return cardsPath;
@@ -195,12 +204,15 @@ interface QuickstartCaptureCleanup {
   timelineSha256: string;
   instructionCardsSha256: string;
   instructionScreenshotSha256: string | null;
+  claudeInstructionStills?: Record<string, string>;
   hostClipAssets?: Awaited<ReturnType<typeof quickstartHostClipBinding>>;
   disposableLearnersDeleted: number;
 }
 
 export async function instructionAssetHashes(cardsPath: string, scenario: DemoScenario) {
-  const screenshotCards = new Set(scenario.browser.locale.startsWith("en") ? [] : ["marketplace", "repository"]);
+  const learningEdition = isLearningEdition(scenario.id);
+  const language = scenario.browser.locale.startsWith("en") ? "en" : "de";
+  const screenshotCards = new Set(learningEdition || language === "en" ? [] : ["marketplace", "repository"]);
   const cardUrl = `${pathToFileURL(cardsPath).href}#`;
   const needsScreenshot = scenario.chapters.some((chapter) => chapter.steps.some((step) => {
     if (step.action !== "goto" || !step.url) return false;
@@ -215,6 +227,11 @@ export async function instructionAssetHashes(cardsPath: string, scenario: DemoSc
   return {
     instructionCardsSha256: await sha256File(cardsPath),
     instructionScreenshotSha256: needsScreenshot ? await sha256File(screenshotPath) : null,
+    ...(learningEdition ? {
+      claudeInstructionStills: Object.fromEntries(await Promise.all(LEARNING_CLAUDE_STILLS.map(async (name) => [
+        name, await sha256File(join(TOOL_ROOT, "../../docs/quickstart", `quickstart-claude-${name}.${language}.webp`)),
+      ]))),
+    } : {}),
   };
 }
 
@@ -264,6 +281,10 @@ export async function runQuickstart(options: QuickstartOptions): Promise<{ workD
     || scenario.browser.storageState || scenario.browser.persistentProfilePathFromEnv || scenario.platformClips.length) {
     throw new Error("Quickstart needs scripted narration, a first-party origin, and a fresh browser without provider credentials or native clips");
   }
+  const learningEdition = isLearningEdition(scenario.id);
+  if (learningEdition && (!['127.0.0.1', 'localhost'].includes(new URL(scenario.browser.baseUrl).hostname) || options.hostClipsPath)) {
+    throw new Error("Learning Quickstart uses the local demonstration setup and labelled coach examples");
+  }
   const cardsPath = resolveQuickstartCards(scenario);
   let hostClips: PreparedQuickstartHostClips | undefined;
   // Recovery must remain available even when the external private clip files
@@ -311,10 +332,21 @@ export async function runQuickstart(options: QuickstartOptions): Promise<{ workD
       }
       const browserAdapter = new PlaywrightRecordingAdapter({ onPageReady: async (page) => {
         cleanup.attach(page);
+        const origin = new URL(scenario.browser.baseUrl!).origin;
+        if (learningEdition) {
+          const response = await page.request.get(`${origin}/__quickstart_capture__`);
+          if (!response.ok() || await response.json() !== "skillpilot-local-quickstart-fixtures") {
+            throw new Error("Start the local Quickstart fixture server before recording");
+          }
+          await page.context().route("**/*", (route) => {
+            const url = new URL(route.request().url());
+            return url.origin === origin || url.protocol === "file:" ? route.continue() : route.abort();
+          });
+        }
         if (scenario.browser.locale.startsWith("en")) {
           await page.addInitScript(({ origin }) => {
             if (location.origin === origin) localStorage.setItem("skillpilot_lang", "en");
-          }, { origin: new URL(scenario.browser.baseUrl!).origin });
+          }, { origin });
         }
       } });
       const recordingAdapter: RecordingAdapter = {
@@ -369,6 +401,7 @@ export async function runQuickstart(options: QuickstartOptions): Promise<{ workD
         const binding = await captureBinding(scenario, workDir, cardsPath, hostClips);
         if (!startingAssets || startingAssets.instructionCardsSha256 !== binding.instructionCardsSha256
           || startingAssets.instructionScreenshotSha256 !== binding.instructionScreenshotSha256
+          || stableJson(startingAssets.claudeInstructionStills ?? null) !== stableJson(binding.claudeInstructionStills ?? null)
           || stableJson(startingAssets.hostClipAssets ?? null) !== stableJson(binding.hostClipAssets ?? null)) {
           throw new Error("Quickstart instruction assets changed before capture evidence was sealed; record again");
         }
@@ -393,9 +426,13 @@ export async function runQuickstart(options: QuickstartOptions): Promise<{ workD
           ...(hostClips ? {
             kind: "first-party-browser-with-verified-claude-web-clips", actualClaudeHostRecording: true,
             hostClips: hostClips.evidence,
-          } : { kind: "first-party-browser-with-labelled-instruction-cards", actualClaudeHostRecording: false }),
+          } : {
+            kind: learningEdition ? "local-first-party-browser-with-labelled-coach-examples" : "first-party-browser-with-labelled-instruction-cards",
+            actualClaudeHostRecording: false,
+          }),
           instructionCardsSha256: captureCleanup.instructionCardsSha256,
           instructionScreenshotSha256: captureCleanup.instructionScreenshotSha256,
+          ...(captureCleanup.claudeInstructionStills ? { claudeInstructionStills: captureCleanup.claudeInstructionStills } : {}),
           disposableLearnersDeleted: captureCleanup.disposableLearnersDeleted,
           cleanupPerformedThisRun: deletedLearners,
           recordingCleanupEvidenceSha256: await sha256File(join(workDir, CAPTURE_CLEANUP_FILE)),

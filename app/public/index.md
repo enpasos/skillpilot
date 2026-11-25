@@ -2,11 +2,12 @@
 
 # Quickstart Documentation Index
 
-This page groups the learner-facing first-run material for Claude, ChatGPT Desktop (Beta) and the controlled Gemini (Beta) route, plus historical comic prompt source files. Older videos and screenshots show the Claude route; the current written quickstarts cover all three provider choices.
+Follow a first session from the home page to a maths problem in the coach chat. It uses Claude as the example and explains access to the ChatGPT Desktop and Gemini betas.
 
 ## First Run
 
-- [Quickstart – The Story in Pictures](story.en.md)
+- [From “Learn now” to your first problem](story.en.md)
+- [Watch the English walkthrough](https://skillpilot.com/quickstart/en#video)
 - [Coach setup guides](https://skillpilot.com/plugins)
 - [Gemini setup and current availability](https://skillpilot.com/plugins#gemini)
 
@@ -26,11 +27,12 @@ This page groups the learner-facing first-run material for Claude, ChatGPT Deskt
 
 # Schnellstart-Dokumentation
 
-Diese Übersicht bündelt das Einstiegsmaterial für Lernende mit Claude, ChatGPT Desktop (Beta) und dem kontrollierten Gemini-(Beta-)Weg sowie die historischen Comic-Prompt-Quelldateien. Ältere Videos und Screenshots zeigen noch den Claude-Weg; die geschriebenen Schnellstarts behandeln alle drei Provider-Optionen.
+Die Anleitung begleitet dich von der Startseite bis zur ersten Matheaufgabe im Coach-Chat. Sie zeigt den Einstieg mit Claude und erklärt den Zugang zu den Betas für ChatGPT Desktop und Gemini.
 
 ## Erster Einstieg
 
-- [Schnellstart – Die Geschichte in Bildern](story.de.md)
+- [Von „Jetzt lernen“ zur ersten Aufgabe](story.de.md)
+- [Deutschsprachiges Video ansehen](https://skillpilot.com/quickstart/de#video)
 - [Coach-Einrichtungsanleitungen](https://skillpilot.com/plugins)
 - [Gemini-Einrichtung und aktuelle Verfügbarkeit](https://skillpilot.com/plugins#gemini)
 
