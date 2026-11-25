@@ -9,6 +9,36 @@ Plugin privat installiert. Den aktuellen Stand halten der
 [Ablauf mit Testnachweisen](openai-beta-distribution-assessment.md) und die
 [deutsche Installationsanleitung](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme) fest.
 
+### Windows-Anmeldung bei fehlendem Anmeldeknopf { #windows-oauth-fallback }
+
+Im Windows-Test mit **SkillPilot Coach 1.2.0** trug der Git-Import den
+MCP-Server `skillpilot-coach` in Work ein. In der App war kein Anmeldeknopf
+sichtbar. Die mitgelieferte Windows-CLI schloss die OAuth-Anmeldung mit
+automatischer Client-Registrierung (CIMD) erfolgreich ab.
+
+Wenn der Server schon eingetragen ist und der Anmeldeknopf fehlt, öffnen Sie
+**Windows PowerShell**. Ist `codex` auf dem `PATH` verfügbar, führen Sie den
+folgenden Befehl aus.
+
+```powershell
+codex mcp login skillpilot-coach --oauth-client-registration auto
+```
+
+Andernfalls rufen Sie die CLI aus der installierten Windows-App auf.
+
+```powershell
+$app = Get-AppxPackage -Name OpenAI.Codex
+$codex = Join-Path $app.InstallLocation 'app\resources\codex.exe'
+& $codex mcp login skillpilot-coach --oauth-client-registration auto
+```
+
+Bestätigen Sie im Browser die SkillPilot-Freigabe für Lese- und Schreibzugriff
+auf die separate Lernsitzung und für das Aufrechterhalten der Verbindung
+(`offline_access`). Nach erfolgreicher Anmeldung starten Sie eine **neue
+Unterhaltung in Work** mit aktiviertem **SkillPilot Coach** und einer frisch
+vorbereiteten Startnachricht. Der Windows-Test bestätigte die Anmeldung
+mit Exit-Code `0`. Die Tool-Aufrufe im neuen Chat werden separat geprüft.
+
 ## Neutraler Plugin-Kandidat vom 19. Oktober 2026
 
 Die aktuelle bearbeitbare Quelle ist `ai/openai plugin/skillpilot-coach/`:

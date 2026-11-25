@@ -86,6 +86,19 @@ and requests OAuth/CIMD. The native Windows ChatGPT plugin detail displayed
 **SkillPilot Coach**, **1.2.0** and **Installiert**. The returned personal link
 is for the account owner.
 
+The private package accepted the start message of a disposable learner in
+a fresh Work chat. During that attempt the production journal recorded no
+MCP tool invocation. A separate **Git** import in the same Windows client
+used the public marketplace PR at `387ce700a46c`. The installed Git entry
+showed **1.2.0** and registered the `skillpilot-coach` MCP server. The native
+client reached the protected endpoint. Its bundled CLI completed Auto/CIMD
+sign-in through SkillPilot's consent screen at 04:39 UTC. The grant covered
+learning-session reads and writes and keeping that connection active.
+The consent and CLI success are evidence of native authorization. The
+[Windows guide](openai-personal-marketplace-release.md) includes the tested
+command for clients without a sign-in button. A visible Work tool result,
+saved learning progress and a second account each require their own evidence.
+
 On the same morning an unauthenticated GET to `/mcp` returned the expected
 401 with discovery on the neutral host. Protected-resource and issuer
 discovery returned 200, including the public read/write scopes and S256.

@@ -22,7 +22,32 @@ verwende die Windows-App.
    **Verbinden** (**Connect**) und bestätige die Freigabe. Falls die App nach
    der Registrierungsmethode fragt, wähle **Auto** oder **CIMD**.
    Du brauchst dafür keinen Client-Schlüssel. Die Verbindung führt zu
-   `https://mcp-openai.skillpilot.com/mcp`.
+   `https://mcp-openai.skillpilot.com/mcp`. Wenn der Anmeldeknopf fehlt,
+   nutze den [Windows-Ausweichschritt](#wenn-der-anmeldeknopf-fehlt).
+
+### Wenn der Anmeldeknopf fehlt
+
+Wenn der Git-Import den MCP-Server `skillpilot-coach` eingetragen hat und
+ChatGPT Desktop keinen Anmeldeknopf anbietet, öffne **Windows PowerShell**.
+Wenn `codex` in PowerShell verfügbar ist, führe diesen Befehl aus.
+
+```powershell
+codex mcp login skillpilot-coach --oauth-client-registration auto
+```
+
+Wenn PowerShell `codex` nicht findet, verwende die CLI aus der installierten
+Windows-App.
+
+```powershell
+$app = Get-AppxPackage -Name OpenAI.Codex
+$codex = Join-Path $app.InstallLocation 'app\resources\codex.exe'
+& $codex mcp login skillpilot-coach --oauth-client-registration auto
+```
+
+Bestätige im Browser die SkillPilot-Freigabe für Lese- und Schreibzugriff auf
+die separate Lernsitzung und für das Aufrechterhalten der Verbindung. Sobald
+die Anmeldung erfolgreich beendet ist, starte wie unten beschrieben eine
+**neue Unterhaltung in Work**.
 
 **Wechsel von 1.1.2 oder älter.** Das frühere Plugin **SkillPilot Coach v1**
 hat eine eigene Kennung. Installiere und verbinde **SkillPilot Coach** aus
@@ -80,6 +105,6 @@ dokumentiert. `release-manifest.json` enthält die SHA-256-Prüfsummen für den
 vollständigen Export. Mit `node validate.mjs` kannst du das Paket prüfen.
 
 [Quellrepository](https://github.com/enpasos/skillpilot) ·
-[Betriebsanleitung](https://enpasos.github.io/skillpilot/deploy/openai-personal-marketplace-release/) ·
+[Deutsche Betriebsanleitung](https://enpasos.github.io/skillpilot/deploy/openai-personal-marketplace-release.de/) ·
 [OpenAI-Anleitung zur Plugin-Installation](https://learn.chatgpt.com/docs/plugins) ·
 [Vorherige Desktop-Ausgabe 1.1.2](https://github.com/enpasos/skillpilot-chatgpt-marketplace/tree/cf5e23a7908412f3f28a1a66485d0e106c346154)
