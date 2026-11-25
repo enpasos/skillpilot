@@ -15067,9 +15067,10 @@ public class LearnerService {
             String planLabel = optionalPortableText(portable.planLabel(), "learningPlans.planLabel", 160);
             // The learning results of a backup are restored also when one of its plans cannot be
             // read against the curriculum today (Product Owner, 25 November 2026). A server error
-            // still refuses the backup. A plan that was read and fails afterwards, and any failure
-            // that is no client error, is kept as outdated too, because the results come first; it
-            // is reported as unexpected and not as an outdated reference.
+            // is passed on and still refuses the backup. A plan that was read and then fails with a
+            // client error, and a plan that fails with an IllegalStateException or
+            // IllegalArgumentException, is kept as outdated too, because the results come first;
+            // it is reported as unexpected and not as an outdated reference.
             LearnerLearningPlan plan;
             RestoredPlanReading reading = null;
             try {

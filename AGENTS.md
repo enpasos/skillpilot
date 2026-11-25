@@ -763,10 +763,13 @@ save would accept the plan today: the archived values are kept, not their
 normalized form, and a plan whose only block is an exam day is kept too. The
 plan of a landscape the catalog no longer has stays in storage and in later
 backups; the plan list does not show it, because no plan can be saved for
-that landscape. A plan that was read against the curriculum and then fails,
-or fails with something else than a client error, is kept as outdated as
-well, because the results come first; the backend logs that case as an
-unexpected failure and not as an outdated reference.
+that landscape. The boundary of failures: a client error while the plan is
+read against the curriculum (subject, goals, sections, exam topics, block
+order) is an outdated reference. A server error is passed on and refuses the
+backup. Kept as outdated as well, because the results come first, are a plan
+that was read and then fails with a client error, and a plan that fails with
+an `IllegalStateException` or `IllegalArgumentException`; the backend logs
+these as unexpected failures with their cause, not as outdated references.
 
 **Outdated plan with an exam day, 25 November 2026.** The readers of stored
 plans catch the client error of `LearnerService.resolveLearningPlanGoalIds`

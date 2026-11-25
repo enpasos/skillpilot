@@ -14,6 +14,10 @@ Geprüft wurde `05a2b1c8c3` mit dem Implementierungscommit `ba1c911e98` auf der 
 | Weitere Kurs-, Dauer- und Stufenwechsel ohne Klausurtag | 42 Lese-, Fortsetzungs- und Abgleichaufrufe gelingen |
 | Zweiter Import: Blöcke, Marker, Prüfsumme und Lernergebnis | stimmen überein; kein neues Feld in der Sicherung |
 
+## Bestätigungslauf: freigegeben
+
+Geprüft wurde die Änderung `05a2b1c8c3..526131aaac` auf dem Stand `39e951dd1a`. Beide Prüfmodelle bestätigen die vier Korrekturen der Tabelle unten. 16 von 16 Fällen bestanden: die 15 Fälle der ersten Runde und der umgestellte Test zum fachfremden Plan; in den zehn Wiederherstellungsfällen wurde die erneut exportierte Sicherung zusätzlich in eine zweite Lernperson importiert. Den empfohlenen eigenen Ergebnistyp halten beide für diese Übergabe für entbehrlich. Nach der Bestätigung kam nur noch die genauere Beschreibung der Fehlergrenze hinzu, die die Prüfer angeregt hatten (ein Kommentar im Code und der Regeltext). [Zusammenfassung](review-39e951dd1a/review.md) · [Prüfmodell A](review-39e951dd1a/reviewer-a.original.md) · [Prüfmodell B](review-39e951dd1a/reviewer-b.original.md) · [Prüfbeleg](review-39e951dd1a/independent-review.actual.json) · [Geprüfte Änderung](review-39e951dd1a/raw/reviewed.diff)
+
 ## Befunde und Korrekturen
 
 | Befund | Gemessen | Korrektur |
@@ -29,4 +33,4 @@ Bestätigt ohne Änderungsbedarf: Jede lesende Stelle behandelt den Plan mit dem
 
 - **Veralteter Plan mit Klausurtag.** Solange Plänen gefolgt wird, bietet der Coach im Fach kein Lernziel an (Lernfront 0 statt 1). Die Gegenprüfung bestätigt die Messung und die Empfehlung in [Issue #205](https://github.com/enpasos/skillpilot/issues/205); die Entscheidung liegt beim Product Owner.
 - **Cockpit.** Statushinweis und Fachzeile bleiben bei einem veralteten Plan sichtbar, seine Einzelheiten und der Wechsel sind ausgeblendet. Eine gültige Neufassung lässt sich über den Dienst mit der aktuellen Revision speichern; für Einheitenaufträge ist der Weg im Browser nachgewiesen. Eine Bedienfolge, mit der Lernende einen beliebigen veralteten Plan im Cockpit selbst öffnen und reparieren, ist nicht nachgewiesen. Das gilt für jeden veralteten Plan, nicht nur für einen wiederhergestellten.
-- Die rohen JUnit-Berichte und Protokolle der Gegenprüfung (zusammen etwa 20 MB) sind nicht im Repository. Ihre Prüfsummen stehen im Prüfbeleg; die Messprogramme und die kleinen Ergebnisdateien liegen unter `review-05a2b1c8c3/raw/`.
+- Die rohen JUnit-Berichte und Protokolle beider Runden (zusammen etwa 28 MB) sind nicht im Repository. Ihre Prüfsummen stehen in den Prüfbelegen; die Messprogramme und die kleinen Ergebnisdateien liegen unter `review-05a2b1c8c3/raw/` und `review-39e951dd1a/raw/`.
