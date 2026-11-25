@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "contract": "imp-single-image-scientific-profile-and-historical-render-control-v1",
+  "checkedAt": "2026-11-25T19:37:12.287748+00:00",
+  "observedWorkingTreeHead": "51591964e74e69ed3908d40a7b4a0bdf977f7e2a",
+  "currentBinding": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/imp-mass-example-successor-20261125-v1/current-context-binding.actual.json",
+    "sha256": "sha256:93923f0c47af5c156464cae5596c4fcf55bafbfba2eff9481ca11d9012f36fb1",
+    "bytes": 2443
+  },
+  "registryBinding": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/imp-mass-example-successor-20261125-v1/active-registry-binding.actual.json",
+    "sha256": "sha256:4c29697360b50d37b594715017b7c96e5431fe625826e91c16acfc1742a64574",
+    "bytes": 1215
+  },
+  "nativeHistoricalRecoveryHelper": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/reproduce-review-artifacts-v2.mts",
+    "sha256": "sha256:1931fbac6ca47566d6fc4723b877791573d920a0c2c45bc68183025a279e7434",
+    "bytes": 9999
+  },
+  "nativeHistoricalRecoveryRecipe": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/quality/review-render-recovery-v2.recipe.json",
+    "sha256": "sha256:fdb7099352c16cc8b302c706a869501e83a94d5d689b205c9ffd39de67fb62d0",
+    "bytes": 8540
+  },
+  "historicalRecovery": {
+    "command": "tsx <evidence>/quality/reproduce-review-artifacts-v2.mts --materialize --check-native",
+    "exitCode": 0,
+    "allSixByteLengthAndShaChecksMandatory": true,
+    "allThreeNativeCampaignChecksPassed": true,
+    "actualResult": {
+      "contract": "e2-exact-native-render-recovery-v2",
+      "materialized": true,
+      "nativeByteChecks": true,
+      "exactArtifacts": [
+        {
+          "role": "book_html",
+          "batch": "e2-impuls-newton2-v1",
+          "bytes": 423424,
+          "sha256": "sha256:088dfdbcfdc544ed2d400ae9262abd34ee3276e0264007a242f012fbfef1d43e"
+        },
+        {
+          "role": "book_pdf",
+          "batch": "e2-impuls-newton2-v1",
+          "bytes": 615009,
+          "sha256": "sha256:74f330391e26de50f237616234d5ae4b0fbbf806534adb198de76f4d55f5a2c7"
+        },
+        {
+          "role": "book_html",
+          "batch": "e2-corrected-four-v2",
+          "bytes": 410567,
+          "sha256": "sha256:d6afee63f4ac6180116c77850352be4914a576ab5b02b7dafd55595ca2bc1fc9"
+        },
+        {
+          "role": "book_pdf",
+          "batch": "e2-corrected-four-v2",
+          "bytes": 410544,
+          "sha256": "sha256:de190c95e2b5c5e67a94e68be5cab80ebf26ad86d19918813d771e0aad5963ef"
+        },
+        {
+          "role": "book_html",
+          "batch": "e2-conservation-clarified-v4",
+          "bytes": 23418,
+          "sha256": "sha256:5613ab3cb5c620728333e4c08fa1040cfb49366eecdc23126c994227a4cfd321"
+        },
+        {
+          "role": "book_pdf",
+          "batch": "e2-conservation-clarified-v4",
+          "bytes": 171172,
+          "sha256": "sha256:004e04ca7b8023b87d7905db00b6cf7f231585bfe39e9afafe40a1a2332145a9"
+        }
+      ]
+    }
+  },
+  "scope": "One current IMP image/alt context, exact unchanged scientific P body; three other P lines retained byte-exact, RATE-I/f524 configuration untouched. No new D or scientific votes and no old visual vote transferred.",
+  "oldImageRecovery": "Previous 50b88285 image remains in Git a4923a80928e4211c02fb53feaadad2054a3fb94. The original reviewed fce0 image used by historical campaigns remains in the bound v2 recovery inputs.",
+  "learnerMasteryWritten": false
+}
