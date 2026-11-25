@@ -25,7 +25,11 @@ heißt das:
 - Seine Richtung ist die Richtung in der Skizze. Seine Länge folgt einem
   eigenen Maßstab in der Einheit der Größe und ist keine Strecke im Bild.
 - Die Pfeilspitze bezeichnet keinen Ort.
-- Addiert werden nur Pfeile derselben Größe am selben Körper oder Punkt.
+- Addiert werden nur Pfeile derselben Größe mit demselben Bezug: Kräfte auf
+  denselben Körper oder dasselbe benannte System, Feldstärken am selben Punkt,
+  Impulse der Körper eines benannten Systems. Die Summe gehört zu diesem
+  Bezug. Eine getrennte Rechenkonstruktion neben der Skizze (Spitze an Fuß)
+  ist zulässig und als solche gekennzeichnet.
 - Felder sind der allgemeine Fall: an jedem Punkt eine Größe, bei der
   Temperatur eine Zahl, bei der Feldstärke ein Pfeil.
 
@@ -45,8 +49,8 @@ Gemessen auf `main` am Commit `5c8e3ed065`:
 | Physiksichten | 90 |
 | davon mit mindestens einem Ziel, das Pfeile verwendet | 90 |
 
-Die 90 Sichten teilen sich in 15 Sichten der Sekundarstufe I, 34 der
-Sekundarstufe II und 41 stufenübergreifende. In 32 der 34 Oberstufensichten
+Die 90 Sichten teilen sich in 18 Sichten der Sekundarstufe I, 34 der
+Sekundarstufe II und 38 stufenübergreifende. In 32 der 34 Oberstufensichten
 kommt keines der drei Unterstufenziele mit Pfeilen vor (`41d35667` Kräfte
 maßstäblich zusammensetzen, `d61ea362` Geschwindigkeitspfeile aus einer
 Bildfolge, `67ffd0f0` Angriffspunkt und Wirkungslinie). Ein neues frühes Ziel
@@ -152,3 +156,75 @@ Daneben laufen unabhängig die Neuextraktion der Physikquellen und
 - **Umfang.** A2 hat die Größe von Teil 1 von E.2. A3 ändert acht bis zehn
   bestehende Zieltexte mit Quellrouten in vielen Ländern; deshalb die Teilung
   nach Phasen.
+
+## 8. Ergebnis der Knotenprüfung (A1) und Zuschnitt für A2
+
+Stand: 25. November 2026, 23:15 MEZ. Zwei unabhängige Prüfmodelle haben den
+Entwurf des frühen Lernziels geprüft; Codex hat mit eigenen Messungen
+ergänzt. Geprüft wurde auf dem Stand von E.2, Schritt 2, Teil 1
+(`4c24fcf9f2`). Der Prüfbericht mit Quellentabelle, Inventar, Kanten,
+Lernorten und Abschlusswegen kommt als Nachweis mit dem Paket A2 ins
+Repository.
+
+### Was die Prüfung ergab
+
+- **Das eigene Ziel ist gerechtfertigt.** Eine lernende Person kann eine
+  geometrisch richtige Pfeilsumme konstruieren und den Kraftpfeil trotzdem an
+  den falschen Körper setzen.
+- **Amtliche Grundlage.** 14 Länder nennen die Darstellung gerichteter Größen
+  mit Pfeilen als Ziel der Sekundarstufe I. Für Hessen und Baden-Württemberg
+  fehlt ein geprüfter Beleg; dort ist das Ziel eine eigene Vorbereitung. Die
+  Trennung von Ortsmaßstab und Pfeilmaßstab und die Bedeutung der Pfeilspitze
+  sind in allen Ländern eine didaktische Ausgestaltung von SkillPilot und
+  werden so gekennzeichnet.
+- **Bilder.** Von 524 Zielbildern zeigen 93 Ortsskizzen mit Größenpfeilen.
+  Vier erfüllen das Kriterium, 89 brauchen eine Überarbeitung. Im Bild zu
+  Newtons drittem Axiom (`ad984bb6`) sitzen die Pfeile am falschen Körper.
+- **Ziele, Aufgaben, Karten.** Acht der 737 atomaren Zieltexte verlangen die
+  grafische Leistung ausdrücklich, 20 der 235 Prüfungen fordern eine
+  Pfeildarstellung, keine der Lernkarten.
+- **Lernorte.** In allen 90 Sichten liegt der Erwerb spätestens in der Einheit
+  der ersten Verwendung; kein Fall liegt zu spät. Die früheste Verwendung in
+  einem Bild liegt in Niedersachsen und Nordrhein-Westfalen in Klasse 5/6.
+- **Abschluss.** Keine vorhandene Prüfung schützt die Leistung beim Bestehen:
+  Wo eine Zeichnung verlangt ist, kann sie fehlen, und die Arbeit besteht
+  trotzdem.
+- **Mathematik.** Eine allgemeine Voraussetzung zur Vektorrechnung trägt der
+  Befund nicht. Wo der Unterricht sie schon behandelt hat, eignet sich der
+  Verschiebungspfeil als Vergleich.
+
+### Zuschnitt für A2 (Entscheidung Claude, zur Beurteilung durch den Product Owner)
+
+1. **Zieltext.** „Pfeile für gerichtete Größen lesen und zeichnen. Die
+   lernende Person kann in einer ebenen Skizze einen Größenpfeil dem
+   zugehörigen Körper oder markierten Punkt zuordnen, ihn dort in der Richtung
+   der Größe ansetzen und seinen Betrag mit einem vorgegebenen Pfeilmaßstab
+   ablesen oder zeichnen. Sie erklärt an zwei Darstellungen derselben
+   Situation, warum sich beim Wechsel des Pfeilmaßstabs die gezeichnete Spitze
+   verschiebt, während Ort und physikalischer Betrag gleich bleiben.“ Das ist
+   der Wortlaut der Prüfer; er ersetzt den Entwurf in Abschnitt 3.
+2. **Kanten.** 18 direkte Voraussetzungen für die 24 Ziele und Prüfungen, die
+   Pfeile nachweislich verlangen. Ein Bild allein begründet keine Kante; es
+   bekommt eine richtige Legende. Eine Prüfung, die eine Kraftzeichnung
+   fordert, setzt das Pfeilziel voraus, auch wenn ihr Fachziel ohne Zeichnung
+   erreichbar ist.
+3. **Geltung.** Reguläres Lernziel in den 14 Ländern mit amtlicher Grundlage,
+   eigene Vorbereitung in Hessen und Baden-Württemberg, Vorbereitung mit
+   eigenem Lernort in den reinen Oberstufensichten.
+4. **Abschlussaufgabe.** Eine kurze eigene Aufgabe mit vier geschützten
+   Teilen: Träger oder Bezugspunkt, Richtung, Betrag mit Einheit und eigenem
+   Pfeilmaßstab, Bedeutung der Spitze beim Wechsel eines Maßstabs.
+   Bestehensgrenze höchstens 85 Prozent, Blindbewertung durch zwei
+   Prüfmodelle.
+5. **Dauerhafte Sicherung (A5).** Die Kennzeichnung „verwendet Pfeile“ kommt
+   als eigene Eigenschaft in das vorhandene Register der fachlichen Arten,
+   mit einer neuen Schemafassung; die Entscheidung über das einzelne Bild in
+   das vorhandene Register der Bildprüfung.
+6. **Sofort.** Das Bild zu Newtons drittem Axiom wird mit A2 korrigiert.
+
+### Folge für A3
+
+A3 ist größer als in Abschnitt 7 geschätzt: Neben den Zieltexten sind 89
+Bilder zu überarbeiten. Die Teilung nach Phasen bleibt; jede Phase nennt ihre
+Bilder einzeln.
+

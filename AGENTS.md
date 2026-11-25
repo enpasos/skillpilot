@@ -79,7 +79,13 @@ draws or reads such an arrow, from the lower stage to fields:
   legend names quantity and arrow scale.
 - The tip of the arrow marks no place and does not end on another object
   where that reads as contact.
-- Only arrows of the same quantity at the same body or point are added.
+- Only arrows of the same quantity with the same reference are added: forces
+  on the same body or on the same named system, field strengths at the same
+  point, momenta of the bodies of a named system. The sum belongs to that
+  reference. Velocities relative to different reference frames are chained,
+  not added at one place. A separate construction beside the sketch (tip to
+  tail) is allowed and marked as such. A displacement arrow may point to a
+  second place of the sketch.
 - Fields are the general case: a quantity at every point, a number for
   temperature, an arrow for field strength.
 
