@@ -34,6 +34,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import org.junit.jupiter.api.BeforeEach;
@@ -998,6 +999,32 @@ class LearnerLearningPlanServiceIntegrationTest {
                 false,
                 "LEARNING_PLAN_PACKAGE_ACTIVATED");
         verify(eventPublisher, times(1)).publishEvent(any(LearnerStateChangedEvent.class));
+    }
+
+    @Test
+    void manualCoachChoicesAndWritesRespectStoredSubjectFocus() {
+        learner.setFollowLearningPlans(true);
+        learner.setAutoPilot(false);
+        when(learnerService.getPersonalCurriculumSubjectIds(LEARNER_ID))
+                .thenReturn(List.of(LANDSCAPE_ID, PHYSICS_LANDSCAPE_ID));
+        when(learnerService.getStoredLearningPlanFocusSubject(learner)).thenReturn(Optional.of(PHYSICS_LANDSCAPE_ID));
+        when(learnerService.getPersonalCurriculumSubjectFrontier(LEARNER_ID, PHYSICS_LANDSCAPE_ID))
+                .thenReturn(List.of(frontier("atom-p")));
+        LearningGoal physics = new LearningGoal();
+        physics.setTitle("Kräfte darstellen");
+        when(landscapeService.getGoalDefinition("atom-p")).thenReturn(physics);
+        var state = mock(UnifiedLearnerStateResponse.class);
+        when(learnerService.applyLearningPlanTransition(LEARNER_ID, false, true,
+                "atom-p", "atom-p", true, "LEARNING_PLAN_GOAL_SELECTED"))
+                .thenReturn(new LearnerService.LearningPlanTransitionResult(true, state));
+
+        assertThat(service.getManualCoachPlanGoals(LEARNER_ID, "de")).get()
+                .isEqualTo(List.of(new LearnerLearningPlanService.CoachPlanGoal("atom-p", "Kräfte darstellen", "Physik")));
+        assertStatus(() -> service.selectManualCoachPlanGoal(LEARNER_ID, "atom-a"), HttpStatus.CONFLICT);
+        verify(learnerService, never()).applyLearningPlanTransition(
+                any(), anyBoolean(), anyBoolean(), any(), any(), anyBoolean(), any());
+        assertThat(service.selectManualCoachPlanGoal(LEARNER_ID, "atom-p")).isSameAs(state);
+        verify(learnerService, never()).getPersonalCurriculumSubjectFrontier(LEARNER_ID, LANDSCAPE_ID);
     }
 
     @Test

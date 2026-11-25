@@ -111,7 +111,7 @@ const germanCopy: FaqViewCopy = {
           id: 'chatgpt-availability',
           question: 'Wie starte ich den ChatGPT-Desktop-Betatest?',
           paragraphs: [
-            'Öffne in ChatGPT Desktop „Plugins“ und prüfe, ob unter „Hinzufügen“ die Option „Marketplace hinzufügen“ vorhanden ist. Folge dann der ChatGPT-Anleitung unter „Plugins“ in SkillPilot, um den Git-Marketplace hinzuzufügen und das SkillPilot-Plugin zu installieren und zu verbinden.',
+            'Öffne in ChatGPT Desktop „Plugins“ und prüfe, ob unter „Hinzufügen“ die Option „Marketplace hinzufügen“ vorhanden ist. Die ChatGPT-Anleitung unter „Plugins“ in SkillPilot nennt den Git-Marketplace und die Version für diesen Betatest. Sobald sie im Marketplace angeboten wird, installiere oder aktualisiere „SkillPilot Coach“.',
             'Wähle anschließend in SkillPilot ausdrücklich „ChatGPT Desktop“ als Coach und „Lernen mit ChatGPT vorbereiten“. Sende die neue vorbereitete Startnachricht in einer neuen Unterhaltung im Bereich „Work“ von ChatGPT Desktop. Eine für Claude vorbereitete Startnachricht funktioniert nicht mit ChatGPT.',
             'Installation und Lernstart in ChatGPT Desktop unter Windows funktionieren im Betatest. Für Korrekturen folge der aktuellen Update-Anleitung und prüfe die tatsächlich installierte Plugin-Version. Bereite danach eine neue Lernsession in SkillPilot vor.',
             'SkillPilot ist noch nicht im öffentlichen ChatGPT-App-Verzeichnis veröffentlicht. Einen Veröffentlichungstermin können wir noch nicht nennen.',
@@ -335,7 +335,7 @@ const englishCopy: FaqViewCopy = {
           id: 'chatgpt-availability',
           question: 'How do I start the ChatGPT desktop beta?',
           paragraphs: [
-            'Open “Plugins” in ChatGPT Desktop and check whether “Add” offers “Add marketplace”. Then follow the ChatGPT guide under “Plugins” in SkillPilot to add the Git marketplace and install and connect the SkillPilot plugin.',
+            'Open “Plugins” in ChatGPT Desktop and check whether “Add” offers “Add marketplace”. The ChatGPT guide under “Plugins” in SkillPilot gives the Git marketplace and the version for this beta test. When the marketplace offers that version, install or update “SkillPilot Coach”.',
             'Then explicitly select “ChatGPT Desktop” as your coach and “Prepare learning with ChatGPT” in SkillPilot. Send the new prepared start message in a new conversation in the “Work” section of ChatGPT Desktop. A start message prepared for Claude does not work with ChatGPT.',
             'Installation and learning start in ChatGPT Desktop on Windows work in the beta. For corrections, follow the current update guide and check the plugin version that is actually installed. Then prepare a new learning session in SkillPilot.',
             'SkillPilot has not been published in the public ChatGPT app directory. We cannot give a release date yet.',

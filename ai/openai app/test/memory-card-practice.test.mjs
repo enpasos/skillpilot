@@ -105,6 +105,29 @@ test("ChatGPT toolResponseMetadata can be paired with model-visible stateVersion
   assert.equal(practice.cardBatch.cards[0].back, "Eine Funktion der Form f(x) = mx + b.");
 });
 
+test("unit practice retains the unit for START continuation and the sealed capability for REVIEW", async () => {
+  const { createMemoryCardReviewArguments, createMemoryCardStartArguments,
+    memoryCardPracticeFromMetadata, memoryCardReviewReceiptFromToolResult } = await loadParser();
+  const practiceScopeId = "unit-functions";
+  const original = validMetadata.skillpilotMemoryCard;
+  const sealedCapability = "B".repeat(180);
+  const cards = [{ ...original.cardBatch.cards[0], reviewCapability: sealedCapability }, original.cardBatch.cards[1]];
+  const payload = { ...original, practiceScopeId, cardBatch: { ...original.cardBatch, cards } };
+  const practice = memoryCardPracticeFromMetadata({ skillpilotMemoryCard: payload }, 8);
+  assert.equal(practice.practiceScopeId, practiceScopeId);
+  assert.deepEqual(createMemoryCardStartArguments(practice), {
+    learningSessionId, goalId: "memory-functions", practiceScopeId, expectedStateVersion: 8
+  });
+  const review = createMemoryCardReviewArguments(practice, practice.cardBatch.cards[0], "known", "request-1");
+  assert.equal(review.reviewCapability, sealedCapability);
+  assert.equal(Object.hasOwn(review, "practiceScopeId"), false);
+  const receipt = { stateVersion: 9, status: "ready", goalId: practice.goalId, goalTitle: practice.goalTitle,
+    progress: { totalCards: 12, dueCards: 3, scheduledCards: 9 }, completed: false, practiceScopeId };
+  assert.equal(memoryCardReviewReceiptFromToolResult({ structuredContent: receipt }).practiceScopeId, practiceScopeId);
+  assert.equal(memoryCardReviewReceiptFromToolResult({ structuredContent: { ...receipt, practiceScopeId: {} } }), undefined);
+  assert.equal(memoryCardPracticeFromMetadata({ skillpilotMemoryCard: { ...payload, practiceScopeId: "" } }, 8), undefined);
+});
+
 test("private card contents are never recovered from structuredContent", async () => {
   const { memoryCardPracticeFromToolResult } = await loadParser();
   assert.equal(

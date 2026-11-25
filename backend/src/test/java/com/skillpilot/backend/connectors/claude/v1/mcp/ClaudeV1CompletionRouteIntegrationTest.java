@@ -1,5 +1,6 @@
 package com.skillpilot.backend.connectors.claude.v1.mcp;
 
+import com.skillpilot.backend.completion.CompletionRouteChoices;
 import static org.assertj.core.api.Assertions.*;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -1465,7 +1466,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 .map(item -> ((Map<?, ?>) item).get("choice").toString()).toList();
         assertThat(individualChoices).containsExactlyInAnyOrderElementsOf(
                 practice.stream().map(action -> action.title().get("de")).toList());
-        assertThat((List<?>) route.get("choices")).hasSizeLessThanOrEqualTo(ClaudeV1CompletionChoices.MAX_CHOICES);
+        assertThat((List<?>) route.get("choices")).hasSizeLessThanOrEqualTo(CompletionRouteChoices.MAX_CHOICES);
         var result = successful(ClaudeV1McpContractAdapter.TOOL_CHOOSE_COMPLETION_ROUTE,
                 writeArgs("start-requested-individual-experiment", version(), Map.of("choice", choice(confirmed, chosen.title().get("de")))));
         assertThat(map(map(result, "context"), "activeGoal")).containsEntry("id", chosen.practice().startGoalId());

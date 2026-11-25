@@ -1,5 +1,6 @@
 package com.skillpilot.backend.connectors.claude.v1.mcp;
 
+import com.skillpilot.backend.completion.CompletionRouteChoices;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
@@ -56,10 +57,10 @@ class ClaudeV1CompletionProjectionTest {
                                 Map.of("de", "Zur normalen Lernansicht", "en", "Return to regular learning"), null)));
         for (String language : List.of("de", "en")) {
             CompletionCallContext.with(supported(), () -> {
-                var choices = ClaudeV1CompletionChoices.published(response, language);
+                var choices = CompletionRouteChoices.CLAUDE.published(response, language);
                 assertThat(choices).extracting(choice -> choice.request(10).action())
                         .containsExactly("endAssessment", "leaveProfile");
-                assertThat(ClaudeV1CompletionChoices.project(response, language).get("choices"))
+                assertThat(CompletionRouteChoices.CLAUDE.project(response, language).get("choices"))
                         .isEqualTo("en".equals(language)
                                 ? List.of("End assessment", "Return to regular learning")
                                 : List.of("Prüfung beenden", "Zur normalen Lernansicht"));
@@ -79,8 +80,8 @@ class ClaudeV1CompletionProjectionTest {
         var result = new LevelCompletionResponse("valid", "scope", "automatic:personal-curriculum", "1", "generation", 10,
                 Map.of("de", "Mein Lehrplan"), false, 0, 1, 24, 25, 0, 0, List.of("waived"),
                 List.of(), List.of(), "required", false, null, actions);
-        var choices = CompletionCallContext.with(supported(), () -> ClaudeV1CompletionChoices.published(result, "de"));
-        assertThat(choices).extracting(ClaudeV1CompletionChoices.Choice::label)
+        var choices = CompletionCallContext.with(supported(), () -> CompletionRouteChoices.CLAUDE.published(result, "de"));
+        assertThat(choices).extracting(CompletionRouteChoices.Choice::label)
                 .contains("Zur normalen Lernansicht", "Freiwillig vertiefen: Offene Einzelleistung", "Weiterlernen: Lernziel 0");
     }
 
@@ -95,22 +96,22 @@ class ClaudeV1CompletionProjectionTest {
         var result = new LevelCompletionResponse("valid", "scope", "automatic:personal-curriculum", "1", "generation", 10,
                 Map.of("en", "Curriculum"), false, 0, 0, 0, 0, 0, 30, List.of(), exams, sections, null, false, null, List.of());
         CompletionCallContext.with(supported(), () -> {
-            var first = ClaudeV1CompletionChoices.page(result, "en", 1);
+            var first = CompletionRouteChoices.CLAUDE.page(result, "en", 1);
             assertThat(first.count()).isEqualTo(3);
-            assertThat(first.choices()).hasSize(24).startsWith(new ClaudeV1CompletionChoices.Choice(
+            assertThat(first.choices()).hasSize(24).startsWith(new CompletionRouteChoices.Choice(
                     "Choose section: Section 1", "selectProfile", "profile-1", null, null));
             var labels = new java.util.LinkedHashSet<String>();
             for (int number = 1; number <= first.count(); number++) {
-                var page = ClaudeV1CompletionChoices.page(result, "en", number);
+                var page = CompletionRouteChoices.CLAUDE.page(result, "en", number);
                 assertThat(page.choices()).hasSize(number == 3 ? 12 : 24);
                 page.choices().forEach(choice -> assertThat(labels.add(choice.label())).isTrue());
             }
             assertThat(labels).hasSize(60).contains("Choose section: Section 30", "Try assessment directly: Exam 30");
             return null;
         });
-        assertThat(ClaudeV1CompletionChoices.published(result, "en")).isEmpty();
-        assertThatThrownBy(() -> ClaudeV1CompletionChoices.page(result, "en", 2))
-                .isInstanceOf(ClaudeV1McpContractAdapter.ToolInputException.class);
+        assertThat(CompletionRouteChoices.CLAUDE.published(result, "en")).isEmpty();
+        assertThatThrownBy(() -> CompletionRouteChoices.CLAUDE.page(result, "en", 2))
+                .isInstanceOf(CompletionRouteChoices.UnavailablePageException.class);
     }
 
     @Test
@@ -150,7 +151,7 @@ class ClaudeV1CompletionProjectionTest {
                 "private-id-" + i, Map.of("en", "Lab " + i), i % 2 == 0)).toList();
         var response = completion(10, false).withUnitAssessment(new UnitAssessmentResponse(
                 "private-section", "private-revision", false, parts, List.of(), List.of("private-content")));
-        var context = (Map<?, ?>) ClaudeV1CompletionChoices.project(response, "en").get("unitAssessment");
+        var context = (Map<?, ?>) CompletionRouteChoices.CLAUDE.project(response, "en").get("unitAssessment");
         assertThat(context.get("partCount")).isEqualTo(30);
         assertThat(context.get("passedPartCount")).isEqualTo(15L);
         assertThat((List<?>) context.get("parts")).hasSize(24);
@@ -162,7 +163,7 @@ class ClaudeV1CompletionProjectionTest {
         var response = completion(10, false).withUnitAssessment(new UnitAssessmentResponse(
                 "private-section", "private-revision", false, List.of(part), List.of(), List.of()));
         for (String language : List.of("de", "en")) {
-            var context = (Map<?, ?>) ClaudeV1CompletionChoices.project(response, language).get("unitAssessment");
+            var context = (Map<?, ?>) CompletionRouteChoices.CLAUDE.project(response, language).get("unitAssessment");
             var projected = (Map<?, ?>) ((List<?>) context.get("parts")).getFirst();
             assertThat(projected.get("materialCurrent")).isEqualTo(false);
             assertThat(projected.get("notice").toString()).contains("en".equals(language) ? "unavailable" : "nicht verfügbar");
@@ -176,7 +177,7 @@ class ClaudeV1CompletionProjectionTest {
         var response = completion(10, false).withUnitAssessment(new UnitAssessmentResponse(
                 "private-section", "private-revision", true, List.of(part), List.of(), List.of()));
         for (String language : List.of("de", "en")) {
-            var context = (Map<?, ?>) ClaudeV1CompletionChoices.project(response, language).get("unitAssessment");
+            var context = (Map<?, ?>) CompletionRouteChoices.CLAUDE.project(response, language).get("unitAssessment");
             var projected = (Map<?, ?>) ((List<?>) context.get("parts")).getFirst();
             assertThat(projected.get("passed")).isEqualTo(true);
             assertThat(projected.get("planningCreditNotice").toString()).contains("en".equals(language) ? "planning credit" : "Planungsanrechnung");
@@ -192,10 +193,10 @@ class ClaudeV1CompletionProjectionTest {
         var response = new LevelCompletionResponse("valid", "context", "profile", "1", "generation", 10,
                 Map.of("de", "Abschnitt", "en", "Section"), true, 1, 1, 0, 2, 1, 1,
                 List.of("goal"), List.of(), List.of(), "required", false, null, List.of()).withWaiverDetails(List.of(detail));
-        var projected = ClaudeV1CompletionChoices.project(response, "en");
+        var projected = CompletionRouteChoices.CLAUDE.project(response, "en");
         assertThat(projected.toString()).contains("Understand projection", "Explain projection", "Preparation for this learning section is optional");
         assertThat(projected.get("text").toString()).contains("goals credited for planning (0)", "preparation waived (1)");
-        var credited = ClaudeV1CompletionChoices.project(response.withPlanningCreditGoalIds(List.of("goal")), "en");
+        var credited = CompletionRouteChoices.CLAUDE.project(response.withPlanningCreditGoalIds(List.of("goal")), "en");
         assertThat(credited.get("text").toString()).contains("goals credited for planning (1)", "preparation waived (0)");
         assertThat(projected.toString()).doesNotContain("static-rule");
     }
@@ -211,10 +212,10 @@ class ClaudeV1CompletionProjectionTest {
                 List.of("private-goal"), List.of(), List.of(), null, false, null, List.of())
                 .withWaiverDetails(List.of(detail));
         for (String language : List.of("de", "en")) {
-            var projected = ClaudeV1CompletionChoices.project(response, language);
+            var projected = CompletionRouteChoices.CLAUDE.project(response, language);
             assertThat(projected.get("complete")).isEqualTo(true);
             assertThat(projected.get("choices")).isEqualTo(List.of());
-            assertThat(ClaudeV1CompletionChoices.active(response)).isFalse();
+            assertThat(CompletionRouteChoices.active(response)).isFalse();
             assertThat(projected.get("text").toString()).isEqualTo("en".equals(language)
                     ? "Direct evidence on learning goals (0/1), required assessments passed (0/0), "
                             + "goals credited for planning (0), preparation waived (1), "
@@ -245,20 +246,20 @@ class ClaudeV1CompletionProjectionTest {
                         List.of(new LevelCompletionResponse.Assessment("private-exam", Map.of("en", "Explain projection"),
                                 false, true, null)))), null, false, null, List.of());
         CompletionCallContext.with(supported(), () -> {
-            var choices = ClaudeV1CompletionChoices.published(offered, "en");
+            var choices = CompletionRouteChoices.CLAUDE.published(offered, "en");
             assertThat(choices).anySatisfy(choice -> {
                 assertThat(choice.label()).isEqualTo("Try assessment directly: Explain projection");
                 assertThat(choice.request(10)).hasFieldOrPropertyWithValue("action", "startAssessment")
                         .hasFieldOrPropertyWithValue("profileId", "private-profile")
                         .hasFieldOrPropertyWithValue("goalId", "private-exam");
             });
-            var projected = ClaudeV1CompletionChoices.project(offered, "en");
+            var projected = CompletionRouteChoices.CLAUDE.project(offered, "en");
             assertThat(projected.toString()).contains("Explain projection").doesNotContain(
                     "private-profile", "private-exam", "private-generation", "taskContent", "solutionContent");
-            assertThat(ClaudeV1CompletionChoices.active(offered)).isFalse();
+            assertThat(CompletionRouteChoices.active(offered)).isFalse();
             return null;
         });
-        assertThat(ClaudeV1CompletionChoices.published(offered, "en")).isEmpty();
+        assertThat(CompletionRouteChoices.CLAUDE.published(offered, "en")).isEmpty();
     }
 
     @Test
@@ -267,7 +268,7 @@ class ClaudeV1CompletionProjectionTest {
                 null, null, 0, 0, 0, 0, 0, 0, List.of(), List.of(), List.of(
                 new LevelCompletionResponse.ProfileOption("profile", Map.of("de", "Geometrie"), 2, 1)),
                 null, false, "completion_mastery_unavailable", List.of());
-        assertThat(CompletionCallContext.with(supported(), () -> ClaudeV1CompletionChoices.published(unavailable, "de"))).isEmpty();
+        assertThat(CompletionCallContext.with(supported(), () -> CompletionRouteChoices.CLAUDE.published(unavailable, "de"))).isEmpty();
     }
 
     @Test
@@ -277,11 +278,11 @@ class ClaudeV1CompletionProjectionTest {
                     null, null, 0, 0, 0, 0, 0, 0, List.of(), List.of(), List.of(
                     new LevelCompletionResponse.ProfileOption("private-offered-profile",
                             Map.of("de", "Lernabschnitt", "en", "Learning section"), 2, 1)), null, false, null, List.of());
-            var preview = ClaudeV1CompletionChoices.project(offered, "en");
+            var preview = CompletionRouteChoices.CLAUDE.project(offered, "en");
             assertThat(preview.get("sections")).isEqualTo(List.of(Map.of("title", "Learning section",
                     "targetCount", 2, "requiredAssessmentCount", 1)));
             assertThat(preview.toString()).doesNotContain("private-offered-profile", "private-generation");
-            var choices = ClaudeV1CompletionChoices.published(completion(10, false), "de");
+            var choices = CompletionRouteChoices.CLAUDE.published(completion(10, false), "de");
             var exam = choices.stream().filter(choice -> "startAssessment".equals(choice.action())).findFirst().orElseThrow();
             assertThat(exam.request(10)).hasFieldOrPropertyWithValue("profileId", "private-profile")
                     .hasFieldOrPropertyWithValue("goalId", "exam").hasFieldOrPropertyWithValue("expectedRevision", 10L);
@@ -293,7 +294,7 @@ class ClaudeV1CompletionProjectionTest {
                     source.profileOptions(), source.navigationIntent(), source.directAssessmentRunning(), source.notice(),
                     List.of(new LevelCompletionResponse.Action("learnGoal", "one", Map.of("de", "Gleich"), "required"),
                             new LevelCompletionResponse.Action("learnGoal", "two", Map.of("de", "Gleich"), "required")));
-            assertThat(ClaudeV1CompletionChoices.published(ambiguous, "de").stream().map(ClaudeV1CompletionChoices.Choice::label))
+            assertThat(CompletionRouteChoices.CLAUDE.published(ambiguous, "de").stream().map(CompletionRouteChoices.Choice::label))
                     .doesNotContain("Weiterlernen: Gleich");
             return null;
         });

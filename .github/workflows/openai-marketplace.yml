@@ -25,7 +25,7 @@ jobs:
         with:
           node-version-file: .nvmrc
       - name: Test export integrity and reproducibility
-        run: node --test scripts/openai_marketplace_release.test.mjs
+        run: node --test scripts/openai_marketplace_release.test.mjs scripts/openai_private_plugin.test.mjs
       - name: Check the canonical candidate without external services
         run: node scripts/openai_marketplace_release.mjs check
       - name: Prepare and verify the standalone candidate

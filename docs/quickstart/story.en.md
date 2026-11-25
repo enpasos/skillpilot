@@ -62,4 +62,10 @@ Now it’s your turn. Describe where you would place **407 and 470** on a number
 
 Take a break whenever you need one. If your session has expired when you return, start a new one with the same ID. Your saved progress carries over. To see your progress on the learning map, select **Open Cockpit**.
 
-**Other providers.** The **Work** section in ChatGPT Desktop requires the **SkillPilot Coach** plugin, version 1.1.3 or later. As of November 24, 2026, the public marketplace still offers the previous version, 1.1.2. Gemini is available for accounts set up for the controlled test. [Access requirements](https://skillpilot.com/faq/coach-setup) · [Setup guides by provider](https://skillpilot.com/plugins)
+## Join the ChatGPT desktop beta test
+
+You need **Work** in ChatGPT Desktop and the **Add marketplace** option. When the Git marketplace offers **SkillPilot Coach** version **1.2.0** or later, install or update the coach and check the installed version. Follow the sign-in steps if ChatGPT asks to connect it. [Installation guide](https://skillpilot.com/plugins#chatgpt-desktop)
+
+In SkillPilot, select **ChatGPT Desktop** and **Prepare learning with ChatGPT**. Open a fresh conversation in **Work** with **SkillPilot Coach** selected. Replace any prefilled example question with the prepared start message and send it. Keep the plugin selected and keep the start message private.
+
+Gemini is available for accounts set up for the controlled test. [Access requirements by provider](https://skillpilot.com/faq/coach-setup)

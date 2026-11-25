@@ -25,6 +25,7 @@ export type MemoryCardPractice = {
   communicationLocale: "de" | "en";
   learningSessionId: string;
   goalId: string;
+  practiceScopeId?: string;
   goalTitle: string;
   expectedStateVersion: number;
   progress: MemoryCardPracticeProgress;
@@ -36,6 +37,7 @@ export type MemoryCardPractice = {
 export type MemoryCardPracticeReceipt = {
   status: string;
   goalId: string;
+  practiceScopeId?: string;
   goalTitle: string;
   expectedStateVersion: number;
   progress: MemoryCardPracticeProgress;
@@ -45,6 +47,7 @@ export type MemoryCardPracticeReceipt = {
 export type MemoryCardStartArguments = {
   learningSessionId: string;
   goalId: string;
+  practiceScopeId?: string;
   expectedStateVersion: number;
 };
 
@@ -71,6 +74,7 @@ export function memoryCardReviewReceiptFromToolResult(
     const expectedStateVersion = nonNegativeInteger(candidate.stateVersion);
     const status = boundedText(candidate.status, 100);
     const goalId = boundedText(candidate.goalId, 300);
+    const practiceScopeId = boundedText(candidate.practiceScopeId, 256);
     const goalTitle = boundedText(candidate.goalTitle, 1_000);
     const progressRecord = record(candidate.progress);
     const total = nonNegativeInteger(progressRecord?.totalCards);
@@ -81,6 +85,7 @@ export function memoryCardReviewReceiptFromToolResult(
       expectedStateVersion === undefined ||
       !status ||
       !goalId ||
+      (candidate.practiceScopeId !== undefined && !practiceScopeId) ||
       !goalTitle ||
       total === undefined ||
       due === undefined ||
@@ -94,6 +99,7 @@ export function memoryCardReviewReceiptFromToolResult(
     return {
       status,
       goalId,
+      ...(practiceScopeId ? { practiceScopeId } : {}),
       goalTitle,
       expectedStateVersion,
       progress: { total, due, scheduled },
@@ -150,6 +156,7 @@ export function memoryCardPracticeFromMetadata(
   const communicationLocale = locale(candidate.communicationLocale);
   const learningSessionId = learningSession(candidate.learningSessionId);
   const goalId = boundedText(candidate.goalId, 300);
+  const practiceScopeId = boundedText(candidate.practiceScopeId, 256);
   const goalTitle = boundedText(candidate.goalTitle, 1_000);
   const expectedStateVersion = stateVersion ?? nonNegativeInteger(candidate.expectedStateVersion);
   const progressRecord = record(candidate.progress);
@@ -164,6 +171,7 @@ export function memoryCardPracticeFromMetadata(
     !communicationLocale ||
     !learningSessionId ||
     !goalId ||
+    (candidate.practiceScopeId !== undefined && !practiceScopeId) ||
     !goalTitle ||
     expectedStateVersion === undefined ||
     due === undefined ||
@@ -186,6 +194,7 @@ export function memoryCardPracticeFromMetadata(
     communicationLocale,
     learningSessionId,
     goalId,
+    ...(practiceScopeId ? { practiceScopeId } : {}),
     goalTitle,
     expectedStateVersion,
     progress: { due, scheduled, total },
@@ -259,6 +268,7 @@ export function createMemoryCardStartArguments(
   return {
     learningSessionId: practice.learningSessionId,
     goalId: practice.goalId,
+    ...(practice.practiceScopeId ? { practiceScopeId: practice.practiceScopeId } : {}),
     expectedStateVersion: practice.expectedStateVersion
   };
 }
@@ -271,8 +281,8 @@ function learningSession(value: unknown): string | undefined {
 }
 
 function opaqueReviewCapability(value: unknown): string | undefined {
-  const candidate = boundedText(value, 100);
-  return candidate && /^[A-Za-z0-9_-]{43}$/.test(candidate)
+  const candidate = boundedText(value, 2_048);
+  return candidate && /^[A-Za-z0-9_-]{43,2048}$/.test(candidate)
     ? candidate
     : undefined;
 }

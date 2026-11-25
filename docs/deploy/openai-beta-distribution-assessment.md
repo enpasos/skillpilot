@@ -1,4 +1,99 @@
-# ChatGPT beta distribution: historical assessment
+# ChatGPT plugin beta distribution
+
+## External desktop beta on 25 November 2026
+
+The beta exercises the complete **SkillPilot Coach** plugin, including its
+coaching skill, against the neutral MCP endpoint. The current Claude source
+is `skillpilot-coach-v1` 1.1.15. The earlier public ChatGPT Git release is
+`skillpilot-coach-v1` 1.1.2. Its entry targets the retired versioned endpoint.
+The new ChatGPT package uses the permanent identity `skillpilot-coach` and
+version 1.2.0. External testers need to be able to install the plugin in
+their own account by following a guide. Use the public Git marketplace for
+that distribution and a private upload for the first host check. On Windows,
+the tester's Work client must offer **Add marketplace**.
+
+| Deployment option | Fit for this beta |
+| --- | --- |
+| Git marketplace | Publish the verified package to the existing public marketplace. External testers can follow its German installation guide using their own eligible desktop account. Verify the default branch, version, neutral endpoint and installation source. |
+| Private account plugin, portable ZIP with skill and direct remote MCP | Install the whole package in the owner's account for the initial host check. Confirm the actual surface, installation and OAuth before counting the run. |
+| Workspace upload with a registered SkillPilot app | For a workspace Web test, have the admin register and test the neutral MCP server, check the actual hosted OAuth identity and callback and give the testers access to the app. Build the ZIP with that verified app ID and share the installed plugin with the same testers. |
+| Custom MCP server in ChatGPT | Checks OAuth, tools and widgets on its own. The complete release test also needs the packaged coach skill. |
+| Public plugin directory | The public release has a separate review and publication process. |
+
+OpenAI documents plugin installation and workspace uploads, and recommends
+testing both the server connection and the installed plugin. Workspace Git
+imports that declare a direct MCP server can be marked Desktop only. The
+custom-MCP web flow has separate plan and permission requirements. The
+personal app registration recorded in September identified the rejected
+1.0.0 build. A fresh registration or verification of its current endpoint
+and access is needed before using it for this workspace package.
+[Install and manage ChatGPT plugins](https://help.openai.com/en/articles/20001256-plugins-in-chatgpt)
+· [Connect and test an installed plugin](https://developers.openai.com/plugins/deploy/connect-chatgpt)
+· [Workspace import and Desktop-only constraints](https://learn.chatgpt.com/docs/enterprise/plugin-management#desktop-only-plugins)
+· [Custom MCP permissions](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt)
+
+### Deliver the beta to external testers
+
+1. Export and verify the marketplace tree against the canonical 1.2.0
+   source. Review the German guide alongside the seven install files in
+   the [marketplace delivery PR](https://github.com/enpasos/skillpilot-chatgpt-marketplace/pull/1).
+2. Merge the source after CI passes and run the regular SkillPilot production
+   deployment from the green main commit. Check service readiness, OAuth
+   discovery and the deployed MCP capabilities before releasing the package.
+3. Merge the verified marketplace change, wait for validation on its default
+   branch and compare an anonymous fresh clone to the canonical export with
+   `node scripts/openai_marketplace_release.mjs verify --output <clone>`.
+4. Give testers the [public installation and update guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
+   It covers installation in Work, connection, a disposable learner and a
+   fresh learning session. Record a second-account host test when observed.
+
+### Build and test in the owner's account
+
+1. Prepare and verify the OpenAI adapter contract and current package with
+   `node scripts/openai_plugin_release.mjs prepare` and
+   `node scripts/openai_plugin_release.mjs verify`. Test the coach
+   instructions, card component and completion routes against that build.
+2. Build the private install ZIP with
+   `node scripts/openai_private_plugin.mjs package --out-dir tmp/openai-private-beta`.
+   Run `node scripts/openai_private_plugin.mjs audit-zip --zip <archive>`.
+   Both commands accept the same optional `--app-id` for the workspace app
+   route. Record the artifact SHA-256 with its installation.
+3. Upload the package privately in the target account. For a later release,
+   update the same private plugin. Confirm the version, the skill and the MCP
+   connection in the installed plugin and connect over SkillPilot OAuth.
+4. Start a disposable learner through the SkillPilot web start. In a fresh
+   ChatGPT Work chat use the configured Personal Curriculum. Test choosing a
+   goal with Autopilot off, an explanation and practice, completing a goal,
+   pausing, resuming and moving to the next named goal. Record whether the
+   first and second images actually appear. Use a separate fixture for unit
+   cards and their independent check, and a fresh assessment for entering
+   and leaving the assessment. Keep a record of the host, package version,
+   observed tool calls and saved result without learner tokens or answers.
+5. Record OAuth renewal and Web, mobile or Voice observations per tested
+   client. The install archive, backend test, public discovery response and
+   visible renderer each answer a different question.
+
+### Deployment record
+
+On 25 November 2026 the private upload returned `USER`, `PRIVATE` and version
+`1.2.0`. Its archive SHA-256 is
+`be1d97ab0507cf887b6fdff5fec6795f2ae30bcecdbb8a67fe5464cda90541ac`.
+Reading back the release confirmed exact bytes for the coaching skill, policy,
+agent configuration, portable MCP declaration and license. The host generated
+two compatibility files and normalized the author and developer display fields
+to the account identity. The saved connection names the neutral HTTPS endpoint
+and requests OAuth/CIMD. The native Windows ChatGPT plugin detail displayed
+**SkillPilot Coach**, **1.2.0** and **Installiert**. The returned personal link
+is for the account owner.
+
+On the same morning an unauthenticated GET to `/mcp` returned the expected
+401 with discovery on the neutral host. Protected-resource and issuer
+discovery returned 200, including the public read/write scopes and S256.
+The earlier versioned MCP origin returned 404. During testing there was a
+short interval with HTTP 502 from the public site; subsequent checks recovered.
+The public website version file identifies the GUI build only.
+
+## Historical distribution assessment of 12 September 2026
 
 **Superseded work plan:** the Product Owner subsequently set
 [Claude beta → stable candidate → focused ChatGPT acceptance → submission](claude-beta-chatgpt-release-strategy.md)
@@ -59,7 +154,7 @@ neither automatically supplies OpenAI's Connectors certificate to SkillPilot.
 Forwarding through a local operator route would test a different security path.
 No tunnel was installed and no production security setting was changed.
 
-## Current decision
+## Decision recorded in September 2026
 
 Follow the [binding beta and publication strategy](claude-beta-chatgpt-release-strategy.md).
 Claude is the actual beta platform. Only after stabilization is the shared

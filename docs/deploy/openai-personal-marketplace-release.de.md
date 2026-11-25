@@ -1,6 +1,15 @@
 # SkillPilot ChatGPT Desktop Beta: Git-Marketplace und Updates
 
-## Aktueller neutraler Plugin-Kandidat — 19. Oktober 2026
+## Externer Betatest mit SkillPilot Coach 1.2.0
+
+Externe Tester verwenden ihr eigenes ChatGPT-Konto mit Marketplace-Import
+im Windows-Bereich Work. Der Product Owner hat den regulären Backend-Rollout
+nach erfolgreicher CI freigegeben. Für den ersten Test in Windows wurde das
+Plugin privat installiert. Den aktuellen Stand halten der
+[Ablauf mit Testnachweisen](openai-beta-distribution-assessment.md) und die
+[deutsche Installationsanleitung](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme) fest.
+
+## Neutraler Plugin-Kandidat vom 19. Oktober 2026
 
 Die aktuelle bearbeitbare Quelle ist `ai/openai plugin/skillpilot-coach/`:
 **SkillPilot Coach**, Identität `skillpilot-coach`, Paket **1.1.3**, exakter MCP-Endpunkt

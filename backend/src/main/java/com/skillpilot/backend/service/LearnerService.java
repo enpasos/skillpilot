@@ -1586,7 +1586,8 @@ public class LearnerService {
                 || (!newRoute && (!completionWorkflowMatches(learner, workflow)
                     || !Objects.equals(workflow.profileId(), request.profileId())))
                 || (newRoute && Boolean.TRUE.equals(request.restartCurrent()))
-                || !"claude".equals(provider) || sessionBinding == null || sessionBinding.isBlank()
+                || !("claude".equals(provider) || "openai".equals(provider) && call != null)
+                || sessionBinding == null || sessionBinding.isBlank()
                 || expiresAt == null || !expiresAt.isAfter(Instant.now())
                 || (call != null && (!call.supported() || !Objects.equals(call.provider(), provider)
                     || !Objects.equals(call.sessionBinding(), sessionBinding) || !Objects.equals(call.expiresAt(), expiresAt)))) {
@@ -5083,6 +5084,17 @@ public class LearnerService {
     public List<String> getStoredLearningPlanFocus(String skillpilotId, String landscapeId) {
         return getStoredPlannedGoals(skillpilotId).stream()
                 .filter(id -> landscapeId.equals(landscapeService.getLandscapeIdForGoal(id))).toList();
+    }
+
+    /** The explicit focus binds manual plan choices only if its projected targets lie in one subject. */
+    @Transactional(readOnly = true)
+    Optional<String> getStoredLearningPlanFocusSubject(Learner learner) {
+        List<String> focus = getStoredPlannedGoals(learner.getSkillpilotId());
+        if (focus.isEmpty() || !hasCompletedPersonalCurriculum(learner)) return Optional.empty();
+        GoalProjection projection = getGoalProjection(learner.getSelectedCurriculum(), learner.getPersonalCurriculum());
+        List<String> subjects = projectedAtomicTargetIds(focus, projection).stream()
+                .map(landscapeService::getLandscapeIdForGoal).filter(Objects::nonNull).distinct().limit(2).toList();
+        return subjects.size() == 1 ? Optional.of(subjects.getFirst()) : Optional.empty();
     }
 
     /** Names real missing requirements without enrolling or marking any of them. */

@@ -14,7 +14,7 @@ import java.util.List;
 public final class OpenAiDeV1ContractMetadata {
 
     public static final String PLUGIN_IDENTITY = "skillpilot-coach";
-    public static final String PLUGIN_VERSION = "1.1.3";
+    public static final String PLUGIN_VERSION = "1.2.0";
     public static final int CONTRACT_MAJOR = 1;
     public static final long POLICY_REVISION = 5L;
     public static final String SUPPORT_LIFECYCLE = "CURRENT";
@@ -50,7 +50,7 @@ public final class OpenAiDeV1ContractMetadata {
     public static final String LEGACY_GOAL_VISUALIZATION_RESOURCE_CLASSPATH =
             "/openai/retained/skillpilot/coach/v1/legacy-1.0.0/goal-visualization.html";
     public static final String MEMORY_CARD_PRACTICE_ARTIFACT_SHA256 =
-            "aae01ed523f6268fd5948db66879176049e99140e7bda48d8891a425a89fe2eb";
+            "fb2957bf97ff084d8b7efc66b44b6e78c30d98e73e4272f4462ec5239a000b6f";
     public static final String MEMORY_CARD_PRACTICE_RESOURCE_URI =
             "ui://skillpilot/coach/v1/sha256-"
                     + MEMORY_CARD_PRACTICE_ARTIFACT_SHA256
@@ -78,7 +78,8 @@ public final class OpenAiDeV1ContractMetadata {
     public static final List<String> RETAINED_MEMORY_CARD_PRACTICE_ARTIFACT_SHA256S = List.of(
             "8524ee20837971227c35f1e16518d2b5bdbd60637fbec6beede9f2f4b29e4852",
             "7e1e4f1acbc61a9b50e620ebdf56f10c782517f6454edb1777a8d796832c2962",
-            "3665591f88892a89ce22bec7076e7ed7727db8b9360b438f1e1345e9a01bf7cb");
+            "3665591f88892a89ce22bec7076e7ed7727db8b9360b438f1e1345e9a01bf7cb",
+            "aae01ed523f6268fd5948db66879176049e99140e7bda48d8891a425a89fe2eb");
     /** Loopback-only transport target behind the dedicated V1 reverse proxy. */
     public static final String INTERNAL_MCP_PATH = "/internal/openai/v1/mcp";
     /** Loopback-only metadata target rewritten from the public path-specific URL. */

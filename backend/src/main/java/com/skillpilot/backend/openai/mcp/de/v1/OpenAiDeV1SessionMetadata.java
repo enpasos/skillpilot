@@ -11,13 +11,28 @@ public record OpenAiDeV1SessionMetadata(
         String curriculumRevision,
         String communicationLocale,
         Map<String, Object> extensions,
-        RecallDirective recallDirective) {
+        RecallDirective recallDirective,
+        boolean completionContractRequired,
+        String completionReceiptCapability) {
 
     public record RecallDirective(int verifiedRecallBatchSize) {
     }
 
     public OpenAiDeV1SessionMetadata {
         extensions = extensions == null ? Map.of() : Map.copyOf(extensions);
+    }
+
+    public OpenAiDeV1SessionMetadata(
+            int contractMajor,
+            long stateVersion,
+            int stateSchemaVersion,
+            String workflowVersion,
+            String curriculumRevision,
+            String communicationLocale,
+            Map<String, Object> extensions,
+            RecallDirective recallDirective) {
+        this(contractMajor, stateVersion, stateSchemaVersion, workflowVersion,
+                curriculumRevision, communicationLocale, extensions, recallDirective, false, null);
     }
 
     public OpenAiDeV1SessionMetadata(
