@@ -142,9 +142,9 @@ const landscapes = [{
       // its content from a second copy or transfer a historical learner result.
       existingGoalId: 'a8dc0290-9f80-5763-8943-e16b8d2aa860',
       coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],
-      reviewPath: 'curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/dprime-passmark-successor-20261124/r2-coverage.actual.json',
-      taskRevision: 'sha256:76fe443cf24fd8ce18237c569eda70913087f7e515e4dec447ed71536ef1e0de',
-      rubricRevision: 'sha256:f6a52fb1691cc147712c707af3a2488e996b7d78c0151127f644301132eef2e2',
+      reviewPath: 'curricula/DE/Gymnasium/quality/assessment-review/physik/e1-released-marking-headings-20261124-v1/r2-coverage.actual.json',
+      taskRevision: 'sha256:24ce83af76cf0f35cf887456750e3195f1a8dc624d3eb1919c1bd7ca5cf62e1d',
+      rubricRevision: 'sha256:bdc5a7d9be989f8f4c27d304253415322c68e4135dd306249a4d8a950d8236e1',
     }, {
       existingGoalId: 'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
       coveredGoalIds: ['e4b38061-1f28-43ad-8371-a3e7c0e81856'],

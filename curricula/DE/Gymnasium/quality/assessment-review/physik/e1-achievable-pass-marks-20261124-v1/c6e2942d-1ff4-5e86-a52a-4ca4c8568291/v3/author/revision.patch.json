@@ -1,0 +1,55 @@
+{
+  "status": "patch",
+  "changes": [
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Die Zuordnung ändert die Summe nicht.",
+      "replacement": "Ein Fehler, der nur in der vorgeführten Bildrechnung steht und nicht in die Tabelle übernommen wurde, wird bei zeitbasis gebucht. Diese Buchungsstelle ist verbindlich und wird nicht in einen anderen Schritt verlegt. Der tatsächliche Abzug ist auf die Punkte begrenzt, die in diesem Schritt nach der Stufenwertung noch vorhanden sind. Steht der Schritt bereits auf 0 BE, entfällt der Abzug."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "The assignment does not change the total.",
+      "replacement": "A slip that appears only in the shown frame calculation, and is not carried into the table, is booked under zeitbasis. This booking location is binding and is not moved to another step. The actual deduction is capped at the points still available in that step after banding. If the step already stands at 0, no deduction is made."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "– zeitbasis (1 BE): Für mindestens einen gefilmten Abwurf ist die Kette Bilddifferenz → · 0,010 s → Fallzeit erkennbar (z. B. 52 − 17 = 35; 35 · 0,010 s = 0,35 s): 1 BE.",
+      "replacement": "– zeitbasis (1 BE): Für mindestens einen gefilmten Abwurf ist ein richtiger Weg von den beiden Bildnummern zur Fallzeit erkennbar: 1 BE. Gleichwertig zulässig sind:\n  (a) Bilddifferenz mal Bildintervall: 52 − 17 = 35; 35 · 0,010 s = 0,35 s\n  (b) Bilddifferenz durch Bildrate: 35 : 100 Bilder/s = 0,35 s\n  (c) Differenz der Zeitmarken beider Bilder bei gemeinsamem Zeitnullpunkt: Bild 17 ≙ 0,17 s, Bild 52 ≙ 0,52 s; 0,52 s − 0,17 s = 0,35 s"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "– zeitbasis (1): For at least one filmed drop the chain frame difference → × 0.010 s → time is visible (e.g. 52 − 17 = 35; 35 × 0.010 s = 0.35 s): 1 point.",
+      "replacement": "– zeitbasis (1): For at least one filmed drop, a correct route from the two frame numbers to the fall time is visible: 1 point. The following are equally acceptable:\n  (a) frame difference times frame interval: 52 − 17 = 35; 35 × 0.010 s = 0.35 s\n  (b) frame difference divided by frame rate: 35 ÷ 100 frames/s = 0.35 s\n  (c) difference of the time stamps of both frames with a common zero: frame 17 ≙ 0.17 s, frame 52 ≙ 0.52 s; 0.52 s − 0.17 s = 0.35 s"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Bildnummern selbst als Zeit (Bild 52 → 0,52 s); Bilddifferenz ohne Intervall als Zeit.",
+      "replacement": "Zeitmarke des Endbilds allein als gesamte Fallzeit (Bild 52 → Fallzeit 0,52 s, ohne Abzug der Freigabemarke); Bilddifferenz ohne Intervall als Zeit (35 Bilder → 35 s). Kein Fehler ist es dagegen, beide Bilder in Zeitmarken umzurechnen und deren Differenz zu bilden."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "frame numbers used as times (frame 52 → 0.52 s); frame difference used as time without the interval.",
+      "replacement": "the time stamp of the final frame alone used as the whole fall time (frame 52 → fall time 0.52 s, without subtracting the release stamp); frame difference used as time without the interval (35 frames → 35 s). It is not an error to convert both frames into time stamps and take their difference."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Die nächstniedrigere Stufe eines Schritts gilt nur, wenn eine fachlich richtige und eine fachlich falsche Festlegung ungeklärt nebeneinanderstehen",
+      "replacement": "Die regulären niedrigeren Inhaltsstufen gelten bereits, wenn Angaben fehlen, z. B. bei drei von vier Paaren. Davon unabhängig gibt es eine zusätzliche Herabstufung wegen eines Widerspruchs, und zwar um eine Stufe unter die Stufe, die der gezeigte Inhalt erreicht. Diese Herabstufung gilt nur, wenn eine fachlich richtige und eine fachlich falsche Festlegung ungeklärt nebeneinanderstehen"
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "The next lower band of a step applies only when a physically correct and a physically wrong definition stand side by side unresolved",
+      "replacement": "The regular lower content bands already apply when information is missing, e.g. three of four pairs. Separately, there is an additional downgrade for a contradiction: one band below the band that the content shown reaches. This downgrade applies only when a physically correct and a physically wrong definition stand side by side unresolved"
+    },
+    {
+      "field": "steps.zeitbasis.description",
+      "find": "Für mindestens einen gefilmten Abwurf ist die Kette Bilddifferenz → · 0,010 s → Fallzeit sichtbar: 1 BE.",
+      "replacement": "Für mindestens einen gefilmten Abwurf ist ein richtiger Weg von den beiden Bildnummern zur Fallzeit sichtbar: 1 BE. Zulässig sind Bilddifferenz · 0,010 s, Bilddifferenz : 100 Bilder/s oder die Differenz der Zeitmarken (z. B. 0,52 s − 0,17 s = 0,35 s)."
+    },
+    {
+      "field": "steps.zeitbasis.description",
+      "find": "For at least one filmed drop the chain frame difference → × 0.010 s → fall time is visible: 1 point.",
+      "replacement": "For at least one filmed drop, a correct route from the two frame numbers to the fall time is visible: 1 point. Accepted are frame difference × 0.010 s, frame difference ÷ 100 frames/s, or the difference of the time stamps (e.g. 0.52 s − 0.17 s = 0.35 s)."
+    }
+  ]
+}

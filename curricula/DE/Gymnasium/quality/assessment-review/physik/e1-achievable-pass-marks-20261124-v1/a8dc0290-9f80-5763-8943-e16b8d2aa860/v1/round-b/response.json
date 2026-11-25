@@ -1,0 +1,253 @@
+{
+  "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+  "candidateDecision": "revise",
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "Der Knoten prüft ein benanntes Lernziel anhand zweier konkreter Bewegungsvorgänge mit Anfangsdaten, Arbeitsaufträgen und Bestehensgrenze. Das curriculare Ziel ist der separat ausgewiesene Knoten zur gleichmäßig beschleunigten Bewegung.",
+  "physicsAndLanguage": "Aufgabe und Rechenwerte stimmen in DE und EN überein. In A folgen mit τ = t − 2 s in SI die Gesetze v = −1 + 2τ und s = 5 − τ + τ². Bei 2,5 s wechselt v das Vorzeichen am Ortsminimum 4,75 m, während a positiv bleibt. Die Teilflächen −0,25 m und +2,25 m ergeben +2 m Ortsänderung und 2,50 m Strecke. Der Endort 7 m weicht um 0,03 m von der Kontrollmarke ab und liegt innerhalb ihrer Toleranz von 0,05 m. Das belegt Verträglichkeit an einem Zeitpunkt. In B erreicht das Fahrzeug nach 3 s bei 9 m den Stillstand. Die Programmfortsetzung liefert bei 5 s korrekt −4 m/s und 5 m. Dauerhafter Stillstand verlangt a = 0 und damit verschwindende resultierende Kraft. Einzelne Haltekräfte sind damit vereinbar. Der Vergleich von momentaner Geschwindigkeit null in A mit dauerhaftem Stillstand in B ist didaktisch sinnvoll. Das englische „check mark“ ist mit Zahlenwert und Toleranz verständlich.",
+  "scopeVerdict": "D′ trägt als Transferaufgabe unmittelbar das einzelne Beschleunigungsziel e4b38061-1f28-43ad-8371-a3e7c0e81856. Das Arbeiten mit Zeit-Ort- und Zeit-Geschwindigkeits-Gesetzen ist die ausgewiesene Voraussetzung 262f807a-30d0-503e-986f-856cbd048e8e. Die kanonische Anwendbarkeit umfasst 16 Länder. Das eigene freiwillige SkillPilot-Angebot ist Sachsen und Sachsen-Anhalt, jeweils Sekundarstufe I, Jahrgang 9, mit den Profilangaben GK und LK zugeordnet. In Sachsen erweitern die Anfangsgeschwindigkeiten den angegebenen amtlichen Umfang. Für Sachsen-Anhalt passen Diagrammflächen und Anfangsbedingungen. Die Abdeckung endet beim Einzelziel. Eine eigene Fallmessreihe, eine amtliche Prüfung, der hessische Pflichtteil, eine hessische E.1-Plananrechnung oder die Beherrschung aller 66 Vorbereitungsziele sind aus der Aufgabe nicht ableitbar. Die Aufgabe kann mit ihrer bestehenden Abdeckung überarbeitet bewertet werden.",
+  "scoringConsistency": "Beide Aufgabentexte sind gegenüber dem Original vollständig unverändert. DE und EN drucken jeweils A 12 und B 8. Alle gedruckten Zeilen-, Teil- und Gruppenpunkte der neuen Bewertung stimmen rechnerisch mit den strukturierten Zeilen überein. A ergibt 7 + 5 = 12, B ergibt 4 + 4 = 8. Die Grenze 17/20 entspricht 85 %. Alle vier Gruppengewichte übersteigen den Spielraum von 3 BE. Vier unabhängige Abzüge zu 0,5 BE lassen 18 BE. Inhaltlich bleibt eine Lücke: Fehlt A-AFL vollständig und fehlt in B-RAT die Erklärung der Änderungsrate, sind mit richtiger Rückwärtsdeutung noch 17,5 BE erreichbar. Damit kann gerade die Erklärung, wie konstantes a die Geschwindigkeitsentwicklung bestimmt, in beiden Kontexten offenbleiben. Außerdem steht in beiden Lösungsfassungen der gesamte fachliche Musterabsatz zweimal. Die Musterlösung gibt für A Gesetze und Marken, aber keine ausgeführten Graphenbeschreibungen für alle drei Verläufe. Sie nennt die Gesamtfläche und die Rückwärtsfahrt, führt die im Raster gesondert bewertete Erklärung über Zeitabschnitte jedoch nicht aus. Ihre knappe Kontrollaussage ist fachlich richtig. Die enge Formulierung von A-KON verlangt dafür unnötig beide Intervallgrenzen.",
+  "carryingPerformanceAudit": [
+    {
+      "performanceId": "P-DAR",
+      "earnedFromTask": "A verlangt die drei zeitabhängigen Darstellungen aus demselben Protokoll, drei Ortsmarken, die markierte Umkehr und die Prüfung des Endorts. Den Zielbezug trägt die Konsistenz von konstantem a, linearer Geschwindigkeit und gekrümmtem Ortsverlauf.",
+      "weight": 7,
+      "completeOmissionMaximum": 13,
+      "safeguardsAndLimits": "Ein Achsen- und Koordinatenverlauf kann den Graphen eindeutig beschreiben. Einzelne Flächenwerte allein leisten das nicht. Ortsmarken zählen auch außerhalb eines Diagramms. Kontrollvergleich und einzelne Marken sind Teilfacetten. Ein übernommener Zahlendreher darf bei Kurve und Umkehr keinen weiteren Abzug auslösen."
+    },
+    {
+      "performanceId": "P-FLA",
+      "earnedFromTask": "A verlangt die Deutung der a-Fläche als Δv und der gerichteten v-Flächen als Ortsänderungen. Der Vergleich von Ortsänderung und Strecke prüft die Bedeutung des Vorzeichens am Richtungswechsel.",
+      "weight": 5,
+      "completeOmissionMaximum": 15,
+      "safeguardsAndLimits": "Die ausdrücklich beibehaltene Gleichsetzung von Strecke und gerichteter Summe entwertet nach der Gruppenregel P-FLA. Eine fehlende Erläuterung kostet nur ihren Teilwert. Die 5 BE sichern das Modellverständnis der konstanten Rate nur teilweise, da 3,5 BE allein auf v-Flächen und Wegvergleich entfallen."
+    },
+    {
+      "performanceId": "P-BRE",
+      "earnedFromTask": "B verlangt Bewegungsgesetze, drei Diagramme, Stoppzeit und Bremsweg sowie die rechnerische Anwendung derselben Gesetze auf die Programmfortsetzung. Damit wird das Darstellungsziel auch bei negativer Beschleunigung geprüft.",
+      "weight": 4,
+      "completeOmissionMaximum": 16,
+      "safeguardsAndLimits": "SI-Zahlengleichungen, beschriftete Skizzen und eindeutige Koordinatenbeschreibungen sind geeignet. Die Programmwerte lassen sich unabhängig von ihrer physikalischen Deutung bewerten. Eine reine Aussage über das Weiterbremsen ersetzt weder die Bewegungsgesetze noch die Stoppwerte."
+    },
+    {
+      "performanceId": "P-GRZ",
+      "earnedFromTask": "B verlangt die Vorhersage bei fortgesetzter negativer Rate und die Erklärung ihrer Gültigkeitsgrenze. Der Zusammenhang zwischen a und v entscheidet, ob das Fahrzeug nach dem Nulldurchgang rückwärts fährt oder stehen bleibt.",
+      "weight": 4,
+      "completeOmissionMaximum": 16,
+      "safeguardsAndLimits": "Die beiden Endzahlen allein zeigen diese Deutung nicht. Eine begründete Aussage über die resultierende Kraft genügt ohne konkretes Fahrzeugbeispiel. Wer ausdrücklich dauerhaften Stillstand bei a = −2 m/s² verteidigt, verliert P-GRZ. Richtige Rechnungen bis zum Stopp und zur Programmvorhersage bleiben erhalten."
+    }
+  ],
+  "coveredGoalReviews": [
+    {
+      "goalId": "e4b38061-1f28-43ad-8371-a3e7c0e81856",
+      "mustShow": "Das Ziel verlangt Erläutern und Darstellen. P-DAR und P-BRE prüfen die aufeinander bezogenen t-a-, t-v- und t-s-Verläufe. P-FLA und P-GRZ sollen zeigen, warum konstantes a gleiche Geschwindigkeitsänderungen in gleichen Zeitspannen erzeugt und deshalb v auch durch null hindurchgehen kann. Eine verständlich erläuterte Steigung, Flächenbeziehung oder Gleichung kann diesen Zusammenhang belegen.",
+      "mayRemainOpen": "Eine einzelne Ortsmarke, eine Beschriftung, die ausdrückliche Angabe beider Intervallgrenzen oder eine einzelne Erläuterungsfacette darf fehlen. Eine schon eindeutig erklärte Modellbeziehung braucht im zweiten Kontext keine wortgleiche Wiederholung. Eigene Messdatenerhebung und detaillierte Bremsmechanik liegen außerhalb des Zielumfangs.",
+      "whyTolerable": "Die beiden Fälle liefern mit entgegengesetzten Beschleunigungen und unterschiedlichen Anfangswerten mehrere Belege für denselben Zusammenhang. Ein lokaler Fehler lässt sich daran erkennen. Fehlt eine Erklärung der konstanten Änderungsrate überall, reichen reproduzierte Kurven und richtige Endzahlen für den erläuternden Teil des Zieltextes dagegen nicht sicher aus."
+    }
+  ],
+  "gradedSubmissions": [
+    {
+      "submissionId": "L01",
+      "scores": [
+        {"criterionId":"A-GTA","pointsAwarded":0,"reason":"Das Rechteck wird zur Flächenrechnung verwendet. Ein eigener Achsen- und Kurvenverlauf für A wird nicht angegeben."},
+        {"criterionId":"A-GTV","pointsAwarded":0,"reason":"Die Geschwindigkeitsfolge erläutert die Rate. Sie wird nicht als beschrifteter t-v-Graph ausgearbeitet."},
+        {"criterionId":"A-GTS","pointsAwarded":0,"reason":"Ein Ortsgraph mit Verlauf und Kennpunkten fehlt."},
+        {"criterionId":"A-ORT","pointsAwarded":0,"reason":"Angegeben sind Teilverschiebungen. Die drei verlangten absoluten Orte fehlen."},
+        {"criterionId":"A-UMK","pointsAwarded":0,"reason":"Die Teilrichtungen sind erkennbar. Die Umkehr am Ortsminimum und die Bedeutung von v = 0 bei weiter positivem a werden dort nicht gekennzeichnet."},
+        {"criterionId":"A-KON","pointsAwarded":0,"reason":"Der Endort wird nicht mit der Kontrollmarke verglichen."},
+        {"criterionId":"A-AFL","pointsAwarded":1.5,"reason":"Das Rechteck liefert Δv = 4 m/s. Gleich breite Streifen ergeben ausdrücklich +1 m/s je halber Sekunde."},
+        {"criterionId":"A-VFL","pointsAwarded":1.5,"reason":"Beide Dreiecke werden mit −0,25 m und +2,25 m berechnet und ihren Bewegungsrichtungen zugeordnet."},
+        {"criterionId":"A-WEG","pointsAwarded":2,"reason":"Die gerichtete Summe +2 m und die Betragssumme 2,50 m werden berechnet und erklärt."},
+        {"criterionId":"B-GES","pointsAwarded":1,"reason":"Beide Gesetze enthalten die richtigen Anfangswerte, Koeffizienten und Einheiten."},
+        {"criterionId":"B-DIA","pointsAwarded":1.5,"reason":"Achsen und Endpunkte beschreiben die negative Horizontale, die fallende Gerade und die Parabel mit waagerechter Endtangente."},
+        {"criterionId":"B-STP","pointsAwarded":1,"reason":"Aus der Nullstelle folgen 3 s und durch Einsetzen 9 m."},
+        {"criterionId":"B-PRG","pointsAwarded":0.5,"reason":"Die Fortsetzung ergibt −4 m/s und 5 m."},
+        {"criterionId":"B-RAT","pointsAwarded":2,"reason":"Die Abnahme um 2 m/s je Sekunde wird über den Stopp hinaus bis zur Rückfahrt von 9 m auf 5 m erklärt."},
+        {"criterionId":"B-STL","pointsAwarded":2,"reason":"Die Antwort vergleicht Rückfahrt und Stillstand, nennt v = a = 0 nach dem Stopp und begründet die nötige Wechselwirkung."}
+      ],
+      "total":13,
+      "passes":false,
+      "diagnosis":"Flächen und Bremsmodell sind sicher verstanden. Nach der Evidenzregel des Kandidaten tragen die Flächenbeschreibungen in A keine zusätzlichen Diagrammpunkte. Die verlangte Darstellung mit Ortsmarken, Umkehrkennzeichnung und Kontrolle fehlt.",
+      "localizedSlips":[]
+    },
+    {
+      "submissionId":"L02",
+      "scores":[
+        {"criterionId":"A-GTA","pointsAwarded":1,"reason":"Die Horizontale bei +2 m/s² reicht ohne Sprung über die Umkehr."},
+        {"criterionId":"A-GTV","pointsAwarded":1,"reason":"Die Gerade ist mit Anfangswert, Nullstelle und Endgeschwindigkeit beschrieben."},
+        {"criterionId":"A-GTS","pointsAwarded":1.5,"reason":"Alle vier Punkte liegen auf der beschriebenen nach oben geöffneten Parabel mit waagerechter Tangente im Minimum."},
+        {"criterionId":"A-ORT","pointsAwarded":1.5,"reason":"4,75 m, 5 m und 7 m sind korrekt eingesetzt und ausgewertet."},
+        {"criterionId":"A-UMK","pointsAwarded":1,"reason":"Zeit, Ort, Vorzeichenwechsel von v und fortbestehendes positives a sind ausdrücklich verknüpft."},
+        {"criterionId":"A-KON","pointsAwarded":1,"reason":"7,00 m wird zutreffend in das Intervall von 6,98 m bis 7,08 m eingeordnet."},
+        {"criterionId":"A-AFL","pointsAwarded":0,"reason":"Rechteck und Streifenargument sind richtig. Die später ausdrücklich verteidigte falsche Streckenregel setzt die gesamte Gruppe P-FLA auf null."},
+        {"criterionId":"A-VFL","pointsAwarded":0,"reason":"Trotz richtiger Dreiecksflächen wird die gerichtete Summe als zurückgelegte Strecke gedeutet. K-FLA greift."},
+        {"criterionId":"A-WEG","pointsAwarded":0,"reason":"Die Antwort begründet ausdrücklich, das rückwärts gefahrene Stück hebe sich auch bei der Strecke weg. Das ist die tragende Fehlvorstellung."},
+        {"criterionId":"B-GES","pointsAwarded":1,"reason":"v = 6 − 2t und s = 6t − t² sind mit passenden Einheiten angegeben."},
+        {"criterionId":"B-DIA","pointsAwarded":1.5,"reason":"Alle drei Kurven bis 3 s sind mit Achsen, Verlauf und passenden Koordinaten beschrieben."},
+        {"criterionId":"B-STP","pointsAwarded":1,"reason":"Stoppzeit 3 s und Bremsweg 9 m werden korrekt hergeleitet."},
+        {"criterionId":"B-PRG","pointsAwarded":0.5,"reason":"Beide Programmwerte bei 5 s sind richtig."},
+        {"criterionId":"B-RAT","pointsAwarded":2,"reason":"Die fortgesetzte Änderung um −2 m/s je Sekunde erklärt Rückwärtsfahrt und abnehmenden Ort."},
+        {"criterionId":"B-STL","pointsAwarded":2,"reason":"Realer Stillstand, verschwindende Beschleunigung und nötiger Kraftgrund für erneute Bewegung sind erklärt."}
+      ],
+      "total":15,
+      "passes":false,
+      "diagnosis":"Die Verwechslung von Strecke und Ortsänderung wird trotz erkannter Umkehr als Regel begründet und beibehalten. Der Verlust von 5 BE betrifft ausschließlich P-FLA.",
+      "localizedSlips":[]
+    },
+    {
+      "submissionId":"L03",
+      "scores":[
+        {"criterionId":"A-GTA","pointsAwarded":1,"reason":"Konstante Höhe +2 m/s² und Verlauf über 2,5 s hinweg sind korrekt."},
+        {"criterionId":"A-GTV","pointsAwarded":1,"reason":"Die Gerade durch die beschrifteten Werte schneidet die Zeitachse bei 2,5 s."},
+        {"criterionId":"A-GTS","pointsAwarded":1.5,"reason":"Parabelform, vier Kennpunkte und waagerechte Tangente im Tiefpunkt stimmen."},
+        {"criterionId":"A-ORT","pointsAwarded":1.5,"reason":"Alle drei gesuchten Orte sind aus dem verschobenen Zeitansatz richtig berechnet."},
+        {"criterionId":"A-UMK","pointsAwarded":1,"reason":"Das Ortsminimum wird mit dem Wechsel von negativem zu positivem v bei konstant positivem a erklärt."},
+        {"criterionId":"A-KON","pointsAwarded":1,"reason":"Intervallgrenzen und Verträglichkeitsurteil für 7 m stimmen."},
+        {"criterionId":"A-AFL","pointsAwarded":1.5,"reason":"Gesamtfläche und gleiche Geschwindigkeitszunahmen in gleich breiten Zeitstreifen sind erklärt."},
+        {"criterionId":"A-VFL","pointsAwarded":1.5,"reason":"Die negativen und positiven Dreiecksflächen werden als gerichtete Ortsänderungen gedeutet."},
+        {"criterionId":"A-WEG","pointsAwarded":2,"reason":"Beide Summen und der Grund für die Differenz von 0,50 m sind richtig."},
+        {"criterionId":"B-GES","pointsAwarded":1,"reason":"Die Geschwindigkeit fällt gemäß 6 − 2t, der Ort folgt 6t − t²."},
+        {"criterionId":"B-DIA","pointsAwarded":1.5,"reason":"Die drei Beschreibungen stellen die Bremsphase bis zum Punkt (3 s | 9 m) korrekt dar."},
+        {"criterionId":"B-STP","pointsAwarded":1,"reason":"3 s und 9 m ergeben sich korrekt aus den Gesetzen."},
+        {"criterionId":"B-PRG","pointsAwarded":0.5,"reason":"−4 m/s und 5 m sind richtig berechnet und behalten ihren Rechenkredit."},
+        {"criterionId":"B-RAT","pointsAwarded":0,"reason":"Die negative Geschwindigkeit wird als Stärke der Bremse ausgelegt. Die vorhergesagte Rückwärtsbewegung wird ausdrücklich verneint."},
+        {"criterionId":"B-STL","pointsAwarded":0,"reason":"Die Antwort verteidigt dauerhaftes a = −2 m/s² bei Stillstand und erklärt die Programmfortsetzung zum gültigen Stillstandsmodell."}
+      ],
+      "total":16,
+      "passes":false,
+      "diagnosis":"Die Mathematik einschließlich der Programmwerte stimmt. Die begründete Behauptung, ein Fahrzeug könne bei negativer Geschwindigkeit stehen und dabei konstant negativ beschleunigt bleiben, entwertet P-GRZ.",
+      "localizedSlips":[]
+    },
+    {
+      "submissionId":"L04",
+      "scores":[
+        {"criterionId":"A-GTA","pointsAwarded":1,"reason":"Die beschriebene Horizontale hat durchgehend die Höhe +2 m/s²."},
+        {"criterionId":"A-GTV","pointsAwarded":1,"reason":"Gerade, Nulldurchgang und beschriftete Geschwindigkeitswerte stimmen."},
+        {"criterionId":"A-GTS","pointsAwarded":1.5,"reason":"Die nach oben geöffnete Parabel enthält alle Kennpunkte und den waagerechten Tiefpunkt."},
+        {"criterionId":"A-ORT","pointsAwarded":1.5,"reason":"Die drei Rechnungen ergeben 4,75 m, 5 m und 7 m."},
+        {"criterionId":"A-UMK","pointsAwarded":1,"reason":"Die Umkehr ist markiert und durch den Vorzeichenwechsel von v bei a = +2 m/s² erläutert."},
+        {"criterionId":"A-KON","pointsAwarded":1,"reason":"7,00 m liegt im richtig berechneten Kontrollintervall."},
+        {"criterionId":"A-AFL","pointsAwarded":0,"reason":"Das lineare Gesetz steht da. Eine Deutung der a-Fläche in A fehlt vollständig."},
+        {"criterionId":"A-VFL","pointsAwarded":0,"reason":"Weder die beiden Dreiecksflächen noch ihre Bedeutung als gerichtete Änderungen werden bearbeitet."},
+        {"criterionId":"A-WEG","pointsAwarded":0,"reason":"Die Ortsmarken sind vorhanden. Ortsänderung, gesamte Strecke und ihr Vergleich werden nicht bestimmt."},
+        {"criterionId":"B-GES","pointsAwarded":1,"reason":"Beide dimensionierten Bewegungsgesetze sind richtig."},
+        {"criterionId":"B-DIA","pointsAwarded":1.5,"reason":"Horizontale, fallende Gerade und nach unten gekrümmte Ortsparabel sind eindeutig koordinatenbeschrieben."},
+        {"criterionId":"B-STP","pointsAwarded":1,"reason":"Die Nullstelle bei 3 s und der Ort 9 m werden richtig bestimmt."},
+        {"criterionId":"B-PRG","pointsAwarded":0.5,"reason":"Die Fortsetzung liefert die verlangten Werte −4 m/s und 5 m."},
+        {"criterionId":"B-RAT","pointsAwarded":2,"reason":"Die gleiche Abnahme in jeder Sekunde ist über den Nulldurchgang bis zur Rückfahrt erklärt."},
+        {"criterionId":"B-STL","pointsAwarded":2,"reason":"Die Antwort grenzt den realen Stillstand anhand von v, a und einer für Rückwärtsbeschleunigung nötigen Kraft ab."}
+      ],
+      "total":15,
+      "passes":false,
+      "diagnosis":"P-FLA ist ausgelassen. Die richtige Ratenerklärung in B belegt Verständnis in B, stellt aber weder die A-Flächenrechnung noch den Wegvergleich her. Eine Fehlvorstellung ist hier nicht erkennbar.",
+      "localizedSlips":[]
+    },
+    {
+      "submissionId":"L05",
+      "scores":[
+        {"criterionId":"A-GTA","pointsAwarded":1,"reason":"Zeitintervall und konstante Höhe des Beschleunigungsgraphen sind angegeben."},
+        {"criterionId":"A-GTV","pointsAwarded":1,"reason":"Die steigende Gerade enthält die richtige Nullstelle und alle geforderten Kennwerte."},
+        {"criterionId":"A-GTS","pointsAwarded":1.5,"reason":"Die Parabel ist durch vier Punkte, Öffnung und Tangente im Minimum eindeutig bestimmt."},
+        {"criterionId":"A-ORT","pointsAwarded":1.5,"reason":"Alle drei Ortsmarken stimmen mit dem angegebenen Ortsgesetz überein."},
+        {"criterionId":"A-UMK","pointsAwarded":1,"reason":"Der Richtungswechsel ist bei 2,5 s und 4,75 m markiert und mit v und a erklärt."},
+        {"criterionId":"A-KON","pointsAwarded":1,"reason":"Die Kontrollgrenzen und die Einordnung des Endorts sind richtig."},
+        {"criterionId":"A-AFL","pointsAwarded":1.5,"reason":"Die Rechteckfläche wird als Δv gedeutet und über gleiche Teilstreifen mit der konstanten Steigung verknüpft."},
+        {"criterionId":"A-VFL","pointsAwarded":1.5,"reason":"−0,25 m und +2,25 m sind korrekt berechnet und den Richtungen zugeordnet."},
+        {"criterionId":"A-WEG","pointsAwarded":2,"reason":"Die gerichtete Summe und die Summe der Beträge werden richtig gebildet und unterschieden."},
+        {"criterionId":"B-GES","pointsAwarded":0,"reason":"Die Änderungsrate wird genannt. Die verlangten Funktionen v(t) und s(t) für das Fahrzeug fehlen."},
+        {"criterionId":"B-DIA","pointsAwarded":0,"reason":"Für die Bremsphase werden keine drei Graphen gezeichnet oder mit Achsen und Koordinaten beschrieben."},
+        {"criterionId":"B-STP","pointsAwarded":0,"reason":"Stoppzeit und Bremsweg fehlen."},
+        {"criterionId":"B-PRG","pointsAwarded":0,"reason":"Für t = 5 s werden weder Geschwindigkeit noch Ort angegeben."},
+        {"criterionId":"B-RAT","pointsAwarded":2,"reason":"Die Abnahme um 2 m/s je Sekunde über v = 0 hinaus und der wieder kleiner werdende Ort sind erklärt."},
+        {"criterionId":"B-STL","pointsAwarded":2,"reason":"Die Antwort vergleicht Rückfahrt und realen Stillstand und begründet die Bedingungen für beide Fälle."}
+      ],
+      "total":16,
+      "passes":false,
+      "diagnosis":"Die Modellgrenze ist verstanden. Die ausdrücklich geforderte mathematische und graphische Bearbeitung des Bremsvorgangs einschließlich der Programmwerte fehlt als ganze Leistung P-BRE.",
+      "localizedSlips":[]
+    },
+    {
+      "submissionId":"L06",
+      "scores":[
+        {"criterionId":"A-GTA","pointsAwarded":1,"reason":"Die Horizontale liegt auch am Umkehrzeitpunkt bei +2 m/s²."},
+        {"criterionId":"A-GTV","pointsAwarded":1,"reason":"Gerade, Nullstelle und zugehörige Geschwindigkeiten sind korrekt beschrieben."},
+        {"criterionId":"A-GTS","pointsAwarded":1.5,"reason":"Die Parabel hat die geforderten Kennpunkte und eine waagerechte Tangente im Minimum."},
+        {"criterionId":"A-ORT","pointsAwarded":1.5,"reason":"Die Rechnungen liefern alle drei richtigen Ortsmarken."},
+        {"criterionId":"A-UMK","pointsAwarded":1,"reason":"Ort und Zeit der Umkehr sind markiert. Das Vorzeichen von v und das fortbestehende a werden erläutert."},
+        {"criterionId":"A-KON","pointsAwarded":1,"reason":"Der berechnete Endort liegt innerhalb der richtig bestimmten Grenzen."},
+        {"criterionId":"A-AFL","pointsAwarded":1.5,"reason":"Die Gesamtänderung 4 m/s und die gleichen Zuwächse je halber Sekunde sind über Flächen erklärt."},
+        {"criterionId":"A-VFL","pointsAwarded":1.5,"reason":"Beide Teilflächen werden mit Wert und Richtung ausdrücklich als Ortsänderungen gedeutet."},
+        {"criterionId":"A-WEG","pointsAwarded":1,"reason":"Beide Summen sind richtig. Die Rechnung führt den Vorzeichenwechsel aus, lässt aber den Grund offen, weshalb auch das rückwärts durchfahrene Stück positiv zur Streckenlänge beiträgt."},
+        {"criterionId":"B-GES","pointsAwarded":1,"reason":"Geschwindigkeits- und Ortsgesetz sind mit korrekten Koeffizienten angegeben."},
+        {"criterionId":"B-DIA","pointsAwarded":1.5,"reason":"Alle drei Kurven bis 3 s sind durch Verlauf, Achsen und Kennpunkte beschrieben."},
+        {"criterionId":"B-STP","pointsAwarded":1,"reason":"Die Antwort bestimmt 3 s und 9 m korrekt."},
+        {"criterionId":"B-PRG","pointsAwarded":0.5,"reason":"Bei 5 s ergeben sich −4 m/s und 5 m."},
+        {"criterionId":"B-RAT","pointsAwarded":2,"reason":"Die konstante Verringerung von v wird bis zur Rückwärtsfahrt und zur Ortsabnahme erklärt."},
+        {"criterionId":"B-STL","pointsAwarded":2,"reason":"Stillstand und Rückwärtsbeschleunigung werden anhand von Geschwindigkeit, Beschleunigung und Kraftgrund unterschieden."}
+      ],
+      "total":19,
+      "passes":true,
+      "diagnosis":"Die beiden beschrifteten Summen machen die Betragsbildung nachvollziehbar. Ich werte sie als richtigen Rechenweg. Die Erläuterung der Längenbedeutung bleibt implizit. Das ist eine begrenzte Erklärungslücke bei erkennbarem Verständnis.",
+      "localizedSlips":[]
+    },
+    {
+      "submissionId":"L07",
+      "scores":[
+        {"criterionId":"A-GTA","pointsAwarded":1,"reason":"Der Beschleunigungsgraph ist im ganzen Intervall korrekt beschrieben."},
+        {"criterionId":"A-GTV","pointsAwarded":1,"reason":"Die beschriftete Gerade enthält die richtige Nullstelle und die richtigen Geschwindigkeiten."},
+        {"criterionId":"A-GTS","pointsAwarded":1.5,"reason":"Im Graphen steht der Tiefpunkt richtig bei (2,5 s | 4,75 m). Auch Form und übrige Punkte stimmen."},
+        {"criterionId":"A-ORT","pointsAwarded":1,"reason":"Bei der ersten Ortsmarke steht nach richtigem Ansatz 4,57 m. Die beiden weiteren Marken sind richtig."},
+        {"criterionId":"A-UMK","pointsAwarded":1,"reason":"Die Umkehr wird ausdrücklich mit 4,75 m und dem richtigen Zusammenhang zwischen v und a erklärt."},
+        {"criterionId":"A-KON","pointsAwarded":1,"reason":"Das Intervall und der Schluss auf Verträglichkeit mit 7 m sind richtig."},
+        {"criterionId":"A-AFL","pointsAwarded":1,"reason":"Das Flächenergebnis trägt die falsche Einheit. Die Deutung als Δv und das Streifenargument sind richtig."},
+        {"criterionId":"A-VFL","pointsAwarded":1.5,"reason":"Die zwei gerichteten Ortsänderungen sind richtig berechnet und interpretiert."},
+        {"criterionId":"A-WEG","pointsAwarded":2,"reason":"+2 m und 2,50 m werden mit Vorzeichensumme und Betragssumme erklärt."},
+        {"criterionId":"B-GES","pointsAwarded":1,"reason":"Beide Gesetze sind richtig und enthalten die passenden Einheiten."},
+        {"criterionId":"B-DIA","pointsAwarded":1,"reason":"Beim t-v-Graphen steht als Achseneinheit m. Seine Gerade und die beiden übrigen Diagramme sind fachlich richtig."},
+        {"criterionId":"B-STP","pointsAwarded":0.5,"reason":"3 s stimmt. Beim Bremsweg wird die richtige Subtraktion 18 m − 9 m falsch ausgewertet."},
+        {"criterionId":"B-PRG","pointsAwarded":0.5,"reason":"Die beiden Programmwerte sind korrekt bestimmt."},
+        {"criterionId":"B-RAT","pointsAwarded":2,"reason":"Die Antwort erklärt die gleichmäßige Abnahme von v und die Rückwärtsfahrt von 9 m auf 5 m."},
+        {"criterionId":"B-STL","pointsAwarded":2,"reason":"Bedingungen für Stillstand und eine neue rückwärts gerichtete Beschleunigung sind richtig erklärt."}
+      ],
+      "total":18,
+      "passes":true,
+      "diagnosis":"Vier voneinander unabhängige lokale Fehler kosten zusammen 2 BE. Diagramme, Gesetze und Erklärungen belegen das Verständnis. Keine der vier Stellen trägt eine beibehaltene Fehlvorstellung.",
+      "localizedSlips":[
+        {"location":"A-ORT, Ergebnis für s(2,5 s)","description":"Nach 5 m − 0,5 m + 0,25 m steht 4,57 m. Tiefpunkt und Umkehrtext geben korrekt 4,75 m an.","deductedPoints":0.5,"followOnDeduction":false},
+        {"location":"A-AFL, Einheit des Rechteckergebnisses","description":"2 m/s² · 2 s wird mit 4 m/s² beschriftet. Richtig ist 4 m/s. Die anschließende Erklärung identifiziert die Geschwindigkeitsänderung richtig.","deductedPoints":0.5,"followOnDeduction":false},
+        {"location":"B-STP, letzte Gleichheit beim Bremsweg","description":"18 m − 9 m wird als 8 m ausgewertet. Der eigene Ortsgraph und die spätere Rückfahrt verwenden 9 m.","deductedPoints":0.5,"followOnDeduction":false},
+        {"location":"B-DIA, Achsenbeschreibung des t-v-Diagramms","description":"Die Angabe „v in m“ muss „v in m/s“ lauten. Koordinaten und Geschwindigkeitsgesetz passen.","deductedPoints":0.5,"followOnDeduction":false}
+      ]
+    },
+    {
+      "submissionId":"L08",
+      "scores":[
+        {"criterionId":"A-GTA","pointsAwarded":1,"reason":"Die waagerechte Strecke bei +2 m/s² ist auch bei 2,5 s korrekt beschrieben."},
+        {"criterionId":"A-GTV","pointsAwarded":1,"reason":"Die Gerade ist durch die richtigen Geschwindigkeitswerte und den Nulldurchgang festgelegt."},
+        {"criterionId":"A-GTS","pointsAwarded":1.5,"reason":"Öffnung, Kennpunkte und waagerechte Tangente der Ortsparabel stimmen."},
+        {"criterionId":"A-ORT","pointsAwarded":1.5,"reason":"4,75 m, 5 m und 7 m werden aus dem Ortsgesetz korrekt berechnet."},
+        {"criterionId":"A-UMK","pointsAwarded":1,"reason":"Die Umkehr am Minimum wird mit wechselndem Vorzeichen von v und weiterhin positivem a erklärt."},
+        {"criterionId":"A-KON","pointsAwarded":1,"reason":"Die Antwort berechnet das Kontrollintervall und ordnet 7,00 m korrekt ein."},
+        {"criterionId":"A-AFL","pointsAwarded":1.5,"reason":"Die Rechteckfläche ergibt Δv = 4 m/s. Gleich breite Streifen erklären die konstante Steigung."},
+        {"criterionId":"A-VFL","pointsAwarded":1.5,"reason":"Die Dreiecksflächen werden richtig berechnet und als negative beziehungsweise positive Ortsänderung gedeutet."},
+        {"criterionId":"A-WEG","pointsAwarded":2,"reason":"Die Antwort erklärt den Unterschied zwischen dem Ergebnis +2 m und der Strecke 2,50 m durch die Umkehr."},
+        {"criterionId":"B-GES","pointsAwarded":1,"reason":"Beide Funktionen für die Bremsphase stimmen."},
+        {"criterionId":"B-DIA","pointsAwarded":1.5,"reason":"Alle drei Kurven bis 3 s sind mit korrekten Achsen, Formen und Endpunkten beschrieben."},
+        {"criterionId":"B-STP","pointsAwarded":1,"reason":"Stoppzeit 3 s und Bremsweg 9 m werden richtig bestimmt."},
+        {"criterionId":"B-PRG","pointsAwarded":0.5,"reason":"Die eingesetzten 5 s liefern korrekt −4 m/s und 5 m."},
+        {"criterionId":"B-RAT","pointsAwarded":0,"reason":"Die Antwort endet bei den Programmwerten. Der Bezug zwischen fortgesetzter Rate, Nulldurchgang und Rückwärtsfahrt fehlt."},
+        {"criterionId":"B-STL","pointsAwarded":0,"reason":"Ein Vergleich mit dauerhaftem Stillstand und eine Erklärung über die resultierende Kraft fehlen."}
+      ],
+      "total":16,
+      "passes":false,
+      "diagnosis":"P-GRZ ist vollständig ausgelassen. Die Zahlen sind richtig, und die Arbeit behauptet auch keine falsche Modellgültigkeit. Über die physikalische Bedeutung der Fortsetzung trifft sie kein Urteil.",
+      "localizedSlips":[]
+    }
+  ],
+  "requiredCorrections":[
+    "In DE und EN jeweils die zweite Kopie des fachlichen Musterabsatzes entfernen. Den ursprünglichen Absatz genau einmal erhalten. Ergänzende Beispiele für volle Diagramm- und Erklärungspunkte gehören in den Bewertungsteil.",
+    "Die Punkte für das Erläutern der konstanten Änderungsrate so bündeln und gewichten, dass ihr vollständiges Fehlen weniger als 17 BE lässt. Dafür bestehende Teilpunkte umverteilen und die Gruppensummen neu prüfen. Eine zusätzliche Bestehensbedingung würde das Problem nicht regelgerecht lösen.",
+    "A-AFL und B-RAT in beiden Sprachfassungen für eindeutig zugeordnete, auch gemeinsam formulierte Erklärungen öffnen. Δv = a·Δt mit gedeuteten Größen, ein erläutertes Steigungsdreieck oder passende Flächenstreifen können dieselbe Einsicht zeigen. Eine bloße Aussage zum Bremsen in B liefert für sich noch keinen A-Flächennachweis.",
+    "A-KON für den gleichwertigen Vergleich |7,00 − 7,03| m = 0,03 m ≤ 0,05 m öffnen. Bei einem übernommenen fehlerhaften Endort auch den dazu folgerichtigen Schluss auf Unverträglichkeit werten. Für A-WEG angeben, wann erläuterte gerichtete Teilflächen und eine gekennzeichnete Betragssumme den Erklärpunkt bereits tragen.",
+    "Die Kernwiderspruchsregel auf inhaltlich belegte und beibehaltene Fehlvorstellungen begrenzen. Die Wiederverwendung desselben falschen Zwischenwerts oder seine Auswirkung auf einen Richtungsschluss darf allein keine Gruppennull auslösen. Ein richtiger Ansatz kann einen lokalen Fehler auch ohne zweite, widersprechende Ergebnisangabe erkennen lassen."
+  ]
+}

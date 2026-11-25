@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-24T20:34:38+00:00",
+  "operation": "CoachToolFacade.examScoring projected each stored set of scoring rows. The stock Claude and Gemini requireValidExamEvaluation methods then validated the resulting ExamEvaluationResult. The test isolates the pure validators by running their real implementations on Mockito receivers. The separate H2 suite exercises the full learner route.",
+  "preflightCatalog": {
+    "gitCommit": "7cea780f4f0beadef97ab5ed16de1571cfbbfa42",
+    "rawSha256": "78f0781ae1ecf0d9639bd29714fc58483f1a32a62c8b5b6c1c808adc05d2d77f"
+  },
+  "currentCatalog": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "76042a25b10ea7f89d461d3be4eeb48b6ae7239f23f7eb02b7132b55f3b60b5c"
+  },
+  "facadeSource": {
+    "path": "backend/src/main/java/com/skillpilot/backend/ai/CoachToolFacade.java",
+    "sha256": "e35078fcdf96cb9ed755f5d52a9e54e007590af1885c483822237cb9fadff5cd"
+  },
+  "providerSources": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "sha256": "0b45040ad15267426a8cb762dc97b1a4939ec1f9d66dd5a68888a0dae071df0e"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1McpContractAdapter.java",
+      "sha256": "c1e2046a69defc918e9dd60f433e81ca17009ee379f9a8f69e881a59025422e9"
+    }
+  ],
+  "validationSource": {
+    "path": "contracts/stage-plan-review-evidence/2026-11-24/e1-achievable-pass-marks/VerifyCoachEvaluation.java",
+    "sha256": "2c7a9153884b5df13b17abe7d6d438d759c6a87c7089b7499fb34d73c30d518e"
+  },
+  "actualResults": [
+    {
+      "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+      "previous": {
+        "maxStepUtf16Length": 4106,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        }
+      },
+      "current": {
+        "maxStepUtf16Length": 1748,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": true
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": true
+        }
+      }
+    },
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "previous": {
+        "maxStepUtf16Length": 3799,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        }
+      },
+      "current": {
+        "maxStepUtf16Length": 1736,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": true
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": true
+        }
+      }
+    },
+    {
+      "goalId": "c5807a37-129e-5df6-8989-482bc7f5683e",
+      "previous": {
+        "maxStepUtf16Length": 2486,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        }
+      },
+      "current": {
+        "maxStepUtf16Length": 1570,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": true
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": true
+        }
+      }
+    },
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "previous": {
+        "maxStepUtf16Length": 2149,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        }
+      },
+      "current": {
+        "maxStepUtf16Length": 1900,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": true
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": true
+        }
+      }
+    },
+    {
+      "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+      "previous": {
+        "maxStepUtf16Length": 292,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": true
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": true
+        }
+      },
+      "current": {
+        "maxStepUtf16Length": 292,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": true
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": true
+        }
+      }
+    },
+    {
+      "goalId": "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+      "previous": {
+        "maxStepUtf16Length": 1057,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": true
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": true
+        }
+      },
+      "current": {
+        "maxStepUtf16Length": 1057,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": true
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": true
+        }
+      }
+    },
+    {
+      "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+      "previous": {
+        "maxStepUtf16Length": 3096,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": false,
+          "exception": "ToolConflictException",
+          "message": "The active exam has no valid released evaluation data."
+        }
+      },
+      "current": {
+        "maxStepUtf16Length": 1532,
+        "ClaudeV1McpContractAdapter": {
+          "validEvaluation": true
+        },
+        "GeminiV1McpContractAdapter": {
+          "validEvaluation": true
+        }
+      }
+    }
+  ],
+  "previouslyAcceptedPerProvider": 2,
+  "currentlyAcceptedPerProvider": 7,
+  "unchangedLimitInUtf16CodeUnits": 2000
+}

@@ -1,0 +1,488 @@
+{
+  "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+  "candidateDecision": "revise",
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "Der Knoten enthält eine konkrete Übungsprüfung mit Arbeitsaufträgen, Musterlösung und Bewertungsraster. Das darunterliegende Lernziel ist separat referenziert. Die Speicherangabe „atomic“ begründet keine Einordnung als curricularAtomic.",
+  "physicsAndLanguage": "Die Physik und die erhaltenen Rechenwerte stimmen: Komponenten (2,0; 1,5) beziehungsweise (2,0; 3,0) m/s mit senkrechter Abwärtsrichtung, Beträge 2,5 und √13 ≈ 3,6 m/s, Auftreffwinkel arctan(3/2) ≈ 56,3°. Im gleichförmig mitfahrenden Wagen fällt die Kugel senkrecht; die Rückaddition ergibt die Bodengeschwindigkeit. Dies gilt im vorgegebenen Modell ohne Luftwiderstand und mit vernachlässigbarer Wagenhöhe. Die vorgegebenen Zeiten sind keine eigenen Messdaten. DE und EN stimmen fachlich überein; die Aufgabe ist als Vorbereitung mit AB1-/AB2-Anteilen angemessen. Zulässig sind andere Maßstäbe, Parallelogrammkonstruktion, exakte Ergebnisse und konsistente Koordinatenkonventionen. Messgrenzen müssen zum gewählten Maßstab und zur tatsächlich verwendeten Zeichnung passen.",
+  "scopeVerdict": "Abgedeckt ist ausschließlich das Zusammensetzen der Geschwindigkeit sowie das Bestimmen ihres Betrags und ihrer Richtung beim waagerechten Wurf. Die drei tragenden Leistungen folgen diesem tatsächlichen Zieltext. Komponentenbestimmung und Fallmodell sind Voraussetzungen; der Wagen liefert eine zusätzliche Anwendung der Vektoraddition. Bezugssystemwahl, Versuchsplanung, eigene Messreihen oder umfassende Wurfkompetenz werden nicht nachgewiesen. Die unveränderte Liste aller 16 Länder begründet weder einen bestimmten Landespflichtteil noch eine Änderung freiwilliger Angebote. Eine Rückgabe zur Korrektur genügt; ein unlösbarer Konflikt zwischen Aufgabe und Zielabdeckung besteht nicht.",
+  "scoringConsistency": "Die aktuellen Punktangaben stimmen in DE und EN überein: Teilmaxima 2/4/3/4/3, Zeilensummen ebenfalls 2/4/3/4/3, Gesamtmaximum 16. Die Grenze 13,5 entspricht 84,375 %; der Abstand zum Maximum beträgt 2,5. Die Gruppen wiegen 4/3/4 und überschreiten diesen Abstand jeweils. Im Aufgabentext wurden ausschließlich numerische Punkteangaben geändert. Die fachliche Musterlösung wurde hingegen in beiden Sprachen vollständig verdoppelt; dies verletzt die erlaubte Beschränkung auf Bewertungsänderungen. Problematisch sind außerdem die nachträgliche BET-Nullung trotz ausgewiesener Methodenpunkte und der Ausschluss einer gleichwertigen Auftreffkonstruktion aus Teil 5 bei z_res30. Unklar bleibt r_zun bei richtigen Komponentenangaben an anderer Stelle ohne Erklärung der Winkelzunahme. Hier werden dafür 0,5 BE als Teilnachweis vergeben; deshalb erhalten L04 und L05 dort jeweils 0,5 BE. Ein bloßer Geschwindigkeitspfeil ohne eingezeichneten Winkel erhält bei r_wink keine Winkelverfahrenspunkte. Diese Auslegung verändert keine der Bestehensentscheidungen.",
+  "carryingPerformanceAudit": [
+    {
+      "performanceId": "ZUS",
+      "earnedFromTask": "Auftrag 2 verlangt die geometrische Zusammensetzung zu beiden Zeitpunkten; Auftrag 5 verlangt dieselbe Vektoraddition im Zusammenhang der Bezugssysteme. Dies entspricht dem Zielbestandteil „aus waagerechter und senkrechter Komponente zusammensetzen“.",
+      "weight": 4,
+      "completeOmissionMaximum": 12,
+      "safeguardsAndLimits": "Unabhängig gerechnet: 16 − (1,5 + 1,5 + 1) = 12. Komponentenpfeile oder Betragsrechnungen allein ersetzen keine Resultierende. Eigene fehlerhafte Vorwerte verursachen keinen weiteren Abzug. Eine gleichwertige Auftreffkonstruktion muss unabhängig vom Antwortort berücksichtigt werden."
+    },
+    {
+      "performanceId": "BET",
+      "earnedFromTask": "Auftrag 3 verlangt tatsächlich bestimmte Geschwindigkeitsbeträge zu beiden Zeitpunkten und prüft damit unmittelbar den Zielbestandteil „Betrag bestimmen“.",
+      "weight": 3,
+      "completeOmissionMaximum": 13,
+      "safeguardsAndLimits": "Unabhängig gerechnet: 16 − (1,5 + 1,5) = 13. Positive Wurzelausdrücke sind vollständige exakte Ergebnisse. Ein fehlender zweiter Betrag ist eine tolerierbare Facettenlücke. Bereits ausdrücklich vergebene Methodenpunkte dürfen nicht allein wegen fehlender Endergebnisse nachträglich gruppenweise entzogen werden."
+    },
+    {
+      "performanceId": "RICHT",
+      "earnedFromTask": "Auftrag 4 verlangt den quantitativen Auftreffwinkel und die Erklärung seiner Zunahme. Dies konkretisiert den Zielbestandteil „Richtung bestimmen, etwa den Auftreffwinkel“.",
+      "weight": 4,
+      "completeOmissionMaximum": 12,
+      "safeguardsAndLimits": "Unabhängig gerechnet: 16 − (3 + 1) = 12. Rechnung und gekennzeichnete Winkelmessung sind gleichwertig. Eine fehlende Zunahmebegründung kann toleriert werden. Die begründet beibehaltene Verwechslung von Verschiebungsrichtung und momentaner Geschwindigkeitsrichtung verliert die gesamte Gruppe; eine bloße Lücke tut dies nicht."
+    }
+  ],
+  "coveredGoalReviews": [
+    {
+      "goalId": "0fee53f2-1c02-5b12-9b6c-aa9fa462d921",
+      "mustShow": "Die lernende Person muss Geschwindigkeit aus ihren Komponenten zusammensetzen sowie Betrag und momentane Richtung bestimmen können. Die beiden Zeitpunkte und der Auftreffwinkel liefern dafür unmittelbare, sichtbare Nachweise.",
+      "mayRemainOpen": "Eine einzelne Wiederholung oder die zusätzliche Erklärung der Winkelzunahme darf unvollständig bleiben. Nicht geprüft werden selbst durchgeführte Experimente, Messreihen, eigenständige Bezugssystemwahl oder andere Wurfarten.",
+      "whyTolerable": "Das Ziel betrifft eine begrenzte Vektorkompetenz. Drei ausreichend gewichtete Kernleistungen können diese im gegebenen Beispiel belegen, ohne jede Nebenfacette vorauszusetzen. Daraus folgt keine allgemeine oder landesspezifische Kompetenzfreigabe."
+    }
+  ],
+  "gradedSubmissions": [
+    {
+      "submissionId": "L01",
+      "scores": [
+        {
+          "criterionId": "k_vx",
+          "pointsAwarded": 1,
+          "reason": "Beide Werte und die Begründung durch fehlende Horizontalkraft stimmen."
+        },
+        {
+          "criterionId": "k_vy",
+          "pointsAwarded": 0.5,
+          "reason": "Ansatz und Zahlen stimmen; bei 0,15 s steht einmal m/s² statt m/s."
+        },
+        {
+          "criterionId": "z_komp",
+          "pointsAwarded": 0.5,
+          "reason": "Maßstab korrekt; der erste senkrechte Pfeil ist 3,5 statt 3,0 cm lang."
+        },
+        {
+          "criterionId": "z_res15",
+          "pointsAwarded": 1.5,
+          "reason": "Resultierende aus den eigenen Komponenten richtig konstruiert; kein Folgeabzug."
+        },
+        {
+          "criterionId": "z_res30",
+          "pointsAwarded": 1.5,
+          "reason": "Auftreffpfeil geometrisch richtig konstruiert."
+        },
+        {
+          "criterionId": "b_15",
+          "pointsAwarded": 1,
+          "reason": "Richtiger Pythagorasansatz; 4,0 + 2,25 wird fehlerhaft als 6,52 weitergeführt."
+        },
+        {
+          "criterionId": "b_30",
+          "pointsAwarded": 1.5,
+          "reason": "√13 m/s und die Rundung auf 3,6 m/s stimmen."
+        },
+        {
+          "criterionId": "r_wink",
+          "pointsAwarded": 3,
+          "reason": "Winkel korrekt berechnet und mit 56° als Messwert bestätigt."
+        },
+        {
+          "criterionId": "r_zun",
+          "pointsAwarded": 1,
+          "reason": "Zunehmendes v_y bei konstantem v_x erklärt die Winkelzunahme."
+        },
+        {
+          "criterionId": "f_bahn",
+          "pointsAwarded": 1,
+          "reason": "Senkrechter beschleunigter Fall im Wagenbezug richtig beschrieben."
+        },
+        {
+          "criterionId": "f_vrel",
+          "pointsAwarded": 0.5,
+          "reason": "Betrag und Abwärtsrichtung stimmen; die Koordinatenangabe enthält ein falsches Pluszeichen."
+        },
+        {
+          "criterionId": "f_add",
+          "pointsAwarded": 1,
+          "reason": "Pfeiladdition und Zuordnung zum Auftreffpfeil stimmen."
+        }
+      ],
+      "total": 14,
+      "passes": true,
+      "diagnosis": "Sicheres Verständnis aller drei Kernleistungen; vier voneinander unabhängige lokale Ausführungsfehler.",
+      "localizedSlips": [
+        {
+          "location": "Teil 1: v_y(0,15 s) = 1,5 m/s²",
+          "description": "Falsche Geschwindigkeitseinheit bei richtigem Ansatz und Zahlenwert.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Teil 2: erster senkrechter Pfeil endet bei (4,0|−3,5)",
+          "description": "Länge um 5 mm zu groß; die davon abhängige Resultierende wird nicht erneut belastet.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Teil 3: √(4,0 + 2,25) wird zu √6,52",
+          "description": "Lokaler Rechen- oder Übertragungsfehler; die anschließende Rundung auf 2,6 zählt nicht als weiterer Fehler.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Teil 5: v_rel = (0|+3,0 m/s)",
+          "description": "Vorzeichen widerspricht der festgelegten positiven Aufwärtsrichtung; Text und Pfeil zeigen eindeutig abwärts.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ]
+    },
+    {
+      "submissionId": "L02",
+      "scores": [
+        {
+          "criterionId": "k_vx",
+          "pointsAwarded": 1,
+          "reason": "Konstante Horizontalkomponente und physikalische Begründung stimmen."
+        },
+        {
+          "criterionId": "k_vy",
+          "pointsAwarded": 1,
+          "reason": "Beide senkrechten Komponenten richtig bestimmt."
+        },
+        {
+          "criterionId": "z_komp",
+          "pointsAwarded": 1,
+          "reason": "Beide Komponentenpaare passen zum angegebenen Maßstab."
+        },
+        {
+          "criterionId": "z_res15",
+          "pointsAwarded": 1.5,
+          "reason": "Erster Geschwindigkeitspfeil richtig konstruiert."
+        },
+        {
+          "criterionId": "z_res30",
+          "pointsAwarded": 1.5,
+          "reason": "Auftreffpfeil richtig konstruiert."
+        },
+        {
+          "criterionId": "b_15",
+          "pointsAwarded": 0,
+          "reason": "Weder Betragsansatz noch bestimmter Betrag für 0,15 s vorhanden."
+        },
+        {
+          "criterionId": "b_30",
+          "pointsAwarded": 0,
+          "reason": "Auch an anderer Stelle kein Auftreffbetrag bestimmt."
+        },
+        {
+          "criterionId": "r_wink",
+          "pointsAwarded": 3,
+          "reason": "Messung und Rechnung liefern den richtigen Auftreffwinkel."
+        },
+        {
+          "criterionId": "r_zun",
+          "pointsAwarded": 1,
+          "reason": "Die Zunahme des Komponentenverhältnisses wird richtig erklärt."
+        },
+        {
+          "criterionId": "f_bahn",
+          "pointsAwarded": 1,
+          "reason": "Senkrechter Fall und Landung auf dem Wagen richtig beschrieben."
+        },
+        {
+          "criterionId": "f_vrel",
+          "pointsAwarded": 1,
+          "reason": "3,0 m/s senkrecht nach unten richtig angegeben."
+        },
+        {
+          "criterionId": "f_add",
+          "pointsAwarded": 1,
+          "reason": "Richtige Pfeiladdition mit ausdrücklicher Wiedererkennung des Auftreffpfeils."
+        }
+      ],
+      "total": 13,
+      "passes": false,
+      "diagnosis": "Die Betragsbestimmung fehlt vollständig. Richtige Vektorpfeile ersetzen diese verlangte Leistung nicht.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L03",
+      "scores": [
+        {
+          "criterionId": "k_vx",
+          "pointsAwarded": 1,
+          "reason": "Horizontalkomponente und Begründung stimmen."
+        },
+        {
+          "criterionId": "k_vy",
+          "pointsAwarded": 1,
+          "reason": "Freier Fall und beide senkrechten Komponenten stimmen."
+        },
+        {
+          "criterionId": "z_komp",
+          "pointsAwarded": 1,
+          "reason": "Komponenten maßstäblich richtig angegeben."
+        },
+        {
+          "criterionId": "z_res15",
+          "pointsAwarded": 1.5,
+          "reason": "Erste geometrische Resultierende richtig konstruiert."
+        },
+        {
+          "criterionId": "z_res30",
+          "pointsAwarded": 1.5,
+          "reason": "Zweite geometrische Resultierende richtig konstruiert."
+        },
+        {
+          "criterionId": "b_15",
+          "pointsAwarded": 1.5,
+          "reason": "Betrag 2,5 m/s richtig berechnet."
+        },
+        {
+          "criterionId": "b_30",
+          "pointsAwarded": 1.5,
+          "reason": "Betrag √13 ≈ 3,6 m/s richtig berechnet."
+        },
+        {
+          "criterionId": "r_wink",
+          "pointsAwarded": 0,
+          "reason": "Die Verschiebungsrichtung wird ausdrücklich als momentane Geschwindigkeitsrichtung begründet."
+        },
+        {
+          "criterionId": "r_zun",
+          "pointsAwarded": 0,
+          "reason": "Die Erklärung führt dieselbe beibehaltene Fehlvorstellung mit dem Streckenverhältnis fort."
+        },
+        {
+          "criterionId": "f_bahn",
+          "pointsAwarded": 1,
+          "reason": "Senkrechter Fall im Wagenbezug richtig beschrieben."
+        },
+        {
+          "criterionId": "f_vrel",
+          "pointsAwarded": 1,
+          "reason": "Relative Auftreffgeschwindigkeit richtig angegeben."
+        },
+        {
+          "criterionId": "f_add",
+          "pointsAwarded": 1,
+          "reason": "Rückaddition zum richtigen Auftreffpfeil vollständig gezeigt."
+        }
+      ],
+      "total": 12,
+      "passes": false,
+      "diagnosis": "Ernsthafte, begründet beibehaltene Verwechslung von Verschiebungsrichtung und momentaner Geschwindigkeitsrichtung. Die gesamte Richtungsleistung entfällt; die übrigen Leistungen bleiben erhalten.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L04",
+      "scores": [
+        {
+          "criterionId": "k_vx",
+          "pointsAwarded": 1,
+          "reason": "Beide Horizontalwerte und ihre Begründung stimmen."
+        },
+        {
+          "criterionId": "k_vy",
+          "pointsAwarded": 1,
+          "reason": "Beide senkrechten Komponenten richtig bestimmt."
+        },
+        {
+          "criterionId": "z_komp",
+          "pointsAwarded": 1,
+          "reason": "Maßstab und Komponenten beider Zeitpunkte stimmen."
+        },
+        {
+          "criterionId": "z_res15",
+          "pointsAwarded": 1.5,
+          "reason": "Erster Geschwindigkeitspfeil richtig konstruiert."
+        },
+        {
+          "criterionId": "z_res30",
+          "pointsAwarded": 1.5,
+          "reason": "Auftreffpfeil richtig konstruiert."
+        },
+        {
+          "criterionId": "b_15",
+          "pointsAwarded": 1.5,
+          "reason": "Erster Betrag richtig berechnet."
+        },
+        {
+          "criterionId": "b_30",
+          "pointsAwarded": 1.5,
+          "reason": "Auftreffbetrag richtig berechnet."
+        },
+        {
+          "criterionId": "r_wink",
+          "pointsAwarded": 0,
+          "reason": "Kein Winkel angegeben, markiert, gemessen oder rechnerisch angesetzt."
+        },
+        {
+          "criterionId": "r_zun",
+          "pointsAwarded": 0.5,
+          "reason": "Passende Komponentenangaben stehen in Teil 1; der erklärende Schluss auf die Winkelzunahme fehlt."
+        },
+        {
+          "criterionId": "f_bahn",
+          "pointsAwarded": 1,
+          "reason": "Senkrechte Fallbahn im Wagenbezug richtig beschrieben."
+        },
+        {
+          "criterionId": "f_vrel",
+          "pointsAwarded": 1,
+          "reason": "Relative Auftreffgeschwindigkeit richtig angegeben."
+        },
+        {
+          "criterionId": "f_add",
+          "pointsAwarded": 1,
+          "reason": "Rückaddition und Übereinstimmung mit Teil A vollständig gezeigt."
+        }
+      ],
+      "total": 12.5,
+      "passes": false,
+      "diagnosis": "Winkelbestimmung und eigentliche Zunahmebegründung fehlen. Es liegt eine Leistungslücke vor, keine ausgesprochene Fehlvorstellung. Die unklare Teilnachweisregel bei r_zun beeinflusst das Nichtbestehen nicht.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L05",
+      "scores": [
+        {
+          "criterionId": "k_vx",
+          "pointsAwarded": 1,
+          "reason": "Konstante Horizontalkomponente richtig bestimmt und begründet."
+        },
+        {
+          "criterionId": "k_vy",
+          "pointsAwarded": 1,
+          "reason": "Beide senkrechten Komponenten stimmen."
+        },
+        {
+          "criterionId": "z_komp",
+          "pointsAwarded": 1,
+          "reason": "Komponenten und Maßstab richtig angegeben."
+        },
+        {
+          "criterionId": "z_res15",
+          "pointsAwarded": 1.5,
+          "reason": "Erste Resultierende richtig konstruiert."
+        },
+        {
+          "criterionId": "z_res30",
+          "pointsAwarded": 1.5,
+          "reason": "Auftreffresultierende richtig konstruiert."
+        },
+        {
+          "criterionId": "b_15",
+          "pointsAwarded": 1.5,
+          "reason": "Betrag 2,5 m/s richtig berechnet."
+        },
+        {
+          "criterionId": "b_30",
+          "pointsAwarded": 1.5,
+          "reason": "Betrag √13 ≈ 3,6 m/s richtig berechnet."
+        },
+        {
+          "criterionId": "r_wink",
+          "pointsAwarded": 3,
+          "reason": "Auftreffwinkel richtig gemessen und rechnerisch kontrolliert."
+        },
+        {
+          "criterionId": "r_zun",
+          "pointsAwarded": 0.5,
+          "reason": "Komponentenabhängigkeiten sind zuvor angegeben; eine Erklärung der Winkelzunahme fehlt."
+        },
+        {
+          "criterionId": "f_bahn",
+          "pointsAwarded": 1,
+          "reason": "Senkrechter Fall und Landung auf dem Wagen richtig beschrieben."
+        },
+        {
+          "criterionId": "f_vrel",
+          "pointsAwarded": 1,
+          "reason": "3,0 m/s senkrecht nach unten richtig angegeben."
+        },
+        {
+          "criterionId": "f_add",
+          "pointsAwarded": 1,
+          "reason": "Korrekte Rückaddition mit Zuordnung zum Auftreffpfeil."
+        }
+      ],
+      "total": 15.5,
+      "passes": true,
+      "diagnosis": "Alle drei Kernleistungen sind gezeigt. Der fehlende Erklärungsschritt zur Winkelzunahme ist eine tolerierbare Facettenlücke und kein Formfehler.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L06",
+      "scores": [
+        {
+          "criterionId": "k_vx",
+          "pointsAwarded": 1,
+          "reason": "Horizontalkomponente und Trägheitsbegründung stimmen."
+        },
+        {
+          "criterionId": "k_vy",
+          "pointsAwarded": 1,
+          "reason": "Beide senkrechten Komponenten richtig berechnet."
+        },
+        {
+          "criterionId": "z_komp",
+          "pointsAwarded": 1,
+          "reason": "Maßstäbliche Komponenten mit gemeinsamem Ursprung sind korrekt."
+        },
+        {
+          "criterionId": "z_res15",
+          "pointsAwarded": 0,
+          "reason": "Kein Summenpfeil oder Parallelogrammdiagonale für 0,15 s vorhanden."
+        },
+        {
+          "criterionId": "z_res30",
+          "pointsAwarded": 0,
+          "reason": "Auch beim Auftreffen keine Resultierende konstruiert."
+        },
+        {
+          "criterionId": "b_15",
+          "pointsAwarded": 1.5,
+          "reason": "Erster Betrag richtig mit Pythagoras berechnet."
+        },
+        {
+          "criterionId": "b_30",
+          "pointsAwarded": 1.5,
+          "reason": "Auftreffbetrag richtig berechnet."
+        },
+        {
+          "criterionId": "r_wink",
+          "pointsAwarded": 3,
+          "reason": "Auftreffwinkel richtig berechnet."
+        },
+        {
+          "criterionId": "r_zun",
+          "pointsAwarded": 1,
+          "reason": "Winkelzunahme über das zunehmende Komponentenverhältnis richtig erklärt."
+        },
+        {
+          "criterionId": "f_bahn",
+          "pointsAwarded": 1,
+          "reason": "Senkrechter beschleunigter Fall im Wagenbezug richtig beschrieben."
+        },
+        {
+          "criterionId": "f_vrel",
+          "pointsAwarded": 1,
+          "reason": "Relative Auftreffgeschwindigkeit richtig angegeben."
+        },
+        {
+          "criterionId": "f_add",
+          "pointsAwarded": 0,
+          "reason": "Keine Rückaddition als Pfeilkonstruktion oder Komponentenaddition gezeigt."
+        }
+      ],
+      "total": 12,
+      "passes": false,
+      "diagnosis": "Die verlangte Vektoraddition fehlt vollständig. Komponenten, Beträge und Winkel sind richtig; daraus darf keine tatsächlich ausgeführte Pfeilkonstruktion unterstellt werden.",
+      "localizedSlips": []
+    }
+  ],
+  "requiredCorrections": [
+    "Die doppelte fachliche Musterlösung in solutionContent und solutionContentEn entfernen. Die ursprünglichen Lösungsschritte 1–5 jeweils genau einmal erhalten; ausschließlich den Bewertungsteil ändern.",
+    "Die BET-Regel „kein Betrag bestimmt, deshalb ganze Gruppe 0“ mit den zugesagten Methodenpunkten vereinbaren. Keine bereits belegten Teilpunkte allein wegen einer Ergebnislücke nachträglich löschen; Einzelzeilen und Gruppenregel widerspruchsfrei formulieren.",
+    "Eine geometrisch gleichwertige Auftreffkonstruktion aus Teil 5 auch als Nachweis für z_res30 zulassen. f_add bewertet zusätzlich die Zuordnung der Bezugssystemgeschwindigkeiten und die Wiedererkennung des Auftreffpfeils; jede Kriterienleistung bleibt einmalig.",
+    "r_zun eindeutig regeln: Welche Teilpunkte erhalten richtige Komponentenabhängigkeiten an anderer Stelle, wenn der Schluss auf die Winkelzunahme fehlt? Außerdem ausdrücklich zwischen einem markierten, noch ungemessenen Winkel und einem bloßen Geschwindigkeitspfeil unterscheiden.",
+    "Die festen Zeichnungs- und Winkeltoleranzen mit beliebigen sinnvollen Maßstäben und der Bewertung gegen eigene Komponenten abstimmen. Korrektes Messen an einer bereits bewerteten eigenen Zeichnung darf keinen weiteren Abzug auslösen."
+  ]
+}

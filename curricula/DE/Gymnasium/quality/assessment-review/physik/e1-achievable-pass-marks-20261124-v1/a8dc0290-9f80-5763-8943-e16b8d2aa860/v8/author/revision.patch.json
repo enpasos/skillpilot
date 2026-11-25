@@ -1,0 +1,35 @@
+{
+  "status": "patch",
+  "changes": [
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "passender Schluss „verträglich an diesem Zeitpunkt“; ein folgerichtiger Schluss aus einem übernommenen Endort zählt.",
+      "replacement": "passender Schluss, beim richtigen Endort „verträglich an diesem Zeitpunkt“; ein folgerichtiger Schluss aus einem übernommenen Endort zählt, auch wenn er „unverträglich“ lautet."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "  - Bei rein graphischer Ablesung (±0,1 m) entscheidet die Überlappung der Intervalle: Richtig ist dann „verträglich“ bzw. „nicht widerlegt“. Ein sicheres „unverträglich“ oder eine Folgerung unbegrenzter Gültigkeit ergibt im Schlussband 0.",
+      "replacement": "  - Bei rein graphischer Ablesung (±0,1 m) entscheidet die Überlappung der Intervalle.\n    - Überlappen Ableseintervall und [6,98; 7,08] m, ist „verträglich“ bzw. „nicht widerlegt“ richtig. Ein sicheres „unverträglich“ ergibt dann im Schlussband 0.\n    - Sind die Intervalle getrennt, ist der folgerichtige Schluss „unverträglich“ richtig und erhält die 0,5 BE. Beispiel: Ein aus einem früheren Fehler übernommener Graphwert 6,80 ± 0,10 m ergibt [6,70; 6,90] m. Dieses Intervall ist von [6,98; 7,08] m getrennt. Der frühere Fehler wird nur an seinem Ursprung belastet.\n  - Wer aus dem einen Kontrollpunkt unbegrenzte Modellgültigkeit folgert, erhält im Schlussband 0."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "  - 0.5 conclusion consistent with the learner's own final position, ‘compatible at this instant’; a consistent conclusion from a carried-forward final position counts.",
+      "replacement": "  - 0.5 conclusion consistent with the learner's own final position; for the correct final position this is ‘compatible at this instant’. A consistent conclusion from a carried-forward final position counts, even when it reads ‘incompatible’."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "  - For a purely graphical reading (±0.1 m), overlap of the intervals decides; the correct conclusion is then ‘compatible’ or ‘not refuted’. A definite ‘incompatible’ or a claim of unlimited validity earns 0 in the conclusion band.",
+      "replacement": "  - For a purely graphical reading (±0.1 m), overlap of the intervals decides.\n    - If the reading interval overlaps [6.98, 7.08] m, ‘compatible’ or ‘not refuted’ is correct. A definite ‘incompatible’ then earns 0 in the conclusion band.\n    - If the intervals are separate, the consistent conclusion ‘incompatible’ is correct and earns the 0.5 mark. Example: a graph value of 6.80 ± 0.10 m carried forward from an earlier error gives [6.70, 6.90] m. This interval is separate from [6.98, 7.08] m. The earlier error is charged only at its origin.\n  - Claiming unlimited model validity from the single check point earns 0 in the conclusion band."
+    },
+    {
+      "field": "steps.A-KON.description",
+      "find": "Beispiel: Die Ablesung 6,9 ± 0,1 m ergibt 6,8 bis 7,0 m und überlappt 6,98 bis 7,08 m.",
+      "replacement": "Beispiel: Die Ablesung 6,9 ± 0,1 m ergibt 6,8 bis 7,0 m und überlappt 6,98 bis 7,08 m. Sind die Intervalle getrennt, ist der folgerichtige Schluss „unverträglich“ richtig und erhält 0,5 BE. Beispiel: Der übernommene Wert 6,80 ± 0,10 m ergibt [6,70; 6,90] m."
+    },
+    {
+      "field": "steps.A-KON.description",
+      "find": "Example: the reading 6.9 ± 0.1 m gives 6.8 to 7.0 m and overlaps 6.98 to 7.08 m.",
+      "replacement": "Example: the reading 6.9 ± 0.1 m gives 6.8 to 7.0 m and overlaps 6.98 to 7.08 m. If the intervals are separate, the consistent conclusion ‘incompatible’ is correct and earns 0.5. Example: the carried-forward value 6.80 ± 0.10 m gives [6.70, 6.90] m."
+    }
+  ]
+}

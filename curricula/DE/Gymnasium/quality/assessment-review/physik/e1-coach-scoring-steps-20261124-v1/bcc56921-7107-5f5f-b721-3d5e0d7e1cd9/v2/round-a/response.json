@@ -1,0 +1,723 @@
+{
+  "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+  "candidateDecision": "accept",
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "Eigenständig verfasste schriftliche Übungsprüfung mit sechs Teilaufgaben, 36 BE und Bestehensschwelle. Sie verbindet mehrere fachliche und prozessbezogene Leistungen. Das gespeicherte type='atomic' macht sie nicht zu einem curricularAtomic.",
+  "physicsAndLanguage": "Die drei deutschen und englischen Kurzbeschreibungen sind zusammen mit den unveränderten, eindeutig zugeordneten Korrekturhinweisen fachlich und bewertungspraktisch äquivalent. Nachgerechnet: v_x=+2,00 m/s, t_F=0,500 s, x_F=1,00 m, v_y=-5,00 m/s; y(x)=1,25 m-(1,25 m⁻¹)x²; bei doppeltem v_x bleiben Flugzeit und senkrechte Bewegung gleich, die Weite wird 2,00 m. Luftwiderstand kann die senkrechte Bewegung mit der Gesamtbewegung koppeln, erzwingt aber ohne konkretes Modell weder unterschiedliche Fallzeiten noch eine Ankunftsreihenfolge. Die Schwerpunktbahn ausgedehnter Körper und deren erster Kontakt werden korrekt unterschieden. Präzise textliche Graphdarstellungen belegen hier Verlauf, Kennwerte und Beschriftung. Die konstruierte Tabelle ermöglicht eine Modellprüfung, keinen experimentellen Nachweis.",
+  "scopeVerdict": "Freigabe der drei geänderten Beschreibungen im Zusammenspiel mit der vollständigen Lösung. Das Angebot ist Klausurtraining mit Leistungen aus AB1–AB3; die Modellkritik trägt den höchsten Anspruch. Länderzuordnung, E-Phase und GK/LK-Tags belegen weder landesspezifische Prüfungsgleichwertigkeit noch amtliche Freigabe. Experimentelles Untersuchen des waagerechten Wurfs wird nicht nachgewiesen. Ein Bestehen liefert begrenzte aufgabenbezogene Evidenz zum einzigen coveredGoal, keine automatische vollständige Zielbeherrschung. Der übernommene Status released ersetzt die noch ausstehende Aktivierung nicht.",
+  "scoringConsistency": "18 Einpunktkriterien und sechs Dreipunktkriterien ergeben 36 BE: Aufgaben 1–5 zusammen 17, Feldannahme 1, P-MP 9 und P-DRAG 9. Bestanden wird ausschließlich ab 30,5 BE. Der Spielraum beträgt 5,5 BE; vollständiger Entfall einer tragenden Gruppe begrenzt die Summe auf 27. Mindestens 3,5 BE je Gruppe sind eine rechnerische Folge, keine zusätzliche Bestehensbedingung. Eine fehlende vollständige Facette kostet 3 BE; mit vier weiteren unabhängigen kleinen Fehlern bleiben 31 BE. Ausschließlich beide Richtungsfolgen des Luftwiderstands ergeben in P-DRAG 3 BE und bei sonst perfekter Arbeit insgesamt 30 BE, ohne Doppelanrechnung. Neubewertung: L01 27, L02 27, L03 34, L04 27, L05 33 BE. Bei L03 werden vier unabhängige lokale Fehler jeweils einmal mit 0,5 BE belastet. Fehlende Facetten und beibehaltene Fehlvorstellungen werden davon getrennt behandelt.",
+  "stepCompressionChecks": [
+    {
+      "criterionId": "t6-drag-claim",
+      "equivalent": true,
+      "reason": "DE und EN erhalten Urteil mit benanntem Unterschied A–B, zusätzlichen Mechanismus, Einschluss von (a) durch ausgeführtes (b), Stufen, Selbstkorrektur und Reihenfolgeausnahme. Die vollständigen Hinweise sichern die einmalige Fehlerbelastung. Grenzfälle: Ein begründeter Unterschied ohne Mechanismus ergibt 1,5 BE; nur 'wirkt auch senkrecht, deshalb Gleichzeitigkeit nicht gesichert' ergibt hier 0 und gegebenenfalls 1,5 in t6-drag-limits. Eine beibehaltene universelle Reihenfolge setzt P-DRAG auf 0; eine bedingte Reihenfolge für ein genanntes Modell bleibt zulässig."
+    },
+    {
+      "criterionId": "t6-drag-cond",
+      "equivalent": true,
+      "reason": "DE und EN erhalten Genauigkeitsbezug über die Flugzeit, situationsbezogene Bedingung statt Garantie, konkrete Abschätzung als Alternative sowie die Stufen 3/1,5/0. Die verkürzte Gruppenreferenz ist durch die unveränderte ausführliche Gruppenregel einschließlich Fehlvorstellungsabgrenzung vollständig bestimmt. Grenzfälle: Nur ein bedingt genanntes Plausibilitätsmerkmal ohne Genauigkeitsbezug ergibt 1,5 BE; ein direkt auf die zulässige Ortsabweichung bezogenes situationsbezogenes Kleinheitsargument erfüllt beide Facetten und ergibt 3. Eine unbedingte Garantie aus kurzer Flugzeit genügt nicht."
+    },
+    {
+      "criterionId": "t6-mp-size",
+      "equivalent": true,
+      "reason": "DE und EN erhalten Vergleichsbasis, Nutzung als Bedingung oder Grenze, Verzicht auf Zahlen sowie den alternativen Vollbeleg über exakte Schwerpunktbahn und ersten Kontakt. Dass Kleinheit hinreichend, aber nicht notwendig ist, bleibt durch Kurzform und ausführliche Toleranzen anwendbar. Grenzfälle: 'klein gegenüber den betrachteten Strecken' als Bedingung ergibt 3 BE; '1 cm gegenüber 1,25 m' als bloße Feststellung 1,5; nur 'klein' 0. Große oder rotierende Körper lösen bei korrekt unterschiedener Schwerpunktbahn und Kontaktlage keine Gruppenabwertung aus."
+    }
+  ],
+  "carryingPerformanceAudit": [
+    {
+      "performanceId": "P-MP",
+      "earnedFromTask": "Aufgabe 6: repräsentativer Punkt für die Ortsvorhersage, Größenvergleich als Näherungsbedingung oder Grenze sowie Bedeutung von Orientierung, Drehung und Verformung; t6-mp-core, t6-mp-size und t6-mp-rot mit je 3 BE.",
+      "weight": 9,
+      "completeOmissionMaximum": 27,
+      "safeguardsAndLimits": "9 BE entsprechen 25 Prozent der Gesamtpunkte und überschreiten den Bestehensspielraum von 5,5 BE. Vollständiges Fehlen oder eine beibehaltene konzeptionelle Fehlvorstellung verhindert rechnerisch das Bestehen. Eine einzelne Facette darf fehlen, wie bei L05; das ist kein Formfehler. Fachlich richtige Alternativen zur Schwerpunktbahn ausgedehnter Körper bleiben voll anrechenbar. Eine einzelne missglückte, durch die eigene Begründung klar widerlegte Formulierung kostet höchstens einmal 0,5 BE."
+    },
+    {
+      "performanceId": "P-DRAG",
+      "earnedFromTask": "Aufgabe 6: bedingte Rechtfertigung vernachlässigbaren Luftwiderstands, Folgen verletzter Bedingungen in beiden Richtungen und eigenständige Beurteilung der Gleichzeitigkeitsbehauptung; t6-drag-cond, t6-drag-limits und t6-drag-claim mit je 3 BE.",
+      "weight": 9,
+      "completeOmissionMaximum": 27,
+      "safeguardsAndLimits": "9 BE entsprechen 25 Prozent der Gesamtpunkte. Vollständiges Fehlen oder die begründete beziehungsweise wiederholte Behauptung ausschließlich waagerechter Widerstandswirkung setzt die gesamte Gruppe auf 0. Allgemeine senkrechte Wirkung wird ausschließlich in t6-drag-limits angerechnet; zusätzliche Punkte in t6-drag-claim benötigen Unterschied und gegebenenfalls Mechanismus. Widerstandsgesetz, Daten und Ankunftsreihenfolge sind nicht verlangt. Bedingte Aussagen zu einem genannten Modell sind zulässig; eine universelle Reihenfolge ist keine solche Ausnahme."
+    }
+  ],
+  "coveredGoalReviews": [
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "mustShow": "Aufgabenbezogene Auseinandersetzung mit Zweck, Bedingungen und Grenzen der Massepunktbeschreibung sowie der Vernachlässigung des Luftwiderstands. Für ein Bestehen müssen in beiden tragenden Gruppen rechnerisch mindestens 3,5 von 9 BE verbleiben; eine vollständig fehlende oder konzeptionell verworfene Gruppe ist nicht kompensierbar.",
+      "mayRemainOpen": "Eine einzelne Facette, etwa Drehung und Verformung, darf fehlen; auch eine andere einzelne Dreipunktfacette ist durch die Summenwertung kompensierbar. Nicht verlangt sind quantitative Widerstandsrechnung, allgemeine Behandlung aller Reibungsmodelle, experimentelle Validierung oder ein vollständiger Nachweis sämtlicher denkbarer Modellgrenzen.",
+      "whyTolerable": "Das Ziel verlangt begründeten Umgang mit Idealisierungen und ihren Vorhersagegrenzen, keinen erschöpfenden Katalog. Beide Modellbereiche müssen substanziell vertreten sein. Die zulässigen Facettenlücken begrenzen die Aussage des Bestehens auf diese Übungsprüfung; sie rechtfertigen keine automatische vollständige Beherrschungszuschreibung."
+    }
+  ],
+  "gradedSubmissions": [
+    {
+      "submissionId": "L01",
+      "scores": [
+        {
+          "criterionId": "t1-x",
+          "pointsAwarded": 1,
+          "reason": "Gleiche Zuwächse begründen konstante +2,00 m/s; x_B(t)=v_x t ist angegeben."
+        },
+        {
+          "criterionId": "t1-yt",
+          "pointsAwarded": 1,
+          "reason": "Anfangshöhe, negativer quadratischer Term und fehlender linearer Term sind richtig."
+        },
+        {
+          "criterionId": "t1-vay",
+          "pointsAwarded": 1,
+          "reason": "v_y=-10t und konstantes a_y=-10,0 m/s² sind korrekt angegeben."
+        },
+        {
+          "criterionId": "t1-check",
+          "pointsAwarded": 1,
+          "reason": "Beide Ortsgesetze werden zu 0,40 m und 1,05 m ausgewertet und verglichen."
+        },
+        {
+          "criterionId": "t2-force-x",
+          "pointsAwarded": 1,
+          "reason": "Gewichtskraft nach unten und fehlende horizontale Kraft begründen konstantes v_x."
+        },
+        {
+          "criterionId": "t2-y-acc",
+          "pointsAwarded": 1,
+          "reason": "Die senkrechte Bewegung wird mit konstantem a_y=-g als gleichmäßig beschleunigt erklärt."
+        },
+        {
+          "criterionId": "t2-indep-init",
+          "pointsAwarded": 1,
+          "reason": "Unabhängiges y-Gesetz und gleiche Anfangswerte begründen y_A(t)=y_B(t)."
+        },
+        {
+          "criterionId": "t2-shared-t",
+          "pointsAwarded": 1,
+          "reason": "Gemeinsames t und gleichzeitiger Ablauf werden erklärt; Zeitaddition wird verworfen."
+        },
+        {
+          "criterionId": "t3-tf",
+          "pointsAwarded": 1,
+          "reason": "Auftreffbedingung und Wurzelansatz ergeben ausdrücklich für beide Körper 0,500 s."
+        },
+        {
+          "criterionId": "t3-range",
+          "pointsAwarded": 1,
+          "reason": "Mit derselben Flugzeit wird x_F=2,00·0,500=1,00 m berechnet."
+        },
+        {
+          "criterionId": "t3-v",
+          "pointsAwarded": 1,
+          "reason": "Beide Auftreffkomponenten sind mit +2,00 und -5,00 m/s korrekt."
+        },
+        {
+          "criterionId": "t4-path-eq",
+          "pointsAwarded": 1,
+          "reason": "Die Zeit wird eliminiert; Koeffizient 1,25 m⁻¹ und Bahnformel stimmen."
+        },
+        {
+          "criterionId": "t4-sketch",
+          "pointsAwarded": 1,
+          "reason": "Parabelast, Anfangstangente, Achsen, Einheiten, Endpunkte und vier Zwischenpunkte sind beschrieben."
+        },
+        {
+          "criterionId": "t4-double",
+          "pointsAwarded": 1,
+          "reason": "Unveränderte y-Bedingungen begründen 0,500 s; die neue Weite ist 2,00 m."
+        },
+        {
+          "criterionId": "t5-y-graph",
+          "pointsAwarded": 1,
+          "reason": "Verlauf, Anfangstangente, Anfangs- und Endwerte sowie Achsenbeschriftung sind vollständig."
+        },
+        {
+          "criterionId": "t5-va-graphs",
+          "pointsAwarded": 1,
+          "reason": "Fallende Geschwindigkeitsgerade und konstante Beschleunigung einschließlich t=0 sind vollständig beschrieben."
+        },
+        {
+          "criterionId": "t5-consistency",
+          "pointsAwarded": 1,
+          "reason": "Beschleunigung wird als bereits anfangs negative Steigung statt Geschwindigkeitswert erklärt."
+        },
+        {
+          "criterionId": "t6-field",
+          "pointsAwarded": 1,
+          "reason": "Gleicher Betrag und gleiche Richtung von g werden mit konstantem a_y verknüpft."
+        },
+        {
+          "criterionId": "t6-mp-core",
+          "pointsAwarded": 3,
+          "reason": "Der Schwerpunkt repräsentiert den Körper ausdrücklich für Bahn, Auftreffort und Fallzeit."
+        },
+        {
+          "criterionId": "t6-mp-size",
+          "pointsAwarded": 3,
+          "reason": "Kleinheit gegenüber relevanten Strecken wird als Näherungsbedingung und Grenze verwendet."
+        },
+        {
+          "criterionId": "t6-mp-rot",
+          "pointsAwarded": 3,
+          "reason": "Drehung, Lage und Verformung werden ausdrücklich auf ihre Bedeutung für die Ortsvorhersage bezogen."
+        },
+        {
+          "criterionId": "t6-drag-cond",
+          "pointsAwarded": 0,
+          "reason": "P-DRAG-Gruppenregel: ausschließlich waagerechte Wirkung wird begründet und beibehalten."
+        },
+        {
+          "criterionId": "t6-drag-limits",
+          "pointsAwarded": 0,
+          "reason": "Senkrechte Widerstandswirkung wird wiederholt ausgeschlossen; die Gruppenfehlvorstellung bleibt bestehen."
+        },
+        {
+          "criterionId": "t6-drag-claim",
+          "pointsAwarded": 0,
+          "reason": "Zwangsläufig gleiche Fallzeit von 0,500 s wird mit der falschen Richtungsbeschränkung begründet."
+        }
+      ],
+      "total": 27,
+      "passes": false,
+      "diagnosis": "Idealbewegung, Feldannahme und Massepunktgruppe sind vollständig belegt. Die ideale Unabhängigkeit wird ausdrücklich und wiederholt auf Bewegung mit Luftwiderstand übertragen. Deshalb verliert P-DRAG insgesamt 9 BE; unabhängige Leistungen bleiben erhalten.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L02",
+      "scores": [
+        {
+          "criterionId": "t1-x",
+          "pointsAwarded": 1,
+          "reason": "Konstante Tabellenzuwächse begründen +2,00 m/s und das richtige x-Gesetz."
+        },
+        {
+          "criterionId": "t1-yt",
+          "pointsAwarded": 1,
+          "reason": "Das Höhenzeitgesetz enthält richtige Anfangshöhe und ausschließlich den negativen quadratischen Term."
+        },
+        {
+          "criterionId": "t1-vay",
+          "pointsAwarded": 1,
+          "reason": "Geschwindigkeitsgesetz und konstante negative Beschleunigung sind korrekt."
+        },
+        {
+          "criterionId": "t1-check",
+          "pointsAwarded": 1,
+          "reason": "Beide Koordinaten werden bei 0,20 s richtig ausgewertet und mit der Tabelle verglichen."
+        },
+        {
+          "criterionId": "t2-force-x",
+          "pointsAwarded": 1,
+          "reason": "Nur senkrechte Gewichtskraft und horizontale Kraftfreiheit erklären die gleichförmige x-Bewegung."
+        },
+        {
+          "criterionId": "t2-y-acc",
+          "pointsAwarded": 1,
+          "reason": "Konstantes a_y=-g und gleichmäßige Beschleunigung werden ausdrücklich genannt."
+        },
+        {
+          "criterionId": "t2-indep-init",
+          "pointsAwarded": 1,
+          "reason": "Fehlendes x und v_x im y-Gesetz sowie gleiche Anfangswerte begründen gleiche Höhen."
+        },
+        {
+          "criterionId": "t2-shared-t",
+          "pointsAwarded": 1,
+          "reason": "Gleichzeitige Teilbewegungen verwenden dieselbe Zeit; getrennte Zeiten werden nicht addiert."
+        },
+        {
+          "criterionId": "t3-tf",
+          "pointsAwarded": 1,
+          "reason": "Die gemeinsame Auftreffbedingung liefert für A und B nachvollziehbar 0,500 s."
+        },
+        {
+          "criterionId": "t3-range",
+          "pointsAwarded": 1,
+          "reason": "Die gemeinsame Flugzeit wird korrekt zu 1,00 m Wurfweite verknüpft."
+        },
+        {
+          "criterionId": "t3-v",
+          "pointsAwarded": 1,
+          "reason": "Horizontale und senkrechte Auftreffgeschwindigkeit einschließlich Vorzeichen stimmen."
+        },
+        {
+          "criterionId": "t4-path-eq",
+          "pointsAwarded": 1,
+          "reason": "t=x_B/v_x wird eingesetzt und die richtige zeitfreie Bahnformel hergeleitet."
+        },
+        {
+          "criterionId": "t4-sketch",
+          "pointsAwarded": 1,
+          "reason": "Alle geforderten Kurvenmerkmale, Beschriftungen und Punkte sind eindeutig beschrieben."
+        },
+        {
+          "criterionId": "t4-double",
+          "pointsAwarded": 1,
+          "reason": "Gleichbleibende Flugzeit wird begründet; Verdopplung der Weite auf 2,00 m folgt richtig."
+        },
+        {
+          "criterionId": "t5-y-graph",
+          "pointsAwarded": 1,
+          "reason": "Die beschriftete Höhenparabel besitzt richtige Tangente und Anfangs- und Endwerte."
+        },
+        {
+          "criterionId": "t5-va-graphs",
+          "pointsAwarded": 1,
+          "reason": "Beide Verläufe mit Einheiten, gemeinsamer Zeitachse und korrekten Kennwerten sind vollständig."
+        },
+        {
+          "criterionId": "t5-consistency",
+          "pointsAwarded": 1,
+          "reason": "Die anfänglich negative Geschwindigkeitssteigung erklärt a_y trotz v_y=0."
+        },
+        {
+          "criterionId": "t6-field",
+          "pointsAwarded": 1,
+          "reason": "Räumlich gleicher Betrag und gleiche Richtung von g begründen das konstante Beschleunigungsmodell."
+        },
+        {
+          "criterionId": "t6-mp-core",
+          "pointsAwarded": 0,
+          "reason": "Eine zweckbezogene Ersetzung durch einen repräsentativen Punkt fehlt vollständig."
+        },
+        {
+          "criterionId": "t6-mp-size",
+          "pointsAwarded": 0,
+          "reason": "Eine Größenbedingung oder entsprechende Grenze des Punktmodells fehlt."
+        },
+        {
+          "criterionId": "t6-mp-rot",
+          "pointsAwarded": 0,
+          "reason": "Orientierung, Drehung und Verformung werden hinsichtlich der Ortsvorhersage nicht behandelt."
+        },
+        {
+          "criterionId": "t6-drag-cond",
+          "pointsAwarded": 3,
+          "reason": "Genauigkeitsbezug über die ganze Flugzeit und bedingte situationsbezogene Plausibilitätsmerkmale sind vorhanden."
+        },
+        {
+          "criterionId": "t6-drag-limits",
+          "pointsAwarded": 3,
+          "reason": "Horizontale Abbremsung und senkrechte Abweichung samt Grenzen der Orts- und Zeitvorhersagen werden erläutert."
+        },
+        {
+          "criterionId": "t6-drag-claim",
+          "pointsAwarded": 3,
+          "reason": "Bs zusätzliches v_x wird über mögliche Abhängigkeit des senkrechten Widerstands von der Gesamtgeschwindigkeit verknüpft."
+        }
+      ],
+      "total": 27,
+      "passes": false,
+      "diagnosis": "Idealbewegung und Luftwiderstandsgruppe sind vollständig belegt. Die gesamte Massepunktgruppe fehlt. Das sind fachliche Auslassungen ohne Formfehlerabzug; bei 27 BE wird die Bestehensschwelle nicht erreicht.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L03",
+      "scores": [
+        {
+          "criterionId": "t1-x",
+          "pointsAwarded": 0.5,
+          "reason": "Konstanz und Wert sind richtig begründet; im x-Gesetz steht isoliert m/s² statt m/s."
+        },
+        {
+          "criterionId": "t1-yt",
+          "pointsAwarded": 1,
+          "reason": "Das negative quadratische Höhenzeitgesetz mit v_y,0=0 ist vollständig richtig."
+        },
+        {
+          "criterionId": "t1-vay",
+          "pointsAwarded": 1,
+          "reason": "v_y=-10t und konstantes a_y=-10,0 m/s² sind korrekt angegeben."
+        },
+        {
+          "criterionId": "t1-check",
+          "pointsAwarded": 1,
+          "reason": "Beide Tabellenwerte werden mit korrekten Einheiten richtig berechnet und verglichen."
+        },
+        {
+          "criterionId": "t2-force-x",
+          "pointsAwarded": 1,
+          "reason": "Senkrechte Gewichtskraft und fehlende horizontale Kraft begründen gleichförmige x-Bewegung."
+        },
+        {
+          "criterionId": "t2-y-acc",
+          "pointsAwarded": 1,
+          "reason": "Die gleichmäßige senkrechte Beschleunigung a_y=-g wird richtig beschrieben."
+        },
+        {
+          "criterionId": "t2-indep-init",
+          "pointsAwarded": 1,
+          "reason": "Unabhängiges y-Gesetz und gleiche Anfangswerte begründen gleiche Höhen zur gemeinsamen Zeit."
+        },
+        {
+          "criterionId": "t2-shared-t",
+          "pointsAwarded": 1,
+          "reason": "Gemeinsame Zeit und gleichzeitiger Ablauf werden erklärt; Zeitaddition wird abgelehnt."
+        },
+        {
+          "criterionId": "t3-tf",
+          "pointsAwarded": 1,
+          "reason": "Auftreffbedingung und Rechnung zu 0,500 s gelten ausdrücklich für beide Körper."
+        },
+        {
+          "criterionId": "t3-range",
+          "pointsAwarded": 1,
+          "reason": "Mit der gemeinsamen Flugzeit wird die richtige Wurfweite von 1,00 m berechnet."
+        },
+        {
+          "criterionId": "t3-v",
+          "pointsAwarded": 0.5,
+          "reason": "v_x stimmt; beim Endwert von v_y geht trotz negativem Ansatz und richtigem Graphen das Minus verloren."
+        },
+        {
+          "criterionId": "t4-path-eq",
+          "pointsAwarded": 1,
+          "reason": "Die Zeitelimination und der Bahnkoeffizient einschließlich Einheit sind richtig."
+        },
+        {
+          "criterionId": "t4-sketch",
+          "pointsAwarded": 1,
+          "reason": "Parabelast, Tangente, Achsen, Einheiten und alle geforderten Punkte sind vollständig beschrieben."
+        },
+        {
+          "criterionId": "t4-double",
+          "pointsAwarded": 0.5,
+          "reason": "Zeit und Verdopplungsargument stimmen; 4,00·0,500 wird isoliert als 2,50 statt 2,00 m ausgewertet."
+        },
+        {
+          "criterionId": "t5-y-graph",
+          "pointsAwarded": 0.5,
+          "reason": "Verlauf und Beschriftung stimmen; der Endpunkt trägt isoliert 0,050 statt 0,500 s."
+        },
+        {
+          "criterionId": "t5-va-graphs",
+          "pointsAwarded": 1,
+          "reason": "Beide Graphen sind mit richtiger gemeinsamer Zeitachse, Einheiten und Kennwerten vollständig."
+        },
+        {
+          "criterionId": "t5-consistency",
+          "pointsAwarded": 1,
+          "reason": "Beschleunigung als bereits anfangs negative Änderungsrate wird korrekt erklärt."
+        },
+        {
+          "criterionId": "t6-field",
+          "pointsAwarded": 1,
+          "reason": "Gleicher Betrag und gleiche Richtung von g werden mit konstantem a_y verknüpft."
+        },
+        {
+          "criterionId": "t6-mp-core",
+          "pointsAwarded": 3,
+          "reason": "Ein Schwerpunktpunkt repräsentiert jeden Körper ausdrücklich für die gefragte Ortsvorhersage."
+        },
+        {
+          "criterionId": "t6-mp-size",
+          "pointsAwarded": 3,
+          "reason": "Kleinheit gegenüber betrachteten Strecken wird ausdrücklich als Gültigkeitsbedingung verwendet."
+        },
+        {
+          "criterionId": "t6-mp-rot",
+          "pointsAwarded": 3,
+          "reason": "Drehung, Lage und Verformung werden auf ihre Unwesentlichkeit für die Ortsvorhersage bezogen."
+        },
+        {
+          "criterionId": "t6-drag-cond",
+          "pointsAwarded": 3,
+          "reason": "Kleine Wirkung relativ zur Ortsgenauigkeit und situationsbezogene bedingte Plausibilität sind erläutert."
+        },
+        {
+          "criterionId": "t6-drag-limits",
+          "pointsAwarded": 3,
+          "reason": "Abweichungen in beiden Richtungen und die fehlende Absicherung idealer Ortsgesetze und Fallzeiten werden genannt."
+        },
+        {
+          "criterionId": "t6-drag-claim",
+          "pointsAwarded": 3,
+          "reason": "Unterschiedliches v_x wird mit möglicher Kopplung des senkrechten Widerstands an die Gesamtbewegung begründet."
+        }
+      ],
+      "total": 34,
+      "passes": true,
+      "diagnosis": "Alle fachlichen Leistungen einschließlich beider tragender Gruppen sind belegt. Vier unabhängige lokale Einheiten-, Vorzeichen-, Rechen- beziehungsweise Schreibfehler kosten zusammen 2 BE. Die eigene richtige Überlegung ist jeweils erkennbar; keine Kaskadenabzüge.",
+      "localizedSlips": [
+        {
+          "location": "Aufgabe 1, Gesetze: x_B(t)=(2,00 m/s²)·t",
+          "description": "Falsche Einheit des Geschwindigkeitskoeffizienten; Herleitung und anschließende Auswertung verwenden richtig m/s.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Aufgabe 3, v_y,B=−(10,0 m/s²)·0,500 s=5,00 m/s",
+          "description": "Minuszeichen im Endwert verloren; Ansatz, Geschwindigkeitsgesetz und Graph zeigen die richtige Abwärtsrichtung.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Aufgabe 4, Wiederholung: x_F=4,00 m/s·0,500 s=2,50 m",
+          "description": "Isolierter Auswertungsfehler; das richtige Verdopplungsargument steht unmittelbar daneben.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Aufgabe 5, Höhenverlauf: Endpunkt (0,050 s | 0 m)",
+          "description": "Isoliert falsch geschriebene Endzeit; gemeinsame Zeitachse, Zwischenpunkte und andere Graphen belegen 0,500 s.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ]
+    },
+    {
+      "submissionId": "L04",
+      "scores": [
+        {
+          "criterionId": "t1-x",
+          "pointsAwarded": 1,
+          "reason": "Gleiche Zuwächse begründen konstante +2,00 m/s und das passende Ortsgesetz."
+        },
+        {
+          "criterionId": "t1-yt",
+          "pointsAwarded": 1,
+          "reason": "Anfangshöhe und negativer quadratischer Term ohne linearen Anteil sind richtig."
+        },
+        {
+          "criterionId": "t1-vay",
+          "pointsAwarded": 1,
+          "reason": "Senkrechtes Geschwindigkeitsgesetz und konstantes a_y sind vollständig korrekt."
+        },
+        {
+          "criterionId": "t1-check",
+          "pointsAwarded": 1,
+          "reason": "Die beiden Ortsgesetze liefern nachvollziehbar die richtigen Tabellenwerte bei 0,20 s."
+        },
+        {
+          "criterionId": "t2-force-x",
+          "pointsAwarded": 1,
+          "reason": "Die Kraftargumentation erklärt a_x=0 und unverändertes v_x."
+        },
+        {
+          "criterionId": "t2-y-acc",
+          "pointsAwarded": 1,
+          "reason": "Konstantes a_y=-g wird richtig als gleichmäßige Beschleunigung eingeordnet."
+        },
+        {
+          "criterionId": "t2-indep-init",
+          "pointsAwarded": 1,
+          "reason": "Unabhängigkeit und gleiche senkrechte Anfangsbedingungen werden zur Höhengleichheit verknüpft."
+        },
+        {
+          "criterionId": "t2-shared-t",
+          "pointsAwarded": 1,
+          "reason": "Beide Teilbewegungen verwenden dasselbe t; getrennte Bewegungszeiten werden verworfen."
+        },
+        {
+          "criterionId": "t3-tf",
+          "pointsAwarded": 1,
+          "reason": "Die richtige Auftreffbedingung ergibt für beide Körper 0,500 s."
+        },
+        {
+          "criterionId": "t3-range",
+          "pointsAwarded": 1,
+          "reason": "Wurfweite 1,00 m wird aus v_x und derselben Flugzeit berechnet."
+        },
+        {
+          "criterionId": "t3-v",
+          "pointsAwarded": 1,
+          "reason": "Beide Geschwindigkeitskomponenten sind mit richtigen Werten und Vorzeichen angegeben."
+        },
+        {
+          "criterionId": "t4-path-eq",
+          "pointsAwarded": 1,
+          "reason": "Die Zeit wird korrekt eliminiert; Bahnformel und Einheit des Koeffizienten stimmen."
+        },
+        {
+          "criterionId": "t4-sketch",
+          "pointsAwarded": 1,
+          "reason": "Alle verlangten Kurvenmerkmale, Achsen und Punkte sind in der Darstellung enthalten."
+        },
+        {
+          "criterionId": "t4-double",
+          "pointsAwarded": 1,
+          "reason": "Unveränderte y-Bewegung begründet gleiche Flugzeit; die Weite verdoppelt sich richtig."
+        },
+        {
+          "criterionId": "t5-y-graph",
+          "pointsAwarded": 1,
+          "reason": "Höhenparabel, Anfangstangente, Endpunkte und Größen mit Einheiten sind vollständig beschrieben."
+        },
+        {
+          "criterionId": "t5-va-graphs",
+          "pointsAwarded": 1,
+          "reason": "Geschwindigkeitsgerade und Beschleunigungslinie besitzen korrekte Kennwerte einschließlich Start."
+        },
+        {
+          "criterionId": "t5-consistency",
+          "pointsAwarded": 1,
+          "reason": "Die Unterscheidung zwischen Geschwindigkeitswert und negativer Änderungsrate erklärt den Start."
+        },
+        {
+          "criterionId": "t6-field",
+          "pointsAwarded": 1,
+          "reason": "Konstante Feldrichtung und gleicher Betrag werden mit dem gleichmäßig beschleunigten Modell verknüpft."
+        },
+        {
+          "criterionId": "t6-mp-core",
+          "pointsAwarded": 3,
+          "reason": "Der repräsentative Schwerpunktpunkt wird ausdrücklich zur Vorhersage von Lage, Bahn und Auftreffen eingeführt."
+        },
+        {
+          "criterionId": "t6-mp-size",
+          "pointsAwarded": 3,
+          "reason": "Kleine Ausdehnung gegenüber relevanten Strecken wird als sinnvolle Näherungsbedingung begründet."
+        },
+        {
+          "criterionId": "t6-mp-rot",
+          "pointsAwarded": 3,
+          "reason": "Orientierung, Drehung und Verformung werden auf ihren Einfluss auf die Ortsvorhersage bezogen."
+        },
+        {
+          "criterionId": "t6-drag-cond",
+          "pointsAwarded": 0,
+          "reason": "Eine bedingte Rechtfertigung für die Vernachlässigung des Luftwiderstands fehlt vollständig."
+        },
+        {
+          "criterionId": "t6-drag-limits",
+          "pointsAwarded": 0,
+          "reason": "Folgen relevanten Luftwiderstands für horizontale und senkrechte Bewegung fehlen."
+        },
+        {
+          "criterionId": "t6-drag-claim",
+          "pointsAwarded": 0,
+          "reason": "Die Behauptung zur Gleichzeitigkeit mit Luftwiderstand wird nicht beurteilt."
+        }
+      ],
+      "total": 27,
+      "passes": false,
+      "diagnosis": "Idealbewegung, Feldannahme und Massepunktgruppe sind vollständig bearbeitet. Die Luftwiderstandsgruppe fehlt vollständig. Die 9 fehlenden BE begrenzen die Summe auf 27; es liegt keine ausdrücklich vertretene Fehlvorstellung vor.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L05",
+      "scores": [
+        {
+          "criterionId": "t1-x",
+          "pointsAwarded": 1,
+          "reason": "Konstanz und +2,00 m/s werden aus den Zuwächsen begründet; das x-Gesetz stimmt."
+        },
+        {
+          "criterionId": "t1-yt",
+          "pointsAwarded": 1,
+          "reason": "Das richtige Höhenzeitgesetz wird mit verschwindender senkrechter Anfangsgeschwindigkeit erklärt."
+        },
+        {
+          "criterionId": "t1-vay",
+          "pointsAwarded": 1,
+          "reason": "v_y(t) und das konstante negative a_y sind richtig angegeben."
+        },
+        {
+          "criterionId": "t1-check",
+          "pointsAwarded": 1,
+          "reason": "Beide Koordinaten werden bei 0,20 s richtig berechnet und mit den Daten verglichen."
+        },
+        {
+          "criterionId": "t2-force-x",
+          "pointsAwarded": 1,
+          "reason": "Senkrechte Gewichtskraft und horizontale Kraftfreiheit begründen unveränderte horizontale Geschwindigkeit."
+        },
+        {
+          "criterionId": "t2-y-acc",
+          "pointsAwarded": 1,
+          "reason": "Gleichmäßig beschleunigte y-Bewegung mit konstantem a_y=-g wird richtig gekennzeichnet."
+        },
+        {
+          "criterionId": "t2-indep-init",
+          "pointsAwarded": 1,
+          "reason": "Das unabhängige y-Gesetz und gleiche Anfangsbedingungen begründen y_A(t)=y_B(t)."
+        },
+        {
+          "criterionId": "t2-shared-t",
+          "pointsAwarded": 1,
+          "reason": "Gemeinsame Zeit und gleichzeitiger Ablauf werden erklärt; Zeitaddition wird verworfen."
+        },
+        {
+          "criterionId": "t3-tf",
+          "pointsAwarded": 1,
+          "reason": "Die gemeinsame Auftreffbedingung wird richtig zu 0,500 s für A und B gelöst."
+        },
+        {
+          "criterionId": "t3-range",
+          "pointsAwarded": 1,
+          "reason": "Die Wurfweite wird mit derselben Flugzeit korrekt zu 1,00 m berechnet."
+        },
+        {
+          "criterionId": "t3-v",
+          "pointsAwarded": 1,
+          "reason": "Unverändertes positives v_x und negatives v_y beim Auftreffen sind richtig berechnet."
+        },
+        {
+          "criterionId": "t4-path-eq",
+          "pointsAwarded": 1,
+          "reason": "Zeitelimination und Bahnformel mit 1,25 m⁻¹ sind korrekt hergeleitet."
+        },
+        {
+          "criterionId": "t4-sketch",
+          "pointsAwarded": 1,
+          "reason": "Vollständige Parabelbeschreibung mit Tangente, beschrifteten Achsen und geforderten Punkten."
+        },
+        {
+          "criterionId": "t4-double",
+          "pointsAwarded": 1,
+          "reason": "Gleiche Flugzeit wird begründet und die neue Weite richtig zu 2,00 m bestimmt."
+        },
+        {
+          "criterionId": "t5-y-graph",
+          "pointsAwarded": 1,
+          "reason": "Verlauf, Tangente, Zeitbereich, Höhenwerte und Achsenbeschriftung sind vollständig richtig."
+        },
+        {
+          "criterionId": "t5-va-graphs",
+          "pointsAwarded": 1,
+          "reason": "Beide Graphen besitzen richtige Verläufe und Kennwerte mit Einheiten und gemeinsamer Zeitachse."
+        },
+        {
+          "criterionId": "t5-consistency",
+          "pointsAwarded": 1,
+          "reason": "Negative Anfangssteigung des Geschwindigkeitsgraphen erklärt die Beschleunigung bei v_y=0."
+        },
+        {
+          "criterionId": "t6-field",
+          "pointsAwarded": 1,
+          "reason": "Gleicher Betrag und gleiche Richtung von g begründen konstantes a_y und das verwendete Modell."
+        },
+        {
+          "criterionId": "t6-mp-core",
+          "pointsAwarded": 3,
+          "reason": "Der Schwerpunktpunkt wird ausdrücklich zur Beschreibung von Bahn, Auftreffort und Fallzeit verwendet."
+        },
+        {
+          "criterionId": "t6-mp-size",
+          "pointsAwarded": 3,
+          "reason": "Größe relativ zu Bewegungsstrecken wird sowohl als Näherungsbedingung als auch als Grenze genutzt."
+        },
+        {
+          "criterionId": "t6-mp-rot",
+          "pointsAwarded": 0,
+          "reason": "Die Bedeutung von Orientierung, Drehung oder Verformung für die Vorhersage fehlt."
+        },
+        {
+          "criterionId": "t6-drag-cond",
+          "pointsAwarded": 3,
+          "reason": "Genauigkeitsbezug und situationsbezogene Bedingungen werden ohne Garantie aus den Modelldaten erläutert."
+        },
+        {
+          "criterionId": "t6-drag-limits",
+          "pointsAwarded": 3,
+          "reason": "Horizontale und senkrechte Abweichungen sowie Grenzen idealer Ortsgesetze und gleicher Fallzeit sind erklärt."
+        },
+        {
+          "criterionId": "t6-drag-claim",
+          "pointsAwarded": 3,
+          "reason": "Bs zusätzliches v_x und mögliche Gesamtgeschwindigkeitsabhängigkeit des senkrechten Widerstands widerlegen die Notwendigkeit."
+        }
+      ],
+      "total": 33,
+      "passes": true,
+      "diagnosis": "Alle Stützleistungen und die Luftwiderstandsgruppe sind vollständig belegt. In P-MP fehlen ausschließlich die Aussagen zu Orientierung, Drehung und Verformung; diese fachliche Facette kostet 3 BE. Die übrigen 6 BE der Massepunktgruppe bleiben erhalten.",
+      "localizedSlips": []
+    }
+  ],
+  "requiredCorrections": []
+}

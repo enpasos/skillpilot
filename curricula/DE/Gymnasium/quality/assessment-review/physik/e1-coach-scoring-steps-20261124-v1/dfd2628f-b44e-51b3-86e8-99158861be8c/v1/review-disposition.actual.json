@@ -1,0 +1,146 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "4427099a394b5be12f3d72e922cc37aab7e70cc9d823c70d985a19afce759976",
+    "normalizedGoalSha256": "f5f87890e7f94be6fef3171ac55e69570878314be9c730fcb92c8490943603c0"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "9656ce71b469de66203e1efef082ebb0fb7e0aad1f8ffadfed61ff8cc54d382e",
+    "normalizedGoalSha256": "c80d75f5bf0bbfdd67e315fdbb7ac677145f6bcc01be85c311c2bc18858beb84"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "f5b9a35482891395addd98d89ef1049b3627e0a368ad2221eac453a87ec39036"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "30dec64a19829533ce9cebc58231a9feae8f234f6d5ef6a378b04da5c694136c"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "495edb5aa17f920316d5014eb16283fab387466521fc27394da4c92a63786add"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20f3a-a5b9-7c91-93b4-e5b6b75e5deb",
+      "decision": "accept",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "semantic kind not confirmed"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S01",
+          "kind": "misconception",
+          "performanceId": "P_BEWERT"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P_BEWERT"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S05",
+          "kind": "misconception",
+          "performanceId": "P_ANHALT"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P_ANHALT"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S04",
+          "kind": "missing-facet",
+          "performanceId": "P_BEWERT"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "462adc41a47c12738cfb31a2b4bfa269989201bcd8a647c3cde2617fd268f2e8"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "ff203791932e62529d098b1ae360f6be55f1f848bfc70fea95d95de88a9f23b5"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20f3a-a5b9-7ce1-87ef-9ad06fb952c3",
+      "decision": "accept",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "semantic kind not confirmed"
+      ],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S05",
+          "kind": "misconception",
+          "performanceId": "P_ANHALT"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S04",
+          "kind": "missing-facet",
+          "performanceId": "P_BEWERT"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P_ANHALT"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P_BEWERT"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S01",
+          "kind": "misconception",
+          "performanceId": "P_BEWERT"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "7eb8c78ea35e91c4dce6c4647d4a4853d07e114d0863d45aa5da6824e7da35b3"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "5a9096b89658ed431fdeaed6d434dc31c480eb1b0ea6f297332da4d341186965"
+      }
+    }
+  ],
+  "eligibleForActivation": false,
+  "priorMarksComparison": {
+    "path": "prior-marks-comparison.actual.json",
+    "sha256": "e7edf06139ac50494a15a14e4ec9130f1979e7cc7378abf7ccd802fc94eac3d4"
+  }
+}

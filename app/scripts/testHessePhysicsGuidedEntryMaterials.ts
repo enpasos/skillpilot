@@ -69,12 +69,34 @@ assert.equal(hash(landscape.goals.find((goal: { id: string }) => goal.id === mod
 const protocol = protocolReview.scope.exercises[0]
 assert.equal(protocol.goalId, protocolId)
 assert.equal(imageHash(protocol.imagePath), protocol.imageSha256)
-const individualReview = read('curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-measurement-entry-2026-11-23/individual-assessment-review-v2.json')
+const individualReviewBase = 'curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-measurement-entry-2026-11-23/individual-assessment-review'
+const previousReviewPath = `${individualReviewBase}-v2.json`
+const previousReviewSha256 = 'c130f7de83e64957fa1f7014370161b2d688e2d0469406362befcdf434e5f7cd'
+assert.equal(imageHash(previousReviewPath), previousReviewSha256)
+assert.equal(imageHash(`${individualReviewBase}-v2.md`), '48516b30ae8d8a101122dcf89a23c3290bf2b54b39cace4c00c17e3f9b02dae5')
+const previousReview = read(previousReviewPath)
+const individualReview = read(`${individualReviewBase}-v3.json`)
+assert.deepEqual(individualReview.supersedes, { path: previousReviewPath, sha256: previousReviewSha256 })
+for (const field of ['goalId', 'targetGoalId', 'targetGoalSha256', 'taskPath', 'taskSha256']) {
+  assert.equal(individualReview[field], previousReview[field], `The successor must preserve ${field}`)
+}
+const passMarkReviewPath = `curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/${previousReview.goalId}/accepted.actual.json`
+assert.deepEqual(individualReview.reviewBasis, { path: passMarkReviewPath, sha256: imageHash(passMarkReviewPath) })
+const passMarkReview = read(passMarkReviewPath)
+assert.equal(passMarkReview.goalId, individualReview.goalId)
+assert.equal(passMarkReview.originalGoalSha256, previousReview.goalSha256)
+assert.equal(passMarkReview.currentGoalSha256, individualReview.goalSha256)
 assert.equal(individualReview.decision, 'accepted')
 assert.deepEqual(individualReview.requiredCorrections, [])
 const individualExam = landscape.goals.find((entry: { id: string }) => entry.id === individualReview.goalId)
 assert(individualExam, 'The individually reviewed assessment exists')
 assert.equal(hash(individualExam), individualReview.goalSha256)
+const { maxPoints, passingPoints, steps } = individualExam.examData.scoring
+assert.deepEqual(individualReview.rubric, {
+  available: maxPoints,
+  required: passingPoints,
+  criterionPoints: steps.map((step: { points: number }) => step.points),
+})
 assert.equal(individualReview.targetGoalSha256, protocol.goalSha256)
 assert.equal(individualReview.targetGoalId, protocolId)
 assert.equal(individualExam.examData.sourceArtifactPath, individualReview.taskPath)

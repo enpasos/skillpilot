@@ -1,0 +1,138 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "1a1bc43a764cc7fb6fb0bbddba3a923fe862e2cb02c2eaaf63f2f2bc36539bb6",
+    "normalizedGoalSha256": "de4262464d84015668c84b5559772646f76ece5ec9f6e1f6b71e62f6dd393af7"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "79fba6e5c76ad9568566201cbb17e562e9a5e65b5b5ace394ba0f4f5c38ec923",
+    "normalizedGoalSha256": "6ec808d7d57b9c19dd1717eaf33d1bad588c75ee9e8fb8de53fff8192c65da18"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "828c280978532d640e7a87c5b2af724cf3bee8d88bc36324077d3e3677908a3e"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "d9414d56981e77765a7a29fea7dd9214db88a0e0a19758289bde73907a1d161b"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "6e408eb315336dbc96d9b9974ff425f935e2314fe9c3acb0637918d1a1abf9d1"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20e54-9401-7202-b471-120c314ae189",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S03",
+          "kind": "misconception",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "BET"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S04",
+          "kind": "missing-performance",
+          "performanceId": "ZUS"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "RICHT"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "5238040d5691252c881a29aaace6ec31edab670fad5fe000f34f31ba98d00b37"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "d69697faf17c28ad32da65cfe5db997e3ee1f1481d632584a2db1395ceb509ca"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20e54-9401-7a11-b9c7-89e104bc836c",
+      "decision": "accept",
+      "eligibleForActivation": true,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S04",
+          "kind": "missing-performance",
+          "performanceId": "ZUS"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S03",
+          "kind": "misconception",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "BET"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "0ac5cfef8769550d5d3d89f5aa9188966ee59f6eb8c244231b0712be7262c4b8"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "e869684c0669fc04e2c7b7bf183ec127ee2f123fa565cc1495f0a2c8e314f097"
+      }
+    }
+  ],
+  "eligibleForActivation": false
+}

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "scope": "Preflight of six substantively approved rubrics, before the description-length repair",
+  "checkoutHead": "1feead50b2f210397e03fc610cfed5a375ba4665",
+  "testedCatalogAtPreflight": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "78f0781ae1ecf0d9639bd29714fc58483f1a32a62c8b5b6c1c808adc05d2d77f",
+    "historicalCommit": "7cea780f4f0beadef97ab5ed16de1571cfbbfa42"
+  },
+  "observedTests": [
+    {
+      "class": "com.skillpilot.backend.completion.AssessmentMaterialRevisionTest",
+      "startedAt": "2026-11-24T20:14:50.371635538Z",
+      "finishedAt": "2026-11-24T20:14:51.114534163Z",
+      "found": 3,
+      "succeeded": 3,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "class": "com.skillpilot.backend.service.VerifiedExamPassIntegrationTest",
+      "startedAt": "2026-11-24T20:14:51.370842675Z",
+      "finishedAt": "2026-11-24T20:15:05.075206535Z",
+      "found": 5,
+      "succeeded": 5,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "class": "com.skillpilot.backend.service.VerifiedExamPassBackupIntegrationTest",
+      "startedAt": "2026-11-24T20:15:05.763115043Z",
+      "finishedAt": "2026-11-24T20:15:20.200610352Z",
+      "found": 7,
+      "succeeded": 7,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "class": "com.skillpilot.backend.completion.UnitPlanningReleaseTest",
+      "startedAt": "2026-11-24T20:15:20.771905862Z",
+      "finishedAt": "2026-11-24T20:15:21.647140433Z",
+      "found": 3,
+      "succeeded": 3,
+      "failed": 0,
+      "failures": []
+    },
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "startedAt": "2026-11-24T20:15:21.803344899Z",
+      "finishedAt": "2026-11-24T20:16:59.143696046Z",
+      "found": 9,
+      "succeeded": 3,
+      "failed": 6,
+      "failures": [
+        {
+          "message": "org.opentest4j.AssertionFailedError: [get_skillpilot_exam_evaluation: [TextContent[annotations=null, text={\"status\":\"ERROR\",\"errorCode\":\"CONFLICT\",\"message\":\"The active exam has no valid released evaluation data.\"}, meta=null]]] \nExpecting value to be false but was true",
+          "test": "[1] course = \"GK\", edition = \"ORIGINAL22\""
+        },
+        {
+          "message": "org.opentest4j.AssertionFailedError: [get_skillpilot_exam_evaluation: [TextContent[annotations=null, text={\"status\":\"ERROR\",\"errorCode\":\"CONFLICT\",\"message\":\"The active exam has no valid released evaluation data.\"}, meta=null]]] \nExpecting value to be false but was true",
+          "test": "[2] course = \"LK\", edition = \"ORIGINAL22\""
+        },
+        {
+          "message": "org.opentest4j.AssertionFailedError: [get_skillpilot_exam_evaluation: [TextContent[annotations=null, text={\"status\":\"ERROR\",\"errorCode\":\"CONFLICT\",\"message\":\"The active exam has no valid released evaluation data.\"}, meta=null]]] \nExpecting value to be false but was true",
+          "test": "[3] course = \"GK\", edition = \"PREVIOUS36\""
+        },
+        {
+          "message": "org.opentest4j.AssertionFailedError: [get_skillpilot_exam_evaluation: [TextContent[annotations=null, text={\"status\":\"ERROR\",\"errorCode\":\"CONFLICT\",\"message\":\"The active exam has no valid released evaluation data.\"}, meta=null]]] \nExpecting value to be false but was true",
+          "test": "[4] course = \"LK\", edition = \"PREVIOUS36\""
+        },
+        {
+          "message": "org.opentest4j.AssertionFailedError: [get_skillpilot_exam_evaluation: [TextContent[annotations=null, text={\"status\":\"ERROR\",\"errorCode\":\"CONFLICT\",\"message\":\"The active exam has no valid released evaluation data.\"}, meta=null]]] \nExpecting value to be false but was true",
+          "test": "[5] course = \"GK\", edition = \"RAW_ONLY\""
+        },
+        {
+          "message": "org.opentest4j.AssertionFailedError: [get_skillpilot_exam_evaluation: [TextContent[annotations=null, text={\"status\":\"ERROR\",\"errorCode\":\"CONFLICT\",\"message\":\"The active exam has no valid released evaluation data.\"}, meta=null]]] \nExpecting value to be false but was true",
+          "test": "[6] course = \"LK\", edition = \"RAW_ONLY\""
+        }
+      ]
+    }
+  ],
+  "totalFound": 27,
+  "totalSucceeded": 21,
+  "totalFailed": 6,
+  "failingTool": "get_skillpilot_exam_evaluation",
+  "rule": "requireValidExamEvaluation rejects scoring descriptions longer than 2000 UTF-16 code units.",
+  "affectedCriteria": {
+    "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": [
+      {
+        "stepId": "z_res15",
+        "utf16Length": 2209
+      },
+      {
+        "stepId": "b_15",
+        "utf16Length": 3709
+      },
+      {
+        "stepId": "r_verf",
+        "utf16Length": 2712
+      },
+      {
+        "stepId": "r_wink",
+        "utf16Length": 3799
+      },
+      {
+        "stepId": "r_zun",
+        "utf16Length": 2150
+      }
+    ],
+    "a8dc0290-9f80-5763-8943-e16b8d2aa860": [
+      {
+        "stepId": "A-DIA",
+        "utf16Length": 2149
+      }
+    ],
+    "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9": [
+      {
+        "stepId": "t6-mp-size",
+        "utf16Length": 2453
+      },
+      {
+        "stepId": "t6-drag-cond",
+        "utf16Length": 2200
+      },
+      {
+        "stepId": "t6-drag-claim",
+        "utf16Length": 3096
+      }
+    ],
+    "c5807a37-129e-5df6-8989-482bc7f5683e": [
+      {
+        "stepId": "t7_abweichung",
+        "utf16Length": 2486
+      }
+    ],
+    "dfd2628f-b44e-51b3-86e8-99158861be8c": [
+      {
+        "stepId": "B_RW",
+        "utf16Length": 3234
+      },
+      {
+        "stepId": "B_URT",
+        "utf16Length": 4106
+      }
+    ]
+  },
+  "adapterSourcesAtPreflight": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "sha256": "0b45040ad15267426a8cb762dc97b1a4939ec1f9d66dd5a68888a0dae071df0e"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1McpContractAdapter.java",
+      "sha256": "c1e2046a69defc918e9dd60f433e81ca17009ee379f9a8f69e881a59025422e9"
+    }
+  ]
+}

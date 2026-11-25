@@ -1,0 +1,575 @@
+{
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "candidateDecision": "revise",
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "Der Knoten prüft eine bereits benannte Kompetenz durch zwei praktische Untersuchungen. Er formuliert kein zusätzliches curriculares Einzelziel. Die technische Kennzeichnung „atomic“ macht ihn fachlich nicht zu einem curricularAtomic.",
+  "physicsAndLanguage": "Modell, Steigungsbeziehung g = 2m und Fallzeiten von rund 0,247 s beziehungsweise 0,350 s sind richtig; daraus folgen bei 120 B/s etwa 30 beziehungsweise 42 Bildintervalle. Sicherheitsaufbau, reale Zeitbasis, Skalenebene und alternative Lichtschrankenauswertung sind angemessen. Ein unauffälliger Fitoffset allein beweist jedoch keine Anfangsgeschwindigkeit null; Loslassmethode, frühe Punkte und Zeitnullpunkt müssen zusammen betrachtet werden. Grenzvariationen liefern Empfindlichkeiten, keine garantierten Gesamtfehlergrenzen. Gemeinsame systematische Fehler bleiben beim A/B-Vergleich möglich. DE und EN sind fachlich gleichwertig; die unterschiedliche Lesart von „Abstand“ und „spacing“ wird fair aufgefangen. Für E ist die Untersuchung geeignet, für das freiwillige J9-Angebot anspruchsvoll und anleitungsbedürftig.",
+  "scopeVerdict": "Abgedeckt wird ausschließlich das ausdrücklich genannte Experimentziel 09029573-864f-40ca-bf8a-cee7bf6dcb73. Tatsächliche eigene Messreihen sind dafür erforderlich. Die Zuordnung bleibt HE: Sek II/E und SN: Sek I/J9; die GK/LK-Tags begründen keine sächsische Oberstufenzuordnung. Es handelt sich um ein eigenes freiwilliges Angebot, weder um eine amtliche Prüfung noch um einen hessischen Pflichtteil oder eine Plananrechnung. Die 69 Vorbereitungsziele werden durch diese Aufgabe nicht zusätzlich nachgewiesen. Aufgabe und Abdeckung erzeugen keinen unlösbaren Konflikt; die Bewertung kann überarbeitet werden.",
+  "scoringConsistency": "Die 15 Zeilen ergeben 24 BE; 20/24 = 83,3 %, der Spielraum beträgt 4 BE. Die drei tragenden Gewichte 10, 6 und 5 übersteigen ihn. Eigendatenanteile 21,5 und Methodenanteile 2,5 sind korrekt addiert. DE/EN-Stufen und strukturierte Zeilen stimmen überein. Die Aufgabentexte sind unverändert; die fachlichen Lösungsabsätze und Daten bleiben erhalten, geändert wurde die Bewertung. Zwei Probleme verhindern die Freigabe: Erstens entwertet die globale Definition „gültiger Lauf“ auch nachweislich eigene, physikalisch auswertbare Messungen mit vier statt fünf Paaren in sämtlichen Eigendatenzeilen. Damit verschwinden tatsächlich gezeigte grafische und mathematische Leistungen wegen einer Vollständigkeitslücke. Zweitens ist die als erreichbar bezeichnete Ein-Lauf-Obergrenze 18,5 nicht scharf: Ohne Laufstreuung weiterer eigener gültiger Läufe entfällt zusätzlich unc-*-own; erreichbar sind höchstens 18 BE. Die folgenden Benotungen bewerten die geschilderten Protokolle und Diagramme innerhalb der Simulation. Sie bescheinigen keine tatsächlich ausgeführten Experimente.",
+  "carryingPerformanceAudit": [
+    {
+      "performanceId": "P-EXP",
+      "earnedFromTask": "„Experimentell untersuchen“ im direkten Ziel; unmittelbar verlangt durch eigenen Aufbau, zwei selbst durchgeführte Reihen, überprüfte Skalen und nachvollziehbare Rohdaten.",
+      "weight": 10,
+      "completeOmissionMaximum": 2.5,
+      "safeguardsAndLimits": "Die reine Gewichtsrechnung lässt 24 − 10 = 14 BE. Bei tatsächlich vollständig fehlender Eigenerhebung begrenzen die Herkunftsregeln jedoch alle verbleibenden Punkte auf die 2,5 Methoden-BE. Fremddaten und Planung ersetzen keine Durchführung. Herkunft und Vollständigkeit müssen dennoch getrennt werden: Vier echte Messpaare sind keine erfundenen oder fremden Daten."
+    },
+    {
+      "performanceId": "P-GRAPH",
+      "earnedFromTask": "Grafische Messdatenauswertung und daraus bestimmte Gravitationsbeschleunigung im direkten Ziel; ausdrücklich verlangt durch Messpunktdiagramme und Mehrpunktausgleich beziehungsweise begründete quadratische Anpassung.",
+      "weight": 6,
+      "completeOmissionMaximum": 18,
+      "safeguardsAndLimits": "Ohne diese Leistung sind höchstens 18 BE erreichbar. Quotientenmittel können physikalisch sinnvoll sein, erfüllen aber den verlangten grafischen Weg nicht. Rechnerregression, Linealausgleich und geeignete quadratische Anpassung sind gleichwertig. Eine ausdrücklich beibehaltene falsche Steigungsdeutung verliert die Gruppe; ein isolierter Rechenfehler nicht."
+    },
+    {
+      "performanceId": "P-LAW",
+      "earnedFromTask": "Zeit-Ort-Gesetz unter Angabe der Anfangsbedingungen im direkten Ziel; ausdrücklich für A und B verlangt.",
+      "weight": 5,
+      "completeOmissionMaximum": 19,
+      "safeguardsAndLimits": "Ohne Gesetze sind höchstens 19 BE erreichbar. Eine einzelne fehlende Prüfung kann abgestuft werden. Eine bloße Fitausgabe ersetzt die physikalische Deutung nicht. Begründetes v_0 ≠ 0 ist zulässig. Eine festgehaltene falsche Vorzeichenregel verliert die ganze Leistung; korrigierte Flüchtigkeitsfehler bleiben abzugsfrei."
+    }
+  ],
+  "coveredGoalReviews": [
+    {
+      "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "mustShow": "Eigene tatsächliche Falluntersuchungen mit nachvollziehbaren Zeit-Ort-Daten, grafisch daraus bestimmtem g im Modell ohne Luftwiderstand und auf die Reihen bezogenen Zeit-Ort-Gesetzen mit Anfangsbedingungen. Für volle Aufgabenleistung werden je drei Läufe mit mindestens fünf Paaren verlangt.",
+      "mayRemainOpen": "Der exakte Referenzwert, nicht auflösbarer Luftwiderstand, die eindeutige Ursache einer A/B-Differenz und einzelne fehlende Kontrollfacetten. Auch eine reduzierte Wiederholungszahl kann bei ansonsten überzeugender eigener Untersuchung abgestuft toleriert werden.",
+      "whyTolerable": "Das Ziel verlangt eine begrenzte experimentelle Modelluntersuchung, keinen Präzisionsnachweis oder vollständigen Ausschluss aller Systematiken. Zwei ausgewertete eigene Läufe können substanzielle Evidenz liefern; fremde Daten allein nicht. Eine bloß unterschrittene Paarzahl darf bereits gezeigte grafische Auswertung und Gesetzesbildung nicht pauschal auslöschen."
+    }
+  ],
+  "gradedSubmissions": [
+    {
+      "submissionId": "L01",
+      "scores": [
+        {
+          "criterionId": "exp-setup",
+          "pointsAwarded": 1,
+          "reason": "Sicherheit, Skala, Bezugspunkt, geprüfte Bildrate, Nullpunkte und Voraussage sind dokumentiert."
+        },
+        {
+          "criterionId": "exp-a-data",
+          "pointsAwarded": 4.5,
+          "reason": "A1, A3 und A4 besitzen zugeordnete Messpaare; A2 ist begründet verworfen und ersetzt."
+        },
+        {
+          "criterionId": "exp-b-data",
+          "pointsAwarded": 4.5,
+          "reason": "Drei frische B-Läufe, gemessene Höhe und erneut geprüfte Technik sind beschrieben."
+        },
+        {
+          "criterionId": "graph-a-m",
+          "pointsAwarded": 0.5,
+          "reason": "Messpunktdiagramme, Mehrpunktausgleich und die richtige Beziehung g = 2m sind gezeigt."
+        },
+        {
+          "criterionId": "graph-a-own",
+          "pointsAwarded": 2,
+          "reason": "Drei eigene Fits und Laufvergleich erfüllen 2,5 BE; die A1-Multiplikation kostet einmal 0,5."
+        },
+        {
+          "criterionId": "graph-b-m",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene B-Diagramme und geeigneter Mehrpunktausgleich mit g = 2m."
+        },
+        {
+          "criterionId": "graph-b-own",
+          "pointsAwarded": 2.5,
+          "reason": "Alle drei B-Läufe sind einzeln ausgewertet und zum Schätzwert verglichen."
+        },
+        {
+          "criterionId": "law-a",
+          "pointsAwarded": 2,
+          "reason": "Gesetz und Anfangsbedingungen sind vollständig; die falsche Einheit m/s kostet einmal 0,5."
+        },
+        {
+          "criterionId": "law-b",
+          "pointsAwarded": 2.5,
+          "reason": "Eigenes B-Gesetz mit erneut datenbasiert geprüften Anfangsbedingungen."
+        },
+        {
+          "criterionId": "unc-a-var",
+          "pointsAwarded": 0.5,
+          "reason": "Zeitnullpunkt und letzter Ortspunkt werden mit resultierenden Fitwerten variiert."
+        },
+        {
+          "criterionId": "unc-a-own",
+          "pointsAwarded": 0.5,
+          "reason": "Zeit-, Orts- und Streuungsbeiträge sind mit eigenen Zahlen begründet; kein Folgeabzug."
+        },
+        {
+          "criterionId": "unc-b-var",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene B-Grenzvariationen mit veränderten Steigungen und g-Werten."
+        },
+        {
+          "criterionId": "unc-b-own",
+          "pointsAwarded": 0,
+          "reason": "Unsicherheit ist hergeleitet; die unbegründete Rundung 9,76 auf 9,7 kostet 0,5."
+        },
+        {
+          "criterionId": "cmp-quant",
+          "pointsAwarded": 0,
+          "reason": "Vergleich richtig angelegt; die Quadratur ergibt 0,36 statt 0,46 und kostet 0,5."
+        },
+        {
+          "criterionId": "cmp-limit",
+          "pointsAwarded": 0.5,
+          "reason": "Zeitnullpunktvariation, Skalenlage und verworfener A2-Lauf begründen konkrete Grenzen."
+        }
+      ],
+      "total": 22,
+      "passes": true,
+      "diagnosis": "Alle drei tragenden Leistungen sind gezeigt. Vier unabhängige Flüchtigkeitsfehler kosten zusammen 2 BE. Die aus dem falschen A1-Wert richtig weitergeführten Rechnungen erhalten keinen Folgeabzug.",
+      "localizedSlips": [
+        {
+          "location": "Auswertung A, „A1: g = 2 · 4,859 ... = 9,62“; graph-a-own",
+          "description": "2 · 4,859 = 9,718, gerundet 9,72. Schätzwert und nachfolgende Verwendung werden nicht erneut belastet.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Gesetz A, erster Ausdruck „½ · 9,70 m/s · t²“; law-a",
+          "description": "Der Beschleunigungskoeffizient benötigt m/s². Der unmittelbar folgende richtige Ausdruck zeigt das Verständnis.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Unsicherheit B, „g_B = (9,7 ± 0,3) m/s²“; unc-b-own",
+          "description": "Der zuvor bestimmte Schätzwert 9,76 wird auf eine Nachkommastelle zu 9,8 gerundet; eine andere Schätzung wird nicht begründet.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Vergleich, „√(0,2² + 0,3²) ≈ 0,46“; cmp-quant",
+          "description": "Die Wurzel beträgt rund 0,36 m/s². Vergleichsverfahren und begrenzte Verträglichkeitsaussage bleiben richtig.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ]
+    },
+    {
+      "submissionId": "L02",
+      "scores": [
+        {
+          "criterionId": "exp-setup",
+          "pointsAwarded": 0,
+          "reason": "Der beschriebene Aufbau gehört Mira und Tom; eigene Durchführung wird ausdrücklich verneint."
+        },
+        {
+          "criterionId": "exp-a-data",
+          "pointsAwarded": 0,
+          "reason": "Keine eigenen A-Läufe; die fremde Herkunft ist offen angegeben."
+        },
+        {
+          "criterionId": "exp-b-data",
+          "pointsAwarded": 0,
+          "reason": "Keine eigenen B-Läufe oder Aufnahmen."
+        },
+        {
+          "criterionId": "graph-a-m",
+          "pointsAwarded": 0.5,
+          "reason": "Fremde A-Messdaten werden selbst mit Diagrammen, Mehrpunktausgleich und g = 2m ausgewertet."
+        },
+        {
+          "criterionId": "graph-a-own",
+          "pointsAwarded": 0,
+          "reason": "Die grafische Auswertung bezieht sich ausschließlich auf fremde A-Läufe."
+        },
+        {
+          "criterionId": "graph-b-m",
+          "pointsAwarded": 0.5,
+          "reason": "Selbst durchgeführte geeignete grafische Auswertung echter fremder B-Läufe im geschilderten Fall."
+        },
+        {
+          "criterionId": "graph-b-own",
+          "pointsAwarded": 0,
+          "reason": "Eigene B-Messdaten fehlen."
+        },
+        {
+          "criterionId": "law-a",
+          "pointsAwarded": 0,
+          "reason": "Das fachlich richtige A-Gesetz betrifft nur fremde Läufe; die Zeile verlangt Eigendaten."
+        },
+        {
+          "criterionId": "law-b",
+          "pointsAwarded": 0,
+          "reason": "Auch das B-Gesetz ist ausschließlich an fremden Messungen formuliert."
+        },
+        {
+          "criterionId": "unc-a-var",
+          "pointsAwarded": 0.5,
+          "reason": "Zeit- und Ortsvariation an den selbst ausgewerteten fremden A-Daten sind gerechnet."
+        },
+        {
+          "criterionId": "unc-a-own",
+          "pointsAwarded": 0,
+          "reason": "Keine Unsicherheit eigener A-Läufe."
+        },
+        {
+          "criterionId": "unc-b-var",
+          "pointsAwarded": 0.5,
+          "reason": "B-Grenzvariation ist selbst gerechnet und offen fremden Daten zugeordnet."
+        },
+        {
+          "criterionId": "unc-b-own",
+          "pointsAwarded": 0,
+          "reason": "Keine eigenen B-Läufe für diese Eigendatenzeile."
+        },
+        {
+          "criterionId": "cmp-quant",
+          "pointsAwarded": 0.5,
+          "reason": "Selbst bestimmte Schätzwerte und Unsicherheiten werden quantitativ und begrenzt verglichen."
+        },
+        {
+          "criterionId": "cmp-limit",
+          "pointsAwarded": 0,
+          "reason": "Die konkreten Grenzen betreffen ausschließlich die fremden Aufnahmen."
+        }
+      ],
+      "total": 2.5,
+      "passes": false,
+      "diagnosis": "Sinnvolle selbstständige Auswertung offen ausgewiesener Fremddaten, aber keine eigene experimentelle Untersuchung. Das ist eine fehlende Durchführung, keine vorgetäuschte Eigenerhebung oder Fehlvorstellung.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L03",
+      "scores": [
+        {
+          "criterionId": "exp-setup",
+          "pointsAwarded": 1,
+          "reason": "Eigener sicherer Aufbau mit dokumentierter Kalibrierung und geprüfter Zeitbasis."
+        },
+        {
+          "criterionId": "exp-a-data",
+          "pointsAwarded": 4.5,
+          "reason": "Drei gültige A-Läufe mit je fünf Paaren; ungültiger Lauf begründet ersetzt."
+        },
+        {
+          "criterionId": "exp-b-data",
+          "pointsAwarded": 4.5,
+          "reason": "Unabhängige B-Reihe mit drei frischen zugeordneten Läufen und Beobachtungen."
+        },
+        {
+          "criterionId": "graph-a-m",
+          "pointsAwarded": 0.5,
+          "reason": "A-Diagramme, Mehrpunktausgleich und g = 2m sind richtig."
+        },
+        {
+          "criterionId": "graph-a-own",
+          "pointsAwarded": 2.5,
+          "reason": "Drei eigene A-Fits mit Einzelwerten, Vergleich und Schätzwert."
+        },
+        {
+          "criterionId": "graph-b-m",
+          "pointsAwarded": 0.5,
+          "reason": "Geeignete grafische B-Auswertung mit richtiger Steigungsdeutung."
+        },
+        {
+          "criterionId": "graph-b-own",
+          "pointsAwarded": 2.5,
+          "reason": "Alle drei eigenen B-Läufe sind quantitativ ausgewertet und verglichen."
+        },
+        {
+          "criterionId": "law-a",
+          "pointsAwarded": 0,
+          "reason": "Das Minuszeichen wird ausdrücklich mit der Abwärtsrichtung begründet, obwohl x nach unten positiv ist."
+        },
+        {
+          "criterionId": "law-b",
+          "pointsAwarded": 0,
+          "reason": "Die falsche Vorzeichenregel wird erneut begründet und beibehalten; P-LAW entfällt vollständig."
+        },
+        {
+          "criterionId": "unc-a-var",
+          "pointsAwarded": 0.5,
+          "reason": "Konkrete A-Zeit- und Ortsvariationen mit Ergebnisänderungen."
+        },
+        {
+          "criterionId": "unc-a-own",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene Ablesegrenzen und Laufstreuung begründen die Unsicherheitsgrößenordnung."
+        },
+        {
+          "criterionId": "unc-b-var",
+          "pointsAwarded": 0.5,
+          "reason": "B-Zeitnullpunkt und Ortsgrenze werden tatsächlich variiert."
+        },
+        {
+          "criterionId": "unc-b-own",
+          "pointsAwarded": 0.5,
+          "reason": "Zeit-, Orts- und Streuungsbeiträge der eigenen B-Läufe sind angegeben."
+        },
+        {
+          "criterionId": "cmp-quant",
+          "pointsAwarded": 0.5,
+          "reason": "Differenz 0,03 und Unsicherheitsmaß 0,36 werden zutreffend gegenübergestellt."
+        },
+        {
+          "criterionId": "cmp-limit",
+          "pointsAwarded": 0.5,
+          "reason": "Eigener verworfener Lauf und Zeitnullpunktempfindlichkeit stützen die Grenzen."
+        }
+      ],
+      "total": 19,
+      "passes": false,
+      "diagnosis": "Die ausdrücklich festgehaltene Vorzeichenregel ist eine Fehlvorstellung in P-LAW, kein kleiner Vorzeichenfehler. Die übrigen Leistungen bleiben erhalten.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L04",
+      "scores": [
+        {
+          "criterionId": "exp-setup",
+          "pointsAwarded": 1,
+          "reason": "Vollständig beschriebener sicherer eigener Aufbau mit geprüften Skalen und Nullpunkten."
+        },
+        {
+          "criterionId": "exp-a-data",
+          "pointsAwarded": 4.5,
+          "reason": "Drei nachvollziehbare gültige A-Läufe; A2 wird begründet verworfen und ersetzt."
+        },
+        {
+          "criterionId": "exp-b-data",
+          "pointsAwarded": 4.5,
+          "reason": "Drei frische B-Läufe mit neuer gemessener Höhe und zugeordneten Messpunkten."
+        },
+        {
+          "criterionId": "graph-a-m",
+          "pointsAwarded": 0,
+          "reason": "A wird ausschließlich über Quotientenmittel ausgewertet; Diagramm und Mehrpunktausgleich fehlen."
+        },
+        {
+          "criterionId": "graph-a-own",
+          "pointsAwarded": 0,
+          "reason": "Keine grafische Auswertung eigener A-Läufe."
+        },
+        {
+          "criterionId": "graph-b-m",
+          "pointsAwarded": 0,
+          "reason": "Auch B verwendet nur 2x/t²-Quotienten statt des geforderten grafischen Wegs."
+        },
+        {
+          "criterionId": "graph-b-own",
+          "pointsAwarded": 0,
+          "reason": "Keine B-Diagramme oder grafischen Fits."
+        },
+        {
+          "criterionId": "law-a",
+          "pointsAwarded": 2.5,
+          "reason": "Eigenes quadratisches A-Gesetz; frühe Quotienten und Loslassmethode prüfen die Anfangsbedingungen."
+        },
+        {
+          "criterionId": "law-b",
+          "pointsAwarded": 2.5,
+          "reason": "Eigenes B-Gesetz mit separat betrachteten frühen Daten und vollständigen Anfangsbedingungen."
+        },
+        {
+          "criterionId": "unc-a-var",
+          "pointsAwarded": 0.5,
+          "reason": "Zeitverschiebung liefert neu berechnete A-Schätzwerte; grafische Methode ist dafür nicht nötig."
+        },
+        {
+          "criterionId": "unc-a-own",
+          "pointsAwarded": 0.5,
+          "reason": "Zeitnullpunkt, Ortsablesung und eigene Laufstreuung sind zahlenmäßig berücksichtigt."
+        },
+        {
+          "criterionId": "unc-b-var",
+          "pointsAwarded": 0.5,
+          "reason": "B-Zeitverschiebungen sind mit den resultierenden Werten 8,99 und 10,59 gerechnet."
+        },
+        {
+          "criterionId": "unc-b-own",
+          "pointsAwarded": 0.5,
+          "reason": "Große frühe Ortsunsicherheit, Zeitnullpunkt und Laufstreuung sind nachvollziehbar benannt."
+        },
+        {
+          "criterionId": "cmp-quant",
+          "pointsAwarded": 0.5,
+          "reason": "Differenz 0,04 wird quantitativ mit rund 0,94 beziehungsweise 1,3 verglichen."
+        },
+        {
+          "criterionId": "cmp-limit",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene Zeitnullpunktvariationen und der verworfene A2-Lauf begründen konkrete Grenzen."
+        }
+      ],
+      "total": 18,
+      "passes": false,
+      "diagnosis": "Physikalisch nachvollziehbare nicht grafische Auswertung. Die ganze ausdrücklich verlangte Leistung P-GRAPH fehlt; dies ist eine Leistungslücke, keine Fehlvorstellung.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L05",
+      "scores": [
+        {
+          "criterionId": "exp-setup",
+          "pointsAwarded": 1,
+          "reason": "Eigener Aufbau mit Sicherheit, Bezugspunkt, Zeitbasis, Koordinaten und Voraussage."
+        },
+        {
+          "criterionId": "exp-a-data",
+          "pointsAwarded": 4.5,
+          "reason": "A1, A3 und A4 sind nachvollziehbar protokolliert; A2 ist begründet ersetzt."
+        },
+        {
+          "criterionId": "exp-b-data",
+          "pointsAwarded": 4.5,
+          "reason": "Drei unabhängige B-Läufe mit gemessener Höhe und geprüfter gemeinsamer Technik."
+        },
+        {
+          "criterionId": "graph-a-m",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene A-Messpunktdiagramme und Mehrpunktausgleich mit richtiger g-Bestimmung."
+        },
+        {
+          "criterionId": "graph-a-own",
+          "pointsAwarded": 2.5,
+          "reason": "Drei eigene A-Fits, Einzelwerte und Vergleich zum Schätzwert."
+        },
+        {
+          "criterionId": "graph-b-m",
+          "pointsAwarded": 0.5,
+          "reason": "Eigenständige geeignete grafische B-Auswertung."
+        },
+        {
+          "criterionId": "graph-b-own",
+          "pointsAwarded": 2.5,
+          "reason": "Drei eigene B-Fits mit Laufvergleich und Schätzwert."
+        },
+        {
+          "criterionId": "law-a",
+          "pointsAwarded": 0,
+          "reason": "Kein als physikalisches A-Gesetz formuliertes Ergebnis; die Gleichung bezeichnet nur den Fitansatz."
+        },
+        {
+          "criterionId": "law-b",
+          "pointsAwarded": 0,
+          "reason": "Auch für B fehlt ein formuliertes Zeit-Ort-Gesetz mit zugehörigen Anfangsbedingungen."
+        },
+        {
+          "criterionId": "unc-a-var",
+          "pointsAwarded": 0.5,
+          "reason": "Zeit- und Ortsgrenzen werden mit resultierenden Fitänderungen variiert."
+        },
+        {
+          "criterionId": "unc-a-own",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene Zeit-, Orts-, Parallaxen- und Streuungsbeiträge sind zahlenmäßig begründet."
+        },
+        {
+          "criterionId": "unc-b-var",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene B-Grenzvariation mit ausgewiesenen Ergebnisänderungen."
+        },
+        {
+          "criterionId": "unc-b-own",
+          "pointsAwarded": 0.5,
+          "reason": "B-Unsicherheit wird aus eigenen Ablesegrenzen und Laufstreuung begründet."
+        },
+        {
+          "criterionId": "cmp-quant",
+          "pointsAwarded": 0.5,
+          "reason": "Differenz und beide Unsicherheitskombinationen werden quantitativ und begrenzt gedeutet."
+        },
+        {
+          "criterionId": "cmp-limit",
+          "pointsAwarded": 0.5,
+          "reason": "Zeitnullpunktempfindlichkeit und verworfener eigener Lauf liefern konkrete Modellgrenzen."
+        }
+      ],
+      "total": 19,
+      "passes": false,
+      "diagnosis": "Messung und grafische Auswertung sind überzeugend beschrieben. Die eigenständige Formulierung der beiden vollständigen Zeit-Ort-Gesetze fehlt. Fitansatz und Koeffiziententabelle allein erfüllen P-LAW nicht.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L06",
+      "scores": [
+        {
+          "criterionId": "exp-setup",
+          "pointsAwarded": 1,
+          "reason": "Sicherheit, eigene Skala, geprüfte Zeitbasis und Nullpunktverfahren sind vollständig beschrieben."
+        },
+        {
+          "criterionId": "exp-a-data",
+          "pointsAwarded": 4.5,
+          "reason": "Drei gültige eigene A-Läufe mit Messpaaren und begründet ersetztem A2."
+        },
+        {
+          "criterionId": "exp-b-data",
+          "pointsAwarded": 4.5,
+          "reason": "Drei neue B-Läufe mit eigener Höhe, Rohdaten und Beobachtungen."
+        },
+        {
+          "criterionId": "graph-a-m",
+          "pointsAwarded": 0.5,
+          "reason": "Geeignete A-Diagramme, Mehrpunktausgleich und richtige Steigungsbeziehung."
+        },
+        {
+          "criterionId": "graph-a-own",
+          "pointsAwarded": 2.5,
+          "reason": "Alle drei eigenen A-Läufe besitzen Fits, g-Werte und einen Laufvergleich."
+        },
+        {
+          "criterionId": "graph-b-m",
+          "pointsAwarded": 0.5,
+          "reason": "Eigenständige grafische B-Auswertung mit geeigneten Mehrpunktgeraden."
+        },
+        {
+          "criterionId": "graph-b-own",
+          "pointsAwarded": 2.5,
+          "reason": "Drei eigene B-Fits mit g-Bestimmung und Schätzwert."
+        },
+        {
+          "criterionId": "law-a",
+          "pointsAwarded": 2.5,
+          "reason": "A-Gesetz mit eigenem g, vollständigem Bezug und datenbasierter Ruheprüfung."
+        },
+        {
+          "criterionId": "law-b",
+          "pointsAwarded": 1.5,
+          "reason": "F2 und F3 sind erfüllt. Die B-Freigabe wird ausdrücklich aus A übernommen; eine eigene Prüfung nach dem Loslassen fehlt."
+        },
+        {
+          "criterionId": "unc-a-var",
+          "pointsAwarded": 0.5,
+          "reason": "A-Grenzvariationen sind mit resultierenden Steigungen gerechnet."
+        },
+        {
+          "criterionId": "unc-a-own",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene Zeit-, Orts- und Streuungsbeiträge begründen die Unsicherheitsgrößenordnung."
+        },
+        {
+          "criterionId": "unc-b-var",
+          "pointsAwarded": 0.5,
+          "reason": "B-Zeitnullpunkt und Ortsgrenze werden tatsächlich variiert."
+        },
+        {
+          "criterionId": "unc-b-own",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene B-Ablesegrenzen und Laufstreuung sind zahlenmäßig berücksichtigt."
+        },
+        {
+          "criterionId": "cmp-quant",
+          "pointsAwarded": 0.5,
+          "reason": "Differenz 0,03 wird richtig mit Unsicherheitsmaß 0,36 beziehungsweise 0,5 verglichen."
+        },
+        {
+          "criterionId": "cmp-limit",
+          "pointsAwarded": 0.5,
+          "reason": "Eigene Zeitnullpunktvariation, Skalenlage und A2 begründen konkrete Grenzen."
+        }
+      ],
+      "total": 23,
+      "passes": true,
+      "diagnosis": "Eine Kontrollfacette fehlt. B-Ruhe vor dem Öffnen und rohe Fitoffsets sind vorhanden, werden aber nicht zu einer eigenständigen Prüfung des B-Loslassens ausgewertet. Die ausdrücklich übernommene A-Prüfung ist hier eine Lücke, keine beibehaltene physikalische Fehlvorstellung.",
+      "localizedSlips": []
+    }
+  ],
+  "requiredCorrections": [
+    "Herkunft und Vollständigkeit trennen: Die Mindestzahl von fünf Paaren darf bei nachweislich eigenen, physikalisch hinreichenden Messungen nicht sämtliche Eigendatenzeilen sperren. Fehlende Messpaare in den Datenzeilen abgestuft bewerten; tatsächlich gezeigte eigene Diagramm-, g-, Gesetzes- und Unsicherheitsleistungen weiterhin inhaltlich bewerten. Die Aufgabenforderung selbst bleibt unverändert.",
+    "Die in DE und EN als erreichbar bezeichnete Ein-Lauf-Obergrenze präzisieren: Bei genau einem eigenen gültigen Lauf fehlt auch die eigene Laufstreuung für unc-*-own. Das erreichbare Maximum beträgt 18 BE; 18,5 ist lediglich eine lose obere Schranke."
+  ]
+}

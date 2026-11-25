@@ -1,0 +1,337 @@
+{
+  "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+  "candidateDecision": "accept",
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "Die Unterlagen enthalten eine eigene mehrteilige Übungsprüfung mit Aufgabenstellung, Musterlösung, sieben Bewertungskriterien und Bestehensgrenze. Der technische Eintrag type=atomic macht daraus kein fachliches atomares Curriculumsziel. Ein Beleg aus einer Landesprüfung liegt nicht vor.",
+  "physicsAndLanguage": "Fachlich stimmen die Bezugswerte: x/t=2,0 m/s; Fallstrecke/t²≈5,00;5,00;4,89 m/s²; Fallstrecke/x²≈1,25;1,25;1,22 1/m. Die Reaktionswege betragen etwa 13,9 und 27,8 m, die Anhaltewege etwa 27,9 und 83,8 m. Ihr Verhältnis ist ungefähr 3,00. Die Bremswerte sind mit quadratischer Geschwindigkeitsabhängigkeit vereinbar, beweisen aber kein allgemeines Bremsgesetz. DE und EN erhalten gemeinsam mit den unveränderten Hinweisen dieselben Bewertungsbedingungen. Tabellen, Wertepaare und gleichwertige Argumentationen zählen; eigene Messdaten und Fehlergrenzen werden nicht verlangt. Eine konsistent nach unten positive Fallkoordinate ist zulässig.",
+  "scopeVerdict": "Die Kurzfassung ist für diese Übungsprüfung freigabefähig. Untersucht wird ausschließlich der freie Anhalteabstand vor einem stehenden Hindernis. Aussagen über den Folgeabstand zu fahrenden Fahrzeugen, allgemeine Bremsgesetze oder sämtliche Alltagssituationen sind damit nicht nachgewiesen. Die geerbte Länderliste, BW/BY im Schlüssel sowie GK/LK-Tags belegen keine landesspezifische Prüfungs- oder Curriculumsübereinstimmung. Teil A prüft die Beschreibung einer Videoauswertung, keine tatsächlich durchgeführte Messung; seine vollständige Auslassung lässt bei perfektem Teil B noch 12 BE zu. Die Freigabe dieser Kurzfassung bedeutet keine Aktivierung oder amtliche Prüfungsanerkennung.",
+  "scoringConsistency": "Die Kriterien ergeben 16 BE, davon A=4 und B=12; bestanden ist ausschließlich ab 12 BE. Die unveränderten ausführlichen Hinweise erhalten Teilpunkte, alternative Verfahren, Auslassungsregeln und die Abgrenzung zwischen Schnitzer und Fehlvorstellung. Fehlende Facetten werden nicht als Formfehler behandelt. Lokale Schnitzer kosten jeweils einmal 0,5 BE ohne Folgeabzug; aufrechterhaltene fachliche Fehlvorstellungen entwerten die jeweils festgelegte tragende Gruppe. Die unabhängige Korrektur ergibt L01=10, L02=11, L03=10, L04=15, L05=11 und L06=14 BE.",
+  "stepCompressionChecks": [
+    {
+      "criterionId": "B_RW",
+      "equivalent": true,
+      "reason": "DE und EN erhalten zusammen mit dem eindeutig bezeichneten ausführlichen Bewertungsabschnitt die ursprüngliche Wertung. Insbesondere ergibt ein einziger bearbeiteter Fall mit richtigem v·tR-Ansatz und lokalem Schnitzer 1 BE, der fehlende andere Fall 0. Bei 50:3,6=13,2 und folgerichtiger Verdopplung erhält der Entstehungsfall 1 und der zweite 1,5 BE, insgesamt 2,5; B_AW und B_URT bleiben von Folgeabzügen frei. Die echte Umrechnungslücke ohne erkennbaren Versuch ergibt dagegen je Fall 1 BE. Die globalen unveränderten Hinweise verhindern, dass ein isoliertes Divisionszeichen bei sonst richtigem Zusammenhang als Fehlvorstellung behandelt wird. Das ausdrücklich begründete und beibehaltene Divisionsmodell in L01 entwertet hingegen B_RW und B_AW gemeinsam."
+    },
+    {
+      "criterionId": "B_URT",
+      "equivalent": true,
+      "reason": "DE und EN bewahren mit dem vollständigen Bewertungsabschnitt alle Stufen und gleichwertigen Wege. Die ausdrücklich zugeordneten Zuwächse +13,9 m beim Reaktionsweg und +42 m beim Bremsweg mit Vergleich zur bloßen Verdopplung können weiterhin 5 BE begründen. Ein bloßer Gesamtvergleich bleibt bei 0,5 BE; beide Faktoren ohne Abstandsschluss ebenfalls. Entscheidung und nur eine gedeutete Einzeländerung ergeben 4 BE, sofern die andere nicht bestritten wird: Die bloßen Reaktionswegwerte in L04 ergänzen die dortige Bremswegdeutung nicht zu 5 BE. Ein lokaler Schnitzer im vollständigen Kern ergibt 4,5 BE. Eine ausdrücklich aufrechterhaltene Skalierungsfehlvorstellung ergibt 0 ausschließlich in B_URT; die vollständigen Hinweise erhalten diese Abgrenzung auch bei der knappen englischen Formulierung."
+    }
+  ],
+  "carryingPerformanceAudit": [
+    {
+      "performanceId": "P_ANHALT",
+      "earnedFromTask": "B_RW und B_AW prüfen für beide Geschwindigkeiten das Reaktionswegmodell sR=v·tR einschließlich Umrechnung und den Anhalteweg als Summe aus eigenem Reaktionsweg und gegebenem Bremsweg. Das Gewicht beträgt 6 BE beziehungsweise 37,5 %.",
+      "weight": 6,
+      "completeOmissionMaximum": 10,
+      "safeguardsAndLimits": "Bei vollständigem Entfall bleiben höchstens 10 BE; Bestehen ist ausgeschlossen. Eine begründete und beibehaltene Fehlvorstellung im Reaktions- oder Anhaltewegmodell setzt beide Kriterien gemeinsam auf 0. Lokale Fehler und Umrechnungslücken erhalten dagegen die vorgesehenen Teilpunkte ohne Kaskade. Die Bestehensgrenze garantiert keine vollständige Verfahrensbeherrschung: Vier richtige Fallwerte ohne Ansätze ergeben zusammen 2 BE und können mit sonst perfekter Arbeit zu 12 BE führen. Eine zusätzliche Ansatzpflicht darf deshalb nicht eingeführt werden."
+    },
+    {
+      "performanceId": "P_BEWERT",
+      "earnedFromTask": "B_URT prüft die modellbasierte Entscheidung über den nötigen freien Abstand vor dem stehenden Hindernis und ihre Verknüpfung mit den Änderungen der beiden Weganteile. Das Gewicht beträgt 5 BE beziehungsweise 31,25 %.",
+      "weight": 5,
+      "completeOmissionMaximum": 11,
+      "safeguardsAndLimits": "Bei vollständigem Entfall bleiben höchstens 11 BE. Auch die 0,5-BE-Stufe reicht mit sonst perfekter Arbeit nur zu 11,5 BE; Bestehen setzt daher tatsächlich mindestens die 4-BE-Stufe voraus. Eine der beiden Einzeländerungen darf dabei fehlen, aber nicht bestritten werden. Faktor- und gleichwertige Zuwachsargumentationen zählen gleichermaßen; ein Dreifachfaktor ist optional. Eine aufrechterhaltene Skalierungsfehlvorstellung setzt nur diese Gruppe auf 0."
+    }
+  ],
+  "coveredGoalReviews": [
+    {
+      "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "mustShow": "Der fachliche Zielbezug besteht im einfachen Reaktions-/Anhaltewegmodell und einer begründeten Bewertung des freien Abstands vor einem stehenden Hindernis. Rechnerisch erzwingt ein Bestehen mindestens 2 BE in P_ANHALT und mindestens 4 BE in P_BEWERT. Damit muss eine Abstandsentscheidung mit wenigstens einer ausdrücklich gedeuteten Einzeländerung vorliegen; vollständige sichtbare Rechenansätze sind durch die Bestehensgrenze allein nicht garantiert.",
+      "mayRemainOpen": "Einzelne Fallrechnungen, die zweite Skalierungsdeutung und die Modellgrenze können unvollständig bleiben. Teil A kann vollständig fehlen. Eigene Messdaten, eine tatsächliche Versuchsdurchführung, die Herleitung eines allgemeinen Bremsgesetzes und die Bewertung bewegter vorausfahrender Fahrzeuge werden nicht verlangt.",
+      "whyTolerable": "Die Aufgabe liefert einen begrenzten Übungsnachweis zum benannten Verkehrsziel. Beide tragenden Gruppen können nicht vollständig durch Stützpunkte ersetzt werden, während Teilpunkte ausdrücklich zulässig bleiben. Das ist innerhalb des vorgegebenen stationären Szenarios tragfähig, darf aber nicht als vollständiger Nachweis aller Alltagssituationen oder sämtlicher Voraussetzungen ausgegeben werden."
+    }
+  ],
+  "gradedSubmissions": [
+    {
+      "submissionId": "L01",
+      "scores": [
+        {
+          "criterionId": "A_VID",
+          "pointsAwarded": 1.5,
+          "reason": "Maßstab in der Bewegungsebene, tatsächliche Bildzeit und derselbe Bezugspunkt in x und y sind vollständig beschrieben."
+        },
+        {
+          "criterionId": "A_TEIL",
+          "pointsAwarded": 1.5,
+          "reason": "Gemeinsame Zeittabelle und beide Datenquotienten belegen lineare horizontale und quadratische vertikale Bewegung."
+        },
+        {
+          "criterionId": "A_BAHN",
+          "pointsAwarded": 1,
+          "reason": "Zeitausschaltung und näherungsweise konstantes y/x² begründen die Parabel."
+        },
+        {
+          "criterionId": "B_RW",
+          "pointsAwarded": 0,
+          "reason": "sR=v:tR wird ausdrücklich durch längere Reaktionszeit als kürzeren Weg begründet und mit dem 2-s-Beispiel beibehalten. Zufällig richtige Zahlen bei tR=1 s heilen diese Fehlvorstellung nicht."
+        },
+        {
+          "criterionId": "B_AW",
+          "pointsAwarded": 0,
+          "reason": "Die Summen sind rechnerisch richtig; die beibehaltene Reaktionswegfehlvorstellung entwertet jedoch gemäß Gruppenregel ganz P_ANHALT."
+        },
+        {
+          "criterionId": "B_URT",
+          "pointsAwarded": 5,
+          "reason": "Unabhängig davon sind Entscheidung, Reaktionswegverdopplung bei fester Reaktionszeit und Bremswegvervierfachung richtig verknüpft."
+        },
+        {
+          "criterionId": "B_GRENZE",
+          "pointsAwarded": 1,
+          "reason": "Nässe, Eis und schlechte Reifen sind konkrete zutreffende Grenzen."
+        }
+      ],
+      "total": 10,
+      "passes": false,
+      "diagnosis": "Sehr guter Wurfteil und vollständige Skalierungsbewertung. Die ausdrücklich vertretene falsche Abhängigkeit des Reaktionswegs von der Reaktionszeit kostet die gesamte Gruppe P_ANHALT; sie ist kein lokaler Formfehler.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L02",
+      "scores": [
+        {
+          "criterionId": "A_VID",
+          "pointsAwarded": 1.5,
+          "reason": "Alle drei Anforderungen an Kalibrierung, tatsächliche Zeitbasis und Punktverfolgung sind erfüllt."
+        },
+        {
+          "criterionId": "A_TEIL",
+          "pointsAwarded": 1.5,
+          "reason": "Beide Teilbewegungen sind über derselben Zeit mit Wertepaaren und passenden Datenquotienten dargestellt."
+        },
+        {
+          "criterionId": "A_BAHN",
+          "pointsAwarded": 1,
+          "reason": "Die korrekte Zeitausschaltung wird zusätzlich durch y/x² kontrolliert."
+        },
+        {
+          "criterionId": "B_RW",
+          "pointsAwarded": 3,
+          "reason": "Beide Umrechnungen und beide Anwendungen von sR=v·tR sind sichtbar und richtig."
+        },
+        {
+          "criterionId": "B_AW",
+          "pointsAwarded": 3,
+          "reason": "Beide Anhaltewege sind als richtige Summen dargestellt."
+        },
+        {
+          "criterionId": "B_URT",
+          "pointsAwarded": 0,
+          "reason": "Es fehlen eine Abstandsentscheidung und jede ausdrückliche Deutung der Einzeländerungen. Die berechneten Fallwerte allein ersetzen das nicht."
+        },
+        {
+          "criterionId": "B_GRENZE",
+          "pointsAwarded": 1,
+          "reason": "Straße, Reifen und veränderliche tatsächliche Reaktionszeit sind konkret benannt."
+        }
+      ],
+      "total": 11,
+      "passes": false,
+      "diagnosis": "Videoanalyse und Fallrechnungen sind vollständig richtig. Die verlangte Beurteilung fehlt als eigenständige fachliche Leistung; das ist kein Formfehler.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L03",
+      "scores": [
+        {
+          "criterionId": "A_VID",
+          "pointsAwarded": 1.5,
+          "reason": "Kalibrierung in der Flugebene, tatsächliche Bildzeit und Verfolgung der Kugelmitte sind vollständig beschrieben."
+        },
+        {
+          "criterionId": "A_TEIL",
+          "pointsAwarded": 1.5,
+          "reason": "Datenquotienten und getrennte Wertepaare über derselben Zeit belegen beide Bewegungsgesetze."
+        },
+        {
+          "criterionId": "A_BAHN",
+          "pointsAwarded": 1,
+          "reason": "Zeitausschaltung liefert y≈1,25·x²/m; die Rundungsabweichung des letzten Datenpunkts wird richtig eingeordnet."
+        },
+        {
+          "criterionId": "B_RW",
+          "pointsAwarded": 0,
+          "reason": "Die qualitative Proportionalitätsaussage enthält keinen berechneten Reaktionsweg für einen der beiden Fälle."
+        },
+        {
+          "criterionId": "B_AW",
+          "pointsAwarded": 0,
+          "reason": "Die Zusammensetzung wird qualitativ erklärt, aber beide Anhaltewegwerte fehlen."
+        },
+        {
+          "criterionId": "B_URT",
+          "pointsAwarded": 5,
+          "reason": "Entscheidung und beide Faktoren sind ausdrücklich über die Summe verknüpft. Die Begründung zwischen Faktor zwei und vier ist gleichwertig; konkrete Anhaltewegzahlen sind hierfür nicht erforderlich."
+        },
+        {
+          "criterionId": "B_GRENZE",
+          "pointsAwarded": 1,
+          "reason": "Regen, Glätte und Gefälle benennen konkrete Grenzen der Übertragbarkeit."
+        }
+      ],
+      "total": 10,
+      "passes": false,
+      "diagnosis": "Vollständiger Wurfteil und überzeugende qualitative Abstandsbewertung. Die verlangten numerischen Reaktions- und Anhaltewege fehlen; die qualitative Bewertung ersetzt sie nicht.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L04",
+      "scores": [
+        {
+          "criterionId": "A_VID",
+          "pointsAwarded": 1.5,
+          "reason": "Alle drei Auswertungsfacetten sind korrekt beschrieben."
+        },
+        {
+          "criterionId": "A_TEIL",
+          "pointsAwarded": 1.5,
+          "reason": "Gemeinsame Zeittabelle, konstantes x/t und näherungsweise konstantes y/t² erfüllen sämtliche Teilaspekte."
+        },
+        {
+          "criterionId": "A_BAHN",
+          "pointsAwarded": 1,
+          "reason": "Die Zeitausschaltung und die Kontrolle durch y/x² begründen die Parabel vollständig."
+        },
+        {
+          "criterionId": "B_RW",
+          "pointsAwarded": 3,
+          "reason": "Umrechnungen und beide Reaktionswegberechnungen sind richtig dargestellt."
+        },
+        {
+          "criterionId": "B_AW",
+          "pointsAwarded": 3,
+          "reason": "Beide sichtbaren Summen ergeben die richtigen Anhaltewege."
+        },
+        {
+          "criterionId": "B_URT",
+          "pointsAwarded": 4,
+          "reason": "Die Entscheidung ist mit der ausdrücklich gedeuteten Bremswegvervierfachung verknüpft. Die Reaktionswegverdopplung wird nicht ausdrücklich gedeutet; die richtigen Fallzahlen und der allgemeine Rechenansatz ersetzen diese Facette nicht."
+        },
+        {
+          "criterionId": "B_GRENZE",
+          "pointsAwarded": 1,
+          "reason": "Müdigkeit und Ablenkung werden zutreffend mit längerer Reaktionszeit verbunden."
+        }
+      ],
+      "total": 15,
+      "passes": true,
+      "diagnosis": "Fachlich weitgehend vollständige Arbeit. In der Bewertung fehlt ausschließlich die ausdrückliche Deutung der Reaktionswegänderung. Diese fehlende Facette ist kein lokaler Formfehler.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L05",
+      "scores": [
+        {
+          "criterionId": "A_VID",
+          "pointsAwarded": 1.5,
+          "reason": "Kalibrierung, tatsächliche Zeitbasis und Verfolgung desselben Kugelpunkts sind vollständig beschrieben."
+        },
+        {
+          "criterionId": "A_TEIL",
+          "pointsAwarded": 1.5,
+          "reason": "Die getrennten Darstellungen und Datenquotienten belegen beide Teilbewegungen."
+        },
+        {
+          "criterionId": "A_BAHN",
+          "pointsAwarded": 1,
+          "reason": "Zeitausschaltung und Quotienten begründen die Parabel korrekt. Die räumliche Beschreibung als nach unten gekrümmt passt zur ausdrücklich nach unten positiven Fallkoordinate."
+        },
+        {
+          "criterionId": "B_RW",
+          "pointsAwarded": 3,
+          "reason": "Beide Reaktionswege werden mit Umrechnung und richtigem Produktansatz berechnet."
+        },
+        {
+          "criterionId": "B_AW",
+          "pointsAwarded": 3,
+          "reason": "Beide Anhaltewege sind korrekt als Summen dargestellt."
+        },
+        {
+          "criterionId": "B_URT",
+          "pointsAwarded": 0,
+          "reason": "Die proportionale Skalierung des gesamten Anhalteabstands wird ausdrücklich begründet und trotz widersprechender Bremswerte verteidigt. Das ist eine aufrechterhaltene Skalierungsfehlvorstellung."
+        },
+        {
+          "criterionId": "B_GRENZE",
+          "pointsAwarded": 1,
+          "reason": "Fahrbahnzustand, Reifen und Gefälle sind konkrete zutreffende Modellgrenzen."
+        }
+      ],
+      "total": 11,
+      "passes": false,
+      "diagnosis": "Wurfteil und Wegberechnungen sind richtig. Die ausdrücklich verteidigte lineare Skalierung des gesamten Anhalteabstands entwertet ausschließlich P_BEWERT; die unabhängigen Rechenleistungen bleiben erhalten.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L06",
+      "scores": [
+        {
+          "criterionId": "A_VID",
+          "pointsAwarded": 1,
+          "reason": "Kalibrierung und Punktverfolgung sind richtig. Die tatsächliche Bildrate wird sinnvoll herangezogen, aber 30 Bilder/s werden lokal falsch in 0,3 s je Bild umgerechnet: einmal −0,5 BE."
+        },
+        {
+          "criterionId": "A_TEIL",
+          "pointsAwarded": 1,
+          "reason": "Beide Datengesetze und die gemeinsame Zeitdarstellung sind vorhanden. Die einmalige Einheit m/s² für x/t ist bei sonst richtig verwendeter Geschwindigkeit ein lokaler Einheitenfehler: −0,5 BE."
+        },
+        {
+          "criterionId": "A_BAHN",
+          "pointsAwarded": 0.5,
+          "reason": "Die Zeitausschaltung ist richtig. In der zusätzlichen Kontrolle wird 0,44/0,36 fälschlich als 1,32 statt etwa 1,22 berechnet: vollständige Begründung mit einem Schnitzer."
+        },
+        {
+          "criterionId": "B_RW",
+          "pointsAwarded": 2.5,
+          "reason": "Umrechnung und Produktansatz sind für beide Fälle richtig. Im 100-km/h-Fall steht lokal 28,7 statt 27,8 m: 1 BE dort und 1,5 BE im 50-km/h-Fall."
+        },
+        {
+          "criterionId": "B_AW",
+          "pointsAwarded": 3,
+          "reason": "Beide Summen sind sichtbar und richtig aus den eigenen Reaktionswegen gebildet. 84,7 m ist die folgerichtige Übernahme des bereits belasteten Zahlendrehers und erhält keinen erneuten Abzug."
+        },
+        {
+          "criterionId": "B_URT",
+          "pointsAwarded": 5,
+          "reason": "Entscheidung und beide Einzeländerungen sind korrekt verknüpft. Der Vergleich mit dem übernommenen Anhalteweg ist folgerichtig und wird nicht erneut belastet."
+        },
+        {
+          "criterionId": "B_GRENZE",
+          "pointsAwarded": 1,
+          "reason": "Ablenkung, Nässe und abgefahrene Reifen benennen konkrete zutreffende Grenzen."
+        }
+      ],
+      "total": 14,
+      "passes": true,
+      "diagnosis": "Die fachlichen Ansätze und beide tragenden Leistungen sind vorhanden. Vier unabhängige lokale Schnitzer kosten insgesamt 2 BE. Die Übernahme des falschen Reaktionswegs in Anhalteweg und Vergleich verursacht keine weiteren Abzüge.",
+      "localizedSlips": [
+        {
+          "location": "A, Videoauswertung: „30 Bildern pro Sekunde … 0,3 s“",
+          "description": "Die Bildzeit beträgt 1/30 s≈0,0333 s. Der richtige Bezug auf die tatsächliche Bildrate ist erkennbar; es liegt ein lokaler Umrechnungsfehler in A_VID vor.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "A, horizontale Teilbewegung: „x/t = 2,0 m/s²“",
+          "description": "Für x/t ist m/s richtig. Die unmittelbar anschließende richtige Angabe der konstanten Geschwindigkeit zeigt einen isolierten Einheitenfehler in A_TEIL.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "A, Bahnkontrolle: „0,44/0,36 ≈ 1,32 1/m“",
+          "description": "Der Quotient beträgt etwa 1,22 1/m. Die zuvor richtige quadratische Verknüpfung bleibt erkennbar; einmaliger Rechenfehler in A_BAHN.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "B, Reaktionsweg bei 100 km/h: „27,8 m/s·1,0 s = 28,7 m“",
+          "description": "Zahlendreher im Ergebnis; richtig sind 27,8 m. Der Abzug entsteht ausschließlich in B_RW. Die späteren 84,7 m und der darauf beruhende Vergleich erhalten keinen Folgeabzug.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ]
+    }
+  ],
+  "requiredCorrections": []
+}

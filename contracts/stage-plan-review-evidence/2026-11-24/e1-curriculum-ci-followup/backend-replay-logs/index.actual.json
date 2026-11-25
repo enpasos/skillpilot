@@ -1,0 +1,52 @@
+{
+  "calculation": "Zuordnung der originalen Gradle-Ausgaben zu den drei getrennten Backend-Läufen. Jeder Lauf schrieb seine Ausgabe in eine eigene Datei mit dem lokalen Namen gradle.log.",
+  "sourceRecord": "../backend-replay.actual.json",
+  "sourceRawSha256": "39379318490362905640759908d0b7d7fdf676c873e36a1bc44fb0008530e0f9",
+  "runs": [
+    {
+      "replayRecordPointer": "/runs/0/log",
+      "localRunManifestSha256": "16711b1e80634b8e57b3963f2cc6c28b8741201d0d3c0b486ca809f039478877",
+      "path": "backend-activated-e795626b9d/gradle.log",
+      "sha256": "963e640411edb12c4dc4c8c7bfc53ea871b973940e6cfca50d0bc4321068f4b3",
+      "bytes": 89231,
+      "exitCode": 1,
+      "totals": {
+        "classes": 8,
+        "cases": 215,
+        "passed": 209,
+        "failed": 6,
+        "skipped": 0
+      }
+    },
+    {
+      "replayRecordPointer": "/runs/1/log",
+      "localRunManifestSha256": "891edad621aff6edaaea5b1dd45f80f619fb60eeb7004d7f2e05c94bd2cdee63",
+      "path": "backend-context-corrected/gradle.log",
+      "sha256": "98130660d9d1ec0e65d89f6082a4ce460b00f6de5cd46a20b295d366084df198",
+      "bytes": 32703,
+      "exitCode": 1,
+      "totals": {
+        "classes": 5,
+        "cases": 42,
+        "passed": 36,
+        "failed": 6,
+        "skipped": 0
+      }
+    },
+    {
+      "replayRecordPointer": "/runs/2/log",
+      "localRunManifestSha256": "00276a6f3e553237c324590b869c92bf72c6560acce685aad3f021f600ac8e2d",
+      "path": "backend-final-observed-context/gradle.log",
+      "sha256": "a2c108e6ab567c040eb78d3a598cd9cd989002d099f57b0f26e84451b42d5a09",
+      "bytes": 30534,
+      "exitCode": 0,
+      "totals": {
+        "classes": 5,
+        "cases": 42,
+        "passed": 42,
+        "failed": 0,
+        "skipped": 0
+      }
+    }
+  ]
+}

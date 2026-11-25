@@ -1,0 +1,35 @@
+{
+  "status": "patch",
+  "changes": [
+    {
+      "field": "steps.b_15.description",
+      "find": "Ergebnis 0 BE für einen ausstehenden Betrag, eine als Betrag ausgegebene Quadratsumme oder einen unbelegten Endwert.",
+      "replacement": "Ergebnis 0 BE für einen ausstehenden Betrag oder einen unbelegten Endwert. Ebenfalls 0 BE gibt es für eine Quadratsumme, die ohne Wurzelansatz als Betrag ausgegeben oder ausdrücklich als Betrag verteidigt wird, etwa |v| = v_x² + v_y² = 6,25 m/s; das ist ein falsches Betragsprinzip. Vorrang der Schnitzerregel: Ist für diesen Zeitpunkt ein sichtbar richtiger Wurzelansatz notiert und ist nur dessen letzte Auswertung isoliert fehlerhaft, liegt ein lokaler Schnitzer vor. Beispiel: |v| = √(2,0² + 1,5²) m/s = 6,25 m/s, die Wurzel wurde also nicht gezogen. Das ergibt Ansatz 0,5 + Ergebnis 1 = 1,5 von 2 BE. Tritt derselbe Auswertungsfehler trotz notierter Wurzel auch beim anderen Zeitpunkt auf, wird er nur einmal belastet, und zwar an der ersten Stelle."
+    },
+    {
+      "field": "steps.b_15.description",
+      "find": "Result 0 for an outstanding magnitude, a squared sum reported as the magnitude or an unsupported final value.",
+      "replacement": "Result 0 for an outstanding magnitude or an unsupported final value. Also 0 for a squared sum that is reported as the magnitude without a root approach, or explicitly defended as the magnitude, e.g. |v| = vx² + vy² = 6.25 m/s; this is a wrong magnitude principle. Precedence of the slip rule: if a visibly correct root approach is written for this instant and only its final evaluation is wrong in isolation, this is a local slip. Example: |v| = √(2.0² + 1.5²) m/s = 6.25 m/s, i.e. the root was not taken. This earns approach 0.5 + result 1 = 1.5 of 2 marks. If the same evaluation error recurs at the other instant despite a written root, charge it only once, at its first location."
+    },
+    {
+      "field": "steps.b_30.description",
+      "find": "Gleichwertige Rechenwege zählen wie bei b_15.",
+      "replacement": "Gleichwertige Rechenwege zählen wie bei b_15. Der Vorrang der Schnitzerregel aus b_15 gilt auch hier: Ein sichtbar richtiger Wurzelansatz mit isoliert fehlerhafter letzter Auswertung, etwa √(2,0² + 3,0²) m/s = 13 m/s, ergibt 1,5 BE. Wurde derselbe Auswertungsfehler bereits in b_15 belastet, gibt es hier 2 BE."
+    },
+    {
+      "field": "steps.b_30.description",
+      "find": "Equivalent routes count as for b_15.",
+      "replacement": "Equivalent routes count as for b_15. The precedence of the slip rule from b_15 also applies here: a visibly correct root approach whose final evaluation alone is wrong in isolation, e.g. √(2.0² + 3.0²) m/s = 13 m/s, earns 1.5 marks. If the same evaluation error was already charged in b_15, award 2 marks here."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "- Ergebnis 0 für einen ausstehenden Betrag oder eine als Betrag ausgegebene Quadratsumme.",
+      "replacement": "- Ergebnis 0 für einen ausstehenden Betrag oder einen unbelegten Endwert. Ebenfalls 0 für eine Quadratsumme, die ohne Wurzelansatz als Betrag ausgegeben oder ausdrücklich als Betrag verteidigt wird, etwa |v| = v_x² + v_y² = 6,25 m/s. Das ist ein falsches Betragsprinzip.\n- Vorrang der Schnitzerregel vor dieser Nullregel: Ist für den Zeitpunkt ein sichtbar richtiger Wurzelansatz notiert und ist nur dessen letzte Auswertung isoliert fehlerhaft, liegt ein lokaler Schnitzer vor. Beispiel: |v| = √(2,0² + 1,5²) m/s = 6,25 m/s, die Wurzel wurde also nicht gezogen. Das ergibt Ansatz 0,5 + Ergebnis 1 = 1,5 von 2 BE. Tritt derselbe Auswertungsfehler trotz notierter Wurzel auch beim anderen Zeitpunkt auf, wird er nur einmal belastet, an der ersten Stelle; der andere Zeitpunkt behält 2 BE."
+    },
+    {
+      "field": "scoringNotes.solutionContentEn",
+      "find": "- Result 0 for an outstanding magnitude or a squared sum reported as the magnitude.",
+      "replacement": "- Result 0 for an outstanding magnitude or an unsupported final value. Also 0 for a squared sum that is reported as the magnitude without a root approach, or explicitly defended as the magnitude, e.g. |v| = vx² + vy² = 6.25 m/s. This is a wrong magnitude principle.\n- The slip rule takes precedence over this zero rule: if a visibly correct root approach is written for the instant and only its final evaluation is wrong in isolation, this is a local slip. Example: |v| = √(2.0² + 1.5²) m/s = 6.25 m/s, i.e. the root was not taken. This earns approach 0.5 + result 1 = 1.5 of 2 marks. If the same evaluation error recurs at the other instant despite a written root, charge it only once, at its first location; the other instant keeps 2 marks."
+    }
+  ]
+}

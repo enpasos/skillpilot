@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "decision": {
+      "type": "string",
+      "enum": [
+        "confirm",
+        "correct",
+        "reject"
+      ]
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rowId": {
+            "type": "string",
+            "enum": [
+              "H1",
+              "H2",
+              "H3",
+              "H4",
+              "H5",
+              "H6"
+            ]
+          },
+          "criterionChanged": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "rowId",
+          "criterionChanged"
+        ]
+      }
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "decision",
+    "rows",
+    "reason"
+  ]
+}

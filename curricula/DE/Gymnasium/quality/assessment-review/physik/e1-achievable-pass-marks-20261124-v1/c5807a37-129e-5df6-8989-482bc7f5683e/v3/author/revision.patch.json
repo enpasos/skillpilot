@@ -1,0 +1,105 @@
+{
+  "status": "patch",
+  "changes": [
+    {
+      "field": "steps.t4_grenze.description",
+      "find": "Wird die rückwärts verlängerte Parabel ausdrücklich als wirkliche Vorgeschichte verteidigt, liegt W2 vor: 0 BE.",
+      "replacement": "Wird die rückwärts verlängerte Parabel ausdrücklich als wirkliche Vorgeschichte verteidigt, liegt W2 vor. Jede beibehaltene W2-Fehlvorstellung setzt alle Schritte von L2 auf 0 BE, also auch t4_grenze. Das gilt auch, wenn sie erst in t7_zeitraum oder t7_abweichung vertreten wird."
+    },
+    {
+      "field": "steps.t7_massepunkt.description",
+      "find": "Gültig ist der Vergleich der 3 cm Durchmesser mit den Strecken von mehreren Metern oder das Argument, dass nur die Bewegung der Kugel als Ganzes längs der Senkrechten gefragt ist und Drehung oder Form darauf keinen Einfluss haben.",
+      "replacement": "Jedes der beiden folgenden Argumente genügt für sich allein. Erstens: der Vergleich der 3 cm Durchmesser mit den Strecken von mehreren Metern. Zweitens: der Hinweis, dass nur die Bewegung der Kugel als Ganzes (ihres Schwerpunkts) längs der Senkrechten gefragt ist. Eine Aussage zu Drehung oder Form wird nicht zusätzlich verlangt."
+    },
+    {
+      "field": "steps.t7_luft.description",
+      "find": "Bezug auf diese Kugel und diese Bewegung (kompakt, schwer, höchstens 20 m/s, „die Luft bremst kaum“), aber ohne Vergleich mit Gewichtskraft oder Erdanziehung: 1,5 BE. Nur „sie ist schwer“ bzw. „sie ist klein“, fehlend oder falsch: 0 BE.",
+      "replacement": "1,5 BE: kein Vergleich mit Gewichtskraft oder Erdanziehung, aber ein Begründungsschritt, der eine Eigenschaft dieser Kugel mit der geringen Bremswirkung verknüpft. Beispiel: „kleine Stirnfläche bei vergleichsweise großer Masse, deshalb wird sie von der Luft kaum abgebremst“. 0 BE: bloße Aufzählung von Eigenschaften ohne Folgerung („sie ist klein“, „sie ist schwer“, „klein und schwer“), bloße Wiederholung der Annahme („die Luft bremst kaum“), fehlende oder falsche Begründung."
+    },
+    {
+      "field": "steps.t7_zeitraum.description",
+      "find": "Anerkannt wird auch ein Intervall an anderer Stelle, wenn es dort mit beiden Grenzen eindeutig angegeben ist, oder ein eindeutiger Verweis darauf.",
+      "replacement": "Anerkannt wird auch eine Angabe an anderer Stelle, wenn sie dort ausdrücklich als Geltungsbereich der Gesetze mit beiden Grenzen formuliert ist. Beispiel: „die Gesetze gelten während des freien Flugs vom Abwurf bis zum ersten Bodenkontakt“. Ein eindeutiger Verweis auf eine solche Angabe genügt ebenfalls. Die bloßen Anfangs- und Endpunkte der Diagramme in Teil 5 sind keine Angabe zum Geltungszeitraum und zählen hier nicht."
+    },
+    {
+      "field": "steps.t7_abweichung.description",
+      "find": "an dem die Luftreibung offensichtlich groß gegenüber seiner Gewichtskraft ist (z. B. Federball, Papierblatt, Luftballon).",
+      "replacement": "an dem der Luftwiderstand gegenüber seiner Gewichtskraft nicht vernachlässigbar ist und den Wurf deutlich verändert (z. B. Federball, Papierblatt, Tischtennisball, mit Atemluft gefüllter Luftballon). Dass der Widerstand die Gewichtskraft übertrifft, wird nicht verlangt."
+    },
+    {
+      "field": "steps.t7_abweichung.description",
+      "find": "Richtung „kleiner“ so begründet, aber kein oder ein ungeeigneter Körper: 1 BE.",
+      "replacement": "Ebenfalls 3,5 BE erhält eine Antwort, die drei Bedingungen erfüllt: Sie berücksichtigt zusätzlich eine weitere Kraft wie den Auftrieb ausdrücklich als eigene Kraft. Sie behandelt den Luftwiderstand beim Aufsteigen weiterhin als nach unten wirkend und bremsend. Sie gibt eine Richtung an, die zu ihren genannten Annahmen passt. Beim Luftballon wird im Widerstandsmodell der Musterlösung bewertet: Atemluftfüllung, der Auftrieb übersteigt die Gewichtskraft nicht, der Luftwiderstand bestimmt den Aufstieg. Ohne Erwähnung des Auftriebs ergibt „kleiner, weil zusätzlich gebremst“ die volle Punktzahl. Richtung „kleiner“ so begründet, aber kein oder ein ungeeigneter Körper: 1 BE. Ebenfalls 1 BE: geeigneter Körper und physikalisch richtige Betrachtung einer anderen Kraft (z. B. Auftrieb), aber keine Aussage zur Wirkung des Luftwiderstands beim Aufsteigen."
+    },
+    {
+      "field": "steps.t7_abweichung.description",
+      "find": "Bei beibehaltener Fehlvorstellung W2: 0 BE.",
+      "replacement": "Bei beibehaltener Fehlvorstellung W2 erhalten alle Schritte von L2 0 BE. Als W2 gilt hier die Aussage, der Luftwiderstand selbst vergrößere die Steighöhe oder bremse beim Aufsteigen nicht. Eine ausdrücklich als Auftrieb gekennzeichnete Überlegung ist keine W2."
+    },
+    {
+      "field": "performances.L2_grenzen.description",
+      "find": "für einen Körper mit großem Luftwiderstand",
+      "replacement": "für einen Körper mit merklichem, gegenüber der Gewichtskraft nicht vernachlässigbarem Luftwiderstand"
+    },
+    {
+      "field": "goalJudgements.d6dc0e02-831d-4894-a61a-852bcc74f147.mustShow",
+      "find": "(Körper mit großem Luftwiderstand, größte Höhe kleiner, Begründung über das zusätzliche Bremsen beim Aufstieg)",
+      "replacement": "(Körper mit merklichem Luftwiderstand, größte Höhe kleiner, Begründung über das zusätzliche Bremsen beim Aufstieg, gegebenenfalls mit ausdrücklich berücksichtigtem Auftrieb)"
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Für t7_zeitraum wird ein Intervall außerhalb von Teil 7 nur anerkannt, wenn es dort mit beiden Grenzen eindeutig angegeben ist oder eindeutig darauf verwiesen wird.",
+      "replacement": "Für t7_zeitraum wird eine Angabe außerhalb von Teil 7 nur anerkannt, wenn sie dort ausdrücklich als Geltungsbereich der Gesetze mit beiden Grenzen formuliert ist oder eindeutig darauf verwiesen wird. Beispiel: „gelten während des freien Flugs vom Abwurf bis zum ersten Bodenkontakt“. Diagrammendpunkte allein zählen nicht."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Eine ausdrücklich verteidigte wirkliche Vorgeschichte ist W2.",
+      "replacement": "Eine ausdrücklich verteidigte wirkliche Vorgeschichte ist W2. Jede beibehaltene W2-Fehlvorstellung setzt alle Schritte von L2 einschließlich t4_grenze auf 0 BE, auch wenn sie erst in Teil 7 vertreten wird."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "dass nur die Bewegung der Kugel als Ganzes gefragt ist: 3 BE.",
+      "replacement": "dass nur die Bewegung der Kugel als Ganzes (ihres Schwerpunkts) gefragt ist: 3 BE. Jedes der beiden Argumente genügt allein. Eine Aussage zu Drehung oder Form wird nicht zusätzlich verlangt."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Bezug auf diese Kugel und Bewegung ohne diesen Vergleich: 1,5 BE.",
+      "replacement": "Ohne diesen Vergleich, aber mit einem Begründungsschritt, der eine Eigenschaft dieser Kugel mit der geringen Bremswirkung verknüpft: 1,5 BE. Beispiel: „kleine Stirnfläche bei vergleichsweise großer Masse, deshalb bremst die Luft sie kaum“."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Nur „schwer“ bzw. „klein“: 0 BE.",
+      "replacement": "Bloße Eigenschaften ohne Folgerung („schwer“, „klein“, „klein und schwer“) oder bloße Wiederholung der Annahme („die Luft bremst kaum“): 0 BE."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Außerhalb von Teil 7 wird das Intervall anerkannt, wenn es mit beiden Grenzen eindeutig angegeben ist oder eindeutig darauf verwiesen wird.",
+      "replacement": "Außerhalb von Teil 7 wird eine Angabe anerkannt, wenn sie ausdrücklich als Geltungsbereich der Gesetze mit beiden Grenzen formuliert ist oder eindeutig darauf verwiesen wird. Beispiel: „die Gesetze gelten während des freien Flugs vom Abwurf bis zum ersten Bodenkontakt“. Bloße Anfangs- und Endpunkte der Diagramme in Teil 5 zählen nicht."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Geeigneter Körper, größte Höhe kleiner, Begründung über die beim Aufstieg nach unten wirkende, zusätzlich bremsende Luftreibung: 3,5 BE.",
+      "replacement": "Geeigneter Körper, größte Höhe kleiner, Begründung über die beim Aufstieg nach unten wirkende, zusätzlich bremsende Luftreibung: 3,5 BE. Geeignet ist jeder Körper, an dem der Luftwiderstand gegenüber der Gewichtskraft nicht vernachlässigbar ist und den Wurf deutlich verändert (z. B. Federball, Papierblatt, Tischtennisball, Luftballon). Dass der Widerstand die Gewichtskraft übertrifft, wird nicht verlangt.\n  - Ebenfalls 3,5 BE, wenn die Antwort drei Bedingungen erfüllt: Sie berücksichtigt zusätzlich eine weitere Kraft, etwa den Auftrieb, ausdrücklich als eigene Kraft. Sie behandelt den Luftwiderstand beim Aufsteigen weiterhin als nach unten wirkend und bremsend. Sie gibt eine Richtung an, die zu ihren genannten Annahmen passt.\n  - Luftballon: Bewertet wird im Widerstandsmodell der Musterlösung. Angenommen ist ein mit Atemluft gefüllter Ballon, dessen Auftrieb die Gewichtskraft nicht übersteigt und bei dem der Luftwiderstand den Aufstieg bestimmt. Wer den Auftrieb nicht anspricht, erhält mit „kleiner, weil zusätzlich gebremst“ die volle Punktzahl. Das Weglassen des Auftriebs ist keine Lücke."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Richtung so begründet, aber Körper fehlt oder ist ungeeignet: 1 BE.",
+      "replacement": "Richtung so begründet, aber Körper fehlt oder ist ungeeignet: 1 BE. Ebenfalls 1 BE: geeigneter Körper und physikalisch richtige Betrachtung einer anderen Kraft (z. B. Auftrieb), aber keine Aussage zur Wirkung des Luftwiderstands beim Aufsteigen. Das ist keine W2."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "Oder: Luftwiderstand führe zu größerer oder gleicher Steighöhe (z. B. „die Luft trägt ihn“, „Luftreibung wirkt erst beim Fallen“).",
+      "replacement": "Oder: Der Luftwiderstand selbst vergrößere die Steighöhe oder lasse sie unverändert, weil er beim Aufsteigen nicht bremse (z. B. „der Luftwiderstand schiebt ihn nach oben“, „Luftreibung wirkt erst beim Fallen“). Maßgeblich ist die vertretene Aussage über den Luftwiderstand, nicht ein einzelnes Wort wie „größer“ oder „trägt“. Keine Fehlvorstellung ist eine Überlegung, die den Auftrieb ausdrücklich als eigene, vom Luftwiderstand verschiedene Kraft behandelt. Sie wird allein nach t7_abweichung bewertet."
+    },
+    {
+      "field": "scoringNotes.solutionContent",
+      "find": "In Teil 7 jeder Körper, an dem die Luftreibung offensichtlich nicht klein gegenüber der Gewichtskraft ist.",
+      "replacement": "In Teil 7 jeder Körper, an dem der Luftwiderstand gegenüber der Gewichtskraft nicht vernachlässigbar ist und den Wurf deutlich verändert. Es gilt derselbe Maßstab wie bei t7_abweichung."
+    },
+    {
+      "field": "audits.S04.answer",
+      "find": "Anders wäre es bei einem aufgeblasenen Luftballon: Er ist sehr leicht und groß, die Luftreibung ist bei 10 m/s groß im Vergleich zu seiner Gewichtskraft.",
+      "replacement": "Anders wäre es bei einem Tischtennisball: Er wiegt nur etwa 2,7 g, ist aber 4 cm groß. Die Luftreibung an ihm ist bei 10 m/s etwa so groß wie seine Gewichtskraft."
+    }
+  ]
+}

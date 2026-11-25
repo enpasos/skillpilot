@@ -1,0 +1,138 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4",
+    "normalizedGoalSha256": "94caaa5f3f8a3a972d5a47fb25f092fcfbe6a099101e596b2eba36a112688a20"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "1d7ca525e2bdb6068b3c76f2f2778d351a982a021aae32a31be09224d1568063",
+    "normalizedGoalSha256": "e20c98d6f629bf00ce4c1d758113823773b986c619cdc69db5ccff02cb446cd6"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "34a34508aa43f9c635e8495df932568ae37a95ddcd35de350144cc824a1afbc8"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "e89132c39d8dd4599e5b2f14a3ecfd562b534937d9e64ce60fe59f3b096f6e5b"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "8ab1728114c50f2cbd1e5dfe3a15b9c9360c914caecfcb9a6c9e31331c30a964"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20e5f-9266-7a52-a3bf-8218f4877c64",
+      "decision": "accept",
+      "eligibleForActivation": true,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P-EXP"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P-GRAPH"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "P-LAW"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "961ffee77ab78801b0f5c3b2f68044f1ab824b26c25b960021bd25fbb435b74c"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "b33caf31f0a4a488ed4d492758eb2575751ce1d5d40a8b8a68779dbf7aa70f3e"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20e5f-9266-7eb1-b5f9-a705be9e5048",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S03",
+          "kind": "missing-performance",
+          "performanceId": "P-EXP"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "P-GRAPH"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "P-LAW"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "1abfebc7c89479eabb7e40ff7feb6ef2df7b5bf3d0eaab20fe920ce07ba00a71"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "5b0c31da71c32dce2eabe3a58be7845add03b93b574516905d07223849ffd4f3"
+      }
+    }
+  ],
+  "eligibleForActivation": false
+}

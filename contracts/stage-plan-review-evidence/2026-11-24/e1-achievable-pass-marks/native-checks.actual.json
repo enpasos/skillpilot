@@ -1,0 +1,1308 @@
+{
+  "schemaVersion": 1,
+  "comparisonBaseCommit": "3d10e3ed6083482b3f9d26047fd5005e5c2dd96b",
+  "currentPhysics": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "76042a25b10ea7f89d461d3be4eeb48b6ae7239f23f7eb02b7132b55f3b60b5c"
+  },
+  "recordedAt": "2026-11-24T20:59:10+00:00",
+  "testInputBinding": "Commands used the PR B working tree and the Physics file identified by currentPhysics.sha256. Each recorded checkout commit identifies the working tree base at command start.",
+  "ciDefinition": {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "b285144be947a4a1afc43cc5a48da46736c3ace121b26dcb60ef40960cfd8092"
+  },
+  "packageCommands": {
+    "path": "app/package.json",
+    "sha256": "e450c9c2633abc3d642675a74a5d7f12f71ba94b093708ec965ff9d0611d0d2b"
+  },
+  "currentQualityOutput": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "cb1087cfbe83ae5ecd60684098b2ffebb3825ecd85f6d00af0ce4adc63dd62bd"
+  },
+  "maturity": {
+    "physics": "M7",
+    "scopes": {
+      "canonical-physics-sek1": "M4",
+      "canonical-physics-sek2": "M4"
+    },
+    "currentStatusSha256": "cb1087cfbe83ae5ecd60684098b2ffebb3825ecd85f6d00af0ce4adc63dd62bd"
+  },
+  "scopedAssessmentGates": {
+    "canonical-physics-sek1": {
+      "status": "pass",
+      "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 56,
+        "invalidExplicitTerminalConfigurations": 0,
+        "evaluatedProjectionScopes": 106,
+        "requiredMotivationAnchors": 2,
+        "minimumRequiredTerminalAutonomyGoals": 40,
+        "requiredTerminalAutonomyGoals": 58,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 0,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 51,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 13721,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 783,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 191,
+        "nationalStageTargetGoalOccurrencesMaterializedFromFullExposure": 123,
+        "nationalProjectionScopesWithInvalidExposureFamily": 0,
+        "projectionScopesWithInvalidSourceStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 1,
+        "visibleSelectedAtomicGoalOccurrences": 9233,
+        "visibleProfileSelectedAtomicGoalOccurrences": 8739,
+        "visibleProjectedRouteTargetGoalOccurrences": 9233,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 494,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 61,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      }
+    }
+  },
+  "reviewedExams": [
+    {
+      "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+      "state": "revised",
+      "beforePassing": 19,
+      "maxPoints": 20,
+      "passingPoints": 17.0,
+      "slack": 3.0,
+      "percent": "85",
+      "weights": [
+        {
+          "performanceId": "P-A",
+          "weight": 12.0,
+          "criterionIds": [
+            "A-DIA",
+            "A-ORK",
+            "A-AFL",
+            "A-RAT",
+            "A-VFL",
+            "A-WEG",
+            "A-KON"
+          ],
+          "otherwisePerfect": 8.0
+        },
+        {
+          "performanceId": "P-B",
+          "weight": 8.0,
+          "criterionIds": [
+            "B-GES",
+            "B-DIA",
+            "B-WRT",
+            "B-FRT",
+            "B-DEU",
+            "B-VGL",
+            "B-KRA"
+          ],
+          "otherwisePerfect": 12.0
+        }
+      ],
+      "questions": {
+        "taskContent": {
+          "pointLabelCount": 2,
+          "partWeights": [
+            12.0,
+            8.0
+          ],
+          "changedNumberTokens": [],
+          "textWithoutPointNumbersSha256": "715477e2e44b58bfba7e409a388587b9458d70579468239353c84b396e4d9651"
+        },
+        "taskContentEn": {
+          "pointLabelCount": 2,
+          "partWeights": [
+            12.0,
+            8.0
+          ],
+          "changedNumberTokens": [],
+          "textWithoutPointNumbersSha256": "9674fa873235c49d79483994c873e68683fe16f60e365064aecebf81860dc3f6"
+        }
+      },
+      "sourceFingerprintAgreedByBothNativePackageConsumers": "sha256:9b165a0888e64f4024f66797a302c3b5b0a821c306e4794cbebf1a4a678f667e"
+    },
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "state": "revised",
+      "beforePassing": 15.5,
+      "maxPoints": 16,
+      "passingPoints": 13.5,
+      "slack": 2.5,
+      "percent": "675/8",
+      "weights": [
+        {
+          "performanceId": "ZUS",
+          "weight": 3.0,
+          "criterionIds": [
+            "z_res15",
+            "z_res30",
+            "f_add"
+          ],
+          "otherwisePerfect": 13.0
+        },
+        {
+          "performanceId": "BET",
+          "weight": 4.0,
+          "criterionIds": [
+            "b_15",
+            "b_30"
+          ],
+          "otherwisePerfect": 12.0
+        },
+        {
+          "performanceId": "RICHT",
+          "weight": 4.0,
+          "criterionIds": [
+            "r_verf",
+            "r_wink",
+            "r_zun"
+          ],
+          "otherwisePerfect": 12.0
+        }
+      ],
+      "questions": {
+        "taskContent": {
+          "pointLabelCount": 5,
+          "partWeights": [
+            2.0,
+            3.0,
+            4.0,
+            4.0,
+            3.0
+          ],
+          "changedNumberTokens": [
+            {
+              "questionLine": 2,
+              "before": "4",
+              "after": "2",
+              "total": false
+            },
+            {
+              "questionLine": 3,
+              "before": "4",
+              "after": "3",
+              "total": false
+            },
+            {
+              "questionLine": 4,
+              "before": "3",
+              "after": "4",
+              "total": false
+            },
+            {
+              "questionLine": 5,
+              "before": "2",
+              "after": "4",
+              "total": false
+            }
+          ],
+          "textWithoutPointNumbersSha256": "b216b0a9b6f49b97a2ae32461f39b618d20bcf08a766e86cb7dbfba872b15d77"
+        },
+        "taskContentEn": {
+          "pointLabelCount": 5,
+          "partWeights": [
+            2.0,
+            3.0,
+            4.0,
+            4.0,
+            3.0
+          ],
+          "changedNumberTokens": [
+            {
+              "questionLine": 2,
+              "before": "4",
+              "after": "2",
+              "total": false
+            },
+            {
+              "questionLine": 3,
+              "before": "4",
+              "after": "3",
+              "total": false
+            },
+            {
+              "questionLine": 4,
+              "before": "3",
+              "after": "4",
+              "total": false
+            },
+            {
+              "questionLine": 5,
+              "before": "2",
+              "after": "4",
+              "total": false
+            }
+          ],
+          "textWithoutPointNumbersSha256": "b5bcc3cf74a1eca942f46ed4083e006e6b267a6b73004207f7732e99c40956cc"
+        }
+      },
+      "sourceFingerprintAgreedByBothNativePackageConsumers": "sha256:6a84f8456acefce54161725f3df901446bd95b75311260157e1c0236d527666e"
+    },
+    {
+      "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+      "state": "revised",
+      "beforePassing": 15.5,
+      "maxPoints": 16,
+      "passingPoints": 12.0,
+      "slack": 4.0,
+      "percent": "75",
+      "weights": [
+        {
+          "performanceId": "P_ANHALT",
+          "weight": 6.0,
+          "criterionIds": [
+            "B_RW",
+            "B_AW"
+          ],
+          "otherwisePerfect": 10.0
+        },
+        {
+          "performanceId": "P_BEWERT",
+          "weight": 5.0,
+          "criterionIds": [
+            "B_URT"
+          ],
+          "otherwisePerfect": 11.0
+        }
+      ],
+      "questions": {
+        "taskContent": {
+          "pointLabelCount": 2,
+          "partWeights": [
+            4.0,
+            12.0
+          ],
+          "changedNumberTokens": [
+            {
+              "questionLine": 1,
+              "before": "8",
+              "after": "4",
+              "total": false
+            },
+            {
+              "questionLine": 3,
+              "before": "8",
+              "after": "12",
+              "total": false
+            }
+          ],
+          "textWithoutPointNumbersSha256": "37e92850ecd3dfd676b6a81d6177d4e92f63dd956d326a041a8bf91b30c2c373"
+        },
+        "taskContentEn": {
+          "pointLabelCount": 2,
+          "partWeights": [
+            4.0,
+            12.0
+          ],
+          "changedNumberTokens": [
+            {
+              "questionLine": 1,
+              "before": "8",
+              "after": "4",
+              "total": false
+            },
+            {
+              "questionLine": 3,
+              "before": "8",
+              "after": "12",
+              "total": false
+            }
+          ],
+          "textWithoutPointNumbersSha256": "1dd0e822130127c4c40835e883271d973f054369a54b5203c9a6573518c3a233"
+        }
+      },
+      "sourceFingerprintAgreedByBothNativePackageConsumers": "sha256:d55103004675a1d0cec6075ed068fd68c5010b5dcff62063b297b1f3ebf54914"
+    },
+    {
+      "goalId": "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+      "state": "revised",
+      "beforePassing": 35.5,
+      "maxPoints": 36,
+      "passingPoints": 30.5,
+      "slack": 5.5,
+      "percent": "1525/18",
+      "weights": [
+        {
+          "performanceId": "P-MP",
+          "weight": 9.0,
+          "criterionIds": [
+            "t6-mp-core",
+            "t6-mp-size",
+            "t6-mp-rot"
+          ],
+          "otherwisePerfect": 27.0
+        },
+        {
+          "performanceId": "P-DRAG",
+          "weight": 9.0,
+          "criterionIds": [
+            "t6-drag-cond",
+            "t6-drag-limits",
+            "t6-drag-claim"
+          ],
+          "otherwisePerfect": 27.0
+        }
+      ],
+      "questions": {
+        "taskContent": {
+          "pointLabelCount": 7,
+          "partWeights": [
+            4.0,
+            4.0,
+            3.0,
+            3.0,
+            3.0,
+            19.0
+          ],
+          "changedNumberTokens": [
+            {
+              "questionLine": 15,
+              "before": "6",
+              "after": "4",
+              "total": false
+            },
+            {
+              "questionLine": 17,
+              "before": "6",
+              "after": "4",
+              "total": false
+            },
+            {
+              "questionLine": 19,
+              "before": "6",
+              "after": "3",
+              "total": false
+            },
+            {
+              "questionLine": 21,
+              "before": "6",
+              "after": "3",
+              "total": false
+            },
+            {
+              "questionLine": 23,
+              "before": "6",
+              "after": "3",
+              "total": false
+            },
+            {
+              "questionLine": 25,
+              "before": "6",
+              "after": "19",
+              "total": false
+            }
+          ],
+          "textWithoutPointNumbersSha256": "0e0b198c5eaf2765c2d756d0b478d2732ef4426c3cda42202dee2c4185339e85"
+        },
+        "taskContentEn": {
+          "pointLabelCount": 7,
+          "partWeights": [
+            4.0,
+            4.0,
+            3.0,
+            3.0,
+            3.0,
+            19.0
+          ],
+          "changedNumberTokens": [
+            {
+              "questionLine": 15,
+              "before": "6",
+              "after": "4",
+              "total": false
+            },
+            {
+              "questionLine": 17,
+              "before": "6",
+              "after": "4",
+              "total": false
+            },
+            {
+              "questionLine": 19,
+              "before": "6",
+              "after": "3",
+              "total": false
+            },
+            {
+              "questionLine": 21,
+              "before": "6",
+              "after": "3",
+              "total": false
+            },
+            {
+              "questionLine": 23,
+              "before": "6",
+              "after": "3",
+              "total": false
+            },
+            {
+              "questionLine": 25,
+              "before": "6",
+              "after": "19",
+              "total": false
+            }
+          ],
+          "textWithoutPointNumbersSha256": "b6659f3017c0cc624d7588086d7ede616af54c7899ddb5435f5654d3e15ba371"
+        }
+      },
+      "sourceFingerprintAgreedByBothNativePackageConsumers": "sha256:ff07d7a65b038edc3fd837740807c1084700109445c9f88984c9b0ea1ca567d5"
+    },
+    {
+      "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+      "state": "parked",
+      "beforePassing": 23,
+      "maxPoints": 24,
+      "passingPoints": 23.0,
+      "slack": 1.0,
+      "percent": "575/6",
+      "weights": [],
+      "questions": {
+        "taskContent": {
+          "pointLabelCount": 0,
+          "partWeights": [],
+          "changedNumberTokens": [],
+          "textWithoutPointNumbersSha256": "bd991ab0137b0e17404f006c10f28d880826cca94fbe4505e5d16ec0a8436534"
+        },
+        "taskContentEn": {
+          "pointLabelCount": 0,
+          "partWeights": [],
+          "changedNumberTokens": [],
+          "textWithoutPointNumbersSha256": "263adaea81c5becf3750f95fd3bbce6b1c9ceb07b05583cbf7d70156b048a241"
+        }
+      },
+      "sourceFingerprintAgreedByBothNativePackageConsumers": "sha256:162bbd0e63aa49b7bba365378de523de1789d8efaebdf7ad26254e1ea82deae2"
+    },
+    {
+      "goalId": "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+      "state": "revised",
+      "beforePassing": 13,
+      "maxPoints": 14,
+      "passingPoints": 11.5,
+      "slack": 2.5,
+      "percent": "575/7",
+      "weights": [
+        {
+          "performanceId": "protokoll",
+          "weight": 5.0,
+          "criterionIds": [
+            "paare",
+            "einheiten",
+            "zeitbasis"
+          ],
+          "otherwisePerfect": 9.0
+        },
+        {
+          "performanceId": "hoehenbezug",
+          "weight": 3.0,
+          "criterionIds": [
+            "hoehe"
+          ],
+          "otherwisePerfect": 11.0
+        },
+        {
+          "performanceId": "zeitgrenzen",
+          "weight": 3.0,
+          "criterionIds": [
+            "ereignisse"
+          ],
+          "otherwisePerfect": 11.0
+        },
+        {
+          "performanceId": "quellenbezug",
+          "weight": 3.0,
+          "criterionIds": [
+            "herkunft"
+          ],
+          "otherwisePerfect": 11.0
+        }
+      ],
+      "questions": {
+        "taskContent": {
+          "pointLabelCount": 0,
+          "partWeights": [],
+          "changedNumberTokens": [],
+          "textWithoutPointNumbersSha256": "d18a8ebb8384c610f962eb1fe1d2a4b5639fb3cd5e744aa1006ae354db48bfa6"
+        },
+        "taskContentEn": {
+          "pointLabelCount": 0,
+          "partWeights": [],
+          "changedNumberTokens": [],
+          "textWithoutPointNumbersSha256": "37c292e6a36400da50505e3c83c06b44644c5f4d299e8dc5235e919355c9e4e3"
+        }
+      },
+      "sourceFingerprintAgreedByBothNativePackageConsumers": "sha256:883ce4bc3c4915cbc05192bf801d85777cd4c226b564dd3281996f9e9f1d79be"
+    },
+    {
+      "goalId": "c5807a37-129e-5df6-8989-482bc7f5683e",
+      "state": "revised",
+      "beforePassing": 24,
+      "maxPoints": 24,
+      "passingPoints": 20.0,
+      "slack": 4.0,
+      "percent": "250/3",
+      "weights": [
+        {
+          "performanceId": "L1_idealisierung",
+          "weight": 6.0,
+          "criterionIds": [
+            "t7_massepunkt",
+            "t7_luft"
+          ],
+          "otherwisePerfect": 18.0
+        },
+        {
+          "performanceId": "L2_grenzen",
+          "weight": 5.5,
+          "criterionIds": [
+            "t4_grenze",
+            "t7_zeitraum",
+            "t7_abweichung"
+          ],
+          "otherwisePerfect": 18.5
+        }
+      ],
+      "questions": {
+        "taskContent": {
+          "pointLabelCount": 7,
+          "partWeights": [
+            2.0,
+            2.0,
+            2.0,
+            3.0,
+            2.5,
+            2.0,
+            10.5
+          ],
+          "changedNumberTokens": [
+            {
+              "questionLine": 5,
+              "before": "3",
+              "after": "2",
+              "total": false
+            },
+            {
+              "questionLine": 6,
+              "before": "3",
+              "after": "2",
+              "total": false
+            },
+            {
+              "questionLine": 7,
+              "before": "3",
+              "after": "2",
+              "total": false
+            },
+            {
+              "questionLine": 9,
+              "before": "5",
+              "after": "2,5",
+              "total": false
+            },
+            {
+              "questionLine": 10,
+              "before": "3",
+              "after": "2",
+              "total": false
+            },
+            {
+              "questionLine": 11,
+              "before": "4",
+              "after": "10,5",
+              "total": false
+            }
+          ],
+          "textWithoutPointNumbersSha256": "dd97230436447c39d9ecb72bfdfe16fc3e1ec09d1554b6cbb6949c7ca92d809b"
+        }
+      },
+      "sourceFingerprintAgreedByBothNativePackageConsumers": "sha256:fd3492f01fca11bb4243d917d1ac00ea8794d3f295d2ccdd847b285c9e78c6cf"
+    }
+  ],
+  "packageExamDataSchemas": {
+    "contracts/curriculum-package/v1/compiled-landscape.schema.json": {
+      "path": "contracts/curriculum-package/v1/compiled-landscape.schema.json",
+      "sha256": "8762e07edd85d5086255cccf1944ee4550e56773cef2aa152def66c25d43f133"
+    },
+    "contracts/curriculum-package/v1.2/compiled-landscape.schema.json": {
+      "path": "contracts/curriculum-package/v1.2/compiled-landscape.schema.json",
+      "sha256": "bcdf0d2c2e1e5343a6dafdae9a624a30e0c5464a13778245bdaec9cfe24e39fd"
+    }
+  },
+  "currentCurriculumStatusAndFloors": [
+    {
+      "step": "quality-curriculum-status",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:38:13.260816+00:00",
+      "finishedAt": "2026-11-24T20:41:54.698191+00:00",
+      "command": [
+        "npm",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "workingDirectory": "app"
+    },
+    {
+      "step": "quality-curriculum-status-check",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:41:54.698492+00:00",
+      "finishedAt": "2026-11-24T20:45:27.968779+00:00",
+      "command": [
+        "npm",
+        "run",
+        "quality:curriculum-status:check"
+      ],
+      "workingDirectory": "app"
+    },
+    {
+      "step": "current-maturity-floors-relative-base",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:45:27.968868+00:00",
+      "finishedAt": "2026-11-24T20:45:28.737051+00:00",
+      "command": [
+        "npm",
+        "run",
+        "check:curriculum-maturity-floors",
+        "--",
+        "--base-ref",
+        "3d10e3ed6083482b3f9d26047fd5005e5c2dd96b"
+      ],
+      "workingDirectory": "app"
+    }
+  ],
+  "focusedChecks": [
+    {
+      "step": "pass-mark-tests",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:41:55.416812+00:00",
+      "finishedAt": "2026-11-24T20:41:55.453706+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/test_exam_pass_marks.py"
+      ],
+      "workingDirectory": "."
+    },
+    {
+      "step": "pass-mark-policy",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:41:55.453759+00:00",
+      "finishedAt": "2026-11-24T20:41:55.984974+00:00",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_exam_pass_marks.py",
+        "--base",
+        "3d10e3ed6083482b3f9d26047fd5005e5c2dd96b"
+      ],
+      "workingDirectory": "."
+    },
+    {
+      "step": "test-physics-assessment-projection",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:41:55.985047+00:00",
+      "finishedAt": "2026-11-24T20:51:21.561819+00:00",
+      "command": [
+        "npm",
+        "run",
+        "test:physics-assessment-projection"
+      ],
+      "workingDirectory": "app"
+    },
+    {
+      "step": "check-learning-unit-assessments",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:51:21.561893+00:00",
+      "finishedAt": "2026-11-24T20:51:23.086519+00:00",
+      "command": [
+        "npm",
+        "run",
+        "check:learning-unit-assessments"
+      ],
+      "workingDirectory": "app"
+    },
+    {
+      "step": "check-math-duration-composition-views",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:51:23.086594+00:00",
+      "finishedAt": "2026-11-24T20:52:11.468537+00:00",
+      "command": [
+        "npm",
+        "run",
+        "check:math-duration-composition-views"
+      ],
+      "workingDirectory": "app"
+    },
+    {
+      "step": "test-physics-goal-book-inputs",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:physics-goal-book-inputs"
+      ],
+      "workingDirectory": ".",
+      "exitCode": 0,
+      "startedAt": "2026-11-24T20:34:36.088750907+00:00",
+      "catalogSha256": "76042a25b10ea7f89d461d3be4eeb48b6ae7239f23f7eb02b7132b55f3b60b5c",
+      "nativeTest": {
+        "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+        "sha256": "691cfa6ccdb3e57b2b4885f55ec7845526f14ccef418798f933345fce096bdfc"
+      },
+      "nativeReviewConsumer": {
+        "path": "app/scripts/lib/e1AchievableScoringReviews.ts",
+        "sha256": "02d409e93963eba734f40d429bd9faebf3f3b03f5b6b661f6604c8776a22f9e1"
+      },
+      "nativeOutput": "Physics goal-book inputs verified: 864 semantic-kind decisions; 490 ordinary curricular atoms, 489 atlas targets in 64 neutral plus six HE duration state views; 16 reviewed duration decisions.",
+      "lastOutputAt": "2026-11-24T20:39:32.239175027+00:00"
+    }
+  ],
+  "bookContract": {
+    "catalogAtRun": "76042a25b10ea7f89d461d3be4eeb48b6ae7239f23f7eb02b7132b55f3b60b5c",
+    "steps": [
+      {
+        "step": "native-goal-book-pipeline",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:41:55.563420+00:00",
+        "finishedAt": "2026-11-24T20:59:03.512522+00:00",
+        "command": [
+          "npm",
+          "run",
+          "test:goal-book-pipeline"
+        ],
+        "workingDirectory": "app"
+      }
+    ],
+    "initialScoringVersionsAtRun": {
+      "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": "v6",
+      "a8dc0290-9f80-5763-8943-e16b8d2aa860": "v8",
+      "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9": "v5",
+      "c5807a37-129e-5df6-8989-482bc7f5683e": "v5",
+      "c6e2942d-1ff4-5e86-a52a-4ca4c8568291": "v3",
+      "dfd2628f-b44e-51b3-86e8-99158861be8c": "v4"
+    },
+    "coachRevisionVersionsAtRun": {
+      "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": "v2",
+      "a8dc0290-9f80-5763-8943-e16b8d2aa860": "v2",
+      "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9": "v2",
+      "c5807a37-129e-5df6-8989-482bc7f5683e": "v2",
+      "dfd2628f-b44e-51b3-86e8-99158861be8c": "v2"
+    },
+    "checkoutAtRun": "dd5851ea8cb7db9ac82177b72c808225c7b136e9",
+    "locallyVerifiedBookCount": 5,
+    "renderedCount": 1,
+    "renderedBooks": [
+      [
+        "de-gym-physik-bundesweit",
+        "489"
+      ]
+    ],
+    "booksReusedByNativeInputAndOutputHashChecks": [
+      "de-gym-mathematik-bundesweit",
+      "de-gym-chemie-bundesweit",
+      "de-gym-biologie-bundesweit",
+      "de-gym-wirtschaftswissenschaften-bundesweit"
+    ],
+    "nativePhysicsInputSummary": [
+      "Physics goal-book inputs verified: 864 semantic-kind decisions; 490 ordinary curricular atoms, 489 atlas targets in 64 neutral plus six HE duration state views; 16 reviewed duration decisions."
+    ]
+  },
+  "packageContracts": {
+    "catalogAtRun": "76042a25b10ea7f89d461d3be4eeb48b6ae7239f23f7eb02b7132b55f3b60b5c",
+    "steps": [
+      {
+        "step": "shell-syntax",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:13.515964+00:00",
+        "finishedAt": "2026-11-24T20:38:13.519045+00:00",
+        "command": [
+          "bash",
+          "-n",
+          "scripts/provision_pinned_fwu_ontology.sh",
+          "scripts/run_curriculum_release_model_conformance.sh"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "schema-contracts",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:13.519116+00:00",
+        "finishedAt": "2026-11-24T20:38:15.131319+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/validate_curriculum_package_contracts.py"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "runtime-catalog",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:15.131437+00:00",
+        "finishedAt": "2026-11-24T20:38:15.334117+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/validate_curriculum_runtime_catalog_contract.py"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "schema-catalog",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:15.334218+00:00",
+        "finishedAt": "2026-11-24T20:38:29.400864+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/validate_curriculum_schema_catalog_contract.py"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "readiness",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:29.400974+00:00",
+        "finishedAt": "2026-11-24T20:38:40.937593+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/evaluate_curriculum_package_readiness.py",
+          "--self-test"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "standalone-contract",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:40.937726+00:00",
+        "finishedAt": "2026-11-24T20:38:41.718250+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/validate_full_standalone_curriculum_package.py",
+          "--self-test"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "learning-unit-contracts",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:41.718367+00:00",
+        "finishedAt": "2026-11-24T20:38:41.871994+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/generate_curriculum_package_learning_unit_contracts.py",
+          "--check"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "schema-contracts-v12",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:41.872101+00:00",
+        "finishedAt": "2026-11-24T20:38:43.964882+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/validate_curriculum_package_contracts.py",
+          "--contracts-dir",
+          "contracts/curriculum-package/v1.2"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "standalone-contract-v12",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:43.965044+00:00",
+        "finishedAt": "2026-11-24T20:38:45.250948+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/validate_full_standalone_curriculum_package.py",
+          "--self-test",
+          "--contracts-dir",
+          "contracts/curriculum-package/v1.2"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "learning-unit-package",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:45.251060+00:00",
+        "finishedAt": "2026-11-24T20:38:46.807361+00:00",
+        "command": [
+          "python",
+          "-B",
+          "test_learning_unit_package.py"
+        ],
+        "workingDirectory": "scripts"
+      },
+      {
+        "step": "provisioning",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:46.807473+00:00",
+        "finishedAt": "2026-11-24T20:38:48.259437+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/provision_curriculum_package.py",
+          "self-test"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "consumer-self-test",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:48.259543+00:00",
+        "finishedAt": "2026-11-24T20:38:48.607180+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/run_package_consumer_smoke.py",
+          "--self-test"
+        ],
+        "hostSetup": "The outer user namespace exposed the verified bwrap and strace executables at their standard system locations. The actual consumer passed its inner isolation self-test.",
+        "workingDirectory": "."
+      },
+      {
+        "step": "native-math-v13-release-conformance",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:38:48.607297+00:00",
+        "finishedAt": "2026-11-24T20:50:43.567482+00:00",
+        "command": [
+          "bash",
+          "scripts/run_curriculum_release_model_conformance.sh"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "unit-material-schema",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:50:43.567775+00:00",
+        "finishedAt": "2026-11-24T20:50:48.512523+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/test_unit_learning_material_schema.py",
+          "-v"
+        ],
+        "workingDirectory": "."
+      },
+      {
+        "step": "curriculum-schema",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T20:50:48.512620+00:00",
+        "finishedAt": "2026-11-24T20:52:51.049565+00:00",
+        "command": [
+          "python",
+          "-B",
+          "scripts/validate_schemas.py"
+        ],
+        "workingDirectory": "."
+      }
+    ],
+    "initialScoringVersionsAtRun": {
+      "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": "v6",
+      "a8dc0290-9f80-5763-8943-e16b8d2aa860": "v8",
+      "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9": "v5",
+      "c5807a37-129e-5df6-8989-482bc7f5683e": "v5",
+      "c6e2942d-1ff4-5e86-a52a-4ca4c8568291": "v3",
+      "dfd2628f-b44e-51b3-86e8-99158861be8c": "v4"
+    },
+    "coachRevisionVersionsAtRun": {
+      "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": "v2",
+      "a8dc0290-9f80-5763-8943-e16b8d2aa860": "v2",
+      "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9": "v2",
+      "c5807a37-129e-5df6-8989-482bc7f5683e": "v2",
+      "dfd2628f-b44e-51b3-86e8-99158861be8c": "v2"
+    },
+    "checkoutAtRun": "dd5851ea8cb7db9ac82177b72c808225c7b136e9",
+    "profileScope": "Existing Mathematics v1.3 release model and cross-catalog schema controls. Separately, both native Python release consumers recomputed the actual Physics fingerprints and the Physics payloads passed the v1 and v1.2 examData schemas.",
+    "sourcePdfMode": "committed-bindings",
+    "fullStandalonePackageConformance": false,
+    "nativeSummary": "Curriculum release-model conformance passed: independent model validation, current review bindings, and byte-identical model builds."
+  },
+  "runtimeAssets": {
+    "catalogAtRun": "78f0781ae1ecf0d9639bd29714fc58483f1a32a62c8b5b6c1c808adc05d2d77f",
+    "steps": [
+      {
+        "step": "prepare-runtime-assets",
+        "exitCode": 0,
+        "startedAt": "2026-11-24T19:28:45.504435+00:00",
+        "finishedAt": "2026-11-24T19:28:57.872177+00:00",
+        "command": [
+          "npm",
+          "run",
+          "prepare:runtime-assets"
+        ],
+        "workingDirectory": "app"
+      }
+    ],
+    "initialScoringVersionsAtRun": {
+      "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": "v6",
+      "a8dc0290-9f80-5763-8943-e16b8d2aa860": "v8",
+      "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9": "v5",
+      "c5807a37-129e-5df6-8989-482bc7f5683e": "v5",
+      "c6e2942d-1ff4-5e86-a52a-4ca4c8568291": "v3",
+      "dfd2628f-b44e-51b3-86e8-99158861be8c": "v4"
+    },
+    "checkoutAtRun": "1feead50b2f210397e03fc610cfed5a375ba4665",
+    "scope": "Local setup on the #191-integrated checkout prepared duration offerings, decks, referenced assessment images, goal illustrations, whitepapers, stories and the Gemini frontend archive. Both book and package contracts then ran against the final Physics catalog."
+  },
+  "unchangedHessianAssessmentReferences": [
+    "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+    "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+    "c933b7d2-edcb-5747-9378-9762659f260a",
+    "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+  ],
+  "finalFfxDisposition": {
+    "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+    "bindingDecision": "park-current-edition",
+    "reviewLimitVersion": 24,
+    "reviewDisposition": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/f41e4e30-794e-5ce4-ba5e-cc72712cd691/v24/review-disposition.actual.json",
+      "sha256": "565feab3fe2cb55965c7d6e33f67f2d25bcdf3abc20d6462caaf630fc99705ca"
+    },
+    "lastRoundDecisions": [
+      {
+        "round": "a",
+        "decision": "accept",
+        "eligibleForActivation": true
+      },
+      {
+        "round": "b",
+        "decision": "revise",
+        "eligibleForActivation": false
+      }
+    ],
+    "mainComparisonCommit": "3d10e3ed6083482b3f9d26047fd5005e5c2dd96b",
+    "passingPoints": 23,
+    "maxPoints": 24,
+    "rowsComparedWithMain": {
+      "entireGoal": {
+        "file": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "sha256OfCanonicalJsonRow": "94caaa5f3f8a3a972d5a47fb25f092fcfbe6a099101e596b2eba36a112688a20"
+      },
+      "semanticKindDecision": {
+        "file": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+        "sha256OfCanonicalJsonRow": "80e9bd7f8e94b19877a26cf8ea94479a64a79d8caa67508a6928ed3e967a6d31"
+      },
+      "saxonyLowerStageAssessmentOffer": {
+        "file": "scripts/generate_laender_physics_stage_views.sources.json",
+        "sha256OfCanonicalJsonRow": "1a17066c4a8f3437fb1b5e3721a8dd986b53686de94083a5654b682466005641"
+      },
+      "retainedCrossStageOffer": {
+        "file": "scripts/generate_laender_physics_stage_views.sources.json",
+        "sha256OfCanonicalJsonRow": "fe7ba4656958de6c33f2f938b22e07b2c901cce2a61989bee38896482fba0fc5"
+      },
+      "currentHesseSaxonyAcceptanceAPV201": {
+        "file": "docs/qa-ci/applicability-accepted-warnings.json",
+        "sha256OfCanonicalJsonRow": "4d5b606618ab9f6c37351c150bdeb96dea929f03eca754e9d97303e75cfe0dfb"
+      }
+    },
+    "checkedHistoricalOfferAndPreparationRecords": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/dprime-passmark-successor-20261124/current-stage-offers.actual.json",
+        "sha256": "d802486bacafdd04bbea0b430edc689309469785262084d95a973a0b4416d451"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/offer-bindings.actual.json",
+        "sha256": "aa673e890f28f988748b02a40e5d1b124380f3eea2f4d348d9dc2d63d8c8bac4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/stage-source-route-repair-20261117-v1/independent-review/personal-free-fall-two-series.content-review.actual.json",
+        "sha256": "a6eb749e51527dc9f236cf5e3005d703742486c493638a0e5ba8e0ca717014e9"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/current-goals/f41e4e30-794e-5ce4-ba5e-cc72712cd691.current.goal.json",
+        "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-current-assessments-20261124-v1/dprime-passmark-successor-20261124/current-stage-preparation.actual.json",
+        "sha256": "c7ceff01355131a3d846c18e3559138459dd7ac3cb71f0edd4a02a6cd7537607"
+      }
+    ],
+    "noNewAcceptanceOrRebinding": true,
+    "decisionReceipt": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/f41e4e30-794e-5ce4-ba5e-cc72712cd691/parked.actual.json",
+      "sha256": "ffc45f100708900e57441603a700550ca93cc6c35ad497a6409e820a5e11f3b3"
+    }
+  },
+  "nativeCoachScoringLengths": {
+    "unit": "UTF-16 code units",
+    "maximum": 2000,
+    "contracts": [
+      {
+        "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+        "sha256": "0b45040ad15267426a8cb762dc97b1a4939ec1f9d66dd5a68888a0dae071df0e"
+      },
+      {
+        "path": "backend/src/main/java/com/skillpilot/backend/connectors/gemini/v1/mcp/GeminiV1McpContractAdapter.java",
+        "sha256": "c1e2046a69defc918e9dd60f433e81ca17009ee379f9a8f69e881a59025422e9"
+      }
+    ],
+    "changedDescriptionCount": 12,
+    "changedDescriptionsByGoal": {
+      "a8dc0290-9f80-5763-8943-e16b8d2aa860": {
+        "approval": {
+          "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/a8dc0290-9f80-5763-8943-e16b8d2aa860/accepted.actual.json",
+          "sha256": "ae4d3200d9ad089bc3e80149799965822e4049c738b4410e5ca70892e34117b2"
+        },
+        "descriptions": {
+          "A-DIA": {
+            "beforeUtf16Units": 2149,
+            "afterUtf16Units": 1783
+          }
+        }
+      },
+      "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": {
+        "approval": {
+          "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/4ea1b93f-2dba-59ac-87ab-29af6c55cc37/accepted.actual.json",
+          "sha256": "428067b397919c118a570a267e79e5376806e50caf2dc558c49733138bc377f1"
+        },
+        "descriptions": {
+          "z_res15": {
+            "beforeUtf16Units": 2209,
+            "afterUtf16Units": 1562
+          },
+          "b_15": {
+            "beforeUtf16Units": 3709,
+            "afterUtf16Units": 1736
+          },
+          "r_verf": {
+            "beforeUtf16Units": 2712,
+            "afterUtf16Units": 1539
+          },
+          "r_wink": {
+            "beforeUtf16Units": 3799,
+            "afterUtf16Units": 1604
+          },
+          "r_zun": {
+            "beforeUtf16Units": 2150,
+            "afterUtf16Units": 1435
+          }
+        }
+      },
+      "dfd2628f-b44e-51b3-86e8-99158861be8c": {
+        "approval": {
+          "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/dfd2628f-b44e-51b3-86e8-99158861be8c/accepted.actual.json",
+          "sha256": "88270533af35b8bb674b063ae922425c2231de4ff0a334c0c8de582e3d0b8ffa"
+        },
+        "descriptions": {
+          "B_RW": {
+            "beforeUtf16Units": 3234,
+            "afterUtf16Units": 1411
+          },
+          "B_URT": {
+            "beforeUtf16Units": 4106,
+            "afterUtf16Units": 1748
+          }
+        }
+      },
+      "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9": {
+        "approval": {
+          "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/bcc56921-7107-5f5f-b721-3d5e0d7e1cd9/accepted.actual.json",
+          "sha256": "3658cd20e20ce5f73b475fe25728fc284ac1b5e2deee3b255ea7b2f6f7184b7b"
+        },
+        "descriptions": {
+          "t6-mp-size": {
+            "beforeUtf16Units": 2453,
+            "afterUtf16Units": 1367
+          },
+          "t6-drag-cond": {
+            "beforeUtf16Units": 2200,
+            "afterUtf16Units": 1384
+          },
+          "t6-drag-claim": {
+            "beforeUtf16Units": 3096,
+            "afterUtf16Units": 1510
+          }
+        }
+      },
+      "c5807a37-129e-5df6-8989-482bc7f5683e": {
+        "approval": {
+          "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-coach-scoring-steps-20261124-v1/c5807a37-129e-5df6-8989-482bc7f5683e/accepted.actual.json",
+          "sha256": "ec98513563df4488435cd1bc611f1b82d0955634acc7665f026fbea21329e5d7"
+        },
+        "descriptions": {
+          "t7_abweichung": {
+            "beforeUtf16Units": 2486,
+            "afterUtf16Units": 1476
+          }
+        }
+      }
+    },
+    "longestDescriptionPerExam": {
+      "a8dc0290-9f80-5763-8943-e16b8d2aa860": 1900,
+      "4ea1b93f-2dba-59ac-87ab-29af6c55cc37": 1736,
+      "dfd2628f-b44e-51b3-86e8-99158861be8c": 1748,
+      "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9": 1532,
+      "f41e4e30-794e-5ce4-ba5e-cc72712cd691": 292,
+      "c6e2942d-1ff4-5e86-a52a-4ca4c8568291": 1057,
+      "c5807a37-129e-5df6-8989-482bc7f5683e": 1570
+    },
+    "comparisonMethod": "Compared each full approved candidate with its previous dual-reviewed activation. Only the twelve previously oversize criterion description fields varied. Checked all live criteria of the seven exams."
+  },
+  "wholeCatalogPassMarkPolicy": {
+    "rule": {
+      "path": "scripts/check_exam_pass_marks.py",
+      "sha256": "b8561716696e755c79e392087318302ddddf820fa8c98dff687905eee364c9b5"
+    },
+    "scoredAssessments": 1056,
+    "above85Percent": 227,
+    "requireFullMarks": 133,
+    "policyExitCode": 0,
+    "beforeOnComparisonBase": {
+      "scoredAssessments": 1056,
+      "above85Percent": 233,
+      "requireFullMarks": 134
+    }
+  },
+  "finalProcessExitCodes": {
+    "audit": 0,
+    "parked": 0,
+    "views": 0,
+    "quality": 0,
+    "map": 0,
+    "packages": 0,
+    "books": 0,
+    "checks": 0
+  },
+  "finalPackageSchemaScan": {
+    "command": [
+      "python",
+      "-B",
+      "scripts/validate_schemas.py"
+    ],
+    "workingDirectory": ".",
+    "exitCode": 0,
+    "filesChecked": 117254
+  }
+}

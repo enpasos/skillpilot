@@ -1,0 +1,452 @@
+{
+  "goalId": "c5807a37-129e-5df6-8989-482bc7f5683e",
+  "candidateDecision": "accept",
+  "semanticKind": "Integrative, konstruierte Prüfungs- und Übungsaufgabe",
+  "semanticKindReason": "Die sieben zusammenhängenden Teilaufgaben prüfen rechnerische Modellierung, Darstellungen, Achsenwechsel und begründete Modellbewertung an einem Wurfszenario. Das ist eine gemeinsam bewertete Anwendungseinheit mit mehreren Teilfertigkeiten. Der technische Typ atomic bezeichnet hier keine einzelne elementare physikalische Fertigkeit.",
+  "physicsAndLanguage": "Die Modellrechnung ist konsistent: y(t)=15+10t−5t², v(t)=10−10t, Scheitel bei 1 s und 20 m, Bodenlösungen 3 s und −1 s, Auftreffgeschwindigkeit −20 m/s. Für die umgekehrte Achse gilt s=15−y=−10t+5t²; Bodenkoordinate +15 m, Scheitelkoordinate −5 m. Die Gewichtskraft beträgt 1,1 N. Der physikalische Geltungsbereich endet unmittelbar vor dem Aufprall; Diagrammendpunkte allein weisen diesen Geltungsbereich nicht nach. Beim Aufsteigen bremst Luftwiderstand nach unten; ausdrücklich getrennt behandelter Auftrieb kann eine andere Höhenrichtung begründen. Die Kurzfassung erhält diese Unterscheidung. Ihre Formulierung „ohne Auftrieb“ wird durch den ausdrücklich zugeordneten ausführlichen Hinweis eindeutig als zulässiges Nichterwähnen des Auftriebs im vorgegebenen Widerstandsmodell erläutert. Die deutschen und englischen Zielbeschreibungen stimmen inhaltlich überein; eine englische Kriterienbeschreibung wurde nicht geändert. Eigene Körperangaben dürfen qualitative Argumente stützen; zusätzliche Messdaten oder eine quantitative Widerstandsrechnung verlangt die Aufgabe nicht.",
+  "scopeVerdict": "Freigabe der Kurzbeschreibung t7_abweichung zusammen mit den unveränderten ausführlichen Bewertungshinweisen. Die Unterlagen belegen eine konstruierte Aufgabe für die Einführungsphase mit Reproduktion, Anwendung und Modellbewertung. Sie belegen weder eine tatsächlich gestellte Landesprüfung noch die überprüfte Passung zu sämtlichen aufgeführten Ländern oder eine umfassende Beherrschung der Mechanik. AB3 ist als Anspruch der Modellbewertung einzuordnen, nicht als Niveau jeder Teilaufgabe. Der übernommene Status released ist laut Einreichung beantragt und wurde nicht als bereits erteilte Freigabe verwendet.",
+  "scoringConsistency": "Die elf Kriterien ergeben 24 BE: 12,5 Stützpunkte, 6 BE für L1 und 5,5 BE für L2. Bestanden ist ausschließlich ab 20 BE. Vollständiger Entfall von L1 erlaubt höchstens 18 BE, vollständiger Entfall von L2 höchstens 18,5 BE; eine zusätzliche Bestehenshürde ist daher weder nötig noch angewendet. Einzelne Flüchtigkeitsfehler werden einmal mit 0,5 BE belastet, Folgewerte bleiben ohne weiteren Abzug. Beibehaltene W1 beziehungsweise W2 setzen dagegen die gesamte zugehörige tragende Leistung auf null. Die Neubewertung ergibt L01: 23 BE, L02: 22 BE, L03: 18,5 BE, L04: 18,5 BE, L05: 18 BE und L06: 18 BE. Gleiche Summen beruhen hier teilweise auf unterschiedlichen Befunden: Auslassung einerseits, ausdrücklich beibehaltener Fehlvorstellung andererseits.",
+  "stepCompressionChecks": [
+    {
+      "criterionId": "t7_abweichung",
+      "equivalent": true,
+      "reason": "Die neue deutsche Kurzform und ihr eindeutiger Verweis auf den ausführlichen Schritt samt W2 erhalten sämtliche Bänder und Gruppenfolgen. Geeigneter Körper, kleinere Höhe und zusätzliche Bremswirkung ergeben weiterhin 3,5 BE. Ohne geeigneten Körper sind bei schlüssiger Bremsbegründung nur 1 BE erreichbar; eine ausdrücklich getrennte Auftriebsannahme ersetzt den geeigneten Körper nicht. Ein geeigneter Körper mit richtiger Betrachtung einer anderen Kraft, aber ohne Aussage zum aufwärts bremsenden Luftwiderstand, erhält weiterhin 1 BE und löst keine W2 aus. Ein Atemluftballon mit begründet kleinerer Höhe erhält auch ohne Erwähnung des Auftriebs 3,5 BE. „Größer“ als einzelner Verschreiber bei eindeutig richtiger Bremsbegründung ergibt einmalig 0,5 BE Abzug, also bei sonst vollständiger Leistung 3 BE; die vertretene Aussage, Luftwiderstand selbst schiebe nach oben, setzt dagegen alle 5,5 BE von L2 auf null. Bloßer Körpername und Höhenrichtung bleiben ohne Begründung bei 0 BE. Sprachliche Kürzungen verändern mit den zugeordneten Detailhinweisen weder Alternativen noch Teilpunkte oder Ausnahmen."
+    }
+  ],
+  "carryingPerformanceAudit": [
+    {
+      "performanceId": "L1_idealisierung",
+      "earnedFromTask": "Teil 7 verlangt situationsbezogene Begründungen der Massepunktannahme und des vernachlässigten Luftwiderstands: Größenvergleich oder Bewegung des Schwerpunkts sowie Vergleich der Luftreibung mit der Gewichtskraft beziehungsweise eine begründete Eigenschaft-Wirkungs-Verknüpfung.",
+      "weight": 6,
+      "completeOmissionMaximum": 18,
+      "safeguardsAndLimits": "t7_massepunkt und t7_luft tragen je 3 BE, zusammen 25 % der Gesamtpunkte. Vollständiges Fehlen oder beibehaltene W1 verhindert das Bestehen rechnerisch. Eine einzelne Idealisierung darf dennoch fehlen, wenn genügend andere Punkte vorliegen. Die Gruppe garantiert deshalb keinen vollständigen Nachweis beider Idealisierungen. Unabhängig richtige L2-Leistungen und Stützpunkte bleiben erhalten."
+    },
+    {
+      "performanceId": "L2_grenzen",
+      "earnedFromTask": "Teil 4 verlangt die Einordnung der negativen Lösung relativ zum Abwurf. Teil 7 verlangt den Geltungszeitraum und eine begründete Abweichung bei merklichem Luftwiderstand. Diese Leistungen unterscheiden mathematische Fortsetzung, reale Flugphase und Grenzen der reibungsfreien Vorhersage.",
+      "weight": 5.5,
+      "completeOmissionMaximum": 18.5,
+      "safeguardsAndLimits": "t4_grenze umfasst 1 BE, t7_zeitraum 1 BE und t7_abweichung 3,5 BE. Vollständiges Fehlen oder beibehaltene W2 verhindert das Bestehen rechnerisch. Dieselbe Aussage darf nicht doppelt zählen; Diagrammendpunkte ersetzen keine Geltungsangabe. Einzelne Facetten dürfen fehlen: Bei sonst perfekter Arbeit genügen beispielsweise 1 BE für die eingeordnete zweite Lösung und 0,5 BE für eine eigenständig genannte zeitliche Grenze. Eine ausdrücklich getrennte Auftriebsbetrachtung ist keine W2."
+    }
+  ],
+  "coveredGoalReviews": [
+    {
+      "goalId": "d6dc0e02-831d-4894-a61a-852bcc74f147",
+      "mustShow": "Erforderlich sind situationsbezogene Begründungen für Idealisierungen und eigenständige Aussagen beziehungsweise Begründungen zu Modellgrenzen. Rechnerisch benötigt eine Bestehensarbeit selbst bei sonst maximalen Punkten mindestens 2 BE aus L1 und mindestens 1,5 BE aus L2. Keine der beiden Dimensionen kann vollständig fehlen; eine beibehaltene W1 oder W2 verhindert das Bestehen.",
+      "mayRemainOpen": "Eine einzelne Idealisierung kann unbegründet bleiben. Auch die Abweichungshöhe eines anderen Körpers kann fehlen, wenn andere L2-Nachweise und die übrigen Punkte ausreichen. Eine quantitative Widerstandsrechnung, Rotationsanalyse und vollständige Behandlung des Auftriebs werden nicht verlangt. Die Aufgabe weist keine allgemeine Beherrschung aller Bewegungsmodelle nach.",
+      "whyTolerable": "Für einen begrenzten Bestehensnachweis werden beide Zieldimensionen rechnerisch abgesichert, während ein Spielraum von 4 BE einzelne Lücken zulässt. Das trägt einen kontextbezogenen Nachweis des breiten Ziels, rechtfertigt aber keine Aussage, sämtliche genannten Facetten seien vollständig beherrscht."
+    }
+  ],
+  "gradedSubmissions": [
+    {
+      "submissionId": "L01",
+      "scores": [
+        {
+          "criterionId": "t1_ansatz",
+          "pointsAwarded": 2,
+          "reason": "Alle Anfangswerte mit passenden Vorzeichen und beide Gesetze richtig."
+        },
+        {
+          "criterionId": "t2_gleichm",
+          "pointsAwarded": 2,
+          "reason": "−10 m/s je Sekunde genannt; langsamer und schneller durch die jeweiligen Vorzeichenbeziehungen erklärt."
+        },
+        {
+          "criterionId": "t3_scheitel",
+          "pointsAwarded": 2,
+          "reason": "1 s und 20 m hergeleitet; Gegenargument mit +1 und −1 m/s beiderseits des Scheitels vollständig."
+        },
+        {
+          "criterionId": "t4_boden",
+          "pointsAwarded": 2,
+          "reason": "3 s aus y=0 und −20 m/s unmittelbar vor dem Auftreffen berechnet."
+        },
+        {
+          "criterionId": "t4_grenze",
+          "pointsAwarded": 1,
+          "reason": "−1 s angegeben und wegen des erst bei t=0 beginnenden Wurfs ausgeschlossen."
+        },
+        {
+          "criterionId": "t5_diagr",
+          "pointsAwarded": 2.5,
+          "reason": "Alle Formen und Punkte, beide Scheitelmerkmale und Beschleunigung als Geradensteigung vollständig: 1+1+0,5 BE."
+        },
+        {
+          "criterionId": "t6_achse",
+          "pointsAwarded": 2,
+          "reason": "Neue Anfangswerte und Gesetze richtig; s=+15 m führt zu 3 s, Scheitel bei s=−5 m."
+        },
+        {
+          "criterionId": "t7_massepunkt",
+          "pointsAwarded": 3,
+          "reason": "Bewegung der ganzen Kugel und Vergleich von 3 cm mit mehreren Metern begründen die Annahme."
+        },
+        {
+          "criterionId": "t7_luft",
+          "pointsAwarded": 3,
+          "reason": "Gewichtskraft 1,1 N richtig berechnet und Luftreibung bei den auftretenden Geschwindigkeiten damit verglichen."
+        },
+        {
+          "criterionId": "t7_zeitraum",
+          "pointsAwarded": 0,
+          "reason": "Keine eigenständige Geltungsangabe. Die Startgrenze in Teil 4 zählt bereits für t4_grenze; Diagrammendpunkte genügen nicht."
+        },
+        {
+          "criterionId": "t7_abweichung",
+          "pointsAwarded": 3.5,
+          "reason": "Geeigneter Tischtennisball; kleinere Höhe durch beim Aufstieg zusätzlich nach unten wirkende Luftreibung begründet."
+        }
+      ],
+      "total": 23,
+      "passes": true,
+      "diagnosis": "Sehr vollständige und fachlich richtige Bearbeitung. Es fehlt ausschließlich eine eigenständig bewertbare Angabe zum Geltungszeitraum. Diese Auslassung ist kein Formfehler.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L02",
+      "scores": [
+        {
+          "criterionId": "t1_ansatz",
+          "pointsAwarded": 1.5,
+          "reason": "Werte, Vorzeichen und Gesetze inhaltlich richtig; einmal 0,5 BE für m/s statt m/s² an der Anfangsbeschleunigung."
+        },
+        {
+          "criterionId": "t2_gleichm",
+          "pointsAwarded": 1.5,
+          "reason": "Sekündliche Änderung und Vorzeichenargument richtig; einzelner falscher Tabellenwert −30 m/s bei 3 s kostet 0,5 BE."
+        },
+        {
+          "criterionId": "t3_scheitel",
+          "pointsAwarded": 1.5,
+          "reason": "Ansatz, Zeitpunkt und Geschwindigkeitsargument richtig; 15+10−5=21 ist ein einzelner Rechenfehler: −0,5 BE."
+        },
+        {
+          "criterionId": "t4_boden",
+          "pointsAwarded": 2,
+          "reason": "3 s aus y=0 und −20 m/s mit Richtung korrekt bestimmt."
+        },
+        {
+          "criterionId": "t4_grenze",
+          "pointsAwarded": 1,
+          "reason": "−1 s ausdrücklich wegen der Lage vor dem Abwurf und des Modellbeginns bei t=0 verworfen."
+        },
+        {
+          "criterionId": "t5_diagr",
+          "pointsAwarded": 2.5,
+          "reason": "Formen, Scheitelmerkmale und Steigungsargument vollständig. Die übernommene Höhe 21 m verursacht keinen Folgeabzug."
+        },
+        {
+          "criterionId": "t6_achse",
+          "pointsAwarded": 2,
+          "reason": "Neue Anfangswerte und Gesetze richtig; Boden bei +15 m ergibt 3 s, Scheitelkoordinate −5 m."
+        },
+        {
+          "criterionId": "t7_massepunkt",
+          "pointsAwarded": 3,
+          "reason": "Bewegung der Kugel als Ganzes sowie Größenvergleich mit den Flugstrecken begründen die Idealisierung."
+        },
+        {
+          "criterionId": "t7_luft",
+          "pointsAwarded": 2.5,
+          "reason": "Passender Vergleich von Luftreibung und Gewichtskraft; richtiger Ansatz mg, aber Dezimalfehler 11 N statt 1,1 N: einmal −0,5 BE."
+        },
+        {
+          "criterionId": "t7_zeitraum",
+          "pointsAwarded": 1,
+          "reason": "Vom Abwurf bis unmittelbar vor dem Aufprall ausdrücklich als Geltungszeitraum angegeben."
+        },
+        {
+          "criterionId": "t7_abweichung",
+          "pointsAwarded": 3.5,
+          "reason": "Gefaltetes Papier mit ausdrücklich erheblichem Widerstand ist geeignet; kleinere Höhe durch zusätzliche abwärtsgerichtete Bremswirkung begründet."
+        }
+      ],
+      "total": 22,
+      "passes": true,
+      "diagnosis": "Alle verlangten fachlichen Facetten sind belegt. Vier unabhängige lokale Fehler kosten zusammen 2 BE. Die übernommene Scheitelhöhe wird nicht erneut belastet; eine tragende Fehlvorstellung liegt nicht vor.",
+      "localizedSlips": [
+        {
+          "location": "Teil 1, Anfangswerte: „a = −10,0 m/s“",
+          "description": "Falsche Einheit der Beschleunigung; m/s² steht in den Gesetzen und später richtig.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Teil 2, Wertetabelle: bei 3 s „−30 m/s“",
+          "description": "Einzelner falscher Tabellenwert statt −20 m/s bei richtigem Gesetz und später richtig berechneter Auftreffgeschwindigkeit.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Teil 3: „y(1 s) = 15 + 10 − 5 = 21,0 m“",
+          "description": "Rechenfehler; richtig sind 20 m. Die Übernahme von 21 m in Teil 5 bleibt ohne weiteren Abzug.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        },
+        {
+          "location": "Teil 7, Luftwiderstand: „0,110 kg · 10 m/s² = 11 N“",
+          "description": "Dezimalfehler bei richtigem Gewichtskraftansatz; richtig sind 1,1 N.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ]
+    },
+    {
+      "submissionId": "L03",
+      "scores": [
+        {
+          "criterionId": "t1_ansatz",
+          "pointsAwarded": 2,
+          "reason": "Anfangswerte, Vorzeichen und beide Gesetze richtig."
+        },
+        {
+          "criterionId": "t2_gleichm",
+          "pointsAwarded": 2,
+          "reason": "−10 m/s je Sekunde und beide Vorzeichenbeziehungen mit Betragsänderung erklärt."
+        },
+        {
+          "criterionId": "t3_scheitel",
+          "pointsAwarded": 2,
+          "reason": "1 s und 20 m bestimmt; wechselnde Geschwindigkeitsvorzeichen belegen die fortbestehende Beschleunigung."
+        },
+        {
+          "criterionId": "t4_boden",
+          "pointsAwarded": 2,
+          "reason": "3 s aus y=0 sowie −20 m/s nach unten unabhängig richtig berechnet."
+        },
+        {
+          "criterionId": "t4_grenze",
+          "pointsAwarded": 0,
+          "reason": "Die mathematische Fortsetzung wird ausdrücklich als wirkliche Vorgeschichte ab −1 s verteidigt: beibehaltene W2."
+        },
+        {
+          "criterionId": "t5_diagr",
+          "pointsAwarded": 2.5,
+          "reason": "Alle Graphen, Punkte, Scheitelmerkmale und die Steigungsauswertung vollständig richtig."
+        },
+        {
+          "criterionId": "t6_achse",
+          "pointsAwarded": 2,
+          "reason": "Achsenwechsel mit beiden Gesetzen, Bodenkoordinate +15 m, 3 s und Scheitelkoordinate −5 m richtig."
+        },
+        {
+          "criterionId": "t7_massepunkt",
+          "pointsAwarded": 3,
+          "reason": "Bewegung der ganzen Kugel und Größenvergleich begründen die Massepunktannahme."
+        },
+        {
+          "criterionId": "t7_luft",
+          "pointsAwarded": 3,
+          "reason": "Luftreibung bis 20 m/s ausdrücklich als klein gegenüber der richtigen Gewichtskraft 1,1 N eingeordnet."
+        },
+        {
+          "criterionId": "t7_zeitraum",
+          "pointsAwarded": 0,
+          "reason": "Geltung von −1 s bis 3 s wird ausdrücklich vertreten und bestätigt die W2; gesamte L2 bleibt bei null."
+        },
+        {
+          "criterionId": "t7_abweichung",
+          "pointsAwarded": 0,
+          "reason": "Federball und Bremsbegründung wären isoliert vollständig; die beibehaltene W2 setzt jedoch alle L2-Schritte auf null."
+        }
+      ],
+      "total": 18.5,
+      "passes": false,
+      "diagnosis": "Die tatsächliche Vorgeschichte wird aus der rückwärts verlängerten Modellkurve abgeleitet und ausdrücklich beibehalten. Deshalb entfällt L2 vollständig mit 5,5 BE. Die richtige Widerstandsbetrachtung hebt diese Fehlvorstellung nicht auf. L1 und sämtliche Stützpunkte bleiben erhalten.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L04",
+      "scores": [
+        {
+          "criterionId": "t1_ansatz",
+          "pointsAwarded": 2,
+          "reason": "Anfangswerte mit Vorzeichen und beide Gesetze richtig."
+        },
+        {
+          "criterionId": "t2_gleichm",
+          "pointsAwarded": 2,
+          "reason": "Sekündliche Änderung sowie langsamer und schneller anhand der Vorzeichen richtig erklärt."
+        },
+        {
+          "criterionId": "t3_scheitel",
+          "pointsAwarded": 2,
+          "reason": "1 s und 20 m hergeleitet; Geschwindigkeiten unmittelbar davor und danach widerlegen die Folgerung."
+        },
+        {
+          "criterionId": "t4_boden",
+          "pointsAwarded": 2,
+          "reason": "Die positive Lösung 3 s wird aus y=0 berechnet; Auftreffgeschwindigkeit −20 m/s richtig."
+        },
+        {
+          "criterionId": "t4_grenze",
+          "pointsAwarded": 0,
+          "reason": "Zweite Lösung und ihre Einordnung fehlen vollständig. Die Berechnung nur des positiven Zweigs belegt diese Facette nicht."
+        },
+        {
+          "criterionId": "t5_diagr",
+          "pointsAwarded": 2.5,
+          "reason": "Drei Graphen mit Punkten, beide Scheitelmerkmale und Beschleunigung als Steigung vollständig."
+        },
+        {
+          "criterionId": "t6_achse",
+          "pointsAwarded": 2,
+          "reason": "Anfangswerte und Gesetze der neuen Achse sowie Bodenrechnung und Scheitelkoordinate richtig."
+        },
+        {
+          "criterionId": "t7_massepunkt",
+          "pointsAwarded": 3,
+          "reason": "Bewegung als Ganzes und Größenvergleich mit Steig- und Fallstrecke begründen die Annahme."
+        },
+        {
+          "criterionId": "t7_luft",
+          "pointsAwarded": 3,
+          "reason": "Richtige Gewichtskraft 1,1 N; Luftreibung bei bis zu 20 m/s ausdrücklich damit verglichen."
+        },
+        {
+          "criterionId": "t7_zeitraum",
+          "pointsAwarded": 0,
+          "reason": "Keine Angabe zum Geltungszeitraum; Diagrammanfang und Diagrammende ersetzen sie nicht."
+        },
+        {
+          "criterionId": "t7_abweichung",
+          "pointsAwarded": 0,
+          "reason": "Anderer Körper, Höhenrichtung und Widerstandsbegründung fehlen."
+        }
+      ],
+      "total": 18.5,
+      "passes": false,
+      "diagnosis": "Die bearbeiteten Leistungen sind richtig, aber sämtliche L2-Facetten fehlen. Das sind fachliche Auslassungen und keine Flüchtigkeitsfehler. Für den korrekt berechneten positiven Bodentreffer erfolgt kein zusätzlicher Abzug.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L05",
+      "scores": [
+        {
+          "criterionId": "t1_ansatz",
+          "pointsAwarded": 2,
+          "reason": "Alle Anfangswerte und beide Gesetze mit richtigen Vorzeichen."
+        },
+        {
+          "criterionId": "t2_gleichm",
+          "pointsAwarded": 2,
+          "reason": "−10 m/s je Sekunde sowie beide Betragsänderungen durch die Vorzeichen erklärt."
+        },
+        {
+          "criterionId": "t3_scheitel",
+          "pointsAwarded": 2,
+          "reason": "Zeitpunkt und Höhe hergeleitet; Geschwindigkeitsänderung über den Scheitel hinweg richtig begründet."
+        },
+        {
+          "criterionId": "t4_boden",
+          "pointsAwarded": 2,
+          "reason": "3 s aus dem Zeit-Ort-Gesetz und −20 m/s nach unten richtig berechnet."
+        },
+        {
+          "criterionId": "t4_grenze",
+          "pointsAwarded": 1,
+          "reason": "−1 s angegeben und mit dem erst beim Abwurf beginnenden Geltungsbereich ausgeschlossen."
+        },
+        {
+          "criterionId": "t5_diagr",
+          "pointsAwarded": 2.5,
+          "reason": "Graphen und Punkte vollständig; Scheitel beziehungsweise Nullstelle erkannt und Steigung richtig ausgewertet."
+        },
+        {
+          "criterionId": "t6_achse",
+          "pointsAwarded": 2,
+          "reason": "Neue Anfangswerte, beide Gesetze, Bodenrechnung und Scheitelkoordinate vollständig richtig."
+        },
+        {
+          "criterionId": "t7_massepunkt",
+          "pointsAwarded": 0,
+          "reason": "Keine Begründung der Massepunktannahme vorhanden."
+        },
+        {
+          "criterionId": "t7_luft",
+          "pointsAwarded": 0,
+          "reason": "Keine Begründung für das Vernachlässigen der Luftreibung an dieser Stahlkugel. Die Federballbetrachtung gehört zur anderen Modellgrenze."
+        },
+        {
+          "criterionId": "t7_zeitraum",
+          "pointsAwarded": 1,
+          "reason": "Vom Abwurf bis kurz vor dem Aufprall ausdrücklich angegeben; vorher und beim Aufprall ausgeschlossen."
+        },
+        {
+          "criterionId": "t7_abweichung",
+          "pointsAwarded": 3.5,
+          "reason": "Geeigneter Federball; kleinere Höhe durch beim Aufstieg zusätzlich nach unten wirkende Luftreibung begründet."
+        }
+      ],
+      "total": 18,
+      "passes": false,
+      "diagnosis": "L2 und alle Stützpunkte sind vollständig belegt. Beide situationsbezogenen Idealisierungsbegründungen fehlen, sodass L1 vollständig entfällt. Die Auslassungen sind keine Formfehler.",
+      "localizedSlips": []
+    },
+    {
+      "submissionId": "L06",
+      "scores": [
+        {
+          "criterionId": "t1_ansatz",
+          "pointsAwarded": 2,
+          "reason": "Anfangswerte, Vorzeichen und beide Gesetze richtig."
+        },
+        {
+          "criterionId": "t2_gleichm",
+          "pointsAwarded": 2,
+          "reason": "Konstante Änderung um −10 m/s je Sekunde und beide Vorzeichenbeziehungen richtig erläutert."
+        },
+        {
+          "criterionId": "t3_scheitel",
+          "pointsAwarded": 2,
+          "reason": "1 s und 20 m hergeleitet; Geschwindigkeiten beiderseits des Scheitels begründen a ungleich null."
+        },
+        {
+          "criterionId": "t4_boden",
+          "pointsAwarded": 2,
+          "reason": "3 s aus y=0 und −20 m/s beziehungsweise 20 m/s nach unten richtig."
+        },
+        {
+          "criterionId": "t4_grenze",
+          "pointsAwarded": 1,
+          "reason": "−1 s wegen der Lage vor dem Abwurf und des erst bei t=0 beginnenden Modells verworfen."
+        },
+        {
+          "criterionId": "t5_diagr",
+          "pointsAwarded": 2.5,
+          "reason": "Alle Formen und Punkte, beide Scheitelmerkmale und die Steigungsbeziehung vollständig richtig."
+        },
+        {
+          "criterionId": "t6_achse",
+          "pointsAwarded": 2,
+          "reason": "Achsenwechsel mit Anfangswerten und Gesetzen richtig; +15 m ergibt 3 s, Scheitel bei −5 m."
+        },
+        {
+          "criterionId": "t7_massepunkt",
+          "pointsAwarded": 0,
+          "reason": "„Stahl so schwer, dass die Masse sowieso in der Mitte sitzt“ begründet die Idealisierung nicht. Zudem setzt die beibehaltene W1 die gesamte L1 auf null."
+        },
+        {
+          "criterionId": "t7_luft",
+          "pointsAwarded": 0,
+          "reason": "Aus dem modellierten Massepunkt wird fehlende Oberfläche und damit stets fehlender Luftwiderstand abgeleitet: ausdrücklich beibehaltene W1."
+        },
+        {
+          "criterionId": "t7_zeitraum",
+          "pointsAwarded": 1,
+          "reason": "Vom Abwurf bis kurz vor dem Aufprall vollständig angegeben; vorher und beim Aufprall ausgeschlossen."
+        },
+        {
+          "criterionId": "t7_abweichung",
+          "pointsAwarded": 3.5,
+          "reason": "Unabhängig vom falschen Massepunktargument sind Federball, kleinere Höhe und zusätzliche abwärtsgerichtete Luftreibung beim Aufstieg richtig dargestellt."
+        }
+      ],
+      "total": 18,
+      "passes": false,
+      "diagnosis": "Die Idealisierung wird ausdrücklich zu ihrer eigenen Rechtfertigung gemacht: Ein Massepunkt habe keine Oberfläche, deshalb sei Luftwiderstand immer ausgeschlossen. Diese W1 entwertet L1 vollständig. Die unabhängig richtigen Modellgrenzen und Stützleistungen zählen weiter; eine W2 liegt nicht vor.",
+      "localizedSlips": []
+    }
+  ],
+  "requiredCorrections": []
+}

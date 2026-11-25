@@ -1,0 +1,95 @@
+{
+  "id": "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
+  "shortKey": "he_physics_assess_free_fall_log",
+  "title": "Ein Fallprotokoll aus zwei Aufzeichnungen erstellen",
+  "titleEn": "Build a drop log from two records",
+  "description": "Die lernende Person erstellt aus Zeitmesser- und Videonotizen ein einheitliches, quellenbezogenes Fallprotokoll. Sie belegt die Zusammengehörigkeit von Fallhöhe und Fallzeit sowie deren räumliche und zeitliche Bezüge.",
+  "descriptionEn": "The learner produces a common, attributed drop log from timer and video records, preserving the height and time of each separate drop and explaining their spatial and temporal references.",
+  "applicability": {
+    "jurisdiction": [
+      "DE-HE"
+    ]
+  },
+  "type": "atomic",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical"
+  ],
+  "contains": [],
+  "requires": [
+    "e0004439-ed34-5caf-858a-6107918224eb"
+  ],
+  "dimensionTags": {
+    "framework": "hessen-kc-2024-physics",
+    "phase": "E",
+    "demandLevel": "AB2",
+    "guidingIdeas": [
+      "LI_BEWEGUNG"
+    ],
+    "processCompetencies": [
+      "PK1_EXPERIMENTIEREN"
+    ]
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityFromRequires": true
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "e0004439-ed34-5caf-858a-6107918224eb"
+    ],
+    "coveredStrands": [
+      "LI_BEWEGUNG"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/he-e1-free-fall-record-2026-11-23/aufgabe-v2.md",
+    "taskContent": "Du erhältst für diesen Einzelnachweis die Notizen zweier anderer Gruppen. Alle Werte sind für die Aufgabe konstruiert. Jeder Eintrag steht für einen eigenen Abwurf. Beide Gruppen geben die Fallhöhe als Abstand der Kugelunterseite vom Boden unmittelbar vor dem Loslassen an.\n\nGruppe Rot benutzte einen Zeitmesser, der beim Loslassen startete und beim ersten Bodenkontakt stoppte. In ihrem Heft steht „R1: 0,45 m, 303 ms; R2: 20 cm, 0,202 s“. Gruppe Blau filmte mit 100 Bildern pro Sekunde. Ihre Notizen nennen Höhe, Bild der Freigabe und Bild des ersten Bodenkontakts: „B1: 0,60 m, Bild 17, Bild 52; B2: 30 cm, Bild 80, Bild 105“. Ein Bildintervall dauert 0,010 s.\n\nErstelle aus den Notizen eine gemeinsame Tabelle mit Abwurfkennung, Fallhöhe in Zentimetern und Fallzeit in Sekunden. Zeige für einen der gefilmten Abwürfe, wie du aus den beiden Bildern die Zeit gewinnst. Erkläre, wo die Höhe beginnt und endet, wie Start und Ende der Fallzeit festgelegt sind und wessen Aufzeichnungen du verwendest.",
+    "taskContentEn": "For this individual assessment you receive notes from two other groups. All readings were constructed for this task. Each entry is a separate drop. Both groups define drop height as the gap between the bottom of the ball and the floor immediately before release.\n\nGroup Red used a timer that started at release and stopped at first contact with the floor. Their log reads “R1: 0.45 m, 303 ms; R2: 20 cm, 0.202 s.” Group Blue filmed at 100 frames per second. Their notes list the height, frame of release and frame of first contact: “B1: 0.60 m, frame 17, frame 52; B2: 30 cm, frame 80, frame 105.” One frame interval lasts 0.010 s.\n\nProduce a single table with the drop identifier, height in centimetres and fall time in seconds. Show how you use the two frame numbers for one filmed drop. Explain the two points that define the height, the events that start and end the fall time, and whose records you used.",
+    "solutionContent": "Mögliche Tabelle mit den Spalten Kennung, Fallhöhe (cm) und Fallzeit (s): R1 | 45 | 0,303; R2 | 20 | 0,202; B1 | 60 | 0,35; B2 | 30 | 0,25. Bei B1 vergehen 52 − 17 = 35 Bildintervalle, also 35 · 0,010 s = 0,35 s. Entsprechend ergeben 105 − 80 = 25 Intervalle für B2 0,25 s. Die Fallhöhe ist der senkrechte Abstand zwischen Kugelunterseite und Boden vor der Freigabe. Die Zeit läuft vom Loslassen bis zur ersten Bodenberührung. R1/R2 stammen aus den bereitgestellten Zeitmessernotizen der Gruppe Rot, B1/B2 aus den bereitgestellten Videonotizen der Gruppe Blau. Eine umgestellte Reihenfolge und gleichwertige Schreibweisen sind zulässig.\n\nBewertung. Von 14 BE sind 13 für den Einzelbeleg erforderlich. Die fünf methodischen Kriterien zu je 2 BE werden jeweils vollständig oder mit 0 BE gewertet. Ein einzelnes falsch übertragenes oder umgerechnetes Zahlenpaar kann durch die übrigen drei korrekten Messpaare und vollständige methodische Angaben ausgeglichen werden.",
+    "solutionContentEn": "One table, with columns ID, height (cm) and fall time (s), reads R1 | 45 | 0.303; R2 | 20 | 0.202; B1 | 60 | 0.35; B2 | 30 | 0.25. For B1, 52 − 17 = 35 frame intervals elapse, so 35 × 0.010 s = 0.35 s. Similarly B2 takes 105 − 80 = 25 intervals or 0.25 s. Height is the vertical gap between the underside of the ball and the floor before release. Time runs from release to first floor contact. R1/R2 come from the supplied timer notes made by Group Red, B1/B2 from the supplied video notes made by Group Blue. Row order and equivalent numeric formats may vary.\n\nScoring. Thirteen of the fourteen points are needed for this individual demonstration. Each of the five two-point criteria is awarded in full or scores zero. One incorrectly transcribed or converted pair is compatible with a pass when the other three pairs and all methodological criteria are correct.",
+    "scoring": {
+      "maxPoints": 14,
+      "passingPoints": 13,
+      "steps": [
+        {
+          "id": "zuordnung",
+          "points": 4,
+          "description": "Je Abwurf 1 BE für das vollständige, richtig zugeordnete und in die gemeinsamen Einheiten umgerechnete Zahlenpaar.\nEN: One point per drop for the complete, correctly paired values in the common units."
+        },
+        {
+          "id": "spalten",
+          "points": 2,
+          "description": "Beide Tabellenspalten mit den verlangten Einheiten cm und s kennzeichnen. Jeweils vollständig oder 0 BE.\nEN: Label both columns with the required units, cm and s. Full credit or zero."
+        },
+        {
+          "id": "zeitbasis",
+          "points": 2,
+          "description": "An einem Videofall die Differenz der Bildnummern und das Bildintervall richtig zur Fallzeit verbinden. Jeweils vollständig oder 0 BE.\nEN: Use the frame difference and frame interval correctly to obtain the time for one filmed drop. Full credit or zero."
+        },
+        {
+          "id": "hoehe",
+          "points": 2,
+          "description": "Kugelunterseite beim Loslassen und Boden als beide Höhenbezüge nennen. Jeweils vollständig oder 0 BE.\nEN: Name the underside of the ball at release and the floor as the two height references. Full credit or zero."
+        },
+        {
+          "id": "ereignisse",
+          "points": 2,
+          "description": "Freigabe und erste Bodenberührung als Grenzen der Fallzeit angeben. Jeweils vollständig oder 0 BE.\nEN: Identify release and first contact with the floor as the two timing events. Full credit or zero."
+        },
+        {
+          "id": "herkunft",
+          "points": 2,
+          "description": "Beide bereitgestellten Quellen richtig zuordnen: Zeitmessernotizen von Rot und Videonotizen von Blau. Jeweils vollständig oder 0 BE.\nEN: Attribute both supplied sources correctly: the timer notes to Red and the video notes to Blue. Full credit or zero."
+        }
+      ]
+    }
+  }
+}

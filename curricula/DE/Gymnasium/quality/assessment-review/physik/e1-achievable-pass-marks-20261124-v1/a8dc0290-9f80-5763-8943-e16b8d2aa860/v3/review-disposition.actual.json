@@ -1,0 +1,184 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "a8dc0290-9f80-5763-8943-e16b8d2aa860",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "f41f6906b5df5b79225a74b955077dbdc0bb502a04b09fb7e050835595d3152e",
+    "normalizedGoalSha256": "b09d3af871eabbae0dfe5ecf6320a6c645c7ce95bcb0d006eaae4531451f113e"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "da5be9468c1e142d71bbf19998ba8912eb7a58613782f42e540c642f5fd7cb78",
+    "normalizedGoalSha256": "dad97062bf743228bbe3226ec468d56a2b8fc2355abd3619d78a5e9fac55a885"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "f4a342708c4d9f3df815c05b57433f9c4d8c97eb89fa8536f889f50dab28317e"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "d98176446ce28303747d63347ce0eeca8ab48976abe16e59c087ff5e819228c2"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "677e035aa5c471007325004148b7b4795f2ce4ee815dfde1f79ca93cd326dc90"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20e56-0008-7fc3-a0d2-32ba3915a534",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S06",
+          "kind": "misconception",
+          "performanceId": "P-FLA"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S03",
+          "kind": "misconception",
+          "performanceId": "P-GRZ"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S07",
+          "kind": "missing-performance",
+          "performanceId": "P-GRZ"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "P-BRE"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S08",
+          "kind": "missing-performance",
+          "performanceId": "P-FLA"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S01",
+          "kind": "missing-facet",
+          "performanceId": "P-GRZ"
+        },
+        {
+          "submissionId": "L07",
+          "auditId": "S09",
+          "kind": "missing-performance",
+          "performanceId": "P-RAT"
+        },
+        {
+          "submissionId": "L08",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "P-DAR"
+        },
+        {
+          "submissionId": "L09",
+          "auditId": "S04",
+          "kind": "four-slips",
+          "performanceId": null
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "cbc4cded031e8f28b891e08fd1e313aced9848061268a2fc9c795bb083d7305c"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "17acef8806a25de3287f34c8d9a3ac697c7215b40359cd912e5eed3b5c739074"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20e56-0008-7a81-8e8b-3962c5897147",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S09",
+          "kind": "missing-performance",
+          "performanceId": "P-RAT"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "P-DAR"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S04",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S06",
+          "kind": "misconception",
+          "performanceId": "P-FLA"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S07",
+          "kind": "missing-performance",
+          "performanceId": "P-GRZ"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S01",
+          "kind": "missing-facet",
+          "performanceId": "P-GRZ"
+        },
+        {
+          "submissionId": "L07",
+          "auditId": "S08",
+          "kind": "missing-performance",
+          "performanceId": "P-FLA"
+        },
+        {
+          "submissionId": "L08",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "P-BRE"
+        },
+        {
+          "submissionId": "L09",
+          "auditId": "S03",
+          "kind": "misconception",
+          "performanceId": "P-GRZ"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "1a25042f1f28d97733b87b91739b4213f8e62bc832154e9aa92f477bdf798656"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "0e7592351ec9289db0d1ac2b9e99a03684b58a965dc55d7b476979d1488022c8"
+      }
+    }
+  ],
+  "eligibleForActivation": false,
+  "technicalActivationFindings": [
+    "LU-R2-EVIDENCE: examData.scoring.steps[3].points=1.5 is outside the safe integer revision contract",
+    "LU-R2-EVIDENCE: examData.scoring.steps[4].points=0.5 is outside the safe integer revision contract",
+    "LU-R2-EVIDENCE: examData.scoring.steps[5].points=0.5 is outside the safe integer revision contract",
+    "LU-R2-EVIDENCE: examData.scoring.steps[6].points=1.5 is outside the safe integer revision contract",
+    "LU-R2-EVIDENCE: examData.scoring.steps[12].points=1.5 is outside the safe integer revision contract",
+    "LU-R2-EVIDENCE: examData.scoring.steps[13].points=0.5 is outside the safe integer revision contract",
+    "LU-R2-EVIDENCE: examData.scoring.steps[14].points=0.5 is outside the safe integer revision contract",
+    "LU-R2-EVIDENCE: examData.scoring.steps[17].points=1.5 is outside the safe integer revision contract"
+  ]
+}

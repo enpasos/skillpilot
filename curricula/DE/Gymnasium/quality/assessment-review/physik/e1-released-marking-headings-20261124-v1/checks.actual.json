@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "scope": "Three released E.1 marking texts in both languages. No change in recorded student marks or rubric criteria.",
+  "checkedAt": "2026-11-24T21:18:58+00:00",
+  "predecessorCommit": "353eee6246bf7fbf9474ab95302646019b0346d5",
+  "currentCatalog": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "ec581e98268e42158eba7f9f65ee60f111c473728b06769ecdb3771e6fcb0d78"
+  },
+  "exactUtf8Edits": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-released-marking-headings-20261124-v1/heading-diff.json",
+    "sha256": "5971f62bf2fa9054fe8cbb7a33f75e214680c86f1a3578051a92f3288608c7ea"
+  },
+  "independentDiffReviews": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-released-marking-headings-20261124-v1/review-disposition.actual.json",
+    "sha256": "a5082c9399a52a462e2ad96baac8e2818754b320989022a8fde6cb463cbf99e2"
+  },
+  "providerAndRevisionCheck": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-released-marking-headings-20261124-v1/provider-evaluation-and-material-revisions.actual.json",
+    "sha256": "61131231b6d4875dad9b984b33f81a66f2321bd8873ebb490c804574120d9f7b"
+  },
+  "checks": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:physics-goal-book-inputs"
+      ],
+      "startedAt": "2026-11-24T21:14:45+00:00",
+      "finishedAt": "2026-11-24T21:18:30+00:00",
+      "exitCode": 0,
+      "workingDirectory": ".",
+      "sources": [
+        {
+          "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+          "sha256": "4fc410f5825325716233286e033995eca6c10f3e96eaf270c6b484c9c4a8b432"
+        },
+        {
+          "path": "app/scripts/lib/e1AchievableScoringReviews.ts",
+          "sha256": "02d409e93963eba734f40d429bd9faebf3f3b03f5b6b661f6604c8776a22f9e1"
+        },
+        {
+          "path": "app/scripts/lib/e1ReleasedMarkingHeadings.ts",
+          "sha256": "b90b165bcee01eb26b15a7cef8cbac2b5af28f88d8f700455acd1e8a564c9788"
+        }
+      ],
+      "observedSummary": "Physics goal-book inputs verified: 864 semantic-kind decisions; 490 ordinary curricular atoms, 489 atlas targets in 64 neutral plus six HE duration state views; 16 reviewed duration decisions."
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:learning-unit-assessments"
+      ],
+      "startedAt": "2026-11-24T21:08:52+00:00",
+      "finishedAt": "2026-11-24T21:08:53+00:00",
+      "exitCode": 0,
+      "workingDirectory": ".",
+      "sources": [
+        {
+          "path": "app/scripts/applyLearningUnitAssessments.mjs",
+          "sha256": "282e06ccfbe73a4f6e8c7ee912746e8abfc6f62a9bfc3f0131599833bce88370"
+        },
+        {
+          "path": "app/scripts/checkUnitPlanningReleases.ts",
+          "sha256": "f2275063a081ee0af00cf092be8c2487a39abfe7b86821f3ea47ef76eb4a502e"
+        }
+      ],
+      "observedSummary": "Verified 1 reviewed unit planning release(s) against the current catalog."
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/check_exam_pass_marks.py",
+        "--base",
+        "3d10e3ed6083482b3f9d26047fd5005e5c2dd96b"
+      ],
+      "startedAt": "2026-11-24T21:08:30+00:00",
+      "finishedAt": "2026-11-24T21:08:30+00:00",
+      "exitCode": 0,
+      "workingDirectory": ".",
+      "sources": [
+        {
+          "path": "scripts/check_exam_pass_marks.py",
+          "sha256": "b8561716696e755c79e392087318302ddddf820fa8c98dff687905eee364c9b5"
+        }
+      ],
+      "observedSummary": "1056 scored assessments, 227 graded assessments with a pass mark above 85% of the points, 133 of them requiring full marks."
+    }
+  ],
+  "outsideRequestedChecks": {
+    "additionalStrictTypeScriptCheck": "The supplementary strict invocation over the QA-script import tree still reports 53 diagnostics in the same seven files as the predecessor. This is outside the configured application TypeScript project."
+  }
+}

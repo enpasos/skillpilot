@@ -1,0 +1,138 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "1a1bc43a764cc7fb6fb0bbddba3a923fe862e2cb02c2eaaf63f2f2bc36539bb6",
+    "normalizedGoalSha256": "de4262464d84015668c84b5559772646f76ece5ec9f6e1f6b71e62f6dd393af7"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "926bb54b2df316b24673b67a978474c0d59cedea5f72334c976d28fc2cd4bbd5",
+    "normalizedGoalSha256": "655e7489511bc59896f1cabe3e91c36e102786ba6e49a05330fee842ec941750"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "80f3aad53fb5233d9cd0643749e03f6a4c3f342459b7c6155dc5464f8c215cc4"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "d9414d56981e77765a7a29fea7dd9214db88a0e0a19758289bde73907a1d161b"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "6e408eb315336dbc96d9b9974ff425f935e2314fe9c3acb0637918d1a1abf9d1"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20e4f-873c-7e50-a0e9-d791e932e07d",
+      "decision": "accept",
+      "eligibleForActivation": true,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S04",
+          "kind": "missing-performance",
+          "performanceId": "ZUS"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S03",
+          "kind": "misconception",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "BET"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "RICHT"
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "7b2657abd4bb8255204233268e2051a9dbe7bbdbf7d1e579f81e6068ddab3827"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "95a37b80cb3333c99b1aaf67461914be2ad7d40f95a392767726eb5ad4d451df"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20e4f-873d-7552-8db3-c9e040d25f0e",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S05",
+          "kind": "missing-facet",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S03",
+          "kind": "misconception",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S01",
+          "kind": "missing-performance",
+          "performanceId": "BET"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S04",
+          "kind": "missing-performance",
+          "performanceId": "ZUS"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S06",
+          "kind": "missing-performance",
+          "performanceId": "RICHT"
+        },
+        {
+          "submissionId": "L06",
+          "auditId": "S02",
+          "kind": "four-slips",
+          "performanceId": null
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "bd7a4259c390a8b2be9a993b6f95e1285923b792f24063b7ba4d5adce58a9478"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "2a644b9e22280ce9b2efc42e7964a985acfa435ebee236598ecfdf3acd7f5c98"
+      }
+    }
+  ],
+  "eligibleForActivation": false
+}

@@ -1,0 +1,126 @@
+{
+  "reviewContract": "e1-achievable-pass-mark-rounds-v1",
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "authorModel": "claude-opus-5-5",
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4",
+    "normalizedGoalSha256": "94caaa5f3f8a3a972d5a47fb25f092fcfbe6a099101e596b2eba36a112688a20"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "d2582045494801bfa3f61ef93e9f2417233662017a05a2716e97e09d701f0c8f",
+    "normalizedGoalSha256": "09d4c6ec9061a8d8e350a538609004576bcc1ca97773a8c9edecebccaacaa4dc"
+  },
+  "author": {
+    "path": "author.actual.json",
+    "sha256": "db789b05939ce88fed91d8f67e3862405ca2cf16d1f54639da9cc81ec1c47ac1"
+  },
+  "performances": {
+    "path": "performances.json",
+    "sha256": "799aa750e581ab32e932022dcd6db4c0349f7dac59a56a086a0e167462473151"
+  },
+  "audits": {
+    "path": "audits.json",
+    "sha256": "4f2e2e9c0c55aaed72f1a56d358e64d653e0970f7ffa428751cf9c3555ead858"
+  },
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a20f25-062e-7411-b2dd-8f5d46b72c80",
+      "decision": "accept",
+      "eligibleForActivation": true,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S01",
+          "kind": "missing-facet",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "INV-A"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S03",
+          "kind": "four-slips",
+          "performanceId": null
+        }
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "2bab0925ba49d88e9bab5bc3cb356ef51f856e55479a54adeb65ecbd57eb2602"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "5322f7bf4a5a680c6d5a89e5d00702cb20e2b1dd8c4cd3fada65720dfe2caa25"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a20f25-062d-7be1-8b4d-623388c62264",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [],
+      "submissionKey": [
+        {
+          "submissionId": "L01",
+          "auditId": "S02",
+          "kind": "missing-performance",
+          "performanceId": "INV-A"
+        },
+        {
+          "submissionId": "L02",
+          "auditId": "S01",
+          "kind": "missing-facet",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L03",
+          "auditId": "S05",
+          "kind": "missing-performance",
+          "performanceId": "INV-B"
+        },
+        {
+          "submissionId": "L04",
+          "auditId": "S03",
+          "kind": "four-slips",
+          "performanceId": null
+        },
+        {
+          "submissionId": "L05",
+          "auditId": "S04",
+          "kind": "misconception",
+          "performanceId": "INV-B"
+        }
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "af37ca64cb5c40ce15eb194eeadadf2bf6680ba8de709230aaf8a20fd2696984"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "c83508c6f3c92011153688ecb6379675ca4a2138ac47403150238c1f7b02ff16"
+      }
+    }
+  ],
+  "eligibleForActivation": false
+}
