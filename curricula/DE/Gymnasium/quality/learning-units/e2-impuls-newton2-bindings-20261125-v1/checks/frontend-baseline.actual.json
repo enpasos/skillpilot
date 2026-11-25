@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-complete-frontend-product-step-baseline-v1",
+  "status": "LOCAL_ENVIRONMENT_DIAGNOSTIC_NOT_FINAL_HEAD_VERIFICATION",
+  "recordedAt": "2026-11-25T14:52:20Z",
+  "workflowJob": "frontend-ci",
+  "executedProductSteps": 45,
+  "passedProductSteps": 38,
+  "failedProductSteps": 7,
+  "steps": [
+    {
+      "workflowIndex": 9,
+      "name": "Test deterministic ZIP32 writer",
+      "workingDirectory": "app",
+      "command": "npm run test:deterministic-zip32",
+      "exitCode": 0,
+      "durationSeconds": 0.405
+    },
+    {
+      "workflowIndex": 10,
+      "name": "Test package landscape model parity",
+      "workingDirectory": "app",
+      "command": "npm run test:package-landscape-model",
+      "exitCode": 0,
+      "durationSeconds": 0.338
+    },
+    {
+      "workflowIndex": 11,
+      "name": "Test runtime curriculum catalog consumer",
+      "workingDirectory": "app",
+      "command": "npm run test:runtime-curriculum-catalog",
+      "exitCode": 0,
+      "durationSeconds": 0.369
+    },
+    {
+      "workflowIndex": 12,
+      "name": "Test root route policy",
+      "workingDirectory": "app",
+      "command": "npm run test:root-route-policy",
+      "exitCode": 0,
+      "durationSeconds": 0.35
+    },
+    {
+      "workflowIndex": 13,
+      "name": "Test Claude v1 first-party start flow",
+      "workingDirectory": "app",
+      "command": "npm run test:claude-v1-start",
+      "exitCode": 0,
+      "durationSeconds": 0.625
+    },
+    {
+      "workflowIndex": 14,
+      "name": "Test Claude plugin publication consumer",
+      "workingDirectory": "app",
+      "command": "npm run test:claude-plugin-publication",
+      "exitCode": 0,
+      "durationSeconds": 13.734
+    },
+    {
+      "workflowIndex": 15,
+      "name": "Test service-worker navigation policy",
+      "workingDirectory": "app",
+      "command": "npm run test:service-worker-navigation-policy",
+      "exitCode": 0,
+      "durationSeconds": 0.334
+    },
+    {
+      "workflowIndex": 16,
+      "name": "Test curriculum offering sources",
+      "workingDirectory": "app",
+      "command": "npm run test:curriculum-offering-source",
+      "exitCode": 0,
+      "durationSeconds": 0.407
+    },
+    {
+      "workflowIndex": 17,
+      "name": "Test package goal source evidence consumer",
+      "workingDirectory": "app",
+      "command": "npm run test:package-goal-source-evidence",
+      "exitCode": 0,
+      "durationSeconds": 0.366
+    },
+    {
+      "workflowIndex": 18,
+      "name": "Test goal source-rationale deployment smoke modes",
+      "workingDirectory": "app",
+      "command": "npm run test:goal-source-rationale-deployment-smoke",
+      "exitCode": 0,
+      "durationSeconds": 0.422
+    },
+    {
+      "workflowIndex": 19,
+      "name": "Test goal visualization QA approval model",
+      "workingDirectory": "app",
+      "command": "npm run test:goal-visualization-qa-status\nnpm run test:goal-visualization-qa-model\nnpm run test:goal-visualization-scope\nnpm run test:goal-visualization-rollout-status\nnpm run test:goal-visualization-approval-coverage\n",
+      "exitCode": 0,
+      "durationSeconds": 1.709
+    },
+    {
+      "workflowIndex": 20,
+      "name": "Test learner goal selection",
+      "workingDirectory": "app",
+      "command": "npm run validate:learner-goal-selection",
+      "exitCode": 0,
+      "durationSeconds": 2.069
+    },
+    {
+      "workflowIndex": 21,
+      "name": "Check GPT system instruction lengths",
+      "workingDirectory": "app",
+      "command": "npm run check:gpt-system-instruction-lengths",
+      "exitCode": 0,
+      "durationSeconds": 0.153
+    },
+    {
+      "workflowIndex": 22,
+      "name": "Test coach variant selection",
+      "workingDirectory": "app",
+      "command": "npm run test:coach-variants",
+      "exitCode": 0,
+      "durationSeconds": 1.351
+    },
+    {
+      "workflowIndex": 23,
+      "name": "Test optional learner content materials",
+      "workingDirectory": "app",
+      "command": "npm run test:content-materials",
+      "exitCode": 0,
+      "durationSeconds": 7.257
+    },
+    {
+      "workflowIndex": 24,
+      "name": "Test contextual AI transparency",
+      "workingDirectory": "app",
+      "command": "npm run test:ai-transparency-ui",
+      "exitCode": 0,
+      "durationSeconds": 0.459
+    },
+    {
+      "workflowIndex": 25,
+      "name": "Test Terms of Use and versioned acceptance",
+      "workingDirectory": "app",
+      "command": "npm run test:legal-terms",
+      "exitCode": 0,
+      "durationSeconds": 1.047
+    },
+    {
+      "workflowIndex": 26,
+      "name": "Test remote AI transparency artifact crawler",
+      "workingDirectory": "app",
+      "command": "npm run test:ai-transparency-artifact",
+      "exitCode": 0,
+      "durationSeconds": 1.041
+    },
+    {
+      "workflowIndex": 27,
+      "name": "Test frontend shell asset verifier",
+      "workingDirectory": "app",
+      "command": "npm run test:frontend-shell-assets",
+      "exitCode": 0,
+      "durationSeconds": 0.528
+    },
+    {
+      "workflowIndex": 28,
+      "name": "Test SkillPilot ID encryption",
+      "workingDirectory": "app",
+      "command": "npm run test:skillpilot-id-file",
+      "exitCode": 0,
+      "durationSeconds": 0.893
+    },
+    {
+      "workflowIndex": 29,
+      "name": "Test session setup",
+      "workingDirectory": "app",
+      "command": "npm run test:session-setup",
+      "exitCode": 0,
+      "durationSeconds": 1.83
+    },
+    {
+      "workflowIndex": 30,
+      "name": "Test public FAQ copy",
+      "workingDirectory": "app",
+      "command": "npm run test:faq",
+      "exitCode": 0,
+      "durationSeconds": 1.427
+    },
+    {
+      "workflowIndex": 31,
+      "name": "Test public landing page and overview",
+      "workingDirectory": "app",
+      "command": "npm run test:public-landing\nnpm run test:public-overview\n",
+      "exitCode": 0,
+      "durationSeconds": 72.609
+    },
+    {
+      "workflowIndex": 32,
+      "name": "Test existing learner linking",
+      "workingDirectory": "app",
+      "command": "npm run test:existing-learner-linking",
+      "exitCode": 0,
+      "durationSeconds": 22.926
+    },
+    {
+      "workflowIndex": 33,
+      "name": "Test trainer course planning",
+      "workingDirectory": "app",
+      "command": "npm run test:trainer-course-plan",
+      "exitCode": 0,
+      "durationSeconds": 37.359
+    },
+    {
+      "workflowIndex": 34,
+      "name": "Test learner-owned subject plans and Cockpit status",
+      "workingDirectory": "app",
+      "command": "npm run test:learner-learning-plans",
+      "exitCode": 0,
+      "durationSeconds": 35.625
+    },
+    {
+      "workflowIndex": 35,
+      "name": "Test quiet and bounded learner cockpit startup",
+      "workingDirectory": "app",
+      "command": "npm run test:learner-cockpit-startup",
+      "exitCode": 0,
+      "durationSeconds": 24.622
+    },
+    {
+      "workflowIndex": 36,
+      "name": "Test native learner map and focused cockpit regression",
+      "workingDirectory": "app",
+      "command": "npm run test:learner-map",
+      "exitCode": 1,
+      "durationSeconds": 261.563
+    },
+    {
+      "workflowIndex": 37,
+      "name": "Test flashcard box rules",
+      "workingDirectory": "app",
+      "command": "npm run test:flashcard-box-rules",
+      "exitCode": 0,
+      "durationSeconds": 0.365
+    },
+    {
+      "workflowIndex": 38,
+      "name": "Test read-only learning-goal book UI",
+      "workingDirectory": "app",
+      "command": "npm run test:goal-book-ui",
+      "exitCode": 0,
+      "durationSeconds": 17.95
+    },
+    {
+      "workflowIndex": 39,
+      "name": "Test compact completed session setup",
+      "workingDirectory": "app",
+      "command": "npm run test:session-setup-ui",
+      "exitCode": 0,
+      "durationSeconds": 17.062
+    },
+    {
+      "workflowIndex": 40,
+      "name": "Test trainer navigation history",
+      "workingDirectory": "app",
+      "command": "npm run test:trainer-navigation-ui",
+      "exitCode": 0,
+      "durationSeconds": 9.93
+    },
+    {
+      "workflowIndex": 41,
+      "name": "Test trainer Gymnasium scope",
+      "workingDirectory": "app",
+      "command": "npm run test:trainer-gymnasium-scope-ui",
+      "exitCode": 0,
+      "durationSeconds": 8.204
+    },
+    {
+      "workflowIndex": 42,
+      "name": "Test learner data and SkillPilot ID management",
+      "workingDirectory": "app",
+      "command": "npm run test:learner-data-management",
+      "exitCode": 0,
+      "durationSeconds": 4.741
+    },
+    {
+      "workflowIndex": 43,
+      "name": "Test curriculum quality traffic-light interactions",
+      "workingDirectory": "app",
+      "command": "npm run test:curriculum-quality-ui",
+      "exitCode": 0,
+      "durationSeconds": 22.57
+    },
+    {
+      "workflowIndex": 44,
+      "name": "Test personal curriculum editor",
+      "workingDirectory": "app",
+      "command": "npm run test:personal-curriculum-editor",
+      "exitCode": 0,
+      "durationSeconds": 1.611
+    },
+    {
+      "workflowIndex": 45,
+      "name": "Lint",
+      "workingDirectory": "app",
+      "command": "npm run lint",
+      "exitCode": 0,
+      "durationSeconds": 49.373
+    },
+    {
+      "workflowIndex": 46,
+      "name": "Build application without regenerating curriculum assets",
+      "workingDirectory": "app",
+      "command": "npm run build:application",
+      "exitCode": 1,
+      "durationSeconds": 2.843
+    },
+    {
+      "workflowIndex": 47,
+      "name": "Check optional learner map stays outside startup precache",
+      "workingDirectory": "app",
+      "command": "npm run test:learner-map-build",
+      "exitCode": 1,
+      "durationSeconds": 0.353
+    },
+    {
+      "workflowIndex": 48,
+      "name": "Test service-worker update lifecycle",
+      "workingDirectory": "app",
+      "command": "npm run test:service-worker-update-lifecycle",
+      "exitCode": 1,
+      "durationSeconds": 0.548
+    },
+    {
+      "workflowIndex": 49,
+      "name": "Check AI transparency inventory",
+      "workingDirectory": "app",
+      "command": "npm run check:ai-transparency-inventory",
+      "exitCode": 0,
+      "durationSeconds": 12.08
+    },
+    {
+      "workflowIndex": 50,
+      "name": "Check frontend shell assets in the built application",
+      "workingDirectory": "app",
+      "command": "npm run check:frontend-shell-assets",
+      "exitCode": 1,
+      "durationSeconds": 0.168
+    },
+    {
+      "workflowIndex": 51,
+      "name": "Check AI transparency in the built application",
+      "workingDirectory": "app",
+      "command": "npm run check:ai-transparency-artifact",
+      "exitCode": 1,
+      "durationSeconds": 0.163
+    },
+    {
+      "workflowIndex": 52,
+      "name": "Install browser demo-video tool dependencies",
+      "workingDirectory": "tools/demo-video",
+      "command": "npm ci --ignore-scripts\nnpx --no-install playwright install chromium",
+      "exitCode": 0,
+      "durationSeconds": 23.836
+    },
+    {
+      "workflowIndex": 53,
+      "name": "Validate reproducible browser demo-video tool",
+      "workingDirectory": "tools/demo-video",
+      "command": "npm run check\nnpm run demo -- validate --scenario scenarios/example.yaml\nnpm run demo -- validate --scenario scenarios/skillpilot-openai-review.template.yaml\nDEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \\\n  npm run demo -- record --scenario scenarios/example.yaml\nDEMO_VIDEO_FIXTURE_SECRET=DEMO_SECRET_ci \\\n  npm run demo -- verify-recording --scenario scenarios/example.yaml\n",
+      "exitCode": 1,
+      "durationSeconds": 24.112
+    }
+  ],
+  "failureDisposition": [
+    {
+      "workflowIndex": 36,
+      "finding": "Vite rejects six KaTeX font requests resolved through shared node_modules to another checkout. Actual native learner-map, HE memory UI and unit-introduction checks pass.",
+      "repair": "Prepare an exact-lockfile real dependency directory; activate it only after native review completion. No test or source assertion changed."
+    },
+    {
+      "workflowIndex": 46,
+      "finding": "Reviewed print-font check rejects Arial resolving to DejaVu Sans instead of Liberation Sans.",
+      "repair": "Use the cached official Liberation package via user-owned fontconfig; fc-match now resolves Arial and Courier New to required Liberation families."
+    },
+    {
+      "workflowIndexes": [
+        47,
+        48,
+        50,
+        51
+      ],
+      "finding": "Build-dependent checks cannot pass after the application build is blocked; missing built map entry/index.html is derivative of the font prerequisite failure."
+    },
+    {
+      "workflowIndex": 53,
+      "finding": "One of171 demo-tool tests fails a screenshot-card footer overlap under the system fallback fonts. The shell stops before remaining fixture demo commands.",
+      "repair": "The exact quickstart-content browser test passes unchanged with reviewed Liberation fontconfig; the full step remains for final head verification."
+    }
+  ],
+  "verificationBoundary": [
+    "Infrastructure Actions and hosted publication-artifact transfer are not local product-step acceptance.",
+    "This diagnostic overlapped authored input preparation; final full frontend and complete backend checks must run on the exact pushed head after dependencies are activated.",
+    "Raw logs, screenshots and JUnit XML are not committed."
+  ],
+  "hostedCiClaimed": false
+}

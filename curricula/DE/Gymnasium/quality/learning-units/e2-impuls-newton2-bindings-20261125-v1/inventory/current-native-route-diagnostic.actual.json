@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-current-native-route-diagnostic-v1",
+  "measuredAt": "2026-11-25T14:27:09.399Z",
+  "method": "createRouteProfiles + evaluateRouteProfile over the current full canonical catalog and compiled applicability; native CQR-104/CQR-203, no changed goals, routes, coverage declarations or floors.",
+  "profileId": "canonical-physics-sek1",
+  "stage": "SekI",
+  "rules": [
+    {
+      "id": "CQR-104",
+      "status": "fail",
+      "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 56,
+        "invalidExplicitTerminalConfigurations": 0,
+        "evaluatedProjectionScopes": 106,
+        "requiredMotivationAnchors": 2,
+        "minimumRequiredTerminalAutonomyGoals": 40,
+        "requiredTerminalAutonomyGoals": 58,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 0,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 51,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 13705,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 783,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 197,
+        "nationalStageTargetGoalOccurrencesMaterializedFromFullExposure": 123,
+        "nationalProjectionScopesWithInvalidExposureFamily": 0,
+        "projectionScopesWithInvalidSourceStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 1,
+        "visibleSelectedAtomicGoalOccurrences": 9248,
+        "visibleProfileSelectedAtomicGoalOccurrences": 8739,
+        "visibleProjectedRouteTargetGoalOccurrences": 9248,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 509,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 63,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 9,
+        "projectionScopesMissingDirectTerminalRoutes": 9,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 9,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 9,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 9,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 9,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 2,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 2
+      },
+      "details": [
+        "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-seki.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-seki.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-seki.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+        "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-seki.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766"
+      ]
+    },
+    {
+      "id": "CQR-203",
+      "status": "pass",
+      "summary": "All terminal autonomy examData has release and coverage metadata.",
+      "metrics": {
+        "terminalAutonomyGoals": 95,
+        "releasedCoverageCompleteExamData": 95,
+        "releaseCoverageIncompleteExamData": 0
+      }
+    }
+  ],
+  "interpretation": {
+    "endpointVisibilityAndWholePreparation": "All explicit endpoints, assessed-content bindings and complete whole-material prerequisites pass in their actual offered scopes.",
+    "remainingRouteFailures": "Nine scoped missing paths: BW RATE-M and HH/TH IMP, each in GK/LK CrossStage and lower-stage excerpt.",
+    "masteryBoundary": "A prerequisite route to an assessment is not whole-goal assessment credit. No coveredGoalIds, scoring or learner-result meaning is changed.",
+    "correctedQaMeaning": "CQR-303 D/P/A/M/V gate A is semantic atomicity; it is not an assessment gate."
+  },
+  "taskContentInvestigation": {
+    "IMP": [
+      "BW/BY current task68061652 already has a genuine transitive prerequisite path through839 to IMP; BW taskb637 likewise.",
+      "HH/TH nearest current downstream taskb637 requires32 prerequisite atoms plus1 assessed atom absent from the present lower learning basis. Offering it would require an additional independent source-stage review; do not import them only to satisfy a route gate."
+    ],
+    "RATE-M": [
+      "Only current downstream released task8a1d4093 is reachable through RATE-I and f524. Its full demand exceeds BW lower learning basis by43 prerequisite atoms and7 assessed atoms.",
+      "Current crash tasks72649cf5 and7c0b94b9 use average-force calculations, but no current requires path includes RATE-M, and their complete demands exceed BW lower source learning. No prerequisite or credit was invented."
+    ],
+    "RATE-I": [
+      "Current upper-stage task8a1d4093 demands the derivative conservation derivation and has the real RATE-I→f524 prerequisite chain. A p–t tangent assessment is a separate mastery claim and is not inferred."
+    ]
+  },
+  "humanApproval": false,
+  "complete": false,
+  "upperStage": {
+    "profileId": "canonical-physics-sek2",
+    "stage": "SekII",
+    "currentPolicy": {
+      "CQR-104": "not_configured",
+      "applicableFailure": false
+    },
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "pass",
+        "summary": "Effective route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 329,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-102",
+        "status": "pass",
+        "summary": "Direct atomic route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 329,
+          "missingDirectMotivationPath": 0,
+          "missingDirectTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 110,
+          "terminalAutonomyGoalsWithExamData": 110,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 110,
+          "concreteExamData": 110,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 110,
+          "releasedCoverageCompleteExamData": 110,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ],
+    "note": "Standing policy does not configure upper-stage CQR-104. An optional sensitivity run is retained only outside the repository; it is not an applicable Task-H failure, activation or lowered floor."
+  }
+}

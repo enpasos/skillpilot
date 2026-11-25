@@ -248,6 +248,7 @@ class LearnerServiceCrossSubjectPilotTest {
     private static final String CANONICAL_PHYSICS_ENERGY_CONSERVATION_ID = "91c49019-ea51-4ce5-a919-c91c45b25e83";
     private static final String CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID = "2eecd0e2-a7ca-4568-9b12-3d47706c65fb";
     private static final String CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID = "0da13365-02c2-44f1-8a81-d524ca0ac3ae";
+    private static final String CANONICAL_PHYSICS_INDIVIDUAL_MOMENTUM_ID = "53afbda1-5776-502b-8867-471975d7b766";
     private static final String CANONICAL_PHYSICS_UPPER_SECONDARY_RADIATION_ID = "e5c08365-a0d3-592c-ad8e-d2c2c6e2b717";
     private static final String CANONICAL_PHYSICS_HARMONIC_WAVES_ID = "cb0ced6d-b7c1-5b7d-9922-8c394f6030e8";
     private static final String CANONICAL_PHYSICS_EM_SPECTRUM_ID = "4a7cbe83-b694-57d3-85ce-1eeca418daaf";
@@ -1644,6 +1645,18 @@ class LearnerServiceCrossSubjectPilotTest {
 
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_INDIVIDUAL_MOMENTUM_ID)
+                .doesNotContain(CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID);
+
+        // Historical projected mastery never creates a result for the new atom.
+        // Its own explicit pass is a separate fixture before the collision unlocks.
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_BAYERN_PHYSICS_ENERGY_CONSERVATION_ID, 1.0),
+                        new Mastery(learner, LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID, 1.0),
+                        new Mastery(learner, CANONICAL_PHYSICS_INDIVIDUAL_MOMENTUM_ID, 1.0)));
+        assertThat(learnerService.getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
                 .contains(CANONICAL_PHYSICS_INELASTIC_COLLISIONS_ID);
     }
 
@@ -1659,6 +1672,16 @@ class LearnerServiceCrossSubjectPilotTest {
         List<FrontierGoal> frontier = learnerService.getRichFrontier(LEARNER_ID);
 
         assertThat(frontier)
+                .extracting(FrontierGoal::id)
+                .contains(CANONICAL_PHYSICS_INDIVIDUAL_MOMENTUM_ID)
+                .doesNotContain(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID);
+
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(
+                        new Mastery(learner, LEGACY_BAYERN_PHYSICS_ENERGY_CONSERVATION_ID, 1.0),
+                        new Mastery(learner, LEGACY_BAYERN_PHYSICS_MOMENTUM_CONSERVATION_ID, 1.0),
+                        new Mastery(learner, CANONICAL_PHYSICS_INDIVIDUAL_MOMENTUM_ID, 1.0)));
+        assertThat(learnerService.getRichFrontier(LEARNER_ID))
                 .extracting(FrontierGoal::id)
                 .contains(CANONICAL_PHYSICS_SIMPLE_COLLISIONS_ID);
     }

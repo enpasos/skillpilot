@@ -1,0 +1,60 @@
+{
+  "scope": "local-author-validation",
+  "date": "2026-11-25",
+  "environment": {
+    "node": "20.20.2",
+    "java": "Corretto 25.0.2.10.1"
+  },
+  "checks": [
+    {
+      "command": "npm --prefix app run validate:graph",
+      "exitCode": 0,
+      "observation": "548 catalog landscapes passed"
+    },
+    {
+      "command": "npm --prefix app run check:transitive-minimality",
+      "exitCode": 0,
+      "observation": "Physics closure: 1148 goals, 1660 authored edges, 0 redundant edges, 0 non-atomic prerequisite endpoints, 0 type mismatches"
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-assets",
+      "exitCode": 0,
+      "observation": "2585 image links, 21 landscapes"
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-qa -- --subjects=physik",
+      "exitCode": 0,
+      "observation": "524 current QA rows"
+    },
+    {
+      "command": "npm --prefix app run check:goal-visualization-rollout-coverage:physik",
+      "exitCode": 0,
+      "observation": "generated Physics rollout and coverage check passed"
+    },
+    {
+      "command": "npm --prefix app run check:goal-source-rationales:public",
+      "exitCode": 0,
+      "observation": "public rationale indexes passed"
+    },
+    {
+      "command": "npm --prefix app run check:ai-transparency-inventory",
+      "exitCode": 0,
+      "observation": "2585 visualizations, 2515 C2PA container markers, 759 localized card records"
+    },
+    {
+      "command": "./gradlew test --tests 'com.skillpilot.backend.service.MomentumDerivationFrontierTest'",
+      "exitCode": 0,
+      "observation": "2 parameterized cases passed: DE-SN and DE-ST; mandatory mathematical slope and instantaneous force observed on the actual learning frontier"
+    },
+    {
+      "command": "./gradlew test --tests '*ClaudeV1CompletionRouteIntegrationTest.hessianChildEvidenceEnablesOnlyItsOwnPrerequisitesAndKeepsBothIndividualRoutes'",
+      "exitCode": 0,
+      "observation": "2 parameterized cases passed on the frozen views after concurrent regeneration during the initial broad run"
+    },
+    {
+      "command": "npm --prefix app run test:physics-goal-book-inputs",
+      "exitCode": 0,
+      "observation": "867 kind decisions, 493 curricular atoms, 492 source-backed atlas targets. The current transport of the 216 predecessor payloads and 3 new closure payloads is checked; both approved offer closures remain identical."
+    }
+  ]
+}

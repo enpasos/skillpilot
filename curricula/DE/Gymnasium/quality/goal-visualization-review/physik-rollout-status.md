@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-24T10:43:33.308Z
+Generated: 2026-11-25T14:21:23.841Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 864 |
-| Atomare Ziele im Visualisierungs-Scope | 490 |
-| Ziele mit primaerem Visualisierungslink | 490 |
+| Alle Ziele in der Landschaft | 867 |
+| Atomare Ziele im Visualisierungs-Scope | 493 |
+| Ziele mit primaerem Visualisierungslink | 493 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 490 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 493 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -30,7 +30,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 73 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 76 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -38,7 +38,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 97 |
-| `pilot` | 393 |
+| `pilot` | 396 |
 
 ## Ledger Decisions
 
@@ -159,15 +159,15 @@ Keine Eintraege.
 | `922f32ba-f214-5a82-be5c-1111aca51d4a` | Einen Audio-Licht-Übertragungsversuch funktional umsetzen | `accepted` | - |
 | `7d4d6a39-0c78-5fb0-b7bf-182ed00972f7` | Einen bipolaren Transistor als Schalter funktional untersuchen | `accepted` | - |
 | `f505f039-3f07-5afe-88b8-f02532e9c2f0` | Einen Modellversuch zu optischem Multiplexing entwickeln | `accepted` | - |
+| `53afbda1-5776-502b-8867-471975d7b766` | Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen | `pilot` | - |
 | `e19fccd7-6a35-5c9e-86e1-dcca76481e9c` | Elektrische Dipolfelder mit dem EKG verknüpfen | `pilot` | `deferred_provider_limitation` |
 | `6e79ef4a-2666-5f7a-885c-b175954506f8` | Entropie E05: Einheiten und Bedeutung von S | `pilot` | `deferred_provider_limitation` |
 | `09995ab9-86aa-5b02-8a58-62b16a37831d` | Entstehung von Gravitationswellen mit begrenzter Analogie erklären | `pilot` | `deferred_provider_limitation` |
 | `bf559969-a05c-58b5-82c5-3d719d96555d` | Erzeugung und Ausbreitung harmonischer mechanischer Wellen erklären | `pilot` | `deferred_provider_limitation` |
 | `49bb609a-bfb7-5391-9120-f5fc737efb9a` | Exoplanetenkandidaten mit der Transitmethode erklären | `pilot` | `deferred_provider_limitation` |
 | `6dca3b0a-c872-543b-808f-97e855f5fafd` | Exoplanetenkandidaten mit Stern-Radialbewegungen erklären | `pilot` | `deferred_provider_limitation` |
-| `e0004439-ed34-5caf-858a-6107918224eb` | Fallhöhe und Fallzeit in einem Messprotokoll festhalten | `pilot` | - |
 
-Weitere 43 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 46 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 

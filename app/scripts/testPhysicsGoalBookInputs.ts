@@ -257,6 +257,9 @@ const SEMANTIC_RECHECK_ATOMIC_GOAL_IDS = new Set([
   '727d0946-7019-50ed-8fc6-85db12508733',
 ])
 const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
+  '53afbda1-5776-502b-8867-471975d7b766',
+  'ecbaa101-cb10-5da3-9368-ae40ff587d74',
+  '059c1adc-e4d2-5222-a923-15abc417d59f',
   '2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c',
   '41d35667-0296-5f84-bc12-202ffc440be0',
   '33e3417c-e062-5f4a-8df9-3195dca50089',
@@ -637,19 +640,19 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
   'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
 ])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 490,
+  curricularAtomic: 493,
   curricularArea: 112,
   practiceAssessment: 248,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 4,
-  total: 864,
+  total: 867,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
 const ATLAS_PREPARATION_ONLY_GOAL_ID = '13b338eb-f761-5817-9058-11043b9cb253'
-const EXPECTED_ATLAS_TARGET_COUNT = 489
+const EXPECTED_ATLAS_TARGET_COUNT = 492
 // These four reviewed E.1 split atoms extend the existing target set; every
 // previous atlas and canonical-profile identity remains independently pinned.
 const E1_ADDED_NATIONAL_TARGET_IDS = [
@@ -657,6 +660,11 @@ const E1_ADDED_NATIONAL_TARGET_IDS = [
   '1e459a1b-4159-5049-84eb-9928129c1610',
   '262f807a-30d0-503e-986f-856cbd048e8e',
   'd9a6ea85-f7e8-5cbd-afe9-62596e22040d',
+]
+const E2_ADDED_ATLAS_TARGET_IDS = [
+  '059c1adc-e4d2-5222-a923-15abc417d59f',
+  '53afbda1-5776-502b-8867-471975d7b766',
+  'ecbaa101-cb10-5da3-9368-ae40ff587d74',
 ]
 const STAGE_PLAN_ADDED_NATIONAL_TARGET_IDS = [
   '3ed3279e-c524-5230-a277-dda89493df6d',
@@ -1621,16 +1629,62 @@ for (const source of [...ffxPrimarySources, currentStageOffers.dprimeContentAndS
   assert.equal(createHash('sha256').update(readFileSync(resolve(repoRoot, source.path))).digest('hex'), source.sha256)
 }
 const currentStagePreparation = readJson<{ payloads: Array<{ goalId: string; rawSha256: string; normalizedSha256: string }>
+  rejected: Array<{ goalId: string; fullRealPrerequisiteIds: string[] }>
   assessments: Array<{ goalId: string; assessmentRawSha256: string; assessmentNormalizedSha256: string
     jurisdictions: string[]; fullRealPrerequisiteIds: string[] }> }>(currentStageOffers.currentSharedPreparation.path)
 const rawStagePreparationById = new Map(preparationLandscape.goals.map(goal => [goal.id, goal]))
 const normalizedStagePreparationById = new Map(normalizeCanonicalLandscape(preparationLandscape as unknown as CanonicalAuthoringLandscape)
   .goals.map(goal => [goal.id, goal]))
 assert.equal(currentStagePreparation.payloads.length, 216)
-for (const payload of currentStagePreparation.payloads) {
+type PreparationPin = { goalId: string; rawSha256: string; normalizedSha256: string }
+const e2PreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/current-stage-preparation.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, e2PreparationPath), 'utf8')), '267af7412b4c00e42d29d5881d805443537da73e5513cfc0145d2d0d7cdf66bd')
+const e2Preparation = readJson<{
+  predecessor: { path: string; sha256: string; payloadCount: number }
+  changes: Array<{ goalId: string; before: PreparationPin; current: PreparationPin }>
+  additionalPreparationPayloads: PreparationPin[]
+  closures: Array<{ goalId: string; priorDisposition: 'assessments' | 'rejected'
+    previousCount: number; currentCount: number; added: string[]; removed: string[] }>
+}>(e2PreparationPath)
+assert.deepEqual(e2Preparation.predecessor, { ...currentStageOffers.currentSharedPreparation, payloadCount: 216 })
+const pinChanges = new Map(e2Preparation.changes.map(row => [row.goalId, row]))
+assert.equal(pinChanges.size, 3)
+const currentPreparationPins = currentStagePreparation.payloads.map(previous => {
+  const successor = pinChanges.get(previous.goalId)
+  if (!successor) return previous
+  assert.deepEqual(successor.before, {
+    goalId: previous.goalId, rawSha256: previous.rawSha256, normalizedSha256: previous.normalizedSha256,
+  })
+  assert.equal(successor.current.goalId, previous.goalId)
+  return successor.current
+})
+const priorPreparationIds = new Set(currentStagePreparation.payloads.map(row => row.goalId))
+const newClosureIds = new Set(e2Preparation.closures.flatMap(row => row.added)
+  .filter(id => !priorPreparationIds.has(id)))
+assert.deepEqual(e2Preparation.additionalPreparationPayloads.map(row => row.goalId),
+  [...newClosureIds].sort(compareCodePoints))
+currentPreparationPins.push(...e2Preparation.additionalPreparationPayloads)
+assert.equal(new Set(currentPreparationPins.map(row => row.goalId)).size, 219)
+for (const payload of currentPreparationPins) {
   assert.equal(sha256(JSON.stringify(rawStagePreparationById.get(payload.goalId))), payload.rawSha256,
     `${payload.goalId}: stale actual source-stage prerequisite bytes`)
   assert.equal(sha256(JSON.stringify(normalizedStagePreparationById.get(payload.goalId))), payload.normalizedSha256)
+}
+for (const kind of ['assessments', 'rejected'] as const) {
+  const before = currentStagePreparation[kind]
+  const after = e2Preparation.closures.filter(row => row.priorDisposition === kind)
+  assert.deepEqual(after.map(row => row.goalId), before.map(row => row.goalId))
+  for (const [index, row] of after.entries()) {
+    const previous = before[index].fullRealPrerequisiteIds
+    assert.equal(row.previousCount, previous.length)
+    assert.deepEqual(row.removed, [])
+    if (kind === 'assessments') assert.deepEqual(row.added, [])
+    const actual = collectWholeMaterialPrerequisiteClosure(preparationLandscape, row.goalId)
+    assert.equal(actual.unresolvedReferences.size, 0)
+    assert.equal(actual.atomicGoalIds.size, row.currentCount)
+    assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints),
+      [...previous, ...row.added].sort(compareCodePoints))
+  }
 }
 assert.deepEqual(currentStageOffers.assessments.map(row => row.goalId), [saxonAccelerationExam, saxonFreeFallExam])
 type EvidenceFile = { path: string; sha256: string }
@@ -2363,7 +2417,14 @@ assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must rema
 // Current, independently reviewed repairs may change a goal's preparation.
 // V9 transfers unchanged goals individually; it does not require preserving an
 // older whole-catalog prerequisite inventory. Resolve the actual foreign edges.
-assert.equal(foreignRequiresEdges.length, 161, 'the current Physics inventory has 161 direct cross-subject prerequisites')
+assert.equal(foreignRequiresEdges.length, 164, 'E.2 adds three direct mathematical prerequisites to the prior 161')
+for (const [ownerId, required] of [
+  ['53afbda1-5776-502b-8867-471975d7b766', ['4eeab7d5-eeb3-579b-845e-1c52ffe9e89f', 'ee48e811-4c9c-5080-9836-8403fc9f0810']],
+  ['059c1adc-e4d2-5222-a923-15abc417d59f', ['b1dcc191-d046-50de-984a-ee5c17157628']],
+] as const) {
+  assert.deepEqual(foreignRequiresEdges.filter(edge => edge.ownerId === ownerId).map(edge => edge.goalId).sort(compareCodePoints),
+    required)
+}
 foreignRequiresEdges.forEach(({ ownerId, goalId }) => {
   assert(mathGoalIds.has(goalId) || chemistryGoalIds.has(goalId),
     `foreign prerequisite ${goalId} has no configured canonical owner`)
@@ -3458,12 +3519,35 @@ assert.equal(sha256(readFileSync(resolve(repoRoot, atlasDeltaPath), 'utf8')),
 const atlasDelta = readJson<{ beforeActualUnionCount: number; currentActualUnionCount: number
   addedTargetGoalIds: string[]; removedTargetGoalIds: string[]; beforeUnionGoalIds: string[]; currentUnionGoalIds: string[] }>(atlasDeltaPath)
 assert.equal(atlasDelta.beforeActualUnionCount, 485)
-assert.equal(atlasDelta.currentActualUnionCount, EXPECTED_ATLAS_TARGET_COUNT)
+assert.equal(atlasDelta.currentActualUnionCount, 489)
 assert.deepEqual(atlasDelta.addedTargetGoalIds, E1_ADDED_NATIONAL_TARGET_IDS)
 assert.deepEqual(atlasDelta.removedTargetGoalIds, [])
-assert.deepEqual([...atlasCurricularAtomicGoalIds].sort(compareCodePoints), atlasDelta.currentUnionGoalIds)
-assert.deepEqual([...atlasCurricularAtomicGoalIds].filter(id => !E1_ADDED_NATIONAL_TARGET_IDS.includes(id)).sort(compareCodePoints),
+const beforeE2AtlasTargetIds = [...atlasCurricularAtomicGoalIds]
+  .filter(id => !E2_ADDED_ATLAS_TARGET_IDS.includes(id))
+assert.deepEqual(beforeE2AtlasTargetIds.sort(compareCodePoints), atlasDelta.currentUnionGoalIds)
+assert.deepEqual(beforeE2AtlasTargetIds.filter(id => !E1_ADDED_NATIONAL_TARGET_IDS.includes(id)).sort(compareCodePoints),
   atlasDelta.beforeUnionGoalIds, 'E.1 must preserve every independently bound prior atlas target')
+const e2AtlasDeltaPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/national-atlas-inventory-delta.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, e2AtlasDeltaPath), 'utf8')),
+  '7cb906ab484602378ff83db0548a3436ded783f058cdcb125c364215f585f59c')
+const e2AtlasDelta = readJson<{ beforeActualUnionCount: number; currentActualUnionCount: number
+  addedTargetGoalIds: string[]; removedTargetGoalIds: string[]; beforeUnionGoalIds: string[]; currentUnionGoalIds: string[]
+  predecessor: { path: string; sha256: string }; sourceViews: Array<{ path: string; sha256: string }>
+  canonicalProfileTargets: { count: number; unchangedFromE1: boolean; goalIds: string[] }
+}>(e2AtlasDeltaPath)
+assert.equal(e2AtlasDelta.predecessor.path, atlasDeltaPath)
+assert.equal(sha256(readFileSync(resolve(repoRoot, e2AtlasDelta.predecessor.path), 'utf8')), e2AtlasDelta.predecessor.sha256)
+assert.equal(e2AtlasDelta.beforeActualUnionCount, atlasDelta.currentActualUnionCount)
+assert.equal(e2AtlasDelta.currentActualUnionCount, EXPECTED_ATLAS_TARGET_COUNT)
+assert.deepEqual(e2AtlasDelta.beforeUnionGoalIds, atlasDelta.currentUnionGoalIds)
+assert.deepEqual(e2AtlasDelta.addedTargetGoalIds, E2_ADDED_ATLAS_TARGET_IDS)
+assert.deepEqual(e2AtlasDelta.removedTargetGoalIds, [])
+assert.deepEqual([...atlasCurricularAtomicGoalIds].sort(compareCodePoints), e2AtlasDelta.currentUnionGoalIds,
+  'E.2 adds exactly its three source-backed atlas targets and retains the complete previous target set')
+assert.deepEqual(e2AtlasDelta.sourceViews.map(row => row.path), sourceManifest.sourcePaths)
+for (const row of e2AtlasDelta.sourceViews) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale E.2 atlas witness`)
+}
 assert.equal(atlasCurricularAtomicGoalIds.size, EXPECTED_ATLAS_TARGET_COUNT)
 assert(atlasPreparationOnlyOccurrences > 0, 'the omitted target page must have a real authored prerequisite-only placement')
 assert.deepEqual(
@@ -3506,6 +3590,10 @@ for (const profilePath of [
 // remove the former mixed atom, add energy and interval probability, keep all
 // other target IDs unchanged. Bind that full prior set, not only the new count.
 assert.equal(canonicalProfileTargetIds.size, 424)
+assert.equal(e2AtlasDelta.canonicalProfileTargets.unchangedFromE1, true)
+assert.equal(e2AtlasDelta.canonicalProfileTargets.count, 424)
+assert.deepEqual([...canonicalProfileTargetIds].sort(compareCodePoints), e2AtlasDelta.canonicalProfileTargets.goalIds,
+  'The E.2 source-specific additions must not invent national-profile targets')
 const profileDeltaPath = `${e1NationalEvidenceRoot}national-canonical-profile-target-delta.actual.json`
 assert.equal(sha256(readFileSync(resolve(repoRoot, profileDeltaPath), 'utf8')),
   '0a4ba6221468745be35580ec53f773c76706d19b6fbcb11fc0a1ecdb471241de')
