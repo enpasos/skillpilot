@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "status": "parked-after-three-versions",
+  "reviewedAt": "2026-11-25T04:54:38+01:00",
+  "baselineCommit": "ae04d42ef9bf9642e61b83171f75f39e684c84f9",
+  "initialBlindInputCommit": "a6117075c1ac7776a1af0a0c9b790fda9a980225",
+  "supersedes": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-achievable-pass-marks-20261124-v1/f41e4e30-794e-5ce4-ba5e-cc72712cd691/parked.actual.json",
+    "sha256": "ffc45f100708900e57441603a700550ca93cc6c35ad497a6409e820a5e11f3b3"
+  },
+  "reviewPath": "v3",
+  "dispositionSha256": "ba26a8298e068f08a20f527f1a1d623b854e74d6b9e947a6072c069d7188d028",
+  "attempts": [
+    {
+      "path": "v1/review-disposition.actual.json",
+      "sha256": "b267c36811bfab2a668228aad933b6fe40e076c3a9c4932ce13890ce0623ee4a"
+    },
+    {
+      "path": "v2/review-disposition.actual.json",
+      "sha256": "9a472cd509201a01c96653b73dd4eb59d6e711706f77fae370fbd13ea63f156c"
+    },
+    {
+      "path": "v3/review-disposition.actual.json",
+      "sha256": "ba26a8298e068f08a20f527f1a1d623b854e74d6b9e947a6072c069d7188d028"
+    }
+  ],
+  "original": {
+    "path": "v3/original.goal.json",
+    "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4"
+  },
+  "candidate": {
+    "path": "v3/candidate.goal.json",
+    "sha256": "4864008ad86ee5081699d4bf890f843b5ac707721b0323a1038fdc4996872ccc"
+  },
+  "candidateSha256": "4864008ad86ee5081699d4bf890f843b5ac707721b0323a1038fdc4996872ccc",
+  "authorModel": "claude-opus-5-5",
+  "reviewModels": [
+    "gpt-6.1-sol",
+    "gpt-6.2-astra"
+  ],
+  "currentGoalSha256": "94caaa5f3f8a3a972d5a47fb25f092fcfbe6a099101e596b2eba36a112688a20",
+  "requiredHessianPlanningCreditGranted": false,
+  "learnerResultTransfer": false,
+  "lastReviewedVersion": 3,
+  "currentPassingPoints": 23,
+  "currentMaximumPoints": 24,
+  "lastReviewFindings": [
+    "a: reviewer decision revise",
+    "a: Die Bestehensabsicherung so überarbeiten, dass mindestens eine vollständige zusammenhängende Zielkette einschließlich ausdrücklich angegebener Anfangsbedingungen und nachvollziehbarer Loslassprüfung nachgewiesen sein muss. Das kann durch offen geänderte Gewichte, Obergrenzen oder Bestehensregeln geschehen; eine neue Hürde darf nicht rückwirkend in die vorliegenden Bewertungen hineingelesen werden. | Die pauschale Vier-Kriterien-Nullsetzung bei beharrlicher Fehlbehauptung fachlich begrenzen. L14 widerlegt die Begründung, vorhandene eigene Daten und grafische Laufbestimmungen könnten dadurch überhaupt nicht mehr als experimentelle Leistungen gelesen werden. Die unzulässige Ergebnisbehauptung und tatsächlich gezeigte Teilkompetenzen müssen getrennt ausgewiesen werden. | Die Aussage zur einmaligen Nachweiszuordnung an die ausdrücklich vorhandene Verknüpfung anpassen: Ein fehlender Reihenschätzwert betrifft 0.5 BE Ergebnis und 2.5 BE Übereinstimmung. Diese Doppelbetroffenheit muss transparent bleiben und darf keine weiteren Abzüge bei Grenzen, Vergleich oder konsequenter Folgearbeit auslösen. | Das Herkunftsverbot unverändert erhalten und konsequent anwenden: Insbesondere L08 erlaubt keine Entscheidung zwischen Literaturübernahme und eigener, aber nicht ausdrücklich ausgewiesener Zusammenfassung. Gesetzesabweichungen in L02, L07 und L13 belegen ebenfalls keine Quelle und keine beharrliche Fehlvorstellung. | Die englische Aufbauvorgabe bereits im Aufgabentext ausdrücklich um die Absperrung ergänzen, damit dieselbe Sicherheitsanforderung ohne nachträgliche Lösungsauslegung erkennbar ist. | Nach der Rasterkorrektur die Freigabe und die Aussage zum durch Bestehen belegten Lernziel neu prüfen. Die bisherigen Review-Verweise ersetzen weder diese Prüfung noch einen Nachweis von Lernwirksamkeit.",
+    "a: not practice assessment",
+    "a: omission capacity",
+    "b: reviewer decision revise",
+    "b: Die Grenzvariation in beiden Sprachfassungen eindeutig regeln. Für einen ausdrücklich gewählten Einzellauf wie bei L04 muss dessen verändertes Ergebnis angegeben sein. Für Fälle ohne nominalen Reihenschätzwert ausdrücklich festlegen, ob das berichtete variierte Reihenmittel allein genügt. Damit wird L05 und L14 dieselbe Regel nachvollziehbar zugänglich. | Für den A/B-Vergleich ausdrücklich festlegen, dass ein Vergleich aller zugeordneten Laufdifferenzen oder ihrer nachgewiesenen Extremwerte mit beiden Unsicherheiten anerkannt wird. L05 ersetzt die getrennten Schätzwerte durch einen gemeinsamen Fit, führt aber zusätzlich einen eigenen quantitativen Vergleich der Läufe durch. L14 prüft sogar jede einzelne Differenz. Die heutige Definition eines im Schluss vorgelegten Reihenwerts lässt eine abweichende Benotung bis hin zu einer anderen Bestehensentscheidung zu. | Die Aussage zur einmaligen Bewertung und die Angabe „genau 3 BE“ präzisieren. Ein fehlender ĝ_R betrifft zwei ausgewiesene Teilentscheidungen. 3 BE sind der Verlust bei sonst erreichbarer Ergebnis- und Übereinstimmungspunktzahl. Bereits verlorene oder gedeckelte Punkte können kein zweites Mal entfallen. Die beleggebundene Quellenregel beibehalten. | Die Gewichtung der Gesetzespunkte oder die ausgewiesene Zielaussage so fassen, dass klar ist, wann mindestens ein Gesetz mit angegebenen und geprüften Anfangsbedingungen belegt ist. Bei unveränderter Gewichtung muss das Kriterienprofil diesen Teil des direkten Lernziels bestätigen. Die Toleranz für einen einzelnen ausgelassenen Wiederholungsschritt und für örtliche Formfehler soll erhalten bleiben. | Die Gleichheitskonvention als Bewertungskonvention kennzeichnen und mit der Zulassung sinnvoller Rundungen abstimmen. Beispielsweise kann der Koeffizient zu 9,73 m/s² von 4,865 auf 4,9 m/s² gerundet werden. Die veröffentlichte Regel prüft nach dem Verdoppeln 9,8 gegen 9,73 und verwirft diese Darstellung. Ein ausdrücklich übertragener oder gerundeter Koeffizient und ein Koeffizient unbekannter Herkunft brauchen eine nachvollziehbare Behandlung. | Im englischen Lernendentext die Absperrung ausdrücklich nennen und in beiden Lernendentexten die bekannte Kalibrierlänge der Skala eindeutig bezeichnen. So stehen die bewerteten Aufbauanforderungen bereits in der Aufgabe.",
+    "b: not practice assessment",
+    "b: omission capacity"
+  ],
+  "disagreements": [],
+  "releaseDecision": {
+    "assessmentStatus": "previous released rubric retained",
+    "nativeVerdicts": [
+      "revise",
+      "revise"
+    ],
+    "passingDecisionsAgreed": 14,
+    "criterionAwardsAgreed": 112,
+    "criterionAwardsCompared": 112,
+    "numericalSourcesInferred": false,
+    "acceptedMinimaVerified": {
+      "fourIsolatedSlips": 22,
+      "oneLawMismatch": 21.5,
+      "twoLawMismatches": 19,
+      "missingInvestigationA": 11,
+      "missingInvestigationB": 12
+    },
+    "openQuestion": "Do passing points have to guarantee stated initial conditions and a checked release for at least one investigation? The existing 1.5 points per investigation allow 21/24 even if both pieces of evidence are absent. Both reviewers require a defensible answer before release.",
+    "recommendation": "Clarify the minimum certified by passing before authoring a successor. If both the match to an own estimate and the explicit check of the initial conditions must be protected independently by weight, each needs more than 2 points in each investigation. With half-point steps and equal investigations this requires at least 5 law points per investigation. Reconsider the distribution across criteria before revising again.",
+    "auditInterpretation": "The numeric pass/fail outcomes agree for every script. Both native authors of the reviews request revision. The assessment label used by both reviewers and the 11-point maximum when A is completely absent are not the substantive reasons for parking. The second value satisfies the requested upper bound of 12."
+  },
+  "retainedGoalVerification": {
+    "comparedMainCommit": "ffab681560ffb22c4c3d6b2286790d95dc61a359",
+    "branchBaseCommit": "ae04d42ef9bf9642e61b83171f75f39e684c84f9",
+    "canonicalGoalFile": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "rawGoalArtifactSha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4",
+    "sameGoalAtBothCommits": true,
+    "passingPoints": 23,
+    "maxPoints": 24
+  }
+}

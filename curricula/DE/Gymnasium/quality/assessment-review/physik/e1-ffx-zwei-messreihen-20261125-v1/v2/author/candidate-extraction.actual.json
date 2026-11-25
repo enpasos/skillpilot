@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "candidateVersion": 2,
+  "provider": "Anthropic",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "sessionId": "c3e521a0-a685-483b-adaa-8ad2c74761d2",
+  "extractedAt": "2026-11-25T03:15:47.488900+00:00",
+  "reconstruction": "Deep copy of exact original canonical examData from a6117075c1 preserved in author-v1/input.json; replaced only the native-authored two solution strings and eight descriptions, plus passingPoints 20 and maxima 3/3/4/2 per investigation expressly authorized by 25 November 2026 04:03 CET decision. No authored string was manually edited.",
+  "baselineArtifact": {
+    "path": "/tmp/e1-ffx-20261125/author-v1/input.json",
+    "sha256": "26843b955a5463f1cde2ab8d27d4a13d3a4267cbd4e8b35e943dce615bcb8bfc",
+    "bytes": 27999
+  },
+  "bindingDecision": {
+    "path": "/tmp/e1-ffx-20261125/author-v2/binding-decision-0403.md",
+    "sha256": "83147e2cb85d97c1a8c07554d38bffdf4826b3f9604fe763b25643f55ae990f9",
+    "bytes": 2284
+  },
+  "baselineEquivalence": {
+    "path": "/tmp/e1-ffx-20261125/author-v2/baseline-equivalence.actual.json",
+    "sha256": "5df8395d8cfb055b40b2712c54aef851995617de7a8a9b233accd2703866755d",
+    "bytes": 686
+  },
+  "readOnlyAuthStatus": {
+    "path": "/tmp/e1-ffx-20261125/author-v2/auth-status.actual.json",
+    "sha256": "3fa2dd7b3241efe1dbf32b0c8d781a25d77d3e22acc134c25b97ae7b29614d56",
+    "bytes": 513
+  },
+  "authorizedPoints": [
+    3,
+    3,
+    4,
+    2,
+    3,
+    3,
+    4,
+    2
+  ],
+  "changedExamDataFields": [
+    "/solutionContent",
+    "/solutionContentEn",
+    "/scoring/passingPoints",
+    "/scoring/steps/0/description",
+    "/scoring/steps/1/description",
+    "/scoring/steps/2/points",
+    "/scoring/steps/2/description",
+    "/scoring/steps/3/points",
+    "/scoring/steps/3/description",
+    "/scoring/steps/4/description",
+    "/scoring/steps/5/description",
+    "/scoring/steps/6/points",
+    "/scoring/steps/6/description",
+    "/scoring/steps/7/points",
+    "/scoring/steps/7/description"
+  ],
+  "utf16StepLengths": {
+    "a-actual-data": 1600,
+    "a-graph-g": 1512,
+    "a-initial-law": 1603,
+    "a-boundaries": 1304,
+    "b-actual-data": 1799,
+    "b-graph-g": 1521,
+    "b-initial-law": 1582,
+    "b-boundaries-comparison": 1482
+  },
+  "targetUtf16Units": 1450,
+  "targetExceeded": [
+    "a-actual-data",
+    "a-graph-g",
+    "a-initial-law",
+    "b-actual-data",
+    "b-graph-g",
+    "b-initial-law",
+    "b-boundaries-comparison"
+  ],
+  "structuralStatus": "pass",
+  "structuralChecks": "pass",
+  "structuralIssues": [],
+  "allOtherStructuralChecks": "pass",
+  "semanticReviewStatus": "pending independent blind marking; structural pass does not establish semantic acceptance",
+  "parseOnlyTransformations": [],
+  "artifacts": [
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/provider-response.json",
+      "sha256": "1ab96ab49052e6c3303ee0ca49ed9221fa0081707dd5747612a72dbe9ef4bdbe",
+      "bytes": 53539
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v2/authored-response.parsed.json",
+      "sha256": "514e8128e479b13e68b3fa80ba72f6ceb195e66d1f4c4fe8e2dcae31f31663cf",
+      "bytes": 51350
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/candidate-v2.json",
+      "sha256": "c6c6b0381885ffee358df4ba2588184e2802bcc3f162c9e862f846275bfc00c0",
+      "bytes": 58303
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-notes-v2.md",
+      "sha256": "08ad22f30e521b84ed87d6c5d718586b85696bd35d71a4f56df01bfbbf2817e1",
+      "bytes": 4096
+    }
+  ]
+}

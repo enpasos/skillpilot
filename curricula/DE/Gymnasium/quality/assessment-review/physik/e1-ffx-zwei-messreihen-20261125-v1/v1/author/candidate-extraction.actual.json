@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "candidateVersion": 1,
+  "provider": "Anthropic",
+  "actualModels": [
+    "claude-opus-5-5"
+  ],
+  "sessionId": "03d64816-fcff-4e95-9d10-d94609184a2a",
+  "extractedAt": "2026-11-25T02:44:05.900683+00:00",
+  "changedExamDataFields": [
+    "/solutionContent",
+    "/solutionContentEn",
+    "/scoring/passingPoints",
+    "/scoring/steps/0/description",
+    "/scoring/steps/1/description",
+    "/scoring/steps/2/description",
+    "/scoring/steps/3/description",
+    "/scoring/steps/4/description",
+    "/scoring/steps/5/description",
+    "/scoring/steps/6/description",
+    "/scoring/steps/7/description"
+  ],
+  "utf16StepLengths": {
+    "a-actual-data": 1956,
+    "a-graph-g": 1741,
+    "a-initial-law": 1947,
+    "a-boundaries": 1481,
+    "b-actual-data": 2090,
+    "b-graph-g": 1805,
+    "b-initial-law": 2007,
+    "b-boundaries-comparison": 2145
+  },
+  "structuralStatus": "rejected for activation",
+  "structuralChecks": "fail: UTF-16 description length",
+  "structuralIssues": [
+    {
+      "stepId": "b-actual-data",
+      "utf16Units": 2090,
+      "maximum": 2000
+    },
+    {
+      "stepId": "b-initial-law",
+      "utf16Units": 2007,
+      "maximum": 2000
+    },
+    {
+      "stepId": "b-boundaries-comparison",
+      "utf16Units": 2145,
+      "maximum": 2000
+    }
+  ],
+  "allOtherStructuralChecks": "pass",
+  "semanticReviewStatus": "pending independent blind marking of unmodified authored v1; no activation permitted",
+  "artifacts": [
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v1/provider-response.json",
+      "sha256": "df4e4032f07bd59cfb20155c47ff51ee3a25723152a39e5e83954a3960c293ee",
+      "bytes": 57984
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v1/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-v1/authored-response.parsed.json",
+      "sha256": "f28d98ccdae21034a2b02b308817e421d9285a20dd1c30fcc8123314df9b477b",
+      "bytes": 56285
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/candidate-v1.json",
+      "sha256": "27eceec2c3d990d245bd045ff948a23c48b07ac91446c3f666fcf813d9a17434",
+      "bytes": 50215
+    },
+    {
+      "path": "/tmp/e1-ffx-20261125/author-notes-v1.md",
+      "sha256": "fc62ad20c918313076820fa591156764508db1feddb6d6ee941bc9a62bc5223b",
+      "bytes": 5835
+    }
+  ]
+}

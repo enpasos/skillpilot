@@ -1,0 +1,753 @@
+{
+  "schemaVersion": 1,
+  "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+  "version": 1,
+  "accepted": false,
+  "eligibleForActivation": false,
+  "original": {
+    "path": "original.goal.json",
+    "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4"
+  },
+  "candidate": {
+    "path": "candidate.goal.json",
+    "sha256": "3250cc2b02def04ca055dcd0d1e59cd89cc2e0410f8149a56ad31180889e066c"
+  },
+  "author": {
+    "provider": "Anthropic",
+    "modelId": "claude-opus-5-5",
+    "sessionId": "03d64816-fcff-4e95-9d10-d94609184a2a",
+    "response": {
+      "path": "author/provider-response.json",
+      "sha256": "df4e4032f07bd59cfb20155c47ff51ee3a25723152a39e5e83954a3960c293ee"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "author/author-notes.md",
+      "sha256": "fc62ad20c918313076820fa591156764508db1feddb6d6ee941bc9a62bc5223b"
+    },
+    {
+      "path": "author/author.actual.json",
+      "sha256": "e1b142e0ad73368eaeb327f2dc89bc7f55bb3cea9f1689df05433dec49a8f1a8"
+    },
+    {
+      "path": "author/authored-response.parsed.json",
+      "sha256": "f28d98ccdae21034a2b02b308817e421d9285a20dd1c30fcc8123314df9b477b"
+    },
+    {
+      "path": "author/candidate-extraction.actual.json",
+      "sha256": "4760de139215b9657996d6754a4a4439c7025a58a49d42a147dccce48b210174"
+    },
+    {
+      "path": "author/examData.json",
+      "sha256": "27eceec2c3d990d245bd045ff948a23c48b07ac91446c3f666fcf813d9a17434"
+    },
+    {
+      "path": "author/input.json",
+      "sha256": "26843b955a5463f1cde2ab8d27d4a13d3a4267cbd4e8b35e943dce615bcb8bfc"
+    },
+    {
+      "path": "author/instructions.txt",
+      "sha256": "e686d39010d7f5aeae8e3aae068078c3c246d0951bae4c472f077e14a3c5e15a"
+    },
+    {
+      "path": "author/invocation.json",
+      "sha256": "54c911b291715b1d866f966891e97225051178611f5572479c6234ea48e68424"
+    },
+    {
+      "path": "author/prompt.txt",
+      "sha256": "f009f9892dd0a7fdb95679a48d1161cc4c78da02cfa0d773ec2e396d9c30db7a"
+    },
+    {
+      "path": "author/provider-response.json",
+      "sha256": "df4e4032f07bd59cfb20155c47ff51ee3a25723152a39e5e83954a3960c293ee"
+    },
+    {
+      "path": "author/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "author/system.txt",
+      "sha256": "6391d53788b894d624be745c67048aa01ccd53a2a0b09e850e34461ac6fb0b9d"
+    },
+    {
+      "path": "author/transport-attempt-1/aborted.actual.json",
+      "sha256": "e387bfb3483beb45bea74f4df3c52b781c3c69d8698c846445a8e67172eb74a9"
+    },
+    {
+      "path": "author/transport-attempt-1/invocation.json",
+      "sha256": "54c911b291715b1d866f966891e97225051178611f5572479c6234ea48e68424"
+    },
+    {
+      "path": "author/transport-attempt-1/provider-response.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "author/transport-attempt-1/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate.goal.json",
+      "sha256": "3250cc2b02def04ca055dcd0d1e59cd89cc2e0410f8149a56ad31180889e066c"
+    },
+    {
+      "path": "graphs/appendix-p6.png",
+      "sha256": "9ccde0147743e3d3709c3b9f54db189c794831d9508f84318c6cdee4eb8c870a"
+    },
+    {
+      "path": "graphs/appendix-r8.png",
+      "sha256": "8ea9f29a16498dc6546f03ddbaac566fbb3e8c49593770aef5472c2a92243648"
+    },
+    {
+      "path": "graphs/appendix-t3.png",
+      "sha256": "86e3e2d9fb46f59e53cc495720577e2674fabfc4d83ff8f9ffd233efc02f67f5"
+    },
+    {
+      "path": "native-description-lengths.actual.json",
+      "sha256": "8b0ac35e738877046842f32277f4d2821ee879b12f4c15f3c7ef88027a110d87"
+    },
+    {
+      "path": "original.goal.json",
+      "sha256": "c7e5d36026233cd6d79d6226c4b8e2101e96774e8e1201b6123f2f79c05100e4"
+    },
+    {
+      "path": "performances.json",
+      "sha256": "0d84b302214287d984c1cd01ccb8e2fa466f8cd8bf005a065176630ac88d31e4"
+    },
+    {
+      "path": "round-a/canonical-input.json",
+      "sha256": "2da0d542c1bd26d3d6d43aef6641c545604df1dcd47a7da61596a27ad1ae62d1"
+    },
+    {
+      "path": "round-a/events.jsonl",
+      "sha256": "71e965c86a60733175364e11a9cf680c3a4360d8cc460acc0dcd46906a86ca34"
+    },
+    {
+      "path": "round-a/output.schema.json",
+      "sha256": "4569c0c9277afe914670fc40cf4c9b016a31254f57a0ba27e2bb499e7318aa88"
+    },
+    {
+      "path": "round-a/prompt.txt",
+      "sha256": "8577ac25bdff6a57f4923ddf040d51217ae3675596afa34f84d1e44a81dcb335"
+    },
+    {
+      "path": "round-a/response.json",
+      "sha256": "ad8f15740203853b6e206a50e5fac20fe2dfb705487afe972f8f2413e8600c8b"
+    },
+    {
+      "path": "round-a/run.actual.json",
+      "sha256": "525f93b47c57010148b813ccd16b19b43e431778bbc0f1e9c81ba0ae6d9df243"
+    },
+    {
+      "path": "round-a/stderr.txt",
+      "sha256": "4bd2c2b6b3c691116477872cfd50ec8e27f77c0c9dd80223f6d9970264784a95"
+    },
+    {
+      "path": "round-b/canonical-input.json",
+      "sha256": "551f0aacf2838c9ffd5633f7dfe9875e8def7e4693c935ac63db9ba885890e5b"
+    },
+    {
+      "path": "round-b/events.jsonl",
+      "sha256": "425dbd6d0a6a75609c4f3bf55f84cccd215a3ee6ed0698d92687b4a87acf9ff4"
+    },
+    {
+      "path": "round-b/output.schema.json",
+      "sha256": "4569c0c9277afe914670fc40cf4c9b016a31254f57a0ba27e2bb499e7318aa88"
+    },
+    {
+      "path": "round-b/prompt.txt",
+      "sha256": "96c0c2f9eb8f05dc95bfacb7f136fb5e7f2cf70d557dc964a4da0f30b556e909"
+    },
+    {
+      "path": "round-b/response.json",
+      "sha256": "583cc4fed6e9a3ff356fff2c787afc9b2e3b5b7567c38686c4da92415286579b"
+    },
+    {
+      "path": "round-b/run.actual.json",
+      "sha256": "99479841648e2ef4866a5fa9985ba4b190b132897d8f038a2ef8361991557db2"
+    },
+    {
+      "path": "round-b/stderr.txt",
+      "sha256": "22835da0cc7e91ba93bcb5cadc5e3ba9cf99015a039cb5efcd32645717c65c64"
+    },
+    {
+      "path": "round-keys.actual.json",
+      "sha256": "a3c79e25cc7d62d0cc69d51736f59324a6bc5235046cf9d5afbed218feb47901"
+    },
+    {
+      "path": "script-intent.json",
+      "sha256": "4cb48861d75cfe9e6aaa98e056050cc122db1d4119ec71fea0a147d049b8a4f8"
+    },
+    {
+      "path": "scripts.json",
+      "sha256": "a5584e01882187e59f0d0920e65ea91382cd01cd7e3a88b5ff259ef7146ce6d3"
+    }
+  ],
+  "rounds": [
+    {
+      "round": "a",
+      "run": {
+        "path": "round-a/run.actual.json",
+        "sha256": "525f93b47c57010148b813ccd16b19b43e431778bbc0f1e9c81ba0ae6d9df243"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "ad8f15740203853b6e206a50e5fac20fe2dfb705487afe972f8f2413e8600c8b"
+      }
+    },
+    {
+      "round": "b",
+      "run": {
+        "path": "round-b/run.actual.json",
+        "sha256": "99479841648e2ef4866a5fa9985ba4b190b132897d8f038a2ef8361991557db2"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "583cc4fed6e9a3ff356fff2c787afc9b2e3b5b7567c38686c4da92415286579b"
+      }
+    }
+  ],
+  "judgments": [
+    {
+      "round": "a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a21096-c96e-7b52-8a55-894e50e6b167",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "b-actual-data: 2090 UTF-16 code units exceeds coach limit 2000",
+        "b-initial-law: 2007 UTF-16 code units exceeds coach limit 2000",
+        "b-boundaries-comparison: 2145 UTF-16 code units exceeds coach limit 2000",
+        "a: reviewer decision revise",
+        "a: Den Bestehensnachweis für die unmittelbaren Zielbestandteile absichern: Gegenwärtig können beide Gesetze oder sämtliche grafischen Bestimmungen fehlen und dennoch mindestens 20 BE entstehen. Eine nachvollziehbare experimentelle Kette muss verbindlich erhalten bleiben; ergänzende Facetten und kleine Versehen dürfen weiterhin offenbleiben. | Die mehrfachen Folgen eines fehlenden ausdrücklich bezeichneten Reihenschätzwerts überarbeiten. L06 verliert dafür insgesamt 3 BE, L12 für zwei solche Lücken 5.5 BE. Die Behauptung nahezu vollständiger Kriterienentkopplung muss entweder umgesetzt oder entsprechend eingeschränkt werden. | Die Umfangs-Facette eindeutig auf die Beteiligung gültiger Läufe am Reihenschätzwert beziehen, falls deren unbegründetes Weglassen abgewertet werden soll. L09 erfüllt gegenwärtig die wörtliche Einzelwertalternative vollständig. | Die pauschale Zweipunktewirkung einer Koeffizientenabweichung auf ihre Vereinbarkeit mit der Toleranz kleiner Versehen prüfen. Dabei unbekannte Herkunft weiterhin offenlassen; weder einen Abschreibfehler noch einen Literaturwert aus der Zahl erschließen. | Die verlangte Skalenteilung im Arbeitsauftrag ausdrücklich benennen oder die Bewertungsanforderung an die tatsächlich verlangte Skalendokumentation anpassen. Bei diesen Abgaben fehlt die Teilung; die Ablesegrenze darf nicht als Teilungsangabe ergänzt werden. | Rechenzwischenwerte und behauptete Messpräzision ausdrücklich unterscheiden und die Präzisionsregel operationalisieren. DE „Stellenzahl“ und EN „decimal places“ einschließlich der Halbierung und Rundung eindeutig angleichen. | Den gemischten Fall eines zugleich als Buchwert und eigenes Ergebnis bezeichneten Werts konsistent definieren, insbesondere für den B-Vergleich nach der A-Sanktion in L07. Die globale Sanktion transparent von der Anerkennung tatsächlich gezeigter Einzelleistungen unterscheiden. | Beim A/B-Vergleich ausdrücklich auch eine fachlich begründete Unvereinbarkeit innerhalb der gewählten Unsicherheiten als möglichen richtigen Schluss zulassen.",
+        "a: not practice assessment",
+        "a: omission capacity",
+        "a L7Q4 control: fully achieved estimate 9.81 accepted",
+        "a C2V9 four_slips: 4 slips charged once",
+        "a K4P8 A_weak_estimate_B_law_mismatch: weak derivation isolated; mismatched coefficient gets 1/3",
+        "H6T9: pass/fail disagreement"
+      ],
+      "receipt": {
+        "path": "round-a/run.actual.json",
+        "sha256": "525f93b47c57010148b813ccd16b19b43e431778bbc0f1e9c81ba0ae6d9df243"
+      },
+      "response": {
+        "path": "round-a/response.json",
+        "sha256": "ad8f15740203853b6e206a50e5fac20fe2dfb705487afe972f8f2413e8600c8b"
+      }
+    },
+    {
+      "round": "b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a21096-c96d-7da0-a11b-dfb5edd7ad2b",
+      "decision": "revise",
+      "eligibleForActivation": false,
+      "validationFindings": [
+        "b-actual-data: 2090 UTF-16 code units exceeds coach limit 2000",
+        "b-initial-law: 2007 UTF-16 code units exceeds coach limit 2000",
+        "b-boundaries-comparison: 2145 UTF-16 code units exceeds coach limit 2000",
+        "b: reviewer decision revise",
+        "b: Die Bestehensregel muss den Nachweis des gesamten beanspruchten Lernziels sichern. Mindestens ein aus eigenen grafisch ausgewerteten Daten gewonnenes g muss in einem tatsächlich formulierten Gesetz mit passenden Anfangsbedingungen verwendet werden. Die Toleranz für eine einzelne offene Facette in der anderen Reihe kann dabei erhalten bleiben. | Die Mehrfachwirkung eines fehlenden Reihenschätzwerts ausdrücklich regeln. Bei L06 betrifft sie g-Bestimmung, Gesetz und Abschlussvergleich. Die Aussage über die einzige Verbindung zwischen Kriterien ist zu korrigieren. Die Kappung auf 1 BE sollte so überarbeitet werden, dass erbrachte Loslassprüfung und Gesetzeselemente einzeln erkennbar gewertet werden. | Für den Umfang der g-Bestimmung festlegen, ob die Zahl der grafisch ausgewerteten Läufe oder die Zahl der in den abschließenden Schätzwert eingehenden Läufe zählt. L12 erfüllt die erste Bedingung für alle drei Läufe und die zweite nur für A1. Die Regel sollte zugleich festlegen, auf welchen Schätzer sich die Grenzvariation beziehen soll. | Für den B-Vergleich nach einer A-Sonderwertung festlegen, ob eine zugleich als Buchwert und eigenes Ergebnis bezeichnete Zahl als Vergleichszahl zählt. Die Formulierungen »nur als Literaturwert« und »als Literaturwert« führen bei L05 zu unterschiedlichen B-Punkten. Das Verbot, eine unbekannte Herkunft zu erschließen, sollte bestehen bleiben. | In beiden Sprachen die geforderte Skalenangabe, die Sicherung des Fallbereichs und die Zahl der Nachkommastellen gleich präzise formulieren. Beim Zeitnullpunkt zwischen erstem freien Bild und Mitte des Freigabeintervalls unterscheiden. Für den Höhenvergleich sollte auch ein anhand beider Unsicherheiten begründeter Befund klar unvereinbarer Schätzwerte ausdrücklich volle Vergleichspunkte erhalten können.",
+        "b: not practice assessment",
+        "b: omission capacity",
+        "H6T9: pass/fail disagreement"
+      ],
+      "receipt": {
+        "path": "round-b/run.actual.json",
+        "sha256": "99479841648e2ef4866a5fa9985ba4b190b132897d8f038a2ef8361991557db2"
+      },
+      "response": {
+        "path": "round-b/response.json",
+        "sha256": "583cc4fed6e9a3ff356fff2c787afc9b2e3b5b7567c38686c4da92415286579b"
+      }
+    }
+  ],
+  "adjudicatedSubmissions": [
+    {
+      "auditId": "L7Q4",
+      "kind": "control",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L01",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 3,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 2.5,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L02",
+          "total": 24,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "C2V9",
+      "kind": "four_slips",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L08",
+          "total": 21,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2,
+            "a-graph-g": 2.5,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 2,
+            "b-graph-g": 2.5,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L10",
+          "total": 22,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "N8D3",
+      "kind": "one_missing_facet",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L10",
+          "total": 22,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 3,
+            "a-initial-law": 3,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L07",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-initial-law": 3,
+            "a-boundaries": 2,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "F5W1",
+      "kind": "B_absent",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L11",
+          "total": 11.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 3,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 0,
+            "b-graph-g": 0,
+            "b-initial-law": 0,
+            "b-boundaries-comparison": 0
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L03",
+          "total": 12,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 0,
+            "b-graph-g": 0,
+            "b-initial-law": 0,
+            "b-boundaries-comparison": 0
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "R3J6",
+      "kind": "A_absent",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L05",
+          "total": 11,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 0,
+            "a-graph-g": 0,
+            "a-initial-law": 0,
+            "a-boundaries": 0,
+            "b-actual-data": 2.5,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 2.5
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L08",
+          "total": 11.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 0,
+            "a-graph-g": 0,
+            "a-initial-law": 0,
+            "a-boundaries": 0,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "U9H2",
+      "kind": "maintained_misconception",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L07",
+          "total": 11,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 0,
+            "a-graph-g": 0,
+            "a-initial-law": 0,
+            "a-boundaries": 0,
+            "b-actual-data": 2.5,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 2.5
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L05",
+          "total": 12,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 0,
+            "a-graph-g": 0,
+            "a-initial-law": 0,
+            "a-boundaries": 0,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "K4P8",
+      "kind": "A_weak_estimate_B_law_mismatch",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L09",
+          "total": 21,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 3,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 2.5,
+            "b-graph-g": 3,
+            "b-initial-law": 1,
+            "b-boundaries-comparison": 3
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L12",
+          "total": 21,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-initial-law": 1,
+            "b-boundaries-comparison": 3
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "E6S5",
+      "kind": "A_no_series_estimate",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L06",
+          "total": 20,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-initial-law": 1,
+            "a-boundaries": 3,
+            "b-actual-data": 2.5,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 2.5
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L06",
+          "total": 21,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-initial-law": 1,
+            "a-boundaries": 3,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "V1M7",
+      "kind": "pooled_comparison",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L03",
+          "total": 23,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 3,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 2.5,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L04",
+          "total": 24,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 3,
+            "a-initial-law": 3,
+            "a-boundaries": 3,
+            "b-actual-data": 3,
+            "b-graph-g": 3,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "J8B4",
+      "kind": "pooled_substitution",
+      "consensusPass": false,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L12",
+          "total": 17.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-initial-law": 1,
+            "a-boundaries": 3,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-initial-law": 1,
+            "b-boundaries-comparison": 2.5
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L09",
+          "total": 18.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 3,
+            "a-graph-g": 2.5,
+            "a-initial-law": 1,
+            "a-boundaries": 3,
+            "b-actual-data": 3,
+            "b-graph-g": 2.5,
+            "b-initial-law": 1,
+            "b-boundaries-comparison": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "Q2X6",
+      "kind": "boundary_minus_four_slips",
+      "consensusPass": true,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L02",
+          "total": 20,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2,
+            "a-graph-g": 2.5,
+            "a-initial-law": 3,
+            "a-boundaries": 2,
+            "b-actual-data": 2,
+            "b-graph-g": 2.5,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L11",
+          "total": 21,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-initial-law": 3,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 3
+          }
+        }
+      ]
+    },
+    {
+      "auditId": "H6T9",
+      "kind": "boundary_minus_five_slips",
+      "consensusPass": null,
+      "grades": [
+        {
+          "round": "a",
+          "submissionId": "L04",
+          "total": 19.5,
+          "passes": false,
+          "scores": {
+            "a-actual-data": 2,
+            "a-graph-g": 2.5,
+            "a-initial-law": 3,
+            "a-boundaries": 2,
+            "b-actual-data": 2,
+            "b-graph-g": 2.5,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 2.5
+          }
+        },
+        {
+          "round": "b",
+          "submissionId": "L01",
+          "total": 20.5,
+          "passes": true,
+          "scores": {
+            "a-actual-data": 2.5,
+            "a-graph-g": 2.5,
+            "a-initial-law": 3,
+            "a-boundaries": 2,
+            "b-actual-data": 2.5,
+            "b-graph-g": 2.5,
+            "b-initial-law": 3,
+            "b-boundaries-comparison": 2.5
+          }
+        }
+      ]
+    }
+  ],
+  "validationFindings": [
+    "b-actual-data: 2090 UTF-16 code units exceeds coach limit 2000",
+    "b-initial-law: 2007 UTF-16 code units exceeds coach limit 2000",
+    "b-boundaries-comparison: 2145 UTF-16 code units exceeds coach limit 2000",
+    "a: reviewer decision revise",
+    "a: Den Bestehensnachweis für die unmittelbaren Zielbestandteile absichern: Gegenwärtig können beide Gesetze oder sämtliche grafischen Bestimmungen fehlen und dennoch mindestens 20 BE entstehen. Eine nachvollziehbare experimentelle Kette muss verbindlich erhalten bleiben; ergänzende Facetten und kleine Versehen dürfen weiterhin offenbleiben. | Die mehrfachen Folgen eines fehlenden ausdrücklich bezeichneten Reihenschätzwerts überarbeiten. L06 verliert dafür insgesamt 3 BE, L12 für zwei solche Lücken 5.5 BE. Die Behauptung nahezu vollständiger Kriterienentkopplung muss entweder umgesetzt oder entsprechend eingeschränkt werden. | Die Umfangs-Facette eindeutig auf die Beteiligung gültiger Läufe am Reihenschätzwert beziehen, falls deren unbegründetes Weglassen abgewertet werden soll. L09 erfüllt gegenwärtig die wörtliche Einzelwertalternative vollständig. | Die pauschale Zweipunktewirkung einer Koeffizientenabweichung auf ihre Vereinbarkeit mit der Toleranz kleiner Versehen prüfen. Dabei unbekannte Herkunft weiterhin offenlassen; weder einen Abschreibfehler noch einen Literaturwert aus der Zahl erschließen. | Die verlangte Skalenteilung im Arbeitsauftrag ausdrücklich benennen oder die Bewertungsanforderung an die tatsächlich verlangte Skalendokumentation anpassen. Bei diesen Abgaben fehlt die Teilung; die Ablesegrenze darf nicht als Teilungsangabe ergänzt werden. | Rechenzwischenwerte und behauptete Messpräzision ausdrücklich unterscheiden und die Präzisionsregel operationalisieren. DE „Stellenzahl“ und EN „decimal places“ einschließlich der Halbierung und Rundung eindeutig angleichen. | Den gemischten Fall eines zugleich als Buchwert und eigenes Ergebnis bezeichneten Werts konsistent definieren, insbesondere für den B-Vergleich nach der A-Sanktion in L07. Die globale Sanktion transparent von der Anerkennung tatsächlich gezeigter Einzelleistungen unterscheiden. | Beim A/B-Vergleich ausdrücklich auch eine fachlich begründete Unvereinbarkeit innerhalb der gewählten Unsicherheiten als möglichen richtigen Schluss zulassen.",
+    "a: not practice assessment",
+    "a: omission capacity",
+    "a L7Q4 control: fully achieved estimate 9.81 accepted",
+    "a C2V9 four_slips: 4 slips charged once",
+    "a K4P8 A_weak_estimate_B_law_mismatch: weak derivation isolated; mismatched coefficient gets 1/3",
+    "b: reviewer decision revise",
+    "b: Die Bestehensregel muss den Nachweis des gesamten beanspruchten Lernziels sichern. Mindestens ein aus eigenen grafisch ausgewerteten Daten gewonnenes g muss in einem tatsächlich formulierten Gesetz mit passenden Anfangsbedingungen verwendet werden. Die Toleranz für eine einzelne offene Facette in der anderen Reihe kann dabei erhalten bleiben. | Die Mehrfachwirkung eines fehlenden Reihenschätzwerts ausdrücklich regeln. Bei L06 betrifft sie g-Bestimmung, Gesetz und Abschlussvergleich. Die Aussage über die einzige Verbindung zwischen Kriterien ist zu korrigieren. Die Kappung auf 1 BE sollte so überarbeitet werden, dass erbrachte Loslassprüfung und Gesetzeselemente einzeln erkennbar gewertet werden. | Für den Umfang der g-Bestimmung festlegen, ob die Zahl der grafisch ausgewerteten Läufe oder die Zahl der in den abschließenden Schätzwert eingehenden Läufe zählt. L12 erfüllt die erste Bedingung für alle drei Läufe und die zweite nur für A1. Die Regel sollte zugleich festlegen, auf welchen Schätzer sich die Grenzvariation beziehen soll. | Für den B-Vergleich nach einer A-Sonderwertung festlegen, ob eine zugleich als Buchwert und eigenes Ergebnis bezeichnete Zahl als Vergleichszahl zählt. Die Formulierungen »nur als Literaturwert« und »als Literaturwert« führen bei L05 zu unterschiedlichen B-Punkten. Das Verbot, eine unbekannte Herkunft zu erschließen, sollte bestehen bleiben. | In beiden Sprachen die geforderte Skalenangabe, die Sicherung des Fallbereichs und die Zahl der Nachkommastellen gleich präzise formulieren. Beim Zeitnullpunkt zwischen erstem freien Bild und Mitte des Freigabeintervalls unterscheiden. Für den Höhenvergleich sollte auch ein anhand beider Unsicherheiten begründeter Befund klar unvereinbarer Schätzwerte ausdrücklich volle Vergleichspunkte erhalten können.",
+    "b: not practice assessment",
+    "b: omission capacity",
+    "H6T9: pass/fail disagreement"
+  ],
+  "currentGoalSha256": "970f85c5b0e1f4c297bce63cb715389082be4e73b3be15143b4f014f94a31484"
+}

@@ -21,6 +21,14 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 25. November 2026, 04:54 MEZ – Eigene Fallmessreihen in Physik E.1
+
+Für Lernende gelten weiterhin 23 von 24 Punkten. Beide Einzelurteile zur dritten und letzten Fassung sind dokumentiert. Die vorgeschlagenen 20 Punkte sind nicht freigegeben. Pro Untersuchung sind die eigenen Daten und die Bestimmung von g mit je drei Punkten vorgesehen, das Gesetz mit vier und die Aussagegrenzen mit zwei Punkten. Beide Prüfer benoteten zwölf Abgaben in der ersten sowie je vierzehn in den beiden folgenden Runden. Die unabhängig nachgerechneten Zeitgrenzen des ersten freien Bildes liegen der letzten Runde zugrunde. [Fassungen und Einzelbewertungen](https://github.com/enpasos/skillpilot/blob/feat/e1-ffx-zwei-messreihen/curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v1/README.md)
+
+Zur Kontrolle eignen sich die beiden abweichenden Gesetzeskoeffizienten (19 und 19 Punkte), ein abweichender Koeffizient (21,5 und 21,5) und vier kleine Formfehler (22 und 22). Der freiwillige Versuch in Hessen E und Sachsen J9 erhält keine E.1-Plananrechnung. Zusätzlich abgeschlossen sind 0 von 13 K- und 0 von 7 F-Zielen. Es ist kein weiterer Stufenplan aktiviert. [Entscheidungsnachweis](https://github.com/enpasos/skillpilot/blob/feat/e1-ffx-zwei-messreihen/curricula/DE/Gymnasium/quality/assessment-review/physik/e1-ffx-zwei-messreihen-20261125-v1/parked.actual.json)
+
+**Integration offen.** Der eigene Arbeitszweig baut auf dem geprüften Stand von PR #194 auf und wird Claude zur Integration übergeben. [Ausgangsstand von PR #194](https://github.com/enpasos/skillpilot/pull/194)
+
 ## 25. November 2026, 03:25 MEZ – Gemischte E.1-Prüfung „Bewegungsanalyse und freier Fall“ herausgenommen
 
 Die Prüfung, die auf der Lernkarte von E.1 als einzelne Prüfung erschien, ist in allen Ländern herausgenommen. Der Product Owner hatte am 24. November gefragt, ob sie gebraucht wird und in ihren Kontext passt. Sie gab den Fallversuch, den Straßenverkehr und die Tabellenkalkulation als geprüft an, verlangte aber weder einen Versuch noch eine Tabellenkalkulation, und jede ihrer vier Teilaufgaben ließ sich bei 15 von 25 Punkten ganz auslassen. Aufgabe, Lösung und Raster bleiben als Historie im Katalog. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.
