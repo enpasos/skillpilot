@@ -8,7 +8,7 @@
   "decidedBy": "Claude (coordinating agent) under the execution mandate of 15 Nov 2026, following the Product Owner's question of 24 Nov 2026 whether the exam is needed, where, and whether it fits its context.",
   "baseCommit": "3e6af47aec2f7f3046c316e8d4981858b943c4a6",
   "reason": {
-    "need": "No claimed goal loses a check that this exam really provided; the numbers are counted over all 90 Physics views. Spreadsheet modelling keeps its dedicated exam in each of the 68 views where it is a target. Road traffic keeps an exam that requires it in each of its 70 views: its dedicated exam in 12 of them and, in 64, the mixed exam 'Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen', which has the same build and stays until the E.2 review. The free-fall experiment has its dedicated exam in 13 of its 68 views (DE-HE 8, DE-SN 3, national 2). In 52 views the retired exam was the only exam that named the experiment as a prerequisite; it asked for no experiment, so those views had no real check of it before and have none now.",
+    "need": "No claimed goal loses a check that this exam really provided; the numbers are counted over all 90 Physics views. Spreadsheet modelling keeps its dedicated exam in each of the 68 views where it is a target. Road traffic keeps an exam that requires it in each of its 70 views: its dedicated exam in 12 of them and, in 64, the mixed exam 'Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen', which has the same build and stays until the E.2 review. The free-fall experiment has its dedicated exam in 13 of its 68 views (DE-HE 8, DE-SN 3, national 2); 55 views lack it, before and after. In 52 views the retired exam was the only exam that named the experiment as a prerequisite; it asked for no experiment, so no check of an own experiment is lost. No view newly loses its last exam that names one of the three goals; 3 views had none for the free-fall goal before and have none now. Related measuring work is assessed elsewhere: 'Videoanalyse: eigene Kalibrierung und unabhängiger Wurftransfer' (6345871e) asks for an own calibrated video with a measured vertical acceleration in all 64 affected views; it does not name the free-fall goal.",
     "fit": "25 points, pass mark 15, four steps of 6, 7, 6 and 6 points: any one step can be left out entirely. Steps 1 and 2 evaluate a given table for a uniformly accelerated motion; step 3 calculates a free fall from given values; step 4 calculates a stopping distance, which belongs to E.2 since the E.1 cut.",
     "claims": [
       {
@@ -35,7 +35,11 @@
           }
         ],
         "viewsWhereTheRetiredExamWasTheOnlyExamRequiringTheGoal": 52,
-        "viewsLeftWithoutAnyExamOfTheGoal": 0
+        "viewsNewlyWithoutAnyExamThatNamesTheGoal": 0,
+        "viewsWithoutAnyExamThatNamesTheGoal": {
+          "before": 3,
+          "after": 3
+        }
       },
       {
         "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
@@ -61,7 +65,11 @@
           }
         ],
         "viewsWhereTheRetiredExamWasTheOnlyExamRequiringTheGoal": 0,
-        "viewsLeftWithoutAnyExamOfTheGoal": 0
+        "viewsNewlyWithoutAnyExamThatNamesTheGoal": 0,
+        "viewsWithoutAnyExamThatNamesTheGoal": {
+          "before": 0,
+          "after": 0
+        }
       },
       {
         "goalId": "ac25ffe3-fd42-592d-a937-79cc13460313",
@@ -80,7 +88,11 @@
           }
         ],
         "viewsWhereTheRetiredExamWasTheOnlyExamRequiringTheGoal": 0,
-        "viewsLeftWithoutAnyExamOfTheGoal": 0
+        "viewsNewlyWithoutAnyExamThatNamesTheGoal": 0,
+        "viewsWithoutAnyExamThatNamesTheGoal": {
+          "before": 0,
+          "after": 0
+        }
       },
       {
         "goalId": "230345f3-c360-4963-b390-ab94e3e2c864",

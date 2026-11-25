@@ -17,15 +17,23 @@ its context. The answers, read from the catalog:
   is 15.
 - **It no longer fits E.1.** Since the E.1 cut of 23 November 2026 road traffic belongs to E.2 and
   spreadsheet modelling to E.4.
-- **No real check is lost.** Counted over all 90 Physics views: spreadsheet modelling keeps its
-  dedicated exam in each of the 68 views where it is a target. Road traffic keeps an exam that
-  requires it in each of its 70 views: its dedicated exam in 12 of them and, in 64, the mixed exam
-  "Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen", which has the same build and stays
-  until the E.2 review. The free-fall experiment has its dedicated exam in 13 of its 68 views
-  (Hesse 8, Saxony 3, the national cross-stage views 2). In 52 views the retired exam was the only exam that named the experiment as a
-  prerequisite; it asked for no experiment, so those views had no real check of it before and
-  have none now. The review of the free-fall routes in the follow-up package decides where a
-  dedicated exam is needed.
+- **No check that the exam really provided is lost.** Counted over all 90 Physics views:
+  - Spreadsheet modelling keeps its dedicated exam in each of the 68 views where it is a target.
+  - Road traffic keeps an exam that requires it in each of its 70 views: its dedicated exam in 12
+    of them and, in 64, the mixed exam "Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen",
+    which has the same build and stays until the E.2 review.
+  - The free-fall experiment has its dedicated exam in 13 of its 68 views (Hesse 8, Saxony 3, the
+    national cross-stage views 2); 55 views lack it, before and after. In 52 views the retired
+    exam was the only exam that named the experiment as a prerequisite. It asked for no
+    experiment, so no check of an own experiment is lost.
+  - No view newly loses its last exam that names one of the three goals. Three views had none
+    for the free-fall goal before and have none now.
+  - Related measuring work is assessed elsewhere: "Videoanalyse: eigene Kalibrierung und
+    unabhängiger Wurftransfer" asks for an own calibrated video with a measured vertical
+    acceleration in all 64 affected views. It does not name the free-fall goal.
+
+  The review of the free-fall routes in the follow-up package decides where a dedicated exam of
+  the experiment is needed.
 
 `retirement.actual.json` lists each claim with the active exams that remain, counted per view.
 
