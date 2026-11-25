@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "measuredAt": "2026-11-25T15:09:48.825Z",
+  "statusFile": "docs/qa-ci/status/curriculum-quality-status.json",
+  "statusFileSha256": "3493551f35aca9a3273b4f9f5dfbbde3dfb0b6a12e6d8289db9a3944fa8e219c",
+  "mainComparison": "1001aa2c7f",
+  "subjectsWithChangedMaturity": [
+    "Physik"
+  ],
+  "physics": {
+    "maturity": "M3",
+    "priorMaturity": "M7",
+    "failingCurriculumRules": [],
+    "scopes": [
+      {
+        "scopeId": "canonical-physics-sek1",
+        "label": "Sekundarstufe I",
+        "maturity": "M2",
+        "failingRules": [
+          {
+            "id": "CQR-104",
+            "details": [
+              "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-seki.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-seki.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-gk.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-lk.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-bw-seki.view.json [DE-BW]: ecbaa101-cb10-5da3-9368-ae40ff587d74",
+              "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-gk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-lk.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-hh-seki.view.json [DE-HH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-gk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-lk.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766",
+              "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/physik/de-th-seki.view.json [DE-TH]: 53afbda1-5776-502b-8867-471975d7b766"
+            ]
+          }
+        ]
+      },
+      {
+        "scopeId": "canonical-physics-sek2",
+        "label": "Sekundarstufe II",
+        "maturity": "M4",
+        "failingRules": []
+      }
+    ]
+  },
+  "deepQuality": {
+    "expectedGoals": 493,
+    "remaining": 1,
+    "strictComplete": 492,
+    "currentDescriptionResolutions": 492,
+    "currentPositiveEvidenceProfiles": 493,
+    "currentSemanticAtomicityDecisions": 493,
+    "currentMemoryReviewDecisions": 493,
+    "currentVisualizationQaRecords": 493,
+    "deferredVisualizations": 0,
+    "requiredChecksPassed": 6,
+    "requiredChecksTotal": 6,
+    "blockingIssues": 0
+  },
+  "soleUnresolvedDescription": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+  "prerequisiteReview": "One reviewer also questioned the inherited requirement to apply the fundamental equation of mechanics. No change to that edge.",
+  "floor": {
+    "id": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "expected": "M7",
+    "actual": "M3",
+    "nativeCheck": "check:curriculum-maturity-floors",
+    "outcome": "fail"
+  },
+  "independentSourceReview": "inventory/current-native-route-diagnostic.actual.json"
+}
