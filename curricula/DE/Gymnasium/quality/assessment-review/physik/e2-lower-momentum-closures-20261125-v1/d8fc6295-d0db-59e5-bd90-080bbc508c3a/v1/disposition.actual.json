@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "assessmentGoalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+  "version": 1,
+  "candidateSha256": "sha256:38aa3bd501afd89d8f9c02eab96ef7f878edeb6b7bef57368a73272f03cc3805",
+  "status": "rejected",
+  "eligibleForActivation": false,
+  "basis": "Both actual independent blind marker decisions, not a changed hidden pass rule. Bad point-allocation false passes remain reported as passes under the actual V1 rubric.",
+  "models": [
+    "gpt-6.1-sol",
+    "gpt-6.2-astra"
+  ],
+  "distinctBlindThreads": true,
+  "differentAnswerOrders": true,
+  "caseCount": 18,
+  "decisions": [
+    {
+      "round": "round-a",
+      "candidateDecision": "needs_change",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "needs_change",
+      "requiredCorrections": [
+        "Revise the published carrier weights so maintained magnitude-only momentum reasoning cannot pass. Currently Sd35e614654 loses only 1 point and passes at 9/10. Protect signed-momentum performance by more than the pass slack; preserve correct follow-through and do not add a veto.",
+        "Protect meaningful completion of the required snapshot totals, including the zero-total case, through published point allocation. S7cb2eea939 omits the second total and all units yet passes at 8/10. Update both languages consistently while retaining 8–12 total points, a threshold no higher than 85%, and room for one isolated 0.5-point slip."
+      ],
+      "authorComparisonDifferences": []
+    },
+    {
+      "round": "round-b",
+      "candidateDecision": "needs_change",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "needs_change",
+      "requiredCorrections": [
+        "Reweight M1 and M2 so that determining signed numerical momenta carries more than the two-point pass margin. For example, reserve 1.5 points in each snapshot for establishing both numerical magnitudes with their directions on the chosen axis. Use the remaining 1.5 for partial evidence of products, magnitudes and directions. A maintained speed-only method would then lose at least 3 points across the two snapshots, even with full credit for adding the learner’s own values.",
+        "Publish the revised allocation in both languages and align the shared marking notes with it. Preserve the once-only deduction of at most 0.5 for a demonstrably isolated slip, full credit for correct follow-through, and a pass decided solely by the point total. All grades below use the current allocation."
+      ],
+      "authorComparisonDifferences": []
+    }
+  ],
+  "humanApproval": false
+}

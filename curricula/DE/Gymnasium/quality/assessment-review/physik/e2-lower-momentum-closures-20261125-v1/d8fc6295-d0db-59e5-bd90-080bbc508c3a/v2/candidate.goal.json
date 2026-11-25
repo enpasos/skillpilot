@@ -1,0 +1,86 @@
+{
+  "id": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+  "shortKey": "seki_total_momentum_two_bodies_line",
+  "title": "Impulse zweier Wagen",
+  "titleEn": "Momentum of two carts",
+  "description": "Bestimme die Einzelimpulse und den Gesamtimpuls zweier Wagen für zwei Momentaufnahmen auf einer geraden Bahn.",
+  "descriptionEn": "Determine the individual momenta and total momentum of two carts in two snapshots on a straight track.",
+  "weight": 0.9,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical"
+  ],
+  "type": "atomic",
+  "contains": [],
+  "requires": [
+    "53afbda1-5776-502b-8867-471975d7b766"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "demandLevel": "AB1",
+    "processCompetencies": [],
+    "guidingIdeas": [],
+    "phase": "GLOBAL",
+    "area": "Mechanik",
+    "topicCode": "SEKI_TOTAL_MOMENTUM_TWO_BODIES_LINE"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-HH",
+      "DE-TH"
+    ]
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityOverrides": {
+      "jurisdiction": [
+        "DE-HH",
+        "DE-TH"
+      ]
+    }
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "53afbda1-5776-502b-8867-471975d7b766"
+    ],
+    "coveredStrands": [],
+    "demandLevels": [
+      "AB1"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v1/seki_total_momentum_two_bodies_line.md",
+    "taskContent": "Zwei Wagen A und B bewegen sich auf derselben geraden Bahn. Ihre Massen sind m_A = 0,50 kg und m_B = 1,00 kg. Alle Geschwindigkeiten einer Tabellenzeile gelten zum selben Zeitpunkt.\n\n| Momentaufnahme | Geschwindigkeit von A | Geschwindigkeit von B |\n|---|---:|---:|\n| I | +4,0 m/s | −1,0 m/s |\n| II | +2,0 m/s | −1,0 m/s |\n\nDie Vorzeichen der Tabelle beziehen sich auf rechts als positive Richtung. Du darfst für deine Rechnung rechts oder links als positive Richtung wählen. Nenne deine Wahl und berücksichtige sie bei den Vorzeichen.\n\nBestimme für jede Momentaufnahme die vorzeichenbehafteten Einzelimpulse von A und B sowie den Gesamtimpuls beider Wagen. Halte deinen Rechenweg kurz fest und gib die Einheiten an.",
+    "taskContentEn": "Two carts, A and B, move along the same straight track. Their masses are m_A = 0.50 kg and m_B = 1.00 kg. All velocities in one table row apply at the same instant.\n\n| Snapshot | Velocity of A | Velocity of B |\n|---|---:|---:|\n| I | +4.0 m/s | −1.0 m/s |\n| II | +2.0 m/s | −1.0 m/s |\n\nThe signs in the table use right as the positive direction. You may choose either right or left as positive for your calculations. State your choice and use signs consistent with it.\n\nFor each snapshot, determine the signed individual momenta of A and B and the total momentum of both carts. Show brief working and include units.",
+    "solutionContent": "Eine mögliche Lösung wählt rechts positiv und verwendet p = m·v.\nI: p_A = 0,50·(+4,0) = +2,0 kg·m/s; p_B = 1,00·(−1,0) = −1,0 kg·m/s. P_I = (+2,0)+(−1,0) = +1,0 kg·m/s.\nII: p_A = 0,50·(+2,0) = +1,0 kg·m/s; p_B = −1,0 kg·m/s. P_II = (+1,0)+(−1,0) = 0 kg·m/s.\n\nLinks positiv ist gleichwertig: alle Geschwindigkeitsvorzeichen umkehren. I ergibt p_A = −2, p_B = +1, P_I = −1; II ergibt p_A = −1, p_B = +1, P_II = 0, jeweils in kg·m/s. Beträge mit eindeutigen Richtungsangaben, Subtraktion der entgegengesetzten positiven Beträge und andere gültige Verfahren zählen ebenso. Auch N·s ist eine gültige Einheit. In II heben sich die Impulse fahrender Wagen auf; eine zusätzliche Deutung ist nicht verlangt.\n\nBewertung: D 1 P, M 3 P, S 3 P, T 3 P; ab 8 von 10 P bestanden, allein nach der Summe. M bewertet numerische Beträge und Datenanwendung, S je Momentaufnahme die vollständige Richtungsbeziehung des Paares, T die algebraische Verknüpfung. Ein richtiges beschriftetes Endergebnis kann den Ansatz belegen; Einzelwerte innerhalb einer Gesamtrechnung zählen ebenfalls. Bloße Gesamtwerte belegen keine fehlenden Einzelwerte oder Einzelrichtungen. Allgemeine Formeln ohne Datenanwendung erhalten keine Rechenpunkte.\n\nEin nachweislich isolierter Rechen-, Vorzeichen-, Einheiten-, Rundungs- oder Beschriftungsfehler bei sichtbar richtigem Kern kostet insgesamt höchstens 0,5 P einmal an der Ursprungsstelle; auch den sonst größeren Verlust eines S-Anteils entsprechend begrenzen. Keine Folgeverluste. Fehlende/falsche Impulseinheiten allein kosten insgesamt 0,5 P im ersten betroffenen numerischen Kriterium (M vor T); eine gemeinsame gültige Einheitenangabe genügt. Kein Kriterium wird negativ. Fortgesetzte konzeptuelle Fehler nach den tatsächlich betroffenen Kriterien bewerten, ohne denselben Fehler erneut abzuziehen: systematisch positive Impulse verlieren S, richtiges Addieren dieser eigenen Werte behält T. Die fortgesetzt falsche Summenoperation betrifft T. Eine geänderte Achse mit konsistent angepassten Zeichen erhält volle Punkte. Zusätzliche Deutungen sind kein eigenes Bewertungskriterium; ändern sie die gefragten Größen, zählen diese Auswirkungen.",
+    "solutionContentEn": "One possible solution chooses right as positive and uses p = m·v.\nI: p_A = 0.50·(+4.0) = +2.0 kg·m/s; p_B = 1.00·(−1.0) = −1.0 kg·m/s. P_I = (+2.0)+(−1.0) = +1.0 kg·m/s.\nII: p_A = 0.50·(+2.0) = +1.0 kg·m/s; p_B = −1.0 kg·m/s. P_II = (+1.0)+(−1.0) = 0 kg·m/s.\n\nLeft as positive is equivalent: reverse every velocity sign. I gives p_A = −2, p_B = +1, P_I = −1; II gives p_A = −1, p_B = +1, P_II = 0, all in kg·m/s. Magnitudes with unambiguous directions, subtraction of opposing positive magnitudes and other valid methods receive equal credit. N·s is also valid. In II the momenta cancel while both carts move; additional interpretation is not required.\n\nScoring: D 1 point, M 3, S 3, T 3; 8 out of 10 passes by the total alone. M assesses numerical magnitudes and data application, S the complete directional relationship of the pair in each snapshot, and T their algebraic combination. A correct labelled final result can establish the calculation; individual values within a total calculation also count. Bare totals do not establish missing individual values or directions. Generic formulas without data application earn no calculation credit.\n\nOne demonstrably isolated arithmetic, sign, unit, rounding or labelling slip with visibly sound core reasoning costs at most 0.5 overall, once at its source; this also caps the otherwise larger loss of an S component. No follow-on losses. Missing/incorrect momentum units alone cost 0.5 overall in the first affected numerical criterion (M before T); one shared valid unit declaration suffices. No criterion becomes negative. Assess maintained conceptual errors in the criteria actually affected without deducting again for the same error: systematically positive momenta lose S, while correctly adding those own values retains T. A maintained wrong combining operation affects T. A reversed axis with consistently changed signs earns full credit. Additional interpretations are not a separate scoring criterion; assess their effects if they change the requested quantities.",
+    "scoring": {
+      "maxPoints": 10,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "D",
+          "points": 1,
+          "description": "1 P für die ausdrückliche Wahl der positiven Richtung durch Wort, Pfeil oder Achse. Rechts und links sind gleichwertig. Fehlt die Erklärung: 0 P hier; die anderen Kriterien auf einer erkennbar konsistenten Achse ohne weiteren Abzug bewerten. / EN: 1 point for explicitly choosing the positive direction in words, with an arrow or with an axis. Right and left are equivalent. No declaration: 0 here; assess the other criteria on an apparent consistent axis without any further deduction for this omission."
+        },
+        {
+          "id": "M",
+          "points": 3,
+          "description": "Je Momentaufnahme bis 1,5 P: 0,5 für die numerische Anwendung Masse × Geschwindigkeitsbetrag bei mindestens einem Wagen; zusätzlich je 0,5 für den richtigen Impulsbetrag von A und B. Ein richtiger Endbetrag belegt die zugehörige Anwendung, sofern kein widersprechender Rechenweg vorliegt. Beträge allein genügen hier; Vorzeichen gehören zu S. Einheiten: kg·m/s oder gleichwertig. Allgemeine Formeln ohne Datenanwendung: 0 P. Keine Einzelbeträge aus bloßen Gesamtwerten erschließen. Fehler- und Einheitenregel der Lösung anwenden. / EN: Up to 1.5 points per snapshot: 0.5 for numerically applying mass × speed magnitude to at least one cart; an additional 0.5 each for the correct momentum magnitudes of A and B. A correct final magnitude establishes its applied calculation unless contradicted by the working. Magnitudes alone suffice here; signs belong to S. Units: kg·m/s or equivalent. Generic formulas without data application: 0. Do not reconstruct individual magnitudes from bare totals. Apply the solution's error and unit policy."
+        },
+        {
+          "id": "S",
+          "points": 3,
+          "description": "Je Momentaufnahme 1,5 P für die korrekte Richtungsbeziehung beider Einzelimpulse auf der gewählten Achse: rechts positiv bedeutet A positiv und B negativ; links positiv bedeutet A negativ und B positiv. Eindeutige Richtungswörter zählen ebenso, auch ohne Beträge. Bewertet wird die Beziehung des Paares: 1,5 P bei vollständigem Beleg, sonst 0; keine getrennten Punkte für ein einzelnes richtiges Vorzeichen. Aus bloßen Gesamtwerten keine Einzelrichtungen erschließen. Beträge ohne Richtungsangaben belegen S nicht. Ausnahme: ein nachweislich isolierter Vorzeichen-/Beschriftungsfehler kostet nach der gemeinsamen Regel insgesamt höchstens 0,5 P. Eine fortgesetzte falsche Richtungsregel ist keine solche Ausnahme. / EN: Per snapshot, 1.5 points for correctly representing both individual momenta's directional relationship on the chosen axis: right positive means A positive and B negative; left positive means A negative and B positive. Unambiguous direction words also count, without magnitudes. Assess the pair relationship: 1.5 for complete evidence, otherwise 0; no separate points for one correct sign. Do not infer individual directions from bare totals. Magnitudes without directions do not establish S. Exception: a demonstrably isolated sign/labelling slip costs at most 0.5 overall under the shared policy. A maintained incorrect direction rule is not such an exception."
+        },
+        {
+          "id": "T",
+          "points": 3,
+          "description": "Je Momentaufnahme 1,5 P: 1 für das numerische algebraische Addieren beider zugewiesenen Einzelimpulse, 0,5 für die richtige Auswertung dieses gültigen Ansatzes oder den richtigen Gesamtwert allein. Beide Einzelwerte mit ihrer passenden Summe belegen den Ansatz auch ohne Pluszeichen. Entgegengesetzte positive Beträge zu subtrahieren ist gleichwertig. Ein bloßer richtiger Gesamtwert erhält nur 0,5 P. Gültiges Weiterrechnen mit eigenen falschen Einzelwerten voll anerkennen: deren Richtungsfehler nur in S erfassen. Fortgesetztes Subtrahieren eines bereits negativen Impulses belegt keine Addition; bei falschem Gesamtwert auch kein Ergebnisanteil. Fehlerregel der Lösung anwenden. / EN: Per snapshot, 1.5 points: 1 for numerically adding both assigned individual momenta algebraically; 0.5 for correctly evaluating that valid setup or for the correct total alone. Both individual values with their matching sum establish the setup without a plus sign. Subtracting opposing positive magnitudes is equivalent. A bare correct total earns only 0.5. Fully credit valid follow-through using the learner's wrong individual values: record their directional error only in S. Maintained subtraction of an already negative momentum does not establish addition; an incorrect total also earns no result credit. Apply the solution's error policy."
+        }
+      ]
+    }
+  }
+}

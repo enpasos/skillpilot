@@ -1,0 +1,2050 @@
+{
+  "schemaVersion": 1,
+  "contract": "bounded-three-rubric-versions-nonconvergence-v1",
+  "assessmentGoalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+  "shortKey": "seki_total_momentum_two_bodies_line",
+  "status": "parked_not_accepted",
+  "recordedAt": "2026-11-25T17:56:06.173420+00:00",
+  "rubricVersionsAuthored": 3,
+  "maximumRubricVersions": 3,
+  "fourthVersionAuthored": false,
+  "authority": "Owner17:50CETdecision: at most three rubric versions; stop and report disagreement if no convergence.",
+  "finalVersion": 3,
+  "finalCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/v3/candidate.goal.json",
+    "sha256": "c1de131707e066c5e9c9d920f3f5facbe5e9d065727e05de641b4018e0531773"
+  },
+  "maxPoints": 12,
+  "passingPoints": 10,
+  "finalMarkers": [
+    {
+      "round": "round-a",
+      "model": "gpt-6.1-sol",
+      "candidateDecision": "needs_change",
+      "requiredCorrections": [
+        "Revise the DE/EN rule that ignores extra interpretations unless they replace or retract requested results. An explicitly maintained scientific assertion contradicting the assessed momentum principle must count as conceptual evidence. Publish criterion allocations that prevent this maintained misconception from passing within the 2-point slack, without adding a separate pass veto. Sc1c70f8d94 still receives 12/12 under the current rubric. Do not require an additional zero-total explanation or body arrows."
+      ],
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "execution": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/v3/round-a/execution.actual.json",
+        "sha256": "fb22b9af5a70d241b11199a29ae632a2ac07c5471fef58e68325e8a85c87ef70"
+      },
+      "response": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/v3/round-a/response.json",
+        "sha256": "fc7a6aabd808ed54be7d4bce35f520667622c1a1c05c22ecdced185af0267b66"
+      }
+    },
+    {
+      "round": "round-b",
+      "model": "gpt-6.2-astra",
+      "candidateDecision": "needs_change",
+      "requiredCorrections": [
+        "Revise the shared notes and TII in both languages so that an explicit assertion that moving carts cannot have zero total momentum contradicts the cancellation it purports to interpret. Put that contradiction within the existing 2.5-point combination allocation. The independently correct zero can still earn 0.5. A correct numerical sum alone must continue to earn full credit, with no explanation or body arrows required.",
+        "Protect each snapshot against a substantive error in just one cart input that removes the required physical total. One workable allocation keeps MI and MII at 3 points each, reserving 2.5 for establishing the signed pair and 0.5 for one independently correct cart when the other is missing or conceptually wrong. Keep full credit for valid downstream addition and the source-only deduction of at most 0.5 for a demonstrably isolated slip."
+      ],
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "execution": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/v3/round-b/execution.actual.json",
+        "sha256": "e4af7b4c2dd62ab0b82785502d75cc21a0475e2194e11f29b75e08ce45652954"
+      },
+      "response": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/v3/round-b/response.json",
+        "sha256": "c6f1f6136508cc287d9fb972c6bedbc459c9268a2f2142982c9675bee476cc35"
+      }
+    }
+  ],
+  "calibration": {
+    "caseCount": 34,
+    "gradedWorks": 68,
+    "exactPerCriterionAgreement": true,
+    "divergentCases": [],
+    "agreedCases": [
+      {
+        "authorCaseId": "C01",
+        "submissionId": "S43156538a6",
+        "intent": "Fully correct response.",
+        "roundA": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Correct signed products and values."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Correct signed products and values."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "The signed I products give +2 and −1."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "(+2)+(−1)=+1 is correct."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The signed II products give +1 and −1."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "(+1)+(−1)=0 shows numerical cancellation."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C02",
+        "submissionId": "Sb975f80eb9",
+        "intent": "Consistent reversed axis and equivalent valid units.",
+        "roundA": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Correct signed momenta using a consistent left-positive axis."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct left-positive combination and total −1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Correct signed momenta; N·s is an equivalent unit."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and zero total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Left positive gives −2 and +1, with valid shared units N·s."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "−2+1=−1 is correct on the chosen axis."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The left-positive II values are −1 and +1."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "−1+1=0 is correct."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C03",
+        "submissionId": "S8ff207af27",
+        "intent": "Equivalent magnitude-with-direction method, subtracting opposing positive magnitudes.",
+        "roundA": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical momenta with unambiguous directions."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Subtracting opposing directed magnitudes correctly gives +1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical momenta with unambiguous directions."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "The numerical subtraction 1−1=0 establishes cancellation."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "2 right and 1 left specify the signed I momenta."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Subtracting opposing magnitudes gives 2−1=+1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "1 right and 1 left specify the signed II momenta."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "1−1=0 shows numerical cancellation."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C04",
+        "submissionId": "Sa70d7f3808",
+        "intent": "One isolated arithmetic slip with valid follow-through; passes.",
+        "roundA": {
+          "total": 11.5,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "A's isolated product evaluation costs 0.5; sound source performance is demonstrated elsewhere."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Full valid follow-through with own values."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 11.5,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "A's correct setup is misevaluated. The corresponding half-mass product in II and the other products establish the sound method."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "2.5+(−1)=+1.5 is correct follow-through."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both II products are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "The II sum shows cancellation to zero."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C05",
+        "submissionId": "Sef8fd30cb2",
+        "intent": "One isolated sign slip with visibly correct signed substitution; passes.",
+        "roundA": {
+          "total": 11.5,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "B's isolated sign evaluation costs 0.5; the identical product is correct in II."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Full valid follow-through with own momenta."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 11.5,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "A is correct. B's signed product is set up correctly and the identical product is evaluated correctly in II, establishing a local sign slip in I."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "2+(+1)=+3 correctly adds the reported inputs."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The products give +1 and −1."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "1+(−1)=0 shows cancellation."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C06",
+        "submissionId": "S4e7d3615c1",
+        "intent": "Missing the subordinate positive-direction declaration; passes.",
+        "roundA": {
+          "total": 11.5,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "Correct signed momenta; missing axis declaration costs 0.5 once."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 11.5,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "Both values are correct on a clear right-positive convention. The omitted declaration is charged here."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "The signed sum correctly gives +1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both components follow the same convention."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "The signed sum correctly gives zero."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C07",
+        "submissionId": "Seebbb1d310",
+        "intent": "Missing the required cancellation computation and common momentum units.",
+        "roundA": {
+          "total": 8.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "Correct signed momenta; missing units cost 0.5 once here."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "Neither a sum nor a total is supplied."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 8.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "Both products are correct. The single reporting deduction for omitted momentum units is recorded here."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "2+(−1)=+1 is correct."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed II products are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "Only the two separate II momenta are given."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C08",
+        "submissionId": "S8ea976c6fb",
+        "intent": "Missing the required cancellation computation and coordinate declaration.",
+        "roundA": {
+          "total": 8.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "Correct signed momenta; undeclared consistent axis costs 0.5 once."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "No numerical sum or total is supplied."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 8.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 2.5,
+              "reason": "Both products are correct. The clear right-positive convention is undeclared."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "2+(−1)=+1 is correct."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed II products are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "The two individual calculations are never combined."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C09",
+        "submissionId": "Se906a17d51",
+        "intent": "Qualitative-only response.",
+        "roundA": {
+          "total": 0.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Qualitative signs and magnitude comparison supply no numerical momenta."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "A positive direction alone is not the requested numerical total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Qualitative signs and equality supply no numerical momenta."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "The explicit zero total earns bare-result credit."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 0.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Signs and relative size supply no individual numerical momenta."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "Positive gives only the sign of the total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Equal magnitudes and opposite signs supply no numerical pair."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "The word zero gives the correct value. The comparison is qualitative."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C10",
+        "submissionId": "S45379e4dea",
+        "intent": "Formula-only response.",
+        "roundA": {
+          "total": 0,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Generic formula without data application."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "Generic formula without numerical combination."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Generic formula without data application."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "No numerical cancellation or total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 0,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "The momentum formula has no I data substituted."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "The general total formula gives no I combination or result."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "No II individual values or numerical products appear."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "No II numerical sum or total appears."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C11",
+        "submissionId": "S66d8cd3413",
+        "intent": "Missing all individual momentum evidence in snapshot I.",
+        "roundA": {
+          "total": 6.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "No individual momenta for I are supplied."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0.5,
+              "reason": "Correct bare total without numerical combination."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 6.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Neither individual I value is given."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0.5,
+              "reason": "The bare +1 is correct."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed II products are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "1+(−1)=0 is explicit."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C12",
+        "submissionId": "S3e413a42c8",
+        "intent": "Missing all individual momentum evidence in snapshot II.",
+        "roundA": {
+          "total": 6.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "No individual momenta for II are supplied."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "Correct bare zero without associated numerical cancellation."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 6.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed I products are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "2+(−1)=+1 is correct."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Neither individual II value is supplied."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "The bare zero earns result credit."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C13",
+        "submissionId": "S6103a3a2e1",
+        "intent": "Both required total-momentum computations omitted.",
+        "roundA": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "No numerical sum or total is supplied."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "Separate individual momenta do not establish cancellation."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed I products are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "There is no I combination or total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed II products are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "There is no II combination or total."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C14",
+        "submissionId": "Saa8e146af1",
+        "intent": "Maintained combining misconception: subtract an already negative momentum.",
+        "roundA": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "Maintained subtraction of an already negative momentum is conceptually wrong."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "The same wrong combining rule gives an incorrect total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both I components are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "Subtracting the signed −1 gives an invalid setup and the wrong total +3."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both II components are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "The same asserted subtraction gives the wrong total +2."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C15",
+        "submissionId": "S26b58e52db",
+        "intent": "Critical zero-total misconception: both bodies must be at rest, replacing the given individual momenta.",
+        "roundA": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "The rest-only misconception replaces both required individual momenta with zero."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "The own-value sum 0+0=0 receives full valid follow-through."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both I products are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "The signed I sum is +1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "The rest claim replaces both moving carts' momenta with zero."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "0+0=0 is a valid numerical addition of the learner's own two assigned inputs. TII grants full follow-through."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C16",
+        "submissionId": "S21c8131363",
+        "intent": "Correct totals alone, without individual momenta or numerical addition.",
+        "roundA": {
+          "total": 1,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "No numerical individual momenta."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0.5,
+              "reason": "Correct bare first total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "No numerical individual momenta."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "Correct bare zero total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 1,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "No I components are given."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0.5,
+              "reason": "The bare I total +1 is correct."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "No II components are given."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "The bare II total zero is correct."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C17",
+        "submissionId": "Sb9fae53808",
+        "intent": "One isolated unit slip in a total; passes.",
+        "roundA": {
+          "total": 11.5,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Correct signed momenta and units."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 2.5,
+              "reason": "Correct sum and value; incorrect total unit costs 0.5."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Correct signed momenta and units."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 11.5,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both I momenta have correct values and units."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 2.5,
+              "reason": "The signed addition is correct. Its result alone is labelled kg·m/s²."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The two II momenta and units are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "The II total is correctly calculated and labelled."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C18",
+        "submissionId": "S788dad1d48",
+        "intent": "Maintained scalar-speed reasoning fails despite full valid follow-through.",
+        "roundA": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 1.5,
+              "reason": "A's signed value is correct; B's is wrong under the maintained unsigned rule."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Valid addition and evaluation of own individual values."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 1.5,
+              "reason": "A's signed value is correct; B's is wrong under the maintained unsigned rule."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Valid addition and evaluation of own individual values."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 1.5,
+              "reason": "On the declared axis A's +2 is correct. Taking the speed magnitude changes B's required −1 to +1."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "2+1=+3 correctly adds the two reported values."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 1.5,
+              "reason": "A's +1 is correct for its positive velocity. The maintained magnitude rule again gives B the wrong sign."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "1+1=+2 is valid addition of the reported pair."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C19",
+        "submissionId": "S82add7ad52",
+        "intent": "Qualitative individual directions and bare totals without numerical individual momenta.",
+        "roundA": {
+          "total": 1,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Only qualitative signs; numerical individual momenta explicitly not determined."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0.5,
+              "reason": "Correct bare total without numerical combination."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Only qualitative signs; numerical individual momenta explicitly not determined."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "Correct bare zero without numerical cancellation."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 1,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Only individual signs are supplied."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0.5,
+              "reason": "+1 is correct without a numerical combination."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "The learner gives signs and expressly omits individual magnitudes."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "Zero is correct without a numerical combination."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C20",
+        "submissionId": "Sa12eb82ada",
+        "intent": "Unsigned individual magnitudes and bare totals without signed numerical momenta.",
+        "roundA": {
+          "total": 1,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Explicitly magnitude-only values do not determine signed individual momenta."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0.5,
+              "reason": "Correct bare total; signed values and numerical combination are explicitly omitted."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Explicitly magnitude-only values do not determine signed individual momenta."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "Correct bare zero; no signed numerical cancellation is supplied."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 1,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "The learner explicitly gives |p_A| and |p_B| only."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0.5,
+              "reason": "The correct +1 is supplied without directed inputs or a sum."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "The two unit magnitudes carry no assigned directions."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "The correct zero is supplied without a signed combination."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C21",
+        "submissionId": "Sb2e1d8873b",
+        "intent": "Maintained axis-mapping misconception, distinct from a consistent reversed-axis solution.",
+        "roundA": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Both signs contradict the explicitly maintained right-positive convention."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Valid addition and evaluation of own signed values."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Both signs follow the same deliberate incorrect reversal."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Valid own-value addition and evaluation receive full follow-through."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "The deliberate reversal makes both components wrong on the declared right-positive axis."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "−2+1=−1 correctly adds the learner's inputs."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "The learner expressly applies the same reversal to both II inputs."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "−1+1=0 is valid follow-through."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C22",
+        "submissionId": "Se5d41e0075",
+        "intent": "Complete I, unsigned magnitudes and a bare zero only in II.",
+        "roundA": {
+          "total": 6.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Only magnitudes are supplied; signed numerical momenta are absent."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "Correct bare zero total; unsigned magnitudes do not establish cancellation."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 6.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "The I values are signed and correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "The I sum gives +1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Both entries are explicitly restricted to magnitudes."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0.5,
+              "reason": "Zero is correct. The two undirected magnitudes do not establish a signed numerical combination."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C23",
+        "submissionId": "S54c9a8fe54",
+        "intent": "Only the required nonzero total is omitted; symmetric minimum-completeness failure.",
+        "roundA": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "First numerical sum and total are absent."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "The I components are +2 and −1."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "There is no I sum or total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The II components are +1 and −1."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "1+(−1)=0 is explicit."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C24",
+        "submissionId": "Sfc497d7676",
+        "intent": "Only the required zero total is omitted; minimum-completeness failure.",
+        "roundA": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "The second sum and total are absent."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "The I components are +2 and −1."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Their signed sum gives +1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The II components are +1 and −1."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "The answer ends after the two individual values. It gives neither a sum nor a total."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C25",
+        "submissionId": "Sa89b31ab5b",
+        "intent": "All individual-momentum evidence occurs inside total calculations.",
+        "roundA": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Clearly attributed A/B terms establish both signed individual values."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Clearly attributed A/B terms establish both signed individual values."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "The terms in the I sum identify A as +2 and B as −1."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "The labelled terms sum to +1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The II sum identifies A as +1 and B as −1."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "The labelled II terms cancel to zero."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C26",
+        "submissionId": "S7f5a01f8e9",
+        "intent": "Equivalent exact numerical expressions, consistently accepted for individual and total values.",
+        "roundA": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Correct exact numerical products determine both momenta."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "The exact numerical sum is an accepted correct result."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Correct exact numerical products determine both momenta."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "The exact numerical sum correctly represents cancellation."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both I products are exact signed numerical expressions."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "The complete numerical sum has exact value +1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both II products use the correct signed inputs."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "The written numerical sum has exact value zero."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C27",
+        "submissionId": "S0447bf10c7",
+        "intent": "All four products wrongly evaluated, with valid numerical follow-through and no successful quantitative comparison.",
+        "roundA": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Both product results are wrong; no correct comparison establishes isolated slips."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Own numerical momenta are validly added and evaluated."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Both product results are wrong; correct follow-through does not prove the source core."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Own numerical momenta are validly added and evaluated."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Both evaluated products are wrong. The contradictory final values stand."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "3+(−2)=+1 correctly adds the learner's I values."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Both evaluated II products are also wrong. No correctly evaluated individual comparison supports isolated-slip treatment."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "0.75+(−0.50)=+0.25 is valid follow-through."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C28",
+        "submissionId": "Sa297568e7a",
+        "intent": "Legitimate exact-threshold pass with four distinct local/reporting errors and both core combinations present.",
+        "roundA": {
+          "total": 10,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 1.5,
+              "reason": "Correct core supports a 0.5 product-slip loss; missing axis and units each cost another 0.5."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct combination and evaluation of own momenta receive full follow-through."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 2.5,
+              "reason": "Correct cancellation setup; isolated evaluation 0.1 costs 0.5."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 10,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 1.5,
+              "reason": "Both products have the correct inputs. Deduct 0.5 each for A's local evaluation error, the omitted axis and omitted units."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "2.5+(−1)=+1.5 is correct follow-through and demonstrates signed addition."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed products are correct, including the comparable half-mass calculation."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 2.5,
+              "reason": "1+(−1) supplies the correct cancellation setup. Its stated evaluation +0.1 is wrong."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C29",
+        "submissionId": "S150def0bd7",
+        "intent": "Nearest half-point fail through one additional independently localized error.",
+        "roundA": {
+          "total": 9.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 1.5,
+              "reason": "Isolated A product slip, missing axis and missing units each cost 0.5."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct combination and evaluation of own momenta."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 2.5,
+              "reason": "B product slip costs 0.5; the identical B product is correct in I."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 2.5,
+              "reason": "Valid own-value combination; independent evaluation slip costs 0.5."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 9.5,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 1.5,
+              "reason": "Deduct 0.5 each for A's local evaluation error, the omitted axis and omitted units. The comparable A product in II is correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "2.5+(−1)=+1.5 is correct follow-through."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 2.5,
+              "reason": "A is correct. B's identical product was evaluated correctly in I, establishing a local II error."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 2.5,
+              "reason": "The addition uses both reported inputs, but 1+(−1.5) evaluates to −0.5. The stated −0.4 is a new arithmetic error."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C30",
+        "submissionId": "S9ed1ee6cc8",
+        "intent": "Maintained wrong numerical momentum rule cannot be rescued by full correct addition.",
+        "roundA": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "Both momenta follow the explicitly maintained wrong formula p=2mv."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Valid numerical addition and evaluation of own momenta."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Both momenta follow the explicitly maintained wrong formula p=2mv."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Valid own-value addition gives zero; full follow-through applies."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 6,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 0,
+              "reason": "The asserted law p=2mv doubles both I momenta."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "4+(−2)=+2 correctly combines those inputs."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 0,
+              "reason": "Both II momenta are also doubled."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "2+(−2)=0 correctly combines the learner's values."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C31",
+        "submissionId": "Scaf408c076",
+        "intent": "Correct numerical combinations without P labels or explicit plus signs.",
+        "roundA": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both attributed signed individual values are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Signed values with their matching 'together' total establish combination."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both attributed signed individual values are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Signed opposing values with their matching zero total establish cancellation."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "A +2 and B −1 are unambiguous."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Together +1 explicitly assigns the matching total to the I pair."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "A +1 and B −1 are unambiguous."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Together 0 assigns the matching total to the II pair."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C32",
+        "submissionId": "Sc1c70f8d94",
+        "intent": "A scientifically false extra interpretation does not create an unclaimed independently scored goal.",
+        "roundA": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct and explicitly retained."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and retained total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both correct signed individual momenta remain the stated answers."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct cancellation remains the answer; current notes exclude the added false interpretation."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 12,
+          "passes": true,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "The retained I inputs are +2 and −1."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "The retained I calculation gives +1."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The learner explicitly retains +1 and −1 as the II inputs."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "1+(−1)=0 is explicit and retained. The shared notes disregard an extra interpretation unless it replaces or retracts a requested result."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C33",
+        "submissionId": "Sf0045a1c27",
+        "intent": "An explicit wrong combining rule in I alone loses more than the slack.",
+        "roundA": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "An explicitly asserted wrong subtraction rule gives +3."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical cancellation and total."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "A and B are correctly reported as +2 and −1."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 0,
+              "reason": "The answer expressly requires subtracting the already negative component and obtains +3."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The II pair is +1 and −1."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 3,
+              "reason": "The signed addition gives zero."
+            }
+          ]
+        }
+      },
+      {
+        "authorCaseId": "C34",
+        "submissionId": "S6f3afff072",
+        "intent": "An explicit wrong combining rule in II alone loses more than the slack.",
+        "roundA": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "Correct numerical combination and total."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "Both signed individual momenta are correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "An explicitly asserted wrong combining rule produces +2."
+            }
+          ]
+        },
+        "roundB": {
+          "total": 9,
+          "passes": false,
+          "scores": [
+            {
+              "criterionId": "MI",
+              "pointsAwarded": 3,
+              "reason": "The signed I pair is correct."
+            },
+            {
+              "criterionId": "TI",
+              "pointsAwarded": 3,
+              "reason": "2+(−1)=+1 is correct."
+            },
+            {
+              "criterionId": "MII",
+              "pointsAwarded": 3,
+              "reason": "The signed II pair is correct."
+            },
+            {
+              "criterionId": "TII",
+              "pointsAwarded": 0,
+              "reason": "The learner explicitly advocates subtracting B's already negative component and obtains +2."
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "sharedUnresolvedCounterexample": {
+    "authorCaseId": "C32",
+    "learnerAnswerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. Diese Ergebnisse bleiben meine Antworten. Zusätzlich behaupte ich: Ein Gesamtimpuls von null bedeutet immer, dass alle Körper ruhen.",
+    "learnerAnswerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. These results remain my answers. I additionally claim: Zero total momentum always means that every object is at rest.",
+    "actualRoundATotal": 12,
+    "actualRoundBTotal": 12,
+    "actualBothPass": true,
+    "finding": "The rubric ignores an explicitly maintained false assertion that zero system momentum means every body is at rest, despite its direct contradiction of the assessed cancellation. Both blind reviewers reject this policy while correctly reporting12/12under the unchanged rubric."
+  },
+  "additionalRoundBObjection": "A substantive conceptual error in one cart input loses only1.5/12, so correct arithmetic follow-through can leave10.5/12and a pass even when the required physical total is wrong. This is an additional scope/weight judgment, not a divergence in the34graded case scores.",
+  "resolvedEarlierCounterexamples": {
+    "unsignedScalarC18": {
+      "roundATotal": 9,
+      "roundBTotal": 9,
+      "bothFail": true
+    },
+    "omittedZeroResultC07": {
+      "roundATotal": 8.5,
+      "roundBTotal": 8.5,
+      "bothFail": true
+    },
+    "correctUnlabelledSumsC31": {
+      "roundATotal": 12,
+      "roundBTotal": 12,
+      "bothPass": true
+    }
+  },
+  "recommendation": "Keep this candidate inactive and HH/TH configured closing-route gaps explicit. Ask the owner to decide whether a later bounded iteration should address the shared contradiction within the existing cancellation points and adjudicate the signed-pair objection. A correct numerical sum needs no extra explanation or body arrows; a maintained contradiction is different from omission. No new goal, fictitious prerequisite, weakened floor or unreviewed fourth rubric is proposed as an active repair.",
+  "activeCatalogEntryCreated": false,
+  "learnerMaterialExported": false,
+  "acceptedContentReceiptMinted": false,
+  "humanApproval": false,
+  "learnerMasteryWritten": false,
+  "rawLogsOutsideRepository": true,
+  "arrowCriterion": {
+    "bodyArrowsShown": false,
+    "bodyArrowsRequired": false,
+    "bodyAnchor": "not_applicable",
+    "quantityAndIndependentArrowScale": "not_applicable",
+    "arrowEndpoints": "not_applicable",
+    "systemSumArrow": "not_applicable",
+    "optionalCoordinateConventionArrowOnly": true,
+    "additionalScientificRoundRequired": false
+  }
+}

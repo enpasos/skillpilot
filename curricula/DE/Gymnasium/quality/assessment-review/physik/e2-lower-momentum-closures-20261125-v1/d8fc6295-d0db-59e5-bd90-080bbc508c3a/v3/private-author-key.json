@@ -1,0 +1,886 @@
+[
+  {
+    "submissionId": "S43156538a6",
+    "authorCaseId": "C01",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 12,
+    "expectedPass": true,
+    "caseIntent": "Fully correct response.",
+    "why": "All four signed numerical individual momenta and both valid numerical combinations are correct: MI3+TI3+MII3+TII3=12."
+  },
+  {
+    "submissionId": "Sb975f80eb9",
+    "authorCaseId": "C02",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 12,
+    "expectedPass": true,
+    "caseIntent": "Consistent reversed axis and equivalent valid units.",
+    "why": "The declared left-positive axis is used consistently. All momenta and totals are correct on that axis; N·s is equivalent to kg·m/s. All four criteria earn 3."
+  },
+  {
+    "submissionId": "S8ff207af27",
+    "authorCaseId": "C03",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 12,
+    "expectedPass": true,
+    "caseIntent": "Equivalent magnitude-with-direction method, subtracting opposing positive magnitudes.",
+    "why": "Direction words establish the signed numerical momenta. Subtracting opposing positive magnitudes is valid algebraic combination. All four criteria earn 3."
+  },
+  {
+    "submissionId": "Sa70d7f3808",
+    "authorCaseId": "C04",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 2.5
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 11.5,
+    "expectedPass": true,
+    "caseIntent": "One isolated arithmetic slip with valid follow-through; passes.",
+    "why": "The other correct products affirm the sound mass–velocity calculation. The isolated 0.50×4 error costs 0.5 in MI only. TI fully credits the valid sum of the learner's values; no consequence penalty. Total 11.5."
+  },
+  {
+    "submissionId": "Sef8fd30cb2",
+    "authorCaseId": "C05",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 2.5
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 11.5,
+    "expectedPass": true,
+    "caseIntent": "One isolated sign slip with visibly correct signed substitution; passes.",
+    "why": "The negative substitution and correct identical B calculation in II affirm an isolated sign slip in I. MI loses 0.5 once; valid follow-through retains TI3. MII and TII are full. Total 11.5."
+  },
+  {
+    "submissionId": "S4e7d3615c1",
+    "authorCaseId": "C06",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 2.5
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 11.5,
+    "expectedPass": true,
+    "caseIntent": "Missing the subordinate positive-direction declaration; passes.",
+    "why": "The consistent right-positive work establishes the convention. Its omitted declaration costs only 0.5 once in MI; every numerical performance remains evidenced. Total 11.5."
+  },
+  {
+    "submissionId": "Seebbb1d310",
+    "authorCaseId": "C07",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 2.5
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 0
+      }
+    ],
+    "expectedTotal": 8.5,
+    "expectedPass": false,
+    "caseIntent": "Missing the required cancellation computation and common momentum units.",
+    "why": "All individual momenta and total I are present, but no total/cancellation computation is given for II: TII0. The common unit omission costs 0.5 once in MI. Total 8.5 fails."
+  },
+  {
+    "submissionId": "S8ea976c6fb",
+    "authorCaseId": "C08",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 2.5
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 0
+      }
+    ],
+    "expectedTotal": 8.5,
+    "expectedPass": false,
+    "caseIntent": "Missing the required cancellation computation and coordinate declaration.",
+    "why": "All individual momenta and total I are present, but TII is absent. The missing coordinate declaration costs 0.5 once in MI, without further directional loss. Total 8.5 fails."
+  },
+  {
+    "submissionId": "Se906a17d51",
+    "authorCaseId": "C09",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 0
+      },
+      {
+        "criterionId": "TI",
+        "points": 0
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 0.5
+      }
+    ],
+    "expectedTotal": 0.5,
+    "expectedPass": false,
+    "caseIntent": "Qualitative-only response.",
+    "why": "Qualitative directions and comparisons do not establish signed numerical individual momenta or a numerical sum in I. The stated zero gives only TII0.5 as a bare correct total. Total 0.5 fails; no independent declaration points exist."
+  },
+  {
+    "submissionId": "S45379e4dea",
+    "authorCaseId": "C10",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 0
+      },
+      {
+        "criterionId": "TI",
+        "points": 0
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 0
+      }
+    ],
+    "expectedTotal": 0,
+    "expectedPass": false,
+    "caseIntent": "Formula-only response.",
+    "why": "Generic formulas are not applied to the data. All four criteria score 0; reporting omissions cannot create negative scores."
+  },
+  {
+    "submissionId": "S66d8cd3413",
+    "authorCaseId": "C11",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 0
+      },
+      {
+        "criterionId": "TI",
+        "points": 0.5
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 6.5,
+    "expectedPass": false,
+    "caseIntent": "Missing all individual momentum evidence in snapshot I.",
+    "why": "I supplies only a bare correct total, so MI0 and TI0.5. II establishes both signed individual momenta and their cancellation, earning 3+3. Total 6.5 fails."
+  },
+  {
+    "submissionId": "S3e413a42c8",
+    "authorCaseId": "C12",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 0.5
+      }
+    ],
+    "expectedTotal": 6.5,
+    "expectedPass": false,
+    "caseIntent": "Missing all individual momentum evidence in snapshot II.",
+    "why": "II supplies only a bare correct zero, so MII0 and TII0.5. I establishes both signed individual momenta and their sum, earning 3+3. Total 6.5 fails."
+  },
+  {
+    "submissionId": "S6103a3a2e1",
+    "authorCaseId": "C13",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 0
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 0
+      }
+    ],
+    "expectedTotal": 6,
+    "expectedPass": false,
+    "caseIntent": "Both required total-momentum computations omitted.",
+    "why": "Both individual-momentum performances earn 3. Neither total nor numerical combination is supplied: TI0 and TII0. Total 6 fails."
+  },
+  {
+    "submissionId": "Saa8e146af1",
+    "authorCaseId": "C14",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 0
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 0
+      }
+    ],
+    "expectedTotal": 6,
+    "expectedPass": false,
+    "caseIntent": "Maintained combining misconception: subtract an already negative momentum.",
+    "why": "Both signed individual-momentum pairs are correct. The explicit maintained rule subtracts already negative momenta, so both combining setups and both results are wrong: TI0 and TII0. No additional penalty. Total 6 fails."
+  },
+  {
+    "submissionId": "S26b58e52db",
+    "authorCaseId": "C15",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 9,
+    "expectedPass": false,
+    "caseIntent": "Critical zero-total misconception: both bodies must be at rest, replacing the given individual momenta.",
+    "why": "I is complete. The rest-only rule replaces II's given nonzero momenta with zeros, earning MII0. The valid numerical sum of the learner's own zeros retains TII3; it cannot restore MII. Total 9 fails without an extra interpretation penalty."
+  },
+  {
+    "submissionId": "S21c8131363",
+    "authorCaseId": "C16",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 0
+      },
+      {
+        "criterionId": "TI",
+        "points": 0.5
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 0.5
+      }
+    ],
+    "expectedTotal": 1,
+    "expectedPass": false,
+    "caseIntent": "Correct totals alone, without individual momenta or numerical addition.",
+    "why": "Each bare correct total earns 0.5. No signed numerical individual momenta or applied combination can be inferred. Total 1 fails."
+  },
+  {
+    "submissionId": "Sb9fae53808",
+    "authorCaseId": "C17",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 2.5
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 11.5,
+    "expectedPass": true,
+    "caseIntent": "One isolated unit slip in a total; passes.",
+    "why": "The single incorrect unit on total I costs 0.5 in TI only; all underlying numerical performances are established. Total 11.5 passes."
+  },
+  {
+    "submissionId": "S788dad1d48",
+    "authorCaseId": "C18",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 1.5
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 1.5
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 9,
+    "expectedPass": false,
+    "caseIntent": "Maintained scalar-speed reasoning fails despite full valid follow-through.",
+    "why": "The maintained scalar-speed rule makes B's signed numerical momentum wrong in both snapshots, costing 1.5 each. A earns 1.5 in each MI/MII; both valid own-value sums earn 3. Total 9 fails. These are not isolated sign slips."
+  },
+  {
+    "submissionId": "S82add7ad52",
+    "authorCaseId": "C19",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 0
+      },
+      {
+        "criterionId": "TI",
+        "points": 0.5
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 0.5
+      }
+    ],
+    "expectedTotal": 1,
+    "expectedPass": false,
+    "caseIntent": "Qualitative individual directions and bare totals without numerical individual momenta.",
+    "why": "Qualitative individual directions without numerical momenta earn no MI/MII credit. Each bare correct total earns 0.5. Total 1 fails."
+  },
+  {
+    "submissionId": "Sa12eb82ada",
+    "authorCaseId": "C20",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 0
+      },
+      {
+        "criterionId": "TI",
+        "points": 0.5
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 0.5
+      }
+    ],
+    "expectedTotal": 1,
+    "expectedPass": false,
+    "caseIntent": "Unsigned individual magnitudes and bare totals without signed numerical momenta.",
+    "why": "Explicit absolute values without individual directions establish neither signed numerical individual performance. Bare totals do not reconstruct them or show combination; TI0.5 and TII0.5 give 1."
+  },
+  {
+    "submissionId": "Sb2e1d8873b",
+    "authorCaseId": "C21",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 0
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 6,
+    "expectedPass": false,
+    "caseIntent": "Maintained axis-mapping misconception, distinct from a consistent reversed-axis solution.",
+    "why": "All four numerical momenta contradict the explicitly maintained right-positive convention, so MI0 and MII0. Correct sums of those own values retain TI3 and TII3. Total 6 fails; this is not a reversed-axis solution or isolated label slip."
+  },
+  {
+    "submissionId": "Se5d41e0075",
+    "authorCaseId": "C22",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 0.5
+      }
+    ],
+    "expectedTotal": 6.5,
+    "expectedPass": false,
+    "caseIntent": "Complete I, unsigned magnitudes and a bare zero only in II.",
+    "why": "I is complete. II supplies only unsigned individual magnitudes and a bare correct zero: MII0 and TII0.5. No missing individual directions or combination are inferred. Total 6.5 fails."
+  },
+  {
+    "submissionId": "S54c9a8fe54",
+    "authorCaseId": "C23",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 0
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 9,
+    "expectedPass": false,
+    "caseIntent": "Only the required nonzero total is omitted; symmetric minimum-completeness failure.",
+    "why": "All individual momenta and the full cancellation are supplied, but no total/combination is supplied in I. Losing TI3 exceeds the 2-point slack: 9 fails."
+  },
+  {
+    "submissionId": "Sfc497d7676",
+    "authorCaseId": "C24",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 0
+      }
+    ],
+    "expectedTotal": 9,
+    "expectedPass": false,
+    "caseIntent": "Only the required zero total is omitted; minimum-completeness failure.",
+    "why": "The separately listed momenta in II do not themselves show a sum or cancellation. TII loses 3; all other evidence earns 9, which fails."
+  },
+  {
+    "submissionId": "Sa89b31ab5b",
+    "authorCaseId": "C25",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 12,
+    "expectedPass": true,
+    "caseIntent": "All individual-momentum evidence occurs inside total calculations.",
+    "why": "The labelled signed numerical terms fully establish the individual momenta wherever written. Both sums are complete. No separate individual-result list is needed: 12."
+  },
+  {
+    "submissionId": "S7f5a01f8e9",
+    "authorCaseId": "C26",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 12,
+    "expectedPass": true,
+    "caseIntent": "Equivalent exact numerical expressions, consistently accepted for individual and total values.",
+    "why": "These are exact signed numerical values, not generic formulas. With no contradictory evaluated claims, the products establish MI/MII and the sums establish TI/TII fully. Simplification is not an extra method requirement: 12."
+  },
+  {
+    "submissionId": "S0447bf10c7",
+    "authorCaseId": "C27",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 0
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 6,
+    "expectedPass": false,
+    "caseIntent": "All four products wrongly evaluated, with valid numerical follow-through and no successful quantitative comparison.",
+    "why": "Every evaluated individual momentum is wrong. Correct setups and own-value sums alone do not affirm a sound quantitative source performance; the contradictory final claims cannot be ignored. There is no basis for four isolated-slip restorations. MI0/MII0, but both valid own-value sums retain 3: total 6 fails."
+  },
+  {
+    "submissionId": "Sa297568e7a",
+    "authorCaseId": "C28",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 1.5
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 2.5
+      }
+    ],
+    "expectedTotal": 10,
+    "expectedPass": true,
+    "caseIntent": "Legitimate exact-threshold pass with four distinct local/reporting errors and both core combinations present.",
+    "why": "The axis declaration and common unit report are independently missing: 0.5 each in MI. The I product slip costs another 0.5 there; the correct other products affirm the source relation. TI is valid follow-through. The separate II addition slip costs 0.5 in TII, with TI affirming sound signed addition. No maintained wrong rule or whole core is missing. Total 10 passes."
+  },
+  {
+    "submissionId": "S150def0bd7",
+    "authorCaseId": "C29",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 1.5
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 2.5
+      },
+      {
+        "criterionId": "TII",
+        "points": 2.5
+      }
+    ],
+    "expectedTotal": 9.5,
+    "expectedPass": false,
+    "caseIntent": "Nearest half-point fail through one additional independently localized error.",
+    "why": "MI loses 0.5 each for the missing axis declaration, common units and local A-I product slip. MII loses 0.5 for the B-II product slip: B-I correctly evaluates the identical product, affirming its local nature. TI correctly adds own values. TII loses 0.5 only for its separate evaluation error (the own-value sum is −0.5); the propagated wrong input is not charged again. Total 9.5 fails."
+  },
+  {
+    "submissionId": "S9ed1ee6cc8",
+    "authorCaseId": "C30",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 0
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 0
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 6,
+    "expectedPass": false,
+    "caseIntent": "Maintained wrong numerical momentum rule cannot be rescued by full correct addition.",
+    "why": "The explicit maintained doubling rule makes every individual momentum wrong, so MI/MII earn 0. Both own-value additions remain fully valid, including the accidental physical zero in II. No extra penalty or source restoration: total 6 fails."
+  },
+  {
+    "submissionId": "Scaf408c076",
+    "authorCaseId": "C31",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 12,
+    "expectedPass": true,
+    "caseIntent": "Correct numerical combinations without P labels or explicit plus signs.",
+    "why": "The identifiable individual momenta and matching totals establish each combination. Missing P labels or plus signs create no evidential gap and no deduction: 12."
+  },
+  {
+    "submissionId": "Sc1c70f8d94",
+    "authorCaseId": "C32",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 12,
+    "expectedPass": true,
+    "caseIntent": "A scientifically false extra interpretation does not create an unclaimed independently scored goal.",
+    "why": "The additional general claim is scientifically false but explicitly leaves the requested correct quantities in place. No independent interpretation criterion is assessed, so it causes no separate deduction. Contrast C15, where the claim replaces the given individual momenta. Total 12."
+  },
+  {
+    "submissionId": "Sf0045a1c27",
+    "authorCaseId": "C33",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 0
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 3
+      }
+    ],
+    "expectedTotal": 9,
+    "expectedPass": false,
+    "caseIntent": "An explicit wrong combining rule in I alone loses more than the slack.",
+    "why": "The stated rule in I is an incorrect physical combining operation, not a demonstrably isolated transcription slip. TI0; both individual performances and II's sum remain full. Total 9 fails without further loss."
+  },
+  {
+    "submissionId": "S6f3afff072",
+    "authorCaseId": "C34",
+    "expectedScores": [
+      {
+        "criterionId": "MI",
+        "points": 3
+      },
+      {
+        "criterionId": "TI",
+        "points": 3
+      },
+      {
+        "criterionId": "MII",
+        "points": 3
+      },
+      {
+        "criterionId": "TII",
+        "points": 0
+      }
+    ],
+    "expectedTotal": 9,
+    "expectedPass": false,
+    "caseIntent": "An explicit wrong combining rule in II alone loses more than the slack.",
+    "why": "The stated rule in II is an incorrect physical combining operation, not a local formal slip. TII0; both individual performances and I's sum remain full. Total 9 fails."
+  }
+]

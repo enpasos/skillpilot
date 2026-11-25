@@ -1,0 +1,72 @@
+{
+  "goal": {
+    "id": "53afbda1-5776-502b-8867-471975d7b766",
+    "title": "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+    "titleEn": "Determine individual and total momentum along a line",
+    "description": "Die lernende Person kann für zwei Körper, die sich auf derselben Geraden bewegen oder ruhen, eine positive Richtung wählen, aus ihren gegebenen Massen und Geschwindigkeiten zu einem gemeinsamen Zeitpunkt die vorzeichenbehafteten Einzelimpulse bestimmen und diese zum Gesamtimpuls addieren.",
+    "descriptionEn": "The learner can choose a positive direction for two objects at rest or moving along the same straight line, use their given masses and velocities at the same instant to determine their signed momenta, and add them to find the total momentum.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+      "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+      "ee48e811-4c9c-5080-9836-8403fc9f0810"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB1",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "shortKey": "canonical_physics_momentum_of_two_bodies",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "53afbda1-5776-502b-8867-471975d7b766",
+        "title": "Visualisierung: Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+        "url": "/assets/goal-visualizations/physik/53afbda1-5776-502b-8867-471975d7b766/53afbda1-5776-502b-8867-471975d7b766.jpg",
+        "provider": "ChatGPT / Codex image generation",
+        "description": "Visualisierung zum Lernziel: Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen.",
+        "altText": "Zwei Wagen von je 1 kg fahren gleichzeitig auf einer Geraden. Rechts ist positiv. Links fährt ein Wagen mit +3 m/s nach rechts, rechts fährt der andere mit −1 m/s nach links. Ihre Impulse ergeben zusammen +2 kg·m/s.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "shortKey": "seki_total_momentum_two_bodies_line",
+  "id": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+  "taskSpecification": "One context with two bodies along one line, given masses and signed velocities at a common instant. Include one item where the two momenta have opposite signs and a nonzero total, and one item where their total is zero. Test only choosing/declaring a consistent positive direction, multiplying mass by signed velocity, and signed addition. Do not demand conservation, collision laws, force, derivatives, impulses or later performance. Handle the goal's direction-choice facet genuinely while obeying given signed velocities; allow consistent reversed-axis solutions. A clearly optional one-sentence interpretation may clarify zero total but must not create unclaimed curriculum demand.",
+  "ownerMandateDate": "2026-11-25T17:50:00+01:00",
+  "version": 1,
+  "maximumRubricVersions": 3
+}
