@@ -1901,12 +1901,19 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(kept.getPlanLabel()).isEqualTo(ownLandscape ? "E.1" : "Früherer Plan");
 
         // Every reader of plans treats it as outdated, and none of them fails.
-        var collection = learningPlans.getPlans(learnerId, today);
-        assertThat(collection.plans()).filteredOn(plan -> landscape.equals(plan.landscapeId())).allSatisfy(plan -> {
-            assertThat(plan.stale()).isTrue();
-            assertThat(plan.nextEligibleGoal()).isNull();
-            assertThat(plan.canContinue()).isFalse();
-        });
+        var listed = learningPlans.getPlans(learnerId, today).plans().stream()
+                .filter(plan -> landscape.equals(plan.landscapeId())).toList();
+        if (ownLandscape) {
+            assertThat(listed).singleElement().satisfies(plan -> {
+                assertThat(plan.stale()).isTrue();
+                assertThat(plan.nextEligibleGoal()).isNull();
+                assertThat(plan.canContinue()).isFalse();
+            });
+        } else {
+            // No plan can be saved for a landscape the catalog no longer has. Its plan stays in
+            // storage and in later backups, and the plan list does not show it.
+            assertThat(listed).isEmpty();
+        }
         if (ownLandscape) {
             var outdated = learningPlans.getPlan(learnerId, physics, today);
             assertThat(outdated.stale()).isTrue();

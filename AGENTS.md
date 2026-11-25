@@ -758,7 +758,15 @@ and a readable plan next to it is restored as usual. Saving the plan anew
 makes it an ordinary plan of today's curriculum. A backup of the outdated plan
 holds the same blocks. A plan that is not well formed (missing ids, unknown
 kinds, missing dates, exceeded limits) still refuses the backup, and so does a
-server error while the plan is read.
+server error while the plan is read. The form check does not ask whether a
+save would accept the plan today: the archived values are kept, not their
+normalized form, and a plan whose only block is an exam day is kept too. The
+plan of a landscape the catalog no longer has stays in storage and in later
+backups; the plan list does not show it, because no plan can be saved for
+that landscape. A plan that was read against the curriculum and then fails,
+or fails with something else than a client error, is kept as outdated as
+well, because the results come first; the backend logs that case as an
+unexpected failure and not as an outdated reference.
 
 **Outdated plan with an exam day, 25 November 2026.** The readers of stored
 plans catch the client error of `LearnerService.resolveLearningPlanGoalIds`

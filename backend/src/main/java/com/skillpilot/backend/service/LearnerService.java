@@ -15067,15 +15067,21 @@ public class LearnerService {
             String planLabel = optionalPortableText(portable.planLabel(), "learningPlans.planLabel", 160);
             // The learning results of a backup are restored also when one of its plans cannot be
             // read against the curriculum today (Product Owner, 25 November 2026). A server error
-            // still refuses the backup.
+            // still refuses the backup. A plan that was read and fails afterwards, and any failure
+            // that is no client error, is kept as outdated too, because the results come first; it
+            // is reported as unexpected and not as an outdated reference.
             LearnerLearningPlan plan;
+            RestoredPlanReading reading = null;
             try {
-                plan = restoredCurrentLearningPlan(learner, landscapeId, planLabel, portable.blocks());
+                reading = readRestoredLearningPlan(learner, landscapeId, portable.blocks());
+                plan = restoredCurrentLearningPlan(learner, landscapeId, planLabel, reading);
             } catch (ResponseStatusException exception) {
                 if (!exception.getStatusCode().is4xxClientError()) throw exception;
-                plan = restoredOutdatedLearningPlan(learner, landscapeId, planLabel, portable.blocks(), exception);
+                plan = restoredOutdatedLearningPlan(
+                        learner, landscapeId, planLabel, portable.blocks(), exception, reading != null);
             } catch (IllegalStateException | IllegalArgumentException exception) {
-                plan = restoredOutdatedLearningPlan(learner, landscapeId, planLabel, portable.blocks(), exception);
+                plan = restoredOutdatedLearningPlan(
+                        learner, landscapeId, planLabel, portable.blocks(), exception, true);
             }
             restored.add(plan);
         }
@@ -15092,8 +15098,16 @@ public class LearnerService {
                 "LEARNING_PLAN_IMPORT"));
     }
 
-    /** A plan of the backup as it applies today; throws when it cannot be read against the curriculum. */
-    private LearnerLearningPlan restoredCurrentLearningPlan(Learner learner, String landscapeId, String planLabel,
+    /** The blocks of a restored plan as they apply today, with the scope they were read against. */
+    private record RestoredPlanReading(LearnerPlanningScopeResponse scope,
+            List<LearnerLearningPlanApi.Block> blocks, Map<Set<String>, Set<String>> capturedSelections) { }
+
+    /**
+     * Reads a plan of the backup against today's curriculum: subject, goals, sections, exam topics
+     * and the order its blocks need for today's prerequisites. A client error here means that the
+     * plan no longer fits the curriculum.
+     */
+    private RestoredPlanReading readRestoredLearningPlan(Learner learner, String landscapeId,
             List<LearnerLearningPlanApi.Block> portableBlocks) {
         LearnerPlanningScopeResponse scope = getPlanningScope(
                 learner.getSkillpilotId(),
@@ -15118,19 +15132,26 @@ public class LearnerService {
         normalizedBlocks = orderLearningPlanBlocksByPrerequisites(
                 learner.getSkillpilotId(),
                 normalizedBlocks);
+        return new RestoredPlanReading(scope, normalizedBlocks, capturedSelections);
+    }
+
+    /** A plan of the backup that was read against today's curriculum, with its fingerprint. */
+    private LearnerLearningPlan restoredCurrentLearningPlan(Learner learner, String landscapeId, String planLabel,
+            RestoredPlanReading reading) {
+        List<LearnerLearningPlanApi.Block> orderedBlocks = reading.blocks();
         LearnerLearningPlan plan = new LearnerLearningPlan();
         plan.setLearner(learner);
         plan.setLandscapeId(landscapeId);
-        plan.setCurriculumId(scope.curriculumId());
+        plan.setCurriculumId(reading.scope().curriculumId());
         plan.setScopeFingerprint(learningPlanFingerprint(
                 learner.getSkillpilotId(),
                 landscapeId,
-                normalizedBlocks,
-                capturedSelections));
+                orderedBlocks,
+                reading.capturedSelections()));
         plan.setRevision(1);
         plan.setPlanLabel(planLabel);
-        plan.setBlocksJson(portableBlocksJson(normalizedBlocks));
-        plan.setCapturedAt(scope.capturedAt());
+        plan.setBlocksJson(portableBlocksJson(orderedBlocks));
+        plan.setCapturedAt(reading.scope().capturedAt());
         return plan;
     }
 
@@ -15138,13 +15159,20 @@ public class LearnerService {
      * A plan of the backup that cannot be read today. Its learning results are restored with the
      * rest of the backup; the plan itself is kept as the backup held it and marked outdated, see
      * {@link LearnerLearningPlan#RESTORED_OUTDATED_CURRICULUM_ID}. A plan that is not well formed is
-     * refused as before. The stored fingerprint is the digest of the kept blocks, not a statement
-     * about today's graph.
+     * refused as before. The form check does not ask whether a save would accept the plan today:
+     * the archived values are kept, not their normalized form. The stored fingerprint is the digest
+     * of the kept blocks, not a statement about today's graph.
      */
     private LearnerLearningPlan restoredOutdatedLearningPlan(Learner learner, String landscapeId, String planLabel,
-            List<LearnerLearningPlanApi.Block> portableBlocks, RuntimeException unreadable) {
+            List<LearnerLearningPlanApi.Block> portableBlocks, RuntimeException failure, boolean unexpected) {
         LearnerLearningPlanService.requireWellFormedBlocks(landscapeId, portableBlocks);
-        LOGGER.info("Restoring a learning plan of landscape {} as outdated: {}", landscapeId, unreadable.getMessage());
+        if (unexpected) {
+            // Not an outdated reference: the plan could be read, or the failure is none of a client.
+            LOGGER.warn("Restoring a learning plan of landscape {} as outdated after an unexpected failure",
+                    landscapeId, failure);
+        } else {
+            LOGGER.info("Restoring a learning plan of landscape {} as outdated: {}", landscapeId, failure.getMessage());
+        }
         String blocksJson = portableBlocksJson(portableBlocks);
         LearnerLearningPlan plan = new LearnerLearningPlan();
         plan.setLearner(learner);

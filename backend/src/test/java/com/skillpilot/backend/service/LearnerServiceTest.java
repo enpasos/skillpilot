@@ -741,8 +741,12 @@ public class LearnerServiceTest {
                 .doesNotThrowAnyException();
     }
 
+    // A signed plan that names a goal outside the subject scope used to refuse the whole backup.
+    // Since the Product Owner decision of 25 November 2026 the learning results are restored and
+    // the plan is kept as outdated: no reader follows it, and saving a plan with the same block is
+    // still refused.
     @Test
-    void signedPlanImportRejectsAtomicGoalsOutsideThePersonalSubjectScope() {
+    void signedPlanImportKeepsAPlanWithAtomicGoalsOutsideThePersonalSubjectScopeAsOutdated() {
         selectCompletedCanonicalMathCurriculum();
         Learner targetConfiguration = learnerRepository.findById(learnerId).orElseThrow();
         Learner source = new Learner();
@@ -766,7 +770,8 @@ public class LearnerServiceTest {
                 List.of(invalidBlock));
         var data = new com.skillpilot.backend.api.LearnerDataDTO(
                 source,
-                Map.of(),
+                Map.of(CANONICAL_MATH_ORIENTATION_ID, new com.skillpilot.backend.api.MasteryEntryDTO(
+                        1.0, java.time.Instant.parse("2026-09-02T08:00:00Z"))),
                 List.of(),
                 Set.of(),
                 List.of(portable));
@@ -775,14 +780,42 @@ public class LearnerServiceTest {
                 "calculateSignature",
                 data);
 
-        assertThatThrownBy(() -> learnerService.importLearner(
+        learnerService.importLearner(
+                learnerId,
+                new com.skillpilot.backend.api.SignedLearnerDataDTO(data, signature));
+
+        assertThat(learnerService.getMastery(learnerId)).containsEntry(CANONICAL_MATH_ORIENTATION_ID, 1.0);
+        var stored = learnerLearningPlanRepository
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId);
+        assertThat(stored).singleElement().satisfies(plan -> {
+            assertThat(plan.getLandscapeId()).isEqualTo(CANONICAL_MATH_LANDSCAPE_ID);
+            assertThat(plan.getCurriculumId())
+                    .isEqualTo(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
+        });
+        var today = java.time.LocalDate.parse("2026-09-02");
+        assertThat(learnerLearningPlanService.getPlans(learnerId, today).plans()).singleElement().satisfies(plan -> {
+            assertThat(plan.stale()).isTrue();
+            assertThat(plan.nextEligibleGoal()).isNull();
+            assertThat(plan.canContinue()).isFalse();
+        });
+        assertThat(learnerService.isLearningPlanCompatible(
+                learnerId, stored.getFirst().getCurriculumId(), CANONICAL_MATH_LANDSCAPE_ID, List.of(invalidBlock)))
+                .isFalse();
+        // The same block is refused when a plan is saved, also over the outdated plan.
+        long revision = stored.getFirst().getRevision();
+        assertThatThrownBy(() -> learnerLearningPlanService.upsert(
                         learnerId,
-                        new com.skillpilot.backend.api.SignedLearnerDataDTO(data, signature)))
+                        CANONICAL_MATH_LANDSCAPE_ID,
+                        new com.skillpilot.backend.api.LearnerLearningPlanApi.UpsertRequest(
+                                revision, "Manipulierter Plan", List.of(invalidBlock)),
+                        today))
                 .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
                         assertThat(exception.getStatusCode())
                                 .isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST));
         assertThat(learnerLearningPlanRepository
-                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId)).isEmpty();
+                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId)).singleElement().satisfies(plan ->
+                        assertThat(plan.getCurriculumId()).isEqualTo(
+                                com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID));
     }
 
     @Test
