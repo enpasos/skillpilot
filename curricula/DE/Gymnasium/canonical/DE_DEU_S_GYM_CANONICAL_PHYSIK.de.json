@@ -9259,8 +9259,8 @@
       "id": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
       "title": "Newtons 2. Axiom (Grundgleichung der Mechanik)",
       "titleEn": "Newton's Second Law (Fundamental Equation of Mechanics)",
-      "description": "Die lernende Person kann den vektoriellen Impuls $\\vec p=m\\vec v$ einführen, Newtons zweites Axiom in einem Inertialsystem für ein materiell abgeschlossenes System als Zusammenhang zwischen der resultierenden äußeren Kraft und der zeitlichen Änderung des Impulses formulieren und deuten sowie für konstante Masse auf $\\sum \\vec F_\\mathrm{ext}=m\\vec a$ zurückführen.",
-      "descriptionEn": "The learner can introduce vector momentum $\\vec p=m\\vec v$, formulate and interpret Newton's second law in an inertial frame for a materially closed system as the relationship between the net external force and the change of momentum over time, and reduce it to $\\sum \\vec F_\\mathrm{ext}=m\\vec a$ for constant mass.",
+      "description": "Die lernende Person kann Newtons zweites Axiom für einen Körper konstanter Masse in einem Inertialsystem formulieren und erklären, dass der Betrag der Beschleunigung dem Betrag der resultierenden äußeren Kraft geteilt durch die Masse entspricht und eine von null verschiedene Beschleunigung in Richtung dieser Kraft zeigt.",
+      "descriptionEn": "The learner can state Newton’s second law for an object of constant mass in an inertial frame and explain that the magnitude of its acceleration equals the magnitude of the net external force divided by the mass, and that any nonzero acceleration points in the direction of that force.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -10119,7 +10119,8 @@
       "contains": [],
       "requires": [
         "5f289cdc-fda1-4058-b44f-041ba1398e79",
-        "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+        "53afbda1-5776-502b-8867-471975d7b766"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -10181,7 +10182,10 @@
         "area:Mechanik"
       ],
       "contains": [
+        "53afbda1-5776-502b-8867-471975d7b766",
         "839ecc8f-3a60-418b-bc92-64bfeef33824",
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "059c1adc-e4d2-5222-a923-15abc417d59f",
         "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
         "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
         "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
@@ -10636,7 +10640,8 @@
         "5f289cdc-fda1-4058-b44f-041ba1398e79",
         "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
         "34604a97-0c64-5b06-81e2-6ac818732d60",
-        "c63bbffd-8d1c-5fe2-a428-db194e6fe592"
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "059c1adc-e4d2-5222-a923-15abc417d59f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -10687,6 +10692,145 @@
           "reviewStatus": "pilot"
         }
       ]
+    },
+    {
+      "id": "53afbda1-5776-502b-8867-471975d7b766",
+      "title": "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+      "titleEn": "Determine individual and total momentum along a line",
+      "description": "Die lernende Person kann für zwei Körper, die sich auf derselben Geraden bewegen oder ruhen, eine positive Richtung wählen, aus ihren gegebenen Massen und Geschwindigkeiten zu einem gemeinsamen Zeitpunkt die vorzeichenbehafteten Einzelimpulse bestimmen und diese zum Gesamtimpuls addieren.",
+      "descriptionEn": "The learner can choose a positive direction for two objects at rest or moving along the same straight line, use their given masses and velocities at the same instant to determine their signed momenta, and add them to find the total momentum.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "971beafa-6ba5-4c82-ac8b-7ebf66eec3dd"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_momentum_of_two_bodies",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "title": "Mittlere resultierende Kraft aus der Impulsänderung bestimmen",
+      "titleEn": "Determine the average net force from a change in momentum",
+      "description": "Die lernende Person kann für einen Körper fester Masse auf einer Geraden in einem Inertialsystem aus zwei gegebenen vorzeichenbehafteten Impulswerten und ihren Zeitpunkten die mittlere resultierende äußere Kraft im Intervall als $\\Delta p/\\Delta t$ berechnen. Sie gibt das Ergebnis in Newton an und deutet sein Vorzeichen bezogen auf die gewählte positive Richtung.",
+      "descriptionEn": "For a body of fixed mass moving along a line in an inertial frame, the learner can use two given signed momentum values and their times to calculate the average net external force over the interval as $\\Delta p/\\Delta t$. The learner gives the result in newtons and interprets its sign relative to the chosen positive direction.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "53afbda1-5776-502b-8867-471975d7b766",
+        "13b338eb-f761-5817-9058-11043b9cb253"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_mean_force_from_momentum_change",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "059c1adc-e4d2-5222-a923-15abc417d59f",
+      "title": "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen",
+      "titleEn": "Determine the instantaneous net force from the slope of a momentum–time graph",
+      "description": "Die lernende Person kann für eine geradlinige Bewegung eines Körpers fester Masse in einem Inertialsystem die Tangentensteigung am Impuls-Zeit-Graphen als momentane resultierende äußere Kraft $F_{\\mathrm{res}}(t)=\\mathrm{d}p/\\mathrm{d}t$ deuten und ihren Wert am markierten Zeitpunkt aus einer eingezeichneten Tangente mit Vorzeichen und Einheit näherungsweise bestimmen.",
+      "descriptionEn": "For a body of fixed mass moving along a line in an inertial frame, the learner can interpret the tangent slope on a signed momentum–time graph as the instantaneous net external force $F_{\\mathrm{net}}(t)=\\mathrm{d}p/\\mathrm{d}t$ and use a drawn tangent to estimate its value at a marked time, with sign and unit.",
+      "weight": 0.9,
+      "tags": [
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "b1dcc191-d046-50de-984a-ee5c17157628"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_instantaneous_force_from_momentum_slope",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic"
     },
     {
       "id": "287739a3-6143-55d0-abe7-1a08889e9b49",
