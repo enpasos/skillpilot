@@ -13,13 +13,14 @@ from generate_physics_partial_orders import acquisition_placements, partial_orde
 REVIEWED_LOWER_ASSESSMENTS = {
     "BW": {"b50e9903-58b3-520d-96bf-d5bc1fe51ebf"},
     "MV": {"3b7b2b62-e39c-5936-b0d8-5406206e57b6", "e6a89922-75ce-53dd-9e7b-3a683398431c"},
-    "HH": {"797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00", "884bd99b-2373-5174-af7c-c6813b91bd93"},
+    "HH": {"d8fc6295-d0db-59e5-bd90-080bbc508c3a", "797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00", "884bd99b-2373-5174-af7c-c6813b91bd93"},
     "SL": {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b", "11c964ff-be82-5d02-8cd7-ccb41cda8f4f", "e0932fef-9e1c-5c95-b00c-7589e76d0e83", "3b7b2b62-e39c-5936-b0d8-5406206e57b6", "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04", "f602680f-ea75-5bed-ae87-72f6be34a99b"},
     "SN": {"11c964ff-be82-5d02-8cd7-ccb41cda8f4f", "e0932fef-9e1c-5c95-b00c-7589e76d0e83", "f41e4e30-794e-5ce4-ba5e-cc72712cd691", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08", "57a03b38-5ec5-5e4f-b71a-4024bab1584c", "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04", "f602680f-ea75-5bed-ae87-72f6be34a99b", "a8dc0290-9f80-5763-8943-e16b8d2aa860"},
     "ST": {"a8dc0290-9f80-5763-8943-e16b8d2aa860", "ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"},
-    "TH": {"14cc61c4-4909-5671-b1ee-930a02cb9f51", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"},
+    "TH": {"d8fc6295-d0db-59e5-bd90-080bbc508c3a", "14cc61c4-4909-5671-b1ee-930a02cb9f51", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"},
 }
 NEW_TASK_OFFERS = {
+    "d8fc6295-d0db-59e5-bd90-080bbc508c3a": {"DE-HH", "DE-TH"},
     "b50e9903-58b3-520d-96bf-d5bc1fe51ebf": {"DE-BW"},
     "3b7b2b62-e39c-5936-b0d8-5406206e57b6": {"DE-MV", "DE-SL"},
     "e6a89922-75ce-53dd-9e7b-3a683398431c": {"DE-MV"},
@@ -169,7 +170,7 @@ def retained_authority_seeds(view, roles, baseline):
     stage = view["scope"]["stage"]
     state = view["scope"].get("jurisdiction", "DE")
     if stage == "CrossStage":
-        allowed_new_task = (set(NEW_TASK_OFFERS) - {NEW_EYE_ASSESSMENT_ID, "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"} if state == "DE" else
+        allowed_new_task = (set(NEW_TASK_OFFERS) - {NEW_EYE_ASSESSMENT_ID, "b50e9903-58b3-520d-96bf-d5bc1fe51ebf", "d8fc6295-d0db-59e5-bd90-080bbc508c3a"} if state == "DE" else
             {task for task, states in NEW_TASK_OFFERS.items() if state in states})
         if view["scope"]["courseProfile"] == "GK":
             allowed_new_task -= LK_ONLY_NEW_TASKS
@@ -241,9 +242,9 @@ class PhysicsStageAuthoring(unittest.TestCase):
             "d8fc6295-d0db-59e5-bd90-080bbc508c3a": {"DE-HH", "DE-TH"},
             "b50e9903-58b3-520d-96bf-d5bc1fe51ebf": {"DE-BW"},
         }
-        selection = json.loads((authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/closing-task-selection.actual.json").read_text())
-        self.assertEqual(selection["approvedAssessmentGoalIds"], ["b50e9903-58b3-520d-96bf-d5bc1fe51ebf"])
-        self.assertNotIn("d8fc6295-d0db-59e5-bd90-080bbc508c3a", authoring.graph.GOALS)
+        selection = json.loads((authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v4/closing-task-selection.actual.json").read_text())
+        self.assertEqual(set(selection["approvedAssessmentGoalIds"]), {"d8fc6295-d0db-59e5-bd90-080bbc508c3a", "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"})
+        self.assertIn("d8fc6295-d0db-59e5-bd90-080bbc508c3a", authoring.graph.GOALS)
         approved = set(selection["approvedAssessmentGoalIds"])
         pairs = set()
         for view in self.views.values():
@@ -260,7 +261,7 @@ class PhysicsStageAuthoring(unittest.TestCase):
     def test_lower_momentum_closures_add_no_missing_preparation(self):
         covered = {"d8fc6295-d0db-59e5-bd90-080bbc508c3a": "53afbda1-5776-502b-8867-471975d7b766",
                    "b50e9903-58b3-520d-96bf-d5bc1fe51ebf": "ecbaa101-cb10-5da3-9368-ae40ff587d74"}
-        for state, task in (("BW", "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"),):
+        for state, task in (("BW", "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"), ("HH", "d8fc6295-d0db-59e5-bd90-080bbc508c3a"), ("TH", "d8fc6295-d0db-59e5-bd90-080bbc508c3a")):
             view = self.views[f"de-{state.lower()}-seki.view.json"]
             seeds = authoring.graph.role_atoms(view)["target"] - covered.keys()
             basis = seeds | {p for seed in seeds for p in authoring.graph.prerequisites(seed)}
@@ -290,9 +291,9 @@ class PhysicsStageAuthoring(unittest.TestCase):
                     authoring.graph.prerequisites.cache_clear()
 
     def test_momentum_closures_preserve_all_old_reference_places_and_order(self):
-        path = authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/baseline-reference-places.actual.json"
+        path = authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v4/baseline-reference-places.actual.json"
         baseline = json.loads(path.read_text())
-        additions = {"d8fc6295-d0db-59e5-bd90-080bbc508c3a", "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"}
+        additions = {"d8fc6295-d0db-59e5-bd90-080bbc508c3a"}
         self.assertEqual(len(baseline["views"]), 90)
         for row in baseline["views"]:
             view = self.views[row["path"].rsplit("/", 1)[1]]
