@@ -66,6 +66,8 @@ Take a break whenever you need one. If your session has expired when you return,
 
 You need **Work** in ChatGPT Desktop. Open **Plugins → Add → Add marketplace**. Paste the GitHub address from the installation guide into **Source** and leave **Git ref** and **Sparse paths** blank. When the marketplace offers **SkillPilot Coach** version **1.2.0** or later, install or update the coach and check the installed version. Follow the sign-in steps if ChatGPT asks to connect it. [Installation guide](https://skillpilot.com/plugins#chatgpt-desktop)
 
+If the sign-in button is missing, [sign in through Windows PowerShell](../deploy/openai-personal-marketplace-release.md#windows-oauth-fallback).
+
 In SkillPilot, select **ChatGPT Desktop** and **Prepare learning with ChatGPT**. Open a fresh conversation in **Work** with **SkillPilot Coach** selected. Replace any prefilled example question with the prepared start message and send it. Keep the plugin selected and keep the start message private.
 
 Gemini is available for accounts set up for the controlled test. [Access requirements by provider](https://skillpilot.com/faq/coach-setup)

@@ -66,6 +66,8 @@ Du kannst jederzeit eine Pause machen. Ist die Lernsession beim nächsten Besuch
 
 Für diesen Test brauchst du **Work** in ChatGPT Desktop. Öffne **Plugins → Hinzufügen → Marketplace hinzufügen**. Kopiere die GitHub-Adresse aus der Installationsanleitung in **Quelle** und lasse **Git-Ref** und **Sparse-Pfade** leer. Sobald der Marketplace **SkillPilot Coach** in Version **1.2.0** oder neuer anbietet, installiere oder aktualisiere den Coach und prüfe die installierte Version. Folge der Anmeldung, wenn ChatGPT eine Verbindung anfordert. [Installationsanleitung](https://skillpilot.com/plugins#chatgpt-desktop)
 
+Wenn der Anmeldeknopf fehlt, verwende die [Anmeldung über Windows PowerShell](../deploy/openai-personal-marketplace-release.de.md#windows-oauth-fallback).
+
 Wähle im SkillPilot-Lernstart **ChatGPT Desktop** und **Lernen mit ChatGPT vorbereiten**. Öffne eine neue Unterhaltung in **Work** mit ausgewähltem **SkillPilot Coach**. Ersetze eine vorgefüllte Beispielfrage durch die vorbereitete Startnachricht und sende sie ab. Lass das Plugin ausgewählt und halte die Startnachricht privat.
 
 Gemini steht für eigens eingerichtete Testkonten bereit. [Zugangsvoraussetzungen je Anbieter](https://skillpilot.com/faq/coach-setup)
