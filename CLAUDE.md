@@ -95,8 +95,15 @@ the Qualifikationsphase waits for the E.5 review. In Hesse the incline with
 trigonometry and the friction coefficient with its sticking limit are a
 voluntary deepening of the fourth child with their own check; its mandatory
 closing check uses the balance of forces on a line (decision of 25 November
-2026 for the second step). See the E.2 cut in
-[AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
+2026 for the second step). Part 1 of that step added three momentum goals
+(individual and total momentum, mean resultant force, and for the
+Leistungskurs the instantaneous force from a momentum-time diagram), narrowed
+Newton's second axiom to F = m·a for constant mass and stated the conditions
+of conservation of momentum exactly. A goal is a target only where the Land's
+official text carries it. Two short tasks of SkillPilot's own close the
+lower-stage routes in Hamburg, Thuringia and Baden-Württemberg; a new
+lower-stage target always needs its closing route planned with it. See the
+E.2 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 
 **Arrows of directed quantities (25 November 2026).** An arrow for force,
 velocity, momentum or field strength in a sketch of position space is a

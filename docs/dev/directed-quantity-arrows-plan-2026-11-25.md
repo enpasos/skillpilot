@@ -1,6 +1,6 @@
 # Pfeile gerichteter Größen: Entscheidung und Umsetzungsplan, 25. November 2026
 
-**Stand: 25. November 2026, 20:30 MEZ. Arbeitsgrundlage.** Am Katalog ist noch
+**Stand: 25. November 2026, 22:45 MEZ. Arbeitsgrundlage.** Am Katalog ist noch
 nichts geändert. Als geliefert gilt nur, was die Tabelle in Abschnitt 6 so
 benennt; den Integrationsstand führt das
 [Management Summary](stage-plan-management-summary.md).
@@ -132,8 +132,8 @@ Daneben laufen unabhängig die Neuextraktion der Physikquellen und
 
 | Paket | Stand am 25. November 2026 |
 |---|---|
-| A0 | In Kraft. Angewandt auf die fünf Bilder und zwei Aufgaben von E.2, Schritt 2, Teil 1; vier Bilder angenommen, eines in Überarbeitung. |
-| A1 | Beauftragt, beginnt nach der Übergabe von Teil 1. |
+| A0 | In Kraft. Angewandt auf die fünf Bilder und zwei Aufgaben von E.2, Schritt 2, Teil 1; alle fünf Bilder sind angenommen, die beiden Aufgaben rechnen mit Vorzeichen und zeigen keine Pfeile. |
+| A1 | Beauftragt am 25. November; Teil 1 ist übergeben, die Knotenprüfung läuft. |
 | A2 bis A5 | Nicht begonnen. |
 
 ## 7. Regeln und Risiken
