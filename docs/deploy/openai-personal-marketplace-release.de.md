@@ -4,11 +4,12 @@
 
 Externe Tester verwenden ihr eigenes ChatGPT-Konto mit Marketplace-Import in
 der Windows-App. **Work** kann als Installationsansicht dienen. Für den Lernstart
-wechseln sie in derselben App zu **Codex → Dieser Computer**. Der Product Owner
-hat den regulären Backend-Rollout nach erfolgreicher CI freigegeben. Den
-aktuellen Stand halten der
-[Ablauf mit Testnachweisen](openai-beta-distribution-assessment.md) und die
-[deutsche Installationsanleitung](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme) fest.
+wechseln sie in derselben App zu **Codex → Dieser Computer**. Version
+**1.2.0** ist im öffentlichen Git-Marketplace veröffentlicht. Der produktive
+Server stellt seit dem 25. November 2026 alle 16 Werkzeuge bereit.
+Die [deutsche Installationsanleitung](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme)
+führt durch den ersten Lernstart. Der
+[Testbericht](openai-beta-distribution-assessment.md) dokumentiert die Ergebnisse.
 
 ### Windows-Anmeldung bei fehlendem Anmeldeknopf { #windows-oauth-fallback }
 
@@ -52,8 +53,9 @@ Das Lernen erfolgt im Chat. [Tester-Anleitung](https://github.com/enpasos/skillp
 Am **25. November 2026 um 05:13:59 UTC** rief der sichtbare Codex-Chat mit
 dem Git-Paket **1.2.0** `get_skillpilot_context` gegen das damalige Backend mit
 14 Tools erfolgreich auf. Im Chat waren das Tool-Ergebnis, das Lernziel und
-vier Lernwege sichtbar. Dieser Vorabtest gilt für den Lernstart. Eine Abnahme
-des aktualisierten Backends und weiterer Lernschritte erfolgt separat.
+vier Lernwege sichtbar. Derselbe Test bestätigte das Speichern und Fortsetzen
+des Lernstands. Ein frischer Aufruf nach dem Backend-Rollout lieferte um
+**10:24:45 UTC** einen Lernkontext vom neuen Build.
 
 **Work** ist ein separater Testpfad. Im aktuellen Work-Test erhielt der
 MCP-Aufruf `401`. Ein erfolgreicher Work-Toolaufruf steht weiterhin aus.

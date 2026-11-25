@@ -742,6 +742,23 @@ learner's views, and a plan of which nothing is left. A backup that holds such
 a plan is still refused as a whole (open question to the Product Owner,
 25 November 2026).
 
+**Goal in progress after a regrouping, 25 November 2026.** The same holds for
+the goal a learner is working on. When a regrouping moves an ordinary goal in
+progress out of the section the learner focuses, the learner keeps their
+place: as long as the goal is a target of the Personal Curriculum in a subject
+of the focus, the backend keeps it for teaching and completion (frontier,
+required unit opening, the coach's unit context, and the state check that
+would otherwise clear it). The focus the learner chose stays what they chose:
+the focus list of the Cockpit, the stored focus, navigation options,
+completion offers and the backup do not gain the goal, and nothing is written.
+A focus written by the learner, also the same focus written again, still ends
+work on a goal outside it, and a new ordinary goal can only be started inside
+the focus. The rule reads the present state of goal and focus; it keeps no
+record of why the goal lies outside. Exams and card decks are
+not kept this way: an exam outside the focus is governed by its
+direct-assessment binding or the explicit choice of its offer. A learner who
+follows plans is governed by the scope of the plans.
+
 On 24 November the Product Owner approved the return of the
 multiphase exam to E.1. Two independent review rounds then found that its
 edition evidences no whole goal, so it is retired in the historical container

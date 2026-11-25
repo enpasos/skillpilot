@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-25T09:59:18.760950+01:00",
+  "branch": "fix/laufendes-ziel-nach-umgruppierung",
+  "reviewedCommit": "1431a79dbea806dfed00a268b0b2bec4e58f7faa",
+  "reviewedTree": "edb93e08a6c28f51c291718cf556af75637de58c",
+  "previousReviewedCommit": "53fd44c88b4da1380297112d3e2f67b1bab65980",
+  "patchSha256": "32241af23440194d2336fdd4cdb2fc930568705a89831c690e2cd4feabdbfc39",
+  "disposition": "correction-requested",
+  "questions": [
+    {
+      "number": 1,
+      "verdict": "correct-origin-assumption",
+      "observedOtherOrigin": "A regular direct assessment can sit outside the chosen focus."
+    },
+    {
+      "number": 2,
+      "verdict": "correct",
+      "directCallers": 14,
+      "confirmedIssues": [
+        "A transient atom becomes durable in a signed backup and a restored focus.",
+        "The Cockpit exposes a temporary atom as a selected focus.",
+        "A stored global offer cursor without explicit offer focus or current direct binding is retained by the new reconciliation."
+      ]
+    },
+    {
+      "number": 3,
+      "verdict": "confirm-ordinary-continuation-correct-side-effects",
+      "goals": [
+        "4a2bf015",
+        "68c90ba6"
+      ],
+      "unitPilot": [
+        false,
+        true
+      ],
+      "controls": [
+        "ordinary goal",
+        "no cursor",
+        "valid and expired direct assessment",
+        "global offer reconciliation",
+        "signed backup and restore",
+        "navigation and completion choices"
+      ]
+    },
+    {
+      "number": 4,
+      "verdict": "additional-work-no-consistent-general-latency-increase",
+      "measuredCalls": 2304,
+      "orders": [
+        "base then candidate",
+        "candidate then base"
+      ],
+      "warmupsPerCell": 16,
+      "timedReadsPerCell": [
+        48,
+        24
+      ],
+      "isolatedHelperTiming": false
+    }
+  ],
+  "reviewers": [
+    {
+      "id": "A",
+      "driver": "collaboration.spawn_agent",
+      "context": "fresh, fork_turns=none",
+      "agent": "/root/running_goal_review_a",
+      "modelSelection": "gpt-6.1-sol ultra",
+      "answer": {
+        "path": "reviewer-a.md",
+        "bytes": 19858,
+        "sha256": "68c33c775d9ef55f03f43d32adf954b556c7f71c1359b91bb17a886a9e521349"
+      }
+    },
+    {
+      "id": "B",
+      "driver": "collaboration.spawn_agent",
+      "context": "fresh, fork_turns=none",
+      "agent": "/root/running_goal_review_b",
+      "modelSelection": "inherited session model",
+      "answer": {
+        "path": "reviewer-b.md",
+        "bytes": 14402,
+        "sha256": "5710d8ab1cc95ddc61ad57dd3edb385c62a71771ce06fc3c41fd41de75861550"
+      }
+    }
+  ],
+  "nativeTests": {
+    "acceptedInstances": 32,
+    "actualJUnitSuites": [
+      {
+        "path": "raw/reviewer-a/baseline-2-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+        "bytes": 21950510,
+        "sha256": "7bf5240942947c73dd12c9f6a19ceab540ab637758d6457678415de7723b0d0f",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-a/baseline-3-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+        "bytes": 14137224,
+        "sha256": "ac92e23b5064b2f95dd297bd6e35f562d9416aae277d0005a067f68e5db00feb",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-a/baseline-origin2-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+        "bytes": 552749,
+        "sha256": "196b45c61750040cfbc3988d9a72be4ef52284435a719c85ceb3f1b1433f0c4c",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-a/candidate-2-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+        "bytes": 22148132,
+        "sha256": "f8fb31cc8423e3d602579a272cd04c1ff2bf2df9228459dccad2daa6cf57d5e2",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-a/candidate-3-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+        "bytes": 14245973,
+        "sha256": "5113071879cb2d009c6d5605f94ca6b8f0cf60a40797686c6af74225d0db9c1e",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-a/candidate-origin2-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+        "bytes": 553225,
+        "sha256": "78c9dc7d4f88fe17002ed6553b8c18e5ecab4d42d678a32f68f7d78fb4e2f875",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-a/failed-rate-cap-TEST.xml",
+        "bytes": 587975,
+        "sha256": "6a39e61a7617973e0bdcb50e3395bfe357e32f2865d53835ca33b958ca182ea6",
+        "tests": 2,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": false
+      },
+      {
+        "path": "raw/reviewer-b/candidate-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+        "bytes": 1956875,
+        "sha256": "672fa3ed6dc84f4ea6e5be216fc0f276decfba9ccc9fc78205c0ac9b91570c3c",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-b/candidate-extra-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+        "bytes": 727521,
+        "sha256": "512e4683e519a706dc7de71218dbfffae3fe3786acfa2cc05b8290daa43f12d0",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-b/parent-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+        "bytes": 1886712,
+        "sha256": "a5a28cd0d44fabcfa8785a4ac620ac1e0072a51ad14abed2845297e158c9e7e1",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-b/parent-extra-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+        "bytes": 735165,
+        "sha256": "b94db932e9010612a9a8ba741227f0c3a7df090613bf2660d7b66f9089ae52a1",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/reviewer-b/setup-attempt/candidate-extra-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+        "bytes": 536689,
+        "sha256": "3a11ddf17530345b180451a109ceda5e122534a39c7ab3cd76b4a255defa6151",
+        "tests": 2,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": false
+      },
+      {
+        "path": "raw/reviewer-b/setup-attempt/parent-extra-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+        "bytes": 536673,
+        "sha256": "6bce305ebab51cb3b65e2db1970e3e50d77dddfa539ba1f7c75bd241ea07cf59",
+        "tests": 2,
+        "failures": 2,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": false
+      },
+      {
+        "path": "raw/surfaces/1431a79dbea806dfed00a268b0b2bec4e58f7faa.xml",
+        "bytes": 1348442,
+        "sha256": "fa110c2868e69c079cce0e162729bcabdeb6bb483dcf4c4c8c078524960beecd",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      },
+      {
+        "path": "raw/surfaces/53fd44c88b4da1380297112d3e2f67b1bab65980.xml",
+        "bytes": 1335600,
+        "sha256": "f35285f3e896c720c523807b7bbf499b2c5f02fcc57acac597fda7353860174f",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "accepted": true
+      }
+    ],
+    "experimentalSetupFailuresCountedInAccepted": false
+  },
+  "reviewReport": {
+    "path": "review.md",
+    "bytes": 14158,
+    "sha256": "2df24d712bb8833a5e8066c4098e0cddeed08a34d946d477f35e828ec77f7e73"
+  },
+  "writeScope": "Read-only review. No branch commits.",
+  "artifacts": [
+    {
+      "path": "callers.actual.json",
+      "bytes": 7190,
+      "sha256": "5d52438c94b8855dca76f252480007fdc615b5110f821b02917e0297a51f17de"
+    },
+    {
+      "path": "probes/callers.py",
+      "bytes": 1334,
+      "sha256": "efedfc229d2121a4e7a686f1b3c6872a15d87870b668774d0ad3e01a3b55f7a2"
+    },
+    {
+      "path": "probes/run-surfaces.sh",
+      "bytes": 2349,
+      "sha256": "1a9255e731417b99975bf4fecc56320d701aca41d6f53ce5c3796bf9b8c6a503"
+    },
+    {
+      "path": "probes/summarize-surfaces.py",
+      "bytes": 1562,
+      "sha256": "472b86aa5fb4734bd7c7a44fe50a7776408a710b44ff9849b59adabb70ecc083"
+    },
+    {
+      "path": "probes/surfaces.gradle",
+      "bytes": 184,
+      "sha256": "eed009278bba240dc471dea437f343911b64bddd0d9bf0c7bfc9067014b13ea7"
+    },
+    {
+      "path": "probes/surfaces.method.java",
+      "bytes": 2799,
+      "sha256": "96b8dd0bb3b7086bd1f86519082e2c4c225ce451572e3e377ce81f1cf74bb4ec"
+    },
+    {
+      "path": "raw/reviewer-a/baseline-2-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+      "bytes": 21950510,
+      "sha256": "7bf5240942947c73dd12c9f6a19ceab540ab637758d6457678415de7723b0d0f"
+    },
+    {
+      "path": "raw/reviewer-a/baseline-3-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+      "bytes": 14137224,
+      "sha256": "ac92e23b5064b2f95dd297bd6e35f562d9416aae277d0005a067f68e5db00feb"
+    },
+    {
+      "path": "raw/reviewer-a/baseline-origin2-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+      "bytes": 552749,
+      "sha256": "196b45c61750040cfbc3988d9a72be4ef52284435a719c85ceb3f1b1433f0c4c"
+    },
+    {
+      "path": "raw/reviewer-a/bench-baseline-1.log",
+      "bytes": 25831,
+      "sha256": "d929eafc7bf2dc7b85008d9bf763e5bc2e1b1af7a8708a89f39d37a5b3a68f00"
+    },
+    {
+      "path": "raw/reviewer-a/bench-baseline-2.log",
+      "bytes": 12604,
+      "sha256": "ea0ea3651500f2b72e61850c3c2148977109520556333c8cb13ccb58afd1baec"
+    },
+    {
+      "path": "raw/reviewer-a/bench-baseline-3.log",
+      "bytes": 11974,
+      "sha256": "b967368c15be2154c414a7bca057af3f91c373456528a11ff97b1dab45181658"
+    },
+    {
+      "path": "raw/reviewer-a/bench-baseline-origin2.log",
+      "bytes": 12699,
+      "sha256": "e9b55704ebffa3e765cda19e4b38b0e63ab995aeb9b1bfa57fa61e3852657f35"
+    },
+    {
+      "path": "raw/reviewer-a/bench-candidate-2.log",
+      "bytes": 12609,
+      "sha256": "5b69bd5132ee2d17f86a549ac904b43d0e41c530906c34f27b87674527fdf52d"
+    },
+    {
+      "path": "raw/reviewer-a/bench-candidate-3.log",
+      "bytes": 11983,
+      "sha256": "4ffbd8015192b3c1497bfc1dda60679a681ea625a5660e79e11f4afddb3a57c3"
+    },
+    {
+      "path": "raw/reviewer-a/bench-candidate-origin.log",
+      "bytes": 12699,
+      "sha256": "9866c60cc5973a286f8e2e55b9ad6095d70ded4954365dc06b0c701211b8ece7"
+    },
+    {
+      "path": "raw/reviewer-a/bench-candidate-origin2.log",
+      "bytes": 8797,
+      "sha256": "31def843e7fa108662fa3dfeb3621af201ce4d595a2322e3d831760de59f7ec2"
+    },
+    {
+      "path": "raw/reviewer-a/candidate-2-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+      "bytes": 22148132,
+      "sha256": "f8fb31cc8423e3d602579a272cd04c1ff2bf2df9228459dccad2daa6cf57d5e2"
+    },
+    {
+      "path": "raw/reviewer-a/candidate-3-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+      "bytes": 14245973,
+      "sha256": "5113071879cb2d009c6d5605f94ca6b8f0cf60a40797686c6af74225d0db9c1e"
+    },
+    {
+      "path": "raw/reviewer-a/candidate-origin2-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.GoalInProgressProbe.xml",
+      "bytes": 553225,
+      "sha256": "78c9dc7d4f88fe17002ed6553b8c18e5ecab4d42d678a32f68f7d78fb4e2f875"
+    },
+    {
+      "path": "raw/reviewer-a/failed-rate-cap-TEST.xml",
+      "bytes": 587975,
+      "sha256": "6a39e61a7617973e0bdcb50e3395bfe357e32f2865d53835ca33b958ca182ea6"
+    },
+    {
+      "path": "raw/reviewer-a/failed-rate-limit.log",
+      "bytes": 2086,
+      "sha256": "a0952919c35fdc1174a000bdaf7da4b1b4cefbe54b1ae222aff7eea532135c06"
+    },
+    {
+      "path": "raw/reviewer-a/failed-setup-symlink.log",
+      "bytes": 13047,
+      "sha256": "a63339e827c2d15f07a88c90f6792647271e75cc7efa16bdced57bc6e6dec218"
+    },
+    {
+      "path": "raw/reviewer-b/candidate-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+      "bytes": 1956875,
+      "sha256": "672fa3ed6dc84f4ea6e5be216fc0f276decfba9ccc9fc78205c0ac9b91570c3c"
+    },
+    {
+      "path": "raw/reviewer-b/candidate-extra-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+      "bytes": 727521,
+      "sha256": "512e4683e519a706dc7de71218dbfffae3fe3786acfa2cc05b8290daa43f12d0"
+    },
+    {
+      "path": "raw/reviewer-b/candidate-extra.log",
+      "bytes": 12021,
+      "sha256": "6e0e9be516d94c04a4fa798a9c5b058e214d3f40ae4e07bccbb3c36314df71b9"
+    },
+    {
+      "path": "raw/reviewer-b/candidate.log",
+      "bytes": 12969,
+      "sha256": "f4906e3b7a44db750b188c7d7fe6b408ba3db5f7469ba0c07ab265ce0bc115e0"
+    },
+    {
+      "path": "raw/reviewer-b/parent-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+      "bytes": 1886712,
+      "sha256": "a5a28cd0d44fabcfa8785a4ac620ac1e0072a51ad14abed2845297e158c9e7e1"
+    },
+    {
+      "path": "raw/reviewer-b/parent-extra-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+      "bytes": 735165,
+      "sha256": "b94db932e9010612a9a8ba741227f0c3a7df090613bf2660d7b66f9089ae52a1"
+    },
+    {
+      "path": "raw/reviewer-b/parent-extra.log",
+      "bytes": 11994,
+      "sha256": "141310d20e9a37ef107ff738e344973e17485a3adfc04596097d9c9d94913223"
+    },
+    {
+      "path": "raw/reviewer-b/parent.log",
+      "bytes": 12942,
+      "sha256": "b75a673b696cf185fe48ec7ddb5fdfdc2ac3d6e924ce681a5fc7c88a3d697246"
+    },
+    {
+      "path": "raw/reviewer-b/setup-attempt/candidate-extra-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+      "bytes": 536689,
+      "sha256": "3a11ddf17530345b180451a109ceda5e122534a39c7ab3cd76b4a255defa6151"
+    },
+    {
+      "path": "raw/reviewer-b/setup-attempt/candidate-extra.log",
+      "bytes": 16217,
+      "sha256": "c89b91f4b81adca87117ecabea94267b4c65192381427e586221257e0b88a20b"
+    },
+    {
+      "path": "raw/reviewer-b/setup-attempt/parent-extra-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ProgressReviewProbe.xml",
+      "bytes": 536673,
+      "sha256": "6bce305ebab51cb3b65e2db1970e3e50d77dddfa539ba1f7c75bd241ea07cf59"
+    },
+    {
+      "path": "raw/reviewer-b/setup-attempt/parent-extra.log",
+      "bytes": 16187,
+      "sha256": "a90594e2391a21a96b869a660216055703693192f09a4681ee2c4b61ff664187"
+    },
+    {
+      "path": "raw/surfaces/1431a79dbea806dfed00a268b0b2bec4e58f7faa.log",
+      "bytes": 11938,
+      "sha256": "78b72174fdabb25dd3253fab9cf69cce518b6f2ff19a39c05460dc29217a7d52"
+    },
+    {
+      "path": "raw/surfaces/1431a79dbea806dfed00a268b0b2bec4e58f7faa.xml",
+      "bytes": 1348442,
+      "sha256": "fa110c2868e69c079cce0e162729bcabdeb6bb483dcf4c4c8c078524960beecd"
+    },
+    {
+      "path": "raw/surfaces/53fd44c88b4da1380297112d3e2f67b1bab65980.log",
+      "bytes": 11938,
+      "sha256": "32f5286b025d762bc0aed82c32e2d0f01d8b1ded099e26625cb1cb1714eed21e"
+    },
+    {
+      "path": "raw/surfaces/53fd44c88b4da1380297112d3e2f67b1bab65980.xml",
+      "bytes": 1335600,
+      "sha256": "f35285f3e896c720c523807b7bbf499b2c5f02fcc57acac597fda7353860174f"
+    },
+    {
+      "path": "review.md",
+      "bytes": 14158,
+      "sha256": "2df24d712bb8833a5e8066c4098e0cddeed08a34d946d477f35e828ec77f7e73"
+    },
+    {
+      "path": "reviewer-a/bench-init.gradle",
+      "bytes": 253,
+      "sha256": "f39116e9a6d7a91214b8ee150c78847e25948273aa4d1e92de6009e862a8ffbb"
+    },
+    {
+      "path": "reviewer-a/bench.method.java",
+      "bytes": 5603,
+      "sha256": "d0396c59dedcda7fce5e15e85c41b3fa15002859a388c2c244b5f40881a55f26"
+    },
+    {
+      "path": "reviewer-a/environment.txt",
+      "bytes": 2326,
+      "sha256": "85f81ce7a415fea896bf35876c49b0cff26a43b019e7fae915b29d05fe0fceaf"
+    },
+    {
+      "path": "reviewer-a/evidence.actual.json",
+      "bytes": 1638,
+      "sha256": "a389c11a15322f5c9aa3ed0a527be769df9a015471edd10eb993c6d5efd29761"
+    },
+    {
+      "path": "reviewer-a/expiry.actual.json",
+      "bytes": 1455,
+      "sha256": "7d3e3df5e25733ce4850b2550854d79cb9d0122147708194721b6969f4ec23ff"
+    },
+    {
+      "path": "reviewer-a/measure.actual.json",
+      "bytes": 220137,
+      "sha256": "919d93bce846d236b5883d6b071e25c02ab5ba30c411f0eba3caba242e5db466"
+    },
+    {
+      "path": "reviewer-a/run-native.sh",
+      "bytes": 3310,
+      "sha256": "5d7a2d29926b16e356f8be6feda43f1b9f18a324bb300bd1157c9572c3714994"
+    },
+    {
+      "path": "reviewer-a/summarize.py",
+      "bytes": 2705,
+      "sha256": "e65973222a0c99a93ece20009e787ddbfce703969e6c052f1b4c5552f774e20f"
+    },
+    {
+      "path": "reviewer-a/timing-table.md",
+      "bytes": 3500,
+      "sha256": "9f6ca3ce2f297cab305f1756d3013f6437b83e543cd96c52b25f00dd4b48685c"
+    },
+    {
+      "path": "reviewer-a.md",
+      "bytes": 19858,
+      "sha256": "68c33c775d9ef55f03f43d32adf954b556c7f71c1359b91bb17a886a9e521349"
+    },
+    {
+      "path": "reviewer-b/probe.gradle",
+      "bytes": 184,
+      "sha256": "03a9a0fe82e2247bec19beb898afbb96019e6cb7a1e9c9149ca2cb05695e65e0"
+    },
+    {
+      "path": "reviewer-b/probe.method.java",
+      "bytes": 10715,
+      "sha256": "579d5b54fb56aba7a4662a0878618b7ca78035c67b376fac8cc02d30c8c8b98f"
+    },
+    {
+      "path": "reviewer-b/run.sh",
+      "bytes": 2630,
+      "sha256": "4ad0a013096005111e5f3ddc96f6171c7574d44a849750ecffe249e26d901ca8"
+    },
+    {
+      "path": "reviewer-b/runtime.actual.json",
+      "bytes": 39796,
+      "sha256": "602643e985344bfbd7cd68bc1539ba25ac21f24fe2bbd7e463dd564c48fdd807"
+    },
+    {
+      "path": "reviewer-b/summarize.py",
+      "bytes": 1348,
+      "sha256": "91d6dbc348a8b4d02defa2a1bed2b7a5651806a6296ffc1b9ece732dd0ce00ea"
+    },
+    {
+      "path": "reviewer-b/ui-reselection.actual.json",
+      "bytes": 666,
+      "sha256": "d8c55b27da633604850c5f6fcbf63ad184e2226e5415002e902d61afa3b1ce18"
+    },
+    {
+      "path": "reviewer-b/ui-reselection.mts",
+      "bytes": 754,
+      "sha256": "2174dc4c4d5d0c95bfe7d96979ce1c5ad56650dcc5e4ccdadd0141b8cdb798e1"
+    },
+    {
+      "path": "reviewer-b.md",
+      "bytes": 14402,
+      "sha256": "5710d8ab1cc95ddc61ad57dd3edb385c62a71771ce06fc3c41fd41de75861550"
+    },
+    {
+      "path": "surfaces.actual.json",
+      "bytes": 55931,
+      "sha256": "a5c9f14d73478e6ff0a1e075a20a52bdf716c4a81ee00769b9c668fa020b22c5"
+    }
+  ]
+}

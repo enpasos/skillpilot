@@ -1,0 +1,35 @@
+{
+  "reviewer": "A",
+  "verdict": "correction_required",
+  "base": "53fd44c88b",
+  "candidate": "1431a79dbea806dfed00a268b0b2bec4e58f7faa",
+  "callSitesAudited": 14,
+  "acceptedNativeTestCases": 12,
+  "timedReads": 2304,
+  "warmupReads": 1024,
+  "findings": [
+    {
+      "id": "A1",
+      "severity": "medium",
+      "topic": "temporary effective focus is exported and imported as persistent focus",
+      "basis": "independent source call-chain audit"
+    },
+    {
+      "id": "A2",
+      "severity": "low",
+      "topic": "exclusive regrouping origin explanation omits legitimate direct assessment start",
+      "basis": "source audit and native ordinary/global direct-assessment origin probes"
+    }
+  ],
+  "files": {
+    "reviewer-a.md": "68c33c775d9ef55f03f43d32adf954b556c7f71c1359b91bb17a886a9e521349",
+    "reviewer-a/bench-init.gradle": "f39116e9a6d7a91214b8ee150c78847e25948273aa4d1e92de6009e862a8ffbb",
+    "reviewer-a/timing-table.md": "9f6ca3ce2f297cab305f1756d3013f6437b83e543cd96c52b25f00dd4b48685c",
+    "reviewer-a/summarize.py": "e65973222a0c99a93ece20009e787ddbfce703969e6c052f1b4c5552f774e20f",
+    "reviewer-a/run-native.sh": "5d7a2d29926b16e356f8be6feda43f1b9f18a324bb300bd1157c9572c3714994",
+    "reviewer-a/environment.txt": "85f81ce7a415fea896bf35876c49b0cff26a43b019e7fae915b29d05fe0fceaf",
+    "reviewer-a/measure.actual.json": "919d93bce846d236b5883d6b071e25c02ab5ba30c411f0eba3caba242e5db466",
+    "reviewer-a/bench.method.java": "d0396c59dedcda7fce5e15e85c41b3fa15002859a388c2c244b5f40881a55f26",
+    "reviewer-a/expiry.actual.json": "7d3e3df5e25733ce4850b2550854d79cb9d0122147708194721b6969f4ec23ff"
+  }
+}
