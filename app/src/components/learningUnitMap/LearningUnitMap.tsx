@@ -17,6 +17,7 @@ import './learningUnitMap.css'
 
 const nodeTypes = { learningUnit: MapNode }
 const edgeTypes = { routed: ElkRoutedEdge }
+const nodeDimensions = { width: NODE_WIDTH, height: NODE_HEIGHT }
 type Example = { id: string; label: string }
 type MapProps = {
   fixture: LearningMapFixture
@@ -336,8 +337,9 @@ function MapScene({ fixture, examples, exampleId, onExampleChange, embedded = fa
     const entry = fixture.entries[id]
     const goalAction = getGoalAction?.(nav.scopeId, id)
     const assessmentPeer = entry.kind === 'assessment' && inspected?.kind === 'assessment'
+    // ReactFlow preserves measured handles across data updates when the fixed ELK dimensions stay set.
     return { id, type: 'learningUnit', position: activeLayout.positions[id],
-      width: 220, height: 72, draggable: false, selectable: false,
+      ...nodeDimensions, measured: nodeDimensions, draggable: false, selectable: false,
       data: { entry, childCount: entry.children?.length ?? 0,
         outsideCount: fixture.scopeContext
           ? new Set(fixture.scopeContext[nav.scopeId]?.[id]?.map(context => context.requiredGoalId)).size

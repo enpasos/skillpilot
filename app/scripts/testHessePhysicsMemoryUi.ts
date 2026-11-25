@@ -97,6 +97,52 @@ function monitorBoard(dialog: Locator) {
   }, LEARNER_UI_REFRESH_EVENT)
 }
 
+async function checkTabReturn(page: Page, dialog: Locator, phaseScope: string) {
+  const board = dialog.locator(`.lum-canvas[data-scope-id="${phaseScope}"][aria-busy="false"]`)
+  await board.waitFor()
+  await dialog.getByRole('button', { name: 'Diese Ebene einpassen', exact: true }).click()
+  await dialog.getByRole('button', { name: 'Karte verkleinern', exact: true }).click()
+  const arrowSelector = '.react-flow__edge:has(path.react-flow__edge-path)'
+  const arrows = board.locator(arrowSelector)
+  await arrows.first().waitFor({ state: 'attached' })
+  const readArrows = () => arrows.evaluateAll(edges => edges.map(edge => {
+    const path = edge.querySelector<SVGPathElement>('path.react-flow__edge-path')!
+    return { id: edge.getAttribute('data-id') ?? '', route: path.getAttribute('d'),
+      arrow: path.getAttribute('marker-end') ?? path.getAttribute('marker-start'), length: path.getTotalLength() }
+  }).sort((left, right) => left.id.localeCompare(right.id)))
+  const originalArrows = await readArrows()
+  assert(originalArrows.length > 1 && originalArrows.every(arrow => arrow.route && arrow.arrow && arrow.length > 0),
+    'the Physics introduction phase draws its actual prerequisite arrows')
+  const camera = () => board.locator('.react-flow__viewport').evaluate(element => getComputedStyle(element).transform)
+  const originalCamera = await camera()
+  const probe = await monitorBoard(dialog)
+  const arrowProbe = await board.evaluateHandle((element, selector) => {
+    const count = () => element.querySelectorAll(selector).length
+    let minimum = count()
+    const observer = new MutationObserver(() => { minimum = Math.min(minimum, count()) })
+    observer.observe(element, { childList: true, subtree: true })
+    return { stop: () => { observer.disconnect(); return minimum } }
+  }, arrowSelector)
+  // Headless Chromium keeps the original tab visible. Drive the same visibility listeners directly.
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' })
+    try {
+      document.dispatchEvent(new Event('visibilitychange'))
+    } finally {
+      Reflect.deleteProperty(document, 'visibilityState')
+    }
+    document.dispatchEvent(new Event('visibilitychange'))
+  })
+  await page.waitForFunction(state => state.refreshCounts.FULL_REFRESH === 1, probe)
+  await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+  assert.equal(await arrowProbe.evaluate(state => state.stop()), originalArrows.length,
+    'returning to the tab preserves the arrow count throughout the refresh')
+  assert.deepEqual(await readArrows(), originalArrows, 'returning to the tab preserves the rendered arrow routes and markers')
+  assert.equal(await camera(), originalCamera)
+  assert.deepEqual(await probe.evaluate(state => state.activity), { layouts: 0, busy: 0, loading: 0 })
+  console.log(`Physics introduction phase: ${originalArrows.length} arrows preserved on browser tab return`)
+}
+
 async function checkMapLayout(page: Page, dialog: Locator, releaseDeck: () => void, changeActiveGoal: () => void) {
   const board = dialog.locator(`.lum-canvas[data-scope-id="${topicId}"][aria-busy="false"]`)
   const node = (goalId: string) => dialog.locator(`[data-entry-id="${goalId}"]`)
@@ -575,6 +621,10 @@ try {
     assert.equal(await dialog.locator('.lum-scope-actions, .lum-inspector, .unit-introduction, [data-testid="unit-assessment-summary"], [data-testid="learner-unit-assignment"], [data-testid="learning-map-flashcard-practice"]').count(), 0,
       'the real subject map shows only its header and graph, including nested topic boards')
     if (checkChildBoard) {
+      await dialog.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
+      await checkTabReturn(page, dialog, `composition:${dataView.viewId}:structure:physics-e-phase`)
+      await dialog.locator(`[data-entry-id="${dataTopic}"] .lum-node-open`).press('Enter')
+      await dialog.locator(`.lum-canvas[data-scope-id="${dataTopic}"][aria-busy="false"]`).waitFor()
       releaseDeck()
       const nestedScope = `composition:${dataView.viewId}:structure:physics-e1-accelerated-and-free-fall`
       const title = 'Freier Fall schwerer Kugeln'
