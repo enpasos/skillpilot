@@ -102,6 +102,47 @@ test("ordinary immediate persistence, failed-write honesty and fixed verdict can
   }
 });
 
+test("unconfirmed saves distinguish approval, rejection and ambiguous transport", () => {
+  for (const [before, after, reason] of [
+    ["the matching `savedGoalId` and `savedMastery=1`",
+      "a different goal or any saved value", /successful receipt for the same goal/u],
+    ["and aggregate progress do not confirm the save",
+      "or aggregate progress confirms the save", /aggregate state do not prove/u],
+    [/approval control only if confirmed available and wait without a second write/u,
+      "approval control even if unavailable and send a second write", /pending approval without inventing/u],
+    [/Do not retry or bypass that decision with another\s+tool/u,
+      "Retry that decision with another tool", /denial or cancellation must stop/u],
+    ["A correctable input must actually be corrected",
+      "Every error can be retried unchanged", /validate a genuine correction/u],
+    ["new `clientRequestId` for changed",
+      "original `clientRequestId` for changed", /without changing the result or reusing/u],
+    ["say that saving could not be", "say that approval was denied and saving was not",
+      /Missing replies leave the save uncertain/u],
+    ["No automatic write.", "Retry automatically.", /authorized identical retry/u],
+    ["reuse the original arguments", "change the arguments", /authorized identical retry/u],
+    ["withhold the completion handoff and successor", "teach a successor immediately",
+      /unresolved save must preserve/u],
+  ]) {
+    assert.throws(() => assertCurrentCoachBehavior(changed("skill", before, after)), reason);
+  }
+});
+
+test("a valid orientation closure does not depend on an immediate mastery action", () => {
+  for (const [before, after, reason] of [
+    ["It intentionally omits", "It must always include", /immediate action list must not forbid/u],
+    ["active atomic non-memory goal", "any current goal", /active goal and a valid backend action/u],
+    [/wait for explicit\s+acceptance of the offered closure/u, "save before acceptance",
+      /must save the same goal after acceptance/u],
+    [/even\s+though mastery is absent/u, "only if mastery is present",
+      /despite the immediate-list omission/u],
+    ["fresh `stateVersion`", "the version from the earlier closure offer", /current goal, session, revision/u],
+    ["host restriction blocks the write", "host restriction is advisory",
+      /never bypass an actual block/u],
+  ]) {
+    assert.throws(() => assertCurrentCoachBehavior(changed("skill", before, after)), reason);
+  }
+});
+
 test("understanding goals can begin with teaching and keep published practice", () => {
   assert.throws(() => assertCurrentCoachBehavior(changed("skill", "explain it directly", "ask for prior knowledge")),
     /must allow a direct explanation/u);

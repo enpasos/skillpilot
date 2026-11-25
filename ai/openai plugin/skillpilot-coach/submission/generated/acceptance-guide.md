@@ -1,16 +1,16 @@
-# ChatGPT-Abnahme: SkillPilot Coach 1.2.0
+# ChatGPT-Abnahme: SkillPilot Coach 1.2.1
 
 Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten; Änderungen an den Quellen prüfen und erneut `prepare` ausführen.
 
 **Status: NICHT AUSGEFÜHRT.** Diese Anleitung und die leere Trace-Vorlage sind keine bestandenen Tests, keine Rollout-Bestätigung und keine Einreichung.
 
-Kandidat: `1.2.0` · MCP-Endpunkt: `https://mcp-openai.skillpilot.com/mcp`
+Kandidat: `1.2.1` · MCP-Endpunkt: `https://mcp-openai.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `9efbb93fe54efe06cd5f912f05925a23ca2b33418bafae53de49b6eab925f21b`
+Testsuite-SHA-256: `6f2abcb3872f28e556c90c391c3669f8e898f15f8e9c73e242549a706bad8106`
 
 Vertrags-SHA-256: `a780173bde2d1ff6d9ac79322612148c02c2724de2c192a22fac6b1ee7bcaed5`
 
-Paket-Snapshot-SHA-256: `c203ec7492845b5169f3c045cd8e4ce2d866c154a5fca1a382c9fdae11085af4`
+Paket-Snapshot-SHA-256: `b09565af5386b01c9876d9aee5cd7d3cb7f25e46e19f78bc6d9e1a003721e0fe`
 
 ## Vorbereitung
 

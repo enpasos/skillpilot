@@ -1,0 +1,174 @@
+{
+  "status": "PASS",
+  "sha": "05a2b1c8c3a50f276a9a7efe9e3d942849b9dca7",
+  "at": "2026-11-25T15:55:54.552Z",
+  "method": "Headless Chromium mounting the actual Cockpit today/management/unit-assignment components with synthetic stale API fixtures. Backend routes are mocked; no live learner or backup import.",
+  "rows": [
+    {
+      "mode": "plain",
+      "oldPlanLabelVisibleInitially": false,
+      "detailsActionVisibleInitially": false,
+      "subjectSwitchVisibleInitially": false,
+      "beforeText": "Lernplan\n\n1 Fachplan nicht auswertbar (Physik).\n\nPhysik\n\nHeute\n\nNicht auswertbar\n\nGESAMT\n\nNicht auswertbar\n\nLernplan",
+      "buttonText": "Einheitenauftrag in den Lernplan aufnehmen",
+      "disabled": true,
+      "outcome": "disabled",
+      "afterText": "Lernplan\n\n1 Fachplan nicht auswertbar (Physik).\n\nPhysik\n\nHeute\n\nNicht auswertbar\n\nGESAMT\n\nNicht auswertbar\n\nLernplan\nEinheitenauftrag im Lernplan\n\nDieser Auftrag plant die Prüfungsteile dieser Einheit ein.\n\nEinheitenauftrag in den Lernplan aufnehmen",
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/api/ui/learners/outdated-cockpit-fixture/learning-plans/by-landscape"
+        },
+        {
+          "method": "GET",
+          "path": "/api/ui/learners/outdated-cockpit-fixture/learning-plans/physics/unit-assignments"
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "mode": "rebind",
+      "oldPlanLabelVisibleInitially": false,
+      "detailsActionVisibleInitially": false,
+      "subjectSwitchVisibleInitially": false,
+      "beforeText": "Lernplan\n\n1 Fachplan nicht auswertbar (Physik).\n\nPhysik\n\nHeute\n\nNicht auswertbar\n\nGESAMT\n\nNicht auswertbar\n\nLernplan",
+      "buttonText": "Aktuelle Fassung für diesen Auftrag wählen",
+      "disabled": false,
+      "outcome": "mock save accepted; current assignment active",
+      "afterText": "Lernplan\nPhysik\n\nHeute\n\nNicht auswertbar\n\nGESAMT\n\nNicht auswertbar\n\nPlandetails\n\nImportierter alter Plan\n\nPlanzeitraum22.11.2026 – 03.12.2026\n\nPuffer2 von 2 Werktagen verbleiben\n\nLernplan\nEinheitenauftrag im Lernplan\n\nEinheitenauftrag aktiv. 0 / 1",
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/api/ui/learners/outdated-cockpit-fixture/learning-plans/by-landscape"
+        },
+        {
+          "method": "GET",
+          "path": "/api/ui/learners/outdated-cockpit-fixture/learning-plans/physics/unit-assignments"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/ui/learners/outdated-cockpit-fixture/learning-plans/by-landscape",
+          "body": {
+            "expectedRevision": 3,
+            "planLabel": "Importierter alter Plan",
+            "blocks": [
+              {
+                "id": "unit-block",
+                "kind": "learning",
+                "unitAssignment": {
+                  "sectionGoalId": "unit",
+                  "revision": "current",
+                  "fingerprint": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                },
+                "goalId": "unit",
+                "goalIds": [
+                  "unit"
+                ],
+                "title": "Vorheriger Abschnitt",
+                "startDate": "2026-11-22",
+                "endDate": "2026-12-01",
+                "atomicGoalIds": [
+                  "part-a"
+                ],
+                "active": true
+              },
+              {
+                "id": "buffer",
+                "kind": "buffer",
+                "title": "Puffer",
+                "startDate": "2026-12-02",
+                "endDate": "2026-12-03"
+              }
+            ]
+          }
+        },
+        {
+          "method": "GET",
+          "path": "/api/ui/learners/outdated-cockpit-fixture/learning-plans/by-landscape"
+        }
+      ],
+      "pageErrors": []
+    },
+    {
+      "mode": "rebind-unresolved",
+      "oldPlanLabelVisibleInitially": false,
+      "detailsActionVisibleInitially": false,
+      "subjectSwitchVisibleInitially": false,
+      "beforeText": "Lernplan\n\n1 Fachplan nicht auswertbar (Physik).\n\nPhysik\n\nHeute\n\nNicht auswertbar\n\nGESAMT\n\nNicht auswertbar\n\nLernplan",
+      "buttonText": "Aktuelle Fassung für diesen Auftrag wählen",
+      "disabled": false,
+      "outcome": "mock400 shows generic reload error; unrelated old-goal preserved in PUT",
+      "afterText": "Lernplan\n\n1 Fachplan nicht auswertbar (Physik).\n\nPhysik\n\nHeute\n\nNicht auswertbar\n\nGESAMT\n\nNicht auswertbar\n\nLernplan\n\nDer Einheitenauftrag konnte nicht geladen oder gespeichert werden. Neu laden",
+      "requests": [
+        {
+          "method": "GET",
+          "path": "/api/ui/learners/outdated-cockpit-fixture/learning-plans/by-landscape"
+        },
+        {
+          "method": "GET",
+          "path": "/api/ui/learners/outdated-cockpit-fixture/learning-plans/physics/unit-assignments"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/ui/learners/outdated-cockpit-fixture/learning-plans/by-landscape",
+          "body": {
+            "expectedRevision": 3,
+            "planLabel": "Importierter alter Plan",
+            "blocks": [
+              {
+                "id": "old-learning",
+                "kind": "learning",
+                "goalId": "old-goal",
+                "goalIds": [
+                  "old-goal"
+                ],
+                "title": "Vorheriger Abschnitt",
+                "startDate": "2026-11-22",
+                "endDate": "2026-12-01",
+                "atomicGoalIds": [
+                  "old-goal"
+                ]
+              },
+              {
+                "id": "unit-block",
+                "kind": "learning",
+                "unitAssignment": {
+                  "sectionGoalId": "unit",
+                  "revision": "current",
+                  "fingerprint": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                },
+                "goalId": "unit",
+                "goalIds": [
+                  "unit"
+                ],
+                "title": "Vorheriger Abschnitt",
+                "startDate": "2026-11-22",
+                "endDate": "2026-12-01",
+                "atomicGoalIds": [
+                  "part-a"
+                ],
+                "active": true
+              },
+              {
+                "id": "buffer",
+                "kind": "buffer",
+                "title": "Puffer",
+                "startDate": "2026-12-02",
+                "endDate": "2026-12-03"
+              }
+            ]
+          }
+        }
+      ],
+      "pageErrors": []
+    }
+  ],
+  "limits": [
+    "Not the complete LearnerView or actual backed-up learner.",
+    "Functional component probe without production Tailwind styling; no layout acceptance.",
+    "Mock200 proves UI save payload/transition only, not backend acceptance.",
+    "Mock400 is a deliberate presentation negative control, not a reproduced service rejection.",
+    "No general stored-plan editor/save-anew control is present in these mounted components; a versioned unit-assignment rebind is the available narrow action."
+  ],
+  "trackedDiffUnchanged": true
+}

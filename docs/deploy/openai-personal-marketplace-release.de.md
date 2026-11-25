@@ -1,12 +1,13 @@
 # SkillPilot ChatGPT Desktop Beta: Git-Marketplace und Updates
 
-## Externer Betatest mit SkillPilot Coach 1.2.0
+## Externer Betatest mit SkillPilot Coach
 
 Externe Tester verwenden ihr eigenes ChatGPT-Konto mit Marketplace-Import in
 der Windows-App. **Work** kann als Installationsansicht dienen. Für den Lernstart
-wechseln sie in derselben App zu **Codex → Dieser Computer**. Version
-**1.2.0** ist im öffentlichen Git-Marketplace veröffentlicht. Der produktive
-Server stellt seit dem 25. November 2026 alle 16 Werkzeuge bereit.
+wechseln sie in derselben App zu **Codex → Dieser Computer**. Die aktuelle
+Betaversion und die Schritte zum Aktualisieren stehen in der
+Installationsanleitung. Der produktive Server stellt seit dem 25. November 2026
+alle 16 Werkzeuge bereit.
 Die [deutsche Installationsanleitung](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme)
 führt durch den ersten Lernstart. Der
 [Testbericht](openai-beta-distribution-assessment.md) dokumentiert die Ergebnisse.
@@ -429,8 +430,8 @@ Halten Sie das vom Owner berichtete sichtbare Ergebnis strikt getrennt von jedem
 
 ## Tester-Durchlauf: Windows ChatGPT Desktop
 
-Dieser Abschnitt dokumentiert den ursprünglichen Test mit **1.1.2**. Für
-**1.2.0** gilt der [Lernstart im lokalen Codex-Chat](#windows-local-codex).
+Dieser Abschnitt dokumentiert den ursprünglichen Test mit **1.1.2**. Für die
+aktuelle Beta gilt der [Lernstart im lokalen Codex-Chat](#windows-local-codex).
 
 1. Fügen Sie unter **Plugins → Hinzufügen → Marketplace hinzufügen** die Adresse
    `https://github.com/enpasos/skillpilot-chatgpt-marketplace` hinzu.

@@ -1,6 +1,6 @@
 /** Git distribution for the independently installed ChatGPT Desktop beta. */
 export const CHATGPT_DESKTOP_MARKETPLACE_URL = 'https://github.com/enpasos/skillpilot-chatgpt-marketplace'
-export const CHATGPT_DESKTOP_MINIMUM_PLUGIN_VERSION = '1.2.0'
+export const CHATGPT_DESKTOP_MINIMUM_PLUGIN_VERSION = '1.2.1'
 /** The first-party installation guide for the desktop plugin. */
 export const CHATGPT_DESKTOP_SETUP_GUIDE_PATH = '/plugins#chatgpt-desktop'
 

@@ -6,10 +6,10 @@ The beta exercises the complete **SkillPilot Coach** plugin, including its
 coaching skill, against the neutral MCP endpoint. The current Claude source
 is `skillpilot-coach-v1` 1.1.15. The earlier public ChatGPT Git release is
 `skillpilot-coach-v1` 1.1.2. Its entry targets the retired versioned endpoint.
-The new ChatGPT package uses the permanent identity `skillpilot-coach` and
-version 1.2.0. External testers need to be able to install the plugin in
-their own account by following a guide. Use the public Git marketplace for
-that distribution and a private upload for the first host check. On Windows,
+The desktop beta package introduced the permanent identity `skillpilot-coach`
+in version 1.2.0. External testers can check the current beta version and
+install it in their own account using the [public installation guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
+Use a private upload for the first host check. On Windows,
 the client must offer **Add marketplace**. Work can provide the installation
 view. Start the learning test in a local **Codex** chat with **This Computer**
 selected in the same desktop app.
@@ -36,9 +36,9 @@ and access is needed before using it for this workspace package.
 
 ### Deliver the beta to external testers
 
-1. Export and verify the marketplace tree against the canonical 1.2.0
-   source. Review the German guide alongside the seven install files in
-   the [marketplace delivery PR](https://github.com/enpasos/skillpilot-chatgpt-marketplace/pull/1).
+1. Export and verify the marketplace tree against the canonical source for
+   the candidate. Review the German guide alongside the seven install files
+   in the marketplace delivery PR.
 2. Merge the source after CI passes and run the regular SkillPilot production
    deployment from the green main commit. Check service readiness, OAuth
    discovery and the deployed MCP capabilities before releasing the package.
@@ -158,8 +158,8 @@ not yet been reached, and the learner's card box was empty. Card practice,
 widget display and Verified Recall remain open for an interactive desktop run
 with released cards. The test learners were deleted.
 
-External testers can install version **1.2.0** from the public marketplace's
-default branch and follow the [German installation guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
+Version **1.2.0** was published on the public marketplace's default branch.
+For the current beta version, see the [German installation guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
 The [marketplace release](https://github.com/enpasos/skillpilot-chatgpt-marketplace/pull/1)
 merged at `291e84fdc5c52f42526f7f7b485ce6dbd695a7d2`.
 An anonymous fresh clone passed both the canonical export comparison and the

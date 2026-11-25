@@ -1,0 +1,178 @@
+{
+  "type": "independent-read-only-review",
+  "date": "2026-11-25T15:56:22.060012+00:00",
+  "base": "1001aa2c7f8df67ebe4d9bc18614f4dd17abfa2b",
+  "implementation": "ba1c911e98415429ad0cc80c1d274e6215f21655",
+  "reviewedHead": "05a2b1c8c3a50f276a9a7efe9e3d942849b9dca7",
+  "scope": "Review of personal learning plan restoration and transaction boundary in PR 206. Existing checkout; isolated backend scratch probes.",
+  "reviewers": [
+    {
+      "reviewer": "a",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "ultra",
+      "start": "2026-11-25T15:27:36.814788+00:00",
+      "end": "2026-11-25T15:35:55.820664+00:00",
+      "exitCode": 0,
+      "responseSha256": "91f289528df27339da25ba1f1e5d8227af31a128ea1620b788492668087f5ed4",
+      "promptSha256": "8fe962282d1ad85063888444e0f353c83f84cfa2b80190351eec7a9b8ec4cf97",
+      "thread": "01a21351-ca0a-7b83-8d12-ce59dcdeb07a",
+      "answer": "reviewer-a.original.md",
+      "eventsSha256": "5f303c0160c7ea9635b382ecfd88fc426f9bcf1118a5b083cae7e4bcbdc8379f",
+      "promptDigestMatches": true,
+      "responseBytesVerified": true
+    },
+    {
+      "reviewer": "b",
+      "model": "gpt-6.2-astra",
+      "reasoningEffort": "ultra",
+      "start": "2026-11-25T15:27:36.815353+00:00",
+      "end": "2026-11-25T15:36:01.743920+00:00",
+      "exitCode": 0,
+      "responseSha256": "b367816b4741290553f909d8a05d297832aa1f96c7e750818341324c2aacf450",
+      "promptSha256": "8fe962282d1ad85063888444e0f353c83f84cfa2b80190351eec7a9b8ec4cf97",
+      "thread": "01a21351-ca0a-7400-a5dd-0461a324cc78",
+      "answer": "reviewer-b.original.md",
+      "eventsSha256": "815eae267bf505cdee18aae36390321ba8ae42eaf90f22c72f3647c82eb8d03b",
+      "promptDigestMatches": true,
+      "responseBytesVerified": true
+    }
+  ],
+  "coordinatorRuns": [
+    {
+      "panel": "head",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skip": 0,
+      "exitCode": 0,
+      "raw": [
+        {
+          "path": "raw/bind/head.actual.json",
+          "sha256": "6f01b8e8ab69c09da0f525bc0c132887cd67ae4ed1518ae386972e7413c8bc0a"
+        },
+        {
+          "path": "raw/bind/head-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+          "sha256": "2e748deae479e239fa396e1518771623fadb56417cdff5e99243f80ea0c7b071"
+        },
+        {
+          "path": "raw/bind/head.log",
+          "sha256": "9d4cbabd55a6f8052294b6d3f37208e43eefbbfb2ac326c9e20e6c1b01e3fef4"
+        }
+      ]
+    },
+    {
+      "panel": "without-outdated",
+      "tests": 10,
+      "failures": 10,
+      "errors": 0,
+      "skip": 0,
+      "exitCode": 1,
+      "raw": [
+        {
+          "path": "raw/bind/without-outdated.actual.json",
+          "sha256": "65294d0aade491fbb5c9fb792fb40e6891e16af37f79fa1612180cb81134e425"
+        },
+        {
+          "path": "raw/bind/without-outdated-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+          "sha256": "716e5747c0e7a319201a67c152d660f5dce2b3adb9e35ec8272d1099ad38f9c4"
+        },
+        {
+          "path": "raw/bind/without-outdated.log",
+          "sha256": "abcf798a411c5f5e89e1029252c9f94062a4c92ab63d0f0049b08193764d7fcf"
+        }
+      ]
+    },
+    {
+      "panel": "without-noRollbackFor",
+      "tests": 4,
+      "failures": 2,
+      "errors": 0,
+      "skip": 0,
+      "exitCode": 1,
+      "raw": [
+        {
+          "path": "raw/bind/without-noRollbackFor.actual.json",
+          "sha256": "6ce71a0b85001550d41c5900b596f943c43a2a6e7d2e1096b51986d0af6338f9"
+        },
+        {
+          "path": "raw/bind/without-noRollbackFor-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+          "sha256": "93f659b19facba289b179b6c7d3a4a2067809408270c94aec13a6d57ae3377f3"
+        },
+        {
+          "path": "raw/bind/without-noRollbackFor.log",
+          "sha256": "773587fe46da2c80288ec7624c0ce4872a2a3ca53daeeda09136624ac01562e9"
+        }
+      ]
+    },
+    {
+      "panel": "prior-foreign-subject-contract",
+      "tests": 1,
+      "failures": 1,
+      "errors": 0,
+      "skip": 0,
+      "exitCode": 1,
+      "raw": [
+        {
+          "path": "raw/compat/prior-foreign-subject-contract.actual.json",
+          "sha256": "cec88c19d0482d58a6ebdfeba228a83b080703f7fe4dffe17c5afac98d16a49c"
+        },
+        {
+          "path": "raw/compat/prior-foreign-subject-contract-TEST-com.skillpilot.backend.service.LearnerServiceTest.xml",
+          "sha256": "bcd557edcd0a07dfcc861d51dd3432b43b4c78201849d08a7a0cd8c0ea27e41e"
+        },
+        {
+          "path": "raw/compat/prior-foreign-subject-contract.log",
+          "sha256": "85810682c33a6656e6e32972997b7c219eba2a55526477273789ce67bd2fa619"
+        }
+      ]
+    },
+    {
+      "panel": "head-list",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skip": 0,
+      "exitCode": 0,
+      "raw": [
+        {
+          "path": "raw/list/head-list.actual.json",
+          "sha256": "438970c0201c02727a94943c51783f77ba68a36108d1261ef2079c4b36e1f00a"
+        },
+        {
+          "path": "raw/list/head-list-TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+          "sha256": "f743874c1bff9af2c6a691a78eb2f03704d2a071fd6a08700f531029da4efd0a"
+        },
+        {
+          "path": "raw/list/head-list.log",
+          "sha256": "8de96724e09212e445fd490bf0ae3f5f277ac25c322e2c61716c84d665367fdb"
+        }
+      ]
+    }
+  ],
+  "supplementalArtifacts": [
+    {
+      "path": "raw/cockpit/result.actual.json",
+      "sha256": "88f525cee1b834334e2ac2d27085099858d220612b8634894806fdd03de553f3"
+    },
+    {
+      "path": "raw/extra/before-narrow-class-include.actual.json",
+      "sha256": "2bb741ded9a353a954630312bda9f936f073065fa1b68a5fd73e980f9e0e5077"
+    },
+    {
+      "path": "raw/extra/native.actual.json",
+      "sha256": "bb84ffec7ff147554570a87a64175937576ff29ea8bd6df6887c3103f75c90e7"
+    },
+    {
+      "path": "raw/extra/supplement-static.md",
+      "sha256": "b6936c0b13c4777950c043dfef94407ab8509ee2e356adc34dc44a47002cbd08"
+    },
+    {
+      "path": "raw/extra/supplement.actual.json",
+      "sha256": "a4e025bc2233f92239ee37b066ef81a942bcc431564a3879e719ee866298338a"
+    }
+  ],
+  "report": {
+    "path": "review.md",
+    "sha256": "945e2f7d3548ae7ffb89f21de762498b818928bd7429ae111e5790af15f96ace"
+  }
+}

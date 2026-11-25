@@ -89,8 +89,10 @@ For each learner turn:
 
 1. Load current context successfully.
 2. Separate confirmed state, current published options, and learner intent.
-3. Follow `requiredAction`, `instruction`, `policies`, and
-   `nextAllowedTools` from that context.
+3. Follow `requiredAction`, `instruction`, `policies`, and the immediate
+   actions in `nextAllowedTools`. Conditional mastery follows the skill's
+   [Mastery eligibility](../SKILL.md#mastery-eligibility), even when the
+   immediate action list omits that tool.
 4. Map intent to at most one unambiguous current option. Copy its opaque ID
    unchanged.
 5. For a write, copy current `stateVersion` as `expectedStateVersion` and use a
@@ -341,6 +343,13 @@ was completed or saved, then give concrete feedback. Do not make the write
 depend on the learner choosing mastery. Agreement to close is not an evidence
 or persistence gate. On a failed or conflicting write, do not claim
 completion or overwrite another client's work.
+
+Follow the skill's **Save outcomes** for mastery and Verified Recall. Keep the
+evidence and verdict separate from the save status. Explicit approval pending
+means wait. Explicit denial or cancellation ends that write without a retry or
+alternate route. Follow only the structured recovery for a backend error. A
+missing result leaves persistence unconfirmed. Until confirmed, give no
+completion handoff or next-goal offer.
 
 Name what the learner showed, what succeeded and what remains open. Offer
 only choices supported by the fixed verdict and current authorized state. After

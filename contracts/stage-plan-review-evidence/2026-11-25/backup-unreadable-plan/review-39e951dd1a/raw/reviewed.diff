@@ -1,0 +1,231 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 28e27c4931..827d138232 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -758,7 +758,15 @@ and a readable plan next to it is restored as usual. Saving the plan anew
+ makes it an ordinary plan of today's curriculum. A backup of the outdated plan
+ holds the same blocks. A plan that is not well formed (missing ids, unknown
+ kinds, missing dates, exceeded limits) still refuses the backup, and so does a
+-server error while the plan is read.
++server error while the plan is read. The form check does not ask whether a
++save would accept the plan today: the archived values are kept, not their
++normalized form, and a plan whose only block is an exam day is kept too. The
++plan of a landscape the catalog no longer has stays in storage and in later
++backups; the plan list does not show it, because no plan can be saved for
++that landscape. A plan that was read against the curriculum and then fails,
++or fails with something else than a client error, is kept as outdated as
++well, because the results come first; the backend logs that case as an
++unexpected failure and not as an outdated reference.
+ 
+ **Outdated plan with an exam day, 25 November 2026.** The readers of stored
+ plans catch the client error of `LearnerService.resolveLearningPlanGoalIds`
+diff --git a/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java b/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java
+index 6d0c80885b..d80a6da441 100644
+--- a/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java
++++ b/backend/src/main/java/com/skillpilot/backend/service/LearnerService.java
+@@ -15067,15 +15067,21 @@ public class LearnerService {
+             String planLabel = optionalPortableText(portable.planLabel(), "learningPlans.planLabel", 160);
+             // The learning results of a backup are restored also when one of its plans cannot be
+             // read against the curriculum today (Product Owner, 25 November 2026). A server error
+-            // still refuses the backup.
++            // still refuses the backup. A plan that was read and fails afterwards, and any failure
++            // that is no client error, is kept as outdated too, because the results come first; it
++            // is reported as unexpected and not as an outdated reference.
+             LearnerLearningPlan plan;
++            RestoredPlanReading reading = null;
+             try {
+-                plan = restoredCurrentLearningPlan(learner, landscapeId, planLabel, portable.blocks());
++                reading = readRestoredLearningPlan(learner, landscapeId, portable.blocks());
++                plan = restoredCurrentLearningPlan(learner, landscapeId, planLabel, reading);
+             } catch (ResponseStatusException exception) {
+                 if (!exception.getStatusCode().is4xxClientError()) throw exception;
+-                plan = restoredOutdatedLearningPlan(learner, landscapeId, planLabel, portable.blocks(), exception);
++                plan = restoredOutdatedLearningPlan(
++                        learner, landscapeId, planLabel, portable.blocks(), exception, reading != null);
+             } catch (IllegalStateException | IllegalArgumentException exception) {
+-                plan = restoredOutdatedLearningPlan(learner, landscapeId, planLabel, portable.blocks(), exception);
++                plan = restoredOutdatedLearningPlan(
++                        learner, landscapeId, planLabel, portable.blocks(), exception, true);
+             }
+             restored.add(plan);
+         }
+@@ -15092,8 +15098,16 @@ public class LearnerService {
+                 "LEARNING_PLAN_IMPORT"));
+     }
+ 
+-    /** A plan of the backup as it applies today; throws when it cannot be read against the curriculum. */
+-    private LearnerLearningPlan restoredCurrentLearningPlan(Learner learner, String landscapeId, String planLabel,
++    /** The blocks of a restored plan as they apply today, with the scope they were read against. */
++    private record RestoredPlanReading(LearnerPlanningScopeResponse scope,
++            List<LearnerLearningPlanApi.Block> blocks, Map<Set<String>, Set<String>> capturedSelections) { }
++
++    /**
++     * Reads a plan of the backup against today's curriculum: subject, goals, sections, exam topics
++     * and the order its blocks need for today's prerequisites. A client error here means that the
++     * plan no longer fits the curriculum.
++     */
++    private RestoredPlanReading readRestoredLearningPlan(Learner learner, String landscapeId,
+             List<LearnerLearningPlanApi.Block> portableBlocks) {
+         LearnerPlanningScopeResponse scope = getPlanningScope(
+                 learner.getSkillpilotId(),
+@@ -15118,19 +15132,26 @@ public class LearnerService {
+         normalizedBlocks = orderLearningPlanBlocksByPrerequisites(
+                 learner.getSkillpilotId(),
+                 normalizedBlocks);
++        return new RestoredPlanReading(scope, normalizedBlocks, capturedSelections);
++    }
++
++    /** A plan of the backup that was read against today's curriculum, with its fingerprint. */
++    private LearnerLearningPlan restoredCurrentLearningPlan(Learner learner, String landscapeId, String planLabel,
++            RestoredPlanReading reading) {
++        List<LearnerLearningPlanApi.Block> orderedBlocks = reading.blocks();
+         LearnerLearningPlan plan = new LearnerLearningPlan();
+         plan.setLearner(learner);
+         plan.setLandscapeId(landscapeId);
+-        plan.setCurriculumId(scope.curriculumId());
++        plan.setCurriculumId(reading.scope().curriculumId());
+         plan.setScopeFingerprint(learningPlanFingerprint(
+                 learner.getSkillpilotId(),
+                 landscapeId,
+-                normalizedBlocks,
+-                capturedSelections));
++                orderedBlocks,
++                reading.capturedSelections()));
+         plan.setRevision(1);
+         plan.setPlanLabel(planLabel);
+-        plan.setBlocksJson(portableBlocksJson(normalizedBlocks));
+-        plan.setCapturedAt(scope.capturedAt());
++        plan.setBlocksJson(portableBlocksJson(orderedBlocks));
++        plan.setCapturedAt(reading.scope().capturedAt());
+         return plan;
+     }
+ 
+@@ -15138,13 +15159,20 @@ public class LearnerService {
+      * A plan of the backup that cannot be read today. Its learning results are restored with the
+      * rest of the backup; the plan itself is kept as the backup held it and marked outdated, see
+      * {@link LearnerLearningPlan#RESTORED_OUTDATED_CURRICULUM_ID}. A plan that is not well formed is
+-     * refused as before. The stored fingerprint is the digest of the kept blocks, not a statement
+-     * about today's graph.
++     * refused as before. The form check does not ask whether a save would accept the plan today:
++     * the archived values are kept, not their normalized form. The stored fingerprint is the digest
++     * of the kept blocks, not a statement about today's graph.
+      */
+     private LearnerLearningPlan restoredOutdatedLearningPlan(Learner learner, String landscapeId, String planLabel,
+-            List<LearnerLearningPlanApi.Block> portableBlocks, RuntimeException unreadable) {
++            List<LearnerLearningPlanApi.Block> portableBlocks, RuntimeException failure, boolean unexpected) {
+         LearnerLearningPlanService.requireWellFormedBlocks(landscapeId, portableBlocks);
+-        LOGGER.info("Restoring a learning plan of landscape {} as outdated: {}", landscapeId, unreadable.getMessage());
++        if (unexpected) {
++            // Not an outdated reference: the plan could be read, or the failure is none of a client.
++            LOGGER.warn("Restoring a learning plan of landscape {} as outdated after an unexpected failure",
++                    landscapeId, failure);
++        } else {
++            LOGGER.info("Restoring a learning plan of landscape {} as outdated: {}", landscapeId, failure.getMessage());
++        }
+         String blocksJson = portableBlocksJson(portableBlocks);
+         LearnerLearningPlan plan = new LearnerLearningPlan();
+         plan.setLearner(learner);
+diff --git a/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java b/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java
+index 557df4a629..79a0f55f41 100644
+--- a/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java
+@@ -1901,12 +1901,19 @@ class ClaudeV1CompletionRouteIntegrationTest {
+         assertThat(kept.getPlanLabel()).isEqualTo(ownLandscape ? "E.1" : "Früherer Plan");
+ 
+         // Every reader of plans treats it as outdated, and none of them fails.
+-        var collection = learningPlans.getPlans(learnerId, today);
+-        assertThat(collection.plans()).filteredOn(plan -> landscape.equals(plan.landscapeId())).allSatisfy(plan -> {
+-            assertThat(plan.stale()).isTrue();
+-            assertThat(plan.nextEligibleGoal()).isNull();
+-            assertThat(plan.canContinue()).isFalse();
+-        });
++        var listed = learningPlans.getPlans(learnerId, today).plans().stream()
++                .filter(plan -> landscape.equals(plan.landscapeId())).toList();
++        if (ownLandscape) {
++            assertThat(listed).singleElement().satisfies(plan -> {
++                assertThat(plan.stale()).isTrue();
++                assertThat(plan.nextEligibleGoal()).isNull();
++                assertThat(plan.canContinue()).isFalse();
++            });
++        } else {
++            // No plan can be saved for a landscape the catalog no longer has. Its plan stays in
++            // storage and in later backups, and the plan list does not show it.
++            assertThat(listed).isEmpty();
++        }
+         if (ownLandscape) {
+             var outdated = learningPlans.getPlan(learnerId, physics, today);
+             assertThat(outdated.stale()).isTrue();
+diff --git a/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java b/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java
+index 5e53394791..6aa27c3848 100644
+--- a/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java
++++ b/backend/src/test/java/com/skillpilot/backend/service/LearnerServiceTest.java
+@@ -741,8 +741,12 @@ public class LearnerServiceTest {
+                 .doesNotThrowAnyException();
+     }
+ 
++    // A signed plan that names a goal outside the subject scope used to refuse the whole backup.
++    // Since the Product Owner decision of 25 November 2026 the learning results are restored and
++    // the plan is kept as outdated: no reader follows it, and saving a plan with the same block is
++    // still refused.
+     @Test
+-    void signedPlanImportRejectsAtomicGoalsOutsideThePersonalSubjectScope() {
++    void signedPlanImportKeepsAPlanWithAtomicGoalsOutsideThePersonalSubjectScopeAsOutdated() {
+         selectCompletedCanonicalMathCurriculum();
+         Learner targetConfiguration = learnerRepository.findById(learnerId).orElseThrow();
+         Learner source = new Learner();
+@@ -766,7 +770,8 @@ public class LearnerServiceTest {
+                 List.of(invalidBlock));
+         var data = new com.skillpilot.backend.api.LearnerDataDTO(
+                 source,
+-                Map.of(),
++                Map.of(CANONICAL_MATH_ORIENTATION_ID, new com.skillpilot.backend.api.MasteryEntryDTO(
++                        1.0, java.time.Instant.parse("2026-09-02T08:00:00Z"))),
+                 List.of(),
+                 Set.of(),
+                 List.of(portable));
+@@ -775,14 +780,42 @@ public class LearnerServiceTest {
+                 "calculateSignature",
+                 data);
+ 
+-        assertThatThrownBy(() -> learnerService.importLearner(
++        learnerService.importLearner(
++                learnerId,
++                new com.skillpilot.backend.api.SignedLearnerDataDTO(data, signature));
++
++        assertThat(learnerService.getMastery(learnerId)).containsEntry(CANONICAL_MATH_ORIENTATION_ID, 1.0);
++        var stored = learnerLearningPlanRepository
++                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId);
++        assertThat(stored).singleElement().satisfies(plan -> {
++            assertThat(plan.getLandscapeId()).isEqualTo(CANONICAL_MATH_LANDSCAPE_ID);
++            assertThat(plan.getCurriculumId())
++                    .isEqualTo(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
++        });
++        var today = java.time.LocalDate.parse("2026-09-02");
++        assertThat(learnerLearningPlanService.getPlans(learnerId, today).plans()).singleElement().satisfies(plan -> {
++            assertThat(plan.stale()).isTrue();
++            assertThat(plan.nextEligibleGoal()).isNull();
++            assertThat(plan.canContinue()).isFalse();
++        });
++        assertThat(learnerService.isLearningPlanCompatible(
++                learnerId, stored.getFirst().getCurriculumId(), CANONICAL_MATH_LANDSCAPE_ID, List.of(invalidBlock)))
++                .isFalse();
++        // The same block is refused when a plan is saved, also over the outdated plan.
++        long revision = stored.getFirst().getRevision();
++        assertThatThrownBy(() -> learnerLearningPlanService.upsert(
+                         learnerId,
+-                        new com.skillpilot.backend.api.SignedLearnerDataDTO(data, signature)))
++                        CANONICAL_MATH_LANDSCAPE_ID,
++                        new com.skillpilot.backend.api.LearnerLearningPlanApi.UpsertRequest(
++                                revision, "Manipulierter Plan", List.of(invalidBlock)),
++                        today))
+                 .isInstanceOfSatisfying(ResponseStatusException.class, exception ->
+                         assertThat(exception.getStatusCode())
+                                 .isEqualTo(org.springframework.http.HttpStatus.BAD_REQUEST));
+         assertThat(learnerLearningPlanRepository
+-                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId)).isEmpty();
++                .findByLearner_SkillpilotIdOrderByLandscapeIdAsc(learnerId)).singleElement().satisfies(plan ->
++                        assertThat(plan.getCurriculumId()).isEqualTo(
++                                com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID));
+     }
+ 
+     @Test

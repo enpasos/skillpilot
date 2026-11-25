@@ -91,7 +91,11 @@ learning order in the eight Hessian views: inertia; force, mass and
 acceleration; force and counterforce; several forces at once; energy;
 momentum and collisions. They are view structures, not declared units. The
 gravitation goals lie in E.5. The move of the two Leistungskurs deepenings to
-the Qualifikationsphase waits for the E.5 review. See the E.2 cut in
+the Qualifikationsphase waits for the E.5 review. In Hesse the incline with
+trigonometry and the friction coefficient with its sticking limit are a
+voluntary deepening of the fourth child with their own check; its mandatory
+closing check uses the balance of forces on a line (decision of 25 November
+2026 for the second step). See the E.2 cut in
 [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 
 **Product Owner decisions of 24 November 2026.** A stored plan that still
@@ -102,7 +106,13 @@ stored blocks, receipts and mastery unchanged. New plans cannot select a
 retired goal. Since 25 November the same holds after a regrouping: an existing
 plan keeps the goals it captured when a cut moved them to another section
 (read, backup restore, edit), and a backup whose plan names a retired goal
-restores without that entry. A kept goal stays only in a block that names the
+restores without that entry. A backup also restores the learning results when
+a plan it holds cannot be read today; that plan is kept as the backup held it
+and stored as outdated (`LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID`)
+until the learner saves it anew. Readers of stored plans handle the client
+error of a goal resolution that no longer works; a transactional read method
+whose client error a caller handles must not mark that caller's transaction
+for rollback (`noRollbackFor`, or return the outcome). A kept goal stays only in a block that names the
 same sections as the block it was captured in, and the backend still offers it
 as planned work under the goal's own focus (plan view, continuation, handoff);
 a newly selected goal, and a block with other sections, must satisfy the
@@ -114,7 +124,8 @@ everything and makes occasional small formal errors: a new or revised graded
 assessment has a pass mark of at most 85 percent of its points
 (`scripts/check_exam_pass_marks.py`), and indispensable performances are
 protected by their weight, never by a mark near the maximum. The 85 percent
-is derived from the accepted Hessian parts A to D and awaits his confirmation.
+is derived from the accepted Hessian parts A to D; he confirmed the bound on
+25 November 2026.
 
 The learner-facing Cockpit tree and graphical map should share one unit and
 atomic-goal hierarchy in the same scope. Present an atomic goal directly

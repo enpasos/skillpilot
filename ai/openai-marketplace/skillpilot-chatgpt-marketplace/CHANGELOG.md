@@ -1,5 +1,10 @@
 # Changelog
 
+## SkillPilot Coach 1.2.1 — unpublished beta candidate
+
+- Explain when an active goal can be saved and how to interpret the save status.
+- Use the one-click SkillPilot start in the local Windows Codex chat.
+
 ## SkillPilot Coach 1.2.0 — ChatGPT beta candidate
 
 - Follow the current Claude coach workflow for explaining, practising and closing a learning goal.

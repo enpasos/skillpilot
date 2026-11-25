@@ -1,12 +1,12 @@
 # SkillPilot ChatGPT Desktop beta: Git marketplace and updates
 
-## External beta with SkillPilot Coach 1.2.0
+## External beta with SkillPilot Coach
 
 External testers use their own eligible account in the Windows app and the
 public Git marketplace. **Work** can be used to open the plugin browser. For
-learning, switch to **Codex → This Computer** in the same app. Version
-**1.2.0** is available in the public Git marketplace. The production server
-has provided all 16 tools since 25 November 2026.
+learning, switch to **Codex → This Computer** in the same app. Check the
+installation guide for the current beta version and update instructions.
+The production server has provided all 16 tools since 25 November 2026.
 See the [release sequence and host evidence](openai-beta-distribution-assessment.md)
 and the [German installation guide](https://github.com/enpasos/skillpilot-chatgpt-marketplace#readme).
 
@@ -426,7 +426,7 @@ Keep the owner-reported visible result separate from every server success.
 
 ## Tester walkthrough: Windows ChatGPT Desktop
 
-This section records the original **1.1.2** test. For **1.2.0**, use the
+This section records the original **1.1.2** test. For the current beta, use the
 [local Codex learning start](#windows-local-codex).
 
 1. In **Plugins → Hinzufügen → Marketplace hinzufügen**, add

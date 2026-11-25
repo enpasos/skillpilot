@@ -14,7 +14,7 @@ import java.util.List;
 public final class OpenAiDeV1ContractMetadata {
 
     public static final String PLUGIN_IDENTITY = "skillpilot-coach";
-    public static final String PLUGIN_VERSION = "1.2.0";
+    public static final String PLUGIN_VERSION = "1.2.1";
     public static final int CONTRACT_MAJOR = 1;
     public static final long POLICY_REVISION = 5L;
     public static final String SUPPORT_LIFECYCLE = "CURRENT";

@@ -23,6 +23,16 @@ import org.hibernate.annotations.UpdateTimestamp;
                 name = "uq_learner_learning_plan_landscape",
                 columnNames = {"learner_id", "landscape_id"}))
 public class LearnerLearningPlan {
+    /**
+     * Stored instead of a curriculum id for a plan that a backup held but that cannot be read
+     * against the learner's curriculum at restore time: a section or exam topic no longer resolves,
+     * it names a goal the learner's scope does not know, nothing of it is left, or the catalog no
+     * longer has its landscape. The backup does not carry the curriculum the plan was captured for.
+     * Every reader of plans compares the captured curriculum with the learner's selected one, so
+     * such a plan is outdated for all of them and behaves like every outdated plan: no next step,
+     * obligation, credit or continuation. It becomes an ordinary plan when the learner saves it anew.
+     */
+    public static final String RESTORED_OUTDATED_CURRICULUM_ID = "restored-outdated-plan";
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

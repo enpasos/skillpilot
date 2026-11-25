@@ -149,7 +149,8 @@ public final class OpenAiDeCoachContextProjector {
                         orientation,
                         completion,
                         examHasImage,
-                        communicationLocale),
+                        communicationLocale)
+                        + masteryWriteInstruction(requiredAction, activeGoal, communicationLocale),
                 null);
     }
 
@@ -1263,6 +1264,26 @@ public final class OpenAiDeCoachContextProjector {
                     + "Coach dialogically on the active goal. Accept technically equivalent correct approaches, representations, and justifications; explicit format requirements remain binding. Save mastery only after two independent checks or genuine transfer in a changed context, after checking every aspect. Decide privately and save warranted success immediately without separate closure consent. Only after confirmed persistence give feedback, invite questions or continuation, and wait for the reply. A plain continuation is not new evidence. Keep concrete feedback about work and outcome exclusively in the conversation; never send conversation content to SkillPilot.";
             default -> "Follow only the published required action, then reload the context.";
         };
+    }
+
+    private String masteryWriteInstruction(String requiredAction, FrontierGoal goal, String communicationLocale) {
+        if (goal == null || !"atomic".equals(goal.type()) || isMemoryGoal(goal)
+                || !("orientActiveGoal".equals(requiredAction) || "teachActiveGoal".equals(requiredAction)
+                    || "setMastery".equals(requiredAction))) {
+            return "";
+        }
+        String tool = OpenAiDeV1McpContractAdapter.SET_MASTERY;
+        return OpenAiCoachLocale.isEnglish(communicationLocale)
+                ? " nextAllowedTools lists immediate actions and omits the conditional mastery write. "
+                    + "When the completion rules for this mode are satisfied, call " + tool
+                    + " for this activeGoal.goalId with the current learningSessionId, "
+                    + "stateVersion as expectedStateVersion and a new clientRequestId. "
+                    + "Actual session, authorization and host restrictions still apply."
+                : " nextAllowedTools listet unmittelbare Aktionen und lässt den bedingten Abschlussaufruf aus. "
+                    + "Sobald die Abschlussregeln dieses Lernmodus erfüllt sind, rufe " + tool
+                    + " für diese activeGoal.goalId mit aktueller learningSessionId, "
+                    + "stateVersion als expectedStateVersion und neuer clientRequestId auf. "
+                    + "Session-, Zugriffs- und Hostbeschränkungen gelten weiterhin.";
     }
 
     public String personalizationInstruction(
