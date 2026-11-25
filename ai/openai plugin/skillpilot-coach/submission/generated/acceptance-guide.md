@@ -6,7 +6,7 @@ Automatisch aus den aktuellen Einreichungsquellen erzeugt. Nicht hier bearbeiten
 
 Kandidat: `1.2.1` · MCP-Endpunkt: `https://mcp-openai.skillpilot.com/mcp`
 
-Testsuite-SHA-256: `da347d2901d91dbb7a19b210b80fcac408e28d00d3c98cbcf742ca5b64a3ee13`
+Testsuite-SHA-256: `6f2abcb3872f28e556c90c391c3669f8e898f15f8e9c73e242549a706bad8106`
 
 Vertrags-SHA-256: `a780173bde2d1ff6d9ac79322612148c02c2724de2c192a22fac6b1ee7bcaed5`
 
