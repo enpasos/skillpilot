@@ -16,6 +16,8 @@ Außerdem nennen die Gutachter die Grenzen einer gemeinsamen Anpassung ohne getr
 
 Für die veröffentlichte Fassung gelten ihre bisherigen Landesangebote, APV-201- und Abdeckungsnachweise. Den bytegebundenen Nachweis des Parkens vom 24. November ergänzt die aktuelle Entscheidung. Alle nativen Eingaben und Ausgaben lassen sich mit `python3 verify.py` in diesem Verzeichnis nachprüfen. [Parkentscheidung](parked.actual.json) · [Unabhängige Prüfung des Zeitbezugs](v3/panel-audit/audit.md)
 
+Zwei abgebrochene Provideraufrufe lieferten null Bytes. Die zugehörigen `provider-response.raw` enthalten den exakten Ausgabestrom. Der Prüfer löst ihre ursprünglichen Ausgabenamen aus den versiegelten Protokollen auf und prüft die SHA-256-Hashes.
+
 ## Fassung 1
 
 Autor war claude-opus-5-5. gpt-6.1-sol entschied revise und gpt-6.2-astra entschied revise.

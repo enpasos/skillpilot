@@ -6,6 +6,12 @@ from copy import deepcopy
 from pathlib import Path
 
 root = Path(__file__).resolve().parent
+# The provider was stopped before either of these two requests returned JSON.
+# Keep the original capture names in the sealed records and store the zero-byte streams as raw output.
+EMPTY_TRANSPORT_OUTPUTS = {
+    "v1/author/transport-attempt-1/provider-response.json",
+    "v2/author/superseded-3-3-3-3-input/provider-response.json",
+}
 
 def read(path):
     return json.loads(path.read_bytes())
@@ -13,6 +19,9 @@ def read(path):
 def bound(directory, entry):
     path = (directory / entry["path"]).resolve()
     assert path.is_relative_to(directory.resolve())
+    if path.relative_to(root).as_posix() in EMPTY_TRANSPORT_OUTPUTS:
+        assert not path.exists() and entry["sha256"] == hashlib.sha256(b"").hexdigest()
+        path = path.with_suffix(".raw")
     assert hashlib.sha256(path.read_bytes()).hexdigest() == entry["sha256"], path
     return path
 
