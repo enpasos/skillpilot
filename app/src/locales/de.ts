@@ -110,7 +110,7 @@ export const de = {
                 repositoryLabel: "GitHub-Adresse des SkillPilot-Marketplace",
                 copyRepository: "Marketplace-Adresse kopieren",
                 repositoryCopied: "Marketplace-Adresse kopiert",
-                installPlugin: "Füge diese Adresse hinzu und wähle „SkillPilot Coach“ aus diesem Marketplace.",
+                installPlugin: "Füge die Adresse im Feld „Quelle“ ein und lasse „Git-Ref“ und „Sparse-Pfade“ leer. Füge den Marketplace hinzu und wähle dort „SkillPilot Coach“.",
                 connectPlugin: "Wenn ChatGPT eine Verbindung für „SkillPilot Coach“ anfordert, folge der Anmeldung für dieses Plugin. Nach einem Wechsel von „SkillPilot Coach v1“ richte die Verbindung für den neuen Coach ein.",
                 updateHint: "Aktualisiere bei einer neuen Version den Marketplace und das Plugin manuell. Bereite danach eine frische Lernsession vor.",
                 installedHint: "Sobald „SkillPilot Coach“ installiert und aktiviert ist, bereite hier deine Startnachricht für einen neuen Work-Chat vor.",

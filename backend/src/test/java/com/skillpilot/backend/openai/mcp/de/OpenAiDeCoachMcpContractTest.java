@@ -2394,6 +2394,7 @@ class OpenAiDeCoachMcpContractTest {
     @org.junit.jupiter.params.ParameterizedTest
     @org.junit.jupiter.params.provider.ValueSource(strings = {"unit-vectors", "another-unit", ""})
     void unitRecallRequiresTheCurrentOfferAndKeepsItsScopeThroughAnswersAndWrite(String successorUnit) {
+        useCurrentContract();
         String deck = "memory-public-id";
         String nextDeck = "second-memory-public-id";
         String unit = "unit-vectors";

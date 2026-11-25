@@ -64,7 +64,7 @@ Du kannst jederzeit eine Pause machen. Ist die Lernsession beim nächsten Besuch
 
 ## Mit ChatGPT Desktop am Betatest teilnehmen
 
-Für diesen Test brauchst du **Work** in ChatGPT Desktop und die Option **Marketplace hinzufügen**. Sobald der Git-Marketplace **SkillPilot Coach** in Version **1.2.0** oder neuer anbietet, installiere oder aktualisiere den Coach und prüfe die installierte Version. Folge der Anmeldung, wenn ChatGPT eine Verbindung anfordert. [Installationsanleitung](https://skillpilot.com/plugins#chatgpt-desktop)
+Für diesen Test brauchst du **Work** in ChatGPT Desktop. Öffne **Plugins → Hinzufügen → Marketplace hinzufügen**. Kopiere die GitHub-Adresse aus der Installationsanleitung in **Quelle** und lasse **Git-Ref** und **Sparse-Pfade** leer. Sobald der Marketplace **SkillPilot Coach** in Version **1.2.0** oder neuer anbietet, installiere oder aktualisiere den Coach und prüfe die installierte Version. Folge der Anmeldung, wenn ChatGPT eine Verbindung anfordert. [Installationsanleitung](https://skillpilot.com/plugins#chatgpt-desktop)
 
 Wähle im SkillPilot-Lernstart **ChatGPT Desktop** und **Lernen mit ChatGPT vorbereiten**. Öffne eine neue Unterhaltung in **Work** mit ausgewähltem **SkillPilot Coach**. Ersetze eine vorgefüllte Beispielfrage durch die vorbereitete Startnachricht und sende sie ab. Lass das Plugin ausgewählt und halte die Startnachricht privat.
 
