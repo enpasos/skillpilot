@@ -327,17 +327,44 @@ async function checkNestedProjectionGraph(page: Page, dialog: Locator, releaseDe
       const original = await goal.elementHandle()
       await dialog.getByRole('button', { name: 'Karte verkleinern', exact: true }).click()
       const before = await camera()
+      const arrowSelector = '.react-flow__edge:has(path.react-flow__edge-path)'
+      const arrows = board.locator(arrowSelector)
+      const readArrows = () => arrows.evaluateAll(edges => edges.map(edge => {
+        const path = edge.querySelector<SVGPathElement>('path.react-flow__edge-path')!
+        return { id: edge.getAttribute('data-id'), route: path.getAttribute('d'),
+          arrow: path.getAttribute('marker-end') ?? path.getAttribute('marker-start'), length: path.getTotalLength() }
+      }).sort((left, right) => left.id!.localeCompare(right.id!)))
+      const originalArrows = await readArrows()
+      const mountedArrows = await board.evaluateHandle((element, selector) => [...element.querySelectorAll(selector)], arrowSelector)
+      for (const assessmentId of child.assessments) {
+        assert(originalArrows.some(arrow => arrow.id === `sibling:${horizontalThrow.id}->${assessmentId}`
+          && arrow.route && arrow.arrow && arrow.length > 0), 'the zoomed board draws each expected assessment arrow')
+      }
       const progressProbe = await monitorBoard(dialog)
-      const masteryUpdates = await progressProbe.evaluate(value => value.refreshCounts.MASTERY_UPDATE ?? 0)
+      const refreshes = await progressProbe.evaluate(value => value.refreshCounts.FULL_REFRESH ?? 0)
       updateProgress()
-      await page.evaluate(() => window.dispatchEvent(new CustomEvent('test-learner-update', { detail: 'MASTERY_UPDATE' })))
-      await page.waitForFunction(({ state, previous }) => (state.refreshCounts.MASTERY_UPDATE ?? 0) > previous,
-        { state: progressProbe, previous: masteryUpdates })
+      // Headless Chromium does not hide its old page when another tab is brought to front.
+      // Drive the browser's visibility handlers on the same mounted board.
+      await page.evaluate(() => {
+        Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' })
+        try {
+          document.dispatchEvent(new Event('visibilitychange'))
+        } finally {
+          Reflect.deleteProperty(document, 'visibilityState')
+        }
+        document.dispatchEvent(new Event('visibilitychange'))
+      })
+      await page.waitForFunction(({ state, previous }) => (state.refreshCounts.FULL_REFRESH ?? 0) > previous,
+        { state: progressProbe, previous: refreshes })
       await goal.getByRole('img', { name: 'Direkt nachgewiesen', exact: true }).waitFor()
+      await page.evaluate(() => new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
       assert.deepEqual(await progressProbe.evaluate(value => value.activity), { layouts: 0, busy: 0, loading: 0 },
-        'mastery refresh preserves the real child graph without a second layout')
+        'returning to the tab refreshes the real child graph without a second layout')
       assert(await original?.evaluate(element => element.isConnected))
       assert.equal(await camera(), before)
+      assert(await mountedArrows.evaluate(edges => edges.every(edge => edge.isConnected)),
+        'returning to the tab keeps the existing arrow elements mounted')
+      assert.deepEqual(await readArrows(), originalArrows, 'returning to the tab preserves the rendered arrow routes and markers')
     }
     await dialog.getByRole('button', { name: 'Eine Ebene auftauchen', exact: true }).click()
     await parent.waitFor()
