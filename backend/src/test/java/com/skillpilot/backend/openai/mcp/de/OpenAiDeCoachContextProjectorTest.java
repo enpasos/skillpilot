@@ -481,7 +481,7 @@ class OpenAiDeCoachContextProjectorTest {
     }
 
     @Test
-    void imageExamRemovesPrivatePathAndRequiresExactCockpitLinkBeforeTask() throws Exception {
+    void imageExamRemovesPrivatePathAndPausesWhenRequiredImageIsUnavailable() throws Exception {
         OpenAiDeCoachContextProjector projector = new OpenAiDeCoachContextProjector(
                 new CoachStateProjection("https://skillpilot.test"),
                 "https://skillpilot.test");
@@ -489,23 +489,47 @@ class OpenAiDeCoachContextProjectorTest {
         OpenAiDeCoachContext context = projectGerman(projector, imageExamState());
 
         assertThat(context.activeGoal().exam().hasImage()).isTrue();
+        assertThat(context.activeGoal().exam().missingRequiredImage()).isTrue();
         assertThat(context.activeGoal().exam().taskContent()).isEqualTo("Sichtbare Aufgabe mit Abbildung");
         assertThat(context.activeGoal().cockpitUrl())
                 .isEqualTo("https://skillpilot.test/?l=curriculum-public-id&goal=exam-public-id");
         assertThat(context.instruction())
-                .contains("notwendige Aufgabenabbildung")
-                .contains("activeGoal.cockpitUrl")
+                .contains("Pausiere bei missingRequiredImage=true")
+                .doesNotContain("activeGoal.cockpitUrl")
                 .contains("wortgetreu");
         assertThat(context.policies())
                 .anySatisfy(policy -> assertThat(policy)
                         .contains("Fehlt ein freigegebener Link, gib keinen Link aus")
                         .doesNotContain("verwende nur https://skillpilot.com"))
                 .anySatisfy(policy -> assertThat(policy)
-                        .contains("benötigt eine Abbildung")
-                        .contains("activeGoal.cockpitUrl")
-                        .contains("erfinde"));
+                        .contains("pausiere dieselbe Prüfung")
+                        .doesNotContain("activeGoal.cockpitUrl")
+                        .contains("Erfinde keine Bilddetails"));
         assertThat(new ObjectMapper().writeValueAsString(context))
                 .doesNotContain("/private/exam-image.png", "IMAGE_PATH");
+    }
+
+    @Test
+    void imageExamPreservesEveryLocalizedTaskFigureAtItsAuthoredPosition() throws Exception {
+        var projector = new OpenAiDeCoachContextProjector(
+                new CoachStateProjection("https://skillpilot.test"), "https://skillpilot.test");
+        var state = imageExamState();
+        var exam = state.activeGoal().examData();
+        exam.setTaskContent("Aufgabe $x$.\n\n![Grafik 1](/assets/abi/2026_1/image1.de.png)\n\n"
+                + "Aufgabe 2.\n\n![Grafik 2](/assets/abi/2026_1/image2.de.png)");
+        exam.setTaskContentEn("Task $x$.\n\n![Figure 1](/assets/abi/2026_1/image1.en.png)\n\n"
+                + "Task 2.\n\n![Figure 2](/assets/abi/2026_1/image2.en.png)");
+
+        var context = projector.project(state, PersonalizationPlan.complete(List.of()), false, "en-US");
+
+        assertThat(context.activeGoal().exam().hasImage()).isTrue();
+        assertThat(context.activeGoal().exam().missingRequiredImage()).isFalse();
+        assertThat(context.activeGoal().exam().taskContent()).isEqualTo("Task \\(x\\).\n\n"
+                + "![Figure 1](https://skillpilot.test/ai-assets/abi/2026_1/image1.en.png)\n\n"
+                + "Task 2.\n\n![Figure 2](https://skillpilot.test/ai-assets/abi/2026_1/image2.en.png)");
+        assertThat(context.instruction()).contains("in chat in their supplied positions and order");
+        assertThat(new ObjectMapper().writeValueAsString(context))
+                .doesNotContain("NICHT IM KONTEXT", "passingPoints", "taskDe", ".de.png");
     }
 
     @Test

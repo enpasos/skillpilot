@@ -10,6 +10,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { startViteTestServer } from './viteTestServer'
 import { getFaqViewCopy } from '../src/utils/faqViewCopy'
 import { GEMINI_SKILL_DOWNLOAD_URL } from '../src/coachVariants/geminiV1/copy'
+import { CHATGPT_DESKTOP_MINIMUM_PLUGIN_VERSION } from '../src/utils/chatGptDesktopBeta'
 import {
   CLAUDE_MARKETPLACE_REPOSITORY_URL,
   CLAUDE_MARKETPLACE_INSTALLATION_ENABLED,
@@ -138,10 +139,23 @@ try {
     const updateMode = page.getByTestId('claude-plugin-mode-update')
     const downloadLabel = language === 'de' ? 'Plugin-Datei herunterladen' : 'Download plugin file'
     const downloadLink = guide.getByRole('link', { name: downloadLabel, exact: true })
-    const desktopFaqGuide = () => {
-      const startQuestion = getFaqViewCopy(language).sections
+    const desktopFaqGuide = async () => {
+      const chatGptQuestions = getFaqViewCopy(language).sections
         .find((section) => section.id === 'chatgpt')?.questions
-        .find((question) => question.id === 'chatgpt-availability')
+      const modeQuestion = chatGptQuestions?.find((question) => question.id === 'chatgpt-work')
+      assert.ok(modeQuestion, 'the FAQ explains the Desktop learning mode')
+      const modes = page.locator('details').filter({
+        has: page.locator('summary').filter({ hasText: modeQuestion.question }),
+      })
+      await modes.locator('summary').click()
+      const modeText = await modes.innerText()
+      assert(modeText.includes(language === 'de' ? '„Dieser Computer“' : '“This Computer”'),
+        'the Desktop FAQ identifies the local Codex environment')
+      assert(modeText.includes(language === 'de'
+        ? 'Lernen in Work wird getrennt getestet und ist für diese Plugin-Version noch nicht bestätigt'
+        : 'Learning in Work is being tested separately and is still unconfirmed for this plugin version'),
+      'the Desktop FAQ separates Work acceptance from the local Codex route')
+      const startQuestion = chatGptQuestions?.find((question) => question.id === 'chatgpt-availability')
       assert.ok(startQuestion, 'the FAQ includes the authored ChatGPT installation question')
       return page.locator('details').filter({
         has: page.locator('summary').filter({ hasText: startQuestion.question }),
@@ -181,16 +195,30 @@ try {
     const chatGptGuide = page.getByTestId('chatgpt-desktop-plugin-guide')
     assert(await chatGptGuide.count() === 1,
       'ChatGPT Desktop has an independent guide alongside the Claude publication')
-    assert((await chatGptGuide.getByTestId('chatgpt-desktop-version').innerText()).includes('1.1.3')
-      && (await chatGptGuide.innerText()).includes(language === 'de' ? 'mindestens Version 1.1.3' : 'at least version 1.1.3'),
-      'the Desktop guide defines a minimum supported version and permits later marketplace fixes')
+    const chatGptVersion = chatGptGuide.getByTestId('chatgpt-desktop-version')
+    const chatGptGuideText = await chatGptGuide.innerText()
+    assert((await chatGptVersion.innerText()).endsWith(`: ${CHATGPT_DESKTOP_MINIMUM_PLUGIN_VERSION}`),
+      'the Desktop guide renders the configured minimum supported version')
+    assert(chatGptGuideText.includes(language === 'de'
+      ? `Version ${CHATGPT_DESKTOP_MINIMUM_PLUGIN_VERSION} oder neuer`
+      : `version ${CHATGPT_DESKTOP_MINIMUM_PLUGIN_VERSION} or later`),
+      'the localized Desktop guide permits later marketplace fixes')
     const chatGptRepository = chatGptGuide.getByRole('textbox')
     assert.equal(await chatGptRepository.inputValue(),
       'https://github.com/enpasos/skillpilot-chatgpt-marketplace')
-    assert((await chatGptGuide.innerText()).includes(language === 'de'
+    assert(chatGptGuideText.includes(language === 'de'
       ? 'Browser und Mobil-App sind dafür noch nicht bestätigt'
       : 'Browser and mobile app support have not been confirmed'),
       'the Desktop guide retains the actual host acceptance boundary')
+    assert(chatGptGuideText.includes(language === 'de' ? 'lokalen Codex-Chat' : 'local Codex chat'),
+      'the Desktop guide starts learning in local Codex')
+    assert(chatGptGuideText.includes(language === 'de'
+      ? 'Die Plugin-Ansicht kannst du auch über „Work“ öffnen'
+      : 'You can also open the plugin browser from “Work”'),
+    'the Desktop guide offers Work as a way to open the plugin browser')
+    for (const field of language === 'de' ? ['„Quelle“', '„Git-Ref“', '„Sparse-Pfade“'] : ['“Source”', '“Git ref”', '“Sparse paths”']) {
+      assert(chatGptGuideText.includes(field), `the Desktop guide names the marketplace import field ${field}`)
+    }
     assert(await chatGptGuide.getByRole('link').getAttribute('href') === '/?coach=chatgpt-desktop',
       'the guide returns to the authored start flow with ChatGPT preselected')
     assert.equal(await chatGptGuide.getByRole('link', { name: /(?:herunterladen|download)/iu }).count(), 0,
@@ -288,7 +316,7 @@ try {
       history.pushState({}, '', '/faq')
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
-    const faqDesktopGuide = desktopFaqGuide()
+    const faqDesktopGuide = await desktopFaqGuide()
     await faqDesktopGuide.waitFor({ state: 'attached' })
     await faqDesktopGuide.locator('xpath=ancestor::details[1]').locator('summary').click()
     await faqDesktopGuide.click()
@@ -470,7 +498,7 @@ try {
     await page.getByRole('alert').waitFor()
     await assertUnavailableVersionSafety()
     assert.equal(await downloadLink.count(), 0, 'failed index load offers no stale download')
-    assert((await chatGptGuide.getByTestId('chatgpt-desktop-version').innerText()).includes('1.1.3'),
+    assert((await chatGptVersion.innerText()).endsWith(`: ${CHATGPT_DESKTOP_MINIMUM_PLUGIN_VERSION}`),
       'Claude publication failure does not hide or rebind the independent ChatGPT package guide')
     assert.doesNotMatch(await page.locator('#claude-plugin').innerText(), /\b[0-9]+\.[0-9]+\.[0-9]+\b/u,
       'failed index load offers no stale or guessed version')
@@ -500,7 +528,7 @@ try {
       history.pushState({}, '', '/faq')
       window.dispatchEvent(new PopStateEvent('popstate'))
     })
-    const faqDesktopGuide = desktopFaqGuide()
+    const faqDesktopGuide = await desktopFaqGuide()
     await faqDesktopGuide.waitFor({ state: 'attached' })
     await faqDesktopGuide.locator('xpath=ancestor::details[1]').locator('summary').click()
     await faqDesktopGuide.click()

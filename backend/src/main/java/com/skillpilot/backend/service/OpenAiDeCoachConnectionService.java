@@ -13,6 +13,7 @@ import com.skillpilot.backend.landscape.SkillLandscape;
 import com.skillpilot.backend.openai.OpenAiCoachLocale;
 import com.skillpilot.backend.openai.de.OpenAiDeCurriculumRevisionProvider;
 import com.skillpilot.backend.openai.de.OpenAiDeProperties;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1CompletionContractRegistry;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.repository.LearnerRepository;
 import com.skillpilot.backend.repository.OpenAiDeLearningSessionRepository;
@@ -26,6 +27,7 @@ import java.util.Optional;
 import java.util.regex.Pattern;
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
@@ -77,6 +79,7 @@ public class OpenAiDeCoachConnectionService {
     private final LandscapeService landscapeService;
     private final OpenAiDeProperties properties;
     private final OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider;
+    private final OpenAiDeV1CompletionContractRegistry completionContract;
     private final SecureRandom secureRandom = new SecureRandom();
     private final byte[] hashSecret;
 
@@ -87,6 +90,20 @@ public class OpenAiDeCoachConnectionService {
             LandscapeService landscapeService,
             OpenAiDeProperties properties,
             OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider,
+            String hashSecret) {
+        this(learningSessionRepository, learnerRepository, learnerService, landscapeService,
+                properties, curriculumRevisionProvider, null, hashSecret);
+    }
+
+    @Autowired
+    public OpenAiDeCoachConnectionService(
+            OpenAiDeLearningSessionRepository learningSessionRepository,
+            LearnerRepository learnerRepository,
+            LearnerService learnerService,
+            LandscapeService landscapeService,
+            OpenAiDeProperties properties,
+            OpenAiDeCurriculumRevisionProvider curriculumRevisionProvider,
+            OpenAiDeV1CompletionContractRegistry completionContract,
             @Value("${skillpilot.security.signing-secret:default-insecure-secret-change-me}") String hashSecret) {
         this.learningSessionRepository = learningSessionRepository;
         this.learnerRepository = learnerRepository;
@@ -94,6 +111,7 @@ public class OpenAiDeCoachConnectionService {
         this.landscapeService = landscapeService;
         this.properties = properties;
         this.curriculumRevisionProvider = curriculumRevisionProvider;
+        this.completionContract = completionContract;
         this.hashSecret = hashSecret.getBytes(StandardCharsets.UTF_8);
     }
 
@@ -231,6 +249,9 @@ public class OpenAiDeCoachConnectionService {
         learningSession.setWorkflowVersion(properties.getWorkflowVersion());
         learningSession.setCurriculumRevision(curriculumRevisionProvider.currentRevision());
         learningSession.setCommunicationLocale(launch.communicationLocale());
+        if (completionContract != null) {
+            learningSession.setCompletionContract(completionContract.pendingStamp());
+        }
         learningSession.setVerifiedRecallBatchSize(switch (launch.type()) {
             case CURRENT_UNIT -> DEFAULT_VERIFIED_RECALL_BATCH_SIZE;
             case VERIFIED_RECALL -> launch.batchSize();

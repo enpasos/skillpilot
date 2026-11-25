@@ -95,7 +95,7 @@ class OpenAiDialogReplayReviewFixturesTest {
         assertThatThrownBy(() -> fixture.call(OpenAiDeV1McpContractAdapter.REVIEW_MEMORY_PRACTICE_CARD, Map.of()))
                 .isInstanceOf(IllegalArgumentException.class).hasMessageContaining("App-only");
         var prompts = call(fixture, OpenAiDeV1McpContractAdapter.START_RECALL, Map.of());
-        assertThat(prompts.isError()).isFalse();
+        assertThat(prompts.isError()).as("Synthetic recall-prompt result: %s", prompts.content()).isFalse();
         var promptData = (Map<String, Object>) prompts.structuredContent();
         assertThat((List<?>) promptData.get("cards")).hasSize(8);
         var answers = call(fixture, OpenAiDeV1McpContractAdapter.GET_RECALL_ANSWERS,
@@ -106,7 +106,7 @@ class OpenAiDialogReplayReviewFixturesTest {
                 "gradingCapability", answerData.get("gradingCapability"),
                 "assessments", java.util.stream.IntStream.range(0, 8)
                         .mapToObj(i -> Map.of("passed", allCorrect || i > 0)).toList()));
-        assertThat(recorded.isError()).isFalse();
+        assertThat(recorded.isError()).as("Synthetic recall-record result: %s", recorded.content()).isFalse();
         assertThat(fixture.domainState.get("savedRecallBatches")).isEqualTo(1);
         assertThat((List<?>) fixture.domainState.get("verifiedCardIds")).hasSize(allCorrect ? 8 : 7);
         assertThat(fixture.domainState.get("mastery")).isEqualTo(allCorrect
@@ -120,11 +120,11 @@ class OpenAiDialogReplayReviewFixturesTest {
         input.put("learningSessionId", OpenAiDialogReplayFixture.SESSION_ID);
         var definition = fixture.contract.toolSpecifications().stream()
                 .filter(spec -> spec.tool().name().equals(tool)).findFirst().orElseThrow().tool();
-        var properties = (Map<?, ?>) definition.inputSchema().get("properties");
-        if (properties.containsKey("expectedStateVersion")) {
+        var required = (List<?>) definition.inputSchema().get("required");
+        if (required.contains("expectedStateVersion")) {
             input.putIfAbsent("expectedStateVersion", fixture.currentStateVersion());
         }
-        if (properties.containsKey("clientRequestId")) {
+        if (required.contains("clientRequestId")) {
             input.putIfAbsent("clientRequestId", UUID.randomUUID().toString());
         }
         return fixture.call(tool, input);

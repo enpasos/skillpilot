@@ -6,7 +6,9 @@ import com.skillpilot.backend.actionregression.ActionRegressionAuditLogger;
 import com.skillpilot.backend.actionregression.ActionRegressionService;
 import com.skillpilot.backend.claude.mcp.ClaudeMcpConfiguration;
 import com.skillpilot.backend.claude.mcp.ClaudeMcpServerConfiguration;
+import com.skillpilot.backend.completion.CompletionProfileCatalog;
 import com.skillpilot.backend.openai.mcp.de.OpenAiDeMcpServerConfiguration;
+import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1CompletionContractRegistry;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1ContractMetadata;
 import com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV1McpContractAdapter;
 import io.modelcontextprotocol.server.McpStatelessServerFeatures;
@@ -167,7 +169,8 @@ class McpProviderIsolationTransportTest {
             SkillPilotStatelessMcpServerFactory.class,
             ClaudeMcpConfiguration.class,
             ClaudeMcpServerConfiguration.class,
-            OpenAiDeMcpServerConfiguration.class
+            OpenAiDeMcpServerConfiguration.class,
+            OpenAiDeV1CompletionContractRegistry.class
     })
     static class TestApplication {
 
@@ -188,6 +191,11 @@ class McpProviderIsolationTransportTest {
                     auditLogger,
                     "https://regression.example.test",
                     "mcp-provider-isolation-test");
+        }
+
+        @Bean
+        CompletionProfileCatalog completionProfileCatalog() {
+            return mock(CompletionProfileCatalog.class);
         }
 
         @Bean

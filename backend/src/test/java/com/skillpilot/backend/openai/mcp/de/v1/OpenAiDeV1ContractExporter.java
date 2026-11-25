@@ -1,6 +1,7 @@
 package com.skillpilot.backend.openai.mcp.de.v1;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -37,8 +38,10 @@ public final class OpenAiDeV1ContractExporter {
         Path output = Path.of(args[0]).toAbsolutePath().normalize();
         Files.createDirectories(output);
 
+        CoachToolFacade coachTools = mock(CoachToolFacade.class);
+        when(coachTools.supportsCompletionWorkflow()).thenReturn(true);
         OpenAiDeV1McpContractAdapter contract = new OpenAiDeV1McpContractAdapter(
-                mock(CoachToolFacade.class),
+                coachTools,
                 new CoachStateProjection("https://skillpilot.com"),
                 mock(OpenAiDeCoachIdentityResolver.class),
                 new OpenAiDeMcpTelemetry(new SimpleMeterRegistry()),

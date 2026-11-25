@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 048-add-openai-completion-contract
+      author: skillpilot
+      changes:
+        - addColumn:
+            tableName: openai_de_learning_session
+            columns:
+              - column:
+                  name: completion_contract
+                  type: VARCHAR(96)
+      rollback:
+        - dropColumn:
+            tableName: openai_de_learning_session
+            columnName: completion_contract

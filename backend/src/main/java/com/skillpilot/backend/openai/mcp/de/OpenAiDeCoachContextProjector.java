@@ -22,12 +22,18 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /** Provider-specific compaction layered on the shared AI-safety projection. */
 public final class OpenAiDeCoachContextProjector {
 
     private static final String IMAGE_PATH_PREFIX = "IMAGE_PATH: ";
+    private static final Pattern EXAM_IMAGE = Pattern.compile("!\\[([^\\]\\r\\n]*)]\\(([^\\r\\n)]*)\\)");
+    private static final Pattern EXAM_ASSET = Pattern.compile(
+            "^/(?:assets|ai-assets)/(?:assessment-materials|abi|goal-visualizations)/"
+                    + "(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+(?:\\.[A-Za-z0-9_-]+)*\\.(?:png|jpe?g|webp|svg|gif)$",
+            Pattern.CASE_INSENSITIVE);
     private static final String GOAL_VISUALIZATION_ASSET_PREFIX =
             "/assets/goal-visualizations/";
     private static final Pattern SERVER_BUILD_PATTERN = Pattern.compile("^[0-9a-f]{40}$");
@@ -111,7 +117,8 @@ public final class OpenAiDeCoachContextProjector {
                 authoritativeOrientationOutlook);
         OpenAiDeCoachContext.Completion completion = completion(state);
         String interactionMode = interactionMode(requiredAction, activeGoal, options, completion);
-        boolean examHasImage = hasExamImage(activeGoal);
+        OpenAiDeCoachContext.ExamTask exam = examTask(activeGoal, activeGoal(rawState), communicationLocale);
+        boolean examHasImage = exam != null && exam.hasImage();
         OpenAiDeCoachContext.GoalVisualization goalVisualization = includeGoalVisualization
                 ? goalVisualization(state.curriculum(), activeGoal, communicationLocale)
                 : null;
@@ -122,7 +129,7 @@ public final class OpenAiDeCoachContextProjector {
                 curriculumSummary(state.curriculum()),
                 orientation,
                 orientationOutlook,
-                activeGoal(state.curriculum(), activeGoal),
+                activeGoal(state.curriculum(), activeGoal, exam),
                 options,
                 curriculumCatalog,
                 personalizationHistory,
@@ -668,7 +675,8 @@ public final class OpenAiDeCoachContextProjector {
 
     private OpenAiDeCoachContext.ActiveGoal activeGoal(
             LandscapeSummary curriculum,
-            FrontierGoal goal) {
+            FrontierGoal goal,
+            OpenAiDeCoachContext.ExamTask exam) {
         if (goal == null) {
             return null;
         }
@@ -680,20 +688,51 @@ public final class OpenAiDeCoachContextProjector {
                 visibleNodeKind(goal),
                 goal.semanticKind(),
                 cockpitUrl(curriculum == null ? null : curriculum.getCurriculumId(), goal.id()),
-                examTask(goal.examData()));
+                exam);
     }
 
-    private OpenAiDeCoachContext.ExamTask examTask(ExamData exam) {
-        if (exam == null) {
+    private OpenAiDeCoachContext.ExamTask examTask(FrontierGoal visibleGoal, FrontierGoal sourceGoal, String locale) {
+        if (visibleGoal == null || visibleGoal.examData() == null) {
             return null;
         }
-        String task = exam.getTaskContent();
-        boolean hasImage = task != null && task.startsWith(IMAGE_PATH_PREFIX);
-        String visibleTask = hasImage
-                ? task.replaceFirst("^IMAGE_PATH: [^\\r\\n]+(?:\\r?\\n){1,2}", "")
-                : task;
-        Double maxPoints = exam.getScoring() == null ? null : exam.getScoring().getMaxPoints();
-        return new OpenAiDeCoachContext.ExamTask(visibleTask, maxPoints, hasImage);
+        ExamData released = visibleGoal.examData();
+        String task = released.getTaskContent();
+        if (sourceGoal != null && Objects.equals(visibleGoal.id(), sourceGoal.id()) && sourceGoal.examData() != null) {
+            // The common projection gates task release and removes protected scoring. Read only the
+            // matching authored task text here to preserve every required figure in place.
+            ExamData authored = sourceGoal.examData();
+            task = OpenAiCoachLocale.isEnglish(locale) && !blank(authored.getTaskContentEn())
+                    ? authored.getTaskContentEn() : authored.getTaskContent();
+        }
+        Double maxPoints = released.getScoring() == null ? null : released.getScoring().getMaxPoints();
+        if (task == null) {
+            return new OpenAiDeCoachContext.ExamTask(null, maxPoints, false, false);
+        }
+
+        boolean hasImage = task.startsWith(IMAGE_PATH_PREFIX);
+        boolean missingImage = false;
+        if (hasImage) {
+            int lineEnd = task.indexOf('\n');
+            String legacyPath = task.substring(IMAGE_PATH_PREFIX.length(), lineEnd < 0 ? task.length() : lineEnd).strip();
+            String remaining = lineEnd < 0 ? "" : task.substring(lineEnd + 1).stripLeading();
+            missingImage = !EXAM_ASSET.matcher(legacyPath).matches();
+            task = missingImage ? remaining : "![" + (OpenAiCoachLocale.isEnglish(locale) ? "Task figure" : "Aufgabenabbildung")
+                    + "](" + legacyPath.replaceFirst("^/ai-assets/", "/assets/") + ")\n\n" + remaining;
+        }
+
+        Matcher matcher = EXAM_IMAGE.matcher(task);
+        StringBuilder safeTask = new StringBuilder();
+        while (matcher.find()) {
+            hasImage = true;
+            String path = matcher.group(2);
+            boolean safe = EXAM_ASSET.matcher(path).matches();
+            missingImage |= !safe;
+            String image = safe ? "![" + matcher.group(1) + "](" + path.replaceFirst("^/ai-assets/", "/assets/") + ")" : "";
+            matcher.appendReplacement(safeTask, Matcher.quoteReplacement(image));
+        }
+        matcher.appendTail(safeTask);
+        return new OpenAiDeCoachContext.ExamTask(
+                stateProjection.projectReleasedEvaluationContent(safeTask.toString()), maxPoints, hasImage, missingImage);
     }
 
     private List<OpenAiDeCoachContext.Goal> goals(List<FrontierGoal> goals) {
@@ -937,7 +976,7 @@ public final class OpenAiDeCoachContextProjector {
                     "Lade nach der kurzen Orientierung zu einer niedrigschwelligen Reaktion ein, etwa welche Möglichkeit neugierig macht oder ob die lernende Person weitergehen möchte. Eine Antwort, die nur eine angebotene Möglichkeit wie „Smartphone und KI“ auswählt, beginnt das motivierende Gespräch; sie ist noch kein Abschluss und kein Auftrag zum Zielwechsel. Ordne eine freie Interessenangabe nur dann einem Pfad zu, wenn genau ein gelieferter Pfad eindeutig passt; frage sonst nach und rate niemals eine pathId.",
                     "Greife den gewählten orientationOutlook-Pfad konkret auf: Zeige zwei bis vier seiner gelieferten Lernmeilensteine zusammen mit den praktischen Kontexten und stelle eine aktive persönliche Anschlussfrage ohne fachlich richtige oder falsche Antwort. Eine inhaltliche Reaktion oder Bitte um direktes Weitergehen begründet Abschlussbereitschaft, aber ist noch nicht die Antwort auf die Abschlussbesprechung: Gib eine positive Zusammenfassung, biete Rückfragen oder Abschluss an und warte auf eine weitere Lernendenantwort. Speichere erst nach dieser Zustimmung; eine bloße inhaltsfreie Bestätigung oder Pfadauswahl genügt nicht. Wurde ein Pfad gewählt, übergib beim Abschluss dessen pathId unverändert als orientationPathId; SkillPilot aktiviert dessen erstes Einstiegsziel nur, wenn es aktuell verfügbar ist. Ist keines verfügbar, bleibt der Abschluss erfolgreich und SkillPilot liefert ohne aktives Ziel die normalen aktuell verfügbaren Grundlagen. Lasse orientationPathId nur weg, wenn ausdrücklich ohne Pfadwahl direkt weitergegangen werden soll. Ein pauschales „Spannend“ mit sofortiger unverbundener Zielliste ist verboten. Dieser Abschluss belegt niemals fachliche Kompetenz."));
             case "chat" -> policies.addAll(List.of(
-                    "Arbeite dialogisch an genau einem bestätigten atomischen Ziel: Nenne zuerst seinen exakten Titel, nicht die Beschreibung. Prüfe kurz Vorwissen, knüpfe ausdrücklich an die Antwort an, gib kleine Hinweise, lasse mit ein bis drei Aufgaben selbst arbeiten und unterscheide Denkfehler von Flüchtigkeitsfehlern. Gib nie die Lösung der unmittelbar folgenden Aufgabe vor; nach einem Mini-Beispiel muss die Folgeübung einen anderen Fall oder Wortlaut verwenden.",
+                    "Arbeite dialogisch an genau einem bestätigten atomischen Ziel. Nenne zuerst seinen exakten Titel. Lade zu einer ersten Idee ein oder biete eine Erklärung an. Ist das Konzept neu, besteht Unsicherheit oder wird um Hilfe gebeten, erkläre es direkt mit einem konkreten Beispiel. Knüpfe an den Gedankengang an, beantworte Rückfragen und lass zuhören, skizzieren oder in eigenen Worten erklären. Nutze zum Üben die gelieferte Aufgabenstellung, wenn vorhanden. Unterscheide Denkfehler von Flüchtigkeitsfehlern. Gib nie die Lösung der nächsten Aufgabe vor. Nutze nach einem Beispiel einen anderen Fall zur unabhängigen Übung.",
                     "Bewerte die fachliche Bedeutung statt den Wortlaut. Rekonstruiere ungewöhnliche Wege fair und korrigiere nur tatsächlich falsche oder unbegründete Schritte; ausdrücklich verlangte Formate und Inhalte bleiben bindend.",
                     "Nutze bei ausdrücklich visuell, grafisch oder für GeoGebra markierten Zielen eine gelieferte sichtbare Ressource und lasse dort beobachten, eingeben, verändern oder ablesen; ersetze die geforderte Interaktion nicht durch reinen Text.",
                     "Speichere Mastery nur nach zwei unabhängigen Checks, etwa Erklärung plus neue Anwendung, oder nach echtem mehrschrittigem Transfer in verändertem Kontext. Prüfe alle Aspekte eines mehrteiligen Ziels; Selbsteinschätzung, Wiederholung und derselbe vorgerechnete Fall genügen nicht. Entscheide intern und speichere ausreichende Evidenz sofort ohne separate Abschlusszustimmung. Erst nach bestätigtem Speichern gib konkrete Rückmeldung zum Lösungsweg und Ergebnis, biete Rückfragen oder Weitergehen an und warte auf die Antwort. Das Urteil bleibt bestehen, außer bei neuer fachlicher Leistung, tatsächlichem Bewertungsfehler. Sende ausschließlich strukturierte Abschlussdaten; Antworten, Bewertungsbegründungen und Rückmeldungen bleiben im Chat. Ist die Kompetenz noch nicht gezeigt, bleibe beim aktiven Ziel. Hilf bei einer noch laufenden Aufgabe mit einer kurzen Zusatzfrage, einem gezielten Hinweis oder Teilschritt; fordere nach einem Fehler Korrektur und neue Evidenz. Nach einer abgeschlossenen Aufgabe beginne eine passende neue Aufgabe erst nach Rückmeldung und Zustimmung zum Weitergehen. Cluster- und Memorierungsziele werden nie manuell gemeistert."));
@@ -967,10 +1006,9 @@ public final class OpenAiDeCoachContextProjector {
             }
         }
         if ("exam".equals(interactionMode) && examHasImage) {
-            policies.add("Diese Prüfungsaufgabe benötigt eine Abbildung, die nicht im MCP-Kontext übertragen wird. "
-                    + "Gib vor der Aufgabe den gelieferten activeGoal.cockpitUrl wortgetreu als Cockpit-Link aus, "
-                    + "sage knapp, dass die Abbildung dort angesehen werden muss, und erfinde oder beschreibe "
-                    + "keine vermeintliche Abbildung.");
+            policies.add("Zeige die gelieferten Aufgabenabbildungen an ihrer Stelle im Aufgabentext. "
+                    + "Wenn missingRequiredImage=true oder die lernende Person eine nötige Abbildung im Chat nicht "
+                    + "sehen kann, pausiere dieselbe Prüfung. Erfinde keine Bilddetails und bewerte keinen Versuch.");
         }
         return List.copyOf(policies);
     }
@@ -1018,8 +1056,8 @@ public final class OpenAiDeCoachContextProjector {
         }
         if (isExamGoal(goal)) {
             String imageInstruction = examHasImage
-                    ? "Die notwendige Aufgabenabbildung ist nur im Cockpit sichtbar: Gib zuerst activeGoal.cockpitUrl "
-                            + "wortgetreu aus und fordere die lernende Person auf, die Abbildung dort anzusehen. "
+                    ? "Zeige alle gelieferten Aufgabenabbildungen im Chat in der vorgegebenen Reihenfolge und Position. "
+                            + "Pausiere bei missingRequiredImage=true oder einer im Chat fehlenden Pflichtabbildung. "
                     : "";
             return goalAnnouncement + "Prüfungsmodus: " + imageInstruction
                     + "Gib taskContent wortgetreu aus und ändere nur Dollar-TeX-Begrenzer. Gib keine "
@@ -1124,7 +1162,7 @@ public final class OpenAiDeCoachContextProjector {
                     "After the short orientation, invite a low-threshold response about what sparks curiosity or whether the learner wants to continue. A reply that merely selects an offered possibility such as 'smartphones and AI' starts the motivational dialogue; it is not completion and not a request to switch goals. Map a free-form interest only when exactly one supplied path clearly matches; otherwise ask which path was meant and never guess a pathId.",
                     "Take up the selected orientationOutlook path specifically: show two to four of its supplied learning milestones together with the practical contexts, and ask an active personal follow-up with no technically right or wrong answer. Meaningful engagement or a direct request to continue establishes readiness, not the reply to a closure discussion: give a positive summary, invite questions or closure, and wait for a further learner answer. Save completion only after that consent; a content-free acknowledgement or bare path choice is insufficient. When a path was selected, pass its pathId unchanged as orientationPathId on completion; SkillPilot activates its first entry goal only when it is currently available. If none is available, completion remains successful and SkillPilot returns the normally available foundations without an active goal. Omit orientationPathId only when the learner explicitly wants to continue without selecting a path. A generic 'Interesting' followed immediately by an unrelated goal list is forbidden. Completion never marks subject mastery."));
             case "chat" -> policies.addAll(List.of(
-                    "Coach dialogically on exactly one confirmed atomic goal: first state its exact title, not the description. Briefly check prior knowledge, connect the next step explicitly to the learner's answer, give small hints, use one to three tasks, let the learner work, distinguish conceptual from careless errors, and never reveal the immediate next solution. After a mini-example, the next exercise must use a different case or wording.",
+                    "Coach dialogically on exactly one confirmed atomic goal. Start with its exact title. Invite an initial idea or offer an explanation. If the learner is new to the concept, unsure, or asks for help, explain it directly with a concrete example. Build on their reasoning, answer follow-up questions, and let them listen, sketch, or explain the idea in their own words. For practice use the published prompt when available. Distinguish conceptual gaps from careless errors. Never reveal the immediate next solution. After a worked example, use a different case for independent practice.",
                     "Assess technical meaning rather than wording. Reconstruct unusual approaches fairly and correct only genuinely false or unsupported steps; explicitly required formats and content remain binding.",
                     "For goals explicitly marked for visual, graph, or GeoGebra work, use a supplied visible resource and let the learner observe, enter, change, or read there; do not replace required interaction with pure text.",
                     "Save mastery only after two independent checks, such as explanation plus a new application, or genuine multi-step transfer in a changed context. Check all parts; self-assessment, repetition, and the same worked case are insufficient. Decide privately and save sufficient evidence immediately without separate closure consent. Only after confirmed persistence, give concrete feedback about work and outcome, invite questions or continuation, and wait for the reply. Keep the verdict fixed unless new substantive work, an actual grading error warrants reassessment. Send only structured completion facts; answers, assessment reasoning and feedback stay in the conversation. If competence has not yet been demonstrated, stay on the active goal. Within an unfinished task, continue with one short additional question, targeted hint or substep; after an error, require correction and fresh evidence. After a completed task, begin a suitable new exercise only following feedback and agreement to continue. Never manually master clusters or memorisation goals."));
@@ -1147,7 +1185,9 @@ public final class OpenAiDeCoachContextProjector {
             }
         }
         if ("exam".equals(interactionMode) && examHasImage) {
-            policies.add("This exam task needs an image that is not transmitted in the MCP context. Before the task, provide activeGoal.cockpitUrl verbatim, briefly state that the image must be viewed there, and do not invent or describe an image.");
+            policies.add("Show the supplied task figures in their places in the task text. When missingRequiredImage=true "
+                    + "or the learner cannot see a required figure in chat, pause the same exam. Invent no image "
+                    + "details and grade no attempt.");
         }
         return List.copyOf(policies);
     }
@@ -1182,7 +1222,8 @@ public final class OpenAiDeCoachContextProjector {
         }
         if (isExamGoal(goal)) {
             String imageInstruction = examHasImage
-                    ? "The required task image is available only in the cockpit. First provide activeGoal.cockpitUrl verbatim and ask the learner to view it there. "
+                    ? "Show all approved task figures in chat in their supplied positions and order. "
+                            + "Pause when missingRequiredImage=true or a required figure is unavailable in chat. "
                     : "";
             return goalAnnouncement + "Exam mode: " + imageInstruction
                     + "Reproduce taskContent verbatim except for replacing dollar TeX delimiters. Give no solution-leading hints or follow-up questions while the task is being solved. Wait for a complete visible submission, then load the approved evaluation with "
@@ -1344,13 +1385,6 @@ public final class OpenAiDeCoachContextProjector {
                 + "After processing unambiguous values, ask only about points that genuinely remain unresolved.";
     }
 
-    private boolean hasExamImage(FrontierGoal goal) {
-        ExamData exam = goal == null ? null : goal.examData();
-        return exam != null
-                && exam.getTaskContent() != null
-                && exam.getTaskContent().startsWith(IMAGE_PATH_PREFIX);
-    }
-
     private FrontierGoal activeGoal(UnifiedLearnerStateResponse state) {
         if (state.stateMachine() != null && state.stateMachine().activeGoal() != null) {
             return state.stateMachine().activeGoal();
@@ -1433,7 +1467,7 @@ public final class OpenAiDeCoachContextProjector {
                         || "Motivation".equalsIgnoreCase(tag));
     }
 
-    private String cockpitUrl(String curriculumId, String goalId) {
+    public String cockpitUrl(String curriculumId, String goalId) {
         if (blank(goalId)) {
             return null;
         }

@@ -114,25 +114,50 @@ class CoachSubjectContinuationIntegrationTest {
         var original = storedMastery(id);
         assertThat(call(session, "switch_skillpilot_learning_plan_subject", Map.of("subject", "Mathematik"), true).isError()).isTrue();
         assertThat(repository.findById(id).orElseThrow().getActiveGoalId()).isNull();
-        JsonNode switched = successful(session, "switch_skillpilot_learning_plan_subject", Map.of("subject", "Physik"), true);
+        JsonNode activeContext = successful(session, "switch_skillpilot_learning_plan_subject", Map.of("subject", "Physik"), true).path("context");
+        if (manualOpenAi(session)) {
+            chooseFocusedOpenAiGoal(session, activeContext, "Physik");
+            activeContext = context(session);
+        }
         String active = repository.findById(id).orElseThrow().getActiveGoalId();
         String activeIdKey = provider == Provider.OPENAI ? "goalId" : "id";
-        assertThat(switched.path("context").path("activeGoal").path(activeIdKey).asText()).isEqualTo(active);
+        assertThat(activeContext.path("activeGoal").path(activeIdKey).asText()).isEqualTo(active);
         assertPhysicsFoundation(id, active);
         assertThat(storedMastery(id)).isEqualTo(original);
     }
 
     @ParameterizedTest
-    @CsvSource({"CLAUDE,false", "CLAUDE,true", "OPENAI,false", "OPENAI,true", "GEMINI,false", "GEMINI,true"})
-    void aChosenSecondSubjectRemainsSelectableWithoutItsOwnPlan(Provider provider, boolean pilot) throws Exception {
+    @CsvSource({"CLAUDE,false,false", "CLAUDE,true,false", "OPENAI,false,false", "OPENAI,true,false",
+            "OPENAI,true,true", "GEMINI,false,false", "GEMINI,true,false"})
+    void aChosenSecondSubjectRemainsSelectableWithoutItsOwnPlan(Provider provider, boolean pilot, boolean autoPilot) throws Exception {
         ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
         String id = learner("G8", "GK", true);
+        if (autoPilot) learners.setPreferences(id, null, true, null);
         Session session = session(provider, id);
-        assertThat(context(session).path("learningPlanToday").path("subjects").findValuesAsText("subject"))
+        JsonNode before = context(session);
+        assertThat(before.path("learningPlanToday").path("subjects").findValuesAsText("subject"))
                 .containsExactlyInAnyOrder("Physik", "Mathematik");
-        successful(session, "switch_skillpilot_learning_plan_subject", Map.of("subject", "Mathematik"), true);
-        assertThat(learners.getPlanningScope(id, MATH).scopeAtomicGoalIds())
-                .contains(repository.findById(id).orElseThrow().getActiveGoalId());
+        if (autoPilot) assertThat(before.path("learningPlanToday").path("resumeAvailable").asBoolean()).isTrue();
+        JsonNode switched = successful(session, "switch_skillpilot_learning_plan_subject", Map.of("subject", "Mathematik"), true);
+        if (manualOpenAi(session)) chooseFocusedOpenAiGoal(session, switched.path("context"), "Mathematik");
+        String active = repository.findById(id).orElseThrow().getActiveGoalId();
+        assertThat(learners.getPlanningScope(id, MATH).scopeAtomicGoalIds()).contains(active);
+        if (provider == Provider.OPENAI) {
+            JsonNode fresh = context(session);
+            assertThat(fresh.path("activeGoal").path("goalId").asText()).isEqualTo(active);
+            assertThat(fresh.path("learningPlanToday").path("subjects").valueStream()
+                    .filter(subject -> subject.path("current").asBoolean()).map(subject -> subject.path("subject").asText()))
+                    .containsExactly("Mathematik");
+            if (!autoPilot) {
+                successful(session, "set_skillpilot_mastery",
+                        Map.of("goalId", active, "expectedStateVersion", fresh.path("stateVersion").asLong()), true);
+                JsonNode next = context(session);
+                assertManualChoices(session, next);
+                assertThat(learners.getStoredLearningPlanFocusSubject(learners.getLearner(id))).contains(MATH);
+                assertThat(next.path("options").findValuesAsText("description")).isNotEmpty().allMatch("Mathematik"::equals);
+                assertThat(next.path("options").findValuesAsText("id")).doesNotContain(active);
+            }
+        }
     }
 
     @ParameterizedTest
@@ -154,27 +179,29 @@ class CoachSubjectContinuationIntegrationTest {
         assertThat(plans.getPlan(id, MATH, day).stale()).isTrue();
         assertThat(plans.getPlan(id, MATH, day).blocks()).isEqualTo(plan.blocks());
         Session session = session(provider, id);
-        context(session).path("learningPlanToday").path("subjects").valueStream()
+        JsonNode before = context(session);
+        before.path("learningPlanToday").path("subjects").valueStream()
                 .filter(subject -> "Mathematik".equals(subject.path("subject").asText()))
                 .forEach(subject -> assertThat(subject.path("canContinue").asBoolean()).isFalse());
         assertThat(call(session, "switch_skillpilot_learning_plan_subject", Map.of("subject", "Mathematik"), true).isError()).isTrue();
-        successful(session, "resume_skillpilot_learning_plan", Map.of(), true);
+        resumePublishedPlanOrChoose(session, before, null);
         assertPhysicsFoundation(id, repository.findById(id).orElseThrow().getActiveGoalId());
         assertThat(storedMastery(id)).isEmpty();
     }
 
     @ParameterizedTest
-    @CsvSource({"CLAUDE,false", "CLAUDE,true", "OPENAI,false", "OPENAI,true", "GEMINI,false", "GEMINI,true"})
-    void anotherDueOrderKeepsPriorityAfterPausingTheCompletedUnit(Provider provider, boolean pilot) throws Exception {
+    @CsvSource({"CLAUDE,false,false", "CLAUDE,true,false", "OPENAI,false,false", "OPENAI,true,false",
+            "OPENAI,true,true", "GEMINI,false,false", "GEMINI,true,false"})
+    void anotherDueOrderKeepsPriorityAfterPausingTheCompletedUnit(Provider provider, boolean pilot, boolean autoPilot) throws Exception {
         Unit unit = completedParts("G8", "GK", 4, true);
         plans.setUnitAssignmentActivity(unit.learner(), unit.planId(),
                 new LearnerLearningPlanApi.UnitAssignmentActivity(unit.revision(), "unit", false));
         ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+        if (autoPilot) learners.setPreferences(unit.learner(), null, true, null);
         var before = storedMastery(unit.learner());
         var receipts = json.<JsonNode>valueToTree(passes.findForGoals(unit.learner(), unit.parts()));
         Session session = session(provider, unit.learner());
-        assertThat(context(session).path("learningPlanToday").path("resumeAvailable").asBoolean()).isTrue();
-        successful(session, "resume_skillpilot_learning_plan", Map.of(), true);
+        resumePublishedPlanOrChoose(session, context(session), MOTION_OPENING);
         // The separate due order still wins, through its own outstanding E.1 opening.
         assertParkedUnitTarget(unit.learner(), MOTION_OPENING, DIAGRAMS);
         assertThat(storedMastery(unit.learner())).isEqualTo(before);
@@ -210,7 +237,7 @@ class CoachSubjectContinuationIntegrationTest {
         JsonNode today = before.path("learningPlanToday");
         assertThat(today.path("subjects").findValuesAsText("subject")).containsExactly("Physik");
         assertThat(today.path("subjects").get(0).path("canContinue").asBoolean()).isTrue();
-        assertThat(today.path("resumeAvailable").asBoolean()).isTrue();
+        if (!manualOpenAi(session)) assertThat(today.path("resumeAvailable").asBoolean()).isTrue();
         Set<String> confirmedOpenings = Set.of();
         if (strictIndividual) {
             confirm(session, before);
@@ -236,12 +263,66 @@ class CoachSubjectContinuationIntegrationTest {
             assertThat(requires(FREE_FALL, active, learners.getLearningPlanCompletionContext(unit.learner()).canonicalGoals(), new HashSet<>()))
                     .as("The mathematical start after pausing really prepares the chosen free-fall experiment").isTrue();
         } else {
-            successful(session, "resume_skillpilot_learning_plan", Map.of(), true);
+            resumePublishedPlanOrChoose(session, before, null);
             assertPhysicsFoundation(unit.learner(), repository.findById(unit.learner()).orElseThrow().getActiveGoalId());
         }
         assertThat(repository.findById(unit.learner()).orElseThrow().getLearningState()).isEqualTo(LearningState.TEACHING);
         assertOnlyOpeningsAdded(unit.learner(), original, confirmedOpenings);
         assertThat(json.<JsonNode>valueToTree(passes.findForGoals(unit.learner(), unit.parts()))).isEqualTo(receipts);
+    }
+
+    private boolean manualOpenAi(Session session) {
+        return session.provider() == Provider.OPENAI
+                && !Boolean.TRUE.equals(learners.getLearner(session.learner()).getAutoPilot());
+    }
+
+    private void chooseFocusedOpenAiGoal(Session session, JsonNode switched, String subject) throws Exception {
+        assertManualChoices(session, switched);
+        assertThat(switched.path("options").findValuesAsText("description")).isNotEmpty().allMatch(subject::equals);
+        JsonNode fresh = context(session);
+        assertThat(fresh.path("options")).isEqualTo(switched.path("options"));
+        chooseFirstPublishedGoal(session, fresh, null);
+    }
+
+    private void resumePublishedPlanOrChoose(Session session, JsonNode current, String preferredGoal) throws Exception {
+        if (!manualOpenAi(session)) {
+            assertThat(current.path("learningPlanToday").path("resumeAvailable").asBoolean()).isTrue();
+            successful(session, "resume_skillpilot_learning_plan", Map.of(), true);
+            return;
+        }
+        assertManualChoices(session, current);
+        assertThat(current.path("options").findValuesAsText("description")).isNotEmpty().allMatch("Physik"::equals);
+        long revision = current.path("stateVersion").asLong();
+        var focus = learners.getPlannedGoals(session.learner());
+        assertThat(call(session, "resume_skillpilot_learning_plan", Map.of("expectedStateVersion", revision), true).isError()).isTrue();
+        assertThat(version(session.learner())).isEqualTo(revision);
+        assertThat(learners.getPlannedGoals(session.learner())).isEqualTo(focus);
+        assertThat(repository.findById(session.learner()).orElseThrow().getActiveGoalId()).isNull();
+        chooseFirstPublishedGoal(session, current, preferredGoal);
+    }
+
+    private void assertManualChoices(Session session, JsonNode current) {
+        assertThat(current.hasNonNull("activeGoal")).isFalse();
+        assertThat(repository.findById(session.learner()).orElseThrow().getActiveGoalId()).isNull();
+        assertThat(current.path("requiredAction").asText()).isEqualTo("setActiveGoal");
+        assertThat(current.path("learningPlanToday").path("guidance").path("state").asText()).isEqualTo("chooseGoal");
+        assertThat(current.path("learningPlanToday").path("resumeAvailable").asBoolean()).isFalse();
+        assertThat(current.path("nextAllowedTools").valueStream().map(JsonNode::asText))
+                .contains("set_skillpilot_active_goal").doesNotContain("resume_skillpilot_learning_plan");
+    }
+
+    private void chooseFirstPublishedGoal(Session session, JsonNode current, String preferredGoal) throws Exception {
+        JsonNode choice = current.path("options").path(0);
+        String goalId = choice.path("id").asText();
+        assertThat(goalId).isNotBlank();
+        assertThat(choice.path("kind").asText()).isEqualTo("goal");
+        if (preferredGoal != null) assertThat(goalId).isEqualTo(preferredGoal);
+        JsonNode result = successful(session, "set_skillpilot_active_goal",
+                Map.of("goalId", goalId, "expectedStateVersion", current.path("stateVersion").asLong()), true);
+        String active = repository.findById(session.learner()).orElseThrow().getActiveGoalId();
+        assertThat(active).isNotBlank();
+        assertThat(result.path("activeGoal").path("goalId").asText()).isEqualTo(active);
+        assertThat(context(session).path("activeGoal").path("goalId").asText()).isEqualTo(active);
     }
 
     private String learner(String duration, String course, boolean mathematics) throws Exception {
@@ -327,7 +408,8 @@ class CoachSubjectContinuationIntegrationTest {
         return successful(s, s.provider() == Provider.OPENAI ? "get_skillpilot_context" : "get_skillpilot_coach_context", Map.of(), false);
     }
     private JsonNode successful(Session s, String tool, Map<String, Object> input, boolean write) throws Exception {
-        var r = call(s, tool, input, write); assertThat(r.isError()).as(tool + " " + r.content()).isNotEqualTo(true);
+        var r = call(s, tool, input, write);
+        assertThat(r.isError()).as("%s succeeded", tool).isNotEqualTo(true);
         return s.provider() == Provider.OPENAI ? json.valueToTree(r.structuredContent())
                 : json.readTree(((McpSchema.TextContent) r.content().getFirst()).text());
     }
@@ -337,7 +419,7 @@ class CoachSubjectContinuationIntegrationTest {
                 List.of(new SimpleGrantedAuthority("SCOPE_" + scope + "read"), new SimpleGrantedAuthority("SCOPE_" + scope + "write"))));
         var args = new LinkedHashMap<>(input); args.put("learningSessionId", s.token());
         if (s.provider() != Provider.OPENAI) args.put("language", "de");
-        if (write) { args.put("clientRequestId", UUID.randomUUID().toString()); args.put("expectedStateVersion", version(s.learner())); }
+        if (write) { args.put("clientRequestId", UUID.randomUUID().toString()); args.putIfAbsent("expectedStateVersion", version(s.learner())); }
         List<McpStatelessServerFeatures.SyncToolSpecification> specs = switch (s.provider()) {
             case CLAUDE -> claude.toolSpecifications(); case GEMINI -> gemini.toolSpecifications(); case OPENAI -> openai.toolSpecifications();
         };

@@ -62,4 +62,12 @@ Now it’s your turn. Describe where you would place **407 and 470** on a number
 
 Take a break whenever you need one. If your session has expired when you return, start a new one with the same ID. Your saved progress carries over. To see your progress on the learning map, select **Open Cockpit**.
 
-**Other providers.** The **Work** section in ChatGPT Desktop requires the **SkillPilot Coach** plugin, version 1.1.3 or later. As of November 24, 2026, the public marketplace still offers the previous version, 1.1.2. Gemini is available for accounts set up for the controlled test. [Access requirements](https://skillpilot.com/faq/coach-setup) · [Setup guides by provider](https://skillpilot.com/plugins)
+## Join the ChatGPT desktop beta test
+
+In the Windows app, open **Plugins → Add → Add marketplace**. You can also reach the plugin browser from **Work**. Paste the GitHub address from the installation guide into **Source** and leave **Git ref** and **Sparse paths** blank. When the marketplace offers **SkillPilot Coach** version **1.2.0** or later, install or update the coach and check the installed version. Follow the sign-in steps if ChatGPT asks to connect it. [Installation guide](https://skillpilot.com/plugins#chatgpt-desktop)
+
+If the sign-in button is missing, [sign in through Windows PowerShell](../deploy/openai-personal-marketplace-release.md#windows-oauth-fallback).
+
+In SkillPilot, select **ChatGPT Desktop**, **Prepare learning with ChatGPT**, and **Copy ChatGPT start message**. Switch modes to **Codex** in the desktop app, then follow **Open local Codex chat** in SkillPilot. Select a local project and **This Computer**. Replace the example text with your complete start message, keep the **SkillPilot Coach** chip, and send the message in the chat. Keep it private. You do not need a terminal to learn. Learning in Work is being tested separately.
+
+Gemini is available for accounts set up for the controlled test. [Access requirements by provider](https://skillpilot.com/faq/coach-setup)

@@ -102,6 +102,13 @@ test("ordinary immediate persistence, failed-write honesty and fixed verdict can
   }
 });
 
+test("understanding goals can begin with teaching and keep published practice", () => {
+  assert.throws(() => assertCurrentCoachBehavior(changed("skill", "explain it directly", "ask for prior knowledge")),
+    /must allow a direct explanation/u);
+  assert.throws(() => assertCurrentCoachBehavior(changed("policy", "use the active goal's published prompt", "invent a practice prompt")),
+    /must use the published practice prompt/u);
+});
+
 test("mastery offers require evidence, a confirmed write, and a stable continuation choice", () => {
   for (const [before, after, reason] of [
     [/genuine multi-step transfer within one task may suffice\. Judge evidence, not\s+task count/u,

@@ -180,6 +180,12 @@ public class CoachToolFacade {
                 () -> completionAwareCoachState(skillpilotId));
     }
 
+    /** Current canonical revision, including any learner write made earlier in this transaction. */
+    public long getCoachStateRevision(String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return learnerService.getLearner(skillpilotId).getCoachStateRevision();
+    }
+
     public ActiveGoalContext getActiveGoalContext(String skillpilotId, String goalId, long stateVersion,
             String language, Set<String> publishedFrontierIds, boolean includeActivities) {
         learnerService.assertActiveLearnerRouteAccess(skillpilotId);
@@ -262,6 +268,24 @@ public class CoachToolFacade {
         return requireLearningPlanService().getCoachTodayStatus(skillpilotId, communicationLocale);
     }
 
+    public Optional<List<LearnerLearningPlanService.CoachPlanGoal>> getManualCoachPlanGoals(String skillpilotId, String locale) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        return requireLearningPlanService().getManualCoachPlanGoals(skillpilotId, locale);
+    }
+
+    public boolean usesManualPlanSelection(String skillpilotId) {
+        learnerService.assertActiveLearnerRouteAccess(skillpilotId);
+        var learner = learnerService.getLearner(skillpilotId);
+        return com.skillpilot.backend.completion.CompletionNavigationPolicy.followsPlans(learner)
+                && !Boolean.TRUE.equals(learner.getAutoPilot());
+    }
+
+    public UnifiedLearnerStateResponse selectManualCoachPlanGoal(String skillpilotId, String goalId) {
+        learnerService.assertWritableLearningSession(skillpilotId);
+        requireOrdinaryNavigation(skillpilotId);
+        return requireLearningPlanService().selectManualCoachPlanGoal(skillpilotId, goalId);
+    }
+
     /**
      * Resumes the authoritative plan only when the preceding read gate proves
      * that reconciliation can select a new goal. A successful no-op is
@@ -307,6 +331,12 @@ public class CoachToolFacade {
             String skillpilotId,
             String communicationLocale,
             String subjectName) {
+        return switchLearningPlanSubject(skillpilotId, communicationLocale, subjectName, false);
+    }
+
+    @Transactional
+    public LearnerLearningPlanApi.TransitionResponse switchLearningPlanSubject(
+            String skillpilotId, String communicationLocale, String subjectName, boolean offerManualGoalChoice) {
         learnerService.assertWritableLearningSession(skillpilotId);
         String requestedSubject = requirePublishedSubjectName(subjectName);
         LearnerLearningPlanService plans = requireLearningPlanService();
@@ -343,6 +373,11 @@ public class CoachToolFacade {
             throw new ResponseStatusException(
                     HttpStatus.CONFLICT,
                     "Learning-plan subject switching is not currently available");
+        }
+
+        if (offerManualGoalChoice) {
+            var focused = plans.focusManualCoachPlanSubject(skillpilotId, selectedSubject.landscapeId());
+            if (focused.isPresent()) return focused.get();
         }
 
         LearnerLearningPlanApi.PlanDetail selectedPlan;

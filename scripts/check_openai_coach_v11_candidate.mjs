@@ -40,8 +40,9 @@ export function verifyDescriptor(descriptor, expectedCandidateVersion = descript
   });
   assert.deepEqual(descriptor.toolSurface, {
     legacyToolCount: 12,
-    enabledToolCount: 14,
-    addedTools: ["resume_skillpilot_learning_plan", "switch_skillpilot_learning_plan_subject"],
+    enabledToolCount: 16,
+    addedTools: ["resume_skillpilot_learning_plan", "switch_skillpilot_learning_plan_subject",
+      "choose_skillpilot_completion_route", "confirm_skillpilot_completion_contract"],
     unpublishedToolRemoved: "get_skillpilot_daily_plan",
     dailyPlanProjection: "learningPlanToday",
   });

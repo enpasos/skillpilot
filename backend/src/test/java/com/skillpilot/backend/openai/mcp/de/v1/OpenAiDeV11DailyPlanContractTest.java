@@ -17,11 +17,14 @@ import com.skillpilot.backend.ai.CoachStateProjection;
 import com.skillpilot.backend.ai.CoachToolFacade;
 import com.skillpilot.backend.api.FrontierGoal;
 import com.skillpilot.backend.api.GoalStats;
+import com.skillpilot.backend.api.ActiveGoalContext;
+import com.skillpilot.backend.service.srs.SrsCardStepFacts;
 import com.skillpilot.backend.api.LearnerGoals;
 import com.skillpilot.backend.api.LearnerLearningPlanApi;
 import com.skillpilot.backend.api.LearnerPlanTodayStatus;
 import com.skillpilot.backend.api.LearnerPlanTodayStatusFixtures;
 import com.skillpilot.backend.service.learningplan.PeriodBasis;
+import com.skillpilot.backend.service.LearnerLearningPlanService.CoachPlanGoal;
 import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.api.StateMachineInfo;
 import com.skillpilot.backend.api.UnifiedLearnerStateResponse;
@@ -125,6 +128,77 @@ class OpenAiDeV11DailyPlanContractTest {
         assertThat(result.content()).singleElement().isInstanceOfSatisfying(McpSchema.TextContent.class,
                 text -> assertThat(text.text()).isEqualTo(status.statusText()).doesNotContain(announcement));
         verify(coachTools, never()).resumeLearningPlan(any(), any());
+    }
+
+    @Test
+    void explicitUnitAssignmentsExposeCurrentAssessmentAndVoluntaryChoiceGuidance() {
+        var date = LocalDate.of(2026, 11, 20);
+        var active = new LearnerPlanTodayStatus.UnitAssignmentStatus("Bewegungen", "active", 2, 4);
+        var completed = new LearnerPlanTodayStatus.UnitAssignmentStatus("Bewegungen", "completed", 4, 4,
+                List.of(new LearnerPlanTodayStatus.VoluntaryGoal("private-voluntary-goal", "Eine Bewegung beschreiben")));
+        var subject = LearnerPlanTodayStatusFixtures.subject("private-physics", "Physik", 0, 0, 0, 0, false, false);
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(
+                LearnerPlanTodayStatusFixtures.status(date, true, false, subject.withUnitAssignments(List.of(active))),
+                LearnerPlanTodayStatusFixtures.status(date, true, false, subject.withUnitAssignments(List.of(completed))));
+        var adapter = contract(true);
+
+        JsonNode open = objectMapper.valueToTree(call(adapter, OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                readArguments()).structuredContent());
+        assertThat(open.path("requiredAction").asText()).isEqualTo("unitChoice");
+        JsonNode openPlan = open.path("learningPlanToday");
+        assertThat(openPlan.path("guidance").path("instruction").asText())
+                .contains("current assessment choices", "await a choice").doesNotContain("Cockpit");
+        assertThat(openPlan.path("subjects").get(0).path("unitAssignments").get(0)).isEqualTo(
+                objectMapper.valueToTree(Map.of("title", "Bewegungen", "status", "active")));
+
+        JsonNode finished = objectMapper.valueToTree(call(adapter, OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                readArguments()).structuredContent());
+        assertThat(finished.path("requiredAction").asText()).isEqualTo("unitComplete");
+        JsonNode finishedPlan = finished.path("learningPlanToday");
+        assertThat(finishedPlan.path("guidance").path("instruction").asText())
+                .contains("matching published learning choices", "wait for the learner to choose")
+                .doesNotContain("Cockpit");
+        assertThat(finishedPlan.path("subjects").get(0).path("unitAssignments").get(0).path("voluntaryGoalTitles"))
+                .isEqualTo(objectMapper.valueToTree(List.of("Eine Bewegung beschreiben")));
+        assertThat(finishedPlan.toString()).doesNotContain("private-physics", "private-voluntary-goal");
+
+        JsonNode planSchema = objectMapper.valueToTree(spec(adapter,
+                OpenAiDeV1McpContractAdapter.GET_CONTEXT).tool().outputSchema())
+                .path("properties").path("learningPlanToday").path("properties");
+        assertThat(planSchema.path("guidance").path("properties").path("state").path("enum").toString())
+                .contains("unitChoice", "unitComplete");
+        assertThat(planSchema.path("subjects").path("items").path("properties").path("unitAssignments")
+                .path("items").path("properties").path("voluntaryGoalTitles").path("type").asText())
+                .isEqualTo("array");
+        verify(coachTools, never()).resumeLearningPlan(any(), any());
+    }
+
+    @Test
+    void unitContextUsesCanonicalRevisionAndOffersOnlyReleasedCardActions() {
+        when(coachTools.getLearnerState(LEARNER_ID)).thenReturn(activeGoalState());
+        when(coachTools.getCoachStateRevision(LEARNER_ID)).thenReturn(9L);
+        when(coachTools.getActiveGoalContext(eq(LEARNER_ID), eq("goal-1"), eq(9L), eq("de-DE"), any(), eq(true)))
+                .thenReturn(new ActiveGoalContext("goal-1", "E", List.of(), List.of(), null, List.of(),
+                        new ActiveGoalContext.PracticeExercise("Übung", "Addiere zwei Brüche.")));
+        when(coachTools.getCardStepFacts(LEARNER_ID, "de-DE")).thenReturn(new SrsCardStepFacts(
+                "unit-A", List.of("deck-A"), 2, 4, false, "deck-A", "deck-A", false, "offer-A"));
+        JsonNode context = objectMapper.valueToTree(call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                readArguments()).structuredContent());
+        assertThat(context.at("/activeGoalContext/practiceExercise/prompt").asText()).isEqualTo("Addiere zwei Brüche.");
+        assertThat(context.has("focusedUnitContext")).isFalse();
+        JsonNode step = context.path("cardStep");
+        assertThat(step.path("dueCards").asInt()).isEqualTo(2);
+        assertThat(step.path("proposeCheck").asBoolean(true)).isFalse();
+        assertThat(step.at("/practiceAction/arguments/goalId").asText()).isEqualTo("deck-A");
+        for (String action : List.of("practiceAction", "checkAction")) {
+            assertThat(step.at("/" + action + "/arguments/expectedStateVersion").asLong()).isEqualTo(9L);
+            assertThat(step.at("/" + action + "/arguments/practiceScopeId").asText()).isEqualTo("unit-A");
+        }
+        assertThat(step.toString()).doesNotContain("front", "expectedAnswer", "cardBatch");
+        when(coachTools.getCardStepFacts(LEARNER_ID, "de-DE")).thenReturn(SrsCardStepFacts.none());
+        JsonNode none = objectMapper.valueToTree(call(contract(true), OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                readArguments()).structuredContent()).path("cardStep");
+        assertThat(none.has("practiceAction") || none.has("checkAction")).isFalse();
     }
 
     @Test
@@ -504,6 +578,103 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     @Test
+    void manualPlanContextOffersRealChoicesAndOnlyTheChosenGoalCanBeSet() {
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(switchableStatus());
+        when(coachTools.getManualCoachPlanGoals(LEARNER_ID, "de-DE")).thenReturn(Optional.of(List.of(
+                new CoachPlanGoal("candidate-one", "Kräfte darstellen", "Physik"),
+                new CoachPlanGoal("goal-1", "Brüche addieren", "Mathematik"))));
+        when(coachTools.selectManualCoachPlanGoal(LEARNER_ID, "goal-1"))
+                .thenReturn(activeGoalState("Brüche addieren"));
+        var adapter = contract(true);
+        JsonNode context = objectMapper.valueToTree(call(adapter, OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                readArguments()).structuredContent());
+        assertThat(context.path("requiredAction").asText()).isEqualTo("setActiveGoal");
+        assertThat(context.path("activeGoal").isMissingNode()).isTrue();
+        assertThat(context.path("options").findValuesAsText("id")).containsExactly("candidate-one", "goal-1");
+        assertThat(context.path("frontier")).isEmpty();
+        assertThat(context.path("learningPlanToday").at("/guidance/state").asText()).isEqualTo("chooseGoal");
+        assertThat(context.path("learningPlanToday").path("resumeAvailable").asBoolean()).isFalse();
+        assertThat(context.path("nextAllowedTools").valueStream().map(JsonNode::asText).toList())
+                .contains(OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL)
+                .doesNotContain(OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN);
+        verify(sessionCoordinator, never()).write(any(), any(), anyLong(), any(), any(), any());
+
+        assertThat(call(adapter, OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN, writeArguments()).isError()).isTrue();
+        var invented = new java.util.LinkedHashMap<>(writeArguments());
+        invented.put("goalId", "not-published");
+        assertThat(call(adapter, OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL, invented).isError()).isTrue();
+        verify(coachTools, never()).resumeLearningPlan(any(), any());
+        verify(coachTools, never()).selectManualCoachPlanGoal(any(), any());
+
+        var chosen = new java.util.LinkedHashMap<>(writeArguments());
+        chosen.put("goalId", "goal-1");
+        var result = call(adapter, OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL, chosen);
+        assertThat(result.isError()).isFalse();
+        assertThat(objectMapper.valueToTree(result.structuredContent()).at("/activeGoal/goalId").asText())
+                .isEqualTo("goal-1");
+        verify(coachTools).selectManualCoachPlanGoal(LEARNER_ID, "goal-1");
+    }
+
+    @Test
+    void manualSubjectSwitchOffersOnlyItsTargetsWithoutStartingOne() {
+        when(coachTools.usesManualPlanSelection(LEARNER_ID)).thenReturn(true);
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(switchableStatus());
+        when(coachTools.getManualCoachPlanGoals(LEARNER_ID, "de-DE")).thenReturn(Optional.of(List.of(
+                new CoachPlanGoal("physics-1", "Kräfte darstellen", "Physik"))));
+        when(coachTools.switchLearningPlanSubject(LEARNER_ID, "de-DE", "Physik", true))
+                .thenReturn(new LearnerLearningPlanApi.TransitionResponse(null, null, "physics", null,
+                        null, true, noActiveGoalState()));
+        var adapter = contract(true);
+        var result = call(adapter, OpenAiDeV1McpContractAdapter.SWITCH_LEARNING_PLAN_SUBJECT,
+                switchArguments("Physik"));
+        assertThat(result.isError()).isFalse();
+        JsonNode context = objectMapper.valueToTree(result.structuredContent()).path("context");
+        assertThat(context.path("activeGoal").isMissingNode()).isTrue();
+        assertThat(context.path("requiredAction").asText()).isEqualTo("setActiveGoal");
+        assertThat(context.path("options").findValuesAsText("id")).containsExactly("physics-1");
+
+        JsonNode fresh = objectMapper.valueToTree(call(adapter, OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                readArguments()).structuredContent());
+        assertThat(fresh.path("activeGoal").isMissingNode()).isTrue();
+        assertThat(fresh.path("options").findValuesAsText("id")).containsExactly("physics-1");
+
+        var otherSubject = new java.util.LinkedHashMap<>(writeArguments());
+        otherSubject.put("goalId", "math-1");
+        assertThat(call(adapter, OpenAiDeV1McpContractAdapter.SET_ACTIVE_GOAL, otherSubject).isError()).isTrue();
+        verify(coachTools, never()).selectManualCoachPlanGoal(any(), any());
+        verify(coachTools, never()).setActiveGoal(any(), any());
+    }
+
+    @Test
+    void manualGoalChoicesPageThroughTheFullFrontier() {
+        when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE")).thenReturn(switchableStatus());
+        List<CoachPlanGoal> goals = java.util.stream.IntStream.rangeClosed(1, 50)
+                .mapToObj(i -> new CoachPlanGoal("goal-" + i, "Lernziel " + i, "Physik")).toList();
+        when(coachTools.getManualCoachPlanGoals(LEARNER_ID, "de-DE")).thenReturn(Optional.of(goals));
+        var adapter = contract(true);
+        JsonNode full = objectMapper.valueToTree(call(adapter, OpenAiDeV1McpContractAdapter.GET_CONTEXT,
+                readArguments()).structuredContent());
+        List<String> published = new java.util.ArrayList<>(full.path("options").findValuesAsText("id"));
+        assertThat(published).hasSize(24);
+        assertThat(full.path("frontier")).isEmpty();
+        assertThat(full.path("instruction").asText()).contains("target=goal, page=2");
+
+        for (int page = 2; page <= 3; page++) {
+            var args = new java.util.LinkedHashMap<>(readArguments());
+            args.put("target", "goal");
+            args.put("page", page);
+            var result = call(adapter, OpenAiDeV1McpContractAdapter.GET_NAVIGATION, args);
+            assertThat(result.isError()).isFalse();
+            JsonNode content = objectMapper.valueToTree(result.structuredContent());
+            published.addAll(content.path("options").findValuesAsText("id"));
+            if (page == 2) assertThat(content.path("nextPage").asInt()).isEqualTo(3);
+            else assertThat(content.has("nextPage")).isFalse();
+        }
+        assertThat(published).containsExactlyElementsOf(goals.stream().map(CoachPlanGoal::goalId).toList());
+        verify(sessionCoordinator, never()).write(any(), any(), anyLong(), any(), any(), any());
+    }
+
+    @Test
     void learnerWithoutPlansRetainsTheNormalContextSummaryAndFrontier() {
         when(coachTools.getLearningPlanTodayStatus(LEARNER_ID, "de-DE"))
                 .thenReturn(LearnerPlanTodayStatusFixtures.status(
@@ -761,7 +932,7 @@ class OpenAiDeV11DailyPlanContractTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"0, true, blocked", "2, true, blocked", "4, true, complete", "4, false, complete", ", false, unavailable"})
+    @CsvSource({"0, true, unitChoice", "2, true, unitChoice", "4, true, unitComplete", "4, false, unitComplete", ", false, unavailable"})
     void aUnitAloneNeverOffersOrExecutesGenericContinuation(Integer passedParts, boolean hasVoluntaryGoal, String wireState) {
         var status = LearnerPlanTodayStatusFixtures.status(LocalDate.of(2026, 11, 20), true, false,
                 LearnerPlanTodayStatusFixtures.physicsUnit(passedParts, hasVoluntaryGoal));
@@ -780,10 +951,15 @@ class OpenAiDeV11DailyPlanContractTest {
         String instruction = plan.path("guidance").path("instruction").asText();
         assertThat(plan.toString()).doesNotContain("private-goal-id");
         if (passedParts != null && passedParts == 4) {
-            assertThat(instruction).contains(hasVoluntaryGoal
-                    ? "Modellierung und Idealisierung von Bewegungen" : "No voluntary goal choice");
+            assertThat(instruction).contains("wait for the learner to choose");
+            var titles = plan.at("/subjects/0/unitAssignments/0/voluntaryGoalTitles");
+            if (hasVoluntaryGoal) {
+                assertThat(titles.get(0).asText()).isEqualTo("Modellierung und Idealisierung von Bewegungen");
+            } else {
+                assertThat(titles.isMissingNode()).isTrue();
+            }
         } else if (passedParts != null) {
-            assertThat(instruction).contains("assessment part choice");
+            assertThat(instruction).contains("parts published in current assessment choices");
         }
         assertThat(call(adapter, OpenAiDeV1McpContractAdapter.RESUME_LEARNING_PLAN, writeArguments())
                 .isError()).isTrue();

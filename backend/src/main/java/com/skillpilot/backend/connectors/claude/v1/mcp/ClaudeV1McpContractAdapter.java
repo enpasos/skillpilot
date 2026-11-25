@@ -1,5 +1,6 @@
 package com.skillpilot.backend.connectors.claude.v1.mcp;
 
+import com.skillpilot.backend.completion.CompletionRouteChoices;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -1414,7 +1415,7 @@ public class ClaudeV1McpContractAdapter {
             return error(
                     code,
                     "Open skillpilot.com and choose Lernen starten to create a new 24-hour learning session.");
-        } catch (ToolInputException e) {
+        } catch (ToolInputException | CompletionRouteChoices.UnavailablePageException e) {
             return error(ClaudeV1ErrorCode.INVALID_INPUT, e.getMessage());
         } catch (ToolConflictException e) {
             return error(ClaudeV1ErrorCode.CONFLICT, e.getMessage());
@@ -1599,12 +1600,12 @@ public class ClaudeV1McpContractAdapter {
         return sessionCoordinator.read(connectionId, ctx -> {
             if (completionEnabled) {
                 UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
-                if (state != null && ClaudeV1CompletionChoices.active(state.levelCompletion())) {
+                if (state != null && CompletionRouteChoices.active(state.levelCompletion())) {
                     Map<String, Object> response = new LinkedHashMap<>();
                     response.put("stateVersion", ctx.stateVersion());
                     response.put("language", ctx.communicationLocale());
                     response.put("navigationOptions", List.of());
-                    response.put("levelCompletion", ClaudeV1CompletionChoices.project(state.levelCompletion(), ctx.communicationLocale()));
+                    response.put("levelCompletion", CompletionRouteChoices.CLAUDE.project(state.levelCompletion(), ctx.communicationLocale()));
                     return response;
                 }
             }
@@ -1773,7 +1774,7 @@ public class ClaudeV1McpContractAdapter {
         ClaudeV1SessionCoordinator.Outcome<Map<String, Object>> outcome = sessionCoordinator.mutate(
                 connectionId, TOOL_CHOOSE_COMPLETION_ROUTE, clientRequestId, expectedStateVersion, arguments,
                 ctx -> {
-                    if (!completionEnabled || !ClaudeV1CompletionChoices.supported()) {
+                    if (!completionEnabled || !CompletionRouteChoices.CLAUDE.supported()) {
                         throw new ToolConflictException("Start a supported completion coach session from the Cockpit.");
                     }
                     UnifiedLearnerStateResponse state = coachToolFacade.getLearnerState(ctx.skillpilotId());
@@ -1781,7 +1782,7 @@ public class ClaudeV1McpContractAdapter {
                     if (completion == null || completion.learnerRevision() != ctx.stateVersion()) {
                         throw new ToolConflictException("Reload the current completion choices before selecting a route.");
                     }
-                    List<ClaudeV1CompletionChoices.Choice> matches = ClaudeV1CompletionChoices.page(
+                    List<CompletionRouteChoices.Choice> matches = CompletionRouteChoices.CLAUDE.page(
                             completion, ctx.communicationLocale(), page).choices().stream()
                             .filter(candidate -> candidate.label().equals(choiceLabel)).toList();
                     if (matches.size() != 1) {
@@ -1806,7 +1807,7 @@ public class ClaudeV1McpContractAdapter {
     }
 
     private void requireRegularNavigation(UnifiedLearnerStateResponse state) {
-        if (completionEnabled && state != null && ClaudeV1CompletionChoices.active(state.levelCompletion())) {
+        if (completionEnabled && state != null && CompletionRouteChoices.active(state.levelCompletion())) {
             throw new ToolConflictException("The completion route owns navigation. Reload context and use its published completion choices.");
         }
     }
