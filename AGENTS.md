@@ -804,6 +804,10 @@ of forces, two conservation laws). They are view structures of the eight
 Hessian views until they have opening goals and coverage reviews. Their order
 is the actual demand between their goals. The three gravitation goals moved
 to E.5, together with the Leistungskurs energy goal that needs the potential.
+Explicit learning places of prerequisite-only goals follow that demand: in the
+four Leistungskurs views six Mathematics preparations (vectors in space, scalar
+product, chain rule) moved from the common preparation area of the
+Einführungsphase to E.5, where alone they are needed in that phase.
 The Leistungskurs momentum goal and the collisions in the centre-of-mass frame
 stay at the end of "Impuls und Stöße": the first because the E.5
 Leistungskurs exam requires it in the Einführungsphase, the second until the

@@ -1,7 +1,7 @@
 {
   "schema": "physics-hessian-e2-child-structures-v1",
   "date": "2026-11-25",
-  "baseCommit": "ae04d42ef9",
+  "baseCommit": "19c14af91e",
   "cut": "Accepted by the Product Owner on 24 Nov 2026: six child structures in learning order.",
   "childStructures": [
     {
@@ -233,7 +233,7 @@
     "total": 90,
     "changed": 8,
     "unchangedByteIdentical": 82,
-    "finding": "In every changed view the atomic targets, the prerequisite-only goals and the learning set (with all prerequisites of every subject) are identical to the base commit. Goals changed their place only as named: into a child structure of E.2, or from E.2 to E.5.",
+    "finding": "In every changed view the atomic targets, the prerequisite-only goals and the learning set (with all prerequisites of every subject) are identical to the base commit. Target goals changed their place only as named: into a child structure of E.2, or from E.2 to E.5. Explicit learning places of prerequisite-only goals follow the goals that need them; they are listed under preparationPlaces.",
     "files": [
       {
         "file": "de-he-gk-g8.view.json",
@@ -244,7 +244,8 @@
         "prerequisiteOnlyGoals": 1076,
         "learningSet": 1667,
         "goalsInChildStructures": 22,
-        "goalsMovedToE5": 4
+        "goalsMovedToE5": 4,
+        "preparationPlacesMoved": 0
       },
       {
         "file": "de-he-gk-g9.view.json",
@@ -255,7 +256,8 @@
         "prerequisiteOnlyGoals": 1076,
         "learningSet": 1667,
         "goalsInChildStructures": 22,
-        "goalsMovedToE5": 4
+        "goalsMovedToE5": 4,
+        "preparationPlacesMoved": 0
       },
       {
         "file": "de-he-gk.view.json",
@@ -266,7 +268,8 @@
         "prerequisiteOnlyGoals": 1076,
         "learningSet": 1667,
         "goalsInChildStructures": 22,
-        "goalsMovedToE5": 4
+        "goalsMovedToE5": 4,
+        "preparationPlacesMoved": 0
       },
       {
         "file": "de-he-lk-g8.view.json",
@@ -277,7 +280,8 @@
         "prerequisiteOnlyGoals": 1053,
         "learningSet": 1667,
         "goalsInChildStructures": 23,
-        "goalsMovedToE5": 4
+        "goalsMovedToE5": 4,
+        "preparationPlacesMoved": 6
       },
       {
         "file": "de-he-lk-g9.view.json",
@@ -288,7 +292,8 @@
         "prerequisiteOnlyGoals": 1053,
         "learningSet": 1667,
         "goalsInChildStructures": 23,
-        "goalsMovedToE5": 4
+        "goalsMovedToE5": 4,
+        "preparationPlacesMoved": 6
       },
       {
         "file": "de-he-lk.view.json",
@@ -299,7 +304,8 @@
         "prerequisiteOnlyGoals": 1053,
         "learningSet": 1667,
         "goalsInChildStructures": 23,
-        "goalsMovedToE5": 4
+        "goalsMovedToE5": 4,
+        "preparationPlacesMoved": 6
       },
       {
         "file": "de-he-sekii-gk.view.json",
@@ -310,7 +316,8 @@
         "prerequisiteOnlyGoals": 1097,
         "learningSet": 1572,
         "goalsInChildStructures": 22,
-        "goalsMovedToE5": 4
+        "goalsMovedToE5": 4,
+        "preparationPlacesMoved": 3
       },
       {
         "file": "de-he-sekii-lk.view.json",
@@ -321,7 +328,228 @@
         "prerequisiteOnlyGoals": 1079,
         "learningSet": 1572,
         "goalsInChildStructures": 23,
-        "goalsMovedToE5": 4
+        "goalsMovedToE5": 4,
+        "preparationPlacesMoved": 9
+      }
+    ]
+  },
+  "preparationPlaces": {
+    "finding": "The generator places a prerequisite-only goal with an explicit learning place where its demand in the phase lies. With the four goals moved to E.5 and the child structures in E.2, these places moved. Roles, learning sets and all Mathematics demand rows are unchanged.",
+    "distinctGoals": 9,
+    "moves": 30,
+    "goals": [
+      {
+        "goalId": "fb7a4fa0-03b5-53b4-bd86-608480b748a1",
+        "title": "Betrag eines Vektors im Raum bestimmen",
+        "subject": "Mathematik",
+        "views": [
+          {
+            "file": "de-he-lk-g8.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk-g9.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-sekii-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          }
+        ]
+      },
+      {
+        "goalId": "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+        "title": "Kettenregel beim Ableiten anwenden (LK)",
+        "subject": "Mathematik",
+        "views": [
+          {
+            "file": "de-he-lk-g8.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk-g9.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-sekii-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          }
+        ]
+      },
+      {
+        "goalId": "f242a3e8-55a3-492e-8354-b81b24cdbb78",
+        "title": "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten",
+        "subject": "Mathematik",
+        "views": [
+          {
+            "file": "de-he-lk-g8.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk-g9.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-sekii-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          }
+        ]
+      },
+      {
+        "goalId": "075f1ef2-6860-4b20-9df2-878157eb395e",
+        "title": "Punkte und Vektoren im Raum koordinatisieren",
+        "subject": "Mathematik",
+        "views": [
+          {
+            "file": "de-he-lk-g8.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk-g9.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-sekii-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          }
+        ]
+      },
+      {
+        "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
+        "title": "Skalarprodukt von Vektoren definieren",
+        "subject": "Mathematik",
+        "views": [
+          {
+            "file": "de-he-lk-g8.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk-g9.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-sekii-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          }
+        ]
+      },
+      {
+        "goalId": "be0e8715-3c3a-5ffb-937a-0b6bce4f01d8",
+        "title": "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben",
+        "subject": "Mathematik",
+        "views": [
+          {
+            "file": "de-he-lk-g8.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk-g9.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-sekii-lk.view.json",
+            "from": "physics-required-preparation-physics-e-phase",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          }
+        ]
+      },
+      {
+        "goalId": "5ea765ac-c279-551a-8a94-a07da2381e5b",
+        "title": "Kräfte und Trägheit qualitativ erklären",
+        "subject": "Physik",
+        "views": [
+          {
+            "file": "de-he-sekii-gk.view.json",
+            "from": "physics-e2-newton-and-conservation",
+            "to": "physics-e2-inertia"
+          },
+          {
+            "file": "de-he-sekii-lk.view.json",
+            "from": "physics-e2-newton-and-conservation",
+            "to": "physics-e2-inertia"
+          }
+        ]
+      },
+      {
+        "goalId": "9c328f68-41ed-55dd-9e02-34414a6246f2",
+        "title": "Masse und Gewichtskraft unterscheiden",
+        "subject": "Physik",
+        "views": [
+          {
+            "file": "de-he-sekii-gk.view.json",
+            "from": "physics-e2-newton-and-conservation",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          },
+          {
+            "file": "de-he-sekii-lk.view.json",
+            "from": "physics-e2-newton-and-conservation",
+            "to": "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
+          }
+        ]
+      },
+      {
+        "goalId": "722857cf-f327-5740-8151-64eb92195ec8",
+        "title": "Mechanische Energieformen qualitativ unterscheiden",
+        "subject": "Physik",
+        "views": [
+          {
+            "file": "de-he-sekii-gk.view.json",
+            "from": "physics-e2-newton-and-conservation",
+            "to": "physics-e2-energy"
+          },
+          {
+            "file": "de-he-sekii-lk.view.json",
+            "from": "physics-e2-newton-and-conservation",
+            "to": "physics-e2-energy"
+          }
+        ]
       }
     ]
   }

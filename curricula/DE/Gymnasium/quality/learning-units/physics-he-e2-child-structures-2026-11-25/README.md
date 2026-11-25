@@ -31,13 +31,45 @@ declared learning units, no unit material, no assessment contract.
 - Eight views changed; the other 82 Physics views are byte-identical.
 - In every changed view the atomic targets, the prerequisite-only goals and the learning set (with
   all prerequisites of every subject) are identical to the base.
-- Goals changed their place only as named: 22 goals (23 in the Leistungskurs views) into a child
-  structure, four from E.2 to E.5.
+- Target goals changed their place only as named: 22 goals (23 in the Leistungskurs views) into a
+  child structure, four from E.2 to E.5.
+- Explicit learning places of prerequisite-only goals followed the goals that need them: nine
+  goals, 30 moves over the eight views (table below). The first version of this record did not
+  list them; the independent review found them.
 - The declared order between the six structures is the demand between their goals: each of the
   six order pairs has a direct `requires` edge as witness, and no chain points from an earlier
   structure to a later one.
 - All Mathematics demand rows are unchanged; six pinned hashes of Hessian Physics source views
   are renewed.
+
+## Learning places of prerequisites that moved
+
+The generator places a prerequisite-only goal with an explicit learning place where its demand in
+the phase lies. With the four goals in E.5 and the child structures in E.2, these places moved.
+Roles, learning sets and all Mathematics demand rows are unchanged.
+
+| Views | Goals | From | To |
+|---|---|---|---|
+| the four Leistungskurs views | six Mathematics preparations: "Punkte im räumlichen Koordinatensystem als Tupel angeben und deuten", "Punkte und Vektoren im Raum koordinatisieren", "Vektoren als Orts-, Richtungs- und Verschiebungsvektoren im Raum beschreiben", "Betrag eines Vektors im Raum bestimmen", "Skalarprodukt von Vektoren definieren", "Kettenregel beim Ableiten anwenden (LK)" | the common preparation area of the Einführungsphase | E.5 Gravitation |
+| the two views of Sek II only | "Kräfte und Trägheit qualitativ erklären" | E.2 | child structure "Trägheit" |
+| the two views of Sek II only | "Mechanische Energieformen qualitativ unterscheiden" | E.2 | child structure "Energie bleibt erhalten" |
+| the two views of Sek II only | "Masse und Gewichtskraft unterscheiden" | E.2 | E.5 Gravitation |
+
+The three Grundkurs views across both stages have no such move. For the six Mathematics
+preparations nothing that stays in E.2 needs them; in the Einführungsphase their demand lies in
+E.5 only (the Leistungskurs energy goal and the E.5 exams). They are therefore placed later than
+before, directly where they are used. `regrouping.actual.json` lists every move per view under
+`preparationPlaces`.
+
+## What a learner with stored state sees
+
+- A plan stored for E.2 before the cut stays current and offers the goals that moved to E.5
+  (pull request #198). In the Sek II views the section held 32 goals before the cut; a new
+  selection holds 28 in the Grundkurs and 27 in the Leistungskurs.
+- A goal in progress among the moved goals stays in progress under a focus on E.2 (pull request
+  #199, on which this branch is stacked).
+- The learner map and the Cockpit show ten rows under E.2: the six child structures and the four
+  mixed exams. Cards of the moved goals are practised with E.5.
 
 ## Not part of this step
 
