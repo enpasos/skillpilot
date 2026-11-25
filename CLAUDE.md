@@ -88,7 +88,10 @@ names a retired goal (an atomic goal marked
 `extendedData.applicabilityProjection = "excluded"`) stays valid as long as
 the rest of it works: the backend reads it without that entry and keeps the
 stored blocks, receipts and mastery unchanged. New plans cannot select a
-retired goal. Pass marks must be achievable for a learner who has understood
+retired goal. Since 25 November the same holds after a regrouping: an existing
+plan keeps the goals it captured when a cut moved them to another section
+(read, backup restore, edit), and a backup whose plan names a retired goal
+restores without that entry; a newly selected goal must lie under its section. Pass marks must be achievable for a learner who has understood
 everything and makes occasional small formal errors: a new or revised graded
 assessment has a pass mark of at most 85 percent of its points
 (`scripts/check_exam_pass_marks.py`), and indispensable performances are

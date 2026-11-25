@@ -1851,8 +1851,20 @@ public class LearnerServiceTest {
         var wrongFocus = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
                 original.id(), original.kind(), CANONICAL_CHOOSE_REPRESENTATION_ID, original.title(),
                 original.startDate(), original.endDate(), original.date(), original.atomicGoalIds());
+        // A stored plan keeps goals that lie outside the focus of their block: a regrouping of the
+        // curriculum moves goals to another section, and the plan still works (Product Owner,
+        // 24 November 2026). A new plan with the same block is refused, and so is a focus that
+        // does not resolve.
         assertThat(learnerService.isLearningPlanCompatible(
-                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(wrongFocus))).isFalse();
+                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(wrongFocus))).isTrue();
+        assertThatThrownBy(() -> learnerService.validateLearningPlanBlockFoci(
+                learnerId, plan.getLandscapeId(), List.of(wrongFocus)))
+                .hasMessageContaining("not a subject-local ancestor");
+        var unknownFocus = new com.skillpilot.backend.api.LearnerLearningPlanApi.Block(
+                original.id(), original.kind(), "unknown-focus", original.title(),
+                original.startDate(), original.endDate(), original.date(), original.atomicGoalIds());
+        assertThat(learnerService.isLearningPlanCompatible(
+                learnerId, plan.getCurriculumId(), plan.getLandscapeId(), List.of(unknownFocus))).isFalse();
         assertThat(learnerService.isLearningPlanCompatible(
                 learnerId, plan.getCurriculumId(), plan.getLandscapeId(), blocks)).isTrue();
     }

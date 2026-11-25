@@ -1471,14 +1471,18 @@ public class LearnerLearningPlanService {
                 scope,
                 capturedAtomicIds(existingBlocks), false,
                 blocks -> applySectionAssessmentPolicy(learners, learner, landscapeId, blocks, false));
-        learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks);
+        // Editing keeps the goals the stored plan had captured, also where a regrouping moved
+        // them out of the section of their block. Newly selected goals are checked strictly.
+        Set<String> retainedAtomicIds = capturedAtomicIds(existingBlocks);
+        learners.validateLearningPlanBlockFoci(skillpilotId, landscapeId, normalizedBlocks, retainedAtomicIds);
         normalizedBlocks = learners.orderLearningPlanBlocksByPrerequisites(
                 skillpilotId,
                 normalizedBlocks);
         String fingerprint = learners.learningPlanFingerprint(
                 skillpilotId,
                 landscapeId,
-                normalizedBlocks);
+                normalizedBlocks,
+                retainedAtomicIds);
         return new PreparedPlan(
                 learner,
                 landscapeId,

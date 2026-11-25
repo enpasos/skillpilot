@@ -1741,6 +1741,14 @@ class ClaudeV1CompletionRouteIntegrationTest {
             assertThat(plan.nextEligibleGoal()).isEqualTo(reference.nextEligibleGoal());
             assertThat(plan.canContinue()).isEqualTo(reference.canContinue());
             assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).isEqualTo(stored);
+            // A backup of this plan restores. The restored plan is the plan as it applies today.
+            var archive = learners.exportLearner(learnerId);
+            learners.importLearner(learnerId, archive);
+            var restored = learningPlans.getPlan(learnerId, physics, today);
+            assertThat(restored.stale()).isFalse();
+            assertThat(restored.blocks()).isEqualTo(reference.blocks());
+            assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks())
+                    .isEqualTo(reference.blocks());
         }
         // Nothing is left of a plan that names only the retired edition: it is outdated as before.
         var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
@@ -1755,6 +1763,75 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThatThrownBy(() -> learningPlans.upsert(learnerId, physics,
                 new LearnerLearningPlanApi.UpsertRequest(revision, "Alte Fassung", List.of(current, ownExam)), today))
                 .hasMessageContaining("Unknown atomicGoalIds");
+    }
+
+    // A regrouping of the curriculum moves goals to another section. A plan that existed before keeps
+    // the goals it captured (Product Owner, 24 November 2026: old plans stay valid as long as they
+    // still work): when it is read, when a backup of it is restored and when it is edited. A newly
+    // selected goal must lie under the section of its block, as before.
+    @ParameterizedTest
+    @ValueSource(strings = {"GK", "LK"})
+    void existingPlanKeepsGoalsThatARegroupingMovedToAnotherSection(String course) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", course);
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var currentSection = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        // The E.1 cut of 23 November 2026 moved road traffic to E.2 and reference frames to E.3.
+        List<String> moved = List.of("4a2bf015-052b-4af0-aed7-324259fa1a8a", "68c90ba6-c438-463c-9a53-cf61062d416a");
+        assertThat(currentSection).doesNotContainAnyElementsOf(moved);
+        assertThat(learners.getPlanningScope(learnerId, physics).scopeAtomicGoalIds()).containsAll(moved);
+        var current = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, currentSection, List.of(section), true);
+        var created = learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "E.1", List.of(current)), today);
+
+        // The same section as a plan stored before the cut.
+        var captured = new java.util.ArrayList<>(currentSection);
+        captured.addAll(moved);
+        var stored = learners.orderLearningPlanBlocksByPrerequisites(learnerId, List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                        null, captured, List.of(section), true)));
+        var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        record.setBlocksJson(mapper.writeValueAsString(stored));
+        storedPlans.saveAndFlush(record);
+        var plan = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(plan.stale()).isFalse();
+        assertThat(plan.blocks()).isEqualTo(stored);
+        assertThat(plan.blocks().getFirst().atomicGoalIds()).containsAll(moved);
+        assertThat(plan.nextEligibleGoal()).isNotNull();
+        assertThat(learners.exportLearner(learnerId).data().learningPlans().getFirst().blocks()).isEqualTo(stored);
+
+        // A backup of it restores with the same goals.
+        learners.importLearner(learnerId, learners.exportLearner(learnerId));
+        var restored = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(restored.stale()).isFalse();
+        assertThat(restored.blocks()).isEqualTo(stored);
+
+        // Editing keeps what the plan had captured.
+        var renamed = learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(restored.revision(), "E.1 vor dem Zuschnitt", stored), today);
+        assertThat(renamed.stale()).isFalse();
+        assertThat(renamed.blocks().getFirst().atomicGoalIds()).containsExactlyInAnyOrderElementsOf(captured);
+
+        // A goal that the plan did not hold before must lie under the section of its block.
+        String newtonOne = "31a2ef52-114b-4d2c-a720-6ef5a390b6dc";
+        assertThat(captured).doesNotContain(newtonOne);
+        var widened = new java.util.ArrayList<>(captured);
+        widened.add(newtonOne);
+        long revision = renamed.revision();
+        assertThatThrownBy(() -> learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(revision, "Erweitert", List.of(
+                        new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                                null, widened, List.of(section), true))), today))
+                .hasMessageContaining("not a subject-local ancestor");
+        // A new plan cannot start with goals outside the section of its block.
+        storedPlans.delete(storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow());
+        storedPlans.flush();
+        assertThatThrownBy(() -> learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Neu", stored), today))
+                .hasMessageContaining("not a subject-local ancestor");
+        assertThat(created.revision()).isPositive();
     }
 
     @Test void changingDurationInTheSharedSekIIViewNeedsANewAssignmentChoice() throws Exception {

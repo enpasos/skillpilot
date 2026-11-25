@@ -220,7 +220,7 @@ class LearnerLearningPlanServiceTest {
                         List.of("atom-a"), 1, 0, List.of("atom-a"), Instant.parse("2026-09-03T23:30:00Z")));
         when(learners.orderLearningPlanBlocksByPrerequisites(eq("preview-learner"), any()))
                 .thenAnswer(invocation -> invocation.getArgument(1));
-        when(learners.learningPlanFingerprint(eq("preview-learner"), eq("math"), any())).thenReturn("current");
+        when(learners.learningPlanFingerprint(eq("preview-learner"), eq("math"), any(), any())).thenReturn("current");
         when(learners.getMastery("preview-learner")).thenReturn(Map.of());
         when(learners.isLearningPlanCompatible(eq("preview-learner"), any(), eq("math"), any()))
                 .thenReturn(true);

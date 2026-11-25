@@ -110,10 +110,10 @@ class LearnerLearningPlanServiceIntegrationTest {
                         PHYSICS_LANDSCAPE_ID,
                         List.of("atom-p", "atom-q"),
                         List.of("atom-p", "atom-q")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(LANDSCAPE_ID), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(LANDSCAPE_ID), any(), any()))
                 .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
                         learnerService.getPlanningScope(LEARNER_ID, LANDSCAPE_ID)));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(PHYSICS_LANDSCAPE_ID), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(PHYSICS_LANDSCAPE_ID), any(), any()))
                 .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
                         learnerService.getPlanningScope(LEARNER_ID, PHYSICS_LANDSCAPE_ID)));
         when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
@@ -317,7 +317,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.isUnitAssignmentSubjectSelected(learner, extension)).thenReturn(true);
         when(learnerService.getPlanningScope(LEARNER_ID, extension))
                 .thenReturn(scopeFor(extension, List.of("atom-a", "atom-b"), List.of("atom-a", "atom-b")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any())).thenReturn("extension");
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any(), any())).thenReturn("extension");
         service.upsert(LEARNER_ID, LANDSCAPE_ID,
                 new LearnerLearningPlanApi.UpsertRequest(0L, "Earlier", List.of(
                         learning("earlier", "2026-09-03", "2026-09-03", "atom-a"))), TODAY);
@@ -410,7 +410,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.isUnitAssignmentSubjectSelected(learner, extension)).thenReturn(true);
         when(learnerService.getPlanningScope(LEARNER_ID, extension))
                 .thenReturn(scopeFor(extension, List.of("atom-b"), List.of("atom-b")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(extension), any(), any()))
                 .thenReturn("extension");
         when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("block-focus")))
                 .thenReturn(List.of(frontier("atom-a")));
@@ -679,7 +679,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.orderLearningPlanBlocksByPrerequisites(eq(LEARNER_ID), any()))
                 .thenAnswer(invocation -> invocation.getArgument(1));
         doThrow(new ResponseStatusException(HttpStatus.CONFLICT, "Focus is outside the subject target"))
-                .when(learnerService).validateLearningPlanBlockFoci(eq(LEARNER_ID), eq(LANDSCAPE_ID), any());
+                .when(learnerService).validateLearningPlanBlockFoci(eq(LEARNER_ID), eq(LANDSCAPE_ID), any(), any());
         assertStoredPlanCannotDriveLearning(created);
         assertThat(planRepository.findById(created.planId()).orElseThrow().getBlocksJson())
                 .isEqualTo(originalBlocks);
@@ -2243,7 +2243,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape))
                 .thenReturn(scopeFor(secondMathLandscape,
                         List.of("atom-m1", "atom-m2"), List.of("atom-m1", "atom-m2")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any(), any()))
                 .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
                         learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape)));
         when(landscapeService.getById(secondMathLandscape))
@@ -2320,7 +2320,7 @@ class LearnerLearningPlanServiceIntegrationTest {
         when(learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape))
                 .thenReturn(scopeFor(secondMathLandscape,
                         List.of("atom-a", "atom-m1"), List.of("atom-a", "atom-m1")));
-        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any()))
+        when(learnerService.learningPlanFingerprint(eq(LEARNER_ID), eq(secondMathLandscape), any(), any()))
                 .thenAnswer(invocation -> LearnerLearningPlanService.scopeFingerprint(
                         learnerService.getPlanningScope(LEARNER_ID, secondMathLandscape)));
         when(landscapeService.getById(secondMathLandscape))
