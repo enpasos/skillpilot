@@ -272,7 +272,8 @@ const physicsRoles = collectCompositionProjectionRoleGoalIds(physicsView.rootNod
 const physicsScope = [...physicsRoles.targetGoalIds].filter((id) => physicsReferences.get(id)?.type === 'atomic')
 const fallCluster = '230345f3-c360-4963-b390-ab94e3e2c864'
 const fallAtom = '09029573-864f-40ca-bf8a-cee7bf6dcb73'
-const fallAssessment = 'a9562b05-c54d-5635-9244-3f7dd24a8642'
+// The dedicated free-fall exam; the mixed exam "Bewegungsanalyse und freier Fall" is retired since 25 Nov 2026.
+const fallAssessment = 'f41e4e30-794e-5ce4-ba5e-cc72712cd691'
 assert(!physicsScope.includes(fallCluster))
 assert(physicsScope.includes(fallAtom) && physicsScope.includes(fallAssessment))
 const physicsExam = { ...milestone, goalIds: [fallAtom, fallAssessment] }

@@ -1,0 +1,146 @@
+schemaVersion: 1
+id: skillpilot-learning-quickstart-2026-11-24-en
+title: SkillPilot – Learn in the coach chat
+description: Quickstart using the local SkillPilot web interface, demo data and labelled chat examples.
+sourceRevision: 3d10e3ed6083482b3f9d26047fd5005e5c2dd96b
+platform: web
+outputDir: ../output/quickstart-learning-en
+cacheDir: ../.cache
+browser:
+  baseUrl: http://127.0.0.1:4177
+  headless: true
+  viewport: { width: 1280, height: 720 }
+  video: { width: 1280, height: 720 }
+  locale: en-GB
+  timezoneId: Europe/Berlin
+  colorScheme: light
+  reducedMotion: reduce
+  defaultTimeoutMs: 15000
+  postActionDelayMs: 800
+privacy:
+  maskSelectors: ['#skillpilotIdInput', '#skillpilotIdFilePassword', '#skillpilotIdFilePasswordConfirmation', 'input[type="password"]']
+  maskTextSelectors: ['code', 'span', 'p']
+  maskLabel: DEMO
+  maskColor: '#152c45'
+  forbiddenPatterns:
+    - '[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}'
+    - 'sp[sc]_[A-Za-z0-9_-]+'
+    - 'quickstart-demo-[0-9]+'
+  evidenceSelectors: ['h1', 'h2', 'h3']
+  failOnForbiddenText: true
+narration:
+  mode: scripted
+  ttsModel: gemini-2.5-flash-preview-tts
+  voice: Sulafat
+  instructions: Read the exact following words in natural, friendly British English at a calm pace. No extra words.
+  disclosure: The narration in this video is AI-generated and is not a human voice.
+  disclosureMode: visual-only
+  visualDisclosure: AI-generated voice
+  segmentGapMs: 500
+render:
+  width: 1280
+  height: 720
+  fps: 30
+  crf: 23
+  preset: fast
+  burnSubtitles: false
+  autoZoom: { enabled: false }
+chapters:
+  - id: intro
+    title: Learn with SkillPilot in chat
+    scriptedNarration: Set up what you want to learn in SkillPilot once. Then learn with your coach in chat. We’ll use Claude to show how to get started.
+    steps:
+      - { id: overview, action: goto, label: Quickstart overview, url: 'quickstart-card:intro' }
+      - { id: overview-read, action: wait, label: Review the overview, durationMs: 6500, capture: true }
+  - id: website
+    title: Learn now
+    scriptedNarration: Open SkillPilot dot com and choose Learn now. Read the notices and terms of use. If you agree, accept them to continue.
+    steps:
+      - { id: home, action: goto, label: Open the homepage, url: '/', waitUntil: networkidle }
+      - { id: home-read, action: wait, label: View the homepage, durationMs: 1500, capture: true }
+      - { id: learn, action: click, label: Open setup, target: { role: button, name: Learn now, exact: true } }
+      - { id: terms-read, action: wait, label: Read the terms, durationMs: 2100, capture: true }
+      - { id: terms-check, action: check, label: Accept the terms for the demo profile, target: { role: checkbox, name: I accept the Terms of Use, exact: false } }
+      - { id: terms-continue, action: click, label: Continue setup, target: { role: button, name: 'Accept & Continue', exact: true } }
+  - id: identity
+    title: Save your SkillPilot ID
+    scriptedNarration: Create a SkillPilot ID or load the one you already have. Save a new ID as a protected file so you can find your learning progress again later.
+    steps:
+      - { id: new-id, action: click, label: Create a demo ID, target: { role: button, name: Create a new SkillPilot ID, exact: true } }
+      - { id: identity-read, action: wait, label: View the masked ID, durationMs: 1400, capture: true }
+      - { id: save-dialog, action: click, label: Create a protected file, target: { role: button, name: Save SkillPilot ID securely, exact: true } }
+      - { id: password, action: fill, label: Enter a demo password, target: { css: '#skillpilotIdFilePassword' }, valueFromEnv: QUICKSTART_DEMO_ID_PASSWORD, secret: true, capture: true }
+      - { id: password-confirm, action: fill, label: Confirm the demo password, target: { css: '#skillpilotIdFilePasswordConfirmation' }, valueFromEnv: QUICKSTART_DEMO_ID_PASSWORD, secret: true, capture: true }
+      - { id: save-download, action: click, label: Download the protected file, target: { role: button, name: Download protected file, exact: true } }
+      - { id: save-check, action: assert, label: Confirm the download, target: { text: Protected ID file saved., exact: true } }
+      - { id: save-read, action: wait, label: View the confirmation, durationMs: 1500, capture: true }
+  - id: personal-curriculum
+    title: Set up your personal curriculum
+    scriptedNarration: Choose your curriculum and set what you want to learn. In this example, we choose lower secondary mathematics in the nine-year Gymnasium track in Hesse, Germany. Confirm your selection to continue.
+    steps:
+      - { id: curriculum-open, action: click, label: Open the curriculum, target: { role: button, name: 'Continue to step 2: Choose curriculum', exact: true } }
+      - { id: curriculum-read, action: wait, label: View the curriculum, durationMs: 1500, capture: true }
+      - { id: gymnasium, action: select, label: Choose Gymnasium, target: { css: '#sessionCurriculumSelect' }, value: a0e13c56-c25f-4742-9272-3a1a603ee52e }
+      - { id: region, action: click, label: Choose Hesse, target: { role: button, name: Hesse, exact: true } }
+      - { id: duration, action: click, label: Choose G9, target: { role: button, name: G9, exact: true } }
+      - { id: stage, action: click, label: Choose the school stage, target: { role: button, name: Sekundarstufe I, exact: true } }
+      - { id: subject, action: click, label: Choose mathematics, target: { role: button, name: Mathematik, exact: true } }
+      - { id: subjects-done, action: click, label: Confirm the subject selection, target: { role: button, name: Finish this selection, exact: true } }
+      - { id: summary-read, action: wait, label: Review your learning scope, durationMs: 2400, capture: true }
+  - id: launch
+    title: Start your coach
+    scriptedNarration: Choose the Claude learning coach. On your first visit, select Set up plugin to open the guide. If Claude is already set up, choose Start learning with Claude.
+    steps:
+      - { id: provider-focus, action: hover, label: Show the provider choice, target: { testId: coach-provider-choice } }
+      - { id: provider-read, action: wait, label: View the provider choice, durationMs: 3300, capture: true }
+      - { id: plugin-focus, action: hover, label: Show one-time Claude setup, target: { testId: claude-plugin-setup-open } }
+      - { id: start-focus, action: hover, label: Show the Claude start button, target: { testId: claude-plugin-start } }
+      - { id: start-read, action: wait, label: View the Claude start button, durationMs: 3300, capture: true }
+  - id: marketplace
+    title: Add the marketplace in Claude
+    scriptedNarration: To get started with Claude, you need a Pro subscription. In Claude Web, open Settings, then Plugins. Choose Add, Add marketplace, then Add from a repository. Paste the address shown on screen. Leave Automatically sync on and select Sync.
+    steps:
+      - { id: claude-guide, action: goto, label: Open the real SkillPilot setup page, url: '/plugins#claude-plugin', waitUntil: networkidle }
+      - { id: marketplace-focus, action: hover, label: Show the marketplace guide on SkillPilot, target: { testId: claude-plugin-marketplace-navigation } }
+      - { id: marketplace-guide-read, action: wait, label: View the marketplace section, durationMs: 4600, capture: true }
+      - { id: marketplace-card, action: goto, label: Labelled Claude menu steps and repository address, url: 'quickstart-card:marketplace' }
+      - { id: marketplace-read, action: wait, label: Show the address and how to sync, durationMs: 8500, capture: true }
+      - { id: marketplace-view, action: goto, label: Show the Marketplace dialog, url: 'quickstart-card:marketplace-view' }
+      - { id: marketplace-view-read, action: wait, label: Show the Marketplace dialog, durationMs: 10500, capture: true }
+  - id: plugin-connect
+    title: Install the plugin and connect SkillPilot
+    scriptedNarration: Open Discover and find SkillPilot Coach version one from the marketplace. Check the offered version against the SkillPilot guide. Select Add and check that the plugin is enabled. Open Connectors, select SkillPilot, then Connect. Sign in and approve access. Once you see Connected, return to SkillPilot.
+    steps:
+      - { id: connector-guide, action: goto, label: Open the real SkillPilot setup page for the connector, url: '/plugins#claude-plugin', waitUntil: networkidle }
+      - { id: connector-focus, action: hover, label: Show the connector guide on SkillPilot, target: { testId: claude-plugin-connector-navigation } }
+      - { id: connector-guide-read, action: wait, label: View the connector guide, durationMs: 4800, capture: true }
+      - { id: connector-card, action: goto, label: Labelled instructions for installing and connecting, url: 'quickstart-card:plugin-connect' }
+      - { id: connector-read, action: wait, label: Explain the two success states, durationMs: 11500, capture: true }
+      - { id: connector-view, action: goto, label: Show the Connected status, url: 'quickstart-card:connector-view' }
+      - { id: connector-view-read, action: wait, label: Show the Connected status, durationMs: 9000, capture: true }
+  - id: chat-start
+    title: Send the start message
+    scriptedNarration: Back in SkillPilot, choose Start learning with Claude. The start message is already filled in in the new chat. Send it as it is. Sign in if asked and keep the message private.
+    steps:
+      - { id: chat-card, action: goto, label: Instructions for starting the chat, url: 'quickstart-card:chat-start' }
+      - { id: chat-read, action: wait, label: Explain how to start the chat, durationMs: 4000, capture: true }
+      - { id: start-message-view, action: goto, label: Show the prepared message with the session identifier concealed, url: 'quickstart-card:start-message-view' }
+      - { id: start-message-view-read, action: wait, label: Show the prepared message with the session identifier concealed, durationMs: 7500, capture: true }
+  - id: goal-choice
+    title: You choose the next goal
+    scriptedNarration: After orientation, with Autopilot off, you choose one of the available goals in chat. Here, you start with the number line. The coach asks where four hundred and seven and four hundred and seventy go on a number line marked in tens.
+    steps:
+      - { id: choice-card, action: goto, label: Example chat with learner choice, url: 'quickstart-card:goal-choice' }
+      - { id: choice-read, action: wait, label: Choose a goal in chat, durationMs: 7000, capture: true }
+  - id: autopilot
+    title: SkillPilot chooses the next goal
+    scriptedNarration: When Autopilot is on, SkillPilot picks from the same available goals. Your coach tells you the choice and guides you in the chat.
+    steps:
+      - { id: autopilot-card, action: goto, label: Example chat with Autopilot, url: 'quickstart-card:autopilot' }
+      - { id: autopilot-read, action: wait, label: Explain how SkillPilot chooses the goal, durationMs: 6500, capture: true }
+  - id: keep-learning
+    title: Keep learning in chat
+    scriptedNarration: Choose goals and learning units in chat. Ask for a practice task or an available assessment. Pause and resume when you like. The Cockpit and learning map give you an overview whenever you want one.
+    steps:
+      - { id: keep-card, action: goto, label: Keep learning and view progress, url: 'quickstart-card:keep-learning' }
+      - { id: keep-read, action: wait, label: Review what you can do in chat, durationMs: 8000, capture: true }

@@ -77,6 +77,12 @@ export const StoryView: React.FC = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeLanguage])
 
+    useEffect(() => {
+        if (loadState === 'ready' && window.location.hash === '#video') {
+            document.getElementById('video')?.scrollIntoView()
+        }
+    }, [loadState])
+
     const labels = getMarkdownDocumentViewCopy(activeLanguage, 'story')
     const video = getQuickstartVideo(activeLanguage)
 
@@ -112,58 +118,76 @@ export const StoryView: React.FC = () => {
                     <p className="text-rose-400">{labels.error}</p>
                 )}
                 {loadState === 'ready' && (
-                    <>
-                        {video && <MarkdownDocumentVideoCard
-                            key={activeLanguage}
-                            url={video.url}
-                            poster={video.poster}
-                            tracks={video.tracks}
-                            eyebrow={labels.videoEyebrow}
-                            title={labels.videoTitle}
-                            description={labels.videoDescription}
-                            openLabel={labels.videoOpen}
-                        />}
-                        <div className="prose dark:prose-invert max-w-none text-text-primary">
-                            <ReactMarkdown
-                                remarkPlugins={[remarkGfm]}
-                                components={{
-                                    h1: (props) => <MarkdownDocumentH1 {...props} compact />,
-                                    img: ({ title, ...props }) => {
-                                        const widthMatch = typeof title === 'string'
-                                            ? title.match(/\b(?:width|max-width|w)=(\d+)\b/i)
-                                            : null
-                                        const explicitMaxWidth = widthMatch ? `${widthMatch[1]}px` : undefined
-                                        const rawSrc = typeof props.src === 'string' ? props.src : ''
-                                        const normalizedSrc = rawSrc.toLowerCase()
-                                        const src = normalizedSrc.startsWith('/') || normalizedSrc.startsWith('http') ? rawSrc : `/${rawSrc}`
-
-                                        const maxWidth = explicitMaxWidth
-                                        const className = [
-                                            'max-w-full h-auto rounded-lg border border-border-color',
-                                            maxWidth ? 'block mx-auto' : '',
-                                        ]
-                                            .filter(Boolean)
-                                            .join(' ')
-                                        const style = maxWidth ? { maxWidth, width: '100%' } : undefined
-
+                    <div className="prose dark:prose-invert max-w-none text-text-primary">
+                        <ReactMarkdown
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                                a: ({ href, children }) => (
+                                    <a href={href} target="_blank" rel="noreferrer">
+                                        {children}
+                                        <span className="sr-only">{activeLanguage === 'de' ? ' (neuer Tab)' : ' (new tab)'}</span>
+                                    </a>
+                                ),
+                                code: ({ children }) => <code className="select-all break-all">{children}</code>,
+                                h1: (props) => <MarkdownDocumentH1 {...props} compact />,
+                                p: ({ node, children }) => {
+                                    const onlyChild = node?.children.length === 1 ? node.children[0] : undefined
+                                    const isVideoLink = onlyChild?.type === 'element' && onlyChild.tagName === 'a'
+                                        && onlyChild.properties.href === `https://skillpilot.com/quickstart/${activeLanguage}#video`
+                                    if (isVideoLink && video) {
                                         return (
-                                            <img
-                                                {...props}
-                                                src={src}
-                                                loading={props.loading ?? 'lazy'}
-                                                decoding={props.decoding ?? 'async'}
-                                                title={explicitMaxWidth ? undefined : title}
-                                                className={className}
-                                                style={style}
-                                            />
+                                            <div className="not-prose">
+                                                <MarkdownDocumentVideoCard
+                                                    key={activeLanguage}
+                                                    sectionId="video"
+                                                    url={video.url}
+                                                    poster={video.poster}
+                                                    tracks={video.tracks}
+                                                    eyebrow={labels.videoEyebrow}
+                                                    title={labels.videoTitle}
+                                                    description={labels.videoDescription}
+                                                    openLabel={labels.videoOpen}
+                                                />
+                                            </div>
                                         )
-                                    },
-                                }}
-                            >
-                                {content}
-                            </ReactMarkdown>
-                        </div>
-                    </>
+                                    }
+                                    return <p>{children}</p>
+                                },
+                                img: ({ title, ...props }) => {
+                                    const widthMatch = typeof title === 'string'
+                                        ? title.match(/\b(?:width|max-width|w)=(\d+)\b/i)
+                                        : null
+                                    const explicitMaxWidth = widthMatch ? `${widthMatch[1]}px` : undefined
+                                    const rawSrc = typeof props.src === 'string' ? props.src : ''
+                                    const normalizedSrc = rawSrc.toLowerCase()
+                                    const src = normalizedSrc.startsWith('/') || normalizedSrc.startsWith('http') ? rawSrc : `/${rawSrc}`
+
+                                    const maxWidth = explicitMaxWidth
+                                    const className = [
+                                        'max-w-full h-auto rounded-lg border border-border-color',
+                                        maxWidth ? 'block mx-auto' : '',
+                                    ]
+                                        .filter(Boolean)
+                                        .join(' ')
+                                    const style = maxWidth ? { maxWidth, width: '100%' } : undefined
+
+                                    return (
+                                        <img
+                                            {...props}
+                                            src={src}
+                                            loading={props.loading ?? 'lazy'}
+                                            decoding={props.decoding ?? 'async'}
+                                            title={explicitMaxWidth ? undefined : title}
+                                            className={className}
+                                            style={style}
+                                        />
+                                    )
+                                },
+                            }}
+                        >
+                            {content}
+                        </ReactMarkdown>
+                    </div>
                 )}
             </div>
         </div>

@@ -1612,15 +1612,14 @@ try {
     await page.getByText(`Visual story ${language}`, { exact: true }).waitFor()
     await assertPlaybackState(page, null)
 
-    // Each route has its own narrated Claude tutorial and caption language.
-    // This checks the player contract and responsive layout, not media bytes.
+    // Both languages present the same walkthrough with localized media.
     const quickstartCopy = getMarkdownDocumentViewCopy(language, 'story')
     const quickstartAsset = getQuickstartVideo(language)
     const otherLanguage = language === 'en' ? 'de' : 'en'
     const otherAsset = getQuickstartVideo(otherLanguage)
     assert(quickstartAsset, `${language}: a completed localized Quickstart export is required`)
     assert(otherAsset, `${otherLanguage}: the other language keeps its own completed export`)
-    assert.match(quickstartAsset.url, new RegExp(`^/media/quickstart/claude/[^/]+/${language}/`, 'u'))
+    assert.match(quickstartAsset.url, new RegExp(`^/media/quickstart/learning/[^/]+/${language}/`, 'u'))
     assert.notEqual(quickstartAsset.url, otherAsset.url, 'English never falls back to the German video')
     assert.notEqual(quickstartAsset.poster, otherAsset.poster, 'each language has its own recorded poster')
     assert.notEqual(quickstartAsset.tracks[0].src, otherAsset.tracks[0].src, 'captions follow their own narration')
@@ -1650,22 +1649,23 @@ try {
       const descriptionId = await quickstartVideo.getAttribute('aria-describedby')
       assert(descriptionId, 'video exposes the language and recording disclosure accessibly')
       assert.equal(await page.locator(`[id="${descriptionId}"]`).textContent(), quickstartCopy.videoDescription)
-      if (language === 'en') {
-        assert.match(quickstartCopy.videoDescription, /Claude marketplace.*real screen recordings/u)
-        assert.match(quickstartCopy.videoDescription, /start learning in the Claude chat/u)
-        assert.doesNotMatch(quickstartCopy.videoDescription, /not a recording/u)
-        assert.match(quickstartCopy.videoDescription, /English AI-generated narration and English captions/u)
-        assert.doesNotMatch(quickstartCopy.videoDescription, /German|written guide follows/u)
-        assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT learning start through the Git marketplace works on Windows/u)
-        assert.doesNotMatch(await page.locator('.prose').textContent() ?? '', /ChatGPT is not available yet/u)
-        assert.match(quickstartCopy.videoDescription, /Recorded on September 13, 2026.*outdated/u)
-      } else {
-        assert.match(quickstartCopy.videoDescription, /Claude-Marketplace.*echten Bildschirmaufnahmen/u)
-        assert.match(quickstartCopy.videoDescription, /im Claude-Chat loslernen/u)
-        assert.doesNotMatch(quickstartCopy.videoDescription, /keine Aufnahme/u)
-        assert.match(await page.locator('.prose').textContent() ?? '', /ChatGPT-Lernstart über den Git-Marketplace funktioniert unter Windows/u)
-        assert.doesNotMatch(await page.locator('.prose').textContent() ?? '', /ChatGPT ist noch nicht verfügbar/u)
-        assert.match(quickstartCopy.videoDescription, /Aufnahme vom 13. September 2026.*überholt/u)
+      const guide = page.locator('.prose')
+      assert.equal(await guide.getByRole('heading', { level: 1 }).textContent(), language === 'de'
+        ? 'Von „Jetzt lernen“ zur ersten Aufgabe'
+        : 'From “Learn now” to your first problem')
+      assert.equal(await guide.locator('h2').first().textContent(), quickstartCopy.videoTitle)
+      const guideText = await guide.innerText()
+      assert.match(guideText, /ChatGPT Desktop/u)
+      assert.match(guideText, /Gemini/u)
+      assert.match(guideText, language === 'de' ? /Zahlenstrahl/u : /number line/u)
+      assert.match(guideText, /407 (?:und|and) 470/u)
+      assert.match(guideText, /https:\/\/github\.com\/enpasos\/skillpilot-claude-marketplace/u)
+      assert.match(guideText, language === 'de' ? /Konnektoren → skillpilot/u : /Connectors → skillpilot/u)
+      for (const scene of ['home', 'start', 'curriculum', 'provider', 'claude-marketplace', 'claude-connector', 'claude-start-message', 'chat']) {
+        const picture = guide.locator(`img[src="/quickstart-${scene}.${language}.webp"]`)
+        await picture.scrollIntoViewIfNeeded()
+        await picture.evaluate((img: HTMLImageElement) => img.decode())
+        assert(await picture.getAttribute('alt'), `${scene} has localized alternative text`)
       }
       const bounds = await quickstartVideo.boundingBox()
       assert(bounds && Math.abs(bounds.width / bounds.height - 16 / 9) < 0.02)
@@ -1691,7 +1691,7 @@ try {
     await context.close()
   }
 
-  console.log('Public SkillPilot overview and Claude quickstart UI tests passed')
+  console.log('Public SkillPilot overview and quickstart UI tests passed')
 } finally {
   await browser?.close()
   await new Promise<void>((resolve, reject) => {

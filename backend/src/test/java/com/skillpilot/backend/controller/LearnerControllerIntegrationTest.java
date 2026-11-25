@@ -827,7 +827,10 @@ public class LearnerControllerIntegrationTest {
         learnerRepository.save(learner);
         completeCanonicalSekTwoPersonalization(CANONICAL_PHYSICS_ID);
         RequiredLearningProjection projection = requiredLearningProjection(learnerRepository.findById(learnerId).orElseThrow());
-        assertThat(hessenLegacyEquivalentTopicIds(projection.seedAtomicGoalIds(), CANONICAL_PHYSICS_ROOT_ID)).hasSize(221);
+        // 220 since the mixed exam "Bewegungsanalyse und freier Fall", the equivalent of one legacy
+        // Hessian goal, was retired for all Länder on 25 Nov 2026 (221 before).
+        assertThat(hessenLegacyEquivalentTopicIds(projection.seedAtomicGoalIds(), CANONICAL_PHYSICS_ROOT_ID))
+                .hasSize(220).doesNotContain("a9562b05-c54d-5635-9244-3f7dd24a8642");
         long expectedTopicGoals = hessenLegacyEquivalentTopicIds(projection.expectedLearningGoalIds(), CANONICAL_PHYSICS_ROOT_ID).size();
 
         masteryRepository.save(new Mastery(learner, LEGACY_PHYSICS_DIAGRAMS_ID, 1.0));

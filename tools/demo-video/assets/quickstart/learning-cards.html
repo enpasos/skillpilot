@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkillPilot Quickstart</title>
+<style>
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: #f3f8fc; color: #152c45; font: 27px/1.36 system-ui, sans-serif; }
+  main { max-width: 1280px; min-height: 100vh; margin: 0 auto; padding: 47px 70px 62px; }
+  header { display: flex; align-items: center; gap: 15px; font-size: 25px; font-weight: 750; }
+  .section { margin: 43px 0 0; color: #145f88; font-size: 23px; font-weight: 750; }
+  h1 { margin: 9px 0 24px; font-size: 61px; line-height: 1.07; letter-spacing: -1.7px; }
+  #summary { font-size: 34px; color: #31516d; margin: 0 0 30px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .step { padding: 22px; border: 1px solid #c9ddea; border-radius: 18px; background: #fff; }
+  .step strong { display: block; font-size: 28px; }
+  .step p { margin: 8px 0 0; color: #31516d; }
+  .repository { display: block; margin-top: 21px; padding: 18px 21px; border: 1px solid #add3e8; border-radius: 14px; background: #fff; font: 27px/1.35 monospace; }
+  .chat { display: grid; gap: 15px; }
+  .message { width: fit-content; max-width: 96%; border: 1px solid #c9ddea; background: #fff; border-radius: 18px; padding: 13px 21px; }
+  .message:nth-child(2) { justify-self: end; background: #dff0fa; border-color: #add3e8; }
+  .message strong { display: block; color: #145f88; font-size: 20px; }
+  .message p { margin: 5px 0 0; white-space: pre-line; }
+  #note { margin: 23px 0 0; color: #31516d; font-size: 24px; }
+  .has-image { padding-top: 28px; }
+  .has-image .section { margin-top: 26px; }
+  .has-image h1 { font-size: 48px; margin: 7px 0 14px; }
+  .has-image #note { margin-top: 15px; }
+  figure { margin: 0; }
+  figure img { display: block; width: 100%; height: 429px; object-fit: contain; object-position: center; }
+</style>
+<main>
+  <header>SkillPilot</header>
+  <div class="section" id="section"></div>
+  <h1></h1>
+  <p id="summary" hidden></p>
+  <div id="body"></div>
+  <code class="repository" id="repository" hidden></code>
+  <p id="note" hidden></p>
+</main>
+<script>
+  const cards = {
+    de: {
+      intro: {
+        section: 'Quickstart', title: 'Mit SkillPilot im Chat lernen',
+        summary: 'In wenigen Schritten vom Lernrahmen zum ersten Lernziel.',
+        steps: [['ID sichern', 'Deinen Lernstand wiederfinden.'], ['Curriculum festlegen', 'Den Rahmen für dein Lernen wählen.'], ['Coach starten', 'Lernziele im Chat bearbeiten.']],
+      },
+      marketplace: {
+        section: 'Anleitung · Claude Web', title: 'Den Marketplace hinzufügen',
+        steps: [['Einstellungen öffnen', 'In Claude zu Plugins wechseln.'], ['Hinzufügen wählen', 'Marketplace hinzufügen → Aus einem Repository hinzufügen.'], ['Adresse einfügen', 'Automatisch synchronisieren eingeschaltet lassen. Synchronisieren wählen.']],
+        repository: 'https://github.com/enpasos/skillpilot-claude-marketplace',
+      },
+      'marketplace-view': {
+        section: 'Claude Web · 13.09.2026', title: 'Marketplace synchronisieren',
+        image: 'marketplace', alt: 'Marketplace-Dialog mit eingeschalteter automatischer Synchronisierung',
+      },
+      'plugin-connect': {
+        section: 'Anleitung · Claude Web', title: 'SkillPilot installieren und verbinden',
+        steps: [['Entdecken öffnen', 'SkillPilot Coach v1 aus dem SkillPilot-Marketplace auswählen.'], ['Plugin hinzufügen', 'Version mit der SkillPilot-Anleitung vergleichen. Hinzufügen wählen und die Aktivierung prüfen.'], ['Konnektor verbinden', 'Konnektoren → skillpilot → Verbinden. Anmeldung und Freigabe abschließen.']],
+        note: 'Sobald beim Konnektor „Verbunden“ steht, kehrst du zu SkillPilot zurück.',
+      },
+      'connector-view': {
+        section: 'Claude Web · 13.09.2026', title: 'Den Verbindungsstatus prüfen',
+        image: 'connector', alt: 'Der SkillPilot-Konnektor zeigt den Status Verbunden',
+      },
+      'chat-start': {
+        section: 'Anleitung zum Chatstart mit Claude', title: 'Die Startnachricht absenden',
+        steps: [['Zurück zu SkillPilot', 'Lernen mit Claude starten wählen. Ein neuer Chat öffnet sich.'], ['Nachricht senden', 'Die eingetragene Startnachricht unverändert absenden.'], ['Antwort abwarten', 'Der Coach lädt deinen Lernstand und zeigt dir den nächsten Schritt.']],
+        note: 'Bewahre die Startnachricht vertraulich auf.',
+      },
+      'start-message-view': {
+        section: 'Claude Web · 13.09.2026', title: 'Die vorbereitete Nachricht senden',
+        image: 'start-message', alt: 'Claude-Eingabefeld mit vorbereiteter Nachricht und verdeckter Sitzungskennung',
+      },
+      'goal-choice': {
+        section: 'Beispielchat · Autopilot aus', title: 'Du wählst das nächste Ziel',
+        messages: [
+          ['Coach', 'Diese Ziele stehen zur Auswahl:\n• Natürliche Zahlen darstellen und am Zahlenstrahl verorten\n• Dezimalsystem als Stellenwertsystem erklären und vergleichen'],
+          ['Du', 'Ich möchte mit dem Zahlenstrahl beginnen.'],
+          ['Coach', 'Auf deinem Zahlenstrahl sind 400, 410, 420, …, 500 markiert. Wo liegen 407 und 470?'],
+        ],
+      },
+      autopilot: {
+        section: 'Beispielchat · Autopilot an', title: 'SkillPilot wählt das nächste Ziel',
+        messages: [
+          ['Coach', 'Als Nächstes ist „Natürliche Zahlen darstellen und am Zahlenstrahl verorten“ dran. Möchtest du damit beginnen?'],
+          ['Du', 'Ja, los geht’s.'],
+          ['Coach', 'Auf deinem Zahlenstrahl sind 400, 410, 420, …, 500 markiert. Wo liegen 407 und 470?'],
+        ],
+        note: 'Die Auswahl kommt aus denselben verfügbaren Lernzielen.',
+      },
+      'keep-learning': {
+        section: 'Im Coach-Chat', title: 'Dein Chat bleibt dein Lernort',
+        steps: [['Lernen und üben', 'Bitte um eine Erklärung, eine Übung oder eine verfügbare Prüfung.'], ['Pausieren und weiterlernen', 'Sag dem Coach, wenn du pausieren oder weitermachen möchtest.'], ['Lernstand ansehen', 'Cockpit und Lernkarte kannst du bei Bedarf öffnen.']],
+      },
+    },
+    en: {
+      intro: {
+        section: 'Quickstart', title: 'Learn with SkillPilot in chat',
+        summary: 'Set up what you want to learn and start your first goal.',
+        steps: [['Save your ID', 'Find your learning progress again.'], ['Set your curriculum', 'Choose what you want to learn.'], ['Start your coach', 'Work on learning goals in chat.']],
+      },
+      marketplace: {
+        section: 'Setup guide · Claude Web', title: 'Add the marketplace',
+        steps: [['Open Settings', 'Go to Plugins in Claude.'], ['Select Add', 'Add marketplace → Add from a repository.'], ['Paste the address', 'Leave Automatically sync on. Select Sync.']],
+        repository: 'https://github.com/enpasos/skillpilot-claude-marketplace',
+      },
+      'marketplace-view': {
+        section: 'Claude Web · 13 September 2026', title: 'Sync the marketplace',
+        image: 'marketplace', alt: 'Add marketplace dialog with automatic sync enabled',
+      },
+      'plugin-connect': {
+        section: 'Setup guide · Claude Web', title: 'Install and connect SkillPilot',
+        steps: [['Open Discover', 'Find SkillPilot Coach v1 from the SkillPilot marketplace.'], ['Add the plugin', 'Check the version against the SkillPilot guide. Select Add and check that the plugin is enabled.'], ['Connect SkillPilot', 'Connectors → skillpilot → Connect. Sign in and approve access.']],
+        note: 'Once the connector says “Connected”, return to SkillPilot.',
+      },
+      'connector-view': {
+        section: 'Claude Web · 13 September 2026', title: 'Check the connection',
+        image: 'connector', alt: 'The SkillPilot connector shows Connected',
+      },
+      'chat-start': {
+        section: 'How to start the Claude chat', title: 'Send the start message',
+        steps: [['Return to SkillPilot', 'Choose Start learning with Claude. A new chat opens.'], ['Send the message', 'Send the message already filled in as it is.'], ['Wait for the reply', 'The coach loads your progress and shows you the next step.']],
+        note: 'Keep the start message private.',
+      },
+      'start-message-view': {
+        section: 'Claude Web · 13 September 2026', title: 'Send the prepared message',
+        image: 'start-message', alt: 'Claude composer with the prepared message and a concealed session identifier',
+      },
+      'goal-choice': {
+        section: 'Example chat · Autopilot off', title: 'You choose the next goal',
+        messages: [
+          ['Coach', 'Here are the goals you can choose from:\n• Represent natural numbers and locate them on the number line\n• Explain and compare the decimal place-value system'],
+          ['You', 'I’d like to start with the number line.'],
+          ['Coach', 'Your number line is marked 400, 410, 420, …, 500. Where would you place 407 and 470?'],
+        ],
+      },
+      autopilot: {
+        section: 'Example chat · Autopilot on', title: 'SkillPilot chooses the next goal',
+        messages: [
+          ['Coach', 'Your next goal is “Represent natural numbers and locate them on the number line”. Would you like to start?'],
+          ['You', 'Yes, let’s start.'],
+          ['Coach', 'Your number line is marked 400, 410, 420, …, 500. Where would you place 407 and 470?'],
+        ],
+        note: 'SkillPilot picks from the same available learning goals.',
+      },
+      'keep-learning': {
+        section: 'In the coach chat', title: 'Keep learning in chat',
+        steps: [['Learn and practise', 'Ask for an explanation, a practice task or an available assessment.'], ['Pause and resume', 'Tell the coach when you want to pause or continue.'], ['Check your progress', 'Open the Cockpit or learning map whenever you want.']],
+      },
+    },
+  };
+  const language = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'de';
+  document.documentElement.lang = language;
+
+  function showCard() {
+    const card = cards[language][location.hash.slice(1) || 'intro'];
+    document.querySelector('#section').textContent = card.section;
+    document.querySelector('h1').textContent = card.title;
+    for (const name of ['summary', 'repository', 'note']) {
+      const element = document.getElementById(name);
+      element.textContent = card[name] ?? '';
+      element.hidden = !card[name];
+    }
+    const body = document.querySelector('#body');
+    document.querySelector('main').classList.toggle('has-image', Boolean(card.image));
+    if (card.image) {
+      const figure = document.createElement('figure');
+      const image = document.createElement('img');
+      image.src = `../../../../docs/quickstart/quickstart-claude-${card.image}.${language}.webp`;
+      image.alt = card.alt;
+      figure.append(image);
+      body.className = '';
+      body.replaceChildren(figure);
+      return;
+    }
+    body.className = card.steps ? 'steps' : 'chat';
+    body.replaceChildren(...(card.steps ?? card.messages).map(([label, text]) => {
+      const block = document.createElement('div');
+      block.className = card.steps ? 'step' : 'message';
+      const heading = document.createElement('strong');
+      heading.textContent = label;
+      const detail = document.createElement('p');
+      detail.textContent = text;
+      block.append(heading, detail);
+      return block;
+    }));
+  }
+
+  addEventListener('hashchange', showCard);
+  showCard();
+</script>
+</html>

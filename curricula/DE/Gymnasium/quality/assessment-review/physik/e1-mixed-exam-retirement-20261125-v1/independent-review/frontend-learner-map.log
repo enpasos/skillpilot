@@ -1,0 +1,90 @@
+Test native learner map and focused cockpit regression
+/workspace/app
+npm run test:learner-map
+
+> skillpilot@0.0.0 test:learner-map
+> npm run test:learner-map-projection && npm run test:learner-map-native-ui && npm run test:learner-map-prototype && npm run test:learner-map-unit-view
+
+
+> skillpilot@0.0.0 test:learner-map-projection
+> tsx scripts/testLearnerMapProjection.ts
+
+Native map projection passed: exact membership/ordering, directed provenance, support-only context, real HE Sek II LK (708 entries).
+
+> skillpilot@0.0.0 test:learner-map-native-ui
+> tsx scripts/testNativeLearnerMapUi.ts && tsx scripts/testHessePhysicsMemoryUi.ts && npm run test:unit-introduction
+
+Native product App full-window learner map browser regression passed (desktop, 320px, 390px; isolated HTTP/SSE).
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-two-motions","parent":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion","width":1440}
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-physics-gk-g8:structure:physics-e1-two-motions","parent":"composition:de-he-gym-physics-gk-g8:structure:physics-e1-motion","width":390}
+real nested de-he-gk-g8 390×900: initial zoom 24 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-physics-gk-g8:structure:physics-e1-two-motions","parent":"composition:de-he-gym-physics-gk-g8:structure:physics-e1-motion","width":761}
+real nested de-he-gk-g8 761×900: initial zoom 47 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-physics-gk-g8:structure:physics-e1-two-motions","parent":"composition:de-he-gym-physics-gk-g8:structure:physics-e1-motion","width":1024}
+real nested de-he-gk-g8 1024×650: initial zoom 63 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-physics-gk-g8:structure:physics-e1-two-motions","parent":"composition:de-he-gym-physics-gk-g8:structure:physics-e1-motion","width":1440}
+real nested de-he-gk-g8 1440×900: initial zoom 88 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-two-motions","parent":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion","width":390}
+real nested de-he-sekii-gk 390×900: initial zoom 24 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-two-motions","parent":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion","width":761}
+real nested de-he-sekii-gk 761×900: initial zoom 47 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-two-motions","parent":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion","width":1024}
+real nested de-he-sekii-gk 1024×650: initial zoom 63 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-two-motions","parent":"composition:de-he-gym-sekii-physics-gk:structure:physics-e1-motion","width":1440}
+real nested de-he-sekii-gk 1440×900: initial zoom 88 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-sekii-physics-lk:structure:physics-e1-two-motions","parent":"composition:de-he-gym-sekii-physics-lk:structure:physics-e1-motion","width":1024}
+real nested de-he-sekii-lk 1024×900: initial zoom 63 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-sekii-physics-lk:structure:physics-e1-two-motions","parent":"composition:de-he-gym-sekii-physics-lk:structure:physics-e1-motion","width":1024}
+real nested de-he-sekii-lk 1024×650: initial zoom 63 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-sekii-physics-lk:structure:physics-e1-two-motions","parent":"composition:de-he-gym-sekii-physics-lk:structure:physics-e1-motion","width":1100}
+real nested de-he-sekii-lk 1100×900: initial zoom 68 %, stable on mastery refresh
+{"navigation":"actual child to parent via visible up button","initialTopic":"composition:de-he-gym-sekii-physics-lk:structure:physics-e1-two-motions","parent":"composition:de-he-gym-sekii-physics-lk:structure:physics-e1-motion","width":1440}
+real nested de-he-sekii-lk 1440×900: initial zoom 88 %, stable on mastery refresh
+synthetic three-visible/four-required camera fixture 1024×900: initial zoom 100 %, stable on mastery refresh
+synthetic three-visible/four-required camera fixture 1024×650: initial zoom 100 %, stable on mastery refresh
+synthetic three-visible/four-required camera fixture 1100×900: initial zoom 100 %, stable on mastery refresh
+synthetic three-visible/four-required camera fixture 1440×900: initial zoom 100 %, stable on mastery refresh
+Hessen Physics UI passed: ordinary goal selection without practice buttons, ELK/selection/active updates, keyboard/topic practice, original progress/state, complete deck, named assessment, desktop/mobile.
+
+> skillpilot@0.0.0 test:unit-introduction
+> tsx src/utils/unitIntroduction.test.ts && tsx src/utils/unitStudyIntent.test.ts && tsx scripts/testUnitIntroductionUi.ts
+
+Unit introduction: view-bound selection, independent Informatics content, encoded read-only backend gate, fail-closed unavailable/invalid responses passed.
+Unit study navigation intent passed: outgoing route, settled reload context, goal/learner/curriculum/scope invalidation, bounded tab storage and no learner result.
+Unit introduction de 390px: image/alt, context, promise, immediate topics, active-only handoff, independent confirmation and compact return passed.
+Unit introduction de 1100px: image/alt, context, promise, immediate topics, active-only handoff, independent confirmation and compact return passed.
+Unit introduction en 390px: image/alt, context, promise, immediate topics, active-only handoff, independent confirmation and compact return passed.
+Unit introduction en 1100px: image/alt, context, promise, immediate topics, active-only handoff, independent confirmation and compact return passed.
+
+> skillpilot@0.0.0 test:learner-map-prototype
+> tsx scripts/testFullCockpitPrototype.ts && tsx scripts/testLearningUnitMapPrototype.ts
+
+Full Cockpit scenario refresh race: {"held":{"revision":2,"achieved":0,"target":2},"responses":[{"revision":2,"achieved":0,"target":2},{"revision":3,"achieved":1,"target":2}],"scenario":"completed","selectedGoalId":"e98672c6-871a-5d0b-889c-5afc51040f0d","progress":"1 von 2","mainWitness":"original","events":["[SSE] 📩 Received event: {\"type\":\"PREFERENCES_CHANGED\",\"timestamp\":1795572061615}","[SSE] 📩 Received event: {\"type\":\"PREFERENCES_CHANGED\",\"timestamp\":1795572061706}","[SSE] ✅ Preferences refresh complete","[SSE] ✅ Preferences refresh complete"]}
+Full original Cockpit navigation passed: tree plus full-window map, unchanged main/SRS, selection versus active goal, original settings/materials/plan/data/provider, direct evidence and waived obligations, 320/390px.
+PASS: small three-level navigation/camera/wheel/touch, normal double-click and Shift double-click up; complex 56 logical nodes, 98 routes, culling, search/highlights, stable geometry, orientation, scene isolation and no API traffic
+Screenshots: /workspace/tmp/learning-map-netron-review/
+
+> skillpilot@0.0.0 test:learner-map-unit-view
+> tsx scripts/testCompositionChildOrder.ts && tsx scripts/testCompositionPreparationPlacements.ts && tsx scripts/testLearnerUnitMapProjection.ts && tsx scripts/testNestedLearningUnitMapOpening.ts && tsx scripts/testLearnerUnitMapPreview.ts && tsx scripts/testHessePhysicsFlashcardActions.ts && tsx scripts/testHesseLearnerUnitMapCalendar.ts && tsx scripts/testLearnerUnitMapLayout.ts
+
+Composition child order passed: legacy/empty/partial semantics, real demands, filtered reachability, schema isolation, 8 fail-closed cases, plan precedence and cache invalidation.
+Explicit preparation placements passed: authoritative closure only, full ancestor reconstruction, no scope growth, no target relocation, idempotence, subject ownership and legacy/global/subtree boundaries.
+Canonical subtree navigation passed: nested sources, localized placements, independent material, opaque and support-only groups, order, and ambiguous source routes.
+Learner unit map projection passed: units and goals only, unequal depth, removed clusters, merged keys, subject filter, arrows among children, declared/derived/backward order, bad after, preparation and member units.
+Nested composition section and its declared learning unit share one board and the owned opening.
+Learner unit map preview passed: top-down steps, shared stage units, view order, learning units, other subjects untouched, real BY and HE views without contradictory declarations.
+Hessen Physics guided-entry materials PASS: two real orientations, eight views, exact independent bilingual/image bindings, retained assessment claims.
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: undefined == true
+    at <anonymous> (/workspace/app/scripts/testHessePhysicsFlashcardActions.ts:61:1) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: undefined,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v20.20.2

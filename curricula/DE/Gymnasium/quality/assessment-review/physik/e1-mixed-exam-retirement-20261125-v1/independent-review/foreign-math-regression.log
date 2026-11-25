@@ -1,0 +1,16 @@
+F
+======================================================================
+FAIL: test_foreign_acquisition_policy_has_current_atomic_witnesses (test_mathematics_stage_views.MathematicsStageViewsTest.test_foreign_acquisition_policy_has_current_atomic_witnesses)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/skillpilot-e1-task-a-frontend.MWr9G3M2/source/scripts/test_mathematics_stage_views.py", line 389, in test_foreign_acquisition_policy_has_current_atomic_witnesses
+    self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), digest, path)
+AssertionError: 'bb9296ea337676dffe73c67e16324c1dd9e7081be24921aea294de1fa9a53064' != '658514392bf42690ee0b97b8f6175e32d17f5144909e2dbd35bdb7d298f2fa28'
+- bb9296ea337676dffe73c67e16324c1dd9e7081be24921aea294de1fa9a53064
++ 658514392bf42690ee0b97b8f6175e32d17f5144909e2dbd35bdb7d298f2fa28
+ : curricula/DE/Gymnasium/composition-views/physik/de-bb-gk.view.json
+
+----------------------------------------------------------------------
+Ran 1 test in 1.472s
+
+FAILED (failures=1)

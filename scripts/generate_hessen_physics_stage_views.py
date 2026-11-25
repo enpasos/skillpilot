@@ -118,9 +118,6 @@ E_PHASE_ASSESSMENT_PLACEMENTS = {
     E_PHASE_CROSS_TOPIC_ASSESSMENTS: (
         # Optional individual measurement assessment outside the E.1 unit contract.
         "c6e2942d-1ff4-5e86-a52a-4ca4c8568291",
-        # Its present reviewed prerequisite chain includes E.4 spreadsheet
-        # modelling. The title alone must not promote that chain into E.1.
-        "a9562b05-c54d-5635-9244-3f7dd24a8642",
         "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
         "879491c0-7153-570b-91f4-c61d9fe8a143",
         "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",

@@ -1,0 +1,146 @@
+schemaVersion: 1
+id: skillpilot-learning-quickstart-2026-11-24-de
+title: SkillPilot – Im Coach-Chat lernen
+description: Quickstart mit der lokalen SkillPilot-Weboberfläche, Demodaten und gekennzeichneten Chat-Beispielen.
+sourceRevision: 3d10e3ed6083482b3f9d26047fd5005e5c2dd96b
+platform: web
+outputDir: ../output/quickstart-learning-de
+cacheDir: ../.cache
+browser:
+  baseUrl: http://127.0.0.1:4177
+  headless: true
+  viewport: { width: 1280, height: 720 }
+  video: { width: 1280, height: 720 }
+  locale: de-DE
+  timezoneId: Europe/Berlin
+  colorScheme: light
+  reducedMotion: reduce
+  defaultTimeoutMs: 15000
+  postActionDelayMs: 800
+privacy:
+  maskSelectors: ['#skillpilotIdInput', '#skillpilotIdFilePassword', '#skillpilotIdFilePasswordConfirmation', 'input[type="password"]']
+  maskTextSelectors: ['code', 'span', 'p']
+  maskLabel: DEMO
+  maskColor: '#152c45'
+  forbiddenPatterns:
+    - '[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}'
+    - 'sp[sc]_[A-Za-z0-9_-]+'
+    - 'quickstart-demo-[0-9]+'
+  evidenceSelectors: ['h1', 'h2', 'h3']
+  failOnForbiddenText: true
+narration:
+  mode: scripted
+  ttsModel: gemini-3.1-flash-tts-preview
+  voice: Sulafat
+  instructions: Sprich Deutsch, freundlich, ruhig und in natürlichem Tempo. Sprich SkillPilot wie Skill-Pilot und Claude wie Klod aus. Lies nur den vorgegebenen Text.
+  disclosure: Die Sprecherstimme in diesem Video ist KI-generiert und keine menschliche Stimme.
+  disclosureMode: visual-only
+  visualDisclosure: KI-generierte Sprecherstimme
+  segmentGapMs: 500
+render:
+  width: 1280
+  height: 720
+  fps: 30
+  crf: 23
+  preset: fast
+  burnSubtitles: false
+  autoZoom: { enabled: false }
+chapters:
+  - id: intro
+    title: Mit SkillPilot im Chat lernen
+    scriptedNarration: Richte deinen Lernrahmen einmal in SkillPilot ein. Danach lernst du mit deinem Coach im Chat. Wir zeigen dir den Einstieg am Beispiel von Claude.
+    steps:
+      - { id: overview, action: goto, label: Quickstart-Überblick, url: 'quickstart-card:intro' }
+      - { id: overview-read, action: wait, label: Überblick lesen, durationMs: 6500, capture: true }
+  - id: website
+    title: Jetzt lernen
+    scriptedNarration: Öffne SkillPilot Punkt com und wähle Jetzt lernen. Lies die Hinweise und Nutzungsbedingungen und bestätige sie, wenn du einverstanden bist.
+    steps:
+      - { id: home, action: goto, label: Startseite öffnen, url: '/', waitUntil: networkidle }
+      - { id: home-read, action: wait, label: Startseite ansehen, durationMs: 1500, capture: true }
+      - { id: learn, action: click, label: Einrichtung öffnen, target: { role: button, name: Jetzt lernen, exact: true } }
+      - { id: terms-read, action: wait, label: Bedingungen lesen, durationMs: 2100, capture: true }
+      - { id: terms-check, action: check, label: Bedingungen für das Demo-Profil bestätigen, target: { role: checkbox, name: Ich akzeptiere die, exact: false } }
+      - { id: terms-continue, action: click, label: Einrichtung fortsetzen, target: { role: button, name: 'Akzeptieren & Fortfahren', exact: true } }
+  - id: identity
+    title: Deine SkillPilot-ID sichern
+    scriptedNarration: Erstelle eine SkillPilot-ID oder lade deine vorhandene ID. Speichere eine neue ID als geschützte Datei. Damit findest du deinen Lernstand später wieder.
+    steps:
+      - { id: new-id, action: click, label: Demo-ID erstellen, target: { role: button, name: Neue SkillPilot-ID erstellen, exact: true } }
+      - { id: identity-read, action: wait, label: Verdeckte ID ansehen, durationMs: 1400, capture: true }
+      - { id: save-dialog, action: click, label: Geschützte Datei erstellen, target: { role: button, name: SkillPilot-ID geschützt speichern, exact: true } }
+      - { id: password, action: fill, label: Demo-Passwort eingeben, target: { css: '#skillpilotIdFilePassword' }, valueFromEnv: QUICKSTART_DEMO_ID_PASSWORD, secret: true, capture: true }
+      - { id: password-confirm, action: fill, label: Demo-Passwort bestätigen, target: { css: '#skillpilotIdFilePasswordConfirmation' }, valueFromEnv: QUICKSTART_DEMO_ID_PASSWORD, secret: true, capture: true }
+      - { id: save-download, action: click, label: Geschützte Datei herunterladen, target: { role: button, name: Geschützte Datei herunterladen, exact: true } }
+      - { id: save-check, action: assert, label: Download bestätigen, target: { text: Geschützte ID-Datei gespeichert., exact: true } }
+      - { id: save-read, action: wait, label: Bestätigung ansehen, durationMs: 1500, capture: true }
+  - id: personal-curriculum
+    title: Dein persönliches Curriculum festlegen
+    scriptedNarration: Wähle dein Curriculum und die Angaben zu deinem Lernrahmen. Im Beispiel lernen wir Mathematik am Gymnasium in Hessen, G neun, Sekundarstufe eins. Schließe die Auswahl ab.
+    steps:
+      - { id: curriculum-open, action: click, label: Curriculum öffnen, target: { role: button, name: 'Weiter zu Schritt 2: Curriculum wählen', exact: true } }
+      - { id: curriculum-read, action: wait, label: Curriculum ansehen, durationMs: 1500, capture: true }
+      - { id: gymnasium, action: select, label: Gymnasium wählen, target: { css: '#sessionCurriculumSelect' }, value: a0e13c56-c25f-4742-9272-3a1a603ee52e }
+      - { id: region, action: click, label: Hessen wählen, target: { role: button, name: Hessen, exact: true } }
+      - { id: duration, action: click, label: G9 wählen, target: { role: button, name: G9, exact: true } }
+      - { id: stage, action: click, label: Stufe wählen, target: { role: button, name: Sekundarstufe I, exact: true } }
+      - { id: subject, action: click, label: Mathematik wählen, target: { role: button, name: Mathematik, exact: true } }
+      - { id: subjects-done, action: click, label: Fächerauswahl abschließen, target: { role: button, name: Diese Auswahl abschließen, exact: true } }
+      - { id: summary-read, action: wait, label: Lernrahmen ansehen, durationMs: 2400, capture: true }
+  - id: launch
+    title: Deinen Coach starten
+    scriptedNarration: Wähle den Claude-Lerncoach. Beim ersten Mal öffnest du mit Plugin einrichten die Anleitung. Wenn Claude schon vorbereitet ist, kannst du direkt Lernen mit Claude starten wählen.
+    steps:
+      - { id: provider-focus, action: hover, label: Anbieterwahl zeigen, target: { testId: coach-provider-choice } }
+      - { id: provider-read, action: wait, label: Anbieterwahl ansehen, durationMs: 3300, capture: true }
+      - { id: plugin-focus, action: hover, label: Einmalige Claude-Einrichtung zeigen, target: { testId: claude-plugin-setup-open } }
+      - { id: start-focus, action: hover, label: Claude-Lernstart zeigen, target: { testId: claude-plugin-start } }
+      - { id: start-read, action: wait, label: Claude-Lernstart ansehen, durationMs: 3300, capture: true }
+  - id: marketplace
+    title: Marketplace in Claude hinzufügen
+    scriptedNarration: Für den Einstieg mit Claude brauchst du ein Pro-Abo. Öffne in Claude Web Einstellungen, dann Plugins. Wähle Hinzufügen, Marketplace hinzufügen und Aus einem Repository hinzufügen. Füge die eingeblendete Adresse ein. Lass Automatisch synchronisieren eingeschaltet und wähle Synchronisieren.
+    steps:
+      - { id: claude-guide, action: goto, label: Echte SkillPilot-Installationsseite öffnen, url: '/plugins#claude-plugin', waitUntil: networkidle }
+      - { id: marketplace-focus, action: hover, label: Marketplace-Anleitung auf SkillPilot zeigen, target: { testId: claude-plugin-marketplace-navigation } }
+      - { id: marketplace-guide-read, action: wait, label: Anleitung auf der Installationsseite ansehen, durationMs: 4600, capture: true }
+      - { id: marketplace-card, action: goto, label: Gekennzeichnete Claude-Menüfolge und Repository-Adresse, url: 'quickstart-card:marketplace' }
+      - { id: marketplace-read, action: wait, label: Adresse und Synchronisieren zeigen, durationMs: 8500, capture: true }
+      - { id: marketplace-view, action: goto, label: Sichtbaren Marketplace-Dialog zeigen, url: 'quickstart-card:marketplace-view' }
+      - { id: marketplace-view-read, action: wait, label: Sichtbaren Marketplace-Dialog zeigen, durationMs: 10500, capture: true }
+  - id: plugin-connect
+    title: Plugin installieren und Konnektor verbinden
+    scriptedNarration: Öffne Entdecken und wähle SkillPilot Coach v eins aus dem Marketplace. Vergleiche die angebotene Version mit der SkillPilot-Anleitung. Wähle Hinzufügen und prüfe, dass das Plugin aktiviert ist. Öffne dann Konnektoren, SkillPilot und Verbinden. Melde dich an und bestätige die Freigabe. Sobald dort Verbunden steht, kehrst du zu SkillPilot zurück.
+    steps:
+      - { id: connector-guide, action: goto, label: Echte SkillPilot-Anleitung zum Konnektor öffnen, url: '/plugins#claude-plugin', waitUntil: networkidle }
+      - { id: connector-focus, action: hover, label: Hinweise zum Konnektor zeigen, target: { testId: claude-plugin-connector-navigation } }
+      - { id: connector-guide-read, action: wait, label: Konnektor-Anleitung auf SkillPilot ansehen, durationMs: 4800, capture: true }
+      - { id: connector-card, action: goto, label: Gekennzeichnete Installation und Verbindung, url: 'quickstart-card:plugin-connect' }
+      - { id: connector-read, action: wait, label: Installiert und verbunden erklären, durationMs: 11500, capture: true }
+      - { id: connector-view, action: goto, label: Verbindungsstatus Verbunden zeigen, url: 'quickstart-card:connector-view' }
+      - { id: connector-view-read, action: wait, label: Verbindungsstatus Verbunden zeigen, durationMs: 9000, capture: true }
+  - id: chat-start
+    title: Deine Startnachricht senden
+    scriptedNarration: Zurück in SkillPilot wählst du Lernen mit Claude starten. Im neuen Chat ist die Startnachricht schon eingetragen. Sende sie unverändert ab. Folge bei Bedarf der Anmeldung und halte die Nachricht vertraulich.
+    steps:
+      - { id: chat-card, action: goto, label: Anleitung zum Chatstart, url: 'quickstart-card:chat-start' }
+      - { id: chat-read, action: wait, label: Chatstart erklären, durationMs: 4000, capture: true }
+      - { id: start-message-view, action: goto, label: Vorbereitete Startnachricht mit verdeckter Kennung zeigen, url: 'quickstart-card:start-message-view' }
+      - { id: start-message-view-read, action: wait, label: Vorbereitete Startnachricht mit verdeckter Kennung zeigen, durationMs: 7500, capture: true }
+  - id: goal-choice
+    title: Du wählst das nächste Ziel
+    scriptedNarration: Nach der Orientierung wählst du ohne Autopilot im Chat ein verfügbares Ziel. Hier beginnt ihr mit dem Zahlenstrahl. Der Coach fragt, wo vierhundertsieben und vierhundertsiebzig auf einem Zahlenstrahl mit Zehnerschritten liegen.
+    steps:
+      - { id: choice-card, action: goto, label: Beispielchat mit eigener Wahl, url: 'quickstart-card:goal-choice' }
+      - { id: choice-read, action: wait, label: Ziele im Chat auswählen, durationMs: 7000, capture: true }
+  - id: autopilot
+    title: SkillPilot wählt das nächste Ziel
+    scriptedNarration: Mit eingeschaltetem Autopilot wählt SkillPilot aus denselben verfügbaren Zielen. Der Coach nennt dir das gewählte Ziel und begleitet dich im Chat.
+    steps:
+      - { id: autopilot-card, action: goto, label: Beispielchat mit Autopilot, url: 'quickstart-card:autopilot' }
+      - { id: autopilot-read, action: wait, label: Auswahl durch SkillPilot erklären, durationMs: 6500, capture: true }
+  - id: keep-learning
+    title: Im Chat weiterlernen
+    scriptedNarration: Wähle deine Ziele und Lerneinheiten im Chat. Bitte um eine Übung oder frage nach einer verfügbaren Prüfung. Du kannst pausieren und später weiterlernen. Cockpit und Lernkarte stehen dir zur Übersicht offen.
+    steps:
+      - { id: keep-card, action: goto, label: Im Chat weiterlernen und Lernstand ansehen, url: 'quickstart-card:keep-learning' }
+      - { id: keep-read, action: wait, label: Abschluss ansehen, durationMs: 8000, capture: true }

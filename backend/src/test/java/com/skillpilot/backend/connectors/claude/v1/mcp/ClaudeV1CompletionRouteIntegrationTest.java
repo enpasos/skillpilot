@@ -254,7 +254,12 @@ class ClaudeV1CompletionRouteIntegrationTest {
         // E.1 cut (23 Nov 2026): the throw requires the free-fall experiment, which requires the
         // motion laws; reference frames left E.1 for E.3.
         String recorded = "09029573-864f-40ca-bf8a-cee7bf6dcb73";
-        String exam = "a9562b05-c54d-5635-9244-3f7dd24a8642";
+        // The parent unit E.1 names no closing exam: the mixed exam "Bewegungsanalyse und freier Fall"
+        // is retired for all Länder (25 Nov 2026). The child unit "Freier Fall schwerer Kugeln"
+        // names its own closing exam, which the coach offers with the exam's own placement.
+        String retiredMixedExam = "a9562b05-c54d-5635-9244-3f7dd24a8642";
+        String childGoal = "8aff7aac-321b-5172-ac55-877876bfd2cd";
+        String exam = "f13ca187-b680-5f47-b4ad-76bd474bd8a2";
         selectHessianMotionUnit(duration);
         completeHessianOpeningFixtures();
         // Issue #85: a card enters the box only once its understanding goal is passed. Of the
@@ -268,7 +273,8 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(focused.get("activeGoal")).isNull();
         var focusedUnit = mapper.valueToTree(map(focused, "focusedUnitContext"));
         assertThat(focusedUnit.path("unitIntroduction").path("sectionTitle").asText()).isEqualTo("E.1 Bewegungen und ihre Beschreibung");
-        assertThat(focusedUnit.path("activities").get(1).path("route").asText()).isEqualTo("directAssessment");
+        assertThat(focusedUnit.path("activities")).hasSize(1);
+        assertThat(focusedUnit.path("activities").get(0).path("route").asText()).isEqualTo("unitPractice");
         var practiceAction = focusedUnit.path("activities").get(0).path("action");
         var practice = call(practiceAction.path("tool").asText(),
                 mapper.convertValue(practiceAction.path("arguments"), new TypeReference<>() {}));
@@ -278,6 +284,20 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(practice.meta()).containsOnlyKeys("skillpilotMemoryCard");
         assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isNull();
         var learner = learnerRepository.findById(learnerId).orElseThrow();
+        // A learner who was working on the retired mixed exam keeps that id as stored active goal.
+        // The coach reports no active goal and still describes the focused unit with its activity.
+        learner.setActiveGoalId(retiredMixedExam);
+        learnerRepository.saveAndFlush(learner);
+        long versionWithRetiredActiveGoal = version();
+        var afterRetirement = context();
+        assertThat(afterRetirement.get("activeGoal")).isNull();
+        // Reading stays read-only: the stored id and the state version are untouched.
+        assertThat(version()).isEqualTo(versionWithRetiredActiveGoal);
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(retiredMixedExam);
+        var unitAfterRetirement = mapper.valueToTree(map(afterRetirement, "focusedUnitContext"));
+        assertThat(unitAfterRetirement.path("unitIntroduction").path("sectionTitle").asText()).isEqualTo("E.1 Bewegungen und ihre Beschreibung");
+        assertThat(unitAfterRetirement.path("activities")).hasSize(1);
+        assertThat(afterRetirement.toString()).doesNotContain(retiredMixedExam, "Bewegungsanalyse und freier Fall");
         learner.setActiveGoalId(active);
         learner.setLearningState(LearningState.TEACHING);
         learnerRepository.saveAndFlush(learner);
@@ -297,10 +317,25 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(detail.path("prerequisites")).hasSize(1);
         assertThat(detail.path("prerequisites").get(0).path("title").asText()).isEqualTo("Freier Fall experimentell untersuchen");
         assertThat(detail.path("prerequisites").get(0).path("recorded").asBoolean()).isTrue();
+        assertThat(detail.path("activities")).hasSize(1);
+        assertThat(detail.path("activities").get(0).path("route").asText()).isEqualTo("unitPractice");
+        assertThat(response.toString()).doesNotContain(retiredMixedExam, "Bewegungsanalyse und freier Fall");
+        assertThat(version()).isEqualTo(before);
+
+        learner.setActiveGoalId(childGoal);
+        learnerRepository.saveAndFlush(learner);
+        before = version();
+        response = context();
+        assertThat(map(response, "activeGoal")).containsEntry("id", childGoal);
+        detail = mapper.valueToTree(map(response, "activeGoalContext"));
+        sections = mapper.convertValue(detail.path("unitPaths").get(0).path("sections"), new TypeReference<>() {});
+        assertThat(sections).containsSubsequence("Freier Fall schwerer Kugeln", "E.1 Bewegungen und ihre Beschreibung");
+        assertThat(detail.path("unitIntroduction").path("sectionTitle").asText()).isEqualTo("Freier Fall schwerer Kugeln");
         assertThat(detail.path("activities")).hasSize(2);
+        assertThat(detail.path("activities").get(0).path("route").asText()).isEqualTo("unitPractice");
         var activity = detail.path("activities").get(1);
         assertThat(activity.path("goalId").asText()).isEqualTo(exam);
-        assertThat(activity.path("sectionTitle").asText()).isEqualTo("Themenübergreifende Prüfungen · Einführungsphase: Mechanik");
+        assertThat(activity.path("sectionTitle").asText()).isEqualTo("Freier Fall schwerer Kugeln · E.1 Bewegungen und ihre Beschreibung");
         assertThat(activity.path("route").asText()).isEqualTo("directAssessment");
         assertThat(response.toString()).doesNotContain("taskDe", "taskEn", "solutionContent", "evaluationCapability");
         assertThat(version()).isEqualTo(before);
@@ -1705,7 +1740,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
     // It is neither rewritten nor pointed at another edition.
     @ParameterizedTest
     @CsvSource({"GK,6ea3fb3c-abdc-568f-ab13-97c36dc274e4", "LK,6ea3fb3c-abdc-568f-ab13-97c36dc274e4",
-            "LK,2b9e565f-d9b4-5e23-b5b7-b7977cecff06"})
+            "LK,2b9e565f-d9b4-5e23-b5b7-b7977cecff06",
+            // The mixed E.1 exam "Bewegungsanalyse und freier Fall", retired on 25 November 2026.
+            "GK,a9562b05-c54d-5635-9244-3f7dd24a8642"})
     void storedPlanNamingARetiredAssessmentEditionStaysValidAndIsKeptUnchanged(String course, String retired) throws Exception {
         String section = selectHessianMotionUnit("G9", "SekII", course);
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";

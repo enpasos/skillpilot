@@ -1,0 +1,162 @@
+{
+  "schema": "independent-assessment-retirement-review-v1",
+  "reviewedCommit": "e36e7579f89a108a17d87e7010449fe2d4cae3ab",
+  "baseCommit": "3e6af47aec2f7f3046c316e8d4981858b943c4a6",
+  "firstReviewedCommit": "a6117075c1ac7776a1af0a0c9b790fda9a980225",
+  "reviewedArtifacts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/retirement.actual.json",
+      "sha256": "a46d2a4eff0b75d3e59d4b531896ccf83177b90aa848e4bbbde18b61588457fb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/follow-up-checks.actual.json",
+      "sha256": "75a1fefa1ce6363fd32844fbc92ff4789ca2bd6c68e802728123eda1dcdc5bdc"
+    }
+  ],
+  "finalWordingConfirmation": {
+    "path": "reviewer-b.wording.original.md",
+    "sha256": "9f9ee5d657b9f2e4709764fe8dd55954d4685c1898a94b15a1f1b7c591e815aa",
+    "bytes": 1856
+  },
+  "reviewers": [
+    {
+      "id": "a",
+      "modelId": "gpt-6.1-sol",
+      "effort": "ultra",
+      "initialAnswer": {
+        "path": "reviewer-a.original.md",
+        "sha256": "23b6d68650890d528785881251a584861ec5af99042f6256d18121b7984573e6",
+        "bytes": 23528
+      },
+      "finalAnswer": {
+        "path": "reviewer-a.final.original.md",
+        "sha256": "a4e01d71be12434ebd2a112c584a2605ef3e9e48ec6b0645f032f1cfca7a5adf",
+        "bytes": 19806
+      }
+    },
+    {
+      "id": "b",
+      "modelId": "gpt-6.2-astra",
+      "effort": "ultra",
+      "initialAnswer": {
+        "path": "reviewer-b.original.md",
+        "sha256": "f1affc79884e6b0188077ca9eb01bf3f263cbbe48eea822f7164fac9ed5a8243",
+        "bytes": 12568
+      },
+      "finalAnswer": {
+        "path": "reviewer-b.final.original.md",
+        "sha256": "3b241fa6c818ded85f2f2dcacc545b92e894f1bf378707b84c99b4d554fd99b6",
+        "bytes": 10984
+      }
+    }
+  ],
+  "recommendation": "Accept the retirement at e36e7579f8. The remaining diagnostic failures predate the retirement.",
+  "questionVerdicts": [
+    {
+      "question": 1,
+      "verdict": "CONFIRM",
+      "finding": "The four declared goals are not established as whole-goal pass outcomes. A genuine but skippable safety judgement and component kinematics tasks remain represented in the affected views."
+    },
+    {
+      "question": 2,
+      "verdict": "CONFIRM_RETIREMENT",
+      "finding": "No full free-fall experiment is lost. Actual motion measurement in 6345871e is distinguished from the dedicated experiment, which appears in 13 of the 68 target views. Reviewer B verified the final wording."
+    },
+    {
+      "question": 3,
+      "verdict": "CONFIRM",
+      "finding": "Three changed goals, 64 changed views and 26 byte-identical files. Independent reconstruction covers atomic roles, transitive learning sets and every named structural exception."
+    },
+    {
+      "question": 4,
+      "verdict": "CONFIRM_AT_FINAL_HEAD",
+      "finding": "The single-field material chain holds, 48 source pins and the 32 eligible removed GK pairs are witnessed, and both stale UI test consumers now use explicit material fixtures."
+    },
+    {
+      "question": 5,
+      "verdict": "CONFIRM_AT_FINAL_HEAD",
+      "finding": "Historical results remain isolated and mixed plans usable. Retired-only plans are stale. The actual off-pilot MCP read now preserves the unit context and the raw learner state."
+    },
+    {
+      "question": 6,
+      "verdict": "SEE_EXECUTION_RECORD",
+      "finding": "All three named npm checks, 358 backend tests and the separate read-only probe ran on 048683d361. The full frontend workflow and specific final-head reruns are reported with their actual execution revisions."
+    }
+  ],
+  "requiredCorrections": [],
+  "knownDiagnosticLimitations": [
+    "Four pre-existing unpinned subjects have failed diagnostic scopes under two audit modes. No new production deployment or host acceptance is claimed."
+  ],
+  "evidence": [
+    {
+      "path": "review.md",
+      "sha256": "0ca7ae2cf55ec87f77c9628d2465e6634bcad22d783aaeef30f81d8cfb8d36bb",
+      "bytes": 14338
+    },
+    {
+      "path": "checks.actual.json",
+      "sha256": "3dc97b94c4d8725397600f10699d4e6ec427cb6adfe2dac8d10bca5cbd18cdcb",
+      "bytes": 12295
+    },
+    {
+      "path": "frontend.actual.json",
+      "sha256": "96e8a3acc32e38eaa83da81b7158b7a415fc017603247e136548b07486a674ce",
+      "bytes": 47156
+    },
+    {
+      "path": "independent-delta.py",
+      "sha256": "bc4453186aa5d4b5ca7b495ebefe71e6e3943c939dd57e0c85adb9f32b75cb83",
+      "bytes": 10510
+    },
+    {
+      "path": "delta.actual.json",
+      "sha256": "a763f66533d91d7002709024be4f6e24de385544778b6829459066c677d01aaf",
+      "bytes": 48806
+    },
+    {
+      "path": "final-diff.actual.json",
+      "sha256": "854b9fed94a5616f85fb9b038fa31b91602d38ee51cd0b4624d2d57feeaf95b8",
+      "bytes": 1590
+    },
+    {
+      "path": "frontend-learner-map.log",
+      "sha256": "f03f1a50e5814985158f7ac495e2241781ea1528c1a13331379230b2e720357e",
+      "bytes": 9796
+    },
+    {
+      "path": "followup-verification.actual.json",
+      "sha256": "82b87fc85942e8dd02fc52146d0a71328b5a056c783bf7f5564988fd7426c041",
+      "bytes": 950
+    },
+    {
+      "path": "foreign-math-witnesses.actual.json",
+      "sha256": "4e0bce9a634b60550c59f210fcbdbda1319279cdfc75c81671b0945c72cd0dd6",
+      "bytes": 16865
+    },
+    {
+      "path": "practice-pairs.actual.json",
+      "sha256": "ceac979fde555f56d92268288a6a615dc72e0ecdc4fec58b0e1ab4eed722d9a5",
+      "bytes": 22831
+    },
+    {
+      "path": "coach-probe-method.java",
+      "sha256": "4bf1e014e41e79a4215b29f5092adace0d9672f05fef5580576e1a1e9e5447c6",
+      "bytes": 3683
+    },
+    {
+      "path": "physics-memory-ui.log",
+      "sha256": "e075ff8719cd1b42dc5b57b5c340004fa0a9528d71ac6d1be37be5749d9c460b",
+      "bytes": 709
+    },
+    {
+      "path": "physics-assessment-projection.log",
+      "sha256": "6205ffeb99842a25b2cf379993a069ec3d7a91c67505d3a8f0422020da3b49d9",
+      "bytes": 2954
+    },
+    {
+      "path": "foreign-math-regression.log",
+      "sha256": "ebc23a8df54b8e959c5ce50337c24a6ccc30dbb40f32269b282fc2e1e1a089c7",
+      "bytes": 1101
+    }
+  ]
+}

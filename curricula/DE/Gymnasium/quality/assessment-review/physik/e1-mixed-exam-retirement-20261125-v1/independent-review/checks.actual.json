@@ -1,0 +1,443 @@
+{
+  "reviewedCommit": "e36e7579f89a108a17d87e7010449fe2d4cae3ab",
+  "fullExecutionCommit": "048683d361d2b559240a279d86a3a5562402899e",
+  "fullExecutionTree": "43912446cfb0fce1a40123cd1024c978153d5929",
+  "node": "20.20.2",
+  "java": "Amazon Corretto 25.0.2.10.1",
+  "freshCheckout": "Detached final head from Git object store. Zero untracked and modified entries before installing dependencies. Node dependencies installed using npm ci.",
+  "fullRunCommands": [
+    {
+      "name": "physics-goal-book-inputs",
+      "exitCode": 0,
+      "logSha256": "a60ef8afd06c3924d1b16ae4e706294ec39e15cd2bcf39283dccdd30a94561c6"
+    },
+    {
+      "name": "learning-unit-assessments",
+      "exitCode": 0,
+      "logSha256": "40b719dfe70c12fb81286ac1af158437a7109754d721acd0a24916a3effca160"
+    },
+    {
+      "name": "physics-assessment-projection",
+      "exitCode": 0,
+      "logSha256": "6f39f23a57ca1749d3cc7fb8b7bfca0a715ac0df7b924f3264f6fa762e1cff5f"
+    },
+    {
+      "name": "backend-six",
+      "exitCode": 0,
+      "logSha256": "74a7860f9b6ed01a279762015a4d7f76fb8e411b5d7dcb092e31f8a7f3abac50"
+    },
+    {
+      "name": "coach-probe",
+      "exitCode": 0,
+      "logSha256": "36210de42cfa1afa752af6b3a1fa4bf5f8822d01a99c2382c8a17533b1afeb6c"
+    },
+    {
+      "name": "math-pin-regression",
+      "exitCode": 0,
+      "logSha256": "d6e661dda5c21c7038e3bad58bf8c793af141b3ff04efacfd179419dd4f1ed40"
+    }
+  ],
+  "finalHeadCommands": [
+    {
+      "name": "e36-flashcard-actions",
+      "exitCode": 0,
+      "logSha256": "62769a4fa49ba8ab616e5ddd5868614ac0c407a87855081f30154df19023db06"
+    },
+    {
+      "name": "e36-goal-book",
+      "exitCode": 0,
+      "logSha256": "a60ef8afd06c3924d1b16ae4e706294ec39e15cd2bcf39283dccdd30a94561c6"
+    }
+  ],
+  "finalBackendClasses": [
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "tests": 115,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.CompositionViewServiceTest",
+      "tests": 70,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.LearnerPlanningScopeServiceTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.LearnerServiceTest",
+      "tests": 134,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "finalMcpProbe": {
+    "ordinary-parent": {
+      "mentionsRetired": false,
+      "parentRoutes": [
+        "unitPractice"
+      ],
+      "activeRoutes": [],
+      "hasUnit": true,
+      "activeIds": [],
+      "fields": [
+        "stateVersion",
+        "language",
+        "levelCompletion",
+        "learningPlanToday",
+        "curriculum",
+        "learningContext",
+        "stateMachine",
+        "activeGoal",
+        "focusedUnitContext",
+        "cardStep",
+        "frontier",
+        "progress"
+      ],
+      "storedActive": "null",
+      "requiredAction": "getFrontier",
+      "hasActive": false
+    },
+    "retired-active": {
+      "mentionsRetired": false,
+      "parentRoutes": [
+        "unitPractice"
+      ],
+      "activeRoutes": [],
+      "hasUnit": true,
+      "activeIds": [],
+      "fields": [
+        "stateVersion",
+        "language",
+        "levelCompletion",
+        "learningPlanToday",
+        "curriculum",
+        "learningContext",
+        "stateMachine",
+        "activeGoal",
+        "focusedUnitContext",
+        "cardStep",
+        "frontier",
+        "progress"
+      ],
+      "storedActive": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+      "requiredAction": "getFrontier",
+      "hasActive": false
+    },
+    "ordinary-child": {
+      "mentionsRetired": false,
+      "parentRoutes": [],
+      "activeRoutes": [
+        "unitPractice",
+        "directAssessment"
+      ],
+      "hasUnit": false,
+      "activeIds": [
+        "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
+        "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
+        "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+      ],
+      "fields": [
+        "stateVersion",
+        "language",
+        "levelCompletion",
+        "toolPreparationInstruction",
+        "learningPlanToday",
+        "curriculum",
+        "learningContext",
+        "stateMachine",
+        "activeGoal",
+        "activeGoalContext",
+        "cardStep",
+        "goalVisualization",
+        "presentationInstruction",
+        "frontier",
+        "progress"
+      ],
+      "storedActive": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "requiredAction": "teachActiveGoal",
+      "hasActive": true
+    },
+    "retired-only-focus": {
+      "mentionsRetired": false,
+      "parentRoutes": [],
+      "activeRoutes": [],
+      "hasUnit": false,
+      "activeIds": [],
+      "fields": [
+        "stateVersion",
+        "language",
+        "levelCompletion",
+        "learningPlanToday",
+        "curriculum",
+        "learningContext",
+        "stateMachine",
+        "activeGoal",
+        "cardStep",
+        "frontier",
+        "progress"
+      ],
+      "storedActive": "null",
+      "requiredAction": "setActiveGoal",
+      "hasActive": false
+    }
+  },
+  "frontend": {
+    "path": "frontend.actual.json",
+    "sha256": "96e8a3acc32e38eaa83da81b7158b7a415fc017603247e136548b07486a674ce",
+    "bytes": 47156
+  },
+  "finalTree": "d76aeb2547dee39146d2881bfd2ac703fd9122b8",
+  "bindingChange": {
+    "path": "final-diff.actual.json",
+    "sha256": "854b9fed94a5616f85fb9b038fa31b91602d38ee51cd0b4624d2d57feeaf95b8",
+    "bytes": 1590
+  },
+  "unchangedCodePilotOffProbeCommit": "048683d361d2b559240a279d86a3a5562402899e",
+  "initialHead": "a6117075c1ac7776a1af0a0c9b790fda9a980225",
+  "initialCommands": [
+    {
+      "name": "physics-goal-book-inputs",
+      "exitCode": 0,
+      "logSha256": "a60ef8afd06c3924d1b16ae4e706294ec39e15cd2bcf39283dccdd30a94561c6"
+    },
+    {
+      "name": "learning-unit-assessments",
+      "exitCode": 0,
+      "logSha256": "40b719dfe70c12fb81286ac1af158437a7109754d721acd0a24916a3effca160"
+    },
+    {
+      "name": "physics-assessment-projection",
+      "exitCode": 1,
+      "logSha256": "6205ffeb99842a25b2cf379993a069ec3d7a91c67505d3a8f0422020da3b49d9"
+    },
+    {
+      "name": "backend-six",
+      "exitCode": 0,
+      "logSha256": "b6f415ae8256981534f6d18cbbc0f0ca79de1d7c449da64640393dfa2b594ef5"
+    },
+    {
+      "name": "coach-probe",
+      "exitCode": 0,
+      "logSha256": "233b6b18dfcf62869a7b9c2d70bb91eebe74b05bc35d4ea20537c589e01c29b8"
+    },
+    {
+      "name": "math-pin-regression",
+      "exitCode": 1,
+      "logSha256": "ebc23a8df54b8e959c5ce50337c24a6ccc30dbb40f32269b282fc2e1e1a089c7"
+    },
+    {
+      "name": "physics-memory-ui",
+      "exitCode": 1,
+      "logSha256": "e075ff8719cd1b42dc5b57b5c340004fa0a9528d71ac6d1be37be5749d9c460b"
+    }
+  ],
+  "initialBackendClasses": [
+    {
+      "class": "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest",
+      "tests": 115,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.CompositionViewServiceTest",
+      "tests": 70,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.ExamLearningScopeIntegrationTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.LearnerPlanningScopeServiceTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.LearnerServiceTest",
+      "tests": 134,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "class": "com.skillpilot.backend.service.UnitLearningMaterialServiceTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "initialMcpProbe": {
+    "ordinary-parent": {
+      "parentRoutes": [
+        "unitPractice"
+      ],
+      "mentionsRetired": false,
+      "hasActive": false,
+      "requiredAction": "getFrontier",
+      "storedActive": "null",
+      "fields": [
+        "stateVersion",
+        "language",
+        "levelCompletion",
+        "learningPlanToday",
+        "curriculum",
+        "learningContext",
+        "stateMachine",
+        "activeGoal",
+        "focusedUnitContext",
+        "cardStep",
+        "frontier",
+        "progress"
+      ],
+      "activeIds": [],
+      "hasUnit": true,
+      "activeRoutes": []
+    },
+    "retired-active": {
+      "parentRoutes": [],
+      "mentionsRetired": false,
+      "hasActive": false,
+      "requiredAction": "getFrontier",
+      "storedActive": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+      "fields": [
+        "stateVersion",
+        "language",
+        "levelCompletion",
+        "learningPlanToday",
+        "curriculum",
+        "learningContext",
+        "stateMachine",
+        "activeGoal",
+        "cardStep",
+        "frontier",
+        "progress"
+      ],
+      "activeIds": [],
+      "hasUnit": false,
+      "activeRoutes": []
+    },
+    "ordinary-child": {
+      "parentRoutes": [],
+      "mentionsRetired": false,
+      "hasActive": true,
+      "requiredAction": "teachActiveGoal",
+      "storedActive": "8aff7aac-321b-5172-ac55-877876bfd2cd",
+      "fields": [
+        "stateVersion",
+        "language",
+        "levelCompletion",
+        "toolPreparationInstruction",
+        "learningPlanToday",
+        "curriculum",
+        "learningContext",
+        "stateMachine",
+        "activeGoal",
+        "activeGoalContext",
+        "cardStep",
+        "goalVisualization",
+        "presentationInstruction",
+        "frontier",
+        "progress"
+      ],
+      "activeIds": [
+        "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
+        "9f2f5ab8-0ae4-5792-b831-82a05af5895c",
+        "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+      ],
+      "hasUnit": false,
+      "activeRoutes": [
+        "unitPractice",
+        "directAssessment"
+      ]
+    },
+    "retired-only-focus": {
+      "parentRoutes": [],
+      "mentionsRetired": false,
+      "hasActive": false,
+      "requiredAction": "setActiveGoal",
+      "storedActive": "null",
+      "fields": [
+        "stateVersion",
+        "language",
+        "levelCompletion",
+        "learningPlanToday",
+        "curriculum",
+        "learningContext",
+        "stateMachine",
+        "activeGoal",
+        "cardStep",
+        "frontier",
+        "progress"
+      ],
+      "activeIds": [],
+      "hasUnit": false,
+      "activeRoutes": []
+    }
+  },
+  "initialDiagnosticContinuationAfterProjectionFailed": [
+    {
+      "name": "projection-hessen",
+      "exitCode": 0,
+      "logSha256": "146ca88f8089934f51855cfb1f529fbabf8bcad0a2079231bb8f68a01999e2d0"
+    },
+    {
+      "name": "projection-hessen-duration",
+      "exitCode": 0,
+      "logSha256": "c63b0cb988a07e3ee11d8584760fd1bee9cfac5ff55e8d7596e30ce843c46fa0"
+    },
+    {
+      "name": "projection-hessen-tests",
+      "exitCode": 0,
+      "logSha256": "642d0db6ff2f5eb097f6ba00c8fb62dfad21f3843c147c9dba3d466b22182973"
+    },
+    {
+      "name": "projection-ts",
+      "exitCode": 0,
+      "logSha256": "e598a0545a069f81792d0ca764e88f860f01dd41c61d48e3d3a9b6e49991481c"
+    },
+    {
+      "name": "projection-laender",
+      "exitCode": 0,
+      "logSha256": "3a0128c1d5453113e8d5c04a078a66b439fb3bb0335584bcfd36715e46062e94"
+    },
+    {
+      "name": "projection-laender-tests",
+      "exitCode": 0,
+      "logSha256": "cb2c1998f53f245b8dd607bccbfd5157a791972328257ed3451fb3855430243c"
+    }
+  ],
+  "initialFrontend": "Superseded during setup and candidate book generation by the request to test the corrected head. Initial frontend failure independently reproduced using the original map script.",
+  "interimReview": "The 505a341520 run was superseded when 048683d361 added an assertion and refreshed the evidence. Only results actually completed on the final head count here."
+}

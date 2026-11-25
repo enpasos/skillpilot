@@ -1,0 +1,30 @@
+
+> skillpilot@0.0.0 test:physics-assessment-projection
+> tsx scripts/testPhysicsAssessmentProjection.ts && python3 -B ../scripts/generate_hessen_physics_stage_views.py --check && python3 -B ../scripts/generate_hessen_physics_stage_views.py --check --duration-views && python3 -B -m unittest discover -s ../scripts -p test_generate_hessen_physics_stage_views.py && tsx scripts/testPhysicsStageViewProjection.ts && python3 ../scripts/generate_laender_physics_stage_views.py --check && python3 ../scripts/test_generate_laender_physics_stage_views.py
+
+National stage compatibility materialization: BW/HE/default, exact neutral GK/LK union, missing endpoint/preparation and 14 fail-closed cases passed.
+Native CQR-104: real BW baseline PASS; missing national terminal FAIL with identical expected counts; missing whole-task preparation FAIL. Active views unchanged.
+Native CQR-003: current scope PASS; visible unsupported HE target FAIL; empty/unknown HE and prerequisiteOnly-only national FAIL with unchanged source obligations; neutral GK/LK, DE, duration and atomic-parent scopes PASS; actual BY-Math direct-mapping fallback preserved. Active inputs unchanged.
+Curriculum quality stage-role specificity: resolved support, strict authority and missing-prerequisite controls passed.
+Physics duration assessment counts: {"total":{"viewCount":64,"fermiScopeViewCount":90,"practiceTaskPairs":4534,"abiturTaskPairs":512,"preservedSekITaskPairs":30,"preservedPrerequisiteOnlyPairs":161,"filteredPrerequisiteOnlyPairs":48,"kinematicsTaskPairs":128,"astronomyTaskPairs":147},"addedHesseDuration":{"viewCount":4,"fermiScopeViewCount":6,"practiceTaskPairs":316,"abiturTaskPairs":32,"preservedSekITaskPairs":0,"preservedPrerequisiteOnlyPairs":0,"filteredPrerequisiteOnlyPairs":0,"kinematicsTaskPairs":8,"astronomyTaskPairs":8},"addedLandSekI":{"viewCount":0,"fermiScopeViewCount":15,"practiceTaskPairs":0,"abiturTaskPairs":0,"preservedSekITaskPairs":0,"preservedPrerequisiteOnlyPairs":0,"filteredPrerequisiteOnlyPairs":0,"kinematicsTaskPairs":0,"astronomyTaskPairs":3}}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expose every current canonical collection obligation, including the new individual and nested assessments. Preserve the exact existing-view floor.
+
+4218 !== 4248
+
+    at assertCount (/tmp/skillpilot-e1-task-a-frontend.MWr9G3M2/parent-workspace/app/scripts/testPhysicsAssessmentProjection.ts:769:10)
+    at <anonymous> (/tmp/skillpilot-e1-task-a-frontend.MWr9G3M2/parent-workspace/app/scripts/testPhysicsAssessmentProjection.ts:785:1)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 4218,
+  expected: 4248,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

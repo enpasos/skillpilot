@@ -1,0 +1,969 @@
+{
+  "schema": "physics-mixed-exam-retirement-v1",
+  "date": "2026-11-25",
+  "status": "AUTHOR_RECORD_PENDING_INDEPENDENT_REVIEW",
+  "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+  "title": "Bewegungsanalyse und freier Fall",
+  "decision": "Retired for all Länder. The exam keeps its identity, task, solution and rubric in the catalog as a retained mixed assessment. No view offers it, no new plan can select it and it confers no recognition.",
+  "decidedBy": "Claude (coordinating agent) under the execution mandate of 15 Nov 2026, following the Product Owner's question of 24 Nov 2026 whether the exam is needed, where, and whether it fits its context.",
+  "baseCommit": "3e6af47aec2f7f3046c316e8d4981858b943c4a6",
+  "reason": {
+    "need": "No claimed goal loses a check that this exam really provided; the numbers are counted over all 90 Physics views. Spreadsheet modelling keeps its dedicated exam in each of the 68 views where it is a target. Road traffic keeps an exam that requires it in each of its 70 views: its dedicated exam in 12 of them and, in 64, the mixed exam 'Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen', which has the same build and stays until the E.2 review. The free-fall experiment has its dedicated exam in 13 of its 68 views (DE-HE 8, DE-SN 3, national 2); 55 views lack it, before and after. In 52 views the retired exam was the only exam that named the experiment as a prerequisite; it asked for no experiment, so no check of an own experiment is lost. No view newly loses its last exam that names one of the three goals; 3 views had none for the free-fall goal before and have none now. Related measuring work is assessed elsewhere: 'Videoanalyse: eigene Kalibrierung und unabhängiger Wurftransfer' (6345871e) asks for an own calibrated video with a measured vertical acceleration in all 64 affected views; it does not name the free-fall goal.",
+    "fit": "25 points, pass mark 15, four steps of 6, 7, 6 and 6 points: any one step can be left out entirely. Steps 1 and 2 evaluate a given table for a uniformly accelerated motion; step 3 calculates a free fall from given values; step 4 calculates a stopping distance, which belongs to E.2 since the E.1 cut.",
+    "claims": [
+      {
+        "goalId": "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+        "title": "Freier Fall experimentell untersuchen",
+        "type": "atomic",
+        "claimStatus": "not tested",
+        "finding": "Step 3 gives the height and g and asks for fall time and impact speed. No experiment, no measured data, no graphical evaluation, no own determination of g.",
+        "viewsWhereTheGoalIsATarget": 68,
+        "activeExamsAfterTheRetirement": [
+          {
+            "goalId": "dd99528a-bae5-5b78-89e6-c6092c927f8d",
+            "title": "Mehrschrittige Bewegungsmodelle mit Reibung und Chaos analysieren",
+            "relation": "covers only",
+            "views": 64,
+            "passMark": "18/30"
+          },
+          {
+            "goalId": "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
+            "title": "Prüfungsaufgabe: Freien Fall in zwei eigenen Messreihen untersuchen",
+            "relation": "requires",
+            "views": 13,
+            "passMark": "23/24"
+          }
+        ],
+        "viewsWhereTheRetiredExamWasTheOnlyExamRequiringTheGoal": 52,
+        "viewsNewlyWithoutAnyExamThatNamesTheGoal": 0,
+        "viewsWithoutAnyExamThatNamesTheGoal": {
+          "before": 3,
+          "after": 3
+        }
+      },
+      {
+        "goalId": "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+        "title": "Physik im Straßenverkehr: Sicherheitsabstände bewerten",
+        "type": "atomic",
+        "claimStatus": "one skippable step",
+        "finding": "Step 4 (6 of 25 points) calculates one stopping distance against a given gap. The step can be left out entirely at the pass mark of 15.",
+        "viewsWhereTheGoalIsATarget": 70,
+        "activeExamsAfterTheRetirement": [
+          {
+            "goalId": "7c0b94b9-2af7-59d4-bfae-278a3418f6a8",
+            "title": "Kontextaufgaben zu Sport, Verkehr und Sicherheit lösen",
+            "relation": "requires",
+            "views": 64,
+            "passMark": "15/25"
+          },
+          {
+            "goalId": "dfd2628f-b44e-51b3-86e8-99158861be8c",
+            "title": "Prüfungsaufgabe: Wurf- und Bremsbewegungen modellieren",
+            "relation": "requires",
+            "views": 12,
+            "passMark": "12/16"
+          }
+        ],
+        "viewsWhereTheRetiredExamWasTheOnlyExamRequiringTheGoal": 0,
+        "viewsNewlyWithoutAnyExamThatNamesTheGoal": 0,
+        "viewsWithoutAnyExamThatNamesTheGoal": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      {
+        "goalId": "ac25ffe3-fd42-592d-a937-79cc13460313",
+        "title": "Methode: Modellbildung mit Tabellenkalkulation",
+        "type": "atomic",
+        "claimStatus": "not tested",
+        "finding": "No step uses a spreadsheet, finite time steps or a parameter variation.",
+        "viewsWhereTheGoalIsATarget": 68,
+        "activeExamsAfterTheRetirement": [
+          {
+            "goalId": "3791c574-2194-52fa-846b-ee1d4e2c5877",
+            "title": "Prüfungsaufgabe: Zwei Bewegungsmodelle in der Tabellenkalkulation",
+            "relation": "requires",
+            "views": 68,
+            "passMark": "11/12"
+          }
+        ],
+        "viewsWhereTheRetiredExamWasTheOnlyExamRequiringTheGoal": 0,
+        "viewsNewlyWithoutAnyExamThatNamesTheGoal": 0,
+        "viewsWithoutAnyExamThatNamesTheGoal": {
+          "before": 0,
+          "after": 0
+        }
+      },
+      {
+        "goalId": "230345f3-c360-4963-b390-ab94e3e2c864",
+        "title": "Freier Fall experimentell untersuchen",
+        "type": "cluster",
+        "claimStatus": "not tested",
+        "finding": "Cluster of the free-fall experiment goal; same finding as for its atomic goal."
+      }
+    ]
+  },
+  "goal": {
+    "before": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/goal.before.json",
+      "sha256": "894d2761b5c913cedd8c746be2883bbbe076e5866da138c51116eab7866bb6ca",
+      "jsonStringifySha256": "0b747717453dd4ef871351117376f5a290a7d56a32ac6e00fa8e69e886a79ede"
+    },
+    "after": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/goal.after.json",
+      "sha256": "b01a9d0df792d90a50ffeb72ae1e276d4529a086b44da04381457a5981a00d86",
+      "jsonStringifySha256": "4034392d52ae847fd6aa3f8df43ad365e39741e99559e44d70009e20a4795415"
+    },
+    "changedFields": [
+      "applicability",
+      "extendedData"
+    ],
+    "unchangedFields": [
+      "contains",
+      "description",
+      "descriptionEn",
+      "dimensionTags",
+      "examData",
+      "id",
+      "phase",
+      "requires",
+      "tags",
+      "title",
+      "titleEn",
+      "type",
+      "weight"
+    ],
+    "applicabilityBefore": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "applicabilityAfter": {},
+    "extendedDataAfter": {
+      "applicabilityProjection": "excluded",
+      "applicabilityMappingInheritance": "boundary"
+    }
+  },
+  "catalog": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "beforeSha256": "ec581e98268e42158eba7f9f65ee60f111c473728b06769ecdb3771e6fcb0d78",
+    "afterSha256": "0c85b833c5bb32ff1ecffff208d9c2d935d7fe97cddcab228ebe816445ecaf34",
+    "changedGoalIds": [
+      "151edbf8-eb68-5ef7-8786-43e56a281b0b",
+      "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+      "a9562b05-c54d-5635-9244-3f7dd24a8642"
+    ],
+    "movedFrom": {
+      "goalId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+      "title": "Übungen E-Phase",
+      "containsBefore": 18,
+      "containsAfter": 17
+    },
+    "movedTo": {
+      "goalId": "151edbf8-eb68-5ef7-8786-43e56a281b0b",
+      "title": "Erhaltene gemischte Prüfungsaufgaben ohne vollständigen Einzelzielnachweis",
+      "containsBefore": 18,
+      "containsAfter": 19
+    },
+    "requiresUnchanged": [
+      "09029573-864f-40ca-bf8a-cee7bf6dcb73",
+      "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+      "ac25ffe3-fd42-592d-a937-79cc13460313"
+    ],
+    "requiredByNoGoal": true
+  },
+  "views": {
+    "directory": "curricula/DE/Gymnasium/composition-views/physik",
+    "total": 90,
+    "changed": 64,
+    "unchanged": 26,
+    "removedExamNodes": 64,
+    "previousTargetViewIds": [
+      "de-bb-gym-physics-gk",
+      "de-bb-gym-physics-lk",
+      "de-bb-gym-sekii-physics-gk",
+      "de-bb-gym-sekii-physics-lk",
+      "de-be-gym-physics-gk",
+      "de-be-gym-physics-lk",
+      "de-be-gym-sekii-physics-gk",
+      "de-be-gym-sekii-physics-lk",
+      "de-de-gym-physics-gk",
+      "de-de-gym-physics-lk",
+      "de-de-gym-sekii-physics-gk",
+      "de-de-gym-sekii-physics-lk",
+      "de-hb-gym-physics-gk",
+      "de-hb-gym-physics-lk",
+      "de-hb-gym-sekii-physics-gk",
+      "de-hb-gym-sekii-physics-lk",
+      "de-he-gym-physics-gk",
+      "de-he-gym-physics-gk-g8",
+      "de-he-gym-physics-gk-g9",
+      "de-he-gym-physics-lk",
+      "de-he-gym-physics-lk-g8",
+      "de-he-gym-physics-lk-g9",
+      "de-he-gym-sekii-physics-gk",
+      "de-he-gym-sekii-physics-lk",
+      "de-hh-gym-physics-gk",
+      "de-hh-gym-physics-lk",
+      "de-hh-gym-sekii-physics-gk",
+      "de-hh-gym-sekii-physics-lk",
+      "de-mv-gym-physics-gk",
+      "de-mv-gym-physics-lk",
+      "de-mv-gym-sekii-physics-gk",
+      "de-mv-gym-sekii-physics-lk",
+      "de-ni-gym-physics-gk",
+      "de-ni-gym-physics-lk",
+      "de-ni-gym-sekii-physics-gk",
+      "de-ni-gym-sekii-physics-lk",
+      "de-nw-gym-physics-gk",
+      "de-nw-gym-physics-lk",
+      "de-nw-gym-sekii-physics-gk",
+      "de-nw-gym-sekii-physics-lk",
+      "de-rp-gym-physics-gk",
+      "de-rp-gym-physics-lk",
+      "de-rp-gym-sekii-physics-gk",
+      "de-rp-gym-sekii-physics-lk",
+      "de-sh-gym-physics-gk",
+      "de-sh-gym-physics-lk",
+      "de-sh-gym-sekii-physics-gk",
+      "de-sh-gym-sekii-physics-lk",
+      "de-sl-gym-physics-gk",
+      "de-sl-gym-physics-lk",
+      "de-sl-gym-sekii-physics-gk",
+      "de-sl-gym-sekii-physics-lk",
+      "de-sn-gym-physics-gk",
+      "de-sn-gym-physics-lk",
+      "de-sn-gym-sekii-physics-gk",
+      "de-sn-gym-sekii-physics-lk",
+      "de-st-gym-physics-gk",
+      "de-st-gym-physics-lk",
+      "de-st-gym-sekii-physics-gk",
+      "de-st-gym-sekii-physics-lk",
+      "de-th-gym-physics-gk",
+      "de-th-gym-physics-lk",
+      "de-th-gym-sekii-physics-gk",
+      "de-th-gym-sekii-physics-lk"
+    ],
+    "previousVisibleViewIds": [
+      "de-bb-gym-physics-gk",
+      "de-bb-gym-sekii-physics-gk",
+      "de-be-gym-physics-gk",
+      "de-be-gym-sekii-physics-gk",
+      "de-de-gym-physics-gk",
+      "de-de-gym-sekii-physics-gk",
+      "de-hb-gym-physics-gk",
+      "de-hb-gym-sekii-physics-gk",
+      "de-he-gym-physics-gk",
+      "de-he-gym-physics-gk-g8",
+      "de-he-gym-physics-gk-g9",
+      "de-he-gym-sekii-physics-gk",
+      "de-hh-gym-physics-gk",
+      "de-hh-gym-sekii-physics-gk",
+      "de-mv-gym-physics-gk",
+      "de-mv-gym-sekii-physics-gk",
+      "de-ni-gym-physics-gk",
+      "de-ni-gym-sekii-physics-gk",
+      "de-nw-gym-physics-gk",
+      "de-nw-gym-sekii-physics-gk",
+      "de-rp-gym-physics-gk",
+      "de-rp-gym-sekii-physics-gk",
+      "de-sh-gym-physics-gk",
+      "de-sh-gym-sekii-physics-gk",
+      "de-sl-gym-physics-gk",
+      "de-sl-gym-sekii-physics-gk",
+      "de-sn-gym-physics-gk",
+      "de-sn-gym-sekii-physics-gk",
+      "de-st-gym-physics-gk",
+      "de-st-gym-sekii-physics-gk",
+      "de-th-gym-physics-gk",
+      "de-th-gym-sekii-physics-gk"
+    ],
+    "visibilityFinding": "The exam carries the course tag GK only. It was a target node in 64 views and visible to learners in the 32 Grundkurs views among them.",
+    "visibilityMethod": "applyCompositionViewProjection, normalizeLearnerProjectedEntries and buildVisibleChildrenMap with each view's course, jurisdiction and stage; target roles from collectCompositionProjectionRoleGoalIds.",
+    "roleDelta": "In each changed view the exam was an atomic target and is now in no role. Every other atomic target and every prerequisite-only goal is unchanged.",
+    "generatorFollowUps": "The Länder generator dropped one empty childOrder declaration in each national Sek II view and re-derived one child order edge in the national Sek II GK view.",
+    "files": [
+      {
+        "file": "de-bb-gk.view.json",
+        "removedFrom": "physics-bb-unit-q-practice",
+        "beforeSha256": "658514392bf42690ee0b97b8f6175e32d17f5144909e2dbd35bdb7d298f2fa28",
+        "afterSha256": "bb9296ea337676dffe73c67e16324c1dd9e7081be24921aea294de1fa9a53064",
+        "viewId": "de-bb-gym-physics-gk",
+        "targetAtomsBefore": 573,
+        "targetAtomsAfter": 572
+      },
+      {
+        "file": "de-bb-lk.view.json",
+        "removedFrom": "physics-bb-unit-q-practice",
+        "beforeSha256": "c1a0528edac03b3e2d0036347e40e35fe704c5f59826c8ed7295322a26ff489e",
+        "afterSha256": "6f2bceb6edcce824bad2ad50149db3b5c6a8e7b73652ed094497e867f2c07798",
+        "viewId": "de-bb-gym-physics-lk",
+        "targetAtomsBefore": 586,
+        "targetAtomsAfter": 585
+      },
+      {
+        "file": "de-bb-sekii-gk.view.json",
+        "removedFrom": "physics-bb-unit-q-practice",
+        "beforeSha256": "930f176defb29226600b33f9e61093be25bcda846d557dca7e5941c8b40979ef",
+        "afterSha256": "94f79f840fd748a3c54292bda6c58cd8b454d4b3c4674d19883aa6940c2e2be3",
+        "viewId": "de-bb-gym-sekii-physics-gk",
+        "targetAtomsBefore": 459,
+        "targetAtomsAfter": 458
+      },
+      {
+        "file": "de-bb-sekii-lk.view.json",
+        "removedFrom": "physics-bb-unit-q-practice",
+        "beforeSha256": "047674f642e668270db23405249d37cdb25af76f16518595e2c459c8d39df84a",
+        "afterSha256": "037a7947fe3db0d524596c10b1b4c69424cd26c8247ff40b9488e883a6d41d84",
+        "viewId": "de-bb-gym-sekii-physics-lk",
+        "targetAtomsBefore": 467,
+        "targetAtomsAfter": 466
+      },
+      {
+        "file": "de-be-gk.view.json",
+        "removedFrom": "physics-be-unit-q-practice",
+        "beforeSha256": "a077f450d007580920a57984ad34526fcfffdb931e169e886114092ebdbe608c",
+        "afterSha256": "4f02aa252928d48bc6e68a88736ca945af9a98e2d7b9b3548800494c7443841e",
+        "viewId": "de-be-gym-physics-gk",
+        "targetAtomsBefore": 573,
+        "targetAtomsAfter": 572
+      },
+      {
+        "file": "de-be-lk.view.json",
+        "removedFrom": "physics-be-unit-q-practice",
+        "beforeSha256": "8a7c8533b8a667fc3aea2785cea2c40e3ae8e909d387cb0ae068b5893bf2baf3",
+        "afterSha256": "f511ce99a734a932d8929cdb70d1854ada45978e11fcd13b5807d755b1977ff8",
+        "viewId": "de-be-gym-physics-lk",
+        "targetAtomsBefore": 586,
+        "targetAtomsAfter": 585
+      },
+      {
+        "file": "de-be-sekii-gk.view.json",
+        "removedFrom": "physics-be-unit-q-practice",
+        "beforeSha256": "88576d705c6a484b2427216b3e0257d92e29c9394e11b20cc1e9da52d7257b5a",
+        "afterSha256": "090840ab88cd650127fb23fa9efd8a720f5d4bc8dcf498130015dfc0f48fa41d",
+        "viewId": "de-be-gym-sekii-physics-gk",
+        "targetAtomsBefore": 459,
+        "targetAtomsAfter": 458
+      },
+      {
+        "file": "de-be-sekii-lk.view.json",
+        "removedFrom": "physics-be-unit-q-practice",
+        "beforeSha256": "11302a5c86d5b332ecf693b3ef36f80880d6299d6db436e5ea4d1ae0e8f4810e",
+        "afterSha256": "9a14d98c9c0d484aa6410704434c5f7cc49bd93abe738256a7c16ca5571de8c2",
+        "viewId": "de-be-gym-sekii-physics-lk",
+        "targetAtomsBefore": 467,
+        "targetAtomsAfter": 466
+      },
+      {
+        "file": "de-de-gym-physics-gk.view.json",
+        "removedFrom": "physics-open-424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "beforeSha256": "2aa18379c9381e3d10558372171467f4e69d383dd676c8cc004d9f611a3f26ed",
+        "afterSha256": "68d4a774153254971885557c8a12e1deea7b56f4d2724a3bbab8b7b8d362051a",
+        "viewId": "de-de-gym-physics-gk",
+        "targetAtomsBefore": 605,
+        "targetAtomsAfter": 604
+      },
+      {
+        "file": "de-de-gym-physics-lk.view.json",
+        "removedFrom": "physics-open-424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "beforeSha256": "78a5983718393dc4a888c1ef393ef483bc941d396af0c4263a2ad6c920d74e45",
+        "afterSha256": "baf38afd593527b0f52fdf4ca496eac48d3bb744bf690daaed2e65eedc992791",
+        "viewId": "de-de-gym-physics-lk",
+        "targetAtomsBefore": 622,
+        "targetAtomsAfter": 621
+      },
+      {
+        "file": "de-de-gym-sekii-physics-gk.view.json",
+        "removedFrom": "physics-acquisition-a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "droppedEmptyStructures": [
+          "physics-acquisition-a9562b05-c54d-5635-9244-3f7dd24a8642"
+        ],
+        "beforeSha256": "bea0a8e0f11e0b925fcbf7c65c970e957a1a4ec435a0c38dda6a3ca3c40ea3f1",
+        "afterSha256": "f2f2327b8f7cd8553717f3ddb22a2e27d03bea6ef781652f1680e25864b116f5",
+        "viewId": "de-de-gym-sekii-physics-gk",
+        "targetAtomsBefore": 489,
+        "targetAtomsAfter": 488
+      },
+      {
+        "file": "de-de-gym-sekii-physics-lk.view.json",
+        "removedFrom": "physics-acquisition-a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "droppedEmptyStructures": [
+          "physics-acquisition-a9562b05-c54d-5635-9244-3f7dd24a8642"
+        ],
+        "beforeSha256": "d35e00a3f622830f0964ea42b5f9414e4e88a7182b3955eb01319ad458051d18",
+        "afterSha256": "ebded914cb287113a9732a7dc70b25de92846a6591ffd3f87f6b0eb347ce33cc",
+        "viewId": "de-de-gym-sekii-physics-lk",
+        "targetAtomsBefore": 499,
+        "targetAtomsAfter": 498
+      },
+      {
+        "file": "de-hb-gk.view.json",
+        "removedFrom": "physics-hb-unit-e-practice",
+        "beforeSha256": "fe0387e394ebba4c195aeb94cd5a682b413a371c8c8289cdb55508199bd1ad8d",
+        "afterSha256": "9cb7282b2194cc2f941439c789843c20492c50c9f0b5e4c11d141e383e0b39cd",
+        "viewId": "de-hb-gym-physics-gk",
+        "targetAtomsBefore": 573,
+        "targetAtomsAfter": 572
+      },
+      {
+        "file": "de-hb-lk.view.json",
+        "removedFrom": "physics-hb-unit-e-practice",
+        "beforeSha256": "42f4086bedbc631f088c3e3bc158db6bf1d934449da021baf6887d3eeabc05be",
+        "afterSha256": "525e463776f6280317ae46cea358fcb144ea1a4d0e6be52e7705e44f6d163cf8",
+        "viewId": "de-hb-gym-physics-lk",
+        "targetAtomsBefore": 586,
+        "targetAtomsAfter": 585
+      },
+      {
+        "file": "de-hb-sekii-gk.view.json",
+        "removedFrom": "physics-hb-unit-e-practice",
+        "beforeSha256": "7f9ce61a8b64203f04e9613cfa3886d18f79303dfa2c4eedeb148fdada51732e",
+        "afterSha256": "f10345cd020625254991ba745a8dd83400abbd0fdb50a12474987c68fc48928c",
+        "viewId": "de-hb-gym-sekii-physics-gk",
+        "targetAtomsBefore": 459,
+        "targetAtomsAfter": 458
+      },
+      {
+        "file": "de-hb-sekii-lk.view.json",
+        "removedFrom": "physics-hb-unit-e-practice",
+        "beforeSha256": "740f66af25b67b4e4b3ffa7c6e7d498ad8c370b1103f8ceb268e106fe26c8150",
+        "afterSha256": "b08ca94b5f7965581bdb776ad5f795ce1f8e4dbd2d5f58b02c0220cca35326cd",
+        "viewId": "de-hb-gym-sekii-physics-lk",
+        "targetAtomsBefore": 467,
+        "targetAtomsAfter": 466
+      },
+      {
+        "file": "de-he-gk-g8.view.json",
+        "removedFrom": "physics-he-ephase-cross-topic-assessments",
+        "beforeSha256": "89be642a5b92be654e28956b57b7de0c7556eab7c19ecaf84d1223e0e33a380d",
+        "afterSha256": "a548e0f7cde9432490560a578fd5a6ab577b6378c1b7a8ca4d8e40ad7025fc58",
+        "viewId": "de-he-gym-physics-gk-g8",
+        "targetAtomsBefore": 592,
+        "targetAtomsAfter": 591
+      },
+      {
+        "file": "de-he-gk-g9.view.json",
+        "removedFrom": "physics-he-ephase-cross-topic-assessments",
+        "beforeSha256": "c0571a656d442647738d9cf3f4ef0c29864a16e0d488b2858e12663ec3a7df8e",
+        "afterSha256": "76d5d5a83bdd757f3e1d1b6385fa3683afcd8c1ebb32d2d06eaa5511da05c877",
+        "viewId": "de-he-gym-physics-gk-g9",
+        "targetAtomsBefore": 592,
+        "targetAtomsAfter": 591
+      },
+      {
+        "file": "de-he-gk.view.json",
+        "removedFrom": "physics-he-ephase-cross-topic-assessments",
+        "beforeSha256": "e39433b3ddcaf0a9f0e600af7b112db430c0cdf42eead69b18c2d8d57c291b73",
+        "afterSha256": "0aaffb2dba55e68a65d16c3cfe3afdfd2e2944b79b798843f780392456721680",
+        "viewId": "de-he-gym-physics-gk",
+        "targetAtomsBefore": 592,
+        "targetAtomsAfter": 591
+      },
+      {
+        "file": "de-he-lk-g8.view.json",
+        "removedFrom": "physics-he-ephase-cross-topic-assessments",
+        "beforeSha256": "9c44a9c90fbcb64481d7d5a565fa1c0c34029993b912ed927a3aad919dbb80ab",
+        "afterSha256": "9038952acea7b2f5c53d43764b21c4d8a42d0cb6f79ab2b9a5193e83095c2126",
+        "viewId": "de-he-gym-physics-lk-g8",
+        "targetAtomsBefore": 615,
+        "targetAtomsAfter": 614
+      },
+      {
+        "file": "de-he-lk-g9.view.json",
+        "removedFrom": "physics-he-ephase-cross-topic-assessments",
+        "beforeSha256": "322c1a66ce704b6e434465e819de810cb59c84aefc376167a5ffcc68c849ac45",
+        "afterSha256": "d8b206ed5da39eb5ebbc6eff9c6541a6125fe957ab7fb07861f068cc71ba0aca",
+        "viewId": "de-he-gym-physics-lk-g9",
+        "targetAtomsBefore": 615,
+        "targetAtomsAfter": 614
+      },
+      {
+        "file": "de-he-lk.view.json",
+        "removedFrom": "physics-he-ephase-cross-topic-assessments",
+        "beforeSha256": "75fc607922641c4d539f52f353fadbeeb8d44792ade565b2c5db8a5c6aa98494",
+        "afterSha256": "1c538ee97156ca66cb58543bd71f8aa9a95e21fcfe07cab4f30f96b875b6fe8b",
+        "viewId": "de-he-gym-physics-lk",
+        "targetAtomsBefore": 615,
+        "targetAtomsAfter": 614
+      },
+      {
+        "file": "de-he-sekii-gk.view.json",
+        "removedFrom": "physics-he-ephase-cross-topic-assessments",
+        "beforeSha256": "1cc22500fb32885c814834287d79d3be35448130b42240ad863f2f8cb7ba33ca",
+        "afterSha256": "1218320a196f4ce1fa4a83f111da6adbeda2ab72df3906ae29ff2c41f11b5c08",
+        "viewId": "de-he-gym-sekii-physics-gk",
+        "targetAtomsBefore": 476,
+        "targetAtomsAfter": 475
+      },
+      {
+        "file": "de-he-sekii-lk.view.json",
+        "removedFrom": "physics-he-ephase-cross-topic-assessments",
+        "beforeSha256": "ed1a0be8ca40bd6a6b0e1d272aef867c108449e227d81448d419a1e7231b08ec",
+        "afterSha256": "852d89c8483d504ce130f9d001e1d6edde94cefe28b6bf475e0404ca38ed7005",
+        "viewId": "de-he-gym-sekii-physics-lk",
+        "targetAtomsBefore": 494,
+        "targetAtomsAfter": 493
+      },
+      {
+        "file": "de-hh-gk.view.json",
+        "removedFrom": "physics-hh-unit-studienstufe-practice",
+        "beforeSha256": "73887b9042f5d8d762e8d83705881d866df73b515aa8fcfea05b1dc463b1f2f0",
+        "afterSha256": "90e0857947145eaae35fc8578aaa0b3e33c61df7792850e81b0298d4438a2406",
+        "viewId": "de-hh-gym-physics-gk",
+        "targetAtomsBefore": 573,
+        "targetAtomsAfter": 572
+      },
+      {
+        "file": "de-hh-lk.view.json",
+        "removedFrom": "physics-hh-unit-studienstufe-practice",
+        "beforeSha256": "70cafce152b790f79927d40354240b84c676deffae0175d9b182ced11c719d2c",
+        "afterSha256": "8524edfda4b0be61aa44920b422069d434cceb714343ea391630d8b2ee85536b",
+        "viewId": "de-hh-gym-physics-lk",
+        "targetAtomsBefore": 588,
+        "targetAtomsAfter": 587
+      },
+      {
+        "file": "de-hh-sekii-gk.view.json",
+        "removedFrom": "physics-hh-unit-studienstufe-practice",
+        "beforeSha256": "15e1b567a6089ee8ccfd80dab7605f5e9c6e90c9196067c4f8b372c0baf440d5",
+        "afterSha256": "a6650f504ae599be28906af74f0b46a330309108c7f294c80aed3f3724f0fb69",
+        "viewId": "de-hh-gym-sekii-physics-gk",
+        "targetAtomsBefore": 459,
+        "targetAtomsAfter": 458
+      },
+      {
+        "file": "de-hh-sekii-lk.view.json",
+        "removedFrom": "physics-hh-unit-studienstufe-practice",
+        "beforeSha256": "746df9336e528ea45bdd4c99739a84bf98c0428744c02fb5feb9fb8fc9587d6c",
+        "afterSha256": "8ee36df146f80d6dbf2c164d3f31c42eba61dc8d33cd336bc5386aefb7d7bfd2",
+        "viewId": "de-hh-gym-sekii-physics-lk",
+        "targetAtomsBefore": 467,
+        "targetAtomsAfter": 466
+      },
+      {
+        "file": "de-mv-gk.view.json",
+        "removedFrom": "physics-mv-unit-e10-practice",
+        "beforeSha256": "1f960947bf75a10cbfaad97872ef78ec0222f750a5322e55954e2cc7cf3b3f40",
+        "afterSha256": "f72c9423a85f0f6c9eb9d81840163ff3dd3b0cc9b61e0254df33799daf52dee8",
+        "viewId": "de-mv-gym-physics-gk",
+        "targetAtomsBefore": 580,
+        "targetAtomsAfter": 579
+      },
+      {
+        "file": "de-mv-lk.view.json",
+        "removedFrom": "physics-mv-unit-e10-practice",
+        "beforeSha256": "59b9f55b0fc8abba9e66ee4ee3e3f9c63f7e82fa51d2a9f08771a19ef68f65e5",
+        "afterSha256": "185088b0b693dfce600c21ddb2a404ecc57baf6dd33cbc4078850ab2153f262c",
+        "viewId": "de-mv-gym-physics-lk",
+        "targetAtomsBefore": 593,
+        "targetAtomsAfter": 592
+      },
+      {
+        "file": "de-mv-sekii-gk.view.json",
+        "removedFrom": "physics-mv-unit-e10-practice",
+        "beforeSha256": "9a2bbb6e2542be2537b0154e32de298fc5df75595acd1c6abe17056fcecf093c",
+        "afterSha256": "ec45ad88ad387d7a657564b1d4a458c75c48e58e476afdff5b7ed71c8c8e97c0",
+        "viewId": "de-mv-gym-sekii-physics-gk",
+        "targetAtomsBefore": 460,
+        "targetAtomsAfter": 459
+      },
+      {
+        "file": "de-mv-sekii-lk.view.json",
+        "removedFrom": "physics-mv-unit-e10-practice",
+        "beforeSha256": "f7513adbb70d8a3d02d12baaf9ce94e9e3c8c249c152f56bad55393fc6865895",
+        "afterSha256": "f71dcb513cd3ae9902e790751ceafdb8f4275c92e101e5575e936913b9ca5c7f",
+        "viewId": "de-mv-gym-sekii-physics-lk",
+        "targetAtomsBefore": 468,
+        "targetAtomsAfter": 467
+      },
+      {
+        "file": "de-ni-gk.view.json",
+        "removedFrom": "physics-ni-unit-e-practice",
+        "beforeSha256": "9b440c37be71104756a4cbe686e9fdb0f8c3ce2409b145006f7adf04cc6d8472",
+        "afterSha256": "0f3a05d452887f347a5728ccd6f82539662c763c7d44b390acdbe8feac410c8d",
+        "viewId": "de-ni-gym-physics-gk",
+        "targetAtomsBefore": 575,
+        "targetAtomsAfter": 574
+      },
+      {
+        "file": "de-ni-lk.view.json",
+        "removedFrom": "physics-ni-unit-e-practice",
+        "beforeSha256": "c36fd70fd17acdb4e3d1ddedc527aab1f93c8dbdda740d0fabc8fe49488bdfbe",
+        "afterSha256": "d522d21dbaa0868fd49d9cc554efbff81e2bef6a30524d38ec2970ad37232486",
+        "viewId": "de-ni-gym-physics-lk",
+        "targetAtomsBefore": 588,
+        "targetAtomsAfter": 587
+      },
+      {
+        "file": "de-ni-sekii-gk.view.json",
+        "removedFrom": "physics-ni-unit-e-practice",
+        "beforeSha256": "afe47146f38b9af01fb3bfa81f2993dab7f871d5bc9a0f9108279d067c3fa0fa",
+        "afterSha256": "636d76ff650550960cf3fc06653df62219ef17ded37352506787258ba43c01ec",
+        "viewId": "de-ni-gym-sekii-physics-gk",
+        "targetAtomsBefore": 463,
+        "targetAtomsAfter": 462
+      },
+      {
+        "file": "de-ni-sekii-lk.view.json",
+        "removedFrom": "physics-ni-unit-e-practice",
+        "beforeSha256": "7a76bee01d5ae1ef9d74d21fcef695d1bae88aa54fc0b98fc6b34afd0086810d",
+        "afterSha256": "30d694989a0f7ca7f26c2a88aa6541267c6ee4614a4b8744ccf39a5dd70a2af0",
+        "viewId": "de-ni-gym-sekii-physics-lk",
+        "targetAtomsBefore": 471,
+        "targetAtomsAfter": 470
+      },
+      {
+        "file": "de-nw-gk.view.json",
+        "removedFrom": "physics-nw-unit-e-practice",
+        "beforeSha256": "cbc572070cf5a48624cec2e6737ab4ef9726b73e5ce687da427aec3ee985f749",
+        "afterSha256": "21a73532c2d58d4a8a2b798a5234f1f2b690d2b1064e75cb94fccd23dd8a12dd",
+        "viewId": "de-nw-gym-physics-gk",
+        "targetAtomsBefore": 573,
+        "targetAtomsAfter": 572
+      },
+      {
+        "file": "de-nw-lk.view.json",
+        "removedFrom": "physics-nw-unit-e-practice",
+        "beforeSha256": "aae317da8acbb527eafaa7f80cd0a8789987ef09b30e5c7ddb4014830213e39c",
+        "afterSha256": "26a559acf30bd791ab93db7f30228ba2e6bdb044b4478b60d9559b21c69437b9",
+        "viewId": "de-nw-gym-physics-lk",
+        "targetAtomsBefore": 586,
+        "targetAtomsAfter": 585
+      },
+      {
+        "file": "de-nw-sekii-gk.view.json",
+        "removedFrom": "physics-nw-unit-e-practice",
+        "beforeSha256": "e187e6aacca0fd6398a58794f50dfd5618a3fb5454a8ab74222f1d4a5fcfcc9d",
+        "afterSha256": "e6e87a1433793b3765a2cb9ab64480a4c1bb952896c0d1f87f5394a531e2fc1f",
+        "viewId": "de-nw-gym-sekii-physics-gk",
+        "targetAtomsBefore": 459,
+        "targetAtomsAfter": 458
+      },
+      {
+        "file": "de-nw-sekii-lk.view.json",
+        "removedFrom": "physics-nw-unit-e-practice",
+        "beforeSha256": "24b70c10c9c0a72050f6e1412d8733485f644795561ba4c24013add7cf913c5c",
+        "afterSha256": "805635992d86ba0461748192c841dcaa3e362b787a7c620317d48d1a5a9fec8d",
+        "viewId": "de-nw-gym-sekii-physics-lk",
+        "targetAtomsBefore": 467,
+        "targetAtomsAfter": 466
+      },
+      {
+        "file": "de-rp-gk.view.json",
+        "removedFrom": "physics-rp-unit-e-practice",
+        "beforeSha256": "0f7f6cbd4485c427c81d1d287017ce9b58b9104cb30d292f77aa8d3282b60d47",
+        "afterSha256": "334fa7b7b032873eef60f03995efebcb0f5cb886183386d7e9313ad856d0cc7d",
+        "viewId": "de-rp-gym-physics-gk",
+        "targetAtomsBefore": 573,
+        "targetAtomsAfter": 572
+      },
+      {
+        "file": "de-rp-lk.view.json",
+        "removedFrom": "physics-rp-unit-e-practice",
+        "beforeSha256": "ca431b78d787690f3ad152174cbb25d155c93fad41167e6b7af58cc8e07fea61",
+        "afterSha256": "d48d9fa611a92cb4d322c230bdd4063c5ffae2c5d7f0acb5ad9e1fcda6d2f12c",
+        "viewId": "de-rp-gym-physics-lk",
+        "targetAtomsBefore": 584,
+        "targetAtomsAfter": 583
+      },
+      {
+        "file": "de-rp-sekii-gk.view.json",
+        "removedFrom": "physics-rp-unit-e-practice",
+        "beforeSha256": "da0e28afc2e83ce66cbb44aecc7478b49f521c40f7123d9bce48209fc5230e9d",
+        "afterSha256": "11d076f20f80cca44c32c447e956aedfca06e051380e6c82cd5c94a256d3614f",
+        "viewId": "de-rp-gym-sekii-physics-gk",
+        "targetAtomsBefore": 472,
+        "targetAtomsAfter": 471
+      },
+      {
+        "file": "de-rp-sekii-lk.view.json",
+        "removedFrom": "physics-rp-unit-e-practice",
+        "beforeSha256": "1a021bf0258412930c495dee9d036f7ec1f3c45a04671016e186abf38a3d6b92",
+        "afterSha256": "f83f0ff01f24557118fd01f9b0ed9a15d6e27afe012d66ce8497297548e05a05",
+        "viewId": "de-rp-gym-sekii-physics-lk",
+        "targetAtomsBefore": 478,
+        "targetAtomsAfter": 477
+      },
+      {
+        "file": "de-sh-gk.view.json",
+        "removedFrom": "physics-sh-unit-e-practice",
+        "beforeSha256": "86516949c1134c34896d4c8848ee020fa0d1cbb385bad1e1b514c4598a2b3078",
+        "afterSha256": "2920ca5f363337dda4ad357b88cbeb4e971e841036195af11da183e44d40cd49",
+        "viewId": "de-sh-gym-physics-gk",
+        "targetAtomsBefore": 574,
+        "targetAtomsAfter": 573
+      },
+      {
+        "file": "de-sh-lk.view.json",
+        "removedFrom": "physics-sh-unit-e-practice",
+        "beforeSha256": "c69309d888a0c98397f0996517f439b2e4de5d215cd5e66e044b3a636da91726",
+        "afterSha256": "e95dbab10985d8297dfd7539830f9ee3baf346456a42f26d8f43d7dfaba17349",
+        "viewId": "de-sh-gym-physics-lk",
+        "targetAtomsBefore": 587,
+        "targetAtomsAfter": 586
+      },
+      {
+        "file": "de-sh-sekii-gk.view.json",
+        "removedFrom": "physics-sh-unit-e-practice",
+        "beforeSha256": "a896b3ad5c14406e4a2b5ae0bda971819fe9309b63f512f856968e1c05f7c1d8",
+        "afterSha256": "fede3e8c53a88fd20c9a6c7bff019744f5da9168e2d824fc0fab9eff6b908691",
+        "viewId": "de-sh-gym-sekii-physics-gk",
+        "targetAtomsBefore": 460,
+        "targetAtomsAfter": 459
+      },
+      {
+        "file": "de-sh-sekii-lk.view.json",
+        "removedFrom": "physics-sh-unit-e-practice",
+        "beforeSha256": "72f67a7e14d6488e6072ff60864c9ecb68e0c92332f7653781b512b535532d42",
+        "afterSha256": "b5a147f567aaff78b8f038873b3b41b5aa4d6b1f71a790e834c185c50f89bfe8",
+        "viewId": "de-sh-gym-sekii-physics-lk",
+        "targetAtomsBefore": 468,
+        "targetAtomsAfter": 467
+      },
+      {
+        "file": "de-sl-gk.view.json",
+        "removedFrom": "physics-sl-unit-e-practice",
+        "beforeSha256": "a657f566aa94c09e005d1443a31970c68f11c0be1a0846b5105687ea4e041f64",
+        "afterSha256": "612c8624769f713b9d825af0e4bab8bc609bd8206439911903490c4adbd05f86",
+        "viewId": "de-sl-gym-physics-gk",
+        "targetAtomsBefore": 590,
+        "targetAtomsAfter": 589
+      },
+      {
+        "file": "de-sl-lk.view.json",
+        "removedFrom": "physics-sl-unit-e-practice",
+        "beforeSha256": "edb2a04375a8a0aa010a97b64532987339dad2fcfb200a44db6fe91b9e29e4a3",
+        "afterSha256": "2f96185f85518fdacd53e63dd60f53e981bc9590a1694e6971f887ca13807718",
+        "viewId": "de-sl-gym-physics-lk",
+        "targetAtomsBefore": 603,
+        "targetAtomsAfter": 602
+      },
+      {
+        "file": "de-sl-sekii-gk.view.json",
+        "removedFrom": "physics-sl-unit-e-practice",
+        "beforeSha256": "322c4a5e7ad739bb5604e82ffb3fab100dd9c821e817f951995c3f4b339d13fe",
+        "afterSha256": "49070dbf8f676be5ea2816feead4a791403df3551c9a69e32d6bc1b3c850c8d3",
+        "viewId": "de-sl-gym-sekii-physics-gk",
+        "targetAtomsBefore": 460,
+        "targetAtomsAfter": 459
+      },
+      {
+        "file": "de-sl-sekii-lk.view.json",
+        "removedFrom": "physics-sl-unit-e-practice",
+        "beforeSha256": "6a565265b7164b4bae243c83c61004052a968de1ac6efde718752d9f82299491",
+        "afterSha256": "d18dd8b49bbaddb79382acd0d6c63982918a1f653f8e4c72a807ef8e2ebecba2",
+        "viewId": "de-sl-gym-sekii-physics-lk",
+        "targetAtomsBefore": 468,
+        "targetAtomsAfter": 467
+      },
+      {
+        "file": "de-sn-gk.view.json",
+        "removedFrom": "physics-sn-unit-q11-practice",
+        "beforeSha256": "f97e8128f28288baeb79b309ae9474520e3d45d46dc2bbfabad09936553d9b00",
+        "afterSha256": "1daf52509f528f61d4dee064f9351b021c707ae916eb95b2135cca07f4f7a38d",
+        "viewId": "de-sn-gym-physics-gk",
+        "targetAtomsBefore": 590,
+        "targetAtomsAfter": 589
+      },
+      {
+        "file": "de-sn-lk.view.json",
+        "removedFrom": "physics-sn-unit-q11-practice",
+        "beforeSha256": "4935ada43bd7c03f69c6e20f6dbc6d7fea17d9a12f95ae7052ca65aa21630fd0",
+        "afterSha256": "641621324479f8739044ce52fbf6575678ea08887a51f8c7d8489e5c4d8d31ee",
+        "viewId": "de-sn-gym-physics-lk",
+        "targetAtomsBefore": 603,
+        "targetAtomsAfter": 602
+      },
+      {
+        "file": "de-sn-sekii-gk.view.json",
+        "removedFrom": "physics-sn-unit-q11-practice",
+        "beforeSha256": "67c1f3e5674a1da56bd51757ff5972d14f35afab58eed63f8c7a50d43d0b065f",
+        "afterSha256": "3c616b5bb08c705dd6e4453f9f3bdf0447d2c731096ad5ca9fefecd62d9ca1ec",
+        "viewId": "de-sn-gym-sekii-physics-gk",
+        "targetAtomsBefore": 462,
+        "targetAtomsAfter": 461
+      },
+      {
+        "file": "de-sn-sekii-lk.view.json",
+        "removedFrom": "physics-sn-unit-q11-practice",
+        "beforeSha256": "296512e2a32e1a06b5fb2f8c5bd2c06e4da14101d2aeb8aab40b6c8c03e1e362",
+        "afterSha256": "9000c8e4bcf4900f06bd346269d484055f1b60a3286fd06b6253871d8f448302",
+        "viewId": "de-sn-gym-sekii-physics-lk",
+        "targetAtomsBefore": 471,
+        "targetAtomsAfter": 470
+      },
+      {
+        "file": "de-st-gk.view.json",
+        "removedFrom": "physics-st-unit-e10-practice",
+        "beforeSha256": "ae5f8cb4126059f406658bba8949181e013367b2c89cbf4cbac6d9acc3ce45de",
+        "afterSha256": "a8bfbdb32f1dc3a67a6a33da9eefacc308274466d9fcda961ba35eab2d9f9ac4",
+        "viewId": "de-st-gym-physics-gk",
+        "targetAtomsBefore": 584,
+        "targetAtomsAfter": 583
+      },
+      {
+        "file": "de-st-lk.view.json",
+        "removedFrom": "physics-st-unit-e10-practice",
+        "beforeSha256": "a66283cd8532231a1305844a00148257cab7fa39cedce0c7e65b39e444cb5404",
+        "afterSha256": "7965bc1738b1f46b8f1bfe45f9f07559b66c5a3c57eb4d5aa5e8bce28b7dda50",
+        "viewId": "de-st-gym-physics-lk",
+        "targetAtomsBefore": 597,
+        "targetAtomsAfter": 596
+      },
+      {
+        "file": "de-st-sekii-gk.view.json",
+        "removedFrom": "physics-st-unit-e10-practice",
+        "beforeSha256": "89a9e30a7b9c1eb9082c5a53caa1e25299cd6ec013ccc55d1f76b286f4d82173",
+        "afterSha256": "583ed9f44f652be038c7d19560e0afeaa4a95b738dc20e93fa5212fd56c5e772",
+        "viewId": "de-st-gym-sekii-physics-gk",
+        "targetAtomsBefore": 462,
+        "targetAtomsAfter": 461
+      },
+      {
+        "file": "de-st-sekii-lk.view.json",
+        "removedFrom": "physics-st-unit-e10-practice",
+        "beforeSha256": "4cc6587f12837995d9ca0c7bb9575d774ed76f256f53d9247cd6bc6d5d5ffa45",
+        "afterSha256": "36bb1001763260a39c529b7cae505f10e60618d265ea3e829ec97f9672072159",
+        "viewId": "de-st-gym-sekii-physics-lk",
+        "targetAtomsBefore": 470,
+        "targetAtomsAfter": 469
+      },
+      {
+        "file": "de-th-gk.view.json",
+        "removedFrom": "physics-th-unit-q11-12-practice",
+        "beforeSha256": "1bde9ff38a9ae5b40dea3f6cf6500f13a08a7a07c0076cd448e1aee01d7ed773",
+        "afterSha256": "44600187cfe504b90090618477279b4609c0edcac690c056bca1b9db44cb53d4",
+        "viewId": "de-th-gym-physics-gk",
+        "targetAtomsBefore": 581,
+        "targetAtomsAfter": 580
+      },
+      {
+        "file": "de-th-lk.view.json",
+        "removedFrom": "physics-th-unit-q11-12-practice",
+        "beforeSha256": "fac8c6151cb6ad66356ab9442a54a5b594c60592f464e793622798cb66693e0d",
+        "afterSha256": "a10fa55054397c35738c7fa4b829921b0110af95e3a71ef0e07072946ba1151f",
+        "viewId": "de-th-gym-physics-lk",
+        "targetAtomsBefore": 594,
+        "targetAtomsAfter": 593
+      },
+      {
+        "file": "de-th-sekii-gk.view.json",
+        "removedFrom": "physics-th-unit-q11-12-practice",
+        "beforeSha256": "8df7c1a0ee56590b057fda31ecfb1879bca3311c38dc034074ee9870a5dbdfa8",
+        "afterSha256": "d33019bc85cd1e94aa684a2588d1482ab0d18be3a9ecf6b0b343873eb8a6f2cb",
+        "viewId": "de-th-gym-sekii-physics-gk",
+        "targetAtomsBefore": 464,
+        "targetAtomsAfter": 463
+      },
+      {
+        "file": "de-th-sekii-lk.view.json",
+        "removedFrom": "physics-th-unit-q11-12-practice",
+        "beforeSha256": "1a764f749df6e0ac52db23b7f9fae317af2818114a31630f4608cb8c1b1a406c",
+        "afterSha256": "4d7e3eb27645612ba10c307d49807dae01da560a091b1c35fbf61b9c0603f7d7",
+        "viewId": "de-th-gym-sekii-physics-lk",
+        "targetAtomsBefore": 472,
+        "targetAtomsAfter": 471
+      }
+    ]
+  },
+  "generatorInputs": {
+    "hessianPlacementTable": "scripts/generate_hessen_physics_stage_views.py (cross-topic assessments)",
+    "canonicalAcceptedEAtomicGoalIds": {
+      "path": "scripts/generate_laender_physics_stage_views.memberships.json",
+      "viewIds": [
+        "de-de-gym-physics-gk",
+        "de-de-gym-physics-lk",
+        "de-de-gym-sekii-physics-gk",
+        "de-de-gym-sekii-physics-lk"
+      ]
+    }
+  },
+  "semanticKinds": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "beforeSha256": "962b60b02a29ee6293e7d7026c9f470e6017b6fe22e60ef9ac79bd17adef8e2c",
+    "afterSha256": "da4267528ad989cb092106a16c2efcaa22f9b95cee285cc35ac52e52dfe535a7",
+    "decisionBasis": "The kind of each goal is unchanged: the exam is still a practice assessment, and both containers still bundle practice assessments only. Only the source fingerprints are renewed.",
+    "changes": [
+      {
+        "goalId": "424b07df-bf66-5d7f-99f5-f28b32ad1f22",
+        "semanticKind": "practiceAssessment",
+        "previousSourceFingerprint": "sha256:d3e451b5bb670747ea0e6b052902d4f89e338d6bcd127e8a1900bc84bb9c7fcf",
+        "currentSourceFingerprint": "sha256:7f2c0a07c7d5678692cf21c091cdee87bb6e838e0e9378e638859cd6bc167d12",
+        "fingerprintedChange": "contains (one child less)"
+      },
+      {
+        "goalId": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+        "semanticKind": "practiceAssessment",
+        "previousSourceFingerprint": "sha256:5cb08ba165286c8a7f8c5928b21f1b37e0837d52dfe7685798e5ee82cfbb2493",
+        "currentSourceFingerprint": "sha256:fecf2cbd0556121194f163456e4bde7a9bc39bfa44cd4c0fbf2455e5a583a042",
+        "fingerprintedChange": "applicability and extendedData"
+      },
+      {
+        "goalId": "151edbf8-eb68-5ef7-8786-43e56a281b0b",
+        "semanticKind": "practiceAssessment",
+        "previousSourceFingerprint": "sha256:92742a0575347c2538b9aed6cfa1e718d8d80c0ad921fe956d668c5cf9d4d0b2",
+        "currentSourceFingerprint": "sha256:6afef26bb958ce12ca92f8f5e00dc5a04bd7dcabf25899171f1a92fe4850385d",
+        "fingerprintedChange": "contains (one child more)"
+      }
+    ]
+  },
+  "material": {
+    "currentPath": "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+    "before": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/material.before.json",
+      "sha256": "669005e570ca942b2bb2ce8083ce1a1baac2bdadf412aa12f35b3b99d9d838d9"
+    },
+    "after": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/material.after.json",
+      "sha256": "1493b3d7b2589ac37854ffaf7e1701a06e9861ee56744a21880cf8b82ca98064"
+    },
+    "allowedDelta": {
+      "path": "/unit/assessmentGoalId",
+      "before": "a9562b05-c54d-5635-9244-3f7dd24a8642",
+      "after": null,
+      "operation": "remove"
+    },
+    "supersedes": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e1-planning-release-2026-11-24/zb-successor-voluntary-scope-20261124/scope-successor.actual.json",
+      "sha256": "48f67d6a51d9b7d561b63d0864adcc1f81dd1490475d866dd937fd0e02294008"
+    },
+    "chain": "The before bytes of this record are the after bytes of the superseded scope record.",
+    "unchangedContractRevision": "2026-11-23-e1-v3",
+    "unchangedRequiredPartsFingerprint": "sha256:4e5d2f002c82ee42d6b76565b8f1231f3a52b128df0475327772c8008cd12250",
+    "unchangedRequiredPartIds": [
+      "ee7d5f3d-858f-59d6-89b0-e5a7f437f458",
+      "39f52dcb-ff1d-5cad-9ccb-30da803cfa85",
+      "c933b7d2-edcb-5747-9378-9762659f260a",
+      "f13ca187-b680-5f47-b4ad-76bd474bd8a2"
+    ],
+    "unchangedVoluntaryAssessmentGoalIds": [
+      "bcc56921-7107-5f5f-b721-3d5e0d7e1cd9",
+      "f41e4e30-794e-5ce4-ba5e-cc72712cd691"
+    ],
+    "unchangedPlanningFingerprints": [
+      "sha256:efb05e6c680bd40abe5a947fcce45e638f41c35909762c7f429b0016b75bb94d"
+    ],
+    "introExercisesAndImagesUnchanged": true
+  },
+  "storedData": {
+    "results": "A stored pass of the exam stays with this goal id. Nothing is copied, reset or transferred.",
+    "plans": "A stored plan that names the exam together with other valid goals stays valid and is read without that entry (Product Owner decision of 24 Nov 2026, implemented by PR #190). A stored plan that names only this exam stays stored unchanged and is outdated, as before. New plans cannot select the exam.",
+    "activeGoal": "A learner whose stored active goal is the exam is treated as having no active goal: the coach offers the frontier and describes the focused unit with its activities, and unit card practice works. The stored id is not rewritten by reading; the next chosen goal replaces it.",
+    "noNewPlanningCredit": true
+  }
+}

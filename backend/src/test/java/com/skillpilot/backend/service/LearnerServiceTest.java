@@ -3484,10 +3484,16 @@ public class LearnerServiceTest {
         assertThat(learner.getActiveGoalId()).isEqualTo(active);
         assertThat(learnerService.getMastery(learnerId)).isEqualTo(mastery);
         assertThat(learnerService.getClientState(learnerId, deck).srsState()).hasSize(7);
-        learner.setActiveGoalId("a9562b05-c54d-5635-9244-3f7dd24a8642");
+        // An active exam of the cross-topic section lies outside this unit.
+        learner.setActiveGoalId("5773ccbe-cd20-5ba0-99a5-7ccd5f42be51");
         learnerRepository.saveAndFlush(learner);
         assertThatThrownBy(() -> learnerService.startMemoryPractice(learnerId, "de", start))
                 .isInstanceOf(ResponseStatusException.class).hasMessageContaining("No flashcard practice");
+        // A stored active goal that has left the learner's scope (the mixed E.1 exam, retired on
+        // 25 Nov 2026) does not block the practice of the focused unit.
+        learner.setActiveGoalId("a9562b05-c54d-5635-9244-3f7dd24a8642");
+        learnerRepository.saveAndFlush(learner);
+        assertThat(learnerService.startMemoryPractice(learnerId, "de", start).progress().totalCards()).isEqualTo(7);
     }
 
     private static final String PHYSICS_E_PHASE_DECK_ID = "9f2f5ab8-0ae4-5792-b831-82a05af5895c";

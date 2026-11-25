@@ -1776,8 +1776,8 @@ class CompositionViewServiceTest {
                         List.of("6ba2e47f-7e88-5d30-8f1a-3f4b4f785ca1"), // E.6
                 "he-physics-topic-9743baad-9371-52b6-98ee-72bc6dc68701",
                         List.of("6d25344c-35d7-5853-925d-2bccbaf50630"), // E.7
+                // "Bewegungsanalyse und freier Fall" (a9562b05) is retired since 25 Nov 2026.
                 "physics-he-ephase-cross-topic-assessments", List.of(
-                        "a9562b05-c54d-5635-9244-3f7dd24a8642", // Bewegungsanalyse und freier Fall
                         "5773ccbe-cd20-5ba0-99a5-7ccd5f42be51",
                         "879491c0-7153-570b-91f4-c61d9fe8a143",
                         "7c0b94b9-2af7-59d4-bfae-278a3418f6a8")));
@@ -1866,6 +1866,8 @@ class CompositionViewServiceTest {
                 assertThat(allNodes).as(context + " neither historical nor unactivated MP is offered")
                         .noneMatch(node -> "2b9e565f-d9b4-5e23-b5b7-b7977cecff06".equals(node.get("goalId"))
                                 || "05cfd298-cb80-54c4-a898-b521ef270843".equals(node.get("goalId")));
+                assertThat(allNodes).as(context + " the retired mixed E.1 exam is not offered")
+                        .noneMatch(node -> "a9562b05-c54d-5635-9244-3f7dd24a8642".equals(node.get("goalId")));
                 assertThat(motionChildren).as(context + " acceleration board in E.1")
                         .filteredOn(node -> "physics-e1-accelerated-and-free-fall".equals(node.get("id")))
                         .singleElement().satisfies(board -> assertThat((List<Map<String, Object>>) board.get("children"))
