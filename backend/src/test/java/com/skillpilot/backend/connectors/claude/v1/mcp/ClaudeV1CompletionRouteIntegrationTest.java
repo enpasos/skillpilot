@@ -2514,6 +2514,62 @@ class ClaudeV1CompletionRouteIntegrationTest {
         }
     }
 
+    // Issue #197, found by the independent review: activating an ordinary plan keeps a goal in
+    // progress exactly if the write accepts it under the focus that is stored for it, directly or
+    // behind a required unit opening. The response names the step that is stored, and the goal
+    // stays the focus and the goal to return to, also when another plan goal is due earlier.
+    @ParameterizedTest
+    @ValueSource(strings = {"childPassed", "bothPassed", "bothOpen"})
+    void activationKeepsAGoalInProgressBehindItsOpeningWhenAnotherGoalIsDueEarlier(String openings) throws Exception {
+        String motion = selectHessianMotionUnit("G9", "SekII", "GK");
+        String child = motion.replace(":structure:physics-e1-motion", ":structure:physics-e1-accelerated-and-free-fall");
+        String magnet = motion.replace(":structure:physics-e1-motion", ":structure:physics-current-magnetic-fields-0bd4a459");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String diagram = "1e459a1b-4159-5049-84eb-9928129c1610";
+        String magnetGoal = "b4175564-4397-5c08-90ba-4f13231a75ec";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var learner = learnerRepository.findById(learnerId).orElseThrow();
+        var graph = new CompletionProfileCompiler().normalizePrerequisites(
+                learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+        var finished = new java.util.LinkedHashSet<>(graph.transitivePrerequisites(diagram));
+        finished.addAll(graph.transitivePrerequisites(magnetGoal));
+        finished.add("e0004439-ed34-5caf-858a-6107918224eb");
+        finished.removeAll(List.of(magnetGoal, diagram, MOTION_OPENING, FALL_OPENING));
+        if (!openings.equals("bothOpen")) finished.add(FALL_OPENING);
+        if (openings.equals("bothPassed")) finished.add(MOTION_OPENING);
+        masteryRepository.saveAllAndFlush(finished.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+        learners.setPreferences(learnerId, null, false, true, null, false);
+        learners.setPlannedGoals(learnerId, java.util.Set.of(child));
+        if (openings.equals("bothOpen")) {
+            // A goal in progress from before, for which today both openings are required.
+            var restored = learnerRepository.findById(learnerId).orElseThrow();
+            restored.setActiveGoalId(diagram);
+            learnerRepository.saveAndFlush(restored);
+        } else {
+            learners.setActiveGoal(learnerId, diagram);
+        }
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(diagram);
+        String expected = openings.equals("bothPassed") ? diagram : MOTION_OPENING;
+
+        var activated = learningPlans.activatePlans(learnerId, new LearnerLearningPlanApi.ActivateRequest(today, List.of(
+                new LearnerLearningPlanApi.ActivationPlan(physics, 0L, "Fortsetzen", List.of(
+                        new LearnerLearningPlanApi.Block("due", "learning", magnet, "Magnet", today, today,
+                                null, List.of(magnetGoal), List.of(magnet), true),
+                        new LearnerLearningPlanApi.Block("later", "learning", child, "Diagramm", today.plusDays(14),
+                                today.plusDays(14), null, List.of(diagram), List.of(child, magnet), true))))));
+
+        var stored = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(stored.getActiveGoalId()).as("the goal in progress is kept, behind its opening").isEqualTo(expected);
+        assertThat(activated.activeGoalId()).as("the response names the stored step").isEqualTo(expected);
+        assertThat(activated.focusGoalId()).isEqualTo(diagram);
+        assertThat(focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).toList())
+                .containsExactly(diagram);
+        if (!openings.equals("bothPassed")) {
+            assertThat(mapper.readTree(stored.getPendingUnitEntry()).path("targetGoalId").asText(null))
+                    .as("the goal to return to").isEqualTo(diagram);
+        }
+    }
+
     // A regrouping can move the goal a learner is working on out of the section they focus. The
     // learner keeps their place: the goal stays in progress for teaching and completion. What the
     // learner chose stays what they chose: the focus shown in the Cockpit, the stored focus, the

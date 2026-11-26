@@ -1675,26 +1675,33 @@ public class LearnerLearningPlanService {
                     // An exam binds the whole selected scope, and the activation writes under it. The
                     // goal is kept exactly if that write accepts it: directly, or behind a required unit
                     // opening, which the write starts while it keeps the goal for the return. Otherwise
-                    // the exam's next goal is chosen.
-                    // An ordinary plan judges the goal under the focus that is stored for it.
-                    boolean remainsEligible = "exam".equals(scope.kind())
-                            ? learners.learningPlanTransitionAccepts(skillpilotId, activeGoalId, scope.goalIds())
-                            : learners.getUncompactedRichFrontierForFocus(
-                                    skillpilotId,
-                                    List.of(focusGoalId))
-                            .stream()
-                            .filter(goal -> "atomic".equals(goal.type()))
-                            .anyMatch(goal -> activeGoalId.equals(goal.id()));
-                    if (!remainsEligible) {
+                    // the exam's next goal is chosen. An ordinary plan decides in the same way under the
+                    // focus that is stored for the goal, and names the step the write starts.
+                    String entryGoalId;
+                    if ("exam".equals(scope.kind())) {
+                        entryGoalId = learners.learningPlanTransitionAccepts(skillpilotId, activeGoalId, scope.goalIds())
+                                ? activeGoalId : null;
+                    } else {
+                        List<String> storedFocus = List.of(focusGoalId);
+                        entryGoalId = dueEntryGoalId(block, activeGoalId, storedFocus,
+                                learners.getUncompactedRichFrontierForFocus(skillpilotId, storedFocus).stream()
+                                        .filter(goal -> "atomic".equals(goal.type()))
+                                        .map(FrontierGoal::id).collect(java.util.stream.Collectors.toSet()),
+                                (goalId, focusIds) -> learners.getRequiredUnitOrientationGoalIdForFocus(
+                                        skillpilotId, goalId, focusIds));
+                    }
+                    if (entryGoalId == null) {
                         continue;
                     }
                     candidates.add(new PlanGoalCandidate(
                             plan,
                             new DueGoal(
-                                    activeGoalId,
+                                    entryGoalId,
                                     focusGoalId,
                                     block.startDate(),
-                                    block.endDate())));
+                                    block.endDate(),
+                                    null,
+                                    activeGoalId)));
                 }
             }
         }
@@ -2291,6 +2298,12 @@ public class LearnerLearningPlanService {
             if (!block.focusGoalIds().isEmpty()) {
                 Set<String> underFocus = focusAtomicIds.apply(block.focusGoalIds());
                 Map<String, Set<String>> frontierByFocus = new LinkedHashMap<>();
+                // The study recommendations of a unit are read in the context of the block's
+                // sections: the frontier of a single goal does not hold an independent preparation.
+                // The frontier callback collects them; which goal may start is decided below.
+                if (block.focusGoalIds().size() > 1 && studyPreparation != null) {
+                    frontierIdsForFocus.apply(block.focusGoalIds());
+                }
                 for (String goalId : openDueInBlock) {
                     // The goal is judged under the focus the transition stores for it (issue #197):
                     // the section of a block with one section, the goal itself in a block with

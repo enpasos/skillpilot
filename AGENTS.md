@@ -848,7 +848,16 @@ focus is an explicit individual choice: the teaching order of a unit does not
 defer it, and the opening of the outer unit comes before the opening of its
 own unit. A section as focus would let `deferredUnitStudyGoals` hide a planned
 goal behind earlier steps of the unit; do not store it for a block with
-several sections without resolving that. A backup
+several sections without resolving that. Two things stay tied to the block
+and not to the single goal, found by the independent review: a goal in
+progress is kept at activation also behind its required opening (the response
+names the opening, the goal stays focus and return goal, even when another
+plan goal is due earlier), and the study recommendations of a unit are read
+in the context of the block's sections, because the frontier of a single goal
+does not hold an independent preparation. Open: whether a block with several
+sections counts as direct entry into the child unit (then only the child's
+opening) is a product decision; and the Cockpit's `continuePlan` stores more
+focus entries than it reports when an opening is required. A backup
 whose plan names a retired goal next to other goals is restored as the plan
 applies today, without that entry; before, such a backup could not be
 restored. Still outdated: a plan whose section no longer resolves in the

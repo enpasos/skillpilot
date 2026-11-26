@@ -187,13 +187,16 @@ class LearnerLearningPlanServiceTest {
         var block = new LearnerLearningPlanApi.Block("prep", "learning", "topic-a", "Preparation",
                 LocalDate.parse("2026-09-04"), LocalDate.parse("2026-09-04"), null,
                 List.of("atom-a", "atom-b"), List.of("topic-a", "topic-b"));
+        // Under all sections of the block the goal would not be offered; under its own focus it is.
         var due = LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(),
-                Map.of("atom-a", 1.0), roots -> {
-                    assertThat(roots).containsExactly("atom-b");
-                    return java.util.Set.of("atom-b");
-                }).orElseThrow();
+                Map.of("atom-a", 1.0), roots -> roots.equals(List.of("atom-b"))
+                        ? java.util.Set.of("atom-b") : java.util.Set.of()).orElseThrow();
         assertThat(due.atomicGoalId()).isEqualTo("atom-b");
         assertThat(due.focusGoalId()).isEqualTo("atom-b");
+        // And the reverse: offered under all sections only, it is no candidate.
+        assertThat(LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(),
+                Map.of("atom-a", 1.0), roots -> roots.equals(List.of("topic-a", "topic-b"))
+                        ? java.util.Set.of("atom-b") : java.util.Set.of())).isEmpty();
         // A block with one section keeps the section as stored focus and is judged under it.
         var single = new LearnerLearningPlanApi.Block("prep", "learning", "topic-a", "Preparation",
                 LocalDate.parse("2026-09-04"), LocalDate.parse("2026-09-04"), null,
@@ -205,6 +208,35 @@ class LearnerLearningPlanServiceTest {
                 }).orElseThrow();
         assertThat(underSection.atomicGoalId()).isEqualTo("atom-b");
         assertThat(underSection.focusGoalId()).isEqualTo("topic-a");
+    }
+
+    // The study recommendations of a unit are known in the context of the block's sections, not in
+    // the frontier of a single goal. A block with several sections still puts the recommended
+    // preparation first, and still starts only what its own stored focus offers (issue #197).
+    @Test
+    void multiRootSectionKeepsTheStudyPreparationOfItsBlockContext() {
+        var block = new LearnerLearningPlanApi.Block("prep", "learning", "topic-a", "Preparation",
+                LocalDate.parse("2026-09-04"), LocalDate.parse("2026-09-04"), null,
+                List.of("atom-a", "atom-b"), List.of("topic-a", "topic-b"));
+        Map<String, List<String>> preparation = new java.util.HashMap<>();
+        java.util.function.Function<List<String>, java.util.Set<String>> frontier = roots -> {
+            if (roots.equals(List.of("topic-a", "topic-b"))) preparation.put("atom-a", List.of("atom-b"));
+            return roots.size() == 1 ? java.util.Set.copyOf(roots) : java.util.Set.of("atom-a", "atom-b");
+        };
+        var due = LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of(), frontier, (goal, focus) -> null, ignored -> true, preparation).orElseThrow();
+        assertThat(due.atomicGoalId()).isEqualTo("atom-b");
+        assertThat(due.focusGoalId()).isEqualTo("atom-b");
+        // A recommended preparation that its own focus does not offer is not put first.
+        preparation.clear();
+        java.util.function.Function<List<String>, java.util.Set<String>> blocked = roots -> {
+            if (roots.equals(List.of("topic-a", "topic-b"))) preparation.put("atom-a", List.of("atom-b"));
+            return roots.equals(List.of("atom-a")) ? java.util.Set.of("atom-a")
+                    : roots.size() == 1 ? java.util.Set.of() : java.util.Set.of("atom-a", "atom-b");
+        };
+        assertThat(LearnerLearningPlanService.firstEligibleDueGoal(List.of(block), block.endDate(), Map.of(),
+                java.util.Set.of(), blocked, (goal, focus) -> null, ignored -> true, preparation).orElseThrow()
+                .atomicGoalId()).isEqualTo("atom-a");
     }
 
     // The form check of a restored plan asks neither whether its goals and sections exist today
