@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-directed-quantity-arrows-20261126-v1-a-independent-a",
+  "campaignId": "physics-directed-quantity-arrows-20261126-v1-a",
+  "roundId": "physics-directed-quantity-arrows-20261126-v1-first-pass-a",
+  "batchId": "physics-directed-quantity-arrows-20261126-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:de3e4f3c850850761332d632ef54eb6f9b2e2048ed3105b98c17838ce87af470",
+  "bundleFingerprint": "sha256:7bbc54e1a66bc2c2d9bff34ad832ac048c722c8eadd7cafc4f556ad4d57b96ab",
+  "bookDigest": "sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6",
+  "provider": "OpenAI",
+  "model": "Codex collaboration agent (independent review A)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:ae8d6145841b1f306eec2d7d33a872c29309de6917e46adae4af64b6d2a099c6",
+  "independenceGroupId": "physics-directed-quantity-arrows-20261126-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+    "41d35667-0296-5f84-bc12-202ffc440be0",
+    "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+    "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+    "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+    "ad984bb6-e225-432a-952d-d83cda40b7f8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:ef38597fe67f192184f8d229ae5bbac30921e72cb1305b0a0c47aed1ce08fdef"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:de3e4f3c850850761332d632ef54eb6f9b2e2048ed3105b98c17838ce87af470"
+    }
+  ],
+  "startedAt": "2026-11-26T05:29:45Z",
+  "completedAt": "2026-11-26T05:36:05Z",
+  "status": "completed",
+  "outputDigest": "sha256:e268fb2c7fcd5963bbed49c63dd264aa0c02d05b83a86b337d69a86cd593cfd0",
+  "toolchainVersion": "codex-independent-neutral-packet-scientific-response-native-join-v1"
+}

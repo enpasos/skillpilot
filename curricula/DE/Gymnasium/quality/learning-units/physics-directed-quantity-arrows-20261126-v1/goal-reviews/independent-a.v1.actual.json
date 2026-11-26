@@ -1,0 +1,933 @@
+{
+  "reviewer": "current-content independent reviewer A",
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "startedAt": "2026-11-26T05:29:45Z",
+  "completedAt": "2026-11-26T05:36:05Z",
+  "independenceDisclosure": "Reviewed only the isolated current-review-a packet and derivatives made solely for viewing its images. No repository, other reviewer output, earlier round, canonical diff, or separate exam packet was opened. The packet itself contains historical examData.reviewNote/reviewStatus prose; the first exam metadata was inadvertently encountered during the initial read. It was excluded from all decisions. Subsequent exam reads explicitly excluded these fields. Scientific decisions below use actual current content, not those historical assertions. Actual images were viewed individually at full source dimensions and at 360 px width. This is an AI candidate review, not human approval, source verification, or learner evidence.",
+  "nativeContext": {
+    "reviewInputFingerprint": "sha256:ec03fbc7d14618c83c41e7baab5f1b43f66408fba191079bdbe9eed97a1ed006",
+    "bookModelSha256": "sha256:ef38597fe67f192184f8d229ae5bbac30921e72cb1305b0a0c47aed1ce08fdef",
+    "decision": "accept_supplied_context_with_limitations",
+    "reason": "The six native-neutral records match the six current bilingual goals and supplied profile bodies. I inspected their canonical contexts, page relations and resource bindings. The packet supplies canonical applicability but no compiled nationwide view/source matrix or retained official source excerpts; I therefore make no claim to have verified national projection or official wording. bookModelSha256 is copied from bindings.json; the actual book model is not supplied and was not independently hashed. native-neutral.jsonl is a neutral derivative whose actual hash is recorded separately. Six older exams have no taskContentEn or solutionContentEn, so bilingual task/rubric parity is not established for them."
+  },
+  "inputBindings": [
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/bindings.json",
+      "sha256": "71b9f97353308260761a55f68e135456a6d936a890b9bed56fb51c8a78763e45",
+      "inspection": "Read as supplied."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/review-instructions.md",
+      "sha256": "2748f4157636fa4bdccffcc4f007a298a8c2248648439a63accdb9fd155b9840",
+      "inspection": "Read as supplied."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/criteria.md",
+      "sha256": "536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+      "inspection": "Read as supplied."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/prompt.md",
+      "sha256": "b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "inspection": "Read as supplied."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/native-neutral.jsonl",
+      "sha256": "6cd5117c570bd48296d98b862a33d25de4bf561619f0360b5da2ba348d8dff6d",
+      "inspection": "Read as supplied."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/goals.json",
+      "sha256": "c55273d5de615c97a4315d566f0a59ccc361c1bb00e94daf19e0ede9befb7edf",
+      "inspection": "Read as supplied."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/profiles.json",
+      "sha256": "8f9b43153f5e04be368d35b81cd394826f162dde461cb8c54be8562a3c1621a8",
+      "inspection": "Read as supplied."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/cards.json",
+      "sha256": "df5659ff4081c9d4f830ea9e2316156bf53106039a4d783ee3ff76b2d7f7b658",
+      "inspection": "Read as supplied."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/current-prerequisites.json",
+      "sha256": "1c0795e41928ab255d29a5e11691a87610333197d02974207bc894da16b7ac0d",
+      "inspection": "Current source read; prerequisite file semantically inspected for relevant direct prerequisites and supporting chains, not a separate audit of all 148 nodes."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/changed-assessments.json",
+      "sha256": "57b301a1bf7221486210cc29af7c404b3056a2ada8a8d3fd3e3f60a2000d3ac2",
+      "inspection": "Current supplied content read; historical assessment review metadata excluded from decisions."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/b77a7e93-22f9-5722-a4cc-f18a149ab030.jpg",
+      "sha256": "c8063f4a83c2e2a5026bb66812b5439b235e9ea1e4f859b28213cf9123bdc39f",
+      "inspection": "Actual image viewed at source dimensions and separate 360 px derivative."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/41d35667-0296-5f84-bc12-202ffc440be0.jpg",
+      "sha256": "f631200a4f5f4ae96f42202013fe2f27735707ad5262c1b1eaca4ec9d780de23",
+      "inspection": "Actual image viewed at source dimensions and separate 360 px derivative."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe.jpg",
+      "sha256": "a163d4664239d8c1ddf397adf133efd3154ebd768bed48497af319bdfea66ba3",
+      "inspection": "Actual image viewed at source dimensions and separate 360 px derivative."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/5fd45dbc-0eb1-591b-99a9-7386336f1456.jpg",
+      "sha256": "566d80d298feec1431d32ef6bbf3ebaadd8efad93d225a904016bd2667aed110",
+      "inspection": "Actual image viewed at source dimensions and separate 360 px derivative."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/d61ea362-f6c3-5eab-ac30-2d0e265ac0f6.jpg",
+      "sha256": "2a85126c257d807e8f51fb092b68243912f29cd361b918918b64e98a199973f3",
+      "inspection": "Actual image viewed at source dimensions and separate 360 px derivative."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/ad984bb6-e225-432a-952d-d83cda40b7f8.jpg",
+      "sha256": "5ef586cca50a5f29e9ecb1c33c85bc6f621607ba1659f8e92fcf1716a2808848",
+      "inspection": "Actual image viewed at source dimensions and separate 360 px derivative."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/41d35667-0296-5f84-bc12-202ffc440be0.360.png",
+      "sha256": "8587c11a8a7c36852a51736c5ae2653540eebbfc5417e872cba388c3fe2ac460",
+      "inspection": "Actually viewed individual 360 px width derivative, generated solely by aspect-preserving downsampling of the supplied JPG. Source bytes unchanged."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe.360.png",
+      "sha256": "fcc08aaf5f794a45c1b0dfee547183aa6a95ad4f717f181c210746e723e3b31b",
+      "inspection": "Actually viewed individual 360 px width derivative, generated solely by aspect-preserving downsampling of the supplied JPG. Source bytes unchanged."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/5fd45dbc-0eb1-591b-99a9-7386336f1456.360.png",
+      "sha256": "bffdafb131774f09c47cfddc58f8abeff388f85a691647cc85efa9e3575c27ef",
+      "inspection": "Actually viewed individual 360 px width derivative, generated solely by aspect-preserving downsampling of the supplied JPG. Source bytes unchanged."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/ad984bb6-e225-432a-952d-d83cda40b7f8.360.png",
+      "sha256": "caf33aa73b582abf388d68e628fe2c971c9df5694d0e67febce8d4d65f84bd5a",
+      "inspection": "Actually viewed individual 360 px width derivative, generated solely by aspect-preserving downsampling of the supplied JPG. Source bytes unchanged."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/b77a7e93-22f9-5722-a4cc-f18a149ab030.360.png",
+      "sha256": "c35891cb6f7ab4bb7907829afd567b837bcf0313595117333e63c88426a56f9b",
+      "inspection": "Actually viewed individual 360 px width derivative, generated solely by aspect-preserving downsampling of the supplied JPG. Source bytes unchanged."
+    },
+    {
+      "path": "/tmp/skillpilot-a2/current-review-a/d61ea362-f6c3-5eab-ac30-2d0e265ac0f6.360.png",
+      "sha256": "6a722746dafe5d39b8c53c076f92899cf623837f0187086108e0ef8700388c85",
+      "inspection": "Actually viewed individual 360 px width derivative, generated solely by aspect-preserving downsampling of the supplied JPG. Source bytes unchanged."
+    }
+  ],
+  "descriptionReviews": [
+    {
+      "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein Größenpfeil gehört zum Körper oder Messpunkt an seinem Fuß. Richtung und maßstäbliche Länge codieren Richtung und Betrag der Größe; die Spitzenlage ist keine zweite Ortsangabe. Ein Wechsel des Pfeilmaßstabs ändert die Zeichnung, nicht die Situation.",
+        "essentialUnderstandingEn": "A quantity arrow belongs to the body or measuring point at its tail. Direction and scaled length encode direction and magnitude of the quantity; the tip is not a second position. Changing arrow scale changes the drawing, not the physical situation.",
+        "observablePerformanceDe": "Die Person liest an einer unbekannten Skizze Träger, Richtung und Betrag mit Einheit ab, zeichnet denselben Pfeil mit einer anderen angegebenen Skala neu und erklärt die dabei verschobene Spitze bei unverändertem Körperort.",
+        "observablePerformanceEn": "From an unfamiliar sketch, the learner reads the carrier, direction and magnitude with units, redraws the same arrow with a different given scale, and explains the moved tip while the body position stays fixed.",
+        "transferExpectationDe": "Statt einer Wagengeschwindigkeit wird die lokale Strömung an einem ruhenden Messpunkt betrachtet; die Person setzt den Pfeil an diesen Punkt und verweigert einen Schluss auf Strömung oder Teilchenort an seiner gezeichneten Spitze.",
+        "transferExpectationEn": "Replace cart velocity by local airflow at a fixed measuring point; the learner anchors the arrow there and rejects inferring flow or particle position at its drawn tip."
+      },
+      "rationale": "The current bilingual description identifies the carrier, in-plane direction, supplied arrow scale and invariant physical magnitude under rescaling. Reading and constructing the representation expose the same competence; the explicit scale comparison gives more than a slogan about vectors. Both supplied applications instantiate it without requiring a field formalism.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "goalFingerprint": "sha256:94d3e1192c7b1858b7af43135a010df7e648f746e0866ba8e91b965d4f046b56",
+      "pageFingerprint": "sha256:bf3124ba1ab6ade6906e1f94adb14b656c4551459fcc683ad8a61845b4ffff86",
+      "batchId": "physics-directed-quantity-arrows-20261126-v1-first-pass-a.batch-001",
+      "bookDigest": "sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6",
+      "bundleFingerprint": "sha256:7bbc54e1a66bc2c2d9bff34ad832ac048c722c8eadd7cafc4f556ad4d57b96ab"
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "decision": "revise",
+      "proposedDescriptionDe": "Die lernende Person kann mehrere Kräfte auf denselben Körper als dort ansetzende Pfeile mit einem gemeinsamen Kraftmaßstab zeichnen, in einer getrennten grafischen Konstruktion ihre Resultierende bestimmen und deren Betrag und Richtung für diesen Körper deuten. Sie unterscheidet dabei die Länge eines Kraftpfeils von einer Entfernung in der Skizze.",
+      "proposedDescriptionEn": "The learner can draw several forces on the same body as arrows starting on that body with a common force scale, determine their resultant in a separate graphical construction, and interpret its magnitude and direction for that body. They distinguish a force arrow’s length from a distance in the sketch.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die Resultierende ist die gerichtete Summe der Kräfte auf denselben Körper. Ihre Pfeillänge folgt einem Kraftmaßstab in Newton, nicht der Ortsgeometrie; ein Nullresultat beseitigt die Einzelkräfte nicht und entscheidet für sich allein keine Drehwirkung.",
+        "essentialUnderstandingEn": "The resultant is the directed sum of forces on the same body. Arrow length follows a force scale in newtons, not position geometry; a zero resultant does not remove individual forces or alone settle rotational effects.",
+        "observablePerformanceDe": "Die Person zeichnet an einem benannten Körper Kräfte mit einer Kraftlegende, überträgt sie nachvollziehbar in eine separate Dreiecks- oder Parallelogrammkonstruktion und liest die Resultierende mit Betrag und Richtung für denselben Körper ab.",
+        "observablePerformanceEn": "The learner draws forces on a named body with a force legend, transfers them traceably to a separate triangle or parallelogram construction, and reads the resultant magnitude and direction for that same body.",
+        "transferExpectationDe": "Nach einem nichtkollinearen Kräftepaar bearbeitet die Person ein kollineares gleich großes Gegenpaar und begründet das Nullresultat bei weiterhin wirkenden Einzelkräften, ohne aus der Summe allein die Drehung zu bestimmen.",
+        "transferExpectationEn": "After a non-collinear force pair, the learner handles an equal collinear opposing pair, explains the zero result while individual forces remain, and avoids inferring rotation from the sum alone."
+      },
+      "rationale": "The present description is scientifically sound but leaves the representational separation between a body sketch and displaced construction arrows implicit. The local replacement retains only the existing force/resultant competence, repeats the common receiver and force-scale meaning, and does not add torque calculation.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "goalFingerprint": "sha256:adb241e4277a0d42f8e36a57ab1adb9e796fe465327271e4b885aa344760fe87",
+      "pageFingerprint": "sha256:726ef18441e230b616a7fb3bba34fb72cc5585f8c67f83ee212f9b744802a5c1",
+      "batchId": "physics-directed-quantity-arrows-20261126-v1-first-pass-a.batch-001",
+      "bookDigest": "sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6",
+      "bundleFingerprint": "sha256:7bbc54e1a66bc2c2d9bff34ad832ac048c722c8eadd7cafc4f556ad4d57b96ab"
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "decision": "revise",
+      "proposedDescriptionDe": "Die lernende Person kann die Beiträge elektrischer Feldstärke am selben markierten Feldpunkt mit einem gemeinsamen Feldstärkemaßstab als dort ansetzende Pfeile darstellen, grafisch addieren und einfache Superpositionssituationen qualitativ deuten. Die Pfeilspitzen bezeichnen dabei keine weiteren Orte des Feldes.",
+      "proposedDescriptionEn": "The learner can represent contributions to electric field strength at the same marked field point as arrows starting there with a common field-strength scale, add them graphically, and qualitatively interpret simple superposition situations. The arrow tips do not identify further locations in the field.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "An einem Feldpunkt werden die dortigen Beiträge der Quellen vektoriell überlagert. Vorzeichen und Geometrie bestimmen ihre Richtungen; gleiche entgegengesetzte Beiträge können sich aufheben. Der Summenpfeil gehört weiter zu diesem Punkt.",
+        "essentialUnderstandingEn": "At a field point, the source contributions there superpose vectorially. Charge sign and geometry determine their directions; equal opposing contributions can cancel. The sum arrow still belongs to that point.",
+        "observablePerformanceDe": "Die Person bestimmt an einem vorgegebenen neuen Punkt die Beitragsrichtungen, zeichnet die Beiträge mit gemeinsamem Maßstab, konstruiert ihre Summe und erklärt eine Verstärkung oder Auslöschung aus den tatsächlichen Vektoren.",
+        "observablePerformanceEn": "At a fresh specified point, the learner determines contribution directions, draws them to a common scale, constructs their sum, and explains reinforcement or cancellation from the actual vectors.",
+        "transferExpectationDe": "Bei unverändertem Feldpunkt wird das Vorzeichen einer Quelle gewechselt oder die Quellengeometrie geändert. Die Person sagt die Änderung der Gesamtfeldrichtung voraus und überprüft sie grafisch, statt Einzelbeträge zu addieren.",
+        "transferExpectationEn": "Keep the field point but reverse one source sign or change source geometry. The learner predicts the total-field direction change and checks it graphically instead of adding scalar magnitudes."
+      },
+      "rationale": "The existing text names graphical superposition but not the indispensable same-point restriction. The replacement makes that already inherent meaning explicit and does not import the quantitative-superposition successor’s calculations. Both languages express the same limit.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "goalFingerprint": "sha256:cd52a4bf27fe29120f2e79faeff721a08f190277b043b5d19e2bdc094fb2106f",
+      "pageFingerprint": "sha256:ce736135a75e5fb62875e31f44081823ed2fc4126d05978af11a8351f9282f4a",
+      "batchId": "physics-directed-quantity-arrows-20261126-v1-first-pass-a.batch-001",
+      "bookDigest": "sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6",
+      "bundleFingerprint": "sha256:7bbc54e1a66bc2c2d9bff34ad832ac048c722c8eadd7cafc4f556ad4d57b96ab"
+    },
+    {
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Haft- und Gleitreibung unterscheiden sich durch fehlendes beziehungsweise vorhandenes Gleiten der beiden Kontaktflächen. Die Kraft auf den gewählten Körper wirkt gegen dessen drohendes oder tatsächliches Gleiten relativ zum Partner, nicht notwendig gegen seine Bewegung relativ zum Boden.",
+        "essentialUnderstandingEn": "Static and sliding friction differ by absence or presence of relative sliding at the two contact surfaces. The force on the chosen body opposes its impending or actual sliding relative to its partner, not necessarily its motion relative to the ground.",
+        "observablePerformanceDe": "Die Person benennt beide Kontaktflächen und den betrachteten Körper, begründet daraus Reibungsart und Kraftrichtung und erklärt bei veränderter Belastung das Anpassen der Haftreibung beziehungsweise den Übergang zum Gleiten.",
+        "observablePerformanceEn": "The learner identifies both contact surfaces and the chosen body, uses them to justify friction regime and force direction, and explains static-friction adjustment or the onset of sliding when loading changes.",
+        "transferExpectationDe": "Nach einer waagerecht gezogenen Kiste wird eine zunehmend geneigte raue Ebene gegeben; die Person leitet die hangaufwärts gerichtete Reibung vor und nach Gleitbeginn aus der drohenden beziehungsweise tatsächlichen Relativbewegung ab.",
+        "transferExpectationEn": "After a horizontally pulled crate, present a rough plane with increasing slope; the learner derives uphill friction before and after sliding from impending or actual relative motion."
+      },
+      "rationale": "The current wording already fixes the physically important contact-relative criterion, requires a force drawing and asks for the motion effect. DE/EN parity is adequate. Its qualitative scope does not demand memorised coefficient formulas.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "goalFingerprint": "sha256:5dbb5fe030f4a9bed533009de8b9c6da9a2e028f778fa081f6810395e37d1726",
+      "pageFingerprint": "sha256:066d7a5858cc3459abd863d580e3541eeb4da77805e9111238de8ab8257f8f49",
+      "batchId": "physics-directed-quantity-arrows-20261126-v1-first-pass-a.batch-001",
+      "bookDigest": "sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6",
+      "bundleFingerprint": "sha256:7bbc54e1a66bc2c2d9bff34ad832ac048c722c8eadd7cafc4f556ad4d57b96ab"
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "decision": "revise",
+      "proposedDescriptionDe": "Die lernende Person kann in einer zeitlich und räumlich kalibrierten Bildfolge einer zweidimensionalen Bewegung aus Ortsänderungen über kurze gleiche Zeitintervalle maßstäbliche Geschwindigkeitspfeile an den zugehörigen Orten konstruieren und die Näherung für den jeweiligen Zeitpunkt benennen. Sie verwendet einen eigenen Geschwindigkeitsmaßstab und bestimmt Änderungen der Geschwindigkeit in einer getrennten grafischen Konstruktion.",
+      "proposedDescriptionEn": "In a spatially and temporally calibrated image sequence of two-dimensional motion, the learner can use displacements over short equal intervals to construct scaled velocity arrows at their associated positions and state the approximation involved in assigning them to instants. They use a separate velocity scale and determine velocity changes in a separate graphical construction.",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ortsänderung geteilt durch Zeitintervall liefert eine mittlere Geschwindigkeit. Für ein kurzes Fenster kann sie einem Zeitpunkt nur näherungsweise zugeordnet werden. Geschwindigkeit ist gerichtet; ein Richtungswechsel kann bei gleichem Betrag ein nichtverschwindendes Δv ergeben.",
+        "essentialUnderstandingEn": "Displacement divided by elapsed time gives an average velocity. Assigning it to an instant is only approximate for a short window. Velocity is directed, so a direction change can give nonzero Δv at unchanged speed.",
+        "observablePerformanceDe": "Die Person wertet eine frische kalibrierte Bildfolge selbst aus, dokumentiert Zeitfenster und räumliche Zuordnung, zeichnet die Geschwindigkeiten mit einer m/s-Legende und konstruiert v₂−v₁ separat von der Ortsbahn.",
+        "observablePerformanceEn": "The learner independently analyzes a fresh calibrated sequence, documents windows and spatial assignment, draws velocities with a m/s legend, and constructs v₂−v₁ separately from the position trajectory.",
+        "transferExpectationDe": "Ein zweiter echter Clip verändert die Bewegungsrichtung bei ungefähr gleichem Geschwindigkeitsbetrag. Die Person zeigt an eigenen Pfeilen Δv ungleich null und erklärt erneut die begrenzte Zeitpunktzuordnung des Intervallmittels.",
+        "transferExpectationEn": "A second real clip changes motion direction at approximately constant speed. Using their own arrows, the learner shows nonzero Δv and again explains the limited instantaneous interpretation of the interval average."
+      },
+      "rationale": "The existing description appropriately uses supplied calibration and an instantaneous-value approximation. The local change distinguishes velocity-arrow scale and separate difference construction from the spatial trajectory. The profile must also demand an explicit explanation of the approximation, not only documentation of windows.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "revise",
+      "goalFingerprint": "sha256:178e3f845a82a3f40f6b74550bce4c26a65a20987a211462a7cf863b1dc38422",
+      "pageFingerprint": "sha256:9997c0ce52b4de8943ba9ee9c54d282970a9aa940bf2e741ba5b42477c4f086e",
+      "batchId": "physics-directed-quantity-arrows-20261126-v1-first-pass-a.batch-001",
+      "bookDigest": "sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6",
+      "bundleFingerprint": "sha256:7bbc54e1a66bc2c2d9bff34ad832ac048c722c8eadd7cafc4f556ad4d57b96ab"
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Eine Wechselwirkung verbindet zwei gleichzeitig gleich große, entgegengesetzt gerichtete Kräfte mit vertauschten Ausübenden und Empfängern. Sie wirken auf verschiedene Körper und sind deshalb kein Kräftegleichgewicht an einem einzelnen Körper.",
+        "essentialUnderstandingEn": "An interaction links two simultaneous equal-magnitude opposite forces with agent and receiver exchanged. They act on different bodies, so they are not an equilibrium pair on one body.",
+        "observablePerformanceDe": "Die Person benennt bei einer neuen Wechselwirkung beide Partner, ordnet jede Kraft ihrem Empfänger zu und erläutert an getrennten Körperdarstellungen Gleichzeitigkeit und gleiche Beträge. Sie verwirft Gewicht und Normalkraft auf demselben Körper als Paar des dritten Axioms.",
+        "observablePerformanceEn": "For a fresh interaction, the learner names both partners, assigns each force to its receiver, and uses separate body representations to explain simultaneity and equal magnitude. They reject weight and normal force on one body as a third-law pair.",
+        "transferExpectationDe": "Nach einer Kontaktwechselwirkung werden zwei berührungslos wechselwirkende Magnetwagen gegeben, einer anschließend festgehalten. Die Person erhält das magnetische Paar und ordnet die zusätzliche Stützkraft einer weiteren Wechselwirkung zu.",
+        "transferExpectationEn": "After a contact interaction, present two non-contact magnetic carts and then constrain one. The learner preserves the magnetic pair and assigns the added support force to a further interaction."
+      },
+      "rationale": "The text explicitly identifies two interacting bodies, equal magnitudes, opposite directions and simultaneous action. It requires explanation through examples and does not equate action with an earlier cause or imply cancellation on one body. The concise bilingual formulation can remain.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "goalFingerprint": "sha256:5ea56753e82614b83345c2e0f4a677020665122bb8f3930888a6c0e3c2d04c05",
+      "pageFingerprint": "sha256:27c406d70a55fbb0851e9904385102ce93edb635ad0d03d5ba7cc8dc00972a4e",
+      "batchId": "physics-directed-quantity-arrows-20261126-v1-first-pass-a.batch-001",
+      "bookDigest": "sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6",
+      "bundleFingerprint": "sha256:7bbc54e1a66bc2c2d9bff34ad832ac048c722c8eadd7cafc4f556ad4d57b96ab"
+    }
+  ],
+  "profileReviews": [
+    {
+      "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "decision": "keep",
+      "reason": "Both real briefs were read: the passing cart has 6 m/s and rescales from 3 cm to 2 cm while the 1.5 m marker separation stays fixed; the airflow case changes the carrier to a fixed point and prevents inference about Q or a future particle location. The apparent tip/marker coincidence is an explicit diagnostic error stimulus, not a claim of contact. Two independent performances and meaningful reference/geometry variation are required.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "decision": "keep",
+      "reason": "The ring examples require 30 N east plus 40 N north to yield 50 N and separately equal opposing 25 N forces to yield zero without absence of forces. They use the same receiving object, a force scale, independent constructions and a meaningful zero-resultant case. The rotational caveat correctly limits what the sum determines.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "decision": "keep",
+      "reason": "The equal-positive-charge midpoint/offset case and dipole sign-reversal case both require source-specific directions, common-point addition, a common scale and prediction before reconstruction. Symmetry follows from vectors; no quantitative-superposition successor is silently required.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "decision": "keep",
+      "reason": "The 20 N/45 N crate case against a 30 N static limit and 24 N sliding value distinguishes adjustment from a memorised fixed force. The adjustable-incline case changes contact geometry and requires direction before and after sliding. Both briefs specify the receiving body and contact-relative direction.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "decision": "revise",
+      "reason": "Both briefs demand analysis of fresh real clips with supplied calibration; they do not wrongly require the learner to establish calibration. However their expected performances do not explicitly require explaining why the interval mean only approximates an instantaneous velocity, although the description claims that performance. The common-tail difference is not expressly identified as a construction outside the position sketch.",
+      "requiredChanges": [
+        "In both DE/EN observable performance and at least one mandatory application expectation, explicitly require identifying Δr/Δt as an interval mean and explaining the approximate assignment to the chosen instant.",
+        "Require the velocity arrows to be assigned to their positions with a distinct velocity legend, and the common-tail Δv diagram to be labelled a separate construction using one unchanged reference frame."
+      ]
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "decision": "keep",
+      "reason": "The collision brief independently pairs simultaneous sensor forces and uses already-assumed second-law knowledge to separate equal force from equal acceleration. The magnet-cart/clamp brief changes interaction type and constraint and distinguishes the extra support interaction from the third-law pair. The mandatory weight/normal counterexample prevents a one-body equilibrium misconception.",
+      "requiredChanges": []
+    }
+  ],
+  "atomicityReviews": [
+    {
+      "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "semanticAtomic": true,
+      "reason": "Reading, drawing and rescaling test one representation convention: carrier, direction and magnitude are preserved while the drawing changes. No general vector arithmetic or dynamics is bundled.",
+      "independentlyAssessableFacets": [
+        "read carrier/direction/magnitude",
+        "construct the same quantity at a changed arrow scale"
+      ],
+      "suggestedSplit": null
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "semanticAtomic": true,
+      "reason": "Drawing force vectors, adding them and interpreting the resulting force are one bounded graphical resultant operation on one body. Torque determination is excluded rather than bundled.",
+      "independentlyAssessableFacets": [
+        "force-scale encoding",
+        "graphical sum",
+        "resultant interpretation"
+      ],
+      "suggestedSplit": null
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "semanticAtomic": true,
+      "reason": "The leaf concerns local graphical field superposition; source sign and symmetry justify that single operation. Quantitative field calculations remain with the named successor.",
+      "independentlyAssessableFacets": [
+        "source contribution directions",
+        "same-point graphical sum",
+        "qualitative symmetry/change interpretation"
+      ],
+      "suggestedSplit": null
+    },
+    {
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "semanticAtomic": true,
+      "reason": "Regime identification and direction/effect are linked through the same contact-relative friction model. A separate quantitative coefficient-law skill is not claimed.",
+      "independentlyAssessableFacets": [
+        "static versus sliding contact",
+        "force direction on selected body",
+        "qualitative adjustment and motion effect"
+      ],
+      "suggestedSplit": null
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "semanticAtomic": true,
+      "reason": "This is one bounded data-to-velocity comparison workflow: obtain comparable velocity arrows from an image sequence and interpret their difference. Calibration is supplied and no independent video-calibration or general algebraic vector module is bundled.",
+      "independentlyAssessableFacets": [
+        "interval-derived scaled velocity",
+        "approximate temporal assignment",
+        "graphical velocity change"
+      ],
+      "suggestedSplit": null
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "semanticAtomic": true,
+      "reason": "Statement and explanation are one law competence; the two-body receiving references and simultaneity are inseparable content of the law. The separate application successor need not be absorbed.",
+      "independentlyAssessableFacets": [
+        "simultaneous opposite interaction pair",
+        "distinguish interaction pair from single-body balance"
+      ],
+      "suggestedSplit": null
+    }
+  ],
+  "semanticKindReviews": [
+    {
+      "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "semanticKind": "representation",
+      "reason": "Reading, drawing and rescaling test one representation convention: carrier, direction and magnitude are preserved while the drawing changes. No general vector arithmetic or dynamics is bundled."
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "semanticKind": "representation",
+      "reason": "Drawing force vectors, adding them and interpreting the resulting force are one bounded graphical resultant operation on one body. Torque determination is excluded rather than bundled."
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "semanticKind": "representation",
+      "reason": "The leaf concerns local graphical field superposition; source sign and symmetry justify that single operation. Quantitative field calculations remain with the named successor."
+    },
+    {
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "semanticKind": "concept",
+      "reason": "Regime identification and direction/effect are linked through the same contact-relative friction model. A separate quantitative coefficient-law skill is not claimed."
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "semanticKind": "representation",
+      "reason": "This is one bounded data-to-velocity comparison workflow: obtain comparable velocity arrows from an image sequence and interpret their difference. Calibration is supplied and no independent video-calibration or general algebraic vector module is bundled."
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "semanticKind": "concept",
+      "reason": "Statement and explanation are one law competence; the two-body receiving references and simultaneity are inseparable content of the law. The separate application successor need not be absorbed."
+    }
+  ],
+  "prerequisiteReviews": [
+    {
+      "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "decision": "needs_change",
+      "reason": "The sole current prerequisite is the Why Physics orientation goal, whose DE description explicitly says no subject detail is assumed or checked. Motivation/order is not necessary knowledge for reading arrow carrier, direction or a supplied scale. Do not add higher-stage vector algebra to this early representation goal.",
+      "unnecessaryCurrentRequires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+      ],
+      "missingRequires": []
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "decision": "accept_current",
+      "reason": "Qualitative force/inertia knowledge supports physical interpretation; proportional arithmetic supports the force scale; the new directed-arrow goal supports carrier/direction/magnitude. All three are specific to this operation.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "decision": "needs_change",
+      "reason": "Radial-field knowledge supports source contributions and the directed-arrow prerequisite supports point/scale. The existing mathematics prerequisite explicitly requires component arithmetic in both plane and space plus tuples, while this goal and both briefs require only graphical qualitative addition. That stronger full-mastery gate is not necessary for this stated scope. Replace it only with a genuinely appropriate graphical prerequisite if one is available; none is supplied as a separate pure-geometry goal.",
+      "unnecessaryCurrentRequires": [
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592"
+      ],
+      "missingRequires": []
+    },
+    {
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "decision": "accept_current",
+      "reason": "The current one-dimensional dynamics prerequisite supports qualitative force equilibrium versus acceleration in the supplied profile, and the directed-arrow goal supports the required drawing. It is defensible for the complete current evidence contract, although recognising the friction regime alone uses less knowledge.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "decision": "accept_current",
+      "reason": "The measured-change-per-time prerequisite supplies signed interval differences, quotient/unit and interval-versus-instant distinction; the directed-arrow prerequisite supplies direction, anchoring and arrow-scale interpretation. Graphical comparison is taught in this leaf; no later tuple-vector gate is necessary.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "decision": "needs_change",
+      "reason": "Second-law knowledge is used by the supplied collision brief to distinguish accelerations. The profile also requires independently drawn force representations, but the directed-arrow goal is absent from the full supplied prerequisite closure of this leaf. Add the elementary representation goal for those required diagrams; no existing prerequisite needs removal within this current profile.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": [
+        "b77a7e93-22f9-5722-a4cc-f18a149ab030"
+      ]
+    }
+  ],
+  "memoryGoalReviews": [
+    {
+      "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "decision": "accept_current",
+      "memoryUseful": true,
+      "reason": "The scale-change card recalls the arrow convention accurately. It is a separate memory item, not proof of independent arrow construction or an extra graph goal.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "decision": "accept_current",
+      "memoryUseful": true,
+      "reason": "Remembering what a force scale and resultant encode can support later use, but no card or deck-goal change for this goal is supplied. Independent graphical construction remains necessary; no new memory goal is required by this review.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "decision": "accept_current",
+      "memoryUseful": true,
+      "reason": "Same-point superposition is useful recall, but no card associated with this goal is supplied. The application evidence cannot be replaced by a remembered sum formula.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "decision": "needs_change",
+      "memoryUseful": true,
+      "reason": "Recall of static/sliding distinction is useful. The supplied card also requires coefficient formulas not claimed by this qualitative understanding goal; the origin/release boundary needs correction.",
+      "requiredChanges": [
+        "Trim the card to regime, contact-relative direction and qualitative static adjustment, or bind separately justified quantitative material to its actual understanding goal."
+      ]
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "decision": "accept_current",
+      "memoryUseful": false,
+      "reason": "The competence is analysis of a real calibrated image sequence and a graphical change, not memorisation. No card is supplied for it; no new memory graph leaf is needed.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "decision": "accept_current",
+      "memoryUseful": true,
+      "reason": "The third-law card and the three-laws summary recall simultaneous two-body forces. The summary has all three appropriate origin goals. Neither card establishes separate-body diagram or transfer performance.",
+      "requiredChanges": []
+    }
+  ],
+  "cardReviews": [
+    {
+      "cardId": "physics_e_cov_017",
+      "decision": "keep",
+      "scientificCorrectness": "The vector equality, equal magnitudes, opposite directions, simultaneity and different receiving bodies correctly state the elementary Newtonian third law.",
+      "languageEquivalence": "DE and EN preserve all those claims.",
+      "originFit": "The sole origin is the third-law formulation/explanation goal.",
+      "promptAnswerFit": "The direct law prompt receives the law plus the essential receiving-body qualification.",
+      "recallBoundary": "Tests recall of the law; does not establish independent classification of force pairs or application.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_020",
+      "decision": "keep",
+      "scientificCorrectness": "First and second laws explicitly assume an inertial frame; second law specifies constant mass and net external force. Third law states simultaneous opposite forces on different bodies.",
+      "languageEquivalence": "DE/EN equations and conditions agree; S/K versus H/G coefficient notation is not relevant to this card.",
+      "originFit": "All three Newton-law understanding goal IDs are listed. This is a joint summary rather than a card released solely by one law.",
+      "promptAnswerFit": "Three-law prompt receives all three concise laws with their central conditions.",
+      "recallBoundary": "Formula recall is not a dynamics calculation or force-pair diagnosis.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_034",
+      "decision": "revise",
+      "scientificCorrectness": "The relative-motion direction and adjustable static magnitude are scientifically correct. The maximum-static and simple sliding coefficient formulas are correctly qualified, but add quantitative content.",
+      "languageEquivalence": "DE Haft/Gleit and EN static/kinetic, H/G versus S/K coefficient symbols, maximum/approximation and direction claims agree.",
+      "originFit": "The only supplied origin is explicitly qualitative; neither coefficient formula appears in its description or necessary evidence. Their recall therefore exceeds the documented release/understanding boundary.",
+      "promptAnswerFit": "The prompt asks regime and direction, while the answer additionally presents two quantitative coefficient laws.",
+      "recallBoundary": "Keep a qualitative recall card for this origin. Independent contact diagnosis, choice of receiving body and fresh direction cases require separate evidence.",
+      "requiredChanges": [
+        "Remove the two coefficient formulas from both languages of this card while retaining qualitative static adjustment and contact-relative direction, or provide an independently justified additional quantitative origin goal."
+      ]
+    },
+    {
+      "cardId": "physics_directed_quantity_arrow_scale",
+      "decision": "keep",
+      "scientificCorrectness": "At unchanged 4 m/s rightward and equal-length reference bars, an arrow first spans two bars then one; its carrier and physical velocity remain unchanged while the drawn tip moves.",
+      "languageEquivalence": "DE and EN preserve equal reference-bar length, 2 versus 4 m/s, unchanged cart position and velocity, and two-versus-one lengths.",
+      "originFit": "Directly matches the early arrow-scale understanding goal.",
+      "promptAnswerFit": "The changed-scale question receives both the altered drawing and invariant physical properties.",
+      "recallBoundary": "Only recalls this comparison; does not establish independently locating the tail or transferring to a fixed field/measuring point.",
+      "requiredChanges": []
+    }
+  ],
+  "assessmentReviews": [
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "Part A.2 explicitly requires scaled velocity components and resultant arrows; z_komp/z_res15/z_res30 score them. Part B/f_add chains two different velocity references explicitly, so the new arrow goal supports representation without authorising addition of unrelated velocities at one place. Existing coverage is only the supplied projectile-velocity goal.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "z_komp",
+        "z_res15",
+        "z_res30",
+        "f_add"
+      ],
+      "coveredGoalIdsSeen": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de",
+        "en"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision."
+    },
+    {
+      "goalId": "b7e366e2-8323-5171-83a1-1f536c2062d8",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "Part 2 requires weight, drag and resultant arrows for the same falling filter at three times; falling_drag_2 scores consistency with data. The new prerequisite supplies carrier/direction/scale basics. It neither proves terminal-speed reasoning nor extends coverage beyond the existing falling-drag goal.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "falling_drag_2"
+      ],
+      "coveredGoalIdsSeen": [
+        "12260012-cf04-5409-b57d-f5b3a46d9126"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision. This older exam supplies no English task or English solution/rubric; bilingual assessment parity was not inspected and is not claimed."
+    },
+    {
+      "goalId": "b1808b4c-5e02-5e1f-831f-47ee126e00ee",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "Part 1 requires velocity and acceleration arrows at three distinct trajectory points; circular_1 scores their placement/direction and the constant-speed direction-change explanation. The new prerequisite is directly relevant. Velocity and acceleration are different quantities and cannot share a numerical arrow scale. Existing circle-motion coverage stays unchanged.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "circular_1"
+      ],
+      "coveredGoalIdsSeen": [
+        "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision. This older exam supplies no English task or English solution/rubric; bilingual assessment parity was not inspected and is not claimed."
+    },
+    {
+      "goalId": "e1d3c599-6964-5094-83ee-7fb1ecd161ce",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "Part 2 explicitly asks for weight, buoyancy and force-meter force on the immersed body; buoyancy_2 scores that force picture plus the pressure explanation. The new arrow prerequisite is appropriate; it grants no buoyancy/pressure credit by itself and leaves the covered goal unchanged.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "buoyancy_2"
+      ],
+      "coveredGoalIdsSeen": [
+        "e11b2ee9-e528-4857-9ecd-59bd460fba81"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision. This older exam supplies no English task or English solution/rubric; bilingual assessment parity was not inspected and is not claimed."
+    },
+    {
+      "goalId": "840a82e3-44aa-5d0f-8b6f-8a067d057d14",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "Part 1/airfoil_drag_1 require two oppositely referenced velocity arrows and two forces on the wing, with the drag direction then related to both references in part 2. Basic arrow attachment is needed; the new edge does not combine the two velocities as same-reference vectors or add new coverage to aerodynamic lift/drag.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "airfoil_drag_1",
+        "airfoil_drag_2"
+      ],
+      "coveredGoalIdsSeen": [
+        "24b4686a-e8a6-4583-8952-33e6f653c2a3"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision. This older exam supplies no English task or English solution/rubric; bilingual assessment parity was not inspected and is not claimed."
+    },
+    {
+      "goalId": "7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "Parts 1–2 require horizontal forces on the selected crate and static/sliding direction; friction_1/friction_2 score these. Part 3 changes to the foot receiving the ground force. The new prerequisite supports identifying whose force is drawn. Existing contact-friction credit remains unchanged.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "friction_1",
+        "friction_2",
+        "friction_3"
+      ],
+      "coveredGoalIdsSeen": [
+        "581c0766-b84b-54cb-b8b6-375310329a41"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision. This older exam supplies no English task or English solution/rubric; bilingual assessment parity was not inspected and is not claimed."
+    },
+    {
+      "goalId": "449d9732-a869-5126-8879-564da5c3d263",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "Part 1 and force_line_1 explicitly require the points and lines of action of two downward forces on the plank; separate spatial lever arms occur in parts 3–4. This makes the distinction between force-arrow scale and geometric distance particularly relevant. The new edge adds no moment/centre-of-mass coverage and does not change the existing covered goal.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "force_line_1",
+        "force_line_3",
+        "force_line_4"
+      ],
+      "coveredGoalIdsSeen": [
+        "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision. This older exam supplies no English task or English solution/rubric; bilingual assessment parity was not inspected and is not claimed."
+    },
+    {
+      "goalId": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "Parts 1–3 require actual field diagrams and local field directions; field_models_1 explicitly scores the local tangent, and field_models_2/3 score directions in named views. Elementary local-arrow meaning supports those tasks. A field-line tangent direction is not an arbitrary arrow-length measurement; the new prerequisite does not confer field-line/model-law credit. Both existing covered goals remain unchanged.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "field_models_1",
+        "field_models_2",
+        "field_models_3"
+      ],
+      "coveredGoalIdsSeen": [
+        "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+        "106417ed-80db-5490-a1ee-bb4160d3f2b4"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de",
+        "en"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision."
+    },
+    {
+      "goalId": "d044ffb0-eba1-5063-bd71-ee1d351b036f",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "A explicitly draws E, F and a, while k1 scores charge-sign-dependent field/force/acceleration directions and field reversal. Distinct quantity arrows at the particle require distinct quantity scales. The new prerequisite supports the representation, not the energy/trajectory reasoning or any additional credit.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "k1",
+        "k2"
+      ],
+      "coveredGoalIdsSeen": [
+        "741774ef-15fc-4bcf-a370-e2c5cf4257d0"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de",
+        "en"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision."
+    },
+    {
+      "goalId": "cb45d084-4e0f-5926-958c-f1d0ce456906",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "A requires force arrows from known v/B directions and track curvature; k2 scores charge-sign inference and cross-product/reversal direction. The new prerequisite supports anchoring force to each particle. It does not teach the magnetic right-hand rule, nor extend coverage beyond the two existing magnetic-motion/force goals.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "k1",
+        "k2",
+        "k3"
+      ],
+      "coveredGoalIdsSeen": [
+        "9854589c-5feb-4942-b90f-311ddf36eb78",
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de",
+        "en"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision."
+    },
+    {
+      "goalId": "9fe94c34-8100-5f4c-b646-69c1983f8adc",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "A asks for forces on both bodies of each separated charged pair; k2 scores attraction/repulsion and the two receiving partners. The elementary arrow goal is justified for these diagrams. It supplies neither charge-sign inference nor the scalar conservation balances; both original covered goals remain unchanged.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "k2"
+      ],
+      "coveredGoalIdsSeen": [
+        "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+        "25998fed-ea4d-4c3e-b606-e965b5d7f290"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de",
+        "en"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision."
+    },
+    {
+      "goalId": "61225322-fa5b-5414-b7da-ca90c9035adb",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "A asks for field arrows beside equipotentials; k2 explicitly scores perpendicular field arrows in both uniform and radial cases. The arrow goal supports pointwise field direction and quantity scale, while potentials remain scalars and geometric line spacing remains a separate representation. The existing potential goal coverage is unchanged.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "k2"
+      ],
+      "coveredGoalIdsSeen": [
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de",
+        "en"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision."
+    },
+    {
+      "goalId": "93208b0d-2956-5aae-8aa4-bcef718f06a4",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "A requests force diagrams and k1 scores effective weight, field/charge signs and upward/downward cases. The new prerequisite supports distinguishing the pointwise electric-field arrow from forces on the drop. It does not establish quantisation, measurement inference or uncertainty credit. Existing Millikan-goal coverage is unchanged.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "k1"
+      ],
+      "coveredGoalIdsSeen": [
+        "0f803c37-8191-5a07-9b31-9603ded98fe2"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de",
+        "en"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision."
+    },
+    {
+      "goalId": "a2a7d916-83c6-5ed6-90f2-5c4d9e36abf3",
+      "decision": "accept_current_prerequisite_only",
+      "reason": "A requires field/force directions between plates and k1 scores the voltage→field→negative-charge→vertical-position chain. The task separately plots actual screen coordinates, while k3 uses a supplied qualitative magnetic direction rule. The new prerequisite supports the directed arrows without turning arrow tips into screen locations, requiring a formal cross product, or expanding existing oscilloscope coverage.",
+      "requiredChanges": [],
+      "inspectedRubricStepIds": [
+        "k1",
+        "k2",
+        "k3"
+      ],
+      "coveredGoalIdsSeen": [
+        "5fda8623-69e0-5503-9c6d-86d054a8cf91"
+      ],
+      "materialCoverageAlteredByNewPrerequisite": false,
+      "newArrowGoalCreditEstablished": false,
+      "languagesActuallySeen": [
+        "de",
+        "en"
+      ],
+      "limitations": "No new approval of the complete scoring contract or proof of equivalence to an older edition. The supplied current task and rubric were inspected for this edge/coverage decision."
+    }
+  ],
+  "imageReviews": [
+    {
+      "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "file": "b77a7e93-22f9-5722-a4cc-f18a149ab030.jpg",
+      "decision": "keep",
+      "assetScope": "Current calibrated illustration in this packet; no historical diff independently inspected.",
+      "anchorReference": "Both arrow tails start at the same blue cart-centre mark. Both carts occupy the same position relative to their track. The track is the implicit velocity reference.",
+      "quantityScale": "The two right-side bars are labelled 2 m/s and 4 m/s; visibly the upper arrow spans two upper bars and the lower one lower bar. Approximate centre-to-tip lengths are 436 px and 196 px; corresponding bar centre spans are about 218 px and 196 px. Raster boundaries include finite cap/head thickness; these are an image-level visual/approximate pixel check, not a precision metrology claim.",
+      "tip": "Both tips end in empty space rather than on an object. Their different locations encode only changed arrow scale.",
+      "addition": "None shown.",
+      "readingAt360Px": "Viewed actual 360 px derivative: title 4 m/s, both bar labels, both anchored arrows and the two different lengths remain readable; no explanatory small print is required.",
+      "limitations": [
+        "The image is German-only teaching support, not evidence of independent reading or transfer.",
+        "No explicit position scale is supplied; the fixed track/cart arrangement is enough for this two-drawing comparison."
+      ]
+    },
+    {
+      "goalId": "41d35667-0296-5f84-bc12-202ffc440be0",
+      "file": "41d35667-0296-5f84-bc12-202ffc440be0.jpg",
+      "decision": "revise_existing_context_asset",
+      "assetScope": "Older contextual construction supplied for this review; exact historical age/change status not independently established.",
+      "anchorReference": "The 3 N and 4 N arrows and resultant share O. No actual receiving body or named system is shown. It can work as a separate vector construction but is not explicitly labelled as one.",
+      "quantityScale": "The grid has 3 horizontal and 4 vertical squares and states 1 square = 1 N; the 5 N diagonal is geometrically correct.",
+      "tip": "No tips terminate on another physical object; all are in a construction diagram.",
+      "addition": "The orthogonal 3 N + 4 N diagonal correctly has magnitude 5 N. Common receiving-body meaning needs an explicit caption when used for this goal.",
+      "readingAt360Px": "Viewed at 360 px: 3 N, 4 N, F_R=5 N and the square-scale line remain readable, although construction text is small.",
+      "requiredChanges": [
+        "Label the diagram as a separate force-vector construction for forces on one named body/system. Preserve its exact 3:4:5 geometry if shared as a task stimulus."
+      ],
+      "limitations": [
+        "This deficiency is in supplied contextual material, not evidence that the two newly calibrated illustrations are wrong.",
+        "No rendered application page or asset-consumer mapping was supplied; JPG viewed even where native metadata names PNG."
+      ]
+    },
+    {
+      "goalId": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+      "file": "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe.jpg",
+      "decision": "revise_existing_context_asset",
+      "assetScope": "Older contextual field illustration supplied for review; no baseline diff inspected.",
+      "anchorReference": "E1, E2 and Eges all start at marked field point P. Positive Q1 to the left gives a rightward contribution and positive Q2 below gives an upward contribution, so the contribution directions are sound.",
+      "quantityScale": "No numeric field-strength legend or N/C scale is present. Quantitative magnitudes cannot be read responsibly.",
+      "tip": "The tips are not on another physical charge.",
+      "addition": "The depicted resultant does not close the parallelogram of its shown components. At full resolution P is near (1274,860), E1 tip near (1720,860), E2 tip near (1274,390), but resultant tip near (1875,390). The resultant horizontal component is therefore visibly too long; the dashed right side is slanted instead of parallel to the vertical E2 contribution. This is a scientific drawing defect even for a qualitative addition picture.",
+      "readingAt360Px": "Viewed at 360 px: P, both positive sources and E1/E2/Eges labels remain legible. The stretched resultant still does not close the component parallelogram.",
+      "requiredChanges": [
+        "Correct the component parallelogram/resultant geometry; do not merely change the printed equation.",
+        "Add a clearly named common field-strength scale or explicitly mark this as qualitative direction-only teaching support; the standing quantitative arrow criterion otherwise remains unmet."
+      ],
+      "limitations": [
+        "Existing image defect, not caused by adding a prerequisite edge.",
+        "The packet does not establish whether another exam depends on these exact bytes; inspect consumers before any edit."
+      ]
+    },
+    {
+      "goalId": "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "file": "5fd45dbc-0eb1-591b-99a9-7386336f1456.jpg",
+      "decision": "revise_existing_context_asset",
+      "assetScope": "Older contextual friction illustration supplied for review; no historical comparison performed.",
+      "anchorReference": "F_Haft and the pulling force are floating beside the left block; F_Gleit floats beside the right block and v floats above it. None begins at a marked point on the receiving body.",
+      "quantityScale": "No force or velocity scale is present. Comparable drawn lengths cannot be used as quantitative force evidence.",
+      "tip": "The force tips end away from the body and do not indicate another physical contact, but the detached tails weaken receiver identification.",
+      "addition": "No vector-sum construction is supplied. Equal-looking left arrows suggest equilibrium but are uncalibrated.",
+      "readingAt360Px": "At actual 360 px width, the two regimes, force labels and bottom captions can be read. The caption states Gleitreibung acts against Bewegungsrichtung without naming relative contact motion. It is correct for this particular fixed-ground drawing but does not convey the current description’s general relative-motion rule.",
+      "requiredChanges": [
+        "Anchor every quantity arrow on its receiving body/point and give quantity-specific legends.",
+        "Replace the unrestricted motion-direction caption by contact-relative sliding direction and name the body/contact partner."
+      ],
+      "limitations": [
+        "The reviewed current description is already more precise than this older image.",
+        "No consumer mapping is supplied; shared task stimuli require separate preservation checks before modification."
+      ]
+    },
+    {
+      "goalId": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+      "file": "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6.jpg",
+      "decision": "revise_existing_context_asset",
+      "assetScope": "Contextual velocity-difference illustration supplied for review; no baseline change/age verification.",
+      "anchorReference": "Both velocity arrows share O in a pure vector diagram. O is not a point extracted from an actual video and the common-tail comparison is not labelled as a separate construction.",
+      "quantityScale": "Each orthogonal arrow is labelled 2 m/s, which makes equal nominal magnitudes readable. Their approximate drawn lengths differ slightly in the loose hand drawing; no separate reference-bar legend is present.",
+      "tip": "The orange difference arrow correctly starts at v1’s tip and ends at v2’s tip; this is valid in vector-construction space, not as a local property arrow in the position sketch.",
+      "addition": "Δv=v2−v1 is drawn in the correct direction, up-left. Equal speed with changed direction correctly gives nonzero Δv.",
+      "readingAt360Px": "At 360 px the two 2 m/s labels, difference formula and nonzero conclusion are readable; the timing/approximation strip is small but still distinguishable.",
+      "requiredChanges": [
+        "Explicitly label it as a separate velocity-vector/difference construction and state that O is a construction origin, not an identified body position.",
+        "When revised under the standing arrow criterion, provide an explicit velocity-scale legend and preserve the intended equal-magnitude geometry."
+      ],
+      "limitations": [
+        "This is teaching support only and contains no actual real video or fresh learner performance.",
+        "A full-image timing caption is not evidence that a learner can explain the interval-mean approximation."
+      ]
+    },
+    {
+      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+      "file": "ad984bb6-e225-432a-952d-d83cda40b7f8.jpg",
+      "decision": "keep",
+      "assetScope": "Current calibrated illustration in this packet; no historical diff independently inspected.",
+      "anchorReference": "The leftward force starts at the black point on cart A and is labelled force of B on A. The rightward force starts on B and is labelled force of A on B. Facing north poles support repulsion.",
+      "quantityScale": "The lower reference bar explicitly says Kraftmaßstab: 2 N. Both force arrows are approximately 435 px from dot centre to tip, matching the approximately 435 px reference centre span. Equal lengths and own force scale are visually coherent.",
+      "tip": "Both tips point outward into empty space; neither ends on the other cart or reads as physical contact.",
+      "addition": "No sum is drawn. The two force arrows have different receiving bodies, as required for the interaction pair.",
+      "readingAt360Px": "Viewed actual 360 px derivative: A, B, facing N labels, both force-owner captions and Kraftmaßstab: 2 N remain legible.",
+      "limitations": [
+        "The isolated image does not prove simultaneity or the noncancellation explanation; those need the accompanying goal/profile and independent evidence.",
+        "German-only image; no English artwork inspected."
+      ]
+    }
+  ],
+  "limitations": [
+    "All observations refer to this isolated supplied current packet, not a canonical mutation, historical equivalence proof, official source audit or live runtime.",
+    "The six DE-only older exams lack English assessment bodies. Their bilingual goal descriptions do not substitute for an English task/rubric review.",
+    "All 14 new prerequisite edges are physically relevant to their current task bodies. None of those edges alone assesses the new goal’s full anchor/scale-change/tip understanding or grants new goal credit.",
+    "Asset-change status beyond the task’s calibrated/contextual distinction cannot be proven without a baseline diff. Existing asset defects are reported separately from the two calibrated images.",
+    "No learner performance, mastery write, card-state transition, deck completion or host acceptance was observed."
+  ]
+}

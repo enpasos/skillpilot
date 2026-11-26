@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-directed-quantity-arrows-20261126-final",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/goal-reviews/final/description-batch.config.json",
+  "configDigest": "sha256:0841e25fef76d0f903aa3029064ec6ec63995aae5ab35972ca6d98be67b70bae",
+  "goalIds": [
+    "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+    "41d35667-0296-5f84-bc12-202ffc440be0",
+    "4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe",
+    "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+    "d61ea362-f6c3-5eab-ac30-2d0e265ac0f6",
+    "ad984bb6-e225-432a-952d-d83cda40b7f8"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 495,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/goal-reviews/final/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:68c263b763ef812a6100a1ded3b62f9e451b91ab00f85cda90b4ef204f5087e8"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:1efde88610b26df31ac9c7b2899c5d21271eaafa3e6d6c5f324cafbf10b82464",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:76dd27f6941890343d22aaf88c61213df0f6e411ec03cf76a890d4fef36abf56",
+    "reviewInputFingerprint": "sha256:0b247f75be1417043619ca0a24665e03b7f232a4467fbe163c3d88b576003ea8",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-directed-quantity-arrows-20261126-final-a",
+        "campaignDigest": "sha256:798cbe5b75a2ea2894291ca3270a0fcf987347f409edea3d4769a5e62024f306",
+        "roundId": "physics-directed-quantity-arrows-20261126-final-first-pass-a",
+        "independenceGroupId": "physics-directed-quantity-arrows-20261126-final-independent-a",
+        "batchId": "physics-directed-quantity-arrows-20261126-final-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:793e3c6c589c0a7100051a252806d483147ff55e6ab6cbc0d57eb0f1f62bff25"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-directed-quantity-arrows-20261126-final-b",
+        "campaignDigest": "sha256:0b0e0af249766db9195da82ef3fcebe473d51d132ec60760655086336968f407",
+        "roundId": "physics-directed-quantity-arrows-20261126-final-first-pass-b",
+        "independenceGroupId": "physics-directed-quantity-arrows-20261126-final-independent-b",
+        "batchId": "physics-directed-quantity-arrows-20261126-final-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:202da673f4ccc2d2b9cc697134c9461bfd28f1980cce58338be8d5a777eab181"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}
