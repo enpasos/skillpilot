@@ -21,13 +21,13 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
-## 26. November 2026, 00:58 MEZ – Niedersachsen, amtliche Physikquellen der Oberstufe
+## 26. November 2026, 01:08 MEZ – Niedersachsen, amtliche Physikquellen der Oberstufe
 
 **Offen auf `feat/ni-physik-quellenextraktion`.** Das Quellenpilotpaket stützt sich auf das amtliche KC 2022. Es erneuert einen Nachweis für die Länderplanung im Arbeitsprogramm K1–K13/F1–F7. Der bisherige Planstand bleibt aktiv. Hinzugekommen sind null aktivierte Pläne, null neue Lernziele und null Prüfungsaufgaben.
 
 Die neue Transkription zählt 378 Quellzeilen. Eine unabhängige Gegenlesung erfasste 346 ausgewählte Zeilen und sämtliche 154 Übergänge vom Vorgänger. 35 Anforderungen haben keinen belegten kanonischen Endpunkt, davon acht in Wahlmodulen. CQR-005 besteht. CQR-003 findet 71 Zeilen ohne gewertetes NI-Sichtziel, einschließlich der 35 ohne fachlichen Endpunkt. Die Aktivierungsprobe fällt damit von M7 auf M1, beide Stufen bleiben M4. Der unveränderte M7-Pin sperrt die Aktivierung. Die tatsächliche Kartenprojektion zeigt vor und nach der Probe je einen bestehenden Q→E-Rücklauf in jeder der beiden GK-Sichten; in den anderen drei NI-Sichten ist die Zahl null. Die Prüfung von sieben bisherigen Zielprüfungen zeigt fünf reguläre Aufgaben je GK-Sicht und sechs je LK-Sicht bei Wahl des vollständigen Abschnitts. Für eine freiwillige eigene Atomkompetenz kennt das bestehende Sicht-/Abschlussmodell keinen allgemeinen Marker.
 
-Zur Durchsicht durch den Product Owner eignen sich die [Zielrollen und Prüfungen](../../curricula/DE/Gymnasium/quality/source-reextraction/physik/ni-kc2022-20261126-v1/zielrollen.md), die [35 Einzelvorschläge](../../curricula/DE/Gymnasium/quality/source-reextraction/physik/ni-kc2022-20261126-v1/offene-anforderungen.md) und das [Pilotdossier mit Quellenprüfung und technischen Proben](../../curricula/DE/Gymnasium/quality/source-reextraction/physik/ni-kc2022-20261126-v1/README.md). Nächster fachlicher Schritt ist die Entscheidung über die Pflichtprüfungen und die sichtbaren Lücken.
+Zur Durchsicht durch den Product Owner eignen sich die [Zielrollen und Prüfungen](https://github.com/enpasos/skillpilot/blob/a6ac75531ba7cfb4c8d2ae09643704590f06402f/curricula/DE/Gymnasium/quality/source-reextraction/physik/ni-kc2022-20261126-v1/zielrollen.md), die [35 Einzelvorschläge](https://github.com/enpasos/skillpilot/blob/a6ac75531ba7cfb4c8d2ae09643704590f06402f/curricula/DE/Gymnasium/quality/source-reextraction/physik/ni-kc2022-20261126-v1/offene-anforderungen.md) und das [Pilotdossier mit Quellenprüfung und technischen Proben](https://github.com/enpasos/skillpilot/blob/a6ac75531ba7cfb4c8d2ae09643704590f06402f/curricula/DE/Gymnasium/quality/source-reextraction/physik/ni-kc2022-20261126-v1/README.md). Nächster fachlicher Schritt ist die Entscheidung über die Pflichtprüfungen und die sichtbaren Lücken.
 
 ## 25. November 2026, 23:10 MEZ – Physik E.2: Impuls und Newtons zweites Axiom
 
