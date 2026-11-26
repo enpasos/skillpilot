@@ -9634,6 +9634,7 @@
         "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
         "94784e0a-7ddc-48be-91fb-dc82b78eb322",
         "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
         "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
         "253a71d2-e751-4c63-acbe-238b71463cd8",
         "91c49019-ea51-4ce5-a919-c91c45b25e83",
@@ -9797,6 +9798,61 @@
       ]
     },
     {
+      "id": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "title": "Formel der kinetischen Energie aus der Beschleunigungsarbeit herleiten",
+      "titleEn": "Derive the kinetic energy formula from the work done by the net force",
+      "description": "Die lernende Person kann für einen Körper konstanter Masse, der als Massepunkt in einem Inertialsystem aus der Ruhe geradlinig durch eine konstante resultierende Kraft beschleunigt wird, aus der Arbeit dieser Kraft und den Bewegungsgesetzen die Formel $E_\\mathrm{kin}=\\tfrac12 mv^2$ herleiten. Sie kann den Faktor ½ grafisch begründen und erklären, warum die Energie bei gleicher Masse mit dem Quadrat des Geschwindigkeitsbetrags wächst.",
+      "descriptionEn": "For a constant-mass object modelled as a particle in an inertial frame and accelerated from rest in a straight line by a constant net force, the learner can derive $E_\\mathrm{k}=\\tfrac12 mv^2$ from the work done by that force and the equations of motion. They can justify the factor ½ graphically and explain why, at fixed mass, kinetic energy increases with the square of speed.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+        "262f807a-30d0-503e-986f-856cbd048e8e",
+        "2c4830e6-a8d5-48d0-9202-3b7d18a419c2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [
+          "PK3_MATHEMATISIEREN"
+        ],
+        "guidingIdeas": [
+          "LI_BEWEGUNG"
+        ],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_derive_kinetic_energy_from_work",
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE",
+          "DE-SL",
+          "DE-SN"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "title": "Visualisierung: Formel der kinetischen Energie aus der Beschleunigungsarbeit herleiten",
+          "url": "/assets/goal-visualizations/physik/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b.jpg",
+          "provider": "OpenAI / Codex image_gen",
+          "description": "Visualisierung zum Lernziel: Formel der kinetischen Energie aus der Beschleunigungsarbeit herleiten.",
+          "altText": "Am Wagen beginnt am schwarzen Punkt ein nach rechts gerichteter Pfeil für die konstante resultierende Kraft von 2 N. Der orange Bezugsstrich darunter steht für 2 N, die Ortszeichnung ist schematisch. Im t-v-Diagramm steigt die Geschwindigkeit in 2 s gleichmäßig von 0 auf 4 m/s. Die blau markierte Dreiecksfläche entspricht 4 m zurückgelegtem Weg.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
       "id": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
       "title": "Potenzielle Energie (Lageenergie)",
       "titleEn": "Potential Energy (Positional Energy)",
@@ -9810,7 +9866,8 @@
       ],
       "contains": [],
       "requires": [
-        "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+        "722857cf-f327-5740-8151-64eb92195ec8",
+        "a6469c01-6ca3-5eb2-a82c-94f3d0560b32"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -10120,7 +10177,6 @@
       ],
       "contains": [],
       "requires": [
-        "5f289cdc-fda1-4058-b44f-041ba1398e79",
         "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
         "53afbda1-5776-502b-8867-471975d7b766"
       ],
@@ -10573,7 +10629,8 @@
         "91c49019-ea51-4ce5-a919-c91c45b25e83",
         "2ac2e902-a6ad-53c9-b139-d1c63d823023",
         "2c4830e6-a8d5-48d0-9202-3b7d18a419c2",
-        "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75"
+        "ae5010cc-ea8d-5b14-aa4a-b0f2b5846a75",
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -18993,7 +19050,8 @@
       "requires": [
         "fcf8580c-ecfd-58ea-bbf5-a1b29c9ecf8e",
         "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
-        "f8704a7b-e93d-4e32-b0f9-1b171545fe28"
+        "f8704a7b-e93d-4e32-b0f9-1b171545fe28",
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -39255,7 +39313,8 @@
       },
       "requires": [
         "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
-        "327302e3-5b36-46f8-9c16-73f24583b0eb"
+        "327302e3-5b36-46f8-9c16-73f24583b0eb",
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f"
       ],
       "contains": [],
       "examples": [],

@@ -1,0 +1,68 @@
+{
+  "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+  "imagePixels": [
+    1600,
+    900
+  ],
+  "displayReviewWidths": [
+    1600,
+    360
+  ],
+  "decision": "accepted_after_regeneration",
+  "assetSha256": "7d16a03948c13f1660a67ec748bda52f5cd0b2736c811e20447af710cc8ee77a",
+  "provider": "OpenAI / Codex image_gen",
+  "providerPasses": [
+    {
+      "attempt": 1,
+      "sourceSha256": "68eb57bcf6c17b65f782b78179ff42c7b9032f8d2c48a2436290156c7eb30c22",
+      "decision": "reject",
+      "reason": "Der abgesetzte Bezugsstrich war bei 720 px rund 151 px lang, der 2-N-Pfeil nur rund 139 px."
+    },
+    {
+      "attempt": 2,
+      "sourceSha256": "5eefec14a7270cf2e0140bc353d1624d74b561b1eeb42147562a3ddda4600464",
+      "decision": "accept",
+      "finalPixelMeasurements": {
+        "forceAnchor": [
+          250,
+          490
+        ],
+        "forceTip": [
+          560,
+          490
+        ],
+        "scaleTickCenters": [
+          [
+            242,
+            545
+          ],
+          [
+            548,
+            545
+          ]
+        ],
+        "forceSpanPx": 310,
+        "scaleSpanPx": 306,
+        "differenceAt360Px": 0.9,
+        "chartOrigin": [
+          785,
+          712
+        ],
+        "chartEnd": [
+          1360,
+          268
+        ]
+      },
+      "reason": "Der Pfeil beginnt am schwarzen Punkt auf dem Wagen und zeigt nach rechts. 2 N entsprechen einem orangefarbenen Bezugsstrich; die Spitze bezeichnet keinen Ort. Die Dreiecksfläche unter v(t) beträgt ½ · 2 s · 4 m/s = 4 m. Achsen, Einheiten und Zahlen sind bei 360 px lesbar."
+    }
+  ],
+  "assetCopies": [
+    "curricula/DE/Gymnasium/visualizations/physik/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b.jpg",
+    "app/public/assets/goal-visualizations/physik/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b.jpg",
+    "backend/src/main/resources/static/assets/goal-visualizations/physik/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b.jpg"
+  ],
+  "providerPrompts": "curricula/DE/Gymnasium/visualizations/physik/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b/prompt.de.md",
+  "cardId": "physics_e_kinetic_energy_from_work",
+  "unchangedFormulaCard": "physics_e_cov_023",
+  "course": "Klassischer Massepunkt; bei 1 kg und 2 N folgt die dargestellte Steigung 2 m/s². Der Kraftmaßstab ist separat vom gezeichneten Ort, die Geschwindigkeit ist die Ordinate. Die Achsenpfeile sind keine Kräfte am Körper."
+}
