@@ -57,7 +57,7 @@ class LearningPlanScopeResolverTest {
     }
 
     @Test
-    void oldUnvalidatedGoalIdDoesNotBreakUsableDatedLearningButExplicitInvalidSelectionFailsClosed() {
+    void oldUnvalidatedGoalIdDoesNotBreakUsableDatedLearningButExplicitInvalidSelectionIsReported() {
         var legacy = new LearnerLearningPlanApi.Block("old", "milestone", "removed", "Alter Termin",
                 null, null, TODAY, null);
         var learning = new LearnerLearningPlanApi.Block("section", "learning", null, "Plan",

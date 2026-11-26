@@ -4540,11 +4540,28 @@ public class LearnerService {
         }
         List<String> prospectiveFocus = List.copyOf(subjectAtoms);
         if (prospectiveFocus.isEmpty()) return List.of();
-        Set<String> followedScope = followedLearningScopeIds(learner, projection, prospectiveFocus);
+        // Only this subject's own plan binds an explicit request for the subject. The learning
+        // path holds prerequisites of other subjects; they must not draw the exam of another
+        // subject into this one (issue #205).
+        List<LearnerLearningPlan> followed = currentFollowedLearningPlans(learner);
+        Set<String> followedScope = followedLearningScopeIds(learner, projection, prospectiveFocus,
+                followed.stream().filter(plan -> landscapeId.equals(plan.getLandscapeId())).toList());
         if (followedScope != null && followedScope.isEmpty()) return List.of();
+        // A prerequisite of another subject is bound by that subject's own plan, exactly as the
+        // write that starts it: what this subject offers must be a goal that can be started.
+        Map<String, Boolean> startable = new HashMap<>();
         return getRichFrontier(learner, projection, richFrontierFacts(learner, projection),
                 false, prospectiveFocus, false, followedScope, true).stream()
                 .filter(goal -> "atomic".equals(goal.type()))
+                .filter(goal -> {
+                    String owner = landscapeService.getLandscapeIdForGoal(goal.id());
+                    if (owner == null || owner.equals(landscapeId)) return true;
+                    return startable.computeIfAbsent(goal.id(), id -> {
+                        Set<String> ownerScope = followedLearningScopeIds(learner, projection, List.of(id),
+                                followed.stream().filter(plan -> owner.equals(plan.getLandscapeId())).toList());
+                        return ownerScope == null || ownerScope.contains(id);
+                    });
+                })
                 .toList();
     }
 
@@ -5259,16 +5276,18 @@ public class LearnerService {
         boolean unavailablePlan = false;
         for (LearnerLearningPlan plan : followed) {
             if (!requestedLandscapes.isEmpty() && !requestedLandscapes.contains(plan.getLandscapeId())) continue;
-            boolean explicitExam = false;
             try {
                 var captured = readPortableLearningPlanBlocks(plan);
-                explicitExam = captured.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
-                        && block.goalIds() != null && !block.goalIds().isEmpty());
                 validateFollowedLearningPlanShape(captured);
                 var blocks = LearnerLearningPlanService.effectivePlanBlocks(this, learner, plan.getLandscapeId(), captured);
-                if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())) {
-                    hasExam |= explicitExam;
-                    unavailablePlan |= !explicitExam;
+                // A plan that cannot be evaluated today defines no exam scope and leaves ordinary
+                // learning open; the plan status keeps reporting it (Product Owner, 26 November
+                // 2026, issue #205). Only an exam day can narrow learning, so only then is the
+                // complete compatibility of the stored plan decisive.
+                if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())
+                        || LearnerLearningPlanService.hasActiveExamDay(captured) && !isLearningPlanCompatible(
+                                learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
+                    unavailablePlan = true;
                     continue;
                 }
                 var scope = LearningPlanScopeResolver.resolve(blocks, asOf,
@@ -5282,11 +5301,9 @@ public class LearnerService {
                         block.unitAssignment() != null)) ordinaryLearning = true;
             } catch (ResponseStatusException exception) {
                 if (exception.getStatusCode().is5xxServerError()) throw exception;
-                hasExam |= explicitExam;
-                unavailablePlan |= !explicitExam;
+                unavailablePlan = true;
             } catch (IllegalStateException | IllegalArgumentException exception) {
-                hasExam |= explicitExam;
-                unavailablePlan |= !explicitExam;
+                unavailablePlan = true;
             }
         }
         if (!hasExam && (ordinaryLearning || unavailablePlan)) return null;

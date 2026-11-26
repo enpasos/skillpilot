@@ -2032,9 +2032,184 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThatCode(() -> learningPlans.resumeExplicitly(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today)))
                 .doesNotThrowAnyException();
         assertThat(map(context(), "learningPlanToday")).containsEntry("followLearningPlans", followingPlans);
-        if (!followingPlans) {
-            // Without plan following the outdated plan limits nothing.
-            assertThat(learners.getLearnerState(learnerId).frontier()).isNotEmpty();
+        // The outdated plan limits nothing, with or without plan following (issue #205).
+        assertThat(learners.getLearnerState(learnerId).frontier()).isNotEmpty();
+    }
+
+    // Product Owner, 26 November 2026 (issue #205): a plan that cannot be evaluated defines no exam
+    // scope. Before, such a plan with an exam day closed its subject while plans were followed: no
+    // frontier, no resume and no continuation, although the backend tells the coach that plans
+    // never limit learning within the Personal Curriculum. The plan status keeps reporting the
+    // plan as outdated, and an exam day that can be evaluated binds learning to its topics as before.
+    @ParameterizedTest
+    @ValueSource(strings = {"courseChanged", "topicUnknown", "storedAsOutdated", "learningGoalUnknown",
+            "onlyPausedLearning"})
+    void planWithAnExamDayThatCannotBeEvaluatedLeavesOrdinaryLearningOpen(String cause) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var learning = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, required, List.of(section), true);
+        var examDay = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, monday.plusDays(10), null, List.of(section), true);
+        learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "E.1 mit Klausur", List.of(learning, examDay)), today);
+        java.util.function.Consumer<Boolean> follow = enabled -> transactions.executeWithoutResult(status -> {
+            var following = learnerRepository.findById(learnerId).orElseThrow();
+            following.setFollowLearningPlans(enabled);
+            learnerRepository.saveAndFlush(following);
+        });
+        Runnable followPlans = () -> follow.accept(true);
+        java.util.function.Supplier<List<String>> subjectFrontier = () -> learners
+                .getPersonalCurriculumSubjectFrontier(learnerId, physics).stream().map(goal -> goal.id()).toList();
+        followPlans.run();
+
+        // The exam day of a plan that can be evaluated binds learning to its topics.
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isFalse();
+        assertThat(learners.getLearnerState(learnerId).frontier()).isNotEmpty()
+                .allSatisfy(goal -> assertThat(required).contains(goal.id()));
+        assertThat(map(context(), "learningPlanToday")).containsEntry("evaluable", true)
+                .containsEntry("resumeAvailable", true);
+
+        var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        switch (cause) {
+            case "courseChanged" -> {
+                // The sections of the Leistungskurs view have other ids than those of the Grundkurs view.
+                assertThat(configureHessianMotionUnit("G9", "SekII", "LK")).isNotEqualTo(section);
+                followPlans.run();
+            }
+            case "topicUnknown" -> {
+                record.setBlocksJson(mapper.writeValueAsString(List.of(learning, new LearnerLearningPlanApi.Block(
+                        "exam", "milestone", null, "Klausur", null, null, monday.plusDays(10), null,
+                        List.of(UUID.randomUUID().toString()), true))));
+                storedPlans.saveAndFlush(record);
+            }
+            case "storedAsOutdated" -> {
+                // As a backup stores a plan it could not read; here the exam topic itself still resolves.
+                record.setCurriculumId(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
+                storedPlans.saveAndFlush(record);
+            }
+            case "onlyPausedLearning" -> {
+                // The outdated plan pauses all its ordinary learning. A plan that cannot be evaluated
+                // defines no such choice either; the continuation the status publishes must work.
+                record.setCurriculumId(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
+                record.setBlocksJson(mapper.writeValueAsString(List.of(new LearnerLearningPlanApi.Block("section",
+                        "learning", section, "E.1", monday, monday, null, required, List.of(section), false), examDay)));
+                storedPlans.saveAndFlush(record);
+            }
+            default -> {
+                // The curriculum is unchanged and the exam topic resolves, but the plan names a goal
+                // the scope of the learner does not know.
+                var unknown = new java.util.ArrayList<>(required);
+                unknown.add(UUID.randomUUID().toString());
+                record.setBlocksJson(mapper.writeValueAsString(List.of(new LearnerLearningPlanApi.Block("section",
+                        "learning", section, "E.1", monday, monday, null, unknown, List.of(section), true), examDay)));
+                storedPlans.saveAndFlush(record);
+            }
+        }
+
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
+        assertThat(learners.getLearnerState(learnerId).frontier()).isNotEmpty();
+        // The plan narrows nothing: the subject offers what it offers without plan following.
+        List<String> offered = subjectFrontier.get();
+        follow.accept(false);
+        assertThat(offered).isNotEmpty().isEqualTo(subjectFrontier.get());
+        followPlans.run();
+        var status = map(context(), "learningPlanToday");
+        assertThat(status).containsEntry("followLearningPlans", true).containsEntry("resumeAvailable", true)
+                .containsEntry("evaluable", false);
+        var subject = ((List<?>) status.get("subjects")).stream().map(Map.class::cast)
+                .filter(entry -> entry.get("subject").toString().startsWith("Physik")).findFirst().orElseThrow();
+        assertThat(subject.get("canContinue")).isEqualTo(true);
+        assertThat(subject.get("evaluable")).isEqualTo(false);
+
+        // The explicit continuation of the coach picks a goal of the Personal Curriculum.
+        var resumed = successful(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN,
+                writeArgs("resume-" + cause, version(), Map.of()));
+        String active = learners.getLearner(learnerId).getActiveGoalId();
+        assertThat(active).isNotNull();
+        assertThat(map(map(resumed, "context"), "activeGoal")).containsEntry("id", active);
+        assertThat(learners.getPlanningScope(learnerId, physics).scopeAtomicGoalIds()).contains(active);
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
+    }
+
+    // The learning path of a subject holds prerequisites of other subjects. They must not draw the
+    // exam of another subject into an explicit request for this subject: the Mathematics exam binds
+    // Mathematics, and Physics, whose own plan cannot be evaluated, stays open (issue #205).
+    @ParameterizedTest
+    @ValueSource(booleans = {false, true})
+    void examOfAnotherSubjectDoesNotCloseASubjectWhosePlanCannotBeEvaluated(boolean autoPilot) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
+        curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "GK")));
+        learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+        learner.setAutoPilot(autoPilot);
+        learnerRepository.saveAndFlush(learner);
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.1 mit Klausur", List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                        null, required, List.of(section), true),
+                new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                        null, null, monday.plusDays(10), null, List.of(section), true))), today);
+        java.util.function.Function<String, List<String>> subjectFrontier = subject -> learners
+                .getPersonalCurriculumSubjectFrontier(learnerId, subject).stream().map(goal -> goal.id()).toList();
+        // What Physics offers in ordinary learning holds a Mathematics prerequisite. The exam topic
+        // is another Mathematics goal, so that this prerequisite lies outside the exam.
+        List<String> ordinaryPhysics = subjectFrontier.apply(physics);
+        java.util.function.Predicate<String> isMath = id -> MATH.equals(landscapeDefinitions.getLandscapeIdForGoal(id));
+        assertThat(ordinaryPhysics).anyMatch(isMath).anyMatch(isMath.negate());
+        // "Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen"
+        String mathGoal = "3016ec37-1c2e-47db-83f5-e767923bc97e";
+        assertThat(ordinaryPhysics).doesNotContain(mathGoal);
+        learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik mit Klausur", List.of(
+                new LearnerLearningPlanApi.Block("topic", "learning", mathGoal, "Mathematik", monday, monday.plusDays(4),
+                        null, List.of(mathGoal), List.of(mathGoal), true),
+                new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                        null, null, monday.plusDays(10), null, List.of(mathGoal), true))), today);
+        transactions.executeWithoutResult(status -> {
+            var following = learnerRepository.findById(learnerId).orElseThrow();
+            following.setFollowLearningPlans(true);
+            learnerRepository.saveAndFlush(following);
+        });
+        // Both exams can be evaluated: each binds its own subject.
+        assertThat(subjectFrontier.apply(physics)).isNotEmpty().allSatisfy(id -> assertThat(required).contains(id));
+        assertThat(subjectFrontier.apply(MATH)).isSubsetOf(mathGoal);
+
+        var outdated = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        outdated.setCurriculumId(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
+        storedPlans.saveAndFlush(outdated);
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
+        assertThat(learningPlans.getPlan(learnerId, MATH, today).stale()).isFalse();
+
+        List<String> physicsOpen = subjectFrontier.apply(physics);
+        // The Mathematics exam keeps binding Mathematics, also where Physics needs Mathematics: a
+        // Mathematics prerequisite outside the exam is not offered, because it could not be
+        // started. Every Physics goal of ordinary learning is offered; neither plan narrows them.
+        assertThat(subjectFrontier.apply(MATH)).isSubsetOf(mathGoal);
+        assertThat(physicsOpen).isNotEmpty()
+                .isEqualTo(ordinaryPhysics.stream().filter(isMath.negate()).toList());
+
+        var status = map(context(), "learningPlanToday");
+        var subjects = ((List<?>) status.get("subjects")).stream().map(Map.class::cast).toList();
+        var mathEntry = subjects.stream().filter(entry -> entry.get("subject").toString().startsWith("Mathematik"))
+                .findFirst().orElseThrow();
+        var physicsEntry = subjects.stream().filter(entry -> entry.get("subject").toString().startsWith("Physik"))
+                .findFirst().orElseThrow();
+        assertThat(mathEntry.get("evaluable")).isEqualTo(true);
+        assertThat(physicsEntry.get("evaluable")).isEqualTo(false);
+        // With AutoPilot the backend chooses, and an exam that can be evaluated binds its choice as
+        // before. Without it the learner may name Physics, and the published switch starts a goal there.
+        assertThat(physicsEntry.get("canContinue")).isEqualTo(!autoPilot);
+        if (!autoPilot) {
+            successful(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
+                    writeArgs("explicit-physics", version(), Map.of("subject", physicsEntry.get("subject"))));
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsOpen.getFirst());
         }
     }
 
