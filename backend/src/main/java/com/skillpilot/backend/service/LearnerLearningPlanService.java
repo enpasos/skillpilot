@@ -1999,10 +1999,10 @@ public class LearnerLearningPlanService {
                 // Explicit personal-curriculum learning remains available.
                 return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
             }
-            var scope = learningScope(skillpilotId, landscapeId, blocks,
-                    LocalDate.now(clock.withZone(PLAN_ZONE)), true);
-            if ("exam".equals(scope.kind())) return firstScopeContinuationGoal(skillpilotId, landscapeId, blocks,
-                    LocalDate.now(clock.withZone(PLAN_ZONE)), learners.getMastery(skillpilotId), true).stream().toList();
+            LocalDate asOf = LocalDate.now(clock.withZone(PLAN_ZONE));
+            // Only a plan that can be evaluated today binds continuation to its exam.
+            if (definesExamScope(skillpilotId, plan, asOf)) return firstScopeContinuationGoal(skillpilotId,
+                    landscapeId, blocks, asOf, learners.getMastery(skillpilotId), true).stream().toList();
             boolean hasInactiveLearning = blocks.stream().anyMatch(block -> block != null
                     && !block.isActive() && block.isAtomicLearning() && block.unitAssignment() == null);
             if (!hasInactiveLearning) return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
@@ -2036,25 +2036,37 @@ public class LearnerLearningPlanService {
         return "exam".equals(scope.kind()) ? scope.goalIds() : List.of(selected.focusGoalId());
     }
 
+    /**
+     * A plan defines an exam scope only while it can be evaluated today. An outdated plan and a
+     * plan whose exam day no longer resolves narrow nothing: ordinary learning in the subject stays
+     * open and the plan status keeps reporting the plan (Product Owner, 26 November 2026, issue
+     * #205). {@code LearnerService.followedLearningScopeIds} applies the same rule to the frontier.
+     */
     private boolean hasExamScope(String skillpilotId, List<LearnerLearningPlan> candidatePlans, LocalDate asOf) {
-        for (var plan : candidatePlans) {
-            boolean explicitExam = false;
-            try {
-                List<LearnerLearningPlanApi.Block> blocks = readBlocks(plan);
-                explicitExam = blocks.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
-                        && block.goalIds() != null && !block.goalIds().isEmpty());
-                if ("exam".equals(learningScope(skillpilotId, plan.getLandscapeId(), blocks, asOf, true).kind())) {
-                    return true;
-                }
-            } catch (ResponseStatusException exception) {
-                if (exception.getStatusCode().is5xxServerError()) throw exception;
-                if (explicitExam) return true;
-            } catch (IllegalStateException exception) {
-                if (explicitExam) return true;
-                // An unreadable old schedule supplies no new exam selection.
-            }
+        return candidatePlans.stream().anyMatch(plan -> definesExamScope(skillpilotId, plan, asOf));
+    }
+
+    private boolean definesExamScope(String skillpilotId, LearnerLearningPlan plan, LocalDate asOf) {
+        try {
+            List<LearnerLearningPlanApi.Block> captured = readStoredBlocks(plan);
+            if (!hasActiveExamDay(captured) || !learners.isLearningPlanCompatible(
+                    skillpilotId, plan.getCurriculumId(), plan.getLandscapeId(), captured)) return false;
+            List<LearnerLearningPlanApi.Block> blocks = effectivePlanBlocks(
+                    learners, plan.getLearner(), plan.getLandscapeId(), captured);
+            return "exam".equals(learningScope(skillpilotId, plan.getLandscapeId(), blocks, asOf, true).kind());
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) throw exception;
+            return false;
+        } catch (IllegalStateException exception) {
+            // An unreadable stored schedule supplies no exam selection.
+            return false;
         }
-        return false;
+    }
+
+    /** Only an active exam day that names topics can define an exam scope. */
+    static boolean hasActiveExamDay(List<LearnerLearningPlanApi.Block> blocks) {
+        return blocks.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
+                && !block.focusGoalIds().isEmpty());
     }
 
     /** Retains the legacy single-focus boundary while supporting full exam selections. */

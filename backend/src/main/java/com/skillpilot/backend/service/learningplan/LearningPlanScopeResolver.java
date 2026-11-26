@@ -82,8 +82,9 @@ public final class LearningPlanScopeResolver {
         try {
             return expandRoots.apply(exam.focusGoalIds());
         } catch (ResponseStatusException exception) {
-            // Legacy single goalId was unvalidated descriptive metadata. Explicit
-            // lists are authoritative and must still fail closed when invalid.
+            // Legacy single goalId was unvalidated descriptive metadata. An explicit list
+            // is authoritative: when it is invalid the plan cannot be evaluated, and the
+            // callers then apply no exam scope (Product Owner, 26 November 2026).
             if (exam.goalIds() == null && exception.getStatusCode().is4xxClientError()) return List.of();
             throw exception;
         }

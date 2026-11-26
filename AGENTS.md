@@ -2362,6 +2362,14 @@ activation preserves its full goal set as Level-3 focus rather than narrowing
 it to the active goal cursor. Multiple exam scopes are not unioned; the next
 active exam is the initial selection. Automatic handoff and date changes must
 not silently replace a running exam scope or add prerequisite goals.
+Only a plan that can be evaluated today defines an exam scope (Product Owner,
+26 November 2026, issue #205). An outdated plan, and a plan whose exam topic no
+longer resolves, narrows nothing: ordinary learning in the subject stays open
+while plans are followed, resume and continuation remain published, and the
+plan status keeps reporting the plan as not evaluable. The frontier
+(`LearnerService.followedLearningScopeIds`) and the plan service
+(`LearnerLearningPlanService.hasExamScope`) apply the same test, the
+compatibility of the stored plan; a change to one needs the other.
 The selected exam roots use the ordinary Level 3 focus rules above. In normal
 mode an outside prerequisite must not turn this induced graph into an empty
 frontier; internal prerequisites still determine the next eligible goal.

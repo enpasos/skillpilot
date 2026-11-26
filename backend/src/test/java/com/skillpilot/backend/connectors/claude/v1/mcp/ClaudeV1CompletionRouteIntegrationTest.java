@@ -2032,10 +2032,90 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThatCode(() -> learningPlans.resumeExplicitly(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today)))
                 .doesNotThrowAnyException();
         assertThat(map(context(), "learningPlanToday")).containsEntry("followLearningPlans", followingPlans);
-        if (!followingPlans) {
-            // Without plan following the outdated plan limits nothing.
-            assertThat(learners.getLearnerState(learnerId).frontier()).isNotEmpty();
+        // The outdated plan limits nothing, with or without plan following (issue #205).
+        assertThat(learners.getLearnerState(learnerId).frontier()).isNotEmpty();
+    }
+
+    // Product Owner, 26 November 2026 (issue #205): a plan that cannot be evaluated defines no exam
+    // scope. Before, such a plan with an exam day closed its subject while plans were followed: no
+    // frontier, no resume and no continuation, although the backend tells the coach that plans
+    // never limit learning within the Personal Curriculum. The plan status keeps reporting the
+    // plan as outdated, and an exam day that can be evaluated binds learning to its topics as before.
+    @ParameterizedTest
+    @ValueSource(strings = {"courseChanged", "topicUnknown", "storedAsOutdated", "learningGoalUnknown"})
+    void planWithAnExamDayThatCannotBeEvaluatedLeavesOrdinaryLearningOpen(String cause) throws Exception {
+        String section = selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var required = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var learning = new LearnerLearningPlanApi.Block("section", "learning", section, "E.1", monday, monday,
+                null, required, List.of(section), true);
+        var examDay = new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                null, null, monday.plusDays(10), null, List.of(section), true);
+        learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "E.1 mit Klausur", List.of(learning, examDay)), today);
+        Runnable followPlans = () -> transactions.executeWithoutResult(status -> {
+            var following = learnerRepository.findById(learnerId).orElseThrow();
+            following.setFollowLearningPlans(true);
+            learnerRepository.saveAndFlush(following);
+        });
+        followPlans.run();
+
+        // The exam day of a plan that can be evaluated binds learning to its topics.
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isFalse();
+        assertThat(learners.getLearnerState(learnerId).frontier()).isNotEmpty()
+                .allSatisfy(goal -> assertThat(required).contains(goal.id()));
+        assertThat(map(context(), "learningPlanToday")).containsEntry("evaluable", true)
+                .containsEntry("resumeAvailable", true);
+
+        var record = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        switch (cause) {
+            case "courseChanged" -> {
+                // The sections of the Leistungskurs view have other ids than those of the Grundkurs view.
+                assertThat(configureHessianMotionUnit("G9", "SekII", "LK")).isNotEqualTo(section);
+                followPlans.run();
+            }
+            case "topicUnknown" -> {
+                record.setBlocksJson(mapper.writeValueAsString(List.of(learning, new LearnerLearningPlanApi.Block(
+                        "exam", "milestone", null, "Klausur", null, null, monday.plusDays(10), null,
+                        List.of(UUID.randomUUID().toString()), true))));
+                storedPlans.saveAndFlush(record);
+            }
+            case "storedAsOutdated" -> {
+                // As a backup stores a plan it could not read; here the exam topic itself still resolves.
+                record.setCurriculumId(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
+                storedPlans.saveAndFlush(record);
+            }
+            default -> {
+                // The curriculum is unchanged and the exam topic resolves, but the plan names a goal
+                // the scope of the learner does not know.
+                var unknown = new java.util.ArrayList<>(required);
+                unknown.add(UUID.randomUUID().toString());
+                record.setBlocksJson(mapper.writeValueAsString(List.of(new LearnerLearningPlanApi.Block("section",
+                        "learning", section, "E.1", monday, monday, null, unknown, List.of(section), true), examDay)));
+                storedPlans.saveAndFlush(record);
+            }
         }
+
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
+        assertThat(learners.getLearnerState(learnerId).frontier()).isNotEmpty();
+        var status = map(context(), "learningPlanToday");
+        assertThat(status).containsEntry("followLearningPlans", true).containsEntry("resumeAvailable", true)
+                .containsEntry("evaluable", false);
+        var subject = ((List<?>) status.get("subjects")).stream().map(Map.class::cast)
+                .filter(entry -> entry.get("subject").toString().startsWith("Physik")).findFirst().orElseThrow();
+        assertThat(subject.get("canContinue")).isEqualTo(true);
+        assertThat(subject.get("evaluable")).isEqualTo(false);
+
+        // The explicit continuation of the coach picks a goal of the Personal Curriculum.
+        var resumed = successful(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN,
+                writeArgs("resume-" + cause, version(), Map.of()));
+        String active = learners.getLearner(learnerId).getActiveGoalId();
+        assertThat(active).isNotNull();
+        assertThat(map(map(resumed, "context"), "activeGoal")).containsEntry("id", active);
+        assertThat(learners.getPlanningScope(learnerId, physics).scopeAtomicGoalIds()).contains(active);
+        assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isTrue();
     }
 
     // A plan that is not well formed is no outdated plan. Its backup is refused as before, and the

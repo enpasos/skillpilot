@@ -5259,16 +5259,18 @@ public class LearnerService {
         boolean unavailablePlan = false;
         for (LearnerLearningPlan plan : followed) {
             if (!requestedLandscapes.isEmpty() && !requestedLandscapes.contains(plan.getLandscapeId())) continue;
-            boolean explicitExam = false;
             try {
                 var captured = readPortableLearningPlanBlocks(plan);
-                explicitExam = captured.stream().anyMatch(block -> block.isActive() && "milestone".equals(block.kind())
-                        && block.goalIds() != null && !block.goalIds().isEmpty());
                 validateFollowedLearningPlanShape(captured);
                 var blocks = LearnerLearningPlanService.effectivePlanBlocks(this, learner, plan.getLandscapeId(), captured);
-                if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())) {
-                    hasExam |= explicitExam;
-                    unavailablePlan |= !explicitExam;
+                // A plan that cannot be evaluated today defines no exam scope and leaves ordinary
+                // learning open; the plan status keeps reporting it (Product Owner, 26 November
+                // 2026, issue #205). Only an exam day can narrow learning, so only then is the
+                // complete compatibility of the stored plan decisive.
+                if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())
+                        || LearnerLearningPlanService.hasActiveExamDay(captured) && !isLearningPlanCompatible(
+                                learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
+                    unavailablePlan = true;
                     continue;
                 }
                 var scope = LearningPlanScopeResolver.resolve(blocks, asOf,
@@ -5282,11 +5284,9 @@ public class LearnerService {
                         block.unitAssignment() != null)) ordinaryLearning = true;
             } catch (ResponseStatusException exception) {
                 if (exception.getStatusCode().is5xxServerError()) throw exception;
-                hasExam |= explicitExam;
-                unavailablePlan |= !explicitExam;
+                unavailablePlan = true;
             } catch (IllegalStateException | IllegalArgumentException exception) {
-                hasExam |= explicitExam;
-                unavailablePlan |= !explicitExam;
+                unavailablePlan = true;
             }
         }
         if (!hasExam && (ordinaryLearning || unavailablePlan)) return null;
