@@ -1,0 +1,732 @@
+{
+  "markerIdentity": "Independent blind marker A, V3, /root/a2_k4v2_marker1",
+  "independenceStatement": "Für diesen Durchgang ausschließlich das aktuelle Paket /tmp/skillpilot-a2/k4-blind-v3 als Bewertungsinput gelesen: Kandidat, Aufgabe/Lösung, Rubrik, Instruktion, Scope, alle 20 DE/EN-Skripte und tatsächliche Stimulus-/Zeichnungs-PNGs. V3 vollständig neu beurteilt und vermessen. Frühere eigene V2-Arbeit ist im Gespräch bekannt; keine früheren Ergebnisdateien oder Schreibskripte geöffnet, keine früheren Punkte importiert. Keine anderen Reviewer, Autorensollwerte oder Abgleichdateien konsultiert. Keine Bewertungspunkte an andere Reviewer kommuniziert. Elternagent erhielt lediglich eine Inspektionsstatusmeldung. Kein Repository, keine Memory-Dateien oder externen Quellen benutzt; keine Lernendenresultate geschrieben.",
+  "rubricAccepted": true,
+  "releaseDecision": {
+    "decision": "approved",
+    "taskAccepted": true,
+    "caseMaterialAccepted": true,
+    "pointContractAccepted": true,
+    "blockingFindings": [],
+    "ambiguities": [],
+    "scope": "Fachliche Freigabe des aktuellen einzelnen Aufgaben-/Fall-/Punktepakets; reale Ziel-, View- und Hostintegration separat."
+  },
+  "maxPoints": 16,
+  "passingPoints": 13.5,
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "pass",
+      "finding": "Die aktuellen Stimulus-Pixel und das 0–3-cm-Lineal ergeben 3 cm Pfeillänge, 6 m/s und 3 m Körperabstand. Die Körperpunkte überdecken wenige Schaft-/Kopfpixel. Die quantitative Musterlösung ist korrekt: 2 cm neuer Pfeil, Spitze 1 cm vor B. Alle zehn aktuellen Zeichnungen wurden geöffnet und gegen ihr eigenes Lineal vermessen."
+    },
+    {
+      "id": "F2",
+      "severity": "pass",
+      "finding": "Aufgabe fachlich richtig, sprachlich klar und für vorbereitete Sek-I-Lernende angemessen. Der Bezugsrahmen wird ausdrücklich in beiden Sprachversionen verlangt. Lesen, tatsächliches Zeichnen, Maßstabswechsel und unabhängige Erklärung der Spitzenbedeutung werden einzeln nachweisbar geprüft. Im Coach-Chat mit tatsächlicher Bildabgabe fachlich bewertbar; reale Host-/Upload-Akzeptanz ist dadurch nicht belegt."
+    },
+    {
+      "id": "F3",
+      "severity": "pass",
+      "caseIds": [
+        "S06"
+      ],
+      "finding": "S06 enthält aktuell die vollständige allgemeine Kausalbegründung Eigenschaft→Ansatz am Träger. Kein konkreter Träger und kein richtiger Ansatz, aber genau ein Ergänzungspunkt A. R08 zeigt den benannten 0,4-cm-Versatz tatsächlich. Keine Behauptung, ein Pfeil dürfe generell überall beginnen. A=1 und Gesamt=13 ohne offene Auslegung."
+    },
+    {
+      "id": "F4",
+      "severity": "pass",
+      "caseIds": [
+        "S14"
+      ],
+      "finding": "R05 zeigt aktuell den Ansatz an B und das Etikett v_B. Text und Zeichnung sind innerhalb der absichtlich aufrechterhaltenen falschen Trägerregel konsistent; A=0. Richtung, Betrag und fachlich richtige Spitzendeutung sind unabhängig nachgewiesen. Die konsistente Folgevoraussage 2 cm rechts von B wird nicht erneut bestraft. Gesamt=12 ohne offene Auslegung."
+    },
+    {
+      "id": "F5",
+      "severity": "pass",
+      "finding": "Punktevertrag: viermal 4, davon je 3 Kern +1 Ergänzung, Bestehen allein ab 13,5. Bei vollständig fehlendem Kern einer Leistung sind höchstens 1+4+4+4=13 erreichbar. Alle vier Ergänzungsfälle (A:S06, B:S07/S12, C:S08, D:S03) fallen durch. Aufrechterhaltene Kernfehlvorstellung ergibt höchstens 12. Keine versteckte Zusatzsperre angewandt."
+    },
+    {
+      "id": "F6",
+      "severity": "pass",
+      "finding": "Omissions-/Fehlvorstellungsschutz: S03 erreicht mit richtiger Zeichnung, Voraussage und Invarianz ohne Spitzenerklärung nur 13; S20 mit völlig fehlender D-Antwort nur 12. S17/S18 erreichen mit D-Kernfehlvorstellung nur 12. S19 erreicht nach ausdrücklicher Rücknahme vollständig richtiger Erklärung 16."
+    },
+    {
+      "id": "F7",
+      "severity": "pass",
+      "finding": "Kleine Fehler und Grenze: S02/S10 je isolierter Einheiten-/Legendenfehler, S11 fehlender Kopf bei unabhängiger rechter Richtung, S13 einmaliger Rechenfehler mit übernommener 2,5-cm-Folge ergeben je 15,5. Kopflos ohne Richtungsbeleg (S07/S12) ergibt dagegen 13. S04=14; S05 mit zwei unabhängigen kleinen Fehlern und fehlendem 1,5-P-Grund erreicht genau 13,5 und besteht. Ein weiterer unabhängiger 0,5-P-Verlust ergäbe 13 und Nichtbestehen."
+    },
+    {
+      "id": "F8",
+      "severity": "pass",
+      "finding": "Alle 20 DE- und alle 20 EN-Texte aktuell gelesen. Aufgaben- und Bewertungsfassungen sind fachlich äquivalent; sämtliche Sprachpaare erhalten gleiche Kriterienpunkte und dieselbe Entscheidung. Kein Beleg wurde aus korrektem Endwert oder aus beabsichtigter statt tatsächlicher Zeichnung ergänzt."
+    },
+    {
+      "id": "F9",
+      "severity": "scope-limit",
+      "finding": "Die Freigabe gilt für die im Paket erklärte einzelne Leistung: Geschwindigkeit zuordnen, Richtung/Betrag lesen, Maßstab geändert zeichnen, Spitze als Nicht-Ort/Nicht-Kontakt erklären. Das externe gedeckte Ziel ist nur per ID genannt; dessen eventuell darüber hinausgehender Wortlaut und die reale Aktivierung in 42 Views sind im Blindpaket nicht nachgewiesen. Keine Behauptung offizieller Land-Quellenprüfung oder realer Lernendenresultate."
+    }
+  ],
+  "imageInspection": {
+    "allReferencedImagesOpened": true,
+    "imageCount": 11,
+    "method": "Aktuelle Pixel visuell geöffnet; Körpermittelpunkte, Endpunkte, Pfeilköpfe und Legenden gelesen, Längen am jeweils eingeblendeten Lineal normiert. Blaue Schaftintervalle zusätzlich mit PIL aus den aktuellen Dateien ausgelesen.",
+    "measurements": {
+      "stimulus/arrow-scale-stimulus-v3.png": {
+        "sizePx": [
+          720,
+          420
+        ],
+        "ruler0X": 70,
+        "ruler3CmX": 610,
+        "pxPerCm": 180,
+        "AX": 70,
+        "BX": 610,
+        "arrowLengthCm": 3,
+        "speedMPerS": 6,
+        "bodySeparationM": 3
+      },
+      "R01": {
+        "AX": 290,
+        "BX": 650,
+        "pxPerCm": 120,
+        "originX": 290,
+        "tipX": 530,
+        "lengthCm": 2,
+        "head": "right",
+        "legends": "x: 1 cm=1 m; v: 1 cm=3 m/s"
+      },
+      "R02": {
+        "AX": 290,
+        "BX": 650,
+        "pxPerCm": 120,
+        "originX": 290,
+        "endX": 530,
+        "lengthCm": 2,
+        "head": false,
+        "label": "v_A"
+      },
+      "R03": {
+        "AX": 290,
+        "BX": 650,
+        "pxPerCm": 120,
+        "originX": 290,
+        "tipX": 590,
+        "lengthCm": 2.5,
+        "head": "right"
+      },
+      "R04": {
+        "AX": 290,
+        "BX": 650,
+        "pxPerCm": 120,
+        "originX": 290,
+        "tipX": 530,
+        "lengthCm": 2,
+        "head": "right",
+        "legendError": "v: 1 cm=3 m"
+      },
+      "R05": {
+        "AX": 290,
+        "BX": 650,
+        "pxPerCm": 120,
+        "originX": 650,
+        "tipX": 890,
+        "lengthCm": 2,
+        "head": "right",
+        "label": "v_B"
+      },
+      "R06": {
+        "AX": 290,
+        "BX": 650,
+        "pxPerCm": 120,
+        "originX": 290,
+        "tipX": 50,
+        "lengthCm": 2,
+        "head": "left"
+      },
+      "R07": {
+        "AX": 120,
+        "BX": 240,
+        "pxPerCm": 40,
+        "originX": 120,
+        "tipX": 840,
+        "lengthCm": 18,
+        "head": "right"
+      },
+      "R08": {
+        "AX": 290,
+        "BX": 650,
+        "pxPerCm": 120,
+        "originX": 338,
+        "tipX": 578,
+        "lengthCm": 2,
+        "originShiftCm": 0.4,
+        "tipShortOfBCm": 0.6,
+        "head": "right",
+        "label": "v"
+      },
+      "R09": {
+        "AX": 290,
+        "BX": 650,
+        "pxPerCm": 120,
+        "originX": 290,
+        "endX": 530,
+        "lengthCm": 2,
+        "head": false,
+        "label": "v"
+      },
+      "R10": {
+        "AX": 290,
+        "BX": 650,
+        "pxPerCm": 120,
+        "originX": 290,
+        "tipX": 410,
+        "lengthCm": 1,
+        "head": "right"
+      }
+    }
+  },
+  "inputSha256": {
+    "blind/drawings/R01.png": "7e112a504506c36fb11e5c0552a4adcc2581c08ed1ba74a39e2d54a4c7efe87d",
+    "blind/drawings/R02.png": "5ed01ebc0282fb5d23a7c845241e5f4d1d234bddf6f979b5f9823241d9cdcf88",
+    "blind/drawings/R03.png": "cbad2a08eb8e3b5b9b1c337e411505d61c16c5b08312d223d57e1cfeb5bb64ed",
+    "blind/drawings/R04.png": "85dc394ca252dfcf6ec8240f741932c74e56f8cf9c8da5ed49909a7a270018f9",
+    "blind/drawings/R05.png": "847957794e1e915d6c69ca2eea0c373c4d25df7a2eb8bf0017b42ebed0382873",
+    "blind/drawings/R06.png": "21557ddf214c9b58288743e2b975f3dd9de6f50e45f5e8fdfd087ef59d9b2c12",
+    "blind/drawings/R07.png": "aefb0e9ccf3d02f5a7569927002863e29a17e91ab547c751f9b1f240c2b41d6c",
+    "blind/drawings/R08.png": "7e1ea1580487b7e83db5f24373556923b2f9d1fe271e15df05262240debd7b96",
+    "blind/drawings/R09.png": "010f4b8cb1bfe49f5696471f37a1e8fc4d5a241eba21f96a7361ddd7e48c0cf7",
+    "blind/drawings/R10.png": "859fdcba5f1f508c71cc03847ae9fb6c8d13785a455fa769d384335bf3c8282c",
+    "blind/instructions.md": "ffaf9219c4c088554e5b583fdace041d675ca7f7c55d518fce9018f71b0ebd48",
+    "blind/marking-template.json": "4d508f37d79b44c551b76b2fadd723c8febdc6e8a72f2f9e272d19a309cfebc8",
+    "blind/scripts.json": "2b990001a1a0959c8442c58192bcef977580cdd363cc968d2efd38b9ba4f61c8",
+    "blind/scripts.md": "0ff5a178c733c91cd571e35b192d0ee280a7ff830ebd3f8561a5e2e51ac9b115",
+    "candidate.goal.json": "be18757b5f023e4e755fd307cef5a2999f0476899f99573ad1069407929eb8e4",
+    "rubric.json": "5a880de447c87fe8d137eda11999cf5db6a91f357257537901cbff033760c84b",
+    "scope.json": "b043db856280813cdaf86c71cd6f29892f26be04e3f83a600933e2450ea2934d",
+    "stimulus/arrow-scale-stimulus-v3.png": "0e43fa87c33c37532dd8f00bfaa40569190fa873dd8c214ec6ec01bbebb5f857",
+    "task-and-marking.md": "4346b1b32621e3d5ef612645465a7b1035f151c3f270c219a3ac89ba7e1cbba9"
+  },
+  "hashDisclosure": "Input-Hashes binden sämtliche aktuellen Paketdateien; scripts.md und Markierungsvorlage zusätzlich inventarisiert, Skriptbewertung aus scripts.json. Keine externen Bewertungsinputs.",
+  "cases": [
+    {
+      "id": "S01",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true,
+        "rationale": "A: A zugeordnet, Eigenschaft begründet, R01 beginnt an A. B: rechts zum ruhenden Boden, rechter Kopf sichtbar. C: 3·2=6 m/s, 6/3=2 cm, tatsächlich 2 cm und richtige getrennte Legenden. D: keine jetzige/zukünftige Orts- oder Kontaktbedeutung, eigener m/s-Maßstab statt Ortsstrecke, 2<3 begründet vor B, Körperorte und Geschwindigkeit unverändert."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true,
+        "rationale": "A: assigns A, explains its property and starts R01 at A. B: rightwards relative to stationary ground and visible rightward head. C: 3·2=6 m/s, 6/3=2 cm, actual 2 cm and correct separate legends. D: denies present/future place and contact, explains own m/s scale versus position distance, reasons 2<3 short of B and states unchanged positions/velocity."
+      }
+    },
+    {
+      "id": "S02",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.5,
+        "pass": true,
+        "rationale": "A/B/D vollständig durch Text und R01. C: Alle Kernbelege, richtige Zeichnung und Legenden; das einzelne abschließende 6 m ist unabhängig als Einheitenfehler belegt. Einmal 0,5 in C, keine Doppelstrafe."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.5,
+        "pass": true,
+        "rationale": "A/B/D complete in the text and R01. C: all core evidence, correct drawing and legends; the single final 6 m is independently established as a unit slip. Deduct 0.5 once in C, without double charging."
+      }
+    },
+    {
+      "id": "S03",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A/B/C vollständig mit R01. D: Nur begründetes vor B (0,5) und ausdrücklich gleiche Orte/Geschwindigkeit (0,5). Spitzendeutung und ihr fachlicher Grund ausdrücklich ausgelassen; keine Kernpunkte aus korrekter Länge erschlossen."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A/B/C complete with R01. D: only reasoned short of B (0.5) and explicitly unchanged positions/velocity (0.5). Tip interpretation and its subject reason are explicitly omitted; no core points inferred from correct length."
+      }
+    },
+    {
+      "id": "S04",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 3.5,
+          "D": 2.5
+        },
+        "total": 14.0,
+        "pass": true,
+        "rationale": "A/B vollständig. C: isoliertes Schluss-6 m bei richtiger Rechnung und R01-Legenden: einmal −0,5. D: richtige Ablehnung Ort/Kontakt 1,5; begründetes vor B 0,5; Invarianz 0,5; eigener Pfeilmaßstab als Grund ausdrücklich nicht erklärt: 0/1,5."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 3.5,
+          "D": 2.5
+        },
+        "total": 14.0,
+        "pass": true,
+        "rationale": "A/B complete. C: isolated final 6 m against correct calculation and R01 legends: −0.5 once. D: correct rejection of place/contact 1.5, reasoned short-of-B prediction 0.5, invariance 0.5; the separate arrow scale as the reason is explicitly not explained: 0/1.5."
+      }
+    },
+    {
+      "id": "S05",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 3.5,
+          "C": 3.5,
+          "D": 2.5
+        },
+        "total": 13.5,
+        "pass": true,
+        "rationale": "A: R02 an A und Eigenschaftsbegründung. B: R02 kopflos, aber unabhängiges eindeutiges rechts; einmal −0,5 Zeichenfehler. C: richtige Rechnung, 2 cm und Legenden; zusätzlich isoliertes Schluss-6 m einmal −0,5. D: Spitzendeutung 1,5 plus beide Ergänzungen 1; fachlicher Grund fehlt. Genau 13,5 bestanden."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 3.5,
+          "C": 3.5,
+          "D": 2.5
+        },
+        "total": 13.5,
+        "pass": true,
+        "rationale": "A: R02 starts at A with the property explanation. B: R02 headless but independently unambiguous rightwards; −0.5 once as a drawing slip. C: correct calculation, actual 2 cm and legends; distinct isolated final 6 m costs −0.5 once. D: tip denial 1.5 plus both supplements 1; its subject reason is absent. Exactly 13.5 passes."
+      }
+    },
+    {
+      "id": "S06",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A: Die aktuelle Antwort sagt ausdrücklich Eigenschaft des Trägers und muss deshalb an diesem beginnen: Ergänzung 1. Sie benennt keinen konkreten Träger; R08 setzt tatsächlich 0,4 cm rechts von A an, also 0/3 Kern. Keine allgemeine Regel beliebiger Ansätze behauptet. B: rechts relativ Boden und rechter Kopf. C: beide Rechnungen, echte 2 cm und Legenden. D: eigener Maßstab/keine Orts- oder Kontaktbedeutung, konsistent 0,6 cm vor B und Invarianz; A-Ansatzfehler nicht erneut abziehen. Eindeutig 13."
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A: the current answer explicitly says property of its carrier and therefore must start there: supplement 1. No actual carrier is assigned; R08 actually starts 0.4 cm right of A, so 0/3 core. No general anywhere-origin rule is claimed. B: rightwards relative to ground with a rightward head. C: both calculations, actual 2 cm and legends. D: separate scale/no place or contact, consistent 0.6 cm short of B and invariance; do not charge the A origin error again. Unambiguously 13."
+      }
+    },
+    {
+      "id": "S07",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A/C/D vollständig. B: Nur Bodenbezug 1; Ableserichtung ausdrücklich ausgelassen, R09 ist ein Strich ohne Kopf und ohne unabhängigen eindeutigen Richtungsbeleg. Keine Richtungs-Kernpunkte, kein zusätzlicher 0,5-Abzug."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A/C/D complete. B: ground reference alone 1; reading direction explicitly omitted, and R09 is a line without head or independent unambiguous direction evidence. No direction-core points and no additional 0.5 deduction."
+      }
+    },
+    {
+      "id": "S08",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A/B vollständig. C: nur die getrennten richtigen Legenden 1; kein Ablesen, keine neue Rechnung und R10 tatsächlich 1 cm statt 2 cm. Kein unabhängig belegter kleiner Rechenfehler. D: richtige Deutung und eigener Maßstab, konsistente begründete Spitze vor B sowie Invarianz; C-Fehler nicht doppelt abziehen."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A/B complete. C: correct separate legends only 1; no magnitude reading or new calculation, and R10 actually measures 1 cm rather than 2 cm. No independently evidenced minor arithmetic slip. D: correct interpretation and separate scale, consistent reasoned short-of-B prediction and invariance; do not charge the C error again."
+      }
+    },
+    {
+      "id": "S09",
+      "de": {
+        "points": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 4
+        },
+        "total": 10,
+        "pass": false,
+        "rationale": "Keine tatsächliche Zeichnung. A: A genannt 1 und Eigenschaft erklärt 1, kein Ansatzbeleg. B: rechts 1 und Bodenbezug 1, kein Zeichnungsbeleg. C: 3·2=6 belegt 1,5 und 6/3=2 belegt 0,5; keine echte Länge oder getrennten Legenden. Die bloße Behauptung, sie stünden in der Beschreibung, gibt keinen Ortsmaßstab an. D: vollständige Erklärung, begründete Voraussage und Invarianz."
+      },
+      "en": {
+        "points": {
+          "A": 2,
+          "B": 2,
+          "C": 2,
+          "D": 4
+        },
+        "total": 10,
+        "pass": false,
+        "rationale": "No actual drawing. A: A named 1 and property explained 1, no origin evidence. B: rightwards 1 and ground frame 1, no drawing evidence. C: evidenced 3·2=6 earns 1.5 and 6/3=2 earns 0.5; no actual length or separate legends. Merely claiming they are in the description supplies no position-scale label. D: full explanation, reasoned prediction and invariance."
+      }
+    },
+    {
+      "id": "S10",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.5,
+        "pass": true,
+        "rationale": "A/B/D vollständig. R04 zeigt wirklich 2 cm, aber v-Legende mit 3 m statt 3 m/s. Rechnung und Erklärung belegen unabhängig richtige Größenunterscheidung. Isolierter Legenden-Einheitenfehler: einmal −0,5 in C, nicht zusätzlich den ganzen Ergänzungspunkt verlieren."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.5,
+        "pass": true,
+        "rationale": "A/B/D complete. R04 actually measures 2 cm but its v legend says 3 m rather than 3 m/s. Calculation and explanation independently establish the correct distinction. Isolated legend unit slip: −0.5 once in C, without additionally losing the entire supplement."
+      }
+    },
+    {
+      "id": "S11",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 3.5,
+          "C": 4,
+          "D": 4
+        },
+        "total": 15.5,
+        "pass": true,
+        "rationale": "A/C/D vollständig. B: R02 wirklich kopflos, aber ausdrückliches rechts relativ zum Boden belegt den Kern unabhängig. Deshalb genau einmal −0,5 Zeichenfehler, keine Kürzung fehlender Kernbelege."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 3.5,
+          "C": 4,
+          "D": 4
+        },
+        "total": 15.5,
+        "pass": true,
+        "rationale": "A/C/D complete. B: R02 really is headless, but explicit rightwards relative to the ground independently establishes the core. Therefore exactly −0.5 once as a drawing slip, without a further core-evidence deduction."
+      }
+    },
+    {
+      "id": "S12",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A/C/D vollständig. B: Nur ruhender Boden genannt 1. Richtung ausdrücklich nicht angegeben; tatsächliches R09 ohne Kopf oder unabhängigen eindeutigen Richtungsbeleg. 0/3 Kern, kein zusätzlicher kleiner Zeichenfehler."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false,
+        "rationale": "A/C/D complete. B: stationary ground only 1. Direction is explicitly unstated; actual R09 lacks a head and independent unambiguous direction evidence. 0/3 core and no additional minor-slip penalty."
+      }
+    },
+    {
+      "id": "S13",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.5,
+        "pass": true,
+        "rationale": "A/B/D vollständig. C: richtige Ausgangsablesung und Divisionsregel, aber isoliert 6/3=2,5. R03 ist tatsächlich 2,5 cm lang, also genau konsistente Folge. Einmal −0,5 in C; Zeichnung und konsistente D-Voraussage nicht erneut bestrafen."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.5,
+        "pass": true,
+        "rationale": "A/B/D complete. C: correct initial reading and division rule, but the isolated arithmetic 6/3=2.5. R03 actually measures 2.5 cm, exactly the consistent consequence. Charge −0.5 once in C; do not charge the drawing or consistent D prediction again."
+      }
+    },
+    {
+      "id": "S14",
+      "de": {
+        "points": {
+          "A": 0,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A: Die aktuelle Antwort hält ausdrücklich die Träger-an-Spitze-Regel aufrecht. R05 setzt tatsächlich an B an und ist v_B beschriftet: konsistente falsche Zuordnung, ganze Leistung A=0. B: rechts relativ Boden mit rechtem Kopf. C: Ablesen/Dividieren, tatsächliche 2 cm und richtige Legenden. D: kein Ort/Kontakt, eigener m/s-Maßstab, konsistent 2 cm rechts von B und physikalische Invarianz. A-Fehler nicht nochmals in D bestrafen. Eindeutig 12."
+      },
+      "en": {
+        "points": {
+          "A": 0,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A: the current answer expressly maintains the carrier-at-the-tip rule. R05 actually starts at B and is labelled v_B: a consistent wrong assignment, so the whole A performance is 0. B: rightwards relative to ground with a rightward head. C: reading/division, actual 2 cm and correct legends. D: no place/contact, separate m/s scale, consistent 2 cm right of B and physical invariance. Do not charge the A error again in D. Unambiguously 12."
+      }
+    },
+    {
+      "id": "S15",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 0,
+          "C": 4,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/C vollständig: R06 beginnt an A und misst 2 cm. B: ausdrücklich beibehaltene systematische Richtungsumkehr; R06 zeigt tatsächlich links. Daher B=0. D: richtige Spitzendeutung, eigener Maßstab, konsistente Voraussage links von A und Invarianz; Ursprung B nicht erneut abziehen."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 0,
+          "C": 4,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/C complete: R06 starts at A and measures 2 cm. B: explicitly maintained systematic reversal, with R06 actually pointing left. Thus B=0. D: correct tip interpretation, separate scale, consistent prediction left of A and invariance; do not charge the B error again."
+      }
+    },
+    {
+      "id": "S16",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 0,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/B vollständig. C: ausdrücklich beibehaltene allgemeine falsche Multiplizieren-Regel setzt C=0. R07 misst am eigenen Lineal wirklich 18 cm, A–B 3 cm. D: richtige Deutung und eigene Geschwindigkeitsskala, konsistent begründete Lage hinter B und Invarianz; C-Folge nicht doppelt abziehen."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 0,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/B complete. C: expressly maintained false general multiply rule sets C=0. R07 actually measures 18 cm on its own ruler; A–B is 3 cm. D: correct interpretation and separate velocity scale, consistently reasoned beyond-B prediction and invariance; do not charge the C consequence again."
+      }
+    },
+    {
+      "id": "S17",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/B/C vollständig nach Text und tatsächlichem R01. D: jetziger Kontakt durch Spitze ausdrücklich beibehalten, korrekte getrennte Deutung abgelehnt. Ganze D-Leistung 0; korrekte Zahlen oder Zeichnung ersetzen keine Spitzendeutung."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/B/C complete in text and actual R01. D: present contact from the tip is expressly maintained and a correct separate interpretation rejected. Whole D performance 0; correct numbers or drawing cannot supply missing tip understanding."
+      }
+    },
+    {
+      "id": "S18",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/B/C vollständig nach Text und R01. D: Endgültig wirkliche Verlangsamung und Ortsverschiebung durch Maßstab behauptet, also aufrechterhaltene Kernfehlvorstellung D=0. Nur am Ursprung D bewerten, keine zusätzliche Strafe in A/C."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/B/C complete in text and R01. D: final claim of actual slowing and position shift caused by scale is a maintained core misconception, so D=0. Charge at its D origin only, with no additional A/C penalty."
+      }
+    },
+    {
+      "id": "S19",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true,
+        "rationale": "A/B/C vollständig mit R01. D: frühere Kontaktidee ausdrücklich zurückgenommen; endgültige Deutung verneint Ort/Kontakt, erklärt eigene m/s-Skala, begründet vor B und nennt Invarianz. Vollständig, kein Abzug für ausdrücklich korrigierte Vorüberlegung."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true,
+        "rationale": "A/B/C complete with R01. D: earlier contact idea explicitly retracted; final interpretation denies place/contact, explains the separate m/s scale, reasons short of B and states invariance. Complete; no deduction for an explicitly corrected earlier thought."
+      }
+    },
+    {
+      "id": "S20",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/B/C vollständig mit R01. D: Antwort zu Deutung, Grund, begründeter Voraussage und ausdrücklicher Invarianz fehlt vollständig. Diese Erklärungsbelege nicht aus korrektem Pfeil oder Zahlen ergänzen; D=0."
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false,
+        "rationale": "A/B/C complete with R01. D: tip interpretation, reason, reasoned prediction and explicit invariance are all absent. Do not reconstruct that explanatory evidence from a correct arrow or numbers; D=0."
+      }
+    }
+  ],
+  "summary": {
+    "caseCount": 20,
+    "languages": [
+      "de",
+      "en"
+    ],
+    "passingPerLanguage": [
+      "S01",
+      "S02",
+      "S04",
+      "S05",
+      "S10",
+      "S11",
+      "S13",
+      "S19"
+    ],
+    "passingCountPerLanguage": 8,
+    "failingCountPerLanguage": 12,
+    "bilingualScoreDifferences": []
+  }
+}

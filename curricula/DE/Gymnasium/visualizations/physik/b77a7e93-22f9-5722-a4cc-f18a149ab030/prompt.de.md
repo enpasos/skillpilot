@@ -27,6 +27,8 @@ Behalte Wagen, Beschriftungen, Maßstab-Panel und Schienen exakt bei. Korrigiere
 Präzise gezeichnete Skalenlegende nach visueller Prüfung
 
 Die senkrecht angeordneten Wagen und ihre Pfeile bleiben unverändert aus dem zweiten Anbieterbild. Zur physikalisch genauen Kalibrierung bekommt jede Wagenzeichnung rechts einen Bezugsstrich. Der obere ist halb so lang wie der obere 4-m/s-Pfeil, der untere so lang wie der untere 4-m/s-Pfeil.
+
+Die gemeinsame rechte Legende nennt über den beiden Skalenbalken ausdrücklich „Geschwindigkeit“ und „Pfeilmaßstab“. Wagen, Ansatzpunkte, Pfeillängen und Zahlen bleiben wie im kalibrierten Vorgänger.
 ```
 
 ## Review-Notiz

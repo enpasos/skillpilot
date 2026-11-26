@@ -21,15 +21,20 @@ const actualIds = ['a8dc0290-9f80-5763-8943-e16b8d2aa860', 'b34f3e03-bbe7-5ede-9
   'f41e4e30-794e-5ce4-ba5e-cc72712cd691', 'f602680f-ea75-5bed-ae87-72f6be34a99b']
 // Own lower-stage closing tasks of E.2 (25 November 2026): total momentum of two carts for Hamburg
 // and Thuringia, mean resultant force from two momentum measurements for Baden-Württemberg.
-const closingIds = ['d8fc6295-d0db-59e5-bd90-080bbc508c3a', 'b50e9903-58b3-520d-96bf-d5bc1fe51ebf']
+const arrowExam = '2569d84a-5bf1-542b-bc43-6ade1df971c4'
+const closingIds = ['d8fc6295-d0db-59e5-bd90-080bbc508c3a', 'b50e9903-58b3-520d-96bf-d5bc1fe51ebf', arrowExam]
 const byId = new Map(physics.goals.map(goal => [goal.id, goal]))
 assert.deepEqual(resolveExplicitAtomicRouteEndpoints([...closingIds, ...actualIds], byId).issues, [])
 assert.deepEqual(createRouteProfiles().find(profile => profile.profileId === 'canonical-physics-sek1')!.terminalAutonomyGoalIds,
   [...closingIds, ...actualIds],
-  'the configured lower inventory binds four existing released tasks and eleven reviewed bounded offers')
+  'the lower inventory includes the three subject-owned closing tasks and all thirteen retained endpoints')
 assert.equal(createRouteProfiles().find(profile => profile.profileId === 'canonical-physics-sek2')!
   .terminalAutonomyGoalIds?.includes(actualIds[4]) ?? false, false,
   'the lower lens-eye eligibility does not create an additional upper-stage endpoint obligation')
+assert.deepEqual(byId.get(arrowExam)!.requires, ['b77a7e93-22f9-5722-a4cc-f18a149ab030'])
+assert.deepEqual(byId.get(arrowExam)!.examData!.coveredGoalIds, ['b77a7e93-22f9-5722-a4cc-f18a149ab030'])
+assert.ok(!createRouteProfiles().find(profile => profile.profileId === 'canonical-physics-sek2')!
+  .terminalAutonomyGoalIds?.includes(arrowExam))
 const energyDerivationExam = 'e0085acf-af64-5c73-8abf-85a5bbfbdaa6'
 const energyDerivation = '2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b'
 const ePhasePractice = '424b07df-bf66-5d7f-99f5-f28b32ad1f22'
