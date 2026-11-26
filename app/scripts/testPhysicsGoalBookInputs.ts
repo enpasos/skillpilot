@@ -4353,8 +4353,8 @@ const currentTerminalRelease = evaluateRouteProfile(currentPhysics, currentSekII
   .rules.find(rule => rule.id === 'CQR-203')!
 assert.equal(currentTerminalRelease.status, 'pass', 'every active terminal assessment must carry reviewed whole-goal coverage')
 assert.equal(currentTerminalRelease.metrics?.releaseCoverageIncompleteExamData, 0)
-// 110 since the mixed E.1 exam "Bewegungsanalyse und freier Fall" was retired on 25 Nov 2026 (111 before).
-assert.equal(currentTerminalRelease.metrics?.releasedCoverageCompleteExamData, 110)
+// K3 in the upper-stage practice cluster adds one reviewed terminal to the 110 after the E.1 retirement.
+assert.equal(currentTerminalRelease.metrics?.releasedCoverageCompleteExamData, 111)
 assert.equal(currentTerminalRelease.metrics?.terminalAutonomyGoals, currentTerminalRelease.metrics?.releasedCoverageCompleteExamData)
 
 const legacySelectedGoalIds = currentPhysics.goals.filter(legacyRouteProfile.goalSelector).map(goal => goal.id)
