@@ -1,0 +1,85 @@
+{
+  "schema": "physics-e2-energy-route-validation-v1",
+  "recordedAt": "2026-11-26T02:59:12.668650+00:00",
+  "baseCommit": "284063239db536f4b765d700db3a39a357fd7f12",
+  "commands": [
+    {
+      "command": "python scripts/generate_hessen_physics_stage_views.py --write",
+      "exitCode": 0,
+      "checkedViews": 4
+    },
+    {
+      "command": "python scripts/generate_hessen_physics_stage_views.py --write --duration-views",
+      "exitCode": 0,
+      "checkedViews": 6
+    },
+    {
+      "command": "python scripts/generate_laender_physics_stage_views.py --write",
+      "exitCode": 0,
+      "checkedViews": 80
+    },
+    {
+      "command": "python scripts/generate_laender_physics_stage_views.py --write --jurisdiction SL",
+      "exitCode": 0,
+      "checkedViews": 5
+    },
+    {
+      "command": "python scripts/generate_laender_physics_stage_views.py --write --jurisdiction SN",
+      "exitCode": 0,
+      "checkedViews": 5
+    },
+    {
+      "command": "python scripts/test_generate_hessen_physics_stage_views.py",
+      "exitCode": 0,
+      "tests": 21
+    },
+    {
+      "command": "python scripts/test_generate_laender_physics_stage_views.py",
+      "exitCode": 0,
+      "tests": 40
+    },
+    {
+      "command": "app/node_modules/.bin/tsx curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/measure-current-routes.mts --baseline=<immutable Task M baseline.actual.json.gz>",
+      "exitCode": 0,
+      "checkedViews": 90
+    }
+  ],
+  "routeCounts": {
+    "views": 90,
+    "newDerivationTargetViews": 14,
+    "viewsWithChangedAcquisitionPlaces": 8,
+    "viewsWithChangedPartialOrders": 8,
+    "lostOnlyRoutes": 0
+  },
+  "allFourteenHaveK3AndDirectMotivation": true,
+  "threeBadenWuerttembergTerminalSetsPreserved": true,
+  "hardSemanticDiagnosticsExactBaselineMatch": true,
+  "hardSemanticFindingsByProfile": {
+    "canonical-physics-sek1": 4,
+    "canonical-physics-sek2": 0
+  },
+  "referenceOrderOnlyViews": [
+    "de-rp-gym-seki-physics"
+  ],
+  "sourceBytesChanged": false,
+  "learnerResultsChanged": false,
+  "claimBoundary": "Automated local generator and native route checks only. The four existing SekI hard-route diagnostics remain unchanged; no gate or floor is relaxed. Source and assessment-content review, actual learner-map backflow checks and complete CI are separate evidence.",
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/all-90-route-regression.actual.json",
+      "sha256": "2ee73ba1b56d1ef4355f0e51ef51389426860d431ba2f9bbf3e612f8bd37188c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/h-reference-place-successor.actual.json",
+      "sha256": "92ae8d2f46ca8e204bce2ef9e8a462d81806473d1bfcb6cda293b5d02c6ba142"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/source-decisions.actual.json",
+      "sha256": "8d0fafdb835bbab283f4a40398394d31db4cf16ba699ff1dfd3d56122ae94da4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/source-view-assignments.actual.json",
+      "sha256": "ba07d19d7b9a6148c58ecf589793e41bf830681d92ec32fc6bcbe3baf3e740a3"
+    }
+  ]
+}

@@ -82,6 +82,8 @@ HESSEN_E1_CHILD_UNITS = (
 # are structure children, not declared learning units.
 E5_TOPIC = "he-physics-topic-0ade0d10-8b32-5a95-a1a9-8ac64e2a8089"
 HESSEN_MOMENTUM = "53afbda1-5776-502b-8867-471975d7b766"
+HESSEN_ENERGY_DERIVATION = "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b"
+HESSEN_ENERGY_DERIVATION_ASSESSMENT = "e0085acf-af64-5c73-8abf-85a5bbfbdaa6"
 HESSEN_E2_CHILD_UNITS = (
     ("physics-e2-inertia", "Trägheit: Was ohne Kraft geschieht", "Inertia: what happens without a force", (
         "31a2ef52-114b-4d2c-a720-6ef5a390b6dc", "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
@@ -94,7 +96,8 @@ HESSEN_E2_CHILD_UNITS = (
      "Several forces at once: inclined plane, friction, braking", (
         "5fd45dbc-0eb1-591b-99a9-7386336f1456", "4a2bf015-052b-4af0-aed7-324259fa1a8a")),
     ("physics-e2-energy", "Energie bleibt erhalten", "Energy is conserved", (
-        "c1c71daa-042b-4f4c-8c31-0ac366f5149e", "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "c1c71daa-042b-4f4c-8c31-0ac366f5149e", HESSEN_ENERGY_DERIVATION,
+        HESSEN_ENERGY_DERIVATION_ASSESSMENT, "7eeff2de-6015-49a6-a96e-a488d886dc9f",
         "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b", "94784e0a-7ddc-48be-91fb-dc82b78eb322",
         "91c49019-ea51-4ce5-a919-c91c45b25e83", "253a71d2-e751-4c63-acbe-238b71463cd8")),
     ("physics-e2-momentum", "Impuls und Stöße", "Momentum and collisions", (
@@ -217,6 +220,12 @@ def generate(view):
     e2 = next((node for node in walk(result["rootNodes"]) if node.get("id") == E2_TOPIC), None)
     if e2 is not None and HESSEN_MOMENTUM not in role_atoms(result)["target"]:
         e2["children"].append({"kind": "goalEntry", "goalId": HESSEN_MOMENTUM})
+    if e2 is not None:
+        # Shared E.2 requires the graphical formula derivation. K3 is its own
+        # ordinary goal assessment, not the closing check of the child unit.
+        for identifier in (HESSEN_ENERGY_DERIVATION, HESSEN_ENERGY_DERIVATION_ASSESSMENT):
+            if identifier not in role_atoms(result)["target"]:
+                e2["children"].append({"kind": "goalEntry", "goalId": identifier})
     before = role_atoms(result)
     if motion is not None and set(HESSEN_E1_CHILD_ASSESSMENT_VARIANTS) & (before["target"] | before["prerequisiteOnly"]):
         raise ValueError(f"{view['viewId']}: a historical child assessment is still projected in Hessen E.1")

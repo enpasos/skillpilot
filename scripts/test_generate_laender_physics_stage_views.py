@@ -143,6 +143,20 @@ if len(RETIRED_MIXED_MOTION_OFFER_VIEWS) != 64:
 
 
 MOMENTUM_IDS = {"53afbda1-5776-502b-8867-471975d7b766", "ecbaa101-cb10-5da3-9368-ae40ff587d74", "059c1adc-e4d2-5222-a923-15abc417d59f"}
+ENERGY_DERIVATION_IDS = {"2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b", "e0085acf-af64-5c73-8abf-85a5bbfbdaa6"}
+
+
+def energy_derivation_delta(view, roles):
+    scope = view["scope"]
+    admitted = scope["stage"] in ("CrossStage", "SekII") and (
+        scope.get("jurisdiction") in ("DE-HE", "DE-SL") or
+        scope.get("jurisdiction") == "DE-SN" and scope.get("courseProfile") == "LK")
+    expected = ENERGY_DERIVATION_IDS if admitted else set()
+    if (roles["target"] | roles["prerequisiteOnly"]) & ENERGY_DERIVATION_IDS != expected:
+        raise AssertionError("Energy derivation or K3 left its 14 reviewed views: " + view["viewId"])
+    if roles["target"] & ENERGY_DERIVATION_IDS != expected:
+        raise AssertionError("Energy derivation or K3 has the wrong role: " + view["viewId"])
+    return expected
 
 def momentum_delta(view, roles):
     """Independent expected full-competence routes, not the authoring policy."""
@@ -184,6 +198,7 @@ def retained_authority_seeds(view, roles, baseline):
         allowed_new_task.update(HESSEN_GUIDED_OPENINGS)
     allowed_new_task.update(measurement_delta(view, roles))
     allowed_new_task.update(momentum_delta(view, roles))
+    allowed_new_task.update(energy_derivation_delta(view, roles))
     if not allowed_new_task <= roles["target"]:
         raise AssertionError("A reviewed addition is missing")
     retained = roles["target"] - allowed_new_task
@@ -290,9 +305,16 @@ class PhysicsStageAuthoring(unittest.TestCase):
                 finally:
                     authoring.graph.prerequisites.cache_clear()
 
-    def test_momentum_closures_preserve_all_old_reference_places_and_order(self):
+    def test_momentum_reference_pin_or_exact_energy_successor_preserves_all_places_and_order(self):
         path = authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v4/baseline-reference-places.actual.json"
         baseline = json.loads(path.read_text())
+        successor = json.loads((authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/"
+            "physics-e2-energy-derivation-20261126-v1/routes/h-reference-place-successor.actual.json").read_text())
+        self.assertEqual(successor["predecessorSha256"], hashlib.sha256(path.read_bytes()).hexdigest())
+        self.assertEqual(successor["viewCount"], 90)
+        successors = {row["path"]: row for row in successor["views"]}
+        self.assertEqual(len(successors), successor["changedViewCount"])
+        self.assertTrue(set(successors) <= {row["path"] for row in baseline["views"]})
         additions = {"d8fc6295-d0db-59e5-bd90-080bbc508c3a"}
         self.assertEqual(len(baseline["views"]), 90)
         for row in baseline["views"]:
@@ -308,8 +330,19 @@ class PhysicsStageAuthoring(unittest.TestCase):
             digest = hashlib.sha256(json.dumps(references, ensure_ascii=True, sort_keys=True,
                                                separators=(",", ":")).encode()).hexdigest()
             with self.subTest(view=view["viewId"]):
-                self.assertEqual(len(references), row["referenceCount"])
-                self.assertEqual(digest, row["orderedReferencePlacesSha256"])
+                current = successors.get(row["path"])
+                if current is None:
+                    self.assertEqual(len(references), row["referenceCount"])
+                    self.assertEqual(digest, row["orderedReferencePlacesSha256"])
+                else:
+                    # The predecessor remains an exact gate: N is a reviewed
+                    # successor with its complete reference delta, not a hash
+                    # exception or an erasure of the immutable H evidence.
+                    self.assertEqual(current["beforeReferenceCount"], row["referenceCount"])
+                    self.assertEqual(current["beforeOrderedReferencePlacesSha256"], row["orderedReferencePlacesSha256"])
+                    self.assertTrue(current["addedExactReferences"] or current["removedExactReferences"] or current["changedOrderPositions"])
+                    self.assertEqual(len(references), current["afterReferenceCount"])
+                    self.assertEqual(digest, current["afterOrderedReferencePlacesSha256"])
 
     def test_momentum_target_routes_and_uncovered_electives(self):
         for view in self.views.values():
@@ -378,6 +411,10 @@ class PhysicsStageAuthoring(unittest.TestCase):
                 self.assertEqual(hashlib.sha256(raw).hexdigest(), pin["sha256"])
                 payload[label] = references(json.loads(raw))
             allowed = {"53afbda1-5776-502b-8867-471975d7b766"}
+            # N adds exactly these two source-bound references. The retained
+            # negative acquisition-wrapper fixture must still fail for every
+            # preexisting goal and preparation place.
+            allowed.update(ENERGY_DERIVATION_IDS)
             if "-sekii-" in row["viewFile"]:
                 allowed.add("5c44b9ba-9b05-4774-95d5-073230d3fc4f")
             retained = lambda data: {k:v for k,v in data.items() if k not in allowed}
@@ -472,6 +509,39 @@ class PhysicsStageAuthoring(unittest.TestCase):
                 expected = HESSEN_GUIDED_OPENINGS if view["viewId"] in HESSEN_GUIDED_OPENING_VIEWS else set()
                 self.assertEqual(roles["target"] & HESSEN_GUIDED_OPENINGS, expected)
                 self.assertFalse(roles["prerequisiteOnly"] & HESSEN_GUIDED_OPENINGS)
+
+    def test_energy_derivation_has_exactly_fourteen_regular_source_routes(self):
+        offered = []
+        for view in self.views.values():
+            expected = energy_derivation_delta(view, authoring.graph.role_atoms(view))
+            if expected:
+                offered.append(view["viewId"])
+        self.assertEqual(len(offered), 14)
+        declared = json.loads((authoring.ROOT / "scripts/generate_laender_physics_stage_views.memberships.json").read_text())["energyDerivationSourceAdditions"]
+        self.assertEqual(set(offered), set(declared["views"]))
+        self.assertTrue(all(set(value) == ENERGY_DERIVATION_IDS for value in declared["views"].values()))
+        task = authoring.graph.GOALS["e0085acf-af64-5c73-8abf-85a5bbfbdaa6"]
+        self.assertEqual(task["requires"], ["2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b"])
+        self.assertEqual(task["examData"]["coveredGoalIds"], task["requires"])
+        self.assertEqual(task["examData"]["reviewStatus"], "released")
+        changed = copy.deepcopy(task)
+        changed["requires"] = ["7eeff2de-6015-49a6-a96e-a488d886dc9f"]
+        with patch.dict(authoring.graph.GOALS, {task["id"]: changed}):
+            with self.assertRaisesRegex(ValueError, "ordinary assessment contract"):
+                authoring.admit_energy_derivation_targets(self.views["de-sl-gk.view.json"])
+
+    def test_energy_derivation_primary_source_and_hessen_mapping_are_exact(self):
+        broken = copy.deepcopy(authoring.SOURCE_PLAN)
+        target = next(row for row in broken["reviewedEnergyDerivationBindings"]["targets"] if row["state"] == "SL")
+        target["sourceSha256"] = "0" * 64
+        with patch.object(authoring, "SOURCE_PLAN", broken):
+            with self.assertRaisesRegex(ValueError, "energy derivation primary source changed"):
+                authoring.energy_derivation_source_plan(self.views["de-sl-gk.view.json"], {}, {})
+        mapping = json.loads((authoring.ROOT / "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/"
+            "hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json").read_text())
+        source_id = "he-phys-sekii-e-2-b07-a01-826de721"
+        self.assertEqual([(r["canonicalGoalId"], r["matchType"]) for r in mapping["mappings"] if r["legacyGoalId"] == source_id],
+            [("2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b", "exact")])
 
     def test_original_full_authorities_keep_exact_seed_sets_and_old_support_roles(self):
         self.assertTrue(HESSEN_GUIDED_OPENING_VIEWS <= set(self.authorities))
