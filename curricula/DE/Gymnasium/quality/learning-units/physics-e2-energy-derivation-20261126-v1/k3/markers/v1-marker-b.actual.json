@@ -1,0 +1,444 @@
+{
+  "reviewer": "Independent OpenAI Codex route-implementation agent, marker B",
+  "completedAt": "2026-11-26T02:45:53.390151+00:00",
+  "independenceDisclosure": "Ich habe K3, Rubrik und Abgaben nicht verfasst. Ich implementiere getrennt Quellen/Sichtplätze; diese Bewertung wurde allein aus candidate.goal.json, task-and-marking.md und blind/ erstellt. Kein Zugriff auf author/, andere Markerantworten, frühere K3-Reviews oder Abgleich.",
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/k3/v1/candidate.goal.json",
+      "sha256": "7a5eb846e493810ef64ce612157eca94edb926295a7c327959a85dcad40e6601"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/k3/v1/task-and-marking.md",
+      "sha256": "6b0b02ce5df2aa4ea8e8d4b239ea2a3265ca6f51b7fb93ff70194a64b2a50cd2"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/k3/v1/blind/instructions.md",
+      "sha256": "4bad91461c5686d28189219b77f4a63de0020c2764b98120cf1c50fa32427d03"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/k3/v1/blind/scripts.json",
+      "sha256": "5d623c3fa5ab17892bccfe0aed9d68eef880e9aeaa5327b9debb8c06282830ba"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/k3/v1/blind/scripts.md",
+      "sha256": "c8eb0eaaf410d453728c095e1881f5f5676973c329d77e1c17817bfb99f02f21"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/k3/v1/blind/marking-template.json",
+      "sha256": "f02d56db57664e08002960f005bb51661317b1be51c9daaba900d943eae9e3c7"
+    }
+  ],
+  "cases": [
+    {
+      "id": "S01",
+      "pointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 12,
+      "passDe": true,
+      "pointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 12,
+      "passEn": true,
+      "evidenceAndRule": "Vollständige Arbeits-Energie-Zuordnung, angewandtes Newton II, Kinematik und Eliminierung; beschriftete Dreiecksbegründung; begründeter k²-Faktor mit vierfacher Energie.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S02",
+      "pointsDe": {
+        "A": 1.5,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 10.5,
+      "passDe": true,
+      "pointsEn": {
+        "A": 1.5,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 10.5,
+      "passEn": true,
+      "evidenceAndRule": "A: nur Arbeitsanteil 1,5; die Zuordnung zur kinetischen Energie wird ausdrücklich nicht vorgenommen. B ist als Herleitung der Arbeit vollständig und darf dafür laut B nicht erneut verlieren. C vollständig; D ist eigenständig durch das k²-Verhältnis belegt. Summe 10,5 besteht ohne Zusatzsperre.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S03",
+      "pointsDe": {
+        "A": 3,
+        "B": 2.5,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 11.5,
+      "passDe": true,
+      "pointsEn": {
+        "A": 3,
+        "B": 2.5,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 11.5,
+      "passEn": true,
+      "evidenceAndRule": "Das Ergebnis wird in B isoliert mit N statt N·m beschriftet, während das richtige Produkt und die richtige Einheit ausdrücklich erkennbar bleiben: einmal 0,5 am Ursprung in B. Kein fachlich aufrechterhaltener Einheitenfehler, keine Folgekürzung.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S04",
+      "pointsDe": {
+        "A": 1.5,
+        "B": 3,
+        "C": 2.5,
+        "D": 3
+      },
+      "totalDe": 10.0,
+      "passDe": true,
+      "pointsEn": {
+        "A": 1.5,
+        "B": 3,
+        "C": 2.5,
+        "D": 3
+      },
+      "totalEn": 10.0,
+      "passEn": true,
+      "evidenceAndRule": "Die fehlende Arbeits-Energie-Zuordnung kostet nur den zweiten A-Anteil (1,5). Die falsche Graph-Einheit m/s² ist bei ausdrücklich als Geschwindigkeit in m/s bezeichnetem Endwert ein lokaler Formfehler: einmal 0,5 in C, nicht zusätzlich C(i). B und D vollständig. Genau 10 besteht.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S05",
+      "pointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "totalDe": 9,
+      "passDe": false,
+      "pointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "totalEn": 9,
+      "passEn": false,
+      "evidenceAndRule": "Keine Zeichnung oder eindeutige Darstellungsbeschreibung. Die nackte Verwendung TV/2 im algebraischen Ansatz ersetzt laut C ausdrücklich keine grafische Begründung. A, B und D bleiben vollständig. 9 ist unter der Summengrenze.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S06",
+      "pointsDe": {
+        "A": 1.5,
+        "B": 2.5,
+        "C": 2.5,
+        "D": 3
+      },
+      "totalDe": 9.5,
+      "passDe": false,
+      "pointsEn": {
+        "A": 1.5,
+        "B": 2.5,
+        "C": 2.5,
+        "D": 3
+      },
+      "totalEn": 9.5,
+      "passEn": false,
+      "evidenceAndRule": "A verliert nur die fehlende Energiezuordnung. Falsche Ergebniseinheit N bei korrekt genanntem N·m kostet einmal 0,5 in B. Die unabhängige falsche Graph-Einheit bei klarem Geschwindigkeitsbegriff kostet einmal 0,5 in C. Zwei unabhängige Formfehler, keine doppelte Bestrafung eines einzigen Fehlers. D vollständig; 9,5 verfehlt die Grenze.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S07",
+      "pointsDe": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 9,
+      "passDe": false,
+      "pointsEn": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 9,
+      "passEn": false,
+      "evidenceAndRule": "Die zusätzlich ausdrücklich beibehaltene Regel F=mV statt F=ma ist falsche Dynamik. B wird nach seiner Fehlvorstellungsregel trotz richtiger vorheriger Kette 0. A, C und D haben eigene richtige Belege und verlieren keine Folgepunkte.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S08",
+      "pointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "totalDe": 9,
+      "passDe": false,
+      "pointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "totalEn": 9,
+      "passEn": false,
+      "evidenceAndRule": "Die aufrechterhaltene lineare Abhängigkeit widerspricht dem eigenen korrekten k²-Verhältnis. Die ausdrückliche Fehlvorstellungsregel von D setzt allein D auf 0; richtige Aussagen daneben heben den aufrechterhaltenen Widerspruch nicht auf.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S09",
+      "pointsDe": {
+        "A": 0,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 9,
+      "passDe": false,
+      "pointsEn": {
+        "A": 0,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 9,
+      "passEn": false,
+      "evidenceAndRule": "Die ausdrücklich beibehaltene Behauptung zur Arbeit irgendeiner Einzelkraft trotz weiterer arbeitender Kräfte verletzt den Arbeitsansatz. A wird 0. Tatsächlich richtig ausgeführte Kette, Grafik und Quadratargument erhalten in B–D ihre eigenständigen Punkte.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S10",
+      "pointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "totalDe": 9,
+      "passDe": false,
+      "pointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "totalEn": 9,
+      "passEn": false,
+      "evidenceAndRule": "Die Fläche wird ausdrücklich weiterhin als Beschleunigung statt als Weg gedeutet. Die zutreffende Beschreibung daneben zieht diese Aussage nicht zurück. C wird 0; B wird laut ausdrücklicher Unabhängigkeit nicht erneut gekürzt.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S11",
+      "pointsDe": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 9,
+      "passDe": false,
+      "pointsEn": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 9,
+      "passEn": false,
+      "evidenceAndRule": "A-Energiezuordnung und C-Grafik vollständig. Kein angewandtes Newton II/Bewegungsgesetz und keine damit ausgeführte Verknüpfung oder Eliminierung; die separat als bekannt eingesetzte Endformel ergänzt keine B-Leistung. D ist durch das Verhältnis eigenständig vollständig.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S12",
+      "pointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "totalDe": 9,
+      "passDe": false,
+      "pointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "totalEn": 9,
+      "passEn": false,
+      "evidenceAndRule": "Die Endformel allein ist keine Aussage oder Erklärung der Geschwindigkeitsabhängigkeit. Alle expliziten D-Belege fehlen, daher D=0 ohne zusätzlichen Fehlerabzug.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S13",
+      "pointsDe": {
+        "A": 3,
+        "B": 2.5,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 11.5,
+      "passDe": true,
+      "pointsEn": {
+        "A": 3,
+        "B": 2.5,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 11.5,
+      "passEn": true,
+      "evidenceAndRule": "Der Faktor 1/2 fällt nur beim letzten Vereinfachen aus, während Substitution und grafische Halbierung richtig vorliegen. Nachweislich isolierter Ausführungsfehler: B minus 0,5, Band nicht zusätzlich reduzieren. Keine erneute Konstantekürzung in D.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S14",
+      "pointsDe": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 3
+      },
+      "totalDe": 3,
+      "passDe": false,
+      "pointsEn": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 3
+      },
+      "totalEn": 3,
+      "passEn": false,
+      "evidenceAndRule": "Die bekannte Formel mit 9-J-Einsetzung zeigt weder Arbeitsansatz, Gesetzesverknüpfung noch grafische Herleitung. Der konkret begründete Quotient (2V)²/V²=4 belegt laut D alle drei D-Anteile, unabhängig von der fehlenden Herleitung.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S15",
+      "pointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 12,
+      "passDe": true,
+      "pointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 12,
+      "passEn": true,
+      "evidenceAndRule": "Die alternative Kette ma·(aT²/2)=m(aT)²/2=mV²/2 verbindet dieselben Gesetze richtig und ist ausdrücklich gleichwertig. Grafische Begründung und Quadratverhältnis sind zusätzlich vollständig vorhanden.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S16",
+      "pointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 12,
+      "passDe": true,
+      "pointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 12,
+      "passEn": true,
+      "evidenceAndRule": "Die frühere falsche Flächenbedeutung wird ausdrücklich zurückgenommen und durch die richtige Deutung als Weg ersetzt. Die gemeinsame Rücknahmeregel hebt den Widerspruch ohne Abzug auf. Alle übrigen Leistungen vollständig.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S17",
+      "pointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalDe": 12,
+      "passDe": true,
+      "pointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "totalEn": 12,
+      "passEn": true,
+      "evidenceAndRule": "mV·(V/2) ist exakt mV²/2. Die algebraisch gleichwertige Endform und verkürzte Zwischenkette erfüllen B vollständig; keine vorgeschriebene Zahl von Zeilen oder Endschreibweise. A, C und D vollständig.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    },
+    {
+      "id": "S18",
+      "pointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "totalDe": 9,
+      "passDe": false,
+      "pointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "totalEn": 9,
+      "passEn": false,
+      "evidenceAndRule": "Die ausdrücklich aufrechterhaltene Rechteck-Wegfläche VT und Behauptung einer während des ganzen Intervalls schon erreichten Endgeschwindigkeit erfüllen exakt den C-Fehlvorstellungstatbestand. C wird 0 trotz eingezeichnetem Dreieck. Die unabhängig vorhandene korrekte B-Kette zählt laut Raster weiter vollständig.",
+      "languageEquivalence": "Die beiden exakten Abgaben liefern dieselben fachlichen Belege, Auslassungen, Rücknahmen und aufrechterhaltenen Aussagen; kein bewertungsrelevanter Sprachunterschied.",
+      "ambiguities": []
+    }
+  ],
+  "taskAndRubricVerdict": {
+    "decision": "accept_current",
+    "scientificCorrectness": "Im vorgegebenen Massepunktmodell konstanter Masse und resultierender Kraft im Inertialsystem ist W=FΔs=ΔEkin richtig. Aus Ruhe führen V=aT und die Dreiecksfläche Δs=TV/2 zu Ekin=mV²/2; die erklärte Verdopplung liefert Faktor 4. Der Faktor 1/2 stammt aus der mittleren Geschwindigkeit und nicht aus einer halben Kraft.",
+    "chatAssessability": "Eine eindeutige schriftliche Beschreibung mit Achsen, Einheiten, Gerade, Endpunkt und Flächenbedeutung ist ausdrücklich einer Zeichnung gleichgestellt; damit ist die Aufgabe im Coach-Chat durchführbar.",
+    "weightAndThreshold": "Alle vier tragenden Leistungen haben je 3 von 12 Punkten. Vollständiges Fehlen oder eine aufrechterhaltene Fehlvorstellung einer Leistung lässt höchstens 9 übrig und verhindert das Bestehen allein über die Summe. 10/12=83,333... Prozent liegt unter 85 Prozent. Teilweise Auslassungen können nach dem offengelegten Summenmaß kompensiert werden.",
+    "formalSlip": "Eine isolierte kleine Formabweichung mit vollständigem Kern lässt 11,5/12 und Bestehen zu. S04 zeigt die exakte Schwelle, S06 den Abstand 0,5 unter ihr; verschiedene unabhängige Fehler dürfen getrennt kosten.",
+    "equivalentMethods": "Gleichwertige algebraische Herleitungen, Diagrammbeschreibungen, Rücknahme im selben Text und verkürzte echte Umformungen werden nach expliziten Regeln fair anerkannt. Negative Achsenwahl wäre bei konsistenten vorzeichenbehafteten Komponenten und Verschiebung ebenfalls ein gleichwertiger Weg; die Aufgabenangabe verwendet V als positiven Betrag.",
+    "bilingualEquivalence": "DE/EN Aufgabe, Lösung, vier Rubrikschritte und gemeinsame Regeln haben dieselben fachlichen Verpflichtungen und dieselben Grenzen. Alle 18 Paare erhalten identische Vektoren.",
+    "clarity": "Keine materielle Regelambiguität in den 18 Abgaben. Einheitenfehler des algebraischen Endergebnisses werden am dortigen Ursprung B abgezogen; Graph-Einheiten sind ausdrücklich gemeinsam C zugeordnet."
+  },
+  "materialIssues": [],
+  "limitations": [
+    "Synthetische vollständig ausgeschriebene Abgaben; keine echte Lernendenprüfung und keine Aussage über reale Host- oder Lernendenakzeptanz.",
+    "Kein Abgleich mit Autorwerten oder anderen Markern. Die hier verzeichnete inhaltliche Freigabe ersetzt keine separate technische Veröffentlichung."
+  ]
+}

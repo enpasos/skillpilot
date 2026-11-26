@@ -30,6 +30,17 @@ assert.deepEqual(createRouteProfiles().find(profile => profile.profileId === 'ca
 assert.equal(createRouteProfiles().find(profile => profile.profileId === 'canonical-physics-sek2')!
   .terminalAutonomyGoalIds?.includes(actualIds[4]) ?? false, false,
   'the lower lens-eye eligibility does not create an additional upper-stage endpoint obligation')
+const energyDerivationExam = 'e0085acf-af64-5c73-8abf-85a5bbfbdaa6'
+const energyDerivation = '2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b'
+const ePhasePractice = '424b07df-bf66-5d7f-99f5-f28b32ad1f22'
+const upperPhysicsRoutes = createRouteProfiles().find(profile => profile.profileId === 'canonical-physics-sek2')!
+assert.ok(upperPhysicsRoutes.terminalAutonomyClusterIds.includes(ePhasePractice))
+assert.ok(byId.get(ePhasePractice)!.contains?.includes(energyDerivationExam))
+assert.ok(!upperPhysicsRoutes.terminalAutonomyGoalIds?.includes(energyDerivationExam),
+  'K3 already belongs to the upper E-phase terminal cluster')
+assert.deepEqual(byId.get(energyDerivationExam)!.requires, [energyDerivation])
+assert.deepEqual(byId.get(energyDerivationExam)!.examData!.coveredGoalIds, [energyDerivation])
+
 const lens = byId.get(actualIds[4])!
 assert.deepEqual(lens.requires, ['84ddb244-e560-592f-9d43-e84c801fe5b4'])
 assert.deepEqual(lens.examData!.coveredGoalIds, ['84ddb244-e560-592f-9d43-e84c801fe5b4'])
