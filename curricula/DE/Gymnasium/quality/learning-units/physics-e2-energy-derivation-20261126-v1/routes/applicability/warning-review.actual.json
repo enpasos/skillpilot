@@ -1,0 +1,445 @@
+{
+  "schema": "physics-e2-energy-applicability-warning-review-v1",
+  "reviewedAt": "2026-11-26T03:34:32.493Z",
+  "reviewAuthority": "ai_review",
+  "humanApproval": false,
+  "reviewerRole": "Source/view implementation author; this is an individual applicability-warning disposition, not a new independent source or scientific review.",
+  "mechanism": {
+    "registryPath": "docs/qa-ci/applicability-accepted-warnings.json",
+    "keyRule": "code|landscapeId|goalId|dimension|value; absent fields use an empty string",
+    "exactNewRows": 3,
+    "retainedExistingRows": 125,
+    "retainedRowSequenceSha256": "4e5d810685052d7ef0266beed86958580c2c74d4a661872e1e5a8475bf3c427a",
+    "predecessor": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/applicability/accepted-warnings.predecessor.json",
+      "sha256": "679b1b91cf80d5894c601740f1404b3e41e0e515612be1e225b56ae4f0fab22b"
+    },
+    "noGateOrCompilerChanges": true
+  },
+  "currentNativeOfferAudit": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/applicability/current-offer.before.actual.json",
+    "sha256": "fef4b28163eeedf64b1f0ddbaadf13d7057a60466ee5e2ed35dfb50a65ad29ac"
+  },
+  "measurementScript": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/applicability/measure-current-offer.mts",
+    "sha256": "ca9b361eb6912953f7998dc41f08055d66d5943d37971ecdf356eb0be182623f"
+  },
+  "canonicalPhysics": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "fb1c9b30921a975da9849d20068ce4752b647660334aefb39ef53c226e633f54"
+  },
+  "sourceAndReleaseEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/basis-m.actual.json",
+      "sha256": "cdc2418979e429a3ac0536707d030be8c412b2c7d697b6603708437c5d89b61f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/source-decisions.actual.json",
+      "sha256": "8d0fafdb835bbab283f4a40398394d31db4cf16ba699ff1dfd3d56122ae94da4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/source-view-assignments.actual.json",
+      "sha256": "ba07d19d7b9a6148c58ecf589793e41bf830681d92ec32fc6bcbe3baf3e740a3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/k3/release.actual.json",
+      "sha256": "7d9527022b66cd99c69043fdb49d375e42b4ae07046fb9ec2fb797c151999a32"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/route-review.v4.actual.json",
+      "sha256": "273cc106a68fa87bab0d90d2bc6bc8f6e610a6a8419213237cb73dde06840d03"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/route-native-context-confirmation.v4.actual.json",
+      "sha256": "d7e6c9057bee6c66f49575d01507b95a88c156f959eed71f85891d8f5dfabdb3"
+    }
+  ],
+  "countsBefore": {
+    "views": 90,
+    "exactTargetViewsPerGoal": 14,
+    "outsideOfferLeaks": 0,
+    "supportOnlyLeaks": 0,
+    "physicsRawWarnings": 18,
+    "physicsAcceptedWarnings": 15,
+    "physicsActiveWarnings": 3,
+    "physicsObsoleteAcceptedWarnings": 0,
+    "retainedRegistryRows": 125
+  },
+  "decisions": [
+    {
+      "code": "APV-201",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "dimension": "jurisdiction",
+      "decision": "accept_current_warning",
+      "exactWarningKey": "APV-201|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b|jurisdiction|",
+      "actualDiagnostic": {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+        "title": "Formel der kinetischen Energie aus der Beschleunigungsarbeit herleiten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE, DE-SL, DE-SN."
+      },
+      "rationale": "Die gezielte Länderfreigabe HE/SL/SN ist fachlich belegt: HE E.2 verlangt die grafische Herleitung, SL EP die Herleitung aus Bewegungsgesetzen, Newton II und Arbeit, SN 11 LK die Herleitung der Gleichungen. Die amtlich nur empfohlene SN-GK-Herleitung bleibt außerhalb des regulären Angebots. Die Registry ergänzt die bislang unvollständige direkte Quellenzuordnung; genau vierzehn tatsächliche Angebote sind getrennt geprüft.",
+      "authoredJurisdictions": [
+        "DE-HE",
+        "DE-SL",
+        "DE-SN"
+      ],
+      "compiledJurisdictions": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "canonicalGoalJsonStringifySha256": "395d91da922a459c7f6e323e57be08f226677d55a3dee4fd8b2608572fdc59f6",
+      "offeredViewIds": [
+        "de-he-gym-physics-gk",
+        "de-he-gym-physics-gk-g8",
+        "de-he-gym-physics-gk-g9",
+        "de-he-gym-physics-lk",
+        "de-he-gym-physics-lk-g8",
+        "de-he-gym-physics-lk-g9",
+        "de-he-gym-sekii-physics-gk",
+        "de-he-gym-sekii-physics-lk",
+        "de-sl-gym-physics-gk",
+        "de-sl-gym-physics-lk",
+        "de-sl-gym-sekii-physics-gk",
+        "de-sl-gym-sekii-physics-lk",
+        "de-sn-gym-physics-lk",
+        "de-sn-gym-sekii-physics-lk"
+      ],
+      "sourceBasis": [
+        {
+          "state": "HE",
+          "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "stage": "SekII",
+          "unit": "e",
+          "label": "Einführungsphase",
+          "order": 110,
+          "topic": "E.2 Newton’sche Axiome und Erhaltungssätze",
+          "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+          "sourceSha256": "46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+          "pages": [
+            30
+          ],
+          "sourceText": "kinetische Energie (grafische Herleitung der Formel)",
+          "boundary": "Regular shared introduction-phase target.",
+          "basis": "Accepted Task M source and node review, 26 November 2026; elementary algebraic and graphical derivation, no calculus prerequisite.",
+          "sourceURL": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf"
+        },
+        {
+          "state": "SL",
+          "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "stage": "SekII",
+          "unit": "e",
+          "label": "Einführungsphase",
+          "order": 110,
+          "topic": "Mechanische Arbeit und Energie",
+          "sourcePath": "curricula/DE/Gymnasium/input/SL/LP_Ph_EP_GOS_2023.pdf",
+          "sourceSha256": "908313618ec41ea03d7eea65174598ecc9dc6961c17bbe29d27bd379b16ad827",
+          "pages": [
+            10
+          ],
+          "sourceText": "leiten die Formel für die kinetische Energie aus den Bewegungsgesetzen, dem 2. Newton‘schen Axiom und der Definition der Arbeit her",
+          "boundary": "Regular shared introduction-phase target.",
+          "basis": "Accepted Task M source and node review, 26 November 2026; elementary algebraic and graphical derivation, no calculus prerequisite."
+        },
+        {
+          "state": "SN",
+          "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "stage": "SekII",
+          "unit": "q11",
+          "label": "Qualifikationsphase: Jahrgangsstufe 11",
+          "order": 111,
+          "topic": "Erhaltungssätze und ihre Anwendungen: Energie",
+          "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "sourceSha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+          "pages": [
+            56
+          ],
+          "sourceText": "Herleitung der Gleichungen",
+          "boundary": "LK only; printed derivation is binding content. The GK derivation is a recommendation, so neither this goal nor K3 is admitted in GK.",
+          "basis": "Accepted Task M source and node review, 26 November 2026; elementary algebraic and graphical derivation, no calculus prerequisite.",
+          "courseProfiles": [
+            "LK"
+          ],
+          "currentEditionConfirmation": {
+            "sourceURL": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/523/brEvxekIvE368J1fdpso",
+            "sourceSha256": "e797e1b1511f9d15e0dd11c15b53f9d4b72c4a2abff69876bb6f888c6ebed3ed",
+            "pages": [
+              4,
+              49,
+              59
+            ],
+            "boundary": "2026 PDF confirms required LK derivation on printed page 47/PDF59 and recommendation only in GK on printed page 37/PDF49. Retained 2019 source bytes remain unchanged."
+          }
+        }
+      ],
+      "runtimeTargetLeaks": []
+    },
+    {
+      "code": "APV-201",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "e0085acf-af64-5c73-8abf-85a5bbfbdaa6",
+      "dimension": "jurisdiction",
+      "decision": "accept_current_warning",
+      "exactWarningKey": "APV-201|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|e0085acf-af64-5c73-8abf-85a5bbfbdaa6|jurisdiction|",
+      "actualDiagnostic": {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "e0085acf-af64-5c73-8abf-85a5bbfbdaa6",
+        "title": "Prüfungsaufgabe: Die Formel der kinetischen Energie herleiten",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HE, DE-SL, DE-SN."
+      },
+      "rationale": "K3 ist die freigegebene eigene SkillPilot-Prüfungsaufgabe zu genau diesem Herleitungsziel, mit unverändertem eigenständigem Prüfungsstatus. Ihre explizite Länderfreigabe entspricht den amtlich begründeten Zielangeboten HE/SL/SN und genau denselben vierzehn Ansichten, in Sachsen nur LK. Die amtlichen Quellen begründen die Kompetenz und deren Grenzen; sie werden nicht als Urheber der konkreten Aufgabe bezeichnet.",
+      "authoredJurisdictions": [
+        "DE-HE",
+        "DE-SL",
+        "DE-SN"
+      ],
+      "compiledJurisdictions": [
+        "DE-HE",
+        "DE-SL",
+        "DE-SN"
+      ],
+      "canonicalGoalJsonStringifySha256": "276f49644bda4b4f4b6fe7945308c19adb7f04317aa78eefeb80710564e58e30",
+      "offeredViewIds": [
+        "de-he-gym-physics-gk",
+        "de-he-gym-physics-gk-g8",
+        "de-he-gym-physics-gk-g9",
+        "de-he-gym-physics-lk",
+        "de-he-gym-physics-lk-g8",
+        "de-he-gym-physics-lk-g9",
+        "de-he-gym-sekii-physics-gk",
+        "de-he-gym-sekii-physics-lk",
+        "de-sl-gym-physics-gk",
+        "de-sl-gym-physics-lk",
+        "de-sl-gym-sekii-physics-gk",
+        "de-sl-gym-sekii-physics-lk",
+        "de-sn-gym-physics-lk",
+        "de-sn-gym-sekii-physics-lk"
+      ],
+      "sourceBasis": [
+        {
+          "state": "HE",
+          "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "stage": "SekII",
+          "unit": "e",
+          "label": "Einführungsphase",
+          "order": 110,
+          "topic": "E.2 Newton’sche Axiome und Erhaltungssätze",
+          "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+          "sourceSha256": "46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+          "pages": [
+            30
+          ],
+          "sourceText": "kinetische Energie (grafische Herleitung der Formel)",
+          "boundary": "Regular shared introduction-phase target.",
+          "basis": "Accepted Task M source and node review, 26 November 2026; elementary algebraic and graphical derivation, no calculus prerequisite.",
+          "sourceURL": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf"
+        },
+        {
+          "state": "SL",
+          "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "stage": "SekII",
+          "unit": "e",
+          "label": "Einführungsphase",
+          "order": 110,
+          "topic": "Mechanische Arbeit und Energie",
+          "sourcePath": "curricula/DE/Gymnasium/input/SL/LP_Ph_EP_GOS_2023.pdf",
+          "sourceSha256": "908313618ec41ea03d7eea65174598ecc9dc6961c17bbe29d27bd379b16ad827",
+          "pages": [
+            10
+          ],
+          "sourceText": "leiten die Formel für die kinetische Energie aus den Bewegungsgesetzen, dem 2. Newton‘schen Axiom und der Definition der Arbeit her",
+          "boundary": "Regular shared introduction-phase target.",
+          "basis": "Accepted Task M source and node review, 26 November 2026; elementary algebraic and graphical derivation, no calculus prerequisite."
+        },
+        {
+          "state": "SN",
+          "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "stage": "SekII",
+          "unit": "q11",
+          "label": "Qualifikationsphase: Jahrgangsstufe 11",
+          "order": 111,
+          "topic": "Erhaltungssätze und ihre Anwendungen: Energie",
+          "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "sourceSha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+          "pages": [
+            56
+          ],
+          "sourceText": "Herleitung der Gleichungen",
+          "boundary": "LK only; printed derivation is binding content. The GK derivation is a recommendation, so neither this goal nor K3 is admitted in GK.",
+          "basis": "Accepted Task M source and node review, 26 November 2026; elementary algebraic and graphical derivation, no calculus prerequisite.",
+          "courseProfiles": [
+            "LK"
+          ],
+          "currentEditionConfirmation": {
+            "sourceURL": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/523/brEvxekIvE368J1fdpso",
+            "sourceSha256": "e797e1b1511f9d15e0dd11c15b53f9d4b72c4a2abff69876bb6f888c6ebed3ed",
+            "pages": [
+              4,
+              49,
+              59
+            ],
+            "boundary": "2026 PDF confirms required LK derivation on printed page 47/PDF59 and recommendation only in GK on printed page 37/PDF49. Retained 2019 source bytes remain unchanged."
+          }
+        }
+      ],
+      "runtimeTargetLeaks": []
+    },
+    {
+      "code": "APV-203",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "dimension": "jurisdiction",
+      "decision": "accept_current_warning",
+      "exactWarningKey": "APV-203|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b|jurisdiction|",
+      "actualDiagnostic": {
+        "code": "APV-203",
+        "severity": "warning",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+        "title": "Formel der kinetischen Energie aus der Beschleunigungsarbeit herleiten",
+        "dimension": "jurisdiction",
+        "message": "Compiled applicability differs from the currently committed applicability field."
+      },
+      "rationale": "Die breitere Compiler-Ländermenge entsteht aus vererbten Zuordnungen zu Vorfahren wie Energie, Erhaltungssätze, E.2 und Physik. Sie ist kein amtlicher Nachweis der Herleitungsanforderung in weiteren Ländern. Die engere authored applicability HE/SL/SN und genau vierzehn reguläre Angebote bleiben bestehen. Frische getrennte Messungen der Autorenrollen und nativen Projektion belegen in allen 90 Ansichten vor und nach Länderfilterung exakt diese vierzehn Zielmitgliedschaften und keine Grundlagen- oder Sichtbarkeitslecks in den übrigen 76. Diese einzelne technische Mehrmengenwarnung wird angenommen; zusätzliche amtliche Abdeckung wird nicht behauptet.",
+      "authoredJurisdictions": [
+        "DE-HE",
+        "DE-SL",
+        "DE-SN"
+      ],
+      "compiledJurisdictions": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "canonicalGoalJsonStringifySha256": "395d91da922a459c7f6e323e57be08f226677d55a3dee4fd8b2608572fdc59f6",
+      "offeredViewIds": [
+        "de-he-gym-physics-gk",
+        "de-he-gym-physics-gk-g8",
+        "de-he-gym-physics-gk-g9",
+        "de-he-gym-physics-lk",
+        "de-he-gym-physics-lk-g8",
+        "de-he-gym-physics-lk-g9",
+        "de-he-gym-sekii-physics-gk",
+        "de-he-gym-sekii-physics-lk",
+        "de-sl-gym-physics-gk",
+        "de-sl-gym-physics-lk",
+        "de-sl-gym-sekii-physics-gk",
+        "de-sl-gym-sekii-physics-lk",
+        "de-sn-gym-physics-lk",
+        "de-sn-gym-sekii-physics-lk"
+      ],
+      "sourceBasis": [
+        {
+          "state": "HE",
+          "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "stage": "SekII",
+          "unit": "e",
+          "label": "Einführungsphase",
+          "order": 110,
+          "topic": "E.2 Newton’sche Axiome und Erhaltungssätze",
+          "sourcePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+          "sourceSha256": "46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+          "pages": [
+            30
+          ],
+          "sourceText": "kinetische Energie (grafische Herleitung der Formel)",
+          "boundary": "Regular shared introduction-phase target.",
+          "basis": "Accepted Task M source and node review, 26 November 2026; elementary algebraic and graphical derivation, no calculus prerequisite.",
+          "sourceURL": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf"
+        },
+        {
+          "state": "SL",
+          "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "stage": "SekII",
+          "unit": "e",
+          "label": "Einführungsphase",
+          "order": 110,
+          "topic": "Mechanische Arbeit und Energie",
+          "sourcePath": "curricula/DE/Gymnasium/input/SL/LP_Ph_EP_GOS_2023.pdf",
+          "sourceSha256": "908313618ec41ea03d7eea65174598ecc9dc6961c17bbe29d27bd379b16ad827",
+          "pages": [
+            10
+          ],
+          "sourceText": "leiten die Formel für die kinetische Energie aus den Bewegungsgesetzen, dem 2. Newton‘schen Axiom und der Definition der Arbeit her",
+          "boundary": "Regular shared introduction-phase target.",
+          "basis": "Accepted Task M source and node review, 26 November 2026; elementary algebraic and graphical derivation, no calculus prerequisite."
+        },
+        {
+          "state": "SN",
+          "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+          "stage": "SekII",
+          "unit": "q11",
+          "label": "Qualifikationsphase: Jahrgangsstufe 11",
+          "order": 111,
+          "topic": "Erhaltungssätze und ihre Anwendungen: Energie",
+          "sourcePath": "curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-physik-sachsen-2025.pdf",
+          "sourceSha256": "8041a30341cca2bc9af6c69b017c34be20655ef7fe6eab162263f9dbd412ece9",
+          "pages": [
+            56
+          ],
+          "sourceText": "Herleitung der Gleichungen",
+          "boundary": "LK only; printed derivation is binding content. The GK derivation is a recommendation, so neither this goal nor K3 is admitted in GK.",
+          "basis": "Accepted Task M source and node review, 26 November 2026; elementary algebraic and graphical derivation, no calculus prerequisite.",
+          "courseProfiles": [
+            "LK"
+          ],
+          "currentEditionConfirmation": {
+            "sourceURL": "https://www.schulportal.sachsen.de/lplandb/lehrplan/file/523/brEvxekIvE368J1fdpso",
+            "sourceSha256": "e797e1b1511f9d15e0dd11c15b53f9d4b72c4a2abff69876bb6f888c6ebed3ed",
+            "pages": [
+              4,
+              49,
+              59
+            ],
+            "boundary": "2026 PDF confirms required LK derivation on printed page 47/PDF59 and recommendation only in GK on printed page 37/PDF49. Retained 2019 source bytes remain unchanged."
+          }
+        }
+      ],
+      "runtimeTargetLeaks": []
+    }
+  ],
+  "changes": {
+    "canonicalCatalog": false,
+    "compositionViews": false,
+    "officialSourceBytes": false,
+    "applicabilityCompiler": false,
+    "runtimeMembership": false,
+    "learnerResults": false,
+    "acceptedWarningRowsAdded": 3
+  },
+  "claimBoundary": "Only these three currently emitted warning keys are accepted. All sixteen compiled jurisdictions remain diagnostic compiler output; only HE eight, SL four and SN LK two views are authorized offers. APV-202 diagnostics and all existing acceptance rows are retained."
+}
