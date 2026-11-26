@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "scope": "Native consumer and current witness checks before final QA activation; final pushed-head workflow results are separate.",
+  "checks": [
+    {
+      "command": "npm run check:math-duration-composition-views",
+      "runtime": "Node 20.20.2",
+      "exitCode": 0,
+      "result": "100 Mathematics views / 198 wrappers; 7 excerpt, 5 policy, 33 stage-view and 3 pair tests passed."
+    },
+    {
+      "command": "measure-native-enrolment-seeds.ts",
+      "result": "90 Physics views, 208 contexts, exact 14 new-goal/task views; no existing seed or learning identity lost; all 20 current historical fixture scopes unchanged.",
+      "artifact": "native-enrolment-seeds.actual.json"
+    },
+    {
+      "command": "verify-foreign-math.py --write-current-bindings",
+      "result": "1036 demands rechecked; 19 of 63 source pins renewed; exactly 3 real path repairs, all demand identities and earliest consumers/places preserved.",
+      "artifact": "foreign-math-recheck.actual.json"
+    },
+    {
+      "command": "measure-national-atlas-current-sources.ts",
+      "result": "70 current source views, 22 changed source pins; 493 regular atlas targets, only new derivation added; 424 DE profile targets unchanged.",
+      "artifact": "national-atlas-current-sources.actual.json"
+    },
+    {
+      "command": "measure-current-preparation.ts",
+      "result": "219 historical payloads replayed; 3 requires-only successors; 216 other payloads and all retained task closures unchanged.",
+      "artifact": "current-stage-preparation.successor.actual.json"
+    }
+  ],
+  "pending": [
+    {
+      "command": "npm run test:physics-goal-book-inputs",
+      "reason": "Strict full native atomicity inventory still waits final activation of the new 494th review. Current preflight stops at 493/494; no pass is claimed."
+    },
+    {
+      "command": "complete backend and native frontend-ci workflow jobs",
+      "reason": "External isolated driver is prepared, but no final workflow run is authorized until the coordinating agent signals the final pushed head and generated books."
+    }
+  ],
+  "backendSourceAndHistoricalFixtureEditsNeeded": false,
+  "rawLogs": "External /tmp/skillpilot-n-consumers-20261126; not repository artifacts."
+}
