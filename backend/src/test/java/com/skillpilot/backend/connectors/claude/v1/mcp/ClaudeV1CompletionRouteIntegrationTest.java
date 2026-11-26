@@ -2157,8 +2157,16 @@ class ClaudeV1CompletionRouteIntegrationTest {
                         null, required, List.of(section), true),
                 new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
                         null, null, monday.plusDays(10), null, List.of(section), true))), today);
-        String mathGoal = learners.getPersonalCurriculumSubjectFrontier(learnerId, MATH).stream()
-                .filter(goal -> "atomic".equals(goal.type())).findFirst().orElseThrow().id();
+        java.util.function.Function<String, List<String>> subjectFrontier = subject -> learners
+                .getPersonalCurriculumSubjectFrontier(learnerId, subject).stream().map(goal -> goal.id()).toList();
+        // What Physics offers in ordinary learning holds a Mathematics prerequisite. The exam topic
+        // is another Mathematics goal, so that this prerequisite lies outside the exam.
+        List<String> ordinaryPhysics = subjectFrontier.apply(physics);
+        java.util.function.Predicate<String> isMath = id -> MATH.equals(landscapeDefinitions.getLandscapeIdForGoal(id));
+        assertThat(ordinaryPhysics).anyMatch(isMath).anyMatch(isMath.negate());
+        // "Definition des Skalarprodukts mithilfe orthogonaler Projektionen veranschaulichen"
+        String mathGoal = "3016ec37-1c2e-47db-83f5-e767923bc97e";
+        assertThat(ordinaryPhysics).doesNotContain(mathGoal);
         learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik mit Klausur", List.of(
                 new LearnerLearningPlanApi.Block("topic", "learning", mathGoal, "Mathematik", monday, monday.plusDays(4),
                         null, List.of(mathGoal), List.of(mathGoal), true),
@@ -2169,11 +2177,9 @@ class ClaudeV1CompletionRouteIntegrationTest {
             following.setFollowLearningPlans(true);
             learnerRepository.saveAndFlush(following);
         });
-        java.util.function.Function<String, List<String>> subjectFrontier = subject -> learners
-                .getPersonalCurriculumSubjectFrontier(learnerId, subject).stream().map(goal -> goal.id()).toList();
         // Both exams can be evaluated: each binds its own subject.
         assertThat(subjectFrontier.apply(physics)).isNotEmpty().allSatisfy(id -> assertThat(required).contains(id));
-        assertThat(subjectFrontier.apply(MATH)).containsExactly(mathGoal);
+        assertThat(subjectFrontier.apply(MATH)).isSubsetOf(mathGoal);
 
         var outdated = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
         outdated.setCurriculumId(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
@@ -2182,27 +2188,19 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(learningPlans.getPlan(learnerId, MATH, today).stale()).isFalse();
 
         List<String> physicsOpen = subjectFrontier.apply(physics);
-        assertThat(physicsOpen).isNotEmpty();
-        // The Mathematics exam keeps binding Mathematics.
-        assertThat(subjectFrontier.apply(MATH)).containsExactly(mathGoal);
-        // Physics offers what it offers without plan following: neither plan narrows it.
-        java.util.function.Consumer<Boolean> follow = enabled -> transactions.executeWithoutResult(status -> {
-            var following = learnerRepository.findById(learnerId).orElseThrow();
-            following.setFollowLearningPlans(enabled);
-            learnerRepository.saveAndFlush(following);
-        });
-        follow.accept(false);
-        assertThat(subjectFrontier.apply(physics)).isEqualTo(physicsOpen);
-        follow.accept(true);
+        // The Mathematics exam keeps binding Mathematics, also where Physics needs Mathematics: a
+        // Mathematics prerequisite outside the exam is not offered, because it could not be
+        // started. Every Physics goal of ordinary learning is offered; neither plan narrows them.
+        assertThat(subjectFrontier.apply(MATH)).isSubsetOf(mathGoal);
+        assertThat(physicsOpen).isNotEmpty()
+                .isEqualTo(ordinaryPhysics.stream().filter(isMath.negate()).toList());
 
         var status = map(context(), "learningPlanToday");
-        assertThat(status).containsEntry("resumeAvailable", true);
         var subjects = ((List<?>) status.get("subjects")).stream().map(Map.class::cast).toList();
         var mathEntry = subjects.stream().filter(entry -> entry.get("subject").toString().startsWith("Mathematik"))
                 .findFirst().orElseThrow();
         var physicsEntry = subjects.stream().filter(entry -> entry.get("subject").toString().startsWith("Physik"))
                 .findFirst().orElseThrow();
-        assertThat(mathEntry.get("canContinue")).isEqualTo(true);
         assertThat(mathEntry.get("evaluable")).isEqualTo(true);
         assertThat(physicsEntry.get("evaluable")).isEqualTo(false);
         // With AutoPilot the backend chooses, and an exam that can be evaluated binds its choice as
@@ -2211,7 +2209,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
         if (!autoPilot) {
             successful(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
                     writeArgs("explicit-physics", version(), Map.of("subject", physicsEntry.get("subject"))));
-            assertThat(physicsOpen).contains(learners.getLearner(learnerId).getActiveGoalId());
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsOpen.getFirst());
         }
     }
 

@@ -2447,7 +2447,9 @@ continuation either: what the status publishes as resume must start a goal.
 An explicit request for a subject is bound by that subject's own plan only.
 The learning path of a subject holds prerequisites of other subjects, and
 they must not draw the exam of another subject into it
-(`getPersonalCurriculumSubjectFrontier`). Unchanged: with AutoPilot on, an
+(`getPersonalCurriculumSubjectFrontier`). Such a prerequisite is itself bound
+by the plan of its own subject, exactly as the write that starts it: the
+subject offers it only if it can be started. Unchanged: with AutoPilot on, an
 exam that can be evaluated binds the backend's choice, and other subjects are
 then not published as choices. Open: the focus that a former exam activation
 stored still bounds the ordinary frontier of a plan that became outdated,

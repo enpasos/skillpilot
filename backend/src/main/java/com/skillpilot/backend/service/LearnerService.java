@@ -4543,13 +4543,25 @@ public class LearnerService {
         // Only this subject's own plan binds an explicit request for the subject. The learning
         // path holds prerequisites of other subjects; they must not draw the exam of another
         // subject into this one (issue #205).
+        List<LearnerLearningPlan> followed = currentFollowedLearningPlans(learner);
         Set<String> followedScope = followedLearningScopeIds(learner, projection, prospectiveFocus,
-                currentFollowedLearningPlans(learner).stream()
-                        .filter(plan -> landscapeId.equals(plan.getLandscapeId())).toList());
+                followed.stream().filter(plan -> landscapeId.equals(plan.getLandscapeId())).toList());
         if (followedScope != null && followedScope.isEmpty()) return List.of();
+        // A prerequisite of another subject is bound by that subject's own plan, exactly as the
+        // write that starts it: what this subject offers must be a goal that can be started.
+        Map<String, Boolean> startable = new HashMap<>();
         return getRichFrontier(learner, projection, richFrontierFacts(learner, projection),
                 false, prospectiveFocus, false, followedScope, true).stream()
                 .filter(goal -> "atomic".equals(goal.type()))
+                .filter(goal -> {
+                    String owner = landscapeService.getLandscapeIdForGoal(goal.id());
+                    if (owner == null || owner.equals(landscapeId)) return true;
+                    return startable.computeIfAbsent(goal.id(), id -> {
+                        Set<String> ownerScope = followedLearningScopeIds(learner, projection, List.of(id),
+                                followed.stream().filter(plan -> owner.equals(plan.getLandscapeId())).toList());
+                        return ownerScope == null || ownerScope.contains(id);
+                    });
+                })
                 .toList();
     }
 
