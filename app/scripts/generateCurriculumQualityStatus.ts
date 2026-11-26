@@ -3342,11 +3342,12 @@ function collectCompositionViewVisibleGoalIds(
   }
 
   try {
-    const parsed = loadJson<Partial<Pick<CompositionView, 'rootNodes' | 'scope'>>>(absoluteViewPath)
-    if (!Array.isArray(parsed.rootNodes)) {
+    const raw = loadJson<Partial<Pick<CompositionView, 'rootNodes' | 'scope'>>>(absoluteViewPath)
+    if (!Array.isArray(raw.rootNodes)) {
       errors.push(`${viewPath}: rootNodes must be an array`)
       return { visibleGoalIds, errors }
     }
+    const parsed = normalizeCompositionView(raw)
     parsed.rootNodes.forEach(visitNode)
     const { targetGoalIds } = collectCompositionProjectionRoleGoalIds(parsed.rootNodes, goalById)
     // Match the reviewed learner scope used by the standalone Memory check.
@@ -4367,6 +4368,20 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
     .find(entry => entry.meta.landscapeId === landscape.landscapeId)
   if (!projectedEntry) return new Set<string>()
 
+  const needsSourceRoles = includePrerequisiteOnly || normalizedView.viewFormatVersion === '1.3'
+  const sourceGoalById = needsSourceRoles
+    ? new Map(entries.flatMap(entry => entry.goals.map(goal => [goal.id, goal] as const)))
+    : undefined
+  const sourceRootByLandscapeId = needsSourceRoles
+    ? new Map(entries.flatMap(entry => {
+      const root = entry.goals.find(goal => (goal.tags ?? []).includes('root') && goal.contains.length > 0)
+      return root ? [[entry.meta.landscapeId, root.id] as const] : []
+    }))
+    : undefined
+  const sourceRoles = sourceGoalById
+    ? collectCompositionProjectionRoleGoalIds(normalizedView.rootNodes, sourceGoalById, sourceRootByLandscapeId)
+    : undefined
+
   const goalById = new Map(projectedEntry.goals.map((goal) => [goal.id, goal]))
   const directChildrenByParent = buildDirectChildrenMap(goalById)
   if (scopeFilters.length > 0) {
@@ -4408,6 +4423,9 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
   const atomicGoalIds = new Set<string>()
   const addRenderedAtomicGoal = (goalId: string) => {
     if (goalId.startsWith('composition:')) return
+    // Offers remain visible in the projection, but cannot supply a regular
+    // route target or its preparation, including through additional anchors.
+    if (sourceRoles?.voluntaryGoalIds.has(goalId)) return
     const goal = goalById.get(goalId)
     if (goal && (goal.contains?.length ?? 0) === 0) atomicGoalIds.add(goalId)
   }
@@ -4415,17 +4433,8 @@ export function collectRenderedAtomicGoalIdsFromCompositionView(
   additionalVisibleGoalIds
     .filter((goalId) => fullVisibleGoalIds.has(goalId))
     .forEach(addRenderedAtomicGoal)
-  if (includePrerequisiteOnly) {
-    const sourceGoalById = new Map(entries.flatMap(entry => entry.goals.map(goal => [goal.id, goal] as const)))
-    const sourceRootByLandscapeId = new Map(entries.flatMap(entry => {
-      const root = entry.goals.find(goal => (goal.tags ?? []).includes('root') && goal.contains.length > 0)
-      return root ? [[entry.meta.landscapeId, root.id] as const] : []
-    }))
-    const { prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(
-      normalizedView.rootNodes,
-      sourceGoalById,
-      sourceRootByLandscapeId,
-    )
+  if (includePrerequisiteOnly && sourceGoalById && sourceRoles) {
+    const { prerequisiteOnlyGoalIds } = sourceRoles
     const selectedStageRoleNodes: CompositionViewNode[] = []
     const collectSelectedStageRoleNodes = (nodes: CompositionViewNode[], insideSelectedStage = false) => {
       nodes.forEach((node) => {

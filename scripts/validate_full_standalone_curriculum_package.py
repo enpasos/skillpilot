@@ -35,6 +35,7 @@ from jsonschema import Draft202012Validator, FormatChecker  # noqa: E402
 from referencing import Registry, Resource  # noqa: E402
 from referencing.exceptions import NoSuchResource  # noqa: E402
 
+from composition_view_voluntary_roles import validate_voluntary_roles
 import validate_curriculum_package_contracts as package_contracts  # noqa: E402
 import validate_curriculum_runtime_catalog_contract as runtime_catalog_contracts  # noqa: E402
 import validate_curriculum_schema_catalog_contract as schema_catalog_contracts  # noqa: E402
@@ -2106,8 +2107,8 @@ def validate_deterministic_render_provenance(
             # fully bound 1.3 task stimulus may project the more precise ledger
             # subtype; its pending rights and every other binding stay exact.
             material_bound = (
-                manifest.get("runtimeContractVersion") == "1.3"
-                and manifest.get("releaseProfile") == "full-standalone-v1.3"
+                (manifest.get("runtimeContractVersion"), manifest.get("releaseProfile"))
+                in {("1.3", "full-standalone-v1.3"), ("1.4", "full-standalone-v1.4")}
                 and record.get("provenanceClass") == "skillpilot-authored"
                 and resource.get("resourceKind") == "assessment-material"
                 and resource.get("delivery") == "embedded"
@@ -3084,7 +3085,7 @@ def validate_view_acquisition_placements(view: Mapping[str, Any], goals: Mapping
         node, path = pending.pop()
         if "acquisitionPlacement" in node:
             target = goals.get(node.get("goalId"))
-            if (view.get("viewFormatVersion") != "1.2" or node.get("kind") != "goalEntry"
+            if (view.get("viewFormatVersion") not in ("1.2", "1.3") or node.get("kind") != "goalEntry"
                     or node.get("projectionRole") != "prerequisiteOnly" or node["acquisitionPlacement"] is not True
                     or len(path) < 2 or not isinstance(target, dict)
                     or target.get("type") != "atomic" or target.get("contains")):
@@ -3093,10 +3094,31 @@ def validate_view_acquisition_placements(view: Mapping[str, Any], goals: Mapping
             pending.append((child, (*path, index)))
 
 
-def validate_runtime_composition_view(view: Mapping[str, Any], goals: Mapping[str, Any]) -> None:
+def validate_runtime_composition_view(view: Mapping[str, Any], goals: Mapping[str, Any],
+                                      root_by_landscape: Mapping[str, str] | None = None) -> None:
     """Check packaged view semantics from packaged goals, without producer code."""
+    version = view.get("viewFormatVersion")
+    schemas = {
+        "1.0": "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+        "1.2": "https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-composition-view.schema.json",
+        "1.3": "https://skillpilot.com/schemas/curriculum-package/v1.4/runtime-composition-view.schema.json",
+    }
+    if version not in schemas or view.get("$schema") != schemas[version]:
+        raise ValidationFailure("Unsupported runtime composition view schema/version pair")
+    if version != "1.3":
+        nodes = list(view["rootNodes"])
+        while nodes:
+            node = nodes.pop()
+            if node.get("projectionRole", "target") not in ("target", "prerequisiteOnly"):
+                raise ValidationFailure("Unknown projectionRole for legacy runtime composition view")
+            nodes.extend(node.get("children", []))
     validate_view_acquisition_placements(view, goals)
-    if view.get("viewFormatVersion") != "1.2":
+    if view.get("viewFormatVersion") == "1.3":
+        try:
+            validate_voluntary_roles(view, goals, root_by_landscape or {})
+        except ValueError as error:
+            raise ValidationFailure(str(error)) from error
+    if view.get("viewFormatVersion") not in ("1.2", "1.3"):
         return
     pending = list(view.get("rootNodes", []))
     structures: set[str] = set()
@@ -3638,10 +3660,12 @@ def derive_expected_closure(
             if isinstance(children, list):
                 emit_view_nodes(view_key, children, (*current, "children"))
 
+    roots = {landscape["landscapeId"]: goal["id"]
+             for _, _, landscape in landscape_documents for goal in landscape["goals"] if "root" in goal.get("tags", [])}
     for _artifact_path, view in view_documents:
         validate_runtime_composition_view(view, {
             goal_id: definition_bodies[entity_key_id(key)] for goal_id, key in goal_keys.items()
-        })
+        }, roots)
         view_key = view_keys[view["viewId"]]
         hard(view_key, pointer("landscapeId"), "view.landscape-id", landscape_keys[view["landscapeId"]])
         emit_view_nodes(view_key, view.get("rootNodes", []))
@@ -3702,7 +3726,7 @@ def derive_expected_closure(
         raise ValidationFailure("runtime rootLandscapeIds are malformed")
     seeds = [landscape_keys[str(landscape_id)] for landscape_id in root_ids]
     seeds.extend(view_keys[view_id] for view_id in sorted(view_keys))
-    if runtime_catalog.get("runtimeContractVersion") == "1.3":
+    if runtime_catalog.get("runtimeContractVersion") in ("1.3", "1.4"):
         goal_documents = {goal["id"]: goal for _path, _logical_id, landscape in landscape_documents for goal in landscape.get("goals", [])}
         for resource in required_assessment_materials(goal_documents, resources):
             seeds.append(resource_keys[resource["resourceId"]])
@@ -3895,7 +3919,7 @@ def validate_learning_unit_contracts(
             binding = record.get("semanticBinding")
             logical_id = binding.get("logicalId") if isinstance(binding, dict) else None
             reviews.append((learning_unit_contracts.REVIEW_ROLE, logical_id, str(artifact_path), artifact))
-    if manifest.get("runtimeContractVersion") not in (learning_unit_contracts.RUNTIME_CONTRACT_VERSION, "1.3"):
+    if manifest.get("runtimeContractVersion") not in (learning_unit_contracts.RUNTIME_CONTRACT_VERSION, "1.3", "1.4"):
         if reviews or any(learning_units.has_learning_unit_content(landscape) for landscape in landscapes):
             collector.add("hardReferenceClosure", "LEARNING_UNIT_RUNTIME_MISMATCH", "/data/canonical",
                           "learning units and coverage reviews require runtime contract 1.2")

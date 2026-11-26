@@ -5,6 +5,7 @@ export const curriculumContractLocation = (id: string): { sourcePath: string; pa
     ['https://skillpilot.com/schemas/curriculum-package/v1.1/', 'contracts/curriculum-package/v1.1/', 'schemas/v1.1/'],
     ['https://skillpilot.com/schemas/curriculum-package/v1.2/', 'contracts/curriculum-package/v1.2/', 'schemas/v1.2/'],
     ['https://skillpilot.com/schemas/curriculum-package/v1.3/', 'contracts/curriculum-package/v1.3/', 'schemas/v1.3/'],
+    ['https://skillpilot.com/schemas/curriculum-package/v1.4/', 'contracts/curriculum-package/v1.4/', 'schemas/v1.4/'],
     ['https://skillpilot.com/schemas/assessment-completion/v1/', 'contracts/assessment-completion/v1/', 'schemas/assessment-completion/'],
   ] as const
   for (const [prefix, source, packaged] of prefixes) {

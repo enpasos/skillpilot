@@ -13,6 +13,7 @@ import { dirname, isAbsolute, relative, resolve, sep } from 'node:path'
 import { createInterface } from 'node:readline'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
+import { subjectExportCompositionViewIssues } from './subjectExportCompositionViews'
 
 type JsonValue =
   | null
@@ -1791,17 +1792,25 @@ export const reconstructMappings = (model: RdfModel) => {
   return { canonicalMappings, reviewDecisions }
 }
 
-const rebuildViewNode = (model: RdfModel, resource: string): JsonValue => {
+const rebuildViewNode = (model: RdfModel, resource: string, source13 = false): JsonValue => {
   const node: Record<string, JsonValue> = {}
   withString(node, 'kind', lit(model, resource, P.viewNodeKind))
   withString(node, 'projectionRole', lit(model, resource, P.projectionRole))
   withString(node, 'id', lit(model, resource, P.structureId))
   withString(node, 'label', lit(model, resource, P.label))
   withString(node, 'displayLabel', lit(model, resource, P.displayLabel))
+  if (source13) {
+    for (const key of ['labelEn', 'canonicalSourceGoalId', 'canonicalSourcePhase', 'landscapeId']) {
+      withString(node, key, lit(model, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}`))
+    }
+    for (const key of ['childOrder', 'acquisitionPlacement', 'placementEvidence', 'canonicalSourceNode', 'originalCanonicalSubtree']) {
+      withJson(node, key, json(lit(model, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}Json`)))
+    }
+  }
   const goal = iris(model, resource, P.compositionGoal)[0]
   withString(node, 'goalId', goal ? skillpilotId(model, goal) : undefined)
-  const children = orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((child) => rebuildViewNode(model, child))
-  if (children.length > 0) {
+  const children = orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((child) => rebuildViewNode(model, child, source13))
+  if (children.length > 0 || source13 && node.kind === 'structure') {
     node.children = children
   }
   return node
@@ -1811,13 +1820,21 @@ export const reconstructViews = (model: RdfModel) => {
   const views: Record<string, JsonValue> = {}
   orderedResources(model, resourcesOfType(model, T.compositionView)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? resource
+    const version = lit(model, resource, `${SP}compositionViewFormatVersion`)
+    const source13 = version === '1.3'
     const view: Record<string, JsonValue> = {
-      rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node)),
+      rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node, source13)),
     }
+    withString(view, '$schema', lit(model, resource, `${SP}compositionViewSchema`))
+    withString(view, 'viewFormatVersion', version)
+    withString(view, 'language', lit(model, resource, `${SP}compositionViewLanguage`))
+    withString(view, 'title', lit(model, resource, `${SP}compositionViewTitle`))
     withString(view, 'viewId', lit(model, resource, P.viewId))
     withString(view, 'label', lit(model, resource, P.label))
     withString(view, 'landscapeId', lit(model, resource, P.landscapeId))
     withJson(view, 'scope', json(lit(model, resource, P.scopeJson)))
+    const transportIssues = subjectExportCompositionViewIssues(view)
+    if (transportIssues.length) throw new Error(`Invalid reconstructed composition view transport: ${transportIssues.join('; ')}`)
     views[zipPath] = view
   })
   return views

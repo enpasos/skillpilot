@@ -19,6 +19,8 @@ from generate_physics_partial_orders import partial_order, acquisition_placement
 from generate_physics_arrow_places import apply_arrow_places, with_arrow_places
 from generate_physics_force_places import apply_force_places, complete_force_authoring, with_clean_force_input, GOALS as FORCE_GOAL_IDS
 
+from composition_view_voluntary_roles import regular_authoring_input, restore_view_offers
+
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORY = ROOT / "curricula/DE/Gymnasium/composition-views/physik"
 FILES = [f"de-he-{prefix}{profile}.view.json" for prefix in ("", "sekii-") for profile in ("gk", "lk")]
@@ -166,10 +168,14 @@ G8_SOURCE = ROOT / "curricula/DE/Gymnasium/input/HE/lower-secondary/source-extra
 G8_SOURCE_SHA256 = "f7d038fb1c3aba9e4bea7b29e21431f49d138cee6297b048cc9024267337217e"
 GOALS = {}
 GOAL_OWNERS = {}
+ROOT_BY_LANDSCAPE = {}
 for source in (ROOT / "curricula/DE/Gymnasium/canonical").glob("*.json"):
     document = json.loads(source.read_text())
     GOALS.update({goal["id"]: goal for goal in document["goals"]})
     GOAL_OWNERS.update({goal["id"]: document["landscapeId"] for goal in document["goals"]})
+    for goal in document["goals"]:
+        if "root" in goal.get("tags", []):
+            ROOT_BY_LANDSCAPE[document["landscapeId"]] = goal["id"]
 
 
 def walk(nodes):
@@ -196,7 +202,8 @@ def role_atoms(view):
         visit(node["goalId"])
     return {role: {identifier for identifier, (_, assigned) in assignments.items()
                    if assigned == role and not GOALS[identifier].get("contains")}
-            for role in ("target", "prerequisiteOnly")}
+            for role in (("target", "prerequisiteOnly", "voluntary") if view.get("viewFormatVersion") == "1.3"
+                         else ("target", "prerequisiteOnly"))}
 
 
 def structure(identifier, label, children):
@@ -424,7 +431,7 @@ def generate(view):
         # Keep its global support records outside the stage but inside that
         # authoring wrapper, so the product exposes Physik -> SekII directly.
         extra_roots = [node for node in result["rootNodes"] if node is not root]
-        if any(node.get("projectionRole") != "prerequisiteOnly"
+        if any(node.get("projectionRole", "target") == "target"
                for node in walk(extra_roots) if node["kind"] != "structure"):
             raise ValueError("Upper-only Physics has an unexpected target outside its subject root")
         root["children"].extend(extra_roots)
@@ -456,7 +463,7 @@ def generate(view):
     for phase in phases:
         # Each canonical field lists its parts, never its identically named root.
         for index, node in enumerate(phase["children"]):
-            if node["kind"] == "canonicalSubtree" and GOALS[node["goalId"]].get("contains") and node.get("projectionRole") != "prerequisiteOnly":
+            if node["kind"] == "canonicalSubtree" and GOALS[node["goalId"]].get("contains") and node.get("projectionRole", "target") == "target":
                 phase["children"][index] = structure("he-physics-topic-" + node["goalId"], GOALS[node["goalId"]]["title"], expand(node))
         loose = [node for node in phase["children"] if node["kind"] != "structure" and atoms(node)
                  and not GOALS[node["goalId"]]["title"].startswith("Lernkarten")]
@@ -518,7 +525,7 @@ def generate(view):
         target = find(destination)[2]
         for identifier in assessment_ids:
             references = [node for node in walk(phases[0]["children"])
-                          if node.get("goalId") == identifier and node.get("projectionRole") != "prerequisiteOnly"]
+                          if node.get("goalId") == identifier and node.get("projectionRole", "target") == "target"]
             if (identifier in HESSEN_E1_ASSESSMENTS and not references and find(identifier) is None
                     and GOALS.get(identifier, {}).get("examData")):
                 target["children"].append({"kind": "canonicalSubtree", "goalId": identifier})
@@ -582,7 +589,7 @@ def author_e1_child_units(view_id, phase, motion, find):
         for container in containers:
             for index, child in enumerate(container["children"]):
                 if (child.get("goalId") == identifier and child["kind"] != "structure"
-                        and child.get("projectionRole") != "prerequisiteOnly"):
+                        and child.get("projectionRole", "target") == "target"):
                     return container["children"].pop(index)
         return None
 
@@ -613,7 +620,7 @@ def author_e1_child_units(view_id, phase, motion, find):
     unit_ids = {unit_id for unit_id, *_ in HESSEN_E1_CHILD_UNITS}
     for node in motion["children"]:
         remaining = [child for child in walk(node.get("children", []))
-                     if child["kind"] != "structure" and child.get("projectionRole") != "prerequisiteOnly"]
+                     if child["kind"] != "structure" and child.get("projectionRole", "target") == "target"]
         if node.get("id") in unit_ids and remaining:
             raise ValueError(f"{view_id}: {node['id']} keeps targets outside the declared child-unit members: "
                              + str([child["goalId"] for child in remaining]))
@@ -1058,6 +1065,7 @@ def duration_outputs():
     outputs = []
     for profile in ("gk", "lk"):
         current = json.loads((DIRECTORY / f"de-he-{profile}.view.json").read_text())
+        current = regular_authoring_input(current)
         g8, report = generate_g8(current)
         repeated, _ = generate_g8(g8)
         if repeated != g8:
@@ -1090,8 +1098,8 @@ def complete_authoring(view):
 
 
 def generate_complete(view):
-    result,evidence=generate(view)
-    return complete_authoring(result),evidence
+    result, evidence = generate(regular_authoring_input(view))
+    return restore_view_offers(complete_authoring(result), view, GOALS, ROOT_BY_LANDSCAPE), evidence
 
 
 def main():
@@ -1127,7 +1135,8 @@ def main():
         for path, generated, details in duration_outputs():
             outputs.append((path, generated))
             report.append({"file": path.name, "changed": not path.exists() or json.loads(path.read_text()) != generated, **details})
-    outputs = [(path, complete_authoring(view)) for path, view in outputs]
+    outputs = [(path, restore_view_offers(complete_authoring(regular_authoring_input(view)),
+                    json.loads(path.read_text()) if path.exists() else view, GOALS, ROOT_BY_LANDSCAPE)) for path, view in outputs]
     # All four outputs pass preflight before any write.
     for path, generated in outputs:
         if args.write:

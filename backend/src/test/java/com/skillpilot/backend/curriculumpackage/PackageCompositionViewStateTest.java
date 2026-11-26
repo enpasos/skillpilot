@@ -27,6 +27,195 @@ class PackageCompositionViewStateTest {
     private final ObjectMapper mapper = new ObjectMapper();
 
     @Test
+    void voluntaryOnlySectionPreservesThreeDisjointSetsAndSourceRoleProvenance() throws Exception {
+        var snapshot = voluntaryFixture(false, List.of(
+                Map.of("kind", "goalEntry", "goalId", "regular"),
+                Map.of("kind", "goalEntry", "goalId", "support", "projectionRole", "prerequisiteOnly"),
+                Map.of("kind", "structure", "id", "offers", "label", "Offers", "children", List.of(
+                        Map.of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary"),
+                        Map.of("kind", "goalEntry", "goalId", "task", "projectionRole", "voluntary")))), List.of());
+        var resolved = PackageCompositionViewState.load(snapshot, mapper).resolveOffering("offering-alpha");
+        assertThat(resolved.targetAtomicGoalIds()).containsExactly("regular");
+        assertThat(resolved.prerequisiteOnlyAtomicGoalIds()).containsExactlyInAnyOrder("support", "implicit", "coverageOnly");
+        assertThat(resolved.voluntaryAtomicGoalIds()).containsExactlyInAnyOrder("offer", "task");
+        assertThat(resolved.sourceRolesByViewId().get("view-alpha")).isEqualTo(resolved.atomicRoles());
+        assertThatThrownBy(() -> resolved.atomicRoles().put("offer", "target")).isInstanceOf(UnsupportedOperationException.class);
+        assertThatThrownBy(() -> resolved.sourceRolesByViewId().get("view-alpha").put("offer", "target"))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @Test
+    void mandatoryClosureUsesEffectiveTargetAtomsAndInheritedPrerequisites() throws Exception {
+        var dormant = voluntaryFixture(false, List.of(
+                Map.of("kind", "canonicalSubtree", "goalId", "overrideRoot"),
+                Map.of("kind", "goalEntry", "goalId", "support", "projectionRole", "prerequisiteOnly"),
+                Map.of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary")), List.of());
+        var resolved = PackageCompositionViewState.load(dormant, mapper).resolveOffering("offering-alpha");
+        assertThat(resolved.targetAtomicGoalIds()).containsExactly("regular");
+        assertThat(resolved.prerequisiteOnlyAtomicGoalIds()).containsExactlyInAnyOrder("support", "implicit");
+        assertThat(resolved.voluntaryAtomicGoalIds()).containsExactly("offer");
+        var inherited = voluntaryFixture(false,
+                List.of(Map.of("kind", "goalEntry", "goalId", "inheritedChild")), List.of());
+        var inheritedView = PackageCompositionViewState.load(inherited, mapper).resolveOffering("offering-alpha");
+        assertThat(inheritedView.targetAtomicGoalIds()).containsExactly("inheritedChild");
+        assertThat(inheritedView.prerequisiteOnlyAtomicGoalIds()).containsExactly("offer");
+        var template = Map.<String, Object>of("kind", "goalEntry", "goalId", "support", "projectionRole", "prerequisiteOnly", "acquisitionPlacement", true);
+        var repeatedTemplates = voluntaryFixture(false, List.of(
+                Map.of("kind", "structure", "id", "first", "label", "First", "children", List.of(template)),
+                Map.of("kind", "structure", "id", "second", "label", "Second", "children", List.of(template)),
+                Map.of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary")), List.of());
+        var templates = PackageCompositionViewState.load(repeatedTemplates, mapper).resolveOffering("offering-alpha");
+        assertThat(templates.prerequisiteOnlyAtomicGoalIds()).containsExactly("support");
+        assertThat(templates.voluntaryAtomicGoalIds()).containsExactly("offer");
+        for (String role : List.of("target", "prerequisiteOnly")) {
+            var emptyCluster = voluntaryFixture(false,
+                    List.of(Map.of("kind", "goalEntry", "goalId", "emptyCluster", "projectionRole", role)), List.of());
+            var empty = PackageCompositionViewState.load(emptyCluster, mapper).resolveOffering("offering-alpha");
+            assertThat(empty.targetAtomicGoalIds()).isEmpty();
+            assertThat(empty.prerequisiteOnlyAtomicGoalIds()).isEmpty();
+        }
+    }
+
+    @Test
+    void voluntaryMergeKeepsRequiredRoleAndOriginalRolesInBothSourceOrders() throws Exception {
+        var offer = Map.<String, Object>of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary");
+        var task = Map.<String, Object>of("kind", "goalEntry", "goalId", "task", "projectionRole", "voluntary");
+        var target = Map.<String, Object>of("kind", "goalEntry", "goalId", "offer");
+        for (boolean reverse : List.of(false, true)) {
+            var snapshot = voluntaryFixture(true, reverse ? List.of(target) : List.of(offer, task),
+                    reverse ? List.of(offer, task) : List.of(target));
+            var resolved = PackageCompositionViewState.load(snapshot, mapper).resolveOffering("offering-alpha");
+            assertThat(resolved.targetAtomicGoalIds()).containsExactly("offer");
+            assertThat(resolved.voluntaryAtomicGoalIds()).containsExactly("task");
+            assertThat(resolved.sourceRolesByViewId().get(reverse ? "view-alpha-secondary" : "view-alpha"))
+                    .containsEntry("offer", "voluntary");
+            assertThat(resolved.sourceRolesByViewId().get(reverse ? "view-alpha" : "view-alpha-secondary"))
+                    .containsEntry("offer", "target");
+        }
+        var snapshot = voluntaryFixture(true,
+                List.of(Map.of("kind", "goalEntry", "goalId", "dependent")), List.of(offer));
+        var resolved = PackageCompositionViewState.load(snapshot, mapper).resolveOffering("offering-alpha");
+        assertThat(resolved.targetAtomicGoalIds()).containsExactly("dependent");
+        assertThat(resolved.prerequisiteOnlyAtomicGoalIds()).containsExactlyInAnyOrder("offer", "support");
+        assertThat(resolved.voluntaryAtomicGoalIds()).isEmpty();
+        assertThat(resolved.sourceRolesByViewId().get("view-alpha-secondary")).containsEntry("offer", "voluntary");
+    }
+
+    @Test
+    void voluntaryContractRejectsDuplicateAndOpaquePlacesRolesAndMandatoryDependencies() throws Exception {
+        var offer = Map.<String, Object>of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary");
+        for (var nodes : List.of(
+                List.of(offer, offer),
+                List.of(offer, Map.<String, Object>of("kind", "canonicalSubtree", "goalId", "all")),
+                List.of(offer, Map.<String, Object>of("kind", "goalEntry", "goalId", "offer", "projectionRole", "prerequisiteOnly")),
+                List.of(offer, Map.<String, Object>of("kind", "goalEntry", "goalId", "all")),
+                List.of(Map.<String, Object>of("kind", "goalEntry", "goalId", "all", "projectionRole", "voluntary")),
+                List.of(Map.<String, Object>of("kind", "goalEntry", "goalId", "emptyCluster", "projectionRole", "voluntary")),
+                List.of(Map.<String, Object>of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary", "acquisitionPlacement", true)),
+                List.of(offer, Map.<String, Object>of("kind", "goalEntry", "goalId", "dependent")),
+                List.of(offer, Map.<String, Object>of("kind", "goalEntry", "goalId", "coverageDependent")),
+                List.of(offer, Map.<String, Object>of("kind", "goalEntry", "goalId", "inheritedChild")),
+                List.of(offer, Map.<String, Object>of("kind", "goalEntry", "goalId", "task")))) {
+            var snapshot = voluntaryFixture(false, nodes, List.of());
+            assertThatThrownBy(() -> PackageCompositionViewState.load(snapshot, mapper))
+                    .as(nodes.toString()).isInstanceOf(CurriculumPackageException.class);
+        }
+    }
+
+    @Test
+    void nationalMergePreservesRequiredDominanceAndEachSourceRoleWithoutActivatingOptionalPaths() throws Exception {
+        var offer = Map.<String, Object>of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary");
+        var he = List.<Map<String, Object>>of(Map.of("kind", "structure", "id", "he-offers", "label", "HE", "children", List.of(offer)));
+        var ni = List.<Map<String, Object>>of(Map.of("kind", "structure", "id", "ni-offers", "label", "NI", "children", List.of(offer)));
+        var allVoluntary = asNationalMerge(voluntaryFixture(true, he, ni));
+        var voluntary = PackageCompositionViewState.load(allVoluntary, mapper).resolveOffering("offering-alpha");
+        assertThat(voluntary.targetAtomicGoalIds()).isEmpty();
+        assertThat(voluntary.voluntaryAtomicGoalIds()).containsExactly("offer");
+        assertThat(voluntary.sourceRolesByViewId().values()).allSatisfy(roles -> assertThat(roles).containsEntry("offer", "voluntary"));
+        assertThat(voluntary.document().get("rootNodes").toString()).doesNotContain("ni-offers");
+        var optionalPath = asNationalMerge(voluntaryFixture(true,
+                List.of(Map.of("kind", "goalEntry", "goalId", "task", "projectionRole", "voluntary")), ni));
+        var dormant = PackageCompositionViewState.load(optionalPath, mapper).resolveOffering("offering-alpha");
+        assertThat(dormant.targetAtomicGoalIds()).isEmpty();
+        assertThat(dormant.voluntaryAtomicGoalIds()).containsExactlyInAnyOrder("offer", "task");
+        assertThat(dormant.sourceRolesByViewId().get("view-alpha")).containsEntry("offer", "prerequisiteOnly");
+
+        var requiredSnapshot = asNationalMerge(voluntaryFixture(true,
+                List.of(Map.of("kind", "goalEntry", "goalId", "dependent")), ni));
+        var required = PackageCompositionViewState.load(requiredSnapshot, mapper).resolveOffering("offering-alpha");
+        assertThat(required.targetAtomicGoalIds()).containsExactly("dependent");
+        assertThat(required.prerequisiteOnlyAtomicGoalIds()).containsExactlyInAnyOrder("support", "offer");
+        assertThat(required.voluntaryAtomicGoalIds()).isEmpty();
+        assertThat(required.sourceRolesByViewId().get("view-alpha-secondary")).containsEntry("offer", "voluntary");
+
+        var targetSnapshot = asNationalMerge(voluntaryFixture(true, he,
+                List.of(Map.of("kind", "goalEntry", "goalId", "offer"))));
+        var target = PackageCompositionViewState.load(targetSnapshot, mapper).resolveOffering("offering-alpha");
+        assertThat(target.targetAtomicGoalIds()).containsExactly("offer");
+        assertThat(target.voluntaryAtomicGoalIds()).isEmpty();
+        assertThat(target.sourceRolesByViewId().get("view-alpha")).containsEntry("offer", "voluntary");
+        assertThat(target.sourceRolesByViewId().get("view-alpha-secondary")).containsEntry("offer", "target");
+    }
+
+    private CurriculumRuntimeSnapshot asNationalMerge(CurriculumRuntimeSnapshot snapshot) throws Exception {
+        var original = snapshot.packages().getFirst();
+        var dimensions = new java.util.ArrayList<>(original.scopeDimensions());
+        dimensions.add(new CurriculumRuntimeSnapshot.ScopeDimension("jurisdiction", List.of("DE-HE", "DE-NI", "DE"),
+                List.of(new CurriculumRuntimeSnapshot.ScopeComposite("DE", List.of("DE-HE", "DE-NI")))));
+        var descriptor = new CurriculumRuntimeSnapshot.PackageDescriptor(original.packageId(), original.packageVersion(), original.releaseId(),
+                original.outerZipSha256(), original.manifestSha256(), original.contentDigest(), original.closureDigest(), original.definitionIndexDigest(),
+                dimensions, original.capabilities());
+        Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = new LinkedHashMap<>();
+        for (var view : snapshot.viewsById().values()) {
+            var scope = new LinkedHashMap<>(view.scope());
+            scope.put("courseProfile", "GK");
+            scope.put("jurisdiction", view.viewId().equals("view-alpha") ? "DE-HE" : "DE-NI");
+            Map<String, Object> document = mapper.readValue(view.json(), new TypeReference<>() {});
+            document.put("scope", scope);
+            views.put(view.viewId(), new CurriculumRuntimeSnapshot.ViewDescriptor(view.packageId(), view.viewId(), view.landscapeId(),
+                    view.language(), scope, view.artifact(), mapper.writeValueAsString(document)));
+        }
+        var old = snapshot.offeringsById().get("offering-alpha");
+        var scope = new LinkedHashMap<>(old.scope());
+        scope.put("courseProfile", "GK"); scope.put("jurisdiction", "DE");
+        var offering = new CurriculumRuntimeSnapshot.OfferingDescriptor(old.packageId(), old.offeringId(), old.landscapeId(), scope,
+                "merge", "jurisdiction", old.viewIds());
+        return new CurriculumRuntimeSnapshot(snapshot.generationSha256(), List.of(descriptor), snapshot.rootLandscapeIds(), snapshot.landscapesById(),
+                views, Map.of(offering.offeringId(), offering), snapshot.decksByKey(), snapshot.resourcesById(), snapshot.resourcesByPublicUrl(),
+                snapshot.artifactsByKey(), snapshot.migrationAliasesJsonByPackageId(), snapshot.definitionCount());
+    }
+
+    private CurriculumRuntimeSnapshot voluntaryFixture(boolean merge, List<Map<String, Object>> first,
+            List<Map<String, Object>> second) throws Exception {
+        var snapshot = load(merge ? mergeSpec() : CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));
+        var original = snapshot.landscapesById().get("landscape-alpha");
+        String landscapeJson = mapper.writeValueAsString(Map.of("landscapeId", original.landscapeId(), "goals", List.of(
+                Map.of("id", "all", "contains", List.of("regular", "support", "implicit", "offer", "task", "dependent", "coverageOnly", "coverageDependent", "inherited")),
+                Map.of("id", "regular", "requires", List.of("implicit")),
+                Map.of("id", "support", "requires", List.of("offer")), Map.of("id", "implicit"), Map.of("id", "offer"),
+                Map.of("id", "task", "requires", List.of("support", "coverageOnly"), "examData", Map.of("coveredGoalIds", List.of("offer"))),
+                Map.of("id", "coverageOnly", "examData", Map.of("coveredGoalIds", List.of("offer"))),
+                Map.of("id", "coverageDependent", "requires", List.of("coverageOnly")),
+                Map.of("id", "inherited", "contains", List.of("inheritedChild"), "requires", List.of("offer")),
+                Map.of("id", "inheritedChild"),
+                Map.of("id", "overrideRoot", "contains", List.of("regular", "support")),
+                Map.of("id", "emptyCluster", "type", "cluster", "contains", List.of()),
+                Map.of("id", "dependent", "requires", List.of("support", "offer")))));
+        var landscape = new CurriculumRuntimeSnapshot.LandscapeDescriptor(original.packageId(), original.landscapeId(),
+                original.role(), original.locale(), original.frameworkId(), original.subject(), original.country(), original.region(),
+                original.schoolForm(), original.defaultOfferingId(), original.parentLandscapeId(), original.artifact(), landscapeJson);
+        Map<String, CurriculumRuntimeSnapshot.ViewDescriptor> views = new LinkedHashMap<>();
+        for (var view : snapshot.viewsById().values()) {
+            String json = mapper.writeValueAsString(Map.of("$schema", "https://skillpilot.com/schemas/curriculum-package/v1.4/runtime-composition-view.schema.json",
+                    "viewFormatVersion", "1.3", "language", view.language(), "viewId", view.viewId(), "landscapeId", view.landscapeId(),
+                    "scope", view.scope(), "rootNodes", view.viewId().equals("view-alpha") ? first : second));
+            views.put(view.viewId(), new CurriculumRuntimeSnapshot.ViewDescriptor(view.packageId(), view.viewId(), view.landscapeId(),
+                    view.language(), view.scope(), view.artifact(), json));
+        }
+        return copy(snapshot, Map.of(landscape.landscapeId(), landscape), views, snapshot.offeringsById());
+    }
+
+    @Test
     void resolvesOnlyTheExactPublishedScopeAndKeepsDocumentsImmutable() throws Exception {
         CurriculumRuntimeSnapshot snapshot = load(
                 CurriculumPackageTestFixture.PackageSpec.packageSpec("alpha", 'a'));

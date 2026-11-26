@@ -30,6 +30,7 @@ const realRepositoryRoot = resolve(scriptDir, '../..')
 for (const [profileId, count] of [
   ['full-standalone-v1', 22], ['full-standalone-completion-v1', 26],
   ['full-standalone-learning-units-v1', 25], ['full-standalone-v1.3', 28],
+  ['full-standalone-v1.4', 30],
 ] as const) assert.equal(fullStandaloneTrustedSchemaCount(profileId), count)
 assert.throws(() => fullStandaloneTrustedSchemaCount('unknown-profile'), /Unsupported/)
 const runtime13Profile = JSON.parse(readFileSync(resolve(realRepositoryRoot,
@@ -40,6 +41,11 @@ assert.equal(runtime13Profile.trustedContractSchemas.length, fullStandaloneTrust
 assert(runtime13Profile.trustedContractSchemas.some(binding => binding.id
   === 'https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-composition-view.schema.json'),
 'runtime 1.3 must register its closed partial-order view component')
+const runtime14Profile = JSON.parse(readFileSync(resolve(realRepositoryRoot,
+  'contracts/curriculum-package/v1.4/profiles/full-standalone-v1.4.profile.json'), 'utf8')) as typeof runtime13Profile
+assert.equal(runtime14Profile.trustedContractSchemas.length, fullStandaloneTrustedSchemaCount(runtime14Profile.profileId))
+assert(runtime14Profile.trustedContractSchemas.some(binding => binding.id
+  === 'https://skillpilot.com/schemas/curriculum-package/v1.4/runtime-composition-view.schema.json'))
 const tempParent = resolve(realRepositoryRoot, 'tmp')
 mkdirSync(tempParent, { recursive: true })
 const fixtureRepositoryRoot = mkdtempSync(resolve(tempParent, 'full-package-builder-self-test.'))

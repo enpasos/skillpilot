@@ -38,7 +38,7 @@ def contextual_targets(view, goals, raw_selected, prerequisites, extract, struct
         for node in nodes:
             if node["kind"] == "structure":
                 visit(node["children"], (*trail, node))
-            elif node.get("projectionRole") != "prerequisiteOnly":
+            elif node.get("projectionRole", "target") == "target":
                 def expand(identifier):
                     children = goals[identifier].get("contains", []) if node["kind"] == "canonicalSubtree" else []
                     return set().union(*(expand(c) for c in children)) if children else {identifier}
@@ -101,7 +101,7 @@ def acquisition_placements(view, goals, selected, prerequisites, structure, cons
     view["rootNodes"] = [n for n in view["rootNodes"] if n.get("acquisitionPlacement") is not True]
     consumers = {}
     def atoms(node):
-        if node.get("projectionRole") == "prerequisiteOnly":
+        if node.get("projectionRole", "target") != "target":
             return set()
         if node["kind"] == "structure":
             return set().union(*(atoms(c) for c in node["children"])) if node["children"] else set()

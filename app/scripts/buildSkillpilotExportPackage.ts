@@ -14,6 +14,7 @@ import {
 import { basename, dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { crc32 } from 'node:zlib'
+import { COMPOSITION_VIEW_13_PACKAGE_PATH, COMPOSITION_VIEW_13_SOURCE_PATH, subjectExportCompositionViewIssues, type SubjectCompositionGoal } from './subjectExportCompositionViews'
 import { parseSubjectExportVisualizationMetadata } from './subjectExportVisualizationMetadata'
 import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
 import {
@@ -25,7 +26,7 @@ import {
   type DeterministicZip32Entry,
 } from './deterministicZip32'
 import { projectOutLearningUnits } from './learningUnitLayerProjection'
-import { readPreparationEvidence } from './subjectExportPreparationEvidence'
+import { readPreparationEvidence, readPreparationCanonicalGraphs } from './subjectExportPreparationEvidence'
 import { collectCompositionProjectionRoleGoalIds, type CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
 import {
   legacySubjectExportGoalVisualizationPath,
@@ -1034,6 +1035,7 @@ export const sanitizeJsonForPackage = (
   category: string,
   parentKey?: string,
   urlRewrites?: ReadonlyMap<string, string>,
+  preserveCompositionRationale = category === 'composition-view' && isJsonObject(value) && value.viewFormatVersion === '1.3',
 ): JsonValue => {
   if (typeof value === 'string') {
     const packageUrl = urlRewrites?.get(value)
@@ -1045,7 +1047,7 @@ export const sanitizeJsonForPackage = (
   }
 
   if (Array.isArray(value)) {
-    return value.map((child) => sanitizeJsonForPackage(child, category, parentKey, urlRewrites))
+    return value.map((child) => sanitizeJsonForPackage(child, category, parentKey, urlRewrites, preserveCompositionRationale))
   }
 
   if (value && typeof value === 'object') {
@@ -1056,8 +1058,8 @@ export const sanitizeJsonForPackage = (
       && value.role === 'reviewedPreparation'
     return Object.fromEntries(
       Object.entries(value)
-        .filter(([key]) => !shouldOmitPackageJsonKey(key, category) || (preparationEvidence && key === 'rationale'))
-        .map(([key, child]) => [key, sanitizeJsonForPackage(child, category, key, urlRewrites)]),
+        .filter(([key]) => !shouldOmitPackageJsonKey(key, category) || ((preparationEvidence || preserveCompositionRationale) && key === 'rationale'))
+        .map(([key, child]) => [key, sanitizeJsonForPackage(child, category, key, urlRewrites, preserveCompositionRationale)]),
     )
   }
 
@@ -1077,6 +1079,10 @@ export const packageContentForRepoSource = (
     // curriculum-package contract 1.2 carries. Like a 1.0 or 1.1 build, the export ships
     // the landscape without its learning-unit layer, never half a unit.
     const source = readJson(absolutePath)
+    if (category === 'composition-view') {
+      const issues = subjectExportCompositionViewIssues(source)
+      if (issues.length) throw new Error(`Unsupported composition transport in ${repoRelative(absolutePath)}: ${issues.join('; ')}`)
+    }
     const document = category === 'canonical-landscape' ? projectOutLearningUnits(source) : source
     return Buffer.from(stableJson(sanitizeJsonForPackage(document, category, undefined, urlRewrites)), 'utf8')
   }
@@ -1921,7 +1927,8 @@ export const collectExternalCompositionGoalReferences = (
           errors.push(`Unresolved external composition reference from ${path} to ${node.goalId}`)
         } else if (typeof fromViewId !== 'string'
           || !['goalEntry', 'canonicalSubtree'].includes(String(node.kind))
-          || (node.projectionRole !== 'prerequisiteOnly' && !preparation)) {
+          || (node.projectionRole !== 'prerequisiteOnly' && !preparation
+            && !(data.viewFormatVersion === '1.3' && node.kind === 'goalEntry' && node.projectionRole === 'voluntary'))) {
           errors.push(`External composition reference needs an explicit prerequisite role or verified acquisition path in ${path}: ${node.goalId}`)
         } else {
           const { goalId, ...metadata } = owner
@@ -2455,6 +2462,25 @@ const main = () => {
     canonicalGoalIndex(canonicalPath),
     errors,
   )
+  const localCompositionGoalIds = new Set((Array.isArray(canonicalData.goals) ? canonicalData.goals : [])
+    .filter(isJsonObject).flatMap(goal => typeof goal.id === 'string' ? [goal.id] : []))
+  const preparationCanonicalGraphs = collectPreparationCanonicalGraphs(externalViewGoalReferences, localCompositionGoalIds)
+  const preparationCatalogs = readPreparationCanonicalGraphs(preparationCanonicalGraphs, localCompositionGoalIds)
+  errors.push(...preparationCatalogs.issues)
+  const compositionGoalGraph = new Map<string, SubjectCompositionGoal>([...preparationCatalogs.graph, ...(Array.isArray(canonicalData.goals) ? canonicalData.goals : [])
+    .filter(isJsonObject).filter(goal => typeof goal.id === 'string')
+    .map(goal => [String(goal.id), {
+      type: typeof goal.type === 'string' ? goal.type : undefined,
+      landscapeId: canonicalLandscapeId,
+      tags: Array.isArray(goal.tags) ? goal.tags.filter((tag): tag is string => typeof tag === 'string') : [],
+      coveredGoalIds: isJsonObject(goal.examData) && Array.isArray(goal.examData.coveredGoalIds)
+        ? goal.examData.coveredGoalIds.filter((id): id is string => typeof id === 'string') : [],
+      requires: Array.isArray(goal.requires) ? goal.requires.filter((id): id is string => typeof id === 'string') : [],
+      contains: Array.isArray(goal.contains) ? goal.contains.filter((id): id is string => typeof id === 'string') : [],
+    }] as const)])
+  for (const file of compositionFiles) errors.push(...subjectExportCompositionViewIssues(readJson(file), compositionGoalGraph,
+    { incompleteGoalIds: new Set(preparationCatalogs.graph.keys()) })
+    .map(issue => `${repoRelative(file)}: ${issue}`))
   const sourceOriginalUrlIssues = sourceExtractionJsonFiles.flatMap(sourceExtractionOriginalUrlIssues)
   errors.push(...sourceOriginalUrlIssues)
   const sourceGoalReferences = sourceGoalReferenceIndex(sourceExtractionJsonFiles, mappingFiles)
@@ -2551,8 +2577,7 @@ const main = () => {
       note: 'Cross-subject references and verified acquisition placements. Preparation graph excerpts verify all acquisition-path edges; they do not import learner results or make this package standalone.',
       references: externalGoalReferences,
       viewReferences: externalViewGoalReferences,
-      preparationCanonicalGraphs: collectPreparationCanonicalGraphs(externalViewGoalReferences,
-        new Set((Array.isArray(canonicalData.goals) ? canonicalData.goals : []).filter(isJsonObject).map(goal => String(goal.id)))),
+      preparationCanonicalGraphs,
     },
     'external-dependencies',
     SKILLPILOT_DATA_LICENSE_CATEGORY,
@@ -2606,6 +2631,10 @@ const main = () => {
 
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'schemas/export-manifest.schema.json', EXPORT_MANIFEST_SCHEMA, 'schema', 'skillpilot-software-apache-2.0'))
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'schemas/composition-view.schema.json', COMPOSITION_VIEW_SCHEMA, 'schema', 'skillpilot-software-apache-2.0'))
+  if (compositionFiles.some(file => jsonObject(readJson(file)).viewFormatVersion === '1.3')) {
+    addEntry(entriesByPath, generatedEntry(archiveRoot, COMPOSITION_VIEW_13_PACKAGE_PATH,
+      readFileSync(resolveRepoPath(COMPOSITION_VIEW_13_SOURCE_PATH), 'utf8'), 'schema', 'skillpilot-software-apache-2.0'))
+  }
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'schemas/canonical-mapping.schema.json', MAPPING_SCHEMA, 'schema', 'skillpilot-software-apache-2.0'))
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'schemas/source-extraction.schema.json', SOURCE_EXTRACTION_SCHEMA, 'schema', 'skillpilot-software-apache-2.0'))
   addEntry(entriesByPath, generatedEntry(archiveRoot, 'schemas/source-goal-references.schema.json', SOURCE_GOAL_REFERENCES_SCHEMA, 'schema', 'skillpilot-software-apache-2.0'))

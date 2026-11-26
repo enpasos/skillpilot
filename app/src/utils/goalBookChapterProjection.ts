@@ -12,6 +12,7 @@ import {
   type CompositionView,
   type CompositionViewFinding,
   type CompositionViewNode,
+  type CompositionProjectionRole,
 } from './authoring/compositionViewAuthoring'
 
 export const GOAL_BOOK_CHAPTER_PROJECTION_SCHEMA_VERSION = '1.0.0' as const
@@ -79,7 +80,7 @@ const collectExplicitMissingPrerequisiteIds = (
   nodes: CompositionViewNode[],
   goalById: ReadonlyMap<string, CanonicalAuthoringGoal>,
 ): Set<string> => {
-  const rolesByGoalId = new Map<string, Set<'target' | 'prerequisiteOnly'>>()
+  const rolesByGoalId = new Map<string, Set<CompositionProjectionRole>>()
   const visit = (node: CompositionViewNode) => {
     if (node.kind === 'structure') {
       node.children.forEach(visit)
@@ -87,7 +88,7 @@ const collectExplicitMissingPrerequisiteIds = (
     }
     if (node.kind === 'landscapeEntry' || goalById.has(node.goalId)) return
     const roles = rolesByGoalId.get(node.goalId) ?? new Set()
-    roles.add(node.projectionRole === 'prerequisiteOnly' ? 'prerequisiteOnly' : 'target')
+    roles.add(node.projectionRole ?? 'target')
     rolesByGoalId.set(node.goalId, roles)
   }
   nodes.forEach(visit)

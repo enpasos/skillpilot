@@ -5,7 +5,9 @@ import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
   collectCompositionProjectionRoleGoalIds,
+  COMPOSITION_VIEW_13_SCHEMA,
   compileCompositionView,
+  getCompositionProjectionRole,
   normalizeCompositionView,
   type CompiledCompositionPreviewNode,
 } from '../src/utils/authoring/compositionViewAuthoring'
@@ -32,7 +34,7 @@ type CompositionNode =
       kind: 'goalEntry'
       goalId: string
       displayLabel?: string
-      projectionRole?: 'target' | 'prerequisiteOnly'
+      projectionRole?: 'target' | 'prerequisiteOnly' | 'voluntary'
     }
   | {
       kind: 'landscapeEntry'
@@ -380,7 +382,7 @@ const stagePlacementPolicy = readJson<MathDurationStagePlacementPolicy>(resolve(
 const readBaseView = (fileName: string): CompositionView => {
   const retained = stagePlacementPolicy.baseViews?.[fileName]
   if (!retained) throw new Error(`Missing authored Mathematics duration input: ${fileName}`)
-  return structuredClone(retained) as CompositionView
+  return structuredClone(normalizeCompositionView(retained)) as CompositionView
 }
 const baseGkView = readBaseView('de-he-gk.view.json')
 const baseLkView = readBaseView('de-he-lk.view.json')
@@ -813,17 +815,7 @@ const createSek1CommonTail = (): CompositionNode[] => [
 ]
 
 const collectAtomicGoalIdsFromNodes = (nodes: CompositionNode[]): Set<string> => {
-  const result = new Set<string>()
-  const visit = (node: CompositionNode) => {
-    if (node.kind === 'structure') {
-      node.children.forEach(visit)
-      return
-    }
-    if (node.kind === 'landscapeEntry' || node.projectionRole === 'prerequisiteOnly') return
-    collectAtomicDescendantIds(node.goalId).forEach((goalId) => result.add(goalId))
-  }
-  nodes.forEach(visit)
-  return result
+  return collectCompositionProjectionRoleGoalIds(nodes, goalById).targetAtomicGoalIds
 }
 
 const removeDirectGoalReferences = (
@@ -1642,6 +1634,9 @@ const applyDirectPrerequisiteOnlyOverrides = (
     node.kind !== 'landscapeEntry'
     && goalIds.has(node.goalId)
   ) {
+    if (getCompositionProjectionRole(node) === 'voluntary') {
+      throw new Error(`A reviewed preparation override conflicts with voluntary offer ${node.goalId}`)
+    }
     overriddenGoalIds.add(node.goalId)
     return { ...clone(node), projectionRole: 'prerequisiteOnly' }
   }
@@ -1853,7 +1848,7 @@ const restoreRightPrismFolder = (view: CompositionView): CompositionView => {
     if (node.kind !== 'structure') return clone(node)
     const children = node.children.map(visit)
     const childIndices = childGoalIds.map((goalId) => children.findIndex((child) => (
-      child.kind === 'goalEntry' && child.goalId === goalId && child.projectionRole !== 'prerequisiteOnly'
+      child.kind === 'goalEntry' && child.goalId === goalId && getCompositionProjectionRole(child) === 'target'
     )))
     if (childIndices.some((index) => index < 0)) return { ...clone(node), children }
     if (childIndices[0] === childIndices[1]) {
@@ -1910,6 +1905,7 @@ const collectCompiledAtomicGoalIds = (
     if (
       node.kind === 'goal'
       && node.sourceGoalId
+      && node.projectionRole !== 'voluntary'
       && (goalById.get(node.sourceGoalId)?.contains?.length ?? 0) === 0
       && (!jurisdiction || isGoalApplicableToJurisdiction(node.sourceGoalId, jurisdiction))
     ) result.add(node.sourceGoalId)
@@ -1951,9 +1947,12 @@ const reviewedViews = GENERATED_VIEW_PATHS.map((fileName) => {
   if (!ordinaryGeneratedView) {
     throw new Error(`Missing generator output for ${fileName}`)
   }
-  const generatedView = replayMathDurationStagePlacements(
+  let generatedView = replayMathDurationStagePlacements(
     ordinaryGeneratedView, fileName, canonicalMathSha256, stagePlacementPolicy,
   )
+  if (collectCompositionProjectionRoleGoalIds(generatedView.rootNodes, goalById).voluntaryGoalIds.size > 0) {
+    generatedView = { ...generatedView, $schema: COMPOSITION_VIEW_13_SCHEMA, viewFormatVersion: '1.3', language: generatedView.language ?? 'de' }
+  }
   assertCompleteSek1DirectRequirements(generatedView)
   assertGeneratedViewIntegrity(generatedView)
   return generatedView

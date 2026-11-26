@@ -84,11 +84,18 @@ const safeStructureId = (value: string): string => (
   value.replace(/[^A-Za-z0-9._:+-]+/gu, '-').replace(/^-+|-+$/gu, '')
 )
 
-const toExplicitTree = (
+const requireRegularNavigationRole = (node: CompiledCompositionPreviewNode) => {
+  if (node.projectionRole === 'voluntary') {
+    throw new Error(`Legacy goal-book navigation cannot erase voluntary role ${node.sourceGoalId ?? node.runtimeId}; a role-preserving navigation contract is required.`)
+  }
+}
+
+export const toExplicitTree = (
   node: CompiledCompositionPreviewNode,
   goalById: ReadonlyMap<string, CanonicalAuthoringLandscape['goals'][number]>,
   atlasGoalIds: ReadonlySet<string>,
 ): CompositionViewNode | null => {
+  requireRegularNavigationRole(node)
   if (node.kind === 'goal' && node.sourceGoalId) {
     const goal = goalById.get(node.sourceGoalId)
     if (!goal) return null
@@ -111,6 +118,24 @@ const toExplicitTree = (
     label: node.label,
     children,
   }
+}
+
+export const collectProfileTargetGoalIds = (
+  nodes: CompiledCompositionPreviewNode[],
+  goalById: ReadonlyMap<string, CanonicalAuthoringLandscape['goals'][number]>,
+  atlasGoalIds: ReadonlySet<string>,
+): Set<string> => {
+  const targets = new Set<string>()
+  const visit = (node: CompiledCompositionPreviewNode) => {
+    requireRegularNavigationRole(node)
+    if (node.kind === 'goal' && node.sourceGoalId && atlasGoalIds.has(node.sourceGoalId)) {
+      const goal = goalById.get(node.sourceGoalId)
+      if (goal && resolveCanonicalNodeType(goal) === 'atomic') targets.add(goal.id)
+    }
+    node.children.forEach(visit)
+  }
+  nodes.forEach(visit)
+  return targets
 }
 
 const stageKey = (page: GoalBookModel['pages'][number]): 'SekI' | 'SekII' | 'CrossStage' => {
@@ -238,14 +263,8 @@ const prepareCandidate = async (config: CandidateConfig) => {
     const compilation = compileCompositionView(view, primaryLandscape, goalUniverse)
     const errors = compilation.findings.filter(({ severity }) => severity === 'error')
     if (errors.length > 0) throw new Error(JSON.stringify(errors, null, 2))
-    const visit = (node: CompiledCompositionPreviewNode) => {
-      if (node.kind === 'goal' && node.sourceGoalId && atlasGoalIds.has(node.sourceGoalId)) {
-        const goal = goalById.get(node.sourceGoalId)
-        if (goal && resolveCanonicalNodeType(goal) === 'atomic') profileTargetIds.add(goal.id)
-      }
-      node.children.forEach(visit)
-    }
-    compilation.compiledRootNodes.forEach(visit)
+    collectProfileTargetGoalIds(compilation.compiledRootNodes, goalById, atlasGoalIds)
+      .forEach(goalId => profileTargetIds.add(goalId))
   }
 
   const backboneGoalIds = new Set<string>()
@@ -290,9 +309,17 @@ const prepareCandidate = async (config: CandidateConfig) => {
     rootNodes: explicitRoots,
   }
   if (config.subjectSlug === 'physics') assertFinalPhysicsAtlasDraftTargets(candidate.rootNodes)
-  await mkdir(dirname(resolve(REPOSITORY_ROOT, config.outputPath)), { recursive: true })
-  await writeFile(resolve(REPOSITORY_ROOT, config.outputPath), `${JSON.stringify(candidate, null, 2)}\n`)
-  console.log(`${config.outputPath}: ${backboneGoalIds.size} backbone + ${profileAdditions.length} profile + ${supplementPages.length} supplement = ${atlasGoalIds.size}`)
+  return { candidate, config, summary: `${config.outputPath}: ${backboneGoalIds.size} backbone + ${profileAdditions.length} profile + ${supplementPages.length} supplement = ${atlasGoalIds.size}` }
 }
 
-for (const candidate of CANDIDATES) await prepareCandidate(candidate)
+if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  // This emits a fixed, target-only 1.0 navigation view. Published-model
+  // supplement pages cannot establish an offer's current source role. Reject
+  // unsupported roles in every input before writing either subject candidate.
+  const prepared = await Promise.all(CANDIDATES.map(prepareCandidate))
+  for (const { candidate, config, summary } of prepared) {
+    await mkdir(dirname(resolve(REPOSITORY_ROOT, config.outputPath)), { recursive: true })
+    await writeFile(resolve(REPOSITORY_ROOT, config.outputPath), `${JSON.stringify(candidate, null, 2)}\n`)
+    console.log(summary)
+  }
+}

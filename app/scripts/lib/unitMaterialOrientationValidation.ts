@@ -53,7 +53,7 @@ export function validateUnitMaterialOrientations(materials: readonly Material[],
       assert.equal(structures.length, 1, label + ': missing or ambiguous unit in ' + viewId)
       const children = (structures[0] as Extract<CompositionViewNode, { kind: 'structure' }>).children
       const first = children[0]
-      assert(first && goalReference(first) === id && first.projectionRole !== 'prerequisiteOnly',
+      assert(first && goalReference(first) === id && (first.projectionRole ?? 'target') === 'target',
         label + ': own opening must be the first target child in ' + viewId)
       assert.equal(nodes.filter(node => goalReference(node) === id).length, 1,
         label + ': duplicate opening in ' + viewId)

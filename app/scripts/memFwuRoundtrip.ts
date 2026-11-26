@@ -19,6 +19,7 @@ import { basename, dirname, isAbsolute, relative, resolve, sep } from 'node:path
 import { createInterface } from 'node:readline'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
+import { subjectExportCompositionViewIssues } from './subjectExportCompositionViews'
 
 type JsonValue =
   | null
@@ -1088,6 +1089,19 @@ sp:viewNodeKind a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:l
 sp:projectionRole a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition projection role"@en .
 sp:structureId a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition structure id"@en .
 sp:displayLabel a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition display label"@en .
+sp:compositionViewSchema a owl:DatatypeProperty ; rdfs:label "composition source schema"@en .
+sp:compositionViewFormatVersion a owl:DatatypeProperty ; rdfs:label "composition source version"@en .
+sp:compositionViewLanguage a owl:DatatypeProperty ; rdfs:label "composition source language"@en .
+sp:compositionViewTitle a owl:DatatypeProperty ; rdfs:label "composition source title"@en .
+sp:compositionNodeLabelEn a owl:DatatypeProperty ; rdfs:label "composition English label"@en .
+sp:compositionNodeCanonicalSourceGoalId a owl:DatatypeProperty ; rdfs:label "composition canonical source goal"@en .
+sp:compositionNodeCanonicalSourcePhase a owl:DatatypeProperty ; rdfs:label "composition canonical source phase"@en .
+sp:compositionNodeLandscapeId a owl:DatatypeProperty ; rdfs:label "composition landscape entry"@en .
+sp:compositionNodeChildOrderJson a owl:DatatypeProperty ; rdfs:label "composition local child order"@en .
+sp:compositionNodeAcquisitionPlacementJson a owl:DatatypeProperty ; rdfs:label "composition acquisition place"@en .
+sp:compositionNodePlacementEvidenceJson a owl:DatatypeProperty ; rdfs:label "composition authored placement evidence"@en .
+sp:compositionNodeCanonicalSourceNodeJson a owl:DatatypeProperty ; rdfs:label "composition canonical source node"@en .
+sp:compositionNodeOriginalCanonicalSubtreeJson a owl:DatatypeProperty ; rdfs:label "composition restoration snapshot"@en .
 sp:quarantinedRecordJson a owl:DatatypeProperty ;
   rdfs:label "quarantined source record JSON"@en ;
   rdfs:comment "Lossless JSON fallback for a source record containing characters that cannot safely be materialized as RDF/OWL string literals."@en .
@@ -2051,6 +2065,7 @@ const walkViewNodes = (
   parent: string,
   counts: SemanticCounts,
   pathPrefix: string,
+  source13 = false,
 ) => {
   nodes.forEach((node, index) => {
     const data = jsonObject(node, 'composition view node')
@@ -2065,13 +2080,21 @@ const walkViewNodes = (
     writeStringField(write, resource, `${SP}structureId`, data.id)
     writeStringField(write, resource, `${RDFS}label`, data.label, 'de')
     writeStringField(write, resource, `${SP}displayLabel`, data.displayLabel)
+    if (source13) {
+      for (const key of ['labelEn', 'canonicalSourceGoalId', 'canonicalSourcePhase', 'landscapeId']) {
+        writeStringField(write, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}`, data[key])
+      }
+      for (const key of ['childOrder', 'acquisitionPlacement', 'placementEvidence', 'canonicalSourceNode', 'originalCanonicalSubtree']) {
+        writeJsonField(write, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}Json`, data[key])
+      }
+    }
     const goalId = stringValue(data.goalId)
     if (goalId) {
       write(tripleLine(resource, `${SP}compositionGoal`, iri(goalIri(archiveRoot, goalId))))
     }
     const children = Array.isArray(data.children) ? data.children : []
     if (children.length > 0) {
-      walkViewNodes(write, archiveRoot, view, children, resource, counts, nodePath)
+      walkViewNodes(write, archiveRoot, view, children, resource, counts, nodePath, source13)
     }
   })
 }
@@ -2087,6 +2110,9 @@ export const writeViewSemantics = (
     .filter((entry) => entry.path.startsWith(`${archiveRoot}/data/views/`) && entry.path.endsWith('.view.json'))
     .forEach((entry) => {
       const data = jsonObject(JSON.parse(entryText(entry, 'composition view')) as JsonValue, 'composition view')
+      const transportIssues = subjectExportCompositionViewIssues(data)
+      if (transportIssues.length) throw new Error(`Invalid composition view transport: ${transportIssues.join('; ')}`)
+      const source13 = data.viewFormatVersion === '1.3'
       const viewId = stringValue(data.id) ?? stringValue(data.viewId)
       const view = options.semanticIris
         ? semanticViewIri(archiveRoot, viewId, entry.path)
@@ -2099,8 +2125,14 @@ export const writeViewSemantics = (
       writeStringField(write, view, `${SP}viewId`, viewId)
       writeStringField(write, view, `${RDFS}label`, data.label, 'de')
       writeJsonField(write, view, `${SP}scopeJson`, data.scope)
+      if (source13) {
+        writeStringField(write, view, `${SP}compositionViewSchema`, data.$schema)
+        writeStringField(write, view, `${SP}compositionViewFormatVersion`, data.viewFormatVersion)
+        writeStringField(write, view, `${SP}compositionViewLanguage`, data.language)
+        writeStringField(write, view, `${SP}compositionViewTitle`, data.title)
+      }
       const rootNodes = Array.isArray(data.rootNodes) ? data.rootNodes : []
-      walkViewNodes(write, archiveRoot, view, rootNodes, view, counts, 'root')
+      walkViewNodes(write, archiveRoot, view, rootNodes, view, counts, 'root', source13)
     })
 }
 

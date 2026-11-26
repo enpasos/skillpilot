@@ -23,6 +23,8 @@ import {
 } from '../src/utils/compositionViewRuntime'
 import { applyGoalPlacementProjection } from '../src/utils/goalPlacementProjection'
 import { normalizeLearnerProjectedEntries } from '../src/utils/learnerTreeProjection'
+import './testCompositionVoluntaryRoles'
+import './testGoalBookCanonicalNavigationRoles'
 import './testHessePhysicsTree'
 import './testHessenMathQ21Scope'
 
@@ -1134,5 +1136,22 @@ try {
 } finally {
   rmSync(memoryVisibilityDirectory, { recursive: true, force: true })
 }
+
+const offersView: CompositionView = {
+  $schema: 'https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json',
+  viewFormatVersion: '1.3',
+  viewId: 'offers-only',
+  landscapeId: 'TEST',
+  scope: view.scope,
+  rootNodes: [{
+    kind: 'structure', id: 'offers', label: 'Freiwillige Angebote',
+    children: [{ kind: 'goalEntry', goalId: 'SHARED', projectionRole: 'voluntary' }],
+  }],
+}
+const [offersEntry] = applyCompositionViewProjection([entry], offersView)
+assert.ok(collectReachableGoalIds(offersEntry).has('SHARED'))
+assert.equal(offersEntry.goals.find(goal => goal.id === 'SHARED')?.extendedData?.compositionProjectionRole, 'voluntary')
+assert.equal(compositionViewExposesGoal([entry], offersView, 'SHARED'), false)
+assert.equal(entry.goals.find(goal => goal.id === 'SHARED')?.extendedData?.compositionProjectionRole, undefined)
 
 console.log('Composition projection role and Memory visibility tests passed.')

@@ -357,7 +357,7 @@ def trusted_json(path: Path, description: str) -> dict[str, Any]:
 
 def load_profile(contract_dir: Path = CONTRACT_DIR) -> dict[str, Any]:
     contract_dir = contract_dir.resolve()
-    if contract_dir not in {CONTRACT_DIR.resolve(), *((CONTRACT_DIR.parent / name).resolve() for name in ("v1.1", "v1.2", "v1.3"))}:
+    if contract_dir not in {CONTRACT_DIR.resolve(), *((CONTRACT_DIR.parent / name).resolve() for name in ("v1.1", "v1.2", "v1.3", "v1.4"))}:
         raise TrustFailure("Package contracts must select a software-pinned repository version")
     profile_path = contract_selection.profile_path(contract_dir)
     profile = trusted_json(profile_path, "trusted package profile")
@@ -1579,6 +1579,7 @@ def install_package(
                 completion_contracts.PROFILE_ID: CONTRACT_DIR.parent / "v1.1",
                 contract_selection.learning_unit_contracts.PROFILE_ID: CONTRACT_DIR.parent / "v1.2",
                 contract_selection.v13_contracts.PROFILE_ID: CONTRACT_DIR.parent / "v1.3",
+                contract_selection.v14_contracts.PROFILE_ID: CONTRACT_DIR.parent / "v1.4",
             }.get(profile.get("profileId")),
         )
         assert_quarantine_unchanged(candidate, rehash=True)
@@ -2154,7 +2155,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     install_parser.add_argument("--zip", type=Path, required=True)
     install_parser.add_argument(
         "--contracts-dir", type=Path, default=CONTRACT_DIR,
-        help="software-pinned curriculum contract directory (v1, completion v1.1 or learning-unit v1.2)",
+        help="software-pinned curriculum contract directory (v1, completion v1.1, learning-unit v1.2, common v1.3 or v1.4)",
     )
     install_parser.add_argument(
         "--validator-timeout-seconds",

@@ -17,6 +17,27 @@ import org.junit.jupiter.api.Test;
 
 class CourseProfileCompositionViewMergerTest {
 
+    @Test
+    void voluntaryMergeRetainsThreeRolesAndRequiredPlacementInEitherSourceOrder() {
+        Map<String, List<String>> graph = Map.of("root", List.of("a", "b", "c"), "a", List.of(), "b", List.of(), "c", List.of());
+        var offer = Map.<String, Object>of("kind", "goalEntry", "goalId", "a", "projectionRole", "voluntary");
+        var target = Map.<String, Object>of("kind", "goalEntry", "goalId", "a");
+        var preparation = Map.<String, Object>of("kind", "goalEntry", "goalId", "b", "projectionRole", "prerequisiteOnly");
+        var otherOffer = Map.<String, Object>of("kind", "goalEntry", "goalId", "c", "projectionRole", "voluntary");
+        var left = List.of(offer, preparation, otherOffer);
+        for (var sources : List.of(List.of(left, List.of(target)), List.of(List.of(target), left))) {
+            var merged = CourseProfileCompositionViewMerger.mergeViews(sources, graph, true);
+            assertThat(CourseProfileCompositionViewMerger.resolvedAtomicRoles(merged, graph))
+                    .containsExactlyInAnyOrderEntriesOf(Map.of("a", "target", "b", "prerequisiteOnly", "c", "voluntary"));
+        }
+        var subtree = Map.<String, Object>of("kind", "canonicalSubtree", "goalId", "root");
+        for (var sources : List.of(List.of(List.of(offer), List.of(subtree)), List.of(List.of(subtree), List.of(offer)))) {
+            var merged = CourseProfileCompositionViewMerger.mergeViews(sources, graph, true);
+            assertThat(CourseProfileCompositionViewMerger.resolvedAtomicRoles(merged, graph).values()).containsOnly("target");
+            assertThat(merged).doesNotContain(offer);
+        }
+    }
+
     private static Map<String, Object> orderedStructure(String id, List<Map<String, Object>> children,
             List<Map<String, Object>> after) {
         return Map.of("kind", "structure", "id", id, "label", "Themen", "children", children,

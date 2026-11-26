@@ -10,6 +10,7 @@ import {
 import { parseSubjectExportSourceReferences } from './subjectExportSourceReferences'
 import { readPreparationEvidence, readPreparationCanonicalGraphs } from './subjectExportPreparationEvidence'
 import { collectCompositionProjectionRoleGoalIds, type CompositionViewNode } from '../src/utils/authoring/compositionViewAuthoring'
+import { COMPOSITION_VIEW_13_PACKAGE_PATH, COMPOSITION_VIEW_13_SOURCE_PATH, subjectExportCompositionViewIssues } from './subjectExportCompositionViews'
 import {
   isSubjectExportGoalVisualizationPath,
   subjectExportGoalVisualizationPath,
@@ -105,6 +106,10 @@ type GoalVisualizationAssetRecord = {
 
 type GoalRecord = {
   id: string
+  type?: string
+  coveredGoalIds?: string[]
+  tags?: string[]
+  landscapeId?: string
   requires: string[]
   contains: string[]
 }
@@ -656,6 +661,10 @@ const parseGoals = (canonicalData: JsonValue): GoalRecord[] => {
     const goalObject = jsonObject(goal, 'goal')
     return {
       id: stringField(goalObject, 'id', 'goal'),
+      type: typeof goalObject.type === 'string' ? goalObject.type : undefined,
+      tags: stringArray(goalObject.tags),
+      landscapeId: typeof data.landscapeId === 'string' ? data.landscapeId : undefined,
+      coveredGoalIds: stringArray(jsonObject(goalObject.examData ?? {}, 'exam data').coveredGoalIds),
       requires: stringArray(goalObject.requires),
       contains: stringArray(goalObject.contains),
     }
@@ -914,7 +923,8 @@ export const validateExternalCompositionGoalReferences = (
         .every((key) => typeof reference[key] === 'string' && String(reference[key]).trim().length > 0)
       || !(reference.targetFrameworkId === null || typeof reference.targetFrameworkId === 'string')
       || !['goalEntry', 'canonicalSubtree'].includes(String(reference.nodeKind))
-      || (reference.projectionRole !== 'prerequisiteOnly' && !preparation)
+      || (reference.projectionRole !== 'prerequisiteOnly' && !preparation
+        && !(reference.nodeKind === 'goalEntry' && reference.projectionRole === 'voluntary'))
       || (preparation && (reference.nodeKind !== 'goalEntry' || !isJsonObject(preparation)
         || Object.keys(preparation).sort().join(',') !== 'consumerGoalId,requiredByPath'))
       || localGoalIds.has(String(reference.targetGoalId))) {
@@ -922,6 +932,10 @@ export const validateExternalCompositionGoalReferences = (
       return
     }
     const view = viewByPath.get(String(reference.fromViewPath))
+    if (reference.projectionRole === 'voluntary' && (!isJsonObject(view) || view.viewFormatVersion !== '1.3')) {
+      issues.push(`External voluntary composition reference requires view format 1.3: ${reference.fromViewPath}`)
+      return
+    }
     let bound = false
     const visit = (node: JsonValue) => {
       if (!isJsonObject(node)) return
@@ -1620,6 +1634,19 @@ const validatePackage = (zipPath: string, readinessDir: string): PackageValidati
     const goalIdSet = new Set(goalIds)
     const viewEntries = entries.filter((entry) => entry.startsWith(`${archiveRoot}/data/views/`) && entry.endsWith('.json'))
     const preparationCatalogs = readPreparationCanonicalGraphs(externalDependencies.preparationCanonicalGraphs, goalIdSet)
+    const compositionGraph = new Map([...preparationCatalogs.graph, ...goals.map(goal => [goal.id, goal] as const)])
+    const compositionTransportIssues = viewEntries.flatMap(entry => subjectExportCompositionViewIssues(
+      readZipEntryJson(zipPath, entry), compositionGraph, { incompleteGoalIds: new Set(preparationCatalogs.graph.keys()) })
+      .map(issue => `${entry}: ${issue}`))
+    const hasV13View = viewEntries.some(entry => jsonObject(readZipEntryJson(zipPath, entry), 'composition view').viewFormatVersion === '1.3')
+    if (hasV13View) {
+      const schemaEntry = `${archiveRoot}/${COMPOSITION_VIEW_13_PACKAGE_PATH}`
+      if (!entries.includes(schemaEntry) || !readZipEntry(zipPath, schemaEntry).equals(readFileSync(resolve(repoRoot, COMPOSITION_VIEW_13_SOURCE_PATH)))) {
+        compositionTransportIssues.push('Composition 1.3 source schema is missing or differs from the pinned contract')
+      }
+    }
+    check(checks, 'composition-view-format-and-roles-valid', compositionTransportIssues.length === 0,
+      compositionTransportIssues.slice(0, 5).join(' | ') || 'supported source versions and distinct roles')
     const acquisitionReferences = Array.isArray(externalDependencies.viewReferences)
       ? externalDependencies.viewReferences.filter((reference) => reference !== null && typeof reference === 'object'
         && !Array.isArray(reference) && reference.projectionRole === 'target') : []
