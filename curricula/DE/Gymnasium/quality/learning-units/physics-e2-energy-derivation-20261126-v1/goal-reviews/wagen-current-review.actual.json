@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "contract": "physics-e2-wagen-exact-current-prerequisite-review-v1",
+  "reviewer": "OpenAI Codex quality agent; independent of canonical edit author",
+  "reviewedAt": "2026-11-26T02:47:52.731Z",
+  "independenceDisclosure": "Informed current object inspection. Historical H materials were inspected while mapping QA; this is not a blind first-pass D review. No K3 marker outputs or author scoring were read.",
+  "goalId": "0cf2a5b0-8660-578d-8316-2b8a50fbdff7",
+  "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+  "priorGoalDigest": "sha256:b4a4784a53c0101bbec4a22ad4305a3ab3d7e546042809055737d9df9f3907eb",
+  "currentGoalDigest": "sha256:5e98c4cb750de99dd62e9d60079445de6660c4f918949b14a1e61863e8d28c03",
+  "currentSemanticSourceFingerprint": "sha256:21db550db634be131a7b7206aa14563cca4a8105289213956c2682c25cd078c3",
+  "taskAndRubricRevisions": {
+    "taskRevision": "sha256:8d3ae76b4d0e256fd5d614ff23974c6a5647847e688b6d6401b90950142e3b5b",
+    "rubricRevision": "sha256:265ebe206c37513d0ce0a3302efc7bdb25c33a35b5ae191d1f18baf446e1a67e"
+  },
+  "onlyChangedGoalFields": [
+    "requires"
+  ],
+  "taskSolutionRubricAndCoverageByteValuesUnchanged": true,
+  "currentRequires": [
+    "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+    "327302e3-5b36-46f8-9c16-73f24583b0eb",
+    "7eeff2de-6015-49a6-a96e-a488d886dc9f"
+  ],
+  "decision": "accept_current_prerequisite_binding",
+  "scientificReview": {
+    "energy": "0.5*120*(3.0)^2=540 J. A mass multiplier r gives r times the energy; a speed multiplier r gives r² times the energy.",
+    "height": "120*10*2.0=2400 J is the height-dependent increase for the Earth-cart system, independent of an additive zero-level constant.",
+    "pulley": "Four supporting rope segments give 1200 N/4=300 N and 4*2 m=8 m of rope travel; 300*8=2400 J equals the lifting work. No ideal work saving follows from the smaller force.",
+    "prerequisites": "Both energy forms are used in separate task parts. Removing kinetic energy from the potential-energy prerequisite would otherwise remove the only prior kinetic-energy route. The new direct kinetic prerequisite restores that exact real input. The independent force-conversion prerequisite remains appropriate for the rope-count and work argument.",
+    "coverage": "Existing coveredGoalIds identify kinetic energy, potential energy and pulley work. Their task demands and all score thresholds are unchanged; this review adds no new full or individual learner-result claim."
+  },
+  "limitations": [
+    "The existing 10/16 aggregate pass can leave a constituent task part incomplete. It is not reinterpreted as separate full mastery proof for every covered goal here.",
+    "The legacy assessment has no separate English task, solution or scoring fields in this object; the bilingual titles/descriptions are compatible, but this review does not invent a missing English assessment text.",
+    "This is no new learner assessment execution, human release, pedagogical redesign, or whole-subject source validation."
+  ]
+}

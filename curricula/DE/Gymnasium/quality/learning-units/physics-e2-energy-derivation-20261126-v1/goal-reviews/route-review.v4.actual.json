@@ -1,0 +1,442 @@
+{
+  "reviewer": "Independent OpenAI Codex source/view implementation agent",
+  "startedAt": "2026-11-26T03:09:44.103415+00:00",
+  "completedAt": "2026-11-26T03:13:03.706165+00:00",
+  "independenceDisclosure": "Ich verfasste Quellen-/Sichtimplementierung von N und gebe ihr hier keine unabhängige Quellen- oder Projektionsfreigabe. An den exakten D-/P-/M-Körpern, Karten, Bildern und Aufgaben keine Autorenschaft. Meine früheren Korrekturhinweise sind offengelegt; ihre Umsetzung habe ich nicht selbst geschrieben. Alle aktuellen fünf Texte/Profile wurden anhand neutraler v4-Eingaben neu beurteilt, nicht nur alte Voten übertragen. Keine Peer-Antworten oder fremden Markerwerte gelesen.",
+  "inputBindings": [
+    {
+      "path": "/tmp/skillpilot-n-energy/blind-v4/format.md",
+      "sha256": "894171a8bca3089fd43fe680dd79e0866fe8ffd72f6a7aad960c1747df07596b"
+    },
+    {
+      "path": "/tmp/skillpilot-n-energy/blind-v4/prompt.md",
+      "sha256": "b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "/tmp/skillpilot-n-energy/blind-v4/criteria.md",
+      "sha256": "536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "path": "/tmp/skillpilot-n-energy/blind-v4/blinded.jsonl",
+      "sha256": "bf71aabf72420409348d26d5195daf580a72c6c36d3be279b0c433c376aac99a"
+    },
+    {
+      "path": "/tmp/skillpilot-n-energy/blind-v4/p-bodies.json",
+      "sha256": "ac40ab25cbf081e61ecaec4f3c74affb25fa8d196dd45bfe9bf3fe39d88de5d3"
+    },
+    {
+      "path": "/tmp/skillpilot-n-energy/blind-v4/cards.json",
+      "sha256": "813553ae85a26459df0402280a83188386888645111a8b80f3341a8c8b5068ec"
+    },
+    {
+      "path": "/tmp/skillpilot-n-energy/blind-v4/prerequisiteClosure.json",
+      "sha256": "d1fbf15c5d3adcc3f027b596e157a38b6ddb926f8bd085c94d4d92bd42febcba"
+    },
+    {
+      "path": "/tmp/skillpilot-n-energy/blind-v4/closing-tasks.json",
+      "sha256": "360a64f40315f0c8f04585503f6d980a9883f64e2dda6a9d1bc174226057f8b6"
+    },
+    {
+      "path": "/tmp/skillpilot-n-energy/blind-v4/existing-memory-disposition-78cf.json",
+      "sha256": "223506de689afb349897462e73248f3303b99409b737028e5dfe22e9c95e4e19"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/positive-evidence.candidates.v4.json",
+      "sha256": "aa16e032860bb6f1b9c06d65492ad21039354fef3c2b5a1152f25e56418df72e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/memory-successor-inputs.v3.json",
+      "sha256": "2c42bf09debcd16615972f5c65d4f341e5c6c3c9ea6e8db9339bbf0ba15e306c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch-current-v4/round-b/criteria.md",
+      "sha256": "536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch-current-v4/round-b/batches/physics-e2-energy-derivation-description-20261126-v4-first-pass-b.batch-001.input.jsonl",
+      "sha256": "716405326e1747d8d062db0f55998739e196d817981ff3809f2882792fce607c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch-current-v4/bundle/book-model.json",
+      "sha256": "71d95c828e817ceb8a63dd92ffaedc1a7f304d68f89c38cae5580fe0cdd57e12"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch-current-v4/bundle/book.pdf",
+      "sha256": "9fe88a2d668601f211c2b1ebae11ba2f7762f8f3d9e2673ab703fbc0612a8b53"
+    }
+  ],
+  "descriptionReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Lageenergie ist die Größe des Systems Erde–Körper relativ zu einem gewählten Nullniveau; mgΔh bleibt bei dessen Verschiebung gleich.",
+        "essentialUnderstandingEn": "Potential energy belongs to the Earth-object system relative to a chosen zero; mgΔh is unchanged by shifting that zero.",
+        "observablePerformanceDe": "System und Nullniveau nennen, mgh beziehungsweise mgΔh mit Einheiten berechnen und einen negativen Bezugswert erklären.",
+        "observablePerformanceEn": "Identify system and zero, calculate mgh or mgΔh with units, and explain a negative reference-dependent value.",
+        "transferExpectationDe": "Bei neuer Rampe oder Aufzug und geändertem Nullniveau dieselbe Energieänderung begründen und Nullenergie von null Gewichtskraft trennen.",
+        "transferExpectationEn": "For a new ramp or lift and another zero, explain the same energy change and distinguish zero energy from zero weight."
+      },
+      "rationale": "Die beiden Beschreibungen benennen das richtige System, den Bezugscharakter und den begrenzten Erdbodenkontext, ohne Kinetik oder Feldformalismus einzuschmuggeln.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Der äußere Gesamtkraftstoß null erhält den Gesamtimpuls derselben Körper zwischen zwei Zeiten im gemeinsamen Inertialsystem.",
+        "essentialUnderstandingEn": "Zero net external impulse preserves the total momentum of the same bodies between two instants in a common inertial frame.",
+        "observablePerformanceDe": "Eine gerichtete Vorher-Nachher-Bilanz zur Rückstoßbegründung aufstellen und Systemgrenze sowie vernachlässigbaren äußeren Kraftstoß begründen.",
+        "observablePerformanceEn": "Use a directed before-and-after balance to explain recoil and justify the system boundary and negligible external impulse.",
+        "transferExpectationDe": "Bei einem bereits driftenden Paar die Änderung des Impulses von der Endbewegungsrichtung unterscheiden und ungleiche Massen qualitativ vergleichen.",
+        "transferExpectationEn": "For an already drifting pair, distinguish momentum change from final direction and compare unequal masses qualitatively."
+      },
+      "rationale": "Die beiden Texte verlangen gleiche Körper, dasselbe Inertialsystem und äußeren Intervallkraftstoß null. Das ist eine Endpunktbilanz und keine unzulässige Behauptung fortlaufender Konstanz.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die kinetische Leistung hebt die Änderung eines zeitunabhängigen konservativen Potenzials auf; Einteilchenbeweis und Summe fester materieller Teile müssen unterschieden werden.",
+        "essentialUnderstandingEn": "Kinetic power cancels the change in a time-independent conservative potential; the single-particle proof must be distinguished from summing fixed material parts.",
+        "observablePerformanceDe": "Im expliziten Massepunktmodell aus Newton II und F=−∇U die Konstanz von K+U herleiten und die Annahmen des Beweises erklären.",
+        "observablePerformanceEn": "In an explicit particle model, derive constant K+U from Newton II and F=−∇U and explain the proof assumptions.",
+        "transferExpectationDe": "Auf eine zweidimensionale tatsächliche Lösung und einen Dämpfungsfall übertragen; bei Bedarf einzelne Leistungen statt nur Schwerpunktenergie summieren.",
+        "transferExpectationEn": "Transfer to an actual two-dimensional solution and a drag case; where appropriate sum individual powers instead of using centre-of-mass energy alone."
+      },
+      "rationale": "Der allgemeine kanonische Satz bleibt richtig für ein festes konservatives mechanisches System mit konstanten Massen und zeitunabhängigem gemeinsamen U. Der Text muss nicht auf einen einzigen Massepunkt verengt werden. Das aktuelle P begrenzt den tatsächlich zuerst ausgeführten m,v-Beweis ausdrücklich auf einen Massepunkt und erläutert die gültige Summenerweiterung; keine Gesamtmasse-/Schwerpunktverwechslung.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Im reibungsfreien mechanischen Modell wechseln potenzielle und kinetische Energie bei konstanter Summe; diese Summe legt keine Bewegungsrichtung fest.",
+        "essentialUnderstandingEn": "In a frictionless mechanical model, potential and kinetic energy exchange at constant total; that total does not determine motion direction.",
+        "observablePerformanceDe": "System und Nullniveau wählen, Energieaustausch über Umkehr- und Gleichgewichtslage beschreiben und einfache Energien und Geschwindigkeitsbeträge berechnen.",
+        "observablePerformanceEn": "Choose system and zero, describe energy exchange through turning and equilibrium positions, and calculate simple energies and speeds.",
+        "transferExpectationDe": "Zwischen Feder- und Pendelpotenzial übertragen und gleiche Energie bei entgegengesetzten Bewegungsrichtungen erklären.",
+        "transferExpectationEn": "Transfer between spring and pendulum potentials and explain equal energy with opposite motion directions."
+      },
+      "rationale": "Die Beschreibungen verlangen eine kohärente Bilanz an reibungsfrei idealisierten Schwingungen, qualitativ und einfach quantitativ, und erweitern diese nicht um Periodendauerherleitungen.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Für das beschriebene Massepunktmodell entsteht K=m v_x²/2 aus W=F_xΔx; die orientierte Dreiecksfläche liefert Δx=v_x t/2.",
+        "essentialUnderstandingEn": "For the stated particle model, K=m v_x²/2 follows from W=F_xΔx; the signed triangle area gives Δx=v_x t/2.",
+        "observablePerformanceDe": "Mit frei gewählter Achse die vorzeichenbehafteten Komponenten verknüpfen, Ortsänderung von Weglänge trennen und Halbierungsfaktor sowie Quadratgesetz erklären.",
+        "observablePerformanceEn": "Connect signed components under a freely chosen axis, distinguish displacement from distance, and explain the half factor and square law.",
+        "transferExpectationDe": "Dieselbe linke Bewegung mit beiden positiven Achsenrichtungen herleiten und bei v0≠0 die Grenze des Dreiecksansatzes diagnostizieren.",
+        "transferExpectationEn": "Derive the same leftward motion under both axis choices and diagnose the triangle-method boundary when initial velocity is nonzero."
+      },
+      "rationale": "Die Beschreibungen benennen konstanten Massepunkt, Inertialsystem, Start aus Ruhe, Gerade und konstante resultierende Kraft; die eigene grafisch-algebraische Herleitung bleibt von fertiger Formelanwendung getrennt. Die präzisierten Komponentenkonventionen gehören in das P, ohne den unveränderten knappen Zieltext zu verbreitern.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    }
+  ],
+  "profileReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "keep",
+      "reason": "Erneut aktuell geprüft: beide Fälle verlangen Wahl von System/Nullniveau und mg(h2−h1); Hinzufügen derselben Referenzkonstante ändert die Differenz nicht. Negative Kellerenergie impliziert weder negatives g noch fehlende Gewichtskraft. Die andere Weggeometrie verlangt unabhängigen Transfer, nicht nur Zahlenwechsel. Zwei Demonstrationen und die DE/EN-Paarung passen.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "keep",
+      "reason": "Erneut aktuell geprüft: Beim Astronautenfall ist Δp_A=−Δp_Paket nach links, aber die Endrichtung hängt zusätzlich vom Anfangsimpuls und Änderungsbetrag ab. Bei den aus Ruhe getrennten Wagen folgt p1=−p2 und der leichtere Wagen ist schneller. Ein vernachlässigbarer Außen-/Federimpuls rechtfertigt nur die angegebene Näherung. Beide Sprachfassungen halten qualitative Bilanz und Grenzen gleich.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "keep",
+      "reason": "P-v4 vollständig neu beurteilt: Für einen Massepunkt ist K=m(v·v)/2 und dK/dt=F·v. Entlang der ausdrücklich als physikalische Lösung gegebenen r(t) gilt v=dr/dt und dU/dt=∇U·v; daher gleiche Gesamtenergie an zwei Punkten dieser Lösung, ohne Aussage über beliebige fremde Zustände. Bei v=0 verschwindet die momentane Leistung, nicht notwendig die Kraft oder der räumliche Potenzialgradient. Mit Reibung −b v folgt −b|v|². Die optionale Zwei-Massen-Erweiterung summiert beide K_i und beide Leistungen und benutzt das gemeinsame U(r1,r2); sie unterschlägt keine innere Relativbewegung. Sie ist ausdrücklich keine weitere Pflicht des elementaren Falls. Die drei geforderten unabhängigen Fälle und die bilingualen Bedingungen sind fachlich passend. Der allgemeine kanonische Satz bleibt gültig; ein vollständig nachgewiesener beliebiger Mehrteilchenformalismus wird aus den elementaren Fällen allein nicht behauptet.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "keep",
+      "reason": "Alle aktuellen Werte selbst nachgerechnet: Feder E=0,10 J; x=0 gibt |v|=sqrt(0,4)=0,63246 m/s; x=±0,06 m gibt U=0,036 J, K=0,064 J und |v|=sqrt(0,256)=0,50596 m/s. Pendel E=0,10 J, unten |v|=1 m/s, bei h=0,020 m U=0,040 J, K=0,060 J und |v|=sqrt(0,6)=0,77460 m/s. Die Energie bestimmt bei einer Zwischenlage keinen Geschwindigkeitssinn. Neue Potenzialform und Nullniveau tragen den frischen Transfer; DE/EN stimmen.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "keep",
+      "reason": "P-v4 vollständig neu beurteilt: F_x=m a_x, v_x=a_x t und Δx=v_x t/2 geben W=F_xΔx=m v_x²/2. Bei rechtspositiver Achse und linker Beschleunigung sind F_x,a_x,v_x,Δx negativ; das Produkt W bleibt positiv. Die Gerade fällt unter die Achse, ihre orientierte Fläche ist negativ, Weglänge |Δx| positiv. Beide Achsenwahlen werden nun durchgehend konsistent behandelt; kein ungültiges Gleichsetzen von Weglänge und negativer Fläche bleibt. Dreifacher Betrag liefert9, halber Betrag1/4. Bei v0≠0 gelten weder v_x=a_x t noch die reine Ursprungsdreiecksfläche; das widerlegt den übernommenen Ansatz, nicht K=m|v_x|²/2. Beide Sprachen fordern denselben unabhängigen Diagramm-/Modelltransfer.",
+      "requiredChanges": []
+    }
+  ],
+  "atomicityReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "semanticAtomic": true,
+      "reason": "Eine Lageenergiebilanz einschließlich ihrer Bezugshöhendeutung.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "semanticAtomic": true,
+      "reason": "Eine qualitative gerichtete Erhaltungsbilanz für Rückstoß; Systembedingungen sind Bestandteil dieser einen Leistung.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "semanticAtomic": true,
+      "reason": "Ein allgemeiner Erhaltungssatz mit seinem Beweis und Gültigkeitsbereich; die optionale Summenbrücke ist keine zweite isolierte Pflichtkompetenz.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "semanticAtomic": true,
+      "reason": "Eine Energieaustauschbilanz einer Schwingung, qualitativ und einfach quantitativ.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "semanticAtomic": true,
+      "reason": "Eine Herleitung mit zusammenhängendem Arbeitsansatz, Kinematik, Flächendeutung und Interpretation des Ergebnisses.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    }
+  ],
+  "semanticKindReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "semanticKind": "curricularAtomic",
+      "reason": "Eine Lageenergiebilanz einschließlich ihrer Bezugshöhendeutung."
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "semanticKind": "curricularAtomic",
+      "reason": "Eine qualitative gerichtete Erhaltungsbilanz für Rückstoß; Systembedingungen sind Bestandteil dieser einen Leistung."
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "semanticKind": "curricularAtomic",
+      "reason": "Ein allgemeiner Erhaltungssatz mit seinem Beweis und Gültigkeitsbereich; die optionale Summenbrücke ist keine zweite isolierte Pflichtkompetenz."
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "semanticKind": "curricularAtomic",
+      "reason": "Eine Energieaustauschbilanz einer Schwingung, qualitativ und einfach quantitativ."
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "semanticKind": "curricularAtomic",
+      "reason": "Eine Herleitung mit zusammenhängendem Arbeitsansatz, Kinematik, Flächendeutung und Interpretation des Ergebnisses."
+    },
+    {
+      "goalId": "0cf2a5b0-8660-578d-8316-2b8a50fbdff7",
+      "semanticKind": "practiceAssessment",
+      "reason": "Bestehende Aufgabe mit eigener summativer Bewertung, keine zusätzliche atomare Verständnisleistung."
+    },
+    {
+      "goalId": "e0085acf-af64-5c73-8abf-85a5bbfbdaa6",
+      "semanticKind": "practiceAssessment",
+      "reason": "K3 prüft die neue Herleitung durch vier bewertete Leistungen, statt ein weiteres Verständnisziel zu bilden."
+    }
+  ],
+  "prerequisiteReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "accept_current",
+      "reason": "Qualitative Energieformen und Einsetzen samt deren vollständiger Hülle tragen die neue quantitative Lageenergieleistung; mgh und Bezugshöhe werden im Ziel selbst gelernt. Die fertige kinetische Energie ist kein nötiger Vorgänger.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": [],
+      "scopeDisposition": "current_N_content_accepted"
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "accept_current",
+      "reason": "Wechselwirkungskräfte an verschiedenen Körpern und vorzeichenbehaftete Impulssumme tragen die qualitative Rückstoßbilanz. Eigenes Anwenden von F=ma wird dabei nicht benötigt; die Herleitung aus Newton II/III wird hier nicht als vorgeleistet behauptet.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": [],
+      "scopeDisposition": "current_N_content_accepted"
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "needs_change",
+      "reason": "Der neue direkte kinetische Vorgänger ist fachlich nötig, nachdem der bisherige Zugang über Lageenergie entfällt. Hülle enthält Inertialsystem, Newton II über Arbeit, allgemeines Potenzial, Skalarprodukt, Kettenregel und Umformen. Die vorhandene direkte 6aff-Kante ist dagegen für den allgemeinen F=−∇U-Beweis bei bereits vorhandenem 594 nicht fachlich erforderlich: ein beliebiges bereitgestelltes glattes U genügt, ohne nahe-Erde-mgh zu verwenden. Das ist ein geparkter Altbefund außerhalb N, kein neuer Nachfolger- oder Cutbedarf und keine Forderung nach Änderung der aktuellen P/D-Texte.",
+      "unnecessaryCurrentRequires": [
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b"
+      ],
+      "missingRequires": [],
+      "scopeDisposition": "parked_preexisting_outside_N"
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "accept_current",
+      "reason": "Schwingungsgrößen, Lageenergie, expliziter kinetischer Vorgänger und Quadratwurzeln tragen die gewählten Bilanzen; die Federpotenzialfunktion wird gegeben. Keine eigene Herleitung von K oder Integralrechnung erforderlich.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": [],
+      "scopeDisposition": "current_N_content_accepted"
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "accept_current",
+      "reason": "Arbeit mit ihrer Newton-II-/Systemhülle, die Gesetze derselben gleichmäßig beschleunigten Bewegung mit Flächenkompetenz und symbolisches Umformen sind die tatsächlichen drei direkten Werkzeuge. Die fertige kinetische Energieformel darf kein voriger Bedarf dieser Herleitung werden.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": [],
+      "scopeDisposition": "current_N_content_accepted"
+    }
+  ],
+  "memoryGoalReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "accept_current",
+      "reason": "Mgh und mgΔh mit System/Nullniveau bilden einen sinnvollen knappen Abrufkern; die konkrete Wahl und der Referenztransfer bleiben Verständnisnachweise.",
+      "requiredChanges": [],
+      "memoryDisposition": "compact_recall_kernel"
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "accept_current",
+      "reason": "Der Abrufkern zur Intervallgleichheit und stärkeren fortlaufenden Erhaltung ist hilfreich und bleibt von qualitativer System-/Rückstoßleistung getrennt.",
+      "requiredChanges": [],
+      "memoryDisposition": "compact_recall_kernel"
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "accept_current",
+      "reason": "Der präzisierte konservative Abrufkern bleibt sinnvoll. Die Karte behauptet nun Inertialsystem, nur konservative Kräfte, zeitunabhängiges Potenzial und Massepunkt. Er erinnert eine gültige Aussage und ersetzt weder Beweis noch Modellprüfung.",
+      "requiredChanges": [],
+      "memoryDisposition": "compact_recall_kernel"
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "accept_current",
+      "reason": "Das exakt mitgelieferte bisherige M-Urteil no_memory_needed ist weiterhin passend: variable Energiebilanzen, Modell-/Nullniveauwahl und die Bedeutung beider Bewegungsrichtungen werden durch frische Aufgabenpraxis verankert. Eine eigene 78cf-Karte ist nicht nötig; der neue direkte kinetische Vorgänger erzeugt keine neue Abrufpflicht.",
+      "requiredChanges": [],
+      "memoryDisposition": "no_memory_needed"
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "accept_current",
+      "reason": "Der präzisierte Abrufkern erinnert die vorzeichenbehaftete Dreiecksfläche und ihre Verknüpfung mit Arbeit. Beide Sprachen passen exakt zum neuen Herleitungsursprung; freies Zeichnen, Ableiten und Variieren müssen unabhängig gezeigt werden.",
+      "requiredChanges": [],
+      "memoryDisposition": "compact_recall_kernel"
+    }
+  ],
+  "cardReviews": [
+    {
+      "cardId": "physics_e_cov_023",
+      "decision": "accept_current",
+      "scientificCorrectness": "Unverändert K=m v²/2, klassischer Abruf zur Formelanwendung; kein eigenständiger Herleitungsnachweis und nur Ursprung7eeff2de.",
+      "languageEquivalence": "Beide exakten aktuellen Sprachfassungen sind semantisch gleichwertig.",
+      "originFit": "Die mitgelieferten Ursprünge passen; weder Voraussetzungserreichbarkeit noch ein knapper Abrufkern spenden zusätzliche Ursprungskompetenzen.",
+      "promptAnswerFit": "Die Antwort erfüllt die konkrete Abruffrage im begrenzten Modellkontext des Ursprungs.",
+      "recallBoundary": "Praxis oder Kartencheck belegen Abruf, nicht selbstständige Herleitung, Systemwahl, Numerik oder geänderten-Fall-Transfer.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_024",
+      "decision": "accept_current",
+      "scientificCorrectness": "Körper–Erde, annähernd konstantes g und gewähltes Nullniveau sind ausdrücklich genannt; mgΔh ist referenzunabhängig.",
+      "languageEquivalence": "Beide exakten aktuellen Sprachfassungen sind semantisch gleichwertig.",
+      "originFit": "Die mitgelieferten Ursprünge passen; weder Voraussetzungserreichbarkeit noch ein knapper Abrufkern spenden zusätzliche Ursprungskompetenzen.",
+      "promptAnswerFit": "Die Antwort erfüllt die konkrete Abruffrage im begrenzten Modellkontext des Ursprungs.",
+      "recallBoundary": "Praxis oder Kartencheck belegen Abruf, nicht selbstständige Herleitung, Systemwahl, Numerik oder geänderten-Fall-Transfer.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_027",
+      "decision": "accept_current",
+      "scientificCorrectness": "Der aktuelle Nachfolger nennt ausdrücklich nur konservative Kräfte, zeitunabhängiges Potenzial, Massepunkt und Inertialsystem. Damit ist die Aussage in diesem Modell gültig und kein kategorialer Satz für U(r,t). Die konstante Masse ist Kontext des e359-Ursprungs. Beide Sprachfassungen begrenzen denselben Abrufkern; der Massepunktfall ist ein passender Teilkern des allgemeinen Ursprungs.",
+      "languageEquivalence": "Beide exakten aktuellen Sprachfassungen sind semantisch gleichwertig.",
+      "originFit": "Die mitgelieferten Ursprünge passen; weder Voraussetzungserreichbarkeit noch ein knapper Abrufkern spenden zusätzliche Ursprungskompetenzen.",
+      "promptAnswerFit": "Die Antwort erfüllt die konkrete Abruffrage im begrenzten Modellkontext des Ursprungs.",
+      "recallBoundary": "Praxis oder Kartencheck belegen Abruf, nicht selbstständige Herleitung, Systemwahl, Numerik oder geänderten-Fall-Transfer.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_028",
+      "decision": "accept_current",
+      "scientificCorrectness": "J_ext=0 impliziert P(t2)=P(t1), aber keine Konstanz dazwischen. Die überall verschwindende resultierende Außenkraft ist die stärkere Bedingung für fortlaufende Konstanz; beide Sprachen unterscheiden dies.",
+      "languageEquivalence": "Beide exakten aktuellen Sprachfassungen sind semantisch gleichwertig.",
+      "originFit": "Die mitgelieferten Ursprünge passen; weder Voraussetzungserreichbarkeit noch ein knapper Abrufkern spenden zusätzliche Ursprungskompetenzen.",
+      "promptAnswerFit": "Die Antwort erfüllt die konkrete Abruffrage im begrenzten Modellkontext des Ursprungs.",
+      "recallBoundary": "Praxis oder Kartencheck belegen Abruf, nicht selbstständige Herleitung, Systemwahl, Numerik oder geänderten-Fall-Transfer.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_kinetic_energy_from_work",
+      "decision": "accept_current",
+      "scientificCorrectness": "Die neuen exakten DE/EN-Kartentexte verwenden Δx=v_x t/2, F_x=m v_x/t und F_xΔx=m v_x²/2. Auch bei entgegengesetzter freier Achse bleibt Arbeit positiv, während die Fläche orientiert negativ sein darf. Der zuvor unpräzise Wegbegriff wurde korrekt durch Ortsänderung/signed displacement ersetzt. Inertialkontext und konstante Masse gehören zum zugeordneten Verständnisziel.",
+      "languageEquivalence": "Beide exakten aktuellen Sprachfassungen sind semantisch gleichwertig.",
+      "originFit": "Die mitgelieferten Ursprünge passen; weder Voraussetzungserreichbarkeit noch ein knapper Abrufkern spenden zusätzliche Ursprungskompetenzen.",
+      "promptAnswerFit": "Die Antwort erfüllt die konkrete Abruffrage im begrenzten Modellkontext des Ursprungs.",
+      "recallBoundary": "Praxis oder Kartencheck belegen Abruf, nicht selbstständige Herleitung, Systemwahl, Numerik oder geänderten-Fall-Transfer.",
+      "requiredChanges": []
+    }
+  ],
+  "assessmentReviews": [
+    {
+      "goalId": "e0085acf-af64-5c73-8abf-85a5bbfbdaa6",
+      "decision": "accept_current",
+      "reason": "Exakte aktuelle Aufgaben-/Rubriktexte erneut gelesen. Die positive Betragskonvention des gegebenen Falls trägt W=FΔs, V=aT, Δs=VT/2 und K=mV²/2; der Faktor2 in V erzeugt4 in K. K3 bleibt eine kurze eigene Herleitungsprüfung und keine Prüfung der optionalen Mehrteilchenbrücke. Bei vier Leistungen zu je3 Punkten ist das vollständige Fehlen einer Leistung mit maximal9 unter10; ein isolierter Formfehler kann11,5 lassen. Keine neue Summensperre eingeführt. Die frühere eigene blinde Marker-B-Antwort bleibt als solche erhalten.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "0cf2a5b0-8660-578d-8316-2b8a50fbdff7",
+      "decision": "accept_current",
+      "reason": "Aktuelle unveränderte Aufgabe nachgerechnet: K=540 J, ΔU=2400 J, ideale Zugkraft300 N, Zugweg8 m, beide Arbeiten2400 J. Der direkte kinetische Vorgänger ist nötig für Teil1 und wird korrekt ergänzt. Das summative Bestehen10/16 ist fachlich ein Gesamtaufgabenresultat: 5+0+6=11 kann bestehen, ohne Lageenergie zu zeigen; 0+5+6=11 ebenso ohne kinetische Leistung. Es darf deshalb keine automatische individuelle Beherrschung aller coveredGoalIds belegen oder schreiben. coveredGoalIds beschreibt Inhalt, kein Ergebnisbeweis. Eine gesonderte individuelle Evidenz bleibt nötig; der alte aggregierte Cut wird für N nicht umgebaut.",
+      "requiredChanges": [],
+      "individualCreditAuthorizedBySummativePass": false
+    }
+  ],
+  "nativeVisualReview": {
+    "originalAnd360ImagesPreviouslyInspected": true,
+    "currentPdfPagesInspected": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "reason": "Alle fünf aktuellen nativen v4-PDF-Lernzielseiten mit echten eingebetteten Bildern erneut angesehen. Bilder und fachliche Diagrammaussagen sind unverändert; die neue rechte positive Beispielgrafik bleibt mit der präziseren allgemeinen Komponentenkonvention vereinbar."
+  },
+  "parkedPreexistingFindings": [
+    {
+      "kind": "prerequisite_necessity",
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "prerequisiteGoalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "disposition": "parked_preexisting_outside_N",
+      "reason": "Nahe-Erde-mgh ist ein spezielles Beispiel und keine notwendige Prämisse der allgemeinen konservativen Leistungsherleitung bei vorhandenem allgemeinem Potenzialziel594. Keine aktuelle Zertifizierung dieser Kante als fachlich notwendig."
+    },
+    {
+      "kind": "summative_result_boundary",
+      "goalId": "0cf2a5b0-8660-578d-8316-2b8a50fbdff7",
+      "disposition": "parked_preexisting_outside_N",
+      "reason": "Ein aggregierter Aufgabenpass kann nicht jede separat abgedeckte Kompetenz nachweisen. N ergänzt die wahre Voraussetzung und transferiert keine Ergebnisse."
+    }
+  ],
+  "limitations": [
+    "Vollständiges aktuelles wissenschaftliches D/P/A/M-/Kartenurteil für die vorliegenden exakten N-Körper; keine pauschale Bescheinigung semantischer Notwendigkeit aller Altkanten.",
+    "Geparkte Altbefunde werden nicht durch keep-Voten für D/P oder aktuelle N-Reparaturen stillschweigend freigegeben.",
+    "Die optionale Mehrteilchenbrücke erklärt die allgemeine Aussage, ihre Beherrschung wird nicht aus den drei elementaren Fällen automatisch behauptet.",
+    "Unveränderte Bestandsbilder behalten die früher ausdrücklich benannten Grenzen: e359 bei360px dicht; g-Marker im Lageenergiebild ist kein neu überprüfter Punkt-/Vektormaßstabsnachweis.",
+    "Keine echten Lernendenresultate, menschliche Abnahme oder reale Host-Akzeptanz."
+  ]
+}
