@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "reviewedCommit": "6852e072037b9d34d16d0d55b840ebfd6e6b81cb",
+  "baseCommit": "0c743ce7e3bea404e6a222168c925f281aa39c2b",
+  "round": 1,
+  "completedAt": "2026-11-26T17:07:40.271232+00:00",
+  "reviewers": [
+    {
+      "path": "reviewer-a.md",
+      "sha256": "689becbfcae5f83a6d19e5fcbfd76d99161893e48c9b78d74f774d751d252555"
+    },
+    {
+      "path": "reviewer-b.md",
+      "sha256": "f18a5f6548b3c12ff59cb14a2e1aa3651930fd66db2e5386db452b3a5f025789"
+    }
+  ],
+  "model": "gpt-6.1-sol, independent read-only sessions, ultra; no authoring context",
+  "synthesis": {
+    "path": "review.md",
+    "sha256": "5c6b01e99fd630f9feb739d6acfac2a6bac0b4ad40390dec7836e6f83d7dbb8f"
+  },
+  "result": "One reproducible offered-subject versus accepted-write discrepancy when the same foreign preparation is already active. First selection and generic continuation accepted as measured.",
+  "rawEvidence": [
+    {
+      "path": "raw/TEST-com.skillpilot.backend.connectors.gemini.v1.mcp.GeminiV1LearningPlanContractTest.xml.gz",
+      "sha256": "25e1f57c30814712b0dbb165f612eca9ea91623472c9b4f0f35ed58832752698"
+    },
+    {
+      "path": "raw/TEST-com.skillpilot.backend.openai.mcp.de.v1.OpenAiDeV11DailyPlanContractTest.xml.gz",
+      "sha256": "f1619e217ac28f8e667958b67dbc22bab839ee25263812c8acd0e477cbdaabfb"
+    },
+    {
+      "path": "raw/TaskZProbe.methods.java",
+      "sha256": "5c259988293613f0a635b75b02218c3a802d74c57bc7d82a8eb06c728f532c5c"
+    },
+    {
+      "path": "raw/additional/README.md",
+      "sha256": "3e347b20b5703ad1fc2ca4c9117079fbc7b26baaebed35d4c1c6d54d15f89bf3"
+    },
+    {
+      "path": "raw/additional/TaskZAdditional.methods.java",
+      "sha256": "e8b52da19c98774099045a953161f278b6e10e8c75b317a1834f703c4b1bca54"
+    },
+    {
+      "path": "raw/additional/base-final.xml",
+      "sha256": "540559fc14c7faf8f5ddb691ff62c012177fbf70f9229cb1753c839c9d1c3cc1"
+    },
+    {
+      "path": "raw/additional/first-probe.java.txt",
+      "sha256": "a44d3ff0041715eb58e93b0b0d6e8e831ccd8fed96fdb3efc1391d525e0f0aab"
+    },
+    {
+      "path": "raw/additional/gradle-exit.json",
+      "sha256": "644c7829a3270d08a28f813947b65fba9fa99628e8b4ab28cfb99bc19dd696b4"
+    },
+    {
+      "path": "raw/additional/head-final.xml",
+      "sha256": "3d791dc176ea1381f4f983d63f5559ed7644cb464c8294ba6aad246640fec62b"
+    },
+    {
+      "path": "raw/additional/head-first.xml",
+      "sha256": "747f5e92adf68857fba1477e88b921c246c0d289b2af30b708404d3df2e8805b"
+    },
+    {
+      "path": "raw/additional/junit-base.log",
+      "sha256": "6a4c3ea9d08f5bc7414201e60ecaec38b294e705a48bcece660ec681ba2e286a"
+    },
+    {
+      "path": "raw/additional/junit-final.log",
+      "sha256": "5af957e231a57a03feeb02512f94d4da751b276e60a5970f60c9ef220ed5434c"
+    },
+    {
+      "path": "raw/additional/junit-first.log",
+      "sha256": "0f26ef2d75239681d635f506c45f1d80e0332c1704a73b0465f70dd023263b5b"
+    },
+    {
+      "path": "raw/additional/observed.actual.json",
+      "sha256": "46733965af19bb99bfe8d8443567ef6eda325c2a37c120b113f393c6ae919c6c"
+    },
+    {
+      "path": "raw/additional/probe.init.gradle",
+      "sha256": "b67926fff4200f36e1e205c3449eceb871cdf777ba0ed97e5366487b62336e95"
+    },
+    {
+      "path": "raw/additional/run-base.sh",
+      "sha256": "d26ea76423c09112928abcc4e3426259a2c1f69662ca47af5dadf63546603d89"
+    },
+    {
+      "path": "raw/additional/run-probes.sh",
+      "sha256": "bd7dcfa763db4fd120b12d4c5cb2a72cff8eb56845aac89524f5c28364f77c9a"
+    },
+    {
+      "path": "raw/additional/summarize.py",
+      "sha256": "2044c03b23349fe6b0cb65e89bd0eeb8446e244f4568bea1dabff5ff9f8da722"
+    },
+    {
+      "path": "raw/additional/unit-part/TaskZUnit.methods.java",
+      "sha256": "a987ed9a20349c5b1e15f0af560db413c22fe9459c4a635cd8276fc792ad25ee"
+    },
+    {
+      "path": "raw/additional/unit-part/direct-part.actual.json",
+      "sha256": "836f9b49afc5d13167ed09513874a589f5be2301ae3595aadf6feac219bcb224"
+    },
+    {
+      "path": "raw/additional/unit-part/gradle.log",
+      "sha256": "c13a83257c96aa91bee4b498f9bf68697cf1a474488757fb54abc74f8597e850"
+    },
+    {
+      "path": "raw/additional/unit-part/probe.init.gradle",
+      "sha256": "1b75b6adae364a6efeb21039e48f0876c2b92d168c1ac05b8380bfc2f11d2158"
+    },
+    {
+      "path": "raw/additional/unit-part/result.xml",
+      "sha256": "d072b236a2f09bd56856a9fbfbcedcae714ffae3cd8bec609201d32f732093db"
+    },
+    {
+      "path": "raw/additional/unit-part/run.sh",
+      "sha256": "45ebffd8c736d1ae84557037a89f8160ffcee68de611d9d6840e14d6cca70f49"
+    },
+    {
+      "path": "raw/base-control/TaskZProbe.methods.java",
+      "sha256": "b46d7a8f2c00b7d92a55535f7aceac912ecf2b5e52fca1368489a89582e626db"
+    },
+    {
+      "path": "raw/base-control/base-probes.xml.gz",
+      "sha256": "1ee17b7812ab9cfef5788c8f1ba070a676fb445b65486c67ae775374b4ee6791"
+    },
+    {
+      "path": "raw/base-control/base-run.actual.json",
+      "sha256": "aa897003c0c5314db0cfe3fb5b18e946eda55ca3a7366579ab63f1d6b7dac539"
+    },
+    {
+      "path": "raw/base-control/probe.init.gradle",
+      "sha256": "520bf3c521d08dbe9739856497f69440a5113779fcb6d670af37265564ed25b4"
+    },
+    {
+      "path": "raw/base-control/run-probes.sh",
+      "sha256": "725e9e2b6206ee2793258fb93a0dabc4a97a3f0b2291fa4c815fb4967b9a38cb"
+    },
+    {
+      "path": "raw/base-control/run.log",
+      "sha256": "03655cb54ee5d1c687f875007af15674b4a1a97002c6a8e93fc970907b0f988f"
+    },
+    {
+      "path": "raw/head-probes.xml.gz",
+      "sha256": "b95072d9cd9f38b4034ee16e26ccbeb068a6e171ec5d74eeb9e4fa71d89b76e2"
+    },
+    {
+      "path": "raw/head-run.actual.json",
+      "sha256": "d4e474df779a9bc5b56bb31212ca1e6fb3454662c17ad2d3798ee8c2726cf327"
+    },
+    {
+      "path": "raw/probe.init.gradle",
+      "sha256": "5be607dda46b6656f22793433f5df6fcb472e7eb70f7e91542c9839defb95aee"
+    },
+    {
+      "path": "raw/probes-first.log",
+      "sha256": "58a3264fd529f6b76e0943e66856dc272d05b27e6758fc97beb220b11d5271a6"
+    },
+    {
+      "path": "raw/provider-runs.actual.json",
+      "sha256": "a8b8d05956f2077593809c77165c91f24b60ae600de1c0561f675c61178a3c84"
+    },
+    {
+      "path": "raw/provider-tests.init.gradle",
+      "sha256": "156147df0a8373a95101aed930a79ff9352c25ce7215614a384a1b59587c52df"
+    },
+    {
+      "path": "raw/provider-tests.log",
+      "sha256": "5942d1a2f4ce32c3f6f8a8252d4e8629307a04853016af843eb52ee3aef80f47"
+    },
+    {
+      "path": "raw/repeat-foreign/TaskZProbe.methods.java",
+      "sha256": "239eec3c3a74f5414d116df192d77d98e48a7918d68707a441986bdb7e5abe6d"
+    },
+    {
+      "path": "raw/repeat-foreign/base/TaskZProbe.methods.java",
+      "sha256": "047fe3b717f325fcb10b085ca00518da3c8de1da42d5467ca47833399607a712"
+    },
+    {
+      "path": "raw/repeat-foreign/base/observed.actual.json",
+      "sha256": "fca2ee9cd520f5e89dacf7f3fa5be765e32b2d8ace5edbfbd6ce3dd22e478f99"
+    },
+    {
+      "path": "raw/repeat-foreign/base/probe.init.gradle",
+      "sha256": "f5f4d5fd9895fbf373a662a7760ea7ab69ffc855b6c66e97f6f5d77aab93b50c"
+    },
+    {
+      "path": "raw/repeat-foreign/base/result.xml.gz",
+      "sha256": "42b0694a3935d1b74b61c599bc45e4c7960ee50baf101d9c0ee65725ff1d31cd"
+    },
+    {
+      "path": "raw/repeat-foreign/base/run-probes.sh",
+      "sha256": "c62adb45ff035e6fc39d524250f4fcde6ea9b43537ec9d9b6a77a6742964c0ec"
+    },
+    {
+      "path": "raw/repeat-foreign/base/run.log",
+      "sha256": "dc44a03bf3559d0f927078c248b39090471172b3592cb46952e8024f28300461"
+    },
+    {
+      "path": "raw/repeat-foreign/observed.actual.json",
+      "sha256": "8040a0a67bc8e5368c00fea659c69e8261cf286534370d49b8510bce252d1ecd"
+    },
+    {
+      "path": "raw/repeat-foreign/probe.init.gradle",
+      "sha256": "520bf3c521d08dbe9739856497f69440a5113779fcb6d670af37265564ed25b4"
+    },
+    {
+      "path": "raw/repeat-foreign/repeat.xml.gz",
+      "sha256": "7c84339f41b03a261683945b3572b3f04f37313784c13aa59e7b5e3a94b17c05"
+    },
+    {
+      "path": "raw/repeat-foreign/run-probes.sh",
+      "sha256": "7845ae716da4e37b8204f2e709176d795a291751ba7fa256e2eaca9c89182d5d"
+    },
+    {
+      "path": "raw/repeat-foreign/run.log",
+      "sha256": "1a5e0963af666faa1460a1644f7f4f21d016e4c9e1ae47b311eff25d6a0d4e08"
+    },
+    {
+      "path": "raw/reviewer-a.log",
+      "sha256": "95bbe90293a7cb71be6e9b546007eaf3e8cb30d50f77e9a5528f938d84e48bb9"
+    },
+    {
+      "path": "raw/reviewer-b.log",
+      "sha256": "d9034cadccabe075e91bda082fd4d770401a3f64ce45c3a1f3245f57498ba69c"
+    },
+    {
+      "path": "raw/run-probes.sh",
+      "sha256": "38cfd048bdda5d83bdc640602c13470b6f1540f55892579e1d0da7f81d891127"
+    },
+    {
+      "path": "raw/run-provider-tests.sh",
+      "sha256": "71c9cf3b971691eeeea1e262c47c425ee24e01637f01aca08fa80d2094792374"
+    }
+  ],
+  "learnerData": "isolated synthetic H2 records",
+  "trackedSourceChange": false
+}
