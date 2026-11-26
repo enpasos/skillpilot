@@ -2065,7 +2065,7 @@ const walkViewNodes = (
   parent: string,
   counts: SemanticCounts,
   pathPrefix: string,
-  source13 = false,
+  versionedNodes = false,
 ) => {
   nodes.forEach((node, index) => {
     const data = jsonObject(node, 'composition view node')
@@ -2080,7 +2080,7 @@ const walkViewNodes = (
     writeStringField(write, resource, `${SP}structureId`, data.id)
     writeStringField(write, resource, `${RDFS}label`, data.label, 'de')
     writeStringField(write, resource, `${SP}displayLabel`, data.displayLabel)
-    if (source13) {
+    if (versionedNodes) {
       for (const key of ['labelEn', 'canonicalSourceGoalId', 'canonicalSourcePhase', 'landscapeId']) {
         writeStringField(write, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}`, data[key])
       }
@@ -2094,7 +2094,7 @@ const walkViewNodes = (
     }
     const children = Array.isArray(data.children) ? data.children : []
     if (children.length > 0) {
-      walkViewNodes(write, archiveRoot, view, children, resource, counts, nodePath, source13)
+      walkViewNodes(write, archiveRoot, view, children, resource, counts, nodePath, versionedNodes)
     }
   })
 }
@@ -2112,7 +2112,7 @@ export const writeViewSemantics = (
       const data = jsonObject(JSON.parse(entryText(entry, 'composition view')) as JsonValue, 'composition view')
       const transportIssues = subjectExportCompositionViewIssues(data)
       if (transportIssues.length) throw new Error(`Invalid composition view transport: ${transportIssues.join('; ')}`)
-      const source13 = data.viewFormatVersion === '1.3'
+      const versionedNodes = data.viewFormatVersion === '1.2' || data.viewFormatVersion === '1.3'
       const viewId = stringValue(data.id) ?? stringValue(data.viewId)
       const view = options.semanticIris
         ? semanticViewIri(archiveRoot, viewId, entry.path)
@@ -2125,14 +2125,14 @@ export const writeViewSemantics = (
       writeStringField(write, view, `${SP}viewId`, viewId)
       writeStringField(write, view, `${RDFS}label`, data.label, 'de')
       writeJsonField(write, view, `${SP}scopeJson`, data.scope)
-      if (source13) {
+      if (versionedNodes) {
         writeStringField(write, view, `${SP}compositionViewSchema`, data.$schema)
         writeStringField(write, view, `${SP}compositionViewFormatVersion`, data.viewFormatVersion)
         writeStringField(write, view, `${SP}compositionViewLanguage`, data.language)
         writeStringField(write, view, `${SP}compositionViewTitle`, data.title)
       }
       const rootNodes = Array.isArray(data.rootNodes) ? data.rootNodes : []
-      walkViewNodes(write, archiveRoot, view, rootNodes, view, counts, 'root', source13)
+      walkViewNodes(write, archiveRoot, view, rootNodes, view, counts, 'root', versionedNodes)
     })
 }
 

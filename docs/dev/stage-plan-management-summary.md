@@ -21,6 +21,16 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 00:49 MEZ – Lokaler Abschluss der optionalen Paket-CI-Reparatur
+
+Der Brandenburger Mathematik-Roundtrip erhält jetzt das vollständige Ansichtsformat 1.2 einschließlich Kinderordnung, Erwerbsmarkierungen und leerer Abschnitte. Der Zusatztest der lokalen Paketsuite prüft den heutigen Landschaftsvertrag 1.2 im Transportprofil 1.3 sowie die echte Ablehnung verlustbehafteter Altprofile. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert; fachliche Kataloge und bisherige Rückflussmessungen sind unverändert.
+
+**Technische Nachweise.** `./run_ci.sh owl` besteht vollständig auf `98ada40237679d2102035f6a9f12ab1e7e32fd6a`, `./run_ci.sh package` auf `bbf1363234c051877c782346a7de2fa5ececa081`, jeweils mit unveränderten Eingängen. OWL/HermiT und die hermetischen Selbsttests bestehen. Das Paket besteht die sechs ZIP-Prüfungen, 15/15 Konsumentenfälle und den vollständigen Lern­einheiten-Vergleich mit unabhängigem Validator, 54 Gegenproben und vier Downgrade-Ablehnungen. Der installierte Paket-Backendtest lief ohne übersprungenen Test; sein abschließender erneuter Gradle-Aufruf war aktuell. [Dossier und genaue Laufbindungen](https://github.com/enpasos/skillpilot/blob/fix/optionale-paket-ci/contracts/stage-plan-review-evidence/2026-11-26/optional-package-ci/README.md)
+
+**Zur Sichtung.** Vollständiger Objektvergleich der echten Brandenburger Ansicht; unveränderte historische Pins bei den vier Ablehnungen; separat übergebener PR-Trigger mit unveränderten drei Jobdefinitionen und weiterhin manueller sowie wöchentlicher Ausführung.
+
+**Integration offen.** Lokaler technischer Abschluss auf `fix/optionale-paket-ci`; der Trigger folgt als getrennter letzter Workflow-Commit. Die Übergabe erfolgt ohne neuen PR. Integration und frische erfolgreiche CI auf `main` stehen aus.
+
 ## 26. November 2026, 22:24 MEZ – Physik E.2: Kräfte auf einer Linie und Gewichtskraft am Hang
 
 Die Physik hat zwei neue Lernziele mit je einer eigenen Aufgabe. Im ersten legen die Lernenden für einen gewählten Körper eine positive Richtung fest, addieren seine äußeren Kräfte auf einer Linie mit Vorzeichen und erklären, warum die Kraftsumme null zu Ruhe ebenso passt wie zu gleichförmiger Bewegung. Im zweiten zerlegen sie die Gewichtskraft am Hang maßstäblich in zwei Komponenten und prüfen die Zerlegung durch Rückaddition. Damit hat der hessische Abschnitt „Mehrere Kräfte zugleich“ die verpflichtende Abschlussaufgabe, die der Product Owner am 25. November entschieden hat. Grundlage war eine unabhängige Knotenprüfung durch zwei Prüfmodelle. Autor der Ziele, Aufgaben, Bilder, Karten und Bindungen war Codex; Claude hat den Zuschnitt entschieden und den Zweig geprüft. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert.

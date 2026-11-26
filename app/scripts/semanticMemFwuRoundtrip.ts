@@ -1792,14 +1792,14 @@ export const reconstructMappings = (model: RdfModel) => {
   return { canonicalMappings, reviewDecisions }
 }
 
-const rebuildViewNode = (model: RdfModel, resource: string, source13 = false): JsonValue => {
+const rebuildViewNode = (model: RdfModel, resource: string, versionedNodes = false): JsonValue => {
   const node: Record<string, JsonValue> = {}
   withString(node, 'kind', lit(model, resource, P.viewNodeKind))
   withString(node, 'projectionRole', lit(model, resource, P.projectionRole))
   withString(node, 'id', lit(model, resource, P.structureId))
   withString(node, 'label', lit(model, resource, P.label))
   withString(node, 'displayLabel', lit(model, resource, P.displayLabel))
-  if (source13) {
+  if (versionedNodes) {
     for (const key of ['labelEn', 'canonicalSourceGoalId', 'canonicalSourcePhase', 'landscapeId']) {
       withString(node, key, lit(model, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}`))
     }
@@ -1809,8 +1809,8 @@ const rebuildViewNode = (model: RdfModel, resource: string, source13 = false): J
   }
   const goal = iris(model, resource, P.compositionGoal)[0]
   withString(node, 'goalId', goal ? skillpilotId(model, goal) : undefined)
-  const children = orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((child) => rebuildViewNode(model, child, source13))
-  if (children.length > 0 || source13 && node.kind === 'structure') {
+  const children = orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((child) => rebuildViewNode(model, child, versionedNodes))
+  if (children.length > 0 || versionedNodes && node.kind === 'structure') {
     node.children = children
   }
   return node
@@ -1821,9 +1821,9 @@ export const reconstructViews = (model: RdfModel) => {
   orderedResources(model, resourcesOfType(model, T.compositionView)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? resource
     const version = lit(model, resource, `${SP}compositionViewFormatVersion`)
-    const source13 = version === '1.3'
+    const versionedNodes = version === '1.2' || version === '1.3'
     const view: Record<string, JsonValue> = {
-      rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node, source13)),
+      rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node, versionedNodes)),
     }
     withString(view, '$schema', lit(model, resource, `${SP}compositionViewSchema`))
     withString(view, 'viewFormatVersion', version)

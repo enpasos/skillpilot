@@ -1,0 +1,181 @@
+{
+  "defaultView": "de-de-gym-math-gk",
+  "orientationGoal": "65365dce-f33f-49d8-9516-42f75883aa86",
+  "deckGoal": "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a",
+  "expectedHistoricalFrontier": [
+    "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a"
+  ],
+  "observedAfterChange": {
+    "automaticFrontier": [],
+    "automaticScopeCompleted": true,
+    "explicitActivation": {
+      "activeGoalSelectionResponseSha256": "29c5e0f3d8935f57463a9cbb9f4cd3df89526c85490de4a6e8161cab04a32653",
+      "activeGoalSelectionStatus": 200
+    },
+    "promptCount": 1,
+    "verifiedRecallStatus": 200
+  },
+  "historicalConsumerRuns": [
+    {
+      "commit": "1bc13679e13c969c4ec7781fdcb342e699013657",
+      "fixtureContentDigest": "sha256:f9f0169715ef6dbbbb798c29e70cf5797b9d1b882a08c81fdb6275f6d55cf0c7",
+      "consumerStatus": "passed",
+      "functionalChecks": {
+        "failed": 0,
+        "notRun": 0,
+        "passed": 15,
+        "required": 15
+      },
+      "cardCheck": {
+        "id": "cards.verified-recall-loaded",
+        "result": "passed"
+      },
+      "externalEvidence": [
+        {
+          "path": "package-history/raw/replay-before.consumer-report.json",
+          "bytes": 7832,
+          "sha256": "e67f13ec2e29baded84b749ed43d4be311d0750631980f14c9debabed5ce5374"
+        },
+        {
+          "path": "package-history/raw/replay-before.verified-recall.json",
+          "bytes": 2101,
+          "sha256": "e6499b08066a9abf318d5bf41d52ca9d5b5c5fda87414bcb39ef8f35dc61335d"
+        },
+        {
+          "path": "package-history/raw/replay-before.http-smoke.json",
+          "bytes": 1986,
+          "sha256": "0473d22f497bb9b15b39c7e4d72ac98dd79700905ab370b6ba7792a3418de071"
+        }
+      ]
+    },
+    {
+      "commit": "404d58baa2d56798c827ddec6ee51a483467e56e",
+      "fixtureContentDigest": "sha256:f9f0169715ef6dbbbb798c29e70cf5797b9d1b882a08c81fdb6275f6d55cf0c7",
+      "consumerStatus": "failed",
+      "functionalChecks": {
+        "failed": 1,
+        "notRun": 5,
+        "passed": 9,
+        "required": 15
+      },
+      "cardCheck": {
+        "id": "cards.verified-recall-loaded",
+        "result": "failed"
+      },
+      "externalEvidence": [
+        {
+          "path": "package-history/raw/replay-after.consumer-report.json",
+          "bytes": 7913,
+          "sha256": "cbc3b788cc5012dbeb8487aa3d74b206b08022f362b9562eda6c8d7c96da6975"
+        },
+        {
+          "path": "package-history/raw/replay-after.verified-recall.json",
+          "bytes": 113,
+          "sha256": "a7a54ad943c13e35a695f07555822f4f79bdd76872e7cbf0cfba2d1afa93f47a"
+        },
+        {
+          "path": "package-history/raw/replay-after.http-smoke.json",
+          "bytes": 1802,
+          "sha256": "59b3d4b4b5712a0b1027a84248c9cd94aa57e246d8d1967c902d47c913dbf499"
+        }
+      ]
+    }
+  ],
+  "currentReleaseInputs": [
+    {
+      "sourcePath": "backend/src/main/java/com/skillpilot/backend/service/srs/SrsCard.java",
+      "bytes": 798,
+      "sha256": "dd5e0fc1ef8b46bc98684efb380fd2849bc2874d9298b65d59e8dde4a61b10d5",
+      "matches116eaf997e": true,
+      "matchesCompiledVr1Source": true
+    },
+    {
+      "sourcePath": "backend/src/main/java/com/skillpilot/backend/service/srs/SrsCardRelease.java",
+      "bytes": 1521,
+      "sha256": "b41320edfa48f1de4de208ab66bc2aa6050e51a24799f2a411ef6d26856d2b5a",
+      "matches116eaf997e": true,
+      "matchesCompiledVr1Source": true
+    },
+    {
+      "sourcePath": "backend/src/main/java/com/skillpilot/backend/service/srs/SrsCardSelection.java",
+      "bytes": 7260,
+      "sha256": "387470e6111538e76881e2580aa7eed3c06b33c1d0a3d2adaef8614b00155c30",
+      "matches116eaf997e": true,
+      "matchesCompiledVr1Source": true
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_seki_core.de.json",
+      "bytes": 5042,
+      "sha256": "3ee8f545bb296f8db15f119a9226a975d75caf86ee7894833b84110496cf762a",
+      "matches116eaf997e": true,
+      "matchesCompiledVr1Source": true
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/composition-views/mathematik/de-de-gk.view.json",
+      "bytes": 212487,
+      "sha256": "cc65de5e8bd752df409500a77a243c91116b35868e105264591e707a8a73bb6e",
+      "matches116eaf997e": true,
+      "matchesCompiledVr1Source": true
+    }
+  ],
+  "currentCardSelection": {
+    "cardCount": 14,
+    "storedMastery": [
+      "65365dce-f33f-49d8-9516-42f75883aa86"
+    ],
+    "unitCredits": [],
+    "selection": {
+      "nextBatch": [
+        "math_seki_c03"
+      ],
+      "recallEligible": 2,
+      "recallStatus": {
+        "totalCards": 14,
+        "verifiedCards": 0,
+        "pendingCards": 14,
+        "eligibleCards": 2,
+        "blockedCards": 12,
+        "sameDayBlockedCards": 0
+      },
+      "due": 2
+    },
+    "releasedCards": [
+      "math_seki_c03",
+      "math_seki_c04"
+    ]
+  },
+  "additionalExternalEvidence": [
+    {
+      "path": "package-history/raw/diagnostic-orientation-completion-response.json",
+      "bytes": 4719,
+      "sha256": "4bbd065abd5dcda7f389cbf5fcde0d8cbc123cecbe5d02e19d5f50dc87c7c19f"
+    },
+    {
+      "path": "package-history/raw/diagnostic-explicit.explicit-memory-probe.json",
+      "bytes": 257,
+      "sha256": "929e12b3a0b4fd604daacae8c4a6fd29a5007712793d9005e840e185256c0bb2"
+    },
+    {
+      "path": "package-history/raw/current-card-release.actual.json",
+      "bytes": 3432,
+      "sha256": "043a86f97f1ee134fd1e50d76c917e8b2ad3b70a68ab836f51f50d81aa92a468"
+    }
+  ],
+  "evidenceLocation": "Handover archive optional-package-ci-r0",
+  "restoredMemoryRootDemandCommit": "9975a142f7a26f1c4ff31c46a70e149d82a3fce5",
+  "currentNativeSmoke": {
+    "base": "116eaf997eca860f55bd33762f777e71867a8ed7",
+    "expectedAfterOrientation": [
+      "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a"
+    ],
+    "actualAfterOrientation": [
+      "4eefbd04-9e49-41ea-a087-9ad6ac71ec5a"
+    ],
+    "requiredAction": "setActiveGoal",
+    "explicitDeckActivationHttpStatus": 200,
+    "verifiedRecallHttpStatus": 200,
+    "prompts": 1,
+    "cardCheck": "passed",
+    "source": "Unmodified package_consumer_smoke_http.py asserts the completion response, reloaded state and direct frontier independently."
+  }
+}

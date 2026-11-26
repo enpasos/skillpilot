@@ -1,0 +1,22 @@
+{
+  "scope": "Independent review of field transport in source format 1.2, prior to final full-suite execution",
+  "sourceSha256": {
+    "app/scripts/memFwuRoundtrip.ts": "12b1c95e7cc3cb4c7ca4557312efda56a37da818d610cec5a3733fbf6e853ba2",
+    "app/scripts/semanticMemFwuRoundtrip.ts": "9752728f94dbac347c31e0ea8174053b105d1201aa4b1e124855585867852416",
+    "app/scripts/testMemFwuSemanticRecords.ts": "026a06c9ea3dd67b1a375c04af1e6ca9b2ac016e275e83538084af456a98cdbd",
+    "contracts/composition-view/v1.2/composition-view.schema.json": "b3a3923581803166fd9ff1439b65bd0bd5bd531cbe44553478778eabf4fa50da"
+  },
+  "realBrandenburgView": {
+    "nodeCount": 670,
+    "partialOrders": 161,
+    "acquisitionPlaces": 157,
+    "exactJsonEqualityRequired": true
+  },
+  "independentChecks": [
+    "All four schema-defined node types and their fields compared between writer and reader.",
+    "An all-fields object validated against 1.2 was reconstructed exactly by the RDF parser.",
+    "The added regression fixture passed AJV validation. Its order references direct siblings and its acquisition mark is on a nested prerequisiteOnly goal.",
+    "Empty child lists and the distinction between a missing role and an explicit target survived reconstruction."
+  ],
+  "outcome": "pass"
+}
