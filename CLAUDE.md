@@ -111,7 +111,8 @@ property of the point it sits at, in a space of its own. Every Physics goal
 text, image, card and task that draws or reads such an arrow follows the
 criterion: the arrow starts at its body or point, its length has its own scale
 in the unit of the quantity (named in a legend), its tip marks no place, and
-only arrows of the same quantity at the same body are added. An explicit early
+only arrows of the same quantity with the same reference (the same body, the
+same point of a field or the same named system) are added. An explicit early
 Physics goal and the catalog changes follow
 `docs/dev/directed-quantity-arrows-plan-2026-11-25.md`; nothing of them is in
 the catalog yet. See the product decision at the top of `AGENTS.md`.
