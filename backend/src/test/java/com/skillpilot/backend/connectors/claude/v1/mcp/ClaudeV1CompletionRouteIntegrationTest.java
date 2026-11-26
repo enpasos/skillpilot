@@ -2371,6 +2371,53 @@ class ClaudeV1CompletionRouteIntegrationTest {
         }
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"GK", "LK"})
+    void storedE2SectionKeepsItsGoalsAfterTheEnergyAddition(String course) throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String derivation = "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b";
+        String closingTask = "e0085acf-af64-5c73-8abf-85a5bbfbdaa6";
+        String section = selectHessianMotionUnit("G9", "SekII", course)
+                .replace(":structure:physics-e1-motion", ":structure:physics-e2-newton-and-conservation");
+        learners.setPlannedGoals(learnerId, java.util.Set.of(section));
+        var day = java.time.LocalDate.of(2026, 11, 23);
+        var current = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        assertThat(current).contains(derivation, closingTask);
+        byte[] fixture;
+        try (var input = getClass().getResourceAsStream("/fixtures/e2-before-energy-20261126.json")) {
+            assertThat(input).isNotNull();
+            fixture = input.readAllBytes();
+        }
+        assertThat(java.util.HexFormat.of().formatHex(java.security.MessageDigest
+                .getInstance("SHA-256").digest(fixture))).isEqualTo("2298cec87f53581a0c19e423ebe8226db7ec12157c681cfbf4bc0dbb38a5660b");
+        var capture = mapper.readTree(fixture).path("courses").path(course).path("capture");
+        var blocks = mapper.readValue(capture.path("storedBlockJson").asText(),
+                new TypeReference<List<LearnerLearningPlanApi.Block>>() { });
+        assertThat(blocks).singleElement().satisfies(block -> {
+            assertThat(block.focusGoalIds()).containsExactly(section);
+            assertThat(block.atomicGoalIds()).hasSize(course.equals("GK") ? 29 : 30)
+                    .doesNotHaveDuplicates().doesNotContain(derivation, closingTask);
+            assertThat(current).containsAll(block.atomicGoalIds());
+        });
+
+        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.2", List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", section, "E.2", day, day,
+                        null, current, List.of(section), true))), day);
+        var row = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        row.setBlocksJson(capture.path("storedBlockJson").asText());
+        row.setScopeFingerprint(capture.path("scopeFingerprint").asText());
+        row.setCurriculumId(capture.path("curriculumId").asText());
+        row.setRevision(capture.path("revision").asLong());
+        storedPlans.saveAndFlush(row);
+        var beforeBackup = learningPlans.getPlan(learnerId, physics, day);
+        assertThat(beforeBackup.stale()).isFalse();
+        assertThat(beforeBackup.blocks()).isEqualTo(blocks);
+        learners.importLearner(learnerId, learners.exportLearner(learnerId));
+        var restored = learningPlans.getPlan(learnerId, physics, day);
+        assertThat(restored.stale()).isFalse();
+        assertThat(restored.blocks()).isEqualTo(blocks);
+    }
+
     // The E.2 cut of 25 November 2026 moved the gravitation goals from E.2 to E.5. A plan stored
     // for the section E.2 before the cut keeps them: it stays current, restores from a backup and
     // names one of them as its next goal once the rest of the section is done.

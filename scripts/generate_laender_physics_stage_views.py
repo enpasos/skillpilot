@@ -251,6 +251,57 @@ def momentum_target_rows(view):
             and (not row.get("courseProfiles") or profile in row["courseProfiles"])]
 
 
+def energy_derivation_target_rows(view):
+    """The accepted primary-source claim is HE/SL shared and SN LK only."""
+    state = view["scope"].get("jurisdiction", "DE").removeprefix("DE-")
+    stage, profile = view["scope"]["stage"], view["scope"].get("courseProfile")
+    return [row for row in SOURCE_PLAN["reviewedEnergyDerivationBindings"]["targets"]
+            if row["state"] == state and stage in ("CrossStage", row["stage"])
+            and (not row.get("courseProfiles") or profile in row["courseProfiles"])]
+
+
+def admit_energy_derivation_targets(view):
+    view = copy.deepcopy(view)
+    selected = graph.role_atoms(view)["target"]
+    task_id = SOURCE_PLAN["reviewedEnergyDerivationBindings"]["assessmentGoalId"]
+    for row in energy_derivation_target_rows(view):
+        atom = row["goalId"]
+        task = graph.GOALS[task_id]
+        if (graph.GOALS[atom].get("contains") or task.get("contains")
+                or task.get("requires") != [atom]
+                or task.get("examData", {}).get("coveredGoalIds") != [atom]
+                or task["examData"].get("reviewStatus") != "released"
+                or not task["examData"].get("taskContent")):
+            raise ValueError("Energy derivation admission lost its goal/ordinary assessment contract")
+        for identifier in (atom, task_id):
+            if identifier not in selected:
+                view["rootNodes"].append({"kind": "goalEntry", "goalId": identifier})
+    return view
+
+
+def energy_derivation_source_plan(view, topics, candidates):
+    """Additional current PDF evidence leaves retained source inputs exact."""
+    records = energy_derivation_target_rows(view)
+    task_id = SOURCE_PLAN["reviewedEnergyDerivationBindings"]["assessmentGoalId"]
+    for row in records:
+        actual = hashlib.sha256((ROOT / row["sourcePath"]).read_bytes()).hexdigest()
+        if actual != row["sourceSha256"]:
+            raise ValueError("Reviewed energy derivation primary source changed: " + row["sourcePath"])
+        key = (row["unit"], row["topic"])
+        passage = {k: row[k] for k in ("sourcePath", "sourceURL", "sourceSha256", "pages", "sourceText", "boundary", "basis", "currentEditionConfirmation") if k in row}
+        passage.update({"canonicalGoalId": row["goalId"],
+            "allocationBasis": "reviewed elementary operationalisation of the primary-source formula derivation"})
+        topic = topics.setdefault(key, {"unit": tuple(row[k] for k in ("stage", "unit", "label", "order")),
+            "label": row["topic"], "sourcePassages": []})
+        topic["sourcePassages"].append(passage)
+        topic["reviewedEnergyDerivationBinding"] = True
+        candidates[row["goalId"]] = [(0, row["order"], key)]
+        # The source mandates the competence. The released task is SkillPilot's
+        # own material and receives no claim of official task authorship.
+        candidates[task_id] = [(0, row["order"], key)]
+    return records
+
+
 def admit_momentum_targets(view):
     view = copy.deepcopy(view)
     selected = graph.role_atoms(view)["target"]
@@ -848,6 +899,7 @@ def generate_source_land(view):
     """
     state = view["scope"]["jurisdiction"].removeprefix("DE-")
     view = admit_momentum_targets(view)
+    view = admit_energy_derivation_targets(view)
     view, own_new_tasks = reviewed_cross_stage_tasks(view, state)
     profile = view["scope"].get("courseProfile", "GK")
     topics, candidates, sources = retained_source_plan(state, profile)
@@ -857,6 +909,7 @@ def generate_source_land(view):
         candidates.setdefault(atom, []).extend(choices)
     sources.extend(lower_sources)
     momentum_bindings = momentum_source_plan(view, topics, candidates)
+    energy_derivation_bindings = energy_derivation_source_plan(view, topics, candidates)
     reviewed_lower = reviewed_lower_source_decisions(state, topics, candidates)
     if not topics:
         raise ValueError("No source-bound Physics temporal plan for " + state)
@@ -1041,6 +1094,7 @@ def generate_source_land(view):
                     "authorisedNewOwnTaskSeeds": own_new_tasks,
                     "sources": sources, "ownPlacements": own_assignments,
                     "reviewedMomentumBindings": momentum_bindings,
+                    "reviewedEnergyDerivationBindings": energy_derivation_bindings,
                     "sourceTopics": [{"compositionNodeId": f"physics-{state.lower()}-{key[0]}-topic-" + hashlib.sha256(key[1].encode()).hexdigest()[:12],
                         "temporalUnitId": f"physics-{state.lower()}-unit-{key[0]}", **topic} for key, topic in topics.items()],
                     "sourceAssignments": assignments,

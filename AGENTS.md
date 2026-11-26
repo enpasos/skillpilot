@@ -100,6 +100,47 @@ follow the packages A1 to A5 of the
 is in the catalog yet. All 90 Physics views hold at least one goal that uses
 arrows, so the new goal reaches every view.
 
+## Product decisions of 26 November 2026
+
+The Product Owner took four decisions on **26 November 2026**. None of them is
+implemented by this entry; each names the package that carries it.
+
+- **A plan that cannot be evaluated defines no exam scope (issue #205).** A
+  stored plan whose exam topic no longer resolves must not close the subject
+  while the learner follows plans. Such a plan narrows nothing: ordinary
+  learning in the Personal Curriculum stays open, and the plan remains visible
+  as outdated until it is saved anew. Until the backend package for #205 is on
+  `main`, the dead end described in the issue still exists.
+- **A goal without an official witness of a Land is no regular target there.**
+  It is never dropped for that reason. It stays at its present place as
+  SkillPilot's voluntary own offer in that Land, or as a preparation where an
+  official target of the Land needs it. The decision generalises the rule of
+  the E.2 packages ("a goal is a target only where the Land's official text
+  carries it") to goals that are in the catalog already.
+- **Correct tracing to the official sources is mandatory for all subjects in
+  the long run, with a sense of proportion.** His words: "Hier müssen wir
+  langfristig ein ordentliches Tracing zu den Quellen korrekt ermöglichen und
+  zwar für alle Fächer. Das ist Pflicht. Wir müssen aber nicht sofort alles
+  andere deshalb liegen lassen. In der Granularität sind wir dabei frei. Und
+  in Einzelfällen können wir uns auch begründet dagegen entscheiden dem
+  jeweiligen Plan zu folgen. Also absolute Pflicht, aber mit Augenmaß."
+  Consequences: one goal may carry several official requirements, and a few
+  cross-cutting goals may carry process requirements; a single requirement may
+  be declined, with a stated reason that is recorded and visible; the work
+  proceeds Land by Land beside the other packages. The occasion: ten of the
+  retained Physics source extractions and four Mathematics ones reword the
+  official text, and the faithful extraction of the Lower Saxony Physics plan
+  left 71 official requirements without a target in that Land. Until a rule
+  with its own decision records and gate exists, `CQR-003` is unchanged and no
+  pin is lowered; a reworded extraction is never quoted as official wording.
+- **The Mathematics vector ladder gets an independent node review before any
+  catalog change.** The draft has a stage for the calculation rules (the vector
+  space in the plane) before vectors in three dimensions. Along the ladder a
+  learner meets the idea of the arrow decision from the Mathematics side:
+  arrows other than displacements lie in a space of their own that describes
+  properties of single points of position space and shares its directions.
+  He sees the result of the review first.
+
 ## Current execution mandate: stage plans and pedagogical repairs
 
 On **15 November 2026**, the Product Owner delegated the resolution and
@@ -935,11 +976,41 @@ under the Physics root with the tag `SekI`; membership in the lower-stage
 exercise cluster would require nine national offers that no source carries.
 Lesson for every new lower-stage target: plan its closing route with the
 goal, and raise the pinned count of curricular goals in
-`app/scripts/applyLearningUnitAssessments.mjs`. Open: whether `839ecc8f`
-needs `5f289cdc` (edge review of part 2), and the place of the impulse goal
-`e790de73` in Bavarian grade 8, which pulls conservation of momentum there
-although the official text names it in grade 10. Record:
+`app/scripts/applyLearningUnitAssessments.mjs`. Open: the place of the impulse
+goal `e790de73` in Bavarian grade 8, which pulls conservation of momentum
+there although the official text names it in grade 10. Whether `839ecc8f`
+needs `5f289cdc` was answered in part 2. Record:
 `curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/`.
+
+**E.2, second step, part 2: deriving the kinetic energy, 26 November 2026.**
+The cluster Energie has a new goal: derive the formula of the kinetic energy
+from the work of a constant resultant force on a body that starts from rest,
+justify the factor ½ by the triangle area in the time-velocity diagram and
+explain the dependence on the square of the speed (`2d3f849e`; requires work
+as a change of energy `c1c71daa`, the laws of motion `262f807a` and the
+Mathematics goal `2c4830e6`). It is a target in exactly 14 of the 90 Physics
+views, where the official text asks for the derivation: the eight Hessian
+views, four Saarland views and the two Saxon Leistungskurs views. Elsewhere it
+has no place, not even as a preparation. Its own task `e0085acf` (four parts
+of three points, passed from 10 of 12) lies in "Übungen E-Phase"; it is an
+ordinary assessment and closes no child structure. The goal for using the
+formula, `7eeff2de`, is unchanged. An independent node review led to three
+corrected prerequisites: potential energy `6affc2ea` requires the qualitative
+distinction of mechanical energy forms `722857cf` and the Mathematics goal
+`a6469c01` instead of kinetic energy; the three goals that use kinetic energy
+(`e359f8bb`, `78cf6eff` and the trolley task `0cf2a5b0`) require `7eeff2de`
+directly; and conservation of momentum `839ecc8f` no longer requires the
+application of Newton's second axiom `5f289cdc`. The frozen transfers of the
+three goals that gained `7eeff2de` end with the change of those goals; current
+strict reviews replace them. In Hesse the official row "kinetische Energie (grafische
+Herleitung der Formel)" now maps to the new goal, and the row on the
+conservation of kinetic and potential energy remains the witness of
+`7eeff2de`; whether the first row should name both goals is a question for the
+Hessian pass of the source programme. Noted and not changed: the near-Earth
+potential energy as a direct prerequisite of the Leistungskurs proof, the
+legibility of the older Leistungskurs image, and the older trolley task
+(German only, 10 of 16 points). Record:
+`curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/`.
 
 **Achievable pass marks, Product Owner decision of 24 November 2026.** His
 words: pass marks must be achievable, without frustration for learners "who

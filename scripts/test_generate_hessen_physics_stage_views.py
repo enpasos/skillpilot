@@ -40,6 +40,25 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
         cls.views = {name: json.loads((generator.DIRECTORY / name).read_text())
                      for name in generator.FILES}
 
+    def test_energy_derivation_and_ordinary_assessment_in_all_eight_ephase_views(self):
+        derivation = "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b"
+        task = "e0085acf-af64-5c73-8abf-85a5bbfbdaa6"
+        outputs = {name: generator.generate(view)[0] for name, view in self.views.items()}
+        outputs.update({path.name: view for path, view, _ in generator.duration_outputs()})
+        admitted = []
+        for name, view in outputs.items():
+            roles = generator.role_atoms(view)
+            if view["scope"]["stage"] == "SekI":
+                self.assertFalse({derivation, task} & (roles["target"] | roles["prerequisiteOnly"]))
+                continue
+            admitted.append(name)
+            energy = find(view, "physics-e2-energy")
+            self.assertTrue({derivation, task} <= generator.role_atoms({"rootNodes": [energy]})["target"])
+            self.assertEqual(generator.GOALS[task]["requires"], [derivation])
+            self.assertEqual(generator.GOALS[task]["examData"]["coveredGoalIds"], [derivation])
+            self.assertNotIn("learningUnit", energy)
+        self.assertEqual(len(admitted), 8)
+
     def test_source_numbering_status_and_kinematic_learning_place(self):
         expected_topics = [
             ("physics-e1-motion", "E.1 Bewegungen und ihre Beschreibung"),

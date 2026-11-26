@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-25T19:39:57.809Z",
+  "generatedAt": "2026-11-26T02:53:27.569Z",
   "generator": "app/scripts/generateGoalSourceRationales.ts",
   "request": {
     "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
@@ -76,6 +76,7 @@
       "1e459a1b-4159-5049-84eb-9928129c1610",
       "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
       "91c49019-ea51-4ce5-a919-c91c45b25e83",
+      "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
       "7eeff2de-6015-49a6-a96e-a488d886dc9f",
       "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
       "94784e0a-7ddc-48be-91fb-dc82b78eb322",
@@ -461,9 +462,9 @@
     "audience": "plain"
   },
   "summary": {
-    "requestedGoals": 447,
-    "resolvedGoals": 447,
-    "goalsWithClassicSourceRoute": 447,
+    "requestedGoals": 448,
+    "resolvedGoals": 448,
+    "goalsWithClassicSourceRoute": 448,
     "goalsWithoutClassicSourceRoute": 0,
     "goalsWithMemSparqlConsistentRoute": 0
   },
@@ -130096,9 +130097,9 @@
     },
     {
       "goal": {
-        "id": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
-        "title": "Kinetische Energie",
-        "description": "Die lernende Person kann die kinetische Energie $E_\\mathrm{k}=\\frac{1}{2}mv^2$ berechnen und die Abhängigkeit von Masse und Geschwindigkeit erläutern.",
+        "id": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+        "title": "Formel der kinetischen Energie aus der Beschleunigungsarbeit herleiten",
+        "description": "Die lernende Person kann für einen Körper konstanter Masse, der als Massepunkt in einem Inertialsystem aus der Ruhe geradlinig durch eine konstante resultierende Kraft beschleunigt wird, aus der Arbeit dieser Kraft und den Bewegungsgesetzen die Formel $E_\\mathrm{kin}=\\tfrac12 mv^2$ herleiten. Sie kann den Faktor ½ grafisch begründen und erklären, warum die Energie bei gleicher Masse mit dem Quadrat des Geschwindigkeitsbetrags wächst.",
         "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
         "pathTitles": [
           "Physik",
@@ -130106,7 +130107,7 @@
           "E.2 Newton'sche Axiome und Erhaltungssätze",
           "Erhaltungssätze",
           "Energie",
-          "Kinetische Energie"
+          "Formel der kinetischen Energie aus der Beschleunigungsarbeit herleiten"
         ]
       },
       "sourceRationaleStatus": "classic_source_reviewed",
@@ -130139,6 +130140,95 @@
         "reviewer": null,
         "rationale": null,
         "topicCode": null,
+        "evidenceMethod": null
+      },
+      "alternateClassicSourceRoutes": [
+        {
+          "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+          "reviewId": "hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+          "sourceExtractionTitle": null,
+          "jurisdiction": "DE-HE",
+          "sourceGoalId": "he-phys-sekii-e-2-b07-a01-826de721",
+          "sourceGoalTitle": "kinetische Energie (grafische Herleitung der Formel)",
+          "sourceGoalDescription": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"kinetische Energie (grafische Herleitung der Formel)\" im Kontext \"Newton’sche Axiome und Erhaltungssätze\" fachgerecht bearbeiten.",
+          "sourceText": "kinetische Energie (grafische Herleitung der Formel)",
+          "sourceSpan": "kinetische Energie (grafische Herleitung der Formel)",
+          "parentBulletText": "kinetische Energie (grafische Herleitung der Formel)",
+          "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, E.2, S. 30, Spiegelstrich 7",
+          "sourceDocument": {
+            "key": "KC2024",
+            "title": "Kerncurriculum Physik gymnasiale Oberstufe Hessen 2024",
+            "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf",
+            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+            "textPath": null,
+            "role": null,
+            "official": true
+          },
+          "matchType": null,
+          "decision": "mapped",
+          "reviewDecisionId": null,
+          "reviewedAt": "2026-11-26",
+          "reviewer": "SkillPilot current source implementation following accepted independent Task M review; no new independent approval claimed",
+          "rationale": "Aktuelle Nachfolgeentscheidung zu Task M/N: Der amtliche Aspekt fordert die grafische Herleitung der Formel. Das neue Herleitungsziel deckt diese Leistung ab; das unveränderte Ziel 7eeff2de prüft Anwendung und Abhängigkeit und belegt allein keine Herleitung. Die separate Zeile E.2 Spiegelstrich 8 behält den Anwendungsbeleg.",
+          "topicCode": "E.2",
+          "evidenceMethod": null
+        }
+      ],
+      "memSparqlRoute": {
+        "status": "mem_sparql_unavailable",
+        "endpoint": "https://sparql.mem.edufeed.org/sparql",
+        "notes": "Der erste PoC löst nur den klassischen reviewten Source-Extraction-Weg auf. MEM/FWU-SPARQL-Evidenz wird ergänzt, sobald dieser Weg stabil ist."
+      },
+      "limitations": [
+        "MEM/FWU-SPARQL-Evidenz ist in dieser ersten PoC-Ausgabe noch nicht enthalten."
+      ]
+    },
+    {
+      "goal": {
+        "id": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "title": "Kinetische Energie",
+        "description": "Die lernende Person kann die kinetische Energie $E_\\mathrm{k}=\\frac{1}{2}mv^2$ berechnen und die Abhängigkeit von Masse und Geschwindigkeit erläutern.",
+        "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+        "pathTitles": [
+          "Physik",
+          "Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen",
+          "E.2 Newton'sche Axiome und Erhaltungssätze",
+          "Erhaltungssätze",
+          "Energie",
+          "Kinetische Energie"
+        ]
+      },
+      "sourceRationaleStatus": "classic_source_reviewed",
+      "classicSourceRoute": {
+        "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
+        "reviewId": "hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
+        "sourceExtractionTitle": null,
+        "jurisdiction": "DE-HE",
+        "sourceGoalId": "he-phys-sekii-e-2-b08-a01-abdc63fc",
+        "sourceGoalTitle": "Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung...",
+        "sourceGoalDescription": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung, energetisch abgeschlossene Systeme\" im Kontext \"Newton’sche Axiome und Erhaltungssätze\" fachgerecht bearbeiten.",
+        "sourceText": "Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung, energetisch abgeschlossene Systeme",
+        "sourceSpan": "Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung, energetisch abgeschlossene Systeme",
+        "parentBulletText": "Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung, energetisch abgeschlossene Systeme",
+        "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, E.2, S. 30, Spiegelstrich 8",
+        "sourceDocument": {
+          "key": "KC2024",
+          "title": "Kerncurriculum Physik gymnasiale Oberstufe Hessen 2024",
+          "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf",
+          "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+          "textPath": null,
+          "role": null,
+          "official": true
+        },
+        "matchType": null,
+        "decision": "mapped",
+        "reviewDecisionId": null,
+        "reviewedAt": "2026-05-09",
+        "reviewer": "codex",
+        "rationale": "Der amtliche Sek-II-Lehrplanaspekt wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
+        "topicCode": "E.2",
         "evidenceMethod": null
       },
       "alternateClassicSourceRoutes": [
@@ -130202,68 +130292,6 @@
           "reviewer": null,
           "rationale": null,
           "topicCode": null,
-          "evidenceMethod": null
-        },
-        {
-          "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
-          "reviewId": "hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
-          "sourceExtractionTitle": null,
-          "jurisdiction": "DE-HE",
-          "sourceGoalId": "he-phys-sekii-e-2-b07-a01-826de721",
-          "sourceGoalTitle": "kinetische Energie (grafische Herleitung der Formel)",
-          "sourceGoalDescription": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"kinetische Energie (grafische Herleitung der Formel)\" im Kontext \"Newton’sche Axiome und Erhaltungssätze\" fachgerecht bearbeiten.",
-          "sourceText": "kinetische Energie (grafische Herleitung der Formel)",
-          "sourceSpan": "kinetische Energie (grafische Herleitung der Formel)",
-          "parentBulletText": "kinetische Energie (grafische Herleitung der Formel)",
-          "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, E.2, S. 30, Spiegelstrich 7",
-          "sourceDocument": {
-            "key": "KC2024",
-            "title": "Kerncurriculum Physik gymnasiale Oberstufe Hessen 2024",
-            "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf",
-            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
-            "textPath": null,
-            "role": null,
-            "official": true
-          },
-          "matchType": null,
-          "decision": "mapped",
-          "reviewDecisionId": null,
-          "reviewedAt": "2026-05-09",
-          "reviewer": "codex",
-          "rationale": "Der amtliche Sek-II-Lehrplanaspekt wird durch das kanonische Physikziel inhaltlich abgedeckt.",
-          "topicCode": "E.2",
-          "evidenceMethod": null
-        },
-        {
-          "mappingReviewPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review.json",
-          "reviewId": "hessen_physics_upper_secondary_source_extraction_to_canonical_physics.review",
-          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_PHYSIK_SEKII_KC2024.source-extraction.json",
-          "sourceExtractionTitle": null,
-          "jurisdiction": "DE-HE",
-          "sourceGoalId": "he-phys-sekii-e-2-b08-a01-abdc63fc",
-          "sourceGoalTitle": "Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung...",
-          "sourceGoalDescription": "Die lernende Person kann den offiziellen Curriculum-Aspekt \"Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung, energetisch abgeschlossene Systeme\" im Kontext \"Newton’sche Axiome und Erhaltungssätze\" fachgerecht bearbeiten.",
-          "sourceText": "Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung, energetisch abgeschlossene Systeme",
-          "sourceSpan": "Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung, energetisch abgeschlossene Systeme",
-          "parentBulletText": "Erhaltung der Summe von kinetischer und potenzieller Energie bei Vernachlässigung der Reibung, energetisch abgeschlossene Systeme",
-          "sourceRef": "HMKB Kerncurriculum Physik gymnasiale Oberstufe, E.2, S. 30, Spiegelstrich 8",
-          "sourceDocument": {
-            "key": "KC2024",
-            "title": "Kerncurriculum Physik gymnasiale Oberstufe Hessen 2024",
-            "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2024-11/kerncurriculum_gymnasiale_oberstufe-physik.pdf",
-            "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
-            "textPath": null,
-            "role": null,
-            "official": true
-          },
-          "matchType": null,
-          "decision": "mapped",
-          "reviewDecisionId": null,
-          "reviewedAt": "2026-05-09",
-          "reviewer": "codex",
-          "rationale": "Der amtliche Sek-II-Lehrplanaspekt wird inhaltlich durch mehrere kanonische Physikziele abgedeckt; 1:n ist hier die korrekte Zuordnungsform.",
-          "topicCode": "E.2",
           "evidenceMethod": null
         },
         {

@@ -117,7 +117,7 @@ const landscapes = [{
   framework: 'canonical-gymnasium-physics',
   // Three reviewed semiconductor atoms and four K3/K6 ordinary goals are current, and the three
   // momentum goals of E.2 (individual and total momentum, mean and instantaneous resultant force).
-  curricularAtomicCount: 493,
+  curricularAtomicCount: 494,
   // Physics cluster weights are authored workload weights, not counts of atomic descendants,
   // and Physics marks an assessment by its exam data alone; the projection adds the node kind.
   countedClusterWeights: false,

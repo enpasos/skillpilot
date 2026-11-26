@@ -1,0 +1,50 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "physics-e2-energy-derivation-description-20261126-v4-b-independent-b",
+  "campaignId": "physics-e2-energy-derivation-description-20261126-v4-b",
+  "roundId": "physics-e2-energy-derivation-description-20261126-v4-first-pass-b",
+  "batchId": "physics-e2-energy-derivation-description-20261126-v4-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:716405326e1747d8d062db0f55998739e196d817981ff3809f2882792fce607c",
+  "bundleFingerprint": "sha256:883bd363caa6ce95df8c7f40742dcee6cd48059971ed7bf66bc8956eb404ce03",
+  "bookDigest": "sha256:ccd3260aefeeb1053746089c9aac3c951e2cf07f7638755d7476b8558e6e727c",
+  "provider": "OpenAI",
+  "model": "Codex collaboration agent; exact model identifier unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9",
+  "generationParametersFingerprint": "sha256:cbc0c4b9f5f5ac92f669c3b3247d877d0ec3afb150c3c63b548d3622d93b44d2",
+  "independenceGroupId": "physics-e2-energy-derivation-description-20261126-v4-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+    "839ecc8f-3a60-418b-bc92-64bfeef33824",
+    "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+    "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+    "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:71d95c828e817ceb8a63dd92ffaedc1a7f304d68f89c38cae5580fe0cdd57e12"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:716405326e1747d8d062db0f55998739e196d817981ff3809f2882792fce607c"
+    }
+  ],
+  "startedAt": "2026-11-26T03:09:44.103415+00:00",
+  "completedAt": "2026-11-26T03:13:03.708507+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:0b0ea3bcebb8870ba41de5014adc9fbff391987ba4b2627e33464b34268e7914",
+  "toolchainVersion": "codex-collaboration-preserved-response-native-metadata-join-v1"
+}

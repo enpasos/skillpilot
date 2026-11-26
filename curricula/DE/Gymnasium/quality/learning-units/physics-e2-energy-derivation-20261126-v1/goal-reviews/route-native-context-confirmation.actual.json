@@ -1,0 +1,74 @@
+{
+  "reviewer": "Independent OpenAI Codex source/view implementation agent",
+  "startedAt": "2026-11-26T02:52:44.188800+00:00",
+  "completedAt": "2026-11-26T02:54:03.895829+00:00",
+  "decision": "accept_current",
+  "independenceDisclosure": "Gleiches unabhängiges Inhaltsurteil wie in route-review.actual.json; keine Autorenschaft an D/P/Karten/Bildern/K3. Eigene Quellen-/Sichtimplementierung ist keine unabhängig geprüfte Projektionsentscheidung. Keine andere Reviewerantwort gelesen.",
+  "reviewInputFingerprint": "sha256:281ee90c0c0840b3edc083d53b0d1eb80de91ec281c0e693fb5ab13fccec47d4",
+  "bookModelSha256": "sha256:ea545e6ad8cfc6b8648332dd2a054d76595136b65742704ff81f8d2d8a180708",
+  "bookDigest": "sha256:a268b7d83fbf94b7fa497da5af4a207d379eeca11e02b021249e572b65a84c35",
+  "bundleFingerprint": "sha256:73c97bf41120e288cff3f50e82617a0954f521595fd1ab83ae119566b8c5d22a",
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch/round-b/prompt.md",
+      "sha256": "b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch/round-b/criteria.md",
+      "sha256": "536e07d6957186040f202a922189efde15f3fe21b8a93b722ac3192dd3c3a1a9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch/round-b/batches/physics-e2-energy-derivation-description-20261126-v1-first-pass-b.batch-001.input.jsonl",
+      "sha256": "eb7d15013434c303b153b5b2b24955580271c33876fb47bbb477e24006ec162e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch/bundle/review.md",
+      "sha256": "70eae6ffc0aa3f2888f3beaa4e636dd96511566d9f2d0d70ad5ba84932d04d4b"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch/bundle/book-model.json",
+      "sha256": "ea545e6ad8cfc6b8648332dd2a054d76595136b65742704ff81f8d2d8a180708"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch/bundle/book.pdf",
+      "sha256": "27e0d816328986abb48a40e7f1d878af1a05f16a3630ff9bedbc1efe9cc49cf4"
+    }
+  ],
+  "goalBindings": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "goalFingerprint": "sha256:05dd4bf4c0884b70e6411dab19ff568c360588aabbeb60ed2a2557ee07c63e6d",
+      "pageFingerprint": "sha256:182a74809279ac9c7b5ee3d89b59feb9f8db8f96498cd9754b3a1f00033838f8"
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "goalFingerprint": "sha256:a2c87d2e6c3734f57de9f44c607137a7716bf80c75c8e082ec11323d7ef3e96c",
+      "pageFingerprint": "sha256:3bd7e5b272cb8bd8d24a8a2b2c55f800ee8033d0ba1a1c5b5a8e75b5d2805927"
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "goalFingerprint": "sha256:cec7d11bed6b99207f6e4b4256b6595f2a3daa703088a99a978655e98d382af6",
+      "pageFingerprint": "sha256:46dc41902cabd13654bdac9550c7c3c005a353d492c80ef3fecf5b4ae581fffa"
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "goalFingerprint": "sha256:e52a9b9a040f87308e40fb7a7366bb568fbdc843473afd5c35bc1e1574cd0db0",
+      "pageFingerprint": "sha256:909b8bcb6ddca6f8a82b8ee5be1d69c236050a2b4256948b504e9f61ec555263"
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "goalFingerprint": "sha256:980770bbd77d9a831af4fb7d1a1d316fb51d8a1559cf6a1422c73fa3ac799125",
+      "pageFingerprint": "sha256:ab961773d7f67d89d8a70d434892e8dfe8b717b1b1174de604da306e180be58d"
+    }
+  ],
+  "reason": "Die tatsächlichen nativen round-b-Eingaben, Physikkriterien, Markdownbuch und alle fünf gerenderten nativen Lernzielseiten (PDF-Seiten3–7) wurden gelesen beziehungsweise angesehen. Ihre eingebetteten Bilder entsprechen nach eigener Ansicht und Hashvergleich denselben fünf bereits in Originalgröße und bei360px betrachteten Bildern. Die fünf DE/EN-Texte und direkten Voraussetzungssätze sind exakt die des unabhängig geprüften whole-v2-Pakets und aktuellen Katalogs; die wissenschaftlichen P-Körper sind exakt P-v2. Der finale neue unmittelbare Nachfolger K3 ist im nativen Kontext der Herleitung ausdrücklich als Prüfungsaufgabe außerhalb des Buchs ausgewiesen; er führt keine neue Verständnisvoraussetzung und keine umgekehrte Kante ein. Seine bereits getrennt blind bewerteten Ansatz-, Verknüpfungs-, Grafik- und Quadratleistungen passen weiter zum neuen Ziel. Lageenergie setzt weiterhin qualitative Energieformen und Einsetzen voraus, ohne fertige kinetische Formel. Impulserhaltung verwendet weiterhin Addition und Wechselwirkungszuordnung, keine eigene F=ma-Anwendung. Allgemeine Erhaltungsherleitung und Schwingungsbilanz behalten den jetzt direkten kinetischen Zugang. Es liegt daher kein neuer fachlicher Grund für D-Änderung oder P-Neuformulierung vor.",
+  "nativeSurfaceNotes": [
+    "Die Buchrubrik direkte Vorbedingungen zeigt nur Verknüpfungen innerhalb dieser Fünferauswahl; die übrigen tatsächlichen Voraussetzungen sind separat außerhalb dieses Buchs verlinkt. Das ist keine behauptete Voraussetzungslosigkeit.",
+    "Kanonische Buchpfade sind Kontext. Sie ersetzen keinen unabhängigen Nachweis der tatsächlichen Länder-/Stufenprojektion.",
+    "Die im Ersturteil genannten Grenzen der unveränderten Bestandsbilder und der Wagen-Summenbewertung bleiben ausdrücklich bestehen."
+  ],
+  "limitations": [
+    "Begrenzte Bestätigung dieses exakten nativen Kontexts, keine Änderung oder rückwirkende Erweiterung der unveränderten Erstgutachten.",
+    "Keine Lernendenresultate, menschliche Abnahme oder reale Host-/Chat-Lernprüfung."
+  ]
+}
