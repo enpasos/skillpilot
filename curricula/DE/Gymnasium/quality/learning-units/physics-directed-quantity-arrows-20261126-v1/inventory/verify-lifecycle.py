@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reproduce Task A2's finite file, path-binding and digest-contract inventory.
 
-The default verifies; --refresh writes only the three current successor inventories.
+The default verifies; --refresh writes only the compact v3 successor inventory.
 External roots are command-line aliases, never account-specific stored paths.
 """
 from pathlib import Path, PurePosixPath
@@ -17,6 +17,7 @@ import gzip
 import os
 import atexit
 import tempfile
+import difflib
 from functools import lru_cache
 
 HERE = Path(__file__).resolve().parent
@@ -118,6 +119,31 @@ def git(*args, optional=False):
 def jsontext(value):
     return json.dumps(value, ensure_ascii=False, indent=2) + '\n'
 
+def jsonlines(rows):
+    return ''.join(json.dumps(row, ensure_ascii=False, separators=(',', ':')) + '\n' for row in rows)
+
+def sequence_delta(before, after):
+    """Exact ordered edits; all unchanged rows stay in the sealed v2 data."""
+    serialize = lambda row: json.dumps(row, ensure_ascii=False, separators=(',', ':'))
+    matcher = difflib.SequenceMatcher(None, [serialize(row) for row in before], [serialize(row) for row in after], autojunk=False)
+    edits = [{'start': i, 'delete': j - i, 'insert': after[k:l]}
+             for tag, i, j, k, l in matcher.get_opcodes() if tag != 'equal']
+    delta = {'baseRows': len(before), 'effectiveRows': len(after), 'edits': edits}
+    check(apply_sequence_delta(before, delta) == after, 'Ordered successor delta does not reconstruct the measured rows')
+    return delta
+
+def apply_sequence_delta(before, delta):
+    check(len(before) == delta['baseRows'], 'Successor base row count differs')
+    result, cursor = [], 0
+    for edit in delta['edits']:
+        start, deleted = edit['start'], edit['delete']
+        check(isinstance(start, int) and isinstance(deleted, int) and cursor <= start <= len(before)
+              and 0 <= deleted <= len(before) - start, 'Invalid or overlapping successor edit')
+        result.extend(before[cursor:start]); result.extend(edit['insert']); cursor = start + deleted
+    result.extend(before[cursor:])
+    check(len(result) == delta['effectiveRows'], 'Successor effective row count differs')
+    return result
+
 def pointer(parts):
     return ''.join('/' + str(x).replace('~', '~0').replace('/', '~1') for x in parts)
 
@@ -143,12 +169,14 @@ predecessor = POLICY['previousSnapshot']
 git('merge-base', '--is-ancestor', base, predecessor['commit'])
 git('merge-base', '--is-ancestor', predecessor['commit'], anchor)
 previous_manifests = []
-for old, new in predecessor['outputs'].items():
-    path = D + '/inventory/' + old
-    committed = blobs.read(predecessor['commit'] + ':' + path, False)
-    check(committed and raw_file_info(R / path) == committed, 'Immutable earlier inventory changed: ' + path)
-    previous_manifests.append({'path': path, **committed, 'lifecycle': 'earlier_state', 'preservedAt': predecessor['commit'],
-        'preservationEpoch': predecessor['epoch'], 'successorPath': D + '/inventory/' + new, 'currentApprovalClaim': False})
+for snapshot in [predecessor, POLICY['sealedSnapshot']]:
+    git('merge-base', '--is-ancestor', snapshot['commit'], anchor)
+    for old, new in snapshot['outputs'].items():
+        path = D + '/inventory/' + old
+        committed = blobs.read(snapshot['commit'] + ':' + path, False)
+        check(committed and raw_file_info(R / path) == committed, 'Immutable earlier inventory changed: ' + path)
+        previous_manifests.append({'path': path, **committed, 'lifecycle': 'earlier_state', 'preservedAt': snapshot['commit'],
+            'preservationEpoch': snapshot['epoch'], 'successorPath': D + '/inventory/' + new, 'currentApprovalClaim': False})
 commits = git('rev-list', '--first-parent', base + '..' + anchor).decode().splitlines()
 scope = set()
 historical_versions = collections.defaultdict(list)
@@ -599,7 +627,7 @@ for path in sorted(scope):
             'historicalOrigin': sealed, 'originalLiteralRewritten': False, 'newAbsoluteLiteralPublished': False})
 
 manifest = {
-    'schemaVersion': 2, 'contract': 'physics-directed-quantity-arrow-record-lifecycle-v2',
+    'schemaVersion': 3, 'contract': 'physics-directed-quantity-arrow-record-lifecycle-v3',
     'earlierInventoryManifests': previous_manifests,
     'baselineCommit': base,
     'domainContract': 'Finite first-parent nonmerge path union; optional current worktree additions before anchoring. The invocation supplies the final anchor, avoiding a self-referential commit digest.',
@@ -640,11 +668,22 @@ if a.anchor:
 for (root, path), info in physical.items():
     current = roots[root] / path
     check(current.is_file() and raw_file_info(current)['sha256'] == info['sha256'], 'Input changed during inventory; rerun after writers finish: @' + root + '/' + path)
-outputs = {
-    'record-lifecycle.v2.actual.json': jsontext(manifest),
-    'path-bindings.v2.actual.jsonl': ''.join(json.dumps(v, ensure_ascii=False, separators=(',', ':')) + '\n' for v in bindings),
-    'digest-contracts.v2.actual.jsonl': ''.join(json.dumps(v, ensure_ascii=False, separators=(',', ':')) + '\n' for v in digests),
-}
+sealed = POLICY['sealedSnapshot']
+base_name = 'record-lifecycle.v2.actual.json'
+base_manifest = json.loads((HERE / base_name).read_bytes())
+collections_reused = ('earlierInventoryManifests', 'bootstrapPaths', 'records', 'rawVoiceIntegrity', 'operationalLiteralOrigins', 'retainedOffTree', 'boundaries')
+successor = {key: value for key, value in manifest.items() if key not in collections_reused}
+successor['storageContract'] = 'sealed-v2-exact-ordered-deltas-v1'
+successor['manifestFieldOrder'] = list(manifest)
+successor['baseManifest'] = {'path': base_name, **raw_file_info(HERE / base_name), 'preservedAt': sealed['commit']}
+successor['collections'] = {key: sequence_delta(base_manifest[key], manifest[key]) for key in collections_reused}
+successor['effectiveManifestSha256'] = sha(jsontext(manifest).encode('utf-8'))
+successor['tables'] = {}
+for key, name, rows in [('pathBindings', 'path-bindings.v2.actual.jsonl', bindings), ('digestContracts', 'digest-contracts.v2.actual.jsonl', digests)]:
+    prior_rows = document((HERE / name).read_bytes(), name)
+    successor['tables'][key] = {'basePath': name, **raw_file_info(HERE / name), 'preservedAt': sealed['commit'],
+                              **sequence_delta(prior_rows, rows), 'effectiveSha256': sha(jsonlines(rows).encode('utf-8'))}
+outputs = {'record-lifecycle.v3.actual.json': jsontext(successor)}
 for name, content in outputs.items():
     if a.refresh:
         (HERE / name).write_text(content)

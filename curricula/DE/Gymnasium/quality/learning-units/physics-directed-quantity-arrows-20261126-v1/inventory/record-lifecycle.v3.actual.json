@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 3,
+  "contract": "physics-directed-quantity-arrow-record-lifecycle-v3",
+  "baselineCommit": "eb77c4fb68ef701f9c188e0a66411dbfb76dfd26",
+  "domainContract": "Finite first-parent nonmerge path union; optional current worktree additions before anchoring. The invocation supplies the final anchor, avoiding a self-referential commit digest.",
+  "scope": "Union of non-merge first-parent Task A2 changed files after baseline; plus uncommitted/untracked additions unless --anchor supplied. Ignored and external preserved evidence is listed separately.",
+  "counts": {
+    "records": 554,
+    "current": 416,
+    "earlierState": 137,
+    "retainedOffTree": 1873,
+    "pathBindings": 12585,
+    "digestLeaves": 22058,
+    "unresolvedDeclaredPaths": 0,
+    "unchangedRawVoices": 12,
+    "operationalLiterals": 48
+  },
+  "storageContract": "sealed-v2-exact-ordered-deltas-v1",
+  "manifestFieldOrder": [
+    "schemaVersion",
+    "contract",
+    "earlierInventoryManifests",
+    "baselineCommit",
+    "domainContract",
+    "scope",
+    "bootstrapPaths",
+    "records",
+    "rawVoiceIntegrity",
+    "operationalLiteralOrigins",
+    "retainedOffTree",
+    "counts",
+    "boundaries"
+  ],
+  "baseManifest": {
+    "path": "record-lifecycle.v2.actual.json",
+    "sha256": "600d63a6cbd6cdf719b7a9fb784460cb2eb351430e8236d20164bc181dbb5398",
+    "bytes": 819105,
+    "preservedAt": "f56d04f5eb0dcb5b8a049361505e33befb43441e"
+  },
+  "collections": {
+    "earlierInventoryManifests": {
+      "baseRows": 3,
+      "effectiveRows": 6,
+      "edits": [
+        {
+          "start": 3,
+          "delete": 0,
+          "insert": [
+            {
+              "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/inventory/record-lifecycle.v2.actual.json",
+              "sha256": "600d63a6cbd6cdf719b7a9fb784460cb2eb351430e8236d20164bc181dbb5398",
+              "bytes": 819105,
+              "lifecycle": "earlier_state",
+              "preservedAt": "f56d04f5eb0dcb5b8a049361505e33befb43441e",
+              "preservationEpoch": "Sealed second inventory, retained byte-identically as the predecessor of the native A5 reader update.",
+              "successorPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/inventory/record-lifecycle.v3.actual.json",
+              "currentApprovalClaim": false
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/inventory/path-bindings.v2.actual.jsonl",
+              "sha256": "87143a6230325f358816b58369bd04f08a6c29cc2a40d653ebe9826ec364e8f9",
+              "bytes": 7958566,
+              "lifecycle": "earlier_state",
+              "preservedAt": "f56d04f5eb0dcb5b8a049361505e33befb43441e",
+              "preservationEpoch": "Sealed second inventory, retained byte-identically as the predecessor of the native A5 reader update.",
+              "successorPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/inventory/record-lifecycle.v3.actual.json",
+              "currentApprovalClaim": false
+            },
+            {
+              "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/inventory/digest-contracts.v2.actual.jsonl",
+              "sha256": "944251b7328c382b5f0b7dcb86cd7e316e7adf78f24a577afa0e995764ce6b85",
+              "bytes": 6928459,
+              "lifecycle": "earlier_state",
+              "preservedAt": "f56d04f5eb0dcb5b8a049361505e33befb43441e",
+              "preservationEpoch": "Sealed second inventory, retained byte-identically as the predecessor of the native A5 reader update.",
+              "successorPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/inventory/record-lifecycle.v3.actual.json",
+              "currentApprovalClaim": false
+            }
+          ]
+        }
+      ]
+    },
+    "bootstrapPaths": {
+      "baseRows": 10,
+      "effectiveRows": 11,
+      "edits": [
+        {
+          "start": 8,
+          "delete": 0,
+          "insert": [
+            "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/inventory/record-lifecycle.v3.actual.json"
+          ]
+        }
+      ]
+    },
+    "records": {
+      "baseRows": 553,
+      "effectiveRows": 554,
+      "edits": [
+        {
+          "start": 17,
+          "delete": 2,
+          "insert": [
+            {
+              "path": "app/scripts/lib/directedQuantityArrowVisualizationQa.ts",
+              "present": true,
+              "lifecycle": "current",
+              "sha256": "9bdfc766325c63c034df7e8ea186bd7cc583da4df9a5963fe537bbf00f0bbd92",
+              "bytes": 9645
+            },
+            {
+              "path": "app/scripts/lib/directedQuantityArrows.ts",
+              "present": true,
+              "lifecycle": "current",
+              "sha256": "620cf25e30dfebbf60b968679069b543101d4cdd67b880638cd7edb48b64ece2",
+              "bytes": 9001
+            }
+          ]
+        },
+        {
+          "start": 21,
+          "delete": 1,
+          "insert": [
+            {
+              "path": "app/scripts/materializePhysicsDirectedQuantityArrowSemantics.ts",
+              "present": true,
+              "lifecycle": "current",
+              "sha256": "f763bc3001efcec96036038f74895245e789c010115c511f3a38e0883b874f02",
+              "bytes": 16910
+            }
+          ]
+        },
+        {
+          "start": 23,
+          "delete": 1,
+          "insert": [
+            {
+              "path": "app/scripts/testDirectedQuantityArrows.ts",
+              "present": true,
+              "lifecycle": "current",
+              "sha256": "c9aac82ef2c7c171e18e39075f0acaab8d8281ed0a42bce8285c3fc0585378ce",
+              "bytes": 11535
+            }
+          ]
+        },
+        {
+          "start": 27,
+          "delete": 0,
+          "insert": [
+            {
+              "path": "app/scripts/testSemanticRouteInventory.ts",
+              "present": true,
+              "lifecycle": "current",
+              "sha256": "c1013121865de56dff8eb2ee8defa0e582b44e48038698820ce1e697dfe97b8f",
+              "bytes": 9000
+            }
+          ]
+        }
+      ]
+    },
+    "rawVoiceIntegrity": {
+      "baseRows": 12,
+      "effectiveRows": 12,
+      "edits": []
+    },
+    "operationalLiteralOrigins": {
+      "baseRows": 48,
+      "effectiveRows": 48,
+      "edits": []
+    },
+    "retainedOffTree": {
+      "baseRows": 1873,
+      "effectiveRows": 1873,
+      "edits": []
+    },
+    "boundaries": {
+      "baseRows": 6,
+      "effectiveRows": 6,
+      "edits": []
+    }
+  },
+  "effectiveManifestSha256": "abf725b8adc92a607c9d66c2426284dbbe7871f3f4e4c13bb52fbc2d1152c703",
+  "tables": {
+    "pathBindings": {
+      "basePath": "path-bindings.v2.actual.jsonl",
+      "sha256": "87143a6230325f358816b58369bd04f08a6c29cc2a40d653ebe9826ec364e8f9",
+      "bytes": 7958566,
+      "preservedAt": "f56d04f5eb0dcb5b8a049361505e33befb43441e",
+      "baseRows": 12585,
+      "effectiveRows": 12585,
+      "edits": [
+        {
+          "start": 5223,
+          "delete": 2,
+          "insert": [
+            {
+              "record": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/semantic-routes.intermediate.actual.json",
+              "pointer": "/inputBindings/5/sha256",
+              "sha256": "1a9b6257272a5c0dac30d55b71fb12f9c0e32d396af5ea912d1ee892a91f9c8f",
+              "contract": "historical_raw_path_binding",
+              "declaredPath": "app/scripts/lib/directedQuantityArrows.ts",
+              "origin": {
+                "kind": "historical_git_raw",
+                "commit": "fd273a9cabc043ff93a72560990865fe7c05900c",
+                "path": "app/scripts/lib/directedQuantityArrows.ts",
+                "gitObjectId": "154157771a4df1250db949fa6e7c01e654e42fdc",
+                "sha256": "1a9b6257272a5c0dac30d55b71fb12f9c0e32d396af5ea912d1ee892a91f9c8f",
+                "bytes": 6879
+              }
+            },
+            {
+              "record": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/semantic-routes.intermediate.actual.json",
+              "pointer": "/inputBindings/6/sha256",
+              "sha256": "da183bc1483f7cfaad5a92ab11f88921fa00247f33cb2bbc2232cb4cafb3aeea",
+              "contract": "historical_raw_path_binding",
+              "declaredPath": "app/scripts/lib/directedQuantityArrowVisualizationQa.ts",
+              "origin": {
+                "kind": "historical_git_raw",
+                "commit": "fd273a9cabc043ff93a72560990865fe7c05900c",
+                "path": "app/scripts/lib/directedQuantityArrowVisualizationQa.ts",
+                "gitObjectId": "f9e3e498316a77de9c5d6909e5d054aada531cc0",
+                "sha256": "da183bc1483f7cfaad5a92ab11f88921fa00247f33cb2bbc2232cb4cafb3aeea",
+                "bytes": 9627
+              }
+            }
+          ]
+        },
+        {
+          "start": 5827,
+          "delete": 2,
+          "insert": [
+            {
+              "record": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/native-semantic-routes.actual.json",
+              "pointer": "/inputBindings/5/sha256",
+              "sha256": "1a9b6257272a5c0dac30d55b71fb12f9c0e32d396af5ea912d1ee892a91f9c8f",
+              "contract": "historical_raw_path_binding",
+              "declaredPath": "app/scripts/lib/directedQuantityArrows.ts",
+              "origin": {
+                "kind": "historical_git_raw",
+                "commit": "fd273a9cabc043ff93a72560990865fe7c05900c",
+                "path": "app/scripts/lib/directedQuantityArrows.ts",
+                "gitObjectId": "154157771a4df1250db949fa6e7c01e654e42fdc",
+                "sha256": "1a9b6257272a5c0dac30d55b71fb12f9c0e32d396af5ea912d1ee892a91f9c8f",
+                "bytes": 6879
+              }
+            },
+            {
+              "record": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/native-semantic-routes.actual.json",
+              "pointer": "/inputBindings/6/sha256",
+              "sha256": "da183bc1483f7cfaad5a92ab11f88921fa00247f33cb2bbc2232cb4cafb3aeea",
+              "contract": "historical_raw_path_binding",
+              "declaredPath": "app/scripts/lib/directedQuantityArrowVisualizationQa.ts",
+              "origin": {
+                "kind": "historical_git_raw",
+                "commit": "fd273a9cabc043ff93a72560990865fe7c05900c",
+                "path": "app/scripts/lib/directedQuantityArrowVisualizationQa.ts",
+                "gitObjectId": "f9e3e498316a77de9c5d6909e5d054aada531cc0",
+                "sha256": "da183bc1483f7cfaad5a92ab11f88921fa00247f33cb2bbc2232cb4cafb3aeea",
+                "bytes": 9627
+              }
+            }
+          ]
+        }
+      ],
+      "effectiveSha256": "6a24da9f9efa0fffeb8f072644de1c2be8b7d9a6465540ed280d025395ebc6b7"
+    },
+    "digestContracts": {
+      "basePath": "digest-contracts.v2.actual.jsonl",
+      "sha256": "944251b7328c382b5f0b7dcb86cd7e316e7adf78f24a577afa0e995764ce6b85",
+      "bytes": 6928459,
+      "preservedAt": "f56d04f5eb0dcb5b8a049361505e33befb43441e",
+      "baseRows": 22058,
+      "effectiveRows": 22058,
+      "edits": [
+        {
+          "start": 10537,
+          "delete": 2,
+          "insert": [
+            {
+              "record": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/semantic-routes.intermediate.actual.json",
+              "pointer": "/inputBindings/5/sha256",
+              "sha256": "1a9b6257272a5c0dac30d55b71fb12f9c0e32d396af5ea912d1ee892a91f9c8f",
+              "contract": "historical_raw_path_binding"
+            },
+            {
+              "record": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/semantic-routes.intermediate.actual.json",
+              "pointer": "/inputBindings/6/sha256",
+              "sha256": "da183bc1483f7cfaad5a92ab11f88921fa00247f33cb2bbc2232cb4cafb3aeea",
+              "contract": "historical_raw_path_binding"
+            }
+          ]
+        },
+        {
+          "start": 11142,
+          "delete": 2,
+          "insert": [
+            {
+              "record": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/native-semantic-routes.actual.json",
+              "pointer": "/inputBindings/5/sha256",
+              "sha256": "1a9b6257272a5c0dac30d55b71fb12f9c0e32d396af5ea912d1ee892a91f9c8f",
+              "contract": "historical_raw_path_binding"
+            },
+            {
+              "record": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/native-semantic-routes.actual.json",
+              "pointer": "/inputBindings/6/sha256",
+              "sha256": "da183bc1483f7cfaad5a92ab11f88921fa00247f33cb2bbc2232cb4cafb3aeea",
+              "contract": "historical_raw_path_binding"
+            }
+          ]
+        }
+      ],
+      "effectiveSha256": "5a6ce1e01e7946cce334f6b36871abb76e0f06cc43dd43cf795ff65f5284a447"
+    }
+  }
+}

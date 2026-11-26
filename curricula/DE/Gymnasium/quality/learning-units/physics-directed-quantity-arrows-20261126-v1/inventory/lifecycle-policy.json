@@ -12,7 +12,8 @@
     "digest-contracts.actual.jsonl",
     "record-lifecycle.v2.actual.json",
     "path-bindings.v2.actual.jsonl",
-    "digest-contracts.v2.actual.jsonl"
+    "digest-contracts.v2.actual.jsonl",
+    "record-lifecycle.v3.actual.json"
   ],
   "externalRoots": {
     "a2Scratch": {
@@ -429,5 +430,14 @@
       "root": "a2Scratch",
       "path": "portable-originals/checks.actual.json"
     }
+  },
+  "sealedSnapshot": {
+    "commit": "f56d04f5eb0dcb5b8a049361505e33befb43441e",
+    "outputs": {
+      "record-lifecycle.v2.actual.json": "record-lifecycle.v3.actual.json",
+      "path-bindings.v2.actual.jsonl": "record-lifecycle.v3.actual.json",
+      "digest-contracts.v2.actual.jsonl": "record-lifecycle.v3.actual.json"
+    },
+    "epoch": "Sealed second inventory, retained byte-identically as the predecessor of the native A5 reader update."
   }
 }

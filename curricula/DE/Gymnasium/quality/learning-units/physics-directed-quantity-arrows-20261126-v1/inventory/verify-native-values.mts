@@ -17,9 +17,42 @@ const { fingerprintGoalDescriptionDualRoundResolution } = await import(pathToFil
 const { fingerprintGoalDescriptionRolloutSynthesisDecisionManifest } = await import(pathToFileURL(join(repo, 'app/scripts/validateGoalDescriptionRolloutSynthesisDecisionManifest.ts')).href);
 const assert = (ok: unknown, why: string) => { if (!ok) throw Error(why); };
 const { fingerprintDirectedQuantityArrowContract } = await import(pathToFileURL(join(repo, 'app/scripts/lib/directedQuantityArrows.ts')).href);
+const successor = json(join(inventory, 'record-lifecycle.v3.actual.json'));
+assert(successor.storageContract === 'sealed-v2-exact-ordered-deltas-v1', 'Unknown current inventory storage contract');
+function sealedBytes(path: string, expected: { sha256: string; bytes: number }): Buffer {
+  const raw = readFileSync(join(inventory, path));
+  assert(raw.byteLength === expected.bytes && hash(raw) === expected.sha256, 'Sealed predecessor bytes differ: ' + path);
+  return raw;
+}
+function applyDelta(before: any[], delta: any): any[] {
+  assert(before.length === delta.baseRows, 'Successor base row count differs');
+  const result: any[] = [];
+  let cursor = 0;
+  for (const edit of delta.edits) {
+    assert(Number.isInteger(edit.start) && Number.isInteger(edit.delete) && cursor <= edit.start && edit.start <= before.length
+      && 0 <= edit.delete && edit.delete <= before.length - edit.start && Array.isArray(edit.insert), 'Invalid or overlapping successor edit');
+    result.push(...before.slice(cursor, edit.start), ...edit.insert);
+    cursor = edit.start + edit.delete;
+  }
+  result.push(...before.slice(cursor));
+  assert(result.length === delta.effectiveRows, 'Successor effective row count differs');
+  return result;
+}
+const baseManifest = JSON.parse(sealedBytes(successor.baseManifest.path, successor.baseManifest).toString());
+const manifest = Object.fromEntries(successor.manifestFieldOrder.map((key: string) => [key,
+  Object.hasOwn(successor.collections, key) ? applyDelta(baseManifest[key], successor.collections[key]) : successor[key]]));
+assert(hash(JSON.stringify(manifest, null, 2) + '\n') === successor.effectiveManifestSha256, 'Reconstructed complete manifest differs');
+function tableRows(key: string): any[] {
+  const delta = successor.tables[key];
+  const before = sealedBytes(delta.basePath, delta).toString().split(/\r?\n/).filter(Boolean).map(line => JSON.parse(line));
+  const rows = applyDelta(before, delta);
+  assert(hash(rows.map(row => JSON.stringify(row) + '\n').join('')) === delta.effectiveSha256, 'Reconstructed complete table differs: ' + key);
+  return rows;
+}
+const pathBindings = tableRows('pathBindings');
+tableRows('digestContracts');
 let parsed = 0, profiles = 0, books = 0, arrowContracts = 0;
-for (const line of readFileSync(join(inventory, 'path-bindings.v2.actual.jsonl'), 'utf8').split(/\r?\n/).filter(Boolean)) {
-  const b = JSON.parse(line);
+for (const b of pathBindings) {
   if (!['native_parsed_json', 'historical_native_parsed_json', 'native_fingerprinted_json', 'native_book_model', 'gzip_native_parsed_json'].includes(b.origin.kind)) continue;
   const raw = b.origin.kind === 'historical_native_parsed_json'
     ? execFileSync('git', ['show', `${b.origin.commit}:${b.origin.path}`], { cwd: repo, maxBuffer: 32 * 1024 * 1024 })
@@ -44,7 +77,6 @@ for (const line of readFileSync(join(inventory, 'path-bindings.v2.actual.jsonl')
   }
   parsed++;
 }
-const manifest = json(join(inventory, 'record-lifecycle.v2.actual.json'));
 function walk(value: any, path: string): void {
   if (Array.isArray(value)) { for (const item of value) walk(item, path); return; }
   if (!value || typeof value !== 'object') return;

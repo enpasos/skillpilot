@@ -16,7 +16,7 @@ a positive review. Earlier records point to actual separately retained
 successors. Original rejections, earlier positive errors and the source
 records containing names such as `final` keep their exact bytes.
 
-`record-lifecycle.v2.actual.json` records current files, historical epochs,
+`record-lifecycle.v3.actual.json` reconstructs current files, historical epochs,
 concrete successors and retained off-tree evidence. It directly verifies
 the original K4 voices for V1–V3, both original first subject voices,
 both final confirmations and both original L voices against their retained
@@ -27,14 +27,28 @@ Git blobs and requires their absence from the selected tree. The L placement
 table has two representations with distinct raw hashes: the original CRLF
 file in the retained L directory and the LF file stored in Git.
 
-The three previous manifests remain here under their first filenames.
+The first three manifests remain here under their first filenames.
 Each is matched byte-for-byte to commit
 `815fe2565be698f2c28ac2a7c99a87e5e1e14aed` and is linked from the current
 record manifest to its successor. They record the earlier worktree run. Its
 Git-anchored verification failed on the L placement table. The v2 snapshot
 keeps that result as history.
 
-`path-bindings.v2.actual.jsonl` binds declared paths to actual current files,
+The three v2 manifests also remain byte-identical to commit
+`f56d04f5eb0dcb5b8a049361505e33befb43441e`. The v3 successor uses the
+`sealed-v2-exact-ordered-deltas-v1` storage contract: its `collections` and
+`tables` contain only measured ordered edits into the sealed v2 data. Each
+edit identifies a base-array start, a deletion count and inserted complete
+rows. Unchanged rows are reused without copying. Base bytes and hashes,
+effective row counts, both reconstructed table hashes and the reconstructed
+complete manifest hash are checked. The verifier independently regenerates
+the entire current inventory before comparing this compact representation.
+The native verifier reconstructs the same full tables and manifest before
+checking their values; it never substitutes the old v2 current-file list.
+Only the v3 successor is written by `--refresh`.
+
+The effective path-binding table (v2 data plus the v3 `tables.pathBindings`
+edits) binds declared paths to actual current files,
 historical Git blobs, exact recovered bytes, native parsed JSON values or
 native fingerprinted payloads. Compressed old register snapshots keep
 container bytes, decoded bytes and parsed native values distinct. An exact
@@ -43,7 +57,8 @@ The original route-counter source has an exact hash-checked reconstruction
 in the supplied A2 scratch root. The four raw map reports and the one
 additional SL variant PDF have explicit separate portable roots.
 
-`digest-contracts.v2.actual.jsonl` records every standalone 64-hex JSON/JSONL
+The effective digest-contract table (v2 data plus the v3
+`tables.digestContracts` edits) records every standalone 64-hex JSON/JSONL
 leaf in the changed repository records. Native goal, page, profile, campaign,
 set and directed-quantity contract fingerprints retain their scoped role;
 they are not compared as raw files. A raw path assertion must resolve to
