@@ -1,0 +1,387 @@
+{
+  "status": "sealed-author-expectations-not-independent-review",
+  "maxPoints": 12,
+  "passingPoints": 10,
+  "cases": [
+    {
+      "id": "S01",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "purpose": "vollständige Referenz",
+      "rationale": "Vier Leistungen vollständig und tatsächliche Zeichnungen."
+    },
+    {
+      "id": "S02",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 2.5,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 2.5,
+        "D": 3
+      },
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "purpose": "ein kleiner Einheitenfehler",
+      "rationale": "C einmal −0,5; klarer Kern und sonst richtige Einheiten."
+    },
+    {
+      "id": "S03",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 1
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 1
+      },
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "purpose": "eine tragende Leistung nur teilweise",
+      "rationale": "D(i) durch Rechnung 2 cm gegen gezeichnete 3 cm; D(ii)/(iii) fehlen. Genau10."
+    },
+    {
+      "id": "S04",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 2.5,
+        "D": 1
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 2.5,
+        "D": 1
+      },
+      "expectedTotal": 9.5,
+      "expectedPass": false,
+      "purpose": "unmittelbar unter Bestehensgrenze",
+      "rationale": "Wie S03, unabhängiger isolierter Einheitenfehler in C;9,5."
+    },
+    {
+      "id": "S05",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "Spitzendeutung ausgelassen",
+      "rationale": "Keine Voraussage/Erklärung in Text; die richtige Zeichnung allein ist keine begründete Voraussage D(i)."
+    },
+    {
+      "id": "S06",
+      "expectedPointsDe": {
+        "A": 0,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 0,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "beibehaltene falsche Trägerzuordnung",
+      "rationale": "A vollständig0 trotz richtiger Zeichnung; keine Folgeverluste."
+    },
+    {
+      "id": "S07",
+      "expectedPointsDe": {
+        "A": 0,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 0,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "beliebiger Pfeilanfang als Regel",
+      "rationale": "A0 durch beibehaltene Fehlvorstellung."
+    },
+    {
+      "id": "S08",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "beibehaltene Richtungsumkehr",
+      "rationale": "B0 trotz rechter Pfeile; keine neue Maßstabs- oder Spitzendeutung behauptet."
+    },
+    {
+      "id": "S09",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "Einheitenräume gleichgesetzt",
+      "rationale": "C0; D enthält unabhängig ausdrücklich die richtige Spitzendeutung, keine erneute pauschale Strafe."
+    },
+    {
+      "id": "S10",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "Kontaktfehlvorstellung",
+      "rationale": "D0 für ausdrücklich beibehaltenen Kernwiderspruch."
+    },
+    {
+      "id": "S11",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "Skala verändert physikalische Größe",
+      "rationale": "D0 trotz richtiger früherer Aussagen."
+    },
+    {
+      "id": "S12",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "purpose": "ausdrückliche Selbstkorrektur",
+      "rationale": "Rücknahme löst den Widerspruch; kein Fehlvorstellungsabzug."
+    },
+    {
+      "id": "S13",
+      "expectedPointsDe": {
+        "A": 1,
+        "B": 1,
+        "C": 1.5,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 1,
+        "B": 1,
+        "C": 1.5,
+        "D": 3
+      },
+      "expectedTotal": 6.5,
+      "expectedPass": false,
+      "purpose": "nur Text, kein Zeichnen",
+      "rationale": "A/B höchstens1; C(i)1 und C(ii)0,5, C(iii)keine Legenden in tatsächlichen Darstellungen."
+    },
+    {
+      "id": "S14",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 2.5,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 2.5,
+        "D": 3
+      },
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "purpose": "ein Rechenfehler mit konsistenter Zeichnungsfolge",
+      "rationale": "C einmal−0,5; Spitze weiter vorB und richtige physikalische Deutung zählen inD."
+    },
+    {
+      "id": "S15",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 2.5,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 2.5,
+        "D": 3
+      },
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "purpose": "gemeinsamer Legendenfehler",
+      "rationale": "Gemeinsame falsche Einheit in beiden Legenden nur einmal−0,5 inC."
+    },
+    {
+      "id": "S16",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 2.5,
+        "C": 3,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 2.5,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "purpose": "ein Zeichenfehler",
+      "rationale": "B einmal−0,5; linker Anfang und v_A werden in Zeichnung/Text eindeutig."
+    },
+    {
+      "id": "S17",
+      "expectedPointsDe": {
+        "A": 0,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 0,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "falscher Ansatz, andere Kriterien unabhängig",
+      "rationale": "A0; andere mathematische Eigenschaften und Deutung aus Text eigenständig; Zeichnungsfolge des falschen Ursprungs nicht nochmals werten."
+    },
+    {
+      "id": "S18",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "systematische falsche Zeichnungsrichtung",
+      "rationale": "B0; C bewertet unsigned Längen; D textlich unabhängig richtig."
+    },
+    {
+      "id": "S19",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "purpose": "beibehaltene falsche Maßstabsregel",
+      "rationale": "C0; D enthält ausdrücklich eigene korrekte Deutung undVoraussage, keine zweite automatische Strafe."
+    },
+    {
+      "id": "S20",
+      "expectedPointsDe": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 1
+      },
+      "expectedPointsEn": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 1
+      },
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "purpose": "alternative fehlende Teilfacetten an Bestehensgrenze",
+      "rationale": "D(ii)1; keine begründete Voraussage und keine ausdrückliche Invarianz. Genau10."
+    }
+  ]
+}

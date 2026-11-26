@@ -1,0 +1,896 @@
+{
+  "markerIdentity": "Independent blind marker A (/root/a2_blind_a), round v1",
+  "independenceStatement": "I read only the clean packet /tmp/skillpilot-a2/k4-blind-v1. I did not inspect repository/canonical content, author expectations, prior versions, another marker response, or reconciliation. All marks below are my independent judgement of the supplied synthetic submissions; these are not learner results.",
+  "rubricAccepted": false,
+  "decision": {
+    "status": "repair-required-before-release",
+    "physicalCorrectness": true,
+    "ageAppropriate": true,
+    "clarity": "Task clear; two scoring interpretations require clarification.",
+    "chatFeasibility": "Feasible entirely in coach chat when the learner attaches an actual legible paper or digital drawing with its own ruler/grid scale. No Cockpit step is required by the task.",
+    "goalSufficiency": "The task prompts the candidate description's velocity-arrow performances. The current scoring, however, permits a pass without any explanation why the tip is not a position/contact; S05 is the concrete counterexample. I therefore do not accept the current pass claim as sufficient evidence of the whole stated goal.",
+    "fourProtectedPerformances": "A, B, C and D each carry 3/12 points. A score of zero on any whole performance limits the total to 9, so all four whole performances have protected weight. This protection does not guarantee that D's semantic explanation is demonstrated, because D(i) overlaps the drawing/scale evidence in C.",
+    "smallSlipCanPass": true,
+    "totalAloneImplementsThreshold": true,
+    "noExtraGate": "All pass decisions below use total >= 10 only.",
+    "textOnlyCannotPass": "Without any drawing A <= 1, B <= 1, C <= 1.5 and D <= 3; maximum 6.5/12. S13 shows this limit.",
+    "coverageLimit": "This judgement concerns the narrow stated velocity-arrow task. The packet does not supply the teaching goal text identified only by requiresAndCoversOnly, so no broader transfer claim about forces, fields, or all directed quantities is independently established."
+  },
+  "findings": [
+    {
+      "id": "F01",
+      "severity": "material",
+      "cases": [
+        "S03",
+        "S04",
+        "S05",
+        "S20"
+      ],
+      "finding": "D(i) can be evidenced by the actual correct shortened drawing plus the 6/3 = 2 cm working, under the global instruction to credit evidence anywhere and D(i)'s allowance for equivalent working. Thus S05 earns D=1 and passes 10/12 despite providing no semantic tip explanation at all. The claim that the learner can explain why the tip is no position/contact is then unestablished.",
+      "scoringDecision": "Credit the demonstrated geometric prediction; do not invent D(ii) or D(iii). S05: A3 B3 C3 D1 = 10, pass. S03 likewise 10; S04 9.5 because of its independent unit slip.",
+      "minimalProposedRepair": "State explicitly whether an accurately placed drawn tip together with its length working satisfies D(i), so a prose-only requirement is not silently added. Then reduce D(i) to 0.5 and allocate its remaining 0.5 to D(ii), keeping D total 3 and the sole total threshold at 10. S05 then cannot pass solely on the geometric overlap. Recheck the revised boundary cases independently."
+    },
+    {
+      "id": "F02",
+      "severity": "clarification",
+      "cases": [
+        "S16"
+      ],
+      "finding": "The explicit requirement for an identifiable arrowhead conflicts at its boundary with the broad at-most-0.5 rule for isolated drawing slips. A completely absent arrowhead is also missing required visual evidence; the rubric only expressly classifies a misplaced arrowhead as a minor slip.",
+      "scoringDecision": "I apply the specific identifiable-arrowhead requirement: B(ii) has no visual directional evidence, so B=2, not 2.5. There is no additional penalty. The pass result remains 11/12 either way.",
+      "minimalProposedRepair": "Add one sentence: A missing arrowhead is missing drawing evidence and loses that sketch's 1 direction point; a single recognisable but reversed arrowhead can qualify for the 0.5 slip rule. Alternatively expressly include a demonstrably accidental missing head in the slip rule and adjust S16 consistently."
+    },
+    {
+      "id": "F03",
+      "severity": "observation",
+      "cases": [
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "finding": "The maintained-misconception clauses clearly distinguish these cases from local slips. Correct copied statements elsewhere do not cancel an expressly maintained contrary claim. S12 explicitly retracts its earlier contact belief and therefore retains D. S17-S19 also contain visible/prose contradictions; I localise the stated misconception to A/B/C respectively and follow the rule against charging its consequences again."
+    },
+    {
+      "id": "F04",
+      "severity": "observation",
+      "cases": [
+        "S02",
+        "S04",
+        "S14",
+        "S15"
+      ],
+      "finding": "The common slip policy supports one 0.5 loss at its origin for the isolated wrong final unit, arithmetic slip with its consistent 2.5-cm drawing, or repeated m-for-m/s legend slip with otherwise explicit conceptual distinction. No second loss for the same propagated error is justified."
+    },
+    {
+      "id": "F05",
+      "severity": "observation",
+      "cases": [
+        "S01",
+        "S13"
+      ],
+      "finding": "The numerical physics is correct: 3 cm at 2 m/s per cm is 6 m/s; changing only arrow scale to 3 m/s per cm gives 2 cm and leaves a 1-cm drawn gap. A stationary-ground frame is specified. The apparent initial coincidence is explicitly a diagnostic counterexample, not an assertion of physical contact. Arithmetic and drawing demands are reasonable for the stated lower-stage placement after instruction. The drawing requirement is genuine and cannot be evaded by the complete text-only S13."
+    }
+  ],
+  "languageEquivalence": {
+    "equivalent": true,
+    "differenceExplanation": "I read every DE and EN response separately against the same actual drawing. No material bilingual difference in the task, rubric or submissions changes any criterion score or pass result. The shared drawings use neutral x/v_A labels and metric units."
+  },
+  "inspection": {
+    "method": "Every referenced PNG was individually opened with tools.view_image and visually examined as an actual image. I used the pictured ruler, not display centimetres or filenames, to judge origins, heads, lengths, scales and coincidence. Text and drawings were then considered together separately for each language.",
+    "drawings": [
+      {
+        "path": "blind/drawings/R01.png",
+        "observed": "I: A-to-B right arrow, 3 ruler cm. II: right arrow starts at A, ends at 2 cm while B remains at 3. Distinct x legends in m and v_A legends 2/3 m/s."
+      },
+      {
+        "path": "blind/drawings/R02.png",
+        "observed": "Both right arrows start at B, not A. Their lengths remain 3 and 2 ruler cm; in II the arrow tip is to the right of B. x/v_A legends otherwise correct."
+      },
+      {
+        "path": "blind/drawings/R03.png",
+        "observed": "Both arrow shafts start at A and run left to visible left-pointing heads, lengths 3 and 2 ruler cm. A/B positions and legends otherwise as specified."
+      },
+      {
+        "path": "blind/drawings/R04.png",
+        "observed": "Both right arrows start at A and run all 3 ruler cm to B, including II despite its 3 m/s per cm legend."
+      },
+      {
+        "path": "blind/drawings/R05.png",
+        "observed": "I is correct; II starts at A, points right and ends at the 2.5-cm tick, half a ruler cm before B."
+      },
+      {
+        "path": "blind/drawings/R06.png",
+        "observed": "Geometry is the correct 3/2-cm pair; x legends use m, but both v_A legends incorrectly use m instead of m/s."
+      },
+      {
+        "path": "blind/drawings/R08.png",
+        "observed": "I has a visible right arrowhead. II is a labelled plain segment from A to 2 cm, with no arrowhead. x/v_A legends and B at 3 cm are correct."
+      }
+    ]
+  },
+  "inputSha256": {
+    "candidate.goal.json": "8eee901bbea353b180cea7ca64a46fa90ca506bcf82db192d794b136749a6e8e",
+    "task-and-marking.md": "0df2a7276757f30545f1d31a3eeefd3a866054f32b2d7e96179e118536783aec",
+    "rubric.json": "acb00a17c6af5efc9d1f415bf7a73cd08feebd1464d32ef2ab45755c257c306b",
+    "scope.json": "b043db856280813cdaf86c71cd6f29892f26be04e3f83a600933e2450ea2934d",
+    "blind/instructions.md": "7c75f24f6ee76fcba3aee09846ca2babc983d7d291a34210cdab425f7b6eef68",
+    "blind/scripts.json": "e5a9e70345bea6de7da32ec183119d4721bcb247ee899d81a98d305bdad7a83d",
+    "blind/marking-template.json": "4d508f37d79b44c551b76b2fadd723c8febdc6e8a72f2f9e272d19a309cfebc8",
+    "blind/drawings/R01.png": "f619184a08648876d33ca50e30a7fca6d72b383934c79ec95464fa3aa151d329",
+    "blind/drawings/R02.png": "fe77e3f8b4ebd25d025243f7311b23f09a6b28c194ef6245cfe98177833f670d",
+    "blind/drawings/R03.png": "1224d10f361275400c2966ff1c17f9c226723b5df96c60c40895843462ded735",
+    "blind/drawings/R04.png": "eddf2e6ebd015d2a709d655542c20a9dba7d6565e139e2cf22cf65e327fa5585",
+    "blind/drawings/R05.png": "dc84e679a20aef86f314978f29f06ecd1bc6b10e1578d6a93dee4886b94d95b2",
+    "blind/drawings/R06.png": "cc2a072ba4972cf5a6ad266ebce5db0f7bc8834d39ce3b2e61b266c816315446",
+    "blind/drawings/R08.png": "e84129e8d3ca9502093fad887c773bdd51ec6ec2f34d47bb50c2ac88b7c4ff17"
+  },
+  "cases": [
+    {
+      "id": "S01",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 12,
+        "pass": true,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: 2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 12,
+        "pass": true,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: 2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged."
+        }
+      }
+    },
+    {
+      "id": "S02",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 2.5,
+          "D": 3
+        },
+        "total": 11.5,
+        "pass": true,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: Rechnung, Zeichnung und Legenden richtig; der ausdrücklich isolierte abschließende Einheitenfehler 6 m kostet einmal 0,5 in C. D: 2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "Rechnung, Zeichnung und Legenden richtig; der ausdrücklich isolierte abschließende Einheitenfehler 6 m kostet einmal 0,5 in C.",
+          "D": "2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 2.5,
+          "D": 3
+        },
+        "total": 11.5,
+        "pass": true,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: Working, drawing and legends correct; the expressly isolated final unit slip 6 m costs 0.5 once in C. D: 2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "Working, drawing and legends correct; the expressly isolated final unit slip 6 m costs 0.5 once in C.",
+          "D": "2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged."
+        }
+      }
+    },
+    {
+      "id": "S03",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 1
+        },
+        "total": 10,
+        "pass": true,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: D(i)=1: Voraussage nicht auf B, 2-cm-Rechnung und tatsächliche Lage vor B belegen sie. D(ii)=0 und D(iii)=0: weder Bedeutung der scheinbaren Berührung noch ausdrücklich unveränderte physikalische Größen erklärt.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "D(i)=1: Voraussage nicht auf B, 2-cm-Rechnung und tatsächliche Lage vor B belegen sie. D(ii)=0 und D(iii)=0: weder Bedeutung der scheinbaren Berührung noch ausdrücklich unveränderte physikalische Größen erklärt."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 1
+        },
+        "total": 10,
+        "pass": true,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: D(i)=1: not coinciding with B is supported by the 2-cm working and actual tip placement. D(ii)=0 and D(iii)=0: no account of apparent contact or explicit physical invariants.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "D(i)=1: not coinciding with B is supported by the 2-cm working and actual tip placement. D(ii)=0 and D(iii)=0: no account of apparent contact or explicit physical invariants."
+        }
+      }
+    },
+    {
+      "id": "S04",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 2.5,
+          "D": 1
+        },
+        "total": 9.5,
+        "pass": false,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: Der isolierte Ergebnis-Einheitenfehler 6 m bei richtigen m/s in Rechnung und Legenden kostet einmal 0,5. D: D(i)=1 aus Voraussage, 2-cm-Rechnung und tatsächlicher Zeichnung. D(ii) und D(iii) fehlen; keine weiteren Abzüge.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "Der isolierte Ergebnis-Einheitenfehler 6 m bei richtigen m/s in Rechnung und Legenden kostet einmal 0,5.",
+          "D": "D(i)=1 aus Voraussage, 2-cm-Rechnung und tatsächlicher Zeichnung. D(ii) und D(iii) fehlen; keine weiteren Abzüge."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 2.5,
+          "D": 1
+        },
+        "total": 9.5,
+        "pass": false,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: The isolated result-unit slip 6 m, with correct m/s in working and legends, costs 0.5 once. D: D(i)=1 from the prediction, 2-cm working and actual drawing. D(ii) and D(iii) are absent; no further penalties.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "The isolated result-unit slip 6 m, with correct m/s in working and legends, costs 0.5 once.",
+          "D": "D(i)=1 from the prediction, 2-cm working and actual drawing. D(ii) and D(iii) are absent; no further penalties."
+        }
+      }
+    },
+    {
+      "id": "S05",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 1
+        },
+        "total": 10,
+        "pass": true,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: D(i)=1: Die tatsächliche Zeichnung setzt die mit 6/3=2 cm begründete Spitze sichtbar vor B bei 3 cm; Belege dürfen überall stehen. D(ii)=0 und D(iii)=0: keine semantische Erklärung und keine ausdrücklichen physikalischen Invarianten. Keine fehlende Erklärung aus dem richtigen Zahlenwert ergänzt.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "D(i)=1: Die tatsächliche Zeichnung setzt die mit 6/3=2 cm begründete Spitze sichtbar vor B bei 3 cm; Belege dürfen überall stehen. D(ii)=0 und D(iii)=0: keine semantische Erklärung und keine ausdrücklichen physikalischen Invarianten. Keine fehlende Erklärung aus dem richtigen Zahlenwert ergänzt."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 1
+        },
+        "total": 10,
+        "pass": true,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: D(i)=1: the actual drawing visibly places the tip, supported by 6/3=2 cm, before B at 3 cm; evidence may occur anywhere. D(ii)=0 and D(iii)=0: no semantic explanation or explicit physical invariants. No missing explanation is inferred from the correct number.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "D(i)=1: the actual drawing visibly places the tip, supported by 6/3=2 cm, before B at 3 cm; evidence may occur anywhere. D(ii)=0 and D(iii)=0: no semantic explanation or explicit physical invariants. No missing explanation is inferred from the correct number."
+        }
+      }
+    },
+    {
+      "id": "S06",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 0,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Trotz richtiger Zeichnung bleibt die Aussage ausdrücklich bestehen, der Pfeil gehöre wegen seines Endes B. Die fachliche Trägerfehlvorstellung setzt ganz A auf 0. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: 2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert.",
+        "criterionEvidence": {
+          "A": "Trotz richtiger Zeichnung bleibt die Aussage ausdrücklich bestehen, der Pfeil gehöre wegen seines Endes B. Die fachliche Trägerfehlvorstellung setzt ganz A auf 0.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 0,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Despite the correct drawing, the response expressly maintains that the arrow belongs to B because it ends there. The carrier misconception sets all of A to 0. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: 2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged.",
+        "criterionEvidence": {
+          "A": "Despite the correct drawing, the response expressly maintains that the arrow belongs to B because it ends there. The carrier misconception sets all of A to 0.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged."
+        }
+      }
+    },
+    {
+      "id": "S07",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 0,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Die ausdrücklich beibehaltene Behauptung, Geschwindigkeitspfeile dürften körperunabhängig beliebig beginnen, setzt A auf 0; richtige R01-Geometrie hebt sie nicht auf. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: 2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert.",
+        "criterionEvidence": {
+          "A": "Die ausdrücklich beibehaltene Behauptung, Geschwindigkeitspfeile dürften körperunabhängig beliebig beginnen, setzt A auf 0; richtige R01-Geometrie hebt sie nicht auf.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 0,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: The expressly maintained claim that velocity arrows may start anywhere independently of their object sets A to 0; correct R01 geometry does not cancel it. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: 2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged.",
+        "criterionEvidence": {
+          "A": "The expressly maintained claim that velocity arrows may start anywhere independently of their object sets A to 0; correct R01 geometry does not cancel it.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged."
+        }
+      }
+    },
+    {
+      "id": "S08",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 0,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: Die ausdrücklich beibehaltene Deutung rechtsweisender Pfeile als Bewegung nach links ist eine systematische Richtungsverwechslung: B=0, trotz sonstiger richtiger Angaben. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: 2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "Die ausdrücklich beibehaltene Deutung rechtsweisender Pfeile als Bewegung nach links ist eine systematische Richtungsverwechslung: B=0, trotz sonstiger richtiger Angaben.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 0,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: The expressly maintained interpretation of right-pointing arrows as motion left is a systematic direction reversal: B=0 despite correct statements elsewhere. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: 2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "The expressly maintained interpretation of right-pointing arrows as motion left is a systematic direction reversal: B=0 despite correct statements elsewhere.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged."
+        }
+      }
+    },
+    {
+      "id": "S09",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 0,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: Die Gleichsetzung von Pfeillänge mit Ortsstrecke sowie 6 m/s mit 6 m wird ausdrücklich aufrechterhalten: C=0. Richtige Formeln und Legenden heben dies nicht auf. D: 2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "Die Gleichsetzung von Pfeillänge mit Ortsstrecke sowie 6 m/s mit 6 m wird ausdrücklich aufrechterhalten: C=0. Richtige Formeln und Legenden heben dies nicht auf.",
+          "D": "2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 0,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: The response expressly maintains that arrow length is position distance and 6 m/s means 6 m: C=0. Correct formulae and legends do not cancel it. D: 2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "The response expressly maintains that arrow length is position distance and 6 m/s means 6 m: C=0. Correct formulae and legends do not cancel it.",
+          "D": "2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged."
+        }
+      }
+    },
+    {
+      "id": "S10",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 0
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: Die Spitze soll ausdrücklich weiterhin einen jetzigen Kontakt A–B beweisen. Der ungelöste, aufrechterhaltene Widerspruch zur Bedeutung der Spitze setzt D auf 0.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "Die Spitze soll ausdrücklich weiterhin einen jetzigen Kontakt A–B beweisen. Der ungelöste, aufrechterhaltene Widerspruch zur Bedeutung der Spitze setzt D auf 0."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 0
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: The tip is expressly still claimed to prove present contact between A and B. This maintained unresolved contradiction about tip meaning sets D to 0.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "The tip is expressly still claimed to prove present contact between A and B. This maintained unresolved contradiction about tip meaning sets D to 0."
+        }
+      }
+    },
+    {
+      "id": "S11",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 0
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: Die wirkliche Geschwindigkeit soll sich durch neue Pfeilskala ändern; diese Behauptung wird ausdrücklich beibehalten. Deshalb D=0 trotz richtiger vorheriger Erklärung.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "Die wirkliche Geschwindigkeit soll sich durch neue Pfeilskala ändern; diese Behauptung wird ausdrücklich beibehalten. Deshalb D=0 trotz richtiger vorheriger Erklärung."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 0
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: The response expressly maintains that a new arrow scale changes actual velocity. D=0 despite the earlier correct explanation.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "The response expressly maintains that a new arrow scale changes actual velocity. D=0 despite the earlier correct explanation."
+        }
+      }
+    },
+    {
+      "id": "S12",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 12,
+        "pass": true,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: Alle drei D-Belege sind vorhanden; der frühere Kontaktgedanke wird ausdrücklich zurückgenommen und fachlich korrigiert. Es bleibt kein aufrechterhaltener Widerspruch.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "Alle drei D-Belege sind vorhanden; der frühere Kontaktgedanke wird ausdrücklich zurückgenommen und fachlich korrigiert. Es bleibt kein aufrechterhaltener Widerspruch."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 12,
+        "pass": true,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: All three D components are present; the earlier contact idea is expressly retracted and corrected. No maintained contradiction remains.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "All three D components are present; the earlier contact idea is expressly retracted and corrected. No maintained contradiction remains."
+        }
+      }
+    },
+    {
+      "id": "S13",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 1,
+          "C": 1.5,
+          "D": 3
+        },
+        "total": 6.5,
+        "pass": false,
+        "rationale": "A: Nur richtige textliche Zuordnung zu A: 1. Es gibt keine tatsächlichen gezeichneten Anfänge. B: Nur richtige textliche Richtung relativ zum Boden: 1. Die beiden Richtungszeichnungen fehlen. C: C(i)=1 und C(ii)=0,5 für richtige Rechnung ohne Zeichnung; C(iii)=0, da die geforderten getrennten Legenden in tatsächlichen Darstellungen fehlen. Textliche Zeichnungsbeschreibung ersetzt diese Belege nicht. D: 2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert.",
+        "criterionEvidence": {
+          "A": "Nur richtige textliche Zuordnung zu A: 1. Es gibt keine tatsächlichen gezeichneten Anfänge.",
+          "B": "Nur richtige textliche Richtung relativ zum Boden: 1. Die beiden Richtungszeichnungen fehlen.",
+          "C": "C(i)=1 und C(ii)=0,5 für richtige Rechnung ohne Zeichnung; C(iii)=0, da die geforderten getrennten Legenden in tatsächlichen Darstellungen fehlen. Textliche Zeichnungsbeschreibung ersetzt diese Belege nicht.",
+          "D": "2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 1,
+          "C": 1.5,
+          "D": 3
+        },
+        "total": 6.5,
+        "pass": false,
+        "rationale": "A: Only the correct textual assignment to A: 1. No actual drawn origins exist. B: Only the correct textual direction relative to ground: 1. Both directional drawings are absent. C: C(i)=1 and C(ii)=0.5 for correct working without a drawing; C(iii)=0 because the required separate legends in actual drawings are absent. Describing drawings in text does not supply that evidence. D: 2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged.",
+        "criterionEvidence": {
+          "A": "Only the correct textual assignment to A: 1. No actual drawn origins exist.",
+          "B": "Only the correct textual direction relative to ground: 1. Both directional drawings are absent.",
+          "C": "C(i)=1 and C(ii)=0.5 for correct working without a drawing; C(iii)=0 because the required separate legends in actual drawings are absent. Describing drawings in text does not supply that evidence.",
+          "D": "2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged."
+        }
+      }
+    },
+    {
+      "id": "S14",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 2.5,
+          "D": 3
+        },
+        "total": 11.5,
+        "pass": true,
+        "rationale": "A: Zuordnung zu A richtig; beide Pfeile in R05 beginnen an A. B: Text liest rechts; R05 zeigt beide Köpfe rechts. C: 3·2=6 m/s und beide Skalen richtig. Die einzige isolierte Division 6/3=2,5 kostet 0,5; R05 übernimmt genau diese Länge, dafür kein zweiter Abzug. D: Die Spitze bleibt auch bei der übernommenen 2,5-cm-Länge vor B; ihre Bedeutung und die physikalischen Invarianten sind ausdrücklich richtig. Keine erneute Belastung der falschen Länge.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A richtig; beide Pfeile in R05 beginnen an A.",
+          "B": "Text liest rechts; R05 zeigt beide Köpfe rechts.",
+          "C": "3·2=6 m/s und beide Skalen richtig. Die einzige isolierte Division 6/3=2,5 kostet 0,5; R05 übernimmt genau diese Länge, dafür kein zweiter Abzug.",
+          "D": "Die Spitze bleibt auch bei der übernommenen 2,5-cm-Länge vor B; ihre Bedeutung und die physikalischen Invarianten sind ausdrücklich richtig. Keine erneute Belastung der falschen Länge."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 2.5,
+          "D": 3
+        },
+        "total": 11.5,
+        "pass": true,
+        "rationale": "A: Correct assignment to A; both arrows in R05 start at A. B: Text reads rightwards; R05 shows both heads pointing right. C: 3·2=6 m/s and both scales are correct. The one isolated division slip 6/3=2.5 costs 0.5; R05 consistently copies that length, with no second deduction. D: The tip remains short of B even at the carried 2.5-cm length; tip meaning and physical invariants are expressly correct. No repeat charge for the wrong length.",
+        "criterionEvidence": {
+          "A": "Correct assignment to A; both arrows in R05 start at A.",
+          "B": "Text reads rightwards; R05 shows both heads pointing right.",
+          "C": "3·2=6 m/s and both scales are correct. The one isolated division slip 6/3=2.5 costs 0.5; R05 consistently copies that length, with no second deduction.",
+          "D": "The tip remains short of B even at the carried 2.5-cm length; tip meaning and physical invariants are expressly correct. No repeat charge for the wrong length."
+        }
+      }
+    },
+    {
+      "id": "S15",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 2.5,
+          "D": 3
+        },
+        "total": 11.5,
+        "pass": true,
+        "rationale": "A: Zuordnung und beide sichtbaren Anfänge bei A in R06 richtig. B: Text und beide sichtbaren R06-Köpfe zeigen rechts. C: Rechnung und Verhältnis der Längen sind richtig; R06 schreibt beide v_A-Legenden mit m statt m/s. Bei ausdrücklich richtiger Unterscheidung ist dies ein einmal wiederholter Formfehler: insgesamt −0,5, nicht zweimal. D: 2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert.",
+        "criterionEvidence": {
+          "A": "Zuordnung und beide sichtbaren Anfänge bei A in R06 richtig.",
+          "B": "Text und beide sichtbaren R06-Köpfe zeigen rechts.",
+          "C": "Rechnung und Verhältnis der Längen sind richtig; R06 schreibt beide v_A-Legenden mit m statt m/s. Bei ausdrücklich richtiger Unterscheidung ist dies ein einmal wiederholter Formfehler: insgesamt −0,5, nicht zweimal.",
+          "D": "2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 2.5,
+          "D": 3
+        },
+        "total": 11.5,
+        "pass": true,
+        "rationale": "A: Assignment and both visible R06 origins at A are correct. B: Text and both visible R06 heads show rightwards. C: Working and length ratio are correct; R06 writes m instead of m/s in both v_A legends. With the conceptual distinction expressly correct, this is one repeated formal slip: 0.5 total, not twice. D: 2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged.",
+        "criterionEvidence": {
+          "A": "Assignment and both visible R06 origins at A are correct.",
+          "B": "Text and both visible R06 heads show rightwards.",
+          "C": "Working and length ratio are correct; R06 writes m instead of m/s in both v_A legends. With the conceptual distinction expressly correct, this is one repeated formal slip: 0.5 total, not twice.",
+          "D": "2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged."
+        }
+      }
+    },
+    {
+      "id": "S16",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 2,
+          "C": 3,
+          "D": 3
+        },
+        "total": 11,
+        "pass": true,
+        "rationale": "A: Zuordnung richtig; auch der unvollständige zweite gerichtete Strich in R08 setzt bei A an. B: Textliches Lesen=1, Kopf rechts in I=1, in II kein erkennbarer Kopf=0. Die Absichtserklärung ersetzt den ausdrücklich verlangten visuellen Richtungsbeleg nicht. Daher B=2, ohne weiteren Abzug; die Abgrenzung zur kleinen Zeichenfehlerregel ist klärungsbedürftig. C: Richtige Rechnungen, tatsächlicher 2-cm-Strich und getrennte korrekte Skalen. Der fehlende Kopf ist bereits in B gewertet und kostet keine C-Folgepunkte. D: 2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert.",
+        "criterionEvidence": {
+          "A": "Zuordnung richtig; auch der unvollständige zweite gerichtete Strich in R08 setzt bei A an.",
+          "B": "Textliches Lesen=1, Kopf rechts in I=1, in II kein erkennbarer Kopf=0. Die Absichtserklärung ersetzt den ausdrücklich verlangten visuellen Richtungsbeleg nicht. Daher B=2, ohne weiteren Abzug; die Abgrenzung zur kleinen Zeichenfehlerregel ist klärungsbedürftig.",
+          "C": "Richtige Rechnungen, tatsächlicher 2-cm-Strich und getrennte korrekte Skalen. Der fehlende Kopf ist bereits in B gewertet und kostet keine C-Folgepunkte.",
+          "D": "2<3 begründet die Spitze vor B; Maßstabszufall statt Ort/Kontakt erklärt; Orte und wirkliche Geschwindigkeit ausdrücklich unverändert."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 2,
+          "C": 3,
+          "D": 3
+        },
+        "total": 11,
+        "pass": true,
+        "rationale": "A: Assignment correct; the incomplete second directed segment in R08 also starts at A. B: Textual reading=1, rightward head in I=1, no identifiable head in II=0. Stating an intention does not supply the expressly required visual directional evidence. Thus B=2 with no extra deduction; the boundary with the minor drawing-slip rule needs clarification. C: Correct calculations, actual 2-cm segment, and separate correct scales. The missing head is already scored in B and loses no consequential C credit. D: 2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged.",
+        "criterionEvidence": {
+          "A": "Assignment correct; the incomplete second directed segment in R08 also starts at A.",
+          "B": "Textual reading=1, rightward head in I=1, no identifiable head in II=0. Stating an intention does not supply the expressly required visual directional evidence. Thus B=2 with no extra deduction; the boundary with the minor drawing-slip rule needs clarification.",
+          "C": "Correct calculations, actual 2-cm segment, and separate correct scales. The missing head is already scored in B and loses no consequential C credit.",
+          "D": "2<3 explains why the tip is short of B; scale coincidence rather than position/contact is explained; positions and actual velocity are explicitly unchanged."
+        }
+      }
+    },
+    {
+      "id": "S17",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 0,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: R02 zeigt beide Anfänge an B; der Text ordnet die Geschwindigkeit absichtlich und aufrechterhalten B zu. A=0 wegen Trägerfehlvorstellung. B: A relativ zum Boden rechts gelesen; R02 zeigt rechtsweisende Köpfe. Der falsche Träger/Ansatz wurde in A gewertet. C: 3·2=6 m/s, 6/3=2 cm; R02 zeigt die Längen 3 und 2 cm und richtige Skalen. Die Verschiebung des Ansatzes wird hier nicht nochmals belastet. D: Die beabsichtigte Aufgabensituation wird textlich mit 2<3, fehlendem Kontakt-/Ortsbeleg und unveränderten Orten/Geschwindigkeit richtig gedeutet. R02 liegt wegen des bereits in A bewerteten falschen Ansatzes rechts von B; diesen Ursprung nicht nochmals als D-Fehler zählen. Der sichtbare/Text-Widerspruch bleibt im Befund benannt.",
+        "criterionEvidence": {
+          "A": "R02 zeigt beide Anfänge an B; der Text ordnet die Geschwindigkeit absichtlich und aufrechterhalten B zu. A=0 wegen Trägerfehlvorstellung.",
+          "B": "A relativ zum Boden rechts gelesen; R02 zeigt rechtsweisende Köpfe. Der falsche Träger/Ansatz wurde in A gewertet.",
+          "C": "3·2=6 m/s, 6/3=2 cm; R02 zeigt die Längen 3 und 2 cm und richtige Skalen. Die Verschiebung des Ansatzes wird hier nicht nochmals belastet.",
+          "D": "Die beabsichtigte Aufgabensituation wird textlich mit 2<3, fehlendem Kontakt-/Ortsbeleg und unveränderten Orten/Geschwindigkeit richtig gedeutet. R02 liegt wegen des bereits in A bewerteten falschen Ansatzes rechts von B; diesen Ursprung nicht nochmals als D-Fehler zählen. Der sichtbare/Text-Widerspruch bleibt im Befund benannt."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 0,
+          "B": 3,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: R02 shows both origins at B; the text deliberately and persistently assigns velocity to B. A=0 for the carrier misconception. B: Reads A relative to the ground as rightwards; R02 has rightward heads. Wrong carrier/origin was scored in A. C: 3·2=6 m/s, 6/3=2 cm; R02 shows 3- and 2-cm lengths and correct scales. The displaced origin is not charged again here. D: Text correctly interprets the intended task situation using 2<3, no contact/position inference and unchanged positions/velocity. R02 is right of B because of the wrong origin already scored in A; do not charge that origin again as a D error. The visible/text contradiction remains reported.",
+        "criterionEvidence": {
+          "A": "R02 shows both origins at B; the text deliberately and persistently assigns velocity to B. A=0 for the carrier misconception.",
+          "B": "Reads A relative to the ground as rightwards; R02 has rightward heads. Wrong carrier/origin was scored in A.",
+          "C": "3·2=6 m/s, 6/3=2 cm; R02 shows 3- and 2-cm lengths and correct scales. The displaced origin is not charged again here.",
+          "D": "Text correctly interprets the intended task situation using 2<3, no contact/position inference and unchanged positions/velocity. R02 is right of B because of the wrong origin already scored in A; do not charge that origin again as a D error. The visible/text contradiction remains reported."
+        }
+      }
+    },
+    {
+      "id": "S18",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 0,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Geschwindigkeit A zugeordnet; R03 zeigt beide Schaftanfänge bei A. B: R03 zeigt beide Köpfe links; der Text hält links ausdrücklich für dieselbe Richtung wie rechts. Systematische Richtungsverwechslung: B=0. C: Beträge 3 und 2 cm sowie Rechnungen und Maßstäbe richtig; der schon in B bewertete Linksfehler kostet keine C-Punkte. D: Die Aussage zur Aufgabensituation 2<3 und zur Spitze als maßstabsabhängigem Nicht-Ort/Nicht-Kontakt sowie die Invarianten sind ausdrücklich vorhanden. Die falsche Pfeilrichtung wird nicht nochmals in D belastet.",
+        "criterionEvidence": {
+          "A": "Geschwindigkeit A zugeordnet; R03 zeigt beide Schaftanfänge bei A.",
+          "B": "R03 zeigt beide Köpfe links; der Text hält links ausdrücklich für dieselbe Richtung wie rechts. Systematische Richtungsverwechslung: B=0.",
+          "C": "Beträge 3 und 2 cm sowie Rechnungen und Maßstäbe richtig; der schon in B bewertete Linksfehler kostet keine C-Punkte.",
+          "D": "Die Aussage zur Aufgabensituation 2<3 und zur Spitze als maßstabsabhängigem Nicht-Ort/Nicht-Kontakt sowie die Invarianten sind ausdrücklich vorhanden. Die falsche Pfeilrichtung wird nicht nochmals in D belastet."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 0,
+          "C": 3,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Assigns velocity to A; R03 shows both shaft origins at A. B: R03 shows both heads pointing left; the text expressly maintains that left is the same direction as right. Systematic direction misconception: B=0. C: The 3- and 2-cm magnitudes, calculations and scales are correct; the leftward error already scored in B loses no C points. D: The task-situation claim 2<3, scale-dependent non-position/non-contact tip meaning, and invariants are explicit. The wrong arrow direction is not charged again in D.",
+        "criterionEvidence": {
+          "A": "Assigns velocity to A; R03 shows both shaft origins at A.",
+          "B": "R03 shows both heads pointing left; the text expressly maintains that left is the same direction as right. Systematic direction misconception: B=0.",
+          "C": "The 3- and 2-cm magnitudes, calculations and scales are correct; the leftward error already scored in B loses no C points.",
+          "D": "The task-situation claim 2<3, scale-dependent non-position/non-contact tip meaning, and invariants are explicit. The wrong arrow direction is not charged again in D."
+        }
+      }
+    },
+    {
+      "id": "S19",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 0,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: A zugeordnet; R04 zeigt beide Anfänge bei A. B: Text liest rechts; beide R04-Pfeile zeigen rechts. C: R04 zeigt in II weiterhin 3 cm; der Text hält die falsche allgemeine Regel unveränderter Pfeillänge bei Maßstabswechsel aufrecht. Das ist kein lokaler Rechenfehler: C=0. D: Die unabhängigen Textbelege 2<3, Maßstabszufall statt Ort/Kontakt und unveränderte Orte/wirkliche Geschwindigkeit sind vorhanden. Sie widersprechen teilweise der beibehaltenen falschen Längenregel und R04. Diese in C vollständig bewertete Prämisse wird nicht nochmals D angelastet; die ausdrücklich richtigen D-Aussagen werden gewertet.",
+        "criterionEvidence": {
+          "A": "A zugeordnet; R04 zeigt beide Anfänge bei A.",
+          "B": "Text liest rechts; beide R04-Pfeile zeigen rechts.",
+          "C": "R04 zeigt in II weiterhin 3 cm; der Text hält die falsche allgemeine Regel unveränderter Pfeillänge bei Maßstabswechsel aufrecht. Das ist kein lokaler Rechenfehler: C=0.",
+          "D": "Die unabhängigen Textbelege 2<3, Maßstabszufall statt Ort/Kontakt und unveränderte Orte/wirkliche Geschwindigkeit sind vorhanden. Sie widersprechen teilweise der beibehaltenen falschen Längenregel und R04. Diese in C vollständig bewertete Prämisse wird nicht nochmals D angelastet; die ausdrücklich richtigen D-Aussagen werden gewertet."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 0,
+          "D": 3
+        },
+        "total": 9,
+        "pass": false,
+        "rationale": "A: Assigns to A; R04 shows both origins at A. B: Text reads rightwards; both R04 arrows point right. C: R04 retains 3 cm in II; the text maintains the false general rule that arrow length stays fixed under a scale change. This is not a local arithmetic slip: C=0. D: Independent textual evidence states 2<3, scale coincidence rather than position/contact, and unchanged positions/actual velocity. This partly contradicts the maintained wrong length rule and R04. The premise fully scored in C is not charged again in D; the expressly correct D statements receive credit.",
+        "criterionEvidence": {
+          "A": "Assigns to A; R04 shows both origins at A.",
+          "B": "Text reads rightwards; both R04 arrows point right.",
+          "C": "R04 retains 3 cm in II; the text maintains the false general rule that arrow length stays fixed under a scale change. This is not a local arithmetic slip: C=0.",
+          "D": "Independent textual evidence states 2<3, scale coincidence rather than position/contact, and unchanged positions/actual velocity. This partly contradicts the maintained wrong length rule and R04. The premise fully scored in C is not charged again in D; the expressly correct D statements receive credit."
+        }
+      }
+    },
+    {
+      "id": "S20",
+      "bilingualDifference": "None; equivalent evidence and identical criterion scores.",
+      "de": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 2
+        },
+        "total": 11,
+        "pass": true,
+        "rationale": "A: Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A. B: A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts. C: 3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten. D: D(i)=1 aus der tatsächlichen Spitze vor B und der 2-cm-Rechnung; D(ii)=1 aus der ausdrücklichen Erklärung Maßstab statt Kontakt/Ort. D(iii)=0: ausdrücklich unveränderte physikalische Größen werden nicht erklärt und nicht bloß aus beiden Skalen ergänzt.",
+        "criterionEvidence": {
+          "A": "Zuordnung zu A ausdrücklich richtig; R01 zeigt beide Anfänge bei A.",
+          "B": "A relativ zum Boden nach rechts gelesen; beide sichtbaren Köpfe weisen rechts.",
+          "C": "3·2=6 m/s und 6/3=2 cm; R01 zeigt 2 cm sowie getrennte x- und v_A-Skalen mit richtigen Einheiten.",
+          "D": "D(i)=1 aus der tatsächlichen Spitze vor B und der 2-cm-Rechnung; D(ii)=1 aus der ausdrücklichen Erklärung Maßstab statt Kontakt/Ort. D(iii)=0: ausdrücklich unveränderte physikalische Größen werden nicht erklärt und nicht bloß aus beiden Skalen ergänzt."
+        }
+      },
+      "en": {
+        "points": {
+          "A": 3,
+          "B": 3,
+          "C": 3,
+          "D": 2
+        },
+        "total": 11,
+        "pass": true,
+        "rationale": "A: Explicitly assigns the velocity to A; R01 shows both arrow origins at A. B: Reads A relative to the ground as rightwards; both visible arrowheads point right. C: 3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units. D: D(i)=1 from the actual tip short of B and 2-cm working; D(ii)=1 from the explicit scale rather than contact/position explanation. D(iii)=0: unchanged physical quantities are not explicitly explained and are not inferred merely from the two scales.",
+        "criterionEvidence": {
+          "A": "Explicitly assigns the velocity to A; R01 shows both arrow origins at A.",
+          "B": "Reads A relative to the ground as rightwards; both visible arrowheads point right.",
+          "C": "3·2=6 m/s and 6/3=2 cm; R01 shows 2 cm and separate x/v_A scales with correct units.",
+          "D": "D(i)=1 from the actual tip short of B and 2-cm working; D(ii)=1 from the explicit scale rather than contact/position explanation. D(iii)=0: unchanged physical quantities are not explicitly explained and are not inferred merely from the two scales."
+        }
+      }
+    }
+  ]
+}

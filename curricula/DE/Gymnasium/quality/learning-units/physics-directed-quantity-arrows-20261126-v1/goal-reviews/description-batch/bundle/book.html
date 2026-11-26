@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Gerichtete Größen und die vier fachlichen Nutzer sowie Newtons drittes Axiom</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-facts .cover-license dd { line-height: 1.35; overflow-wrap: break-word; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Gerichtete Größen und die vier fachlichen Nutzer sowie Newtons drittes Axiom</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>6 atomare Lernziele</dt><dd>10 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6</code></dd></div>
+      <div class="cover-license"><dt>Lizenz</dt><dd>Offene Bildungsressource (OER) unter CC BY 4.0 (creativecommons.org/licenses/by/4.0): kostenlos nutzen, weitergeben und bearbeiten, auch kommerziell, mit Quellenangabe und Kennzeichnung von Änderungen. Das gilt für die Inhalte von SkillPilot; amtliche Originalquellen und Zitate behalten ihre eigenen Bedingungen.</dd></div>
+      <div class="cover-license"><dt>Quellenangabe</dt><dd>SkillPilot — Gerichtete Größen und die vier fachlichen Nutzer sowie Newtons drittes Axiom, curricular-atomic-v1, skillpilot.com/lernzielbuch, CC BY 4.0</dd></div>
+      <div class="cover-license"><dt>Bilder</dt><dd>Die Visualisierungen sind KI-generiert und von SkillPilot kuratiert. Das ist eine Herkunftsangabe; soweit an den Bildern Rechte bestehen, gilt auch für sie CC BY 4.0.</dd></div>
+      <div class="cover-license"><dt>Offene Daten</dt><dd>Die Lehrplandaten liegen bearbeitbar als JSON vor: github.com/enpasos/skillpilot</dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:review-bf980fff-b62b-4ea4-a20d-31681a7ad785" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-d2b81020b39d16f95739fa49" aria-label="Physik"><a href="#goal-b77a7e93-22f9-5722-a4cc-f18a149ab030"><span class="toc-entry-label">Physik</span></a></h2>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:9645f0d8-43a3-5f29-873c-daa5ace638db" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-840351dc00180832cb267b2f" aria-label="Mechanische Grundlagen (Sek I)"><a href="#goal-41d35667-0296-5f84-bc12-202ffc440be0"><span class="toc-entry-label">Mechanische&#160;<wbr>Grundlagen&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:10bb8262-fb0f-40cf-94ef-408420ec7cf2" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-dad2f8bb6a4fa4f26a370918" aria-label="Kräfteigenschaften untersuchen"><a href="#goal-41d35667-0296-5f84-bc12-202ffc440be0"><span class="toc-entry-label">Kräfteigenschaften&#160;<wbr>untersuchen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:review-942de15b-32f1-5713-80e5-e7aeb8749fc4" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-8b9ae1c3402691f741dce498" aria-label="Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen"><a href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456"><span class="toc-entry-label">Einführungsphase:&#160;<wbr>Mechanik,&#160;<wbr>Gravitation,&#160;<wbr>Thermodynamik&#160;<wbr>und&#160;<wbr>Drehbewegungen</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:review-9340e894-bb0d-45a4-91f2-b90a63ad50a8" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-5859019eae8c31b46adcd48b" aria-label="E.2 Newton&#39;sche Axiome und Erhaltungssätze"><a href="#goal-ad984bb6-e225-432a-952d-d83cda40b7f8"><span class="toc-entry-label">E.2&#160;<wbr>Newton&#39;sche&#160;<wbr>Axiome&#160;<wbr>und&#160;<wbr>Erhaltungssätze</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="structure:review-4dc9a094-66d7-4d4d-9436-134aabe48f39" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-c8c2e9e10eb11ef429347f73" aria-label="Newtons Axiome und Inertialsysteme"><a href="#goal-ad984bb6-e225-432a-952d-d83cda40b7f8"><span class="toc-entry-label">Newtons&#160;<wbr>Axiome&#160;<wbr>und&#160;<wbr>Inertialsysteme</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:04d1d2df-a94b-5db4-8d07-cbb512c2e0b9" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-a9b9f3e1375ffdc08111e8aa" aria-label="Weitere Bewegungen"><a href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456"><span class="toc-entry-label">Weitere&#160;<wbr>Bewegungen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:0735269d-703d-57ab-8861-6f7e1c5e2b8a" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-7f1d12f8b7a07a8fb357e049" aria-label="Q1 Elektrisches und magnetisches Feld"><a href="#goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe"><span class="toc-entry-label">Q1&#160;<wbr>Elektrisches&#160;<wbr>und&#160;<wbr>magnetisches&#160;<wbr>Feld</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-4c6b8f3c7c1b8bdc652312cf" aria-label="Elektrisches Feld"><a href="#goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe"><span class="toc-entry-label">Elektrisches&#160;<wbr>Feld</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:7df599e8-21ac-5be4-89f9-9b2a6f2e4465" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-61e1ae01b98300319e842dac" aria-label="Grundlagen des elektrischen Feldes"><a href="#goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe"><span class="toc-entry-label">Grundlagen&#160;<wbr>des&#160;<wbr>elektrischen&#160;<wbr>Feldes</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page goal-page--dense-relations" id="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030" data-goal-id="b77a7e93-22f9-5722-a4cc-f18a149ab030" data-page-number="1" data-chapter-ids="structure:review-bf980fff-b62b-4ea4-a20d-31681a7ad785" aria-labelledby="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-title"><a class="goal-self-link" href="#goal-b77a7e93-22f9-5722-a4cc-f18a149ab030">Pfeile für gerichtete Größen lesen und zeichnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b77a7e93-22f9-5722-a4cc-f18a149ab030</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-d2b81020b39d16f95739fa49">Physik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c8063f4a83c2e2a5026bb66812b5439b235e9ea1e4f859b28213cf9123bdc39f" data-rendered-digest="sha256:39c1f1fd004f4023d736b257ca12becb6ea3c10913c7b945563419bd6a40063e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/b77a7e93-22f9-5722-a4cc-f18a149ab030/b77a7e93-22f9-5722-a4cc-f18a149ab030.jpg" alt="Derselbe Wagen am selben Ort mit 4 m/s nach rechts. In der oberen Zeichnung ist sein Pfeil zwei 2-m/s-Bezugsstriche lang, unten einen 4-m/s-Bezugsstrich. Beide Pfeile beginnen auf dem Wagen. Die unterschiedliche Lage ihrer Spitzen folgt aus dem jeweiligen Pfeilmaßstab.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-description-heading">
+        <p class="section-heading" id="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einer ebenen Skizze einen Größenpfeil dem zugehörigen Körper oder markierten Punkt zuordnen, ihn dort in der Richtung der Größe ansetzen und seinen Betrag mit einem vorgegebenen Pfeilmaßstab ablesen oder zeichnen. Sie erklärt an zwei Darstellungen derselben Situation, warum sich beim Wechsel des Pfeilmaßstabs die gezeichnete Spitze verschiebt, während Ort und physikalischer Betrag gleich bleiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-requires-heading">
+          <p class="section-heading" id="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-reverse-heading">
+          <p class="section-heading" id="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-41d35667-0296-5f84-bc12-202ffc440be0"><span>Kräfte vektoriell zusammensetzen und Resultierende bestimmen</span><code>41d35667-0296-5f84-bc12-202ffc440be0</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6"><span>Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen</span><code>d61ea362-f6c3-5eab-ac30-2d0e265ac0f6</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe"><span>Superposition elektrischer Felder</span><code>4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456"><span>Reibungskräfte qualitativ verstehen</span><code>5fd45dbc-0eb1-591b-99a9-7386336f1456</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5c44b9ba-9b05-4774-95d5-073230d3fc4f" rel="noreferrer noopener"><span>Warum Physik? – Weltverständnis &amp; Zukunft</span> <code>5c44b9ba-9b05-4774-95d5-073230d3fc4f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b77a7e93-22f9-5722-a4cc-f18a149ab030-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-449d9732-a869-5126-8879-564da5c3d263" rel="noreferrer noopener"><span>Prüfungsaufgabe: Wirkungslinien und Schwerpunkt an einer Planke deuten</span> <code>449d9732-a869-5126-8879-564da5c3d263</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-4ea1b93f-2dba-59ac-87ab-29af6c55cc37" rel="noreferrer noopener"><span>Prüfungsaufgabe: Geschwindigkeit beim waagerechten Wurf als Pfeil bestimmen</span> <code>4ea1b93f-2dba-59ac-87ab-29af6c55cc37</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-61225322-fa5b-5414-b7da-ca90c9035adb" rel="noreferrer noopener"><span>Prüfungsaufgabe: Potenziale und Äquipotenziallinien konstruieren</span> <code>61225322-fa5b-5414-b7da-ca90c9035adb</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba" rel="noreferrer noopener"><span>Prüfungsaufgabe: Reibung beim Ziehen und Gehen deuten</span> <code>7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-840a82e3-44aa-5d0f-8b6f-8a067d057d14" rel="noreferrer noopener"><span>Prüfungsaufgabe: Auftrieb und Luftwiderstand im Windkanal einordnen</span> <code>840a82e3-44aa-5d0f-8b6f-8a067d057d14</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-93208b0d-2956-5aae-8aa4-bcef718f06a4" rel="noreferrer noopener"><span>Prüfungsaufgabe: Schwebedaten und Ladungsquantelung auswerten</span> <code>93208b0d-2956-5aae-8aa4-bcef718f06a4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-9fe94c34-8100-5f4c-b646-69c1983f8adc" rel="noreferrer noopener"><span>Prüfungsaufgabe: Reibung, Wechselwirkung und Ladungsbilanz</span> <code>9fe94c34-8100-5f4c-b646-69c1983f8adc</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a2a7d916-83c6-5ed6-90f2-5c4d9e36abf3" rel="noreferrer noopener"><span>Prüfungsaufgabe: Spannung und Zeitbasis in der Braunschen Röhre</span> <code>a2a7d916-83c6-5ed6-90f2-5c4d9e36abf3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b1808b4c-5e02-5e1f-831f-47ee126e00ee" rel="noreferrer noopener"><span>Prüfungsaufgabe: Eine Kurvenfahrt mit Zentripetalkraft analysieren</span> <code>b1808b4c-5e02-5e1f-831f-47ee126e00ee</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b4175564-4397-5c08-90ba-4f13231a75ec" rel="noreferrer noopener"><span>Feldbilder und Magnetfeldmodelle eigenständig anwenden</span> <code>b4175564-4397-5c08-90ba-4f13231a75ec</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-b7e366e2-8323-5171-83a1-1f536c2062d8" rel="noreferrer noopener"><span>Prüfungsaufgabe: Einen Fall mit Luftwiderstand modellieren</span> <code>b7e366e2-8323-5171-83a1-1f536c2062d8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-cb45d084-4e0f-5926-958c-f1d0ce456906" rel="noreferrer noopener"><span>Prüfungsaufgabe: Lorentzkraft und kontrollierte Bahnenvergleiche</span> <code>cb45d084-4e0f-5926-958c-f1d0ce456906</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d044ffb0-eba1-5063-bd71-ee1d351b036f" rel="noreferrer noopener"><span>Prüfungsaufgabe: Elektrische Feldkraft, Bahn und Energie verknüpfen</span> <code>d044ffb0-eba1-5063-bd71-ee1d351b036f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e1d3c599-6964-5094-83ee-7fb1ecd161ce" rel="noreferrer noopener"><span>Prüfungsaufgabe: Auftrieb in Wasser und Luft erklären</span> <code>e1d3c599-6964-5094-83ee-7fb1ecd161ce</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 6</span>
+      <span>Buch-Digest <code>sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:94d3e1192c7b1858b7af43135a010df7e648f746e0866ba8e91b965d4f046b56</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=physics-directed-quantity-arrows-20261126-v1-description&amp;edition=curricular-atomic-v1&amp;goalId=b77a7e93-22f9-5722-a4cc-f18a149ab030&amp;goalFingerprint=sha256%3A94d3e1192c7b1858b7af43135a010df7e648f746e0866ba8e91b965d4f046b56&amp;pageFingerprint=sha256%3Abf3124ba1ab6ade6906e1f94adb14b656c4551459fcc683ad8a61845b4ffff86&amp;bookDigest=sha256%3Ab974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-41d35667-0296-5f84-bc12-202ffc440be0" data-goal-id="41d35667-0296-5f84-bc12-202ffc440be0" data-page-number="2" data-chapter-ids="structure:review-bf980fff-b62b-4ea4-a20d-31681a7ad785 goal:9645f0d8-43a3-5f29-873c-daa5ace638db goal:10bb8262-fb0f-40cf-94ef-408420ec7cf2" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-title"><a class="goal-self-link" href="#goal-41d35667-0296-5f84-bc12-202ffc440be0">Kräfte vektoriell zusammensetzen und Resultierende bestimmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>41d35667-0296-5f84-bc12-202ffc440be0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-d2b81020b39d16f95739fa49">Physik</a></li><li><a href="#chapter-840351dc00180832cb267b2f">Mechanische Grundlagen (Sek I)</a></li><li><a href="#chapter-dad2f8bb6a4fa4f26a370918">Kräfteigenschaften untersuchen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f631200a4f5f4ae96f42202013fe2f27735707ad5262c1b1eaca4ec9d780de23" data-rendered-digest="sha256:40fccd7323cf24a7da42ebe4ee06d7329656c084321dd1a14a67c788d9566838" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/41d35667-0296-5f84-bc12-202ffc440be0/41d35667-0296-5f84-bc12-202ffc440be0.png" alt="Didaktische Visualisierung zum Lernziel &quot;Kräfte vektoriell zusammensetzen und Resultierende bestimmen&quot;. Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäblich als Vektoren darstellen, grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung im Kontext deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-description-heading">
+        <p class="section-heading" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann mehrere an einem Körper angreifende Kräfte maßstäblich als Vektoren darstellen, grafisch zu einer resultierenden Kraft zusammensetzen und deren Betrag und Richtung im Kontext deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-requires-heading">
+          <p class="section-heading" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b77a7e93-22f9-5722-a4cc-f18a149ab030"><span>Pfeile für gerichtete Größen lesen und zeichnen</span><code>b77a7e93-22f9-5722-a4cc-f18a149ab030</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-reverse-heading">
+          <p class="section-heading" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-596345cd-679e-5c7b-955f-e8cb1ec81e96" rel="noreferrer noopener"><span>Einfache proportionale Sachaufgaben mit Dreisatz lösen</span> <code>596345cd-679e-5c7b-955f-e8cb1ec81e96</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5ea765ac-c279-551a-8a94-a07da2381e5b" rel="noreferrer noopener"><span>Kräfte und Trägheit qualitativ erklären</span> <code>5ea765ac-c279-551a-8a94-a07da2381e5b</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-41d35667-0296-5f84-bc12-202ffc440be0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-8f62ab5e-20fc-562f-8121-63c082313e6e" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kräfte an einer Aufhängung vektoriell bilanzieren</span> <code>8f62ab5e-20fc-562f-8121-63c082313e6e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-d8bad724-03ea-510a-8415-928332ed4979" rel="noreferrer noopener"><span>Prüfungsaufgabe: Kräfte experimentell und grafisch untersuchen</span> <code>d8bad724-03ea-510a-8415-928332ed4979</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-327302e3-5b36-46f8-9c16-73f24583b0eb" rel="noreferrer noopener"><span>Arbeit und einfache Maschinen qualitativ deuten</span> <code>327302e3-5b36-46f8-9c16-73f24583b0eb</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 6</span>
+      <span>Buch-Digest <code>sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:adb241e4277a0d42f8e36a57ab1adb9e796fe465327271e4b885aa344760fe87</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=physics-directed-quantity-arrows-20261126-v1-description&amp;edition=curricular-atomic-v1&amp;goalId=41d35667-0296-5f84-bc12-202ffc440be0&amp;goalFingerprint=sha256%3Aadb241e4277a0d42f8e36a57ab1adb9e796fe465327271e4b885aa344760fe87&amp;pageFingerprint=sha256%3A726ef18441e230b616a7fb3bba34fb72cc5585f8c67f83ee212f9b744802a5c1&amp;bookDigest=sha256%3Ab974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe" data-goal-id="4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe" data-page-number="3" data-chapter-ids="structure:review-bf980fff-b62b-4ea4-a20d-31681a7ad785 goal:0735269d-703d-57ab-8861-6f7e1c5e2b8a goal:d7bc20e0-5ee9-593a-a7a9-d7cbb88392e6 goal:7df599e8-21ac-5be4-89f9-9b2a6f2e4465" aria-labelledby="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-title"><a class="goal-self-link" href="#goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe">Superposition elektrischer Felder</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-d2b81020b39d16f95739fa49">Physik</a></li><li><a href="#chapter-7f1d12f8b7a07a8fb357e049">Q1 Elektrisches und magnetisches Feld</a></li><li><a href="#chapter-4c6b8f3c7c1b8bdc652312cf">Elektrisches Feld</a></li><li><a href="#chapter-61e1ae01b98300319e842dac">Grundlagen des elektrischen Feldes</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a163d4664239d8c1ddf397adf133efd3154ebd768bed48497af319bdfea66ba3" data-rendered-digest="sha256:9c724dd726c38b97b2e6e0bfb1ca6da7f83cd0f02179b1a24782e95907a7d2c2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe/4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Superposition elektrischer Felder&quot;. Die lernende Person kann elektrische Felder durch grafische Addition von Feldstärkevektoren überlagern und einfache Superpositionssituationen qualitativ auswerten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-description-heading">
+        <p class="section-heading" id="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann elektrische Felder durch grafische Addition von Feldstärkevektoren überlagern und einfache Superpositionssituationen qualitativ auswerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-requires-heading">
+          <p class="section-heading" id="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b77a7e93-22f9-5722-a4cc-f18a149ab030"><span>Pfeile für gerichtete Größen lesen und zeichnen</span><code>b77a7e93-22f9-5722-a4cc-f18a149ab030</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-reverse-heading">
+          <p class="section-heading" id="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=68a8ac50-f5f5-4e24-8aa9-5e408ca01ced&amp;edition=curricular-atomic-v1#goal-c63bbffd-8d1c-5fe2-a428-db194e6fe592" rel="noreferrer noopener"><span>Vektoren komponentenweise addieren und subtrahieren</span> <code>c63bbffd-8d1c-5fe2-a428-db194e6fe592</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-98e42cda-9e5d-5910-b2c0-3e631fd20c78" rel="noreferrer noopener"><span>Radialsymmetrische elektrische Felder beschreiben</span> <code>98e42cda-9e5d-5910-b2c0-3e631fd20c78</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-908a7f3d-0e2e-56e3-b04e-bff50c899309" rel="noreferrer noopener"><span>Prüfungsaufgabe: Radialfelder zeichnen und überlagern</span> <code>908a7f3d-0e2e-56e3-b04e-bff50c899309</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-f3de5922-dd45-4fb6-87c1-525d1952dd89" rel="noreferrer noopener"><span>Feldlinienbilder von Ladungs- und Leiteranordnungen deuten</span> <code>f3de5922-dd45-4fb6-87c1-525d1952dd89</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-455c65ca-814a-56ad-918a-013155883c52" rel="noreferrer noopener"><span>Quantitative Superposition elektrischer Felder</span> <code>455c65ca-814a-56ad-918a-013155883c52</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e19fccd7-6a35-5c9e-86e1-dcca76481e9c" rel="noreferrer noopener"><span>Elektrische Dipolfelder mit dem EKG verknüpfen</span> <code>e19fccd7-6a35-5c9e-86e1-dcca76481e9c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 6</span>
+      <span>Buch-Digest <code>sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cd52a4bf27fe29120f2e79faeff721a08f190277b043b5d19e2bdc094fb2106f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=physics-directed-quantity-arrows-20261126-v1-description&amp;edition=curricular-atomic-v1&amp;goalId=4ca83b3f-3605-5c0d-abc4-9f24b9e29bbe&amp;goalFingerprint=sha256%3Acd52a4bf27fe29120f2e79faeff721a08f190277b043b5d19e2bdc094fb2106f&amp;pageFingerprint=sha256%3Ace736135a75e5fb62875e31f44081823ed2fc4126d05978af11a8351f9282f4a&amp;bookDigest=sha256%3Ab974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456" data-goal-id="5fd45dbc-0eb1-591b-99a9-7386336f1456" data-page-number="4" data-chapter-ids="structure:review-bf980fff-b62b-4ea4-a20d-31681a7ad785 structure:review-942de15b-32f1-5713-80e5-e7aeb8749fc4 goal:04d1d2df-a94b-5db4-8d07-cbb512c2e0b9" aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-title"><a class="goal-self-link" href="#goal-5fd45dbc-0eb1-591b-99a9-7386336f1456">Reibungskräfte qualitativ verstehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5fd45dbc-0eb1-591b-99a9-7386336f1456</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-d2b81020b39d16f95739fa49">Physik</a></li><li><a href="#chapter-8b9ae1c3402691f741dce498">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-a9b9f3e1375ffdc08111e8aa">Weitere Bewegungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:566d80d298feec1431d32ef6bbf3ebaadd8efad93d225a904016bd2667aed110" data-rendered-digest="sha256:f4a8f0300ee16d066b4f0be47e7807069db197ff3aa803298696ac4700acc40d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/5fd45dbc-0eb1-591b-99a9-7386336f1456/5fd45dbc-0eb1-591b-99a9-7386336f1456.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Reibungskräfte qualitativ verstehen&quot;. Die lernende Person kann Haft- und Gleitreibung anhand der drohenden beziehungsweise bestehenden Relativbewegung an der Kontaktfläche unterscheiden, die Reibungskraft jeweils entgegen dieser Relativbewegung oder Relativbewegungstendenz einzeichnen und ihre Wirkung auf die Bewegung erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-description-heading">
+        <p class="section-heading" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Haft- und Gleitreibung anhand der drohenden beziehungsweise bestehenden Relativbewegung an der Kontaktfläche unterscheiden, die Reibungskraft jeweils entgegen dieser Relativbewegung oder Relativbewegungstendenz einzeichnen und ihre Wirkung auf die Bewegung erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-requires-heading">
+          <p class="section-heading" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b77a7e93-22f9-5722-a4cc-f18a149ab030"><span>Pfeile für gerichtete Größen lesen und zeichnen</span><code>b77a7e93-22f9-5722-a4cc-f18a149ab030</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-reverse-heading">
+          <p class="section-heading" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-5f289cdc-fda1-4058-b44f-041ba1398e79" rel="noreferrer noopener"><span>Grundgleichung der Mechanik anwenden</span> <code>5f289cdc-fda1-4058-b44f-041ba1398e79</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5fd45dbc-0eb1-591b-99a9-7386336f1456-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-22561c66-3957-5d55-b07a-25de1f359930" rel="noreferrer noopener"><span>Newtonsche Axiome und Kräftebilanz</span> <code>22561c66-3957-5d55-b07a-25de1f359930</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-e2da5eec-45de-5527-9ad7-16f41cacbe58" rel="noreferrer noopener"><span>Kurvenfahrten mit Haftreibung analysieren</span> <code>e2da5eec-45de-5527-9ad7-16f41cacbe58</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-30ddb2d7-b991-55fe-9e74-37ffe1048f9f" rel="noreferrer noopener"><span>Geradlinige Bewegung mit Reibung modellieren</span> <code>30ddb2d7-b991-55fe-9e74-37ffe1048f9f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 6</span>
+      <span>Buch-Digest <code>sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5dbb5fe030f4a9bed533009de8b9c6da9a2e028f778fa081f6810395e37d1726</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=physics-directed-quantity-arrows-20261126-v1-description&amp;edition=curricular-atomic-v1&amp;goalId=5fd45dbc-0eb1-591b-99a9-7386336f1456&amp;goalFingerprint=sha256%3A5dbb5fe030f4a9bed533009de8b9c6da9a2e028f778fa081f6810395e37d1726&amp;pageFingerprint=sha256%3A066d7a5858cc3459abd863d580e3541eeb4da77805e9111238de8ab8257f8f49&amp;bookDigest=sha256%3Ab974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6" data-goal-id="d61ea362-f6c3-5eab-ac30-2d0e265ac0f6" data-page-number="5" data-chapter-ids="structure:review-bf980fff-b62b-4ea4-a20d-31681a7ad785 goal:9645f0d8-43a3-5f29-873c-daa5ace638db" aria-labelledby="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-title"><a class="goal-self-link" href="#goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6">Geschwindigkeitspfeile aus einer Video-Bildfolge bestimmen und vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d61ea362-f6c3-5eab-ac30-2d0e265ac0f6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-d2b81020b39d16f95739fa49">Physik</a></li><li><a href="#chapter-840351dc00180832cb267b2f">Mechanische Grundlagen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2a85126c257d807e8f51fb092b68243912f29cd361b918918b64e98a199973f3" data-rendered-digest="sha256:784327add1cd815ae32f55f83b84d9ef5ba5a0cd1256ea1857e19d58886ad915" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/d61ea362-f6c3-5eab-ac30-2d0e265ac0f6/d61ea362-f6c3-5eab-ac30-2d0e265ac0f6.jpeg" alt="Zwei gleich lange Geschwindigkeitspfeile mit Betrag 2 m/s zeigen nach rechts beziehungsweise oben. Der Differenzpfeil führt von der Spitze des ersten zur Spitze des zweiten: Δv=v₂−v₁ ist trotz gleicher Beträge nicht null.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-description-heading">
+        <p class="section-heading" id="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einer zeitlich und räumlich kalibrierten Bildfolge einer zweidimensionalen Bewegung aus den Ortsänderungen über kurze gleiche Zeitintervalle maßstäbliche Geschwindigkeitspfeile konstruieren, die Näherung für den jeweiligen Zeitpunkt benennen und Änderungen der Geschwindigkeit grafisch bestimmen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-requires-heading">
+          <p class="section-heading" id="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b77a7e93-22f9-5722-a4cc-f18a149ab030"><span>Pfeile für gerichtete Größen lesen und zeichnen</span><code>b77a7e93-22f9-5722-a4cc-f18a149ab030</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-reverse-heading">
+          <p class="section-heading" id="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-13b338eb-f761-5817-9058-11043b9cb253" rel="noreferrer noopener"><span>Messwertänderungen pro Zeitintervall bestimmen</span> <code>13b338eb-f761-5817-9058-11043b9cb253</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d61ea362-f6c3-5eab-ac30-2d0e265ac0f6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-fbaeed34-81a0-5955-9777-bf103002feee" rel="noreferrer noopener"><span>Prüfungsaufgabe: Geschwindigkeitspfeile in einem echten Bewegungsvideo konstruieren</span> <code>fbaeed34-81a0-5955-9777-bf103002feee</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 6</span>
+      <span>Buch-Digest <code>sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:178e3f845a82a3f40f6b74550bce4c26a65a20987a211462a7cf863b1dc38422</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=physics-directed-quantity-arrows-20261126-v1-description&amp;edition=curricular-atomic-v1&amp;goalId=d61ea362-f6c3-5eab-ac30-2d0e265ac0f6&amp;goalFingerprint=sha256%3A178e3f845a82a3f40f6b74550bce4c26a65a20987a211462a7cf863b1dc38422&amp;pageFingerprint=sha256%3A9997c0ce52b4de8943ba9ee9c54d282970a9aa940bf2e741ba5b42477c4f086e&amp;bookDigest=sha256%3Ab974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ad984bb6-e225-432a-952d-d83cda40b7f8" data-goal-id="ad984bb6-e225-432a-952d-d83cda40b7f8" data-page-number="6" data-chapter-ids="structure:review-bf980fff-b62b-4ea4-a20d-31681a7ad785 structure:review-942de15b-32f1-5713-80e5-e7aeb8749fc4 structure:review-9340e894-bb0d-45a4-91f2-b90a63ad50a8 structure:review-4dc9a094-66d7-4d4d-9436-134aabe48f39" aria-labelledby="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-title"><a class="goal-self-link" href="#goal-ad984bb6-e225-432a-952d-d83cda40b7f8">Newtons 3. Axiom (Wechselwirkungsprinzip)</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ad984bb6-e225-432a-952d-d83cda40b7f8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-d2b81020b39d16f95739fa49">Physik</a></li><li><a href="#chapter-8b9ae1c3402691f741dce498">Einführungsphase: Mechanik, Gravitation, Thermodynamik und Drehbewegungen</a></li><li><a href="#chapter-5859019eae8c31b46adcd48b">E.2 Newton&#39;sche Axiome und Erhaltungssätze</a></li><li><a href="#chapter-c8c2e9e10eb11ef429347f73">Newtons Axiome und Inertialsysteme</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5ef586cca50a5f29e9ecb1c33c85bc6f621607ba1659f8e92fcf1716a2808848" data-rendered-digest="sha256:6b1420966451c97af5ce6ea81349243f7968fca80dd15c6fc76f345829565601" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/physik/ad984bb6-e225-432a-952d-d83cda40b7f8/ad984bb6-e225-432a-952d-d83cda40b7f8.jpg" alt="Zwei Wagen mit zugewandten Nordpolen stoßen einander ab. Am linken Wagen A beginnt der nach links gerichtete Pfeil für die Kraft von B auf A. Am rechten Wagen B beginnt der gleich lange Pfeil nach rechts für die Kraft von A auf B. Jeder Pfeil entspricht dem 2-N-Bezugsstrich.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-description-heading">
+        <p class="section-heading" id="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Newtons drittes Axiom formulieren und an Beispielen erläutern, dass zwei wechselwirkende Körper gleichzeitig gleich große, entgegengesetzt gerichtete Kräfte aufeinander ausüben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-requires-heading">
+          <p class="section-heading" id="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-reverse-heading">
+          <p class="section-heading" id="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20" rel="noreferrer noopener"><span>Newtons 2. Axiom (Grundgleichung der Mechanik)</span> <code>a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ad984bb6-e225-432a-952d-d83cda40b7f8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a&amp;edition=curricular-atomic-v1#goal-a0aaedcb-41f8-4891-af77-a69a76b8c10d" rel="noreferrer noopener"><span>Newtons 3. Axiom anwenden</span> <code>a0aaedcb-41f8-4891-af77-a69a76b8c10d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 6</span>
+      <span>Buch-Digest <code>sha256:b974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5ea56753e82614b83345c2e0f4a677020665122bb8f3930888a6c0e3c2d04c05</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=physics-directed-quantity-arrows-20261126-v1-description&amp;edition=curricular-atomic-v1&amp;goalId=ad984bb6-e225-432a-952d-d83cda40b7f8&amp;goalFingerprint=sha256%3A5ea56753e82614b83345c2e0f4a677020665122bb8f3930888a6c0e3c2d04c05&amp;pageFingerprint=sha256%3A27c406d70a55fbb0851e9904385102ce93edb635ad0d03d5ba7cc8dc00972a4e&amp;bookDigest=sha256%3Ab974bc1b68f23ec286e0ed34657751aa0bdedb8d84ad3fddbf4cfd8a863ae9a6&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>
