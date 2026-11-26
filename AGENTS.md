@@ -102,15 +102,16 @@ arrows, so the new goal reaches every view.
 
 ## Product decisions of 26 November 2026
 
-The Product Owner took four decisions on **26 November 2026**. None of them is
-implemented by this entry; each names the package that carries it.
+The Product Owner took four decisions on **26 November 2026**. The first is
+implemented; each of the others names the package that carries it.
 
 - **A plan that cannot be evaluated defines no exam scope (issue #205).** A
   stored plan whose exam topic no longer resolves must not close the subject
   while the learner follows plans. Such a plan narrows nothing: ordinary
   learning in the Personal Curriculum stays open, and the plan remains visible
-  as outdated until it is saved anew. Until the backend package for #205 is on
-  `main`, the dead end described in the issue still exists.
+  as outdated until it is saved anew. This holds for every plan that is not
+  compatible today, also one whose exam topic would still resolve. The rule
+  and the places that apply it are in §10.2.
 - **A goal without an official witness of a Land is no regular target there.**
   It is never dropped for that reason. It stays at its present place as
   SkillPilot's voluntary own offer in that Land, or as a preparation where an
@@ -2433,6 +2434,30 @@ activation preserves its full goal set as Level-3 focus rather than narrowing
 it to the active goal cursor. Multiple exam scopes are not unioned; the next
 active exam is the initial selection. Automatic handoff and date changes must
 not silently replace a running exam scope or add prerequisite goals.
+Only a plan that can be evaluated today defines an exam scope (Product Owner,
+26 November 2026, issue #205). An outdated plan, and a plan whose exam topic no
+longer resolves, narrows nothing: ordinary learning in the subject stays open
+while plans are followed, resume and continuation remain published, and the
+plan status keeps reporting the plan as not evaluable. The frontier
+(`LearnerService.followedLearningScopeIds`) and the plan service
+(`LearnerLearningPlanService.definesExamScope`, `canBeEvaluatedToday`) apply
+the same test, the compatibility of the stored plan; a change to one needs
+the other. Such a plan defines no inactivity choice for the personal
+continuation either: what the status publishes as resume must start a goal.
+An explicit request for a subject is bound by that subject's own plan only.
+The learning path of a subject holds prerequisites of other subjects, and
+they must not draw the exam of another subject into it
+(`getPersonalCurriculumSubjectFrontier`). Such a prerequisite is itself bound
+by the plan of its own subject, exactly as the write that starts it: the
+subject offers it only if it can be started. Unchanged: with AutoPilot on, an
+exam that can be evaluated binds the backend's choice, and other subjects are
+then not published as choices. Open: the focus that a former exam activation
+stored still bounds the ordinary frontier of a plan that became outdated,
+until the learner continues; resume and subject choice work. Telling such a
+focus from a chosen one needs stored provenance of the focus. The check costs
+about four times as many compatibility evaluations per coach context for a
+learner who follows a plan with an exam day; reuse within one call needs the
+complete list of its inputs first.
 The selected exam roots use the ordinary Level 3 focus rules above. In normal
 mode an outside prerequisite must not turn this induced graph into an empty
 frontier; internal prerequisites still determine the next eligible goal.

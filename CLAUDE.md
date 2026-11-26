@@ -114,8 +114,8 @@ E.2 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 
 **Product Owner decisions of 26 November 2026.** A plan that cannot be
 evaluated defines no exam scope: ordinary learning stays open and the plan
-remains visible as outdated (issue #205; the backend change is its own
-package). A goal without an official witness of a Land is no regular target
+remains visible as outdated (issue #205; the frontier and the plan service
+apply one test, see `AGENTS.md` §10.2). A goal without an official witness of a Land is no regular target
 there; it stays as SkillPilot's voluntary own offer at its place, or as a
 preparation where an official target needs it. Correct tracing to the official
 sources is mandatory for all subjects in the long run, with a sense of
