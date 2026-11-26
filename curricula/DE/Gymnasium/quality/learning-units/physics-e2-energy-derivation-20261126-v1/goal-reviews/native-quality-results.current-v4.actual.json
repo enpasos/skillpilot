@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "contract": "task-n-final-current-v4-native-quality-results-v1",
+  "observedAt": "2026-11-26T03:25:48.562764+00:00",
+  "actualIndependentReviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/author-goal-review.v4.actual.json",
+      "sha256": "sha256:b52867dfd30701ca628e591ad317f5c5f46f17fb2c6299eb912da8a4535f73be"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/route-review.v4.actual.json",
+      "sha256": "sha256:273cc106a68fa87bab0d90d2bc6bc8f6e610a6a8419213237cb73dde06840d03"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/author-native-context-confirmation.v4.actual.json",
+      "sha256": "sha256:cbf882ef507c0217abd22c80c566ef18316723c118c51e39abe62e9a7833dab0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/route-native-context-confirmation.v4.actual.json",
+      "sha256": "sha256:d7e6c9057bee6c66f49575d01507b95a88c156f959eed71f85891d8f5dfabdb3"
+    }
+  ],
+  "currentCentralConfig": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "sha256:cc78ec88f091dcfbddd32c150c892905d1a13cb0f27cd89e9bf05d1df1a752e7"
+  },
+  "currentNativeP": {
+    "configPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/positive-evidence.current-v4.config.json",
+    "reviewPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/positive-evidence.current-v4.review.jsonl",
+    "reviewRawSha256": "sha256:5cc4345a1e3a6c43758162784d37556ddbe31ffdbb2bfeb6d105ae861268a3e3",
+    "configuredGoals": 5,
+    "approved": 0,
+    "needsHumanReview": 5,
+    "rejected": 0,
+    "blockingIssues": 0,
+    "nativeCommandExitCode": 0
+  },
+  "currentNativeD": {
+    "configPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch-current-v4.config.json",
+    "resolutionIndexPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch-current-v4/resolution-index.json",
+    "strictResolvedGoals": 5,
+    "deferredGoals": 0,
+    "nativeBatchCheckExitCode": 0
+  },
+  "currentNativeA": {
+    "reviewPath": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+    "reviewRawSha256": "sha256:41e269336cbfdfa92d63b46e5cf0b4f20498531f523258f31fadaab2c03f41e3",
+    "scope": 494,
+    "currentAtomic": 494,
+    "missing": 0,
+    "stale": 0,
+    "nativeCommandExitCode": 0
+  },
+  "currentNativeM": {
+    "reviewPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+    "reviewRawSha256": "sha256:e026cd351f819daea54eafdefc903aadb84a5c14e7e36af3f20fd359bc0e2e4f",
+    "cardReviewPath": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.cards.review.jsonl",
+    "cardReviewRawSha256": "sha256:d85b1622b017f28a9ad0e782101e757e19fbfe316f913aba83c9c9c356d2911b",
+    "ordinaryGoals": 494,
+    "noMemoryDecisions": 360,
+    "memoryRequiredDecisions": 134,
+    "keptPrimaryCards": 150,
+    "missingGoalOrCardRows": 0,
+    "staleGoalOrCardRows": 0,
+    "originIssues": 0,
+    "invisibleRequiredMemoryNodes": 0,
+    "reportPath": "docs/qa-ci/status/memory-card-review-canonical-physics-full.md",
+    "nativeCommandExitCode": 0
+  },
+  "integratedPhysics": {
+    "reportPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/physics-deep-understanding-current-v4.actual.json",
+    "reportRawSha256": "sha256:9cf81def00831de126fe0aaa71d2b530f4715471b2fd49fc15edea579c05f284",
+    "nativeCommandExitCode": 0,
+    "denominator": 494,
+    "strictComplete": 494,
+    "gates": {
+      "currentDescriptionResolutions": 494,
+      "currentPositiveEvidenceProfiles": 494,
+      "currentSemanticAtomicityDecisions": 494,
+      "currentMemoryReviewDecisions": 494,
+      "currentVisualizationQaRecords": 494
+    },
+    "requiredChecks": [
+      {
+        "id": "semantic-kind-scope",
+        "status": "pass"
+      },
+      {
+        "id": "description-review-validation",
+        "status": "pass"
+      },
+      {
+        "id": "positive-evidence-validation",
+        "status": "pass"
+      },
+      {
+        "id": "semantic-atomicity-check",
+        "status": "pass"
+      },
+      {
+        "id": "memory-card-check",
+        "status": "pass"
+      },
+      {
+        "id": "visualization-freshness-and-approval-check",
+        "status": "pass"
+      }
+    ],
+    "strictCompletionReady": true,
+    "blockingIssues": 0
+  },
+  "finalSemanticNativeValidation": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/final-semantic-native-check.actual.json",
+    "sha256": "sha256:aa55f877731fd40893cec83960fb82d44932e9c8f44a6f03b6ddf2a80b04a383",
+    "ledgerRawSha256": "sha256:2f8f938882ef83f6fe3dfb72f2249e066684daaf40ae08b6154590ed26f57b4b",
+    "objects": 871,
+    "currentSourceBindings": "pass",
+    "canonicalSequence": "pass",
+    "legacyCartPostSplitBasis": "pass"
+  },
+  "currentOwnerAndMetadataSuccessors": [
+    "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/withdrawal-current-owner-successor-v1/successor.actual.json",
+    "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/semantic-kind-order-only-v1/receipt.actual.json",
+    "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/semantic-kind-basis-label-successor-v1/receipt.actual.json",
+    "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/media/qa-order.actual.json"
+  ],
+  "historicalFailedAttempt": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/deep-understanding-current-v4.actual.json",
+    "role": "Immutable diagnostic from before withdrawal/current-owner registration repair; not a current success claim.",
+    "blockingIssues": 13
+  },
+  "parkedFindingsStillNotApproved": [
+    "Pre-existing e359 direct near-surface prerequisite necessity.",
+    "Legacy summative Wagen pass is no per-covered-goal full mastery guarantee.",
+    "Dense legacy e359 image and absence of explicit U_t=0 within that unchanged image."
+  ],
+  "humanApproval": false,
+  "learnerResultsChanged": false,
+  "fullCurriculumStatusRegeneration": "Owned separately by coordinating implementation agent after this activation."
+}

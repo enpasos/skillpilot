@@ -215,6 +215,12 @@ const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
   '00245a43-eb89-47d2-92d7-21799dbec9f3',
 ] as const
 const SEMANTIC_RECHECK_ATOMIC_GOAL_IDS = new Set([
+  // E.2 energy: the five independent current-input semantic reviews.
+  '2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b',
+  '6affc2ea-ecd2-4fcd-8877-3ffa15b0425b',
+  '839ecc8f-3a60-418b-bc92-64bfeef33824',
+  'e359f8bb-6106-44aa-9edf-694528d2d2a9',
+  '78cf6eff-b3bc-5444-9ef8-5d39dae8d17d',
   // E.1: exact nine unanimously current-core reviewed curricular atoms.
   'ce431132-dfc4-42c2-aff6-bd72035190f8',
   '1e459a1b-4159-5049-84eb-9928129c1610',
@@ -2519,8 +2525,10 @@ assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must rema
 // Current, independently reviewed repairs may change a goal's preparation.
 // V9 transfers unchanged goals individually; it does not require preserving an
 // older whole-catalog prerequisite inventory. Resolve the actual foreign edges.
-assert.equal(foreignRequiresEdges.length, 164, 'E.2 adds three direct mathematical prerequisites to the prior 161')
+assert.equal(foreignRequiresEdges.length, 166, 'The energy cut adds two direct Mathematics prerequisites to the prior 164')
 for (const [ownerId, required] of [
+  ['6affc2ea-ecd2-4fcd-8877-3ffa15b0425b', ['a6469c01-6ca3-5eb2-a82c-94f3d0560b32']],
+  ['2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b', ['2c4830e6-a8d5-48d0-9202-3b7d18a419c2']],
   ['53afbda1-5776-502b-8867-471975d7b766', ['4eeab7d5-eeb3-579b-845e-1c52ffe9e89f', 'ee48e811-4c9c-5080-9836-8403fc9f0810']],
   ['059c1adc-e4d2-5222-a923-15abc417d59f', ['b1dcc191-d046-50de-984a-ee5c17157628']],
 ] as const) {
@@ -3853,9 +3861,12 @@ assert.deepEqual(closureStrandsAtlas.sourceViews.map(row => ({path: row.path, sh
 for (const row of closureStrandsAtlas.sourceViews) {
   assert.equal(row.sha256, row.previousSha256)
 }
-const energyAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/consumers/national-atlas-current-sources.actual.json'
-assert.equal(sha256(readFileSync(resolve(repoRoot, energyAtlasPath), 'utf8')),
+// Retain the first current-input measurement and bind the final native compile after ledger ordering.
+assert.equal(sha256(readFileSync(resolve(repoRoot, 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/consumers/national-atlas-current-sources.actual.json'), 'utf8')),
   '1ee5d489117a847c607c5b83e9e71b8e410b66975b63dfc94493c378bc8999c6')
+const energyAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/consumers/national-atlas-final-current-sources.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, energyAtlasPath), 'utf8')),
+  '0a61987416e29bfa044b196600214192a97f2430f91e11119dd4cd894fabf79b')
 const energyAtlas = readJson<typeof closureStrandsAtlas & {
   sourceViewCount: number; ordinarySourceViewCount: number; durationSourceViewCount: number
   currentActualUnionCount: number; addedCurricularTargetGoalIds: string[]; removedCurricularTargetGoalIds: string[]
