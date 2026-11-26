@@ -8,7 +8,7 @@ import { gunzipSync } from 'node:zlib'
 import type { LearningGoal } from '../src/landscapeTypes'
 import { fingerprintSemanticKindSourceGoal, parseSemanticKindLedger } from './goalBookModel'
 import { loadOptionalHistoricalReviewContext } from './optionalHistoricalReviewContext'
-import { fingerprintDirectedQuantityArrowContract, validateDirectedQuantityArrowEvidence,
+import { directedQuantityReviewSourceSha256, fingerprintDirectedQuantityArrowContract, validateDirectedQuantityArrowEvidence,
   type ArrowRepresentationKind, type DirectedQuantityArrowEvidenceRow, PHYSICS_ARROW_GOAL_ID } from './lib/directedQuantityArrows'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
@@ -160,7 +160,7 @@ const evidence = { schemaVersion: 1, documentType: 'directed-quantity-arrow-deci
     currentDescriptionReviewStatus: 'Owner-authorized exact bilingual corrections of 4ca83b3f and d61ea362 are bound here. This usage judgement is not a final D successor-review activation.' } : {}),
   deliveryStage: hasReleasedK4 ? 'arrow-goal-and-released-K4' : 'intermediate-arrow-goal-only-K4-not-yet-present-or-approved',
   method: 'Individual adoption of the complete closed L goal/task reading, using its accepted narrow owner/task decisions. Text/material fingerprints exclude requires and image links; current evidence may not infer teaching from image pixels. Structural nodes are checked at their individually classified children. New N and A2 contracts have their own explicitly identified current evidence; this projection is not a new blind subject review.',
-  sourceBindings: sourcePaths.map(path => ({ path, sha256: digest(read(path)) })), rows }
+  sourceBindings: sourcePaths.map(path => ({ path, sha256: directedQuantityReviewSourceSha256(path, read) })), rows }
 const evidenceBytes = pretty(evidence)
 const newDecisions = json(newDecisionsPath) as { decisions: Array<Record<string, unknown> & { goalId: string }> }
 const decisions = new Map(ledger.decisions.map((row: Record<string, unknown> & { goalId: string }) => [row.goalId, row])) as Map<string, Record<string, unknown> & { goalId: string }>

@@ -32,6 +32,41 @@ const ensure: (condition: unknown, message: string) => asserts condition = (cond
   if (!condition) throw new Error(`Directed quantity arrows: ${message}`)
 }
 const digest = (bytes: string | Buffer) => `sha256:${createHash('sha256').update(bytes).digest('hex')}`
+const a2Dossier = 'curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1'
+const retiredReviewer = `${a2Dossier}/rule/source-l/reviewer-b.md`
+const retiredChecks = `${a2Dossier}/rule/final-k4-v3/checks/checks.actual.json`
+
+/** Preserve the original SHA in sealed A5 decisions. For the two retired
+ * files, verify their pinned portable receipt and its Git-backed sources.
+ * The inventory independently verifies the externally retained raw bytes.
+ */
+export function directedQuantityReviewSourceSha256(path: string, readBytes: (path: string) => Buffer): string {
+  if (path !== retiredReviewer && path !== retiredChecks) return digest(readBytes(path))
+  const checkBinding = (source: { path: string; sha256: string }) => {
+    const bytes = readBytes(source.path)
+    ensure(digest(bytes) === `sha256:${source.sha256}`, `changed portable review source ${source.path}`)
+    return bytes
+  }
+  if (path === retiredReviewer) {
+    const bytes = checkBinding({ path: `${a2Dossier}/portable/reviewer-b.successor.actual.json`,
+      sha256: '1f7353f9c2b8a38b6e29a7669596f56d6664f979fd8d903f8510f9ee1c7c4225' })
+    const receipt = JSON.parse(bytes.toString('utf8'))
+    checkBinding(receipt.portableReadingVersion)
+    const provenance = JSON.parse(checkBinding(receipt.provenance).toString('utf8'))
+    const voice = provenance.records.find((entry: { path: string }) => entry.path === 'reviewer-b.md')
+    ensure(voice?.externalOriginalSha256 === receipt.original.sha256
+      && voice.retainedSha256 === receipt.portableReadingVersion.sha256, 'inconsistent portable reviewer provenance')
+    return `sha256:${receipt.original.sha256}`
+  }
+  const bytes = checkBinding({ path: `${a2Dossier}/portable/checks.actual.json`,
+    sha256: 'b342bfb717cae8efd359310c6044017a50b7a0bd3e96ee08edd2de3119830cdd' })
+  const receipt = JSON.parse(bytes.toString('utf8'))
+  for (const check of receipt.checks) {
+    ensure(digest(readBytes(check.log)) === check.logSha256, `changed portable check log ${check.log}`)
+  }
+  return `sha256:${receipt.portableSuccessorOf.sha256}`
+}
+
 function canonical(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(canonical)
   if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).sort(([a], [b]) => a.localeCompare(b, 'en')).map(([key, item]) => [key, canonical(item)]))
@@ -69,7 +104,7 @@ export function validateDirectedQuantityArrowEvidence(
       for (const source of review.sourceBindings) {
         ensure(typeof source.path === 'string' && /^curricula\/DE\/Gymnasium\/quality\//u.test(source.path)
           && !source.path.includes('..'), `invalid review source in ${binding.path}`)
-        ensure(digest(readBytes(source.path)) === source.sha256, `changed review source ${source.path}`)
+        ensure(directedQuantityReviewSourceSha256(source.path, readBytes) === source.sha256, `changed review source ${source.path}`)
       }
       rows = new Map(review.rows.map(row => [row.goalId, row]))
       ensure(rows.size === review.rows.length, `duplicate usage evidence entry in ${binding.path}`)

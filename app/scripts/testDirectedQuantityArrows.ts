@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
 import type { LearningGoal } from '../src/landscapeTypes'
 import { fingerprintSemanticKindSourceGoal, parseSemanticKindLedger } from './goalBookModel'
@@ -58,6 +59,43 @@ test('independent contract evidence catches a wrongly omitted marker and changed
   omitted.representationKinds = ['none']
   assert.throws(() => validateDirectedQuantityArrowEvidence([goal], new Map([[goal.id, omitted]]), read), /contradicts the reviewed contract/)
   assert.throws(() => validateDirectedQuantityArrowEvidence([{ ...goal, description: 'A newly required diagram' }], decisions, read), /stale teaching\/material contract/)
+})
+
+test('retired A5 sources bind exact portable receipts and Git-backed reading material on the normal evidence path', () => {
+  const dossier = 'curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1'
+  const reviewer = `${dossier}/rule/source-l/reviewer-b.md`
+  const checks = `${dossier}/rule/final-k4-v3/checks/checks.actual.json`
+  const sources = [
+    { path: reviewer, sha256: 'sha256:6db07ba6e1bf321a0e0b264c23e532140cc542253aeffe7b3aeb5464152b77f3' },
+    { path: checks, sha256: 'sha256:5305c12f9731a5bce43a4bd34596b5dbedcd52491ca67bb2a256805954ca4f1f' },
+  ]
+  const validate = (changedPath?: string, replacement?: Buffer, sourceBindings = sources) => {
+    const bytes = Buffer.from(JSON.stringify({ ...JSON.parse(evidence().toString()), sourceBindings }))
+    const current = decision()
+    current.evidence.sha256 = digest(bytes)
+    validateDirectedQuantityArrowEvidence([goal], new Map([[goal.id, current]]), path => {
+      assert.ok(path !== reviewer && path !== checks, 'Retired original was read from the working tree')
+      if (path === evidencePath) return bytes
+      if (path === changedPath) {
+        if (replacement) return replacement
+        throw Error(`Missing test input: ${path}`)
+      }
+      return readFileSync(new URL(`../../${path}`, import.meta.url))
+    })
+  }
+  validate()
+  for (const name of ['reviewer-b.successor.actual.json', 'checks.actual.json']) {
+    const receipt = `${dossier}/portable/${name}`
+    assert.throws(() => validate(receipt), /Missing test input/)
+    assert.throws(() => validate(receipt, Buffer.from('{"original":{"sha256":"forged"}}')), /changed portable review source/)
+  }
+  for (const path of ['basis-l/reviewer-b.md', 'basis-l/provenance.actual.json']) {
+    assert.throws(() => validate(`${dossier}/${path}`, Buffer.from('changed')), /changed portable review source/)
+  }
+  assert.throws(() => validate(`${dossier}/rule/final-k4-v3/checks/reader-controls.log`, Buffer.from('changed')), /changed portable check log/)
+  for (const source of sources) {
+    assert.throws(() => validate(undefined, undefined, [{ ...source, sha256: OLD_HASH }]), /changed review source/)
+  }
 })
 
 test('the actual atomic requires path is mandatory, self is allowed, cluster grouping grants no path', () => {
