@@ -1,0 +1,53 @@
+{
+  "contract": "physics-directed-arrows-first-global-source-coverage-check-v1",
+  "historicalObservation": "First full global run after activating the six current D/P/A/M lanes. The missing source witness is under review.",
+  "maturity": "M1",
+  "stageMaturities": {
+    "canonical-physics-sek1": "M4",
+    "canonical-physics-sek2": "M4"
+  },
+  "rule": {
+    "id": "CQR-003",
+    "status": "fail",
+    "summary": "15/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+    "metrics": {
+      "totalJurisdictions": 16,
+      "emptyCanonicalViewProjection": 0,
+      "coveredJurisdictions": 16,
+      "sourceBackedJurisdictions": 16,
+      "sourceCompleteJurisdictions": 15,
+      "fullCoverageJurisdictions": 15,
+      "uncoveredJurisdictions": 0,
+      "incompleteJurisdictions": 1,
+      "unsupportedAssignmentJurisdictions": 1,
+      "sourceUnmappedJurisdictions": 0,
+      "unsupportedAssignedAtomicGoals": 1,
+      "unmappedSourceAtomicGoals": 0,
+      "sourceAtomicGoals": 6289,
+      "sourceMappedToViewAtomicGoals": 6289,
+      "sourceOriginalGoals": 6289,
+      "sourceFullyCoveredOriginalGoals": 6289,
+      "sourcePartiallyCoveredOriginalGoals": 0,
+      "sourceUncoveredOriginalGoals": 0,
+      "surrogateBackedAtomicGoals": 0,
+      "partialSourceLinkedAtomicGoals": 0,
+      "warningedJurisdictions": 0,
+      "cleanJurisdictions": 15,
+      "partialJurisdictions": 0,
+      "errorJurisdictions": 1,
+      "minSourceBackedAtomicGoals": 226,
+      "maxVisibleAtomicGoals": 434,
+      "maxSourceBackedAtomicGoals": 434,
+      "totalAtomicGoals": 453
+    },
+    "details": [
+      "DE-BY: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
+      "DE-BY: 300/301 source-backed view atomic goal(s)"
+    ]
+  },
+  "measuredStatus": {
+    "externalRoot": "a2Scratch",
+    "path": "first-global-status.before-by-source.json.gz",
+    "sha256": "45ca45f487fd386dd7bb56d7ee820043daa9958794ea555226fb82d3bdb8373b"
+  }
+}

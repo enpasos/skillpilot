@@ -1,0 +1,99 @@
+{
+  "contract": "physics-directed-quantity-arrows-native-stored-and-new-plans-v1",
+  "baselineCommit": "eb77c4fb68ef701f9c188e0a66411dbfb76dfd26",
+  "sourceFixture": {
+    "path": "backend/src/test/resources/fixtures/brandenburg-before-arrow-goal-20261126.json",
+    "sha256": "2b3a5cc3e25303a96dce3fcaff684ae53c064eec3622a810461cdad20577b9fb"
+  },
+  "captureLog": {
+    "externalRoot": "a2Scratch",
+    "path": "pre-arrow-plan/capture.log",
+    "sha256": "6284bdc88ff02a3a24267f3377e22943afcf8fc0bc1a0cfff7023bd328faba12"
+  },
+  "existingPlanResults": {
+    "G8": {
+      "capturedInput": {
+        "externalRoot": "a2Scratch",
+        "path": "pre-arrow-plan/fixtures/G8.json",
+        "sha256": "b6e320d6f6dae41b2a1f861bdaa580ceaaeb78d99dc5847ee4322c9e4fa48dd2"
+      },
+      "block": "composition:de-bb-gym-seki-physics:structure:physics-bb-j7-8-topic-8ada1d155a2e",
+      "retainedGoalIds": [
+        "41d35667-0296-5f84-bc12-202ffc440be0",
+        "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+        "581c0766-b84b-54cb-b8b6-375310329a41",
+        "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390",
+        "327302e3-5b36-46f8-9c16-73f24583b0eb",
+        "30a936ec-e427-57fe-bf3e-4abd64b1f0c1",
+        "9c328f68-41ed-55dd-9e02-34414a6246f2",
+        "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
+        "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef",
+        "f7f2c254-1663-5861-bed7-a32c00495b19",
+        "46e42b07-c098-5d65-8ef5-8472b7c4d8e2"
+      ]
+    },
+    "G9": {
+      "capturedInput": {
+        "externalRoot": "a2Scratch",
+        "path": "pre-arrow-plan/fixtures/G9.json",
+        "sha256": "b6e320d6f6dae41b2a1f861bdaa580ceaaeb78d99dc5847ee4322c9e4fa48dd2"
+      },
+      "block": "composition:de-bb-gym-seki-physics:structure:physics-bb-j7-8-topic-8ada1d155a2e",
+      "retainedGoalIds": [
+        "41d35667-0296-5f84-bc12-202ffc440be0",
+        "45bbdf6b-6372-5b6a-b7e4-be15a0eb4b83",
+        "581c0766-b84b-54cb-b8b6-375310329a41",
+        "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390",
+        "327302e3-5b36-46f8-9c16-73f24583b0eb",
+        "30a936ec-e427-57fe-bf3e-4abd64b1f0c1",
+        "9c328f68-41ed-55dd-9e02-34414a6246f2",
+        "cbb26ed2-6979-46f6-a4ae-128f5c5d9d76",
+        "eeba6bf8-a2b9-4d7d-a1d6-67286c923cef",
+        "f7f2c254-1663-5861-bed7-a32c00495b19",
+        "46e42b07-c098-5d65-8ef5-8472b7c4d8e2"
+      ]
+    }
+  },
+  "currentSeedFixture": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/consumers/physics-seki-seed-fixtures.actual.json",
+    "sha256": "a1703e99957c9a5bd61ab943d334660359403d7d1a485daee29a9c9b5efbb685"
+  },
+  "currentBackendTests": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "sha256": "bba6d51ab3e60b7ac671f3263383e780f8184e0973a6c809f6ee9678679d8386"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+      "sha256": "7e203f9c54c24b3c84e3c6466a906db801294636ad5d50ffa10007f10feca64c"
+    }
+  ],
+  "result": {
+    "externalRoot": "a2Scratch",
+    "path": "gradle-isolated-94wDmo/result.json",
+    "sha256": "77421ed33e5a63e866b3a134c463d965ea7b9f08a45b596017cffff6d52f0e63"
+  },
+  "runLog": {
+    "externalRoot": "a2Scratch",
+    "path": "gradle-isolated-94wDmo/run.log",
+    "sha256": "365c4e96d520bc8acd35d92253ea7f89f0138862610a8d6689406823d12f38fe"
+  },
+  "junit": [
+    {
+      "externalRoot": "a2Scratch",
+      "path": "gradle-isolated-94wDmo/results/test/TEST-com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest.xml",
+      "sha256": "55a4db024365101666d8975e0f4e28bf1414fe123e499faace7bf1c99e014eb3"
+    },
+    {
+      "externalRoot": "a2Scratch",
+      "path": "gradle-isolated-94wDmo/results/test/TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+      "sha256": "2be3580da64a5f2439dbf775823fd81dd28821a06f5a17245c1f233a199528fd"
+    }
+  ],
+  "tests": 3,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": "Two synthesized test learners use a genuinely stored pre-A2 Brandenburg plan in the real service and preserve its eleven goals at both durations after restoration. The twenty current Physics enrollment fixtures were separately compared with live learner API seed and learning identities.",
+  "diagnosticHistory": "Both first test invocations individually passed their assertions but their overlapping Gradle binary reports failed during writing. The terminal result here comes from a single fresh isolated output directory."
+}

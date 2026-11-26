@@ -1,0 +1,9 @@
+# Entwurf für die Management-Zusammenfassung
+
+26. November 2026, 07:10 CET. Für K1–K13/F1–F7 ergänzt das Pfeilpaket die Arbeit an den Voraussetzungen, Länderansichten und Prüfungsaufgaben. Ein neues frühes Physikziel, eine zweisprachige Karte, eine Abschlussaufgabe und zwei Bilder erklären den Zusammenhang von Träger, Richtung und eigenem Pfeilmaßstab. 18 direkte Kanten bereiten 24 tatsächliche Anwendungen vor. Das Paket aktiviert keinen weiteren Stufenplan. [Evidenzübersicht](README.md)
+
+- Am Wagen ist bei gleichem Geschwindigkeitsbetrag ein kürzerer Pfeil möglich. Die zwei Maßstabsleisten und der Bezug zum Körper lassen sich auch in der schmalen Darstellung lesen. Beim Magnetwagenpaar liegt der Pfeilursprung jeweils auf dem Körper, auf den die Kraft wirkt. [Wagen](media/quantity-label-v2/b77a7e93-22f9-5722-a4cc-f18a149ab030.actual.json) · [Magnetwagen](media/ad984bb6-e225-432a-952d-d83cda40b7f8.actual.json)
+- In K4 gibt es vier gleich gewichtete Leistungen. Die unabhängigen Korrekturen stimmen in jedem Einzelurteil der finalen 20 Fälle in zwei Sprachen überein. Die acht bestandenen Fälle enthalten eine Antwort genau auf der Grenze von 13,5/16. [Bewertung](k4/v3/release.actual.json)
+- In 90 Ansichten sind Platz, Landesrolle und fachliche Reihenfolge geprüft. Acht Kartenverträge behalten exakt ihre bisherigen rückwärts laufenden Verbindungen und deren Zeugen. Die personalisierten Physikkarten haben weiterhin null Rückverbindungen. Zwei vor der Änderung gespeicherte Brandenburger Pläne behalten ihren alten Umfang. [Karten](routes/map-backflows.actual.json) · [Lernpläne](consumers/stored-and-current-plans.actual.json)
+
+Der Fachbranch ist für Claudes Übernahme vorgesehen. Die fachlichen und technischen Einzelbefunde stehen getrennt in den Nachweisen. Erst die Integration und der anschließende erfolgreiche Lauf auf main schließen die Auslieferung ab.

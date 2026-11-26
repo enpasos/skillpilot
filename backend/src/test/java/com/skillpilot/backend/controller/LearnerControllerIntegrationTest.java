@@ -1877,6 +1877,21 @@ public class LearnerControllerIntegrationTest {
             }
         }
         scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) e2HhThAssessment);
+        // The A2 projection was recomputed for both durations. HE and BW acquire
+        // the arrow through a prerequisite; the eight other sampled Länder seed both new atoms.
+        var arrowSuccessor = objectMapper.readTree(Path.of(
+                "../curricula/DE/Gymnasium/quality/learning-units/"
+                        + "physics-directed-quantity-arrows-20261126-v1/consumers/"
+                        + "physics-seki-seed-fixtures.actual.json").toFile()).path("scopes");
+        assertThat(arrowSuccessor.size()).isEqualTo(20);
+        for (String jurisdiction : List.of("DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH",
+                "DE-MV", "DE-SL", "DE-SN", "DE-ST", "DE-TH")) {
+            for (String duration : List.of("G8", "G9")) {
+                assertThat(arrowSuccessor.has(String.join("|", CANONICAL_PHYSICS_ID,
+                        jurisdiction, "SekI", duration, "GK"))).isTrue();
+            }
+        }
+        scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) arrowSuccessor);
         return scopes;
     }
 
@@ -2126,17 +2141,17 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "67", "67" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "164", "164" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "157", "157" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "126", "126" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "159", "159" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "128", "128" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "130", "130" },
                 // New LAWS source-link activation is deferred; source corrections remain.
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "128", "128" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "124", "124" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "152", "152" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "130", "130" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "126", "126" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "154", "154" },
                 // The two source-supported new goals await real preparation repair.
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "155", "155" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "134", "134" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "138", "138" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "157", "157" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "136", "136" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "140", "140" }
         };
         // The verified applicability-cache refresh exposes these already-authored
         // Sek-I targets. Bind their identities as well as both duration totals.

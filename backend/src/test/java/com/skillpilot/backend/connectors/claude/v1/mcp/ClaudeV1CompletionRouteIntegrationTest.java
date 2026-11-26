@@ -747,8 +747,13 @@ class ClaudeV1CompletionRouteIntegrationTest {
     }
 
     private String configureHessianMotionUnit(String duration, String stage, String course) throws Exception {
+        return configurePhysicsTestUnit(duration, stage, course, "DE-HE", "physics-e1-motion");
+    }
+
+    private String configurePhysicsTestUnit(String duration, String stage, String course,
+                                            String jurisdiction, String structureId) throws Exception {
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
-        Map<String, Object> scope = new java.util.HashMap<>(Map.of("selected", true, "filterId", "DE-HE", "stage", stage));
+        Map<String, Object> scope = new java.util.HashMap<>(Map.of("selected", true, "filterId", jurisdiction, "stage", stage));
         if (duration != null) scope.put("durationModel", duration);
         learner.setPersonalCurriculum(mapper.writeValueAsString(Map.of(
                 ROOT, scope,
@@ -760,11 +765,11 @@ class ClaudeV1CompletionRouteIntegrationTest {
         learner.setFollowLearningPlans(false);
         learner.setUseAssessmentShortcuts(false);
         learnerRepository.saveAndFlush(learner);
-        var requested = new java.util.HashMap<>(Map.of("schoolForm", "Gymnasium", "jurisdiction", "DE-HE",
+        var requested = new java.util.HashMap<>(Map.of("schoolForm", "Gymnasium", "jurisdiction", jurisdiction,
                 "stage", stage, "courseProfile", course));
         if (duration != null) requested.put("durationModel", duration);
         String view = (String) compositionViews.findLearnerScopeView("7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a", requested).get("viewId");
-        String unitFocus = "composition:" + view + ":structure:physics-e1-motion";
+        String unitFocus = "composition:" + view + ":structure:" + structureId;
         learners.setPlannedGoals(learnerId, java.util.Set.of(unitFocus));
         return unitFocus;
     }
@@ -2402,6 +2407,52 @@ class ClaudeV1CompletionRouteIntegrationTest {
 
         learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "E.2", List.of(
                 new LearnerLearningPlanApi.Block("section", "learning", section, "E.2", day, day,
+                        null, current, List.of(section), true))), day);
+        var row = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
+        row.setBlocksJson(capture.path("storedBlockJson").asText());
+        row.setScopeFingerprint(capture.path("scopeFingerprint").asText());
+        row.setCurriculumId(capture.path("curriculumId").asText());
+        row.setRevision(capture.path("revision").asLong());
+        storedPlans.saveAndFlush(row);
+        var beforeBackup = learningPlans.getPlan(learnerId, physics, day);
+        assertThat(beforeBackup.stale()).isFalse();
+        assertThat(beforeBackup.blocks()).isEqualTo(blocks);
+        learners.importLearner(learnerId, learners.exportLearner(learnerId));
+        var restored = learningPlans.getPlan(learnerId, physics, day);
+        assertThat(restored.stale()).isFalse();
+        assertThat(restored.blocks()).isEqualTo(blocks);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"G8", "G9"})
+    void savedBrandenburgSectionKeepsItsElevenGoalsAfterArrowEntry(String duration) throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String arrow = "b77a7e93-22f9-5722-a4cc-f18a149ab030";
+        String closingTask = "2569d84a-5bf1-542b-bc43-6ade1df971c4";
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
+        String section = configurePhysicsTestUnit(duration, "SekI", "GK", "DE-BB", "physics-bb-j7-8-topic-8ada1d155a2e");
+        var day = java.time.LocalDate.of(2026, 11, 25);
+        var current = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        assertThat(current).contains(arrow, closingTask);
+        byte[] fixture;
+        try (var input = getClass().getResourceAsStream("/fixtures/brandenburg-before-arrow-goal-20261126.json")) {
+            assertThat(input).isNotNull();
+            fixture = input.readAllBytes();
+        }
+        assertThat(java.util.HexFormat.of().formatHex(java.security.MessageDigest
+                .getInstance("SHA-256").digest(fixture))).isEqualTo("2b3a5cc3e25303a96dce3fcaff684ae53c064eec3622a810461cdad20577b9fb");
+        var capture = mapper.readTree(fixture).path("durations").path(duration).path("capture");
+        var blocks = mapper.readValue(capture.path("storedBlockJson").asText(),
+                new TypeReference<List<LearnerLearningPlanApi.Block>>() { });
+        assertThat(blocks).singleElement().satisfies(block -> {
+            assertThat(block.focusGoalIds()).containsExactly(section);
+            assertThat(block.atomicGoalIds()).hasSize(11)
+                    .doesNotHaveDuplicates().doesNotContain(arrow, closingTask);
+            assertThat(current).containsAll(block.atomicGoalIds());
+        });
+
+        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "Mechanik", List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", section, "Mechanik", day, day,
                         null, current, List.of(section), true))), day);
         var row = storedPlans.findByLearner_SkillpilotIdAndLandscapeId(learnerId, physics).orElseThrow();
         row.setBlocksJson(capture.path("storedBlockJson").asText());

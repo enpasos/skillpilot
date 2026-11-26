@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-26T03:16:47.343Z
+Generated: 2026-11-26T05:56:17.295Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 871 |
-| Atomare Ziele im Visualisierungs-Scope | 494 |
-| Ziele mit primaerem Visualisierungslink | 494 |
+| Alle Ziele in der Landschaft | 873 |
+| Atomare Ziele im Visualisierungs-Scope | 495 |
+| Ziele mit primaerem Visualisierungslink | 495 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 494 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 495 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -30,7 +30,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 1 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 74 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 75 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -38,7 +38,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 97 |
-| `pilot` | 397 |
+| `pilot` | 398 |
 
 ## Ledger Decisions
 
@@ -167,7 +167,7 @@ Keine Eintraege.
 | `6dca3b0a-c872-543b-808f-97e855f5fafd` | Exoplanetenkandidaten mit Stern-Radialbewegungen erklären | `pilot` | `deferred_provider_limitation` |
 | `e0004439-ed34-5caf-858a-6107918224eb` | Fallhöhe und Fallzeit in einem Messprotokoll festhalten | `pilot` | - |
 
-Weitere 44 Eintraege stehen in der JSON-Begleitdatei.
+Weitere 45 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 
