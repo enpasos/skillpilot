@@ -9,7 +9,10 @@
     "verify-native-values.mts",
     "record-lifecycle.actual.json",
     "path-bindings.actual.jsonl",
-    "digest-contracts.actual.jsonl"
+    "digest-contracts.actual.jsonl",
+    "record-lifecycle.v2.actual.json",
+    "path-bindings.v2.actual.jsonl",
+    "digest-contracts.v2.actual.jsonl"
   ],
   "externalRoots": {
     "a2Scratch": {
@@ -206,7 +209,7 @@
       "epoch": "Intermediate image decisions before the explicit quantity-name correction; the 88-image A3 backlog stays undecided."
     },
     "rule/checks/checks.intermediate.actual.json": {
-      "successor": "rule/final-k4-v3/checks/checks.actual.json",
+      "successor": "portable/checks.actual.json",
       "epoch": "Actual intermediate native checks before released K4 V3, description-only changes and quantity-labelled current image; earlier outcomes are not rewritten."
     },
     "rule/checks/semantic-routes.intermediate.actual.json": {
@@ -256,6 +259,14 @@
     "routes/native-90-routes.initial-national-counter.actual.json": {
       "successor": "routes/native-90-routes.actual.json",
       "epoch": "Initial native route report retained before correction of the national-denominator counter; actual current route report is separate."
+    },
+    "rule/source-l/reviewer-b.md": {
+      "successor": "portable/reviewer-b.successor.actual.json",
+      "epoch": "Original preserved unchanged outside the current tree after portable successor creation."
+    },
+    "rule/final-k4-v3/checks/checks.actual.json": {
+      "successor": "portable/checks.actual.json",
+      "epoch": "Original preserved unchanged outside the current tree after portable successor creation."
     }
   },
   "earlierPrefixes": {
@@ -394,8 +405,29 @@
         "root": "taskL",
         "path": "reviewer-b.md"
       },
-      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/source-l/reviewer-b.md",
-      "role": "Unchanged original L voice; separate portable derivative copies are not substituted for this raw record."
+      "retainedPath": "portable-originals/reviewer-b.md",
+      "role": "Unchanged original L voice; separate portable derivative copies are not substituted for this raw record.",
+      "retainedRoot": "a2Scratch",
+      "publicSuccessorPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/portable/reviewer-b.successor.actual.json"
     }
-  ]
+  ],
+  "previousSnapshot": {
+    "commit": "815fe2565be698f2c28ac2a7c99a87e5e1e14aed",
+    "outputs": {
+      "record-lifecycle.actual.json": "record-lifecycle.v2.actual.json",
+      "path-bindings.actual.jsonl": "path-bindings.v2.actual.jsonl",
+      "digest-contracts.actual.jsonl": "digest-contracts.v2.actual.jsonl"
+    },
+    "epoch": "First worktree inventory, including original CRLF placement-table bytes. Its anchored verification did not pass; no anchored attestation is claimed for this snapshot."
+  },
+  "retiredRepositoryOriginals": {
+    "rule/source-l/reviewer-b.md": {
+      "root": "a2Scratch",
+      "path": "portable-originals/reviewer-b.md"
+    },
+    "rule/final-k4-v3/checks/checks.actual.json": {
+      "root": "a2Scratch",
+      "path": "portable-originals/checks.actual.json"
+    }
+  }
 }

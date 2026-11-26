@@ -4,7 +4,7 @@ The finite domain is every path touched by a non-merge first-parent commit
 after `eb77c4fb68ef701f9c188e0a66411dbfb76dfd26`, together with current
 uncommitted and untracked additions while developing the delivery. This
 includes changes outside the dossier. Changes brought in only by a merge
-are excluded. The seven explicitly named bootstrap files are checked
+are excluded. The explicitly named bootstrap files are checked
 against the final supplied Git anchor; an unknown extra inventory file
 enters the ordinary file domain. There is no self-referential commit hash
 inside the generated manifest.
@@ -16,17 +16,25 @@ a positive review. Earlier records point to actual separately retained
 successors. Original rejections, earlier positive errors and the source
 records containing names such as `final` keep their exact bytes.
 
-`record-lifecycle.actual.json` records current files, historical epochs,
+`record-lifecycle.v2.actual.json` records current files, historical epochs,
 concrete successors and retained off-tree evidence. It directly verifies
 the original K4 voices for V1–V3, both original first subject voices,
 both final confirmations and both original L voices against their retained
 copies. The separate portable L derivative is not substituted for the
-unchanged original voice. Operational absolute-path literals in sealed
-records are identified by their source record, pointer or line, raw hash
-and a portable alias. Their spelling is not newly copied into this inventory
-and the original records are not rewritten.
+unchanged original voice. The two portable successors bind their original bytes to explicit external
+locations. The verifier compares both retired originals against the previous
+Git blobs and requires their absence from the selected tree. The L placement
+table has two representations with distinct raw hashes: the original CRLF
+file in the retained L directory and the LF file stored in Git.
 
-`path-bindings.actual.jsonl` binds declared paths to actual current files,
+The three previous manifests remain here under their first filenames.
+Each is matched byte-for-byte to commit
+`815fe2565be698f2c28ac2a7c99a87e5e1e14aed` and is linked from the current
+record manifest to its successor. They record the earlier worktree run. Its
+Git-anchored verification failed on the L placement table. The v2 snapshot
+keeps that result as history.
+
+`path-bindings.v2.actual.jsonl` binds declared paths to actual current files,
 historical Git blobs, exact recovered bytes, native parsed JSON values or
 native fingerprinted payloads. Compressed old register snapshots keep
 container bytes, decoded bytes and parsed native values distinct. An exact
@@ -35,7 +43,7 @@ The original route-counter source has an exact hash-checked reconstruction
 in the supplied A2 scratch root. The four raw map reports and the one
 additional SL variant PDF have explicit separate portable roots.
 
-`digest-contracts.actual.jsonl` records every standalone 64-hex JSON/JSONL
+`digest-contracts.v2.actual.jsonl` records every standalone 64-hex JSON/JSONL
 leaf in the changed repository records. Native goal, page, profile, campaign,
 set and directed-quantity contract fingerprints retain their scoped role;
 they are not compared as raw files. A raw path assertion must resolve to
@@ -79,7 +87,13 @@ Repeat without `--refresh` to verify the complete snapshot. After native
 activation, final documentation and integration, inspect the actual changes
 and run the final refresh. Commit only after the coordinator's explicit
 signal. Then run again with `--anchor <terminal-commit>` to verify the
-finite committed domain and all bootstrap bytes. An anchored run requires
+finite committed domain, all reference origins backed by the selected Git
+tree and all bootstrap bytes. The verifier also invokes the whole-tree
+workspace-path scanner at the selected commit, reporting its exit code,
+total hit count and new or changed hits separately. Exit code 2 records
+inherited matches in otherwise unchanged Git blobs. A new or changed hit
+fails verification. The separate whole-tree-clean assertion requires zero
+total hits. An anchored run requires
 the working-tree records to equal that exact commit; it cannot silently
 certify later edits under an old anchor.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reproduce Task A2's finite file, path-binding and digest-contract inventory.
 
-The default verifies; --refresh replaces only the three generated inventories.
+The default verifies; --refresh writes only the three current successor inventories.
 External roots are command-line aliases, never account-specific stored paths.
 """
 from pathlib import Path, PurePosixPath
@@ -136,8 +136,19 @@ def leaves(value, parts=(), ancestors=()):
     elif isinstance(value, str) and HEX.fullmatch(value):
         yield parts, HEX.fullmatch(value).group(1).lower(), ancestors
 
-anchor = a.anchor or git('rev-parse', 'HEAD').decode().strip()
+check(not (a.anchor and a.refresh), 'An anchored verification cannot refresh manifests')
+anchor = git('rev-parse', '--verify', (a.anchor or 'HEAD') + '^{commit}').decode().strip()
 base = POLICY['baselineCommit']
+predecessor = POLICY['previousSnapshot']
+git('merge-base', '--is-ancestor', base, predecessor['commit'])
+git('merge-base', '--is-ancestor', predecessor['commit'], anchor)
+previous_manifests = []
+for old, new in predecessor['outputs'].items():
+    path = D + '/inventory/' + old
+    committed = blobs.read(predecessor['commit'] + ':' + path, False)
+    check(committed and raw_file_info(R / path) == committed, 'Immutable earlier inventory changed: ' + path)
+    previous_manifests.append({'path': path, **committed, 'lifecycle': 'earlier_state', 'preservedAt': predecessor['commit'],
+        'preservationEpoch': predecessor['epoch'], 'successorPath': D + '/inventory/' + new, 'currentApprovalClaim': False})
 commits = git('rev-list', '--first-parent', base + '..' + anchor).decode().splitlines()
 scope = set()
 historical_versions = collections.defaultdict(list)
@@ -351,6 +362,13 @@ for path in sorted(scope):
         successor = D + '/' + rule['successor']
         check((R / successor).is_file(), 'Missing actual lifecycle successor: ' + successor)
         rec.update(lifecycle='earlier_state', preservationEpoch=rule['epoch'], successorPath=successor, currentApprovalClaim=False)
+    if relative in POLICY['retiredRepositoryOriginals']:
+        archived = POLICY['retiredRepositoryOriginals'][relative]
+        original = file_info(archived['root'], archived['path'])
+        original_blob = blobs.read(predecessor['commit'] + ':' + path, False)
+        check(not rec['present'] and original and original_blob and original_blob == {k: original[k] for k in ('bytes', 'sha256')},
+              'Retired original must match the prior Git blob at its exact retained location: ' + path)
+        rec.update(priorGitCommit=predecessor['commit'], priorRawOrigin=original)
     if rec['present']:
         info = file_info('repo', path)
         rec.update(sha256=info['sha256'], bytes=info['bytes'])
@@ -399,7 +417,14 @@ for path in sorted(scope):
                                 break
                     if declared:
                         break
-        if declared in POLICY['semanticPathLabels']:
+        if isinstance(parent, dict) and 'externalRoot' in parent and field == 'sha256' and isinstance(parent.get('path'), str):
+            alias = parent['externalRoot']
+            check(alias in roots, 'Unknown explicitly declared external root: ' + str(alias))
+            origin = file_info(alias, parent['path'])
+            check(origin and origin['sha256'] == digest, 'Exact designated external path mismatch: @' + alias + '/' + parent['path'])
+            row.update(contract='raw_path_binding')
+            bindings.append({**row, 'declaredPath': '@' + alias + '/' + parent['path'], 'origin': {'kind': 'retained_raw', **origin}})
+        elif declared in POLICY['semanticPathLabels']:
             row.update(contract='native_scoped_value', nativeField=field, pathLabel=declared)
         elif declared and field not in semantic_fields:
             locations = candidates(path, declared)
@@ -533,10 +558,12 @@ raw_voices = []
 for pair in POLICY.get('rawVoiceBindings', []):
     source = pair['source']
     original = file_info(source['root'], source['path'])
-    retained_voice = file_info('repo', pair['retainedPath'])
+    retained_root = pair.get('retainedRoot', 'repo')
+    retained_voice = file_info(retained_root, pair['retainedPath'])
     check(original and retained_voice and original['sha256'] == retained_voice['sha256'] and original['bytes'] == retained_voice['bytes'],
           'An unchanged raw voice no longer equals its retained original: ' + pair['retainedPath'])
     raw_voices.append({'source': original, 'retainedPath': pair['retainedPath'], 'retainedSha256': retained_voice['sha256'],
+                       'retainedRoot': retained_root, **({'publicSuccessorPath': pair['publicSuccessorPath']} if 'publicSuccessorPath' in pair else {}),
                        'byteIdentical': True, 'role': pair['role'], 'scientificDecisionReinterpreted': False})
 
 operational_literals = []
@@ -572,7 +599,8 @@ for path in sorted(scope):
             'historicalOrigin': sealed, 'originalLiteralRewritten': False, 'newAbsoluteLiteralPublished': False})
 
 manifest = {
-    'schemaVersion': 1, 'contract': 'physics-directed-quantity-arrow-record-lifecycle-v1',
+    'schemaVersion': 2, 'contract': 'physics-directed-quantity-arrow-record-lifecycle-v2',
+    'earlierInventoryManifests': previous_manifests,
     'baselineCommit': base,
     'domainContract': 'Finite first-parent nonmerge path union; optional current worktree additions before anchoring. The invocation supplies the final anchor, avoiding a self-referential commit digest.',
     'scope': 'Union of non-merge first-parent Task A2 changed files after baseline; plus uncommitted/untracked additions unless --anchor supplied. Ignored and external preserved evidence is listed separately.',
@@ -592,26 +620,54 @@ if problems:
 check(a.anchor or git('rev-parse', 'HEAD').decode().strip() == anchor, 'Git HEAD changed during the development snapshot; refresh after writers finish')
 if a.anchor:
     for record in records:
-        committed = blobs.read(a.anchor + ':' + record['path'], False)
+        committed = blobs.read(anchor + ':' + record['path'], False)
         check((committed is not None) == record['present'] and (not committed or committed['sha256'] == record.get('sha256')),
               'Anchored record differs from the selected commit: ' + record['path'])
+    # Check the exact selected tree for every in-repository Git-backed binding,
+    # including unchanged imports outside the delivery's changed-file domain.
+    checked = {record['path'] for record in records}
+    git_paths = {p.decode() for p in git('ls-tree', '-r', '-z', '--name-only', anchor).split(b'\0') if p}
+    for binding in bindings:
+        origin = binding['origin']
+        path = origin.get('path')
+        if origin.get('root') != 'repo' or path in checked or path not in git_paths:
+            continue
+        expected = file_info('repo', path)
+        committed = blobs.read(anchor + ':' + path, False)
+        check(expected and committed and committed == {k: expected[k] for k in ('sha256', 'bytes')},
+              'Referenced repository bytes differ from the selected commit: ' + path)
+        checked.add(path)
 for (root, path), info in physical.items():
     current = roots[root] / path
     check(current.is_file() and raw_file_info(current)['sha256'] == info['sha256'], 'Input changed during inventory; rerun after writers finish: @' + root + '/' + path)
 outputs = {
-    'record-lifecycle.actual.json': jsontext(manifest),
-    'path-bindings.actual.jsonl': ''.join(json.dumps(v, ensure_ascii=False, separators=(',', ':')) + '\n' for v in bindings),
-    'digest-contracts.actual.jsonl': ''.join(json.dumps(v, ensure_ascii=False, separators=(',', ':')) + '\n' for v in digests),
+    'record-lifecycle.v2.actual.json': jsontext(manifest),
+    'path-bindings.v2.actual.jsonl': ''.join(json.dumps(v, ensure_ascii=False, separators=(',', ':')) + '\n' for v in bindings),
+    'digest-contracts.v2.actual.jsonl': ''.join(json.dumps(v, ensure_ascii=False, separators=(',', ':')) + '\n' for v in digests),
 }
 for name, content in outputs.items():
     if a.refresh:
         (HERE / name).write_text(content)
     else:
-        check((HERE / name).is_file() and (HERE / name).read_text() == content, 'Inventory drift: ' + name + '; inspect changes and run --refresh')
+        check((HERE / name).is_file() and (HERE / name).read_bytes() == content.encode('utf-8'), 'Inventory drift: ' + name + '; inspect changes and run --refresh')
 CACHE_FILE.write_text(json.dumps(file_hash_cache, separators=(',', ':')))
 if a.anchor:
     for path in sorted(bootstrap):
-        check(git('show', a.anchor + ':' + path, optional=True) == (R / path).read_bytes(), 'Bootstrap differs from anchor: ' + path)
+        check(git('show', anchor + ':' + path, optional=True) == (R / path).read_bytes(), 'Bootstrap differs from anchor: ' + path)
 if a.native:
     subprocess.run([str(R / 'app/node_modules/.bin/tsx'), str(HERE / 'verify-native-values.mts'), str(R), str(HERE), json.dumps({key: str(value) for key, value in roots.items()})], cwd=R, check=True)
-print(json.dumps({'status': 'PASS', **manifest['counts'], 'nativeRequested': a.native, 'domainMode': 'anchored_commit' if a.anchor else 'current_worktree_development_snapshot', 'scientificOrHumanApprovalGranted': False}))
+# The checkout and its selected Git tree are independent evidence. A later
+# inventory commit is verified by rerunning this scan at its exact object.
+scan = subprocess.run([sys.executable, '-B', str(R / D / 'portable/scan-workspace-paths.py'),
+    '--repo', str(R), '--anchor', anchor], cwd=R, stdout=subprocess.PIPE, check=False)
+check(scan.returncode in (0, 2, 3), 'Whole-tree workspace scanner did not complete')
+scan_result = json.loads(scan.stdout)
+check(scan_result.get('tree') == git('rev-parse', anchor + '^{tree}').decode().strip()
+      and scan_result.get('baselineTree') == git('rev-parse', base + '^{tree}').decode().strip(),
+      'Workspace scan reported a different target or baseline tree')
+hits, changes = scan_result['currentWholeTreeHitCount'], scan_result['newOrChangedHitCount']
+check(0 <= changes <= hits and scan.returncode == (3 if changes else 2 if hits else 0),
+      'Workspace scan counts and exit status disagree')
+check(not changes, 'Whole-tree workspace scan found ' + str(changes) + ' new or changed paths (' + str(hits) + ' in the selected tree)')
+print(json.dumps({'status': 'PASS', 'inventoryStatus': 'PASS', 'workspaceScanExitCode': scan.returncode,
+    'workspaceTreeGloballyClean': scan.returncode == 0, 'workspaceScan': scan_result, **manifest['counts'], 'nativeRequested': a.native, 'domainMode': 'anchored_commit' if a.anchor else 'current_worktree_development_snapshot', 'scientificOrHumanApprovalGranted': False}))

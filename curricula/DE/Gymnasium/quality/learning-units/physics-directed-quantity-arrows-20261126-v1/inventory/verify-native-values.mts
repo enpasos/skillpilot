@@ -18,7 +18,7 @@ const { fingerprintGoalDescriptionRolloutSynthesisDecisionManifest } = await imp
 const assert = (ok: unknown, why: string) => { if (!ok) throw Error(why); };
 const { fingerprintDirectedQuantityArrowContract } = await import(pathToFileURL(join(repo, 'app/scripts/lib/directedQuantityArrows.ts')).href);
 let parsed = 0, profiles = 0, books = 0, arrowContracts = 0;
-for (const line of readFileSync(join(inventory, 'path-bindings.actual.jsonl'), 'utf8').split(/\r?\n/).filter(Boolean)) {
+for (const line of readFileSync(join(inventory, 'path-bindings.v2.actual.jsonl'), 'utf8').split(/\r?\n/).filter(Boolean)) {
   const b = JSON.parse(line);
   if (!['native_parsed_json', 'historical_native_parsed_json', 'native_fingerprinted_json', 'native_book_model', 'gzip_native_parsed_json'].includes(b.origin.kind)) continue;
   const raw = b.origin.kind === 'historical_native_parsed_json'
@@ -44,7 +44,7 @@ for (const line of readFileSync(join(inventory, 'path-bindings.actual.jsonl'), '
   }
   parsed++;
 }
-const manifest = json(join(inventory, 'record-lifecycle.actual.json'));
+const manifest = json(join(inventory, 'record-lifecycle.v2.actual.json'));
 function walk(value: any, path: string): void {
   if (Array.isArray(value)) { for (const item of value) walk(item, path); return; }
   if (!value || typeof value !== 'object') return;
