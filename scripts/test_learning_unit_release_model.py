@@ -9,12 +9,12 @@ prerequisite-reduction proof is still verified by the real Node verifier against
 the unchanged canonical file, after checking that the injected copy differs from
 it only in learning-unit fields (the proof fingerprints documents without that layer).
 
-Proofs:
-* 1.0 and 1.1 builds of the injected input are byte-identical to the builds of
-  the unchanged canonical input (the learning-unit layer is projected out);
-* the 1.2 build carries the unit and its own placements, passes the
-  independent validator, and differs from the 1.0 build only in the 1.2
-  landscape fields and the generated runtime/digest metadata.
+The Mathematics release uses package 1.3 to transport the 1.2 landscape
+and the partial orders of its format-1.2 views. We compare complete builds
+with and without the injected unit, then repeat with its coverage review.
+Older package profiles must reject the current views. Other subjects have
+older views, but there is no trusted legacy standalone build profile for
+any of them. A full older-profile build cannot test layer removal today.
 
 Usage: python3 -B scripts/test_learning_unit_release_model.py [--work-dir DIR] [--keep]
 The work directory must be outside the repository or below repository tmp/.
@@ -44,6 +44,7 @@ import validate_curriculum_release_model as validator  # noqa: E402
 REPO = Path(__file__).resolve().parents[1]
 CANONICAL = REPO / "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json"
 PROFILES = {
+    "1.3": REPO / "contracts/curriculum-package/v1.3/profiles/de-gymnasium-mathematik-release-model-v1.3.profile.json",
     "1.0": REPO / "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-release-model-v1.profile.json",
     "1.1": REPO / "contracts/curriculum-package/v1.1/profiles/de-gymnasium-mathematik-completion-release-model-v1.profile.json",
     "1.2": REPO / "contracts/curriculum-package/v1.2/profiles/de-gymnasium-mathematik-learning-units-release-model-v1.profile.json",
@@ -59,7 +60,7 @@ UNIT = {
     "promiseEn": "I can independently explain and apply the dot product through an orthogonal projection.",
     "revision": "2026-11-12-v1",
 }
-# Files whose bytes legitimately differ between the 1.0 and the 1.2 build of the same input.
+# Files whose bytes legitimately differ when the learning-unit layer changes on otherwise identical input.
 RUNTIME_GENERATED = {
     "data/canonical/mathematik.landscape.json",
     "data/runtime/catalog.json",
@@ -71,6 +72,14 @@ RUNTIME_GENERATED = {
     "metadata/release-model-conformance.json",
 }
 
+
+# The 1.1 build profile pins the previous edition of the publication metadata.
+# Its retained bytes are already in the repository. The compiler checks the
+# profile's original SHA-256 before it gets to the current source views.
+RETAINED_11_PUBLICATION_PROFILE = (
+    "qa-artifacts/native-review-inputs/2026-10-07/schema-artifact-layout-preservation-technical-20261007-v1/"
+    "native-contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json"
+)
 
 REVIEW_RECORD = REPO / "curricula/DE/Gymnasium/quality/learning-units/math-dot-product-projection-2026-11-12.md"
 
@@ -168,14 +177,15 @@ def tree(root: Path) -> dict[str, Path]:
     return {str(path.relative_to(root)): path for path in sorted(root.rglob("*")) if path.is_file()}
 
 
-def assert_identical(left: Path, right: Path, label: str) -> None:
-    left_files, right_files = tree(left), tree(right)
-    if set(left_files) != set(right_files):
-        raise AssertionError(f"{label}: file sets differ: {sorted(set(left_files) ^ set(right_files))[:10]}")
-    different = [name for name in left_files if not filecmp.cmp(left_files[name], right_files[name], shallow=False)]
-    if different:
-        raise AssertionError(f"{label}: files differ: {different[:10]}")
-    print(f"  {label}: {len(left_files)} files byte-identical", flush=True)
+def require_refused_downgrade(inputs: Inputs, version: str, landscape: dict[str, Any], output: Path) -> None:
+    try:
+        compile_into(inputs, version, landscape, output)
+    except compiler.CompilationError as error:
+        if "unsupported composition view format for the selected DPK profile; refusing downgrade to 1.0" not in str(error):
+            raise
+        print(f"  package {version} refused the current view format", flush=True)
+        return
+    raise AssertionError(f"Package {version} accepted a view that it cannot represent")
 
 
 def run(work: Path) -> None:
@@ -187,69 +197,69 @@ def run(work: Path) -> None:
         raise AssertionError("The learning-unit projection changed a goal object")
     injected = inject(canonical)
     inputs = Inputs(source, canonical)
-    profile_12 = json.loads(PROFILES["1.2"].read_bytes())
-    profile_12["learningUnits"]["expectedCounts"] = {"learningUnits": 1, "ownPlacements": 2, "coverageReviews": 0}
-    inputs.profile_overrides[PROFILES["1.2"].resolve()] = profile_12
+    legacy_profile = json.loads(PROFILES["1.1"].read_bytes())
+    legacy_profile["contracts"]["publicationEvidenceProfilePath"] = RETAINED_11_PUBLICATION_PROFILE
+    inputs.profile_overrides[PROFILES["1.1"].resolve()] = legacy_profile
+    for legacy_version in ("1.0", "1.1"):
+        require_refused_downgrade(inputs, legacy_version, source, work / f"{legacy_version}-original")
+        require_refused_downgrade(inputs, legacy_version, injected, work / f"{legacy_version}-injected")
 
-    outputs = {name: work / name for name in ("1.0-canonical", "1.0-injected", "1.1-canonical", "1.1-injected", "1.2-injected",
-                                              "1.0-reviewed", "1.2-reviewed")}
-    for version in ("1.0", "1.1"):
-        compile_into(inputs, version, canonical, outputs[f"{version}-canonical"])
-        compile_into(inputs, version, injected, outputs[f"{version}-injected"])
-        assert_identical(outputs[f"{version}-canonical"], outputs[f"{version}-injected"],
-                         f"{version} build is unaffected by the learning-unit layer")
-    validate(inputs, "1.1", injected, outputs["1.1-injected"])
-    validate(inputs, "1.0", injected, outputs["1.0-injected"])
+    version = "1.3"
+    package_profile = json.loads(PROFILES[version].read_bytes())
+    inputs.profile_overrides[PROFILES[version].resolve()] = package_profile
+    counts = package_profile["learningUnits"]["expectedCounts"]
+    outputs = {name: work / name for name in ("baseline", "injected", "reviewed")}
+    counts.update(learningUnits=0, ownPlacements=0, coverageReviews=0)
+    compile_into(inputs, version, canonical, outputs["baseline"])
+    validate(inputs, version, canonical, outputs["baseline"])
 
-    summary = compile_into(inputs, "1.2", injected, outputs["1.2-injected"])
-    validate(inputs, "1.2", injected, outputs["1.2-injected"], adversarial=True)
+    counts.update(learningUnits=1, ownPlacements=2, coverageReviews=0)
+    summary = compile_into(inputs, version, injected, outputs["injected"])
+    validate(inputs, version, injected, outputs["injected"], adversarial=True)
     if summary["learningUnitCounts"] != {"learningUnits": 1, "ownPlacements": 2, "coverageReviews": 0}:
         raise AssertionError(f"Unexpected learning-unit counts {summary['learningUnitCounts']}")
 
-    v10, v12 = tree(outputs["1.0-injected"]), tree(outputs["1.2-injected"])
-    if set(v10) != set(v12):
-        raise AssertionError(f"1.2 file set differs: {sorted(set(v10) ^ set(v12))}")
-    unexpected = [name for name in v10 if name not in RUNTIME_GENERATED
-                  and not filecmp.cmp(v10[name], v12[name], shallow=False)]
+    baseline, with_unit = tree(outputs["baseline"]), tree(outputs["injected"])
+    if set(baseline) != set(with_unit):
+        raise AssertionError(f"1.2 file set differs: {sorted(set(baseline) ^ set(with_unit))}")
+    unexpected = [name for name in baseline if name not in RUNTIME_GENERATED
+                  and not filecmp.cmp(baseline[name], with_unit[name], shallow=False)]
     if unexpected:
         raise AssertionError(f"1.2 build changed content outside the learning-unit layer: {unexpected[:10]}")
-    landscape_10 = json.loads(v10["data/canonical/mathematik.landscape.json"].read_bytes())
-    landscape_12 = json.loads(v12["data/canonical/mathematik.landscape.json"].read_bytes())
+    base_landscape = json.loads(baseline["data/canonical/mathematik.landscape.json"].read_bytes())
+    landscape_12 = json.loads(with_unit["data/canonical/mathematik.landscape.json"].read_bytes())
     if landscape_12["$schema"] != contracts.LANDSCAPE_SCHEMA_ID or landscape_12["landscapeFormatVersion"] != "1.2":
         raise AssertionError("1.2 landscape does not declare the 1.2 landscape schema")
     projected = lu.project_out_learning_units(landscape_12)
-    projected.update({"$schema": landscape_10["$schema"], "landscapeFormatVersion": landscape_10["landscapeFormatVersion"]})
-    if projected != landscape_10:
-        raise AssertionError("1.2 landscape differs from the 1.0 landscape outside the learning-unit fields")
+    if projected != base_landscape:
+        raise AssertionError("1.2 landscape differs from the baseline landscape outside the learning-unit fields")
     if [unit for unit in landscape_12["programUnits"] if lu.is_learning_unit(unit)] != [UNIT]:
         raise AssertionError("1.2 landscape lost or changed the learning unit")
-    if lu.has_learning_unit_content(landscape_10):
-        raise AssertionError("1.0 landscape carries learning-unit fields")
-    catalog_12 = json.loads(v12["data/runtime/catalog.json"].read_bytes())
-    catalog_10 = json.loads(v10["data/runtime/catalog.json"].read_bytes())
-    if (catalog_12["runtimeContractVersion"], catalog_12["catalogVersion"], catalog_12["learningUnitReviews"]) != ("1.2", "1.2", []) \
-            or catalog_12["capabilities"] != [*catalog_10["capabilities"], contracts.CAPABILITY]:
-        raise AssertionError("1.2 runtime catalog does not declare exactly the learning-unit capability")
+    if lu.has_learning_unit_content(base_landscape):
+        raise AssertionError("baseline landscape carries learning-unit fields")
+    catalog_12 = json.loads(with_unit["data/runtime/catalog.json"].read_bytes())
+    base_catalog = json.loads(baseline["data/runtime/catalog.json"].read_bytes())
+    if (catalog_12["runtimeContractVersion"], catalog_12["catalogVersion"], catalog_12["learningUnitReviews"]) != (
+        version, version, []
+    ) or catalog_12["capabilities"] != base_catalog["capabilities"] or contracts.CAPABILITY not in catalog_12["capabilities"]:
+        raise AssertionError("The current package must carry the 1.2 learning-unit capability")
     findings = lu.validate_package_learning_units([landscape_12], [])
     if findings:
         raise AssertionError(f"Injected unit is not a valid learning unit: {[f.as_dict() for f in findings]}")
     print("  1.2 build: one learning unit, two own placements, no coverage review; "
           "independent validation and package rules pass", flush=True)
 
-    # A coverage review sits on the unit and never touches goal objects: the 1.0 build stays byte-identical,
-    # and the 1.2 build ships the unchanged review record with its SHA-256.
+    # A coverage review belongs to the unit. Its record travels unchanged.
     if not REVIEW_RECORD.is_file():
         print(f"  reviewed variant skipped: {REVIEW_RECORD.relative_to(REPO)} is absent", flush=True)
         return
     reviewed = inject_reviewed(canonical)
     if reviewed["goals"] != canonical["goals"]:
         raise AssertionError("Adding a unit-level coverage review changed a goal object")
-    compile_into(inputs, "1.0", reviewed, outputs["1.0-reviewed"])
-    assert_identical(outputs["1.0-canonical"], outputs["1.0-reviewed"], "1.0 build is unaffected by a unit-level coverage review")
-    profile_12["learningUnits"]["expectedCounts"] = {"learningUnits": 1, "ownPlacements": 2, "coverageReviews": 1}
-    summary = compile_into(inputs, "1.2", reviewed, outputs["1.2-reviewed"])
-    validate(inputs, "1.2", reviewed, outputs["1.2-reviewed"])
-    reviewed_tree = tree(outputs["1.2-reviewed"])
+    counts.update(coverageReviews=1)
+    summary = compile_into(inputs, version, reviewed, outputs["reviewed"])
+    validate(inputs, version, reviewed, outputs["reviewed"])
+    reviewed_tree = tree(outputs["reviewed"])
     landscape = json.loads(reviewed_tree["data/canonical/mathematik.landscape.json"].read_bytes())
     if landscape["goals"] != landscape_12["goals"]:
         raise AssertionError("A unit-level coverage review changed exported goal objects")
@@ -266,7 +276,7 @@ def run(work: Path) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--work-dir", type=Path, help="empty work directory (default: a new temporary directory)")
-    parser.add_argument("--keep", action="store_true", help="keep the five unpacked release models")
+    parser.add_argument("--keep", action="store_true", help="keep unpacked release models and rejected-build diagnostics")
     args = parser.parse_args(argv)
     work = args.work_dir.resolve() if args.work_dir else Path(tempfile.mkdtemp(prefix="learning-unit-release-model-"))
     if work.is_relative_to(REPO) and not work.is_relative_to(REPO / "tmp"):
