@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "deliveryStage": "intermediate A without K4; not complete delivery or main CI",
+  "checks": [
+    {
+      "label": "reader-controls",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "--test",
+        "scripts/testDirectedQuantityArrows.ts"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:28:34.947833+00:00",
+      "completedAt": "2026-11-26T05:28:35.716881+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/reader-controls.intermediate.log",
+      "logSha256": "sha256:b8c34c614cfc6d4121b1adb455453102ee9f892e4cf1d165cce1ffb6f45b2786"
+    },
+    {
+      "label": "python-schema-dispatch",
+      "argv": [
+        "python3",
+        "-B",
+        "../scripts/test_semantic_kind_ledger_contracts.py"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:28:35.717207+00:00",
+      "completedAt": "2026-11-26T05:28:37.009781+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/python-schema-dispatch.intermediate.log",
+      "logSha256": "sha256:8b62f336f95aba2ea2cbd052398a01db27bee06019e9881c4e778acc74bfac43"
+    },
+    {
+      "label": "qa-generator",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=physik",
+        "--check"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:28:37.010083+00:00",
+      "completedAt": "2026-11-26T05:28:38.659045+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/qa-generator.intermediate.log",
+      "logSha256": "sha256:d5dd066915f98b2427bd60be89081b04791f6d28b0b13da4fa0fdbbbcca23b84"
+    },
+    {
+      "label": "qa-projection",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/materializePhysicsDirectedQuantityArrowQa.ts",
+        "--check"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:28:38.659356+00:00",
+      "completedAt": "2026-11-26T05:28:39.870254+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/qa-projection.intermediate.log",
+      "logSha256": "sha256:05c685bf208081ede8ed914cb3f8eb0ce0e446d5a9ca45f37e00a671b70801a7"
+    },
+    {
+      "label": "semantic-projection",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/materializePhysicsDirectedQuantityArrowSemantics.ts",
+        "--check"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:28:39.870593+00:00",
+      "completedAt": "2026-11-26T05:28:43.470366+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/semantic-projection.intermediate.log",
+      "logSha256": "sha256:0b72b64d656047daa2e6deb764e79c6f998411fb4c612d6135bdb1a5e435d059"
+    },
+    {
+      "label": "normal-approval-coverage",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/checkGoalVisualizationQaApprovalCoverage.ts",
+        "physik"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:28:43.470763+00:00",
+      "completedAt": "2026-11-26T05:28:43.887508+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/checks/normal-approval-coverage.intermediate.log",
+      "logSha256": "sha256:39f76f16148ab3a7c59d5b915f109dcf98ed08d7165567180120818914278176"
+    }
+  ]
+}

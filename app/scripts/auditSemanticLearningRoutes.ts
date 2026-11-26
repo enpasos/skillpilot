@@ -74,6 +74,8 @@ export async function auditSemanticLearningRoutes(repositoryRoot: string) {
     inputBindings,
     scopes,
     scopeAlignmentDebt,
+    directedQuantityArrows: inventory.directedQuantityArrowRoutes,
+    directedQuantityArrowImages: inventory.directedQuantityArrowImages,
   }
 }
 

@@ -8,6 +8,7 @@ import {
   isAiApprovedForCurrentAsset,
   type AiApprovalRecord,
 } from '../src/utils/goalVisualizationQaStatus'
+import { validateDirectedQuantityArrowImageEvidence } from './lib/directedQuantityArrowVisualizationQa'
 
 interface QaApprovalRecord extends AiApprovalRecord {
   goalId: string
@@ -76,6 +77,11 @@ const main = (): void => {
     assert.equal(ledger.schemaVersion, 1, `${subject}: unsupported QA schema`)
     assert.equal(ledger.subject, subject, `${subject}: QA subject mismatch`)
     assert.ok(Array.isArray(ledger.records), `${subject}: QA records must be an array`)
+    if (subject === 'physik') {
+      const arrows = validateDirectedQuantityArrowImageEvidence(ledger.records,
+        path => readFileSync(resolve(repoRoot, path)))
+      console.log(`physik: directed-quantity-arrow criterion: ${arrows.accepted} accepted, ${arrows.notApplicable} not applicable, ${arrows.undecided} explicitly undecided, ${arrows.rejected} rejected; undecided does not mean criterion approval.`)
+    }
 
     const active = ledger.records.filter((record) => record.visualizationState === 'available')
     active.forEach((record) => {

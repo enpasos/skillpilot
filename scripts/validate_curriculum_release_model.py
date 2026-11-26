@@ -1314,6 +1314,11 @@ def validate_schema(
     validator: Draft202012Validator,
     context: str,
 ) -> None:
+    if isinstance(value, dict) and value.get("documentType") == "semantic-kind-ledger":
+        from semantic_kind_ledger_contracts import semantic_kind_ledger_schema_path
+        ledger_schema = load_json(semantic_kind_ledger_schema_path(REPO_ROOT, value))
+        Draft202012Validator.check_schema(ledger_schema)
+        validator = Draft202012Validator(ledger_schema, format_checker=FormatChecker())
     errors = sorted(
         validator.iter_errors(value),
         key=lambda item: tuple(str(part) for part in item.absolute_path),

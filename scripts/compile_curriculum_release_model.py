@@ -37,6 +37,7 @@ import curriculum_learning_units as learning_units
 import curriculum_package_learning_unit_contracts as learning_unit_contracts
 import curriculum_package_v13_contracts as v13_contracts
 from curriculum_assessment_materials import validate_static_assessment_svg
+from semantic_kind_ledger_contracts import semantic_kind_ledger_schema_path
 from prerequisite_reduction_semantic_kind import (
     PrerequisiteReductionBindingError,
     load_verified_semantic_kind_bindings,
@@ -3016,7 +3017,8 @@ def compile_model(profile_path: Path, output_root: Path) -> dict[str, Any]:
 
     ledger_path = resolve_repo_path(profile["canonicalLandscape"]["semanticKindLedgerPath"])
     ledger = load_json(ledger_path)
-    ledger_errors = list(ontology_validator.iter_errors(ledger))
+    ledger_validator = schema_validator(semantic_kind_ledger_schema_path(REPO_ROOT, ledger))
+    ledger_errors = list(ledger_validator.iter_errors(ledger))
     if ledger_errors:
         raise CompilationError(f"Invalid semantic-kind ledger {ledger_path}: {ledger_errors[0].message}")
     if ledger.get("profileId") != ontology_profile.get("profileId"):

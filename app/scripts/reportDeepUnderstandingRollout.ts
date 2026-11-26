@@ -16,8 +16,11 @@ import {
 import { isAiApprovedForCurrentAsset } from '../src/utils/goalVisualizationQaStatus'
 import {
   fingerprintSemanticKindSourceGoal,
+  parseSemanticKindLedger,
   stableGoalBookJson,
 } from './goalBookModel'
+import { validateDirectedQuantityArrowEvidence, auditDirectedQuantityArrowRoutes } from './lib/directedQuantityArrows'
+import { validateDirectedQuantityArrowImageEvidence, type ArrowImageQaRecord } from './lib/directedQuantityArrowVisualizationQa'
 import {
   reviewPositiveGoalEvidenceConfig,
   type PositiveGoalEvidenceReviewConfig,
@@ -898,6 +901,17 @@ const loadAuthoritativeScope = (
     }
   }
   const rawGoals = Array.isArray(rawLandscape.goals) ? rawLandscape.goals : []
+  if (config.subject === 'physik') {
+    try {
+      const parsed = parseSemanticKindLedger(ledger, rawLandscape, landscape.landscapeId, config.landscapePath, prerequisiteReductionContext)
+      validateDirectedQuantityArrowEvidence(landscape.goals, parsed.directedQuantityArrowsByGoalId,
+        path => readFileSync(resolveRepoPath(path)))
+      const arrows = auditDirectedQuantityArrowRoutes(landscape.goals, parsed.directedQuantityArrowsByGoalId)
+      arrows.findings.forEach(finding => addIssue(issues, config.subject, `${finding.goalId}: ${finding.message}`))
+    } catch (error) {
+      addIssue(issues, config.subject, error instanceof Error ? error.message : String(error))
+    }
+  }
   if (!Array.isArray(rawLandscape.goals)) addIssue(issues, config.subject, 'canonical goals array is missing')
   const rawGoalById = new Map<string, JsonObject>()
   rawGoals.forEach((candidate, index) => {
@@ -1140,6 +1154,14 @@ const loadVisualizationReadyGoals = (
     return new Set()
   }
   const duplicates = duplicateValues(ledger.records.map(({ goalId }) => goalId))
+  if (config.subject === 'physik') {
+    try {
+      validateDirectedQuantityArrowImageEvidence(ledger.records as ArrowImageQaRecord[], path => readFileSync(resolveRepoPath(path)))
+    } catch (error) {
+      addIssue(issues, config.subject, error instanceof Error ? error.message : String(error))
+      return new Set()
+    }
+  }
   duplicates.forEach((goalId) => addIssue(issues, config.subject, `duplicate visualization-QA record for ${goalId}`))
   const duplicateSet = new Set(duplicates)
   const recordsByGoalId = new Map(ledger.records.map((record) => [record.goalId, record]))

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import {
   emptyGoalVisualizationAiReview,
   normalizeGoalVisualizationAiReview,
+  preserveDirectedQuantityArrowImageReview,
   type GoalVisualizationAiReviewFields,
   type GoalVisualizationAssetStateFields,
   type GoalVisualizationMissingReason,
@@ -261,6 +262,7 @@ const normalizeExistingRecord = (
       : null,
     humanReviewer: normalizeText(existing.humanReviewer),
     ...normalizeGoalVisualizationAiReview(existing, current.assetSha256),
+    ...preserveDirectedQuantityArrowImageReview(existing, current.assetSha256),
   } as GoalVisualizationQaRecord
 }
 
