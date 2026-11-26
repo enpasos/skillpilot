@@ -3989,6 +3989,59 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsOpening);
     }
 
+    // The exam of the other subject is judged as it will be once the focus of the continuation is
+    // stored. A stored focus that binds a later Mathematics exam must not let a Physics continuation
+    // announce a goal that the write then refuses (issue #216, found by the independent review).
+    @Test
+    void continuationUnderASectionJudgesTheOtherSubjectsExamAsTheWriteWill() throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String physicsOpening = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
+        String mathOpening = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
+        String mathGoal = "2850e8f6-2330-50d3-a577-d519540d9924";
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
+        String section = configurePhysicsTestUnit(null, "SekII", "LK", "DE-SL", "physics-sl-unit-e");
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
+        curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "LK")));
+        learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+        learner.setAutoPilot(false);
+        learnerRepository.saveAndFlush(learner);
+        masteryRepository.saveAndFlush(new Mastery(learner, physicsOpening, 1.0));
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var selected = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "Einführungsphase", List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", section, "Einführungsphase", monday,
+                        monday.plusDays(6), null, selected, List.of(section), true))), today);
+        // Mathematics: the next exam on its opening, a later one on another goal.
+        learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik mit Klausuren", List.of(
+                new LearnerLearningPlanApi.Block("topic", "learning", mathOpening, "Einstieg", monday, monday.plusDays(4),
+                        null, List.of(mathOpening), List.of(mathOpening), true),
+                new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                        null, null, monday.plusDays(10), null, List.of(mathOpening), true),
+                new LearnerLearningPlanApi.Block("later-topic", "learning", mathGoal, "Ableitung", monday.plusDays(11),
+                        monday.plusDays(15), null, List.of(mathGoal), List.of(mathGoal), true),
+                new LearnerLearningPlanApi.Block("later-exam", "milestone", null, "Spätere Klausur",
+                        null, null, monday.plusDays(20), null, List.of(mathGoal), true))), today);
+        // The stored focus binds the later Mathematics exam.
+        learners.setPlannedGoals(learnerId, java.util.Set.of(mathGoal));
+        transactions.executeWithoutResult(status -> {
+            var following = learnerRepository.findById(learnerId).orElseThrow();
+            following.setFollowLearningPlans(true);
+            learnerRepository.saveAndFlush(following);
+        });
+        // What the plan names as its next step is what the continuation starts. Under the section
+        // the stored binding of the later exam is gone: the exam going on in Mathematics is the next
+        // one, its topic is the opening of Mathematics, and that required opening comes first.
+        var plan = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(plan.canContinue()).isTrue();
+        assertThat(plan.nextEligibleGoal()).isNotNull();
+        var response = learningPlans.continuePlan(learnerId, plan.planId(),
+                new LearnerLearningPlanApi.ContinueRequest(plan.revision(), today));
+        assertThat(response.activeGoalId()).isEqualTo(plan.nextEligibleGoal().goalId())
+                .isEqualTo(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(mathOpening);
+    }
+
     @SuppressWarnings("unchecked") private Map<String, Object> map(Map<String, Object> parent, String key) {
         assertThat(parent.get(key)).as(key).isInstanceOf(Map.class); return (Map<String, Object>) parent.get(key);
     }

@@ -5257,33 +5257,34 @@ public class LearnerService {
      * its learning place under the section stays bound by the plans of its own subject: the
      * frontier under the section offers it, and a required opening of that subject, only if those
      * plans admit it, and the write that starts it reads the same frontier (issue #216).
+     *
+     * <p>The result gives, for a goal, the scope of its own subject's plans that binds it under
+     * this focus, or null when nothing binds it: a goal of a subject the focus asks for, a subject
+     * without followed plans, ordinary learning in that subject.
      */
-    private java.util.function.Predicate<String> ownSubjectPlanAdmission(
+    private java.util.function.Function<String, Set<String>> foreignSubjectPlanScopes(
             Learner learner, GoalProjection projection, List<String> prospectiveFocusIds) {
         List<LearnerLearningPlan> followed = currentFollowedLearningPlans(learner);
-        if (followed.isEmpty()) return goalId -> true;
+        if (followed.isEmpty()) return goalId -> null;
         List<String> focus = prospectiveFocusIds == null
                 ? getStoredPlannedGoals(learner.getSkillpilotId()) : prospectiveFocusIds;
-        if (focus.stream().noneMatch(this::isCompositionStructureGoalId)) return goalId -> true;
+        if (focus.stream().noneMatch(this::isCompositionStructureGoalId)) return goalId -> null;
         Set<String> focusAtoms = projectedAtomicTargetIds(focus, projection);
         Set<String> requested = requestedLearningPlanSubjects(focus, focusAtoms, projection);
-        if (requested.containsAll(landscapeIdsOf(focusAtoms))) return goalId -> true;
-        // The exam of the other subject is the one its stored binding selects, as its plan status
-        // and the write under this focus see it. The candidate must not select another exam, so
-        // the scope is the same for every goal of that subject: one evaluation per subject.
-        List<String> storedBinding = prospectiveFocusIds == null
-                ? focus : getStoredPlannedGoals(learner.getSkillpilotId());
+        if (requested.containsAll(landscapeIdsOf(focusAtoms))) return goalId -> null;
+        // The exam of the other subject is the one that is going on once this focus is the stored
+        // one, as the write under it sees it: the focus is the exam binding, never the goal asked
+        // about. So the scope is the same for every goal of that subject: one evaluation each.
         Map<String, Optional<Set<String>>> scopes = new HashMap<>();
         return goalId -> {
             String owner = landscapeService.getLandscapeIdForGoal(goalId);
-            if (owner == null || requested.contains(owner)) return true;
-            Optional<Set<String>> scope = scopes.computeIfAbsent(owner, subject -> {
+            if (owner == null || requested.contains(owner)) return null;
+            return scopes.computeIfAbsent(owner, subject -> {
                 List<LearnerLearningPlan> plans = followed.stream()
                         .filter(plan -> subject.equals(plan.getLandscapeId())).toList();
                 return plans.isEmpty() ? Optional.empty()
-                        : Optional.ofNullable(followedPlanScope(learner, projection, plans, storedBinding));
-            });
-            return scope.isEmpty() || scope.get().contains(goalId);
+                        : Optional.ofNullable(followedPlanScope(learner, projection, plans, focus));
+            }).orElse(null);
         };
     }
 
@@ -8208,7 +8209,7 @@ public class LearnerService {
         Set<String> scope = Collections.emptySet();
         List<FrontierGoal> requiredOrientationGoals = List.of();
         Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
-        java.util.function.Predicate<String> admittedByOwnSubject = ownSubjectPlanAdmission(learner, projection, null);
+        java.util.function.Function<String, Set<String>> foreignScopes = foreignSubjectPlanScopes(learner, projection, null);
         if (!plannedIds.isEmpty()) {
             scope = computeScope(
                     plannedIds,
@@ -8224,7 +8225,8 @@ public class LearnerService {
                     masteryMap,
                     projectedFocusIds,
                     plannedIds,
-                    scope, waived).stream().filter(goal -> admittedByOwnSubject.test(goal.id())).toList();
+                    scope, waived).stream().filter(goal -> isNavigationInFollowedScope(
+                            goal.id(), foreignScopes.apply(goal.id()), unitOrientationScopes)).toList();
             if (requiredOrientationGoals.stream().anyMatch(goal -> !unitOrientationScopes.containsKey(goal.id()))) {
                 return requiredOrientationGoals.stream()
                         .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes))
@@ -8257,7 +8259,8 @@ public class LearnerService {
             if (!plannedIds.isEmpty() && !scope.contains(goal.getId())) {
                 continue;
             }
-            if (!admittedByOwnSubject.test(goal.getId())) continue;
+            Set<String> foreignScope = foreignScopes.apply(goal.getId());
+            if (foreignScope != null && !foreignScope.contains(goal.getId())) continue;
             boolean globalAssessmentGoal = globalAssessmentFocus.allGoalIds().contains(goal.getId());
             if (globalAssessmentGoal
                     && !globalAssessmentFocus.explicitlyFocusedGoalIds().contains(goal.getId())) {
@@ -8422,8 +8425,9 @@ public class LearnerService {
         // Only still-required orientation work gates the route. An implicitly
         // completed orientation remains voluntarily available without blocking
         // other explicitly chosen goals.
-        java.util.function.Predicate<String> admittedByOwnSubject =
-                ownSubjectPlanAdmission(learner, projection, prospectiveFocusGoalIds);
+        java.util.function.Function<String, Set<String>> foreignScopes =
+                foreignSubjectPlanScopes(learner, projection, prospectiveFocusGoalIds);
+        Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
         List<FrontierGoal> requiredOrientationGoals = getRequiredOrientationGoals(
                 learner,
                 projection,
@@ -8433,8 +8437,8 @@ public class LearnerService {
                 masteryMap,
                 projectedFocusIds,
                 plannedIds,
-                scope, waived).stream().filter(goal -> admittedByOwnSubject.test(goal.id())).toList();
-        Map<String, Set<String>> unitOrientationScopes = guidedUnitOrientationScopes(projection);
+                scope, waived).stream().filter(goal -> isNavigationInFollowedScope(
+                        goal.id(), foreignScopes.apply(goal.id()), unitOrientationScopes)).toList();
         if (requiredOrientationGoals.stream().anyMatch(goal -> !unitOrientationScopes.containsKey(goal.id()))) {
             return orderFrontierByProjection(requiredOrientationGoals.stream()
                     .filter(goal -> isNavigationInFollowedScope(goal.id(), followedScope, unitOrientationScopes)).toList(), projection);
@@ -8475,7 +8479,8 @@ public class LearnerService {
             if (currentMastery >= PLANNING_SCOPE_MASTERY_THRESHOLD) {
                 continue;
             }
-            if (!admittedByOwnSubject.test(goal.getId())) continue;
+            Set<String> foreignScope = foreignScopes.apply(goal.getId());
+            if (foreignScope != null && !foreignScope.contains(goal.getId())) continue;
 
             boolean prerequisitesMet = areFrontierPrerequisitesMastered(
                     goal, projection, prerequisites);
