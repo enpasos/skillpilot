@@ -3,6 +3,8 @@
 """Source, scope and partial-order regressions over the real Physics views."""
 import copy
 import hashlib
+import gzip
+import collections
 import json
 import unittest
 from unittest.mock import patch
@@ -178,6 +180,15 @@ def momentum_delta(view, roles):
         raise AssertionError("Changed reviewed momentum target delta: " + view["viewId"])
     return expected
 
+def arrow_delta(view, roles):
+    expected = (view['scope']['stage'] in ('CrossStage', 'SekI') and
+                view['scope'].get('jurisdiction', 'DE') not in ('DE-HE', 'DE-BW'))
+    identifiers = {'b77a7e93-22f9-5722-a4cc-f18a149ab030', '2569d84a-5bf1-542b-bc43-6ade1df971c4'}
+    if roles['target'] & identifiers != (identifiers if expected else set()):
+        raise AssertionError('Arrow/K4 escaped its reviewed target scope: ' + view['viewId'])
+    return identifiers if expected else set()
+
+
 def retained_authority_seeds(view, roles, baseline):
     """Remove only explicit reviewed additions, then enforce the old authority."""
     allowed_new_task = set()
@@ -199,6 +210,7 @@ def retained_authority_seeds(view, roles, baseline):
     allowed_new_task.update(measurement_delta(view, roles))
     allowed_new_task.update(momentum_delta(view, roles))
     allowed_new_task.update(energy_derivation_delta(view, roles))
+    allowed_new_task.update(arrow_delta(view, roles))
     if not allowed_new_task <= roles["target"]:
         raise AssertionError("A reviewed addition is missing")
     retained = roles["target"] - allowed_new_task
@@ -278,7 +290,7 @@ class PhysicsStageAuthoring(unittest.TestCase):
                    "b50e9903-58b3-520d-96bf-d5bc1fe51ebf": "ecbaa101-cb10-5da3-9368-ae40ff587d74"}
         for state, task in (("BW", "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"), ("HH", "d8fc6295-d0db-59e5-bd90-080bbc508c3a"), ("TH", "d8fc6295-d0db-59e5-bd90-080bbc508c3a")):
             view = self.views[f"de-{state.lower()}-seki.view.json"]
-            seeds = authoring.graph.role_atoms(view)["target"] - covered.keys()
+            seeds = authoring.graph.role_atoms(view)["target"] - covered.keys() - arrow_delta(view, authoring.graph.role_atoms(view))
             basis = seeds | {p for seed in seeds for p in authoring.graph.prerequisites(seed)}
             goal = authoring.graph.GOALS[task]
             self.assertEqual(goal["requires"], [covered[task]])
@@ -305,7 +317,7 @@ class PhysicsStageAuthoring(unittest.TestCase):
                 finally:
                     authoring.graph.prerequisites.cache_clear()
 
-    def test_momentum_reference_pin_or_exact_energy_successor_preserves_all_places_and_order(self):
+    def test_momentum_reference_pin_and_exact_energy_arrow_successors_preserve_places_and_order(self):
         path = authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v4/baseline-reference-places.actual.json"
         baseline = json.loads(path.read_text())
         successor = json.loads((authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/"
@@ -317,6 +329,19 @@ class PhysicsStageAuthoring(unittest.TestCase):
         self.assertTrue(set(successors) <= {row["path"] for row in baseline["views"]})
         additions = {"d8fc6295-d0db-59e5-bd90-080bbc508c3a"}
         self.assertEqual(len(baseline["views"]), 90)
+        a2_path = authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/n-reference-place-successor.actual.json"
+        a2 = json.loads(a2_path.read_text())
+        self.assertEqual(a2['predecessorPath'], 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/routes/h-reference-place-successor.actual.json')
+        self.assertEqual(a2['baselinePath'], 'curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/n-final-90-reference-places.actual.json.gz')
+        self.assertEqual(a2['baseCommit'], 'eb77c4fb68')
+        self.assertEqual(a2['changedViewCount'], 90)
+        self.assertEqual(a2['predecessorSha256'], hashlib.sha256((authoring.ROOT / a2['predecessorPath']).read_bytes()).hexdigest())
+        a2_bytes = (authoring.ROOT / a2['baselinePath']).read_bytes()
+        self.assertEqual(a2['baselineSha256'], hashlib.sha256(a2_bytes).hexdigest())
+        a2_baseline = {r['path']: r for r in json.loads(gzip.decompress(a2_bytes))['views']}
+        a2_rows = {r['path']: r for r in a2['views']}
+        self.assertEqual(a2['viewCount'], 90)
+        self.assertEqual(len(a2_rows), a2['changedViewCount'])
         for row in baseline["views"]:
             view = self.views[row["path"].rsplit("/", 1)[1]]
             references = []
@@ -327,8 +352,25 @@ class PhysicsStageAuthoring(unittest.TestCase):
                     elif node.get("goalId") not in additions:
                         references.append({"path": trail, "reference": node})
             visit(view["rootNodes"])
+            current_references = references
+            references = [r for r in a2_baseline[row['path']]['references'] if r['reference'].get('goalId') not in additions]
+            if row['path'] in a2_rows:
+                exact = a2_rows[row['path']]
+                encoded = lambda r: json.dumps(r, ensure_ascii=True, sort_keys=True, separators=(',', ':'))
+                current_digest = hashlib.sha256(encoded(current_references).encode()).hexdigest()
+                self.assertEqual(len(current_references), exact['afterReferenceCount'])
+                self.assertEqual(current_digest, exact['afterOrderedReferencePlacesSha256'])
+                before_count = collections.Counter(map(encoded, references))
+                after_count = collections.Counter(map(encoded, current_references))
+                self.assertEqual(after_count - before_count, collections.Counter(map(encoded, exact['addedExactReferences'])))
+                self.assertEqual(before_count - after_count, collections.Counter(map(encoded, exact['removedExactReferences'])))
+            else:
+                self.assertEqual(current_references, references)
             digest = hashlib.sha256(json.dumps(references, ensure_ascii=True, sort_keys=True,
                                                separators=(",", ":")).encode()).hexdigest()
+            if row['path'] in a2_rows:
+                self.assertEqual(len(references), a2_rows[row['path']]['beforeReferenceCount'])
+                self.assertEqual(digest, a2_rows[row['path']]['beforeOrderedReferencePlacesSha256'])
             with self.subTest(view=view["viewId"]):
                 current = successors.get(row["path"])
                 if current is None:
@@ -415,6 +457,10 @@ class PhysicsStageAuthoring(unittest.TestCase):
             # negative acquisition-wrapper fixture must still fail for every
             # preexisting goal and preparation place.
             allowed.update(ENERGY_DERIVATION_IDS)
+            # A2's only new references are the explicit arrow acquisition
+            # and own K4. Their complete exact delta is independently sealed
+            # above; every preexisting place and negative fixture stays exact.
+            allowed.update({"b77a7e93-22f9-5722-a4cc-f18a149ab030", "2569d84a-5bf1-542b-bc43-6ade1df971c4"})
             if "-sekii-" in row["viewFile"]:
                 allowed.add("5c44b9ba-9b05-4774-95d5-073230d3fc4f")
             retained = lambda data: {k:v for k,v in data.items() if k not in allowed}
@@ -622,6 +668,7 @@ class PhysicsStageAuthoring(unittest.TestCase):
                 expected |= {task for task in REVIEWED_LOWER_ASSESSMENTS.get(state, set())
                     if authoring.graph.prerequisites(task) <= learning
                     and set(authoring.graph.GOALS[task]["examData"]["coveredGoalIds"]) <= learning}
+                expected |= arrow_delta(lower, authoring.graph.role_atoms(lower))
                 self.assertEqual(authoring.graph.role_atoms(lower)["target"], expected)
                 self.assertEqual(lower["scope"]["stage"], "SekI")
                 self.assertNotIn("courseProfile", lower["scope"])
@@ -1001,6 +1048,50 @@ class PhysicsStageAuthoring(unittest.TestCase):
         with patch.dict(authoring.SOURCE_PINS, {authoring.BY_EXTRACTION: "0" * 64}):
             with self.assertRaisesRegex(ValueError, "source changed"):
                 authoring.load_pinned(authoring.BY_EXTRACTION)
+
+
+class DirectedQuantityArrowSourceTests(unittest.TestCase):
+    def test_every_land_has_an_explicit_limited_primary_source_decision(self):
+        import generate_physics_arrow_places as arrows
+        arrows.validate_source_decisions(arrows.DECISIONS)
+        self.assertEqual(arrows.DECISIONS['counts']['sourceSupportedLowerStageLaender'], 14)
+        self.assertEqual(arrows.DECISIONS['counts']['ownPreparationLaender'], 2)
+        for row in arrows.DECISIONS['states']:
+            if row['sourceLocation']['kind'] == 'retainedInput':
+                raw = (authoring.ROOT / row['sourceLocation']['path']).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), row['sha256'])
+
+    def test_missing_source_rationale_and_fifteenth_official_land_fail_closed(self):
+        import generate_physics_arrow_places as arrows
+        broken = copy.deepcopy(arrows.DECISIONS)
+        broken['states'][0]['sourceRationale'] = ''
+        with self.assertRaisesRegex(ValueError, 'source rationale'):
+            arrows.validate_source_decisions(broken)
+        broken = copy.deepcopy(arrows.DECISIONS)
+        next(r for r in broken['states'] if r['land'] == 'HE')['decision'] = 'lowerStageTargetOperationalisation'
+        with self.assertRaisesRegex(ValueError, 'source rationale'):
+            arrows.validate_source_decisions(broken)
+
+    def test_bavarian_arrow_supplement_preserves_the_official_row_and_video_endpoint(self):
+        path = authoring.ROOT / 'curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.directed-quantity-arrows-20261126-v1.review.json'
+        supplement = json.loads(path.read_text())
+        self.assertEqual(supplement['mappings'], [{'legacyGoalId': '7812213c-59e5-5d52-9a01-0c0534020cd5', 'canonicalGoalId': 'b77a7e93-22f9-5722-a4cc-f18a149ab030', 'matchType': 'partial', 'reviewDecisionId': '7812213c-59e5-5d52-9a01-0c0534020cd5'}])
+        source = authoring.load_pinned(authoring.BY_EXTRACTION)
+        self.assertEqual(len(source['sourceGoals']), 301)
+        row = next(r for r in source['sourceGoals'] if r['id'] == supplement['mappings'][0]['legacyGoalId'])
+        self.assertEqual(row['sourceSpan'], 'Ph8.3.2')
+        self.assertIn('Pfeile als fachtypische Darstellungsform', row['sourceText'])
+        original = authoring.load_pinned(authoring.BY_MAPPING)
+        self.assertEqual([r['canonicalGoalId'] for r in original['mappings'] if r['legacyGoalId'] == row['id']], ['d61ea362-f6c3-5eab-ac30-2d0e265ac0f6'])
+        self.assertEqual(supplement['supplementalSourceBinding']['baseReview']['sha256'], authoring.SOURCE_PINS[authoring.BY_MAPPING])
+        self.assertIn('eigene didaktische Ausarbeitung von SkillPilot', supplement['decisions'][0]['rationale'])
+
+    def test_unknown_view_or_scope_cannot_receive_the_arrow_offer(self):
+        import generate_physics_arrow_places as arrows
+        view = json.loads((authoring.DIRECTORY / 'de-ni-seki.view.json').read_text())
+        view['scope']['durationModel'] = 'unreviewed-duration'
+        with self.assertRaisesRegex(ValueError, 'Unreviewed.*scope'):
+            arrows.apply_arrow_places(view, authoring.graph.GOALS)
 
 
 if __name__ == "__main__":

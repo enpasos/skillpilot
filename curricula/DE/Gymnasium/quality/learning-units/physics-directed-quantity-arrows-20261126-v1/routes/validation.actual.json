@@ -1,0 +1,234 @@
+{
+  "schema": "physics-arrow-source-and-routes-local-validation-v1",
+  "status": "PASS",
+  "measuredAt": "2026-11-26T07:04:32.398685+01:00",
+  "integrationComplete": false,
+  "checks": [
+    {
+      "command": "python scripts/generate_hessen_physics_stage_views.py --write",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/generate-he.log",
+        "sha256": "146ca88f8089934f51855cfb1f529fbabf8bcad0a2079231bb8f68a01999e2d0"
+      },
+      "views": 4
+    },
+    {
+      "command": "python scripts/generate_hessen_physics_stage_views.py --write --duration-views",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/generate-he-duration.log",
+        "sha256": "c63b0cb988a07e3ee11d8584760fd1bee9cfac5ff55e8d7596e30ce843c46fa0"
+      },
+      "views": 6
+    },
+    {
+      "command": "python scripts/generate_laender_physics_stage_views.py --write",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/generate-laender.log",
+        "sha256": "c47cf81ba20204633d952be4a00b9945d6d13f79c5fb2af3278eed1e6332f7ff"
+      },
+      "views": 80
+    },
+    {
+      "command": "python scripts/generate_hessen_physics_stage_views.py --check",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/check-he.log",
+        "sha256": "146ca88f8089934f51855cfb1f529fbabf8bcad0a2079231bb8f68a01999e2d0"
+      },
+      "views": 4
+    },
+    {
+      "command": "python scripts/generate_hessen_physics_stage_views.py --check --duration-views",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/check-he-duration.log",
+        "sha256": "c63b0cb988a07e3ee11d8584760fd1bee9cfac5ff55e8d7596e30ce843c46fa0"
+      },
+      "views": 6
+    },
+    {
+      "command": "python scripts/generate_laender_physics_stage_views.py --check",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/check-laender.log",
+        "sha256": "3a0128c1d5453113e8d5c04a078a66b439fb3bb0335584bcfd36715e46062e94"
+      },
+      "views": 80
+    },
+    {
+      "command": "python scripts/test_generate_hessen_physics_stage_views.py",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/test-he.log",
+        "sha256": "42d6a388c0d47b2680328ff6db350c72fc2a117e06a06dfc8e3329f7f8093f66"
+      },
+      "tests": 21
+    },
+    {
+      "command": "python scripts/test_generate_laender_physics_stage_views.py",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/test-laender.log",
+        "sha256": "587cebf8f8f421dc814784d978a1d68765e6199ccee987568883b634e1cf85a4"
+      },
+      "tests": 43
+    },
+    {
+      "command": "python scripts/test_mathematics_stage_views.py",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/test-mathematics.log",
+        "sha256": "5b19bc30237c7e57bdf640c058d6e1663241d518210147d9f0005a37d0d29db0"
+      },
+      "tests": 33
+    },
+    {
+      "command": "app/node_modules/.bin/tsx --test scripts/check_physics_source_method_routes.test.ts",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/test-native-routes.log",
+        "sha256": "8fc845165330e8b9198124e548595956e9b4d59415548de60dcf6d047c36f686"
+      },
+      "tests": 12,
+      "skipped": 0
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/testHessenMathQ21Scope.ts",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/test-hessen-math-q21.log",
+        "sha256": "3ac75982daf73897408e47941242eace298e56338a413bdc8f29f69273ba538c"
+      }
+    },
+    {
+      "command": "verify-foreign-math.py --write-current-bindings",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/foreign-math.log",
+        "sha256": "395737ad6459b802800ef258ee8d9aec623b85934a9f5293eb088b06971bbf8f"
+      },
+      "demandRows": 1036,
+      "verifiedRequiresEdges": 4346,
+      "renewedPhysicsPins": 63
+    },
+    {
+      "command": "measure-native-routes.mts",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/native-routes.log",
+        "sha256": "20b575129282185c591ab42625448886627a1350fa13f807690e0b708c6b0ae0"
+      },
+      "views": 90,
+      "consumerContexts": 1178,
+      "violations": 0
+    },
+    {
+      "command": "measure-national-atlas-current-sources.ts",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/national-atlas.log",
+        "sha256": "3d38960b10ad21ec4d87f4ac06215108054fcd45e6986518efa12fed393b5139"
+      },
+      "sourceViews": 70,
+      "atlasTargets": 494,
+      "nationalProfileTargets": 425
+    },
+    {
+      "command": "measure-map-backflow-delta.py",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/nested-map-backflow-delta.log",
+        "sha256": "ef68d713fdae8a2ad7dcc3e44450a0fe96dca83080afdc208615d98da23d5134"
+      },
+      "projectionContracts": 8,
+      "changedRelationOrWitnessSets": 0
+    },
+    {
+      "command": "compare-native-description-counterfactual.mts",
+      "status": "PASS",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/native-description-counterfactual.log",
+        "sha256": "07e81d8683f787a3599a76dffe01f205a8bc81810342772d0b3792f830e47fc2"
+      },
+      "views": 90,
+      "changedNativeViews": 0
+    }
+  ],
+  "currentCodeAndPolicyBindings": [
+    {
+      "path": "scripts/generate_physics_arrow_places.py",
+      "sha256": "82ccaa53fd65916955a3e063ce663358e1b8e548a25ddadf7ed78031e34fad69"
+    },
+    {
+      "path": "scripts/physics_arrow_route_validation.ts",
+      "sha256": "a55acb6704dd001c5747d285fd15917725ebe700519b2773ccde71f24509a307"
+    },
+    {
+      "path": "scripts/generate_hessen_physics_stage_views.py",
+      "sha256": "162f7c6dae3649d756199bbe34ece467ecbcf32fce581a3b2b23c2bcefd64215"
+    },
+    {
+      "path": "scripts/generate_laender_physics_stage_views.py",
+      "sha256": "60aae17f8951d664afc4890bf0cb35ed18823f6c0cdc9bb17a958e2e6ee6b763"
+    },
+    {
+      "path": "scripts/generate_laender_physics_stage_views.sources.json",
+      "sha256": "5fe70c170f5b9f5a71cf6f5e207e7c4de72349fd41e752454f3d26178a7afcd8"
+    },
+    {
+      "path": "scripts/test_generate_laender_physics_stage_views.py",
+      "sha256": "09d0505882154ff07abf47e1768c648082213b50e355f6db9fde8012790b82d4"
+    },
+    {
+      "path": "scripts/check_physics_source_method_routes.test.ts",
+      "sha256": "b0ad4437ea76909070967fb7a504f6f26136322bd96fabd4024299cf25a786b6"
+    },
+    {
+      "path": "app/scripts/config/math-foreign-acquisition-demand.json",
+      "sha256": "4d751e036d97e2ff698c235bf05b6ed82bb3107cef6103a07a74917f4db001bc"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-physics-national-atlas.sources.json",
+      "sha256": "06414d7abfaf9266d10a9003481bbebc06de56b5a41d17eea34d365e7aa6ab24"
+    }
+  ],
+  "negativeControls": [
+    "Missing or overstated Land source rationale rejected.",
+    "Broken direct arrow prerequisite loses its native consumer guard.",
+    "Actual NI acquisition in J9/10 after a required consumer is detected.",
+    "K4 forced into HE upper preparation is rejected.",
+    "Retained H negative acquisition-wrapper fixture still detects every preexisting placement regression; only explicitly new A/K4 references are treated as bounded additions."
+  ],
+  "learnerAssessmentBoundary": "K4 task, marking and independent blind evidence belong to the assessment family; these automated checks do not establish pedagogical adequacy or learner mastery.",
+  "boundaries": [
+    "Local branch evidence only, no claim of integration, successful main CI, activated plan, publication or host acceptance.",
+    "All90 real views were generated only after actual K4 V3 release; provisional scratch is retained separately.",
+    "Native schedule and exact before/after description checks have their own complete ninety-row records."
+  ],
+  "portableMetadataSuccessorOfHistoricalRaw": {
+    "schema": "physics-arrow-historical-local-metadata-raw-seal-v1",
+    "externalRootAlias": "routesSourceOriginals",
+    "relativePath": "validation.actual.json",
+    "sha256": "f06c600d39b05590b85a58766ca5146961fc2cb688d1dfd2926c3739aad67caf",
+    "byteLength": 9559
+  }
+}

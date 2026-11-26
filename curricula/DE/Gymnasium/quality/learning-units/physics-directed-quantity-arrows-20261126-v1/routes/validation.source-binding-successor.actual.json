@@ -1,0 +1,73 @@
+{
+  "schema": "physics-arrow-bavarian-source-binding-validation-successor-v1",
+  "status": "PASS",
+  "measuredAt": "2026-11-26T07:17:13.749189+01:00",
+  "integrationComplete": false,
+  "predecessor": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/validation.actual.json",
+    "sha256": "50e65cb51effa399aef4a24d875e354b1f148cf041274ba3f245cc7f898906bc"
+  },
+  "additionalSourceBinding": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/bavarian-arrow-source-binding.actual.json",
+    "sha256": "318972c637fdbcf0020e73754566a971c970f80ee89c53f4b71a8d95cc5ead27"
+  },
+  "sourceInventorySuccessor": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/source-input-verification.by-source-successor.actual.json",
+    "sha256": "76499e3c29a5b36f97a08a332dde9c13780d583c8025d6a398193b5ae5f6c500"
+  },
+  "checks": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python scripts/test_generate_laender_physics_stage_views.py",
+      "exitCode": 0,
+      "tests": 44,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/test-laender-source-final.log",
+        "sha256": "c76814d5c8eadb40441c66cc15c0efb6550d781b97f751effe1ce42abf905c29"
+      }
+    },
+    {
+      "command": "measure-bavarian-arrow-source-coverage.mts",
+      "exitCode": 0,
+      "cqr3": "pass",
+      "sourceCompleteJurisdictions": 16,
+      "bavarianSourceBackedViewAtoms": "301/301",
+      "cqr4": "pass",
+      "officialBavarianSourceDenominator": 301,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/bavarian-source-current.log",
+        "sha256": "f16ec98a8115318226bf1e071646876240d604c7196cceb1456df497b49a6ae0"
+      }
+    },
+    {
+      "command": "verify-source-inputs.py with taskL root alias",
+      "exitCode": 0,
+      "verifiedStates": 16,
+      "retainedSourceAndMappingCount": 83,
+      "additionalSourceMappingCount": 1,
+      "newOfficialSourceRequirements": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/source-by-successor.log",
+        "sha256": "862bc3b2184789e2a512ae8973c117ffeb4e53c6ddfcd2cdfd365c5e9bd63440"
+      }
+    }
+  ],
+  "currentAdditionalCodeBindings": [
+    {
+      "path": "scripts/test_generate_laender_physics_stage_views.py",
+      "sha256": "9aabe5e97e3574504e82b558d2c5c172bf3ebc01a6c7ac7ca89f55e9d0bccc07"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/verify-source-inputs.py",
+      "sha256": "8edfb565a48799bf6ba64b95f691e8a26bcc772bc6a693f4acb8f7216b404280"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/measure-bavarian-arrow-source-coverage.mts",
+      "sha256": "1ac69f377997fb8a95ecff3465b760b606441a8c4086d01b0fb91d822b9a1644"
+    }
+  ],
+  "boundaries": [
+    "All preceding route roles, places, frontiers and actual nested-map data remain byte-identical; no canonical, source-view or prerequisite change was made for this source fix.",
+    "The old 83-file inventory remains correct for its retained set; the new explicit current inventory additionally counts the one legitimate scoped source mapping file.",
+    "The product owner/root controls the fresh global maturity run; this record reports the actual scoped CQR checks and local tests only."
+  ]
+}
