@@ -180,7 +180,10 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
     for (const language of ['de', 'en'] as const) {
       const deck = await read<{ deckId: string; cards: { id: string; tags?: string[]; originGoalIds?: string[] }[] }>(`memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.${language}.json`)
       assert.equal(deck.deckId, 'de_gymnasium_physics_mechanics_ephase')
-      assert.equal(deck.cards.length, 90)
+      assert.equal(deck.cards.length, 91)
+      const derivationGoalId = '2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b'
+      const derivationCardId = 'physics_e_kinetic_energy_from_work'
+      assert.deepEqual(deck.cards.find(card => card.id === derivationCardId)?.originGoalIds, [derivationGoalId])
       assert(deck.cards.every(card => card.originGoalIds?.length), 'every deck card names its understanding goals')
       const actions = buildUnitFlashcardActions(memoryId, original, value.goalIndexAll, value.visibleGoalIds, deck.cards, language)
       assert.equal(buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, language).size, 0,
@@ -222,6 +225,16 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
       const e1 = [...actions.values()].find(action => action.title === (language === 'de' ? 'Lernkarten zu E.1 üben' : 'Practice flashcards for E.1'))
       assert(e1?.goalIds?.length, `${filename}: E.1 has an actual practice action`)
       const selectedCards = selectPracticeCards(deck.cards, getSrsFilterTagsForGoal(value.goalIndexAll.get(memoryId)!), e1.goalIds)
+      assert(!selectedCards.some(card => card.id === derivationCardId), filename + ': the energy derivation belongs to E.2')
+      const energyUnit = mapEntryPath(original, derivationGoalId)?.find(id =>
+        value.goalIndexAll.get(id)?.extendedData?.compositionNodeId === 'physics-e2-energy')
+      assert(energyUnit, filename + ': the derivation is placed in the energy child unit')
+      const energyGoals = actions.get(energyUnit)?.goalIds
+      assert(energyGoals?.includes(derivationGoalId))
+      const energyCards = selectPracticeCards(deck.cards, getSrsFilterTagsForGoal(value.goalIndexAll.get(memoryId)!), energyGoals)
+      for (const cardId of [derivationCardId, 'physics_e_cov_023']) {
+        assert(energyCards.some(card => card.id === cardId), filename + ': energy practice includes ' + cardId)
+      }
       if (scope === '') {
         // The E.1 cut moved two of the former nine cards with their origin goals to E.2 and E.3.
         assert.deepEqual(selectedCards.map(card => card.id).sort(),
