@@ -34,6 +34,21 @@ try {
       { kind: 'goalEntry', goalId: 'foundation-exception', projectionRole: 'target' },
       { kind: 'goalEntry', goalId: 'ordinary-target' },
     ] }],
+  }), entry('data/views/partial-order.view.json', {
+    $schema: 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json',
+    viewFormatVersion: '1.2', language: 'de', title: 'Teilordnung', viewId: 'partial-order', landscapeId: 'math',
+    scope: { schoolForm: 'Gymnasium', stage: 'SekII' },
+    rootNodes: [{ kind: 'structure', id: 'course', label: 'Kurs', childOrder: { after: [{ unit: 'b', after: 'a' }] },
+      children: [
+        { kind: 'structure', id: 'a', label: 'Vorbereitung', childOrder: { after: [] },
+          children: [{ kind: 'goalEntry', goalId: 'foundation', projectionRole: 'prerequisiteOnly', acquisitionPlacement: true }] },
+        { kind: 'structure', id: 'b', label: 'Anwendung', children: [
+          { kind: 'goalEntry', goalId: 'explicit', projectionRole: 'target' },
+          { kind: 'goalEntry', goalId: 'default' },
+        ] },
+        { kind: 'structure', id: 'c', label: 'Ausblick', children: [] },
+      ],
+    }],
   }), entry('data/views/de-bb-sekii-gk.view.json', await readJson(
     'curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json',
   ))]

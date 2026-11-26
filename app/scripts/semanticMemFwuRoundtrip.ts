@@ -1791,17 +1791,25 @@ export const reconstructMappings = (model: RdfModel) => {
   return { canonicalMappings, reviewDecisions }
 }
 
-const rebuildViewNode = (model: RdfModel, resource: string): JsonValue => {
+const rebuildViewNode = (model: RdfModel, resource: string, versionedNodes = false): JsonValue => {
   const node: Record<string, JsonValue> = {}
   withString(node, 'kind', lit(model, resource, P.viewNodeKind))
   withString(node, 'projectionRole', lit(model, resource, P.projectionRole))
   withString(node, 'id', lit(model, resource, P.structureId))
   withString(node, 'label', lit(model, resource, P.label))
   withString(node, 'displayLabel', lit(model, resource, P.displayLabel))
+  if (versionedNodes) {
+    for (const key of ['labelEn', 'canonicalSourceGoalId', 'canonicalSourcePhase', 'landscapeId']) {
+      withString(node, key, lit(model, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}`))
+    }
+    for (const key of ['childOrder', 'acquisitionPlacement', 'placementEvidence', 'canonicalSourceNode', 'originalCanonicalSubtree']) {
+      withJson(node, key, json(lit(model, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}Json`)))
+    }
+  }
   const goal = iris(model, resource, P.compositionGoal)[0]
   withString(node, 'goalId', goal ? skillpilotId(model, goal) : undefined)
-  const children = orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((child) => rebuildViewNode(model, child))
-  if (children.length > 0) {
+  const children = orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((child) => rebuildViewNode(model, child, versionedNodes))
+  if (children.length > 0 || versionedNodes && node.kind === 'structure') {
     node.children = children
   }
   return node
@@ -1811,9 +1819,18 @@ export const reconstructViews = (model: RdfModel) => {
   const views: Record<string, JsonValue> = {}
   orderedResources(model, resourcesOfType(model, T.compositionView)).forEach((resource) => {
     const zipPath = lit(model, resource, P.zipPath) ?? resource
-    const view: Record<string, JsonValue> = {
-      rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node)),
+    const version = lit(model, resource, `${SP}compositionViewFormatVersion`)
+    const versionedNodes = version === '1.2'
+    if (versionedNodes && lit(model, resource, `${SP}compositionViewSchema`) !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
+      throw new Error('RDF composition view 1.2 must bind its source schema')
     }
+    const view: Record<string, JsonValue> = {
+      rootNodes: orderedResources(model, iris(model, resource, P.hasCompositionChild)).map((node) => rebuildViewNode(model, node, versionedNodes)),
+    }
+    withString(view, '$schema', lit(model, resource, `${SP}compositionViewSchema`))
+    withString(view, 'viewFormatVersion', version)
+    withString(view, 'language', lit(model, resource, `${SP}compositionViewLanguage`))
+    withString(view, 'title', lit(model, resource, `${SP}compositionViewTitle`))
     withString(view, 'viewId', lit(model, resource, P.viewId))
     withString(view, 'label', lit(model, resource, P.label))
     withString(view, 'landscapeId', lit(model, resource, P.landscapeId))

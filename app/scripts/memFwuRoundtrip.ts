@@ -1088,6 +1088,19 @@ sp:viewNodeKind a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:l
 sp:projectionRole a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition projection role"@en .
 sp:structureId a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition structure id"@en .
 sp:displayLabel a owl:DatatypeProperty ; rdfs:domain sp:CompositionNode ; rdfs:label "composition display label"@en .
+sp:compositionViewSchema a owl:DatatypeProperty ; rdfs:label "composition source schema"@en .
+sp:compositionViewFormatVersion a owl:DatatypeProperty ; rdfs:label "composition source version"@en .
+sp:compositionViewLanguage a owl:DatatypeProperty ; rdfs:label "composition source language"@en .
+sp:compositionViewTitle a owl:DatatypeProperty ; rdfs:label "composition source title"@en .
+sp:compositionNodeLabelEn a owl:DatatypeProperty ; rdfs:label "composition English label"@en .
+sp:compositionNodeCanonicalSourceGoalId a owl:DatatypeProperty ; rdfs:label "composition canonical source goal"@en .
+sp:compositionNodeCanonicalSourcePhase a owl:DatatypeProperty ; rdfs:label "composition canonical source phase"@en .
+sp:compositionNodeLandscapeId a owl:DatatypeProperty ; rdfs:label "composition landscape entry"@en .
+sp:compositionNodeChildOrderJson a owl:DatatypeProperty ; rdfs:label "composition local child order"@en .
+sp:compositionNodeAcquisitionPlacementJson a owl:DatatypeProperty ; rdfs:label "composition acquisition place"@en .
+sp:compositionNodePlacementEvidenceJson a owl:DatatypeProperty ; rdfs:label "composition authored placement evidence"@en .
+sp:compositionNodeCanonicalSourceNodeJson a owl:DatatypeProperty ; rdfs:label "composition canonical source node"@en .
+sp:compositionNodeOriginalCanonicalSubtreeJson a owl:DatatypeProperty ; rdfs:label "composition restoration snapshot"@en .
 sp:quarantinedRecordJson a owl:DatatypeProperty ;
   rdfs:label "quarantined source record JSON"@en ;
   rdfs:comment "Lossless JSON fallback for a source record containing characters that cannot safely be materialized as RDF/OWL string literals."@en .
@@ -2051,6 +2064,7 @@ const walkViewNodes = (
   parent: string,
   counts: SemanticCounts,
   pathPrefix: string,
+  versionedNodes = false,
 ) => {
   nodes.forEach((node, index) => {
     const data = jsonObject(node, 'composition view node')
@@ -2065,13 +2079,21 @@ const walkViewNodes = (
     writeStringField(write, resource, `${SP}structureId`, data.id)
     writeStringField(write, resource, `${RDFS}label`, data.label, 'de')
     writeStringField(write, resource, `${SP}displayLabel`, data.displayLabel)
+    if (versionedNodes) {
+      for (const key of ['labelEn', 'canonicalSourceGoalId', 'canonicalSourcePhase', 'landscapeId']) {
+        writeStringField(write, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}`, data[key])
+      }
+      for (const key of ['childOrder', 'acquisitionPlacement', 'placementEvidence', 'canonicalSourceNode', 'originalCanonicalSubtree']) {
+        writeJsonField(write, resource, `${SP}compositionNode${key[0].toUpperCase()}${key.slice(1)}Json`, data[key])
+      }
+    }
     const goalId = stringValue(data.goalId)
     if (goalId) {
       write(tripleLine(resource, `${SP}compositionGoal`, iri(goalIri(archiveRoot, goalId))))
     }
     const children = Array.isArray(data.children) ? data.children : []
     if (children.length > 0) {
-      walkViewNodes(write, archiveRoot, view, children, resource, counts, nodePath)
+      walkViewNodes(write, archiveRoot, view, children, resource, counts, nodePath, versionedNodes)
     }
   })
 }
@@ -2087,6 +2109,10 @@ export const writeViewSemantics = (
     .filter((entry) => entry.path.startsWith(`${archiveRoot}/data/views/`) && entry.path.endsWith('.view.json'))
     .forEach((entry) => {
       const data = jsonObject(JSON.parse(entryText(entry, 'composition view')) as JsonValue, 'composition view')
+      const versionedNodes = data.viewFormatVersion === '1.2'
+      if (versionedNodes && data.$schema !== 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json') {
+        throw new Error('Composition view 1.2 must bind its source schema')
+      }
       const viewId = stringValue(data.id) ?? stringValue(data.viewId)
       const view = options.semanticIris
         ? semanticViewIri(archiveRoot, viewId, entry.path)
@@ -2099,8 +2125,14 @@ export const writeViewSemantics = (
       writeStringField(write, view, `${SP}viewId`, viewId)
       writeStringField(write, view, `${RDFS}label`, data.label, 'de')
       writeJsonField(write, view, `${SP}scopeJson`, data.scope)
+      if (versionedNodes) {
+        writeStringField(write, view, `${SP}compositionViewSchema`, data.$schema)
+        writeStringField(write, view, `${SP}compositionViewFormatVersion`, data.viewFormatVersion)
+        writeStringField(write, view, `${SP}compositionViewLanguage`, data.language)
+        writeStringField(write, view, `${SP}compositionViewTitle`, data.title)
+      }
       const rootNodes = Array.isArray(data.rootNodes) ? data.rootNodes : []
-      walkViewNodes(write, archiveRoot, view, rootNodes, view, counts, 'root')
+      walkViewNodes(write, archiveRoot, view, rootNodes, view, counts, 'root', versionedNodes)
     })
 }
 
