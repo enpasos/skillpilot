@@ -123,8 +123,23 @@ proportion: granularity is free, a single requirement may be declined with a
 recorded and visible reason, and other work continues meanwhile; until a rule
 with its gate exists, `CQR-003` is unchanged and no pin is lowered. The
 Mathematics vector ladder with a stage for the calculation rules gets an
-independent node review before any catalog change. See the product decisions
-of 26 November at the top of `AGENTS.md`.
+independent node review before any catalog change. A third role "voluntary
+offer" for goals and tasks in a view is decided: visible at its place and
+marked voluntary, offered by the coach as an option, never mandatory, outside
+the scope of a section and outside a learning plan unless the learner selects
+it, independent of the unit pilot. It is not built yet; a goal has only the
+roles target and preparation until its package (composition-view contract
+version, generators, backend, Cockpit, quality rules) is on `main`, so
+nothing may be placed as "voluntary" by another means. Also decided and not
+built yet: the source-tracing rule (one recorded decision per official
+requirement: carried, carried by a cross-cutting goal, or declined with a
+reviewed and visible reason; extractions marked literal or reworded; start
+with Physics Lower Saxony); the Mathematics vector ladder in five stages with
+all eight rules of a vector space on displacements in the plane and two own
+closing tasks; and an explicitly named subject that can be chosen in chat
+also with AutoPilot during an exam. Plan blocks with several sections keep
+the outer opening first. See the product decisions of 26 November at the top
+of `AGENTS.md`.
 
 **Arrows of directed quantities (25 November 2026).** An arrow for force,
 velocity, momentum or field strength in a sketch of position space is a

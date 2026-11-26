@@ -430,8 +430,12 @@ public class LearnerLearningPlanService {
         Map<String, SubjectAggregate> subjectsWithoutPlan = new TreeMap<>();
         boolean unitBindsContinuation = fulfillment.hasAvailableUnitAssignment();
         boolean examBindsContinuation = enabled && hasExamScope(skillpilotId, subjectPlans, asOf);
-        boolean explicitManualSubjects = includeSubjectChoices && !Boolean.TRUE.equals(learner.getAutoPilot());
-        if (enabled && (!examBindsContinuation || explicitManualSubjects)) {
+        // An exam that can be evaluated binds what "continue" starts, with and without AutoPilot.
+        // A subject the learner names stays selectable in chat in both cases: AutoPilot decides
+        // who chooses the next goal, not whether another subject may be chosen (Product Owner,
+        // 26 November 2026). Without it, an exam with no goal that can start left no step in chat.
+        boolean explicitSubjects = includeSubjectChoices;
+        if (enabled && (!examBindsContinuation || explicitSubjects)) {
             for (String landscapeId : learners.getPersonalCurriculumSubjectIds(skillpilotId)) {
                 if (examBindsContinuation && hasExamScope(skillpilotId, subjectPlans.stream()
                         .filter(plan -> landscapeId.equals(plan.getLandscapeId())).toList(), asOf)) continue;

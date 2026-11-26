@@ -2208,13 +2208,69 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 .findFirst().orElseThrow();
         assertThat(mathEntry.get("evaluable")).isEqualTo(true);
         assertThat(physicsEntry.get("evaluable")).isEqualTo(false);
-        // With AutoPilot the backend chooses, and an exam that can be evaluated binds its choice as
-        // before. Without it the learner may name Physics, and the published switch starts a goal there.
-        assertThat(physicsEntry.get("canContinue")).isEqualTo(!autoPilot);
-        if (!autoPilot) {
+        // The learner may name Physics with and without AutoPilot (Product Owner, 26 November
+        // 2026), and the published switch starts a goal there.
+        assertThat(physicsEntry.get("canContinue")).isEqualTo(true);
+        successful(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
+                writeArgs("explicit-physics", version(), Map.of("subject", physicsEntry.get("subject"))));
+        assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsOpen.getFirst());
+    }
+
+    // Product Owner, 26 November 2026: during an exam that can be evaluated, a subject the learner
+    // names can be chosen in chat also with AutoPilot. "Continue" without a subject leads to the
+    // exam as before. Before, AutoPilot published no other subject while an exam was bound, and an
+    // exam whose topic cannot start yet left no learning step in chat at all.
+    @ParameterizedTest
+    @CsvSource({"false,true", "true,true", "false,false", "true,false"})
+    void aNamedSubjectCanBeChosenDuringAnExamAlsoWithAutoPilot(boolean autoPilot, boolean examCanStart) throws Exception {
+        selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
+        curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "GK")));
+        learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+        learner.setAutoPilot(autoPilot);
+        learnerRepository.saveAndFlush(learner);
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        java.util.function.Function<String, List<String>> subjectFrontier = subject -> learners
+                .getPersonalCurriculumSubjectFrontier(learnerId, subject).stream().map(goal -> goal.id()).toList();
+        // The exam topic is either the first Mathematics goal, which can start at once, or
+        // "Definition des Skalarprodukts ... veranschaulichen", whose prerequisite is still open.
+        // Physics has no plan at all.
+        String mathGoal = examCanStart ? subjectFrontier.apply(MATH).getFirst() : "3016ec37-1c2e-47db-83f5-e767923bc97e";
+        learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik mit Klausur", List.of(
+                new LearnerLearningPlanApi.Block("topic", "learning", mathGoal, "Mathematik", monday, monday.plusDays(4),
+                        null, List.of(mathGoal), List.of(mathGoal), true),
+                new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                        null, null, monday.plusDays(10), null, List.of(mathGoal), true))), today);
+        transactions.executeWithoutResult(status -> {
+            var following = learnerRepository.findById(learnerId).orElseThrow();
+            following.setFollowLearningPlans(true);
+            learnerRepository.saveAndFlush(following);
+        });
+        List<String> physicsOpen = subjectFrontier.apply(physics);
+        assertThat(physicsOpen).isNotEmpty();
+
+        var status = map(context(), "learningPlanToday");
+        assertThat(status).containsEntry("resumeAvailable", examCanStart);
+        var subjects = ((List<?>) status.get("subjects")).stream().map(Map.class::cast).toList();
+        var mathEntry = subjects.stream().filter(entry -> entry.get("subject").toString().startsWith("Mathematik"))
+                .findFirst().orElseThrow();
+        var physicsEntry = subjects.stream().filter(entry -> entry.get("subject").toString().startsWith("Physik"))
+                .findFirst().orElseThrow();
+        assertThat(mathEntry.get("evaluable")).isEqualTo(true);
+        assertThat(physicsEntry.get("canContinue")).as("the named subject is published").isEqualTo(true);
+        if (examCanStart) {
+            successful(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN, writeArgs("resume-exam", version(), Map.of()));
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).as("continue leads to the exam").isEqualTo(mathGoal);
+        } else {
+            // The exam offers no step; the named subject does.
             successful(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
-                    writeArgs("explicit-physics", version(), Map.of("subject", physicsEntry.get("subject"))));
-            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsOpen.getFirst());
+                    writeArgs("named-physics", version(), Map.of("subject", physicsEntry.get("subject"))));
+            String active = learners.getLearner(learnerId).getActiveGoalId();
+            assertThat(active).as("the named subject starts the first goal it offers").isEqualTo(physicsOpen.getFirst());
+            assertThat(landscapeDefinitions.getLandscapeIdForGoal(active)).isEqualTo(physics);
         }
     }
 
