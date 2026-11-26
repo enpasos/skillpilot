@@ -17,6 +17,7 @@ import {
 } from './utils/skillpilotIdBrowserStorage'
 import { startCockpitRequests } from './utils/cockpitStartRequests'
 import { getSkillPilotOverviewCopy } from './utils/skillPilotOverviewCopy'
+import { getLearningMapVideo, learningMapVideoPaths } from './config/learningMapVideo'
 import { CANONICAL_GYMNASIUM_ROOT_ID, isRepositoryGymnasiumFramework } from './utils/curriculumDisplay'
 import {
   isRootRoute,
@@ -58,7 +59,7 @@ const PUBLIC_PATHS = new Set([
   '/stats',
   '/successes',
   '/start',
-  ...(IS_PACKAGE_CONSUMER_BUILD ? [] : ['/lernzielbuch', '/lernziel-feedback', ...REPOSITORY_AUTHORING_PATHS]),
+  ...(IS_PACKAGE_CONSUMER_BUILD ? [] : ['/lernzielbuch', '/lernziel-feedback', ...learningMapVideoPaths, ...REPOSITORY_AUTHORING_PATHS]),
 ])
 const GOAL_VIEWS = new Set(['learner', 'trainer', 'explorer'])
 const MAX_DESCRIPTION_LENGTH = 160
@@ -76,6 +77,7 @@ const ImprintView = lazy(() => import('./views/ImprintView').then((module) => ({
 const CurriculaView = lazy(() => import('./views/CurriculaView').then((module) => ({ default: module.CurriculaView })))
 const WhitepaperView = lazy(() => import('./views/WhitepaperView').then((module) => ({ default: module.WhitepaperView })))
 const StoryView = lazy(() => import('./views/StoryView').then((module) => ({ default: module.StoryView })))
+const LearningMapVideoView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/LearningMapVideoView').then((module) => ({ default: module.LearningMapVideoView })))
 const UsersView = IS_PACKAGE_CONSUMER_BUILD ? () => null : lazy(() => import('./views/UsersView').then((module) => ({ default: module.UsersView })))
 const StatsView = lazy(() => import('./views/StatsView').then((module) => ({ default: module.StatsView })))
 const SuccessView = lazy(() => import('./views/SuccessView').then((module) => ({ default: module.SuccessView })))
@@ -437,7 +439,8 @@ const App: React.FC = () => {
     const isQuickstartPath = path === '/quickstart' || path.startsWith('/quickstart/')
     const isWhitepaperPath = path === '/whitepaper' || path.startsWith('/whitepaper/')
     const publicDocumentRouteLanguage = path.split('/')[2]?.toLowerCase()
-    const metadataLanguage = (isQuickstartPath || isWhitepaperPath)
+    const isLearningMapVideoPath = !IS_PACKAGE_CONSUMER_BUILD && learningMapVideoPaths.includes(path)
+    const metadataLanguage = (isQuickstartPath || isWhitepaperPath || isLearningMapVideoPath)
       && (publicDocumentRouteLanguage === 'de' || publicDocumentRouteLanguage === 'en')
       ? publicDocumentRouteLanguage
       : language
@@ -492,6 +495,10 @@ const App: React.FC = () => {
         description = language === 'en'
           ? 'Share feedback about SkillPilot, learning content, the coach, or usability in one simple form.'
           : 'Feedback zu SkillPilot, Lerninhalten, Coach oder Bedienung einfach in einem Textfeld geben.'
+      } else if (isLearningMapVideoPath) {
+        const video = getLearningMapVideo(metadataLanguage)
+        title = `${video.title} | ${baseTitle}`
+        description = video.description
       } else if (isWhitepaperPath) {
         const overview = getSkillPilotOverviewCopy(metadataLanguage)
         title = `${overview.title} | ${baseTitle}`
@@ -702,6 +709,7 @@ const App: React.FC = () => {
               <>
                 <Route path="/lernzielbuch" element={<GoalBookView />} />
                 <Route path="/lernziel-feedback" element={<GoalBookFeedbackPilotView />} />
+                <Route path="/learning-map/:lang?" element={<LearningMapVideoView />} />
               </>
             )}
             <Route path="/stats" element={<StatsView />} />

@@ -60,6 +60,8 @@ public class SpaController {
             "/whitepaper/{path:[^\\.]*}",
             "/quickstart",
             "/quickstart/**",
+            "/learning-map",
+            "/learning-map/**",
             "/start",
             "/start/**",
             "/mobi",

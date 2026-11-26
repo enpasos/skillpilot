@@ -26,6 +26,8 @@ const networkOnlyNavigations = [
   '/quickstart',
   '/quickstart/de',
   '/quickstart/en',
+  '/learning-map/de',
+  '/learning-map/en',
   '/whitepaper',
   '/whitepaper/de',
   '/whitepaper/en',
