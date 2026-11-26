@@ -1999,8 +1999,12 @@ public class LearnerLearningPlanService {
                 // Explicit personal-curriculum learning remains available.
                 return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
             }
+            // A plan that cannot be evaluated today defines neither an exam scope nor an inactivity
+            // choice; the plan status publishes the personal continuation on the same ground.
+            if (!canBeEvaluatedToday(skillpilotId, plan)) {
+                return personalCurriculumGoals(skillpilotId, landscapeId, waived).toList();
+            }
             LocalDate asOf = LocalDate.now(clock.withZone(PLAN_ZONE));
-            // Only a plan that can be evaluated today binds continuation to its exam.
             if (definesExamScope(skillpilotId, plan, asOf)) return firstScopeContinuationGoal(skillpilotId,
                     landscapeId, blocks, asOf, learners.getMastery(skillpilotId), true).stream().toList();
             boolean hasInactiveLearning = blocks.stream().anyMatch(block -> block != null
@@ -2044,6 +2048,17 @@ public class LearnerLearningPlanService {
      */
     private boolean hasExamScope(String skillpilotId, List<LearnerLearningPlan> candidatePlans, LocalDate asOf) {
         return candidatePlans.stream().anyMatch(plan -> definesExamScope(skillpilotId, plan, asOf));
+    }
+
+    /** The compatibility of the stored plan with today's curriculum of the learner. */
+    private boolean canBeEvaluatedToday(String skillpilotId, LearnerLearningPlan plan) {
+        try {
+            return learners.isLearningPlanCompatible(
+                    skillpilotId, plan.getCurriculumId(), plan.getLandscapeId(), readStoredBlocks(plan));
+        } catch (ResponseStatusException exception) {
+            if (exception.getStatusCode().is5xxServerError()) throw exception;
+            return false;
+        }
     }
 
     private boolean definesExamScope(String skillpilotId, LearnerLearningPlan plan, LocalDate asOf) {

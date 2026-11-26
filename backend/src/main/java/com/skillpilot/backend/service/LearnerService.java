@@ -4540,7 +4540,12 @@ public class LearnerService {
         }
         List<String> prospectiveFocus = List.copyOf(subjectAtoms);
         if (prospectiveFocus.isEmpty()) return List.of();
-        Set<String> followedScope = followedLearningScopeIds(learner, projection, prospectiveFocus);
+        // Only this subject's own plan binds an explicit request for the subject. The learning
+        // path holds prerequisites of other subjects; they must not draw the exam of another
+        // subject into this one (issue #205).
+        Set<String> followedScope = followedLearningScopeIds(learner, projection, prospectiveFocus,
+                currentFollowedLearningPlans(learner).stream()
+                        .filter(plan -> landscapeId.equals(plan.getLandscapeId())).toList());
         if (followedScope != null && followedScope.isEmpty()) return List.of();
         return getRichFrontier(learner, projection, richFrontierFacts(learner, projection),
                 false, prospectiveFocus, false, followedScope, true).stream()

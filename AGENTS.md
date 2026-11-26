@@ -2440,8 +2440,22 @@ longer resolves, narrows nothing: ordinary learning in the subject stays open
 while plans are followed, resume and continuation remain published, and the
 plan status keeps reporting the plan as not evaluable. The frontier
 (`LearnerService.followedLearningScopeIds`) and the plan service
-(`LearnerLearningPlanService.hasExamScope`) apply the same test, the
-compatibility of the stored plan; a change to one needs the other.
+(`LearnerLearningPlanService.definesExamScope`, `canBeEvaluatedToday`) apply
+the same test, the compatibility of the stored plan; a change to one needs
+the other. Such a plan defines no inactivity choice for the personal
+continuation either: what the status publishes as resume must start a goal.
+An explicit request for a subject is bound by that subject's own plan only.
+The learning path of a subject holds prerequisites of other subjects, and
+they must not draw the exam of another subject into it
+(`getPersonalCurriculumSubjectFrontier`). Unchanged: with AutoPilot on, an
+exam that can be evaluated binds the backend's choice, and other subjects are
+then not published as choices. Open: the focus that a former exam activation
+stored still bounds the ordinary frontier of a plan that became outdated,
+until the learner continues; resume and subject choice work. Telling such a
+focus from a chosen one needs stored provenance of the focus. The check costs
+about four times as many compatibility evaluations per coach context for a
+learner who follows a plan with an exam day; reuse within one call needs the
+complete list of its inputs first.
 The selected exam roots use the ordinary Level 3 focus rules above. In normal
 mode an outside prerequisite must not turn this induced graph into an empty
 frontier; internal prerequisites still determine the next eligible goal.
