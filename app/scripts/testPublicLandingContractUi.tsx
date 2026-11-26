@@ -43,6 +43,7 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
       '5-Minuten-Quickstart',
       'FAQ',
       'Kursorganisation öffnen',
+      'Physik-Lernkarte ansehen · 1 Min.',
       'SkillGraph erkunden',
       'Lernzielbuch',
       'Curriculum-Champion werden',
@@ -72,6 +73,7 @@ const expectedByLanguage: Record<Language, LanguageExpectation> = {
       '5-minute quickstart',
       'FAQ',
       'Open course organization',
+      'Watch the physics map tour · 1 min',
       'Explore SkillGraph',
       'Learning goal book',
       'Become a Curriculum Champion',
@@ -112,6 +114,7 @@ const landingPillActionTestIds = [
   'public-landing-action-quickstart',
   'public-landing-action-faq',
   'public-landing-action-course-planning',
+  'public-landing-action-map-video',
   'public-landing-action-explorer',
   'public-landing-action-goal-book',
   'public-landing-action-curriculum-champions',
@@ -135,6 +138,7 @@ const interactiveLandingPanels = [
 const routeActions = (language: Language) => ([
   ['public-landing-action-quickstart', `/quickstart/${language}`],
   ['public-landing-action-faq', '/faq'],
+  ['public-landing-action-map-video', `/learning-map/${language}`],
   ['skillpilot-overview-format-audio', `/whitepaper/${language}?play=audio#audio`],
   ['skillpilot-overview-format-video', `/whitepaper/${language}?play=video#video`],
   ['skillpilot-overview-format-whitepaper', `/whitepaper/${language}#whitepaper`],
@@ -465,6 +469,7 @@ const assertPillContentAndSizing = async (
     {
       label: 'curricula',
       testIds: [
+        'public-landing-action-map-video',
         'public-landing-action-explorer',
         'public-landing-action-goal-book',
         'public-landing-action-curriculum-champions',
@@ -1256,6 +1261,12 @@ const assertLandingContract = async (page: Page, language: Language, viewport: s
     `${language}: the complete access explanation and comparison action open on demand`,
   )
 
+  assert.equal(
+    await page.getByTestId('public-landing-curricula-content').getByRole('listitem').first().getByRole('link').getAttribute('data-testid'),
+    'public-landing-action-map-video',
+    `${language}: the video tour opens directly from the first action in the curricula card`,
+  )
+
   for (const [testId, expectedHref] of routeActions(language)) {
     const action = page.getByTestId(testId)
     assert.equal(await action.count(), 1, `${language}: ${testId} is unique`)
@@ -1562,6 +1573,8 @@ try {
         await assertOerBadge(page, language, 'package-consumer')
         assert.equal(await page.getByTestId('public-landing-action-goal-book').count(), 0,
           `${language}: the original learning-goal-book promotion remains gated in package-consumer mode`)
+        assert.equal(await page.getByTestId('public-landing-action-map-video').count(), 0,
+          `${language}: standalone packages omit the repository-hosted tour`)
         assert.equal(await page.getByTestId('public-landing-action-learning').count(), 1,
           `${language}: package-consumer mode preserves the existing learning entry`)
       } finally {

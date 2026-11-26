@@ -1,3 +1,5 @@
+import { learningMapVideoPaths } from '../config/learningMapVideo'
+
 interface SessionSetupRouteContext {
   pathname: string
   hasActiveSession: boolean
@@ -11,6 +13,7 @@ const CORELESS_PUBLIC_PATHS = new Set([
   '/lernzielbuch',
   '/lernziel-feedback',
   '/plugins',
+  ...learningMapVideoPaths,
 ])
 
 export const shouldRunApplicationCore = (pathname: string) => (

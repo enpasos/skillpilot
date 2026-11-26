@@ -15,6 +15,7 @@ interface MarkdownDocumentVideoCardProps {
   title: string
   description: string
   openLabel: string
+  headingLevel?: 'h1' | 'h2'
   sectionId?: string
   poster?: string
   tracks?: readonly MarkdownDocumentVideoTrack[]
@@ -30,6 +31,7 @@ export const MarkdownDocumentVideoCard = forwardRef<MarkdownDocumentVideoCardHan
   title,
   description,
   openLabel,
+  headingLevel: Heading = 'h2',
   sectionId,
   poster,
   tracks,
@@ -59,9 +61,9 @@ export const MarkdownDocumentVideoCard = forwardRef<MarkdownDocumentVideoCardHan
               <Play size={15} fill="currentColor" aria-hidden="true" />
               {eyebrow}
             </div>
-            <h2 id={titleId} className="m-0 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <Heading id={titleId} className="m-0 text-2xl font-bold tracking-tight text-white sm:text-3xl">
               {title}
-            </h2>
+            </Heading>
             <p id={descriptionId} className="mb-0 mt-2 max-w-2xl text-sm leading-6 text-slate-300 sm:text-base">
               {description}
             </p>

@@ -41,6 +41,15 @@ class SpaControllerTest {
     }
 
     @Test
+    void learningMapVideoLinksForwardToSpaIndex() throws Exception {
+        for (String path : new String[] {"/learning-map", "/learning-map/de", "/learning-map/en", "/learning-map/en/"}) {
+            mockMvc.perform(get(path))
+                    .andExpect(status().isOk())
+                    .andExpect(forwardedUrl("/index.html"));
+        }
+    }
+
+    @Test
     void learningGoalFeedbackPilotForwardsToSpaIndex() throws Exception {
         mockMvc.perform(get("/lernziel-feedback?goalId=example"))
                 .andExpect(status().isOk())

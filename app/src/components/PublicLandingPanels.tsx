@@ -5,6 +5,7 @@ import {
   ClipboardList,
   GraduationCap,
   Network,
+  Play,
   ShieldCheck,
   Timer,
   Trophy,
@@ -207,6 +208,19 @@ export const PublicLandingPanels = ({
             {copy.curricula.description}
           </p>
           <ul className="mt-3 flex flex-wrap items-center gap-2" aria-label={copy.curricula.title}>
+            {import.meta.env.MODE !== 'package-consumer' && (
+              <li className="w-full">
+                <Link
+                  to={`/learning-map/${language}`}
+                  state={{ playVideo: true }}
+                  data-testid="public-landing-action-map-video"
+                  className={curriculaActionClassName}
+                >
+                  <Play size={14} className="shrink-0 text-sky-600 dark:text-sky-300" aria-hidden="true" />
+                  <span>{copy.curricula.mapVideoAction}</span>
+                </Link>
+              </li>
+            )}
             <li>
               <button
                 type="button"

@@ -102,8 +102,29 @@ Newton's second axiom to F = m·a for constant mass and stated the conditions
 of conservation of momentum exactly. A goal is a target only where the Land's
 official text carries it. Two short tasks of SkillPilot's own close the
 lower-stage routes in Hamburg, Thuringia and Baden-Württemberg; a new
-lower-stage target always needs its closing route planned with it. See the
+lower-stage target always needs its closing route planned with it. Part 2
+(26 November) added the derivation of the kinetic-energy formula from the work
+of a constant resultant force, a target with its own task in the eight
+Hessian, four Saarland and two Saxon Leistungskurs views and absent elsewhere.
+It corrected three prerequisites: potential energy no longer requires kinetic
+energy, three goals that use kinetic energy require it directly, and
+conservation of momentum no longer requires the application of Newton's second
+axiom. See the
 E.2 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
+
+**Product Owner decisions of 26 November 2026.** A plan that cannot be
+evaluated defines no exam scope: ordinary learning stays open and the plan
+remains visible as outdated (issue #205; the backend change is its own
+package). A goal without an official witness of a Land is no regular target
+there; it stays as SkillPilot's voluntary own offer at its place, or as a
+preparation where an official target needs it. Correct tracing to the official
+sources is mandatory for all subjects in the long run, with a sense of
+proportion: granularity is free, a single requirement may be declined with a
+recorded and visible reason, and other work continues meanwhile; until a rule
+with its gate exists, `CQR-003` is unchanged and no pin is lowered. The
+Mathematics vector ladder with a stage for the calculation rules gets an
+independent node review before any catalog change. See the product decisions
+of 26 November at the top of `AGENTS.md`.
 
 **Arrows of directed quantities (25 November 2026).** An arrow for force,
 velocity, momentum or field strength in a sketch of position space is a

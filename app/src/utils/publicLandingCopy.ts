@@ -27,6 +27,7 @@ export interface PublicLandingCopy {
   curricula: {
     title: string
     description: string
+    mapVideoAction: string
     explorerAction: string
     goalBookAction: string
     championsAction: string
@@ -71,6 +72,7 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
     curricula: {
       title: 'Curricula & Lernziele',
       description: 'Erkunde SkillGraphs und Lernzielbücher oder hilf mit, Curricula praxistauglich zu machen.',
+      mapVideoAction: 'Physik-Lernkarte ansehen · 1 Min.',
       explorerAction: 'SkillGraph erkunden',
       goalBookAction: 'Lernzielbuch',
       championsAction: 'Curriculum-Champion werden',
@@ -113,6 +115,7 @@ const COPY: Record<LabelLanguage, PublicLandingCopy> = {
     curricula: {
       title: 'Curricula & learning goals',
       description: 'Explore SkillGraphs and learning goal books, or help make curricula work in practice.',
+      mapVideoAction: 'Watch the physics map tour · 1 min',
       explorerAction: 'Explore SkillGraph',
       goalBookAction: 'Learning goal book',
       championsAction: 'Become a Curriculum Champion',
