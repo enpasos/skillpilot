@@ -106,12 +106,21 @@ test('the actual audit validates current ledgers and records pending routes with
   const report = await auditSemanticLearningRoutes(repositoryRoot)
   assert.deepEqual(report.summary, {
     registeredScopes: 12, directlyRequiredScopes: 4, ledgerBackedScopes: 6,
-    passingScopes: 4, failingScopes: 2, unavailableScopes: 6, routeFindings: 7,
+    passingScopes: 4, failingScopes: 2, unavailableScopes: 6, routeFindings: 6,
   })
   for (const scope of report.scopes.filter(scope => scope.status === 'required')) assert.equal(scope.outcome, 'pass', scope.scopeId)
   assert.deepEqual(report.scopes.filter(scope => scope.outcome === 'fail').map(scope => [scope.scopeId, scope.findings!.length]), [
-    ['canonical-physics-sek1', 4], ['canonical-chemistry-sek2', 3],
+    ['canonical-physics-sek1', 3], ['canonical-chemistry-sek2', 3],
   ])
+  const pendingPhysics = report.scopes.find(scope => scope.scopeId === 'canonical-physics-sek1')!
+  assert.deepEqual(pendingPhysics.findings!.map(finding => finding.goalId).sort(), [
+    '14cc61c4-4909-5671-b1ee-930a02cb9f51', '50521f0d-71b1-51cf-b30d-650e3abf3036', 'e0932fef-9e1c-5c95-b00c-7589e76d0e83',
+  ])
+  // The field-model assessment and released K4 each close through the early arrow goal.
+  for (const terminal of ['b4175564-4397-5c08-90ba-4f13231a75ec', '2569d84a-5bf1-542b-bc43-6ade1df971c4']) {
+    assert.deepEqual(report.directedQuantityArrows.paths.find(row => row.goalId === terminal)?.path,
+      [terminal, 'b77a7e93-22f9-5722-a4cc-f18a149ab030'])
+  }
   assert.equal(report.inputBindings.filter(binding => binding.path.endsWith('.semantic-kinds.json')).length, 4)
   assert.equal(report.inputBindings.filter(binding => binding.path.includes('/composition-views/physik/')).length, 3)
   assert.deepEqual(report.scopeAlignmentDebt.map(debt => [debt.profileId, debt.additionalInheritedTargetGoalIds.length, debt.findings.length]), [['canonical-physics-sek2', 43, 42]])
