@@ -3704,6 +3704,61 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(response.isError()).as("%s: %s", tool, response.content()).isFalse();
         return mapper.readValue(((McpSchema.TextContent) response.content().getFirst()).text(), new TypeReference<>() {});
     }
+    // A section of a Physics view can hold the learning place of a Mathematics preparation: in the
+    // Saarland Leistungskurs two integral goals lie in "Kraft und Bewegung", and every phase holds
+    // its "Notwendige Grundlagen". The complete selection of such a section is its Physics goals and
+    // can be stored; the Mathematics goals belong to the Mathematics plan (issue #216).
+    @ParameterizedTest
+    @CsvSource({"false,physics-sl-e-topic-a23348c3fbeb", "true,physics-sl-e-topic-a23348c3fbeb",
+            "false,physics-sl-unit-e", "true,physics-sl-unit-e"})
+    void sectionThatHoldsTheLearningPlaceOfAMathematicsGoalCanBePlannedCompletely(
+            boolean withMathematics, String structure) throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var integrals = List.of("e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd", "34604a97-0c64-5b06-81e2-6ac818732d60");
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
+        String section = configurePhysicsTestUnit(null, "SekII", "LK", "DE-SL", structure);
+        if (withMathematics) {
+            Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+            var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
+            curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "LK")));
+            learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+            learnerRepository.saveAndFlush(learner);
+        }
+        assertThat(compositionViews.resolveStructureReference(section).referencedGoalIds()).containsAll(integrals);
+
+        var selected = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        assertThat(selected).isNotEmpty().doesNotContainAnyElementsOf(integrals)
+                .allSatisfy(id -> assertThat(landscapeDefinitions.getLandscapeIdForGoal(id)).isEqualTo(physics));
+        var day = java.time.LocalDate.of(2026, 11, 26);
+        var block = new LearnerLearningPlanApi.Block("section", "learning", section, "Abschnitt",
+                day, day, null, selected, List.of(section), true);
+        var plan = learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Abschnitt", List.of(block)), day);
+        assertThat(plan.stale()).isFalse();
+        assertThat(plan.blocks().getFirst().atomicGoalIds()).containsExactlyInAnyOrderElementsOf(selected);
+        assertThat(learningPlans.getPlan(learnerId, physics, day).stale()).isFalse();
+
+        // A Mathematics goal of the section is no goal of the Physics plan.
+        var withMathematicsGoal = new java.util.ArrayList<>(selected);
+        withMathematicsGoal.add(integrals.getFirst());
+        var mixed = new LearnerLearningPlanApi.Block("section", "learning", section, "Abschnitt",
+                day, day, null, withMathematicsGoal, List.of(section), true);
+        assertThatThrownBy(() -> learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(plan.revision(), "Abschnitt", List.of(mixed)), day))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class, error ->
+                        assertThat(error.getStatusCode().value()).isEqualTo(400));
+        // The Physics section is no focus of a Mathematics plan, also where it holds Mathematics goals.
+        assertThatThrownBy(() -> learners.resolveLearningPlanGoalIds(learnerId, MATH, List.of(section)))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class, error ->
+                        assertThat(error.getStatusCode().value()).isEqualTo(400));
+        // A structure that holds no Physics goal at all stays no selection of a Physics plan.
+        String foundations = section.substring(0, section.indexOf(":structure:"))
+                + ":structure:physics-required-preparation-physics-sl-unit-hauptphase";
+        assertThatThrownBy(() -> learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(foundations)))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class, error ->
+                        assertThat(error.getStatusCode().value()).isEqualTo(400));
+    }
+
     @SuppressWarnings("unchecked") private Map<String, Object> map(Map<String, Object> parent, String key) {
         assertThat(parent.get(key)).as(key).isInstanceOf(Map.class); return (Map<String, Object>) parent.get(key);
     }

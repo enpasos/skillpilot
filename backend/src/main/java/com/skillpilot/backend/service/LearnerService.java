@@ -5331,17 +5331,35 @@ public class LearnerService {
             GoalProjection projection) {
         List<String> focusTargetIds = resolveProjectedFocusTargetIds(goalId, projection);
         if (focusTargetIds.isEmpty()) throw invalidLearningPlanFocus(blockId);
+        // A section of this subject's own view can hold the learning place of a goal of another
+        // subject, for example a Mathematics preparation in a Physics section. That goal belongs
+        // to the plan of its own subject, so the selection of this plan leaves it out. A focus
+        // that is not a section of this subject is still refused as soon as it holds a goal of
+        // another subject (issue #216).
+        boolean sectionOfThisSubject = isSectionOfSubjectView(goalId, requestedLandscapeId);
         LinkedHashSet<String> focusedAtomicIds = new LinkedHashSet<>();
         for (String targetGoalId : focusTargetIds) {
             LearningGoal structuralGoal = projection.structuralGoals().get(targetGoalId);
             if (!isCountedAtomicGoal(structuralGoal)) continue;
             if (!requestedLandscapeId.equals(landscapeService.getLandscapeIdForGoal(targetGoalId))) {
+                if (sectionOfThisSubject) continue;
                 throw invalidLearningPlanFocus(blockId);
             }
             focusedAtomicIds.add(targetGoalId);
         }
         if (focusedAtomicIds.isEmpty()) throw invalidLearningPlanFocus(blockId);
         return Set.copyOf(focusedAtomicIds);
+    }
+
+    /** Whether the focus is a structure of a composition view that belongs to the given subject. */
+    private boolean isSectionOfSubjectView(String focusGoalId, String landscapeId) {
+        if (!isCompositionStructureGoalId(focusGoalId) || compositionViewService == null) return false;
+        CompositionViewService.CompositionStructureResolution resolution =
+                compositionViewService.resolveStructureReference(focusGoalId);
+        if (resolution == null) return false;
+        Map<String, Object> view = compositionViewService.findViewById(resolution.viewId());
+        return view != null && view.get("landscapeId") instanceof String owner
+                && owner.trim().equalsIgnoreCase(landscapeId);
     }
 
     /**
