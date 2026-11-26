@@ -149,6 +149,7 @@ test('correct field lines, lens object arrows and an explicitly separate tip-to-
 test('criterion evidence is immutable and generation preserves all current fields without approving changed bytes', () => {
   const original = imageRecord()
   const { evidence: _binding, ...review } = original.directedQuantityArrowReview
+  void _binding
   const bytes = Buffer.from(JSON.stringify({ schemaVersion: 1, documentType: 'directed-quantity-arrow-image-decisions', sourceBindings: [], rows: [{ goalId: 'image', review }] }))
   original.directedQuantityArrowReview.evidence.sha256 = digest(bytes)
   assert.equal(validateDirectedQuantityArrowImageEvidence([original], () => bytes).accepted, 1)

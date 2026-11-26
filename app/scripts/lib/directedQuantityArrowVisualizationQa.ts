@@ -132,6 +132,7 @@ export function validateDirectedQuantityArrowImageEvidence(
     }
     if (loadedHashes.get(review.evidence.path) !== review.evidence.sha256) throw new Error(`Directed quantity arrows: image review evidence hash mismatch for ${record.goalId}`)
     const { evidence: _binding, ...decision } = review
+    void _binding
     const row = rows.get(review.evidence.entryId)
     if (!row || row.goalId !== record.goalId || stable(row.review) !== stable(decision)) throw new Error(`Directed quantity arrows: image decision contradicts reviewed material for ${record.goalId}`)
     counts[review.status] += 1
