@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 1,
+  "task": "V",
+  "issue": 197,
+  "pullRequest": 214,
+  "date": "2026-11-26",
+  "branch": "fix/plan-fortsetzen-unter-abschnitt",
+  "base": "7c921a452caa00636d8bfb8b324d530bbc4a2886",
+  "reviewedCommit": "afdfe229e4ace47e0f32802cf9a56a761145c2ef",
+  "reviewedTree": "a453a98d49e4b362f7e8a74cebf5e8cc1bf42ba4",
+  "verdict": "changes-requested",
+  "readOnly": true,
+  "productionDiffPaths": [
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java"
+  ],
+  "changedPaths": [
+    "AGENTS.md",
+    "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+    "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+    "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java",
+    "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceTest.java",
+    "docs/dev/stage-plan-management-summary.md"
+  ],
+  "reviewers": [
+    {
+      "agent": "v_independent_a",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "ultra",
+      "originalAnswer": {
+        "path": "reviewer-a.md",
+        "bytes": 20789,
+        "sha256": "6f0c36c588bfd9f3f3259c9649c7ead8f2290a20b91022ceaf2aa6ce2c77a211"
+      },
+      "context": "Independent initial fork, pinned diff and questions, one round."
+    },
+    {
+      "agent": "v_independent_b",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "ultra",
+      "originalAnswer": {
+        "path": "reviewer-b.md",
+        "bytes": 15618,
+        "sha256": "64c479a7a4ed5bfb56f1bc3c19cfd4efea734156ebd3b2c98eb9c9b8a8e349c7"
+      },
+      "context": "Independent initial fork, pinned diff and questions, one round."
+    }
+  ],
+  "inputs": [
+    {
+      "path": "AGENTS.md",
+      "baseSha256": "44ac6c470768fadc0f378d302cc95eb76714656c0be52bb823a8e10222b2c318",
+      "reviewedSha256": "46c2f6f60637a2e37ed642984f98a16fa91e0bcd613a2adf8667a69d89222794"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/api/LearnerLearningPlanApi.java",
+      "baseSha256": "683ad79c4d7c2cc73afc9a6acfe8374c662e1c490dfa3793c3ff450edb264f76",
+      "reviewedSha256": "683ad79c4d7c2cc73afc9a6acfe8374c662e1c490dfa3793c3ff450edb264f76"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/api/LearnerPlanTodayStatus.java",
+      "baseSha256": "3d6100bc44432e4adb16a587ddecfe5bb49a3b601de2b021ffed037683a9e449",
+      "reviewedSha256": "3d6100bc44432e4adb16a587ddecfe5bb49a3b601de2b021ffed037683a9e449"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+      "baseSha256": "87ce052acc70e5f49efdb1ddda97717e56695713854a0dfc15d8f871514b6e9a",
+      "reviewedSha256": "b6d17e765dd333db756a3a19dac823aa17e00a0d559be6d0b488818ecd14f344"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "baseSha256": "3f392df1e1e3eda8bfc617efdd41efaccebc716415b72081dfef37f8457d4ff5",
+      "reviewedSha256": "3f392df1e1e3eda8bfc617efdd41efaccebc716415b72081dfef37f8457d4ff5"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+      "baseSha256": "b078c5839726249daea8f12086424d13a946862f344adcce3d4d0342d637cde7",
+      "reviewedSha256": "6df0a5917d6e19788cdd956f86b040833f530a2b057305500ee672766c0747f7"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceIntegrationTest.java",
+      "baseSha256": "033402317a95e674aa99aedec367f845ea450e0da03c07ee06670f58c6d47ce5",
+      "reviewedSha256": "dd08a9bd83dd97d01be2a7f8e99da6cb24d2bce7948f41e953e65b430abf5308"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerLearningPlanServiceTest.java",
+      "baseSha256": "b53bd51ab97bf52938455d265f10754c1057c1c79ce9b8e18fc7bdbe8b84c0cf",
+      "reviewedSha256": "cdf18db12393245202ead5bf86af35bcd4a8c6fab515e848ff8b0bdf8b1a1acd"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/UnitIntroductionForeignFocusReviewTest.java",
+      "baseSha256": "24e97a5b8155238dd60f2c2f651dbcdaf226874a403048d9780d7a39a23abfcc",
+      "reviewedSha256": "24e97a5b8155238dd60f2c2f651dbcdaf226874a403048d9780d7a39a23abfcc"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/UnitLearningMaterialServiceTest.java",
+      "baseSha256": "bf97d9f5093ead89b45cd8ff21083a101a15a50bc211aa47d446a92dbcfde235",
+      "reviewedSha256": "bf97d9f5093ead89b45cd8ff21083a101a15a50bc211aa47d446a92dbcfde235"
+    },
+    {
+      "path": "contracts/stage-plan-review-evidence/2026-11-25/learning-plan-regrouping/review-a6a1ea5912/probes/two-section-opening.java.txt",
+      "baseSha256": "1d0303d68ec25610c0c2742c6fa21c97e944df4b130fc662470249efb64d44be",
+      "reviewedSha256": "1d0303d68ec25610c0c2742c6fa21c97e944df4b130fc662470249efb64d44be"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "baseSha256": "fbddfe1cea93a07b9c1848c4b409ec75cdb73b12cdcc48f696f6c026844de969",
+      "reviewedSha256": "fbddfe1cea93a07b9c1848c4b409ec75cdb73b12cdcc48f696f6c026844de969"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/materials/physics/he-e1-accelerated-and-free-fall.json",
+      "baseSha256": "15668151caa403d3fe648302180310ef00792bd5a9f8628c160db1ef80e1cc5f",
+      "reviewedSha256": "15668151caa403d3fe648302180310ef00792bd5a9f8628c160db1ef80e1cc5f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/materials/physics/he-e1-motion-practice.json",
+      "baseSha256": "1493b3d7b2589ac37854ffaf7e1701a06e9861ee56744a21880cf8b82ca98064",
+      "reviewedSha256": "1493b3d7b2589ac37854ffaf7e1701a06e9861ee56744a21880cf8b82ca98064"
+    },
+    {
+      "path": "curricula/unit-learning-materials.json",
+      "baseSha256": "1e1ade484be156805d8bdd2750a00eb4c25f4f03bf714a9917f2e3ec1b704e4c",
+      "reviewedSha256": "1e1ade484be156805d8bdd2750a00eb4c25f4f03bf714a9917f2e3ec1b704e4c"
+    },
+    {
+      "path": "docs/dev/stage-plan-management-summary.md",
+      "baseSha256": "2a2d6da3394043e46fcc672913bacd26cc045b5c86c7d9962e8c6f6328a0c7f1",
+      "reviewedSha256": "7ffda906c03c54cef478e1467f82f9f6d3b37a467da0a47734ee383e6920b05c"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "raw/probes/README.md",
+      "bytes": 4754,
+      "sha256": "e1e707c03f81a080b0270c746ce9e3b79e1f6d341e2b24ec5e84080be3f8b214"
+    },
+    {
+      "path": "raw/probes/TaskVProbe.methods.java",
+      "bytes": 11392,
+      "sha256": "6a5a110e20ee28d5151cc974c2379b34875be47187850b27fdc9da1d55aa81df"
+    },
+    {
+      "path": "raw/probes/base.gradle.log",
+      "bytes": 12673,
+      "sha256": "3b97bc7891f6ded0a703a0f996f684485e197f261bdf626d9df1233f53f08778"
+    },
+    {
+      "path": "raw/probes/base.junit.actual.json",
+      "bytes": 5348,
+      "sha256": "1629c90bfab94aaca6886c7e287d1d9225dd26d77abbe144216cdeae2c195c42"
+    },
+    {
+      "path": "raw/probes/extract.py",
+      "bytes": 1363,
+      "sha256": "8f3f133943077991ef0d026c2917d2d91cce64a4e730354d57700ac92a904335"
+    },
+    {
+      "path": "raw/probes/head.gradle.log",
+      "bytes": 15318,
+      "sha256": "97138fb78c128801732aab8e6163fe6b261b7667aa01c896564dab15f4663f59"
+    },
+    {
+      "path": "raw/probes/head.junit.actual.json",
+      "bytes": 7778,
+      "sha256": "91734db7269183990aa1a51d6095ba237a8702dd27a7004c9d573946cc5d2792"
+    },
+    {
+      "path": "raw/probes/inputs.actual.json",
+      "bytes": 1051,
+      "sha256": "5222ee2d581952ad9622fb6ad4603a598af8e5739964dc2597b2f23a0710577e"
+    },
+    {
+      "path": "raw/probes/probe.init.gradle",
+      "bytes": 2480,
+      "sha256": "846455a1cc0007cd7e8a9e965966d8c4041a64cd6d679f3a36e94dcab5c63a5e"
+    },
+    {
+      "path": "raw/probes/run.sh",
+      "bytes": 1049,
+      "sha256": "850576f950487c8e5e362f8d9eb63f0c3d920db6d5c58d90cf9acc2c2084b7a3"
+    },
+    {
+      "path": "raw/root/base/opening-many-false-coach.json",
+      "bytes": 1168,
+      "sha256": "bab02ef03d38e42a395506b24031a229575496cbe87431caa2c8deb570eb5dd1"
+    },
+    {
+      "path": "raw/root/base/opening-many-false-cockpit.json",
+      "bytes": 1298,
+      "sha256": "f1118c7d0805f5045998261e113eb8e157cace6be61f86eab10b06365506f6dc"
+    },
+    {
+      "path": "raw/root/base/opening-many-false-pick.json",
+      "bytes": 1774,
+      "sha256": "2bef600d1cb173d1a58d6ffc2c77d2eaa058e7b9f754124e3e762c29b4fb7407"
+    },
+    {
+      "path": "raw/root/base/opening-many-false.json",
+      "bytes": 1170,
+      "sha256": "885f2316a36324ed0a62c26696ace5aa0f426eed53638c425f708a82b467c96b"
+    },
+    {
+      "path": "raw/root/base/opening-many-true.json",
+      "bytes": 1267,
+      "sha256": "fb665ddb9b6517d8f5d8ebae08399ad0154124fbde6f7176a1a87791bcdb045d"
+    },
+    {
+      "path": "raw/root/base/opening-none-false.json",
+      "bytes": 1222,
+      "sha256": "5c2b453927d2788f6148e682a872b04206267cafc41d5dc13b40693e4aef1671"
+    },
+    {
+      "path": "raw/root/base/opening-one-false.json",
+      "bytes": 1366,
+      "sha256": "54037ede511a2223d558429e54e33f1b2629227d65360b8414d1eb9781dc8dd2"
+    },
+    {
+      "path": "raw/root/base/path-many-activate.json",
+      "bytes": 829,
+      "sha256": "95cc4df96579394f8723f26fd814fe2a420206317e031e38a878f98fd9352936"
+    },
+    {
+      "path": "raw/root/base/path-many-coach.json",
+      "bytes": 826,
+      "sha256": "ac7b6bb05a012a05c5b2967857467ea8ca681dfb9cefc6e52d3c56721b9958eb"
+    },
+    {
+      "path": "raw/root/base/path-many-cockpit.json",
+      "bytes": 908,
+      "sha256": "62948d46b64b9f42993e5ffbf92ea7cda30361cc247abac5ed00e9ddacbbd682"
+    },
+    {
+      "path": "raw/root/base/path-many-pick.json",
+      "bytes": 1318,
+      "sha256": "c058b76b898ca36aaa690b55bbb0ad70a24c0bd25bb60a18e634f7a99d2a1fe1"
+    },
+    {
+      "path": "raw/root/base/path-many-reconcile.json",
+      "bytes": 830,
+      "sha256": "8e496e853dd7f88a7ebc73d88907d342818b2b7b766524331e1131e72e77826b"
+    },
+    {
+      "path": "raw/root/base/path-none-coach.json",
+      "bytes": 645,
+      "sha256": "fc676523910a46b1f01a1a72f86da919ace42ae65d9c239dca8ded6117732280"
+    },
+    {
+      "path": "raw/root/base/path-none-cockpit.json",
+      "bytes": 727,
+      "sha256": "d5d04445d09e10fa4ea2997eadc664aa245694ea8402d01aa4f5bbc121325ceb"
+    },
+    {
+      "path": "raw/root/base/path-none-reconcile.json",
+      "bytes": 649,
+      "sha256": "86b62c7a4c7b1262bb876d819ebd2fe912236e78bc9c24358644efffe52250e3"
+    },
+    {
+      "path": "raw/root/base/path-one-coach.json",
+      "bytes": 830,
+      "sha256": "82f06dc957a14eba5081d385401e581305706cd0d0a30c73dbf7555e0bb88ca7"
+    },
+    {
+      "path": "raw/root/base/path-one-cockpit.json",
+      "bytes": 872,
+      "sha256": "b4cb372149033a3ef91b50c5389b8911535b910cff2bd364853231bcb71ab75b"
+    },
+    {
+      "path": "raw/root/base/path-one-reconcile.json",
+      "bytes": 834,
+      "sha256": "5cbff92f210582c2b44b1430b8b15e5ffdb1a34ac2e3922cc20b7cad2f7b0115"
+    },
+    {
+      "path": "raw/root/entry-paths.method.java",
+      "bytes": 4946,
+      "sha256": "06296938cac70995511e741d3a094237e8c88fdf6e53f887cc9b46a25652267e"
+    },
+    {
+      "path": "raw/root/explicit-opening.method.java",
+      "bytes": 5224,
+      "sha256": "44b6a11d89f51ff95c58aa8d073cf025273ed2a54de1f93711c262181d2a9e09"
+    },
+    {
+      "path": "raw/root/head/opening-many-false-coach.json",
+      "bytes": 1395,
+      "sha256": "619db87ffa1b9ecc138373987451b1ae4f565f442ab4ebc0fafb0fa006d71cbc"
+    },
+    {
+      "path": "raw/root/head/opening-many-false-cockpit.json",
+      "bytes": 1377,
+      "sha256": "6b46a4669200974beaa2710e97edda70cbbb80f25bbc0ee57ab0a75e82cda3d0"
+    },
+    {
+      "path": "raw/root/head/opening-many-false-pick.json",
+      "bytes": 1731,
+      "sha256": "799ac83984919eae186ba27c5b27cdd9e4258e743721f1e72fb6c8b370195d94"
+    },
+    {
+      "path": "raw/root/head/opening-many-false.json",
+      "bytes": 1222,
+      "sha256": "d5005a49f324032f6cc5e04dea0b7f13f0e687cdf1167788886d02f7d89300bd"
+    },
+    {
+      "path": "raw/root/head/opening-many-true.json",
+      "bytes": 1267,
+      "sha256": "fb665ddb9b6517d8f5d8ebae08399ad0154124fbde6f7176a1a87791bcdb045d"
+    },
+    {
+      "path": "raw/root/head/opening-none-false.json",
+      "bytes": 1222,
+      "sha256": "5c2b453927d2788f6148e682a872b04206267cafc41d5dc13b40693e4aef1671"
+    },
+    {
+      "path": "raw/root/head/opening-one-false.json",
+      "bytes": 1366,
+      "sha256": "54037ede511a2223d558429e54e33f1b2629227d65360b8414d1eb9781dc8dd2"
+    },
+    {
+      "path": "raw/root/head/path-many-activate.json",
+      "bytes": 829,
+      "sha256": "239854e27ac3009245e338c05642011d78153ddcd1a56f19f2cf92cdd20bae60"
+    },
+    {
+      "path": "raw/root/head/path-many-coach.json",
+      "bytes": 826,
+      "sha256": "5c0c1c8296d5e6252a4b6371a5f027ff9815da4a6147f7cbb9b1fda65440b08d"
+    },
+    {
+      "path": "raw/root/head/path-many-cockpit.json",
+      "bytes": 908,
+      "sha256": "a4b47441c68574ffd3bc039b3f645f7c52cb88c9894df75de194da736b67a9d2"
+    },
+    {
+      "path": "raw/root/head/path-many-pick.json",
+      "bytes": 1183,
+      "sha256": "21d66fed2b6970893fc0df130e81b87dd48baf66ec5c5bc7bfb90a1edddb1e99"
+    },
+    {
+      "path": "raw/root/head/path-many-reconcile.json",
+      "bytes": 830,
+      "sha256": "67d658602044acf84518c840636b2c5411b6af1119794bda052ba638086d3fd5"
+    },
+    {
+      "path": "raw/root/head/path-none-coach.json",
+      "bytes": 645,
+      "sha256": "fc676523910a46b1f01a1a72f86da919ace42ae65d9c239dca8ded6117732280"
+    },
+    {
+      "path": "raw/root/head/path-none-cockpit.json",
+      "bytes": 727,
+      "sha256": "d5d04445d09e10fa4ea2997eadc664aa245694ea8402d01aa4f5bbc121325ceb"
+    },
+    {
+      "path": "raw/root/head/path-none-reconcile.json",
+      "bytes": 649,
+      "sha256": "86b62c7a4c7b1262bb876d819ebd2fe912236e78bc9c24358644efffe52250e3"
+    },
+    {
+      "path": "raw/root/head/path-one-coach.json",
+      "bytes": 830,
+      "sha256": "82f06dc957a14eba5081d385401e581305706cd0d0a30c73dbf7555e0bb88ca7"
+    },
+    {
+      "path": "raw/root/head/path-one-cockpit.json",
+      "bytes": 872,
+      "sha256": "b4cb372149033a3ef91b50c5389b8911535b910cff2bd364853231bcb71ab75b"
+    },
+    {
+      "path": "raw/root/head/path-one-reconcile.json",
+      "bytes": 834,
+      "sha256": "5cbff92f210582c2b44b1430b8b15e5ffdb1a34ac2e3922cc20b7cad2f7b0115"
+    },
+    {
+      "path": "raw/root/junit.actual.json",
+      "bytes": 30599,
+      "sha256": "8e281223e57b7c9a4a7348710903b955dfc333d614a5f467bdc60e0cd747ec21"
+    },
+    {
+      "path": "raw/root/opening.log",
+      "bytes": 15166,
+      "sha256": "5c6a7395f3ccfc1a99bec68ac103b0a48d98916f97045301b3d1f10260426d8c"
+    },
+    {
+      "path": "raw/root/paths.init.gradle",
+      "bytes": 2374,
+      "sha256": "5d953592171d8f2338e5b65884e3552233724f8d13542305ccd2b193e3a2ec06"
+    },
+    {
+      "path": "raw/root/probes.log",
+      "bytes": 23045,
+      "sha256": "cddf9b23dc27944439a460a72376e27f210c42e2ef98a46e2f9e04769cbbeac0"
+    },
+    {
+      "path": "raw/root/regression.log",
+      "bytes": 71172,
+      "sha256": "729c93bdfef9e750dc0171543c91f467eee99f38a37736843818be6104cab72c"
+    },
+    {
+      "path": "raw/root/run-opening.sh",
+      "bytes": 556,
+      "sha256": "7a72373a761a8f28ab817991e7f674ea47489371b991b8d11df57ef918d79fac"
+    },
+    {
+      "path": "raw/root/run-probes.sh",
+      "bytes": 555,
+      "sha256": "7b1dbe699b57297f68ffdd0f31c8b6d30956018ee34af47a9e6a404265c79707"
+    },
+    {
+      "path": "raw/root/run-regression.sh",
+      "bytes": 1217,
+      "sha256": "e25808b7a142a2dbe23e7aa5f60c4a1dbfa19943dd5d8d7cb2f314062deff716"
+    },
+    {
+      "path": "raw/root/summarize.py",
+      "bytes": 3581,
+      "sha256": "796f563034a7ebd4724d4ccb1a996c95c826961195869602cc0927849b5dc9cc"
+    },
+    {
+      "path": "raw/root/verify-review.py",
+      "bytes": 4839,
+      "sha256": "d19e8a8302aa4961fefe6bc5fe589b8ed0634cfaedfc26aef5715c9072336aac"
+    },
+    {
+      "path": "review.md",
+      "bytes": 13871,
+      "sha256": "8e930020f5746e1efb302bb75c8eb95fb453ddce7c20d1f0c59666f6dffa707c"
+    },
+    {
+      "path": "reviewer-a.md",
+      "bytes": 20789,
+      "sha256": "6f0c36c588bfd9f3f3259c9649c7ead8f2290a20b91022ceaf2aa6ce2c77a211"
+    },
+    {
+      "path": "reviewer-b-probes/PlanFocusBProbe.java",
+      "bytes": 3056,
+      "sha256": "02dd6474c69e2dd3f4fa20291e0d0a691319077bc9190f7972b4a994fd029009"
+    },
+    {
+      "path": "reviewer-b-probes/PreparationBProbe.java",
+      "bytes": 1149,
+      "sha256": "e0d27a8211ae2acce21c1d2fae97b49e50c9f04057f03b9a7e7b437b8fd46a71"
+    },
+    {
+      "path": "reviewer-b-probes/PreservationBProbe.java",
+      "bytes": 2356,
+      "sha256": "24bad6bfdd716b1279c12d0b1f393d74a4e857de274a8fd83ef48002f96bf7b3"
+    },
+    {
+      "path": "reviewer-b-probes/reproduce.py",
+      "bytes": 1819,
+      "sha256": "c1ecc1b4ec9b36877cc234466ed30f533299195fde203681342c1e40acffb915"
+    },
+    {
+      "path": "reviewer-b-probes/run.json",
+      "bytes": 9069,
+      "sha256": "ded5c45c5e199d5a2233c4dcfebe834dae0d6dc80ba916dfa18a1731e94e24e4"
+    },
+    {
+      "path": "reviewer-b.md",
+      "bytes": 15618,
+      "sha256": "64c479a7a4ed5bfb56f1bc3c19cfd4efea734156ebd3b2c98eb9c9b8a8e349c7"
+    }
+  ],
+  "results": {
+    "repositoryTestsHead": {
+      "tests": 169,
+      "passed": 169
+    },
+    "authorSixOnBase": {
+      "tests": 6,
+      "passed": 2,
+      "failed": 4
+    },
+    "observationalCasesPerRevision": 18,
+    "additionalIntegrationAssertions": {
+      "base": {
+        "tests": 5,
+        "passed": 3,
+        "failed": 2
+      },
+      "head": {
+        "tests": 5,
+        "passed": 2,
+        "failed": 3
+      }
+    },
+    "scope": "Bounded review with service runs. No full CI run or browser test."
+  },
+  "findings": [
+    "ordinary activation can discard an admissible in-progress goal while its opening is outstanding",
+    "independent preparation chain is lost in a multi-section block; no current registered material declares one",
+    "explicit child opening can lose direct entry and generic continuation remains idle",
+    "pre-existing additional focus IDs after Cockpit continuePlan",
+    "multi-section direct entry requires a product decision"
+  ]
+}

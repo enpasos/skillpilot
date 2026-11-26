@@ -249,7 +249,8 @@ class LearnerLearningPlanServiceIntegrationTest {
     @Test
     void multiRootPreparationPersistsAndCanContinueOnItsSecondBranch() {
         learner.setFollowLearningPlans(true);
-        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("topic-a", "topic-b")))
+        // The goal is judged under the focus that is stored for it: the goal itself (issue #197).
+        when(learnerService.getUncompactedRichFrontierForFocus(LEARNER_ID, List.of("atom-b")))
                 .thenReturn(List.of(frontier("atom-b")));
         var prep = new LearnerLearningPlanApi.Block("prep", "learning", "legacy-root", "Vorbereitung",
                 TODAY, TODAY, null, List.of("atom-a", "atom-b"), List.of("topic-a", "topic-b"), true);

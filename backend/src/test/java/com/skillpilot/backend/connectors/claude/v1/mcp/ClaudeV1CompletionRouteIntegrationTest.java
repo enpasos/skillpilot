@@ -2421,6 +2421,155 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 .hasMessageContaining("not a subject-local ancestor");
     }
 
+    // Issue #197: a plan block may name several sections. Its goals then run under their own
+    // focus, as explicit individual choices: the opening of the outer unit comes first, then the
+    // opening of the goal's own unit. The plan view, the continuation and the handoff after a
+    // passed goal judge the goal under that same focus, so they agree on the next step, and what
+    // is announced starts. Before, the selection judged under all sections of the block: it
+    // announced the opening of the child unit while the opening of E.1 was stored, and with the
+    // child's opening passed it announced a step and started nothing.
+    @ParameterizedTest
+    @CsvSource({"false,bothOpen", "true,bothOpen", "false,childPassed", "true,childPassed",
+            "false,parentPassed", "true,parentPassed"})
+    void blockWithSeveralSectionsAnnouncesAndStoresTheSameStepOnEveryPath(boolean pilot, String openings) throws Exception {
+        Object pilotBefore = org.springframework.test.util.ReflectionTestUtils.getField(learners, "unitAssessmentPilotEnabled");
+        org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilot);
+        try {
+            String motion = selectHessianMotionUnit("G9", "SekII", "GK");
+            String magnet = motion.replace(":structure:physics-e1-motion", ":structure:physics-current-magnetic-fields-0bd4a459");
+            String child = motion.replace(":structure:physics-e1-motion", ":structure:physics-e1-accelerated-and-free-fall");
+            String anchor = "b4175564-4397-5c08-90ba-4f13231a75ec";
+            String target = "8aff7aac-321b-5172-ac55-877876bfd2cd";
+            String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+            var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+            var monday = today.with(java.time.DayOfWeek.MONDAY);
+            List<String> roots = List.of(child, magnet);
+            learners.setPlannedGoals(learnerId, java.util.Set.of(magnet));
+            learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "Messplan", List.of(
+                    new LearnerLearningPlanApi.Block("both", "learning", child, "Messen", monday, monday, null,
+                            List.of(anchor, target), roots, true))), today);
+            var learner = learnerRepository.findById(learnerId).orElseThrow();
+            var graph = new CompletionProfileCompiler().normalizePrerequisites(
+                    learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+            var passed = new java.util.LinkedHashSet<>(graph.transitivePrerequisites(anchor));
+            passed.addAll(graph.transitivePrerequisites(target));
+            passed.removeAll(List.of(anchor, target, MOTION_OPENING, FALL_OPENING));
+            if (openings.equals("parentPassed")) passed.add(MOTION_OPENING);
+            if (openings.equals("childPassed")) passed.add(FALL_OPENING);
+            masteryRepository.saveAllAndFlush(passed.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+            learners.setPreferences(learnerId, null, false, true, null, true);
+            learners.setPlannedGoals(learnerId, java.util.Set.of(magnet));
+            learners.setActiveGoal(learnerId, anchor);
+            var originalFocus = focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).toList();
+            assertThat(learningPlans.getPlan(learnerId, physics, today).stale()).isFalse();
+            // The outer opening first; the child's own opening once the outer one is passed.
+            String expected = openings.equals("parentPassed") ? FALL_OPENING : MOTION_OPENING;
+
+            // The handoff after the passed goal.
+            learners.setMastery(learnerId, new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of(anchor, 1.0), anchor));
+            var afterHandoff = learnerRepository.findById(learnerId).orElseThrow();
+            String handoffActive = afterHandoff.getActiveGoalId();
+            var handoffFocus = focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).toList();
+
+            // The same state reached by a fresh continuation: only the navigation is undone.
+            var reset = learnerRepository.findById(learnerId).orElseThrow();
+            reset.setActiveGoalId(null);
+            reset.setPendingUnitEntry(null);
+            learnerRepository.saveAndFlush(reset);
+            focus.deleteAll(focus.findByLearner_SkillpilotId(learnerId));
+            focus.flush();
+            for (String id : originalFocus) focus.save(new PlannedGoal(reset, id));
+            focus.flush();
+            var view = learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal();
+            var resumed = learningPlans.reconcile(learnerId, new LearnerLearningPlanApi.ReconcileRequest(today));
+            var afterResume = learnerRepository.findById(learnerId).orElseThrow();
+            var resumeFocus = focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).toList();
+
+            assertThat(handoffActive).as("handoff starts").isEqualTo(expected);
+            assertThat(view).as("plan view announces").isNotNull();
+            assertThat(view.goalId()).as("plan view announces").isEqualTo(expected);
+            assertThat(resumed.activeGoalId()).as("continuation reports").isEqualTo(expected);
+            assertThat(afterResume.getActiveGoalId()).as("continuation stores").isEqualTo(expected);
+            assertThat(resumeFocus).as("both paths store the same focus").isEqualTo(handoffFocus)
+                    .containsExactly(target);
+            assertThat(resumed.focusGoalId()).as("continuation reports the stored focus").isEqualTo(target);
+
+            // The announced step leads on to the planned goal: each passed opening hands over to the
+            // next one, and the last to the goal itself.
+            List<String> remaining = switch (openings) {
+                case "bothOpen" -> List.of(MOTION_OPENING, FALL_OPENING);
+                case "childPassed" -> List.of(MOTION_OPENING);
+                default -> List.of(FALL_OPENING);
+            };
+            for (int step = 0; step < remaining.size(); step++) {
+                String opening = remaining.get(step);
+                assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(opening);
+                learners.setMastery(learnerId, new com.skillpilot.backend.api.MasteryUpdateRequest(Map.of(opening, 1.0), opening));
+                assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId())
+                        .as("after the opening " + opening)
+                        .isEqualTo(step + 1 < remaining.size() ? remaining.get(step + 1) : target);
+            }
+        } finally {
+            org.springframework.test.util.ReflectionTestUtils.setField(learners, "unitAssessmentPilotEnabled", pilotBefore);
+        }
+    }
+
+    // Issue #197, found by the independent review: activating an ordinary plan keeps a goal in
+    // progress exactly if the write accepts it under the focus that is stored for it, directly or
+    // behind a required unit opening. The response names the step that is stored, and the goal
+    // stays the focus and the goal to return to, also when another plan goal is due earlier.
+    @ParameterizedTest
+    @ValueSource(strings = {"childPassed", "bothPassed", "bothOpen"})
+    void activationKeepsAGoalInProgressBehindItsOpeningWhenAnotherGoalIsDueEarlier(String openings) throws Exception {
+        String motion = selectHessianMotionUnit("G9", "SekII", "GK");
+        String child = motion.replace(":structure:physics-e1-motion", ":structure:physics-e1-accelerated-and-free-fall");
+        String magnet = motion.replace(":structure:physics-e1-motion", ":structure:physics-current-magnetic-fields-0bd4a459");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String diagram = "1e459a1b-4159-5049-84eb-9928129c1610";
+        String magnetGoal = "b4175564-4397-5c08-90ba-4f13231a75ec";
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var learner = learnerRepository.findById(learnerId).orElseThrow();
+        var graph = new CompletionProfileCompiler().normalizePrerequisites(
+                learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+        var finished = new java.util.LinkedHashSet<>(graph.transitivePrerequisites(diagram));
+        finished.addAll(graph.transitivePrerequisites(magnetGoal));
+        finished.add("e0004439-ed34-5caf-858a-6107918224eb");
+        finished.removeAll(List.of(magnetGoal, diagram, MOTION_OPENING, FALL_OPENING));
+        if (!openings.equals("bothOpen")) finished.add(FALL_OPENING);
+        if (openings.equals("bothPassed")) finished.add(MOTION_OPENING);
+        masteryRepository.saveAllAndFlush(finished.stream().map(id -> new Mastery(learner, id, 1.0)).toList());
+        learners.setPreferences(learnerId, null, false, true, null, false);
+        learners.setPlannedGoals(learnerId, java.util.Set.of(child));
+        if (openings.equals("bothOpen")) {
+            // A goal in progress from before, for which today both openings are required.
+            var restored = learnerRepository.findById(learnerId).orElseThrow();
+            restored.setActiveGoalId(diagram);
+            learnerRepository.saveAndFlush(restored);
+        } else {
+            learners.setActiveGoal(learnerId, diagram);
+        }
+        assertThat(learnerRepository.findById(learnerId).orElseThrow().getActiveGoalId()).isEqualTo(diagram);
+        String expected = openings.equals("bothPassed") ? diagram : MOTION_OPENING;
+
+        var activated = learningPlans.activatePlans(learnerId, new LearnerLearningPlanApi.ActivateRequest(today, List.of(
+                new LearnerLearningPlanApi.ActivationPlan(physics, 0L, "Fortsetzen", List.of(
+                        new LearnerLearningPlanApi.Block("due", "learning", magnet, "Magnet", today, today,
+                                null, List.of(magnetGoal), List.of(magnet), true),
+                        new LearnerLearningPlanApi.Block("later", "learning", child, "Diagramm", today.plusDays(14),
+                                today.plusDays(14), null, List.of(diagram), List.of(child, magnet), true))))));
+
+        var stored = learnerRepository.findById(learnerId).orElseThrow();
+        assertThat(stored.getActiveGoalId()).as("the goal in progress is kept, behind its opening").isEqualTo(expected);
+        assertThat(activated.activeGoalId()).as("the response names the stored step").isEqualTo(expected);
+        assertThat(activated.focusGoalId()).isEqualTo(diagram);
+        assertThat(focus.findByLearner_SkillpilotId(learnerId).stream().map(PlannedGoal::getGoalId).toList())
+                .containsExactly(diagram);
+        if (!openings.equals("bothPassed")) {
+            assertThat(mapper.readTree(stored.getPendingUnitEntry()).path("targetGoalId").asText(null))
+                    .as("the goal to return to").isEqualTo(diagram);
+        }
+    }
+
     // A regrouping can move the goal a learner is working on out of the section they focus. The
     // learner keeps their place: the goal stays in progress for teaching and completion. What the
     // learner chose stays what they chose: the focus shown in the Cockpit, the stored focus, the
