@@ -1,0 +1,820 @@
+{
+  "schemaVersion": 1,
+  "contract": "actual-author-and-two-blind-markers-assessment-content-acceptance-v1",
+  "assessmentGoalId": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+  "shortKey": "seki_mean_resultant_force_from_momentum_interval",
+  "status": "accepted",
+  "eligibleForActivation": true,
+  "acceptedVersion": 3,
+  "maximumRubricVersions": 3,
+  "acceptedAt": "2026-11-25T17:50:12.392866+00:00",
+  "candidateGoal": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/candidate.goal.json",
+    "sha256": "0bf7765691458ad43bb2e8efbad97c6d0a0055a1ce0cb9a8ce73d4b6bf1aff3b"
+  },
+  "semanticSourceFingerprint": "sha256:efbbb6610762a1ab57db664932241fe9cb6645687f85c63bdba8543cc8fa6e8f",
+  "sourceArtifact": {
+    "path": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v1/seki_mean_resultant_force_from_momentum_interval.md",
+    "sha256": "b2834b29f06f977fc6990007590af7b9480347e63de2418f21a2ce9e60d22a39"
+  },
+  "taskRevision": "sha256:e47dd73a1b424ddea02a25424c5d7d25eda1a391bcef5f43786180e538b5132f",
+  "rubricRevision": "sha256:138d6978419ccfa96408d6bfe2a4db7be3a17f1c0a44ad5a37b96f06f2196852",
+  "coveredGoalIds": [
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+  ],
+  "directRequires": [
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+  ],
+  "semanticKind": "practiceAssessment",
+  "standalone": true,
+  "proposedParentGoalId": "71e8936b-fa8a-50dc-8c47-fca015b85ac5",
+  "maxPoints": 10,
+  "passingPoints": 8,
+  "passingRatio": 0.8,
+  "criterionUtf16Lengths": {
+    "momentumChange": 1042,
+    "meanForce": 1540,
+    "direction": 1388
+  },
+  "integerScorerMetadataVerified": true,
+  "author": {
+    "execution": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/author/execution.actual.json",
+      "sha256": "6e5f12f3672d25423bde576bf9fb6d395d601d5fbbcbf3c548a3482389ec579d"
+    },
+    "response": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/author/response.json",
+      "sha256": "efb33bf997d91bf066d945821cd7eeb02cf78475ec6a415303fce4d9d4ba6868"
+    },
+    "semanticKind": "practiceAssessment",
+    "semanticKindReason": "This node is a genuine standalone practice assessment: it supplies its own single numerical cart context, learner task, worked solution and point rubric for the one atomic covered goal. Its prerequisites support the calculation without being separately assessed. It is neither a curricular competency nor a capstone or goal cluster."
+  },
+  "independentMarkers": [
+    {
+      "role": "round-a",
+      "model": "gpt-6.1-sol",
+      "threadId": "01a213cc-3793-7c81-8e37-8f2784c35636",
+      "candidateDecision": "accept_current",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "accept_current",
+      "bilingualVerdict": "accept_current: The DE/EN goal, task, solution, scoring provisions and all 39 submission pairs are substantively equivalent.",
+      "execution": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-a/execution.actual.json",
+        "sha256": "85014c0a06bd4ae77c2e25c1df1fc69060861f0e1666e0753b12e87253e88d1e"
+      },
+      "response": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-a/response.json",
+        "sha256": "2d467af2b6cf7544a20e11baff10e4261b8fdc0a5d3dc37851c6ac463d0759e4"
+      },
+      "input": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-a/inputs/canonical-input.json",
+        "sha256": "c97e0b5c71e64326787476e7b7692d89284cf65352800ec24e578dd609eed532"
+      },
+      "plannedOffers": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-a/inputs/planned-offers.json",
+        "sha256": "4cfc8ff268d9634ee8ba6cfc5cb94d3e4c1419bca878a068c2900d65ad97c4f7"
+      }
+    },
+    {
+      "role": "round-b",
+      "model": "gpt-6.2-astra",
+      "threadId": "01a213cc-3793-72f0-90f8-50a6d7a2126b",
+      "candidateDecision": "accept_current",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "accept_current",
+      "bilingualVerdict": "The DE and EN tasks, ordinary goal, solutions, scoring rules and all 39 paired submissions are substantively equivalent. Decimal separators, unit notation and phrasing preserve the numerical evidence, force direction and strength of each assertion. Every paired response receives the same criterion scores and pass decision.",
+      "execution": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-b/execution.actual.json",
+        "sha256": "04928b33f272955fb7e157baef3f09ddc8730deb0e5d970fd10d24718b670a93"
+      },
+      "response": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-b/response.json",
+        "sha256": "ecd0e13c5710e07f9970093beb9cebfd776c2bd207474e80deb9fa3d4f669e9b"
+      },
+      "input": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-b/inputs/canonical-input.json",
+        "sha256": "23cae06ec8c273c15884d59962bdd01dce7b8f1b9221704a29541d187defc3da"
+      },
+      "plannedOffers": {
+        "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v3/round-b/inputs/planned-offers.json",
+        "sha256": "4cfc8ff268d9634ee8ba6cfc5cb94d3e4c1419bca878a068c2900d65ad97c4f7"
+      }
+    }
+  ],
+  "distinctBlindThreads": true,
+  "differentAnswerOrders": true,
+  "authorExpectedScoresHiddenFromMarkers": true,
+  "calibration": {
+    "caseCount": 39,
+    "gradedWorksAcrossBothMarkers": 78,
+    "allPassDecisionsAgree": true,
+    "allPointTotalsAgree": true,
+    "criticalFalsePassesAbsentInBoth": true,
+    "mandatoryFailWitnessIds": [
+      "B05",
+      "B06",
+      "B07",
+      "B08",
+      "B09",
+      "B10",
+      "B11",
+      "B12",
+      "B13",
+      "B14",
+      "B15",
+      "B19",
+      "B20",
+      "B22",
+      "B24",
+      "B25"
+    ],
+    "positiveAndMinorSlipWitnessIds": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B17",
+      "B18"
+    ],
+    "cases": [
+      {
+        "authorCaseId": "B01",
+        "submissionId": "S87a0482589",
+        "intent": "Fully correct",
+        "authorExpectedTotal": 10,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 10,
+          "passes": true
+        },
+        "roundB": {
+          "total": 10,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B02",
+        "submissionId": "S959bbcaada",
+        "intent": "Consistent reversed axis and slope method",
+        "authorExpectedTotal": 10,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 10,
+          "passes": true
+        },
+        "roundB": {
+          "total": 10,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B03",
+        "submissionId": "S728bd4143f",
+        "intent": "One isolated arithmetic slip with sound core",
+        "authorExpectedTotal": 9.5,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 9.5,
+          "passes": true
+        },
+        "roundB": {
+          "total": 9.5,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B04",
+        "submissionId": "S93428d7a16",
+        "intent": "One missing minor subordinate facet: force unit",
+        "authorExpectedTotal": 9.5,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 9.5,
+          "passes": true
+        },
+        "roundB": {
+          "total": 9.5,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B05",
+        "submissionId": "Sfa0c61ed28",
+        "intent": "Complete numerical work, physical interpretation omitted",
+        "authorExpectedTotal": 7.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B06",
+        "submissionId": "Sb8cddf552b",
+        "intent": "Complete numerical work, physical interpretation and force unit omitted",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B07",
+        "submissionId": "S4cdf33a765",
+        "intent": "Qualitative only",
+        "authorExpectedTotal": 3,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 3,
+          "passes": false
+        },
+        "roundB": {
+          "total": 3,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B08",
+        "submissionId": "S52eb4202c9",
+        "intent": "Formula only",
+        "authorExpectedTotal": 1,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 1,
+          "passes": false
+        },
+        "roundB": {
+          "total": 1,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B09",
+        "submissionId": "S87221b4676",
+        "intent": "Omission of signed momentum-change carrier",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B10",
+        "submissionId": "S3f3e73164e",
+        "intent": "Omission of interval-average calculation carrier",
+        "authorExpectedTotal": 6,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 6,
+          "passes": false
+        },
+        "roundB": {
+          "total": 6,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B11",
+        "submissionId": "Saf3ad3d27e",
+        "intent": "Omission of signed-force/direction carrier",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B12",
+        "submissionId": "Sd37c8a6d3b",
+        "intent": "Maintained sign/change misconception",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B13",
+        "submissionId": "S6f6032df61",
+        "intent": "Critical misconception: inferring constant force",
+        "authorExpectedTotal": 7.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B14",
+        "submissionId": "S75b27a41eb",
+        "intent": "Critical misconception: inferring instantaneous force",
+        "authorExpectedTotal": 7.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B15",
+        "submissionId": "S07e04f9104",
+        "intent": "General change setup with no numerical momentum application",
+        "authorExpectedTotal": 7.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B16",
+        "submissionId": "S783518cd58",
+        "intent": "Genuine near-cutoff fail with maintained product relation",
+        "authorExpectedTotal": 7.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B17",
+        "submissionId": "S27773405ea",
+        "intent": "Equivalent force unit and directed quantity",
+        "authorExpectedTotal": 10,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 10,
+          "passes": true
+        },
+        "roundB": {
+          "total": 10,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B18",
+        "submissionId": "S61bcccafdc",
+        "intent": "Exact numerical expression without separate intermediate lines",
+        "authorExpectedTotal": 10,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 10,
+          "passes": true
+        },
+        "roundB": {
+          "total": 10,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B19",
+        "submissionId": "S0dfda2c775",
+        "intent": "Maintained wrong physical interpretation despite complete numerical work",
+        "authorExpectedTotal": 7.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B20",
+        "submissionId": "S8d3cfe9654",
+        "intent": "Correct direction and partial numerical work without numerical change or force unit",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B21",
+        "submissionId": "S9c9690fc99",
+        "intent": "Correct direction and applied duration without numerical change or force result",
+        "authorExpectedTotal": 6.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 6.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 6.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B22",
+        "submissionId": "Sa195734496",
+        "intent": "Maintained new force-sign misconception after correct signed change",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B23",
+        "submissionId": "S87df1d75cb",
+        "intent": "One isolated force-sign slip with unmistakably sound quotient and interpretation",
+        "authorExpectedTotal": 9.5,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 9.5,
+          "passes": true
+        },
+        "roundB": {
+          "total": 9.5,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B24",
+        "submissionId": "Sf3251c8b84",
+        "intent": "Maintained reversed chronological change with consistent follow-through",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B25",
+        "submissionId": "S935c3830d7",
+        "intent": "Maintained use of endpoint time instead of elapsed duration",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B26",
+        "submissionId": "S29d0005ad4",
+        "intent": "Correct momentum change and final force, but no numerical elapsed-time application",
+        "authorExpectedTotal": 7.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B27",
+        "submissionId": "Sa75d42c927",
+        "intent": "Elapsed interval established and used across separate lines",
+        "authorExpectedTotal": 10,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 10,
+          "passes": true
+        },
+        "roundB": {
+          "total": 10,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B28",
+        "submissionId": "Sb908b5ce94",
+        "intent": "Compact minimum-completeness pass with exact expression but no force unit",
+        "authorExpectedTotal": 9.5,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 9.5,
+          "passes": true
+        },
+        "roundB": {
+          "total": 9.5,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B29",
+        "submissionId": "Se738e9dc46",
+        "intent": "Both unsupported inferences receive one interval-meaning deduction",
+        "authorExpectedTotal": 7.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B30",
+        "submissionId": "S567ee72562",
+        "intent": "Isolated elapsed-time arithmetic slip with correct interval setup",
+        "authorExpectedTotal": 9.5,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 9.5,
+          "passes": true
+        },
+        "roundB": {
+          "total": 9.5,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B31",
+        "submissionId": "S42b020adcd",
+        "intent": "Two independent isolated arithmetic slips are charged separately",
+        "authorExpectedTotal": 9,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 9,
+          "passes": true
+        },
+        "roundB": {
+          "total": 9,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B32",
+        "submissionId": "S982c22ccb9",
+        "intent": "Unsupported wrong momentum value is not established as an isolated slip by follow-through",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B33",
+        "submissionId": "Sbcada0c5d9",
+        "intent": "Correct numerical evidence appearing after the force calculation counts",
+        "authorExpectedTotal": 10,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 10,
+          "passes": true
+        },
+        "roundB": {
+          "total": 10,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B34",
+        "submissionId": "Sdff1a44e93",
+        "intent": "Correct general formula does not cancel a maintained wrong numerical rule",
+        "authorExpectedTotal": 7,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B35",
+        "submissionId": "S5397802e86",
+        "intent": "One erroneous force-unit label with sound calculation and interpretation",
+        "authorExpectedTotal": 9.5,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 9.5,
+          "passes": true
+        },
+        "roundB": {
+          "total": 9.5,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B36",
+        "submissionId": "Sc188a8afe1",
+        "intent": "Isolated quotient-sign arithmetic slip with consistent downstream interpretation",
+        "authorExpectedTotal": 9.5,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 9.5,
+          "passes": true
+        },
+        "roundB": {
+          "total": 9.5,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B37",
+        "submissionId": "Sd33e2ceeb0",
+        "intent": "Correct duration written elsewhere does not rescue maintained use of endpoint time",
+        "authorExpectedTotal": 7.5,
+        "authorExpectedPass": false,
+        "roundA": {
+          "total": 7.5,
+          "passes": false
+        },
+        "roundB": {
+          "total": 7.5,
+          "passes": false
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B38",
+        "submissionId": "Sef7d227639",
+        "intent": "Equivalent numerical impulse-balance method without an explicit change line",
+        "authorExpectedTotal": 10,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 10,
+          "passes": true
+        },
+        "roundB": {
+          "total": 10,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      },
+      {
+        "authorCaseId": "B39",
+        "submissionId": "Sedf0540dce",
+        "intent": "Numerically fixed symbolic force expression using values already established",
+        "authorExpectedTotal": 9.5,
+        "authorExpectedPass": true,
+        "roundA": {
+          "total": 9.5,
+          "passes": true
+        },
+        "roundB": {
+          "total": 9.5,
+          "passes": true
+        },
+        "exactScoreAgreement": true
+      }
+    ]
+  },
+  "performanceProtection": "Maximum 10, pass 8 (80%): slack 2. Integer criterion weights are 3+4+3. Signed numerical momentum application: 3; general order alone retains 0.5, so missing numerical application loses 2.5 and caps the total at 7.5. A maintained wrong change rule earns 0 and caps it at 7, even with full follow-through. Interval-average calculation: 4; without application of the actual elapsed time, A≤0.5 and B+C≤1, so the total is at most 7.5. A wrong endpoint-time rule without a separately correct duration yields at most 1/4 and total 7. Physical sign interpretation: 2.5 within direction's 3; omission or a maintained wrong interpretation caps the total at 7.5. A new systematic force-sign/direction reversal earns 0/3 and caps it at 7. An explicit unsupported inference of constancy or a particular instantaneous force loses 2.5 once within meanForce, capping otherwise complete work at 7.5. Each missing whole core loses more than slack; signs, units and labels are not themselves substituted for conceptual rules. Pass depends only on total≥8, with no veto or criterion minimum. For clean omission-only minimum-completeness probes, 9.5 is the nearest pass and 7.5 the nearest fail; no deficient core is awarded compensatory points to manufacture 8. Distinct isolated formal slips can produce other totals, including 8, if all underlying cores are actually evidenced.",
+  "offeringScope": {
+    "jurisdictions": [
+      "DE-BW"
+    ],
+    "viewIds": [
+      "de-bw-gym-physics-gk",
+      "de-bw-gym-physics-lk",
+      "de-bw-gym-seki-physics"
+    ],
+    "plannedScopePacket": {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/inputs/planned-offer-context.actual.json",
+      "sha256": "4e7d47e4e56fdcbc388b467812ab6410dc85e5981bc6d657ec1575e44c5f5157"
+    },
+    "fullTaskDemandCount": 25,
+    "allPlannedScopesMissingDemand": 0,
+    "allPlannedScopesUnexposedDemand": 0,
+    "ownTaskOfferOnly": true,
+    "officialTaskClaim": false,
+    "hessenExcluded": true,
+    "finalNativeOfferProofIsDownstream": true
+  },
+  "arrowCriterion": {
+    "decisionDate": "2026-11-25T18:25:00+01:00",
+    "taskFormat": "signed one-dimensional numeric task",
+    "bodyArrowsShown": false,
+    "bodyArrowsRequired": false,
+    "bodyAnchor": "not_applicable",
+    "quantityAndIndependentArrowScale": "not_applicable",
+    "arrowEndpoints": "not_applicable",
+    "systemSumArrow": "not_applicable",
+    "optionalCoordinateConventionArrowOnly": false,
+    "basis": "Exact released task and reference solution contain numerical signed values and no position-space body/vector diagram. An optional word/axis-direction arrow used only to choose the positive coordinate convention is not a body, force or momentum arrow.",
+    "additionalScientificRoundRequired": false
+  },
+  "rejectedPredecessors": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v1/disposition.actual.json",
+      "sha256": "fa383072442927a02df9b0f914a715bdf14efc9a30d5cacfda184a2278b17f65"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/v2/disposition.actual.json",
+      "sha256": "304f8451fc786052e075489ab51bc57bdac49ec72b981f6f6f5b6d38a2c48786"
+    }
+  ],
+  "activeCatalogInsertionSeparate": true,
+  "externalPublicationClaimed": false,
+  "humanApproval": false,
+  "learnerMasteryWritten": false,
+  "rawLogsOutsideRepository": true
+}

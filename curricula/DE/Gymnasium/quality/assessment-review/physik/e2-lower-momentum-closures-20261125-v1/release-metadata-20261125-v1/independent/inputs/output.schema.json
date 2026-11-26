@@ -1,0 +1,95 @@
+{
+  "type": "object",
+  "properties": {
+    "reviewScope": {
+      "type": "string"
+    },
+    "overallDecision": {
+      "type": "string"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "assessmentGoalId": {
+            "type": "string"
+          },
+          "decision": {
+            "type": "string"
+          },
+          "approvedCoveredStrands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rationale": {
+            "type": "string"
+          },
+          "actualTaskAndRubricEvidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "taxonomyEvidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "otherStrandsExcludedReason": {
+            "type": "string"
+          },
+          "noAdditionalGoalCoverage": {
+            "type": "boolean"
+          },
+          "allOtherPayloadFieldsIdentical": {
+            "type": "boolean"
+          },
+          "taskSolutionScoringUnchanged": {
+            "type": "boolean"
+          },
+          "rubricVersionUnchanged": {
+            "type": "boolean"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "assessmentGoalId",
+          "decision",
+          "approvedCoveredStrands",
+          "rationale",
+          "actualTaskAndRubricEvidence",
+          "taxonomyEvidence",
+          "otherStrandsExcludedReason",
+          "noAdditionalGoalCoverage",
+          "allOtherPayloadFieldsIdentical",
+          "taskSolutionScoringUnchanged",
+          "rubricVersionUnchanged",
+          "limitations"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "reviewScope",
+    "overallDecision",
+    "items",
+    "limitations"
+  ],
+  "additionalProperties": false
+}

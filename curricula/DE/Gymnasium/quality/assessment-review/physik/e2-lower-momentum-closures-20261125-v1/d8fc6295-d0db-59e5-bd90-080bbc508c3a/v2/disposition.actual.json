@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "assessmentGoalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+  "version": 2,
+  "candidateSha256": "sha256:5d9cd3e5c8263fd51260b1f74d2c95a58f2a0e961ef02d6634a4b4d4cb2d4c6a",
+  "status": "rejected",
+  "eligibleForActivation": false,
+  "basis": "Both actual independent blind marker decisions, not a changed hidden pass rule. Bad point-allocation false passes remain reported as passes under the actual reviewed rubric.",
+  "models": [
+    "gpt-6.1-sol",
+    "gpt-6.2-astra"
+  ],
+  "distinctBlindThreads": true,
+  "differentAnswerOrders": true,
+  "caseCount": 22,
+  "decisions": [
+    {
+      "round": "round-a",
+      "candidateDecision": "needs_change",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "needs_change",
+      "requiredCorrections": [
+        "Revise the published numeric weighting so omitting the required snapshot-II zero-total/cancellation calculation loses strictly more than the permitted slack, currently 10−8=2 points. Its present 1.5-point allocation permits 8.5/10 without that performance, or 8/10 with missing units. Snapshot I's total is similarly underprotected. Preserve protection against maintained unsigned-scalar reasoning, fair equivalent methods, the isolated-slip allowance, 8–12 total points and a passing threshold no greater than 85%. Update DE/EN scoring consistently; do not introduce an additional pass veto."
+      ],
+      "authorComparisonDifferences": []
+    },
+    {
+      "round": "round-b",
+      "candidateDecision": "needs_change",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "needs_change",
+      "requiredCorrections": [
+        "Reweight the two requested total-momentum calculations so that omitting either one costs strictly more than the difference between the maximum and the pass mark. At the current 8/10 cutoff, that means a loss greater than 2 points. Snapshot II must reward evidence that the moving carts’ momenta combine to zero. Writing the two individual momenta alone does not demonstrate that step.",
+        "Keep axis and unit reporting proportionate. An omitted label on an otherwise unambiguous axis should cost at most 0.5, while systematic unsigned reasoning must still lose more than the available slack. Update the bilingual scoring steps and shared notes together. Preserve equivalent methods, follow-through, the isolated-slip cap and a pass decision based on the total alone."
+      ],
+      "authorComparisonDifferences": []
+    }
+  ],
+  "humanApproval": false
+}

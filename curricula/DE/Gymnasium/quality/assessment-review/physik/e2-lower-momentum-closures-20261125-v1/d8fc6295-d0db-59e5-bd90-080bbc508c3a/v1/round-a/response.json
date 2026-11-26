@@ -1,0 +1,590 @@
+{
+  "candidateDecision": "needs_change",
+  "requiredCorrections": [
+    "Revise the published carrier weights so maintained magnitude-only momentum reasoning cannot pass. Currently Sd35e614654 loses only 1 point and passes at 9/10. Protect signed-momentum performance by more than the pass slack; preserve correct follow-through and do not add a veto.",
+    "Protect meaningful completion of the required snapshot totals, including the zero-total case, through published point allocation. S7cb2eea939 omits the second total and all units yet passes at 8/10. Update both languages consistently while retaining 8–12 total points, a threshold no higher than 85%, and room for one isolated 0.5-point slip."
+  ],
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "Confirmed as a standalone ordinary assessment: a finite scored exercise tests one ordinary competency. It is neither a curricular goal, a capstone integrating multiple goals, nor a cluster containing other assessments.",
+  "coveredGoalIds": [
+    "53afbda1-5776-502b-8867-471975d7b766"
+  ],
+  "coverageVerdict": "accept_current",
+  "coverageReason": "The sole covered ordinary goal is also the candidate's sole direct requires edge. Choosing an axis, determining signed individual momenta from simultaneous given data, and adding them match that goal. No additional covered goal or prerequisite is invented. The scoring weaknesses are addressed separately under rubric policy.",
+  "offerVerdict": "accept_current",
+  "offerReason": "Within the supplied planned exposure, all six offers are confined to HH and TH. Their complete learning bases contain 197, 204, 204, 208, 208 and 208 goals respectively. Every row contains all 22 goals in the exact supplied prerequisite closure, with matching goal-object references and internally consistent lower-authority paths and hashes. Independently inspecting the task demands reveals only the covered momentum performance and existing elementary arithmetic. No collision or conservation requirement, new Physics or Math target, official examination duty or task-source claim, or HE exposure is introduced.",
+  "rubricPolicyVerdict": "needs_change",
+  "rubricPolicyReason": "The published maximum and step sum are both 10; the threshold is 8/10, or 80%, leaving slack of 2. The four bilingual scoring steps contain 461, 1078, 893 and 1298 UTF-16 units, all below 2000. The isolated-slip allowance, follow-through and score-only pass rule are explicit. However, aggregate 3-point criteria conceal insufficiently protected performances: all sign components together carry only 2 points, and the maintained magnitude-only error actually loses just 1. Each snapshot total carries only 1.5 points, permitting omission of the zero-total calculation at the cutoff. These defects require prospective published weighting changes, not retrospective score repairs or extra gates.",
+  "graded": [
+    {
+      "submissionId": "S4b336c1737",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicitly chooses left as positive."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Both individual momenta are correct under the reversed axis."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Both individual momenta are correct; N·s is equivalent."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 3,
+          "reason": "Both signed additions and totals are correct."
+        }
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Complete correct performance using an equivalent axis and unit.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Scf07a32f0b",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicitly chooses right as positive."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Both signed individual results are correct."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Both signed individual results are correct."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 0,
+          "reason": "Maintained subtraction of an already negative momentum earns no addition credit; both totals are wrong."
+        }
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Maintained conceptual error in combining signed momenta, not an isolated sign slip.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sd35e614654",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicitly chooses right as positive."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 2.5,
+          "reason": "Correct products and magnitudes; B loses its 0.5-point sign component."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 2.5,
+          "reason": "Correct products and magnitudes; B again loses its sign component."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 3,
+          "reason": "Correctly adds and evaluates the learner's own individual values; full follow-through applies."
+        }
+      ],
+      "total": 9,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Explicit maintained magnitude-only momentum misconception nevertheless passes under the published weights.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Scff5cd66ba",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Both products, magnitudes and signs are correct."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Both products, magnitudes and signs are correct."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 3,
+          "reason": "Both additions and totals are correct."
+        }
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Complete correct performance.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S7cb2eea939",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 2.5,
+          "reason": "Correct individual calculations; prescribed shared missing-unit deduction of 0.5 is applied here."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Both individual calculations are correct; no repeated unit deduction."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 1.5,
+          "reason": "Snapshot I is complete; no second-snapshot sum or total is written."
+        }
+      ],
+      "total": 8,
+      "passes": true,
+      "minorSlips": [
+        {
+          "description": "Shared momentum units are omitted; the prescribed single deduction is applied in M1.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ],
+      "diagnosis": "Passes exactly at the cutoff despite omitting the required second total and all units.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sa151c9327e",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Correct magnitudes with unambiguous directions."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Correct magnitudes with unambiguous directions."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 3,
+          "reason": "Subtracting opposing positive magnitudes is explicitly equivalent; both totals are correct."
+        }
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Complete correct equivalent method.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S89bedfce19",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Correct signed final individual values establish all components."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Correct signed final individual values establish all components."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 2.5,
+          "reason": "Both calculations are correct; the isolated wrong unit on the first total costs 0.5."
+        }
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {
+          "description": "Snapshot I total is labelled kg·m/s² amid otherwise correct momentum units.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ],
+      "diagnosis": "Sound momentum performance with one isolated unit slip.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S25ffb31208",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 1,
+          "reason": "Two correct sign components; no numerical magnitudes or data-applied multiplication."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 1,
+          "reason": "Two correct sign components; equal magnitudes does not supply their numerical values."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 0.5,
+          "reason": "Correct zero total alone earns 0.5; no numerical sums or first total value are supplied."
+        }
+      ],
+      "total": 3.5,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Correct qualitative relationships provide partial evidence but do not determine the requested numerical momenta.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S151d7fe73b",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 2.5,
+          "reason": "Correct setup with one isolated arithmetic error in A's momentum."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Both individual calculations are correct."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 3,
+          "reason": "Both sums correctly use the learner's values; no follow-on deduction."
+        }
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {
+          "description": "Evaluates 0.50 × 4 as 2.5 in snapshot I.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ],
+      "diagnosis": "One isolated arithmetic slip with correct subsequent addition.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S625b49aea1",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 0,
+          "reason": "No positive direction is declared."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 0,
+          "reason": "Generic formula without data application earns no calculation credit."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 0,
+          "reason": "Generic formula without data application earns no calculation credit."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 0,
+          "reason": "No numerical addition or total is supplied."
+        }
+      ],
+      "total": 0,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Formula knowledge alone does not demonstrate the requested performance.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Seed9d59913",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 0,
+          "reason": "No individual values or products; they cannot be reconstructed from the total."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 0,
+          "reason": "No individual values or products."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 1,
+          "reason": "Each correct bare total earns 0.5."
+        }
+      ],
+      "total": 2,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Correct totals alone leave the individual-momentum and addition performances undemonstrated.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S2441cac7c6",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 0,
+          "reason": "No explicit direction declaration."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Both signed calculations are correct; no additional axis penalty."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Both signed calculations are correct."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 1.5,
+          "reason": "Snapshot I is complete; snapshot II total is absent."
+        }
+      ],
+      "total": 7.5,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Falls below the cutoff through the missing direction declaration and second total.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S15cd7172f9",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Both individual calculations are correct."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 0,
+          "reason": "The conceptual assertion replaces both given-data momenta with incorrect zeros; no component is demonstrated correctly."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 3,
+          "reason": "Snapshot I is correct; snapshot II correctly adds the learner's own zeros, receiving follow-through."
+        }
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The false claim that zero total momentum requires rest changes the requested individual momenta. It is a conceptual error, not an isolated slip or a separately penalized optional explanation.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S84f867953f",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 2.5,
+          "reason": "One isolated sign error for B; product setup and magnitude are correct."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Both individual calculations are correct."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 3,
+          "reason": "Correct addition of the learner's values; no follow-on loss."
+        }
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {
+          "description": "Writes B's first momentum as +1 after the correct product 1 × (−1).",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ],
+      "diagnosis": "An isolated sign slip is supported by correct setup and correct treatment of B in snapshot II.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Se3089856af",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Both individual calculations are correct."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Both individual calculations are correct."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 0,
+          "reason": "Neither sum nor total is written; individual values alone do not establish addition."
+        }
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Entire total-momentum performance is absent.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S2145a9232f",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Both individual calculations are correct."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 0,
+          "reason": "No second-snapshot individual values or products."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 2,
+          "reason": "Complete first sum earns 1.5; correct bare second total earns 0.5."
+        }
+      ],
+      "total": 6,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The second snapshot supplies only its total, leaving individual-momentum evidence absent.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S954fb5669f",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 1,
+          "reason": "Explicit positive direction."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 0,
+          "reason": "No first-snapshot individual values or products."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Both individual calculations are correct."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 2,
+          "reason": "Correct bare first total earns 0.5; complete second sum earns 1.5."
+        }
+      ],
+      "total": 6,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The first snapshot supplies only its total, leaving individual-momentum evidence absent.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S7701153822",
+      "scores": [
+        {
+          "criterionId": "D",
+          "pointsAwarded": 0,
+          "reason": "No explicit positive-direction declaration."
+        },
+        {
+          "criterionId": "M1",
+          "pointsAwarded": 3,
+          "reason": "Correct signed final values establish all individual components without written products."
+        },
+        {
+          "criterionId": "M2",
+          "pointsAwarded": 3,
+          "reason": "Correct signed final values establish all individual components."
+        },
+        {
+          "criterionId": "T",
+          "pointsAwarded": 3,
+          "reason": "Both numerical additions and totals are correct."
+        }
+      ],
+      "total": 9,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Correct numerical performance with consistent signs; only the explicit direction declaration is missing.",
+      "translationsEquivalent": true
+    }
+  ],
+  "minimalCompletenessFindings": "Formula-only work scores 0, qualitative-only work 3.5, bare totals 2, and individual momenta without either total 7: all fail. Missing one snapshot's individual momenta scores 6 in either order. However, omitting the second total and all units still scores exactly 8, while omitting that total and the explicit axis declaration scores 7.5. Isolated arithmetic, sign and unit slips each retain 9.5 without follow-on deductions. Optional interpretation may be omitted without loss. The supplied false zero-total-implies-rest assertion changes requested values and therefore loses M2; the published notes forbid independent deductions for extra assertions that leave those values unchanged.",
+  "bilingualVerdict": "accept_current: the DE/EN tasks, solutions, scoring provisions and all 18 submission pairs are substantively equivalent.",
+  "limitations": [
+    "Authority hashes and learning-basis contents were checked for internal consistency within the two supplied inputs; external source and view files were not accessed or independently authenticated.",
+    "The offer verdict concerns planned exposure only and does not establish active release."
+  ]
+}

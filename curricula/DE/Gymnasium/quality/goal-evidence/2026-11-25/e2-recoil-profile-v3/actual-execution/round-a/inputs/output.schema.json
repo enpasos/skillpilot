@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "goalId": {
+      "type": "string",
+      "const": "839ecc8f-3a60-418b-bc92-64bfeef33824"
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "keep",
+        "revise",
+        "block"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requiredChanges": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "goalId",
+    "decision",
+    "reason",
+    "requiredChanges",
+    "limitations"
+  ]
+}

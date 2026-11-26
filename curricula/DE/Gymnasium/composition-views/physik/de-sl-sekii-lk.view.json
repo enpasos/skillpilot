@@ -866,6 +866,21 @@
                 },
                 {
                   "kind": "structure",
+                  "id": "physics-sl-e-momentum-preparation",
+                  "label": "Einstieg und mechanische Grundlagen",
+                  "children": [
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "53afbda1-5776-502b-8867-471975d7b766"
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-sl-e-topic-c929bd3f033c",
                   "label": "Kernenergie und Radioaktivität",
                   "children": [
@@ -898,10 +913,6 @@
                       "goalId": "2ac2e902-a6ad-53c9-b139-d1c63d823023",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
                     },
                     {
                       "kind": "goalEntry",
@@ -2236,6 +2247,12 @@
                   "children": [
                     {
                       "kind": "goalEntry",
+                      "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
                       "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
@@ -2243,6 +2260,12 @@
                     {
                       "kind": "goalEntry",
                       "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+                      "projectionRole": "prerequisiteOnly",
+                      "acquisitionPlacement": true
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
                       "projectionRole": "prerequisiteOnly",
                       "acquisitionPlacement": true
                     },
@@ -2750,8 +2773,12 @@
               "childOrder": {
                 "after": [
                   {
-                    "unit": "physics-sl-e-topic-c929bd3f033c",
+                    "unit": "physics-sl-e-momentum-preparation",
                     "after": "physics-required-preparation-physics-sl-unit-e"
+                  },
+                  {
+                    "unit": "physics-sl-e-topic-c929bd3f033c",
+                    "after": "physics-sl-e-momentum-preparation"
                   },
                   {
                     "unit": "physics-sl-e-supplements",
@@ -4347,12 +4374,22 @@
         },
         {
           "kind": "goalEntry",
+          "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
           "goalId": "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd",
           "projectionRole": "prerequisiteOnly"
         },
         {
           "kind": "goalEntry",
           "goalId": "34604a97-0c64-5b06-81e2-6ac818732d60",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
           "projectionRole": "prerequisiteOnly"
         },
         {

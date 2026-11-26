@@ -2742,20 +2742,51 @@
                   "label": "E.2 Newton'sche Axiome und Erhaltungssätze",
                   "children": [
                     {
-                      "kind": "goalEntry",
-                      "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+                      "kind": "structure",
+                      "id": "physics-required-preparation-physics-e2-newton-and-conservation",
+                      "label": "Notwendige Grundlagen",
+                      "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+                          "projectionRole": "prerequisiteOnly",
+                          "acquisitionPlacement": true
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8"
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824"
+                        }
+                      ]
                     },
                     {
-                      "kind": "goalEntry",
-                      "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8"
+                      "kind": "structure",
+                      "id": "physics-acquisition-32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+                      "label": "Grundlagen: Newtons 1. Axiom anwenden",
+                      "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+                        }
+                      ]
                     },
                     {
-                      "kind": "goalEntry",
-                      "goalId": "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
-                    },
-                    {
-                      "kind": "goalEntry",
-                      "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3"
+                      "kind": "structure",
+                      "id": "physics-acquisition-00245a43-eb89-47d2-92d7-21799dbec9f3",
+                      "label": "Grundlagen: Inertialsysteme und Bezugssysteme",
+                      "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "00245a43-eb89-47d2-92d7-21799dbec9f3"
+                        }
+                      ]
                     },
                     {
                       "kind": "structure",
@@ -2794,41 +2825,95 @@
                       }
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824"
+                      "kind": "structure",
+                      "id": "physics-acquisition-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+                      "label": "Grundlagen: Impulserhaltung aus Newtonschen Axiomen (LK)",
+                      "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+                          "projectionRole": "prerequisiteOnly",
+                          "acquisitionPlacement": true
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+                          "projectionRole": "prerequisiteOnly",
+                          "acquisitionPlacement": true
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+                        }
+                      ]
                     },
                     {
                       "kind": "structure",
-                      "id": "physics-required-preparation-physics-e2-newton-and-conservation",
-                      "label": "Notwendige Grundlagen",
+                      "id": "physics-acquisition-1232febe-868a-4dac-b4c2-e35789434601",
+                      "label": "Grundlagen: Unfallphysik: Kraftstoß und Knautschzone",
                       "children": [
                         {
                           "kind": "goalEntry",
                           "goalId": "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
                           "projectionRole": "prerequisiteOnly",
                           "acquisitionPlacement": true
+                        },
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "1232febe-868a-4dac-b4c2-e35789434601"
                         }
                       ]
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+                      "kind": "structure",
+                      "id": "physics-acquisition-d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+                      "label": "Grundlagen: Elastische Stöße",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+                        }
+                      ]
                     },
                     {
-                      "kind": "canonicalSubtree",
-                      "goalId": "1232febe-868a-4dac-b4c2-e35789434601"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+                      "kind": "structure",
+                      "id": "physics-acquisition-d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+                      "label": "Grundlagen: Elastische Stöße im Schwerpunktsystem analysieren",
+                      "children": [
+                        {
+                          "kind": "canonicalSubtree",
+                          "goalId": "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+                        }
+                      ]
                     }
                   ],
                   "childOrder": {
-                    "after": []
+                    "after": [
+                      {
+                        "unit": "physics-open-feb70838-931c-4b45-b9a9-930605d93efa",
+                        "after": "physics-acquisition-00245a43-eb89-47d2-92d7-21799dbec9f3"
+                      },
+                      {
+                        "unit": "physics-acquisition-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+                        "after": "physics-required-preparation-physics-e2-newton-and-conservation"
+                      },
+                      {
+                        "unit": "physics-acquisition-1232febe-868a-4dac-b4c2-e35789434601",
+                        "after": "physics-required-preparation-physics-e2-newton-and-conservation"
+                      },
+                      {
+                        "unit": "physics-acquisition-d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+                        "after": "physics-required-preparation-physics-e2-newton-and-conservation"
+                      },
+                      {
+                        "unit": "physics-acquisition-d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+                        "after": "physics-open-feb70838-931c-4b45-b9a9-930605d93efa"
+                      },
+                      {
+                        "unit": "physics-acquisition-d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+                        "after": "physics-acquisition-d168ae5d-f36f-4ad4-b070-d5931f8d70d1"
+                      }
+                    ]
                   }
                 },
                 {
@@ -7408,12 +7493,27 @@
         },
         {
           "kind": "goalEntry",
+          "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
           "goalId": "7eeff2de-6015-49a6-a96e-a488d886dc9f",
           "projectionRole": "prerequisiteOnly"
         },
         {
           "kind": "goalEntry",
           "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+          "projectionRole": "prerequisiteOnly"
+        },
+        {
+          "kind": "goalEntry",
+          "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
           "projectionRole": "prerequisiteOnly"
         },
         {

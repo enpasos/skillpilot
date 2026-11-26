@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "records": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "recordId": {
+            "type": "string",
+            "enum": [
+              "03-SL-53afbda1",
+              "04-SN-53afbda1"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "accept_current_bounded_metadata",
+              "needs_change",
+              "unresolved"
+            ]
+          },
+          "verifiedCurrentHashes": {
+            "type": "boolean"
+          },
+          "sourceBoundaryMatch": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "remainingFindings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "recordId",
+          "decision",
+          "verifiedCurrentHashes",
+          "sourceBoundaryMatch",
+          "reason",
+          "remainingFindings"
+        ]
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "records",
+    "limitations"
+  ]
+}

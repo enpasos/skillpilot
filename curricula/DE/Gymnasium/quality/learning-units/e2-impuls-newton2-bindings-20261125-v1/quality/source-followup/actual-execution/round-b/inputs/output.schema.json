@@ -1,0 +1,153 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "records": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "recordId": {
+            "type": "string",
+            "enum": [
+              "00-BY-53afbda1",
+              "01-MV-53afbda1",
+              "02-ST-53afbda1",
+              "03-SL-53afbda1",
+              "04-SN-53afbda1",
+              "05-BW-a94cfe1c",
+              "06-SL-a94cfe1c",
+              "07-SN-a94cfe1c",
+              "08-RP-a94cfe1c",
+              "09-SL-839ecc8f",
+              "10-ALL-f524f05c"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "accept_record_with_stated_limits",
+              "needs_change",
+              "unresolved"
+            ]
+          },
+          "recordIsTruthful": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "sourceAssignmentSupported": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "learningPlaceMatchesRecorded": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "inspectedOfficialAreas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "remainingFindings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "recordId",
+          "decision",
+          "recordIsTruthful",
+          "sourceAssignmentSupported",
+          "learningPlaceMatchesRecorded",
+          "reason",
+          "inspectedOfficialAreas",
+          "remainingFindings"
+        ]
+      }
+    },
+    "headingDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "decision": {
+          "type": "string",
+          "enum": [
+            "accept_record_with_stated_limits",
+            "needs_change",
+            "unresolved"
+          ]
+        },
+        "roleAndLearningSetsPreserved": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "oldCompetencyPlacesPreserved": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "orientationReparentingBounded": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "checkedViewIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "remainingFindings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "decision",
+        "roleAndLearningSetsPreserved",
+        "oldCompetencyPlacesPreserved",
+        "orientationReparentingBounded",
+        "checkedViewIds",
+        "reason",
+        "remainingFindings"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "records",
+    "headingDelta",
+    "limitations"
+  ]
+}

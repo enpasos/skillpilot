@@ -1,0 +1,160 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-e2-corrected-four-current-synthesis-20261125-v2",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI GPT informed integrator after two actual fresh isolated native followup sessions; original and corrected responses retained verbatim",
+  "synthesizedAt": "2026-11-25T14:51:43.036Z",
+  "batch": {
+    "batchId": "physics-e2-corrected-four-description-20261125-v2",
+    "batchManifestDigest": "sha256:22bfea5efe7e7d86ef6ed7a3b1af3c02bdfca556a13664c4d8a5198a11944195",
+    "configDigest": "sha256:6778c12ac33a78d856adb58cf23347a20136fc5dc50b26e5de1f024dff5efb8b",
+    "bundleFingerprint": "sha256:125c2474a08c8e59489a7e4a48532229c74f5c7c9e584b7a3c0177e4683c3db7",
+    "bookDigest": "sha256:fee031bfa5d5b5d4743f38384cd00dac6e6dcf0f3bb9d086d2547700e53cd496",
+    "reviewInputFingerprint": "sha256:7824d8a563d2b0837e156855c50eb80a5a976e60031233bc6e5164168d238fc8",
+    "dualSummaryDigest": "sha256:eb3c4213f1b7c65ac09250c7ccf91aaf0f8615441010764c76c5f47a6a82ff23",
+    "canonicalLandscapeDigest": "sha256:53a1c07636996ad3196c24cb475ff3c0cf902e31ccc8e426d1ab9036e5e1ae19"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-corrected-four-description-20261125-v2-a",
+      "campaignDigest": "sha256:b44127326f6989032b86eb3b76ec57a2c6ba7a2ced98d3db3d91f98a0bed1f41",
+      "roundId": "physics-e2-corrected-four-description-20261125-v2-first-pass-a",
+      "independenceGroupId": "physics-e2-corrected-four-description-20261125-v2-independent-a",
+      "reviewInputFingerprint": "sha256:7824d8a563d2b0837e156855c50eb80a5a976e60031233bc6e5164168d238fc8",
+      "batchId": "physics-e2-corrected-four-description-20261125-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:72a3876274d065710700b4bc792b6044f1395a0b666098c781036d9d49da0d64",
+      "runId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30",
+      "runManifestDigest": "sha256:c61fea0b538e13ca0e73d2783922b1d27a2b1fb342002be8c87bc4465c1b7b59",
+      "resultsDigest": "sha256:1ae228251555991fe6d0cc53692d533a1e911f8e1ec33877fd697814b35641f2"
+    },
+    "second": {
+      "campaignId": "physics-e2-corrected-four-description-20261125-v2-b",
+      "campaignDigest": "sha256:49b6b6e69f09bde6ad33b8aa16c184a7be3573f5ebc49eb5ff16fde0cc6ca8c5",
+      "roundId": "physics-e2-corrected-four-description-20261125-v2-first-pass-b",
+      "independenceGroupId": "physics-e2-corrected-four-description-20261125-v2-independent-b",
+      "reviewInputFingerprint": "sha256:7824d8a563d2b0837e156855c50eb80a5a976e60031233bc6e5164168d238fc8",
+      "batchId": "physics-e2-corrected-four-description-20261125-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:82891ff42cb83fa81a32ba75d7c87c9bc062604e199b5ae6407f1377d0a0ebf0",
+      "runId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca",
+      "runManifestDigest": "sha256:11700987f43b1013700254b2157eccca5d10f7b67481419d1e05770de960ea8e",
+      "resultsDigest": "sha256:50ef5e9242a26aa5295609ff7326ed8aba2a7183925ee7ad2570be9743c1af72"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-e2-corrected-four-current-synthesis-20261125-v2-decision-001",
+      "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ec3d3ce6e0bbe3c7bba8659244ab7935fba73fc37f972ce073e70bcd725cb286",
+      "pageFingerprint": "sha256:7198bc161f71c70c8100d2db9db8e4f6349bff6ff301f19537bb90406a298162",
+      "goalReviewContextFingerprint": "sha256:c1821d8611a5387a743971674d0d5d4870d388fe851858c2bc9c7124ad93123f",
+      "finalText": {
+        "titleDe": "Mittlere resultierende Kraft aus der Impulsänderung bestimmen",
+        "titleEn": "Determine the average net force from a change in momentum",
+        "descriptionDe": "Die lernende Person kann für einen Körper fester Masse auf einer Geraden in einem Inertialsystem aus zwei gegebenen vorzeichenbehafteten Impulswerten und ihren Zeitpunkten die mittlere resultierende äußere Kraft im Intervall als $\\Delta p/\\Delta t$ berechnen. Sie gibt das Ergebnis in Newton an und deutet sein Vorzeichen bezogen auf die gewählte positive Richtung.",
+        "descriptionEn": "For a body of fixed mass moving along a line in an inertial frame, the learner can use two given signed momentum values and their times to calculate the average net external force over the interval as $\\Delta p/\\Delta t$. The learner gives the result in newtons and interprets its sign relative to the chosen positive direction."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30-ecbaa101-cb10-5da3-9368-ae40ff587d74",
+          "recordDigest": "sha256:fff6d2dea30dc6527600141059c2c880ea7058ab98eb4aa4f084eb02dd1dd69a"
+        },
+        "second": {
+          "recordId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca-ecbaa101-cb10-5da3-9368-ae40ff587d74",
+          "recordDigest": "sha256:6456baf09dd60b2d0ce258725717b6e90ad705de7ffad6ca7f8abcef4c99a56f"
+        }
+      },
+      "rationaleDe": "Die zwei frischen, isoliert ausgeführten Runden bestätigen den aktuellen Zieltext und den exakten korrigierten P-Körper. Der neue Umkehrfall ergibt −6 kg m/s in 4 s und damit −1,5 N; die Werte wiederholen das Bild nicht. Zwei negative Endpunktimpulse erlauben nur Aussagen über diese Messzeitpunkte, keinen Schluss auf eine durchgehend linke oder monotone Zwischenbewegung. Ich übernehme die erste Evidenzformulierung, die Intervallmittel und unbekannten Momentanwert trennt.",
+      "rationaleEn": "Both fresh isolated rounds retain the current wording and exact corrected profile body. The new reversal case gives −6 kg m/s in 4 s, hence −1.5 N, without repeating the image values. Two negative endpoint momenta establish motion at those instants only, not uninterrupted leftward motion or monotonic intermediate change. I select the first evidence formulation, which distinguishes the interval average from an unknown instantaneous force."
+    },
+    {
+      "decisionId": "physics-e2-corrected-four-current-synthesis-20261125-v2-decision-002",
+      "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e61ea1dc37a11fbf944f6a70c2e7995df9d5144ba7c89889f99196f2776f9da8",
+      "pageFingerprint": "sha256:40b40cbe4159142e1b3a08e58b4f425821c6f018f982c1fd884dbf21293bdd49",
+      "goalReviewContextFingerprint": "sha256:d32b6bf1e6d3e2839e77cb515b3d09a9b73f641db0cf90d9f9ddc0b9c49df084",
+      "finalText": {
+        "titleDe": "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen",
+        "titleEn": "Determine the instantaneous net force from the slope of a momentum–time graph",
+        "descriptionDe": "Die lernende Person kann für eine geradlinige Bewegung eines Körpers fester Masse in einem Inertialsystem die Tangentensteigung am Impuls-Zeit-Graphen als momentane resultierende äußere Kraft $F_{\\mathrm{res}}(t)=\\mathrm{d}p/\\mathrm{d}t$ deuten und ihren Wert am markierten Zeitpunkt aus einer eingezeichneten Tangente mit Vorzeichen und Einheit näherungsweise bestimmen.",
+        "descriptionEn": "For a body of fixed mass moving along a line in an inertial frame, the learner can interpret the tangent slope on a signed momentum–time graph as the instantaneous net external force $F_{\\mathrm{net}}(t)=\\mathrm{d}p/\\mathrm{d}t$ and use a drawn tangent to estimate its value at a marked time, with sign and unit."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30-059c1adc-e4d2-5222-a923-15abc417d59f",
+          "recordDigest": "sha256:990d720f9ab5c94dfa6309eab0754a305425d90541d04f08d7bdf08594d75a4a"
+        },
+        "second": {
+          "recordId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca-059c1adc-e4d2-5222-a923-15abc417d59f",
+          "recordDigest": "sha256:735cbf7942820abf98c404a29b9c8d1c0229b9560c21223595d88b518c6c16e7"
+        }
+      },
+      "rationaleDe": "Beide frischen Runden behalten den Zieltext und den korrigierten Darstellungsnachweis. Die Person erhält eine frisch skalierte Grafik mit eingezeichneter Tangente und liest ihre Punkte selbst ab. Gleichungen, Koordinaten, erwartete +3 N beziehungsweise 0 N und Ablesetoleranzen bleiben im Vorbereitungs-/Prüferhinweis. Ich übernehme die zweite Evidenzformulierung. Sie verlangt die eigene graphische Steigung samt Vorzeichen und Einheit und trennt den Wert vom Sekantenmittel. Der Profilbrief behauptet weder eine bereits erzeugte Aufgabenabbildung noch eine Lernendenleistung.",
+      "rationaleEn": "Both fresh rounds retain the wording and corrected representation evidence. The learner receives a fresh scaled graph with a drawn tangent and selects and reads their own points. Equations, coordinates, the expected +3 N or 0 N and reading tolerances stay in preparation/reviewer guidance. I select the second evidence formulation, which requires an independently read graphical slope with sign and unit and distinguishes it from the secant average. The profile brief claims neither an already produced task diagram nor learner performance."
+    },
+    {
+      "decisionId": "physics-e2-corrected-four-current-synthesis-20261125-v2-decision-003",
+      "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a2d4281e86aaa23eafd1374d1fe2fdec66e04e0aab3c66742b70fe2c17ddd445",
+      "pageFingerprint": "sha256:9a8792b6afa50d4b147a87ea8592807b53aec4bd61c923ddb32e9bb956fdfaac",
+      "goalReviewContextFingerprint": "sha256:d9ed6dd15edf4c3ed14d48990498b0c44420692cf77c641fe2bd974c9517a861",
+      "finalText": {
+        "titleDe": "Newtons 2. Axiom (Grundgleichung der Mechanik)",
+        "titleEn": "Newton's Second Law (Fundamental Equation of Mechanics)",
+        "descriptionDe": "Die lernende Person kann Newtons zweites Axiom für einen Körper konstanter Masse in einem Inertialsystem formulieren und erklären, dass der Betrag der Beschleunigung dem Betrag der resultierenden äußeren Kraft geteilt durch die Masse entspricht und eine von null verschiedene Beschleunigung in Richtung dieser Kraft zeigt.",
+        "descriptionEn": "The learner can state Newton’s second law for an object of constant mass in an inertial frame and explain that the magnitude of its acceleration equals the magnitude of the net external force divided by the mass, and that any nonzero acceleration points in the direction of that force."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30-a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "recordDigest": "sha256:04be28798d7839d68a28cbc261bdb4e0579bf9913d2af9605cdd098e9d688ae6"
+        },
+        "second": {
+          "recordId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca-a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+          "recordDigest": "sha256:b14d173a587059c0834675ba85bf3faf94cd974fca3956d9196d3378c1290495"
+        }
+      },
+      "rationaleDe": "Beide frischen Runden bestätigen die konstante-Masse-Fassung und den exakten korrigierten P-Körper. Die englische Erwartung sagt nun, dass Beschleunigungs- und Geschwindigkeitsrichtung nicht übereinstimmen müssen; sie erklärt keine notwendige Verschiedenheit. Die Fälle zu gegenläufiger Kraft, doppelter Kraft, doppelter Masse und verschwindender Resultierender bleiben erhalten. Ich übernehme die erste Evidenzformulierung. Es wird keine Impulsdefinition oder Differentialherleitung in dieses engere Ziel zurückgelegt.",
+      "rationaleEn": "Both fresh rounds confirm the constant-mass wording and exact corrected profile. The English expectation now states that acceleration and velocity directions need not coincide, rather than requiring them to differ. Cases with opposing force, doubled force, doubled mass and zero resultant remain. I select the first evidence formulation. Momentum definition and differential derivation are not added back to this narrower competence."
+    },
+    {
+      "decisionId": "physics-e2-corrected-four-current-synthesis-20261125-v2-decision-004",
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a037c48de3259664d4079a953bb464ade1b34c1c51d049034c61ca23c41bc17d",
+      "pageFingerprint": "sha256:52c10b0ed0f795eb4978d5f90d6e3c30f2641ed90ce36afe5c084e9a4e360479",
+      "goalReviewContextFingerprint": "sha256:e8e795797dc639ca419b93d29b14f1e68cf26a2d5ef01dd076872707caacd79a",
+      "finalText": {
+        "titleDe": "Impulserhaltung aus Newtonschen Axiomen (LK)",
+        "titleEn": "Momentum Conservation from Newton's Laws (Advanced Course)",
+        "descriptionDe": "Die lernende Person kann in einem Inertialsystem für ein materiell abgeschlossenes System aus Newtons zweitem und drittem Axiom herleiten, dass der Gesamtimpuls bei verschwindendem resultierendem äußerem Kraftstoß an den Intervallgrenzen gleich ist, und die Voraussetzungen für seine fortlaufende Erhaltung diskutieren.",
+        "descriptionEn": "In an inertial frame, the learner can derive from Newton's second and third laws that total momentum has equal values at the interval boundaries in a materially closed system when the net external impulse is zero and discuss the conditions for its continuous conservation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-corrected-four-description-20261125-v2-a-01a2132d-0225-7902-9868-8fb07bc42c30-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+          "recordDigest": "sha256:0e10e2c7d55574fa8683c997e7b329c2038397d0577860da15509e5ed2736bd8"
+        },
+        "second": {
+          "recordId": "physics-e2-corrected-four-description-20261125-v2-b-01a2132d-0226-7d73-8ea2-bc74e48d16ca-f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+          "recordDigest": "sha256:be61d47cf30a7214400f2656977963be0a91033fc305f445750baed44a9da225"
+        }
+      },
+      "rationaleDe": "Beide frischen Runden behalten den Zieltext und den präzisierten P-Körper. Alle Größen einer Bilanz gehören zu einem gemeinsamen Inertialsystem; eine neue Rahmenwahl wiederholt die gesamte Analyse. Der feste Satz von Wagen kann äußeren Kräften unterliegen. Exakt null äußerer Kraftstoß ergibt exakte Endpunktgleichheit, ein vernachlässigbarer Kraftstoß nur näherungsweise Gleichheit. Die gegenläufigen zeitversetzten Kraftstöße prüfen weiterhin den Unterschied zur fortlaufenden Konstanz. Ich übernehme die zweite Evidenzformulierung. Die getrennte amtliche Vollpflichtfrage bleibt offen.",
+      "rationaleEn": "Both fresh rounds retain the wording and clarified profile. All quantities in a balance use one common inertial frame; a new frame requires repeating the whole analysis. A fixed set of carts may experience external forces. Exactly zero external impulse gives exact endpoint equality, while negligible impulse gives approximate equality. Opposing impulses at different times still test the distinction from continuous constancy. I select the second evidence formulation. The separate question of a full official mandate remains open."
+    }
+  ],
+  "manifestFingerprint": "sha256:68a4159045cf2913fbe27679231eaaedc8f857a1817a3eb1e72abd03bf973778"
+}

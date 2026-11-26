@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-24T10:43:33.308Z
+Generated: 2026-11-25T19:39:56.621Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,15 +16,15 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 864 |
-| Atomare Ziele im Visualisierungs-Scope | 490 |
-| Ziele mit primaerem Visualisierungslink | 490 |
+| Alle Ziele in der Landschaft | 869 |
+| Atomare Ziele im Visualisierungs-Scope | 493 |
+| Ziele mit primaerem Visualisierungslink | 493 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 490 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 493 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 99 |
+| Review-Ledger-Dateien | 102 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
@@ -38,17 +38,17 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 97 |
-| `pilot` | 393 |
+| `pilot` | 396 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_after_notation_correction` | 1 |
-| `accepted_ai_pilot` | 2 |
+| `accepted_ai_pilot` | 4 |
 | `accepted_cluster_overview_after_atomic_split` | 1 |
-| `accepted_documented_repo_native_fallback` | 2 |
-| `accepted_existing_asset` | 9 |
+| `accepted_documented_repo_native_fallback` | 6 |
+| `accepted_existing_asset` | 10 |
 | `accepted_existing_asset_as_cluster_overview` | 8 |
 | `accepted_existing_asset_metadata_rebound` | 15 |
 | `accepted_existing_asset_unchanged_goal` | 2 |
@@ -61,7 +61,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_pilot_after_provider_limitation_revisit` | 3 |
 | `accepted_pilot_after_provider_quota_retry` | 6 |
 | `accepted_pilot_after_provider_retry` | 3 |
-| `accepted_pilot_after_regeneration` | 113 |
+| `accepted_pilot_after_regeneration` | 117 |
 | `accepted_pilot_after_regeneration_and_owner_review` | 3 |
 | `accepted_pilot_after_second_regeneration` | 24 |
 | `accepted_pilot_after_third_regeneration` | 3 |
@@ -78,7 +78,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-093.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-099.md` |
 | Latest ledger status | `accepted_ai_pilot` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |

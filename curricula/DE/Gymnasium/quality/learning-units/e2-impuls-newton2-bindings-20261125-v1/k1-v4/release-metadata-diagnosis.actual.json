@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "stage": "After source-view and bilingual form release, before individual release-strand annotation and applicability review",
+  "form": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/exam-form-successor.actual.json",
+    "sha256": "d9dd798d0d119a19066a606de1b2ce982d3ce52d4e27463e0ee78954c9364a40"
+  },
+  "measuredOffers": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v4/current-offer-context.actual.json",
+    "sha256": "e45460561595d27ace6d177610c1362410782247f7f9835fd7785c1276389c74"
+  },
+  "scienceGoalCount": 493,
+  "subjectMaturity": "M4",
+  "stageMaturities": [
+    "M3",
+    "M4"
+  ],
+  "releaseCompleteness": {
+    "id": "CQR-203",
+    "status": "warn",
+    "summary": "2 terminal autonomy examData item(s) lack release or coverage metadata.",
+    "metrics": {
+      "terminalAutonomyGoals": 97,
+      "releasedCoverageCompleteExamData": 95,
+      "releaseCoverageIncompleteExamData": 2
+    },
+    "details": [
+      "Incomplete exam release/coverage: Prüfungsaufgabe: Einzelimpulse und Gesamtimpuls zweier Wagen bestimmen [d8fc6295-d0db-59e5-bd90-080bbc508c3a] (missing coveredStrands)",
+      "Incomplete exam release/coverage: Prüfungsaufgabe: Mittlere resultierende Kraft aus zwei Impulsmessungen bestimmen [b50e9903-58b3-520d-96bf-d5bc1fe51ebf] (missing coveredStrands)"
+    ]
+  },
+  "applicability": {
+    "id": "CQR-501",
+    "status": "warn",
+    "summary": "2 active and 0 obsolete accepted applicability warning(s) need review; 6302 partial-only diagnostic finding(s) are non-blocking.",
+    "metrics": {
+      "activeWarnings": 2,
+      "rawActiveWarnings": 2,
+      "diagnosticPartialOnlyWarnings": 6302,
+      "acceptedWarnings": 13,
+      "obsoleteAcceptedWarnings": 0
+    },
+    "details": [
+      "non-blocking partial-only applicability diagnostics APV-202: 6302",
+      "active warning type APV-201: 2",
+      "diagnostic finding type APV-202: 6302",
+      "accepted current warning type APV-201: 13"
+    ]
+  },
+  "actualWarnings": [
+    {
+      "goalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+      "warning": {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+        "title": "Prüfungsaufgabe: Einzelimpulse und Gesamtimpuls zweier Wagen bestimmen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-HH, DE-TH."
+      },
+      "compiled": {
+        "jurisdiction": [
+          "DE-HH",
+          "DE-TH"
+        ]
+      }
+    },
+    {
+      "goalId": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+      "warning": {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+        "title": "Prüfungsaufgabe: Mittlere resultierende Kraft aus zwei Impulsmessungen bestimmen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BW."
+      },
+      "compiled": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      }
+    }
+  ]
+}

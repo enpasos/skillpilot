@@ -1,0 +1,361 @@
+{
+  "candidateDecision": "needs_change",
+  "requiredCorrections": [
+    "At the 8/10 cutoff, reduce credit for stating p_end−p_start without numerical application from 1.5 to 0.5 out of 3. Reserve 2.5 points for evidence of the signed numerical change. Accept −12 kg·m/s, the unevaluated difference (−4)−(+8), or equivalent evidence anywhere in the work.",
+    "In meanForce component A, reduce credit for a general quotient without numerical use of the elapsed interval from 1.5 to 0.5 out of 3. Even with the correct final value and unit, such work would then earn at most 7.5 overall. Accept 3 s established and used across lines, or 5−2 within an exact quotient.",
+    "Increase the once-only meanForce deduction for explicitly claiming that the mean proves constancy or determines a particular instantaneous force from 1.5 to 2.5 points, with a floor of zero. Apply it once even if both claims appear. Silence earns full eligible credit. Update both languages and the shared marking notes together, retaining the single numerical pass threshold and the once-only 0.5 formal-slip rule."
+  ],
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "The proposed direct Physics-root member is a standalone ordinary practice assessment. It supplies one cart problem, a worked solution, and a marking scheme for one existing competency. The separate ordinary goal defines the reusable learning outcome. The item has no children to organize as a cluster and requires no synthesis across goals characteristic of a capstone.",
+  "coveredGoalIds": [
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+  ],
+  "coverageVerdict": "accept_current",
+  "coverageReason": "The candidate’s sole direct requires edge and sole coveredGoalIds entry both identify the supplied ordinary goal. The task gives two signed momenta and times for a fixed-mass cart on a line in an inertial frame. It asks for the interval-average net external force in newtons and its direction. The ordinary goal’s prerequisites support that performance without becoming additional assessment targets. The point allocation affects whether passing proves mastery of this goal.",
+  "offerVerdict": "accept_current",
+  "offerReason": "All three planned DE-BW Gymnasium offers fit: neutral Sek I and the lower-stage portions of CrossStage GK and LK. Each row identifies the same hashed neutral Sek I lower authority, places the ordinary goal among 163 lower-stage targets at the Class 10 topic on force as mean momentum-change rate, and includes the complete 25-goal requires closure in its 261-goal learning basis. Both missing and unexposed lists are empty in every row. The actual work uses signed subtraction, elapsed time, division, units, and direction on one axis. The supplied rate goal also covers the distinction between an interval average and an assertion about an individual instant. The optional secant method stays within that basis. The source assignment supports curricular placement. The planned offers make no official examination or task-source claim, add no Physics or Mathematics target, and include no Hessen exposure.",
+  "rubricPolicyVerdict": "needs_change",
+  "rubricPolicyReason": "The 10-point total is within 8–12, the 80% cutoff is within 85%, and the threshold alone decides passing. The three criterion maxima of 3, 4, and 3 each exceed the 2-point slack. The direction interpretation is effectively protected because its omission costs 2.5. An isolated slip has room to pass at 9.5. Three distinctions are underweighted: omitting numerical momentum change after naming the formula costs only 1.5, omitting numerical use of elapsed time after naming the quotient can cost only 1.5, and explicitly inferring an instantaneous or constant force costs only 1.5. Each permits 8.5/10. The combined DE/EN scoring descriptions contain 1064, 1540, and 1452 UTF-16 code units respectively, each below 2000.",
+  "graded": [
+    {
+      "submissionId": "S725e73f3e7",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Gives the correct signed change of −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 1.5, "reason": "The 3 s duration earns 0.5, correct arithmetic in the stated product earns 0.5, and N on the force result earns 0.5. Explicit multiplication loses quotient credit."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Correctly interprets the negative force as leftward."}
+      ],
+      "total": 7.5,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The student explicitly chooses multiplication as the force law. This is a conceptual error.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S0de4cfc60e",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 1.5, "reason": "States p₂−p₁ symbolically. Neither a numerical difference nor its value appears."},
+        {"criterionId": "meanForce", "pointsAwarded": 3.5, "reason": "Dividing Δp by 3 s earns 3 and the correct value −4 earns 0.5. The final force unit is missing."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Explicitly identifies negative as leftward."}
+      ],
+      "total": 8,
+      "passes": true,
+      "minorSlips": [
+        {"description": "Omits the unit on the force result.", "deductedPoints": 0.5, "followOnDeduction": false}
+      ],
+      "diagnosis": "Passes exactly at the published cutoff despite showing no numerical application of p₂−p₁.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S9c0396911e",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 0, "reason": "The symbol Δp appears, but the work gives neither its defining difference nor its numerical value."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Obtains 3 s from 5−2, uses it as the divisor, and gives −4 N."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Correctly links the negative mean force to the left."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The final force supplies no independent evidence for how the numerator was obtained.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sfb48fe8f11",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Gives −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 2.5, "reason": "The interval calculation earns 4 before the published 1.5 deduction for claiming the force at 5 s must equal −4 N."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Correctly interprets the sign of the average as leftward."}
+      ],
+      "total": 8.5,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "The average is correct. The endpoint force is undetermined, and the explicit claim about it still permits a pass.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S41d4e7224e",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 1.5, "reason": "Gives end minus start without inserting either measured momentum or giving the numerical change."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Uses the 3 s denominator and reports −4 N."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Interprets the signed value as leftward."}
+      ],
+      "total": 8.5,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "The symbolic numerator earns enough partial credit to pass without demonstrating the signed numerical change.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sa38a58dc0d",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "States the correct signed change of −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Correctly calculates the magnitude as 12/3 = 4 and uses kg·m/s², equivalent to N."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "The directed result of 4 kg·m/s² leftwards communicates both sign and physical direction."}
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "The magnitude calculation and directed final answer together establish the full result.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S6167620642",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 0, "reason": "Explicitly adds momenta at different times to define the change."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Divides the student's +4 kg·m/s by the correct 3 s and gives the exact result in N."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Rightward correctly interprets the positive force obtained from the student's numerator."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Addition is a maintained error in the change operation. Its consistent consequences receive credit.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S251956d8aa",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Gives −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "The exact quotient −12/3, magnitude 4, duration, and force unit are correct."},
+        {"criterionId": "direction", "pointsAwarded": 2.5, "reason": "Explicitly calls the quotient negative and points the force left. The isolated plus sign on the written force is charged here once."}
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {"description": "Writes +4 N after the negative quotient, then explicitly identifies the quotient as negative and the force as leftward.", "deductedPoints": 0.5, "followOnDeduction": false}
+      ],
+      "diagnosis": "The exact expression and the sentence interpreting it independently establish the intended sign.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sbeea0c7531",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Correctly evaluates (−4)−(+8) as −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 2.5, "reason": "The calculation earns 4 before the published 1.5 deduction for inferring a constant −4 N throughout the interval."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "The average is signed and correctly directed left."}
+      ],
+      "total": 8.5,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Two momentum measurements determine the interval average. The assertion that they prove constancy is scientifically unsupported and still passes.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sb7e1bbf25a",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Reverses both momentum signs consistently and gives the signed difference (+4)−(−8) in the numerator."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "The secant slope uses the full 5−2 s interval and gives +4 N on the chosen axis."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Explicitly identifies left as positive and interprets the result on that axis."}
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "The reversed-axis secant calculation gives the same physical force of 4 N leftward.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S8236112158",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Gives −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Uses the 3 s interval and evaluates −12/3 as −4 N."},
+        {"criterionId": "direction", "pointsAwarded": 0.5, "reason": "The signed value earns 0.5. The physical direction is unstated."}
+      ],
+      "total": 7.5,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "A correct signed calculation alone leaves the 2.5-point direction interpretation missing.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S2c7862e71d",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "The numerator explicitly subtracts the two signed measurements in the correct order."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "The complete numerical quotient with denominator 5−2 and unit N is an exact force result."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Identifies the result as negative and the force as leftward."}
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "One exact expression demonstrates both numerical operations. Separate intermediate values are unnecessary.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Scc6ab2d811",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Obtains the correct −12 kg·m/s from the measured values."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Uses 5−2 = 3 s and obtains −4 N."},
+        {"criterionId": "direction", "pointsAwarded": 0.5, "reason": "The force sign is correct. The explicit claim that −4 N points right on a right-positive axis loses the 2.5 interpretation points."}
+      ],
+      "total": 7.5,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The stated interpretation contradicts the stated axis, with no evidence of an isolated label slip.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sd2b9d940fa",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Correctly computes (−4)−(+8) = −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 0, "reason": "Gives no duration, quotient, numerical force, or force unit."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Explicitly says the average force is negative and therefore leftward."}
+      ],
+      "total": 6,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The change and direction are established. The average-force calculation is missing.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S2e029fb3a4",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 1.5, "reason": "The symbolic numerator correctly specifies end minus start."},
+        {"criterionId": "meanForce", "pointsAwarded": 1.5, "reason": "The general quotient is correct. There is no substituted duration, numerical force, or force unit."},
+        {"criterionId": "direction", "pointsAwarded": 0, "reason": "Gives neither the force sign for this case nor its interpretation."}
+      ],
+      "total": 3,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Formula-only work shows the general relationship and earns its two published partial credits.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sa620a462f1",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Computes the signed numerical difference correctly."},
+        {"criterionId": "meanForce", "pointsAwarded": 3.5, "reason": "Divides −12 by the elapsed 3 s and obtains −4. Only the final unit is missing."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Explains that the minus sign points the mean force left."}
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {"description": "Omits the force unit after −4.", "deductedPoints": 0.5, "followOnDeduction": false}
+      ],
+      "diagnosis": "The numerical and physical reasoning is complete, with one unit omission.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S4f2f4b3bd4",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 0, "reason": "Explicitly defines the change as start minus end while retaining the given momentum signs."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Correctly divides the student's +12 by 3 s and reports +4 N."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Interprets the resulting positive force consistently as rightward."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The subtraction order is systematically reversed. The later calculation and sign interpretation receive follow-through credit.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S65e45c5975",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Computes −12 kg·m/s correctly."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Correctly computes the force magnitude as 12/3 = 4 N."},
+        {"criterionId": "direction", "pointsAwarded": 0, "reason": "Explicitly gives only the magnitude. No directed force or sign interpretation appears."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The magnitude calculation earns full interval credit and leaves the direction criterion unanswered.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sdab7b1290e",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Correctly obtains −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "The magnitude calculation uses 12/3 over the correct interval and gives 4 N."},
+        {"criterionId": "direction", "pointsAwarded": 0, "reason": "The student deliberately assigns every force a positive sign, producing a new wrong force sign and direction despite the correct signed change."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Decoding the newly imposed plus sign as rightward earns no direction credit under the published rule.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sf648fd244c",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 2.5, "reason": "The signed subtraction (−4)−(+8) is correct. Evaluating it as −10 is an isolated arithmetic slip."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Correctly divides the student's −10 by 3 s and gives the exact and rounded force in N."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Correctly interprets the negative force as leftward."}
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {"description": "Evaluates the correctly written difference as −10 instead of −12.", "deductedPoints": 0.5, "followOnDeduction": false}
+      ],
+      "diagnosis": "The written operands and operation establish the correct method. All subsequent work is consistent with the single arithmetic error.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S783ee55c0d",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Gives the correct signed change of −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 3.5, "reason": "Correctly obtains −4 from −12/3 and omits the force unit."},
+        {"criterionId": "direction", "pointsAwarded": 0.5, "reason": "The numerical force carries the correct sign. Its physical direction is unstated."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [
+        {"description": "Omits the unit on the numerical force.", "deductedPoints": 0.5, "followOnDeduction": false}
+      ],
+      "diagnosis": "The unit omission costs 0.5. The independently missing direction interpretation costs 2.5.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S8c421eb043",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Correctly evaluates the signed difference as −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 4, "reason": "Computes 5−2 = 3 s and obtains −4 N from −12/3."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Explicitly explains that the negative average net force points left."}
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "All requested evidence is present. Silence about instantaneous force incurs no deduction.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S41c18bfd4f",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 1.5, "reason": "States p₂−p₁ without a numerical substitution or value."},
+        {"criterionId": "meanForce", "pointsAwarded": 3, "reason": "Δp/(3 s) earns the applied-duration points. With Δp left symbolic, there is no numerical force result or force unit. The s labels the denominator."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Explicitly identifies the mean force as negative and leftward."}
+      ],
+      "total": 7.5,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The denominator and physical direction are established. The force expression still has an unevaluated symbolic numerator.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S7bace706df",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 3, "reason": "Correctly computes −12 kg·m/s."},
+        {"criterionId": "meanForce", "pointsAwarded": 1, "reason": "Choosing the final time of 5 s gives zero for A. The correct arithmetic −12/5 = −2.4 and the unit N earn 0.5 each."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "The negative force is correctly interpreted as leftward."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The student explicitly uses the endpoint time as the divisor, a conceptual error about elapsed time.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sff8afeec1c",
+      "scores": [
+        {"criterionId": "momentumChange", "pointsAwarded": 0, "reason": "Describes the directions of motion without giving the momentum difference or its defining operation."},
+        {"criterionId": "meanForce", "pointsAwarded": 0, "reason": "Gives no interval calculation, numerical force, or force unit."},
+        {"criterionId": "direction", "pointsAwarded": 3, "reason": "Correctly states that the average force is negative and points left."}
+      ],
+      "total": 3,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The qualitative answer earns full direction credit and establishes neither numerical performance.",
+      "translationsEquivalent": true
+    }
+  ],
+  "minimalCompletenessFindings": "Eleven of 25 submissions pass under the published arithmetic. S41c18bfd4f earns 7.5 with a symbolic momentum difference, Δp/(3 s), and a correct direction. S0de4cfc60e reaches exactly 8 by also stating −4, even without a force unit. S41d4e7224e reaches 8.5 with −4 N while still giving no numerical momentum change. The interval criterion has a parallel gap: a correct numerical Δp, a general quotient with no numerical duration shown, −4 N, and a correct direction can earn 3 + 2.5 + 3 = 8.5. By contrast, explicitly using the endpoint time scores 7, and multiplying by the correct duration scores 7.5. A correct signed calculation with an omitted or maintained wrong direction interpretation scores 7.5. Formula-only and qualitative-only work each score 3. A single exact numerical quotient with a unit and direction earns 10. The constant-force and endpoint-force assertions each leave 8.5, while a complete answer that omits this optional discussion earns 10.",
+  "bilingualVerdict": "Substantively equivalent throughout. The German and English goal, task, solution, and scoring notes agree on the measurements, axis, interval, units, accepted methods, deductions, and cutoff. All 25 submission pairs preserve the same evidence, omissions, and assertions.",
+  "limitations": [
+    "The offer verdict applies to the three planned rows and the authority hashes supplied in the packet. The candidate is identified as proposed-only. This review establishes neither live exposure nor release."
+  ]
+}

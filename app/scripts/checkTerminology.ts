@@ -111,6 +111,16 @@ interface GrandfatheredOccurrence {
  * the check until the occurrence is reviewed again.
  */
 const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
+  // Verbatim marker prose from the rejected second K1 rubric. Its full response
+  // digest and the two negative controls are in the archived terminology receipt.
+  {
+    ruleId: 'TRM-005',
+    path: 'curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/d8fc6295-d0db-59e5-bd90-080bbc508c3a/v2/round-b/response.json',
+    line: 13,
+    column: 474,
+    found: 'goal graph',
+    lineSha256: 'ca767350894632d07dab6ecc12fa43f335b238b77515180807d5f5aa7db37e75',
+  },
   // Exact source/licensing and author-script wording in two sealed inactive
   // Chemistry packets from 2026-10-16. Preserve their reviewed historical bytes;
   // current prose and any changed line still have to use the glossary terms.

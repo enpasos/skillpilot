@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "contract": "pre-scientific-review-schema-rejection-v1",
+  "attempts": [
+    {
+      "requestedModel": "gpt-6.1-sol",
+      "threadId": "01a213a5-1ae1-7453-8fc7-96596ee23022",
+      "exitCode": 1,
+      "error": {
+        "message": "{\"type\":\"error\",\"error\":{\"message\":\"Invalid schema for response_format 'codex_output_schema': At schema path /properties/visualizationReview/properties/goalId, schema must specify a type\",\"type\":\"invalid_request_error\",\"param\":\"text.format.schema\",\"code\":\"invalid_json_schema\"},\"status\":400}"
+      },
+      "eventsSha256": "sha256:9a9bed5f5e5ff59fc024c095fb9c03b1b98f50f1ca96bb874e25421fb54710e3",
+      "schemaSha256": "sha256:b4b5baca019befa5f4f8b1bc3bf5256a022a4f9cac2e72091e3a0a617995ec0e",
+      "scientificResponseProduced": false,
+      "actualScientificReviewCompleted": false
+    },
+    {
+      "requestedModel": "gpt-6.2-astra",
+      "threadId": "01a213a5-3087-7981-bf0c-021bb8aaf87c",
+      "exitCode": 1,
+      "error": {
+        "message": "{\"type\":\"error\",\"error\":{\"message\":\"Invalid schema for response_format 'codex_output_schema': At schema path /properties/visualizationReview/properties/goalId, schema must specify a type\",\"type\":\"invalid_request_error\",\"param\":\"text.format.schema\",\"code\":\"invalid_json_schema\"},\"status\":400}"
+      },
+      "eventsSha256": "sha256:c117db9cf0a9afe16952d3d6ffccc3412d5e87d4e0af30ef6513dcb8d22129a9",
+      "schemaSha256": "sha256:b4b5baca019befa5f4f8b1bc3bf5256a022a4f9cac2e72091e3a0a617995ec0e",
+      "scientificResponseProduced": false,
+      "actualScientificReviewCompleted": false
+    }
+  ],
+  "correction": "Added required string type to two const-only schema properties; substantive inputs unchanged. Exact failed raw tool invocations retained externally; not counted as scientific review rounds.",
+  "completedScientificConfirmationPairs": 1,
+  "successfulThreadIds": [
+    "01a213a6-703e-7682-83bd-3ff7a1315194",
+    "01a213a6-81c6-7273-9f3e-07eb7aece8b1"
+  ]
+}

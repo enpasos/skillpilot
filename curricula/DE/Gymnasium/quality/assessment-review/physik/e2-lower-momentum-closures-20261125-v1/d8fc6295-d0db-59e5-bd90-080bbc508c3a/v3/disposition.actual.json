@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "assessmentGoalId": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+  "version": 3,
+  "candidateSha256": "sha256:c1de131707e066c5e9c9d920f3f5facbe5e9d065727e05de641b4018e0531773",
+  "status": "not-accepted",
+  "eligibleForActivation": false,
+  "basis": "Actual separately blind marker verdicts on the exact frozen candidate; score totals alone decide each synthetic work. This does not assert learner results or human approval.",
+  "models": [
+    "gpt-6.1-sol",
+    "gpt-6.2-astra"
+  ],
+  "distinctBlindThreads": true,
+  "differentAnswerOrders": true,
+  "caseCount": 34,
+  "decisions": [
+    {
+      "round": "round-a",
+      "candidateDecision": "needs_change",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "needs_change",
+      "requiredCorrections": [
+        "Revise the DE/EN rule that ignores extra interpretations unless they replace or retract requested results. An explicitly maintained scientific assertion contradicting the assessed momentum principle must count as conceptual evidence. Publish criterion allocations that prevent this maintained misconception from passing within the 2-point slack, without adding a separate pass veto. Sc1c70f8d94 still receives 12/12 under the current rubric. Do not require an additional zero-total explanation or body arrows."
+      ],
+      "authorComparisonDifferences": []
+    },
+    {
+      "round": "round-b",
+      "candidateDecision": "needs_change",
+      "semanticKind": "practiceAssessment",
+      "coverageVerdict": "accept_current",
+      "offerVerdict": "accept_current",
+      "rubricPolicyVerdict": "needs_change",
+      "requiredCorrections": [
+        "Revise the shared notes and TII in both languages so that an explicit assertion that moving carts cannot have zero total momentum contradicts the cancellation it purports to interpret. Put that contradiction within the existing 2.5-point combination allocation. The independently correct zero can still earn 0.5. A correct numerical sum alone must continue to earn full credit, with no explanation or body arrows required.",
+        "Protect each snapshot against a substantive error in just one cart input that removes the required physical total. One workable allocation keeps MI and MII at 3 points each, reserving 2.5 for establishing the signed pair and 0.5 for one independently correct cart when the other is missing or conceptually wrong. Keep full credit for valid downstream addition and the source-only deduction of at most 0.5 for a demonstrably isolated slip."
+      ],
+      "authorComparisonDifferences": []
+    }
+  ],
+  "humanApproval": false
+}

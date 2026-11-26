@@ -19,10 +19,14 @@ const actualIds = ['a8dc0290-9f80-5763-8943-e16b8d2aa860', 'b34f3e03-bbe7-5ede-9
   '7cfaf48e-e420-5c09-8ec2-932f0dba4d08', '884bd99b-2373-5174-af7c-c6813b91bd93',
   'bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04', 'e6a89922-75ce-53dd-9e7b-3a683398431c',
   'f41e4e30-794e-5ce4-ba5e-cc72712cd691', 'f602680f-ea75-5bed-ae87-72f6be34a99b']
+// Own lower-stage closing tasks of E.2 (25 November 2026): total momentum of two carts for Hamburg
+// and Thuringia, mean resultant force from two momentum measurements for Baden-Württemberg.
+const closingIds = ['d8fc6295-d0db-59e5-bd90-080bbc508c3a', 'b50e9903-58b3-520d-96bf-d5bc1fe51ebf']
 const byId = new Map(physics.goals.map(goal => [goal.id, goal]))
-assert.deepEqual(resolveExplicitAtomicRouteEndpoints(actualIds, byId).issues, [])
+assert.deepEqual(resolveExplicitAtomicRouteEndpoints([...closingIds, ...actualIds], byId).issues, [])
 assert.deepEqual(createRouteProfiles().find(profile => profile.profileId === 'canonical-physics-sek1')!.terminalAutonomyGoalIds,
-  actualIds, 'the configured lower inventory binds four existing released tasks and nine reviewed bounded offers')
+  [...closingIds, ...actualIds],
+  'the configured lower inventory binds four existing released tasks and eleven reviewed bounded offers')
 assert.equal(createRouteProfiles().find(profile => profile.profileId === 'canonical-physics-sek2')!
   .terminalAutonomyGoalIds?.includes(actualIds[4]) ?? false, false,
   'the lower lens-eye eligibility does not create an additional upper-stage endpoint obligation')
@@ -36,6 +40,8 @@ const offers: Array<[string, string[]]> = [
   // Lane 11 independently activated FFX as a voluntary HE E.1 offer while retaining SN J9.
   [actualIds[11], ['DE-HE', 'DE-SN']],
   [actualIds[12], ['DE-SL', 'DE-SN']],
+  [closingIds[0], ['DE-HH', 'DE-TH']],
+  [closingIds[1], ['DE-BW']],
 ]
 for (const [id, jurisdictions] of offers) {
   const offered = byId.get(id)!
@@ -124,4 +130,4 @@ try {
 } finally {
   rmSync(fixture, { recursive: true, force: true })
 }
-console.log('Explicit atomic endpoints: 13 released tasks with 9 exact bounded offers, 8 invalid configurations, CQR/direct/hard-semantic consumers, lower-only eligibility, missing task and out-of-basis cases passed.')
+console.log('Explicit atomic endpoints: 15 released tasks with 11 exact bounded offers, 8 invalid configurations, CQR/direct/hard-semantic consumers, lower-only eligibility, missing task and out-of-basis cases passed.')

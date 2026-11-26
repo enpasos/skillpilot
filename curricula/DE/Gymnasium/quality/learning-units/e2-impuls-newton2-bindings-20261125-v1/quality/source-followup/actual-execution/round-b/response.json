@@ -1,0 +1,199 @@
+{
+  "records": [
+    {
+      "recordId": "00-BY-53afbda1",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "Ph10.2 supports the signed one-dimensional momentum sum through its requirement to calculate simple collisions. The BY generator witnesses explicitly assign IMP to Ph10.2 and correct 839ecc8f from Ph8.3 to Ph10.2. The cross-stage GK, cross-stage LK and SekI placement records all put IMP in J8 Ph8.3 Mechanik. The current requires chain is Kraftstoß (e790de73) → Impulserhaltung (839ecc8f) → IMP.",
+      "inspectedOfficialAreas": [
+        "LehrplanPLUS Gymnasium Physik 8, physical pp. 3–4, Ph8 3.1 Dynamik zweidimensionaler Bewegungen. The source relates force and duration to velocity change through F·Δt = m·Δv.",
+        "LehrplanPLUS Gymnasium Physik 10, physical p. 2, Ph10 Lernbereich 2 Impulserhaltung in der Mechanik. It covers conservation in two dimensions and quantitative one-dimensional collisions."
+      ],
+      "remainingFindings": [
+        "The J8 pages do not establish the full e790de73 performance of reading signed area under a variable force–time graph, or a J8 requirement for closed-system momentum conservation. The scientific necessity of making conservation a prerequisite for the impulse–momentum relation and the historical BY8 mapping remain open.",
+        "The one-dimensional IMP task covers part of Ph10.2. The explicit correction is visible in the two cross-stage generator witnesses. The separate SekI place is evidenced by the native scope and placement records."
+      ]
+    },
+    {
+      "recordId": "01-MV-53afbda1",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "The Q11/12 source specifies vector momentum, constant total momentum and simple GK recoil calculations. A signed sum for two bodies on one line is a bounded step in that work. Both GK and both LK target views place IMP in E10 under Grundlagen: Impulserhaltung. The verified requires chain runs from gyro stabilisation through bicycle dynamics, precession, moment of inertia and rotational energy, angular momentum, linear momentum conservation, and IMP.",
+      "inspectedOfficialAreas": [
+        "MV Physik Gymnasium 11/12, physical p. 21 (printed p. 17), §3.2 System – Erhaltungssätze, mandatory momentum content, recoil experiments with different masses and GK calculation guidance.",
+        "MV Klasse 10, physical p. 45 (printed p. 41), §3.2 Wechselwirkung – Dynamik, Newtonian laws, vector forces and a recoil-propulsion research example."
+      ],
+      "remainingFindings": [
+        "The record also cites physical p. 22. The supplied Q11/12 extract contains only p. 21, which suffices for the elementary assignment. Additional LK collision content on p. 22 remains unverified.",
+        "The E10 gyro chain explains the product placement. Its source timing and the necessity of each inherited prerequisite remain open. The Klasse 10 recoil example does not establish an E10 two-body calculation requirement."
+      ]
+    },
+    {
+      "recordId": "02-ST-53afbda1",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "Q11/12 elevated-level mechanics calls for deriving two post-collision velocities and setting up momentum balances. This supports the signed two-body sum. Basic-level mechanics names momentum as a state quantity and specifies energy balances. The two IMP target views are the cross-stage and SekII LK views. Both place IMP under its own E10 preparation node. The current path is 07f298b2 → 8daaf751 → b49e0f6b → 642aebd7 → 37f17e7e → 839ecc8f → 53afbda1.",
+      "inspectedOfficialAreas": [
+        "ST Fachlehrplan Physik Gymnasium, physical p. 79, Schuljahrgänge 11/12 eAN, Aufbaukurs Mechanik, two-body collisions, closed-system conservation and momentum balance equations.",
+        "Same plan, physical p. 54, Schuljahrgänge 11/12 gAN, Grundlagenkurs Mechanik, momentum as a state quantity and energy balances. Physical p. 45, Jahrgang 9 Mechanik der Punktmasse, gives earlier Newtonian mechanics context."
+      ],
+      "remainingFindings": [
+        "The retained gyro-stabilisation route explains E10 acquisition. Its curricular timing remains unresolved. Neither the E10 place nor the basic-level state-quantity clause establishes the full two-body task as an official obligation there."
+      ]
+    },
+    {
+      "recordId": "03-SL-53afbda1",
+      "decision": "needs_change",
+      "recordIsTruthful": false,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "EP mechanics directly supports IMP. In all four SL views, IMP has the recorded same-E mechanics heading before the inherited collision branch. Elastische Stöße requires 839ecc8f, which requires IMP. Both SekII views also move the existing WHY orientation alongside IMP. The record's claim that no old subject competency moves is false in the two GK byte pairs.",
+      "inspectedOfficialAreas": [
+        "SL Physik EP, physical p. 12, Kraft und Bewegung, Wechselwirkungsprinzip und Stoßprozesse. The page defines vector momentum, gives the signed two-body central collision equation, and applies closed-system conservation to recoil."
+      ],
+      "remainingFindings": [
+        "Both GK views remove the Notwendige Grundlagen subgroup under practice in E and Hauptphase. This changes 48 existing prerequisite acquisition paths in cross-stage GK and 54 in SekII GK. The headingDelta finding gives the breakdown.",
+        "Elastic collisions and conservation retain their nuclear heading. Its historical placement remains unresolved. The new IMP heading is authored learning structure."
+      ]
+    },
+    {
+      "recordId": "04-SN-53afbda1",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "LK11 mechanics explicitly combines p = mv with one-dimensional two-body problems and sign conventions. Both LK byte pairs move IMP from Einblick in die Relativitätstheorie to its own mechanics heading in Q11. The new heading precedes the collision and rate branches. The goal objects confirm both Elastische Stöße → 839ecc8f → IMP and the mean-rate goal ecbaa101 → IMP.",
+      "inspectedOfficialAreas": [
+        "SN Gymnasium Physik, physical p. 57 (printed p. 45), Jahrgangsstufe 11 Leistungskurs, conservation passage above Lernbereich 2, including Zweikörperprobleme, Vorzeichen and central collisions.",
+        "Same plan, physical p. 58 (printed p. 46), Lernbereich 3 Newton’sche Gesetze und deren Anwendungen, resultant force as dp/dt and graphical interpretation in a p(t) diagram."
+      ],
+      "remainingFindings": [
+        "The retained relativity heading for the collision consumer still needs a separate placement review.",
+        "The IMP witness repeats a tangent-reading note. That note belongs to the rate assignment on physical p. 58. Physical p. 57 supports IMP independently."
+      ]
+    },
+    {
+      "recordId": "05-BW-a94cfe1c",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "The starred dynamics section gives F = ma, and the appendix assigns the entire starred chapter to Klasse 10. The three recorded target views place Newton’s second law in J7/8 under Mechanik: Dynamik. The record accurately identifies this inherited timing difference.",
+      "inspectedOfficialAreas": [
+        "BW Bildungsplan Gymnasium Physik, revised 25 March 2022, physical p. 27, §3.3.5.2 Dynamik (*), especially (1)–(2) on resultant force and Newtonian principles.",
+        "Same plan, physical p. 57, appendix rules on binding formulae and the Klasse 10 placement of starred chapters."
+      ],
+      "remainingFindings": [
+        "The cited area establishes Klasse 10 support. The source basis and specific consumer justification for the J7/8 placement remain open. This record supplies no requires path for that timing."
+      ]
+    },
+    {
+      "recordId": "06-SL-a94cfe1c",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "EP mechanics states Newton’s second law, the direction of acceleration and F = ma. This supports the bounded constant-mass goal. All four SL snapshots retain that goal under Kernenergie und Radioaktivität in E.",
+      "inspectedOfficialAreas": [
+        "SL Physik EP, physical p. 10, Kraft und Bewegung, Grundgesetz der Mechanik, formulation of the second axiom, acceleration direction and calculations using F = ma."
+      ],
+      "remainingFindings": [
+        "The nuclear heading remains an inherited topic mismatch. The mechanics clause supports the law, while the reason for retaining that particular acquisition heading remains unresolved."
+      ]
+    },
+    {
+      "recordId": "07-SN-a94cfe1c",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "The Klasse 9 Newtonian mechanics passage gives F = ma. LK11 mechanics also gives the resultant-force law. The four recorded GK/LK target places are in J11 under Elektromagnetische Induktion. The two LK snapshots confirm that path directly.",
+      "inspectedOfficialAreas": [
+        "SN Gymnasium Physik, physical p. 37 (printed p. 25), Klassenstufe 9, Kennen der Newton’schen Gesetze and F = ma.",
+        "Same plan, physical p. 58 (printed p. 46), LK11 Lernbereich 3, Grundgesetz der Mechanik with ΣF = ma = dp/dt."
+      ],
+      "remainingFindings": [
+        "The induction placement and its inherited source mapping remain open. The LK11 differential clause supplies no corresponding GK11 differential-law obligation."
+      ]
+    },
+    {
+      "recordId": "08-RP-a94cfe1c",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "The stated E source area is the mandatory Dynamik module for both Grundfach and Leistungsfach. It covers causes of motion change, interaction and inertia. All four target paths run through E supplements to the preparation heading for complementarity, interference and which-path information. The source assignment is supported at the level of the mechanics topic.",
+      "inspectedOfficialAreas": [
+        "RP Physik Sekundarstufe II MSS, physical pp. 24 and 51, §§4.3 and 5.3, E Grundfach and Leistungsfach Pflichtbaustein Dynamik. Adjacent physical pp. 25 and 52 cover Erhaltungsgrößen der Mechanik.",
+        "RP SekI, physical p. 109, Dynamische Phänomene, Differenzierungsmöglichkeiten, including m·Δv = F·Δt."
+      ],
+      "remainingFindings": [
+        "The two E dynamics pages do not spell out the full quantitative constant-mass atom. The Grundfach guidance prioritizes developing the interaction concept over mathematization. The SekI differentiation example has its own limited scope.",
+        "The specific routing through complementarity and the appropriateness of its inherited consumer chain remain unresolved."
+      ]
+    },
+    {
+      "recordId": "09-SL-839ecc8f",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "The EP mechanics page states conservation of total vector momentum in a mechanically closed system and applies it to central collisions and recoil. All four SL views retain 839ecc8f under Kernenergie und Radioaktivität in E. The elastic-collision consumer directly requires it.",
+      "inspectedOfficialAreas": [
+        "SL Physik EP, physical p. 12, Kraft und Bewegung, Wechselwirkungsprinzip und Stoßprozesse, mechanically closed systems, conservation in magnitude and direction, and the recoil example."
+      ],
+      "remainingFindings": [
+        "The nuclear placement of conservation and collisions remains unresolved. The source example does not settle every reading of the inherited atom. Zero net external impulse over one interval gives equal endpoint momenta. Constancy throughout requires zero net external impulse on every subinterval."
+      ]
+    },
+    {
+      "recordId": "10-ALL-f524f05c",
+      "decision": "accept_record_with_stated_limits",
+      "recordIsTruthful": true,
+      "sourceAssignmentSupported": null,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "The listed 32 LK targets and their places match the native scope. SL explicitly calls for deriving the straight central two-body collision relation from the interaction law. SN supplies signed conservation problems, the differential force law and the system/environment distinction. These support elements of the advanced synthesis. An official assignment of its full differential-and-integral proof across the 32 views remains unsettled.",
+      "inspectedOfficialAreas": [
+        "SL Physik EP, physical pp. 10 and 12, Grundgesetz der Mechanik and Wechselwirkungsprinzip und Stoßprozesse, including the two-body derivation.",
+        "SN Gymnasium Physik LK11, physical pp. 57–58, one-dimensional conservation, force impulse, resultant force as dp/dt, and interaction forces.",
+        "Additional scope context: BE/BB Teil C upper-secondary Physik, physical pp. 17 and 21, E selection of at least three of five topics and §3.1.4 Impuls und Impulserhaltung. HE Kerncurriculum gymnasiale Oberstufe, physical p. 30, mandatory E.2 Newton’sche Axiome und Erhaltungssätze."
+      ],
+      "remainingFindings": [
+        "The SN Q11 and ST Q11/12 proof placements are authored deepenings. Their calendar units and the inherited LK roster cannot establish a jurisdiction-by-jurisdiction proof mandate or strict cross-subject sequencing within a shared year span.",
+        "The general derivation requires its system assumptions and the distinction between equality at interval endpoints and continuous conservation. Per-source official status remains open."
+      ]
+    }
+  ],
+  "headingDelta": {
+    "decision": "needs_change",
+    "roleAndLearningSetsPreserved": true,
+    "oldCompetencyPlacesPreserved": false,
+    "orientationReparentingBounded": true,
+    "checkedViewIds": [
+      "de-sl-gym-physics-gk",
+      "de-sl-gym-physics-lk",
+      "de-sl-gym-sekii-physics-gk",
+      "de-sl-gym-sekii-physics-lk",
+      "de-sn-gym-physics-lk",
+      "de-sn-gym-sekii-physics-lk"
+    ],
+    "reason": "All twelve snapshot hashes match. Each pair preserves the complete collection of goal-entry and canonical-subtree payloads, including roles and acquisition flags. IMP stays in the same course and source unit, SL E or SN LK11. Exactly the two SL SekII views reparent the existing WHY orientation (5c44b9ba) alongside IMP within E. Both SL GK pairs also remove Notwendige Grundlagen beneath Übungen und Prüfungsaufgaben in E and Hauptphase, changing established acquisition paths.",
+    "remainingFindings": [
+      "Cross-stage SL GK moves 32 E and 16 Hauptphase prerequisite-only acquisition entries up one level. SekII SL GK moves 38 E and 16 Hauptphase entries up one level. One concrete example in both Hauptphase trees is 2afba4a2, Integral als Bestand und Flächeninhalt verstehen.",
+      "Each affected GK view also drops three explicit E ordering links and two Hauptphase links to the removed subgroups. The heading-delta scope and record 03 omit these changes. The other four byte pairs show only the stated IMP move and, in SL SekII LK, the stated WHY move.",
+      "The explicit sibling-order references resolve. Static checks combining those orders with the supplied prerequisite edges at their acquisition branches found no cycle in the six pairs."
+    ]
+  },
+  "limitations": [
+    "Page references are one-based physical pages of the full originals. Inspection used the supplied extracts and images. External locators identify editions. No full original was retrieved, and the cited MV physical p. 22 is absent.",
+    "Exact before/current view bytes were supplied for six SL/SN pairs. For the other places, the evidence is the native projection, placement records, generator witnesses and supplied goal closure. The 90-view counts describe product roles, not observed learning or official mandates.",
+    "The comparison establishes authored identity, path and ordering changes. It includes no frontend or backend execution, learner-state measurement or assessment result. The headings are authored structure, not official curriculum quotations.",
+    "The review covers the eleven bounded records and the six heading pairs. Historical source mappings, parked canonical disputes, unmodified D/P bodies, cards and the remaining landscape retain their prior review status."
+  ]
+}

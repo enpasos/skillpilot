@@ -1,0 +1,82 @@
+{
+  "schema": "e2-memory-author-validation-v1",
+  "validatedAt": "2026-11-25T14:23:57Z",
+  "actor": "OpenAI Codex · E.2-Kartenautorenprüfung",
+  "automatedChecks": [
+    {
+      "command": "npm --prefix app run quality:memory-card-review:check:all",
+      "exitCode": 0,
+      "activeConfigCount": 10
+    },
+    {
+      "command": "npm --prefix app run check:memory-deck-origins",
+      "exitCode": 0
+    },
+    {
+      "command": "npm --prefix app run test:memory-card-origins",
+      "exitCode": 0
+    },
+    {
+      "command": "app/node_modules/.bin/tsx scripts/deploy_curriculum_decks.ts",
+      "exitCode": 0,
+      "copies": "Both DE/EN source decks are byte-identical with frontend and backend copies."
+    },
+    {
+      "command": "KaTeX renderToString with throwOnError and strict error for seven scoped DE/EN card bodies",
+      "exitCode": 0,
+      "formulaBlocks": 38
+    }
+  ],
+  "physicsMetrics": {
+    "Ordinary atomic goals in scope": 493,
+    "Current no-memory decisions": 360,
+    "Current memory-required decisions": 133,
+    "Current needs developer review": 0,
+    "Memory goals in scope": 5,
+    "Traced memory goals": 5,
+    "Known deck IDs": 5,
+    "Deck files": 6,
+    "Card rows": 239,
+    "Primary cards in scope": 149,
+    "Kept primary cards": 149,
+    "Cards marked remove": 0,
+    "Cards needing developer review": 0,
+    "Missing review records": 0,
+    "Stale review records": 0,
+    "Obsolete review records": 0,
+    "Missing card review records": 0,
+    "Stale card review records": 0,
+    "Obsolete card review records": 0,
+    "Deck card origin issues": 0,
+    "Composition visibility scopes": 3,
+    "Memory-required goals checked in views": 371,
+    "Memory-required goals without visible memory node": 0
+  },
+  "activeFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json",
+      "sha256": "5d8b823983dd5af1cff05b98c33ee07345a38f78fecd33c91fb642fe671551b5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+      "sha256": "077636114f052634c9a55379cb726528cd9bea3021ac4c77d7ea3ddc3af25640"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.cards.review.jsonl",
+      "sha256": "827cce27e21430ccd9d6e432210bd09ca76a8845105b649cf728cbc0785979ea"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json",
+      "sha256": "d2779d20be325559854c88a97ab09dc64ba55cdee145a964c5813d68c37571ae"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.en.json",
+      "sha256": "7ff3fb44bb599017f0b8efe5eb0ed1ffc20db0ae4adc05cf6a776055c3842d1d"
+    }
+  ],
+  "limitations": [
+    "Automated checks validate current records, origins, visibility and renderable notation. They are not independent scientific review or human approval.",
+    "Independent card/content review runs separately in the shared six-goal native review packet.",
+    "Raw tool output stays outside the repository."
+  ]
+}

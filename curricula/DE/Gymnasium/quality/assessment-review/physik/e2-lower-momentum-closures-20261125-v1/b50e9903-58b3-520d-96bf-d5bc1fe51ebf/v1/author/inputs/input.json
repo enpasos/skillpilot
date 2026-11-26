@@ -1,0 +1,71 @@
+{
+  "goal": {
+    "id": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+    "title": "Mittlere resultierende Kraft aus der Impulsänderung bestimmen",
+    "titleEn": "Determine the average net force from a change in momentum",
+    "description": "Die lernende Person kann für einen Körper fester Masse auf einer Geraden in einem Inertialsystem aus zwei gegebenen vorzeichenbehafteten Impulswerten und ihren Zeitpunkten die mittlere resultierende äußere Kraft im Intervall als $\\Delta p/\\Delta t$ berechnen. Sie gibt das Ergebnis in Newton an und deutet sein Vorzeichen bezogen auf die gewählte positive Richtung.",
+    "descriptionEn": "For a body of fixed mass moving along a line in an inertial frame, the learner can use two given signed momentum values and their times to calculate the average net external force over the interval as $\\Delta p/\\Delta t$. The learner gives the result in newtons and interprets its sign relative to the chosen positive direction.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical"
+    ],
+    "contains": [],
+    "requires": [
+      "53afbda1-5776-502b-8867-471975d7b766",
+      "13b338eb-f761-5817-9058-11043b9cb253"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-physics",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [],
+      "phase": "E"
+    },
+    "shortKey": "canonical_physics_mean_force_from_momentum_change",
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "type": "atomic",
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "title": "Visualisierung: Mittlere resultierende Kraft aus der Impulsänderung bestimmen",
+        "url": "/assets/goal-visualizations/physik/ecbaa101-cb10-5da3-9368-ae40ff587d74/ecbaa101-cb10-5da3-9368-ae40ff587d74.jpg",
+        "provider": "ChatGPT / Codex image generation",
+        "description": "Visualisierung zum Lernziel: Mittlere resultierende Kraft aus der Impulsänderung bestimmen.",
+        "altText": "Derselbe Wagen hat bei 1 s den Impuls +3 kg·m/s nach rechts und bei 3 s den Impuls −1 kg·m/s nach links. Rechts ist positiv. Die Änderung −4 kg·m/s in 2 s ergibt eine mittlere resultierende Kraft von −2 N.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "pilot"
+      }
+    ]
+  },
+  "shortKey": "seki_mean_resultant_force_from_momentum_interval",
+  "id": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+  "taskSpecification": "One context, one body of fixed mass along one line in an inertial frame. Give two signed momentum values at two ordered times, with momentum crossing sign so subtraction needs signs; calculate the average net external force over that interval in newtons and interpret its sign relative to the stated positive direction. Test only the exact goal. Do not demand instantaneous force, a derivative, constant force during the interval, a collision/conservation argument, or multi-body system momentum.",
+  "ownerMandateDate": "2026-11-25T17:50:00+01:00",
+  "version": 1,
+  "maximumRubricVersions": 3
+}

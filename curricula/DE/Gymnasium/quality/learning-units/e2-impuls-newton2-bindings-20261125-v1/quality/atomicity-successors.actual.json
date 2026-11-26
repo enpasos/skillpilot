@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-six-individual-atomicity-successors-v1",
+  "reviewInputs": [
+    {
+      "responsePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-25/e2-impuls-newton2-v1/actual-execution/round-a/response.json",
+      "responseSha256": "sha256:937581990f07a126a7fde6c3aa60cf4ae48deb27d2fdcf86b08a2b5ff16966fc",
+      "threadId": "01a21319-00a3-7df2-8902-f7cbb505fe87",
+      "model": "gpt-6.1-sol",
+      "reasoningEffort": "ultra"
+    },
+    {
+      "responsePath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-25/e2-impuls-newton2-v1/actual-execution/round-b/response.json",
+      "responseSha256": "sha256:3c8714c8075ee7c59619d318a577e572c0ed88722d1792da7e844eed2ffe0518",
+      "threadId": "01a21319-00a3-7553-86f3-11c73c59443b",
+      "model": "gpt-6.2-astra",
+      "reasoningEffort": "ultra"
+    }
+  ],
+  "atomicityLedgerPath": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+  "priorLedgerRawSha256": "sha256:498259ae8f117b08baf95cbaece62deca7384d424441c90784a98c2a13aca76c",
+  "currentLedgerRawSha256": "sha256:c6914c1b166db710af57cc35702c7d91b170f1820fc9a8affba8dbd6e11254ae",
+  "changes": [
+    {
+      "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+      "previous": null,
+      "current": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "53afbda1-5776-502b-8867-471975d7b766",
+        "fingerprint": "sha256:b66caf8a3847e71182e95fb65529e0b543a5f1caa6812d98dd71fa747ec6e25d",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-25T14:35:01.633Z",
+        "reviewer": "OpenAI gpt-6.1-sol/ultra and gpt-6.2-astra/ultra, two actual isolated native reviews; informed integration",
+        "reason": "Independent A: Axis choice, two individual momenta and their addition produce one common-time momentum total; they are necessary steps of one construction. Independent B: The axis and two individual products are necessary steps in constructing one directed total for a single snapshot. Splitting them here would separate the calculation from its sign convention.",
+        "suggestedSplit": []
+      }
+    },
+    {
+      "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "previous": null,
+      "current": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "fingerprint": "sha256:5aa6ec3e9657282156f95f9a6913a7841f72954ab7e8da2674938fe9f090392d",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-25T14:35:01.633Z",
+        "reviewer": "OpenAI gpt-6.1-sol/ultra and gpt-6.2-astra/ultra, two actual isolated native reviews; informed integration",
+        "reason": "Independent A: Computing the interval quotient and interpreting its sign and unit form one physical average-rate competence. Independent B: The time ordering, subtraction, division, unit and direction all characterize the same interval-average force.",
+        "suggestedSplit": []
+      }
+    },
+    {
+      "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+      "previous": null,
+      "current": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+        "fingerprint": "sha256:0dfad5fec56d07756f3c9e0fa5e457785d6772e6b22224bebb12a1d221e5e0d1",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-25T14:35:01.633Z",
+        "reviewer": "OpenAI gpt-6.1-sol/ultra and gpt-6.2-astra/ultra, two actual isolated native reviews; informed integration",
+        "reason": "Independent A: Reading a provided tangent and interpreting its slope as instantaneous force are coordinated parts of one representation competence. Independent B: Reading the tangent and interpreting its slope as a force are the graphical and physical parts of one estimate at a specified time.",
+        "suggestedSplit": []
+      }
+    },
+    {
+      "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "previous": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+        "fingerprint": "sha256:440cd1613b9ea77638b7d6762b4462f3ea9bfa2906aa4eeb33c951efeea2e2aa",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-08-29",
+        "reviewer": "codex-physics-b025a-five-minimal-revisions-2026-08-29",
+        "reason": "Vektorieller Impuls, zeitlicher Kraft-Impuls-Zusammenhang und Konstantmassen-Spezialisierung sind Teile einer einzigen Newton-II-Kompetenz.",
+        "suggestedSplit": []
+      },
+      "current": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+        "fingerprint": "sha256:82602df4f911c8e01a9ee6ed3d73ebb95223a9641dc78613ce7094cf63aef265",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-25T14:35:01.633Z",
+        "reviewer": "OpenAI gpt-6.1-sol/ultra and gpt-6.2-astra/ultra, two actual isolated native reviews; informed integration",
+        "reason": "Independent A: Magnitude, mass dependence and direction express one vector law rather than separate competencies requiring a split. Independent B: Force scaling, inverse mass dependence, direction and the zero case are consequences of the same constant-mass vector equation.",
+        "suggestedSplit": []
+      }
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "previous": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+        "fingerprint": "sha256:deae6324632a6406e44e844e2a6aab8ab077eef6bfff02c266b22a72908d3789",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-08-29",
+        "reviewer": "codex-physics-b025-mechanics-text-adjudication-2026-08-29",
+        "reason": "Erhaltung, Rückstoßbeschreibung und Begründung betreffen dieselbe vektorielle Systemimpulsbilanz.",
+        "suggestedSplit": []
+      },
+      "current": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+        "fingerprint": "sha256:deae6324632a6406e44e844e2a6aab8ab077eef6bfff02c266b22a72908d3789",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-25T14:35:01.633Z",
+        "reviewer": "OpenAI gpt-6.1-sol/ultra and gpt-6.2-astra/ultra, two actual isolated native reviews; informed integration",
+        "reason": "Independent A: System selection, momentum balance and qualitative recoil explanation apply the same conservation relationship. The local wording correction does not reveal a separate proof competence. Independent B: Choosing the interacting bodies and comparing their endpoint totals supplies one qualitative explanation of recoil. Solving for an unknown velocity is separable and need not be a required facet.",
+        "suggestedSplit": []
+      }
+    },
+    {
+      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+      "previous": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+        "fingerprint": "sha256:9ce4634244314778c65bba23493ad4199a2bc145853c2b46e2d357a49caf9b7e",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-10-17",
+        "reviewer": "codex-pr74-current-context-synthesis-20261017",
+        "reason": "Aktuell vollständig geprüft: Newton-II/III-Herleitung der Gesamtimpulsbilanz, Null des Intervallkraftstoßes und Bedingungen fortlaufender Erhaltung bilden einen einzigen Beweis mit seinen Geltungsbedingungen. Die korrigierte Endpunktunterscheidung erzeugt keine unabhängig zu zertifizierende zweite Kompetenz; kein Split erforderlich.",
+        "suggestedSplit": []
+      },
+      "current": {
+        "schemaVersion": 1,
+        "reviewId": "canonical-physics-full",
+        "ruleVersion": "semantic-atomicity-v1",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+        "fingerprint": "sha256:9ce4634244314778c65bba23493ad4199a2bc145853c2b46e2d357a49caf9b7e",
+        "status": "atomic",
+        "semanticAtomic": true,
+        "reviewedAt": "2026-11-25T14:35:01.633Z",
+        "reviewer": "OpenAI gpt-6.1-sol/ultra and gpt-6.2-astra/ultra, two actual isolated native reviews; informed integration",
+        "reason": "Independent A: The derivation and the distinction between its endpoint and continuous consequences constitute one theorem with its validity conditions. Independent B: Cancellation, the differential balance and its time integral form one proof. Distinguishing its instantaneous and interval conclusions establishes when the derived statement holds.",
+        "suggestedSplit": []
+      }
+    }
+  ],
+  "humanApproval": false,
+  "canonicalGoalEdits": 0,
+  "limit": "These six semantic-atomicity decisions do not approve parked description/prerequisite/source disputes and do not prove learner competence."
+}

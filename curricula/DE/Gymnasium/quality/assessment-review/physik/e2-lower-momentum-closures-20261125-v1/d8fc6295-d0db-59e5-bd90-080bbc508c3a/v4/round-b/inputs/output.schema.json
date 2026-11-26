@@ -1,0 +1,165 @@
+{
+  "type": "object",
+  "properties": {
+    "candidateDecision": {
+      "type": "string"
+    },
+    "requiredCorrections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "semanticKind": {
+      "type": "string"
+    },
+    "semanticKindReason": {
+      "type": "string"
+    },
+    "coveredGoalIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "coverageVerdict": {
+      "type": "string"
+    },
+    "coverageReason": {
+      "type": "string"
+    },
+    "offerVerdict": {
+      "type": "string"
+    },
+    "offerReason": {
+      "type": "string"
+    },
+    "rubricPolicyVerdict": {
+      "type": "string"
+    },
+    "rubricPolicyReason": {
+      "type": "string"
+    },
+    "graded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "submissionId": {
+            "type": "string"
+          },
+          "scores": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "criterionId": {
+                  "type": "string"
+                },
+                "pointsAwarded": {
+                  "type": "number"
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "criterionId",
+                "pointsAwarded",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "total": {
+            "type": "number"
+          },
+          "passes": {
+            "type": "boolean"
+          },
+          "minorSlips": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": "string"
+                },
+                "deductedPoints": {
+                  "type": "number"
+                },
+                "followOnDeduction": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "description",
+                "deductedPoints",
+                "followOnDeduction"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "diagnosis": {
+            "type": "string"
+          },
+          "translationsEquivalent": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "submissionId",
+          "scores",
+          "total",
+          "passes",
+          "minorSlips",
+          "diagnosis",
+          "translationsEquivalent"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "minimalCompletenessFindings": {
+      "type": "string"
+    },
+    "bilingualVerdict": {
+      "type": "string"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ownerContractVerdict": {
+      "type": "string"
+    },
+    "rule1Findings": {
+      "type": "string"
+    },
+    "rule2Findings": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "candidateDecision",
+    "requiredCorrections",
+    "semanticKind",
+    "semanticKindReason",
+    "coveredGoalIds",
+    "coverageVerdict",
+    "coverageReason",
+    "offerVerdict",
+    "offerReason",
+    "rubricPolicyVerdict",
+    "rubricPolicyReason",
+    "graded",
+    "minimalCompletenessFindings",
+    "bilingualVerdict",
+    "limitations",
+    "ownerContractVerdict",
+    "rule1Findings",
+    "rule2Findings"
+  ],
+  "additionalProperties": false
+}

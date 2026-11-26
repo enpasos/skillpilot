@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: Apache-2.0
-"""Source-led Physics placement authoring; never change goals or reviewed roles.
+"""Source-led Physics placement authoring over explicitly reviewed atomic roles.
 
 Source year/phase assignments and prerequisite-driven learning places are
 different facts. This replay preserves the former and logs every early demand.
@@ -241,9 +241,59 @@ class Author:
         return self.view
 
 
+
+def momentum_target_rows(view):
+    """Admit exactly the reviewed stage/course routes, never a whole cluster."""
+    state = view["scope"].get("jurisdiction", "DE").removeprefix("DE-")
+    stage, profile = view["scope"]["stage"], view["scope"].get("courseProfile")
+    return [row for row in SOURCE_PLAN["reviewedMomentumBindings"]["targets"]
+            if row["state"] == state and stage in ("CrossStage", row["stage"])
+            and (not row.get("courseProfiles") or profile in row["courseProfiles"])]
+
+
+def admit_momentum_targets(view):
+    view = copy.deepcopy(view)
+    selected = graph.role_atoms(view)["target"]
+    for row in momentum_target_rows(view):
+        atom = row["goalId"]
+        if graph.GOALS[atom].get("contains"):
+            raise ValueError("Reviewed momentum target must be atomic: " + atom)
+        if atom not in selected:
+            view["rootNodes"].append({"kind": "goalEntry", "goalId": atom})
+    return view
+
+
+def momentum_source_plan(view, topics, candidates):
+    """Primary PDF decisions are additional to immutable retained mappings."""
+    state = view["scope"]["jurisdiction"].removeprefix("DE-")
+    records = momentum_target_rows(view)
+    relocation = SOURCE_PLAN["reviewedMomentumBindings"]["derivationRelocations"].get(state)
+    if relocation and relocation["goalId"] in graph.role_atoms(view)["target"]:
+        records = [*records, {**relocation, "state": state, "ownPlacement": True}]
+    for row in records:
+        atom = row["goalId"]
+        unit = (row["stage"], row["unit"], row["label"], row["order"])
+        key = (row["unit"], row["topic"])
+        if row.get("sourcePath"):
+            actual = hashlib.sha256((ROOT / row["sourcePath"]).read_bytes()).hexdigest()
+            if actual != row["sourceSha256"]:
+                raise ValueError("Reviewed momentum primary source changed: " + row["sourcePath"])
+        passage = {k: row[k] for k in ("sourcePath", "sourceURL", "sourceSha256", "pages", "boundary", "basis") if k in row}
+        passage["canonicalGoalId"] = atom
+        passage["allocationBasis"] = ("own prerequisite-compatible deepening; no official atom or time claim" if row.get("ownPlacement")
+            else "reviewed elementary operationalisation of the complete primary-source performance")
+        if key in topics and topics[key].get("reviewedMomentumBinding"):
+            topics[key]["sourcePassages"].append(passage)
+        else:
+            topics[key] = {"unit": unit, "label": row["topic"], "sourcePassages": [passage], "reviewedMomentumBinding": True}
+        # A deliberate full-atom review outranks an old broad cluster mapping.
+        candidates[atom] = [(0, row["order"], key)]
+    return records
+
 def generate_bavaria(view):
     if view["scope"].get("jurisdiction") != "DE-BY":
         raise ValueError("Bavaria Physics authoring needs a DE-BY scope")
+    view = admit_momentum_targets(view)
     source, mapping = load_pinned(BY_EXTRACTION), load_pinned(BY_MAPPING)
     author = Author(view)
     author.normalize_learning_places()
@@ -276,6 +326,13 @@ def generate_bavaria(view):
             if len(expanded) <= 60:
                 for atom in expanded:
                     source_assignments.setdefault(atom, set()).add(goal["topicCode"])
+    # Correct only this primary-source assignment, not the retained consumer's
+    # target role or its earlier learning demand. An actual source year and an
+    # acquisition location are separate facts.
+    source_correction = SOURCE_PLAN["reviewedMomentumBindings"]["sourceAssignmentCorrections"]["BY"]
+    source_assignments[source_correction["goalId"]] = {source_correction["sourceTopicCode"]}
+    for momentum_row in momentum_target_rows(view):
+        source_assignments[momentum_row["goalId"]] = {"Ph10.2"}
     years, source_places, retained_support = [], {}, []
     for stage in stages:
         # Reopen only our own year wrappers during replay.
@@ -326,6 +383,18 @@ def generate_bavaria(view):
             destination["children"].append(node)
     if not years:
         raise ValueError("No applicable Bavaria year units")
+    # The new IMP atom is an explicit Ph10.2 source target, rather than a
+    # generic first-year supplement. Existing year and source bundles remain.
+    for row in momentum_target_rows(view):
+        reference = author.extract(row["goalId"])
+        destination = author.find("physics-by-ph10-2")
+        if reference is None or destination is None:
+            raise ValueError("Missing reviewed Bavaria momentum source place")
+        destination[2]["children"].append(reference)
+        source_places[row["goalId"]] = {"sourceTopicCodes": ["Ph10.2"], "sourceExtraction": BY_EXTRACTION,
+            "sourceURL": row["sourceURL"], "sourceSha256": row["sourceSha256"], "pages": row["pages"],
+            "basis": "new full-atom primary-source operationalisation, not an inherited broad Ph8 mapping"}
+
     # A target outside the authored stages belongs beside its first consumer;
     # global support references remain support and stay outside temporal claims.
     external_targets = [node for node in author.view["rootNodes"] if node is not root and author.atoms(node)]
@@ -377,6 +446,18 @@ def generate_bavaria(view):
     report = {"source_temporal_granularity": "SekI: J8/J9/J10; SekII: J11 introduction, J12/J13 qualification; no invented semester allocation",
               "missing_exam_unit": "Existing BY target scopes contain no separate Abitur examination goals; adding an empty or invented examination unit would change the scope or mislabel existing practice.",
               "sources": [{"path": path, "sha256": digest} for path, digest in SOURCE_PINS.items()],
+              "reviewedSourceAssignmentCorrections": [source_correction],
+              "reviewedMomentumBindings": momentum_target_rows(view),
+              "sourceAssignments": {
+                  **{row["goalId"]: {"sourceTopicCodes": ["Ph10.2"], "sourceURL": row["sourceURL"],
+                      "sourceSha256": row["sourceSha256"], "pages": row["pages"],
+                      "basis": "new full-atom primary-source operationalisation, not an inherited broad Ph8 mapping"}
+                      for row in momentum_target_rows(view)},
+                  **({source_correction["goalId"]: {
+                      "sourceTopicCodes": [source_correction["sourceTopicCode"]],
+                      "sourceExtraction": BY_EXTRACTION, "sourceURL": source_correction["sourceURL"],
+                      "sourceSha256": source_correction["sourceSha256"], "pages": source_correction["pages"]}}
+                      if source_correction["goalId"] in author.before["target"] else {})},
               "sourceTopics": [{"compositionNodeId": identifier, "topicCode": passage["topicCode"],
                   "title": passage["title"], "page": passage.get("page"), "sourceExtraction": BY_EXTRACTION,
                   "temporalUnitId": "physics-by-year-" + re.match(r"Ph(\d+)", passage["topicCode"])[1]}
@@ -666,6 +747,99 @@ def regular_source_default(ordered_specs, topics, stage):
     return (established or applicable)[0][1]
 
 
+
+def momentum_preparation_sibling(author, state):
+    """Give new mechanics content an honest heading before its old consumer.
+
+    Existing target places, calendar bands and source obligations stay exact.
+    A prerequisite demand never certifies the nuclear/relativity source topic.
+    """
+    imp = "53afbda1-5776-502b-8867-471975d7b766"
+    if state not in ("SL", "SN") or imp not in author.before["target"]:
+        return author.view, []
+    row = next(r for r in momentum_target_rows(author.view) if r["goalId"] == imp)
+    def target_paths(nodes, trail=()):
+        found = {}
+        for node in nodes:
+            if node["kind"] == "structure":
+                found.update(target_paths(node["children"], (*trail, node["id"])))
+            elif node.get("projectionRole") != "prerequisiteOnly" and node.get("goalId") in author.before["target"]:
+                found[node["goalId"]] = trail
+        return found
+    def reference_places(nodes, trail=()):
+        found = {}
+        for node in nodes:
+            if node["kind"] == "structure":
+                for atom, places in reference_places(node["children"], (*trail, node["id"])).items():
+                    found.setdefault(atom, []).extend(places)
+            else:
+                found.setdefault(node["goalId"], []).append((trail, node["kind"],
+                    node.get("projectionRole", "target"), node.get("acquisitionPlacement") is True))
+        return found
+    before = target_paths(author.view["rootNodes"])
+    before_references = reference_places(author.view["rootNodes"])
+    reference = author.extract(imp)
+    parent = author.find(f"physics-{state.lower()}-unit-{row['unit']}")
+    if reference is None or parent is None:
+        raise ValueError("Missing source-stage momentum preparation place")
+    identifier = f"physics-{state.lower()}-{row['unit']}-momentum-preparation"
+    orientation = "5c44b9ba-9b05-4774-95d5-073230d3fc4f"
+    shared_entry = state == "SL" and author.view["scope"]["stage"] == "SekII"
+    children = [reference]
+    if shared_entry:
+        # The existing broad WHY orientation and IMP need a shared first place;
+        # leaving WHY in the old nuclear wrapper creates a coarse unit cycle.
+        if orientation not in author.before["target"] or orientation not in graph.GOALS[imp].get("requires", []):
+            raise ValueError("Shared mechanics entry lost its actual orientation prerequisite")
+        intro = author.extract(orientation)
+        if intro is None:
+            raise ValueError("Missing existing subject orientation")
+        children.insert(0, intro)
+    label = "Einstieg und mechanische Grundlagen" if shared_entry else "Mechanische Grundlage: Impulse zweier Körper"
+    parent[2]["children"].insert(0, graph.structure(identifier, label, children))
+    # Reuse the final course projection's operative learning basis. Replaying
+    # the raw union normalizer here would import filtered LK calendar places.
+    operative = course_seeds(author.before["target"], graph.GOALS, author.view["scope"])
+    learning = operative | {p for atom in operative for p in graph.prerequisites(atom)}
+    author.active_learning_basis = author.learning_basis = learning
+    # L and all canonical requirements are unchanged. Preserve every existing
+    # acquisition place; rebuilding it here would flatten unrelated wrappers.
+    for parent_node in graph.walk(author.view["rootNodes"]):
+        if parent_node["kind"] != "structure":
+            continue
+        children = [n for n in parent_node["children"] if n["kind"] == "structure"]
+        temporal = [n["id"] for n in children if n["id"] in ("physics-seki", "physics-bw-seki", "physics-bw-sekii")
+            or n["id"].startswith("physics-sekii-")] if parent_node["id"] == "physics-root" else [n["id"] for n in children
+            if re.search(r"(?:-unit-|-year-|-seki-j)", n["id"]) or n["id"] in
+            ("physics-e-phase", "physics-q1", "physics-q2", "physics-q3", "physics-q4", "physics-abitur")]
+        if temporal:
+            author.temporal_children[parent_node["id"]] = temporal
+    for root_node in author.view["rootNodes"]:
+        author.thematic_orders(root_node)
+    author.view["rootNodes"] = author.clean(author.view["rootNodes"])
+    result = author.view
+    after = target_paths(result["rootNodes"])
+    allowed = {imp, orientation} if shared_entry else {imp}
+    if {k:v for k,v in before.items() if k not in allowed} != {k:v for k,v in after.items() if k not in allowed}:
+        raise ValueError("New momentum heading moved an established subject target")
+    after_references = reference_places(result["rootNodes"])
+    if {k:v for k,v in before_references.items() if k not in allowed} != {k:v for k,v in after_references.items() if k not in allowed}:
+        raise ValueError("New momentum heading moved an existing target or acquisition reference")
+    if shared_entry and (before[orientation][:3] != after[orientation][:3] or after[orientation][-1] != identifier):
+        raise ValueError("Shared mechanics orientation changed its calendar place")
+    if after[imp][-1] != identifier:
+        raise ValueError("New momentum preparation could not keep its own mechanics heading")
+    consumers = sorted(atom for atom in author.before["target"] if imp in graph.GOALS[atom].get("requires", []))
+    if not consumers:
+        raise ValueError("Own momentum preparation has no actual learning demand")
+    return result, [{"goalId": imp, "sourceTemporalUnit": row["unit"],
+        "sourceTopic": row["topic"], "from": list(before[imp]), "to": list(after[imp]),
+        "directConsumerGoalIds": consumers,
+        "allOtherTargetAndAcquisitionReferencePlacesUnchanged": True,
+        "reparentedExistingOrientation": [{"goalId": orientation, "from": list(before[orientation]), "to": list(after[orientation]),
+            "basis": "existing broad subject orientation shares an honest entry heading with IMP; role, year and learning results unchanged"}] if shared_entry else [],
+        "basis": "own mechanics preparation before actual consumers in the same source temporal unit; no official nuclear/relativity source claim and no established subject competency moved"}]
+
 def generate_source_land(view):
     """Rebuild only placements over the exact selected atomic scope.
 
@@ -673,6 +847,7 @@ def generate_source_land(view):
     unmatched existing scope remains an explicitly own supplementary placement.
     """
     state = view["scope"]["jurisdiction"].removeprefix("DE-")
+    view = admit_momentum_targets(view)
     view, own_new_tasks = reviewed_cross_stage_tasks(view, state)
     profile = view["scope"].get("courseProfile", "GK")
     topics, candidates, sources = retained_source_plan(state, profile)
@@ -681,6 +856,7 @@ def generate_source_land(view):
     for atom, choices in lower_candidates.items():
         candidates.setdefault(atom, []).extend(choices)
     sources.extend(lower_sources)
+    momentum_bindings = momentum_source_plan(view, topics, candidates)
     reviewed_lower = reviewed_lower_source_decisions(state, topics, candidates)
     if not topics:
         raise ValueError("No source-bound Physics temporal plan for " + state)
@@ -852,7 +1028,9 @@ def generate_source_land(view):
         author.thematic_orders(stage, repair=False)
     author.thematic_orders(root, repair=False)
     result = author.finish()
-    assignments = {atom: {"sourceTopic": chosen[atom], "sourcePassages": topics[chosen[atom]]["sourcePassages"]} for atom in chosen}
+    assignments = {atom: {"sourceTopic": chosen[atom], "sourcePassages": [passage
+        for passage in topics[chosen[atom]]["sourcePassages"]
+        if passage.get("canonicalGoalId", atom) == atom]} for atom in chosen}
     return result, {"source_temporal_granularity": [dict(zip(("stage", "unit", "label", "order"), spec)) for spec in ordered_specs],
                     "missing_exam_unit": None if exam_atoms else "The unchanged target scope has no separate Abitur examination goals.",
               "sourceSelectedLowerAtomicGoalIds": sorted(source_lower_seeds),
@@ -862,6 +1040,7 @@ def generate_source_land(view):
                         if atom in selected],
                     "authorisedNewOwnTaskSeeds": own_new_tasks,
                     "sources": sources, "ownPlacements": own_assignments,
+                    "reviewedMomentumBindings": momentum_bindings,
                     "sourceTopics": [{"compositionNodeId": f"physics-{state.lower()}-{key[0]}-topic-" + hashlib.sha256(key[1].encode()).hexdigest()[:12],
                         "temporalUnitId": f"physics-{state.lower()}-unit-{key[0]}", **topic} for key, topic in topics.items()],
                     "sourceAssignments": assignments,
@@ -1568,6 +1747,37 @@ def common_course_pair(gk, lk, generate):
     return gk_result, lk_result, report
 
 
+
+
+def preserve_unchanged_sibling_presentation_order(view, original):
+    """Retain authored tie order when membership and declared order are exact.
+
+    Computed source membership, parentage and after relations remain the gate.
+    An unchanged partial order does not require shuffling its independent
+    presentation siblings, including the already accepted preparation leaves.
+    """
+    from collections import Counter
+    previous = {n["id"]: n for n in graph.walk(original["rootNodes"]) if n["kind"] == "structure"}
+    def identity(node):
+        return (node["kind"], node.get("id", node.get("goalId")),
+                node.get("projectionRole", "target"), node.get("acquisitionPlacement") is True)
+    def pairs(node):
+        return {(p["unit"], p["after"]) for p in node.get("childOrder", {}).get("after", [])}
+    for node in graph.walk(view["rootNodes"]):
+        old = previous.get(node.get("id"))
+        if node["kind"] != "structure" or old is None or pairs(node) != pairs(old):
+            continue
+        current_keys = [identity(child) for child in node["children"]]
+        old_keys = [identity(child) for child in old["children"]]
+        if Counter(current_keys) == Counter(old_keys) and len(set(current_keys)) == len(current_keys):
+            children = dict(zip(current_keys, node["children"]))
+            node["children"] = [children[key] for key in old_keys]
+        if "childOrder" in node and "childOrder" in old:
+            after = {(p["unit"], p["after"]): p for p in node["childOrder"]["after"]}
+            node["childOrder"]["after"] = [after[(p["unit"], p["after"])] for p in old["childOrder"]["after"]]
+    return view
+
+
 def actual_acquisition_evidence(view):
     selected = course_seeds(graph.role_atoms(view)["target"], graph.GOALS, view["scope"])
     witnesses = []
@@ -1646,9 +1856,15 @@ def main():
             print("Common course planning: " + state + " " + stage, flush=True)
         gk, lk, evidence = common_course_pair(outputs[left][1], outputs[right][1], generate)
         for index, generated in ((left, gk), (right, lk)):
+            # Source reconstruction is deliberately course-neutral. Apply the
+            # new mechanics heading only after the final shared course plan,
+            # so its old target locations are the actual output contract.
+            generated, momentum_preparation_places = momentum_preparation_sibling(Author(generated), state)
             path = outputs[index][0]
+            generated = preserve_unchanged_sibling_presentation_order(generated, json.loads(path.read_text()))
             outputs[index] = (path, generated)
             report[index].update({"changed": json.loads(path.read_text()) != generated,
+                "reviewedNewMomentumPreparationPlaces": momentum_preparation_places,
                 "commonCoursePlanningAuthority": "one dependency-compatible union placement, projected onto unchanged course seeds; declared transitivity survives pruning",
                 "commonCourseEarlierDemandPlacements": evidence.get("earlierDemandPlacements", []),
                 "commonCourseRefinementPlacements": evidence.get("commonCourseRefinementPlacements", []),

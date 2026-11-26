@@ -1,0 +1,285 @@
+{
+  "candidateDecision": "needs_change",
+  "requiredCorrections": [
+    "Reweight M1 and M2 so that determining signed numerical momenta carries more than the two-point pass margin. For example, reserve 1.5 points in each snapshot for establishing both numerical magnitudes with their directions on the chosen axis. Use the remaining 1.5 for partial evidence of products, magnitudes and directions. A maintained speed-only method would then lose at least 3 points across the two snapshots, even with full credit for adding the learner’s own values.",
+    "Publish the revised allocation in both languages and align the shared marking notes with it. Preserve the once-only deduction of at most 0.5 for a demonstrably isolated slip, full credit for correct follow-through, and a pass decided solely by the point total. All grades below use the current allocation."
+  ],
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "This is a standalone ordinary assessment. It presents one bounded AB1 task, a worked solution and a scoring rubric for an existing curricular goal. Both snapshots exercise the same skill. The candidate is atomic, contains no child goals and fits the proposed direct placement under the Physics root. It introduces neither a curricular competency nor the breadth of a capstone or cluster.",
+  "coveredGoalIds": [
+    "53afbda1-5776-502b-8867-471975d7b766"
+  ],
+  "coverageVerdict": "accept_current",
+  "coverageReason": "The candidate’s sole direct requires edge and sole coveredGoalIds entry both identify the supplied ordinary goal. The task asks learners to choose an axis, determine the two signed momenta from simultaneous mass and velocity data, and add them. Snapshot I gives a nonzero resultant and II gives cancellation. Both are valid instances of the goal. The ordinary goal’s existing prerequisites stay in its learning basis. The assessment adds no prerequisite or separate mathematics goal.",
+  "offerVerdict": "accept_current",
+  "offerReason": "The six planned own-offer rows cover only HH and TH. In GK, LK and neutral SekI order, HH has lower target/basis counts of 131/197, 135/204 and 135/204. TH has 141/208 in each view. The covered goal is a lower target in every row, and all 22 objects in its recursive closure occur in each row’s actual lower learning basis. Each CrossStage row identifies its state’s neutral SekI authority with the matching view ID, path and SHA-256. The packet places the goal in HH grade 10 Mechanik III – Impuls, page 44, and TH regular grade 10 Impuls und zentrale Stöße, page 23. The work requires signed products and sums for given data. It requires no collision law, inter-snapshot conservation argument, separate mathematical competency or TH 11S content. N·s is an accepted unit, with no conversion exercise. The candidate asserts no official examination duty or task provenance. Its applicability boundary excludes HE despite the ordinary goal’s wider applicability.",
+  "rubricPolicyVerdict": "needs_change",
+  "rubricPolicyReason": "The maximum of 10 and the 8/10 pass meet the point and percentage limits. The four steps are concise. Their complete bilingual descriptions occupy 461, 1078, 893 and 1298 UTF-16 code units for D, M1, M2 and T respectively. Each of M1, M2 and T nominally carries 3 points, exceeding the 2-point margin. D gives 1 point for an explicit declaration, and a consistent axis remains visible elsewhere. The defect is within the three-point steps. A learner who explicitly discards direction loses only 0.5 for B in each snapshot and passes with 9, despite two physically wrong totals. Even losing all four sign components would leave 8 with otherwise full credit. The isolated-slip and follow-through rules are sound, and the published rubric has no separate pass gate.",
+  "graded": [
+    {
+      "submissionId": "S7701153822",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 0, "reason": "The signs imply right-positive, but the answer gives no explicit declaration."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "The labelled +2 and −1 establish both signed products. The shared unit is correct."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "The labelled +1 and −1 establish both signed products."},
+        {"criterionId": "T", "pointsAwarded": 3, "reason": "Both numerical additions are correct, giving +1 and 0."}
+      ],
+      "total": 9,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "All momentum calculations are correct. The missing axis declaration costs the D point once.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S4b336c1737",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses left as positive."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "Reverses the table signs and obtains −2 and +1 in N·s."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "The signed values −1 and +1 are correct on the chosen axis."},
+        {"criterionId": "T", "pointsAwarded": 3, "reason": "Adds the signed pairs to obtain −1 and 0."}
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "The left-positive axis and the shared equivalent unit are used consistently.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S25ffb31208",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 1, "reason": "Both directions are correct, earning 0.5 each. Comparing the magnitudes establishes neither numerical magnitude nor product."},
+        {"criterionId": "M2", "pointsAwarded": 1, "reason": "Both directions are correct. Equality of the magnitudes gives neither numerical value."},
+        {"criterionId": "T", "pointsAwarded": 0.5, "reason": "I gives only the sign of the total. II gives the correct total of zero without numerical individual values or a numerical sum."}
+      ],
+      "total": 3.5,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The qualitative account is physically correct and earns direction credit plus the stated zero result. The requested numerical determination is incomplete.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S625b49aea1",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 0, "reason": "No axis is chosen."},
+        {"criterionId": "M1", "pointsAwarded": 0, "reason": "The product formula is never applied to snapshot I."},
+        {"criterionId": "M2", "pointsAwarded": 0, "reason": "The product formula is never applied to snapshot II."},
+        {"criterionId": "T", "pointsAwarded": 0, "reason": "The generic sum contains no snapshot data or numerical result."}
+      ],
+      "total": 0,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Both formulas are correct. The rubric awards calculation points for their application to the data.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sd35e614654",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 2.5, "reason": "Both products and magnitudes earn credit under the sign-only rule. A’s sign is correct and B’s sign is wrong."},
+        {"criterionId": "M2", "pointsAwarded": 2.5, "reason": "The same speed-only rule again gives correct magnitudes and the wrong sign for B."},
+        {"criterionId": "T", "pointsAwarded": 3, "reason": "The learner correctly adds and evaluates both pairs of their own prior values, obtaining +3 and +2."}
+      ],
+      "total": 9,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "The learner explicitly treats momentum as always positive and applies that rule twice. This maintained misconception passes under the published weights.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S15cd7172f9",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "Both products, magnitudes and signs are correct."},
+        {"criterionId": "M2", "pointsAwarded": 0, "reason": "The learner replaces both moving carts’ momenta with zero. Neither value uses the given velocity or has the required magnitude or direction."},
+        {"criterionId": "T", "pointsAwarded": 3, "reason": "I correctly sums to +1. In II, 0+0 correctly adds the learner’s two stated values and evaluates to zero."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The false claim that zero total momentum requires both carts to be at rest changes both requested individual momenta. Its effect is scored in M2, with full follow-through in T.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Seed9d59913",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 0, "reason": "Neither individual momentum is stated for I."},
+        {"criterionId": "M2", "pointsAwarded": 0, "reason": "Neither individual momentum is stated for II."},
+        {"criterionId": "T", "pointsAwarded": 1, "reason": "The two correct bare totals earn 0.5 each."}
+      ],
+      "total": 2,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Both totals and their units are correct. Neither total establishes its individual summands.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S2441cac7c6",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 0, "reason": "The right-positive convention is apparent but undeclared."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "Correct signed products give +2 and −1 with a shared unit."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "Correct signed products give +1 and −1."},
+        {"criterionId": "T", "pointsAwarded": 1.5, "reason": "I shows the addition and correct total. II stops after the individual momenta."}
+      ],
+      "total": 7.5,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "All four individual momenta and one total are correct. The missing declaration and second total leave the score half a point below the cutoff.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Se3089856af",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "Both signed products and their unit are correct."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "Both signed products are correct."},
+        {"criterionId": "T", "pointsAwarded": 0, "reason": "Neither snapshot includes an addition or a total."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Determining every individual momentum without combining either pair falls below the cutoff.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sa151c9327e",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "The products give 2 to the right and 1 to the left, with a shared momentum unit."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "Both magnitudes are 1 and each has the correct direction."},
+        {"criterionId": "T", "pointsAwarded": 3, "reason": "Subtracting the opposing magnitudes gives the correct totals +1 and 0."}
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Direction words provide complete sign evidence and justify subtracting the opposing magnitudes.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S2145a9232f",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "Both signed products are correct."},
+        {"criterionId": "M2", "pointsAwarded": 0, "reason": "The bare zero total supplies neither labelled individual momentum in II."},
+        {"criterionId": "T", "pointsAwarded": 2, "reason": "I earns 1.5 for its addition and result. II earns 0.5 for the correct bare total."}
+      ],
+      "total": 6,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "I is complete. A zero total in II does not determine the two individual values.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S954fb5669f",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 0, "reason": "Only the total is supplied for I."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "Both signed products are correct."},
+        {"criterionId": "T", "pointsAwarded": 2, "reason": "I earns 0.5 for its bare total. II earns 1.5 for its addition and result."}
+      ],
+      "total": 6,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "II is complete. The individual momenta in I cannot be reconstructed from the stated +1.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Scff5cd66ba",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "Both products give the correct signed momenta +2 and −1."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "Both products give the correct signed momenta +1 and −1."},
+        {"criterionId": "T", "pointsAwarded": 3, "reason": "Both additions are shown and give +1 and 0 in the declared unit."}
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "The declared axis, four individual momenta, both totals and shared unit are correct.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Scf07a32f0b",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "The correct labelled values +2 and −1 establish both individual products."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "The correct labelled values +1 and −1 establish both individual products."},
+        {"criterionId": "T", "pointsAwarded": 0, "reason": "The learner subtracts an already negative momentum twice. Both operations are inappropriate and both totals are wrong."}
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "The repeated subtraction counts B’s direction twice. It is a maintained error in combining momenta.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S151d7fe73b",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 2.5, "reason": "A’s setup and sign are correct, but 0.50 × 4 is evaluated as 2.5. B is correct."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "Both signed products are correct."},
+        {"criterionId": "T", "pointsAwarded": 3, "reason": "I correctly evaluates 2.5+(−1) using the learner’s earlier value. II correctly sums to zero."}
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {"description": "Isolated multiplication error in A’s snapshot I magnitude, charged in M1.", "deductedPoints": 0.5, "followOnDeduction": false}
+      ],
+      "diagnosis": "The written products and signed sums establish the method. The arithmetic slip costs half a point once.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S7cb2eea939",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 2.5, "reason": "Both products are correct. The shared missing-unit deduction of 0.5 applies here first."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "Both signed products are correct. The shared unit omission has already been charged."},
+        {"criterionId": "T", "pointsAwarded": 1.5, "reason": "I shows the correct addition and total. II gives neither an addition nor a total."}
+      ],
+      "total": 8,
+      "passes": true,
+      "minorSlips": [
+        {"description": "Momentum units are missing throughout. The shared unit rule charges M1 once.", "deductedPoints": 0.5, "followOnDeduction": false}
+      ],
+      "diagnosis": "This passes exactly at the cutoff with four correct signed individual values and one correct total. The second total is missing.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S89bedfce19",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 3, "reason": "Both signed values are correct and carry momentum units."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "Both signed values are correct and carry momentum units."},
+        {"criterionId": "T", "pointsAwarded": 2.5, "reason": "Both additions and numerical totals are correct. Only the unit attached to the I total is wrong."}
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {"description": "The I total is labelled kg·m/s². Every other momentum unit is correct. The deduction belongs in T.", "deductedPoints": 0.5, "followOnDeduction": false}
+      ],
+      "diagnosis": "The surrounding units and calculations identify a single incorrect unit label.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S84f867953f",
+      "scores": [
+        {"criterionId": "D", "pointsAwarded": 1, "reason": "Explicitly chooses right as positive."},
+        {"criterionId": "M1", "pointsAwarded": 2.5, "reason": "B’s factor is correctly written as −1, but its product is recorded as +1. A is correct."},
+        {"criterionId": "M2", "pointsAwarded": 3, "reason": "Both products are correct, including the identical B product."},
+        {"criterionId": "T", "pointsAwarded": 3, "reason": "The I sum correctly follows the learner’s recorded +1 for B. II is fully correct."}
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {"description": "Isolated sign slip in the I result for B. The negative factor is visible and the same product is correct in II.", "deductedPoints": 0.5, "followOnDeduction": false}
+      ],
+      "diagnosis": "The repeated B calculation provides direct evidence that the first sign error was isolated. The resulting +3 incurs no further loss.",
+      "translationsEquivalent": true
+    }
+  ],
+  "minimalCompletenessFindings": "At 7.5, S2441cac7c6 gives all four individual momenta and one total with units but omits the axis declaration. At 8, S7cb2eea939 declares the axis, gives those same numerical results and omits units. The passing work demonstrates one full combination, while cancellation in II remains unevidenced. Omitting both totals caps the score at 7. Giving only the two correct totals and an axis earns 2. A complete snapshot plus a bare correct total for the other earns 6 in either order. Qualitative work here earns 3.5 and formulas alone earn 0. The serious false pass is Sd35e614654 at 9, with no correct treatment of the opposing directions in either pair. There is also a magnitude weakness: four correctly set-up products with correct signs but four wrong magnitudes can still earn 8 through full follow-through. An explanation of cancellation is optional. An appended scientifically false interpretation has no independent deduction under the shared notes if the requested results stand. When the claim replaces moving carts’ individual momenta with zeros, as in S15cd7172f9, it removes the corresponding numerical evidence.",
+  "bilingualVerdict": "The DE and EN task, solution, shared marking notes, four scoring steps and all 18 paired submissions are substantively equivalent. Decimal punctuation and direction phrasing do not change any score, including the treatment of equivalent axes, N·s, qualitative signs, bare totals and follow-through.",
+  "limitations": [
+    "The offer finding concerns planned exposure in the two supplied inputs. The recorded view and authority hashes agree internally. External files and deployed views were outside this review. The inner reviewStatus label does not establish release of the proposed candidate."
+  ]
+}

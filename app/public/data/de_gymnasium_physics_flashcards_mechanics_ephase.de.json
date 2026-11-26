@@ -204,7 +204,7 @@
     {
       "id": "physics_e_cov_015",
       "front": "2. Newtonsches Axiom für einen Körper konstanter Masse im Inertialsystem?",
-      "back": "Mit $\\vec p=m\\vec v$ gilt:\n\n$\\sum \\vec F_\\mathrm{ext}=\\frac{\\mathrm d\\vec p}{\\mathrm dt}=m\\vec a$",
+      "back": "$\\sum \\vec F_\\mathrm{ext}=m\\vec a$.\n\nDer Betrag der Beschleunigung ist $|\\vec a|=|\\sum\\vec F_\\mathrm{ext}|/m$. Bei von null verschiedener resultierender Kraft zeigt die Beschleunigung in deren Richtung.",
       "originGoalIds": [
         "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
       ],
@@ -260,7 +260,7 @@
     {
       "id": "physics_e_cov_020",
       "front": "Die drei Newtonschen Axiome in Kurzform?",
-      "back": "1: Im Inertialsystem gilt $\\sum \\vec F_\\mathrm{ext}=0 \\Rightarrow \\vec v=\\text{konstant}$.\n\n2: Für einen Körper konstanter Masse gilt $\\sum \\vec F_\\mathrm{ext}=\\frac{\\mathrm d\\vec p}{\\mathrm dt}=m\\vec a$.\n\n3: $\\vec F_{A\\to B}=-\\vec F_{B\\to A}$; beide Kräfte wirken gleichzeitig auf verschiedene Körper.",
+      "back": "1: Im Inertialsystem gilt $\\sum \\vec F_\\mathrm{ext}=0 \\Rightarrow \\vec v=\\text{konstant}$.\n\n2: Für einen Körper konstanter Masse im Inertialsystem gilt $\\sum \\vec F_\\mathrm{ext}=m\\vec a$.\n\n3: $\\vec F_{A\\to B}=-\\vec F_{B\\to A}$; beide Kräfte wirken gleichzeitig auf verschiedene Körper.",
       "originGoalIds": [
         "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
         "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
@@ -374,8 +374,8 @@
     },
     {
       "id": "physics_e_cov_028",
-      "front": "Wann ist der Gesamtimpuls eines Systems erhalten?",
-      "back": "Ist der resultierende äußere Kraftstoß im betrachteten Zeitintervall null, gilt vektoriell:\n\n$\\vec J_\\mathrm{ext}=\\int \\sum \\vec F_\\mathrm{ext}\\,\\mathrm dt=0 \\Rightarrow \\sum_i \\vec p_i=\\text{konstant}$",
+      "front": "Gesamtimpuls: gleiche Intervallgrenzwerte und fortlaufende Erhaltung?",
+      "back": "Im Inertialsystem gilt für ein materiell abgeschlossenes System mit $\\vec P=\\sum_i\\vec p_i$:\n\n$\\vec J_\\mathrm{ext}=0\\ \\Rightarrow\\ \\vec P(t_2)=\\vec P(t_1)$.\n\nDas allein garantiert keine Konstanz innerhalb des Intervalls. Verschwindet die resultierende äußere Kraft während des ganzen Intervalls, bleibt $\\vec P$ durchgehend konstant.",
       "originGoalIds": [
         "839ecc8f-3a60-418b-bc92-64bfeef33824"
       ],
@@ -389,7 +389,7 @@
     {
       "id": "physics_e_cov_029",
       "front": "Impulsbilanz mit äußeren Kräften?",
-      "back": "$\\frac{d}{dt} \\sum \\vec p= \\sum \\vec F_\\text{ext}$\n\nbei $\\sum \\vec F_\\text{ext}=0$ ist $\\sum \\vec p =$ konstant",
+      "back": "Im Inertialsystem gilt für ein materiell abgeschlossenes System mit Gesamtimpuls $\\vec P=\\sum_i\\vec p_i$:\n\n$\\frac{\\mathrm d\\vec P}{\\mathrm dt}=\\sum\\vec F_\\mathrm{ext}$.\n\nWenn die resultierende äußere Kraft während des ganzen betrachteten Intervalls null ist, bleibt $\\vec P$ durchgehend konstant.",
       "originGoalIds": [
         "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
       ],
@@ -1221,6 +1221,47 @@
         "LK",
         "goal:5a951a0b-fd6c-51a1-9ffb-2a34ed6d3931",
         "goal:c2c3cdc5-3e87-47c4-89fd-4eb2c5c2f2ea"
+      ]
+    },
+    {
+      "id": "physics_e_cov_092",
+      "front": "Einzelimpulse und Gesamtimpuls zweier Körper auf einer Geraden?",
+      "back": "Nach Wahl einer positiven Richtung gilt zu demselben Zeitpunkt:\n\n$p_1=m_1v_1,\\quad p_2=m_2v_2,\\quad P=p_1+p_2$.\n\nGeschwindigkeiten und Impulse tragen das Vorzeichen ihrer Richtung; bei Ruhe gilt $p=0$. Einheit des Impulses: $\\mathrm{kg\\,m/s}$.",
+      "originGoalIds": [
+        "53afbda1-5776-502b-8867-471975d7b766"
+      ],
+      "category": "E-Phase Mechanik",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:53afbda1-5776-502b-8867-471975d7b766"
+      ]
+    },
+    {
+      "id": "physics_e_cov_093",
+      "front": "Mittlere resultierende äußere Kraft aus zwei Impulswerten?",
+      "back": "Für einen Körper fester Masse auf einer Geraden im Inertialsystem und $t_2>t_1$:\n\n$\\overline F_{\\mathrm{res}}=\\frac{\\Delta p}{\\Delta t}=\\frac{p(t_2)-p(t_1)}{t_2-t_1}$.\n\nEinheit: $\\mathrm N=\\mathrm{kg\\,m/s^2}$. Das Vorzeichen bezieht sich auf die gewählte positive Richtung. Dies ist der Intervallmittelwert, nicht allgemein die Kraft zu einem einzelnen Zeitpunkt.",
+      "originGoalIds": [
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+      ],
+      "category": "E-Phase Mechanik",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:ecbaa101-cb10-5da3-9368-ae40ff587d74"
+      ]
+    },
+    {
+      "id": "physics_e_cov_094",
+      "front": "Momentane resultierende äußere Kraft im Impuls-Zeit-Diagramm?",
+      "back": "Für einen Körper fester Masse auf einer Geraden im Inertialsystem gilt:\n\n$F_{\\mathrm{res}}(t)=\\frac{\\mathrm dp}{\\mathrm dt}$.\n\nSie entspricht der Tangentensteigung am betrachteten Zeitpunkt, nicht der Sekantensteigung über ein endliches Intervall. Ihr Vorzeichen folgt der gewählten positiven Richtung; ihre Einheit ist $\\mathrm N$.",
+      "originGoalIds": [
+        "059c1adc-e4d2-5222-a923-15abc417d59f"
+      ],
+      "category": "E-Phase Mechanik",
+      "tags": [
+        "LK",
+        "goal:059c1adc-e4d2-5222-a923-15abc417d59f"
       ]
     }
   ],

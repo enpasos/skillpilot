@@ -1,0 +1,991 @@
+{
+  "schema": "physics-hessian-e2-child-structures-successor-v1",
+  "countDefinition": "targetCount is the raw authored target role; eligibleCourseTargetCount additionally applies the current native course filter. Neither count reads individual learner choices or results.",
+  "predecessor": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e2-child-structures-2026-11-25/regrouping.actual.json",
+    "sha256": "c0c31feda905e80b2609ef8f9916cc2d7e88e916f6d2d4459cb5e15de785bb1a",
+    "unchanged": true
+  },
+  "delta": "One new IMP target in child 6; RATE-M and RATE-I are acquisition prerequisites before the LK derivation, no new declared learning unit.",
+  "source": {
+    "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kernkurriculum_gymnasiale_oberstufe-physik.pdf",
+    "sha256": "46f3e728b5d9fc6b5901f191247951a4a9d9c3df641afa60ca8b17a2e049813f",
+    "pages": [
+      30
+    ]
+  },
+  "views": [
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g8.view.json",
+      "sha256": "6b65f9d0c098521a16c0f91f9469fbe9cc017e30baadb1e74baaa6b9b0c3a10c",
+      "childStructures": [
+        {
+          "id": "physics-e2-inertia",
+          "label": "Trägheit: Was ohne Kraft geschieht",
+          "targetGoalIds": [
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "targetCount": 3,
+          "eligibleCourseTargetGoalIds": [
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "eligibleCourseTargetCount": 3,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-mass-acceleration",
+          "label": "Kraft, Masse und Beschleunigung",
+          "targetGoalIds": [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-and-counterforce",
+          "label": "Kraft und Gegenkraft",
+          "targetGoalIds": [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-several-forces",
+          "label": "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+          "targetGoalIds": [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-energy",
+          "label": "Energie bleibt erhalten",
+          "targetGoalIds": [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "targetCount": 6,
+          "eligibleCourseTargetGoalIds": [
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "eligibleCourseTargetCount": 6,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-momentum",
+          "label": "Impuls und Stöße",
+          "targetGoalIds": [
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "targetCount": 8,
+          "eligibleCourseTargetGoalIds": [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "eligibleCourseTargetCount": 8,
+          "acquiredPrerequisiteIds": []
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk-g9.view.json",
+      "sha256": "0baed0d4e71f9587ceb8632926d8376c0f725a608e4b3aad51f9ce34fcee20de",
+      "childStructures": [
+        {
+          "id": "physics-e2-inertia",
+          "label": "Trägheit: Was ohne Kraft geschieht",
+          "targetGoalIds": [
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "targetCount": 3,
+          "eligibleCourseTargetGoalIds": [
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "eligibleCourseTargetCount": 3,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-mass-acceleration",
+          "label": "Kraft, Masse und Beschleunigung",
+          "targetGoalIds": [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-and-counterforce",
+          "label": "Kraft und Gegenkraft",
+          "targetGoalIds": [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-several-forces",
+          "label": "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+          "targetGoalIds": [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-energy",
+          "label": "Energie bleibt erhalten",
+          "targetGoalIds": [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "targetCount": 6,
+          "eligibleCourseTargetGoalIds": [
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "eligibleCourseTargetCount": 6,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-momentum",
+          "label": "Impuls und Stöße",
+          "targetGoalIds": [
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "targetCount": 8,
+          "eligibleCourseTargetGoalIds": [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "eligibleCourseTargetCount": 8,
+          "acquiredPrerequisiteIds": []
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-gk.view.json",
+      "sha256": "60d9247f0caf7d79de91186b1830d35bffd99f1297c4d91ef8200287fa1592e1",
+      "childStructures": [
+        {
+          "id": "physics-e2-inertia",
+          "label": "Trägheit: Was ohne Kraft geschieht",
+          "targetGoalIds": [
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "targetCount": 3,
+          "eligibleCourseTargetGoalIds": [
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "eligibleCourseTargetCount": 3,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-mass-acceleration",
+          "label": "Kraft, Masse und Beschleunigung",
+          "targetGoalIds": [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-and-counterforce",
+          "label": "Kraft und Gegenkraft",
+          "targetGoalIds": [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-several-forces",
+          "label": "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+          "targetGoalIds": [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-energy",
+          "label": "Energie bleibt erhalten",
+          "targetGoalIds": [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "targetCount": 6,
+          "eligibleCourseTargetGoalIds": [
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "eligibleCourseTargetCount": 6,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-momentum",
+          "label": "Impuls und Stöße",
+          "targetGoalIds": [
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "targetCount": 8,
+          "eligibleCourseTargetGoalIds": [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "eligibleCourseTargetCount": 8,
+          "acquiredPrerequisiteIds": []
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g8.view.json",
+      "sha256": "0bf9265c6ef9a8722321dfdc30713cfeed1377e285f8a197e591511d755e4811",
+      "childStructures": [
+        {
+          "id": "physics-e2-inertia",
+          "label": "Trägheit: Was ohne Kraft geschieht",
+          "targetGoalIds": [
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "targetCount": 3,
+          "eligibleCourseTargetGoalIds": [
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "eligibleCourseTargetCount": 3,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-mass-acceleration",
+          "label": "Kraft, Masse und Beschleunigung",
+          "targetGoalIds": [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-and-counterforce",
+          "label": "Kraft und Gegenkraft",
+          "targetGoalIds": [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-several-forces",
+          "label": "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+          "targetGoalIds": [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-energy",
+          "label": "Energie bleibt erhalten",
+          "targetGoalIds": [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "targetCount": 6,
+          "eligibleCourseTargetGoalIds": [
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "eligibleCourseTargetCount": 6,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-momentum",
+          "label": "Impuls und Stöße",
+          "targetGoalIds": [
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "targetCount": 9,
+          "eligibleCourseTargetGoalIds": [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "eligibleCourseTargetCount": 9,
+          "acquiredPrerequisiteIds": [
+            "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+            "059c1adc-e4d2-5222-a923-15abc417d59f"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk-g9.view.json",
+      "sha256": "6785078a35cf22fc0e0f39d209f9575e5cd21a538e41a16be4c7e953a2eaae3f",
+      "childStructures": [
+        {
+          "id": "physics-e2-inertia",
+          "label": "Trägheit: Was ohne Kraft geschieht",
+          "targetGoalIds": [
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "targetCount": 3,
+          "eligibleCourseTargetGoalIds": [
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "eligibleCourseTargetCount": 3,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-mass-acceleration",
+          "label": "Kraft, Masse und Beschleunigung",
+          "targetGoalIds": [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-and-counterforce",
+          "label": "Kraft und Gegenkraft",
+          "targetGoalIds": [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-several-forces",
+          "label": "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+          "targetGoalIds": [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-energy",
+          "label": "Energie bleibt erhalten",
+          "targetGoalIds": [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "targetCount": 6,
+          "eligibleCourseTargetGoalIds": [
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "eligibleCourseTargetCount": 6,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-momentum",
+          "label": "Impuls und Stöße",
+          "targetGoalIds": [
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "targetCount": 9,
+          "eligibleCourseTargetGoalIds": [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "eligibleCourseTargetCount": 9,
+          "acquiredPrerequisiteIds": [
+            "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+            "059c1adc-e4d2-5222-a923-15abc417d59f"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-lk.view.json",
+      "sha256": "ab208082b13bc38bbf74ff1896b19973b18ad018e33fc41568076a8d1677da53",
+      "childStructures": [
+        {
+          "id": "physics-e2-inertia",
+          "label": "Trägheit: Was ohne Kraft geschieht",
+          "targetGoalIds": [
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "targetCount": 3,
+          "eligibleCourseTargetGoalIds": [
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "eligibleCourseTargetCount": 3,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-mass-acceleration",
+          "label": "Kraft, Masse und Beschleunigung",
+          "targetGoalIds": [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-and-counterforce",
+          "label": "Kraft und Gegenkraft",
+          "targetGoalIds": [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-several-forces",
+          "label": "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+          "targetGoalIds": [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-energy",
+          "label": "Energie bleibt erhalten",
+          "targetGoalIds": [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "targetCount": 6,
+          "eligibleCourseTargetGoalIds": [
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "eligibleCourseTargetCount": 6,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-momentum",
+          "label": "Impuls und Stöße",
+          "targetGoalIds": [
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "targetCount": 9,
+          "eligibleCourseTargetGoalIds": [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "eligibleCourseTargetCount": 9,
+          "acquiredPrerequisiteIds": [
+            "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+            "059c1adc-e4d2-5222-a923-15abc417d59f"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-gk.view.json",
+      "sha256": "7e9f28936fbe649a2ffd5d9b7fac30b7e1e97e08162b4d44b6bda727259dd096",
+      "childStructures": [
+        {
+          "id": "physics-e2-inertia",
+          "label": "Trägheit: Was ohne Kraft geschieht",
+          "targetGoalIds": [
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "targetCount": 3,
+          "eligibleCourseTargetGoalIds": [
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "eligibleCourseTargetCount": 3,
+          "acquiredPrerequisiteIds": [
+            "5ea765ac-c279-551a-8a94-a07da2381e5b"
+          ]
+        },
+        {
+          "id": "physics-e2-force-mass-acceleration",
+          "label": "Kraft, Masse und Beschleunigung",
+          "targetGoalIds": [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-and-counterforce",
+          "label": "Kraft und Gegenkraft",
+          "targetGoalIds": [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-several-forces",
+          "label": "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+          "targetGoalIds": [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-energy",
+          "label": "Energie bleibt erhalten",
+          "targetGoalIds": [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "targetCount": 6,
+          "eligibleCourseTargetGoalIds": [
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "eligibleCourseTargetCount": 6,
+          "acquiredPrerequisiteIds": [
+            "722857cf-f327-5740-8151-64eb92195ec8"
+          ]
+        },
+        {
+          "id": "physics-e2-momentum",
+          "label": "Impuls und Stöße",
+          "targetGoalIds": [
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2"
+          ],
+          "targetCount": 8,
+          "eligibleCourseTargetGoalIds": [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb"
+          ],
+          "eligibleCourseTargetCount": 8,
+          "acquiredPrerequisiteIds": []
+        }
+      ]
+    },
+    {
+      "file": "curricula/DE/Gymnasium/composition-views/physik/de-he-sekii-lk.view.json",
+      "sha256": "3d909cd1d8e1fdf7fa17cdbe0c7f069282c105c42b54d7c42d4bec7d2d94e6b1",
+      "childStructures": [
+        {
+          "id": "physics-e2-inertia",
+          "label": "Trägheit: Was ohne Kraft geschieht",
+          "targetGoalIds": [
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+            "00245a43-eb89-47d2-92d7-21799dbec9f3"
+          ],
+          "targetCount": 3,
+          "eligibleCourseTargetGoalIds": [
+            "00245a43-eb89-47d2-92d7-21799dbec9f3",
+            "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+            "32b896b9-f2f1-4d4e-96ad-e869ac3d3759"
+          ],
+          "eligibleCourseTargetCount": 3,
+          "acquiredPrerequisiteIds": [
+            "5ea765ac-c279-551a-8a94-a07da2381e5b"
+          ]
+        },
+        {
+          "id": "physics-e2-force-mass-acceleration",
+          "label": "Kraft, Masse und Beschleunigung",
+          "targetGoalIds": [
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+            "5f289cdc-fda1-4058-b44f-041ba1398e79"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "5f289cdc-fda1-4058-b44f-041ba1398e79",
+            "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-force-and-counterforce",
+          "label": "Kraft und Gegenkraft",
+          "targetGoalIds": [
+            "ad984bb6-e225-432a-952d-d83cda40b7f8",
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+            "ad984bb6-e225-432a-952d-d83cda40b7f8"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-several-forces",
+          "label": "Mehrere Kräfte zugleich: schiefe Ebene, Reibung, Bremsen",
+          "targetGoalIds": [
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a"
+          ],
+          "targetCount": 2,
+          "eligibleCourseTargetGoalIds": [
+            "4a2bf015-052b-4af0-aed7-324259fa1a8a",
+            "5fd45dbc-0eb1-591b-99a9-7386336f1456"
+          ],
+          "eligibleCourseTargetCount": 2,
+          "acquiredPrerequisiteIds": []
+        },
+        {
+          "id": "physics-e2-energy",
+          "label": "Energie bleibt erhalten",
+          "targetGoalIds": [
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "253a71d2-e751-4c63-acbe-238b71463cd8"
+          ],
+          "targetCount": 6,
+          "eligibleCourseTargetGoalIds": [
+            "253a71d2-e751-4c63-acbe-238b71463cd8",
+            "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+            "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+            "91c49019-ea51-4ce5-a919-c91c45b25e83",
+            "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+            "c1c71daa-042b-4f4c-8c31-0ac366f5149e"
+          ],
+          "eligibleCourseTargetCount": 6,
+          "acquiredPrerequisiteIds": [
+            "722857cf-f327-5740-8151-64eb92195ec8"
+          ]
+        },
+        {
+          "id": "physics-e2-momentum",
+          "label": "Impuls und Stöße",
+          "targetGoalIds": [
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "targetCount": 9,
+          "eligibleCourseTargetGoalIds": [
+            "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+            "1232febe-868a-4dac-b4c2-e35789434601",
+            "2eecd0e2-a7ca-4568-9b12-3d47706c65fb",
+            "53afbda1-5776-502b-8867-471975d7b766",
+            "839ecc8f-3a60-418b-bc92-64bfeef33824",
+            "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+            "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+            "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+            "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+          ],
+          "eligibleCourseTargetCount": 9,
+          "acquiredPrerequisiteIds": [
+            "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+            "059c1adc-e4d2-5222-a923-15abc417d59f"
+          ]
+        }
+      ]
+    }
+  ]
+}

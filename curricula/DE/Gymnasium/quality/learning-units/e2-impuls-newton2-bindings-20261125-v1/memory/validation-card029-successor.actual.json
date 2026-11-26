@@ -1,0 +1,84 @@
+{
+  "schema": "e2-memory-card029-successor-validation-v1",
+  "validatedAt": "2026-11-25T14:39:38Z",
+  "actor": "OpenAI Codex · E.2-Kartenautorenprüfung",
+  "predecessorValidation": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/memory/validation.actual.json",
+    "sha256": "8aa81505b0e57726966c1b19ab8af8e55e025b8fd94d0f2600202c1f9535f65c"
+  },
+  "cardSuccessor": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/memory/card029-author-successor.actual.json",
+    "sha256": "76665f05265f813dd5f1c24542993b32aa49e1a8c79be5c4c6462d35c6a4ac45"
+  },
+  "automatedChecks": [
+    {
+      "command": "npm --prefix app run quality:memory-card-review:check:all",
+      "exitCode": 0,
+      "activeConfigCount": 10
+    },
+    {
+      "command": "npm --prefix app run check:memory-deck-origins",
+      "exitCode": 0
+    },
+    {
+      "command": "KaTeX renderToString with throwOnError and strict error for seven scoped DE/EN cards",
+      "exitCode": 0,
+      "formulaBlocks": 38
+    },
+    {
+      "command": "DE/EN byte comparison with frontend and backend deployed deck copies",
+      "exitCode": 0
+    }
+  ],
+  "physicsMetrics": {
+    "Ordinary atomic goals in scope": 493,
+    "Current no-memory decisions": 360,
+    "Current memory-required decisions": 133,
+    "Current needs developer review": 0,
+    "Memory goals in scope": 5,
+    "Traced memory goals": 5,
+    "Known deck IDs": 5,
+    "Deck files": 6,
+    "Card rows": 239,
+    "Primary cards in scope": 149,
+    "Kept primary cards": 149,
+    "Cards marked remove": 0,
+    "Cards needing developer review": 0,
+    "Missing review records": 0,
+    "Stale review records": 0,
+    "Obsolete review records": 0,
+    "Missing card review records": 0,
+    "Stale card review records": 0,
+    "Obsolete card review records": 0,
+    "Deck card origin issues": 0,
+    "Composition visibility scopes": 3,
+    "Memory-required goals checked in views": 371,
+    "Memory-required goals without visible memory node": 0
+  },
+  "activeFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json",
+      "sha256": "5d8b823983dd5af1cff05b98c33ee07345a38f78fecd33c91fb642fe671551b5"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+      "sha256": "7fe90cbf6be1778f9f715bc5b3c74598b8ac43737d0cab5093a46d60acc0ebeb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.cards.review.jsonl",
+      "sha256": "6929f5a0d0aea61a1fc8d86d1c6afd34938108f09b4e9975f11f1e6ca28f3b99"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.de.json",
+      "sha256": "b6b057b64cf562844ab37f19ff7b75204e062c873376806cf0b6ea4f10be2f64"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.en.json",
+      "sha256": "11c165f49c3bd47092b1a16c36bd0695cd2afc28d229954a6d9dc7821e3f51df"
+    }
+  ],
+  "independentReview": false,
+  "humanApproval": false,
+  "needsFreshIndependentCard029Review": true,
+  "rawLogsCommitted": false
+}

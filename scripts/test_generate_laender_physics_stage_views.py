@@ -11,14 +11,17 @@ import generate_laender_physics_stage_views as authoring
 from generate_physics_partial_orders import acquisition_placements, partial_order, course_seeds, contextual_targets
 
 REVIEWED_LOWER_ASSESSMENTS = {
+    "BW": {"b50e9903-58b3-520d-96bf-d5bc1fe51ebf"},
     "MV": {"3b7b2b62-e39c-5936-b0d8-5406206e57b6", "e6a89922-75ce-53dd-9e7b-3a683398431c"},
-    "HH": {"797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00", "884bd99b-2373-5174-af7c-c6813b91bd93"},
+    "HH": {"d8fc6295-d0db-59e5-bd90-080bbc508c3a", "797f5e93-b5fd-5ee3-9fb2-fcc9e1d12a00", "884bd99b-2373-5174-af7c-c6813b91bd93"},
     "SL": {"ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b", "11c964ff-be82-5d02-8cd7-ccb41cda8f4f", "e0932fef-9e1c-5c95-b00c-7589e76d0e83", "3b7b2b62-e39c-5936-b0d8-5406206e57b6", "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04", "f602680f-ea75-5bed-ae87-72f6be34a99b"},
     "SN": {"11c964ff-be82-5d02-8cd7-ccb41cda8f4f", "e0932fef-9e1c-5c95-b00c-7589e76d0e83", "f41e4e30-794e-5ce4-ba5e-cc72712cd691", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08", "57a03b38-5ec5-5e4f-b71a-4024bab1584c", "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04", "f602680f-ea75-5bed-ae87-72f6be34a99b", "a8dc0290-9f80-5763-8943-e16b8d2aa860"},
     "ST": {"a8dc0290-9f80-5763-8943-e16b8d2aa860", "ef2bb474-89e1-5deb-81c4-c6b05d174bbd", "44ada28b-8635-5481-8d09-2d91686d352b", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"},
-    "TH": {"14cc61c4-4909-5671-b1ee-930a02cb9f51", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"},
+    "TH": {"d8fc6295-d0db-59e5-bd90-080bbc508c3a", "14cc61c4-4909-5671-b1ee-930a02cb9f51", "7cfaf48e-e420-5c09-8ec2-932f0dba4d08"},
 }
 NEW_TASK_OFFERS = {
+    "d8fc6295-d0db-59e5-bd90-080bbc508c3a": {"DE-HH", "DE-TH"},
+    "b50e9903-58b3-520d-96bf-d5bc1fe51ebf": {"DE-BW"},
     "3b7b2b62-e39c-5936-b0d8-5406206e57b6": {"DE-MV", "DE-SL"},
     "e6a89922-75ce-53dd-9e7b-3a683398431c": {"DE-MV"},
     # Since the E.1 cut (23 Nov 2026) the two-series free-fall task also closes Hessian E.1 child unit 2.
@@ -138,13 +141,36 @@ if len(RETIRED_MIXED_MOTION_OFFER_VIEWS) != 64:
     raise AssertionError("Changed reviewed view set of the retired mixed E.1 assessment")
 
 
+
+MOMENTUM_IDS = {"53afbda1-5776-502b-8867-471975d7b766", "ecbaa101-cb10-5da3-9368-ae40ff587d74", "059c1adc-e4d2-5222-a923-15abc417d59f"}
+
+def momentum_delta(view, roles):
+    """Independent expected full-competence routes, not the authoring policy."""
+    state, stage = view["scope"].get("jurisdiction", "DE"), view["scope"]["stage"]
+    profile = view["scope"].get("courseProfile")
+    imp, mean, instant = "53afbda1-5776-502b-8867-471975d7b766", "ecbaa101-cb10-5da3-9368-ae40ff587d74", "059c1adc-e4d2-5222-a923-15abc417d59f"
+    lower = {"DE-BW", "DE-BY", "DE-HH", "DE-TH"}
+    upper = {"DE-HB", "DE-HE", "DE-MV", "DE-NW", "DE-RP", "DE-SH", "DE-SL"}
+    expected = set()
+    if (state in lower and stage in ("CrossStage", "SekI")) or (state in upper and stage in ("CrossStage", "SekII")):
+        expected.add(imp)
+    if state == "DE-BW" and stage in ("CrossStage", "SekI"):
+        expected.add(mean)
+    if state in ("DE-SN", "DE-ST") and profile == "LK" and stage in ("CrossStage", "SekII"):
+        expected.add(imp)
+        if state == "DE-SN":
+            expected.update((mean, instant))
+    if roles["target"] & MOMENTUM_IDS != expected:
+        raise AssertionError("Changed reviewed momentum target delta: " + view["viewId"])
+    return expected
+
 def retained_authority_seeds(view, roles, baseline):
     """Remove only explicit reviewed additions, then enforce the old authority."""
     allowed_new_task = set()
     stage = view["scope"]["stage"]
     state = view["scope"].get("jurisdiction", "DE")
     if stage == "CrossStage":
-        allowed_new_task = (set(NEW_TASK_OFFERS) - {NEW_EYE_ASSESSMENT_ID} if state == "DE" else
+        allowed_new_task = (set(NEW_TASK_OFFERS) - {NEW_EYE_ASSESSMENT_ID, "b50e9903-58b3-520d-96bf-d5bc1fe51ebf", "d8fc6295-d0db-59e5-bd90-080bbc508c3a"} if state == "DE" else
             {task for task, states in NEW_TASK_OFFERS.items() if state in states})
         if view["scope"]["courseProfile"] == "GK":
             allowed_new_task -= LK_ONLY_NEW_TASKS
@@ -157,6 +183,7 @@ def retained_authority_seeds(view, roles, baseline):
     if view["viewId"] in HESSEN_GUIDED_OPENING_VIEWS:
         allowed_new_task.update(HESSEN_GUIDED_OPENINGS)
     allowed_new_task.update(measurement_delta(view, roles))
+    allowed_new_task.update(momentum_delta(view, roles))
     if not allowed_new_task <= roles["target"]:
         raise AssertionError("A reviewed addition is missing")
     retained = roles["target"] - allowed_new_task
@@ -209,6 +236,186 @@ class PhysicsStageAuthoring(unittest.TestCase):
     def setUpClass(cls):
         cls.views = {path.name: json.loads(path.read_text()) for path in authoring.DIRECTORY.glob("*.view.json")}
         cls.authorities = json.loads((authoring.ROOT / "scripts/generate_laender_physics_stage_views.memberships.json").read_text())["authorities"]
+
+    def test_lower_momentum_closing_tasks_follow_the_approved_selection(self):
+        offers = {
+            "d8fc6295-d0db-59e5-bd90-080bbc508c3a": {"DE-HH", "DE-TH"},
+            "b50e9903-58b3-520d-96bf-d5bc1fe51ebf": {"DE-BW"},
+        }
+        selection = json.loads((authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v4/closing-task-selection.actual.json").read_text())
+        self.assertEqual(set(selection["approvedAssessmentGoalIds"]), {"d8fc6295-d0db-59e5-bd90-080bbc508c3a", "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"})
+        self.assertIn("d8fc6295-d0db-59e5-bd90-080bbc508c3a", authoring.graph.GOALS)
+        approved = set(selection["approvedAssessmentGoalIds"])
+        pairs = set()
+        for view in self.views.values():
+            roles = authoring.graph.role_atoms(view)
+            for task, states in offers.items():
+                expected = task in approved and view["scope"].get("jurisdiction") in states and view["scope"]["stage"] in ("CrossStage", "SekI")
+                with self.subTest(view=view["viewId"], task=task):
+                    self.assertEqual(task in roles["target"], expected)
+                    self.assertNotIn(task, roles["prerequisiteOnly"])
+                    if expected:
+                        pairs.add((view["viewId"], task))
+        self.assertEqual(len(pairs), selection["expectedActualOfferCount"])
+
+    def test_lower_momentum_closures_add_no_missing_preparation(self):
+        covered = {"d8fc6295-d0db-59e5-bd90-080bbc508c3a": "53afbda1-5776-502b-8867-471975d7b766",
+                   "b50e9903-58b3-520d-96bf-d5bc1fe51ebf": "ecbaa101-cb10-5da3-9368-ae40ff587d74"}
+        for state, task in (("BW", "b50e9903-58b3-520d-96bf-d5bc1fe51ebf"), ("HH", "d8fc6295-d0db-59e5-bd90-080bbc508c3a"), ("TH", "d8fc6295-d0db-59e5-bd90-080bbc508c3a")):
+            view = self.views[f"de-{state.lower()}-seki.view.json"]
+            seeds = authoring.graph.role_atoms(view)["target"] - covered.keys()
+            basis = seeds | {p for seed in seeds for p in authoring.graph.prerequisites(seed)}
+            goal = authoring.graph.GOALS[task]
+            self.assertEqual(goal["requires"], [covered[task]])
+            self.assertEqual(goal["examData"]["coveredGoalIds"], [covered[task]])
+            self.assertEqual(authoring.graph.prerequisites(task) - basis, set())
+            binding = authoring.SOURCE_PLAN["reviewedLowerAssessmentBindings"][state]["assessments"][task]
+            for key in ("independentReview", "offerReview"):
+                self.assertTrue((authoring.ROOT / binding[key]).is_file(), binding[key])
+            # A reviewed offer cannot import an absent competency to make its complete task fit.
+            missing = next(identifier for identifier, data in sorted(authoring.graph.GOALS.items())
+                           if identifier not in basis and identifier not in covered and not data.get("contains"))
+            forged = copy.deepcopy(goal)
+            forged["requires"] = [covered[task], missing]
+            plan = copy.deepcopy(authoring.SOURCE_PLAN)
+            plan["reviewedLowerAssessmentBindings"][state]["assessments"][task]["requires"] = forged["requires"]
+            with patch.dict(authoring.graph.GOALS, {task: forged}), patch.object(authoring, "SOURCE_PLAN", plan):
+                authoring.graph.prerequisites.cache_clear()
+                try:
+                    result, report = authoring.lower_excerpt(self.views[f"de-{state.lower()}-lk.view.json"], seeds)
+                    self.assertNotIn(task, authoring.graph.role_atoms(result)["target"])
+                    self.assertNotIn(missing, report["learningBasisAtomicGoalIds"])
+                    self.assertTrue(any(row["goalId"] == task and missing in row["missingActualPreparation"]
+                                        for row in report["inactiveReviewedLowerAssessments"]))
+                finally:
+                    authoring.graph.prerequisites.cache_clear()
+
+    def test_momentum_closures_preserve_all_old_reference_places_and_order(self):
+        path = authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v4/baseline-reference-places.actual.json"
+        baseline = json.loads(path.read_text())
+        additions = {"d8fc6295-d0db-59e5-bd90-080bbc508c3a"}
+        self.assertEqual(len(baseline["views"]), 90)
+        for row in baseline["views"]:
+            view = self.views[row["path"].rsplit("/", 1)[1]]
+            references = []
+            def visit(nodes, trail=()):
+                for node in nodes:
+                    if node["kind"] == "structure":
+                        visit(node["children"], (*trail, node["id"]))
+                    elif node.get("goalId") not in additions:
+                        references.append({"path": trail, "reference": node})
+            visit(view["rootNodes"])
+            digest = hashlib.sha256(json.dumps(references, ensure_ascii=True, sort_keys=True,
+                                               separators=(",", ":")).encode()).hexdigest()
+            with self.subTest(view=view["viewId"]):
+                self.assertEqual(len(references), row["referenceCount"])
+                self.assertEqual(digest, row["orderedReferencePlacesSha256"])
+
+    def test_momentum_target_routes_and_uncovered_electives(self):
+        for view in self.views.values():
+            with self.subTest(view=view["viewId"]):
+                momentum_delta(view, authoring.graph.role_atoms(view))
+        for state in ("BE", "BB"):
+            decision = authoring.SOURCE_PLAN["reviewedMomentumBindings"]["excludedElectives"][state]
+            self.assertEqual(decision["pages"], [17, 21])
+            self.assertEqual(decision["schoolForms"], (["Integrierte Sekundarschule", "Gemeinschaftsschule"] if state == "BE" else ["Gesamtschule", "berufliches Gymnasium"]))
+        # No national official target is invented from the canonical catalog.
+        for view in self.views.values():
+            if view["scope"].get("jurisdiction", "DE") in ("DE", "DE-BE", "DE-BB", "DE-NI"):
+                self.assertFalse(authoring.graph.role_atoms(view)["target"] & MOMENTUM_IDS)
+
+    def test_new_momentum_primary_source_pin_fails_closed(self):
+        broken = copy.deepcopy(authoring.SOURCE_PLAN)
+        target = next(row for row in broken["reviewedMomentumBindings"]["targets"] if row["state"] == "BW")
+        target["sourceSha256"] = "0" * 64
+        with patch.object(authoring, "SOURCE_PLAN", broken):
+            with self.assertRaisesRegex(ValueError, "Reviewed momentum primary source changed"):
+                authoring.momentum_source_plan(self.views["de-bw-gk.view.json"], {}, {})
+
+    def test_by_conservation_source_correction_does_not_reclassify_its_old_consumer(self):
+        correction = authoring.SOURCE_PLAN["reviewedMomentumBindings"]["sourceAssignmentCorrections"]["BY"]
+        self.assertEqual((correction["goalId"], correction["sourceTopicCode"], correction["sourceYear"]),
+                         ("839ecc8f-3a60-418b-bc92-64bfeef33824", "Ph10.2", 10))
+        self.assertEqual(correction["retainedEarlierConsumerGoalId"], "e790de73-f8e5-4027-bc05-9f12a0e8c9cb")
+        self.assertIn(correction["goalId"], authoring.graph.GOALS[correction["retainedEarlierConsumerGoalId"]]["requires"])
+        for filename in ("de-by-gk.view.json", "de-by-lk.view.json", "de-by-seki.view.json"):
+            roles = authoring.graph.role_atoms(self.views[filename])
+            self.assertTrue({correction["goalId"], correction["retainedEarlierConsumerGoalId"]} <= roles["target"])
+
+    def test_new_momentum_content_has_its_own_mechanics_heading(self):
+        imp = "53afbda1-5776-502b-8867-471975d7b766"
+        for state, unit, profiles in (("sl", "e", ("gk", "lk")), ("sn", "q11", ("lk",))):
+            for profile in profiles:
+                for stage in ("", "-sekii"):
+                    view = self.views[f"de-{state}{stage}-{profile}.view.json"]
+                    group = next(n for n in authoring.graph.walk(view["rootNodes"]) if n.get("id") == f"physics-{state}-{unit}-momentum-preparation")
+                    shared = state == "sl" and stage == "-sekii"
+                    self.assertEqual(group["label"], "Einstieg und mechanische Grundlagen" if shared else "Mechanische Grundlage: Impulse zweier Körper")
+                    if shared:
+                        self.assertIn("5c44b9ba-9b05-4774-95d5-073230d3fc4f", authoring.graph.role_atoms({"rootNodes": [group]})["target"])
+                    self.assertIn(imp, authoring.graph.role_atoms({"rootNodes": [group]})["target"])
+                    self.assertNotIn("Kern", group["label"])
+                    self.assertNotIn("Relativität", group["label"])
+
+    def test_heading_repair_preserves_all_preexisting_acquisition_places(self):
+        base = authoring.ROOT / "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views"
+        predecessor = json.loads((base / "source-review-predecessors/rejected-pairs.actual.json").read_text())
+        def references(view):
+            found = {}
+            def visit(nodes, trail=()):
+                for node in nodes:
+                    if node["kind"] == "structure":
+                        visit(node["children"], (*trail, node["id"]))
+                    else:
+                        found.setdefault(node["goalId"], []).append((trail, node["kind"],
+                            node.get("projectionRole", "target"), node.get("acquisitionPlacement") is True))
+            visit(view["rootNodes"])
+            return found
+        for row in predecessor["pairs"]:
+            payload = {}
+            for label, pin in row["pair"].items():
+                raw = (base / pin["path"]).read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), pin["sha256"])
+                payload[label] = references(json.loads(raw))
+            allowed = {"53afbda1-5776-502b-8867-471975d7b766"}
+            if "-sekii-" in row["viewFile"]:
+                allowed.add("5c44b9ba-9b05-4774-95d5-073230d3fc4f")
+            retained = lambda data: {k:v for k,v in data.items() if k not in allowed}
+            with self.subTest(view=row["viewFile"]):
+                self.assertNotEqual(retained(payload["before-heading"]), retained(payload["rejected-acquisition-rebuild"]),
+                    "the retained negative fixture must detect the actual acquisition-wrapper regression")
+                self.assertEqual(retained(payload["before-heading"]), retained(references(self.views[row["viewFile"]])))
+
+    def test_sn_shared_newton_topic_keeps_goal_specific_source_passages(self):
+        _, report = authoring.generate_source_land(self.views["de-sn-lk.view.json"])
+        expected = {"53afbda1-5776-502b-8867-471975d7b766": [57],
+                    "ecbaa101-cb10-5da3-9368-ae40ff587d74": [57, 58],
+                    "059c1adc-e4d2-5222-a923-15abc417d59f": [58]}
+        for goal, pages in expected.items():
+            with self.subTest(goal=goal):
+                passages = report["sourceAssignments"][goal]["sourcePassages"]
+                self.assertEqual(len(passages), 1)
+                self.assertEqual(passages[0]["canonicalGoalId"], goal)
+                self.assertEqual(passages[0]["pages"], pages)
+        imp = report["sourceAssignments"]["53afbda1-5776-502b-8867-471975d7b766"]["sourcePassages"][0]
+        self.assertNotIn("tangent", imp["boundary"].lower())
+        self.assertNotIn("differential", imp["boundary"].lower())
+
+    def test_momentum_derivation_moves_and_actual_preparation_chain(self):
+        proof = "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+        rate = "059c1adc-e4d2-5222-a923-15abc417d59f"
+        math = "b1dcc191-d046-50de-984a-ee5c17157628"
+        self.assertIn(rate, authoring.graph.GOALS[proof]["requires"])
+        self.assertIn(math, authoring.graph.GOALS[rate]["requires"])
+        for state, unit, label in (("st", "physics-st-unit-q11-12", "Herleitung der Impulserhaltung nach den Analysisgrundlagen"), ("sn", "physics-sn-unit-q11", "Herleitung der Impulserhaltung nach der Differentialform")):
+            for name in (f"de-{state}-lk.view.json", f"de-{state}-sekii-lk.view.json"):
+                view = self.views[name]
+                node = next(n for n in authoring.graph.walk(view["rootNodes"]) if n.get("id") == unit)
+                groups = [n for n in authoring.graph.walk(node["children"]) if n.get("label") == label]
+                self.assertEqual(len(groups), 1)
+                self.assertIn(proof, authoring.graph.role_atoms({"rootNodes": groups})["target"])
+                learning = {n.get("goalId") for n in authoring.graph.walk(node["children"]) if n.get("acquisitionPlacement") is True or n.get("projectionRole") != "prerequisiteOnly"}
+                self.assertIn(rate, learning)
 
     def test_two_motions_identity_delta_cannot_widen_hide_or_demote_the_frozen_authority(self):
         view = self.views["de-he-gk.view.json"]

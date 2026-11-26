@@ -1131,6 +1131,17 @@
                 },
                 {
                   "kind": "structure",
+                  "id": "physics-sn-q11-momentum-preparation",
+                  "label": "Mechanische Grundlage: Impulse zweier Körper",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "53afbda1-5776-502b-8867-471975d7b766"
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-sn-q11-topic-c4407de522ff",
                   "label": "Einblick in die Relativitätstheorie",
                   "children": [
@@ -1721,6 +1732,21 @@
                 },
                 {
                   "kind": "structure",
+                  "id": "physics-sn-q11-topic-d9266806acd4",
+                  "label": "Newtonsche Gesetze: Impulsänderungsrate",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+                    },
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "059c1adc-e4d2-5222-a923-15abc417d59f"
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-sn-q11-topic-be41a613fdee",
                   "label": "Erhaltungssätze und ihre Anwendungen",
                   "children": [
@@ -1781,10 +1807,6 @@
                     {
                       "kind": "canonicalSubtree",
                       "goalId": "1232febe-868a-4dac-b4c2-e35789434601"
-                    },
-                    {
-                      "kind": "canonicalSubtree",
-                      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
                     },
                     {
                       "kind": "canonicalSubtree",
@@ -2490,6 +2512,17 @@
                 },
                 {
                   "kind": "structure",
+                  "id": "physics-sn-q11-topic-511ea10bdd52",
+                  "label": "Herleitung der Impulserhaltung nach der Differentialform",
+                  "children": [
+                    {
+                      "kind": "canonicalSubtree",
+                      "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-sn-unit-q11-practice",
                   "label": "Übungen und Prüfungsaufgaben",
                   "children": [
@@ -3022,8 +3055,16 @@
                     "after": "physics-required-preparation-physics-sn-unit-q11"
                   },
                   {
-                    "unit": "physics-sn-q11-topic-c4407de522ff",
+                    "unit": "physics-sn-q11-momentum-preparation",
                     "after": "physics-sn-q11-topic-ab144bb3aa87"
+                  },
+                  {
+                    "unit": "physics-sn-q11-topic-c4407de522ff",
+                    "after": "physics-sn-q11-momentum-preparation"
+                  },
+                  {
+                    "unit": "physics-sn-q11-topic-d9266806acd4",
+                    "after": "physics-sn-q11-momentum-preparation"
                   },
                   {
                     "unit": "physics-sn-q11-topic-be41a613fdee",
@@ -3054,6 +3095,10 @@
                     "after": "physics-sn-q11-topic-c4407de522ff"
                   },
                   {
+                    "unit": "physics-sn-q11-topic-511ea10bdd52",
+                    "after": "physics-sn-q11-topic-d9266806acd4"
+                  },
+                  {
                     "unit": "physics-sn-unit-q11-practice",
                     "after": "physics-sn-q11-topic-d9e17254512c"
                   },
@@ -3072,6 +3117,10 @@
                   {
                     "unit": "physics-sn-unit-q11-practice",
                     "after": "physics-sn-q11-topic-417cb531958d"
+                  },
+                  {
+                    "unit": "physics-sn-unit-q11-practice",
+                    "after": "physics-sn-q11-topic-511ea10bdd52"
                   }
                 ]
               }

@@ -1,0 +1,114 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: Apache-2.0
+"""Exhaustively recheck retained actual Math demands before renewing source pins.
+
+Follows the accepted 24 November current-witness procedure: every live
+consumer/place/edge and real Mathematics target or acquisition marker is
+checked. This never replays or rebinds the historical backend observation.
+"""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import subprocess
+import sys
+
+HERE = Path(__file__).resolve().parent
+ROOT = next(p for p in HERE.parents if (p/'scripts/normalize_mathematics_stage_views.py').exists())
+sys.path.insert(0, str(ROOT/'scripts'))
+from generate_mathematics_foreign_acquisition_policy import authored_places, earliest_consumer
+from normalize_mathematics_stage_views import Normalizer, encode
+
+POLICY = 'app/scripts/config/math-foreign-acquisition-demand.json'
+BASE = '1001aa2c7f'
+
+
+def digest(raw):
+    return hashlib.sha256(raw).hexdigest()
+
+
+def historical(path):
+    return subprocess.check_output(['git', 'show', BASE + ':' + path], cwd=ROOT)
+
+
+def markers(nodes):
+    found = set()
+    for node in nodes:
+        if node.get('acquisitionPlacement') is True:
+            found.add(node['goalId'])
+        if node['kind']=='structure':
+            found.update(markers(node['children']))
+    return found
+
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--write-pins', action='store_true')
+    args=p.parse_args()
+    policy=json.loads((ROOT/POLICY).read_bytes())
+    before=json.loads(historical(POLICY))
+    assert {k:v for k,v in policy.items() if k!='currentPhysicsSourcePins'} == {k:v for k,v in before.items() if k!='currentPhysicsSourcePins'}, 'A demand or historical observation changed'
+    n=Normalizer(ROOT)
+    math, math_markers, math_inputs = {}, {}, []
+    for path in sorted((ROOT/'curricula/DE/Gymnasium/composition-views/mathematik').glob('*.view.json')):
+        rel=str(path.relative_to(ROOT));raw=path.read_bytes()
+        assert raw==historical(rel), ('Mathematics source view changed', rel)
+        v=json.loads(raw);math[v['viewId']]=n.atomic_roles(v['rootNodes']);math_markers[v['viewId']]=markers(v['rootNodes'])
+        math_inputs.append(dict(path=rel,sha256=digest(raw),unchangedFromBase=True))
+    sources=[]
+    for path in sorted((ROOT/'curricula/DE/Gymnasium/canonical').glob('*.json')):
+        rel=str(path.relative_to(ROOT));raw=path.read_bytes()
+        if 'PHYSIK' not in path.name:
+            assert raw==historical(rel), ('Foreign canonical changed', rel)
+        sources.append(dict(path=rel,sha256=digest(raw),unchangedFromBase=raw==historical(rel)))
+    for path in sorted((ROOT/'curricula/DE/Gymnasium/mapping').glob('DE-*/**/*math*source_extraction*.json')):
+        for q in [path, ROOT/json.loads(path.read_bytes())['sourceExtractionPath']]:
+            rel=str(q.relative_to(ROOT));raw=q.read_bytes();assert raw==historical(rel),rel
+            sources.append(dict(path=rel,sha256=digest(raw),unchangedFromBase=True))
+    places, pins, pin_checks = {}, {}, []
+    for path, old_pin in before['currentPhysicsSourcePins'].items():
+        raw=(ROOT/path).read_bytes();v=json.loads(raw)
+        places[v['viewId']]=authored_places(v,n)
+        pins[path]=digest(raw)
+        pin_checks.append(dict(path=path,previousPin=old_pin,baselineSourceSha256=digest(historical(path)),
+            currentSha256=pins[path],renewed=old_pin!=pins[path]))
+    rows=[];types={'target':0,'explicit-acquisition-marker':0};atoms=set();edges=0
+    for math_id, demands in policy['views'].items():
+        for index,row in enumerate(demands):
+            atom=row['goalId'];assert atom in n.math_atoms and atom in math[math_id]
+            placement='target' if math[math_id][atom]=='target' else 'explicit-acquisition-marker'
+            if placement!='target':assert atom in math_markers[math_id],(math_id,atom)
+            consumer,location=earliest_consumer(places[row['physicsViewId']],atom,n)
+            assert row['consumerGoalId']==consumer,(math_id,index,'consumer')
+            assert row['consumerStructurePath']==location['path'],(math_id,index,'path')
+            assert row['demandPlace']==(list(location['place']) if location['place'] else None),(math_id,index,'time')
+            chain=row['requiresPath'];assert chain[0]==consumer and chain[-1]==atom
+            for dependent,prerequisite in zip(chain,chain[1:]):
+                assert prerequisite in [x.split(':')[-1] for x in n.goals[dependent].get('requires',[])],(math_id,index,dependent,prerequisite)
+                edges+=1
+            types[placement]+=1;atoms.add(atom)
+            rows.append(dict(mathViewId=math_id,rowIndex=index,goalId=atom,physicsViewId=row['physicsViewId'],
+                consumerGoalId=consumer,consumerStructurePath=location['path'],demandPlace=row['demandPlace'],
+                requiresPath=chain,actualContexts=row['actualContexts'],mathematicsPlaceType=placement,
+                unchangedRowSha256=digest(encode(row).encode()),everyCurrentEdgeAndEarliestConsumerValid=True))
+    assert (len(rows),len(atoms),len(policy['views']),len(math),types['target'],types['explicit-acquisition-marker'])==(1036,47,69,100,15,1021)
+    renewed=dict(policy,currentPhysicsSourcePins=pins)
+    if args.write_pins:
+        (ROOT/POLICY).write_text(encode(renewed))
+    else:
+        assert policy['currentPhysicsSourcePins']==pins,'Run --write-pins only after every witness passes'
+    report=dict(schemaVersion=1,status='PASS',baseline=BASE,
+        method='Accepted 24 November exhaustive retained-witness method. Current canonical atomic paths, current earliest source consumer and actual Mathematics target/acquisition markers; no replay of historical backend sessions.',
+        historicalObservationHashes={k:policy[k] for k in ['actualWitnessSha256','actualNativeViewsSha256']},
+        policySha256=digest(encode(renewed).encode()),policyRowChanges=[],
+        demandRows=len(rows),mathematicsAtoms=len(atoms),mathPolicyViews=len(policy['views']),mathematicsSourceViews=len(math),
+        classifications=types,verifiedRequiresEdges=edges,renewedPinCount=sum(x['renewed'] for x in pin_checks),
+        physicsSourcePins=pin_checks,unchangedMathematicsSourceViews=math_inputs,
+        canonicalAndSourceInputs=sources,allRetainedRowChecks=rows,
+        boundaries=['This pin renewal changes no Mathematics source targets, canonical Mathematics, Mathematics maps, demand rows or historical observation hashes.',
+            'No native backend/frontier acceptance or new subject-matter approval is claimed by this structural current-state recheck.'])
+    (HERE/'foreign-math-recheck.actual.json').write_text(encode(report))
+    print(json.dumps({k:report[k] for k in ['status','demandRows','mathematicsAtoms','renewedPinCount','verifiedRequiresEdges']}))
+
+if __name__=='__main__':
+    main()

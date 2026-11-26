@@ -1,0 +1,144 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "records": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "recordId": {
+            "type": "string",
+            "enum": [
+              "03-SL-53afbda1",
+              "04-SN-53afbda1"
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "accept_record_with_stated_limits",
+              "needs_change",
+              "unresolved"
+            ]
+          },
+          "recordIsTruthful": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "sourceAssignmentSupported": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "learningPlaceMatchesRecorded": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "inspectedOfficialAreas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "remainingFindings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "recordId",
+          "decision",
+          "recordIsTruthful",
+          "sourceAssignmentSupported",
+          "learningPlaceMatchesRecorded",
+          "reason",
+          "inspectedOfficialAreas",
+          "remainingFindings"
+        ]
+      }
+    },
+    "headingDelta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "decision": {
+          "type": "string",
+          "enum": [
+            "accept_record_with_stated_limits",
+            "needs_change",
+            "unresolved"
+          ]
+        },
+        "roleAndLearningSetsPreserved": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "oldCompetencyPlacesPreserved": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "orientationReparentingBounded": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "checkedViewIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "remainingFindings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "decision",
+        "roleAndLearningSetsPreserved",
+        "oldCompetencyPlacesPreserved",
+        "orientationReparentingBounded",
+        "checkedViewIds",
+        "reason",
+        "remainingFindings"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "records",
+    "headingDelta",
+    "limitations"
+  ]
+}

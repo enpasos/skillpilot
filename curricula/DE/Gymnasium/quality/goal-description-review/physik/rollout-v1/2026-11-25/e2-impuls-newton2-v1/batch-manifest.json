@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-e2-impuls-newton2-20261125-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-25/e2-impuls-newton2-v1.config.json",
+  "configDigest": "sha256:930388bcecf077f6d2b0808fd453d791c5ceacefec3393ddfeb99dff8e641382",
+  "goalIds": [
+    "53afbda1-5776-502b-8867-471975d7b766",
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+    "059c1adc-e4d2-5222-a923-15abc417d59f",
+    "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+    "839ecc8f-3a60-418b-bc92-64bfeef33824",
+    "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 493,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-25/e2-impuls-newton2-v1/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:35bd1c112f2d7357d2c4e08281a8918414ac986aa93d1d63b11b859a9b7793cc"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b1ead7bf393c12a3d13331cd7bce21f8bca1035e1c8e71711a61159bda8f146c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:9eddd6d66dc9409da34e63b1d7ea36c96414fffe939be6ed787d3f9f35cb68b8",
+    "reviewInputFingerprint": "sha256:bec54277b29267d1d7e073bd466e8bf1e7b83eb037d08fe91edf39ac0952f2a0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-e2-impuls-newton2-20261125-v1-a",
+        "campaignDigest": "sha256:a69f6d30f63dd17add1aba44308ca1e2753b978c4fb448df49719b2cac70866b",
+        "roundId": "physics-e2-impuls-newton2-20261125-v1-first-pass-a",
+        "independenceGroupId": "physics-e2-impuls-newton2-20261125-v1-independent-a",
+        "batchId": "physics-e2-impuls-newton2-20261125-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:cf57d8a2648b72b95a3d04f5262f1f0e72a7830d5004c8733f8f3a55d1f395fc"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-e2-impuls-newton2-20261125-v1-b",
+        "campaignDigest": "sha256:f635b021679931a420531e9cacfb95f068f7a29cb221936ab0cb736ed418a0cf",
+        "roundId": "physics-e2-impuls-newton2-20261125-v1-first-pass-b",
+        "independenceGroupId": "physics-e2-impuls-newton2-20261125-v1-independent-b",
+        "batchId": "physics-e2-impuls-newton2-20261125-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:3d08a81f95493ce3fd2f5ad9ecb361efeccc89f0e48cea13f4bf4cf6fa564021"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

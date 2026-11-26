@@ -161,7 +161,9 @@
         "bff1d8b0-fe2e-52e6-a467-dd0b6a1a4a04",
         "e6a89922-75ce-53dd-9e7b-3a683398431c",
         "f41e4e30-794e-5ce4-ba5e-cc72712cd691",
-        "f602680f-ea75-5bed-ae87-72f6be34a99b"
+        "f602680f-ea75-5bed-ae87-72f6be34a99b",
+        "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+        "d8fc6295-d0db-59e5-bd90-080bbc508c3a"
       ],
       "requires": [],
       "applicability": {
@@ -9259,8 +9261,8 @@
       "id": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
       "title": "Newtons 2. Axiom (Grundgleichung der Mechanik)",
       "titleEn": "Newton's Second Law (Fundamental Equation of Mechanics)",
-      "description": "Die lernende Person kann den vektoriellen Impuls $\\vec p=m\\vec v$ einführen, Newtons zweites Axiom in einem Inertialsystem für ein materiell abgeschlossenes System als Zusammenhang zwischen der resultierenden äußeren Kraft und der zeitlichen Änderung des Impulses formulieren und deuten sowie für konstante Masse auf $\\sum \\vec F_\\mathrm{ext}=m\\vec a$ zurückführen.",
-      "descriptionEn": "The learner can introduce vector momentum $\\vec p=m\\vec v$, formulate and interpret Newton's second law in an inertial frame for a materially closed system as the relationship between the net external force and the change of momentum over time, and reduce it to $\\sum \\vec F_\\mathrm{ext}=m\\vec a$ for constant mass.",
+      "description": "Die lernende Person kann Newtons zweites Axiom für einen Körper konstanter Masse in einem Inertialsystem formulieren und erklären, dass der Betrag der Beschleunigung dem Betrag der resultierenden äußeren Kraft geteilt durch die Masse entspricht und eine von null verschiedene Beschleunigung in Richtung dieser Kraft zeigt.",
+      "descriptionEn": "The learner can state Newton’s second law for an object of constant mass in an inertial frame and explain that the magnitude of its acceleration equals the magnitude of the net external force divided by the mass, and that any nonzero acceleration points in the direction of that force.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -9308,11 +9310,11 @@
           "skillpilotId": "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
           "title": "Visualisierung: Newtons 2. Axiom (Grundgleichung der Mechanik)",
           "url": "/assets/goal-visualizations/physik/a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20/a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
+          "provider": "ChatGPT / Codex image generation",
           "description": "Visualisierung zum Lernziel: Newtons 2. Axiom (Grundgleichung der Mechanik).",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Newtons 2. Axiom (Grundgleichung der Mechanik)\". Die lernende Person kann den vektoriellen Impuls $\\vec p=m\\vec v$ einführen, Newtons zweites Axiom in einem Inertialsystem für ein materiell abgeschlossenes System als Zusammenhang zwischen der resultierenden äußeren Kraft und der zeitlichen Änderung des Impulses formulieren und deuten sowie für konstante Masse auf $\\sum \\vec F_\\mathrm{ext}=m\\vec a$ zurückführen.",
+          "altText": "Zwei Felder zeigen denselben Wagen mit 2 kg. Der Pfeil für die resultierende Kraft von 6 N und der Pfeil für die Beschleunigung von 3 m/s² beginnen jeweils am markierten Punkt des Wagens und zeigen nach rechts ins Freie. Kraft und Beschleunigung haben eigene Pfeilmaßstäbe. Die Wagenpositionen sind schematisch. Es gilt 6 N = 2 kg · 3 m/s².",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -10108,8 +10110,8 @@
       "id": "839ecc8f-3a60-418b-bc92-64bfeef33824",
       "title": "Impulserhaltung",
       "titleEn": "Momentum Conservation",
-      "description": "Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.",
-      "descriptionEn": "In a defined system with no net external impulse, the learner can use total momentum as a conserved vector quantity and apply it to qualitatively justify simple recoil situations.",
+      "description": "Die lernende Person kann in einem Inertialsystem die vektoriellen Gesamtimpulse derselben Körper vor und nach einer Wechselwirkung gleichsetzen, wenn der resultierende äußere Kraftstoß auf diese Körper in der betrachteten Zeit null ist, und damit einfache Rückstoßsituationen qualitativ begründen.",
+      "descriptionEn": "In an inertial frame, the learner can equate the total momentum vectors of the same bodies before and after an interaction when the net external impulse on these bodies over the time considered is zero, and use this to explain simple recoil situations qualitatively.",
       "weight": 0.9,
       "tags": [
         "GK",
@@ -10119,7 +10121,8 @@
       "contains": [],
       "requires": [
         "5f289cdc-fda1-4058-b44f-041ba1398e79",
-        "a0aaedcb-41f8-4891-af77-a69a76b8c10d"
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+        "53afbda1-5776-502b-8867-471975d7b766"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -10158,11 +10161,11 @@
           "skillpilotId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
           "title": "Visualisierung: Impulserhaltung",
           "url": "/assets/goal-visualizations/physik/839ecc8f-3a60-418b-bc92-64bfeef33824/839ecc8f-3a60-418b-bc92-64bfeef33824.jpg",
-          "provider": "Google Gemini / Nano Banana Pro",
+          "provider": "OpenAI / Codex image_gen + programmatic diagram correction",
           "description": "Visualisierung zum Lernziel: Impulserhaltung.",
-          "altText": "Didaktische Visualisierung zum Lernziel \"Impulserhaltung\". Die lernende Person kann in einem abgegrenzten System ohne resultierenden äußeren Kraftstoß den Gesamtimpuls als vektorielle Erhaltungsgröße nutzen und einfache Rückstoßsituationen damit qualitativ begründen.",
+          "altText": "In einem Inertialsystem stehen beide Personen auf Schlittschuhen zunächst still. Nach dem Abstoßen beginnt an jeder Jacke ein gleich langer Impulspfeil. Blau zeigt für −2 kg·m/s nach links, Rot für +2 kg·m/s nach rechts. Die eingezeichnete Pfeillänge steht jeweils für den Impulsbetrag 2 kg·m/s. Die Orte sind schematisch. Bei äußerem Gesamtkraftstoß null im Intervall ist der Gesamtimpuls derselben beiden Personen vorher und nachher null.",
           "lang": "de",
-          "license": "AI-generated, SkillPilot-curated",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -10181,7 +10184,10 @@
         "area:Mechanik"
       ],
       "contains": [
+        "53afbda1-5776-502b-8867-471975d7b766",
         "839ecc8f-3a60-418b-bc92-64bfeef33824",
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "059c1adc-e4d2-5222-a923-15abc417d59f",
         "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
         "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
         "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
@@ -10636,7 +10642,8 @@
         "5f289cdc-fda1-4058-b44f-041ba1398e79",
         "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
         "34604a97-0c64-5b06-81e2-6ac818732d60",
-        "c63bbffd-8d1c-5fe2-a428-db194e6fe592"
+        "c63bbffd-8d1c-5fe2-a428-db194e6fe592",
+        "059c1adc-e4d2-5222-a923-15abc417d59f"
       ],
       "dimensionTags": {
         "framework": "hessen-kc-2024-physics",
@@ -10684,6 +10691,195 @@
           "altText": "Didaktische Visualisierung zum Lernziel \"Impulserhaltung aus Newtonschen Axiomen (LK)\". Die lernende Person kann in einem Inertialsystem für ein materiell abgeschlossenes System aus Newtons zweitem und drittem Axiom herleiten, dass der Gesamtimpuls bei verschwindendem resultierendem äußerem Kraftstoß erhalten bleibt, und die Voraussetzungen dieser Herleitung diskutieren.",
           "lang": "de",
           "license": "AI-generated, SkillPilot-curated",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "53afbda1-5776-502b-8867-471975d7b766",
+      "title": "Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+      "titleEn": "Determine individual and total momentum along a line",
+      "description": "Die lernende Person kann für zwei Körper, die sich auf derselben Geraden bewegen oder ruhen, eine positive Richtung wählen, aus ihren gegebenen Massen und Geschwindigkeiten zu einem gemeinsamen Zeitpunkt die vorzeichenbehafteten Einzelimpulse bestimmen und diese zum Gesamtimpuls addieren.",
+      "descriptionEn": "The learner can choose a positive direction for two objects at rest or moving along the same straight line, use their given masses and velocities at the same instant to determine their signed momenta, and add them to find the total momentum.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+        "4eeab7d5-eeb3-579b-845e-1c52ffe9e89f",
+        "ee48e811-4c9c-5080-9836-8403fc9f0810"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_momentum_of_two_bodies",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "53afbda1-5776-502b-8867-471975d7b766",
+          "title": "Visualisierung: Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen",
+          "url": "/assets/goal-visualizations/physik/53afbda1-5776-502b-8867-471975d7b766/53afbda1-5776-502b-8867-471975d7b766.jpg",
+          "provider": "SkillPilot / precise diagram",
+          "description": "Visualisierung zum Lernziel: Einzelimpulse und Gesamtimpuls auf einer Geraden bestimmen.",
+          "altText": "Zwei Wagen zum selben Zeitpunkt, rechts positiv. Für Wagen A ergeben 2 kg mal +3 m/s den Einzelimpuls +6 kg·m/s. Für Wagen B ergeben 8 kg mal −1 m/s den Einzelimpuls −8 kg·m/s. Die Impulspfeile beginnen am jeweiligen Wagen und zeigen nach rechts und links. Eine Balkenlänge entspricht 2 kg·m/s. Die Orte sind schematisch. Der Gesamtimpuls beider Wagen beträgt −2 kg·m/s.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+      "title": "Mittlere resultierende Kraft aus der Impulsänderung bestimmen",
+      "titleEn": "Determine the average net force from a change in momentum",
+      "description": "Die lernende Person kann für einen Körper fester Masse auf einer Geraden in einem Inertialsystem aus zwei gegebenen vorzeichenbehafteten Impulswerten und ihren Zeitpunkten die mittlere resultierende äußere Kraft im Intervall als $\\Delta p/\\Delta t$ berechnen. Sie gibt das Ergebnis in Newton an und deutet sein Vorzeichen bezogen auf die gewählte positive Richtung.",
+      "descriptionEn": "For a body of fixed mass moving along a line in an inertial frame, the learner can use two given signed momentum values and their times to calculate the average net external force over the interval as $\\Delta p/\\Delta t$. The learner gives the result in newtons and interprets its sign relative to the chosen positive direction.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "53afbda1-5776-502b-8867-471975d7b766",
+        "13b338eb-f761-5817-9058-11043b9cb253"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_mean_force_from_momentum_change",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+          "title": "Visualisierung: Mittlere resultierende Kraft aus der Impulsänderung bestimmen",
+          "url": "/assets/goal-visualizations/physik/ecbaa101-cb10-5da3-9368-ae40ff587d74/ecbaa101-cb10-5da3-9368-ae40ff587d74.jpg",
+          "provider": "SkillPilot / precise diagram",
+          "description": "Visualisierung zum Lernziel: Mittlere resultierende Kraft aus der Impulsänderung bestimmen.",
+          "altText": "Derselbe Wagen trägt bei 1 s einen am Wagen beginnenden Impulspfeil für +3 kg·m/s nach rechts und bei 3 s einen für −1 kg·m/s nach links. Ein Maßstabsbalken entspricht 1 kg·m/s. Die Wagenpositionen sind schematisch. Bei positiver Richtung nach rechts beträgt die mittlere resultierende Kraft über diese zwei Sekunden −2 N.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "059c1adc-e4d2-5222-a923-15abc417d59f",
+      "title": "Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen",
+      "titleEn": "Determine the instantaneous net force from the slope of a momentum–time graph",
+      "description": "Die lernende Person kann für eine geradlinige Bewegung eines Körpers fester Masse in einem Inertialsystem die Tangentensteigung am Impuls-Zeit-Graphen als momentane resultierende äußere Kraft $F_{\\mathrm{res}}(t)=\\mathrm{d}p/\\mathrm{d}t$ deuten und ihren Wert am markierten Zeitpunkt aus einer eingezeichneten Tangente mit Vorzeichen und Einheit näherungsweise bestimmen.",
+      "descriptionEn": "For a body of fixed mass moving along a line in an inertial frame, the learner can interpret the tangent slope on a signed momentum–time graph as the instantaneous net external force $F_{\\mathrm{net}}(t)=\\mathrm{d}p/\\mathrm{d}t$ and use a drawn tangent to estimate its value at a marked time, with sign and unit.",
+      "weight": 0.9,
+      "tags": [
+        "LK",
+        "canonical"
+      ],
+      "contains": [],
+      "requires": [
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "b1dcc191-d046-50de-984a-ee5c17157628"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "E"
+      },
+      "shortKey": "canonical_physics_instantaneous_force_from_momentum_slope",
+      "applicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "059c1adc-e4d2-5222-a923-15abc417d59f",
+          "title": "Visualisierung: Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen",
+          "url": "/assets/goal-visualizations/physik/059c1adc-e4d2-5222-a923-15abc417d59f/059c1adc-e4d2-5222-a923-15abc417d59f.jpg",
+          "provider": "SkillPilot / precise diagram",
+          "description": "Visualisierung zum Lernziel: Momentane resultierende Kraft aus der Steigung im Impuls-Zeit-Diagramm bestimmen.",
+          "altText": "Impuls-Zeit-Diagramm mit fallender Impulskurve. Bei t = 2 s und p = 2 kg·m/s berührt die gestrichelte Tangente die Kurve. Auf der Tangente fällt p von 4 auf 0 kg·m/s zwischen 1 und 3 s. Ihre Steigung ergibt die momentane resultierende Kraft −2 N bei 2 s.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
           "reviewStatus": "pilot"
         }
       ]
@@ -66025,6 +66221,177 @@
               "id": "t6-drag-claim",
               "points": 3,
               "description": "DE: Nur eigenständiger Beitrag zur Gleichzeitigkeit; „wirkt auch senkrecht“ und „gleiche Fallzeit nicht gesichert“ zählen nur in t6-drag-limits. (a) Urteil „nicht zwangsläufig gleichzeitig“, gestützt auf benannten Unterschied A–B (zusätzliches v_x/schneller, andere Bahn, evtl. andere Widerstandseigenschaften). (b) Mechanismus: senkrechter Widerstand kann von der Gesamtbewegung abhängen, oder begründeter Gegenfall; (b) für A und B schließt (a) ein. 3 = (a)+(b); 1,5 = (a) ohne (b); 0 = fehlend, bloßes „falsch“ ohne Unterschied A–B, nur senkrechte Wirkung, Gruppenregel P-DRAG. Reihenfolge nicht verlangt; bedingt für genanntes Modell kein Abzug; allgemein zwingende, beibehaltene Reihenfolge: Gruppenregel. Selbstkorrektur: Schlussaussage zählt. Je geringfügigem Fehler −0,5. EN: Only the independent contribution to simultaneity; ‘drag also acts vertically’ and ‘equal fall time not secured’ count only in t6-drag-limits. (a) Judgement ‘not necessarily simultaneous’, resting on a named A–B difference (extra v_x/faster, different path, possibly different drag properties). (b) Mechanism: vertical drag can depend on the overall motion, or a justified counter-case; (b) for A and B includes (a). 3 = (a)+(b); 1.5 = (a) without (b); 0 = missing, bare ‘wrong’ without A–B difference, only the vertical effect, group rule P-DRAG. No order required; conditional for a named model: no deduction; universally necessary order maintained: group rule. Self-correction: final statement counts. Each minor slip −0.5."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+      "shortKey": "seki_mean_resultant_force_from_momentum_interval",
+      "title": "Prüfungsaufgabe: Mittlere resultierende Kraft aus zwei Impulsmessungen bestimmen",
+      "titleEn": "Assessment Task: Determine the Average Net Force from Two Momentum Measurements",
+      "description": "Die lernende Person kann aus zwei vorzeichenbehafteten Impulsmessungen die mittlere resultierende äußere Kraft bestimmen und ihre Richtung deuten.",
+      "descriptionEn": "The learner can determine the average net external force from two signed momentum measurements and interpret its direction.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "SEKI_MEAN_RESULTANT_FORCE_FROM_MOMENTUM_INTERVAL"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-BW"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB2"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v2/seki_mean_resultant_force_from_momentum_interval.md",
+        "taskContent": "Ein Wagen mit unveränderlicher Masse bewegt sich auf einer geraden Bahn. Das ruhende Labor wird als Inertialsystem betrachtet. Nach rechts ist die positive Richtung.\n\nGemessen werden:\n• bei t₁=2,0 s: p₁=+8,0 kg·m/s;\n• bei t₂=5,0 s: p₂=−4,0 kg·m/s.\n\nBestimme die mittlere resultierende äußere Kraft auf den Wagen zwischen diesen Zeitpunkten. Gib dein Ergebnis in Newton an und erkläre, was sein Vorzeichen für die Kraftrichtung bedeutet. Zeige deinen Rechenweg.",
+        "taskContentEn": "A cart of fixed mass moves along a straight track. The stationary laboratory is treated as an inertial frame. Right is the positive direction.\n\nMeasurements:\n• at t₁=2.0 s: p₁=+8.0 kg·m/s;\n• at t₂=5.0 s: p₂=−4.0 kg·m/s.\n\nDetermine the average net external force on the cart between these times. Give your result in newtons and explain what its sign means for the force direction. Show your working.",
+        "solutionContent": "Δp=p₂−p₁=(−4)−(+8)=−12 kg·m/s; Δt=5−2=3 s.\nF̄=Δp/Δt=−12/3=−4 N. Negativ bedeutet bei rechts positiv: Die mittlere resultierende äußere Kraft zeigt nach links.\nGleichwertige gültige Wege, exakte Zahlenterme und konsistent umgekehrte Achsen zählen; getrennte Zwischenzeilen sind unnötig. Die Daten liefern einen Intervallmittelwert.\nBewertung: 3+4+3 P; bestanden allein ab 8/10. Nur allgemeine Änderungsformel: 0,5/3. Quotient ohne angewandte Zeitspanne: A=0,5/3. Deutung: 0,5 für das Kraftvorzeichen, 2,5 für die physikalische Richtung. Eine ausdrückliche unbegründete Folgerung auf konstante oder bestimmte momentane Kraft kostet einmal 2,5 in meanForce (mindestens 0); Schweigen kostet nichts, eine Momentanrechnung ist nicht verlangt. Je eigenständigem isoliertem Formfehler bei sichtbarem Kern höchstens 0,5 einmal am Ursprung; keine Folgeabzüge. Details und Teilpunkte stehen in den Kriterien.",
+        "solutionContentEn": "Δp=p₂−p₁=(−4)−(+8)=−12 kg·m/s; Δt=5−2=3 s.\nF̄=Δp/Δt=−12/3=−4 N. With right positive, negative means that the average net external force points left.\nEquivalent valid methods, exact numerical expressions and consistently reversed axes count; separate intermediate lines are unnecessary. The data give an interval average.\nScoring: 3+4+3 points; pass solely at 8/10. General change formula only: 0.5/3. Quotient without applied elapsed time: A=0.5/3. Direction: 0.5 for force sign, 2.5 for physical interpretation. An explicit unsupported inference of constant force or a particular instantaneous force costs 2.5 once in meanForce (floor 0); silence costs nothing and no instantaneous calculation is required. Each distinct isolated formal slip with visible core costs at most 0.5 once at its origin; no consequential deductions. The criteria specify partial credit.",
+        "scoring": {
+          "maxPoints": 10,
+          "passingPoints": 8,
+          "steps": [
+            {
+              "id": "momentumChange",
+              "points": 3,
+              "description": "3 P: vorzeichenbehaftete Zahlenänderung −12 kg·m/s, exakter Term (−4)−(+8) oder gleichwertige numerische Evidenz, auch eingebettet/bei umgekehrter Achse. 0,5: nur unbestrittenes p_Ende−p_Anfang ohne Zahlenanwendung; sonst 0. Beibehaltener falscher Änderungs-/Vorzeichenansatz: 0, auch neben richtiger Formel. Keine Zahlenänderung aus der Endkraft rekonstruieren. Klare Zwischeneinheiten dürfen implizit sein. Sichtbar richtiger Kern mit isoliertem Fehler: höchstens −0,5 einmal am Ursprung, konsistente Folgen anerkennen. / EN: 3: signed numerical change −12 kg·m/s, exact term (−4)−(+8), or equivalent numerical evidence, including embedded working/reversed axis. 0.5: only uncontradicted p_end−p_start with no numerical application; otherwise 0. A maintained wrong change/sign operation earns 0 even beside a correct formula. Do not reconstruct a numerical change from the final force. Clear intermediate units may be implicit. A visibly sound core with an isolated slip loses at most 0.5 once at its origin; credit consistent consequences."
+            },
+            {
+              "id": "meanForce",
+              "points": 4,
+              "description": "A+B+C. A=3: Δp/Δt (auch Betrag) mit benutzten 3 s bzw. (5−2) s; andernorts gezeigte und benutzte Dauer zählt. A=0,5: nur allgemeiner Quotient ohne angewandte Dauer ODER nur richtige Dauer; nicht addieren; sonst 0. Beibehaltene falsche Beziehung/Dauer: A=0, höchstens 0,5 für unabhängig richtige Dauer. B=0,5: richtiger Kraftwert, exakter numerisch bestimmter Term oder richtige Rechnung im eigenen Ansatz. C=0,5: N/gleichwertige Einheit am Kraftergebnis. Eigene falsche Δp zulässig. Δp/(3 s) ohne numerische Δp und ohne Kraftwert: B=0. Unbegründete Folgerung aus dem Mittelwert auf konstante/bestimmte momentane Kraft: hier einmal −2,5, Minimum 0, auch bei beiden Behauptungen. Schweigen: kein Abzug. Isolierter Fehler: höchstens −0,5 einmal am Ursprung, keine Folgeabzüge. / EN: A+B+C. A=3: Δp/Δt (also magnitude) using 3 s or (5−2) s; elapsed time shown elsewhere and used counts. A=0.5: only a general quotient without applied duration OR correct duration alone; do not add; otherwise 0. Maintained wrong relation/duration: A=0, at most 0.5 for independently correct duration. B=0.5: correct force value, exact numerically fixed expression or correct arithmetic in the own setup. C=0.5: N/equivalent unit on the force result. Own wrong Δp is allowed. Δp/(3 s) without numerical Δp or force value: B=0. Unsupported inference from the mean to constant/a particular instantaneous force: subtract 2.5 here once, floor 0, even for both claims. Silence: no deduction. Isolated slip: at most 0.5 once at its origin, no consequential deductions."
+            },
+            {
+              "id": "direction",
+              "points": 3,
+              "description": "0,5 P: Kraftvorzeichen zur gewählten Achse; 2,5: physikalische Deutung dieses Vorzeichens (hier negativ = links). Gerichteter Wert „4 N nach links“: 3; vorzeichenbehaftete Kraft ohne Deutung: 0,5; nur Betrag: 0. Fehlende oder beibehaltene falsche Deutung: keine 2,5. Hier neu eingeführte systematische Umkehr von Kraftvorzeichen und Richtung: 0, auch bei richtiger Übersetzung des eigenen falschen Vorzeichens. Vorgelagert bereits abgezogene Fehler: konsistente Vorzeichen-/Richtungsfolgen voll anerkennen, ohne die fehlende Ursprungsevidenz zu ersetzen. Widersprüche verlieren nur betroffene Evidenz; ein nachweislich isolierter Zeichen-/Beschriftungsfehler bei sichtbarem Kern kostet höchstens 0,5 einmal am Ursprung. / EN: 0.5: force sign for the chosen axis; 2.5: physical interpretation of that sign (here negative = left). Directed value '4 N leftwards': 3; signed force without interpretation: 0.5; magnitude alone: 0. Missing or maintained wrong interpretation earns no 2.5. A systematic force-sign and direction reversal newly introduced here earns 0, even if the own wrong sign is decoded correctly. For upstream errors already charged, fully credit consistent sign/direction consequences without replacing missing evidence at the origin. Contradictions lose only affected evidence; a demonstrably isolated sign/label slip with visible core costs at most 0.5 once at its origin."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "d8fc6295-d0db-59e5-bd90-080bbc508c3a",
+      "shortKey": "seki_total_momentum_two_bodies_line",
+      "title": "Prüfungsaufgabe: Einzelimpulse und Gesamtimpuls zweier Wagen bestimmen",
+      "titleEn": "Assessment Task: Determine the Individual Momenta and Total Momentum of Two Carts",
+      "description": "Die lernende Person kann die Einzelimpulse und den Gesamtimpuls zweier Wagen für zwei Momentaufnahmen auf einer geraden Bahn bestimmen.",
+      "descriptionEn": "The learner can determine the individual momenta and total momentum of two carts in two snapshots on a straight track.",
+      "weight": 0.9,
+      "tags": [
+        "GK",
+        "LK",
+        "Practice",
+        "Assessment",
+        "canonical",
+        "SekI"
+      ],
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "53afbda1-5776-502b-8867-471975d7b766"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-physics",
+        "demandLevel": "AB1",
+        "processCompetencies": [],
+        "guidingIdeas": [],
+        "phase": "GLOBAL",
+        "area": "Mechanik",
+        "topicCode": "SEKI_TOTAL_MOMENTUM_TWO_BODIES_LINE"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HH",
+          "DE-TH"
+        ]
+      },
+      "extendedData": {
+        "applicabilityMappingInheritance": "boundary",
+        "applicabilityOverrides": {
+          "jurisdiction": [
+            "DE-HH",
+            "DE-TH"
+          ]
+        }
+      },
+      "examData": {
+        "reviewStatus": "released",
+        "coveredGoalIds": [
+          "53afbda1-5776-502b-8867-471975d7b766"
+        ],
+        "coveredStrands": [
+          "LI_BEWEGUNG"
+        ],
+        "demandLevels": [
+          "AB1"
+        ],
+        "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v2/seki_total_momentum_two_bodies_line.md",
+        "taskContent": "Zwei Wagen A und B bewegen sich auf derselben geraden Bahn. Ihre Massen sind m_A = 0,50 kg und m_B = 1,00 kg. Alle Geschwindigkeiten einer Tabellenzeile gelten zum selben Zeitpunkt.\n\n| Momentaufnahme | Geschwindigkeit von A | Geschwindigkeit von B |\n|---|---:|---:|\n| I | +4,0 m/s | −1,0 m/s |\n| II | +2,0 m/s | −1,0 m/s |\n\nDie Vorzeichen der Tabelle beziehen sich auf rechts als positive Richtung. Du darfst für deine Rechnung rechts oder links als positive Richtung wählen. Nenne deine Wahl und berücksichtige sie bei den Vorzeichen.\n\nBestimme für jede Momentaufnahme die vorzeichenbehafteten Einzelimpulse von A und B sowie den Gesamtimpuls beider Wagen. Halte deinen Rechenweg kurz fest und gib die Einheiten an.",
+        "taskContentEn": "Two carts, A and B, move along the same straight track. Their masses are m_A = 0.50 kg and m_B = 1.00 kg. All velocities in one table row apply at the same instant.\n\n| Snapshot | Velocity of A | Velocity of B |\n|---|---:|---:|\n| I | +4.0 m/s | −1.0 m/s |\n| II | +2.0 m/s | −1.0 m/s |\n\nThe signs in the table use right as the positive direction. You may choose either right or left as positive for your calculations. State your choice and use signs consistent with it.\n\nFor each snapshot, determine the signed individual momenta of A and B and the total momentum of both carts. Show brief working and include units.",
+        "solutionContent": "Rechts positiv, p = m·v; alle Impulse in kg·m/s.\nI: p_A = 0,50·(+4,0) = +2; p_B = 1,00·(−1,0) = −1; P_I = (+2)+(−1) = +1.\nII: p_A = 0,50·(+2,0) = +1; p_B = 1,00·(−1,0) = −1; P_II = (+1)+(−1) = 0.\n\nLinks positiv ist gleichwertig: alle Geschwindigkeitszeichen umkehren. I: −2, +1, Gesamt −1; II: −1, +1, Gesamt 0. Eindeutige Richtungswörter, gerichtete Beträge, exakte numerische Ausdrücke und N·s sind gleichwertig. Eine zusätzliche Erklärung zu null ist nicht verlangt.\n\nBewertung: MI, TI, MII, TII je 3 P; ab 10 von 12 P bestanden, allein nach der Summe. Richtige, der jeweiligen Momentaufnahme zuordenbare Evidenz zählt überall. Exakte numerische Ausdrücke und eindeutig zugeordnete Einzelwerte innerhalb von Gesamtrechnungen zählen. Widersprechende falsche Endwerte nicht übergehen. Bloße Gesamtwerte belegen keine fehlenden Einzelimpulse; allgemeine Formeln ohne Datenanwendung: 0 P.\n\nJe Wagen und Momentaufnahme zählen 1,5 P für den richtigen vorzeichenbehafteten Zahlenimpuls. Ein einzelner sachlich falscher Wert, falscher Masseneinsatz oder eine falsche Wagenzuordnung kostet die betroffenen 1,5 P einmal; mit sonst voller Leistung sind 10,5 P und Bestehen beabsichtigt. Zwei sachlich falsch zugeordnete Wagenwerte einer Momentaufnahme verlieren beide Anteile, auch bei richtiger Summe. Eine wirkliche Vertauschung der Wagen-Datenpaare ist kein bloßer Beschriftungsaussetzer.\n\nSteht derselbe falsche Einzelimpuls desselben Wagens oder dieselbe falsche Regel in beiden Momentaufnahmen, entfallen beide betroffenen 1,5-P-Anteile, mindestens 3 P. Das gilt auch bei Kopieren/Wiederverwenden eines zuerst falsch berechneten Werts sowie für falsche Masse, ignoriertes Vorzeichen, bloße Beträge oder vermischte Wagendaten. Dies ist kein einmaliger Formfehler. Ein Wert, der in einer Momentaufnahme richtig ist, ist dort nicht allein wegen seiner Wiederholung falsch; ein ausdrücklich falscher Rechenweg bleibt aber zu berücksichtigen.\n\nEin nachweislich isolierter kleiner Form-/Ausführungsfehler (Rechnen, Vorzeichen, Einheit, Rundung, Beschriftung) bei sichtbar richtigem Kern kostet höchstens 0,5 P einmal an seiner Quelle. Richtiger vorzeichenbehafteter lokaler Ansatz und richtig ausgeführte Vergleichsrechnungen können dies belegen. Drei andere richtige Endwerte allein machen einen unbelegten falschen Einzelwert nicht zum Formfehler. Verschiedene nachweislich lokale Fehler dürfen je 0,5 P kosten. Die Wiederholungsregel hat Vorrang; durchgehend falsche Produkte sind keine automatische Folge kleiner Aussetzer.\n\nGültige Gesamtrechnungen mit eigenen falschen Einzelwerten erhalten volle Weiterrechnungspunkte; ihre Folgen nicht nochmals abziehen. Das beweist keinen fehlenden richtigen Einzelimpuls. Ein falscher Gesamtwert aus solchen Eingaben allein ist keine Aussage gegen die Aufhebung. Sonstige zusätzliche Deutungen wirken nur, wenn sie gefragte Ergebnisse ersetzen oder zurücknehmen; die folgende Ausnahme hat ausdrücklich Vorrang.\n\nTII ist 0 P bei einer ausdrücklich aufrechterhaltenen Aussage gegen die Aufhebung entgegengesetzter Impulse bewegter Wagen, auch bei richtigem Zahlenwert 0 und unverändert richtigen übrigen Antworten. Beispiele: „Gesamtimpuls null bedeutet, dass beide ruhen“ oder „Bewegte Wagen können keinen Gesamtimpuls null haben“. Dies überschreibt auch sonst gültiges Weiterrechnen in TII. Ein kommentarlos richtiges Nullergebnis oder eine im selben Text ausdrücklich zurückgenommene/korrigierte Behauptung erhält die normalen Punkte; eine Erklärung ist nicht verlangt. Eine bloß danebenstehende 0 ist keine Rücknahme. Korrekte Einzelimpulse verlieren dadurch keine MI/MII-Punkte; tatsächlich ersetzte/falsche Einzelwerte werden dort nach ihren eigenen Belegen bewertet.\n\nEine fehlende Achsenangabe bei sonst klarer konsistenter Konvention kostet einmal 0,5 P. Fehlende/falsche Impulseinheiten als reine Formangabe kosten zusammen einmal 0,5 P; eine gemeinsame gültige Einheit genügt. Diese beiden unabhängigen Auslassungen dürfen zusammen 1 P kosten. Gemeinsame Berichtsmängel im ersten betroffenen Kriterium mit Punkten verbuchen (MI, TI, MII, TII), örtliche Fehler an ihrer Quelle; nie negativ, nie doppelt und keine weiteren Abzüge für bloße Folgen.",
+        "solutionContentEn": "Choose right positive and use p = m·v; all momenta are in kg·m/s.\nI: p_A = 0.50·(+4.0) = +2; p_B = 1.00·(−1.0) = −1; P_I = (+2)+(−1) = +1.\nII: p_A = 0.50·(+2.0) = +1; p_B = 1.00·(−1.0) = −1; P_II = (+1)+(−1) = 0.\n\nLeft positive is equivalent: reverse every velocity sign. I: −2, +1, total −1; II: −1, +1, total 0. Unambiguous direction words, directed magnitudes, exact numerical expressions and N·s are equivalent. An additional explanation of zero is not required.\n\nScoring: MI, TI, MII, TII each carry 3 points; 10 out of 12 passes by the total alone. Correct evidence attributable to the relevant snapshot counts wherever given. Exact numerical expressions and identifiable individual terms within total calculations count. Do not ignore contradictory wrong final values. Bare totals cannot establish missing individual momenta; generic formulas without data application earn 0.\n\nEach cart in each snapshot earns 1.5 points for its correct signed numerical momentum. One substantive wrong value, wrong mass input or wrong cart assignment loses that 1.5 once; with all other performance present, 10.5 and a pass are intended. Two substantively misassigned cart values in one snapshot lose both allocations, even with a correct sum. An actual swap of the carts' input pairs is not merely a clerical label slip.\n\nThe same wrong individual momentum for the same cart or the same wrong rule in both snapshots loses both affected 1.5-point allocations, at least 3 points. This includes copying/reusing an initially miscalculated value, a wrong mass, ignored signs, magnitudes only or mixed cart data. It is not one formal slip. A value correct in one snapshot is not wrong there merely because it is repeated; an explicitly wrong calculation method must still be considered.\n\nA demonstrably isolated minor reporting/execution slip (arithmetic, sign, unit, rounding, label), with visibly sound core reasoning, costs at most 0.5 once at its source. A correct local signed setup and correctly executed comparable calculations can establish this. Three other correct final values alone do not turn an unsupported wrong individual value into a formal slip. Distinct demonstrably local mistakes may each cost 0.5. The repetition rule takes precedence; consistently wrong products are not automatically a series of minor slips.\n\nValid total calculations using the learner's wrong individual values retain full follow-through credit; do not deduct again for their consequences. This does not prove a missing correct individual momentum. A wrong total arising from such inputs alone is not an assertion denying cancellation. Other extra interpretations affect scoring only when they replace or retract requested results; the following exception explicitly takes precedence.\n\nTII earns 0 for an explicit maintained assertion denying cancellation of opposite momenta of moving carts, even with the correct number 0 and all other correct answers left intact. Examples: 'Zero total momentum means both carts are at rest' or 'Moving carts cannot have zero total momentum.' This overrides otherwise valid follow-through in TII. A correct zero without comment or an assertion expressly retracted/corrected in the same response receives normal credit; no explanation is required. Merely writing 0 alongside the assertion is not a retraction. Correct individual momenta lose no MI/MII credit because of the assertion; individual values actually replaced or made wrong are assessed there on their own evidence.\n\nA missing axis declaration with an otherwise clear consistent convention costs 0.5 once. Missing/incorrect momentum units solely as reporting cost 0.5 altogether; one shared valid unit suffices. These two independent omissions may together cost 1. Record common reporting omissions in the first affected criterion with credit (MI, TI, MII, TII), local mistakes at their source; never negative, never twice and no further loss for mere consequences.",
+        "scoring": {
+          "maxPoints": 12,
+          "passingPoints": 10,
+          "steps": [
+            {
+              "id": "MI",
+              "points": 3,
+              "description": "Momentaufnahme I: je 1,5 P für den richtigen vorzeichenbehafteten Zahlenimpuls von A und B: rechts positiv +2 und −1 kg·m/s, links positiv −2 und +1. Pro Wagen 1,5 oder 0 P; nur nachgewiesene kleine lokale Fehler nach der gemeinsamen Regel begrenzen. Ein sachlich falscher Einzelwert verliert 1,5 P; ein solcher Fehler allein darf mit gültigem Weiterrechnen 10,5 P erreichen. Gerichtete Beträge und exakte numerische Produkte zählen ebenso. Richtige, der Momentaufnahme zuordenbare Evidenz zählt überall, auch in Gesamtrechnungen. Bloße Beträge, qualitative Richtungen und allgemeine Formeln ergeben keine getrennten Teilpunkte. Ein falscher Endwert wird nicht durch seinen richtigen Zwischenansatz gelöscht. Wiederholungs- und Fehlerregel der Lösung anwenden. / EN: Snapshot I: 1.5 points for each correct signed numerical momentum of A and B: right positive +2 and −1 kg·m/s, left positive −2 and +1. Per cart, award 1.5 or 0; cap losses only for demonstrated minor local slips under the shared policy. A substantive wrong individual value loses 1.5; one such error alone may reach 10.5 with valid follow-through. Directed magnitudes and exact numerical products also count. Correct evidence attributable to the snapshot counts wherever written, including total calculations. Bare magnitudes, qualitative directions and generic formulas earn no separate fragments. A wrong final value is not erased by its correct intermediate setup. Apply the solution's repetition and error policies."
+            },
+            {
+              "id": "TI",
+              "points": 3,
+              "description": "Gesamtimpuls I: 2,5 P für gültiges numerisches algebraisches Verknüpfen beider zugeordneten Einzelimpulse; 0,5 P für richtige Auswertung oder einen bloßen richtigen Gesamtwert (+1 rechts positiv, −1 links positiv). Ein exakter numerischer Summenausdruck gilt als richtiges Ergebnis. Einzelwerte mit passendem Gesamtwert belegen die Verknüpfung auch ohne Plus- oder P-Zeichen; Einzelwerte ohne Summe/Gesamtwert: 0 P. Subtraktion entgegengesetzter gerichteter Beträge ist gleichwertig. Gültiges Weiterrechnen mit eigenen falschen Einzelwerten voll anerkennen, ohne Folgeverluste; es ersetzt keine fehlende MI-Evidenz. Eine aufrechterhaltene falsche Verknüpfungsregel erhält keine Ansatzpunkte; ein unabhängig richtiger Gesamtwert höchstens 0,5 P. Gemeinsame Fehlerregel anwenden. / EN: Total I: 2.5 points for valid numerical algebraic combination of both assigned individual momenta; 0.5 for correct evaluation or a bare correct total (+1 right positive, −1 left positive). An exact numerical sum expression counts as a correct result. Individual values with their matching total establish combination without a plus sign or P label; individual values without a sum/total earn 0. Subtracting opposing directed magnitudes is equivalent. Fully credit valid follow-through with wrong individual values, without consequence losses; it replaces no missing MI evidence. A maintained wrong combining rule earns no setup credit; an independently correct total earns at most 0.5. Apply the shared error policy."
+            },
+            {
+              "id": "MII",
+              "points": 3,
+              "description": "Momentaufnahme II: je 1,5 P für den richtigen vorzeichenbehafteten Zahlenimpuls von A und B: rechts positiv +1 und −1 kg·m/s, links positiv −1 und +1. Die Evidenzregeln von MI gelten. Derselbe falsche Wagenwert oder dieselbe falsche Regel in beiden Momentaufnahmen verliert beide betroffenen 1,5-P-Anteile, mindestens 3 P; auch Kopieren/Wiederverwenden macht daraus keinen einmaligen Formfehler. Dies gilt etwa für falsche Masse, ignoriertes Vorzeichen, bloße Beträge oder vermischte Wagendaten. Richtiges Weiterrechnen stellt die Anteile nicht wieder her. Zwei sachlich vertauschte Wagenwerte verlieren beide Anteile, auch bei richtiger Summe. Ein alleinstehender sachlicher Fehler kostet 1,5 P; nachgewiesene kleine lokale Fehler nach gemeinsamer Regel. Korrekte Einzelwerte bleiben bei einer zusätzlichen Null-Widerspruchsaussage hier erhalten. / EN: Snapshot II: 1.5 points for each correct signed numerical momentum of A and B: right positive +1 and −1 kg·m/s, left positive −1 and +1. MI's evidence rules apply. The same wrong cart value or wrong rule in both snapshots loses both affected 1.5-point allocations, at least 3; copying/reusing it does not make this one formal slip. Examples include a wrong mass, ignored signs, magnitudes only or mixed cart data. Correct follow-through cannot restore those allocations. Two substantively swapped cart values lose both allocations even with a correct sum. One substantive error alone costs 1.5; demonstrated minor local slips use the shared policy. Correct individual values remain credited here despite an additional assertion contradicting zero cancellation."
+            },
+            {
+              "id": "TII",
+              "points": 3,
+              "description": "Gesamtimpuls II: 2,5 P für gültige numerische algebraische Verknüpfung; 0,5 P für richtige Auswertung oder den bloßen richtigen Gesamtwert 0. Die Evidenz-/Weiterrechnungsregeln von TI gelten, auch für exakte Summenausdrücke; Einzelwerte ohne Summe/Gesamtwert: 0 P. Numerische Aufhebung genügt ohne Erklärung. Vorrang: Eine ausdrücklich aufrechterhaltene Aussage gegen die Aufhebung entgegengesetzter Impulse bewegter Wagen setzt TII auf 0 P, auch bei richtigem 0 und unverändert richtigen übrigen Antworten; z.B. „null bedeutet beide ruhen“ oder „bewegte Wagen können nicht null ergeben“. Dies überschreibt auch gültiges Weiterrechnen. Kommentarlos richtiges 0 und eine ausdrücklich im selben Text zurückgenommene/korrigierte Behauptung erhalten normale Punkte. Eine 0 neben der Behauptung ist keine Rücknahme. Ein falscher Gesamtwert aus gültigem Weiterrechnen allein ist keine solche Aussage. Gemeinsame Fehlerregel anwenden. / EN: Total II: 2.5 points for valid numerical algebraic combination; 0.5 for correct evaluation or the bare correct total 0. TI's evidence/follow-through rules apply, including exact sum expressions; individual values without a sum/total earn 0. Numerical cancellation suffices without explanation. Precedence: an explicit maintained assertion denying cancellation of opposite momenta of moving carts sets TII to 0, even with correct 0 and all other correct answers retained; e.g. 'zero means both rest' or 'moving carts cannot give zero'. This overrides valid follow-through too. A correct zero without comment and an assertion expressly retracted/corrected in the same response receive normal credit. A 0 alongside the assertion is not a retraction. A wrong total from valid follow-through alone is not such an assertion. Apply the shared error policy."
             }
           ]
         }

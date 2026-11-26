@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "contract": "additive-descriptive-assessment-parent-attribution-correction-v1",
+  "recordedAt": "2026-11-25T19:04:03.069066+00:00",
+  "assessmentGoalId": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+  "status": "corrected_descriptive_parent_attribution",
+  "sourceReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/assessment-review/physik/e2-lower-momentum-closures-20261125-v1/b50e9903-58b3-520d-96bf-d5bc1fe51ebf/content-review.actual.json",
+    "sha256": "90d8695d0aa63adbc6935cb295983688f0b75240793fbb27e5301b3d5fe57472"
+  },
+  "correctedField": "proposedParentGoalId",
+  "historicalFieldValue": "71e8936b-fa8a-50dc-8c47-fca015b85ac5",
+  "correctCurrentParentGoalId": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+  "cause": "The receipt helper selected goals[0] as a descriptive parent rather than resolving the actual contains graph. The released candidate, own-offer integration and independent marker standalone-parent wording used the intended Physics root.",
+  "verification": {
+    "method": "Enumerated all 21 canonical Gymnasium documents and all 6,684 goals without duplicate IDs; traversed every reverse contains edge from the assessment across the complete canonical catalog, including the overview, and checked the Physics root primary program placement.",
+    "canonicalSourceAtCommit": {
+      "commit": "a4923a80928e4211c02fb53feaadad2054a3fb94",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "19cde9909877af4e09289d022965c26d4a923c08219b0ad9dd8e05f8dc68a5b7"
+    },
+    "catalogGoalCount": 6684,
+    "actualDirectContainsParentIds": [
+      "bf980fff-b62b-4ea4-a20d-31681a7ad785"
+    ],
+    "allContainsAncestorIds": [
+      "5449a3c2-3b9f-475c-acea-ba5fed25ec52",
+      "bf980fff-b62b-4ea4-a20d-31681a7ad785"
+    ],
+    "actualParentTitle": "Physik",
+    "primaryPlacement": {
+      "goalId": "bf980fff-b62b-4ea4-a20d-31681a7ad785",
+      "unitId": "de-gym-physics-program",
+      "relation": "primary"
+    },
+    "candidateGoalValueSha256": "d9081a7952edb7b7ef5a1eb049fbe1601ffa89b14047151040146fb999410bb1",
+    "actualCatalogCandidateEqualsAcceptedPayload": true,
+    "catalogDocumentCount": 21,
+    "physicsDocumentGoalCount": 868,
+    "canonicalSourcesAtCommit": {
+      "commit": "a4923a80928e4211c02fb53feaadad2054a3fb94",
+      "documents": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+          "sha256": "0de1cfc92fd15d6633575f6f1da9aa78027feec4383e45f50ca738744977fe5e"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+          "sha256": "e29c271e797956c4679e211034b6ad83a0e5a45ef1da25f3d39166657eaf4b5d"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+          "sha256": "6ec98972436881fa0593838493c0aa098afe508fa6dde063e1aa1d2b80563d76"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+          "sha256": "707fdcfd8fea3cffed4435d7d8da6637d6babd396e5697c7a4364a86b32c3142"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+          "sha256": "499e35f99df208be1a9a55958d1b5654d25785390f62f39c47817642024e9b2d"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+          "sha256": "39422cfdea218d3b1e925aae539315038d8b223d1b837b9ac1f8931fb81d2b4c"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+          "sha256": "a2701a5dce37546c6b90b0306801767241de6269fd76f736d9db306225784fa7"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+          "sha256": "d9ab127073034c0df30dea5df21345118325b20bd80ccffa72aeb1013bcb8709"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+          "sha256": "ea83b25661d5fcdd5f6aacabbe2fb193b9074457cf7e8022dc6914a5ea0adfb4"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+          "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+          "sha256": "f9dc6081ede69dab7f856bed3d7b28c803a8d40376c069b30dd2bf3924a9b33c"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+          "sha256": "6720050d2ed3825070afba1e2e7c28882b9841c562198a01a20ed0d752425749"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+          "sha256": "214baa8ea209ef2ff0f7d28861cccedce4226a491ef6f5a903417580a4c1b7dc"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+          "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+          "sha256": "19cde9909877af4e09289d022965c26d4a923c08219b0ad9dd8e05f8dc68a5b7"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+          "sha256": "1227445d498ab26138fc0dbb81cbe4138c40380d8f61d222b88bfeba58969cb7"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+          "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+          "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+          "sha256": "5dc31897813aa32f3bfca8e397b82a6e179d3547af18ddea82ae39df27990a5c"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+          "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+          "sha256": "a9d9bb678fc6f124bbdc102eec9cec2315913f5c837bcae5fd8f4bfa940a05a7"
+        }
+      ]
+    },
+    "ancestorTitles": {
+      "5449a3c2-3b9f-475c-acea-ba5fed25ec52": "Gymnasium (DE)",
+      "bf980fff-b62b-4ea4-a20d-31681a7ad785": "Physik"
+    }
+  },
+  "originalSourceReceiptBytesPreserved": true,
+  "payloadTaskCoverageRubricScoresAndVerdictsChanged": false,
+  "newMarkingRoundRequired": false,
+  "scientificReviewOrHumanLearnerResultClaimed": false,
+  "activeCatalogMutation": false
+}

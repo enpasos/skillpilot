@@ -115,8 +115,9 @@ const landscapes = [{
   semanticPath: 'curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json',
   idNamespace: 'DE-GYM-CANONICAL-PHYSICS',
   framework: 'canonical-gymnasium-physics',
-  // Three reviewed semiconductor atoms and four K3/K6 ordinary goals are current.
-  curricularAtomicCount: 490,
+  // Three reviewed semiconductor atoms and four K3/K6 ordinary goals are current, and the three
+  // momentum goals of E.2 (individual and total momentum, mean and instantaneous resultant force).
+  curricularAtomicCount: 493,
   // Physics cluster weights are authored workload weights, not counts of atomic descendants,
   // and Physics marks an assessment by its exam data alone; the projection adds the node kind.
   countedClusterWeights: false,

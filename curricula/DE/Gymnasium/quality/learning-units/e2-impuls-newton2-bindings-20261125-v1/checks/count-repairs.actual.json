@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "contract": "e2-bound-count-and-frontier-test-repairs-v1",
+  "recordedAt": "2026-11-25T14:40:25Z",
+  "baseline": {
+    "command": "python3 -B ../scripts/run_backend_ci.py --forks 3 --manifest <external baseline manifest>",
+    "scope": "Complete Gradle check; overlapped source-view generation and is baseline diagnostic evidence, not the final current-head result.",
+    "junitCounts": {
+      "tests": 3202,
+      "failures": 111,
+      "errors": 0,
+      "skipped": 20
+    },
+    "failedClasses": {
+      "com.skillpilot.backend.controller.LearnerControllerIntegrationTest": 1,
+      "com.skillpilot.backend.connectors.claude.v1.mcp.ClaudeV1CompletionRouteIntegrationTest": 108,
+      "com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest": 2
+    },
+    "learnerResultContract": "The two collision tests initially omitted the explicit pass for new IMP. The corrected tests first verify that historical mapped mastery leaves IMP open and collisions locked, then provide IMP mastery explicitly. Runtime mastery projection is unchanged."
+  },
+  "currentChecks": [
+    {
+      "command": "./gradlew test -PbackendTestForks=3 with exactly three named repaired methods",
+      "exitCode": 0,
+      "cases": [
+        {
+          "class": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+          "test": "learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals()",
+          "status": "pass"
+        },
+        {
+          "class": "com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest",
+          "test": "canonicalPhysicsPilotFrontierUnlocksInelasticCollisionsFromProjectedBavariaEnergyAndMomentumMastery()",
+          "status": "pass"
+        },
+        {
+          "class": "com.skillpilot.backend.service.LearnerServiceCrossSubjectPilotTest",
+          "test": "canonicalPhysicsPilotFrontierUnlocksSimpleCollisionGoalFromProjectedBavariaEnergyAndMomentumMastery()",
+          "status": "pass"
+        }
+      ]
+    },
+    {
+      "command": "tsx scripts/testHessePhysicsFlashcardActions.ts",
+      "exitCode": 0,
+      "courseDurationLanguageProjections": 32,
+      "throwAssessmentCourseDurationProjections": 4
+    }
+  ],
+  "boundInputs": [
+    {
+      "path": "app/scripts/testHessePhysicsFlashcardActions.ts",
+      "sha256": "94b2ec3af628e97c79e18d82d56c59e55076cdd689aabd32dc5035019285e044"
+    },
+    {
+      "path": "app/scripts/testPhysicsGoalBookInputs.ts",
+      "sha256": "17809560d02701b151b71262d201d0096550d5e42045ef588429b57d37e16ed3"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "sha256": "3b27ca456283c59302eaf4a88832e9f759745d2348908403ba4b5177a72cf815"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCrossSubjectPilotTest.java",
+      "sha256": "1c323e5382fc961c64c1ba001f4e789eedf287f2a05df8c5768bb3b303cb7acd"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/physics-seki-seed-fixtures.actual.json",
+      "sha256": "669a4eeabd9862f15a5477942f424f388dc199ff38256876ffa8b2248b971bf2"
+    }
+  ],
+  "limits": [
+    "These are exact count, identity and frontier fixture repairs; no official content approval, assessment credit or mastery migration.",
+    "Full frontend and complete Gradle checks on the final pushed head are still separate required runs.",
+    "The protected route gate remains failing in the separately measured nine lower-stage scopes."
+  ],
+  "rawLogsCommitted": false
+}

@@ -1,0 +1,80 @@
+{
+  "record": "e2-dated-learner-plan-fixture",
+  "predecessorHead": "9bdf3cc382258f6a9e76cc80ca17abcbebc089c4",
+  "fixture": "backend/src/test/resources/fixtures/e2-forces-before-cut-20261125.json",
+  "fixtureSha256": "6367068e3613691e269209889f476c5fe557e611ec46d08248db643e8172bada",
+  "test": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+  "courseCaptures": {
+    "GK": {
+      "historicalGoals": 32,
+      "originalRecord": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e2-child-structures-2026-11-25/independent-review/round-2/probes/native/captured-GK-false.json",
+      "originalSha256": "sha256:7aea72b0e70514a5078ea1550c9deca1ac15d13cad8cc7afba1fba180d4787d7",
+      "originalScopeFingerprint": "sha256:36708354ed3e3d1f2fdbce14e2285b28afae930b67b58f9b1d4667fbc41cbd61",
+      "additionalCurrentGoals": [
+        "53afbda1-5776-502b-8867-471975d7b766"
+      ]
+    },
+    "LK": {
+      "historicalGoals": 32,
+      "originalRecord": "curricula/DE/Gymnasium/quality/learning-units/physics-he-e2-child-structures-2026-11-25/independent-review/round-2/probes/native/captured-LK-false.json",
+      "originalSha256": "sha256:cbf92f096911a6be87e4e6cb0400685de73a409953af2c82c220223ddd7e5a6e",
+      "originalScopeFingerprint": "sha256:5fabc1abb59f36db3ca15cfbe5e23a8470f4f908c0640d5f228b643f63d5ddf6",
+      "additionalCurrentGoals": [
+        "53afbda1-5776-502b-8867-471975d7b766",
+        "ecbaa101-cb10-5da3-9368-ae40ff587d74",
+        "059c1adc-e4d2-5222-a923-15abc417d59f"
+      ]
+    }
+  },
+  "isolatedRuns": [
+    {
+      "panel": "original-current",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "productionNegativeControl": false,
+      "productionJavaSha256": "d7e50ad51d84219989be92999e1a12323c8ae47574d3337c8681701dd80c3cb8",
+      "testJavaSha256": "212b7b7e156f182b6205ef9b095ff51b3e73c7387faa182e8e03e03a48298d9b",
+      "counts": [
+        {
+          "tests": "2",
+          "failures": "2",
+          "errors": "0",
+          "skipped": "0"
+        }
+      ]
+    },
+    {
+      "panel": "repaired-current",
+      "exitCode": 0,
+      "expectedExitCode": 0,
+      "productionNegativeControl": false,
+      "productionJavaSha256": "d7e50ad51d84219989be92999e1a12323c8ae47574d3337c8681701dd80c3cb8",
+      "testJavaSha256": "2c0f9bdeb27cc27a66e97224efafda2664aabd1311aec10f9f4aa4f7efc4b318",
+      "counts": [
+        {
+          "tests": "2",
+          "failures": "0",
+          "errors": "0",
+          "skipped": "0"
+        }
+      ]
+    },
+    {
+      "panel": "without-retained-capture",
+      "exitCode": 1,
+      "expectedExitCode": 1,
+      "productionNegativeControl": true,
+      "productionJavaSha256": "a6fae63512cbf9f83392a02342bc5b78f4d4a66ba34f957b799b45240f367559",
+      "testJavaSha256": "2c0f9bdeb27cc27a66e97224efafda2664aabd1311aec10f9f4aa4f7efc4b318",
+      "counts": [
+        {
+          "tests": "2",
+          "failures": "2",
+          "errors": "0",
+          "skipped": "0"
+        }
+      ]
+    }
+  ],
+  "finding": "The historical regression had reconstructed its captured goals from the contemporary E.2 selection. It now exercises the actual stored blocks of 23 November, retaining 32 unique goals in each course and the original fingerprint. The historical data are available to the sparse backend job as a small classpath test resource."
+}

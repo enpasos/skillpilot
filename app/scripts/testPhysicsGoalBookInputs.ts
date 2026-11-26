@@ -257,6 +257,9 @@ const SEMANTIC_RECHECK_ATOMIC_GOAL_IDS = new Set([
   '727d0946-7019-50ed-8fc6-85db12508733',
 ])
 const STRUCTURAL_SPLIT_ATOMIC_GOAL_IDS = new Set([
+  '53afbda1-5776-502b-8867-471975d7b766',
+  'ecbaa101-cb10-5da3-9368-ae40ff587d74',
+  '059c1adc-e4d2-5222-a923-15abc417d59f',
   '2a6ad2c6-3e1b-57a9-82a1-e6620a532f5c',
   '41d35667-0296-5f84-bc12-202ffc440be0',
   '33e3417c-e062-5f4a-8df9-3195dca50089',
@@ -346,6 +349,8 @@ const STRUCTURAL_SPLIT_CLUSTER_GOAL_IDS = new Set([
   'f203a552-fcf0-560c-baa2-47d4eb2379c8',
 ])
 const POST_SPLIT_PRACTICE_ASSESSMENT_GOAL_IDS = new Set([
+  'd8fc6295-d0db-59e5-bd90-080bbc508c3a', // Individual and total momenta (Hamburg and Thuringia).
+  'b50e9903-58b3-520d-96bf-d5bc1fe51ebf', // Mean resultant force (Baden-Württemberg).
   '4ea1b93f-2dba-59ac-87ab-29af6c55cc37',
   // B034: actual individually counter-reviewed tasks for the separated competencies.
   '51af53cb-8866-52cd-b2ca-af8bd8a836e0',
@@ -637,19 +642,19 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
   'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
 ])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 490,
+  curricularAtomic: 493,
   curricularArea: 112,
-  practiceAssessment: 248,
+  practiceAssessment: 250,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 4,
-  total: 864,
+  total: 869,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
 const ATLAS_PREPARATION_ONLY_GOAL_ID = '13b338eb-f761-5817-9058-11043b9cb253'
-const EXPECTED_ATLAS_TARGET_COUNT = 489
+const EXPECTED_ATLAS_TARGET_COUNT = 492
 // These four reviewed E.1 split atoms extend the existing target set; every
 // previous atlas and canonical-profile identity remains independently pinned.
 const E1_ADDED_NATIONAL_TARGET_IDS = [
@@ -657,6 +662,11 @@ const E1_ADDED_NATIONAL_TARGET_IDS = [
   '1e459a1b-4159-5049-84eb-9928129c1610',
   '262f807a-30d0-503e-986f-856cbd048e8e',
   'd9a6ea85-f7e8-5cbd-afe9-62596e22040d',
+]
+const E2_ADDED_ATLAS_TARGET_IDS = [
+  '059c1adc-e4d2-5222-a923-15abc417d59f',
+  '53afbda1-5776-502b-8867-471975d7b766',
+  'ecbaa101-cb10-5da3-9368-ae40ff587d74',
 ]
 const STAGE_PLAN_ADDED_NATIONAL_TARGET_IDS = [
   '3ed3279e-c524-5230-a277-dda89493df6d',
@@ -715,10 +725,11 @@ const FINAL_SPLIT_ASSESSMENT_COVERAGE = new Map([
 // The four new goals contribute 24 motion-law, 24 signed-area, 6 fall-comparison
 // and 12 velocity-vector occurrences in the reviewed state views.
 // The diagnostic selector still includes 8,739. All 494 outside it enter CQR-104.
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 9233
+// E.2 adds twelve system-momentum and three mean-force occurrences in the actual source views.
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 9233 + 12 + 3
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 8739
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 494
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 61
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 494 + 12 + 3
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 61 + 2
 const EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES = new Map([
   [FINAL_SPLIT_CHILD_IDS[0], 30], // p-n model: 25 prior + 5 new lower-view occurrences
   [FINAL_SPLIT_CHILD_IDS[1], 24], // diode experiment: 20 + 4
@@ -1621,16 +1632,118 @@ for (const source of [...ffxPrimarySources, currentStageOffers.dprimeContentAndS
   assert.equal(createHash('sha256').update(readFileSync(resolve(repoRoot, source.path))).digest('hex'), source.sha256)
 }
 const currentStagePreparation = readJson<{ payloads: Array<{ goalId: string; rawSha256: string; normalizedSha256: string }>
+  rejected: Array<{ goalId: string; fullRealPrerequisiteIds: string[] }>
   assessments: Array<{ goalId: string; assessmentRawSha256: string; assessmentNormalizedSha256: string
     jurisdictions: string[]; fullRealPrerequisiteIds: string[] }> }>(currentStageOffers.currentSharedPreparation.path)
 const rawStagePreparationById = new Map(preparationLandscape.goals.map(goal => [goal.id, goal]))
 const normalizedStagePreparationById = new Map(normalizeCanonicalLandscape(preparationLandscape as unknown as CanonicalAuthoringLandscape)
   .goals.map(goal => [goal.id, goal]))
 assert.equal(currentStagePreparation.payloads.length, 216)
-for (const payload of currentStagePreparation.payloads) {
+type PreparationPin = { goalId: string; rawSha256: string; normalizedSha256: string }
+const e2PreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/current-stage-preparation.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, e2PreparationPath), 'utf8')), '267af7412b4c00e42d29d5881d805443537da73e5513cfc0145d2d0d7cdf66bd')
+const e2Preparation = readJson<{
+  predecessor: { path: string; sha256: string; payloadCount: number }
+  changes: Array<{ goalId: string; before: PreparationPin; current: PreparationPin }>
+  additionalPreparationPayloads: PreparationPin[]
+  closures: Array<{ goalId: string; priorDisposition: 'assessments' | 'rejected'
+    previousCount: number; currentCount: number; added: string[]; removed: string[] }>
+}>(e2PreparationPath)
+assert.deepEqual(e2Preparation.predecessor, { ...currentStageOffers.currentSharedPreparation, payloadCount: 216 })
+const pinChanges = new Map(e2Preparation.changes.map(row => [row.goalId, row]))
+assert.equal(pinChanges.size, 3)
+const currentPreparationPins = currentStagePreparation.payloads.map(previous => {
+  const successor = pinChanges.get(previous.goalId)
+  if (!successor) return previous
+  assert.deepEqual(successor.before, {
+    goalId: previous.goalId, rawSha256: previous.rawSha256, normalizedSha256: previous.normalizedSha256,
+  })
+  assert.equal(successor.current.goalId, previous.goalId)
+  return successor.current
+})
+const priorPreparationIds = new Set(currentStagePreparation.payloads.map(row => row.goalId))
+const newClosureIds = new Set(e2Preparation.closures.flatMap(row => row.added)
+  .filter(id => !priorPreparationIds.has(id)))
+assert.deepEqual(e2Preparation.additionalPreparationPayloads.map(row => row.goalId),
+  [...newClosureIds].sort(compareCodePoints))
+currentPreparationPins.push(...e2Preparation.additionalPreparationPayloads)
+assert.equal(new Set(currentPreparationPins.map(row => row.goalId)).size, 219)
+const conservationPreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/conservation-preparation.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, conservationPreparationPath), 'utf8')), '35cf6085d2fafa237ad67bb0fb70270076776e97c3031cfd0effd7b558bb02cb')
+const conservationPreparation = readJson<{
+  predecessor: { path: string; sha256: string; payloadCount: number }
+  changedFields: string[]; before: PreparationPin; current: PreparationPin; unchangedPreparationPayloads: number
+}>(conservationPreparationPath)
+assert.deepEqual(conservationPreparation.predecessor, {
+  path: e2PreparationPath, sha256: sha256(readFileSync(resolve(repoRoot, e2PreparationPath), 'utf8')), payloadCount: 219,
+})
+assert.deepEqual(conservationPreparation.changedFields, ['description', 'descriptionEn', 'resourceLinks'])
+const conservationGoalId = '839ecc8f-3a60-418b-bc92-64bfeef33824'
+assert.equal(conservationPreparation.current.goalId, conservationGoalId)
+const conservationIndex = currentPreparationPins.findIndex(row => row.goalId === conservationGoalId)
+assert.deepEqual(currentPreparationPins[conservationIndex], conservationPreparation.before)
+currentPreparationPins[conservationIndex] = conservationPreparation.current
+assert.equal(conservationPreparation.unchangedPreparationPayloads, currentPreparationPins.length - 1)
+const vectorPreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/vector-scale-preparation.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, vectorPreparationPath), 'utf8')), '67afc0f8e739c9b0ed24eb0999989d927a9bf67392c5fe15416c429c67f4a811')
+const vectorPreparation = readJson<{
+  predecessor: { path: string; sha256: string; payloadCount: number }
+  changes: Array<{ goalId: string; changedFields: string[]; before: PreparationPin; current: PreparationPin }>
+  retainedOtherPayloads: number
+}>(vectorPreparationPath)
+assert.deepEqual(vectorPreparation.predecessor, {
+  path: conservationPreparationPath,
+  sha256: sha256(readFileSync(resolve(repoRoot, conservationPreparationPath), 'utf8')),
+  payloadCount: currentPreparationPins.length,
+})
+assert.deepEqual(vectorPreparation.changes.map(change => change.goalId).sort(compareCodePoints), [
+  '53afbda1-5776-502b-8867-471975d7b766', conservationGoalId,
+  'a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20', 'ecbaa101-cb10-5da3-9368-ae40ff587d74',
+])
+assert.equal(vectorPreparation.retainedOtherPayloads, currentPreparationPins.length - 4)
+for (const change of vectorPreparation.changes) {
+  assert.deepEqual(change.changedFields, ['resourceLinks'])
+  assert.equal(change.current.goalId, change.goalId)
+  const index = currentPreparationPins.findIndex(pin => pin.goalId === change.goalId)
+  assert.deepEqual(currentPreparationPins[index], change.before)
+  currentPreparationPins[index] = change.current
+}
+const individualMomentumPreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/individual-momenta-preparation.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, individualMomentumPreparationPath), 'utf8')), 'b94c94a682ab924f7400cdfd5044eb9bb2e9c1142196a3bd5084f6108a6789c6')
+const individualMomentumPreparation = readJson<{
+  predecessor: {path: string; sha256: string; payloadCount: number}
+  before: PreparationPin; current: PreparationPin; changedFields: string[]; retainedOtherPayloads: number
+}>(individualMomentumPreparationPath)
+assert.deepEqual(individualMomentumPreparation.predecessor, {
+  path: vectorPreparationPath, sha256: sha256(readFileSync(resolve(repoRoot, vectorPreparationPath), 'utf8')),
+  payloadCount: currentPreparationPins.length,
+})
+assert.equal(individualMomentumPreparation.current.goalId, '53afbda1-5776-502b-8867-471975d7b766')
+assert.deepEqual(individualMomentumPreparation.changedFields, ['resourceLinks'])
+assert.equal(individualMomentumPreparation.retainedOtherPayloads, currentPreparationPins.length - 1)
+const individualPreparationIndex = currentPreparationPins.findIndex(row => row.goalId === individualMomentumPreparation.current.goalId)
+assert.deepEqual(currentPreparationPins[individualPreparationIndex], individualMomentumPreparation.before)
+currentPreparationPins[individualPreparationIndex] = individualMomentumPreparation.current
+for (const payload of currentPreparationPins) {
   assert.equal(sha256(JSON.stringify(rawStagePreparationById.get(payload.goalId))), payload.rawSha256,
     `${payload.goalId}: stale actual source-stage prerequisite bytes`)
   assert.equal(sha256(JSON.stringify(normalizedStagePreparationById.get(payload.goalId))), payload.normalizedSha256)
+}
+for (const kind of ['assessments', 'rejected'] as const) {
+  const before = currentStagePreparation[kind]
+  const after = e2Preparation.closures.filter(row => row.priorDisposition === kind)
+  assert.deepEqual(after.map(row => row.goalId), before.map(row => row.goalId))
+  for (const [index, row] of after.entries()) {
+    const previous = before[index].fullRealPrerequisiteIds
+    assert.equal(row.previousCount, previous.length)
+    assert.deepEqual(row.removed, [])
+    if (kind === 'assessments') assert.deepEqual(row.added, [])
+    const actual = collectWholeMaterialPrerequisiteClosure(preparationLandscape, row.goalId)
+    assert.equal(actual.unresolvedReferences.size, 0)
+    assert.equal(actual.atomicGoalIds.size, row.currentCount)
+    assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints),
+      [...previous, ...row.added].sort(compareCodePoints))
+  }
 }
 assert.deepEqual(currentStageOffers.assessments.map(row => row.goalId), [saxonAccelerationExam, saxonFreeFallExam])
 type EvidenceFile = { path: string; sha256: string }
@@ -2363,7 +2476,14 @@ assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must rema
 // Current, independently reviewed repairs may change a goal's preparation.
 // V9 transfers unchanged goals individually; it does not require preserving an
 // older whole-catalog prerequisite inventory. Resolve the actual foreign edges.
-assert.equal(foreignRequiresEdges.length, 161, 'the current Physics inventory has 161 direct cross-subject prerequisites')
+assert.equal(foreignRequiresEdges.length, 164, 'E.2 adds three direct mathematical prerequisites to the prior 161')
+for (const [ownerId, required] of [
+  ['53afbda1-5776-502b-8867-471975d7b766', ['4eeab7d5-eeb3-579b-845e-1c52ffe9e89f', 'ee48e811-4c9c-5080-9836-8403fc9f0810']],
+  ['059c1adc-e4d2-5222-a923-15abc417d59f', ['b1dcc191-d046-50de-984a-ee5c17157628']],
+] as const) {
+  assert.deepEqual(foreignRequiresEdges.filter(edge => edge.ownerId === ownerId).map(edge => edge.goalId).sort(compareCodePoints),
+    required)
+}
 foreignRequiresEdges.forEach(({ ownerId, goalId }) => {
   assert(mathGoalIds.has(goalId) || chemistryGoalIds.has(goalId),
     `foreign prerequisite ${goalId} has no configured canonical owner`)
@@ -2529,6 +2649,155 @@ ledger.decisions.forEach((decision) => {
 })
 assert.equal(decisionByGoalId.size, goalById.size, 'semantic-kind ledger must bind every Physics goal exactly once')
 assert.deepEqual(actualCounts, EXPECTED_COUNTS)
+const lowerMomentumKindsPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/lower-assessments-kinds.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, lowerMomentumKindsPath), 'utf8')), 'b8da1f2bf192ca1039591a003ac975fff2eb49b6039bfbeeac0e2b939deaea8c')
+const lowerMomentumKinds = readJson<{
+  root: { goalId: string; previousChildren: number; currentChildren: number; currentSourceFingerprint: string }
+  newExams: Array<{ goalId: string; canonicalPayloadSha256: string; sourceFingerprint: string; semanticKind: string; contentReview: EvidenceFile }>
+}>(lowerMomentumKindsPath)
+const examFormPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/exam-form-successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, examFormPath), 'utf8')), 'd9dd798d0d119a19066a606de1b2ce982d3ce52d4e27463e0ee78954c9364a40')
+type ExerciseParentReview = {
+  goalId: string; previousChildren: number; currentChildren: number
+  previousSourceFingerprint: string; currentSourceFingerprint: string
+}
+const examForms = readJson<{
+  historicalK2Placement: EvidenceFile; root: ExerciseParentReview; lowerStageExercises: ExerciseParentReview
+  total: number; practiceAssessments: number
+  currentGoals: Array<{
+    goalId: string; currentCanonicalPayloadSha256: string; currentParentGoalId: string; currentTag: string
+    sourceFingerprint: string; reviewedCandidate: EvidenceFile; releasedGoal: EvidenceFile
+    contentReview: EvidenceFile; reviewedSourceArtifact: EvidenceFile; sourceArtifact: EvidenceFile
+    unchangedExamFields: Record<string, string>
+  }>
+}>(examFormPath)
+const verifyExerciseArtifact = (file: EvidenceFile) =>
+  assert.equal(sha256(readFileSync(resolve(repoRoot, file.path), 'utf8')), file.sha256, file.path)
+verifyExerciseArtifact(examForms.historicalK2Placement)
+assert.equal(examForms.historicalK2Placement.path, lowerMomentumKindsPath)
+assert.equal(examForms.total, EXPECTED_COUNTS.total)
+assert.equal(examForms.practiceAssessments, EXPECTED_COUNTS.practiceAssessment)
+const priorMeanForce = lowerMomentumKinds.newExams[0]
+assert.equal(priorMeanForce.goalId, 'b50e9903-58b3-520d-96bf-d5bc1fe51ebf')
+const exerciseIds = examForms.currentGoals.map(r => r.goalId)
+assert.deepEqual(exerciseIds, ['d8fc6295-d0db-59e5-bd90-080bbc508c3a', priorMeanForce.goalId])
+const rootForPractice = rawGoalById.get(examForms.root.goalId)!
+assert.equal(examForms.root.goalId, lowerMomentumKinds.root.goalId)
+assert.equal(examForms.lowerStageExercises.goalId, '21ab0854-4d67-5233-9495-ae208e152a3c')
+assert.equal(examForms.root.previousChildren, lowerMomentumKinds.root.currentChildren)
+assert.equal(examForms.root.currentChildren, lowerMomentumKinds.root.currentChildren + 1)
+assert.equal(examForms.root.previousSourceFingerprint, lowerMomentumKinds.root.currentSourceFingerprint)
+assert.deepEqual((rootForPractice.contains as string[]).slice(-2), [priorMeanForce.goalId, exerciseIds[0]])
+assert.equal(fingerprintSemanticKindSourceGoal({...rootForPractice, contains: (rootForPractice.contains as string[]).slice(0, -1)}), examForms.root.previousSourceFingerprint)
+assert.equal(examForms.lowerStageExercises.previousChildren, 70)
+assert.equal(examForms.lowerStageExercises.currentChildren, 70)
+assert.equal(examForms.lowerStageExercises.previousSourceFingerprint, examForms.lowerStageExercises.currentSourceFingerprint)
+for (const parent of [examForms.root, examForms.lowerStageExercises]) {
+  assert.equal((rawGoalById.get(parent.goalId)!.contains as string[]).length, parent.currentChildren)
+  assert.equal(decisionByGoalId.get(parent.goalId)?.sourceFingerprint, parent.currentSourceFingerprint)
+}
+for (const row of examForms.currentGoals) {
+  for (const file of [row.reviewedCandidate, row.releasedGoal, row.contentReview, row.reviewedSourceArtifact, row.sourceArtifact]) {
+    verifyExerciseArtifact(file)
+  }
+  const reviewed = readJson<Record<string, unknown>>(row.reviewedCandidate.path)
+  const released = readJson<Record<string, unknown>>(row.releasedGoal.path)
+  assert.deepEqual(parentIdsByChild.get(row.goalId), [rootForPractice.id])
+  assert.equal(row.currentParentGoalId, rootForPractice.id)
+  assert.equal(row.currentTag, 'SekI')
+  assert.deepEqual(released.tags, [...(reviewed.tags as string[]), row.currentTag])
+  assert.equal(decisionByGoalId.get(row.goalId)?.semanticKind, 'practiceAssessment')
+  assert.equal(fingerprintSemanticKindSourceGoal(released), row.sourceFingerprint)
+  assert.equal(sha256(JSON.stringify(released)), row.currentCanonicalPayloadSha256)
+  if (row.goalId === priorMeanForce.goalId) {
+    assert.equal(sha256(JSON.stringify(reviewed)), priorMeanForce.canonicalPayloadSha256)
+    assert.equal(fingerprintSemanticKindSourceGoal(reviewed), priorMeanForce.sourceFingerprint)
+    assert.deepEqual(row.contentReview, priorMeanForce.contentReview)
+  }
+  const exam = released.examData as Record<string, unknown>
+  const oldExam = reviewed.examData as Record<string, unknown>
+  assert.deepEqual(Object.keys(row.unchangedExamFields).sort(), Object.keys(oldExam).filter(k => k !== 'sourceArtifactPath').sort())
+  for (const [field, digest] of Object.entries(row.unchangedExamFields)) {
+    assert.equal(sha256(JSON.stringify(exam[field])), digest)
+    assert.deepEqual(exam[field], oldExam[field])
+  }
+  assert.deepEqual(released, {
+    ...reviewed, title: released.title, titleEn: released.titleEn,
+    description: released.description, descriptionEn: released.descriptionEn,
+    tags: released.tags, examData: {...oldExam, sourceArtifactPath: row.sourceArtifact.path},
+  })
+  const source = (file: EvidenceFile) => readFileSync(resolve(repoRoot, file.path), 'utf8').split('\n')
+  const oldLines = source(row.reviewedSourceArtifact)
+  const oldHeadings = new Map([
+    [`# ${reviewed.title} / ${reviewed.titleEn}`, `# ${released.title} / ${released.titleEn}`],
+    [`# ${reviewed.title}`, `# ${released.title}`],
+    [`# ${reviewed.titleEn}`, `# ${released.titleEn}`],
+  ])
+  assert.deepEqual(source(row.sourceArtifact), oldLines.map(line => oldHeadings.get(line) ?? line))
+}
+
+const closureStrandsPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/exam-strand-successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, closureStrandsPath), 'utf8')), '7010c0d0a04096437ed7af34078cfe4f5b2cdfd724d1f982fa97232091e3f60d')
+const closureStrands = readJson<{
+  predecessorForm: EvidenceFile; diagnosis: EvidenceFile
+  currentGoals: Array<typeof examForms.currentGoals[number] & {
+    previousReleasedGoal: EvidenceFile; previousCanonicalPayloadSha256: string; previousSourceFingerprint: string
+    metadataReview: EvidenceFile; currentCoveredStrands: string[]; beforeCoveredStrands: string[]
+  }>
+}>(closureStrandsPath)
+assert.equal(closureStrands.predecessorForm.path, examFormPath)
+for (const file of [closureStrands.predecessorForm, closureStrands.diagnosis]) verifyExerciseArtifact(file)
+assert.deepEqual(closureStrands.currentGoals.map(row => row.goalId), exerciseIds)
+for (const [index, row] of closureStrands.currentGoals.entries()) {
+  const previous = examForms.currentGoals[index]
+  assert.deepEqual(row.previousReleasedGoal, previous.releasedGoal)
+  assert.equal(row.previousCanonicalPayloadSha256, previous.currentCanonicalPayloadSha256)
+  assert.equal(row.previousSourceFingerprint, previous.sourceFingerprint)
+  assert.deepEqual(row.beforeCoveredStrands, [])
+  assert.deepEqual(row.currentCoveredStrands, ['LI_BEWEGUNG'])
+  for (const file of [row.previousReleasedGoal, row.releasedGoal, row.metadataReview]) verifyExerciseArtifact(file)
+  const before = readJson<Record<string, unknown>>(row.previousReleasedGoal.path)
+  const exam = before.examData as Record<string, unknown>
+  assert.deepEqual(exam.coveredStrands, row.beforeCoveredStrands)
+  const active = rawGoalById.get(row.goalId)!
+  assert.deepEqual(active, {...before, examData: {...exam, coveredStrands: row.currentCoveredStrands}})
+  assert.deepEqual(readJson<Record<string, unknown>>(row.releasedGoal.path), active)
+  assert.equal(row.currentCanonicalPayloadSha256, sha256(JSON.stringify(active)))
+  assert.equal(row.sourceFingerprint, fingerprintSemanticKindSourceGoal(active))
+  assert.equal(decisionByGoalId.get(row.goalId)?.sourceFingerprint, row.sourceFingerprint)
+}
+
+const closureWarningsPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/applicability-warnings.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, closureWarningsPath), 'utf8')), '7fce8f9dfe68be3ec901f589c03e3e46c1eae00cfc6e45684084f91e3d23267a')
+const closureWarnings = readJson<{
+  currentRelease: EvidenceFile; exactOfferEvidence: EvidenceFile; sourceProjection: EvidenceFile
+  decisions: Array<{code: string; landscapeId: string; goalId: string; dimension: string; evidence: {
+    exactWarningKey: string; compiledJurisdictions: string[]; exactOverrideJurisdictions: string[]
+    currentGoalJsonStringifySha256: string; offeredViewIds: string[]
+  }}>
+}>(closureWarningsPath)
+for (const file of [closureWarnings.currentRelease, closureWarnings.exactOfferEvidence, closureWarnings.sourceProjection]) verifyExerciseArtifact(file)
+assert.equal(closureWarnings.currentRelease.path, closureStrandsPath)
+const acceptedClosureWarnings = readJson<{acceptedWarnings: typeof closureWarnings.decisions}>(
+  'docs/qa-ci/applicability-accepted-warnings.json',
+).acceptedWarnings.filter(row => row.landscapeId === LANDSCAPE_ID && exerciseIds.includes(row.goalId))
+assert.deepEqual(acceptedClosureWarnings, closureWarnings.decisions)
+assert.deepEqual(acceptedClosureWarnings.map(row => row.goalId), exerciseIds)
+for (const [index, row] of acceptedClosureWarnings.entries()) {
+  const jurisdictions = index === 0 ? ['DE-HH', 'DE-TH'] : ['DE-BW']
+  assert.deepEqual(row.evidence.exactOverrideJurisdictions, jurisdictions)
+  assert.deepEqual(row.evidence.compiledJurisdictions, jurisdictions)
+  assert.equal(row.evidence.exactWarningKey, `APV-201|${LANDSCAPE_ID}|${row.goalId}|jurisdiction|`)
+  const found = physicsApplicabilityReport.findings.filter(w => w.goalId === row.goalId && w.code === 'APV-201')
+  assert.equal(found.length, 1)
+  assert.equal(found[0].message, `Goal uses applicability override for ${jurisdictions.join(', ')}.`)
+  const compiled = physicsApplicabilityReport.goals.find(g => g.goalId === row.goalId)
+  assert.deepEqual(compiled?.compiledApplicability, {jurisdiction: jurisdictions})
+  assert.equal(row.evidence.currentGoalJsonStringifySha256, closureStrands.currentGoals[index].currentCanonicalPayloadSha256)
+  const expectedViews = jurisdictions.flatMap(land => ['gym-physics-gk', 'gym-physics-lk', 'gym-seki-physics'].map(scope => `${land.toLowerCase()}-${scope}`))
+  assert.deepEqual([...row.evidence.offeredViewIds].sort(), expectedViews.sort())
+}
+
 const kinematicsReviewPath = 'curricula/DE/Gymnasium/quality/assessment-review/physics-kinematics-20261022/review.json'
 // This immutable receipt binds the original material review, not today's
 // narrowed/withdrawn coverage or the current acquisition-contract approval.
@@ -3458,12 +3727,87 @@ assert.equal(sha256(readFileSync(resolve(repoRoot, atlasDeltaPath), 'utf8')),
 const atlasDelta = readJson<{ beforeActualUnionCount: number; currentActualUnionCount: number
   addedTargetGoalIds: string[]; removedTargetGoalIds: string[]; beforeUnionGoalIds: string[]; currentUnionGoalIds: string[] }>(atlasDeltaPath)
 assert.equal(atlasDelta.beforeActualUnionCount, 485)
-assert.equal(atlasDelta.currentActualUnionCount, EXPECTED_ATLAS_TARGET_COUNT)
+assert.equal(atlasDelta.currentActualUnionCount, 489)
 assert.deepEqual(atlasDelta.addedTargetGoalIds, E1_ADDED_NATIONAL_TARGET_IDS)
 assert.deepEqual(atlasDelta.removedTargetGoalIds, [])
-assert.deepEqual([...atlasCurricularAtomicGoalIds].sort(compareCodePoints), atlasDelta.currentUnionGoalIds)
-assert.deepEqual([...atlasCurricularAtomicGoalIds].filter(id => !E1_ADDED_NATIONAL_TARGET_IDS.includes(id)).sort(compareCodePoints),
+const beforeE2AtlasTargetIds = [...atlasCurricularAtomicGoalIds]
+  .filter(id => !E2_ADDED_ATLAS_TARGET_IDS.includes(id))
+assert.deepEqual(beforeE2AtlasTargetIds.sort(compareCodePoints), atlasDelta.currentUnionGoalIds)
+assert.deepEqual(beforeE2AtlasTargetIds.filter(id => !E1_ADDED_NATIONAL_TARGET_IDS.includes(id)).sort(compareCodePoints),
   atlasDelta.beforeUnionGoalIds, 'E.1 must preserve every independently bound prior atlas target')
+const e2AtlasDeltaPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/inventory/national-atlas-inventory-delta.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, e2AtlasDeltaPath), 'utf8')),
+  '7cb906ab484602378ff83db0548a3436ded783f058cdcb125c364215f585f59c')
+const e2AtlasDelta = readJson<{ beforeActualUnionCount: number; currentActualUnionCount: number
+  addedTargetGoalIds: string[]; removedTargetGoalIds: string[]; beforeUnionGoalIds: string[]; currentUnionGoalIds: string[]
+  predecessor: { path: string; sha256: string }; sourceViews: Array<{ path: string; sha256: string }>
+  canonicalProfileTargets: { count: number; unchangedFromE1: boolean; goalIds: string[] }
+}>(e2AtlasDeltaPath)
+assert.equal(e2AtlasDelta.predecessor.path, atlasDeltaPath)
+assert.equal(sha256(readFileSync(resolve(repoRoot, e2AtlasDelta.predecessor.path), 'utf8')), e2AtlasDelta.predecessor.sha256)
+assert.equal(e2AtlasDelta.beforeActualUnionCount, atlasDelta.currentActualUnionCount)
+assert.equal(e2AtlasDelta.currentActualUnionCount, EXPECTED_ATLAS_TARGET_COUNT)
+assert.deepEqual(e2AtlasDelta.beforeUnionGoalIds, atlasDelta.currentUnionGoalIds)
+assert.deepEqual(e2AtlasDelta.addedTargetGoalIds, E2_ADDED_ATLAS_TARGET_IDS)
+assert.deepEqual(e2AtlasDelta.removedTargetGoalIds, [])
+assert.deepEqual([...atlasCurricularAtomicGoalIds].sort(compareCodePoints), e2AtlasDelta.currentUnionGoalIds,
+  'E.2 adds exactly its three source-backed atlas targets and retains the complete previous target set')
+assert.deepEqual(e2AtlasDelta.sourceViews.map(row => row.path), sourceManifest.sourcePaths)
+const lowerMomentumAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v1/national-atlas-current-sources.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, lowerMomentumAtlasPath), 'utf8')), 'db56e1e8232bae9dd20cec4b2249408b506d9e2b0732e8b7a380cbcc129382dc')
+const lowerMomentumAtlas = readJson<{
+  predecessor: { path: string; sha256: string }
+  sourceViews: Array<{ path: string; previousSha256: string; sha256: string }>
+  changedSourceViews: Array<{ path: string }>
+  currentUnionGoalIds: string[]
+  canonicalProfileTargets: { goalIds: string[] }
+}>(lowerMomentumAtlasPath)
+assert.deepEqual(lowerMomentumAtlas.predecessor, {
+  path: e2AtlasDeltaPath, sha256: sha256(readFileSync(resolve(repoRoot, e2AtlasDeltaPath), 'utf8')),
+})
+assert.deepEqual(lowerMomentumAtlas.currentUnionGoalIds, e2AtlasDelta.currentUnionGoalIds)
+assert.deepEqual(lowerMomentumAtlas.canonicalProfileTargets.goalIds, e2AtlasDelta.canonicalProfileTargets.goalIds)
+assert.deepEqual(lowerMomentumAtlas.sourceViews.map(row => ({ path: row.path, sha256: row.previousSha256 })),
+  e2AtlasDelta.sourceViews.map(row => ({ path: row.path, sha256: row.sha256 })))
+const changedMomentumAtlasPaths = [
+  `${COMPOSITION_VIEW_DIRECTORY}/de-bw-gk.view.json`,
+  `${COMPOSITION_VIEW_DIRECTORY}/de-bw-lk.view.json`,
+]
+assert.deepEqual(lowerMomentumAtlas.changedSourceViews.map(row => row.path).sort(compareCodePoints), changedMomentumAtlasPaths)
+assert.deepEqual(lowerMomentumAtlas.sourceViews.filter(row => row.previousSha256 !== row.sha256)
+  .map(row => row.path).sort(compareCodePoints), changedMomentumAtlasPaths)
+const signedMomentumAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v4/national-atlas-current-sources.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, signedMomentumAtlasPath), 'utf8')), 'de351715bfee09d102ee215e938e7d8f9cc36e78433e2ac319515a9488ee0fc4')
+const signedMomentumAtlas = readJson<typeof lowerMomentumAtlas>(signedMomentumAtlasPath)
+assert.deepEqual(signedMomentumAtlas.predecessor, {
+  path: lowerMomentumAtlasPath, sha256: sha256(readFileSync(resolve(repoRoot, lowerMomentumAtlasPath), 'utf8')),
+})
+assert.deepEqual(signedMomentumAtlas.currentUnionGoalIds, lowerMomentumAtlas.currentUnionGoalIds)
+assert.deepEqual(signedMomentumAtlas.canonicalProfileTargets.goalIds, lowerMomentumAtlas.canonicalProfileTargets.goalIds)
+assert.deepEqual(signedMomentumAtlas.sourceViews.map(r => ({path: r.path, sha256: r.previousSha256})),
+  lowerMomentumAtlas.sourceViews.map(r => ({path: r.path, sha256: r.sha256})))
+const signedMomentumAtlasChanges = [
+  `${COMPOSITION_VIEW_DIRECTORY}/de-hh-gk.view.json`, `${COMPOSITION_VIEW_DIRECTORY}/de-hh-lk.view.json`,
+  `${COMPOSITION_VIEW_DIRECTORY}/de-th-gk.view.json`, `${COMPOSITION_VIEW_DIRECTORY}/de-th-lk.view.json`,
+]
+assert.deepEqual(signedMomentumAtlas.changedSourceViews.map(r => r.path).sort(compareCodePoints), signedMomentumAtlasChanges)
+assert.deepEqual(signedMomentumAtlas.sourceViews.filter(r => r.sha256 !== r.previousSha256)
+  .map(r => r.path).sort(compareCodePoints), signedMomentumAtlasChanges)
+const closureStrandsAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/views/lower-closures-v5/national-atlas-current-sources.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, closureStrandsAtlasPath), 'utf8')), 'afb980498719cc55652bad8eccf058b90289eb34495c4b711fa64b4d31c40025')
+const closureStrandsAtlas = readJson<typeof signedMomentumAtlas>(closureStrandsAtlasPath)
+assert.deepEqual(closureStrandsAtlas.predecessor, {
+  path: signedMomentumAtlasPath, sha256: sha256(readFileSync(resolve(repoRoot, signedMomentumAtlasPath), 'utf8')),
+})
+assert.deepEqual(closureStrandsAtlas.currentUnionGoalIds, signedMomentumAtlas.currentUnionGoalIds)
+assert.deepEqual(closureStrandsAtlas.canonicalProfileTargets.goalIds, signedMomentumAtlas.canonicalProfileTargets.goalIds)
+assert.deepEqual(closureStrandsAtlas.changedSourceViews, [])
+assert.deepEqual(closureStrandsAtlas.sourceViews.map(row => ({path: row.path, sha256: row.previousSha256})),
+  signedMomentumAtlas.sourceViews.map(row => ({path: row.path, sha256: row.sha256})))
+for (const row of closureStrandsAtlas.sourceViews) {
+  assert.equal(row.sha256, row.previousSha256)
+  assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale Physics atlas source`)
+}
 assert.equal(atlasCurricularAtomicGoalIds.size, EXPECTED_ATLAS_TARGET_COUNT)
 assert(atlasPreparationOnlyOccurrences > 0, 'the omitted target page must have a real authored prerequisite-only placement')
 assert.deepEqual(
@@ -3506,6 +3850,10 @@ for (const profilePath of [
 // remove the former mixed atom, add energy and interval probability, keep all
 // other target IDs unchanged. Bind that full prior set, not only the new count.
 assert.equal(canonicalProfileTargetIds.size, 424)
+assert.equal(e2AtlasDelta.canonicalProfileTargets.unchangedFromE1, true)
+assert.equal(e2AtlasDelta.canonicalProfileTargets.count, 424)
+assert.deepEqual([...canonicalProfileTargetIds].sort(compareCodePoints), e2AtlasDelta.canonicalProfileTargets.goalIds,
+  'The E.2 source-specific additions must not invent national-profile targets')
 const profileDeltaPath = `${e1NationalEvidenceRoot}national-canonical-profile-target-delta.actual.json`
 assert.equal(sha256(readFileSync(resolve(repoRoot, profileDeltaPath), 'utf8')),
   '0a4ba6221468745be35580ec53f773c76706d19b6fbcb11fc0a1ecdb471241de')
@@ -3900,6 +4248,15 @@ const routeProjectionRule = physicsSekIRouteScope.rules.find(({ id }) => id === 
 assert(routeProjectionRule, 'curriculum-quality status lacks Physics Sek-I CQR-104')
 assert.equal(routeProjectionRule.status, 'pass', 'current acquisition routes must retain the protected Physics quality floor')
 const routeMetrics = routeProjectionRule.metrics ?? {}
+const currentE2RouteCountsPath = 'curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/k1-v4/route-counts.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, currentE2RouteCountsPath), 'utf8')), '7f372a5b57c595be77879bc02b8aec54260c9cc44730ed75d3367c41aeddf7b1')
+const currentE2RouteCounts = readJson<{
+  observedWithBothAssessments: { metrics: Record<string, number>; perNewGoalWhenSelected: Record<string, number> }
+}>(currentE2RouteCountsPath).observedWithBothAssessments
+for (const [metric, value] of Object.entries(currentE2RouteCounts.metrics)) {
+  assert.equal(routeMetrics[metric], value, `Current E.2 lower-stage route metric ${metric}`)
+}
+
 const legacyRouteProfile = routeProfileDefinitions.find(profile => profile.profileId === 'canonical-physics-sek1')!
 const currentRouteProfile = createRouteProfiles(repoRoot).find(profile => profile.profileId === legacyRouteProfile.profileId)!
 const currentPhysics = rawLandscape as unknown as SkillLandscape

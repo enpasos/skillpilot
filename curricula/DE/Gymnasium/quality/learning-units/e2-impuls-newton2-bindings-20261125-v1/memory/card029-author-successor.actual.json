@@ -1,0 +1,150 @@
+{
+  "schema": "e2-card029-author-successor-v1",
+  "authoredAt": "2026-11-25T14:36:38Z",
+  "actor": "OpenAI Codex · E.2-Kartenautorenprüfung",
+  "reviewKind": "author-correction-after-actual-independent-finding",
+  "independentReview": false,
+  "humanApproval": false,
+  "predecessorAuthorPacket": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/memory/card-author-review.actual.json",
+    "sha256": "e3825b82aca6cf51583c7d46fb88ec06c9f19f1476e9e3d725e0a5c6362ae6cd"
+  },
+  "finding": "Actual independent reviewer A: card029 must explicitly include inertial frame, material closure and zero resultant external force throughout the interval for continuous constancy. Exact independent receipts are recorded separately by the review coordinator.",
+  "cardId": "physics_e_cov_029",
+  "previous": {
+    "de": {
+      "id": "physics_e_cov_029",
+      "front": "Impulsbilanz mit äußeren Kräften?",
+      "back": "$\\frac{d}{dt} \\sum \\vec p= \\sum \\vec F_\\text{ext}$\n\nbei $\\sum \\vec F_\\text{ext}=0$ ist $\\sum \\vec p =$ konstant",
+      "originGoalIds": [
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+      ],
+      "category": "E-Phase Mechanik",
+      "tags": [
+        "LK",
+        "goal:f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+      ]
+    },
+    "en": {
+      "id": "physics_e_cov_029",
+      "front": "Momentum balance with external forces?",
+      "back": "$\\frac{d}{dt} \\sum \\vec p= \\sum \\vec F_\\text{ext}$\n\nif $\\sum \\vec F_\\text{ext}=0$, then $\\sum \\vec p$ is constant",
+      "originGoalIds": [
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+      ],
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "LK",
+        "coverage:auto",
+        "goal:f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+      ]
+    }
+  },
+  "current": {
+    "de": {
+      "id": "physics_e_cov_029",
+      "front": "Impulsbilanz mit äußeren Kräften?",
+      "back": "Im Inertialsystem gilt für ein materiell abgeschlossenes System mit Gesamtimpuls $\\vec P=\\sum_i\\vec p_i$:\n\n$\\frac{\\mathrm d\\vec P}{\\mathrm dt}=\\sum\\vec F_\\mathrm{ext}$.\n\nWenn die resultierende äußere Kraft während des ganzen betrachteten Intervalls null ist, bleibt $\\vec P$ durchgehend konstant.",
+      "originGoalIds": [
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+      ],
+      "category": "E-Phase Mechanik",
+      "tags": [
+        "LK",
+        "goal:f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+      ]
+    },
+    "en": {
+      "id": "physics_e_cov_029",
+      "front": "Momentum balance with external forces?",
+      "back": "In an inertial frame, for a materially closed system with total momentum $\\vec P=\\sum_i\\vec p_i$:\n\n$\\frac{\\mathrm d\\vec P}{\\mathrm dt}=\\sum\\vec F_\\mathrm{ext}$.\n\nIf the net external force is zero throughout the interval considered, $\\vec P$ remains constant throughout.",
+      "originGoalIds": [
+        "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+      ],
+      "category": "E-Phase Mechanics",
+      "tags": [
+        "LK",
+        "coverage:auto",
+        "goal:f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+      ]
+    }
+  },
+  "previousRecord": {
+    "schemaVersion": 1,
+    "reviewId": "canonical-physics-full",
+    "ruleVersion": "memory-card-review-v1",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "deckId": "de_gymnasium_physics_mechanics_ephase",
+    "cardId": "physics_e_cov_029",
+    "fingerprint": "sha256:67d5af9e9610662ce62554419fd7f52a1173d639aae1978cb7aeea23081bcf89",
+    "status": "kept",
+    "necessary": true,
+    "originGoalIds": [
+      "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+    ],
+    "reviewedAt": "2026-08-29",
+    "reviewer": "codex-physics-b025a-five-minimal-revisions-2026-08-29",
+    "reason": "Behalten: Die kompakte Bilanz mit resultierender äußerer Kraft unterstützt weiterhin die gebundene Newton-II/III-Herleitung, ohne sie durch bloßen Abruf zu ersetzen."
+  },
+  "currentRecord": {
+    "schemaVersion": 1,
+    "reviewId": "canonical-physics-full",
+    "ruleVersion": "memory-card-review-v1",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "deckId": "de_gymnasium_physics_mechanics_ephase",
+    "cardId": "physics_e_cov_029",
+    "fingerprint": "sha256:fc828aa0fb08757783df3cf17bc9f1afd068ae111b9db8913a2f38d340523784",
+    "status": "kept",
+    "necessary": true,
+    "originGoalIds": [
+      "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+    ],
+    "reviewedAt": "2026-11-25T14:36:38Z",
+    "reviewer": "OpenAI Codex · E.2-Kartenautorenprüfung",
+    "reason": "Behalten und nach tatsächlichem unabhängigem Befund in DE/EN präzisiert: Die Differentialbilanz gilt hier ausdrücklich im Inertialsystem für ein materiell abgeschlossenes System. Fortlaufende Konstanz von P wird an während des ganzen Intervalls verschwindende resultierende äußere Kraft gebunden. Die einzige Herkunft f524 bleibt erhalten. Dies ist die Korrektur des Autors, keine unabhängige oder menschliche Freigabe der neuen Fassung."
+  },
+  "previousGoalMemoryDecision": {
+    "schemaVersion": 1,
+    "reviewId": "canonical-physics-full",
+    "ruleVersion": "memory-card-review-v1",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+    "fingerprint": "sha256:138329b4e5f2431bf4f4f487697a3d0c4b3efbdba23e7ad7df46aa7fadb5b856",
+    "status": "memory_required",
+    "memoryUseful": true,
+    "memoryGoalIds": [
+      "9f2f5ab8-0ae4-5792-b831-82a05af5895c"
+    ],
+    "deckIds": [
+      "de_gymnasium_physics_mechanics_ephase"
+    ],
+    "reviewedAt": "2026-11-25T14:13:24Z",
+    "reviewer": "OpenAI Codex · E.2-Kartenautorenprüfung",
+    "reason": "Die tatsächliche unveränderte DE/EN-Karte 029 wurde erneut gelesen: dΣp/dt=ΣF_ext und Konstanz bei verschwindender resultierender äußerer Kraft passen zur Differentialbilanz des aktuellen LK-Ziels. Die Herleitung aus Newton II/III und die Unterscheidung von Intervallgrenzwertgleichheit und fortlaufender Erhaltung bleiben eigenständige Leistungen; individuelle KI-Autorenprüfung, keine unabhängige oder menschliche Freigabe."
+  },
+  "currentGoalMemoryDecision": {
+    "schemaVersion": 1,
+    "reviewId": "canonical-physics-full",
+    "ruleVersion": "memory-card-review-v1",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "goalId": "f524f05c-4456-4fc3-a1f7-f40741fc1f16",
+    "fingerprint": "sha256:138329b4e5f2431bf4f4f487697a3d0c4b3efbdba23e7ad7df46aa7fadb5b856",
+    "status": "memory_required",
+    "memoryUseful": true,
+    "memoryGoalIds": [
+      "9f2f5ab8-0ae4-5792-b831-82a05af5895c"
+    ],
+    "deckIds": [
+      "de_gymnasium_physics_mechanics_ephase"
+    ],
+    "reviewedAt": "2026-11-25T14:36:38Z",
+    "reviewer": "OpenAI Codex · E.2-Kartenautorenprüfung",
+    "reason": "Die nach unabhängigem Befund präzisierte DE/EN-Karte 029 sichert dP/dt=ΣF_ext ausdrücklich im Inertialsystem für ein materiell abgeschlossenes System. Durchgehende Konstanz verlangt verschwindende äußere Resultierende während des ganzen Intervalls. Die Herleitung aus Newton II/III und die Unterscheidung von Intervallgrenzwertgleichheit und fortlaufender Erhaltung bleiben eigenständige Leistungen. Individuelle KI-Autorenkorrektur, keine unabhängige oder menschliche Freigabe der Nachfolgefassung."
+  },
+  "unchangedOrigins": [
+    "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+  ],
+  "cardCountPerLanguage": 90,
+  "needsFreshIndependentReview": true,
+  "learnerMasteryChanged": false
+}

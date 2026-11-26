@@ -905,6 +905,36 @@ closing check of that child uses the balance of forces on a line (drive,
 friction, braking). Record:
 `curricula/DE/Gymnasium/quality/learning-units/physics-he-e2-child-structures-2026-11-25/`.
 
+**E.2, second step, part 1: momentum and Newton's second axiom, 25 November
+2026.** The cluster Impuls has three new goals: individual and total momentum
+of two bodies on a line (`53afbda1`), the mean resultant force from a change
+of momentum (`ecbaa101`) and, for the Leistungskurs, the instantaneous
+resultant force as the slope in a momentum-time diagram (`059c1adc`, requires
+the Mathematics goal `b1dcc191`). Conservation of momentum `839ecc8f` requires
+the first, and the Leistungskurs derivation `f524f05c` requires the third.
+Newton's second axiom `a94cfe1c` now states F = m·a for constant mass in an
+inertial frame; the rate form of momentum lies with the new goals. The text of
+`839ecc8f` names its conditions exactly: the same bodies in an inertial frame
+before and after an interaction, with zero net external impulse over the time
+considered. A goal is a target only where the official text of the Land
+carries the performance (total momentum in 48 of the 90 Physics views, mean
+force in five, instantaneous force in the two Saxon Leistungskurs views);
+elsewhere it is a preparation with its own learning place. Saxony and
+Saxony-Anhalt place the Leistungskurs derivation after the Mathematics goal.
+A lower-stage target needs a closing route to a task of its scope (CQR-104),
+so two short tasks of SkillPilot's own close the routes that no existing task
+could: total momentum for Hamburg and Thuringia (`d8fc6295`, 10 of 12 points)
+and mean force for Baden-Württemberg (`b50e9903`, 8 of 10). They lie directly
+under the Physics root with the tag `SekI`; membership in the lower-stage
+exercise cluster would require nine national offers that no source carries.
+Lesson for every new lower-stage target: plan its closing route with the
+goal, and raise the pinned count of curricular goals in
+`app/scripts/applyLearningUnitAssessments.mjs`. Open: whether `839ecc8f`
+needs `5f289cdc` (edge review of part 2), and the place of the impulse goal
+`e790de73` in Bavarian grade 8, which pulls conservation of momentum there
+although the official text names it in grade 10. Record:
+`curricula/DE/Gymnasium/quality/learning-units/e2-impuls-newton2-bindings-20261125-v1/`.
+
 **Achievable pass marks, Product Owner decision of 24 November 2026.** His
 words: pass marks must be achievable, without frustration for learners "who
 have understood everything but now and then make small formal errors out of

@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "recordId": "03-SL-53afbda1",
+      "decision": "needs_change",
+      "recordIsTruthful": false,
+      "sourceAssignmentSupported": true,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "The physics, source assignment and recorded acquisition paths are supported. IMP occupies physics-root/physics-sekii-{gk,lk}/physics-sl-unit-e/physics-sl-e-momentum-preparation in all four current SL views. However, the record identifies rejected intermediate snapshots as current through four stale SHA-256 values.",
+      "inspectedOfficialAreas": [
+        "18-SL official extract, original physical page 12: Kraft und Bewegung / Physik EP / Wechselwirkungsprinzip und Stoßprozesse, both columns—momentum definition and unit, vector character, total momentum, central collision relation and recoil application."
+      ],
+      "remainingFindings": [
+        "Replace actualTargetPlaces.sha256 for de-sl-gym-physics-gk with 4bcd67ccfd1ece6fa1ef476471176d1111f0344f8ae58d68233e4add51f387fe.",
+        "Replace actualTargetPlaces.sha256 for de-sl-gym-physics-lk with 461b72c2ec2f38da51e9373544e822ad9a0525b0db139928ce00fa5d65f0b6b4.",
+        "Replace actualTargetPlaces.sha256 for de-sl-gym-sekii-physics-gk with 898f626d5ec8cf7dfa863e40be1d621f674b0d70d1f305f36ea70a71ae4e1b06.",
+        "Replace actualTargetPlaces.sha256 for de-sl-gym-sekii-physics-lk with 349ba82dedb0adbaa67490cc7e98cfab0febe17d4d9863e1789d99442a382f22.",
+        "Conservation and elastic-collision consumers retain their inherited E placement under physics-sl-e-topic-c929bd3f033c, Kernenergie und Radioaktivität. This narrow correction does not resolve or endorse that historical placement."
+      ]
+    },
+    {
+      "recordId": "04-SN-53afbda1",
+      "decision": "needs_change",
+      "recordIsTruthful": false,
+      "sourceAssignmentSupported": false,
+      "learningPlaceMatchesRecorded": true,
+      "reason": "The core LK11 momentum assignment and current acquisition place are supported, and both recorded snapshot hashes match. IMP occupies physics-root/physics-sekii-lk/physics-sn-unit-q11/physics-sn-q11-momentum-preparation in both SN views. The exact source assignment as written is unsupported because its physical-page-57 IMP boundary imports momentum differential-law tangent wording from physical page 58.",
+      "inspectedOfficialAreas": [
+        "19-SN official extract, original physical page 57, printed page 45: upper LK11 momentum block—one-dimensional conservation, two-body problems, signs, p=mv, central collisions and force impulse.",
+        "Original physical page 57, printed page 45: lower Lernbereich 2 kinematics section, distinguished from the momentum assignment.",
+        "Original physical page 58, printed page 46: Lernbereich 3, Grundgesetz der Mechanik row—ΣF=ma=dp/dt and adjacent graphical interpretation in the p(t) diagram."
+      ],
+      "remainingFindings": [
+        "In both de-sn-lk.view.json and de-sn-sekii-lk.view.json witness entries, IMP's reviewedMomentumBindings.boundary and sourceAssignments[IMP].sourcePassages boundary say: 'LK only; tangent reading is an elementary operationalisation of the printed differential law.' Replace this page-57 boundary with momentum-specific scope.",
+        "RATE-M and RATE-I correctly cite physical page 58 and carry the same boundary text. RATE-M concerns finite-interval Δp/Δt; RATE-I concerns tangent slope. Page 58 supports these operationalisations, but its momentum differential-law wording cannot qualify IMP's page-57 clause.",
+        "Conservation and elastic-collision consumers retain their inherited placement under physics-sn-q11-topic-c4407de522ff, Einblick in die Relativitätstheorie. That source/consumer-placement issue remains unresolved."
+      ]
+    }
+  ],
+  "headingDelta": {
+    "decision": "accept_record_with_stated_limits",
+    "roleAndLearningSetsPreserved": true,
+    "oldCompetencyPlacesPreserved": true,
+    "orientationReparentingBounded": true,
+    "checkedViewIds": [
+      "de-sl-gym-physics-gk",
+      "de-sl-gym-physics-lk",
+      "de-sl-gym-sekii-physics-gk",
+      "de-sl-gym-sekii-physics-lk",
+      "de-sn-gym-physics-lk",
+      "de-sn-gym-sekii-physics-lk"
+    ],
+    "reason": "All twelve snapshot hashes match heading-delta.json. Complete traversal compared all 5,777 reference occurrences per side, including identities, kinds, explicit or omitted roles, acquisition flags, full paths and sibling sequences. Only IMP changes parent in all six views; WHY additionally moves within E in the two SL SekII views. Other references and surviving sibling orders remain preserved, as do course/year/view identities. All 142 existing preparation/acquisition wrapper subtrees remain intact with internal ordering links unchanged. External preparation ordering is preserved directly or transitively; SN rate ordering is rewired to IMP's new preparation heading. All 226 current childOrder edges resolve to local siblings, with no demonstrated local cycle.",
+    "remainingFindings": []
+  },
+  "limitations": [
+    "Preparation headings and their precise ordering are authored structure, not official quotations or mandates. Prerequisite-driven acquisition placement is distinct from official source assignment.",
+    "SL/SN excerpt PDF and text digests match the supplied manifest; relevant attached original-page images agree. Full original PDFs are absent, so their recorded original-file digests could not be independently recomputed.",
+    "Initial-native90-scope.json was treated as historical diagnostic context, not authority for an exact current place.",
+    "The exact advanced symbolic proof is not established as mandatory in every LK view; inherited mappings remain unresolved where identified.",
+    "These are static source and snapshot checks. No frontend/backend execution, learner results, full-landscape acceptance or deployment is claimed.",
+    "No other source records, D/P/card decisions or parked canonical issue are approved."
+  ]
+}

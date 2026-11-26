@@ -171,6 +171,27 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
                     ("several-forces", "force-mass-acceleration"), ("energy", "force-mass-acceleration"),
                     ("momentum", "force-and-counterforce"), ("momentum", "energy")})
 
+    def test_momentum_is_a_target_and_rates_stay_needed_preparation(self):
+        imp = "53afbda1-5776-502b-8867-471975d7b766"
+        mean = "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+        instant = "059c1adc-e4d2-5222-a923-15abc417d59f"
+        proof = "f524f05c-4456-4fc3-a1f7-f40741fc1f16"
+        for view in self.views.values():
+            with self.subTest(view=view["viewId"]):
+                roles = generator.role_atoms(view)
+                self.assertIn(imp, roles["target"])
+                self.assertFalse({mean, instant} & roles["target"])
+                unit = find(view, "physics-e2-momentum")
+                children = [n["goalId"] for n in unit["children"] if n.get("goalId")]
+                self.assertLess(children.index(imp), children.index("839ecc8f-3a60-418b-bc92-64bfeef33824"))
+                if view["scope"]["courseProfile"] == "LK":
+                    self.assertLess(children.index(mean), children.index(instant))
+                    self.assertLess(children.index(instant), children.index(proof))
+                    for rate in (mean, instant):
+                        templates = [n for n in generator.walk(unit["children"]) if n.get("goalId") == rate and n.get("acquisitionPlacement") is True]
+                        self.assertEqual(len(templates), 1)
+                        self.assertEqual(templates[0]["projectionRole"], "prerequisiteOnly")
+
     def test_e1_assessment_admission_only_adds_the_two_targets(self):
         exams = set(generator.HESSEN_E1_ASSESSMENTS)
         for name, current in self.views.items():

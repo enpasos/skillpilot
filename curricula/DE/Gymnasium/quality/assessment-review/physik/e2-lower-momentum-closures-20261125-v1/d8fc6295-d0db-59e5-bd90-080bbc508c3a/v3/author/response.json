@@ -1,0 +1,566 @@
+{
+  "assessment": {
+    "titleDE": "Impulse zweier Wagen",
+    "titleEN": "Momentum of two carts",
+    "descriptionDE": "Bestimme die Einzelimpulse und den Gesamtimpuls zweier Wagen für zwei Momentaufnahmen auf einer geraden Bahn.",
+    "descriptionEN": "Determine the individual momenta and total momentum of two carts in two snapshots on a straight track.",
+    "taskDE": "Zwei Wagen A und B bewegen sich auf derselben geraden Bahn. Ihre Massen sind m_A = 0,50 kg und m_B = 1,00 kg. Alle Geschwindigkeiten einer Tabellenzeile gelten zum selben Zeitpunkt.\n\n| Momentaufnahme | Geschwindigkeit von A | Geschwindigkeit von B |\n|---|---:|---:|\n| I | +4,0 m/s | −1,0 m/s |\n| II | +2,0 m/s | −1,0 m/s |\n\nDie Vorzeichen der Tabelle beziehen sich auf rechts als positive Richtung. Du darfst für deine Rechnung rechts oder links als positive Richtung wählen. Nenne deine Wahl und berücksichtige sie bei den Vorzeichen.\n\nBestimme für jede Momentaufnahme die vorzeichenbehafteten Einzelimpulse von A und B sowie den Gesamtimpuls beider Wagen. Halte deinen Rechenweg kurz fest und gib die Einheiten an.",
+    "taskEN": "Two carts, A and B, move along the same straight track. Their masses are m_A = 0.50 kg and m_B = 1.00 kg. All velocities in one table row apply at the same instant.\n\n| Snapshot | Velocity of A | Velocity of B |\n|---|---:|---:|\n| I | +4.0 m/s | −1.0 m/s |\n| II | +2.0 m/s | −1.0 m/s |\n\nThe signs in the table use right as the positive direction. You may choose either right or left as positive for your calculations. State your choice and use signs consistent with it.\n\nFor each snapshot, determine the signed individual momenta of A and B and the total momentum of both carts. Show brief working and include units.",
+    "solutionDE": "Rechts positiv, p = m·v; alle Impulse in kg·m/s.\nI: p_A = 0,50·(+4,0) = +2; p_B = 1,00·(−1,0) = −1; P_I = (+2)+(−1) = +1.\nII: p_A = 0,50·(+2,0) = +1; p_B = 1,00·(−1,0) = −1; P_II = (+1)+(−1) = 0.\n\nLinks positiv ist gleichwertig: alle Geschwindigkeitszeichen umkehren. I: −2, +1, Gesamt −1; II: −1, +1, Gesamt 0. Eindeutige Richtungswörter, gerichtete Beträge, exakte numerische Ausdrücke und N·s sind gleichwertig. Eine zusätzliche Erklärung zu null ist nicht verlangt.\n\nBewertung: MI, TI, MII, TII je 3 P; ab 10 von 12 P bestanden, allein nach der Summe. Richtige, der jeweiligen Momentaufnahme zuordenbare Evidenz zählt überall; ein widersprechendes falsches Endergebnis wird dabei nicht übergangen. Bloße Gesamtwerte belegen keine fehlenden Einzelimpulse. Allgemeine Formeln ohne Datenanwendung: 0 P.\n\nEin nachweislich isolierter Rechen-, Vorzeichen-, Rundungs- oder Beschriftungsfehler bei anderweitig sichtbar richtigem zugrunde liegendem Kern kostet höchstens 0,5 P einmal an seiner Quelle. Sonst belegte Punkte bleiben erhalten; gültiges Weiterrechnen verliert nichts zusätzlich. Verschiedene belegbar lokale Fehler dürfen je 0,5 P kosten. Richtiges Weiterrechnen allein beweist keinen richtigen Ausgangskern. Aufrechterhaltene falsche Regeln oder durchgehend falsche Produkte ohne richtig bestimmte Vergleichswerte sind keine Reihe isolierter Fehler; dann gelten die normalen Leistungsanteile.\n\nEine fehlende Achsenangabe bei sonst klarer konsistenter Konvention kostet einmal 0,5 P. Fehlende/falsche Impulseinheiten als reine Formangabe kosten zusammen einmal 0,5 P; eine gemeinsame gültige Einheit genügt. Diese beiden unabhängigen Auslassungen dürfen zusammen 1 P kosten. Berichtsmängel im ersten betroffenen Kriterium mit Punkten verbuchen (MI, TI, MII, TII), örtliche Fehler an ihrer Quelle; nie negativ, nie doppelt. Einheitenfolgefehler nicht erneut belasten. Zusätzliche Deutungen werden nur berücksichtigt, wenn sie gefragte Ergebnisse ersetzen oder zurücknehmen.",
+    "solutionEN": "Choose right positive and use p = m·v; all momenta are in kg·m/s.\nI: p_A = 0.50·(+4.0) = +2; p_B = 1.00·(−1.0) = −1; P_I = (+2)+(−1) = +1.\nII: p_A = 0.50·(+2.0) = +1; p_B = 1.00·(−1.0) = −1; P_II = (+1)+(−1) = 0.\n\nLeft positive is equivalent: reverse every velocity sign. I: −2, +1, total −1; II: −1, +1, total 0. Unambiguous direction words, directed magnitudes, exact numerical expressions and N·s are equivalent. An additional explanation of zero is not required.\n\nScoring: MI, TI, MII, TII each carry 3 points; 10 out of 12 passes by the total alone. Correct evidence attributable to the relevant snapshot counts wherever given; an explicitly contradictory wrong final result is not ignored. Bare totals cannot establish missing individual momenta. Generic formulas without data application earn 0.\n\nA demonstrably isolated arithmetic, sign, rounding or labelling slip, with affirmative evidence elsewhere of the sound underlying core, costs at most 0.5 once at its source. Preserve otherwise demonstrated credit and valid follow-through without further loss. Distinct demonstrably local mistakes may each cost 0.5. Correct follow-through alone does not prove a sound source performance. Maintained wrong rules or consistently wrong products without correctly determined comparisons are not a series of isolated slips; apply the normal performance allocations.\n\nA missing axis declaration with an otherwise clear consistent convention costs 0.5 once. Missing/incorrect momentum units solely as reporting cost 0.5 altogether; one shared valid unit suffices. These two independent omissions may together cost 1. Record reporting omissions in the first affected criterion with credit (MI, TI, MII, TII), local errors at their source; never negative or twice. Do not charge propagated unit errors again. Extra interpretations affect scoring only if they replace or retract requested results.",
+    "maxPoints": 12,
+    "passingPoints": 10,
+    "criteria": [
+      {
+        "id": "MI",
+        "points": 3,
+        "descriptionDE": "Momentaufnahme I: je 1,5 P für den korrekt bestimmten vorzeichenbehafteten Zahlenimpuls von A und B; rechts positiv: +2 und −1 kg·m/s, links positiv: −2 und +1. Pro Wagen 1,5 oder 0 P, vorbehaltlich der Fehlerregel. Gerichtete Beträge und exakte numerische Produkte sind gleichwertig. Der Momentaufnahme zuordenbare richtige Einzelwerte zählen überall, auch als eindeutig zugeordnete Terme in einer Gesamtrechnung. Ein richtiges Ergebnis genügt ohne widersprechenden Rechenweg. Bloße Beträge, qualitative Richtungen, allgemeine Formeln oder falsche Endwerte erhalten keine getrennten Teilpunkte. Die gemeinsame Fehlerregel gilt.",
+        "descriptionEN": "Snapshot I: 1.5 points for each correctly determined signed numerical momentum of A and B; right positive: +2 and −1 kg·m/s; left positive: −2 and +1. Per cart, award 1.5 or 0, subject to the error policy. Directed magnitudes and exact numerical products are equivalent. Correct individual values attributable to the snapshot count wherever given, including identifiable terms in a total calculation. A correct result suffices unless contradicted by its working. Bare magnitudes, qualitative directions, generic formulas or wrong final values earn no separate fragments. Apply the shared error policy.",
+        "carryingPerformance": "Determine both signed numerical individual momenta in I: 3 points, exceeding the 2-point slack."
+      },
+      {
+        "id": "TI",
+        "points": 3,
+        "descriptionDE": "Gesamtimpuls I: 2,5 P für die gültige numerische algebraische Verknüpfung beider zugeordneten Einzelimpulse; 0,5 P für die richtige Auswertung oder einen bloßen richtigen Gesamtwert (+1 rechts positiv, −1 links positiv). Ein exakter numerischer Summenausdruck gilt als richtiges Ergebnis. Einzelwerte mit passendem Gesamtwert belegen die Verknüpfung auch ohne Plus- oder P-Zeichen. Einzelwerte ohne Summe/Gesamtwert: 0 P. Entgegengesetzte gerichtete Beträge zu subtrahieren ist gleichwertig. Gültiges Weiterrechnen mit eigenen falschen Werten voll anerkennen; dies belegt keine fehlende Einzelimpulsleistung. Eine fortgesetzt falsche Verknüpfungsregel erhält keine Ansatzpunkte; ein unabhängig richtiger Gesamtwert höchstens 0,5 P. Gemeinsame Fehlerregel anwenden.",
+        "descriptionEN": "Total I: 2.5 points for a valid numerical algebraic combination of both assigned individual momenta; 0.5 for correct evaluation or a bare correct total (+1 right positive, −1 left positive). An exact numerical sum expression counts as a correct result. Individual values with their matching total establish combination without a plus sign or P label. Individual values without a sum/total: 0. Subtracting opposing directed magnitudes is equivalent. Fully credit valid follow-through with the learner's wrong values; this establishes no missing individual-momentum performance. A maintained wrong combining rule earns no setup credit; an independently correct total earns at most 0.5. Apply the shared error policy.",
+        "carryingPerformance": "Numerically combine the momenta in I to obtain the nonzero total: 3 points; absent combination with only a bare correct total loses 2.5 > 2 slack."
+      },
+      {
+        "id": "MII",
+        "points": 3,
+        "descriptionDE": "Momentaufnahme II: je 1,5 P für den korrekt bestimmten vorzeichenbehafteten Zahlenimpuls von A und B; rechts positiv: +1 und −1 kg·m/s, links positiv: −1 und +1. Pro Wagen 1,5 oder 0 P, vorbehaltlich der Fehlerregel. Es gelten dieselben Evidenzregeln wie bei MI: gerichtete Beträge, exakte numerische Produkte und eindeutig zugeordnete Einzelwerte in anderen Rechnungen zählen; bloße Gesamtwerte lassen fehlende Einzelimpulse nicht erschließen. Eine aufrechterhaltene falsche Impuls-/Vorzeichenregel erhält für jeden betroffenen Wagen 0 P, auch bei richtigem Betrag. Gültiges Weiterrechnen ersetzt diesen Beleg nicht.",
+        "descriptionEN": "Snapshot II: 1.5 points for each correctly determined signed numerical momentum of A and B; right positive: +1 and −1 kg·m/s; left positive: −1 and +1. Per cart, award 1.5 or 0, subject to the error policy. MI's evidence rules also apply: directed magnitudes, exact numerical products and identifiable individual values in other calculations count; bare totals cannot reconstruct missing individual momenta. A maintained wrong momentum/sign rule earns 0 for each affected cart, even with a correct magnitude. Valid follow-through does not replace that evidence.",
+        "carryingPerformance": "Determine both signed numerical individual momenta in II: 3 points, exceeding the 2-point slack."
+      },
+      {
+        "id": "TII",
+        "points": 3,
+        "descriptionDE": "Gesamtimpuls II: 2,5 P für die gültige numerische algebraische Verknüpfung beider zugeordneten Einzelimpulse; 0,5 P für die richtige Auswertung oder den bloßen richtigen Gesamtwert 0. Die Regeln von TI gelten einschließlich exakter Summenausdrücke und vollen gültigen Weiterrechnens. Die numerische Aufhebung +1+(−1)=0 (bei links positiver Achse −1+(+1)=0) genügt; keine zusätzliche Erklärung ist verlangt. Zwei einzeln genannte Impulse ohne Summe/Gesamtwert belegen die Aufhebung nicht. Nur der richtige Gesamtwert ohne zugehörige Einzelwerte/Verknüpfung: 0,5 P. Eine fortgesetzt falsche Verknüpfungsregel erhält keine Ansatzpunkte. Gemeinsame Fehlerregel anwenden.",
+        "descriptionEN": "Total II: 2.5 points for a valid numerical algebraic combination of both assigned individual momenta; 0.5 for correct evaluation or the bare correct total 0. TI's rules apply, including exact sum expressions and full valid follow-through. Numerical cancellation +1+(−1)=0 (−1+(+1)=0 for left positive) suffices; no extra explanation is required. Two separately listed momenta without a sum/total do not establish cancellation. The correct total alone without associated individual values/combination earns 0.5. A maintained wrong combining rule earns no setup credit. Apply the shared error policy.",
+        "carryingPerformance": "Numerically combine the momenta in II, including cancellation: 3 points; absent combination with only a bare correct zero loses 2.5 > 2 slack."
+      }
+    ]
+  },
+  "goalDemandAnalysis": "Only the supplied atomic goal is covered: choose a positive direction, determine two signed individual momenta from masses and velocities at the same instant, and combine them along one line. The original single cart context and numerical data are retained. I has opposite nonzero momenta and a nonzero total; II has opposite nonzero momenta that cancel. The table's reference direction and a consistently reversed choice are both respected. The supplied direct prerequisite links (5c44b9ba-9b05-4774-95d5-073230d3fc4f, 4eeab7d5-eeb3-579b-845e-1c52ffe9e89f, ee48e811-4c9c-5080-9836-8403fc9f0810) remain prerequisites, not additional covered goals. No conservation, collision law, force, derivative, impulse, later state or separately assessed interpretation is added. This is a signed one-dimensional numerical task; body-arrow anchor, scale, endpoints and graphical-sum requirements are N/A. No diagrams or arrows are introduced.",
+  "protectedCarriersAndSlack": "Maximum 12; pass 10 (83⅓%); slack 2. MI, TI, MII and TII each carry 3 > 2. Omitting either snapshot's individual-momentum performance or either total entirely caps the score at 9. A bare correct total without numerical combination earns only 0.5, so that absent combination loses 2.5 > 2 and caps the score at 9.5. The signed numerical momenta are holistic 1.5-point body performances, not compensable sign/product/magnitude fragments. Maintained unsigned momentum loses B's 1.5 in each snapshot: even full A evidence and all six follow-through points give only 9. Four wrong product results without independent sound comparison evidence lose the whole individual-momentum evidence; correct sums of those values cannot restore it. Explicitly inconsistent axis mapping and maintained double subtraction also fail numerically. Isolated slips retain otherwise demonstrated performances under the shared cap. All decisions use only the additive total; no veto or per-criterion minimum applies.",
+  "minorSlipPolicy": "A genuinely isolated execution/reporting slip costs at most 0.5 once at its source, with all otherwise demonstrated credit preserved and no repeat loss for consequences. Positive evidence of the underlying core must exist elsewhere in the response; correct follow-through alone is insufficient. For example, a correct comparable product supports treating one wrong product as local; four wrong products with no correct quantitative comparisons do not automatically become four minor deductions. Distinct demonstrably local errors may each cost 0.5 where their evidence is affected. A maintained wrong physical sign rule, wrong momentum rule or wrong combining operation uses the normal affected allocations, not the slip exception. Both MI and MII use this rule identically. A missing coordinate declaration on an apparent consistent convention costs 0.5 once; a shared missing/incorrect momentum-unit report costs 0.5 once, independently. A local unit mistake is charged in its own criterion. For common reporting omissions use the first affected positive criterion in MI, TI, MII, TII order; never make a criterion negative. Exact expressions, equivalent units, directed magnitudes, consistent reversed axes and correct evidence anywhere count. Explicitly wrong evaluated final claims are not erased by their correct intermediate setup. Extra interpretations have no independent points or deductions; assess them only when they replace/retract requested results.",
+  "answerBank": [
+    {
+      "caseId": "C01",
+      "caseIntent": "Fully correct response.",
+      "answerDE": "Rechts ist positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·(+4,0) = +2; p_B = 1,00·(−1,0) = −1; P_I = (+2)+(−1) = +1. II: p_A = 0,50·(+2,0) = +1; p_B = 1,00·(−1,0) = −1; P_II = (+1)+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·(+4.0) = +2; p_B = 1.00·(−1.0) = −1; P_I = (+2)+(−1) = +1. II: p_A = 0.50·(+2.0) = +1; p_B = 1.00·(−1.0) = −1; P_II = (+1)+(−1) = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "why": "All four signed numerical individual momenta and both valid numerical combinations are correct: MI3+TI3+MII3+TII3=12."
+    },
+    {
+      "caseId": "C02",
+      "caseIntent": "Consistent reversed axis and equivalent valid units.",
+      "answerDE": "Links positiv. Daher sind die Geschwindigkeiten in I −4 und +1 m/s, in II −2 und +1 m/s. Alle Impulse in N·s. I: p_A = 0,50·(−4) = −2; p_B = 1·(+1) = +1; P_I = −2+1 = −1. II: p_A = 0,50·(−2) = −1; p_B = +1; P_II = −1+1 = 0.",
+      "answerEN": "Left is positive. The velocities are therefore −4 and +1 m/s in I, and −2 and +1 m/s in II. All momenta are in N·s. I: p_A = 0.50·(−4) = −2; p_B = 1·(+1) = +1; P_I = −2+1 = −1. II: p_A = 0.50·(−2) = −1; p_B = +1; P_II = −1+1 = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "why": "The declared left-positive axis is used consistently. All momenta and totals are correct on that axis; N·s is equivalent to kg·m/s. All four criteria earn 3."
+    },
+    {
+      "caseId": "C03",
+      "caseIntent": "Equivalent magnitude-with-direction method, subtracting opposing positive magnitudes.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: A hat 0,50·4 = 2 nach rechts, B hat 1·1 = 1 nach links. Gesamt: 2−1 = +1. II: A hat 0,50·2 = 1 nach rechts, B hat 1·1 = 1 nach links. Gesamt: 1−1 = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: A has 0.50·4 = 2 to the right; B has 1·1 = 1 to the left. Total: 2−1 = +1. II: A has 0.50·2 = 1 to the right; B has 1·1 = 1 to the left. Total: 1−1 = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "why": "Direction words establish the signed numerical momenta. Subtracting opposing positive magnitudes is valid algebraic combination. All four criteria earn 3."
+    },
+    {
+      "caseId": "C04",
+      "caseIntent": "One isolated arithmetic slip with valid follow-through; passes.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2,5; p_B = 1·(−1) = −1; P_I = 2,5+(−1) = +1,5. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2.5; p_B = 1·(−1) = −1; P_I = 2.5+(−1) = +1.5. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 2.5},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "why": "The other correct products affirm the sound mass–velocity calculation. The isolated 0.50×4 error costs 0.5 in MI only. TI fully credits the valid sum of the learner's values; no consequence penalty. Total 11.5."
+    },
+    {
+      "caseId": "C05",
+      "caseIntent": "One isolated sign slip with visibly correct signed substitution; passes.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = +1; P_I = 2+(+1) = +3. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = +1; P_I = 2+(+1) = +3. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 2.5},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "why": "The negative substitution and correct identical B calculation in II affirm an isolated sign slip in I. MI loses 0.5 once; valid follow-through retains TI3. MII and TII are full. Total 11.5."
+    },
+    {
+      "caseId": "C06",
+      "caseIntent": "Missing the subordinate positive-direction declaration; passes.",
+      "answerDE": "Alle Impulse in kg·m/s. I: p_A = +2, p_B = −1, P_I = 2+(−1) = +1. II: p_A = +1, p_B = −1, P_II = 1+(−1) = 0.",
+      "answerEN": "All momenta are in kg·m/s. I: p_A = +2, p_B = −1, P_I = 2+(−1) = +1. II: p_A = +1, p_B = −1, P_II = 1+(−1) = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 2.5},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "why": "The consistent right-positive work establishes the convention. Its omitted declaration costs only 0.5 once in MI; every numerical performance remains evidenced. Total 11.5."
+    },
+    {
+      "caseId": "C07",
+      "caseIntent": "Missing the required cancellation computation and common momentum units.",
+      "answerDE": "Rechts positiv. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1.",
+      "answerEN": "Right is positive. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 2.5},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 0}
+      ],
+      "expectedTotal": 8.5,
+      "expectedPass": false,
+      "why": "All individual momenta and total I are present, but no total/cancellation computation is given for II: TII0. The common unit omission costs 0.5 once in MI. Total 8.5 fails."
+    },
+    {
+      "caseId": "C08",
+      "caseIntent": "Missing the required cancellation computation and coordinate declaration.",
+      "answerDE": "Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1.",
+      "answerEN": "All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 2.5},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 0}
+      ],
+      "expectedTotal": 8.5,
+      "expectedPass": false,
+      "why": "All individual momenta and total I are present, but TII is absent. The missing coordinate declaration costs 0.5 once in MI, without further directional loss. Total 8.5 fails."
+    },
+    {
+      "caseId": "C09",
+      "caseIntent": "Qualitative-only response.",
+      "answerDE": "Rechts positiv. Die Impulse haben die Einheit kg·m/s. I: A hat positiven, B negativen Impuls. Der Betrag von A ist größer; der Gesamtimpuls ist positiv. II: A hat positiven, B negativen Impuls. Die Beträge sind gleich und der Gesamtimpuls ist null.",
+      "answerEN": "Right is positive. Momentum has the unit kg·m/s. I: A has positive momentum and B negative momentum. A has the greater magnitude; total momentum is positive. II: A has positive momentum and B negative momentum. Their magnitudes are equal and total momentum is zero.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 0},
+        {"criterionId": "TI", "points": 0},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 0.5}
+      ],
+      "expectedTotal": 0.5,
+      "expectedPass": false,
+      "why": "Qualitative directions and comparisons do not establish signed numerical individual momenta or a numerical sum in I. The stated zero gives only TII0.5 as a bare correct total. Total 0.5 fails; no independent declaration points exist."
+    },
+    {
+      "caseId": "C10",
+      "caseIntent": "Formula-only response.",
+      "answerDE": "p = m·v. P = p_A + p_B.",
+      "answerEN": "p = m·v. P = p_A + p_B.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 0},
+        {"criterionId": "TI", "points": 0},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 0}
+      ],
+      "expectedTotal": 0,
+      "expectedPass": false,
+      "why": "Generic formulas are not applied to the data. All four criteria score 0; reporting omissions cannot create negative scores."
+    },
+    {
+      "caseId": "C11",
+      "caseIntent": "Missing all individual momentum evidence in snapshot I.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: P_I = +1. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: P_I = +1. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 0},
+        {"criterionId": "TI", "points": 0.5},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 6.5,
+      "expectedPass": false,
+      "why": "I supplies only a bare correct total, so MI0 and TI0.5. II establishes both signed individual momenta and their cancellation, earning 3+3. Total 6.5 fails."
+    },
+    {
+      "caseId": "C12",
+      "caseIntent": "Missing all individual momentum evidence in snapshot II.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: P_II = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: P_II = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 0.5}
+      ],
+      "expectedTotal": 6.5,
+      "expectedPass": false,
+      "why": "II supplies only a bare correct zero, so MII0 and TII0.5. I establishes both signed individual momenta and their sum, earning 3+3. Total 6.5 fails."
+    },
+    {
+      "caseId": "C13",
+      "caseIntent": "Both required total-momentum computations omitted.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1. II: p_A = 0,50·2 = +1; p_B = 1·(−1) = −1.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1. II: p_A = 0.50·2 = +1; p_B = 1·(−1) = −1.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 0},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 0}
+      ],
+      "expectedTotal": 6,
+      "expectedPass": false,
+      "why": "Both individual-momentum performances earn 3. Neither total nor numerical combination is supplied: TI0 and TII0. Total 6 fails."
+    },
+    {
+      "caseId": "C14",
+      "caseIntent": "Maintained combining misconception: subtract an already negative momentum.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2 und p_B = −1. Weil B nach links fährt, ziehe ich seinen negativen Impuls ab: P_I = 2−(−1) = +3. II: p_A = +1 und p_B = −1; genauso P_II = 1−(−1) = +2.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = +2 and p_B = −1. Since B moves left, I subtract its negative momentum: P_I = 2−(−1) = +3. II: p_A = +1 and p_B = −1; likewise P_II = 1−(−1) = +2.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 0},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 0}
+      ],
+      "expectedTotal": 6,
+      "expectedPass": false,
+      "why": "Both signed individual-momentum pairs are correct. The explicit maintained rule subtracts already negative momenta, so both combining setups and both results are wrong: TI0 and TII0. No additional penalty. Total 6 fails."
+    },
+    {
+      "caseId": "C15",
+      "caseIntent": "Critical zero-total misconception: both bodies must be at rest, replacing the given individual momenta.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: Gesamtimpuls null geht nur, wenn beide Wagen ruhen. Daher p_A = 0 und p_B = 0; P_II = 0+0 = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = 0.50·4 = +2; p_B = 1·(−1) = −1; P_I = 2+(−1) = +1. II: Total momentum can be zero only if both carts are at rest. Therefore p_A = 0 and p_B = 0; P_II = 0+0 = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "why": "I is complete. The rest-only rule replaces II's given nonzero momenta with zeros, earning MII0. The valid numerical sum of the learner's own zeros retains TII3; it cannot restore MII. Total 9 fails without an extra interpretation penalty."
+    },
+    {
+      "caseId": "C16",
+      "caseIntent": "Correct totals alone, without individual momenta or numerical addition.",
+      "answerDE": "Rechts positiv. P_I = +1 kg·m/s. P_II = 0 kg·m/s.",
+      "answerEN": "Right is positive. P_I = +1 kg·m/s. P_II = 0 kg·m/s.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 0},
+        {"criterionId": "TI", "points": 0.5},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 0.5}
+      ],
+      "expectedTotal": 1,
+      "expectedPass": false,
+      "why": "Each bare correct total earns 0.5. No signed numerical individual momenta or applied combination can be inferred. Total 1 fails."
+    },
+    {
+      "caseId": "C17",
+      "caseIntent": "One isolated unit slip in a total; passes.",
+      "answerDE": "Rechts positiv. I: p_A = +2 kg·m/s, p_B = −1 kg·m/s; P_I = 2+(−1) = +1 kg·m/s². II: p_A = +1 kg·m/s, p_B = −1 kg·m/s; P_II = 1+(−1) = 0 kg·m/s.",
+      "answerEN": "Right is positive. I: p_A = +2 kg·m/s, p_B = −1 kg·m/s; P_I = 2+(−1) = +1 kg·m/s². II: p_A = +1 kg·m/s, p_B = −1 kg·m/s; P_II = 1+(−1) = 0 kg·m/s.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 2.5},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "why": "The single incorrect unit on total I costs 0.5 in TI only; all underlying numerical performances are established. Total 11.5 passes."
+    },
+    {
+      "caseId": "C18",
+      "caseIntent": "Maintained scalar-speed reasoning fails despite full valid follow-through.",
+      "answerDE": "Rechts positiv. Beim Impuls nehme ich immer den Geschwindigkeitsbetrag, also sind beide Impulse positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·|+4| = +2; p_B = 1·|−1| = +1; P_I = 2+1 = +3. II: p_A = 0,50·|+2| = +1; p_B = 1·|−1| = +1; P_II = 1+1 = +2.",
+      "answerEN": "Right is positive. For momentum I always use the speed magnitude, so both momenta are positive. All momenta are in kg·m/s. I: p_A = 0.50·|+4| = +2; p_B = 1·|−1| = +1; P_I = 2+1 = +3. II: p_A = 0.50·|+2| = +1; p_B = 1·|−1| = +1; P_II = 1+1 = +2.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 1.5},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 1.5},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "why": "The maintained scalar-speed rule makes B's signed numerical momentum wrong in both snapshots, costing 1.5 each. A earns 1.5 in each MI/MII; both valid own-value sums earn 3. Total 9 fails. These are not isolated sign slips."
+    },
+    {
+      "caseId": "C19",
+      "caseIntent": "Qualitative individual directions and bare totals without numerical individual momenta.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: Der Einzelimpuls von A ist positiv, der von B negativ. P_I = +1. II: Der Einzelimpuls von A ist positiv, der von B negativ. P_II = 0. Einzelbeträge und Produkte habe ich nicht bestimmt.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: A's individual momentum is positive and B's is negative. P_I = +1. II: A's individual momentum is positive and B's is negative. P_II = 0. I have not determined individual magnitudes or products.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 0},
+        {"criterionId": "TI", "points": 0.5},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 0.5}
+      ],
+      "expectedTotal": 1,
+      "expectedPass": false,
+      "why": "Qualitative individual directions without numerical momenta earn no MI/MII credit. Each bare correct total earns 0.5. Total 1 fails."
+    },
+    {
+      "caseId": "C20",
+      "caseIntent": "Unsigned individual magnitudes and bare totals without signed numerical momenta.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. Nur die Beträge der Einzelimpulse: I: |p_A| = 0,50·4 = 2; |p_B| = 1·1 = 1. II: |p_A| = 0,50·2 = 1; |p_B| = 1·1 = 1. Gesamtwerte: P_I = +1; P_II = 0. Die Richtungen der Einzelimpulse und die Summenansätze lasse ich weg.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. Individual momentum magnitudes only: I: |p_A| = 0.50·4 = 2; |p_B| = 1·1 = 1. II: |p_A| = 0.50·2 = 1; |p_B| = 1·1 = 1. Totals: P_I = +1; P_II = 0. I leave out individual momentum directions and sum setups.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 0},
+        {"criterionId": "TI", "points": 0.5},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 0.5}
+      ],
+      "expectedTotal": 1,
+      "expectedPass": false,
+      "why": "Explicit absolute values without individual directions establish neither signed numerical individual performance. Bare totals do not reconstruct them or show combination; TI0.5 and TII0.5 give 1."
+    },
+    {
+      "caseId": "C21",
+      "caseIntent": "Maintained axis-mapping misconception, distinct from a consistent reversed-axis solution.",
+      "answerDE": "Rechts positiv. Ich kehre trotzdem in beiden Zeilen alle Tabellenzeichen um. Alle Impulse in kg·m/s. I: p_A = −2, p_B = +1, P_I = −2+1 = −1. II: p_A = −1, p_B = +1, P_II = −1+1 = 0.",
+      "answerEN": "Right is positive. Nevertheless I reverse every table sign in both rows. All momenta are in kg·m/s. I: p_A = −2, p_B = +1, P_I = −2+1 = −1. II: p_A = −1, p_B = +1, P_II = −1+1 = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 0},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 6,
+      "expectedPass": false,
+      "why": "All four numerical momenta contradict the explicitly maintained right-positive convention, so MI0 and MII0. Correct sums of those own values retain TI3 and TII3. Total 6 fails; this is not a reversed-axis solution or isolated label slip."
+    },
+    {
+      "caseId": "C22",
+      "caseIntent": "Complete I, unsigned magnitudes and a bare zero only in II.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II gebe ich nur die Beträge an: |p_A| = 1; |p_B| = 1. P_II = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. For II I give only the magnitudes: |p_A| = 1; |p_B| = 1. P_II = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 0.5}
+      ],
+      "expectedTotal": 6.5,
+      "expectedPass": false,
+      "why": "I is complete. II supplies only unsigned individual magnitudes and a bare correct zero: MII0 and TII0.5. No missing individual directions or combination are inferred. Total 6.5 fails."
+    },
+    {
+      "caseId": "C23",
+      "caseIntent": "Only the required nonzero total is omitted; symmetric minimum-completeness failure.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 0},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "why": "All individual momenta and the full cancellation are supplied, but no total/combination is supplied in I. Losing TI3 exceeds the 2-point slack: 9 fails."
+    },
+    {
+      "caseId": "C24",
+      "caseIntent": "Only the required zero total is omitted; minimum-completeness failure.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1.",
+      "answerEN": "Right is positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 0}
+      ],
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "why": "The separately listed momenta in II do not themselves show a sum or cancellation. TII loses 3; all other evidence earns 9, which fails."
+    },
+    {
+      "caseId": "C25",
+      "caseIntent": "All individual-momentum evidence occurs inside total calculations.",
+      "answerDE": "Rechts positiv; Einheit für alle Impulse: kg·m/s. I: P_I = [A: +2]+[B: −1] = +1. II: P_II = [A: +1]+[B: −1] = 0.",
+      "answerEN": "Right positive; all momenta are in kg·m/s. I: P_I = [A: +2]+[B: −1] = +1. II: P_II = [A: +1]+[B: −1] = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "why": "The labelled signed numerical terms fully establish the individual momenta wherever written. Both sums are complete. No separate individual-result list is needed: 12."
+    },
+    {
+      "caseId": "C26",
+      "caseIntent": "Equivalent exact numerical expressions, consistently accepted for individual and total values.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·(+4,0); p_B = 1,00·(−1,0); P_I = 0,50·(+4,0)+1,00·(−1,0). II: p_A = 0,50·(+2,0); p_B = 1,00·(−1,0); P_II = 0,50·(+2,0)+1,00·(−1,0).",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = 0.50·(+4.0); p_B = 1.00·(−1.0); P_I = 0.50·(+4.0)+1.00·(−1.0). II: p_A = 0.50·(+2.0); p_B = 1.00·(−1.0); P_II = 0.50·(+2.0)+1.00·(−1.0).",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "why": "These are exact signed numerical values, not generic formulas. With no contradictory evaluated claims, the products establish MI/MII and the sums establish TI/TII fully. Simplification is not an extra method requirement: 12."
+    },
+    {
+      "caseId": "C27",
+      "caseIntent": "All four products wrongly evaluated, with valid numerical follow-through and no successful quantitative comparison.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = 0,50·(+4) = +3; p_B = 1·(−1) = −2; P_I = 3+(−2) = +1. II: p_A = 0,50·(+2) = +0,75; p_B = 1·(−1) = −0,50; P_II = 0,75+(−0,50) = +0,25.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = 0.50·(+4) = +3; p_B = 1·(−1) = −2; P_I = 3+(−2) = +1. II: p_A = 0.50·(+2) = +0.75; p_B = 1·(−1) = −0.50; P_II = 0.75+(−0.50) = +0.25.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 0},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 6,
+      "expectedPass": false,
+      "why": "Every evaluated individual momentum is wrong. Correct setups and own-value sums alone do not affirm a sound quantitative source performance; the contradictory final claims cannot be ignored. There is no basis for four isolated-slip restorations. MI0/MII0, but both valid own-value sums retain 3: total 6 fails."
+    },
+    {
+      "caseId": "C28",
+      "caseIntent": "Legitimate exact-threshold pass with four distinct local/reporting errors and both core combinations present.",
+      "answerDE": "I: p_A = 0,50·(+4) = +2,5; p_B = 1·(−1) = −1; P_I = 2,5+(−1) = +1,5. II: p_A = 0,50·(+2) = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = +0,1.",
+      "answerEN": "I: p_A = 0.50·(+4) = +2.5; p_B = 1·(−1) = −1; P_I = 2.5+(−1) = +1.5. II: p_A = 0.50·(+2) = +1; p_B = 1·(−1) = −1; P_II = 1+(−1) = +0.1.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 1.5},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 2.5}
+      ],
+      "expectedTotal": 10,
+      "expectedPass": true,
+      "why": "The axis declaration and common unit report are independently missing: 0.5 each in MI. The I product slip costs another 0.5 there; the correct other products affirm the source relation. TI is valid follow-through. The separate II addition slip costs 0.5 in TII, with TI affirming sound signed addition. No maintained wrong rule or whole core is missing. Total 10 passes."
+    },
+    {
+      "caseId": "C29",
+      "caseIntent": "Nearest half-point fail through one additional independently localized error.",
+      "answerDE": "I: p_A = 0,50·(+4) = +2,5; p_B = 1·(−1) = −1; P_I = 2,5+(−1) = +1,5. II: p_A = 0,50·(+2) = +1; p_B = 1·(−1) = −1,5; P_II = 1+(−1,5) = −0,4.",
+      "answerEN": "I: p_A = 0.50·(+4) = +2.5; p_B = 1·(−1) = −1; P_I = 2.5+(−1) = +1.5. II: p_A = 0.50·(+2) = +1; p_B = 1·(−1) = −1.5; P_II = 1+(−1.5) = −0.4.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 1.5},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 2.5},
+        {"criterionId": "TII", "points": 2.5}
+      ],
+      "expectedTotal": 9.5,
+      "expectedPass": false,
+      "why": "MI loses 0.5 each for the missing axis declaration, common units and local A-I product slip. MII loses 0.5 for the B-II product slip: B-I correctly evaluates the identical product, affirming its local nature. TI correctly adds own values. TII loses 0.5 only for its separate evaluation error (the own-value sum is −0.5); the propagated wrong input is not charged again. Total 9.5 fails."
+    },
+    {
+      "caseId": "C30",
+      "caseIntent": "Maintained wrong numerical momentum rule cannot be rescued by full correct addition.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. Weil zwei Wagen beteiligt sind, verdopple ich jeden Impuls nach p = 2m·v. I: p_A = +4; p_B = −2; P_I = 4+(−2) = +2. II: p_A = +2; p_B = −2; P_II = 2+(−2) = 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. Because two carts are involved, I double every momentum using p = 2m·v. I: p_A = +4; p_B = −2; P_I = 4+(−2) = +2. II: p_A = +2; p_B = −2; P_II = 2+(−2) = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 0},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 0},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 6,
+      "expectedPass": false,
+      "why": "The explicit maintained doubling rule makes every individual momentum wrong, so MI/MII earn 0. Both own-value additions remain fully valid, including the accidental physical zero in II. No extra penalty or source restoration: total 6 fails."
+    },
+    {
+      "caseId": "C31",
+      "caseIntent": "Correct numerical combinations without P labels or explicit plus signs.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: A +2, B −1, zusammen +1. II: A +1, B −1, zusammen 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: A +2, B −1, together +1. II: A +1, B −1, together 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "why": "The identifiable individual momenta and matching totals establish each combination. Missing P labels or plus signs create no evidential gap and no deduction: 12."
+    },
+    {
+      "caseId": "C32",
+      "caseIntent": "A scientifically false extra interpretation does not create an unclaimed independently scored goal.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. Diese Ergebnisse bleiben meine Antworten. Zusätzlich behaupte ich: Ein Gesamtimpuls von null bedeutet immer, dass alle Körper ruhen.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0. These results remain my answers. I additionally claim: Zero total momentum always means that every object is at rest.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "why": "The additional general claim is scientifically false but explicitly leaves the requested correct quantities in place. No independent interpretation criterion is assessed, so it causes no separate deduction. Contrast C15, where the claim replaces the given individual momenta. Total 12."
+    },
+    {
+      "caseId": "C33",
+      "caseIntent": "An explicit wrong combining rule in I alone loses more than the slack.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1. In I muss ich wegen der Linksbewegung den bereits negativen Impuls abziehen: P_I = 2−(−1) = +3. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1. In I, the leftward motion requires me to subtract the already negative momentum: P_I = 2−(−1) = +3. II: p_A = +1; p_B = −1; P_II = 1+(−1) = 0.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 0},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 3}
+      ],
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "why": "The stated rule in I is an incorrect physical combining operation, not a demonstrably isolated transcription slip. TI0; both individual performances and II's sum remain full. Total 9 fails without further loss."
+    },
+    {
+      "caseId": "C34",
+      "caseIntent": "An explicit wrong combining rule in II alone loses more than the slack.",
+      "answerDE": "Rechts positiv. Alle Impulse in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1. In II muss ich wegen der Linksbewegung den bereits negativen Impuls abziehen: P_II = 1−(−1) = +2.",
+      "answerEN": "Right positive. All momenta are in kg·m/s. I: p_A = +2; p_B = −1; P_I = 2+(−1) = +1. II: p_A = +1; p_B = −1. In II, the leftward motion requires me to subtract the already negative momentum: P_II = 1−(−1) = +2.",
+      "expectedScores": [
+        {"criterionId": "MI", "points": 3},
+        {"criterionId": "TI", "points": 3},
+        {"criterionId": "MII", "points": 3},
+        {"criterionId": "TII", "points": 0}
+      ],
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "why": "The stated rule in II is an incorrect physical combining operation, not a local formal slip. TII0; both individual performances and I's sum remain full. Total 9 fails."
+    }
+  ],
+  "knownLimitations": "Two snapshots in one context provide limited transfer evidence; empirical difficulty and independent marking reliability are not established. The 83⅓% threshold permits local incompleteness or distinct minor errors, while each whole required performance is protected by more than the slack. Exact unsimplified numerical expressions are accepted consistently for individual and total momenta. All 22 supplied learner-response pairs are retained verbatim and regraded; obsolete case-intent descriptions are corrected. The attainable half-point boundary is demonstrated by a legitimate 10-point pass with four independently evidenced local/reporting errors and a 9.5-point fail with one additional localized error. Neither boundary response maintains a wrong core rule. Omitting either entire total gives a robust 9-point fail. No claim of successful blind validation is made.",
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "This is a standalone practice assessment with its own learner task, worked solution and additive scoring rubric for exactly one supplied atomic goal. It samples the direct performance of signed individual and total momentum calculations in one context; it does not aggregate goals or claim a curricular competency, cluster or capstone. Prerequisites support the task and are not added to its coverage.",
+  "standalone": true,
+  "coveredGoalIds": [
+    "53afbda1-5776-502b-8867-471975d7b766"
+  ]
+}

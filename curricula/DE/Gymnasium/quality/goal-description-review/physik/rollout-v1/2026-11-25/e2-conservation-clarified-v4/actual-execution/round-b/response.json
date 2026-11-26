@@ -1,0 +1,123 @@
+{
+  "descriptionReviews": [
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Für dieselben Körper in einem gemeinsamen Inertialsystem entspricht die Änderung ihres Gesamtimpulsvektors dem resultierenden äußeren Kraftstoß. Ist dieser über das betrachtete Intervall null, sind die Gesamtimpulse an den beiden Endpunkten gleich. Beim gegenseitigen Abstoßen können sich die Einzelimpulse dennoch ändern.",
+        "essentialUnderstandingEn": "For the same bodies in one common inertial frame, the change in their total momentum vector equals the net external impulse. If that impulse is zero over the interval, the total momenta at its endpoints are equal. The individual momenta can still change as the bodies push apart.",
+        "observablePerformanceDe": "Für zwei anfangs ruhende, unterschiedlich schwere Wagen auf einer horizontalen reibungsarmen Bahn benennt die lernende Person das System aus Wagen und Feder und wählt im Bezugssystem der Bahn eine positive Richtung. Sie begründet, warum der äußere horizontale Kraftstoß und der Impuls der leichten Feder beim kurzen Abstoß vernachlässigbar sind. Aus der gerichteten Bilanz erklärt sie selbstständig, warum die Wagen entgegengesetzte, annähernd gleich große Impulse haben und der leichtere Wagen im Modell schneller ist.",
+        "observablePerformanceEn": "For two unequal-mass carts initially at rest on a horizontal low-friction track, the learner identifies the carts and spring as the system and chooses a positive direction in the track frame. They justify neglecting the external horizontal impulse and the light spring’s momentum during the brief push. Using the signed balance, they independently explain why the carts have opposite momenta of nearly equal magnitude and why the lighter cart is faster in the model.",
+        "transferExpectationDe": "In einer neuen Aufgabe driften eine Astronautin und ein Paket gemeinsam nach rechts. Nimmt der Rechtsimpuls des Pakets beim Abstoßen zu und ist der äußere Kraftstoß vernachlässigbar, begründet die lernende Person die nach links gerichtete Impulsänderung der Astronautin. Durch Vergleich mit deren anfänglichem Rechtsimpuls erklärt sie, wann die Astronautin weiter nach rechts fliegt, zum Stillstand kommt oder sich nach links bewegt.",
+        "transferExpectationEn": "In a fresh task, an astronaut and a package initially drift together to the right. When the push increases the package’s rightward momentum and the external impulse is negligible, the learner justifies the astronaut’s leftward momentum change. By comparing that change with her initial rightward momentum, they explain when she continues to the right, comes to rest, or moves to the left."
+      },
+      "rationale": "Both versions make the same testable claim about the same bodies in one inertial frame. Zero net external impulse over the specified interval justifies equating the two endpoint vectors, even if external forces acted in between. Using that equality to explain recoil gives the learner a concrete qualitative performance without requiring a derivation or a numerical inversion.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    }
+  ],
+  "profileReviews": [
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "keep",
+      "reason": "The DE and EN expectations give exact endpoint equality for zero net external impulse and use approximate equality when an external impulse is merely negligible. In the astronaut case the same astronaut and package are compared in one inertial frame. The package gains rightward momentum, so the astronaut’s change is approximately equal and leftward. All three stated final directions of motion, including rest as the zero-velocity case, are accounted for by comparing the change with her initial momentum. In the cart case both carts and the negligible-mass spring belong to the system in the track frame. The level, low-friction track justifies neglecting external horizontal impulse during release, and the spring model permits neglecting its own momentum. The signed cart momenta then approximately cancel, with the lighter cart faster in the model. No exact measured equality or speed-ratio calculation is required. The two briefs vary the initial total momentum and call for independent explanations in both languages.",
+      "requiredChanges": []
+    }
+  ],
+  "atomicityReviews": [
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "semanticAtomic": true,
+      "reason": "One qualitative explanation uses one vector balance. The 62-goal prerequisite context includes 53afbda1 for signed single-instant momentum sums, a0aaedcb for interaction forces on different bodies, and 5f289cdc for force application. The new performance is comparing two instants to explain recoil. Solving for an unknown velocity and deriving the law from Newton’s axioms are separate demands. The force-application edge is retained by product decision. Its pedagogical minimality was outside this confirmation.",
+      "independentlyAssessableFacets": [
+        "Independently justify a recoil prediction by balancing the momenta of the same bodies before and after their interaction in one inertial frame."
+      ],
+      "suggestedSplit": []
+    }
+  ],
+  "semanticKindReviews": [
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "semanticKind": "curricularAtomic",
+      "reason": "The leaf specifies a transferable physics competence with an observable outcome. A learner can explain recoil in a new setting using the same conservation law. The two candidate cases and the skater illustration are instances of that competence."
+    }
+  ],
+  "sourceReviews": [
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "accept_current",
+      "reason": "The clarification fits the conservation content of all eight existing direct routes at their previously supported scope. BW and HE explicitly name recoil. BY supports the vector conservation principle through two-dimensional motion, and RP calls for vector momentum balances. The fixed bodies, common inertial frame and interval condition specify how the physical law is used. This finding concerns the wording change only.",
+      "inspectedOfficialPages": [
+        "BW retained PDF extract pages 1–2, original physical pages 27–28, printed pages 25–26, checked against the physical-page text map and both images. Section 3.3.5.2(2) includes momentum conservation in explaining motion. Section 3.3.5.3(5) concerns describing processes using momentum. Section 3.3.5.3(6) explicitly includes recoil and selecting states for a momentum balance. The extraction route’s S. 10 label differs from the original pagination.",
+        "BY retained PDF extract page 1, original physical page 2, checked against the text map and image. The direct Ph10.2.1 clause infers momentum conservation from two-dimensional motion and distinguishes it from energy conservation. Quantitative collision analysis appears in a separate expectation.",
+        "HE retained PDF extract page 2, original physical and printed page 30, checked against the text map and image. E.2 supplies three direct entries covering momentum and its conservation, the need for a further conserved quantity and the concept of momentum, and recoil. Inertial frames also appear in the Newtonian mechanics section on that page.",
+        "RP retained PDF extract pages 2 and 4, original physical and printed pages 25 and 52, checked against the text map and both images. The Grundfach and Leistungsfach modules both call for vector momentum balances and attention to friction. Together they document one direct route."
+      ],
+      "unsupportedClaims": [
+        "The pages do not prescribe the exact bilingual wording or its two application briefs. BW 3.3.5.3(5) and the HE momentum-concept entry alone provide only partial support for the goal.",
+        "Quantitative collision analysis, a comparison with energy conservation, and a general proof from Newton’s laws cannot be assigned to this leaf solely because they occur in related curriculum material.",
+        "Target-view membership, an inherited topic heading, or an earlier prerequisite placement does not establish an official obligation at that place."
+      ]
+    }
+  ],
+  "memoryGoalReviews": [
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "accept_current",
+      "reason": "The memory_required decision for 839 has a useful, bounded recall target in card 028. It records which condition yields equal endpoint momenta and which yields constancy throughout. Independent selection of the system and qualitative explanation of recoil require fresh learner work. Card 029 belongs to the separate proof goal.",
+      "requiredChanges": []
+    }
+  ],
+  "cardReviews": [
+    {
+      "cardId": "physics_e_cov_028",
+      "decision": "accept_current",
+      "scientificCorrectness": "For a fixed material system in one inertial frame, zero net external impulse implies P(t₂) = P(t₁). External impulses at different times can cancel while P varies in between. Zero net external force throughout the interval gives continuous constancy.",
+      "languageEquivalence": "Both variants define total momentum as the vector sum and give the same system, frame, interval implication and throughout-force condition.",
+      "originFit": "Both variants name only 839ecc8f-3a60-418b-bc92-64bfeef33824. The endpoint balance directly supports its recoil explanation, and the continuous case clarifies the limit of that balance.",
+      "promptAnswerFit": "Both fronts ask about endpoint equality and continuous conservation. Each back answers both parts and explicitly limits what follows from zero net impulse.",
+      "recallBoundary": "Reciting the two conditions demonstrates recall. The goal also requires choosing the bodies and using the vector balance to justify a recoil prediction independently.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_029",
+      "decision": "accept_current",
+      "scientificCorrectness": "For the same material system in an inertial frame, dP/dt equals the vector sum of external forces. If that sum vanishes throughout the interval, P is constant throughout.",
+      "languageEquivalence": "The German and English variants specify the same material closure, inertial frame, vector differential balance and force condition.",
+      "originFit": "Both variants name only f524f05c-4456-4fc3-a1f7-f40741fc1f16. Its supplied description requires a derivation from Newton’s second and third laws and discussion of continuous conservation. The card recalls a relation used in that derivation.",
+      "promptAnswerFit": "Each front asks for momentum balance with external forces. The differential equation answers it directly, and the final sentence gives its zero-force consequence.",
+      "recallBoundary": "The card supplies the balance. The proof goal requires the learner to derive it, account for cancellation of internal forces, and connect the interval impulse to the endpoint result.",
+      "requiredChanges": []
+    }
+  ],
+  "limitations": [
+    "The source inspection covered the six relevant original-page images, their retained PDF extract pages, and the physical-page text mappings. Full original curriculum PDFs, underlying repository view files, and a nationwide set of original-page images were absent from this packet. The view counts come from the supplied before-edit inventory.",
+    "The profile is AI-candidate guidance at E1/G1. The two briefs specify intended performances. No learner responses, executed assessments, achieved coverage, or mastery results were supplied.",
+    "The illustration is a solved teaching example. Its pilot resource record and review-book rendering establish neither human approval nor release or deployment. The prior withdrawn D claim and historical reviews supply no authority for this confirmation."
+  ],
+  "visualizationReview": {
+    "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+    "assetSha256": "sha256:948ae3321871d95501d0f99614bab22c129185fd66efb0bb088092c1583af64c",
+    "decision": "accept_current",
+    "scientificCorrectness": "An initially stationary pair pushes apart and has total momentum zero at each displayed instant. The stated zero external impulse over the interval makes this an exact idealized recoil example.",
+    "sameBodiesAndFrame": "The blue and red skaters are identifiable in both panels on the same rink. The fixed rink viewpoint is consistent with the common inertial frame named in the German alt text and the adjacent book description.",
+    "endpointVsContinuousClaim": "The two zero totals are labeled before and after. The banner specifies external impulse over the interval. The image makes no assertion about total momentum at intermediate times.",
+    "signsSumsAndArrows": "With right positive, the blue left arrow carries −2 kg·m/s and the red right arrow +2 kg·m/s. The signed sum is zero. The labels give the magnitudes and the schematic arrows give the directions.",
+    "altTextFit": "The primary resource link’s German alt text matches the book model and conveys the initially resting pair, the inertial frame, both signed momenta and directions, zero external impulse on the pair over the interval, and both endpoint totals.",
+    "fullAndPhoneReadability": "The 1600×900 image and native book page clearly show both panels, the signed labels, and the condition banner. At 360×203 the momentum values and units are the smallest text but remain distinguishable. Both arrows, both totals, and the full interval condition remain visible without cropping.",
+    "requiredChanges": []
+  },
+  "sourceScopeComparison": {
+    "narrowsPriorPerformance": false,
+    "reason": "The old wording already used vector total momentum in a defined system with no net external impulse to justify simple recoil qualitatively. The proposal identifies the bodies, frame and two instants needed for that same comparison. It preserves cases with nonzero initial drift as well as recoil from rest. The before-edit inventory contains eight distinct direct routes (BW 3, BY 1, HE 3, RP 1) represented by 16 mapping and decision entries. Of 90 views, 70 are target views (66 Länder and four national), and 71 include the goal in the learning basis. These are separate counts.",
+    "existingDirectRoutesNoLongerFit": [],
+    "inheritedDisputesStillUnresolved": [
+      "BY’s direct 839 source is Ph10.2. Its actual year 8 placement follows from the retained e790 Kraftstoß consumer. An official year 8 conservation requirement remains unestablished.",
+      "Earlier acquisition through prerequisite chains, including the MV/ST timing cases in the supplied limits, does not establish an earlier official obligation. Broad source clauses and ancestor reachability retain their existing evidentiary limits.",
+      "The inherited SL nuclear-physics heading for 839 and the SL/SN consumer headings remain placement disputes. They provide no independent subject-source mandate.",
+      "The supplied SL/SN material does not establish the full advanced differential-and-integral proof as mandatory across all 32 existing LK product targets for f524. That question lies outside the qualitative 839 wording review."
+    ]
+  }
+}

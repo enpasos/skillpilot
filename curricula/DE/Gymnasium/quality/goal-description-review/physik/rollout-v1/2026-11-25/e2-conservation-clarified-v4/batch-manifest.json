@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-e2-conservation-clarified-description-20261125-v4",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/physik/rollout-v1/2026-11-25/e2-conservation-clarified-v4.config.json",
+  "configDigest": "sha256:3b7e2b00a25e141ddc257e8d9f58bded2d25e2b1f3b75f4d63df04b14161363e",
+  "goalIds": [
+    "839ecc8f-3a60-418b-bc92-64bfeef33824"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 493,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-11-25/e2-conservation-clarified-v4/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:cce66fc2ba4942e67c570d439d137ad49c7807eaba772e2384204d0f85afa251"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:94c1152d30df5f302c22dc8a1a479aea4608882ddbae4f79c6f43190bb553f15",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b9d41401a840383c1030c5da831feb59a2ff87626cc464e968dd9ffe7ea978ea",
+    "reviewInputFingerprint": "sha256:d66c75cea740ccd051cb8371161369b2fdd3cdb647ef1e272cd17db9bbcd4526",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-e2-conservation-clarified-description-20261125-v4-a",
+        "campaignDigest": "sha256:c86f0f310449f776db732d66b31761c21d36b0d7092381ab11261ef075914b24",
+        "roundId": "physics-e2-conservation-clarified-description-20261125-v4-first-pass-a",
+        "independenceGroupId": "physics-e2-conservation-clarified-description-20261125-v4-independent-a",
+        "batchId": "physics-e2-conservation-clarified-description-20261125-v4-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:9267b4f2a392ba5bece70f1a396bcfce364a581ffab6a06e95e376b7d6a299cc"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-e2-conservation-clarified-description-20261125-v4-b",
+        "campaignDigest": "sha256:1f57867d0e336c82f53ba213680cf836f2f1c4b29d1977068703465d5a705f59",
+        "roundId": "physics-e2-conservation-clarified-description-20261125-v4-first-pass-b",
+        "independenceGroupId": "physics-e2-conservation-clarified-description-20261125-v4-independent-b",
+        "batchId": "physics-e2-conservation-clarified-description-20261125-v4-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a15a6d0fe40302da4a18ed454cce43775790b3ce5787c23b74bfddd553a619ee"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1216,6 +1216,9 @@ export const routeProfileDefinitions: RouteProfile[] = [
     // collection. Eligibility is independent of that compatibility placement;
     // every projection still checks its actual source scope and whole demand.
     terminalAutonomyGoalIds: [
+      // Own lower-stage closing tasks: current reviewed offering remains source-scope bounded.
+      'd8fc6295-d0db-59e5-bd90-080bbc508c3a',
+      'b50e9903-58b3-520d-96bf-d5bc1fe51ebf',
       'a8dc0290-9f80-5763-8943-e16b8d2aa860',
       'b34f3e03-bbe7-5ede-941c-3f26c9b07bb8',
       'b3b365f4-4988-57d5-97cd-5d8446483ef7',

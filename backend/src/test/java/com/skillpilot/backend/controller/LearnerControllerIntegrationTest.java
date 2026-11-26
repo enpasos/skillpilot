@@ -1844,6 +1844,39 @@ public class LearnerControllerIntegrationTest {
                 "../contracts/stage-plan-review-evidence/2026-11-24/e1-physics-seki-deferred-hh-sn-v2/"
                         + "sek1-seed-fixtures.actual.json").toFile()).path("scopes");
         scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) deferredHhSn);
+        // E.2 adds only the named momentum targets. Exact source-derived
+        // seed/learning sets are a technical fixture, with CQR-104 kept open.
+        var e2Physics = objectMapper.readTree(Path.of(
+                "../curricula/DE/Gymnasium/quality/learning-units/"
+                        + "e2-impuls-newton2-bindings-20261125-v1/inventory/"
+                        + "physics-seki-seed-fixtures.actual.json").toFile()).path("scopes");
+        scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) e2Physics);
+        // Accepted BW K2 adds only a local assessment seed in each duration.
+        // Preserve the sealed HH/SN and E.2 fixtures and all unrelated scopes.
+        var e2BwAssessment = objectMapper.readTree(Path.of(
+                "../curricula/DE/Gymnasium/quality/learning-units/"
+                        + "e2-impuls-newton2-bindings-20261125-v1/inventory/"
+                        + "physics-seki-k2-seed-successor.actual.json").toFile()).path("scopes");
+        assertThat(e2BwAssessment.size()).isEqualTo(2);
+        for (String duration : List.of("G8", "G9")) {
+            assertThat(e2BwAssessment.has(String.join("|", CANONICAL_PHYSICS_ID,
+                    "DE-BW", "SekI", duration, "GK"))).isTrue();
+        }
+        scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) e2BwAssessment);
+        // Accepted K1 V4 adds only local HH/TH assessment seeds in each duration.
+        // The BW K2 successor and every historical fixture remain unchanged.
+        var e2HhThAssessment = objectMapper.readTree(Path.of(
+                "../curricula/DE/Gymnasium/quality/learning-units/"
+                        + "e2-impuls-newton2-bindings-20261125-v1/inventory/"
+                        + "physics-seki-k1-v4-seed-successor.actual.json").toFile()).path("scopes");
+        assertThat(e2HhThAssessment.size()).isEqualTo(4);
+        for (String jurisdiction : List.of("DE-HH", "DE-TH")) {
+            for (String duration : List.of("G8", "G9")) {
+                assertThat(e2HhThAssessment.has(String.join("|", CANONICAL_PHYSICS_ID,
+                        jurisdiction, "SekI", duration, "GK"))).isTrue();
+            }
+        }
+        scopes.setAll((com.fasterxml.jackson.databind.node.ObjectNode) e2HhThAssessment);
         return scopes;
     }
 
@@ -2092,18 +2125,18 @@ public class LearnerControllerIntegrationTest {
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "65", "65" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "63", "63" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "67", "67" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "161", "161" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "156", "156" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "164", "164" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "157", "157" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "126", "126" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HE", "130", "130" },
                 // New LAWS source-link activation is deferred; source corrections remain.
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "126", "126" },
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-HH", "128", "128" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-MV", "124", "124" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-SL", "152", "152" },
                 // The two source-supported new goals await real preparation repair.
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-SN", "155", "155" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-ST", "134", "134" },
-                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "136", "136" }
+                { "Physik", CANONICAL_PHYSICS_ID, "DE-TH", "138", "138" }
         };
         // The verified applicability-cache refresh exposes these already-authored
         // Sek-I targets. Bind their identities as well as both duration totals.

@@ -1,0 +1,79 @@
+{
+  "id": "b50e9903-58b3-520d-96bf-d5bc1fe51ebf",
+  "shortKey": "seki_mean_resultant_force_from_momentum_interval",
+  "title": "Mittlere Kraft auf einen Wagen",
+  "titleEn": "Average force on a cart",
+  "description": "Aus zwei vorzeichenbehafteten Impulsmessungen die mittlere resultierende äußere Kraft bestimmen und ihre Richtung deuten.",
+  "descriptionEn": "Determine the average net external force from two signed momentum measurements and interpret its direction.",
+  "weight": 0.9,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment",
+    "canonical"
+  ],
+  "type": "atomic",
+  "contains": [],
+  "requires": [
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-physics",
+    "demandLevel": "AB2",
+    "processCompetencies": [],
+    "guidingIdeas": [],
+    "phase": "GLOBAL",
+    "area": "Mechanik",
+    "topicCode": "SEKI_MEAN_RESULTANT_FORCE_FROM_MOMENTUM_INTERVAL"
+  },
+  "applicability": {
+    "jurisdiction": [
+      "DE-BW"
+    ]
+  },
+  "extendedData": {
+    "applicabilityMappingInheritance": "boundary",
+    "applicabilityOverrides": {
+      "jurisdiction": [
+        "DE-BW"
+      ]
+    }
+  },
+  "examData": {
+    "reviewStatus": "released",
+    "coveredGoalIds": [
+      "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+    ],
+    "coveredStrands": [],
+    "demandLevels": [
+      "AB2"
+    ],
+    "sourceArtifactPath": "curricula/DE/Gymnasium/assessments/physik/e2-lower-momentum-closures-20261125-v1/seki_mean_resultant_force_from_momentum_interval.md",
+    "taskContent": "Ein Wagen mit unveränderlicher Masse bewegt sich auf einer geraden Bahn. Das ruhende Labor wird als Inertialsystem betrachtet. Nach rechts ist die positive Richtung.\n\nGemessen werden:\n• bei t₁=2,0 s: p₁=+8,0 kg·m/s;\n• bei t₂=5,0 s: p₂=−4,0 kg·m/s.\n\nBestimme die mittlere resultierende äußere Kraft auf den Wagen zwischen diesen Zeitpunkten. Gib dein Ergebnis in Newton an und erkläre, was sein Vorzeichen für die Kraftrichtung bedeutet. Zeige deinen Rechenweg.",
+    "taskContentEn": "A cart of fixed mass moves along a straight track. The stationary laboratory is treated as an inertial frame. Right is the positive direction.\n\nMeasurements:\n• at t₁=2.0 s: p₁=+8.0 kg·m/s;\n• at t₂=5.0 s: p₂=−4.0 kg·m/s.\n\nDetermine the average net external force on the cart between these times. Give your result in newtons and explain what its sign means for the force direction. Show your working.",
+    "solutionContent": "Eine mögliche Lösung mit rechts als positiver Richtung:\nΔp=p₂−p₁=(−4,0)−(+8,0)=−12,0 kg·m/s.\nΔt=t₂−t₁=5,0−2,0=3,0 s.\nF̄=Δp/Δt=−12,0/3,0=−4,0 N.\nDas Minus bedeutet: Die mittlere resultierende äußere Kraft zeigt nach links.\n\nGleichwertig sind andere gültige Wege, etwa die Sekantensteigung im Impuls-Zeit-Diagramm. Bei links als positiver Richtung werden die Impulse −8 und +4 kg·m/s; dann sind Δp=+12 kg·m/s und F̄=+4 N, ebenfalls nach links. Ein exakter Zahlenterm, eine gleichwertige Krafteinheit oder „4 N nach links“ genügt; getrennte Zwischenzeilen sind unnötig. Die Daten bestimmen einen Intervallmittelwert, keine bestimmte momentane oder konstante Kraft.\n\nBewertung: 3 P für die vorzeichenbehaftete Änderung, 4 P für die Intervallrechnung, 3 P für Kraftvorzeichen und physikalische Deutung (0,5+2,5). Bestanden allein ab 8 von 10 P. Die Kriterien bestimmen Teilpunkte; fehlende Schritte nicht aus der Endkraft ergänzen. Reine allgemeine Formeln belegen keine Zahlenanwendung. Betrag und konsistente Folgen eines bereits abgezogenen Fehlers anerkennen. Ein neuer beibehaltener Vorzeichen-/Richtungskonzeptfehler verliert die betroffene Evidenz, auch bei sonst richtiger Rechnung.\n\nEin isolierter Rechen-, Vorzeichen-, Einheiten-, Rundungs- oder Beschriftungsfehler bei sichtbar richtigem Kern kostet insgesamt 0,5 P einmal, ohne Folgeabzüge. Fehlende Krafteinheit: nur die vorgesehenen 0,5 P. Keine Richtungsdeutung zu zeigen ist kein Beschriftungsfehler. Eine ausdrückliche Behauptung, der Mittelwert beweise eine konstante Kraft oder einen bestimmten Momentanwert, kostet einmal 1,5 P im Intervallkriterium; bloßes Schweigen dazu kostet nichts.",
+    "solutionContentEn": "One possible solution with right positive:\nΔp=p₂−p₁=(−4.0)−(+8.0)=−12.0 kg·m/s.\nΔt=t₂−t₁=5.0−2.0=3.0 s.\nF̄=Δp/Δt=−12.0/3.0=−4.0 N.\nThe minus sign means that the average net external force points left.\n\nOther valid methods are equivalent, such as the secant slope on a momentum-time graph. With left positive, the momenta become −8 and +4 kg·m/s; then Δp=+12 kg·m/s and F̄=+4 N, still leftwards. An exact numerical expression, equivalent force unit or '4 N leftwards' suffices; separate intermediate lines are unnecessary. The data determine an interval average, not a particular instantaneous or constant force.\n\nGrading: 3 points for signed change, 4 for the interval calculation, 3 for force sign and physical interpretation (0.5+2.5). Pass solely at 8 of 10. The criteria define partial credit; do not infer missing working from the final force. General formulas alone do not establish numerical application. Credit magnitudes and consistent consequences of an error already charged. A new maintained force-sign/direction misconception loses the affected evidence even with otherwise correct calculation.\n\nOne isolated arithmetic, sign, unit, rounding or label slip with visibly sound core costs 0.5 once overall, without consequential losses. A missing force unit costs only its allocated 0.5. Showing no direction interpretation is not a label slip. An explicit claim that the mean proves constant force or a particular instantaneous value costs 1.5 once in the interval criterion; silence on this costs nothing.",
+    "scoring": {
+      "maxPoints": 10,
+      "passingPoints": 8,
+      "steps": [
+        {
+          "id": "momentumChange",
+          "points": 3,
+          "description": "3 P: richtige vorzeichenbehaftete Änderung −12 kg·m/s, auch als (−4)−(+8) oder mit konsistent umgekehrter Achse. 1,5 P: nur unbestrittenes p_Ende−p_Anfang ohne Zahleneinsatz. 0 P: fehlende Evidenz oder beibehaltener falscher Änderungs-/Vorzeichenansatz, auch neben richtiger allgemeiner Formel. Ein falscher Wert allein belegt keinen isolierten Fehler. Aus der Endkraft keine Änderung rekonstruieren. Klare Zwischeneinheiten dürfen implizit bleiben. Isolierter Fehler bei sichtbar richtigem Kern: global −0,5 P einmal, keine Folgeabzüge. / EN: 3 points: correct signed change −12 kg·m/s, including (−4)−(+8) or a consistently reversed axis. 1.5: only uncontradicted p_end−p_start without numerical application. 0: absent evidence or a maintained incorrect change/sign operation, even alongside a correct general formula. A wrong value alone does not establish an isolated slip. Do not reconstruct a change from the final force. Clear intermediate units may be implicit. An isolated slip with visibly sound core costs 0.5 once overall, without consequential losses."
+        },
+        {
+          "id": "meanForce",
+          "points": 4,
+          "description": "A+B+C: A=3 P für Δp/Δt mit eingesetzten 3 s oder (5−2) s; 1,5 nur richtige Quotientenbeziehung ohne eingesetzte Dauer; 0,5 nur richtige Dauer; sonst 0. Bei beibehaltener falscher Kraftbeziehung/Dauer keine Quotientenpunkte, aber 0,5 für richtige Dauer. Betragsrechnung und eigene falsche Δp-Werte zulässig. B=0,5 für richtigen Kraftwert, exakten Zahlenterm oder richtige Rechnung im eigenen Ansatz; C=0,5 für N/gleichwertige Krafteinheit am Kraftergebnis. Δp/(3 s) allein ist kein ausgewerteter Zahlenterm. Explizite Behauptung, der Mittelwert beweise konstante Kraft oder einen bestimmten Momentanwert: einmal −1,5 hier (Minimum 0), auch bei beiden Behauptungen; ohne solche Behauptung kein Abzug. Isolierter kleiner Fehler: global −0,5 einmal, keine Folgeabzüge. / EN: A+B+C: A=3 for Δp/Δt with substituted 3 s or (5−2) s; 1.5 only a correct quotient relation with no substituted duration; 0.5 correct duration alone; otherwise 0. A maintained wrong force relation/duration earns no quotient credit, but 0.5 for a correct duration. Magnitude and own incorrect Δp qualify. B=0.5 for a correct force value, exact numerical expression or correct arithmetic in the own setup; C=0.5 for N/equivalent force unit on the force result. Δp/(3 s) alone is not an evaluated numerical expression. Explicit claim that the mean proves constant force or a particular instantaneous value: subtract 1.5 here once (floor 0), even for both claims; no such claim means no deduction. An isolated minor slip costs 0.5 once overall, without consequential losses."
+        },
+        {
+          "id": "direction",
+          "points": 3,
+          "description": "0,5 P: Kraftvorzeichen zur gewählten Achse; 2,5 P: richtige physikalische Deutung dieses Vorzeichens für die mittlere Kraft (hier negativ = links). Nur vorzeichenbehaftete Kraft ohne Deutung: 0,5. Gerichteter Wert wie „4 N nach links“: 3; nur Betrag: 0. Beibehaltene widersprüchliche Angaben erhalten keine betroffene Teilpunktzahl. Bei beibehaltener falscher Deutung wie „negativ heißt rechts“ entfallen 2,5; ein hier neu eingeführtes systematisch falsches Kraftvorzeichen mit falscher Kraftrichtung erhält 0, auch wenn das eigene Vorzeichen richtig übersetzt wird. Für bereits anderswo abgezogene vorgelagerte Fehler konsistente Folgen anerkennen. Ein nachweislich isolierter Vorzeichen-/Beschriftungsfehler bei sonst klar richtiger Deutung kostet global 0,5 einmal. / EN: 0.5: force sign for the chosen axis; 2.5: correct physical interpretation of that sign for the average force (here negative = left). Signed force without interpretation: 0.5. Directed value such as '4 N leftwards': 3; magnitude alone: 0. Maintained contradictory statements earn no affected component. A maintained wrong interpretation such as 'negative means right' loses 2.5; a systematic wrong force sign and direction originating here earns 0, even if the own sign is decoded correctly. Credit consistent consequences of upstream errors already charged elsewhere. A demonstrably isolated sign/label slip with otherwise clearly correct interpretation costs 0.5 once overall."
+        }
+      ]
+    }
+  }
+}

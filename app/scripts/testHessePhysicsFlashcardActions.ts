@@ -180,7 +180,7 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
     for (const language of ['de', 'en'] as const) {
       const deck = await read<{ deckId: string; cards: { id: string; tags?: string[]; originGoalIds?: string[] }[] }>(`memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.${language}.json`)
       assert.equal(deck.deckId, 'de_gymnasium_physics_mechanics_ephase')
-      assert.equal(deck.cards.length, 87)
+      assert.equal(deck.cards.length, 90)
       assert(deck.cards.every(card => card.originGoalIds?.length), 'every deck card names its understanding goals')
       const actions = buildUnitFlashcardActions(memoryId, original, value.goalIndexAll, value.visibleGoalIds, deck.cards, language)
       assert.equal(buildUnitAssessmentActions(practiceMaterial, original, value.goalIndexAll, value.visibleGoalIds, language).size, 0,

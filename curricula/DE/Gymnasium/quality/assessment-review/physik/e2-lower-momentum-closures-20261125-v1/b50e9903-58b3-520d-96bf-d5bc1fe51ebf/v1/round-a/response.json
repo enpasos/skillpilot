@@ -1,0 +1,496 @@
+{
+  "candidateDecision": "needs_change",
+  "requiredCorrections": [
+    "Protect numerical application of the signed momentum change by a loss greater than the 2-point slack. Currently general end-minus-start alone earns 1.5/3, allowing Se7168e62bd to pass at 8.5 without applying the momentum values. At unchanged 10/8, generic-only credit must be below 1/3. Preserve credit for exact numerical expressions and equivalent methods.",
+    "Protect application of the correct time interval. Currently a maintained incorrect duration can earn meanForce A=1.5, B=0.5 and C=0.5, allowing 8.5 overall with the other criteria complete. At unchanged 10/8, such interval evidence must earn below 2/4. Continue treating demonstrably isolated duration arithmetic slips under the global 0.5 rule.",
+    "Protect physical direction interpretation by more than 2 points. Its omission currently permits S2a75233472 to pass at 8; maintained incorrect sign interpretation can also pass. At unchanged 10/8, sign-only credit must be below 1/3 while an equivalent correct directed result retains full credit.",
+    "Increase the published deduction for an explicit unsupported constant-force or instantaneous-force inference to more than 2 points. The current 1.5 deduction permits both such misconceptions to pass at 8.5. Continue requiring no additional discussion when that false assertion is absent.",
+    "Apply revisions consistently to both languages and the shared marking notes. Retain a compliant 8–12-point total, a threshold no higher than 85%, room for one isolated 0.5-point slip, consistent follow-through and passing solely by the published total; introduce no extra veto."
+  ],
+  "semanticKind": "practiceAssessment",
+  "semanticKindReason": "Confirmed as a standalone ordinary assessment: one concrete task, exemplar solution and marking scheme assess one ordinary goal. It is neither a curricular goal, a multi-goal capstone nor a cluster.",
+  "coveredGoalIds": [
+    "ecbaa101-cb10-5da3-9368-ae40ff587d74"
+  ],
+  "coverageVerdict": "accept_current",
+  "coverageReason": "The candidate directly requires and covers exactly this ordinary goal. The task matches its fixed-mass, straight-line, inertial-frame performance: use two signed momenta and times to calculate average net external force and interpret its direction. No extra covered goal or assessment prerequisite is introduced.",
+  "offerVerdict": "accept_current",
+  "offerReason": "Accepted within the supplied planned packet. The DE-BW GK, LK and SekI views have hashes 599e221f361d662f11df26b6e8fac2cc7ee1cb763847b015c7bbb204857dfa0b, eb0623a9ed7bab832a38960033158e65fd40d90109b21f2eb77b9882fa1c2747 and ac23d0e3f0c14ee3d0e83abfc71bbaf455932e9f4dc607451616b23fea9a64cc respectively; the shared lower authority matches the SekI identifier and hash. Each row supplies 163 unique lower targets and the same full supplied learning basis of 261 unique IDs. All 25 demand objects exactly reconstruct the covered goal's recursive requires closure, with no missing objects or demands outside that basis. Actual demands use signed differences, an interval quotient, force units and direction; no instantaneous tangent calculation is required. Existing Math prerequisites remain within the supplied basis. There is no extra curricular target, official examination duty or official task-source claim. Candidate applicability is bounded to DE-BW, so the ordinary goal's broader applicability creates no HE offer.",
+  "rubricPolicyVerdict": "needs_change",
+  "rubricPolicyReason": "The 10-point total, 8-point threshold (80%), three nominal carriers weighted 3/4/3, total-only passing and isolated-slip allowance are compliant. Bilingual scoring-step lengths are 1108, 1504 and 1247 UTF-16 units, all below 2000. However, partial-credit rules leave required numerical application and physical direction insufficiently protected, and the temporal misconception penalty is below the 2-point slack. Consequently missing required performances and maintained conceptual errors can pass. All grades below retain the actual published rules without an added gate.",
+  "graded": [
+    {
+      "submissionId": "S447f4d8bbf",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct numerical signed change with the explicitly reversed axis."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Correct graph-slope quotient, duration, result and N."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Positive force correctly interpreted as left on the chosen axis."
+        }
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Complete correct alternative-axis solution.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sdd6b44f4a1",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct signed change of −12 kg·m/s."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 2.5,
+          "reason": "Complete calculation earns 4, minus the prescribed 1.5 for the unsupported instantaneous-force inference."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Correct negative sign and leftward interpretation."
+        }
+      ],
+      "total": 8.5,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Passes under the rubric despite explicitly asserting an undetermined instantaneous force; this is a conceptual error.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Se5f5cece76",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "The numerator explicitly supplies the correct signed numerical change."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Exact numerical quotient with the correct duration and N qualifies without decimal evaluation."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Negative result correctly interpreted as leftward."
+        }
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Complete correct compact solution.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sf557b17bd8",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct subtraction and signed change."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Correct duration, quotient, −4 N result and unit."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Correct negative sign and leftward interpretation."
+        }
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Complete correct solution.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S37153d1d76",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 0,
+          "reason": "No numerical momentum change or general end-minus-start operation is shown."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 0,
+          "reason": "No interval calculation, force magnitude or force unit."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Correct average-force sign and physical direction are explicitly stated."
+        }
+      ],
+      "total": 3,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Correct qualitative direction alone does not establish the quantitative performance.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S9dd21e44be",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 2.5,
+          "reason": "Correct signed subtraction setup followed by one isolated arithmetic slip."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Correct duration, consistent division of the own change and force unit; no consequential deduction."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Negative sign correctly interpreted as leftward."
+        }
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {
+          "description": "Evaluates (−4)−(+8) as −10 after a correct setup.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ],
+      "diagnosis": "Demonstrably isolated arithmetic slip with consistent follow-through.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S02e3a7b244",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct signed change."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Correct magnitude calculation and duration; kg·m/s² is equivalent to N."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "The directed result 4 kg·m/s² leftwards earns full credit."
+        }
+      ],
+      "total": 10,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Complete correct magnitude-and-direction solution using an equivalent force unit.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S1f953ae644",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 0,
+          "reason": "Neither numerical momentum-change application nor general subtraction order is shown; the final force cannot supply missing evidence."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Correct quotient relation with substituted 3 s, correct force value and N."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Correct negative sign and leftward interpretation."
+        }
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Missing momentum-change evidence prevents passage under the published points.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sf47395052f",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct signed numerical change."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 3.5,
+          "reason": "A=3 and B=0.5; C=0 because the force result lacks a force unit."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Correct negative sign and leftward interpretation."
+        }
+      ],
+      "total": 9.5,
+      "passes": true,
+      "minorSlips": [
+        {
+          "description": "Omits the force unit from the final result.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ],
+      "diagnosis": "Sound complete calculation and direction with one unit omission.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S5195703aef",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct signed subtraction and result."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 0,
+          "reason": "No duration, quotient, numerical force result or force unit."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Correct force sign and physical direction explicitly stated."
+        }
+      ],
+      "total": 6,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Momentum change and direction are present; average-force calculation is missing.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S916b9b9e98",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct signed momentum change."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 1.5,
+          "reason": "A=0.5 for the correct duration alone, B=0.5 for correct arithmetic from the own setup, C=0.5 for written N. Multiplication does not earn quotient credit."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Correct interpretation of the negative sign, consistent with the own result."
+        }
+      ],
+      "total": 7.5,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Explicit multiplication is a maintained conceptual error, not an isolated formal slip.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S89b3ab22a9",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 1.5,
+          "reason": "Correct general end-minus-start order without numerical application."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 1.5,
+          "reason": "Correct general quotient relation without substituted duration, numerical result or force unit."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 0,
+          "reason": "No force sign or physical direction."
+        }
+      ],
+      "total": 3,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Formula-only work earns the expressly published general-method partial credit.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Se7168e62bd",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 1.5,
+          "reason": "Only general end-minus-start is shown; numerical change cannot be reconstructed from the final force."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Correct quotient with substituted 3 s, correct −4 result and N."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Correct signed force and explicit leftward interpretation."
+        }
+      ],
+      "total": 8.5,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Passes under the published rubric despite missing numerical application of the momentum change.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S2a75233472",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct signed momentum change."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Correct duration, quotient, force value and N."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 1,
+          "reason": "Correct signed force value, but no physical-direction interpretation."
+        }
+      ],
+      "total": 8,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Passes exactly at the cutoff while omitting the required direction interpretation.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sc9dc9a630b",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct signed numerical change."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 2.5,
+          "reason": "Complete calculation earns 4, minus the prescribed 1.5 for the unsupported constant-force inference."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Correct negative sign and leftward interpretation."
+        }
+      ],
+      "total": 8.5,
+      "passes": true,
+      "minorSlips": [],
+      "diagnosis": "Passes under the rubric despite explicitly asserting unsupported constancy throughout the interval.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S7dcbb0d122",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 0,
+          "reason": "Explicitly maintains addition as the change operation."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Correct interval quotient, arithmetic and N using the own incorrect momentum change."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 3,
+          "reason": "Positive/right is consistent with the own positive force after the upstream error has been penalized."
+        }
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Maintained change-operation misconception; independent consistent follow-through receives credit.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "S8a2ab0e602",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct signed numerical change."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 4,
+          "reason": "Correct magnitude quotient, duration, result and N."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 0,
+          "reason": "A force magnitude alone supplies neither force sign nor physical direction."
+        }
+      ],
+      "total": 7,
+      "passes": false,
+      "minorSlips": [],
+      "diagnosis": "Correct magnitude calculation with the entire direction performance omitted.",
+      "translationsEquivalent": true
+    },
+    {
+      "submissionId": "Sdf13b2fe72",
+      "scores": [
+        {
+          "criterionId": "momentumChange",
+          "pointsAwarded": 3,
+          "reason": "Correct signed momentum change."
+        },
+        {
+          "criterionId": "meanForce",
+          "pointsAwarded": 3.5,
+          "reason": "Correct quotient, duration and value; the force-unit component is missing."
+        },
+        {
+          "criterionId": "direction",
+          "pointsAwarded": 1,
+          "reason": "Correct signed force value without physical-direction interpretation."
+        }
+      ],
+      "total": 7.5,
+      "passes": false,
+      "minorSlips": [
+        {
+          "description": "Omits the force unit from the final result.",
+          "deductedPoints": 0.5,
+          "followOnDeduction": false
+        }
+      ],
+      "diagnosis": "Falls below the cutoff through separate omissions of the force unit and direction interpretation.",
+      "translationsEquivalent": true
+    }
+  ],
+  "minimalCompletenessFindings": "Qualitative-only and formula-only work each score 3 and fail. Missing all momentum-change evidence scores 7; missing the interval calculation scores 6; magnitude-only work scores 7. Exact numerical expressions can establish complete performance without separate intermediate lines. Nevertheless, generic momentum-change evidence plus a final force passes at 8.5, and omission of physical-direction interpretation passes at exactly 8. Adding the 0.5 unit omission to the latter gives 7.5 and fails. Explicit false instantaneous/constant assertions each still pass at 8.5; merely omitting optional discussion incurs no deduction. The isolated arithmetic slip scores 9.5 with no follow-on losses.",
+  "bilingualVerdict": "accept_current: The DE/EN tasks, solutions, shared marking notes, scoring steps and all 18 submission pairs are substantively equivalent.",
+  "limitations": [
+    "Review is limited to the two supplied files. Referenced view, policy and source files were not inspected or independently rehashed; their external currentness is not established. Offer acceptance concerns the supplied planned exposure, not an active release."
+  ]
+}
