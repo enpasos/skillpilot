@@ -102,15 +102,16 @@ arrows, so the new goal reaches every view.
 
 ## Product decisions of 26 November 2026
 
-The Product Owner took four decisions on **26 November 2026**. None of them is
-implemented by this entry; each names the package that carries it.
+The Product Owner took four decisions on **26 November 2026**. The first is
+implemented; each of the others names the package that carries it.
 
 - **A plan that cannot be evaluated defines no exam scope (issue #205).** A
   stored plan whose exam topic no longer resolves must not close the subject
   while the learner follows plans. Such a plan narrows nothing: ordinary
   learning in the Personal Curriculum stays open, and the plan remains visible
-  as outdated until it is saved anew. Until the backend package for #205 is on
-  `main`, the dead end described in the issue still exists.
+  as outdated until it is saved anew. This holds for every plan that is not
+  compatible today, also one whose exam topic would still resolve. The rule
+  and the places that apply it are in §10.2.
 - **A goal without an official witness of a Land is no regular target there.**
   It is never dropped for that reason. It stays at its present place as
   SkillPilot's voluntary own offer in that Land, or as a preparation where an
