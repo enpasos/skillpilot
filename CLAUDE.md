@@ -109,7 +109,15 @@ Hessian, four Saarland and two Saxon Leistungskurs views and absent elsewhere.
 It corrected three prerequisites: potential energy no longer requires kinetic
 energy, three goals that use kinetic energy require it directly, and
 conservation of momentum no longer requires the application of Newton's second
-axiom. See the
+axiom. Part 3 (26 November) added two goals with a task each: the balance of
+forces on a line (`6ba20688`, a target with its task in 61 views of 13 Länder,
+a preparation in 20, and in Hesse the mandatory closing check of the fourth
+child) and the graphical resolution of the weight on an incline (`77b44d13`,
+a target with its task in 18 views of five Länder, absent in Hesse). The
+incline with sine and cosine and sticking and sliding with the normal force
+wait as reviewed candidates outside the catalog for the voluntary role. A new
+task, its solution and the cards of its goal are read against
+`knowledge-context --full` before they are sealed. See the
 E.2 cut in [AGENTS.md §2.4](AGENTS.md#24-recursive-learning-units).
 
 **Product Owner decisions of 26 November 2026.** A plan that cannot be
@@ -130,7 +138,8 @@ the scope of a section and outside a learning plan unless the learner selects
 it, independent of the unit pilot. It is not built yet; a goal has only the
 roles target and preparation until its package (composition-view contract
 version, generators, backend, Cockpit, quality rules) is on `main`, so
-nothing may be placed as "voluntary" by another means. Also decided and not
+nothing may be placed as "voluntary" by another means. It will be the third
+value `voluntary` of the existing `projectionRole` in view format 1.3. Also decided and not
 built yet: the source-tracing rule (one recorded decision per official
 requirement: carried, carried by a cross-cutting goal, or declined with a
 reviewed and visible reason; extractions marked literal or reworded; start
@@ -403,7 +412,10 @@ complete check as parallel jobs. Details: `docs/qa-ci/ci.md`.
   steps belong in the server, not in prompts.
 - **Immutability**: never overwrite published releases, rejected 1.0.0
   history, content-addressed UI resources, or hash-bound evidence. Drafts live
-  under `contracts/drafts/`.
+  under `contracts/drafts/`. New review evidence stays small: no evidence file
+  above 5 MiB and no evidence folder above 30 MiB without the approval of the
+  agent who takes the package over; full inventory tables and logs stay
+  outside the repository with their SHA-256 named (`AGENTS.md` §9).
 - **Scope of authorization**: no publishing, deployment, portal writes,
   credential changes or `record-published` without explicit user instruction.
   Local tests are not real-host acceptance; owner-reported observations are
