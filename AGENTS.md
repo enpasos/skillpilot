@@ -123,8 +123,10 @@ QA lists as open, and A4, the Mathematics ladder. Record:
 
 ## Product decisions of 26 November 2026
 
-The Product Owner took four decisions on **26 November 2026**. The first is
-implemented; each of the others names the package that carries it.
+The Product Owner took these decisions on **26 November 2026**, the first
+four in the morning, the voluntary role and the confirmations at the end of
+each entry about 17:00 CET ("wie empfohlen"). The first is implemented; each
+of the others names the package that carries it.
 
 - **A plan that cannot be evaluated defines no exam scope (issue #205).** A
   stored plan whose exam topic no longer resolves must not close the subject
@@ -155,13 +157,75 @@ implemented; each of the others names the package that carries it.
   left 71 official requirements without a target in that Land. Until a rule
   with its own decision records and gate exists, `CQR-003` is unchanged and no
   pin is lowered; a reworded extraction is never quoted as official wording.
+  The rule he accepted in the afternoon: every official requirement gets
+  exactly one recorded decision, carried by a goal, carried by a
+  cross-cutting goal (for process requirements), or declined with a reason. A
+  reasoned deviation counts as decided and no longer as a gap. It needs its
+  own reason and an independent review, is visible to learners, its number
+  per Land is pinned, and each new one is listed in its pull request; no
+  queue is closed by bulk decisions. Every source extraction is marked as
+  literal or reworded, and the app shows that (measured on 26 November over
+  all 21 subjects: of 339 extraction files 187 are literal or close to it, 41
+  mixed, 67 clearly reworded, 44 measurable only by title or not at all). The
+  work starts with Physics Lower Saxony. Not implemented yet.
 - **The Mathematics vector ladder gets an independent node review before any
   catalog change.** The draft has a stage for the calculation rules (the vector
   space in the plane) before vectors in three dimensions. Along the ladder a
   learner meets the idea of the arrow decision from the Mathematics side:
   arrows other than displacements lie in a space of their own that describes
   properties of single points of position space and shares its directions.
-  He sees the result of the review first.
+  He sees the result of the review first. He accepted it in the afternoon:
+  five stages (compose displacements; calculate with vectors in the plane;
+  justify the rules; magnitude; components and direction angle). The rules
+  stage covers all eight rules of a vector space, justified on displacements
+  in the plane and named "Vektorraum", without an abstract generalisation to
+  other examples. The transfer to forces and velocities is assessed in
+  Physics at the quantity concerned. Magnitude and angle get two short tasks
+  of SkillPilot's own, because no existing task closes them. A stage is a
+  regular target only where the Land's official text carries it, otherwise a
+  preparation where a Physics goal needs it, otherwise a voluntary offer,
+  which waits for the voluntary role. The catalog package follows the arrow
+  goal; nothing of it is in the catalog yet. Review:
+  `tmp/e1-handover/reviews/vector-ladder-node-review/` (working folder, not in
+  the repository).
+- **A role "voluntary offer" in the model (decided about 17:00 CET, "wie
+  empfohlen").** A goal or task in a view has two roles today, a regular
+  target (mandatory) and a preparation (no offer of its own). "Voluntary"
+  exists only for assessments of a declared unit with material, and only with
+  the unit pilot on. So the Hessian voluntary deepening of E.2 (decision of
+  25 November), the voluntary own offer of the second decision above, and a
+  target that only one branch or cohort of a Land carries cannot be expressed.
+  Decided: a third role for goals and tasks in a view. Such a goal is visible
+  at its place and marked as voluntary, the coach offers it as an option, and
+  it is never mandatory: it does not count for the scope of a section and is
+  not part of a learning plan unless the learner selects it; once selected it
+  is learned like any other goal, and its result is the learner's own
+  evidence. The role does not depend on the unit pilot. What only part of the
+  learners of a Land need is a voluntary offer in the common view until views
+  per branch exist. A stored plan follows the rule of 21 November 2026 for
+  E.1 when a mandatory task becomes voluntary: the plan is evaluated under
+  the current rule, the task leaves the due goals, the stored selection and
+  results stay, and an explicitly selected task stays in the plan. The role
+  is its own package through the composition-view contract (a new version, no
+  side file), the view generators, backend, Cockpit and the quality rules. It
+  starts with a survey of every reader of the two roles. Waiting for it: in
+  E.2 the goals for the weight components with sine and cosine and for
+  sticking and sliding with the normal force, with their tasks (reviewed,
+  held back as candidates on 26 November because no view carries them as a
+  regular target), the Hessian deepening check, and the voluntary status of
+  the mixed Grundkurs exam `22561c66`.
+- **An explicitly named subject can be chosen in chat also with AutoPilot
+  during an exam.** Today, with AutoPilot on and an exam that can be
+  evaluated in one subject, the coach publishes no other subject; if that
+  exam has no goal that can start, no learning step is possible in chat,
+  against the learning rule of 23 November. Decided: the subject the learner
+  names is published and can be started also then; "continue" without a
+  subject leads to the exam as before. Own backend package (issue #212,
+  third point). Not implemented yet.
+- **Plan blocks with several sections stay as they are (pull request #214).**
+  The opening of the outer unit comes first, then the opening of the goal's
+  own unit; a block with one section shows only the child's opening. A direct
+  entry into the child for a block with several sections is not wanted.
 
 ## Current execution mandate: stage plans and pedagogical repairs
 
@@ -2490,9 +2554,14 @@ The learning path of a subject holds prerequisites of other subjects, and
 they must not draw the exam of another subject into it
 (`getPersonalCurriculumSubjectFrontier`). Such a prerequisite is itself bound
 by the plan of its own subject, exactly as the write that starts it: the
-subject offers it only if it can be started. Unchanged: with AutoPilot on, an
-exam that can be evaluated binds the backend's choice, and other subjects are
-then not published as choices. Open: the focus that a former exam activation
+subject offers it only if it can be started. An exam that can be evaluated
+binds what "continue" starts, with and without AutoPilot. A subject the
+learner names is published and can be started in both cases (Product Owner,
+26 November 2026): AutoPilot decides who chooses the next goal, not whether
+another subject may be chosen. A subject whose next step is the goal
+already in progress is not published as a choice (for example a foundation of
+another subject that the first request for this subject started): a switch
+that changes nothing is refused, and the status must not offer it. Open: the focus that a former exam activation
 stored still bounds the ordinary frontier of a plan that became outdated,
 until the learner continues; resume and subject choice work. Telling such a
 focus from a chosen one needs stored provenance of the focus. The check costs
