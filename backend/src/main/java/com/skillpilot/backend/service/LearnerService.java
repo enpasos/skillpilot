@@ -5358,11 +5358,16 @@ public class LearnerService {
                 var blocks = LearnerLearningPlanService.effectivePlanBlocks(this, learner, plan.getLandscapeId(), captured);
                 // A plan that cannot be evaluated today defines no exam scope and leaves ordinary
                 // learning open; the plan status keeps reporting it (Product Owner, 26 November
-                // 2026, issue #205). Only an exam day can narrow learning, so only then is the
-                // complete compatibility of the stored plan decisive.
-                if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())
-                        || LearnerLearningPlanService.hasActiveExamDay(captured) && !isLearningPlanCompatible(
-                                learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
+                // 2026, issue #205). Two things narrow learning: an exam day, and a plan whose
+                // learning is all paused, which narrows it to nothing. For both the complete
+                // compatibility of the stored plan is decisive.
+                if (!Objects.equals(plan.getCurriculumId(), learner.getSelectedCurriculum())) {
+                    unavailablePlan = true;
+                    continue;
+                }
+                boolean examDay = LearnerLearningPlanService.hasActiveExamDay(captured);
+                if (examDay && !isLearningPlanCompatible(
+                        learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
                     unavailablePlan = true;
                     continue;
                 }
@@ -5374,7 +5379,12 @@ public class LearnerService {
                     hasExam = true;
                     scope.goalIds().stream().filter(projection.targetGoalIds()::contains).forEach(atoms::add);
                 } else if (!scope.goalIds().isEmpty() || blocks.stream().anyMatch(block ->
-                        block.unitAssignment() != null)) ordinaryLearning = true;
+                        block.unitAssignment() != null)) {
+                    ordinaryLearning = true;
+                } else if (!examDay && !isLearningPlanCompatible(
+                        learner.getSkillpilotId(), plan.getCurriculumId(), plan.getLandscapeId(), captured)) {
+                    unavailablePlan = true;
+                }
             } catch (ResponseStatusException exception) {
                 if (exception.getStatusCode().is5xxServerError()) throw exception;
                 unavailablePlan = true;

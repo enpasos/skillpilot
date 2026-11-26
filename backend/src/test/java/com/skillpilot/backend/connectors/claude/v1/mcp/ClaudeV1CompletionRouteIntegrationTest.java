@@ -2048,7 +2048,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
     // plan as outdated, and an exam day that can be evaluated binds learning to its topics as before.
     @ParameterizedTest
     @ValueSource(strings = {"courseChanged", "topicUnknown", "storedAsOutdated", "learningGoalUnknown",
-            "onlyPausedLearning"})
+            "onlyPausedLearning", "pausedWithUnknownGoalAndNoExamDay"})
     void planWithAnExamDayThatCannotBeEvaluatedLeavesOrdinaryLearningOpen(String cause) throws Exception {
         String section = selectHessianMotionUnit("G9", "SekII", "GK");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
@@ -2102,6 +2102,17 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 record.setCurriculumId(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
                 record.setBlocksJson(mapper.writeValueAsString(List.of(new LearnerLearningPlanApi.Block("section",
                         "learning", section, "E.1", monday, monday, null, required, List.of(section), false), examDay)));
+                storedPlans.saveAndFlush(record);
+            }
+            case "pausedWithUnknownGoalAndNoExamDay" -> {
+                // No exam day, the curriculum is unchanged, and all learning of the plan is paused: a
+                // pause narrows learning to nothing. The plan names a goal the scope of the learner
+                // does not know, so it cannot be evaluated and defines no pause either (found by the
+                // independent reviews of issue #216).
+                var unknown = new java.util.ArrayList<>(required);
+                unknown.add(UUID.randomUUID().toString());
+                record.setBlocksJson(mapper.writeValueAsString(List.of(new LearnerLearningPlanApi.Block("section",
+                        "learning", section, "E.1", monday, monday, null, unknown, List.of(section), false))));
                 storedPlans.saveAndFlush(record);
             }
             default -> {
