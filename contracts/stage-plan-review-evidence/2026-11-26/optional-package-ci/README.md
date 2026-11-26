@@ -32,3 +32,18 @@ Vier Gegenproben rufen den Compiler mit der tatsächlichen heutigen Mathematikqu
 Der positive Vergleich verwendet das heutige Transportprofil 1.3. Es trägt die Lern­einheiten im Landschaftsformat 1.2. Der Test vergleicht die Paketdateien ohne Einheit und mit einer injizierten Einheit einschließlich zweier Platzierungen, ruft den unabhängigen Validator auf und prüft die Variante mit ausdrücklich gebundener Bewertungsevidenz.
 
 Der hermetische Selbsttest braucht `/usr/bin/strace`, `/usr/bin/bwrap` und schreibgeschützte Systembibliotheken mit der erwarteten Eigentümer-ID. Im WSL-Host liegt strace außerhalb dieses Suchpfades. Der unveränderte Selbsttest lief deshalb in einer privaten, gegen die Ubuntu-Signatur geprüften Ubuntu-24.04.4-Umgebung mit den Distributionstools an ihren regulären Pfaden.
+
+## Lokaler Abschluss am 27. November 2026
+
+Beide unveränderten nativen Kommandos sind vollständig mit Exit 0 beendet. Die [portable Laufquittung](native-runs.json) bindet die exakten Eingänge, vollständigen externen Protokolle und die Herkunft der geprüften Ubuntu-Umgebung:
+
+| Kommando | Eingefrorener Implementierungsstand | Lokaler Lauf am 27. November, MEZ |
+|---|---|---|
+| `./run_ci.sh owl` | `98ada40237679d2102035f6a9f12ab1e7e32fd6a` | 00:07:36–00:19:10, `owl-rootfs-06` |
+| `./run_ci.sh package` | `bbf1363234c051877c782346a7de2fa5ececa081` | 00:09:19–00:46:55, `package-r0-04` |
+
+Die Eingänge beider Läufe blieben unverändert. Zwischen den beiden Ständen änderten sich ausschließlich der autorisierte Lern­einheiten-Test und dieses README; der OWL-Code blieb gleich. Beide Läufe nutzten `SKILLPILOT_SOURCE_PDF_MODE=committed-bindings` und eine private, verifizierte Ubuntu-Umgebung. Der vollständige OWL-Roundtrip einschließlich HermiT und der ursprünglichen hermetischen Selbsttests besteht.
+
+Der Paketlauf besteht die sechs ZIP-Prüfungen und alle 15 Konsumentenprüfungen. Der Vergleich ohne Einheit, mit einer injizierten Einheit und mit ihrer Bewertungsevidenz besteht einschließlich unabhängiger Validierung, 54 Gegenproben und der vier erwarteten Downgrade-Ablehnungen. Der tatsächliche Backendtest des installierten Pakets lief im selben Prozess ohne übersprungenen Test erfolgreich; der vorgeschriebene abschließende Gradle-Aufruf bestätigte anschließend den aktuellen Teststand mit `UP-TO-DATE`.
+
+Das ist der lokale technische Abschluss. Integration und frische CI auf `main` bleiben offen. Die Auslösung der drei optionalen Jobs auf relevanten, nicht mehr als Entwurf markierten Pull Requests wird als getrennter letzter Workflow-Commit zur Entscheidung übergeben.
