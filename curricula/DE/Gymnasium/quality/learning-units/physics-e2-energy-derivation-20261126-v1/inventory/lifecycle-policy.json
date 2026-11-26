@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "284063239db536f4b765d700db3a39a357fd7f12",
+  "dossier": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1",
+  "bootstrapNames": ["README.md", "lifecycle-policy.json", "verify-lifecycle.py", "verify-native-values.mts", "reproduce-seed-inputs.py", "record-lifecycle.actual.json", "path-bindings.actual.jsonl", "digest-contracts.actual.jsonl"],
+  "externalRoots": {
+    "mReview": {"include": ["**/*"], "meaning": "Retained accepted M review, primary-source captures, pinned diagnostic inputs and raw route replay; the accepted six original records are also explicitly bound by basis-m."},
+    "nScratch": {"include": ["fresh-blind/**/*", "blind-v3/**/*", "blind-v4/**/*", "map-*.json", "energy-provider.png", "energy-provider-v2.png", "energy.jpg", "final-mobile.jpg", "v2-360.png", "v2-720.png", "seed.py"], "meaning": "Retained N raw maps, isolated initial/v3/v4 review packets, provider/image passes and exact initial seed source. Logs and environment are outside this evidence inventory."},
+    "seedRecovery": {"include": ["**/*.json"], "meaning": "Exact historical v1 source bytes reconstructed from the baseline and pinned seed.py; their hashes match the original whole-review-inputs.v1 bindings."},
+    "nativePages": {"include": ["*.png"], "meaning": "Native PDF pages viewed in the route context confirmation."},
+    "nativePagesV4": {"include": ["*.png"], "meaning": "Native v4 PDF pages viewed for the final context confirmation."},
+    "routeImages": {"include": ["*.png"], "meaning": "360 px image captures viewed in the independent route review."}
+  },
+  "optionalExternalRoots": {
+    "finalCI": {"include": ["**/*.json", "**/*.xml", "**/*.md"], "meaning": "Retained final CI machine summaries and review receipts; optional until the terminal run exists."}
+  },
+  "nativeValueOrigins": [
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "location": {"root": "repo", "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/semantic-kind-order-only-v1/prior-ledger.json"},
+      "meaning": "Exact pre-order ledger body retained by the order-only successor; old book digests bind its parsed value, not raw bytes."
+    },
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "commit": "70e68b2b41",
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "meaning": "Exact committed pre-order image ledger; old book digests bind its parsed value, not raw bytes."
+    }
+  ],
+  "earlierRecords": {
+    "goal-reviews/goal-book.config.json": {"successor": "goal-reviews/goal-book.current-v3.config.json", "epoch": "initial review-book configuration before separately source-bound v3 and v4 configurations"},
+    "goal-reviews/description-batch.config.json": {"successor": "goal-reviews/description-batch-current-v3.config.json", "epoch": "initial description-batch configuration before source-bound v3 and v4 campaigns"},
+    "goal-reviews/round-a-neutral-input.actual.json": {"successor": "goal-reviews/round-a-neutral-input.v3.actual.json", "epoch": "initial isolated neutral reviewer-input receipt before the separately sealed v3 context"},
+    "goal-reviews/round-a-neutral-input.v3.actual.json": {"successor": "goal-reviews/round-a-neutral-input.v4.actual.json", "epoch": "v3 isolated neutral reviewer-input receipt before the documented v4 single-brief successor"},
+    "routes/applicability/accepted-warnings.predecessor.json": {"successor": "routes/applicability/current-offer.after.actual.json", "epoch": "exact acceptance registry before the three individually reviewed N jurisdiction warnings; after measurement verifies retained entries and new warning keys"},
+    "routes/applicability/current-offer.before.actual.json": {"successor": "routes/applicability/current-offer.after.actual.json", "epoch": "pre-acceptance current-offer measurement; after measurement must retain the same fourteen offers and resolve only the three reviewed N warnings"},
+    "consumers/foreign-math-recheck.actual.json": {"successor": "consumers/foreign-math-label-successor.actual.json", "epoch": "raw Mathematics witness measurement retained before correction of the explanatory a6469c01 label; identities, edges and policy pins are preserved"},
+    "consumers/national-atlas-current-sources.actual.json": {"successor": "consumers/national-atlas-ordered-current-sources.actual.json", "epoch": "first N atlas input snapshot before native semantic ledger order repair"},
+    "consumers/national-atlas-ordered-current-sources.actual.json": {"successor": "consumers/national-atlas-final-current-sources.actual.json", "epoch": "ordered intermediate atlas snapshot before final Wagen decisionBasis label-only correction"},
+    "consumers/checks.actual.json": {"successor": "goal-reviews/physics-deep-understanding-current-v4.actual.json", "epoch": "pre-activation consumer checklist; its pending Physics atomicity admission is superseded by the successful current Physics report, while terminal workflow evidence remains separate"},
+    "goal-reviews/activation-current-v4.actual.json": {"successor": "goal-reviews/activation-current-v4.final.actual.json", "epoch": "initial activation before native withdrawal/current-owner reconciliation; actual corrected activation retained separately"},
+    "goal-reviews/deep-understanding-current-v4.actual.json": {"successor": "goal-reviews/native-quality-results.current-v4.actual.json", "epoch": "preliminary full-subject report with 13 Physics blockers and 487/494 strict goals; actual native-results successor explicitly retains the failure and binds the separate 0-blocker Physics 494/494 report, without claiming a new full-domain run"},
+    "goal-reviews/activation-inputs/deep-understanding.config.before.json": {"successor": "goal-reviews/activation-current-v4.actual.json", "epoch": "exact pre-activation deep-understanding configuration input"},
+    "goal-reviews/activation-inputs/atomicity.before.jsonl": {"successor": "goal-reviews/activation-current-v4.final.actual.json", "epoch": "exact pre-activation atomicity review input"},
+    "goal-reviews/activation-inputs/memory-goals.before.jsonl": {"successor": "goal-reviews/activation-current-v4.final.actual.json", "epoch": "exact pre-activation memory-goal review input"},
+    "goal-reviews/activation-inputs/memory-cards.before.jsonl": {"successor": "goal-reviews/activation-current-v4.final.actual.json", "epoch": "exact pre-activation memory-card review input"},
+    "goal-reviews/withdrawal-current-owner-successor-v1/prior-active-config.json": {"successor": "goal-reviews/withdrawal-current-owner-successor-v1/successor.actual.json", "epoch": "exact unsuccessful initial active configuration before native withdrawal/current-owner repair; historical withdrawal and index remain unchanged"},
+    "goal-reviews/semantic-kind-order-only-v1/prior-ledger.json": {"successor": "goal-reviews/semantic-kind-order-only-v1/receipt.actual.json", "epoch": "exact semantic ledger before native canonical-order-only sorting"},
+    "goal-reviews/semantic-kind-order-only-v1/receipt.actual.json": {"successor": "goal-reviews/semantic-kind-basis-label-successor-v1/receipt.actual.json", "epoch": "successful order-only step before Wagen decisionBasis label-only successor; its exact output survives as that successor's prior-ledger"},
+    "goal-reviews/semantic-kind-basis-label-successor-v1/prior-ledger.json": {"successor": "goal-reviews/semantic-kind-basis-label-successor-v1/receipt.actual.json", "epoch": "exact ordered semantic ledger before single Wagen decisionBasis label correction"},
+    "goal-reviews/prior-active-p-inputs.json": {"successor": "goal-reviews/positive-evidence.current-v3.review.jsonl", "epoch": "retained pre-N active P inputs; current N contexts have separately fingerprinted profiles"},
+    "goal-reviews/positive-evidence.candidates.v3.json": {"successor": "goal-reviews/positive-evidence.candidates.v4.json", "epoch": "v3 retained before the exact single-brief scientific delta recorded in p-v3-v4-single-brief-delta.actual.json"},
+    "goal-reviews/positive-evidence.current-v3.review.jsonl": {"successor": "goal-reviews/positive-evidence.current-v4.review.jsonl", "epoch": "retained v3 profile envelope before one conservative-field application brief changed in v4"},
+    "goal-reviews/positive-evidence.current-v3.config.json": {"successor": "goal-reviews/positive-evidence.current-v4.config.json", "epoch": "configuration of retained v3 envelope"},
+    "goal-reviews/goal-book.current-v3.config.json": {"successor": "goal-reviews/goal-book.current-v4.config.json", "epoch": "native book configuration of retained v3 context"},
+    "goal-reviews/description-batch-current-v3.config.json": {"successor": "goal-reviews/description-batch-current-v4.config.json", "epoch": "description campaign configuration of retained v3 context"},
+    "goal-reviews/description-review-join.current-v3.json": {"successor": "goal-reviews/description-review-join.current-v4.json", "epoch": "description metadata join before current v4 campaign"},
+    "goal-reviews/whole-review-inputs.current-v3.json": {"successor": "goal-reviews/description-batch-current-v4/bundle/book-model.json", "epoch": "v3 whole-context packet before the documented v4 single-brief delta"},
+    "goal-reviews/author-goal-review.v3.actual.json": {"successor": "goal-reviews/author-goal-review.v4.actual.json", "epoch": "independent v3 scientific response retained before the conservative-field brief changed; v4 has its separately retained actual response"},
+    "goal-reviews/author-native-context-confirmation.v3.actual.json": {"successor": "goal-reviews/author-native-context-confirmation.v4.actual.json", "epoch": "independent v3 native context confirmation; actual v4 confirmation retained separately"},
+    "goal-reviews/root-p-review.v2.actual.json": {"successor": "goal-reviews/author-goal-review.v4.actual.json", "epoch": "refined early candidate review before the later conservative-field brief correction; current v4 scientific context reviewed separately"},
+    "goal-reviews/author-goal-review.actual.json": {"successor": "goal-reviews/author-goal-review.v3.actual.json", "epoch": "initial isolated independent response before current-context v3 refresh"},
+    "goal-reviews/informed-current-review.actual.json": {"successor": "goal-reviews/author-goal-review.v4.actual.json", "epoch": "informed early correction response; final scientific/card context independently reviewed in v4"},
+    "goal-reviews/route-review.actual.json": {"successor": "goal-reviews/route-native-context-confirmation.actual.json", "epoch": "initial route-side content response before native context confirmation"},
+    "goal-reviews/route-native-context-confirmation.actual.json": {"successor": "goal-reviews/route-native-context-confirmation.v4.actual.json", "epoch": "early native context response retained before actual v4 route-side native confirmation"},
+    "goal-reviews/positive-evidence.candidates.json": {"successor": "goal-reviews/positive-evidence.candidates.v2.json", "epoch": "initial author candidate before signed-axis and graph-notation refinement"},
+    "goal-reviews/positive-evidence.candidates.v2.json": {"successor": "goal-reviews/positive-evidence.candidates.final.json", "epoch": "second author candidate; retained before final author review synthesis"},
+    "goal-reviews/positive-evidence.candidates.final.json": {"successor": "goal-reviews/positive-evidence.candidates.v3.json", "epoch": "final-named author candidate before current v3 source-context refresh"},
+    "goal-reviews/positive-evidence.initial-author.review.jsonl": {"successor": "goal-reviews/positive-evidence.current-v3.review.jsonl", "epoch": "initial author profiles; no independent release or human approval implied"},
+    "goal-reviews/positive-evidence.review.jsonl": {"successor": "goal-reviews/positive-evidence.current-v3.review.jsonl", "epoch": "N v1 P envelope; current v3 retains separately bound source context"},
+    "goal-reviews/positive-evidence.config.json": {"successor": "goal-reviews/positive-evidence.current-v3.config.json", "epoch": "configuration of retained N v1 profile envelope"},
+    "goal-reviews/root-p-review.actual.json": {"successor": "goal-reviews/root-p-review.v2.actual.json", "epoch": "first independent profile response; actual refined-candidate response retained separately"},
+    "goal-reviews/whole-review-inputs.v1.json": {"successor": "goal-reviews/whole-review-inputs.v2.json", "epoch": "first whole-context packet before final image, task and source-route additions"},
+    "goal-reviews/whole-review-inputs.v2.json": {"successor": "goal-reviews/description-batch-current-v3/bundle/book-model.json", "epoch": "whole v2 context retained before current v3 evidence envelope and native book context"},
+    "routes/hessen-mapping-predecessor.review.json": {"successor": "routes/source-decisions.actual.json", "epoch": "explicitly retained preceding Hessen mapping review; current mapping bound by source decisions"}
+  },
+  "earlierPrefixes": {
+    "goal-reviews/description-batch/": {"successorPrefix": "goal-reviews/description-batch-current-v3/", "epoch": "retained first native description campaign; current v3 campaign has its own source-bound model and inputs"},
+    "goal-reviews/description-batch-current-v3/": {"successorPrefix": "goal-reviews/description-batch-current-v4/", "epoch": "retained v3 native campaign before the documented conservative-field application-brief change"}
+  },
+  "semanticPathLabels": ["sealed-native-review-input-fingerprint"],
+  "boundaries": ["Record integrity does not grant scientific approval, human approval, publication or learner mastery.", "A scoped/native value digest is never tested as though it asserted raw file bytes.", "Earlier records and provider-rejected images are preserved; actual successors describe later evidence without rewriting earlier votes.", "The unbound seven-object semantic working draft was overwritten before sealing, as disclosed in semantic-review-draft-lifecycle.actual.json; no recovered immutable original is claimed."]
+}
