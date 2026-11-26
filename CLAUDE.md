@@ -133,10 +133,16 @@ text, image, card and task that draws or reads such an arrow follows the
 criterion: the arrow starts at its body or point, its length has its own scale
 in the unit of the quantity (named in a legend), its tip marks no place, and
 only arrows of the same quantity with the same reference (the same body, the
-same point of a field or the same named system) are added. An explicit early
-Physics goal and the catalog changes follow
-`docs/dev/directed-quantity-arrows-plan-2026-11-25.md`; nothing of them is in
-the catalog yet. See the product decision at the top of `AGENTS.md`.
+same point of a field or the same named system) are added. The explicit early
+Physics goal "Pfeile für gerichtete Größen lesen und zeichnen" (`b77a7e93`)
+with its closing task is in the catalog since 26 November 2026: a regular
+target in 45 views (14 Länder and three national views), SkillPilot's own
+preparation in the other 45 (Hesse, Baden-Württemberg and every view that
+holds only the upper stage), required directly by four goals and fourteen
+tasks. The texts of the other goals that introduce a new kind of arrow and 88
+open images follow in package A3 of
+`docs/dev/directed-quantity-arrows-plan-2026-11-25.md`. See the product
+decision at the top of `AGENTS.md`.
 
 **Product Owner decisions of 24 November 2026.** A stored plan that still
 names a retired goal (an atomic goal marked

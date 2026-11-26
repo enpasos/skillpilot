@@ -137,8 +137,11 @@ Daneben laufen unabhängig die Neuextraktion der Physikquellen und
 | Paket | Stand am 25. November 2026 |
 |---|---|
 | A0 | In Kraft. Angewandt auf die fünf Bilder und zwei Aufgaben von E.2, Schritt 2, Teil 1; alle fünf Bilder sind angenommen, die beiden Aufgaben rechnen mit Vorzeichen und zeigen keine Pfeile. |
-| A1 | Beauftragt am 25. November; Teil 1 ist übergeben, die Knotenprüfung läuft. |
-| A2 bis A5 | Nicht begonnen. |
+| A1 | Abgeschlossen am 26. November: Knotenprüfung und Zuschnitt in Abschnitt 8. |
+| A2 | Im Katalog seit dem 26. November 2026: das Lernziel „Pfeile für gerichtete Größen lesen und zeichnen“ (`b77a7e93`) mit seiner Abschlussaufgabe (`2569d84a`, vier Teile zu je vier Punkten, bestanden ab 13,5 von 16), 18 direkte Voraussetzungen aus vier Lernzielen und vierzehn Aufgaben, die Kennzeichnung im Semantiknachweis (26 Ziele und Aufgaben) und das Bildkriterium in der Bild-QA. Reguläres Ziel in 45 Sichten (14 Länder und drei nationale Sichten), eigene Vorbereitung in den anderen 45 (Hessen, Baden-Württemberg und alle reinen Oberstufensichten). Die Texte des Feldziels `4ca83b3f` und des Videoziels `d61ea362` sind vorgezogen. Das Bild zu Newtons drittem Axiom ist neu. |
+| A3 | Nicht begonnen. Die Bild-QA führt 101 offene Fälle, darunter die 88 für A3 vorgemerkten Bilder. Anmerkung aus der Übernahme: Das neue Bild und eine vorhandene Karte nennen Kraft und Gegenkraft „Kräftepaar“; das Wort bezeichnet sonst zwei Kräfte am selben Körper mit Drehwirkung und ist in A3a zu klären. |
+| A4 | Nicht begonnen. Die Knotenprüfung der Vektor-Leiter liegt dem Product Owner vor. |
+| A5 | Die Regel für neue Bilder und Aufgaben ist mit A2 in der Bild-QA und im Semantiknachweis verankert; die Ausweitung auf den Bestand folgt mit A3. |
 
 ## 7. Regeln und Risiken
 

@@ -28,6 +28,8 @@ Geprüft wurde `096a54ceb1` mit den beiden Proben, die zuvor scheiterten. [Beric
 | Zwei Fächer, Autopilot an | Bestanden nach der geltenden Regel: Die Physik bietet dieselben Ziele wie ohne „Plänen folgen“, wird aber nicht zur Wahl angeboten. | – |
 | Zwei Fächer, Autopilot aus | Die Physik wird angeboten, der veröffentlichte Fachwechsel aber abgelehnt; kein Ziel startet. Gewählt wurde als erstes Ziel die Mathematik-Voraussetzung „Warum Mathematik?“, die außerhalb der Mathematik-Klausur liegt. | Korrigiert. Die Physik bietet eine Voraussetzung eines anderen Fachs nur an, wenn der Plan dieses Fachs sie zulässt. Der eigene Test verwendet jetzt ein Klausurthema außerhalb des Physik-Lernwegs; zuvor war es zufällig genau diese Voraussetzung. |
 
+Die Korrektur des Fachwechsels hat Codex auf `fbcb7b092e` mit derselben Probe und demselben Klausurthema bestätigt: Der angebotene Wechsel zur Physik startet das Physik-Lernziel „Bewegungen entdecken: vom Tisch bis zum Boden“, die Zustandsversion steigt von 3 auf 4. [Zweiter Bericht](confirmation-fbcb7b092e/confirmation-2.md)
+
 Der Erstbericht nannte für den Fall mit der pausierten Lernzeit den Status 409. Der Bestätigungslauf stellt klar, dass der damalige Lauf nur den Fehler des Aufrufs belegt, keinen Zahlenwert.
 
 Bestätigt hat die Gegenprüfung: Die Regel stimmt an den geprüften Einzelstellen. Bewertung, Anrechnung, Planerfüllung und Lernergebnisse sind nicht berührt. Ein Fehler der Zielauflösung markiert die Transaktion der aufrufenden Stelle nicht als gescheitert. Mit Autopilot und einer auswertbaren Klausur bietet der Coach wie bisher kein anderes Fach zur Wahl an; das ist die bestehende Regel für auswertbare Klausuren und nicht Teil dieser Änderung.

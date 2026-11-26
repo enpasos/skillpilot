@@ -96,9 +96,30 @@ images, cards and tasks; and the bridge in Mathematics, where a displacement
 arrow is the special case in which arrow scale and picture scale coincide.
 The criterion applies at once to new and revised material. The catalog changes
 follow the packages A1 to A5 of the
-[plan](docs/dev/directed-quantity-arrows-plan-2026-11-25.md); nothing of them
-is in the catalog yet. All 90 Physics views hold at least one goal that uses
-arrows, so the new goal reaches every view.
+[plan](docs/dev/directed-quantity-arrows-plan-2026-11-25.md). All 90 Physics
+views hold at least one goal that uses arrows, so the new goal reaches every
+view.
+
+In the catalog since 26 November 2026 (package A2): the goal "Pfeile für
+gerichtete Größen lesen und zeichnen" (`b77a7e93`). It requires only the
+Physics orientation `5c44b9ba` and no Mathematics goal. Its closing task
+`2569d84a` has four parts of four points (carrier, direction, magnitude with
+its own arrow scale, meaning of the tip) and is passed from 13.5 of 16. Four
+curricular goals and fourteen tasks require the goal directly (18 edges);
+24 users reach it. It is a regular target with its task in 45 views (the
+lower-stage and cross-stage views of 14 Länder and three national views) and
+SkillPilot's own preparation in the other 45: all views of Hesse and
+Baden-Württemberg, where no official lower-stage text carries it, and every
+view that holds only the upper stage. The semantic-kind ledger (schema v2)
+marks every goal and task that reads or draws such arrows (26 today), and the
+image QA applies the criterion: an image of such a goal is accepted only with
+the arrow at its carrier and a named arrow scale. The texts of the
+field-superposition goal `4ca83b3f` (the same named point of the field) and of
+the video goal `d61ea362` (the velocity arrow at the body, the difference
+construction set apart) were taken forward. Open: A3, the texts of the other
+goals that introduce a new kind of arrow and the 88 existing images the image
+QA lists as open, and A4, the Mathematics ladder. Record:
+`curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/`.
 
 ## Product decisions of 26 November 2026
 
