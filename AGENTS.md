@@ -2558,7 +2558,10 @@ subject offers it only if it can be started. An exam that can be evaluated
 binds what "continue" starts, with and without AutoPilot. A subject the
 learner names is published and can be started in both cases (Product Owner,
 26 November 2026): AutoPilot decides who chooses the next goal, not whether
-another subject may be chosen. Open: the focus that a former exam activation
+another subject may be chosen. A subject whose next step is the goal
+already in progress is not published as a choice (for example a foundation of
+another subject that the first request for this subject started): a switch
+that changes nothing is refused, and the status must not offer it. Open: the focus that a former exam activation
 stored still bounds the ordinary frontier of a plan that became outdated,
 until the learner continues; resume and subject choice work. Telling such a
 focus from a chosen one needs stored provenance of the focus. The check costs

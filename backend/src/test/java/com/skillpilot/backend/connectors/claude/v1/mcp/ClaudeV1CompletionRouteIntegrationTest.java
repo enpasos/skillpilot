@@ -2221,8 +2221,10 @@ class ClaudeV1CompletionRouteIntegrationTest {
     // exam as before. Before, AutoPilot published no other subject while an exam was bound, and an
     // exam whose topic cannot start yet left no learning step in chat at all.
     @ParameterizedTest
-    @CsvSource({"false,true", "true,true", "false,false", "true,false"})
-    void aNamedSubjectCanBeChosenDuringAnExamAlsoWithAutoPilot(boolean autoPilot, boolean examCanStart) throws Exception {
+    @CsvSource({"false,true,resume", "true,true,resume", "false,true,nameTwice", "true,true,nameTwice",
+            "false,false,name", "true,false,name"})
+    void aNamedSubjectCanBeChosenDuringAnExamAlsoWithAutoPilot(boolean autoPilot, boolean examCanStart, String action)
+            throws Exception {
         selectHessianMotionUnit("G9", "SekII", "GK");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
         Learner learner = learnerRepository.findById(learnerId).orElseThrow();
@@ -2261,9 +2263,22 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 .findFirst().orElseThrow();
         assertThat(mathEntry.get("evaluable")).isEqualTo(true);
         assertThat(physicsEntry.get("canContinue")).as("the named subject is published").isEqualTo(true);
-        if (examCanStart) {
+        if (action.equals("resume")) {
             successful(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN, writeArgs("resume-exam", version(), Map.of()));
             assertThat(learners.getLearner(learnerId).getActiveGoalId()).as("continue leads to the exam").isEqualTo(mathGoal);
+        } else if (action.equals("nameTwice")) {
+            // The Physics path starts with a Mathematics foundation, which the running exam admits.
+            // While that step is running, Physics has nothing to switch to and is no longer offered
+            // as a choice. Before, it stayed offered, and the repeated request was refused.
+            successful(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
+                    writeArgs("named-physics-first", version(), Map.of("subject", physicsEntry.get("subject"))));
+            String started = learners.getLearner(learnerId).getActiveGoalId();
+            assertThat(started).isEqualTo(physicsOpen.getFirst());
+            assertThat(landscapeDefinitions.getLandscapeIdForGoal(started)).as("a foundation of another subject").isEqualTo(MATH);
+            var after = ((List<?>) map(context(), "learningPlanToday").get("subjects")).stream().map(Map.class::cast).toList();
+            assertThat(after.stream().filter(entry -> entry.get("subject").toString().startsWith("Physik")))
+                    .allSatisfy(entry -> assertThat(entry.get("canContinue")).as("nothing to switch to").isEqualTo(false));
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(started);
         } else {
             // The exam offers no step; the named subject does.
             successful(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,

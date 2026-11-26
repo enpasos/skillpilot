@@ -464,7 +464,13 @@ public class LearnerLearningPlanService {
                         }
                         aggregate.addLandscape(landscapeId);
                     }
-                    if (aggregate != null) aggregate.allowContinuation();
+                    // The step the subject would start may already be running, for example a
+                    // foundation of another subject that a first request for this subject started.
+                    // Then there is nothing to switch to: offering the subject would let the coach
+                    // request a switch that changes nothing, and that is refused.
+                    boolean alreadyRunning = activeGoalInProgress
+                            && activeGoalId.equals(personalGoal.get().atomicGoalId());
+                    if (aggregate != null && !alreadyRunning) aggregate.allowContinuation();
                 }
                 if (aggregate != null && activeGoalInProgress
                         && landscapeId.equals(landscapeService.getLandscapeIdForGoal(activeGoalId))) {
