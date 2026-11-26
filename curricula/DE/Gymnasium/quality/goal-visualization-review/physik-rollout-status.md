@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-26T16:05:19.889Z
+Generated: 2026-11-26T19:35:28.531Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -24,7 +24,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 103 |
+| Review-Ledger-Dateien | 104 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
@@ -65,7 +65,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | `accepted_pilot_after_regeneration_and_owner_review` | 3 |
 | `accepted_pilot_after_second_regeneration` | 24 |
 | `accepted_pilot_after_third_regeneration` | 3 |
-| `accepted_pilot_after_user_review_correction` | 16 |
+| `accepted_pilot_after_user_review_correction` | 18 |
 | `accepted_retroactive_nano_banana` | 22 |
 | `accepted_reuse_after_current_visual_review` | 3 |
 | `blocked_provider_quota` | 1 |
@@ -78,7 +78,7 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-w1-forces-2026-11-26.md` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-w1-forces-label-positions-2026-11-26.md` |
 | Latest ledger status | - |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
@@ -129,6 +129,8 @@ Keine Eintraege.
 | 091 | `91683676-01cf-5003-80fa-a04d043b4e61` | Spektren mit Beugungsgitter deuten | `accepted_pilot_after_user_review_correction` |
 | 091 | `f6a3a602-1e45-5018-b0ff-3d49933cf634` | Beugung am Einzelspalt berechnen | `accepted_pilot_after_user_review_correction` |
 | 092 | `d9a6ea85-f7e8-5cbd-afe9-62596e22040d` | Fall leichter und schwerer Körper vergleichen | `accepted_pilot_after_user_review_correction` |
+| physik-w1-forces-label-positions-2026-11-26 | `30ddb2d7-b991-55fe-9e74-37ffe1048f9f` | Geradlinige Bewegung mit Reibung modellieren | `accepted_pilot_after_user_review_correction` |
+| physik-w1-forces-label-positions-2026-11-26 | `e2da5eec-45de-5527-9ad7-16f41cacbe58` | Kurvenfahrten mit Haftreibung analysieren | `accepted_pilot_after_user_review_correction` |
 
 ## Review/Link Consistency
 

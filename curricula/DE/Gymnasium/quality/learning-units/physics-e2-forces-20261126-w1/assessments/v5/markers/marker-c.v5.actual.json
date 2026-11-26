@@ -1,0 +1,337 @@
+{
+  "marker": "C",
+  "isolation": {
+    "independent": true,
+    "authoringRole": false,
+    "scope": "Read only the eight files listed below inside the blind packet. No author-private material, expectations, prior markings, other reviewers, source tree, parent directories or sibling directories were inspected. Only the assigned result is written.",
+    "languagesMarked": "German and English responses read and marked independently; their demonstrated evidence and resulting scores are equivalent in every pair.",
+    "linkedIllustrationActuallyInspected": "drawings/KB-response.png",
+    "sourceSha256": {
+      "instructions.md": "fbbcec7d76372c46ac87ad43d3014647a1d0599eea8cfc8e71e6975915c68d43",
+      "kb.v5.md": "2142b494daca0593a8f029475254e4fd90bc44e5adf4b6756c5661ba7ef4f47f",
+      "kb.candidate.goal.json": "ff8501def52a7b339ae58f0854be25ac3bc7cc8b4a1ff7883d7aebe56f840415",
+      "goal-B.json": "26c4f9f57db6bcfc06c3fefa94cecc3d26aa3e97c86f081d8d188370cbb81fe0",
+      "knowledge-before-B.txt": "7b7f6c554c35616d8f83ccafe00f5a8837d26c482c4a3cf0be5674a2a57ab2ea",
+      "knowledge-before-KB.txt": "adccfca6c26b518d11843e0ba36274ce929ad79350da3604d9d32ca7a4512fba",
+      "scripts.json": "7bdacb18a01606507bb8faefd54004fdbac1410da1338a9d71fc050688a32864",
+      "drawings/KB-response.png": "4f6b24cd10db94d24e120bd717ece8508e1c20791f39ca5c9f84968510e165e5"
+    }
+  },
+  "rubricAccepted": true,
+  "bilingualAccepted": true,
+  "standaloneCoverageAccepted": true,
+  "concerns": [],
+  "assessmentVerdict": {
+    "decision": "accept for this KB v5 assessment scope",
+    "actualRubric": "Four blocks of five points, four core points and one independent supplement in each, total 20, pass at 17, no additional pass condition. Explicit A cap and maintained B-core misconception rule are applied rather than bypassed through generic partial credit.",
+    "taskSolutionRubricConsistency": "kb.v5.md and kb.candidate.goal.json give the same task, solutions and scoring substance. The solution values and qualitative motion interpretations are correct in both languages.",
+    "bilingualEquivalence": "The DE/EN versions preserve object ownership, force directions and values, axes, ground reference, independence of the trials, the supplied motion rule, scoring caps and pass threshold. No material translation difference changes any mark.",
+    "sameBodyScope": "A explicitly separates three external forces on the cart from the equal opposite force on the coupling. B balances only those cart forces. C is another trial and D is an independent second cart, so calculations for one are not used to fill missing evidence for another.",
+    "independentBSupplement": "The force-arrow-length explanation can be answered from the scale in A and the secured arrow/force-scale knowledge identified in goal-B.json and the knowledge-context files, without calculating the zero resultant in B. The force arrow represents a force magnitude, not displacement or a place; the same three forces can be drawn in different motion states. A number such as 0 N alone establishes none of these semantic distinctions.",
+    "missingCoreAndCrossBlockEvidence": "Relevant evidence is considered across the complete response. KB-02 therefore receives exactly A=1 from the explicit rule for correct signed cart terms elsewhere, with no invented object assignments. KB-03 contains only a signed force list in A and the arrow-length supplement in B, not an executed signed summation, a zero result or two motion states justified from that result; B=1. KB-04 and KB-05 retain only their independent supplements in the omitted case-specific blocks.",
+    "maintainedMisconception": "KB-07 explicitly maintains zero-sum-implies-rest and receives B core=0 under the actual rule. Its independent force-arrow explanation still earns one point. KB-08 has a wrong arrow-distance interpretation but the actual rubric allocates that to the independent supplementary point, leaving B core=4 and total=19; no unannounced pass veto is added.",
+    "isolatedSlips": "In KB-06 independently correct modelling supports treating m/s at the B sum and Nm at the C sum as two separate minor unit errors, costing 0.5 each once at their respective origins.",
+    "illustration": "The actual PNG shows three collinear arrows starting at the marked cart point, with one rightward arrow and two distinct leftward tips. Relative to its labelled 1-cm reference, lengths are 3 cm right and 1 cm/2 cm left. It names the force scale 1 cm represents 150 N. The tips are free and do not identify other objects. The labelled reference allows the digital proportions to be assessed without using screen centimetres.",
+    "knowledgeBoundaryAndCoverage": "The assessment covers the selected-body force balance, sign choice, nonzero resultant magnitude/direction, zero-force rest/constant-motion explanation and force-arrow drawing/scale in goal-B.json. C and D apply the qualitative velocity-change rule supplied directly in the task to known initial velocities and different axes. No acceleration calculation, mass, elapsed time or Newton-II formula is needed. The distinct slowing and speeding-up trials provide genuine transfer evidence.",
+    "overallMarks": "In both languages: KB-01 20 pass; KB-02 16 fail; KB-03 16 fail; KB-04 16 fail; KB-05 16 fail; KB-06 19 pass; KB-07 16 fail; KB-08 19 pass."
+  },
+  "cases": [
+    {
+      "id": "KB-01",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "reason": {
+        "de": {
+          "A": "5/5: Alle vier Kräfte sind ausdrücklich ihren Körpern zugeordnet (2 P). Die drei Wagenkräfte tragen die richtigen Vorzeichen (1,5 P); die Gegenkraft auf die Kupplung ist ausdrücklich ausgeschlossen (0,5 P). Die tatsächlich verknüpfte Zeichnung zeigt den gemeinsamen Ansatz am Wagen, die richtigen Richtungen, freie Spitzen sowie die Längen 3/1/2 cm mit eigenem Kraftmaßstab und 1-cm-Referenz (1 P).",
+          "B": "5/5: Vollständiger Ansatz +450−150−300 (1 P), Ergebnis 0 N (1 P), Ruhe und geradlinig konstante Fahrt jeweils mit ausbleibender Geschwindigkeitsänderung bei dieser Nullsumme begründet (je 1 P). Die Pfeillänge wird unabhängig davon als Kraftbetrag nach eigenem Kraftmaßstab und ausdrücklich nicht als räumliche Strecke oder Ort erklärt (1 P).",
+          "C": "5/5: Richtige Terme +360, −120, −420 N (1 P), vollständige Summe −180 N (1 P), Betrag 180 N nach links (1 P). Die nach links gerichtete Resultierende ist zusammen mit v=+6 m/s und dem anfänglichen Kleinerwerden der Geschwindigkeit/Bremsen angegeben; diese zusammenhängende Deutung enthält die erforderliche entgegengerichtete Geschwindigkeitsänderung (1 P). Die Kraftsumme bestimmt eine Änderung und nicht den Anfangswert (1 P).",
+          "D": "5/5: Für den eigenen zweiten Wagen bei links positiver Achse stehen +210, −90, −30 N (1 P), die vollständige Summe +90 N (1 P), Betrag 90 N nach links (1 P) sowie v=+2 m/s und anfängliches Schnellerwerden mit der Begründung, dass Bewegung und Geschwindigkeitsänderung nach links weisen (1 P). Wirkliche Kräfte bleiben bei Achsenwechsel unverändert (1 P)."
+        },
+        "en": {
+          "A": "5/5: Each of the four forces is explicitly assigned to its object (2 points). All three cart terms have the correct signs (1.5); the force on the coupling is explicitly excluded (0.5). The actual linked drawing has a common cart origin, correct directions and free tips, and lengths 3/1/2 cm with its own force scale and a 1-cm reference (1).",
+          "B": "5/5: Complete signed sum +450−150−300 (1), result 0 N (1), and both rest and straight constant motion are justified by the absence of velocity change for this zero sum (1 each). Independently, arrow length represents force magnitude by its own force scale, expressly not a spatial distance or place (1).",
+          "C": "5/5: Correct terms +360, −120, −420 N (1), complete sum −180 N (1), magnitude 180 N left (1). The leftward resultant is stated together with v=+6 m/s and the initial decrease in velocity/braking; this integrated directional interpretation supplies the required oppositely directed velocity change (1). The force sum determines a change, not the initial velocity (1).",
+          "D": "5/5: For the independent second cart with left positive, the response gives +210, −90, −30 N (1), the complete sum +90 N (1), magnitude 90 N left (1), and v=+2 m/s with initial speeding up justified by motion and velocity change both pointing left (1). Actual forces are unchanged by reversing the axis (1)."
+        }
+      }
+    },
+    {
+      "id": "KB-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": {
+        "de": {
+          "A": "1/5 nach der ausdrücklichen Sonderregel: Unter A fehlen Antwort und Zeichnung. In B stehen die drei richtigen vorzeichenbehafteten Wagenkraftterme. Diese sichtbaren Nachweise zählen über die Blockgrenze; ohne Körpertrennung gilt dennoch genau A=1. Aus der Summe werden weder die vier Körperzuordnungen noch der ausdrückliche Ausschluss der Kupplungsgegenkraft ergänzt.",
+          "B": "5/5: Vollständiger Ansatz +450−150−300 (1 P), Ergebnis 0 N (1 P), Ruhe und geradlinig konstante Fahrt jeweils mit ausbleibender Geschwindigkeitsänderung bei dieser Nullsumme begründet (je 1 P). Die Pfeillänge wird unabhängig davon als Kraftbetrag nach eigenem Kraftmaßstab und ausdrücklich nicht als räumliche Strecke oder Ort erklärt (1 P).",
+          "C": "5/5: Richtige Terme +360, −120, −420 N (1 P), vollständige Summe −180 N (1 P), Betrag 180 N nach links (1 P). Die nach links gerichtete Resultierende ist zusammen mit v=+6 m/s und dem anfänglichen Kleinerwerden der Geschwindigkeit/Bremsen angegeben; diese zusammenhängende Deutung enthält die erforderliche entgegengerichtete Geschwindigkeitsänderung (1 P). Die Kraftsumme bestimmt eine Änderung und nicht den Anfangswert (1 P).",
+          "D": "5/5: Für den eigenen zweiten Wagen bei links positiver Achse stehen +210, −90, −30 N (1 P), die vollständige Summe +90 N (1 P), Betrag 90 N nach links (1 P) sowie v=+2 m/s und anfängliches Schnellerwerden mit der Begründung, dass Bewegung und Geschwindigkeitsänderung nach links weisen (1 P). Wirkliche Kräfte bleiben bei Achsenwechsel unverändert (1 P)."
+        },
+        "en": {
+          "A": "1/5 under the explicit special rule: A has no answer and no drawing. B supplies all three correct signed cart terms. That visible evidence counts across blocks, but without object separation the rubric explicitly sets A=1. Neither the four object assignments nor exclusion of the coupling counterforce is inferred from the sum.",
+          "B": "5/5: Complete signed sum +450−150−300 (1), result 0 N (1), and both rest and straight constant motion are justified by the absence of velocity change for this zero sum (1 each). Independently, arrow length represents force magnitude by its own force scale, expressly not a spatial distance or place (1).",
+          "C": "5/5: Correct terms +360, −120, −420 N (1), complete sum −180 N (1), magnitude 180 N left (1). The leftward resultant is stated together with v=+6 m/s and the initial decrease in velocity/braking; this integrated directional interpretation supplies the required oppositely directed velocity change (1). The force sum determines a change, not the initial velocity (1).",
+          "D": "5/5: For the independent second cart with left positive, the response gives +210, −90, −30 N (1), the complete sum +90 N (1), magnitude 90 N left (1), and v=+2 m/s with initial speeding up justified by motion and velocity change both pointing left (1). Actual forces are unchanged by reversing the axis (1)."
+        }
+      }
+    },
+    {
+      "id": "KB-03",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": {
+        "de": {
+          "A": "5/5: Alle vier Kräfte sind ausdrücklich ihren Körpern zugeordnet (2 P). Die drei Wagenkräfte tragen die richtigen Vorzeichen (1,5 P); die Gegenkraft auf die Kupplung ist ausdrücklich ausgeschlossen (0,5 P). Die tatsächlich verknüpfte Zeichnung zeigt den gemeinsamen Ansatz am Wagen, die richtigen Richtungen, freie Spitzen sowie die Längen 3/1/2 cm mit eigenem Kraftmaßstab und 1-cm-Referenz (1 P).",
+          "B": "1/5: Der eigenständige Ergänzungspunkt für Kraftmaßstab, Kraftbetrag und die Abgrenzung von Strecke/Ort ist vollständig belegt. Die Kraftliste in A enthält richtige vorzeichenbehaftete Einzelterme, aber keinen als solchen ausgeführten vollständigen Summenansatz und kein Ergebnis 0 N. Die Aussage, die Pfeile seien bei Ruhe und Fahrt gleich, begründet weder Ruhe noch geradlinig konstante Fahrt aus einer Nullsumme; insbesondere behauptet sie keine konstante Fahrt. Auch in C/D steht kein Nachweis der Nullbilanz dieses Versuchs. Daher fehlen alle vier B-Kernpunkte tatsächlich; es werden keine Summe und keine Begründungen ergänzt.",
+          "C": "5/5: Richtige Terme +360, −120, −420 N (1 P), vollständige Summe −180 N (1 P), Betrag 180 N nach links (1 P). Die nach links gerichtete Resultierende ist zusammen mit v=+6 m/s und dem anfänglichen Kleinerwerden der Geschwindigkeit/Bremsen angegeben; diese zusammenhängende Deutung enthält die erforderliche entgegengerichtete Geschwindigkeitsänderung (1 P). Die Kraftsumme bestimmt eine Änderung und nicht den Anfangswert (1 P).",
+          "D": "5/5: Für den eigenen zweiten Wagen bei links positiver Achse stehen +210, −90, −30 N (1 P), die vollständige Summe +90 N (1 P), Betrag 90 N nach links (1 P) sowie v=+2 m/s und anfängliches Schnellerwerden mit der Begründung, dass Bewegung und Geschwindigkeitsänderung nach links weisen (1 P). Wirkliche Kräfte bleiben bei Achsenwechsel unverändert (1 P)."
+        },
+        "en": {
+          "A": "5/5: Each of the four forces is explicitly assigned to its object (2 points). All three cart terms have the correct signs (1.5); the force on the coupling is explicitly excluded (0.5). The actual linked drawing has a common cart origin, correct directions and free tips, and lengths 3/1/2 cm with its own force scale and a 1-cm reference (1).",
+          "B": "1/5: The independent supplementary point is fully supported by force scale, force magnitude and the distinction from spatial distance/place. A lists correct individual signed terms, but does not display a complete summation as such or a result of 0 N. Saying that the arrows are the same at rest and in motion does not justify either rest or straight constant motion from a zero sum; it does not even specify constant motion. C/D supply no zero-balance evidence for this trial. Thus all four B core points are genuinely absent; no sum or justifications are supplied by inference.",
+          "C": "5/5: Correct terms +360, −120, −420 N (1), complete sum −180 N (1), magnitude 180 N left (1). The leftward resultant is stated together with v=+6 m/s and the initial decrease in velocity/braking; this integrated directional interpretation supplies the required oppositely directed velocity change (1). The force sum determines a change, not the initial velocity (1).",
+          "D": "5/5: For the independent second cart with left positive, the response gives +210, −90, −30 N (1), the complete sum +90 N (1), magnitude 90 N left (1), and v=+2 m/s with initial speeding up justified by motion and velocity change both pointing left (1). Actual forces are unchanged by reversing the axis (1)."
+        }
+      }
+    },
+    {
+      "id": "KB-04",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": {
+        "de": {
+          "A": "5/5: Alle vier Kräfte sind ausdrücklich ihren Körpern zugeordnet (2 P). Die drei Wagenkräfte tragen die richtigen Vorzeichen (1,5 P); die Gegenkraft auf die Kupplung ist ausdrücklich ausgeschlossen (0,5 P). Die tatsächlich verknüpfte Zeichnung zeigt den gemeinsamen Ansatz am Wagen, die richtigen Richtungen, freie Spitzen sowie die Längen 3/1/2 cm mit eigenem Kraftmaßstab und 1-cm-Referenz (1 P).",
+          "B": "5/5: Vollständiger Ansatz +450−150−300 (1 P), Ergebnis 0 N (1 P), Ruhe und geradlinig konstante Fahrt jeweils mit ausbleibender Geschwindigkeitsänderung bei dieser Nullsumme begründet (je 1 P). Die Pfeillänge wird unabhängig davon als Kraftbetrag nach eigenem Kraftmaßstab und ausdrücklich nicht als räumliche Strecke oder Ort erklärt (1 P).",
+          "C": "1/5: Ausschließlich der Ergänzungspunkt ist belegt: Die Kraftsumme bestimmt eine Änderung und nicht die Anfangsgeschwindigkeit. Es fehlen sämtliche eigenen C-Terme, ihre Summe, der Betrag mit Richtung sowie die begründete anfängliche Bewegungsdeutung für v=+6 m/s. B und D behandeln andere Versuche und ersetzen diese vier Kernnachweise nicht.",
+          "D": "5/5: Für den eigenen zweiten Wagen bei links positiver Achse stehen +210, −90, −30 N (1 P), die vollständige Summe +90 N (1 P), Betrag 90 N nach links (1 P) sowie v=+2 m/s und anfängliches Schnellerwerden mit der Begründung, dass Bewegung und Geschwindigkeitsänderung nach links weisen (1 P). Wirkliche Kräfte bleiben bei Achsenwechsel unverändert (1 P)."
+        },
+        "en": {
+          "A": "5/5: Each of the four forces is explicitly assigned to its object (2 points). All three cart terms have the correct signs (1.5); the force on the coupling is explicitly excluded (0.5). The actual linked drawing has a common cart origin, correct directions and free tips, and lengths 3/1/2 cm with its own force scale and a 1-cm reference (1).",
+          "B": "5/5: Complete signed sum +450−150−300 (1), result 0 N (1), and both rest and straight constant motion are justified by the absence of velocity change for this zero sum (1 each). Independently, arrow length represents force magnitude by its own force scale, expressly not a spatial distance or place (1).",
+          "C": "1/5: Only the supplementary point is supported: force sum determines change, not initial velocity. All case-C signed terms, their sum, magnitude with direction and justified initial motion interpretation for v=+6 m/s are absent. B and D concern other trials and do not replace these four core demonstrations.",
+          "D": "5/5: For the independent second cart with left positive, the response gives +210, −90, −30 N (1), the complete sum +90 N (1), magnitude 90 N left (1), and v=+2 m/s with initial speeding up justified by motion and velocity change both pointing left (1). Actual forces are unchanged by reversing the axis (1)."
+        }
+      }
+    },
+    {
+      "id": "KB-05",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": {
+        "de": {
+          "A": "5/5: Alle vier Kräfte sind ausdrücklich ihren Körpern zugeordnet (2 P). Die drei Wagenkräfte tragen die richtigen Vorzeichen (1,5 P); die Gegenkraft auf die Kupplung ist ausdrücklich ausgeschlossen (0,5 P). Die tatsächlich verknüpfte Zeichnung zeigt den gemeinsamen Ansatz am Wagen, die richtigen Richtungen, freie Spitzen sowie die Längen 3/1/2 cm mit eigenem Kraftmaßstab und 1-cm-Referenz (1 P).",
+          "B": "5/5: Vollständiger Ansatz +450−150−300 (1 P), Ergebnis 0 N (1 P), Ruhe und geradlinig konstante Fahrt jeweils mit ausbleibender Geschwindigkeitsänderung bei dieser Nullsumme begründet (je 1 P). Die Pfeillänge wird unabhängig davon als Kraftbetrag nach eigenem Kraftmaßstab und ausdrücklich nicht als räumliche Strecke oder Ort erklärt (1 P).",
+          "C": "5/5: Richtige Terme +360, −120, −420 N (1 P), vollständige Summe −180 N (1 P), Betrag 180 N nach links (1 P). Die nach links gerichtete Resultierende ist zusammen mit v=+6 m/s und dem anfänglichen Kleinerwerden der Geschwindigkeit/Bremsen angegeben; diese zusammenhängende Deutung enthält die erforderliche entgegengerichtete Geschwindigkeitsänderung (1 P). Die Kraftsumme bestimmt eine Änderung und nicht den Anfangswert (1 P).",
+          "D": "1/5: Die unveränderten wirklichen Kräfte bei Achsenwechsel tragen den Ergänzungspunkt. Es fehlen alle eigenen D-Terme, ihre Summe, Betrag und Richtung sowie die vorzeichenbehaftete Anfangsgeschwindigkeit mit begründetem Schnellerwerden. Die richtige Rechnung und das Bremsen in C betreffen einen anderen Versuch und können den unabhängigen Transfer in D nicht ersetzen."
+        },
+        "en": {
+          "A": "5/5: Each of the four forces is explicitly assigned to its object (2 points). All three cart terms have the correct signs (1.5); the force on the coupling is explicitly excluded (0.5). The actual linked drawing has a common cart origin, correct directions and free tips, and lengths 3/1/2 cm with its own force scale and a 1-cm reference (1).",
+          "B": "5/5: Complete signed sum +450−150−300 (1), result 0 N (1), and both rest and straight constant motion are justified by the absence of velocity change for this zero sum (1 each). Independently, arrow length represents force magnitude by its own force scale, expressly not a spatial distance or place (1).",
+          "C": "5/5: Correct terms +360, −120, −420 N (1), complete sum −180 N (1), magnitude 180 N left (1). The leftward resultant is stated together with v=+6 m/s and the initial decrease in velocity/braking; this integrated directional interpretation supplies the required oppositely directed velocity change (1). The force sum determines a change, not the initial velocity (1).",
+          "D": "1/5: Invariance of actual forces under axis reversal earns the supplementary point. All independent D terms, their sum, magnitude and direction, and signed initial velocity with justified speeding up are absent. The correct calculation and braking interpretation in C belong to another trial and cannot replace the independent transfer in D."
+        }
+      }
+    },
+    {
+      "id": "KB-06",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "reason": {
+        "de": {
+          "A": "5/5: Alle vier Kräfte sind ausdrücklich ihren Körpern zugeordnet (2 P). Die drei Wagenkräfte tragen die richtigen Vorzeichen (1,5 P); die Gegenkraft auf die Kupplung ist ausdrücklich ausgeschlossen (0,5 P). Die tatsächlich verknüpfte Zeichnung zeigt den gemeinsamen Ansatz am Wagen, die richtigen Richtungen, freie Spitzen sowie die Längen 3/1/2 cm mit eigenem Kraftmaßstab und 1-cm-Referenz (1 P).",
+          "B": "4,5/5: Der vollständige Summenansatz, der Zahlenwert null, beide richtig begründeten Bewegungszustände und die eigenständige Pfeillängen-Erklärung sind vorhanden. Die Einheit m/s am Ergebnis der Kraftsumme ist falsch. Das Modell ist unabhängig durch Kraftangaben, vorzeichenbehaftete Terme und Bewegungsdeutung richtig sichtbar; deshalb genau 0,5 P Abzug am Ursprung dieses Einheitenfehlers und kein weiterer Abzug für seine Folgen. Die Bezeichnung als isolierter Fehler ist für die Bewertung nicht notwendig.",
+          "C": "4,5/5: Alle drei Terme, der Zahlenwert −180, Betrag 180 N nach links, die richtige anfängliche Bremsdeutung und die Trennung von Geschwindigkeitsänderung und Anfangswert sind sichtbar. Nm an der Summe ist eine falsche Einheit; die gesonderte Betragsangabe 180 N und die richtige Richtungs-/Bewegungsdeutung sichern das richtige Modell unabhängig. Daher einmal 0,5 P Abzug für diesen zweiten, eigenen Einheitenfehler.",
+          "D": "5/5: Für den eigenen zweiten Wagen bei links positiver Achse stehen +210, −90, −30 N (1 P), die vollständige Summe +90 N (1 P), Betrag 90 N nach links (1 P) sowie v=+2 m/s und anfängliches Schnellerwerden mit der Begründung, dass Bewegung und Geschwindigkeitsänderung nach links weisen (1 P). Wirkliche Kräfte bleiben bei Achsenwechsel unverändert (1 P)."
+        },
+        "en": {
+          "A": "5/5: Each of the four forces is explicitly assigned to its object (2 points). All three cart terms have the correct signs (1.5); the force on the coupling is explicitly excluded (0.5). The actual linked drawing has a common cart origin, correct directions and free tips, and lengths 3/1/2 cm with its own force scale and a 1-cm reference (1).",
+          "B": "4.5/5: The full sum, numerical zero, both correctly justified states of motion and independent arrow-length interpretation are present. The m/s unit on a force sum is wrong. Force data, signed terms and the motion interpretation independently show a sound model, so deduct exactly 0.5 at the origin of this unit slip, with no further follow-through deduction. The response calling it isolated is not needed to establish that judgment.",
+          "C": "4.5/5: All three terms, numerical −180, magnitude 180 N left, correct initial slowing and the distinction between velocity change and initial value are visible. Nm is an incorrect unit for the force sum; the separate 180 N magnitude and correct direction/motion interpretation independently establish the correct model. Deduct 0.5 once for this second, separate unit slip.",
+          "D": "5/5: For the independent second cart with left positive, the response gives +210, −90, −30 N (1), the complete sum +90 N (1), magnitude 90 N left (1), and v=+2 m/s with initial speeding up justified by motion and velocity change both pointing left (1). Actual forces are unchanged by reversing the axis (1)."
+        }
+      }
+    },
+    {
+      "id": "KB-07",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": {
+        "de": {
+          "A": "5/5: Alle vier Kräfte sind ausdrücklich ihren Körpern zugeordnet (2 P). Die drei Wagenkräfte tragen die richtigen Vorzeichen (1,5 P); die Gegenkraft auf die Kupplung ist ausdrücklich ausgeschlossen (0,5 P). Die tatsächlich verknüpfte Zeichnung zeigt den gemeinsamen Ansatz am Wagen, die richtigen Richtungen, freie Spitzen sowie die Längen 3/1/2 cm mit eigenem Kraftmaßstab und 1-cm-Referenz (1 P).",
+          "B": "1/5: Die ausdrücklich beibehaltene Behauptung, eine Nullsumme erzwinge Ruhe und gleichförmige Fahrt sei unmöglich, setzt nach der konkreten B-Regel alle vier Kernpunkte auf null, obwohl Ansatz und Ergebnis numerisch richtig sind. Die spätere Aussage über gleiche Kraftpfeile bei Ruhe/Fahrt ist keine ausdrückliche Korrektur dieser beibehaltenen Behauptung. Kraftbetrag, eigener Kraftmaßstab und die Abgrenzung zu Strecke/Ort sind unabhängig richtig erklärt und tragen den Ergänzungspunkt.",
+          "C": "5/5: Richtige Terme +360, −120, −420 N (1 P), vollständige Summe −180 N (1 P), Betrag 180 N nach links (1 P). Die nach links gerichtete Resultierende ist zusammen mit v=+6 m/s und dem anfänglichen Kleinerwerden der Geschwindigkeit/Bremsen angegeben; diese zusammenhängende Deutung enthält die erforderliche entgegengerichtete Geschwindigkeitsänderung (1 P). Die Kraftsumme bestimmt eine Änderung und nicht den Anfangswert (1 P).",
+          "D": "5/5: Für den eigenen zweiten Wagen bei links positiver Achse stehen +210, −90, −30 N (1 P), die vollständige Summe +90 N (1 P), Betrag 90 N nach links (1 P) sowie v=+2 m/s und anfängliches Schnellerwerden mit der Begründung, dass Bewegung und Geschwindigkeitsänderung nach links weisen (1 P). Wirkliche Kräfte bleiben bei Achsenwechsel unverändert (1 P)."
+        },
+        "en": {
+          "A": "5/5: Each of the four forces is explicitly assigned to its object (2 points). All three cart terms have the correct signs (1.5); the force on the coupling is explicitly excluded (0.5). The actual linked drawing has a common cart origin, correct directions and free tips, and lengths 3/1/2 cm with its own force scale and a 1-cm reference (1).",
+          "B": "1/5: The explicitly maintained assertion that zero sum forces rest and makes constant motion impossible sets all four core points to zero under the specific B rule, despite the numerically correct sum and result. The later statement about the same force arrows at rest/in motion is not an explicit correction of that maintained claim. Force magnitude, its own force scale and the distinction from distance/place are independently correct and earn the supplementary point.",
+          "C": "5/5: Correct terms +360, −120, −420 N (1), complete sum −180 N (1), magnitude 180 N left (1). The leftward resultant is stated together with v=+6 m/s and the initial decrease in velocity/braking; this integrated directional interpretation supplies the required oppositely directed velocity change (1). The force sum determines a change, not the initial velocity (1).",
+          "D": "5/5: For the independent second cart with left positive, the response gives +210, −90, −30 N (1), the complete sum +90 N (1), magnitude 90 N left (1), and v=+2 m/s with initial speeding up justified by motion and velocity change both pointing left (1). Actual forces are unchanged by reversing the axis (1)."
+        }
+      }
+    },
+    {
+      "id": "KB-08",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 4,
+          "C": 5,
+          "D": 5
+        },
+        "total": 19,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 4,
+          "C": 5,
+          "D": 5
+        },
+        "total": 19,
+        "pass": true
+      },
+      "reason": {
+        "de": {
+          "A": "5/5: Alle vier Kräfte sind ausdrücklich ihren Körpern zugeordnet (2 P). Die drei Wagenkräfte tragen die richtigen Vorzeichen (1,5 P); die Gegenkraft auf die Kupplung ist ausdrücklich ausgeschlossen (0,5 P). Die tatsächlich verknüpfte Zeichnung zeigt den gemeinsamen Ansatz am Wagen, die richtigen Richtungen, freie Spitzen sowie die Längen 3/1/2 cm mit eigenem Kraftmaßstab und 1-cm-Referenz (1 P).",
+          "B": "4/5: Vollständiger Ansatz, 0 N und beide aus ausbleibender Geschwindigkeitsänderung begründeten Bewegungszustände tragen die vier Kernpunkte. Die ausdrückliche Gleichsetzung eines 3-cm-Kraftpfeils mit 3 cm Fahrweg ist falsch und ergibt null für den Ergänzungspunkt. Sie wird weder durch die Zahl 0 N widerlegt noch als zusätzlicher Kernfehler der Kraftbilanz behandelt. Die tatsächlich richtige Zeichnung unter A behält ihre dort ausdrücklich vorgesehenen Punkte; die Rubrik hat keine zusätzliche Bestehenssperre für diese Ergänzungsfehlvorstellung.",
+          "C": "5/5: Richtige Terme +360, −120, −420 N (1 P), vollständige Summe −180 N (1 P), Betrag 180 N nach links (1 P). Die nach links gerichtete Resultierende ist zusammen mit v=+6 m/s und dem anfänglichen Kleinerwerden der Geschwindigkeit/Bremsen angegeben; diese zusammenhängende Deutung enthält die erforderliche entgegengerichtete Geschwindigkeitsänderung (1 P). Die Kraftsumme bestimmt eine Änderung und nicht den Anfangswert (1 P).",
+          "D": "5/5: Für den eigenen zweiten Wagen bei links positiver Achse stehen +210, −90, −30 N (1 P), die vollständige Summe +90 N (1 P), Betrag 90 N nach links (1 P) sowie v=+2 m/s und anfängliches Schnellerwerden mit der Begründung, dass Bewegung und Geschwindigkeitsänderung nach links weisen (1 P). Wirkliche Kräfte bleiben bei Achsenwechsel unverändert (1 P)."
+        },
+        "en": {
+          "A": "5/5: Each of the four forces is explicitly assigned to its object (2 points). All three cart terms have the correct signs (1.5); the force on the coupling is explicitly excluded (0.5). The actual linked drawing has a common cart origin, correct directions and free tips, and lengths 3/1/2 cm with its own force scale and a 1-cm reference (1).",
+          "B": "4/5: The complete signed sum, 0 N and both motion states justified by no velocity change earn the four core points. Explicitly equating the 3-cm force arrow with 3 cm of travel is wrong and earns zero for the supplement. The number 0 N does not refute that error, and it is not an additional misconception in the force-balance core. The actual correct A drawing retains its expressly allocated points; the rubric has no extra pass condition for this supplementary misconception.",
+          "C": "5/5: Correct terms +360, −120, −420 N (1), complete sum −180 N (1), magnitude 180 N left (1). The leftward resultant is stated together with v=+6 m/s and the initial decrease in velocity/braking; this integrated directional interpretation supplies the required oppositely directed velocity change (1). The force sum determines a change, not the initial velocity (1).",
+          "D": "5/5: For the independent second cart with left positive, the response gives +210, −90, −30 N (1), the complete sum +90 N (1), magnitude 90 N left (1), and v=+2 m/s with initial speeding up justified by motion and velocity change both pointing left (1). Actual forces are unchanged by reversing the axis (1)."
+        }
+      }
+    }
+  ],
+  "releaseDecision": "accept KB v5 within the fresh assessment review and bilingual-marking scope. This decision makes no claim about KG, cards, held KT/KF, earlier review rounds or any external publication."
+}

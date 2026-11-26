@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "predecessorCommit": "5cbb5da48c909fe9be7d26d1f6a1c4e5573a7ccc",
+  "scope": "Only the two image-label positions, their native image QA evidence and image rollout records. No goal wording, task, card, role, prerequisite, assessment or gate changes.",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "native_directed_quantity_image_evidence",
+      "exitCode": 0,
+      "result": {
+        "status": "PASS",
+        "nativeFunction": "validateDirectedQuantityArrowImageEvidence",
+        "counts": {
+          "accepted": 5,
+          "notApplicable": 0,
+          "undecided": 0,
+          "rejected": 0
+        },
+        "negativeControls": [
+          {
+            "name": "wrongAssetHash",
+            "rejected": true,
+            "message": "Error: Directed quantity arrows: 30ddb2d7-b991-55fe-9e74-37ffe1048f9f: arrow decision is not bound to the current image hash"
+          },
+          {
+            "name": "changedReviewedDecision",
+            "rejected": true,
+            "message": "Error: Directed quantity arrows: image decision contradicts reviewed material for 30ddb2d7-b991-55fe-9e74-37ffe1048f9f"
+          },
+          {
+            "name": "wrongEvidenceBytes",
+            "rejected": true,
+            "message": "Error: Directed quantity arrows: image review evidence hash mismatch for 6ba20688-8cbf-5db1-bda8-346893798d2f"
+          },
+          {
+            "name": "changedBoundImageSource",
+            "rejected": true,
+            "message": "Error: Directed quantity arrows: changed image review source curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/media/render/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "name": "native_physics_qa_synchronization",
+      "exitCode": 0
+    },
+    {
+      "name": "global_goal_visualization_assets",
+      "exitCode": 0,
+      "links": 2589,
+      "landscapes": 21
+    },
+    {
+      "name": "physics_rollout_current_and_required_coverage",
+      "exitCode": 0,
+      "atomicGoals": 497,
+      "primaryImages": 497,
+      "coveragePercent": 100
+    }
+  ],
+  "rolloutSuccessorDelta": {
+    "reviewLedgerFiles": [
+      103,
+      104
+    ],
+    "acceptedPilotAfterUserReviewCorrection": [
+      16,
+      18
+    ],
+    "allOtherSummaryValuesUnchanged": true
+  },
+  "retainedReviewRows": 3,
+  "freshAuthorImageReviews": 2,
+  "humanOrIndependentApprovalClaimed": false,
+  "originalJpegsReplayedByteExactly": true,
+  "changedDecodedPixelsOutsideLabelJpegRegions": 0,
+  "canonicalRawBytesUnchangedByImageImports": true,
+  "externalBindings": [
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source-recovery.actual.json",
+      "sha256": "sha256:621a18e76b7d89b00b53ed9fb587cc9f387d6a923fa613cc29b5adfb86569ac4",
+      "bytes": 2226,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate-plan.actual.json",
+      "sha256": "sha256:1f343d838014f6ab12be03289002449f752420d41661b2b14cfa2ee0a8e8a214",
+      "bytes": 1392,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/pixel-comparison.actual.json",
+      "sha256": "sha256:71629e28a87f706a9c81d3e90e23c91991ad77e3af97f07556ccb16d23a5398c",
+      "bytes": 2424,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/import.actual.json",
+      "sha256": "sha256:738057d69409d8cb88b1cfc81cde899ab6361d267c749eb2eb8569c415de6a5d",
+      "bytes": 3632,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/import.actual.log",
+      "sha256": "sha256:8c0e44ac9cd97178b460f56784769346f3f4548cfbacdc37ac35dcc2dc0393c5",
+      "bytes": 2170,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/render-two.mjs",
+      "sha256": "sha256:3f238ea6a6a3380e7d08058c652b2febcfc46ec121a115f73de713fd2f20f82d",
+      "bytes": 1427,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/compare-two.mjs",
+      "sha256": "sha256:951d25ee2a0e367b13ea07d0c3d6515d8852a4a5b586d073d2063e30201ac31c",
+      "bytes": 3345,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/record-image-successor.py",
+      "sha256": "sha256:68dc60a8185668e431a7362936499987b17543b9ed89f24ad3a84319ade89ffe",
+      "bytes": 9453,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/render-material.mjs",
+      "sha256": "sha256:511a556e3896f0da7a0077a9b0f519dc6df5f4e626ff3f655312272ceab461be",
+      "bytes": 8635,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/motion.svg",
+      "sha256": "sha256:93cff090cc01ba7e23304af3682311ebc90c5cccd4ca3842516adf4249a123b8",
+      "bytes": 1818655,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/curve.svg",
+      "sha256": "sha256:9e99d3e2b0a9aa0b2c16686e2ca164a9f36d551818e33851b45454c8d179e70f",
+      "bytes": 1684195,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/block.png",
+      "sha256": "sha256:aa3047bcc28e4d9aa9fe9b286669b8c6e8c403e0b5ac0178e531b751e8d189e0",
+      "bytes": 1360418,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/source/car.png",
+      "sha256": "sha256:ac0da6b46de7e2efbb22e3bd52c8647efffb5b3ab66015f026d4ef636356830a",
+      "bytes": 1261315,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/before/motion.jpg",
+      "sha256": "sha256:42fe079d127a52d36f28934e12c0e1e94b0812d09bc8ebad7f4419fb38efdb33",
+      "bytes": 149168,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/before/motion-360.png",
+      "sha256": "sha256:2d35427b8b0994830a07c673aaf111b32d25793eccea57dcede02d4aa313deda",
+      "bytes": 37666,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/before/curve.jpg",
+      "sha256": "sha256:f92783a92f5902ff4dde48ae12b1268981cfc78701b84a75281f7ef1ffcc9d2d",
+      "bytes": 150685,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/before/curve-360.png",
+      "sha256": "sha256:4bc782387a5e5de5a0c9c473dd5b607a32418ce8dd0e72f9e7dca47cfc6021b2",
+      "bytes": 40015,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/motion.jpg",
+      "sha256": "sha256:ee60536d20b3f5fb7b6118724f4a6bc4f6da9265b0ab5062471a6e127472a82e",
+      "bytes": 149571,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/motion-360.png",
+      "sha256": "sha256:37048e6833e887756e54ecc84ca90d6519054c3a5846177a0e9c42b3eedbc6ae",
+      "bytes": 37766,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/curve.jpg",
+      "sha256": "sha256:ecdc9c575bd28834bb6711d45c407dd86035db9e06f8352611d6e4a12cf57a3a",
+      "bytes": 152339,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/curve-360.png",
+      "sha256": "sha256:3488a7c7d7d4152ff90649123b7e45a05dbb8b7c753aacb13a9b6a854cacb0ed",
+      "bytes": 40449,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/motion.svg",
+      "sha256": "sha256:a2c3086fcbdee7644fa67d83d08475dcbbd186743fd80329f39547336bac4693",
+      "bytes": 1818655,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/motion-production-prompt.txt",
+      "sha256": "sha256:efa1d3dfe40f460a4b9c538f0db7c799e661f8f3c5745260fcabedf5aca108f0",
+      "bytes": 1757,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/curve.svg",
+      "sha256": "sha256:e21e1fb0207e07491854f22fbac75d6fb505543c2e9d5e5523a056a1d1ff5b69",
+      "bytes": 1684195,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/candidate/curve-production-prompt.txt",
+      "sha256": "sha256:4963c5b54056d2524701640fa87e9889ba0538216f66ccc60594ed5549735074",
+      "bytes": 1783,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/physik.qa.before-labels.json",
+      "sha256": "sha256:76ee2f634ec92894dd9d7806780c6b110e02fb2fd8610d09a3b66eec74db06e6",
+      "bytes": 1868754,
+      "role": "exact_image_label_repair_evidence"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/check-images.mts",
+      "sha256": "sha256:c78b99ed3122b940474f7266919667a0666e3dc5167b76ac7a7c0c2d38591fd2",
+      "bytes": 1972,
+      "role": "native_image_verification"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/native/all-image-assets.log",
+      "sha256": "sha256:668ad9a2a3514508a3bafb5f885c43ffecb9a37801891c79f84a02b71243a5f6",
+      "bytes": 75,
+      "role": "native_image_verification"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/native/directed-image-positive-negatives.actual.json",
+      "sha256": "sha256:dc91d7346c22e2063e6e54af77b983823c7d907dd90afdfe9404741e601cf79b",
+      "bytes": 1136,
+      "role": "native_image_verification"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/native/qa-sync.log",
+      "sha256": "sha256:d5dd066915f98b2427bd60be89081b04791f6d28b0b13da4fa0fdbbbcca23b84",
+      "bytes": 66,
+      "role": "native_image_verification"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/native/rollout-check.log",
+      "sha256": "sha256:5d67428e0e91955d0c2f636898f8729988091cf8567553f42f261074813ab37c",
+      "bytes": 186,
+      "role": "native_image_verification"
+    },
+    {
+      "rootAlias": "evidenceStore",
+      "relativePath": "retention-inputs/image-label-placement-v1/native/rollout-write.log",
+      "sha256": "sha256:806faae14b1cd19cb59ffe8db6a37173f7fb27e313133e682a4e96228fcb4284",
+      "bytes": 178,
+      "role": "native_image_verification"
+    }
+  ]
+}

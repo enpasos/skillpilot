@@ -24,6 +24,9 @@ Final scientific composition (precise-diagram exception after rejected generated
 Ein nach rechts gleitender Körper von 2 kg mit Anfangsgeschwindigkeit +6 m/s berührt eine raue waagerechte Fläche. Sein Reibungspfeil von −4 N beginnt am Körper und zeigt nach links, bei 2 N je Bezugsstrich. Unter konstanter Reibung gelten a = −2 m/s² und v = 6 − 2t ausschließlich bis zum Stillstand nach 3 s. Positive Richtung ist rechts.
 
 Final asset is 1600 by 900. The source layout is scaled uniformly, with horizontal safe margins. No force geometry is stretched. Exact source: render-material.mjs and sources/motion.svg. The given-resultant drawing is contained without stretch instead. Actual rejected whole-image generation attempts and their prompt set are retained separately.
+
+Label-position correction, 26 November 2026, approved 20:23 CET:
+Move only the existing FR = −4 N label from SVG (700, 390) to (700, 350). All other SVG bytes, force geometry, reference scales, wording, colors and body illustrations remain unchanged. This is a deterministic replay of the retained scientific composition, not a new image_gen call. Original SVG and renderer are retained in the verified external dossier archive.
 ```
 
 ## Review-Notiz

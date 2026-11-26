@@ -132,7 +132,7 @@ for rule in P['archives']:
  info=fileinfo(rule['root'],rule['path']);idx=fileinfo(rule['root'],rule['indexPath'])
  if not info or not idx:problems.append({'kind':'UNVERIFIED_archive_or_index','root':rule['root'],'path':rule['path']});continue
  j=parse(payload[(idx['root'],idx['path'])],idx['path']);expected={x['path']:x for x in j['files']};wanted=j.get('sha256') or (j.get('archive',{}).get('sha256')if isinstance(j.get('archive'),dict)else None)
- if wanted and wanted.removeprefix('sha256:')!=info['sha256']:raise RuntimeError('Archive/index digest mismatch')
+ if wanted and wanted.removeprefix('sha256:')!=info['sha256']:raise SystemExit('Archive/index digest mismatch')
  seen=set()
  with tarfile.open(fileobj=io.BytesIO(payload[(info['root'],info['path'])]),mode='r:gz') as tf:
   for member in tf.getmembers():

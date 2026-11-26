@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "reason": "Two approved label moves change the reviewed image bytes. The unchanged authored profiles were materialized again with the current native reviewed-resource inputs. The original profile records retain their AI candidate status.",
+  "previous": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/final-bg/positive.review.jsonl",
+    "sha256": "82d0d92db9ae8e5872a4d596fc2e7a3eee8869d1ff1cb05a6f36109972edadd6"
+  },
+  "current": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/takeover-20261126-v4/positive-profiles/positive.review.jsonl",
+    "sha256": "d59381ec8b7c5dd27d37e16d4654491b4ce12a251c05d6b771a8b0bd56a6e330"
+  },
+  "priorConfig": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/final-bg/positive.config.json",
+    "sha256": "bad614bf89f25ec2cad6ea1175a13189f45fe552f67092505266366eb8efa6cf"
+  },
+  "currentConfig": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/takeover-20261126-v4/positive-profiles/positive.config.json",
+    "sha256": "e2ae43dbe1269cad0bcf794fb14d15de0ed202f7a3b95000a8157ffbc77e272c"
+  },
+  "unchangedCandidates": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/final-bg/positive.candidates.json",
+    "sha256": "e7941ec551eff23be1dc7c1d243d34c189055bcccb6727a3107029d0d793dbb9"
+  },
+  "originalConfirmation": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/final-bg/confirmation-a.actual.json",
+      "sha256": "ed336b06599e3d47ce4c8c93910467630e480857b1ac6b95824063d13a36b74a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/final-bg/confirmation-b.actual.json",
+      "sha256": "5c5b86d83d4ce5eba8d3ef7093e60e1f2466972b1fb4491b610e8225061deae9"
+    }
+  ],
+  "imageReview": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/media/label-placement-20261126-v1/current-images.actual.json",
+    "sha256": "87139b1fea8172b16e4132f83559772c175fe275653286d96a4be37d78680b89"
+  },
+  "reviewedAtExistingAuthority": true,
+  "additionalHumanApproval": false,
+  "coreFieldsUnchanged": [
+    "goalFingerprint",
+    "profile",
+    "profileFingerprint",
+    "status",
+    "reviewAuthority",
+    "evidenceLevel",
+    "maximumClaimScope"
+  ],
+  "identicalOtherRecords": 3,
+  "changedRecords": [
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "beforeInputFingerprint": "sha256:bbec938f9383d3861df092d6677aeaba9606f6d129338de90b5057d9901bf921",
+      "currentInputFingerprint": "sha256:59d6f954d66cce1efe23018bb2f0c08ffc224a9aa5d5e6cc43b5ee3bf4bb11c6",
+      "profileFingerprint": "sha256:70aadac347487be3bba22ffe2481f321aff87f49b90be4e97dcf57c7b658e5de",
+      "previousImageSha256": "42fe079d127a52d36f28934e12c0e1e94b0812d09bc8ebad7f4419fb38efdb33",
+      "currentImage": {
+        "path": "curricula/DE/Gymnasium/visualizations/physik/30ddb2d7-b991-55fe-9e74-37ffe1048f9f/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg",
+        "sha256": "ee60536d20b3f5fb7b6118724f4a6bc4f6da9265b0ab5062471a6e127472a82e"
+      },
+      "labelPlacementReview": "The force label is clear of the block. The force of −4 N on 2 kg, arrow direction, 2 N scale, velocity function and model limit through 3 s are consistent."
+    },
+    {
+      "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+      "beforeInputFingerprint": "sha256:9f1f3c2535fd5a86ca53cc25e3ed730372a8316d2ffeb18e8847ec3d90d9d855",
+      "currentInputFingerprint": "sha256:3814b65ff5b7c097ecf8f44c84fe3cec82c32b602c95d28cb8d0a5c5daa38f55",
+      "profileFingerprint": "sha256:7d2ea1e21573643d3902987047269afd726f8a745c35a855fe38aadd6e96c345",
+      "previousImageSha256": "f92783a92f5902ff4dde48ae12b1268981cfc78701b84a75281f7ef1ffcc9d2d",
+      "currentImage": {
+        "path": "curricula/DE/Gymnasium/visualizations/physik/e2da5eec-45de-5527-9ad7-16f41cacbe58/e2da5eec-45de-5527-9ad7-16f41cacbe58.jpg",
+        "sha256": "ecdc9c575bd28834bb6711d45c407dd86035db9e06f8352611d6e4a12cf57a3a"
+      },
+      "labelPlacementReview": "The force label lies inside the curve on free background. An inward 2,000 N arrow starts on the car. The 1,000 N scale and 5,000 N static friction limit remain clear at 360 pixels."
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "contract": "w1-current-catalog-consumers-v4",
+  "baselineCommit": "5cbb5da48c909fe9be7d26d1f6a1c4e5573a7ccc",
+  "previousCatalog": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "afb8ee463e0a017570cf590e61d97e522a9f86c2dbc48d0838dcfcd37b891467"
+  },
+  "currentCatalog": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "sha256": "2d24dd2dbcd542cbdfa17ab4ff69eca587e2f53a55d5f2fa450a549eecc04c49"
+  },
+  "goalsCompared": 877,
+  "changedGoals": [
+    {
+      "goalId": "4af06e7e-c566-566d-bc99-53ada98fbf0e",
+      "changedFields": [
+        "examData"
+      ],
+      "beforeGoalStableSha256": "300c3854f3523a694fa3f26f3758b0c3055389abf4f360c1a0afc8bf81c75ac4",
+      "currentGoalStableSha256": "fbd19e3087beba6aceae7c6ef42a5ae54065c51cf374545574afb5b4d3cf883b"
+    },
+    {
+      "goalId": "d513289a-80a3-5e48-95d3-5791736cddba",
+      "changedFields": [
+        "examData"
+      ],
+      "beforeGoalStableSha256": "24152fdd58255350cb4c29218e341178b7d0ccd793b39350f2d4e2e212a3c090",
+      "currentGoalStableSha256": "b84e6082ecc8d68bfd0432bbe3f988eb113b697f0e41afd2a411cefdedb9d660"
+    }
+  ],
+  "ledgerDecisionsCompared": 877,
+  "changedLedgerDecisions": [
+    {
+      "goalId": "4af06e7e-c566-566d-bc99-53ada98fbf0e",
+      "beforeFingerprint": "sha256:2cf7ead003867f655c64a4dd997584985bb573b3e0a8ce4aac7607f16b9dd0de",
+      "currentFingerprint": "sha256:2e4e37450eb1c288248c51bc22dba9e9755945c8c21a57cec21fb4be4cce09d2",
+      "beforeArrowEvidence": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/final-bg/directed-usage.actual.json",
+        "sha256": "sha256:413aa6b5f30777d9b738c68f4083441e976cf68d9a4b30f4ff278dca63b65c42",
+        "entryId": "4af06e7e-c566-566d-bc99-53ada98fbf0e"
+      },
+      "currentArrowEvidence": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/assessment-contract.kb5-kg4.successor.actual.json",
+        "sha256": "sha256:d29821a40f24369c338b9d22138855c295e8253bdd6e696a683289233f24f513",
+        "entryId": "4af06e7e-c566-566d-bc99-53ada98fbf0e"
+      }
+    },
+    {
+      "goalId": "d513289a-80a3-5e48-95d3-5791736cddba",
+      "beforeFingerprint": "sha256:cf437af284118f7dd91566765dd1b334bc1162a9d1bdd15c7185d0cefb2e6e2b",
+      "currentFingerprint": "sha256:29585fe2b56c443118e4b7102764398f19377e13e5a8a653e495edc33c1b4578",
+      "beforeArrowEvidence": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/final-bg/directed-usage.actual.json",
+        "sha256": "sha256:413aa6b5f30777d9b738c68f4083441e976cf68d9a4b30f4ff278dca63b65c42",
+        "entryId": "d513289a-80a3-5e48-95d3-5791736cddba"
+      },
+      "currentArrowEvidence": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/assessment-contract.kb5-kg4.successor.actual.json",
+        "sha256": "sha256:d29821a40f24369c338b9d22138855c295e8253bdd6e696a683289233f24f513",
+        "entryId": "d513289a-80a3-5e48-95d3-5791736cddba"
+      }
+    }
+  ],
+  "previousSemanticLedger": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "sha256": "adedfe8b91948dcf590baa3fe2012bf36e6dd960943d111478ed88344b08d7fe"
+  },
+  "currentSemanticLedger": {
+    "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+    "sha256": "61ce9f2d850b81cda4c134e4b0a6a1fc1519aa4def3badc2e2c3b3574c002d64"
+  },
+  "method": "Exact byte bindings plus full ordered comparison of every catalog object. The only changed field is examData on the two released assessment goals. The native atlas and stage-route tests recompute current goal sets and route counts.",
+  "consumerPredecessors": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/national-atlas.final-v5.actual.json",
+      "sha256": "a04e8a323ae56edfe824b81cd816ea325ed590c5c4c990e0b33beb93b0246b50",
+      "inputField": "inputs",
+      "inputsChecked": 78,
+      "changedOtherInputs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+          "beforeSha256": "adedfe8b91948dcf590baa3fe2012bf36e6dd960943d111478ed88344b08d7fe",
+          "sha256": "61ce9f2d850b81cda4c134e4b0a6a1fc1519aa4def3badc2e2c3b3574c002d64"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/current-stage-preparation.technical-final.actual.json",
+      "sha256": "95ec0761769fdce70d059c09c28add4c402124846ab103c7e3b39b17853b9444",
+      "inputField": "inputs",
+      "inputsChecked": 11,
+      "changedOtherInputs": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/cqr104-route-counts.final-v5.actual.json",
+      "sha256": "4d1ae1120777529b15bd3b833b5f79f34dc0ecfe94e1871a9ecaaded3943f9cc",
+      "inputField": "inputs",
+      "inputsChecked": 113,
+      "changedOtherInputs": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/structural-denominator.successor.actual.json",
+      "sha256": "1f1cca3856ed6f90c7f99e2b5a89c5c5c26056c813ebdbdb69a350c8d999cdc2",
+      "inputField": "protectedInputs",
+      "inputsChecked": 4,
+      "changedOtherInputs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+          "beforeSha256": "adedfe8b91948dcf590baa3fe2012bf36e6dd960943d111478ed88344b08d7fe",
+          "sha256": "61ce9f2d850b81cda4c134e4b0a6a1fc1519aa4def3badc2e2c3b3574c002d64"
+        }
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/sn-2019-partial-g-derived.successor.actual.json",
+      "sha256": "6640df5841a6133413227c90d92b36ab97e15828a4d551e3fc6c9bada5c84489",
+      "inputField": "currentInputs",
+      "inputsChecked": 14,
+      "changedOtherInputs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+          "beforeSha256": "adedfe8b91948dcf590baa3fe2012bf36e6dd960943d111478ed88344b08d7fe",
+          "sha256": "61ce9f2d850b81cda4c134e4b0a6a1fc1519aa4def3badc2e2c3b3574c002d64"
+        }
+      ]
+    }
+  ]
+}

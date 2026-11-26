@@ -4037,6 +4037,51 @@ assert.deepEqual(arrowAtlas.canonicalProfileTargets.addedGoalIds, [DIRECTED_QUAN
 assert.deepEqual(arrowAtlas.canonicalProfileTargets.goalIds,
   [...energyAtlas.canonicalProfileTargets.goalIds, DIRECTED_QUANTITY_GOAL_ID].sort(compareCodePoints))
 assert.equal(arrowAtlas.currentManifest.path, SOURCE_MANIFEST_PATH)
+const w1AssessmentCorrectionPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/takeover-20261126-v4/catalog-consumers.successor.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, w1AssessmentCorrectionPath), 'utf8')),
+  'fbe2bafe0f54ddf4b543d4cc938c22a602ffb66d560634c104d9730dae455805')
+const w1AssessmentCorrection = readJson<{
+  previousCatalog: EvidenceFile
+  currentCatalog: EvidenceFile
+  previousSemanticLedger: EvidenceFile
+  currentSemanticLedger: EvidenceFile
+  ledgerDecisionsCompared: number
+  changedLedgerDecisions: Array<{goalId: string; currentFingerprint: string}>
+  goalsCompared: number
+  changedGoals: Array<{goalId: string; changedFields: string[]}>
+}>(w1AssessmentCorrectionPath)
+assert.equal(w1AssessmentCorrection.goalsCompared, rawLandscape.goals.length)
+assert.deepEqual(w1AssessmentCorrection.changedGoals.map(row => row.goalId).sort(compareCodePoints),
+  [...W1_ADDED_CATALOG_IDS.slice(2)].sort(compareCodePoints))
+assert.ok(w1AssessmentCorrection.changedGoals.every(row =>
+  row.changedFields.length === 1 && row.changedFields[0] === 'examData'))
+assert.equal(w1AssessmentCorrection.currentCatalog.path, w1AssessmentCorrection.previousCatalog.path)
+assert.equal(sha256(readFileSync(resolve(repoRoot, w1AssessmentCorrection.currentCatalog.path), 'utf8')),
+  w1AssessmentCorrection.currentCatalog.sha256)
+
+assert.equal(w1AssessmentCorrection.ledgerDecisionsCompared, decisionByGoalId.size)
+assert.deepEqual(w1AssessmentCorrection.changedLedgerDecisions.map(row => row.goalId).sort(compareCodePoints),
+  [...W1_ADDED_CATALOG_IDS.slice(2)].sort(compareCodePoints))
+for (const row of w1AssessmentCorrection.changedLedgerDecisions) {
+  assert.equal(decisionByGoalId.get(row.goalId)?.sourceFingerprint, row.currentFingerprint)
+}
+assert.equal(w1AssessmentCorrection.currentSemanticLedger.path, w1AssessmentCorrection.previousSemanticLedger.path)
+
+function assertCurrentW1Inputs(inputs: EvidenceFile[], bindsSemanticLedger: boolean): void {
+  const bindings = [{before: w1AssessmentCorrection.previousCatalog, current: w1AssessmentCorrection.currentCatalog}]
+  if (bindsSemanticLedger) {
+    bindings.push({before: w1AssessmentCorrection.previousSemanticLedger, current: w1AssessmentCorrection.currentSemanticLedger})
+  }
+  for (const binding of bindings) {
+    assert.deepEqual(inputs.filter(input => input.path === binding.before.path), [binding.before])
+  }
+  for (const input of inputs) {
+    const current = bindings.find(binding => binding.before.path === input.path)?.current ?? input
+    assert.equal(sha256(readFileSync(resolve(repoRoot, current.path), 'utf8')), current.sha256,
+      `${current.path}: stale W1 curriculum input`)
+  }
+}
+
 const forceAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/national-atlas.final-v5.actual.json'
 assert.equal(sha256(readFileSync(resolve(repoRoot, forceAtlasPath), 'utf8')), 'a04e8a323ae56edfe824b81cd816ea325ed590c5c4c990e0b33beb93b0246b50')
 const forceAtlas = readJson<typeof arrowAtlas>(forceAtlasPath)
@@ -4055,7 +4100,8 @@ assert.deepEqual(forceAtlas.currentUnionGoalIds,
 assert.deepEqual([...atlasCurricularAtomicGoalIds].sort(compareCodePoints), forceAtlas.currentUnionGoalIds)
 assert.deepEqual(forceAtlas.canonicalProfileTargets.goalIds, arrowAtlas.canonicalProfileTargets.goalIds)
 assert.deepEqual(forceAtlas.canonicalProfileTargets.addedGoalIds, [])
-for (const row of [...forceAtlas.sourceViews, ...forceAtlas.inputs]) {
+assertCurrentW1Inputs(forceAtlas.inputs, true)
+for (const row of forceAtlas.sourceViews) {
   assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale current W1 atlas input`)
 }
 assert.equal(forceAtlas.currentManifest.path, SOURCE_MANIFEST_PATH)
@@ -4517,10 +4563,7 @@ const forceRoute = readJson<typeof arrowRoute & {predecessor: EvidenceFile; inpu
 assert.deepEqual(forceRoute.predecessor, {path: arrowRoutePath,
   sha256: sha256(readFileSync(resolve(repoRoot, arrowRoutePath), 'utf8'))})
 assert.deepEqual(forceRoute.metricsBefore, arrowRoute.metricsAfter)
-for (const input of forceRoute.inputs) {
-  assert.equal(sha256(readFileSync(resolve(repoRoot, input.path), 'utf8')), input.sha256,
-    `${input.path}: stale current W1 route input`)
-}
+assertCurrentW1Inputs(forceRoute.inputs, false)
 for (const [metric, value] of Object.entries(forceRoute.metricsAfter)) {
   assert.equal(routeMetrics[metric], value, `Current lower-stage W1 route metric ${metric}`)
 }
@@ -4627,18 +4670,28 @@ assert.equal(
 )
 
 const forceWarningRoot = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability'
-assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'check-current.mts'), 'utf8')),
-  '2f352638faaa0f2cfc0cb8030a57113abe422874071f68a3a936daa4608bc7d8')
-assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'warning-review.actual.json'), 'utf8')),
-  '484b1043be215c5250d8274adeb74ddc23989c93601ddf13313326a3042c3861')
-assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'verify-final.mts'), 'utf8')),
-  '10ed2bcb148c7ad2b8e098265874927398d777d648ae8f2160b88fcec2947fee')
-assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'verification-inputs.final-v5.actual.json'), 'utf8')),
-  'b502a0ea907b25f43137f59bda8dab57111b1f22e46b20b847f782f4e7620261')
-assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'verification.final-v5.actual.json'), 'utf8')),
-  'd882aa72ebe85fe47e0a5fc4f180e5b938794788849c2d9dc0a05d19d077fae0')
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'check-current.kb5-kg4.mts'), 'utf8')),
+  '95e87b5f71fb33c05f65b8982f5d8438831e50f4673d4072831f7df577c7fb92')
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'warning-review.kb5-kg4.actual.json'), 'utf8')),
+  '038bbf9fcf54b3109dd0a83e3233ffe4b64336a0fb1b04ecd15bc9ef53ab31a3')
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'verify-final.kb5-kg4-arrow.mts'), 'utf8')),
+  '292b72d177f4d35316e7aa4136be1c85c7d24463f5a24cca7e02a7dcbb2f9364')
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'verification-inputs.kb5-kg4-arrow.actual.json'), 'utf8')),
+  '63f64c1bb4f148dfcee253ba230838b68dc78685baf9cd00e4fe29c45ea9410c')
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'verification.kb5-kg4-arrow.actual.json'), 'utf8')),
+  '08f962c4a687719e65f4452750ff75282b8ca3e12ec1b3b0c0080837e2dc7173')
+const currentForceTaskOutput = execFileSync(process.execPath, [
+  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'),
+  resolve(repoRoot, forceWarningRoot, '../../assessments/v5/verify-current.mts'),
+], {cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}).trim()
+const currentForceTaskCheck = JSON.parse(currentForceTaskOutput) as {
+  status: string; independentCriterionRatingsVerified: number; nativeSemanticRowsVerified: number
+}
+assert.equal(currentForceTaskCheck.status, 'PASS')
+assert.equal(currentForceTaskCheck.independentCriterionRatingsVerified, 240)
+assert.equal(currentForceTaskCheck.nativeSemanticRowsVerified, 877)
 const forceWarningOutput = execFileSync(process.execPath, [
-  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, forceWarningRoot, 'verify-final.mts'),
+  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, forceWarningRoot, 'verify-final.kb5-kg4-arrow.mts'),
   '--mode=verify',
 ], {cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}).trim().split(/\r?\n/u)
 assert.equal(forceWarningOutput.length, 2)

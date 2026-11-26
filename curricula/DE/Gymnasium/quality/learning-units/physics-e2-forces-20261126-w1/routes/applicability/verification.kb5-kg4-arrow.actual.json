@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "contract": "W1-current-KB5-KG4-final-arrow-evidence-actual-applicability-verification-v1",
+  "recordedAt": "2026-11-26T20:14:42.685167+00:00",
+  "status": "PASS",
+  "actualExitCode": 0,
+  "actualCommand": [
+    "app/node_modules/.bin/tsx",
+    "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verify-final.kb5-kg4-arrow.mts",
+    "--mode=verify"
+  ],
+  "envelope": {
+    "nativeCompilationInputBindings": 117,
+    "sealedInputBindings": 115,
+    "priorRegistryBytesRetained": true,
+    "reviewAuthority": "ai_technical_source_offer_integration_attestation"
+  },
+  "nativeResult": {
+    "status": "PASS",
+    "mode": "verify",
+    "views": 90,
+    "ownAcceptedKeys": [
+      "APV-201|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|d513289a-80a3-5e48-95d3-5791736cddba|jurisdiction|",
+      "APV-201|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|4af06e7e-c566-566d-bc99-53ada98fbf0e|jurisdiction|"
+    ],
+    "offers": {
+      "KB": 61,
+      "KG": 18
+    },
+    "negativeControls": 10,
+    "priorRows": 129,
+    "registryRows": 131,
+    "physicsRawWarnings": 21,
+    "physicsActiveWarnings": 0,
+    "GAccepted": false
+  },
+  "predecessor": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verification.kb5-kg4.actual.json",
+    "sha256": "ab7e5cd10d046cc6621bfbc83a0d42e727574b59e0f8015aab61d4c7665db080"
+  },
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/check-current.kb5-kg4.mts",
+      "sha256": "95e87b5f71fb33c05f65b8982f5d8438831e50f4673d4072831f7df577c7fb92"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verify-final.kb5-kg4-arrow.mts",
+      "sha256": "292b72d177f4d35316e7aa4136be1c85c7d24463f5a24cca7e02a7dcbb2f9364"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verification-inputs.kb5-kg4-arrow.actual.json",
+      "sha256": "63f64c1bb4f148dfcee253ba230838b68dc78685baf9cd00e4fe29c45ea9410c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/warning-review.kb5-kg4.actual.json",
+      "sha256": "038bbf9fcf54b3109dd0a83e3233ffe4b64336a0fb1b04ecd15bc9ef53ab31a3"
+    },
+    {
+      "path": "docs/qa-ci/applicability-accepted-warnings.json",
+      "sha256": "6279580241d7895ecd93f40422118ce2a2b362293ede5034dc88bb9bf2839931"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/assessments/v5/content-acceptance.actual.json",
+      "sha256": "2f80ef3a5f13c8187628d27db1c0e0e40ba595ce3c9c00495909df09e781cfaf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/assessments/v5/verify-current.mts",
+      "sha256": "40b041dd88485af1189c308302d56727c651eff5d80af0ea5578d646a554a119"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "sha256": "61ce9f2d850b81cda4c134e4b0a6a1fc1519aa4def3badc2e2c3b3574c002d64"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/assessment-contract.kb5-kg4.successor.actual.json",
+      "sha256": "d29821a40f24369c338b9d22138855c295e8253bdd6e696a683289233f24f513"
+    }
+  ],
+  "scope": "Only final arrow-evidence pointer bindings were added after the earlier actual current-task verification. The same two existing keys/messages/scopes,129 prior rows,131 total rows and61/18 offers remain exact. No content-acceptance back-reference or hash cycle."
+}

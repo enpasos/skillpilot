@@ -2,6 +2,9 @@
 // Actual authored scope, Personal Curriculum, navigation and native unit map.
 import {readFileSync, readdirSync} from 'node:fs'
 import {resolve} from 'node:path'
+import assert from 'node:assert/strict'
+import {createHash} from 'node:crypto'
+import {fingerprintSemanticKindSourceGoal} from '../app/scripts/goalBookModel'
 import {prepareLandscapeEntries} from '../app/src/hooks/useLandscapes'
 import {collectCompositionProjectionRoleGoalIds} from '../app/src/utils/authoring/compositionViewAuthoring'
 import {applyCompositionViewProjection, applyPersonalCurriculumProjection} from '../app/src/utils/compositionViewRuntime'
@@ -15,6 +18,63 @@ import {createLearnerRequirementResolver} from '../app/src/utils/learnerNavigati
 export const arrowId = 'b77a7e93-22f9-5722-a4cc-f18a149ab030'
 export const k4Id = '2569d84a-5bf1-542b-bc43-6ade1df971c4'
 export const routeEvidenceDirectory = 'curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes'
+export const arrowConsumerSuccessorPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/arrow-consumers.v4.successor.actual.json'
+export const w1ArrowConsumerIds = [
+  '4af06e7e-c566-566d-bc99-53ada98fbf0e',
+  '6ba20688-8cbf-5db1-bda8-346893798d2f',
+  '77b44d13-4368-5950-a943-decb377c7302',
+  'd513289a-80a3-5e48-95d3-5791736cddba',
+]
+const arrowLedgerPath = 'curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json'
+const arrowDigest = (value: Buffer | string) => createHash('sha256').update(value).digest('hex')
+
+/** The reviewed W1 cut extends the immutable A2 cohort by exactly B/G/KB/KG. */
+export function buildPhysicsArrowConsumerSuccessor(root: string, catalog: any[], ledger: any) {
+  assert.equal(ledger.sourceLandscapePath, 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json')
+  assert.equal(ledger.sourceLandscapeId, '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a')
+  assert.equal(ledger.sourceFingerprintContractId, 'semantic-kind-source-fingerprint-v1')
+  const predecessorPath = `${routeEvidenceDirectory}/native-90-routes.actual.json`
+  const predecessorBytes = readFileSync(resolve(root, predecessorPath))
+  const predecessor = JSON.parse(predecessorBytes.toString('utf8'))
+  const priorIds: string[] = predecessor.consumerGoalIds
+  assert.equal(priorIds.length, 24, 'Historical A2 consumer cohort changed')
+  assert.equal(new Set(priorIds).size, 24, 'Historical A2 consumers must be unique')
+  const currentIds: string[] = ledger.decisions
+    .filter((decision: any) => decision.directedQuantityArrows?.usage === 'required')
+    .map((decision: any) => decision.goalId)
+    .filter((id: string) => ![arrowId, k4Id].includes(id))
+  const expectedIds = [...priorIds, ...w1ArrowConsumerIds].sort()
+  assert.equal(new Set(currentIds).size, currentIds.length, 'Duplicate reviewed arrow consumer')
+  assert.deepEqual([...currentIds].sort(), expectedIds, 'Current arrow consumer set differs from reviewed A2 plus W1 cut')
+  assert.deepEqual(currentIds.filter(id => !w1ArrowConsumerIds.includes(id)), priorIds,
+    'Historical A2 consumer identities or order changed')
+  const goals = new Map<string, any>(catalog.flatMap(document => document.goals.map((goal: any) => [goal.id, goal] as const)))
+  return {
+    schemaVersion: 1,
+    contract: 'physics-arrow-exact-a2-plus-w1-consumer-successor-v1',
+    predecessor: {path: predecessorPath, sha256: arrowDigest(predecessorBytes)},
+    predecessorConsumerGoalIds: priorIds,
+    addedGoalIds: w1ArrowConsumerIds,
+    consumerGoalIds: currentIds,
+    addedGoalBindings: w1ArrowConsumerIds.map(goalId => {
+      const goal = goals.get(goalId)
+      assert(goal && goal.type !== 'cluster', `Missing reviewed W1 arrow consumer ${goalId}`)
+      const nativeSourceFingerprint = fingerprintSemanticKindSourceGoal(goal)
+      assert.equal(ledger.decisions.find((decision: any) => decision.goalId === goalId).sourceFingerprint,
+        nativeSourceFingerprint, `Current W1 arrow consumer source fingerprint differs: ${goalId}`)
+      return {goalId, canonicalGoalJsonStringifySha256: arrowDigest(JSON.stringify(goal)), nativeSourceFingerprint}
+    }),
+    ledger: {path: arrowLedgerPath, sha256: arrowDigest(readFileSync(resolve(root, arrowLedgerPath))),
+      jsonStringifySha256: arrowDigest(JSON.stringify(ledger))},
+  }
+}
+
+function reviewedPhysicsArrowConsumers(root: string, catalog: any[], ledger: any): string[] {
+  const receipt = JSON.parse(readFileSync(resolve(root, arrowConsumerSuccessorPath), 'utf8'))
+  const actual = buildPhysicsArrowConsumerSuccessor(root, catalog, ledger)
+  assert.deepEqual(actual, receipt, 'Current reviewed arrow consumer successor is stale')
+  return actual.consumerGoalIds
+}
 
 export function compareNativeUnitPaths(a: any[], b: any[], edges: Map<string, string[]>): string {
   if (!a || !b) return 'not-visible'
@@ -49,8 +109,8 @@ export function measurePhysicsArrowRoutes(root: string, options: {
   const roots = new Map(catalog.map(d => [d.landscapeId, d.goals.find((g: any) => (g.tags ?? []).includes('root'))?.id]))
   const ledger = read('curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json')
   // Read the single current semantic decision, rather than a parallel marker list.
-  const consumers: string[] = options.consumerIds ?? ledger.decisions.filter((d: any) => d.directedQuantityArrows?.usage === 'required').map((d: any) => d.goalId).filter((id: string) => ![arrowId, k4Id].includes(id))
-  if (consumers.length !== 24) throw Error(`Expected 24 reviewed arrow consumers, got ${consumers.length}`)
+  const consumers = reviewedPhysicsArrowConsumers(root, catalog, ledger)
+  if (options.consumerIds) assert.deepEqual(options.consumerIds, consumers, 'An override must retain the exact reviewed arrow consumer cohort')
   const resolver = createLearnerRequirementResolver(goals, goals, () => undefined)
   const requirements = new Map<string, string[]>([...goals].filter(([, g]) => g.type !== 'cluster' && !g.contains.length).map(([id]) => [id, [...new Set(resolver.directRequirementContext(id).flatMap(c => c.sourceGoalIds))]]))
   const prerequisitePaths = (seed: Set<string>) => {

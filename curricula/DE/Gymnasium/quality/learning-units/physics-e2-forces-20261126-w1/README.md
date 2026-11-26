@@ -1,6 +1,6 @@
 # E.2 · Kräfte auf einer Linie und Gewichtskraft am Hang
 
-Aktueller Stand vom 26. November 2026, nach der Quellenentscheidung von 19:13 CET. Der fachliche Umfang bleibt der Schnitt von 16:59 CET. Länder mit einem Beleg für das vollständige Kursprofil erhalten das jeweilige Lernziel und seine Abschlussaufgabe. Eine Vorbereitung erfordert einen konkreten Zielnutzer und erhält keine Abschlussaufgabe. Die beschlossene dritte Rolle für freiwillige Angebote gehört in ein eigenes Vertragspaket.
+Stand der Quellenzuordnung vom 26. November 2026, 19:13 CET. Der fachliche Umfang bleibt der Schnitt von 16:59 CET. Länder mit einem Beleg für das vollständige Kursprofil erhalten das jeweilige Lernziel und seine Abschlussaufgabe. Eine Vorbereitung erfordert einen konkreten Zielnutzer und erhält keine Abschlussaufgabe. Die beschlossene dritte Rolle für freiwillige Angebote gehört in ein eigenes Vertragspaket.
 
 | Aktives Lernziel | Abschluss und Lernhandlung |
 |---|---|
@@ -22,6 +22,22 @@ Aktueller Stand vom 26. November 2026, nach der Quellenentscheidung von 19:13 CE
 Von den 239 atomaren Prüfungszielen sind 215 freigegeben. Bei 16 älteren Zielen fehlt die Statusangabe, acht sind zur Prüfung vorgemerkt. KB und KG sind die zwei neuen freigegebenen Aufgaben. [Messdaten im Archiv](#archivierte-messungen)
 
 In jeder der acht Ansichten kommen ausschließlich B und KB im vierten E.2-Kind hinzu. Im Grundkurs stehen KB und die gemischte Klausur `22561c66` nebeneinander. Im Leistungskurs kommt KB ohne diese GK-Klausur hinzu. Die gesonderte Backendmessung spielt einen vor dem Schnitt vollständig gespeicherten G9-Plan je Kurs durch. Beide behalten ihre effektive Auswahl (GK 32, LK 33), die gespeicherten Bytes, die Revision und die exportierten Blöcke. Die Neuauswahl desselben Abschnitts enthält B und KB. [Messdaten im Archiv](#archivierte-messungen)
+
+### Unterstufe im Backend
+
+Die bisherige Testvorgabe umfasst zehn Länder mit je zwei Bildungsdauern. Der Vergleich berechnet in jeder Ansicht zuerst die regulären Startziele und folgt anschließend allen atomaren Voraussetzungen, auch über Fachgrenzen hinweg. Alle 20 früheren Mengen wurden vor dem Vergleich exakt reproduziert. In den 14 veränderten Fällen kommen dieselben Identitäten sowohl zu den Startzielen als auch zur Menge einschließlich der Voraussetzungen hinzu. Für jede Zeile gilt das Ergebnis einzeln in G8 und G9.
+
+| Land | Neue Ziele | Startziele vorher → jetzt | Mit Voraussetzungen vorher → jetzt |
+|---|---|---:|---:|
+| Bayern | B, KB, G, KG | 159 → 163 | 267 → 271 |
+| Hessen | B, KB | 130 → 132 | 196 → 198 |
+| Mecklenburg-Vorpommern | B, KB, G, KG | 126 → 130 | 206 → 210 |
+| Saarland | B, KB | 154 → 156 | 260 → 262 |
+| Sachsen | B, KB | 157 → 159 | 256 → 258 |
+| Sachsen-Anhalt | B, KB, G, KG | 136 → 140 | 221 → 225 |
+| Thüringen | B, KB | 140 → 142 | 206 → 208 |
+
+Baden-Württemberg, Bremen und Hamburg behalten in beiden Dauern ihre bisherigen Mengen. Die technischen Ziel-IDs lauten B `6ba20688-8cbf-5db1-bda8-346893798d2f`, KB `d513289a-80a3-5e48-95d3-5791736cddba`, G `77b44d13-4368-5950-a943-decb377c7302` und KG `4af06e7e-c566-566d-bc99-53ada98fbf0e`. [Exakte Mengen und Herkunft](consumers/physics-seki-force-seeds.actual.json) · [Unabhängige Nachrechnung](consumers/recompute-seki-force-seeds.mts)
 
 ## Lernplätze in beiden Stufen
 
@@ -104,7 +120,7 @@ Für G enthält das Zielbuch auch den aktuellen geografischen Kontext. Zwei Prü
 
 Die zwei unabhängigen Fachprüfungen bestätigten die deutsche und englische Kurvenfahrtbeschreibung mit einer gegebenen maximalen Haftreibungskraft. Die Kurvenfahrt behält ihren Platz und ihre Voraussetzungen. Für B wurde der englische Auftrag zum Lesen der Kraftpfeile präzisiert und die Kontrollzeichnung mit eigenem Kraftmaßstab in das Anwendungsprofil aufgenommen. Zwei gesonderte blinde Prüfungen bestätigen diese Fassung. Das Reibungsmodell und die bestehende Grundlagenaufgabe erhalten B als Voraussetzung. Für das Reibungsmodell bleibt eine zusätzliche direkte Kante zum vorhandenen Bewegungsgesetz aufgrund des bereits vorhandenen Pfades überflüssig. Eingefrorene Transfers enden für `5f289cdc` und `be6d4895`. Beide erhalten strenge aktuelle Nachfolger. Für die Kurvenfahrt `e2da5eec` gab es keinen solchen Transfer. Die bestehende Grundlagenaufgabe behält ihre 14 belegten Anrechnungsziele. [Aktuelle Fachentscheidungen](goal-reviews/final-bg/activation.actual.json) · [Nachfolger der Aufgabenprüfung](assessments/final/be6d4895-current-successor.actual.json)
 
-Zwei unabhängige Korrektoren bewerteten 27 zweisprachige Musterantwortpaare für die vier Aufgaben. Bei allen 432 Einzelbewertungen stimmen beide Korrektoren und die versiegelte Autorenwertung überein. Die Gegenfälle mit fehlender Kernleistung scheitern, die Fälle mit zwei kleinen Formfehlern bestehen. Eine bestandene KB belegt die Kräftebilanz. Die ergänzende Pfeilzeichnung ist dort kompensierbar. [Bewertungen und Grenzen](assessments/final/content-acceptance.actual.json) · [Anrechnungsumfang KB](assessments/final/kb-solo-coverage.md)
+Im ersten Aufgabenstand bewerteten zwei unabhängige Korrektoren 27 zweisprachige Musterantwortpaare für die vier Aufgaben. Bei allen 432 Einzelbewertungen stimmen beide Korrektoren und die versiegelte Autorenwertung überein. Die Gegenfälle mit fehlender Kernleistung scheitern, die Fälle mit zwei kleinen Formfehlern bestehen. Eine bestandene KB belegt die Kräftebilanz. Die ergänzende Pfeilzeichnung ist dort kompensierbar. [Bewertungen und Grenzen](assessments/final/content-acceptance.actual.json) · [Anrechnungsumfang KB](assessments/final/kb-solo-coverage.md)
 
 Die zwei neuen aktiven Bilder und die drei Ersatzbilder für Grundgleichung, Reibungsmodell und Kurvenfahrt sind bei 360 px geprüft. Die Grafik zur gegebenen Resultierenden wurde mit dem Bildgenerator erzeugt. Die übrigen aktiven Bilder wurden für die maßstäbliche Kräftegeometrie konstruiert. Die Pfeile beginnen am zugehörigen Körper, nutzen den angegebenen Kraftmaßstab und haben freie Spitzen. B und G erhalten je eine eigene Karte in beiden Sprachen. Die Kurvenfahrtkarte setzt die verfügbare Maximalkraft voraus. Zwei weitere Bilder und Karten gehören zu den geparkten Kandidaten. [Bildprüfung und verworfene Fassungen](media/README.md) · [Aktive Bilder, Karten und Dateigleichheit](media/activation-1659/media-scope-and-parity.actual.json)
 
@@ -116,11 +132,25 @@ B ist in 61 Ansichten ein reguläres Ziel und in 20 eine Vorbereitung. G ist in 
 
 Die früheren vollständigen Schreibläufe mit den Python-Hash-Seeds 1 und 2 belegen die byteidentischen Ansichten des v5-Quellenstands. Der Regressionstest für Mecklenburg-Vorpommern beginnt mit der tatsächlich rekonstruierten Erwerbsfolge. Der aktuelle sächsische Quellenstand erhält seine eigenen nativen Generator-, Quellen- und Prüfinputkontrollen. [Aktuelle Autorenbindung und externe Reproduktion](source-roles/sn-2019-partial-g-20261126-v1/authoring-inputs.successor.actual.json) · [Aktuelle native Kontrollen](source-roles/sn-2019-partial-g-20261126-v1/native-checks.actual.json)
 
-Die erneute Prüfung der Mathematikvorleistungen bestätigt 1.036 Bedarfszeilen und 4.346 Kanten. 59 aktuelle Physik-Dateibindungen ändern sich. Sämtliche Bedarfsentscheidungen und Zeugenzeilen bleiben gültig. Für die beiden eigenen Aufgaben wurden die Warnungen einzeln geprüft. KB ist in 61 und KG in 18 Ansichten ein reguläres Angebot. Zehn Gegenproben prüfen unter anderem erweiterte Geltung und geänderte Warnschlüssel. [Messdaten im Archiv](#archivierte-messungen) · [Aufgabenangebote](routes/applicability/verification.final-v5.actual.json)
+Die erneute Prüfung der Mathematikvorleistungen bestätigt 1.036 Bedarfszeilen und 4.346 Kanten. 59 aktuelle Physik-Dateibindungen ändern sich. Sämtliche Bedarfsentscheidungen und Zeugenzeilen bleiben gültig. Für die beiden eigenen Aufgaben wurden die Warnungen einzeln geprüft. KB ist in 61 und KG in 18 Ansichten ein reguläres Angebot. Zehn Gegenproben prüfen unter anderem erweiterte Geltung und geänderte Warnschlüssel. Die Messung nach der Aufgabenrevision bestätigt jede Bedarfszeile und jede Voraussetzungskette erneut. Unter 183 Eingaben hat nur der Physikkatalog einen neuen Hash. [Erneute Prüfung des Mathematikbedarfs](takeover-20261126-v4/foreign-math.successor.actual.json) · [Messdaten im Archiv](#archivierte-messungen) · [Ursprüngliche Prüfung der Aufgabenangebote](routes/applicability/verification.final-v5.actual.json)
 
 Der aktuelle Qualitätslauf ergibt Physik **M7**, Sek I und Sek II jeweils **M4**. CQR-303 akzeptiert alle curricularen Ziele. CQR-003 besteht in allen 16 Ländern, CQR-104 in allen 106 geprüften Teilumfängen. Die neue Atlas-Navigation enthält B und G zusätzlich an ihren fachlichen Plätzen. Die persönliche Lernansicht bleibt getrennt vom nationalen Atlas. [Messdaten im Archiv](#archivierte-messungen) · [Unterstufenrouten](consumers/cqr104-route-counts.final-v5.actual.json)
 
 Die vollständigen lokalen Prüfprotokolle für den veröffentlichten Branch-Commit liegen im gemeinsamen Übergabeordner `tmp/e1-handover/reviews/e2-forces-final-ci/<commit>/`. Integrationsstand und Übergabe werden in `tmp/e1-handover/codex-status.md` geführt.
+
+## Übernahmekorrekturen vom 26. November 2026
+
+Die neue B-Karte verlangt das Addieren der äußeren Kräfte auf einer Linie mit ihren Vorzeichen. Den Zusammenhang zwischen Kraftsumme, Richtung und Bewegung gibt sie in beiden Sprachen in Worten wieder. Zwei unabhängige Prüfer bestätigten den Wortlaut auf dem Wissensstand von B. Beide Sprachfassungen sind über ihre eigenen Karteninhalte gebunden. Die Wissenskontexte von B, KB, G und KG unterscheiden vorausgesetzte, im Ziel erarbeitete und in der Aufgabe gegebene Begriffe. [Kartenprüfung](takeover-20261126-v4/b-card-review.successor.actual.json) · [Fachbegriffe und Wissenskontext](takeover-20261126-v4/wissenskontext.md)
+
+Beim Reibungsmodell und bei der Kurvenfahrt stehen die Kraftbeschriftungen nun vollständig auf freiem Hintergrund. Die Konstruktionsquellen, der Vergleich außerhalb der jeweiligen Beschriftungsfläche und die Sichtung bei 360 Pixeln belegen die unveränderte Kraftgeometrie. Die fünf aktiven Bildnachweise bestehen den nativen Prüfer. [Bild- und Maßstabsvergleich](media/label-placement-20261126-v1/current-images.actual.json) · [Aktuelle Bildbindung der Verständnisprofile](takeover-20261126-v4/positive-profiles/label-placement.successor.actual.json)
+
+Für die Übernahmekorrektur bewerteten zwei neue Korrektoren die 14 KB- und KG-Musterpaare in beiden Sprachen. In KB-03 vergaben beide 17/20 statt der vorab erwarteten 16/20. In der Antwort belegt die Erklärung zum fehlenden Richtungspfeil bei der Nullsumme zugleich das separat bewertete Ergebnis null. Diese KB-Fassung blieb als Entwurf erhalten. Die 13 Musterpaare der geparkten Aufgaben KT und KF behalten die Wertungen ihrer unveränderten Aufgabenfassungen.
+
+Bei KG stimmen sämtliche Teilwertungen mit der versiegelten Erwartung überein. Die Gewichtskraft wird am Körper eingezeichnet, weil sie auf diesen Körper wirkt. In der ersten Textformatierung waren außerdem Leerzeichen in die Bildadresse geraten. Beide Korrektoren bestätigten anschließend separat die Wiederherstellung der beiden Adressen und die Bytegleichheit mit dem von ihnen bewerteten Stimulus.
+
+Der zweite KB-Entwurf prüft die Pfeillänge unabhängig vom Ergebnis der Bilanz. Wer den eigenen Kraftmaßstab erklärt, zeigt damit, weshalb der Pfeil keinen Fahrweg angibt. Zwei weitere unabhängige Korrektoren beurteilten acht KB-Musterpaare in Deutsch und Englisch. Jeder ihrer 64 Teilwerte und jede Bestehensentscheidung stimmt mit der vorab versiegelten Erwartung überein. KB-03 erklärt den Maßstab, lässt aber die Bewegungsbegründungen aus und erreicht 16/20. KB-08 zeigt den vollständigen Kern und liest allein den Kraftpfeil fälschlich als Fahrweg. Die Antwort erreicht 19/20. Bei KB-B ist die Ruhefrage als Frage nach einem mit der Kräftekonstellation vereinbaren Zustand zu lesen. [Bewertungen und Aufgabenfreigabe](assessments/v5/content-acceptance.actual.json) · [Vier native Wissenskontexte](takeover-20261126-v4/knowledge-context.actual.json) · [Katalogbindung der Verbraucher](takeover-20261126-v4/catalog-consumers.successor.actual.json)
+
+Die beiden Aufgaben nutzen den Kraftpfeil am Körper mit seinem eigenen Maßstab. Der neue Materialnachweis bindet die beiden freigegebenen Aufgaben und die unveränderten Korrektururteile. Der Routenvergleich findet in allen 90 Ansichten die 24 bisherigen Pfeilnutzer und genau B, G, KB und KG zusätzlich. Alle 1.362 Vorkommen erfüllen die Voraussetzungen. In sieben Fällen bestimmt der Kalender keine Reihenfolge. Hier schützt die tatsächliche Voraussetzungskette die Reihenfolge. Für die vorhandene Pfeilaufgabe bleiben 42 Länderangebote, drei nationale Angebote und 45 Ansichten mit dem Pfeilziel als Vorbereitung. [Geprüfte Angebote der freigegebenen Aufgaben](routes/applicability/verification.kb5-kg4-arrow.actual.json) · [Aufgaben und Pfeilmaßstab](goal-reviews/assessment-contract.kb5-kg4.successor.actual.json) · [Vergleich der Pfeilnutzer](consumers/arrow-consumers.v4.successor.actual.json) · [Prüfung des vorhandenen Angebots](routes/applicability/k4-current-offer.v4.successor.actual.json)
 
 ## Archivierte Messungen
 
@@ -173,6 +203,22 @@ Die ältere Inventur liegt im Dossierarchiv unter `inventory/snapshot-<Stand>.<T
 
 Das Ergänzungsarchiv `dossier-pre-slim-late-current-02.tar.gz` sichert sieben später eingegangene Dateien. Sein SHA-256 ist `ffb7d419fa54af0fd038ed263e772640903864836252f6c9b18fdb1a8b10948b`, der des zugehörigen Index `dossier-pre-slim-late-current-02.index.json` ist `ae3d770432dbb5d91f08923ddbe601d52d0f915fdbab8342532863962727d1ee`.
 
+### Geprüfter Vorgänger `5cbb5da48c`
+
+Die Übergabeinventur vor der Übernahmekorrektur liegt unter `full-tables/slim-current-v3/`. Ihr Tabellenindex hat SHA-256 `66dc38a6b11595e965bdb5a22d3788532ed2acde1e06e5c51a7dd27036c4831d`. Die vollständige Wiederholung mit verlagerten Eingabeverzeichnissen bestätigte alle fünf Tabellen.
+
+| Historische Tabelle | SHA-256 |
+|---|---|
+| `files.jsonl` | `c01df529f3a3f584b6a132cac63af933cb254bdba4c21309e88cb4818c81daa5` |
+| `path-bindings.jsonl` | `b110bdf3a7a4e4fdfae0cda4a1c8a77c9573a30fefe671f98bc246bdf1cf262b` |
+| `digest-contracts.jsonl` | `bf12b1230b8de00c44102488c01e65e27f4b63a1f6c8c85f448f37515c80f5d9` |
+| `path-uses.jsonl` | `49d91426bedd016561ee8f5208788d00b576571a222b53dfd2d7e5ca3215bbe9` |
+| `summary.json` | `16e2855fa61e2e8f061d07fb29e0ee5fc4c1f70ce628b2d7ff48b1b3bf6b4981` |
+
+Das externe Archiv `retention-inputs/takeover-5cbb5da48c-v1/delivery-sources.tar.gz` enthält 553 Dateien dieses Git-Stands (SHA-256 `0368339a0c0c54713e4e6778698c656462488dd24a7731590f97b179e6fc6fdc`). Der zugehörige Dateiindex hat SHA-256 `6124744c97490e01d1ff40a1a9b0e622a20bf30947ee123335764a3365c96d94`, das Git-Bündel `delivery.bundle` SHA-256 `2b50bf40f1064c2676c29230b4b26e22fbf04c9dbfffed9c04e12185399ae23b`. Die aktuelle Prüfung des Mathematikbedarfs nutzt die gesicherten Messdaten unter `retention-inputs/w1-current-math-and-seeds/`. Dort stehen auch der Gradle-Beleg und das JUnit-Protokoll zur Sek-I-Auswahl. [Mathematikprüfung mit Einzelhashes](takeover-20261126-v4/foreign-math.successor.actual.json)
+
+Der technische Zwischenlauf `slim-current-v1` liegt im selben Archiv. Sein Index `table-index.json` mit den fünf Einzelhashes hat SHA-256 `eca72fbc81931f6f0581ef5d8f84059783dfebf1f9c15f2d065006d5dd56c261`.
+
 ### Inventur wiederholen
 
 Die sechs Variablen im folgenden Aufruf bezeichnen die Verzeichnisse der gesicherten Eingaben. Ihre Zuordnung steht im Übergabebericht. `W1_TABLE_INDEX` bezeichnet die dort aufbewahrte `table-index.json`, `W1_OUTPUT` ein neues Ausgabeverzeichnis außerhalb des Repositorys. Das Skript liest die Eingabedateien und die lokal gesicherten Archive erneut. Es vergleicht die neu berechneten vollständigen Tabellen mit dem erwarteten Index und prüft die Dateien des Übergabecommits. Der Manifestabschnitt `auditPolicy.externalRoots` beschreibt die Inhalte der Verzeichnisse. [Nachweisverzeichnis](evidence-manifest.json)
@@ -191,12 +237,12 @@ python3 -B curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261
 
 ### Neu berechnete Tabellen
 
-Die Inventur des Übergabestands findet 551 aktuelle Dateibindungen, 7.534 tatsächliche Fundstellen und 522 Fassungen von Nachweisdateien. Alle 7.828 Pfad- und Hashbindungen sind belegt. Weitere 119 Pfaderwähnungen in historischen Texten haben keinen Sollhash und keine heute aufgelöste Fundstelle. Die Tabelle `path-uses.jsonl` weist sie einzeln aus. Zwei weitere Dateien, dieses README und das Nachweisverzeichnis, werden direkt mit dem Git-Objekt verglichen. Das vermeidet eine Selbstreferenz, wenn sie die Tabellenhashes nennen. Der externe Index `full-tables/slim-current-v3/table-index.json` hat SHA-256 `66dc38a6b11595e965bdb5a22d3788532ed2acde1e06e5c51a7dd27036c4831d`.
+Die Inventur des Übergabestands findet 617 aktuelle Dateibindungen, 8.463 tatsächliche Fundstellen und 669 Fassungen von Nachweisdateien. Alle 14.601 Pfad- und Hashbindungen sind belegt. Weitere 133 Pfaderwähnungen in historischen Texten haben keinen Sollhash und keine heute aufgelöste Fundstelle. Die Tabelle `path-uses.jsonl` weist sie einzeln aus. Zwei weitere Dateien, dieses README und das Nachweisverzeichnis, werden direkt mit dem Git-Objekt verglichen. Das vermeidet eine Selbstreferenz, wenn sie die Tabellenhashes nennen. Der externe Index `full-tables/slim-takeover-v5/table-index.json` hat SHA-256 `2b626cc462d4207562bf2355ce0775ad520e98166bbf63ff537300ebad41ac84`.
 
 | Datei neben dem Tabellenindex | Bytes | SHA-256 |
 |---|---:|---|
-| `digest-contracts.jsonl` | 14.279.300 | `bf12b1230b8de00c44102488c01e65e27f4b63a1f6c8c85f448f37515c80f5d9` |
-| `files.jsonl` | 250.119 | `c01df529f3a3f584b6a132cac63af933cb254bdba4c21309e88cb4818c81daa5` |
-| `path-bindings.jsonl` | 6.418.522 | `b110bdf3a7a4e4fdfae0cda4a1c8a77c9573a30fefe671f98bc246bdf1cf262b` |
-| `path-uses.jsonl` | 71.997.443 | `49d91426bedd016561ee8f5208788d00b576571a222b53dfd2d7e5ca3215bbe9` |
-| `summary.json` | 3.505.809 | `16e2855fa61e2e8f061d07fb29e0ee5fc4c1f70ce628b2d7ff48b1b3bf6b4981` |
+| `digest-contracts.jsonl` | 22.688.601 | `b6a2c0d1dd6a048bc4719288aac7792db7afe4b6f9b7d08b2aa4d53bf54339cd` |
+| `files.jsonl` | 280.407 | `b2d6b47f2f27809960572344e66bd043b0592ad0064a596167532e643aea853d` |
+| `path-bindings.jsonl` | 11.976.237 | `2cc4f4fda711b489d141e553083a6d532a0d334331d899bd493a67fc09d11138` |
+| `path-uses.jsonl` | 81.803.064 | `cbee2167dd17cb9aa4d95e62399036f873259bb3e08d2e116428bc8b6ffec059` |
+| `summary.json` | 4.142.181 | `ce09f8a3a9611de92b38ca3c7a3868240598ed9a8aeffa3386a44daa2f0a9810` |
