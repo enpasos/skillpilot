@@ -180,7 +180,10 @@ for (const scope of ['', '-g8', '-g9', '-sekii']) for (const course of ['gk', 'l
     for (const language of ['de', 'en'] as const) {
       const deck = await read<{ deckId: string; cards: { id: string; tags?: string[]; originGoalIds?: string[] }[] }>(`memory-decks/de_gymnasium_physics_flashcards_mechanics_ephase.${language}.json`)
       assert.equal(deck.deckId, 'de_gymnasium_physics_mechanics_ephase')
-      assert.equal(deck.cards.length, 92)
+      assert.equal(deck.cards.length, 94)
+      assert.deepEqual(deck.cards.filter(card => card.id.startsWith('physics_e2_forces_')).map(card => card.id),
+        ['physics_e2_forces_b', 'physics_e2_forces_g'],
+        'W1 activates only B/G cards; T/F cards wait outside the deck for the voluntary role')
       assert.deepEqual(deck.cards.find(card => card.id === 'physics_directed_quantity_arrow_scale')?.originGoalIds,
         ['b77a7e93-22f9-5722-a4cc-f18a149ab030'])
       const derivationGoalId = '2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b'

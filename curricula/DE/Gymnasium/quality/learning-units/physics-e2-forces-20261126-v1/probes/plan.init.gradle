@@ -1,0 +1,37 @@
+// Run from backend with TASK_W_PLAN_SCRATCH pointing to an empty temporary directory.
+allprojects { project ->
+    project.plugins.withId('java') {
+        def tmp = new File(System.getenv('TASK_W_PLAN_SCRATCH'))
+        def evidence = new File(project.rootDir.parentFile,
+                'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-v1/probes')
+        def base = new File(project.projectDir,
+                'src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java')
+        def generated = new File(tmp, 'TaskWStoredE2PlanTest.java')
+        def methods = new File(evidence, 'plan-cases.java.txt')
+        def prepare = project.tasks.register('prepareTaskWStoredPlanCases') {
+            inputs.files(base, methods)
+            outputs.file(generated)
+            doLast {
+                def suite = base.text.replace('ClaudeV1CompletionRouteIntegrationTest', 'TaskWStoredE2PlanTest')
+                generated.text = suite.substring(0, suite.lastIndexOf('}')) + methods.text + '}\n'
+            }
+        }
+        def compile = project.tasks.register('compileTaskWStoredPlanCases', JavaCompile) {
+            dependsOn prepare, project.tasks.named('testClasses')
+            source(generated)
+            classpath = project.sourceSets.test.compileClasspath + project.sourceSets.test.output
+            destinationDirectory = new File(tmp, 'classes')
+        }
+        project.tasks.register('checkTaskWStoredPlans', Test) {
+            dependsOn compile
+            testClassesDirs = project.files(new File(tmp, 'classes'))
+            classpath = testClassesDirs + project.sourceSets.test.runtimeClasspath
+            filter.includeTestsMatching('*.TaskWStoredE2PlanTest.taskW*')
+            useJUnitPlatform()
+            maxHeapSize = '3g'
+            reports.junitXml.outputLocation = new File(tmp, 'xml')
+            reports.html.required = false
+            binaryResultsDirectory = new File(tmp, 'binary')
+        }
+    }
+}

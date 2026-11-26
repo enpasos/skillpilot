@@ -569,8 +569,8 @@
     },
     {
       "id": "physics_e_cov_041",
-      "front": "Kurvenfahrt mit Haftreibung: \nBedingung für rutschfrei?",
-      "back": "$\\frac{mv^2}{r} \\le \\mu_\\mathrm{H} mg$\n\ndaraus\n\n$v_\\text{max}= \\sqrt{\\mu_\\mathrm{H} gr}$",
+      "front": "Ebene Kurve mit gegebener maximaler Haftkraft: Bedingung für rutschfreies Fahren?",
+      "back": "Wenn die Haftreibung die radiale Kraft liefert, muss $\\frac{mv^2}{r}\\le F_{H,\\max}$ gelten. Dabei ist $F_{H,\\max}$ als verfügbarer Höchstwert gegeben. Bei konstantem Höchstwert folgt $v_\\max=\\sqrt{\\frac{F_{H,\\max}r}{m}}$. Die tatsächliche Haftkraft ist die benötigte Radialkraft, nicht pauschal der Höchstwert.",
       "originGoalIds": [
         "e2da5eec-45de-5527-9ad7-16f41cacbe58"
       ],
@@ -1290,6 +1290,34 @@
         "GK",
         "LK",
         "goal:b77a7e93-22f9-5722-a4cc-f18a149ab030"
+      ]
+    },
+    {
+      "id": "physics_e2_forces_b",
+      "front": "Kräfte auf einer Linie: Wie entstehen Vorzeichen und Resultierende?",
+      "back": "Für denselben Körper eine positive Richtung wählen. Die kollinearen äußeren Kräfte tragen das entsprechende Vorzeichen; $F_\\mathrm{res}=\\sum F_\\mathrm{ext}$. Bei $F_\\mathrm{res}\\ne0$ gibt das Vorzeichen die Richtung der Resultierenden an. Bei $F_\\mathrm{res}=0$ sind Ruhe und geradlinig konstante Geschwindigkeit möglich. Kraftpfeile beginnen am Körper; ihre Länge folgt dem Kraftmaßstab.",
+      "originGoalIds": [
+        "6ba20688-8cbf-5db1-bda8-346893798d2f"
+      ],
+      "category": "Mechanik",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:6ba20688-8cbf-5db1-bda8-346893798d2f"
+      ]
+    },
+    {
+      "id": "physics_e2_forces_g",
+      "front": "Gewichtskraft am Hang: Was leistet die zeichnerische Zerlegung?",
+      "back": "Den Gewichtspfeil am Körper in einen zur Ebene parallelen und einen dazu senkrechten Pfeil zerlegen. Beide beginnen am selben Körper; ihre Beträge werden am Kraftmaßstab abgelesen. Ihre Vektorsumme ergibt den ursprünglichen Gewichtspfeil. Die Komponenten ersetzen die Gewichtskraft, sie kommen nicht als weitere Kräfte hinzu. Die Kontakt-Normalkraft ist eine andere Kraft.",
+      "originGoalIds": [
+        "77b44d13-4368-5950-a943-decb377c7302"
+      ],
+      "category": "Mechanik",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:77b44d13-4368-5950-a943-decb377c7302"
       ]
     }
   ],

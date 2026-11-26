@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "physics-e2-forces-bg-final-20261126-current",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI Codex, synthesis of two separate current-input Physics review sessions",
+  "synthesizedAt": "2026-11-26T16:21:49.000Z",
+  "batch": {
+    "batchId": "physics-e2-forces-bg-final-20261126",
+    "batchManifestDigest": "sha256:eb5b110b27168eb1a3791228e0c277de6f1ad7a9466cbecf68a9b7ec05c9f27e",
+    "configDigest": "sha256:fb5d8b0666dd11617cb8e50c06cf0711f2b8f883ce47ebffb9391898cf57b5d7",
+    "bundleFingerprint": "sha256:0ba64ccfa660e67096f1394289f457c053436e5fdbad87128688d129b6de2138",
+    "bookDigest": "sha256:9d5b4cfd29d2ffc7a9f12bcda7b3d6d8ee27c2140eb82dc8ff9bf70991543db4",
+    "reviewInputFingerprint": "sha256:19ae6f0c469c065b96ddf576f618205d37b9e6fb3d21522aad45cddadac64301",
+    "dualSummaryDigest": "sha256:5646ffd911a2acbe151994c0ca13add699d10e9026877e6ba1c8661592d6d636",
+    "canonicalLandscapeDigest": "sha256:696b8dcb6684181cef363f0178d553bc471a5d200ef66d47cd795f6fa1282677"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "physics-e2-forces-bg-final-20261126-a",
+      "campaignDigest": "sha256:408082b9722cbca9aa60b76ea5ac98a2a6942e22386c6d531aba2e36b0bff28e",
+      "roundId": "physics-e2-forces-bg-final-20261126-first-pass-a",
+      "independenceGroupId": "physics-e2-forces-bg-final-20261126-independent-a",
+      "reviewInputFingerprint": "sha256:19ae6f0c469c065b96ddf576f618205d37b9e6fb3d21522aad45cddadac64301",
+      "batchId": "physics-e2-forces-bg-final-20261126-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9d0a97b070dec0363cf3d8f905c9adadba0213a87df950d4cad43a8f15b89e02",
+      "runId": "physics-e2-forces-bg-final-20261126-first-pass-a-gpt-6.1-sol-independent",
+      "runManifestDigest": "sha256:b341403546d4cea890b7f285dbe16d14ae1e0171108abed4d2275a962f2a7c5f",
+      "resultsDigest": "sha256:7ebdb0509b4d4f7d254f4f5bf6df66290d1048a9a10ea2e1375c9ea5fe4e1d5b"
+    },
+    "second": {
+      "campaignId": "physics-e2-forces-bg-final-20261126-b",
+      "campaignDigest": "sha256:cc5fc1c226df759a3a42ab27d821820adf56a8314ea2bc4415d289509dd93069",
+      "roundId": "physics-e2-forces-bg-final-20261126-first-pass-b",
+      "independenceGroupId": "physics-e2-forces-bg-final-20261126-independent-b",
+      "reviewInputFingerprint": "sha256:19ae6f0c469c065b96ddf576f618205d37b9e6fb3d21522aad45cddadac64301",
+      "batchId": "physics-e2-forces-bg-final-20261126-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:296c61d489c86b543459cc4bc1036c1f0cf21d27b940c98b1c1b434be7b74439",
+      "runId": "physics-e2-forces-bg-final-20261126-first-pass-b-gpt-6.1-sol-independent",
+      "runManifestDigest": "sha256:d9b47ae945f6138289181cc8f7a1c50d8eb820fe59bc3316879e41d3ddc0613f",
+      "resultsDigest": "sha256:4f217a2b02e0e15e79aaa4d3438d2df869cd31ea8647458dcc2bd196363a95b6"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "physics-e2-forces-bg-final-20261126-current-decision-001",
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d7f7c16a6c7b643e0523059b22a4d3b787a64bbb17cf9d67d1a5fc24381c0f47",
+      "pageFingerprint": "sha256:828c7e4d242a54e11509faa1f041f3c178cbf2482cb3c7511d22e7c052636df4",
+      "goalReviewContextFingerprint": "sha256:3067d27514152c1a3794b777b9532148e3bbf74ebe3041d0b82dc807719a99c1",
+      "finalText": {
+        "titleDe": "Kräfte auf einer Linie bilanzieren",
+        "titleEn": "Balance forces along a line",
+        "descriptionDe": "Die lernende Person kann für einen gewählten Körper eine positive Richtung festlegen, seine kollinearen äußeren Kräfte mit Vorzeichen addieren und die resultierende Kraft bestimmen. Bei einer von null verschiedenen Summe gibt sie auch deren Richtung an. Sie erklärt, warum die Kraftsumme null zu Ruhe wie zu geradlinig gleichförmiger Bewegung passt. In der Skizze beginnen die Kraftpfeile am Körper. Ihre Länge liest sie am angegebenen Kraftmaßstab ab.",
+        "descriptionEn": "The learner can choose a positive direction, add the signed external forces acting along one line on a selected body and determine the magnitude and direction of the net force when it is nonzero. They explain why zero net force is consistent with rest and with constant velocity. In the sketch, force arrows start at the body. They read their lengths using the given force scale."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "physics-e2-forces-bg-final-20261126-first-pass-a-gpt-6.1-sol-independent-B",
+          "recordDigest": "sha256:3209709ede1bc6bf748b8435407dca3edd8080f301e664262396aead0370de75"
+        },
+        "second": {
+          "recordId": "physics-e2-forces-bg-final-20261126-first-pass-b-gpt-6.1-sol-independent.6ba20688-8cbf-5db1-bda8-346893798d2f",
+          "recordDigest": "sha256:2025b6ca1b3ecbba1d23128e0aba5875047452a47f90976e03f8c8a12839e284"
+        }
+      },
+      "rationaleDe": "Die Bilanz stellt Körperauswahl, Vorzeichen und beide Bewegungszustände bei Nullsumme in den Mittelpunkt. Beide Sprachfassungen verlangen nun das Lesen der am gewählten Körper beginnenden Pfeile mit eigenem Kraftmaßstab. Die Kontrollzeichnung im Anwendungsfall prüft die Zuordnung.",
+      "rationaleEn": "The balance is assessed by selecting one body, summing signed forces and explaining both zero-net-force states. Both versions now require scale reading of arrows anchored at the selected body. Reconstructing the sketch checks the force attribution."
+    }
+  ],
+  "manifestFingerprint": "sha256:f1425386c296b1897ec4fc21af8347905f5e8d7125f748fda7fec1ea6c2c194c"
+}

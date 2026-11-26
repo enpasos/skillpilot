@@ -17,6 +17,7 @@ from pathlib import Path
 
 import generate_hessen_physics_stage_views as graph
 from generate_physics_arrow_places import apply_arrow_places, with_arrow_places
+from generate_physics_force_places import apply_force_places, complete_force_authoring, with_clean_force_input
 from generate_physics_partial_orders import (partial_order as derive_partial_order,
     acquisition_placements, contextual_targets, course_seeds)
 
@@ -29,7 +30,7 @@ BY_EXTRACTION = "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_
 BY_MAPPING = "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json"
 SOURCE_PINS = {
     BY_EXTRACTION: "c6771966752d0bb257e1a0fcef7290b92f5eb60534c03458685f2dfc14f32ee7",
-    BY_MAPPING: "94c8d020a35f4278a6095cfa66e1e482d85c1a1953a340dab721d1f63c1ea0e8",
+    BY_MAPPING: "b36be229dec0c9ef3f850b51b9a162cce3916e8a99b13b05e8786fb27a750e1a",
 }
 SOURCE_PINS.update(SOURCE_PLAN["retainedSourcePins"])
 
@@ -1866,6 +1867,15 @@ generate_bavaria = with_arrow_places(generate_bavaria, graph.GOALS, intermediate
 generate_source_land = with_arrow_places(generate_source_land, graph.GOALS, intermediate_preparation=True)
 generate_canonical = with_arrow_places(generate_canonical, graph.GOALS, intermediate_preparation=True)
 lower_excerpt = with_arrow_places(lower_excerpt, graph.GOALS)
+generate_bavaria = with_clean_force_input(generate_bavaria)
+generate_source_land = with_clean_force_input(generate_source_land)
+generate_canonical = with_clean_force_input(generate_canonical)
+lower_excerpt = with_clean_force_input(lower_excerpt, clean_seed_ids=True)
+
+
+def complete_authoring(view):
+    """Public final source/role/acquisition/order completion used by main."""
+    return complete_force_authoring(view, graph.GOALS)
 
 
 def main():
@@ -1942,7 +1952,7 @@ def main():
         path = DIRECTORY / f"de-{state.lower()}-seki.view.json"
         outputs.append((path, lower))
         report.append({"file": path.name, "changed": not path.exists() or json.loads(path.read_text()) != lower, **evidence})
-    outputs = [(path, apply_arrow_places(generated, graph.GOALS)) for path, generated in outputs]
+    outputs = [(path, complete_authoring(apply_arrow_places(generated, graph.GOALS))) for path, generated in outputs]
     for path, generated in outputs:
         if args.write:
             path.write_text(json.dumps(generated, ensure_ascii=False, indent=2) + "\n")

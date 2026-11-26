@@ -1,0 +1,3 @@
+# KB prerequisite scope
+
+B provides the signed same-body force balance and vector-scale representation. Its exact current prerequisite `5ea765ac` explicitly attributes motion changes to a resultant force and teaches inertia. The packet includes every transitive prerequisite definition, including mathematics. The task additionally supplies the qualitative direction-of-velocity-change rule so the learner need not infer an unstated force law, acceleration magnitude, mass or trigonometric relation. The independent D uses another cart and distinct210/90/30 N forces with90 N resultant; no same-trial duplicate can supply C's360/120/420 N balance and180 N resultant. No prerequisite edge or ordinary-goal wording was changed.

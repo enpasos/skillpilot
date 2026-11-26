@@ -1,0 +1,37 @@
+[
+  {
+    "case": "unsupported-voluntary",
+    "valid": false,
+    "errors": [
+      {
+        "path": "rootNodes/1",
+        "message": "{'kind': 'goalEntry', 'goalId': '11111111-2222-4333-8444-555555555555', 'projectionRole': 'voluntary'} is not valid under any of the given schemas"
+      }
+    ]
+  },
+  {
+    "case": "unsupported-branch",
+    "valid": false,
+    "errors": [
+      {
+        "path": "scope",
+        "message": "Additional properties are not allowed ('branch' was unexpected)"
+      }
+    ]
+  },
+  {
+    "case": "unsupported-cohort",
+    "valid": false,
+    "errors": [
+      {
+        "path": "scope",
+        "message": "Additional properties are not allowed ('cohort' was unexpected)"
+      }
+    ]
+  },
+  {
+    "case": "permitted-duration-dimension",
+    "valid": true,
+    "errors": []
+  }
+]

@@ -1,0 +1,238 @@
+{
+  "base": "7c921a452caa00636d8bfb8b324d530bbc4a2886",
+  "cut": "26 November 2026, 14:18 CET; first implementation preflight",
+  "status": "parked before catalog activation",
+  "activePhysicsMaturity": "M7",
+  "activeStageMaturity": {
+    "Sekundarstufe I": "M4",
+    "Sekundarstufe II": "M4"
+  },
+  "physicsViewCount": 90,
+  "agreedPlacementInventory": {
+    "views": 90,
+    "rows": 512,
+    "countsByRole": {
+      "target": 105,
+      "voluntary": 358,
+      "preparation": 29,
+      "Länder-Synthese": 14,
+      "target (nur NW8) / voluntary (übrige Zweige)": 6
+    }
+  },
+  "beforeHessianStructureTargets": [
+    {
+      "view": "de-he-gym-physics-gk-g8",
+      "count": 29,
+      "mixedExamPresent": true
+    },
+    {
+      "view": "de-he-gym-physics-gk-g9",
+      "count": 29,
+      "mixedExamPresent": true
+    },
+    {
+      "view": "de-he-gym-physics-gk",
+      "count": 29,
+      "mixedExamPresent": true
+    },
+    {
+      "view": "de-he-gym-physics-lk-g8",
+      "count": 28,
+      "mixedExamPresent": false
+    },
+    {
+      "view": "de-he-gym-physics-lk-g9",
+      "count": 28,
+      "mixedExamPresent": false
+    },
+    {
+      "view": "de-he-gym-physics-lk",
+      "count": 28,
+      "mixedExamPresent": false
+    },
+    {
+      "view": "de-he-gym-sekii-physics-gk",
+      "count": 29,
+      "mixedExamPresent": true
+    },
+    {
+      "view": "de-he-gym-sekii-physics-lk",
+      "count": 28,
+      "mixedExamPresent": false
+    }
+  ],
+  "KBFilterCases": [
+    {
+      "stage": "SekI",
+      "course": "GK",
+      "duration": "G8",
+      "accepted": true
+    },
+    {
+      "stage": "SekI",
+      "course": "GK",
+      "duration": "G9",
+      "accepted": true
+    },
+    {
+      "stage": "SekI",
+      "course": "LK",
+      "duration": "G8",
+      "accepted": true
+    },
+    {
+      "stage": "SekI",
+      "course": "LK",
+      "duration": "G9",
+      "accepted": true
+    },
+    {
+      "stage": "SekI",
+      "course": "GK+LK",
+      "duration": "G8",
+      "accepted": true
+    },
+    {
+      "stage": "SekI",
+      "course": "GK+LK",
+      "duration": "G9",
+      "accepted": true
+    },
+    {
+      "stage": "SekII",
+      "course": "GK",
+      "duration": "G8",
+      "accepted": true
+    },
+    {
+      "stage": "SekII",
+      "course": "GK",
+      "duration": "G9",
+      "accepted": true
+    },
+    {
+      "stage": "SekII",
+      "course": "LK",
+      "duration": "G8",
+      "accepted": true
+    },
+    {
+      "stage": "SekII",
+      "course": "LK",
+      "duration": "G9",
+      "accepted": true
+    },
+    {
+      "stage": "SekII",
+      "course": "GK+LK",
+      "duration": "G8",
+      "accepted": true
+    },
+    {
+      "stage": "SekII",
+      "course": "GK+LK",
+      "duration": "G9",
+      "accepted": true
+    },
+    {
+      "stage": "CrossStage",
+      "course": "GK",
+      "duration": "G8",
+      "accepted": true
+    },
+    {
+      "stage": "CrossStage",
+      "course": "GK",
+      "duration": "G9",
+      "accepted": true
+    },
+    {
+      "stage": "CrossStage",
+      "course": "LK",
+      "duration": "G8",
+      "accepted": true
+    },
+    {
+      "stage": "CrossStage",
+      "course": "LK",
+      "duration": "G9",
+      "accepted": true
+    },
+    {
+      "stage": "CrossStage",
+      "course": "GK+LK",
+      "duration": "G8",
+      "accepted": true
+    },
+    {
+      "stage": "CrossStage",
+      "course": "GK+LK",
+      "duration": "G9",
+      "accepted": true
+    }
+  ],
+  "schema": "contracts/composition-view/v1.2/composition-view.schema.json",
+  "originalInputFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "fbddfe1cea93a07b9c1848c4b409ec75cdb73b12cdcc48f696f6c026844de969"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerLearningPlanService.java",
+      "sha256": "87ce052acc70e5f49efdb1ddda97717e56695713854a0dfc15d8f871514b6e9a"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "3f392df1e1e3eda8bfc617efdd41efaccebc716415b72081dfef37f8457d4ff5"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/UnitLearningMaterialService.java",
+      "sha256": "496a8d68be77a5cb037d41497cf5a473d5f404a4149c7235ed829b4bba6e5957"
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "sha256": "76ef60b55a25e1c6181f69af85e7337e06938042be6603b65b46d2b2ed028990"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1CompletionRouteIntegrationTest.java",
+      "sha256": "b078c5839726249daea8f12086424d13a946862f344adcce3d4d0342d637cde7"
+    }
+  ],
+  "handoverInputs": [
+    {
+      "relativeTo": "local e1-handover",
+      "path": "reviews/e2-forces-node-review/main-7c921a452c/independent-review.actual.json",
+      "sha256": "7566ec4a7510e9f118f91fc7c2a628ead0ce68710b814f04374795191abee32c"
+    },
+    {
+      "relativeTo": "local e1-handover",
+      "path": "reviews/e2-forces-node-review/main-7c921a452c/source-table.md",
+      "sha256": "c58ee71a057a2d5db8c2713a60734022284cb297a109c4e832ee217bc62c701e"
+    },
+    {
+      "relativeTo": "local e1-handover",
+      "path": "reviews/e2-forces-node-review/main-7c921a452c/placements-90.tsv",
+      "sha256": "743dfc261cbc8f551f325171cf0c91923a217764b3806d670564e82d102a6abc"
+    },
+    {
+      "relativeTo": "local e1-handover",
+      "path": "reviews/e2-forces-implementation-preflight/roles/review.md",
+      "sha256": "565fcd53a47d6143ba40eecc0491b05ca23713011a66421e0f5680c977ece03d"
+    },
+    {
+      "relativeTo": "local e1-handover",
+      "path": "reviews/e2-forces-implementation-preflight/kb/review.md",
+      "sha256": "6611c5bff602422c060479750e69eefb8bc6224879670361f905ba9a9ae38f5d"
+    },
+    {
+      "relativeTo": "local e1-handover",
+      "path": "reviews/e2-forces-implementation-preflight/plan/report.md",
+      "sha256": "96b7227af8cd09879f48977e337c3bd4316b4b7fecf73a46efd4a6aa9744e974"
+    },
+    {
+      "relativeTo": "local e1-handover",
+      "path": "reviews/e2-forces-implementation-preflight/plan/measurement.actual.json",
+      "sha256": "54cb19d4dcbb40a321ec87199370839c8405ac5fbeb67c92f3b63268a6dd2b34"
+    }
+  ]
+}

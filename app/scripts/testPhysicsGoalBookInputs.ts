@@ -215,6 +215,8 @@ const REVIEWED_NEWTON_ATOMIC_GOAL_IDS = [
   '00245a43-eb89-47d2-92d7-21799dbec9f3',
 ] as const
 const SEMANTIC_RECHECK_ATOMIC_GOAL_IDS = new Set([
+  '6ba20688-8cbf-5db1-bda8-346893798d2f', // W1: individually reviewed force balance.
+  '77b44d13-4368-5950-a943-decb377c7302', // W1: individually reviewed graphical weight resolution.
   // E.2 energy: the five independent current-input semantic reviews.
   '2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b',
   '6affc2ea-ecd2-4fcd-8877-3ffa15b0425b',
@@ -649,21 +651,26 @@ const HESSE_E1_ASSESSMENT_IDS = new Set([
   'f13ca187-b680-5f47-b4ad-76bd474bd8a2',
 ])
 const EXPECTED_COUNTS: SemanticKindLedger['counts'] = {
-  curricularAtomic: 495,
+  curricularAtomic: 497,
   curricularArea: 112,
-  practiceAssessment: 252,
+  practiceAssessment: 254,
   programStructure: 1,
   memory: 5,
   runtimeSupport: 4,
   orientation: 4,
-  total: 873,
+  total: 877,
 }
 // One reviewed measurement-rate atom is preparation only in the atlas's
 // current source views. It remains an ordinary curricular goal in the ledger.
 const ATLAS_PREPARATION_ONLY_GOAL_ID = '13b338eb-f761-5817-9058-11043b9cb253'
-const EXPECTED_ATLAS_TARGET_COUNT = 494
+const EXPECTED_ATLAS_TARGET_COUNT = 496
 const DIRECTED_QUANTITY_GOAL_ID = 'b77a7e93-22f9-5722-a4cc-f18a149ab030'
 const ENERGY_DERIVATION_GOAL_ID = '2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b'
+const FORCE_BALANCE_GOAL_ID = '6ba20688-8cbf-5db1-bda8-346893798d2f'
+const GRAPHICAL_WEIGHT_GOAL_ID = '77b44d13-4368-5950-a943-decb377c7302'
+const W1_ADDED_ATLAS_TARGET_IDS = [FORCE_BALANCE_GOAL_ID, GRAPHICAL_WEIGHT_GOAL_ID]
+const W1_ADDED_CATALOG_IDS = [...W1_ADDED_ATLAS_TARGET_IDS,
+  'd513289a-80a3-5e48-95d3-5791736cddba', '4af06e7e-c566-566d-bc99-53ada98fbf0e']
 // These four reviewed E.1 split atoms extend the existing target set; every
 // previous atlas and canonical-profile identity remains independently pinned.
 const E1_ADDED_NATIONAL_TARGET_IDS = [
@@ -736,8 +743,9 @@ const FINAL_SPLIT_ASSESSMENT_COVERAGE = new Map([
 // The pre-E.2 diagnostic included 8,739 targets and retained every excluded occurrence in CQR-104.
 // E.2 adds twelve system-momentum and three mean-force occurrences in the actual source views.
 // A2 adds 84 selected curricular occurrences. K4 adds one explicit closing endpoint.
-const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 9233 + 12 + 3 + 84
-const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 8739 + 84
+// W1 adds 52 source-supported force-balance/graphical-resolution occurrences.
+const EXPECTED_PHYSICS_SEKI_PROJECTED_ROUTE_TARGET_OCCURRENCES = 9233 + 12 + 3 + 84 + 52
+const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTED_TARGET_OCCURRENCES = 8739 + 84 + 52
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_OCCURRENCES = 494 + 12 + 3
 const EXPECTED_PHYSICS_SEKI_PROFILE_SELECTOR_EXCLUDED_UNIQUE_GOALS = 61 + 2
 const EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES = new Map([
@@ -1824,6 +1832,40 @@ for (const [index, closure] of arrowPreparation.closures.entries()) {
   assert.deepEqual(closure.removed, [])
   assert.deepEqual(closure.added, closure.goalId === 'b1808b4c-5e02-5e1f-831f-47ee126e00ee' ? [DIRECTED_QUANTITY_GOAL_ID] : [])
   assert.deepEqual(closure.currentIds, [...closure.beforeIds, ...closure.added].sort(compareCodePoints))
+}
+const forcePreparationPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/current-stage-preparation.technical-final.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, forcePreparationPath), 'utf8')), '95ec0761769fdce70d059c09c28add4c402124846ab103c7e3b39b17853b9444')
+const forcePreparation = readJson<typeof arrowPreparation>(forcePreparationPath)
+assert.deepEqual(forcePreparation.predecessor, {path: arrowPreparationPath,
+  sha256: sha256(readFileSync(resolve(repoRoot, arrowPreparationPath), 'utf8')), payloadCount: 220})
+assert.equal(forcePreparation.historicalPayloadCount, 220)
+assert.equal(forcePreparation.currentPayloadCount, 221)
+assert.equal(forcePreparation.retainedOtherPayloads, 218)
+assert.equal(forcePreparation.learnerResultTransfer, false)
+assert.equal(forcePreparation.subjectMatterApprovalClaimed, false)
+assert.deepEqual(forcePreparation.changes.map(row => row.goalId), [
+  '5f289cdc-fda1-4058-b44f-041ba1398e79', 'be6d4895-65ab-545b-8df9-84e5a308a5e3'])
+for (const change of forcePreparation.changes) {
+  const index = currentPreparationPins.findIndex(row => row.goalId === change.goalId)
+  const previous = currentPreparationPins[index]
+  assert.deepEqual({goalId: previous.goalId, rawSha256: previous.rawSha256,
+    normalizedSha256: previous.normalizedSha256}, change.before)
+  assert.deepEqual(change.changedFields, change.goalId.startsWith('5f289cdc')
+    ? ['description', 'descriptionEn', 'resourceLinks'] : ['requires'])
+  assert.equal(sha256(JSON.stringify(change.beforeGoal)), change.before.rawSha256)
+  assert.deepEqual(change.currentGoal, rawStagePreparationById.get(change.goalId))
+  currentPreparationPins[index] = change.current
+}
+assert.deepEqual(forcePreparation.additionalPreparationPayloads.map(row => row.goalId), [FORCE_BALANCE_GOAL_ID])
+currentPreparationPins.push(...forcePreparation.additionalPreparationPayloads)
+assert.equal(currentPreparationPins.length, 221)
+assert.deepEqual(forcePreparation.closures.map(row => row.goalId), arrowPreparation.closures.map(row => row.goalId))
+for (const [index, closure] of forcePreparation.closures.entries()) {
+  assert.deepEqual(closure.beforeIds, arrowPreparation.closures[index].currentIds)
+  assert.deepEqual(closure.removed, [])
+  assert.deepEqual(closure.added, closure.goalId === 'be6d4895-65ab-545b-8df9-84e5a308a5e3'
+    ? [FORCE_BALANCE_GOAL_ID, DIRECTED_QUANTITY_GOAL_ID] : [])
+  assert.deepEqual(closure.currentIds, [...closure.beforeIds, ...closure.added].sort(compareCodePoints))
   assert.deepEqual([...collectWholeMaterialPrerequisiteClosure(preparationLandscape, closure.goalId).atomicGoalIds]
     .sort(compareCodePoints), closure.currentIds)
 }
@@ -1845,8 +1887,9 @@ for (const kind of ['assessments', 'rejected'] as const) {
     assert.equal(actual.unresolvedReferences.size, 0)
     const arrow = arrowPreparation.closures.find(receipt => receipt.goalId === row.goalId)!
     assert.deepEqual([...previous, ...row.added].sort(compareCodePoints), arrow.beforeIds)
-    assert.equal(actual.atomicGoalIds.size, row.currentCount + arrow.added.length)
-    assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints), arrow.currentIds)
+    const force = forcePreparation.closures.find(receipt => receipt.goalId === row.goalId)!
+    assert.equal(actual.atomicGoalIds.size, row.currentCount + arrow.added.length + force.added.length)
+    assert.deepEqual([...actual.atomicGoalIds].sort(compareCodePoints), force.currentIds)
   }
 }
 assert.deepEqual(currentStageOffers.assessments.map(row => row.goalId), [saxonAccelerationExam, saxonFreeFallExam])
@@ -2582,8 +2625,9 @@ assert.deepEqual(foreignContainsEdges, [], 'Physics canonical contains must rema
 // Current, independently reviewed repairs may change a goal's preparation.
 // V9 transfers unchanged goals individually; it does not require preserving an
 // older whole-catalog prerequisite inventory. Resolve the actual foreign edges.
-assert.equal(foreignRequiresEdges.length, 166, 'The energy cut adds two direct Mathematics prerequisites to the prior 164')
+assert.equal(foreignRequiresEdges.length, 167, 'W1 adds the force-balance Mathematics prerequisite to the 166 after the energy cut')
 for (const [ownerId, required] of [
+  [FORCE_BALANCE_GOAL_ID, ['4b67bed9-06da-40b2-a306-24e9e7dfd390']],
   ['6affc2ea-ecd2-4fcd-8877-3ffa15b0425b', ['a6469c01-6ca3-5eb2-a82c-94f3d0560b32']],
   ['2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b', ['2c4830e6-a8d5-48d0-9202-3b7d18a419c2']],
   ['53afbda1-5776-502b-8867-471975d7b766', ['4eeab7d5-eeb3-579b-845e-1c52ffe9e89f', 'ee48e811-4c9c-5080-9836-8403fc9f0810']],
@@ -2800,9 +2844,11 @@ assert.equal(examForms.root.previousSourceFingerprint, lowerMomentumKinds.root.c
 const arrowAssessmentId = '2569d84a-5bf1-542b-bc43-6ade1df971c4'
 const rootChildren = rootForPractice.contains as string[]
 assert.equal(rootChildren[1], DIRECTED_QUANTITY_GOAL_ID)
-assert.equal(rootChildren.at(-1), arrowAssessmentId)
-const rootBeforeArrows = {...rootForPractice, contains: rootChildren.filter(id => id !== DIRECTED_QUANTITY_GOAL_ID && id !== arrowAssessmentId)}
-assert.equal(rootBeforeArrows.contains.length + 2, rootChildren.length)
+assert.deepEqual(rootChildren.slice(-4), W1_ADDED_CATALOG_IDS)
+const rootAtArrows = {...rootForPractice, contains: rootChildren.filter(id => !W1_ADDED_CATALOG_IDS.includes(id))}
+assert.equal(rootAtArrows.contains.at(-1), arrowAssessmentId)
+const rootBeforeArrows = {...rootAtArrows, contains: rootAtArrows.contains.filter(id => id !== DIRECTED_QUANTITY_GOAL_ID && id !== arrowAssessmentId)}
+assert.equal(rootBeforeArrows.contains.length + 2, rootAtArrows.contains.length)
 assert.deepEqual(rootBeforeArrows.contains.slice(-2), [priorMeanForce.goalId, exerciseIds[0]])
 assert.equal(fingerprintSemanticKindSourceGoal({...rootBeforeArrows, contains: rootBeforeArrows.contains.slice(0, -1)}), examForms.root.previousSourceFingerprint)
 assert.equal(examForms.lowerStageExercises.previousChildren, 70)
@@ -3710,13 +3756,21 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
       const sourceStages = collectCompositionStructures(crossStage.rootNodes, 'physics-seki')
       const excerptStages = collectCompositionStructures(view.rootNodes, 'physics-seki')
       assert.equal(sourceStages.length, 1)
-      assert.deepEqual(excerptStages, sourceStages,
-        `${view.viewId}: preserve every exact lower-stage reference payload and acquisition placement`)
+      const beforeForceCut = (nodes: CompositionViewNode[]): CompositionViewNode[] => nodes
+        .filter(node => node.kind === 'structure' || !W1_ADDED_CATALOG_IDS.includes(node.goalId))
+        .map(node => node.kind === 'structure' ? {...node, children: beforeForceCut(node.children)} : node)
+      assert.deepEqual(beforeForceCut(excerptStages), sourceStages,
+        `${view.viewId}: retain every previous lower-stage reference; W1 adds only B and KB to the separate lower view`)
       const ownAtoms = (ids: Set<string>) => [...ids]
         .filter((id) => semanticGoalById.get(id)?.contains.length === 0).sort(compareCodePoints)
       const stageRoles = collectCompositionProjectionRoleGoalIds(sourceStages, physicsAndMathGoalById)
+      const excerptRoles = collectCompositionProjectionRoleGoalIds(excerptStages, physicsAndMathGoalById)
+      assert.deepEqual([...excerptRoles.targetGoalIds].filter(id => W1_ADDED_CATALOG_IDS.includes(id)).sort(compareCodePoints),
+        [FORCE_BALANCE_GOAL_ID, W1_ADDED_CATALOG_IDS[2]].sort(compareCodePoints))
+      assert.deepEqual([...stageRoles.targetGoalIds].filter(id => W1_ADDED_CATALOG_IDS.includes(id)), [],
+        'The combined Hessian view owns B and KB once in E.2; the separate lower view keeps its own source-backed pair')
       const sourceRoles = collectCompositionProjectionRoleGoalIds(crossStage.rootNodes, physicsAndMathGoalById)
-      const sourceTargetIds = new Set(ownAtoms(stageRoles.targetGoalIds))
+      const sourceTargetIds = new Set([...ownAtoms(stageRoles.targetGoalIds), FORCE_BALANCE_GOAL_ID, W1_ADDED_CATALOG_IDS[2]])
       const required = new Set<string>()
       const pending = [...sourceTargetIds]
       while (pending.length > 0) {
@@ -3741,7 +3795,7 @@ sourceManifest.sourcePaths.forEach((sourcePath) => {
       const assertBoundStageRoles = (nodes: CompositionViewNode[]) => {
         const roles = collectCompositionProjectionRoleGoalIds(nodes, physicsAndMathGoalById)
         assert.deepEqual(ownAtoms(roles.targetGoalIds), [...sourceTargetIds].sort(compareCodePoints),
-          'SekI excerpt must preserve the exact 134 own target atoms')
+          'SekI excerpt must preserve every prior own target and the two approved W1 additions')
         assert.deepEqual(ownAtoms(roles.prerequisiteOnlyGoalIds), [...expectedSupport].sort(compareCodePoints),
           'SekI excerpt must preserve exactly the resolved required/explicit own support')
       }
@@ -3850,7 +3904,8 @@ assert.equal(atlasDelta.currentActualUnionCount, 489)
 assert.deepEqual(atlasDelta.addedTargetGoalIds, E1_ADDED_NATIONAL_TARGET_IDS)
 assert.deepEqual(atlasDelta.removedTargetGoalIds, [])
 const beforeE2AtlasTargetIds = [...atlasCurricularAtomicGoalIds]
-  .filter(id => !E2_ADDED_ATLAS_TARGET_IDS.includes(id) && id !== ENERGY_DERIVATION_GOAL_ID && id !== DIRECTED_QUANTITY_GOAL_ID)
+  .filter(id => !E2_ADDED_ATLAS_TARGET_IDS.includes(id) && !W1_ADDED_ATLAS_TARGET_IDS.includes(id)
+    && id !== ENERGY_DERIVATION_GOAL_ID && id !== DIRECTED_QUANTITY_GOAL_ID)
 assert.deepEqual(beforeE2AtlasTargetIds.sort(compareCodePoints), atlasDelta.currentUnionGoalIds)
 assert.deepEqual(beforeE2AtlasTargetIds.filter(id => !E1_ADDED_NATIONAL_TARGET_IDS.includes(id)).sort(compareCodePoints),
   atlasDelta.beforeUnionGoalIds, 'E.1 must preserve every independently bound prior atlas target')
@@ -3869,7 +3924,8 @@ assert.equal(e2AtlasDelta.currentActualUnionCount, 492)
 assert.deepEqual(e2AtlasDelta.beforeUnionGoalIds, atlasDelta.currentUnionGoalIds)
 assert.deepEqual(e2AtlasDelta.addedTargetGoalIds, E2_ADDED_ATLAS_TARGET_IDS)
 assert.deepEqual(e2AtlasDelta.removedTargetGoalIds, [])
-assert.deepEqual([...atlasCurricularAtomicGoalIds].filter(id => id !== ENERGY_DERIVATION_GOAL_ID && id !== DIRECTED_QUANTITY_GOAL_ID)
+assert.deepEqual([...atlasCurricularAtomicGoalIds].filter(id => !W1_ADDED_ATLAS_TARGET_IDS.includes(id)
+  && id !== ENERGY_DERIVATION_GOAL_ID && id !== DIRECTED_QUANTITY_GOAL_ID)
   .sort(compareCodePoints), e2AtlasDelta.currentUnionGoalIds,
   'E.2 adds exactly its three source-backed atlas targets and retains the complete previous target set')
 assert.deepEqual(e2AtlasDelta.sourceViews.map(row => row.path), sourceManifest.sourcePaths)
@@ -3956,7 +4012,7 @@ assert.deepEqual(energyAtlas.currentUnionGoalIds,
 assert.deepEqual(energyAtlas.canonicalProfileTargets.goalIds, closureStrandsAtlas.canonicalProfileTargets.goalIds)
 assert.equal(energyAtlas.currentManifest.path, SOURCE_MANIFEST_PATH)
 
-// A2 is a current-input successor, with the entire N source set retained.
+// A2 is immutable history, with the entire N source set retained.
 const arrowAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/national-atlas-current-sources.actual.json'
 assert.equal(sha256(readFileSync(resolve(repoRoot, arrowAtlasPath), 'utf8')), '9f4c73a1b61cc02081ec50ba222b2461101b8c3b4df8239c27350358c6fa7db8')
 const arrowAtlas = readJson<typeof energyAtlas & {
@@ -3968,27 +4024,42 @@ assert.equal(arrowAtlas.sourceViewCount, 70)
 assert.equal(arrowAtlas.ordinarySourceViewCount, 64)
 assert.equal(arrowAtlas.durationSourceViewCount, 6)
 assert.equal(arrowAtlas.changedSourceViews.length, 70)
-assert.equal(arrowAtlas.currentActualUnionCount, EXPECTED_ATLAS_TARGET_COUNT)
+assert.equal(arrowAtlas.currentActualUnionCount, 494)
 assert.deepEqual(arrowAtlas.sourceViews.map(row => ({path: row.path, sha256: row.previousSha256})),
   energyAtlas.sourceViews.map(row => ({path: row.path, sha256: row.sha256})))
 assert.deepEqual(arrowAtlas.addedCurricularTargetGoalIds, [DIRECTED_QUANTITY_GOAL_ID])
 assert.deepEqual(arrowAtlas.removedCurricularTargetGoalIds, [])
 assert.deepEqual(arrowAtlas.currentUnionGoalIds,
   [...energyAtlas.currentUnionGoalIds, DIRECTED_QUANTITY_GOAL_ID].sort(compareCodePoints))
-assert.deepEqual([...atlasCurricularAtomicGoalIds].sort(compareCodePoints), arrowAtlas.currentUnionGoalIds)
 assert.equal(arrowAtlas.canonicalProfileTargets.count, 425)
 assert.equal(arrowAtlas.canonicalProfileTargets.retainedPredecessorTargetIdsUnchanged, true)
 assert.deepEqual(arrowAtlas.canonicalProfileTargets.addedGoalIds, [DIRECTED_QUANTITY_GOAL_ID])
 assert.deepEqual(arrowAtlas.canonicalProfileTargets.goalIds,
   [...energyAtlas.canonicalProfileTargets.goalIds, DIRECTED_QUANTITY_GOAL_ID].sort(compareCodePoints))
-for (const row of arrowAtlas.sourceViews) {
-  assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale current A2 atlas source`)
-}
-for (const row of arrowAtlas.inputs) {
-  assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale current A2 atlas input`)
-}
 assert.equal(arrowAtlas.currentManifest.path, SOURCE_MANIFEST_PATH)
-assert.equal(sha256(readFileSync(resolve(repoRoot, SOURCE_MANIFEST_PATH), 'utf8')), arrowAtlas.currentManifest.sha256)
+const forceAtlasPath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/national-atlas.final-v5.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceAtlasPath), 'utf8')), 'a04e8a323ae56edfe824b81cd816ea325ed590c5c4c990e0b33beb93b0246b50')
+const forceAtlas = readJson<typeof arrowAtlas>(forceAtlasPath)
+assert.deepEqual(forceAtlas.predecessor, {path: arrowAtlasPath,
+  sha256: sha256(readFileSync(resolve(repoRoot, arrowAtlasPath), 'utf8'))})
+assert.equal(forceAtlas.sourceViewCount, 70)
+assert.equal(forceAtlas.ordinarySourceViewCount, 64)
+assert.equal(forceAtlas.durationSourceViewCount, 6)
+assert.equal(forceAtlas.currentActualUnionCount, EXPECTED_ATLAS_TARGET_COUNT)
+assert.deepEqual(forceAtlas.sourceViews.map(row => ({path: row.path, sha256: row.previousSha256})),
+  arrowAtlas.sourceViews.map(row => ({path: row.path, sha256: row.sha256})))
+assert.deepEqual(forceAtlas.addedCurricularTargetGoalIds, W1_ADDED_ATLAS_TARGET_IDS)
+assert.deepEqual(forceAtlas.removedCurricularTargetGoalIds, [])
+assert.deepEqual(forceAtlas.currentUnionGoalIds,
+  [...arrowAtlas.currentUnionGoalIds, ...W1_ADDED_ATLAS_TARGET_IDS].sort(compareCodePoints))
+assert.deepEqual([...atlasCurricularAtomicGoalIds].sort(compareCodePoints), forceAtlas.currentUnionGoalIds)
+assert.deepEqual(forceAtlas.canonicalProfileTargets.goalIds, arrowAtlas.canonicalProfileTargets.goalIds)
+assert.deepEqual(forceAtlas.canonicalProfileTargets.addedGoalIds, [])
+for (const row of [...forceAtlas.sourceViews, ...forceAtlas.inputs]) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, row.path), 'utf8')), row.sha256, `${row.path}: stale current W1 atlas input`)
+}
+assert.equal(forceAtlas.currentManifest.path, SOURCE_MANIFEST_PATH)
+assert.equal(sha256(readFileSync(resolve(repoRoot, SOURCE_MANIFEST_PATH), 'utf8')), forceAtlas.currentManifest.sha256)
 assert.equal(atlasCurricularAtomicGoalIds.size, EXPECTED_ATLAS_TARGET_COUNT)
 assert(atlasPreparationOnlyOccurrences > 0, 'the omitted target page must have a real authored prerequisite-only placement')
 assert.deepEqual(
@@ -4440,8 +4511,18 @@ const arrowRoutePath = 'curricula/DE/Gymnasium/quality/learning-units/physics-di
 assert.equal(sha256(readFileSync(resolve(repoRoot, arrowRoutePath), 'utf8')), 'd43cd7162459b934c4be717df8911be68c80cd1d14fad0475b5983ac17d9d9f5')
 const arrowRoute = readJson<{metricsBefore: Record<string,number>; metricsAfter: Record<string,number>}>(arrowRoutePath)
 assert.deepEqual(arrowRoute.metricsBefore, currentE2RouteCounts.metrics)
-for (const [metric, value] of Object.entries(arrowRoute.metricsAfter)) {
-  assert.equal(routeMetrics[metric], value, `Current lower-stage arrow route metric ${metric}`)
+const forceRoutePath = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/consumers/cqr104-route-counts.final-v5.actual.json'
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceRoutePath), 'utf8')), '4d1ae1120777529b15bd3b833b5f79f34dc0ecfe94e1871a9ecaaded3943f9cc')
+const forceRoute = readJson<typeof arrowRoute & {predecessor: EvidenceFile; inputs: EvidenceFile[]}>(forceRoutePath)
+assert.deepEqual(forceRoute.predecessor, {path: arrowRoutePath,
+  sha256: sha256(readFileSync(resolve(repoRoot, arrowRoutePath), 'utf8'))})
+assert.deepEqual(forceRoute.metricsBefore, arrowRoute.metricsAfter)
+for (const input of forceRoute.inputs) {
+  assert.equal(sha256(readFileSync(resolve(repoRoot, input.path), 'utf8')), input.sha256,
+    `${input.path}: stale current W1 route input`)
+}
+for (const [metric, value] of Object.entries(forceRoute.metricsAfter)) {
+  assert.equal(routeMetrics[metric], value, `Current lower-stage W1 route metric ${metric}`)
 }
 
 const legacyRouteProfile = routeProfileDefinitions.find(profile => profile.profileId === 'canonical-physics-sek1')!
@@ -4458,8 +4539,9 @@ assert.equal(currentTerminalRelease.metrics?.terminalAutonomyGoals, currentTermi
 
 const legacySelectedGoalIds = currentPhysics.goals.filter(legacyRouteProfile.goalSelector).map(goal => goal.id)
 const currentSelectedGoalIds = currentPhysics.goals.filter(currentRouteProfile.goalSelector).map(goal => goal.id)
-assert.equal(legacySelectedGoalIds.length, 100)
+assert.equal(legacySelectedGoalIds.length, 102)
 assert(legacySelectedGoalIds.includes(DIRECTED_QUANTITY_GOAL_ID))
+for (const id of W1_ADDED_ATLAS_TARGET_IDS) assert(legacySelectedGoalIds.includes(id))
 assert.deepEqual(
   [...currentSelectedGoalIds].sort(compareCodePoints),
   [...legacySelectedGoalIds, ...EXPECTED_PHYSICS_SEKI_ADDED_TARGET_OCCURRENCES.keys(),
@@ -4543,6 +4625,41 @@ assert.equal(
   hasProjectionRouteFailure ? 'fail' : 'pass',
   'Physics Sek-I CQR-104 status must reflect all projection-local route failures',
 )
+
+const forceWarningRoot = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability'
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'check-current.mts'), 'utf8')),
+  '2f352638faaa0f2cfc0cb8030a57113abe422874071f68a3a936daa4608bc7d8')
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'warning-review.actual.json'), 'utf8')),
+  '484b1043be215c5250d8274adeb74ddc23989c93601ddf13313326a3042c3861')
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'verify-final.mts'), 'utf8')),
+  '10ed2bcb148c7ad2b8e098265874927398d777d648ae8f2160b88fcec2947fee')
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'verification-inputs.final-v5.actual.json'), 'utf8')),
+  'b502a0ea907b25f43137f59bda8dab57111b1f22e46b20b847f782f4e7620261')
+assert.equal(sha256(readFileSync(resolve(repoRoot, forceWarningRoot, 'verification.final-v5.actual.json'), 'utf8')),
+  'd882aa72ebe85fe47e0a5fc4f180e5b938794788849c2d9dc0a05d19d077fae0')
+const forceWarningOutput = execFileSync(process.execPath, [
+  resolve(repoRoot, 'app/node_modules/tsx/dist/cli.mjs'), resolve(repoRoot, forceWarningRoot, 'verify-final.mts'),
+  '--mode=verify',
+], {cwd: repoRoot, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024}).trim().split(/\r?\n/u)
+assert.equal(forceWarningOutput.length, 2)
+const forceWarningEnvelope = JSON.parse(forceWarningOutput[0]) as {
+  sealedInputBindings: number; priorRegistryBytesRetained: boolean
+}
+assert.equal(forceWarningEnvelope.sealedInputBindings, 115)
+assert.equal(forceWarningEnvelope.priorRegistryBytesRetained, true)
+const forceWarningCheck = JSON.parse(forceWarningOutput[1]) as {
+  status: string; views: number; ownAcceptedKeys: string[]; offers: {KB: number; KG: number}
+  negativeControls: number; priorRows: number; registryRows: number; GAccepted: boolean
+}
+assert.equal(forceWarningCheck.status, 'PASS')
+assert.equal(forceWarningCheck.views, 90)
+assert.deepEqual(forceWarningCheck.ownAcceptedKeys.map(key => key.split('|')[2]).sort(compareCodePoints),
+  W1_ADDED_CATALOG_IDS.slice(2).sort(compareCodePoints))
+assert.deepEqual(forceWarningCheck.offers, {KB: 61, KG: 18})
+assert.equal(forceWarningCheck.negativeControls, 10)
+assert.equal(forceWarningCheck.priorRows, 129)
+assert.equal(forceWarningCheck.registryRows, 131)
+assert.equal(forceWarningCheck.GAccepted, false)
 
 console.log(
   `Physics goal-book inputs verified: ${EXPECTED_COUNTS.total} semantic-kind decisions; `

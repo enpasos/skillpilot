@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-26T15:21:56.532804Z",
+  "cards": {
+    "de": [
+      {
+        "id": "physics_e_cov_041",
+        "front": "Ebene Kurve mit gegebener maximaler Haftkraft: Bedingung für rutschfreies Fahren?",
+        "back": "Wenn die Haftreibung die radiale Kraft liefert, muss $\\frac{mv^2}{r}\\le F_{H,\\max}$ gelten. Dabei ist $F_{H,\\max}$ als verfügbarer Höchstwert gegeben. Bei konstantem Höchstwert folgt $v_\\max=\\sqrt{\\frac{F_{H,\\max}r}{m}}$. Die tatsächliche Haftkraft ist die benötigte Radialkraft, nicht pauschal der Höchstwert.",
+        "originGoalIds": [
+          "e2da5eec-45de-5527-9ad7-16f41cacbe58"
+        ],
+        "category": "E-Phase Mechanik",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:e2da5eec-45de-5527-9ad7-16f41cacbe58"
+        ]
+      },
+      {
+        "id": "physics_e2_forces_b",
+        "front": "Kräfte auf einer Linie: Wie entstehen Vorzeichen und Resultierende?",
+        "back": "Für denselben Körper eine positive Richtung wählen. Die kollinearen äußeren Kräfte tragen das entsprechende Vorzeichen; $F_\\mathrm{res}=\\sum F_\\mathrm{ext}$. Bei $F_\\mathrm{res}\\ne0$ gibt das Vorzeichen die Richtung der Resultierenden an. Bei $F_\\mathrm{res}=0$ sind Ruhe und geradlinig konstante Geschwindigkeit möglich. Kraftpfeile beginnen am Körper; ihre Länge folgt dem Kraftmaßstab.",
+        "originGoalIds": [
+          "6ba20688-8cbf-5db1-bda8-346893798d2f"
+        ],
+        "category": "Mechanik",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:6ba20688-8cbf-5db1-bda8-346893798d2f"
+        ]
+      },
+      {
+        "id": "physics_e2_forces_g",
+        "front": "Gewichtskraft am Hang: Was leistet die zeichnerische Zerlegung?",
+        "back": "Den Gewichtspfeil am Körper in einen zur Ebene parallelen und einen dazu senkrechten Pfeil zerlegen. Beide beginnen am selben Körper; ihre Beträge werden am Kraftmaßstab abgelesen. Ihre Vektorsumme ergibt den ursprünglichen Gewichtspfeil. Die Komponenten ersetzen die Gewichtskraft, sie kommen nicht als weitere Kräfte hinzu. Die Kontakt-Normalkraft ist eine andere Kraft.",
+        "originGoalIds": [
+          "77b44d13-4368-5950-a943-decb377c7302"
+        ],
+        "category": "Mechanik",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:77b44d13-4368-5950-a943-decb377c7302"
+        ]
+      },
+      {
+        "id": "physics_e2_forces_t",
+        "front": "Gewichtskomponenten bei Hangwinkel α zur Waagerechten und positiver Richtung hangabwärts bzw. senkrecht nach außen?",
+        "back": "$F_\\parallel=+F_G\\sin\\alpha$, $F_\\perp=-F_G\\cos\\alpha$. Im rechtwinkligen Kräftedreieck liegt die Parallelkomponente dem Winkel $\\alpha$ gegenüber; die senkrechte Komponente liegt an. Bei $\\alpha=0^\\circ$ ist $F_\\parallel=0$; für $\\alpha\\to90^\\circ$ geht $F_\\perp$ gegen null. Andere Achsen können die Vorzeichen ändern, nicht die physikalischen Richtungen.",
+        "originGoalIds": [
+          "43b2c500-bbd9-5c92-9f3e-618d310e5690"
+        ],
+        "category": "Mechanik",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:43b2c500-bbd9-5c92-9f3e-618d310e5690"
+        ]
+      },
+      {
+        "id": "physics_e2_forces_f",
+        "front": "Trockene Reibung: Wann haftet der Kontakt, und welche Reibungskraft wirkt?",
+        "back": "Mit dem Betrag $N$ der Kontakt-Normalkraft gilt: Haften ist möglich, solange der nötige Tangentialbetrag $F_\\mathrm{nötig}\\le\\mu_H N$ ist. Die tatsächliche Haftreibung passt sich an diesen Bedarf an und wirkt gegen drohendes Relativgleiten; Gleichheit ist noch ein möglicher Haftgrenzfall. Bei bereits gleitenden Flächen gilt $|F_R|=\\mu_G N$, entgegen ihrer Relativbewegung. Der Reibungspfeil beginnt am betrachteten Körper.",
+        "originGoalIds": [
+          "3a2accd7-639f-50e1-a7b1-5a9d3c2432a6"
+        ],
+        "category": "Mechanik",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:3a2accd7-639f-50e1-a7b1-5a9d3c2432a6"
+        ]
+      }
+    ],
+    "en": [
+      {
+        "id": "physics_e_cov_041",
+        "front": "Level curve with a given maximum static friction force: condition for no skidding?",
+        "back": "When static friction supplies the radial force, $\\frac{mv^2}{r}\\le F_{S,\\max}$ is required. Here $F_{S,\\max}$ is the given available maximum. For a constant maximum, $v_\\max=\\sqrt{\\frac{F_{S,\\max}r}{m}}$. Actual static friction is the required radial force, not automatically the maximum.",
+        "originGoalIds": [
+          "e2da5eec-45de-5527-9ad7-16f41cacbe58"
+        ],
+        "category": "E-Phase Mechanics",
+        "tags": [
+          "GK",
+          "LK",
+          "coverage:auto",
+          "goal:e2da5eec-45de-5527-9ad7-16f41cacbe58"
+        ]
+      },
+      {
+        "id": "physics_e2_forces_b",
+        "front": "Forces along a line: how are signs and the net force determined?",
+        "back": "Choose a positive direction for the same body. Give each collinear external force the appropriate sign; $F_\\mathrm{net}=\\sum F_\\mathrm{ext}$. If $F_\\mathrm{net}\\ne0$, its sign gives the net-force direction. Zero net force is consistent with rest and with constant velocity along a straight line. Force arrows start at the body; their lengths follow the force scale.",
+        "originGoalIds": [
+          "6ba20688-8cbf-5db1-bda8-346893798d2f"
+        ],
+        "category": "Mechanics",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:6ba20688-8cbf-5db1-bda8-346893798d2f"
+        ]
+      },
+      {
+        "id": "physics_e2_forces_g",
+        "front": "Weight on an incline: what does a scale construction show?",
+        "back": "Resolve the weight arrow at the body into a component parallel and a component perpendicular to the slope. Both start at the same body; read their magnitudes from the force scale. Their vector sum reproduces the original weight arrow. The components replace the weight in the calculation; they are not extra forces. The contact normal force is a different force.",
+        "originGoalIds": [
+          "77b44d13-4368-5950-a943-decb377c7302"
+        ],
+        "category": "Mechanics",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:77b44d13-4368-5950-a943-decb377c7302"
+        ]
+      },
+      {
+        "id": "physics_e2_forces_t",
+        "front": "Weight components for slope angle α to the horizontal, positive downhill and perpendicular outwards?",
+        "back": "$F_\\parallel=+F_G\\sin\\alpha$, $F_\\perp=-F_G\\cos\\alpha$. In the right triangle of force vectors, the parallel component is opposite $\\alpha$ and the perpendicular component is adjacent. At $\\alpha=0^\\circ$, $F_\\parallel=0$; as $\\alpha\\to90^\\circ$, $F_\\perp$ tends to zero. Different axes may change the signs, not the physical directions.",
+        "originGoalIds": [
+          "43b2c500-bbd9-5c92-9f3e-618d310e5690"
+        ],
+        "category": "Mechanics",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:43b2c500-bbd9-5c92-9f3e-618d310e5690"
+        ]
+      },
+      {
+        "id": "physics_e2_forces_f",
+        "front": "Dry friction: when can a contact stick, and which friction force acts?",
+        "back": "Let $N$ be the magnitude of the contact normal force. Sticking is possible while the required tangential magnitude satisfies $F_\\mathrm{required}\\le\\mu_S N$. Actual static friction adjusts to that demand and opposes impending relative sliding; equality can still be a limiting case of sticking. For surfaces already sliding, $|F_R|=\\mu_K N$, opposite their relative motion. The friction arrow starts at the selected body.",
+        "originGoalIds": [
+          "3a2accd7-639f-50e1-a7b1-5a9d3c2432a6"
+        ],
+        "category": "Mechanics",
+        "tags": [
+          "GK",
+          "LK",
+          "goal:3a2accd7-639f-50e1-a7b1-5a9d3c2432a6"
+        ]
+      }
+    ]
+  },
+  "authorGoalReviews": [
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-physics-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "reviewedAt": "2026-11-26T15:21:56.532804Z",
+      "reviewer": "OpenAI Codex W1 media author; actual current DE/EN material inspection",
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "fingerprint": "sha256:946323b4b784cf1fc18f07d7810a7c22dcc517ed96f3d6942c6e8e60770b3009",
+      "status": "memory_required",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "9f2f5ab8-0ae4-5792-b831-82a05af5895c"
+      ],
+      "deckIds": [
+        "de_gymnasium_physics_mechanics_ephase"
+      ],
+      "reason": "Ein eigener knapper DE/EN-Abrufkern für die neue Kompetenz: Vorzeichenbilanz und Nullresultierende. Die selbstständige Anwendung und Konstruktion bleiben Aufgabenleistungen. Tatsächliche KI-Autorenprüfung, keine unabhängige oder menschliche Freigabe."
+    },
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-physics-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "reviewedAt": "2026-11-26T15:21:56.532804Z",
+      "reviewer": "OpenAI Codex W1 media author; actual current DE/EN material inspection",
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "fingerprint": "sha256:1b8d366d7e47a2f5f59a7f7d02171d8066305aa7cdec36bdb41463acac3181d7",
+      "status": "memory_required",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "9f2f5ab8-0ae4-5792-b831-82a05af5895c"
+      ],
+      "deckIds": [
+        "de_gymnasium_physics_mechanics_ephase"
+      ],
+      "reason": "Ein eigener knapper DE/EN-Abrufkern für die neue Kompetenz: Komponenten als Ersatz derselben Gewichtskraft, Rückaddition und Unterschied zur Kontaktnormalkraft. Die selbstständige Anwendung und Konstruktion bleiben Aufgabenleistungen. Tatsächliche KI-Autorenprüfung, keine unabhängige oder menschliche Freigabe."
+    },
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-physics-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "reviewedAt": "2026-11-26T15:21:56.532804Z",
+      "reviewer": "OpenAI Codex W1 media author; actual current DE/EN material inspection",
+      "goalId": "43b2c500-bbd9-5c92-9f3e-618d310e5690",
+      "fingerprint": "sha256:b8bd0fecec7853474149c4b79ca28a276209e3058724431a59fa27e8330a895d",
+      "status": "memory_required",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "9f2f5ab8-0ae4-5792-b831-82a05af5895c"
+      ],
+      "deckIds": [
+        "de_gymnasium_physics_mechanics_ephase"
+      ],
+      "reason": "Ein eigener knapper DE/EN-Abrufkern für die neue Kompetenz: Sinus-/Kosinuszuordnung, Achsenvorzeichen und Grenzfälle. Die selbstständige Anwendung und Konstruktion bleiben Aufgabenleistungen. Tatsächliche KI-Autorenprüfung, keine unabhängige oder menschliche Freigabe."
+    },
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-physics-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "reviewedAt": "2026-11-26T15:21:56.532804Z",
+      "reviewer": "OpenAI Codex W1 media author; actual current DE/EN material inspection",
+      "goalId": "3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+      "fingerprint": "sha256:9d7a198f4ff26d2992b8541be54ecdd19f55c7f3f5120cf42f2e1b7a99007bbe",
+      "status": "memory_required",
+      "memoryUseful": true,
+      "memoryGoalIds": [
+        "9f2f5ab8-0ae4-5792-b831-82a05af5895c"
+      ],
+      "deckIds": [
+        "de_gymnasium_physics_mechanics_ephase"
+      ],
+      "reason": "Ein eigener knapper DE/EN-Abrufkern für die neue Kompetenz: angepasstes Haften, Gleichheit an der Grenze und getrenntes Gleitgesetz. Die selbstständige Anwendung und Konstruktion bleiben Aufgabenleistungen. Tatsächliche KI-Autorenprüfung, keine unabhängige oder menschliche Freigabe."
+    }
+  ],
+  "authorCardReviews": [
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-physics-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "reviewedAt": "2026-11-26T15:21:56.532804Z",
+      "reviewer": "OpenAI Codex W1 media author; actual current DE/EN material inspection",
+      "deckId": "de_gymnasium_physics_mechanics_ephase",
+      "cardId": "physics_e_cov_041",
+      "fingerprint": "sha256:c455ded6e380e8f9aedcfe6e847ae0d0c16bfe719d8502e5d0146e93e707337f",
+      "status": "kept",
+      "necessary": true,
+      "originGoalIds": [
+        "e2da5eec-45de-5527-9ad7-16f41cacbe58"
+      ],
+      "reason": "Korrigierter Pflichtabruf ohne Reibungskoeffizient: benötigte Radialkraft mit gegebenem verfügbaren Haft-Höchstwert vergleichen; tatsächliche Kraft nicht mit Höchstwert gleichsetzen. Beide Sprachfassungen wurden tatsächlich gelesen. Recall ist kein Nachweis freier Konstruktion, Modellwahl oder Transfer. KI-Autorenprüfung; unabhängige Prüfung folgt getrennt."
+    },
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-physics-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "reviewedAt": "2026-11-26T15:21:56.532804Z",
+      "reviewer": "OpenAI Codex W1 media author; actual current DE/EN material inspection",
+      "deckId": "de_gymnasium_physics_mechanics_ephase",
+      "cardId": "physics_e2_forces_b",
+      "fingerprint": "sha256:2723ffb7d73af4d13b8f70772564666ea317f002b499536748c9d3a22106049f",
+      "status": "kept",
+      "necessary": true,
+      "originGoalIds": [
+        "6ba20688-8cbf-5db1-bda8-346893798d2f"
+      ],
+      "reason": "Eigenständiger eng begrenzter DE/EN-Abrufkern passend zum allein genannten Verständnisziel. Beide Sprachfassungen wurden tatsächlich gelesen. Recall ist kein Nachweis freier Konstruktion, Modellwahl oder Transfer. KI-Autorenprüfung; unabhängige Prüfung folgt getrennt."
+    },
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-physics-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "reviewedAt": "2026-11-26T15:21:56.532804Z",
+      "reviewer": "OpenAI Codex W1 media author; actual current DE/EN material inspection",
+      "deckId": "de_gymnasium_physics_mechanics_ephase",
+      "cardId": "physics_e2_forces_g",
+      "fingerprint": "sha256:ecdfc07e1c1c815639a3b0cdc0012f4455b59f9482a870ee5a5e8efe280160b0",
+      "status": "kept",
+      "necessary": true,
+      "originGoalIds": [
+        "77b44d13-4368-5950-a943-decb377c7302"
+      ],
+      "reason": "Eigenständiger eng begrenzter DE/EN-Abrufkern passend zum allein genannten Verständnisziel. Beide Sprachfassungen wurden tatsächlich gelesen. Recall ist kein Nachweis freier Konstruktion, Modellwahl oder Transfer. KI-Autorenprüfung; unabhängige Prüfung folgt getrennt."
+    },
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-physics-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "reviewedAt": "2026-11-26T15:21:56.532804Z",
+      "reviewer": "OpenAI Codex W1 media author; actual current DE/EN material inspection",
+      "deckId": "de_gymnasium_physics_mechanics_ephase",
+      "cardId": "physics_e2_forces_t",
+      "fingerprint": "sha256:8fce2377a381675fd155d7e0740ae5d6067915eb5f7270f51616ad516fee69e2",
+      "status": "kept",
+      "necessary": true,
+      "originGoalIds": [
+        "43b2c500-bbd9-5c92-9f3e-618d310e5690"
+      ],
+      "reason": "Eigenständiger eng begrenzter DE/EN-Abrufkern passend zum allein genannten Verständnisziel. Beide Sprachfassungen wurden tatsächlich gelesen. Recall ist kein Nachweis freier Konstruktion, Modellwahl oder Transfer. KI-Autorenprüfung; unabhängige Prüfung folgt getrennt."
+    },
+    {
+      "schemaVersion": 1,
+      "reviewId": "canonical-physics-full",
+      "ruleVersion": "memory-card-review-v1",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "reviewedAt": "2026-11-26T15:21:56.532804Z",
+      "reviewer": "OpenAI Codex W1 media author; actual current DE/EN material inspection",
+      "deckId": "de_gymnasium_physics_mechanics_ephase",
+      "cardId": "physics_e2_forces_f",
+      "fingerprint": "sha256:26c569cbfb949bb70aae9edf75e81b290d9f3e747dd0e76b66cff17a60efc646",
+      "status": "kept",
+      "necessary": true,
+      "originGoalIds": [
+        "3a2accd7-639f-50e1-a7b1-5a9d3c2432a6"
+      ],
+      "reason": "Eigenständiger eng begrenzter DE/EN-Abrufkern passend zum allein genannten Verständnisziel. Beide Sprachfassungen wurden tatsächlich gelesen. Recall ist kein Nachweis freier Konstruktion, Modellwahl oder Transfer. KI-Autorenprüfung; unabhängige Prüfung folgt getrennt."
+    }
+  ]
+}

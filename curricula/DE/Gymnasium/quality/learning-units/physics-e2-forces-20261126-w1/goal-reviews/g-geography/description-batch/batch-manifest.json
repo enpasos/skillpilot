@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-e2-forces-g-geography-20261126",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/g-geography/description-batch.config.json",
+  "configDigest": "sha256:d90cffbac1949d745e5bcf084211bc61e8ef466366cdc872c30e9700e5b90c38",
+  "goalIds": [
+    "77b44d13-4368-5950-a943-decb377c7302"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 497,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/goal-reviews/final-bg/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:020db1af728f0f27710fd06b3ec2ea956f3671c6bede622cc80e57f9fec17117"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:115bd41ce2ae68da6fb0f64e0659146875971d430f4182f88982f3baebc8428c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:99c61d37053d4bcb98884ec7633dcf14b66f7f840dfc09a7aedabd1c5e4cffa2",
+    "reviewInputFingerprint": "sha256:a924df5462151bd0070ec7b3e4883f313586a93c9dc4d8b6091d1f28236c96ba",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-e2-forces-g-geography-20261126-a",
+        "campaignDigest": "sha256:1cbe7b0f5feb642e94f25e2722ce55230770e3d1edc93dfadd523d07086c5bb3",
+        "roundId": "physics-e2-forces-g-geography-20261126-first-pass-a",
+        "independenceGroupId": "physics-e2-forces-g-geography-20261126-independent-a",
+        "batchId": "physics-e2-forces-g-geography-20261126-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:9a5b3977216586ee63c5cb1a33db76e5f8c468da25a17d0e4126435e7b4cc2f4"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-e2-forces-g-geography-20261126-b",
+        "campaignDigest": "sha256:0675c33b48c899a971353b8c2e5a0e064c57aaa6a2d393851837f98a569c28cd",
+        "roundId": "physics-e2-forces-g-geography-20261126-first-pass-b",
+        "independenceGroupId": "physics-e2-forces-g-geography-20261126-independent-b",
+        "batchId": "physics-e2-forces-g-geography-20261126-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:c0412b372b06781fd804375b86ca3b1b785fd50dc9b50b2782014caac7f101c3"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

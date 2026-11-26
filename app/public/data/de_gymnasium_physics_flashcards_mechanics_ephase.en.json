@@ -608,8 +608,8 @@
     },
     {
       "id": "physics_e_cov_041",
-      "front": "Cornering with static friction:\ncondition for no skidding?",
-      "back": "$\\frac{mv^2}{r} \\le \\mu_\\mathrm{S} mg$\n\nthus\n\n$v_\\text{max}= \\sqrt{\\mu_\\mathrm{S} gr}$",
+      "front": "Level curve with a given maximum static friction force: condition for no skidding?",
+      "back": "When static friction supplies the radial force, $\\frac{mv^2}{r}\\le F_{S,\\max}$ is required. Here $F_{S,\\max}$ is the given available maximum. For a constant maximum, $v_\\max=\\sqrt{\\frac{F_{S,\\max}r}{m}}$. Actual static friction is the required radial force, not automatically the maximum.",
       "originGoalIds": [
         "e2da5eec-45de-5527-9ad7-16f41cacbe58"
       ],
@@ -1377,6 +1377,34 @@
         "GK",
         "LK",
         "goal:b77a7e93-22f9-5722-a4cc-f18a149ab030"
+      ]
+    },
+    {
+      "id": "physics_e2_forces_b",
+      "front": "Forces along a line: how are signs and the net force determined?",
+      "back": "Choose a positive direction for the same body. Give each collinear external force the appropriate sign; $F_\\mathrm{net}=\\sum F_\\mathrm{ext}$. If $F_\\mathrm{net}\\ne0$, its sign gives the net-force direction. Zero net force is consistent with rest and with constant velocity along a straight line. Force arrows start at the body; their lengths follow the force scale.",
+      "originGoalIds": [
+        "6ba20688-8cbf-5db1-bda8-346893798d2f"
+      ],
+      "category": "Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:6ba20688-8cbf-5db1-bda8-346893798d2f"
+      ]
+    },
+    {
+      "id": "physics_e2_forces_g",
+      "front": "Weight on an incline: what does a scale construction show?",
+      "back": "Resolve the weight arrow at the body into a component parallel and a component perpendicular to the slope. Both start at the same body; read their magnitudes from the force scale. Their vector sum reproduces the original weight arrow. The components replace the weight in the calculation; they are not extra forces. The contact normal force is a different force.",
+      "originGoalIds": [
+        "77b44d13-4368-5950-a943-decb377c7302"
+      ],
+      "category": "Mechanics",
+      "tags": [
+        "GK",
+        "LK",
+        "goal:77b44d13-4368-5950-a943-decb377c7302"
       ]
     }
   ],

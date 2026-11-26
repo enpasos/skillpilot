@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "contract": "strict-current-existing-assessment-prerequisite-only-successor-v1",
+  "status": "accepted_current_prerequisite_only_successor",
+  "assessmentGoalId": "be6d4895-65ab-545b-8df9-84e5a308a5e3",
+  "input": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/assessments/be6d4895-prerequisite-review.input.json",
+    "sha256": "dbb2452ca02b65cd2567c2a5ab331c9515955789e0491c72b3781487539f0514"
+  },
+  "beforeValueSha256": "17cbc449abb7213039f501b7497c60be2df376cbcfc9bc35e95553d6d52f855f",
+  "reviewedCurrentValueSha256": "58241f73bd5d23b51247c56fcb98faea5cb60f2cf8711d4b904a887ac6b93433",
+  "unchangedExamDataValueSha256": "7f8212700eef04228cd23edec0b776580f0f1300bfae5c82b1d8454f559c3cd8",
+  "actualChangedFields": [
+    "requires"
+  ],
+  "addedPrerequisite": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+  "preservedCoveredGoalIds": [
+    "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+    "ad984bb6-e225-432a-952d-d83cda40b7f8",
+    "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+    "00245a43-eb89-47d2-92d7-21799dbec9f3",
+    "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+    "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+    "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+    "253a71d2-e751-4c63-acbe-238b71463cd8",
+    "91c49019-ea51-4ce5-a919-c91c45b25e83",
+    "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+    "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+    "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+    "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+    "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b"
+  ],
+  "newCoveredGoalIds": [],
+  "sourceFrozenRegistry": {
+    "path": "curricula/DE/Gymnasium/provenance/prerequisite-reduction-proof-registry.json",
+    "sha256": "a48b52ca0449ff75dce93e93a3ade8982210d32a03f9a585a03b935ebed052b7"
+  },
+  "exactEndedTransfer": {
+    "source": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a:be6d4895-65ab-545b-8df9-84e5a308a5e3",
+    "frozenGoalDigest": "sha256:17cbc449abb7213039f501b7497c60be2df376cbcfc9bc35e95553d6d52f855f",
+    "reviewedGoalDigest": "sha256:837207d5feee0e13e956538d27dad2d254581559b60474db8b1a378b77cc4da5",
+    "reviewedFields": {
+      "requires": [
+        "32b896b9-f2f1-4d4e-96ad-e869ac3d3759",
+        "ad984bb6-e225-432a-952d-d83cda40b7f8",
+        "a0aaedcb-41f8-4891-af77-a69a76b8c10d",
+        "00245a43-eb89-47d2-92d7-21799dbec9f3",
+        "94784e0a-7ddc-48be-91fb-dc82b78eb322",
+        "7eeff2de-6015-49a6-a96e-a488d886dc9f",
+        "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+        "253a71d2-e751-4c63-acbe-238b71463cd8",
+        "91c49019-ea51-4ce5-a919-c91c45b25e83",
+        "d168ae5d-f36f-4ad4-b070-d5931f8d70d1",
+        "d30fd37b-1f05-44e3-a40a-4c5a88fa28c2",
+        "e790de73-f8e5-4027-bc05-9f12a0e8c9cb",
+        "0da13365-02c2-44f1-8a81-d524ca0ac3ae",
+        "5a1b3cb2-c0e6-4372-9c57-f33675cffc9b"
+      ]
+    },
+    "reviewedAbsentFields": []
+  },
+  "transferDecision": "Baseline exact goal matched frozenGoalDigest; changed requires makes the transfer inactive by the existing V9 value contract. Registry bytes are retained unchanged. Use this exact current independent successor for the changed access contract.",
+  "independentCurrentReports": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/assessments/v2/markers/x.actual.json",
+      "sha256": "312534e770301ba6171a1f1a1230b3c00eeb75077fdd632a17d30ebbf50a1c2a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/assessments/v2/markers/y.actual.json",
+      "sha256": "8ea16065749545a65008e06aef1aa4c7ed696d48d3ce1a5f620595123d807836"
+    }
+  ],
+  "reason": "Material1 actually requires same-box18−8=10 N and8−8=0 N before interpreting acceleration and zero-sum motion. The new B is needed prerequisite knowledge; the7-point part may be omitted while23/30 exceeds18, so passing this mixed task cannot establish B.",
+  "retainedLimitations": [
+    "This review verifies unchanged14-goal coverage, not renewed full mastery evidence for every inherited coverage ID.",
+    "Unchanged coarse7/7/8/6/2 rubric and inherited mittlere Kraftspitzen wording remain historical limitations. At fixed impulse longer duration establishes a smaller mean force, not an arbitrary peak without a force-time shape assumption.",
+    "The inherited solution does not explicitly state the requested mechanical-energy change as−8 J; retained unchanged."
+  ],
+  "catalogChangePerformedByThisAgent": false,
+  "noLearnerResultsRescoredOrTransferred": true
+}

@@ -1,0 +1,91 @@
+{
+  "reviewer": "OpenAI Codex, independent Physics reviewer",
+  "startedAt": "2026-11-26T16:18:54Z",
+  "completedAt": "2026-11-26T16:21:10Z",
+  "independenceDisclosure": "Physics judgments use only the supplied directory. No other reviewer evaluations or external material were consulted. A helper performed mechanical binding checks only. No files were written.",
+  "bookModelSha256": "sha256:e2b56c215982ada8582a1b7ce132d1ddc898f112e0d04dfc8bb1da58911ae1f7",
+  "reviewInputFingerprint": "sha256:19ae6f0c469c065b96ddf576f618205d37b9e6fb3d21522aad45cddadac64301",
+  "descriptionReviews": [
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+      "schemaVersion": 1,
+      "recordId": "physics-e2-forces-bg-final-20261126-first-pass-a-gpt-6.1-sol-independent-B",
+      "runId": "physics-e2-forces-bg-final-20261126-first-pass-a-gpt-6.1-sol-independent",
+      "campaignId": "physics-e2-forces-bg-final-20261126-a",
+      "roundId": "physics-e2-forces-bg-final-20261126-first-pass-a",
+      "bundleFingerprint": "sha256:0ba64ccfa660e67096f1394289f457c053436e5fdbad87128688d129b6de2138",
+      "bookDigest": "sha256:9d5b4cfd29d2ffc7a9f12bcda7b3d6d8ee27c2140eb82dc8ff9bf70991543db4",
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "goalFingerprint": "sha256:d7f7c16a6c7b643e0523059b22a4d3b787a64bbb17cf9d67d1a5fc24381c0f47",
+      "pageFingerprint": "sha256:828c7e4d242a54e11509faa1f041f3c178cbf2482cb3c7511d22e7c052636df4",
+      "currentTitleDe": "Kräfte auf einer Linie bilanzieren",
+      "currentTitleEn": "Balance forces along a line",
+      "currentDescriptionDe": "Die lernende Person kann für einen gewählten Körper eine positive Richtung festlegen, seine kollinearen äußeren Kräfte mit Vorzeichen addieren und die resultierende Kraft bestimmen. Bei einer von null verschiedenen Summe gibt sie auch deren Richtung an. Sie erklärt, warum die Kraftsumme null zu Ruhe wie zu geradlinig gleichförmiger Bewegung passt. In der Skizze beginnen die Kraftpfeile am Körper. Ihre Länge liest sie am angegebenen Kraftmaßstab ab.",
+      "currentDescriptionEn": "The learner can choose a positive direction, add the signed external forces acting along one line on a selected body and determine the magnitude and direction of the net force when it is nonzero. They explain why zero net force is consistent with rest and with constant velocity. In the sketch, force arrows start at the body. They read their lengths using the given force scale.",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Nur äußere Kräfte auf den gewählten Körper werden kollinear und mit achsenabhängigen Vorzeichen addiert. Die Pfeilrichtung und der angegebene Kraftmaßstab kodieren Richtung und Betrag; die Pfeile beginnen am Körper. Eine Nullsumme ist mit Ruhe und geradlinig gleichförmiger Bewegung vereinbar; nur eine von null verschiedene Resultierende besitzt eine Richtung.",
+        "essentialUnderstandingEn": "Only external forces on the selected body are added along one line with signs set by the chosen axis. Arrow direction and the given force scale encode direction and magnitude; arrows start at the body. A zero sum is consistent with rest and constant velocity; only a nonzero net force has a direction.",
+        "observablePerformanceDe": "Die Person wählt Körper und positive Richtung, schließt Kräfte auf andere Körper aus, liest Kraftbeträge aus den am Körper beginnenden Pfeilen ab und berechnet die Summe in Newton. Sie deutet das Vorzeichen einer von null verschiedenen Summe und begründet bei Nullsumme beide möglichen Bewegungszustände.",
+        "observablePerformanceEn": "The learner selects the body and positive direction, excludes forces on other bodies, reads force magnitudes from arrows starting at the body, and computes the sum in newtons. They interpret the sign of a nonzero sum and explain both possible states of motion for a zero sum.",
+        "transferExpectationDe": "In einer frischen Zugsituation mit getrennt angegebenen Kräften auf Körper und Seil ordnet die Person die Kräfte dem gewählten Körper zu und bilanziert sie bei umgekehrter positiver Achse. Sie begründet, warum die physikalische Resultierende beim Achsenwechsel gleich bleibt und die Nullsumme sowohl zu anfänglicher Ruhe als auch zu Bewegung passt.",
+        "transferExpectationEn": "In a fresh pulling situation with separately specified forces on a body and rope, the learner assigns forces to the selected body and balances them with the positive axis reversed. They explain why the physical net force is unchanged by axis reversal and why a zero sum is consistent with initial rest or motion."
+      },
+      "rationale": "DE and corrected EN express the same bounded competence: signed sums include zero, direction is required only for a nonzero resultant, and constant velocity expresses rectilinear uniform motion. Both anchor force arrows at the selected body and use the given scale. The profile checks attribution through a sketch using prerequisite drawing skills; it does not add a separate construction competence or establish learner mastery.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "profileReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "decision": "keep",
+      "reason": "The bilingual profile covers attribution, scaled arrow reading, signed sums, zero-force motion and axis reversal. Towing gives 8−3−5=0 N and arrow lengths 4, 1.5 and 2.5 cm; reversal gives −4 N or +4 N for the same leftward resultant. Construction checks attribution using prerequisite drawing skills. The contract requires fresh independent demonstrations; the supplied cases establish no learner mastery."
+    }
+  ],
+  "prerequisiteConclusion": {
+    "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+    "decision": "keep",
+    "additionalDirectPrerequisiteRequired": false,
+    "graphPath": [
+      "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "5fd45dbc-0eb1-591b-99a9-7386336f1456",
+      "5f289cdc-fda1-4058-b44f-041ba1398e79",
+      "a94cfe1c-6f87-47ff-b4f3-31a58d4c6c20",
+      "31a2ef52-114b-4d2c-a720-6ef5a390b6dc",
+      "e4b38061-1f28-43ad-8371-a3e7c0e81856"
+    ],
+    "reason": "Recomputed from actual requires edges: all 73 listed nodes are reachable, with no missing references or cycles. An additional direct e4b38061 edge would duplicate an existing dependency in the skill graph.",
+    "equationSupport": "ΣF_ext=ma is explicitly taught upstream. Constant-acceleration representations, signed area under a velocity-time graph, function evaluation and substitution support using v=v0+aΔt and x−x0=v0Δt+½aΔt² within constant-force, constant-mass intervals. The sled results a=3 m/s², v=6 m/s and displacement=6 m are correct. The cart stops after 2 s; subsequent a=1 m/s² applies conditionally to rightward sliding, whose onset requires the unspecified static-friction limit.",
+    "remainingGap": "The existing path establishes prerequisite availability, not instruction or mastery. Node descriptions do not explicitly establish independent recall or derivation of the motion formulas; another direct edge would not supply that teaching.",
+    "givenEquations": {
+      "recommendation": "optional",
+      "reason": "Providing the equations can focus the case on model assumptions, force attribution, signs and valid intervals. Formula recall is not required by this bounded review."
+    }
+  },
+  "atomicityReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "decision": "keep",
+      "reason": "One coherent competence: determine and interpret a collinear resultant for one body. Body selection, signs and arrow reading support that competence through existing prerequisites; no split or acceleration-equation expansion is needed."
+    }
+  ],
+  "semanticKindReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "decision": "keep",
+      "semanticKind": "curricularAtomic",
+      "reason": "B defines a transferable curricular competence in the Skill-Landschaft. Its separate assessment successor does not make B itself a practiceAssessment."
+    }
+  ],
+  "memoryGoalReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "decision": "keep",
+      "reason": "B requires application and explanation: selecting forces, reading representations and interpreting signed sums. Memorizing a formula or diagram cannot satisfy it. No native memoryGoal flag is supplied."
+    }
+  ],
+  "schemaCheck": "The single description record passed all applicable supplied schema constraints, including exact bindings and forbidden-extra-field checks."
+}

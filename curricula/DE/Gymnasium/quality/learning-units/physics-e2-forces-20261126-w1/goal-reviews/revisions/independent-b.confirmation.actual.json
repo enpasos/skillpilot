@@ -1,0 +1,83 @@
+{
+  "reviewer": "physics-e2-forces-w1-independent-reviewer-b",
+  "startedAt": "2026-11-26T15:46:42Z",
+  "completedAt": "2026-11-26T15:47:37Z",
+  "independenceDisclosure": "For this bounded confirmation I read only the three files in profile-confirm-b. I examined the three requested revised profile bodies and the actual supplied goal texts, plus the separately supplied bilingual cornering proposal. I did not inspect another reviewer or any material outside this packet. I am the same independent reviewer B who made the earlier review; this is a confirmation of the current revisions, not an additional blind first-pass vote.",
+  "fileSha256Bindings": {
+    "goals.json": "sha256:1ddc6864d5bce4ca37d21f342ffe6bd072ffb39ab75a0f7f88b3c3e335dab815",
+    "cornering-wording.proposal.json": "sha256:fb444f6b55774c241b5bfabe1a942d8ad4901589d1a701d8c5abe7ff8a962330",
+    "positive.candidates.json": "sha256:f508e0efe10b6e011a60f9118fb376245a3b827644313cc9bc588aad5cf9312e"
+  },
+  "bodyHashMethod": "SHA-256 of UTF-8 JSON with sorted keys, ensure_ascii=false, separators comma and colon, and no trailing newline.",
+  "profileReviews": [
+    {
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "decision": "keep",
+      "scientificValidity": "The current towing case specifies external forces, so +8−3−5=0 N is compatible with either initial rest or sustained westward constant velocity. The force on the rope is correctly excluded. The scale case gives −6+2=−4 N with right positive and +6−2=+4 N with left positive; the physical force remains leftward.",
+      "scopeFit": "The motion expectation now matches the goal: zero resultant permits rest or uniform motion, and a nonzero resultant has a direction. It does not impose a separate nonzero-force speed-evolution assessment.",
+      "languageEquivalence": "Both languages state the same external forces, body selection, time condition, zero-force interpretation and coordinate change.",
+      "independentEvidence": "Two demonstrations cover body isolation, arrow scale, signed summation and a genuine coordinate/reference variation, with independent transfer required.",
+      "requiredChanges": [],
+      "profileBodySha256": "sha256:5e3c1f62430dff36b71b267254d6fb2259c2138361d3c2d823ffade329f9ddde",
+      "goalTextBodySha256": "sha256:cccd8f6b3cf8e61616f24af954bbc174c6a501b995277c194b0a1165330fdce0",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "decision": "keep",
+      "scientificValidity": "For a rise/run ratio 3/4 and weight 50 N, components 30 N along and 40 N into the plane are correct. For the mirrored rise/run ratio 4/3 and weight 25 N, components 20 N along and 15 N into the plane are correct. Both sum vectorially to the original vertical weight. The contact normal is a different interaction acting out of the plane.",
+      "scopeFit": "The revised mirror prompt asks whether the perpendicular weight component is already the normal contact force. This is a precise distinction rather than an underspecified request to identify every surface force. The competence remains graphical and does not add trigonometric calculation.",
+      "languageEquivalence": "The revised German and English questions, geometric variations, separate force scales and expected component/contact distinction agree.",
+      "independentEvidence": "The reflected and steeper plane changes physical geometry; changing the force scale prevents copying arrow lengths. The required parallelogram check exposes reconstruction rather than recall.",
+      "requiredChanges": [],
+      "profileBodySha256": "sha256:567085d1c70f9c73f827bfd7d4b3269f760023b9465883a7f2c834dd4581b987",
+      "goalTextBodySha256": "sha256:7ce98ebb5ae61b586a69636fc147c3dd40bd3a2486097c54fca5df45c82c9415",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    },
+    {
+      "goalId": "30ddb2d7-b991-55fe-9e74-37ffe1048f9f",
+      "decision": "keep",
+      "scientificValidity": "The stated initial static limit below 12 N makes the sled start in the given kinetic model. Thereafter (12−3)/3=3 m/s², v(2 s)=6 m/s and displacement 6 m are correct. For the initially left-sliding cart, +6+2=8 N gives +2 m/s² and stopping at 2 s. If it later slides right, +6−2=4 N gives +1 m/s². The revised expected answer explicitly says that actual restart cannot be decided without the static limit.",
+      "scopeFit": "The profile teaches one integrated one-dimensional model with prescribed friction magnitude. The static-limit statement is given rather than requiring a new μN derivation; the conditional post-stop branch respects the boundary of the available information.",
+      "languageEquivalence": "The new start condition and the explicit inability to infer restart appear in both languages, as do the signs, units and changed force branch.",
+      "independentEvidence": "Separate initial and transfer cases require model assumptions, a signed force balance, velocity/acceleration distinction, a stopping time and a new valid model segment. These are more than number substitution.",
+      "requiredChanges": [],
+      "profileBodySha256": "sha256:063965f2c71aa756b9308a63c20e0cabb91212de65165f061a0fb0c4e7908820",
+      "goalTextBodySha256": "sha256:0adeda97d4f8c52b003f91f89455c372b0583e162fde031611f367e234ed9eee",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ],
+  "corneringDescriptionReview": {
+    "goalId": "e2da5eec-45de-5527-9ad7-16f41cacbe58",
+    "decision": "suitable_candidate",
+    "proposalBodySha256": "sha256:1bd9ac76914d2b5151fd3c6db048fbd92f5547c351983d551dac992b57ad9c0e",
+    "proposedDescriptionDe": "Die lernende Person kann für eine gleichförmige Kurvenfahrt auf ebener Fahrbahn ohne tangentiale Antriebs- oder Bremskraft die erforderliche Haftkraft mv²/r bestimmen und mit einem vorgegebenen verfügbaren Höchstwert vergleichen. Sie erklärt, dass die Haftkraft am Fahrzeug zum Kreismittelpunkt wirkt, hier die Zentripetalkraft liefert und sich bis zur Haftgrenze dem Bedarf anpasst.",
+    "proposedDescriptionEn": "For a steady turn on a level road without tangential driving or braking force, the learner can determine the required static friction mv²/r and compare it with a stated available maximum. They explain that static friction acts on the vehicle towards the circle centre, supplies the centripetal force here and adjusts to the demand up to the static-friction limit.",
+    "scientificValidity": "The proposal correctly identifies static friction on the vehicle as the inward force mv²/r for steady level cornering without a tangential force demand. It compares actual demand with a stated available maximum, retains the adaptive static-force interpretation and does not add centripetal force as a separate interaction.",
+    "scopeFit": "The current goal broadly claims quantitative analysis of cornering with static friction. This proposal gives its simple level-turn model a defensible explicit boundary and requires only a stated available maximum. It adds no normal-force or friction-coefficient derivation. It is more explicit than the current text and remains a proposed wording change pending the applicable authority decision.",
+    "languageEquivalence": "German and English have the same steady/level/tangential-force conditions, mv²/r demand, given maximum, vehicle reference, inward direction and adaptive-limit relation.",
+    "requiredChanges": [],
+    "recordStatus": "candidate",
+    "reviewAuthority": "ai_candidate",
+    "authorityStatus": "pending",
+    "publicationApproved": false
+  },
+  "memoryCardClarification": {
+    "goalId": "5f289cdc-fda1-4058-b44f-041ba1398e79",
+    "decision": "no_additional_goal_specific_card_required",
+    "ownCardRequired": false,
+    "memoryUseful": true,
+    "reasonDe": "Das eigenständige Lernziel verlangt die Anwendung der bereits eingeführten Grundgleichung bei gegebener Resultierender oder Beschleunigung, mit Vorzeichen, Einheiten und Gleichgewichtsdeutung. Die stabile Erinnerungsgrundlage ist Newtons zweites Axiom samt Bedingungen und der Unterscheidung zwischen Beschleunigung und Geschwindigkeit. Eine zusätzliche Karte nur für dieses Anwendungsziel würde keinen zwingend neuen Erinnerungsinhalt abdecken. Seine eigenständige Leistung muss über frische Anwendungsaufgaben geprüft werden; eine zusätzliche Karte ersetzt diese nicht.",
+    "reasonEn": "The distinct learning goal applies the previously introduced equation to a given net force or acceleration, with signs, units and equilibrium interpretation. Its stable recall foundation is Newton's second law with its conditions and the distinction between acceleration and velocity. An extra card solely for this application goal does not cover a necessarily new recall item. Its distinct performance requires fresh application tasks; an extra card cannot replace them.",
+    "scopeLimit": "This confirmation packet contains no upstream law card. I therefore do not claim to have checked its current wording, release state or card-to-goal binding. The conclusion is that this application goal itself does not scientifically require a separate new card beyond an adequately retained upstream law recall foundation.",
+    "createSeparateMemoryGoal": false,
+    "recordStatus": "candidate",
+    "reviewAuthority": "ai_candidate"
+  },
+  "recordStatus": "candidate",
+  "reviewAuthority": "ai_candidate",
+  "learnerMasteryInferred": false
+}

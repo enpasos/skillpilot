@@ -1,0 +1,600 @@
+{
+  "marker": "x",
+  "isolation": {
+    "independent": true,
+    "version": "v3",
+    "authorOtherMarkerOrSynthesisRead": false,
+    "earlierScoresUsedAsAuthority": false,
+    "inputsRead": [
+      "v3/blind/instructions.md",
+      "v3/blind/scripts.json",
+      "three v3 candidate.goal.json files",
+      "v3/goals.json",
+      "v3/kb-exact-prerequisites.json",
+      "v3/kb-scope.note.md",
+      "all9 unique PNGs linked from this blind packet",
+      "KG stimulus PNG"
+    ],
+    "actualLinkedDrawingsViewed": true,
+    "KGStimulusViewed": true,
+    "KTReevaluated": false,
+    "KTStatus": "Outside v3 scope; exact independently accepted v2 evaluation remains retained."
+  },
+  "rubricAccepted": true,
+  "bilingualAccepted": true,
+  "standaloneCoverageAccepted": true,
+  "concerns": [],
+  "assessmentVerdicts": {
+    "KB": {
+      "accepted": true,
+      "ordinaryGoalCoverageAccepted": true,
+      "goalId": "6ba20688-8cbf-5db1-bda8-346893798d2f",
+      "comparison": "A tests recipient selection, signed same-body forces and scaled body-origin arrows. B tests zero-sum rest and uniform motion. C/D test nonzero magnitude/direction and consistent axes. All ordinary B clauses are covered. The explicitly supplied direction-of-velocity-change rule and exact prerequisites support the additional motion interpretation.",
+      "prerequisitesSufficient": true,
+      "prerequisiteEvidence": {
+        "closureNodesProvided": 11,
+        "closureMissingIds": [],
+        "signedArithmetic": "4b67bed9 teaches integer addition; its supplied complete chain provides integer order and elementary arithmetic.",
+        "arrowOriginAndScale": "b77a7e93 teaches carrier, direction and separate arrow scale.",
+        "motionAndInertia": "5ea765ac attributes motion changes to resultant force and teaches persistence at zero resultant; ae67bcf1 teaches qualitative speed changes.",
+        "suppliedFact": "Task explicitly gives velocity-change direction. No mass, acceleration magnitude, trigonometry or Newton-II calculation is needed."
+      },
+      "CRecoverableFromD": false,
+      "CRecoveryReason": "D concerns another cart and210/90/30 N with90 N resultant. It does not establish C360/120/420 N and180 N result; a correct alternative axis remains allowed for the correct case.",
+      "standaloneCreditCheck": "KB-04 is5+5+1+5=16<17. Entirely absent4-point core or maintained zero-sum/rest misconception cannot pass.",
+      "minorSlipCheck": "KB-06 scores19/20 after two independent0.5 deductions and passes17."
+    },
+    "KG": {
+      "accepted": true,
+      "ordinaryGoalCoverageAccepted": true,
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "comparison": "The task requires body-origin weight/components, actual scaled construction, own measurements and actual graphical recombination. Own reference makes measuring independent of display size. The stimulus has4 cm weight at10 N/cm, no supplied slope angle;2.4/3.2 cm components reproduce40 N.",
+      "graphicalCheckNecessaryForCredit": true,
+      "graphicOnlyOmissionCheck": {
+        "case": "KG-07",
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "passingPoints": 13.5,
+        "pass": false,
+        "reason": "Both correct explanations supply supplement1 only. Without complete graphical check, all3 D core points0; missing only this ordinary-goal performance fails."
+      },
+      "physicalVsDetachedConstruction": "KG-03 earns D4 for complete detached construction while B remains1 because physical component arrows at O are absent.",
+      "minorSlipCheck": "KG-06 scores15/16 after two independent0.5 unit deductions and passes13.5."
+    },
+    "KF": {
+      "accepted": true,
+      "ordinaryGoalCoverageAccepted": true,
+      "goalId": "3a2accd7-639f-50e1-a7b1-5a9d3c2432a6",
+      "comparison": "A-C test adjusted friction below/at static limit, failure above it and kinetic friction. D tests changed actual normal force, existing sliding and opposite-relative-motion direction. Actual arrows test body origin and scale. Corrected German description agrees with English.",
+      "standaloneCreditCheck": "Missing adapted sublimit friction/rest still scores only13 including cross-block limit evidence. Maintained equality-forces-sliding also scores13<13.5. Missing C or D scores12.",
+      "minorSlipCheck": "KF-06 scores15/16 after two independent0.5 unit deductions and passes13.5."
+    }
+  },
+  "standaloneAndPassCreditChecks": {
+    "all21PairsMarked": true,
+    "DE_ENPassDecisionsEqual": true,
+    "passingResponseCount": 6,
+    "KGGraphicOnlyOmissionCannotPass": true,
+    "KBCDistinctFromD": true,
+    "BPlusExactPrerequisitesAndSuppliedFactsSufficient": true,
+    "twoIsolatedMinorSlipsStillPass": {
+      "KB": true,
+      "KG": true,
+      "KF": true
+    },
+    "noLearnerMasteryWritten": true,
+    "noAutomaticCreditBeyondClaimedOrdinaryGoalIds": true
+  },
+  "cases": [
+    {
+      "id": "KB-01",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 20,
+        "pass": true
+      },
+      "reason": "Correct recipient separation and signed forces; actual drawing has scaled common-origin arrows. Zero sum, nonzero case C and distinct case D are complete in both languages."
+    },
+    {
+      "id": "KB-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 5,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "No object separation or drawing. B explicitly gives all3 correct signed cart-force terms, earning A=1 under its cap. B-D complete."
+    },
+    {
+      "id": "KB-03",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "B supplies only a=0. A lists separate forces but no complete written sum/result and no justified rest/uniform-motion alternatives. Other blocks complete."
+    },
+    {
+      "id": "KB-04",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 1,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "Only C supplement is supplied. Distinct case D uses210/90/30 N, resultant90 N and initial+2 m/s; it provides none of C's360/120/420 N balance or initial braking argument. Total16 fails17."
+    },
+    {
+      "id": "KB-05",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 5,
+          "C": 5,
+          "D": 1
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "D gives only invariant physical forces. C concerns another case and cannot supply the missing210/90/30 N transfer. A-C complete."
+    },
+    {
+      "id": "KB-06",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 4.5,
+          "C": 4.5,
+          "D": 5
+        },
+        "total": 19.0,
+        "pass": true
+      },
+      "reason": "Sound independent model; separate unit slips in B acceleration(m/s) and C force(Nm) cost0.5 once at each origin. Total19 passes17."
+    },
+    {
+      "id": "KB-07",
+      "de": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 5,
+          "B": 1,
+          "C": 5,
+          "D": 5
+        },
+        "total": 16,
+        "pass": false
+      },
+      "reason": "Maintained zero-sum-forces-rest misconception explicitly zeros all4 B core points despite correct arithmetic. Correct a=0 earns supplement. Total16 fails17."
+    },
+    {
+      "id": "KG-01",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "reason": "Actual full image has axes, scaled physical components at O, labels and a closed parallelogram visibly reproducing original W. Own lengths/conversions and both supplementary explanations correct."
+    },
+    {
+      "id": "KG-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "No weight scale calculation or positive axes in actual G-no-A. Inward normal component is not an outward-positive normal axis. Carrier explanation earns1; B-D complete."
+    },
+    {
+      "id": "KG-03",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "Actual detached triangle is complete, labelled and uses the common force scale to reproduce W, satisfying all3 D core points. It does not provide physical components at O: B core0, replacement supplement1. Own C lengths/conversions and labels complete."
+    },
+    {
+      "id": "KG-04",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 1,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "C has component/scale labels only, no own measured lengths or conversions. Do not measure on the learner's behalf. Actual A/B/D evidence complete."
+    },
+    {
+      "id": "KG-05",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0.5
+        },
+        "total": 12.5,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0.5
+        },
+        "total": 12.5,
+        "pass": false
+      },
+      "reason": "Actual G-no-D has physical components but no graphical sum check. D only explains that tips are not places/contacts, earning0.5; no contact-force distinction. Total12.5 fails13.5."
+    },
+    {
+      "id": "KG-06",
+      "de": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 3.5,
+          "D": 4
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "reason": "Linked G-full is correctly labelled and has complete graphical check. Independent textual force-unit slips40 Nm and24 Nm cost0.5 each at A and C origins. Total15 passes13.5."
+    },
+    {
+      "id": "KF-01",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 16,
+        "pass": true
+      },
+      "reason": "Correct adapted static friction, possible rest at equality, exceeded capacity and kinetic friction with actual changed N/opposite relative motion. Actual arrows have correct3/4 cm lengths, origins, free tips and scale."
+    },
+    {
+      "id": "KF-02",
+      "de": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 1,
+          "B": 4,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "No adapted30 N/rest answer or A arrow. B/C visibly establish the40 N maximum for this N, earning A limit criterion1. B-D complete."
+    },
+    {
+      "id": "KF-03",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "B only gives small-increase supplement; actual40 N static friction and explicit possible rest at equality are absent. Other blocks complete."
+    },
+    {
+      "id": "KF-04",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 0,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 0,
+          "D": 4
+        },
+        "total": 12,
+        "pass": false
+      },
+      "reason": "No C50>40 comparison, persistence decision,25 N kinetic value for this case or rejected-value explanation. Actual drawing shows A and D only."
+    },
+    {
+      "id": "KF-05",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 0
+        },
+        "total": 12,
+        "pass": false
+      },
+      "reason": "No D response; actual KF-only-A supplies no changed-load/sliding-left calculation or D arrow. A-C complete."
+    },
+    {
+      "id": "KF-06",
+      "de": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 4,
+          "D": 3.5
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "en": {
+        "points": {
+          "A": 3.5,
+          "B": 4,
+          "C": 4,
+          "D": 3.5
+        },
+        "total": 15.0,
+        "pass": true
+      },
+      "reason": "Independent Nm slips at A static-limit calculation and D kinetic result cost0.5 per origin. Actual model/direction and drawings sound. Total15 passes13.5."
+    },
+    {
+      "id": "KF-07",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 1,
+          "C": 4,
+          "D": 4
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "Maintained equality-forces-sliding misconception explicitly zeros B core despite40 N left. Separate small-increase supplement1. Total13 fails13.5."
+    },
+    {
+      "id": "KG-07",
+      "de": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "en": {
+        "points": {
+          "A": 4,
+          "B": 4,
+          "C": 4,
+          "D": 1
+        },
+        "total": 13,
+        "pass": false
+      },
+      "reason": "Only graphical vector-sum check is missing. Both D supplementary explanations earn0.5 each, but actual G-no-D has no complete construction: all3 D core points0. Total13 fails13.5; this omission cannot earn coverage credit."
+    }
+  ],
+  "releaseDecision": "Accept the exact v3 KB,KG,KF candidate assessments on subject correctness, bilingual equivalence, rubric and standalone goal-coverage grounds. All21 paired responses were marked using actual evidence. This is content-review acceptance only: no learner result, publication, mandatory offer or CQR authority is granted. KT retains its exact v2 evaluation outside this packet."
+}

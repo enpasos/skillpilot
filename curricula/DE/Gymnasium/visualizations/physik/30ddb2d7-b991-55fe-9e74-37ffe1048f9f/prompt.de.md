@@ -8,7 +8,7 @@
 
 ## Generator
 
-- Provider: Google Gemini / Nano Banana Pro
+- Provider: OpenAI / Codex image_gen; precise force diagram rendered from SVG
 - Status: pilot
 - Quellbild: `30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg`
 - Public Asset: `/assets/goal-visualizations/physik/30ddb2d7-b991-55fe-9e74-37ffe1048f9f/30ddb2d7-b991-55fe-9e74-37ffe1048f9f.jpg`
@@ -16,30 +16,14 @@
 ## Prompt
 
 ```text
-Bitte visualisiere das folgende Lernziel im einfachen Cartoon-Stil.
+Actual image_gen prompt for the final generated drawing ingredient:
 
-Rahmen:
-- Stil und Anspruch: klar, anschaulich und fachlich präzise; keine Zielgruppen-, Fach- oder Publikumshinweise als Bildtext.
-- Erzeuge eine klare, gut lesbare Infografik im Querformat.
-- Visualisiere genau dieses eine Lernziel; keine Zusatzthemen und keine Aufgabenlösung.
-- Nutze plausible fachliche Beispiele nur, wenn sie das Lernziel unmittelbar erklären.
-- Keine Drittanbieterlogos, keine Arbeitsblatt-Kopie, keine geschützten Figuren.
-- Verwende wenig Text: kurze deutsche Labels statt langer Sätze.
-- Beschriftungen und mathematische Schreibweisen müssen fachlich korrekt und auch in kleiner Darstellung lesbar sein.
+Use case: scientific-educational. Create a single isolated small rectangular wooden block for a Physics textbook, exactly front-on side view, soft teal colored pencil filling with loose friendly navy handdrawn outline, square-ish rectangle about 1.4 times wider than tall, slightly rounded corners. No perspective, no ground, no cast shadow, no text, no arrows, no symbols or decorative marks. Transparent background. Large central object with clear margin.
 
-Titel: Geradlinige Bewegung mit Reibung modellieren
-Beschreibung: Die lernende Person kann geradlinige Bewegungen mit Reibung unter klar benannten einfachen Modellannahmen modellieren, indem sie die wirkenden Kräfte mit einer konsistent gewählten positiven Richtung bilanziert, aus der resultierenden Kraft die Beschleunigung bestimmt und den Bewegungsverlauf mit passenden einfachen Bewegungsgleichungen beschreibt und qualitativ vorhersagt.
+Final scientific composition (precise-diagram exception after rejected generated force scales):
+Ein nach rechts gleitender Körper von 2 kg mit Anfangsgeschwindigkeit +6 m/s berührt eine raue waagerechte Fläche. Sein Reibungspfeil von −4 N beginnt am Körper und zeigt nach links, bei 2 N je Bezugsstrich. Unter konstanter Reibung gelten a = −2 m/s² und v = 6 − 2t ausschließlich bis zum Stillstand nach 3 s. Positive Richtung ist rechts.
 
-Zusatzanweisung:
-Regenerate the complete image while preserving the useful force diagram of a body on a horizontal surface.
-
-Mandatory scientific correction:
-- Show a rightward pulling force F_Zug and a smaller leftward friction force F_R.
-- From `F_Zug > F_R`, conclude only `Beschleunigung nach rechts`.
-- Do not write or imply `schneller nach rechts`, because the initial velocity is unspecified.
-- The net-force arrow must point right and be labeled `F_res` or `resultierende Kraft`.
-
-Use correct German spelling and sparse, legible labels. Do not add technical identifiers, filenames, brands, logos, watermarks, platform names, audience labels, or production notes.
+Final asset is 1600 by 900. The source layout is scaled uniformly, with horizontal safe margins. No force geometry is stretched. Exact source: render-material.mjs and sources/motion.svg. The given-resultant drawing is contained without stretch instead. Actual rejected whole-image generation attempts and their prompt set are retained separately.
 ```
 
 ## Review-Notiz

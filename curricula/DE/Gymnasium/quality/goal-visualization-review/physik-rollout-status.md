@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-11-26T05:56:17.295Z
+Generated: 2026-11-26T16:05:19.889Z
 
 Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
@@ -16,15 +16,15 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 873 |
-| Atomare Ziele im Visualisierungs-Scope | 495 |
-| Ziele mit primaerem Visualisierungslink | 495 |
+| Alle Ziele in der Landschaft | 877 |
+| Atomare Ziele im Visualisierungs-Scope | 497 |
+| Ziele mit primaerem Visualisierungslink | 497 |
 | Coverage | 100.0% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 495 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 497 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 102 |
+| Review-Ledger-Dateien | 103 |
 | Offene Provider-Deferred-Ziele | 0 |
 | Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
@@ -38,14 +38,14 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 | Status | Count |
 | --- | --- |
 | `accepted` | 97 |
-| `pilot` | 398 |
+| `pilot` | 400 |
 
 ## Ledger Decisions
 
 | Decision | Count |
 | --- | --- |
 | `accepted_after_notation_correction` | 1 |
-| `accepted_ai_pilot` | 4 |
+| `accepted_ai_pilot` | 11 |
 | `accepted_cluster_overview_after_atomic_split` | 1 |
 | `accepted_documented_repo_native_fallback` | 6 |
 | `accepted_existing_asset` | 10 |
@@ -78,8 +78,8 @@ Scope: canonical `DE Gymnasium Physik`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-batch-099.md` |
-| Latest ledger status | `accepted_ai_pilot` |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/physik-w1-forces-2026-11-26.md` |
+| Latest ledger status | - |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/physik-batch-073-regeneration-2` |
 

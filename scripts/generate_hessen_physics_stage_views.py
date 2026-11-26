@@ -17,6 +17,7 @@ from functools import cache
 from pathlib import Path
 from generate_physics_partial_orders import partial_order, acquisition_placements, contextual_targets, course_seeds
 from generate_physics_arrow_places import apply_arrow_places, with_arrow_places
+from generate_physics_force_places import apply_force_places, complete_force_authoring, with_clean_force_input, GOALS as FORCE_GOAL_IDS
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORY = ROOT / "curricula/DE/Gymnasium/composition-views/physik"
@@ -975,9 +976,12 @@ def generate_g8(view):
     acquisition_placements(result, GOALS, before["target"], prerequisites, structure,
                            consumer_seeds=before["target"] & applicable_learning)
     author_partial_orders(result, lambda node: learning_atoms(node, before["target"] & applicable_learning, applicable_learning))
-    if role_atoms(result) != before:
+    expected = {**before, "prerequisiteOnly": before["prerequisiteOnly"] | (FORCE_GOAL_IDS & applicable_learning - before["target"])}
+    if role_atoms(result) != expected:
         raise ValueError("G8 authoring changed reviewed atomic target/support roles")
-    if role_atoms({"rootNodes": [original_stage]}) != role_atoms({"rootNodes": [stage]}):
+    old_stage_roles = role_atoms({"rootNodes": [original_stage]})
+    new_stage_roles = role_atoms({"rootNodes": [stage]})
+    if any(old_stage_roles[role] - FORCE_GOAL_IDS != new_stage_roles[role] - FORCE_GOAL_IDS for role in old_stage_roles):
         raise ValueError("G8 authoring changed reviewed SekI atomic roles")
     return result, {"earlierDemandPlacements": shifts, "sourcePlacements": source_placement,
                     "exercisePlacements": {task["goalId"]: years[max((ownership[identifier]
@@ -1062,12 +1066,12 @@ def duration_outputs():
         g9["viewId"] += "-g9"
         g9["scope"]["durationModel"] = "G9"
         for duration, generated in (("g8", g8), ("g9", g9)):
-            generated = apply_arrow_places(generated, GOALS)
+            generated = complete_force_authoring(apply_arrow_places(generated, GOALS), GOALS)
             outputs.append((DIRECTORY / f"de-he-{profile}-{duration}.view.json", generated,
                             report if duration == "g8" else {}))
             if profile == "gk":
                 excerpt, excerpt_report = seki_excerpt(generated, duration)
-                outputs.append((DIRECTORY / f"de-he-seki-{duration}.view.json", excerpt, excerpt_report))
+                outputs.append((DIRECTORY / f"de-he-seki-{duration}.view.json", complete_force_authoring(excerpt, GOALS), excerpt_report))
     return outputs
 
 
@@ -1075,6 +1079,19 @@ def duration_outputs():
 generate = with_arrow_places(generate, GOALS)
 generate_g8 = with_arrow_places(generate_g8, GOALS)
 seki_excerpt = with_arrow_places(seki_excerpt, GOALS)
+generate = with_clean_force_input(generate)
+generate_g8 = with_clean_force_input(generate_g8)
+seki_excerpt = with_clean_force_input(seki_excerpt)
+
+
+def complete_authoring(view):
+    """Public final source/role/acquisition/order completion used by main."""
+    return complete_force_authoring(view, GOALS)
+
+
+def generate_complete(view):
+    result,evidence=generate(view)
+    return complete_authoring(result),evidence
 
 
 def main():
@@ -1090,8 +1107,8 @@ def main():
     for name in ([] if args.duration_views else FILES):
         path = DIRECTORY / name
         current = json.loads(path.read_text())
-        generated, shifts = generate(current)
-        repeated, _ = generate(generated)
+        generated, shifts = generate_complete(current)
+        repeated, _ = generate_complete(generated)
         if generated != repeated:
             raise ValueError(name + ": generator is not idempotent")
         outputs.append((path, generated))
@@ -1110,6 +1127,7 @@ def main():
         for path, generated, details in duration_outputs():
             outputs.append((path, generated))
             report.append({"file": path.name, "changed": not path.exists() or json.loads(path.read_text()) != generated, **details})
+    outputs = [(path, complete_authoring(view)) for path, view in outputs]
     # All four outputs pass preflight before any write.
     for path, generated in outputs:
         if args.write:

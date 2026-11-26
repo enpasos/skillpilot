@@ -1,0 +1,41 @@
+{
+  "reviewer": "gpt-6.1-sol",
+  "independenceDisclosure": "Independent subject and bilingual review based only on prompt.md, criteria.md, schema.json, campaign.json, context.json, native.input.jsonl and relevant book-model.json contents in the supplied directory. No memory, web, outside scientific review or file writes were used. The parent supplied mechanical format checks only; the scientific verdict and wording below are my own.",
+  "startedAt": "2026-11-26T16:51:09Z",
+  "completedAt": "2026-11-26T16:51:42Z",
+  "bookModelSha256": "sha256:93fad3e6b41f4813e49c3b1a31b69ee021f23100c9a6a38c1e78f5e2c61c0a5c",
+  "reviewInputFingerprint": "sha256:a924df5462151bd0070ec7b3e4883f313586a93c9dc4d8b6091d1f28236c96ba",
+  "descriptionReviews": [
+    {
+      "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+      "schemaVersion": 1,
+      "recordId": "gpt-6.1-sol-20261126T165109Z-77b44d13-4368-5950-a943-decb377c7302",
+      "runId": "gpt-6.1-sol-physics-e2-forces-g-geography-20261126T165109Z",
+      "campaignId": "physics-e2-forces-g-geography-20261126-a",
+      "roundId": "physics-e2-forces-g-geography-20261126-first-pass-a",
+      "bundleFingerprint": "sha256:99c61d37053d4bcb98884ec7633dcf14b66f7f840dfc09a7aedabd1c5e4cffa2",
+      "bookDigest": "sha256:115bd41ce2ae68da6fb0f64e0659146875971d430f4182f88982f3baebc8428c",
+      "goalId": "77b44d13-4368-5950-a943-decb377c7302",
+      "goalFingerprint": "sha256:de50c603d0d1ae1b6e83e4e1c341ab1ee758376845c7f745d7b1011d4d5ca7b4",
+      "pageFingerprint": "sha256:b8492f6d8d00b15d3f58d159ef6ee55ea385bad24648b8a369685b84085ae3c8",
+      "currentTitleDe": "Die Gewichtskraft am Hang zeichnerisch zerlegen",
+      "currentTitleEn": "Resolve weight on an incline by scale drawing",
+      "currentDescriptionDe": "Die lernende Person kann am Körper den Gewichtskraftpfeil ansetzen und seine Komponenten parallel und senkrecht zur geneigten Ebene maßstäblich konstruieren. Sie liest die Beträge am Kraftmaßstab ab und prüft, dass ihre Vektorsumme den ursprünglichen Pfeil ergibt.",
+      "currentDescriptionEn": "The learner can draw the weight vector at the body and construct its components parallel and perpendicular to the slope. They read both magnitudes using the force scale and check that their vector sum reproduces the original weight.",
+      "decision": "keep",
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die am Körper lotrecht nach unten gerichtete Gewichtskraft lässt sich bezüglich einer geneigten Ebene durch zwei rechtwinklige Komponenten ersetzen: eine hangabwärts und eine senkrecht in die Ebene. Ihre Vektorsumme ergibt dieselbe Gewichtskraft; die Komponenten sind keine zusätzlich wirkenden Kräfte. Der Kraftmaßstab ordnet Pfeillängen Kraftbeträge zu. Die senkrechte Gewichtskomponente ist von der Kontakt-Normalkraft der Unterlage zu unterscheiden.",
+        "essentialUnderstandingEn": "The weight acting vertically downward at the body can be replaced, relative to an inclined plane, by two perpendicular components: one downhill and one perpendicular into the plane. Their vector sum gives the same weight; the components are not additional forces. The force scale relates arrow lengths to force magnitudes. The perpendicular component of weight must be distinguished from the surface's contact normal force.",
+        "observablePerformanceDe": "In einer unabhängig gestellten Aufgabe zeichnet die lernende Person den Gewichtskraftpfeil am Körper nach dem gegebenen Kraftmaßstab, konstruiert mit Parallelen die beiden Komponenten entlang und senkrecht zur Ebene und liest ihre Beträge mit Einheit ab. Sie kontrolliert die Konstruktion durch vektorielle Rückaddition und erklärt, warum die Komponenten die Gewichtskraft ersetzen und die Kontakt-Normalkraft nicht Teil dieser Zerlegung ist.",
+        "observablePerformanceEn": "In an independently presented task, the learner draws the weight vector at the body using the given force scale, constructs the components along and perpendicular to the plane using parallel lines, and reads their magnitudes with units. They check the construction by adding the component vectors back together and explain why the components replace weight and why the contact normal force is not part of this decomposition.",
+        "transferExpectationDe": "Bei einer frisch vorgelegten, zur anderen Seite ansteigenden und steileren Ebene bestimmt die lernende Person die Komponentenrichtungen erneut und führt die maßstäbliche Konstruktion selbstständig aus. Sie erklärt bei gleichem Gewicht, weshalb der hangparallele Betrag zunimmt und der senkrechte Betrag abnimmt, während die Rückaddition weiterhin denselben lotrechten Gewichtskraftpfeil ergibt.",
+        "transferExpectationEn": "For a fresh task with a steeper plane rising toward the opposite side, the learner determines the component directions anew and independently performs the scale construction. For unchanged weight, they explain why the parallel magnitude increases and the perpendicular magnitude decreases while adding the components still reproduces the same vertical weight vector."
+      },
+      "rationale": "Beibehalten. Der Wortlaut beschreibt eine fachlich richtige, zusammenhängende Kompetenz: Gewichtskraft maßstäblich zeichnen, bezüglich der Ebene zerlegen, Beträge ablesen und durch Rückaddition prüfen. Diese Schritte bilden eine einzige grafische Vektorzerlegung und begründen keine Aufteilung. Die englische Fassung trägt denselben Anspruch; der Maßstabsbezug ergibt sich ausdrücklich aus Titel und Kraftmaßstab. Die direkt benannten Voraussetzungen zur vektoriellen Kräfteaddition und zur Unterscheidung von Masse und Gewichtskraft stützen die Annahmen einer bekannten Vektoraddition und eines bekannten Gewichtskraftbegriffs. Vollständige Beschreibungen dieser Voraussetzungen sind im Buch nicht enthalten; ihre tatsächliche Vermittlung wird daher nicht behauptet. Die Zerlegung erfordert weder Reibungsfreiheit noch Kräftegleichgewicht und rechtfertigt keine allgemeine Gleichsetzung von senkrechter Gewichtskomponente und Normalkraft. Das vorhandene V2-Profil deckt Konstruktion, Maßstab, Rückaddition, Kontaktkraftunterscheidung und selbstständigen Transfer bereits ab: Es fordert unabhängige Demonstrationen und variiert Hangrichtung sowie Neigung mit fachlich korrekten 3-4-5-Konstruktionen. Deshalb ist keine Profiländerung erforderlich. Die Visualisierung bleibt Lehrhilfe. Externe Quellenzuordnungen oder vollständige länder- und stufenspezifische Projektionen wurden nicht verifiziert.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none",
+      "recordStatus": "candidate",
+      "reviewAuthority": "ai_candidate"
+    }
+  ]
+}

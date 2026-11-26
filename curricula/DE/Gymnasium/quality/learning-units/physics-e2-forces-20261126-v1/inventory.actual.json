@@ -1,0 +1,105 @@
+{
+  "base": "7c921a452caa00636d8bfb8b324d530bbc4a2886",
+  "state": "parked-preflight",
+  "catalogActivated": false,
+  "currentFiles": [
+    {
+      "path": "README.md",
+      "bytes": 7659,
+      "sha256": "d74e8e62616687f06f88aa051b299bc5a2b8410b26e0b8f1b74177d355db2c4e"
+    },
+    {
+      "path": "baseline.actual.json",
+      "bytes": 6280,
+      "sha256": "547c525d1f3846ffd233baf41ad0aa8c0d271218c7ea8b9953445fb5099fdbaa"
+    },
+    {
+      "path": "content-roles.actual.json",
+      "bytes": 1229,
+      "sha256": "febbdd8eea3eb8ef1853559b26d290dd83317beb961f339c4016e48fbfd06fd6"
+    },
+    {
+      "path": "kb-ordinary.actual.json",
+      "bytes": 2627,
+      "sha256": "4457e70eff5746aab6d93467e83d734d888dcc5cbd2087fa2ce6e34287a5fc36"
+    },
+    {
+      "path": "learner-plans.actual.json",
+      "bytes": 3116,
+      "sha256": "091b8e8113bc213967668b4f3769bdb9b6b61f861c998a4cfdc1920bb20f698c"
+    },
+    {
+      "path": "probes/content-roles.mts",
+      "bytes": 3352,
+      "sha256": "595d1a9f7063e956e5e494a64a5b31a9361ff817b0ffaa4ee58ce1be6af623c8"
+    },
+    {
+      "path": "probes/plan-cases.java.txt",
+      "bytes": 12864,
+      "sha256": "79678a05c521bf3196268ef55aa36926ee7e1741703df805348ecf8844e2df81"
+    },
+    {
+      "path": "probes/plan-results.py",
+      "bytes": 2335,
+      "sha256": "bd652ad4043d4d79260888ca6304fea096214cf336cfe0ca4f2f77f221a41f6e"
+    },
+    {
+      "path": "probes/plan.init.gradle",
+      "bytes": 2018,
+      "sha256": "c1eba115efb19723eb16fbabe5d3886705d2f683867df8d538783b8f29ffdc44"
+    },
+    {
+      "path": "role-schema.actual.json",
+      "bytes": 817,
+      "sha256": "702e1b4c8d4393092b782c02d3e050b4ab0c8e344c6d948962d2bbb0438c16b6"
+    }
+  ],
+  "localPreflightBindings": {
+    "location": "e1-handover/reviews/e2-forces-implementation-preflight",
+    "primaryRunRecords": [
+      {
+        "path": "plan/measurement.actual.json",
+        "sha256": "54cb19d4dcbb40a321ec87199370839c8405ac5fbeb67c92f3b63268a6dd2b34"
+      },
+      {
+        "path": "roles/receipt.actual.json",
+        "sha256": "96d7e20bee0e745d9a564a87c033b37786013e39e4424fcd6673e0ff970b2cc3"
+      },
+      {
+        "path": "roles/placement-role-counts.actual.json",
+        "sha256": "f6f6d7cee4533b586066688c22f87dcb1fa928d5dbd31ed07d32764c2a7573f7"
+      },
+      {
+        "path": "kb/native.actual.json",
+        "sha256": "322b99f4082229b317beb5cac3a9275282f8e1ea6fb4042f3acbd6754ac78e28"
+      },
+      {
+        "path": "kb/backend-ordinary.actual.json",
+        "sha256": "48b3443ac375e061fbb200ae43ad7d181bcb8424e3f65ab35c02b730ff42ae48"
+      },
+      {
+        "path": "kb/probe-native.mts",
+        "sha256": "08d2cf14f697f52bdadf30a77d9170ca3081175906db415ee4067ffd7c235dbc"
+      },
+      {
+        "path": "kb/KbOrdinaryProbe.java",
+        "sha256": "6cc37c4195b609b58851eae824a7cf4c8cd6a96274bb124cfb732254d17193e1"
+      }
+    ],
+    "otherMaterial": "Raw temporary database and Gradle outputs, complete source and branch probe records, and the accepted T review are held in the local handover. The repository carries the synthetic replay and a de-identified measurement. The private H2 instances only used disposable learners."
+  },
+  "checks": {
+    "freshPlanCases": 10,
+    "freshPlanCasesPassed": 10,
+    "secondRunPortableCasesPassed": 10,
+    "hessianViewsCompared": 8,
+    "originalGeneratorStates": {
+      "BW": 5,
+      "SL": 5,
+      "MV": 5
+    },
+    "nativeProjectorAndH2OutputsReproduced": true,
+    "statusAndFloors": "passed, Physik M7, Sek I M4, Sek II M4, 21 curricula and 12 scoped floors",
+    "fullImplementationCI": "deferred, preflight stop"
+  }
+}
