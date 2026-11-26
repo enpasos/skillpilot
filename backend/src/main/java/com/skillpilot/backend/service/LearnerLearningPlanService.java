@@ -1676,11 +1676,12 @@ public class LearnerLearningPlanService {
                     // goal is kept exactly if that write accepts it: directly, or behind a required unit
                     // opening, which the write starts while it keeps the goal for the return. Otherwise
                     // the exam's next goal is chosen.
+                    // An ordinary plan judges the goal under the focus that is stored for it.
                     boolean remainsEligible = "exam".equals(scope.kind())
                             ? learners.learningPlanTransitionAccepts(skillpilotId, activeGoalId, scope.goalIds())
                             : learners.getUncompactedRichFrontierForFocus(
                                     skillpilotId,
-                                    ownFocus ? List.of(activeGoalId) : block.focusGoalIds())
+                                    List.of(focusGoalId))
                             .stream()
                             .filter(goal -> "atomic".equals(goal.type()))
                             .anyMatch(goal -> activeGoalId.equals(goal.id()));
@@ -2202,8 +2203,10 @@ public class LearnerLearningPlanService {
 
     private static String runtimeFocusGoalId(LearnerLearningPlanApi.Block block, String atomicGoalId) {
         List<String> roots = block.focusGoalIds();
-        // A transition currently persists one focus root. An atomic focus is the
-        // exact safe continuation when a section spans independent topic branches.
+        // A transition persists one focus root. In a block with several sections the goal itself
+        // is that focus: an explicit individual choice, which the teaching order of a section
+        // does not defer, and whose outer unit opening comes before the opening of its own unit.
+        // Every selection judges the goal under this same focus.
         return roots.size() == 1 ? roots.getFirst() : atomicGoalId;
     }
 
@@ -2286,15 +2289,20 @@ public class LearnerLearningPlanService {
             if (openDueInBlock.isEmpty()) continue;
             openDueInBlock.forEach(goalId -> blockIds.put(goalId, block.id()));
             if (!block.focusGoalIds().isEmpty()) {
-                Set<String> frontierIds = frontierIdsForFocus.apply(block.focusGoalIds());
                 Set<String> underFocus = focusAtomicIds.apply(block.focusGoalIds());
+                Map<String, Set<String>> frontierByFocus = new LinkedHashMap<>();
                 for (String goalId : openDueInBlock) {
-                    boolean moved = isOutsideBlockFocus(block, goalId, underFocus);
-                    List<String> focusIds = moved ? List.of(goalId) : block.focusGoalIds();
+                    // The goal is judged under the focus the transition stores for it (issue #197):
+                    // the section of a block with one section, the goal itself in a block with
+                    // several sections or after a regrouping. Judged under all sections of the
+                    // block, the announced step could differ from the stored one, or not start.
+                    String storedFocus = isOutsideBlockFocus(block, goalId, underFocus)
+                            ? goalId : runtimeFocusGoalId(block, goalId);
+                    List<String> focusIds = List.of(storedFocus);
                     String entryId = dueEntryGoalId(block, goalId, focusIds,
-                            moved ? frontierIdsForFocus.apply(focusIds) : frontierIds, requiredOpeningForFocus);
-                    if (entryId != null) candidates.add(new DueGoal(
-                            entryId, moved ? goalId : runtimeFocusGoalId(block, goalId),
+                            frontierByFocus.computeIfAbsent(storedFocus, ignored -> frontierIdsForFocus.apply(focusIds)),
+                            requiredOpeningForFocus);
+                    if (entryId != null) candidates.add(new DueGoal(entryId, storedFocus,
                             block.startDate(), block.endDate(), dueDates.get(goalId), goalId));
                 }
             } else {

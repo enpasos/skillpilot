@@ -837,7 +837,18 @@ goal and focus: a unit opening the stored focus requires comes first, and the
 goal is kept for the return. A plan with an exam decides under the exam's
 scope. Its activation keeps a goal in progress exactly if the write under that
 scope accepts it, directly or behind its required opening; otherwise the
-exam's next goal is chosen. A backup
+exam's next goal is chosen. The focus a goal will run under is the one the
+transition stores for it (`runtimeFocusGoalId`): the section in a block with
+one section, the goal itself in a block with several sections or after a
+regrouping. Every selection judges a due goal under exactly that focus (plan
+view, continuation, handoff, keeping a goal in progress at activation); judged
+under all sections of its block, the announced step differed from the stored
+one, or nothing started (issue #197, 26 November 2026). The goal itself as
+focus is an explicit individual choice: the teaching order of a unit does not
+defer it, and the opening of the outer unit comes before the opening of its
+own unit. A section as focus would let `deferredUnitStudyGoals` hide a planned
+goal behind earlier steps of the unit; do not store it for a block with
+several sections without resolving that. A backup
 whose plan names a retired goal next to other goals is restored as the plan
 applies today, without that entry; before, such a backup could not be
 restored. Still outdated: a plan whose section no longer resolves in the
