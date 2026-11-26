@@ -1,4 +1,7 @@
 export type GoalVisualizationQaYesNo = 'yes' | 'no'
+export { directedQuantityArrowImageIssues, preserveDirectedQuantityArrowImageReview,
+  isDirectedQuantityArrowCriterionApproved } from './lib/directedQuantityArrowVisualizationQa'
+export type { DirectedQuantityArrowImageReview } from './lib/directedQuantityArrowVisualizationQa'
 export type GoalVisualizationState = 'available' | 'missing'
 export type GoalVisualizationMissingReason = '' | 'no_primary_link' | 'deferred_provider_limitation' | 'deferred_quality_review'
 

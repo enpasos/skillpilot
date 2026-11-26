@@ -9,6 +9,10 @@ import { PHYSICS_QA_SELECTOR_INPUT_PATHS } from './physicsQaStageTargets'
 import { parseSemanticKindLedger } from '../goalBookModel'
 import { loadOptionalHistoricalReviewContext } from '../optionalHistoricalReviewContext'
 import type { HardRouteProfile, HardRouteSemanticKind } from './hardLearningRouteValidation'
+import { auditDirectedQuantityArrowRoutes, validateDirectedQuantityArrowEvidence, PHYSICS_LANDSCAPE_ID,
+  DIRECTED_QUANTITY_ARROW_SCHEMA_PATH, type DirectedQuantityArrowDecision } from './directedQuantityArrows'
+import { validateDirectedQuantityArrowImageEvidence, type ArrowImageQaRecord } from './directedQuantityArrowVisualizationQa'
+import { isOrdinaryAtomicGoalForVisualization, isActiveClusterOverviewForVisualization } from '../../../scripts/goal_visualization_scope.mjs'
 
 export interface SemanticRoutePolicy {
   schemaVersion: 1
@@ -179,6 +183,9 @@ export async function loadSemanticRouteInventory(
     'app/scripts/lib/nationalStageProjection.ts',
     'app/scripts/prerequisiteReductionProof.ts', 'app/scripts/optionalHistoricalReviewContext.ts',
     'contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json',
+    DIRECTED_QUANTITY_ARROW_SCHEMA_PATH, 'app/scripts/lib/directedQuantityArrows.ts',
+    'app/scripts/lib/directedQuantityArrowVisualizationQa.ts',
+    'scripts/goal_visualization_scope.mjs',
     'contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json',
     'curricula/curriculum_manifest.json', ...PHYSICS_QA_SELECTOR_INPUT_PATHS,
   ]
@@ -213,6 +220,7 @@ export async function loadSemanticRouteInventory(
   const goals: LearningGoal[] = []
   const semanticKindByGoalId = new Map<string, HardRouteSemanticKind>()
   const ownerByGoalId = new Map<string, string>()
+  const directedQuantityArrowsByGoalId = new Map<string, DirectedQuantityArrowDecision>()
   for (const source of policy.ledgerSources) {
     const ledger = sourceLedgers.get(source.path)!
     ensure(typeof ledger.sourceLandscapePath === 'string', `missing landscape path in ${source.path}`)
@@ -222,6 +230,10 @@ export async function loadSemanticRouteInventory(
     const current = JSON.parse(bindBytes(ledger.sourceLandscapePath).toString('utf8')) as SkillLandscape
     ensure(JSON.stringify(current) === JSON.stringify(loaded.landscape), `input changed during load: ${ledger.sourceLandscapePath}`)
     const kinds = parseSemanticKindLedger(ledger, current, source.landscapeId, ledger.sourceLandscapePath, historicalReview.context)
+    if (source.landscapeId === PHYSICS_LANDSCAPE_ID) {
+      validateDirectedQuantityArrowEvidence(current.goals, kinds.directedQuantityArrowsByGoalId, bindBytes)
+      for (const [goalId, decision] of kinds.directedQuantityArrowsByGoalId) directedQuantityArrowsByGoalId.set(goalId, decision)
+    }
     for (const goal of current.goals) {
       ensure(!ownerByGoalId.has(goal.id), `ambiguous canonical goal identity ${goal.id}`)
       ownerByGoalId.set(goal.id, source.landscapeId)
@@ -230,6 +242,25 @@ export async function loadSemanticRouteInventory(
     }
   }
   const qaProfiles = createRouteProfiles(repositoryRoot, { readText: path => bindBytes(relative(repositoryRoot, path)).toString('utf8') })
+  const directedQuantityArrowRoutes = auditDirectedQuantityArrowRoutes(goals, directedQuantityArrowsByGoalId)
+  ensure(directedQuantityArrowRoutes.findings.length === 0,
+    `directed-quantity-arrow prerequisites missing: ${directedQuantityArrowRoutes.findings.map(row => row.goalId).join(', ')}`)
+  const physicsQaPath = 'curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json'
+  const physicsQa = JSON.parse(bindBytes(physicsQaPath).toString('utf8')) as { records: Array<ArrowImageQaRecord & { canonicalAssetPath: string }> }
+  ensure(Array.isArray(physicsQa.records), 'missing Physics visualization-QA records')
+  const physicsGoals = goals.filter(goal => ownerByGoalId.get(goal.id) === PHYSICS_LANDSCAPE_ID)
+  const expectedPhysicsQaGoalIds = new Set(physicsGoals.filter(goal => isOrdinaryAtomicGoalForVisualization(goal)
+    || isActiveClusterOverviewForVisualization(goal)).map(goal => goal.id))
+  const physicsQaGoalIds = new Set(physicsQa.records.map(row => row.goalId))
+  ensure(physicsQaGoalIds.size === physicsQa.records.length && physicsQaGoalIds.size === expectedPhysicsQaGoalIds.size
+    && [...expectedPhysicsQaGoalIds].every(id => physicsQaGoalIds.has(id)), 'Physics criterion ledger must cover every current QA-scope goal exactly once')
+  const directedQuantityArrowImages = validateDirectedQuantityArrowImageEvidence(physicsQa.records, bindBytes)
+  for (const record of physicsQa.records.filter(row => row.visualizationState === 'available')) {
+    ensure(typeof record.canonicalAssetPath === 'string' && record.canonicalAssetPath.startsWith('curricula/DE/Gymnasium/visualizations/physik/')
+      && !record.canonicalAssetPath.includes('..'), `invalid current Physics image path ${record.goalId}`)
+    ensure(`sha256:${createHash('sha256').update(bindBytes(record.canonicalAssetPath)).digest('hex')}` === record.assetSha256,
+      `current Physics image differs from criterion decision ${record.goalId}`)
+  }
   const profiles = deriveSemanticRouteProfiles(policy, semanticKindByGoalId, ownerByGoalId, qaProfiles)
   const scopeAlignmentProfiles = deriveSemanticRouteProfiles(policy, semanticKindByGoalId, ownerByGoalId, qaProfiles.map(profile => profile.inheritedStageTargetSelector
     ? { ...profile, clusterSelector: goal => profile.clusterSelector(goal) || profile.inheritedStageTargetSelector!(goal) } : profile))
@@ -243,6 +274,8 @@ export async function loadSemanticRouteInventory(
   return {
     policy, goals, semanticKindByGoalId, ownerByGoalId, inputBindings,
     profiles, qaProfiles, scopeAlignmentProfiles,
+    directedQuantityArrowRoutes,
+    directedQuantityArrowImages,
     historicalReviewDiagnostic: historicalReview.diagnostic,
     coverageBaseline: base.baseline,
     assertInputsCurrent,

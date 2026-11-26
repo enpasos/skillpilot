@@ -16,6 +16,7 @@ from functools import cache
 from pathlib import Path
 
 import generate_hessen_physics_stage_views as graph
+from generate_physics_arrow_places import apply_arrow_places, with_arrow_places
 from generate_physics_partial_orders import (partial_order as derive_partial_order,
     acquisition_placements, contextual_targets, course_seeds)
 
@@ -1859,6 +1860,14 @@ def actual_acquisition_evidence(view):
     return witnesses
 
 
+# The accepted A2 roles are explicit deltas over the immutable source scope.
+# Reapply after course projection as well: a union plan is no source authority.
+generate_bavaria = with_arrow_places(generate_bavaria, graph.GOALS, intermediate_preparation=True)
+generate_source_land = with_arrow_places(generate_source_land, graph.GOALS, intermediate_preparation=True)
+generate_canonical = with_arrow_places(generate_canonical, graph.GOALS, intermediate_preparation=True)
+lower_excerpt = with_arrow_places(lower_excerpt, graph.GOALS)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
@@ -1915,6 +1924,7 @@ def main():
             # so its old target locations are the actual output contract.
             generated, momentum_preparation_places = momentum_preparation_sibling(Author(generated), state)
             path = outputs[index][0]
+            generated = apply_arrow_places(generated, graph.GOALS)
             generated = preserve_unchanged_sibling_presentation_order(generated, json.loads(path.read_text()))
             outputs[index] = (path, generated)
             report[index].update({"changed": json.loads(path.read_text()) != generated,
@@ -1932,6 +1942,7 @@ def main():
         path = DIRECTORY / f"de-{state.lower()}-seki.view.json"
         outputs.append((path, lower))
         report.append({"file": path.name, "changed": not path.exists() or json.loads(path.read_text()) != lower, **evidence})
+    outputs = [(path, apply_arrow_places(generated, graph.GOALS)) for path, generated in outputs]
     for path, generated in outputs:
         if args.write:
             path.write_text(json.dumps(generated, ensure_ascii=False, indent=2) + "\n")

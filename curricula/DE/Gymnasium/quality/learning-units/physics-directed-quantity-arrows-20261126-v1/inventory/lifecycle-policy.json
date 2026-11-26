@@ -1,0 +1,443 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "eb77c4fb68ef701f9c188e0a66411dbfb76dfd26",
+  "dossier": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1",
+  "bootstrapNames": [
+    "README.md",
+    "lifecycle-policy.json",
+    "verify-lifecycle.py",
+    "verify-native-values.mts",
+    "record-lifecycle.actual.json",
+    "path-bindings.actual.jsonl",
+    "digest-contracts.actual.jsonl",
+    "record-lifecycle.v2.actual.json",
+    "path-bindings.v2.actual.jsonl",
+    "digest-contracts.v2.actual.jsonl",
+    "record-lifecycle.v3.actual.json"
+  ],
+  "externalRoots": {
+    "a2Scratch": {
+      "include": [
+        "**/*"
+      ],
+      "meaning": "Preserved author sources, blind first/final subject packets, exact reviewer responses, K4 V1-V3 author/blind material, raw route inputs and viewed/rendered figures. Only relative paths, bytes and hashes enter this inventory."
+    },
+    "taskL": {
+      "include": [
+        "**/*"
+      ],
+      "meaning": "Original complete L review with unchanged independent answers, source captures, raw graph measurements and exact prior input snapshots."
+    },
+    "a2ImageSources": {
+      "include": [
+        "*provider.png",
+        "*.jpg",
+        "*360.png",
+        "*720.png",
+        "prompt-*.txt"
+      ],
+      "meaning": "Provider attempts and precise image successors referenced by the retained image records; may be supplied as the same physical directory as a2Scratch."
+    },
+    "rawMapReports": {
+      "include": [
+        "a2-map-compiler-eb77.json",
+        "a2-map-compiler-current.json",
+        "a2-map-native-eb77.json",
+        "a2-map-native-current.json"
+      ],
+      "meaning": "Exact four raw compiler/personal map reports explicitly bound by the A2 map-backflow measurement; the containing directory is supplied portably and no unrelated files are selected."
+    },
+    "sourceVariant": {
+      "include": [
+        "LP_PH_gym9_8_spr_Zweig_2024.pdf"
+      ],
+      "meaning": "The exact unchanged SL language-track source PDF explicitly bound by L; retained in the separately supplied source directory and not added to or changed in the Task A2 catalog."
+    }
+  },
+  "optionalExternalRoots": {
+    "finalCI": {
+      "include": [
+        "**/*.json",
+        "**/*.xml",
+        "**/*.md"
+      ],
+      "meaning": "Terminal machine summaries once available; no task/learner correspondence is copied."
+    }
+  },
+  "nativeValueOrigins": [
+    {
+      "declaredPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "commit": "1f13623520",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "meaning": "Exact first A2 canonical object value before description correction and released K4; the parsed native digest is distinct from raw bytes."
+    },
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "location": {
+        "root": "repo",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/quantity-label-v2/active-semantic-ledger.after-image-only.json.gz"
+      },
+      "encoding": "gzip-json",
+      "meaning": "Exact archived active register; container bytes, decoded JSON bytes and native parsed value are separately identified."
+    },
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "location": {
+        "root": "repo",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/quantity-label-v2/active-semantic-ledger.before.json.gz"
+      },
+      "encoding": "gzip-json",
+      "meaning": "Exact archived active register; container bytes, decoded JSON bytes and native parsed value are separately identified."
+    },
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "location": {
+        "root": "repo",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/active-semantic-ledger.after.json.gz"
+      },
+      "encoding": "gzip-json",
+      "meaning": "Exact archived active register; container bytes, decoded JSON bytes and native parsed value are separately identified."
+    },
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "location": {
+        "root": "repo",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/active-semantic-ledger.before.json.gz"
+      },
+      "encoding": "gzip-json",
+      "meaning": "Exact archived active register; container bytes, decoded JSON bytes and native parsed value are separately identified."
+    },
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "location": {
+        "root": "repo",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/quantity-label-v2/active-image-qa.after.json.gz"
+      },
+      "encoding": "gzip-json",
+      "meaning": "Exact archived active register; container bytes, decoded JSON bytes and native parsed value are separately identified."
+    },
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "location": {
+        "root": "repo",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/quantity-label-v2/active-image-qa.before.json.gz"
+      },
+      "encoding": "gzip-json",
+      "meaning": "Exact archived active register; container bytes, decoded JSON bytes and native parsed value are separately identified."
+    },
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "location": {
+        "root": "repo",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/active-image-qa.after.json.gz"
+      },
+      "encoding": "gzip-json",
+      "meaning": "Exact archived active register; container bytes, decoded JSON bytes and native parsed value are separately identified."
+    },
+    {
+      "declaredPath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "location": {
+        "root": "repo",
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/active-image-qa.before.json.gz"
+      },
+      "encoding": "gzip-json",
+      "meaning": "Exact archived active register; container bytes, decoded JSON bytes and native parsed value are separately identified."
+    }
+  ],
+  "earlierRecords": {
+    "goal-reviews/positive.candidates.json": {
+      "successor": "goal-reviews/current-v2/positive.candidates.json",
+      "epoch": "Initial six-goal evidence before the separately retained friction-card correction and final two-description wording changes."
+    },
+    "goal-reviews/positive.config.json": {
+      "successor": "goal-reviews/current-v2/positive.config.json",
+      "epoch": "Initial six-goal evidence before the separately retained friction-card correction and final two-description wording changes."
+    },
+    "goal-reviews/positive.review.jsonl": {
+      "successor": "goal-reviews/current-v2/positive.review.jsonl",
+      "epoch": "Initial six-goal evidence before the separately retained friction-card correction and final two-description wording changes."
+    },
+    "goal-reviews/current-v2/positive.candidates.json": {
+      "successor": "goal-reviews/final/positive.candidates.json",
+      "epoch": "Intermediate corrected-card evidence before exact final field/video descriptions and separate final confirmations."
+    },
+    "goal-reviews/current-v2/positive.config.json": {
+      "successor": "goal-reviews/final/positive.config.json",
+      "epoch": "Intermediate corrected-card evidence before exact final field/video descriptions and separate final confirmations."
+    },
+    "goal-reviews/current-v2/positive.review.jsonl": {
+      "successor": "goal-reviews/final/positive.review.jsonl",
+      "epoch": "Intermediate corrected-card evidence before exact final field/video descriptions and separate final confirmations."
+    },
+    "goal-reviews/goal-book.config.json": {
+      "successor": "goal-reviews/final/goal-book.config.json",
+      "epoch": "First six-goal book context before the separate final two-description context."
+    },
+    "goal-reviews/description-batch.config.json": {
+      "successor": "goal-reviews/final/description-batch.config.json",
+      "epoch": "Initial native campaign before the exact final field/video wording context."
+    },
+    "goal-reviews/neutral-round-a.actual.json": {
+      "successor": "goal-reviews/final/confirmation-packet-a.actual.json",
+      "epoch": "First isolated six-goal context retained before the final exact-wording confirmation packet; raw first voices remain unchanged."
+    },
+    "goal-reviews/independent-a.v1.actual.json": {
+      "successor": "goal-reviews/final/confirmation-a.actual.json",
+      "epoch": "The original first independent voice is byte-preserved. A separate actual final confirmation follows the corrected exact wording; no earlier disposition is rewritten."
+    },
+    "goal-reviews/neutral-round-b.actual.json": {
+      "successor": "goal-reviews/final/confirmation-packet-b.actual.json",
+      "epoch": "First isolated six-goal context retained before the final exact-wording confirmation packet; raw first voices remain unchanged."
+    },
+    "goal-reviews/independent-b.v1.actual.json": {
+      "successor": "goal-reviews/final/confirmation-b.actual.json",
+      "epoch": "The original first independent voice is byte-preserved. A separate actual final confirmation follows the corrected exact wording; no earlier disposition is rewritten."
+    },
+    "media/b77a7e93-22f9-5722-a4cc-f18a149ab030.actual.json": {
+      "successor": "media/quantity-label-v2/b77a7e93-22f9-5722-a4cc-f18a149ab030.actual.json",
+      "epoch": "Initial calibrated velocity picture lacked the explicit quantity name; actual quantity-labelled successor corrects this while preserving the earlier positive error as history."
+    },
+    "rule/semantic-decisions.actual.json": {
+      "successor": "rule/final-k4-v3/semantic-decisions.actual.json",
+      "epoch": "Exact A-without-K4 intermediate semantics before actual released K4 V3 and literal current field/video bindings."
+    },
+    "rule/new-semantic-decisions.actual.json": {
+      "successor": "rule/final-k4-v3/new-semantic-decisions.actual.json",
+      "epoch": "Exact A-without-K4 intermediate semantics before actual released K4 V3 and literal current field/video bindings."
+    },
+    "rule/image-decisions.actual.json": {
+      "successor": "rule/quantity-label-v2/image-decisions.actual.json",
+      "epoch": "Intermediate image decisions before the explicit quantity-name correction; the 88-image A3 backlog stays undecided."
+    },
+    "rule/checks/checks.intermediate.actual.json": {
+      "successor": "portable/checks.actual.json",
+      "epoch": "Actual intermediate native checks before released K4 V3, description-only changes and quantity-labelled current image; earlier outcomes are not rewritten."
+    },
+    "rule/checks/semantic-routes.intermediate.actual.json": {
+      "successor": "rule/final-k4-v3/checks/native-semantic-routes.actual.json",
+      "epoch": "Actual intermediate native checks before released K4 V3, description-only changes and quantity-labelled current image; earlier outcomes are not rewritten."
+    },
+    "rule/checks/reader-controls.intermediate.log": {
+      "successor": "rule/final-k4-v3/checks/reader-controls.log",
+      "epoch": "Actual intermediate native checks before released K4 V3, description-only changes and quantity-labelled current image; earlier outcomes are not rewritten."
+    },
+    "rule/checks/python-schema-dispatch.intermediate.log": {
+      "successor": "rule/final-k4-v3/checks/python-schema-dispatch.log",
+      "epoch": "Actual intermediate native checks before released K4 V3, description-only changes and quantity-labelled current image; earlier outcomes are not rewritten."
+    },
+    "rule/checks/qa-generator.intermediate.log": {
+      "successor": "rule/final-k4-v3/checks/qa-generator.log",
+      "epoch": "Actual intermediate native checks before released K4 V3, description-only changes and quantity-labelled current image; earlier outcomes are not rewritten."
+    },
+    "rule/checks/qa-projection.intermediate.log": {
+      "successor": "rule/final-k4-v3/checks/qa-projection.log",
+      "epoch": "Actual intermediate native checks before released K4 V3, description-only changes and quantity-labelled current image; earlier outcomes are not rewritten."
+    },
+    "rule/checks/semantic-projection.intermediate.log": {
+      "successor": "rule/final-k4-v3/checks/semantic-projection.log",
+      "epoch": "Actual intermediate native checks before released K4 V3, description-only changes and quantity-labelled current image; earlier outcomes are not rewritten."
+    },
+    "rule/checks/normal-approval-coverage.intermediate.log": {
+      "successor": "rule/final-k4-v3/checks/normal-approval-coverage.log",
+      "epoch": "Actual intermediate native checks before released K4 V3, description-only changes and quantity-labelled current image; earlier outcomes are not rewritten."
+    },
+    "rule/quantity-label-v2/active-image-qa.before.json.gz": {
+      "successor": "rule/quantity-label-v2/active-image-qa.after.json.gz",
+      "epoch": "Exact active pre-successor register snapshot; after snapshot states the specific image-only or released-K4 phase."
+    },
+    "rule/quantity-label-v2/active-semantic-ledger.before.json.gz": {
+      "successor": "rule/quantity-label-v2/active-semantic-ledger.after-image-only.json.gz",
+      "epoch": "Exact active pre-successor register snapshot; after snapshot states the specific image-only or released-K4 phase."
+    },
+    "rule/final-k4-v3/active-image-qa.before.json.gz": {
+      "successor": "rule/final-k4-v3/active-image-qa.after.json.gz",
+      "epoch": "Exact active pre-successor register snapshot; after snapshot states the specific image-only or released-K4 phase."
+    },
+    "rule/final-k4-v3/active-semantic-ledger.before.json.gz": {
+      "successor": "rule/final-k4-v3/active-semantic-ledger.after.json.gz",
+      "epoch": "Exact active pre-successor register snapshot; after snapshot states the specific image-only or released-K4 phase."
+    },
+    "routes/native-90-routes.initial-national-counter.actual.json": {
+      "successor": "routes/native-90-routes.actual.json",
+      "epoch": "Initial native route report retained before correction of the national-denominator counter; actual current route report is separate."
+    },
+    "rule/source-l/reviewer-b.md": {
+      "successor": "portable/reviewer-b.successor.actual.json",
+      "epoch": "Original preserved unchanged outside the current tree after portable successor creation."
+    },
+    "rule/final-k4-v3/checks/checks.actual.json": {
+      "successor": "portable/checks.actual.json",
+      "epoch": "Original preserved unchanged outside the current tree after portable successor creation."
+    }
+  },
+  "earlierPrefixes": {
+    "goal-reviews/description-batch/": {
+      "successorPrefix": "goal-reviews/final/description-batch/",
+      "fallbackSuccessor": "goal-reviews/final/description-batch.config.json",
+      "epoch": "First native description campaign with exact older book/model bindings; final campaign is separate and its actual admission is outside this file-integrity inventory."
+    },
+    "k4/v1/": {
+      "successorPrefix": "k4/v2/",
+      "fallbackSuccessor": "k4/v2/independent-disposition.actual.json",
+      "epoch": "K4 V1 rejected or unreleased evidence retained unchanged before the concrete V2 material; each raw vote remains its original decision."
+    },
+    "k4/v2/": {
+      "successorPrefix": "k4/v3/",
+      "fallbackSuccessor": "k4/v3/release.actual.json",
+      "epoch": "K4 V2 rejected or unreleased evidence retained unchanged before the concrete V3 material; each raw vote remains its original decision."
+    }
+  },
+  "mixedRoleRecords": {
+    "media/render-calibrated-legends.mjs": {
+      "successor": "media/quantity-label-v2/render-calibrated-legends.mjs",
+      "epoch": "The original renderer remains the exact producer of the current Newton III picture and is the historical predecessor of the quantity-labelled velocity legend. No blanket retirement of its Newton use is asserted."
+    }
+  },
+  "semanticPathLabels": [
+    "sealed-native-review-input-fingerprint"
+  ],
+  "boundaries": [
+    "Record integrity is technical evidence, not scientific, human, provider or learner acceptance.",
+    "Native scoped/parsed digests are not raw file hashes. Declared raw paths require exact current, historical or explicitly recovered bytes.",
+    "Earlier records and unchanged raw reviewer answers keep their exact bytes and explicit concrete successors.",
+    "Absolute operational paths are rendered using supplied root aliases; no account directories or correspondence contents are published.",
+    "The inventory is developed against the live worktree and must be refreshed after native activation, final documentation and the integration commit.",
+    "Local Python bytecode is recorded as a transient derivative, never silently omitted or promoted as a source."
+  ],
+  "logicalRepositoryPrefixes": [
+    "h-checkout:",
+    "main-checkout:"
+  ],
+  "preservedGitCommits": [
+    "0c62674a8d3b0f66f772a24e0bcb7f38d2446c18",
+    "4c24fcf9f23717a9a8a22d5d9e55274bc8de8c6b"
+  ],
+  "rawVoiceBindings": [
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "k4-marker-a-v1.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/k4/v1/k4-marker-a-v1.actual.json",
+      "role": "Unchanged original independent K4 voice, retaining its original disposition."
+    },
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "k4-marker-a-v2.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/k4/v2/k4-marker-a-v2.actual.json",
+      "role": "Unchanged original independent K4 voice, retaining its original disposition."
+    },
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "k4-marker-a-v3.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/k4/v3/k4-marker-a-v3.actual.json",
+      "role": "Unchanged original independent K4 voice, retaining its original disposition."
+    },
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "current-reviewer-a.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/goal-reviews/independent-a.v1.actual.json",
+      "role": "Unchanged original first-round independent subject voice."
+    },
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "confirm-new-a.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/goal-reviews/final/confirmation-a.actual.json",
+      "role": "Unchanged original final independent subject confirmation."
+    },
+    {
+      "source": {
+        "root": "taskL",
+        "path": "reviewer-a.md"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/source-l/reviewer-a.md",
+      "role": "Unchanged original L voice; separate portable derivative copies are not substituted for this raw record."
+    },
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "k4-marker-b-v1.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/k4/v1/k4-marker-b-v1.actual.json",
+      "role": "Unchanged original independent K4 voice, retaining its original disposition."
+    },
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "k4-marker-b-v2.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/k4/v2/k4-marker-b-v2.actual.json",
+      "role": "Unchanged original independent K4 voice, retaining its original disposition."
+    },
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "k4-marker-b-v3.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/k4/v3/k4-marker-b-v3.actual.json",
+      "role": "Unchanged original independent K4 voice, retaining its original disposition."
+    },
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "current-reviewer-b.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/goal-reviews/independent-b.v1.actual.json",
+      "role": "Unchanged original first-round independent subject voice."
+    },
+    {
+      "source": {
+        "root": "a2Scratch",
+        "path": "confirm-new-b.actual.json"
+      },
+      "retainedPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/goal-reviews/final/confirmation-b.actual.json",
+      "role": "Unchanged original final independent subject confirmation."
+    },
+    {
+      "source": {
+        "root": "taskL",
+        "path": "reviewer-b.md"
+      },
+      "retainedPath": "portable-originals/reviewer-b.md",
+      "role": "Unchanged original L voice; separate portable derivative copies are not substituted for this raw record.",
+      "retainedRoot": "a2Scratch",
+      "publicSuccessorPath": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/portable/reviewer-b.successor.actual.json"
+    }
+  ],
+  "previousSnapshot": {
+    "commit": "815fe2565be698f2c28ac2a7c99a87e5e1e14aed",
+    "outputs": {
+      "record-lifecycle.actual.json": "record-lifecycle.v2.actual.json",
+      "path-bindings.actual.jsonl": "path-bindings.v2.actual.jsonl",
+      "digest-contracts.actual.jsonl": "digest-contracts.v2.actual.jsonl"
+    },
+    "epoch": "First worktree inventory, including original CRLF placement-table bytes. Its anchored verification did not pass; no anchored attestation is claimed for this snapshot."
+  },
+  "retiredRepositoryOriginals": {
+    "rule/source-l/reviewer-b.md": {
+      "root": "a2Scratch",
+      "path": "portable-originals/reviewer-b.md"
+    },
+    "rule/final-k4-v3/checks/checks.actual.json": {
+      "root": "a2Scratch",
+      "path": "portable-originals/checks.actual.json"
+    }
+  },
+  "sealedSnapshot": {
+    "commit": "f56d04f5eb0dcb5b8a049361505e33befb43441e",
+    "outputs": {
+      "record-lifecycle.v2.actual.json": "record-lifecycle.v3.actual.json",
+      "path-bindings.v2.actual.jsonl": "record-lifecycle.v3.actual.json",
+      "digest-contracts.v2.actual.jsonl": "record-lifecycle.v3.actual.json"
+    },
+    "epoch": "Sealed second inventory, retained byte-identically as the predecessor of the native A5 reader update."
+  }
+}

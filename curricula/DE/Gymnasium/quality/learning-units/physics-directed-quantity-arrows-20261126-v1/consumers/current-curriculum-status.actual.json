@@ -1,0 +1,182 @@
+{
+  "contract": "physics-directed-arrows-current-global-status-v1",
+  "maturity": "M7",
+  "stageMaturities": {
+    "canonical-physics-sek1": "M4",
+    "canonical-physics-sek2": "M4"
+  },
+  "globalReport": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "837e1eb3ec1672cd0daea594158536feb2ad558bf9005e79b9a82f6131de9d9d"
+  },
+  "individualHistoricalObservations": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/consumers/first-global-source-coverage-check.actual.json",
+      "sha256": "e2d78cae8b1a56531e3fe0ae421fcb80ce9b4b20cfdd143bedc9fafc38297261"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/consumers/second-global-status-before-k4-applicability.actual.json",
+      "sha256": "a9357390d2c810e3ef2a4ec1ecdc2c72e84dad8d358f1ac3289ec398d2e7fbbd"
+    }
+  ],
+  "sourceCorrection": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/bavarian-arrow-source-binding.actual.json",
+    "sha256": "318972c637fdbcf0020e73754566a971c970f80ee89c53f4b71a8d95cc5ead27"
+  },
+  "limitsOfK4": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/applicability/verification.actual.json",
+    "sha256": "a56901cdfc557ca612b364c2664e0303057afefff5698fc4c89fb4938852e262"
+  },
+  "subjectRules": [
+    {
+      "id": "CQR-001",
+      "status": "pass",
+      "summary": "Current graph references, DAGs, atomic requires normal form and transitive minimality pass.",
+      "metrics": {
+        "goals": 1154,
+        "authoredRequires": 1689,
+        "effectiveRequires": 1689,
+        "crossLandscapeReferences": 169,
+        "minimalityFindings": 0,
+        "atomicNormalFormFindings": 0,
+        "explicitTypeMismatches": 0,
+        "witnessEdges": 0,
+        "invalidInputs": 0
+      }
+    },
+    {
+      "id": "CQR-003",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "emptyCanonicalViewProjection": 0,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 16,
+        "fullCoverageJurisdictions": 16,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 0,
+        "unsupportedAssignmentJurisdictions": 0,
+        "sourceUnmappedJurisdictions": 0,
+        "unsupportedAssignedAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceAtomicGoals": 6289,
+        "sourceMappedToViewAtomicGoals": 6289,
+        "sourceOriginalGoals": 6289,
+        "sourceFullyCoveredOriginalGoals": 6289,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "surrogateBackedAtomicGoals": 0,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 16,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 0,
+        "minSourceBackedAtomicGoals": 226,
+        "maxVisibleAtomicGoals": 434,
+        "maxSourceBackedAtomicGoals": 434,
+        "totalAtomicGoals": 453
+      }
+    },
+    {
+      "id": "CQR-004",
+      "status": "pass",
+      "summary": "Course-level mapping is clean for 742 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+      "metrics": {
+        "configuredMappingFiles": 28,
+        "sourceGoals": 3989,
+        "sourceGoalsWithCourseLevel": 3989,
+        "gkLkSourceGoals": 1769,
+        "lkSourceGoals": 1427,
+        "unspecifiedSourceGoals": 0,
+        "checkedMappingEdges": 742,
+        "defaultedUnspecifiedMappingEdges": 0,
+        "reviewedCourseLevelExceptions": 0,
+        "mismatches": 0,
+        "missingSourceGoals": 0,
+        "missingTargetGoals": 0,
+        "unmappedCourseLevelSourceGoals": 0
+      }
+    },
+    {
+      "id": "CQR-501",
+      "status": "pass",
+      "summary": "19 accepted applicability warning(s) are current and no active applicability warning debt is visible.",
+      "metrics": {
+        "activeWarnings": 0,
+        "rawActiveWarnings": 0,
+        "diagnosticPartialOnlyWarnings": 6328,
+        "acceptedWarnings": 19,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 6328",
+        "diagnostic finding type APV-202: 6328",
+        "accepted current warning type APV-201: 18",
+        "accepted current warning type APV-203: 1"
+      ]
+    }
+  ],
+  "stageRoutes": {
+    "canonical-physics-sek1": {
+      "id": "CQR-104",
+      "status": "pass",
+      "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 56,
+        "invalidExplicitTerminalConfigurations": 0,
+        "evaluatedProjectionScopes": 106,
+        "requiredMotivationAnchors": 2,
+        "minimumRequiredTerminalAutonomyGoals": 41,
+        "requiredTerminalAutonomyGoals": 59,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 0,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 51,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 13714,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 792,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 197,
+        "nationalStageTargetGoalOccurrencesMaterializedFromFullExposure": 123,
+        "nationalProjectionScopesWithInvalidExposureFamily": 0,
+        "projectionScopesWithInvalidSourceStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 1,
+        "visibleSelectedAtomicGoalOccurrences": 9332,
+        "visibleProfileSelectedAtomicGoalOccurrences": 8823,
+        "visibleProjectedRouteTargetGoalOccurrences": 9332,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 509,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 63,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      }
+    }
+  },
+  "qualityFloorChange": false
+}

@@ -1,0 +1,388 @@
+{
+  "status": "sealed-author-expectations-not-independent-review",
+  "rubricVersion": 2,
+  "maxPoints": 16,
+  "passingPoints": 13.5,
+  "cases": [
+    {
+      "id": "S01",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 16,
+      "expectedPass": true,
+      "purpose": "vollständig",
+      "rationale": "Alle vier Leistungen mit tatsächlicher Zeichnung."
+    },
+    {
+      "id": "S02",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedTotal": 15.5,
+      "expectedPass": true,
+      "purpose": "isolierter Einheitenfehler",
+      "rationale": "C einmal−0,5 bei unabhängig richtigem Kern."
+    },
+    {
+      "id": "S03",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 1
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 1
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "purpose": "nur quantitative D-Ergänzung",
+      "rationale": "Keine Kernpunkte aus Zeichnung/Länge/Invarianz;13 Punkte reichen nicht."
+    },
+    {
+      "id": "S04",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 3.5,
+        "D": 2.5
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 3.5,
+        "D": 2.5
+      },
+      "expectedTotal": 14.0,
+      "expectedPass": true,
+      "purpose": "Bestehensgrenze",
+      "rationale": "D Deutung1,5 und Ergänzung1, aber Begründung fehlt; C−0,5. Genau13,5."
+    },
+    {
+      "id": "S05",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 3.5,
+        "C": 3.5,
+        "D": 2.5
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 3.5,
+        "C": 3.5,
+        "D": 2.5
+      },
+      "expectedTotal": 13.5,
+      "expectedPass": true,
+      "purpose": "direkt unter Bestehensgrenze",
+      "rationale": "WieS04 plus unabhängig belegter Zeichenfehler B−0,5.13 Punkte."
+    },
+    {
+      "id": "S06",
+      "expectedPointsDe": {
+        "A": 1,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 1,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "purpose": "A nur Ergänzung",
+      "rationale": "Keine Zuordnung und falscher sichtbarer Ansatz ohne unabhängigen Slipbeleg; A1 und insgesamt13."
+    },
+    {
+      "id": "S07",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "purpose": "B nur Ergänzung",
+      "rationale": "Keine Richtungsevidenz; fehlender Kopf ohne unabhängige richtige Richtung ist kein belegter Slip. B1, insgesamt13."
+    },
+    {
+      "id": "S08",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 1,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 1,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "purpose": "C nur Ergänzung",
+      "rationale": "Keine Ablesung/Rechnung und falsche Länge1cm; kein Beleg für lokalen Slip. C1, insgesamt13; D deutet den gezeichneten1cm konsistent."
+    },
+    {
+      "id": "S09",
+      "expectedPointsDe": {
+        "A": 2,
+        "B": 2,
+        "C": 2,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 2,
+        "B": 2,
+        "C": 2,
+        "D": 4
+      },
+      "expectedTotal": 10,
+      "expectedPass": false,
+      "purpose": "nur Text",
+      "rationale": "A1Zuordnung+1Begründung;B1Lesen+1Boden;C1,5Ablesen+0,5Rechnen; keine tatsächliche Zeichnung/Legenden.10."
+    },
+    {
+      "id": "S10",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedTotal": 15.5,
+      "expectedPass": true,
+      "purpose": "Legendenformfehler",
+      "rationale": "C einmal−0,5; kein weiterer Verlust der Legendenpunkte."
+    },
+    {
+      "id": "S11",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 3.5,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 3.5,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 15.5,
+      "expectedPass": true,
+      "purpose": "fehlender Kopf mit unabhängigem Kernbeleg",
+      "rationale": "Explizite rechte Richtung und passender Verlauf belegen Zeichenfehler; genau−0,5 inB."
+    },
+    {
+      "id": "S12",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 1,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 13,
+      "expectedPass": false,
+      "purpose": "fehlender Kopf ohne Kernbeleg",
+      "rationale": "Kein unabhängiger richtiger Richtungssatz; B1 nurBezugsrahmen, kein zusätzlicher−0,5."
+    },
+    {
+      "id": "S13",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 3.5,
+        "D": 4
+      },
+      "expectedTotal": 15.5,
+      "expectedPass": true,
+      "purpose": "sauberer lokaler Folgefehler",
+      "rationale": "Ein Ursprung inC; D folgert aus2,5<3 weiterhin richtig keinen Kontakt und keine Lageänderung."
+    },
+    {
+      "id": "S14",
+      "expectedPointsDe": {
+        "A": 0,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 0,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 12,
+      "expectedPass": false,
+      "purpose": "Trägerfehlvorstellung mit konsistenter Folge",
+      "rationale": "NurA0; B/C unabhängig und D deutet die eigeneverschobeneSpitze konsistent."
+    },
+    {
+      "id": "S15",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 0,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 0,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 12,
+      "expectedPass": false,
+      "purpose": "Richtungsfehlvorstellung mit konsistenter Folge",
+      "rationale": "B0; C unsigned Länge und D eigeneSpitzenlage korrekt weiterverarbeitet."
+    },
+    {
+      "id": "S16",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 0,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 0,
+        "D": 4
+      },
+      "expectedTotal": 12,
+      "expectedPass": false,
+      "purpose": "Maßstabsfehlvorstellung mit konsistenter Folge",
+      "rationale": "C0 für allgemeinfalscheRegel. D deute18>3 folgerichtig und verwechselt nicht Spitze mitOrt."
+    },
+    {
+      "id": "S17",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 0
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 0
+      },
+      "expectedTotal": 12,
+      "expectedPass": false,
+      "purpose": "Kontaktfehlvorstellung",
+      "rationale": "D vollständig0; keine vorangestellte korrekte D-Musterantwort."
+    },
+    {
+      "id": "S18",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 0
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 0
+      },
+      "expectedTotal": 12,
+      "expectedPass": false,
+      "purpose": "Skala als physikalische Änderung",
+      "rationale": "D0; konkrete beibehaltene Fehlvorstellung ohne widersprüchliche Referenzblöcke."
+    },
+    {
+      "id": "S19",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 4
+      },
+      "expectedTotal": 16,
+      "expectedPass": true,
+      "purpose": "ausdrückliche Rücknahme",
+      "rationale": "Zurückgenommene Behauptung löst den Widerspruch; kompletter richtiger Endstand."
+    },
+    {
+      "id": "S20",
+      "expectedPointsDe": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 0
+      },
+      "expectedPointsEn": {
+        "A": 4,
+        "B": 4,
+        "C": 4,
+        "D": 0
+      },
+      "expectedTotal": 12,
+      "expectedPass": false,
+      "purpose": "nur richtige Zahlen und Zeichnung ohne D",
+      "rationale": "Keine Erklärung/Voraussage/Invarianz in Abgabe; Zeichnung2cm erzeugt keine D-Punkte.12."
+    }
+  ]
+}

@@ -1,0 +1,357 @@
+{
+  "contract": "physics-directed-quantity-arrows-assessment-prerequisite-independent-review-v1",
+  "baselineCommit": "eb77c4fb68ef701f9c188e0a66411dbfb76dfd26",
+  "objectEvidence": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/consumers/assessment-prerequisite-payloads.actual.json",
+    "sha256": "d3aaa22c3396e013e14d60289dd03ba132bbfac5fbbe1b987ca83e39a2e45a63"
+  },
+  "independentSourceReports": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/goal-reviews/independent-a.v1.actual.json",
+      "sha256": "9696b8425d8478ade6547102144f352f6f66c3e8e8bd2bf5b065fcccfb8e59f9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/goal-reviews/independent-b.v1.actual.json",
+      "sha256": "0310ccd983c728174292570f428508a407f161a00b2aaf8fed52b0899e87abbd"
+    }
+  ],
+  "reviewAuthority": "two independent AI reviewers",
+  "scope": "Each added prerequisite was checked against the task and its assessed work. No rescoring, automatic learner results, new planning credit or release of older stimuli is claimed. Full descriptions of the isolation and its limitations are retained in both original reports.",
+  "valueHashEncoding": "UTF-8 JSON sorted by key, compact separators, no terminal newline.",
+  "reviewedAssessmentCount": 14,
+  "records": [
+    {
+      "goalId": "4ea1b93f-2dba-59ac-87ab-29af6c55cc37",
+      "title": "Prüfungsaufgabe: Geschwindigkeit beim waagerechten Wurf als Pfeil bestimmen",
+      "beforeObjectSha256": "970459850e3d0f03d5d46d2a5b106c56aa2be92eea6247130320189569c3bcdf",
+      "currentObjectSha256": "8384a0df1cd17f895e4950be8397fcf9f5cfb1c1be145166efaaec9538dd08f7",
+      "unchangedExamDataSha256": "0f58a4a921de969f134f79b7c5badda9c44be46257c0eb3f3528eee455446111",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "0fee53f2-1c02-5b12-9b6c-aa9fa462d921"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "Part A.2 explicitly requires scaled velocity components and resultant arrows; z_komp/z_res15/z_res30 score them. Part B/f_add chains two different velocity references explicitly, so the new arrow goal supports representation without authorising addition of unrelated velocities at one place. Existing coverage is only the supplied projectile-velocity goal.",
+        "languages": [
+          "de",
+          "en"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part A2 and z_komp/z_res15/z_res30 require scaled component arrows and resultant velocity constructions. Part B5 chains v(ball/cart) with v(cart/floor); f_add accepts unambiguous components or words. An abstract tip-to-tail construction is admissible. The exam does not independently require a re-scaling of the same physical situation.",
+        "languageEvidence": "German and English task and rubric inspected"
+      }
+    },
+    {
+      "goalId": "b7e366e2-8323-5171-83a1-1f536c2062d8",
+      "title": "Prüfungsaufgabe: Einen Fall mit Luftwiderstand modellieren",
+      "beforeObjectSha256": "f7ad6589aed4030e8de360fa7ff55b990504aeb8a503df1ccda6bab5f8f519e4",
+      "currentObjectSha256": "caa3e4dce9a7a759b85b3f079af0b9ab1859eeaaa051c5d18e2e2d5c3cf03b5f",
+      "unchangedExamDataSha256": "305d70b4ab6478ae95134e99846f7263dddf0a8be8001d00d0ab97007545ef66",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "12260012-cf04-5409-b57d-f5b3a46d9126"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "Part 2 requires weight, drag and resultant arrows for the same falling filter at three times; falling_drag_2 scores consistency with data. The new prerequisite supplies carrier/direction/scale basics. It neither proves terminal-speed reasoning nor extends coverage beyond the existing falling-drag goal.",
+        "languages": [
+          "de"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part 2 and falling_drag_2 require three force pictures for the same falling filter. Weight is steady, drag increases and the resultant diminishes. Reading graph slopes in part 1 alone would not require a physical vector arrow. No arrow-scale change is scored.",
+        "languageEvidence": "German task, solution and rubric; English title and description only in this packet. English full-task equivalence unverified."
+      }
+    },
+    {
+      "goalId": "b1808b4c-5e02-5e1f-831f-47ee126e00ee",
+      "title": "Prüfungsaufgabe: Eine Kurvenfahrt mit Zentripetalkraft analysieren",
+      "beforeObjectSha256": "23a9f7b70040f8eea006867850a08d4dc1a41fe15561224ca70a01837ebeb485",
+      "currentObjectSha256": "668d4c9878ba69519e7311b8903b17b84fb7aa694cfa91e4c7f8a3e252cc8c62",
+      "unchangedExamDataSha256": "3c6db6a12a693bfde58beb851cb7b4547ad3d8212a5aba33e8374ab88a3cbdc7",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "accb1d9e-cd48-5983-bcef-9b9bca4a9114"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "Part 1 requires velocity and acceleration arrows at three distinct trajectory points; circular_1 scores their placement/direction and the constant-speed direction-change explanation. The new prerequisite is directly relevant. Velocity and acceleration are different quantities and cannot share a numerical arrow scale. Existing circle-motion coverage stays unchanged.",
+        "languages": [
+          "de"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part 1/circular_1 draws velocity tangent and acceleration inward at three different positions. Each pair belongs to its own point on the bicycle trajectory. The tips need not reach the centre. The criterion is correct vectors and explanation of acceleration at constant speed, with no calibration comparison.",
+        "languageEvidence": "German task, solution and rubric; English title and description only in this packet. English full-task equivalence unverified."
+      }
+    },
+    {
+      "goalId": "e1d3c599-6964-5094-83ee-7fb1ecd161ce",
+      "title": "Prüfungsaufgabe: Auftrieb in Wasser und Luft erklären",
+      "beforeObjectSha256": "7791507a6e6c2c840b3b432198df88ab8af1a869ff102a7c32cea34c029a561b",
+      "currentObjectSha256": "7395700088654410c0e03cb4f290f6ade1eeb8a24742ffa4d64ae0387a4d8568",
+      "unchangedExamDataSha256": "bcab45697e2a44069642881ab86fe380ac9b69be586a7a959583cbc8f0593c44",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "e11b2ee9-e528-4857-9ecd-59bd460fba81"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "Part 2 explicitly asks for weight, buoyancy and force-meter force on the immersed body; buoyancy_2 scores that force picture plus the pressure explanation. The new arrow prerequisite is appropriate; it grants no buoyancy/pressure credit by itself and leaves the covered goal unchanged.",
+        "languages": [
+          "de"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part 2/buoyancy_2 requires three force arrows on the immersed body and an explanation from pressure. Apparent loss of weight and the weight of displaced fluid are measurements/inferences distinct from the body receiving the buoyant force. The independent balloon calculation does not extend coverage to the arrow convention.",
+        "languageEvidence": "German task, solution and rubric; English title and description only in this packet. English full-task equivalence unverified."
+      }
+    },
+    {
+      "goalId": "840a82e3-44aa-5d0f-8b6f-8a067d057d14",
+      "title": "Prüfungsaufgabe: Auftrieb und Luftwiderstand im Windkanal einordnen",
+      "beforeObjectSha256": "1003e4f29f4c5f37bee189fade2fff2b88a52ff24570a76b07d38a33fd0ae97a",
+      "currentObjectSha256": "69ea15af96d98a97f9170ef4d3230bd521dfe270773bb1e127221183cff58731",
+      "unchangedExamDataSha256": "fc45d8c00462f02fc8bbee50cd2231009a7d5d93058a090cbbf94006d68b3655",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "24b4686a-e8a6-4583-8952-33e6f653c2a3"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "Part 1/airfoil_drag_1 require two oppositely referenced velocity arrows and two forces on the wing, with the drag direction then related to both references in part 2. Basic arrow attachment is needed; the new edge does not combine the two velocities as same-reference vectors or add new coverage to aerodynamic lift/drag.",
+        "languages": [
+          "de"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part 1/airfoil_drag_1 explicitly distinguishes air/wing velocity, wing/air velocity, lift and drag on the wing. Representing the chosen references is substantive. Opposite relative velocities refer to different frames and are not two forces on the wing. The ranking of glide ratios supplies no arrow mastery evidence.",
+        "languageEvidence": "German task, solution and rubric; English title and description only in this packet. English full-task equivalence unverified."
+      }
+    },
+    {
+      "goalId": "7072dfbc-f684-5d4e-8c9a-ee74f7ebeeba",
+      "title": "Prüfungsaufgabe: Reibung beim Ziehen und Gehen deuten",
+      "beforeObjectSha256": "344701fe114e0b1c5a7f09e584bbae2bd159de69d6680af801348630bc921107",
+      "currentObjectSha256": "084a7a3aef577a54622b18deed3f12fd20790bfae5b4beb16f25ae6219fbaa88",
+      "unchangedExamDataSha256": "c771af18c5485ccd8f252cec193c375352e07da2a31a05d69be3c78e7f402d76",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "581c0766-b84b-54cb-b8b6-375310329a41"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "Parts 1–2 require horizontal forces on the selected crate and static/sliding direction; friction_1/friction_2 score these. Part 3 changes to the foot receiving the ground force. The new prerequisite supports identifying whose force is drawn. Existing contact-friction credit remains unchanged.",
+        "languages": [
+          "de"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Parts 1–2/friction_1–2 require the pull and static force on the stationary crate, then the kinetic direction for rightward pulling. Part 3 uses force on the foot. Arrow ownership and direction are needed for these representations; no comparison of alternative arrow scales is scored.",
+        "languageEvidence": "German task, solution and rubric; English title and description only in this packet. English full-task equivalence unverified."
+      }
+    },
+    {
+      "goalId": "449d9732-a869-5126-8879-564da5c3d263",
+      "title": "Prüfungsaufgabe: Wirkungslinien und Schwerpunkt an einer Planke deuten",
+      "beforeObjectSha256": "f9e611c7d21868d65381bebb266612b5f0904a50db028f527855f739215fc360",
+      "currentObjectSha256": "13adb5da82fec123bcf4422b45ea287e3854e697e1559d1f5a3280a6ec4231d8",
+      "unchangedExamDataSha256": "7c5be1b29e44cb4d52b81b861498f47c47912c86cc3024d307be0a9df18c0232",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "67ffd0f0-a5ab-518f-8c45-4c0e7eb18390"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "Part 1 and force_line_1 explicitly require the points and lines of action of two downward forces on the plank; separate spatial lever arms occur in parts 3–4. This makes the distinction between force-arrow scale and geometric distance particularly relevant. The new edge adds no moment/centre-of-mass coverage and does not change the existing covered goal.",
+        "languages": [
+          "de"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part 1/force_line_1 distinguishes the positions x=1.50 m and x=0.50 m as application points on the plank and the vertical lines of action through them. These position coordinates have a different role from force magnitude. The later moment calculation does not supply a second representation task at changed force scale.",
+        "languageEvidence": "German task, solution and rubric; English title and description only in this packet. English full-task equivalence unverified."
+      }
+    },
+    {
+      "goalId": "b4175564-4397-5c08-90ba-4f13231a75ec",
+      "title": "Feldbilder und Magnetfeldmodelle eigenständig anwenden",
+      "beforeObjectSha256": "c966945db60bd2e7bf2313c4e12d2b5d884fd24813d116c6cbd17a2a8ce94295",
+      "currentObjectSha256": "2f05d57919e20df87b2014767dab2adf1956472be0b11fb062559a8ae60aac82",
+      "unchangedExamDataSha256": "39352a3af7d45be292abb99ae2aae0696b7b7b59371ec38bd122aa062188e333",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "0f6b798b-594e-5480-8c5f-95e2486a4d85",
+        "106417ed-80db-5490-a1ee-bb4160d3f2b4"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "Parts 1–3 require actual field diagrams and local field directions; field_models_1 explicitly scores the local tangent, and field_models_2/3 score directions in named views. Elementary local-arrow meaning supports those tasks. A field-line tangent direction is not an arbitrary arrow-length measurement; the new prerequisite does not confer field-line/model-law credit. Both existing covered goals remain unchanged.",
+        "languages": [
+          "de",
+          "en"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part 1/field_models_1 explicitly draws the local field direction tangent at a marked external point; part 2 identifies it at a point to the right of the wire. Closed curves and their directional marks are field-line conventions; their spacing represents relative strength, not the length of a single calibrated B arrow. Existing two magnetic goals retain their scope.",
+        "languageEvidence": "German and English task and rubric inspected"
+      }
+    },
+    {
+      "goalId": "d044ffb0-eba1-5063-bd71-ee1d351b036f",
+      "title": "Prüfungsaufgabe: Elektrische Feldkraft, Bahn und Energie verknüpfen",
+      "beforeObjectSha256": "49b8aa5d42ae2300fbf651a75b03dafdace4cc2d152a3d935c6aea3e190f1359",
+      "currentObjectSha256": "a3c497a89d10f6670081d925c9ec9977f441f35796664908feb0a66ef0564b8a",
+      "unchangedExamDataSha256": "103b2332b487aaa4382c40cd2ac0a936bd5c27be74a60c8dc29bd882451e3043",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "741774ef-15fc-4bcf-a370-e2c5cf4257d0"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "A explicitly draws E, F and a, while k1 scores charge-sign-dependent field/force/acceleration directions and field reversal. Distinct quantity arrows at the particle require distinct quantity scales. The new prerequisite supports the representation, not the energy/trajectory reasoning or any additional credit.",
+        "languages": [
+          "de",
+          "en"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part A asks for E, F and a and a trajectory. In B the initial force on the negative charge and curvature reverse appropriately. k1 requires signs and force/acceleration directions and k2 their link to path. The three quantities have different units; the diagram is qualitative, not a test of three independent calibrated legends.",
+        "languageEvidence": "German and English task and rubric inspected"
+      }
+    },
+    {
+      "goalId": "cb45d084-4e0f-5926-958c-f1d0ce456906",
+      "title": "Prüfungsaufgabe: Lorentzkraft und kontrollierte Bahnenvergleiche",
+      "beforeObjectSha256": "6879a66530aa2f5adb28161cca8a081b615c510931e2cfc198925f84de045772",
+      "currentObjectSha256": "4447414386fb829c750c1703bed32aa6b22eebe95be4f744a79fc02f837cbc44",
+      "unchangedExamDataSha256": "3e6880e65ece8d12f8f40c6a24de402c3cb9eedc439a6a004c40191f51c62d49",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "9854589c-5feb-4942-b90f-311ddf36eb78",
+        "8c9394cb-f54a-508d-9750-4c49e31b3fa9"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "A requires force arrows from known v/B directions and track curvature; k2 scores charge-sign inference and cross-product/reversal direction. The new prerequisite supports anchoring force to each particle. It does not teach the magnetic right-hand rule, nor extend coverage beyond the two existing magnetic-motion/force goals.",
+        "languages": [
+          "de",
+          "en"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part A draws forces on the particles at entry for two oppositely curving tracks; k2 requires sign inference and reversal, k3 the normal work-free force. These are force directions at particular track points, not displacements to the circle centre. Radius controls and the sine law do not change the underlying two covered goals.",
+        "languageEvidence": "German and English task and rubric inspected"
+      }
+    },
+    {
+      "goalId": "9fe94c34-8100-5f4c-b646-69c1983f8adc",
+      "title": "Prüfungsaufgabe: Reibung, Wechselwirkung und Ladungsbilanz",
+      "beforeObjectSha256": "70e0ea6fed6252e38d0202d11e7728b73cc5bbcc27dc67a015ad4386c7126b4b",
+      "currentObjectSha256": "3ebd11c23d46e9ad3352765f5ac21d4bc7d6a4fe98c0d63a480b16dab0faf96c",
+      "unchangedExamDataSha256": "09516a620bd0fa5fdca01c3254156889f6272a633fab83d9e51ff476ca8256ea",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "a6e48b88-51ed-5942-bdb8-8d2192652e0d",
+        "25998fed-ea4d-4c3e-b606-e965b5d7f290"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "A asks for forces on both bodies of each separated charged pair; k2 scores attraction/repulsion and the two receiving partners. The elementary arrow goal is justified for these diagrams. It supplies neither charge-sign inference nor the scalar conservation balances; both original covered goals remain unchanged.",
+        "languages": [
+          "de",
+          "en"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part A draws forces on both partners of each pair; k2 is explicitly about attraction, repulsion and forces on both partners, including inference limits for paper. These are two local forces, not vectors to cancel in one body balance. Numerical charge conservation concerns a different quantity; it gives no arrow-scale evidence.",
+        "languageEvidence": "German and English task and rubric inspected"
+      }
+    },
+    {
+      "goalId": "61225322-fa5b-5414-b7da-ca90c9035adb",
+      "title": "Prüfungsaufgabe: Potenziale und Äquipotenziallinien konstruieren",
+      "beforeObjectSha256": "ab4b68ee55e6a89bae552dc4e3f0cae5bde4b8da31d9e69fac0ca1cbb485540b",
+      "currentObjectSha256": "78f18ef48e8601749752371b77a6c0012e6ca49070d80115335a60538bbccc8c",
+      "unchangedExamDataSha256": "9d813cf6126e98e1be53ae29a90ba9fd02af1acd4fdc1b07dbd035d3565d0d08",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "2622bef1-bdbc-504e-b468-b600b2ca3ed8"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "A asks for field arrows beside equipotentials; k2 explicitly scores perpendicular field arrows in both uniform and radial cases. The arrow goal supports pointwise field direction and quantity scale, while potentials remain scalars and geometric line spacing remains a separate representation. The existing potential goal coverage is unchanged.",
+        "languages": [
+          "de",
+          "en"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part A draws E arrows normal to equipotentials; k2 requests the construction in plane and radial cases and explanation using equal potential steps. The field attaches to the tested location, while potential is scalar. Magnitude from equipotential spacing is distinct from reading a numeric scale off a vector arrow.",
+        "languageEvidence": "German and English task and rubric inspected"
+      }
+    },
+    {
+      "goalId": "93208b0d-2956-5aae-8aa4-bcef718f06a4",
+      "title": "Prüfungsaufgabe: Schwebedaten und Ladungsquantelung auswerten",
+      "beforeObjectSha256": "e1e0bfefd1776b6d4b1db880d84675f3de6327905b1d34ce833336162538f2d8",
+      "currentObjectSha256": "c26622dfc8aa860a156038468e81a1ebcf7c9951475145520daa6dddd5dcce71",
+      "unchangedExamDataSha256": "553357e1963f034ef632f8d4ff56e57b7c3778b68c1d49a173c8cf1d53297c04",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "0f803c37-8191-5a07-9b31-9603ded98fe2"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "A requests force diagrams and k1 scores effective weight, field/charge signs and upward/downward cases. The new prerequisite supports distinguishing the pointwise electric-field arrow from forces on the drop. It does not establish quantisation, measurement inference or uncertainty credit. Existing Millikan-goal coverage is unchanged.",
+        "languages": [
+          "de",
+          "en"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part A draws forces on the suspended droplets; k1 links effective weight, field, charge sign and equilibrium. The reversed-field drop in B changes the charge sign needed to keep the same forces opposite. Inferring charges and testing quantisation is the assessed topic, not a separate rescaling exercise.",
+        "languageEvidence": "German and English task and rubric inspected"
+      }
+    },
+    {
+      "goalId": "a2a7d916-83c6-5ed6-90f2-5c4d9e36abf3",
+      "title": "Prüfungsaufgabe: Spannung und Zeitbasis in der Braunschen Röhre",
+      "beforeObjectSha256": "b9cde9640bb091840aff23d91fd001913f2772b637ad28261947458f46f7fc20",
+      "currentObjectSha256": "10b883ca57229dc9b192561d0fa5c83fb88a13cff45e48f105031a467c0a10aa",
+      "unchangedExamDataSha256": "8c5982f8ac55cd231fbfb469d47219c9c67d64b2e7277c49d4f9493f3f10a00d",
+      "addedPrerequisite": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "coveredGoalIds": [
+        "5fda8623-69e0-5503-9c6d-86d054a8cf91"
+      ],
+      "reviewA": {
+        "decision": "accept_current_prerequisite_only",
+        "reason": "A requires field/force directions between plates and k1 scores the voltage→field→negative-charge→vertical-position chain. The task separately plots actual screen coordinates, while k3 uses a supplied qualitative magnetic direction rule. The new prerequisite supports the directed arrows without turning arrow tips into screen locations, requiring a formal cross product, or expanding existing oscilloscope coverage.",
+        "languages": [
+          "de",
+          "en"
+        ]
+      },
+      "reviewB": {
+        "decision": "accept_current",
+        "reason": "Part A draws plate field and electron-force directions, and k1 links voltage, field direction, electron charge and vertical deflection. k2 uses positions and calibration on the screen; a timebase scale is not a force/field arrow scale. The magnetic comparison does not change the original CRT coverage.",
+        "languageEvidence": "German and English task and rubric inspected"
+      }
+    }
+  ]
+}

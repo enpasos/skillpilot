@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+  "provider": "OpenAI / Codex image_gen",
+  "graphicException": "Nur die kalibrierte Maßstabslegende wird als präzise gezeichnetes Diagramm eingesetzt. Die Wagen und physikalischen Pfeile stammen aus der zweiten Generierung.",
+  "retainedExternalRoot": "a2ImageSources",
+  "attempts": [
+    {
+      "externalPath": "arrow-provider.png",
+      "sha256": "ae30208c74dbfa4a02ca2a4b53d898cfe3e7594e43abbd4278861acc0c15e227",
+      "decision": "rejected",
+      "reason": "Bei 360 px misst der obere Pfeil etwa 167 px, der untere 79 px. Die beiden zunächst gezeichneten 54-px-Referenzen ergeben nicht jeweils 4 m/s."
+    },
+    {
+      "externalPath": "arrow-v2-provider.png",
+      "sha256": "f23a8b496cf9dc4d8818107300edc9b8ae6f4f2bee0db5cc7dbb057955e5ca69",
+      "decision": "illustration accepted; provider legend replaced",
+      "reason": "Die verkürzten Anbieterpfeile ergeben mit den weiterhin rund 54 px langen Leisten unterschiedliche falsche Beträge."
+    }
+  ],
+  "currentJpeg": {
+    "path": "curricula/DE/Gymnasium/visualizations/physik/b77a7e93-22f9-5722-a4cc-f18a149ab030/b77a7e93-22f9-5722-a4cc-f18a149ab030.jpg",
+    "sha256": "ea528e24f6a45adab8d80097e83d17874424dcde725453af5375a13cf5c661f5",
+    "size": [
+      1600,
+      900
+    ]
+  },
+  "verifiedCopies": [
+    "curricula/DE/Gymnasium/visualizations/physik/b77a7e93-22f9-5722-a4cc-f18a149ab030/b77a7e93-22f9-5722-a4cc-f18a149ab030.jpg",
+    "app/public/assets/goal-visualizations/physik/b77a7e93-22f9-5722-a4cc-f18a149ab030/b77a7e93-22f9-5722-a4cc-f18a149ab030.jpg",
+    "backend/src/main/resources/static/assets/goal-visualizations/physik/b77a7e93-22f9-5722-a4cc-f18a149ab030/b77a7e93-22f9-5722-a4cc-f18a149ab030.jpg"
+  ],
+  "reviewWidthsPx": [
+    1600,
+    720,
+    360
+  ],
+  "currentGeometryPixels1600x900": {
+    "upper": {
+      "origin": [
+        201,
+        364
+      ],
+      "tip": [
+        637,
+        364
+      ],
+      "barPx": 218,
+      "barValueMps": 2
+    },
+    "lower": {
+      "origin": [
+        202,
+        691
+      ],
+      "tip": [
+        397,
+        691
+      ],
+      "barPx": 196,
+      "barValueMps": 4
+    }
+  },
+  "currentCriteriaDecision": "accepted",
+  "typeOfReview": "AI visual and geometric review",
+  "review": "Die Pfeile beginnen auf dem schwarzen Punkt desselben Wagens und weisen nach rechts. Beide geben 4 m/s an. Der andere Pfeilmaßstab versetzt die Spitze; beide Wagen stehen im Bild an derselben Stelle auf derselben Schiene. Beide Spitzen liegen im freien Raum. Bei 360 Pixeln sind Bezugsstriche, Beträge und Einheiten lesbar.",
+  "prompt": "curricula/DE/Gymnasium/visualizations/physik/b77a7e93-22f9-5722-a4cc-f18a149ab030/prompt.de.md",
+  "scaleRenderer": "render-calibrated-legends.mjs",
+  "supersedes": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/media/b77a7e93-22f9-5722-a4cc-f18a149ab030.actual.json",
+    "sha256": "eacca4b1b6f067651a32083fab970509fdf717347d01464563f8fdba6857f807",
+    "assetSha256": "c8063f4a83c2e2a5026bb66812b5439b235e9ea1e4f859b28213cf9123bdc39f"
+  },
+  "decisionReason": "Bei 360 und 720 px sind Geschwindigkeit und Pfeilmaßstab in einer gemeinsamen Legende lesbar. Oben ergeben 436/218 × 2 m/s genau 4 m/s. Unten ergeben 195/196 × 4 m/s innerhalb der Linienbreite ebenfalls 4 m/s. Ansatzpunkte und Richtung sind unverändert.",
+  "scope": "Nur Größenname in der Diagrammlegende hinzugefügt. Die getrennt aufbewahrte Vorgängerversion ist vollständig gebunden.",
+  "renderer": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/media/quantity-label-v2/render-calibrated-legends.mjs",
+    "sha256": "2e7642e6380db4239e45b990c98c0524af6f474f3acac4c818a91cc65cc75206"
+  }
+}

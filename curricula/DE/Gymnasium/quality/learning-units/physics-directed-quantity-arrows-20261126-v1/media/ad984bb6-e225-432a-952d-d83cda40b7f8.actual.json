@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "goalId": "ad984bb6-e225-432a-952d-d83cda40b7f8",
+  "provider": "OpenAI / Codex image_gen",
+  "graphicException": "Nur die kalibrierte Maßstabslegende wird als präzise gezeichnetes Diagramm eingesetzt. Die Wagen und physikalischen Pfeile stammen aus der zweiten Generierung.",
+  "retainedExternalRoot": "a2ImageSources",
+  "attempts": [
+    {
+      "externalPath": "newton-provider.png",
+      "sha256": "e363de0df54025c85b043e0769bbdaec27e90739ddd3cab620d5bd29313d9574",
+      "decision": "rejected",
+      "reason": "Die beiden richtigen Empfangskörper sind erkennbar, doch die 2-N-Referenz ist etwa 135 px statt 98 px lang (360-px-Ansicht)."
+    },
+    {
+      "externalPath": "newton-v2-provider.png",
+      "sha256": "96f9713c9cfa7be4221421723f6f9950671e72199875332f849283bb9a35ba7f",
+      "decision": "illustration accepted; provider legend replaced",
+      "reason": "Nach Kürzung ist der Bezugsstrich bei 360 px weiterhin etwa 5 px länger als der Kraftpfeil."
+    }
+  ],
+  "currentJpeg": {
+    "path": "curricula/DE/Gymnasium/visualizations/physik/ad984bb6-e225-432a-952d-d83cda40b7f8/ad984bb6-e225-432a-952d-d83cda40b7f8.jpg",
+    "sha256": "5ef586cca50a5f29e9ecb1c33c85bc6f621607ba1659f8e92fcf1716a2808848",
+    "size": [
+      1600,
+      900
+    ]
+  },
+  "verifiedCopies": [
+    "curricula/DE/Gymnasium/visualizations/physik/ad984bb6-e225-432a-952d-d83cda40b7f8/ad984bb6-e225-432a-952d-d83cda40b7f8.jpg",
+    "app/public/assets/goal-visualizations/physik/ad984bb6-e225-432a-952d-d83cda40b7f8/ad984bb6-e225-432a-952d-d83cda40b7f8.jpg",
+    "backend/src/main/resources/static/assets/goal-visualizations/physik/ad984bb6-e225-432a-952d-d83cda40b7f8/ad984bb6-e225-432a-952d-d83cda40b7f8.jpg"
+  ],
+  "reviewWidthsPx": [
+    1600,
+    720,
+    360
+  ],
+  "currentGeometryPixels1600x900": {
+    "forceOnA": {
+      "origin": [
+        488,
+        480
+      ],
+      "tip": [
+        53,
+        480
+      ]
+    },
+    "forceOnB": {
+      "origin": [
+        1111,
+        480
+      ],
+      "tip": [
+        1546,
+        480
+      ]
+    },
+    "barPx": 435,
+    "barValueN": 2
+  },
+  "currentCriteriaDecision": "accepted",
+  "typeOfReview": "AI visual and geometric review",
+  "review": "Gleichnamige Magnetpole stoßen einander ab. Die Kraft von B auf A beginnt auf A und zeigt nach links. Die Kraft von A auf B beginnt auf B und zeigt nach rechts. Beide Spitzen enden im freien Raum. Der eigene Bezugsstrich weist für beide gleichzeitigen Kräfte 2 N aus, auch in der 360-px-Fassung.",
+  "prompt": "curricula/DE/Gymnasium/visualizations/physik/ad984bb6-e225-432a-952d-d83cda40b7f8/prompt.de.md",
+  "scaleRenderer": "render-calibrated-legends.mjs"
+}

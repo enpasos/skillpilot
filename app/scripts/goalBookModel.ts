@@ -40,6 +40,7 @@ import {
   parseGoalBookEvidenceReviewRecord,
   validateGoalBookEvidenceReviewRecordSemantics,
 } from './goalBookEvidenceReviewLoader'
+import type { DirectedQuantityArrowDecision } from './lib/directedQuantityArrows'
 
 export const GOAL_BOOK_MODEL_SCHEMA_VERSION = '1.1.0' as const
 export const GOAL_BOOK_CONFIG_SCHEMA_VERSION = 1 as const
@@ -116,7 +117,7 @@ const createSchemaValidator = (schemaPath: string, includeFormats = false) => {
 
 let cachedGoalBookSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
 let cachedSourceManifestSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
-let cachedSemanticKindLedgerSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
+const cachedSemanticKindLedgerSchemaValidators = new Map<number, ReturnType<typeof createSchemaValidator>>()
 let semanticKindFingerprintProfileVerified = false
 
 export interface GoalBookApplicabilityScope {
@@ -413,6 +414,7 @@ interface CompiledGoalBookViewSource {
 
 interface SemanticKindLedgerResult {
   semanticKindByGoalId: Map<string, string>
+  directedQuantityArrowsByGoalId: Map<string, DirectedQuantityArrowDecision>
   ledgerId: string
 }
 
@@ -815,11 +817,15 @@ export const parseSemanticKindLedger = (
   landscapePath: string,
   prerequisiteReductionContext?: VerifiedPrerequisiteReductionContext,
 ): SemanticKindLedgerResult => {
-  const validator = cachedSemanticKindLedgerSchemaValidator
-    ?? (cachedSemanticKindLedgerSchemaValidator = createSchemaValidator(
-      SEMANTIC_KIND_LEDGER_SCHEMA_PATH,
-      true,
-    ))
+  const declaredLedgerVersion = (value as { ledgerFormatVersion?: unknown } | null)?.ledgerFormatVersion
+  const ledgerVersion = declaredLedgerVersion === 1 || declaredLedgerVersion === 2
+    ? declaredLedgerVersion : fail('unsupported semantic-kind ledger version.')
+  let validator = cachedSemanticKindLedgerSchemaValidators.get(ledgerVersion)
+  if (!validator) {
+    validator = createSchemaValidator(ledgerVersion === 1 ? SEMANTIC_KIND_LEDGER_SCHEMA_PATH
+      : resolve(REPOSITORY_ROOT, 'contracts/curriculum-package/v2/curriculum-semantic-kind-ledger.schema.json'), true)
+    cachedSemanticKindLedgerSchemaValidators.set(ledgerVersion, validator)
+  }
   if (!validator.validate(value)) {
     fail(`semantic-kind ledger violates its closed JSON Schema: ${validator.ajv.errorsText(
       validator.validate.errors,
@@ -865,6 +871,7 @@ export const parseSemanticKindLedger = (
   })
   const canonicalGoalIds = new Set(rawGoalById.keys())
   const semanticKindByGoalId = new Map<string, string>()
+  const directedQuantityArrowsByGoalId = new Map<string, DirectedQuantityArrowDecision>()
   const actualCounts = new Map<string, number>([...SEMANTIC_KINDS].map((kind) => [kind, 0]))
   decisions.forEach((rawDecision, index) => {
     const decision = asRecord(rawDecision, `semanticKindLedger.decisions[${index}]`)
@@ -893,6 +900,8 @@ export const parseSemanticKindLedger = (
       fail(`stale semantic-kind decision for goal ${goalId}; expected ${currentFingerprint}.`)
     }
     semanticKindByGoalId.set(goalId, semanticKind)
+    if (ledgerVersion === 2) directedQuantityArrowsByGoalId.set(goalId,
+      decision.directedQuantityArrows as unknown as DirectedQuantityArrowDecision)
     actualCounts.set(semanticKind, (actualCounts.get(semanticKind) ?? 0) + 1)
   })
 
@@ -912,7 +921,7 @@ export const parseSemanticKindLedger = (
     fail('semantic-kind ledger total count must match exactly every canonical goal.')
   }
 
-  return { semanticKindByGoalId, ledgerId }
+  return { semanticKindByGoalId, directedQuantityArrowsByGoalId, ledgerId }
 }
 
 const parseGoalVisualizationQa = (

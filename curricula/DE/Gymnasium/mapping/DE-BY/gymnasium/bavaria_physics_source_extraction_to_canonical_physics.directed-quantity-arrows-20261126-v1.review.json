@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "reviewId": "bavaria_physics_source_extraction_to_canonical_physics.directed-quantity-arrows-20261126-v1.review",
+  "sourceLandscapeId": "42c2f7e3-91b4-5de8-bef0-d563440e9d52",
+  "targetLandscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+  "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_PHYSIK_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+  "status": "complete",
+  "note": "Abgeschlossene schmale Ergänzung eines kanonischen Endpunkts an einer bestehenden amtlichen Quellenzeile gemäß angenommenem Task L und A2-Schnitt. Kein Ersatz der bestehenden Zuordnungsdatei, keine neue Quellanforderung und keine Behauptung vollständiger amtlicher Abdeckung allein durch das Pfeilziel.",
+  "mappings": [
+    {
+      "legacyGoalId": "7812213c-59e5-5d52-9a01-0c0534020cd5",
+      "canonicalGoalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+      "matchType": "partial",
+      "reviewDecisionId": "7812213c-59e5-5d52-9a01-0c0534020cd5"
+    }
+  ],
+  "decisions": [
+    {
+      "sourceGoalId": "7812213c-59e5-5d52-9a01-0c0534020cd5",
+      "topicCode": "Ph8.3",
+      "sourceSpan": "Ph8.3.2",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "b77a7e93-22f9-5722-a4cc-f18a149ab030"
+      ],
+      "rationale": "Die bereits unabhängig geprüfte amtliche Ph8.3.2 verlangt Geschwindigkeitspfeile in zweidimensionalen Stroboskop- oder Videoaufnahmen. Das zusätzliche frühe Pfeilziel operationalisiert deren grundlegendes Lesen und Zeichnen: Zuordnung zum Körper oder Feldpunkt, Richtung und Betrag mit einem eigenen Größenmaßstab. Es ist eine begrenzte partielle Zuordnung derselben bestehenden amtlichen Anforderung; die konkrete Videoauswertung bleibt unverändert d61ea362 zugeordnet. Die explizite Trennung von Orts- und Pfeilmaßstab sowie die nicht als Ort gedeutete Spitze sind eigene didaktische Ausarbeitung von SkillPilot und werden nicht als wörtliche amtliche Forderung ausgegeben.",
+      "reviewedAt": "2026-11-26",
+      "reviewer": "Integration der angenommenen unabhängigen Task-L-Quellenentscheidung A; A2-Implementierung nach Auftrag vom 26.11.2026, 05:40 CET"
+    }
+  ],
+  "supplementalSourceBinding": {
+    "baseReview": {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_physics_source_extraction_to_canonical_physics.review.json",
+      "sha256": "94c8d020a35f4278a6095cfa66e1e482d85c1a1953a340dab721d1f63c1ea0e8"
+    },
+    "sourceExtractionSha256": "c6771966752d0bb257e1a0fcef7290b92f5eb60534c03458685f2dfc14f32ee7",
+    "independentSourceDecision": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/basis-l/source-table.json",
+      "sha256": "a961be12b53efe0c48d95d378d4ba8c739dad3f5bed8eda286b3a77a82bca301",
+      "row": "BY"
+    },
+    "originalDocument": {
+      "title": "Lehrplanauszüge: Fachlehrpläne, Gymnasium Physik 8 – Phänomene experimentell untersuchen und modellieren; amtlicher Druck 25.11.2026",
+      "url": "https://www.lehrplanplus.bayern.de/pdf/createpdfkapitel/215701",
+      "sha256": "8ab6dddfb36fce0e81f0bced58515e961bd850e084e0def9b31b5d19162341bc",
+      "pdfPages": [
+        3,
+        4
+      ],
+      "retainedRootAlias": "taskL",
+      "retainedRelativePath": "raw/source-a/BY_Physik8_generated.pdf"
+    },
+    "sourceOriginalDenominatorUnchanged": 301,
+    "retainedBaseReviewUnchanged": true,
+    "newCanonicalEndpointOnly": true,
+    "learnerResultsWritten": false
+  }
+}

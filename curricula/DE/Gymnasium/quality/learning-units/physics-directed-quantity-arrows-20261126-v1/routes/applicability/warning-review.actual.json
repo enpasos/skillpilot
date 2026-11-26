@@ -1,0 +1,663 @@
+{
+  "schema": "physics-arrow-k4-individual-applicability-warning-review-v1",
+  "reviewedAt": "2026-11-26T06:27:33.791359+00:00",
+  "reviewAuthority": "ai_review",
+  "humanApproval": false,
+  "reviewerRole": "Source/view integration author; individual technical warning disposition, not new independent scientific or task approval.",
+  "mechanism": {
+    "registryPath": "docs/qa-ci/applicability-accepted-warnings.json",
+    "keyRule": "code|landscapeId|goalId|dimension|value, absent value is empty",
+    "exactNewRows": 1,
+    "retainedExistingRows": 128,
+    "retainedRowSequenceSha256": "b8ed2a94e0c61bfc0ceb0c6513c81c1af05ab8e57cfa0684f9e01c9dea0e0999",
+    "predecessor": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/applicability/accepted-warnings.predecessor.json",
+      "sha256": "c7b68ff3605ae3f5624bf42bbc9c687dbfeff98aef927e2b7a026e49ce9075ba"
+    },
+    "noGateOrCompilerChanges": true
+  },
+  "currentNativeOfferAudit": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/applicability/current-offer.before.actual.json",
+    "sha256": "3764d8f2ce961acb1d3417028af9656a7a4b55a4688b7a956630add2eb7c596f"
+  },
+  "measurementScript": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/applicability/measure-current-offer.mts",
+    "sha256": "dd7e1b8e2d8dc56b27c489ff092820b31a3fb5825e2e2e1f85330c3e7a64cdde"
+  },
+  "sourceAndReleaseEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/source-decisions.actual.json",
+      "sha256": "a70d288be8eb829183890984305919ca51f3cdda40813ad7e2617084b94ee302"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/basis-l/source-table.json",
+      "sha256": "a961be12b53efe0c48d95d378d4ba8c739dad3f5bed8eda286b3a77a82bca301"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/basis-l/review.md",
+      "sha256": "90df979ff041a995111de9457369bb3265684fc40d1b09e85465a753d49a4af9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/k4/v3/released.goal.json",
+      "sha256": "837f3fe1810b3e66db757a62c66568f3d55a1685500622bf9b5724a9e69b7c9e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/k4/v3/k4-marker-a-v3.actual.json",
+      "sha256": "80ef2e81cd9440edc41ddb6bcf26629fd6ebf7058517ba1568f10a136c695067"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/k4/v3/k4-marker-b-v3.actual.json",
+      "sha256": "62de6abe7f834f573ed82ea4a966e0360efa7e48b9735d3bf5c1d31b4e19325c"
+    }
+  ],
+  "countermodelFindings": [
+    {
+      "mode": "withoutOverride",
+      "goal": {
+        "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+        "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+        "goalType": "atomic",
+        "compiledApplicability": {},
+        "evidence": []
+      },
+      "canonicalGoalJsonStringifySha256": "040db927b1a8a2cd92b0ee3d59eee9104afa1e26443c686c2c436bef885c28bc",
+      "findings": [
+        {
+          "code": "APV-203",
+          "severity": "warning",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "message": "Compiled applicability differs from the currently committed applicability field."
+        }
+      ],
+      "offeredViewIdsAfterCompiledJurisdictionFilter": [
+        "de-de-gym-physics-gk",
+        "de-de-gym-physics-lk",
+        "de-de-gym-seki-physics"
+      ]
+    },
+    {
+      "mode": "withoutBoundary",
+      "goal": {
+        "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+        "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+        "goalType": "atomic",
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "evidence": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BB",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BB",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BE",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HB",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_physics_lower_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HB",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HB/upper-secondary/hb_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HB",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_physics_lower_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HH",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-MV",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_physics_lower_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-MV",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-MV",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NI",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-NW",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-RP/upper-secondary/rp_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-RP",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SH",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SL",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_physics_lower_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SL",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SL/upper-secondary/sl_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SL",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_physics_lower_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-SN/upper-secondary/sn_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-SN",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-ST",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_physics_lower_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-ST",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-ST",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-TH",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_physics_lower_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-TH",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_physics_upper_secondary_to_canonical_physics.json",
+            "mappingStrength": "partial"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-TH",
+            "kind": "override",
+            "source": "extendedData.applicabilityOverrides"
+          }
+        ]
+      },
+      "canonicalGoalJsonStringifySha256": "8729cea109360e49cdcafab7f58e0a28979c1d8b300ba44dc1d26051121680ac",
+      "findings": [
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "message": "Applicability for DE-BB is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "message": "Applicability for DE-BE is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "message": "Applicability for DE-BW is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "message": "Applicability for DE-HB is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "message": "Applicability for DE-HH is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "message": "Applicability for DE-MV is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "message": "Applicability for DE-NI is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "message": "Applicability for DE-NW is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "message": "Applicability for DE-RP is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "message": "Applicability for DE-SH is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "message": "Applicability for DE-SL is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "message": "Applicability for DE-SN is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "message": "Applicability for DE-ST is backed only by partial mappings."
+        },
+        {
+          "code": "APV-202",
+          "severity": "diagnostic",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "message": "Applicability for DE-TH is backed only by partial mappings."
+        },
+        {
+          "code": "APV-201",
+          "severity": "warning",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "message": "Goal uses applicability override for DE-BB, DE-BE, DE-BY, DE-HB, DE-HH, DE-MV, DE-NI, DE-NW, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+        },
+        {
+          "code": "APV-203",
+          "severity": "warning",
+          "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+          "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+          "dimension": "jurisdiction",
+          "message": "Compiled applicability differs from the currently committed applicability field."
+        }
+      ],
+      "offeredViewIdsAfterCompiledJurisdictionFilter": [
+        "de-bb-gym-physics-gk",
+        "de-bb-gym-physics-lk",
+        "de-bb-gym-seki-physics",
+        "de-be-gym-physics-gk",
+        "de-be-gym-physics-lk",
+        "de-be-gym-seki-physics",
+        "de-by-gym-physics-gk",
+        "de-by-gym-physics-lk",
+        "de-by-gym-seki-physics",
+        "de-de-gym-physics-gk",
+        "de-de-gym-physics-lk",
+        "de-de-gym-seki-physics",
+        "de-hb-gym-physics-gk",
+        "de-hb-gym-physics-lk",
+        "de-hb-gym-seki-physics",
+        "de-hh-gym-physics-gk",
+        "de-hh-gym-physics-lk",
+        "de-hh-gym-seki-physics",
+        "de-mv-gym-physics-gk",
+        "de-mv-gym-physics-lk",
+        "de-mv-gym-seki-physics",
+        "de-ni-gym-physics-gk",
+        "de-ni-gym-physics-lk",
+        "de-ni-gym-seki-physics",
+        "de-nw-gym-physics-gk",
+        "de-nw-gym-physics-lk",
+        "de-nw-gym-seki-physics",
+        "de-rp-gym-physics-gk",
+        "de-rp-gym-physics-lk",
+        "de-rp-gym-seki-physics",
+        "de-sh-gym-physics-gk",
+        "de-sh-gym-physics-lk",
+        "de-sh-gym-seki-physics",
+        "de-sl-gym-physics-gk",
+        "de-sl-gym-physics-lk",
+        "de-sl-gym-seki-physics",
+        "de-sn-gym-physics-gk",
+        "de-sn-gym-physics-lk",
+        "de-sn-gym-seki-physics",
+        "de-st-gym-physics-gk",
+        "de-st-gym-physics-lk",
+        "de-st-gym-seki-physics",
+        "de-th-gym-physics-gk",
+        "de-th-gym-physics-lk",
+        "de-th-gym-seki-physics"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "code": "APV-201",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+      "dimension": "jurisdiction",
+      "decision": "accept_current_warning",
+      "exactWarningKey": "APV-201|7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a|2569d84a-5bf1-542b-bc43-6ade1df971c4|jurisdiction|",
+      "actualDiagnostic": {
+        "code": "APV-201",
+        "severity": "warning",
+        "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+        "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+        "title": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen",
+        "dimension": "jurisdiction",
+        "message": "Goal uses applicability override for DE-BB, DE-BE, DE-BY, DE-HB, DE-HH, DE-MV, DE-NI, DE-NW, DE-RP, DE-SH, DE-SL, DE-SN, DE-ST, DE-TH."
+      },
+      "rationale": "K4 ist eine eigene freigegebene SkillPilot-Prüfungsaufgabe und wird ausschließlich angeboten, wo das Pfeilziel in Sekundarstufe I ein reguläres Ziel ist: genau vierzehn amtlich begründete Länder und das getrennte eigene nationale Angebot. Hessen und Baden-Württemberg tragen das Pfeilziel als eigene Vorbereitung, sämtliche reinen Oberstufenansichten ebenfalls; dort wird K4 nicht angeboten. Die explizite Grenze und Länderfreigabe sind fachlich gewollt, nicht eine neue amtliche Urheberschaft der Aufgabe. Die kontrollierte Entfernung des Overrides löscht 42 genehmigte Landesangebote und erzeugt APV-203; die Entfernung der Vererbungsgrenze erweitert den Compiler sachlich falsch auf HE/BW. Daher wird nur der exakte aktuelle APV-201 für K4 mit vierzehn genannten Jurisdiktionen, aktuellem vollständigem Zielhash und allen neunzig aktuellen Rollen-/Angebotskontexten angenommen.",
+      "authoredJurisdictions": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BY",
+        "DE-HB",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "compiledJurisdictions": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BY",
+        "DE-HB",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "canonicalGoalJsonStringifySha256": "2ba97042255a8e02f55822d6197c1a90643e5b135a142018b10e8105e8c8f5f6",
+      "offeredViewIds": [
+        "de-bb-gym-physics-gk",
+        "de-bb-gym-physics-lk",
+        "de-bb-gym-seki-physics",
+        "de-be-gym-physics-gk",
+        "de-be-gym-physics-lk",
+        "de-be-gym-seki-physics",
+        "de-by-gym-physics-gk",
+        "de-by-gym-physics-lk",
+        "de-by-gym-seki-physics",
+        "de-de-gym-physics-gk",
+        "de-de-gym-physics-lk",
+        "de-de-gym-seki-physics",
+        "de-hb-gym-physics-gk",
+        "de-hb-gym-physics-lk",
+        "de-hb-gym-seki-physics",
+        "de-hh-gym-physics-gk",
+        "de-hh-gym-physics-lk",
+        "de-hh-gym-seki-physics",
+        "de-mv-gym-physics-gk",
+        "de-mv-gym-physics-lk",
+        "de-mv-gym-seki-physics",
+        "de-ni-gym-physics-gk",
+        "de-ni-gym-physics-lk",
+        "de-ni-gym-seki-physics",
+        "de-nw-gym-physics-gk",
+        "de-nw-gym-physics-lk",
+        "de-nw-gym-seki-physics",
+        "de-rp-gym-physics-gk",
+        "de-rp-gym-physics-lk",
+        "de-rp-gym-seki-physics",
+        "de-sh-gym-physics-gk",
+        "de-sh-gym-physics-lk",
+        "de-sh-gym-seki-physics",
+        "de-sl-gym-physics-gk",
+        "de-sl-gym-physics-lk",
+        "de-sl-gym-seki-physics",
+        "de-sn-gym-physics-gk",
+        "de-sn-gym-physics-lk",
+        "de-sn-gym-seki-physics",
+        "de-st-gym-physics-gk",
+        "de-st-gym-physics-lk",
+        "de-st-gym-seki-physics",
+        "de-th-gym-physics-gk",
+        "de-th-gym-physics-lk",
+        "de-th-gym-seki-physics"
+      ]
+    }
+  ],
+  "boundaries": [
+    "A2 arrow acquisition is available in all16 Länder, but the ordinary Land target decision covers14 and HE/BW remain own preparation.",
+    "K4 is own material, not an official task. The3 national offers do not invent a national curriculum requirement.",
+    "No old accepted row, source denominator, milestone floor, compiler rule, learner result or source byte is modified."
+  ]
+}

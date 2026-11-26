@@ -325,6 +325,18 @@
                 },
                 {
                   "kind": "structure",
+                  "id": "physics-mv-unit-j7-required-preparation",
+                  "label": "Notwendige Grundlagen",
+                  "children": [
+                    {
+                      "kind": "goalEntry",
+                      "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
+                      "projectionRole": "target"
+                    }
+                  ]
+                },
+                {
+                  "kind": "structure",
                   "id": "physics-mv-j7-supplements",
                   "label": "Ergänzende Themen und Grundlagen",
                   "children": [
@@ -333,11 +345,6 @@
                       "id": "physics-acquisition-f1a078ae-6262-4444-a4bc-a5ab275621cf",
                       "label": "Grundlagen: Stromstärke in einfachen Stromkreisen messen",
                       "children": [
-                        {
-                          "kind": "goalEntry",
-                          "goalId": "5c44b9ba-9b05-4774-95d5-073230d3fc4f",
-                          "projectionRole": "target"
-                        },
                         {
                           "kind": "goalEntry",
                           "goalId": "7ca44ba0-b77e-52bf-8562-f67b44767172",
@@ -430,6 +437,16 @@
                       "id": "physics-mv-j7-supplements-d145ce4f",
                       "label": "Weitere Grundlagen",
                       "children": [
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "b77a7e93-22f9-5722-a4cc-f18a149ab030",
+                          "projectionRole": "target"
+                        },
+                        {
+                          "kind": "goalEntry",
+                          "goalId": "2569d84a-5bf1-542b-bc43-6ade1df971c4",
+                          "displayLabel": "Prüfungsaufgabe: Geschwindigkeitspfeile lesen und mit anderem Maßstab zeichnen (eigene Aufgabe von SkillPilot)"
+                        },
                         {
                           "kind": "goalEntry",
                           "goalId": "5ea765ac-c279-551a-8a94-a07da2381e5b",
@@ -661,18 +678,6 @@
                     "after": [
                       {
                         "unit": "physics-acquisition-28237994-9c24-5a06-82fe-be1f494768ba",
-                        "after": "physics-acquisition-f1a078ae-6262-4444-a4bc-a5ab275621cf"
-                      },
-                      {
-                        "unit": "physics-acquisition-ae67bcf1-f3ee-50d6-9a12-25a159dff659",
-                        "after": "physics-acquisition-f1a078ae-6262-4444-a4bc-a5ab275621cf"
-                      },
-                      {
-                        "unit": "physics-acquisition-a4681378-ade4-4f20-bf77-fb020469510f",
-                        "after": "physics-acquisition-f1a078ae-6262-4444-a4bc-a5ab275621cf"
-                      },
-                      {
-                        "unit": "physics-acquisition-9ac4973a-21d5-48a5-90b4-eb90e10391ae",
                         "after": "physics-acquisition-f1a078ae-6262-4444-a4bc-a5ab275621cf"
                       },
                       {
@@ -1043,8 +1048,16 @@
                     "after": "physics-required-preparation-physics-mv-unit-j7"
                   },
                   {
+                    "unit": "physics-mv-j7-supplements",
+                    "after": "physics-mv-unit-j7-required-preparation"
+                  },
+                  {
                     "unit": "physics-mv-j7-topic-378c936890ca",
-                    "after": "physics-mv-j7-supplements"
+                    "after": "physics-required-preparation-physics-mv-unit-j7"
+                  },
+                  {
+                    "unit": "physics-mv-j7-topic-378c936890ca",
+                    "after": "physics-mv-unit-j7-required-preparation"
                   },
                   {
                     "unit": "physics-mv-j7-topic-9d5e0b59fada",
@@ -1052,7 +1065,7 @@
                   },
                   {
                     "unit": "physics-mv-j7-topic-bb9152cd6cb9",
-                    "after": "physics-mv-j7-supplements"
+                    "after": "physics-mv-unit-j7-required-preparation"
                   },
                   {
                     "unit": "physics-mv-unit-j7-practice",

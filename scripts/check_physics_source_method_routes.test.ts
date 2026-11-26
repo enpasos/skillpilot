@@ -335,3 +335,68 @@ test('all declared atlas views compile with the real cross-subject goal universe
     assert.deepEqual(result.findings.filter(finding => finding.severity === 'error'), [], path)
   }
 })
+
+// A2 uses the same real projection chain as the actual learner unit map.
+// The all-view measurement and its mutations test scope and timing contracts,
+// while the independent K4 markers establish the task's subject adequacy.
+test('directed quantity arrows have the reviewed roles, checks and native places in all 90 views', async () => {
+  const {measurePhysicsArrowRoutes} = await import('./physics_arrow_route_validation')
+  const result = measurePhysicsArrowRoutes(root)
+  assert.deepEqual(result.counts, {...result.counts, views: 90, lowerLandTargetViews: 42,
+    ownNationalLowerTargetViews: 3, preparationViews: 45, violations: 0})
+  assert.deepEqual(result.violations, [])
+  for (const state of ['DE-BY', 'DE-ST']) {
+    const upper = result.views.filter(r => r.scope.jurisdiction === state && r.scope.stage === 'SekII')
+    assert.equal(upper.length, 2)
+    assert.ok(upper.every(r => r.consumers.every(c => c.calendar !== 'later-unit')))
+  }
+})
+
+test('directed quantity arrow audit detects a broken actual prerequisite path', async () => {
+  const {measurePhysicsArrowRoutes, arrowId} = await import('./physics_arrow_route_validation')
+  const goal = 'd61ea362-f6c3-5eab-ac30-2d0e265ac0f6'
+  const result = measurePhysicsArrowRoutes(root, {viewFiles: ['de-de-gym-seki-physics.view.json'],
+    mutateCatalog: catalog => catalog.map(d => ({...d, goals: d.goals.map((g: any) => g.id === goal
+      ? {...g, requires: g.requires.filter((id: string) => id !== arrowId)} : g)}))})
+  assert.ok(result.violations.some(v => v.kind === 'broken-arrow-path' && 'goalId' in v && v.goalId === goal))
+})
+
+test('directed quantity arrow audit detects acquisition after an actual consumer', async () => {
+  const {measurePhysicsArrowRoutes, arrowId} = await import('./physics_arrow_route_validation')
+  const result = measurePhysicsArrowRoutes(root, {viewFiles: ['de-ni-seki.view.json'], mutateView: view => {
+    let reference: any
+    const visit = (nodes: any[]) => {
+      for (let i = nodes.length - 1; i >= 0; i--) {
+        const node = nodes[i]
+        if (node.goalId === arrowId) reference = nodes.splice(i, 1)[0]
+        else if (node.kind === 'structure') visit(node.children)
+      }
+    }
+    visit(view.rootNodes)
+    const lastYear = structures(view.rootNodes).find(n => n.id === 'physics-ni-unit-j9-10')
+    assert.ok(reference && lastYear)
+    lastYear.children.push(reference)
+    return view
+  }})
+  assert.ok(result.violations.some(v => v.kind === 'late-arrow-place'))
+})
+
+test('directed quantity arrow own preparation never exposes K4', async () => {
+  const {measurePhysicsArrowRoutes, k4Id} = await import('./physics_arrow_route_validation')
+  const result = measurePhysicsArrowRoutes(root, {viewFiles: ['de-he-sekii-gk.view.json'], mutateView: view => {
+    view.rootNodes.push({kind: 'goalEntry', goalId: k4Id})
+    return view
+  }})
+  assert.ok(result.violations.some(v => v.kind === 'wrong-k4-exposure'))
+})
+
+
+test('K4 warning disposition is current, exact and rejects a same-key scope expansion', async () => {
+  const {loadAndVerifyArrowWarningDisposition,validateArrowWarningDisposition} = await import('./physics_arrow_applicability_review')
+  const input = loadAndVerifyArrowWarningDisposition(root)
+  const expandedGoal = structuredClone(input.goal)
+  expandedGoal.extendedData.applicabilityOverrides.jurisdiction.push('DE-HE')
+  assert.throws(() => validateArrowWarningDisposition({...input, goal: expandedGoal}), /stale actual K4 goal/)
+  const changedFinding = {...input.currentFinding, message: input.currentFinding.message + ' DE-HE'}
+  assert.throws(() => validateArrowWarningDisposition({...input, currentFinding: changedFinding}), /warning message or exact scope changed/)
+})

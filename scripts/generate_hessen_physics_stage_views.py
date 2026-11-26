@@ -16,6 +16,7 @@ import json
 from functools import cache
 from pathlib import Path
 from generate_physics_partial_orders import partial_order, acquisition_placements, contextual_targets, course_seeds
+from generate_physics_arrow_places import apply_arrow_places, with_arrow_places
 
 ROOT = Path(__file__).resolve().parents[1]
 DIRECTORY = ROOT / "curricula/DE/Gymnasium/composition-views/physik"
@@ -1061,12 +1062,19 @@ def duration_outputs():
         g9["viewId"] += "-g9"
         g9["scope"]["durationModel"] = "G9"
         for duration, generated in (("g8", g8), ("g9", g9)):
+            generated = apply_arrow_places(generated, GOALS)
             outputs.append((DIRECTORY / f"de-he-{profile}-{duration}.view.json", generated,
                             report if duration == "g8" else {}))
             if profile == "gk":
                 excerpt, excerpt_report = seki_excerpt(generated, duration)
                 outputs.append((DIRECTORY / f"de-he-seki-{duration}.view.json", excerpt, excerpt_report))
     return outputs
+
+
+# A2 remains own preparation in every Hessen view, with its own reviewed place.
+generate = with_arrow_places(generate, GOALS)
+generate_g8 = with_arrow_places(generate_g8, GOALS)
+seki_excerpt = with_arrow_places(seki_excerpt, GOALS)
 
 
 def main():

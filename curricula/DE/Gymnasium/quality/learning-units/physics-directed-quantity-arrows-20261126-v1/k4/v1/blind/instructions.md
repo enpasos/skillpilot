@@ -1,0 +1,9 @@
+# Getrennte Blindbewertung / Independent blind marking
+
+Read `../candidate.goal.json`, `../task-and-marking.md`, `scripts.json`, and every drawing referenced by a script. Do not read `../author/`, authoring source, author expectations, the other marker's output or reconciliation. Neutral case and drawing IDs contain no intended judgement. The actual drawings form part of the submissions; do not replace their visual inspection with reading the prose. One drawing can be shared by several submissions. The ruler defines its scale irrespective of screen zoom.
+
+Grade all 20 fully written cases independently, in German and English separately: A–D points, total, pass/fail, and decisive evidence. Explain any bilingual difference. Do not invent missing work. Use `marking-template.json` if helpful. In particular distinguish a local slip, an omission, a maintained misconception, a contradiction that was explicitly retracted, and consistent follow-through from an earlier error.
+
+Decide also whether the task is physically correct, age appropriate, clear, feasible through coach chat with an attached actual drawing, and sufficient to test its one stated goal. Check that all four carrying performances have their own protected weight, that one small slip can pass, that the total alone implements the pass threshold, and that a text-only response cannot evade the drawing requirement. Report a material ambiguity with a concrete case and minimal proposed repair. The author has not released the task; no existing positive verdict should influence yours. Do not edit the candidate, and do not communicate your marks to the other marker.
+
+The two languages in a case are equivalent versions of one synthetic submission, not consecutive attempts by a learner. All scripts and drawings are synthetic author materials. These blind markings are content-quality evidence, never real learner results.

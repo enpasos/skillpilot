@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "scope": "Current A5 semantics with released K4 V3 and quantity-label image V2; this is local checking, not final D confirmation or main CI",
+  "checks": [
+    {
+      "label": "reader-controls",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "--test",
+        "scripts/testDirectedQuantityArrows.ts"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:55:05.382977+00:00",
+      "completedAt": "2026-11-26T05:55:06.208002+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/reader-controls.log",
+      "logSha256": "sha256:e5cbba7aad2eebeb595d286ff94581a0d74349cf29307653ae97418acaa27740"
+    },
+    {
+      "label": "python-schema-dispatch",
+      "argv": [
+        "python3",
+        "-B",
+        "../scripts/test_semantic_kind_ledger_contracts.py"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:55:06.208462+00:00",
+      "completedAt": "2026-11-26T05:55:07.626592+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/python-schema-dispatch.log",
+      "logSha256": "sha256:32442619c3a9d0d78000ab7cc262e785558fc5cc8ee988c66099279cbe323d6b"
+    },
+    {
+      "label": "qa-generator",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=physik",
+        "--check"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:55:07.627122+00:00",
+      "completedAt": "2026-11-26T05:55:09.280465+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/qa-generator.log",
+      "logSha256": "sha256:d5dd066915f98b2427bd60be89081b04791f6d28b0b13da4fa0fdbbbcca23b84"
+    },
+    {
+      "label": "qa-projection",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/materializePhysicsDirectedQuantityArrowQa.ts",
+        "--configuration=curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/quantity-label-v2/projection-inputs.actual.json",
+        "--check"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:55:09.280806+00:00",
+      "completedAt": "2026-11-26T05:55:10.769858+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/qa-projection.log",
+      "logSha256": "sha256:05c685bf208081ede8ed914cb3f8eb0ce0e446d5a9ca45f37e00a671b70801a7"
+    },
+    {
+      "label": "semantic-projection",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/materializePhysicsDirectedQuantityArrowSemantics.ts",
+        "--configuration=curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/projection-inputs.actual.json",
+        "--check"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:55:10.770196+00:00",
+      "completedAt": "2026-11-26T05:55:14.581555+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/semantic-projection.log",
+      "logSha256": "sha256:df926146ff6d20d301d007d7d0f62017119111d78340eeceb0a89c01e8396545"
+    },
+    {
+      "label": "normal-approval-coverage",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/checkGoalVisualizationQaApprovalCoverage.ts",
+        "physik"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:55:14.581937+00:00",
+      "completedAt": "2026-11-26T05:55:15.061078+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/normal-approval-coverage.log",
+      "logSha256": "sha256:39f76f16148ab3a7c59d5b915f109dcf98ed08d7165567180120818914278176"
+    },
+    {
+      "label": "native-semantic-routes",
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/auditSemanticLearningRoutes.ts",
+        "--report-only",
+        "--output",
+        "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/native-semantic-routes.actual.json"
+      ],
+      "cwd": "app",
+      "startedAt": "2026-11-26T05:55:15.061425+00:00",
+      "completedAt": "2026-11-26T05:55:24.945951+00:00",
+      "exitCode": 0,
+      "log": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/rule/final-k4-v3/checks/native-semantic-routes.log",
+      "logSha256": "sha256:25bf613de1cdc7e203ecd43eec5db6d48f3088c45ee630b18f5e1577a147bcd3"
+    }
+  ],
+  "portableSuccessorOf": {
+    "externalRoot": "a2Scratch",
+    "path": "portable-originals/checks.actual.json",
+    "sha256": "5305c12f9731a5bce43a4bd34596b5dbedcd52491ca67bb2a256805954ca4f1f"
+  },
+  "workingDirectory": "checkout root for resolution of the recorded repository-relative output argument",
+  "interpretation": "The commands, exit codes and log digests were observed in the retained original. Only the absolute route-output argument has been rendered repository-relative."
+}

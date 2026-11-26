@@ -1,0 +1,69 @@
+{
+  "schema": "physics-arrow-k4-applicability-validation-v1",
+  "status": "PASS",
+  "measuredAt": "2026-11-26T07:31:36.215394+01:00",
+  "integrationComplete": false,
+  "currentOffer": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/applicability/current-offer.after.actual.json",
+    "sha256": "776b454e902d644606ff8c95eb0549d60dc2d4f1cb5f84d5bb28746904c63578"
+  },
+  "warningReview": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/applicability/warning-review.actual.json",
+    "sha256": "a077658dba926cb4815fedd27ca238cff5f415a59e6c57719874c7e6cefd1ef4"
+  },
+  "acceptanceRegistry": {
+    "path": "docs/qa-ci/applicability-accepted-warnings.json",
+    "sha256": "ce6d9f000180becb0fd025c0db6e77c810536f08b52bf3322c125c15fe77ed39"
+  },
+  "scopeChecker": {
+    "path": "scripts/physics_arrow_applicability_review.ts",
+    "sha256": "ab4500d88cdf1b824b18fa2e447429cb090c244250b4e60d422057f83a3398f3"
+  },
+  "scopeTests": {
+    "path": "scripts/check_physics_source_method_routes.test.ts",
+    "sha256": "60464dd871eda620151e9f2d81e10a121374656cc9c885ab0206ed6f7e4e4339"
+  },
+  "checks": [
+    {
+      "command": "measure-current-offer.mts --phase=before",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/applicability-before.log",
+        "sha256": "9ce9722d0cf6d1a9867bbfbee08cea376111336f84436071f96e9ee478b006ce"
+      },
+      "activePhysicsWarnings": 1
+    },
+    {
+      "command": "measure-current-offer.mts --phase=after",
+      "exitCode": 0,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/applicability-after.log",
+        "sha256": "de4a6307e3614e7bb9ca5a64fed534dd088b82c678db9307413fb6317af932ae"
+      },
+      "activePhysicsWarnings": 0,
+      "acceptedPhysicsWarnings": 19,
+      "obsoleteAcceptedPhysicsWarnings": 0
+    },
+    {
+      "command": "tsx --test --test-name-pattern='directed quantity|K4 warning disposition' scripts/check_physics_source_method_routes.test.ts",
+      "exitCode": 0,
+      "passed": 5,
+      "skippedExisting": 8,
+      "log": {
+        "path": "curricula/DE/Gymnasium/quality/learning-units/physics-directed-quantity-arrows-20261126-v1/routes/checks/applicability-targeted-tests.log",
+        "sha256": "1d5129c3b21615d4cb0851a36f6b6828473393064999d488d9a2cff46d10b693"
+      }
+    }
+  ],
+  "negativeControls": [
+    "Removing K4 override leaves no compiled Land applicability and loses42approved Land offers.",
+    "Removing K4 inheritance boundary incorrectly addsHE/BW to compiled task scope.",
+    "A goal clone whose override addsHE is rejected by current full-goal hash binding.",
+    "A same-key warning clone whose message addsHE is rejected by exact diagnostic binding."
+  ],
+  "boundaries": [
+    "Exactly one individually justified current warning is accepted; all128 existing registry entries retain their content and order.",
+    "The prior complete12-test suite passed before the appended current-acceptance test. The fresh complete13-test replay is running externally; this record truthfully reports the five current selected A2 tests and does not count skipped tests as passes.",
+    "No canonical, curriculum view, compiler rule, gate, source denominator, assessment scoring or learner result was changed for warning disposition."
+  ]
+}

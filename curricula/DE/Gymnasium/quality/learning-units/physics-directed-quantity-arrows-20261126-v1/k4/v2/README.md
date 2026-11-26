@@ -1,0 +1,9 @@
+# K4 Version 2
+
+Getrennter verfasster Kandidat vor zwei unabhängigen Blindbewertungen. Version1 bleibt unverändert. Der Auftrag und sein quantitatives PNG enthalten keine vorweggenommene Träger-, Richtungs-, Geschwindigkeits- oder Längenlösung. Das PNG wird im üblichen Aufgaben-Markdown über den bestehenden Pfad `/assets/assessment-materials/physik/` eingebunden. Die unveränderte Ausgangsskizze und das tatsächliche neue Diagramm bilden zwei Darstellungen desselben Augenblicks.
+
+Vier Leistungen zu je4 Punkten; Bestehen allein ab13,5 von16 (84,375Prozent). Jeweils3 Kernpunkte und1 Ergänzungspunkt. Ohne einen fachlichen Kern sind höchstens13 erreichbar. Richtige Zeichnung, richtige neue Länge und Invarianz allein bringen inD höchstens1; sie ersetzen keine Spitzendeutung. A–C besitzen dieselbe Gewichtsgrenze. Das Verfahren hat kein zusätzliches Bestehenstor. Fehlender Kopf zählt nur bei unabhängig sichtbarem richtigem Richtungskern als einmaliger0,5-Zeichenfehler; sonst fehlt die entsprechende Zeichnungsevidenz.
+
+Die20 aktuellen zweisprachigen Abgaben und10 tatsächlichen zweiten Zeichnungen sind getrennt von den versiegelten Autorenerwartungen. Vier Kern-Auslassungen, die Grenze13,5/13,0, Kopf mit/ohne Kernbeleg sowie konsistente arithmetische und fachliche Folgefehler sind ausdrücklich abgedeckt. Es wurden keine Markerantworten gelesen. Autorenerwartungen und Struktur-/Renderprüfungen ersetzen keine unabhängige Bewertung und erzeugen keine Lernendenresultate.
+
+Eigenes didaktisches Material: CC-BY-4.0 für die Rechte, die das Projekt nach LICENSING.md vergeben kann; technische Skripte Apache-2.0. Keine amtliche Aufgabe behauptet, keine Retained Sources geändert, keine zusätzlichen verbindlichen Einzelcredits. KI-Provenienz und Qualitätsevidenz sind kein Nachweis von Rechten an Fremdmaterial. Landrollen folgen unverändert dem akzeptierten KnotenreviewL und A2-Zuschnitt.
