@@ -18,4 +18,8 @@ Die vier Dateien sind unverändert übernommen. Die im Prüfbeleg gebundenen Roh
 | Das Cockpit-„Fortsetzen“ speichert mehr Fokus-Einträge, als es meldet. | Bei nötigem Auftakt speichert `continuePlan` zusätzlich den Auftakt und eine Grundlage. Das bestand schon auf `main`. | Nicht Teil dieses Pakets; die Gleichheit des gespeicherten Fokus wird für diesen Weg nicht behauptet. |
 | Auftakt von E.1 vor dem Auftakt der Untereinheit bei mehreren Abschnitten. | Ein Block mit einem Abschnitt zeigt nur den Auftakt der Untereinheit, ein Block mit mehreren Abschnitten beide. | Offen als Produktentscheidung: ob ein solcher Block als direkter Einstieg in die Untereinheit gelten soll. |
 
+## Bestätigungslauf
+
+Geprüft wurde `f303f7ebdd` mit den fünf Proben der Gegenprüfung, die auf dem ersten Stand zum Teil scheiterten. Alle fünf bestehen. Beim Aktivieren eines Plans mit einem früher fälligen anderen Ziel bleibt das laufende Ziel in allen drei Zuständen erhalten: Ist ein Auftakt offen, wird der Auftakt von E.1 gemeldet und gespeichert, und das laufende Ziel bleibt Fokus und Rückkehrziel; sind beide Auftakte bestanden, bleibt es selbst aktiv. Die Vorbereitungskette beginnt bei einem wie bei zwei Abschnitten mit derselben Vorbereitung. [Bericht](confirmation-f303f7ebdd/confirmation.md)
+
 Bestätigt hat die Gegenprüfung: Für das gemeldete Inhaltsziel stimmen Planansicht, Coach, automatischer Abgleich und Cockpit überein. Klausurpläne und Einheitenaufträge sind nicht berührt. Gegen den Dienst von `main` scheitern genau vier der sechs neuen Testfälle.

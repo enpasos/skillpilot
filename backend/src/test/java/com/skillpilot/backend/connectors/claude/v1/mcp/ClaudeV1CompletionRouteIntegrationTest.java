@@ -2048,7 +2048,7 @@ class ClaudeV1CompletionRouteIntegrationTest {
     // plan as outdated, and an exam day that can be evaluated binds learning to its topics as before.
     @ParameterizedTest
     @ValueSource(strings = {"courseChanged", "topicUnknown", "storedAsOutdated", "learningGoalUnknown",
-            "onlyPausedLearning"})
+            "onlyPausedLearning", "pausedWithUnknownGoalAndNoExamDay"})
     void planWithAnExamDayThatCannotBeEvaluatedLeavesOrdinaryLearningOpen(String cause) throws Exception {
         String section = selectHessianMotionUnit("G9", "SekII", "GK");
         String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
@@ -2102,6 +2102,17 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 record.setCurriculumId(com.skillpilot.backend.domain.LearnerLearningPlan.RESTORED_OUTDATED_CURRICULUM_ID);
                 record.setBlocksJson(mapper.writeValueAsString(List.of(new LearnerLearningPlanApi.Block("section",
                         "learning", section, "E.1", monday, monday, null, required, List.of(section), false), examDay)));
+                storedPlans.saveAndFlush(record);
+            }
+            case "pausedWithUnknownGoalAndNoExamDay" -> {
+                // No exam day, the curriculum is unchanged, and all learning of the plan is paused: a
+                // pause narrows learning to nothing. The plan names a goal the scope of the learner
+                // does not know, so it cannot be evaluated and defines no pause either (found by the
+                // independent reviews of issue #216).
+                var unknown = new java.util.ArrayList<>(required);
+                unknown.add(UUID.randomUUID().toString());
+                record.setBlocksJson(mapper.writeValueAsString(List.of(new LearnerLearningPlanApi.Block("section",
+                        "learning", section, "E.1", monday, monday, null, unknown, List.of(section), false))));
                 storedPlans.saveAndFlush(record);
             }
             default -> {
@@ -2208,13 +2219,84 @@ class ClaudeV1CompletionRouteIntegrationTest {
                 .findFirst().orElseThrow();
         assertThat(mathEntry.get("evaluable")).isEqualTo(true);
         assertThat(physicsEntry.get("evaluable")).isEqualTo(false);
-        // With AutoPilot the backend chooses, and an exam that can be evaluated binds its choice as
-        // before. Without it the learner may name Physics, and the published switch starts a goal there.
-        assertThat(physicsEntry.get("canContinue")).isEqualTo(!autoPilot);
-        if (!autoPilot) {
+        // The learner may name Physics with and without AutoPilot (Product Owner, 26 November
+        // 2026), and the published switch starts a goal there.
+        assertThat(physicsEntry.get("canContinue")).isEqualTo(true);
+        successful(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
+                writeArgs("explicit-physics", version(), Map.of("subject", physicsEntry.get("subject"))));
+        assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsOpen.getFirst());
+    }
+
+    // Product Owner, 26 November 2026: during an exam that can be evaluated, a subject the learner
+    // names can be chosen in chat also with AutoPilot. "Continue" without a subject leads to the
+    // exam as before. Before, AutoPilot published no other subject while an exam was bound, and an
+    // exam whose topic cannot start yet left no learning step in chat at all.
+    @ParameterizedTest
+    @CsvSource({"false,true,resume", "true,true,resume", "false,true,nameTwice", "true,true,nameTwice",
+            "false,false,name", "true,false,name"})
+    void aNamedSubjectCanBeChosenDuringAnExamAlsoWithAutoPilot(boolean autoPilot, boolean examCanStart, String action)
+            throws Exception {
+        selectHessianMotionUnit("G9", "SekII", "GK");
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
+        curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "GK")));
+        learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+        learner.setAutoPilot(autoPilot);
+        learnerRepository.saveAndFlush(learner);
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        java.util.function.Function<String, List<String>> subjectFrontier = subject -> learners
+                .getPersonalCurriculumSubjectFrontier(learnerId, subject).stream().map(goal -> goal.id()).toList();
+        // The exam topic is either the first Mathematics goal, which can start at once, or
+        // "Definition des Skalarprodukts ... veranschaulichen", whose prerequisite is still open.
+        // Physics has no plan at all.
+        String mathGoal = examCanStart ? subjectFrontier.apply(MATH).getFirst() : "3016ec37-1c2e-47db-83f5-e767923bc97e";
+        learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik mit Klausur", List.of(
+                new LearnerLearningPlanApi.Block("topic", "learning", mathGoal, "Mathematik", monday, monday.plusDays(4),
+                        null, List.of(mathGoal), List.of(mathGoal), true),
+                new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                        null, null, monday.plusDays(10), null, List.of(mathGoal), true))), today);
+        transactions.executeWithoutResult(status -> {
+            var following = learnerRepository.findById(learnerId).orElseThrow();
+            following.setFollowLearningPlans(true);
+            learnerRepository.saveAndFlush(following);
+        });
+        List<String> physicsOpen = subjectFrontier.apply(physics);
+        assertThat(physicsOpen).isNotEmpty();
+
+        var status = map(context(), "learningPlanToday");
+        assertThat(status).containsEntry("resumeAvailable", examCanStart);
+        var subjects = ((List<?>) status.get("subjects")).stream().map(Map.class::cast).toList();
+        var mathEntry = subjects.stream().filter(entry -> entry.get("subject").toString().startsWith("Mathematik"))
+                .findFirst().orElseThrow();
+        var physicsEntry = subjects.stream().filter(entry -> entry.get("subject").toString().startsWith("Physik"))
+                .findFirst().orElseThrow();
+        assertThat(mathEntry.get("evaluable")).isEqualTo(true);
+        assertThat(physicsEntry.get("canContinue")).as("the named subject is published").isEqualTo(true);
+        if (action.equals("resume")) {
+            successful(ClaudeV1Contract.TOOL_RESUME_LEARNING_PLAN, writeArgs("resume-exam", version(), Map.of()));
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).as("continue leads to the exam").isEqualTo(mathGoal);
+        } else if (action.equals("nameTwice")) {
+            // The Physics path starts with a Mathematics foundation, which the running exam admits.
+            // While that step is running, Physics has nothing to switch to and is no longer offered
+            // as a choice. Before, it stayed offered, and the repeated request was refused.
             successful(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
-                    writeArgs("explicit-physics", version(), Map.of("subject", physicsEntry.get("subject"))));
-            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsOpen.getFirst());
+                    writeArgs("named-physics-first", version(), Map.of("subject", physicsEntry.get("subject"))));
+            String started = learners.getLearner(learnerId).getActiveGoalId();
+            assertThat(started).isEqualTo(physicsOpen.getFirst());
+            assertThat(landscapeDefinitions.getLandscapeIdForGoal(started)).as("a foundation of another subject").isEqualTo(MATH);
+            var after = ((List<?>) map(context(), "learningPlanToday").get("subjects")).stream().map(Map.class::cast).toList();
+            assertThat(after.stream().filter(entry -> entry.get("subject").toString().startsWith("Physik")))
+                    .allSatisfy(entry -> assertThat(entry.get("canContinue")).as("nothing to switch to").isEqualTo(false));
+            assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(started);
+        } else {
+            // The exam offers no step; the named subject does.
+            successful(ClaudeV1Contract.TOOL_SWITCH_LEARNING_PLAN_SUBJECT,
+                    writeArgs("named-physics", version(), Map.of("subject", physicsEntry.get("subject"))));
+            String active = learners.getLearner(learnerId).getActiveGoalId();
+            assertThat(active).as("the named subject starts the first goal it offers").isEqualTo(physicsOpen.getFirst());
+            assertThat(landscapeDefinitions.getLandscapeIdForGoal(active)).isEqualTo(physics);
         }
     }
 
@@ -3759,6 +3841,273 @@ class ClaudeV1CompletionRouteIntegrationTest {
         assertThat(response.isError()).as("%s: %s", tool, response.content()).isFalse();
         return mapper.readValue(((McpSchema.TextContent) response.content().getFirst()).text(), new TypeReference<>() {});
     }
+    // A section of a Physics view can hold the learning place of a Mathematics preparation: in the
+    // Saarland Leistungskurs two integral goals lie in "Kraft und Bewegung", and every phase holds
+    // its "Notwendige Grundlagen". The complete selection of such a section is its Physics goals and
+    // can be stored; the Mathematics goals belong to the Mathematics plan (issue #216).
+    @ParameterizedTest
+    @CsvSource({"false,physics-sl-e-topic-a23348c3fbeb", "true,physics-sl-e-topic-a23348c3fbeb",
+            "false,physics-sl-unit-e", "true,physics-sl-unit-e"})
+    void sectionThatHoldsTheLearningPlaceOfAMathematicsGoalCanBePlannedCompletely(
+            boolean withMathematics, String structure) throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        var integrals = List.of("e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd", "34604a97-0c64-5b06-81e2-6ac818732d60");
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
+        String section = configurePhysicsTestUnit(null, "SekII", "LK", "DE-SL", structure);
+        if (withMathematics) {
+            Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+            var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
+            curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "LK")));
+            learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+            learnerRepository.saveAndFlush(learner);
+        }
+        assertThat(compositionViews.resolveStructureReference(section).referencedGoalIds()).containsAll(integrals);
+
+        var selected = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        var physicsScope = learners.getPlanningScope(learnerId, physics).scopeAtomicGoalIds();
+        // Complete: every Physics goal of the learner that the section names directly is selected.
+        assertThat(selected).doesNotContainAnyElementsOf(integrals).isSubsetOf(physicsScope)
+                .containsAll(compositionViews.resolveStructureReference(section).referencedGoalIds().stream()
+                        .filter(physicsScope::contains).toList())
+                .hasSizeGreaterThanOrEqualTo(20)
+                .allSatisfy(id -> assertThat(landscapeDefinitions.getLandscapeIdForGoal(id)).isEqualTo(physics));
+        var day = java.time.LocalDate.of(2026, 11, 26);
+        var block = new LearnerLearningPlanApi.Block("section", "learning", section, "Abschnitt",
+                day, day, null, selected, List.of(section), true);
+        var plan = learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(0L, "Abschnitt", List.of(block)), day);
+        assertThat(plan.stale()).isFalse();
+        assertThat(plan.blocks().getFirst().atomicGoalIds()).containsExactlyInAnyOrderElementsOf(selected);
+        assertThat(learningPlans.getPlan(learnerId, physics, day).stale()).isFalse();
+
+        // A Mathematics goal of the section is no goal of the Physics plan.
+        var withMathematicsGoal = new java.util.ArrayList<>(selected);
+        withMathematicsGoal.add(integrals.getFirst());
+        var mixed = new LearnerLearningPlanApi.Block("section", "learning", section, "Abschnitt",
+                day, day, null, withMathematicsGoal, List.of(section), true);
+        assertThatThrownBy(() -> learningPlans.upsert(learnerId, physics,
+                new LearnerLearningPlanApi.UpsertRequest(plan.revision(), "Abschnitt", List.of(mixed)), day))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class, error ->
+                        assertThat(error.getStatusCode().value()).isEqualTo(400));
+        // The Physics section is no focus of a Mathematics plan, also where it holds Mathematics goals.
+        assertThatThrownBy(() -> learners.resolveLearningPlanGoalIds(learnerId, MATH, List.of(section)))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class, error ->
+                        assertThat(error.getStatusCode().value()).isEqualTo(400));
+        // A structure that holds no Physics goal at all stays no selection of a Physics plan.
+        String foundations = section.substring(0, section.indexOf(":structure:"))
+                + ":structure:physics-required-preparation-physics-sl-unit-hauptphase";
+        assertThatThrownBy(() -> learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(foundations)))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class, error ->
+                        assertThat(error.getStatusCode().value()).isEqualTo(400));
+    }
+
+    // A section of a Physics view asks for Physics, also when it holds the learning place of a
+    // Mathematics preparation. The exam of the Mathematics plan binds Mathematics: it must not take
+    // the Physics goals of a plan or focus on such a section, and the Mathematics preparation under
+    // the section stays bound by it, for the offer and for the write (issue #216, both found by the
+    // independent reviews: the subjects of a focus were derived from every goal under it).
+    @Test
+    void examOfAnotherSubjectBindsItsOwnGoalsUnderASectionAndNothingElse() throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        // "Flächen mit Integralen berechnen" and "Integralterme interpretieren und begründen"
+        String integral = "e9114fc2-1a87-5ef5-8fa3-7ee4c9bbe0dd";
+        var integrals = List.of(integral, "34604a97-0c64-5b06-81e2-6ac818732d60");
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
+        String section = configurePhysicsTestUnit(null, "SekII", "LK", "DE-SL", "physics-sl-e-topic-a23348c3fbeb");
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
+        curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "LK")));
+        learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+        learner.setAutoPilot(false);
+        learnerRepository.saveAndFlush(learner);
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var selected = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        // "Monotonie und Extrema mit der ersten Ableitung untersuchen", no preparation of the section.
+        String mathGoal = "2850e8f6-2330-50d3-a577-d519540d9924";
+        assertThat(compositionViews.resolveStructureReference(section).referencedGoalIds())
+                .containsAll(integrals).doesNotContain(mathGoal);
+        // Everything the section builds on is done, except the two Mathematics goals that have
+        // their learning place in it: the first of them is what the section offers from Mathematics.
+        var graph = new CompletionProfileCompiler().normalizePrerequisites(
+                learners.getLearningPlanCompletionContext(learnerId).canonicalGoals());
+        var prior = new java.util.HashSet<String>();
+        for (String goal : selected) prior.addAll(graph.transitivePrerequisites(goal));
+        prior.removeAll(selected);
+        prior.removeAll(integrals);
+        prior.remove(mathGoal);
+        var masteredBy = learnerRepository.findById(learnerId).orElseThrow();
+        masteryRepository.saveAllAndFlush(prior.stream().map(id -> new Mastery(masteredBy, id, 1.0)).toList());
+        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "Kraft und Bewegung", List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", section, "Kraft und Bewegung", monday,
+                        monday.plusDays(6), null, selected, List.of(section), true))), today);
+        transactions.executeWithoutResult(status -> {
+            var following = learnerRepository.findById(learnerId).orElseThrow();
+            following.setFollowLearningPlans(true);
+            learnerRepository.saveAndFlush(following);
+        });
+        java.util.function.Predicate<String> isPhysics = id -> physics.equals(landscapeDefinitions.getLandscapeIdForGoal(id));
+        java.util.function.Supplier<List<String>> manualChoices = () -> learningPlans.getManualCoachPlanGoals(learnerId, "de-DE")
+                .orElseThrow().stream().map(LearnerLearningPlanService.CoachPlanGoal::goalId).toList();
+        var frontierBefore = learners.getFrontier(learnerId);
+        var physicsBefore = frontierBefore.stream().filter(isPhysics).toList();
+        var nextBefore = learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal();
+        var choicesBefore = manualChoices.get();
+        assertThat(physicsBefore).isNotEmpty().isSubsetOf(selected);
+        assertThat(frontierBefore).contains(integral);
+        assertThat(nextBefore).isNotNull();
+        assertThat(selected).contains(nextBefore.goalId());
+        // The choices in chat are those of Physics, with the Mathematics goals Physics still needs.
+        assertThat(choicesBefore).anyMatch(isPhysics).contains(integral);
+
+        // Two exam days: the next one on another topic, a later one exactly on the Mathematics goal
+        // of the section. The exam that is going on is the next one; asking about the goal of the
+        // later exam must not select that exam.
+        var mathPlan = learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik mit Klausuren", List.of(
+                new LearnerLearningPlanApi.Block("topic", "learning", mathGoal, "Mathematik", monday, monday.plusDays(4),
+                        null, List.of(mathGoal), List.of(mathGoal), true),
+                new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                        null, null, monday.plusDays(10), null, List.of(mathGoal), true),
+                new LearnerLearningPlanApi.Block("later-topic", "learning", integral, "Integrale", monday.plusDays(11),
+                        monday.plusDays(15), null, List.of(integral), List.of(integral), true),
+                new LearnerLearningPlanApi.Block("later-exam", "milestone", null, "Spätere Klausur",
+                        null, null, monday.plusDays(20), null, List.of(integral), true))), today);
+        assertThat(mathPlan.stale()).isFalse();
+        assertThat(mathPlan.learningScope().kind()).isEqualTo("exam");
+        assertThat(mathPlan.learningScope().goalIds()).containsExactly(mathGoal);
+
+        // Physics under the section is untouched: the offer, the next goal of the plan and the
+        // choices in chat.
+        var frontierAfter = learners.getFrontier(learnerId);
+        assertThat(frontierAfter.stream().filter(isPhysics).toList()).isEqualTo(physicsBefore);
+        assertThat(learningPlans.getPlan(learnerId, physics, today).nextEligibleGoal()).isEqualTo(nextBefore);
+        var choicesAfter = manualChoices.get();
+        assertThat(choicesAfter.stream().filter(isPhysics).toList())
+                .isEqualTo(choicesBefore.stream().filter(isPhysics).toList());
+        // The Mathematics goal under the section lies outside the exam that is going on: under the
+        // section it is neither offered nor started. (The choices in chat judge each goal as its
+        // own focus, as the explicit request for a subject does; that rule is not this test's.)
+        assertThat(frontierAfter).doesNotContain(integral);
+        String activeBefore = learners.getLearner(learnerId).getActiveGoalId();
+        assertThatThrownBy(() -> learners.setActiveGoal(learnerId, integral))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class, error ->
+                        assertThat(error.getStatusCode().value()).isEqualTo(409));
+        assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(activeBefore);
+        // A Physics goal of the section starts.
+        learners.setActiveGoal(learnerId, physicsBefore.getFirst());
+        assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsBefore.getFirst());
+
+        // Once the exam that is going on is the one on the Mathematics goal of the section, the
+        // section offers that goal again and it starts.
+        learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(mathPlan.revision(), "Mathematik mit Klausur", List.of(
+                new LearnerLearningPlanApi.Block("later-topic", "learning", integral, "Integrale", monday,
+                        monday.plusDays(4), null, List.of(integral), List.of(integral), true),
+                new LearnerLearningPlanApi.Block("later-exam", "milestone", null, "Klausur",
+                        null, null, monday.plusDays(10), null, List.of(integral), true))), today);
+        assertThat(learners.getFrontier(learnerId)).contains(integral)
+                .filteredOn(isPhysics).containsExactlyElementsOf(physicsBefore);
+        learners.setActiveGoal(learnerId, integral);
+        assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(integral);
+    }
+
+    // The same binding holds for the opening of the other subject: the E-phase of the Physics view
+    // holds the place of "Warum Mathematik?". While a Mathematics exam is going on that does not
+    // contain it, a focus on that Physics section neither offers nor starts it (issue #216, found by
+    // the independent review). The opening of Physics is untouched.
+    @Test
+    void openingOfAnotherSubjectUnderASectionIsBoundByThatSubjectsExam() throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String physicsOpening = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
+        String mathOpening = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
+        String mathGoal = "2850e8f6-2330-50d3-a577-d519540d9924";
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
+        String section = configurePhysicsTestUnit(null, "SekII", "LK", "DE-SL", "physics-sl-unit-e");
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
+        curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "LK")));
+        learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+        learnerRepository.saveAndFlush(learner);
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var selected = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "Einführungsphase", List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", section, "Einführungsphase", monday,
+                        monday.plusDays(6), null, selected, List.of(section), true))), today);
+        transactions.executeWithoutResult(status -> {
+            var following = learnerRepository.findById(learnerId).orElseThrow();
+            following.setFollowLearningPlans(true);
+            learnerRepository.saveAndFlush(following);
+        });
+        assertThat(learners.getFrontier(learnerId)).contains(physicsOpening, mathOpening);
+
+        learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik mit Klausur", List.of(
+                new LearnerLearningPlanApi.Block("topic", "learning", mathGoal, "Mathematik", monday, monday.plusDays(4),
+                        null, List.of(mathGoal), List.of(mathGoal), true),
+                new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                        null, null, monday.plusDays(10), null, List.of(mathGoal), true))), today);
+        assertThat(learningPlans.getPlan(learnerId, MATH, today).stale()).isFalse();
+
+        assertThat(learners.getFrontier(learnerId)).contains(physicsOpening).doesNotContain(mathOpening);
+        assertThatThrownBy(() -> learners.setActiveGoal(learnerId, mathOpening))
+                .isInstanceOfSatisfying(org.springframework.web.server.ResponseStatusException.class, error ->
+                        assertThat(error.getStatusCode().value()).isEqualTo(409));
+        learners.setActiveGoal(learnerId, physicsOpening);
+        assertThat(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(physicsOpening);
+    }
+
+    // The exam of the other subject is judged as it will be once the focus of the continuation is
+    // stored. A stored focus that binds a later Mathematics exam must not let a Physics continuation
+    // announce a goal that the write then refuses (issue #216, found by the independent review).
+    @Test
+    void continuationUnderASectionJudgesTheOtherSubjectsExamAsTheWriteWill() throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        String physicsOpening = "5c44b9ba-9b05-4774-95d5-073230d3fc4f";
+        String mathOpening = "71cec9fb-3751-4d61-8b34-c5adbbf6e5f2";
+        String mathGoal = "2850e8f6-2330-50d3-a577-d519540d9924";
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
+        String section = configurePhysicsTestUnit(null, "SekII", "LK", "DE-SL", "physics-sl-unit-e");
+        Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+        var curriculum = mapper.readValue(learner.getPersonalCurriculum(), com.fasterxml.jackson.databind.node.ObjectNode.class);
+        curriculum.set(MATH, mapper.valueToTree(Map.of("selected", true, "filterId", "LK")));
+        learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+        learner.setAutoPilot(false);
+        learnerRepository.saveAndFlush(learner);
+        masteryRepository.saveAndFlush(new Mastery(learner, physicsOpening, 1.0));
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Europe/Berlin"));
+        var monday = today.with(java.time.DayOfWeek.MONDAY);
+        var selected = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(section));
+        learningPlans.upsert(learnerId, physics, new LearnerLearningPlanApi.UpsertRequest(0L, "Einführungsphase", List.of(
+                new LearnerLearningPlanApi.Block("section", "learning", section, "Einführungsphase", monday,
+                        monday.plusDays(6), null, selected, List.of(section), true))), today);
+        // Mathematics: the next exam on its opening, a later one on another goal.
+        learningPlans.upsert(learnerId, MATH, new LearnerLearningPlanApi.UpsertRequest(0L, "Mathematik mit Klausuren", List.of(
+                new LearnerLearningPlanApi.Block("topic", "learning", mathOpening, "Einstieg", monday, monday.plusDays(4),
+                        null, List.of(mathOpening), List.of(mathOpening), true),
+                new LearnerLearningPlanApi.Block("exam", "milestone", null, "Klausur",
+                        null, null, monday.plusDays(10), null, List.of(mathOpening), true),
+                new LearnerLearningPlanApi.Block("later-topic", "learning", mathGoal, "Ableitung", monday.plusDays(11),
+                        monday.plusDays(15), null, List.of(mathGoal), List.of(mathGoal), true),
+                new LearnerLearningPlanApi.Block("later-exam", "milestone", null, "Spätere Klausur",
+                        null, null, monday.plusDays(20), null, List.of(mathGoal), true))), today);
+        // The stored focus binds the later Mathematics exam.
+        learners.setPlannedGoals(learnerId, java.util.Set.of(mathGoal));
+        transactions.executeWithoutResult(status -> {
+            var following = learnerRepository.findById(learnerId).orElseThrow();
+            following.setFollowLearningPlans(true);
+            learnerRepository.saveAndFlush(following);
+        });
+        // What the plan names as its next step is what the continuation starts. Under the section
+        // the stored binding of the later exam is gone: the exam going on in Mathematics is the next
+        // one, its topic is the opening of Mathematics, and that required opening comes first.
+        var plan = learningPlans.getPlan(learnerId, physics, today);
+        assertThat(plan.canContinue()).isTrue();
+        assertThat(plan.nextEligibleGoal()).isNotNull();
+        var response = learningPlans.continuePlan(learnerId, plan.planId(),
+                new LearnerLearningPlanApi.ContinueRequest(plan.revision(), today));
+        assertThat(response.activeGoalId()).isEqualTo(plan.nextEligibleGoal().goalId())
+                .isEqualTo(learners.getLearner(learnerId).getActiveGoalId()).isEqualTo(mathOpening);
+    }
+
     @SuppressWarnings("unchecked") private Map<String, Object> map(Map<String, Object> parent, String key) {
         assertThat(parent.get(key)).as(key).isInstanceOf(Map.class); return (Map<String, Object>) parent.get(key);
     }
