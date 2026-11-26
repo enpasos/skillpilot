@@ -1,0 +1,73 @@
+    // Probe for issue #216. Paste into ClaudeV1CompletionRouteIntegrationTest and run it alone:
+    //   ./gradlew --no-daemon test --tests '*ClaudeV1CompletionRouteIntegrationTest.probeIssue216SectionSelection'
+    // It writes backend/build/i216-probe.tsv: one row per section of every Physics view a learner
+    // scope resolves to (16 Länder, three stages, two courses; Hesse with G9), once with Physics
+    // alone and once with Physics and Mathematics in the Personal Curriculum.
+    @Test
+    void probeIssue216SectionSelection() throws Exception {
+        String physics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a";
+        learners.chooseLevelCompletion(learnerId, new LevelCompletionActionRequest("leaveProfile", PROFILE, null, null, version()));
+        var out = java.nio.file.Path.of(System.getProperty("probe216.out", "build/i216-probe.tsv"));
+        java.nio.file.Files.writeString(out, "math\tland\tstage\tcourse\tview\tsection\tlabel\tresult\tatoms\n");
+        var lands = List.of("DE-BB", "DE-BE", "DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-HH", "DE-MV", "DE-NI", "DE-NW",
+                "DE-RP", "DE-SH", "DE-SL", "DE-SN", "DE-ST", "DE-TH");
+        for (boolean withMath : new boolean[] {false, true}) {
+            var seen = new java.util.HashSet<String>();
+            for (String land : lands) for (String stage : List.of("SekII", "CrossStage", "SekI")) for (String course : List.of("GK", "LK")) {
+                String duration = land.equals("DE-HE") ? "G9" : null;
+                Learner learner = learnerRepository.findById(learnerId).orElseThrow();
+                Map<String, Object> scope = new java.util.HashMap<>(Map.of("selected", true, "filterId", land, "stage", stage));
+                if (duration != null) scope.put("durationModel", duration);
+                var curriculum = new java.util.LinkedHashMap<String, Object>(Map.of(
+                        ROOT, scope,
+                        physics, Map.of("selected", true, "filterId", course),
+                        "__skillpilot_stage_scope_sek1__", Map.of("selected", true),
+                        "__skillpilot_stage_scope_sek2__", Map.of("selected", true),
+                        "__skillpilotPersonalizationFlow", Map.of("rootLandscapeId", ROOT,
+                                "completedOptionIds", List.of(), "migrationCompleted", true)));
+                if (withMath) curriculum.put(MATH, Map.of("selected", true, "filterId", course));
+                learner.setPersonalCurriculum(mapper.writeValueAsString(curriculum));
+                learner.setFollowLearningPlans(false);
+                learner.setUseAssessmentShortcuts(false);
+                learnerRepository.saveAndFlush(learner);
+                var requested = new java.util.HashMap<>(Map.of("schoolForm", "Gymnasium", "jurisdiction", land,
+                        "stage", stage, "courseProfile", course));
+                if (duration != null) requested.put("durationModel", duration);
+                Map<String, Object> viewMap;
+                try { viewMap = compositionViews.findLearnerScopeView(physics, requested); } catch (RuntimeException e) { viewMap = null; }
+                if (viewMap == null) continue;
+                String view = (String) viewMap.get("viewId");
+                if (!seen.add(view)) continue;
+                var sections = new java.util.ArrayList<String[]>();
+                var stack = new java.util.ArrayDeque<Object>();
+                stack.push(viewMap.get("rootNodes"));
+                while (!stack.isEmpty()) {
+                    Object node = stack.pop();
+                    if (node instanceof List<?> list) { list.forEach(stack::push); continue; }
+                    if (!(node instanceof Map<?, ?> m)) continue;
+                    Object children = m.get("children");
+                    if (children instanceof List<?> list && !list.isEmpty() && m.get("id") instanceof String id) {
+                        sections.add(new String[] {id, String.valueOf(m.get("label"))});
+                        stack.push(children);
+                    }
+                }
+                var lines = new StringBuilder();
+                for (String[] section : sections) {
+                    String focus = "composition:" + view + ":structure:" + section[0];
+                    String result; int atoms = -1;
+                    try {
+                        atoms = learners.resolveLearningPlanGoalIds(learnerId, physics, List.of(focus)).size();
+                        result = "ok";
+                    } catch (org.springframework.web.server.ResponseStatusException e) {
+                        result = "HTTP " + e.getStatusCode().value();
+                    } catch (RuntimeException e) {
+                        result = e.getClass().getSimpleName();
+                    }
+                    lines.append(withMath).append('\t').append(land).append('\t').append(stage).append('\t').append(course)
+                            .append('\t').append(view).append('\t').append(section[0]).append('\t').append(section[1])
+                            .append('\t').append(result).append('\t').append(atoms).append('\n');
+                }
+                java.nio.file.Files.writeString(out, lines, java.nio.file.StandardOpenOption.APPEND);
+            }
+        }
+    }

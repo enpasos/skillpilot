@@ -927,6 +927,65 @@ applies today, without that entry; before, such a backup could not be
 restored. Still outdated: a plan whose section no longer resolves in the
 learner's views, and a plan of which nothing is left.
 
+**Section selection of a subject plan, 26 November 2026 (issue #216).** A
+learning plan belongs to one subject. A section of that subject's view can
+hold the learning place of a goal of another subject: a Mathematics
+preparation in a Physics topic, or the "Notwendige Grundlagen" of a phase. Two
+rules follow. First, the complete selection of a section is the counted goals
+of the plan's subject under it; a goal of another subject there belongs to the
+plan of its own subject and is left out. Before, one such goal refused the
+whole section (HTTP 400), with and without Mathematics in the Personal
+Curriculum. Measured on `main` over the 80 Physics views a learner scope
+resolves to: 808 of 3,955 sections could not be selected, among them the
+subject root in every view, every stage and phase, and in Hesse
+"Einführungsphase: Mechanik", E.5, Q1 and Q2 (E.6 and Q4 in two of the four
+course views each); 650 of them can be selected now, no section is newly
+refused and no selection that worked before changes. Still refused, and
+rightly: a focus that is not a section of the plan's subject as soon as it
+holds a goal of another subject (a Physics section in a Mathematics plan), a
+goal of another subject submitted in a block, and a section that holds no goal
+of the subject for the learner (143 foundation areas, 133 of them with
+Mathematics only, and 15 sections with goals of another course or Land only).
+Second, a section of a subject's view asks for that subject, also when a goal
+of another subject lies under it: the plans and the exam of a subject bind
+what asks for that subject. Before, the subjects of a focus were derived from
+every goal under it, so the exam of a Mathematics plan bound a Physics plan
+or focus on such a section and hid its Physics goals; the independent review
+found this, and it became reachable for plans with the first rule. Third, the
+goal of the other subject under the section, and a required opening of that
+subject, stay bound by the plans of their own subject, for the offer and for
+the write that starts them: during a Mathematics exam a Mathematics
+preparation outside the exam is neither offered under the Physics section nor
+started from it. The exam that counts is the one going on in that subject
+once the focus of the frontier is the stored one, as the write under it sees
+it: that focus is the exam binding, never the goal asked about and, for a
+continuation that stores a new focus, never the old stored one. An opening is
+admitted by the rule for openings. The first rule sits in
+`LearnerService.validateLearningPlanFocus`, which every reader of a plan's
+sections uses, the second in `requestedLearningPlanSubjects`, used by the
+scope of followed plans and by the subject a stored focus binds manual choices
+to, the third in `foreignSubjectPlanScopes`, applied by both frontier
+computations, which the write reads; it evaluates the other subject's plans
+once per subject (`followedPlanScope`). A section without a goal of its own
+subject asks for the subjects it holds, as before. Subject ids are compared
+exactly. Consequences to know: a stored plan with such a section,
+outdated since the learning places entered the views, is evaluated again, and
+a stored milestone that names such a section as its topic binds its exam like
+any other section topic. Not changed: the plan selection of the trainer view
+does not offer a foundation area that holds preparations only. Three things
+existed before and are open (issue #212): confirming a unit opening replaces
+the section by the goals of the learning path, and for goals of two subjects
+the older rule of a focus across subjects applies, under which a paused plan
+of the other subject does not bind them; and the choices in chat and the
+explicit request for a subject judge a goal of another subject as its own
+focus, so that a later exam of exactly that goal is selected by asking for it
+(with this package also reachable through the choices without a named subject
+under such a section). Closed with this package, at the root in the rule of
+issue #205: a plan whose learning is all paused narrows learning to nothing,
+so it must be a plan that can be evaluated; a paused plan that is outdated
+leaves ordinary learning open instead of closing its subject (§10.2). Record:
+`contracts/stage-plan-review-evidence/2026-11-26/issue-216-section-selection/`.
+
 **Backup with a plan that cannot be read, Product Owner decision of
 25 November 2026.** A backup restores the learning results also when a plan
 it holds cannot be read against the curriculum today: a section or exam topic
@@ -2543,8 +2602,10 @@ Only a plan that can be evaluated today defines an exam scope (Product Owner,
 26 November 2026, issue #205). An outdated plan, and a plan whose exam topic no
 longer resolves, narrows nothing: ordinary learning in the subject stays open
 while plans are followed, resume and continuation remain published, and the
-plan status keeps reporting the plan as not evaluable. The frontier
-(`LearnerService.followedLearningScopeIds`) and the plan service
+plan status keeps reporting the plan as not evaluable. The same holds for a
+plan whose learning is all paused: a pause narrows learning to nothing, so
+only a plan that can be evaluated defines it (found with issue #216). The frontier
+(`LearnerService.followedLearningScopeIds`, `followedPlanScope`) and the plan service
 (`LearnerLearningPlanService.definesExamScope`, `canBeEvaluatedToday`) apply
 the same test, the compatibility of the stored plan; a change to one needs
 the other. Such a plan defines no inactivity choice for the personal
@@ -2554,7 +2615,9 @@ The learning path of a subject holds prerequisites of other subjects, and
 they must not draw the exam of another subject into it
 (`getPersonalCurriculumSubjectFrontier`). Such a prerequisite is itself bound
 by the plan of its own subject, exactly as the write that starts it: the
-subject offers it only if it can be started. An exam that can be evaluated
+subject offers it only if it can be started. The same holds under a focus on
+a section that holds the learning place of another subject's goal (issue
+#216, §2.4). An exam that can be evaluated
 binds what "continue" starts, with and without AutoPilot. A subject the
 learner names is published and can be started in both cases (Product Owner,
 26 November 2026): AutoPilot decides who chooses the next goal, not whether
