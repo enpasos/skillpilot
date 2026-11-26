@@ -1,0 +1,241 @@
+{
+  "status": "author-expectations-not-independent-review",
+  "maxPoints": 12,
+  "passingPoints": 10,
+  "cases": [
+    {
+      "id": "S01",
+      "expectedPoints": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "rationale": "Alle vier Leistungen vollständig; Beschreibung ersetzt ein gezeichnetes Diagramm.",
+      "purpose": "Vollständiger Referenzfall"
+    },
+    {
+      "id": "S02",
+      "expectedPoints": {
+        "A": 1.5,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 10.5,
+      "expectedPass": true,
+      "rationale": "Arbeitsdefinition vorhanden, explizit keine Zuordnung zur kinetischen Energie. B leitet den Arbeitswert vollständig her; D bleibt unabhängig richtig.",
+      "purpose": "Eine fehlende Facette; 10,5 Punkte"
+    },
+    {
+      "id": "S03",
+      "expectedPoints": {
+        "A": 3,
+        "B": 2.5,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "rationale": "Ein isolierter Einheitenfehler am Ergebnis in B; richtige Einheit im selben Arbeitsgang belegt den Kern. Nicht erneut in A oder D belasten.",
+      "purpose": "Kleiner Formfehler allein"
+    },
+    {
+      "id": "S04",
+      "expectedPoints": {
+        "A": 1.5,
+        "B": 3,
+        "C": 2.5,
+        "D": 3
+      },
+      "expectedTotal": 10.0,
+      "expectedPass": true,
+      "rationale": "Wie S02, dazu ein isolierter Achseneinheitenfehler; C einmal −0,5. Genau 10 Punkte, Bestehen allein nach Summe.",
+      "purpose": "Bestehensgrenze mit kleiner Unachtsamkeit"
+    },
+    {
+      "id": "S05",
+      "expectedPoints": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "rationale": "Korrekte Energieherleitung und Quadratbegründung, aber überhaupt kein Diagramm oder darstellungsbezogener Flächennachweis. Das Weggesetz in B ist keine grafische Begründung.",
+      "purpose": "Grafische Leistung vollständig ausgelassen"
+    },
+    {
+      "id": "S06",
+      "expectedPoints": {
+        "A": 1.5,
+        "B": 2.5,
+        "C": 2.5,
+        "D": 3
+      },
+      "expectedTotal": 9.5,
+      "expectedPass": false,
+      "rationale": "Fehlende Energiezuordnung wie S02; zwei nachweislich unabhängige lokale Einheitenfehler in B und C jeweils einmal −0,5. 9,5 Punkte.",
+      "purpose": "Unterhalb der Bestehensgrenze"
+    },
+    {
+      "id": "S07",
+      "expectedPoints": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "rationale": "Aufrechterhaltene falsche Dynamik widerspricht B und setzt diese Leistung auf null, auch neben der richtigen Kette. A, C, D bleiben belegt.",
+      "purpose": "Fehlvorstellung neben richtiger Formel"
+    },
+    {
+      "id": "S08",
+      "expectedPoints": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "rationale": "Der aufrechterhaltene lineare Zusammenhang setzt D auf null. Die danebenstehende richtige Verhältnisformel ist keine Rücknahme.",
+      "purpose": "Widerspruch in der Quadratabhängigkeit"
+    },
+    {
+      "id": "S09",
+      "expectedPoints": {
+        "A": 0,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "rationale": "Aufrechterhaltene falsche Einzelkraftregel setzt A auf null. Die anderen gezeigten Leistungen verwenden den gegebenen resultierenden Wert und bleiben richtig.",
+      "purpose": "Fehlvorstellung im Arbeitsansatz"
+    },
+    {
+      "id": "S10",
+      "expectedPoints": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "rationale": "Falsche aufrechterhaltene Flächenbedeutung setzt C auf null, ohne bereits korrekte selbstständige Gesetzesverknüpfung B zu entwerten.",
+      "purpose": "Fehlvorstellung in der Grafik"
+    },
+    {
+      "id": "S11",
+      "expectedPoints": {
+        "A": 3,
+        "B": 0,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "rationale": "A, C und D sind vorhanden. Eine bekannte Energieformel und das Wegdiagramm ersetzen nicht die fehlende Anwendung und Verknüpfung von Newton II und Bewegungsgesetzen.",
+      "purpose": "Dynamisch-kinematische Herleitung fehlt"
+    },
+    {
+      "id": "S12",
+      "expectedPoints": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 0
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "rationale": "Die Energieformel selbst ist kein zusätzlicher Beleg für den nicht beantworteten Erklärungs-/Verdopplungsteil D.",
+      "purpose": "Geschwindigkeitsabhängigkeit nicht bearbeitet"
+    },
+    {
+      "id": "S13",
+      "expectedPoints": {
+        "A": 3,
+        "B": 2.5,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 11.5,
+      "expectedPass": true,
+      "rationale": "Richtiger lokaler Ansatz mit ½ und richtige graphische Erklärung belegen den isolierten algebraischen Aussetzer. Nur B verliert 0,5; unveränderte Quadratabhängigkeit erhält D voll.",
+      "purpose": "Ein Formfehler mit konsistenten Folgen"
+    },
+    {
+      "id": "S14",
+      "expectedPoints": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 3
+      },
+      "expectedTotal": 3,
+      "expectedPass": false,
+      "rationale": "Richtige Zahlenrechnung und richtige Quadratbegründung, aber keine Arbeitsbeziehung, keine dynamische Herleitung und keine Grafik.",
+      "purpose": "Zahlenlösung darf die Herleitung nicht ersetzen"
+    },
+    {
+      "id": "S15",
+      "expectedPoints": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "rationale": "Gleichwertiger algebraischer Weg über die Ortsgleichung; grafischer Nachweis separat vollständig vorhanden.",
+      "purpose": "Gleichwertige elementare Herleitung"
+    },
+    {
+      "id": "S16",
+      "expectedPoints": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "rationale": "Ausdrückliche Rücknahme beseitigt den Widerspruch; die endgültige Flächenbedeutung ist richtig.",
+      "purpose": "Selbstkorrektur innerhalb der Abgabe"
+    },
+    {
+      "id": "S17",
+      "expectedPoints": {
+        "A": 3,
+        "B": 3,
+        "C": 3,
+        "D": 3
+      },
+      "expectedTotal": 12,
+      "expectedPass": true,
+      "rationale": "Die faktorisierte Endform ist äquivalent; sie eliminiert T und zeigt beide V-Faktoren. Keine bestimmte Schreibform erzwingen.",
+      "purpose": "Äquivalente symbolische Endform"
+    },
+    {
+      "id": "S18",
+      "expectedPoints": {
+        "A": 3,
+        "B": 3,
+        "C": 0,
+        "D": 3
+      },
+      "expectedTotal": 9,
+      "expectedPass": false,
+      "rationale": "Aufrechterhaltenes Rechteck-/Konstantgeschwindigkeitsmodell trotz sonst richtigem Bild setzt C auf null. Die richtige Formel in B hebt den Widerspruch nicht auf.",
+      "purpose": "Richtiger Formelwert deckt falsches Flächenmodell nicht zu"
+    }
+  ]
+}

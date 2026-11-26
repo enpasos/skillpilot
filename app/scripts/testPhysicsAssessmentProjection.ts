@@ -538,6 +538,9 @@ assert.equal(precedingMultiphaseOffers.size, 32)
 // The mixed E.1 exam "Bewegungsanalyse und freier Fall" (Grundkurs only) was retired on 25 Nov 2026.
 const precedingMixedMotionOffers = new Set<string>(readRepoJson('curricula/DE/Gymnasium/quality/assessment-review/physik/e1-mixed-exam-retirement-20261125-v1/retirement.actual.json').views.previousVisibleViewIds)
 assert.equal(precedingMixedMotionOffers.size, 32)
+const derivationGoalId = '2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b'
+const derivationTaskId = 'e0085acf-af64-5c73-8abf-85a5bbfbdaa6'
+let derivationTargetViews = 0
 const jurisdictions = new Set<string>()
 for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith('.view.json')).sort()) {
   const view = JSON.parse(readFileSync(resolve(viewDirectory, filename), 'utf8')) as CompositionView
@@ -615,6 +618,16 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     visible.has(fermiGoalId),
     `${view.viewId}: the Fermi assessment must follow exactly its competency's target scope`,
   )
+  const offersDerivation = ['SekII', 'CrossStage'].includes(view.scope.stage ?? '')
+    && (course === 'GK' || course === 'LK')
+    && (view.scope.jurisdiction === 'DE-HE' || view.scope.jurisdiction === 'DE-SL'
+      || (view.scope.jurisdiction === 'DE-SN' && course === 'LK'))
+  assert.equal(visible.has(derivationGoalId), offersDerivation, `${view.viewId}: source scope for kinetic-energy derivation`)
+  assert.equal(visible.has(derivationTaskId), offersDerivation, `${view.viewId}: K3 must follow its assessed derivation`)
+  if (offersDerivation) {
+    derivationTargetViews++
+    assert.deepEqual(byId.get(derivationTaskId)?.examData, canonicalById.get(derivationTaskId)?.examData)
+  }
   fermiScopeViewCount++
   assert(!visible.has('2b9e565f-d9b4-5e23-b5b7-b7977cecff06'),
     `${view.viewId}: the retired 18/30 exam must stay outside learning offers`)
@@ -726,6 +739,7 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     const expectedTasks = [...collectDescendants(rootId, canonicalById)]
       .map((id) => canonicalById.get(id)!)
       .filter((goal) => goal.examData && goalMatchesFilters(goal, filters) && !prerequisiteOnlyGoalIds.has(goal.id)
+        && (goal.id !== derivationTaskId || offersDerivation)
         && (goal.id !== protocolOffer.assessmentGoalId || offersIndividualProtocol)
         && !(admitsHesseE1Assessments && hesseChildVariantByHistorical.has(goal.id))
         && (admitsHesseE1Assessments || !hesseChildAssessments.has(goal.id)))
@@ -790,8 +804,9 @@ const retiredMixedMotionDurationPairs = [...precedingMixedMotionOffers].filter(i
 assert.equal(retiredMixedMotionDurationPairs, 2)
 const retiredMixedMotionOriginalPairs = precedingMixedMotionOffers.size - retiredMixedMotionDurationPairs
 assert.equal(retiredMixedMotionOriginalPairs, 30)
-assertCount('practiceTaskPairs', 4278 - retiredOriginalPairs - retiredMixedMotionOriginalPairs,
-  320 - retiredHesseDurationPairs - retiredMixedMotionDurationPairs,
+assert.equal(derivationTargetViews, 14, 'Eight Hessian, four Saarland and two Saxon LK views offer the derivation and K3.')
+assertCount('practiceTaskPairs', 4278 - retiredOriginalPairs - retiredMixedMotionOriginalPairs + 10,
+  320 - retiredHesseDurationPairs - retiredMixedMotionDurationPairs + 4,
   'Expose every current canonical collection obligation, including the new individual and nested assessments.')
 assertCount('abiturTaskPairs', 480, 32, 'Every applicable view must expose both Abitur sample exams and all eight proposals.')
 assertCount('preservedSekITaskPairs', 30, 0, 'Preserve the source-backed Sek-I task placements, including six SL/SN astronomy placements.')

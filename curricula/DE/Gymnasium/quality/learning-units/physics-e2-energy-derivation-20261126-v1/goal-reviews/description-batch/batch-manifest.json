@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "physics-e2-energy-derivation-description-20261126-v1",
+  "subject": "physik",
+  "subjectLabel": "Physik",
+  "configPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/description-batch.config.json",
+  "configDigest": "sha256:829928670590e874218b4731bc1e79b5bddebf45d49edb0c49074f285820e861",
+  "goalIds": [
+    "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+    "839ecc8f-3a60-418b-bc92-64bfeef33824",
+    "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+    "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+    "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 494,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/goal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+    "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+    "baseBookDigest": "sha256:502e95fbfe895332ff68de728a906c8584fca250ea357fa247e92f74183b476a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a268b7d83fbf94b7fa497da5af4a207d379eeca11e02b021249e572b65a84c35",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:73c97bf41120e288cff3f50e82617a0954f521595fd1ab83ae119566b8c5d22a",
+    "reviewInputFingerprint": "sha256:281ee90c0c0840b3edc083d53b0d1eb80de91ec281c0e693fb5ab13fccec47d4",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "physics-e2-energy-derivation-description-20261126-v1-a",
+        "campaignDigest": "sha256:45cae870e1086b060535689f01770632069b91cf134934095301f5bebf9c49df",
+        "roundId": "physics-e2-energy-derivation-description-20261126-v1-first-pass-a",
+        "independenceGroupId": "physics-e2-energy-derivation-description-20261126-v1-independent-a",
+        "batchId": "physics-e2-energy-derivation-description-20261126-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:8cbefbc615d004365aa0d907da80f7cfa81d5d878eab37a30ebb89be803f9d5c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "physics-e2-energy-derivation-description-20261126-v1-b",
+        "campaignDigest": "sha256:7da12983e489bbbc3817f3fe1b9976ef8f74affa75c79c1c47e831afbe51024b",
+        "roundId": "physics-e2-energy-derivation-description-20261126-v1-first-pass-b",
+        "independenceGroupId": "physics-e2-energy-derivation-description-20261126-v1-independent-b",
+        "batchId": "physics-e2-energy-derivation-description-20261126-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:eb7d15013434c303b153b5b2b24955580271c33876fb47bbb477e24006ec162e"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

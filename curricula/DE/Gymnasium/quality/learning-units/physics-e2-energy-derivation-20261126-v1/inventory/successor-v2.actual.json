@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 2,
+  "contract": "task-n-post-ci-test-expectation-supplement-v2",
+  "parent": {
+    "head": "b503e5d949388af2aa5e32557c17e359b520a310",
+    "manifest": {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/inventory/record-lifecycle.actual.json",
+      "sha256": "8ad5e2540bfa808fe7986274abbf802f4598eb9e2f71cc376542972f6154f0ae"
+    }
+  },
+  "test": {
+    "path": "app/scripts/testHessePhysicsFlashcardActions.ts",
+    "beforeSha256": "94b2ec3af628e97c79e18d82d56c59e55076cdd689aabd32dc5035019285e044",
+    "afterSha256": "15d736bb45a77cc299da882b0fabe6cbe6f0c168bc7ec748a8202f6daa5a1bc9",
+    "deltaEncoding": "python-difflib-unified-utf8-v1",
+    "deltaSha256": "445f5972c62a763ee5e76069ab065358195ea820577b483a0724246314ce3932"
+  },
+  "verifier": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/inventory/verify-successor-v2.py",
+    "sha256": "c1d13022c116a77dbf42ce5edbe010f279f423965266a192842a0db63ee72808"
+  },
+  "self": {
+    "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/inventory/successor-v2.actual.json",
+    "recursiveSelfHash": false
+  },
+  "exactChangedPaths": [
+    "app/scripts/testHessePhysicsFlashcardActions.ts",
+    "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/inventory/successor-v2.actual.json",
+    "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/inventory/verify-successor-v2.py"
+  ],
+  "counts": {
+    "inheritedRecords": 300,
+    "newTestRecords": 1,
+    "bootstrapFiles": 10,
+    "cumulativeTrackedPaths": 311
+  }
+}

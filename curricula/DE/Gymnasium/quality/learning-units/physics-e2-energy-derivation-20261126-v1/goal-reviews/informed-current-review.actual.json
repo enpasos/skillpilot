@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "contract": "task-n-informed-independent-current-scientific-compatibility-review-v1",
+  "reviewer": "OpenAI Codex quality author and integrator; no exact model identifier asserted",
+  "reviewedAt": "2026-11-26T02:51:55.818368+00:00",
+  "independenceDisclosure": "Die fünf gewöhnlichen Ziele, ihre geänderten Kanten, Karten, Wagenaufgabe und das neue Bild wurden nicht von mir verfasst. Ich verfasste den neuen P-Körper und zähle dessen Beurteilung deshalb nicht als unabhängige eigene Stimme. Bei der Verfahrensanalyse las ich historische H-D-Urteile und aktuelle separate P-Kommentare der Koordination; dieses Dokument ist ausdrücklich kein blinder nativer D-Erstdurchlauf. Keine K3-Autorerwartungen oder Markerantworten wurden für dieses Urteil gelesen.",
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/whole-review-inputs.v2.json",
+      "sha256": "sha256:33554eb136c00dc02c1bc127ef7cfbcaedaa4be016444e6052bbed1dce5a8297"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/positive-evidence.candidates.v2.json",
+      "sha256": "sha256:b8a93759cec10f252e6f4f3d3fe5b7a5365a5f1d0979673990f11e24a46f20c8"
+    }
+  ],
+  "atomicityReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "semanticAtomic": true,
+      "reason": "Lageenergie, Bezugshöhe und Nullniveau sind Aspekte derselben erdnahen Energiekompetenz. Unabhängig von kinetischer Energie verständlich und prüfbar.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "semanticAtomic": true,
+      "reason": "Systemwahl, vorzeichenrichtiger Gesamtimpulsvergleich und qualitative Rückstoßerklärung sind ein zusammenhängender Erhaltungssatzgebrauch. Eine vollständige Newton-II/III-Herleitung wird nicht behauptet.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "semanticAtomic": true,
+      "reason": "Der eine Beweis d(Ekin+U)/dt=0 umfasst seinen mathematischen Ansatz und seine Gültigkeitsbedingungen. Die vier P-Erwartungen sind verschiedene Sichtweisen auf diesen selben Satz, kein Anlass für einen Zielsplit.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "semanticAtomic": true,
+      "reason": "Qualitative und einfache quantitative Beschreibung desselben reibungsfreien Energieaustauschs sind ein kohärentes physikalisches Modell. Die Richtung eines Geschwindigkeitsvektors wird aus dem Energiebetrag nicht erschlossen.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "semanticAtomic": true,
+      "reason": "Arbeit, Bewegungsgesetze, Dreiecksfläche und Quadratabhängigkeit sind die tragenden Glieder einer einzigen elementaren Herleitung. Reine Formelverwendung ist ein anderes bereits vorhandenes Ziel.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    }
+  ],
+  "prerequisiteReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "accept_current",
+      "reason": "Der qualitative Energieformen-Vorgänger stellt den Begriff bereit, der Einsetzvorgänger die Rechnung. Masse und g sind als Größen der zu lehrenden Formel keine kinetische Voraussetzung.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "accept_current",
+      "reason": "Gleichzeitige Gegenkräfte an verschiedenen Körpern und gemeinsame vorzeichenbehaftete Impulssumme sind die tatsächlichen Inputs. Die qualitative Rückstoßbilanz rechnet keine Beschleunigung mit F=ma aus.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "accept_current",
+      "reason": "Kinetische Energie bleibt für den Term mv²/2 nötig und wird nach Entfernung der indirekten Kante ausdrücklich benötigt. Skalarprodukt, Kettenregel, Inertialsystem und Potenzialbegriff liegen im gelieferten Abschluss vor; die Gradientbeziehung ist im Ziel vorgegeben.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "accept_current",
+      "reason": "Schwingungsgrößen stellen die Zustände bereit; Lageenergie und kinetische Energie liefern beide Bilanzterme. Die Wurzel ermöglicht den einfachen Geschwindigkeitsbetrag. Die Federenergieformel wird im betreffenden P-Fall bereitgestellt; eine Periodenherleitung wird nicht vorausgesetzt.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "accept_current",
+      "reason": "Arbeit-Energie-Zusammenhang und geradlinige Bewegungsgesetze einschließlich Diagrammflächen sind nötig; die mechanische Grundgleichung liegt im vollständigen Abschluss der Arbeit bereits vor. Äquivalentes Termumformen ermöglicht Eliminieren von a beziehungsweise t. Es braucht weder die bekannte kinetische Formel als Vorgänger noch Differentialrechnung.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    }
+  ],
+  "memoryGoalReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "accept_current",
+      "nativeStatus": "memory_required",
+      "reason": "Kompakter Kern mgh beziehungsweise mgΔh mit Bezugshöhe bleibt auf Karte024 sinnvoll; Nullniveauwahl und physikalische Erklärung werden gesondert geprüft.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "accept_current",
+      "nativeStatus": "memory_required",
+      "reason": "Karte028 fasst Gleichheit an Intervallgrenzen und fortlaufende Erhaltung unter verschiedenen Voraussetzungen korrekt auseinander; selbstständige Systemwahl bleibt Verständnisleistung.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "accept_current",
+      "nativeStatus": "memory_required",
+      "reason": "Karte027 behält den Erhaltungskern als begrenzten Abruf im Kontext des Herkunftsziels mit konstanter Masse und zeitunabhängigem konservativem Potenzial; die Karte ersetzt keinen Beweis oder Gültigkeitstest.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "accept_current",
+      "nativeStatus": "no_memory_needed",
+      "reason": "Eine weitere eigene Karte würde hier die sinnvolle Bilanzleistung nicht verbessern. Die schon vorhandenen Energiekerne genügen; die Entscheidung no_memory_needed bleibt eng auf diesen Ursprung beschränkt.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "accept_current",
+      "nativeStatus": "memory_required",
+      "reason": "Die neue Karte verdichtet genau die Brücke von t-v-Fläche zu Arbeit und Faktor1/2; die selbst erzeugte Herleitung samt Modellprüfung bleibt von korrektem Kartenabruf verschieden.",
+      "requiredChanges": []
+    }
+  ],
+  "cardReviews": [
+    {
+      "cardId": "physics_e_cov_023",
+      "decision": "accept_current",
+      "scientificCorrectness": "Die Formel mv²/2 stimmt in beiden Sprachvarianten.",
+      "languageEquivalence": "Beide tatsächlich gelesenen Front-/Rückseiten verlangen denselben begrenzten Abruf; Formeln und Voraussetzungen sind semantisch äquivalent.",
+      "originFit": "Alleinige Herkunft ist das bestehende Rechen-/Deutungsziel7ee; die neue Herleitung wird nicht als zusätzliche Herkunft angehängt.",
+      "promptAnswerFit": "Die jeweilige Rückseite beantwortet den begrenzten physikalischen Kern der Vorderseite.",
+      "recallBoundary": "Ein Formelabruf belegt weder Parameterdeutung noch Herleitung.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_024",
+      "decision": "accept_current",
+      "scientificCorrectness": "Bei annähernd konstantem g und festgelegtem Nullniveau gilt Epot=mgh; Änderungen mgΔh sind von der additiven Konstante unabhängig.",
+      "languageEquivalence": "Beide tatsächlich gelesenen Front-/Rückseiten verlangen denselben begrenzten Abruf; Formeln und Voraussetzungen sind semantisch äquivalent.",
+      "originFit": "Die einzige Herkunft6aff passt; kein Geschwindigkeits- oder Feldbegriff ist nötig.",
+      "promptAnswerFit": "Die jeweilige Rückseite beantwortet den begrenzten physikalischen Kern der Vorderseite.",
+      "recallBoundary": "Eigenständige Referenzwahl und Entkräftung von g=0 am Nullniveau bleiben Verständnisleistungen.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_027",
+      "decision": "accept_current",
+      "scientificCorrectness": "Die kompakte Erhaltungsformel ist im ausdrücklich konstantm-/zeitunabhängigen konservativen Herkunftskontext zutreffend. Eine allgemeine Energiegarantie bei zeitabhängigen äußeren Potenzialen wird hier nicht angenommen.",
+      "languageEquivalence": "Beide tatsächlich gelesenen Front-/Rückseiten verlangen denselben begrenzten Abruf; Formeln und Voraussetzungen sind semantisch äquivalent.",
+      "originFit": "Einzige Herkunft ist die LK-Herleitung e359; keine doppelte neue Zuordnung.",
+      "promptAnswerFit": "Die jeweilige Rückseite beantwortet den begrenzten physikalischen Kern der Vorderseite.",
+      "recallBoundary": "Skalarprodukt, Kettenregel und Prüfung der Bedingungen werden durch den Schlussformelabruf nicht gezeigt.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_028",
+      "decision": "accept_current",
+      "scientificCorrectness": "Null äußerer Gesamtkraftstoß impliziert gleiche Intervallgrenzwerte, nicht automatisch Konstanz im Innern. Die durchgehend verschwindende resultierende äußere Kraft liefert die stärkere Bedingung.",
+      "languageEquivalence": "Beide tatsächlich gelesenen Front-/Rückseiten verlangen denselben begrenzten Abruf; Formeln und Voraussetzungen sind semantisch äquivalent.",
+      "originFit": "Die Karte gehört zur qualitativen Gesamtimpulsbilanz839; die Differentialherleitung behält ihre separate Karte029.",
+      "promptAnswerFit": "Die jeweilige Rückseite beantwortet den begrenzten physikalischen Kern der Vorderseite.",
+      "recallBoundary": "Materialsystem und Bezugssystem selbst abzugrenzen sowie Rückstoß aus Drift zu erklären wird nicht durch Rezitation ersetzt.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_kinetic_energy_from_work",
+      "decision": "accept_current",
+      "scientificCorrectness": "Aus Ruhe und bei geradliniger konstanter resultierender Kraft gilt für die gewählte Bewegungsrichtung Δs=vt/2 und F_res=mv/t; das Produkt ist mv²/2. Der Faktor1/2 stammt aus der Dreiecksfläche.",
+      "languageEquivalence": "Beide tatsächlich gelesenen Front-/Rückseiten verlangen denselben begrenzten Abruf; Formeln und Voraussetzungen sind semantisch äquivalent.",
+      "originFit": "Die einzige neue Herkunft2d3 passt zur Brücke Arbeit/Fläche. Die Formelkarte023 bleibt unverändert ihrem bisherigen Ziel zugeordnet.",
+      "promptAnswerFit": "Die jeweilige Rückseite beantwortet den begrenzten physikalischen Kern der Vorderseite.",
+      "recallBoundary": "Die fertig gelieferte Kette ist ein Abrufkern; eine unabhängig selbst konstruierte Herleitung und ein frischer Graph bleiben gesondert nötig.",
+      "requiredChanges": []
+    }
+  ],
+  "visualizationReview": {
+    "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+    "assetSha256": "sha256:7d16a03948c13f1660a67ec748bda52f5cd0b2736c811e20447af710cc8ee77a",
+    "decision": "accept_current",
+    "inspection": "Tatsächliche Ansicht der1600×900-Datei und einer eigenständig im Browser mit360×203 erzeugten Ansicht.",
+    "scientificCorrectness": "Die Diagrammfläche beträgt(2s)(4m/s)/2=4m. Ein linearer Start aus Ruhe passt zur konstanten resultierenden Kraft am Wagen. Das Bild ist Lernhilfe; seine konkreten Daten werden nicht als unabhängige Schülerleistung gezählt.",
+    "directedQuantityArrow": "Der Kraftpfeil beginnt am schwarzen Körperpunkt, zeigt nach rechts und endet frei. Der orange Bezugsstrich benennt2N als eigene Kraftskala; der Alttext erklärt resultierende konstante Kraft und schematischen Ortsraum. Die Grafik behauptet keine reale Weglänge durch die Kraftpfeillänge.",
+    "readability": "Zahlen und Einheiten von Kraft, Fläche und Achsen bleiben bei360px lesbar. Keine bedeutungsändernde Kollision oder abgeschnittene Beschriftung beobachtet.",
+    "requiredChanges": []
+  },
+  "primarySourceCompatibilityReview": {
+    "decision": "accept_derivation_scope_compatibility",
+    "actualPrimaryPagesRead": [
+      "HE KC2024 PDF30: grafische Herleitung der kinetischen Formel im verbindlichen E.2-Themenfeld.",
+      "SL EP2023 PDF10: Herleitung aus Bewegungsgesetzen, zweitem Newtonschen Axiom und Arbeitsdefinition.",
+      "SN aktueller amtlicher Download SHAe797e1b1511f9d15e0dd11c15b53f9d4b72c4a2abff69876bb6f888c6ebed3ed PDF59/gedruckt47: LK11 Energieherleitungen."
+    ],
+    "reason": "Der elementare Arbeits-/Bewegungsnachweis mit beschrifteter t-v-Dreiecksfläche ist mit allen drei tatsächlich gelesenen Forderungen kompatibel; die sächsische Stelle schreibt keinen calculus-basierten Weg vor. Das liefert keine Vollfreigabe aller übrigen Länder oder der gesamten vorbestehenden Quellenlage."
+  },
+  "limitations": [
+    "Keine neue D-Blindstimme; das native D-Paar wird gesondert ausgeführt.",
+    "Die unveränderten Bestandsbilder der vier alten Ziele erhalten hier keine neue pauschale Pfeilrichtlinienfreigabe.",
+    "Die vollständig unveränderten Kartenkerne werden im exakten Kontext der jeweiligen Herkunftsziele beurteilt, nicht als autonome universelle Sätze.",
+    "Die bestehende Wagen-Summenbewertung ist in wagen-current-review.actual.json gesondert mit ihrem begrenzten Aussageumfang gebunden.",
+    "Keine menschliche Freigabe, ausgeführte Lernendenprüfung oder automatische Veränderung von Lernergebnissen."
+  ]
+}

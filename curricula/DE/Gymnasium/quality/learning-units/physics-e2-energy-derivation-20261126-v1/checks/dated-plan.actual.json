@@ -1,0 +1,23 @@
+{
+  "predecessorCommit": "284063239db536f4b765d700db3a39a357fd7f12",
+  "fixture": {
+    "path": "backend/src/test/resources/fixtures/e2-before-energy-20261126.json",
+    "sha256": "2298cec87f53581a0c19e423ebe8226db7ec12157c681cfbf4bc0dbb38a5660b"
+  },
+  "predecessorCapture": "Two native upserts of the entire Hessian G9 Sek II E.2 section at the preceding catalog. The stored blocks, scope fingerprints and revisions come from the repository rows.",
+  "oldGoalCounts": {
+    "GK": 29,
+    "LK": 30
+  },
+  "currentSectionIncludes": [
+    "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+    "e0085acf-af64-5c73-8abf-85a5bbfbdaa6"
+  ],
+  "nativeRegression": "ClaudeV1CompletionRouteIntegrationTest.storedE2SectionKeepsItsGoalsAfterTheEnergyAddition",
+  "results": {
+    "cases": 2,
+    "failures": 0,
+    "errors": 0
+  },
+  "outcome": "Both saved plans remained current, with byte-derived historical block content preserved before and after backup restoration."
+}

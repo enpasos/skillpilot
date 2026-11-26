@@ -1,0 +1,412 @@
+{
+  "reviewer": "Independent OpenAI Codex source/view implementation agent",
+  "startedAt": "2026-11-26T02:48:17.112412+00:00",
+  "completedAt": "2026-11-26T02:48:17.117709+00:00",
+  "independenceDisclosure": "Ich habe Quellenzuordnung, Anwendbarkeitsregistrierung und Sicht-/Generatorplätze von N implementiert. Für diese von mir verfassten Objekte erteile ich kein unabhängiges Quellen-/Projektionsurteil. Ich habe die fünf D-Texte, alle P-Körper einschließlich des neuen P-v2, Karten, Bilder und Aufgaben nicht verfasst. Ich las keine andere Reviewerantwort. K3 wurde getrennt als blinder Marker B allein an Kandidat und blind/ geprüft; Autorwerte und Markerabgleiche wurden nicht gelesen.",
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/REVIEW-FORMAT.md",
+      "sha256": "3836d7e1143e5e2b353e440675490fe2cfa574f2c0c1b080f84c6ef124fc3e71"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/whole-review-inputs.v1.json",
+      "sha256": "74f590c0fd61f915dcb2c4f0264442d12c157959295d956b47ddd8e1d8aa4fc8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/whole-review-inputs.v2.json",
+      "sha256": "33554eb136c00dc02c1bc127ef7cfbcaedaa4be016444e6052bbed1dce5a8297"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/learning-units/physics-e2-energy-derivation-20261126-v1/goal-reviews/positive-evidence.candidates.v2.json",
+      "sha256": "b8a93759cec10f252e6f4f3d3fe5b7a5365a5f1d0979673990f11e24a46f20c8"
+    }
+  ],
+  "descriptionReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Lageenergie gehört zum System Erde–Körper; das Nullniveau ist frei und nur mgΔh ist davon unabhängig.",
+        "essentialUnderstandingEn": "Gravitational potential energy belongs to the Earth-object system; the zero level is conventional and mgΔh is independent of it.",
+        "observablePerformanceDe": "System und Nullniveau wählen, positive oder negative mgh-Werte mit Einheiten berechnen und eine Änderung unter Bezugshöhenwechsel unverändert erklären.",
+        "observablePerformanceEn": "Choose a system and zero level, calculate signed mgh values with units and explain invariant energy change when the reference is shifted.",
+        "transferExpectationDe": "Eine neue Hebe-/Rampen-/Aufzugsituation mit anderem Nullniveau bearbeiten und Nullenergie von fehlender Gewichtskraft unterscheiden.",
+        "transferExpectationEn": "Handle a fresh lift/ramp context with another reference and distinguish zero energy from absent weight."
+      },
+      "rationale": "Der exakte DE/EN-Text beschreibt eine kohärente prüfbare Kompetenz mit dem oben benannten Verständnis. Die gegenwärtige Voraussetzungshülle wurde inhaltlich gelesen; Unterschiede zwischen Definition, Anwendung und eigener Herleitung bleiben sichtbar.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Ein verschwindender äußerer Gesamtkraftstoß auf dieselben Körper im gemeinsamen Inertialsystem erhält ihre vektorielle Gesamtimpulssumme an den Intervallgrenzen.",
+        "essentialUnderstandingEn": "Zero net external impulse on the same bodies in one inertial frame preserves their total momentum vector between interval endpoints.",
+        "observablePerformanceDe": "Körper, Zeitpunkte und äußere Bedingung benennen; qualitative Rückstoßrichtungen und den Einfluss ungleicher Massen aus der Bilanz begründen.",
+        "observablePerformanceEn": "Identify bodies, instants and external condition; explain recoil directions and unequal-mass effects from the momentum balance.",
+        "transferExpectationDe": "Beim driftenden Paar die Richtung der Impulsänderung von der unbestimmten Endbewegungsrichtung trennen; kein numerisches Geschwindigkeitsverhältnis voraussetzen.",
+        "transferExpectationEn": "For a drifting pair, separate momentum-change direction from undetermined final motion without requiring a numerical velocity ratio."
+      },
+      "rationale": "Der exakte DE/EN-Text beschreibt eine kohärente prüfbare Kompetenz mit dem oben benannten Verständnis. Die gegenwärtige Voraussetzungshülle wurde inhaltlich gelesen; Unterschiede zwischen Definition, Anwendung und eigener Herleitung bleiben sichtbar.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Newton II liefert mit dem Skalarprodukt mit v die kinetische Leistung; ein zeitunabhängiges konservatives Potenzial liefert den entgegengesetzten Term.",
+        "essentialUnderstandingEn": "Dotting Newton II with velocity gives kinetic power; a time-independent conservative potential supplies the opposite term.",
+        "observablePerformanceDe": "d(Ekin+U)/dt=0 selbst entwickeln, konstante Masse und Inertialsystem nennen und bei zusätzlicher Reibung den verletzten Schritt lokalisieren.",
+        "observablePerformanceEn": "Derive d(Ek+U)/dt=0, state constant mass and inertial frame, and locate the failed step when drag is added.",
+        "transferExpectationDe": "Die Herleitung auf ein frisches bereitgestelltes Potenzial und dessen zugängliche Bereiche anwenden; den Zusatzterm −b|v|² physikalisch deuten.",
+        "transferExpectationEn": "Apply the proof to a fresh supplied potential and accessible region, and interpret the extra term −b|v|²."
+      },
+      "rationale": "Der exakte DE/EN-Text beschreibt eine kohärente prüfbare Kompetenz mit dem oben benannten Verständnis. Die gegenwärtige Voraussetzungshülle wurde inhaltlich gelesen; Unterschiede zwischen Definition, Anwendung und eigener Herleitung bleiben sichtbar.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Im reibungsfrei idealisierten geschlossenen mechanischen System bleibt die Summe gleich, während die Energieformen wechseln; Energie bestimmt keinen Geschwindigkeitssinn.",
+        "essentialUnderstandingEn": "In a frictionless idealized closed mechanical system the total stays constant while energy forms exchange; energy does not determine velocity direction.",
+        "observablePerformanceDe": "System und Nullniveau festlegen, Umkehr- und Gleichgewichtslagen zuordnen und einfache Teilenergien sowie Geschwindigkeitsbeträge berechnen.",
+        "observablePerformanceEn": "Choose a system and zero, characterize turning/equilibrium positions, and calculate simple component energies and speeds.",
+        "transferExpectationDe": "Zwischen horizontalem Federoszillator und höhenabhängigem Pendel übertragen und gleiche Energie mit zwei Bewegungsrichtungen vereinbaren.",
+        "transferExpectationEn": "Transfer between a horizontal spring oscillator and a height-based pendulum and reconcile equal energy with opposite directions."
+      },
+      "rationale": "Der exakte DE/EN-Text beschreibt eine kohärente prüfbare Kompetenz mit dem oben benannten Verständnis. Die gegenwärtige Voraussetzungshülle wurde inhaltlich gelesen; Unterschiede zwischen Definition, Anwendung und eigener Herleitung bleiben sichtbar.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "none"
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "keep",
+      "proposedDescriptionDe": null,
+      "proposedDescriptionEn": null,
+      "understandingEvidence": {
+        "essentialUnderstandingDe": "Die kinetische Energieformel entsteht aus resultierender Beschleunigungsarbeit und derselben gleichmäßig beschleunigten Bewegung; der Halbierungsfaktor stammt aus der Dreiecksfläche.",
+        "essentialUnderstandingEn": "The kinetic-energy formula follows from net-force work and the same uniformly accelerated motion; the half factor comes from the triangle area.",
+        "observablePerformanceDe": "Ohne fertige Formel W=FΔs mit F=ma und s=vt/2 verknüpfen, Hilfsgrößen eliminieren, Achsen/Fläche deuten und das Quadratgesetz begründen.",
+        "observablePerformanceEn": "Without assuming the final formula, connect W=FΔs, F=ma and s=vt/2, eliminate auxiliary quantities, interpret axes/area and explain square dependence.",
+        "transferExpectationDe": "Eine frische linke oder rechte Bewegung mit konsistenten Vorzeichen herleiten und bei Anfangsgeschwindigkeit die Grenze der Dreiecksherleitung statt die Gültigkeit der Energieformel benennen.",
+        "transferExpectationEn": "Derive a fresh leftward/rightward motion with consistent signs and identify the triangle-proof boundary for nonzero initial speed without rejecting the energy formula."
+      },
+      "rationale": "Der exakte DE/EN-Text beschreibt eine kohärente prüfbare Kompetenz mit dem oben benannten Verständnis. Die gegenwärtige Voraussetzungshülle wurde inhaltlich gelesen; Unterschiede zwischen Definition, Anwendung und eigener Herleitung bleiben sichtbar.",
+      "evidenceProfileContract": "positive-understanding-evidence-v2",
+      "evidenceProfileRecommendation": "create"
+    }
+  ],
+  "profileReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "keep",
+      "reason": "Beide Fälle verlangen eine frische System-/Referenzentscheidung und eine unabhängige Änderung über denselben Höhenunterschied. m g (h2−h1) ist gegen Addition derselben Referenzkonstante invariant; ein negativer Energiewert ist kein negatives g. Keine falschen vorgegebenen Zahlenwerte. DE/EN entsprechen sich; zwei unabhängige Demonstrationen sowie frische Variation und Transfer passen.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "keep",
+      "reason": "Astronautenfall: Δp_A=−Δp_Paket bestimmt die Änderung nach links, ohne ein negatives End-p_A zu erzwingen. Federwagen aus Ruhe: p1=−p2 und |v|=|p|/m machen den leichteren Wagen schneller. Vernachlässigbare Feder-/Außenimpulse begründen Näherung statt exakter Messgleichheit. Beide Sprachfassungen halten System, gemeinsame Zeit und Grenze offen; kein F=ma-Anwenden nötig.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "keep",
+      "reason": "Die drei Fälle sind wissenschaftlich konsistent: m v·dv/dt=d(m|v|²/2)/dt bei konstanter Masse; für zeitunabhängiges U hebt ∇U·v die konservative Leistung auf. Zugängliche Orte erfüllen U≤E, Umkehrpunkte Ekin=0. Bei v=0 ist momentane Leistung null, nicht notwendig Kraft null. Zusätzliche −b v liefert −b|v|²≤0. Zwei-/eindimensionales bereitgestelltes Potenzial und Dämpfung sind unabhängige Transfers; drei Demonstrationen angemessen. Keine zusätzliche Pflicht zur elementaren Aus-der-Ruhe-Herleitung einschmuggeln.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "keep",
+      "reason": "Eigenkontrolle der exakten Zahlen: Feder E=20·0,1²/2=0,1 J; bei 0,06 m U=0,036 J, K=0,064 J, |v|=sqrt(0,256)=0,505964 m/s; bei x=0 sqrt(0,4)=0,632456 m/s. Pendel E=0,2·10·0,05=0,1 J; bei 0,02 m U=0,04 J, K=0,06 J, |v|=sqrt(0,6)=0,774597 m/s; unten 1 m/s. Richtungsmehrdeutigkeit und Systemgrenzen stimmen in DE/EN. Andere Potenzialform trägt den unabhängigen Transfer.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "keep",
+      "reason": "Neue P-v2 geprüft ohne eigene Autorenschaft: (m v/t)(v t/2)=m v²/2; dreifacher Betrag gibt Faktor9, halber Faktor1/4. Rechts-positive linke Bewegung liefert negative F,a,v und negative Verschiebungsfläche, deren Produkt positive Arbeit ergibt; links-positive Wahl ist gleichwertig. Bei v0≠0 scheitern der Ursprungsstart der Linie und v=at, nicht die allgemeine Energieformel. Frisch skaliertes Diagramm und Diagnose des geänderten Anfangswerts verlangen mehr als bloße Wiederholung. Beide Sprachen sowie die zwei unabhängigen Demonstrationen sind angemessen.",
+      "requiredChanges": []
+    }
+  ],
+  "atomicityReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "semanticAtomic": true,
+      "reason": "Eine mgh-Anwendung mit ihrer Referenzdeutung; keine getrennte Feldkompetenz.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "semanticAtomic": true,
+      "reason": "Eine qualitative gerichtete Vorher-Nachher-Bilanz; Systembedingung und Rückstoßbegründung tragen dieselbe Kompetenz.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "semanticAtomic": true,
+      "reason": "Ein physikalischer Erhaltungssatz wird hergeleitet und auf seinen Gültigkeitsbereich begrenzt; Beweisschritte sind zusammenhängende Teilhandlungen.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "semanticAtomic": true,
+      "reason": "Eine Energieaustauschbilanz an einer Schwingung, qualitativ und einfach quantitativ; Betrag/Richtung sind die physikalische Deutung derselben Bilanz.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "semanticAtomic": true,
+      "reason": "Eine zusammenhängende Herleitung verbindet Ansatz, Kinematik und Grafik; Halbierungsfaktor und Quadratgesetz sind die Bedeutung dieses einen Resultats.",
+      "independentlyAssessableFacets": [],
+      "suggestedSplit": []
+    }
+  ],
+  "semanticKindReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "semanticKind": "curricularAtomic",
+      "reason": "Eine mgh-Anwendung mit ihrer Referenzdeutung; keine getrennte Feldkompetenz."
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "semanticKind": "curricularAtomic",
+      "reason": "Eine qualitative gerichtete Vorher-Nachher-Bilanz; Systembedingung und Rückstoßbegründung tragen dieselbe Kompetenz."
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "semanticKind": "curricularAtomic",
+      "reason": "Ein physikalischer Erhaltungssatz wird hergeleitet und auf seinen Gültigkeitsbereich begrenzt; Beweisschritte sind zusammenhängende Teilhandlungen."
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "semanticKind": "curricularAtomic",
+      "reason": "Eine Energieaustauschbilanz an einer Schwingung, qualitativ und einfach quantitativ; Betrag/Richtung sind die physikalische Deutung derselben Bilanz."
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "semanticKind": "curricularAtomic",
+      "reason": "Eine zusammenhängende Herleitung verbindet Ansatz, Kinematik und Grafik; Halbierungsfaktor und Quadratgesetz sind die Bedeutung dieses einen Resultats."
+    },
+    {
+      "goalId": "feb70838-931c-4b45-b9a9-930605d93efa",
+      "semanticKind": "curricularArea",
+      "reason": "Der Energie-Elternknoten gruppiert mehrere eigene Ziele; keine zusätzliche atomare Lernleistung."
+    },
+    {
+      "goalId": "0cf2a5b0-8660-578d-8316-2b8a50fbdff7",
+      "semanticKind": "practiceAssessment",
+      "reason": "Eigene numerische Anwendungsaufgabe mit Rubrik, kein zusätzliches Verständnisziel."
+    },
+    {
+      "goalId": "e0085acf-af64-5c73-8abf-85a5bbfbdaa6",
+      "semanticKind": "practiceAssessment",
+      "reason": "Eigene Herleitungsaufgabe mit Punktwerten; prüft das neue Ziel, ohne es fachlich zu verdoppeln."
+    }
+  ],
+  "prerequisiteReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "accept_current",
+      "reason": "722857cf liefert die qualitative Unterscheidung der Energieformen und über seine Hülle die physikalische Orientierung; a6469c01 liefert Einsetzen samt Variablen-/Zahlenbehandlung. Die Zielkompetenz selbst führt mgh, Bezugshöhe und g als Parameter ein. Kinetische Energie ist dafür kein vorbestehender Bedarf; keine künstliche Formelanwendungskante nötig.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "accept_current",
+      "reason": "a0aaedcb trennt Kräfte auf zwei Wechselwirkungspartnern von einer Kräftebilanz; 53afbda1 liefert p=mv und vorzeichenbehaftete Summe zum gemeinsamen Zeitpunkt. Die frühere eigene Anwendung von F=ma wird weder zum Gleichsetzen der Endpunktsummen noch zur qualitativen Massenbegründung benutzt. Das Gesetz und die äußere Kraftstoßbedingung sind Inhalt des Ziels. Die separate Herleitung aus Newton II/III wird hier nicht behauptet.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "accept_current",
+      "reason": "Die vollständige Hülle enthält Inertialsystem, Newton II samt Anwendung über Arbeit/Energie, allgemeine Potenzialkompetenz, Skalarprodukt, Kettenregel und symbolisches Umformen. Der explizit neue 7eeff2de-Zweig stellt den kinetischen Term nach der Entfernung der alten künstlichen Lageenergiekante wieder bereit. Die elementare Energieherleitung ist kein notwendiger Vorgänger der allgemeinen Leistungsherleitung. ∇U und sein Gebrauch sind hier Teil des eingeführten konservativen Modells; ein nicht bereitgestelltes beliebiges Gradientenberechnen darf daraus nicht als bereits beherrschte zusätzliche Kompetenz angenommen werden.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "accept_current",
+      "reason": "fcf8580c und seine Hülle liefern Auslenkung, Umkehr-/Gleichgewichtslage und harmonisches Modell; Lageenergie, neuer expliziter kinetischer Vorgänger und Quadratwurzeln tragen die einfache quantitative Bilanz. Die Teilenergiefunktionen werden im Federfall gegeben. Eine eigene Herleitung der kinetischen Energie oder Integralrechnung ist für diese Anwendung nicht nötig.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "accept_current",
+      "reason": "c1c71daa liefert Arbeit als Energieänderung mit Systemgrenze und über seine Hülle Newton II-Anwendung und Bezugssystem. 262f807a trägt die Beziehungen derselben gleichmäßig beschleunigten Bewegung, einschließlich Flächenkompetenz und Dreiecksinhalt in seiner Hülle. 2c4830e6 ist für das eigenständige Eliminieren von a/t im symbolischen Beweis nötig. Das fertige Formelanwendungsziel ist kein echter vorheriger Erwerbsbedarf. Die mit Arbeit geerbte Trigonometrie wird im geradlinigen Beweis selbst nicht verwendet, ist aber keine zusätzliche neue direkte N-Kante.",
+      "unnecessaryCurrentRequires": [],
+      "missingRequires": []
+    }
+  ],
+  "memoryGoalReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "decision": "accept_current",
+      "reason": "Die vorhandene mgh-/Δh-Karte erinnert die Bezugs- und Systemregel; konkrete Systemwahl und Referenztransfer bleiben eigenständige Nachweise.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "decision": "accept_current",
+      "reason": "Die vorhandene Karte trennt gleiches Gesamt-p an Intervallgrenzen von fortlaufender Konstanz. Qualitative Rückstoßanalyse und Systemwahl werden dadurch nicht ersetzt.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "decision": "accept_current",
+      "reason": "Der bestehende knappe konservative Erhaltungssatz kann als Abrufkern bleiben. Ableitungsweg, Zeitunabhängigkeit und Annahmen werden im aktuellen Verständnisziel und P eigenständig geprüft.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "decision": "accept_current",
+      "reason": "Für die variable Energiebilanz ist kein neuer eigenständiger Kartenkern nötig; Fälle und Nullniveauwahl verlangen Verständnis statt ein zusätzliches festes Antwortmuster.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "decision": "accept_current",
+      "reason": "Der neue zweisprachige Abrufkern verbindet Wegfläche mit Arbeit. Er passt zum neuen Ursprung. Das Aufsagen dieser Kette belegt weder frisches Herleiten noch Diagramm- oder Modelltransfer. Der Inertialkontext steht explizit im zugehörigen Verständnisziel; die Karte ist ein enger Abruf innerhalb dieses Zielkontexts.",
+      "requiredChanges": []
+    }
+  ],
+  "cardReviews": [
+    {
+      "cardId": "physics_e_cov_023",
+      "decision": "accept_current",
+      "scientificCorrectness": "Ekin=mv²/2 ist im klassischen Kontext richtig und bleibt ausschließlich beim unveränderten Anwendungsziel 7eeff2de. Kein Beweis wird aus diesem Formelabruf abgeleitet.",
+      "languageEquivalence": "Beide exakten Sprachfassungen wurden gelesen und tragen denselben fachlichen Abrufkern.",
+      "originFit": "Die im Paket genannten originGoalIds passen; zusätzliche Ursprünge aus bloßer Voraussetzungserreichbarkeit werden nicht ergänzt.",
+      "promptAnswerFit": "Frage und Antwort passen für den engen Abrufkern im zugehörigen Verständnisziel.",
+      "recallBoundary": "Kartenpraxis und Verified Recall weisen den Abruf nach; Systemwahl, frisches Rechnen oder selbstständiges Herleiten müssen getrennt gezeigt werden.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_024",
+      "decision": "accept_current",
+      "scientificCorrectness": "Beide Antworten benennen Körper–Erde, annähernd konstantes g, gewähltes Nullniveau und invariante mgΔh-Änderung. Entspricht exakt dem Lageenergie-Ursprung.",
+      "languageEquivalence": "Beide exakten Sprachfassungen wurden gelesen und tragen denselben fachlichen Abrufkern.",
+      "originFit": "Die im Paket genannten originGoalIds passen; zusätzliche Ursprünge aus bloßer Voraussetzungserreichbarkeit werden nicht ergänzt.",
+      "promptAnswerFit": "Frage und Antwort passen für den engen Abrufkern im zugehörigen Verständnisziel.",
+      "recallBoundary": "Kartenpraxis und Verified Recall weisen den Abruf nach; Systemwahl, frisches Rechnen oder selbstständiges Herleiten müssen getrennt gezeigt werden.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_027",
+      "decision": "accept_current",
+      "scientificCorrectness": "Die knappe Erhaltungsregel ist im genannten konservativen Modellkontext fachlich passend und DE/EN äquivalent. Sie ruft die Aussage ab, nicht deren Herleitung oder die Prüfung expliziter Zeitabhängigkeit.",
+      "languageEquivalence": "Beide exakten Sprachfassungen wurden gelesen und tragen denselben fachlichen Abrufkern.",
+      "originFit": "Die im Paket genannten originGoalIds passen; zusätzliche Ursprünge aus bloßer Voraussetzungserreichbarkeit werden nicht ergänzt.",
+      "promptAnswerFit": "Frage und Antwort passen für den engen Abrufkern im zugehörigen Verständnisziel.",
+      "recallBoundary": "Kartenpraxis und Verified Recall weisen den Abruf nach; Systemwahl, frisches Rechnen oder selbstständiges Herleiten müssen getrennt gezeigt werden.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_cov_028",
+      "decision": "accept_current",
+      "scientificCorrectness": "Jext=0 impliziert gleiches P an t1/t2, aber keine Konstanz dazwischen; überall verschwindende resultierende Außenkraft ist die stärkere hinreichende Bedingung. Genau diese Unterscheidung steht in beiden Sprachen.",
+      "languageEquivalence": "Beide exakten Sprachfassungen wurden gelesen und tragen denselben fachlichen Abrufkern.",
+      "originFit": "Die im Paket genannten originGoalIds passen; zusätzliche Ursprünge aus bloßer Voraussetzungserreichbarkeit werden nicht ergänzt.",
+      "promptAnswerFit": "Frage und Antwort passen für den engen Abrufkern im zugehörigen Verständnisziel.",
+      "recallBoundary": "Kartenpraxis und Verified Recall weisen den Abruf nach; Systemwahl, frisches Rechnen oder selbstständiges Herleiten müssen getrennt gezeigt werden.",
+      "requiredChanges": []
+    },
+    {
+      "cardId": "physics_e_kinetic_energy_from_work",
+      "decision": "accept_current",
+      "scientificCorrectness": "Aktuelle LaTeX-Fassungen beider Sprachen gelesen. Aus Ruhe, konstante resultierende Kraft, Gerade und konstante Masse tragen s=vt/2 und F=mv/t; ihr Produkt ist mv²/2. Der Halbierungsfaktor wird dem Dreieck zugeordnet. Nur der neue Herleitungsursprung, kein irrtümlicher Bezug zum Formelanwendungsziel.",
+      "languageEquivalence": "Beide exakten Sprachfassungen wurden gelesen und tragen denselben fachlichen Abrufkern.",
+      "originFit": "Die im Paket genannten originGoalIds passen; zusätzliche Ursprünge aus bloßer Voraussetzungserreichbarkeit werden nicht ergänzt.",
+      "promptAnswerFit": "Frage und Antwort passen für den engen Abrufkern im zugehörigen Verständnisziel.",
+      "recallBoundary": "Kartenpraxis und Verified Recall weisen den Abruf nach; Systemwahl, frisches Rechnen oder selbstständiges Herleiten müssen getrennt gezeigt werden.",
+      "requiredChanges": []
+    }
+  ],
+  "assessmentReviews": [
+    {
+      "goalId": "0cf2a5b0-8660-578d-8316-2b8a50fbdff7",
+      "decision": "accept_current",
+      "reason": "Unveränderte Aufgabe und Rubrik gelesen: K=0,5·120·3²=540J; ΔU=120·10·2=2400J; vier tragende Seile geben F=1200/4=300N, Zugweg8m und gleiche ideale Arbeit2400J. Die neue direkte kinetische Voraussetzung ist fachlich nötig für Teil1 und ersetzt den verlorenen transitiven Zugang. Das Gesamtbestehen bei10/16 beweist nicht zwingend jeden einzelnen der drei abgedeckten Zweige; eine solche zusätzliche Ergebnisbehauptung wird nicht erteilt.",
+      "requiredChanges": []
+    },
+    {
+      "goalId": "e0085acf-af64-5c73-8abf-85a5bbfbdaa6",
+      "decision": "accept_current",
+      "reason": "Separates blindes Marker-B-Urteil liegt unverändert unter k3/markers/v1-marker-b.actual.json. Kandidat, beide Sprachen, alle18 Abgabepaare und vier tragende Leistungen wurden unabhängig bewertet. Dieses Inhaltsurteil nimmt keinen Markerabgleich vorweg.",
+      "requiredChanges": []
+    }
+  ],
+  "imageReviews": [
+    {
+      "goalId": "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "path": "app/public/assets/goal-visualizations/physik/6affc2ea-ecd2-4fcd-8877-3ffa15b0425b/6affc2ea-ecd2-4fcd-8877-3ffa15b0425b.jpg",
+      "sha256": "d6000a3831a9bdae9fd5e15104335403801332e92219027996961dab74630692",
+      "inspectedOriginal": true,
+      "inspectedAt360Pixels": true,
+      "decision": "retained_with_limitations",
+      "reason": "Unverändertes Bestandsbild in Originalgröße und 360 px tatsächlich angesehen; keine neue Herstellung oder neue umfassende Pfeilrichtlinienfreigabe behauptet."
+    },
+    {
+      "goalId": "839ecc8f-3a60-418b-bc92-64bfeef33824",
+      "path": "app/public/assets/goal-visualizations/physik/839ecc8f-3a60-418b-bc92-64bfeef33824/839ecc8f-3a60-418b-bc92-64bfeef33824.jpg",
+      "sha256": "c16e195193a4966f8dd57f2f0c1309c0d89e6348f136b20ae9e7ee0782aa82fe",
+      "inspectedOriginal": true,
+      "inspectedAt360Pixels": true,
+      "decision": "retained_with_limitations",
+      "reason": "Unverändertes Bestandsbild in Originalgröße und 360 px tatsächlich angesehen; keine neue Herstellung oder neue umfassende Pfeilrichtlinienfreigabe behauptet."
+    },
+    {
+      "goalId": "e359f8bb-6106-44aa-9edf-694528d2d2a9",
+      "path": "app/public/assets/goal-visualizations/physik/e359f8bb-6106-44aa-9edf-694528d2d2a9/e359f8bb-6106-44aa-9edf-694528d2d2a9.jpg",
+      "sha256": "1d02441874144d344bb78a19ea986c4d9b96f5b44fa017e6c0ad458bccf0938d",
+      "inspectedOriginal": true,
+      "inspectedAt360Pixels": true,
+      "decision": "retained_with_limitations",
+      "reason": "Unverändertes Bestandsbild in Originalgröße und 360 px tatsächlich angesehen; keine neue Herstellung oder neue umfassende Pfeilrichtlinienfreigabe behauptet."
+    },
+    {
+      "goalId": "78cf6eff-b3bc-5444-9ef8-5d39dae8d17d",
+      "path": "app/public/assets/goal-visualizations/physik/78cf6eff-b3bc-5444-9ef8-5d39dae8d17d/78cf6eff-b3bc-5444-9ef8-5d39dae8d17d.jpg",
+      "sha256": "3aa332866765874bde5880fe0c77bff077f5efcd877323c57209be69209b7e9b",
+      "inspectedOriginal": true,
+      "inspectedAt360Pixels": true,
+      "decision": "retained_with_limitations",
+      "reason": "Unverändertes Bestandsbild in Originalgröße und 360 px tatsächlich angesehen; keine neue Herstellung oder neue umfassende Pfeilrichtlinienfreigabe behauptet."
+    },
+    {
+      "goalId": "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b",
+      "path": "app/public/assets/goal-visualizations/physik/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b/2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b.jpg",
+      "sha256": "7d16a03948c13f1660a67ec748bda52f5cd0b2736c811e20447af710cc8ee77a",
+      "inspectedOriginal": true,
+      "inspectedAt360Pixels": true,
+      "decision": "accept_current",
+      "reason": "Neues Bild tatsächlich in 1600×900 und 360 px betrachtet: Kraftpfeil beginnt am schwarzen Punkt des Wagens, Spitze endet frei; orange 2-N-Klammer gibt einen eigenen Kraftmaßstab. Graphachsen v(m/s), t(s), Endpunkt (2s,4m/s) und Dreiecksfläche Δs=4m sind richtig und bei 360 px lesbar. Ruhige freundliche Zeichnung, keine dekorativen Strahlen. F steht im erklärten konstant-resultierenden Kontext des Ziels."
+    }
+  ],
+  "limitations": [
+    "Keine unabhängige Freigabe der von mir implementierten amtlichen Zuordnungen, Anwendbarkeit oder Sichtplätze; sie benötigen getrennte Prüfung.",
+    "V2 ist noch kein finaler nativer D-Bundle-Stand nach K3-Einfügung. Eine spätere begrenzte genaue Kontextbestätigung ist erforderlich; keine fiktive automatische Übertragung.",
+    "Bestandsbild e359 ist bei360px zu dicht für vollständige Prosalektüre. Das unveränderte Lageenergiebild verwendet einen freistehenden g-Marker ohne ausdrücklich getrennten Punkt-/Vektormaßstab. Diese Grenzen werden nicht als neue Pfeilrichtlinienkonformität freigegeben; das neue Herleitungsbild wurde aktuell vollständig geprüft.",
+    "Die allgemeine LK-Herleitung verwendet den bereitgestellten Gradienten-/Potenzialzusammenhang. Die Hülle belegt keine selbstständige Beherrschung beliebiger mehrdimensionaler Gradientenberechnungen.",
+    "Die bestehende Wagenaufgabe hat einen Summenpass und daher keinen separaten Mindestnachweis für jedes coveredGoalId.",
+    "Keine echten Lernendenresultate, menschliche Freigabe oder reale Host-Akzeptanz aus dieser synthetischen Inhaltsprüfung."
+  ]
+}

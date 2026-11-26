@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "task": "Task N round-a reviewer exposure disclosure",
+  "reviewerRole": "independent description reviewer A, stopped before scoring",
+  "reviewInputFingerprint": "sha256:281ee90c0c0840b3edc083d53b0d1eb80de91ec281c0e693fb5ab13fccec47d4",
+  "blindReviewCompleted": false,
+  "eligibleAsBlindFirstPass": false,
+  "exposure": {
+    "file": "description-batch/round-a/batches/physics-e2-energy-derivation-description-20261126-v1-first-pass-a.batch-001.input.jsonl",
+    "cause": "The supplied batch embeds full evidenceProfile metadata envelopes. Reading the authorized batch with cat surfaced prior-review metadata, including final P reasons, before the reviewer filtered the fields.",
+    "fieldsVisible": [
+      "goal.reviewContext.evidenceProfile.reason",
+      "goal.reviewContext.evidenceProfile.reviewer",
+      "goal.reviewContext.evidenceProfile.reviewId",
+      "goal.reviewContext.evidenceProfile.reviewInputFingerprint"
+    ],
+    "reasonTextConfirmedVisibleForGoalIds": [
+      "6affc2ea-ecd2-4fcd-8877-3ffa15b0425b",
+      "2d3f849e-20b1-5b3e-90d0-63d98c6b2b1b"
+    ],
+    "qualification": "The tool output was truncated; this note identifies the two prior-reason texts confirmed visible rather than asserting that other embedded metadata was inaccessible. No peer or previous review files were opened."
+  },
+  "action": "The coordinator was notified immediately. At the coordinator's instruction, review work stopped without scores, decisions, description records, positive-evidence findings, atomicity findings, or card findings. A sanitized input and a fresh reviewer are required for a strict blind pass.",
+  "reviewAuthority": "ai_candidate"
+}
