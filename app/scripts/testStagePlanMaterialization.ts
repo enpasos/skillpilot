@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict'
-import { mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { dirname, resolve } from 'node:path'
 import { createHash } from 'node:crypto'
@@ -136,6 +136,21 @@ try {
   assert(indexed.prerequisiteOnlyReferences.every(claim => claim.goalId === 'math:support'))
   assert(!indexed.placements.some(item => item.goalId === 'support'), 'Support-node position does not become a learning placement.')
   assert(indexed.prerequisiteOnlyReferences.every(claim => !Object.hasOwn(claim, 'placementBasis')))
+  const blockedBatch = fixture()
+  const blockedResult = blockedBatch.build()
+  const [firstOutput, secondOutput] = [...blockedResult.artifacts.keys()]
+  const extensionView = JSON.parse(blockedResult.artifacts.get(secondOutput)!)
+  extensionView.$schema = 'https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json'
+  extensionView.viewFormatVersion = '1.3'
+  extensionView.electionGroups = []
+  blockedBatch.write(secondOutput, extensionView)
+  const protectedBytes = readFileSync(resolve(blockedBatch.root, secondOutput), 'utf8')
+  assert.throws(() => applyStagePlanMaterialization(blockedBatch.root, blockedResult, 'write'), /composition view format 1\.3 is unsupported/)
+  assert(!existsSync(resolve(blockedBatch.root, firstOutput)), 'An invalid second destination must prevent writing the first output.')
+  assert(!existsSync(resolve(blockedBatch.root, STAGE_PLAN_INDEX_PATH)), 'An invalid view destination must prevent writing the index.')
+  assert.equal(readFileSync(resolve(blockedBatch.root, secondOutput), 'utf8'), protectedBytes)
+  negatives++
+
   const legacyPath = `${COMPOSITION_VIEW_DIRECTORY}/physik/unowned-national.view.json`
   value.write(legacyPath, { unowned: 'retained bytes' })
   const legacyBytes = readFileSync(resolve(value.root, legacyPath), 'utf8')

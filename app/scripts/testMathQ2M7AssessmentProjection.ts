@@ -4,6 +4,7 @@ import { resolve } from 'node:path'
 import { collectCompositionProjectionRoleGoalIds } from '../src/utils/authoring/compositionViewAuthoring'
 import { loadGoalBookBuildInputs } from './goalBookModel'
 import { loadVerifiedPrerequisiteReductionContext } from './prerequisiteReductionProof'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 
 const root = resolve(import.meta.dirname, '../..')
 const canonicalPath = resolve(root, 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json')
@@ -93,6 +94,7 @@ for (const filename of readdirSync(viewDirectory).filter((name) => name.endsWith
     rootNodes: Parameters<typeof collectCompositionProjectionRoleGoalIds>[0]
   }
   if (view.landscapeId !== landscapeId || !['SekII', 'CrossStage'].includes(view.scope.stage ?? '') || !['GK', 'LK'].includes(view.scope.courseProfile ?? '')) continue
+  assertSupportedCompositionViewFormat(view, filename)
   viewCount++
   const { targetGoalIds, prerequisiteOnlyGoalIds } = collectCompositionProjectionRoleGoalIds(view.rootNodes, byId)
   for (const exam of exams) {

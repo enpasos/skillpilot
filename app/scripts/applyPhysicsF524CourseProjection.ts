@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto'
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { basename, resolve } from 'node:path'
+import { assertSupportedCompositionViewFormat } from '../src/utils/legacyCurriculumFormats'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type JsonRecord = Record<string, any>
@@ -89,6 +90,7 @@ for (const { name, path, view } of physicsViews) {
   const expected = expectedViewNameSet.has(name)
 
   if (expected) {
+    const before = readFileSync(absolute(path), 'utf8')
     if (courseProfile !== 'GK') throw new Error(`${name}: expected GK course profile`)
     const containers = locateConservationChildren(view)
     if (containers.length !== 1) {
@@ -106,6 +108,7 @@ for (const { name, path, view } of physicsViews) {
       ) throw new Error(`${name}: unexpected direct f524 override shape`)
       alreadyCurrent += 1
     } else {
+      assertSupportedCompositionViewFormat(view, path)
       const children = containers[0]
       const subtreeIndex = children.findIndex((entry) =>
         entry.kind === 'canonicalSubtree' && entry.goalId === conservationSubtreeId)
@@ -120,8 +123,8 @@ for (const { name, path, view } of physicsViews) {
       || finalDirectEntries[0].projectionRole !== 'prerequisiteOnly'
     ) throw new Error(`${name}: failed to materialize exact prerequisite-only override`)
 
-    const before = readFileSync(absolute(path), 'utf8')
-    const after = serializeJson(view)
+    // A current override needs no rewrite, including in an extension view.
+    const after = directEntries.length === 1 ? before : serializeJson(view)
     beforeDigests[name] = sha256(before)
     afterDigests[name] = sha256(after)
     outputs.set(path, after)
