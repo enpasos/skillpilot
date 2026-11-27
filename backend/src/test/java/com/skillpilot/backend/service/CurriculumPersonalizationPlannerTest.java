@@ -1554,10 +1554,6 @@ class CurriculumPersonalizationPlannerTest {
 
         for (var option : plan.options()) {
             var stored = SubjectExtensionScope.storedValue(option.scopeValue());
-            SubjectExtensionScope.validateCockpitChoice(Map.of(EMBER_ID, Map.of(SubjectExtensionScope.KEY, stored)), option);
-            org.assertj.core.api.Assertions.assertThatThrownBy(() -> SubjectExtensionScope.validateCockpitChoice(
-                    Map.of(COBALT_ID, Map.of(SubjectExtensionScope.KEY, stored)), option))
-                    .isInstanceOf(IllegalArgumentException.class);
             settings.get(EMBER_ID).put(SubjectExtensionScope.KEY, stored);
             var completed = CurriculumPersonalizationPlanner.plan(ROOT_ID, catalog, offerings, settings);
             assertThat(completed.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);

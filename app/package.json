@@ -145,7 +145,7 @@
     "test:package-goal-source-evidence": "tsx scripts/testPackageGoalSourceEvidence.ts",
     "test:goal-source-rationale-deployment-smoke": "tsx scripts/testGoalSourceRationaleDeploymentSmoke.ts",
     "validate:view-filters": "tsx scripts/validateViewFilters.ts",
-    "validate:composition-views": "tsx scripts/validateCompositionViews.ts",
+    "validate:composition-views": "tsx --test scripts/testCatalogCompositionViewExtensions.ts && tsx scripts/validateCompositionViews.ts",
     "validate:learner-goal-selection": "tsx scripts/validateLearnerGoalSelection.ts",
     "check:source-landscape-registry": "tsx scripts/checkSourceLandscapeRegistry.ts",
     "docs:compendia:web": "python3 ../scripts/build_compendia.py --web-and-tex",

@@ -149,25 +149,22 @@ class SrsCardRulesTest {
     }
 
     @Test
-    void explicitSubjectChoiceExcludesOnlyCardsWithNoCountedOrigin() {
+    void explicitSubjectChoiceExcludesOnlyCardsWhoseOriginsWereAllRemoved() {
         SrsCard mixed = card("mixed", "regular", "extension");
-        SrsCard extension = card("extension-only", "extension", "prerequisite-only");
+        SrsCard extension = card("extension-only", "extension", "other-extension");
         SrsCard crossSubject = card("cross-subject", "outside", "another-subject");
+        SrsCard outside = card("outside", "extension", "outside");
         SrsCard noOrigin = card("no-origin");
-        List<SrsCard> deck = List.of(extension, mixed, crossSubject, noOrigin);
+        List<SrsCard> deck = List.of(extension, mixed, crossSubject, outside, noOrigin);
         SrsCardRelease withoutChoice = new SrsCardRelease(Set.of("regular", "another-subject"), Set.of("regular"));
-        SrsCardRelease baseChoice = withoutChoice.forExplicitExtensions();
+        SrsCardRelease baseChoice = withoutChoice.excludingRemovedOrigins(Set.of("extension", "other-extension"));
 
         assertThat(withoutChoice.countedCards(deck)).containsExactlyElementsOf(deck);
-        assertThat(withoutChoice.isReleased(extension)).isTrue();
-        assertThat(withoutChoice.isReleased(noOrigin)).isTrue();
-        assertThat(baseChoice.countedCards(deck)).containsExactly(mixed, crossSubject);
+        assertThat(baseChoice.countedCards(deck)).containsExactly(mixed, crossSubject, outside, noOrigin);
         assertThat(baseChoice.isReleased(extension)).isFalse();
-        assertThat(baseChoice.isReleased(noOrigin)).isFalse();
-        assertThat(baseChoice.isReleased(mixed)).isTrue();
         assertThat(baseChoice.isReleased(crossSubject)).isFalse();
         assertThat(SrsCardSelection.nextRecallBatch(deck, Map.of(), baseChoice, NOW, BERLIN, 10))
-                .containsExactly(mixed);
+                .containsExactly(mixed, outside, noOrigin);
     }
 
     @Test
@@ -176,9 +173,9 @@ class SrsCardRulesTest {
         SrsCard extension = card("extension-only", "extension");
         var passed = SrsCardStateSummary.of(Map.of("verifiedRecall",
                 Map.of("status", "passed", "passedAt", "2026-11-20T08:00:00Z")));
-        SrsCardRelease baseChoice = new SrsCardRelease(Set.of("regular"), Set.of("regular")).forExplicitExtensions();
-        SrsCardRelease maximumChoice = new SrsCardRelease(Set.of("regular", "extension"), Set.of("regular", "extension"))
-                .forExplicitExtensions();
+        SrsCardRelease baseChoice = new SrsCardRelease(Set.of("regular"), Set.of("regular"))
+                .excludingRemovedOrigins(Set.of("extension"));
+        SrsCardRelease maximumChoice = new SrsCardRelease(Set.of("regular", "extension"), Set.of("regular", "extension"));
 
         List<SrsCard> deck = List.of(base, extension);
         assertThat(SrsCardSelection.deckMastered(baseChoice.countedCards(deck), Map.of("base", passed))).isTrue();

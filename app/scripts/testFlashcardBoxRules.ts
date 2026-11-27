@@ -97,14 +97,16 @@ assert.equal(cardBoxIdleState(calculateCardBoxStats([{ id: 'later' }, { id: 'loc
   'everything due was practised')
 assert.equal(cardBoxIdleState(verifiedDeck), 'allVerified', 'the completion display stays for an all-verified selection')
 assert.equal(cardBoxIdleState(calculateCardBoxStats([], state, locked, now)), null, 'an empty selection has its own message')
-const extendedDeck = [{ id: 'mastered' }, { id: 'removed' }]
+const extendedDeck = [
+  { id: 'mastered' }, { id: 'removed' }, { id: 'outside' }, { id: 'no-origin' }, { id: 'retained-preparation' },
+]
 const activeBefore = calculateCardBoxStats(countedDeckCards(extendedDeck, readExcludedCardIds({})), state, locked, now)
-assert.equal(activeBefore.total, 2, 'older state snapshots keep the whole deck')
+assert.equal(activeBefore.total, 5, 'older state snapshots keep the whole deck')
 assert.equal(activeBefore.verifiedPassed, 1)
-const base = calculateCardBoxStats(
-  countedDeckCards(extendedDeck, readExcludedCardIds({ excludedCardIds: ['removed'] })), state, locked, now,
-)
-assert.equal(base.total, 1)
+const baseDeck = countedDeckCards(extendedDeck, readExcludedCardIds({ excludedCardIds: ['removed'] }))
+assert.deepEqual(baseDeck.map(card => card.id), ['mastered', 'outside', 'no-origin', 'retained-preparation'])
+const base = calculateCardBoxStats(baseDeck, state, locked, now)
+assert.equal(base.total, 4)
 assert.equal(base.verifiedPassed, 0, 'a previously verified extension card does not count for Basis')
 const excludedDeck = countedDeckCards([{ id: 'removed' }], readExcludedCardIds({ excludedCardIds: ['removed'] }))
 assert.equal(cardBoxIdleState(calculateCardBoxStats(excludedDeck, state, locked, now)), null,

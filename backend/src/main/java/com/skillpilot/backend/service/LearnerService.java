@@ -1958,9 +1958,6 @@ public class LearnerService {
             if (strict) throw new SrsStateUnavailableException("Memorization state is unavailable", error);
             return Map.of(); // Preserve existing normal mastery instead of fabricating an unsuccessful result.
         }
-        SrsCardRelease originScope = projection == null || projection.explicitExtensionLandscapeIds().isEmpty()
-                ? SrsCardRelease.all()
-                : new SrsCardRelease(countedCardOriginGoals(projection), Set.of());
         // Resource equality identifies paths/classpath objects or actual package bytes;
         // a shared source label alone must not conflate distinct package decks.
         Map<Resource, SrsDeck> decks = new HashMap<>();
@@ -1974,7 +1971,7 @@ public class LearnerService {
                 if (resource == null) throw new SrsStateUnavailableException("Required memorization deck is unavailable");
                 List<SrsCard> required = filterSrsCards(goal, deckCatalog.deck(resource, decks), true);
                 if (required.isEmpty()) throw new SrsStateUnavailableException("Required memorization deck is empty for this goal");
-                required = deckCardRelease(projection, goal, originScope).countedCards(required);
+                required = deckCardRelease(projection, goal, SrsCardRelease.all()).countedCards(required);
                 if (required.isEmpty()) {
                     result.put(goal.getId(), new SrsGoalSnapshot(false, false));
                     continue;
@@ -2060,8 +2057,9 @@ public class LearnerService {
 
     /**
      * The release rule of issue #85 for this request: counted understanding
-     * goals are the learner-facing target goals of the projection, passed goals
-     * are stored mastery at the threshold plus unit planning credits.
+     * goals are the learner-facing targets and any extension goals still required
+     * as preparations. Passed goals are stored mastery at the threshold plus
+     * unit planning credits.
      */
     private SrsCardRelease cardRelease(GoalProjection projection, Map<String, Double> mastery, Set<String> credits) {
         if (projection == null) {
@@ -2079,14 +2077,18 @@ public class LearnerService {
     private Set<String> countedCardOriginGoals(GoalProjection projection) {
         Set<String> counted = new HashSet<>(projection.targetGoalIds());
         counted.removeAll(projection.prerequisiteOnlyGoalIds());
+        // Closure restores necessary extension preparations as learning goals even
+        // though navigation treats them as prerequisite-only.
+        if (projection.learningScope() != null) counted.addAll(projection.extensionPreparations());
         return counted;
     }
 
     private SrsCardRelease deckCardRelease(GoalProjection projection, LearningGoal deck, SrsCardRelease release) {
-        if (projection == null || projection.explicitExtensionLandscapeIds().isEmpty()) return release;
+        if (projection == null || projection.removedExtensionGoalIdsByLandscape().isEmpty()) return release;
         String landscapeId = landscapeService.getLandscapeIdForGoal(deck.getId());
-        return landscapeId != null && projection.explicitExtensionLandscapeIds().contains(landscapeId)
-                ? release.forExplicitExtensions() : release;
+        if (landscapeId == null) return release;
+        Set<String> removed = projection.removedExtensionGoalIdsByLandscape().get(landscapeId);
+        return removed == null ? release : release.excludingRemovedOrigins(removed);
     }
 
     private SrsCardRelease cardRelease(Learner learner, GoalProjection projection) {
@@ -6776,12 +6778,6 @@ public class LearnerService {
     @Transactional
     public void setPersonalCurriculum(String skillpilotId, Map<String, Object> config, List<String> goalIds,
             List<String> filters) {
-        setPersonalCurriculum(skillpilotId, config, goalIds, filters, null);
-    }
-
-    @Transactional
-    public void setPersonalCurriculum(String skillpilotId, Map<String, Object> config, List<String> goalIds,
-            List<String> filters, String optionId) {
         Learner learner = learnerRepository.findBySkillpilotIdForUpdate(skillpilotId)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Learner not found"));
         Map<String, Object> submitted = normalizePersonalCurriculumPayload(config);
@@ -6789,24 +6785,6 @@ public class LearnerService {
             throw new ResponseStatusException(
                     org.springframework.http.HttpStatus.BAD_REQUEST,
                     "Personalization flow state is server-managed and cannot be written as raw config.");
-        }
-
-        if (optionId != null) {
-            if (optionId.isBlank() || !normalizedReferences(goalIds).isEmpty()
-                    || !normalizedReferences(filters).isEmpty()) {
-                throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST,
-                        "A current subject scope option and its matching selection are required.");
-            }
-            PersonalizationPlan currentPlan = buildPersonalizationPlan(learner);
-            PersonalizationPlan.Option option = requireCurrentPersonalizationOption(
-                    currentPlan, optionId, List.of(), List.of());
-            try {
-                SubjectExtensionScope.validateCockpitChoice(submitted, option);
-            } catch (IllegalArgumentException ex) {
-                throw new ResponseStatusException(org.springframework.http.HttpStatus.BAD_REQUEST, ex.getMessage());
-            }
-            applyCurrentPersonalizationOption(learner, currentPlan, option);
-            return;
         }
 
         Map<String, Object> finalConfig;
@@ -13408,7 +13386,7 @@ public class LearnerService {
                 projection.structuralGoals(), projection.compositionViewIds(), projection.presentationRootGoalIds(),
                 projection.compositionViewApplied(), projection.learningScope(), projection.canonicalPrerequisiteGoals(),
                 declared, projection.learnerViews(), projection.extensionPreparations(), projection.explicitExtensionLandscapeIds(),
-                projection.extensionPreparationTopology());
+                projection.extensionPreparationTopology(), projection.removedExtensionGoalIdsByLandscape());
     }
 
     /** Select reviewed seeds first, then retain their full canonical atomic demand. */
@@ -13451,12 +13429,18 @@ public class LearnerService {
         Set<String> extensionPreparations = new LinkedHashSet<>(projection.extensionPreparations());
         extensionPreparations.retainAll(learningScope.learningAtomicGoalIds());
         support.addAll(extensionPreparations);
+        Map<String, Set<String>> removedExtensionGoalIdsByLandscape = new LinkedHashMap<>();
+        projection.removedExtensionGoalIdsByLandscape().forEach((landscapeId, ids) -> {
+            Set<String> removed = new LinkedHashSet<>(ids);
+            removed.removeAll(learningScope.learningAtomicGoalIds());
+            if (!removed.isEmpty()) removedExtensionGoalIdsByLandscape.put(landscapeId, Set.copyOf(removed));
+        });
         return new GoalProjection(immutableGoalMap(visible), Collections.unmodifiableSet(targets),
                 Collections.unmodifiableSet(support), immutableGoalMap(structural),
                 projection.compositionViewIds(), projection.presentationRootGoalIds(),
                 projection.compositionViewApplied(), learningScope, immutableGoalMap(canonical), DeclaredCourseUnits.EMPTY,
                 projection.learnerViews(), Set.copyOf(extensionPreparations), projection.explicitExtensionLandscapeIds(),
-                extensionPreparations.isEmpty() ? null : compilation.topology());
+                extensionPreparations.isEmpty() ? null : compilation.topology(), Map.copyOf(removedExtensionGoalIdsByLandscape));
     }
 
     /**
@@ -13579,10 +13563,10 @@ public class LearnerService {
         LinkedHashMap<String, CompositionGoalReference> referencedGoals = new LinkedHashMap<>();
         List<Map<String, CompositionGoalReference>> referencesByView = new ArrayList<>();
         LinkedHashSet<String> fallbackGoalIds = new LinkedHashSet<>();
-        Set<String> nonCanonicalFallbackGoalIds = new LinkedHashSet<>();
         LinkedHashSet<String> compositionViewIds = new LinkedHashSet<>();
         Map<String, Map<String, Object>> learnerViews = new LinkedHashMap<>();
         Map<String, CompositionGoalReference> excludedReferences = new LinkedHashMap<>();
+        Map<String, Map<String, CompositionGoalReference>> deselectedExtensionReferences = new LinkedHashMap<>();
         Set<String> explicitExtensionLandscapeIds = new LinkedHashSet<>();
         LinkedHashSet<String> presentationRootGoalIds = new LinkedHashSet<>();
         boolean authoritativeCandidateSeen = authoritativeCurriculum;
@@ -13610,11 +13594,6 @@ public class LearnerService {
             }
             String landscapeId = landscape.getLandscapeId();
             if (defaultCurriculumViewRequested && landscapeId.equals(curriculumId)) continue;
-            boolean canonical = isCanonicalGymnasiumLandscape(landscape);
-            if (!canonical && !compositionViewService.hasRepositoryExtensionViews(landscapeId)) {
-                addFilteredLandscapeGoalIds(landscape, allGoals, nonCanonicalFallbackGoalIds);
-                continue;
-            }
             boolean authoritative = compositionViewService.isAuthoritativeForLandscape(landscapeId);
             authoritativeCandidateSeen |= authoritative;
             Map<String, String> requestedScope = deriveCompositionScope(landscapeId, effectiveConfig);
@@ -13626,14 +13605,13 @@ public class LearnerService {
             }
             Map<String, Object> matchedView =
                     compositionViewService.findLearnerScopeView(landscapeId, requestedScope);
-            boolean hasExtensions = CompositionViewExtensions.supports(matchedView);
-            if (matchedView == null || matchedView.isEmpty() || (!canonical && !hasExtensions)) {
+            if (matchedView == null || matchedView.isEmpty()) {
                 if (!authoritative) {
                     addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
                 }
                 continue;
             }
-            if (hasExtensions) {
+            if (CompositionViewExtensions.supports(matchedView)) {
                 authoritative = true;
                 authoritativeCandidateSeen = true;
                 Map<String, Object> settings = effectiveConfig.getOrDefault(landscapeId, Map.of());
@@ -13647,6 +13625,13 @@ public class LearnerService {
                 learnerViews.put(readString(matchedView.get("viewId")), matchedView);
                 if (choice != null) {
                     collectCompositionViewGoalReferences(selection.excludedNodes(), excludedReferences);
+                    var deselectedSections = selection.excludedNodes().stream()
+                            .filter(node -> node.containsKey("extension")).toList();
+                    if (!deselectedSections.isEmpty()) {
+                        Map<String, CompositionGoalReference> references = new LinkedHashMap<>();
+                        collectCompositionViewGoalReferences(deselectedSections, references);
+                        deselectedExtensionReferences.put(landscapeId, references);
+                    }
                 }
             }
             addCompositionViewId(matchedView, compositionViewIds);
@@ -13667,7 +13652,6 @@ public class LearnerService {
             }
         }
 
-        if (!explicitExtensionLandscapeIds.isEmpty()) fallbackGoalIds.addAll(nonCanonicalFallbackGoalIds);
         if (referencedGoals.isEmpty() && fallbackGoalIds.isEmpty()) {
             return authoritativeCandidateSeen
                     ? emptyGoalProjection(structuralGoals)
@@ -13757,6 +13741,20 @@ public class LearnerService {
                 .keySet();
         excludedGoalIds.removeAll(effectiveTargetGoalIds);
         Set<String> extensionPreparations = Set.copyOf(excludedGoalIds);
+        // Historical assessments are migrated independently of deselecting an extension.
+        // A surviving placement or a prerequisite retained by closure keeps its card origins.
+        Map<String, Set<String>> removedExtensionGoalIdsByLandscape = new LinkedHashMap<>();
+        deselectedExtensionReferences.forEach((landscapeId, references) -> {
+            Set<String> removed = resolveCompositionProjectionAssignments(references, compositionStructuralGoals)
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue().role() == ProjectionRole.TARGET)
+                    .map(Map.Entry::getKey)
+                    .filter(allGoals::containsKey)
+                    .filter(id -> !effectiveTargetGoalIds.contains(id) && !effectivePrerequisiteOnlyGoalIds.contains(id))
+                    .collect(Collectors.toUnmodifiableSet());
+            if (!removed.isEmpty()) removedExtensionGoalIdsByLandscape.put(landscapeId, removed);
+        });
+        var removedOrigins = Map.copyOf(removedExtensionGoalIdsByLandscape);
         var projectedViews = Map.copyOf(learnerViews);
         var explicitLandscapeIds = Set.copyOf(explicitExtensionLandscapeIds);
         GoalProjection provisionalProjection = new GoalProjection(
@@ -13767,7 +13765,7 @@ public class LearnerService {
                 Collections.unmodifiableSet(compositionViewIds),
                 Collections.emptyList(),
                 true, null, Map.of(), DeclaredCourseUnits.EMPTY,
-                projectedViews, extensionPreparations, explicitLandscapeIds, null);
+                projectedViews, extensionPreparations, explicitLandscapeIds, null, removedOrigins);
         List<String> effectivePresentationRootGoalIds = orderVisibleFocusGoalIds(
                         presentationRootGoalIds,
                         provisionalProjection.visibleGoals()).stream()
@@ -13781,7 +13779,7 @@ public class LearnerService {
                 provisionalProjection.compositionViewIds(),
                 effectivePresentationRootGoalIds,
                 true, null, Map.of(), DeclaredCourseUnits.EMPTY,
-                projectedViews, extensionPreparations, explicitLandscapeIds, null);
+                projectedViews, extensionPreparations, explicitLandscapeIds, null, removedOrigins);
     }
 
     private GoalProjection identityGoalProjection(
@@ -13891,14 +13889,15 @@ public class LearnerService {
             Map<String, Map<String, Object>> learnerViews,
             Set<String> extensionPreparations,
             Set<String> explicitExtensionLandscapeIds,
-            CompletionProfileCompiler.PrerequisiteTopology extensionPreparationTopology) {
+            CompletionProfileCompiler.PrerequisiteTopology extensionPreparationTopology,
+            Map<String, Set<String>> removedExtensionGoalIdsByLandscape) {
         GoalProjection(Map<String, LearningGoal> visibleGoals, Set<String> targetGoalIds, Set<String> prerequisiteOnlyGoalIds,
                 Map<String, LearningGoal> structuralGoals, Set<String> compositionViewIds, List<String> presentationRootGoalIds,
                 boolean compositionViewApplied, PersonalCurriculumLearningScope learningScope,
                 Map<String, LearningGoal> canonicalPrerequisiteGoals) {
             this(visibleGoals, targetGoalIds, prerequisiteOnlyGoalIds, structuralGoals, compositionViewIds,
                     presentationRootGoalIds, compositionViewApplied, learningScope, canonicalPrerequisiteGoals,
-                    DeclaredCourseUnits.EMPTY, Map.of(), Set.of(), Set.of(), null);
+                    DeclaredCourseUnits.EMPTY, Map.of(), Set.of(), Set.of(), null, Map.of());
         }
 
         private Set<String> regularTargetGoalIds() {
@@ -13957,6 +13956,9 @@ public class LearnerService {
             String curriculumId,
             SkillLandscape landscape,
             Map<String, Map<String, Object>> config) {
+        if (!isCanonicalGymnasiumLandscape(landscape)) {
+            return false;
+        }
         String landscapeId = landscape.getLandscapeId();
         if (landscapeId == null || landscapeId.isBlank() || CANONICAL_GYMNASIUM_ROOT_ID.equals(landscapeId)) {
             return false;

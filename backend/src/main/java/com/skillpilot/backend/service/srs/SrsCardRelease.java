@@ -8,25 +8,25 @@ import java.util.Set;
  *
  * <p>A card enters the box only when every one of its understanding goals that
  * counts for the learner is passed. Counted goals are the learner-facing
- * target goals of the current projection (prerequisite-only entries excluded).
+ * targets of the current projection and extension goals still required as preparations.
  * Passed goals are the learner's own stored mastery at the existing threshold
  * and the evidence-backed unit planning credits (gray check). A learner's
- * explicit extension choice limits the decks of that subject to cards
- * attached to at least one counted goal. Other decks keep their former
- * treatment of cards without origins or whose origins are outside scope.</p>
+ * extension choice can exclude a card whose understanding goals were all
+ * removed by that choice. Cards without understanding goals stay in the deck.</p>
  */
 public record SrsCardRelease(Set<String> countedGoalIds, Set<String> passedGoalIds,
-        boolean restrictToCountedOrigins) {
+        Set<String> removedOriginGoalIds) {
 
     private static final SrsCardRelease ALL = new SrsCardRelease(Set.of(), Set.of());
 
     public SrsCardRelease {
         countedGoalIds = countedGoalIds == null ? Set.of() : countedGoalIds;
         passedGoalIds = passedGoalIds == null ? Set.of() : passedGoalIds;
+        removedOriginGoalIds = removedOriginGoalIds == null ? Set.of() : removedOriginGoalIds;
     }
 
     public SrsCardRelease(Set<String> countedGoalIds, Set<String> passedGoalIds) {
-        this(countedGoalIds, passedGoalIds, false);
+        this(countedGoalIds, passedGoalIds, Set.of());
     }
 
     /** Releases every card; used where the learner has no curriculum projection. */
@@ -34,19 +34,19 @@ public record SrsCardRelease(Set<String> countedGoalIds, Set<String> passedGoalI
         return ALL;
     }
 
-    /** Applies the explicit-extension policy to the deck of the affected subject. */
-    public SrsCardRelease forExplicitExtensions() {
-        return new SrsCardRelease(countedGoalIds, passedGoalIds, true);
+    public SrsCardRelease excludingRemovedOrigins(Set<String> removedGoalIds) {
+        return new SrsCardRelease(countedGoalIds, passedGoalIds, removedGoalIds);
     }
 
     public boolean countsCard(SrsCard card) {
-        return card != null && (!restrictToCountedOrigins
-                || card.understandingGoalIds().stream().anyMatch(countedGoalIds::contains));
+        if (card == null) return false;
+        List<String> origins = card.understandingGoalIds();
+        return origins.isEmpty() || !removedOriginGoalIds.containsAll(origins);
     }
 
     /** Deck order is retained for practice, recall and the derived mastery outcome. */
     public List<SrsCard> countedCards(List<SrsCard> cards) {
-        return restrictToCountedOrigins ? cards.stream().filter(this::countsCard).toList() : cards;
+        return removedOriginGoalIds.isEmpty() ? cards : cards.stream().filter(this::countsCard).toList();
     }
 
     public boolean isReleased(SrsCard card) {

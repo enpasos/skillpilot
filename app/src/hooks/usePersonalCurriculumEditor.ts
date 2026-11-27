@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
-  applyEditorPersonalizationOption,
+  applyPersonalizationOption,
   reopenMigratedPersonalization,
   requestPersonalizationPlan,
   rewindPersonalization,
@@ -152,8 +152,8 @@ export const usePersonalCurriculumEditor = ({
   }, [editorScopeKey, enabled, skillpilotId])
 
   const applyOption = useCallback(async (optionId: string) => (
-    mutate(() => applyEditorPersonalizationOption(skillpilotId ?? '', plan, optionId))
-  ), [mutate, plan, skillpilotId])
+    mutate(() => applyPersonalizationOption(skillpilotId ?? '', optionId))
+  ), [mutate, skillpilotId])
 
   const restart = useCallback(async () => (
     mutate(() => restartPersonalization(skillpilotId ?? ''))

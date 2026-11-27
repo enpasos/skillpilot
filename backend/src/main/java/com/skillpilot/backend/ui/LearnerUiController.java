@@ -351,11 +351,10 @@ public class LearnerUiController {
     @PutMapping("/{skillpilotId}/personal-curriculum")
     @Operation(extensions = @Extension(properties = @ExtensionProperty(name = "x-openai-isConsequential", value = "false", parseValue = true)))
     public void updatePersonalCurriculum(@PathVariable String skillpilotId,
-            @RequestBody UpdatePersonalCurriculumRequest request,
-            @RequestParam(required = false) String optionId) {
+            @RequestBody UpdatePersonalCurriculumRequest request) {
         learnerLifecycle.withActivity(skillpilotId, () -> {
             learnerService.assertWritableLearningSession(skillpilotId);
-            learnerService.setPersonalCurriculum(skillpilotId, request, null, null, optionId);
+            learnerService.setPersonalCurriculum(skillpilotId, request, null, null);
         });
     }
 

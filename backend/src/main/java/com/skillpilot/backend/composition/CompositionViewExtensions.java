@@ -19,12 +19,7 @@ public final class CompositionViewExtensions {
     private CompositionViewExtensions() {}
 
     public record Group(String id, String label, String labelEn, String origin, int minSelections,
-            Map<String, String> rule, List<Extension> extensions) {
-        public List<Extension> deselectableExtensions() {
-            return extensions.stream().filter(extension -> minSelections == 0 || !extension.previouslyRegular())
-                    .toList();
-        }
-    }
+            Map<String, String> rule, List<Extension> extensions) {}
 
     public record Extension(String id, String label, String labelEn, boolean previouslyRegular) {}
 
@@ -65,7 +60,7 @@ public final class CompositionViewExtensions {
             require(rawMin instanceof Integer minimum && minimum >= 0, "invalid minimum for group " + id);
             int minimum = (int) rawMin;
             require("official".equals(origin) || "skillpilot".equals(origin), "invalid origin for group " + id);
-            require(!"skillpilot".equals(origin) || minimum == 0, "own group minimum must be zero: " + id);
+            require(minimum == 0, "positive minimum for group " + id + " requires individual extension selection");
             Map<String, String> rule = new LinkedHashMap<>();
             if ("official".equals(origin) || raw.containsKey("rule")) {
                 Map<String, Object> source = map(raw.get("rule"));
@@ -91,8 +86,6 @@ public final class CompositionViewExtensions {
         }
         return groups.values().stream().map(group -> {
             List<Extension> extensions = members.getOrDefault(group.id(), List.of());
-            require(extensions.stream().filter(Extension::previouslyRegular).count() >= group.minSelections(),
-                    "previously regular extensions do not satisfy minimum for group " + group.id());
             return new Group(group.id(), group.label(), group.labelEn(), group.origin(), group.minSelections(),
                     group.rule(), List.copyOf(extensions));
         }).toList();
@@ -172,13 +165,8 @@ public final class CompositionViewExtensions {
         boolean legacy = rawSelection == null;
         boolean migrateAssessments = !legacy && view.containsKey(HISTORICAL_ASSESSMENT_PLACEMENTS);
         if (maximum && !migrateAssessments) return new Selection(view, List.of());
-        Set<String> requiredGroups = new HashSet<>();
-        for (var group : maps(view.get("electionGroups"))) {
-            if ((int) group.get("minSelections") > 0) requiredGroups.add((String) group.get("id"));
-        }
         List<Map<String, Object>> excluded = new ArrayList<>();
-        var roots = prune(maps(view.get("rootNodes")), null, legacy, maximum, migrateAssessments,
-                requiredGroups, excluded);
+        var roots = prune(maps(view.get("rootNodes")), null, legacy, maximum, migrateAssessments, excluded);
         if (excluded.isEmpty()) return new Selection(view, List.of());
         var copy = new LinkedHashMap<>(view);
         copy.put("rootNodes", CourseProfileCompositionViewMerger.freeze(roots));
@@ -186,13 +174,12 @@ public final class CompositionViewExtensions {
     }
 
     private static List<Map<String, Object>> prune(List<Map<String, Object>> nodes, String parent,
-            boolean legacy, boolean maximum, boolean migrateAssessments, Set<String> requiredGroups,
+            boolean legacy, boolean maximum, boolean migrateAssessments,
             List<Map<String, Object>> excluded) {
         var remaining = new ArrayList<Map<String, Object>>();
         for (var node : nodes) {
             if (!maximum && node.get("extension") instanceof Map<?, ?> extension
-                    && !(Boolean.TRUE.equals(extension.get("previouslyRegular"))
-                            && (legacy || requiredGroups.contains(extension.get("groupId"))))) {
+                    && !(legacy && Boolean.TRUE.equals(extension.get("previouslyRegular")))) {
                 excluded.add(node);
                 continue;
             }
@@ -205,8 +192,7 @@ public final class CompositionViewExtensions {
                 continue;
             }
             var originalChildren = maps(node.get("children"));
-            var children = prune(originalChildren, (String) node.get("id"), legacy, maximum, migrateAssessments,
-                    requiredGroups, excluded);
+            var children = prune(originalChildren, (String) node.get("id"), legacy, maximum, migrateAssessments, excluded);
             if (!children.isEmpty() || originalChildren.isEmpty()) {
                 var copy = new LinkedHashMap<>(node);
                 copy.put("children", children);

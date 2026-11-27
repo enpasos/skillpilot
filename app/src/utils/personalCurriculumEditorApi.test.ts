@@ -1,5 +1,4 @@
 import {
-  applyEditorPersonalizationOption,
   applyPersonalizationOption,
   buildPersonalCurriculumEditorEndpoint,
   parsePersonalizationPlan,
@@ -308,56 +307,25 @@ const maximumOption = {
   scopeValue: 'maximum',
   scopeLabel: 'Alles',
 }
-const extensionPlan = parsePersonalizationPlan({
-  ...selectionPlan,
-  options: [baseOption, maximumOption],
-  displayOptions: [baseOption, maximumOption, { ...baseOption, optionId: 'unpublished-extension' }],
-})
-const extensionEndpoint = 'https://api.example.test/api/ui/learners/learner-42/'
-for (const [publishedOption, expectedSelection] of [[baseOption, []], [maximumOption, 'maximum']] as const) {
-  const requests: Array<{ url: string; method: string; body: BodyInit | null | undefined }> = []
-  const fetchImpl: typeof fetch = async (input, init) => {
-    assertEqual(init?.credentials, 'include', 'includes learner credentials in the extension mutation and reload')
-    requests.push({ url: String(input), method: init?.method ?? 'GET', body: init?.body })
-    return init?.method === 'PUT'
-      ? new Response(null, { status: 204 })
-      : Response.json({ ...selectionPlan, stage: 'COMPLETE', options: [], displayOptions: [] })
-  }
-  const refreshed = await applyEditorPersonalizationOption('learner-42', extensionPlan, publishedOption.optionId, {
+for (const extensionOption of [baseOption, maximumOption]) {
+  const refreshed = await applyPersonalizationOption('learner-42', extensionOption.optionId, {
     apiBase: 'https://api.example.test',
-    fetchImpl,
-  })
-  assertEqual(refreshed.stage, 'COMPLETE', 'the editor returns the plan reloaded after saving')
-  assertEqual(JSON.stringify(requests), JSON.stringify([
-    {
-      url: extensionEndpoint + 'personal-curriculum?' + new URLSearchParams({ optionId: publishedOption.optionId }),
-      method: 'PUT',
-      body: JSON.stringify({ physics: { extensionSelection: expectedSelection } }),
+    fetchImpl: async (input, init) => {
+      assertEqual(String(input), 'https://api.example.test/api/ui/learners/learner-42/personalization-options',
+        'uses the shared option endpoint for extension choices')
+      assertEqual(init?.method, 'POST', 'submits extension choices with POST')
+      assertEqual(init?.credentials, 'include', 'includes learner credentials')
+      assertEqual(init?.body, JSON.stringify({ optionId: extensionOption.optionId }),
+        'sends only the opaque option ID')
+      return Response.json({ ...selectionPlan, stage: 'COMPLETE', options: [], displayOptions: [] })
     },
-    { url: extensionEndpoint + 'personalization-plan', method: 'GET' },
-  ]), 'writes only the published subject choice and then reloads')
+  })
+  assertEqual(refreshed.stage, 'COMPLETE', 'returns the plan from the option response')
 }
-let rejectedExtensionRequests = 0
-await assertRejects(() => applyEditorPersonalizationOption('learner-42', extensionPlan, baseOption.optionId, {
+await assertRejects(() => applyPersonalizationOption('learner-42', baseOption.optionId, {
   apiBase: 'https://api.example.test',
-  fetchImpl: async () => {
-    rejectedExtensionRequests++
-    return new Response('The extension decision is no longer available', { status: 409 })
-  },
+  fetchImpl: async () => new Response('The extension decision is no longer available', { status: 409 }),
 }), 'extension decision is no longer available')
-assertEqual(rejectedExtensionRequests, 1, 'a rejected extension save does not reload the plan')
-
-await applyEditorPersonalizationOption('learner-42', extensionPlan, 'unpublished-extension', {
-  apiBase: 'https://api.example.test',
-  fetchImpl: planFetch,
-})
-assertEqual(capturedUrl, extensionEndpoint + 'personalization-options', 'display-only options cannot authorize the extension PUT')
-assertEqual(capturedInit?.body, JSON.stringify({ optionId: 'unpublished-extension' }), 'passes only the opaque ID for server validation')
-await applyEditorPersonalizationOption('learner-42', parsePersonalizationPlan(selectionPlan), option.optionId, {
-  apiBase: 'https://api.example.test',
-  fetchImpl: planFetch,
-})
-assertEqual(capturedUrl, extensionEndpoint + 'personalization-options', 'ordinary scope options retain the existing POST path')
 
 await restartPersonalization('learner-42', {
   apiBase: 'https://api.example.test',

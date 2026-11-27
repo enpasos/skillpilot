@@ -176,21 +176,20 @@ class LearnerUiControllerPersonalizationTest {
     }
 
     @Test
-    void personalCurriculumPutForwardsThePublishedChoiceFromTheQuery() throws Exception {
+    void personalCurriculumPutForwardsRawConfig() throws Exception {
         var request = new UpdatePersonalCurriculumRequest();
-        request.put("subject", Map.of("extensionSelection", List.of()));
+        request.put("subject", Map.of("filterId", "GK"));
         MockMvcBuilders.standaloneSetup(controller).build()
                 .perform(put("/api/ui/learners/{skillpilotId}/personal-curriculum", LEARNER_ID)
-                        .param("optionId", "opaque-subject-scope")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"subject":{"extensionSelection":[]}}
+                                {"subject":{"filterId":"GK"}}
                                 """))
                 .andExpect(status().isOk());
 
         InOrder ordered = inOrder(learnerService);
         ordered.verify(learnerService).assertWritableLearningSession(LEARNER_ID);
-        ordered.verify(learnerService).setPersonalCurriculum(LEARNER_ID, request, null, null, "opaque-subject-scope");
+        ordered.verify(learnerService).setPersonalCurriculum(LEARNER_ID, request, null, null);
         verifyNoMoreInteractions(learnerService);
     }
 

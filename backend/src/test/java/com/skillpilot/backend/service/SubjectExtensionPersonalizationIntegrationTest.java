@@ -5,7 +5,7 @@ import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -93,10 +93,9 @@ class SubjectExtensionPersonalizationIntegrationTest {
                         .filter(value -> choice.equals(value.scopeValue())).findFirst().orElseThrow();
                 Object stored = SubjectExtensionScope.storedValue(choice);
                 if (cockpit) {
-                    mvc.perform(put("/api/ui/learners/{skillpilotId}/personal-curriculum", LEARNER)
-                                    .param("optionId", option.optionId())
+                    mvc.perform(post("/api/ui/learners/{skillpilotId}/personalization-options", LEARNER)
                                     .contentType(MediaType.APPLICATION_JSON)
-                                    .content(json.writeValueAsString(Map.of(subjectId, Map.of(SubjectExtensionScope.KEY, stored)))))
+                                    .content(json.writeValueAsString(Map.of("optionId", option.optionId()))))
                             .andExpect(status().isOk());
                 } else {
                     service.patchPersonalCurriculum(LEARNER, null, null, null, option.optionId());

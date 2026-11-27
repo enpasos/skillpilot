@@ -43,6 +43,8 @@ import java.util.Optional;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.jupiter.api.io.TempDir;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
@@ -109,12 +111,12 @@ class CompositionViewExtensionProjectionTest {
     }
 
     @Test
-    void basisRetainsPreviouslyRegularMembersOfPositiveMinimumGroups() throws Exception {
+    void basisDropsEveryExtensionAndLegacyKeepsPreviouslyRegularMembers() throws Exception {
         choose("GK", null);
         assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED, A, B, C, D);
 
         choose("GK", List.of());
-        assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED, A, B, C);
+        assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED);
 
         choose("GK", "maximum");
         assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED, A, B, C, D, E);
@@ -133,7 +135,7 @@ class CompositionViewExtensionProjectionTest {
                 .setRequires(List.of(D, F));
 
         choose("GK", List.of());
-        assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED, A, B, C, F);
+        assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED, F);
         assertThat(service.getFrontier(LEARNER)).contains(D, F).doesNotContain(BASE, E);
 
         choose("GK", "maximum");
@@ -208,7 +210,7 @@ class CompositionViewExtensionProjectionTest {
     }
 
     @Test
-    void aReturningLearnerCanSwitchScopeInBothDirectionsThroughPublishedFlowChoicesAndCockpit() throws Exception {
+    void aReturningLearnerCanSwitchScopeInBothDirectionsThroughPublishedFlowChoices() throws Exception {
         var root = selectAuthoredRoot();
         String subjectId = subject.getLandscapeId();
         learner.setPersonalCurriculum(json.writeValueAsString(Map.of(
@@ -227,33 +229,26 @@ class CompositionViewExtensionProjectionTest {
         assertThat(offered.options()).extracting(PersonalizationPlan.Option::scopeValue)
                 .containsExactly(SubjectExtensionScope.BASE, SubjectExtensionScope.MAXIMUM);
 
-        for (boolean cockpit : List.of(false, true)) {
-            for (String choice : List.of(SubjectExtensionScope.BASE, SubjectExtensionScope.MAXIMUM)) {
-                if (!offered.required()) {
-                    offered = rewindDecision(offered, "extensionScope");
-                }
-                var option = offered.options().stream().filter(o -> choice.equals(o.scopeValue())).findFirst().orElseThrow();
-                var payload = extensionPayload(choice);
-                if (cockpit) {
-                    service.setPersonalCurriculum(LEARNER, payload, null, null, option.optionId());
-                } else {
-                    service.patchPersonalCurriculum(LEARNER, null, List.of(), List.of(), option.optionId());
-                }
-                var current = json.readTree(learner.getPersonalCurriculum()).path(subjectId);
-                assertThat(current.path(SubjectExtensionScope.KEY))
-                        .isEqualTo(json.valueToTree(SubjectExtensionScope.storedValue(choice)));
-                assertThat(current.path("preference").asText()).isEqualTo("retained");
-                assertThat(planningTargets().contains(D)).isEqualTo(choice.equals(SubjectExtensionScope.MAXIMUM));
-                assertThat(planningTargets().contains(E)).isEqualTo(choice.equals(SubjectExtensionScope.MAXIMUM));
-                offered = service.getPersonalizationPlan(LEARNER);
-                assertThat(offered.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
-                assertThat(offered.canReopenMigratedPersonalization()).isFalse();
-                var persisted = learner.getPersonalCurriculum();
-                assertThatThrownBy(() -> service.setPersonalCurriculum(LEARNER, payload, null, null, option.optionId()))
-                        .isInstanceOfSatisfying(ResponseStatusException.class,
-                                error -> assertThat(error.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
-                assertThat(learner.getPersonalCurriculum()).isEqualTo(persisted);
+        for (String choice : List.of(SubjectExtensionScope.BASE, SubjectExtensionScope.MAXIMUM)) {
+            if (!offered.required()) {
+                offered = rewindDecision(offered, "extensionScope");
             }
+            var option = offered.options().stream().filter(o -> choice.equals(o.scopeValue())).findFirst().orElseThrow();
+            applyCoachOption(option);
+            var current = json.readTree(learner.getPersonalCurriculum()).path(subjectId);
+            assertThat(current.path(SubjectExtensionScope.KEY))
+                    .isEqualTo(json.valueToTree(SubjectExtensionScope.storedValue(choice)));
+            assertThat(current.path("preference").asText()).isEqualTo("retained");
+            assertThat(planningTargets().contains(D)).isEqualTo(choice.equals(SubjectExtensionScope.MAXIMUM));
+            assertThat(planningTargets().contains(E)).isEqualTo(choice.equals(SubjectExtensionScope.MAXIMUM));
+            offered = service.getPersonalizationPlan(LEARNER);
+            assertThat(offered.stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
+            assertThat(offered.canReopenMigratedPersonalization()).isFalse();
+            var persisted = learner.getPersonalCurriculum();
+            assertThatThrownBy(() -> applyCoachOption(option))
+                    .isInstanceOfSatisfying(ResponseStatusException.class,
+                            error -> assertThat(error.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+            assertThat(learner.getPersonalCurriculum()).isEqualTo(persisted);
         }
         assertThat(passed.getValue()).isEqualTo(1.0);
         org.mockito.Mockito.verify(mastery, org.mockito.Mockito.never()).deleteAll();
@@ -290,24 +285,24 @@ class CompositionViewExtensionProjectionTest {
 
         var persisted = learner.getPersonalCurriculum();
         var payload = extensionPayload(SubjectExtensionScope.BASE);
-        assertThatThrownBy(() -> service.setPersonalCurriculum(LEARNER, payload, null, null, gkChoice.optionId()))
+        assertThatThrownBy(() -> service.setPersonalCurriculum(LEARNER, payload, null, null))
                 .isInstanceOfSatisfying(ResponseStatusException.class,
-                        error -> assertThat(error.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
+                        error -> assertThat(error.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST));
         assertThatThrownBy(() -> applyCoachOption(gkChoice))
                 .isInstanceOfSatisfying(ResponseStatusException.class,
                         error -> assertThat(error.getStatusCode()).isEqualTo(HttpStatus.CONFLICT));
         var lkChoice = second.options().getFirst();
-        assertThatThrownBy(() -> service.setPersonalCurriculum(LEARNER, extensionPayload(SubjectExtensionScope.MAXIMUM),
-                null, null, lkChoice.optionId()))
-                .isInstanceOfSatisfying(ResponseStatusException.class,
-                        error -> assertThat(error.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST));
         assertThat(learner.getPersonalCurriculum()).isEqualTo(persisted);
-        service.setPersonalCurriculum(LEARNER, payload, null, null, lkChoice.optionId());
+        applyCoachOption(lkChoice);
         assertThat(service.getPersonalizationPlan(LEARNER).stage()).isEqualTo(PersonalizationPlan.Stage.COMPLETE);
         var subjectConfig = json.readTree(learner.getPersonalCurriculum()).path(subject.getLandscapeId());
         assertThat(subjectConfig.get(SubjectExtensionScope.KEY)).isEmpty();
         assertThat(subjectConfig.get("filterId").asText()).isEqualTo("LK");
         assertThat(subjectConfig.get("preference").asText()).isEqualTo("retained");
+        assertThatThrownBy(() -> service.setPersonalCurriculum(
+                LEARNER, extensionPayload(SubjectExtensionScope.MAXIMUM), null, null))
+                .isInstanceOfSatisfying(ResponseStatusException.class,
+                        error -> assertThat(error.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST));
         var newPreference = Map.<String, Object>of(
                 root.getLandscapeId(), Map.of("selected", true, "stage", "SekII"),
                 subject.getLandscapeId(), Map.of("selected", true, "filterId", "LK", "preference", "updated"));
@@ -367,12 +362,13 @@ class CompositionViewExtensionProjectionTest {
                 .contains("core").doesNotContain("section-D");
 
         var selected = views.selectExtensionsForLearnerScope(views.findLearnerScopeView(subject.getLandscapeId(), scope("GK")),
-                List.of()).view();
+                null).view();
         var firstRoot = json.valueToTree(selected).path("rootNodes").get(0);
         assertThat(firstRoot.path("children")).extracting(node -> node.path("id").asText())
-                .containsExactly("core", "section-A", "section-B", "section-C");
+                .containsExactly("core", "section-A", "section-B", "section-C", "section-D");
         assertThat(firstRoot.path("childOrder").path("after")).extracting(node -> node.path("unit").asText()
-                + ":" + node.path("after").asText()).containsExactly("section-B:section-A", "section-C:section-B");
+                + ":" + node.path("after").asText())
+                .containsExactly("section-B:section-A", "section-C:section-B", "section-D:section-C");
         assertThat(views.findViewById("neutral-gk")).isNotEqualTo(selected);
     }
 
@@ -380,7 +376,9 @@ class CompositionViewExtensionProjectionTest {
     void basisProjectsOrderAcrossADroppedIntermediateSection() {
         var view = freshView();
         var children = nodes(nodes(view.get("rootNodes")).getFirst().get("children"));
-        children.getLast().put("extension", Map.of("id", "E", "groupId", "topics", "previouslyRegular", true));
+        for (var child : children) {
+            if (!"section-D".equals(child.get("id"))) child.remove("extension");
+        }
 
         var selected = views.selectExtensionsForLearnerScope(view, List.of()).view();
         var root = json.valueToTree(selected).path("rootNodes").get(0);
@@ -516,24 +514,28 @@ class CompositionViewExtensionProjectionTest {
         var basis = views.selectExtensionsForLearnerScope(merged, List.of());
         assertThat(json.valueToTree(basis.view()).path("rootNodes").get(0).path("children"))
                 .extracting(node -> node.path("id").asText()).contains("section-D", "section-E");
-        assertThat(basis.excludedNodes()).extracting(node -> node.get("id")).hasSize(2);
+        assertThat(basis.excludedNodes()).extracting(node -> node.get("id"))
+                .containsExactly("section-A", "section-B", "section-C", "section-D", "section-E");
 
         choose("LK", List.of());
         assertThat(planningTargets()).as("standalone legacy profile keeps its unprojected prior goals")
                 .containsExactlyInAnyOrder(BASE, SHARED, A, B, C, D, E, F);
         choose("GK", List.of());
-        assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED, A, B, C);
+        assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED);
         choose("GK+LK", List.of());
         assertThat(planningTargets()).as("the authored legacy profile keeps both independently regular occurrences")
-                .containsExactlyInAnyOrder(BASE, SHARED, A, B, C, D, E);
+                .containsExactlyInAnyOrder(BASE, SHARED, D, E);
     }
 
-    @Test
-    void selectedSubjectWithoutAMatchingViewKeepsItsLegacyGoalsBesideExplicitBasis() throws Exception {
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void extensionChoiceInOneSubjectPreservesTheProjectionOfOtherLandscapes(boolean canonicalPeer)
+            throws Exception {
         String peerId = "f54dc7f0-be92-5bd4-8818-0b7de1046e3e";
         String peerGoalId = "374019e1-21cc-55ec-a604-fbfe86afb467";
         SkillLandscape peer = new SkillLandscape();
         peer.setLandscapeId(peerId);
+        peer.setFrameworkId(canonicalPeer ? "canonical-gymnasium-test-peer" : "independent-course");
         peer.setTitle("Zweites Testfach");
         LearningGoal peerGoal = json.convertValue(Map.of(
                 "id", peerGoalId, "type", "atomic", "title", "Eigenes Lernziel",
@@ -547,18 +549,22 @@ class CompositionViewExtensionProjectionTest {
         when(landscapes.getGoalDefinition(peerGoalId)).thenReturn(peerGoal);
         when(landscapes.getLandscapeIdForGoal(peerGoalId)).thenReturn(peerId);
 
-        Map<String, Object> subjectSettings = Map.of(
-                "selected", true, "filterId", "GK", "stage", "SekII", "extensionSelection", List.of());
+        Map<String, Object> subjectSettings = new LinkedHashMap<>(Map.of(
+                "selected", true, "filterId", "GK", "stage", "SekII"));
         for (boolean peerSelected : List.of(true, false)) {
-            learner.setPersonalCurriculum(json.writeValueAsString(Map.of(
-                    subject.getLandscapeId(), subjectSettings,
-                    peerId, Map.of("selected", peerSelected, "stage", "SekII"))));
-            Set<String> goals = service.getFilteredAtomicGoalIds(
-                    subject.getLandscapeId(), learner.getPersonalCurriculum(), null, false);
-            if (peerSelected) {
-                assertThat(goals).containsExactlyInAnyOrder(BASE, SHARED, A, B, C, peerGoalId);
-            } else {
-                assertThat(goals).containsExactlyInAnyOrder(BASE, SHARED, A, B, C);
+            for (Object choice : java.util.Arrays.asList(null, List.of(), "maximum")) {
+                if (choice == null) {
+                    subjectSettings.remove("extensionSelection");
+                } else {
+                    subjectSettings.put("extensionSelection", choice);
+                }
+                String config = json.writeValueAsString(Map.of(subject.getLandscapeId(), subjectSettings,
+                        peerId, Map.of("selected", peerSelected, "stage", "SekII")));
+                Set<String> goals = service.getFilteredAtomicGoalIds(subject.getLandscapeId(), config, null, false);
+                assertThat(goals).contains(BASE, SHARED);
+                assertThat(goals.contains(peerGoalId))
+                        .as("peer selected=%s, canonical=%s, extension choice=%s", peerSelected, canonicalPeer, choice)
+                        .isEqualTo(canonicalPeer && peerSelected);
             }
         }
     }
@@ -598,11 +604,11 @@ class CompositionViewExtensionProjectionTest {
     }
 
     @Test
-    void positiveMinimumRequiresEnoughPreviouslyRegularMembers() {
+    void positiveMinimumRequiresIndividualExtensionSelection() {
         var view = freshView();
-        nodes(view.get("electionGroups")).getFirst().put("minSelections", 4);
+        nodes(view.get("electionGroups")).getFirst().put("minSelections", 1);
         assertThatThrownBy(() -> CompositionViewExtensions.groups(view))
-                .hasMessageContaining("previously regular extensions do not satisfy minimum");
+                .hasMessageContaining("positive minimum for group topics requires individual extension selection");
     }
 
     private Map<String, Object> readSource(String file) throws Exception {

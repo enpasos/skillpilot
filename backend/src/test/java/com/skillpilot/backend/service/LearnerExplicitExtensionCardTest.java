@@ -54,6 +54,9 @@ class LearnerExplicitExtensionCardTest {
     private static final String SUBJECT = "memory-regression-fixture";
     private static final String DECK = "fixture-deck";
     private static final String LEARNER = "extension-cards-fixture";
+    private static final String PEER = "peer-memory-fixture";
+    private static final String PEER_DECK = "peer-deck";
+    private static final String PEER_ELECTIVE = "peer-elective";
     private static final String REGULAR = "regular-understanding";
     private static final String ELECTIVE = "other-understanding";
     private static final Instant PASSED_AT = Instant.parse("2026-10-20T08:00:00Z");
@@ -65,11 +68,13 @@ class LearnerExplicitExtensionCardTest {
     private final DeckResourceService decks = mock(DeckResourceService.class);
     private final MasteryRepository mastery = mock(MasteryRepository.class);
     private LearnerService service;
+    private LandscapeService landscapes;
+    private SkillLandscape subject;
 
     @BeforeEach
     void prepare() throws Exception {
         Path canonical = Path.of("src/test/resources/srs-regression-curriculum/DE/Gymnasium/canonical/memory-regression.de.json");
-        var subject = json.readValue(canonical.toFile(), SkillLandscape.class);
+        subject = json.readValue(canonical.toFile(), SkillLandscape.class);
         Path views = Files.createDirectories(curriculum.resolve("DE/Gymnasium/composition-views"));
         Files.writeString(views.resolve("memory-extended.view.json"), """
                 {
@@ -83,16 +88,21 @@ class LearnerExplicitExtensionCardTest {
                   "rootNodes":[
                     {"kind":"goalEntry","goalId":"fixture-deck"},
                     {"kind":"goalEntry","goalId":"regular-understanding"},
+                    {"kind":"goalEntry","goalId":"advanced-target"},
                     {"kind":"structure","id":"elective","label":"Vertiefung","labelEn":"Extension",
                      "extension":{"id":"elective","groupId":"extras","previouslyRegular":true},
-                     "children":[{"kind":"goalEntry","goalId":"other-understanding"}]}
+                     "children":[
+                       {"kind":"goalEntry","goalId":"other-understanding"},
+                       {"kind":"goalEntry","goalId":"preparation-understanding"},
+                       {"kind":"goalEntry","goalId":"regular-understanding"}
+                     ]}
                   ]
                 }
                 """);
         var landscapeProperties = new LandscapeProperties();
         landscapeProperties.setDirectory(curriculum.toString());
         var composition = new CompositionViewService(landscapeProperties, json);
-        var landscapes = mock(LandscapeService.class);
+        landscapes = mock(LandscapeService.class);
         when(landscapes.getAll()).thenReturn(List.of(subject));
         when(landscapes.getById(SUBJECT)).thenReturn(subject);
         when(landscapes.getClosure(SUBJECT)).thenReturn(List.of(subject));
@@ -158,22 +168,94 @@ class LearnerExplicitExtensionCardTest {
     }
 
     @Test
-    void mixedCardsStayInTheVerifiedRecallTotalAndUseTheirCountedOrigin() throws Exception {
+    void countedDeckMatchesLegacyAtMaximumAndBasisOnlyDropsExclusivelyRemovedOrigins() throws Exception {
         deck("""
                 {"cards":[
                   {"id":"elective","front":"Q","back":"A","originGoalIds":["other-understanding"]},
-                  {"id":"mixed","front":"Q","back":"A","originGoalIds":["regular-understanding","other-understanding"]}
+                  {"id":"mixed","front":"Q","back":"A","originGoalIds":["regular-understanding","other-understanding"]},
+                  {"id":"outside","front":"Q","back":"A","originGoalIds":["outside-understanding"]},
+                  {"id":"mixed-outside","front":"Q","back":"A","originGoalIds":["other-understanding","outside-understanding"]},
+                  {"id":"no-origin","front":"Q","back":"A"},
+                  {"id":"retained-preparation","front":"Q","back":"A","originGoalIds":["preparation-understanding"]},
+                  {"id":"retained-placement","front":"Q","back":"A","originGoalIds":["regular-understanding"]}
                 ]}
                 """);
+        choose(null);
+        var legacy = service.startVerifiedRecallBatch(LEARNER, "de", DECK);
+        var legacySnapshot = service.getClientState(LEARNER, DECK);
+        assertThat(legacy.totalCards()).isEqualTo(7);
+        assertThat(legacySnapshot.excludedCardIds()).isEmpty();
+
         choose(List.of());
         var base = service.startVerifiedRecallBatch(LEARNER, "de", DECK);
-        assertThat(base.totalCards()).isOne();
-        assertThat(base.cards()).extracting(VerifiedRecallPromptCard::cardId).containsExactly("mixed");
+        assertThat(base.totalCards()).isEqualTo(6);
+        assertThat(base.cards()).extracting(VerifiedRecallPromptCard::cardId)
+                .containsExactly("mixed", "outside", "mixed-outside", "no-origin", "retained-placement");
+        var baseSnapshot = service.getClientState(LEARNER, DECK);
+        assertThat(baseSnapshot.excludedCardIds()).containsExactly("elective");
+        assertThat(baseSnapshot.lockedCardIds()).containsExactly("elective", "retained-preparation");
 
         choose("maximum");
         var maximum = service.startVerifiedRecallBatch(LEARNER, "de", DECK);
-        assertThat(maximum.totalCards()).isEqualTo(2);
-        assertThat(maximum.cards()).isEmpty();
+        var maximumSnapshot = service.getClientState(LEARNER, DECK);
+        assertThat(maximum.totalCards()).isEqualTo(legacy.totalCards());
+        assertThat(maximum.cards()).extracting(VerifiedRecallPromptCard::cardId)
+                .containsExactlyElementsOf(legacy.cards().stream().map(VerifiedRecallPromptCard::cardId).toList());
+        assertThat(maximumSnapshot.excludedCardIds()).isEqualTo(legacySnapshot.excludedCardIds());
+        assertThat(maximumSnapshot.lockedCardIds()).isEqualTo(legacySnapshot.lockedCardIds());
+    }
+
+    @Test
+    void maximumKeepsItsDeckWhenANeighborChoosesBasis() throws Exception {
+        var peer = json.readValue("""
+                {"landscapeId":"peer-memory-fixture","frameworkId":"canonical-gymnasium-peer-fixture","goals":[
+                  {"id":"peer-deck","title":"Peer deck","type":"atomic","nodeKind":"memory",
+                   "extendedData":{"vocabularySource":"/data/regression_fixture_deck.json"}},
+                  {"id":"peer-elective","title":"Peer elective","type":"atomic"}
+                ]}
+                """, SkillLandscape.class);
+        Files.writeString(curriculum.resolve("DE/Gymnasium/composition-views/peer.view.json"), """
+                {
+                  "$schema":"https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json",
+                  "viewFormatVersion":"1.3",
+                  "viewId":"peer-gk",
+                  "landscapeId":"peer-memory-fixture",
+                  "language":"de",
+                  "scope":{"schoolForm":"Gymnasium","stage":"SekII","courseProfile":"GK"},
+                  "electionGroups":[{"id":"extras","label":"Vertiefung","labelEn":"Extension","origin":"skillpilot","minSelections":0}],
+                  "rootNodes":[
+                    {"kind":"goalEntry","goalId":"peer-deck"},
+                    {"kind":"structure","id":"peer-extra","label":"Vertiefung","labelEn":"Extension",
+                     "extension":{"id":"peer-extra","groupId":"extras","previouslyRegular":true},
+                     "children":[{"kind":"goalEntry","goalId":"peer-elective"}]}
+                  ]
+                }
+                """);
+        var closure = List.of(subject, peer);
+        when(landscapes.getAll()).thenReturn(closure);
+        when(landscapes.getById(PEER)).thenReturn(peer);
+        when(landscapes.getClosure(SUBJECT)).thenReturn(closure);
+        when(landscapes.getClosure(eq(SUBJECT), anyString())).thenReturn(closure);
+        when(landscapes.getLandscapeIdForGoal(PEER_DECK)).thenReturn(PEER);
+        when(landscapes.getLandscapeIdForGoal(PEER_ELECTIVE)).thenReturn(PEER);
+        String crossSubjectDeck = """
+                {"cards":[{"id":"peer-origin","front":"Q","back":"A","originGoalIds":["peer-elective"]}]}
+                """;
+        deck(crossSubjectDeck);
+        when(decks.resolveDeckResource(PEER_DECK, "/data/regression_fixture_deck.json"))
+                .thenReturn(new ByteArrayResource(crossSubjectDeck.getBytes(StandardCharsets.UTF_8)));
+        var peerBasis = Map.of("selected", true, "filterId", "GK", "stage", "SekII", "extensionSelection", List.of());
+
+        learner.setPersonalCurriculum(json.writeValueAsString(Map.of(SUBJECT, subjectSettings(null), PEER, peerBasis)));
+        var legacy = service.startVerifiedRecallBatch(LEARNER, "de", DECK);
+        assertThat(legacy.totalCards()).isOne();
+        assertThat(service.getClientState(LEARNER, PEER_DECK).excludedCardIds()).containsExactly("peer-origin");
+
+        learner.setPersonalCurriculum(json.writeValueAsString(Map.of(SUBJECT, subjectSettings("maximum"), PEER, peerBasis)));
+        assertThat(service.getClientState(LEARNER, DECK).excludedCardIds()).isEmpty();
+        var maximum = service.startVerifiedRecallBatch(LEARNER, "de", DECK);
+        assertThat(maximum.totalCards()).isEqualTo(legacy.totalCards());
+        assertThat(maximum.cards()).extracting(VerifiedRecallPromptCard::cardId).containsExactly("peer-origin");
     }
 
     @Test
@@ -241,11 +323,15 @@ class LearnerExplicitExtensionCardTest {
     }
 
     private void choose(Object extensions) throws Exception {
+        learner.setPersonalCurriculum(json.writeValueAsString(Map.of(SUBJECT, subjectSettings(extensions))));
+    }
+
+    private Map<String, Object> subjectSettings(Object extensions) {
         var entry = new LinkedHashMap<String, Object>();
         entry.put("selected", true);
         entry.put("filterId", "GK");
         entry.put("stage", "SekII");
         if (extensions != null) entry.put("extensionSelection", extensions);
-        learner.setPersonalCurriculum(json.writeValueAsString(Map.of(SUBJECT, entry)));
+        return entry;
     }
 }

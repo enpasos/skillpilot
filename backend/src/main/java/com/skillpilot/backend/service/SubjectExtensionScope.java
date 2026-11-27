@@ -1,6 +1,5 @@
 package com.skillpilot.backend.service;
 
-import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.composition.CompositionViewExtensions;
 import com.skillpilot.backend.landscape.PersonalizationScopeValue;
 import java.util.LinkedHashMap;
@@ -28,16 +27,6 @@ final class SubjectExtensionScope {
             case MAXIMUM -> MAXIMUM;
             default -> throw new IllegalArgumentException("Unknown subject scope option: " + option);
         };
-    }
-
-    /** The PUT's stored value must describe the same change as the offered Flow 1 option. */
-    static void validateCockpitChoice(Map<String, Object> submitted, PersonalizationPlan.Option currentOption) {
-        if (currentOption == null || currentOption.kind() != PersonalizationPlan.OptionKind.SCOPE_VALUE
-                || !KEY.equals(currentOption.scopeKey())
-                || !Map.of(currentOption.landscapeId(), Map.of(KEY, storedValue(currentOption.scopeValue())))
-                        .equals(submitted)) {
-            throw new IllegalArgumentException("The submitted subject scope differs from the current choice");
-        }
     }
 
     /** The caller has unwrapped the single supported legacy envelope and holds the learner lock. */
@@ -80,11 +69,9 @@ final class SubjectExtensionScope {
     static List<PersonalizationScopeValue> options(Map<String, Object> view) {
         if (!CompositionViewExtensions.supports(view)) return List.of();
         var groups = CompositionViewExtensions.groups(view);
-        var extensions = groups.stream().flatMap(group -> group.deselectableExtensions().stream()).toList();
+        var extensions = groups.stream().flatMap(group -> group.extensions().stream()).toList();
         if (extensions.isEmpty()) return List.of();
-        boolean hasRequiredChoice = groups.stream().anyMatch(group -> group.minSelections() > 0);
-        boolean hessePhysics = !hasRequiredChoice
-                && "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a".equals(view.get("landscapeId"))
+        boolean hessePhysics = "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a".equals(view.get("landscapeId"))
                 && view.get("scope") instanceof Map<?, ?> scope && "DE-HE".equals(scope.get("jurisdiction"))
                 && ("SekII".equals(scope.get("stage")) || "CrossStage".equals(scope.get("stage")));
         String baseDe = "Basis – die gemeinsamen Themen und Aufgaben.";
@@ -92,9 +79,6 @@ final class SubjectExtensionScope {
         if (hessePhysics) {
             baseDe = "Basis – die verbindlichen Themenfelder mit ihren Aufgaben.";
             baseEn = "Base – the required topics and their tasks.";
-        } else if (hasRequiredChoice) {
-            baseDe = "Basis – die gemeinsamen Themen und die bisher regulären Themen jeder Pflichtwahl.";
-            baseEn = "Base – the common topics and the previously included topics in each required choice.";
         }
         var de = extensions.stream().map(CompositionViewExtensions.Extension::label).toList();
         var en = extensions.stream().map(CompositionViewExtensions.Extension::labelEn).toList();

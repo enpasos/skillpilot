@@ -269,7 +269,6 @@ export const parsePersonalizationPlan = (value: unknown): PersonalizationPlan =>
 export const buildPersonalCurriculumEditorEndpoint = (
   skillpilotId: string,
   action:
-    | 'personal-curriculum'
     | 'personalization-plan'
     | 'personalization-options'
     | 'personalization-reopen'
@@ -344,37 +343,6 @@ export const applyPersonalizationOption = async (
     },
   )
   return readPlanResponse(response)
-}
-
-export const applyEditorPersonalizationOption = async (
-  skillpilotId: string,
-  plan: PersonalizationPlan | null,
-  optionId: string,
-  options: PersonalCurriculumEditorRequestOptions = {},
-): Promise<PersonalizationPlan> => {
-  const option = plan?.options.find((candidate) => candidate.optionId === optionId)
-  if (option?.kind !== 'SCOPE_VALUE' || option.scopeKey !== 'extensionSelection') {
-    return applyPersonalizationOption(skillpilotId, optionId, options)
-  }
-  if (!option.landscapeId || (option.scopeValue !== 'base' && option.scopeValue !== 'maximum')) {
-    throw new Error('Invalid curriculum extension option')
-  }
-
-  const endpoint = buildPersonalCurriculumEditorEndpoint(skillpilotId, 'personal-curriculum', options.apiBase)
-  const response = await (options.fetchImpl ?? fetch)(
-    endpoint + '?' + new URLSearchParams({ optionId }),
-    {
-      method: 'PUT',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        [option.landscapeId]: { extensionSelection: option.scopeValue === 'base' ? [] : 'maximum' },
-      }),
-      signal: options.signal,
-    },
-  )
-  await requireSuccessfulResponse(response)
-  return requestPersonalizationPlan(skillpilotId, options)
 }
 
 export const restartPersonalization = async (
