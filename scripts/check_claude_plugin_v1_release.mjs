@@ -191,7 +191,7 @@ const expectedRequiredGates = [
   "anthropic-plugin-cli-validation",
   "reproducible-plugin-archive",
   "remote-mcp-contract-fourteen-tools-two-apps",
-  "model-in-the-loop-plugin-backend-e2e",
+  "automated-coach-web-ui-e2e",
   "paid-web-chat-real-client",
   "android-direct-install-real-client",
   "first-party-24h-learning-session",
@@ -220,9 +220,9 @@ const expectedSubmissionPrerequisiteEvidence = [
     kind: "submitter-authorization-record",
   },
   {
-    gateId: "model-in-the-loop-plugin-backend-e2e",
-    evidenceId: "model-in-the-loop-plugin-backend-e2e-final-candidate",
-    kind: "model-e2e-acceptance-record",
+    gateId: "automated-coach-web-ui-e2e",
+    evidenceId: "automated-coach-web-ui-e2e-final-candidate",
+    kind: "automated-web-ui-acceptance-record",
   },
 ];
 const lifecycleStates = [

@@ -300,13 +300,16 @@ Voraussetzung für den anderen. Das Plugin ist in
 Claude Free nicht verfügbar. SkillPilot beansprucht für v1 weder eine native Mobile-Plugin-Installation
 noch öffentliche Unterstützung für Claude Code und richtet sich an Erwachsene ab 18 Jahren.
 
-Der Product Owner hat am 27. November 2026 verlangt, dass der Einreichungskandidat vor den
-manuellen Schritten einen automatisierten Test mit echtem Modell besteht: Claude Opus 5.5
-durchläuft Lerndialoge mit dem Plugin-Kandidaten gegen ein lokales Backend, das aus der
-Kandidatenrevision gebaut ist. Führen Sie `node scripts/claude_plugin_e2e.mjs run` aus, wie in
-[Claude plugin end-to-end test with a real model](../qa-ci/claude-plugin-e2e.md) beschrieben.
-Das Gate `model-in-the-loop-plugin-backend-e2e` beider Dossiers verlangt einen vollständigen
-bestandenen Lauf. Dieser Lauf nutzt Claude Code als Host und ersetzt keinen der folgenden Schritte.
+Der Product Owner hat am 27. November 2026 verlangt, dass der Einreichungskandidat
+automatisierte Tests gegen den Coach über die Weboberfläche von Claude besteht, bei denen der
+Coach das Backend von sich aus nutzt; ein lokaler Lauf mit Claude Opus 5.5 genügt. Das Gate
+`automated-coach-web-ui-e2e` beider Dossiers steht für diese Anforderung. Wie die Weboberfläche
+angesteuert wird, ist noch nicht entschieden.
+
+Als Vorprüfung dient `node scripts/claude_plugin_e2e.mjs run`, beschrieben in
+[Claude plugin pre-check with a real model](../qa-ci/claude-plugin-e2e.md). Sie führt
+Lerndialoge mit Claude Opus 5.5 gegen ein lokales Backend und nutzt statt der Weboberfläche einen
+Test-Host ohne Oberfläche. Diese Vorprüfung erfüllt kein Gate und ersetzt keinen der folgenden Schritte.
 
 Vor dem Einreichen des Plugins:
 

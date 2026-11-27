@@ -79,12 +79,12 @@
       ]
     },
     {
-      "id": "model-in-the-loop-plugin-backend-e2e",
+      "id": "automated-coach-web-ui-e2e",
       "owner": "QA",
       "required": true,
       "status": "pending",
       "evidence": [],
-      "note": "Product Owner requirement of 2026-11-27 for the submission candidate: a complete passed run of scripts/claude_plugin_e2e.mjs with Claude Opus 5.5, in which the plugin candidate drives the real connector of a local backend built from the candidate revision. The run uses Claude Code as host; hosted Claude acceptance stays a separate gate."
+      "note": "Product Owner requirement of 2026-11-27 for the submission candidate: automated tests against the coach through Claude's web interface, in which the coach uses the backend on its own; they are not tests against the backend interface. They must be executable with Claude Opus 5.5, and a local run is sufficient. How the web interface is driven is not decided. The headless run of scripts/claude_plugin_e2e.mjs against a local backend is a preliminary check and does not pass this gate."
     },
     {
       "id": "negative-and-replay-cases",

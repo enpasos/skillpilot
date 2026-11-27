@@ -1,13 +1,20 @@
-# Claude plugin end-to-end test with a real model
+# Claude plugin pre-check with a real model (headless host)
 
 ## Purpose and limits
 
 The Product Owner required on 27 November 2026 that the submission candidate
-of the Claude plugin has automated tests which show that the plugin works
-together with the backend for the learner, beyond the regular CI. This test
-is that check. It is run locally and is designed for Claude Opus 5.5.
+of the Claude plugin has automated tests against the coach through Claude's
+web interface, in which the coach uses the backend on its own. **This run is
+not that test.** It is a preliminary check below it. It uses the same plugin
+files and a real model, but headless Claude Code as host and a local backend.
+It finds faults of the plugin and the backend in minutes and without touching
+production. It cannot show how the coach behaves in claude.ai.
 
-One run lets a real model work through learner dialogues with the plugin
+The coach is under test here too: the model decides by itself when it calls
+the connector. The test program calls the backend only to set up the learner
+and to read the result.
+
+One run lets Claude Opus 5.5 work through learner dialogues with the plugin
 candidate, and every dialogue reaches a real backend:
 
 - **Plugin:** the exact files the personal marketplace publishes, copied byte
@@ -151,9 +158,22 @@ the curriculum changes so that a profile no longer leads to the state a
 scenario needs, the scenario ends as an error that names the unmet
 precondition.
 
-## Release gate
+## Relation to the release gate
 
 Both Claude release dossiers carry the required gate
-`model-in-the-loop-plugin-backend-e2e`. It passes only with a complete passed
-run for the exact submission candidate and the backend revision that is
-deployed for it.
+`automated-coach-web-ui-e2e` for the Product Owner's requirement. This run
+does not pass it. The test through the web interface is not built yet, and how
+the web interface is driven is not decided. Two facts read on 27 November
+2026 limit the choice:
+
+- claude.ai reaches only the public connector, so a test through the web
+  interface runs against production or another publicly reachable backend,
+  with a synthetic test learner.
+- Anthropic's consumer terms allow access to its services "through automated
+  or non-human means, whether through a bot, script, or otherwise" only with
+  an API key or Anthropic's explicit permission. Anthropic's own way to let
+  an agent operate a browser with the user's sign-in is Claude in Chrome; its
+  integration into Claude Code is not supported under WSL.
+
+The scenario suite, the personas and the backend checks of this run are
+written so that a test through the web interface can reuse them.

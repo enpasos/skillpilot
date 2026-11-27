@@ -416,14 +416,20 @@ one requirement for the submission candidate. Nothing was submitted.
   are paired. Any paid Claude plan can submit; the Team/Enterprise requirement
   of August 2026 and the Claude Console plugin form no longer apply. Submit
   only with the stable candidate. Re-read Anthropic's rules before submitting.
-- The submission candidate needs automated tests which show that the plugin
-  works together with the backend for the learner, beyond the regular CI,
-  runnable with Claude Opus 5.5; a local run is sufficient.
-  `scripts/claude_plugin_e2e.mjs` is that test: the plugin candidate, loaded
-  by Claude Code, drives the real connector of a local backend, and the
-  verdict is read from backend state. Both dossiers carry the required gate
-  `model-in-the-loop-plugin-backend-e2e`. Claude Code is the host, so the run
-  replaces no real-client acceptance in claude.ai. See
+- The submission candidate needs automated tests against the coach through
+  Claude's web interface, in which the coach uses the backend on its own,
+  beyond the regular CI. They are not tests against the backend interface.
+  They must be executable with Claude Opus 5.5; a local run is sufficient.
+  Both dossiers carry the required gate `automated-coach-web-ui-e2e`. How the
+  web interface is driven is open: Anthropic's consumer terms allow automated
+  access to its services only with an API key or its explicit permission, and
+  the Claude in Chrome integration of Claude Code does not run under WSL (both
+  read on 27 November 2026).
+- `scripts/claude_plugin_e2e.mjs` is a preliminary check below that gate and
+  passes no gate: the plugin candidate, loaded by headless Claude Code, drives
+  the real connector of a local backend, and the verdict is read from backend
+  state. It was first built as the required test; the Product Owner clarified
+  the same day that he means the web interface. See
   `docs/qa-ci/claude-plugin-e2e.md`.
 - The published 1.1.15 package still names a Team/Enterprise gate in
   `SETUP.md`. Published bytes stay unchanged; the next plugin version corrects

@@ -303,14 +303,17 @@ installation nor public Claude Code support for v1 and targets adults aged 18
 or older.
 
 The Product Owner required on 27 November 2026 that the submission candidate
-passes an automated test with a real model before the manual steps: Claude
-Opus 5.5 works through learner dialogues with the plugin candidate against a
-local backend built from the candidate revision. Run
-`node scripts/claude_plugin_e2e.mjs run` as described in
-[Claude plugin end-to-end test with a real model](../qa-ci/claude-plugin-e2e.md).
-The gate `model-in-the-loop-plugin-backend-e2e` of both dossiers needs a
-complete passed run. That run uses Claude Code as host and replaces none of
-the steps below.
+passes automated tests against the coach through Claude's web interface, in
+which the coach uses the backend on its own; a local run with Claude Opus 5.5
+is sufficient. The gate `automated-coach-web-ui-e2e` of both dossiers stands
+for that requirement. How the web interface is driven is not decided yet.
+
+As a preliminary check, run `node scripts/claude_plugin_e2e.mjs run` as
+described in
+[Claude plugin pre-check with a real model](../qa-ci/claude-plugin-e2e.md).
+It runs learner dialogues with Claude Opus 5.5 against a local backend and
+uses a headless test host instead of the web interface. That check passes
+no gate and replaces none of the steps below.
 
 Before submitting the plugin:
 

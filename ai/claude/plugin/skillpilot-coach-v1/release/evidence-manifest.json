@@ -88,12 +88,12 @@
       "approvedAt": null
     },
     {
-      "id": "model-in-the-loop-plugin-backend-e2e-final-candidate",
-      "kind": "model-e2e-acceptance-record",
+      "id": "automated-coach-web-ui-e2e-final-candidate",
+      "kind": "automated-web-ui-acceptance-record",
       "status": "reference_required",
-      "description": "Sanitized report reference for a complete passed run of scripts/claude_plugin_e2e.mjs with Claude Opus 5.5 against a local backend built from the exact candidate revision: every scenario passed without retries, bound to this candidate package digest. The run uses Claude Code as host and does not replace real-client acceptance in claude.ai.",
+      "description": "Sanitized report reference for a complete passed automated run against the coach through Claude's web interface with the exact candidate installed, in which the coach used the backend on its own (Product Owner requirement of 2026-11-27, executable with Claude Opus 5.5, local run sufficient). A headless run of scripts/claude_plugin_e2e.mjs against a local backend does not satisfy this record.",
       "gateIds": [
-        "model-in-the-loop-plugin-backend-e2e"
+        "automated-coach-web-ui-e2e"
       ],
       "lifecycleStates": [],
       "candidateContractSha256": "2cf3a3da519747ae7e22344287c4f9f09c08209dd7c843b8fdb34bf49aa2167c",

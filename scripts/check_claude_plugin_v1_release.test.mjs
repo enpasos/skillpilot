@@ -337,8 +337,8 @@ for (const [gateId, evidenceId] of [
     "anthropic-developer-portal-submitter-access-final-candidate",
   ],
   [
-    "model-in-the-loop-plugin-backend-e2e",
-    "model-in-the-loop-plugin-backend-e2e-final-candidate",
+    "automated-coach-web-ui-e2e",
+    "automated-coach-web-ui-e2e-final-candidate",
   ],
 ]) {
   test(`READY_FOR_SUBMISSION rejects missing approved ${gateId} evidence`, (t) => {

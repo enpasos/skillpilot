@@ -20,8 +20,8 @@ Use this page by role: start with the bilingual handbooks and durable contracts 
   Local and GitHub Actions validation entry points.
 - [Automated OpenAI Dialog Regression (DE)](openai-dialog-regression.md)
   Repeatable API dialogs, isolated fixtures, cost limits, and separate host acceptance.
-- [Claude Plugin End-to-End Test with a Real Model](claude-plugin-e2e.md)
-  Claude Opus 5.5 drives the plugin candidate against a local backend; scenarios, checks, limits, and the release gate.
+- [Claude Plugin Pre-Check with a Real Model (Headless Host)](claude-plugin-e2e.md)
+  Claude Opus 5.5 drives the plugin candidate in headless Claude Code against a local backend; scenarios, checks, limits, and why it is not the required test through the web interface.
 - [Graph Validation Rules](graph-validation-rules.md)
   Single source of truth for algorithmic skill graph validation in CI.
 - [Curriculum Package Readiness](curriculum-package-readiness.md)
@@ -92,8 +92,8 @@ Nutze diese Übersicht nach Rolle: Starte mit den zweisprachigen Handbüchern un
   Lokale Validierungskommandos und GitHub-Actions-Einstiegspunkte.
 - [Automatische OpenAI-Dialogregression](openai-dialog-regression.md)
   Wiederholbare API-Dialoge, isolierte Fixtures, Kostenlimits und getrennte Host-Abnahme.
-- [Claude-Plugin: Ende-zu-Ende-Test mit echtem Modell (EN)](claude-plugin-e2e.md)
-  Claude Opus 5.5 steuert den Plugin-Kandidaten gegen ein lokales Backend; Szenarien, Prüfungen, Grenzen und Release-Gate.
+- [Claude-Plugin: Vorprüfung mit echtem Modell ohne Oberfläche (EN)](claude-plugin-e2e.md)
+  Claude Opus 5.5 steuert den Plugin-Kandidaten in Claude Code ohne Oberfläche gegen ein lokales Backend; Szenarien, Prüfungen, Grenzen und warum das nicht der geforderte Test über die Weboberfläche ist.
 - [Graph-Validierungsregeln](graph-validation-rules.de.md)
   Zentrale Spezifikation der algorithmischen Skill-Graph-Prüfung in CI.
 - [Curriculum-Paketreife](curriculum-package-readiness.de.md)

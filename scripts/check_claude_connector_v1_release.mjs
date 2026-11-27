@@ -56,7 +56,7 @@ const expectedRequiredGates = [
   "openai-production-differential",
   "mcp-inspector-all-fourteen-tools-two-resources",
   "hosted-claude-all-fourteen-tools-two-apps",
-  "model-in-the-loop-plugin-backend-e2e",
+  "automated-coach-web-ui-e2e",
   "negative-and-replay-cases",
   "first-party-24h-learning-session",
   "permanent-id-and-id-file-nondisclosure",
