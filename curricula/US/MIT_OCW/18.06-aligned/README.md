@@ -1,16 +1,19 @@
 # Linear Algebra
 
-A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This English pilot covers vector arithmetic, linear systems, and matrix multiplication and inverses. Learners enter with the ability to solve a linear equation in one unknown.
+A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This English pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, and the factorizations $A = LU$ and $PA = LU$ with permutations and transposes. Learners enter with the ability to solve a linear equation in one unknown.
 
 - **U0 · Vector arithmetic refresher.** Read and write vector components, compute a displacement from two points, form linear combinations and compute dot products. The short check asks each skill once in reverse and has a pass mark of 10 of 12.
 - **U1 · Linear systems by geometry and elimination.** Read a system in the row and column pictures, solve by elimination and classify its real solutions. The [row picture](static/assets/goal-visualizations/mit-1806/row-picture.svg) and [column picture](static/assets/goal-visualizations/mit-1806/column-picture.svg) show the same teaching example. Pass both closing tasks. *The two pictures and matrix form* requires 13 of 16 points. *Elimination and what it reveals* requires 12 of 15 points. Each assessment links matching problems of the MIT problem sets and of Exam 1 as practice; the SkillPilot tasks share their kind of thinking, never their wording or numbers.
 - **U2 · Matrix multiplication and inverses.** Compute an entry and the shape of a product, build a product by columns, by rows, as columns times rows and by blocks, use the order rules, decide whether a square matrix is invertible and compute $A^{-1}$ by Gauss–Jordan elimination. Pass both closing tasks. *Four ways to multiply* requires 13 of 16 points. *Order rules and inverses* requires 12 of 15 points.
+- **U3 · Factorization, permutations and transposes.** Write elimination steps as matrices, invert a product, factor $A = LU$ and $A = LDU$, estimate the cost of elimination, transpose products and inverses, use permutation matrices in $PA = LU$ and recognize symmetric matrices. Pass both closing tasks. *Elimination as $A = LU$* requires 13 of 16 points. *Transposes, permutations and symmetry* requires 13 of 16 points.
 
-The [course catalog](json/US_MAS_U_SKILLPILOT_LINEAR_ALGEBRA.en.json) contains the learning goals, unit ownership and assessments. The U0 and U1 assessments are released; the U2 assessments are drafts awaiting review. The recall decks of [U1](json/us_skillpilot_linear_algebra_u1_deck.en.json) and [U2](json/us_skillpilot_linear_algebra_u2_deck.en.json) and the [lecture map](lecture-map.md) are separate.
+The [course catalog](json/US_MAS_U_SKILLPILOT_LINEAR_ALGEBRA.en.json) contains the learning goals, unit ownership and assessments. The U0 and U1 assessments are released; the U2 and U3 assessments are drafts awaiting review. The recall decks of [U1](json/us_skillpilot_linear_algebra_u1_deck.en.json), [U2](json/us_skillpilot_linear_algebra_u2_deck.en.json) and [U3](json/us_skillpilot_linear_algebra_u3_deck.en.json) and the [lecture map](lecture-map.md) are separate.
 
 U1 uses Lecture 2 for row operations and exchanges. It defers elimination matrices and permutation matrices to U3, and matrix–matrix products, inverses and Gauss–Jordan elimination from Lecture 3 to later units. In U1, two different solutions are enough to illustrate the infinitely-many-solutions case. Writing the complete solution family belongs to U5.
 
 U2 uses Lecture 3 and, for the identity matrix and the order rules of products, the second half of Lecture 2. Elimination matrices, the inverse of a product and the transpose follow in U3. U2 has no figure, because the displayed matrices carry the mathematics and a drawing would only repeat them.
+
+U3 uses the second half of Lecture 2 for elimination and permutation matrices, Lecture 4, and Lecture 5 up to 20:14, where vector spaces begin; they belong to U4. Like U2 it has no figure: factors, permutation matrices and transposes are displayed as matrices.
 
 ## Notation
 
@@ -30,7 +33,7 @@ Use this folder as the backend curriculum root with `--skillpilot.curriculum.sou
 
 The pilot has its own course and goal IDs. The existing MIT OpenCourseWare Foundations route remains the entry for the previous course and its stored progress.
 
-[U1 quality card and local coach results](unit-1-quality.md) · [U2 quality card](unit-2-quality.md)
+[U1 quality card and local coach results](unit-1-quality.md) · [U2 quality card](unit-2-quality.md) · [U3 quality card](unit-3-quality.md)
 
 ## Content licence and attribution
 
@@ -45,6 +48,8 @@ SkillPilot is not affiliated with MIT, and MIT does not endorse this course. The
 - **Local copies stay local.** The downloaded OCW copy under `curricula/US/MIT_OCW/input/` is ignored by Git and is used only to find time stamps and problem numbers.
 
 On 27 November 2026 every tracked file under `curricula/US/MIT_OCW/` was compared with the local OCW copy of 18.06 (lecture notes, problem sets, exams, captions): no sequence of more than eleven words is shared, and the longest shared sequences are lecture titles used for credit.
+
+The same comparison after U2 and U3 were added found no sequence of eight or more words shared with their goals, tasks, solutions and cards. The only longer shared runs are the entries $0$ and $1$ of identity and permutation matrices, at most 13 in a row.
 
 SkillPilot wrote the course graph, explanations, activities, solutions and cards and created the figures. This original course content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 

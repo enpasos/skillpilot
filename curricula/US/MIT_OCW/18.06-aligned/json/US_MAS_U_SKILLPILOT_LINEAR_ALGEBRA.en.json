@@ -1,7 +1,7 @@
 {
   "landscapeId": "3bdc6a37-9468-50ab-aee4-0a6180db477b",
   "title": "Linear Algebra",
-  "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This pilot covers vector arithmetic, linear systems, and matrix multiplication and inverses.",
+  "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare, built around the lectures of Professor Gilbert Strang. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, and the factorizations $A = LU$ and $PA = LU$ with permutations and transposes.",
   "locale": "en-US",
   "subject": "Mathematics",
   "frameworkId": "skillpilot-linear-algebra",
@@ -39,6 +39,16 @@
       "promiseEn": "Multiply matrices in four ways and by blocks, use the order rules, and decide when a square matrix has an inverse and compute it.",
       "revision": "2026-11-27-v1",
       "order": 2
+    },
+    {
+      "id": "u3",
+      "kind": "learningUnit",
+      "label": "Factorization, permutations and transposes",
+      "labelEn": "Factorization, permutations and transposes",
+      "promise": "Write elimination as $A = LU$ and $PA = LU$, estimate its cost, and use permutations, transposes and symmetric matrices.",
+      "promiseEn": "Write elimination as $A = LU$ and $PA = LU$, estimate its cost, and use permutations, transposes and symmetric matrices.",
+      "revision": "2026-11-27-v1",
+      "order": 3
     }
   ],
   "goalPlacements": [
@@ -181,6 +191,66 @@
       "goalId": "6a22806c-baa3-59ac-ad55-229aedc63a4f",
       "unitId": "u2",
       "relation": "own"
+    },
+    {
+      "goalId": "efb8c527-a19d-524a-ade5-13ace4319378",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "03fb084e-c18a-5e0d-8de7-8f05f5bdedfd",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "57b00a02-4d1c-5e73-85de-e8ad8a277a84",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "825f9aad-bc7d-5ebc-a1e2-18dfb2f52089",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "d9919c53-38d2-5113-82ae-51f599c240d7",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "1f688a50-a204-52e7-97df-f402b10830e5",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "8d30c055-e9cc-5242-bf1c-163a5c334e95",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "eeefb5a0-a3c1-5b74-b040-be4a591c2a99",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "e239cd87-daf7-5096-bddd-a97544f91fb7",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "4107ebd2-cf67-527a-87e0-4cb58e816f2a",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "fe8293ee-9cc5-59d9-af13-26694e631bc8",
+      "unitId": "u3",
+      "relation": "own"
+    },
+    {
+      "goalId": "40f87766-79ee-5bb8-b7b7-d6a5011ea205",
+      "unitId": "u3",
+      "relation": "own"
     }
   ],
   "goals": [
@@ -189,7 +259,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-root",
       "title": "Linear Algebra",
-      "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare. Its learning goals lead you to the matching moments of the lectures by Professor Gilbert Strang, whose exceptionally clear and patient teaching has made this course a classic for learners around the world. SkillPilot wrote the goals, tasks and cards and links to the lectures, which MIT OpenCourseWare publishes under CC BY-NC-SA 4.0; SkillPilot is not affiliated with MIT, and MIT does not endorse this course. This pilot covers vector arithmetic, linear systems, and matrix multiplication and inverses.",
+      "description": "A SkillPilot course aligned with MIT 18.06 Linear Algebra from MIT OpenCourseWare. Its learning goals lead you to the matching moments of the lectures by Professor Gilbert Strang, whose exceptionally clear and patient teaching has made this course a classic for learners around the world. SkillPilot wrote the goals, tasks and cards and links to the lectures, which MIT OpenCourseWare publishes under CC BY-NC-SA 4.0; SkillPilot is not affiliated with MIT, and MIT does not endorse this course. This pilot covers vector arithmetic, linear systems, matrix multiplication and inverses, and the factorizations $A = LU$ and $PA = LU$ with permutations and transposes.",
       "type": "cluster",
       "semanticKind": "programStructure",
       "weight": 1,
@@ -199,7 +269,8 @@
       "contains": [
         "0910a75b-c873-5463-9b31-4c2a291b3dba",
         "7306eed2-7efa-5f27-a91f-af2443aa26ca",
-        "d0e61447-a6e7-5baa-b0a4-9265bbaee0e1"
+        "d0e61447-a6e7-5baa-b0a4-9265bbaee0e1",
+        "684be705-e7a9-58bb-9922-03def1d1e305"
       ],
       "requires": [],
       "extendedData": {
@@ -2246,6 +2317,915 @@
               "id": "gauss-jordan-check",
               "points": 1,
               "description": "Multiply $M$ by the first column of the learner’s inverse, compare with $(1, 0, 0)$, and explain that $MM^{-1} = I$ read by columns requires it."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "684be705-e7a9-58bb-9922-03def1d1e305",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3",
+      "title": "U3 · Factorization, permutations and transposes",
+      "description": "Write elimination with matrices, factor $A = LU$ and $A = LDU$, estimate the cost of elimination, transpose products and inverses, use permutation matrices in $PA = LU$ and recognize symmetric matrices.",
+      "type": "cluster",
+      "semanticKind": "programStructure",
+      "weight": 1,
+      "tags": [],
+      "contains": [
+        "efb8c527-a19d-524a-ade5-13ace4319378",
+        "03fb084e-c18a-5e0d-8de7-8f05f5bdedfd",
+        "57b00a02-4d1c-5e73-85de-e8ad8a277a84",
+        "825f9aad-bc7d-5ebc-a1e2-18dfb2f52089",
+        "d9919c53-38d2-5113-82ae-51f599c240d7",
+        "1f688a50-a204-52e7-97df-f402b10830e5",
+        "8d30c055-e9cc-5242-bf1c-163a5c334e95",
+        "eeefb5a0-a3c1-5b74-b040-be4a591c2a99",
+        "e239cd87-daf7-5096-bddd-a97544f91fb7",
+        "4107ebd2-cf67-527a-87e0-4cb58e816f2a",
+        "fe8293ee-9cc5-59d9-af13-26694e631bc8",
+        "40f87766-79ee-5bb8-b7b7-d6a5011ea205"
+      ],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 33
+      },
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "resourceType": "video",
+          "title": "Lecture 4 · Factorization into $A = LU$",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0"
+        },
+        {
+          "type": "concept",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "efb8c527-a19d-524a-ade5-13ace4319378",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-opening",
+      "title": "Start factorization, permutations and transposes",
+      "description": "The learner can state the unit plan and the success criteria. First write elimination steps as matrices and invert a product. Then factor $A = LU$ and $A = LDU$ and estimate the cost of elimination. Next transpose products and inverses, use permutation matrices and factor $PA = LU$ when rows must be exchanged. Finally recognize symmetric matrices. Closing task 1 checks the factorization and its cost. Closing task 2 checks transposes, permutations and symmetry.\n\nAt 0:12 in Lecture 4, listen for the two goals of the lecture. Then name the factors you will meet in this unit.",
+      "type": "atomic",
+      "semanticKind": "orientation",
+      "weight": 1,
+      "tags": [
+        "orientation"
+      ],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 34
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:12.380–01:40.800"
+          ],
+          "description": "inverse of a product · elimination in matrix form",
+          "resourceType": "webpage",
+          "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "00:12.380–01:40.800"
+          ],
+          "description": "inverse of a product · elimination in matrix form",
+          "resourceType": "video",
+          "title": "Lecture 4 · Factorization into $A = LU$ · 00:12.380–01:40.800",
+          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=12s"
+        }
+      ]
+    },
+    {
+      "id": "03fb084e-c18a-5e0d-8de7-8f05f5bdedfd",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-elimination-matrices",
+      "title": "Write elimination steps as matrices",
+      "description": "The learner can write an elimination step as a matrix, combine the steps of elimination into one product and undo a step. The elimination matrix $E_{ij}$ is the identity with $-\\ell_{ij}$ in row $i$ and column $j$. Multiplied on the left, $E_{ij}A$ subtracts $\\ell_{ij}$ times row $j$ from row $i$ and leaves the other rows unchanged. Each row of $E_{ij}A$ is a combination of the rows of $A$ with the weights in the same row of $E_{ij}$. The steps act in order, so elimination on a $3 \\times 3$ matrix without row exchanges is $E_{32}E_{31}E_{21}A = U$, and the first step stands next to $A$. The inverse $E_{ij}^{-1}$ adds the multiple back and has $+\\ell_{ij}$ in the same place.\n\nFor example, let $A$ have the rows $\\begin{bmatrix} 1 & 4 & 0 \\end{bmatrix}$, $\\begin{bmatrix} 0 & 3 & 1 \\end{bmatrix}$ and $\\begin{bmatrix} 2 & 5 & 7 \\end{bmatrix}$. With $\\ell_{31} = 2$,\n\n$$\nE_{31} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ -2 & 0 & 1 \\end{bmatrix}, \\qquad E_{31}^{-1} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 2 & 0 & 1 \\end{bmatrix}\n$$\n\nThe product $E_{31}A$ keeps the first two rows of $A$ and has the third row $\\begin{bmatrix} 2 & 5 & 7 \\end{bmatrix} - 2\\begin{bmatrix} 1 & 4 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & -3 & 7 \\end{bmatrix}$.\n\nAt 24:33 in Lecture 2, see how the matrix of the first elimination step is built from the identity. Then follow the second step and the product of both up to 33:10. At 43:00, follow how the matrix that undoes a step is found.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "ca5fadbe-bc02-5b8f-93f6-260d282567d6",
+        "abab02f7-cb47-594a-b28c-ba6186ffbd77"
+      ],
+      "extendedData": {
+        "treeOrder": 35
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "24:33.160–33:10.890"
+          ],
+          "description": "elimination matrix · row combinations · product of the steps",
+          "resourceType": "webpage",
+          "title": "Lecture 2 · Elimination with matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-2-elimination-with-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "24:33.160–33:10.890"
+          ],
+          "description": "elimination matrix · row combinations · product of the steps",
+          "resourceType": "video",
+          "title": "Lecture 2 · Elimination with matrices · 24:33.160–33:10.890",
+          "url": "https://www.youtube.com/watch?v=QVKj3LADCnA&t=1473s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "43:00.790–47:12.710"
+          ],
+          "description": "undoing a step · inverse of an elimination matrix",
+          "resourceType": "webpage",
+          "title": "Lecture 2 · Elimination with matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-2-elimination-with-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "43:00.790–47:12.710"
+          ],
+          "description": "undoing a step · inverse of an elimination matrix",
+          "resourceType": "video",
+          "title": "Lecture 2 · Elimination with matrices · 43:00.790–47:12.710",
+          "url": "https://www.youtube.com/watch?v=QVKj3LADCnA&t=2580s"
+        }
+      ]
+    },
+    {
+      "id": "57b00a02-4d1c-5e73-85de-e8ad8a277a84",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-product-inverse",
+      "title": "Invert a product of matrices",
+      "description": "The learner can invert a product of invertible matrices in reverse order and check the result. If $A$ and $B$ are invertible and of the same size, then $(AB)^{-1} = B^{-1}A^{-1}$, because\n\n$$\n(AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = AA^{-1} = I\n$$\n\nThe factor applied last is undone first. The rule extends to more factors: $(ABC)^{-1} = C^{-1}B^{-1}A^{-1}$. For example, $A = \\begin{bmatrix} 2 & 0 \\\\ 0 & 1 \\end{bmatrix}$ and $B = \\begin{bmatrix} 1 & 3 \\\\ 0 & 1 \\end{bmatrix}$ have the inverses $A^{-1} = \\begin{bmatrix} 1/2 & 0 \\\\ 0 & 1 \\end{bmatrix}$ and $B^{-1} = \\begin{bmatrix} 1 & -3 \\\\ 0 & 1 \\end{bmatrix}$. Then $AB = \\begin{bmatrix} 2 & 6 \\\\ 0 & 1 \\end{bmatrix}$ and\n\n$$\n(AB)^{-1} = B^{-1}A^{-1} = \\begin{bmatrix} 1/2 & -3 \\\\ 0 & 1 \\end{bmatrix}\n$$\n\nThe other order gives $A^{-1}B^{-1} = \\begin{bmatrix} 1/2 & -3/2 \\\\ 0 & 1 \\end{bmatrix}$, which is not the inverse of $AB$.\n\nAt 1:40 in Lecture 4, follow the check that the inverses in reverse order give the identity on both sides.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "abab02f7-cb47-594a-b28c-ba6186ffbd77"
+      ],
+      "extendedData": {
+        "treeOrder": 36
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:40.800–03:58.040"
+          ],
+          "description": "inverse of a product · reverse order · check on both sides",
+          "resourceType": "webpage",
+          "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:40.800–03:58.040"
+          ],
+          "description": "inverse of a product · reverse order · check on both sides",
+          "resourceType": "video",
+          "title": "Lecture 4 · Factorization into $A = LU$ · 01:40.800–03:58.040",
+          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=100s"
+        }
+      ]
+    },
+    {
+      "id": "825f9aad-bc7d-5ebc-a1e2-18dfb2f52089",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-lu-factorization",
+      "title": "Factor $A = LU$ and $A = LDU$",
+      "description": "The learner can factor a square matrix as $A = LU$ when elimination needs no row exchange and split off the pivots as $A = LDU$. Elimination gives $E_{32}E_{31}E_{21}A = U$. Inverting that product in reverse order gives\n\n$$\nA = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}U = LU\n$$\n\nIn this order the multipliers do not mix. $L$ is lower triangular with ones on its diagonal and $\\ell_{ij}$ in row $i$, column $j$. $U$ is upper triangular with the pivots on its diagonal. Dividing each row of $U$ by its pivot gives $A = LDU$, with the pivots in the diagonal matrix $D$ and ones on the diagonal of the new $U$.\n\n$$\nA = \\begin{bmatrix} 2 & 1 & -1 \\\\ -4 & 1 & 4 \\\\ 2 & 10 & 4 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 0 \\\\ -2 & 1 & 0 \\\\ 1 & 3 & 1 \\end{bmatrix}\\begin{bmatrix} 2 & 1 & -1 \\\\ 0 & 3 & 2 \\\\ 0 & 0 & -1 \\end{bmatrix}\n$$\n\nHere $\\ell_{21} = -2$, $\\ell_{31} = 1$ and $\\ell_{32} = 3$, and the pivots $2$, $3$ and $-1$ form $D$. The product $E = E_{32}E_{31}E_{21}$ hides the multipliers: its entry in row 3, column 1 is $-7$, because row 1 reaches row 3 both directly and through row 2.\n\nAt 7:23 in Lecture 4, follow the two by two factorization and the split of the pivots into a diagonal matrix. At 13:50, see why the inverses in reverse order put each multiplier straight into $L$.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "03fb084e-c18a-5e0d-8de7-8f05f5bdedfd",
+        "57b00a02-4d1c-5e73-85de-e8ad8a277a84"
+      ],
+      "extendedData": {
+        "treeOrder": 37
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "07:23.960–13:50.920"
+          ],
+          "description": "two by two factorization · pivots split off",
+          "resourceType": "webpage",
+          "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "07:23.960–13:50.920"
+          ],
+          "description": "two by two factorization · pivots split off",
+          "resourceType": "video",
+          "title": "Lecture 4 · Factorization into $A = LU$ · 07:23.960–13:50.920",
+          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=443s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "13:50.920–26:06.210"
+          ],
+          "description": "three by three · inverses in reverse order · multipliers in place",
+          "resourceType": "webpage",
+          "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "13:50.920–26:06.210"
+          ],
+          "description": "three by three · inverses in reverse order · multipliers in place",
+          "resourceType": "video",
+          "title": "Lecture 4 · Factorization into $A = LU$ · 13:50.920–26:06.210",
+          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=830s"
+        }
+      ]
+    },
+    {
+      "id": "d9919c53-38d2-5113-82ae-51f599c240d7",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-elimination-cost",
+      "title": "Estimate the cost of elimination",
+      "description": "The learner can estimate how the work of elimination grows with the size $n$ of a square matrix. Count one multiplication together with one subtraction as one operation. Clearing the first column changes about $n^2$ entries, the next stage about $(n - 1)^2$, and so on. So elimination on $A$ takes about\n\n$$\nn^2 + (n - 1)^2 + \\dots + 2^2 + 1^2 \\approx \\frac{1}{3}n^3\n$$\n\noperations. Each right-hand side $\\mathbf{b}$ costs only about $n^2$: the multipliers stored in $L$ update $\\mathbf{b}$, and back substitution with $U$ finishes. Doubling $n$ multiplies the work on $A$ by about $8$ and the work for each $\\mathbf{b}$ by about $4$. For $n = 300$, elimination on $A$ takes about $9 \\times 10^6$ operations and each right-hand side about $9 \\times 10^4$.\n\nAt 26:14 in Lecture 4, follow the count stage by stage and the estimate of the sum. At 38:40, listen for the cost of each right-hand side.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "825f9aad-bc7d-5ebc-a1e2-18dfb2f52089"
+      ],
+      "extendedData": {
+        "treeOrder": 38
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "26:14.160–38:35.010"
+          ],
+          "description": "operation count · stages of elimination · sum of squares",
+          "resourceType": "webpage",
+          "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "26:14.160–38:35.010"
+          ],
+          "description": "operation count · stages of elimination · sum of squares",
+          "resourceType": "video",
+          "title": "Lecture 4 · Factorization into $A = LU$ · 26:14.160–38:35.010",
+          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=1574s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "38:40.080–40:16.560"
+          ],
+          "description": "cost of a right-hand side · many right sides",
+          "resourceType": "webpage",
+          "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "38:40.080–40:16.560"
+          ],
+          "description": "cost of a right-hand side · many right sides",
+          "resourceType": "video",
+          "title": "Lecture 4 · Factorization into $A = LU$ · 38:40.080–40:16.560",
+          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=2320s"
+        }
+      ]
+    },
+    {
+      "id": "1f688a50-a204-52e7-97df-f402b10830e5",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-transposes",
+      "title": "Transpose products and inverses",
+      "description": "The learner can transpose a matrix and use $(AB)^{\\mathrm T} = B^{\\mathrm T}A^{\\mathrm T}$ and $(A^{-1})^{\\mathrm T} = (A^{\\mathrm T})^{-1}$. The transpose $A^{\\mathrm T}$ turns the rows of $A$ into columns: $(A^{\\mathrm T})_{ij} = A_{ji}$, and an $m \\times n$ matrix has an $n \\times m$ transpose. A product transposes in reverse order. Entry $(i, j)$ of $(AB)^{\\mathrm T}$ is entry $(j, i)$ of $AB$, which is row $j$ of $A$ times column $i$ of $B$. That equals row $i$ of $B^{\\mathrm T}$ times column $j$ of $A^{\\mathrm T}$. Transposing $AA^{-1} = I$ gives $(A^{-1})^{\\mathrm T}A^{\\mathrm T} = I$, so the inverse of $A^{\\mathrm T}$ is the transpose of $A^{-1}$.\n\n$$\nA = \\begin{bmatrix} 1 & 0 & 4 \\\\ -2 & 3 & 5 \\end{bmatrix}, \\qquad A^{\\mathrm T} = \\begin{bmatrix} 1 & -2 \\\\ 0 & 3 \\\\ 4 & 5 \\end{bmatrix}\n$$\n\nAt 10:15 in Lecture 5, see a rectangular matrix turned on its side and the rule for its entries. At 3:58 in Lecture 4, follow how transposing $AA^{-1} = I$ gives the inverse of $A^{\\mathrm T}$.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "abab02f7-cb47-594a-b28c-ba6186ffbd77"
+      ],
+      "extendedData": {
+        "treeOrder": 39
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "10:15.320–12:45.610"
+          ],
+          "description": "rows become columns · entry rule",
+          "resourceType": "webpage",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "10:15.320–12:45.610"
+          ],
+          "description": "rows become columns · entry rule",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 10:15.320–12:45.610",
+          "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=615s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "03:58.040–06:35.390"
+          ],
+          "description": "transposing a product · inverse of the transpose",
+          "resourceType": "webpage",
+          "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "03:58.040–06:35.390"
+          ],
+          "description": "transposing a product · inverse of the transpose",
+          "resourceType": "video",
+          "title": "Lecture 4 · Factorization into $A = LU$ · 03:58.040–06:35.390",
+          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=238s"
+        }
+      ]
+    },
+    {
+      "id": "8d30c055-e9cc-5242-bf1c-163a5c334e95",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-permutations",
+      "title": "Reorder rows with permutation matrices",
+      "description": "The learner can build a permutation matrix, use it to reorder the rows or the columns of a matrix and invert it. A permutation matrix $P$ is the identity with its rows reordered, so every row and every column has exactly one $1$. Then $PA$ has the rows of $A$ in that new order, while $AP$ reorders the columns of $A$. A product of permutation matrices is again a permutation matrix. The inverse is the transpose, $P^{-1} = P^{\\mathrm T}$: different columns of $P$ have their ones in different rows, so $P^{\\mathrm T}P = I$. There are $n!$ permutation matrices of size $n$.\n\n$$\nP = \\begin{bmatrix} 0 & 1 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 1 & 0 \\end{bmatrix}\n$$\n\nFor this $P$, the rows of $PA$ are rows 2, 4, 1 and 3 of $A$, and $P^{\\mathrm T}$ puts them back in their first order.\n\nAt 36:45 in Lecture 2, see how the matrix that exchanges two rows comes from the identity, and why exchanging columns needs the matrix on the right. At 41:13 in Lecture 4 and at 6:30 in Lecture 5, follow the list of all reorderings, their number and the inverse.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "1f688a50-a204-52e7-97df-f402b10830e5",
+        "ca5fadbe-bc02-5b8f-93f6-260d282567d6"
+      ],
+      "extendedData": {
+        "treeOrder": 40
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:45.780–41:12.535"
+          ],
+          "description": "exchange matrix from the identity · rows on the left, columns on the right",
+          "resourceType": "webpage",
+          "title": "Lecture 2 · Elimination with matrices · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-2-elimination-with-matrices/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "36:45.780–41:12.535"
+          ],
+          "description": "exchange matrix from the identity · rows on the left, columns on the right",
+          "resourceType": "video",
+          "title": "Lecture 2 · Elimination with matrices · 36:45.780–41:12.535",
+          "url": "https://www.youtube.com/watch?v=QVKj3LADCnA&t=2205s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "41:13.700–47:48.820"
+          ],
+          "description": "all reorderings of three rows · inverse · number of them",
+          "resourceType": "webpage",
+          "title": "Lecture 4 · Factorization into $A = LU$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-4-factorization-into-a-lu/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "41:13.700–47:48.820"
+          ],
+          "description": "all reorderings of three rows · inverse · number of them",
+          "resourceType": "video",
+          "title": "Lecture 4 · Factorization into $A = LU$ · 41:13.700–47:48.820",
+          "url": "https://www.youtube.com/watch?v=MsIvs_6vC38&t=2473s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "06:30.410–10:15.320"
+          ],
+          "description": "reordered identity · transpose times the matrix · factorial count",
+          "resourceType": "webpage",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "06:30.410–10:15.320"
+          ],
+          "description": "reordered identity · transpose times the matrix · factorial count",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 06:30.410–10:15.320",
+          "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=390s"
+        }
+      ]
+    },
+    {
+      "id": "eeefb5a0-a3c1-5b74-b040-be4a591c2a99",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-pa-lu",
+      "title": "Factor with row exchanges as $PA = LU$",
+      "description": "The learner can factor an invertible matrix that needs row exchanges as $PA = LU$. A zero in a pivot position with a nonzero entry below it calls for a row exchange. Collect all exchanges in one permutation matrix $P$ and put the rows of $A$ in that order first. Elimination on $PA$ then needs no exchange and gives $PA = LU$. Every invertible matrix has such a factorization.\n\nFor $A = \\begin{bmatrix} 0 & 2 & 1 \\\\ 3 & 1 & 0 \\\\ 6 & 4 & 5 \\end{bmatrix}$ the first pivot position holds $0$, so exchange rows 1 and 2:\n\n$$\nP = \\begin{bmatrix} 0 & 1 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}, \\qquad PA = \\begin{bmatrix} 3 & 1 & 0 \\\\ 0 & 2 & 1 \\\\ 6 & 4 & 5 \\end{bmatrix} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 2 & 1 & 1 \\end{bmatrix}\\begin{bmatrix} 3 & 1 & 0 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 4 \\end{bmatrix}\n$$\n\nAt 1:17 in Lecture 5, listen for why an invertible matrix may still need row exchanges and how $A = LU$ becomes $PA = LU$.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "825f9aad-bc7d-5ebc-a1e2-18dfb2f52089",
+        "8d30c055-e9cc-5242-bf1c-163a5c334e95"
+      ],
+      "extendedData": {
+        "treeOrder": 41
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:17.800–06:30.410"
+          ],
+          "description": "zero in a pivot position · exchanges first · factorization with a permutation",
+          "resourceType": "webpage",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "01:17.800–06:30.410"
+          ],
+          "description": "zero in a pivot position · exchanges first · factorization with a permutation",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 01:17.800–06:30.410",
+          "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=77s"
+        }
+      ]
+    },
+    {
+      "id": "e239cd87-daf7-5096-bddd-a97544f91fb7",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-symmetric-matrices",
+      "title": "Recognize symmetric matrices",
+      "description": "The learner can decide whether a matrix is symmetric and show that $R^{\\mathrm T}R$ is symmetric for every matrix $R$. A matrix $A$ is symmetric if $A^{\\mathrm T} = A$. Then $A$ is square and $A_{ij} = A_{ji}$, so its entries mirror across the main diagonal. For any $m \\times n$ matrix $R$, the $n \\times n$ matrix $R^{\\mathrm T}R$ is symmetric, because\n\n$$\n(R^{\\mathrm T}R)^{\\mathrm T} = R^{\\mathrm T}(R^{\\mathrm T})^{\\mathrm T} = R^{\\mathrm T}R\n$$\n\nIts entry $(i, j)$ is the dot product of columns $i$ and $j$ of $R$. In the same way $RR^{\\mathrm T}$ is symmetric. For example,\n\n$$\nR = \\begin{bmatrix} 1 & 2 \\\\ 0 & 1 \\\\ -1 & 3 \\end{bmatrix}, \\qquad R^{\\mathrm T}R = \\begin{bmatrix} 2 & -1 \\\\ -1 & 14 \\end{bmatrix}\n$$\n\nIf $A$ is symmetric and invertible, then $A^{-1}$ is symmetric too, since $(A^{-1})^{\\mathrm T} = (A^{\\mathrm T})^{-1} = A^{-1}$.\n\nAt 12:52 in Lecture 5, see what symmetry means for the entries. From 14:43, follow why a rectangular matrix times its transpose is symmetric, first with numbers and then in two lines.",
+      "type": "atomic",
+      "semanticKind": "curricularAtomic",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "1f688a50-a204-52e7-97df-f402b10830e5"
+      ],
+      "extendedData": {
+        "treeOrder": 42
+      },
+      "nodeKind": "tutor",
+      "resourceLinks": [
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "12:52.880–14:42.510"
+          ],
+          "description": "unchanged by transposing · mirror entries",
+          "resourceType": "webpage",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "12:52.880–14:42.510"
+          ],
+          "description": "unchanged by transposing · mirror entries",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 12:52.880–14:42.510",
+          "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=772s"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "14:43.380–20:00.220"
+          ],
+          "description": "rectangular matrix times its transpose · proof by the order rule",
+          "resourceType": "webpage",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · lecture page",
+          "url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-5-transposes-permutations-spaces-r-n/"
+        },
+        {
+          "type": "concept",
+          "provider": "MIT OpenCourseWare",
+          "lang": "en",
+          "license": "CC BY-NC-SA 4.0",
+          "sections": [
+            "14:43.380–20:00.220"
+          ],
+          "description": "rectangular matrix times its transpose · proof by the order rule",
+          "resourceType": "video",
+          "title": "Lecture 5 · Transposes, permutations, spaces $\\mathbf{R}^n$ · 14:43.380–20:00.220",
+          "url": "https://www.youtube.com/watch?v=JibVXBElKL0&t=883s"
+        }
+      ]
+    },
+    {
+      "id": "4107ebd2-cf67-527a-87e0-4cb58e816f2a",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-deck",
+      "title": "Recall factorization, permutations and transposes",
+      "description": "Retrieve the inverse of a product, the place of the multipliers in $L$, the cost of elimination, the transpose of a product, the inverse of a permutation matrix and why $R^{\\mathrm T}R$ is symmetric.",
+      "type": "atomic",
+      "semanticKind": "memory",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [],
+      "extendedData": {
+        "treeOrder": 43,
+        "vocabularySource": "/data/us_skillpilot_linear_algebra_u3_deck.en.json"
+      },
+      "nodeKind": "memory"
+    },
+    {
+      "id": "fe8293ee-9cc5-59d9-af13-26694e631bc8",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-closing-task-lu",
+      "title": "Closing task 1 · Elimination as $A = LU$",
+      "description": "Write the elimination steps as matrices, invert products in reverse order, factor $A = LU$ and $A = LDU$, and estimate the cost of elimination. The pass mark is 13 of 16.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "d9919c53-38d2-5113-82ae-51f599c240d7"
+      ],
+      "extendedData": {
+        "treeOrder": 44
+      },
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "03fb084e-c18a-5e0d-8de7-8f05f5bdedfd",
+          "57b00a02-4d1c-5e73-85de-e8ad8a277a84",
+          "825f9aad-bc7d-5ebc-a1e2-18dfb2f52089",
+          "d9919c53-38d2-5113-82ae-51f599c240d7"
+        ],
+        "taskContent": "Items 1 and 3 use\n\n$$\nA = \\begin{bmatrix} 1 & 2 & -1 \\\\ -3 & -4 & 4 \\\\ 2 & 2 & 0 \\end{bmatrix}\n$$\n\n1. Find the multipliers $\\ell_{21}$, $\\ell_{31}$ and $\\ell_{32}$ and the matrices $E_{21}$, $E_{31}$ and $E_{32}$ that reduce $A$ to an upper triangular $U$ without row exchanges, and give $U$. In which order do the three matrices multiply $A$? Write the matrix that undoes $E_{32}$ and say what it does.\n\n2. Write $(E_{32}E_{31}E_{21})^{-1}$ as a product of three inverses and say why the order changes. For invertible $n \\times n$ matrices $B$ and $C$, show by multiplication which of $C^{-1}B^{-1}$ and $B^{-1}C^{-1}$ is $(BC)^{-1}$. Then suppose you know\n\n   $$\n   B = \\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix}, \\qquad (BC)^{-1} = \\begin{bmatrix} 2 & 0 \\\\ -1 & 1 \\end{bmatrix}\n   $$\n\n   Find $C^{-1}$ without inverting any matrix, and say why your formula holds.\n\n3. Write $A = LU$ and check one row of the product. Write $A = LDU$. Then change only the entry $0$ in row 3, column 3 of $A$ into a number $q$. For which $q$ does elimination find no third pivot? Explain in one sentence why only the last pivot changes.\n\n4. Elimination runs on a $600 \\times 600$ matrix. About how many operations does elimination on the matrix take, and about how many does one right-hand side take? If elimination on this matrix takes $2$ seconds, about how long does it take on a $1200 \\times 1200$ matrix? How many right-hand sides together cost about as much as the elimination on the matrix itself? Say why it is worth keeping $L$ and $U$.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. The multipliers are $\\ell_{21} = -3$, $\\ell_{31} = 2$ and $\\ell_{32} = -1$. Adding $3$ times row 1 to row 2 gives $\\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix}$. Subtracting $2$ times row 1 from row 3 gives $\\begin{bmatrix} 0 & -2 & 2 \\end{bmatrix}$, and adding the new row 2 to it gives $\\begin{bmatrix} 0 & 0 & 3 \\end{bmatrix}$:\n\n   $$\n   E_{21} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 3 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}, \\quad E_{31} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ -2 & 0 & 1 \\end{bmatrix}, \\quad E_{32} = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 1 & 1 \\end{bmatrix}, \\quad U = \\begin{bmatrix} 1 & 2 & -1 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 3 \\end{bmatrix}\n   $$\n\n   Elimination is $E_{32}E_{31}E_{21}A = U$, so the first step $E_{21}$ stands next to $A$. $E_{32}$ adds row 2 to row 3. Its inverse $E_{32}^{-1}$ has $-1$ in row 3, column 2 and subtracts row 2 from row 3 again.\n\n2. $(E_{32}E_{31}E_{21})^{-1} = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$, because the step applied last is undone first. For invertible $B$ and $C$, $(BC)(C^{-1}B^{-1}) = B(CC^{-1})B^{-1} = BB^{-1} = I$, so $(BC)^{-1} = C^{-1}B^{-1}$. The other order fails in general. Then $(BC)^{-1}B = C^{-1}B^{-1}B = C^{-1}$, so\n\n   $$\n   C^{-1} = (BC)^{-1}B = \\begin{bmatrix} 2 & 0 \\\\ -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 1 \\\\ 0 & 2 \\end{bmatrix} = \\begin{bmatrix} 2 & 2 \\\\ -1 & 1 \\end{bmatrix}\n   $$\n\n3. The multipliers go into $L$:\n\n   $$\n   A = LU = \\begin{bmatrix} 1 & 0 & 0 \\\\ -3 & 1 & 0 \\\\ 2 & -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & -1 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 3 \\end{bmatrix}\n   $$\n\n   Row 3 of $LU$ is $2\\begin{bmatrix} 1 & 2 & -1 \\end{bmatrix} - \\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix} + \\begin{bmatrix} 0 & 0 & 3 \\end{bmatrix} = \\begin{bmatrix} 2 & 2 & 0 \\end{bmatrix}$, row 3 of $A$. Dividing the rows of $U$ by the pivots $1$, $2$ and $3$ gives\n\n   $$\n   A = LDU = \\begin{bmatrix} 1 & 0 & 0 \\\\ -3 & 1 & 0 \\\\ 2 & -1 & 1 \\end{bmatrix}\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 3 \\end{bmatrix}\\begin{bmatrix} 1 & 2 & -1 \\\\ 0 & 1 & 1/2 \\\\ 0 & 0 & 1 \\end{bmatrix}\n   $$\n\n   With $q$ in place of the $0$, row 3 becomes $\\begin{bmatrix} 0 & -2 & q + 2 \\end{bmatrix}$ after the first column and $\\begin{bmatrix} 0 & 0 & q + 3 \\end{bmatrix}$ after the second. So there is no third pivot for $q = -3$. Only the last pivot changes, because the entry in row 3, column 3 is never used for a multiplier or for another row.\n\n4. For $n = 600$, elimination on the matrix takes about $\\frac{1}{3}n^3 = 7.2 \\times 10^7$ operations and one right-hand side about $n^2 = 3.6 \\times 10^5$. Doubling $n$ multiplies $\\frac{1}{3}n^3$ by $8$, so the larger matrix takes about $16$ seconds. The work for $k$ right-hand sides, about $kn^2$, matches $\\frac{1}{3}n^3$ when $k = n/3 = 200$. With $L$ and $U$ kept, each new right-hand side costs only about $n^2$ instead of a new elimination of about $\\frac{1}{3}n^3$.",
+        "scoring": {
+          "maxPoints": 16,
+          "passingPoints": 13,
+          "steps": [
+            {
+              "id": "elimination-multipliers",
+              "points": 1,
+              "description": "Find the multipliers $-3$, $2$ and $-1$ and the matrix $U$ they produce."
+            },
+            {
+              "id": "elimination-matrices",
+              "points": 1,
+              "description": "Write $E_{21}$, $E_{31}$ and $E_{32}$ as the identity with minus the multiplier in the right place. Follow through from the learner’s multipliers."
+            },
+            {
+              "id": "elimination-order",
+              "points": 1,
+              "description": "Write $E_{32}E_{31}E_{21}A = U$ and explain that the first step stands next to $A$."
+            },
+            {
+              "id": "elimination-undo",
+              "points": 1,
+              "description": "Give $E_{32}^{-1}$ with the sign of its entry in row 3, column 2 reversed and say that it subtracts row 2 from row 3 again."
+            },
+            {
+              "id": "inverse-reverse",
+              "points": 1,
+              "description": "Write $(E_{32}E_{31}E_{21})^{-1} = E_{21}^{-1}E_{31}^{-1}E_{32}^{-1}$ and explain that the last step is undone first."
+            },
+            {
+              "id": "inverse-check",
+              "points": 1,
+              "description": "Show $(BC)(C^{-1}B^{-1}) = I$ by regrouping and conclude that $C^{-1}B^{-1}$ is $(BC)^{-1}$."
+            },
+            {
+              "id": "inverse-backward-formula",
+              "points": 1,
+              "description": "Derive $C^{-1} = (BC)^{-1}B$ from $(BC)^{-1} = C^{-1}B^{-1}$."
+            },
+            {
+              "id": "inverse-backward-value",
+              "points": 1,
+              "description": "Compute $C^{-1} = \\begin{bmatrix} 2 & 2 \\\\ -1 & 1 \\end{bmatrix}$. Follow through from the learner’s formula."
+            },
+            {
+              "id": "lu-lower",
+              "points": 1,
+              "description": "Write $L$ with ones on its diagonal and the multipliers in their places. Follow through from the learner’s multipliers."
+            },
+            {
+              "id": "lu-check",
+              "points": 1,
+              "description": "Check at least one row of $LU$ against $A$."
+            },
+            {
+              "id": "lu-ldu",
+              "points": 1,
+              "description": "Split $U$ into $D$ with the pivots $1$, $2$ and $3$ and an upper triangular matrix with ones on its diagonal."
+            },
+            {
+              "id": "lu-backward",
+              "points": 1,
+              "description": "Find $q = -3$ from the third pivot $q + 3$ and explain that only the last pivot changes."
+            },
+            {
+              "id": "cost-matrix",
+              "points": 1,
+              "description": "Estimate about $\\frac{1}{3}n^3 = 7.2 \\times 10^7$ operations for the matrix."
+            },
+            {
+              "id": "cost-right-side",
+              "points": 1,
+              "description": "Estimate about $n^2 = 3.6 \\times 10^5$ operations for one right-hand side."
+            },
+            {
+              "id": "cost-scaling",
+              "points": 1,
+              "description": "Conclude that doubling $n$ multiplies the time by about $8$, so about $16$ seconds."
+            },
+            {
+              "id": "cost-reuse",
+              "points": 1,
+              "description": "Find $n/3 = 200$ right-hand sides and explain that keeping $L$ and $U$ avoids a new elimination for each right-hand side."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "40f87766-79ee-5bb8-b7b7-d6a5011ea205",
+      "dimensionTags": { "phase": "Module" },
+      "shortKey": "linear-algebra-u3-closing-task-permutations",
+      "title": "Closing task 2 · Transposes, permutations and symmetry",
+      "description": "Transpose products and inverses, reorder rows and columns with permutation matrices, factor $PA = LU$ and work with symmetric matrices. The pass mark is 13 of 16.",
+      "type": "atomic",
+      "semanticKind": "practiceAssessment",
+      "weight": 1,
+      "tags": [],
+      "contains": [],
+      "requires": [
+        "eeefb5a0-a3c1-5b74-b040-be4a591c2a99",
+        "e239cd87-daf7-5096-bddd-a97544f91fb7"
+      ],
+      "extendedData": {
+        "treeOrder": 45
+      },
+      "nodeKind": "exam",
+      "examData": {
+        "reviewStatus": "draft",
+        "coveredGoalIds": [
+          "1f688a50-a204-52e7-97df-f402b10830e5",
+          "8d30c055-e9cc-5242-bf1c-163a5c334e95",
+          "eeefb5a0-a3c1-5b74-b040-be4a591c2a99",
+          "e239cd87-daf7-5096-bddd-a97544f91fb7"
+        ],
+        "taskContent": "1. Let\n\n   $$\n   A = \\begin{bmatrix} 2 & -1 \\\\ 0 & 3 \\\\ 1 & 4 \\end{bmatrix}, \\qquad B = \\begin{bmatrix} 1 & 0 & -2 \\\\ 3 & 1 & 1 \\end{bmatrix}\n   $$\n\n   Give the shapes of $A^{\\mathrm T}B^{\\mathrm T}$ and $B^{\\mathrm T}A^{\\mathrm T}$ and say which one can equal $(AB)^{\\mathrm T}$. Compute entry $(1, 3)$ of $(AB)^{\\mathrm T}$ once from $AB$ and once from the transposes. A matrix $M$ has the inverse $M^{-1} = \\begin{bmatrix} 1 & 2 \\\\ 0 & -1 \\end{bmatrix}$. Give $(M^{\\mathrm T})^{-1}$ without computing $M$, and say why.\n\n2. For a $4 \\times 4$ matrix $A$, write the permutation matrix $P$ for which $PA$ has the rows of $A$ in the order 3, 1, 4, 2. Give $P^{-1}$ and check that $P^{-1}P = I$. In which order does $AP$ list the columns of $A$? How many $4 \\times 4$ permutation matrices are there, and how many of them leave row 1 in place?\n\n3. In this item\n\n   $$\n   A = \\begin{bmatrix} 0 & 2 & 1 \\\\ 1 & 1 & -1 \\\\ 3 & 1 & 2 \\end{bmatrix}\n   $$\n\n   Explain why elimination must exchange rows before the first step. Exchange rows 1 and 2 and find $P$, $L$ and $U$ with $PA = LU$. Then change the entry $2$ in row 1, column 2 of $A$ into a number $d$. For which $d$ does elimination on $PA$ meet a zero in the second pivot position, and in which order must the rows of $A$ then be taken?\n\n4. For which numbers $a$ and $b$ is the following matrix symmetric?\n\n   $$\n   \\begin{bmatrix} 1 & a & 0 \\\\ 4 & 2 & b \\\\ 0 & -3 & 5 \\end{bmatrix}\n   $$\n\n   Let $R = \\begin{bmatrix} 1 & c \\\\ 2 & 1 \\\\ 0 & 3 \\end{bmatrix}$. Compute $R^{\\mathrm T}R$ in terms of $c$ and find the $c$ for which it is diagonal. Show in one line that $R^{\\mathrm T}R$ is symmetric for every matrix $R$.\n\nShow your work. Method points follow through from the earlier values you show, and a single arithmetic slip is charged once.",
+        "solutionContent": "1. $A^{\\mathrm T}$ is $2 \\times 3$ and $B^{\\mathrm T}$ is $3 \\times 2$, so $A^{\\mathrm T}B^{\\mathrm T}$ is $2 \\times 2$ and $B^{\\mathrm T}A^{\\mathrm T}$ is $3 \\times 3$. Since $AB$ is $3 \\times 3$, only $B^{\\mathrm T}A^{\\mathrm T}$ can equal $(AB)^{\\mathrm T}$, and it does. Entry $(1, 3)$ of $(AB)^{\\mathrm T}$ is entry $(3, 1)$ of $AB$, row 3 of $A$ times column 1 of $B$: $(1)(1) + (4)(3) = 13$. From the transposes it is row 1 of $B^{\\mathrm T}$, $\\begin{bmatrix} 1 & 3 \\end{bmatrix}$, times column 3 of $A^{\\mathrm T}$, $(1, 4)$, again $13$. Transposing $MM^{-1} = I$ gives $(M^{-1})^{\\mathrm T}M^{\\mathrm T} = I$, so\n\n   $$\n   (M^{\\mathrm T})^{-1} = (M^{-1})^{\\mathrm T} = \\begin{bmatrix} 1 & 0 \\\\ 2 & -1 \\end{bmatrix}\n   $$\n\n2. Row $i$ of $P$ is the row of $I$ whose number is the row of $A$ that should stand in position $i$:\n\n   $$\n   P = \\begin{bmatrix} 0 & 0 & 1 & 0 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 0 & 1 & 0 & 0 \\end{bmatrix}, \\qquad P^{-1} = P^{\\mathrm T} = \\begin{bmatrix} 0 & 1 & 0 & 0 \\\\ 0 & 0 & 0 & 1 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 1 & 0 \\end{bmatrix}\n   $$\n\n   Entry $(i, j)$ of $P^{\\mathrm T}P$ is the dot product of columns $i$ and $j$ of $P$. Different columns have their ones in different rows, so $P^{\\mathrm T}P = I$. Column $j$ of $AP$ is $A$ times column $j$ of $P$, so $AP$ lists columns 2, 4, 1 and 3 of $A$. There are $4! = 24$ permutation matrices of size $4$. Those that leave row 1 in place reorder the other three rows, so there are $3! = 6$ of them.\n\n3. The first pivot position holds $0$, and rows 2 and 3 have nonzero entries below it, so a row exchange is needed. With rows 1 and 2 exchanged,\n\n   $$\n   P = \\begin{bmatrix} 0 & 1 & 0 \\\\ 1 & 0 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}, \\qquad PA = \\begin{bmatrix} 1 & 1 & -1 \\\\ 0 & 2 & 1 \\\\ 3 & 1 & 2 \\end{bmatrix}\n   $$\n\n   The multipliers are $\\ell_{21} = 0$, $\\ell_{31} = 3$ and $\\ell_{32} = -1$. Row 3 minus $3$ times row 1 is $\\begin{bmatrix} 0 & -2 & 5 \\end{bmatrix}$, and adding row 2 gives $\\begin{bmatrix} 0 & 0 & 6 \\end{bmatrix}$. So\n\n   $$\n   L = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 3 & -1 & 1 \\end{bmatrix}, \\qquad U = \\begin{bmatrix} 1 & 1 & -1 \\\\ 0 & 2 & 1 \\\\ 0 & 0 & 6 \\end{bmatrix}\n   $$\n\n   Row 3 of $LU$ is $3\\begin{bmatrix} 1 & 1 & -1 \\end{bmatrix} - \\begin{bmatrix} 0 & 2 & 1 \\end{bmatrix} + \\begin{bmatrix} 0 & 0 & 6 \\end{bmatrix} = \\begin{bmatrix} 3 & 1 & 2 \\end{bmatrix}$. With $d$ in place of the $2$, row 2 of $PA$ is $\\begin{bmatrix} 0 & d & 1 \\end{bmatrix}$, while row 3 is cleared to $\\begin{bmatrix} 0 & -2 & 5 \\end{bmatrix}$ as before. For $d = 0$ the second pivot position holds $0$, and row 3 must move up. The rows of $A$ are then taken in the order 2, 3, 1, and elimination gives the pivots $1$, $-2$ and $1$.\n\n4. The matrix is symmetric when it equals its transpose, so the mirror entries must agree: $a = 4$ and $b = -3$. The columns of $R$ are $(1, 2, 0)$ and $(c, 1, 3)$, so\n\n   $$\n   R^{\\mathrm T}R = \\begin{bmatrix} 5 & c + 2 \\\\ c + 2 & c^2 + 10 \\end{bmatrix}\n   $$\n\n   Both off-diagonal entries are the same dot product. The matrix is diagonal exactly for $c = -2$, when it is $\\begin{bmatrix} 5 & 0 \\\\ 0 & 14 \\end{bmatrix}$. For every matrix $R$, $(R^{\\mathrm T}R)^{\\mathrm T} = R^{\\mathrm T}(R^{\\mathrm T})^{\\mathrm T} = R^{\\mathrm T}R$.",
+        "scoring": {
+          "maxPoints": 16,
+          "passingPoints": 13,
+          "steps": [
+            {
+              "id": "transpose-shapes",
+              "points": 1,
+              "description": "Give $2 \\times 2$ for $A^{\\mathrm T}B^{\\mathrm T}$ and $3 \\times 3$ for $B^{\\mathrm T}A^{\\mathrm T}$ and conclude that only $B^{\\mathrm T}A^{\\mathrm T}$ can equal $(AB)^{\\mathrm T}$."
+            },
+            {
+              "id": "transpose-entry",
+              "points": 1,
+              "description": "Obtain $13$ for entry $(1, 3)$ of $(AB)^{\\mathrm T}$, both from entry $(3, 1)$ of $AB$ and from row 1 of $B^{\\mathrm T}$ times column 3 of $A^{\\mathrm T}$."
+            },
+            {
+              "id": "transpose-inverse",
+              "points": 1,
+              "description": "Give $(M^{\\mathrm T})^{-1}$ as the transpose of $M^{-1}$, $\\begin{bmatrix} 1 & 0 \\\\ 2 & -1 \\end{bmatrix}$."
+            },
+            {
+              "id": "transpose-reason",
+              "points": 1,
+              "description": "Justify it by transposing $MM^{-1} = I$ or $M^{-1}M = I$ with the order of the factors reversed."
+            },
+            {
+              "id": "permutation-build",
+              "points": 1,
+              "description": "Write the $4 \\times 4$ matrix $P$ whose rows are rows 3, 1, 4 and 2 of $I$."
+            },
+            {
+              "id": "permutation-inverse",
+              "points": 1,
+              "description": "Give $P^{-1} = P^{\\mathrm T}$ and check $P^{\\mathrm T}P = I$. Follow through from the learner’s $P$."
+            },
+            {
+              "id": "permutation-columns",
+              "points": 1,
+              "description": "State that $AP$ lists columns 2, 4, 1 and 3 of $A$, because column $j$ of $AP$ is $A$ times column $j$ of $P$. Follow through from the learner’s $P$."
+            },
+            {
+              "id": "permutation-count",
+              "points": 1,
+              "description": "Give $4! = 24$ and $3! = 6$, with the reason that the other three rows can be reordered freely."
+            },
+            {
+              "id": "palu-exchange",
+              "points": 1,
+              "description": "Explain that the first pivot position holds $0$ with nonzero entries below it, and give $P$ for the exchange of rows 1 and 2."
+            },
+            {
+              "id": "palu-lower",
+              "points": 1,
+              "description": "Find the multipliers $0$, $3$ and $-1$ for $PA$ and place them in $L$."
+            },
+            {
+              "id": "palu-upper",
+              "points": 1,
+              "description": "Give $U$ with the pivots $1$, $2$ and $6$ and check a row of $LU$ against $PA$. Follow through from the learner’s multipliers."
+            },
+            {
+              "id": "palu-backward",
+              "points": 1,
+              "description": "Find $d = 0$ and the order 2, 3, 1 of the rows of $A$, because the second pivot position then holds $0$ and row 3 has a nonzero entry there."
+            },
+            {
+              "id": "symmetric-entries",
+              "points": 1,
+              "description": "Give $a = 4$ and $b = -3$ from the mirror entries."
+            },
+            {
+              "id": "symmetric-product",
+              "points": 1,
+              "description": "Compute $R^{\\mathrm T}R$ in terms of $c$ from the dot products of the columns of $R$."
+            },
+            {
+              "id": "symmetric-diagonal",
+              "points": 1,
+              "description": "Find $c = -2$ from the off-diagonal entry $c + 2$. Follow through from the learner’s product."
+            },
+            {
+              "id": "symmetric-proof",
+              "points": 1,
+              "description": "Show $(R^{\\mathrm T}R)^{\\mathrm T} = R^{\\mathrm T}(R^{\\mathrm T})^{\\mathrm T} = R^{\\mathrm T}R$ with the order of the transposes reversed."
             }
           ]
         }

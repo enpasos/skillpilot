@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "deckId": "us_skillpilot_linear_algebra_u3",
+  "title": "Recall factorization, permutations and transposes",
+  "landscapeId": "3bdc6a37-9468-50ab-aee4-0a6180db477b",
+  "cards": [
+    {
+      "id": "442c7531-b673-5cbf-9774-9d0c5d05346c",
+      "front": "What is $(AB)^{-1}$ when $A$ and $B$ are invertible?",
+      "back": "$B^{-1}A^{-1}$, the inverses in reverse order, because $(AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I$.",
+      "originGoalIds": [
+        "57b00a02-4d1c-5e73-85de-e8ad8a277a84"
+      ],
+      "tags": [
+        "goal:57b00a02-4d1c-5e73-85de-e8ad8a277a84"
+      ]
+    },
+    {
+      "id": "caefd3c8-f34e-519d-90a3-ef9d8f40f6ab",
+      "front": "Where do the multipliers of elimination go in $A = LU$?",
+      "back": "With no row exchanges, $\\ell_{ij}$ sits in row $i$, column $j$ of $L$, below the ones on its diagonal. The pivots are on the diagonal of $U$.",
+      "originGoalIds": [
+        "825f9aad-bc7d-5ebc-a1e2-18dfb2f52089"
+      ],
+      "tags": [
+        "goal:825f9aad-bc7d-5ebc-a1e2-18dfb2f52089"
+      ]
+    },
+    {
+      "id": "86fe0693-c854-56fa-9521-e53959d4a4d9",
+      "front": "About how many operations does elimination take on an $n \\times n$ matrix, and on each right-hand side?",
+      "back": "About $\\frac{1}{3}n^3$ on the matrix and about $n^2$ for each right-hand side.",
+      "originGoalIds": [
+        "d9919c53-38d2-5113-82ae-51f599c240d7"
+      ],
+      "tags": [
+        "goal:d9919c53-38d2-5113-82ae-51f599c240d7"
+      ]
+    },
+    {
+      "id": "f51b87e3-6bbc-51af-978e-8bf944e3c9ba",
+      "front": "What is $(AB)^{\\mathrm T}$?",
+      "back": "$B^{\\mathrm T}A^{\\mathrm T}$, the transposes in reverse order.",
+      "originGoalIds": [
+        "1f688a50-a204-52e7-97df-f402b10830e5"
+      ],
+      "tags": [
+        "goal:1f688a50-a204-52e7-97df-f402b10830e5"
+      ]
+    },
+    {
+      "id": "5adc43b9-c46d-51d8-85e6-16b10b6f17c0",
+      "front": "What is the inverse of a permutation matrix $P$?",
+      "back": "Its transpose: $P^{-1} = P^{\\mathrm T}$.",
+      "originGoalIds": [
+        "8d30c055-e9cc-5242-bf1c-163a5c334e95"
+      ],
+      "tags": [
+        "goal:8d30c055-e9cc-5242-bf1c-163a5c334e95"
+      ]
+    },
+    {
+      "id": "de9a60a9-62be-53b8-8e41-985cfffed17e",
+      "front": "Why is $R^{\\mathrm T}R$ symmetric for every matrix $R$?",
+      "back": "Its transpose is $R^{\\mathrm T}(R^{\\mathrm T})^{\\mathrm T} = R^{\\mathrm T}R$.",
+      "originGoalIds": [
+        "e239cd87-daf7-5096-bddd-a97544f91fb7"
+      ],
+      "tags": [
+        "goal:e239cd87-daf7-5096-bddd-a97544f91fb7"
+      ]
+    }
+  ]
+}
