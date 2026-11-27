@@ -208,6 +208,11 @@ test("enabled portal CIMD rejects missing pins, wildcard boundaries, and cross-p
     delete missing[name];
     assert.throws(() => readPortalFile(missing), new RegExp(name, "u"));
   }
+  const revision = portalPrefix + "AUTHORIZATION_POLICY_VERSION";
+  for (const invalidRevision of ["_revision", "a".repeat(65)]) {
+    assert.throws(() => readPortalFile({ ...portalEnvironment, [revision]: invalidRevision }), /AUTHORIZATION_POLICY_VERSION/u);
+  }
+  assert.doesNotThrow(() => readPortalFile({ ...portalEnvironment, [revision]: "r".repeat(64) }));
   assert.throws(() => readPortalFile({ ...authenticatedClientEnvironment, [portalPrefix + "ENABLED"]: "true" }),
     /explicit valid .*PORTAL_CIMD_CLIENT_ID pin/u);
 });

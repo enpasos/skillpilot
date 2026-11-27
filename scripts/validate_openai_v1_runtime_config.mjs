@@ -220,7 +220,7 @@ function validatePortalCimdEnvironment(env) {
     "redirect-uri": /^https:\/\/chatgpt\.com\/connector\/oauth\/[A-Za-z0-9_-]+$/u,
     "client-jwk-set-uri": /^https:\/\/chatgpt\.com\/oauth\/jwks\.json$/u,
     "client-assertion-audience": /^https:\/\/skillpilot\.com\/api\/openai\/v1(?:\/oauth2\/token)?$/u,
-    "authorization-policy-version": /^[A-Za-z0-9._-]+$/u,
+    "authorization-policy-version": /^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$/u,
   };
   for (const [property, required] of Object.entries(pins)) {
     const name = PORTAL_CIMD_ENVIRONMENT_NAMES[property];
