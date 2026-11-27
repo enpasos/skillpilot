@@ -677,6 +677,7 @@ try {
   assert.equal(await formulaNode.locator('strong .katex').count(), 1)
   assert.ok(!(await formulaNode.locator('strong').innerText()).includes('$'))
   assert.equal(await formulaNode.getAttribute('title'), 'Parabel y = x^2 zeichnen')
+  assert.ok((await formulaNode.getAttribute('aria-label'))?.startsWith('Parabel y = x^2 zeichnen, '), 'the accessible name reads the title without delimiters')
 
   stage = 'a tree without Mathematics and Physics gets a notice instead of a map'
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=other`)

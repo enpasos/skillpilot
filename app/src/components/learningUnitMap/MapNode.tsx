@@ -83,7 +83,7 @@ export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningF
           event.preventDefault(); event.stopPropagation()
           if (goalAction) goalAction.open(); else onSelect(entry.id)
         }
-      }} aria-pressed={goalAction ? undefined : active} aria-description={[data.unitEntry && role, goalAction?.context ?? source, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction?.label ?? `${entry.title}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
+      }} aria-pressed={goalAction ? undefined : active} aria-description={[data.unitEntry && role, goalAction?.context ?? source, expandable ? (progress ? progressLabel : undefined) : statusLabel].filter(Boolean).join('. ')} aria-label={goalAction?.label ?? `${plainMapTitle(entry.title)}, ${english ? 'Show details' : 'Details anzeigen'}${activeLearningGoal ? english ? ', active learning goal' : ', aktives Lernziel' : ''}${entry.preparation ? `, ${preparationLabel}` : ''}`}>
       <span className={`lum-node-icon${expandable ? '' : ` lum-node-state ${status}`}`} data-testid={marker} role="img" aria-label={expandable ? kindLabel : statusLabel}
         title={expandable ? undefined : statusLabel}><Icon size={16} strokeWidth={!expandable && (explicit || implicit) ? 3 : 2} /></span>
       <span className="lum-node-copy"><strong><InlineMathText text={goalAction?.title ?? entry.title} /></strong>
@@ -101,7 +101,7 @@ export const MapNode = React.memo(function MapNode({ data }: NodeProps<LearningF
     {expandable && <button type="button" className="lum-node-open nodrag" onClick={event => {
       event.stopPropagation()
       if (!event.shiftKey) onOpen(entry.id)
-    }} title={english ? 'Open section' : entry.kind === 'unit' ? 'Einheit öffnen' : 'Bereich öffnen'} aria-label={english ? `Zoom into ${entry.title}` : `In ${entry.title} hineinzoomen`}>
+    }} title={english ? 'Open section' : entry.kind === 'unit' ? 'Einheit öffnen' : 'Bereich öffnen'} aria-label={english ? `Zoom into ${plainMapTitle(entry.title)}` : `In ${plainMapTitle(entry.title)} hineinzoomen`}>
       <ArrowDownRight size={15} strokeWidth={1.7} />
     </button>}
   </article>

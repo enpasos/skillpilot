@@ -7,6 +7,7 @@ import { buildSortedChildrenMap } from '../utils/learnerNavigation/treeSiblingOr
 import type { LearningMapFixture } from './learningUnitMap/types'
 import { isMastered, masteryColorClass } from '../goalUiUtils'
 import { InlineMathText } from './InlineMathText'
+import { plainMathText } from '../utils/plainMathText'
 import type { CompletionTreeWaiver } from '../utils/levelCompletionApi'
 import { CompletionWaiverIcon } from './CompletionWaiverIcon'
 import { TreeCompletionProgressBar } from './TreeCompletionProgressBar'
@@ -388,7 +389,7 @@ const TreeNode: React.FC<TreeNodeProps> = ({
         <div className="min-w-0 flex-1">
           <InlineMathText
             text={displayTitle}
-            title={displayTitle}
+            title={plainMathText(displayTitle)}
             className={`block text-sm truncate transition-colors ${isDimmed
               ? 'text-slate-300 dark:text-slate-600' // Dimmed (Outside Scope)
               : isPlanned

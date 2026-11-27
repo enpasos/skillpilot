@@ -17,6 +17,7 @@ import {
 } from '../utils/learnerLearningPlanReadModel'
 import { LearnerPlanDailyProgress } from './LearnerPlanDailyProgress'
 import { LearnerActiveGoalBanner } from './LearnerActiveGoalBanner'
+import { InlineMathText } from './InlineMathText'
 
 export interface LearnerPlanTodayOverviewProps {
   /** The one backend-formulated status; the cockpit renders it and derives nothing from metrics. */
@@ -80,7 +81,7 @@ const LearnerPlanDetails = ({
             {copy.nextEligibleGoalLabel}
           </span>
           <span className="mt-1 block font-medium text-text-primary">
-            {nextGoalLabel || copy.nextEligibleGoalTitleUnavailable}
+            <InlineMathText text={nextGoalLabel || copy.nextEligibleGoalTitleUnavailable} />
           </span>
         </p>
       ) : null}
@@ -266,8 +267,8 @@ export const LearnerPlanTodayOverview = ({
                     {assignment.voluntaryGoals?.map(goal => {
                       const preview = goalPreviewAction?.(goal.goalId)
                       return <li key={goal.goalId}>{preview
-                        ? <button type="button" onClick={preview} className="min-h-9 text-left underline underline-offset-2">{goal.title}</button>
-                        : goal.title}</li>
+                        ? <button type="button" onClick={preview} className="min-h-9 text-left underline underline-offset-2"><InlineMathText text={goal.title} /></button>
+                        : <InlineMathText text={goal.title} />}</li>
                     })}
                   </ul>
                 </details>}
@@ -289,7 +290,7 @@ export const LearnerPlanTodayOverview = ({
                     <ul className="mt-2 max-h-64 space-y-2 overflow-y-auto pl-4 text-text-secondary">
                       {subject.learningScope.goalIds.map((goalId) => (
                         <li key={goalId} data-goal-id={goalId}>
-                          {goalLabel(goalId) || (language === 'de' ? 'Lernzielbezeichnung nicht verfügbar' : 'Learning goal title unavailable')}
+                          <InlineMathText text={goalLabel(goalId) || (language === 'de' ? 'Lernzielbezeichnung nicht verfügbar' : 'Learning goal title unavailable')} />
                         </li>
                       ))}
                     </ul>

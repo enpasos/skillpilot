@@ -2282,8 +2282,9 @@ When adding new goals (especially atomic ones), follow these conventions:
      learning map, cards); a new surface that shows titles uses
      `InlineMathText`. For courses built with units
      (`learningUnitCoverage: "complete"`) two checks enforce the rule:
-     `scripts/check_course_formulas.py` reports imitation characters and an
-     equals sign outside a formula, and `npm --prefix app run
+     `scripts/check_course_formulas.py` reports imitation characters, an
+     equals sign, a caret or a tuple of numbers outside a formula and a
+     formula delimiter beside a space (also in the course's Markdown files), and `npm --prefix app run
      test:course-formula-rendering` renders every formula through the
      Cockpit's own pipeline. The check cannot see a lone variable written as a
      plain letter; that stays a matter of review. The canonical Gymnasium

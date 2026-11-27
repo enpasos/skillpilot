@@ -3,11 +3,14 @@
 Product Owner, 27 November 2026: every mathematical expression is written in TeX, because a
 rendered formula reads much better than its plain-text imitation. The check covers the
 landscapes that state `learningUnitCoverage: "complete"` (courses built with units) and the
-card decks they name. It reports two things in a learner-facing text: a character that
-imitates formula typesetting (superscripts and subscripts, the minus sign, the
-multiplication sign, arrows, relations, pieces of large brackets), and an equals sign
-outside a formula. Formulas stand between `$…$` or `$$…$$`. Alternative texts of images stay
-plain, because a screen reader reads them aloud.
+card decks and Markdown documents beside them. It reports in a learner-facing text a
+character that imitates formula typesetting (superscripts and subscripts, the minus sign,
+the multiplication sign, arrows, relations, pieces of large brackets), an equals sign, a
+caret or a tuple of numbers outside a formula, an unpaired dollar sign, and a formula whose
+delimiter stands beside a space (remark-math reads "$5 and $10" as one formula). Code,
+escaped dollar signs and link addresses are not read. Formulas stand between `$…$` or
+`$$…$$`. Alternative texts of images stay plain, because a screen reader reads them aloud.
+A lone variable written as a plain letter is not detected; that stays a matter of review.
 """
 
 import json
@@ -16,24 +19,39 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-TEXT_KEYS = {"title", "titleEn", "description", "descriptionEn", "taskContent", "taskContentEn",
+TEXT_KEYS = {"markdown", "title", "titleEn", "description", "descriptionEn", "taskContent", "taskContentEn",
              "solutionContent", "solutionContentEn", "label", "labelEn", "promise", "promiseEn", "front", "back"}
 # Superscripts and subscripts, modifier letters used as indices, minus sign, multiplication sign,
 # arrows, common relations and operators, pieces of large brackets.
 IMITATION = re.compile("[\u00b2\u00b3\u00b9\u2070-\u209f\u1d2c-\u1d6a\u2c7c\u2212\u00d7\u2190-\u21ff"
                        "\u2208\u221a\u221e\u2248\u2260\u2264\u2265\u239b-\u23ae]")
 MATH = re.compile(r"\$\$.*?\$\$|\$[^$\n]+\$", re.S)
+INLINE_MATH = re.compile(r"(?<!\$)\$([^$\n]+)\$(?!\$)")
 CODE = re.compile(r"```.*?```|`[^`\n]+`", re.S)
+# Link targets and bare addresses carry `=` in their query strings.
+ADDRESS = re.compile(r"\]\([^)\s]*\)|https?://\S+")
+NUMBER = r"[-\u2212]?\d+(?:\.\d+)?"
+TUPLE = re.compile(rf"\(\s*{NUMBER}(?:\s*,\s*{NUMBER})+\s*\)")
 
 
 def formula_findings(text):
     """Return what a learner-facing text still writes as a plain-text formula."""
-    prose = MATH.sub(" ", text)
-    findings = sorted(set(IMITATION.findall(prose)))
+    # Characters that imitate typesetting count everywhere, also in a code block that draws a matrix.
+    findings = sorted(set(IMITATION.findall(MATH.sub(" ", text.replace("\\$", " ")))))
+    # Code is shown as written, and an escaped dollar is a currency sign.
+    text = CODE.sub(" ", text).replace("\\$", " ")
+    # remark-math reads "$5 and $10" as one formula; a delimiter beside a space shows it.
+    if any(body != body.strip() for body in INLINE_MATH.findall(text)):
+        findings.insert(0, "formula delimiter beside a space")
+    prose = ADDRESS.sub(" ", MATH.sub(" ", text))
     if "$" in prose:
         findings.append("unpaired $")
-    if "=" in CODE.sub(" ", prose):
+    if "=" in prose:
         findings.append("= outside a formula")
+    if "^" in prose:
+        findings.append("^ outside a formula")
+    if TUPLE.search(prose):
+        findings.append("number tuple outside a formula")
     return findings
 
 
@@ -72,6 +90,8 @@ def course_documents(root):
         if not isinstance(document, dict) or document.get("learningUnitCoverage") != "complete":
             continue
         yield path, document
+        for markdown in sorted({*path.parent.glob("*.md"), *path.parent.parent.glob("*.md")}):
+            yield markdown, {"markdown": markdown.read_text(encoding="utf-8")}
         for goal in document.get("goals", []):
             source = (goal.get("extendedData") or {}).get("vocabularySource")
             if isinstance(source, str):

@@ -415,7 +415,7 @@
           "a6c64e79-c903-5d32-ba9e-64d68bcfbbcf",
           "1cec0d1b-48a9-5b39-ad06-698217acab51"
         ],
-        "taskContent": "1. An arrow starts at the origin of a plane and goes 2 units in the negative $x$ direction and 3 units in the positive $y$ direction. Give its ordered vector components. Then give the displacement from $(1, -2, 4)$ to $(3, -1, 2)$.\n2. With $p = (1, -1, 2)$ and $q = (3, 0, 1)$, calculate $2p - q$. Show the scaled vector and componentwise subtraction.\n3. Calculate $p \\cdot q$ and show the products you add.",
+        "taskContent": "1. An arrow starts at the origin of a plane and goes $2$ units in the negative $x$ direction and $3$ units in the positive $y$ direction. Give its ordered vector components. Then give the displacement from $(1, -2, 4)$ to $(3, -1, 2)$.\n2. With $p = (1, -1, 2)$ and $q = (3, 0, 1)$, calculate $2p - q$. Show the scaled vector and componentwise subtraction.\n3. Calculate $p \\cdot q$ and show the products you add.",
         "solutionContent": "1. The vector components are $(-2, 3)$. End minus start gives $(3 - 1, -1 - (-2), 2 - 4) = (2, 1, -2)$.\n2. $2p = (2, -2, 4)$. Subtracting $q$ gives $(2 - 3, -2 - 0, 4 - 1) = (-1, -2, 3)$.\n3. $p \\cdot q = (1)(3) + (-1)(0) + (2)(1) = 3 + 0 + 2 = 5$.",
         "scoring": {
           "maxPoints": 6,
@@ -641,7 +641,7 @@
       "dimensionTags": { "phase": "Module" },
       "shortKey": "linear-algebra-u1-matrix-form",
       "title": "Write a system as $Au = b$",
-      "description": "The learner can encode a linear system as $Au = b$ with a fixed variable order. A matrix is a rectangular array with entries arranged in rows and columns. Put the coefficient of each variable in the corresponding column of its equation’s row. Write a zero for an absent variable. Put the unknowns into $u$ in variable order and put the right-hand sides into $b$ in equation order. Both are column vectors.\n\n$$\n\\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix} = (x, y, z)^{\\mathsf T}\n$$\n\nThe superscript $\\mathsf T$ turns the horizontal tuple into the displayed column. For $2x - z = 4$ with $u$ in the order $x$, $y$, $z$, the coefficient row is $(2, 0, -1)$ and its entry in $b$ is $4$.\n\nAt 2:27 in Lecture 1, trace the coefficients of each equation into its matrix row. Look for the order in which the entries are written.",
+      "description": "The learner can encode a linear system as $Au = b$ with a fixed variable order. A matrix is a rectangular array with entries arranged in rows and columns. Put the coefficient of each variable in the corresponding column of its equation’s row. Write a zero for an absent variable. Put the unknowns into $u$ in variable order and put the right-hand sides into $b$ in equation order. Both are column vectors.\n\n$$\n\\begin{bmatrix} x \\\\ y \\\\ z \\end{bmatrix} = (x, y, z)^{\\mathsf T}\n$$\n\nThe superscript ${}^{\\mathsf T}$ turns the horizontal tuple into the displayed column. For $2x - z = 4$ with $u$ in the order $x$, $y$, $z$, the coefficient row is $(2, 0, -1)$ and its entry in $b$ is $4$.\n\nAt 2:27 in Lecture 1, trace the coefficients of each equation into its matrix row. Look for the order in which the entries are written.",
       "type": "atomic",
       "semanticKind": "curricularAtomic",
       "weight": 1,
@@ -1187,7 +1187,7 @@
             {
               "id": "product-column-setup",
               "points": 1,
-              "description": "Set up the sum of the learner’s displayed columns weighted by 2, 1 and 0 respectively. A term with coefficient zero may be omitted."
+              "description": "Set up the sum of the learner’s displayed columns weighted by $2$, $1$ and $0$ respectively. A term with coefficient zero may be omitted."
             },
             {
               "id": "product-row-values",
@@ -1231,7 +1231,7 @@
           "f6667c63-035d-559c-a1d4-d9232a79e8bd"
         ],
         "taskContent": "1. Solve the system\n\n   $$\n   \\begin{aligned} x + y &= 3 \\\\ 2x + 2y + z &= 7 \\\\ x + 2y + z &= 6 \\end{aligned}\n   $$\n\n   Keep the first equation as your first pivot row and use it to clear the first column below it. Show your multipliers and the operations on the entire equations. Show how you deal with the next zero pivot candidate. Label your pivots, write the upper triangular system and solve it by back substitution. Explain why there is exactly one solution in both pictures.\n\n2. Replace only the third equation by $x + y + z = s$. After clearing the first column as before, can a row exchange provide a $y$-pivot? Eliminate further and give the final equation. For $s = 4$ and for $s = 5$, say how many real solutions exist and explain why in both pictures. When there are infinitely many, give two different solutions as witnesses.\n\nShow your work. Valid methods are scored against the equations you display. Correct follow-through earns method points and a single arithmetic slip is charged once.",
-        "solutionContent": "1. Keep the first equation as the initial pivot row. Subtract $2R_1$ from $R_2$ to obtain $z = 1$. Subtract $R_1$ from $R_3$ to obtain $y + z = 3$. The multipliers are 2 and 1. Swap the two lower rows to move the nonzero $y$-entry into the second row. The upper triangular equations are $x + y = 3$, $y + z = 3$, and $z = 1$, with pivots 1, 1 and 1 in order.\n\n   Read $z = 1$ from the bottom. In the middle row substitute $z$ to obtain $y = 3 - 1 = 2$. In the top row substitute $y$ to obtain $x = 3 - 2 = 1$. Each variable is determined, so $(1, 2, 1)$ is the only common point of the three planes. It is also the only choice of column weights that reaches $b$, because any other such choice would solve the same equations.\n\n2. After the same first-column eliminations the lower equations are $z = 1$ and $z = s - 3$. Both remaining $y$ entries are zero. A swap between the lower rows cannot provide a $y$-pivot. Use the $z$-pivot and subtract the second row from the third to obtain $0 = s - 4$.\n\n   For $s = 4$ the three planes share the line specified by $x + y = 3$ and $z = 1$. The last row is $0 = 0$, so there are infinitely many real solutions. Two examples are $(0, 3, 1)$ and $(3, 0, 1)$. In the column picture $c_1 = c_2 = (1, 2, 1)^{\\mathsf T}$ and $c_3 = (0, 1, 1)^{\\mathsf T}$. The vector $b = (3, 7, 4)^{\\mathsf T}$ equals $3c_1 + c_3$. The total weight $3$ on the identical first two columns can be shared in infinitely many ways.\n\n   For $s = 5$ the third plane misses the line of the first two planes. Its equation would require $x + y + z = 5$ along a line on which that sum is $4$. There is no solution. In the column picture the first two coordinates of $b$ force $x + y = 3$ and $z = 1$. The third coordinate of the weighted sum is therefore $4$. The requested $b = (3, 7, 5)^{\\mathsf T}$ lies outside the span.",
+        "solutionContent": "1. Keep the first equation as the initial pivot row. Subtract $2R_1$ from $R_2$ to obtain $z = 1$. Subtract $R_1$ from $R_3$ to obtain $y + z = 3$. The multipliers are $2$ and $1$. Swap the two lower rows to move the nonzero $y$-entry into the second row. The upper triangular equations are $x + y = 3$, $y + z = 3$, and $z = 1$, with pivots $1$, $1$ and $1$ in order.\n\n   Read $z = 1$ from the bottom. In the middle row substitute $z$ to obtain $y = 3 - 1 = 2$. In the top row substitute $y$ to obtain $x = 3 - 2 = 1$. Each variable is determined, so $(1, 2, 1)$ is the only common point of the three planes. It is also the only choice of column weights that reaches $b$, because any other such choice would solve the same equations.\n\n2. After the same first-column eliminations the lower equations are $z = 1$ and $z = s - 3$. Both remaining $y$ entries are zero. A swap between the lower rows cannot provide a $y$-pivot. Use the $z$-pivot and subtract the second row from the third to obtain $0 = s - 4$.\n\n   For $s = 4$ the three planes share the line specified by $x + y = 3$ and $z = 1$. The last row is $0 = 0$, so there are infinitely many real solutions. Two examples are $(0, 3, 1)$ and $(3, 0, 1)$. In the column picture $c_1 = c_2 = (1, 2, 1)^{\\mathsf T}$ and $c_3 = (0, 1, 1)^{\\mathsf T}$. The vector $b = (3, 7, 4)^{\\mathsf T}$ equals $3c_1 + c_3$. The total weight $3$ on the identical first two columns can be shared in infinitely many ways.\n\n   For $s = 5$ the third plane misses the line of the first two planes. Its equation would require $x + y + z = 5$ along a line on which that sum is $4$. There is no solution. In the column picture the first two coordinates of $b$ force $x + y = 3$ and $z = 1$. The third coordinate of the weighted sum is therefore $4$. The requested $b = (3, 7, 5)^{\\mathsf T}$ lies outside the span.",
         "scoring": {
           "maxPoints": 15,
           "passingPoints": 12,
@@ -1244,7 +1244,7 @@
             {
               "id": "elimination-multipliers",
               "points": 1,
-              "description": "Calculate the multipliers appropriate to the displayed current pivot and entries. On the requested path these are 2 and 1."
+              "description": "Calculate the multipliers appropriate to the displayed current pivot and entries. On the requested path these are $2$ and $1$."
             },
             {
               "id": "elimination-next-pivot",
@@ -1259,7 +1259,7 @@
             {
               "id": "elimination-pivot-labels",
               "points": 1,
-              "description": "Label the selected nonzero entries as pivots for the learner’s path. On the requested path they are 1, 1 and 1 in order."
+              "description": "Label the selected nonzero entries as pivots for the learner’s path. On the requested path they are $1$, $1$ and $1$ in order."
             },
             {
               "id": "substitution-start",

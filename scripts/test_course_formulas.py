@@ -18,17 +18,25 @@ class FormulaFindings(unittest.TestCase):
             "U1 · Linear systems by geometry and elimination",
             "At 10:42 and 23:12 in Lecture 1, read the components. Sections 10:42.360–11:35.530.",
             "Run `total = total + 1` and then\n\n```python\nx = 3\n```",
+            "Run `echo $HOME` in a shell.",
+            "It costs \\$5 and \\$10 today.",
+            "See [the lecture](https://www.youtube.com/watch?v=abc&t=147s) and https://example.org/?n=1.",
+            "The pass mark is 13 of 16 (81.25%).",
         ):
             self.assertEqual(formula_findings(text), [], text)
 
     def test_plain_text_formulas_are_reported(self):
-        self.assertEqual(formula_findings("the columns are (1, 1)ᵀ and (1, 2)ᵀ"), ["ᵀ"])
+        self.assertEqual(formula_findings("the columns are (1, 1)ᵀ and (1, 2)ᵀ"), ["ᵀ", "number tuple outside a formula"])
         self.assertEqual(formula_findings("coordinates b₁ and b₂"), ["₁", "₂"])
-        self.assertEqual(formula_findings("have components (−2, 3)"), ["−"])
+        self.assertEqual(formula_findings("have components (−2, 3)"), ["−", "number tuple outside a formula"])
         self.assertEqual(formula_findings("x + y = 3 define a line"), ["= outside a formula"])
         self.assertEqual(formula_findings("clear it with Rᵢ ← Rᵢ − mRⱼ"), sorted(["ᵢ", "ⱼ", "←", "−"]))
         self.assertEqual(formula_findings("```text\n⎡x⎤\n⎣z⎦\n```"), ["⎡", "⎣", "⎤", "⎦"])
         self.assertEqual(formula_findings("costs $5 today"), ["unpaired $"])
+        self.assertEqual(formula_findings("Compare $5 and $10."), ["formula delimiter beside a space"])
+        self.assertEqual(formula_findings("Expand x^2 + 1."), ["^ outside a formula"])
+        self.assertEqual(formula_findings("The point (2, 3) lies on it."), ["number tuple outside a formula"])
+        self.assertEqual(formula_findings("The point (−2, 3.5) lies on it."), ["−", "number tuple outside a formula"])
 
 
 class CourseScope(unittest.TestCase):
@@ -61,6 +69,16 @@ class CourseScope(unittest.TestCase):
             root = Path(directory)
             self.write(root, "partial.json", self.course("Solve x + y = 3.", coverage="partial"))
             self.assertEqual(check(root), (0, []))
+
+    def test_markdown_documents_beside_the_course_are_checked(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.write(root, "course.json", self.course("Solve $x + y = 3$."))
+            self.write(root, "deck.json", {"cards": []})
+            (root / "curricula" / "Course" / "lecture-map.md").write_text("| Write a system as Au = b |\n", encoding="utf-8")
+            problems = check(root)[1]
+            self.assertEqual(len(problems), 1)
+            self.assertIn("lecture-map.md/markdown: = outside a formula", problems[0])
 
     def test_a_missing_deck_is_reported(self):
         with tempfile.TemporaryDirectory() as directory:
