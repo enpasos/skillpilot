@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 2,
+  "deckId": "us_skillpilot_linear_algebra_u1",
+  "title": "Recall linear systems",
+  "landscapeId": "3bdc6a37-9468-50ab-aee4-0a6180db477b",
+  "cards": [
+    {
+      "id": "d257af4c-8956-55ec-840e-5d71ce9e48f5",
+      "front": "In the column picture of Au = b, what weights the columns of A?",
+      "back": "The entries of a solution vector u are the weights. The weighted column sum equals b.",
+      "originGoalIds": [
+        "8c747481-401b-5a5d-aaf7-735e7749a2ec"
+      ],
+      "tags": [
+        "goal:8c747481-401b-5a5d-aaf7-735e7749a2ec"
+      ]
+    },
+    {
+      "id": "43d582b2-a89e-50c4-bd4b-dee67f4485fe",
+      "front": "How do the row rule and the column rule each compute Av?",
+      "back": "Row rule: take the dot product of each row with v and list the results in row order. Column rule: multiply each column by its corresponding entry of v and add.",
+      "originGoalIds": [
+        "63f47380-7d68-5310-b020-5a8a8f708d13"
+      ],
+      "tags": [
+        "goal:63f47380-7d68-5310-b020-5a8a8f708d13"
+      ]
+    },
+    {
+      "id": "a30fc7fb-83f5-5197-9ff3-9df0944bb609",
+      "front": "What is m in Rᵢ ← Rᵢ − mRⱼ if the current nonzero pivot is aⱼⱼ and you want to clear aᵢⱼ below it?",
+      "back": "Use m = aᵢⱼ/aⱼⱼ. Then the new entry is aᵢⱼ − maⱼⱼ = 0. The operation changes the whole augmented row.",
+      "originGoalIds": [
+        "de79c37e-0a8c-5035-9c66-6e8a74de795c"
+      ],
+      "tags": [
+        "goal:de79c37e-0a8c-5035-9c66-6e8a74de795c"
+      ]
+    },
+    {
+      "id": "3d7e1f79-d9dc-5df1-8420-53fcee5e9db7",
+      "front": "How do you start back substitution in an upper triangular system with nonzero diagonal entries?",
+      "back": "Zeros below the diagonal make the bottom equation determine the last unknown. Solve it first and work upward, substituting each known value.",
+      "originGoalIds": [
+        "66baaa16-632c-5e19-8132-e56b5fa087bc"
+      ],
+      "tags": [
+        "goal:66baaa16-632c-5e19-8132-e56b5fa087bc"
+      ]
+    },
+    {
+      "id": "2e630e8c-3c84-50cf-84d2-b31cd3efd990",
+      "front": "What does a row 0 = k tell you after elimination?",
+      "back": "If k ≠ 0 the system has no solution. If k = 0 the row gives no new constraint.",
+      "originGoalIds": [
+        "f6667c63-035d-559c-a1d4-d9232a79e8bd"
+      ],
+      "tags": [
+        "goal:f6667c63-035d-559c-a1d4-d9232a79e8bd"
+      ]
+    }
+  ]
+}
