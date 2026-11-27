@@ -19,6 +19,18 @@ The pilot has its own course and goal IDs. The existing MIT OpenCourseWare Found
 
 ## Content licence and attribution
 
+SkillPilot is not affiliated with MIT, and MIT does not endorse this course. The course names MIT 18.06 and MIT OpenCourseWare only to credit the lectures it links to.
+
+**Rules for this course (CC BY-NC-SA 4.0, strictly):**
+
+- **Links only.** No text, problem, solution, figure, transcript or caption of MIT OpenCourseWare enters SkillPilot's data, also not as a close paraphrase or a translation. A task of SkillPilot may share the kind of thinking of an MIT problem, never its wording, numbers, example systems or figures; anything closer would be an adaptation under ShareAlike.
+- **Attribution with every link.** Each link record names the title of the MIT resource, the provider "MIT OpenCourseWare", the OCW web address and the licence "CC BY-NC-SA 4.0"; the Cockpit shows provider and licence beside the linked material and links the licence.
+- **No endorsement.** The MIT name appears only as credit ("aligned with MIT 18.06"), never as a seal, logo or claim of partnership.
+- **Non-commercial.** The course and every page that links OCW material stay free of charge; SkillPilot sells nothing built on OCW material.
+- **Local copies stay local.** The downloaded OCW copy under `curricula/US/MIT_OCW/input/` is ignored by Git and is used only to find time stamps and problem numbers.
+
+On 27 November 2026 every tracked file under `curricula/US/MIT_OCW/` was compared with the local OCW copy of 18.06 (lecture notes, problem sets, exams, captions): no sequence of more than eleven words is shared, and the longest shared sequences are lecture titles used for credit.
+
 SkillPilot wrote the course graph, explanations, activities, solutions and cards and created the figures. This original course content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 The external references point to *18.06 Linear Algebra, Spring 2010*, taught by Gilbert Strang and published by MIT OpenCourseWare. Those materials retain MIT OpenCourseWare's [CC BY-NC-SA 4.0 terms](https://ocw.mit.edu/pages/privacy-and-terms-of-use/). SkillPilot is responsible for the course and its assessments. [MIT course](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/) · [MIT lecture videos](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/video_galleries/video-lectures/) · [MIT assignments](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/pages/assignments/)
