@@ -28,31 +28,58 @@ const v1Export = exportSourceMappingEdges(loadSourceMappingReviews({
 assert.deepEqual(v1Export.positiveEdges, [])
 assert.deepEqual(v1Export.legacyMappings.map(file => file.path), v1Mappings.map(file => file.file))
 
+type LegacyMapping = ReturnType<typeof readAllGoalMappingFiles>[number]
+type CatalogEntry = { landscapeId: string; catalogPath: string }
+function countCatalogMappings(entries: CatalogEntry[], mappings: LegacyMapping[]) {
+  const totals = new Map(entries.map(entry => [entry.landscapeId, {
+    ...entry, reviewedFiles: 0, directFiles: 0, mappingEdges: 0, decisions: 0,
+  }]))
+  for (const mapping of mappings) {
+    const subject = mapping.targetLandscapeId && totals.get(mapping.targetLandscapeId)
+    if (!subject) continue
+    if (mapping.sourceExtractionPath) subject.reviewedFiles += 1
+    else subject.directFiles += 1
+    subject.mappingEdges += mapping.mappings?.length ?? 0
+    subject.decisions += mapping.decisions?.length ?? 0
+  }
+  return totals
+}
+
 const catalog = loadCurrentCurriculumCatalog(liveVerificationInputs, repository)
-const totals = new Map(catalog.entries.map(({ path, landscape }) => [landscape.landscapeId, {
-  landscapeId: landscape.landscapeId,
-  catalogPath: path,
-  reviewedFiles: 0,
-  directFiles: 0,
-  mappingEdges: 0,
-  decisions: 0,
-}]))
-const sourceDigest = createHash('sha256')
+const totals = countCatalogMappings(catalog.entries.map(({ path, landscape }) => ({
+  landscapeId: landscape.landscapeId, catalogPath: path,
+})), v1Mappings)
+const rawFileDigests = new Map<string, Buffer>()
 for (const [index, { path, document }] of v1Export.legacyMappings.entries()) {
+  const { file, ...existingDocument } = v1Mappings[index]
+  assert.equal(path, file)
+  assert.deepEqual(document, existingDocument, `Historical reader/export mismatch: ${path}`)
   const source = readFileSync(resolve(repository, path))
   assert.deepEqual(document, JSON.parse(source.toString('utf8')), `Legacy file changed in export: ${path}`)
-  const legacy = v1Mappings[index]
-  const stats = legacy.targetLandscapeId && totals.get(legacy.targetLandscapeId)
-  assert(stats, `Legacy mapping outside the declared catalog: ${path}`)
-  if (legacy.sourceExtractionPath) stats.reviewedFiles += 1
-  else stats.directFiles += 1
-  stats.mappingEdges += legacy.mappings?.length ?? 0
-  stats.decisions += legacy.decisions?.length ?? 0
-  sourceDigest.update(path).update('\0').update(createHash('sha256').update(source).digest()).update('\0')
+  if (existingDocument.targetLandscapeId && totals.has(existingDocument.targetLandscapeId)) {
+    rawFileDigests.set(path, createHash('sha256').update(source).digest())
+  }
 }
-assert([...totals.values()].some(subject => subject.reviewedFiles > 0))
-assert([...totals.values()].some(subject => subject.reviewedFiles === 0 && subject.directFiles > 0))
-assert([...totals.values()].some(subject => subject.reviewedFiles + subject.directFiles === 0))
+// Preserve V1's exported ordering above. The cross-language inventory has its own stable order.
+const sourceDigest = createHash('sha256')
+for (const path of [...rawFileDigests.keys()].sort()) {
+  sourceDigest.update(path).update('\0').update(rawFileDigests.get(path)!).update('\0')
+}
+
+const fixtureEntries = ['direct', 'reviewed', 'empty'].map(landscapeId => ({ landscapeId, catalogPath: landscapeId }))
+const fixtureDocuments = [
+  { file: 'direct/map.json', targetLandscapeId: 'direct' },
+  { file: 'review/map.json', targetLandscapeId: 'reviewed', sourceExtractionPath: 'edition.json' },
+  { file: 'external/map.json', targetLandscapeId: 'outside' },
+]
+const fixtureTotals = countCatalogMappings(fixtureEntries, fixtureDocuments)
+assert.deepEqual([...fixtureTotals.values()].map(({ reviewedFiles, directFiles }) => [reviewedFiles, directFiles]),
+  [[0, 1], [1, 0], [0, 0]])
+const firstReviews = fixtureEntries.map(({ landscapeId }) => ({
+  file: `${landscapeId}/review.json`, targetLandscapeId: landscapeId, sourceExtractionPath: 'edition.json',
+}))
+assert([...countCatalogMappings(fixtureEntries, [...fixtureDocuments, ...firstReviews]).values()]
+  .every(subject => subject.reviewedFiles > 0))
 
 const targetLandscapeId = 'physics'
 const sourceLandscapeId = 'physics-source'
@@ -69,29 +96,33 @@ const sourceGoals = [
   { id: 'plan-investigation', sourceText: 'Eine Untersuchung für ein gegebenes Modell planen.' },
   { id: 'maintain-equipment', sourceText: 'Die Schule stellt geeignete Geräte zur Verfügung.' },
 ]
-const extraction = Buffer.from(JSON.stringify({ sourceLandscapeId, sourceGoals }))
+const original = { path: 'official/physics-2026.pdf', effectiveFrom: '2026' }
+const extraction = Buffer.from(JSON.stringify({ sourceLandscapeId, sourceDocument: original, sourceGoals }))
+const earlierExtractionPath = 'fixtures/official-plan-2020.source-extraction.json'
+const earlierExtraction = Buffer.from(JSON.stringify({ sourceLandscapeId,
+  sourceDocument: { path: 'official/physics-2020.pdf', effectiveFrom: '2020' }, sourceGoals }))
 const carriedRow = {
   sourceGoalId: sourceGoals[0].id,
   wording: sourceGoals[0].sourceText,
   sourceRecordSha256: sourceMappingDigest(sourceGoals[0]),
-  context: { page: 6 },
-  scope: { course: 'GK' },
+  parentContext: [],
+  applicableScopeIds: ['GK'],
   regularTargetsByScope: { GK: ['interpret-graph', 'document-measurement', 'other-regular-goal'] },
 }
 const openRow = {
   sourceGoalId: sourceGoals[1].id,
   wording: sourceGoals[1].sourceText,
   sourceRecordSha256: sourceMappingDigest(sourceGoals[1]),
-  context: { page: 7 },
-  scope: { course: 'GK' },
+  parentContext: [],
+  applicableScopeIds: ['GK'],
   regularTargetsByScope: { GK: ['plan-experiment'] },
 }
 const declinedRow = {
   sourceGoalId: sourceGoals[2].id,
   wording: sourceGoals[2].sourceText,
   sourceRecordSha256: sourceMappingDigest(sourceGoals[2]),
-  context: { page: 8 },
-  scope: { course: 'GK' },
+  parentContext: [],
+  applicableScopeIds: ['GK'],
   regularTargetsByScope: { GK: ['organize-lab'] },
 }
 const editionBinding = {
@@ -102,7 +133,9 @@ const editionBinding = {
   sourceExtractionPath,
   sourceExtractionSha256: createHash('sha256').update(extraction).digest('hex'),
   legacyReviewPaths: [historicalPath],
-  selectedReviews: Object.fromEntries([carriedRow, openRow, declinedRow].map(row => [row.sourceGoalId, selectedPath])),
+  retainedLegacyReviews: [{ path: previousEditionPath, edition: '2020', sourceExtractionPath: earlierExtractionPath,
+    sourceExtractionSha256: createHash('sha256').update(earlierExtraction).digest('hex') }],
+  selectedReviews: [carriedRow, openRow, declinedRow].map(row => ({ sourceGoalId: row.sourceGoalId, reviewPath: selectedPath })),
   rows: [carriedRow, openRow, declinedRow],
 }
 const historicalDocument = {
@@ -123,7 +156,7 @@ const historicalDocument = {
   ],
 }
 const olderEditionFile = { path: previousEditionPath, document: {
-  ...historicalDocument, sourceExtractionPath: 'fixtures/official-plan-2020.source-extraction.json',
+  ...historicalDocument, sourceExtractionPath: earlierExtractionPath,
 } }
 const legacyReviews = [{ path: historicalPath, document: historicalDocument }, olderEditionFile]
 const documentIdentity = { version: 2, targetLandscapeId, sourceLandscapeId, sourceId, edition }
@@ -133,8 +166,8 @@ const selectedCarried = {
   decision: 'carried',
   mainKind: 'subject',
   performance: 'Messdaten aufbereiten und daraus den physikalischen Zusammenhang begründen.',
-  author: 'author-fixture',
-  reviewer: 'reviewer-fixture',
+  authorId: '11111111-1111-4111-8111-111111111111',
+  reviewerId: '22222222-2222-4222-8222-222222222222',
   reviewedAt: '2026-11-24',
   contributions: [
     { canonicalGoalId: 'interpret-graph', kind: 'subject', matchType: 'partial', performance: 'Den Zusammenhang aus dem Graphen ableiten.', scopeIds: ['GK'] },
@@ -145,7 +178,7 @@ const selectedOpen = {
   sourceGoalId: openRow.sourceGoalId,
   rowSha256: sourceRowSha256(editionBinding, openRow),
   decision: 'open',
-  author: 'author-fixture',
+  authorId: '11111111-1111-4111-8111-111111111111',
   rationale: 'Ein Nachweis für die eigene Versuchsplanung steht aus.',
 }
 const approvalPath = 'fixtures/approval-maintain-equipment.json'
@@ -153,8 +186,8 @@ const selectedDeclined: DeclinedDecision = {
   sourceGoalId: declinedRow.sourceGoalId,
   rowSha256: sourceRowSha256(editionBinding, declinedRow),
   decision: 'declined',
-  author: 'author-fixture',
-  reviewer: 'reviewer-fixture',
+  authorId: '11111111-1111-4111-8111-111111111111',
+  reviewerId: '22222222-2222-4222-8222-222222222222',
   reviewedAt: '2026-11-26',
   deviation: {
     categoryVersion: 1,
@@ -172,7 +205,7 @@ const approval = Buffer.from(JSON.stringify({
   schemaVersion: 1,
   verdict: 'approved',
   decisionSha256: deviationApprovalSha256(selectedDeclined, editionBinding),
-  reviewer: selectedDeclined.reviewer,
+  reviewerId: selectedDeclined.reviewerId,
   reviewedAt: selectedDeclined.reviewedAt,
 }))
 selectedDeclined.deviation.review.sha256 = createHash('sha256').update(approval).digest('hex')
@@ -188,7 +221,7 @@ const newerUnselectedReview = { path: unselectedPath, document: {
     { canonicalGoalId: 'other-regular-goal', kind: 'subject', matchType: 'exact', performance: 'Andere Leistung.', scopeIds: ['GK'] },
   ] }],
 } }
-const evidenceFiles = new Map([[approvalPath, approval], [sourceExtractionPath, extraction]])
+const evidenceFiles = new Map([[approvalPath, approval], [sourceExtractionPath, extraction], [earlierExtractionPath, earlierExtraction]])
 const fixture = {
   legacyReviews,
   editions: [editionBinding],
@@ -233,6 +266,12 @@ try {
   const writeJson = (path: string, document: unknown) => write(path, Buffer.from(JSON.stringify(document)))
   for (const file of legacyReviews) writeJson(file.path, file.document)
   assert.equal(exportRepositorySourceMappingEdges(temporaryRepository).legacyMappings.length, 2)
+  const nonGymnasium = { path: 'curricula/DE/another-school/mapping/legacy.json',
+    document: { version: 1, sourceLandscapeId: 'another-source', targetLandscapeId: 'outside', mappings: [] } }
+  writeJson(nonGymnasium.path, nonGymnasium.document)
+  assert(exportRepositorySourceMappingEdges(temporaryRepository).legacyMappings.some(file =>
+    file.path === nonGymnasium.path && file.document.targetLandscapeId === 'outside'))
+  write(earlierExtractionPath, earlierExtraction)
   write(approvalPath, approval)
   write(sourceExtractionPath, extraction)
   const editionRef = writeJson('fixtures/official-plan-2026.inventory.json', editionBinding)
@@ -241,7 +280,10 @@ try {
   const manifestPath = 'fixtures/manifest.json'
   const manifest = { version: 1, editions: [editionRef], reviews: [unselectedRef, selectedRef] }
   writeJson(manifestPath, manifest)
-  assert.deepEqual(exportRepositorySourceMappingEdges(temporaryRepository, manifestPath), v2Export)
+  const mixedExport = exportRepositorySourceMappingEdges(temporaryRepository, manifestPath)
+  assert.deepEqual(mixedExport.positiveEdges, v2Export.positiveEdges)
+  assert.deepEqual(mixedExport.legacyMappings.filter(file => file.path !== nonGymnasium.path), v2Export.legacyMappings)
+  assert.deepEqual(mixedExport.legacyMappings.find(file => file.path === nonGymnasium.path), nonGymnasium)
   assert.throws(() => exportRepositorySourceMappingEdges(temporaryRepository), /requires an explicit manifest entry/)
 
   writeJson(manifestPath, { ...manifest, reviews: [selectedRef] })
@@ -264,7 +306,8 @@ try {
 
 console.log(JSON.stringify({
   legacyFiles: v1Mappings.length,
-  legacyFileInventorySha256: sourceDigest.digest('hex'),
+  gymnasiumLegacyFiles: rawFileDigests.size,
+  gymnasiumLegacyFileInventorySha256: sourceDigest.digest('hex'),
   landscapes: [...totals.values()],
   examplePositiveEdges: v2Export.positiveEdges.length,
 }, null, 2))

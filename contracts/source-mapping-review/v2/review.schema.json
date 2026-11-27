@@ -68,9 +68,8 @@
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
         },
-        "author": {
-          "type": "string",
-          "pattern": "\\S"
+        "authorId": {
+          "$ref": "deviation.schema.json#/$defs/actorId"
         },
         "decision": {
           "const": "carried"
@@ -85,9 +84,8 @@
           "type": "string",
           "pattern": "\\S"
         },
-        "reviewer": {
-          "type": "string",
-          "pattern": "\\S"
+        "reviewerId": {
+          "$ref": "deviation.schema.json#/$defs/actorId"
         },
         "reviewedAt": {
           "type": "string",
@@ -104,11 +102,11 @@
       "required": [
         "sourceGoalId",
         "rowSha256",
-        "author",
+        "authorId",
         "decision",
         "mainKind",
         "performance",
-        "reviewer",
+        "reviewerId",
         "reviewedAt",
         "contributions"
       ]
@@ -125,16 +123,14 @@
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
         },
-        "author": {
-          "type": "string",
-          "pattern": "\\S"
+        "authorId": {
+          "$ref": "deviation.schema.json#/$defs/actorId"
         },
         "decision": {
           "const": "declined"
         },
-        "reviewer": {
-          "type": "string",
-          "pattern": "\\S"
+        "reviewerId": {
+          "$ref": "deviation.schema.json#/$defs/actorId"
         },
         "reviewedAt": {
           "type": "string",
@@ -147,9 +143,9 @@
       "required": [
         "sourceGoalId",
         "rowSha256",
-        "author",
+        "authorId",
         "decision",
-        "reviewer",
+        "reviewerId",
         "reviewedAt",
         "deviation"
       ]
@@ -166,9 +162,8 @@
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
         },
-        "author": {
-          "type": "string",
-          "pattern": "\\S"
+        "authorId": {
+          "$ref": "deviation.schema.json#/$defs/actorId"
         },
         "decision": {
           "const": "open"
@@ -181,7 +176,7 @@
       "required": [
         "sourceGoalId",
         "rowSha256",
-        "author",
+        "authorId",
         "decision",
         "rationale"
       ]

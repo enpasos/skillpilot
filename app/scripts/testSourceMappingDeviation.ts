@@ -3,10 +3,13 @@ import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
-import { deviationApprovalSha256, validateDeviation, type DeclinedDecision } from './sourceMappingDeviation'
+import { deviationApprovalSha256, normalizedDeviationReason, validateDeviation, type DeclinedDecision } from './sourceMappingDeviation'
 import { sourceMappingDigest } from './sourceMappingDigest'
 
 const edition = { targetLandscapeId: 'physics', sourceId: 'official-physics-ni', edition: '2022' }
+const AUTHOR_ID = 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa'
+const REVIEWER_ID = 'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb'
+const OTHER_ACTOR_ID = 'cccccccc-cccc-4ccc-8ccc-cccccccccccc'
 const files = new Map<string, Buffer>()
 const readEvidence = (path: string): Buffer => {
   const file = files.get(path)
@@ -63,12 +66,15 @@ const ajv = new Ajv2020({ strict: true, allErrors: true })
 addFormats(ajv)
 const checkDeviation = ajv.compile(schema)
 const checkApproval = ajv.getSchema(`${schema.$id}#/$defs/approval`)
+const checkReview = ajv.compile(JSON.parse(readFileSync(
+  new URL('../../contracts/source-mapping-review/v2/review.schema.json', import.meta.url), 'utf8',
+)))
 assert(checkApproval)
 
 function approvalFor(decision: DeclinedDecision) {
   return {
     schemaVersion: 1, decisionSha256: deviationApprovalSha256(decision, edition),
-    reviewer: decision.reviewer, reviewedAt: decision.reviewedAt, verdict: 'approved',
+    reviewerId: decision.reviewerId, reviewedAt: decision.reviewedAt, verdict: 'approved',
   }
 }
 
@@ -82,15 +88,20 @@ function decisionFor(fixture: typeof fixtures[number] = fixtures[0]): DeclinedDe
     reason: `Individual finding for ${category}`, review: { path: `${category}/approval.json`, sha256: '' },
   } as DeclinedDecision['deviation']
   const decision: DeclinedDecision = {
-    ...rowRef, decision: 'declined', author: 'Curriculum author', reviewer: 'Independent reviewer',
+    ...rowRef, decision: 'declined', authorId: AUTHOR_ID, reviewerId: REVIEWER_ID,
     reviewedAt: '2026-11-27', deviation,
   }
   attachApproval(decision)
   return decision
 }
 
+function reviewFor(decision: unknown) {
+  return { ...edition, version: 2, sourceLandscapeId: 'official-landscape', reviewId: 'review', decisions: [decision] }
+}
+
 for (const fixture of fixtures) {
   const decision = decisionFor(fixture)
+  assert(checkReview(reviewFor(decision)), ajv.errorsText(checkReview.errors))
   assert(checkDeviation(decision.deviation), ajv.errorsText(checkDeviation.errors))
   assert(checkApproval(approvalFor(decision)), ajv.errorsText(checkApproval.errors))
   validateDeviation(decision, edition, readEvidence)
@@ -108,7 +119,7 @@ for (const patch of [
   { sourceGoalId: 'another-row' }, { rowSha256: sourceMappingDigest({ ...row, wording: 'One word changed' }) },
   { rowSha256: sourceMappingDigest({ ...row, context: ['Part B', 'Process'] }) },
   { rowSha256: sourceMappingDigest({ ...row, scope: ['basic'] }) },
-  { author: 'Different author' }, { reviewer: 'Different reviewer' }, { reviewedAt: '2026-11-28' },
+  { authorId: OTHER_ACTOR_ID }, { reviewerId: OTHER_ACTOR_ID }, { reviewedAt: '2026-11-28' },
 ]) {
   const decision = { ...decisionFor(), ...patch }
   assert.throws(() => validateDeviation(decision, edition, readEvidence), /affirm this exact decision/)
@@ -129,9 +140,31 @@ for (const patch of [{ verdict: 'rejected' }, { unexpected: true }]) {
   assert.equal(checkApproval(approval), false)
   assert.throws(() => validateDeviation(decision, edition, readEvidence), /affirm this exact decision/)
 }
-const selfReviewed = { ...decisionFor(), reviewer: '  CURRICULUM   AUTHOR  ' }
+const selfReviewed = { ...decisionFor(), reviewerId: AUTHOR_ID }
 attachApproval(selfReviewed)
 assert.throws(() => validateDeviation(selfReviewed, edition, readEvidence), /independent of the author/)
+const aliasReviewed = { ...decisionFor(), authorId: 'Groß', reviewerId: 'GROSS' }
+attachApproval(aliasReviewed)
+assert.equal(checkReview(reviewFor(aliasReviewed)), false, 'display names are not actor IDs')
+assert.throws(() => validateDeviation(aliasReviewed, edition, readEvidence), /canonical actor IDs/)
+for (const reviewerId of [REVIEWER_ID.toUpperCase(), `${REVIEWER_ID}\n`]) {
+  const decision = { ...decisionFor(), reviewerId }
+  const approval = approvalFor(decision)
+  attachApproval(decision, approval)
+  assert.equal(checkApproval(approval), false)
+  assert.equal(checkReview(reviewFor(decision)), false)
+  assert.throws(() => validateDeviation(decision, edition, readEvidence), /canonical actor IDs/)
+}
+
+for (const [left, right] of [
+  ['  Die Straße entfällt ', 'DIE  STRASSE ENTFÄLLT'],
+  ['ΜΕΣΟΣ', 'μεσος'], ['ᾈ', 'ἀι'], ['Ꭰ', 'ꭰ'], ['𐐀', '𐐨'], ['ﬃ', 'FFI'],
+  ['A\u030A', 'Å'],
+]) assert.equal(normalizedDeviationReason(left), normalizedDeviationReason(right), `${left} / ${right}`)
+assert.equal(normalizedDeviationReason('İ'), 'i\u0307', 'use default full folding')
+assert.equal(normalizedDeviationReason('ı'), 'ı', 'keep the dotless i distinct under default folding')
+assert.equal(normalizedDeviationReason('ꭰ'), 'Ꭰ', 'Unicode folds Cherokee to its uppercase form')
+
 const impossibleDate = { ...decisionFor(), reviewedAt: '2026-02-30' }
 attachApproval(impossibleDate)
 assert.throws(() => validateDeviation(impossibleDate, edition, readEvidence), /ISO calendar date/)
@@ -142,6 +175,20 @@ for (const [fixture, ref] of [[fixtures[1], 'duplicateOf'], [fixtures[2], 'repla
   attachApproval(decision)
   assert.throws(() => validateDeviation(decision, edition, readEvidence), /invalid category evidence/)
 }
+const approvedScopeChange = decisionFor(fixtures[2])
+assert(approvedScopeChange.deviation.category === 'replacedWithinEdition')
+approvedScopeChange.deviation.evidence.scopeChange = {
+  fromScopeIds: ['GK'], toScopeIds: ['LK'], authorityLocation: { locator: 'p. 3', excerpt: 'The successor applies to LK.' },
+}
+attachApproval(approvedScopeChange)
+assert(checkDeviation(approvedScopeChange.deviation), ajv.errorsText(checkDeviation.errors))
+validateDeviation(approvedScopeChange, edition, readEvidence)
+approvedScopeChange.deviation.evidence.scopeChange.authorityLocation.excerpt += ' Revised.'
+assert.throws(() => validateDeviation(approvedScopeChange, edition, readEvidence), /affirm this exact decision/)
+approvedScopeChange.deviation.evidence.scopeChange.fromScopeIds.push('GK')
+attachApproval(approvedScopeChange)
+assert.equal(checkDeviation(approvedScopeChange.deviation), false, 'scope change IDs are unique')
+assert.throws(() => validateDeviation(approvedScopeChange, edition, readEvidence), /invalid category evidence/)
 const unboundApproval = decisionFor()
 files.set(unboundApproval.deviation.review.path, Buffer.from(JSON.stringify(approvalFor(unboundApproval), null, 2)))
 assert.throws(() => validateDeviation(unboundApproval, edition, readEvidence), /approval hash mismatch/)

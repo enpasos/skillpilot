@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { unicodeFullCaseFold } from './lib/unicodeFullCaseFold'
 import { sourceMappingDigest } from './sourceMappingDigest'
 
 type EditionIdentity = { targetLandscapeId: string; sourceId: string; edition: string }
@@ -6,6 +7,7 @@ type EvidenceRef = { path: string; sha256: string }
 type RowRef = { sourceGoalId: string; rowSha256: string }
 type OriginalLocation = { locator: string; excerpt: string }
 type EvidenceRoute = { route: string; finding: string }
+type ScopeChange = { fromScopeIds: string[]; toScopeIds: string[]; authorityLocation: OriginalLocation }
 type StandingDecision = {
   standingDecision: EvidenceRef
   retainedPerformance: string
@@ -20,7 +22,7 @@ type DeviationEvidence =
   | { category: 'duplicate'; evidence: { duplicateOf: RowRef; samePerformance: string; sameScope: string } }
   | { category: 'replacedWithinEdition'; evidence: {
       replacedBy: RowRef; replacedLocation: OriginalLocation; replacementLocation: OriginalLocation
-      authorityLocation: OriginalLocation; effectivePeriod: string
+      authorityLocation: OriginalLocation; effectivePeriod: string; scopeChange?: ScopeChange
     } }
   | { category: 'infeasiblePracticalAssessment'; evidence: StandingDecision & {
       requiredPerformance: string; practicalObstacle: string
@@ -30,24 +32,32 @@ type DeviationEvidence =
 
 export type DeclinedDecision = RowRef & {
   decision: 'declined'
-  author: string
-  reviewer: string
+  authorId: string
+  reviewerId: string
   reviewedAt: string
   deviation: DeviationEvidence & { categoryVersion: 1; reason: string; review: EvidenceRef }
 }
 
 const sha256Pattern = /^[0-9a-f]{64}$/u
 const datePattern = /^\d{4}-\d{2}-\d{2}$/u
+const actorIdPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u
 const textPresent = (value: unknown): value is string => typeof value === 'string' && /\S/u.test(value)
-const identity = (value: string): string => value.normalize('NFKC').trim().replace(/\s+/gu, ' ').toLowerCase()
+
+function validCanonicalActorId(value: unknown): value is string {
+  return typeof value === 'string' && value.length === 36 && actorIdPattern.test(value)
+}
+
+export function normalizedDeviationReason(value: string): string {
+  return unicodeFullCaseFold(value.normalize('NFKC')).normalize('NFC').trim().replace(/\s+/gu, ' ')
+}
 
 /** The row digest binds the current wording, context and scope in the identified edition. */
 export function deviationApprovalSha256(decision: DeclinedDecision, editionIdentity: EditionIdentity): string {
   const { targetLandscapeId, sourceId, edition } = editionIdentity
-  const { sourceGoalId, rowSha256, author, deviation } = decision
+  const { sourceGoalId, rowSha256, authorId, deviation } = decision
   const { categoryVersion, category, reason, evidence } = deviation
   return sourceMappingDigest({
-    targetLandscapeId, sourceId, edition, sourceGoalId, rowSha256, author, categoryVersion, category, reason, evidence,
+    targetLandscapeId, sourceId, edition, sourceGoalId, rowSha256, authorId, categoryVersion, category, reason, evidence,
   })
 }
 
@@ -70,6 +80,10 @@ function isOtherRow(value: unknown, sourceGoalId: string): boolean {
     && value.sourceGoalId !== sourceGoalId && typeof value.rowSha256 === 'string' && sha256Pattern.test(value.rowSha256)
 }
 
+function isScopeIdList(value: unknown): boolean {
+  return Array.isArray(value) && value.length > 0 && value.every(textPresent) && new Set(value).size === value.length
+}
+
 function hasCategoryEvidence(deviation: DeclinedDecision['deviation'], sourceGoalId: string): boolean {
   const location = (value: unknown): boolean => hasTextFields(value, ['locator', 'excerpt'])
   const route = (value: unknown): boolean => hasTextFields(value, ['route', 'finding'])
@@ -89,7 +103,11 @@ function hasCategoryEvidence(deviation: DeclinedDecision['deviation'], sourceGoa
     }
     case 'replacedWithinEdition': {
       const evidence = deviation.evidence
-      return hasExactFields(evidence, ['replacedBy', 'replacedLocation', 'replacementLocation', 'authorityLocation', 'effectivePeriod'])
+      const fields = ['replacedBy', 'replacedLocation', 'replacementLocation', 'authorityLocation', 'effectivePeriod']
+      const scopeChange = evidence?.scopeChange
+      return hasExactFields(evidence, scopeChange === undefined ? fields : [...fields, 'scopeChange'])
+        && (scopeChange === undefined || (hasExactFields(scopeChange, ['fromScopeIds', 'toScopeIds', 'authorityLocation'])
+          && isScopeIdList(scopeChange.fromScopeIds) && isScopeIdList(scopeChange.toScopeIds) && location(scopeChange.authorityLocation)))
         && isOtherRow(evidence.replacedBy, sourceGoalId) && textPresent(evidence.effectivePeriod)
         && [evidence.replacedLocation, evidence.replacementLocation, evidence.authorityLocation].every(location)
     }
@@ -115,7 +133,7 @@ export function validateDeviation(
   editionIdentity: EditionIdentity,
   readEvidence: (path: string) => Buffer,
 ): void {
-  const { sourceGoalId, rowSha256, author, reviewer, reviewedAt, deviation } = decision
+  const { sourceGoalId, rowSha256, authorId, reviewerId, reviewedAt, deviation } = decision
   function reject(message: string): never {
     throw new Error(`Declined source row ${sourceGoalId}: ${message}`)
   }
@@ -136,7 +154,10 @@ export function validateDeviation(
     || ![editionIdentity.targetLandscapeId, editionIdentity.sourceId, editionIdentity.edition].every(textPresent)) {
     reject('missing row or edition identity')
   }
-  if (!textPresent(author) || !textPresent(reviewer) || identity(author) === identity(reviewer)) {
+  if (!validCanonicalActorId(authorId) || !validCanonicalActorId(reviewerId)) {
+    reject('authorId and reviewerId must be canonical actor IDs')
+  }
+  if (authorId === reviewerId) {
     reject('the reviewer must be independent of the author')
   }
   const reviewDate = datePattern.test(reviewedAt) ? new Date(`${reviewedAt}T00:00:00Z`) : undefined
@@ -155,7 +176,7 @@ export function validateDeviation(
     const { standingDecision, retainedPerformance, droppedPerformance } = deviation.evidence
     if (!isEvidenceRef(standingDecision) || standingDecision.path === deviation.review.path
       || !textPresent(retainedPerformance) || !textPresent(droppedPerformance)
-      || identity(retainedPerformance) === identity(droppedPerformance)) {
+      || normalizedDeviationReason(retainedPerformance) === normalizedDeviationReason(droppedPerformance)) {
       reject('expected a separate standing decision and distinct retained and dropped performances')
     }
     readBoundEvidence(standingDecision, 'standing decision')
@@ -168,10 +189,10 @@ export function validateDeviation(
   } catch {
     return reject('approval must be valid JSON')
   }
-  if (!hasExactFields(approval, ['schemaVersion', 'decisionSha256', 'reviewer', 'reviewedAt', 'verdict'])
+  if (!hasExactFields(approval, ['schemaVersion', 'decisionSha256', 'reviewerId', 'reviewedAt', 'verdict'])
     || approval.schemaVersion !== 1 || approval.verdict !== 'approved'
-    || approval.reviewer !== reviewer || approval.reviewedAt !== reviewedAt
+    || approval.reviewerId !== reviewerId || approval.reviewedAt !== reviewedAt
     || approval.decisionSha256 !== deviationApprovalSha256(decision, editionIdentity)) {
-    reject('approval must affirm this exact decision and record the named reviewer and review date')
+    reject('approval must affirm this exact decision and record the reviewer ID and review date')
   }
 }

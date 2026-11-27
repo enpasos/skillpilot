@@ -34,14 +34,21 @@
       "uniqueItems": true
     },
     "selectedReviews": {
-      "type": "object",
-      "propertyNames": {
-        "type": "string",
-        "pattern": "\\S"
-      },
-      "additionalProperties": {
-        "type": "string",
-        "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*[:\\\\])[^/].*[^/]$|^[a-zA-Z0-9]$"
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sourceGoalId": {
+            "type": "string",
+            "pattern": "\\S"
+          },
+          "reviewPath": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//)(?!.*[:\\\\])[^/].*[^/]$|^[a-zA-Z0-9]$"
+          }
+        },
+        "required": ["sourceGoalId", "reviewPath"]
       }
     },
     "rows": {
@@ -57,11 +64,26 @@
             "type": "string",
             "pattern": "\\S"
           },
-          "context": {
-            "type": "object"
+          "parentContext": {
+            "type": "array",
+            "description": "Applicable enclosing source goals, passages, and extraction scope metadata derived from the pinned source extraction.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "kind": { "enum": ["sourceGoal", "passage", "extraction"] },
+                "id": { "type": "string", "pattern": "\\S" },
+                "contextSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+              },
+              "required": ["kind", "id", "contextSha256"]
+            }
           },
-          "scope": {
-            "type": "object"
+          "applicableScopeIds": {
+            "type": "array",
+            "description": "Authoritative applicable scope IDs for the official row. Include any course, branch, year, or module qualification required to distinguish scopes.",
+            "items": { "type": "string", "pattern": "\\S" },
+            "minItems": 1,
+            "uniqueItems": true
           },
           "regularTargetsByScope": {
             "type": "object",
@@ -88,8 +110,8 @@
         "required": [
           "sourceGoalId",
           "wording",
-          "context",
-          "scope",
+          "parentContext",
+          "applicableScopeIds",
           "regularTargetsByScope",
           "sourceRecordSha256"
         ],
@@ -119,6 +141,20 @@
           "path",
           "sha256"
         ],
+        "additionalProperties": false
+      },
+      "uniqueItems": true
+    },
+    "retiredRowSuccessors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sourceGoalId": { "type": "string", "pattern": "\\S" },
+          "successorSourceGoalId": { "type": "string", "pattern": "\\S" },
+          "successorSourceRecordSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        },
+        "required": ["sourceGoalId", "successorSourceGoalId", "successorSourceRecordSha256"],
         "additionalProperties": false
       },
       "uniqueItems": true

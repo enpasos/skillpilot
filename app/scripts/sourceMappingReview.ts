@@ -6,7 +6,7 @@ import Ajv2020 from 'ajv/dist/2020.js'
 import addFormats from 'ajv-formats'
 import { resolvePredecessors } from './sourceMappingPredecessors'
 import { sourceMappingDigest } from './sourceMappingDigest'
-import { validateDeviation, type DeclinedDecision } from './sourceMappingDeviation'
+import { normalizedDeviationReason, validateDeviation, type DeclinedDecision } from './sourceMappingDeviation'
 
 export type ReviewFile = { path: string; document: Record<string, unknown> }
 export type CarrierKind = 'subject' | 'crossCutting'
@@ -17,24 +17,25 @@ export type Contribution = {
   performance: string
   scopeIds: string[]
 }
-type RowDecision = { sourceGoalId: string; rowSha256: string; author: string }
+type RowDecision = { sourceGoalId: string; rowSha256: string; authorId: string }
 type Carried = RowDecision & {
   decision: 'carried'
   mainKind: CarrierKind
   performance: string
   contributions: Contribution[]
-  reviewer: string
+  reviewerId: string
   reviewedAt: string
 }
 type Decision = Carried | DeclinedDecision | (RowDecision & { decision: 'open'; rationale: string })
 type Identity = { targetLandscapeId: string; sourceId: string; edition: string }
 type SourceIdentity = Identity & { sourceLandscapeId: string }
+type ParentContext = { kind: 'sourceGoal' | 'passage' | 'extraction'; id: string; contextSha256: string }
 export type OfficialRow = {
   sourceGoalId: string
   wording: string
   sourceRecordSha256: string
-  context: Record<string, unknown>
-  scope: Record<string, unknown>
+  parentContext: ParentContext[]
+  applicableScopeIds: string[]
   regularTargetsByScope: Record<string, string[]>
 }
 export type SourceEdition = SourceIdentity & {
@@ -43,8 +44,9 @@ export type SourceEdition = SourceIdentity & {
   rows: OfficialRow[]
   historicalExtractions?: { path: string; sha256: string }[]
   retainedLegacyReviews?: { path: string; edition: string; sourceExtractionPath: string; sourceExtractionSha256: string }[]
+  retiredRowSuccessors?: { sourceGoalId: string; successorSourceGoalId: string; successorSourceRecordSha256: string }[]
   legacyReviewPaths: string[]
-  selectedReviews: Record<string, string>
+  selectedReviews: { sourceGoalId: string; reviewPath: string }[]
 }
 type Review = SourceIdentity & { version: 2; reviewId: string; decisions: Decision[] }
 type ReviewedRow = { decision: Decision; reviewId: string; reviewPath: string }
@@ -95,8 +97,85 @@ export function readRepositoryEvidence(repoRoot = fileURLToPath(new URL('../..',
 export function sourceRowSha256(edition: SourceIdentity, row: OfficialRow): string {
   const { targetLandscapeId, sourceLandscapeId, sourceId, edition: version } = edition
   return sourceMappingDigest({ targetLandscapeId, sourceLandscapeId, sourceId, edition: version,
-    sourceGoalId: row.sourceGoalId, sourceRecordSha256: row.sourceRecordSha256, wording: row.wording, context: row.context, scope: row.scope,
-    scopeIds: Object.keys(row.regularTargetsByScope).sort() })
+    sourceGoalId: row.sourceGoalId, sourceRecordSha256: row.sourceRecordSha256, wording: row.wording,
+    parentContext: row.parentContext, applicableScopeIds: [...row.applicableScopeIds].sort() })
+}
+
+type SourceRecord = Record<string, unknown>
+
+/** Hash the applicable headings and passages, while membership follows the extraction's own links. */
+function indexExtractionContext(source: SourceRecord, records: Map<string, SourceRecord>, path: string) {
+  const parents = new Map<string, Set<string>>()
+  const parentContexts = new Map<string, ParentContext>()
+  const rowPassages = new Map<string, Set<string>>()
+  const passages = new Map<string, ParentContext>()
+  const link = (index: Map<string, Set<string>>, child: string, parent: string) => {
+    const entries = index.get(child) ?? new Set<string>()
+    entries.add(parent)
+    index.set(child, entries)
+  }
+  for (const [id, { contains, ...metadata }] of records) {
+    if (contains === undefined) continue
+    if (!Array.isArray(contains) || contains.some(child => typeof child !== 'string' || !records.has(child))) {
+      throw new Error(`Invalid containment at ${id} in ${path}`)
+    }
+    if (!contains.length) continue
+    parentContexts.set(id, { kind: 'sourceGoal', id, contextSha256: sourceMappingDigest(metadata) })
+    for (const child of contains) link(parents, child, id)
+  }
+  if (source.passages !== undefined && !Array.isArray(source.passages)) {
+    throw new Error(`Invalid source passages in ${path}`)
+  }
+  for (const passage of source.passages ?? []) {
+    const id = passage?.id ?? passage?.passageId
+    if (typeof id !== 'string' || !id.trim() || passages.has(id)) {
+      throw new Error(`Missing or duplicate source passage ${id} in ${path}`)
+    }
+    const { sourceGoalIds, ...metadata } = passage
+    passages.set(id, { kind: 'passage', id, contextSha256: sourceMappingDigest(metadata) })
+    if (sourceGoalIds === undefined) continue
+    if (!Array.isArray(sourceGoalIds) || sourceGoalIds.some(child => typeof child !== 'string')) {
+      throw new Error(`Invalid passage membership at ${id} in ${path}`)
+    }
+    for (const child of sourceGoalIds) if (records.has(child)) link(rowPassages, child, id)
+  }
+  for (const [id, record] of records) {
+    if (record.passageId === undefined) continue
+    if (typeof record.passageId !== 'string' || !passages.has(record.passageId)) {
+      throw new Error(`Unresolved source passage ${record.passageId} on ${id} in ${path}`)
+    }
+    link(rowPassages, id, record.passageId)
+  }
+  const scopeFields = ['title', 'subject', 'jurisdiction', 'schoolType', 'stage', 'courseLevel', 'courseProfile',
+    'durationModel', 'durationModels', 'scopeRules', 'scopeQualification']
+  const sourceMetadata = Object.fromEntries(scopeFields.filter(field => Object.hasOwn(source, field))
+    .map(field => [field, source[field]]))
+  const cache = new Map<string, Map<string, ParentContext>>()
+  const active = new Set<string>()
+  function inherited(id: string): Map<string, ParentContext> {
+    const cached = cache.get(id)
+    if (cached) return cached
+    if (active.has(id)) throw new Error(`Cyclic source containment at ${id} in ${path}`)
+    active.add(id)
+    const contexts = new Map<string, ParentContext>()
+    for (const parent of parents.get(id) ?? []) {
+      contexts.set(`sourceGoal:${parent}`, parentContexts.get(parent)!)
+      for (const [key, record] of inherited(parent)) contexts.set(key, record)
+    }
+    for (const passage of rowPassages.get(id) ?? []) contexts.set(`passage:${passage}`, passages.get(passage)!)
+    active.delete(id)
+    cache.set(id, contexts)
+    return contexts
+  }
+  // Validate disconnected structures and cycles even if they contain no atomic row.
+  for (const id of records.keys()) inherited(id)
+  const extraction: ParentContext[] = Object.keys(sourceMetadata).length === 0 ? [] : [{
+    kind: 'extraction', id: String(source.sourceLandscapeId), contextSha256: sourceMappingDigest(sourceMetadata),
+  }]
+  return (id: string): ParentContext[] => {
+    const contexts = inherited(id)
+    return [...extraction, ...[...contexts.keys()].sort().map(key => contexts.get(key)!)]
+  }
 }
 
 /** A conversion covers the complete atomic inventory of this registered extraction. */
@@ -112,38 +191,58 @@ function checkExtraction(edition: SourceEdition, rows: Map<string, OfficialRow>,
   if (source?.sourceLandscapeId !== edition.sourceLandscapeId || !Array.isArray(source.sourceGoals)) {
     throw new Error(`Source extraction does not identify this landscape: ${edition.sourceExtractionPath}`)
   }
-  const seen = new Set<string>()
+  const records = new Map<string, SourceRecord>()
   for (const record of source.sourceGoals) {
-    if (Array.isArray(record?.contains) && record.contains.length > 0) continue
-    const row = rows.get(record?.id)
-    if (!row || seen.has(row.sourceGoalId)) throw new Error(`Missing or duplicate official source row: ${record?.id}`)
+    const id = record?.id
+    if (typeof id !== 'string' || !id.trim() || records.has(id)) throw new Error(`Missing or duplicate official source row: ${id}`)
+    records.set(id, record)
+  }
+  const contextFor = indexExtractionContext(source, records, edition.sourceExtractionPath)
+  let atomicCount = 0
+  for (const [id, record] of records) {
+    if (Array.isArray(record.contains) && record.contains.length > 0) continue
+    const row = rows.get(id)
+    if (!row) throw new Error(`Missing or duplicate official source row: ${id}`)
     const wording = [record.sourceText, record.description, record.title].find(text => typeof text === 'string' && text.trim())
     if (wording !== row.wording || sourceMappingDigest(record) !== row.sourceRecordSha256) {
       throw new Error(`Stale wording or source record: ${row.sourceGoalId}`)
     }
-    seen.add(row.sourceGoalId)
+    if (sourceMappingDigest(contextFor(id)) !== sourceMappingDigest(row.parentContext)) {
+      throw new Error(`Stale source parent context: ${id}`)
+    }
+    const regularTargetScopes = Object.keys(row.regularTargetsByScope)
+    if (!sameScopes(row.applicableScopeIds, regularTargetScopes)) {
+      throw new Error(`Regular target sets must match the official applicable scopes: ${id}`)
+    }
+    atomicCount++
   }
-  if (seen.size !== rows.size) throw new Error(`Inventoried row absent from source extraction: ${edition.sourceExtractionPath}`)
+  if (atomicCount !== rows.size) throw new Error(`Inventoried row absent from source extraction: ${edition.sourceExtractionPath}`)
+}
+
+function sameScopes(first: string[], second: string[]): boolean {
+  const scopeSet = new Set(second)
+  return first.length === second.length && first.every(scope => scopeSet.has(scope))
 }
 
 function checkCarriers(row: OfficialRow, decision: Carried): void {
   if (!decision.contributions.some(c => c.kind === decision.mainKind)) {
     throw new Error(`Main carrier kind absent on ${row.sourceGoalId}`)
   }
+  const applicable = new Set(row.applicableScopeIds)
   const coverage = new Set<string>()
   const contributions = new Set<string>()
   for (const carrier of decision.contributions) {
     if (contributions.has(carrier.canonicalGoalId)) throw new Error(`Repeated carrier on ${row.sourceGoalId}`)
     contributions.add(carrier.canonicalGoalId)
     for (const scopeId of carrier.scopeIds) {
-      if (!Object.hasOwn(row.regularTargetsByScope, scopeId) ||
+      if (!applicable.has(scopeId) ||
           !row.regularTargetsByScope[scopeId].includes(carrier.canonicalGoalId)) {
         throw new Error(`Carrier ${carrier.canonicalGoalId} is not a regular target in ${scopeId} for ${row.sourceGoalId}`)
       }
       coverage.add(scopeId)
     }
   }
-  if (coverage.size !== Object.keys(row.regularTargetsByScope).length) {
+  if (coverage.size !== applicable.size) {
     throw new Error(`Incomplete course or module coverage for ${row.sourceGoalId}`)
   }
 }
@@ -154,23 +253,29 @@ function checkReferences(edition: SourceEdition, effective: Map<string, Effectiv
     const visited = new Set([origin])
     let decision = first as EffectiveDecision
     while (decision.decision === 'declined') {
-      const { category, evidence } = decision.deviation
-      if (category !== 'duplicate' && category !== 'replacedWithinEdition') {
+      const deviation = decision.deviation
+      if (deviation.category !== 'duplicate' && deviation.category !== 'replacedWithinEdition') {
         if (visited.size > 1) throw new Error(`Reference from ${origin} has no positive carrier`)
         break
       }
-      const previous = rows.get(decision.sourceGoalId)!
-      const field = category === 'duplicate' ? 'duplicateOf' : 'replacedBy'
-      const ref = (evidence as unknown as Record<string, { sourceGoalId: string; rowSha256: string }>)[field]
+      const precedingScopes = rows.get(decision.sourceGoalId)!.applicableScopeIds
+      const ref = deviation.category === 'duplicate' ? deviation.evidence.duplicateOf : deviation.evidence.replacedBy
       const next = effective.get(ref.sourceGoalId)
       if (!next || next.rowSha256 !== ref.rowSha256 || next.decision === 'open') {
         throw new Error(`Unresolved reference in ${edition.edition} from ${origin} to ${ref.sourceGoalId}`)
       }
       if (visited.has(ref.sourceGoalId)) throw new Error(`Cyclic reference from ${origin}`)
-      if (category === 'duplicate') {
-        const target = rows.get(ref.sourceGoalId)!
-        const scopeDigest = (row: OfficialRow) => sourceMappingDigest([row.scope, Object.keys(row.regularTargetsByScope).sort()])
-        if (scopeDigest(previous) !== scopeDigest(target)) throw new Error(`Duplicate rows have different scope: ${origin}`)
+      const succeedingScopes = rows.get(ref.sourceGoalId)!.applicableScopeIds
+      if (deviation.category === 'duplicate') {
+        if (!sameScopes(precedingScopes, succeedingScopes)) throw new Error(`Duplicate rows have different scope: ${origin}`)
+      } else {
+        const change = deviation.evidence.scopeChange
+        if (change && (!sameScopes(precedingScopes, change.fromScopeIds) || !sameScopes(succeedingScopes, change.toScopeIds))) {
+          throw new Error(`Replacement scope evidence does not match the official scopes: ${origin}`)
+        }
+        if (!change && !precedingScopes.every(scope => succeedingScopes.includes(scope))) {
+          throw new Error(`Replacement does not cover the original applicable scopes: ${origin}`)
+        }
       }
       visited.add(ref.sourceGoalId)
       decision = next
@@ -238,12 +343,15 @@ export function loadSourceMappingReviews(inputs: SourceMappingInputs): {
   for (const [id, edition] of byEdition) {
     const rows = sourceRows.get(id)!
     const effective = new Map<string, EffectiveDecision>()
-    for (const selected of Object.keys(edition.selectedReviews)) {
-      if (!rows.has(selected)) throw new Error(`Selection for unknown row ${selected}`)
+    const selections = new Map<string, string>()
+    for (const { sourceGoalId, reviewPath } of edition.selectedReviews) {
+      if (!rows.has(sourceGoalId)) throw new Error(`Selection for unknown row ${sourceGoalId}`)
+      if (selections.has(sourceGoalId)) throw new Error(`Repeated review selection for row ${sourceGoalId}`)
+      selections.set(sourceGoalId, reviewPath)
     }
     for (const [rowId, row] of rows) {
       const options = candidates.get(id)?.get(rowId) ?? []
-      const selected = Object.hasOwn(edition.selectedReviews, rowId) ? edition.selectedReviews[rowId] : undefined
+      const selected = selections.get(rowId)
       const option = selected ? options.find(entry => entry.reviewPath === selected) : options.length === 1 ? options[0] : undefined
       if (!option) throw new Error(`Missing or ambiguous effective decision: ${id} ${rowId}`)
       const { decision, reviewId, reviewPath } = option
@@ -251,7 +359,7 @@ export function loadSourceMappingReviews(inputs: SourceMappingInputs): {
       if (decision.decision === 'carried') checkCarriers(row, decision)
       if (decision.decision === 'declined') {
         validateDeviation(decision, edition, readEvidence)
-        const reason = decision.deviation.reason.normalize('NFKC').trim().toLowerCase().replace(/\s+/gu, ' ')
+        const reason = normalizedDeviationReason(decision.deviation.reason)
         if (reasons.has(reason)) throw new Error(`Repeated deviation reason on ${reasons.get(reason)} and ${rowId}`)
         reasons.set(reason, rowId)
       }
