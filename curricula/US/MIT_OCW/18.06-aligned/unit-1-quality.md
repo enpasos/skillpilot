@@ -35,4 +35,10 @@ Each assessment kept the learner in the task at one point below the pass mark. A
 
 At the row-picture and column-picture goals the connector offered each figure and returned its image URL. When the course folder was on the backend classpath, both URLs served SVG bytes matching the course files. Loading the course manifest alone produced the same offers but both image requests returned HTTP 404.
 
-All course files are under one directory. Repository mode loads the course from a landscape directory and serves the figures from the classpath. The local checks use UnitGraph, the scoped learning-unit validator and the pass-mark rule. Shared CI still discovers the course root through the repository-wide graph/manifest check. The Gymnasium book, card and package pipelines lack a selector for this course. The existing MIT module rule GVR-007 concerns a different framework. An installable standalone course package remains open.
+## What installing a course into the platform needs today
+
+Register the course ID and the catalog title in `curricula/curriculum_manifest.json` to make the course available in the shared course picker. Keep the course-local manifest for running the pilot on its own. With both manifests present, the repository loader found one Linear Algebra course with 20 goals and five cards.
+
+Each goal, including the three clusters, needs `dimensionTags.phase` for the shared landscape schema. All 20 Linear Algebra goals use `Module`. Serve the two figures from the application classpath as described in the [local pilot instructions](README.md#local-pilot).
+
+The local checks use UnitGraph, the scoped learning-unit validator and the pass-mark rule. The Gymnasium book, card and package pipelines lack a selector for this course. The existing MIT module rule GVR-007 concerns a different framework. An installable standalone course package remains open.
