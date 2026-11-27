@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.skillpilot.backend.composition.CompositionViewFormatMetadata;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.CharacterCodingException;
@@ -51,10 +49,6 @@ public final class JsonCurriculumPackageLoader {
     private static final String MATERIAL_CAPABILITY = "assessmentMaterialsV1";
     private static final String MATERIAL_CATALOG_SCHEMA_ID =
             "https://skillpilot.com/schemas/curriculum-package/v1.3/runtime-catalog.schema.json";
-    private static final String VOLUNTARY_RUNTIME_VERSION = "1.4";
-    private static final String VOLUNTARY_RELEASE_PROFILE = "full-standalone-v1.4";
-    private static final String VOLUNTARY_CATALOG_SCHEMA_ID =
-            "https://skillpilot.com/schemas/curriculum-package/v1.4/runtime-catalog.schema.json";
     private static final String LEARNING_UNIT_REVIEW_ROLE = "learning-unit-coverage-review";
     private static final String RELEASE_PROFILE = "full-standalone-v1";
     private static final String PACKAGE_FORMAT_VERSION = "1.0";
@@ -183,15 +177,13 @@ public final class JsonCurriculumPackageLoader {
         requireExactText(manifest, "packageFormatVersion", PACKAGE_FORMAT_VERSION, "package manifest");
         String runtimeVersion = requiredText(manifest, "runtimeContractVersion", "package manifest");
         boolean completion = runtimeVersion.equals("1.1");
-        boolean voluntary = runtimeVersion.equals(VOLUNTARY_RUNTIME_VERSION);
-        boolean assessmentMaterials = runtimeVersion.equals(MATERIAL_RUNTIME_VERSION) || voluntary;
+        boolean assessmentMaterials = runtimeVersion.equals(MATERIAL_RUNTIME_VERSION);
         boolean learningUnits = runtimeVersion.equals(LEARNING_UNIT_RUNTIME_VERSION) || assessmentMaterials;
         if (!completion && !learningUnits && !runtimeVersion.equals(RUNTIME_CONTRACT_VERSION)) {
             throw failure("Unsupported runtime contract version: " + runtimeVersion);
         }
         requireExactText(manifest, "releaseProfile",
                 completion ? COMPLETION_RELEASE_PROFILE
-                        : voluntary ? VOLUNTARY_RELEASE_PROFILE
                         : assessmentMaterials ? MATERIAL_RELEASE_PROFILE
                         : learningUnits ? LEARNING_UNIT_RELEASE_PROFILE : RELEASE_PROFILE,
                 "package manifest");
@@ -214,7 +206,6 @@ public final class JsonCurriculumPackageLoader {
         JsonNode catalog = readJsonArtifact(installedPackage, catalogFile, verifiedPaths);
         requireExactText(catalog, "$schema",
                 completion ? COMPLETION_CATALOG_SCHEMA_ID
-                        : voluntary ? VOLUNTARY_CATALOG_SCHEMA_ID
                         : assessmentMaterials ? MATERIAL_CATALOG_SCHEMA_ID
                         : learningUnits ? LEARNING_UNIT_CATALOG_SCHEMA_ID : RUNTIME_CATALOG_SCHEMA_ID,
                 "runtime catalog");
@@ -237,10 +228,10 @@ public final class JsonCurriculumPackageLoader {
             throw failure("Assessment completion capability requires the exact runtime 1.1 release profile");
         }
         if (learningUnits != capabilities.contains(LEARNING_UNIT_CAPABILITY)) {
-            throw failure("Learning-unit capability requires the exact runtime 1.2, 1.3 or 1.4 release profile");
+            throw failure("Learning-unit capability requires the exact runtime 1.2 or 1.3 release profile");
         }
         if (assessmentMaterials != capabilities.contains(MATERIAL_CAPABILITY)) {
-            throw failure("Assessment-material capability requires the exact runtime 1.3 or 1.4 release profile");
+            throw failure("Assessment-material capability requires the exact runtime 1.3 release profile");
         }
 
         JsonNode indexes = requiredObject(catalog, "artifactIndexes", "runtime catalog");
@@ -811,15 +802,6 @@ public final class JsonCurriculumPackageLoader {
             ManifestFile file = requiredRole(files, path, "composition-view");
             byte[] bytes = readArtifactBytes(installedPackage, file, verifiedPaths);
             JsonNode document = parseJson(bytes, "composition view " + id);
-            try {
-                CompositionViewFormatMetadata.validateRuntimeView(objectMapper.convertValue(document, new TypeReference<Map<String, Object>>() {}));
-            } catch (IllegalStateException exception) {
-                throw failure(exception.getMessage());
-            }
-            boolean voluntaryRuntime = VOLUNTARY_RUNTIME_VERSION.equals(requiredText(catalog, "runtimeContractVersion", "runtime catalog"));
-            if ("1.3".equals(document.path("viewFormatVersion").asText()) && !voluntaryRuntime) {
-                throw failure("Composition view format 1.3 requires runtime contract 1.4");
-            }
             requireExactText(document, "viewId", id, "composition view " + id);
             requireExactText(document, "landscapeId", landscapeId, "composition view " + id);
             Map<String, String> scope = requiredStringMap(entry, "scope", context);
@@ -949,7 +931,7 @@ public final class JsonCurriculumPackageLoader {
             JsonNode catalog,
             JsonNode index,
             Map<String, ManifestFile> files) {
-        boolean assessmentMaterials = Set.of(MATERIAL_RUNTIME_VERSION, VOLUNTARY_RUNTIME_VERSION).contains(
+        boolean assessmentMaterials = MATERIAL_RUNTIME_VERSION.equals(
                 requiredText(catalog, "runtimeContractVersion", "runtime catalog"));
         if (assessmentMaterials) {
             requireExactText(index, "$schema",

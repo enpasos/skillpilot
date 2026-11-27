@@ -644,12 +644,8 @@ export const CompositionViewEditorView: React.FC = () => {
     updateView((current) => ({
       ...current,
       rootNodes: updateNodeAtPath(current.rootNodes, path, (node) => {
-        if (node.kind === 'goalEntry') {
-          if (projectionRole === 'voluntary' && current.viewFormatVersion !== '1.3') return node
-          return { ...node, projectionRole }
-        }
-        if (node.kind === 'canonicalSubtree' && projectionRole !== 'voluntary') return { ...node, projectionRole }
-        return node
+        if (node.kind !== 'canonicalSubtree' && node.kind !== 'goalEntry') return node
+        return { ...node, projectionRole }
       }),
     }))
   }, [selectedNodePath, updateView])
@@ -1168,7 +1164,6 @@ export const CompositionViewEditorView: React.FC = () => {
                       >
                         <option value="target">target — sichtbar und auswählbar</option>
                         <option value="prerequisiteOnly">prerequisiteOnly — nur Voraussetzung</option>
-                        {view?.viewFormatVersion === '1.3' && <option value="voluntary">voluntary — freiwilliges Angebot</option>}
                       </select>
                     </label>
 

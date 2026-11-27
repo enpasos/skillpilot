@@ -69,12 +69,8 @@ public final class CourseProfileCompositionViewMerger {
         }
         ProjectionGraph graph = new ProjectionGraph(canonicalChildren);
         Set<String> expectedTargets = new LinkedHashSet<>();
-        Map<String, String> expectedRoles = new LinkedHashMap<>();
-        boolean voluntary = sourceRoots.stream().anyMatch(CourseProfileCompositionViewMerger::hasVoluntary);
         for (List<Map<String, Object>> source : sourceRoots) {
             expectedTargets.addAll(graph.targets(source));
-            if (voluntary) graph.roles(source).forEach((id, role) -> expectedRoles.merge(id, role,
-                    CourseProfileCompositionViewMerger::dominantRole));
         }
         MergeState state = new MergeState();
         List<Map<String, Object>> merged = mergeSiblings(
@@ -82,7 +78,6 @@ public final class CourseProfileCompositionViewMerger {
         // A support reference has no placement authority. When its actual
         // target is encountered later, keep that authored target's position.
         merged = withoutRedundantReferences(merged, state.discardedLeaves);
-        if (voluntary) merged = reconcileVoluntaryReferences(merged, expectedRoles, graph);
         merged = preserveCommonExclusions(merged, expectedTargets, graph);
         Set<String> actualTargets = graph.targets(merged);
         boolean changed;
@@ -119,9 +114,6 @@ public final class CourseProfileCompositionViewMerger {
         if (!graph.targets(result).equals(expectedTargets)) {
             throw new IllegalStateException("Subtree deduplication changes resolved course-profile target union");
         }
-        if (voluntary && !graph.atomicRoles(result).equals(atomicRoles(expectedRoles, canonicalChildren))) {
-            throw new IllegalStateException("Course-profile merge cannot preserve resolved projection roles");
-        }
         return freeze(result);
     }
 
@@ -130,51 +122,6 @@ public final class CourseProfileCompositionViewMerger {
         Set<String> targets = new LinkedHashSet<>(new ProjectionGraph(canonicalChildren).targets(nodes));
         targets.removeIf(id -> !canonicalChildren.get(id).isEmpty());
         return targets;
-    }
-
-    /** Exact effective roles of canonical atoms, using the ordinary direct/subtree specificity. */
-    public static Map<String, String> resolvedAtomicRoles(
-            List<Map<String, Object>> nodes, Map<String, List<String>> canonicalChildren) {
-        ProjectionGraph graph = new ProjectionGraph(canonicalChildren);
-        return Collections.unmodifiableMap(atomicRoles(graph.rolesWithOpaqueEntries(nodes), canonicalChildren));
-    }
-
-    public static Map<String, String> resolvedGoalRoles(
-            List<Map<String, Object>> nodes, Map<String, List<String>> canonicalChildren) {
-        return Collections.unmodifiableMap(new ProjectionGraph(canonicalChildren).rolesWithOpaqueEntries(nodes));
-    }
-
-    private static Map<String, String> atomicRoles(Map<String, String> roles, Map<String, List<String>> children) {
-        Map<String, String> atoms = new LinkedHashMap<>(roles);
-        atoms.keySet().removeIf(id -> !children.get(id).isEmpty());
-        return atoms;
-    }
-
-    private static boolean hasVoluntary(List<Map<String, Object>> nodes) {
-        return nodes.stream().anyMatch(node -> "voluntary".equals(node.get("projectionRole"))
-                || hasVoluntary(nodeMaps(node.get("children"))));
-    }
-
-    private static List<Map<String, Object>> reconcileVoluntaryReferences(
-            List<Map<String, Object>> nodes, Map<String, String> expected, ProjectionGraph graph) {
-        List<Map<String, Object>> result = new ArrayList<>();
-        for (Map<String, Object> node : nodes) {
-            if ("structure".equals(node.get("kind"))) {
-                Map<String, Object> copy = new LinkedHashMap<>(node);
-                List<Map<String, Object>> children = reconcileVoluntaryReferences(nodeMaps(node.get("children")), expected, graph);
-                if (children.isEmpty() && !nodeMaps(node.get("children")).isEmpty()) continue;
-                copy.put("children", children);
-                result.add(copy);
-            } else if ("voluntary".equals(node.get("projectionRole"))) {
-                String id = ProjectionGraph.localId(text(node.get("goalId")));
-                String role = expected.get(id);
-                if ("voluntary".equals(role)) result.add(node);
-                // A required reference in another source keeps its authored place.
-            } else {
-                result.add(node);
-            }
-        }
-        return result;
     }
 
     private static List<Map<String, Object>> preserveCommonExclusions(
@@ -227,12 +174,11 @@ public final class CourseProfileCompositionViewMerger {
         return result;
     }
 
-    private record RoleAssignment(String role, boolean direct, int distance) {
-        private boolean target() { return "target".equals(role); }
+    private record RoleAssignment(boolean target, boolean direct, int distance) {
         private RoleAssignment combine(RoleAssignment other) {
             if (direct != other.direct) return other.direct ? other : this;
             if (!direct && distance != other.distance) return other.distance < distance ? other : this;
-            return new RoleAssignment(dominantRole(role, other.role), direct, Math.min(distance, other.distance));
+            return new RoleAssignment(target || other.target, direct, Math.min(distance, other.distance));
         }
     }
 
@@ -289,48 +235,29 @@ public final class CourseProfileCompositionViewMerger {
         }
 
         private Set<String> targets(List<Map<String, Object>> nodes) {
-            Map<String, String> roles = roles(nodes);
-            Set<String> result = new LinkedHashSet<>();
-            roles.forEach((id, role) -> { if ("target".equals(role)) result.add(id); });
-            return result;
-        }
-
-        private Map<String, String> roles(List<Map<String, Object>> nodes) {
-            return roles(nodes, false);
-        }
-
-        private Map<String, String> rolesWithOpaqueEntries(List<Map<String, Object>> nodes) {
-            return roles(nodes, true);
-        }
-
-        private Map<String, String> roles(List<Map<String, Object>> nodes, boolean expandOpaque) {
             Map<String, RoleAssignment> assignments = new LinkedHashMap<>();
-            assign(nodes, assignments, expandOpaque);
-            Map<String, String> result = new LinkedHashMap<>();
-            assignments.forEach((id, role) -> result.put(id, role.role()));
+            assign(nodes, assignments);
+            Set<String> result = new LinkedHashSet<>();
+            assignments.forEach((id, role) -> { if (role.target()) result.add(id); });
             return result;
         }
 
-        private Map<String, String> atomicRoles(List<Map<String, Object>> nodes) {
-            return CourseProfileCompositionViewMerger.atomicRoles(roles(nodes), children);
-        }
-
-        private void assign(List<Map<String, Object>> nodes, Map<String, RoleAssignment> assignments, boolean expandOpaque) {
+        private void assign(List<Map<String, Object>> nodes, Map<String, RoleAssignment> assignments) {
             for (Map<String, Object> node : nodes) {
                 String kind = text(node.get("kind"));
                 if ("structure".equals(kind)) {
-                    assign(nodeMaps(node.get("children")), assignments, expandOpaque);
+                    assign(nodeMaps(node.get("children")), assignments);
                 } else if (supportsProjectionRole(kind)) {
                     String id = localId(text(node.get("goalId")));
                     boolean direct = "goalEntry".equals(kind);
                     // Resolve even direct references, so missing graph data never
                     // silently authorizes a role change.
-                    Set<String> covered = direct && !expandOpaque ? Set.of(id) : descendants(id);
+                    Set<String> covered = direct ? Set.of(id) : descendants(id);
                     if (!children.containsKey(id)) {
                         throw new IllegalStateException("Unknown canonical goal in course-profile merge: " + id);
                     }
                     covered.forEach(goalId -> assignments.merge(goalId,
-                            new RoleAssignment(effectiveProjectionRole(node), direct, direct ? 0 : distances(id).get(goalId)),
+                            new RoleAssignment(isTarget(node), direct, direct ? 0 : distances(id).get(goalId)),
                             RoleAssignment::combine));
                 } else if ("landscapeEntry".equals(kind)) {
                     throw new IllegalStateException("Course-profile merge requires explicit canonical goal references");
@@ -525,19 +452,9 @@ public final class CourseProfileCompositionViewMerger {
     }
 
     private static String effectiveProjectionRole(Map<String, Object> node) {
-        Object role = node.get("projectionRole");
-        if (role == null && !node.containsKey("projectionRole")) return "target";
-        if (Set.of("target", "prerequisiteOnly", "voluntary").contains(role == null ? "" : role)) return (String) role;
-        throw new IllegalStateException("Unsupported projectionRole in composition view: " + role);
-    }
-
-    private static String dominantRole(String left, String right) {
-        return rolePriority(left) >= rolePriority(right) ? left : right;
-    }
-
-    private static int rolePriority(String role) {
-        return switch (role) { case "target" -> 3; case "prerequisiteOnly" -> 2; case "voluntary" -> 1;
-            default -> throw new IllegalStateException("Unsupported projectionRole in composition view: " + role); };
+        return "prerequisiteOnly".equals(node.get("projectionRole"))
+                ? "prerequisiteOnly"
+                : "target";
     }
 
     private static Map<String, Object> presentationMetadata(Map<String, Object> node) {
@@ -717,7 +634,7 @@ public final class CourseProfileCompositionViewMerger {
     private static void validateLeafMetadata(List<Map<String, Object>> sources) {
         for (Map<String, Object> source : sources) {
             if (source.containsKey("acquisitionPlacement") && (!Boolean.TRUE.equals(source.get("acquisitionPlacement"))
-                    || !"goalEntry".equals(source.get("kind")) || !"prerequisiteOnly".equals(effectiveProjectionRole(source)))) {
+                    || !"goalEntry".equals(source.get("kind")) || isTarget(source))) {
                 throw new IllegalStateException("Invalid prerequisite acquisitionPlacement");
             }
         }
@@ -886,20 +803,18 @@ public final class CourseProfileCompositionViewMerger {
             return;
         }
         boolean hasTarget = sources.stream().anyMatch(CourseProfileCompositionViewMerger::isTarget);
-        boolean hasPrerequisiteOnly = sources.stream().anyMatch(source -> "prerequisiteOnly".equals(effectiveProjectionRole(source)));
-        boolean hasVoluntary = sources.stream().anyMatch(source -> "voluntary".equals(effectiveProjectionRole(source)));
+        boolean hasPrerequisiteOnly = sources.stream()
+                .anyMatch(source -> "prerequisiteOnly".equals(source.get("projectionRole")));
         sources.stream().filter(CourseProfileCompositionViewMerger::isTarget).findFirst().ifPresent(target -> {
             for (String field : List.of("displayLabel", "displayLabelEn")) {
                 if (target.containsKey(field)) merged.put(field, target.get(field));
                 else merged.remove(field);
             }
         });
-        if (hasTarget && (hasPrerequisiteOnly || hasVoluntary)) {
+        if (hasTarget && hasPrerequisiteOnly) {
             merged.put("projectionRole", "target");
-        } else if (hasPrerequisiteOnly && hasVoluntary) {
-            merged.put("projectionRole", "prerequisiteOnly");
         }
-        if (!hasTarget && hasPrerequisiteOnly && "goalEntry".equals(merged.get("kind"))
+        if (!hasTarget && "goalEntry".equals(merged.get("kind"))
                 && sources.stream().anyMatch(source -> Boolean.TRUE.equals(source.get("acquisitionPlacement")))) {
             merged.put("acquisitionPlacement", true);
         } else {

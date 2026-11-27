@@ -705,7 +705,7 @@ def load_source_model(release_root: Path) -> SourceModel:
     target_non_binary_roles = tuple(sorted(set(target_roles) - {"binary-asset"}))
 
     resources = require_list(resource_index.get("resources"), "resource index resources")
-    material_candidate = TARGET_PROFILE_ID in {"full-standalone-v1.3", "full-standalone-v1.4"}
+    material_candidate = TARGET_PROFILE_ID == "full-standalone-v1.3"
     material_declaration = (read_json(repo_file(ASSESSMENT_MATERIAL_PROFILE_PATH))
                             if material_candidate else None)
     material_goals = (read_json(repo_file(material_declaration["canonicalLandscape"]["sourcePath"]))["goals"]
@@ -2116,7 +2116,7 @@ def run_self_test(
         lambda value: value["summary"].update({"publicationReady": True}),
     )
 
-    if TARGET_PROFILE_ID in {"full-standalone-v1.3", "full-standalone-v1.4"}:
+    if TARGET_PROFILE_ID == "full-standalone-v1.3":
         material_indexes = [i for i, value in enumerate(review["assetDecisions"])
                             if value["provenanceClass"] == ASSESSMENT_MATERIAL_PROVENANCE_CLASS]
         declaration = read_json(repo_file(ASSESSMENT_MATERIAL_PROFILE_PATH))
@@ -2235,21 +2235,6 @@ def select_runtime_v13_candidate() -> None:
                        for spec in CLASS_SPECS)
 
 
-def select_runtime_v14_candidate() -> None:
-    """Select the explicit successor; retain every earlier rights decision."""
-    global PROFILE_ID, TARGET_PROFILE_ID, TARGET_PROFILE_PATH, SCHEMA_ID, REVIEW_ID, ASSESSMENT_MATERIAL_PROFILE_PATH
-    if TARGET_PROFILE_ID == "full-standalone-v1.4":
-        return
-    select_runtime_v13_candidate()
-    PROFILE_ID = "de-gymnasium-mathematik-release-model-v1.4"
-    TARGET_PROFILE_ID = "full-standalone-v1.4"
-    TARGET_PROFILE_PATH = "contracts/curriculum-package/v1.4/profiles/full-standalone-v1.4.profile.json"
-    SCHEMA_ID = SCHEMA_ID.replace("/v1.3/", "/v1.4/")
-    REVIEW_ID = "de-gymnasium-mathematik-v1.4"
-    ASSESSMENT_MATERIAL_PROFILE_PATH = (
-        "contracts/curriculum-package/v1.4/profiles/de-gymnasium-mathematik-release-model-v1.4.profile.json")
-
-
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     action = parser.add_mutually_exclusive_group(required=True)
@@ -2273,11 +2258,8 @@ def main() -> int:
                         help="bind the runtime-1.2 learning-unit profile; no publication approval")
     parser.add_argument("--runtime-v13-candidate", action="store_true",
                         help="bind unpublished runtime 1.3 and exact assessment-material provenance")
-    parser.add_argument("--runtime-v14-candidate", action="store_true",
-                        help="bind unpublished runtime 1.4 with voluntary composition offers")
     args = parser.parse_args()
-    if sum((args.completion_candidate, args.learning_unit_candidate, args.runtime_v13_candidate,
-            args.runtime_v14_candidate)) > 1:
+    if sum((args.completion_candidate, args.learning_unit_candidate, args.runtime_v13_candidate)) > 1:
         parser.error("Runtime candidates require one exact profile")
     if args.ledger is None:
         args.ledger = (DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-completion-v1.review.json")
@@ -2285,19 +2267,10 @@ def main() -> int:
                        else DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-learning-units-v1.review.json")
                        if args.learning_unit_candidate
                        else DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.3.review.json")
-                       if args.runtime_v13_candidate
-                       else DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.4.review.json")
-                       if args.runtime_v14_candidate else DEFAULT_LEDGER)
+                       if args.runtime_v13_candidate else DEFAULT_LEDGER)
     historical_v13_ledger = DEFAULT_LEDGER.with_name("de-gymnasium-mathematik-v1.3.review.json")
     if args.generate and args.ledger.resolve() == historical_v13_ledger.resolve():
         parser.error("The historical runtime 1.3 ledger is retained by sealed evidence; generate a separate candidate with explicit --ledger")
-    if args.runtime_v14_candidate:
-        if (args.ledger.resolve().parent == DEFAULT_LEDGER.resolve().parent
-                and not args.ledger.name.startswith("de-gymnasium-mathematik-v1.4")):
-            parser.error("Runtime 1.4 must preserve all earlier review ledgers")
-        select_runtime_v14_candidate()
-        if args.schema == DEFAULT_SCHEMA:
-            args.schema = CONTRACT_ROOT.parent / "v1.4/package-redistribution-review.schema.json"
     if args.runtime_v13_candidate:
         if args.ledger.resolve() in {
                 DEFAULT_LEDGER.resolve(),

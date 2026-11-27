@@ -19,7 +19,6 @@ import {
 } from './sourceCoverageEvidence'
 import { collectAuthoritativeTargetAtomicGoalIds } from './compositionViewSourceCoverage'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
-import { COMPOSITION_VIEW_13_SCHEMA } from '../src/utils/authoring/compositionViewAuthoring'
 
 const LANDSCAPE = 'landscape'
 const JURISDICTION = 'DE-HE'
@@ -490,10 +489,6 @@ test('source coverage visibility follows composition target roles, not requires-
     [...collectAuthoritativeTargetAtomicGoalIds(landscape, view)].sort(),
     ['target'],
   )
-  const offeredView = { ...structuredClone(view), $schema: COMPOSITION_VIEW_13_SCHEMA, viewFormatVersion: '1.3' }
-  offeredView.rootNodes[0].children.push({ kind: 'goalEntry', goalId: 'closure-only', projectionRole: 'voluntary' })
-  assert.deepEqual([...collectAuthoritativeTargetAtomicGoalIds(landscape, offeredView)].sort(), ['target'],
-    'Visible offers never enter authoritative regular source-target coverage.')
 })
 
 test('source coverage targets match actual HE/BB exclusions and raw BY Mathematics bindings', () => {
