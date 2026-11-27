@@ -125,6 +125,8 @@ class LearnerExplicitExtensionCardTest {
         service = new LearnerService(learners, mock(LearnerClientStateRepository.class), mastery,
                 mock(PlannedGoalRepository.class), landscapes, mappings, decks, composition, json,
                 mock(ApplicationEventPublisher.class), mock(PlatformTransactionManager.class));
+        when(state.loadNode(eq(LEARNER), anyString()))
+                .thenReturn(new SrsCardStateStore.NodeState(null, Map.of(), null, null));
         ReflectionTestUtils.setField(service, "cardStateStore", state);
     }
 

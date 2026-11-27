@@ -517,9 +517,13 @@ class CompositionViewExtensionProjectionTest {
         assertThat(basis.excludedNodes()).extracting(node -> node.get("id"))
                 .containsExactly("section-A", "section-B", "section-C", "section-D", "section-E");
 
+        choose("LK", null);
+        var legacyScope = planningTargets();
+        assertThat(legacyScope).as("four legacy placements and the prerequisite of the base goal")
+                .containsExactlyInAnyOrder(BASE, SHARED, D, E, A);
         choose("LK", List.of());
-        assertThat(planningTargets()).as("standalone legacy profile keeps its unprojected prior goals")
-                .containsExactlyInAnyOrder(BASE, SHARED, A, B, C, D, E, F);
+        assertThat(planningTargets()).as("a choice has no effect on a standalone 1.2 profile")
+                .containsExactlyInAnyOrderElementsOf(legacyScope);
         choose("GK", List.of());
         assertThat(planningTargets()).containsExactlyInAnyOrder(BASE, SHARED);
         choose("GK+LK", List.of());
