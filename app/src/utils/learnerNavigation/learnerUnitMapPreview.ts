@@ -140,13 +140,19 @@ function everyAtomHasItsUnit(source: LearnerUnitMapLandscapeSource): boolean {
  * declares a learning unit for each atomic goal (`learningUnitCoverage: 'complete'`).
  * The statement alone is not trusted: where the source carries its goals, each atomic
  * goal must have exactly one owning learning unit. A partial unit layer does not
- * qualify, because its remaining goals would have no unit.
+ * qualify, because its remaining goals would have no unit. A course whose tree comes
+ * through a composition view does not qualify yet: a view can place a goal outside the
+ * unit that owns it.
  */
-export function learnerUnitMapSubjectIds(landscapeSources: readonly LearnerUnitMapLandscapeSource[] = []): string[] {
+export function learnerUnitMapSubjectIds(landscapeSources: readonly LearnerUnitMapLandscapeSource[] = [],
+  goalIndexAll?: ReadonlyMap<string, UiGoal>): string[] {
   const ids = new Set(UNIT_MAP_PREVIEW_SUBJECT_IDS)
-  if (UNIT_MAP_INCLUDES_DECLARED_UNIT_COURSES) for (const source of landscapeSources) {
+  if (!UNIT_MAP_INCLUDES_DECLARED_UNIT_COURSES) return [...ids]
+  const viewed = new Set<string>()
+  for (const goal of goalIndexAll?.values() ?? []) if (goal.landscapeId && isCompositionStructureNode(goal)) viewed.add(goal.landscapeId)
+  for (const source of landscapeSources) {
     const meta = source.meta
-    if (meta?.landscapeId && meta.learningUnitCoverage === 'complete'
+    if (meta?.landscapeId && !viewed.has(meta.landscapeId) && meta.learningUnitCoverage === 'complete'
       && meta.programUnits?.some(unit => unit.kind === 'learningUnit') && everyAtomHasItsUnit(source)) ids.add(meta.landscapeId)
   }
   return [...ids]
@@ -240,7 +246,7 @@ export function deriveLearnerUnitMapPreview(input: LearnerUnitMapPreviewInput, r
   // Sections of a Land view stand in for units in the two preview subjects only. A course
   // shows the units it declares; its sections never join the stages of the Gymnasium.
   const sectionSubjects = new Set(UNIT_MAP_PREVIEW_SUBJECT_IDS)
-  const subjects = new Set(learnerUnitMapSubjectIds(landscapeSources))
+  const subjects = new Set(learnerUnitMapSubjectIds(landscapeSources, goalIndexAll))
   const isSection = (goal: UiGoal | undefined): goal is UiGoal => !!goal && isCompositionStructureNode(goal)
     // A single-stage projection may expose its actual stage as a root. Its
     // explicit identity still belongs to the shared stage calendar; a subject

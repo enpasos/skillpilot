@@ -358,20 +358,31 @@ assert.deepEqual(memberMap.findings.map(finding => finding.kind), ['memberUnitSp
   'a learner scope that leaves a goal and its placement out keeps the course on the map')
   const preview = deriveLearnerUnitMapPreview({ ...course, landscapeSources: [{ meta }], language: 'en' })
   assert.deepEqual(preview.memberUnits.map(unit => [unit.label, unit.goalIds]), [['Refresher', ['c-start', 'c-a']], ['Systems', ['c-b', 'c-task']]])
-  // A section of a course never joins a stage of the Gymnasium, whatever its node id.
+  // Beside a Gymnasium subject the course keeps its declared units, and the stage stays a stage.
   const stageSection = (id: string, landscapeId: string, contains: string[]): UiGoal => ({ ...goal(id, contains, [], landscapeId),
     tags: ['synthetic:program-unit'], extendedData: { syntheticStructureKind: 'compositionView', compositionViewId: `view-${landscapeId}`, compositionNodeId: 'sek1' } })
-  const mixed = tree([goal('overview', ['math-stage', 'course-stage'], [], 'overview-landscape'),
-    stageSection('math-stage', MATHEMATICS_LANDSCAPE_ID, ['m-1']), goal('m-1', [], [], MATHEMATICS_LANDSCAPE_ID),
+  const mathStage = [stageSection('math-stage', MATHEMATICS_LANDSCAPE_ID, ['m-1']), goal('m-1', [], [], MATHEMATICS_LANDSCAPE_ID)]
+  const beside = tree([goal('overview', ['math-stage', 'course-root'], [], 'overview-landscape'), ...mathStage, ...delivered], ['overview'])
+  const besidePreview = deriveLearnerUnitMapPreview({ ...beside, landscapeSources: [{ goals: delivered, meta }] })
+  assert.deepEqual([...besidePreview.units.keys()], ['math-stage'])
+  assert.deepEqual(besidePreview.memberUnits.map(unit => unit.goalIds.length), [2, 2])
+  // A course whose tree comes through a composition view does not qualify yet, and its
+  // section never joins a stage of the Gymnasium, whatever its node id.
+  const viewed = tree([goal('overview', ['math-stage', 'course-stage'], [], 'overview-landscape'), ...mathStage,
     stageSection('course-stage', courseId, ['c-start', 'c-a', 'c-b', 'c-task']),
     ...['c-start', 'c-a', 'c-b', 'c-task'].map(id => goal(id, [], [], courseId))], ['overview'])
-  const mixedPreview = deriveLearnerUnitMapPreview({ ...mixed, landscapeSources: [{ meta }] })
-  assert.deepEqual([...mixedPreview.units.keys()], ['math-stage'], 'only the Mathematics section is a stage unit')
-  assert.deepEqual(mixedPreview.memberUnits.map(unit => unit.goalIds.length), [2, 2], 'the course keeps its declared units beside the Gymnasium stage')
+  assert(!learnerUnitMapSubjectIds([{ meta }], viewed.goalIndexAll).includes(courseId), 'a course under a composition view is not covered yet')
+  const viewedPreview = deriveLearnerUnitMapPreview({ ...viewed, landscapeSources: [{ meta }] })
+  assert.deepEqual([...viewedPreview.units.keys()], ['math-stage'], 'only the Mathematics section is a stage unit')
+  assert.deepEqual(viewedPreview.memberUnits, [])
   const fixture = buildLearnerUnitMapProjection({ ...course, units: preview.units, after: preview.after, memberUnits: preview.memberUnits })
   assert.deepEqual(fixture.subjectIds, [courseId])
   assert.deepEqual(children(fixture, fixture.rootId)!.map(id => fixture.entries[id].title), ['Refresher', 'Systems'],
     'the clusters that merely wrap the declared units are not shown beside them')
+  const [refresherBoard, systemsBoard] = children(fixture, fixture.rootId)!
+  assert.deepEqual([fixture.entryPaths!['c-u0'], fixture.entryPaths!['c-u1']],
+    [[fixture.rootId, refresherBoard, 'c-u0'], [fixture.rootId, systemsBoard, 'c-u1']],
+    'a wrapping cluster selected in the tree opens the board of its unit, not the board above')
   assert.deepEqual(fixture.findings, [])
 }
 
@@ -392,6 +403,8 @@ assert.deepEqual(memberMap.findings.map(finding => finding.kind), ['memberUnitSp
   const unitIds = children(fixture, fixture.rootId)!
   assert.deepEqual(unitIds.map(id => [fixture.entries[id].kind, fixture.entries[id].title]),
     meta.programUnits.map((unit: { labelEn: string }) => ['unit', unit.labelEn]), 'the map shows the declared units of the course in their order')
+  const clusters = goals.filter(item => item.type === 'cluster' && !item.tags.includes('root')).map(item => item.id)
+  assert.deepEqual(clusters.map(id => fixture.entryPaths![id]?.at(-2)), unitIds, 'each cluster of the course leads to the board of its unit')
   const atoms = goals.filter(item => item.type === 'atomic').map(item => item.id).sort()
   assert.deepEqual(unitIds.flatMap(id => children(fixture, id) ?? []).sort(), atoms, 'every atomic goal of the course lies in one of its units')
   assert.deepEqual(fixture.findings, [])

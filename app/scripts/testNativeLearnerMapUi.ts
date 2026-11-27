@@ -290,7 +290,8 @@ try {
   assert.ok((await notice.innerText()).startsWith('noch Baustelle'), `visible construction-site badge: ${await notice.innerText()}`)
   const noticeDetail = await notice.getAttribute('title') ?? ''
   assert.ok(noticeDetail.includes('Einheiten und Lernziele statt der Gliederung') && noticeDetail.includes('Abschnitte des Lehrplans')
-    && noticeDetail.includes('Mathematik und Physik am Gymnasium') && noticeDetail.includes('ein Kurs zeigt seine eigenen Einheiten')
+    && noticeDetail.includes('Mathematik und Physik am Gymnasium')
+    && noticeDetail.includes('ein Kurs, in dem jedes Lernziel zu einer Einheit gehört, zeigt seine eigenen Einheiten')
     && noticeDetail.includes('anderen Fächer findest du im Lernzielbaum'),
   `construction-site detail: ${noticeDetail}`)
   assert.equal(await page.locator('.lum-app [data-testid="learner-map-construction-notice"]').count(), 0, 'the map itself spends no row on the note')
@@ -678,7 +679,9 @@ try {
   await unitPage.goto(`${origin}/scripts/fixtures/learnerUnitMapUi.html?mode=other`)
   const unavailable = unitPage.getByTestId('learner-map-subjects-unavailable')
   await unavailable.waitFor()
-  assert.ok((await unavailable.innerText()).includes('vorerst nur für Mathematik und Physik'))
+  const unavailableText = await unavailable.innerText()
+  assert.ok(unavailableText.includes('vorerst nur für Mathematik und Physik am Gymnasium')
+    && unavailableText.includes('für Kurse, in denen jedes Lernziel zu einer Einheit gehört'), unavailableText)
   assert.equal(await unitPage.locator('.lum-app').count(), 0)
   await unavailable.getByRole('button', { name: 'Zum Baum wechseln', exact: true }).click()
   await unitPage.getByTestId('unit-map-returned').filter({ hasText: 'returned' }).waitFor()

@@ -30,10 +30,16 @@ export default function LearnerGoalNavigationMap(props: LearnerGoalNavigationMap
   const [hiddenSubjects, setHiddenSubjects] = useState<readonly string[]>([])
   // The map covers Mathematics, Physics and courses that declare all their learning units;
   // subjects are filters, not nodes.
-  const coveredSubjects = useMemo(() => new Set(learnerUnitMapSubjectIds(props.canonicalGoalSources)), [props.canonicalGoalSources])
+  // Route selection can recreate the goal index; the covered subjects are kept as a key so
+  // that an unchanged answer keeps the subject list, and with it the fixture object.
+  const coveredKey = useMemo(() => learnerUnitMapSubjectIds(props.canonicalGoalSources, goalIndexAll).sort().join('\u0000'),
+    [props.canonicalGoalSources, goalIndexAll])
   const courseTitles = useMemo(() => new Map((props.canonicalGoalSources ?? []).flatMap(({ meta }) =>
     meta?.landscapeId && meta.title ? [[meta.landscapeId, meta.title] as const] : [])), [props.canonicalGoalSources])
-  const mapSubjects = useMemo(() => baseFixture.subjectIds.filter(id => coveredSubjects.has(id)), [baseFixture, coveredSubjects])
+  const mapSubjects = useMemo(() => {
+    const covered = new Set(coveredKey.split('\u0000'))
+    return baseFixture.subjectIds.filter(id => covered.has(id))
+  }, [baseFixture, coveredKey])
   const shownSubjects = useMemo(() => {
     const shown = mapSubjects.filter(id => !hiddenSubjects.includes(id))
     return shown.length ? shown : mapSubjects

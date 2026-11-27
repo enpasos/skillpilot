@@ -1605,8 +1605,9 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   A first, surface-only step is implemented: the learner map
   (`app/src/utils/learnerNavigation/learnerUnitMapProjection.ts` and
   `learnerUnitMapPreview.ts`) renders the learner's graph as units and atomic
-  goals for Mathematics and Physics only, under a visible construction-site
-  notice; other subjects appear in the goal tree. Since 27 November 2026 a
+  goals for Mathematics and Physics of the Gymnasium and for qualifying
+  courses (next sentence), under a visible construction-site notice; other
+  subjects appear in the goal tree. Since 27 November 2026 a
   course outside these two subjects gets the map from its own data: it
   qualifies when it states complete unit coverage
   (`learningUnitCoverage: "complete"`) and every delivered atomic goal has
@@ -1615,10 +1616,12 @@ curricular-level terminology. Personalization Levels 1–4, QA maturity and goal
   aligned). A partial unit layer does not qualify. A course shows the units it
   declares; its view sections never join the stages of the Gymnasium. The
   backend passes the coverage statement on with the unit layer of the
-  delivered landscape. Not drawn yet: nested declared units (`parentUnitId`)
+  delivered landscape. A course whose tree comes through a composition view
+  does not qualify yet. Not drawn yet: nested declared units (`parentUnitId`)
   and their declared `order`; the Cockpit offers no card practice for a course
   deck that lacks an `srs-deck:` tag (issue #234). Tree siblings follow the shared
-  projected prerequisite and study order wherever the map shows those siblings. Units are not declared in the curriculum yet, so this preview
+  projected prerequisite and study order wherever the map shows those siblings. The Gymnasium curricula do not declare
+  their units completely yet, so for Mathematics and Physics this preview
   takes the sections of the Land views as stand-ins, always at the deepest
   top-down step (the step control was removed on 17 November 2026), orders
   sibling sections as the view lists them, and merges the two
