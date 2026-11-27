@@ -37,10 +37,8 @@ class LearnerCardReleaseTest {
             goal.setType("atomic");
             graph.put(id, goal);
         }
-        var constructor = Class.forName(LearnerService.class.getName() + "$GoalProjection").getDeclaredConstructors()[0];
-        constructor.setAccessible(true);
-        Object projection = constructor.newInstance(graph, Set.copyOf(graph.keySet()), Set.of("prerequisite"), graph,
-                Set.of(), List.of(), false, null, graph, Map.of());
+        Object projection = LearnerProjectionTestFixture.projection(graph, Set.copyOf(graph.keySet()), Set.of("prerequisite"), graph,
+                Set.of(), List.of(), false, null, graph, Set.of());
 
         SrsCardRelease release = ReflectionTestUtils.invokeMethod(service, "cardRelease", projection,
                 Map.of("passed", 1.0, "legacyPassed", 0.95, "partial", 0.5), Set.of("credited"));

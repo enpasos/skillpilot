@@ -3213,23 +3213,8 @@ public class LearnerServiceTest {
                 .orElseThrow();
         Map<String, LearningGoal> visibleGoals =
                 Map.of(CANONICAL_SPANISH_ROOT_SCOPE_ID, spanishRoot);
-        Class<?> projectionType = java.util.Arrays.stream(LearnerService.class.getDeclaredClasses())
-                .filter(type -> "GoalProjection".equals(type.getSimpleName()))
-                .findFirst()
-                .orElseThrow();
-        var constructor = projectionType.getDeclaredConstructor(
-                Map.class,
-                Set.class,
-                Set.class,
-                Map.class,
-                Set.class,
-                List.class,
-                boolean.class,
-                PersonalCurriculumLearningScope.class,
-                Map.class, Map.class);
-        constructor.setAccessible(true);
         // Seed-stage presentation fixture, before the acquisition closure is compiled.
-        Object projection = constructor.newInstance(
+        Object projection = LearnerProjectionTestFixture.projection(
                 visibleGoals,
                 Set.of(CANONICAL_SPANISH_ROOT_SCOPE_ID),
                 Set.of(),
@@ -3238,7 +3223,7 @@ public class LearnerServiceTest {
                 List.of(),
                 true,
                 null,
-                Map.of(), Map.of());
+                Map.of(), Set.of());
 
         List<FrontierGoal> options = (List<FrontierGoal>) ReflectionTestUtils.invokeMethod(
                 learnerService,

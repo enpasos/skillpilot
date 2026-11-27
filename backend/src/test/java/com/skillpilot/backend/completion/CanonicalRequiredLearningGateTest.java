@@ -29,6 +29,7 @@ import com.skillpilot.backend.service.CompositionViewService;
 import com.skillpilot.backend.service.CurriculumPersonalizationPlanner;
 import com.skillpilot.backend.service.DeckResourceService;
 import com.skillpilot.backend.service.LearnerService;
+import com.skillpilot.backend.service.LearnerProjectionTestFixture;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -295,11 +296,7 @@ class CanonicalRequiredLearningGateTest {
         Set<String> support = new TreeSet<>();
         atoms.forEach(atom -> support.addAll(topology.transitiveGoalPrerequisites(atom)));
         support.removeAll(targets);
-        var type = Class.forName("com.skillpilot.backend.service.LearnerService$GoalProjection");
-        var constructor = type.getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class, Set.class,
-                List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Set.class);
-        constructor.setAccessible(true);
-        Object projection = constructor.newInstance(graph, targets, support, graph, Set.of(),
+        Object projection = LearnerProjectionTestFixture.projection(graph, targets, support, graph, Set.of(),
                 atoms.stream().sorted().toList(), true, learningScope, graph, Set.of());
         return new CanonicalProbe(graph, projection);
     }
@@ -505,10 +502,7 @@ class CanonicalRequiredLearningGateTest {
         assertThat(visible).containsKey(id);
         if (removeTarget) targets.remove(id);
         else visible.remove(id);
-        var constructor = projection.getClass().getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class,
-                Set.class, List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Set.class);
-        constructor.setAccessible(true);
-        return constructor.newInstance(visible, targets,
+        return LearnerProjectionTestFixture.projection(visible, targets,
                 ReflectionTestUtils.invokeMethod(projection, "prerequisiteOnlyGoalIds"),
                 ReflectionTestUtils.invokeMethod(projection, "structuralGoals"),
                 ReflectionTestUtils.invokeMethod(projection, "compositionViewIds"),
@@ -536,10 +530,7 @@ class CanonicalRequiredLearningGateTest {
         Set<String> targets = new TreeSet<>(ReflectionTestUtils.<Set<String>>invokeMethod(projection, "targetGoalIds"));
         Set<String> support = new TreeSet<>(ReflectionTestUtils.<Set<String>>invokeMethod(projection, "prerequisiteOnlyGoalIds"));
         targets.remove(id); support.remove(id);
-        var constructor = projection.getClass().getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class,
-                Set.class, List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Set.class);
-        constructor.setAccessible(true);
-        return constructor.newInstance(visible, targets, support,
+        return LearnerProjectionTestFixture.projection(visible, targets, support,
                 ReflectionTestUtils.invokeMethod(projection, "structuralGoals"), ReflectionTestUtils.invokeMethod(projection, "compositionViewIds"),
                 ReflectionTestUtils.invokeMethod(projection, "presentationRootGoalIds"),
                 ReflectionTestUtils.invokeMethod(projection, "compositionViewApplied"), learning,

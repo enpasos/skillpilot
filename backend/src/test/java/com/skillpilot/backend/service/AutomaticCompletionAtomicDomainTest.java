@@ -6,8 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.completion.CompletionProfileCompiler;
 import com.skillpilot.backend.completion.PersonalCurriculumLearningScope;
 import com.skillpilot.backend.landscape.LearningGoal;
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,12 +109,8 @@ class AutomaticCompletionAtomicDomainTest {
 
     private Object projection(Map<String, LearningGoal> visible, Map<String, LearningGoal> structural,
             PersonalCurriculumLearningScope learning, Map<String, LearningGoal> canonical) throws Exception {
-        Class<?> type = Arrays.stream(LearnerService.class.getDeclaredClasses())
-                .filter(candidate -> candidate.getSimpleName().equals("GoalProjection")).findFirst().orElseThrow();
-        Constructor<?> constructor = type.getDeclaredConstructors()[0];
-        constructor.setAccessible(true);
-        return constructor.newInstance(visible, visible.keySet(), Set.of(), structural,
-                Set.of(), List.of(), true, learning, canonical);
+        return LearnerProjectionTestFixture.projection(visible, visible.keySet(), Set.of(), structural,
+                Set.of(), List.of(), true, learning, canonical, Set.of());
     }
 
     private static LearningGoal goal(String id, String type, String... children) {

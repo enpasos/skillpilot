@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.api.LandscapeOverviewResponse;
+import com.skillpilot.backend.completion.PersonalCurriculumLearningScope;
 import com.skillpilot.backend.domain.Learner;
 import com.skillpilot.backend.landscape.GoalMappingService;
 import com.skillpilot.backend.landscape.LandscapeService;
@@ -19,6 +20,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -28,6 +30,19 @@ public final class LearnerProjectionTestFixture {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     private LearnerProjectionTestFixture() { }
+
+    /** Synthetic projection for tests that must control the exact targets, acquisition basis or placements. */
+    public static Object projection(Map<String, LearningGoal> visibleGoals, Set<String> targets, Set<String> support,
+            Map<String, LearningGoal> structuralGoals, Set<String> views, List<String> roots, boolean applied,
+            PersonalCurriculumLearningScope scope, Map<String, LearningGoal> canonical, Set<String> offers)
+            throws ReflectiveOperationException {
+        var type = Class.forName(LearnerService.class.getName() + "$GoalProjection");
+        var constructor = type.getDeclaredConstructor(Map.class, Set.class, Set.class, Map.class, Set.class,
+                List.class, boolean.class, PersonalCurriculumLearningScope.class, Map.class, Set.class);
+        constructor.setAccessible(true);
+        return constructor.newInstance(visibleGoals, targets, support, structuralGoals, views, roots, applied,
+                scope, canonical, offers);
+    }
 
     static String personalCurriculum(String landscapeId) {
         return "{\"" + landscapeId + "\":{\"selected\":true,\"filterId\":\"LK\",\"stage\":\"CrossStage\"}}";
