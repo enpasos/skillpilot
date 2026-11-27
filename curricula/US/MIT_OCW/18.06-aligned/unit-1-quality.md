@@ -1,0 +1,23 @@
+# U1 quality card · Linear systems by geometry and elimination
+
+| Question | State on 27 November 2026 |
+|---|---|
+| What is the source? | The [lecture map](lecture-map.md) gives MIT’s caption intervals, links to the lecturer’s worked examples and a separate entry for SkillPilot’s own activities. The practice, diagrams and exam are original. |
+| What does U1 assume and teach? | Entry requires solving a one-variable linear equation. U0 supplies coordinates, linear combinations and dot products. U1 develops the two pictures, matrix notation, multiplication, elimination, back substitution and the diagnosis of a missing pivot. General nullspace methods follow later. |
+| Does the graph work? | The course-local graph reached all 18 nodes from its root, resolved 17 containment and 23 prerequisite references, and found no cycles. The unit validator assigned all 15 atoms to U0 or U1 with zero structural findings. Independent assessment-coverage review is pending for the three U0 and seven U1 understanding goals. Goal identities are new. The previous MIT Foundations course and its learner results retain their original identities. |
+| Is the unit complete? | The course declares an opening, seven understanding goals, a five-card deck and a closing task. The independent numerical check confirmed the two systems and both singular cases. The task awards 25 points. A sample with three small omissions earns 21, and omitting the elimination consistency condition as well earns 20. The pass mark is 21 (84%). The task and images await release review. [Course and rubric](json/US_MAS_U_SKILLPILOT_LINEAR_ALGEBRA.en.json) |
+| Has a person accepted it? | The coordinator accepted the design. Independent reading of the implemented unit and acceptance by the Product Owner as course champion are pending. |
+| Have learners tried it? | The adult learner trial on Claude is pending. |
+| Can a learner complete it in coach chat? | The local checks below use real Claude connector tools and fresh test learners in both Autopilot modes. A learner-facing trial on the hosted Claude client is pending. |
+
+## Coach path
+
+The course’s ordinary U0 and U1 goals can be selected and completed. With Autopilot off the learner chooses the next frontier goal. With it on the backend chooses the next ordinary goal. Selecting a unit does not offer the unit opening. The automatic unit card step reports an empty box. With the deck explicitly active, five cards can be practised and verified individually. The normal route reached eight of ten U1 atoms in both modes: the seven understanding goals and the verified deck. The course’s draft exam cannot be started. Supplying the opening’s known technical ID also worked with this draft, raising the result to nine. Its ID was absent from the offered options. Both figures were available as SVG over HTTP. Their draft review status kept them out of the coach’s image offers.
+
+In a disposable copy with the two exams marked released, a new session restored an active exam. Explicitly redirecting to the deck and back worked. The closing task refused 20/25 and accepted 21/25. When the client supplied the opening’s known technical ID, it could also complete the opening. The normal route then reached nine of ten U1 atoms. The known-ID diagnostic route accounted for all ten, with exactly one stored pass. The normal learner-facing opening and automatic section card step are still missing.
+
+## Independent course packaging
+
+The course data, manifest, figures and this card live together. No shared file is changed by this course. The stable backend can load the course in repository mode using its directory and serve the figures when the directory is on the classpath. The course-local checks use the existing Python UnitGraph, the learning-unit validator scoped to this directory and the existing pass-mark predicate on the two scored tasks (U0 5/6, U1 21/25).
+
+A pull request changing this course matches the shared CI and assessment-completion workflows. The shared graph check expects every course root in the repository-wide manifest and would report this independent root missing there. The MIT module rule GVR-007 does not apply to this course's own framework and root. The regular UUID and generic schema checks discover course files by path. The Gymnasium unit, book, visualization, deck and standalone-package pipelines cannot validate or deliver this isolated course by selecting it. A push to main also matches the documentation workflow. These are predictions from the workflow paths and readers. Only the three course-local checks and the local coach path were executed for this course.
