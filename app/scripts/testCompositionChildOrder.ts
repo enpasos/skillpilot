@@ -60,7 +60,7 @@ const partialView = view(order)
 assert(schema(partialView), JSON.stringify(schema.errors))
 for (const name of ['de-he-gk', 'de-he-lk', 'de-he-sekii-gk', 'de-he-sekii-lk', 'de-he-gk-g8', 'de-he-gk-g9', 'de-he-lk-g8', 'de-he-lk-g9']) {
   const actual = JSON.parse(readFileSync(new URL(`../../curricula/DE/Gymnasium/composition-views/physik/${name}.view.json`, import.meta.url), 'utf8'))
-  assert(extensionsSchema(actual), `${name}: ${JSON.stringify(extensionsSchema.errors)}`)
+  assert(schema(actual), `${name}: ${JSON.stringify(schema.errors)}`)
 }
 assert(!legacySchema({ ...partialView, $schema: 'https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json', viewFormatVersion: '1.0' }),
   'The immutable v1 schema rejects the new field instead of silently changing its contract.')
@@ -68,7 +68,9 @@ assert.deepEqual(compileCompositionView(partialView, normalizeCanonicalLandscape
 const input = prepare(partialView), partial = deriveLearnerUnitMapPreview(input)
 assert.deepEqual(input.goalIndexAll.get(nodeId('topics'))?.extendedData?.compositionChildOrder, order)
 assert.deepEqual(pairs(partial), ['a>b', 'a>d', 'b>c'], 'Declared partial order replaces the whole sibling chain, including its tail.')
-const extensionsInput = prepare({ ...partialView, $schema: extensionsSchemaId, viewFormatVersion: '1.3' })
+const syntheticExtensionView = { ...partialView, $schema: extensionsSchemaId, viewFormatVersion: '1.3' as const }
+assert(extensionsSchema(syntheticExtensionView), JSON.stringify(extensionsSchema.errors))
+const extensionsInput = prepare(syntheticExtensionView)
 assert.deepEqual(pairs(deriveLearnerUnitMapPreview(extensionsInput)), pairs(partial),
   'Extension views preserve the authored child order.')
 const map = buildLearnerUnitMapProjection({ ...input, units: partial.units, after: partial.after })

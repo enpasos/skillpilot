@@ -15,22 +15,15 @@ interface RetainedInputBinding extends ViewBinding {
   retainedPredecessor: { path: string; sha256: string }
 }
 
-type Structure = { children?: Structure[]; extension?: unknown; labelEn?: string }
-
-const sourceSchema = 'https://skillpilot.com/schemas/composition-view/v1.3/composition-view.schema.json'
-const evidenceDirectory = 'curricula/DE/Gymnasium/quality/learning-units/hessen-physics-extensions-20261127-v1'
-const bindingPath = `${evidenceDirectory}/w1-view-bindings.actual.json`
+const evidenceDirectory = 'curricula/DE/Gymnasium/quality/learning-units/extension-contract-w1-replay-20261127-v1'
+const bindingPath = `${evidenceDirectory}/input-bindings.actual.json`
 export const w1ViewEvidenceSha256 = (bytes: Buffer) => createHash('sha256').update(bytes).digest('hex')
 
 export function loadHessenPhysicsW1Bindings(repoRoot: string) {
   const receipt = JSON.parse(readFileSync(resolve(repoRoot, bindingPath), 'utf8')) as {
-    schemaVersion: number; migration: string; views: ViewBinding[]; otherInputs: RetainedInputBinding[]
+    schemaVersion: number; otherInputs: RetainedInputBinding[]
   }
   assert.equal(receipt.schemaVersion, 1)
-  assert.equal(receipt.migration, 'he-physik-e1-20261127')
-  const expectedNames = ['gk-g8', 'gk-g9', 'gk', 'lk-g8', 'lk-g9', 'lk', 'sekii-gk', 'sekii-lk']
-  assert.deepEqual(receipt.views.map(({ path }) => path),
-    expectedNames.map(suffix => `curricula/DE/Gymnasium/composition-views/physik/de-he-${suffix}.view.json`))
   assert.deepEqual(receipt.otherInputs.map(({ path }) => path), [
     'app/src/utils/authoring/compositionViewAuthoring.ts',
     'app/src/utils/compositionViewRuntime.ts',
@@ -41,40 +34,8 @@ export function loadHessenPhysicsW1Bindings(repoRoot: string) {
       `${evidenceDirectory}/${basename(binding.path)}.before-w1-replay.gz`)
   }
   return {
-    views: new Map(receipt.views.map(binding => [binding.path, binding])),
     otherInputs: new Map(receipt.otherInputs.map(binding => [binding.path, binding])),
   }
-}
-
-/** Reconstruct only these exact earlier W1 source inputs. The old SHA remains
- * the authority for all former leaf contents, placements, roles and order. */
-export function reconstructHessenPhysicsW1View(bytes: Buffer, binding: ViewBinding): Buffer {
-  assert.equal(w1ViewEvidenceSha256(bytes), binding.currentSha256, `${binding.path}: changed extension source bytes`)
-  const view = JSON.parse(bytes.toString('utf8'))
-  assert.equal(view.$schema, sourceSchema, binding.path)
-  assert.equal(view.viewFormatVersion, '1.3', binding.path)
-  assert.equal(view.historicalAssessmentPlacements?.migration, 'he-physik-e1-20261127', binding.path)
-  assert(Array.isArray(view.electionGroups), binding.path)
-  delete view.electionGroups
-  delete view.historicalAssessmentPlacements
-  let extensionCount = 0
-  const restore = (nodes: Structure[]) => {
-    for (const node of nodes) {
-      if (Object.hasOwn(node, 'extension')) {
-        delete node.extension
-        delete node.labelEn
-        extensionCount++
-      }
-      if (node.children) restore(node.children)
-    }
-  }
-  restore(view.rootNodes)
-  assert.equal(extensionCount, 10, binding.path)
-  view.$schema = sourceSchema.replace('/v1.3/', '/v1.2/')
-  view.viewFormatVersion = '1.2'
-  const previous = Buffer.from(`${JSON.stringify(view, null, 2)}\n`, 'utf8')
-  assert.equal(w1ViewEvidenceSha256(previous), binding.previousSha256, `${binding.path}: legacy W1 view changed`)
-  return previous
 }
 
 /** A materializer source and the overview configuration are separately bound.
@@ -83,8 +44,6 @@ export function reconstructHessenPhysicsW1View(bytes: Buffer, binding: ViewBindi
 export function replayHessenPhysicsW1Input(
   repoRoot: string, path: string, current: Buffer, bindings: ReturnType<typeof loadHessenPhysicsW1Bindings>,
 ): Buffer {
-  const view = bindings.views.get(path)
-  if (view) return reconstructHessenPhysicsW1View(current, view)
   const source = bindings.otherInputs.get(path)
   if (!source) return current
   assert.equal(w1ViewEvidenceSha256(current), source.currentSha256, `${path}: changed successor input`)

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
-import { loadHessenPhysicsW1Bindings, reconstructHessenPhysicsW1View, replayHessenPhysicsW1Input,
+import { loadHessenPhysicsW1Bindings, replayHessenPhysicsW1Input,
   w1ViewEvidenceSha256 } from './lib/hessenPhysicsW1ViewEvidence'
 import './testHePhysicsQuantumTemplate'
 import { achievableReviewRoot, coachScoringReviewRoot, verifiedCoachScoringReviewChain } from './lib/e1AchievableScoringReviews'
@@ -4074,17 +4074,6 @@ const hessenW1Bindings = loadHessenPhysicsW1Bindings(repoRoot)
 const w1InputBytes = (path: string) => replayHessenPhysicsW1Input(
   repoRoot, path, readFileSync(resolve(repoRoot, path)), hessenW1Bindings,
 )
-for (const binding of hessenW1Bindings.views.values()) {
-  const changed = JSON.parse(readFileSync(resolve(repoRoot, binding.path), 'utf8'))
-  changed.rootNodes[0].label += ' (veränderte historische Überschrift)'
-  const bytes = Buffer.from(`${JSON.stringify(changed, null, 2)}
-`, 'utf8')
-  assert.throws(() => reconstructHessenPhysicsW1View(bytes, binding), /changed extension source bytes/)
-  assert.throws(() => reconstructHessenPhysicsW1View(bytes, {
-    ...binding, currentSha256: w1ViewEvidenceSha256(bytes),
-  }), /legacy W1 view changed/, 'An updated source SHA cannot hide a changed historical title.')
-}
-
 function assertCurrentW1Inputs(inputs: EvidenceFile[], bindsSemanticLedger: boolean): void {
   const bindings = [{before: w1AssessmentCorrection.previousCatalog, current: w1AssessmentCorrection.currentCatalog}]
   if (bindsSemanticLedger) {

@@ -8,7 +8,7 @@ import { loadHessenPhysicsW1Bindings, replayHessenPhysicsW1Input } from './lib/h
 const root = process.cwd()
 const sealedVerifier = 'curricula/DE/Gymnasium/quality/learning-units/physics-e2-forces-20261126-w1/routes/applicability/verify-final.kb5-kg4-arrow.mts'
 const bindings = loadHessenPhysicsW1Bindings(root)
-const legacyInputs = new Map([...bindings.views.keys(), ...bindings.otherInputs.keys()].map(path => [
+const legacyInputs = new Map([...bindings.otherInputs.keys()].map(path => [
   path, replayHessenPhysicsW1Input(root, path, readFileSync(resolve(root, path)), bindings),
 ]))
 

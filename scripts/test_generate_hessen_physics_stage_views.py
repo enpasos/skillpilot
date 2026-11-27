@@ -307,8 +307,8 @@ class HessenPhysicsEPhasePlacement(unittest.TestCase):
         orders = []
         for view in outputs:
             with self.subTest(view=view["viewId"]):
-                self.assertEqual(view["$schema"], generator.EXTENSIONS_SCHEMA)
-                self.assertEqual(view["viewFormatVersion"], "1.3")
+                self.assertEqual(view["$schema"], generator.PARTIAL_ORDER_SCHEMA)
+                self.assertEqual(view["viewFormatVersion"], "1.2")
                 phase = find(view, "physics-e-phase")
                 order, witnesses = generator.ephase_child_order(phase, lambda node: generator.role_atoms({"rootNodes": [node]})["target"])
                 self.assertEqual({(pair["unit"], pair["after"]) for pair in phase["childOrder"]["after"]
