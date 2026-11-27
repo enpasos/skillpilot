@@ -303,6 +303,16 @@ try {
   assert.match(outcome.stdout, /L \(partial\): 2\/3 atomic goals owned; without unit: 1 ordinary/u)
   assert.match(outcome.stdout, /u: valid; own 1 ordinary, 1 assessment, 0 memory, 0 orientation; total scope 2; reviewed coverage missing for 1 goal/u)
 
+  write({
+    goals: [{ id: 'Q', nodeKind: 'exam', requires: ['A'] }, { id: 'A' }, { id: 'opening', semanticKind: 'orientation' }],
+    programUnits: [unit, { ...unit, id: 'child', parentUnitId: 'u' }],
+    goalPlacements: [...own('Q', 'A', 'opening'), { goalId: 'opening', unitId: 'child', relation: 'own' }],
+  })
+  outcome = run(...local)
+  assert.equal(outcome.status, 1, outcome.stderr)
+  assert.match(outcome.stderr, /LU-R4-MULTIPLE L\/u: Goal opening is owned by u, child/u)
+  assert.match(outcome.stderr, /LU-R4-MULTIPLE L\/child: Goal opening is owned by u, child/u)
+
   write({ programUnits: [unit], goalPlacements: own('Q', 'A', 'C') })
   outcome = run(...local)
   assert.equal(outcome.status, 1)
