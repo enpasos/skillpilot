@@ -123,7 +123,7 @@ QA lists as open, and A4, the Mathematics ladder. Record:
 
 ## Strategy (Product Owner, 27 November 2026)
 
-Stated by the Product Owner on **27 November 2026** between 08:20 and 08:20 CET
+Stated by the Product Owner on **27 November 2026**, about 08:15 to 08:20 CET,
 and completed by the points he accepted from the agents. It orders every
 decision of that day below.
 
