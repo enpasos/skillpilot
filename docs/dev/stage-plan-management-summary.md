@@ -21,6 +21,14 @@ er erhält die Dokumentationschecks. Die große CI schließt `docs/dev/**` und
 `AGENTS.md` bei reinen Änderungen dieser Pfade derzeit aus. Der dokumentierte
 CI-Nachweis gilt weiterhin für den benannten Implementierungscommit.
 
+## 27. November 2026, 01:30 MEZ – Freiwillige Angebote im Ansichtsvertrag
+
+Im Ansichtsformat 1.3 kann ein Land ein Lernziel oder eine Prüfungsaufgabe als freiwilliges Angebot ausweisen. Jede Ansicht unterscheidet reguläre Ziele, Vorbereitungen und freiwillige Angebote. Ein freiwilliges Angebot auf dem Pflichtweg eines regulären Ziels führt bei der Prüfung zu einem Fehler. Das neue eigenständige Paketformat 1.4 überträgt die Rolle. Die fachliche Auswahl für einzelne Landesansichten folgt in einem späteren Paket.
+
+**Umfang und Kontrolle.** In allen 387 bisherigen Ansichten stimmen die 162.743 regulären Zielvorkommen mit der Ausgangsfassung überein. Verglichen wurden die Ansichten aller 21 kanonischen Wurzeln, einschließlich der 90 Physik- und 100 Mathematikansichten. Im installierten Testpaket lesen Java und TypeScript dasselbe reguläre Ziel, neun Vorbereitungen und zwei freiwillige Angebote. Der aktuelle Physikstatus ergibt M7 für das Fach und M4 für beide Stufen. [Vertrag und Rollenbegriffe](https://github.com/enpasos/skillpilot/blob/b1cb4e239ba6b1db10ec9c7804fadab0ded51d94/contracts/composition-view/v1.3/README.md) · [Messungen und Gegenproben](https://github.com/enpasos/skillpilot/blob/b1cb4e239ba6b1db10ec9c7804fadab0ded51d94/contracts/stage-plan-review-evidence/2026-11-26/voluntary-offer-contract/README.md)
+
+**Integrationsstand.** VR1 aktiviert 0 Landesangebote und 0 reale Stufenpläne. Für K1–K13 und F1–F7 kommt kein fachlicher Abschluss hinzu. Der Arbeitszweig ist zur technischen Prüfung vorbereitet. Nach der Integration der zugrunde liegenden Pakete folgen der Abgleich mit `main` und beide nativen Paketsuiten. [Arbeitszweig](https://github.com/enpasos/skillpilot/tree/feat/freiwilliges-angebot-vertrag)
+
 ## 27. November 2026, 00:49 MEZ – Lokaler Abschluss der optionalen Paket-CI-Reparatur
 
 Der Brandenburger Mathematik-Roundtrip erhält jetzt das vollständige Ansichtsformat 1.2 einschließlich Kinderordnung, Erwerbsmarkierungen und leerer Abschnitte. Der Zusatztest der lokalen Paketsuite prüft den heutigen Landschaftsvertrag 1.2 im Transportprofil 1.3 sowie die echte Ablehnung verlustbehafteter Altprofile. K 0/13 und F 0/7 zusätzlich abgeschlossen, 0 Stufenpläne aktiviert; fachliche Kataloge und bisherige Rückflussmessungen sind unverändert.

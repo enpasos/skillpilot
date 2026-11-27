@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { packageContentForRepoSource } from './buildSkillpilotExportPackage'
 import { subjectExportCompositionViewIssues, type SubjectCompositionGoal } from './subjectExportCompositionViews'
 import { collectCompositionProjectionRoleGoalIds, type CompositionView } from '../src/utils/authoring/compositionViewAuthoring'
+import type { CanonicalAuthoringLandscape } from '../src/utils/authoring/canonicalAuthoring'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const graph = new Map<string, SubjectCompositionGoal>([
@@ -36,6 +37,16 @@ const source: CompositionView = {
       ] },
   ] }],
 }
+function fixtureNodes(view: CompositionView) {
+  const [unit] = view.rootNodes
+  assert(unit.kind === 'structure')
+  const [regular, , offers] = unit.children
+  assert(regular.kind === 'goalEntry' && offers.kind === 'structure')
+  const [offer] = offers.children
+  assert(offer.kind === 'goalEntry')
+  return { view, unit, regular, offers, offer }
+}
+
 assert.deepEqual(subjectExportCompositionViewIssues(source, graph), [])
 const original = JSON.stringify(source)
 mkdirSync(resolve(root, 'tmp'), { recursive: true })
@@ -54,31 +65,32 @@ try {
   assert.equal(new Set([...roles.targetAtomicGoalIds, ...roles.prerequisiteOnlyAtomicGoalIds,
     ...roles.voluntaryAtomicGoalIds]).size, roles.targetAtomicGoalIds.size + roles.prerequisiteOnlyAtomicGoalIds.size + roles.voluntaryAtomicGoalIds.size)
   assert.equal(readFileSync(sourcePath, 'utf8').trim(), JSON.stringify(source, null, 2))
-  const negatives: Array<(view: any) => void> = [
-    ...['unknown', '', null, false, 3].map(role => (view: any) => { view.rootNodes[0].children[2].children[0].projectionRole = role }),
-    view => { view.viewFormatVersion = '1.2'; view.$schema = 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json' },
-    view => { delete view.viewFormatVersion; delete view.$schema },
-    view => { view.viewFormatVersion = '9.0' },
-    view => { view.$schema = 'https://example.org/unknown.schema.json' },
-    view => { view.rootNodes[0].children[2].children[0].acquisitionPlacement = true },
-    view => { view.rootNodes[0].children[2].children[0].acquisitionPlacement = false },
-    view => { view.rootNodes[0].children[2].projectionRole = 'voluntary' },
-    view => { view.rootNodes[0].children[2].children[0].kind = 'canonicalSubtree' },
-    view => { view.rootNodes[0].children[2].children[0].goalId = 'group' },
-    view => { view.rootNodes[0].children.push({ ...view.rootNodes[0].children[2].children[0] }) },
-    view => { view.rootNodes[0].children.push({ kind: 'canonicalSubtree', goalId: 'group' }) },
-    view => { view.rootNodes[0].children[0].goalId = 'task'; view.rootNodes[0].children[2].children.pop() },
-    view => { view.rootNodes[0].children.push({ kind: 'goalEntry', goalId: 'coverage-only-task', projectionRole: 'prerequisiteOnly' }) },
-    view => { view.rootNodes[0].children[0].goalId = 'inherited' },
-    view => { view.rootNodes.push({ kind: 'landscapeEntry', landscapeId: 'fixture' }) },
-    view => { view.rootNodes[0].children.push({ kind: 'goalEntry', goalId: 'group-coverage-task', projectionRole: 'prerequisiteOnly' }) },
-    view => { view.rootNodes[0].children[0].goalId = 'implicit-task-consumer' },
-    view => { view.rootNodes[0].children[2].children[0].goalId = 'missing-canonical-offer' },
-    view => { view.rootNodes[0].children.push({ kind: 'goalEntry', goalId: 'raw-coverage-task', projectionRole: 'prerequisiteOnly' }) },
+  type Fixture = ReturnType<typeof fixtureNodes>
+  const negatives: Array<(fixture: Fixture) => void> = [
+    ...['unknown', '', null, false, 3].map(role => ({ offer }: Fixture) => { Object.assign(offer, { projectionRole: role }) }),
+    ({ view }) => { view.viewFormatVersion = '1.2'; view.$schema = 'https://skillpilot.com/schemas/composition-view/v1.2/composition-view.schema.json' },
+    ({ view }) => { delete view.viewFormatVersion; delete view.$schema },
+    ({ view }) => { view.viewFormatVersion = '9.0' },
+    ({ view }) => { view.$schema = 'https://example.org/unknown.schema.json' },
+    ({ offer }) => { offer.acquisitionPlacement = true },
+    ({ offer }) => { Object.assign(offer, { acquisitionPlacement: false }) },
+    ({ offers }) => { offers.projectionRole = 'voluntary' },
+    ({ offer }) => { Object.assign(offer, { kind: 'canonicalSubtree' }) },
+    ({ offer }) => { offer.goalId = 'group' },
+    ({ unit, offer }) => { unit.children.push({ ...offer }) },
+    ({ unit }) => { unit.children.push({ kind: 'canonicalSubtree', goalId: 'group' }) },
+    ({ regular, offers }) => { regular.goalId = 'task'; offers.children.pop() },
+    ({ unit }) => { unit.children.push({ kind: 'goalEntry', goalId: 'coverage-only-task', projectionRole: 'prerequisiteOnly' }) },
+    ({ regular }) => { regular.goalId = 'inherited' },
+    ({ view }) => { view.rootNodes.push({ kind: 'landscapeEntry', landscapeId: 'fixture' }) },
+    ({ unit }) => { unit.children.push({ kind: 'goalEntry', goalId: 'group-coverage-task', projectionRole: 'prerequisiteOnly' }) },
+    ({ regular }) => { regular.goalId = 'implicit-task-consumer' },
+    ({ offer }) => { offer.goalId = 'missing-canonical-offer' },
+    ({ unit }) => { unit.children.push({ kind: 'goalEntry', goalId: 'raw-coverage-task', projectionRole: 'prerequisiteOnly' }) },
   ]
   for (const [index, mutate] of negatives.entries()) {
     const malformed = structuredClone(source)
-    mutate(malformed)
+    mutate(fixtureNodes(malformed))
     assert(subjectExportCompositionViewIssues(malformed, graph).length > 0, `hostile source ${index} must fail`)
     // The real source-export entry point must reject unsupported wire values
     // even without a canonical graph supplied by its caller.
@@ -88,10 +100,10 @@ try {
     }
   }
   const optionalOnly = structuredClone(source)
-  optionalOnly.rootNodes = [(optionalOnly.rootNodes[0] as any).children[2]]
+  optionalOnly.rootNodes = [fixtureNodes(optionalOnly).offers]
   assert.deepEqual(subjectExportCompositionViewIssues(optionalOnly, graph), [], 'An offer-only section remains a valid source view.')
   const repeatedPreparation = structuredClone(source)
-  ;(repeatedPreparation.rootNodes[0] as any).children.push(
+  fixtureNodes(repeatedPreparation).unit.children.push(
     { kind: 'goalEntry', goalId: 'preparation', projectionRole: 'prerequisiteOnly', acquisitionPlacement: true },
     { kind: 'canonicalSubtree', goalId: 'preparation-group', projectionRole: 'prerequisiteOnly' },
     { kind: 'canonicalSubtree', goalId: 'preparation-group', projectionRole: 'prerequisiteOnly' },
@@ -110,7 +122,7 @@ try {
     assert.deepEqual(subjectExportCompositionViewIssues(legacy, graph), [], 'Old authored T/P specificity and closure remain unchanged.')
   }
   const external = structuredClone(source)
-  ;(external.rootNodes[0] as any).children[2].children.push({ kind: 'goalEntry', goalId: 'foreign-offer', projectionRole: 'voluntary' })
+  fixtureNodes(external).offers.children.push({ kind: 'goalEntry', goalId: 'foreign-offer', projectionRole: 'voluntary' })
   const boundForeign = new Map(graph)
   boundForeign.set('foreign-offer', { type: 'atomic', contains: [], requires: [] })
   assert.deepEqual(subjectExportCompositionViewIssues(external, boundForeign), [], 'A caller with a complete bound canonical body can validate a foreign atom.')
@@ -118,11 +130,11 @@ try {
   assert(subjectExportCompositionViewIssues(external, boundForeign, { incompleteGoalIds: new Set(['foreign-offer']) })
     .some(issue => /complete foreign canonical body/.test(issue)), 'Partial acquisition excerpts do not prove complete voluntary prerequisite semantics.')
   const canonicalDirectory = resolve(root, 'curricula/DE/Gymnasium/canonical')
-  const canonical = readdirSync(canonicalDirectory).filter(file => file.endsWith('.de.json'))
+  const canonical: CanonicalAuthoringLandscape[] = readdirSync(canonicalDirectory).filter(file => file.endsWith('.de.json'))
     .map(file => JSON.parse(readFileSync(resolve(canonicalDirectory, file), 'utf8')))
-  const completeGraph = new Map<string, SubjectCompositionGoal>(canonical.flatMap(landscape => landscape.goals.map((goal: any) => [goal.id, goal])))
+  const completeGraph = new Map<string, SubjectCompositionGoal>(canonical.flatMap(landscape => landscape.goals.map(goal => [goal.id, goal] as const)))
   const roots = new Map<string, string>(canonical.flatMap(landscape => {
-    const rootGoal = landscape.goals.find((goal: any) => goal.tags?.includes('root'))
+    const rootGoal = landscape.goals.find(goal => goal.tags?.includes('root'))
     return rootGoal ? [[landscape.landscapeId, rootGoal.id]] : []
   }))
   const viewFiles = (directory: string): string[] => readdirSync(directory, { withFileTypes: true }).flatMap(entry => entry.isDirectory()
