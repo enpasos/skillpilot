@@ -15,39 +15,45 @@ public final class CompositionViewFormatMetadata {
     private CompositionViewFormatMetadata() { }
 
     public static Map<String, Object> mergeSourceViews(List<Map<String, Object>> views) {
-        return merge(views, SOURCE_SCHEMA);
+        return merge(views, SOURCE_SCHEMA, true);
     }
 
     public static Map<String, Object> mergeRuntimeViews(List<Map<String, Object>> views) {
-        return merge(views, RUNTIME_SCHEMA);
+        return merge(views, RUNTIME_SCHEMA, false);
     }
 
-    private static Map<String, Object> merge(List<Map<String, Object>> views, String schema) {
+    private static Map<String, Object> merge(List<Map<String, Object>> views, String schema, boolean repository) {
         if (views.isEmpty()) throw new IllegalStateException("No composition view format sources");
         Set<String> versions = new LinkedHashSet<>();
         for (Map<String, Object> view : views) {
             Object raw = view.get("viewFormatVersion");
             String version = raw == null ? "1.0" : raw instanceof String text ? text : "";
-            if (!Set.of("1.0", "1.1", "1.2").contains(version)) {
+            boolean extensionFormat = repository && CompositionViewExtensions.VERSION.equals(version);
+            if (!extensionFormat && !Set.of("1.0", "1.1", "1.2").contains(version)) {
                 throw new IllegalStateException("Unsupported merged composition view format: " + raw);
             }
             versions.add(version);
-            if ("1.2".equals(version)) {
-                if (!schema.equals(view.get("$schema"))) {
-                    throw new IllegalStateException("Invalid composition view 1.2 schema binding");
+            if ("1.2".equals(version) || extensionFormat) {
+                String requiredSchema = extensionFormat ? CompositionViewExtensions.SCHEMA : schema;
+                if (!requiredSchema.equals(view.get("$schema"))) {
+                    throw new IllegalStateException("Invalid composition view " + version + " schema binding");
                 }
                 if (!(view.get("language") instanceof String language)
                         || language.length() > 64 || !language.matches("[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*")) {
-                    throw new IllegalStateException("Invalid composition view 1.2 language");
+                    throw new IllegalStateException("Invalid composition view " + version + " language");
                 }
             }
         }
-        if (versions.size() != 1) {
+        boolean mixedRepositoryExtension = repository && versions.equals(Set.of("1.2", CompositionViewExtensions.VERSION));
+        if (versions.size() != 1 && !mixedRepositoryExtension) {
             throw new IllegalStateException("Conflicting composition view format versions while merging");
         }
         Map<String, Object> metadata = new LinkedHashMap<>();
         for (String field : List.of("viewFormatVersion", "$schema", "language")) {
-            List<Object> values = views.stream().map(view -> view.get(field)).filter(Objects::nonNull).distinct().toList();
+            List<Object> values = views.stream()
+                    .filter(view -> !mixedRepositoryExtension || "language".equals(field)
+                            || CompositionViewExtensions.supports(view))
+                    .map(view -> view.get(field)).filter(Objects::nonNull).distinct().toList();
             if (values.size() > 1) throw new IllegalStateException("Conflicting composition view format metadata: " + field);
             if (!values.isEmpty()) metadata.put(field, values.getFirst());
         }

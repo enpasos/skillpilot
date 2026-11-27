@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 /** Isolated reader fixtures; these are not accepted real curriculum plans. */
 class StagePlanRuntimeIndexTest {
@@ -25,6 +27,27 @@ class StagePlanRuntimeIndexTest {
     private static final String DIR = "curricula/DE/Gymnasium/stage-plans/";
     private static final String INDEX = DIR + "generated/index.json";
     private static final String SCHEMA = "https://skillpilot.com/schemas/curriculum-package/";
+
+    @ParameterizedTest
+    @ValueSource(booleans = {true, false})
+    void rejectsAnElectionViewEvenWithAValidStagePlanArtifactDigest(boolean versionDeclared, @TempDir Path root) throws Exception {
+        Fixture f = fixture(root);
+        var entry = objects(f.index().get("views")).getFirst();
+        var artifact = object(entry.get("artifact"));
+        String path = (String) artifact.get("path");
+        var view = read(root.resolve(path));
+        if (versionDeclared) {
+            view.put("viewFormatVersion", "1.3");
+            view.put("$schema", CompositionViewExtensions.SCHEMA);
+        } else {
+            objects(view.get("rootNodes")).getFirst().put("extension",
+                    Map.of("id", "section-a", "groupId", "options", "previouslyRegular", true));
+        }
+        write(root, path, view);
+        artifact.putAll(pin(root, path));
+        f.save();
+        assertThatThrownBy(f::reader).hasMessageContaining("composition view 1.3");
+    }
 
     @Test
     void nativePublicReaderSelectsAndMergesOneDeclaredPlan(@TempDir Path root) throws Exception {

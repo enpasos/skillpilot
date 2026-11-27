@@ -3,6 +3,7 @@ package com.skillpilot.backend.service;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.skillpilot.backend.composition.CourseProfileCompositionViewMerger;
+import com.skillpilot.backend.composition.CompositionViewExtensions;
 import com.skillpilot.backend.composition.CompositionViewFormatMetadata;
 import com.skillpilot.backend.composition.StagePlanRuntimeIndex;
 import com.skillpilot.backend.curriculumpackage.PackageCompositionViewState;
@@ -97,12 +98,17 @@ public class CompositionViewService {
     }
 
     public CompositionStructureResolution resolveStructureReference(String syntheticGoalId) {
+        return resolveStructureReference(syntheticGoalId, Map.of());
+    }
+
+    public CompositionStructureResolution resolveStructureReference(
+            String syntheticGoalId, Map<String, Map<String, Object>> learnerViews) {
         CompositionStructureReference reference = parseStructureReference(syntheticGoalId);
         if (reference == null) {
             return null;
         }
 
-        Map<String, Object> view = findViewById(reference.viewId());
+        Map<String, Object> view = learnerView(reference.viewId(), learnerViews);
         if (view == null) {
             return null;
         }
@@ -127,7 +133,12 @@ public class CompositionViewService {
     }
 
     public List<CompositionStructureResolution> findRootScopeOptions(String viewId) {
-        Map<String, Object> view = findViewById(viewId);
+        return findRootScopeOptions(viewId, Map.of());
+    }
+
+    public List<CompositionStructureResolution> findRootScopeOptions(
+            String viewId, Map<String, Map<String, Object>> learnerViews) {
+        Map<String, Object> view = learnerView(viewId, learnerViews);
         if (view == null) {
             return Collections.emptyList();
         }
@@ -159,23 +170,36 @@ public class CompositionViewService {
             String viewId,
             String focusGoalId,
             Map<String, LearningGoal> structuralGoals) {
-        return findLearnerFacingFocusAncestorPaths(viewId, focusGoalId, structuralGoals, false)
+        return findLearnerFacingFocusAncestors(viewId, focusGoalId, structuralGoals, Map.of());
+    }
+
+    public List<CompositionStructureResolution> findLearnerFacingFocusAncestors(
+            String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals,
+            Map<String, Map<String, Object>> learnerViews) {
+        return findLearnerFacingFocusAncestorPaths(viewId, focusGoalId, structuralGoals, learnerViews, false)
                 .stream().findFirst().orElseGet(List::of);
     }
 
     /** Visible placement paths in this view, each ordered from the nearest section outward. */
     public List<List<CompositionStructureResolution>> findLearnerFacingFocusAncestorPaths(
             String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals) {
-        return findLearnerFacingFocusAncestorPaths(viewId, focusGoalId, structuralGoals, true);
+        return findLearnerFacingFocusAncestorPaths(viewId, focusGoalId, structuralGoals, Map.of());
+    }
+
+    public List<List<CompositionStructureResolution>> findLearnerFacingFocusAncestorPaths(
+            String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals,
+            Map<String, Map<String, Object>> learnerViews) {
+        return findLearnerFacingFocusAncestorPaths(viewId, focusGoalId, structuralGoals, learnerViews, true);
     }
 
     private List<List<CompositionStructureResolution>> findLearnerFacingFocusAncestorPaths(
-            String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals, boolean includeAlternatives) {
+            String viewId, String focusGoalId, Map<String, LearningGoal> structuralGoals,
+            Map<String, Map<String, Object>> learnerViews, boolean includeAlternatives) {
         if (!StringUtils.hasText(viewId) || !StringUtils.hasText(focusGoalId)) {
             return Collections.emptyList();
         }
 
-        Map<String, Object> view = findViewById(viewId);
+        Map<String, Object> view = learnerView(viewId, learnerViews);
         if (view == null) {
             return Collections.emptyList();
         }
@@ -636,6 +660,35 @@ public class CompositionViewService {
                 matches.get(0).offering().offeringId());
     }
 
+    boolean hasRepositoryExtensionViews(String landscapeId) {
+        return packageState == null && repositoryViewIndex().byLandscapeId()
+                .getOrDefault(normalizeValue(landscapeId), List.of()).stream()
+                .anyMatch(CompositionViewExtensions::supports);
+    }
+
+    public List<CompositionViewExtensions.Group> electionGroupsForLearnerScope(
+            String landscapeId, Map<String, String> requestedScope) {
+        return CompositionViewExtensions.groups(findLearnerScopeView(landscapeId, requestedScope));
+    }
+
+    public CompositionViewExtensions.Selection selectExtensionsForLearnerScope(
+            Map<String, Object> view, Object selection) {
+        var selected = CompositionViewExtensions.select(view, selection);
+        if (selected.excludedNodes().isEmpty() || !(view.get("mergedFromViewIds") instanceof List<?> sourceIds)) {
+            return selected;
+        }
+        // Resolve roles anew after selecting each source. A support placement
+        // in one profile may have been redundant only while another profile's
+        // now deselected target was still included.
+        var sourceViews = sourceIds.stream().map(id -> findSingleViewById(asString(id))).toList();
+        if (sourceViews.stream().anyMatch(Objects::isNull)) return selected;
+        var sourceSelections = sourceViews.stream().map(source -> CompositionViewExtensions.select(source, selection)).toList();
+        var projected = new LinkedHashMap<>(selected.view());
+        projected.put("rootNodes", mergedRoots(sourceSelections.stream().map(CompositionViewExtensions.Selection::view).toList()));
+        var excluded = sourceSelections.stream().flatMap(source -> source.excludedNodes().stream()).toList();
+        return new CompositionViewExtensions.Selection(Collections.unmodifiableMap(projected), excluded);
+    }
+
     private static boolean isConstrainedLearnerScope(
             Map<String, String> normalizedRequestedScope) {
         return LEARNER_SCOPE_DIMENSIONS.containsAll(normalizedRequestedScope.keySet())
@@ -643,6 +696,11 @@ public class CompositionViewService {
                 && StringUtils.hasText(normalizedRequestedScope.get(STAGE_KEY))
                 && !"ALL".equals(normalizeValue(
                         normalizedRequestedScope.get("jurisdiction")));
+    }
+
+    private Map<String, Object> learnerView(String viewId, Map<String, Map<String, Object>> learnerViews) {
+        Map<String, Object> selected = viewId == null ? null : learnerViews.get(viewId);
+        return selected == null ? findViewById(viewId) : selected;
     }
 
     public Map<String, Object> findViewById(String viewId) {
@@ -794,8 +852,23 @@ public class CompositionViewService {
             }
             Map<String, List<Map<String, Object>>> byLandscapeId =
                     new LinkedHashMap<>();
-            mutableByLandscapeId.forEach((landscapeId, landscapeViews) ->
-                    byLandscapeId.put(landscapeId, List.copyOf(landscapeViews)));
+            mutableByLandscapeId.forEach((landscapeId, landscapeViews) -> {
+                Map<String, List<Map<String, Object>>> byJurisdiction = new LinkedHashMap<>();
+                landscapeViews.stream().filter(CompositionViewExtensions::supports).forEach(view -> {
+                    String jurisdiction = normalizeValue(asString(asMap(view.get("scope")).get("jurisdiction")));
+                    byJurisdiction.computeIfAbsent(jurisdiction, ignored -> new ArrayList<>()).add(view);
+                });
+                byJurisdiction.forEach((jurisdiction, jurisdictionViews) -> {
+                    try {
+                        CompositionViewExtensions.mergeGroups(jurisdictionViews);
+                    } catch (IllegalStateException e) {
+                        throw new IllegalStateException("Invalid election declarations for " + landscapeId + " / "
+                                + jurisdiction + " in " + jurisdictionViews.stream().map(view -> view.get("viewId")).toList()
+                                + ": " + e.getMessage(), e);
+                    }
+                });
+                byLandscapeId.put(landscapeId, List.copyOf(landscapeViews));
+            });
             return new RepositoryViewIndex(
                     Collections.unmodifiableMap(byLandscapeId),
                     Collections.unmodifiableMap(new LinkedHashMap<>(mutableByViewId)));
@@ -807,7 +880,14 @@ public class CompositionViewService {
     private Map<String, Object> readViewFile(Path path) {
         try {
             Map<String, Object> view = objectMapper.readValue(path.toFile(), MAP_TYPE);
-            validateProjectionRoles(view.get("rootNodes"), path, "rootNodes");
+            boolean extensionFormat = CompositionViewExtensions.supports(view);
+            if (!extensionFormat && (view.containsKey("electionGroups")
+                    || view.containsKey(CompositionViewExtensions.HISTORICAL_ASSESSMENT_PLACEMENTS)
+                    || CompositionViewExtensions.SCHEMA.equals(view.get("$schema")))) {
+                throw extensionFormatRequired(path, "root");
+            }
+            validateProjectionRoles(view.get("rootNodes"), path, "rootNodes", extensionFormat);
+            CompositionViewExtensions.sourceGroups(view);
             return stagePlanRuntimeIndex().instrument(path, view);
         } catch (IOException e) {
             throw new IllegalStateException("Failed to parse composition view " + path, e);
@@ -1017,6 +1097,8 @@ public class CompositionViewService {
             Map<String, String> requestedScope,
             List<Map<String, Object>> views) {
         Map<String, Object> formatMetadata = CompositionViewFormatMetadata.mergeSourceViews(views);
+        boolean hasExtensions = views.stream().anyMatch(CompositionViewExtensions::supports);
+        var electionGroups = hasExtensions ? CompositionViewExtensions.mergeGroups(views) : List.of();
         List<Map<String, Object>> mergedRootNodes = mergedRoots(views);
         List<String> sourceViewIds = views.stream()
                 .map(view -> asString(view.get("viewId")))
@@ -1031,6 +1113,16 @@ public class CompositionViewService {
         merged.put("scope", Collections.unmodifiableMap(new LinkedHashMap<>(requestedScope)));
         merged.put("rootNodes", mergedRootNodes);
         merged.put("mergedFromViewIds", sourceViewIds);
+        if (hasExtensions) {
+            merged.put("electionGroups", electionGroups);
+            String migrationField = CompositionViewExtensions.HISTORICAL_ASSESSMENT_PLACEMENTS;
+            List<Object> migrations = views.stream().map(view -> view.get(migrationField)).distinct().toList();
+            if (migrations.size() > 1) {
+                throw new IllegalStateException("Conflicting historical assessment placements while merging");
+            }
+            if (migrations.getFirst() != null) merged.put(migrationField, migrations.getFirst());
+            CompositionViewExtensions.groups(merged);
+        }
         return Collections.unmodifiableMap(merged);
     }
 
@@ -1074,9 +1166,14 @@ public class CompositionViewService {
             if (cached != null) return cached;
             List<List<Map<String, Object>>> sourceRoots = views.stream()
                     .map(view -> asNodeList(view.get("rootNodes"))).toList();
-            List<Map<String, Object>> merged = canonicalGraphSupplier == null
-                    ? CourseProfileCompositionViewMerger.merge(sourceRoots.stream().flatMap(List::stream).toList())
-                    : CourseProfileCompositionViewMerger.mergeViews(sourceRoots, mergedViewGraph);
+            List<Map<String, Object>> merged;
+            if (views.stream().anyMatch(CompositionViewExtensions::supports)) {
+                merged = CourseProfileCompositionViewMerger.mergeExtensionViews(sourceRoots, mergedViewGraph);
+            } else {
+                merged = canonicalGraphSupplier == null
+                        ? CourseProfileCompositionViewMerger.merge(sourceRoots.stream().flatMap(List::stream).toList())
+                        : CourseProfileCompositionViewMerger.mergeViews(sourceRoots, mergedViewGraph);
+            }
             // Also freeze arbitrary nested authored metadata, not only children.
             List<Map<String, Object>> frozen = merged.stream().map(CompositionViewService::deepFreezeMap).toList();
             mergedViewRoots.put(key, frozen);
@@ -1125,12 +1222,15 @@ public class CompositionViewService {
         return nodes;
     }
 
-    private static void validateProjectionRoles(Object rawNodes, Path path, String nodePath) {
+    private static void validateProjectionRoles(Object rawNodes, Path path, String nodePath, boolean extensionFormat) {
         List<Map<String, Object>> nodes = asNodeList(rawNodes);
         for (int index = 0; index < nodes.size(); index += 1) {
             Map<String, Object> node = nodes.get(index);
             String kind = asString(node.get("kind"));
             String currentPath = nodePath + "[" + index + "]";
+            if (!extensionFormat && node.containsKey("extension")) {
+                throw extensionFormatRequired(path, currentPath);
+            }
             if (supportsProjectionRole(kind)) {
                 projectionRole(node, path, currentPath);
             } else if ("landscapeEntry".equals(kind) && node.containsKey("projectionRole")) {
@@ -1139,9 +1239,13 @@ public class CompositionViewService {
                                 + path + " " + currentPath);
             }
             if ("structure".equals(kind)) {
-                validateProjectionRoles(node.get("children"), path, currentPath + ".children");
+                validateProjectionRoles(node.get("children"), path, currentPath + ".children", extensionFormat);
             }
         }
+    }
+
+    private static IllegalStateException extensionFormatRequired(Path path, String nodePath) {
+        return new IllegalStateException("Election declarations require composition view 1.3 in " + path + " " + nodePath);
     }
 
     private static ProjectionRole projectionRole(Map<String, Object> node, Path path, String nodePath) {
