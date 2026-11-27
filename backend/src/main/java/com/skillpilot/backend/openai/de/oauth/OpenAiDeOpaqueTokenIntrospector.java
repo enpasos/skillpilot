@@ -2,6 +2,7 @@ package com.skillpilot.backend.openai.de.oauth;
 
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry;
 import com.skillpilot.backend.openai.de.observability.OpenAiDeOperationalTelemetry.Event;
+import com.skillpilot.backend.openai.de.OpenAiDeProperties;
 import com.skillpilot.backend.oauth.AuthenticatedClientPolicy;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrosp
     private final RegisteredClientRepository registeredClients;
     private final OpenAiDeOperationalTelemetry telemetry;
     private final Set<String> clientIds;
+    private final Map<String, String> clientProfiles;
     private final String mcpUrl;
     private final Runnable authenticationPolicyCheck;
 
@@ -62,10 +64,34 @@ public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrosp
             String mcpUrl,
             Runnable authenticationPolicyCheck,
             List<String> acceptedClientIds) {
+        this(authorizationService, registeredClients, telemetry, mcpUrl, authenticationPolicyCheck,
+                Set.copyOf(acceptedClientIds), Map.of());
+    }
+
+    OpenAiDeOpaqueTokenIntrospector(
+            OAuth2AuthorizationService authorizationService,
+            RegisteredClientRepository registeredClients,
+            OpenAiDeOperationalTelemetry telemetry,
+            String mcpUrl,
+            Runnable authenticationPolicyCheck,
+            Map<String, String> clientProfiles) {
+        this(authorizationService, registeredClients, telemetry, mcpUrl, authenticationPolicyCheck,
+                clientProfiles.keySet(), clientProfiles);
+    }
+
+    private OpenAiDeOpaqueTokenIntrospector(
+            OAuth2AuthorizationService authorizationService,
+            RegisteredClientRepository registeredClients,
+            OpenAiDeOperationalTelemetry telemetry,
+            String mcpUrl,
+            Runnable authenticationPolicyCheck,
+            Set<String> acceptedClientIds,
+            Map<String, String> clientProfiles) {
         this.authorizationService = authorizationService;
         this.registeredClients = registeredClients;
         this.telemetry = telemetry;
         this.clientIds = Set.copyOf(acceptedClientIds);
+        this.clientProfiles = Map.copyOf(clientProfiles);
         this.mcpUrl = mcpUrl;
         this.authenticationPolicyCheck = authenticationPolicyCheck;
     }
@@ -123,10 +149,18 @@ public final class OpenAiDeOpaqueTokenIntrospector implements OpaqueTokenIntrosp
         if (expectedClient.getClientAuthenticationMethods().size() == 1) {
             String method = expectedClient.getClientAuthenticationMethods().iterator().next().getValue();
             attributes.put("client_authentication_method", method);
-            attributes.put("client_profile", OpenAiDeOAuthConfiguration.CLIENT_AUTH_PRIVATE_KEY_JWT.equals(method)
-                    ? OpenAiDeClientProfiles.CIMD_JWT : OpenAiDeOAuthConfiguration.CLIENT_AUTH_NONE.equals(method)
-                        && com.skillpilot.backend.openai.de.OpenAiDeProperties.OAuth.NativeCimd.CLIENT_ID.equals(expectedClient.getClientId())
-                            ? OpenAiDeClientProfiles.NATIVE_CIMD_PUBLIC : OpenAiDeClientProfiles.BASIC_TRANSITION);
+            String clientId = expectedClient.getClientId();
+            String profile = clientProfiles.get(clientId);
+            if (profile == null) {
+                profile = switch (method) {
+                    case OpenAiDeOAuthConfiguration.CLIENT_AUTH_PRIVATE_KEY_JWT -> OpenAiDeClientProfiles.CIMD_JWT;
+                    case OpenAiDeOAuthConfiguration.CLIENT_AUTH_NONE ->
+                            OpenAiDeProperties.OAuth.NativeCimd.CLIENT_ID.equals(clientId)
+                                    ? OpenAiDeClientProfiles.NATIVE_CIMD_PUBLIC : OpenAiDeClientProfiles.BASIC_TRANSITION;
+                    default -> OpenAiDeClientProfiles.BASIC_TRANSITION;
+                };
+            }
+            attributes.put("client_profile", profile);
         }
         attributes.put("scope", accessTokenScopes);
         attributes.put("aud", List.of(mcpUrl));

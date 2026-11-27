@@ -43,7 +43,13 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
                     "SKILLPILOT_OPENAI_COACH_V1_OAUTH_CLIENT_ASSERTION_AUDIENCE",
                     "SKILLPILOT_OPENAI_COACH_V1_OAUTH_AUTHORIZATION_POLICY_VERSION",
                     "SKILLPILOT_OPENAI_COACH_V1_OAUTH_TRANSITIONAL_BASIC_CLIENT_SECRET",
-                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED");
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_NATIVE_CIMD_ENABLED",
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_ENABLED",
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_ID",
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_REDIRECT_URI",
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_JWK_SET_URI",
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_ASSERTION_AUDIENCE",
+                    "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_AUTHORIZATION_POLICY_VERSION");
             OpenAiRuntimeEnvironmentValidationConfiguration.requireNoForbiddenNames(environmentNames);
         }
     }
@@ -57,6 +63,8 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
                                 "SKILLPILOT_OPENAI_EN_OAUTH_CLIENT_SECRET",
                                 "SKILLPILOT_OPENAI_COACH_V1_MCP_URL",
                                 "SKILLPILOT_OPENAI_COACH_V1_TYPO",
+                                "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_REDIRECT_URIS",
+                                "SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_SECRET",
                                 "SKILLPILOT_OPENAI_COACH_DE_V2_ENABLED",
                                 "SKILLPILOT_OPENAI_COACH_EN_V1_ENABLED",
                                 "SKILLPILOT_OPENAI_APPS_CHALLENGE",
@@ -72,6 +80,8 @@ class OpenAiRuntimeEnvironmentValidationConfigurationTest {
                 .withMessageContaining("SKILLPILOT_OPENAI_EN_OAUTH_CLIENT_SECRET")
                 .withMessageContaining("SKILLPILOT_OPENAI_COACH_V1_MCP_URL")
                 .withMessageContaining("SKILLPILOT_OPENAI_COACH_V1_TYPO")
+                .withMessageContaining("SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_REDIRECT_URIS")
+                .withMessageContaining("SKILLPILOT_OPENAI_COACH_V1_OAUTH_PORTAL_CIMD_CLIENT_SECRET")
                 .withMessageContaining("SKILLPILOT_OPENAI_COACH_DE_V2_ENABLED")
                 .withMessageContaining("SKILLPILOT_OPENAI_COACH_EN_V1_ENABLED")
                 .withMessageContaining("SKILLPILOT_OPENAI_APPS_CHALLENGE")
