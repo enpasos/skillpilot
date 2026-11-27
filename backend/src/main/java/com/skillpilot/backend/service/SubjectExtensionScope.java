@@ -1,5 +1,6 @@
 package com.skillpilot.backend.service;
 
+import com.skillpilot.backend.api.PersonalizationPlan;
 import com.skillpilot.backend.composition.CompositionViewExtensions;
 import com.skillpilot.backend.landscape.PersonalizationScopeValue;
 import java.util.LinkedHashMap;
@@ -26,6 +27,16 @@ final class SubjectExtensionScope {
             case MAXIMUM -> MAXIMUM;
             default -> throw new IllegalArgumentException("Unknown subject scope option: " + option);
         };
+    }
+
+    /** The PUT's stored value must describe the same change as the offered Flow 1 option. */
+    static void validateCockpitChoice(Map<String, Object> submitted, PersonalizationPlan.Option currentOption) {
+        if (currentOption == null || currentOption.kind() != PersonalizationPlan.OptionKind.SCOPE_VALUE
+                || !KEY.equals(currentOption.scopeKey())
+                || !Map.of(currentOption.landscapeId(), Map.of(KEY, storedValue(currentOption.scopeValue())))
+                        .equals(submitted)) {
+            throw new IllegalArgumentException("The submitted subject scope differs from the current choice");
+        }
     }
 
     /** The caller has unwrapped the single supported legacy envelope and holds the learner lock. */

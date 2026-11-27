@@ -2,10 +2,15 @@ package com.skillpilot.backend.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyCollection;
+import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -138,6 +143,8 @@ class LearnerExplicitExtensionCardTest {
         var maximum = service.getClientState(LEARNER, DECK);
         assertThat(maximum.excludedCardIds()).isEmpty();
         assertThat(maximum.srsState()).containsEntry("elective", archived);
+        verify(state, never()).replaceNode(anyString(), anyString(), anyMap(), any());
+        verify(state, never()).updateCards(anyString(), anyString(), anyList(), any(), any());
     }
 
     @Test
