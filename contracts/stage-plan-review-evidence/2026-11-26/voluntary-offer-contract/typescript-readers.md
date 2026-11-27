@@ -31,7 +31,8 @@ set.
 | `app/scripts/prepareGoalBookCanonicalNavigationCandidates.ts` | The actual backbone and profile readers reject a compiled voluntary node before either subject candidate is written. This writer emits a fixed, target-only 1.0 navigation contract. Its catch-all supplement uses the published model, which cannot establish a page's current voluntary source role, so silently omitting an offer is also unsafe. Target-only 1.3 inputs remain supported; a role-preserving navigation successor belongs to VR3. The complete current Mathematics/Physics CLI outputs retain their exact prior bytes. |
 | `app/scripts/lib/stagePlanCatalog.ts`; `app/src/utils/stagePlan.ts` | The independently bound, retained stage-plan format 1.1 still permits only its original two roles and rejects a third role before its legacy projection. Its contract is not relabeled 1.3 or relaxed. |
 | `app/scripts/subjectExportCompositionViews.ts`; `buildSkillpilotExportPackage.ts`; `validateSubjectExportPackages.ts` | Source 1.3 uses the shared compiler for roots, inherited prerequisites, assessed clusters, conflicts and visible places. Registered preparation excerpts are loaded before semantic import checks. Conditional P templates and P subtree mentions may repeat; old formats keep wire validation without the new semantic checks. Missing canonical references fail. No new public field or foreign-graph adjunct is introduced. |
-| `app/scripts/reportMathPhysicsNativeInventory.ts`; `MathPhysicsNativeProjectionInventory.java` | Fresh native proof covers 270 offered configurations (143 Mathematics, 127 Physics), 232 exact membership classes, zero unmatched views and zero seed-scope fallbacks; bitset integrity and all 18 deck references pass. This service has its own VR2 work; current views contain no voluntary entries. Native source/package parser tests and this unchanged-view projection proof are distinct evidence. |
+| `app/scripts/reportMathPhysicsNativeInventory.ts`; `MathPhysicsNativeProjectionInventory.java` | The native inventory covers 270 offered configurations (143 Mathematics, 127 Physics), 232 exact membership classes, zero unmatched views and zero seed-scope fallbacks. Bitset integrity and all 18 deck references pass. |
+| `CompositionViewService` and `LearnerService.collectCompositionViewGoalReferences` | The repository reader accepts the third role in format 1.3. Until VR2 implements voluntary study, the learner projection refuses a scope containing `voluntary` or an unknown role. An omitted role selects `target`. The public learner-scope case is `LearnerProjectionRoleBoundaryTest.source13OfferIsAcceptedByRepositoryReaderButLearnerScopeRefusesIt`. |
 | `scripts/physics_arrow_route_validation.ts`; `physics_arrow_applicability_review.ts` | Actual seed/offer counts use the shared regular target set. The retained A2/W1 proof additionally asserts its specific two-role source decisions; it does not silently approve a voluntary arrow or task as a regular one. Its individual historical decisions are not migrated. |
 
 `nationalStageProjection.ts`, the WebGUI composition/personal-curriculum adapters
@@ -129,10 +130,13 @@ above is corrected independently.
   release gate invokes that suite and its configured type check. They are not a
   direct step in the main PR aggregate. The semantic OWL job separately invokes
   its roundtrip tests.
-- No direct `generate_curriculum_package_v14_contracts.py --check` step was found
-  in package scripts or either CI workflow. The boundary suite does validate the
-  generated v1.4 schemas and packages; generator freshness is a distinct coverage
-  limit, not a claim established by that suite.
+- The Python package-boundary test already checked generator freshness in the
+  standalone builder suite. That positive check was missing from the first reader survey.
+  The main CI's `curriculum-integrated-build` runs
+  `test:full-standalone-package-builder`. The suite executes
+  `generate_curriculum_package_v14_contracts.py --check` before building.
+  Its regression control changes a generated file in a private copy and checks
+  that the generator rejects it.
 
 These are automated software checks and reproducible measurements. They are no
 learner assessment, independent content review, production deployment or host

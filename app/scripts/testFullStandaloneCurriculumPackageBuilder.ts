@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import {
   copyFileSync,
@@ -27,6 +28,13 @@ type JsonObject = Record<string, unknown>
 
 const scriptDir = dirname(fileURLToPath(import.meta.url))
 const realRepositoryRoot = resolve(scriptDir, '../..')
+const currentDerivation = spawnSync('python3', [
+  '-B', resolve(realRepositoryRoot, 'scripts/generate_curriculum_package_v14_contracts.py'), '--check',
+], { cwd: realRepositoryRoot, encoding: 'utf8' })
+assert.equal(currentDerivation.status, 0,
+  `Generated 1.4 contracts must be current: ${currentDerivation.error ?? currentDerivation.stderr}`)
+process.stdout.write(currentDerivation.stdout)
+
 for (const [profileId, count] of [
   ['full-standalone-v1', 22], ['full-standalone-completion-v1', 26],
   ['full-standalone-learning-units-v1', 25], ['full-standalone-v1.3', 28],

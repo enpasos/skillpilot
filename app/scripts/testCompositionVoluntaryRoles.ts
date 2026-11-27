@@ -45,6 +45,18 @@ const view = makeView([section('Regular', [entry('regular')]), entry('support', 
 const compile = (candidate: CompositionView) => compileCompositionView(candidate, landscape)
 const errors = (candidate: CompositionView) => compile(candidate).findings.filter(finding => finding.severity === 'error')
 const sorted = (set: Set<string>) => [...set].sort()
+function mixedSectionPreservesSiblingRoles() {
+  const siblings = [entry('regular'), entry('other-offer', 'voluntary'), entry('support', 'prerequisiteOnly')]
+  const mixed = normalizeCompositionView(makeView([section('Mixed', siblings)]))
+  assert.deepEqual(mixed.rootNodes[0], section('Mixed', siblings))
+  const compiled = compile(mixed)
+  assert.deepEqual(compiled.findings, [])
+  assert.deepEqual(sorted(compiled.projectionRoles.targetAtomicGoalIds), ['regular'])
+  assert.deepEqual(sorted(compiled.projectionRoles.prerequisiteOnlyAtomicGoalIds), ['implicit', 'support'])
+  assert.deepEqual(sorted(compiled.projectionRoles.voluntaryAtomicGoalIds), ['other-offer'])
+  assert.deepEqual(compiled.compiledRootNodes[0].children.map(child => child.sourceGoalId), ['regular', 'other-offer'])
+}
+mixedSectionPreservesSiblingRoles()
 const result = compile(normalizeCompositionView(view))
 assert.deepEqual(result.findings, [], 'A mixed view with an entirely voluntary section compiles.')
 assert.deepEqual(sorted(result.projectionRoles.targetGoalIds), ['regular'])

@@ -45,6 +45,20 @@ class PackageCompositionViewStateTest {
     }
 
     @Test
+    void mixedSectionPreservesSiblingRoles() throws Exception {
+        var section = Map.<String, Object>of("kind", "structure", "id", "mixed", "label", "Mixed", "children", List.of(
+                Map.of("kind", "goalEntry", "goalId", "regular"),
+                Map.of("kind", "goalEntry", "goalId", "offer", "projectionRole", "voluntary"),
+                Map.of("kind", "goalEntry", "goalId", "support", "projectionRole", "prerequisiteOnly")));
+        var snapshot = voluntaryFixture(false, List.of(section), List.of());
+        var resolved = PackageCompositionViewState.load(snapshot, mapper).resolveOffering("offering-alpha");
+        assertThat(resolved.document().get("rootNodes")).isEqualTo(List.of(section));
+        assertThat(resolved.targetAtomicGoalIds()).containsExactly("regular");
+        assertThat(resolved.voluntaryAtomicGoalIds()).containsExactly("offer");
+        assertThat(resolved.prerequisiteOnlyAtomicGoalIds()).containsExactlyInAnyOrder("support", "implicit");
+    }
+
+    @Test
     void mandatoryClosureUsesEffectiveTargetAtomsAndInheritedPrerequisites() throws Exception {
         var dormant = voluntaryFixture(false, List.of(
                 Map.of("kind", "canonicalSubtree", "goalId", "overrideRoot"),

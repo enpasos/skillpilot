@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import copy
 import json
+import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -55,6 +57,27 @@ class CompositionViewPackageBoundary(unittest.TestCase):
             [sys.executable, "-B", str(ROOT / "scripts/generate_curriculum_package_v14_contracts.py"), "--check"],
             cwd=ROOT, check=True,
         )
+        # The same CLI must reject changed private outputs without repairing them.
+        with tempfile.TemporaryDirectory(prefix="skillpilot-contract-freshness-") as directory:
+            fixture = Path(directory)
+            script = fixture / "scripts/generate_curriculum_package_v14_contracts.py"
+            script.parent.mkdir()
+            shutil.copyfile(ROOT / script.relative_to(fixture), script)
+            contracts = fixture / "contracts/curriculum-package"
+            contracts.mkdir(parents=True)
+            (contracts / "v1.3").symlink_to(ROOT / "contracts/curriculum-package/v1.3", target_is_directory=True)
+            shutil.copytree(ROOT / "contracts/curriculum-package/v1.4", contracts / "v1.4")
+            command = [sys.executable, "-B", str(script), "--check"]
+            environment = {**os.environ, "PYTHONPATH": str(ROOT / "scripts")}
+            fresh = subprocess.run(command, cwd=ROOT, env=environment, capture_output=True, text=True)
+            self.assertEqual(fresh.returncode, 0, fresh.stderr)
+            changed = contracts / "v1.4/runtime-catalog.schema.json"
+            stale_bytes = changed.read_bytes() + b"\n"
+            changed.write_bytes(stale_bytes)
+            stale = subprocess.run(command, cwd=ROOT, env=environment, capture_output=True, text=True)
+            self.assertEqual(stale.returncode, 1, stale.stderr)
+            self.assertIn("Stale 1.4 contracts: contracts/curriculum-package/v1.4/runtime-catalog.schema.json", stale.stderr)
+            self.assertEqual(changed.read_bytes(), stale_bytes, "--check must not repair changed output")
 
     def test_legacy_source_compiles_without_mutation(self):
         original = copy.deepcopy(self.old)
@@ -165,6 +188,27 @@ class CompositionViewPackageBoundary(unittest.TestCase):
                     extra["children"][0]["projectionRole"] = "future"
                 with self.assertRaises(offline.ValidationFailure):
                     offline.validate_runtime_composition_view(v, g)
+
+    def test_mixed_section_preserves_sibling_roles(self):
+        source = dict(self.old, viewFormatVersion="1.3", language="de", **{"$schema": v14.SOURCE_VIEW_SCHEMA_ID})
+        siblings = [
+            {"kind": "goalEntry", "goalId": "regular"},
+            {"kind": "goalEntry", "goalId": "offer", "projectionRole": "voluntary"},
+            {"kind": "goalEntry", "goalId": "support", "projectionRole": "prerequisiteOnly"},
+        ]
+        section = {"kind": "structure", "id": "mixed", "label": "Mixed", "children": siblings}
+        source["rootNodes"] = [section]
+        goals = {node["goalId"]: {"id": node["goalId"], "type": "atomic"} for node in siblings}
+        compiled = compiler.compile_composition_view(source, "de", "mixed", allow_partial_order=True, allow_voluntary=True)
+        validator = Draft202012Validator(json.loads((ROOT / v14.VIEW_SCHEMA_PATH).read_text()))
+        expected = independent.expected_composition_view(source, "de", self.validator, "mixed",
+            partial_order_validator=self.partial_validator, voluntary_validator=validator)
+        self.assertEqual(compiled, expected)
+        self.assertEqual(compiled["rootNodes"], [section])
+        offline.validate_runtime_composition_view(compiled, goals)
+        regular = regular_authoring_input(source)
+        self.assertEqual(regular["rootNodes"][0]["children"], [siblings[0], siblings[2]])
+        self.assertEqual(restore_view_offers(regular, source, goals), source)
 
     def test_regular_view_regeneration_retains_only_its_own_offers(self):
         source = copy.deepcopy(self.old)

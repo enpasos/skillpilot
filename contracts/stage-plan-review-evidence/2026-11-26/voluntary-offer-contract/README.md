@@ -6,7 +6,7 @@ Ein Bundesland kann ein Lernziel, eine Aufgabe oder beides an einem eigenen Plat
 |---|---|---|
 | Reguläres Ziel · `target` | Das Atom gehört in dieser Ansicht zu den regulär zu lernenden Zielen. Eine fehlende Rollenangabe behält diese Bedeutung. | Bisheriger Ansichtsvertrag |
 | Vorbereitung · `prerequisiteOnly` | Eine echte Voraussetzung kann einen eigenen Erwerbsplatz haben. Die Auswahl einer freiwilligen Aufgabe kann weitere Vorbereitung erforderlich machen. | Bisheriger Ansichtsvertrag und Entscheidung vom 26.11. |
-| Freiwilliges Angebot · `voluntary` | Ein ausdrücklich platzierter atomarer `goalEntry`. Sein Abschnitt darf ausschließlich freiwillige Angebote enthalten. | Entscheidung vom 26.11., Format 1.3 |
+| Freiwilliges Angebot · `voluntary` | Ein ausdrücklich platzierter atomarer `goalEntry`. Ein Abschnitt kann ganz aus freiwilligen Angeboten bestehen. Ein freiwilliges Angebot kann ebenso neben regulären Zielen und Vorbereitungen stehen. | Entscheidung vom 26.11., präzisiert am 27.11., Format 1.3 |
 | Erwerbsplatz · `acquisitionPlacement` | Markiert eine ausdrücklich platzierte Vorbereitung. | Ansichtsformat 1.2 |
 | Anrechnung | Ergibt sich aus einer tatsächlich erbrachten Leistung und ihrer geprüften Bewertung. Die Sichtrolle selbst vergibt keine Anrechnung. | Bestehende Anrechnungsregeln |
 
@@ -22,6 +22,10 @@ Der Ländergenerator baut seinen regulären Umfang aus den vorgesehenen Quellen 
 - Der [TypeScript-Vertragstest](../../../../app/scripts/testCompositionVoluntaryRoles.ts) enthält gültige und fehlerhafte Fälle einschließlich indirekter Voraussetzungen, einer Aufgabe über mehrere Leistungen und eines Abschnitts, der nur freiwillige Angebote enthält.
 - Der [Python-Grenztest](../../../../scripts/test_composition_view_package_boundary.py) prüft die Auswahl des Paketschemas, die unabhängige Rekonstruktion, die Semantik des installierbaren Pakets sowie die Erhaltung der freiwilligen Lernorte bei erneuter Autorenerzeugung.
 - Der [Java-Paketleser-Test](../../../../backend/src/test/java/com/skillpilot/backend/curriculumpackage/PackageCompositionViewStateTest.java) prüft sowohl die effektiven Mengen als auch ihre Herkunft in Kurs- und Länderzusammenführungen.
+
+Für den Abschnitt mit allen drei Rollen prüfen TypeScript (`mixedSectionPreservesSiblingRoles`), Python (`test_mixed_section_preserves_sibling_roles`) und Java (`mixedSectionPreservesSiblingRoles`) denselben Fall. Ein freiwilliges Angebot steht zwischen einem regulären Ziel und einer Vorbereitung. Die Leser erhalten seine Rolle und seinen Platz.
+
+Bis VR2 den freiwilligen Lernweg implementiert, weist der Lernerbereich eine 1.3-Ansicht mit einem freiwilligen Angebot zurück. Die Vergleichsmessung umfasst die Lernerauswahl in allen 387 bestehenden Ansichten. In der CI führt die Prüfung des eigenständigen Pakets den Generatorabgleich für Paketformat 1.4 aus. Eine gezielt veränderte Schemadatei bringt diesen Befehl zum Scheitern. [Nachweise zur Übernahmeprüfung](reader-boundaries-20261127.json)
 
 Die persönliche Wahl im Chat, die Fortschrittsdarstellung und die fachliche Freigabe eines freiwilligen Landesangebots haben eigene Abnahmefälle in VR2 bis VR6.
 
