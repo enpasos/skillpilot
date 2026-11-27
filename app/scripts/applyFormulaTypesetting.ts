@@ -3,6 +3,9 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import { fingerprintDirectedQuantityArrowContract } from './lib/directedQuantityArrows'
+import { readdirSync } from 'node:fs'
+import { buildPhysicsArrowConsumerSuccessor } from '../../scripts/physics_arrow_route_validation'
+import { buildCurrentArrowWarningSuccessor } from '../../scripts/physics_arrow_applicability_review'
 
 /**
  * Typesetting correction of a canonical catalog (Product Owner, 27 November 2026: every
@@ -151,9 +154,31 @@ outputs.set(batchPath, serialize({
   followUp: 'A typesetting correction is not a substantive re-review or renewed approval of the goals or assessments.',
   semanticKindBindings: semanticBindings,
 }))
-for (const [path, bytes] of outputs) {
-  if (write) { mkdirSync(dirname(resolve(root, path)), { recursive: true }); writeFileSync(resolve(root, path), bytes) }
-  else if (read(path) !== bytes) throw new Error(`Typesetting correction missing or drifted: ${path}`)
+const emit = (files: Map<string, string>) => {
+  for (const [path, bytes] of files) {
+    if (write) { mkdirSync(dirname(resolve(root, path)), { recursive: true }); writeFileSync(resolve(root, path), bytes) }
+    else if (read(path) !== bytes) throw new Error(`Typesetting correction missing or drifted: ${path}`)
+  }
+}
+emit(outputs)
+// The two arrow receipts of Physics are built from the catalog and the ledger just written.
+// New receipts go beside this batch; the earlier ones stay where their manifests bind them.
+let receipts = 0
+if (catalog.landscapeId === '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a') {
+  const pointerPath = 'scripts/config/physics-arrow-current-receipts.json'
+  const pointer = json(pointerPath)
+  const canonical = 'curricula/DE/Gymnasium/canonical'
+  const documents = readdirSync(resolve(root, canonical)).filter(name => name.endsWith('.json')).sort().map(name => json(`${canonical}/${name}`))
+  const consumersPath = batchPath.replace(/\.review\.json$/u, '.arrow-consumers.actual.json')
+  const k4Path = batchPath.replace(/\.review\.json$/u, '.k4-current-offer.actual.json')
+  pointer.arrowConsumers = consumersPath
+  pointer.k4CurrentOffer = k4Path
+  emit(new Map([
+    [consumersPath, serialize(buildPhysicsArrowConsumerSuccessor(root, documents, json(batch.semanticKinds)))],
+    [k4Path, serialize(buildCurrentArrowWarningSuccessor(root))],
+    [pointerPath, serialize(pointer)],
+  ]))
+  receipts = 2
 }
 console.log(`CHECK formula_typesetting ${batch.batchId} ${write ? 'WRITE' : 'PASS'} goals=${changed.size} fields=${batch.entries.length} `
-  + `passages=${batch.entries.reduce((sum, entry) => sum + entry.pairs.length, 0)} semanticKinds=${semanticBindings.length}`)
+  + `passages=${batch.entries.reduce((sum, entry) => sum + entry.pairs.length, 0)} semanticKinds=${semanticBindings.length} receipts=${receipts}`)
